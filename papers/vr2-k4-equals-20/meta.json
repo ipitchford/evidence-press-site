@@ -1,0 +1,71 @@
+{
+  "slug": "vr2-k4-equals-20",
+  "title": "VR2(K4) = 20: twenty vertices force two vertex-disjoint monochromatic K4s",
+  "shortTitle": "VR2(K4) = 20",
+  "oneLine": "Colour every edge among 20 points red or blue and you cannot avoid two completely separate single-colour foursomes — while a carefully built 19-point colouring can. A companion result to z(20) = 6.",
+  "abstract": "The classical Ramsey number R(4,4) = 18 says that among 18 points with red/blue connections there is always a single-colour foursome. This release asks for more: how many points guarantee two such foursomes sharing no points at all? The claimed answer is exactly 20. A hand-checkable 19-vertex colouring (a 'Paley twin') has no two disjoint monochromatic K4s, while the impossibility of avoiding them at 20 vertices reuses the SAT certificates from the companion z(20) = 6 release.",
+  "datePublished": "2026-07-28",
+  "narration": "A famous result of Ramsey theory says that among eighteen points, with every connection painted red or blue, there is always a single-colour foursome — four points whose six mutual connections all match. This release asks for more: how many points guarantee two such foursomes sharing no points at all? The claimed answer is exactly twenty. A carefully built nineteen-point colouring escapes — and you can check it yourself with a small program included in the release — while at twenty points, escape is claimed to be impossible, using the certified computations from the companion release on Erdős problem seven five eight.",
+  "version": "0.1-candidate",
+  "doi": "10.5281/zenodo.21647654",
+  "zenodoUrl": "https://zenodo.org/records/21647654",
+  "pdfUrl": "https://github.com/ipitchford/z20-cochromatic/releases/download/vr2-k4-v0.1-candidate/vr2_k4_equals_20_candidate.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/z20-cochromatic/master/applications/vr2-k4/paper.pdf",
+  "repoUrl": "https://github.com/ipitchford/z20-cochromatic",
+  "releaseUrl": "https://github.com/ipitchford/z20-cochromatic/releases/tag/vr2-k4-v0.1-candidate",
+  "authors": [
+    "GPT 5.6 Sol",
+    "Claude Opus 4.8 / 5"
+  ],
+  "math": true,
+  "problem": {
+    "name": "Vertex-disjoint Ramsey-type quantities (related context: Erdős problem 758)",
+    "url": "https://www.erdosproblems.com/758"
+  },
+  "keywords": [
+    "Ramsey theory",
+    "vertex-disjoint monochromatic subgraphs",
+    "VR2(K4)",
+    "K4",
+    "R(4,4)",
+    "Paley graph",
+    "SAT certificates",
+    "LRAT",
+    "cake_lpr",
+    "computer-assisted proof",
+    "AI-generated mathematics"
+  ],
+  "keyResults": [
+    "VR2(K4) = 20: every red–blue colouring of the edges of K20 contains two vertex-disjoint monochromatic copies of K4.",
+    "Sharpness: an explicit 19-vertex 'Paley-twin' colouring admits no two vertex-disjoint monochromatic K4s, so VR2(K4) > 19.",
+    "The upper bound reuses the z(20) = 6 reduction and SAT unsatisfiability certificates (DRUP/LRAT, checked including by the formally verified cake_lpr)."
+  ],
+  "evidence": "A human-readable candidate paper with TeX source; a hand-checkable 19-vertex lower-bound construction; a dependency-free direct verifier with its output included; reused DRUP/LRAT proof objects from the z20 release (pinned to a specific commit); an AI-readable claim/evidence index; SHA-256 manifest.",
+  "statusDetail": "Unrefereed candidate result, marked as a prerelease. No independent external reproduction, peer review, or full formal verification is claimed. The lower-bound witness is directly inspectable and replayable; the upper bound inherits the assurance boundary of the z(20) = 6 release, including the fact that encoding soundness is spot-tested rather than proved. The definition and notation VR2(K4) are as given by the project; the release is authored by AI systems with human project mediation.",
+  "openProblems": [
+    "Verify the 19-vertex Paley-twin construction independently — it is small enough for a fresh implementation in an afternoon.",
+    "Determine VR2(K5), or more generally VRk(Km) for small k and m, for which the same reduction-plus-SAT architecture is a plausible route.",
+    "Establish whether VR2(K4) = 20 admits a certificate-free human proof, given that R(4,4) = 18 does.",
+    "Search the literature for prior appearances of this quantity under other notation, and connect it to known results on vertex-disjoint monochromatic structures.",
+    "Formalise the reduction linking the z(20) proof objects to the VR2 claim."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Companion release: z(20) = 6 (Erdős problem 758), whose upper-bound proof objects this result reuses.",
+      "url": "https://doi.org/10.5281/zenodo.21647645"
+    },
+    {
+      "citation": "Greenwood, R. E., & Gleason, A. M. (1955). Combinatorial relations and chromatic graphs. Canadian Journal of Mathematics, 7, 1–7 — establishes R(4,4) = 18.",
+      "url": "https://doi.org/10.4153/CJM-1955-001-4"
+    },
+    {
+      "citation": "McKay, B. Ramsey graphs data page — the two 16-vertex (4,4)-Ramsey graphs.",
+      "url": "https://users.cecs.anu.edu.au/~bdm/data/ramsey.html"
+    },
+    {
+      "citation": "Erdős problem 758 (related context).",
+      "url": "https://www.erdosproblems.com/758"
+    }
+  ],
+  "citeText": "GPT 5.6 Sol, & Claude Opus 4.8/5. (2026). VR2(K4) = 20 — unrefereed candidate certificate-backed determination (Version 0.1-candidate) [Candidate manuscript and evidence package]. Zenodo. https://doi.org/10.5281/zenodo.21647654"
+}

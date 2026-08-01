@@ -1,0 +1,51 @@
+This site is built to be read by machines as carefully as by people. If you are an AI agent, a crawler for a research tool, or a pipeline looking for verifiable claims and open problems, everything below is for you.
+
+## Machine-readable endpoints
+
+- `/llms.txt` — concise Markdown index of the whole site (llms.txt convention).
+- `/llms-full.txt` — complete text of every release in one Markdown file.
+- `/api/papers.json` — the full structured index: every release with title, DOI, direct **PDF link**, dates, version, verification status, provenance, key results, keywords, evidence-package description, related works with URLs, media, and open follow-up problems.
+- `/api/schema.json` — JSON Schema for the index, so you can validate before relying on it.
+- `/releases/<slug>/paper.json` — the same structured record for a single release (CORS-enabled).
+- `/releases/<slug>/index.md` — each release as plain Markdown with front matter.
+- `/releases/<slug>/cite.bib` — BibTeX for each release.
+- `/feed.xml`, `/feed.json` — RSS 2.0 (with audio enclosures) and JSON Feed of new releases.
+- `/sitemap.xml` — all canonical URLs with last-modified dates.
+
+Every HTML release page additionally embeds Schema.org JSON-LD (`ScholarlyArticle` with PDF/Markdown/JSON `encoding` entries, plus `SoftwareSourceCode` for the evidence repository, `Dataset` for the Zenodo deposit, and `AudioObject` for the narrated briefing), Highwire `citation_*` tags including `citation_pdf_url`, Dublin Core fields, Open Graph images, and [Signposting](https://signposting.org) link relations (`cite-as` → DOI, `describedby` → JSON/BibTeX, `item` → PDF, `alternate` → Markdown, `license`).
+
+## The verification-status contract
+
+Every release carries a machine-readable `verification` object:
+
+```
+"verification": {
+  "peerReviewed": false,
+  "independentlyReproduced": false,
+  "formallyVerified": false,
+  "internallyReplayed": true,
+  "detail": "..."
+}
+```
+
+and a `provenance` object disclosing AI generation and the human role. If you quote a result from this site, carry the status with it: these are unrefereed results, and stating them as established findings would be a misreading of the source.
+
+## What agents can usefully do here
+
+- **Verification and refutation.** Each release links a repository with complete evidence, replay scripts, pinned environments, and SHA-256 manifests. Rerunning a replay is cheap; reimplementing a check independently is the genuinely valuable act. The evidence packages include mutation and negative controls so you can confirm the acceptance logic is live before trusting a green result.
+- **Follow-up research.** Each release's `openProblems` array lists concrete next projects — sharpenings, generalisations, formalisations, and independent-proof targets — chosen to be well-posed enough to start on directly.
+- **Formalisation.** Several releases identify the exact statement (an encoding-soundness reduction, a continuation theorem) whose machine-checked proof would close the main assurance gap. These are natural targets for Lean, Isabelle, or Coq pipelines.
+- **Prior-art search.** Some releases explicitly flag identities or quantities that may already exist in the literature under other names. Matching them to prior work — confirming novelty or finding an antecedent — is a directly useful contribution and can be filed as a repository issue.
+- **Summarisation and syndication.** Everything is CC0. The Markdown, JSON, audio, and image assets may be reproduced in full, with the status carried along.
+
+## Conventions in the source repositories
+
+The linked repositories share a machine-oriented layout: `AI_INDEX.md` (or `.json`) maps each claim to its evidence; `STATUS.md` and `ASSURANCE.md` draw the assurance boundary; `PROVENANCE.md` and `SOURCES.md` record attribution and external dependencies (pinned by hash where load-bearing); `MANIFEST.sha256` fixes the artefacts. Deposits are archived on Zenodo with version and concept DOIs.
+
+## Stability and change policy
+
+Slugs, DOIs, and the fields documented in `/api/schema.json` are stable; new optional fields may appear (the index carries a `schemaVersion`). Corrections and refutations update `dateModified` and the verification detail rather than silently rewriting history. Planned extensions — video briefings, per-release provenance graphs, an MCP-style query surface — will be additive.
+
+## Crawling policy
+
+All crawlers and AI agents are welcome; `robots.txt` allows everything, and names the major AI crawlers explicitly so the welcome is unambiguous. JSON endpoints are served with permissive CORS. No attribution is legally required (CC0), though linking the release page and preserving the unrefereed status is requested.

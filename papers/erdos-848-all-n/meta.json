@@ -1,0 +1,44 @@
+{
+  "slug": "erdos-848-all-n",
+  "title": "Erdős problem 848: an exact answer for every N",
+  "shortTitle": "Erdős 848: exact answer for all N",
+  "oneLine": "A certificate-backed determination that the answer to an Erdős–Sárközy extremal problem is exactly ⌊(N+18)/25⌋ for every N — closing the gap between known asymptotic results and small cases.",
+  "abstract": "Erdős and Sárközy asked: how large can a set A of integers from 1 to N be if the product of any two members (including a member with itself), plus one, is never squarefree? Recent work resolved the question for all sufficiently large N. This release establishes the exact answer f(N) = ⌊(N+18)/25⌋ for every positive integer N, stitching together exact colouring certificates for small N, structural decompositions and exact-rational envelope arguments for intermediate ranges, and a pinned explicit-threshold analytic theorem for N beyond 2.64 × 10^17.",
+  "datePublished": "2026-07-28",
+  "narration": "Erdős and Sárközy asked: how large can a set of whole numbers up to N be, if multiplying any two members and adding one never gives a squarefree number? Recent work settled the question for all sufficiently large N. This release claims the exact answer for every N: the floor of N plus eighteen, divided by twenty-five. The gap between small and sufficiently large is bridged by five overlapping verification regimes — exact certificates up to one hundred million, structural and exact-rational arguments through two point six four times ten to the seventeen, and an explicit analytic theorem beyond that.",
+  "version": "0.1-candidate",
+  "doi": "10.5281/zenodo.21647629",
+  "conceptDoi": "10.5281/zenodo.21647628",
+  "zenodoUrl": "https://zenodo.org/records/21647629",
+  "pdfUrl": "https://github.com/ipitchford/erdos-848-all-n/releases/download/v0.1-candidate/paper.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/erdos-848-all-n/main/paper.pdf",
+  "repoUrl": "https://github.com/ipitchford/erdos-848-all-n",
+  "releaseUrl": "https://github.com/ipitchford/erdos-848-all-n/releases/tag/v0.1-candidate",
+  "authors": ["OpenAI Codex"],
+  "math": true,
+  "problem": { "name": "Erdős problem 848 (Erdős–Sárközy, nonsquarefree ab+1)", "url": "https://www.erdosproblems.com/848" },
+  "keywords": ["Erdős problem 848", "squarefree numbers", "extremal number theory", "combinatorial number theory", "computer-assisted proof", "certificate replay", "exact-rational certificates", "AI-generated mathematics", "reproducible research"],
+  "keyResults": [
+    "Claim: f(N) = ⌊(N+18)/25⌋ for every positive integer N, where f(N) is the largest size of A ⊆ {1,…,N} with ab+1 nonsquarefree for all a, b ∈ A (including a = b).",
+    "1 ≤ N ≤ 100,000,006: exact finite colouring certificates with compact endpoint induction.",
+    "10^8 ≤ N ≤ 10^9: exhaustive structural decomposition with exact lower-range validation.",
+    "10^9 ≤ N ≤ 10^12: exact-rational short-shift envelopes.",
+    "10^12 ≤ N ≤ 2.64 × 10^17: exact-rational rank envelopes.",
+    "N ≥ 2.64 × 10^17: an explicit analytic threshold theorem (external, pinned source)."
+  ],
+  "evidence": "A 75.6 MB archived deposit containing LaTeX/PDF documentation, a Python replay framework with semantic mutations and sanitizer controls, a C++ verifier for the range up to 100,000,006 with a compressed colouring-delta binary, SHA-256 manifests for all principal components, and machine-readable claim indexes (AI_INDEX.json/md, STATUS, ASSURANCE, PROVENANCE).",
+  "statusDetail": "Unrefereed candidate result. The release itself states it is not independent external reproduction, external human peer review, or end-to-end formal verification; correctness rests on local certificate replay under documented compiler, runtime, and hardware assumptions, and on an external third-party explicit-threshold theorem (a pinned PDF source). The catalogue at erdosproblems.com records the resolution for sufficiently large N but does not (as of this release) acknowledge an all-N determination.",
+  "openProblems": [
+    "Independently replay the certificates on different hardware and toolchains — the C++ verifier for N ≤ 10^8 with its compressed colouring-delta binary is the most accessible entry point.",
+    "Independently verify the exact-rational envelope arguments covering 10^9 ≤ N ≤ 2.64 × 10^17, which are the least conventional part of the architecture.",
+    "Confirm the hand-off: check that the pinned explicit-threshold theorem genuinely covers all N ≥ 2.64 × 10^17 under the same normalisation of f(N).",
+    "Formalise the endpoint-induction scheme in a proof assistant.",
+    "Ask whether the same five-regime architecture (certificates, structural decomposition, envelopes, analytic threshold) transfers to neighbouring extremal problems such as Erdős problem 844."
+  ],
+  "relatedWorks": [
+    { "citation": "Erdős problem 848 (Erdős & Sárközy): maximum size of A ⊆ {1,…,N} with ab+1 never squarefree — the problem page also presents van Doorn's upper bound |A| ≤ (0.108…+o(1))N.", "url": "https://www.erdosproblems.com/848" },
+    { "citation": "Sawhney, M. Resolution for all sufficiently large N, with the structural statement that near-extremal sets lie in {n ≡ 7 (mod 25)} or {n ≡ 18 (mod 25)}.", "url": "https://www.math.columbia.edu/~msawhney/Problem_848.pdf" },
+    { "citation": "Sothanaphan, N. An explicit threshold in Erdős Problem #848 — the pinned analytic input for N ≥ 2.64 × 10^17.", "url": "https://drive.google.com/file/d/1ujhm4_WYpgRV_rd1rJXIfHyvx16COEKe/view" }
+  ],
+  "citeText": "OpenAI Codex. (2026). Candidate certificate-backed all-N determination for Erdős Problem 848 (Version 0.1-candidate) [Candidate manuscript and evidence package]. Zenodo. https://doi.org/10.5281/zenodo.21647629"
+}

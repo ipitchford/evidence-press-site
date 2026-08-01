@@ -1,0 +1,42 @@
+{
+  "slug": "exact-low-length-recht-re-inequalities",
+  "title": "Exact low-length Recht–Ré inequalities: complete status through five factors and six-factor balanced families",
+  "shortTitle": "Exact low-length Recht–Ré inequalities",
+  "oneLine": "The first exact account of where a leading mathematical justification for shuffling data works, where it fails, and where it recovers — with a surprise: the usual theoretical measure can call reshuffling worse even when it reduces error.",
+  "abstract": "This paper asks a basic question behind many machine-learning algorithms: is it better to shuffle a dataset and use each example once, or keep sampling examples at random? It gives the first exact account of where a leading mathematical justification for reshuffling works, where it fails, and where it recovers. It also finds something more surprising: the usual theoretical measure can say reshuffling is worse even when it actually reduces error. The proof is computer-assisted, exact, and fully replayable.",
+  "datePublished": "2026-07-30",
+  "version": "1.0.0-candidate",
+  "doi": "10.5281/zenodo.21709239",
+  "conceptDoi": "10.5281/zenodo.21709238",
+  "zenodoUrl": "https://zenodo.org/records/21709239",
+  "pdfUrl": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities/releases/download/v1.0.0-candidate/exact-low-length-recht-re-inequalities-v1.0.0-candidate.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/exact-low-length-recht-re-inequalities/main/paper/exact_low_length_recht_re.pdf",
+  "repoUrl": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities",
+  "releaseUrl": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities/releases",
+  "authors": ["Anonymous"],
+  "math": true,
+  "problem": { "name": "Recht–Ré noncommutative arithmetic–geometric mean conjecture (low-length cases)", "url": "https://doi.org/10.48550/arXiv.1202.4184" },
+  "keywords": ["Recht–Ré conjecture", "matrix inequalities", "random reshuffling", "stochastic gradient descent", "noncommutative sums of squares", "positive semidefinite matrices", "computer-assisted proof", "exact arithmetic", "sum-of-squares certificates", "semidefinite programming", "randomised numerical linear algebra", "reproducible research"],
+  "keyResults": [
+    "Four factors: the two-sided inequality holds for every n ≥ 4.",
+    "Five factors: the upper spectral bound holds for every n ≥ 5; the lower bound fails at n = 5 (exact rational counterexample with eigenvalue −285/2 against a permitted −120) and is restored for every n ≥ 6, so the threshold is sharp.",
+    "Six factors: the upper bound holds when 7 | n, the lower bound when 8 | n, hence the complete norm inequality whenever 56 | n; remaining six-factor cases are open.",
+    "Metric reversal: on an exact quadratic example, reshuffling worsens the norm of the expected iterate while improving expected squared error and objective value."
+  ],
+  "evidence": "Exact rational sum-of-squares certificates; FLINT characteristic-polynomial positive-semidefiniteness certificates; 2,312 six-factor coefficient identity checks; deterministic replay scripts with pinned dependencies; SHA-256 manifests; mutation and negative controls; hash-bound release certificate.",
+  "statusDetail": "This is an unrefereed candidate computer-assisted proof. Its internal exact replay and adversarial checks pass, but it has not received independent external reproduction, proof-assistant formalisation, expert acceptance, or peer review. Deterministic replay validates the certificates as shipped; it does not constitute formal verification.",
+  "openProblems": [
+    "Characterise the metric reversal: find conditions under which the norm of the expected iterate, the expected squared error, and the expected objective value must agree in ranking sampling schemes, and conditions under which they may diverge (candidates: commutativity, simultaneous diagonalisation, near-identity updates, bounded condition number, small step size).",
+    "Finish the six-factor classification: determine whether the two-sided result extends to every sufficiently large n, whether upper and lower bounds have different thresholds, and whether further exceptional congruence classes contain counterexamples.",
+    "Obtain an independent proof: reimplement the computation without reusing the repository's orbit encoder, certificate schema, or extraction code; formalise the balanced-seed continuation theorem in Lean, Isabelle, or Coq; check the rational positivity certificates independently.",
+    "Run recently proposed data-ordering schemes (block reshuffling, paired reversal) on the paper's exact counterexample and ask which orderings improve all three metrics simultaneously.",
+    "Translate the low-length inequalities into short-horizon or block-iteration guarantees for randomised numerical linear algebra, and test whether structured matrices from real linear systems avoid the pathological behaviour."
+  ],
+  "relatedWorks": [
+    { "citation": "Recht, B., & Ré, C. (2012). Beneath the valley of the noncommutative arithmetic–geometric mean inequality: Conjectures, case-studies, and consequences (COLT 2012 version: Toward a noncommutative arithmetic-geometric mean inequality, JMLR W&CP 23).", "url": "https://arxiv.org/abs/1202.4184" },
+    { "citation": "Lai, Z., & Lim, L.-H. (2020). Recht–Ré noncommutative arithmetic–geometric mean conjecture is false. ICML 2020, PMLR 119.", "url": "https://arxiv.org/abs/2006.01510" },
+    { "citation": "Liu, Z. (2026). Random reshuffling dominates stochastic gradient descent. COLT 2026, PMLR 336.", "url": "https://arxiv.org/abs/2606.32005" },
+    { "citation": "Nguyen, L. M., Phan, D. T., & Kalagnanam, J. (2026). Learning to shuffle: Block reshuffling and reversal schemes for stochastic optimization.", "url": "https://arxiv.org/abs/2604.00260" }
+  ],
+  "citeText": "Anonymous. (2026). Exact low-length Recht–Ré inequalities: paper and exact replication package (Version 1.0.0-candidate) [Candidate manuscript and evidence package]. Zenodo. https://doi.org/10.5281/zenodo.21709239"
+}

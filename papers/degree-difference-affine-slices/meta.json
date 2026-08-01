@@ -1,0 +1,43 @@
+{
+  "slug": "degree-difference-affine-slices",
+  "title": "The degree-difference principle and affine slices of binary-form factorisation spaces",
+  "shortTitle": "Degree-difference principle and affine slices",
+  "oneLine": "A clean determinant identity for the map that multiplies two polynomials and records their resultant — and a study of the geometric slices where Jacobian-conjecture-style questions live.",
+  "abstract": "Multiply two polynomials together and, alongside the product, record their resultant — a single number measuring whether they share a root. This paper proves an exact formula for the Jacobian determinant of that combined operation: up to sign, it is the degree difference of the two polynomials times the square of their resultant. From this 'degree-difference principle' the paper develops the geometry of natural affine slices of binary-form factorisation spaces — the setting in which the project's related Jacobian-conjecture investigations take place — including classifications of low-degree slices, explicit coordinates for Keller maps, and Euler-characteristic obstructions in higher degrees.",
+  "datePublished": "2026-07-28",
+  "version": "0.1-candidate",
+  "doi": "10.5281/zenodo.21647593",
+  "conceptDoi": "10.5281/zenodo.21647592",
+  "zenodoUrl": "https://zenodo.org/records/21647593",
+  "pdfUrl": "https://github.com/ipitchford/degree-difference-affine-slices/releases/download/v0.1-candidate/paper.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/degree-difference-affine-slices/main/paper.pdf",
+  "repoUrl": "https://github.com/ipitchford/degree-difference-affine-slices",
+  "releaseUrl": "https://github.com/ipitchford/degree-difference-affine-slices/releases",
+  "authors": ["OpenAI Codex / Anthropic models"],
+  "math": true,
+  "problem": { "name": "Structure of binary-form factorisation spaces (adjacent to the Jacobian conjecture)", "url": "https://en.wikipedia.org/wiki/Jacobian_conjecture" },
+  "keywords": ["algebraic geometry", "binary forms", "resultant", "Sylvester matrix", "Jacobian conjecture", "Keller maps", "affine slices", "factorisation spaces", "computer-assisted mathematics", "symbolic verification", "SymPy"],
+  "keyResults": [
+    "Determinant identity: det DΦ_{r,s} = (−1)^{s(r+1)} (r−s) · Res(A,B)² for the multiplication–resultant map Φ_{r,s}(A,B) = (AB, Res(A,B)).",
+    "Associated torsor and divisor-class statements for the factorisation spaces.",
+    "Classification of normalised linear–quadratic slices.",
+    "Explicit coordinates for tangent nonosculating slices and the induced Keller maps.",
+    "Fibre and image characterisation of the map.",
+    "Euler-characteristic obstructions for higher-degree cases."
+  ],
+  "evidence": "Manuscript (PDF and TeX); a SymPy verification script with intentional negative-control tests, confirming the polynomial identities through bidegree r+s ≤ 4 and base-point signs through degree eight; a claim-level evidence map (AI_INDEX.md); assurance-boundary documentation (STATUS.md, ASSURANCE.md); provenance records; SHA-256 manifests; Zenodo and Software Heritage archives.",
+  "statusDetail": "Unrefereed candidate manuscript. No peer review, no independent reproduction, and no documented external human review. Computational verification covers only the explicit low-degree polynomial identities (bidegrees r+s ≤ 4; sign checks to degree eight); the general all-degree determinant argument and the theoretical proofs (torsor, divisor-class, cubic-orbit classification) are asserted but not machine-checked. The manuscript is AI-attributed with human direction.",
+  "openProblems": [
+    "Verify the all-degree determinant identity by an independent conceptual proof — or locate it in prior literature on resultants and multiplication maps, where such identities may already exist in another form.",
+    "Subject the torsor and divisor-class arguments, which the symbolic checker deliberately does not cover, to expert human review.",
+    "Extend the symbolic verification beyond bidegree 4 and automate the identity checks at general degree.",
+    "Determine whether the Euler-characteristic obstructions can be upgraded to full non-isomorphism proofs in the higher-degree cases.",
+    "Connect the classified slices explicitly to the companion releases on exotic affine spheres and reducible incidence divisors, which build on this framework."
+  ],
+  "relatedWorks": [
+    { "citation": "Keller, O.-H. (1939). Ganze Cremona-Transformationen — origin of the Jacobian conjecture, which remains open even for two variables.", "url": "https://en.wikipedia.org/wiki/Jacobian_conjecture" },
+    { "citation": "Companion release: Exotic affine three-spheres and the quadratic–cubic obstruction.", "url": "https://doi.org/10.5281/zenodo.21647607" },
+    { "citation": "Companion release: Reducible incidence divisors and the isolation of affine slices.", "url": "https://doi.org/10.5281/zenodo.21647616" }
+  ],
+  "citeText": "OpenAI Codex / Anthropic models. (2026). Candidate evidence bundle for the degree-difference principle and affine slices of binary-form factorisation spaces (Version 0.1-candidate) [Candidate manuscript and evidence package]. Zenodo. https://doi.org/10.5281/zenodo.21647593"
+}
