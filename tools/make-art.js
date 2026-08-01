@@ -160,6 +160,36 @@ art['reducible-incidence-divisors'] = (a, b) => {
   return s;
 };
 
+/* Stocks are not flows: two observed tenure stocks, many admissible paths */
+art['stocks-are-not-flows'] = (a, b) => {
+  let s = '';
+  const house = (x, y, col, opacity = 1) =>
+    `<path d="M ${x} ${y + 18} L ${x + 22} ${y} L ${x + 44} ${y + 18} V ${y + 52} H ${x} Z" fill="${col}" opacity="${opacity}"/>`;
+  const left = [
+    ['owner', 8, a],
+    ['rent', 3, b]
+  ];
+  const right = [
+    ['owner', 6, a],
+    ['rent', 5, b]
+  ];
+  for (const [side, groups] of [['left', left], ['right', right]]) {
+    const ox = side === 'left' ? 105 : 835;
+    let k = 0;
+    for (const [, n, col] of groups) for (let i = 0; i < n; i++, k++) {
+      const x = ox + (k % 4) * 64;
+      const y = 64 + Math.floor(k / 4) * 78;
+      s += house(x, y, col, 0.88);
+    }
+  }
+  s += `<path d="M 390 135 C 500 50, 700 50, 810 135" fill="none" stroke="${a}" stroke-width="3" stroke-dasharray="10 10" opacity="0.65"/>`;
+  s += `<path d="M 390 270 C 510 350, 690 350, 810 270" fill="none" stroke="${b}" stroke-width="3" stroke-dasharray="10 10" opacity="0.65"/>`;
+  s += `<path d="M 390 205 C 515 125, 685 285, 810 205" fill="none" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="5 10" opacity="0.35"/>`;
+  s += `<circle cx="600" cy="200" r="78" fill="#151a1e" stroke="#e7e5e4" stroke-width="2" opacity="0.95"/>`;
+  s += `<text x="600" y="226" text-anchor="middle" font-family="Georgia" font-size="82" fill="#e7e5e4" opacity="0.92">≠</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -167,7 +197,8 @@ const palette = {
   'degree-difference-affine-slices': ['#34d399', '#fbbf24'],
   'exotic-affine-three-spheres': ['#a78bfa', '#f472b6'],
   'erdos-848-all-n': ['#fbbf24', '#38bdf8'],
-  'reducible-incidence-divisors': ['#4ade80', '#c084fc']
+  'reducible-incidence-divisors': ['#4ade80', '#c084fc'],
+  'stocks-are-not-flows': ['#38bdf8', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {

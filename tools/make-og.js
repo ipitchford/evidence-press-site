@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'assets', 'og');
+const requested = new Set(process.argv.slice(2));
 fs.mkdirSync(OUT, { recursive: true });
 
 const html = (m, artSvg) => `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
@@ -31,7 +32,10 @@ h1 { color:#faf7f2; font-size:${m.title.length > 80 ? 46 : 54}px; line-height:1.
 
 (async () => {
   const { chromium } = require('playwright');
-  const b = await chromium.launch();
+  const launchOptions = process.env.EVIDENCE_PRESS_CHROME
+    ? { executablePath: process.env.EVIDENCE_PRESS_CHROME }
+    : {};
+  const b = await chromium.launch(launchOptions);
   const page = await b.newPage({ viewport: { width: 1200, height: 630 } });
   const dirs = fs.readdirSync(path.join(ROOT, 'papers')).filter(d => !d.startsWith('_'));
   for (const d of dirs) {
@@ -39,6 +43,7 @@ h1 { color:#faf7f2; font-size:${m.title.length > 80 ? 46 : 54}px; line-height:1.
     if (!fs.existsSync(metaPath)) continue;
     const m = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
     const slug = m.slug || d;
+    if (requested.size && !requested.has(slug)) continue;
     const artPath = path.join(ROOT, 'assets', 'art', slug + '.svg');
     const art = fs.existsSync(artPath) ? fs.readFileSync(artPath, 'utf8').replace(/<svg /, '<svg preserveAspectRatio="xMidYMid slice" ') : '';
     await page.setContent(html(m, art), { waitUntil: 'networkidle' });
