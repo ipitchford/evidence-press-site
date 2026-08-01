@@ -1,0 +1,87 @@
+{
+  "slug": "irreducible-pushforwards-quartic-transitions",
+  "title": "Irreducible Pushforwards and Constrained Quartic Transitions: Two Reusable Methods from a Study of Furter's R(3) Conjecture",
+  "shortTitle": "Irreducible pushforwards and quartic transitions",
+  "oneLine": "A stalled attack yields two standalone tools: one turns irreducibility into geometric separation, and the other detects exact rank collapse in a quartic transition; Furter's R(3) remains open.",
+  "abstract": "This anonymous methods preprint extracts two proved pieces of mathematics from an unfinished study of Furter's R(3) conjecture. The first shows that, under an exact divisor-pushforward hypothesis, irreducibility of one polynomial forces adjacent rational functions on a curve to have disjoint zero sets; on an elliptic double cover, a nontorsion condition also prevents collision with the deck-transformed divisor. The second reduces a constrained quartic phase in twisted polynomial de Rham cohomology and obtains the exact determinant (9b/64)(-3K^3+K+3b^2), together with its rank strata and a first-order cancellation. For Furter's family the geometric conclusion is conditional at each fixed index on irreducibility of an explicit deck norm. Exact checks for 3 <= n <= 40 are finite evidence only. Uniform irreducibility, the global contour and period estimates, and R(3) itself remain open.",
+  "narration": "A difficult open problem can still produce useful mathematics before it is solved. This preprint isolates two such tools from a study of Furter's R three conjecture. The first turns an irreducible polynomial downstairs into a strong statement about zeros upstairs on an algebraic curve: two adjacent functions cannot vanish at the same point, and on an elliptic double cover a nontorsion test also rules out collision with the mirror divisor. The second studies a quartic transition and finds an exact determinant that vanishes on the aligned transition curve, explaining why three natural quantities collapse to rank two, and then rank one at the origin. Both results are proved and exactly replayed. Their application to every Furter index is not proved: the required uniform irreducibility and global contour estimates remain open, as does the original R three conjecture.",
+  "datePublished": "2026-08-01",
+  "version": "1.0.0",
+  "doi": "10.5281/zenodo.21745937",
+  "conceptDoi": "10.5281/zenodo.21745936",
+  "zenodoUrl": "https://zenodo.org/records/21745937",
+  "pdfUrl": "https://github.com/ipitchford/irreducible-pushforwards-quartic-transitions/releases/download/v1.0.0-preprint/irreducible-pushforwards-quartic-transitions-v1.0.0.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/irreducible-pushforwards-quartic-transitions/main/build/main.pdf",
+  "repoUrl": "https://github.com/ipitchford/irreducible-pushforwards-quartic-transitions",
+  "releaseUrl": "https://github.com/ipitchford/irreducible-pushforwards-quartic-transitions/releases/tag/v1.0.0-preprint",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-preprint",
+  "math": true,
+  "provenance": {
+    "aiGenerated": false,
+    "aiAssisted": true,
+    "generatedBy": ["Automated research and coding tools"],
+    "humanRole": "Problem selection, mediation, review, pivot approval, and publication management; the scholarly creator is cited as Anonymous.",
+    "disclosure": "Automated tools assisted symbolic exploration, implementation, replay, critique, drafting, and publication checks; they are not authors. The methods preprint is cited as Anonymous."
+  },
+  "problem": {
+    "name": "Furter's R(3) conjecture for polynomial-composition rigidity",
+    "url": "https://doi.org/10.1112/jlms/jdu064"
+  },
+  "keywords": [
+    "algebraic geometry",
+    "elliptic curves",
+    "irreducible pushforward",
+    "deck involution",
+    "divisor disjointness",
+    "quartic transition",
+    "twisted de Rham cohomology",
+    "polynomial automorphisms",
+    "computer-assisted mathematics",
+    "Furter R(3)",
+    "unrefereed preprint",
+    "reproducible research"
+  ],
+  "keyResults": [
+    "If an effective zero divisor of degree h pushes forward with coefficient one to the prime divisor of an irreducible degree-h polynomial, then it is one reduced closed point; with pole orders h and h+1, this forces adjacent base-point freeness.",
+    "On an elliptic curve with degree-two deck involution Q -> S-Q, the same prime-pushforward hypothesis and hS != O prevent the zero divisor from meeting its deck image; nontorsion of S gives the conclusion for every h.",
+    "For the constrained quartic phase Psi(W)=W^4-(3/2)KW^2+bW, the twisted-de-Rham coordinate determinant of 1, Psi, Psi^2 is (9b/64)(-3K^3+K+3b^2). It vanishes on the aligned transition curve, with rank two away from the origin, rank one at the origin, and cancellation of the first moving-alignment correction.",
+    "For each fixed Furter index, irreducibility of the exact deck norm implies the required adjacent and self-deck divisor disjointness. The package verifies irreducibility only for 3 <= n <= 40; no uniform all-index theorem or proof of R(3) is claimed."
+  ],
+  "evidence": "A 14-page anonymous methods preprint; exact symbolic replay under normal and optimized Python with SymPy 1.14.0; a self-contained exact Furter deck-norm audit for 3 <= n <= 40 plus auxiliary deck diagnostics through n = 20; 22-file SHA-256 manifest; fresh git-archive extraction and complete replay; negative assurance boundaries and a seven-mode publication-integrity report; byte-identical GitHub and Zenodo release assets.",
+  "statusDetail": "Anonymous, unrefereed methods preprint. The standalone irreducible-pushforward, elliptic deck-collision, and constrained-quartic identities are proved in the manuscript and replayed exactly. The Furter application is conditional at each fixed index on deck-norm irreducibility; checks through n = 40 remain finite evidence and do not imply uniform irreducibility. The work has not been independently reproduced, formally verified in a proof assistant, accepted by experts, or peer reviewed; internal AI-assisted audits are not independent assessment. The remaining global contour, cycle, Stokes, and period estimates and Furter's R(3) conjecture are open.",
+  "openProblems": [
+    "Prove or disprove uniform irreducibility of the exact Furter deck norms for every index, without treating a longer finite computation as the principal result.",
+    "Complete the global analytic step: construct a contour deformation and Stokes-compatible cycle control with uniform period estimates through the constrained quartic transition.",
+    "Determine whether the exact determinant and first-correction cancellation admit a broader invariant interpretation for coalescing saddles, Gauss-Manin systems, or Stokes-filtered twisted de Rham families.",
+    "Find further settings in which coefficient-one irreducible pushforward plus a one-degree pole gap gives useful base-point freeness or deck-collision exclusion.",
+    "Independently reproduce the theorems and exact calculations without reusing the repository's symbolic code, and formalise the algebraic arguments in a proof assistant."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Furter, J.-P. (2015). Polynomial Composition Rigidity and Plane Polynomial Automorphisms. Journal of the London Mathematical Society, 91(1), 180-202.",
+      "url": "https://doi.org/10.1112/jlms/jdu064"
+    },
+    {
+      "citation": "Lewis, D., Perry, K., & Straub, A. (2019). An Algorithmic Approach to the Polydegree Conjecture for Plane Polynomial Automorphisms. Journal of Pure and Applied Algebra, 223(12), 5346-5359.",
+      "url": "https://doi.org/10.1016/j.jpaa.2019.04.002"
+    },
+    {
+      "citation": "Silverman, J. H. (2009). The Arithmetic of Elliptic Curves (2nd ed.). Springer.",
+      "url": "https://doi.org/10.1007/978-0-387-09494-6"
+    },
+    {
+      "citation": "Ursell, F. (1972). Integrals with a Large Parameter: Several Nearly Coincident Saddle Points. Mathematical Proceedings of the Cambridge Philosophical Society, 72(1), 49-65.",
+      "url": "https://doi.org/10.1017/S0305004100050945"
+    },
+    {
+      "citation": "Sabbah, C. (1999). On a Twisted de Rham Complex. Tohoku Mathematical Journal, 51(1), 125-140.",
+      "url": "https://doi.org/10.2748/tmj/1178224856"
+    },
+    {
+      "citation": "Hien, M. (2009). Periods for Flat Algebraic Connections. Inventiones Mathematicae, 178(1), 1-22.",
+      "url": "https://doi.org/10.1007/s00222-009-0185-7"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Irreducible Pushforwards and Constrained Quartic Transitions: Two Reusable Methods from a Study of Furter's R(3) Conjecture (Version 1.0.0) [Unrefereed methods preprint and reproducibility package]. Zenodo. https://doi.org/10.5281/zenodo.21745937"
+}
