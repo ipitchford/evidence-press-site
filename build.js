@@ -178,7 +178,7 @@ function head({ title, description, canonical, jsonld, metaExtra = '', math = fa
 <link rel="alternate" type="application/rss+xml" title="${escAttr(CONFIG.siteName)}" href="${BASE}/feed.xml">
 <link rel="alternate" type="application/feed+json" title="${escAttr(CONFIG.siteName)}" href="${BASE}/feed.json">
 ${extraLinks}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23134e4a'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%23fbbf24' font-family='Georgia'%3EE%CF%81%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css?v=${CSS_V}">
 ${metaExtra}${math ? `<link rel="stylesheet" href="/assets/katex/katex.min.css">
 <script defer src="/assets/katex/katex.min.js"></script>
 <script defer src="/assets/katex/contrib/auto-render.min.js"
@@ -298,6 +298,10 @@ function articleJsonld(p) {
   }
   return { '@context': 'https://schema.org', '@graph': graph.map(n => JSON.parse(JSON.stringify(n))) };
 }
+
+/* content-hash for cache-busting the stylesheet link */
+const CSS_V = require('crypto').createHash('sha256')
+  .update(require('fs').readFileSync(__dirname + '/assets/style.css')).digest('hex').slice(0, 10);
 
 /* YouTube URL -> video id (watch, youtu.be, embed, shorts, live) */
 function youtubeId(u) {
