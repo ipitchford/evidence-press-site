@@ -287,12 +287,22 @@ function articleJsonld(p) {
     isPartOf: { '@id': `${url}#article` },
     license: 'https://creativecommons.org/publicdomain/zero/1.0/'
   });
-  for (const m of p.media || []) graph.push({
-    '@type': m.type === 'video' ? 'VideoObject' : 'AudioObject',
-    name: m.name, contentUrl: m.url, description: m.description || undefined,
-    isPartOf: { '@id': `${url}#article` }
-  });
+  for (const m of p.media || []) {
+    const yt = m.type === 'video' ? youtubeId(m.url) : null;
+    graph.push({
+      '@type': m.type === 'video' ? 'VideoObject' : 'AudioObject',
+      name: m.name, description: m.description || undefined,
+      ...(yt ? { url: m.url, embedUrl: `https://www.youtube-nocookie.com/embed/${yt}` } : { contentUrl: m.url }),
+      isPartOf: { '@id': `${url}#article` }
+    });
+  }
   return { '@context': 'https://schema.org', '@graph': graph.map(n => JSON.parse(JSON.stringify(n))) };
+}
+
+/* YouTube URL -> video id (watch, youtu.be, embed, shorts, live) */
+function youtubeId(u) {
+  const m = String(u || '').match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([\w-]{11})/);
+  return m ? m[1] : null;
 }
 
 function citationMeta(p) {
@@ -349,9 +359,15 @@ function paperPage(p) {
   const related = (p.relatedWorks || []).map(w =>
     `<li>${w.url ? `<a href="${escAttr(w.url)}" rel="noopener">${esc(w.citation)}</a>` : esc(w.citation)}</li>`).join('');
   const open = (p.openProblems || []).map(o => `<li>${inline(o)}</li>`).join('');
-  const media = (p.media || []).map(m => m.type === 'video'
-    ? `<figure class="media"><video controls preload="metadata" src="${escAttr(m.url)}"></video><figcaption>${esc(m.name)}</figcaption></figure>`
-    : `<figure class="media"><audio controls preload="metadata" src="${escAttr(m.url)}"></audio><figcaption>${esc(m.name)}</figcaption></figure>`).join('\n');
+  const media = (p.media || []).map(m => {
+    if (m.type === 'video') {
+      const yt = youtubeId(m.url);
+      if (yt) return `<figure class="media"><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/${yt}?rel=0" title="${escAttr(m.name)}" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><figcaption>${esc(m.name)} · <a href="${escAttr(m.url)}" rel="noopener">Watch on YouTube</a></figcaption></figure>`;
+      return `<figure class="media"><video controls preload="metadata" src="${escAttr(m.url)}"></video><figcaption>${esc(m.name)}</figcaption></figure>`;
+    }
+    return `<figure class="media"><audio controls preload="metadata" src="${escAttr(m.url)}"></audio><figcaption>${esc(m.name)}</figcaption></figure>`;
+  }).join('\n');
+  const ytVideo = (p.media || []).find(m => m.type === 'video' && youtubeId(m.url));
 
   const html = `${head({
     title: `${p.shortTitle} · ${CONFIG.siteName}`,
@@ -372,6 +388,10 @@ function paperPage(p) {
       <button class="play" aria-label="Play audio briefing" data-audio="briefing-audio">▶</button>
       <div class="listen-meta"><strong>Listen to this briefing</strong><span>Narrated summary · MP3 · <a href="${p.audio.url}" download>download</a></span>
       <audio id="briefing-audio" preload="metadata" src="${p.audio.url}"></audio></div>
+    </div>` : ''}
+    ${ytVideo ? `<div class="listen watch">
+      <a class="play" href="${escAttr(ytVideo.url)}" rel="noopener" aria-label="Watch the video briefing">▶</a>
+      <div class="listen-meta"><strong>Watch this briefing</strong><span>Video summary · YouTube · <a href="${escAttr(ytVideo.url)}" rel="noopener">watch</a> · <a href="#media">play on this page</a></span></div>
     </div>` : ''}
 
     <div class="release-grid">
@@ -510,6 +530,7 @@ function indexPage() {
         <a href="https://doi.org/${escAttr(p.doi)}" rel="noopener">DOI</a>
         <a href="${escAttr(p.repoUrl)}" rel="noopener">Code</a>
         ${p.audio ? `<span class="has-audio" title="Audio briefing available">♪ audio</span>` : ''}
+        ${(p.media || []).some(m => m.type === 'video') ? `<span class="has-audio" title="Video briefing available">▸ video</span>` : ''}
       </p>
     </div>
   </article>`).join('\n');
