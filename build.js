@@ -384,6 +384,7 @@ function paperPage(p) {
     <p class="kicker">Press release · ${niceDate(p.datePublished)} · version ${esc(p.version.split(' ')[0])}</p>
     <h1>${esc(p.title)}</h1>
     <p class="standfirst">${inline(p.oneLine)}</p>
+    ${p.audio || ytVideo ? `<div class="briefings">
     ${p.audio ? `<div class="listen">
       <button class="play" aria-label="Play audio briefing" data-audio="briefing-audio">▶</button>
       <div class="listen-meta"><strong>Listen to this briefing</strong><span>Narrated summary · MP3 · <a href="${p.audio.url}" download>download</a></span>
@@ -392,6 +393,7 @@ function paperPage(p) {
     ${ytVideo ? `<div class="listen watch">
       <a class="play" href="${escAttr(ytVideo.url)}" rel="noopener" aria-label="Watch the video briefing">▶</a>
       <div class="listen-meta"><strong>Watch this briefing</strong><span>Video summary · YouTube · <a href="${escAttr(ytVideo.url)}" rel="noopener">watch</a> · <a href="#media">play on this page</a></span></div>
+    </div>` : ''}
     </div>` : ''}
 
     <div class="release-grid">
