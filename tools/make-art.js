@@ -210,6 +210,32 @@ art['irreducible-pushforwards-quartic-transitions'] = (a, b) => {
   return s;
 };
 
+/* Random reshuffling baseline policy: fair pair bits resolved along one value path */
+art['random-reshuffling-baseline-policy'] = (a, b) => {
+  let s = '';
+  const tokens = [
+    [156, 116, '1'], [156, 284, '2'],
+    [346, 116, '3'], [346, 284, '4'],
+    [536, 116, '5'], [536, 284, '6']
+  ];
+  for (const [x, y, label] of tokens) {
+    s += `<circle cx="${x}" cy="${y}" r="31" fill="#151a1e" stroke="#d6dcdd" stroke-width="2"/>`;
+    s += `<text x="${x}" y="${y + 8}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="22" fill="#f5f5f4">${label}</text>`;
+  }
+  for (const x of [156, 346, 536]) {
+    s += `<path d="M ${x - 48} 200 Q ${x} 152 ${x + 48} 200 Q ${x} 248 ${x - 48} 200Z" fill="none" stroke="${b}" stroke-width="2.5" stroke-dasharray="7 7" opacity=".8"/>`;
+    s += `<circle cx="${x}" cy="200" r="9" fill="${b}"/>`;
+  }
+  s += `<path d="M 606 200 C 674 200, 682 102, 752 102 S 824 298, 894 298 S 966 154, 1044 154" fill="none" stroke="${a}" stroke-width="5" opacity=".95"/>`;
+  s += `<path d="M 606 200 C 674 200, 682 298, 752 298 S 824 102, 894 102 S 966 246, 1044 246" fill="none" stroke="#d6dcdd" stroke-width="2" stroke-dasharray="9 10" opacity=".3"/>`;
+  for (const [x, y] of [[752,102],[894,298],[1044,154]]) {
+    s += `<rect x="${x - 12}" y="${y - 12}" width="24" height="24" rx="4" fill="#151a1e" stroke="${a}" stroke-width="3" transform="rotate(45 ${x} ${y})"/>`;
+  }
+  s += `<path d="M 640 64 H 1120" stroke="#f59e0b" stroke-width="2" opacity=".65"/>`;
+  s += `<text x="1112" y="53" text-anchor="end" font-family="ui-monospace,monospace" font-size="16" fill="#f59e0b" opacity=".9">same RR baseline</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -219,7 +245,8 @@ const palette = {
   'erdos-848-all-n': ['#fbbf24', '#38bdf8'],
   'reducible-incidence-divisors': ['#4ade80', '#c084fc'],
   'stocks-are-not-flows': ['#38bdf8', '#f59e0b'],
-  'irreducible-pushforwards-quartic-transitions': ['#2dd4bf', '#f59e0b']
+  'irreducible-pushforwards-quartic-transitions': ['#2dd4bf', '#f59e0b'],
+  'random-reshuffling-baseline-policy': ['#22d3ee', '#c084fc']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
