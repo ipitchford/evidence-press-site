@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /* Generates narrated audio briefings via OpenAI TTS → assets/audio/<slug>.mp3
- * Run at authoring time (needs OPENAI_API_KEY): node tools/make-audio.js [--force]
+ * Run at authoring time (needs OPENAI_API_KEY):
+ *   node tools/make-audio.js [--force]              # paper briefings
+ *   node tools/make-audio.js --observatory [--force]
  * The site build does NOT require this; it simply picks up any mp3s present. */
 'use strict';
 const fs = require('fs');
@@ -8,7 +10,9 @@ const path = require('path');
 
 const KEY = process.env.OPENAI_API_KEY;
 if (!KEY) { console.error('Set OPENAI_API_KEY'); process.exit(1); }
-const FORCE = process.argv.includes('--force');
+const ARGS = new Set(process.argv.slice(2));
+const FORCE = ARGS.has('--force');
+const OBSERVATORY = ARGS.has('--observatory');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'assets', 'audio');
 fs.mkdirSync(OUT, { recursive: true });
@@ -31,7 +35,25 @@ async function tts(text, file) {
   fs.writeFileSync(file, Buffer.from(await res.arrayBuffer()));
 }
 
+async function observatoryBriefing() {
+  const transcript = path.join(OUT, 'observatory-transcript.txt');
+  const file = path.join(OUT, 'observatory.mp3');
+  if (!fs.existsSync(transcript)) throw new Error(`Missing transcript: ${transcript}`);
+  if (fs.existsSync(file) && !FORCE) {
+    console.log('skip (exists): observatory');
+    return;
+  }
+  const text = fs.readFileSync(transcript, 'utf8').trim();
+  process.stdout.write(`tts: observatory (${text.length} chars) ... `);
+  await tts(text, file);
+  console.log(`${(fs.statSync(file).size / 1024).toFixed(0)} KB`);
+}
+
 (async () => {
+  if (OBSERVATORY) {
+    await observatoryBriefing();
+    return;
+  }
   const dirs = fs.readdirSync(path.join(ROOT, 'papers')).filter(d => !d.startsWith('_'));
   for (const d of dirs) {
     const metaPath = path.join(ROOT, 'papers', d, 'meta.json');

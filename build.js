@@ -6,12 +6,56 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const BASE = CONFIG.baseUrl.replace(/\/$/, '');
 const SCHEMA_VERSION = '1.2';
+const OBSERVATORY = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'observatory.json'), 'utf8'));
+const OBSERVATORY_BODY = fs.readFileSync(path.join(ROOT, 'pages', 'observatory.md'), 'utf8');
+const OBSERVATORY_PLACEHOLDER = /^__OBSERVATORY_[A-Z0-9_]+__$/;
+
+const sha256File = file => crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const assetPath = url => path.join(ROOT, String(url).replace(/^\/+/, ''));
+const finalValue = key => OBSERVATORY_PLACEHOLDER.test(String(OBSERVATORY[key] || '')) ? null : OBSERVATORY[key];
+const OBSERVATORY_PUBLIC = {
+  repositoryUrl: finalValue('repositoryUrl'),
+  releaseUrl: finalValue('releaseUrl'),
+  doi: finalValue('doi'),
+  doiUrl: finalValue('doiUrl'),
+  zenodoUrl: finalValue('zenodoUrl')
+};
+const OBSERVATORY_UNRESOLVED = Object.entries(OBSERVATORY)
+  .filter(([, value]) => OBSERVATORY_PLACEHOLDER.test(String(value || '')))
+  .map(([key]) => key);
+
+for (const [key, value] of Object.entries(OBSERVATORY_PUBLIC)) {
+  if (!value || key === 'doi') continue;
+  let parsed;
+  try { parsed = new URL(value); } catch { throw new Error(`pages/observatory.json: ${key} is not a URL`); }
+  if (parsed.protocol !== 'https:') throw new Error(`pages/observatory.json: ${key} must use https`);
+}
+if (OBSERVATORY_PUBLIC.doi && !/^10\.\d{4,9}\/.+/.test(OBSERVATORY_PUBLIC.doi)) {
+  throw new Error('pages/observatory.json: doi is not a DOI');
+}
+if (OBSERVATORY_PUBLIC.doi && OBSERVATORY_PUBLIC.doiUrl !== `https://doi.org/${OBSERVATORY_PUBLIC.doi}`) {
+  throw new Error('pages/observatory.json: doiUrl must be the canonical https://doi.org/ URL');
+}
+
+const OBSERVATORY_AUDIO_FILE = assetPath(OBSERVATORY.audio.url);
+const OBSERVATORY_TRANSCRIPT_FILE = assetPath(OBSERVATORY.audio.transcriptUrl);
+if (!fs.existsSync(OBSERVATORY_AUDIO_FILE)) throw new Error(`Missing Observatory audio: ${OBSERVATORY_AUDIO_FILE}`);
+if (!fs.existsSync(OBSERVATORY_TRANSCRIPT_FILE)) throw new Error(`Missing Observatory transcript: ${OBSERVATORY_TRANSCRIPT_FILE}`);
+const OBSERVATORY_AUDIO_BYTES = fs.statSync(OBSERVATORY_AUDIO_FILE).size;
+const OBSERVATORY_TRANSCRIPT = fs.readFileSync(OBSERVATORY_TRANSCRIPT_FILE, 'utf8').trim();
+if (OBSERVATORY_AUDIO_BYTES !== OBSERVATORY.audio.bytes) throw new Error('Observatory audio byte count does not match pages/observatory.json');
+if (sha256File(OBSERVATORY_AUDIO_FILE) !== OBSERVATORY.audio.sha256) throw new Error('Observatory audio SHA-256 does not match pages/observatory.json');
+if (sha256File(OBSERVATORY_TRANSCRIPT_FILE) !== OBSERVATORY.audio.transcriptSha256) throw new Error('Observatory transcript SHA-256 does not match pages/observatory.json');
+const OBSERVATORY_PIPELINE_FILE = path.join(ROOT, 'assets', 'art', 'observatory-pipeline.png');
+const OBSERVATORY_PIPELINE_PROVENANCE = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets', 'art', 'observatory-pipeline.provenance.json'), 'utf8'));
+if (sha256File(OBSERVATORY_PIPELINE_FILE) !== OBSERVATORY_PIPELINE_PROVENANCE.sha256) throw new Error('Observatory pipeline SHA-256 does not match its provenance record');
 
 /* ---------------------------------------------------------------- utils */
 const esc = s => String(s ?? '')
@@ -200,6 +244,7 @@ ${JSON.stringify(jsonld, null, 1)}
     <nav>
       <a href="/">Releases</a>
       <a href="/about/">About</a>
+      <a href="/observatory/">Observatory</a>
       <a href="/ai/">For AI agents</a>
       <a href="/feed.xml">RSS</a>
     </nav>
@@ -306,7 +351,7 @@ function articleJsonld(p) {
 }
 
 /* content-hash for cache-busting the stylesheet link */
-const CSS_V = require('crypto').createHash('sha256')
+const CSS_V = crypto.createHash('sha256')
   .update(require('fs').readFileSync(__dirname + '/assets/style.css')).digest('hex').slice(0, 10);
 
 /* YouTube URL -> video id (watch, youtu.be, embed, shorts, live) */
@@ -606,19 +651,102 @@ ${foot}`;
 }
 
 /* --------------------------------------------------------------- pages */
-function simplePage(rel, title, description, mdFile, type) {
-  const jsonld = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
-    '@type': type, url: `${BASE}/${rel}`, name: title,
-    isPartOf: { '@id': `${BASE}/#website` } }] };
-  const html = `${head({ title: `${title} · ${CONFIG.siteName}`, description, canonical: `${BASE}/${rel}`, jsonld })}
+function simplePage(rel, title, description, mdFile, type, opts = {}) {
+  const url = `${BASE}/${rel}`;
+  const pageId = `${url}#page`;
+  const pageNode = {
+    '@type': type, '@id': pageId, url, name: title, description,
+    ...(opts.og ? { image: BASE + opts.og, thumbnailUrl: BASE + opts.og } : {}),
+    ...(opts.datePublished ? { datePublished: opts.datePublished, dateModified: opts.dateModified || opts.datePublished } : {}),
+    ...(opts.sameAs && opts.sameAs.length ? { sameAs: opts.sameAs } : {}),
+    ...(opts.identifier ? { identifier: opts.identifier } : {}),
+    ...(opts.audio ? { associatedMedia: { '@id': `${url}#audio` } } : {}),
+    inLanguage: CONFIG.language,
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+    isPartOf: { '@id': `${BASE}/#website` }
+  };
+  const audioNode = opts.audio ? [{
+    '@type': 'AudioObject', '@id': `${url}#audio`,
+    name: opts.audio.name,
+    description: opts.audio.description,
+    contentUrl: BASE + opts.audio.url,
+    encodingFormat: 'audio/mpeg',
+    contentSize: String(opts.audio.bytes),
+    duration: opts.audio.duration,
+    uploadDate: opts.datePublished,
+    inLanguage: CONFIG.language,
+    transcript: opts.audio.transcript,
+    identifier: { '@type': 'PropertyValue', propertyID: 'sha256', value: opts.audio.sha256 },
+    isPartOf: { '@id': pageId },
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  }] : [];
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    websiteNode(), pageNode, ...(opts.extraNodes || []), ...audioNode
+  ] };
+  const social = [
+    ['og:type', opts.datePublished ? 'article' : 'website'],
+    ['og:site_name', CONFIG.siteName],
+    ['og:title', title], ['og:description', description], ['og:url', url],
+    ...(opts.og ? [['og:image', BASE + opts.og], ['og:image:width', '1200'], ['og:image:height', '630']] : []),
+    ...(opts.datePublished ? [['article:published_time', iso(opts.datePublished)]] : []),
+    ['twitter:card', opts.og ? 'summary_large_image' : 'summary'],
+    ['twitter:title', title], ['twitter:description', description],
+    ...(opts.og ? [['twitter:image', BASE + opts.og]] : [])
+  ].map(([k, v]) => k.startsWith('og:') || k.startsWith('article:')
+    ? `<meta property="${k}" content="${escAttr(v)}">`
+    : `<meta name="${k}" content="${escAttr(v)}">`).join('\n') + '\n';
+  const extraLinks = [
+    `<link rel="alternate" type="text/markdown" href="${url}index.md">`,
+    ...(opts.machineRecord ? [`<link rel="describedby" type="application/json" href="${url}index.json">`] : []),
+    ...(opts.audio ? [
+      `<link rel="item" type="audio/mpeg" href="${BASE + opts.audio.url}">`,
+      `<link rel="alternate" type="text/plain" href="${BASE + opts.audio.transcriptUrl}" title="Audio transcript">`
+    ] : []),
+    ...(opts.citeAs ? [`<link rel="cite-as" href="${escAttr(opts.citeAs)}">`] : []),
+    `<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">`
+  ].join('\n') + '\n';
+  const audioHtml = opts.audio ? `<section class="standalone-audio" aria-labelledby="standalone-audio-title">
+    <div class="standalone-audio-copy">
+      <strong id="standalone-audio-title">Two-minute audio overview</strong>
+      <span>${esc(opts.audio.durationLabel)} · AI-generated voice · transcript is the source text</span>
+    </div>
+    <audio controls preload="metadata" src="${escAttr(opts.audio.url)}">
+      <a href="${escAttr(opts.audio.url)}" download>Download the MP3 briefing</a>
+    </audio>
+    <p class="audio-links"><a href="${escAttr(opts.audio.url)}" download>Download MP3</a> · <a href="${escAttr(opts.audio.transcriptUrl)}">Plain-text transcript</a></p>
+    <details class="audio-transcript"><summary>Read the transcript on this page</summary><div>${markdown(opts.audio.transcript)}</div></details>
+  </section>` : '';
+  const resourcesHtml = opts.resources && opts.resources.length ? `<section class="page-resources" aria-labelledby="page-resources-title">
+    <h2 id="page-resources-title">Use the public materials</h2>
+    <div class="page-resource-grid">${opts.resources.map(resource => `<div class="page-resource">
+      <strong>${esc(resource.label)}</strong>
+      ${resource.url ? `<a href="${escAttr(resource.url)}" rel="noopener">${esc(resource.linkText || resource.url)}</a>` : '<span class="pending-link">Pending final publication metadata</span>'}
+      ${resource.detail ? `<small>${esc(resource.detail)}</small>` : ''}
+    </div>`).join('')}</div>
+  </section>` : '';
+  const html = `${head({ title: `${title} · ${CONFIG.siteName}`, description, canonical: url, jsonld, metaExtra: social, extraLinks })}
 <article class="release"><div class="wrap"><div class="prose">
+  ${opts.art ? `<div class="cover"><img src="${opts.art}" alt="" loading="eager"></div>` : ''}
+  ${opts.kicker ? `<p class="kicker">${esc(opts.kicker)}</p>` : ''}
   <h1>${esc(title)}</h1>
+  ${opts.standfirst ? `<p class="standfirst">${inline(opts.standfirst)}</p>` : ''}
+  ${audioHtml}
+  ${resourcesHtml}
   <div class="body">
 ${markdown(fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8'))}
   </div>
 </div></div></article>
 ${foot}`;
   write(rel + 'index.html', html);
+  const resourceMarkdown = opts.resources && opts.resources.length
+    ? `## Use the public materials\n\n${opts.resources.map(resource => `- ${resource.label}: ${resource.url || 'pending final publication metadata'}${resource.detail ? ` — ${resource.detail}` : ''}`).join('\n')}\n\n`
+    : '';
+  const audioMarkdown = opts.audio
+    ? `## Two-minute audio overview\n\n- MP3: ${BASE + opts.audio.url}\n- Plain-text transcript: ${BASE + opts.audio.transcriptUrl}\n- Duration: ${opts.audio.durationLabel}\n- Voice: AI-generated; the transcript is the source text\n\n`
+    : '';
+  write(rel + 'index.md', `---\ntitle: "${title.replace(/"/g, '\\"')}"\nurl: ${url}\nrepository: ${opts.repository || ''}\nrelease: ${opts.release || ''}\ndoi: ${opts.doi || ''}\nlicense: CC0-1.0\nstatus: ${opts.status || ''}\n---\n\n# ${title}\n\n${
+    opts.standfirst ? opts.standfirst + '\n\n' : ''}${audioMarkdown}${resourceMarkdown}${fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8')}`);
+  if (opts.machineRecord) write(rel + 'index.json', JSON.stringify(opts.machineRecord, null, 2) + '\n');
 }
 
 /* --------------------------------------------------------- feeds etc. */
@@ -660,7 +788,7 @@ ${items}
 function sitemap() {
   const urls = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished }))
   ];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
@@ -696,6 +824,7 @@ function llms() {
     '',
     '## About', '',
     `- [About](${BASE}/about/): what these releases are, the verification ladder, and how to independently verify or refute one`,
+    `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
     `- [For AI agents](${BASE}/ai/): metadata conventions and suggested uses (verification, formalisation, follow-up research)`
   ];
   write('llms.txt', lines.join('\n') + '\n');
@@ -709,7 +838,19 @@ function llms() {
       p.body, '',
       `## Open directions (machine-readable copy at ${urlOf(p)}paper.json)`, '',
       ...(p.openProblems || []).map(o => `- ${o}`), ''
-    ])];
+    ]),
+    '---', '', `# ${OBSERVATORY.title}`, '',
+    `- URL: ${BASE}/observatory/`,
+    `- Machine record: ${BASE}/observatory/index.json`,
+    `- Repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}`,
+    `- Versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}`,
+    `- DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'}`,
+    `- Audio: ${BASE + OBSERVATORY.audio.url}`,
+    `- Transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}`,
+    `- Status: ${OBSERVATORY.status}`,
+    `- Included case terminal status: ${OBSERVATORY.includedCase.terminalStatus}; truth certified: ${OBSERVATORY.includedCase.truthCertified}`, '',
+    OBSERVATORY_BODY, ''
+  ];
   write('llms-full.txt', full.join('\n'));
 }
 
@@ -777,6 +918,73 @@ function api() {
   }, null, 2));
 }
 
+const OBSERVATORY_URL = `${BASE}/observatory/`;
+const OBSERVATORY_RESOURCES = [
+  {
+    label: 'Repository', url: OBSERVATORY_PUBLIC.repositoryUrl,
+    linkText: 'GitHub repository', detail: 'Schemas, case records, validators, replay commands and tests.'
+  },
+  {
+    label: 'Versioned release', url: OBSERVATORY_PUBLIC.releaseUrl,
+    linkText: OBSERVATORY.releaseVersion, detail: 'Immutable release assets bound to the candidate version.'
+  },
+  {
+    label: 'DOI archive', url: OBSERVATORY_PUBLIC.doiUrl,
+    linkText: OBSERVATORY_PUBLIC.doi || 'Zenodo DOI', detail: 'Citable archived snapshot of the release.'
+  },
+  {
+    label: 'Machine-readable record', url: `${OBSERVATORY_URL}index.json`,
+    linkText: 'Observatory JSON', detail: 'Status, trust boundary, public links, audio metadata and hashes.'
+  }
+];
+const OBSERVATORY_RECORD = {
+  schemaVersion: OBSERVATORY.schemaVersion,
+  recordType: 'research-infrastructure',
+  title: OBSERVATORY.title,
+  url: OBSERVATORY_URL,
+  markdownUrl: `${OBSERVATORY_URL}index.md`,
+  metadataUrl: `${OBSERVATORY_URL}index.json`,
+  datePublished: OBSERVATORY.datePublished,
+  dateModified: OBSERVATORY.dateModified,
+  version: OBSERVATORY.releaseVersion,
+  license: OBSERVATORY.license,
+  status: OBSERVATORY.status,
+  repositoryUrl: OBSERVATORY_PUBLIC.repositoryUrl,
+  releaseUrl: OBSERVATORY_PUBLIC.releaseUrl,
+  doi: OBSERVATORY_PUBLIC.doi,
+  doiUrl: OBSERVATORY_PUBLIC.doiUrl,
+  zenodoUrl: OBSERVATORY_PUBLIC.zenodoUrl,
+  claimCeiling: OBSERVATORY.claimCeiling,
+  includedCase: OBSERVATORY.includedCase,
+  verification: OBSERVATORY.verification,
+  releaseReadiness: {
+    publicLinksFinal: OBSERVATORY_UNRESOLVED.length === 0,
+    unresolvedFields: OBSERVATORY_UNRESOLVED
+  },
+  audio: {
+    url: BASE + OBSERVATORY.audio.url,
+    transcriptUrl: BASE + OBSERVATORY.audio.transcriptUrl,
+    duration: OBSERVATORY.audio.duration,
+    durationLabel: OBSERVATORY.audio.durationLabel,
+    encodingFormat: 'audio/mpeg',
+    bytes: OBSERVATORY_AUDIO_BYTES,
+    sha256: OBSERVATORY.audio.sha256,
+    transcriptSha256: OBSERVATORY.audio.transcriptSha256,
+    voiceDisclosure: OBSERVATORY.audio.voiceDisclosure
+  },
+  artwork: {
+    pipelineUrl: `${BASE}/assets/art/observatory-pipeline.png`,
+    pipelineSha256: OBSERVATORY_PIPELINE_PROVENANCE.sha256,
+    provenanceUrl: `${BASE}/assets/art/observatory-pipeline.provenance.json`
+  },
+  agentUse: [
+    'Read this record and the repository AI index before using an included case.',
+    'Inspect the terminal status, evidence boundary, claim ceiling and unresolved objections.',
+    'Run the pinned replay commands; do not treat deterministic replay as independent reproduction or claim truth.',
+    'Preserve identifiers, qualifications, provenance and supersession when reusing an output.'
+  ]
+};
+
 /* ---------------------------------------------------------------- main */
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(DIST, { recursive: true });
@@ -793,15 +1001,73 @@ write('_headers', `/*
 /releases/*/paper.json
   Access-Control-Allow-Origin: *
 
+/observatory/index.json
+  Access-Control-Allow-Origin: *
+
+/assets/audio/*
+  Access-Control-Allow-Origin: *
+
 /api/*
   Access-Control-Allow-Origin: *
 `);
 papers.forEach(paperPage);
 indexPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
+simplePage('observatory/', 'Policy Identification Observatory', 'A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.', 'observatory.md', 'WebPage', {
+  art: '/assets/art/observatory.svg',
+  og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'observatory.png')) ? '/assets/og/observatory.png' : null,
+  kicker: 'Research programme · foundational build complete · 2 August 2026',
+  standfirst: 'A standing agent-native research programme for determining what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.',
+  datePublished: OBSERVATORY.datePublished,
+  dateModified: OBSERVATORY.dateModified,
+  sameAs: [OBSERVATORY_PUBLIC.repositoryUrl, OBSERVATORY_PUBLIC.releaseUrl, OBSERVATORY_PUBLIC.doiUrl, OBSERVATORY_PUBLIC.zenodoUrl].filter(Boolean),
+  identifier: OBSERVATORY_PUBLIC.doi ? { '@type': 'PropertyValue', propertyID: 'DOI', value: OBSERVATORY_PUBLIC.doi } : OBSERVATORY.releaseVersion,
+  citeAs: OBSERVATORY_PUBLIC.doiUrl,
+  repository: OBSERVATORY_PUBLIC.repositoryUrl,
+  release: OBSERVATORY_PUBLIC.releaseUrl,
+  doi: OBSERVATORY_PUBLIC.doi,
+  status: OBSERVATORY.status,
+  resources: OBSERVATORY_RESOURCES,
+  machineRecord: OBSERVATORY_RECORD,
+  audio: {
+    name: 'Policy Identification Observatory — two-minute audio overview',
+    description: 'An accessible narrated introduction to the Observatory, its materials, trust boundary and safe reuse by people and research agents.',
+    ...OBSERVATORY.audio,
+    transcript: OBSERVATORY_TRANSCRIPT
+  },
+  extraNodes: [{
+    '@type': 'ResearchProject', '@id': `${BASE}/observatory/#programme`,
+    name: 'Policy Identification Observatory',
+    alternateName: 'PIO',
+    url: `${BASE}/observatory/`,
+    description: 'A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.',
+    version: OBSERVATORY.releaseVersion,
+    creativeWorkStatus: 'Candidate research infrastructure; included founding case is REJECTED_INSUFFICIENT_RIGOUR and is not truth-certified',
+    sameAs: [OBSERVATORY_PUBLIC.repositoryUrl, OBSERVATORY_PUBLIC.releaseUrl, OBSERVATORY_PUBLIC.doiUrl, OBSERVATORY_PUBLIC.zenodoUrl].filter(Boolean),
+    parentOrganization: { '@id': `${BASE}/#org` },
+    knowsAbout: ['causal identification', 'partial identification', 'measurement and accounting audit', 'robust decision-making under model ambiguity', 'adversarial verification', 'agent-native research infrastructure'],
+    subjectOf: [{ '@id': `${BASE}/observatory/#page` }, { '@id': `${BASE}/observatory/#audio` }]
+  },
+  ...(OBSERVATORY_PUBLIC.repositoryUrl ? [{
+    '@type': 'SoftwareSourceCode', '@id': `${BASE}/observatory/#software`,
+    name: 'Policy Identification Observatory',
+    codeRepository: OBSERVATORY_PUBLIC.repositoryUrl,
+    ...(OBSERVATORY_PUBLIC.releaseUrl ? { downloadUrl: OBSERVATORY_PUBLIC.releaseUrl } : {}),
+    version: OBSERVATORY.releaseVersion,
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  }] : []),
+  ...(OBSERVATORY_PUBLIC.zenodoUrl ? [{
+    '@type': 'Dataset', '@id': `${BASE}/observatory/#deposit`,
+    name: 'Policy Identification Observatory — archived candidate release',
+    url: OBSERVATORY_PUBLIC.zenodoUrl,
+    identifier: OBSERVATORY_PUBLIC.doiUrl,
+    version: OBSERVATORY.releaseVersion,
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  }] : [])]
+});
 simplePage('ai/', 'For AI agents and automated research tools', 'Machine-readable endpoints, metadata conventions, and follow-up problem lists for research agents.', 'ai.md', 'WebPage');
 feeds();
 sitemap();
 llms();
 api();
-console.log(`Built ${papers.length} releases → dist/  (audio: ${papers.filter(p => p.audio).length}, art: ${papers.filter(p => p.art).length}, og: ${papers.filter(p => p.og).length})`);
+console.log(`Built ${papers.length} releases plus Observatory → dist/  (paper audio: ${papers.filter(p => p.audio).length}; Observatory audio: 1; art: ${papers.filter(p => p.art).length}; og: ${papers.filter(p => p.og).length})`);
