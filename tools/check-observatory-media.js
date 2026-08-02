@@ -21,6 +21,15 @@ if (fs.statSync(audio).size !== meta.audio.bytes) fail('audio byte count differs
 if (sha256(audio) !== meta.audio.sha256) fail('audio SHA-256 differs from pages/observatory.json');
 if (sha256(transcript) !== meta.audio.transcriptSha256) fail('transcript SHA-256 differs from pages/observatory.json');
 
+const videoMatch = String(meta.video && meta.video.url || '').match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([\w-]{11})/);
+if (!videoMatch) fail('video URL is not a supported YouTube URL');
+const videoId = videoMatch[1];
+if (meta.video.embedUrl !== `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`) {
+  fail('video embed URL is not the matching privacy-enhanced YouTube URL');
+}
+if (!String(meta.video.thumbnailUrl || '').includes(`/vi/${videoId}/`)) fail('video thumbnail does not match the YouTube video ID');
+if (!meta.video.name || !meta.video.description) fail('video name and description are required');
+
 let seconds;
 try {
   seconds = Number(execFileSync('ffprobe', [
@@ -38,3 +47,4 @@ if (seconds < 60 || seconds > 80) fail(`duration ${seconds}s is outside the 60â€
 const words = fs.readFileSync(transcript, 'utf8').trim().split(/\s+/).length;
 console.log(`OK: Observatory audio ${seconds.toFixed(3)}s, ${meta.audio.bytes} bytes, ${words} transcript words`);
 console.log(`SHA-256: ${meta.audio.sha256}`);
+console.log(`OK: Observatory video ${videoId} uses the privacy-enhanced embed URL`);
