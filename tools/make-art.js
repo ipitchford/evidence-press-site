@@ -190,6 +190,26 @@ art['stocks-are-not-flows'] = (a, b) => {
   return s;
 };
 
+/* Irreducible pushforwards: elliptic orbit + quartic rank transition */
+art['irreducible-pushforwards-quartic-transitions'] = (a, b) => {
+  let s = '';
+  const cx = 340, cy = 198, rx = 210, ry = 122;
+  s += `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="none" stroke="${a}" stroke-width="2.4" opacity="0.88"/>`;
+  s += `<path d="M 130 198 C 210 84, 470 84, 550 198 C 470 312, 210 312, 130 198" fill="none" stroke="#e7e5e4" stroke-width="1.2" opacity="0.28"/>`;
+  const pts = [[205,137],[286,92],[397,104],[481,163],[455,252],[342,309],[230,267]];
+  for (let i = 0; i < pts.length; i++) {
+    const [x,y] = pts[i];
+    s += `<circle cx="${x}" cy="${y}" r="${i === 0 ? 8 : 6}" fill="${i % 2 ? b : a}" opacity="${i === 0 ? 1 : .82}"/>`;
+  }
+  s += `<path d="M 225 130 Q 340 28 465 142" fill="none" stroke="${b}" stroke-width="2" stroke-dasharray="7 8" opacity="0.68"/>`;
+  s += `<path d="M 590 322 C 655 296, 680 260, 712 218 C 744 176, 768 74, 808 82 C 855 91, 849 262, 889 278 C 927 293, 950 204, 980 150 C 1010 96, 1040 65, 1080 55" fill="none" stroke="${b}" stroke-width="3.2" opacity="0.92"/>`;
+  s += `<path d="M 590 322 L 1110 322" stroke="#e7e5e4" stroke-width="1" opacity="0.24"/>`;
+  for (const [x,y] of [[712,218],[808,82],[889,278]]) s += `<circle cx="${x}" cy="${y}" r="7" fill="${a}"/>`;
+  s += `<path d="M 620 88 L 1045 88" stroke="${a}" stroke-width="2.2" stroke-dasharray="12 10" opacity="0.64"/>`;
+  s += `<circle cx="1037" cy="88" r="12" fill="none" stroke="${a}" stroke-width="2.4" opacity="0.9"/>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -198,7 +218,8 @@ const palette = {
   'exotic-affine-three-spheres': ['#a78bfa', '#f472b6'],
   'erdos-848-all-n': ['#fbbf24', '#38bdf8'],
   'reducible-incidence-divisors': ['#4ade80', '#c084fc'],
-  'stocks-are-not-flows': ['#38bdf8', '#f59e0b']
+  'stocks-are-not-flows': ['#38bdf8', '#f59e0b'],
+  'irreducible-pushforwards-quartic-transitions': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {

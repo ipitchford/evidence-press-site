@@ -10,6 +10,12 @@ The second is an exact calculation at a quartic transition, the kind of local mo
 
 These are proved statements. Their role in Furter's family is more limited. At each fixed index, the geometric method applies if an explicit deck norm is irreducible. The release checks that irreducibility exactly for $3\le n\le40$. That finite range is evidence, not an all-index theorem. Uniform irreducibility, the global contour and period estimates, and Furter's $R(3)$ conjecture remain open.
 
+## Summary for specialists
+
+The first result is a divisor-theoretic criterion: coefficient-one pushforward to a prime divisor of degree $h$ forces an effective degree-$h$ divisor upstairs to be one reduced closed point. Exact pole orders $hO$ and $(h+1)O$ then exclude adjacent common zeros; on an elliptic double cover, the condition $hS\ne O$ separately excludes intersection with the deck transform. The coefficient-one hypothesis, not bare norm irreducibility, is essential.
+
+The second result is an exact calculation in the twisted polynomial de Rham quotient for $\Psi(W)=W^4-\tfrac32KW^2+bW$. The classes $[1],[\Psi],[\Psi^2]$ have determinant $\tfrac{9b}{64}(-3K^3+K+3b^2)$. On the aligned transition curve the span has rank two away from the origin and rank one at the origin, with cancellation of the first moving-alignment correction. This local algebra does not supply the missing contour-uniform global asymptotics.
+
 ## The first method: irreducibility becomes separation
 
 Suppose a map sends an effective divisor $Z$ of degree $h$ on a smooth projective curve to the zero divisor of one irreducible polynomial of degree $h$, with coefficient one. Proper pushforward counts both multiplicity and residue-field degree. Because every contribution is a positive integer, the coefficient-one hypothesis forces a rigid conclusion: $Z$ consists of one reduced closed point of degree $h$.
@@ -23,6 +29,8 @@ $$
 If $f$ and $g$ shared a zero, the one closed point making up $(f)_0$ would have to lie inside $(g)_0$. Only one degree of zero divisor would remain. Dividing $g$ by $f$ would then produce a function with divisor $R-O$, where $R$ has degree one. On any curve with $|O|=\{O\}$, this forces $R=O$, contradicting the fact that $O$ is the pole. The zero sets are therefore disjoint.
 
 The important lesson is that irreducibility alone is not enough. The full divisor pushforward, including coefficient one, does the work. A repeated norm divisor such as $e(H)_0$ would not imply the same reduced-point conclusion.
+
+![A prime divisor on the base lifting to one reduced closed point on a double cover, with adjacent and deck-transformed zeros kept disjoint.](/assets/figures/irreducible-pushforward-method.svg "The separation mechanism: coefficient-one prime pushforward fixes the zero divisor upstairs; the pole gap and elliptic deck test then provide two distinct disjointness conclusions.")
 
 ### The elliptic deck test
 
@@ -58,6 +66,8 @@ On the limiting aligned transition curve, the factor in parentheses vanishes, so
 - the first correction caused by the moving alignment also cancels.
 
 This gives an algebraic explanation for a degeneracy that might otherwise look like a numerical coincidence. It does not, by itself, justify moving the original integration contour or prove an asymptotic estimate that is uniform across Stokes transitions. Those analytic tasks remain separate.
+
+![A quartic phase beside the aligned transition curve, where three twisted de Rham classes collapse to rank two and then rank one at the origin.](/assets/figures/quartic-transition-rank-collapse.svg "The constrained quartic transition: the exact determinant vanishes on the aligned curve, giving rank two away from the origin and rank one at the origin.")
 
 ## What this says about Furter's R(3)
 

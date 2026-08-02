@@ -71,6 +71,12 @@ function markdown(md) {
       out.push(`<div class="math">$$${esc(buf.join('\n'))}$$</div>`);
       continue;
     }
+    const image = line.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)\s*$/);
+    if (image) {
+      const [, alt, src, caption] = image;
+      out.push(`<figure class="article-figure"><img src="${escAttr(src)}" alt="${escAttr(alt)}" loading="lazy"><figcaption>${inline(caption || alt)}</figcaption></figure>`);
+      i++; continue;
+    }
     const h = line.match(/^(#{1,4})\s+(.*)$/);
     if (h) {
       const lvl = h[1].length;
@@ -123,7 +129,7 @@ function markdown(md) {
       continue;
     }
     const buf = [line]; i++;
-    while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,4}\s|-\s|\d+\.\s|>|\||```|\$\$|---)/.test(lines[i].trim()))
+    while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,4}\s|-\s|\d+\.\s|>|\||```|\$\$|---|!\[)/.test(lines[i].trim()))
       buf.push(lines[i++]);
     out.push(`<p>${inline(buf.join(' '))}</p>`);
   }
