@@ -46,7 +46,7 @@ node tools/check-published.js
 The audio file and transcript hashes, byte size and duration in
 `pages/observatory.json` must match the committed assets. The dependency-free
 build checks hashes and byte size; the authoring-time media check uses
-`ffprobe` to check the exact duration and the 105–135 second briefing window.
+`ffprobe` to check the exact duration and the 60–80 second briefing window.
 The pipeline diagram is a curated PNG; its generation and review record is
 committed beside it as `assets/art/observatory-pipeline.provenance.json`.
 

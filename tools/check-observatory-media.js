@@ -33,7 +33,7 @@ const match = String(meta.audio.duration).match(/^PT(?:(\d+)M)?([0-9.]+)S$/);
 if (!match) fail('audio duration is not an ISO 8601 minute/second value');
 const declaredSeconds = Number(match[1] || 0) * 60 + Number(match[2]);
 if (Math.abs(seconds - declaredSeconds) > 0.05) fail(`duration ${seconds}s differs from declared ${declaredSeconds}s`);
-if (seconds < 105 || seconds > 135) fail(`duration ${seconds}s is outside the 105–135 second briefing window`);
+if (seconds < 60 || seconds > 80) fail(`duration ${seconds}s is outside the 60–80 second briefing window`);
 
 const words = fs.readFileSync(transcript, 'utf8').trim().split(/\s+/).length;
 console.log(`OK: Observatory audio ${seconds.toFixed(3)}s, ${meta.audio.bytes} bytes, ${words} transcript words`);

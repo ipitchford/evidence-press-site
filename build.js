@@ -707,7 +707,7 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
   ].join('\n') + '\n';
   const audioHtml = opts.audio ? `<section class="standalone-audio" aria-labelledby="standalone-audio-title">
     <div class="standalone-audio-copy">
-      <strong id="standalone-audio-title">Two-minute audio overview</strong>
+      <strong id="standalone-audio-title">Audio overview</strong>
       <span>${esc(opts.audio.durationLabel)} · AI-generated voice · transcript is the source text</span>
     </div>
     <audio controls preload="metadata" src="${escAttr(opts.audio.url)}">
@@ -742,7 +742,7 @@ ${foot}`;
     ? `## Use the public materials\n\n${opts.resources.map(resource => `- ${resource.label}: ${resource.url || 'pending final publication metadata'}${resource.detail ? ` — ${resource.detail}` : ''}`).join('\n')}\n\n`
     : '';
   const audioMarkdown = opts.audio
-    ? `## Two-minute audio overview\n\n- MP3: ${BASE + opts.audio.url}\n- Plain-text transcript: ${BASE + opts.audio.transcriptUrl}\n- Duration: ${opts.audio.durationLabel}\n- Voice: AI-generated; the transcript is the source text\n\n`
+    ? `## Audio overview\n\n- MP3: ${BASE + opts.audio.url}\n- Plain-text transcript: ${BASE + opts.audio.transcriptUrl}\n- Duration: ${opts.audio.durationLabel}\n- Voice: AI-generated; the transcript is the source text\n\n`
     : '';
   write(rel + 'index.md', `---\ntitle: "${title.replace(/"/g, '\\"')}"\nurl: ${url}\nrepository: ${opts.repository || ''}\nrelease: ${opts.release || ''}\ndoi: ${opts.doi || ''}\nlicense: CC0-1.0\nstatus: ${opts.status || ''}\n---\n\n# ${title}\n\n${
     opts.standfirst ? opts.standfirst + '\n\n' : ''}${audioMarkdown}${resourceMarkdown}${fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8')}`);
@@ -1030,7 +1030,7 @@ simplePage('observatory/', 'Policy Identification Observatory', 'A standing agen
   resources: OBSERVATORY_RESOURCES,
   machineRecord: OBSERVATORY_RECORD,
   audio: {
-    name: 'Policy Identification Observatory — two-minute audio overview',
+    name: 'Policy Identification Observatory — audio overview',
     description: 'An accessible narrated introduction to the Observatory, its materials, trust boundary and safe reuse by people and research agents.',
     ...OBSERVATORY.audio,
     transcript: OBSERVATORY_TRANSCRIPT
