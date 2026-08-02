@@ -21,8 +21,12 @@ Requires only Node ≥ 16. No packages, no framework. KaTeX is vendored in `asse
    - `node tools/make-art.js` — regenerate SVG cover art (add a motif function for the new slug, or copy an existing one).
    - `node tools/make-og.js` — regenerate Open Graph card PNGs (needs Playwright + Chromium).
    - `OPENAI_API_KEY=... node tools/make-audio.js` — generate the narrated audio briefing (skips existing files; `--force` regenerates).
-5. Run `node build.js` and check `dist/` locally (`python3 -m http.server -d dist 8000`).
-6. Commit and push — Cloudflare Pages rebuilds and deploys automatically (if connected to Git), or run `npx wrangler pages deploy dist --project-name evidence-press`.
+5. Run `node build.js`, then `node tools/check-published.js --live`, and check
+   `dist/` locally (`python3 -m http.server -d dist 8000`). The live reconciliation
+   must pass immediately before deployment so a newer release from another worktree
+   cannot be omitted by a stale local ledger.
+6. Commit and push — Cloudflare Pages rebuilds and deploys automatically (if connected
+   to Git), or run `npx wrangler pages deploy dist --project-name evidence-press --branch main`.
 
 The index page, feeds, sitemap, `llms.txt`, and `api/papers.json` all regenerate automatically from the `papers/` folder — nothing else to update.
 
@@ -40,7 +44,7 @@ The published-URL gate refuses to deploy while any token remains.
 OPENAI_API_KEY=... node tools/make-audio.js --observatory --force
 node tools/check-observatory-media.js
 node build.js
-node tools/check-published.js
+node tools/check-published.js --live
 ```
 
 The audio file and transcript hashes, byte size and duration in
@@ -73,15 +77,16 @@ release from the live site, breaking a DOI-bearing page and its Zenodo cross-ref
 
 ```
 node build.js
-node tools/check-published.js          # exits 1 if this build would drop a published URL
-npx wrangler pages deploy dist --project-name evidence-press
+node tools/check-published.js --live   # reconcile live URLs, then reject omissions
+npx wrangler pages deploy dist --project-name evidence-press --branch main
 node tools/check-published.js --record # add anything newly published to the ledger
 ```
 
-`PUBLISHED.json` is the ledger of every URL the site has published. The gate is offline
-and takes no arguments; `--live` additionally reconciles the ledger against the deployed
-site, probing each candidate slug's `paper.json` directly, because the site's own index
-endpoints have been observed to under-report what is actually live.
+`PUBLISHED.json` is the ledger of every URL the site has published. The gate can run
+offline without arguments, but production deployment requires `--live`. That mode first
+reconciles the ledger against the deployed site, probing each candidate slug's
+`paper.json` directly, because the site's own index endpoints have been observed to
+under-report what is actually live.
 
 If the gate refuses, the build is wrong, not the ledger. Merge the missing release in and
 rebuild. Only pass `--record` after a deploy has succeeded.
