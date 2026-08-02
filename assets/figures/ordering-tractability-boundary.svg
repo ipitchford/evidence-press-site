@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Action-space and stability boundary for common-Hessian ordering</title>
+  <desc id="desc">A diagram contrasts exact local orientation certificates inside a random-reshuffling skeleton, normalized additive suffix approximation at a fixed stability margin, and NP-complete global threshold ordering when an instance-dependent step approaches the endpoint two.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#10191d"/><stop offset="1" stop-color="#202c35"/></linearGradient>
+    <linearGradient id="axis" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#22d3ee"/><stop offset=".55" stop-color="#f59e0b"/><stop offset="1" stop-color="#ef4444"/></linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#91a1a8"/></marker>
+  </defs>
+  <rect width="1200" height="700" rx="20" fill="url(#bg)"/>
+  <text x="60" y="68" fill="#f7f7f5" font-family="Georgia,serif" font-size="31">Tractability changes with both the action space and the stability regime</text>
+  <text x="60" y="106" fill="#aeb9be" font-family="system-ui,sans-serif" font-size="17">The candidate does not make one blanket complexity claim about data ordering.</text>
+
+  <text x="88" y="166" fill="#8fa0a7" font-family="system-ui,sans-serif" font-size="14" letter-spacing="1.4">RESTRICTED ACTION</text>
+  <rect x="72" y="188" width="1056" height="135" rx="18" fill="#13242a" stroke="#22d3ee" stroke-width="1.5"/>
+  <g transform="translate(106 224)">
+    <ellipse cx="42" cy="32" rx="34" ry="28" fill="none" stroke="#c084fc" stroke-width="2"/><circle cx="42" cy="32" r="7" fill="#c084fc"/>
+    <ellipse cx="126" cy="32" rx="34" ry="28" fill="none" stroke="#c084fc" stroke-width="2"/><circle cx="126" cy="32" r="7" fill="#c084fc"/>
+    <ellipse cx="210" cy="32" rx="34" ry="28" fill="none" stroke="#c084fc" stroke-width="2"/><circle cx="210" cy="32" r="7" fill="#c084fc"/>
+  </g>
+  <text x="390" y="232" fill="#22d3ee" font-family="system-ui,sans-serif" font-size="14" letter-spacing="1.3">RR-SKELETON ORIENTATION</text>
+  <text x="390" y="266" fill="#f7f7f5" font-family="Georgia,serif" font-size="25">Exact conditional certificate</text>
+  <text x="390" y="294" fill="#aeb9be" font-family="system-ui,sans-serif" font-size="16">Resolve at most floor(n/2) fair bits · expected value no greater than the same RR law</text>
+  <rect x="932" y="223" width="150" height="60" rx="30" fill="#17363d" stroke="#22d3ee"/>
+  <text x="1007" y="260" text-anchor="middle" fill="#22d3ee" font-family="system-ui,sans-serif" font-size="16">polynomial local rule</text>
+
+  <text x="88" y="380" fill="#8fa0a7" font-family="system-ui,sans-serif" font-size="14" letter-spacing="1.4">GLOBAL ACTION · ALL PERMUTATIONS</text>
+  <line x1="108" y1="600" x2="1090" y2="600" stroke="url(#axis)" stroke-width="7"/>
+  <path d="M1090 600l-18-10v20z" fill="#ef4444"/>
+  <text x="104" y="636" fill="#22d3ee" font-family="ui-monospace,monospace" font-size="16">eta ≤ 2 - c</text>
+  <text x="1038" y="636" fill="#ef4444" font-family="ui-monospace,monospace" font-size="16">eta → 2</text>
+
+  <rect x="88" y="418" width="450" height="142" rx="18" fill="#18282d" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="118" y="454" fill="#f59e0b" font-family="system-ui,sans-serif" font-size="14" letter-spacing="1.3">FIXED STABILITY MARGIN</text>
+  <text x="118" y="492" fill="#f7f7f5" font-family="Georgia,serif" font-size="24">Ordered-suffix enumeration</text>
+  <text x="118" y="521" fill="#aeb9be" font-family="system-ui,sans-serif" font-size="16">normalized additive endpoint and loss bounds</text>
+  <text x="118" y="545" fill="#8fa0a7" font-family="system-ui,sans-serif" font-size="14">not a multiplicative PTAS or FPTAS</text>
+
+  <path d="M552 489H638" stroke="#91a1a8" stroke-width="2" stroke-dasharray="7 7" marker-end="url(#arrow)"/>
+
+  <rect x="654" y="418" width="474" height="142" rx="18" fill="#2c2024" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="684" y="454" fill="#ef7777" font-family="system-ui,sans-serif" font-size="14" letter-spacing="1.3">INSTANCE-ENCODED NEAR-ENDPOINT STEP</text>
+  <text x="684" y="492" fill="#f7f7f5" font-family="Georgia,serif" font-size="24">SCFLO threshold is NP-complete</text>
+  <text x="684" y="521" fill="#aeb9be" font-family="system-ui,sans-serif" font-size="16">PARTITION reduction · deterministic fixed-factor barrier</text>
+  <text x="684" y="545" fill="#8fa0a7" font-family="system-ui,sans-serif" font-size="14">not strong, fixed-step, randomized, or average-case hardness</text>
+
+  <text x="60" y="670" fill="#819096" font-family="system-ui,sans-serif" font-size="15">SCFLO: Scalar Common-Hessian Final-Loss Ordering. The mathematical promises and encoding details are in Theorems 7–8.</text>
+</svg>

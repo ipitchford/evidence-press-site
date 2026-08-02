@@ -1,0 +1,96 @@
+{
+  "slug": "random-reshuffling-baseline-policy",
+  "title": "Random Reshuffling as a Baseline Policy: Exact Value Certificates and Common-Hessian Ordering Hardness",
+  "shortTitle": "Random reshuffling as a baseline policy",
+  "oneLine": "In an exact quadratic model of learning, some fair choices inside ordinary data shuffling admit a same-baseline value certificate; popular ordering proxies can fail without bound, while global threshold ordering is NP-complete when the stable step is instance-encoded and approaches 2.",
+  "abstract": "This anonymous, unrefereed candidate studies one-epoch data order in common-Hessian convex quadratics. It derives exact order-resolved terminal loss with a dense positive-semidefinite time kernel of rank at most the model dimension. A four-item rational family shows that global minimizers of either an ideal maximum-prefix criterion or a dynamics-weighted diagonal proxy can have an unbounded multiplicative terminal-loss ratio; the encoded theorem core is formalized in pinned Lean 4/mathlib. Decomposing a uniform random permutation into an unoriented skeleton and independent fair pair-orientation bits yields a restricted policy: exact conditional value resolves exposed bits with a pathwise decrement certificate and expected loss no greater than the same random-reshuffling law. For an instance-encoded stable step approaching 2, the candidate proves the scalar threshold problem NP-complete via PARTITION and, unless P=NP, excludes deterministic polynomial-time approximation within any fixed finite factor. It does not prove strong, fixed-step, randomized, or average-case hardness. A fixed stability margin instead admits normalized additive guarantees. A preregistered 32-instance matrix-free pilot was negative/mixed: every safety control passed and no false certified sign occurred on the frozen grid, but no eligible degree passed every feasibility stratum. No neural-network, model-scale, wall-clock, or generalization improvement is established.",
+  "datePublished": "2026-08-02",
+  "version": "1.0.0-candidate",
+  "doi": "10.5281/zenodo.21757895",
+  "conceptDoi": "10.5281/zenodo.21757894",
+  "zenodoUrl": "https://zenodo.org/records/21757895",
+  "pdfUrl": "https://github.com/ipitchford/random-reshuffling-baseline-policy/releases/download/v1.0.0-candidate/random-reshuffling-baseline-policy-v1.0.0-candidate.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/random-reshuffling-baseline-policy/main/paper/paper.pdf",
+  "repoUrl": "https://github.com/ipitchford/random-reshuffling-baseline-policy",
+  "releaseUrl": "https://github.com/ipitchford/random-reshuffling-baseline-policy/releases/tag/v1.0.0-candidate",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": ["OpenAI and Anthropic research systems"],
+    "humanRole": "Research direction and publication authorization; the scholarly creator is cited as Anonymous.",
+    "disclosure": "Generative systems assisted hypothesis generation, mathematical drafting, code generation, adversarial checking, source triage, editing, and release preparation. They are not authors and their agreement is not independent verification."
+  },
+  "problem": {
+    "name": "Certified data-order control relative to random reshuffling",
+    "url": "https://proceedings.mlr.press/v23/recht12.html"
+  },
+  "keywords": [
+    "random reshuffling",
+    "stochastic gradient descent",
+    "data ordering",
+    "conditional expectation",
+    "common-Hessian quadratics",
+    "permutation optimization",
+    "value-aware ordering",
+    "computational complexity",
+    "NP-completeness",
+    "Lean 4",
+    "formal verification",
+    "reproducible research",
+    "machine learning theory",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "G1: Exact common-Hessian terminal loss factors through a dense positive-semidefinite time kernel whose rank is at most the model dimension.",
+    "S1: In an exact four-item rational family, every global minimizer of either an ideal maximum-prefix criterion or a dynamics-weighted diagonal proxy has an unbounded multiplicative terminal-loss ratio; the encoded theorem core is formalized in pinned Lean 4/mathlib.",
+    "P1-P2: A uniform random permutation decomposes into an unoriented skeleton and independent fair orientation bits. Resolving exposed bits by exact conditional value gives realized decrement terms and a conditional identity whose expected one-epoch loss is no greater than the same RR law under the stated predictable-exposure coupling.",
+    "C1: With an instance-encoded stable step approaching 2, Scalar Common-Hessian Final-Loss Ordering is NP-complete via PARTITION and has no deterministic polynomial-time fixed-factor approximation unless P=NP. Strong, fixed-step, randomized, and average-case hardness are not established.",
+    "C2: At a fixed margin from the stability endpoint, ordered-suffix enumeration gives normalized additive endpoint and loss guarantees plus an optimum interval; this is not a multiplicative PTAS or FPTAS.",
+    "E2: The preregistered 32-instance exact-arithmetic matrix-free pilot passed all safety controls and produced no false certified sign on its frozen grid, but failed its overall feasibility gate and selected no approximation degree."
+  ],
+  "evidence": "A 55-page anonymous candidate paper; canonical Markdown, TeX, and bibliography; exact rational Python verifiers and mutation controls; 91 tests under ordinary and optimized Python; a pinned Lean 4.32.1/mathlib formalization of the encoded Theorem 2 core with 15 manuscript anchors and no project-local proof placeholders; a preregistered 32-instance matrix-free pilot; manifests, receipts, deterministic tagged-tree archive tooling, release replay, and a detached publication certificate. These are producer-side checks, not independent reproduction.",
+  "statusDetail": "Anonymous, unrefereed public candidate. The internal Stage 3-prime editorial outcome is Major Revision. Only the declared encoded core of Theorem 2 is formalized in Lean; the rest of the paper is conventionally proved and locally checked. Three provenance-separated external work packages remain open, covering the RR/value identity, policy and Bellman/full-conditional-expectation reconstruction, and approximation complexity. Independent reproduction, external specialist review, human peer review, whole-paper formal verification, novelty or priority certification, and evidence of neural-network or model-scale gain are absent. A DOI, release certificate, passing replay, or agreement among producer-workflow models does not establish mathematical truth or acceptance.",
+  "openProblems": [
+    "Prove a perturbation theorem for heterogeneous or drifting component Hessians with an explicit margin that certifies when a common-Hessian orientation decision remains valid.",
+    "Replace the conservative binomial-action bounds with low-rank, diagonal, Krylov, sketching, or probabilistic error controls that maximize certified sign coverage while charging preprocessing, memory, communication, and Hessian-vector products.",
+    "Run a preregistered transfer ladder from expanded synthetic generators to frozen-backbone or LoRA workloads and then small nonlinear networks, comparing RR, established balancing baselines, exact LAPO, and certified approximations on net time or energy to a fixed target.",
+    "Close the exact complexity gap between near-endpoint NP-completeness and fixed-margin normalized additive tractability: determine fixed-step complexity, strong hardness, the nonoscillatory range, and structured or pseudo-polynomial cases.",
+    "Characterize joint matching and decision-order selection: test approximate submodularity, exchange properties, greedy guarantees, and hardness on small exact instances.",
+    "Extend the finite and discounted value theorems to decaying steps, variance reduction, interpolation, or an average-cost objective with the required uniform-integrability or transversality conditions.",
+    "Independently reconstruct the paper's central proofs and executable results without using the production verifiers, and obtain specialist audits of the probability/value identities and complexity reduction."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Recht, B., & Ré, C. (2012). Toward a Noncommutative Arithmetic-Geometric Mean Inequality: Conjectures, Case-studies, and Consequences. COLT 2012.",
+      "url": "https://proceedings.mlr.press/v23/recht12.html"
+    },
+    {
+      "citation": "Lai, Z., & Lim, L.-H. (2020). Recht-Re Noncommutative Arithmetic-Geometric Mean Conjecture is False. ICML 2020.",
+      "url": "https://proceedings.mlr.press/v119/lai20a.html"
+    },
+    {
+      "citation": "De Sa, C. M. (2020). Random Reshuffling is Not Always Better. NeurIPS 2020.",
+      "url": "https://proceedings.neurips.cc/paper/2020/hash/42299f06ee419aa5d9d07798b56779e2-Abstract.html"
+    },
+    {
+      "citation": "Lu, Y., Guo, W., & De Sa, C. M. (2022). GraB: Finding Provably Better Data Permutations than Random Reshuffling. NeurIPS 2022.",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/3acb49252187efa352a1ae0e4b066ced-Abstract-Conference.html"
+    },
+    {
+      "citation": "Cooper, A. F., et al. (2023). Coordinating Distributed Example Orders for Provably Accelerated Training. NeurIPS 2023.",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/af9ac087ed9123957bb3a45dca56b9d4-Abstract-Conference.html"
+    },
+    {
+      "citation": "Kubo, S., Makino, K., & Sakamoto, S. (2024). Composition Orderings for Linear Functions and Matrix Multiplication Orderings. ISAAC 2024.",
+      "url": "https://doi.org/10.4230/LIPIcs.ISAAC.2024.44"
+    },
+    {
+      "citation": "Pearlmutter, B. A. (1994). Fast Exact Multiplication by the Hessian. Neural Computation, 6(1), 147-160.",
+      "url": "https://doi.org/10.1162/neco.1994.6.1.147"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Random Reshuffling as a Baseline Policy: Exact Value Certificates and Common-Hessian Ordering Hardness (Version 1.0.0-candidate) [Unrefereed candidate preprint and replication package]. Zenodo. https://doi.org/10.5281/zenodo.21757895"
+}
