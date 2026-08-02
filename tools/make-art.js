@@ -232,7 +232,7 @@ art['random-reshuffling-baseline-policy'] = (a, b) => {
     s += `<rect x="${x - 12}" y="${y - 12}" width="24" height="24" rx="4" fill="#151a1e" stroke="${a}" stroke-width="3" transform="rotate(45 ${x} ${y})"/>`;
   }
   s += `<path d="M 640 64 H 1120" stroke="#f59e0b" stroke-width="2" opacity=".65"/>`;
-  s += `<text x="1112" y="53" text-anchor="end" font-family="ui-monospace,monospace" font-size="16" fill="#f59e0b" opacity=".9">same RR baseline</text>`;
+  s += `<text class="art-caption" x="1112" y="53" text-anchor="end" font-family="ui-monospace,monospace" font-size="16" fill="#f59e0b" opacity=".9">same RR baseline</text>`;
   return s;
 };
 
