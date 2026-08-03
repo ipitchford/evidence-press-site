@@ -22,7 +22,7 @@ Requires only Node ≥ 16. No packages, no framework. KaTeX is vendored in `asse
    - `node tools/make-og.js` — regenerate Open Graph card PNGs (needs Playwright + Chromium).
    - `OPENAI_API_KEY=... node tools/make-audio.js` — generate the narrated audio briefing (skips existing files; `--force` regenerates).
 5. Run `node build.js` and check `dist/` locally (`python3 -m http.server -d dist 8000`).
-6. Commit and push — Cloudflare Pages rebuilds and deploys automatically (if connected to Git), or run `npx wrangler pages deploy dist --project-name evidence-press`.
+6. Use the guarded deployment command below. It refuses a stale or incomplete checkout before Cloudflare is touched and verifies the live site afterwards.
 
 The index page, feeds, sitemap, `llms.txt`, and `api/papers.json` all regenerate automatically from the `papers/` folder — nothing else to update.
 
@@ -83,6 +83,31 @@ endpoints have been observed to under-report what is actually live.
 
 If the gate refuses, the build is wrong, not the ledger. Merge the missing release in and
 rebuild. Only pass `--record` after a deploy has succeeded.
+
+## Guarded production deployment
+
+Do not deploy `dist/` directly. Multiple publication worktrees exist, so URL
+preservation alone is not enough: a stale worktree can keep a page alive while
+silently removing its video, audio, structured record, or layout. The guarded
+command compares the candidate build with the live release records and HTML
+before upload, then repeats the check after deployment.
+
+```
+node tools/deploy-safe.js
+```
+
+It runs the build, Observatory media/hash validation, the published-URL gate,
+the live publication-integrity gate, authenticated Cloudflare deployment to
+the `main` production branch, and a post-deploy live readback. If it refuses,
+reconcile the source worktree; do not weaken the ledger or deploy from a
+different checkout. To inspect a candidate without deploying, run:
+
+```
+node build.js
+node tools/check-observatory-media.js
+node tools/check-published.js
+node tools/check-publication-integrity.js --live
+```
 
 ## Configuration
 

@@ -654,13 +654,17 @@ ${foot}`;
 function simplePage(rel, title, description, mdFile, type, opts = {}) {
   const url = `${BASE}/${rel}`;
   const pageId = `${url}#page`;
+  const associatedMedia = [
+    ...(opts.audio ? [{ '@id': `${url}#audio` }] : []),
+    ...(opts.video ? [{ '@id': `${url}#video` }] : [])
+  ];
   const pageNode = {
     '@type': type, '@id': pageId, url, name: title, description,
     ...(opts.og ? { image: BASE + opts.og, thumbnailUrl: BASE + opts.og } : {}),
     ...(opts.datePublished ? { datePublished: opts.datePublished, dateModified: opts.dateModified || opts.datePublished } : {}),
     ...(opts.sameAs && opts.sameAs.length ? { sameAs: opts.sameAs } : {}),
     ...(opts.identifier ? { identifier: opts.identifier } : {}),
-    ...(opts.audio ? { associatedMedia: { '@id': `${url}#audio` } } : {}),
+    ...(associatedMedia.length ? { associatedMedia } : {}),
     inLanguage: CONFIG.language,
     license: 'https://creativecommons.org/publicdomain/zero/1.0/',
     isPartOf: { '@id': `${BASE}/#website` }
@@ -680,8 +684,19 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     isPartOf: { '@id': pageId },
     license: 'https://creativecommons.org/publicdomain/zero/1.0/'
   }] : [];
+  const videoNode = opts.video ? [{
+    '@type': 'VideoObject', '@id': `${url}#video`,
+    name: opts.video.name,
+    description: opts.video.description,
+    url: opts.video.url,
+    embedUrl: opts.video.embedUrl,
+    thumbnailUrl: opts.video.thumbnailUrl,
+    inLanguage: CONFIG.language,
+    publisher: { '@id': `${BASE}/#org` },
+    isPartOf: { '@id': pageId }
+  }] : [];
   const jsonld = { '@context': 'https://schema.org', '@graph': [
-    websiteNode(), pageNode, ...(opts.extraNodes || []), ...audioNode
+    websiteNode(), pageNode, ...(opts.extraNodes || []), ...audioNode, ...videoNode
   ] };
   const social = [
     ['og:type', opts.datePublished ? 'article' : 'website'],
@@ -702,12 +717,13 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
       `<link rel="item" type="audio/mpeg" href="${BASE + opts.audio.url}">`,
       `<link rel="alternate" type="text/plain" href="${BASE + opts.audio.transcriptUrl}" title="Audio transcript">`
     ] : []),
+    ...(opts.video ? [`<link rel="item" type="text/html" href="${escAttr(opts.video.url)}" title="Video overview">`] : []),
     ...(opts.citeAs ? [`<link rel="cite-as" href="${escAttr(opts.citeAs)}">`] : []),
     `<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">`
   ].join('\n') + '\n';
   const audioHtml = opts.audio ? `<section class="standalone-audio" aria-labelledby="standalone-audio-title">
     <div class="standalone-audio-copy">
-      <strong id="standalone-audio-title">Two-minute audio overview</strong>
+      <strong id="standalone-audio-title">Audio overview</strong>
       <span>${esc(opts.audio.durationLabel)} · AI-generated voice · transcript is the source text</span>
     </div>
     <audio controls preload="metadata" src="${escAttr(opts.audio.url)}">
@@ -715,6 +731,21 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     </audio>
     <p class="audio-links"><a href="${escAttr(opts.audio.url)}" download>Download MP3</a> · <a href="${escAttr(opts.audio.transcriptUrl)}">Plain-text transcript</a></p>
     <details class="audio-transcript"><summary>Read the transcript on this page</summary><div>${markdown(opts.audio.transcript)}</div></details>
+  </section>` : '';
+  const briefingsHtml = opts.releaseLayout && (opts.audio || opts.video) ? `<div class="briefings">
+    ${opts.audio ? `<div class="listen">
+      <button class="play" aria-label="Play audio briefing" data-audio="standalone-briefing-audio">▶</button>
+      <div class="listen-meta"><strong>Listen to this briefing</strong><span>${esc(opts.audio.durationLabel)} · AI-generated voice · <a href="${escAttr(opts.audio.url)}" download>download</a> · <a href="${escAttr(opts.audio.transcriptUrl)}">transcript</a></span>
+      <audio id="standalone-briefing-audio" preload="metadata" src="${escAttr(opts.audio.url)}"></audio></div>
+    </div>` : ''}
+    ${opts.video ? `<div class="listen watch">
+      <a class="play" href="${escAttr(opts.video.url)}" rel="noopener" aria-label="Watch the video briefing">▶</a>
+      <div class="listen-meta"><strong>Watch this briefing</strong><span>Video overview · YouTube · <a href="${escAttr(opts.video.url)}" rel="noopener">watch</a> · <a href="#media">play on this page</a></span></div>
+    </div>` : ''}
+  </div>` : '';
+  const videoHtml = opts.video ? `<section class="media-section"><h2 id="media">Media</h2>
+    <figure class="media"><div class="video-embed"><iframe src="${escAttr(opts.video.embedUrl)}" title="${escAttr(opts.video.name)}" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    <figcaption>${esc(opts.video.name)} · <a href="${escAttr(opts.video.url)}" rel="noopener">Watch on YouTube</a></figcaption></figure>
   </section>` : '';
   const resourcesHtml = opts.resources && opts.resources.length ? `<section class="page-resources" aria-labelledby="page-resources-title">
     <h2 id="page-resources-title">Use the public materials</h2>
@@ -724,28 +755,51 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
       ${resource.detail ? `<small>${esc(resource.detail)}</small>` : ''}
     </div>`).join('')}</div>
   </section>` : '';
+  const resourcesAside = opts.resources && opts.resources.length ? `<aside class="factbox standalone-factbox" aria-label="Key facts and public materials">
+    <h2>Use the public materials</h2>
+    <dl>${opts.resources.map(resource => `<dt>${esc(resource.label)}</dt><dd>${resource.url ? `<a href="${escAttr(resource.url)}" rel="noopener">${esc(resource.linkText || resource.url)}</a>` : '<span class="pending-link">Pending final publication metadata</span>'}${resource.detail ? `<small class="fact-detail">${esc(resource.detail)}</small>` : ''}</dd>`).join('')}
+      <dt>Licence</dt><dd><a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a></dd>
+      ${opts.sidebarStatus ? `<dt>Status</dt><dd>${esc(opts.sidebarStatus)}</dd>` : ''}
+    </dl>
+  </aside>` : '';
+  const bodyHtml = `${markdown(fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8'))}${videoHtml}`;
+  const coverHtml = opts.art ? `<div class="cover"><img src="${opts.art}" alt="" loading="eager"></div>` : '';
+  const headingHtml = `${opts.kicker ? `<p class="kicker">${esc(opts.kicker)}</p>` : ''}
+    <h1>${esc(title)}</h1>
+    ${opts.standfirst ? `<p class="standfirst">${inline(opts.standfirst)}</p>` : ''}`;
+  const pageHtml = opts.releaseLayout ? `<article class="release standalone-release"><div class="wrap">
+    ${coverHtml}
+    ${headingHtml}
+    ${briefingsHtml}
+    <div class="release-grid"><div class="body">${bodyHtml}</div>${resourcesAside}</div>
+  </div></article>` : `<article class="release"><div class="wrap"><div class="prose">
+    ${coverHtml}
+    ${headingHtml}
+    ${audioHtml}
+    ${resourcesHtml}
+    <div class="body">${bodyHtml}</div>
+  </div></div></article>`;
+  const audioController = opts.releaseLayout && opts.audio ? `<script>
+(function(){var b=document.querySelector('.play[data-audio]');if(!b)return;var a=document.getElementById(b.dataset.audio);
+b.addEventListener('click',function(){if(a.paused){a.play();b.textContent='❚❚';}else{a.pause();b.textContent='▶';}});
+a.addEventListener('ended',function(){b.textContent='▶';});})();
+</script>` : '';
   const html = `${head({ title: `${title} · ${CONFIG.siteName}`, description, canonical: url, jsonld, metaExtra: social, extraLinks })}
-<article class="release"><div class="wrap"><div class="prose">
-  ${opts.art ? `<div class="cover"><img src="${opts.art}" alt="" loading="eager"></div>` : ''}
-  ${opts.kicker ? `<p class="kicker">${esc(opts.kicker)}</p>` : ''}
-  <h1>${esc(title)}</h1>
-  ${opts.standfirst ? `<p class="standfirst">${inline(opts.standfirst)}</p>` : ''}
-  ${audioHtml}
-  ${resourcesHtml}
-  <div class="body">
-${markdown(fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8'))}
-  </div>
-</div></div></article>
+${pageHtml}
+${audioController}
 ${foot}`;
   write(rel + 'index.html', html);
   const resourceMarkdown = opts.resources && opts.resources.length
     ? `## Use the public materials\n\n${opts.resources.map(resource => `- ${resource.label}: ${resource.url || 'pending final publication metadata'}${resource.detail ? ` — ${resource.detail}` : ''}`).join('\n')}\n\n`
     : '';
   const audioMarkdown = opts.audio
-    ? `## Two-minute audio overview\n\n- MP3: ${BASE + opts.audio.url}\n- Plain-text transcript: ${BASE + opts.audio.transcriptUrl}\n- Duration: ${opts.audio.durationLabel}\n- Voice: AI-generated; the transcript is the source text\n\n`
+    ? `## Audio overview\n\n- MP3: ${BASE + opts.audio.url}\n- Plain-text transcript: ${BASE + opts.audio.transcriptUrl}\n- Duration: ${opts.audio.durationLabel}\n- Voice: AI-generated; the transcript is the source text\n\n`
+    : '';
+  const videoMarkdown = opts.video
+    ? `## Video overview\n\n- YouTube: ${opts.video.url}\n- Embedded player: ${url}#media\n\n`
     : '';
   write(rel + 'index.md', `---\ntitle: "${title.replace(/"/g, '\\"')}"\nurl: ${url}\nrepository: ${opts.repository || ''}\nrelease: ${opts.release || ''}\ndoi: ${opts.doi || ''}\nlicense: CC0-1.0\nstatus: ${opts.status || ''}\n---\n\n# ${title}\n\n${
-    opts.standfirst ? opts.standfirst + '\n\n' : ''}${audioMarkdown}${resourceMarkdown}${fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8')}`);
+    opts.standfirst ? opts.standfirst + '\n\n' : ''}${audioMarkdown}${videoMarkdown}${resourceMarkdown}${fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8')}`);
   if (opts.machineRecord) write(rel + 'index.json', JSON.stringify(opts.machineRecord, null, 2) + '\n');
 }
 
@@ -824,7 +878,7 @@ function llms() {
     '',
     '## About', '',
     `- [About](${BASE}/about/): what these releases are, the verification ladder, and how to independently verify or refute one`,
-    `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
+    `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; video: ${OBSERVATORY.video.url}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
     `- [For AI agents](${BASE}/ai/): metadata conventions and suggested uses (verification, formalisation, follow-up research)`
   ];
   write('llms.txt', lines.join('\n') + '\n');
@@ -919,6 +973,11 @@ function api() {
 }
 
 const OBSERVATORY_URL = `${BASE}/observatory/`;
+const OBSERVATORY_VIDEO_ID = youtubeId(OBSERVATORY.video && OBSERVATORY.video.url);
+if (!OBSERVATORY_VIDEO_ID) throw new Error('pages/observatory.json: video.url is not a supported YouTube URL');
+if (OBSERVATORY.video.embedUrl !== `https://www.youtube-nocookie.com/embed/${OBSERVATORY_VIDEO_ID}?rel=0`) {
+  throw new Error('pages/observatory.json: video.embedUrl must use the privacy-enhanced YouTube embed URL');
+}
 const OBSERVATORY_RESOURCES = [
   {
     label: 'Repository', url: OBSERVATORY_PUBLIC.repositoryUrl,
@@ -972,6 +1031,16 @@ const OBSERVATORY_RECORD = {
     transcriptSha256: OBSERVATORY.audio.transcriptSha256,
     voiceDisclosure: OBSERVATORY.audio.voiceDisclosure
   },
+  video: {
+    id: OBSERVATORY_VIDEO_ID,
+    url: OBSERVATORY.video.url,
+    embedUrl: OBSERVATORY.video.embedUrl,
+    thumbnailUrl: OBSERVATORY.video.thumbnailUrl,
+    name: OBSERVATORY.video.name,
+    description: OBSERVATORY.video.description,
+    publisher: OBSERVATORY.video.publisher,
+    provider: OBSERVATORY.video.provider
+  },
   artwork: {
     pipelineUrl: `${BASE}/assets/art/observatory-pipeline.png`,
     pipelineSha256: OBSERVATORY_PIPELINE_PROVENANCE.sha256,
@@ -1014,6 +1083,7 @@ papers.forEach(paperPage);
 indexPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
 simplePage('observatory/', 'Policy Identification Observatory', 'A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.', 'observatory.md', 'WebPage', {
+  releaseLayout: true,
   art: '/assets/art/observatory.svg',
   og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'observatory.png')) ? '/assets/og/observatory.png' : null,
   kicker: 'Research programme · foundational build complete · 2 August 2026',
@@ -1027,14 +1097,16 @@ simplePage('observatory/', 'Policy Identification Observatory', 'A standing agen
   release: OBSERVATORY_PUBLIC.releaseUrl,
   doi: OBSERVATORY_PUBLIC.doi,
   status: OBSERVATORY.status,
+  sidebarStatus: 'Candidate research infrastructure; founding exemplar rejected for insufficient rigour.',
   resources: OBSERVATORY_RESOURCES,
   machineRecord: OBSERVATORY_RECORD,
   audio: {
-    name: 'Policy Identification Observatory — two-minute audio overview',
+    name: 'Policy Identification Observatory — audio overview',
     description: 'An accessible narrated introduction to the Observatory, its materials, trust boundary and safe reuse by people and research agents.',
     ...OBSERVATORY.audio,
     transcript: OBSERVATORY_TRANSCRIPT
   },
+  video: OBSERVATORY.video,
   extraNodes: [{
     '@type': 'ResearchProject', '@id': `${BASE}/observatory/#programme`,
     name: 'Policy Identification Observatory',
@@ -1046,7 +1118,7 @@ simplePage('observatory/', 'Policy Identification Observatory', 'A standing agen
     sameAs: [OBSERVATORY_PUBLIC.repositoryUrl, OBSERVATORY_PUBLIC.releaseUrl, OBSERVATORY_PUBLIC.doiUrl, OBSERVATORY_PUBLIC.zenodoUrl].filter(Boolean),
     parentOrganization: { '@id': `${BASE}/#org` },
     knowsAbout: ['causal identification', 'partial identification', 'measurement and accounting audit', 'robust decision-making under model ambiguity', 'adversarial verification', 'agent-native research infrastructure'],
-    subjectOf: [{ '@id': `${BASE}/observatory/#page` }, { '@id': `${BASE}/observatory/#audio` }]
+    subjectOf: [{ '@id': `${BASE}/observatory/#page` }, { '@id': `${BASE}/observatory/#audio` }, { '@id': `${BASE}/observatory/#video` }]
   },
   ...(OBSERVATORY_PUBLIC.repositoryUrl ? [{
     '@type': 'SoftwareSourceCode', '@id': `${BASE}/observatory/#software`,

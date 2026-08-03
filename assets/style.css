@@ -186,6 +186,14 @@ a.play { display: flex; align-items: center; justify-content: center; text-decor
 .page-resource strong { color: var(--muted); font-size: .74rem; letter-spacing: .05em; text-transform: uppercase; }
 .page-resource a, .pending-link { overflow-wrap: anywhere; font-size: .92rem; }
 .page-resource small { margin-top: .12rem; color: var(--muted); line-height: 1.35; }
+.standalone-factbox h2 {
+  margin: 0 0 .9rem; padding: 0 0 .45rem; border-bottom: 1px solid var(--line);
+  font-family: var(--serif); font-size: 1.12rem;
+}
+.standalone-factbox .fact-detail {
+  display: block; margin-top: .18rem; color: var(--muted); font-size: .76rem; line-height: 1.4;
+}
+.standalone-release .media-section { margin-top: 2.2rem; }
 @media (min-width: 680px) { .page-resource-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .site-head nav { gap: .72rem; font-size: .8rem; } }
 
