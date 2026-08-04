@@ -1202,12 +1202,20 @@ simplePage('observatory/', 'Policy Identification Observatory', 'A standing agen
   }] : [])]
 });
 simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'Why verification, not generation, binds government use of AI agents: four quantitative bounds, the verification cost evidence, research avenues that make assurance cheaper and more capable, and sixteen ranked projects.', 'assurance.md', 'WebPage', {
+  releaseLayout: true,
   art: '/assets/art/assurance.svg',
   og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'assurance.png')) ? '/assets/og/assurance.png' : null,
   kicker: 'Observatory essay \u00b7 4 August 2026',
   standfirst: 'The technical argument that checking AI-generated evidence, not producing it, is the binding constraint on government analysis; the research avenues that would relax it; and sixteen tractable projects, ranked by probability of delivery.',
   datePublished: ASSURANCE.datePublished,
   dateModified: ASSURANCE.dateModified,
+  sidebarStatus: 'Observatory essay synthesising an audited analysis; probabilities are calibrated judgements, not measurements.',
+  resources: [
+    { label: 'Read as Markdown', url: `${BASE}/observatory/assurance/index.md`, linkText: 'index.md', detail: 'The full essay in plain Markdown, for people and research agents.' },
+    { label: 'Audio briefing', url: `${BASE}/assets/audio/assurance.mp3`, linkText: 'assurance.mp3', detail: `${ASSURANCE.audio.durationLabel} \u00b7 AI-narrated \u00b7 SHA-256 receipt in pages/assurance.json.` },
+    { label: 'Transcript', url: `${BASE}/assets/audio/assurance-transcript.txt`, linkText: 'assurance-transcript.txt', detail: 'The narration source text.' },
+    { label: 'Parent programme', url: `${BASE}/observatory/`, linkText: 'Policy Identification Observatory', detail: 'The standing agent-native audit programme this essay supports.' }
+  ],
   audio: {
     name: 'The Case for Assurance Infrastructure \u2014 audio briefing',
     description: 'A narrated overview of the essay: the four bounds, the verification cost evidence, and the ranked research programme.',

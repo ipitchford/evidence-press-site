@@ -133,26 +133,28 @@ The market lever is procurement, which moves in months where legislation moves i
 
 The avenues above decompose into specific projects, and the decomposition was done under discipline: each project below is sized for a small team, carries a pre-registrable resolution criterion that can fail, and was scored independently three times (by a calibration-focused forecaster profile, a sceptical methodologist profile, and a UK delivery-realist profile), with the median taken. **P is the probability that the project delivers its stated resolution criterion within its horizon, given a competent small team with the stated resources.** It is not a measure of importance. Payoff, scored separately, is how much the result would advance assurance infrastructure conditional on delivery. The two orderings differ, and one difference is worth flagging now: the projects most certain to deliver are the ones that need nothing from government, while the project that most needs a government host sits last. Costs are indicative, at 2026 loaded rates.
 
-| # | Project | P | Payoff | Horizon | Indicative cost |
-|---|---|---|---|---|---|
-| ![Gold medal](/assets/art/medal-gold.svg) 1 | Curated-corpus attack on sampled assurance, plus the commitment countermeasure | 0.85 | 0.50 | 9 mo | ~£80k |
-| ![Silver medal](/assets/art/medal-silver.svg) 2 | Replay feasibility audit of published UK AI-assisted analysis | 0.80 | 0.50 | 8 mo | ~£70k |
-| ![Bronze medal](/assets/art/medal-bronze.svg) 3 | Metamorphic relation library and mutation benchmark for government analytical pipelines | 0.62 | 0.65 | 12 mo | ~£110k |
-| 4 | Prediction-powered consultation statistics | 0.55 | 0.75 | 9 mo | ~£120k |
-| 5 | The assurance coverage census of real UK policy claims | 0.48 | 0.82 | 12 mo | ~£135k |
-| 6 | PolicyCAPA: measuring cross-model error correlation on policy tasks | 0.45 | 0.85 | 12 mo | ~£350k |
-| 7 | Risk-limiting audits for evidence products | 0.42 | 0.65 | 12 mo | ~£250k |
-| 8 | Certified auto-accept: conformal triage and its cost curve | 0.40 | 0.80 | 12 mo | ~£200k |
-| 9 | Contamination forensics and fragility bounds for published consultations | 0.40 | 0.55 | 15 mo | ~£220k |
-| 10 | No-cooperation checker for inbound evidence, scored on theme-table distortion | 0.40 | 0.70 | 15 mo | ~£225k |
-| 11 | Exhaustive rule-mechanics verification of published tax-benefit claims | 0.38 | 0.60 | 18 mo | ~£150k |
-| 12 | Replay conformance classes for agentic pipelines, with a divergence dataset | 0.32 | 0.60 | 12 mo | ~£165k |
-| 13 | Citation receipts with inclusion proofs for UK sources | 0.28 | 0.80 | 15 mo | ~£275k |
-| 14 | Coverage estimation and stopping rules for census workloads | 0.25 | 0.65 | 12 mo | ~£145k |
-| 15 | Identification-gate certificates with independent checkers | 0.18 | 0.55 | 18 mo | ~£165k |
-| 16 | Blind proficiency testing of evidence assurers | 0.15 | 0.80 | 18 mo | ~£300k |
+Every project medals, because this is a portfolio rather than a cull: ![Gold medal](/assets/art/medal-gold.svg) gold for the near-certainties, ![Silver medal](/assets/art/medal-silver.svg) silver for the measurement core, ![Bronze medal](/assets/art/medal-bronze.svg) bronze for the two-in-five tier, and ![Teal medal](/assets/art/medal-teal.svg) teal — the house colour — for the hard tail, where much of the value sits.
 
-![Scatter plot of the sixteen projects: probability of delivery on the horizontal axis, payoff conditional on delivery on the vertical. Projects 1 and 2 carry gold and silver medals at probabilities 0.85 and 0.80 with payoff 0.50; project 3 carries bronze at 0.62. The highest payoffs, projects 6 and 5, sit mid-table near probability 0.45. Project 16 sits far left at probability 0.15 but payoff 0.80, annotated as needing a government host. A dashed amber line marks the coin-flip probability of one half.](/assets/art/assurance-portfolio.svg "Sixteen projects, two orderings. The medals reward deliverability; the payoff axis shows why the hard tail is still worth funding, and who would have to fund it.")
+| # | Medal | Project | P | Payoff | Horizon | Indicative cost |
+|---|---|---|---|---|---|---|
+| 1 | ![Gold medal](/assets/art/medal-gold.svg) | Curated-corpus attack on sampled assurance, plus the commitment countermeasure | 0.85 | 0.50 | 9 mo | ~£80k |
+| 2 | ![Gold medal](/assets/art/medal-gold.svg) | Replay feasibility audit of published UK AI-assisted analysis | 0.80 | 0.50 | 8 mo | ~£70k |
+| 3 | ![Silver medal](/assets/art/medal-silver.svg) | Metamorphic relation library and mutation benchmark for government analytical pipelines | 0.62 | 0.65 | 12 mo | ~£110k |
+| 4 | ![Silver medal](/assets/art/medal-silver.svg) | Prediction-powered consultation statistics | 0.55 | 0.75 | 9 mo | ~£120k |
+| 5 | ![Silver medal](/assets/art/medal-silver.svg) | The assurance coverage census of real UK policy claims | 0.48 | 0.82 | 12 mo | ~£135k |
+| 6 | ![Silver medal](/assets/art/medal-silver.svg) | PolicyCAPA: measuring cross-model error correlation on policy tasks | 0.45 | 0.85 | 12 mo | ~£350k |
+| 7 | ![Bronze medal](/assets/art/medal-bronze.svg) | Risk-limiting audits for evidence products | 0.42 | 0.65 | 12 mo | ~£250k |
+| 8 | ![Bronze medal](/assets/art/medal-bronze.svg) | Certified auto-accept: conformal triage and its cost curve | 0.40 | 0.80 | 12 mo | ~£200k |
+| 9 | ![Bronze medal](/assets/art/medal-bronze.svg) | Contamination forensics and fragility bounds for published consultations | 0.40 | 0.55 | 15 mo | ~£220k |
+| 10 | ![Bronze medal](/assets/art/medal-bronze.svg) | No-cooperation checker for inbound evidence, scored on theme-table distortion | 0.40 | 0.70 | 15 mo | ~£225k |
+| 11 | ![Bronze medal](/assets/art/medal-bronze.svg) | Exhaustive rule-mechanics verification of published tax-benefit claims | 0.38 | 0.60 | 18 mo | ~£150k |
+| 12 | ![Teal medal](/assets/art/medal-teal.svg) | Replay conformance classes for agentic pipelines, with a divergence dataset | 0.32 | 0.60 | 12 mo | ~£165k |
+| 13 | ![Teal medal](/assets/art/medal-teal.svg) | Citation receipts with inclusion proofs for UK sources | 0.28 | 0.80 | 15 mo | ~£275k |
+| 14 | ![Teal medal](/assets/art/medal-teal.svg) | Coverage estimation and stopping rules for census workloads | 0.25 | 0.65 | 12 mo | ~£145k |
+| 15 | ![Teal medal](/assets/art/medal-teal.svg) | Identification-gate certificates with independent checkers | 0.18 | 0.55 | 18 mo | ~£165k |
+| 16 | ![Teal medal](/assets/art/medal-teal.svg) | Blind proficiency testing of evidence assurers | 0.15 | 0.80 | 18 mo | ~£300k |
+
+![Scatter plot of the sixteen projects: probability of delivery on the horizontal axis, payoff conditional on delivery on the vertical. Every point is drawn as a medal in its tier colour: gold for the two near-certainties on the right, silver for the measurement core in the middle, bronze for the two-in-five cluster, and teal for the hard tail on the left. The highest payoffs sit in the silver tier near probability 0.45. Project 16 sits far left at probability 0.15 but payoff 0.80, annotated as needing a government host. A dashed amber line marks the coin-flip probability of one half.](/assets/art/assurance-portfolio.svg "Sixteen projects, two orderings, four tiers of medal. Position rewards deliverability; the payoff axis shows why the teal tail is still worth funding, and who would have to fund it.")
 
 ### The near-certainties (P ≥ 0.8)
 
