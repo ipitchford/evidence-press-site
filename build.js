@@ -1209,7 +1209,7 @@ simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'W
   standfirst: 'The technical argument that checking AI-generated evidence, not producing it, is the binding constraint on government analysis; the research avenues that would relax it; and sixteen tractable projects, ranked by probability of delivery.',
   datePublished: ASSURANCE.datePublished,
   dateModified: ASSURANCE.dateModified,
-  sidebarStatus: 'Observatory essay synthesising an audited analysis; probabilities are calibrated judgements, not measurements.',
+  sidebarStatus: 'Observatory essay. Every derived number independently recomputed and the argument adversarially reviewed before publication; probabilities are calibrated judgements, not measurements.',
   resources: [
     { label: 'Read as Markdown', url: `${BASE}/observatory/assurance/index.md`, linkText: 'index.md', detail: 'The full essay in plain Markdown, for people and research agents.' },
     { label: 'Audio briefing', url: `${BASE}/assets/audio/assurance.mp3`, linkText: 'assurance.mp3', detail: `${ASSURANCE.audio.durationLabel} \u00b7 AI-narrated \u00b7 SHA-256 receipt in pages/assurance.json.` },
