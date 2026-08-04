@@ -54,10 +54,17 @@ function distContents() {
     ? fs.readdirSync(path.join(DIST, 'releases'))
       .filter(d => fs.existsSync(path.join(DIST, 'releases', d, 'index.html')))
     : [];
-  const pages = fs.readdirSync(DIST, { withFileTypes: true })
-    .filter(e => e.isDirectory() && e.name !== 'releases' && e.name !== 'assets' && e.name !== 'api')
-    .filter(e => fs.existsSync(path.join(DIST, e.name, 'index.html')))
-    .map(e => `/${e.name}/`);
+  const pages = [];
+  const walkPages = rel => {
+    for (const e of fs.readdirSync(path.join(DIST, rel), { withFileTypes: true })) {
+      if (!e.isDirectory()) continue;
+      if (rel === '' && (e.name === 'releases' || e.name === 'assets' || e.name === 'api')) continue;
+      const child = rel ? `${rel}/${e.name}` : e.name;
+      if (fs.existsSync(path.join(DIST, child, 'index.html'))) pages.push(`/${child}/`);
+      walkPages(child);
+    }
+  };
+  walkPages('');
   return { releases, pages };
 }
 
