@@ -1224,7 +1224,8 @@ simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'W
     description: 'A narrated overview of the essay: the four bounds, the verification cost evidence, and the ranked research programme.',
     ...ASSURANCE.audio,
     transcript: ASSURANCE_TRANSCRIPT
-  }
+  },
+  video: ASSURANCE.video
 });
 simplePage('ai/', 'For AI agents and automated research tools', 'Machine-readable endpoints, metadata conventions, and follow-up problem lists for research agents.', 'ai.md', 'WebPage');
 feeds();
