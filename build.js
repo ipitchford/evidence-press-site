@@ -6,12 +6,56 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const BASE = CONFIG.baseUrl.replace(/\/$/, '');
 const SCHEMA_VERSION = '1.2';
+const OBSERVATORY = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'observatory.json'), 'utf8'));
+const OBSERVATORY_BODY = fs.readFileSync(path.join(ROOT, 'pages', 'observatory.md'), 'utf8');
+const OBSERVATORY_PLACEHOLDER = /^__OBSERVATORY_[A-Z0-9_]+__$/;
+
+const sha256File = file => crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const assetPath = url => path.join(ROOT, String(url).replace(/^\/+/, ''));
+const finalValue = key => OBSERVATORY_PLACEHOLDER.test(String(OBSERVATORY[key] || '')) ? null : OBSERVATORY[key];
+const OBSERVATORY_PUBLIC = {
+  repositoryUrl: finalValue('repositoryUrl'),
+  releaseUrl: finalValue('releaseUrl'),
+  doi: finalValue('doi'),
+  doiUrl: finalValue('doiUrl'),
+  zenodoUrl: finalValue('zenodoUrl')
+};
+const OBSERVATORY_UNRESOLVED = Object.entries(OBSERVATORY)
+  .filter(([, value]) => OBSERVATORY_PLACEHOLDER.test(String(value || '')))
+  .map(([key]) => key);
+
+for (const [key, value] of Object.entries(OBSERVATORY_PUBLIC)) {
+  if (!value || key === 'doi') continue;
+  let parsed;
+  try { parsed = new URL(value); } catch { throw new Error(`pages/observatory.json: ${key} is not a URL`); }
+  if (parsed.protocol !== 'https:') throw new Error(`pages/observatory.json: ${key} must use https`);
+}
+if (OBSERVATORY_PUBLIC.doi && !/^10\.\d{4,9}\/.+/.test(OBSERVATORY_PUBLIC.doi)) {
+  throw new Error('pages/observatory.json: doi is not a DOI');
+}
+if (OBSERVATORY_PUBLIC.doi && OBSERVATORY_PUBLIC.doiUrl !== `https://doi.org/${OBSERVATORY_PUBLIC.doi}`) {
+  throw new Error('pages/observatory.json: doiUrl must be the canonical https://doi.org/ URL');
+}
+
+const OBSERVATORY_AUDIO_FILE = assetPath(OBSERVATORY.audio.url);
+const OBSERVATORY_TRANSCRIPT_FILE = assetPath(OBSERVATORY.audio.transcriptUrl);
+if (!fs.existsSync(OBSERVATORY_AUDIO_FILE)) throw new Error(`Missing Observatory audio: ${OBSERVATORY_AUDIO_FILE}`);
+if (!fs.existsSync(OBSERVATORY_TRANSCRIPT_FILE)) throw new Error(`Missing Observatory transcript: ${OBSERVATORY_TRANSCRIPT_FILE}`);
+const OBSERVATORY_AUDIO_BYTES = fs.statSync(OBSERVATORY_AUDIO_FILE).size;
+const OBSERVATORY_TRANSCRIPT = fs.readFileSync(OBSERVATORY_TRANSCRIPT_FILE, 'utf8').trim();
+if (OBSERVATORY_AUDIO_BYTES !== OBSERVATORY.audio.bytes) throw new Error('Observatory audio byte count does not match pages/observatory.json');
+if (sha256File(OBSERVATORY_AUDIO_FILE) !== OBSERVATORY.audio.sha256) throw new Error('Observatory audio SHA-256 does not match pages/observatory.json');
+if (sha256File(OBSERVATORY_TRANSCRIPT_FILE) !== OBSERVATORY.audio.transcriptSha256) throw new Error('Observatory transcript SHA-256 does not match pages/observatory.json');
+const OBSERVATORY_PIPELINE_FILE = path.join(ROOT, 'assets', 'art', 'observatory-pipeline.png');
+const OBSERVATORY_PIPELINE_PROVENANCE = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets', 'art', 'observatory-pipeline.provenance.json'), 'utf8'));
+if (sha256File(OBSERVATORY_PIPELINE_FILE) !== OBSERVATORY_PIPELINE_PROVENANCE.sha256) throw new Error('Observatory pipeline SHA-256 does not match its provenance record');
 
 /* ---------------------------------------------------------------- utils */
 const esc = s => String(s ?? '')
@@ -71,6 +115,12 @@ function markdown(md) {
       out.push(`<div class="math">$$${esc(buf.join('\n'))}$$</div>`);
       continue;
     }
+    const image = line.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)\s*$/);
+    if (image) {
+      const [, alt, src, caption] = image;
+      out.push(`<figure class="article-figure"><img src="${escAttr(src)}" alt="${escAttr(alt)}" loading="lazy"><figcaption>${inline(caption || alt)}</figcaption></figure>`);
+      i++; continue;
+    }
     const h = line.match(/^(#{1,4})\s+(.*)$/);
     if (h) {
       const lvl = h[1].length;
@@ -123,7 +173,7 @@ function markdown(md) {
       continue;
     }
     const buf = [line]; i++;
-    while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,4}\s|-\s|\d+\.\s|>|\||```|\$\$|---)/.test(lines[i].trim()))
+    while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,4}\s|-\s|\d+\.\s|>|\||```|\$\$|---|!\[)/.test(lines[i].trim()))
       buf.push(lines[i++]);
     out.push(`<p>${inline(buf.join(' '))}</p>`);
   }
@@ -194,6 +244,7 @@ ${JSON.stringify(jsonld, null, 1)}
     <nav>
       <a href="/">Releases</a>
       <a href="/about/">About</a>
+      <a href="/observatory/">Observatory</a>
       <a href="/ai/">For AI agents</a>
       <a href="/feed.xml">RSS</a>
     </nav>
@@ -230,6 +281,7 @@ function websiteNode() {
 
 function articleJsonld(p) {
   const url = urlOf(p);
+  const publicReviews = (p.reviews || []).filter(r => r.status === 'published');
   const graph = [
     websiteNode(),
     {
@@ -296,11 +348,28 @@ function articleJsonld(p) {
       isPartOf: { '@id': `${url}#article` }
     });
   }
+  for (const r of publicReviews) {
+    const reviewUrl = r.publication && r.publication.publicUrl
+      ? r.publication.publicUrl
+      : `${url}reviews/${r.reviewId}/`;
+    graph.push({
+      '@type': 'Review', '@id': `${url}#${r.reviewId}`,
+      name: r.assessment && r.assessment.title ? r.assessment.title : r.reviewId,
+      url: reviewUrl.startsWith('http') ? reviewUrl : `${BASE}${reviewUrl}`,
+      datePublished: r.assessment && r.assessment.date,
+      reviewBody: r.publication && r.publication.publicSummary,
+      additionalProperty: r.assessment && r.assessment.recommendation ? [{
+        '@type': 'PropertyValue', propertyID: 'recommendation', value: r.assessment.recommendation
+      }] : undefined,
+      author: { '@type': 'Person', name: (r.reviewer && r.reviewer.name) || 'Reviewer identity withheld' },
+      itemReviewed: { '@id': `${url}#article` }
+    });
+  }
   return { '@context': 'https://schema.org', '@graph': graph.map(n => JSON.parse(JSON.stringify(n))) };
 }
 
 /* content-hash for cache-busting the stylesheet link */
-const CSS_V = require('crypto').createHash('sha256')
+const CSS_V = crypto.createHash('sha256')
   .update(require('fs').readFileSync(__dirname + '/assets/style.css')).digest('hex').slice(0, 10);
 
 /* YouTube URL -> video id (watch, youtu.be, embed, shorts, live) */
@@ -360,6 +429,17 @@ function signposting(p) {
 /* --------------------------------------------------------- paper pages */
 function paperPage(p) {
   const url = urlOf(p);
+  const publicReviews = (p.reviews || []).filter(r => r.status === 'published');
+  const reviews = publicReviews.map(r => {
+    const a = r.assessment || {};
+    const summary = r.publication && r.publication.publicSummary;
+    const href = r.publication && r.publication.publicUrl;
+    return `<article class="review-card"><h3>${esc(a.title || r.reviewId)}</h3>
+      <p class="review-meta">${esc(r.reviewClass || 'review')} · ${esc(a.date || 'undated')}${a.recommendation ? ` · recommendation: <strong>${esc(a.recommendation)}</strong>` : ''}${typeof a.confidence === 'number' ? ` · confidence: ${esc(String(a.confidence))}` : ''}</p>
+      ${summary ? `<p>${inline(summary)}</p>` : ''}
+      ${href ? `<p><a href="${escAttr(href)}" rel="noopener">Read the structured review</a></p>` : ''}
+    </article>`;
+  }).join('\n');
   const related = (p.relatedWorks || []).map(w =>
     `<li>${w.url ? `<a href="${escAttr(w.url)}" rel="noopener">${esc(w.citation)}</a>` : esc(w.citation)}</li>`).join('');
   const open = (p.openProblems || []).map(o => `<li>${inline(o)}</li>`).join('');
@@ -410,6 +490,8 @@ ${media ? `<section class="media-section"><h2 id="media">Media</h2>${media}</sec
 
         <section class="verify"><h2 id="verification-status">Verification status</h2>
         <p>${inline(p.statusDetail)}</p></section>
+
+        ${reviews ? `<section class="reviews"><h2 id="reviews">Reviews and assessments</h2>${reviews}</section>` : ''}
 
         ${related ? `<section class="related"><h2 id="sources-and-related-work">Sources and related work</h2><ul>${related}</ul></section>` : ''}
 
@@ -485,6 +567,7 @@ ${(p.relatedWorks || []).map(w => `- ${w.citation}${w.url ? ` <${w.url}>` : ''}`
 }
 
 function paperApi(p) {
+  const publicReviews = (p.reviews || []).filter(r => r.status === 'published');
   return {
     schemaVersion: SCHEMA_VERSION,
     slug: p.slug, title: p.title, shortTitle: p.shortTitle,
@@ -516,6 +599,7 @@ function paperApi(p) {
     problem: p.problem || null,
     keywords: p.keywords,
     keyResults: p.keyResults || [],
+    reviews: publicReviews,
     evidencePackage: p.evidence,
     openProblems: p.openProblems || [],
     relatedWorks: p.relatedWorks || []
@@ -600,19 +684,156 @@ ${foot}`;
 }
 
 /* --------------------------------------------------------------- pages */
-function simplePage(rel, title, description, mdFile, type) {
-  const jsonld = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
-    '@type': type, url: `${BASE}/${rel}`, name: title,
-    isPartOf: { '@id': `${BASE}/#website` } }] };
-  const html = `${head({ title: `${title} · ${CONFIG.siteName}`, description, canonical: `${BASE}/${rel}`, jsonld })}
-<article class="release"><div class="wrap"><div class="prose">
-  <h1>${esc(title)}</h1>
-  <div class="body">
-${markdown(fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8'))}
-  </div>
-</div></div></article>
+function simplePage(rel, title, description, mdFile, type, opts = {}) {
+  const url = `${BASE}/${rel}`;
+  const pageId = `${url}#page`;
+  const associatedMedia = [
+    ...(opts.audio ? [{ '@id': `${url}#audio` }] : []),
+    ...(opts.video ? [{ '@id': `${url}#video` }] : [])
+  ];
+  const pageNode = {
+    '@type': type, '@id': pageId, url, name: title, description,
+    ...(opts.og ? { image: BASE + opts.og, thumbnailUrl: BASE + opts.og } : {}),
+    ...(opts.datePublished ? { datePublished: opts.datePublished, dateModified: opts.dateModified || opts.datePublished } : {}),
+    ...(opts.sameAs && opts.sameAs.length ? { sameAs: opts.sameAs } : {}),
+    ...(opts.identifier ? { identifier: opts.identifier } : {}),
+    ...(associatedMedia.length ? { associatedMedia } : {}),
+    inLanguage: CONFIG.language,
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+    isPartOf: { '@id': `${BASE}/#website` }
+  };
+  const audioNode = opts.audio ? [{
+    '@type': 'AudioObject', '@id': `${url}#audio`,
+    name: opts.audio.name,
+    description: opts.audio.description,
+    contentUrl: BASE + opts.audio.url,
+    encodingFormat: 'audio/mpeg',
+    contentSize: String(opts.audio.bytes),
+    duration: opts.audio.duration,
+    uploadDate: opts.datePublished,
+    inLanguage: CONFIG.language,
+    transcript: opts.audio.transcript,
+    identifier: { '@type': 'PropertyValue', propertyID: 'sha256', value: opts.audio.sha256 },
+    isPartOf: { '@id': pageId },
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  }] : [];
+  const videoNode = opts.video ? [{
+    '@type': 'VideoObject', '@id': `${url}#video`,
+    name: opts.video.name,
+    description: opts.video.description,
+    url: opts.video.url,
+    embedUrl: opts.video.embedUrl,
+    thumbnailUrl: opts.video.thumbnailUrl,
+    inLanguage: CONFIG.language,
+    publisher: { '@id': `${BASE}/#org` },
+    isPartOf: { '@id': pageId }
+  }] : [];
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    websiteNode(), pageNode, ...(opts.extraNodes || []), ...audioNode, ...videoNode
+  ] };
+  const social = [
+    ['og:type', opts.datePublished ? 'article' : 'website'],
+    ['og:site_name', CONFIG.siteName],
+    ['og:title', title], ['og:description', description], ['og:url', url],
+    ...(opts.og ? [['og:image', BASE + opts.og], ['og:image:width', '1200'], ['og:image:height', '630']] : []),
+    ...(opts.datePublished ? [['article:published_time', iso(opts.datePublished)]] : []),
+    ['twitter:card', opts.og ? 'summary_large_image' : 'summary'],
+    ['twitter:title', title], ['twitter:description', description],
+    ...(opts.og ? [['twitter:image', BASE + opts.og]] : [])
+  ].map(([k, v]) => k.startsWith('og:') || k.startsWith('article:')
+    ? `<meta property="${k}" content="${escAttr(v)}">`
+    : `<meta name="${k}" content="${escAttr(v)}">`).join('\n') + '\n';
+  const extraLinks = [
+    `<link rel="alternate" type="text/markdown" href="${url}index.md">`,
+    ...(opts.machineRecord ? [`<link rel="describedby" type="application/json" href="${url}index.json">`] : []),
+    ...(opts.audio ? [
+      `<link rel="item" type="audio/mpeg" href="${BASE + opts.audio.url}">`,
+      `<link rel="alternate" type="text/plain" href="${BASE + opts.audio.transcriptUrl}" title="Audio transcript">`
+    ] : []),
+    ...(opts.video ? [`<link rel="item" type="text/html" href="${escAttr(opts.video.url)}" title="Video overview">`] : []),
+    ...(opts.citeAs ? [`<link rel="cite-as" href="${escAttr(opts.citeAs)}">`] : []),
+    `<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">`
+  ].join('\n') + '\n';
+  const audioHtml = opts.audio ? `<section class="standalone-audio" aria-labelledby="standalone-audio-title">
+    <div class="standalone-audio-copy">
+      <strong id="standalone-audio-title">Audio overview</strong>
+      <span>${esc(opts.audio.durationLabel)} · AI-generated voice · transcript is the source text</span>
+    </div>
+    <audio controls preload="metadata" src="${escAttr(opts.audio.url)}">
+      <a href="${escAttr(opts.audio.url)}" download>Download the MP3 briefing</a>
+    </audio>
+    <p class="audio-links"><a href="${escAttr(opts.audio.url)}" download>Download MP3</a> · <a href="${escAttr(opts.audio.transcriptUrl)}">Plain-text transcript</a></p>
+    <details class="audio-transcript"><summary>Read the transcript on this page</summary><div>${markdown(opts.audio.transcript)}</div></details>
+  </section>` : '';
+  const briefingsHtml = opts.releaseLayout && (opts.audio || opts.video) ? `<div class="briefings">
+    ${opts.audio ? `<div class="listen">
+      <button class="play" aria-label="Play audio briefing" data-audio="standalone-briefing-audio">▶</button>
+      <div class="listen-meta"><strong>Listen to this briefing</strong><span>${esc(opts.audio.durationLabel)} · AI-generated voice · <a href="${escAttr(opts.audio.url)}" download>download</a> · <a href="${escAttr(opts.audio.transcriptUrl)}">transcript</a></span>
+      <audio id="standalone-briefing-audio" preload="metadata" src="${escAttr(opts.audio.url)}"></audio></div>
+    </div>` : ''}
+    ${opts.video ? `<div class="listen watch">
+      <a class="play" href="${escAttr(opts.video.url)}" rel="noopener" aria-label="Watch the video briefing">▶</a>
+      <div class="listen-meta"><strong>Watch this briefing</strong><span>Video overview · YouTube · <a href="${escAttr(opts.video.url)}" rel="noopener">watch</a> · <a href="#media">play on this page</a></span></div>
+    </div>` : ''}
+  </div>` : '';
+  const videoHtml = opts.video ? `<section class="media-section"><h2 id="media">Media</h2>
+    <figure class="media"><div class="video-embed"><iframe src="${escAttr(opts.video.embedUrl)}" title="${escAttr(opts.video.name)}" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    <figcaption>${esc(opts.video.name)} · <a href="${escAttr(opts.video.url)}" rel="noopener">Watch on YouTube</a></figcaption></figure>
+  </section>` : '';
+  const resourcesHtml = opts.resources && opts.resources.length ? `<section class="page-resources" aria-labelledby="page-resources-title">
+    <h2 id="page-resources-title">Use the public materials</h2>
+    <div class="page-resource-grid">${opts.resources.map(resource => `<div class="page-resource">
+      <strong>${esc(resource.label)}</strong>
+      ${resource.url ? `<a href="${escAttr(resource.url)}" rel="noopener">${esc(resource.linkText || resource.url)}</a>` : '<span class="pending-link">Pending final publication metadata</span>'}
+      ${resource.detail ? `<small>${esc(resource.detail)}</small>` : ''}
+    </div>`).join('')}</div>
+  </section>` : '';
+  const resourcesAside = opts.resources && opts.resources.length ? `<aside class="factbox standalone-factbox" aria-label="Key facts and public materials">
+    <h2>Use the public materials</h2>
+    <dl>${opts.resources.map(resource => `<dt>${esc(resource.label)}</dt><dd>${resource.url ? `<a href="${escAttr(resource.url)}" rel="noopener">${esc(resource.linkText || resource.url)}</a>` : '<span class="pending-link">Pending final publication metadata</span>'}${resource.detail ? `<small class="fact-detail">${esc(resource.detail)}</small>` : ''}</dd>`).join('')}
+      <dt>Licence</dt><dd><a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a></dd>
+      ${opts.sidebarStatus ? `<dt>Status</dt><dd>${esc(opts.sidebarStatus)}</dd>` : ''}
+    </dl>
+  </aside>` : '';
+  const bodyHtml = `${markdown(fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8'))}${videoHtml}`;
+  const coverHtml = opts.art ? `<div class="cover"><img src="${opts.art}" alt="" loading="eager"></div>` : '';
+  const headingHtml = `${opts.kicker ? `<p class="kicker">${esc(opts.kicker)}</p>` : ''}
+    <h1>${esc(title)}</h1>
+    ${opts.standfirst ? `<p class="standfirst">${inline(opts.standfirst)}</p>` : ''}`;
+  const pageHtml = opts.releaseLayout ? `<article class="release standalone-release"><div class="wrap">
+    ${coverHtml}
+    ${headingHtml}
+    ${briefingsHtml}
+    <div class="release-grid"><div class="body">${bodyHtml}</div>${resourcesAside}</div>
+  </div></article>` : `<article class="release"><div class="wrap"><div class="prose">
+    ${coverHtml}
+    ${headingHtml}
+    ${audioHtml}
+    ${resourcesHtml}
+    <div class="body">${bodyHtml}</div>
+  </div></div></article>`;
+  const audioController = opts.releaseLayout && opts.audio ? `<script>
+(function(){var b=document.querySelector('.play[data-audio]');if(!b)return;var a=document.getElementById(b.dataset.audio);
+b.addEventListener('click',function(){if(a.paused){a.play();b.textContent='❚❚';}else{a.pause();b.textContent='▶';}});
+a.addEventListener('ended',function(){b.textContent='▶';});})();
+</script>` : '';
+  const html = `${head({ title: `${title} · ${CONFIG.siteName}`, description, canonical: url, jsonld, metaExtra: social, extraLinks })}
+${pageHtml}
+${audioController}
 ${foot}`;
   write(rel + 'index.html', html);
+  const resourceMarkdown = opts.resources && opts.resources.length
+    ? `## Use the public materials\n\n${opts.resources.map(resource => `- ${resource.label}: ${resource.url || 'pending final publication metadata'}${resource.detail ? ` — ${resource.detail}` : ''}`).join('\n')}\n\n`
+    : '';
+  const audioMarkdown = opts.audio
+    ? `## Audio overview\n\n- MP3: ${BASE + opts.audio.url}\n- Plain-text transcript: ${BASE + opts.audio.transcriptUrl}\n- Duration: ${opts.audio.durationLabel}\n- Voice: AI-generated; the transcript is the source text\n\n`
+    : '';
+  const videoMarkdown = opts.video
+    ? `## Video overview\n\n- YouTube: ${opts.video.url}\n- Embedded player: ${url}#media\n\n`
+    : '';
+  write(rel + 'index.md', `---\ntitle: "${title.replace(/"/g, '\\"')}"\nurl: ${url}\nrepository: ${opts.repository || ''}\nrelease: ${opts.release || ''}\ndoi: ${opts.doi || ''}\nlicense: CC0-1.0\nstatus: ${opts.status || ''}\n---\n\n# ${title}\n\n${
+    opts.standfirst ? opts.standfirst + '\n\n' : ''}${audioMarkdown}${videoMarkdown}${resourceMarkdown}${fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8')}`);
+  if (opts.machineRecord) write(rel + 'index.json', JSON.stringify(opts.machineRecord, null, 2) + '\n');
 }
 
 /* --------------------------------------------------------- feeds etc. */
@@ -654,7 +875,7 @@ ${items}
 function sitemap() {
   const urls = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-04' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished }))
   ];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
@@ -690,6 +911,8 @@ function llms() {
     '',
     '## About', '',
     `- [About](${BASE}/about/): what these releases are, the verification ladder, and how to independently verify or refute one`,
+    `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; video: ${OBSERVATORY.video.url}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
+    `- [The Case for Assurance Infrastructure](${BASE}/observatory/assurance/): why verification, not generation, binds government use of AI agents — four quantitative bounds, verification economics, research avenues, and sixteen ranked projects (Markdown: ${BASE}/observatory/assurance/index.md)`,
     `- [For AI agents](${BASE}/ai/): metadata conventions and suggested uses (verification, formalisation, follow-up research)`
   ];
   write('llms.txt', lines.join('\n') + '\n');
@@ -703,7 +926,19 @@ function llms() {
       p.body, '',
       `## Open directions (machine-readable copy at ${urlOf(p)}paper.json)`, '',
       ...(p.openProblems || []).map(o => `- ${o}`), ''
-    ])];
+    ]),
+    '---', '', `# ${OBSERVATORY.title}`, '',
+    `- URL: ${BASE}/observatory/`,
+    `- Machine record: ${BASE}/observatory/index.json`,
+    `- Repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}`,
+    `- Versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}`,
+    `- DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'}`,
+    `- Audio: ${BASE + OBSERVATORY.audio.url}`,
+    `- Transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}`,
+    `- Status: ${OBSERVATORY.status}`,
+    `- Included case terminal status: ${OBSERVATORY.includedCase.terminalStatus}; truth certified: ${OBSERVATORY.includedCase.truthCertified}`, '',
+    OBSERVATORY_BODY, ''
+  ];
   write('llms-full.txt', full.join('\n'));
 }
 
@@ -764,12 +999,113 @@ function api() {
           keyResults: { type: 'array', items: { type: 'string' } },
           evidencePackage: { type: 'string' },
           openProblems: { type: 'array', items: { type: 'string' }, description: 'Concrete follow-up research problems, well-posed enough to start on' },
-          relatedWorks: { type: 'array', items: { type: 'object', properties: { citation: { type: 'string' }, url: { type: 'string' } } } }
+          relatedWorks: { type: 'array', items: { type: 'object', properties: { citation: { type: 'string' }, url: { type: 'string' } } } },
+          reviews: {
+            type: 'array',
+            description: 'Published reviews and assessments; draft or private records are excluded from public output.',
+            items: {
+              type: 'object',
+              required: ['schemaVersion', 'reviewId', 'reviewClass', 'status', 'subject', 'assessment', 'assuranceImpact'],
+              properties: {
+                schemaVersion: { type: 'string' }, reviewId: { type: 'string' },
+                reviewClass: { enum: ['editorial-assessment', 'external-review', 'independent-reproduction', 'formal-verification-report', 'research-assessment', 'correction-or-refutation'] },
+                status: { enum: ['published', 'superseded', 'withdrawn', 'disputed'] },
+                subject: { type: 'object', required: ['canonicalUrl', 'version', 'title'], properties: { canonicalUrl: { type: 'string', format: 'uri' }, doi: { type: ['string', 'null'] }, version: { type: 'string' }, releaseTag: { type: ['string', 'null'] }, title: { type: 'string' } } },
+                reviewer: { type: 'object' }, assessment: { type: 'object' }, scope: { type: 'object' }, evidenceAssessment: { type: 'object' },
+                findings: { type: 'array', items: { type: 'object' } }, requiredRevisions: { type: 'array', items: { type: 'object' } },
+                limitationsAndNonClaims: { type: 'array', items: { type: 'string' } }, refCalibration: { type: 'object' }, editorialHandling: { type: 'object' }, provenance: { type: 'object' },
+                assuranceImpact: { type: 'object', required: ['changesVerificationStatus', 'changesPeerReviewedFlag', 'changesIndependentReproductionFlag', 'changesFormalVerificationFlag'], properties: { changesVerificationStatus: { type: 'boolean' }, changesPeerReviewedFlag: { type: 'boolean' }, changesIndependentReproductionFlag: { type: 'boolean' }, changesFormalVerificationFlag: { type: 'boolean' }, explanation: { type: 'string' } } },
+                publication: { type: 'object' }
+              }
+            }
+          }
         }
       }
     }
   }, null, 2));
 }
+
+const OBSERVATORY_URL = `${BASE}/observatory/`;
+const OBSERVATORY_VIDEO_ID = youtubeId(OBSERVATORY.video && OBSERVATORY.video.url);
+if (!OBSERVATORY_VIDEO_ID) throw new Error('pages/observatory.json: video.url is not a supported YouTube URL');
+if (OBSERVATORY.video.embedUrl !== `https://www.youtube-nocookie.com/embed/${OBSERVATORY_VIDEO_ID}?rel=0`) {
+  throw new Error('pages/observatory.json: video.embedUrl must use the privacy-enhanced YouTube embed URL');
+}
+const OBSERVATORY_RESOURCES = [
+  {
+    label: 'Repository', url: OBSERVATORY_PUBLIC.repositoryUrl,
+    linkText: 'GitHub repository', detail: 'Schemas, case records, validators, replay commands and tests.'
+  },
+  {
+    label: 'Versioned release', url: OBSERVATORY_PUBLIC.releaseUrl,
+    linkText: OBSERVATORY.releaseVersion, detail: 'Immutable release assets bound to the candidate version.'
+  },
+  {
+    label: 'DOI archive', url: OBSERVATORY_PUBLIC.doiUrl,
+    linkText: OBSERVATORY_PUBLIC.doi || 'Zenodo DOI', detail: 'Citable archived snapshot of the release.'
+  },
+  {
+    label: 'Machine-readable record', url: `${OBSERVATORY_URL}index.json`,
+    linkText: 'Observatory JSON', detail: 'Status, trust boundary, public links, audio metadata and hashes.'
+  }
+];
+const OBSERVATORY_RECORD = {
+  schemaVersion: OBSERVATORY.schemaVersion,
+  recordType: 'research-infrastructure',
+  title: OBSERVATORY.title,
+  url: OBSERVATORY_URL,
+  markdownUrl: `${OBSERVATORY_URL}index.md`,
+  metadataUrl: `${OBSERVATORY_URL}index.json`,
+  datePublished: OBSERVATORY.datePublished,
+  dateModified: OBSERVATORY.dateModified,
+  version: OBSERVATORY.releaseVersion,
+  license: OBSERVATORY.license,
+  status: OBSERVATORY.status,
+  repositoryUrl: OBSERVATORY_PUBLIC.repositoryUrl,
+  releaseUrl: OBSERVATORY_PUBLIC.releaseUrl,
+  doi: OBSERVATORY_PUBLIC.doi,
+  doiUrl: OBSERVATORY_PUBLIC.doiUrl,
+  zenodoUrl: OBSERVATORY_PUBLIC.zenodoUrl,
+  claimCeiling: OBSERVATORY.claimCeiling,
+  includedCase: OBSERVATORY.includedCase,
+  verification: OBSERVATORY.verification,
+  releaseReadiness: {
+    publicLinksFinal: OBSERVATORY_UNRESOLVED.length === 0,
+    unresolvedFields: OBSERVATORY_UNRESOLVED
+  },
+  audio: {
+    url: BASE + OBSERVATORY.audio.url,
+    transcriptUrl: BASE + OBSERVATORY.audio.transcriptUrl,
+    duration: OBSERVATORY.audio.duration,
+    durationLabel: OBSERVATORY.audio.durationLabel,
+    encodingFormat: 'audio/mpeg',
+    bytes: OBSERVATORY_AUDIO_BYTES,
+    sha256: OBSERVATORY.audio.sha256,
+    transcriptSha256: OBSERVATORY.audio.transcriptSha256,
+    voiceDisclosure: OBSERVATORY.audio.voiceDisclosure
+  },
+  video: {
+    id: OBSERVATORY_VIDEO_ID,
+    url: OBSERVATORY.video.url,
+    embedUrl: OBSERVATORY.video.embedUrl,
+    thumbnailUrl: OBSERVATORY.video.thumbnailUrl,
+    name: OBSERVATORY.video.name,
+    description: OBSERVATORY.video.description,
+    publisher: OBSERVATORY.video.publisher,
+    provider: OBSERVATORY.video.provider
+  },
+  artwork: {
+    pipelineUrl: `${BASE}/assets/art/observatory-pipeline.png`,
+    pipelineSha256: OBSERVATORY_PIPELINE_PROVENANCE.sha256,
+    provenanceUrl: `${BASE}/assets/art/observatory-pipeline.provenance.json`
+  },
+  agentUse: [
+    'Read this record and the repository AI index before using an included case.',
+    'Inspect the terminal status, evidence boundary, claim ceiling and unresolved objections.',
+    'Run the pinned replay commands; do not treat deterministic replay as independent reproduction or claim truth.',
+    'Preserve identifiers, qualifications, provenance and supersession when reusing an output.'
+  ]
+};
 
 /* ---------------------------------------------------------------- main */
 fs.rmSync(DIST, { recursive: true, force: true });
@@ -787,15 +1123,81 @@ write('_headers', `/*
 /releases/*/paper.json
   Access-Control-Allow-Origin: *
 
+/observatory/index.json
+  Access-Control-Allow-Origin: *
+
+/assets/audio/*
+  Access-Control-Allow-Origin: *
+
 /api/*
   Access-Control-Allow-Origin: *
 `);
 papers.forEach(paperPage);
 indexPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
+simplePage('observatory/', 'Policy Identification Observatory', 'A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.', 'observatory.md', 'WebPage', {
+  releaseLayout: true,
+  art: '/assets/art/observatory.svg',
+  og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'observatory.png')) ? '/assets/og/observatory.png' : null,
+  kicker: 'Research programme · foundational build complete · 2 August 2026',
+  standfirst: 'A standing agent-native research programme for determining what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.',
+  datePublished: OBSERVATORY.datePublished,
+  dateModified: OBSERVATORY.dateModified,
+  sameAs: [OBSERVATORY_PUBLIC.repositoryUrl, OBSERVATORY_PUBLIC.releaseUrl, OBSERVATORY_PUBLIC.doiUrl, OBSERVATORY_PUBLIC.zenodoUrl].filter(Boolean),
+  identifier: OBSERVATORY_PUBLIC.doi ? { '@type': 'PropertyValue', propertyID: 'DOI', value: OBSERVATORY_PUBLIC.doi } : OBSERVATORY.releaseVersion,
+  citeAs: OBSERVATORY_PUBLIC.doiUrl,
+  repository: OBSERVATORY_PUBLIC.repositoryUrl,
+  release: OBSERVATORY_PUBLIC.releaseUrl,
+  doi: OBSERVATORY_PUBLIC.doi,
+  status: OBSERVATORY.status,
+  sidebarStatus: 'Candidate research infrastructure; founding exemplar rejected for insufficient rigour.',
+  resources: OBSERVATORY_RESOURCES,
+  machineRecord: OBSERVATORY_RECORD,
+  audio: {
+    name: 'Policy Identification Observatory — audio overview',
+    description: 'An accessible narrated introduction to the Observatory, its materials, trust boundary and safe reuse by people and research agents.',
+    ...OBSERVATORY.audio,
+    transcript: OBSERVATORY_TRANSCRIPT
+  },
+  video: OBSERVATORY.video,
+  extraNodes: [{
+    '@type': 'ResearchProject', '@id': `${BASE}/observatory/#programme`,
+    name: 'Policy Identification Observatory',
+    alternateName: 'PIO',
+    url: `${BASE}/observatory/`,
+    description: 'A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.',
+    version: OBSERVATORY.releaseVersion,
+    creativeWorkStatus: 'Candidate research infrastructure; included founding case is REJECTED_INSUFFICIENT_RIGOUR and is not truth-certified',
+    sameAs: [OBSERVATORY_PUBLIC.repositoryUrl, OBSERVATORY_PUBLIC.releaseUrl, OBSERVATORY_PUBLIC.doiUrl, OBSERVATORY_PUBLIC.zenodoUrl].filter(Boolean),
+    parentOrganization: { '@id': `${BASE}/#org` },
+    knowsAbout: ['causal identification', 'partial identification', 'measurement and accounting audit', 'robust decision-making under model ambiguity', 'adversarial verification', 'agent-native research infrastructure'],
+    subjectOf: [{ '@id': `${BASE}/observatory/#page` }, { '@id': `${BASE}/observatory/#audio` }, { '@id': `${BASE}/observatory/#video` }]
+  },
+  ...(OBSERVATORY_PUBLIC.repositoryUrl ? [{
+    '@type': 'SoftwareSourceCode', '@id': `${BASE}/observatory/#software`,
+    name: 'Policy Identification Observatory',
+    codeRepository: OBSERVATORY_PUBLIC.repositoryUrl,
+    ...(OBSERVATORY_PUBLIC.releaseUrl ? { downloadUrl: OBSERVATORY_PUBLIC.releaseUrl } : {}),
+    version: OBSERVATORY.releaseVersion,
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  }] : []),
+  ...(OBSERVATORY_PUBLIC.zenodoUrl ? [{
+    '@type': 'Dataset', '@id': `${BASE}/observatory/#deposit`,
+    name: 'Policy Identification Observatory — archived candidate release',
+    url: OBSERVATORY_PUBLIC.zenodoUrl,
+    identifier: OBSERVATORY_PUBLIC.doiUrl,
+    version: OBSERVATORY.releaseVersion,
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  }] : [])]
+});
+simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'Why verification, not generation, binds government use of AI agents: four quantitative bounds, the verification cost evidence, research avenues that make assurance cheaper and more capable, and sixteen ranked projects.', 'assurance.md', 'WebPage', {
+  kicker: 'Observatory essay \u00b7 4 August 2026',
+  standfirst: 'The technical argument that checking AI-generated evidence, not producing it, is the binding constraint on government analysis; the research avenues that would relax it; and sixteen tractable projects, ranked by probability of delivery.',
+  datePublished: '2026-08-04'
+});
 simplePage('ai/', 'For AI agents and automated research tools', 'Machine-readable endpoints, metadata conventions, and follow-up problem lists for research agents.', 'ai.md', 'WebPage');
 feeds();
 sitemap();
 llms();
 api();
-console.log(`Built ${papers.length} releases → dist/  (audio: ${papers.filter(p => p.audio).length}, art: ${papers.filter(p => p.art).length}, og: ${papers.filter(p => p.og).length})`);
+console.log(`Built ${papers.length} releases plus Observatory → dist/  (paper audio: ${papers.filter(p => p.audio).length}; Observatory audio: 1; art: ${papers.filter(p => p.art).length}; og: ${papers.filter(p => p.og).length})`);

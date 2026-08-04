@@ -38,6 +38,28 @@ The index page, feeds, sitemap, `llms.txt`, and `api/papers.json` all regenerate
 
 Every release page embeds Schema.org JSON-LD (ScholarlyArticle + SoftwareSourceCode + Dataset + AudioObject), Highwire `citation_*` tags including `citation_pdf_url` (Google Scholar), Dublin Core, Open Graph images, and Signposting link relations (`cite-as`, `describedby`, `item`, `alternate`, `license`).
 
+## Before you deploy: the published-URL gate
+
+**Never deploy a `dist/` you have not checked against `PUBLISHED.json`.** More than one
+agent works on this site, and releases are prepared on their own branches and worktrees.
+A build made from a branch that lacks another branch's release will silently delete that
+release from the live site, breaking a DOI-bearing page and its Zenodo cross-reference.
+
+```
+node build.js
+node tools/check-published.js          # exits 1 if this build would drop a published URL
+npx wrangler pages deploy dist --project-name evidence-press
+node tools/check-published.js --record # add anything newly published to the ledger
+```
+
+`PUBLISHED.json` is the ledger of every URL the site has published. The gate is offline
+and takes no arguments; `--live` additionally reconciles the ledger against the deployed
+site, probing each candidate slug's `paper.json` directly, because the site's own index
+endpoints have been observed to under-report what is actually live.
+
+If the gate refuses, the build is wrong, not the ledger. Merge the missing release in and
+rebuild. Only pass `--record` after a deploy has succeeded.
+
 ## Configuration
 
 `site.config.json` holds the site name, tagline, description, and `baseUrl`. If you attach a custom domain, change `baseUrl` and rebuild — canonical URLs, feeds, sitemap, and JSON-LD all follow it.
