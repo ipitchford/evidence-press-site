@@ -54,6 +54,7 @@ if (OBSERVATORY_AUDIO_BYTES !== OBSERVATORY.audio.bytes) throw new Error('Observ
 if (sha256File(OBSERVATORY_AUDIO_FILE) !== OBSERVATORY.audio.sha256) throw new Error('Observatory audio SHA-256 does not match pages/observatory.json');
 if (sha256File(OBSERVATORY_TRANSCRIPT_FILE) !== OBSERVATORY.audio.transcriptSha256) throw new Error('Observatory transcript SHA-256 does not match pages/observatory.json');
 const ASSURANCE = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'assurance.json'), 'utf8'));
+const ASSURANCE_RECORD = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'assurance-projects.json'), 'utf8'));
 const ASSURANCE_AUDIO_FILE = assetPath(ASSURANCE.audio.url);
 const ASSURANCE_TRANSCRIPT_FILE = assetPath(ASSURANCE.audio.transcriptUrl);
 if (!fs.existsSync(ASSURANCE_AUDIO_FILE)) throw new Error(`Missing assurance audio: ${ASSURANCE_AUDIO_FILE}`);
@@ -1210,8 +1211,10 @@ simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'W
   datePublished: ASSURANCE.datePublished,
   dateModified: ASSURANCE.dateModified,
   sidebarStatus: 'Observatory essay. Every derived number independently recomputed and the argument adversarially reviewed before publication; probabilities are calibrated judgements, not measurements.',
+  machineRecord: ASSURANCE_RECORD,
   resources: [
     { label: 'Read as Markdown', url: `${BASE}/observatory/assurance/index.md`, linkText: 'index.md', detail: 'The full essay in plain Markdown, for people and research agents.' },
+    { label: 'Project record', url: `${BASE}/observatory/assurance/index.json`, linkText: 'index.json', detail: 'All 21 projects: full resolution criteria, per-judge scores, scoring definitions.' },
     { label: 'Audio briefing', url: `${BASE}/assets/audio/assurance.mp3`, linkText: 'assurance.mp3', detail: `${ASSURANCE.audio.durationLabel} \u00b7 AI-narrated \u00b7 SHA-256 receipt in pages/assurance.json.` },
     { label: 'Transcript', url: `${BASE}/assets/audio/assurance-transcript.txt`, linkText: 'assurance-transcript.txt', detail: 'The narration source text.' },
     { label: 'Parent programme', url: `${BASE}/observatory/`, linkText: 'Policy Identification Observatory', detail: 'The standing agent-native audit programme this essay supports.' }
