@@ -17,6 +17,14 @@ const PAGES = [
     sub: 'What the evidence supports · what it does not · which decisions survive',
     foot: ['Identification audits', 'Partial identification', 'Robust decisions'],
     art: 'observatory.svg'
+  },
+  {
+    name: 'assurance',
+    kicker: 'EVIDENCE PRESS · OBSERVATORY ESSAY',
+    title: 'The Case for Assurance Infrastructure',
+    sub: 'Checking, not generating, is the binding constraint · sixteen projects, ranked',
+    foot: ['Four bounds on scale', 'Verification economics', 'A ranked research programme'],
+    art: 'assurance.svg'
   }
 ];
 

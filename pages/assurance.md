@@ -8,9 +8,13 @@ Public discussion of government AI runs on an implicit production function: *pol
 
 The replacement is a pipeline with three stages: **generation → verification → authorisation**. Agents generate candidate analysis. Verification establishes which of it is true, sourced, and reproducible. Authorisation is the human act of standing behind it: officials act in ministers' names, and ministers answer to Parliament, so this stage retains a human signature as a matter of constitutional doctrine, not of capacity. The throughput of the pipeline is the minimum across its stages, and its output is not sessions but **assured evidential information**: claims a decision-maker can rely on because something other than the generating model says they hold.
 
+![A wide teal band of candidate claims labelled generation narrows into an amber gate labelled verification, then continues as a single thin band to a box labelled authorisation bearing a handwritten signature stroke. The output arrow is labelled assured evidential information; unsupported claims deflect away at the gate.](/assets/art/assurance-pipeline.svg "The unit of analysis that works. Sessions feed the first stage only; what a decision-maker can use is what survives verification and carries a human signature, and total throughput is set by the narrowest stage.")
+
 This framing has formal backing. [Yang and colleagues](https://arxiv.org/html/2602.03794v1) prove that the performance of multi-agent systems is capped by intrinsic task uncertainty (the uncertainty the answer retains given the input), and that the relevant bounds are governed by the number of *effective channels*, not the raw call count. Sessions are an input. The binding constraints live elsewhere, and the next section names them.
 
 ## Four bounds on useful scale
+
+![Four panels of computed curves. Effective independent opinions flatten at one over rho: one hundred for correlation 0.01, ten for 0.1, two for 0.5. Amdahl speedup flattens at twenty times for a five per cent serial fraction and about three times for thirty per cent. Chain success falls to 37 per cent over one hundred steps at per-step reliability 0.99, but holds 90 per cent at 0.999. Sampled checks needed to certify an error bound stay flat, at 300 for one per cent and 3,000 for a tenth of a per cent, as corpus size grows from ten thousand to a million.](/assets/art/assurance-bounds.svg "The four ceilings, drawn to their own arithmetic. More agents move a deployment along each curve; architecture and verification machinery decide which curve it is on.")
 
 ### Redundancy: a million calls buy 1/ρ analysts
 
@@ -66,6 +70,8 @@ So the bottleneck localises, and it localises on a **verifiability stack**:
 2. **Statistical claims**: re-computable from frozen data by deterministic replay. Replay certifies that the computation produces the stated number; whether the computation was the right one remains a human question, but a much cheaper one.
 3. **Causal and identification claims**: partially formalisable, as rank conditions, null-space certificates, and countermodel searches. The algebra can be certified; the substantive assumptions that give it causal meaning cannot.
 4. **Framing and value judgements**: not delegable. Machines can map stakeholder positions and expose trade-offs, but no schema converts a value choice into a checkable claim.
+
+![Four stacked layers, from extractable facts and citations at the bottom, checked exhaustively by machine against source hashes, through re-computable statistical claims and partially formalisable causal claims, to framing and value judgements at the top, marked human only. An amber arrow points down the stack, labelled push products down the stack so that machines check the bottom exhaustively and human hours concentrate at the top.](/assets/art/assurance-stack.svg "The verifiability stack. The layers are not equally expensive: the bottom checks run exhaustively at near-zero marginal cost, and the scarce resource, human judgement, belongs at the top.")
 
 Government's leverage point is to push analytical products *down* this stack (schema-level claims, source receipts, deterministic replay) so that scarce human assurance concentrates where only humans can supply it. Two cautions attach. Correlated model errors limit how much AI-checking-AI recovers. And once assurance is the scarce stamp, Goodhart pressure to rubber-stamp becomes the failure mode to design against.
 
@@ -129,9 +135,9 @@ The avenues above decompose into specific projects, and the decomposition was do
 
 | # | Project | P | Payoff | Horizon | Indicative cost |
 |---|---|---|---|---|---|
-| 1 | Curated-corpus attack on sampled assurance, plus the commitment countermeasure | 0.85 | 0.50 | 9 mo | ~£80k |
-| 2 | Replay feasibility audit of published UK AI-assisted analysis | 0.80 | 0.50 | 8 mo | ~£70k |
-| 3 | Metamorphic relation library and mutation benchmark for government analytical pipelines | 0.62 | 0.65 | 12 mo | ~£110k |
+| ![Gold medal](/assets/art/medal-gold.svg) 1 | Curated-corpus attack on sampled assurance, plus the commitment countermeasure | 0.85 | 0.50 | 9 mo | ~£80k |
+| ![Silver medal](/assets/art/medal-silver.svg) 2 | Replay feasibility audit of published UK AI-assisted analysis | 0.80 | 0.50 | 8 mo | ~£70k |
+| ![Bronze medal](/assets/art/medal-bronze.svg) 3 | Metamorphic relation library and mutation benchmark for government analytical pipelines | 0.62 | 0.65 | 12 mo | ~£110k |
 | 4 | Prediction-powered consultation statistics | 0.55 | 0.75 | 9 mo | ~£120k |
 | 5 | The assurance coverage census of real UK policy claims | 0.48 | 0.82 | 12 mo | ~£135k |
 | 6 | PolicyCAPA: measuring cross-model error correlation on policy tasks | 0.45 | 0.85 | 12 mo | ~£350k |
@@ -145,6 +151,8 @@ The avenues above decompose into specific projects, and the decomposition was do
 | 14 | Coverage estimation and stopping rules for census workloads | 0.25 | 0.65 | 12 mo | ~£145k |
 | 15 | Identification-gate certificates with independent checkers | 0.18 | 0.55 | 18 mo | ~£165k |
 | 16 | Blind proficiency testing of evidence assurers | 0.15 | 0.80 | 18 mo | ~£300k |
+
+![Scatter plot of the sixteen projects: probability of delivery on the horizontal axis, payoff conditional on delivery on the vertical. Projects 1 and 2 carry gold and silver medals at probabilities 0.85 and 0.80 with payoff 0.50; project 3 carries bronze at 0.62. The highest payoffs, projects 6 and 5, sit mid-table near probability 0.45. Project 16 sits far left at probability 0.15 but payoff 0.80, annotated as needing a government host. A dashed amber line marks the coin-flip probability of one half.](/assets/art/assurance-portfolio.svg "Sixteen projects, two orderings. The medals reward deliverability; the payoff axis shows why the hard tail is still worth funding, and who would have to fund it.")
 
 ### The near-certainties (P ≥ 0.8)
 

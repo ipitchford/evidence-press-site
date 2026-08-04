@@ -53,6 +53,15 @@ const OBSERVATORY_TRANSCRIPT = fs.readFileSync(OBSERVATORY_TRANSCRIPT_FILE, 'utf
 if (OBSERVATORY_AUDIO_BYTES !== OBSERVATORY.audio.bytes) throw new Error('Observatory audio byte count does not match pages/observatory.json');
 if (sha256File(OBSERVATORY_AUDIO_FILE) !== OBSERVATORY.audio.sha256) throw new Error('Observatory audio SHA-256 does not match pages/observatory.json');
 if (sha256File(OBSERVATORY_TRANSCRIPT_FILE) !== OBSERVATORY.audio.transcriptSha256) throw new Error('Observatory transcript SHA-256 does not match pages/observatory.json');
+const ASSURANCE = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'assurance.json'), 'utf8'));
+const ASSURANCE_AUDIO_FILE = assetPath(ASSURANCE.audio.url);
+const ASSURANCE_TRANSCRIPT_FILE = assetPath(ASSURANCE.audio.transcriptUrl);
+if (!fs.existsSync(ASSURANCE_AUDIO_FILE)) throw new Error(`Missing assurance audio: ${ASSURANCE_AUDIO_FILE}`);
+if (!fs.existsSync(ASSURANCE_TRANSCRIPT_FILE)) throw new Error(`Missing assurance transcript: ${ASSURANCE_TRANSCRIPT_FILE}`);
+const ASSURANCE_TRANSCRIPT = fs.readFileSync(ASSURANCE_TRANSCRIPT_FILE, 'utf8').trim();
+if (fs.statSync(ASSURANCE_AUDIO_FILE).size !== ASSURANCE.audio.bytes) throw new Error('Assurance audio byte count does not match pages/assurance.json');
+if (sha256File(ASSURANCE_AUDIO_FILE) !== ASSURANCE.audio.sha256) throw new Error('Assurance audio SHA-256 does not match pages/assurance.json');
+if (sha256File(ASSURANCE_TRANSCRIPT_FILE) !== ASSURANCE.audio.transcriptSha256) throw new Error('Assurance transcript SHA-256 does not match pages/assurance.json');
 const OBSERVATORY_PIPELINE_FILE = path.join(ROOT, 'assets', 'art', 'observatory-pipeline.png');
 const OBSERVATORY_PIPELINE_PROVENANCE = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets', 'art', 'observatory-pipeline.provenance.json'), 'utf8'));
 if (sha256File(OBSERVATORY_PIPELINE_FILE) !== OBSERVATORY_PIPELINE_PROVENANCE.sha256) throw new Error('Observatory pipeline SHA-256 does not match its provenance record');
@@ -80,6 +89,8 @@ function inline(md) {
     stash.push(m); return ` ${stash.length - 1} `;
   });
   s = esc(s);
+  s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (m, a, u) =>
+    `<img class="inline-img" src="${escAttr(u)}" alt="${escAttr(a)}">`);
   s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, t, u) =>
     `<a href="${escAttr(u)}"${/^https?:/.test(u) ? ' rel="noopener"' : ''}>${t}</a>`);
   s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
@@ -1191,9 +1202,18 @@ simplePage('observatory/', 'Policy Identification Observatory', 'A standing agen
   }] : [])]
 });
 simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'Why verification, not generation, binds government use of AI agents: four quantitative bounds, the verification cost evidence, research avenues that make assurance cheaper and more capable, and sixteen ranked projects.', 'assurance.md', 'WebPage', {
+  art: '/assets/art/assurance.svg',
+  og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'assurance.png')) ? '/assets/og/assurance.png' : null,
   kicker: 'Observatory essay \u00b7 4 August 2026',
   standfirst: 'The technical argument that checking AI-generated evidence, not producing it, is the binding constraint on government analysis; the research avenues that would relax it; and sixteen tractable projects, ranked by probability of delivery.',
-  datePublished: '2026-08-04'
+  datePublished: ASSURANCE.datePublished,
+  dateModified: ASSURANCE.dateModified,
+  audio: {
+    name: 'The Case for Assurance Infrastructure \u2014 audio briefing',
+    description: 'A narrated overview of the essay: the four bounds, the verification cost evidence, and the ranked research programme.',
+    ...ASSURANCE.audio,
+    transcript: ASSURANCE_TRANSCRIPT
+  }
 });
 simplePage('ai/', 'For AI agents and automated research tools', 'Machine-readable endpoints, metadata conventions, and follow-up problem lists for research agents.', 'ai.md', 'WebPage');
 feeds();
