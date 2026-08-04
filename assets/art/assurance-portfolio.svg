@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-labelledby="t3 d3">
 <title id="t3">The sixteen projects: probability of delivery against payoff, medalled by tier</title>
-<desc id="d3">A scatter plot. Horizontal axis: probability the project delivers its resolution criterion, from 0.1 to 0.9. Vertical axis: payoff conditional on delivery, from 0.4 to 0.9. Sixteen numbered points drawn as medals in tier colours: gold for projects 1 and 2 at the right, silver for projects 3 to 6 in the middle, bronze for projects 7 to 11 clustered near probability 0.4, teal for projects 12 to 16 at the left. The highest payoffs, projects 6 at 0.85 and 5 at 0.82, are silver. Project 16 sits bottom-left at probability 0.15 but payoff 0.80, annotated as the project that needs a government host. A dashed amber line marks the coin-flip probability of one half.</desc>
+<desc id="d3">A scatter plot. Horizontal axis: probability the project delivers its resolution criterion under agent execution, from 0.1 to 0.9. Vertical axis: supersession-discounted payoff conditional on delivery, from 0.4 to 0.9. Sixteen numbered points drawn as medals in tier colours: gold for projects 1 and 2 at the right, silver for projects 3 to 7 in the middle including the coverage census at payoff 0.82, bronze for projects 8 to 12 clustered near probability 0.4 to 0.5, teal for projects 13 to 16 at the left. Project 16 sits bottom-left at probability 0.16 but payoff 0.82, annotated as the project that needs a government host. A dashed amber line marks the coin-flip probability of one half.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#151a1e"/><stop offset="1" stop-color="#1e2a2e"/></linearGradient></defs>
 <rect width="1200" height="620" fill="url(#bg)"/>
 <line x1="0" y1="0" x2="0" y2="620" stroke="#e7e5e4" stroke-width="1" opacity="0.03"/>
@@ -29,14 +29,14 @@
 <line x1="1150" y1="0" x2="1150" y2="620" stroke="#e7e5e4" stroke-width="1" opacity="0.03"/>
 <line x1="1200" y1="0" x2="1200" y2="620" stroke="#e7e5e4" stroke-width="1" opacity="0.03"/>
 <text x="60" y="58" font-family="Georgia, 'Times New Roman', serif" font-size="27" fill="#e7e5e4">The portfolio — deliverability against payoff, a medal for every tier</text>
-<line x1="232" y1="110" x2="232" y2="510" stroke="#e7e5e4" stroke-width="1" opacity="0.07"/>
-<text x="232" y="538" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">0.2</text>
-<line x1="478" y1="110" x2="478" y2="510" stroke="#e7e5e4" stroke-width="1" opacity="0.07"/>
-<text x="478" y="538" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">0.4</text>
-<line x1="722" y1="110" x2="722" y2="510" stroke="#e7e5e4" stroke-width="1" opacity="0.07"/>
-<text x="722" y="538" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">0.6</text>
-<line x1="968" y1="110" x2="968" y2="510" stroke="#e7e5e4" stroke-width="1" opacity="0.07"/>
-<text x="968" y="538" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">0.8</text>
+<line x1="230" y1="110" x2="230" y2="510" stroke="#e7e5e4" stroke-width="1" opacity="0.07"/>
+<text x="230" y="538" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">0.2</text>
+<line x1="469" y1="110" x2="469" y2="510" stroke="#e7e5e4" stroke-width="1" opacity="0.07"/>
+<text x="469" y="538" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">0.4</text>
+<line x1="708" y1="110" x2="708" y2="510" stroke="#e7e5e4" stroke-width="1" opacity="0.07"/>
+<text x="708" y="538" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">0.6</text>
+<line x1="947" y1="110" x2="947" y2="510" stroke="#e7e5e4" stroke-width="1" opacity="0.07"/>
+<text x="947" y="538" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">0.8</text>
 <line x1="110" y1="430" x2="1090" y2="430" stroke="#e7e5e4" stroke-width="1" opacity="0.07"/>
 <text x="98" y="435" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="end">0.5</text>
 <line x1="110" y1="350" x2="1090" y2="350" stroke="#e7e5e4" stroke-width="1" opacity="0.07"/>
@@ -47,60 +47,60 @@
 <text x="98" y="195" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="end">0.8</text>
 <line x1="110" y1="510" x2="1090" y2="510" stroke="#8a938f" stroke-width="1.2" opacity="0.7"/>
 <line x1="110" y1="110" x2="110" y2="510" stroke="#8a938f" stroke-width="1.2" opacity="0.7"/>
-<line x1="600" y1="110" x2="600" y2="510" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.4"/>
-<text x="608" y="498" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#f59e0b" opacity="0.8">coin flip</text>
-<text x="600" y="568" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#8a938f" text-anchor="middle">P(delivers its resolution criterion) — median of three adversarial judges</text>
-<text x="46" y="310" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#8a938f" text-anchor="middle" transform="rotate(-90 46 310)">payoff, conditional on delivery</text>
-<circle cx="1029" cy="430" r="14" fill="#fde68a"/>
-<circle cx="1029" cy="430" r="14" fill="none" stroke="#b45309" stroke-width="2.4"/>
-<text x="1029" y="436" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#7c3a00" text-anchor="middle">1</text>
-<circle cx="968" cy="430" r="14" fill="#fde68a"/>
-<circle cx="968" cy="430" r="14" fill="none" stroke="#b45309" stroke-width="2.4"/>
-<text x="968" y="436" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#7c3a00" text-anchor="middle">2</text>
-<circle cx="747" cy="310" r="14" fill="#f1f5f9"/>
-<circle cx="747" cy="310" r="14" fill="none" stroke="#6b7280" stroke-width="2.4"/>
-<text x="747" y="316" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#374151" text-anchor="middle">3</text>
-<circle cx="661" cy="230" r="14" fill="#f1f5f9"/>
-<circle cx="661" cy="230" r="14" fill="none" stroke="#6b7280" stroke-width="2.4"/>
-<text x="661" y="236" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#374151" text-anchor="middle">4</text>
-<circle cx="576" cy="174" r="14" fill="#f1f5f9"/>
-<circle cx="576" cy="174" r="14" fill="none" stroke="#6b7280" stroke-width="2.4"/>
-<text x="576" y="180" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#374151" text-anchor="middle">5</text>
-<circle cx="539" cy="150" r="14" fill="#f1f5f9"/>
-<circle cx="539" cy="150" r="14" fill="none" stroke="#6b7280" stroke-width="2.4"/>
-<text x="539" y="156" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#374151" text-anchor="middle">6</text>
-<circle cx="502" cy="310" r="14" fill="#f3c8a2"/>
-<circle cx="502" cy="310" r="14" fill="none" stroke="#7c4a21" stroke-width="2.4"/>
-<text x="502" y="316" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#5b3416" text-anchor="middle">7</text>
-<circle cx="478" cy="190" r="14" fill="#f3c8a2"/>
-<circle cx="478" cy="190" r="14" fill="none" stroke="#7c4a21" stroke-width="2.4"/>
-<text x="478" y="196" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#5b3416" text-anchor="middle">8</text>
-<circle cx="478" cy="390" r="14" fill="#f3c8a2"/>
-<circle cx="478" cy="390" r="14" fill="none" stroke="#7c4a21" stroke-width="2.4"/>
-<text x="478" y="396" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#5b3416" text-anchor="middle">9</text>
-<circle cx="478" cy="270" r="14" fill="#f3c8a2"/>
-<circle cx="478" cy="270" r="14" fill="none" stroke="#7c4a21" stroke-width="2.4"/>
-<text x="478" y="276" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#5b3416" text-anchor="middle">10</text>
-<circle cx="453" cy="350" r="14" fill="#f3c8a2"/>
-<circle cx="453" cy="350" r="14" fill="none" stroke="#7c4a21" stroke-width="2.4"/>
-<text x="453" y="356" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#5b3416" text-anchor="middle">11</text>
-<circle cx="379" cy="350" r="14" fill="#99f6e4"/>
-<circle cx="379" cy="350" r="14" fill="none" stroke="#0f766e" stroke-width="2.4"/>
-<text x="379" y="356" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#0b3a37" text-anchor="middle">12</text>
-<circle cx="330" cy="190" r="14" fill="#99f6e4"/>
-<circle cx="330" cy="190" r="14" fill="none" stroke="#0f766e" stroke-width="2.4"/>
-<text x="330" y="196" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#0b3a37" text-anchor="middle">13</text>
-<circle cx="294" cy="310" r="14" fill="#99f6e4"/>
-<circle cx="294" cy="310" r="14" fill="none" stroke="#0f766e" stroke-width="2.4"/>
-<text x="294" y="316" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#0b3a37" text-anchor="middle">14</text>
-<circle cx="208" cy="390" r="14" fill="#99f6e4"/>
-<circle cx="208" cy="390" r="14" fill="none" stroke="#0f766e" stroke-width="2.4"/>
-<text x="208" y="396" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#0b3a37" text-anchor="middle">15</text>
-<circle cx="171" cy="190" r="14" fill="#99f6e4"/>
-<circle cx="171" cy="190" r="14" fill="none" stroke="#0f766e" stroke-width="2.4"/>
-<text x="171" y="196" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#0b3a37" text-anchor="middle">16</text>
-<text x="998" y="474" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">gold: cheap, no permissions needed</text>
-<text x="539" y="124" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">silver: the measurement core, highest payoff</text>
-<text x="478" y="434" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">bronze: the two-in-five tier</text>
-<text x="195" y="164" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#f59e0b">teal: the hard tail — 16 needs a government host</text>
+<line x1="588" y1="110" x2="588" y2="510" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.4"/>
+<text x="596" y="498" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#f59e0b" opacity="0.8">coin flip</text>
+<text x="600" y="568" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#8a938f" text-anchor="middle">P(delivers its resolution criterion under agent execution) — median of three adversarial judges</text>
+<text x="46" y="310" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#8a938f" text-anchor="middle" transform="rotate(-90 46 310)">payoff, conditional on delivery, supersession-discounted</text>
+<circle cx="1042" cy="286" r="14" fill="#fde68a"/>
+<circle cx="1042" cy="286" r="14" fill="none" stroke="#b45309" stroke-width="2.4"/>
+<text x="1042" y="292" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#7c3a00" text-anchor="middle">1</text>
+<circle cx="947" cy="390" r="14" fill="#fde68a"/>
+<circle cx="947" cy="390" r="14" fill="none" stroke="#b45309" stroke-width="2.4"/>
+<text x="947" y="396" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#7c3a00" text-anchor="middle">2</text>
+<circle cx="803" cy="270" r="14" fill="#f1f5f9"/>
+<circle cx="803" cy="270" r="14" fill="none" stroke="#6b7280" stroke-width="2.4"/>
+<text x="803" y="276" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#374151" text-anchor="middle">3</text>
+<circle cx="714" cy="286" r="14" fill="#f1f5f9"/>
+<circle cx="714" cy="286" r="14" fill="none" stroke="#6b7280" stroke-width="2.4"/>
+<text x="714" y="292" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#374151" text-anchor="middle">4</text>
+<circle cx="702" cy="254" r="14" fill="#f1f5f9"/>
+<circle cx="702" cy="254" r="14" fill="none" stroke="#6b7280" stroke-width="2.4"/>
+<text x="702" y="260" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#374151" text-anchor="middle">5</text>
+<circle cx="672" cy="174" r="14" fill="#f1f5f9"/>
+<circle cx="672" cy="174" r="14" fill="none" stroke="#6b7280" stroke-width="2.4"/>
+<text x="672" y="180" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#374151" text-anchor="middle">6</text>
+<circle cx="648" cy="310" r="14" fill="#f1f5f9"/>
+<circle cx="648" cy="310" r="14" fill="none" stroke="#6b7280" stroke-width="2.4"/>
+<text x="648" y="316" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#374151" text-anchor="middle">7</text>
+<circle cx="612" cy="470" r="14" fill="#f3c8a2"/>
+<circle cx="612" cy="470" r="14" fill="none" stroke="#7c4a21" stroke-width="2.4"/>
+<text x="612" y="476" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#5b3416" text-anchor="middle">8</text>
+<circle cx="588" cy="334" r="14" fill="#f3c8a2"/>
+<circle cx="588" cy="334" r="14" fill="none" stroke="#7c4a21" stroke-width="2.4"/>
+<text x="588" y="340" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#5b3416" text-anchor="middle">9</text>
+<circle cx="502" cy="390" r="14" fill="#f3c8a2"/>
+<circle cx="502" cy="390" r="14" fill="none" stroke="#7c4a21" stroke-width="2.4"/>
+<text x="502" y="396" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#5b3416" text-anchor="middle">10</text>
+<circle cx="483" cy="390" r="14" fill="#f3c8a2"/>
+<circle cx="483" cy="390" r="14" fill="none" stroke="#7c4a21" stroke-width="2.4"/>
+<text x="483" y="396" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#5b3416" text-anchor="middle">11</text>
+<circle cx="469" cy="366" r="14" fill="#f3c8a2"/>
+<circle cx="469" cy="366" r="14" fill="none" stroke="#7c4a21" stroke-width="2.4"/>
+<text x="469" y="372" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#5b3416" text-anchor="middle">12</text>
+<circle cx="385" cy="206" r="14" fill="#99f6e4"/>
+<circle cx="385" cy="206" r="14" fill="none" stroke="#0f766e" stroke-width="2.4"/>
+<text x="385" y="212" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#0b3a37" text-anchor="middle">13</text>
+<circle cx="301" cy="390" r="14" fill="#99f6e4"/>
+<circle cx="301" cy="390" r="14" fill="none" stroke="#0f766e" stroke-width="2.4"/>
+<text x="301" y="396" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#0b3a37" text-anchor="middle">14</text>
+<circle cx="289" cy="350" r="14" fill="#99f6e4"/>
+<circle cx="289" cy="350" r="14" fill="none" stroke="#0f766e" stroke-width="2.4"/>
+<text x="289" y="356" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#0b3a37" text-anchor="middle">15</text>
+<circle cx="182" cy="174" r="14" fill="#99f6e4"/>
+<circle cx="182" cy="174" r="14" fill="none" stroke="#0f766e" stroke-width="2.4"/>
+<text x="182" y="180" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="bold" fill="#0b3a37" text-anchor="middle">16</text>
+<text x="994" y="258" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">gold: durable, fast, no permissions needed</text>
+<text x="672" y="146" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">silver: joint-highest payoff</text>
+<text x="492" y="436" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8a938f" text-anchor="middle">bronze: even odds, perishable measurements</text>
+<text x="206" y="148" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#f59e0b">teal: 16 needs a government host</text>
 </svg>
