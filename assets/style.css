@@ -222,3 +222,11 @@ a.play { display: flex; align-items: center; justify-content: center; text-decor
 
 .inline-img { display: inline-block; height: 1.6em; width: auto; vertical-align: -0.42em; margin: 0 .1em 0 0; }
 td .inline-img { height: 1.9em; vertical-align: middle; }
+
+/* Plain-English companion essay (drop-down near the top of a page body) */
+.companion-essay { margin: 0 0 1.8rem; background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--accent-2); border-radius: 12px; }
+.companion-essay summary { cursor: pointer; padding: .85rem 1.15rem; font-weight: 600; color: var(--accent-2); }
+.companion-essay summary:hover { color: var(--accent); }
+.companion-essay .companion-note { display: block; font-family: var(--sans); font-size: .84rem; font-weight: 400; color: var(--muted); margin-top: .2rem; }
+.companion-essay[open] summary { border-bottom: 1px solid var(--line); }
+.companion-body { padding: .1rem 1.3rem 1.1rem; }

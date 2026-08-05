@@ -696,6 +696,18 @@ ${foot}`;
 }
 
 /* --------------------------------------------------------------- pages */
+/* ------------------------------------------ plain-English companion essay */
+function companionParts(companion) {
+  const raw = fs.readFileSync(path.join(ROOT, 'pages', companion.mdFile), 'utf8');
+  const body = raw.replace(/^# .*\n+/, '').replace(/^## /gm, '### ');
+  const html = `<details class="companion-essay">
+<summary>${esc(companion.summaryTitle)}<span class="companion-note">${esc(companion.summaryNote)}</span></summary>
+<div class="companion-body">${markdown(body).replace(/ id="/g, ' id="plain-')}</div>
+</details>`;
+  const md = `## ${companion.mdHeading}\n\n${body.trim()}\n\n`;
+  return { html, md };
+}
+
 function simplePage(rel, title, description, mdFile, type, opts = {}) {
   const url = `${BASE}/${rel}`;
   const pageId = `${url}#page`;
@@ -808,6 +820,7 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     </dl>
   </aside>` : '';
   const bodyHtml = `${markdown(fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8'))}${videoHtml}`;
+  const companion = opts.companion ? companionParts(opts.companion) : { html: '', md: '' };
   const coverHtml = opts.art ? `<div class="cover"><img src="${opts.art}" alt="" loading="eager"></div>` : '';
   const headingHtml = `${opts.kicker ? `<p class="kicker">${esc(opts.kicker)}</p>` : ''}
     <h1>${esc(title)}</h1>
@@ -816,13 +829,13 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     ${coverHtml}
     ${headingHtml}
     ${briefingsHtml}
-    <div class="release-grid"><div class="body">${bodyHtml}</div>${resourcesAside}</div>
+    <div class="release-grid"><div class="body">${companion.html}${bodyHtml}</div>${resourcesAside}</div>
   </div></article>` : `<article class="release"><div class="wrap"><div class="prose">
     ${coverHtml}
     ${headingHtml}
     ${audioHtml}
     ${resourcesHtml}
-    <div class="body">${bodyHtml}</div>
+    <div class="body">${companion.html}${bodyHtml}</div>
   </div></div></article>`;
   const audioController = opts.releaseLayout && opts.audio ? `<script>
 (function(){var b=document.querySelector('.play[data-audio]');if(!b)return;var a=document.getElementById(b.dataset.audio);
@@ -844,7 +857,7 @@ ${foot}`;
     ? `## Video overview\n\n- YouTube: ${opts.video.url}\n- Embedded player: ${url}#media\n\n`
     : '';
   write(rel + 'index.md', `---\ntitle: "${title.replace(/"/g, '\\"')}"\nurl: ${url}\nrepository: ${opts.repository || ''}\nrelease: ${opts.release || ''}\ndoi: ${opts.doi || ''}\nlicense: CC0-1.0\nstatus: ${opts.status || ''}\n---\n\n# ${title}\n\n${
-    opts.standfirst ? opts.standfirst + '\n\n' : ''}${audioMarkdown}${videoMarkdown}${resourceMarkdown}${fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8')}`);
+    opts.standfirst ? opts.standfirst + '\n\n' : ''}${audioMarkdown}${videoMarkdown}${resourceMarkdown}${companion.md}${fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8')}`);
   if (opts.machineRecord) write(rel + 'index.json', JSON.stringify(opts.machineRecord, null, 2) + '\n');
 }
 
@@ -887,7 +900,7 @@ ${items}
 function sitemap() {
   const urls = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-04' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished }))
   ];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
@@ -1210,6 +1223,12 @@ simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'W
   standfirst: 'The technical argument that checking AI-generated evidence, not producing it, is the binding constraint on government analysis; the research avenues that would relax it; and sixteen tractable projects, ranked by probability of delivery.',
   datePublished: ASSURANCE.datePublished,
   dateModified: ASSURANCE.dateModified,
+  companion: {
+    mdFile: 'assurance-plain.md',
+    summaryTitle: 'Plain-English version: Who Checks the Machines?',
+    summaryNote: 'The same argument without the technical machinery · about a 15-minute read · select to expand',
+    mdHeading: 'Plain-English companion: Who Checks the Machines?'
+  },
   sidebarStatus: 'Observatory essay. Every derived number independently recomputed and the argument adversarially reviewed before publication; probabilities are calibrated judgements, not measurements.',
   machineRecord: ASSURANCE_RECORD,
   resources: [
