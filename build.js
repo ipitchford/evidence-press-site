@@ -678,6 +678,23 @@ ${Array.from({ length: 9 }, (_, k) => {
     <p class="standfirst">${esc(CONFIG.tagline)}. Each release explains one paper twice — once for curious readers, once for specialists — with the paper, code, data, and checks one click away.</p>
   </div>
 </section>
+<section class="wrap programme-band" aria-labelledby="programme-title">
+  <h2 id="programme-title" class="sr-only">Standing programme</h2>
+  <div class="programme-cards">
+    <a class="programme-card" href="/observatory/">
+      <p class="card-date">Research programme · 2 August 2026</p>
+      <h3>Policy Identification Observatory</h3>
+      <p>A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.</p>
+      <p class="card-links"><span class="has-audio" title="Audio briefing available">♪ audio</span><span class="has-audio" title="Video briefing available">▸ video</span></p>
+    </a>
+    <a class="programme-card" href="/observatory/assurance/">
+      <p class="card-date">Observatory essay · 4 August 2026</p>
+      <h3>The Case for Assurance Infrastructure</h3>
+      <p>Why checking AI-generated evidence, not producing it, binds government use of AI agents — four quantitative bounds, the research avenues that would relax the constraint, and sixteen ranked projects. Includes a plain-English companion essay.</p>
+      <p class="card-links"><span class="has-audio" title="Audio briefing available">♪ audio</span><span class="has-audio" title="Video briefing available">▸ video</span></p>
+    </a>
+  </div>
+</section>
 <section class="wrap" aria-label="Releases">
   <div class="listhead">
     <h2 class="sr-only">All releases</h2>
