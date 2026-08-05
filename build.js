@@ -1253,6 +1253,7 @@ simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'W
     { label: 'Project record', url: `${BASE}/observatory/assurance/index.json`, linkText: 'index.json', detail: 'All 21 projects: full resolution criteria, per-judge scores, scoring definitions.' },
     { label: 'Audio briefing', url: `${BASE}/assets/audio/assurance.mp3`, linkText: 'assurance.mp3', detail: `${ASSURANCE.audio.durationLabel} \u00b7 AI-narrated \u00b7 SHA-256 receipt in pages/assurance.json.` },
     { label: 'Transcript', url: `${BASE}/assets/audio/assurance-transcript.txt`, linkText: 'assurance-transcript.txt', detail: 'The narration source text.' },
+    { label: 'Comic', url: `${BASE}/assets/comics/who-checks-the-machines`, linkText: 'who-checks-the-machines', detail: 'The plain-English companion essay retold as a one-page comic. Every number in it is real.' },
     { label: 'Parent programme', url: `${BASE}/observatory/`, linkText: 'Policy Identification Observatory', detail: 'The standing agent-native audit programme this essay supports.' }
   ],
   audio: {
