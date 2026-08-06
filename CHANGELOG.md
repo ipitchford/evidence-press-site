@@ -4,6 +4,14 @@ Notable changes to the Evidence Press publishing software. Versions follow
 semantic versioning. Research releases have their own versions and DOIs and
 are not covered here.
 
+## Unreleased
+
+- The legacy address and www now **301-redirect** to the canonical domain
+  instead of serving duplicate content with canonical tags. Every old link
+  still works — it now arrives at evidencepress.org with its path intact.
+  Deployment-preview aliases are not redirected, so specific deployments
+  remain inspectable.
+
 ## 1.1.4 — 2026-08-06
 
 - The site's canonical address is now **https://evidencepress.org**. The
