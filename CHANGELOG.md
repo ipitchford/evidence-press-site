@@ -4,6 +4,13 @@ Notable changes to the Evidence Press publishing software. Versions follow
 semantic versioning. Research releases have their own versions and DOIs and
 are not covered here.
 
+## 1.1.3 — 2026-08-06
+
+Release housekeeping for the first archived deposit: tracks the
+already-deployed `observatory-pipeline.svg` (published content belongs in the
+repository) and aligns every version marker, so the archived snapshot rebuilds
+the deployment byte-for-byte. No functional change.
+
 ## 1.1.2 — 2026-08-06
 
 ### Fixed
