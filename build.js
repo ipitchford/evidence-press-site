@@ -1309,6 +1309,37 @@ function apiStability() {
   };
 }
 
+/* Cloudflare Pages serves this file, with a genuine 404 status, for any path it
+   cannot match. Without it every missing URL returns 200 and the site's own
+   home page — so an agent asking for a release that does not exist receives
+   HTML, a success status, and no way to tell absence from presence. For a
+   catalogue whose point is machine-actionability that is a correctness bug,
+   not a cosmetic one. */
+function notFoundPage() {
+  const html = `${head({
+    title: `Page not found · ${CONFIG.siteName}`,
+    description: 'No page exists at this address.',
+    canonical: `${BASE}/404.html`,
+    jsonld: { '@context': 'https://schema.org', '@graph': [websiteNode()] },
+    metaExtra: '<meta name="robots" content="noindex">\n'
+  })}
+<article class="release"><div class="wrap"><div class="prose">
+  <p class="kicker">404 · not found</p>
+  <h1>No page exists at this address</h1>
+  <p class="standfirst">The address may be mistyped, or it may never have existed. Nothing that has been published here is ever removed: every URL this site has published is recorded in a ledger, and a build that would drop one is refused.</p>
+  <p>If you followed a link from elsewhere and expected a release, it may help to search the catalogue.</p>
+  <ul>
+    <li><a href="/">All releases</a> — the full catalogue, filterable by topic</li>
+    <li><a href="/api/papers.json">papers.json</a> — every release as structured data</li>
+    <li><a href="/about/">About</a> — what this site publishes, and what its assurance states mean</li>
+    <li><a href="/ai/">For AI agents</a> — machine-readable endpoints and conventions</li>
+  </ul>
+  <p>Automated clients: this response carries HTTP status 404. A release that exists always serves <code>paper.json</code> at <code>/releases/&lt;slug&gt;/paper.json</code> with a matching <code>slug</code> field.</p>
+</div></div></article>
+${foot}`;
+  write('404.html', html);
+}
+
 function api() {
   const papersDoc = {
     schemaVersion: SCHEMA_VERSION,
@@ -1701,5 +1732,6 @@ simplePage('ai/', 'For AI agents and automated research tools', 'Machine-readabl
 feeds();
 sitemap();
 llms();
+notFoundPage();
 api();
 console.log(`Built ${papers.length} releases plus Observatory → dist/  (paper audio: ${papers.filter(p => p.audio).length}; Observatory audio: 1; art: ${papers.filter(p => p.art).length}; og: ${papers.filter(p => p.og).length})`);

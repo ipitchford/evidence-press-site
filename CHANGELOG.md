@@ -8,6 +8,14 @@ are not covered here.
 
 ### Fixed
 
+- **Missing URLs returned HTTP 200.** The site shipped no `404.html`, so
+  Cloudflare Pages answered every unmatched path with a success status and the
+  home page's HTML. An agent requesting `paper.json` for a nonexistent release
+  could not distinguish absence from presence. The build now emits a `404.html`
+  (served with a genuine 404 status), which tells automated clients that an
+  existing release always serves `/releases/<slug>/paper.json` with a matching
+  `slug` field.
+
 - **Operating-system metadata was published.** `assets/` was copied into the
   site wholesale, so `.DS_Store` files were publicly served at
   `/assets/.DS_Store` and `/assets/katex/.DS_Store`. They also differ between
