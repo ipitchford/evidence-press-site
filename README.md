@@ -4,6 +4,10 @@ A dependency-free static site for press releases about new research published wi
 
 Live site: https://evidence-press.pages.dev
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21817379.svg)](https://doi.org/10.5281/zenodo.21817379)
+
+Archived on Zenodo: concept DOI [10.5281/zenodo.21817379](https://doi.org/10.5281/zenodo.21817379) always resolves to the latest archived version; each release also has its own version DOI (v1.1.3 is [10.5281/zenodo.21817380](https://doi.org/10.5281/zenodo.21817380)). Cite the software with these; cite a research release with that release's own DOI.
+
 ## Build
 
 ```
