@@ -12,13 +12,16 @@
         "--disable-dev-shm-usage"
       ]
     },
-    "hideElements": ".katex-html, .hero-art",
+    "hideElements": ".katex-html",
     "ignore": [
       "frame-tested"
     ]
   },
   "urls": [
-    "http://127.0.0.1:8080/",
+    {
+      "url": "http://127.0.0.1:8080/",
+      "hideElements": ".katex-html, .hero h1, .hero .standfirst"
+    },
     "http://127.0.0.1:8080/about/",
     "http://127.0.0.1:8080/ai/",
     "http://127.0.0.1:8080/observatory/",

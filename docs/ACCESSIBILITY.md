@@ -29,12 +29,14 @@ iframe, so it reports that the YouTube player was *not tested*. The player's
 internals are not under this site's control; what is under our control is the
 `title` attribute on every embed, which is present.
 
-**`.hero-art`** — the homepage hero text sits over an absolutely-positioned SVG,
-and axe cannot sample a background painted by artwork, so it flags the heading
-and standfirst as indeterminate contrast. Hiding the decorative layer lets axe
-evaluate against `.hero`'s real `background-color` instead of skipping the
-check. The exclusion is safe because the artwork can only shift the background
-within a passing range — computed from source:
+**The homepage hero heading and standfirst** (`.hero h1`, `.hero .standfirst`)
+— this text sits over an absolutely-positioned SVG, and axe cannot resolve what
+colour is painted behind it. Hiding the artwork does not help: axe still
+declines to compute a background, so it reports indeterminate contrast on both
+elements. They are therefore excluded from the automated contrast check **on
+the homepage only** — `color-contrast` stays active on every other element and
+every other page — and their contrast is verified by computation from source
+instead:
 
 | Text | Over | Ratio | AA needs |
 |---|---|---|---|
@@ -46,8 +48,10 @@ within a passing range — computed from source:
 | `.standfirst` `#ccfbf1` | worst case: 21% `#2dd4bf` over `#134e4a` | 5.67:1 | 4.5:1 |
 
 The worst case is the brightest decorative stroke at its maximum opacity over
-the lightest gradient stop. If the hero palette or the artwork's opacities
-change, recompute this table — the exclusion is only valid while these hold.
+the lightest gradient stop. **If the hero palette or the artwork's opacities
+change, recompute this table**: it is the only thing standing between this
+exclusion and an unchecked contrast failure. This is the one place on the site
+where a human calculation, not a tool, is the evidence.
 
 ## Implemented deliberately
 
