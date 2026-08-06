@@ -1,0 +1,34 @@
+{
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "mit",
+  "language": "eng",
+  "title": "Evidence Press: a publishing system for research released with its evidence",
+  "version": "1.1.0",
+  "creators": [
+    {
+      "name": "Pitchford, Ian"
+    }
+  ],
+  "description": "<p>Evidence Press is a dependency-free static publishing system that turns research-release metadata and prose into a coordinated set of human-readable pages and machine-actionable scholarly objects: persistent identifiers, structured metadata, an explicit assurance matrix, evidence-package links, RSS and JSON feeds, FAIR Signposting link sets, RO-Crate packages, and AI-provenance disclosure. It publishes each release twice over &mdash; once in plain language, once for specialists &mdash; and states on every page exactly what has and has not been checked.</p><p><strong>Design commitments.</strong> The build has no package dependencies, so the trusted computing base of the published record stays small and auditable. Output is deterministic: the build timestamp is taken from the commit rather than the clock, so the same source always rebuilds byte-for-byte and a third party can rebuild this archived version and compare it against the deployed site. A publication ledger refuses any build that would remove a previously published URL.</p><p><strong>Assurance is modelled as a matrix, not a ladder.</strong> Each release carries eight independent dimensions &mdash; archival availability, internal replay, independent rerun, independent reimplementation, formal verification, specialist review, editorial peer review, and data and environment reproducibility &mdash; each with a state of passed, partial, failed, not assessed or not applicable. Independent reproduction, formal verification and peer review answer different questions, and none ranks above another. An unassessed dimension is a statement about what nobody has yet done, not a finding against the work.</p><p><strong>Version 1.1.0</strong> responds to an external software-artifact review of 5 August 2026. It repairs a defect in the Markdown renderer that had corrupted a published theorem statement (placeholders for stashed mathematics could be confused with literal integers in prose), and adds the corresponding regression tests; it introduces the assurance matrix and derives the legacy verification booleans from it so the two cannot disagree; it adds an additive correction-notice mechanism, RO-Crate and Signposting representations, a versioned API with a published stability and deprecation policy, a Content-Security-Policy, accessibility improvements, and continuous integration covering renderer tests, schema conformance, cross-surface consistency, link checking, a byte-identical-rebuild assertion and an automated accessibility pass. The CHANGELOG in the archive records the full list.</p><p>The publishing software is MIT licensed. The research content it publishes is dedicated to the public domain under CC0 1.0.</p>",
+  "keywords": [
+    "scholarly communication",
+    "research software",
+    "reproducibility",
+    "machine-readable metadata",
+    "static site generator",
+    "FAIR",
+    "RO-Crate",
+    "FAIR Signposting",
+    "research assessment",
+    "open science"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://evidence-press.pages.dev",
+      "relation": "isSupplementTo",
+      "resource_type": "other"
+    }
+  ],
+  "notes": "This deposit archives the publishing software only. Each research release published with it is deposited separately under its own DOI, and those deposits carry the research claims and their evidence packages. Archiving this software makes no assertion about the correctness of any research it publishes."
+}
