@@ -4,7 +4,7 @@ Notable changes to the Evidence Press publishing software. Versions follow
 semantic versioning. Research releases have their own versions and DOIs and
 are not covered here.
 
-## Unreleased
+## 1.1.4 — 2026-08-06
 
 - The site's canonical address is now **https://evidencepress.org**. The
   previous address, evidence-press.pages.dev, continues to serve every
