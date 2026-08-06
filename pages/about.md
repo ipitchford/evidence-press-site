@@ -16,6 +16,26 @@ Every result here occupies a precise rung on a ladder of assurance:
 
 The distance between rungs 2 and 3 is the whole point of this site. Internal replay is real evidence — it rules out large classes of error, and anyone can rerun it — but it is not independent verification, and mistakes of encoding (where the thing checked is subtly not the thing claimed) remain logically possible. Each release page carries a verification-status box saying exactly this, and lists the open problems whose solution would move it up the ladder.
 
+## The ladder is shorthand; the matrix is the record
+
+The ladder above is a useful summary, and it is how most people first think about assurance. It is also, strictly, wrong in one respect: the rungs are not a single ordering. Independent reproduction, formal verification and peer review answer *different questions*, and none sits above another.
+
+- **Independent reproduction** asks whether someone else, working separately, reaches the same result.
+- **Formal verification** asks whether a formalised statement is machine-checked — and it is only as strong as the formalisation and the trusted base beneath it. A verified theorem can still be the wrong theorem.
+- **Peer review** asks whether experts, reading the argument, find it sound. Reviewers rarely rerun anything and almost never formalise anything.
+
+A release can have any of these without the others. So the authoritative record for each release is not a rung but an **assurance matrix**: eight independent dimensions — archival availability, internal replay, independent rerun, independent reimplementation, formal verification, specialist review, editorial peer review, and data and environment reproducibility — each carrying its own state.
+
+States are `passed`, `partial`, `failed`, `not assessed` or `not applicable`. The distinction between *not assessed* and *failed* is deliberate and load-bearing: almost every dimension on almost every release here is **not assessed**, which is a statement about what nobody has done yet, not a finding against the work.
+
+The matrix is published with every release, in the `assurance` field of its [JSON record](/api/papers.json) and in its [RO-Crate package](/api/schema.json). The older `verification` booleans are still published for compatibility, but they are now *derived* from the matrix rather than asserted separately, so the two can never disagree.
+
+## Corrections
+
+When something published here turns out to be wrong, the correction is added, not substituted. The release keeps a dated entry recording what it previously said, what it now says, and why it changed. Quietly repairing a page would leave a reader unable to tell whether the version they saw was the wrong one.
+
+Corrections are classified by what they touch — presentation, metadata, claim, or evidence — because "the page displayed a formula where a number should have been" and "the result is wrong" deserve very different reactions from a reader.
+
 ## Why publish before review?
 
 Because the evidence is executable. A traditional preprint asks readers to trust prose; these releases ask readers to run code. Publishing the full evidence architecture early — with SHA-256 manifests, pinned environments, claim-to-evidence indexes, and deliberately mutated negative controls — lets anyone, human or machine, begin verification or refutation immediately. Refutation is a welcome outcome: a broken claim withdrawn quickly is a success of the format.

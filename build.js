@@ -13,6 +13,25 @@ const DIST = path.join(ROOT, 'dist');
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const BASE = CONFIG.baseUrl.replace(/\/$/, '');
 const SCHEMA_VERSION = '1.2';
+/* Build identity. The timestamp comes from the commit, never from the clock, so
+   the same source always produces byte-identical output and a third party can
+   rebuild a tag and compare. */
+const BUILD = (() => {
+  const git = cmd => {
+    try {
+      return require('child_process')
+        .execSync(cmd, { cwd: __dirname, stdio: ['ignore', 'pipe', 'ignore'] })
+        .toString().trim() || null;
+    } catch { return null; }
+  };
+  return {
+    softwareVersion: CONFIG.softwareVersion || null,
+    sourceCommit: git('git rev-parse --short HEAD'),
+    sourceCommitFull: git('git rev-parse HEAD'),
+    sourceDate: git('git log -1 --format=%cI'),
+    schemaVersion: SCHEMA_VERSION
+  };
+})();
 const OBSERVATORY = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'observatory.json'), 'utf8'));
 const OBSERVATORY_BODY = fs.readFileSync(path.join(ROOT, 'pages', 'observatory.md'), 'utf8');
 const OBSERVATORY_PLACEHOLDER = /^__OBSERVATORY_[A-Z0-9_]+__$/;
@@ -77,26 +96,53 @@ const rfc822 = d => new Date(d + 'T12:00:00Z').toUTCString();
 const niceDate = d => new Date(d + 'T12:00:00Z').toLocaleDateString('en-GB',
   { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 
+/* Every generated path must stay inside dist/. Source-controlled values (slugs,
+   page paths) reach this function, so containment is asserted, not assumed. */
 function write(rel, content) {
   const p = path.join(DIST, rel);
+  const root = path.resolve(DIST);
+  const target = path.resolve(p);
+  if (target !== root && !target.startsWith(root + path.sep))
+    throw new Error(`refusing to write outside dist/: ${rel}`);
   fs.mkdirSync(path.dirname(p), { recursive: true });
   fs.writeFileSync(p, content);
 }
 
 /* ------------------------------------------------- minimal markdown → html */
+/* Only these schemes may reach an href/src. A link carrying anything else is a
+   build failure, never a silently dropped or silently emitted link: source
+   markdown is trusted input, so an unexpected scheme means the source is wrong.
+   Scheme-less values (/path, ../path, #anchor) are relative and always allowed. */
+const ALLOWED_SCHEMES = new Set(['http:', 'https:', 'mailto:']);
+function safeUrl(url, context) {
+  const raw = String(url).trim();
+  const scheme = raw.match(/^([a-zA-Z][a-zA-Z0-9+.-]*):/);
+  if (scheme && !ALLOWED_SCHEMES.has(scheme[1].toLowerCase() + ':'))
+    throw new Error(`unsupported URI scheme "${scheme[1]}:" in ${context}: ${raw.slice(0, 120)}`);
+  return raw;
+}
+
+/* Inline maths delimiters follow the Pandoc rule: an opening "$" is not
+   followed by whitespace, a closing "$" is not preceded by whitespace and not
+   followed by a digit. That last clause is what stops a currency range such as
+   "$290k–$430k" being parsed as maths. */
+const INLINE_TOKEN = /(`[^`]+`|\$(?!\s)[^$\n]*[^$\s]\$(?!\d))/g;
+
 function inline(md) {
   const stash = [];
-  let s = md.replace(/(`[^`]+`|\$[^$\n]+\$)/g, m => {
-    stash.push(m); return ` ${stash.length - 1} `;
+  // U+0000 cannot survive the sanitisation below, so the sentinels can never
+  // collide with document text (integers in prose corrupted a live page, 2026-08-05).
+  let s = String(md).replace(/\u0000/g, '').replace(INLINE_TOKEN, m => {
+    stash.push(m); return `\u0000${stash.length - 1}\u0000`;
   });
   s = esc(s);
   s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (m, a, u) =>
-    `<img class="inline-img" src="${escAttr(u)}" alt="${escAttr(a)}">`);
+    `<img class="inline-img" src="${escAttr(safeUrl(u, 'image'))}" alt="${escAttr(a)}">`);
   s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, t, u) =>
-    `<a href="${escAttr(u)}"${/^https?:/.test(u) ? ' rel="noopener"' : ''}>${t}</a>`);
+    `<a href="${escAttr(safeUrl(u, 'link'))}"${/^https?:/.test(u) ? ' rel="noopener"' : ''}>${t}</a>`);
   s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   s = s.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
-  s = s.replace(/ (\d+) /g, (m, i) => {
+  s = s.replace(/\u0000(\d+)\u0000/g, (m, i) => {
     const v = stash[+i];
     if (v === undefined) return m;
     if (v.startsWith('`')) return `<code>${esc(v.slice(1, -1))}</code>`;
@@ -210,6 +256,255 @@ const papers = fs.readdirSync(papersDir)
 
 const urlOf = p => `${BASE}/releases/${p.slug}/`;
 
+/* ------------------------------------------------- authoring-schema gate */
+/* A strict gate over authored release metadata, separate from the public API
+   schema. It rejects a build rather than publishing a record that downstream
+   agents cannot safely interpret. Every problem is reported at once: a gate
+   that surfaces one error per run is a gate people learn to route around. */
+const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const DOI_RE = /^10\.\d{4,9}\/\S+$/;
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const STATUSES = ['unrefereed-candidate', 'unrefereed-preprint'];
+
+function validatePapers(list) {
+  const errors = [];
+  const seen = { slug: new Map(), doi: new Map(), url: new Map() };
+
+  for (const p of list) {
+    const where = `papers/${p.slug || '(missing slug)'}`;
+    const bad = m => errors.push(`${where}: ${m}`);
+
+    if (!SLUG_RE.test(String(p.slug || ''))) bad(`slug "${p.slug}" must be lower-case words joined by single hyphens`);
+    for (const field of ['title', 'oneLine', 'abstract', 'version', 'evidence', 'statusDetail'])
+      if (typeof p[field] !== 'string' || !p[field].trim()) bad(`${field} must be a non-empty string`);
+
+    if (!DOI_RE.test(String(p.doi || ''))) bad(`doi "${p.doi}" is not a DOI`);
+    if (p.conceptDoi != null && !DOI_RE.test(String(p.conceptDoi))) bad(`conceptDoi "${p.conceptDoi}" is not a DOI`);
+
+    for (const field of ['datePublished', 'dateModified']) {
+      const v = p[field];
+      if (v == null && field === 'dateModified') continue;
+      if (!DATE_RE.test(String(v || ''))) { bad(`${field} "${v}" must be an ISO calendar date`); continue; }
+      const d = new Date(`${v}T12:00:00Z`);
+      if (Number.isNaN(d.getTime()) || d.toISOString().slice(0, 10) !== v) bad(`${field} "${v}" is not a real date`);
+    }
+    if (p.dateModified && p.dateModified < p.datePublished)
+      bad(`dateModified ${p.dateModified} precedes datePublished ${p.datePublished}`);
+
+    for (const field of ['zenodoUrl', 'repoUrl', 'pdfUrl', 'altPdfUrl', 'releaseUrl']) {
+      const v = p[field];
+      if (v == null || v === '') continue;
+      let parsed;
+      try { parsed = new URL(v); } catch { bad(`${field} "${v}" is not a URL`); continue; }
+      if (parsed.protocol !== 'https:') bad(`${field} must use https, got "${v}"`);
+    }
+
+    if (!Array.isArray(p.authors) || !p.authors.length) bad('authors must be a non-empty array');
+    else p.authors.forEach((a, i) => { if (typeof a !== 'string' || !a.trim()) bad(`authors[${i}] must be a non-empty string`); });
+
+    if (!Array.isArray(p.keywords) || !p.keywords.length) bad('keywords must be a non-empty array');
+    if (p.status != null && !STATUSES.includes(p.status)) bad(`status "${p.status}" is not one of ${STATUSES.join(', ')}`);
+
+    for (const [i, m] of (p.media || []).entries()) {
+      if (!['audio', 'video'].includes(m.type)) bad(`media[${i}].type "${m.type}" must be audio or video`);
+      if (!m.url) bad(`media[${i}] has no url`);
+    }
+
+    for (const [key, value] of [['slug', p.slug], ['doi', p.doi], ['url', `${BASE}/releases/${p.slug}/`]]) {
+      if (seen[key].has(value)) errors.push(`duplicate ${key} "${value}" in ${where} and papers/${seen[key].get(value)}`);
+      else seen[key].set(value, p.slug);
+    }
+
+    for (const [i, c] of (p.corrections || []).entries()) {
+      if (!DATE_RE.test(String(c.date || ''))) bad(`corrections[${i}].date "${c.date}" must be an ISO calendar date`);
+      if (!CORRECTION_SCOPES.includes(c.scope)) bad(`corrections[${i}].scope "${c.scope}" is not one of ${CORRECTION_SCOPES.join(', ')}`);
+      if (typeof c.summary !== 'string' || !c.summary.trim()) bad(`corrections[${i}].summary must be a non-empty string`);
+    }
+
+    for (const [key, value] of Object.entries(p.assurance || {})) {
+      if (!ASSURANCE_DIMENSIONS.some(d => d.key === key)) bad(`assurance.${key} is not a known assurance dimension`);
+      else if (!ASSURANCE_STATES.includes(value && value.state)) bad(`assurance.${key}.state "${value && value.state}" is not one of ${ASSURANCE_STATES.join(', ')}`);
+    }
+  }
+
+  if (errors.length) {
+    throw new Error(`release metadata failed the authoring schema (${errors.length} problem${errors.length > 1 ? 's' : ''}):\n  - ${errors.join('\n  - ')}`);
+  }
+}
+
+/* --------------------------------------------------------- assurance model */
+/* Assurance is a matrix, not a ladder: independent reproduction, formal proof
+   and peer review answer different questions and none sits "above" another.
+   Each release may declare any dimension; anything undeclared is reported as
+   not assessed rather than as a negative finding. The legacy verification
+   booleans are derived from this matrix so the two can never disagree. */
+const ASSURANCE_STATES = ['passed', 'partial', 'failed', 'not-assessed', 'not-applicable'];
+const ASSURANCE_DIMENSIONS = [
+  { key: 'availability', label: 'Availability and archiving', question: 'Is the evidence package publicly retrievable from an archive under a persistent identifier?' },
+  { key: 'internalReplay', label: 'Internal replay', question: 'Does the producer’s own pipeline reproduce the stated result from the archived package?' },
+  { key: 'independentRerun', label: 'Independent rerun', question: 'Has someone else run the supplied implementation and obtained the stated result?' },
+  { key: 'independentReimplementation', label: 'Independent reimplementation', question: 'Has someone else reached the result from an independent implementation?' },
+  { key: 'formalVerification', label: 'Formal verification', question: 'Is a formalised statement machine-checked, and over which trusted base?' },
+  { key: 'specialistReview', label: 'Specialist review', question: 'Has a domain specialist assessed the argument?' },
+  { key: 'editorialPeerReview', label: 'Editorial peer review', question: 'Has a journal or venue run peer review to a decision?' },
+  { key: 'dataEnvironmentReproducibility', label: 'Data and environment reproducibility', question: 'Are data and computational environment pinned well enough to rebuild?' }
+];
+
+function assuranceOf(p) {
+  /* Defaults encode only what the site can evidence for every release today:
+     an archived deposit, and the producer's own replay. Everything else is
+     explicitly unassessed until a release declares otherwise. */
+  const defaults = {
+    availability: { state: 'passed', evidenceUrl: p.zenodoUrl, note: 'Archived Zenodo deposit under a DOI.' },
+    internalReplay: { state: 'passed', note: p.statusDetail },
+    independentRerun: { state: 'not-assessed' },
+    independentReimplementation: { state: 'not-assessed' },
+    formalVerification: { state: 'not-assessed' },
+    specialistReview: { state: 'not-assessed' },
+    editorialPeerReview: { state: 'not-assessed' },
+    dataEnvironmentReproducibility: { state: 'not-assessed' }
+  };
+  const declared = p.assurance || {};
+  return ASSURANCE_DIMENSIONS.map(d => ({
+    dimension: d.key,
+    label: d.label,
+    question: d.question,
+    state: 'not-assessed',
+    ...defaults[d.key],
+    ...declared[d.key]
+  }));
+}
+
+const assuranceState = (matrix, key) => (matrix.find(m => m.dimension === key) || {}).state;
+
+/* ------------------------------------------------------------- corrections */
+/* A correction is additive: the record of what was wrong stays on the page
+   next to what it now says. Silently repairing a published claim would leave
+   a reader unable to tell whether they had seen the wrong version. */
+const CORRECTION_SCOPES = ['presentation', 'metadata', 'claim', 'evidence'];
+
+function correctionsHtml(p) {
+  const list = p.corrections || [];
+  if (!list.length) return '';
+  const items = list.map(c => `<li>
+        <p class="correction-meta">${esc(niceDate(c.date))} · ${esc(c.scope)} correction${c.fixedIn ? ` · fixed in ${esc(c.fixedIn)}` : ''}</p>
+        <p>${inline(c.summary)}</p>
+        ${c.detail ? `<p class="correction-detail">${inline(c.detail)}</p>` : ''}
+      </li>`).join('\n');
+  return `<aside class="corrections" aria-labelledby="corrections-heading">
+      <h2 id="corrections-heading">Correction${list.length > 1 ? 's' : ''} to this release</h2>
+      <ul>
+${items}
+      </ul>
+    </aside>`;
+}
+
+
+/* A one-line reading of the matrix for catalogue cards, so a reader can see the
+   assurance state without opening the release. It names what has been checked
+   and what has not, in that order. */
+function assuranceSummary(p) {
+  const matrix = assuranceOf(p);
+  const passed = matrix.filter(m => m.state === 'passed').map(m => m.label.toLowerCase());
+  const open = matrix.filter(m => m.state === 'not-assessed').length;
+  const head = passed.length ? passed.join(' · ') : 'no assurance dimension passed';
+  return `${head} · ${open} dimension${open === 1 ? '' : 's'} not assessed`;
+}
+
+/* --------------------------------------------------------------- RO-Crate */
+/* A community-standard packaging of the same relationships the site already
+   models, so consumers need not learn a project-specific object model.
+   RO-Crate 1.1: https://w3id.org/ro/crate/1.1 */
+function roCrate(p) {
+  const url = urlOf(p);
+  const api = paperApi(p);
+  return {
+    '@context': 'https://w3id.org/ro/crate/1.1/context',
+    '@graph': [
+      {
+        '@id': 'ro-crate-metadata.json',
+        '@type': 'CreativeWork',
+        conformsTo: { '@id': 'https://w3id.org/ro/crate/1.1' },
+        about: { '@id': './' },
+        description: 'RO-Crate metadata for one Evidence Press release.'
+      },
+      {
+        '@id': './',
+        '@type': 'Dataset',
+        name: p.title,
+        description: p.abstract,
+        datePublished: p.datePublished,
+        version: p.version,
+        identifier: `https://doi.org/${p.doi}`,
+        url,
+        license: { '@id': 'https://creativecommons.org/publicdomain/zero/1.0/' },
+        author: p.authors.map(a => ({ '@id': `#author-${a.replace(/[^A-Za-z0-9]+/g, '-').toLowerCase()}` })),
+        keywords: p.keywords.join(', '),
+        hasPart: [
+          { '@id': `${url}paper.json` },
+          { '@id': `${url}index.md` },
+          { '@id': `${url}cite.bib` },
+          ...(p.pdfUrl ? [{ '@id': p.pdfUrl }] : []),
+          ...(api.audioUrl ? [{ '@id': api.audioUrl }] : [])
+        ],
+        mentions: [{ '@id': p.repoUrl }, { '@id': p.zenodoUrl }],
+        /* The assurance state travels with the package: a consumer must not
+           have to infer verification status from the prose. */
+        assessment: api.assurance.map(a => `${a.dimension}: ${a.state}`)
+      },
+      ...p.authors.map(a => ({
+        '@id': `#author-${a.replace(/[^A-Za-z0-9]+/g, '-').toLowerCase()}`,
+        '@type': 'Person', name: a
+      })),
+      { '@id': 'https://creativecommons.org/publicdomain/zero/1.0/', '@type': 'CreativeWork', name: 'CC0 1.0 Universal' },
+      { '@id': `${url}paper.json`, '@type': 'File', encodingFormat: 'application/json', name: 'Structured release record' },
+      { '@id': `${url}index.md`, '@type': 'File', encodingFormat: 'text/markdown', name: 'Release text in Markdown' },
+      { '@id': `${url}cite.bib`, '@type': 'File', encodingFormat: 'application/x-bibtex', name: 'BibTeX citation' },
+      ...(p.pdfUrl ? [{ '@id': p.pdfUrl, '@type': 'File', encodingFormat: 'application/pdf', name: 'Manuscript PDF' }] : []),
+      ...(paperApi(p).audioUrl ? [{ '@id': paperApi(p).audioUrl, '@type': 'File', encodingFormat: 'audio/mpeg', name: 'Narrated briefing' }] : []),
+      { '@id': p.repoUrl, '@type': 'SoftwareSourceCode', name: 'Evidence repository' },
+      { '@id': p.zenodoUrl, '@type': 'Dataset', name: 'Archived deposit' }
+    ]
+  };
+}
+
+/* ------------------------------------------------- Signposting link set */
+/* FAIR Signposting Level 2: one document that maps the whole scholarly object,
+   discoverable from the landing page via rel="linkset".
+   Profile: https://signposting.org/FAIR/ */
+function linkset(p) {
+  const url = urlOf(p);
+  const api = paperApi(p);
+  return {
+    linkset: [{
+      anchor: url,
+      'cite-as': [{ href: `https://doi.org/${p.doi}` }],
+      author: p.authors.map(a => ({ href: `${url}#author`, title: a })),
+      item: [
+        ...(p.pdfUrl ? [{ href: p.pdfUrl, type: 'application/pdf' }] : []),
+        ...(api.audioUrl ? [{ href: api.audioUrl, type: 'audio/mpeg' }] : []),
+        { href: `${url}index.md`, type: 'text/markdown' }
+      ],
+      describedby: [
+        { href: `${url}paper.json`, type: 'application/json' },
+        { href: `${url}ro-crate-metadata.json`, type: 'application/ld+json', profile: 'https://w3id.org/ro/crate/1.1' },
+        { href: `${url}cite.bib`, type: 'application/x-bibtex' }
+      ],
+      license: [{ href: 'https://creativecommons.org/publicdomain/zero/1.0/' }],
+      type: [
+        { href: 'https://schema.org/ScholarlyArticle' },
+        { href: 'https://schema.org/AboutPage' }
+      ],
+      collection: [{ href: `${BASE}/`, type: 'text/html' }]
+    }]
+  };
+}
+
+
+
+validatePapers(papers);
+
+
 /* ---------------------------------------------------------------- bibtex */
 function bibtex(p) {
   const key = p.slug.replace(/[^a-z0-9]/g, '') + p.datePublished.slice(0, 4);
@@ -234,6 +529,7 @@ function head({ title, description, canonical, jsonld, metaExtra = '', math = fa
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="${PAGE_CSP}">
 <title>${esc(title)}</title>
 <meta name="description" content="${escAttr(description)}">
 <link rel="canonical" href="${canonical}">
@@ -243,9 +539,10 @@ ${extraLinks}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.
 <link rel="stylesheet" href="/assets/style.css?v=${CSS_V}">
 ${metaExtra}${math ? `<link rel="stylesheet" href="/assets/katex/katex.min.css">
 <script defer src="/assets/katex/katex.min.js"></script>
-<script defer src="/assets/katex/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
-` : ''}<script type="application/ld+json">
+<script defer src="/assets/katex/contrib/auto-render.min.js"></script>
+<script defer src="/assets/js/math.js?v=${MATH_JS_V}"></script>
+` : ''}<script defer src="/assets/js/site.js?v=${JS_V}"></script>
+<script type="application/ld+json">
 ${JSON.stringify(jsonld, null, 1)}
 </script>
 </head>
@@ -270,16 +567,14 @@ const foot = `</main>
   <div class="wrap">
     <p>${esc(CONFIG.siteName)} publishes plain-language and specialist briefings on new research released with complete, replayable evidence. Nothing here has been peer reviewed; every page says exactly what has and has not been checked.</p>
     <p>Site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/schema.json">schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">RSS</a> · <a href="/feed.json">JSON Feed</a> · <a href="/sitemap.xml">sitemap</a></p>
+    <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
 </footer>
 </body>
 </html>`;
 
-const copyScript = `<script>
-document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
-var t=document.getElementById(b.dataset.copy).innerText;
-navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent='Copied';setTimeout(function(){b.textContent=o;},1600);});});});
-</script>`;
+/* Copy buttons, audio controls and the release filter are all handled by
+   /assets/js/site.js, which is loaded on every page. */
 
 /* ----------------------------------------------------------- JSON-LD */
 function websiteNode() {
@@ -380,9 +675,12 @@ function articleJsonld(p) {
   return { '@context': 'https://schema.org', '@graph': graph.map(n => JSON.parse(JSON.stringify(n))) };
 }
 
-/* content-hash for cache-busting the stylesheet link */
-const CSS_V = crypto.createHash('sha256')
-  .update(require('fs').readFileSync(__dirname + '/assets/style.css')).digest('hex').slice(0, 10);
+/* content-hashes for cache-busting static asset links */
+const assetV = file => crypto.createHash('sha256')
+  .update(fs.readFileSync(path.join(ROOT, 'assets', file))).digest('hex').slice(0, 10);
+const CSS_V = assetV('style.css');
+const JS_V = assetV('js/site.js');
+const MATH_JS_V = assetV('js/math.js');
 
 /* YouTube URL -> video id (watch, youtu.be, embed, shorts, live) */
 function youtubeId(u) {
@@ -429,6 +727,7 @@ function citationMeta(p) {
 function signposting(p) {
   const url = urlOf(p);
   return [
+    `<link rel="linkset" type="application/linkset+json" href="${url}linkset.json">`,
     `<link rel="cite-as" href="https://doi.org/${p.doi}">`,
     `<link rel="describedby" type="application/json" href="${url}paper.json">`,
     `<link rel="describedby" type="application/x-bibtex" href="${url}cite.bib">`,
@@ -480,6 +779,7 @@ function paperPage(p) {
     <p class="kicker">Press release · ${niceDate(p.datePublished)} · version ${esc(p.version.split(' ')[0])}</p>
     <h1>${esc(p.title)}</h1>
     <p class="standfirst">${inline(p.oneLine)}</p>
+    ${correctionsHtml(p)}
     ${p.audio || ytVideo ? `<div class="briefings">
     ${p.audio ? `<div class="listen">
       <button class="play" aria-label="Play audio briefing" data-audio="briefing-audio">▶</button>
@@ -534,17 +834,13 @@ ${media ? `<section class="media-section"><h2 id="media">Media</h2>${media}</sec
     </div>
   </div>
 </article>
-${copyScript}
-${p.audio ? `<script>
-(function(){var b=document.querySelector('.play');if(!b)return;var a=document.getElementById(b.dataset.audio);
-b.addEventListener('click',function(){if(a.paused){a.play();b.textContent='❚❚';}else{a.pause();b.textContent='▶';}});
-a.addEventListener('ended',function(){b.textContent='▶';});})();
-</script>` : ''}
 ${foot}`;
   write(`releases/${p.slug}/index.html`, html);
   write(`releases/${p.slug}/paper.json`, JSON.stringify(paperApi(p), null, 2));
   write(`releases/${p.slug}/cite.bib`, bibtex(p));
   write(`releases/${p.slug}/index.md`, releaseMarkdown(p));
+  write(`releases/${p.slug}/ro-crate-metadata.json`, JSON.stringify(roCrate(p), null, 2) + '\n');
+  write(`releases/${p.slug}/linkset.json`, JSON.stringify(linkset(p), null, 2) + '\n');
 }
 
 function releaseMarkdown(p) {
@@ -580,6 +876,7 @@ ${(p.relatedWorks || []).map(w => `- ${w.citation}${w.url ? ` <${w.url}>` : ''}`
 
 function paperApi(p) {
   const publicReviews = (p.reviews || []).filter(r => r.status === 'published');
+  const assurance = assuranceOf(p);
   return {
     schemaVersion: SCHEMA_VERSION,
     slug: p.slug, title: p.title, shortTitle: p.shortTitle,
@@ -596,11 +893,18 @@ function paperApi(p) {
     media: p.media || [],
     authors: p.authors, license: 'CC0-1.0',
     status: p.status || 'unrefereed-candidate',
+    /* Derived from the assurance matrix, never asserted separately, so the
+       coarse booleans and the scoped matrix cannot drift apart. A dimension
+       counts as satisfied only when it fully passed. */
     verification: {
-      peerReviewed: false, independentlyReproduced: false,
-      formallyVerified: false, internallyReplayed: true,
+      peerReviewed: assuranceState(assurance, 'editorialPeerReview') === 'passed',
+      independentlyReproduced: assuranceState(assurance, 'independentReimplementation') === 'passed'
+        || assuranceState(assurance, 'independentRerun') === 'passed',
+      formallyVerified: assuranceState(assurance, 'formalVerification') === 'passed',
+      internallyReplayed: assuranceState(assurance, 'internalReplay') === 'passed',
       detail: p.statusDetail
     },
+    assurance,
     provenance: p.provenance || {
       aiGenerated: true,
       aiAssisted: true,
@@ -609,6 +913,7 @@ function paperApi(p) {
       disclosure: 'The mathematics/research in this release was generated by AI systems as credited; see the Zenodo record for full attribution.'
     },
     problem: p.problem || null,
+    corrections: p.corrections || [],
     keywords: p.keywords,
     keyResults: p.keyResults || [],
     reviews: publicReviews,
@@ -627,6 +932,7 @@ function indexPage() {
       <p class="card-date">${niceDate(p.datePublished)}</p>
       <h2><a href="/releases/${p.slug}/">${esc(p.shortTitle)}</a></h2>
       <p>${inline(p.oneLine)}</p>
+      <p class="card-assurance">${esc(assuranceSummary(p))}</p>
       <p class="card-links">
         <a href="/releases/${p.slug}/">Release</a>
         ${p.pdfUrl ? `<a href="${escAttr(p.pdfUrl)}" rel="noopener">PDF</a>` : ''}
@@ -702,12 +1008,6 @@ ${Array.from({ length: 9 }, (_, k) => {
   </div>
   <div class="cards">${cards}</div>
 </section>
-<script>
-(function(){var f=document.getElementById('filter');if(!f)return;
-f.addEventListener('input',function(){var q=f.value.toLowerCase().trim();
-document.querySelectorAll('.card').forEach(function(c){
-c.style.display=!q||c.textContent.toLowerCase().includes(q)||(c.dataset.keywords||'').includes(q)?'':'none';});});})();
-</script>
 ${foot}`;
   write('index.html', html);
 }
@@ -854,14 +1154,9 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     ${resourcesHtml}
     <div class="body">${companion.html}${bodyHtml}</div>
   </div></div></article>`;
-  const audioController = opts.releaseLayout && opts.audio ? `<script>
-(function(){var b=document.querySelector('.play[data-audio]');if(!b)return;var a=document.getElementById(b.dataset.audio);
-b.addEventListener('click',function(){if(a.paused){a.play();b.textContent='❚❚';}else{a.pause();b.textContent='▶';}});
-a.addEventListener('ended',function(){b.textContent='▶';});})();
-</script>` : '';
+
   const html = `${head({ title: `${title} · ${CONFIG.siteName}`, description, canonical: url, jsonld, metaExtra: social, extraLinks })}
 ${pageHtml}
-${audioController}
 ${foot}`;
   write(rel + 'index.html', html);
   const resourceMarkdown = opts.resources && opts.resources.length
@@ -984,7 +1279,50 @@ function llms() {
   write('llms-full.txt', full.join('\n'));
 }
 
+/* What a consumer may rely on, and what it may not. Published as data so an
+   agent can check compatibility without parsing prose. */
+function apiStability() {
+  return {
+    schemaVersion: SCHEMA_VERSION,
+    currentMajor: 'v1',
+    versionedBase: `${BASE}/api/v1/`,
+    unversionedAliases: {
+      note: 'The unversioned paths are the original published URLs and are kept indefinitely; they currently serve the same content as v1.',
+      paths: [`${BASE}/api/papers.json`, `${BASE}/api/schema.json`]
+    },
+    guarantees: [
+      'Within a major version, fields are added but never removed or retyped.',
+      'A field documented as stable keeps its meaning; a correction to a value is recorded in the release history, not by redefining the field.',
+      'Removing a field or changing its type requires a new major version under a new path.',
+      'A published URL is never withdrawn; the deployment gate refuses any build that would drop one.'
+    ],
+    fieldStability: {
+      stable: ['slug', 'title', 'url', 'doi', 'doiUrl', 'datePublished', 'version', 'authors', 'license', 'status', 'keywords', 'verification', 'zenodoUrl', 'repoUrl'],
+      extensible: ['assurance', 'media', 'provenance', 'reviews', 'relatedWorks', 'openProblems', 'keyResults'],
+      experimental: ['assurance[].question', 'assurance[].evidenceUrl']
+    },
+    deprecation: {
+      procedure: 'A field to be retired is first marked deprecated here with a date, kept for at least twelve months, and only then removed in a new major version.',
+      deprecated: []
+    },
+    contact: CONFIG.softwareRepo || CONFIG.contactRepo
+  };
+}
+
 function api() {
+  const papersDoc = {
+    schemaVersion: SCHEMA_VERSION,
+    site: CONFIG.siteName, baseUrl: BASE,
+    description: CONFIG.description,
+    schema: `${BASE}/api/schema.json`,
+    count: papers.length,
+    papers: papers.map(paperApi)
+  };
+  write('api/build.json', JSON.stringify(BUILD, null, 2) + '\n');
+  write('api/stability.json', JSON.stringify(apiStability(), null, 2) + '\n');
+  /* Versioned routes carry the same content; the unversioned paths remain
+     because they are already published and must never disappear. */
+  write('api/v1/papers.json', JSON.stringify({ ...papersDoc, schema: `${BASE}/api/v1/schema.json`, stability: `${BASE}/api/stability.json` }, null, 2));
   write('api/papers.json', JSON.stringify({
     schemaVersion: SCHEMA_VERSION,
     site: CONFIG.siteName, baseUrl: BASE,
@@ -993,28 +1331,53 @@ function api() {
     count: papers.length,
     papers: papers.map(paperApi)
   }, null, 2));
-  write('api/schema.json', JSON.stringify({
+  const schema = {
     $schema: 'https://json-schema.org/draft/2020-12/schema',
     $id: `${BASE}/api/schema.json`,
     title: `${CONFIG.siteName} papers index`,
     type: 'object',
     required: ['schemaVersion', 'count', 'papers'],
+    additionalProperties: false,
     properties: {
-      schemaVersion: { type: 'string' }, site: { type: 'string' }, baseUrl: { type: 'string' },
-      description: { type: 'string' }, schema: { type: 'string' }, count: { type: 'integer' },
+      schemaVersion: { type: 'string', pattern: '^\\d+\\.\\d+$' }, site: { type: 'string' },
+      baseUrl: { type: 'string', format: 'uri' },
+      description: { type: 'string' }, schema: { type: 'string', format: 'uri' },
+      stability: { type: 'string', format: 'uri' }, count: { type: 'integer', minimum: 0 },
       papers: { type: 'array', items: { $ref: '#/$defs/paper' } }
     },
     $defs: {
+      assuranceRecord: {
+        type: 'object',
+        required: ['dimension', 'state'],
+        additionalProperties: false,
+        description: 'One assurance dimension for one release. Dimensions are independent: none ranks above another, and an unassessed dimension is not a negative finding.',
+        properties: {
+          dimension: { enum: ASSURANCE_DIMENSIONS.map(d => d.key) },
+          label: { type: 'string' },
+          question: { type: 'string' },
+          state: { enum: ASSURANCE_STATES },
+          date: { type: 'string', format: 'date' },
+          actor: { type: 'string' },
+          evidenceUrl: { type: 'string', format: 'uri' },
+          note: { type: 'string' }
+        }
+      },
       paper: {
         type: 'object',
-        required: ['slug', 'title', 'url', 'doi', 'datePublished', 'version', 'authors', 'license', 'status', 'verification', 'keywords'],
+        required: ['slug', 'title', 'url', 'doi', 'datePublished', 'version', 'authors', 'license', 'status', 'verification', 'assurance', 'keywords'],
         properties: {
-          schemaVersion: { type: 'string' }, slug: { type: 'string' }, title: { type: 'string' },
+          schemaVersion: { type: 'string' },
+          slug: { type: 'string', pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$' },
+          title: { type: 'string', minLength: 1 },
           shortTitle: { type: 'string' }, url: { type: 'string', format: 'uri' },
           oneLine: { type: 'string' }, abstract: { type: 'string' },
-          datePublished: { type: 'string', format: 'date' }, dateModified: { type: 'string', format: 'date' },
-          version: { type: 'string' }, doi: { type: 'string' }, doiUrl: { type: 'string', format: 'uri' },
-          conceptDoi: { type: ['string', 'null'] },
+          datePublished: { type: 'string', format: 'date', pattern: '^\\d{4}-\\d{2}-\\d{2}$' },
+          dateModified: { type: 'string', format: 'date', pattern: '^\\d{4}-\\d{2}-\\d{2}$' },
+          version: { type: 'string', minLength: 1 },
+          doi: { type: 'string', pattern: '^10\\.\\d{4,9}/\\S+$' },
+          doiUrl: { type: 'string', format: 'uri' },
+          assurance: { type: 'array', items: { $ref: '#/$defs/assuranceRecord' }, minItems: 1 },
+          conceptDoi: { type: ['string', 'null'], pattern: '^10\\.\\d{4,9}/\\S+$' },
           pdfUrl: { type: ['string', 'null'], format: 'uri', description: 'Direct link to the manuscript PDF' },
           altPdfUrl: { type: ['string', 'null'], format: 'uri' },
           zenodoUrl: { type: 'string', format: 'uri' }, repoUrl: { type: 'string', format: 'uri' },
@@ -1022,8 +1385,8 @@ function api() {
           markdownUrl: { type: 'string', format: 'uri' }, bibtexUrl: { type: 'string', format: 'uri' },
           audioUrl: { type: ['string', 'null'], format: 'uri', description: 'Narrated plain-language briefing (MP3)' },
           imageUrl: { type: ['string', 'null'], format: 'uri' }, coverArtUrl: { type: ['string', 'null'], format: 'uri' },
-          media: { type: 'array', items: { type: 'object', properties: { type: { enum: ['audio', 'video'] }, url: { type: 'string' }, name: { type: 'string' }, description: { type: 'string' } } } },
-          authors: { type: 'array', items: { type: 'string' } },
+          media: { type: 'array', items: { type: 'object', required: ['type', 'url'], additionalProperties: false, properties: { type: { enum: ['audio', 'video'] }, url: { type: 'string', format: 'uri' }, name: { type: 'string' }, description: { type: 'string' }, embedUrl: { type: 'string', format: 'uri' }, durationLabel: { type: 'string' }, transcriptUrl: { type: 'string', format: 'uri' } } } },
+          authors: { type: 'array', items: { type: 'string', minLength: 1 }, minItems: 1 },
           license: { const: 'CC0-1.0' },
           status: { enum: ['unrefereed-candidate', 'unrefereed-preprint'] },
           verification: {
@@ -1037,7 +1400,23 @@ function api() {
           },
           provenance: { type: 'object', properties: { aiGenerated: { type: 'boolean' }, aiAssisted: { type: 'boolean' }, generatedBy: { type: 'array', items: { type: 'string' } }, humanRole: { type: 'string' }, disclosure: { type: 'string' } } },
           problem: { type: ['object', 'null'], properties: { name: { type: 'string' }, url: { type: 'string' } } },
-          keywords: { type: 'array', items: { type: 'string' } },
+          keywords: { type: 'array', items: { type: 'string', minLength: 1 }, minItems: 1 },
+          corrections: {
+            type: 'array',
+            description: 'Dated corrections to this release. Additive: a correction records what was wrong as well as what the release now says.',
+            items: {
+              type: 'object',
+              required: ['date', 'scope', 'summary'],
+              additionalProperties: false,
+              properties: {
+                date: { type: 'string', format: 'date', pattern: '^\\d{4}-\\d{2}-\\d{2}$' },
+                scope: { enum: CORRECTION_SCOPES },
+                summary: { type: 'string', minLength: 1 },
+                detail: { type: 'string' },
+                fixedIn: { type: 'string' }
+              }
+            }
+          },
           keyResults: { type: 'array', items: { type: 'string' } },
           evidencePackage: { type: 'string' },
           openProblems: { type: 'array', items: { type: 'string' }, description: 'Concrete follow-up research problems, well-posed enough to start on' },
@@ -1064,7 +1443,9 @@ function api() {
         }
       }
     }
-  }, null, 2));
+  };
+  write('api/schema.json', JSON.stringify(schema, null, 2));
+  write('api/v1/schema.json', JSON.stringify({ ...schema, $id: `${BASE}/api/v1/schema.json` }, null, 2));
 }
 
 const OBSERVATORY_URL = `${BASE}/observatory/`;
@@ -1153,10 +1534,55 @@ const OBSERVATORY_RECORD = {
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(DIST, { recursive: true });
 fs.cpSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), { recursive: true });
+/* The strict policy is delivered per document, in a <meta> tag emitted by
+   head(), rather than as a blanket header. Two reasons, both load-bearing:
+   it applies to exactly the pages this build generates, so the self-contained
+   comic bundle under /assets/comics/ — which legitimately needs inline and
+   eval'd script — is not caught by it; and it does not depend on how a host
+   resolves overlapping _headers rules. frame-ancestors is omitted because it
+   is ignored in meta; X-Frame-Options: DENY below covers framing.
+   Browsers enforce every policy they receive, so the header baseline and this
+   meta policy compose: generated pages get the intersection, i.e. the strict
+   policy. */
+const PAGE_CSP = [
+  "default-src 'self'",
+  "base-uri 'none'",
+  "object-src 'none'",
+  "form-action 'none'",
+  "script-src 'self'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data:",
+  "font-src 'self'",
+  "media-src 'self'",
+  "connect-src 'self'",
+  "frame-src https://www.youtube-nocookie.com",
+  "manifest-src 'self'"
+].join('; ');
+
+/* Applied to everything the site serves, assets included. Restricted to
+   directives no page or asset here needs to relax. */
+const BASELINE_CSP = [
+  "base-uri 'none'",
+  "object-src 'none'",
+  "frame-ancestors 'none'"
+].join('; ');
+
+/* Only features nothing on the site uses are switched off. Anything the video
+   embeds rely on (encrypted-media, picture-in-picture, fullscreen, web-share)
+   is left at its default so the iframe allow= attributes keep working. */
+const PERMISSIONS_POLICY = [
+  'accelerometer=()', 'ambient-light-sensor=()', 'autoplay=()', 'battery=()',
+  'camera=()', 'display-capture=()', 'geolocation=()', 'gyroscope=()',
+  'magnetometer=()', 'microphone=()', 'midi=()', 'payment=()',
+  'usb=()', 'serial=()', 'bluetooth=()', 'browsing-topics=()'
+].join(', ');
+
 write('_headers', `/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
+  Content-Security-Policy: ${BASELINE_CSP}
+  Permissions-Policy: ${PERMISSIONS_POLICY}
   Link: <${BASE}/llms.txt>; rel="alternate"; type="text/markdown"
 
 /assets/*

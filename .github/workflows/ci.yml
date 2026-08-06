@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and verify (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 18 is the documented floor (tools/check-published.js uses built-in fetch).
+        node: ['18', '20', '22']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Syntax check every script
+        run: |
+          node --check build.js
+          for f in tools/*.js assets/js/*.js; do node --check "$f"; done
+
+      - name: Renderer regression tests
+        run: node tools/test-render.js
+
+      - name: Build the site from a clean checkout
+        run: node build.js
+
+      - name: Metadata conformance and cross-surface consistency
+        run: node tools/test-metadata.js
+
+      - name: Internal link and asset check
+        run: node tools/check-links.js
+
+      - name: Publication-preservation gate
+        # Refuses any build that would drop a previously published URL.
+        run: node tools/check-published.js
+
+      - name: Build is reproducible from the same source
+        # The build must not depend on the wall clock or on any other state that
+        # varies between runs: rebuild and require byte-identical output.
+        run: |
+          find dist -type f -exec sha256sum {} \; | sort -k2 > /tmp/first.sha
+          rm -rf dist
+          node build.js
+          find dist -type f -exec sha256sum {} \; | sort -k2 > /tmp/second.sha
+          diff /tmp/first.sha /tmp/second.sha && echo "Byte-identical rebuild."
+
+      - name: No inline scripts (the CSP forbids them)
+        run: |
+          # Scoped to generated pages: the self-contained comic bundle under
+          # assets/ legitimately carries inline script and is deliberately not
+          # covered by the per-document CSP.
+          if grep -rlE '<script>|<script [^>]*on[a-z]+=' dist --include='*.html' --exclude-dir=assets; then
+            echo "Inline script or inline handler found; script-src 'self' would block it."
+            exit 1
+          fi
+          echo "No inline scripts."
+
+  accessibility:
+    name: Accessibility (axe via pa11y-ci)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build the site
+        run: node build.js
+
+      - name: Serve dist/
+        run: npx --yes http-server dist -p 8080 --silent &
+
+      - name: Wait for the server
+        run: npx --yes wait-on http://127.0.0.1:8080 --timeout 60000
+
+      - name: Run pa11y-ci with the axe runner
+        # Automated checks catch roughly a third of WCAG failures. They are a
+        # floor, not a conformance claim: keyboard and screen-reader testing
+        # are recorded separately in docs/ACCESSIBILITY.md.
+        run: npx --yes pa11y-ci --config .pa11yci.json

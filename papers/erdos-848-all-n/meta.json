@@ -40,5 +40,14 @@
     { "citation": "Sawhney, M. Resolution for all sufficiently large N, with the structural statement that near-extremal sets lie in {n ≡ 7 (mod 25)} or {n ≡ 18 (mod 25)}.", "url": "https://www.math.columbia.edu/~msawhney/Problem_848.pdf" },
     { "citation": "Sothanaphan, N. An explicit threshold in Erdős Problem #848 — the pinned analytic input for N ≥ 2.64 × 10^17.", "url": "https://drive.google.com/file/d/1ujhm4_WYpgRV_rd1rJXIfHyvx16COEKe/view" }
   ],
-  "citeText": "OpenAI Codex. (2026). Candidate certificate-backed all-N determination for Erdős Problem 848 (Version 0.1-candidate) [Candidate manuscript and evidence package]. Zenodo. https://doi.org/10.5281/zenodo.21647629"
+  "citeText": "OpenAI Codex. (2026). Candidate certificate-backed all-N determination for Erdős Problem 848 (Version 0.1-candidate) [Candidate manuscript and evidence package]. Zenodo. https://doi.org/10.5281/zenodo.21647629",
+  "corrections": [
+    {
+      "date": "2026-08-05",
+      "scope": "presentation",
+      "fixedIn": "Evidence Press 1.1.0",
+      "summary": "From publication until 5 August 2026 this page displayed the main result as holding “for every $N$ from $\\\\lfloor (N+18)/25 \\\\rfloor$ upwards”. It should have read, and now reads, “for every $N$ from 1 upwards”.",
+      "detail": "The cause was a defect in this site's Markdown renderer, which used plain integers as internal placeholders for mathematics and could therefore replace a literal number in prose with an unrelated formula. The error was introduced in rendering only: the archived deposit, the manuscript PDF, and this release's Markdown and JSON representations always carried the correct statement. No result, proof, certificate or item of evidence is affected, and the release's assurance state is unchanged."
+    }
+  ]
 }
