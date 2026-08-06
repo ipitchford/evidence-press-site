@@ -6,6 +6,12 @@ are not covered here.
 
 ## Unreleased
 
+- The site's canonical address is now **https://evidencepress.org**. The
+  previous address, evidence-press.pages.dev, continues to serve every
+  published URL — nothing ever moves or disappears — and its pages carry
+  canonical links to the new domain, so existing citations, feeds and the
+  URLs recorded in Zenodo deposits keep resolving. The registrar and DNS sit
+  in the same account as the hosting, and the domain is set to auto-renew.
 - Correction notices moved from the top of the release page to the end of the
   article body, after the citation section. A presentation-scope correction
   does not challenge the result, so it should not lead the page; it remains on

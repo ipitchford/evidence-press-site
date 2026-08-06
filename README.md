@@ -2,7 +2,7 @@
 
 A dependency-free static site for press releases about new research published with complete, replayable evidence — designed for popular audiences, specialists, and AI research agents.
 
-Live site: https://evidence-press.pages.dev
+Live site: https://evidencepress.org
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21817379.svg)](https://doi.org/10.5281/zenodo.21817379)
 
