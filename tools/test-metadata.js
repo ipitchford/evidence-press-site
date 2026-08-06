@@ -164,6 +164,23 @@ const overclaims = papersDoc.papers.filter(p =>
 check('no release claims external assurance without an attached review record',
   overclaims.length === 0, overclaims.map(p => p.slug).join(', '));
 
+/* ------------------------------------------------------- no junk published */
+/* Operating-system metadata is invisible locally but publicly served once
+   deployed, and it differs between machines, which breaks byte-identical
+   rebuilds of a tagged release. Found live on 2026-08-06 by rebuilding a
+   clean clone of the tag and diffing against the deployed output. */
+const JUNK_RE = /^(\.DS_Store|\._.*|Thumbs\.db|desktop\.ini|\.localized)$/i;
+const junk = [];
+(function scan(dir) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) scan(full);
+    else if (JUNK_RE.test(entry.name)) junk.push(path.relative(DIST, full));
+  }
+})(DIST);
+check('no operating-system metadata files in the published output',
+  junk.length === 0, junk.join(', '));
+
 /* -------------------------------------------------- versioned API parity */
 const v1 = read('api/v1/papers.json');
 check('versioned API serves the same releases as the unversioned alias',

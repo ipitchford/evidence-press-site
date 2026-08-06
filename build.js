@@ -1533,7 +1533,14 @@ const OBSERVATORY_RECORD = {
 /* ---------------------------------------------------------------- main */
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(DIST, { recursive: true });
-fs.cpSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), { recursive: true });
+/* Copy assets, but never operating-system metadata: .DS_Store and friends are
+   invisible locally and end up publicly served, and they differ between
+   machines, which breaks byte-identical rebuilds of a tagged release. */
+const JUNK = /^(\.DS_Store|\._.*|Thumbs\.db|desktop\.ini|\.localized)$/i;
+fs.cpSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), {
+  recursive: true,
+  filter: src => !JUNK.test(path.basename(src))
+});
 /* The strict policy is delivered per document, in a <meta> tag emitted by
    head(), rather than as a blanket header. Two reasons, both load-bearing:
    it applies to exactly the pages this build generates, so the self-contained

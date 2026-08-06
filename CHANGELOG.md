@@ -4,7 +4,24 @@ Notable changes to the Evidence Press publishing software. Versions follow
 semantic versioning. Research releases have their own versions and DOIs and
 are not covered here.
 
-## 1.1.0 — unreleased
+## 1.1.1 — 2026-08-06
+
+### Fixed
+
+- **Operating-system metadata was published.** `assets/` was copied into the
+  site wholesale, so `.DS_Store` files were publicly served at
+  `/assets/.DS_Store` and `/assets/katex/.DS_Store`. They also differ between
+  machines, which prevented a tagged release from rebuilding byte-for-byte.
+  The asset copy now filters `.DS_Store`, AppleDouble `._*`, `Thumbs.db`,
+  `desktop.ini` and `.localized`, and `tools/test-metadata.js` fails the build
+  if any reappear.
+
+  Found by doing what an external evaluator would do: clean-cloning the v1.1.0
+  tag, rebuilding, and diffing the result against the local build. CI could not
+  have caught it — CI builds from a clean checkout, so it never sees files that
+  exist only on a maintainer's machine.
+
+## 1.1.0 — 2026-08-06
 
 Response to an external software-artifact review dated 5 August 2026, after
 verifying each finding against the source rather than accepting the report.
