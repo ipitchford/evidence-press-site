@@ -4,7 +4,7 @@ Notable changes to the Evidence Press publishing software. Versions follow
 semantic versioning. Research releases have their own versions and DOIs and
 are not covered here.
 
-## 1.1.1 — 2026-08-06
+## 1.1.2 — 2026-08-06
 
 ### Fixed
 
@@ -15,6 +15,10 @@ are not covered here.
   (served with a genuine 404 status), which tells automated clients that an
   existing release always serves `/releases/<slug>/paper.json` with a matching
   `slug` field.
+
+## 1.1.1 — 2026-08-06
+
+### Fixed
 
 - **Operating-system metadata was published.** `assets/` was copied into the
   site wholesale, so `.DS_Store` files were publicly served at
