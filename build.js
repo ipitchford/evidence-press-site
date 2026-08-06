@@ -779,7 +779,6 @@ function paperPage(p) {
     <p class="kicker">Press release · ${niceDate(p.datePublished)} · version ${esc(p.version.split(' ')[0])}</p>
     <h1>${esc(p.title)}</h1>
     <p class="standfirst">${inline(p.oneLine)}</p>
-    ${correctionsHtml(p)}
     ${p.audio || ytVideo ? `<div class="briefings">
     ${p.audio ? `<div class="listen">
       <button class="play" aria-label="Play audio briefing" data-audio="briefing-audio">▶</button>
@@ -816,6 +815,8 @@ ${media ? `<section class="media-section"><h2 id="media">Media</h2>${media}</sec
             <p class="note">Also: <a href="${url}cite.bib">cite.bib</a> · <a href="${url}paper.json">paper.json</a> · <a href="${url}index.md">this page as Markdown</a></p>
           </div>
         </section>
+
+        ${correctionsHtml(p)}
       </div>
 
       <aside class="factbox" aria-label="Key facts and downloads">

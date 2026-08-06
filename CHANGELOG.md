@@ -4,6 +4,13 @@ Notable changes to the Evidence Press publishing software. Versions follow
 semantic versioning. Research releases have their own versions and DOIs and
 are not covered here.
 
+## Unreleased
+
+- Correction notices moved from the top of the release page to the end of the
+  article body, after the citation section. A presentation-scope correction
+  does not challenge the result, so it should not lead the page; it remains on
+  the page, dated, and in the release's machine-readable record.
+
 ## 1.1.3 — 2026-08-06
 
 Release housekeeping for the first archived deposit: tracks the
