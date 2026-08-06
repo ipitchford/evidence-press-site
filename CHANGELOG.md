@@ -6,9 +6,13 @@ are not covered here.
 
 ## Unreleased
 
-- The legacy address and www now **301-redirect** to the canonical domain
-  instead of serving duplicate content with canonical tags. Every old link
-  still works — it now arrives at evidencepress.org with its path intact.
+- Visitors arriving on the legacy address or www are now moved to the
+  canonical domain with their path intact, via a client-side redirect. A
+  server-side 301 is not available here: Pages' `_redirects` does not support
+  host-scoped sources (a first attempt shipped such rules; they upload but
+  can never match), and pages.dev traffic never crosses the site's own zone,
+  so redirect rules cannot catch it either. Canonical tags remain on every
+  page for crawlers, and machine clients fetching JSON are unaffected.
   Deployment-preview aliases are not redirected, so specific deployments
   remain inspectable.
 

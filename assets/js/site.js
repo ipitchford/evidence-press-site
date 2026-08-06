@@ -7,6 +7,22 @@
 (function () {
   'use strict';
 
+  /* Visitors arriving on a legacy hostname are moved to the canonical domain
+     with their path intact. Pages' _redirects cannot express host-scoped
+     rules and pages.dev traffic never crosses our zone, so a server-side 301
+     is not available for it; this is the supported mechanism. Deployment
+     previews (<hash>.evidence-press.pages.dev) are left alone so a specific
+     deployment stays inspectable, and machine clients fetching JSON are
+     unaffected because they do not execute scripts — the JSON itself carries
+     canonical URLs. */
+  var canonicalHost = 'evidencepress.org';
+  var host = window.location.hostname;
+  if (host === 'evidence-press.pages.dev' || host === 'www.' + canonicalHost) {
+    window.location.replace('https://' + canonicalHost +
+      window.location.pathname + window.location.search + window.location.hash);
+    return;
+  }
+
   /* One polite live region, created lazily, for state that would otherwise be
      conveyed only visually: copy confirmations, filter counts, media errors. */
   var announcer = null;

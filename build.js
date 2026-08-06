@@ -1616,14 +1616,6 @@ const PERMISSIONS_POLICY = [
   'usb=()', 'serial=()', 'bluetooth=()', 'browsing-topics=()'
 ].join(', ');
 
-/* Permanent redirects from the legacy hosting address and from www to the
-   canonical domain. Host-scoped rules work because all three hostnames are
-   attached to the same Pages project. Deployment-preview aliases
-   (<hash>.evidence-press.pages.dev) are deliberately not matched, so a
-   specific deployment can still be inspected directly. */
-write('_redirects', `https://evidence-press.pages.dev/* https://evidencepress.org/:splat 301
-https://www.evidencepress.org/* https://evidencepress.org/:splat 301
-`);
 write('_headers', `/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
