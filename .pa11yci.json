@@ -1,12 +1,21 @@
 {
   "defaults": {
     "standard": "WCAG2AA",
-    "runners": ["axe", "htmlcs"],
+    "runners": [
+      "axe",
+      "htmlcs"
+    ],
     "timeout": 60000,
     "chromeLaunchConfig": {
-      "args": ["--no-sandbox", "--disable-dev-shm-usage"]
+      "args": [
+        "--no-sandbox",
+        "--disable-dev-shm-usage"
+      ]
     },
-    "hideElements": ".katex-html"
+    "hideElements": ".katex-html, .hero-art",
+    "ignore": [
+      "frame-tested"
+    ]
   },
   "urls": [
     "http://127.0.0.1:8080/",

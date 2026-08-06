@@ -14,10 +14,40 @@ the Observatory programme and essay, and four releases chosen to cover the
 combinations that exist: heavy mathematics, audio, video embed, and a
 correction notice. This runs on every push and pull request.
 
-KaTeX's visual output (`.katex-html`) is excluded from the automated pass. It
-duplicates the accessible MathML that KaTeX also emits, and checking the visual
-copy produces findings that do not correspond to anything a screen-reader user
-encounters.
+### What is excluded from the automated pass, and why
+
+Three exclusions. Each is a case where the tool reports *"I could not determine
+this"*, and the automated output would otherwise read as a defect. Each is
+justified below rather than simply silenced.
+
+**`.katex-html`** — KaTeX emits both a visual rendering and accessible MathML.
+Checking the visual copy produces findings that correspond to nothing a
+screen-reader user encounters.
+
+**`frame-tested`** — axe cannot inject itself into a cross-origin third-party
+iframe, so it reports that the YouTube player was *not tested*. The player's
+internals are not under this site's control; what is under our control is the
+`title` attribute on every embed, which is present.
+
+**`.hero-art`** — the homepage hero text sits over an absolutely-positioned SVG,
+and axe cannot sample a background painted by artwork, so it flags the heading
+and standfirst as indeterminate contrast. Hiding the decorative layer lets axe
+evaluate against `.hero`'s real `background-color` instead of skipping the
+check. The exclusion is safe because the artwork can only shift the background
+within a passing range — computed from source:
+
+| Text | Over | Ratio | AA needs |
+|---|---|---|---|
+| `h1` `#f0fdfa` (2.9rem, large) | `--accent` `#134e4a` | 9.09:1 | 3.0:1 |
+| `h1` `#f0fdfa` | darkest gradient stop `#0d3330` | 13.13:1 | 3.0:1 |
+| `h1` `#f0fdfa` | worst case: 21% `#2dd4bf` over `#134e4a` | 6.13:1 | 3.0:1 |
+| `.standfirst` `#ccfbf1` (1.2rem, normal) | `--accent` `#134e4a` | 8.41:1 | 4.5:1 |
+| `.standfirst` `#ccfbf1` | darkest gradient stop `#0d3330` | 12.15:1 | 4.5:1 |
+| `.standfirst` `#ccfbf1` | worst case: 21% `#2dd4bf` over `#134e4a` | 5.67:1 | 4.5:1 |
+
+The worst case is the brightest decorative stroke at its maximum opacity over
+the lightest gradient stop. If the hero palette or the artwork's opacities
+change, recompute this table — the exclusion is only valid while these hold.
 
 ## Implemented deliberately
 
