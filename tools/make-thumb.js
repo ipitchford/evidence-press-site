@@ -82,6 +82,21 @@ const SPECS = {
         <b>difference of the degrees</b>. When r&nbsp;=&nbsp;s it vanishes
         identically, whatever A and B are.</div>
       <div class="eq-foot">and the affine slices where Jacobian-conjecture questions live</div>`
+  },
+
+  'irreducible-pushforwards-quartic-transitions': {
+    palette: 'pine',
+    kicker: ['PRESS RELEASE · 1 AUGUST 2026', 'FURTER’S R(3) · V1.0.0'],
+    head: ['What survives', 'a <em>failed proof?</em>'],
+    sub: 'An attack on Furter’s R(3) stalled. Two of the methods built for it are proved, standalone and reusable elsewhere; the conjecture itself remains open.',
+    tag: 'PUSHFORWARDS · QUARTIC TRANSITIONS · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">for the constrained quartic transition</div>
+      <div class="eq">det = (9b/64) ·<br><span class="hl">(−3K<sup>3</sup> + K + 3b<sup>2</sup>)</span></div>
+      <div class="note">Exact, not asymptotic. It vanishes on the aligned
+        curve, giving <b>rank two away from the origin and rank one at
+        it</b>.</div>
+      <div class="eq-foot">and a divisor criterion forcing one reduced closed point upstairs</div>`
   }
 };
 
