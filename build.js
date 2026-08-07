@@ -1236,6 +1236,11 @@ ${bots.map(b => `User-agent: ${b}\nAllow: /`).join('\n\n')}
 
 Sitemap: ${BASE}/sitemap.xml
 `);
+  /* IndexNow ownership key: a fixed value from site.config.json, served at the
+     domain root so Bing/Yandex/etc. accept push submissions of new URLs. The
+     content is the key itself; keeping it fixed (not generated) preserves the
+     byte-identical-rebuild guarantee. */
+  if (CONFIG.indexNowKey) write(`${CONFIG.indexNowKey}.txt`, CONFIG.indexNowKey);
 }
 
 function llms() {
