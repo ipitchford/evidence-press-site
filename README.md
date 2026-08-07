@@ -41,7 +41,7 @@ Release metadata is validated against a strict authoring schema *before* any fil
    - `node tools/make-og.js` — regenerate Open Graph card PNGs (needs Playwright + Chromium).
    - `OPENAI_API_KEY=... node tools/make-audio.js` — generate the narrated audio briefing (skips existing files; `--force` regenerates).
 5. Run `node build.js` and check `dist/` locally (`python3 -m http.server -d dist 8000`).
-6. Commit and push — Cloudflare Pages rebuilds and deploys automatically (if connected to Git), or run `npx wrangler pages deploy dist --project-name evidence-press`.
+6. Commit and push — Cloudflare Pages rebuilds and deploys automatically (if connected to Git), or run `./tools/deploy.sh` (build → published-URL gate → deploy → IndexNow push). See *Before you deploy* below.
 
 The index page, feeds, sitemap, `llms.txt`, `api/papers.json`, per-release RO-Crate packages and Signposting link sets all regenerate automatically from the `papers/` folder — nothing else to update.
 
@@ -76,11 +76,26 @@ A build made from a branch that lacks another branch's release will silently del
 release from the live site, breaking a DOI-bearing page and its Zenodo cross-reference.
 
 ```
+./tools/deploy.sh                      # build → published-URL gate → deploy → IndexNow push
+node tools/check-published.js --record # after success, add anything newly published to the ledger
+```
+
+`tools/deploy.sh` runs the full safe sequence and, as its last step, pushes every
+sitemap URL to IndexNow (Bing, Yandex, DuckDuckGo, Seznam) via
+`tools/indexnow-submit.js`, so new or changed pages are announced on every deploy
+without a manual step. Google does not use IndexNow — that channel is Search
+Console plus the sitemap. The equivalent steps by hand:
+
+```
 node build.js
 node tools/check-published.js          # exits 1 if this build would drop a published URL
 npx wrangler pages deploy dist --project-name evidence-press
+node tools/indexnow-submit.js          # push sitemap URLs to IndexNow (reads dist/sitemap.xml)
 node tools/check-published.js --record # add anything newly published to the ledger
 ```
+
+IndexNow ownership is proved by the fixed `indexNowKey` in `site.config.json`,
+which `build.js` serves as `/<key>.txt` at the domain root.
 
 `PUBLISHED.json` is the ledger of every URL the site has published. The gate is offline
 and takes no arguments; `--live` additionally reconciles the ledger against the deployed
