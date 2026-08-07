@@ -97,6 +97,21 @@ const SPECS = {
         curve, giving <b>rank two away from the origin and rank one at
         it</b>.</div>
       <div class="eq-foot">and a divisor criterion forcing one reduced closed point upstairs</div>`
+  },
+
+  'reducible-incidence-divisors': {
+    palette: 'pine',
+    kicker: ['PRESS RELEASE · 28 JULY 2026', 'BINARY FORMS · V1.0'],
+    head: ['When a divisor', '<em>breaks apart</em>'],
+    headSize: 64,
+    sub: 'Exactly when a natural family of incidence divisors splits into components — and a screening theorem narrowing where Jacobian-conjecture behaviour could live.',
+    tag: 'TANGENT DEVELOPABLE · AFFINE SLICES · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">adjacent degrees (m, m+1), m ≥ 2</div>
+      <div class="eq eq-sm">D<sub>ℓ</sub> is reducible ⇔<br>[ℓ] on the <span class="hl">tangent developable</span><br>of the rational normal curve</div>
+      <div class="note">Three components on the curve, two on its first
+        jets, <b>irreducible</b> beyond — one locus decides.</div>
+      <div class="eq-foot">and a screening theorem: the affine slice is never A<sup>2m+1</sup></div>`
   }
 };
 
