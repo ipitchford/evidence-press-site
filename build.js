@@ -523,12 +523,13 @@ function bibtex(p) {
 }
 
 /* ------------------------------------------------------------- chrome */
-function head({ title, description, canonical, jsonld, metaExtra = '', math = false, extraLinks = '' }) {
+function head({ title, description, canonical, jsonld, metaExtra = '', math = false, extraLinks = '', robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' }) {
   return `<!DOCTYPE html>
 <html lang="${CONFIG.language}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="${robots}">
 <meta http-equiv="Content-Security-Policy" content="${PAGE_CSP}">
 <title>${esc(title)}</title>
 <meta name="description" content="${escAttr(description)}">
@@ -582,7 +583,10 @@ function websiteNode() {
     '@type': 'WebSite', '@id': `${BASE}/#website`,
     url: `${BASE}/`, name: CONFIG.siteName, description: CONFIG.description,
     inLanguage: CONFIG.language,
-    publisher: { '@type': 'Organization', '@id': `${BASE}/#org`, name: CONFIG.publisher, url: `${BASE}/` }
+    publisher: {
+      '@type': 'Organization', '@id': `${BASE}/#org`, name: CONFIG.publisher, url: `${BASE}/`,
+      ...(CONFIG.sameAs && CONFIG.sameAs.length ? { sameAs: CONFIG.sameAs } : {})
+    }
   };
 }
 
@@ -1322,7 +1326,7 @@ function notFoundPage() {
     description: 'No page exists at this address.',
     canonical: `${BASE}/404.html`,
     jsonld: { '@context': 'https://schema.org', '@graph': [websiteNode()] },
-    metaExtra: '<meta name="robots" content="noindex">\n'
+    robots: 'noindex'
   })}
 <article class="release"><div class="wrap"><div class="prose">
   <p class="kicker">404 · not found</p>
