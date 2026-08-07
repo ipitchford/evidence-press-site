@@ -656,6 +656,12 @@ function articleJsonld(p) {
       '@type': m.type === 'video' ? 'VideoObject' : 'AudioObject',
       name: m.name, description: m.description || undefined,
       ...(yt ? { url: m.url, embedUrl: `https://www.youtube-nocookie.com/embed/${yt}` } : { contentUrl: m.url }),
+      // Google requires thumbnailUrl and uploadDate on a VideoObject; without
+      // them the item is reported invalid in Search Console's Videos report.
+      ...(m.type === 'video' ? {
+        thumbnailUrl: yt ? `https://i.ytimg.com/vi/${yt}/hqdefault.jpg` : (p.og ? BASE + p.og : undefined),
+        uploadDate: p.datePublished
+      } : {}),
       isPartOf: { '@id': `${url}#article` }
     });
   }
@@ -1070,6 +1076,7 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     url: opts.video.url,
     embedUrl: opts.video.embedUrl,
     thumbnailUrl: opts.video.thumbnailUrl,
+    uploadDate: opts.datePublished,
     inLanguage: CONFIG.language,
     publisher: { '@id': `${BASE}/#org` },
     isPartOf: { '@id': pageId }
