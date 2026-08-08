@@ -236,6 +236,30 @@ art['txgraffiti-c3-resolution'] = (a, b) => {
   return s;
 };
 
+/* Fixed-seed cyclicity: Krylov frame meeting quartic and quintic rank loci. */
+art['cyclicity-loci-exponential-periods'] = (a, b) => {
+  let s = '';
+  const ox = 115, oy = 70, cw = 58, ch = 48;
+  for (let col = 0; col < 4; col++) {
+    for (let row = 0; row < 5; row++) {
+      const active = row <= col + 1;
+      s += `<rect x="${ox + col * cw}" y="${oy + row * ch}" width="42" height="32" rx="6" fill="${active ? a : '#e7e5e4'}" opacity="${active ? (0.34 + col * 0.12).toFixed(2) : '0.07'}"/>`;
+    }
+    s += `<text x="${ox + col * cw + 21}" y="340" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4" opacity="0.72">∇${col ? `<tspan baseline-shift="super" font-size="13">${col}</tspan>` : ''}</text>`;
+  }
+  s += `<path d="M 455 340 V 55 M 455 340 H 1125" stroke="#8a938f" stroke-width="1" opacity="0.48"/>`;
+  s += `<path d="M 455 235 C 575 235, 610 82, 735 132 S 885 310, 1035 210" fill="none" stroke="${a}" stroke-width="4" opacity="0.9"/>`;
+  s += `<path d="M 455 305 C 595 255, 700 350, 810 245 S 1010 90, 1125 145" fill="none" stroke="${b}" stroke-width="4" opacity="0.88"/>`;
+  for (const [x, y, col] of [[455, 235, a], [690, 122, a], [810, 245, b], [1035, 210, a]]) {
+    s += `<circle cx="${x}" cy="${y}" r="8" fill="${col}" stroke="#151a1e" stroke-width="3"/>`;
+  }
+  s += `<rect x="570" y="45" width="390" height="58" rx="12" fill="#151a1e" stroke="${b}" stroke-width="1.5" opacity="0.94"/>`;
+  s += `<text x="765" y="82" text-anchor="middle" font-family="Georgia" font-size="25" fill="#e7e5e4">det M = 0 · fixed-seed rank drops</text>`;
+  s += `<text x="490" y="330" font-family="Georgia" font-size="18" fill="${a}" opacity="0.9">persistent</text>`;
+  s += `<text x="1000" y="330" font-family="Georgia" font-size="18" fill="${b}" opacity="0.9">pointwise</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -247,6 +271,7 @@ const palette = {
   'stocks-are-not-flows': ['#38bdf8', '#f59e0b'],
   'affine-diversification-fibres': ['#2dd4bf', '#fbbf24']
   , 'txgraffiti-c3-resolution': ['#2dd4bf', '#f472b6']
+  , 'cyclicity-loci-exponential-periods': ['#38bdf8', '#fbbf24']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
