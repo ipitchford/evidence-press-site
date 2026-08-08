@@ -781,6 +781,11 @@ function paperPage(p) {
     `<li>${w.url ? `<a href="${escAttr(w.url)}" rel="noopener">${esc(w.citation)}</a>` : esc(w.citation)}</li>`).join('');
   const open = (p.openProblems || []).map(o => `<li>${inline(o)}</li>`).join('');
   const media = (p.media || []).map(m => {
+    const duplicateHeaderAudio = m.type === 'audio' && p.audio && p.audio.url &&
+      (m.url === p.audio.url || m.url === BASE + p.audio.url || m.url.endsWith(p.audio.url));
+    if (duplicateHeaderAudio) {
+      return `<p class="media-note">The audio briefing is provided in the header above. <a href="${escAttr(m.url)}" rel="noopener">Download the MP3 briefing</a>${m.transcriptUrl ? ` · <a href="${escAttr(m.transcriptUrl)}" rel="noopener">read the transcript</a>` : ''}.</p>`;
+    }
     if (m.type === 'video') {
       const yt = youtubeId(m.url);
       if (yt) return `<figure class="media"><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/${yt}?rel=0" title="${escAttr(m.name)}" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><figcaption>${esc(m.name)} · <a href="${escAttr(m.url)}" rel="noopener">Watch on YouTube</a></figcaption></figure>`;
