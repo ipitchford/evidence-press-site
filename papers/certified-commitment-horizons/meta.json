@@ -1,0 +1,101 @@
+{
+  "slug": "certified-commitment-horizons",
+  "title": "Certified Commitment Horizons in Dynamic Lot Sizing: Prefix Stability, Inverse Shortest Paths and One-Step Calibration of Forecast Revisions",
+  "shortTitle": "Certified commitment horizons in dynamic lot sizing",
+  "oneLine": "An exact-rational candidate framework measures how far forecasts may move before an optimal Wagner–Whitin plan can abandon a selected setup prefix.",
+  "abstract": "This unrefereed candidate defines a weighted commitment radius for prefix stability in the classical Wagner–Whitin dynamic lot-sizing model. It derives exact floor-aware tie radii against fixed competing paths, a polynomial frozen-comparator lower certificate, and lower–upper brackets with machine-checkable witnesses. The release includes exact-rational software, deterministic replay, adversarial tests, benchmarks and an illustrative UCI case. Producer-side replay and CI pass; independent reproduction, formal verification, conventional peer review, operational validation and a settled novelty determination have not occurred.",
+  "narration": "This candidate research release asks a practical question: when demand forecasts change, how long can a production planner safely preserve the near-term structure of an existing lot-sizing plan? In the classical Wagner–Whitin model, the paper defines a weighted commitment radius: the largest floor-respecting change in forecast demand for which every optimal revised plan retains a chosen prefix of setup decisions. The candidate derives exact distances to a tie with any fixed competing path and a polynomial frozen-comparator lower certificate. The released software computes certified outputs in exact rational arithmetic, attaches machine-checkable witnesses, and includes a separately implemented producer-side checker. An explicit three-period example shows why the lower certificate can be conservative: its frozen radius is three halves, while the exact strong radius is two. The evidence package includes source code, a pinned environment, full and quick replay commands, adversarial regression cases, exact enumeration benchmarks, a thirty-page manuscript, machine-readable claims and assurance records, and an illustrative UCI demand-data case. That real-data case uses reconstructed forecast vintages and stylised costs, so it is not field validation. This remains an unrefereed candidate. It has passed producer-side replay and GitHub Actions, but it has not been independently reproduced, formally verified, conventionally peer reviewed, or tested in an operating supply chain. Novelty also remains conditional because the full text of a directly relevant 1989 paper could not be obtained in the documented bounded search. This is an Evidence Press audio briefing, released 8 August 2026. The paper, archive, replay commands and open follow-up problems are linked on this page. The voice is AI-generated, and the audio is not additional mathematical evidence.",
+  "datePublished": "2026-08-08",
+  "version": "2.1.2-candidate",
+  "doi": "10.5281/zenodo.21853902",
+  "conceptDoi": "10.5281/zenodo.21853901",
+  "zenodoUrl": "https://zenodo.org/records/21853902",
+  "pdfUrl": "https://github.com/ipitchford/certified-commitment-horizons/releases/download/v2.1.2-candidate/certified-commitment-horizons-v2.1.2-paper.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/certified-commitment-horizons/v2.1.2-candidate/paper/main.pdf",
+  "repoUrl": "https://github.com/ipitchford/certified-commitment-horizons",
+  "releaseUrl": "https://github.com/ipitchford/certified-commitment-horizons/releases/tag/v2.1.2-candidate",
+  "authors": ["Anonymous agentic research workflow"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": ["Anonymous agentic research workflow"],
+    "humanRole": "Research objective, publication authorization, repository maintenance and project management by Ian Pitchford.",
+    "disclosure": "The package records an anonymous agentic workflow as scholarly creator and Ian Pitchford as repository maintainer and publisher. Producer-side replay, internal adversarial review and model agreement are not independent verification or peer review."
+  },
+  "keywords": [
+    "dynamic lot sizing",
+    "Wagner-Whitin",
+    "stability radius",
+    "inverse optimisation",
+    "forecast revisions",
+    "rolling horizon",
+    "exact rational certification",
+    "reproducible research",
+    "AI-generated mathematics",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "For a fixed competing path, the candidate gives an exact floor-aware weighted-L-infinity distance to a cost tie.",
+    "A prefix-deviation directed acyclic graph and Charnes–Cooper formulation give a polynomial frozen-comparator lower certificate under the paper's stated model.",
+    "A positive-demand three-period instance has frozen radius 3/2 and exact strong radius 2, proving that the lower certificate can be strict for a partial prefix.",
+    "Exact-rational software emits witnesses and brackets that a separately implemented producer-side checker re-verifies for the released cases."
+  ],
+  "evidence": "The DOI archive contains the 30-page manuscript, source code, exact-rational certificates and witnesses, quick and full replay commands, normal and optimized-Python tests, adversarial regression cases, exact enumeration and scaling benchmarks, a pinned environment, SHA-256 manifests, machine-readable claims and assurance records, provenance, licence mapping, a review response and a verification receipt. The publisher completed the full replay and GitHub Actions passed on Python 3.11 and 3.13. These are producer-side and CI checks, not independent reproduction, formal verification, peer review or field validation.",
+  "statusDetail": "Unrefereed candidate mathematical and computational result. Producer-side full replay, exact-rational certificate checking, normal and optimized-Python tests, release-integrity checks, PDF checks and GitHub Actions pass. The release has not been independently reproduced, formally verified, conventionally peer reviewed or tested in an operating supply chain. The UCI illustration reconstructs forecast vintages and uses stylised costs. Novelty remains conditional because the full text of Richter and Vörös (1989), directly relevant to parametric dynamic lot sizing, was unavailable in the documented bounded search.",
+  "assurance": {
+    "availability": { "state": "passed", "evidenceUrl": "https://zenodo.org/records/21853902", "note": "The exact candidate archive, checksum sidecar, paper PDF and verification receipt are public under version DOI 10.5281/zenodo.21853902." },
+    "internalReplay": { "state": "passed", "evidenceUrl": "https://github.com/ipitchford/certified-commitment-horizons/actions/runs/31270813587", "note": "Producer-side full replay passed; GitHub Actions replayed the packaged wheel, manifest, exact checks and normal and optimized tests on Python 3.11 and 3.13." },
+    "independentRerun": { "state": "not-assessed", "note": "No unaffiliated clean-room rerun of the exact release has been reported." },
+    "independentReimplementation": { "state": "not-assessed", "note": "No unaffiliated implementation of the mathematical and computational pipeline has been reported." },
+    "formalVerification": { "state": "not-assessed", "note": "The release has exact witnesses and deterministic checkers but no end-to-end proof-assistant formalization." },
+    "specialistReview": { "state": "not-assessed", "note": "Internal and cross-model adversarial reviews are included, but no external specialist review of the exact release is claimed." },
+    "editorialPeerReview": { "state": "not-assessed", "note": "No conventional venue peer review has occurred." },
+    "dataEnvironmentReproducibility": { "state": "passed", "evidenceUrl": "https://github.com/ipitchford/certified-commitment-horizons/blob/v2.1.2-candidate/docs/reproducibility.md", "note": "The release pins its Python environment and records exact source-data and archive hashes; the UCI illustration is not operational field validation." }
+  },
+  "openProblems": [
+    "Independently rerun the exact DOI archive from a clean environment and publish the resulting receipt.",
+    "Reimplement the fixed-path radius, frozen certificate and bracket checker in a separate language or codebase.",
+    "Obtain and audit the full text of Richter and Vörös (1989), then repeat the recognition and novelty assessment.",
+    "Determine the exact complexity of demand-induced WW-Prefix-Radius-infinity; the released exact routine is not claimed to be polynomial-time.",
+    "Formalize the graph reduction, tie-radius theorem and certificate checker in a proof assistant.",
+    "Evaluate the decision rule prospectively with genuine forecast vintages, actual cost structures and operational outcomes."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Wagner, H. M., & Whitin, T. M. (1958). Dynamic Version of the Economic Lot Size Model. Management Science, 5(1), 89-96.",
+      "url": "https://doi.org/10.1287/mnsc.5.1.89"
+    },
+    {
+      "citation": "van Hoesel, S. P. M., & Wagelmans, A. P. M. (1993). Sensitivity Analysis of the Economic Lot-Sizing Problem. Discrete Applied Mathematics, 45(3), 291-312.",
+      "url": "https://doi.org/10.1016/0166-218X(93)90016-H"
+    },
+    {
+      "citation": "Chakravarti, N., & Wagelmans, A. P. M. (1998). Calculation of Stability Radii for Combinatorial Optimization Problems. Operations Research Letters, 23(1-2), 1-7.",
+      "url": "https://doi.org/10.1016/S0167-6377(98)00031-5"
+    },
+    {
+      "citation": "Richter, K., & Vörös, J. (1989). A Parametric Analysis of the Dynamic Lot-Sizing Problem. Journal of Information Processing and Cybernetics: EIK, 25(3), 67-73. Bibliographic record only; full text was unavailable in the bounded review.",
+      "url": "https://dblp.org/rec/journals/eik/RichterV89"
+    },
+    {
+      "citation": "Forel, A., & Grunow, M. (2023). Dynamic Stochastic Lot Sizing with Forecast Evolution in Rolling-Horizon Planning. Production and Operations Management, 32(2), 449-468.",
+      "url": "https://doi.org/10.1111/poms.13881"
+    },
+    {
+      "citation": "Ferreira, R., Martiniano, A., Ferreira, A., Ferreira, A., & Sassi, R. (2016). Daily Demand Forecasting Orders. UCI Machine Learning Repository.",
+      "url": "https://doi.org/10.24432/C5BC8T"
+    }
+  ],
+  "citeText": "Anonymous agentic research workflow. (2026). Certified Commitment Horizons in Dynamic Lot Sizing: Prefix Stability, Inverse Shortest Paths and One-Step Calibration of Forecast Revisions (Version 2.1.2-candidate) [Unrefereed candidate preprint and reproducibility package]. Zenodo. https://doi.org/10.5281/zenodo.21853902",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/certified-commitment-horizons.mp3",
+      "name": "Audio briefing — certified commitment horizons",
+      "description": "AI-generated voice summary of the candidate framework and its assurance boundary.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/certified-commitment-horizons.txt"
+    }
+  ]
+}

@@ -49,6 +49,20 @@ const PALETTES = {
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'certified-commitment-horizons': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 8 AUGUST 2026', 'DYNAMIC LOT SIZING · V2.1.2'],
+    head: ['How far can a plan', '<em>safely hold?</em>'],
+    headSize: 64,
+    sub: 'Exact-rational commitment horizons for forecast revisions in the Wagner–Whitin model, with replayable witnesses and explicit limits.',
+    tag: 'EXACT CERTIFICATES · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">three-period strict example</div>
+      <div class="eq eq-sm">ρ<sub>frozen</sub> = <span class="hl">3/2</span><br>ρ<sub>strong</sub> = <span class="hl">2</span></div>
+      <div class="note">The tractable frozen certificate is a safe lower bound — but a partial-prefix certificate can be <b>strictly conservative</b>.</div>
+      <div class="eq-foot">paper · exact code · witnesses · replay receipt</div>`
+  },
+
   'erdos-848-all-n': {
     palette: 'oxblood',
     kicker: ['PRESS RELEASE · 28 JULY 2026', 'ERDŐS PROBLEM 848 · V0.1'],

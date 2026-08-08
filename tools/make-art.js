@@ -260,6 +260,24 @@ art['cyclicity-loci-exponential-periods'] = (a, b) => {
   return s;
 };
 
+/* Certified commitment horizons: a protected prefix and a later departure. */
+art['certified-commitment-horizons'] = (a, b) => {
+  const xs = [110, 275, 440, 605, 770, 935, 1090];
+  const y = 245;
+  let s = '';
+  s += `<path d="M ${xs[0]} ${y} C 170 105, 215 105, ${xs[1]} ${y} S 380 385, ${xs[2]} ${y} S 545 105, ${xs[3]} ${y} S 710 385, ${xs[4]} ${y}" fill="none" stroke="${a}" stroke-width="7" opacity="0.96"/>`;
+  s += `<path d="M ${xs[0]} ${y} C 170 105, 215 105, ${xs[1]} ${y} S 380 385, ${xs[2]} ${y}" fill="none" stroke="#e7e5e4" stroke-width="2" opacity="0.8"/>`;
+  s += `<path d="M ${xs[2]} ${y} C 540 35, 670 35, ${xs[4]} ${y} S 975 365, ${xs[6]} ${y}" fill="none" stroke="${b}" stroke-width="5" stroke-dasharray="13 9" opacity="0.94"/>`;
+  for (let i = 0; i < xs.length; i++) {
+    const colour = i <= 2 ? a : (i === 4 || i === 6 ? b : '#e7e5e4');
+    s += `<circle cx="${xs[i]}" cy="${y}" r="${i <= 2 ? 13 : 9}" fill="${colour}" opacity="0.95"/>`;
+  }
+  s += `<path d="M ${xs[0]} 330 V 360 H ${xs[2]} V 330" fill="none" stroke="${a}" stroke-width="3" opacity="0.9"/>`;
+  s += `<text x="${(xs[0] + xs[2]) / 2}" y="388" text-anchor="middle" font-family="Georgia" font-size="21" fill="#e7e5e4" opacity="0.82">protected prefix</text>`;
+  s += `<text x="745" y="92" text-anchor="middle" font-family="Georgia" font-size="37" fill="#e7e5e4" opacity="0.92">3/2 ≤ ρ ≤ 2</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -272,6 +290,7 @@ const palette = {
   'affine-diversification-fibres': ['#2dd4bf', '#fbbf24']
   , 'txgraffiti-c3-resolution': ['#2dd4bf', '#f472b6']
   , 'cyclicity-loci-exponential-periods': ['#38bdf8', '#fbbf24']
+  , 'certified-commitment-horizons': ['#2dd4bf', '#fbbf24']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
