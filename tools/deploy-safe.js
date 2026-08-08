@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* One-command guarded production deployment with post-deploy readback. */
+/* Compatibility entrypoint for the canonical guarded deployment wrapper. */
 'use strict';
 const { spawnSync } = require('child_process');
 const path = require('path');
@@ -12,16 +12,7 @@ function run(command, args) {
   if (result.status !== 0) process.exit(result.status || 1);
 }
 
-run(process.execPath, ['tools/test-render.js']);
-run('./protocols/deploy/integrate.sh', []);
-run(process.execPath, ['tools/test-metadata.js']);
-run(process.execPath, ['tools/check-links.js']);
-run(process.execPath, ['tools/check-published.js', '--live']);
-run(process.execPath, ['tools/check-publication-integrity.js', '--live']);
-run('npx', ['wrangler', 'whoami']);
-run('npx', ['wrangler', 'pages', 'deploy', 'dist', '--project-name', 'evidence-press', '--branch', 'main']);
-run(process.execPath, ['tools/check-publication-integrity.js', '--live']);
-run(process.execPath, ['tools/check-published.js', '--record']);
-run(process.execPath, ['tools/indexnow-submit.js']);
+const forwarded = process.argv.slice(2);
+run('./tools/deploy.sh', forwarded.length ? forwarded : ['--branch', 'main']);
 
-console.log('\nSafe production deployment completed, passed post-deploy readback, and updated the local publication ledger.');
+console.log('\nSafe production deployment completed through tools/deploy.sh.');
