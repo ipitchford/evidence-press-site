@@ -24,7 +24,7 @@ const receipt = {
   schema_version: '2.0', scope: 'protocol', subject_id: 'alpha', version: '1.2.3',
   source_commit: null, source_commit_full: null, source_tree: null,
   source_date: null, dirty: null,
-  toolchain: { node: process.version, builder: 'verify-all@0.2.0-candidate.1' },
+  toolchain: { node: U.NODE_COMPATIBILITY, builder: 'verify-all@0.2.0-candidate.1' },
   checks: [
     { name: 'manifest', passed: true },
     { name: 'validate', passed: true }

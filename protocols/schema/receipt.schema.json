@@ -24,7 +24,7 @@
       "additionalProperties": false,
       "required": ["node", "builder"],
       "properties": {
-        "node": { "type": "string", "description": "Node version the receipt was produced under." },
+        "node": { "type": "string", "description": "Reviewed Node compatibility range for reproducible receipt bytes. The exact replay runtime belongs in the CI or build log." },
         "builder": { "type": "string", "description": "Builder id and version." }
       }
     },

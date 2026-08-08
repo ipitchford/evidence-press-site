@@ -31,7 +31,7 @@ function main() {
     source_tree: git.sourceTree,
     source_date: git.sourceDate,
     dirty: git.dirty,
-    node: process.version,
+    node: U.NODE_COMPATIBILITY,
     covers,
     digest,
     signed: false,

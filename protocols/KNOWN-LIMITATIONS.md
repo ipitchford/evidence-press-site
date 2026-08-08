@@ -37,6 +37,11 @@ checkout and get the same receipt, so a status that the gates do not support is
 *detectable by re-running*. It is **not** proof against a determined forger who
 edits the receipt and the tools together.
 
+Receipt bytes record the reviewed Node compatibility range (`>=18`), rather than
+the volatile patch version of the producing runtime. Exact runner versions remain
+visible in CI/build logs; this keeps the receipt reproducible across supported
+Node releases without pretending that the log and artifact are the same record.
+
 Turning "reproducible" into "trusted" requires infrastructure this candidate does
 not yet have: CI-issued receipts, artifact signing or a transparency log,
 authenticated provider transcripts, and a verifier identity distinct from the

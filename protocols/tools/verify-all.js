@@ -366,7 +366,7 @@ function runAll(opts) {
       source_tree: git.sourceTree,
       source_date: git.sourceDate,
       dirty: git.dirty,
-      toolchain: { node: process.version, builder: `verify-all@${CONFIG.softwareVersion}` },
+      toolchain: { node: U.NODE_COMPATIBILITY, builder: `verify-all@${CONFIG.softwareVersion}` },
       checks,
       files_sha256: manifest.files.map(f => ({ path: f.path, sha256: f.sha256 })),
       assurance_status: status,
@@ -398,7 +398,7 @@ function runAll(opts) {
     source_tree: git.sourceTree,
     source_date: git.sourceDate,
     dirty: git.dirty,
-    toolchain: { node: process.version, builder: `verify-all@${CONFIG.softwareVersion}` },
+    toolchain: { node: U.NODE_COMPATIBILITY, builder: `verify-all@${CONFIG.softwareVersion}` },
     checks: repoChecks,
     files_sha256: results.map(r => ({ path: `protocols/${r.id}/RECEIPT.json`, sha256: U.sha256File(path.join(U.packDir(r.id), 'RECEIPT.json')) })),
     // The repository is only as assured as its weakest pack; a single failed pack

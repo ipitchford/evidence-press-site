@@ -45,6 +45,12 @@ function packDir(id) { return path.join(PACKS_DIR, id); }
 
 function readJSON(file) { return JSON.parse(fs.readFileSync(file, 'utf8')); }
 
+// Receipts are content-addressed release artifacts. Recording process.version
+// would make otherwise identical builds differ across every supported Node
+// runtime, so bind the artifact to the reviewed compatibility boundary instead;
+// CI logs retain the exact runner version for each replay.
+const NODE_COMPATIBILITY = readJSON(path.join(ROOT, 'package.json')).engines.node;
+
 const RELEASE_CONTROL_PATHS = new Set([
   // Commit B is deliberately ledger-only. Schemas, checkers, documentation and
   // tests can affect either the emitted bytes or the meaning of the gate, so
@@ -123,5 +129,5 @@ function frontmatter(text) {
 
 module.exports = {
   ROOT, PACKS_DIR, sha256File, sha256String, walk, listPacks, packDir, readJSON,
-  gitIdentity, releaseControlPath, frontmatter
+  NODE_COMPATIBILITY, gitIdentity, releaseControlPath, frontmatter
 };
