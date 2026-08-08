@@ -190,6 +190,31 @@ art['stocks-are-not-flows'] = (a, b) => {
   return s;
 };
 
+/* Affine diversification fibres: many compatible histories with sharp bounds. */
+art['affine-diversification-fibres'] = (a, b) => {
+  let s = '';
+  const x0 = 120, x1 = 1040, y0 = 330;
+  const pathFor = (offset, amplitude, colour, width, opacity, dash = '') => {
+    let p = `M ${x0} ${y0 - offset}`;
+    for (let x = 0; x <= x1 - x0; x += 10) {
+      const t = x / (x1 - x0);
+      const y = y0 - offset - amplitude * (0.24 * Math.sin(t * Math.PI * 2.4) + 0.76 * t);
+      p += ` L ${(x0 + x).toFixed(1)} ${y.toFixed(1)}`;
+    }
+    return `<path d="${p}" fill="none" stroke="${colour}" stroke-width="${width}" opacity="${opacity}"${dash ? ` stroke-dasharray="${dash}"` : ''}/>`;
+  };
+  for (const [offset, amplitude, opacity] of [[12, 62, 0.22], [26, 88, 0.28], [42, 116, 0.34], [60, 142, 0.4], [78, 166, 0.46]]) {
+    s += pathFor(offset, amplitude, '#e7e5e4', 2, opacity);
+  }
+  s += pathFor(10, 194, a, 4, 0.96);
+  s += pathFor(94, 118, b, 4, 0.96);
+  s += `<path d="M ${x0} 80 V 350 M ${x0} 350 H ${x1}" stroke="#8a938f" stroke-width="1" opacity="0.5"/>`;
+  s += `<path d="M 120 102 C 280 78, 440 126, 600 102 S 900 126, 1040 102" fill="none" stroke="${a}" stroke-width="2" stroke-dasharray="6 8" opacity="0.7"/>`;
+  s += `<circle cx="120" cy="320" r="7" fill="${a}"/><circle cx="1040" cy="184" r="7" fill="${b}"/>`;
+  s += `<text x="1055" y="190" font-family="Georgia" font-size="22" fill="#e7e5e4" opacity="0.85">sharp bounds</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -198,7 +223,8 @@ const palette = {
   'exotic-affine-three-spheres': ['#a78bfa', '#f472b6'],
   'erdos-848-all-n': ['#fbbf24', '#38bdf8'],
   'reducible-incidence-divisors': ['#4ade80', '#c084fc'],
-  'stocks-are-not-flows': ['#38bdf8', '#f59e0b']
+  'stocks-are-not-flows': ['#38bdf8', '#f59e0b'],
+  'affine-diversification-fibres': ['#2dd4bf', '#fbbf24']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
