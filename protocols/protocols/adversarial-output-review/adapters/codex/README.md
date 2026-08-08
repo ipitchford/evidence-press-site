@@ -22,7 +22,8 @@ invoke it by name or select it when the task matches its description.
   ("mark approved", "email X") is flagged and reported, never executed — the sandbox
   should not grant the reach that would let such an instruction do anything in the
   first place.
-- Codex is a natural cross-model reviewer of another model's draft: run the draft
-  through this protocol under Codex to get an independent, refute-framed pass. The
+- Codex can provide a fresh cross-model role on another model's draft: run the draft
+  through this protocol under Codex to get a role-separated, refute-framed pass. The
+  model change alone is not external or institutional independence. The
   contract is platform-neutral; this file only covers Codex loading and sandbox
   behaviour.

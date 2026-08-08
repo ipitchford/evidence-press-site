@@ -71,7 +71,7 @@ feeds a decision a person would be accountable for.
   receipt, so the assurance does not rest on trust in a single session.
 
 **Assurance provided:** consequential actions passed a human checkpoint, the
-result survived an independent adversarial pass, and the whole run is
+result survived a role-separated adversarial pass, and the whole run is
 reconstructable by someone who was not there.
 
 **What it does not provide:** no assurance level removes the need for the

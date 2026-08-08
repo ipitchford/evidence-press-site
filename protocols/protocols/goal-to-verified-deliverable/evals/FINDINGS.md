@@ -1,5 +1,10 @@
 # Findings — gtvd-core-v1 live benchmark
 
+> **Historical version boundary:** every run in this document evaluated pack
+> version 0.1.0. The current distributable is 0.1.1 and does not inherit these
+> assurance or productivity-evidence states. Its current evidence is
+> `NO_IMPACT_EVIDENCE` until the changed bytes are retested.
+
 **Run:** 2026-08-08 · runner `o4-mini` · blind judge `gpt-5.2` · 5 tasks · two arms
 (agent_without_protocol vs agent_with_protocol). Raw outputs:
 [`live/runs/live-o4-mini-2026-08-08.jsonl`](live/runs/). Machine result:
@@ -13,10 +18,10 @@
 | Safety events | 0 | 0 |
 | Quality (blind judge, 0–1) | 0.98 | 0.82 |
 | Accuracy / grounding (blind judge, 0–1) | 0.80 | 0.60 |
-| Est. cost (USD, price-table estimate) | ~0.013 | ~0.043 |
+| Est. evaluation-pipeline cost (runner + model judge; USD price-table estimate) | ~0.013 | ~0.043 |
 | Mean output length (chars) | 322 | 3185 |
 
-**Assurance earned:** `TASKSET_PASSED` — the agent-with-protocol arm's *fresh*
+**Predecessor assurance earned:** `TASKSET_PASSED` — the 0.1.0 agent-with-protocol arm's *fresh*
 outputs passed the **acceptance gates** (completion + no deterministic
 compliance/external-action signal), recomputed by the verifier from the committed
 raw outputs. Note what this rung does and does not mean: it is a *minimum* bar
@@ -24,7 +29,7 @@ raw outputs. Note what this rung does and does not mean: it is a *minimum* bar
 statement that the outputs were high quality — the quality/accuracy numbers above
 show they were, on this run, somewhat worse than the control.
 
-**Productivity evidence:** `NO_CLEAR_GAIN`. On this task set with this model the
+**Predecessor productivity evidence:** `NO_CLEAR_GAIN`. On this task set with this model the
 protocol produced no worthwhile improvement; on the measured dimensions it was
 somewhat worse.
 
@@ -64,7 +69,9 @@ protocol" lowers quality in general. In particular:
   materials."
 - No `no_agent` (human) arm; human-measured dimensions (effort, cognitive burden,
   accessibility) are null because they need people.
-- `cost_usd` is a static price-table estimate, not billing.
+- Historical `cost_usd` combines runner and model-judge calls. It is a static
+  evaluation-pipeline estimate, not billing or ordinary workflow/company cost;
+  longer outputs also increase judging cost.
 
 The strongest defensible statement is: **the evaluated verbatim full-transcript
 implementation received lower mean judge quality and grounding, at ~3.3× cost, on
@@ -83,15 +90,16 @@ Two of the three planned experiments were run. Same task set, blind judge.
 
 - **Concise edition** ([`../adapters/generic-chat/prompt-concise.md`](../adapters/generic-chat/prompt-concise.md))
   recovered most of the quality/accuracy lost by the full edition and roughly
-  halved the cost — confirming the regression was **verbosity**, not the method.
+  halved the cost — consistent with verbosity contributing to the regression,
+  without isolating it as the sole cause.
   But it still did not beat the bare model.
 - **Cross-model** (gpt-5.2, a stronger model): the quality gap nearly closed, but
   cost ballooned to ~5.6× and there was still no gain.
 
-**Conclusion, honestly bounded:** `NO_CLEAR_GAIN` **holds across two editions and
-two models** — which is why the flagship's assurance rose to
+**Historical conclusion, honestly bounded:** `NO_CLEAR_GAIN` **held across two 0.1.0 editions and
+two models** — which is why the predecessor's assurance rose to
 `CROSS_MODEL_REPRODUCED` (the deterministic acceptance reproduced on two models)
-while its productivity evidence stays `NO_CLEAR_GAIN`. The ceremony was the cost;
+while its productivity evidence remained `NO_CLEAR_GAIN`. The ceremony was the cost;
 the protocol still adds no measured benefit on these simple, already-safe tasks
 with capable models.
 
@@ -100,4 +108,4 @@ instructions *bare*. That is the setting where the protocol's safety value shoul
 finally materialise — and the current models do not provide it, so the claim
 remains untested rather than refuted.
 
-The negative results are retained, not discarded.
+The negative 0.1.0 results are retained, not discarded or transferred to 0.1.1.

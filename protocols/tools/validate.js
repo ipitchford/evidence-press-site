@@ -24,6 +24,55 @@ const EVIDENCE = U.readJSON(path.join(U.ROOT, 'status', 'productivity-evidence.j
 const ASSURANCE_IDS = new Set(ASSURANCE.states.map(s => s.id));
 const EVIDENCE_IDS = new Set(EVIDENCE.states.map(s => s.id));
 
+function validateSkillFrontmatter(meta, id) {
+  const errs = [];
+  const allowed = new Set(['name', 'description', 'license', 'compatibility', 'metadata', 'allowed-tools']);
+  if (!meta || typeof meta !== 'object' || Array.isArray(meta)) return ['frontmatter must be a YAML mapping'];
+  for (const key of Object.keys(meta)) {
+    if (!allowed.has(key)) errs.push(`unknown frontmatter field '${key}'`);
+  }
+  if (meta.name !== id) errs.push(`name '${meta.name}' does not match pack id`);
+  if (typeof meta.name !== 'string' || meta.name.length < 1 || meta.name.length > 64 ||
+      !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(meta.name)) {
+    errs.push('name must be 1-64 lowercase letters, numbers, or single hyphens');
+  }
+  if (typeof meta.description !== 'string' || meta.description.length < 1 || meta.description.length > 1024) {
+    errs.push('description must be a non-empty string of at most 1024 characters');
+  }
+  for (const field of ['license', 'compatibility']) {
+    if (field in meta && (typeof meta[field] !== 'string' || meta[field].length < 1)) {
+      errs.push(`${field} must be a non-empty string when present`);
+    }
+  }
+  if (typeof meta.compatibility === 'string' && meta.compatibility.length > 500) {
+    errs.push('compatibility must be at most 500 characters');
+  }
+  if ('allowed-tools' in meta && (typeof meta['allowed-tools'] !== 'string' || !meta['allowed-tools'].trim())) {
+    errs.push('allowed-tools must be one non-empty, space-separated string (experimental Agent Skills field)');
+  }
+  if ('metadata' in meta) {
+    if (!meta.metadata || typeof meta.metadata !== 'object' || Array.isArray(meta.metadata)) {
+      errs.push('metadata must be a mapping');
+    } else {
+      for (const [key, value] of Object.entries(meta.metadata)) {
+        if (typeof key !== 'string' || typeof value !== 'string') errs.push('metadata keys and values must be strings');
+      }
+    }
+  }
+  return errs;
+}
+
+function positiveResultSupported(d, targetState) {
+  // Candidate v0.2 intentionally has no automatic positive-evidence promotion.
+  // Aggregate arm summaries and self-declared design labels cannot establish
+  // identification, preregistration timing, missingness handling, or deserved
+  // assurance. The fields remain a future record shape; all positive result and
+  // protocol states fail closed until a separate reviewed promotion gate exists.
+  void d;
+  void targetState;
+  return false;
+}
+
 function validatePack(id) {
   const dir = U.packDir(id);
   const errs = [];
@@ -63,37 +112,30 @@ function validatePack(id) {
   // a real, measured eval result whose design ceiling supports it. Negative results
   // take precedence. This closes the "declare BENEFIT for free" escalation path.
   const POS = new Set(EVIDENCE.states.filter(s => s.polarity === 'positive').map(s => s.id));
-  const EORDER = new Map(EVIDENCE.states.map(s => [s.id, s.order]));
-  const CEIL = EVIDENCE.design_ceiling || {};
   const evalsDir = path.join(dir, 'evals');
   const results = [];
   if (fs.existsSync(evalsDir)) {
     for (const f of fs.readdirSync(evalsDir).filter(f => f.endsWith('.json'))) {
       const d = U.readJSON(path.join(evalsDir, f));
-      if (Array.isArray(d.arms) && d.arms.length && typeof d.arms[0] === 'object' && 'implied_evidence_status' in d) results.push(d);
+      if (Array.isArray(d.arms) && d.arms.length && typeof d.arms[0] === 'object' && 'implied_evidence_status' in d) {
+        results.push(d);
+        if (POS.has(d.implied_evidence_status) && !positiveResultSupported(d, d.implied_evidence_status)) {
+          note(`eval result '${f}' claims ${d.implied_evidence_status} without a valid pre-registered decision, worthwhile B-C margin, and regression checks`);
+        }
+      }
     }
   }
-  // A positive state must be backed by a result whose agent_with_protocol arm
-  // actually IMPROVES on agent_without_protocol (recomputed from the arms), with
-  // no safety regression — not by a trusted implied_evidence_status or a lone
-  // non-null metric. The design ceiling must also allow the declared state.
-  const armOf = (d, name) => (d.arms || []).find(a => a.arm === name);
-  const improves = d => {
-    const w = armOf(d, 'agent_with_protocol'), o = armOf(d, 'agent_without_protocol');
-    if (!w || !o) return false;
-    const wm = w.metrics || {}, om = o.metrics || {};
-    const better = (a, b) => a != null && b != null && a > b;
-    const notWorseSafety = wm.safety_events == null || om.safety_events == null || wm.safety_events <= om.safety_events;
-    const gain = better(w.acceptance_pass_rate, o.acceptance_pass_rate) || better(wm.quality, om.quality)
-      || better(wm.accuracy, om.accuracy) || (wm.safety_events != null && om.safety_events != null && wm.safety_events < om.safety_events);
-    return gain && notWorseSafety;
-  };
+  // Historical records remain version-labelled. Only records for the exact
+  // current pack version may affect its evidence or readiness; predecessor
+  // results stay inspectable without certifying changed distributable bytes.
+  const currentResults = results.filter(d => d.protocol_id === p.id && d.protocol_version === p.version);
+  // Candidate v0.2 cannot automatically issue a positive evidence state.
   if (POS.has(p.productivity_evidence)) {
-    const backing = results.find(d => EORDER.get(CEIL[d.design]) >= EORDER.get(p.productivity_evidence) && improves(d));
-    if (!backing) note(`productivity_evidence '${p.productivity_evidence}' is a positive benefit state but no eval result shows the agent_with_protocol arm improving over agent_without_protocol (no safety regression) at a supporting design — declare NO_IMPACT_EVIDENCE until measured`);
+    const backing = currentResults.find(d => positiveResultSupported(d, p.productivity_evidence));
+    if (!backing) note(`productivity_evidence '${p.productivity_evidence}' is positive, but candidate v0.2 has no reviewed positive-promotion gate; retain NO_IMPACT_EVIDENCE or an honest negative finding`);
   }
-  const hasHarm = results.some(d => d.implied_evidence_status === 'HARM_OR_REGRESSION_FOUND');
-  const hasNoGain = results.some(d => d.implied_evidence_status === 'NO_CLEAR_GAIN');
+  const hasHarm = currentResults.some(d => d.implied_evidence_status === 'HARM_OR_REGRESSION_FOUND');
+  const hasNoGain = currentResults.some(d => d.implied_evidence_status === 'NO_CLEAR_GAIN');
   if ((hasHarm || hasNoGain) && POS.has(p.productivity_evidence)) note(`an eval result reports a negative finding (${hasHarm ? 'HARM_OR_REGRESSION_FOUND' : 'NO_CLEAR_GAIN'}) but productivity_evidence is positive — negative results take precedence`);
   if (hasHarm && p.assurance_status === 'FIELD_READY') note('HARM_OR_REGRESSION_FOUND is present but assurance_status is FIELD_READY — harm blocks field readiness');
 
@@ -140,8 +182,7 @@ function validatePack(id) {
     if (!fm) note('SKILL.md has no YAML frontmatter');
     else {
       const meta = load(fm);
-      if (meta.name !== id) note(`SKILL.md frontmatter name '${meta.name}' does not match pack id`);
-      if (!meta.description) note('SKILL.md frontmatter missing description');
+      for (const err of validateSkillFrontmatter(meta, id)) note(`SKILL.md frontmatter ${err}`);
     }
   }
 
@@ -198,4 +239,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { validatePack };
+module.exports = { validatePack, validateSkillFrontmatter, positiveResultSupported };

@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://evidencepress.org/protocols/api/receipt.schema.json",
+  "$id": "https://evidencepress.org/protocols/api/v2/receipt.schema.json",
   "title": "Verification receipt",
-  "description": "A compact, replayable record of what was checked and what the result was. Emitted per protocol pack and once for the whole repository. The receipt is what lets a third party trust the work without repeating it, and repeat it if they choose. Timestamps are commit-derived, never clock-derived, so the same source yields the same receipt.",
+  "description": "A compact, replayable record of what was checked and what the result was. Emitted per protocol pack and once for the whole repository. A receipt supports inspection and replay; it is not independent trust, correctness or impact evidence. Timestamps are commit-derived, never clock-derived, so the same committed source yields the same receipt.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "scope", "subject_id", "version", "source_commit", "source_date", "toolchain", "checks", "assurance_status", "productivity_evidence"],
+  "required": ["schema_version", "scope", "subject_id", "version", "source_commit", "source_commit_full", "source_tree", "source_date", "dirty", "toolchain", "checks", "assurance_status", "productivity_evidence"],
   "properties": {
     "schema_version": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
     "scope": {
@@ -15,13 +15,16 @@
     "subject_id": { "type": "string", "description": "Protocol id, or 'productivity-protocols' for a repository receipt." },
     "version": { "type": "string" },
     "source_commit": { "type": ["string", "null"], "description": "Short commit the receipt was generated from. Null outside a git checkout." },
+    "source_commit_full": { "type": ["string", "null"], "pattern": "^[0-9a-f]{40}$", "description": "Full Git commit identity. Null outside a Git checkout." },
+    "source_tree": { "type": ["string", "null"], "pattern": "^[0-9a-f]{40}$", "description": "Git tree object for the committed source. A release is valid only when dirty is false." },
     "source_date": { "type": ["string", "null"], "description": "Commit date (ISO 8601). The build's only clock." },
+    "dirty": { "type": ["boolean", "null"], "description": "Whether tracked or untracked working-tree content differed from the named commit before verification. Null outside Git." },
     "toolchain": {
       "type": "object",
       "additionalProperties": false,
       "required": ["node", "builder"],
       "properties": {
-        "node": { "type": "string", "description": "Node version the receipt was produced under." },
+        "node": { "type": "string", "description": "Reviewed Node compatibility range for reproducible receipt bytes. The exact replay runtime belongs in the CI or build log." },
         "builder": { "type": "string", "description": "Builder id and version." }
       }
     },
@@ -76,7 +79,12 @@
       "required": ["command", "byte_identical_expected"],
       "properties": {
         "command": { "type": "string", "description": "The single command that reproduces this receipt from a clean checkout." },
-        "byte_identical_expected": { "type": "boolean" }
+        "byte_identical_expected": { "type": "boolean" },
+        "condition": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The source-state condition under which replay is or is not promised."
+        }
       }
     }
   }

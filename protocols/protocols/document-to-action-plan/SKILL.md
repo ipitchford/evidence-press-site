@@ -9,15 +9,14 @@ description: >-
   excerpt) needs its actionable content pulled out and made checkable. Read-only;
   takes no action on the documents' behalf and invents nothing they do not
   contain.
-license: Apache-2.0
+license: CC0-1.0
 metadata:
   protocol: document-to-action-plan
-  protocol_version: 0.1.0
+  protocol_version: 0.1.1
   kernel: verified-agent-work@0.1.0
   assurance_level: verified
   risk_class: low
-allowed-tools:
-  - read
+allowed-tools: Read
 ---
 
 # Document to action plan

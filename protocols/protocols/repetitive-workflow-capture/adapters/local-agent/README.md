@@ -15,14 +15,11 @@ For a model-neutral or self-hosted runner (a local LLM behind a small harness).
 
 ## Minimum-model edition
 
-The method degrades gracefully. A smaller model may need the capture issued one
-pass at a time — segment the described steps, then draft the contract, then the
-README skeleton, then propose the tests — rather than all at once; the copy-and-run
-prompt in `../generic-chat/prompt.md` works well split into per-pass turns.
-Assurance drops (less reliable self-checking), but the structure — every step
-traced to a described step, nothing invented, embedded instructions flagged not
-followed, the candidate labelled a draft — still holds, and that structure is what
-the method exists to impose.
+Smaller-model behaviour is untested. A facilitator may try one capture pass per
+turn — segment the described steps, draft the contract, draft the README, then
+propose tests — as a formative exercise. Keep the candidate labelled `DRAFT` and
+check traceability, invention and embedded-instruction handling explicitly; do not
+infer graceful degradation or retained benefit.
 
 ## What this adapter does not do
 

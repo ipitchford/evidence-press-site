@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/protocols/api/v2/pilot-follow-up.schema.json",
+  "title": "Company pilot 30 and 90 day follow-up",
+  "description": "Pseudonymous follow-up records. Missing follow-up is represented explicitly rather than deleting the participant.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "pilot_id", "study_stage", "plan_sha256", "assignment_sha256", "observations_sha256", "synthetic_example", "records"],
+  "properties": {
+    "schema_version": { "const": "2.0" },
+    "pilot_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$" },
+    "study_stage": { "const": "feasibility" },
+    "plan_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "assignment_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "observations_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "synthetic_example": { "type": "boolean" },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "participant_id",
+          "day",
+          "due_date",
+          "status",
+          "completed_date",
+          "workflow_still_in_use",
+          "protocol_use_frequency",
+          "would_adopt",
+          "help_request_count",
+          "facilitator_support_min",
+          "cognitive_burden_1_to_7",
+          "material_error_count",
+          "safety_event_count",
+          "local_changes",
+          "reasons_for_non_use"
+        ],
+        "properties": {
+          "participant_id": { "type": "string", "pattern": "^P[0-9A-Z_-]{2,31}$" },
+          "day": { "enum": [30, 90] },
+          "due_date": { "type": "string", "format": "date" },
+          "status": { "enum": ["scheduled", "completed", "missed", "withdrew"] },
+          "completed_date": { "type": ["string", "null"], "format": "date" },
+          "workflow_still_in_use": { "type": ["boolean", "null"] },
+          "protocol_use_frequency": { "type": ["string", "null"], "enum": ["never", "less_than_monthly", "monthly", "weekly", "most_work_items", "every_work_item", null] },
+          "would_adopt": { "type": ["boolean", "null"] },
+          "help_request_count": { "type": ["integer", "null"], "minimum": 0 },
+          "facilitator_support_min": { "type": ["number", "null"], "minimum": 0 },
+          "cognitive_burden_1_to_7": { "type": ["integer", "null"], "minimum": 1, "maximum": 7 },
+          "material_error_count": { "type": ["integer", "null"], "minimum": 0 },
+          "safety_event_count": { "type": ["integer", "null"], "minimum": 0 },
+          "local_changes": { "type": ["string", "null"] },
+          "reasons_for_non_use": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

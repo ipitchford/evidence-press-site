@@ -2,7 +2,7 @@
 # Validates against ../../schema/protocol.schema.json and the kernel invariants.
 schema_version: "1.0"
 id: adversarial-output-review
-version: 0.1.0
+version: 0.1.1
 title: Adversarial output review
 purpose: >-
   Challenge a supplied draft or analysis rather than confirm it. Produce findings
@@ -22,7 +22,7 @@ privacy_class: internal
 use_when:
   - You have a draft, memo, plan, or analysis and want it challenged, not applauded, before it goes further.
   - You want each objection tied to a specific claim and paired with a concrete test that would settle it, rather than vague unease.
-  - The draft was produced by the same agent or author who would otherwise be its only judge, and you want an independent, refute-framed pass.
+  - The draft was produced by the same agent or author who would otherwise be its only judge, and you want a fresh, role-separated, refute-framed pass.
 do_not_use_when:
   - You want the draft rewritten or improved — this protocol reviews it and hands the fixes back to the author; it does not edit the draft.
   - You want reassurance or a sign-off — the protocol is framed to refute, and confirmation is not its output.

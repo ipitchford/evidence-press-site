@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://evidencepress.org/protocols/api/protocol.schema.json",
+  "$id": "https://evidencepress.org/protocols/api/v2/protocol.schema.json",
   "title": "Productivity Protocol contract",
   "description": "The platform-neutral contract for one protocol. A protocol.yaml (or .json) that validates against this schema and satisfies the structural kernel checks is STRUCTURALLY conformant with the Verified Agent Work kernel — its required fields are present and its steps are mapped. Structural conformance is not semantic fidelity (a validator cannot confirm a model actually follows the steps) and says nothing about benefit: see productivity_evidence for the separate, evidence-backed benefit claim.",
   "type": "object",
@@ -166,7 +166,7 @@
     },
     "assurance_status": {
       "$ref": "#/$defs/assuranceStatus",
-      "description": "Where the protocol sits on the protocol-assurance ladder. Structure/testing/security — NOT benefit."
+      "description": "The authored source declaration and baseline on the protocol-assurance ladder. In a published machine record, achieved_assurance_status is computed from the validated receipt and is authoritative for achieved structure/testing/security assurance. Neither field is evidence of benefit."
     },
     "productivity_evidence": {
       "$ref": "#/$defs/productivityEvidence",

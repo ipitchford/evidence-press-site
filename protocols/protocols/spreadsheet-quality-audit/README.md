@@ -7,7 +7,7 @@ located to a cell and rated.**
 | | |
 |---|---|
 | Protocol id | `spreadsheet-quality-audit` |
-| Version | `0.1.0` |
+| Version | `0.1.1` |
 | Kernel | Verified Agent Work `0.1.0` |
 | Assurance level | Verified |
 | Risk class | Moderate |

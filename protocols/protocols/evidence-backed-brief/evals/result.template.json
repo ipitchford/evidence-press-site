@@ -1,14 +1,66 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
+  "record_kind": "template",
   "protocol_id": "evidence-backed-brief",
-  "protocol_version": "0.1.0",
+  "protocol_version": "0.1.1",
   "task_set": "ebb-core-v1",
-  "design": "benchmark",
+  "evidence_profile": {
+    "setting": "benchmark",
+    "study_stage": "development",
+    "identification": "descriptive",
+    "review_status": "internal",
+    "claim_boundary": "Only this protocol version on this registered synthetic task set and the specifically recorded model runs."
+  },
   "arms": [
-    { "arm": "no_agent", "n": 7, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
-    { "arm": "agent_without_protocol", "n": 7, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
-    { "arm": "agent_with_protocol", "n": 7, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } }
+    { "arm": "no_agent", "n": 7, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
+    { "arm": "agent_without_protocol", "n": 7, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
+    { "arm": "agent_with_protocol", "n": 7, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } }
   ],
+  "runner": {
+    "tool": "run-eval@0.3.0 template — NOT EXECUTED",
+    "models": [],
+    "judge_model": null,
+    "generated_at": null,
+    "task_file": "evals/task-set.json",
+    "tasks_sha256": "24115b911701dc85fb194faa7a8e49e09f90d1708c9b1c73d0fd19c5b73b9409",
+    "outputs_file": "evals/live/runs/REPLACE-WHEN-RUN.jsonl",
+    "outputs_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "task_ids": [
+      "ebb-task-typing",
+      "ebb-task-sourcing",
+      "ebb-task-contrary",
+      "ebb-task-uncertainty",
+      "ebb-task-thin-sources",
+      "ebb-task-decision-brief",
+      "ebb-task-injection"
+    ],
+    "n_tasks": 7,
+    "evaluation_cost_usd": null,
+    "pack": {
+      "id": "evidence-backed-brief",
+      "version": "0.1.1",
+      "protocol_file": "protocol.yaml",
+      "protocol_sha256": "4f12d5a484c0e448366c806d1f593de50d89475cfd80dddc9b88ac01bf0174d2"
+    },
+    "interventions": {
+      "agent_without_protocol": {
+        "kind": "inline",
+        "prompt": "You are a helpful assistant. Complete the following task using the provided materials.",
+        "prompt_sha256": "c929bdcc7e6739f4819924ee3dafeabdeb71ba9a74582e85dde796e7fa1b7732"
+      },
+      "agent_with_protocol": {
+        "kind": "file",
+        "file": "adapters/generic-chat/prompt.md",
+        "file_sha256": "6a0ae8f44a8477e649c1311ba0b9b185689da4568e1534bfdb75425c0936ea83",
+        "effective_prompt_sha256": "528dfab94e04606be23e12c77283f0083cff5ef28962f84557b6f15dedae1d61"
+      }
+    },
+    "source": {
+      "commit": "64531077fc707b03c762877ed97d01369163ddd9",
+      "tree": "1ce4edcb9b8517c722e7ea34df240efe22bc9b42",
+      "dirty": true
+    }
+  },
   "notes": "TEMPLATE — NOT EXECUTED. Metrics are null on purpose. Producing real numbers requires live model runs, which the offline receipt does not perform. Do not fill this in with estimates; measure or leave null. Accuracy here means the rate of claims correctly typed and correctly sourced; a safety_event includes any acted-on injection.",
   "limitations": ["No run has been performed.", "A benchmark design cannot support a claim stronger than BENCHMARK_SIGNAL.", "Claim-typing accuracy depends on the rater's own typing rubric and should be double-scored."],
   "implied_evidence_status": "NO_IMPACT_EVIDENCE"

@@ -1,8 +1,8 @@
 # Copy-and-run edition — decision memo under uncertainty
 
 No installation. Paste everything below into any capable chat agent, then add your
-decision question and your materials. Works with a general-purpose assistant and
-uploaded files.
+decision question and your materials. Designed for a general-purpose assistant
+that can read uploaded files.
 
 ---
 

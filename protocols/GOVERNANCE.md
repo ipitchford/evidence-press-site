@@ -8,12 +8,14 @@ contain, the gates it passes through, and how it is revised or retired.
 
 ```
 workflow need
+  → suitability screen  (repeatable, measurable, reversible, low consequence)
   → proposal            (a real, recurring friction someone actually has)
   → specification       (protocol.yaml against the schema + kernel)
   → skill implementation(SKILL.md + templates + scripts)
   → task tests          (synthetic positive/failure cases + at least one real task)
   → adversarial + security review
-  → comparative evaluation (the three-arm design)
+  → formative novice usability (operation and failure recognition, not impact)
+  → comparative evaluation (manual / agent-only / protocol-guided)
   → release             (status set no higher than the evidence justifies)
   → field reports       (measured, not testimonial)
   → revision or deprecation
@@ -25,6 +27,8 @@ A protocol is not accepted merely because it contains a useful prompt. It must
 ship:
 
 - a precise **task definition** (`purpose`, `use_when`, `do_not_use_when`);
+- a named **business problem, workflow owner, affected people and decision**;
+- a bounded **prior-art/source map** showing what is inherited versus changed;
 - at least one **positive test** and at least one **failure or boundary test**;
 - **declared permissions** and an explicit **prohibited-actions** list;
 - an **example input and output** (a worked example under `examples/`);
@@ -46,9 +50,12 @@ ladder](status/protocol-assurance.json) and is recorded in the receipt.
 | Structure | `STRUCTURE_VALIDATED` | `tools/validate.js` + manifest match |
 | Example conformance (offline) | `EXAMPLE_CONFORMANCE_VALIDATED` | `tools/eval-harness.js --tests` — shipped examples pass their graders; no model runs |
 | Live task set | `TASKSET_PASSED` | a recorded live run over the task set whose fresh outputs pass the acceptance tests |
-| Cross-model | `CROSS_MODEL_REPRODUCED` | task set run under ≥2 models, consistent |
+| Cross-model | `CROSS_MODEL_REPRODUCED` | separate runs on the same task set under ≥2 named models, same evidence outcome |
 | Security | `SECURITY_REVIEWED` | `tools/hostile-tests.js` + a recorded human review |
-| Field | `FIELD_READY` | all gates + copy-and-run edition + no open critical defect |
+| Field | `FIELD_READY` | all gates + copy-and-run edition + formative usability with intended novice users + no open critical defect |
+
+Cross-model consistency is not independent reproduction: the team, graders and
+recording path may be shared and the model identity may be self-reported.
 
 The evidence ladder does **not** advance through these gates. It advances only
 through evaluation, and never past the ceiling its design allows (a benchmark can
@@ -85,3 +92,14 @@ that was evaluated and did not help is more informative than one never measured,
 particularly when the workflow looked intuitively promising. Removing negative
 results would bias the whole library toward flattering conclusions — exactly the
 failure the two-ladder design exists to prevent.
+
+## Human and company trials
+
+No participant-facing study begins until its task, population, participation and
+data-governance boundary are recorded. The primary comparison is the same agent
+with versus without the protocol; manual work is a secondary baseline. Formative
+usability results cannot be promoted into a productivity effect. Any stronger
+comparison pre-specifies its primary outcome, smallest worthwhile effect,
+allocation/order, exclusions, missing-data treatment and uncertainty reporting.
+Thirty- and ninety-day follow-up records actual use, workarounds, support,
+incidents and abandonment rather than relying on immediate intention.

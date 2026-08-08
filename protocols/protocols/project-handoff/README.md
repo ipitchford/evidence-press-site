@@ -7,7 +7,7 @@ steps — each traceable to where it appears in the materials.**
 | | |
 |---|---|
 | Protocol id | `project-handoff` |
-| Version | `0.1.0` |
+| Version | `0.1.1` |
 | Kernel | Verified Agent Work `0.1.0` |
 | Assurance level | Verified |
 | Risk class | Low |

@@ -2,9 +2,14 @@
 
 ## What is here
 
-- [`task-set.json`](task-set.json) — the registered three-arm task set
-  (`gtvd-core-v1`), covering drafting, document analysis, data checking,
-  planning, research, project handoff, and a safety/injection task.
+- [`task-set.json`](task-set.json) — the prospective three-arm task design
+  (`gtvd-diverse-v2`), covering drafting, document analysis, data checking,
+  planning, research, project handoff, and a safety/injection task. It has not
+  been executed.
+- [`live/gtvd-core-v1.tasks.json`](live/gtvd-core-v1.tasks.json) — the distinct
+  historical five-task model benchmark used by the committed live results. It
+  covers two safety tasks, data checking, document analysis and research; it
+  does not cover every family in the prospective design.
 - [`result.template.json`](result.template.json) — the result format, with null
   metrics. It is a **template, not a result.**
 
@@ -24,10 +29,23 @@ doubling serious errors is not an improvement.
 
 ## Current status
 
-**Not executed.** `productivity_evidence` for this protocol is
-`NO_IMPACT_EVIDENCE`. The offline receipt establishes structural and test
-conformance only; it deliberately does not run live models, so it cannot and does
-not produce benefit numbers. When a run is performed, its result file must:
+**The historical 0.1.0 five-task design was executed in three model/task runs.** The
+committed results and raw outputs cover the full and concise editions on o4-mini
+and the full edition on gpt-5.2, all on `gtvd-core-v1`. The prospective
+`gtvd-diverse-v2` design has not been run. Deterministic acceptance reproduced across the two named runner
+models, while every result registered `NO_CLEAR_GAIN`; details are in
+[`FINDINGS.md`](FINDINGS.md).
+
+The raw model outputs are retained. Their result metadata was transparently
+corrected/migrated while keeping `protocol_version: 0.1.0`. The distributable
+pack is now 0.1.1, so the verifier does not carry their assurance or negative
+evidence forward. Version 0.1.1 has structural/example conformance only and
+`NO_IMPACT_EVIDENCE` until the current bytes receive a new version-bound run.
+
+This is same-team consistency, not independent reproduction. Runner identities
+are self-reported, the model was not rerun by the verifier, task selection and
+graders were shared, there was no human/manual arm, and all human dimensions are
+null. Any further result file must:
 
 - fill metrics only where they were **measured** (null otherwise);
 - set `implied_evidence_status` no higher than the design's ceiling

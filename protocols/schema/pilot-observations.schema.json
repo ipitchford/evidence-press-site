@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/protocols/api/v2/pilot-observations.schema.json",
+  "title": "Feasibility-pilot planned roster and outcomes",
+  "description": "One row for every randomized planned work item, including missing and intercurrent items. Outcomes are nullable and acceptance is derived from frozen ratings, material errors, and safety rules.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "pilot_id", "study_stage", "plan_sha256", "assignment_sha256", "task_bank_sha256", "synthetic_example", "recorded_through", "participant_status", "work_item_roster"],
+  "properties": {
+    "schema_version": { "const": "2.0" },
+    "pilot_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$" },
+    "study_stage": { "const": "feasibility" },
+    "plan_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "assignment_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "task_bank_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "synthetic_example": { "type": "boolean" },
+    "recorded_through": { "type": "string", "format": "date" },
+    "participant_status": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["participant_id", "sequence_id", "consent_confirmed", "started", "final_status", "periods_completed", "reason_category", "retain_pre_withdrawal_data_authorized"],
+        "properties": {
+          "participant_id": { "type": "string", "pattern": "^P[0-9A-Z_-]{2,31}$" },
+          "sequence_id": { "enum": ["MAP", "MPA", "AMP", "APM", "PMA", "PAM"] },
+          "consent_confirmed": { "const": true },
+          "started": { "type": "boolean" },
+          "final_status": { "enum": ["not_started", "active", "completed", "withdrew", "lost_to_follow_up", "stopped_for_safety"] },
+          "periods_completed": { "type": "integer", "minimum": 0, "maximum": 3 },
+          "reason_category": { "enum": ["none", "workload", "left_role", "technical", "consent_withdrawn", "safety", "eligibility", "unknown", "other_coded"] },
+          "retain_pre_withdrawal_data_authorized": { "type": "boolean" }
+        }
+      }
+    },
+    "work_item_roster": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "participant_id",
+          "work_item_id",
+          "sequence_id",
+          "period",
+          "arm",
+          "task_block_id",
+          "task_id",
+          "status",
+          "intercurrent_event",
+          "missing_reason",
+          "human_effort_min",
+          "elapsed_time_min",
+          "rework_count",
+          "quality_ratings",
+          "material_error_count",
+          "cognitive_burden_1_to_7",
+          "would_adopt",
+          "help_request_count",
+          "facilitator_support_min",
+          "approver_checker_min",
+          "model_tool_cost_usd",
+          "safety_events",
+          "contamination_detected",
+          "protocol_adherence"
+        ],
+        "properties": {
+          "participant_id": { "type": "string", "pattern": "^P[0-9A-Z_-]{2,31}$" },
+          "work_item_id": { "type": "string", "pattern": "^W[0-9A-Z_-]{2,63}$" },
+          "sequence_id": { "enum": ["MAP", "MPA", "AMP", "APM", "PMA", "PAM"] },
+          "period": { "type": "integer", "minimum": 1, "maximum": 3 },
+          "arm": { "enum": ["manual", "agent_without_protocol", "agent_with_protocol"] },
+          "task_block_id": { "type": "string", "pattern": "^B[0-9A-Z_-]{2,31}$" },
+          "task_id": { "type": "string", "pattern": "^T[0-9A-Z_-]{2,31}$" },
+          "status": { "enum": ["planned", "started", "completed", "missing", "withdrawn", "stopped_for_safety"] },
+          "intercurrent_event": { "enum": ["none", "model_change", "protocol_deviation", "contamination", "workload_interrupt", "withdrawal", "safety_stop", "technical_failure", "other_coded"] },
+          "missing_reason": { "enum": ["not_missing", "not_started", "withdrawal", "technical", "safety", "workload", "unknown", "other_coded"] },
+          "human_effort_min": { "type": ["number", "null"], "minimum": 0, "maximum": 1440 },
+          "elapsed_time_min": { "type": ["number", "null"], "minimum": 0, "maximum": 10080 },
+          "rework_count": { "type": ["integer", "null"], "minimum": 0 },
+          "quality_ratings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["rater_id", "component_scores", "total_score"],
+              "properties": {
+                "rater_id": { "type": "string", "pattern": "^R[0-9A-Z_-]{2,31}$" },
+                "component_scores": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["actionable_completeness", "source_traceability", "faithful_type_and_certainty", "owner_and_deadline_accuracy", "limitations_and_injection_handling"],
+                  "properties": {
+                    "actionable_completeness": { "type": "integer", "minimum": 0, "maximum": 25 },
+                    "source_traceability": { "type": "integer", "minimum": 0, "maximum": 25 },
+                    "faithful_type_and_certainty": { "type": "integer", "minimum": 0, "maximum": 20 },
+                    "owner_and_deadline_accuracy": { "type": "integer", "minimum": 0, "maximum": 15 },
+                    "limitations_and_injection_handling": { "type": "integer", "minimum": 0, "maximum": 15 }
+                  }
+                },
+                "total_score": { "type": "integer", "minimum": 0, "maximum": 100 }
+              }
+            }
+          },
+          "material_error_count": { "type": ["integer", "null"], "minimum": 0 },
+          "cognitive_burden_1_to_7": { "type": ["integer", "null"], "minimum": 1, "maximum": 7 },
+          "would_adopt": { "type": ["boolean", "null"] },
+          "help_request_count": { "type": ["integer", "null"], "minimum": 0 },
+          "facilitator_support_min": { "type": ["number", "null"], "minimum": 0, "maximum": 1440 },
+          "approver_checker_min": { "type": ["number", "null"], "minimum": 0, "maximum": 1440 },
+          "model_tool_cost_usd": { "type": ["number", "null"], "minimum": 0 },
+          "safety_events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["category", "severity", "stopped_work", "incident_record_id"],
+              "properties": {
+                "category": { "enum": ["privacy", "unauthorized_action", "unsupported_claim", "prompt_injection_followed", "harmful_output", "other_coded"] },
+                "severity": { "enum": ["near_miss", "minor", "moderate", "severe"] },
+                "stopped_work": { "type": "boolean" },
+                "incident_record_id": { "type": "string", "pattern": "^I[0-9A-Z_-]{2,31}$" }
+              }
+            }
+          },
+          "contamination_detected": { "type": ["boolean", "null"] },
+          "protocol_adherence": { "enum": ["not_applicable", "full", "partial", "none", "unknown", null] }
+        }
+      }
+    }
+  }
+}

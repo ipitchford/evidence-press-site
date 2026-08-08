@@ -14,12 +14,10 @@ For a model-neutral or self-hosted runner (a local LLM behind a small harness).
 
 ## Minimum-model edition
 
-The method degrades gracefully. A smaller model may need the steps issued one at
-a time rather than all at once; the copy-and-run prompt in
-`../generic-chat/prompt.md` works well split into per-step turns. Assurance drops
-(less reliable self-checking), but the structure — contract first, tests before
-execution, receipt at the end — still holds, and that structure is what the
-method exists to impose.
+Smaller-model behaviour is untested. A facilitator may try one step per turn as a
+formative exercise, but must treat the output as `DRAFT` until the normal checks
+pass. Check contract-first behaviour, predeclared tests and the receipt explicitly;
+do not infer graceful degradation or retained benefit.
 
 ## What this adapter does not do
 

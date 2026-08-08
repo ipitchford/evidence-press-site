@@ -1,14 +1,65 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
+  "record_kind": "template",
   "protocol_id": "repetitive-workflow-capture",
-  "protocol_version": "0.1.0",
+  "protocol_version": "0.1.1",
   "task_set": "rwc-core-v1",
-  "design": "benchmark",
+  "evidence_profile": {
+    "setting": "benchmark",
+    "study_stage": "development",
+    "identification": "descriptive",
+    "review_status": "internal",
+    "claim_boundary": "Only this protocol version on this registered synthetic task set and the specifically recorded model runs."
+  },
   "arms": [
-    { "arm": "no_agent", "n": 6, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
-    { "arm": "agent_without_protocol", "n": 6, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
-    { "arm": "agent_with_protocol", "n": 6, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } }
+    { "arm": "no_agent", "n": 6, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
+    { "arm": "agent_without_protocol", "n": 6, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
+    { "arm": "agent_with_protocol", "n": 6, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } }
   ],
+  "runner": {
+    "tool": "run-eval@0.3.0 template — NOT EXECUTED",
+    "models": [],
+    "judge_model": null,
+    "generated_at": null,
+    "task_file": "evals/task-set.json",
+    "tasks_sha256": "98e90f1fc5a03b49aaa6c9890b784793886422721e6db433fa8f0e8733513534",
+    "outputs_file": "evals/live/runs/REPLACE-WHEN-RUN.jsonl",
+    "outputs_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "task_ids": [
+      "rwc-task-report-assembly",
+      "rwc-task-onboarding",
+      "rwc-task-triage",
+      "rwc-task-multi-tool",
+      "rwc-task-underspecified",
+      "rwc-task-injection"
+    ],
+    "n_tasks": 6,
+    "evaluation_cost_usd": null,
+    "pack": {
+      "id": "repetitive-workflow-capture",
+      "version": "0.1.1",
+      "protocol_file": "protocol.yaml",
+      "protocol_sha256": "d78dd7c8d2e48a29f377e1f8c20bf6fdc59c4b5f4476837dac5320c4891c6fc9"
+    },
+    "interventions": {
+      "agent_without_protocol": {
+        "kind": "inline",
+        "prompt": "You are a helpful assistant. Complete the following task using the provided materials.",
+        "prompt_sha256": "c929bdcc7e6739f4819924ee3dafeabdeb71ba9a74582e85dde796e7fa1b7732"
+      },
+      "agent_with_protocol": {
+        "kind": "file",
+        "file": "adapters/generic-chat/prompt.md",
+        "file_sha256": "1719535c3e993ddcb4a89982dc4057548c8b423e75f7b817978985fb148cb9ae",
+        "effective_prompt_sha256": "5cc32a5e335db503b66e93c334743691c1a9108789daf70b8377499b7d5eb504"
+      }
+    },
+    "source": {
+      "commit": "64531077fc707b03c762877ed97d01369163ddd9",
+      "tree": "1ce4edcb9b8517c722e7ea34df240efe22bc9b42",
+      "dirty": true
+    }
+  },
   "notes": "TEMPLATE — NOT EXECUTED. Metrics are null on purpose. Producing real numbers requires live model runs, which the offline receipt does not perform. Do not fill this in with estimates; measure or leave null.",
   "limitations": ["No run has been performed.", "A benchmark design cannot support a claim stronger than BENCHMARK_SIGNAL.", "Accuracy here must count an invented or mis-traced step, and any candidate presented as validated, as a material error."],
   "implied_evidence_status": "NO_IMPACT_EVIDENCE"

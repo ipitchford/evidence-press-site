@@ -17,13 +17,11 @@ For a model-neutral or self-hosted runner (a local LLM behind a small harness).
 
 ## Minimum-model edition
 
-The method degrades gracefully. A smaller model may need the steps issued one at a
-time rather than all at once; the copy-and-run prompt in `../generic-chat/prompt.md`
-works well split into per-step turns. A weaker model is most likely to slip on claim
-typing — stating an estimate or an opinion as a fact — so score the type column
-first when checking its output. Assurance drops, but the structure — sources only,
-every claim typed and sourced, contrary evidence surfaced, receipt at the end —
-still holds, and that structure is what the method exists to impose.
+Smaller-model behaviour is untested. A facilitator may try one step per turn as a
+formative exercise, but must treat the output as `DRAFT` until the normal checks
+pass. Score claim typing first: an estimate or opinion must not be presented as a
+fact. Do not infer graceful degradation, retained benefit, or transfer beyond the
+model and task actually observed.
 
 ## What this adapter does not do
 

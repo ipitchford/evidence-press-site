@@ -29,8 +29,10 @@ responsibility, not the scanner's. See
   before the action.
 - **Least-privilege tool declarations.** Optional tools state how the protocol
   degrades without them, so the connected edition is never a silent requirement.
-- **Sandboxed testing.** Tests and evals run without real external side effects;
-  the harness refuses a test that would perform a live consequential action.
+- **No-tool synthetic testing.** Offline tests expose no external tools and are
+  designed to have no real side effects; this is a bounded test policy, not an OS
+  sandbox. The separate development runner may call the named model API but does
+  not grant the model external-action tools.
 - **Immutable releases with hashes.** Each pack ships a `MANIFEST.json` with a
   SHA-256 per file and a `RECEIPT.json`. A downloader can verify the pack
   byte-for-byte before running anything.
@@ -45,6 +47,29 @@ responsibility, not the scanner's. See
 - **Immediate withdrawal on serious vulnerability.** A pack with a confirmed
   serious vulnerability is pulled from the registry ahead of its deprecation
   record.
+
+## First company-trial boundary
+
+The no-install formative starter is deliberately narrower than the general pack
+format. The feasibility tools additionally require a facilitator with Node 18+
+and structured-file competence, but no connection to an agent runtime:
+
+- use invented or irreversibly de-identified materials first;
+- do not enter customer, employee, health, financial, credential, legal-case or
+  commercially sensitive data into an agent merely because the trial page is
+  local—the chosen agent product may still transmit it;
+- record the agent product, account/data settings, destination, retention and
+  deletion route before any trial input is used;
+- keep all trial actions read-only and require a named human reviewer before an
+  output informs work;
+- record affected people, incident contact, rollback and stop authority; and
+- treat prompt injection, unsupported claims, omitted obligations and accidental
+  disclosure as reportable trial events, including near misses.
+
+The static site itself sends no form data and loads no third-party scripts,
+fonts, analytics or images. Browser-generated plans remain on the device unless
+the user deliberately downloads or copies them. That says nothing about the
+separate data practices of the agent product used for the trial.
 
 ## Prompt-injection stance
 
@@ -65,6 +90,9 @@ alone to constrain a pack.
 
 ## Reporting
 
-Security issues in a protocol should be reported through the parent repository's
-`SECURITY.md` process. A confirmed issue triggers withdrawal first, diagnosis
-second.
+This candidate has no remote reporting channel. Record a finding privately with
+the maintainer and do not place secrets, personal data or exploit payloads in a
+public issue. Before publication, the repository must add an authenticated
+private disclosure route (for example, a repository security advisory). A
+confirmed critical issue triggers candidate withdrawal first, diagnosis and
+re-release second.

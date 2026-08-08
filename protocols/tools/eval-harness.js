@@ -12,8 +12,8 @@
  *            grant TASKSET_PASSED, which requires a live run over fresh tasks.
  *
  *  --evals : validate each pack's eval task-set and any result files against
- *            eval-result.schema.json, and enforce the evidence ceiling
- *            (a benchmark design cannot imply CAUSAL_EFFECT_SUPPORTED). Offline
+ *            eval-result.schema.json, and enforce the evidence-profile ceiling.
+ *            Setting, study stage, identification, and review are distinct. Offline
  *            and structural — it does NOT run live models, so it never raises a
  *            protocol above CROSS_MODEL_REPRODUCED on its own.
  *
@@ -27,7 +27,6 @@ const { validate, deepEqual } = require('./lib/jsonschema');
 const U = require('./lib/util');
 
 const EVIDENCE = U.readJSON(path.join(U.ROOT, 'status', 'productivity-evidence.json'));
-const CEILING = EVIDENCE.design_ceiling;
 const ORDER = new Map(EVIDENCE.states.map(s => [s.id, s.order]));
 const EVAL_SCHEMA = U.readJSON(path.join(U.ROOT, 'schema', 'eval-result.schema.json'));
 
@@ -84,12 +83,26 @@ function runTestsForPack(id) {
   return { total: spec.cases.length, passed, failures };
 }
 
+function evidenceCeiling(profile) {
+  if (!profile || typeof profile !== 'object') return 'NO_IMPACT_EVIDENCE';
+  if (profile.setting === 'benchmark') return 'BENCHMARK_SIGNAL';
+  if (profile.study_stage !== 'confirmatory') return 'NO_IMPACT_EVIDENCE';
+  const reviewed = profile.review_status === 'independently_reviewed'
+    || profile.review_status === 'independently_replicated';
+  const attributable = profile.identification === 'randomized'
+    || profile.identification === 'quasi_experimental';
+  if (reviewed && attributable) return 'CAUSAL_EFFECT_SUPPORTED';
+  if (profile.setting === 'organizational_field') return 'FIELD_SIGNAL';
+  if (profile.setting === 'controlled_user') return 'CONTROLLED_USER_SIGNAL';
+  return 'NO_IMPACT_EVIDENCE';
+}
+
 function runEvalsForPack(id) {
   const dir = U.packDir(id);
   const evalsDir = path.join(dir, 'evals');
   const failures = [];
-  let checked = 0;
-  if (!fs.existsSync(evalsDir)) return { checked, failures };
+  let checked = 0, templates = 0, results = 0;
+  if (!fs.existsSync(evalsDir)) return { checked, templates, results, failures };
   for (const f of fs.readdirSync(evalsDir).filter(f => f.endsWith('.json'))) {
     const data = U.readJSON(path.join(evalsDir, f));
     // A result has arms as objects (with metrics); a task-set has arms as
@@ -98,17 +111,20 @@ function runEvalsForPack(id) {
       && typeof data.arms[0] === 'object' && 'implied_evidence_status' in data;
     if (!isResult) continue;
     checked++;
+    if (data.record_kind === 'template') templates++;
+    else results++;
     for (const e of validate(EVAL_SCHEMA, data)) failures.push(`${id}/evals/${f} ${e.path}: ${e.msg}`);
-    // Evidence ceiling: implied positive state may not exceed the design's ceiling.
+    // Evidence ceiling: profile dimensions limit, but never automatically grant,
+    // a positive state. validate.js separately disables candidate-v0.2 promotion.
     const implied = data.implied_evidence_status;
     const impliedOrder = ORDER.get(implied);
-    const ceilingState = CEILING[data.design];
+    const ceilingState = evidenceCeiling(data.evidence_profile);
     const ceilingOrder = ORDER.get(ceilingState);
     if (impliedOrder != null && impliedOrder >= 1 && impliedOrder <= 4 && impliedOrder > ceilingOrder) {
-      failures.push(`${id}/evals/${f}: implied_evidence_status ${implied} exceeds the ${data.design} ceiling ${ceilingState}`);
+      failures.push(`${id}/evals/${f}: implied_evidence_status ${implied} exceeds evidence-profile ceiling ${ceilingState}`);
     }
   }
-  return { checked, failures };
+  return { checked, templates, results, failures };
 }
 
 function main() {
@@ -134,8 +150,9 @@ function main() {
     console.log('# evals (design validity + evidence ceiling)');
     for (const id of packs) {
       const r = runEvalsForPack(id);
-      if (r.failures.length) { failed++; console.log(`  ✗ ${id}: ${r.checked} result file(s)`); r.failures.forEach(x => console.log('      - ' + x)); }
-      else console.log(`  ✓ ${id}: ${r.checked} result file(s) valid, ceiling respected`);
+      const summary = `${r.results} executed result(s), ${r.templates} unexecuted template(s)`;
+      if (r.failures.length) { failed++; console.log(`  ✗ ${id}: ${summary}`); r.failures.forEach(x => console.log('      - ' + x)); }
+      else console.log(`  ✓ ${id}: ${summary} valid, ceiling respected`);
     }
     console.log('  note: offline — no live runs; does not grant CROSS_MODEL_REPRODUCED.\n');
   }
@@ -144,4 +161,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { runTestsForPack, runEvalsForPack };
+module.exports = { runTestsForPack, runEvalsForPack, evidenceCeiling };

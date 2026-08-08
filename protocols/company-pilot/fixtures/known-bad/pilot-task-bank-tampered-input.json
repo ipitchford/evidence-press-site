@@ -1,0 +1,6 @@
+{
+  "base": "company-pilot/fixtures/run-ready-control/task-bank.json",
+  "mutation": "tamper_task_input_hash",
+  "expected_error": "task_sha256 does not bind",
+  "why_bad": "Changing a task input hash without regenerating and refreezing its task and bank commitments breaks the prespecified task bank."
+}

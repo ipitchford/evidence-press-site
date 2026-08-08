@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://evidencepress.org/protocols/api/registry.schema.json",
+  "$id": "https://evidencepress.org/protocols/api/v2/registry.schema.json",
   "title": "Productivity Protocols registry",
   "description": "The machine-readable index of every protocol in the library. Emitted as /protocols/api/protocols.json. Each entry carries both status ladders side by side so a consumer can filter on assurance and on measured benefit independently.",
   "type": "object",
@@ -15,11 +15,14 @@
     "generated": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["sourceCommit", "sourceDate", "builder"],
+      "required": ["sourceCommit", "sourceDate", "builder", "source_commit_full", "source_tree", "dirty"],
       "properties": {
         "sourceCommit": { "type": ["string", "null"] },
         "sourceDate": { "type": ["string", "null"] },
-        "builder": { "type": "string" }
+        "builder": { "type": "string" },
+        "source_commit_full": { "type": ["string", "null"], "pattern": "^[a-f0-9]{40}$" },
+        "source_tree": { "type": ["string", "null"], "pattern": "^[a-f0-9]{40}$" },
+        "dirty": { "type": ["boolean", "null"] }
       }
     },
     "count": { "type": "integer", "minimum": 0 },
@@ -28,7 +31,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "version", "title", "purpose", "assurance_level", "risk_class", "privacy_class", "assurance_status", "productivity_evidence", "network_required", "url", "download", "sha256"],
+        "required": ["id", "version", "title", "purpose", "assurance_level", "risk_class", "privacy_class", "assurance_status", "productivity_evidence", "task_tags", "audience_tags", "required_tool_tags", "optional_tool_tags", "network_required", "url", "skill_download", "skill_sha256", "skill_bytes", "download", "sha256"],
         "properties": {
           "id": { "type": "string" },
           "version": { "type": "string" },
@@ -39,11 +42,40 @@
           "privacy_class": { "enum": ["public", "internal", "personal_data", "sensitive_personal_data"] },
           "assurance_status": { "enum": ["DRAFT", "STRUCTURE_VALIDATED", "EXAMPLE_CONFORMANCE_VALIDATED", "TASKSET_PASSED", "CROSS_MODEL_REPRODUCED", "SECURITY_REVIEWED", "FIELD_READY", "DEPRECATED"] },
           "productivity_evidence": { "enum": ["NO_IMPACT_EVIDENCE", "BENCHMARK_SIGNAL", "CONTROLLED_USER_SIGNAL", "FIELD_SIGNAL", "CAUSAL_EFFECT_SUPPORTED", "NO_CLEAR_GAIN", "HARM_OR_REGRESSION_FOUND"] },
+          "task_tags": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 },
+            "description": "Canonical exact projection of the contract title; used by the Task filter."
+          },
+          "audience_tags": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 },
+            "description": "Canonical exact projection of target_users; no audience taxonomy is inferred."
+          },
+          "required_tool_tags": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 },
+            "description": "Canonical exact projection of required_capabilities. The UI labels these as required capabilities/tools so capability names are not overstated as integrations."
+          },
+          "optional_tool_tags": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 },
+            "description": "Canonical exact projection of the name of each declared optional_tools entry."
+          },
           "tested_models": { "type": "array", "items": { "type": "string" } },
           "last_verified": { "type": ["string", "null"], "format": "date" },
           "network_required": { "type": "boolean" },
           "url": { "type": "string", "description": "Human protocol page (site-relative)." },
-          "download": { "type": "string", "description": "Skill pack .zip (site-relative)." },
+          "skill_download": { "type": "string", "description": "Deterministic Agent Skills edition containing SKILL.md, its README/licence boundary and supporting templates, examples, references, scripts and tests (site-relative)." },
+          "skill_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "Hash of the downloadable skill edition." },
+          "skill_bytes": { "type": "integer", "minimum": 1, "description": "Exact byte length of the downloadable skill edition." },
+          "download": { "type": "string", "description": "Deterministic skill-pack archive (site-relative)." },
           "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "Hash of the downloadable pack." }
         }
       }

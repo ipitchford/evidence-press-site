@@ -26,10 +26,26 @@ worse than no plan.
 
 ## Current status
 
-**Not executed.** `productivity_evidence` for this protocol is
-`NO_IMPACT_EVIDENCE`. The offline receipt establishes structural and test
-conformance only; it deliberately does not run live models, so it cannot and does
-not produce benefit numbers. When a run is performed, its result file must:
+**Historical 0.1.0 benchmark; not evidence for current 0.1.1.** The committed four-task o4-mini run,
+judged by gpt-5.2, is in
+[`result-live-o4-mini-2026-08-08.json`](result-live-o4-mini-2026-08-08.json), with
+hash-bound raw outputs under [`live/runs/`](live/runs/). The protocol arm improved
+deterministic acceptance/completeness (1.00 vs 0.75), while judged quality was
+slightly lower (0.94 vs 0.99) and the historical combined runner-plus-judge cost
+estimate was about 3.4 times higher. That figure is evaluation-pipeline cost, not
+ordinary workflow or company cost. Its
+registered result is therefore `NO_CLEAR_GAIN`, not a benefit signal.
+
+The pack changed after that run and is now version 0.1.1. The raw outputs are
+retained; the result metadata was transparently corrected/migrated while keeping
+`protocol_version: 0.1.0`. The verifier deliberately refuses to promote the
+current pack from it. Version 0.1.1 has structural/example conformance only and
+`NO_IMPACT_EVIDENCE` until a new version-bound run exists.
+
+This does not establish a general effect: one runner, one model judge, four tasks,
+no repeats, no authenticated transcript, no human/manual arm, and all human
+dimensions null. The offline verifier replays acceptance against committed
+outputs; it does not rerun the model. Any further result file must:
 
 - fill metrics only where they were **measured** (null otherwise);
 - set `implied_evidence_status` no higher than the design's ceiling

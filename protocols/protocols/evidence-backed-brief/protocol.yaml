@@ -2,7 +2,7 @@
 # Validates against ../../schema/protocol.schema.json and the kernel invariants.
 schema_version: "1.0"
 id: evidence-backed-brief
-version: 0.1.0
+version: 0.1.1
 title: Evidence-backed brief
 purpose: >-
   Produce a concise briefing on a question from supplied sources, in which every
@@ -172,21 +172,18 @@ failure_modes:
     detection: A claim marked fact rests on an estimate or an opinion in the source.
     mitigation: The claim-typing guide in references; the confidence column; the uncertainties section.
 
-tested_models: [o4-mini]
+tested_models: []
 tested_environments:
   - offline structural harness (Node; checks shipped examples, runs no model)
-  - live two-arm benchmark (runner o4-mini, blind judge gpt-5.2), 2026-08-08
 retest_triggers:
   - The kernel version changes.
   - The protocol schema changes in a way that affects required fields.
 last_verified: "2026-08-08"
 
 assurance_status: DRAFT
-# Measured on ebb-core-v1 (o4-mini, blind judge gpt-5.2, 2026-08-08): the protocol
-# arm scored notably lower on judged quality and grounding (its elaborate typed-claim
-# output drew "beyond sources" marks) at ~3.3x cost — no gain, and a likely regression
-# on grounding. Single judge, small set; cause uncertain. Retained, not hidden.
-productivity_evidence: NO_CLEAR_GAIN
+# Version 0.1.0 has a retained predecessor benchmark with NO_CLEAR_GAIN. It is
+# history, not evidence for these 0.1.1 distributable bytes. See evals/README.md.
+productivity_evidence: NO_IMPACT_EVIDENCE
 
 license:
   content: CC0-1.0

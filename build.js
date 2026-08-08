@@ -203,7 +203,9 @@ function markdown(md) {
       const body = rows.slice(/^[\s|:-]+$/.test(rows[1] || '') ? 2 : 1);
       let t = '<div class="table-wrap"><table><thead><tr>';
       t += header.map(c => `<th>${inline(c)}</th>`).join('') + '</tr></thead><tbody>';
-      for (const r of body) t += '<tr>' + cells(r).map(c => `<td>${inline(c)}</td>`).join('') + '</tr>';
+      for (const r of body) t += '<tr>' + cells(r).map((c, column) =>
+        `<td data-label="${escAttr((header[column] || '').replace(/[*_`]/g, ''))}">${inline(c)}</td>`
+      ).join('') + '</tr>';
       t += '</tbody></table></div>';
       out.push(t);
       continue;
@@ -236,6 +238,19 @@ function markdown(md) {
     out.push(`<p>${inline(buf.join(' '))}</p>`);
   }
   return out.join('\n');
+}
+
+/* Programme landings use the same source Markdown as their alternate
+   representation, but wrap each H2 section so the page can have an editorial
+   grid without widening every long-form `.prose` page on the site. */
+function sectionedMarkdown(md, prefix) {
+  const parts = md.replace(/\r\n/g, '\n').trim().split(/(?=^##\s+)/m).filter(Boolean);
+  return parts.map((part, index) => {
+    const heading = part.match(/^##\s+(.+)$/m);
+    const id = heading ? heading[1].toLowerCase().replace(/\$[^$]*\$/g, '')
+      .replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-') : `intro-${index + 1}`;
+    return `<section class="${escAttr(prefix)}-section ${escAttr(prefix)}-${escAttr(id || `section-${index + 1}`)}">${markdown(part)}</section>`;
+  }).join('\n');
 }
 
 /* ----------------------------------------------------------- load papers */
@@ -1014,7 +1029,7 @@ ${Array.from({ length: 9 }, (_, k) => {
     <a class="programme-card" href="/productivity/">
       <p class="card-date">Practice programme · 8 August 2026</p>
       <h3>Productivity Protocols</h3>
-      <p>Open, tested, downloadable workflows for getting useful work done with AI agents — each with its assurance and its honestly-measured benefit attached.</p>
+      <p>Bounded, downloadable workflows for using AI agents, each with separate assurance and work-evidence status. Human and company impact is not yet measured.</p>
     </a>
   </div>
 </section>
@@ -1154,13 +1169,21 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
       ${opts.sidebarStatus ? `<dt>Status</dt><dd>${esc(opts.sidebarStatus)}</dd>` : ''}
     </dl>
   </aside>` : '';
-  const bodyHtml = `${markdown(fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8'))}${videoHtml}`;
+  const bodySource = fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8');
+  const bodyHtml = `${opts.programmeLayout ? sectionedMarkdown(bodySource, 'productivity') : markdown(bodySource)}${videoHtml}`;
   const companion = opts.companion ? companionParts(opts.companion) : { html: '', md: '' };
   const coverHtml = opts.art ? `<div class="cover"><img src="${opts.art}" alt="" loading="eager"></div>` : '';
   const headingHtml = `${opts.kicker ? `<p class="kicker">${esc(opts.kicker)}</p>` : ''}
     <h1>${esc(title)}</h1>
     ${opts.standfirst ? `<p class="standfirst">${inline(opts.standfirst)}</p>` : ''}`;
-  const pageHtml = opts.releaseLayout ? `<article class="release standalone-release"><div class="wrap">
+  const pageHtml = opts.programmeLayout ? `<article class="productivity-landing"><div class="wrap">
+    ${opts.art ? `<div class="productivity-cover"><img src="${escAttr(opts.art)}" alt="" loading="eager"></div>` : ''}
+    <section class="productivity-lead" aria-labelledby="productivity-title">
+      <div>${opts.kicker ? `<p class="kicker">${esc(opts.kicker)}</p>` : ''}<h1 id="productivity-title">${esc(title)}</h1>${opts.standfirst ? `<p class="standfirst">${inline(opts.standfirst)}</p>` : ''}${opts.primaryAction ? `<p class="productivity-action"><a href="${escAttr(opts.primaryAction.url)}">${esc(opts.primaryAction.label)}</a></p>` : ''}</div>
+      ${opts.evidenceBoundary ? `<aside class="productivity-boundary" aria-label="Current evidence boundary"><strong>Current evidence boundary</strong><p>${inline(opts.evidenceBoundary)}</p></aside>` : ''}
+    </section>
+    <div class="productivity-sections">${bodyHtml}</div>
+  </div></article>` : opts.releaseLayout ? `<article class="release standalone-release"><div class="wrap">
     ${coverHtml}
     ${headingHtml}
     ${briefingsHtml}
@@ -1273,7 +1296,7 @@ function llms() {
     `- [About](${BASE}/about/): what these releases are, the verification ladder, and how to independently verify or refute one`,
     `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; video: ${OBSERVATORY.video.url}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
     `- [The Case for Assurance Infrastructure](${BASE}/observatory/assurance/): why verification, not generation, binds government use of AI agents — four quantitative bounds, verification economics, research avenues, and sixteen ranked projects (Markdown: ${BASE}/observatory/assurance/index.md)`,
-    `- [Productivity Protocols](${BASE}/productivity/): open, tested, downloadable workflows for using AI agents to do useful work — each with two independent statuses (protocol assurance and honestly-measured productivity evidence). Registry: ${BASE}/protocols/ (machine-readable index: ${BASE}/protocols/api/protocols.json)`,
+    `- [Productivity Protocols](${BASE}/productivity/): bounded, downloadable workflows for using AI agents, each with separate protocol-assurance and work-evidence status; human and company impact is not yet measured. Registry: ${BASE}/protocols/ (machine-readable index: ${BASE}/protocols/api/protocols.json)`,
     `- [For AI agents](${BASE}/ai/): metadata conventions and suggested uses (verification, formalisation, follow-up research)`
   ];
   write('llms.txt', lines.join('\n') + '\n');
@@ -1356,7 +1379,7 @@ function notFoundPage() {
     <li><a href="/">All releases</a> — the full catalogue, filterable by topic</li>
     <li><a href="/api/papers.json">papers.json</a> — every release as structured data</li>
     <li><a href="/about/">About</a> — what this site publishes, and what its assurance states mean</li>
-    <li><a href="/productivity/">Productivity</a> — open, tested workflows for using AI agents</li>
+    <li><a href="/productivity/">Productivity</a> — bounded workflows with explicit assurance and work-evidence status</li>
     <li><a href="/ai/">For AI agents</a> — machine-readable endpoints and conventions</li>
   </ul>
   <p>Automated clients: this response carries HTTP status 404. A release that exists always serves <code>paper.json</code> at <code>/releases/&lt;slug&gt;/paper.json</code> with a matching <code>slug</code> field.</p>
@@ -1666,11 +1689,14 @@ write('_headers', `/*
 papers.forEach(paperPage);
 indexPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
-simplePage('productivity/', 'Productivity Protocols', 'Open, tested, downloadable workflows for getting useful work done with AI agents — each published with its assurance and its honestly-measured benefit attached.', 'productivity.md', 'WebPage', {
+simplePage('productivity/', 'Productivity Protocols', 'Bounded, downloadable AI-agent workflows with staged evaluation for companies that are new to agents; current human and company productivity impact is unmeasured.', 'productivity.md', 'WebPage', {
   art: '/assets/art/productivity.svg',
   og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'productivity.png')) ? '/assets/og/productivity.png' : null,
   kicker: 'A programme of Evidence Press',
-  standfirst: 'Methods, not papers: open, tested workflows for using AI agents — published, like everything here, with the evidence attached.'
+  standfirst: 'Methods, not papers: bounded workflows and staged evidence for companies beginning to use AI agents.',
+  programmeLayout: true,
+  primaryAction: { url: '/protocols/start/', label: 'Choose a first evidence stage →' },
+  evidenceBoundary: 'Existing live evaluations compare model outputs only. They found no clear agent-output gain. Human and company productivity remain unmeasured.'
 });
 simplePage('observatory/', 'Policy Identification Observatory', 'A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.', 'observatory.md', 'WebPage', {
   releaseLayout: true,

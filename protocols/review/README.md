@@ -1,7 +1,8 @@
 # Adversarial review and response
 
-An independent adversarial reviewer (Sol / `gpt-5.6-sol`), framed to **refute**,
-reviewed the v0.1.0 candidate. The full review is in
+A fresh role-separated adversarial model reviewer (Sol / `gpt-5.6-sol`), framed
+to **refute**, reviewed the v0.1.0 candidate. This was not external or institutional
+independence. The full review is in
 [`adversarial-review-sol.md`](adversarial-review-sol.md). Every finding was
 verified against the actual code before any change — a refute-framed review is a
 set of hypotheses, not verdicts. This file records the verdict and action for

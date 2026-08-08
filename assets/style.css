@@ -240,6 +240,99 @@ td .inline-img { height: 1.9em; vertical-align: middle; }
 .programme-card > p { margin: 0 0 .45rem; font-size: .93rem; }
 .programme-card .card-links { margin-top: .45rem; }
 
+/* Productivity is a programme landing, not a narrow essay. It keeps the same
+   house shell and source Markdown while giving the evidence stages room to be
+   compared without shrinking the type or the ladder figure. */
+.productivity-landing { padding: 2.2rem 0 3.4rem; }
+.productivity-cover {
+  overflow: hidden; margin-bottom: 1rem; border-radius: 16px; background: var(--dark);
+  box-shadow: 0 12px 34px rgba(28, 25, 23, .12);
+}
+.productivity-cover img { display: block; width: 100%; aspect-ratio: 3 / 1; object-fit: cover; }
+.productivity-lead {
+  display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(18rem, .75fr);
+  gap: clamp(1.2rem, 4vw, 3.4rem); align-items: end;
+  padding: clamp(1.25rem, 3vw, 2rem); color: #fff; background: var(--dark);
+  border-radius: 14px;
+}
+.productivity-lead .kicker { color: var(--accent-bright); }
+.productivity-lead h1 {
+  max-width: 12ch; margin: .2rem 0 .55rem; color: #fff;
+  font-size: clamp(2.45rem, 6vw, 4.9rem); line-height: .98; letter-spacing: -.035em;
+}
+.productivity-lead .standfirst { max-width: 40rem; margin: 0; color: #d5e5e2; font-size: clamp(1.05rem, 2vw, 1.3rem); }
+.productivity-action { margin: 1.15rem 0 0; font-family: var(--sans); }
+.productivity-action a {
+  display: inline-block; padding: .68rem .92rem; border-radius: 9px;
+  color: var(--dark); background: var(--accent-bright); font-weight: 700; text-decoration: none;
+}
+.productivity-action a:hover { background: #fff; text-decoration: underline; }
+.productivity-boundary {
+  padding: 1rem 1.1rem; color: var(--ink); background: var(--amber-bg);
+  border: 1px solid var(--amber); border-radius: 12px; font-family: var(--sans);
+}
+.productivity-boundary strong { color: var(--amber); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; }
+.productivity-boundary p { margin: .4rem 0 0; font-size: .92rem; line-height: 1.48; }
+.productivity-sections {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1rem;
+  margin-top: 1rem;
+}
+.productivity-section {
+  grid-column: span 6; min-width: 0; padding: clamp(1.15rem, 2.6vw, 1.7rem);
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+}
+.productivity-section h2 { margin: 0 0 .65rem; color: var(--accent); font-size: 1.45rem; }
+.productivity-section p:first-of-type { margin-top: 0; }
+.productivity-section p:last-child, .productivity-section ul:last-child { margin-bottom: 0; }
+.productivity-what-the-existing-tests-actually-show {
+  border-left: 5px solid var(--amber); background: var(--amber-bg);
+}
+.productivity-start-with-the-evidence-stage,
+.productivity-two-independent-measures-never-merged { grid-column: 1 / -1; }
+.productivity-start-with-the-evidence-stage { border-top: 5px solid var(--accent-2); }
+.productivity-start-with-the-evidence-stage .table-wrap { margin-bottom: 0; }
+.productivity-start-with-the-evidence-stage th:first-child { min-width: 10rem; }
+.productivity-two-independent-measures-never-merged { background: #edf8f6; }
+.productivity-two-independent-measures-never-merged .article-figure { margin-bottom: 0; }
+.productivity-a-protocol-is-a-work-contract-not-a-prompt {
+  grid-column: 1 / -1; display: grid;
+  grid-template-columns: minmax(15rem, .75fr) minmax(0, 2fr);
+  gap: clamp(1rem, 4vw, 3rem); align-items: start;
+}
+.productivity-a-protocol-is-a-work-contract-not-a-prompt h2,
+.productivity-a-protocol-is-a-work-contract-not-a-prompt p { margin: 0; }
+.productivity-use-the-company-route,
+.productivity-inspect-the-protocol-library { border-top: 5px solid var(--accent-2); }
+.productivity-section > p > a:only-child { font-family: var(--sans); font-weight: 700; }
+
+@media (max-width: 780px) {
+  .productivity-landing { padding-top: 1.2rem; }
+  .productivity-lead { grid-template-columns: 1fr; align-items: start; }
+  .productivity-section { grid-column: 1 / -1; }
+  .productivity-a-protocol-is-a-work-contract-not-a-prompt { display: block; }
+  .productivity-a-protocol-is-a-work-contract-not-a-prompt h2 { margin-bottom: .65rem; }
+  .productivity-start-with-the-evidence-stage .table-wrap { overflow: visible; }
+  .productivity-start-with-the-evidence-stage table,
+  .productivity-start-with-the-evidence-stage tbody,
+  .productivity-start-with-the-evidence-stage tr,
+  .productivity-start-with-the-evidence-stage td { display: block; width: 100%; }
+  .productivity-start-with-the-evidence-stage thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .productivity-start-with-the-evidence-stage table { border: 0; }
+  .productivity-start-with-the-evidence-stage tr {
+    margin-bottom: .75rem; overflow: hidden; border: 1px solid var(--line); border-radius: 9px;
+  }
+  .productivity-start-with-the-evidence-stage tr:last-child { margin-bottom: 0; }
+  .productivity-start-with-the-evidence-stage td {
+    display: grid; grid-template-columns: minmax(7.5rem, .8fr) minmax(0, 1.2fr);
+    gap: .7rem; padding: .55rem .65rem; border: 0; border-bottom: 1px solid var(--line);
+  }
+  .productivity-start-with-the-evidence-stage td:last-child { border-bottom: 0; }
+  .productivity-start-with-the-evidence-stage td::before {
+    content: attr(data-label); color: var(--muted); font-family: var(--sans);
+    font-size: .72rem; font-weight: 700; letter-spacing: .025em; text-transform: uppercase;
+  }
+}
+
 
 /* ------------------------------------------------------------ accessibility */
 /* Keyboard focus must be visible: WCAG 2.2 makes this a Level AA requirement,

@@ -1,116 +1,124 @@
-# AGENTS.md — the institutional contract for Productivity Protocols
+# AGENTS.md — institutional contract for Productivity Protocols
 
-This file is the permanent contract for any agent — or person — working inside
-`protocols/`. It is not a style guide; it is the set of invariants that make this
-library trustworthy. An agent that violates one of these has not "taken a
-shortcut"; it has produced something the library cannot publish. Read this before
-touching anything here.
+Read this file before changing the repository. It defines the assurance boundary,
+not merely the house style.
 
 ## Mission
 
-Turn effective ways of working with AI agents into **open, portable, evaluated
-protocols** that anyone can inspect, download, adapt, and run — and honestly
-discover whether they improved the work.
+Help a company with little agent experience identify one suitable knowledge-work
+task, trial agent use safely, and decide from retained evidence whether a bounded
+protocol adds value over the same agent without that protocol.
 
-This is the practice arm of a three-part system:
+Productivity Protocols is the practice arm of an evidence–decision–practice
+stack:
 
-- **Evidence Press** — what has been discovered, and what evidence supports it.
-- **Policy Identification Observatory** — what the observations actually permit
-  us to conclude.
-- **Productivity Protocols** (here) — how people can reliably use agents to
-  complete useful work.
+- **Evidence Press** publishes research claims with their evidence.
+- **Policy Identification Observatory** audits what observations identify.
+- **Productivity Protocols** publishes inspectable methods and context-bound
+  evidence about using agents to complete work.
 
-We publish **methods, not papers**, reusing Evidence Press's publishing grammar:
-plain-language and technical explanations side by side, attached evidence,
-explicit assurance boundaries, open licences, and machine-readable endpoints.
+## Non-negotiable invariants
 
-## The invariants
-
-1. **Every protocol is a kernel instance.** It instantiates the Verified Agent
-   Work kernel ([`kernel/verified-agent-work.md`](kernel/verified-agent-work.md)).
-   The validator checks the mapping. A "protocol" that is really just a prompt is
-   rejected.
-
-2. **Two ladders, never one badge.** Protocol assurance (is it well built and
-   safe?) and productivity evidence (does it help?) are tracked separately and
-   never merged. See [`status/ladders.md`](status/ladders.md).
-
-3. **Claims never exceed evidence.** No page, README, or registry entry may state
-   a benefit above the protocol's `productivity_evidence` value. "Improves X"
-   requires an evaluation. Below that, the honest statement is "benefit not yet
-   measured." The overclaim check enforces this.
-
-4. **Least privilege by default.** An action the agent may take must be declared
-   in `permissions`. Prohibited actions are listed explicitly, not inferred.
-   External writes default to preview-then-approve.
-
-5. **Skills are a software supply chain.** Every pack ships a MANIFEST with
-   SHA-256 hashes and a RECEIPT. No hidden network calls, no bundled secrets, no
-   credential collection. The static scanner is a lint, not a sandbox: it fails
-   closed only on recognised patterns, and enforcing the permission contract at
-   runtime is the runtime's job. See [`SECURITY.md`](SECURITY.md) and
-   [`KNOWN-LIMITATIONS.md`](KNOWN-LIMITATIONS.md).
-
-6. **Negative results are kept.** A protocol that shows `NO_CLEAR_GAIN` or
-   `HARM_OR_REGRESSION_FOUND` is published, not deleted. A workflow that looked
-   promising and did not help is valuable knowledge.
-
-7. **Builds are reproducible.** The builder derives its timestamp from the commit,
-   never the clock, and pins assets by hash, so a third party can rebuild a tag
-   and compare byte-for-byte. Do not introduce clock- or network-dependent build
-   inputs.
-
-8. **The kernel stays platform-neutral.** Product-specific detail lives in
-   `adapters/`, not in `protocol.yaml` or `SKILL.md`. A protocol should run, at
-   reduced assurance, on any capable agent.
+1. **A protocol is a work contract, not a prompt.** Every protocol instantiates
+   the Verified Agent Work kernel and states its task, boundary, permissions,
+   checkpoints, tests, failures and evidence status.
+2. **The business decision comes first.** The novice-facing path begins with the
+   workflow, owner, affected people, data and success criterion. YAML, Agent
+   Skills and adapters are implementation details.
+3. **Two ladders remain separate.** Protocol assurance describes packaging and
+   checking. Productivity evidence describes measured benefit or harm. Neither
+   is a proxy for the other.
+4. **Evidence is version- and context-bound.** A result for protocol `0.1.0`, a
+   named model and a registered task set does not transfer automatically to a
+   revised protocol, another model, another company or another task.
+5. **Negative results are durable.** `NO_CLEAR_GAIN` and
+   `HARM_OR_REGRESSION_FOUND` records are preserved with their raw evidence and
+   cannot be hidden by releasing a new version.
+6. **No novelty by relabelling.** Agent Skills, Agent Spec, BPMN, evaluation
+   frameworks and AI-governance standards are prior art. The candidate's
+   contribution is the novice-company adoption and evidence lifecycle; do not
+   call the workflow syntax new, first or unique.
+7. **Least privilege and local data by default.** The public interface never
+   uploads task material. Trials start read-only, prohibit consequential external
+   actions and record data destination, retention, human approval and rollback.
+8. **People are not test fixtures.** A company trial identifies affected people,
+   secures appropriate participation and review, records attrition and help
+   requests, and does not infer human productivity from model-only tests.
+9. **Receipts state what ran.** Hashes, manifests, replay and deterministic tests
+   establish provenance or structural conformance. They do not establish safety,
+   usefulness, independent reproduction, correctness or compliance.
+10. **Builds are deterministic and publishable state is clean.** Build inputs are
+    local and pinned. Release tooling must reject a dirty production source and
+    must compare candidate, public ledger and post-deploy readback.
 
 ## Standing constraints for this candidate
 
-Until the maintainer says otherwise, an agent working here must **not**:
+This institution is integrated into the Evidence Press host repository. Work may
+edit and test a dedicated candidate branch, but until the maintainer explicitly
+authorises a release it must not:
 
-- publish, deploy, or run `wrangler`;
-- push, or create a remote repository;
-- contact any external party;
-- alter the live Evidence Press build (`build.js`, `pages/`, `dist/`, root
-  config). This subsystem is self-contained in `protocols/` and emits only to
-  `protocols/dist/`, which the main build never touches.
+- publish, deploy or run `wrangler`;
+- create a remote, push or change DNS;
+- contact companies, workers or other external parties;
+- merge to the deployment branch or alter the currently published Evidence Press
+  site;
+- claim company impact, productivity improvement, certification or regulatory
+  compliance.
 
-These constraints protect the live site while this section is a reviewable local
-candidate. Lifting them is a maintainer decision, recorded in `CHANGELOG.md`.
+The substantive review was isolated in a history-preserving subtree checkout and
+then selectively integrated into this host branch, retaining the house shell,
+media and pack-specific scripts. See [`docs/PROVENANCE.md`](docs/PROVENANCE.md).
 
-## The lifecycle every protocol follows
+## Evidence lifecycle
 
+```text
+workflow need
+  -> suitability and governance screen
+  -> protocol specification and skill pack
+  -> structural, mutation and security checks
+  -> model/task benchmark (optional; context-bound)
+  -> formative human usability study
+  -> preregistered company comparison
+  -> adopt, redesign or stop
+  -> 30/90-day follow-up
+  -> revision or deprecation
 ```
-workflow need → proposal → specification → skill implementation →
-synthetic + real task tests → adversarial + security review →
-comparative evaluation → release → field reports → revision or deprecation
-```
 
-Governance detail — what a submission must contain, how review gates work, how
-deprecation happens — is in [`GOVERNANCE.md`](GOVERNANCE.md).
+The primary impact estimand is the incremental effect of **protocol-guided agent
+use versus the same agent without the protocol**. Manual work is an important
+secondary comparator. Completion, quality, material error, human effort, elapsed
+time, rework, cost, cognitive burden, help requests, adoption and safety remain
+separate outcomes unless a decision-specific weighting is declared in advance.
 
-## Where things live
+## Repository map
 
-| Path | What |
+| Path | Contract |
 |---|---|
-| `kernel/` | The Verified Agent Work kernel and assurance levels. |
-| `schema/` | JSON Schemas for protocol, manifest, receipt, eval-result, registry. |
-| `status/` | The two status ladders. |
-| `protocols/<id>/` | One protocol pack each. |
-| `tools/` | validate, eval-harness, hostile-tests, registry, make-receipt. |
-| `build-protocols.js` | Dependency-free static-site builder → `protocols/dist/`. |
-| `review/` | Adversarial-review records. |
-| `RECEIPT.json` | Repository-level replay receipt. |
+| `company-pilot/` | No-install formative route plus facilitator-run feasibility forms and analysis contract. |
+| `kernel/` | Platform-neutral Verified Agent Work kernel. |
+| `protocols/<id>/` | Versioned protocol, Agent Skill, adapters, tests and evidence. |
+| `schema/` | Machine-readable contracts for packs, receipts, registry and pilots. |
+| `status/` | Separate assurance and productivity-evidence ladders. |
+| `tools/` | Validators, mutation/security checks, evaluation and release controls. |
+| `assets/` | Same-origin, offline-capable site assets. |
+| `review/` | Role-separated adversarial model-review records and responses. |
+| `docs/` | Prior-art, impact, governance, provenance and assessment records. |
+| `dist/` | Generated local candidate; never source evidence by itself. |
 
-## Verifying your work before you claim it is done
+## Completion discipline
 
-From `protocols/`, one command runs every gate and regenerates the receipt:
+Before a candidate can be called ready for an external pilot:
 
-```
-node tools/verify-all.js
-```
+1. all schemas, registered tests, hostile controls and link checks pass;
+2. deliberately bad fixtures make every load-bearing validator fail;
+3. the build repeats byte-identically from the same committed source;
+4. protocol pages and downloads agree on id, version, status and hash;
+5. keyboard, mobile, reduced-motion, print and automated accessibility checks
+   pass, with manual limits recorded;
+6. a fresh adversarial reviewer finds no unresolved critical defect;
+7. every benefit statement matches a version-bound evidence record; and
+8. human/company impact remains `NO_IMPACT_EVIDENCE` until actual participants
+   supply analyzable observations under an appropriate design.
 
-It runs `validate` → `tests` → `evals` → `hostile` → `build` → `make-receipt`.
-A protocol's assurance status may only be raised to the level the receipt
-justifies. If the receipt does not show a gate passing, the status that gate
-would grant may not be claimed.
+Run the repository verification command documented in `README.md`. A green local
+pipeline is a candidate-readiness result, not a publication or impact result.

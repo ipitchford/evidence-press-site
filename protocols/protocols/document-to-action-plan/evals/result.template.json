@@ -1,14 +1,65 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
+  "record_kind": "template",
   "protocol_id": "document-to-action-plan",
-  "protocol_version": "0.1.0",
+  "protocol_version": "0.1.1",
   "task_set": "dtap-core-v1",
-  "design": "benchmark",
+  "evidence_profile": {
+    "setting": "benchmark",
+    "study_stage": "development",
+    "identification": "descriptive",
+    "review_status": "internal",
+    "claim_boundary": "Only this protocol version on this registered synthetic task set and the specifically recorded model runs."
+  },
   "arms": [
-    { "arm": "no_agent", "n": 6, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
-    { "arm": "agent_without_protocol", "n": 6, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
-    { "arm": "agent_with_protocol", "n": 6, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } }
+    { "arm": "no_agent", "n": 6, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
+    { "arm": "agent_without_protocol", "n": 6, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
+    { "arm": "agent_with_protocol", "n": 6, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } }
   ],
+  "runner": {
+    "tool": "run-eval@0.3.0 template — NOT EXECUTED",
+    "models": [],
+    "judge_model": null,
+    "generated_at": null,
+    "task_file": "evals/task-set.json",
+    "tasks_sha256": "cd417d9449be94cdf38e2debefe0221bc66e38bfb55bcf8611542ebb9e6a1b05",
+    "outputs_file": "evals/live/runs/REPLACE-WHEN-RUN.jsonl",
+    "outputs_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "task_ids": [
+      "dtap-task-minutes",
+      "dtap-task-email-thread",
+      "dtap-task-contract",
+      "dtap-task-mixed-set",
+      "dtap-task-no-actions",
+      "dtap-task-injection"
+    ],
+    "n_tasks": 6,
+    "evaluation_cost_usd": null,
+    "pack": {
+      "id": "document-to-action-plan",
+      "version": "0.1.1",
+      "protocol_file": "protocol.yaml",
+      "protocol_sha256": "7030af007731e885bce1005f336ba1dac3845023828bba2990943c2d845d97ce"
+    },
+    "interventions": {
+      "agent_without_protocol": {
+        "kind": "inline",
+        "prompt": "You are a helpful assistant. Complete the following task using the provided materials.",
+        "prompt_sha256": "c929bdcc7e6739f4819924ee3dafeabdeb71ba9a74582e85dde796e7fa1b7732"
+      },
+      "agent_with_protocol": {
+        "kind": "file",
+        "file": "adapters/generic-chat/prompt.md",
+        "file_sha256": "e26e4e46bad313b6fa8f72d2e59ab7e7e8cd0d4035126757bc203c3d8b65fcb2",
+        "effective_prompt_sha256": "5da8fedc52ad3154ee96aa86ea5a4cc8c5ec7ba83a81ebae891eb00d46f25226"
+      }
+    },
+    "source": {
+      "commit": "64531077fc707b03c762877ed97d01369163ddd9",
+      "tree": "1ce4edcb9b8517c722e7ea34df240efe22bc9b42",
+      "dirty": true
+    }
+  },
   "notes": "TEMPLATE — NOT EXECUTED. Metrics are null on purpose. Producing real numbers requires live model runs, which the offline receipt does not perform. Do not fill this in with estimates; measure or leave null.",
   "limitations": ["No run has been performed.", "A benchmark design cannot support a claim stronger than BENCHMARK_SIGNAL.", "Accuracy here must count invented and mis-located items as material errors."],
   "implied_evidence_status": "NO_IMPACT_EVIDENCE"

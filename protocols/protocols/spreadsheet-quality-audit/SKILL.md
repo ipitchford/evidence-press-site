@@ -8,15 +8,14 @@ description: >-
   units, and internal consistency checked before it is relied on. Read-only;
   never edits the source spreadsheet and invents no finding the data does not
   support.
-license: Apache-2.0
+license: CC0-1.0
 metadata:
   protocol: spreadsheet-quality-audit
-  protocol_version: 0.1.0
+  protocol_version: 0.1.1
   kernel: verified-agent-work@0.1.0
   assurance_level: verified
   risk_class: moderate
-allowed-tools:
-  - read
+allowed-tools: Read
 ---
 
 # Spreadsheet quality audit

@@ -1,8 +1,8 @@
 # Copy-and-run edition — repetitive workflow capture
 
 No installation. Paste everything below into any capable chat agent, then add your
-process description. Works with a general-purpose assistant and pasted or uploaded
-text.
+process description. Designed for a general-purpose assistant that can read pasted
+or uploaded text.
 
 ---
 

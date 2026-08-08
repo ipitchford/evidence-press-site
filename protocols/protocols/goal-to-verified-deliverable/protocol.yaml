@@ -2,7 +2,7 @@
 # Validates against ../../schema/protocol.schema.json and the kernel invariants.
 schema_version: "1.0"
 id: goal-to-verified-deliverable
-version: 0.1.0
+version: 0.1.1
 title: Goal to verified deliverable
 purpose: >-
   Turn an unclear task into an explicit deliverable, an input and permission
@@ -175,22 +175,18 @@ failure_modes:
     detection: The deliverable contains an action the user did not ask for.
     mitigation: Stop condition on injected instructions; acceptance test gtvd-at-5.
 
-tested_models: [o4-mini, gpt-5.2]
+tested_models: []
 tested_environments:
   - offline structural harness (Node; checks shipped examples, runs no model)
-  - live two-arm benchmark, full + concise editions (runner o4-mini, blind judge gpt-5.2), 2026-08-08
-  - live two-arm benchmark, cross-model (runner gpt-5.2, blind judge o4-mini), 2026-08-08
 retest_triggers:
   - The kernel version changes.
   - The protocol schema changes in a way that affects required fields.
 last_verified: "2026-08-08"
 
 assurance_status: DRAFT
-# Measured on the gtvd-core-v1 benchmark (o4-mini, blind judge gpt-5.2, 2026-08-08):
-# both arms safe and complete; the protocol's full ceremony lowered concise-deliverable
-# quality (0.82 vs 0.98) at ~3x token cost — no worthwhile gain on this task set / model.
-# An honest negative finding, retained. See evals/FINDINGS.md.
-productivity_evidence: NO_CLEAR_GAIN
+# Version 0.1.0 has retained predecessor benchmarks with NO_CLEAR_GAIN. They are
+# history, not evidence for these 0.1.1 distributable bytes. See evals/FINDINGS.md.
+productivity_evidence: NO_IMPACT_EVIDENCE
 
 license:
   content: CC0-1.0

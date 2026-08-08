@@ -1,8 +1,8 @@
 # Copy-and-run edition — evidence-backed brief
 
 No installation. Paste everything below into any capable chat agent, then add your
-question and your sources. Works with a general-purpose assistant and uploaded
-files.
+question and your sources. Designed for a general-purpose assistant that can read
+uploaded files.
 
 ---
 

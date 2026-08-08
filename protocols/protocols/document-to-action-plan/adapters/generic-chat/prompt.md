@@ -1,7 +1,7 @@
 # Copy-and-run edition — document to action plan
 
 No installation. Paste everything below into any capable chat agent, then add your
-documents. Works with a general-purpose assistant and uploaded files.
+documents. Designed for a general-purpose assistant that can read uploaded files.
 
 ---
 

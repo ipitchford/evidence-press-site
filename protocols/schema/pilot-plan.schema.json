@@ -1,0 +1,513 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/protocols/api/v2/pilot-plan.schema.json",
+  "title": "Novice-company protocol pilot plan",
+  "description": "A governance, ethics, design, measurement, and follow-up contract for a three-arm company pilot of document-to-action-plan. Schema conformance is necessary but not sufficient: tools/pilot-validate.js also enforces cross-field design invariants.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "pilot_id",
+    "title",
+    "status",
+    "study_stage",
+    "study_stage_taxonomy",
+    "protocol",
+    "evidence_boundary",
+    "workflow",
+    "readiness",
+    "governance",
+    "facilitation",
+    "worker_protections",
+    "data_governance",
+    "trial",
+    "outcomes",
+    "analysis",
+    "follow_up",
+    "decision_rule",
+    "incident_and_rollback",
+    "approvals"
+  ],
+  "properties": {
+    "schema_version": { "const": "2.0" },
+    "pilot_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$" },
+    "title": { "type": "string", "minLength": 8 },
+    "status": { "enum": ["draft", "ready", "paused", "stopped", "closed"] },
+    "study_stage": { "const": "feasibility" },
+    "study_stage_taxonomy": { "const": ["formative", "feasibility", "controlled"] },
+    "protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "edition", "protocol_prompt_sha256"],
+      "properties": {
+        "id": { "const": "document-to-action-plan" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "edition": { "const": "copy-and-run" },
+        "protocol_prompt_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "evidence_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["current_evidence", "pilot_purpose", "prohibited_claim"],
+      "properties": {
+        "current_evidence": { "const": "No company impact is established by this unrun pilot kit." },
+        "pilot_purpose": { "const": "Assess feasibility and describe the protocol-versus-agent-only contrast, with manual work as a secondary comparator; this crossover does not identify a controlled impact effect." },
+        "prohibited_claim": { "const": "Do not state or imply that the protocol improves productivity, quality, safety, adoption, or business outcomes unless completed evidence supports that exact claim." }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "description",
+        "workflow_owner_role",
+        "affected_people_groups",
+        "unit_of_work",
+        "current_manual_process",
+        "in_scope",
+        "out_of_scope"
+      ],
+      "properties": {
+        "name": { "type": "string", "minLength": 4 },
+        "description": { "type": "string", "minLength": 20 },
+        "workflow_owner_role": { "type": "string", "minLength": 3 },
+        "affected_people_groups": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 2 } },
+        "unit_of_work": { "type": "string", "minLength": 8 },
+        "current_manual_process": { "type": "string", "minLength": 20 },
+        "in_scope": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 4 } },
+        "out_of_scope": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 4 } }
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assessment_date", "assessed_by_role", "checks", "overall_decision", "rationale"],
+      "properties": {
+        "assessment_date": { "type": "string", "format": "date" },
+        "assessed_by_role": { "type": "string", "minLength": 3 },
+        "checks": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "result", "blocking", "evidence"],
+            "properties": {
+              "id": {
+                "enum": [
+                  "workflow_repeated_and_comparable",
+                  "low_stakes_read_only",
+                  "quality_rubric_available",
+                  "enough_work_for_three_periods",
+                  "same_agent_configuration",
+                  "worker_time_and_consent",
+                  "data_non_sensitive",
+                  "owner_and_incident_cover",
+                  "rollback_tested",
+                  "pilot_capacity"
+                ]
+              },
+              "result": { "enum": ["PASS", "FAIL", "UNKNOWN"] },
+              "blocking": { "type": "boolean" },
+              "evidence": { "type": "string", "minLength": 4 }
+            }
+          }
+        },
+        "overall_decision": { "enum": ["GO", "HOLD", "STOP"] },
+        "rationale": { "type": "string", "minLength": 12 }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["executive_sponsor_role", "pilot_owner_role", "workflow_owner_role", "data_owner_role", "affected_people_representative_role", "decision_rights"],
+      "properties": {
+        "executive_sponsor_role": { "type": "string", "minLength": 3 },
+        "pilot_owner_role": { "type": "string", "minLength": 3 },
+        "workflow_owner_role": { "type": "string", "minLength": 3 },
+        "data_owner_role": { "type": "string", "minLength": 3 },
+        "affected_people_representative_role": { "type": "string", "minLength": 3 },
+        "decision_rights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["may_start_pilot", "may_pause_or_stop", "must_approve_scale_up", "must_approve_output_use", "agent_must_not_decide"],
+          "properties": {
+            "may_start_pilot": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 3 } },
+            "may_pause_or_stop": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 3 } },
+            "must_approve_scale_up": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 3 } },
+            "must_approve_output_use": { "type": "string", "minLength": 3 },
+            "agent_must_not_decide": { "type": "array", "minItems": 3, "items": { "type": "string", "minLength": 5 } }
+          }
+        }
+      }
+    },
+    "facilitation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "facilitator_role", "no_endorsement_implied", "support_minutes_measured", "help_requests_measured"],
+      "properties": {
+        "mode": { "enum": ["self_guided", "optional_trusted_adviser"] },
+        "facilitator_role": { "type": ["string", "null"] },
+        "no_endorsement_implied": { "const": true },
+        "support_minutes_measured": { "const": true },
+        "help_requests_measured": { "const": true }
+      }
+    },
+    "worker_protections": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "voluntary_informed_consent",
+        "no_penalty_for_declining_or_withdrawing",
+        "withdrawal_process_explained",
+        "individual_performance_use_prohibited",
+        "employment_decision_use_prohibited",
+        "monitoring_explained",
+        "human_review_before_operational_use",
+        "direct_identifiers_collected",
+        "participant_ids_pseudonymous",
+        "consultation_status",
+        "consent_record_destination"
+      ],
+      "properties": {
+        "voluntary_informed_consent": { "const": true },
+        "no_penalty_for_declining_or_withdrawing": { "const": true },
+        "withdrawal_process_explained": { "const": true },
+        "individual_performance_use_prohibited": { "const": true },
+        "employment_decision_use_prohibited": { "const": true },
+        "monitoring_explained": { "const": true },
+        "human_review_before_operational_use": { "const": true },
+        "direct_identifiers_collected": { "const": false },
+        "participant_ids_pseudonymous": { "const": true },
+        "consultation_status": { "enum": ["consulted", "not_applicable_with_reason"] },
+        "consultation_note": { "type": "string" },
+        "consent_record_destination": { "type": "string", "minLength": 8 }
+      }
+    },
+    "data_governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_data_policy",
+        "personal_data_allowed",
+        "sensitive_or_special_category_data_allowed",
+        "synthetic_or_redacted_preferred",
+        "destination",
+        "data_owner_role",
+        "access_roles",
+        "retention_days",
+        "delete_by",
+        "deletion_method",
+        "external_sync_allowed",
+        "raw_agent_logs_retained"
+      ],
+      "properties": {
+        "source_data_policy": { "const": "non_sensitive_business_documents_only" },
+        "personal_data_allowed": { "const": false },
+        "sensitive_or_special_category_data_allowed": { "const": false },
+        "synthetic_or_redacted_preferred": { "const": true },
+        "destination": { "type": "string", "minLength": 8 },
+        "data_owner_role": { "type": "string", "minLength": 3 },
+        "access_roles": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 3 } },
+        "retention_days": { "type": "integer", "minimum": 90, "maximum": 365 },
+        "delete_by": { "type": "string", "format": "date" },
+        "deletion_method": { "type": "string", "minLength": 8 },
+        "external_sync_allowed": { "const": false },
+        "raw_agent_logs_retained": { "const": false },
+        "retention_rationale": { "type": "string" }
+      }
+    },
+    "trial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "design",
+        "randomization_unit",
+        "arms",
+        "periods",
+        "sequence_set",
+        "assignment_file",
+        "seed_commitment_sha256",
+        "participant_list_frozen_before_allocation",
+        "allocation_generated_by_role",
+        "seed_source",
+        "allocation_commitment_recorded_before_reveal",
+        "rerolls_permitted",
+        "seed_disclosure_rule",
+        "allocation_concealed_until_enrolment",
+        "same_agent_between_agent_arms",
+        "agent_model_identifier",
+        "agent_configuration_path",
+        "agent_configuration_sha256",
+        "bare_agent_prompt_path",
+        "bare_agent_prompt_sha256",
+        "task_bank_path",
+        "task_bank_sha256",
+        "sample_size",
+        "tasks_per_arm_per_worker",
+        "period_duration_days",
+        "washout_days",
+        "carryover_controls",
+        "task_equivalence_method",
+        "outcome_rater_blinded_to_arm",
+        "contamination_tracked",
+        "preregistration_path",
+        "preregistration_sha256"
+      ],
+      "properties": {
+        "design": { "const": "randomized_counterbalanced_three_period_crossover" },
+        "randomization_unit": { "const": "worker" },
+        "arms": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "enum": ["manual", "agent_without_protocol", "agent_with_protocol"] }
+        },
+        "periods": { "const": 3 },
+        "sequence_set": { "const": "all_six_permutations" },
+        "assignment_file": { "type": "string", "minLength": 5 },
+        "seed_commitment_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "participant_list_frozen_before_allocation": { "const": true },
+        "allocation_generated_by_role": { "type": "string", "minLength": 3 },
+        "seed_source": { "enum": ["os_csprng", "password_manager_random", "example_only"] },
+        "allocation_commitment_recorded_before_reveal": { "const": true },
+        "rerolls_permitted": { "const": false },
+        "seed_disclosure_rule": { "const": "keep the seed sealed until data lock, then disclose it with the frozen participant list for replay" },
+        "allocation_concealed_until_enrolment": { "const": true },
+        "same_agent_between_agent_arms": { "const": true },
+        "agent_model_identifier": { "type": "string", "minLength": 2 },
+        "agent_configuration_path": { "type": "string", "minLength": 5 },
+        "agent_configuration_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "bare_agent_prompt_path": { "type": "string", "minLength": 5 },
+        "bare_agent_prompt_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "task_bank_path": { "type": "string", "minLength": 5 },
+        "task_bank_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "sample_size": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["basis", "powered_for_confirmatory_effect", "target_randomized_workers", "sequence_block_size", "expected_attrition_fraction", "minimum_complete_pairs_target", "paired_sd_assumption_min", "smallest_worthwhile_difference_min", "target_ci_half_width_min", "confidence_level", "confirmatory_power_target", "calculation_note"],
+          "properties": {
+            "basis": { "const": "feasibility_precision" },
+            "powered_for_confirmatory_effect": { "const": false },
+            "target_randomized_workers": { "type": "integer", "minimum": 6 },
+            "sequence_block_size": { "const": 6 },
+            "expected_attrition_fraction": { "type": "number", "minimum": 0, "maximum": 0.5 },
+            "minimum_complete_pairs_target": { "type": "integer", "minimum": 2 },
+            "paired_sd_assumption_min": { "type": "number", "minimum": 0 },
+            "smallest_worthwhile_difference_min": { "type": "number", "minimum": 0 },
+            "target_ci_half_width_min": { "type": "number", "minimum": 0 },
+            "confidence_level": { "const": 0.95 },
+            "confirmatory_power_target": { "const": null },
+            "calculation_note": { "type": "string", "minLength": 40 }
+          }
+        },
+        "tasks_per_arm_per_worker": { "type": "integer", "minimum": 2 },
+        "period_duration_days": { "type": "integer", "minimum": 1, "maximum": 30 },
+        "washout_days": { "type": "integer", "minimum": 0, "maximum": 14 },
+        "carryover_controls": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 8 } },
+        "task_equivalence_method": { "type": "string", "minLength": 20 },
+        "outcome_rater_blinded_to_arm": { "const": true },
+        "contamination_tracked": { "const": true },
+        "preregistration_path": { "type": "string", "minLength": 5 },
+        "preregistration_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "outcomes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "secondary_and_guardrail", "quality_measurement", "measurement_window"],
+      "properties": {
+        "primary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["metric", "unit", "direction", "contrast", "estimand", "population", "aggregation"],
+          "properties": {
+            "metric": { "const": "human_effort_min" },
+            "unit": { "const": "active human minutes per work item" },
+            "direction": { "const": "lower_is_better" },
+            "contrast": { "const": "agent_with_protocol_minus_agent_without_protocol" },
+            "estimand": { "const": "mean_within_worker_difference" },
+            "population": { "const": "all_randomized_workers" },
+            "aggregation": { "const": "mean_within_worker_per_arm_before_contrast" }
+          }
+        },
+        "secondary_and_guardrail": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["metric", "direction", "collection_method"],
+            "properties": {
+              "metric": {
+                "enum": [
+                  "elapsed_time_min",
+                  "rework_count",
+                  "quality_score",
+                  "material_error_count",
+                  "cognitive_burden_1_to_7",
+                  "would_adopt",
+                  "help_request_count",
+                  "facilitator_support_min",
+                  "approver_checker_min",
+                  "total_human_resource_min",
+                  "model_tool_cost_usd",
+                  "safety_event_count"
+                ]
+              },
+              "direction": { "enum": ["lower_is_better", "higher_is_better", "descriptive"] },
+              "collection_method": { "type": "string", "minLength": 8 }
+            }
+          }
+        },
+        "quality_measurement": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rubric_path", "rubric_sha256", "rubric_version", "acceptance_threshold_score", "maximum_material_errors_for_acceptance", "severe_safety_event_precludes_acceptance", "partial_credit_anchors_frozen", "second_rating_fraction", "agreement_method", "rater_ids", "rater_assignment_method", "second_rating_balance_strata", "disagreement_resolution_method"],
+          "properties": {
+            "rubric_path": { "type": "string", "minLength": 5 },
+            "rubric_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "rubric_version": { "type": "string", "pattern": "^v\\d+\\.\\d+$" },
+            "acceptance_threshold_score": { "type": "number", "minimum": 0, "maximum": 100 },
+            "maximum_material_errors_for_acceptance": { "type": "integer", "minimum": 0 },
+            "severe_safety_event_precludes_acceptance": { "const": true },
+            "partial_credit_anchors_frozen": { "const": true },
+            "second_rating_fraction": { "type": "number", "minimum": 0, "maximum": 1 },
+            "agreement_method": { "const": "ICC_A_1_absolute_agreement" },
+            "rater_ids": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "string", "pattern": "^R[0-9A-Z_-]{2,31}$" } },
+            "rater_assignment_method": { "const": "sha256_ranked_completed_items_within_arm_task_block" },
+            "second_rating_balance_strata": { "const": "arm_x_task_block" },
+            "disagreement_resolution_method": { "type": "string", "minLength": 20 }
+          }
+        },
+        "measurement_window": { "const": "from work-item start through accepted output or declared stop" }
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_method",
+        "secondary_manual_contrast",
+        "confidence_level",
+        "smallest_worthwhile_improvement_min",
+        "quality_noninferiority_margin_points",
+        "period_and_sequence_adjustment",
+        "carryover_assessment",
+        "missing_data_strategy",
+        "attrition_reporting",
+        "multiplicity",
+        "uncertainty_reporting",
+        "exploratory_label_required"
+      ],
+      "properties": {
+        "primary_method": { "const": "paired worker-level feasibility estimate adjusted descriptively for period and sequence; not a controlled impact effect" },
+        "secondary_manual_contrast": { "const": "agent_with_protocol_minus_manual" },
+        "confidence_level": { "const": 0.95 },
+        "smallest_worthwhile_improvement_min": { "type": "number", "minimum": 0 },
+        "quality_noninferiority_margin_points": { "type": "number", "minimum": 0, "maximum": 20 },
+        "period_and_sequence_adjustment": { "type": "string", "minLength": 20 },
+        "carryover_assessment": { "type": "string", "minLength": 20 },
+        "missing_data_strategy": { "type": "string", "minLength": 30 },
+        "attrition_reporting": { "const": "report assigned, started, completed, withdrawn and lost with reasons by sequence and arm; keep pre-randomization screening outside randomized outcomes" },
+        "multiplicity": { "const": "one prespecified primary descriptive estimand; all other contrasts and outcomes are secondary or exploratory" },
+        "uncertainty_reporting": { "const": "report point estimates, 95% confidence intervals, sample counts, missing pairs, and raw arm summaries; do not use p-values alone" },
+        "exploratory_label_required": { "const": true }
+      }
+    },
+    "follow_up": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["anchor_date", "day_30", "day_90"],
+      "properties": {
+        "anchor_date": { "type": "string", "format": "date", "description": "Frozen primary-observation close date from which day-30 and day-90 due dates are derived." },
+        "day_30": { "$ref": "#/$defs/followUpPlan" },
+        "day_90": { "$ref": "#/$defs/followUpPlan" }
+      }
+    },
+    "decision_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scale_up_is_automatic", "controlled_effect_claim_allowed", "feasibility_review_dimensions", "allowed_process_conclusions"],
+      "properties": {
+        "scale_up_is_automatic": { "const": false },
+        "controlled_effect_claim_allowed": { "const": false },
+        "feasibility_review_dimensions": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "items": { "enum": ["recruitment_and_retention", "task_completion", "measurement_completeness", "protocol_adherence", "support_resource", "rating_reliability", "safety_process"] }
+        },
+        "allowed_process_conclusions": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "enum": ["not_feasible", "revise_feasibility_design", "feasible_to_plan_controlled_parallel_evaluation"] }
+        }
+      }
+    },
+    "incident_and_rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stop_triggers", "rollback_owner_role", "rollback_steps", "restoration_point", "incident_contact_role", "incident_contact_channel", "response_target_hours"],
+      "properties": {
+        "stop_triggers": { "type": "array", "minItems": 3, "items": { "type": "string", "minLength": 8 } },
+        "rollback_owner_role": { "type": "string", "minLength": 3 },
+        "rollback_steps": { "type": "array", "minItems": 3, "items": { "type": "string", "minLength": 8 } },
+        "restoration_point": { "type": "string", "minLength": 12 },
+        "incident_contact_role": { "type": "string", "minLength": 3 },
+        "incident_contact_channel": { "type": "string", "minLength": 5 },
+        "response_target_hours": { "type": "integer", "minimum": 1, "maximum": 72 }
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "status", "date"],
+        "properties": {
+          "role": { "enum": ["workflow_owner", "affected_people_representative", "data_owner", "safety_reviewer"] },
+          "status": { "enum": ["approved", "pending", "declined"] },
+          "date": { "type": ["string", "null"], "format": "date" },
+          "conditions": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "followUpPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_day", "window_days", "owner_role", "measures"],
+      "properties": {
+        "target_day": { "enum": [30, 90] },
+        "window_days": { "type": "integer", "minimum": 3, "maximum": 21 },
+        "owner_role": { "type": "string", "minLength": 3 },
+        "measures": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "enum": [
+              "protocol_use_frequency",
+              "workflow_still_in_use",
+              "would_adopt",
+              "help_request_count",
+              "facilitator_support_min",
+              "cognitive_burden_1_to_7",
+              "material_error_count",
+              "safety_event_count",
+              "local_changes",
+              "reasons_for_non_use"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

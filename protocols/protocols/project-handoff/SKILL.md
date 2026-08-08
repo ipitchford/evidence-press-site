@@ -8,15 +8,14 @@ description: >-
   receipt. Use when someone is stepping away from part-done work, or inheriting it,
   and the project's state must be made legible without them. Read-only; takes no
   action on the project's behalf and invents nothing the materials do not contain.
-license: Apache-2.0
+license: CC0-1.0
 metadata:
   protocol: project-handoff
-  protocol_version: 0.1.0
+  protocol_version: 0.1.1
   kernel: verified-agent-work@0.1.0
   assurance_level: verified
   risk_class: low
-allowed-tools:
-  - read
+allowed-tools: Read
 ---
 
 # Project handoff

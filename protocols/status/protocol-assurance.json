@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "id": "protocol-assurance",
   "title": "Protocol assurance ladder",
-  "question": "Is the protocol well built, well tested, and safe to run?",
+  "question": "What was checked, and what bounded readiness do those checks support?",
   "independent_from": "productivity-evidence",
-  "principle": "Assurance is about structure, testing, and safety. It says nothing about whether the protocol improves anyone's work. A protocol can reach the top of this ladder and still make its users slower — that is the other ladder's job to detect. One badge must never stand for both. Every rung means only what its check actually established: an offline check of the shipped examples is not the same as a live run of the protocol, and the rung names say so.",
+  "principle": "Assurance records structure, testing, review, and bounded readiness within a declared context. It is not a universal safety finding and says nothing about whether the protocol improves anyone's work. A protocol can reach the top of this ladder and still make its users slower — that is the other ladder's job to detect. One badge must never stand for both. Every rung means only what its check actually established: an offline check of the shipped examples is not the same as a live run of the protocol, and the rung names say so.",
   "states": [
     {
       "order": 0,
@@ -38,7 +38,7 @@
       "id": "TASKSET_PASSED",
       "polarity": "progressive",
       "label": "Task set passed (minimum acceptance gates)",
-      "meaning": "A live runner executed the protocol over the registered task set on a named model, and the FRESH outputs — RECOMPUTED by the verifier from the committed raw outputs, not trusted from a self-reported field — passed the pack's ACCEPTANCE GATES (completion, plus no deterministic compliance/external-action signal). This is a MINIMUM bar: it means the outputs addressed the task and took no prohibited action. It does NOT mean the outputs were high quality or accurate — that is the productivity-evidence ladder's concern, and a protocol can hold this rung while showing NO_CLEAR_GAIN or a measured quality regression. The offline harness cannot grant it. NOTE: the deterministic acceptance is reproducible from the committed outputs; the model and blind-judge identities recorded in the result are self-reported and not authenticated (see KNOWN-LIMITATIONS).",
+      "meaning": "A live runner executed the protocol over the registered task set on a named model, and the FRESH outputs — RECOMPUTED by the verifier from the committed raw outputs, not trusted from a self-reported field — passed the pack's ACCEPTANCE GATES (completion, plus no detected deterministic compliance/external-action signal in the recorded output). This is a MINIMUM bar: it means the recorded outputs addressed the task and contained no detected prohibited-action signal. It does NOT authenticate the run, observe external systems, or mean the outputs were high quality or accurate — that is the productivity-evidence ladder's concern, and a protocol can hold this rung while showing NO_CLEAR_GAIN or a measured quality regression. The offline harness cannot grant it. NOTE: the deterministic acceptance is reproducible from the committed outputs; the model and blind-judge identities recorded in the result are self-reported and not authenticated (see KNOWN-LIMITATIONS).",
       "established_by": "A recorded live run whose committed raw outputs recompute a passing agent-with-protocol arm under the deterministic graders, bound by SHA-256 to the task set and the outputs file and to the protocol id + version.",
       "gate": "live run; acceptance recomputed from committed outputs"
     },
@@ -47,9 +47,9 @@
       "id": "CROSS_MODEL_REPRODUCED",
       "polarity": "progressive",
       "label": "Cross-model reproduced",
-      "meaning": "A separate model or implementation obtains materially consistent results on the task set in live runs.",
-      "established_by": "The task set is run under at least two distinct models/runtimes and the acceptance-test outcomes agree.",
-      "gate": "live runs (>= 2 models, consistent)"
+      "meaning": "At least two separate live runs using distinct named models meet the minimum acceptance gates on the same registered task set and yield the same measured productivity-evidence outcome. This is cross-model consistency by the same evaluation system, not independent reproduction, model authentication or proof of benefit.",
+      "established_by": "At least two separately recorded, hash-bound live runs on the same task set, using at least two distinct named models, with recomputed passing acceptance and the same implied evidence status.",
+      "gate": "separate live runs; same task set and evidence outcome; >= 2 named models"
     },
     {
       "order": 5,
@@ -65,9 +65,9 @@
       "id": "FIELD_READY",
       "polarity": "progressive",
       "label": "Field ready",
-      "meaning": "Suitable for bounded real-world trials by people outside the development team. Requires a live-run history (>= TASKSET_PASSED), a security review, a copy-and-run edition, and no open critical defect. Blocked while productivity evidence is HARM_OR_REGRESSION_FOUND.",
-      "established_by": "All lower gates plus a copy-and-run edition, install instructions, live-run history, and no open critical failure.",
-      "gate": "all + live runs + accessibility editions"
+      "meaning": "Suitable for a bounded real-world trial by intended users outside the development team. Requires a live-run history (>= TASKSET_PASSED), human security review, copy-and-run edition, formative usability evidence with representative intended users, and no open critical defect. It does not mean the protocol is beneficial. Blocked while productivity evidence is HARM_OR_REGRESSION_FOUND.",
+      "established_by": "All lower gates plus a copy-and-run edition, operating instructions, live-run history, recorded formative usability with intended users, and no open critical failure.",
+      "gate": "all + live runs + security review + accessibility artefacts + formative usability"
     },
     {
       "order": 7,
