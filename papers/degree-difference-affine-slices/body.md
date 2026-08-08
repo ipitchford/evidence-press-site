@@ -64,3 +64,9 @@ This is the foundational release of a trilogy on binary-form factorisation space
 ## What is in the evidence package
 
 The deposit contains the manuscript (PDF and TeX), the verification script `verify_degree_difference_affine_slices.py` with negative controls, a claim-level evidence map (`AI_INDEX.md`), assurance and provenance documentation (`STATUS.md`, `ASSURANCE.md`, `PROVENANCE.md`, `SOURCES.md`), and SHA-256 manifests, archived on Zenodo and Software Heritage.
+
+## Foundations companion released 8 August 2026
+
+A separately versioned companion, [*The Bordered Jacobian of Binary-Form Multiplication*](https://doi.org/10.5281/zenodo.21855302), now gives an integral all-degree proof of the determinant identity through a stronger maximal-minor formula. Its producer-side exact suite extends finite checking through $r+s\leq8$ with additional spot checks and negative controls.
+
+This is an evidence update, not retrospective machine verification of every claim in the present release. The companion's all-degree identity still rests on its manuscript proof, and the torsor, divisor-class and affine-slice arguments here remain outside the executable checks. Independent reproduction, complete formal verification and editorial peer review remain unestablished for both packages.

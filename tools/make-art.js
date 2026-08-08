@@ -278,6 +278,29 @@ art['certified-commitment-horizons'] = (a, b) => {
   return s;
 };
 
+/* Bordered Jacobian: rectangular multiplication matrix, border and kernel. */
+art['bordered-jacobian-foundations'] = (a, b) => {
+  let s = '';
+  const ox = 135, oy = 70, cols = 10, rows = 6, cw = 52, ch = 42;
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      const band = Math.abs(j - i) <= 2 || Math.abs(j - i - 3) <= 1;
+      s += `<rect x="${ox + j * cw}" y="${oy + i * ch}" width="38" height="28" rx="5" fill="${band ? a : '#e7e5e4'}" opacity="${band ? (0.26 + 0.07 * ((i + j) % 4)).toFixed(2) : '0.06'}"/>`;
+    }
+  }
+  const by = oy + rows * ch + 20;
+  s += `<rect x="${ox - 18}" y="${by - 12}" width="${cols * cw + 22}" height="50" rx="11" fill="none" stroke="${b}" stroke-width="3" opacity="0.95"/>`;
+  for (let j = 0; j < cols; j++) {
+    s += `<circle cx="${ox + j * cw + 19}" cy="${by + 13}" r="6" fill="${j < 5 ? b : a}" opacity="0.9"/>`;
+  }
+  s += `<path d="M 760 95 C 850 95, 850 190, 940 190 S 1030 285, 1110 285" fill="none" stroke="${a}" stroke-width="5" opacity="0.9"/>`;
+  s += `<path d="M 760 300 C 850 300, 850 205, 940 205 S 1030 110, 1110 110" fill="none" stroke="${b}" stroke-width="5" opacity="0.9"/>`;
+  s += `<circle cx="940" cy="198" r="18" fill="#151a1e" stroke="#e7e5e4" stroke-width="2"/>`;
+  s += `<text x="940" y="207" text-anchor="middle" font-family="Georgia" font-size="27" fill="#e7e5e4">κ</text>`;
+  s += `<text x="805" y="370" font-family="Georgia" font-size="25" fill="#e7e5e4" opacity="0.88">det[M; v] = ± Res · ⟨v, κ⟩</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -291,6 +314,7 @@ const palette = {
   , 'txgraffiti-c3-resolution': ['#2dd4bf', '#f472b6']
   , 'cyclicity-loci-exponential-periods': ['#38bdf8', '#fbbf24']
   , 'certified-commitment-horizons': ['#2dd4bf', '#fbbf24']
+  , 'bordered-jacobian-foundations': ['#34d399', '#fbbf24']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
