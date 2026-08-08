@@ -190,6 +190,18 @@ check('build identity is published', (() => {
   return !!(b.schemaVersion && b.softwareVersion);
 })());
 
+/* ---------------------------------------- programme visual hierarchy */
+const imageSources = rel => [...fs.readFileSync(path.join(DIST, rel), 'utf8')
+  .matchAll(/<img\s+[^>]*src="([^"]+)"[^>]*>/g)].map(match => match[1]);
+const productivityImages = imageSources('productivity/index.html');
+const starterImages = imageSources('protocols/start/index.html');
+check('Productivity keeps one explanatory in-page image',
+  productivityImages.length === 1 && productivityImages[0] === '/assets/art/protocols-ladders.svg',
+  `images=${productivityImages.join(',') || 'none'}`);
+check('company starter owns the staged-learning cover',
+  starterImages.length === 1 && starterImages[0] === '/assets/art/productivity.svg',
+  `images=${starterImages.join(',') || 'none'}`);
+
 console.log(failures === 0
   ? '\nALL METADATA TESTS PASSED'
   : `\n${failures} METADATA TEST(S) FAILED`);

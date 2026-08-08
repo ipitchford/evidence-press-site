@@ -728,6 +728,7 @@ function startPage(starter) {
   return page('Company starter kit', body, 'A no-install formative route and facilitator-run feasibility kit for bounded AI-agent work.', {
     canonical: `${BASE}${BP}/start/`,
     og: ASSET('og/protocols.png'),
+    cover: ASSET('art/productivity.svg'),
     kicker: 'PRODUCTIVITY PROTOCOLS · COMPANY STARTER',
     standfirst: 'Choose the evidence stage before inviting people. Learn first; compare only when the design can support it.',
     backlink: { href: `${BP}/`, label: '← All protocols' }
