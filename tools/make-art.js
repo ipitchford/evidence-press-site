@@ -301,6 +301,43 @@ art['bordered-jacobian-foundations'] = (a, b) => {
   return s;
 };
 
+/* certified two-item JRP: two order lattices, shared epochs and a closing tail */
+art['certified-two-item-jrp'] = (a, b) => {
+  let s = '';
+  const x0 = 105, step = 78;
+  s += `<line x1="${x0}" y1="128" x2="575" y2="128" stroke="#d6dcdd" stroke-width="2" opacity=".55"/>`;
+  s += `<line x1="${x0}" y1="268" x2="575" y2="268" stroke="#d6dcdd" stroke-width="2" opacity=".55"/>`;
+  for (let k = 0; k <= 6; k++) {
+    const x = x0 + k * step;
+    s += `<line x1="${x}" y1="108" x2="${x}" y2="148" stroke="${a}" stroke-width="4"/>`;
+  }
+  for (let k = 0; k <= 4; k++) {
+    const x = x0 + k * step * 1.5;
+    s += `<line x1="${x}" y1="248" x2="${x}" y2="288" stroke="${b}" stroke-width="4"/>`;
+  }
+  for (const x of [x0, x0 + 3 * step, x0 + 6 * step]) {
+    s += `<line x1="${x}" y1="148" x2="${x}" y2="248" stroke="#e7e5e4" stroke-width="1.5" stroke-dasharray="6 7" opacity=".55"/>`;
+    s += `<circle cx="${x}" cy="198" r="8" fill="#e7e5e4" opacity=".9"/>`;
+  }
+  s += `<text x="${x0}" y="88" font-family="ui-monospace,monospace" font-size="17" fill="${a}">T₁ = qt</text>`;
+  s += `<text x="${x0}" y="330" font-family="ui-monospace,monospace" font-size="17" fill="${b}">T₂ = pt</text>`;
+
+  s += `<line x1="650" y1="326" x2="1125" y2="326" stroke="#8a938f" stroke-width="1" opacity=".5"/>`;
+  s += `<line x1="650" y1="68" x2="650" y2="326" stroke="#8a938f" stroke-width="1" opacity=".5"/>`;
+  let curve = 'M 664 300';
+  for (let k = 0; k <= 52; k++) {
+    const x = 664 + k * 8.5;
+    const y = 300 - 188 * (1 - Math.exp(-k / 13));
+    curve += ` L ${x.toFixed(1)} ${y.toFixed(1)}`;
+  }
+  s += `<path d="${curve}" fill="none" stroke="${a}" stroke-width="4" opacity=".95"/>`;
+  s += `<line x1="650" y1="103" x2="1125" y2="103" stroke="${b}" stroke-width="2.5" stroke-dasharray="10 8" opacity=".8"/>`;
+  s += `<circle cx="1003" cy="112" r="8" fill="${a}"/>`;
+  s += `<text x="1118" y="91" text-anchor="end" font-family="ui-monospace,monospace" font-size="16" fill="${b}">Mᵣ</text>`;
+  s += `<text x="1118" y="355" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd" opacity=".75">enumeration cutoff S</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -310,11 +347,12 @@ const palette = {
   'erdos-848-all-n': ['#fbbf24', '#38bdf8'],
   'reducible-incidence-divisors': ['#4ade80', '#c084fc'],
   'stocks-are-not-flows': ['#38bdf8', '#f59e0b'],
-  'affine-diversification-fibres': ['#2dd4bf', '#fbbf24']
-  , 'txgraffiti-c3-resolution': ['#2dd4bf', '#f472b6']
-  , 'cyclicity-loci-exponential-periods': ['#38bdf8', '#fbbf24']
-  , 'certified-commitment-horizons': ['#2dd4bf', '#fbbf24']
-  , 'bordered-jacobian-foundations': ['#34d399', '#fbbf24']
+  'affine-diversification-fibres': ['#2dd4bf', '#fbbf24'],
+  'txgraffiti-c3-resolution': ['#2dd4bf', '#f472b6'],
+  'cyclicity-loci-exponential-periods': ['#38bdf8', '#fbbf24'],
+  'certified-commitment-horizons': ['#2dd4bf', '#fbbf24'],
+  'bordered-jacobian-foundations': ['#34d399', '#fbbf24'],
+  'certified-two-item-jrp': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
