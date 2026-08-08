@@ -17,6 +17,8 @@ Every protocol carries two statuses. They answer different questions, and they a
 
 A protocol can be flawlessly engineered and still make you slower. Collapsing the two into a single "quality" badge would hide exactly that, so the library refuses to. A workflow may sit at the top of the assurance ladder while its benefit is still unproven — and the page will say so.
 
+![The two status ladders — protocol assurance and productivity evidence — shown side by side and never merged](/assets/art/protocols-ladders.svg "Two independent measures, kept apart. A protocol can climb the whole assurance ladder on the left and still sit at NO_CLEAR_GAIN on the right — and so far, ours do.")
+
 ## Benefit is measured, not claimed
 
 The library keeps negative results. A workflow that was evaluated and did not help is useful knowledge, particularly when it looked promising. So far, every protocol that has been evaluated live carries **no clear gain**: on its task set and its model, the method added no worthwhile benefit — and in the ceremony-heavy cases, it cost quality and time. Each such finding is stated plainly on the protocol's page, with the run behind it, rather than quietly dropped.

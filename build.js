@@ -1666,7 +1666,12 @@ write('_headers', `/*
 papers.forEach(paperPage);
 indexPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
-simplePage('productivity/', 'Productivity Protocols', 'Open, tested, downloadable workflows for getting useful work done with AI agents — each published with its assurance and its honestly-measured benefit attached.', 'productivity.md', 'WebPage', { standfirst: 'Methods, not papers: open, tested workflows for using AI agents — published, like everything here, with the evidence attached.' });
+simplePage('productivity/', 'Productivity Protocols', 'Open, tested, downloadable workflows for getting useful work done with AI agents — each published with its assurance and its honestly-measured benefit attached.', 'productivity.md', 'WebPage', {
+  art: '/assets/art/productivity.svg',
+  og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'productivity.png')) ? '/assets/og/productivity.png' : null,
+  kicker: 'A programme of Evidence Press',
+  standfirst: 'Methods, not papers: open, tested workflows for using AI agents — published, like everything here, with the evidence attached.'
+});
 simplePage('observatory/', 'Policy Identification Observatory', 'A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.', 'observatory.md', 'WebPage', {
   releaseLayout: true,
   art: '/assets/art/observatory.svg',

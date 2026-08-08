@@ -44,73 +44,209 @@ const write = (rel, data) => {
   fs.writeFileSync(p, data);
 };
 
-const CSS = `
-:root{--ink:#1a1a1a;--bg:#ffffff;--mut:#5c5c5c;--line:#e2e2e2;--accent:#0b5cad;--soft:#f6f7f9;--code:#f0f1f3}
-*{box-sizing:border-box}
-body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-header.site{border-bottom:1px solid var(--line);padding:22px 0}
-header.site .kicker{font-size:13px;color:var(--mut);letter-spacing:.02em}
-header.site h1{margin:.15em 0 .1em;font-size:26px}
-header.site p{margin:.2em 0 0;color:var(--mut)}
-main{padding:26px 0 60px}
-h2{font-size:20px;margin:1.6em 0 .5em;border-bottom:1px solid var(--line);padding-bottom:.25em}
-h3{font-size:16px;margin:1.3em 0 .4em}
-code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em}
-table{border-collapse:collapse;width:100%;margin:.6em 0;font-size:14px}
-th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
-th{background:var(--soft);font-weight:600}
-.badge{display:inline-block;font:600 11px/1.4 ui-monospace,monospace;padding:2px 7px;border:1px solid var(--line);border-radius:3px;background:var(--soft);white-space:nowrap}
-.badge.pos{border-color:#1f7a3d;color:#1f7a3d}
-.badge.neg{border-color:#a3301f;color:#a3301f}
-.badge.neu{color:var(--mut)}
-.panel{border:1px solid var(--line);border-radius:5px;padding:14px 16px;background:var(--soft);margin:1em 0}
-.panel table{margin:0;background:var(--bg)}
-.controls{display:flex;flex-wrap:wrap;gap:10px;margin:1em 0}
-.controls label{font-size:13px;color:var(--mut);display:flex;flex-direction:column;gap:3px}
-.controls select,.controls input{font:14px inherit;padding:5px 7px;border:1px solid var(--line);border-radius:4px;background:var(--bg)}
-pre{background:var(--code);border:1px solid var(--line);border-radius:5px;padding:12px;overflow:auto;font-size:13px}
-.muted{color:var(--mut)}
-.small{font-size:13px}
-footer{border-top:1px solid var(--line);color:var(--mut);font-size:13px;padding:20px 0 40px;margin-top:30px}
-button.copy{font:13px inherit;padding:5px 10px;border:1px solid var(--line);border-radius:4px;background:var(--bg);cursor:pointer}
-details>summary{cursor:pointer;font-weight:600;margin:.5em 0}
-@media (prefers-color-scheme:dark){
- :root{--ink:#e8e8e8;--bg:#141414;--mut:#9aa0a6;--line:#2c2c2c;--accent:#5aa2e6;--soft:#1c1c1c;--code:#1c1c1c}
-}
-@media print{
- .controls,footer,button.copy{display:none}
- body{color:#000;background:#fff;font-size:12pt}
- a{color:#000;text-decoration:underline}
- .badge{border-color:#000;color:#000;background:#fff}
- .panel{background:#fff}
- table,pre{page-break-inside:avoid}
+const crypto = require('crypto');
+
+// The main site's config — for the shared site name and Organization sameAs, so
+// the header brand and entity identity match evidencepress.org exactly.
+const MAIN_CONFIG = U.readJSON(path.join(ROOT, '..', 'site.config.json'));
+const SITE_NAME = MAIN_CONFIG.siteName || CONFIG.parentSite || 'Evidence Press';
+const SAME_AS = Array.isArray(MAIN_CONFIG.sameAs) ? MAIN_CONFIG.sameAs : [];
+
+// Cache-busting content hash of the LIVE stylesheet. These pages mount under the
+// same origin and link /assets/style.css directly (one stylesheet for the whole
+// site — the section cannot drift from the main branding), so we hash the very
+// same source file to keep the ?v= in step with build.js.
+const assetHash = buf => crypto.createHash('sha256').update(buf).digest('hex').slice(0, 10);
+const CSS_V = assetHash(fs.readFileSync(path.join(ROOT, '..', 'assets', 'style.css')));
+
+// The house security posture: the same strict per-page CSP the main pages emit.
+// script-src 'self' forbids inline <script>, so the registry's behaviour lives in
+// an external /protocols/assets/protocols.js; style-src allows the inline
+// supplement below; img-src allows same-origin art plus the data: favicon.
+const PAGE_CSP = [
+  "default-src 'self'", "base-uri 'none'", "object-src 'none'", "form-action 'none'",
+  "script-src 'self'", "style-src 'self' 'unsafe-inline'", "img-src 'self' data:",
+  "font-src 'self'", "media-src 'self'", "connect-src 'self'",
+  "frame-src https://www.youtube-nocookie.com", "manifest-src 'self'"
+].join('; ');
+
+// The Evidence Press favicon (teal tile, gold E-rho) — identical to the main site.
+const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23134e4a'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%23fbbf24' font-family='Georgia'%3EE%CF%81%3C/text%3E%3C/svg%3E";
+
+// The main-site navigation, reproduced so /protocols/ carries the same header.
+// KEEP IN SYNC with build.js head(). These pages live under 'Productivity'.
+const NAV = [
+  ['/', 'Releases'], ['/about/', 'About'], ['/observatory/', 'Observatory'],
+  ['/productivity/', 'Productivity'], ['/ai/', 'For AI agents'], ['/feed.xml', 'RSS']
+];
+const navHtml = () => NAV.map(([href, label]) =>
+  `<a href="${href}"${href === '/productivity/' ? ' aria-current="page"' : ''}>${esc(label)}</a>`).join('\n      ');
+
+// Registry behaviour served as an external script so the strict script-src holds
+// (no inline JS). Guards on element presence so one file serves index + detail.
+const PROTO_JS = `'use strict';
+document.querySelectorAll('button.copy[data-target]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = document.getElementById(b.dataset.target);
+    if (!t) return;
+    navigator.clipboard.writeText(t.textContent).then(function () {
+      var prev = b.textContent; b.textContent = 'Copied';
+      setTimeout(function () { b.textContent = prev; }, 1200);
+    });
+  });
+});
+var reg = document.getElementById('reg');
+if (reg) {
+  var rowsEl = [].slice.call(reg.querySelectorAll('tbody tr'));
+  var q = document.getElementById('q'), fl = document.getElementById('f-level'),
+      fr = document.getElementById('f-risk'), fa = document.getElementById('f-assurance'),
+      fe = document.getElementById('f-evidence'), cnt = document.getElementById('count');
+  var apply = function () {
+    var t = (q.value || '').toLowerCase(), n = 0;
+    rowsEl.forEach(function (r) {
+      var ok = (!t || r.dataset.text.indexOf(t) !== -1)
+        && (!fl.value || r.dataset.level === fl.value)
+        && (!fr.value || r.dataset.risk === fr.value)
+        && (!fa.value || r.dataset.assurance === fa.value)
+        && (!fe.value || r.dataset.evidence === fe.value);
+      r.style.display = ok ? '' : 'none'; if (ok) n++;
+    });
+    cnt.textContent = n + ' of ' + rowsEl.length + ' protocols';
+  };
+  [q, fl, fr, fa, fe].forEach(function (el) { el.addEventListener('input', apply); });
+  apply();
 }
 `;
+const JS_V = assetHash(Buffer.from(PROTO_JS));
 
-function page(title, body, desc) {
-  return `<!doctype html>
-<html lang="${CONFIG.language}"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(title)}</title>
-<meta name="description" content="${esc(desc || CONFIG.description)}">
-<link rel="canonical" href="${BASE}${BP}/">
-<style>${CSS}</style>
-</head><body>
-<header class="site"><div class="wrap">
-<div class="kicker"><a href="${BP}/">${esc(CONFIG.sectionName)}</a> · a section of <a href="${BASE}/">${esc(CONFIG.parentSite)}</a></div>
-<h1>${esc(title)}</h1>
-</div></header>
-<main><div class="wrap">${body}</div></main>
-<footer><div class="wrap">
-${esc(CONFIG.sectionName)} v${CONFIG.softwareVersion} · kernel v${CONFIG.kernelVersion} ·
-build ${GIT.sourceCommit || 'local'} (${GIT.sourceDate || 'uncommitted'}) ·
-content CC0-1.0, code Apache-2.0 ·
-<a href="${BP}/api/protocols.json">registry JSON</a> · <a href="${BP}/llms.txt">llms.txt</a>
-</div></footer>
-</body></html>`;
+// A small supplement to the house stylesheet: ONLY the registry-specific
+// components (status badges, the filter bar, the fact panel), all written in the
+// house design tokens. Everything else — type, header, footer, tables, links,
+// code — comes from /assets/style.css, so this section cannot drift off-brand.
+const SUPPLEMENT = `
+.protocols-page{padding:2.2rem 0 3rem}
+.protocols-page .cover{border-radius:14px;overflow:hidden;margin-bottom:1.6rem;background:var(--dark)}
+.protocols-page .cover img{width:100%;aspect-ratio:3/1;object-fit:cover}
+.protocols-page h1{font-size:2.25rem;line-height:1.18;margin:0 0 .5rem;max-width:56rem}
+.protocols-page .standfirst{font-size:1.18rem;color:var(--muted);margin:.25rem 0 1.4rem;max-width:52rem}
+.protocols-page .backlink{font-family:var(--sans);font-size:.85rem;margin:0 0 .5rem}
+.protocols-page .body>p,.protocols-page .body>ul,.protocols-page .body>ol{max-width:52rem}
+.protocols-page h2{font-size:1.42rem;margin:2.1rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.25rem}
+.protocols-page h3{font-size:1.1rem;margin:1.4rem 0 .35rem}
+.badge{display:inline-block;font-family:var(--mono);font-weight:600;font-size:.72rem;padding:.14em .5em;border:1px solid var(--line);border-radius:4px;background:#f3efe8;color:var(--muted);white-space:nowrap;letter-spacing:.01em}
+.badge.pos{border-color:var(--accent-2);color:var(--accent);background:#f0fdfa}
+.badge.neg{border-color:var(--amber);color:var(--amber);background:var(--amber-bg)}
+.badge.neu{border-color:var(--line);color:var(--muted)}
+.status-panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.3rem 1rem;margin:1.2rem 0 1.6rem}
+.status-panel table{margin:0;border:0;background:transparent;font-size:.92rem}
+.status-panel th,.status-panel td{border:0;border-bottom:1px solid var(--line);padding:.6rem .3rem;vertical-align:top}
+.status-panel tr:last-child th,.status-panel tr:last-child td{border-bottom:0}
+.status-panel th{width:12rem;background:transparent;font-family:var(--sans);color:var(--muted);font-weight:700;font-size:.78rem}
+.controls{display:flex;flex-wrap:wrap;gap:.9rem;margin:1.2rem 0;font-family:var(--sans)}
+.controls label{font-size:.72rem;color:var(--muted);display:flex;flex-direction:column;gap:.28rem;text-transform:uppercase;letter-spacing:.05em}
+.controls select,.controls input{font-family:var(--sans);font-size:.92rem;padding:.45rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);text-transform:none;letter-spacing:0}
+.controls input{min-width:15rem}
+.reg-table td .sub{font-family:var(--sans);font-size:.78rem;color:var(--muted);margin-top:.15rem}
+.count-note{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin:.7rem 0 0}
+.muted{color:var(--muted)}
+.small{font-size:.82rem}
+`;
+
+// JSON-LD graph: the main-site WebSite + Organization (shared @id + sameAs for
+// entity disambiguation) plus this page's node.
+function jsonldGraph(pageNode) {
+  const org = {
+    '@type': 'Organization', '@id': `${BASE}/#org`, name: CONFIG.publisher, url: `${BASE}/`,
+    ...(SAME_AS.length ? { sameAs: SAME_AS } : {})
+  };
+  const website = {
+    '@type': 'WebSite', '@id': `${BASE}/#website`, url: `${BASE}/`, name: SITE_NAME,
+    inLanguage: CONFIG.language, publisher: { '@id': `${BASE}/#org` }
+  };
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [website, org, pageNode].map(n => JSON.parse(JSON.stringify(n)))
+  }, null, 1);
 }
+
+// The branded page shell — the same head/header/footer chrome as the main site,
+// linking the shared /assets/style.css. opts: { canonical, og, cover, kicker,
+// standfirst, backlink:{href,label}, pageNode }.
+function page(title, body, desc, opts = {}) {
+  desc = desc || CONFIG.description;
+  const canonical = opts.canonical || `${BASE}${BP}/`;
+  const ogImg = opts.og ? `${BASE}${opts.og}` : null;
+  const social = [
+    ['og:type', 'website'], ['og:site_name', SITE_NAME],
+    ['og:title', title], ['og:description', desc], ['og:url', canonical],
+    ...(ogImg ? [['og:image', ogImg], ['og:image:width', '1200'], ['og:image:height', '630']] : []),
+    ['twitter:card', ogImg ? 'summary_large_image' : 'summary'],
+    ['twitter:title', title], ['twitter:description', desc],
+    ...(ogImg ? [['twitter:image', ogImg]] : [])
+  ].map(([k, v]) => k.startsWith('og:')
+    ? `<meta property="${k}" content="${esc(v)}">`
+    : `<meta name="${k}" content="${esc(v)}">`).join('\n');
+  const pageNode = opts.pageNode || {
+    '@type': 'WebPage', '@id': `${canonical}#page`, url: canonical, name: title, description: desc,
+    ...(ogImg ? { image: ogImg } : {}), inLanguage: CONFIG.language,
+    isPartOf: { '@id': `${BASE}/#website` },
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  };
+  const cover = opts.cover ? `<div class="cover"><img src="${opts.cover}" alt="" loading="eager"></div>` : '';
+  const kicker = opts.kicker ? `<p class="kicker">${esc(opts.kicker)}</p>` : '';
+  const backlink = opts.backlink ? `<p class="backlink"><a href="${opts.backlink.href}">${esc(opts.backlink.label)}</a></p>` : '';
+  const standfirst = opts.standfirst ? `<p class="standfirst">${esc(opts.standfirst)}</p>` : '';
+  return `<!DOCTYPE html>
+<html lang="${CONFIG.language}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta http-equiv="Content-Security-Policy" content="${PAGE_CSP}">
+<title>${esc(title)} · ${esc(SITE_NAME)}</title>
+<meta name="description" content="${esc(desc)}">
+<link rel="canonical" href="${canonical}">
+<link rel="icon" href="${FAVICON}">
+<link rel="stylesheet" href="/assets/style.css?v=${CSS_V}">
+${social}
+<script defer src="${BP}/assets/protocols.js?v=${JS_V}"></script>
+<script type="application/ld+json">
+${jsonldGraph(pageNode)}
+</script>
+<style>${SUPPLEMENT}</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark">E</span> ${esc(SITE_NAME)}</a>
+    <nav>
+      ${navHtml()}
+    </nav>
+  </div>
+</header>
+<main>
+<article class="release"><div class="wrap"><div class="protocols-page">
+${cover}${backlink}${kicker}
+<h1>${esc(title)}</h1>
+${standfirst}
+<div class="body">${body}</div>
+</div></div></article>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p>${esc(CONFIG.sectionName)} publishes methods, not papers: open, tested workflows for using AI agents, each with its assurance and its honestly-measured benefit attached. Part of <a href="${BASE}/">${esc(SITE_NAME)}</a>.</p>
+    <p>Machine-readable: <a href="${BP}/api/protocols.json">registry JSON</a> · <a href="${BP}/api/registry.schema.json">schema</a> · <a href="${BP}/feed.json">JSON Feed</a> · <a href="${BP}/llms.txt">llms.txt</a> · <a href="${BP}/sitemap.xml">sitemap</a>. Content CC0-1.0, code Apache-2.0.</p>
+    <p class="build-identity">${esc(CONFIG.sectionName)} v${esc(CONFIG.softwareVersion)} · kernel v${esc(CONFIG.kernelVersion)} · build ${esc(GIT.sourceCommit || 'local')}${GIT.sourceDate ? ' · ' + esc(GIT.sourceDate.slice(0, 10)) : ''}</p>
+  </div>
+</footer>
+</body>
+</html>`;
+}
+
+// Resolve a main-site asset path (art/OG live in the parent site's assets/, which
+// is served at /assets/ once /protocols/ is mounted). Returns null if absent, so
+// a build never references a missing image.
+const ASSET = rel => fs.existsSync(path.join(ROOT, '..', 'assets', rel)) ? `/assets/${rel}` : null;
 
 function assuranceBadge(state) {
   const s = ASSURANCE.states.find(x => x.id === state) || {};
@@ -178,9 +314,8 @@ function protocolPage(pack, dl) {
     return fs.existsSync(fp) ? fs.readFileSync(fp, 'utf8') : null;
   })();
 
-  const statusPanel = `<div class="panel"><table>
+  const statusPanel = `<div class="status-panel"><table>
 ${row('Protocol', `<code>${esc(p.id)}</code> v${esc(p.version)}`)}
-${row('Purpose', esc(p.purpose))}
 ${row('Assurance level', esc(p.assurance_level))}
 ${row('Risk class', esc(p.risk_class))}
 ${row('Privacy class', esc(p.privacy_class))}
@@ -199,7 +334,6 @@ ${row('Machine record', `<a href="${BP}/api/${esc(p.id)}.json">${esc(p.id)}.json
     `<tr><td>${s.step}</td><td>${s.kernel_step}</td><td>${esc(s.action)}</td><td>${esc(s.check)}</td></tr>`).join('');
 
   const body = `
-<p class="muted"><a href="${BP}/">← all protocols</a></p>
 ${statusPanel}
 
 <h2>When to use it</h2>
@@ -228,19 +362,20 @@ ${genericPrompt ? `<details><summary>Copy-and-run edition (no install)</summary>
 </ul>
 
 <h2>Evidence status</h2>
-<p>Productivity evidence: ${evidenceBadge(p.productivity_evidence)}. This page states how the protocol works; it does not claim it improves your work unless the evidence status says so. See <a href="${BP}/status/">the two status ladders</a>.</p>
-
-<script>
-document.querySelectorAll('button.copy').forEach(b=>b.addEventListener('click',()=>{
-  const t=document.getElementById(b.dataset.target);navigator.clipboard.writeText(t.textContent).then(()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1200)});
-}));
-</script>`;
-  return page(p.title, body, p.purpose);
+<p>Productivity evidence: ${evidenceBadge(p.productivity_evidence)}. This page states how the protocol works; it does not claim it improves your work unless the evidence status says so. See <a href="${BP}/status/">the two status ladders</a>.</p>`;
+  const og = ASSET(`og/protocol-${p.id}.png`) || ASSET('og/protocols.png');
+  return page(p.title, body, p.purpose, {
+    canonical: `${BASE}${BP}/p/${p.id}/`,
+    og,
+    kicker: 'PRODUCTIVITY PROTOCOL',
+    standfirst: p.purpose,
+    backlink: { href: `${BP}/`, label: '← All protocols' }
+  });
 }
 
 function indexPage(entries) {
   const rows = entries.map(e => `<tr data-level="${e.assurance_level}" data-risk="${e.risk_class}" data-assurance="${e.assurance_status}" data-evidence="${e.productivity_evidence}" data-text="${esc((e.id + ' ' + e.title + ' ' + e.purpose).toLowerCase())}">
-<td><a href="${e.url}"><code>${esc(e.id)}</code></a><div class="small muted">${esc(e.title)}</div></td>
+<td><a href="${e.url}"><code>${esc(e.id)}</code></a><div class="sub">${esc(e.title)}</div></td>
 <td class="small">${esc(e.purpose)}</td>
 <td>${esc(e.assurance_level)}</td>
 <td>${esc(e.risk_class)}</td>
@@ -251,8 +386,7 @@ function indexPage(entries) {
 
   const opts = (arr) => arr.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join('');
   const body = `
-<p>${esc(CONFIG.description)}</p>
-<p class="small muted">Every protocol carries two independent status values: <b>protocol assurance</b> (is it well built and safe?) and <b>productivity evidence</b> (does it help, and how do we know?). They are never merged. <a href="${BP}/status/">Read the ladders.</a></p>
+<p>Every protocol carries two independent status values: <b>protocol assurance</b> (is it well built and safe?) and <b>productivity evidence</b> (does it help, and how do we know?). They are never merged, and a claim never exceeds the evidence. <a href="${BP}/status/">Read the two ladders.</a></p>
 
 <div class="controls">
 <label>Search<input id="q" placeholder="filter…"></label>
@@ -262,24 +396,29 @@ function indexPage(entries) {
 <label>Evidence<select id="f-evidence"><option value="">any</option>${opts(EVIDENCE.states.map(s => s.id))}</select></label>
 </div>
 
-<table id="reg"><thead><tr><th>Protocol</th><th>Purpose</th><th>Level</th><th>Risk</th><th>Assurance</th><th>Evidence</th><th>Get</th></tr></thead>
-<tbody>${rows}</tbody></table>
-<p class="small muted"><span id="count"></span> · machine-readable: <a href="${BP}/api/protocols.json">protocols.json</a> · <a href="${BP}/api/registry.schema.json">schema</a> · <a href="${BP}/feed.json">feed</a></p>
+<div class="table-wrap"><table id="reg" class="reg-table"><thead><tr><th>Protocol</th><th>Purpose</th><th>Level</th><th>Risk</th><th>Assurance</th><th>Evidence</th><th>Get</th></tr></thead>
+<tbody>${rows}</tbody></table></div>
+<p class="count-note"><span id="count"></span> · machine-readable: <a href="${BP}/api/protocols.json">protocols.json</a> · <a href="${BP}/api/registry.schema.json">schema</a> · <a href="${BP}/feed.json">feed</a></p>
 
 <h2>How the library works</h2>
 <ul>
 <li><a href="${BP}/kernel/">The Verified Agent Work kernel</a> — the eight-step method every protocol instantiates.</li>
 <li><a href="${BP}/status/">Two status ladders</a> — assurance and productivity evidence, kept separate.</li>
 <li>Each pack ships a machine-readable contract, a skill, worked examples, tests, an evaluation design, adapters, a manifest of file hashes, and a receipt.</li>
-</ul>
-
-<script>
-const rowsEl=[...document.querySelectorAll('#reg tbody tr')];
-const q=document.getElementById('q'),fl=document.getElementById('f-level'),fr=document.getElementById('f-risk'),fa=document.getElementById('f-assurance'),fe=document.getElementById('f-evidence'),cnt=document.getElementById('count');
-function apply(){const t=q.value.toLowerCase();let n=0;rowsEl.forEach(r=>{const ok=(!t||r.dataset.text.includes(t))&&(!fl.value||r.dataset.level===fl.value)&&(!fr.value||r.dataset.risk===fr.value)&&(!fa.value||r.dataset.assurance===fa.value)&&(!fe.value||r.dataset.evidence===fe.value);r.style.display=ok?'':'none';if(ok)n++});cnt.textContent=n+' of '+rowsEl.length+' protocols';}
-[q,fl,fr,fa,fe].forEach(el=>el.addEventListener('input',apply));apply();
-</script>`;
-  return page(CONFIG.sectionName, body, CONFIG.description);
+</ul>`;
+  const og = ASSET('og/protocols.png');
+  const cover = ASSET('art/productivity.svg');
+  const pageNode = {
+    '@type': 'CollectionPage', '@id': `${BASE}${BP}/#page`, url: `${BASE}${BP}/`,
+    name: CONFIG.sectionName, description: CONFIG.description, inLanguage: CONFIG.language,
+    ...(og ? { image: `${BASE}${og}` } : {}),
+    isPartOf: { '@id': `${BASE}/#website` },
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  };
+  return page(CONFIG.sectionName, body, CONFIG.description, {
+    canonical: `${BASE}${BP}/`, og, cover,
+    kicker: 'EVIDENCE PRESS', standfirst: CONFIG.tagline, pageNode
+  });
 }
 
 function feeds(entries) {
@@ -327,14 +466,21 @@ function copyReference() {
   for (const f of fs.readdirSync(path.join(ROOT, 'schema'))) write(`api/${f}`, fs.readFileSync(path.join(ROOT, 'schema', f)));
   const statusIndex = ['# Two status ladders', '', 'See ladders.md, protocol-assurance.json, productivity-evidence.json.'].join('\n');
   for (const f of fs.readdirSync(path.join(ROOT, 'status'))) write(`status/${f}`, fs.readFileSync(path.join(ROOT, 'status', f)));
-  write('status/index.html', page('Two status ladders', `<pre>${esc(fs.readFileSync(path.join(ROOT, 'status', 'ladders.md'), 'utf8'))}</pre>`, 'Protocol assurance and productivity evidence, kept separate.'));
+  write('status/index.html', page('Two status ladders', `<pre>${esc(fs.readFileSync(path.join(ROOT, 'status', 'ladders.md'), 'utf8'))}</pre>`, 'Protocol assurance and productivity evidence, kept separate.', {
+    canonical: `${BASE}${BP}/status/`, kicker: 'PRODUCTIVITY PROTOCOLS', og: ASSET('og/protocols.png'),
+    backlink: { href: `${BP}/`, label: '← All protocols' }
+  }));
   for (const f of fs.readdirSync(path.join(ROOT, 'kernel'))) write(`kernel/${f}`, fs.readFileSync(path.join(ROOT, 'kernel', f)));
-  write('kernel/index.html', page('The Verified Agent Work kernel', `<pre>${esc(fs.readFileSync(path.join(ROOT, 'kernel', 'verified-agent-work.md'), 'utf8'))}</pre>`, 'The eight-step method every protocol instantiates.'));
+  write('kernel/index.html', page('The Verified Agent Work kernel', `<pre>${esc(fs.readFileSync(path.join(ROOT, 'kernel', 'verified-agent-work.md'), 'utf8'))}</pre>`, 'The eight-step method every protocol instantiates.', {
+    canonical: `${BASE}${BP}/kernel/`, kicker: 'PRODUCTIVITY PROTOCOLS', og: ASSET('og/protocols.png'),
+    backlink: { href: `${BP}/`, label: '← All protocols' }
+  }));
 }
 
 function main() {
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
+  write('assets/protocols.js', PROTO_JS);  // external registry behaviour (strict CSP)
   const packs = loadPacks();
   const entries = [];
   for (const pack of packs) {
