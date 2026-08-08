@@ -63,6 +63,8 @@ function testGitIdentity() {
   assert.match(git.sourceCommitFull, /^[0-9a-f]{40}$/);
   assert.match(git.sourceTree, /^[0-9a-f]{40}$/);
   assert.strictEqual(typeof git.dirty, 'boolean');
+  assert.strictEqual(U.NODE_COMPATIBILITY, U.readJSON(path.join(U.ROOT, 'package.json')).engines.node,
+    'receipt Node compatibility must match package.engines.node');
 }
 
 function testWalkerRejectsSymlinks() {

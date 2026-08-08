@@ -49,7 +49,7 @@ function readJSON(file) { return JSON.parse(fs.readFileSync(file, 'utf8')); }
 // would make otherwise identical builds differ across every supported Node
 // runtime, so bind the artifact to the reviewed compatibility boundary instead;
 // CI logs retain the exact runner version for each replay.
-const NODE_COMPATIBILITY = readJSON(path.join(ROOT, 'package.json')).engines.node;
+const NODE_COMPATIBILITY = '>=18';
 
 const RELEASE_CONTROL_PATHS = new Set([
   // Commit B is deliberately ledger-only. Schemas, checkers, documentation and
