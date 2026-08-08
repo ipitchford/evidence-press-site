@@ -555,6 +555,7 @@ ${JSON.stringify(jsonld, null, 1)}
       <a href="/">Releases</a>
       <a href="/about/">About</a>
       <a href="/observatory/">Observatory</a>
+      <a href="/productivity/">Productivity</a>
       <a href="/ai/">For AI agents</a>
       <a href="/feed.xml">RSS</a>
     </nav>
@@ -1010,6 +1011,11 @@ ${Array.from({ length: 9 }, (_, k) => {
       <p>Why checking AI-generated evidence, not producing it, binds government use of AI agents — four quantitative bounds, the research avenues that would relax the constraint, and sixteen ranked projects. Includes a plain-English companion essay.</p>
       <p class="card-links"><span class="has-audio" title="Audio briefing available">♪ audio</span><span class="has-audio" title="Video briefing available">▸ video</span></p>
     </a>
+    <a class="programme-card" href="/productivity/">
+      <p class="card-date">Practice programme · 8 August 2026</p>
+      <h3>Productivity Protocols</h3>
+      <p>Open, tested, downloadable workflows for getting useful work done with AI agents — each with its assurance and its honestly-measured benefit attached.</p>
+    </a>
   </div>
 </section>
 <section class="wrap" aria-label="Releases">
@@ -1224,7 +1230,7 @@ ${items}
 function sitemap() {
   const urls = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-08' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished }))
   ];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
@@ -1267,6 +1273,7 @@ function llms() {
     `- [About](${BASE}/about/): what these releases are, the verification ladder, and how to independently verify or refute one`,
     `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; video: ${OBSERVATORY.video.url}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
     `- [The Case for Assurance Infrastructure](${BASE}/observatory/assurance/): why verification, not generation, binds government use of AI agents — four quantitative bounds, verification economics, research avenues, and sixteen ranked projects (Markdown: ${BASE}/observatory/assurance/index.md)`,
+    `- [Productivity Protocols](${BASE}/productivity/): open, tested, downloadable workflows for using AI agents to do useful work — each with two independent statuses (protocol assurance and honestly-measured productivity evidence). Registry: ${BASE}/protocols/ (machine-readable index: ${BASE}/protocols/api/protocols.json)`,
     `- [For AI agents](${BASE}/ai/): metadata conventions and suggested uses (verification, formalisation, follow-up research)`
   ];
   write('llms.txt', lines.join('\n') + '\n');
@@ -1349,6 +1356,7 @@ function notFoundPage() {
     <li><a href="/">All releases</a> — the full catalogue, filterable by topic</li>
     <li><a href="/api/papers.json">papers.json</a> — every release as structured data</li>
     <li><a href="/about/">About</a> — what this site publishes, and what its assurance states mean</li>
+    <li><a href="/productivity/">Productivity</a> — open, tested workflows for using AI agents</li>
     <li><a href="/ai/">For AI agents</a> — machine-readable endpoints and conventions</li>
   </ul>
   <p>Automated clients: this response carries HTTP status 404. A release that exists always serves <code>paper.json</code> at <code>/releases/&lt;slug&gt;/paper.json</code> with a matching <code>slug</code> field.</p>
@@ -1658,6 +1666,7 @@ write('_headers', `/*
 papers.forEach(paperPage);
 indexPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
+simplePage('productivity/', 'Productivity Protocols', 'Open, tested, downloadable workflows for getting useful work done with AI agents — each published with its assurance and its honestly-measured benefit attached.', 'productivity.md', 'WebPage', { standfirst: 'Methods, not papers: open, tested workflows for using AI agents — published, like everything here, with the evidence attached.' });
 simplePage('observatory/', 'Policy Identification Observatory', 'A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.', 'observatory.md', 'WebPage', {
   releaseLayout: true,
   art: '/assets/art/observatory.svg',
