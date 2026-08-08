@@ -1690,7 +1690,6 @@ papers.forEach(paperPage);
 indexPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
 simplePage('productivity/', 'Productivity Protocols', 'Bounded, downloadable AI-agent workflows with staged evaluation for companies that are new to agents; current human and company productivity impact is unmeasured.', 'productivity.md', 'WebPage', {
-  art: '/assets/art/productivity.svg',
   og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'productivity.png')) ? '/assets/og/productivity.png' : null,
   kicker: 'A programme of Evidence Press',
   standfirst: 'Methods, not papers: bounded workflows and staged evidence for companies beginning to use AI agents.',
