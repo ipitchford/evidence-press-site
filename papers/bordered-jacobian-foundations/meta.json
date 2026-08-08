@@ -1,0 +1,129 @@
+{
+  "slug": "bordered-jacobian-foundations",
+  "title": "The Bordered Jacobian of Binary-Form Multiplication",
+  "shortTitle": "The bordered Jacobian of binary-form multiplication",
+  "oneLine": "A candidate integral identity expresses every bordered Jacobian of binary-form multiplication as one resultant times one pairing with the lost scaling direction.",
+  "abstract": "This anonymous, unrefereed candidate proves an explicit integral formula for the bordered Jacobian of multiplication of two binary forms. If M is the coefficient Jacobian of multiplication and kappa is the relative-scaling kernel vector, the proposed identity writes det([M;v]) as a signed resultant times the pairing of v with kappa, uniformly for all positive bidegrees including equal degrees. Euler contraction recovers the earlier degree-difference determinant, yields a characteristic-p etaleness criterion, identifies a pullback obstruction and localises the equal-degree collapse. The package includes a 12-page proof, two separately written exact computational backends, 93 deep-tier checks and five negative controls. Producer-side replay passes; the all-degree theorem still rests on the manuscript proof, and independent reproduction, complete formal verification and editorial peer review have not occurred.",
+  "narration": "This research release proposes a compact identity behind multiplication of two binary forms. Multiplication loses one direction: scaling the first factor up while scaling the second down leaves their product unchanged. The paper identifies that lost direction explicitly. It claims that if one adds any final row to the rectangular multiplication Jacobian, the resulting determinant is exactly one signed resultant multiplied by the pairing of that row with the scaling direction. The formula is stated over the integers for every pair of positive degrees, including equal degrees. Choosing the derivative of the resultant as the final row recovers the earlier degree-difference formula. The same argument explains why equal degrees collapse, when the map is etale in positive characteristic, and why no function of the product alone can repair the missing direction. The evidence package contains a twelve-page proof, exact SymPy and FLINT computations, ninety-three deep checks, five deliberate failure controls, source hashes, citation and novelty audits, reviews, and machine-readable claim records. Those computations test finite bidegrees and implementation behaviour. The all-degree statement rests on the written proof. Mathlib contains related resultant and monic-factorisation ingredients, but the complete bordered identity has not been formalised. This remains an anonymous, unrefereed candidate. It has not been independently reproduced or editorially peer reviewed, and the recorded novelty search is bounded. This is an Evidence Press audio briefing, released 8 August 2026. The full manuscript and exact archive are linked on this page. The audio uses an AI-generated voice and is not additional mathematical evidence.",
+  "datePublished": "2026-08-08",
+  "version": "0.3-candidate",
+  "doi": "10.5281/zenodo.21855302",
+  "conceptDoi": "10.5281/zenodo.21855301",
+  "zenodoUrl": "https://zenodo.org/records/21855302",
+  "pdfUrl": "https://github.com/ipitchford/bordered-jacobian-foundations/releases/download/v0.3-candidate/bordered_jacobian_foundations.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/bordered-jacobian-foundations/v0.3-candidate/bordered_jacobian_foundations.pdf",
+  "repoUrl": "https://github.com/ipitchford/bordered-jacobian-foundations",
+  "releaseUrl": "https://github.com/ipitchford/bordered-jacobian-foundations/releases/tag/v0.3-candidate",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/bordered-jacobian-foundations.mp3",
+      "name": "Audio briefing — bordered Jacobian foundations",
+      "description": "AI-generated voice summary of the candidate identity, evidence and assurance boundary.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/bordered-jacobian-foundations.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": ["AI systems under human direction", "GPT-5.6 Sol adversarial review", "SymPy 1.14.0", "python-flint 0.9.0"],
+    "humanRole": "Research direction, mediation and publication authorization; Ian Pitchford is repository maintainer and publisher, while scholarly attribution remains Anonymous.",
+    "disclosure": "The supplied archive does not contain a complete immutable prompt transcript or model/version ledger for the main derivation. GPT-5.6 Sol is identified for a producer-workflow adversarial review. The developmental reviewer's identity and model provenance are not established. Model agreement and producer replay are not independent verification."
+  },
+  "problem": {
+    "name": "Degree-difference principle for binary-form factorisation spaces",
+    "url": "https://doi.org/10.5281/zenodo.21647593"
+  },
+  "keywords": [
+    "algebraic geometry",
+    "binary forms",
+    "resultant",
+    "Sylvester matrix",
+    "Koszul complex",
+    "Jacobian conjecture",
+    "computer-assisted mathematics",
+    "formalization blueprint",
+    "reproducible research",
+    "AI-generated mathematics",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "For all positive r and s, including r=s, the candidate gives an exact signed formula for every bordered determinant and every maximal minor of the multiplication Jacobian over the integers.",
+    "Euler contraction derives det D(Phi_{r,s})=(-1)^{s(r+1)}(r-s)Res(A,B)^2 and isolates the degree difference as the scaling eigenvalue.",
+    "The candidate derives a characteristic-p etaleness criterion, a pullback obstruction and an explanation of why only the Euler contraction degenerates at equal degrees.",
+    "A normaliser classification is stated in characteristic zero, with the recorded qualification in positive characteristic.",
+    "A formalization blueprint maps the argument to existing Mathlib resultant and universal-factorisation ingredients while identifying the missing bridge lemmas."
+  ],
+  "evidence": "A 12-page TeX/PDF manuscript; an exact one-file verification suite with separately written SymPy and FLINT backends; 93 deep-tier and 58 default checks; normal and optimized-Python replay; five detected mathematical negative controls; pinned dependency versions; supplied and fresh replay receipts; a 35-file SHA-256 manifest; claim, assurance, provenance and licence records; a 19-reference citation audit; a bounded full-text novelty report for four principal classical sources; a producer-workflow adversarial review; and an external developmental review of the earlier v0.2 text. The tagged ZIP, PDF and checksum sidecar were downloaded from Zenodo and matched the GitHub release assets byte for byte. These establish availability, package integrity and finite producer-side replay, not the all-degree theorem or independent verification.",
+  "statusDetail": "Anonymous, unrefereed candidate mathematical release. Availability and producer-side exact replay pass: 93 deep checks, 58 normal checks, 58 optimized checks and five failure controls. The all-degree theorem rests on the manuscript proof rather than finite computation. The SymPy and FLINT backends are separately written within one producer workflow and share the specification. A developmental review covered v0.2 text without the complete v0.3 package; the cross-model adversarial review is also producer-workflow evidence. No unaffiliated rerun, independent reimplementation, complete proof-assistant formalization, editorial peer review, or absolute novelty or priority determination is claimed.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/21855302",
+      "note": "The tagged ZIP, PDF and SHA256SUMS sidecar are public under a version DOI and match the GitHub release assets byte for byte."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://raw.githubusercontent.com/ipitchford/bordered-jacobian-foundations/main/REPLAY_RECEIPT.md",
+      "note": "Producer-side deep, default and optimized replays pass with exact arithmetic and five detected negative controls."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated party has reported replaying the immutable public archive."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "SymPy and FLINT provide implementation diversity inside one workflow, not independent reproduction."
+    },
+    "formalVerification": {
+      "state": "partial",
+      "evidenceUrl": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/Polynomial/UniversalFactorizationRing.html",
+      "note": "Mathlib checks related monic resultant and etaleness ingredients; the bordered identity and its bridge lemmas are not formalised."
+    },
+    "specialistReview": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/bordered-jacobian-foundations/blob/v0.3-candidate/reviews/external_review_2026-08-06.md",
+      "note": "A developmental review assessed v0.2 text without the complete evidence package; reviewer identity and model provenance are not established."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or venue peer-review decision has occurred."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/bordered-jacobian-foundations/blob/v0.3-candidate/ENVIRONMENT.txt",
+      "note": "Python packages and external commits are pinned and multiple interpreter modes replay, but no complete container, Nix or Guix environment is supplied."
+    }
+  },
+  "openProblems": [
+    "Reconstruct the interpolation, gap-Vandermonde, product-formula and density proof independently, checking both sign laws at boundary columns.",
+    "Reimplement the finite identities outside the producer workflow in SageMath, Singular, Maple, Mathematica or another exact system.",
+    "Formalize the bordered/minor identity, contraction principle and characteristic-p corollaries in Lean with a stated axiom footprint.",
+    "Extend the bounded prior-art audit across subresultants, determinantal complexes, non-English literature, theses and alternative coefficient conventions.",
+    "Use the foundations identity to re-audit the downstream torsor, divisor-class and affine-slice claims in the July degree-difference release.",
+    "Obtain a specialist review of the complete immutable v0.3 package and publish objections or corrections as separately versioned follow-ups."
+  ],
+  "relatedWorks": [
+    {"citation": "Anonymous. (2026). The degree-difference principle and affine slices of binary-form factorisation spaces, 0.1-candidate.", "url": "https://doi.org/10.5281/zenodo.21647593"},
+    {"citation": "Anonymous. (2026). A counterexample to the Jacobian conjecture.", "url": "https://www.ulam.ai/research/jacobian.pdf"},
+    {"citation": "Cayley, A. (1848). On the theory of elimination. Cambridge and Dublin Mathematical Journal, 3, 116-120.", "url": "https://archive.org/details/cambridgedublin03unkngoog"},
+    {"citation": "Chardin, M. (1993). The resultant via a Koszul complex. In Computational Algebraic Geometry, 29-39.", "url": "https://doi.org/10.1007/978-1-4612-2752-6_3"},
+    {"citation": "D'Andrea, C., & Chipalkatti, J. (2007). On the Jacobian ideal of the binary discriminant. Collectanea Mathematica, 58, 155-180.", "url": "https://arxiv.org/abs/math/0601705"},
+    {"citation": "Demazure, M. (2012). Resultant, discriminant. L'Enseignement Mathematique, 58, 333-373.", "url": "https://doi.org/10.4171/LEM/58-3-5"},
+    {"citation": "Gao, S. (2026). Counterexamples to the Jacobian conjecture in dimensions greater than two.", "url": "https://arxiv.org/abs/2608.00222"},
+    {"citation": "Gelfand, I. M., Kapranov, M. M., & Zelevinsky, A. V. (1994). Discriminants, Resultants, and Multidimensional Determinants.", "url": "https://doi.org/10.1007/978-0-8176-4771-1"},
+    {"citation": "Jouanolou, J.-P. (1991). Le formalisme du resultant. Advances in Mathematics, 90, 117-263.", "url": "https://doi.org/10.1016/0001-8708(91)90031-2"},
+    {"citation": "Jouanolou, J.-P. (1995). Aspects invariants de l'elimination. Advances in Mathematics, 114, 1-174.", "url": "https://doi.org/10.1006/aima.1995.1042"},
+    {"citation": "Jouanolou, J.-P. (1997). Formes d'inertie et resultant: un formulaire. Advances in Mathematics, 126, 119-250.", "url": "https://doi.org/10.1006/aima.1996.1609"},
+    {"citation": "Levinson, J. (2026). The Jacobian conjecture counterexample, via classical projective geometry.", "url": "https://levjake.wordpress.com/2026/07/22/the-jacobian-conjecture-counterexample/"},
+    {"citation": "Lezeau, P. (2026). feat: add Jacobian disproof, formal-conjectures PR #4474.", "url": "https://github.com/google-deepmind/formal-conjectures/pull/4474"},
+    {"citation": "Lou, A. (2026). Deriving an explicit polynomial counterexample to the Jacobian conjecture.", "url": "https://aaronlou.com/jacobian_counterexample_derivation.pdf"},
+    {"citation": "Mathlib contributors. Polynomial resultants and universal factorisation rings.", "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/Polynomial/UniversalFactorizationRing.html"},
+    {"citation": "Speyer, D., & contributors. (2026). The new counterexample to the Jacobian conjecture.", "url": "https://sbseminar.wordpress.com/2026/07/20/the-new-counterexample-to-the-jacobian-conjecture/"},
+    {"citation": "Tao, T. (2026). A digestion of the Jacobian conjecture counterexample.", "url": "https://terrytao.wordpress.com/2026/07/21/a-digestion-of-the-jacobian-conjecture-counterexample/"}
+  ],
+  "citeText": "Anonymous. (2026). The Bordered Jacobian of Binary-Form Multiplication (Version 0.3-candidate) [Unrefereed candidate preprint and reproducibility package]. Zenodo. https://doi.org/10.5281/zenodo.21855302"
+}
