@@ -33,8 +33,8 @@ jobs:
       - name: Renderer regression tests
         run: node tools/test-render.js
 
-      - name: Build the site from a clean checkout
-        run: node build.js
+      - name: Build the complete site from a clean checkout
+        run: ./protocols/deploy/integrate.sh
 
       - name: Metadata conformance and cross-surface consistency
         run: node tools/test-metadata.js
@@ -52,7 +52,7 @@ jobs:
         run: |
           find dist -type f -exec sha256sum {} \; | sort -k2 > /tmp/first.sha
           rm -rf dist
-          node build.js
+          ./protocols/deploy/integrate.sh
           find dist -type f -exec sha256sum {} \; | sort -k2 > /tmp/second.sha
           diff /tmp/first.sha /tmp/second.sha && echo "Byte-identical rebuild."
 
@@ -78,7 +78,7 @@ jobs:
           node-version: '22'
 
       - name: Build the site
-        run: node build.js
+        run: ./protocols/deploy/integrate.sh
 
       - name: Serve dist/
         run: npx --yes http-server dist -p 8080 --silent &
