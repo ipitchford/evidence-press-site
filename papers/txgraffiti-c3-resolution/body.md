@@ -74,6 +74,6 @@ The [GitHub Actions replay](https://github.com/ipitchford/txgraffiti-conjecture3
 - `ids_le15.tree.gz` and the deterministic proof-tree checker;
 - `CLAIMS.json`, `ASSURANCE.json`, `AI_INDEX.md`, `STATUS.md` and `PROVENANCE.md`;
 - `MANIFEST.sha256`, the pinned `environment/Containerfile` and replay scripts;
-- the supplied review, review response, sources and dependency records.
+- the supplied review, review response, provenance and dependency records.
 
 The package's licence terms are retained: original prose, data and illustrations are CC BY 4.0; original source code is MIT; third-party and source-derived material is excluded as described in `LICENSE.md`. Evidence Press page content and machine-readable records are public-domain site material; that site licence does not override the downloadable package's split terms.
