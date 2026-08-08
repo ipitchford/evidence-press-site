@@ -215,6 +215,27 @@ art['affine-diversification-fibres'] = (a, b) => {
   return s;
 };
 
+/* TxGraffiti candidate: cubic graph, explicit witnesses, and certificate tree. */
+art['txgraffiti-c3-resolution'] = (a, b) => {
+  const N = 50, cx = 390, cy = 200, R = 145;
+  const pt = k => [cx + R * Math.cos(2 * Math.PI * k / N - Math.PI / 2), cy + R * Math.sin(2 * Math.PI * k / N - Math.PI / 2)];
+  const r = rng(hash('txgraffiti-c3-resolution'));
+  let s = '';
+  for (let i = 0; i < N; i++) for (const d of [1, 7, 19]) {
+    const j = (i + d) % N;
+    if (i < j) {
+      const [x1, y1] = pt(i), [x2, y2] = pt(j);
+      s += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#8a938f" stroke-width="0.9" opacity="${(0.16 + r() * 0.16).toFixed(2)}"/>`;
+    }
+  }
+  const witness = [0, 7, 19, 26, 38, 45];
+  for (const k of witness) { const [x, y] = pt(k); s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="6" fill="${k % 2 ? b : a}"/>`; }
+  s += `<path d="M 710 92 H 1080 M 710 200 H 1080 M 710 308 H 1080 M 710 92 L 760 200 L 710 308 M 760 200 H 840" fill="none" stroke="${a}" stroke-width="2" opacity="0.72"/>`;
+  for (const [x, y, rr, col] of [[710, 92, 14, a], [710, 200, 14, b], [710, 308, 14, a], [840, 200, 14, b], [1080, 92, 10, '#e7e5e4'], [1080, 200, 10, '#e7e5e4'], [1080, 308, 10, '#e7e5e4']]) s += `<circle cx="${x}" cy="${y}" r="${rr}" fill="${col}" opacity="0.92"/>`;
+  s += `<text x="875" y="208" font-family="Georgia" font-size="44" fill="#e7e5e4" opacity="0.9">μ⋆ = 15 &lt; 16 = i</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -225,6 +246,7 @@ const palette = {
   'reducible-incidence-divisors': ['#4ade80', '#c084fc'],
   'stocks-are-not-flows': ['#38bdf8', '#f59e0b'],
   'affine-diversification-fibres': ['#2dd4bf', '#fbbf24']
+  , 'txgraffiti-c3-resolution': ['#2dd4bf', '#f472b6']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
