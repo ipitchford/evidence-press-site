@@ -6,13 +6,13 @@ and its uncertainty.**
 | | |
 |---|---|
 | Protocol id | `evidence-backed-brief` |
-| Version | `0.1.0` |
+| Version | `0.1.1` |
 | Kernel | Verified Agent Work `0.1.0` |
 | Assurance level | Verified |
 | Risk class | Moderate |
 | Privacy class | Internal |
 | Protocol assurance | see the pack's `RECEIPT.json` |
-| Productivity evidence | `NO_IMPACT_EVIDENCE` (benefit not yet measured) |
+| Productivity evidence | `NO_IMPACT_EVIDENCE` for 0.1.1; predecessor 0.1.0 benchmark retained below |
 | Licence | CC0-1.0 (prose) · Apache-2.0 (code) |
 
 ## 1. What problem does this solve?
@@ -67,13 +67,18 @@ honesty note below.
 
 ## 8. What has actually been tested?
 
-The pack ships positive, failure, and prompt-injection **structural tests** whose
-graders run against the worked example, checked mechanically and reproducibly. The
-graders confirm that every claim in the example is typed and sourced, that contrary
-evidence and uncertainties appear, that no external action is taken, and that an
-instruction embedded in a source is flagged rather than followed. What has **not**
-been done: a live comparison establishing that the protocol improves real work. That
-is why `productivity_evidence` is `NO_IMPACT_EVIDENCE`.
+The 0.1.1 pack ships positive, failure, and prompt-injection **structural tests**
+whose graders run against the worked example. A historical 0.1.0 four-task model
+benchmark compared o4-mini with and without the protocol, using gpt-5.2 as the model judge.
+Both arms met the deterministic acceptance bar, but the protocol arm had lower
+judged quality and grounding and had a combined runner-plus-judge estimate about
+3.4 times as high. That is evaluation cost, not company operating cost. The registered
+finding for those predecessor bytes is `NO_CLEAR_GAIN`; see [`evals/`](evals/).
+It does not certify 0.1.1, which remains `NO_IMPACT_EVIDENCE` until retested.
+
+The run had no human/manual arm, no repeated generations, one judge, and no human
+effort, rework, accessibility, or company-use measures. It is not evidence of a
+general negative effect and provides no field-impact claim.
 
 ## 9. What can go wrong?
 
@@ -99,6 +104,6 @@ Three editions:
 
 ## Honesty note
 
-This README states how the protocol *works*, not that it *helps*. Any claim that it
-improves your work would require an evaluation this pack has not yet run. Until then,
-the honest statement is: benefit not measured.
+This README states how the protocol *works*, not that it *helps*. The predecessor
+benchmark found no clear net gain on four tasks; no human or company benefit has
+been established.

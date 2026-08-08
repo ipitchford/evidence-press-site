@@ -5,8 +5,8 @@
  * supplied mtime, sorted entries), so a downloadable pack has a stable SHA-256 a
  * third party can verify. Apache-2.0.
  *
- * build(entries, mtime) where entries = [{ name, data: Buffer }] (name < 100
- * bytes). Returns a Buffer.
+ * build(entries, mtime) where entries = [{ name, data: Buffer }]. POSIX ustar
+ * paths use the 100-byte name plus 155-byte prefix fields. Returns a Buffer.
  */
 
 function octal(n, len) {
@@ -14,9 +14,23 @@ function octal(n, len) {
   return n.toString(8).padStart(len - 1, '0') + '\0';
 }
 
-function header(name, size, mtime) {
+function splitName(name) {
+  if (typeof name !== 'string' || !name || name.includes('\\') || name.startsWith('/') ||
+      name.split('/').some(part => !part || part === '.' || part === '..')) {
+    throw new Error(`unsafe tar entry name: ${name}`);
+  }
+  if (Buffer.byteLength(name) <= 100) return { name, prefix: '' };
+  for (let slash = name.lastIndexOf('/'); slash > 0; slash = name.lastIndexOf('/', slash - 1)) {
+    const prefix = name.slice(0, slash), base = name.slice(slash + 1);
+    if (Buffer.byteLength(prefix) <= 155 && Buffer.byteLength(base) <= 100) return { name: base, prefix };
+  }
+  throw new Error(`tar entry name cannot be represented by POSIX ustar: ${name}`);
+}
+
+function header(pathname, size, mtime) {
+  const parts = splitName(pathname);
   const h = Buffer.alloc(512, 0);
-  h.write(name, 0, 100, 'utf8');
+  h.write(parts.name, 0, 100, 'utf8');
   h.write(octal(0o644, 8), 100, 8, 'ascii');   // mode
   h.write(octal(0, 8), 108, 8, 'ascii');        // uid
   h.write(octal(0, 8), 116, 8, 'ascii');        // gid
@@ -26,6 +40,7 @@ function header(name, size, mtime) {
   h.write('0', 156, 1, 'ascii');                // typeflag: normal file
   h.write('ustar\0', 257, 6, 'ascii');          // magic
   h.write('00', 263, 2, 'ascii');               // version
+  if (parts.prefix) h.write(parts.prefix, 345, 155, 'utf8');
   // checksum: sum of all header bytes with the checksum field as spaces
   let sum = 0;
   for (let i = 0; i < 512; i++) sum += h[i];
@@ -47,4 +62,4 @@ function build(entries, mtime) {
   return Buffer.concat(parts);
 }
 
-module.exports = { build };
+module.exports = { build, splitName };

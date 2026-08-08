@@ -5,13 +5,13 @@
 | | |
 |---|---|
 | Protocol id | `goal-to-verified-deliverable` |
-| Version | `0.1.0` |
+| Version | `0.1.1` |
 | Kernel | Verified Agent Work `0.1.0` |
 | Assurance level | Verified |
 | Risk class | Low |
 | Privacy class | Internal |
-| Protocol assurance | `TASKSET_PASSED` (live run 2026-08-08; see `RECEIPT.json`) |
-| Productivity evidence | `NO_CLEAR_GAIN` — measured; no worthwhile gain (see [evals/FINDINGS.md](evals/FINDINGS.md)) |
+| Protocol assurance | current 0.1.1: see `RECEIPT.json`; predecessor 0.1.0 runs are retained history |
+| Productivity evidence | `NO_IMPACT_EVIDENCE` for 0.1.1; predecessor findings in [evals/FINDINGS.md](evals/FINDINGS.md) |
 | Licence | CC0-1.0 (prose) · Apache-2.0 (code) |
 
 ## 1. What problem does this solve?
@@ -61,15 +61,18 @@ measured saving — see the honesty note below.)
 
 ## 8. What has actually been tested?
 
-Two levels. Offline, the pack ships positive, failure, and prompt-injection
+Two versions must be kept distinct. Offline, the current 0.1.1 pack ships positive, failure, and prompt-injection
 **structural tests** whose graders run against the worked example, checked
-mechanically and reproducibly. Live, a two-arm benchmark (runner `o4-mini`, blind
-judge `gpt-5.2`, 2026-08-08) ran the protocol over five fresh tasks: its outputs
-passed the acceptance tests (earning `TASKSET_PASSED`), but it showed **no
-worthwhile productivity gain** — in fact a quality and cost regression versus a
-bare agent on this task set, because the full ceremony is verbose for simple tasks
-and the model was already safe. That honest negative result is
-`productivity_evidence: NO_CLEAR_GAIN`; see [evals/FINDINGS.md](evals/FINDINGS.md).
+mechanically and reproducibly. Historically, three 0.1.0 two-arm runs covered two named runner
+models and two protocol editions on the same five-task set. Those committed
+outputs passed the deterministic acceptance tests, earning
+`CROSS_MODEL_REPRODUCED` for the predecessor under this project's ladder, but every run found
+**no clear gain on the measured model-output dimensions** and higher combined runner-plus-judge evaluation
+cost than the bare-agent arm. That is not an ordinary workflow or company cost.
+They do not certify the changed 0.1.1 distributable; its current status is
+example conformance with `NO_IMPACT_EVIDENCE` until retested.
+This is same-team, self-recorded cross-model consistency—not independent
+reproduction. See [evals/FINDINGS.md](evals/FINDINGS.md).
 
 ## 9. What can go wrong?
 
@@ -94,8 +97,9 @@ Three editions:
 
 ## Honesty note
 
-This README states how the protocol *works*. On whether it *helps*: it has now
-been measured once (see above), and on that task set with that model it did **not**
-help — it cost quality and tokens. That result is published, not hidden. The
-protocol may still help weaker or less-aligned models, higher-stakes tasks, or a
-more concise edition; those are hypotheses for the next run, not claims.
+This README states how the protocol *works*. On whether it *helps*: the 0.1.0
+predecessor was measured (see above), and on those task/model runs it did **not**
+help — it cost quality and tokens. Those results remain published, not hidden.
+Version 0.1.1 has not been measured. It may help weaker or less-aligned models,
+higher-stakes tasks, or in a more concise edition; those are hypotheses for a
+future version-bound run, not claims.

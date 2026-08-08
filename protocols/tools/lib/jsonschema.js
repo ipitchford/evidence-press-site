@@ -3,7 +3,8 @@
  * A minimal, dependency-free JSON Schema validator supporting exactly the
  * keywords used by the Productivity Protocols schemas (draft 2020-12 subset):
  * type, required, properties, additionalProperties:false, items, enum, const,
- * pattern, minItems, maxItems, minLength, minimum, maximum, format (date, uri),
+ * pattern, minItems, maxItems, minLength, minimum, exclusiveMinimum, maximum,
+ * format (date, date-time, uri), if/then/else,
  * and local $ref into $defs. It keeps the *.schema.json files authoritative so
  * validation rules are not duplicated in code.
  *
@@ -48,6 +49,24 @@ function resolveRef(ref, root) {
   return cur;
 }
 
+function isCalendarDate(value) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!m) return false;
+  const year = Number(m[1]), month = Number(m[2]), day = Number(m[3]);
+  const d = new Date(Date.UTC(year, month - 1, day));
+  return d.getUTCFullYear() === year && d.getUTCMonth() === month - 1 && d.getUTCDate() === day;
+}
+
+function isDateTime(value) {
+  const m = /^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(Z|[+-](\d{2}):(\d{2}))$/.exec(value);
+  if (!m || !isCalendarDate(m[1])) return false;
+  const hour = Number(m[2]), minute = Number(m[3]), second = Number(m[4]);
+  const offsetHour = m[6] == null ? 0 : Number(m[6]);
+  const offsetMinute = m[7] == null ? 0 : Number(m[7]);
+  return hour <= 23 && minute <= 59 && second <= 59 && offsetHour <= 23 && offsetMinute <= 59 &&
+    !Number.isNaN(Date.parse(value));
+}
+
 function validate(schema, data, root, path, errors) {
   root = root || schema;
   path = path || '$';
@@ -55,6 +74,15 @@ function validate(schema, data, root, path, errors) {
 
   if (schema.$ref) {
     return validate(resolveRef(schema.$ref, root), data, root, path, errors);
+  }
+
+  // Evaluate the condition against an isolated error list: `if` selects a
+  // branch but never contributes validation errors of its own. This is a
+  // deliberately small addition, not a claim of full Draft 2020-12 support.
+  if (schema.if) {
+    const conditionMatches = validate(schema.if, data, root, path, []).length === 0;
+    if (conditionMatches && schema.then) validate(schema.then, data, root, path, errors);
+    if (!conditionMatches && schema.else) validate(schema.else, data, root, path, errors);
   }
 
   // type
@@ -81,8 +109,10 @@ function validate(schema, data, root, path, errors) {
       errors.push({ path, msg: `string shorter than minLength ${schema.minLength}` });
     if (schema.pattern && !new RegExp(schema.pattern).test(data))
       errors.push({ path, msg: `string does not match pattern ${schema.pattern}` });
-    if (schema.format === 'date' && !/^\d{4}-\d{2}-\d{2}$/.test(data))
-      errors.push({ path, msg: `not a date (YYYY-MM-DD)` });
+    if (schema.format === 'date' && !isCalendarDate(data))
+      errors.push({ path, msg: `not a real calendar date (YYYY-MM-DD)` });
+    if (schema.format === 'date-time' && !isDateTime(data))
+      errors.push({ path, msg: `not an RFC 3339 date-time with timezone` });
     if (schema.format === 'uri' && !/^[a-z][a-z0-9+.-]*:\/\//i.test(data))
       errors.push({ path, msg: `not a uri` });
   }
@@ -90,6 +120,8 @@ function validate(schema, data, root, path, errors) {
   if (t === 'number' || t === 'integer') {
     if (schema.minimum != null && data < schema.minimum)
       errors.push({ path, msg: `less than minimum ${schema.minimum}` });
+    if (schema.exclusiveMinimum != null && data <= schema.exclusiveMinimum)
+      errors.push({ path, msg: `not greater than exclusiveMinimum ${schema.exclusiveMinimum}` });
     if (schema.maximum != null && data > schema.maximum)
       errors.push({ path, msg: `greater than maximum ${schema.maximum}` });
   }

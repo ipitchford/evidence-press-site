@@ -18,15 +18,11 @@ For a model-neutral or self-hosted runner (a local LLM behind a small harness).
 
 ## Minimum-model edition
 
-The method degrades gracefully. A smaller model may need the steps issued one at a
-time rather than all at once; the copy-and-run prompt in `../generic-chat/prompt.md`
-works well split into per-step turns. A weaker model is most likely to slip on the
-refutation stance — drifting into praise, or inventing a defect to look thorough —
-so score two things first: does every finding tie to a real claim, and does every
-finding state what would falsify it. Assurance drops, but the structure — attack the
-load-bearing claims, rank the survivors, tether each to a claim, attach a falsify
-test, receipt at the end — still holds, and that structure is what the method exists
-to impose.
+Smaller-model behaviour is untested. A facilitator may try one step per turn as a
+formative exercise, but must treat the output as `DRAFT` until the normal checks
+pass. Score the main failure risk first: does every finding tie to a real claim and
+state what would falsify it? Do not infer graceful degradation, retained benefit,
+or transfer beyond the model and task actually observed.
 
 ## What this adapter does not do
 

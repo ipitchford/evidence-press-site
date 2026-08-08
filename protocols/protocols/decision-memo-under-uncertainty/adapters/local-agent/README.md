@@ -17,14 +17,11 @@ For a model-neutral or self-hosted runner (a local LLM behind a small harness).
 
 ## Minimum-model edition
 
-The method degrades gracefully. A smaller model may need the steps issued one at a
-time rather than all at once; the copy-and-run prompt in `../generic-chat/prompt.md`
-works well split into per-step turns. A weaker model is most likely to slip on the
-fact-versus-assumption line — stating a hopeful premise as a plain fact — so check
-the Facts section first and move anything unsourced into Assumptions. Assurance
-drops, but the structure — materials only, facts sourced, assumptions labelled,
-options tied to their sensitivities, reversibility marked, receipt at the end — still
-holds, and that structure is what the method exists to impose.
+Smaller-model behaviour is untested. A facilitator may try one step per turn as a
+formative exercise, but must treat the output as `DRAFT` until the normal checks
+pass. Check the main failure risk first: a hopeful premise stated as a fact belongs
+under Assumptions. Do not infer graceful degradation, retained benefit, or transfer
+beyond the model and task actually observed.
 
 ## What this adapter does not do
 

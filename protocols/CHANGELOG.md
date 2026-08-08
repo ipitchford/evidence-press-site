@@ -5,10 +5,46 @@ this file tracks the institution (kernel, schema, ladders, tooling, governance).
 
 The format is loosely [Keep a Changelog]; versions are semantic.
 
-## [0.1.0] — unreleased (local candidate)
+## [0.2.0-candidate.1] — 2026-08-08
 
-First complete Goal-1 candidate. Local and reviewable only — not deployed, not
-published, no remote, and the live Evidence Press build is untouched.
+### Changed
+
+- Reviewed the committed predecessor in a standalone subtree-history checkout,
+  then selectively integrated the evidence, security and company-study repairs
+  into the Evidence Press host while retaining its deployed house shell, media
+  and pack-specific scripts.
+- Reframed the entry product from an expert-facing registry to one supported,
+  low-consequence company trial around `document-to-action-plan`.
+- Added a readiness/governance screen and a registered three-arm comparison:
+  manual work, the same agent without the protocol, and the same agent with it.
+- Defined the primary estimand as the incremental protocol effect (agent with
+  protocol minus the same agent without it), with manual work as a secondary
+  comparator and human effort/error/rework/adoption outcomes kept separate.
+- Added a bounded prior-art record. Agent Skills and Oracle Agent Spec are
+  explicitly treated as prior art; no new workflow-language or priority claim is
+  made.
+- Added NIST/UK/NCSC governance crosswalk material with an explicit
+  non-certification and non-compliance boundary.
+- Reworked the static candidate for novice business language, local-only data,
+  CSP-compatible external assets, responsive use and a visible evidence spine.
+- Added candidate/public ledger and post-deploy integrity controls. Deployment
+  remains prohibited for this candidate.
+
+### Evidence boundary
+
+- The predecessor `0.1.0` model benchmarks remain in the record: the three live
+  evaluated protocols showed `NO_CLEAR_GAIN`; five had no impact measurement.
+- All changed distributable packs are now `0.1.1`. The verifier refuses to carry
+  the 0.1.0 run rungs or evidence onto changed bytes, so every current pack is
+  capped at example conformance with `NO_IMPACT_EVIDENCE` until retested.
+- No company or human participant has tested this candidate. Company impact is
+  therefore `NO_IMPACT_EVIDENCE`, irrespective of passing structural tests.
+
+## [0.1.0] — 2026-08-08 (historical deployed predecessor)
+
+First complete Goal-1 candidate. It began as a local candidate and was later
+merged and deployed at `/protocols/`. Candidate-time entries below are retained
+as chronology; they are not a current deployment statement.
 
 ### Added
 - Verified Agent Work kernel `v0.1.0` (`kernel/`): eight-step method, three
@@ -29,7 +65,7 @@ published, no remote, and the live Evidence Press build is untouched.
 - Repository replay receipt (`RECEIPT.json`) reproducible from a clean checkout.
 
 ### Adversarial-review remediation (pre-release, same version)
-Acting on an independent refute-framed review ([`review/`](review/)), after
+Acting on a fresh role-separated refute-framed model review ([`review/`](review/)), after
 verifying each finding against the code:
 - **Renamed the offline assurance rung** to `EXAMPLE_CONFORMANCE_VALIDATED` and
   redefined `TASKSET_PASSED` to require a recorded live run. The offline toolchain
@@ -69,7 +105,7 @@ verifying each finding against the code:
 ### Expansion + second review (2026-08-08, same candidate)
 - Grew from 3 to **8 protocols**: added project-handoff, spreadsheet-quality-audit,
   decision-memo-under-uncertainty, adversarial-output-review, repetitive-workflow-capture.
-- **Second independent adversarial review (Sol)** — its central hit (live
+- **Second role-separated adversarial model review (Sol)** — its central hit (live
   `TASKSET_PASSED` still self-attested) fixed: `liveAssurance` now RECOMPUTES
   acceptance from the committed raw outputs (`tools/lib/graders.js`), binds by
   SHA-256 to task-set/outputs/pack/version, and rejects tampering; cross-model
@@ -90,8 +126,8 @@ verifying each finding against the code:
   verified into a temp mount, and NOT run. Clean-checkout replay proven; both themes
   visually QA'd.
 
-### Constraints
-- Standing constraints recorded in `AGENTS.md`: no publish/deploy/push/remote/
-  external contact; no changes to the live site outside `protocols/`. (The live
-  evals call the OpenAI API — the model calls the user explicitly requested — and
-  write only inside `protocols/`; nothing was published or deployed.)
+### Candidate-time constraints (later superseded)
+- The initial standing constraints prohibited publish/deploy/push/remote/external
+  contact. Subsequent explicit maintainer instructions superseded the publication
+  constraint, and the `0.1.0` subtree was merged and deployed. The live evals used
+  model API calls and wrote their outputs into the protocol subtree.

@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
   "protocol_id": "goal-to-verified-deliverable",
-  "task_set": "gtvd-core-v1",
+  "task_set": "gtvd-diverse-v2",
   "design": "benchmark",
-  "description": "A diverse, registered task set for the three-arm comparison (no agent / agent without protocol / agent with protocol). Each task ships an input and a set of acceptance checks; quality is scored by a blind rubric. This file defines the design. It has NOT been executed — running it requires live models and is the path to BENCHMARK_SIGNAL and, with the right design, higher.",
+  "description": "A prospective diverse task design for a three-arm comparison (no agent / agent without protocol / agent with protocol), covering the six work families named in the original brief plus safety. It is distinct from the executed five-task gtvd-core-v1 model benchmark. Each task specifies acceptance properties; quality requires blind rating. This design has NOT been executed and cannot support an impact claim.",
   "arms": ["no_agent", "agent_without_protocol", "agent_with_protocol"],
   "measured_dimensions": ["completion", "quality", "accuracy", "human_effort_min", "elapsed_min", "rework", "cost_usd", "cognitive_burden", "safety_events"],
   "tasks": [

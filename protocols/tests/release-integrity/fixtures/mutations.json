@@ -1,0 +1,122 @@
+[
+  {
+    "id": "archive-payload-changed",
+    "operation": "append-archive-byte",
+    "expected": "sha256 mismatch"
+  },
+  {
+    "id": "archive-receipt-removed",
+    "operation": "remove-archive-receipt",
+    "expected": "missing alpha/RECEIPT.json"
+  },
+  {
+    "id": "skill-edition-test-removed",
+    "operation": "remove-skill-test",
+    "expected": "expected skill-edition entry missing: alpha/tests/cases.json"
+  },
+  {
+    "id": "protocol-page-removed",
+    "operation": "remove-page",
+    "expected": "missing candidate file"
+  },
+  {
+    "id": "machine-record-version-drift",
+    "operation": "change-record-version",
+    "expected": "record.contract.version: mismatch"
+  },
+  {
+    "id": "machine-record-achieved-assurance-drift",
+    "operation": "change-record-achieved-assurance",
+    "expected": "record.achieved_assurance_status: does not equal ledger"
+  },
+  {
+    "id": "registry-status-drift",
+    "operation": "change-registry-status",
+    "expected": "does not equal immutable ledger value"
+  },
+  {
+    "id": "registry-task-tags-drift",
+    "operation": "change-registry-task-tags",
+    "expected": "registry task_tags does not equal its exact record.contract projection"
+  },
+  {
+    "id": "registry-audience-tags-drift",
+    "operation": "change-registry-audience-tags",
+    "expected": "registry audience_tags does not equal its exact record.contract projection"
+  },
+  {
+    "id": "registry-required-tool-tags-drift",
+    "operation": "change-registry-required-tool-tags",
+    "expected": "registry required_tool_tags does not equal its exact record.contract projection"
+  },
+  {
+    "id": "registry-optional-tool-tags-drift",
+    "operation": "change-registry-optional-tool-tags",
+    "expected": "registry optional_tool_tags does not equal its exact record.contract projection"
+  },
+  {
+    "id": "sitemap-drops-protocol",
+    "operation": "drop-sitemap-protocol",
+    "expected": "sitemap URLs: missing"
+  },
+  {
+    "id": "unledgered-archive-added",
+    "operation": "add-unledgered-archive",
+    "expected": "unledgered extra"
+  },
+  {
+    "id": "ledger-id-duplicated",
+    "operation": "duplicate-ledger-id",
+    "expected": "duplicate protocol id"
+  },
+  {
+    "id": "starter-page-removed",
+    "operation": "remove-starter-page",
+    "expected": "missing candidate file start/index.html"
+  },
+  {
+    "id": "starter-page-changed",
+    "operation": "change-starter-page",
+    "expected": "sha256 mismatch for start/index.html"
+  },
+  {
+    "id": "starter-archive-changed",
+    "operation": "change-starter-archive",
+    "expected": "sha256 mismatch for downloads/company-pilot-starter-0.2.0-candidate.1.tar"
+  },
+  {
+    "id": "starter-license-removed",
+    "operation": "remove-starter-license",
+    "expected": "missing LICENSE"
+  },
+  {
+    "id": "starter-archive-unsafe-path",
+    "operation": "unsafe-starter-archive-path",
+    "expected": "unsafe or non-canonical tar path"
+  },
+  {
+    "id": "registry-full-commit-drift",
+    "operation": "drift-registry-full-commit",
+    "expected": "registry.generated.source_commit_full"
+  },
+  {
+    "id": "registry-dirty-flag-drift",
+    "operation": "drift-registry-dirty",
+    "expected": "registry.generated.dirty"
+  },
+  {
+    "id": "v2-registry-mirror-removed",
+    "operation": "remove-v2-registry-mirror",
+    "expected": "missing candidate file api/v2/protocols.json"
+  },
+  {
+    "id": "v2-record-mirror-changed",
+    "operation": "change-v2-record-mirror",
+    "expected": "sha256 mismatch for api/v2/alpha.json"
+  },
+  {
+    "id": "v2-schema-mirror-changed",
+    "operation": "change-v2-schema-mirror",
+    "expected": "generated api/v2 mirror differs from api/example.schema.json"
+  }
+]

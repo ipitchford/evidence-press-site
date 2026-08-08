@@ -1,7 +1,7 @@
 # Known limitations
 
 This library is about stating plainly what has and has not been established. That
-discipline applies to the library itself. An independent adversarial review
+discipline applies to the library itself. A fresh role-separated adversarial model review
 (recorded in [`review/`](review/)) found several places where the tooling claimed
 more than it delivered. Some of those were fixed; the rest are stated here rather
 than hidden. Read this before trusting any status badge.
@@ -23,8 +23,8 @@ higher.
 **`EXAMPLE_CONFORMANCE_VALIDATED` means the pack's own examples conform to its own
 tests.** It is not evidence that the protocol works when a model runs it. That is
 `TASKSET_PASSED`, which requires a recorded live run — now produced by
-`tools/run-eval.js` (the flagship has one; the other two do not, so they stay at
-the offline rung). Do not read the offline status as operational performance.
+`tools/run-eval.js` (three packs now retain one or more predecessor runs). Do not
+read the offline status as operational performance.
 
 ## Assurance is reproducible, not tamper-proof
 
@@ -39,8 +39,10 @@ edits the receipt and the tools together.
 
 Turning "reproducible" into "trusted" requires infrastructure this candidate does
 not yet have: CI-issued receipts, artifact signing or a transparency log,
-clean-commit enforcement, and a verifier identity distinct from the author. That
-is planned, not done.
+authenticated provider transcripts, and a verifier identity distinct from the
+author. The current controls do require clean inputs for new v2 evaluations and
+reject dirty production release provenance; they do not make the author-controlled
+receipt an independent attestation.
 
 ### The live-evaluation rung specifically
 
@@ -62,6 +64,11 @@ So the live rung means precisely: *these committed outputs pass the deterministi
 acceptance gates, reproducibly.* It does not by itself prove the run was fresh,
 blind, or un-cherry-picked. CI-issued live runs with authenticated provider
 transcripts would close that gap; not done.
+
+`CROSS_MODEL_REPRODUCED` additionally requires separate recorded runs on the same
+task set, distinct named models and the same implied evidence outcome. It remains
+same-team cross-model consistency, not independent reproduction: model identities
+are self-reported and the task selection, graders and recording path are shared.
 
 ## The security scan is a lint, not a sandbox
 
@@ -104,21 +111,39 @@ A validator cannot confirm semantic fidelity; only review and live runs can.
 
 ## Evaluation
 
-One protocol has now been evaluated live; two have not.
-`goal-to-verified-deliverable` was run through a two-arm benchmark (`o4-mini`
-runner, `gpt-5.2` blind judge) and carries `NO_CLEAR_GAIN` — measured, no
-worthwhile gain on that task set and model (a quality and cost regression; see its
-`evals/FINDINGS.md`). The other two ship at `NO_IMPACT_EVIDENCE` — benefit not
-measured.
+Three protocols retain **version 0.1.0 predecessor** live model/task evaluations, all with the
+registered result `NO_CLEAR_GAIN`:
 
-The live benchmark's own limits are real and must be read with the result: a
-single runner model (not cross-model reproduced), a single judge model (not
-multiple raters), five tasks, no `no_agent` (human) arm, and human dimensions
-(effort, cognitive burden, accessibility) left null because they need people.
-Quality is one model's rubric judgement, sensitive to how verbose an output is
-against the task's format. A benchmark design cannot support anything stronger
-than a benchmark-level signal; `CONTROLLED_USER_SIGNAL` and above need real
-participants, and the harness enforces that ceiling.
+- `goal-to-verified-deliverable`: three five-task runs across two named runner
+  models and two editions; the protocol arm did not improve net measured outcomes
+  and cost more;
+- `document-to-action-plan`: one four-task run; higher deterministic completion,
+  slightly lower judged quality, and about 3.4 times the estimated cost; and
+- `evidence-backed-brief`: one four-task run; lower judged quality/grounding and
+  about 3.4 times the estimated cost.
+
+The current distributable packs are 0.1.1. Their bytes differ, so the verifier
+does not use these predecessor results to raise current assurance or evidence;
+all 0.1.1 packs return to example conformance and `NO_IMPACT_EVIDENCE` until
+retested. Historical raw model outputs and negative findings remain visible. The
+result JSON metadata was transparently migrated to the corrected evidence-profile
+shape and to record the unrun human arm as `n: 0`; it still identifies the
+evaluated protocol as 0.1.0 and is not evidence for 0.1.1.
+
+These evaluations share serious limits: development-team provenance, tiny curated
+task sets, self-reported runner identity, one model judge per run, no repeated
+generations, no authenticated provider transcript, no `no_agent` (human) arm,
+and human dimensions left null. `goal-to-verified-deliverable` meets the project's
+same-task/same-outcome cross-model rule, but that is not independent reproduction.
+Quality remains sensitive to rubric and output verbosity. A benchmark cannot
+support `CONTROLLED_USER_SIGNAL` or any company-impact claim; those require real,
+consenting participants and an appropriate design.
+
+The historical result field `cost_usd` combined the estimated runner-call and
+model-judge costs. It is evaluation-pipeline cost, not the ordinary cost of using
+the workflow, and longer outputs also increased judging cost. The published
+ratios therefore cannot be interpreted as company operating-cost ratios. Future
+v2 runs record operational runner cost and evaluation/judge cost separately.
 
 ## Scope of the review
 

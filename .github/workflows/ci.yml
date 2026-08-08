@@ -19,22 +19,55 @@ jobs:
         # 18 is the documented floor (tools/check-published.js uses built-in fetch).
         node: ['18', '20', '22']
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: ${{ matrix.node }}
+
+      - name: Select ledgered protocol build source when production-sealed
+        run: |
+          if [ -f protocols/PUBLISHED.json ]; then
+            node -e '
+              const fs = require("fs");
+              const ledger = require("./protocols/PUBLISHED.json");
+              if (ledger.source && ledger.source.dirty === false && /^[0-9a-f]{40}$/.test(ledger.source.commit || "")) {
+                fs.appendFileSync(process.env.GITHUB_ENV, "PRODUCTIVITY_PROTOCOLS_SOURCE_COMMIT=" + ledger.source.commit + "\n");
+                console.log("Protocol build will reproduce " + ledger.source.commit + ".");
+              } else {
+                console.log("Protocol ledger is an unsealed development candidate; exact candidate check must still pass.");
+              }
+            '
+          fi
 
       - name: Syntax check every script
         run: |
           node --check build.js
           for f in tools/*.js assets/js/*.js; do node --check "$f"; done
+          node --check protocols/build-protocols.js
+          for f in protocols/tools/*.js protocols/tools/lib/*.js protocols/tests/release-integrity/run.js; do node --check "$f"; done
 
       - name: Renderer regression tests
         run: node tools/test-render.js
 
-      - name: Build the site from a clean checkout
-        run: node build.js
+      - name: Verify protocol source and regenerate ignored receipts
+        run: |
+          node protocols/tools/make-manifest.js
+          git diff --exit-code -- 'protocols/protocols/*/MANIFEST.json'
+          node protocols/tools/verify-all.js --no-build
+
+      - name: Build the complete site from a clean checkout
+        run: REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh
+
+      - name: Protocol candidate/production byte-integrity gate
+        run: |
+          if [ -f protocols/PUBLISHED.json ]; then
+            if [ "$(node -p "require('./protocols/PUBLISHED.json').source.dirty")" = "false" ]; then
+              node protocols/tools/check-release-integrity.js
+            else
+              node protocols/tools/check-release-integrity.js --candidate
+            fi
+          fi
 
       - name: Metadata conformance and cross-surface consistency
         run: node tools/test-metadata.js
@@ -52,7 +85,7 @@ jobs:
         run: |
           find dist -type f -exec sha256sum {} \; | sort -k2 > /tmp/first.sha
           rm -rf dist
-          node build.js
+          REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh
           find dist -type f -exec sha256sum {} \; | sort -k2 > /tmp/second.sha
           diff /tmp/first.sha /tmp/second.sha && echo "Byte-identical rebuild."
 
@@ -71,14 +104,36 @@ jobs:
     name: Accessibility (axe via pa11y-ci)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
 
+      - name: Select ledgered protocol build source when production-sealed
+        run: |
+          if [ -f protocols/PUBLISHED.json ]; then
+            node -e '
+              const fs = require("fs");
+              const ledger = require("./protocols/PUBLISHED.json");
+              if (ledger.source && ledger.source.dirty === false && /^[0-9a-f]{40}$/.test(ledger.source.commit || "")) {
+                fs.appendFileSync(process.env.GITHUB_ENV, "PRODUCTIVITY_PROTOCOLS_SOURCE_COMMIT=" + ledger.source.commit + "\n");
+              }
+            '
+          fi
+
       - name: Build the site
-        run: node build.js
+        run: REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh
+
+      - name: Protocol candidate/production byte-integrity gate
+        run: |
+          if [ -f protocols/PUBLISHED.json ]; then
+            if [ "$(node -p "require('./protocols/PUBLISHED.json').source.dirty")" = "false" ]; then
+              node protocols/tools/check-release-integrity.js
+            else
+              node protocols/tools/check-release-integrity.js --candidate
+            fi
+          fi
 
       - name: Serve dist/
         run: npx --yes http-server dist -p 8080 --silent &

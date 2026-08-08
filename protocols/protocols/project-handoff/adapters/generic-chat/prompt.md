@@ -1,7 +1,7 @@
 # Copy-and-run edition — project handoff
 
 No installation. Paste everything below into any capable chat agent, then add your
-project materials. Works with a general-purpose assistant and uploaded files.
+project materials. Designed for a general-purpose assistant that can read uploaded files.
 
 ---
 

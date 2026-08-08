@@ -9,15 +9,14 @@ description: >-
   finished or validated protocol; it is read-only over the description, invents
   no step the description does not contain, and never presents the candidate as
   validated.
-license: Apache-2.0
+license: CC0-1.0
 metadata:
   protocol: repetitive-workflow-capture
-  protocol_version: 0.1.0
+  protocol_version: 0.1.1
   kernel: verified-agent-work@0.1.0
   assurance_level: verified
   risk_class: low
-allowed-tools:
-  - read
+allowed-tools: Read
 ---
 
 # Repetitive workflow capture

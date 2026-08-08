@@ -19,9 +19,16 @@ function walk(dir, base) {
   const out = [];
   for (const name of fs.readdirSync(dir).sort()) {
     const full = path.join(dir, name);
-    const stat = fs.statSync(full);
+    const stat = fs.lstatSync(full);
+    if (stat.isSymbolicLink()) throw new Error(`refusing symbolic link while walking ${path.relative(ROOT, full)}`);
     if (stat.isDirectory()) out.push(...walk(full, base));
-    else out.push(path.relative(base, full));
+    else if (stat.isFile()) {
+      const relative = path.relative(base, full);
+      if (path.isAbsolute(relative) || relative === '..' || relative.startsWith('..' + path.sep)) {
+        throw new Error(`walked file escapes requested root: ${relative}`);
+      }
+      out.push(relative);
+    } else throw new Error(`refusing non-regular file while walking ${path.relative(ROOT, full)}`);
   }
   return out;
 }
@@ -38,19 +45,73 @@ function packDir(id) { return path.join(PACKS_DIR, id); }
 
 function readJSON(file) { return JSON.parse(fs.readFileSync(file, 'utf8')); }
 
-// The current git commit + date, used for reproducible build/receipt identity.
-// Falls back to null outside a checkout so output is still well-formed.
-function gitIdentity() {
-  const run = cmd => {
+const RELEASE_CONTROL_PATHS = new Set([
+  // Commit B is deliberately ledger-only. Schemas, checkers, documentation and
+  // tests can affect either the emitted bytes or the meaning of the gate, so
+  // they belong in the reviewed substantive build commit A.
+  'PUBLISHED.json'
+]);
+
+function releaseControlPath(relative) {
+  return RELEASE_CONTROL_PATHS.has(relative);
+}
+
+// Git identity used for reproducible build/receipt output. Ordinarily this is
+// HEAD. A clean release-control commit may explicitly request the substantive
+// build commit recorded by the ledger; the override is accepted only when every
+// later change is inside the small release-control allowlist.
+function gitIdentity(root, requestedCommit) {
+  root = root || ROOT;
+  const run = args => {
     try {
-      return require('child_process').execSync(cmd, { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] })
+      return require('child_process').execFileSync('git', args, { cwd: root, stdio: ['ignore', 'pipe', 'ignore'] })
         .toString().trim() || null;
     } catch { return null; }
   };
+  const succeeds = args => {
+    try {
+      require('child_process').execFileSync('git', args, { cwd: root, stdio: 'ignore' });
+      return true;
+    } catch { return false; }
+  };
+  requestedCommit = requestedCommit || process.env.PRODUCTIVITY_PROTOCOLS_SOURCE_COMMIT || null;
+  const head = run(['rev-parse', 'HEAD']);
+  let sourceCommitFull = head;
+  if (requestedCommit) {
+    if (!/^[0-9a-f]{40}$/.test(requestedCommit)) throw new Error('PRODUCTIVITY_PROTOCOLS_SOURCE_COMMIT must be a full lower-case Git commit');
+    const resolved = run(['rev-parse', '--verify', `${requestedCommit}^{commit}`]);
+    if (resolved !== requestedCommit) throw new Error('requested protocol build source commit is unavailable');
+    if (!head || !succeeds(['merge-base', '--is-ancestor', requestedCommit, head])) {
+      throw new Error('requested protocol build source commit is not an ancestor of HEAD');
+    }
+    const status = run(['status', '--porcelain=v1', '--untracked-files=all']);
+    if (status) throw new Error('source-commit override requires a clean Git worktree');
+    const top = run(['rev-parse', '--show-toplevel']);
+    const rootReal = fs.realpathSync(root), topReal = fs.realpathSync(top);
+    const prefix = path.relative(topReal, rootReal).split(path.sep).join('/');
+    if (prefix === '..' || prefix.startsWith('../') || path.isAbsolute(prefix)) {
+      throw new Error('protocol source root is outside the enclosing Git worktree');
+    }
+    const changedRaw = run(['diff', '--name-only', '--diff-filter=ACDMRTUXB', `${requestedCommit}..${head}`]) || '';
+    const substantive = changedRaw.split('\n').filter(Boolean).filter(relative => {
+      if (!prefix) return !releaseControlPath(relative);
+      if (!relative.startsWith(prefix + '/')) return true;
+      return !releaseControlPath(relative.slice(prefix.length + 1));
+    });
+    if (substantive.length) {
+      throw new Error(`source-commit override is stale; substantive files changed after the build commit: ${substantive.join(', ')}`);
+    }
+    sourceCommitFull = requestedCommit;
+  }
+  const porcelain = sourceCommitFull ? run(['status', '--porcelain', '--untracked-files=normal']) : null;
   return {
-    sourceCommit: run('git rev-parse --short HEAD'),
-    sourceCommitFull: run('git rev-parse HEAD'),
-    sourceDate: run('git log -1 --format=%cI')
+    sourceCommit: sourceCommitFull ? run(['rev-parse', '--short', sourceCommitFull]) : null,
+    sourceCommitFull,
+    sourceTree: sourceCommitFull ? run(['rev-parse', `${sourceCommitFull}^{tree}`]) : null,
+    sourceDate: sourceCommitFull ? run(['show', '-s', '--format=%cI', sourceCommitFull]) : null,
+    // `run` returns null for an empty clean status and a non-empty string for a
+    // dirty tree. Outside Git, dirty is null rather than a reassuring false.
+    dirty: sourceCommitFull ? Boolean(porcelain) : null
   };
 }
 
@@ -61,5 +122,6 @@ function frontmatter(text) {
 }
 
 module.exports = {
-  ROOT, PACKS_DIR, sha256File, sha256String, walk, listPacks, packDir, readJSON, gitIdentity, frontmatter
+  ROOT, PACKS_DIR, sha256File, sha256String, walk, listPacks, packDir, readJSON,
+  gitIdentity, releaseControlPath, frontmatter
 };

@@ -1,7 +1,7 @@
 # Copy-and-run edition — goal to verified deliverable
 
 No installation. Paste everything below into any capable chat agent, then add your
-task and any materials. Works with a general-purpose assistant and uploaded files.
+task and any materials. Designed for a general-purpose assistant that can read uploaded files.
 
 ---
 

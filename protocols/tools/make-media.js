@@ -21,6 +21,7 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 const { load } = require('./lib/yaml');
 const U = require('./lib/util');
+const { validatePackReceipt } = require('../build-protocols');
 
 const ROOT = U.ROOT;                                  // protocols/
 const ART = path.join(ROOT, '..', 'assets', 'art');
@@ -117,11 +118,11 @@ function laddersSvg() {
 <defs><radialGradient id="lg" cx="0.5" cy="0.1" r="0.9"><stop offset="0" stop-color="${C.teal}" stop-opacity="0.08"/><stop offset="1" stop-color="${C.teal}" stop-opacity="0"/></radialGradient></defs>
 <text x="${W / 2}" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" letter-spacing="0.14em" fill="${C.teal}">TWO INDEPENDENT MEASURES · NEVER MERGED</text>
 <line x1="${W / 2}" y1="72" x2="${W / 2}" y2="${baseTop + RH}" stroke="${C.line}" stroke-width="1" opacity="0.4"/>
-${col(leftCx, 'Protocol assurance', 'Is it well built and safe?', progA, 'teal')}
+${col(leftCx, 'Protocol assurance', 'What was checked, and how?', progA, 'teal')}
 ${col(rightCx, 'Productivity evidence', 'Does it help? — measured, never assumed', progE, 'amber')}
 ${offChips(leftCx, termA, 'muted')}
 ${offChips(rightCx, negE, 'amber')}
-<text x="${W / 2}" y="${H - 20}" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="${C.paper}">A protocol can top the left ladder and still sit at NO_CLEAR_GAIN on the right — and ours do. That is the design.</text>
+<text x="${W / 2}" y="${H - 20}" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="${C.paper}">A protocol can top the left ladder and still sit at NO_CLEAR_GAIN — as the 0.1.0 predecessors did. That is the design.</text>
 </svg>
 `;
 }
@@ -157,8 +158,10 @@ function loadPacks() {
   return U.listPacks().map(id => {
     const dir = U.packDir(id);
     const p = load(fs.readFileSync(path.join(dir, 'protocol.yaml'), 'utf8'));
+    const manifest = U.readJSON(path.join(dir, 'MANIFEST.json'));
     const receiptPath = path.join(dir, 'RECEIPT.json');
-    const assurance = fs.existsSync(receiptPath) ? U.readJSON(receiptPath).assurance_status : p.assurance_status;
+    const receipt = fs.existsSync(receiptPath) ? U.readJSON(receiptPath) : null;
+    const assurance = receipt ? validatePackReceipt(id, p, manifest, receipt) : p.assurance_status;
     return { id, p, assurance };
   });
 }
@@ -172,9 +175,9 @@ function main() {
   rasterOG('productivity', ogSvg({
     kicker: 'EVIDENCE PRESS · PRODUCTIVITY PROTOCOLS',
     title: 'Methods, not papers',
-    sub: 'Open, tested workflows for using AI agents — evidence attached',
+    sub: 'Open, inspectable workflow candidates — evidence attached',
     foot: [
-      { label: 'Every protocol', value: 'well built + safe?', accent: C.teal },
+      { label: 'Every protocol', value: 'what was checked?', accent: C.teal },
       { label: 'And separately', value: 'does it help?', accent: C.amber }
     ]
   }));
@@ -183,7 +186,7 @@ function main() {
     title: 'The protocol library',
     sub: 'Downloadable agent workflows, each with two honest status ladders',
     foot: [
-      { label: 'Protocol assurance', value: 'is it well built?', accent: C.teal },
+      { label: 'Protocol assurance', value: 'what was checked?', accent: C.teal },
       { label: 'Productivity evidence', value: 'does it help?', accent: C.amber }
     ]
   }));

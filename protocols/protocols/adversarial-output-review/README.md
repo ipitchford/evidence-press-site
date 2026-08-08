@@ -6,7 +6,7 @@ draft says, each framed to refute and paired with a test that would settle it.**
 | | |
 |---|---|
 | Protocol id | `adversarial-output-review` |
-| Version | `0.1.0` |
+| Version | `0.1.1` |
 | Kernel | Verified Agent Work `0.1.0` |
 | Assurance level | Verified |
 | Risk class | Low |

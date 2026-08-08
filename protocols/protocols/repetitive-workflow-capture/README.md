@@ -7,7 +7,7 @@ starting point for the foundry, not a finished or validated protocol.**
 | | |
 |---|---|
 | Protocol id | `repetitive-workflow-capture` |
-| Version | `0.1.0` |
+| Version | `0.1.1` |
 | Kernel | Verified Agent Work `0.1.0` |
 | Assurance level | Verified |
 | Risk class | Low |

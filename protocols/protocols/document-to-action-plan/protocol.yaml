@@ -2,7 +2,7 @@
 # Validates against ../../schema/protocol.schema.json and the kernel invariants.
 schema_version: "1.0"
 id: document-to-action-plan
-version: 0.1.0
+version: 0.1.1
 title: Document to action plan
 purpose: >-
   Read supplied documents and extract the decisions already made, the
@@ -169,21 +169,18 @@ failure_modes:
     detection: An item cites the focus instead of a document.
     mitigation: The evidence boundary in step 2 marks the focus as context only.
 
-tested_models: [o4-mini]
+tested_models: []
 tested_environments:
   - offline structural harness (Node; checks shipped examples, runs no model)
-  - live two-arm benchmark (runner o4-mini, blind judge gpt-5.2), 2026-08-08
 retest_triggers:
   - The kernel version changes.
   - The protocol schema changes in a way that affects required fields.
 last_verified: "2026-08-08"
 
 assurance_status: DRAFT
-# Measured on dtap-core-v1 (o4-mini, blind judge gpt-5.2, 2026-08-08): the protocol
-# arm improved extraction completeness (acceptance 1.00 vs 0.75 bare) but at ~3.4x
-# cost with slightly lower judged quality — no clear NET gain. The completeness
-# signal is the most promising seen so far. See evals/result-live-*.json. Retained.
-productivity_evidence: NO_CLEAR_GAIN
+# Version 0.1.0 has a retained predecessor benchmark with NO_CLEAR_GAIN. It is
+# history, not evidence for these 0.1.1 distributable bytes. See evals/README.md.
+productivity_evidence: NO_IMPACT_EVIDENCE
 
 license:
   content: CC0-1.0

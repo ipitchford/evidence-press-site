@@ -1,7 +1,8 @@
 # Copy-and-run edition — spreadsheet quality audit
 
 No installation. Paste everything below into any capable chat agent, then add your
-table. Works with a general-purpose assistant and an uploaded CSV or a pasted table.
+table. Designed for a general-purpose assistant that can read an uploaded CSV or
+a pasted table.
 
 ---
 

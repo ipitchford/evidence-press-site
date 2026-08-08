@@ -1,7 +1,7 @@
 # Copy-and-run edition — adversarial output review
 
 No installation. Paste everything below into any capable chat agent, then add your
-draft and any sources. Works with a general-purpose assistant and uploaded files.
+draft and any sources. Designed for a general-purpose assistant that can read uploaded files.
 
 ---
 

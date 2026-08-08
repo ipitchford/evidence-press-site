@@ -6,13 +6,13 @@ of a set of documents — each traceable to where it appears.**
 | | |
 |---|---|
 | Protocol id | `document-to-action-plan` |
-| Version | `0.1.0` |
+| Version | `0.1.1` |
 | Kernel | Verified Agent Work `0.1.0` |
 | Assurance level | Verified |
 | Risk class | Low |
 | Privacy class | Internal |
 | Protocol assurance | see the pack's `RECEIPT.json` |
-| Productivity evidence | `NO_IMPACT_EVIDENCE` (benefit not yet measured) |
+| Productivity evidence | `NO_IMPACT_EVIDENCE` for 0.1.1; predecessor 0.1.0 benchmark retained below |
 | Licence | CC0-1.0 (prose) · Apache-2.0 (code) |
 
 ## 1. What problem does this solve?
@@ -65,11 +65,20 @@ mechanism; it is not a measured saving, and the pack does not claim one.
 
 ## 8. What has actually been tested?
 
-The pack ships positive, failure, and prompt-injection **structural tests** whose
-graders run against the worked example, checked mechanically and reproducibly.
-What has **not** been done: a live comparison of real work with and without the
-protocol. That is why `productivity_evidence` is `NO_IMPACT_EVIDENCE`. The pack
-does not claim a benefit it has not measured.
+The 0.1.1 pack ships positive, failure, and prompt-injection **structural tests**
+whose graders run against the worked example. It also retains a historical
+0.1.0 five-task, two-arm model comparison using o4-mini with a separate model judge. The protocol arm
+improved extraction completeness in that small task set, but the combined
+runner-plus-judge estimate was about 3.4 times as high and judged quality was
+slightly lower. That is evaluation cost, not company operating cost. The registered conclusion is
+`NO_CLEAR_GAIN` for those predecessor bytes. It does not certify 0.1.1, whose
+current productivity status is `NO_IMPACT_EVIDENCE` until retested.
+
+This is a model/task benchmark produced by the development team, not an
+independent reproduction and not a test with people doing company work. Active
+human time, correction burden, cognitive burden, accessibility, adoption, and
+sustained use remain unmeasured. See [`evals/`](evals/) and the standalone
+[`company-pilot/`](../../company-pilot/) kit.
 
 ## 9. What can go wrong?
 
@@ -95,6 +104,7 @@ Three editions:
 
 ## Honesty note
 
-This README states how the protocol *works*, not that it *helps*. Any claim that it
-improves your work would require an evaluation this pack has not yet run. Until
-then, the honest statement is: benefit not measured.
+This README states how the protocol *works*, not that it *helps*. The predecessor
+benchmark found no clear net gain, and no user or company impact has been
+established. The honest current statement is: **a bounded formative trial is
+justified; adoption is not**.

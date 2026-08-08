@@ -1,19 +1,110 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://evidencepress.org/protocols/api/eval-result.schema.json",
+  "$id": "https://evidencepress.org/protocols/api/v2/eval-result.schema.json",
   "title": "Comparative evaluation result",
-  "description": "The output of one evaluation run. Productivity is reported as a vector, never a single number, across the three-arm comparison. The implied evidence-ladder state is derived from the design, not from a favourable headline.",
+  "description": "The output of one evaluation run. Productivity is reported as a vector, never a single number. Setting, study stage, identification, and review status are recorded separately and cannot by themselves promote a positive evidence state.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "protocol_id", "protocol_version", "task_set", "design", "arms", "implied_evidence_status"],
+  "required": ["schema_version", "protocol_id", "protocol_version", "task_set", "evidence_profile", "arms", "implied_evidence_status"],
+  "if": {
+    "properties": { "schema_version": { "const": "2.0" } },
+    "required": ["schema_version"]
+  },
+  "then": {
+    "required": ["record_kind", "runner"],
+    "properties": {
+      "runner": {
+        "required": ["tool", "models", "judge_model", "generated_at", "task_file", "tasks_sha256", "outputs_file", "outputs_sha256", "task_ids", "n_tasks", "evaluation_cost_usd", "pack", "interventions", "source"]
+      }
+    },
+    "if": {
+      "properties": { "record_kind": { "const": "result" } },
+      "required": ["record_kind"]
+    },
+    "then": {
+      "properties": {
+        "runner": {
+          "properties": {
+            "models": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+            "generated_at": { "type": "string", "format": "date" },
+            "tasks_sha256": { "$ref": "#/$defs/sha256" },
+            "outputs_sha256": { "$ref": "#/$defs/sha256" },
+            "n_tasks": { "type": "integer", "minimum": 1 },
+            "source": {
+              "properties": {
+                "dirty": { "const": false }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "properties": {
     "schema_version": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+    "record_kind": {
+      "enum": ["template", "result"],
+      "description": "A template is an explicitly unexecuted prospective record; only a result can enter live-assurance recomputation."
+    },
     "protocol_id": { "type": "string" },
     "protocol_version": { "type": "string" },
     "task_set": { "type": "string", "description": "Identifier of the registered task set the arms were run on." },
-    "design": {
-      "enum": ["benchmark", "controlled_user", "field", "causal"],
-      "description": "The evaluation design. Determines the strongest evidence-ladder state the result can support."
+    "evidence_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["setting", "study_stage", "identification", "review_status", "claim_boundary"],
+      "properties": {
+        "setting": {
+          "enum": ["benchmark", "controlled_user", "organizational_field"],
+          "description": "Where and with whom the evaluation occurred; this is not an identification claim."
+        },
+        "study_stage": {
+          "enum": ["development", "formative", "feasibility", "confirmatory"],
+          "description": "The prospectively declared purpose and maturity of the study."
+        },
+        "identification": {
+          "enum": ["descriptive", "randomized", "quasi_experimental", "observational"],
+          "description": "How, if at all, the contrast supports attribution."
+        },
+        "review_status": {
+          "enum": ["internal", "independently_reviewed", "independently_replicated"],
+          "description": "Who has assessed the complete, hash-bound study artifact."
+        },
+        "claim_boundary": {
+          "type": "string",
+          "minLength": 20,
+          "description": "The population, workflow, model, protocol version, setting, and outcome boundary to which any conclusion is limited."
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Required by the validator before a positive evidence state can be claimed. The observed difference is always agent_with_protocol minus agent_without_protocol.",
+      "required": [
+        "primary_outcome",
+        "direction",
+        "smallest_worthwhile_difference",
+        "observed_difference",
+        "registered_before_results",
+        "blocking_regressions",
+        "supports_gain"
+      ],
+      "properties": {
+        "primary_outcome": {
+          "enum": ["acceptance_pass_rate", "completion", "quality", "accuracy", "human_effort_min", "elapsed_min", "rework", "cost_usd", "cognitive_burden", "accessibility", "safety_events"]
+        },
+        "direction": { "enum": ["higher_is_better", "lower_is_better"] },
+        "smallest_worthwhile_difference": { "type": "number", "exclusiveMinimum": 0 },
+        "observed_difference": { "type": "number" },
+        "registered_before_results": { "type": "boolean" },
+        "blocking_regressions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "description": "Material safety, quality, cost, burden, or accessibility regressions that block a net-gain conclusion."
+        },
+        "supports_gain": { "type": "boolean" }
+      }
     },
     "arms": {
       "type": "array",
@@ -22,14 +113,14 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["arm", "metrics"],
+        "required": ["arm", "n", "acceptance_pass_rate", "metrics"],
         "properties": {
           "arm": {
             "enum": ["no_agent", "agent_without_protocol", "agent_with_protocol"],
             "description": "Which of the three arms this is."
           },
-          "n": { "type": "integer", "minimum": 1, "description": "Number of tasks/participants in this arm." },
-          "acceptance_pass_rate": { "type": ["number", "null"], "description": "Fraction of tasks whose fresh output passed the acceptance graders (0..1)." },
+          "n": { "type": "integer", "minimum": 0, "description": "Number actually observed in this arm; use zero, not a fictional one, when an arm was not run." },
+          "acceptance_pass_rate": { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Fraction of tasks whose fresh output passed the acceptance graders (0..1)." },
           "metrics": { "$ref": "#/$defs/vector" }
         }
       }
@@ -42,15 +133,80 @@
     "runner": {
       "type": "object",
       "additionalProperties": false,
-      "description": "Provenance binding the result to a runner, model(s), tasks, and captured outputs.",
+      "description": "Provenance binding the result to a runner, exact pack metadata, both intervention prompts, registered tasks, captured outputs, and source identity. Schema-version 1.0 records are preserved historical evidence; newly produced schema-version 2.0 records require the complete binding.",
       "properties": {
         "tool": { "type": "string" },
         "models": { "type": "array", "items": { "type": "string" } },
         "judge_model": { "type": ["string", "null"] },
         "generated_at": { "type": ["string", "null"] },
+        "task_file": { "$ref": "#/$defs/relativePath" },
         "tasks_sha256": { "type": ["string", "null"], "description": "Hash of the task-set inputs + graders." },
+        "outputs_file": { "$ref": "#/$defs/relativePath" },
         "outputs_sha256": { "type": ["string", "null"], "description": "Hash of the captured raw outputs file." },
-        "n_tasks": { "type": ["integer", "null"] }
+        "task_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "description": "Ordered identifiers of the task subset actually run; a partial subset cannot earn the full task-set assurance rung."
+        },
+        "n_tasks": { "type": ["integer", "null"] },
+        "evaluation_cost_usd": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "description": "Judge/evaluation overhead, reported separately from the operational model cost in each arm's productivity vector."
+        },
+        "pack": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "version", "protocol_file", "protocol_sha256"],
+          "properties": {
+            "id": { "type": "string", "minLength": 1 },
+            "version": { "type": "string", "minLength": 1 },
+            "protocol_file": { "$ref": "#/$defs/relativePath" },
+            "protocol_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "interventions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["agent_without_protocol", "agent_with_protocol"],
+          "properties": {
+            "agent_without_protocol": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["kind", "prompt", "prompt_sha256"],
+              "properties": {
+                "kind": { "const": "inline" },
+                "prompt": { "type": "string", "minLength": 1 },
+                "prompt_sha256": { "$ref": "#/$defs/sha256" }
+              }
+            },
+            "agent_with_protocol": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["kind", "file", "file_sha256", "effective_prompt_sha256"],
+              "properties": {
+                "kind": { "const": "file" },
+                "file": { "$ref": "#/$defs/relativePath" },
+                "file_sha256": { "$ref": "#/$defs/sha256" },
+                "effective_prompt_sha256": {
+                  "$ref": "#/$defs/sha256",
+                  "description": "Hash of the exact prefix extracted from the arm file and prepended to every task input."
+                }
+              }
+            }
+          }
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["commit", "tree", "dirty"],
+          "properties": {
+            "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+            "tree": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+            "dirty": { "type": "boolean", "description": "Schema-v2 result records require false: the exact inputs must have been committed before the run began. Templates may describe a dirty development checkout but cannot earn live assurance." }
+          }
+        }
       }
     },
     "limitations": {
@@ -60,24 +216,33 @@
     },
     "implied_evidence_status": {
       "enum": ["NO_IMPACT_EVIDENCE", "BENCHMARK_SIGNAL", "CONTROLLED_USER_SIGNAL", "FIELD_SIGNAL", "CAUSAL_EFFECT_SUPPORTED", "NO_CLEAR_GAIN", "HARM_OR_REGRESSION_FOUND"],
-      "description": "The evidence-ladder state this result supports. The harness caps this at the ceiling allowed by 'design'; a benchmark can never imply CAUSAL_EFFECT_SUPPORTED."
+      "description": "The evidence-ladder state this result records. Candidate v0.2 disables automatic positive promotion; negative and no-evidence states remain recordable."
     }
   },
   "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+    },
     "vector": {
       "type": "object",
       "additionalProperties": false,
       "description": "The productivity vector. Report every dimension you measured; leave the rest null rather than guessing. Do not collapse into a scalar unless weights are declared for a specific decision.",
       "properties": {
-        "completion": { "type": ["number", "null"], "description": "Fraction of tasks completed to the acceptance standard (0..1)." },
-        "quality": { "type": ["number", "null"], "description": "Blind or rubric score (normalised 0..1)." },
-        "accuracy": { "type": ["number", "null"], "description": "1 minus material-error rate (0..1); material errors and unsupported claims." },
-        "human_effort_min": { "type": ["number", "null"], "description": "Active human minutes: attention, interventions, review." },
-        "elapsed_min": { "type": ["number", "null"], "description": "Start-to-accepted-output wall-clock minutes." },
-        "rework": { "type": ["number", "null"], "description": "Corrections required after first delivery (count or fraction)." },
-        "cost_usd": { "type": ["number", "null"], "description": "Model, tool, and external-service cost." },
-        "cognitive_burden": { "type": ["number", "null"], "description": "User-rated difficulty/interruption load (normalised 0..1; lower is better)." },
-        "accessibility": { "type": ["number", "null"], "description": "Success rate across differing skill levels/assistive needs (0..1)." },
+        "completion": { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Fraction of tasks completed to the acceptance standard (0..1)." },
+        "quality": { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Blind or rubric score (normalised 0..1)." },
+        "accuracy": { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "1 minus material-error rate (0..1); material errors and unsupported claims." },
+        "human_effort_min": { "type": ["number", "null"], "minimum": 0, "description": "Active human minutes: attention, interventions, review." },
+        "elapsed_min": { "type": ["number", "null"], "minimum": 0, "description": "Start-to-accepted-output wall-clock minutes." },
+        "rework": { "type": ["number", "null"], "minimum": 0, "description": "Corrections required after first delivery (count or fraction)." },
+        "cost_usd": { "type": ["number", "null"], "minimum": 0, "description": "Model, tool, and external-service cost." },
+        "cognitive_burden": { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "User-rated difficulty/interruption load (normalised 0..1; lower is better)." },
+        "accessibility": { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Success rate across differing skill levels/assistive needs (0..1)." },
         "safety_events": { "type": ["integer", "null"], "minimum": 0, "description": "Privacy events, unintended external actions, policy violations. Any non-zero value is a headline, not a footnote." }
       }
     }

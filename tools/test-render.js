@@ -164,7 +164,7 @@ const goldenExpected = [
   '<p>From 1 upwards the bound is $\\lfloor n/2 \\rfloor$ with 3 cases.</p>',
   '<ul><li>item 0 uses <code>code</code></li><li>item 1 is plain</li></ul>',
   '<div class="table-wrap"><table><thead><tr><th>k</th><th>value</th></tr></thead><tbody>' +
-    '<tr><td>0</td><td>$v$</td></tr></tbody></table></div>'
+    '<tr><td data-label="k">0</td><td data-label="value">$v$</td></tr></tbody></table></div>'
 ].join('\n');
 eq('markdown() golden: heading, paragraph, list, table with integers + tokens',
   markdown(goldenSrc), goldenExpected);

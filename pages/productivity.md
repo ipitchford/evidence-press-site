@@ -1,38 +1,47 @@
 ## What this is
 
-Evidence Press publishes what research has discovered, with the evidence attached. Productivity Protocols publishes something adjacent: how to reliably use AI agents to do useful work — as **methods, not papers**. Each protocol is an open, downloadable, tested workflow, released with its assurance and its honestly-measured benefit attached.
+Evidence Press publishes what research has discovered, with the evidence attached. Productivity Protocols publishes something adjacent: bounded methods for using AI agents, plus the records needed to find out whether those methods are usable and worthwhile in a named setting.
 
-[**Browse the protocols →**](/protocols/)
+The contribution is not a new workflow language. It is an open adoption-and-evidence path for companies with little agent experience: one routine workflow, a governance screen, a no-install formative work contract, a stage-appropriate evaluation, and a recorded decision to continue one stage, revise, or stop. The later feasibility machinery needs a facilitator comfortable with Node and structured files, but no agent integration.
+
+## What the existing tests actually show
+
+Three version 0.1.0 predecessor protocols have **model-output benchmarks**. They compare an agent with and without the protocol on small registered task sets. All three record `NO_CLEAR_GAIN`; the heavier methods often cost more tokens or model time without improving judged output. The changed 0.1.1 packs do not inherit those badges and remain unmeasured until retested.
+
+No person completed a work item in those benchmarks. Human effort, time to accepted work, rework, cognitive burden, support labour, tool cost in company use, adoption, and organisational outcomes were not measured. On human or company productivity, the honest result is **no evidence in either direction**.
+
+## Start with the evidence stage
+
+| Stage | Starting condition | What it may answer | It must not justify |
+|---|---|---|---|
+| **Formative usability** | 1–5 consenting participants | Can people understand, operate, review, and safely stop the method? | A productivity effect or adoption based on one |
+| **Feasibility** | At least six participants and a frozen task bank | Can allocation, measurement, support, cost capture, and retention work? | A powered benefit claim; effects remain exploratory |
+| **Controlled evaluation** | A justified sample and independently reviewed design | Is there a context-bound incremental signal versus the same agent without the protocol? | Transfer to other companies, tasks, models, or risks |
+| **Organisational follow-up** | Governed ordinary use after a separate deployment decision | Do use, burden, costs, errors, and outcomes persist here? | Causal attribution unless the identification design supports it |
+
+Protocol exposure teaches a structure that people may not be able to unlearn. The included three-period crossover is therefore a **feasibility rehearsal only**. A future controlled evaluation should use randomized parallel agent-only and protocol-guided groups, with manual work as a secondary operational baseline.
 
 ## A protocol is a work contract, not a prompt
 
-A prompt is a suggestion. A protocol states the whole contract: what task it addresses, what it may read or change, where a person must approve, how it is checked, what counts as failure, and what evidence — if any — shows that it helps. It ships as an open [Agent Skill](https://agentskills.io/specification) you can inspect, download, and run without installation.
+A prompt is a suggestion. A protocol states the whole contract: the task and evidence boundary, what the agent may read or change, where a person must approve, how outputs are checked, what counts as failure, and when to stop. It ships as an open [Agent Skill](https://agentskills.io/specification) that can be inspected without installation.
 
 ## Two independent measures, never merged
 
-Every protocol carries two statuses. They answer different questions, and they are kept strictly apart:
+- **Protocol assurance** asks whether the pack is well formed and whether its declared checks pass. It does not establish human benefit or safe use in every setting.
+- **Work evidence** asks what was measured: agent-output benchmark, controlled-user signal, organisational field association, or an identified effect. Setting and identification are recorded separately.
 
-- **Protocol assurance** — is it well built and safe? This runs from a structural check of the packaging, through its own tests, up to reproduction of the same result across different models.
-- **Productivity evidence** — does it actually help, and how do we know? This is measured, never assumed.
+![The two status ladders — protocol assurance and work evidence — shown side by side and never merged](/assets/art/protocols-ladders.svg "Two independent measures, kept apart. Engineering checks cannot borrow the credibility of human-impact evidence, and an observed benefit cannot excuse a poorly bounded protocol.")
 
-A protocol can be flawlessly engineered and still make you slower. Collapsing the two into a single "quality" badge would hide exactly that, so the library refuses to. A workflow may sit at the top of the assurance ladder while its benefit is still unproven — and the page will say so.
+## Use the company route
 
-![The two status ladders — protocol assurance and productivity evidence — shown side by side and never merged](/assets/art/protocols-ladders.svg "Two independent measures, kept apart. A protocol can climb the whole assurance ladder on the left and still sit at NO_CLEAR_GAIN on the right — and so far, ours do.")
+The starter kit provides the suitability screen, worker information, frozen plan, task bank, allocation, observation and follow-up records, quality rubric, incident card, semantic validator, and synthetic mutation controls. It keeps missing work items and negative findings instead of deleting them.
 
-## Benefit is measured, not claimed
+[**Open the staged company starter →**](/protocols/start/)
 
-The library keeps negative results. A workflow that was evaluated and did not help is useful knowledge, particularly when it looked promising. So far, every protocol that has been evaluated live carries **no clear gain**: on its task set and its model, the method added no worthwhile benefit — and in the ceremony-heavy cases, it cost quality and time. Each such finding is stated plainly on the protocol's page, with the run behind it, rather than quietly dropped.
+## Inspect the protocol library
 
-That honesty is the point. A benefit is claimed only up to the evidence that supports it; below that, the statement is simply "benefit not measured."
+The registry retains eight candidate methods. Each page exposes the contract, version, permissions, tests, historical evaluation record, machine-readable representation, and deterministic archive. `Document to action plan` is the recommended low-risk usability entry point; it is not a proven productivity intervention.
 
-## How to use them
+[**Browse all eight protocols →**](/protocols/)
 
-Every protocol offers three ways in: a plain-language **copy-and-run** edition that needs no installation, a **downloadable pack** with a verifiable SHA-256 hash, and an optional **connected** edition for tools and data, where any outward action waits for a person to approve it. Each also exposes a machine-readable record, so an agent can read the contract as easily as a person can.
-
-## Browse the protocols
-
-The full list is filterable by task, risk, required tools, assurance, and measured benefit. Each entry links to its contract, its tests, its evaluation, and its download.
-
-[**See the protocols →**](/protocols/)
-
-Prose here is public domain and the code is openly licensed, and every status shown is reproducible from a clean checkout — the same standard the rest of Evidence Press holds itself to.
+The prose is dedicated to the public domain and reusable code is openly licensed. Build and hash checks establish inspectability and replay within their declared boundary; they do not establish independent review, field readiness, or company impact.

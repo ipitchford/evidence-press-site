@@ -1,15 +1,18 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "id": "productivity-evidence",
   "title": "Productivity evidence ladder",
   "question": "Does the protocol actually improve the work, and how do we know?",
   "independent_from": "protocol-assurance",
   "principle": "Benefit is measured, never assumed. A perfectly assured protocol starts at NO_IMPACT_EVIDENCE and stays there until an evaluation moves it. The negative outcomes are findings, not low rungs: a protocol found to give no clear gain, or to cause harm, has been evaluated more thoroughly than one with no evidence at all.",
-  "design_ceiling": {
-    "benchmark": "BENCHMARK_SIGNAL",
-    "controlled_user": "CONTROLLED_USER_SIGNAL",
-    "field": "FIELD_SIGNAL",
-    "causal": "CAUSAL_EFFECT_SUPPORTED"
+  "promotion": {
+    "automatic_positive_promotion_enabled": false,
+    "reason": "Candidate v0.2 records evidence profiles but requires a separate, independently reviewed promotion artifact before any positive state can be issued. Setting, study stage, identification and review status are separate dimensions.",
+    "setting_ceiling": {
+      "benchmark": "BENCHMARK_SIGNAL",
+      "controlled_user": "CONTROLLED_USER_SIGNAL",
+      "organizational_field": "FIELD_SIGNAL"
+    }
   },
   "states": [
     {
@@ -17,7 +20,7 @@
       "id": "NO_IMPACT_EVIDENCE",
       "polarity": "neutral",
       "label": "No impact evidence",
-      "meaning": "No evaluation of benefit has been run. This says nothing about whether the protocol helps, harms, or is even usable — usability and safety are the assurance ladder's concern, not this one's.",
+      "meaning": "No evaluation of benefit has been run. This says nothing about whether the protocol helps, harms, or is even usable. Usability observations, assurance checks, governance and incident records remain separate from this evidence state.",
       "established_by": "Default for any protocol before evaluation."
     },
     {
@@ -33,24 +36,24 @@
       "id": "CONTROLLED_USER_SIGNAL",
       "polarity": "positive",
       "label": "Controlled user signal",
-      "meaning": "It improves at least one measured dimension in a controlled user comparison.",
-      "established_by": "A controlled_user-design eval with real participants and a stated comparison."
+      "meaning": "A preregistered primary outcome shows a context-bound net improvement in a controlled-user comparison, with uncertainty, missingness, and all frozen guardrails reported.",
+      "established_by": "An independently reviewed controlled-user artifact with an adequate design, complete participant flow, frozen task allocation, uncertainty, missingness sensitivity, and no blocking quality, cost, burden, accessibility, error, or safety regression."
     },
     {
       "order": 3,
       "id": "FIELD_SIGNAL",
       "polarity": "positive",
       "label": "Field signal",
-      "meaning": "A real organisation or user group reports measured benefit in ordinary use.",
-      "established_by": "A field-design report with measurement, not testimonial."
+      "meaning": "A real organisation or user group records a measured beneficial association in ordinary use.",
+      "established_by": "An organisational-field report with prospective measurement, denominators, missingness, costs, guardrails, and transfer limits. FIELD_SIGNAL alone does not attribute the change to the protocol."
     },
     {
       "order": 4,
       "id": "CAUSAL_EFFECT_SUPPORTED",
       "polarity": "positive",
       "label": "Causal effect supported",
-      "meaning": "A suitable design supports an attributable net productivity effect.",
-      "established_by": "A causal-design study whose identification strategy is stated and defensible. This is the claim the Policy Identification Observatory would audit."
+      "meaning": "A defensible identification strategy supports a context-bound attributable net productivity effect.",
+      "established_by": "A confirmatory randomized or defensible quasi-experimental study in a controlled-user or organisational-field setting, measuring a human/work outcome, with independent review of identification, uncertainty, missingness sensitivity, guardrails, and the licensed transfer boundary. A model-only benchmark is capped at BENCHMARK_SIGNAL. This is the claim the Policy Identification Observatory would audit."
     },
     {
       "order": 98,

@@ -23,11 +23,14 @@ function main() {
   covers.sort((a, b) => (a.path < b.path ? -1 : 1));
   const digest = U.sha256String(covers.map(c => `${c.path}:${c.sha256}`).join('\n'));
   const attestation = {
-    schema_version: '1.0',
+    schema_version: '2.0',
     subject: 'productivity-protocols',
     version: U.readJSON(path.join(U.ROOT, 'site.config.json')).softwareVersion,
     source_commit: git.sourceCommit,
+    source_commit_full: git.sourceCommitFull,
+    source_tree: git.sourceTree,
     source_date: git.sourceDate,
+    dirty: git.dirty,
     node: process.version,
     covers,
     digest,

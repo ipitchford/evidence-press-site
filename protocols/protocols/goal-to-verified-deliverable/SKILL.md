@@ -7,15 +7,14 @@ description: >-
   almost any open-ended agent task where the work should be checkable, not just
   plausible. Read-only except for writing its own outputs; takes no external or
   irreversible action.
-license: Apache-2.0
+license: CC0-1.0
 metadata:
   protocol: goal-to-verified-deliverable
-  protocol_version: 0.1.0
+  protocol_version: 0.1.1
   kernel: verified-agent-work@0.1.0
   assurance_level: verified
   risk_class: low
-allowed-tools:
-  - read
+allowed-tools: Read
 ---
 
 # Goal to verified deliverable

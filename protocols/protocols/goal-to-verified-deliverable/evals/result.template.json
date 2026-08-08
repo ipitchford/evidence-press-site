@@ -1,14 +1,66 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
+  "record_kind": "template",
   "protocol_id": "goal-to-verified-deliverable",
-  "protocol_version": "0.1.0",
-  "task_set": "gtvd-core-v1",
-  "design": "benchmark",
+  "protocol_version": "0.1.1",
+  "task_set": "gtvd-diverse-v2",
+  "evidence_profile": {
+    "setting": "benchmark",
+    "study_stage": "development",
+    "identification": "descriptive",
+    "review_status": "internal",
+    "claim_boundary": "Prospective template for gtvd-diverse-v2 only. No model or human run has been recorded."
+  },
   "arms": [
-    { "arm": "no_agent", "n": 7, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
-    { "arm": "agent_without_protocol", "n": 7, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
-    { "arm": "agent_with_protocol", "n": 7, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } }
+    { "arm": "no_agent", "n": 7, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
+    { "arm": "agent_without_protocol", "n": 7, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
+    { "arm": "agent_with_protocol", "n": 7, "acceptance_pass_rate": null, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } }
   ],
+  "runner": {
+    "tool": "run-eval@0.3.0 template — NOT EXECUTED",
+    "models": [],
+    "judge_model": null,
+    "generated_at": null,
+    "task_file": "evals/task-set.json",
+    "tasks_sha256": "3c9ba0434701669dbd2f1fc85db11f6be3f886f304d7db0126e2428c545f67b3",
+    "outputs_file": "evals/live/runs/REPLACE-WHEN-RUN.jsonl",
+    "outputs_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "task_ids": [
+      "gtvd-task-drafting",
+      "gtvd-task-doc-analysis",
+      "gtvd-task-data-check",
+      "gtvd-task-planning",
+      "gtvd-task-research",
+      "gtvd-task-handoff",
+      "gtvd-task-injection"
+    ],
+    "n_tasks": 7,
+    "evaluation_cost_usd": null,
+    "pack": {
+      "id": "goal-to-verified-deliverable",
+      "version": "0.1.1",
+      "protocol_file": "protocol.yaml",
+      "protocol_sha256": "3a486a8dfcd6cb19b5d3ea060c38d1883b5ff9dc85a429bfee3908455b834b0e"
+    },
+    "interventions": {
+      "agent_without_protocol": {
+        "kind": "inline",
+        "prompt": "You are a helpful assistant. Complete the following task using the provided materials.",
+        "prompt_sha256": "c929bdcc7e6739f4819924ee3dafeabdeb71ba9a74582e85dde796e7fa1b7732"
+      },
+      "agent_with_protocol": {
+        "kind": "file",
+        "file": "adapters/generic-chat/prompt.md",
+        "file_sha256": "0322a9150d07987d1f9fa6e58b0fa12e7a87bf41deb9e780af1d095d34ca1e7b",
+        "effective_prompt_sha256": "39958e859c7360a62555f4d98563ac6b5e4111d2f33affbcfd8787fa7039e2de"
+      }
+    },
+    "source": {
+      "commit": "64531077fc707b03c762877ed97d01369163ddd9",
+      "tree": "1ce4edcb9b8517c722e7ea34df240efe22bc9b42",
+      "dirty": true
+    }
+  },
   "notes": "TEMPLATE — NOT EXECUTED. Metrics are null on purpose. Producing real numbers requires live model runs, which the offline receipt does not perform. Do not fill this in with estimates; measure or leave null.",
   "limitations": ["No run has been performed.", "A benchmark design cannot support a claim stronger than BENCHMARK_SIGNAL."],
   "implied_evidence_status": "NO_IMPACT_EVIDENCE"

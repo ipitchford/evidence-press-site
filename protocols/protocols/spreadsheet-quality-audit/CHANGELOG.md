@@ -1,6 +1,18 @@
 # Changelog — spreadsheet-quality-audit
 
-## [0.1.0] — unreleased (local candidate)
+## [0.1.1] — candidate
+
+### Changed
+- Corrected the Agent Skills metadata and tightened the shared validation,
+  evidence, provenance and release controls.
+- Bound evidence to the exact pack version. Historical result records, where
+  present, remain inspectable but cannot certify 0.1.1.
+
+### Status
+- Current assurance is recomputed from the 0.1.1 pack by `verify-all`.
+- Productivity evidence: `NO_IMPACT_EVIDENCE`.
+
+## [0.1.0] — deployed predecessor (historical)
 
 ### Added
 - First version of the protocol: contract (`protocol.yaml`), skill (`SKILL.md`),

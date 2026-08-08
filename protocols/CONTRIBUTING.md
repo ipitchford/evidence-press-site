@@ -11,6 +11,11 @@ need to do** — not a spectacular one-off demo. The best candidates are
 high-frequency, low-to-moderate-risk tasks that are easy to evaluate. If you
 cannot describe the friction in one sentence and name who has it, it is not ready.
 
+Before implementation, add a bounded prior-art/source map explaining what the
+proposal inherits and what it changes. For a proposed company trial, also name
+the workflow owner, affected people, data destination/retention, decision right,
+rollback and incident contact.
+
 ## Scaffold
 
 Copy the structure of an existing pack (`goal-to-verified-deliverable` is the
@@ -55,7 +60,18 @@ non-uses is under-specified), `prohibited_actions` (explicit, not inferred),
 
 At least one positive test and one failure/boundary test under `tests/`. If the
 protocol reads external or supplied content, include a prompt-injection test. A
-pack with no failure test cannot pass `TASKSET_PASSED`.
+pack with no failure test cannot pass example conformance or any live-task rung.
+Deliberately bad fixtures must demonstrate that the load-bearing grader actually
+fails.
+
+## Design evaluation before collecting outcomes
+
+For a company comparison, state the primary estimand as protocol-guided use minus
+the same agent without the protocol. Treat manual work as a secondary comparator;
+keep quality, material errors, human effort, elapsed time, rework, cost, burden,
+help requests, adoption and safety separate. Record task allocation/order,
+missingness, attrition and uncertainty. A formative usability study is not an
+impact study, and a model-only benchmark is not human productivity evidence.
 
 ## Verify before you claim
 

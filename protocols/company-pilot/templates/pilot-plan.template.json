@@ -1,0 +1,257 @@
+{
+  "schema_version": "2.0",
+  "pilot_id": "replace-with-pilot-id",
+  "title": "Draft document-to-action-plan company pilot",
+  "status": "draft",
+  "study_stage": "feasibility",
+  "study_stage_taxonomy": ["formative", "feasibility", "controlled"],
+  "protocol": {
+    "id": "document-to-action-plan",
+    "version": "0.1.0",
+    "edition": "copy-and-run",
+    "protocol_prompt_sha256": "e26e4e46bad313b6fa8f72d2e59ab7e7e8cd0d4035126757bc203c3d8b65fcb2"
+  },
+  "evidence_boundary": {
+    "current_evidence": "No company impact is established by this unrun pilot kit.",
+    "pilot_purpose": "Assess feasibility and describe the protocol-versus-agent-only contrast, with manual work as a secondary comparator; this crossover does not identify a controlled impact effect.",
+    "prohibited_claim": "Do not state or imply that the protocol improves productivity, quality, safety, adoption, or business outcomes unless completed evidence supports that exact claim."
+  },
+  "workflow": {
+    "name": "Replace with one recurring document workflow",
+    "description": "Describe a low-stakes, read-only workflow that turns non-sensitive business documents into a checkable action plan.",
+    "workflow_owner_role": "Replace with accountable role",
+    "affected_people_groups": ["Replace with workers or teams affected by the workflow"],
+    "unit_of_work": "One comparable non-sensitive document set and its action plan",
+    "current_manual_process": "Describe who reads the documents, how actions are recorded, and how a human checks the result today.",
+    "in_scope": ["Read-only extraction from non-sensitive or redacted business documents"],
+    "out_of_scope": [
+      "Personal, special-category, commercially sensitive, or legally privileged material",
+      "Employment, credit, legal, health, safety-critical, or other high-impact decisions",
+      "Sending messages, updating systems, committing named workers, or taking external action"
+    ]
+  },
+  "readiness": {
+    "assessment_date": "2026-09-01",
+    "assessed_by_role": "Replace with pilot reviewer role",
+    "checks": [
+      {"id": "workflow_repeated_and_comparable", "result": "UNKNOWN", "blocking": true, "evidence": "Record concrete evidence here."},
+      {"id": "low_stakes_read_only", "result": "UNKNOWN", "blocking": true, "evidence": "Record concrete evidence here."},
+      {"id": "quality_rubric_available", "result": "UNKNOWN", "blocking": true, "evidence": "Record concrete evidence here."},
+      {"id": "enough_work_for_three_periods", "result": "UNKNOWN", "blocking": true, "evidence": "Record concrete evidence here."},
+      {"id": "same_agent_configuration", "result": "UNKNOWN", "blocking": true, "evidence": "Record concrete evidence here."},
+      {"id": "worker_time_and_consent", "result": "UNKNOWN", "blocking": true, "evidence": "Record concrete evidence here."},
+      {"id": "data_non_sensitive", "result": "UNKNOWN", "blocking": true, "evidence": "Record concrete evidence here."},
+      {"id": "owner_and_incident_cover", "result": "UNKNOWN", "blocking": true, "evidence": "Record concrete evidence here."},
+      {"id": "rollback_tested", "result": "UNKNOWN", "blocking": true, "evidence": "Record concrete evidence here."},
+      {"id": "pilot_capacity", "result": "UNKNOWN", "blocking": true, "evidence": "Record concrete evidence here."}
+    ],
+    "overall_decision": "HOLD",
+    "rationale": "A template starts on HOLD. Change to GO only after all evidence and approvals are complete."
+  },
+  "governance": {
+    "executive_sponsor_role": "Replace with sponsor role",
+    "pilot_owner_role": "Replace with day-to-day pilot owner role",
+    "workflow_owner_role": "Replace with accountable workflow owner role",
+    "data_owner_role": "Replace with data owner role",
+    "affected_people_representative_role": "Replace with worker or affected-team representative role",
+    "decision_rights": {
+      "may_start_pilot": ["workflow_owner"],
+      "may_pause_or_stop": ["pilot_owner", "any_participant", "safety_reviewer"],
+      "must_approve_scale_up": ["workflow_owner", "affected_people_representative", "data_owner", "safety_reviewer"],
+      "must_approve_output_use": "The existing human workflow owner or delegated reviewer",
+      "agent_must_not_decide": [
+        "Whether a worker is performing well",
+        "Whether anyone receives an employment consequence",
+        "Whether a pilot output becomes an operational commitment",
+        "Whether the pilot scales beyond its approved scope"
+      ]
+    }
+  },
+  "facilitation": {
+    "mode": "self_guided",
+    "facilitator_role": null,
+    "no_endorsement_implied": true,
+    "support_minutes_measured": true,
+    "help_requests_measured": true
+  },
+  "worker_protections": {
+    "voluntary_informed_consent": true,
+    "no_penalty_for_declining_or_withdrawing": true,
+    "withdrawal_process_explained": true,
+    "individual_performance_use_prohibited": true,
+    "employment_decision_use_prohibited": true,
+    "monitoring_explained": true,
+    "human_review_before_operational_use": true,
+    "direct_identifiers_collected": false,
+    "participant_ids_pseudonymous": true,
+    "consultation_status": "not_applicable_with_reason",
+    "consultation_note": "Replace with the reason or record that the relevant worker representative was consulted.",
+    "consent_record_destination": "Restricted company consent register, kept separately from pilot outcomes"
+  },
+  "data_governance": {
+    "source_data_policy": "non_sensitive_business_documents_only",
+    "personal_data_allowed": false,
+    "sensitive_or_special_category_data_allowed": false,
+    "synthetic_or_redacted_preferred": true,
+    "destination": "Replace with an approved local or company-controlled restricted folder",
+    "data_owner_role": "Replace with data owner role",
+    "access_roles": ["pilot_owner", "blinded_quality_rater"],
+    "retention_days": 120,
+    "delete_by": "2027-04-30",
+    "deletion_method": "Delete pilot files and verify removal from the approved destination",
+    "external_sync_allowed": false,
+    "raw_agent_logs_retained": false,
+    "retention_rationale": "Long enough to complete the 90-day follow-up and audit, then delete."
+  },
+  "trial": {
+    "design": "randomized_counterbalanced_three_period_crossover",
+    "randomization_unit": "worker",
+    "arms": ["manual", "agent_without_protocol", "agent_with_protocol"],
+    "periods": 3,
+    "sequence_set": "all_six_permutations",
+    "assignment_file": "company-pilot/assignments/working-assignment.json",
+    "seed_commitment_sha256": "0a2fafc38e0558cda52938b20e6e57ef875e11d57de259ece07e95b4ef61733f",
+    "participant_list_frozen_before_allocation": true,
+    "allocation_generated_by_role": "Independent allocation custodian",
+    "seed_source": "example_only",
+    "allocation_commitment_recorded_before_reveal": true,
+    "rerolls_permitted": false,
+    "seed_disclosure_rule": "keep the seed sealed until data lock, then disclose it with the frozen participant list for replay",
+    "allocation_concealed_until_enrolment": true,
+    "same_agent_between_agent_arms": true,
+    "agent_model_identifier": "Replace with exact model and version used in both agent arms",
+    "agent_configuration_path": "Replace with the frozen agent-configuration JSON path",
+    "agent_configuration_sha256": "de7a0d3f199847efb267d31fe3c9691fbbdf77a44aaf0ce7d981ffaac6d60812",
+    "bare_agent_prompt_path": "Replace with the frozen ordinary-prompt text path",
+    "bare_agent_prompt_sha256": "6d7543a78e6e4dbaaba7753f7d558e2b33ae8655eac978721e636ceac87ddf27",
+    "task_bank_path": "company-pilot/templates/task-bank.template.json",
+    "task_bank_sha256": "dc2677b6df5e683bd3281dd6c81fe229a41736c4ed078aedba68ab63eb1449b8",
+    "sample_size": {
+      "basis": "feasibility_precision",
+      "powered_for_confirmatory_effect": false,
+      "target_randomized_workers": 6,
+      "sequence_block_size": 6,
+      "expected_attrition_fraction": 0.15,
+      "minimum_complete_pairs_target": 5,
+      "paired_sd_assumption_min": 8,
+      "smallest_worthwhile_difference_min": 5,
+      "target_ci_half_width_min": 10,
+      "confidence_level": 0.95,
+      "confirmatory_power_target": null,
+      "calculation_note": "Illustrative feasibility assumptions only: one complete six-sequence block estimates recruitment, completion, variance and interval width; it is not powered for a confirmatory effect."
+    },
+    "tasks_per_arm_per_worker": 2,
+    "period_duration_days": 5,
+    "washout_days": 2,
+    "carryover_controls": [
+      "Use different but difficulty-matched document sets in every period.",
+      "Do not let workers copy the protocol text into the agent-only arm.",
+      "Record contamination and prior exposure for every work item."
+    ],
+    "task_equivalence_method": "Blindly rate and block comparable document sets by length, number of action items, ambiguity, and injection risk before allocation.",
+    "outcome_rater_blinded_to_arm": true,
+    "contamination_tracked": true,
+    "preregistration_path": "Replace with a frozen local analysis-plan path before enrolment",
+    "preregistration_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "outcomes": {
+    "primary": {
+      "metric": "human_effort_min",
+      "unit": "active human minutes per work item",
+      "direction": "lower_is_better",
+      "contrast": "agent_with_protocol_minus_agent_without_protocol",
+      "estimand": "mean_within_worker_difference",
+      "population": "all_randomized_workers",
+      "aggregation": "mean_within_worker_per_arm_before_contrast"
+    },
+    "secondary_and_guardrail": [
+      {"metric": "elapsed_time_min", "direction": "lower_is_better", "collection_method": "Timer from work-item start to accepted output or declared stop."},
+      {"metric": "rework_count", "direction": "lower_is_better", "collection_method": "Count correction cycles after the first submitted action plan."},
+      {"metric": "quality_score", "direction": "higher_is_better", "collection_method": "Blinded rater applies the frozen 0 to 100 quality rubric."},
+      {"metric": "material_error_count", "direction": "lower_is_better", "collection_method": "Blinded count of invented, missing, mistyped, or wrongly sourced material items."},
+      {"metric": "cognitive_burden_1_to_7", "direction": "lower_is_better", "collection_method": "Worker rates mental effort immediately after each work item."},
+      {"metric": "would_adopt", "direction": "higher_is_better", "collection_method": "Worker answers a yes or no adoption question after each work item."},
+      {"metric": "help_request_count", "direction": "lower_is_better", "collection_method": "Count requests to the pilot owner or optional trusted adviser."},
+      {"metric": "facilitator_support_min", "direction": "lower_is_better", "collection_method": "Optional facilitator records active support minutes per work item; zero for self-guided work."},
+      {"metric": "approver_checker_min", "direction": "lower_is_better", "collection_method": "Human approver and checker record active review and acceptance minutes per work item."},
+      {"metric": "total_human_resource_min", "direction": "lower_is_better", "collection_method": "Derived as participant effort plus facilitator support plus approver and checker minutes."},
+      {"metric": "model_tool_cost_usd", "direction": "lower_is_better", "collection_method": "Record measured model and tool charges in USD per work item; use null when unavailable, never an estimate presented as measured."},
+      {"metric": "safety_event_count", "direction": "lower_is_better", "collection_method": "Count coded near misses and incidents; retain separate category and severity."}
+    ],
+    "quality_measurement": {
+      "rubric_path": "company-pilot/templates/quality-rubric.md",
+      "rubric_sha256": "1867db7916034ac11904fb964b291606708044d4006369283762d1fdd7df473c",
+      "rubric_version": "v1.0",
+      "acceptance_threshold_score": 80,
+      "maximum_material_errors_for_acceptance": 0,
+      "severe_safety_event_precludes_acceptance": true,
+      "partial_credit_anchors_frozen": true,
+      "second_rating_fraction": 0.25,
+      "agreement_method": "ICC_A_1_absolute_agreement",
+      "rater_ids": ["R001", "R002"],
+      "rater_assignment_method": "sha256_ranked_completed_items_within_arm_task_block",
+      "second_rating_balance_strata": "arm_x_task_block",
+      "disagreement_resolution_method": "Retain both original ratings; adjudicate only factual material-error classification using the frozen answer key and a third role blinded to arm."
+    },
+    "measurement_window": "from work-item start through accepted output or declared stop"
+  },
+  "analysis": {
+    "primary_method": "paired worker-level feasibility estimate adjusted descriptively for period and sequence; not a controlled impact effect",
+    "secondary_manual_contrast": "agent_with_protocol_minus_manual",
+    "confidence_level": 0.95,
+    "smallest_worthwhile_improvement_min": 5,
+    "quality_noninferiority_margin_points": 5,
+    "period_and_sequence_adjustment": "Estimate the arm contrast with worker blocking and fixed effects for period, sequence, and task-family difficulty.",
+    "carryover_assessment": "Report arm-by-period patterns and a prespecified prior-arm sensitivity check; do not reinterpret a carryover signal after seeing results.",
+    "missing_data_strategy": "Keep every randomized worker in the flow table; report complete-pair estimates, reasons and timing, then run prespecified sensitivity bounds for missing outcomes.",
+    "attrition_reporting": "report assigned, started, completed, withdrawn and lost with reasons by sequence and arm; keep pre-randomization screening outside randomized outcomes",
+    "multiplicity": "one prespecified primary descriptive estimand; all other contrasts and outcomes are secondary or exploratory",
+    "uncertainty_reporting": "report point estimates, 95% confidence intervals, sample counts, missing pairs, and raw arm summaries; do not use p-values alone",
+    "exploratory_label_required": true
+  },
+  "follow_up": {
+    "anchor_date": "2026-10-15",
+    "day_30": {
+      "target_day": 30,
+      "window_days": 7,
+      "owner_role": "pilot_owner",
+      "measures": ["protocol_use_frequency", "workflow_still_in_use", "would_adopt", "help_request_count", "facilitator_support_min", "cognitive_burden_1_to_7", "material_error_count", "safety_event_count", "local_changes", "reasons_for_non_use"]
+    },
+    "day_90": {
+      "target_day": 90,
+      "window_days": 14,
+      "owner_role": "pilot_owner",
+      "measures": ["protocol_use_frequency", "workflow_still_in_use", "would_adopt", "help_request_count", "facilitator_support_min", "cognitive_burden_1_to_7", "material_error_count", "safety_event_count", "local_changes", "reasons_for_non_use"]
+    }
+  },
+  "decision_rule": {
+    "scale_up_is_automatic": false,
+    "controlled_effect_claim_allowed": false,
+    "feasibility_review_dimensions": ["recruitment_and_retention", "task_completion", "measurement_completeness", "protocol_adherence", "support_resource", "rating_reliability", "safety_process"],
+    "allowed_process_conclusions": ["not_feasible", "revise_feasibility_design", "feasible_to_plan_controlled_parallel_evaluation"]
+  },
+  "incident_and_rollback": {
+    "stop_triggers": [
+      "Any severe safety event or unauthorized external action",
+      "Sensitive, personal, privileged, or out-of-scope data enter the pilot",
+      "A worker withdraws and asks for deletion of their retained pilot data",
+      "Agent configuration or protocol prompt changes during the trial"
+    ],
+    "rollback_owner_role": "workflow_owner",
+    "rollback_steps": [
+      "Pause assignments and return the workflow to its documented manual process.",
+      "Quarantine affected outputs and prevent operational use pending review.",
+      "Record the coded incident, honor withdrawal or deletion requests, and verify restoration."
+    ],
+    "restoration_point": "The documented manual workflow and last human-approved source record before the pilot item",
+    "incident_contact_role": "safety_reviewer",
+    "incident_contact_channel": "Replace with internal incident channel",
+    "response_target_hours": 4
+  },
+  "approvals": [
+    {"role": "workflow_owner", "status": "pending", "date": null, "conditions": "Confirm suitability and rollback."},
+    {"role": "affected_people_representative", "status": "pending", "date": null, "conditions": "Confirm worker protections and burden."},
+    {"role": "data_owner", "status": "pending", "date": null, "conditions": "Confirm destination, access, retention and deletion."},
+    {"role": "safety_reviewer", "status": "pending", "date": null, "conditions": "Confirm stop triggers and incident route."}
+  ]
+}
