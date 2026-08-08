@@ -13,7 +13,9 @@
     window.renderMathInElement(document.body, {
       delimiters: [
         { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false }
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
       ],
       /* A malformed expression should show as source text, not replace the
          page region with an exception. */
