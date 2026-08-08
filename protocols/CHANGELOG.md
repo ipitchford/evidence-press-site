@@ -66,8 +66,32 @@ verifying each finding against the code:
   with ≥2 models) only from a schema-valid live result whose with-protocol arm
   passed acceptance; the eval-result schema gained a provenance/runner block.
 
+### Expansion + second review (2026-08-08, same candidate)
+- Grew from 3 to **8 protocols**: added project-handoff, spreadsheet-quality-audit,
+  decision-memo-under-uncertainty, adversarial-output-review, repetitive-workflow-capture.
+- **Second independent adversarial review (Sol)** — its central hit (live
+  `TASKSET_PASSED` still self-attested) fixed: `liveAssurance` now RECOMPUTES
+  acceptance from the committed raw outputs (`tools/lib/graders.js`), binds by
+  SHA-256 to task-set/outputs/pack/version, and rejects tampering; cross-model
+  needs ≥2 separate passing runs; positive states need a recomputed with>without
+  improvement; overclaim + security scanners further hardened; a factual error in
+  FINDINGS corrected (accuracy 0.80/0.60); live-run trust scoped in KNOWN-LIMITATIONS.
+- **Live evaluations:** document-to-action-plan and evidence-backed-brief earned
+  `TASKSET_PASSED`; goal-to-verified-deliverable earned `CROSS_MODEL_REPRODUCED`
+  (o4-mini + gpt-5.2). All three measured protocols: `NO_CLEAR_GAIN` (retained). A
+  concise deliverable-only edition recovered most of the quality and halved cost —
+  still no gain. Harness hardened: retry/backoff, multiple judges, shared graders.
+- **Foundry operations:** `tools/submit-check.js` (intake gate), `tools/deprecate.js`
+  (drill-exercised end-to-end), `foundry/` (proposal template + process). **CI +
+  attestation:** `ci/verify-protocols.yml` (template) + `tools/attest.js` (signable
+  digest over all receipts) — the reproducible→trusted path, authored not activated.
+- **Accessibility:** minimum-model + French editions (flagship), a print stylesheet,
+  `ACCESSIBILITY.md`. **Deploy integration** authored non-destructively (`deploy/`),
+  verified into a temp mount, and NOT run. Clean-checkout replay proven; both themes
+  visually QA'd.
+
 ### Constraints
 - Standing constraints recorded in `AGENTS.md`: no publish/deploy/push/remote/
   external contact; no changes to the live site outside `protocols/`. (The live
-  eval calls the OpenAI API — the model calls the user explicitly requested — and
-  writes only inside `protocols/`; nothing was published or deployed.)
+  evals call the OpenAI API — the model calls the user explicitly requested — and
+  write only inside `protocols/`; nothing was published or deployed.)

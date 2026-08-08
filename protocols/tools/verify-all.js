@@ -144,7 +144,8 @@ function runAll(opts) {
     // A live run can raise the rung above the offline ceiling — only from EXAMPLE_
     // CONFORMANCE_VALIDATED (all offline gates must already pass).
     const live = offlineStatus === 'EXAMPLE_CONFORMANCE_VALIDATED' ? liveAssurance(U.packDir(id)) : null;
-    const status = live ? live.rung : offlineStatus;
+    // A maintainer-set DEPRECATED source status is terminal: the gates never un-deprecate a pack.
+    const status = p.assurance_status === 'DEPRECATED' ? 'DEPRECATED' : (live ? live.rung : offlineStatus);
 
     const checks = [
       { name: 'manifest', passed: true, summary: `${manifest.files.length} files hashed` },

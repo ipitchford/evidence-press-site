@@ -3,8 +3,8 @@
   "scope": "protocol",
   "subject_id": "document-to-action-plan",
   "version": "0.1.0",
-  "source_commit": "30b0b6f",
-  "source_date": "2026-08-08T08:17:42+01:00",
+  "source_commit": "f2051eb",
+  "source_date": "2026-08-08T08:39:52+01:00",
   "toolchain": {
     "node": "v25.2.1",
     "builder": "verify-all@0.1.0"
@@ -13,7 +13,7 @@
     {
       "name": "manifest",
       "passed": true,
-      "summary": "22 files hashed"
+      "summary": "25 files hashed"
     },
     {
       "name": "validate",
@@ -39,6 +39,11 @@
       "name": "hostile",
       "passed": true,
       "summary": "clean"
+    },
+    {
+      "name": "live",
+      "passed": true,
+      "summary": "taskset_passed on o4-mini → TASKSET_PASSED (measured evidence: NO_CLEAR_GAIN)"
     }
   ],
   "files_sha256": [
@@ -91,6 +96,18 @@
       "sha256": "96a651f37196daa143ce1e6a27b12ebd2e2900085444922ce936f21ec75807ce"
     },
     {
+      "path": "evals/live/dtap-core-v1.tasks.json",
+      "sha256": "1035980e1d9a2c39d73a6c95a853a25e01bdfbb0bf7b21668a758cd795adefb1"
+    },
+    {
+      "path": "evals/live/runs/live-o4-mini-2026-08-08.jsonl",
+      "sha256": "9eb18b03ebde3095a8094dd46034241b4c0ee56dc34a33d8f77489ad7631fbe4"
+    },
+    {
+      "path": "evals/result-live-o4-mini-2026-08-08.json",
+      "sha256": "e304881ece8c054bc253a64fff5791cbbc104f512827345939a35ac789b872ba"
+    },
+    {
       "path": "evals/result.template.json",
       "sha256": "210e38b9f23aea3e6643372379d07a980f3c5a47974c3c08a89f957fb8a01cfc"
     },
@@ -112,7 +129,7 @@
     },
     {
       "path": "protocol.yaml",
-      "sha256": "14c976ea42eb324c6d5e43c300d5ed1bc05385c08ff78c0af73f45b518748ad8"
+      "sha256": "957470582214e8f776f97298d7f670d43ef8b1fa051895f3b69335f7a1560e1b"
     },
     {
       "path": "references/extraction-checklist.md",
@@ -131,8 +148,8 @@
       "sha256": "9a7c28b16bd26db7460de1cac05b58432b8d3262af52352cacf6a864014bfef6"
     }
   ],
-  "assurance_status": "EXAMPLE_CONFORMANCE_VALIDATED",
-  "productivity_evidence": "NO_IMPACT_EVIDENCE",
+  "assurance_status": "TASKSET_PASSED",
+  "productivity_evidence": "NO_CLEAR_GAIN",
   "replay": {
     "command": "node tools/verify-all.js",
     "byte_identical_expected": true

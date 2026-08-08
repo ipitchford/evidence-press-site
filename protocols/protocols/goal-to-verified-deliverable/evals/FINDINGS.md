@@ -71,14 +71,33 @@ implementation received lower mean judge quality and grounding, at ~3.3× cost, 
 these five concise tasks with this model and judge.** A benchmark design cannot
 support anything stronger than a benchmark-level signal.
 
-## Next experiments
+## Follow-up runs (2026-08-08)
 
-- **Concise deliverable-only edition** — emit the deliverable + a compact receipt,
-  not the full transcript; re-measure.
-- **Weaker / less-aligned runner** that complies with injections bare — to test
-  whether the protocol's safety value then materialises.
-- **A second runner model** and **multiple judges** — toward cross-model
-  reproduction and less judge dependence.
+Two of the three planned experiments were run. Same task set, blind judge.
 
-The negative result is retained, not discarded — and it points at concrete next
-experiments rather than a conclusion.
+| Run | Quality (with vs bare) | Accuracy (with vs bare) | Cost (with vs bare) | Implied |
+|---|---|---|---|---|
+| Full edition, o4-mini | 0.82 vs 0.98 | 0.60 vs 0.80 | $0.043 vs $0.013 | NO_CLEAR_GAIN |
+| **Concise edition, o4-mini** | 0.91 vs 0.98 | 0.80 vs 1.00 | $0.021 vs $0.015 | NO_CLEAR_GAIN |
+| **Full edition, gpt-5.2** | 0.96 vs 1.00 | 1.00 vs 1.00 | $0.084 vs $0.015 | NO_CLEAR_GAIN |
+
+- **Concise edition** ([`../adapters/generic-chat/prompt-concise.md`](../adapters/generic-chat/prompt-concise.md))
+  recovered most of the quality/accuracy lost by the full edition and roughly
+  halved the cost — confirming the regression was **verbosity**, not the method.
+  But it still did not beat the bare model.
+- **Cross-model** (gpt-5.2, a stronger model): the quality gap nearly closed, but
+  cost ballooned to ~5.6× and there was still no gain.
+
+**Conclusion, honestly bounded:** `NO_CLEAR_GAIN` **holds across two editions and
+two models** — which is why the flagship's assurance rose to
+`CROSS_MODEL_REPRODUCED` (the deterministic acceptance reproduced on two models)
+while its productivity evidence stays `NO_CLEAR_GAIN`. The ceremony was the cost;
+the protocol still adds no measured benefit on these simple, already-safe tasks
+with capable models.
+
+**Still to run:** a **weaker / less-aligned runner** that complies with injected
+instructions *bare*. That is the setting where the protocol's safety value should
+finally materialise — and the current models do not provide it, so the claim
+remains untested rather than refuted.
+
+The negative results are retained, not discarded.

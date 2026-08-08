@@ -79,6 +79,14 @@ details>summary{cursor:pointer;font-weight:600;margin:.5em 0}
 @media (prefers-color-scheme:dark){
  :root{--ink:#e8e8e8;--bg:#141414;--mut:#9aa0a6;--line:#2c2c2c;--accent:#5aa2e6;--soft:#1c1c1c;--code:#1c1c1c}
 }
+@media print{
+ .controls,footer,button.copy{display:none}
+ body{color:#000;background:#fff;font-size:12pt}
+ a{color:#000;text-decoration:underline}
+ .badge{border-color:#000;color:#000;background:#fff}
+ .panel{background:#fff}
+ table,pre{page-break-inside:avoid}
+}
 `;
 
 function page(title, body, desc) {

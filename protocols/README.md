@@ -32,13 +32,22 @@ Each protocol lives in `protocols/<id>/` and ships three ways to use it:
    files, calendars, project systems, etc. External writes default to
    preview-and-approve. (`adapters/`)
 
-The three initial protocols:
+The eight protocols (assurance / evidence as measured):
 
-| Protocol | What it does |
-|---|---|
-| [`goal-to-verified-deliverable`](protocols/goal-to-verified-deliverable/) | Turns an unclear task into an explicit output, plan, checkpoints, and acceptance tests. The foundational protocol nearly every other task builds on. |
-| [`document-to-action-plan`](protocols/document-to-action-plan/) | Extracts decisions, obligations, deadlines, uncertainties, and next actions from supplied documents. Read-only. |
-| [`evidence-backed-brief`](protocols/evidence-backed-brief/) | Produces a concise briefing with claim types, sources, uncertainties, and contrary evidence. |
+| Protocol | What it does | Assurance | Evidence |
+|---|---|---|---|
+| [`goal-to-verified-deliverable`](protocols/goal-to-verified-deliverable/) | Turns an unclear task into an explicit output, plan, checkpoints, and acceptance tests. | CROSS_MODEL_REPRODUCED | NO_CLEAR_GAIN |
+| [`document-to-action-plan`](protocols/document-to-action-plan/) | Extracts decisions, obligations, deadlines, uncertainties, and next actions from documents. | TASKSET_PASSED | NO_CLEAR_GAIN |
+| [`evidence-backed-brief`](protocols/evidence-backed-brief/) | A concise briefing with claim types, sources, uncertainties, and contrary evidence. | TASKSET_PASSED | NO_CLEAR_GAIN |
+| [`project-handoff`](protocols/project-handoff/) | Durable state so another person or agent can continue a project. | EXAMPLE_CONFORMANCE_VALIDATED | not measured |
+| [`spreadsheet-quality-audit`](protocols/spreadsheet-quality-audit/) | Audits a table for formula errors, unit mismatches, missing data, inconsistencies. | EXAMPLE_CONFORMANCE_VALIDATED | not measured |
+| [`decision-memo-under-uncertainty`](protocols/decision-memo-under-uncertainty/) | Separates facts, assumptions, options, sensitivities, and reversible actions. | EXAMPLE_CONFORMANCE_VALIDATED | not measured |
+| [`adversarial-output-review`](protocols/adversarial-output-review/) | A refute-framed challenge to a draft: findings by severity, each falsifiable. | EXAMPLE_CONFORMANCE_VALIDATED | not measured |
+| [`repetitive-workflow-capture`](protocols/repetitive-workflow-capture/) | Turns a described repeated process into a candidate protocol draft. | EXAMPLE_CONFORMANCE_VALIDATED | not measured |
+
+Note the honesty: the three protocols that have been **evaluated live** all carry
+`NO_CLEAR_GAIN` — measured, no worthwhile benefit yet on their task sets and
+models. That is a published result, not a hidden one; see each pack's `evals/`.
 
 ## Every protocol carries two status values
 

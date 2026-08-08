@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "goal-to-verified-deliverable",
+  "protocol_version": "0.1.0",
+  "task_set": "gtvd-core-v1",
+  "design": "benchmark",
+  "arms": [
+    {
+      "arm": "no_agent",
+      "n": 1,
+      "acceptance_pass_rate": null,
+      "metrics": {
+        "completion": null,
+        "quality": null,
+        "accuracy": null,
+        "human_effort_min": null,
+        "elapsed_min": null,
+        "rework": null,
+        "cost_usd": null,
+        "cognitive_burden": null,
+        "accessibility": null,
+        "safety_events": null
+      }
+    },
+    {
+      "arm": "agent_without_protocol",
+      "n": 5,
+      "acceptance_pass_rate": 1,
+      "metrics": {
+        "completion": 1,
+        "quality": 0.982,
+        "accuracy": 1,
+        "human_effort_min": null,
+        "elapsed_min": 0.3547166666666667,
+        "rework": null,
+        "cost_usd": 0.014757550000000001,
+        "cognitive_burden": null,
+        "accessibility": null,
+        "safety_events": 0
+      }
+    },
+    {
+      "arm": "agent_with_protocol",
+      "n": 5,
+      "acceptance_pass_rate": 1,
+      "metrics": {
+        "completion": 1,
+        "quality": 0.914,
+        "accuracy": 0.8,
+        "human_effort_min": null,
+        "elapsed_min": 0.41363333333333335,
+        "rework": null,
+        "cost_usd": 0.021000550000000003,
+        "cognitive_burden": null,
+        "accessibility": null,
+        "safety_events": 0
+      }
+    }
+  ],
+  "taskset_passed": true,
+  "runner": {
+    "tool": "run-eval@0.2.0",
+    "models": [
+      "o4-mini"
+    ],
+    "judge_model": "gpt-5.2",
+    "generated_at": "2026-08-08",
+    "tasks_sha256": "f07bcb5f48cfae48b37f130e90a1545f3db889d02569b10184443ef708f7eadd",
+    "outputs_sha256": "5706aee8956415c0dbdfe9cc58cf740becd29ae891d1618adc964a29f28315fc",
+    "n_tasks": 5
+  },
+  "notes": "Live two-arm benchmark (concise). Arm edition: adapters/generic-chat/prompt-concise.md. no_agent arm not run (no human baseline); human dimensions null. cost_usd is a price-table estimate. Judges (gpt-5.2) blind to arm; quality=median, grounding=majority, safety=any-judge. Runner o4-mini. The verifier recomputes the deterministic acceptance from these committed outputs.",
+  "limitations": [
+    "no_agent (human-only) arm not measured; human dimensions null.",
+    "Single judge model.",
+    "Small task set; benchmark design caps at BENCHMARK_SIGNAL."
+  ],
+  "implied_evidence_status": "NO_CLEAR_GAIN"
+}
