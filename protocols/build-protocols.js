@@ -39,7 +39,14 @@ const MANIFEST_SCHEMA = U.readJSON(path.join(ROOT, 'schema', 'manifest.schema.js
 const REGISTRY_SCHEMA = U.readJSON(path.join(ROOT, 'schema', 'registry.schema.json'));
 const RECEIPT_SCHEMA = U.readJSON(path.join(ROOT, 'schema', 'receipt.schema.json'));
 
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+// Encode @ as an entity as well as the characters required by HTML. Cloudflare
+// Email Address Obfuscation otherwise mistakes version identifiers such as
+// `verified-agent-work@0.1.0` in displayed source for addresses, rewrites the
+// reviewed HTML, and injects a decoder script on the production custom domain.
+// textContent (used by copy/download actions) still reconstructs the exact @.
+const esc = s => String(s).replace(/[&<>"@]/g, c => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '@': '&#64;'
+}[c]));
 const write = (rel, data) => {
   if (typeof rel !== 'string' || !rel || rel.includes('\\') || path.posix.isAbsolute(rel)
       || path.posix.normalize(rel) !== rel || rel.split('/').includes('..')) {

@@ -120,6 +120,15 @@ function testLedgerOnlyCommitReproducesBuildA() {
       return outputHashes(path.join(copiedRoot, 'dist'));
     };
     const atA = generate(null);
+    const renderedSkill = fs.readFileSync(path.join(
+      copiedRoot, 'dist', 'p', 'decision-memo-under-uncertainty', 'index.html'
+    ), 'utf8');
+    assert.match(renderedSkill, /verified-agent-work&#64;0\.1\.0/,
+      'displayed source must entity-encode @ so Cloudflare does not rewrite reviewed HTML');
+    assert.doesNotMatch(renderedSkill, /verified-agent-work@0\.1\.0/,
+      'displayed source must not expose a plaintext address-like version identifier');
+    checks++;
+    console.log('  ✓ displayed source is safe from Cloudflare email rewriting');
 
     fs.writeFileSync(path.join(copiedRoot, 'PUBLISHED.json'), '{}\n');
     git(['add', 'protocols/PUBLISHED.json']);
