@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "id": "protocol-assurance",
+  "title": "Protocol assurance ladder",
+  "question": "Is the protocol well built, well tested, and safe to run?",
+  "independent_from": "productivity-evidence",
+  "principle": "Assurance is about structure, testing, and safety. It says nothing about whether the protocol improves anyone's work. A protocol can reach the top of this ladder and still make its users slower — that is the other ladder's job to detect. One badge must never stand for both. Every rung means only what its check actually established: an offline check of the shipped examples is not the same as a live run of the protocol, and the rung names say so.",
+  "states": [
+    {
+      "order": 0,
+      "id": "DRAFT",
+      "polarity": "progressive",
+      "label": "Draft",
+      "meaning": "The procedure exists but has not passed its own checks.",
+      "established_by": "Authoring only.",
+      "gate": "none"
+    },
+    {
+      "order": 1,
+      "id": "STRUCTURE_VALIDATED",
+      "polarity": "progressive",
+      "label": "Structure validated",
+      "meaning": "Schema- and structure-valid: required fields present, enums and patterns satisfied, kernel steps mapped, and the file inventory matches the manifest. This is a check of the DOCUMENT, not of the protocol's behaviour or its semantic fidelity to the kernel.",
+      "established_by": "tools/validate.js passes against protocol.schema.json and the structural kernel checks; MANIFEST.json matches the files on disk.",
+      "gate": "validate + manifest"
+    },
+    {
+      "order": 2,
+      "id": "EXAMPLE_CONFORMANCE_VALIDATED",
+      "polarity": "progressive",
+      "label": "Example conformance validated",
+      "meaning": "The worked examples SHIPPED IN THE PACK satisfy the acceptance tests under deterministic graders, and deliberately-bad fixtures are rejected by those graders (discrimination). This proves the acceptance tests are mechanised and discriminating against the pack's own examples. It does NOT run a model over a fresh task, observe real actions, or establish that a model executing the protocol would conform.",
+      "established_by": "tools/eval-harness.js --tests passes, including discrimination cases, and evals designs are valid.",
+      "gate": "example fixtures + graders (offline, no model execution)"
+    },
+    {
+      "order": 3,
+      "id": "TASKSET_PASSED",
+      "polarity": "progressive",
+      "label": "Task set passed",
+      "meaning": "A live runner executed the protocol over the registered task set on at least one named model/runtime, and the FRESH outputs — not hand-authored fixtures — passed the acceptance tests, with observed actions rather than self-reported receipts. The offline harness cannot grant this; it requires a real run.",
+      "established_by": "A recorded live run over the task set whose captured outputs pass the acceptance tests, bound by hashes to task, output, grader, runner, and protocol version.",
+      "gate": "live run over the task set"
+    },
+    {
+      "order": 4,
+      "id": "CROSS_MODEL_REPRODUCED",
+      "polarity": "progressive",
+      "label": "Cross-model reproduced",
+      "meaning": "A separate model or implementation obtains materially consistent results on the task set in live runs.",
+      "established_by": "The task set is run under at least two distinct models/runtimes and the acceptance-test outcomes agree.",
+      "gate": "live runs (>= 2 models, consistent)"
+    },
+    {
+      "order": 5,
+      "id": "SECURITY_REVIEWED",
+      "polarity": "progressive",
+      "label": "Security reviewed",
+      "meaning": "Permissions, external calls, and hostile-input behaviour have been inspected by a human, the static scan is clean, and any runtime enforcement path (sandbox, capability mediation) has been considered. The static scanner alone does not grant this.",
+      "established_by": "tools/hostile-tests.js passes AND a human security review of scripts, adapters, and declared permissions is recorded.",
+      "gate": "hostile lint + human review"
+    },
+    {
+      "order": 6,
+      "id": "FIELD_READY",
+      "polarity": "progressive",
+      "label": "Field ready",
+      "meaning": "Suitable for bounded real-world trials by people outside the development team. Requires a live-run history (>= TASKSET_PASSED), a security review, a copy-and-run edition, and no open critical defect. Blocked while productivity evidence is HARM_OR_REGRESSION_FOUND.",
+      "established_by": "All lower gates plus a copy-and-run edition, install instructions, live-run history, and no open critical failure.",
+      "gate": "all + live runs + accessibility editions"
+    },
+    {
+      "order": 7,
+      "id": "DEPRECATED",
+      "polarity": "terminal",
+      "label": "Deprecated",
+      "meaning": "No longer recommended. Kept for the record, withdrawn from active use.",
+      "established_by": "A maintainer decision, a security withdrawal, or a retest trigger that the protocol no longer survives.",
+      "gate": "off-ladder"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/protocols/api/registry.schema.json",
+  "title": "Productivity Protocols registry",
+  "description": "The machine-readable index of every protocol in the library. Emitted as /protocols/api/protocols.json. Each entry carries both status ladders side by side so a consumer can filter on assurance and on measured benefit independently.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "site", "baseUrl", "generated", "count", "protocols"],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+    "site": { "type": "string" },
+    "baseUrl": { "type": "string", "format": "uri" },
+    "description": { "type": "string" },
+    "schema": { "type": "string", "format": "uri" },
+    "generated": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceCommit", "sourceDate", "builder"],
+      "properties": {
+        "sourceCommit": { "type": ["string", "null"] },
+        "sourceDate": { "type": ["string", "null"] },
+        "builder": { "type": "string" }
+      }
+    },
+    "count": { "type": "integer", "minimum": 0 },
+    "protocols": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "version", "title", "purpose", "assurance_level", "risk_class", "privacy_class", "assurance_status", "productivity_evidence", "network_required", "url", "download", "sha256"],
+        "properties": {
+          "id": { "type": "string" },
+          "version": { "type": "string" },
+          "title": { "type": "string" },
+          "purpose": { "type": "string" },
+          "assurance_level": { "enum": ["quick", "verified", "institutional"] },
+          "risk_class": { "enum": ["low", "moderate", "high", "critical"] },
+          "privacy_class": { "enum": ["public", "internal", "personal_data", "sensitive_personal_data"] },
+          "assurance_status": { "enum": ["DRAFT", "STRUCTURE_VALIDATED", "EXAMPLE_CONFORMANCE_VALIDATED", "TASKSET_PASSED", "CROSS_MODEL_REPRODUCED", "SECURITY_REVIEWED", "FIELD_READY", "DEPRECATED"] },
+          "productivity_evidence": { "enum": ["NO_IMPACT_EVIDENCE", "BENCHMARK_SIGNAL", "CONTROLLED_USER_SIGNAL", "FIELD_SIGNAL", "CAUSAL_EFFECT_SUPPORTED", "NO_CLEAR_GAIN", "HARM_OR_REGRESSION_FOUND"] },
+          "tested_models": { "type": "array", "items": { "type": "string" } },
+          "last_verified": { "type": ["string", "null"], "format": "date" },
+          "network_required": { "type": "boolean" },
+          "url": { "type": "string", "description": "Human protocol page (site-relative)." },
+          "download": { "type": "string", "description": "Skill pack .zip (site-relative)." },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "Hash of the downloadable pack." }
+        }
+      }
+    }
+  }
+}

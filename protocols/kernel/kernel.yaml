@@ -1,0 +1,102 @@
+# The Verified Agent Work kernel — machine-readable definition.
+# Every protocol.yaml must be an instance of this kernel. The validator checks
+# that each kernel step maps to a declared field (or a justified empty mapping).
+id: verified-agent-work
+version: 0.1.0
+title: Verified Agent Work kernel
+status: DRAFT
+description: >-
+  The universal eight-step method that every Productivity Protocol instantiates.
+  Each step names the failure it prevents. The steps are constant; the assurance
+  level sets how much weight each step carries.
+
+steps:
+  - n: 1
+    id: define-deliverable
+    name: Define the deliverable
+    purpose: State the artefact to hand back and the standard it must meet.
+    produces: [deliverable_statement, acceptance_standard]
+    prevents: Open-ended work with no finish line and nothing for step 7 to test.
+    maps_to: [expected_outputs, acceptance_tests]
+
+  - n: 2
+    id: define-boundary
+    name: Define the input and evidence boundary
+    purpose: Enumerate what may be read and used as justification; mark the rest out of bounds.
+    produces: [input_manifest, evidence_rule]
+    prevents: Fabricated support and scope creep from an undeclared evidence boundary.
+    maps_to: [required_inputs, evidence_status]
+
+  - n: 3
+    id: declare-permissions
+    name: Declare permissions and prohibited actions
+    purpose: List least-privilege access and, separately, actions that must never occur.
+    produces: [permission_set, prohibited_actions]
+    prevents: Unintended, often irreversible side effects from undeclared permissions.
+    maps_to: [permissions, prohibited_actions, required_capabilities, optional_tools]
+
+  - n: 4
+    id: identify-risk
+    name: Identify risks and human approval points
+    purpose: Name failure modes and the points where a person must approve before proceeding.
+    produces: [risk_list, human_checkpoints]
+    prevents: Silent commitment of consequential or outward-facing actions.
+    maps_to: [risk_class, human_checkpoints, failure_modes]
+
+  - n: 5
+    id: decompose
+    name: Decompose into verifiable checkpoints
+    purpose: Break work into steps small enough to check as each completes.
+    produces: [ordered_procedure]
+    prevents: End-of-run surprise discovered after everything is built on the error.
+    maps_to: [procedure]
+
+  - n: 6
+    id: execute-retain
+    name: Execute while retaining material decisions and failures
+    purpose: Do the work; keep the non-obvious decisions and the failed attempts.
+    produces: [decision_and_failure_log]
+    prevents: Unauditable output and repeated mistakes.
+    maps_to: [procedure]
+
+  - n: 7
+    id: validate
+    name: Validate against explicit acceptance tests
+    purpose: Adversarially check the deliverable; honour stop conditions.
+    produces: [pass_fail_record, triggered_stop_conditions]
+    prevents: Confident delivery of plausible-but-wrong work judged only by its author.
+    maps_to: [acceptance_tests, stop_conditions]
+
+  - n: 8
+    id: deliver-receipt
+    name: Produce the deliverable, limitations, and a compact receipt
+    purpose: Hand back the deliverable, an honest statement of limits, and a receipt.
+    produces: [deliverable, limitations, receipt]
+    prevents: Overclaim and non-reproducibility.
+    maps_to: [expected_outputs, receipt]
+
+# The kernel is proportional. Levels are defined in assurance-levels.md and
+# enumerated machine-readably here so a protocol can declare which it targets.
+assurance_levels:
+  - id: quick
+    label: Quick protocol
+    intended_use: Low-risk personal work.
+    required_steps: [1, 2, 3, 7, 8]
+    checks: [checklist, preview_before_change, basic_output_validation]
+  - id: verified
+    label: Verified skill
+    intended_use: Repeatable professional workflow.
+    required_steps: [1, 2, 3, 4, 5, 6, 7, 8]
+    checks: [structured_inputs, declared_permissions, named_acceptance_tests, worked_examples, receipt]
+  - id: institutional
+    label: Institutional workflow
+    intended_use: External actions or consequential decisions.
+    required_steps: [1, 2, 3, 4, 5, 6, 7, 8]
+    checks: [persistent_state, role_separation, adversarial_review, replayable_audit_log, receipt]
+
+# Invariants the kernel asserts, enforced by tools/validate.js.
+invariants:
+  - Every step maps to at least one protocol.yaml field or a justified empty mapping.
+  - Prohibited actions are declared explicitly, not inferred from the permission set.
+  - Human checkpoints precede irreversible or outward-facing actions.
+  - Conformance to the kernel is not evidence of benefit; benefit is a separate ladder.

@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "scope": "repository",
+  "subject_id": "productivity-protocols",
+  "version": "0.1.0",
+  "source_commit": "493bddc",
+  "source_date": "2026-08-07T15:33:25+01:00",
+  "toolchain": {
+    "node": "v25.2.1",
+    "builder": "verify-all@0.1.0"
+  },
+  "checks": [
+    {
+      "name": "manifest",
+      "passed": true,
+      "summary": "3/3 packs"
+    },
+    {
+      "name": "validate",
+      "passed": true,
+      "summary": "3/3 packs"
+    },
+    {
+      "name": "tests",
+      "passed": true,
+      "summary": "3/3 packs"
+    },
+    {
+      "name": "evals",
+      "passed": true,
+      "summary": "3/3 packs"
+    },
+    {
+      "name": "hostile",
+      "passed": true,
+      "summary": "3/3 packs"
+    }
+  ],
+  "files_sha256": [
+    {
+      "path": "protocols/document-to-action-plan/RECEIPT.json",
+      "sha256": "beda46e81cb0022a87adc9b5480bcbe92acdce4614c3e3c8c5cffa561232a6a7"
+    },
+    {
+      "path": "protocols/evidence-backed-brief/RECEIPT.json",
+      "sha256": "6785ba1a4f39d76f42a7a526154a84da3bc3e99dd39b998cb19c9cd501128c83"
+    },
+    {
+      "path": "protocols/goal-to-verified-deliverable/RECEIPT.json",
+      "sha256": "a753e4879fb8ecf7dc8dbd512931a274484ead044636598b0880ca0d93c0cbac"
+    }
+  ],
+  "assurance_status": "EXAMPLE_CONFORMANCE_VALIDATED",
+  "productivity_evidence": "NO_IMPACT_EVIDENCE",
+  "replay": {
+    "command": "node tools/verify-all.js",
+    "byte_identical_expected": true
+  }
+}

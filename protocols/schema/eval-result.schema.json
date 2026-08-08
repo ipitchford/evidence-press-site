@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/protocols/api/eval-result.schema.json",
+  "title": "Comparative evaluation result",
+  "description": "The output of one evaluation run. Productivity is reported as a vector, never a single number, across the three-arm comparison. The implied evidence-ladder state is derived from the design, not from a favourable headline.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "protocol_id", "protocol_version", "task_set", "design", "arms", "implied_evidence_status"],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+    "protocol_id": { "type": "string" },
+    "protocol_version": { "type": "string" },
+    "task_set": { "type": "string", "description": "Identifier of the registered task set the arms were run on." },
+    "design": {
+      "enum": ["benchmark", "controlled_user", "field", "causal"],
+      "description": "The evaluation design. Determines the strongest evidence-ladder state the result can support."
+    },
+    "arms": {
+      "type": "array",
+      "minItems": 1,
+      "description": "One entry per comparison arm. A benchmark design may run only the two agent arms; a controlled/field design should include the no-agent baseline where feasible.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["arm", "metrics"],
+        "properties": {
+          "arm": {
+            "enum": ["no_agent", "agent_without_protocol", "agent_with_protocol"],
+            "description": "Which of the three arms this is."
+          },
+          "n": { "type": "integer", "minimum": 1, "description": "Number of tasks/participants in this arm." },
+          "acceptance_pass_rate": { "type": ["number", "null"], "description": "Fraction of tasks whose fresh output passed the acceptance graders (0..1)." },
+          "metrics": { "$ref": "#/$defs/vector" }
+        }
+      }
+    },
+    "notes": { "type": "string" },
+    "taskset_passed": {
+      "type": ["boolean", "null"],
+      "description": "True when the agent_with_protocol arm's FRESH outputs passed the acceptance tests on this live run — the evidence that justifies the TASKSET_PASSED assurance rung."
+    },
+    "runner": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Provenance binding the result to a runner, model(s), tasks, and captured outputs.",
+      "properties": {
+        "tool": { "type": "string" },
+        "models": { "type": "array", "items": { "type": "string" } },
+        "judge_model": { "type": ["string", "null"] },
+        "generated_at": { "type": ["string", "null"] },
+        "tasks_sha256": { "type": ["string", "null"], "description": "Hash of the task-set inputs + graders." },
+        "outputs_sha256": { "type": ["string", "null"], "description": "Hash of the captured raw outputs file." },
+        "n_tasks": { "type": ["integer", "null"] }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What this evaluation does not establish. Required for any design above benchmark."
+    },
+    "implied_evidence_status": {
+      "enum": ["NO_IMPACT_EVIDENCE", "BENCHMARK_SIGNAL", "CONTROLLED_USER_SIGNAL", "FIELD_SIGNAL", "CAUSAL_EFFECT_SUPPORTED", "NO_CLEAR_GAIN", "HARM_OR_REGRESSION_FOUND"],
+      "description": "The evidence-ladder state this result supports. The harness caps this at the ceiling allowed by 'design'; a benchmark can never imply CAUSAL_EFFECT_SUPPORTED."
+    }
+  },
+  "$defs": {
+    "vector": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The productivity vector. Report every dimension you measured; leave the rest null rather than guessing. Do not collapse into a scalar unless weights are declared for a specific decision.",
+      "properties": {
+        "completion": { "type": ["number", "null"], "description": "Fraction of tasks completed to the acceptance standard (0..1)." },
+        "quality": { "type": ["number", "null"], "description": "Blind or rubric score (normalised 0..1)." },
+        "accuracy": { "type": ["number", "null"], "description": "1 minus material-error rate (0..1); material errors and unsupported claims." },
+        "human_effort_min": { "type": ["number", "null"], "description": "Active human minutes: attention, interventions, review." },
+        "elapsed_min": { "type": ["number", "null"], "description": "Start-to-accepted-output wall-clock minutes." },
+        "rework": { "type": ["number", "null"], "description": "Corrections required after first delivery (count or fraction)." },
+        "cost_usd": { "type": ["number", "null"], "description": "Model, tool, and external-service cost." },
+        "cognitive_burden": { "type": ["number", "null"], "description": "User-rated difficulty/interruption load (normalised 0..1; lower is better)." },
+        "accessibility": { "type": ["number", "null"], "description": "Success rate across differing skill levels/assistive needs (0..1)." },
+        "safety_events": { "type": ["integer", "null"], "minimum": 0, "description": "Privacy events, unintended external actions, policy violations. Any non-zero value is a headline, not a footnote." }
+      }
+    }
+  }
+}

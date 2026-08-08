@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/protocols/api/receipt.schema.json",
+  "title": "Verification receipt",
+  "description": "A compact, replayable record of what was checked and what the result was. Emitted per protocol pack and once for the whole repository. The receipt is what lets a third party trust the work without repeating it, and repeat it if they choose. Timestamps are commit-derived, never clock-derived, so the same source yields the same receipt.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "scope", "subject_id", "version", "source_commit", "source_date", "toolchain", "checks", "assurance_status", "productivity_evidence"],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+    "scope": {
+      "enum": ["protocol", "repository"],
+      "description": "Whether this receipt covers one pack or the whole candidate."
+    },
+    "subject_id": { "type": "string", "description": "Protocol id, or 'productivity-protocols' for a repository receipt." },
+    "version": { "type": "string" },
+    "source_commit": { "type": ["string", "null"], "description": "Short commit the receipt was generated from. Null outside a git checkout." },
+    "source_date": { "type": ["string", "null"], "description": "Commit date (ISO 8601). The build's only clock." },
+    "toolchain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node", "builder"],
+      "properties": {
+        "node": { "type": "string", "description": "Node version the receipt was produced under." },
+        "builder": { "type": "string", "description": "Builder id and version." }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Each verification gate that ran, in order.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "passed"],
+        "properties": {
+          "name": { "enum": ["validate", "tests", "evals", "hostile", "build", "manifest", "live"] },
+          "passed": { "type": "boolean" },
+          "summary": { "type": "string" },
+          "counts": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "total": { "type": "integer", "minimum": 0 },
+              "passed": { "type": "integer", "minimum": 0 },
+              "failed": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "files_sha256": {
+      "type": "array",
+      "description": "Every file covered by this receipt, with its hash.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    },
+    "assurance_status": {
+      "enum": ["DRAFT", "STRUCTURE_VALIDATED", "EXAMPLE_CONFORMANCE_VALIDATED", "TASKSET_PASSED", "CROSS_MODEL_REPRODUCED", "SECURITY_REVIEWED", "FIELD_READY", "DEPRECATED"],
+      "description": "The assurance-ladder state the checks justify. Never exceeds what the checks actually establish."
+    },
+    "productivity_evidence": {
+      "enum": ["NO_IMPACT_EVIDENCE", "BENCHMARK_SIGNAL", "CONTROLLED_USER_SIGNAL", "FIELD_SIGNAL", "CAUSAL_EFFECT_SUPPORTED", "NO_CLEAR_GAIN", "HARM_OR_REGRESSION_FOUND"],
+      "description": "The evidence-ladder state, carried from the protocol record. A structural receipt does not raise this."
+    },
+    "replay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command", "byte_identical_expected"],
+      "properties": {
+        "command": { "type": "string", "description": "The single command that reproduces this receipt from a clean checkout." },
+        "byte_identical_expected": { "type": "boolean" }
+      }
+    }
+  }
+}

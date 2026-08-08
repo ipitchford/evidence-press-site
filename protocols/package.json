@@ -1,0 +1,19 @@
+{
+  "name": "productivity-protocols",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open, tested workflows for getting useful work done with AI agents. A self-contained section of the Evidence Press site.",
+  "license": "Apache-2.0",
+  "type": "commonjs",
+  "engines": { "node": ">=16" },
+  "scripts": {
+    "verify": "node tools/verify-all.js",
+    "build": "node build-protocols.js",
+    "validate": "node tools/validate.js",
+    "test": "node tools/eval-harness.js --tests",
+    "evals": "node tools/eval-harness.js --evals",
+    "hostile": "node tools/hostile-tests.js",
+    "manifest": "node tools/make-manifest.js",
+    "receipt": "node tools/make-receipt.js"
+  }
+}
