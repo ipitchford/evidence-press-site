@@ -12,9 +12,14 @@ self-contained.
 1. `node build.js` — the main site → `dist/`
 2. `node protocols/build-protocols.js` — the subsystem → `protocols/dist/`
 3. copy `protocols/dist` → `dist/protocols/`
+4. `node tools/merge-protocols-sitemap.js` — fold the `/protocols/` page URLs into
+   the main `dist/sitemap.xml` (idempotent), so crawlers using `/sitemap.xml`
+   discover them directly.
 
-The merged `dist/` then serves the whole site with `/protocols/` included. Verify
-locally with `python3 -m http.server 8080 -d dist` and open `/protocols/`.
+The merged `dist/` then serves the whole site with `/protocols/` included and in
+the main sitemap. Verify locally with `python3 -m http.server 8080 -d dist` and
+open `/protocols/`. Note: the standalone `./tools/deploy.sh` does NOT do steps
+2–4; use `integrate.sh` (or the manual sequence) to include `/protocols/`.
 
 ## Deploy — a maintainer decision, not done here
 

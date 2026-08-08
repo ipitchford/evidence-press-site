@@ -20,10 +20,13 @@ node build.js
 echo "2/3  protocols build  (protocols/build-protocols.js -> protocols/dist/)"
 node protocols/build-protocols.js
 
-echo "3/3  mount            (protocols/dist -> dist/protocols/)"
+echo "3/4  mount            (protocols/dist -> dist/protocols/)"
 rm -rf dist/protocols
 cp -R protocols/dist dist/protocols
 
-echo "done: merged site in dist/  ·  /protocols/ is available"
+echo "4/4  sitemap merge    (fold /protocols/ page URLs into dist/sitemap.xml)"
+node tools/merge-protocols-sitemap.js
+
+echo "done: merged site in dist/  ·  /protocols/ is available and in the main sitemap"
 echo "verify locally:  python3 -m http.server 8080 -d dist   # then open /protocols/"
 echo "deploy (MAINTAINER step, not run here):  wrangler pages deploy dist"
