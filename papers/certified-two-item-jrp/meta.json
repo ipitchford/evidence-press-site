@@ -1,0 +1,142 @@
+{
+  "slug": "certified-two-item-jrp",
+  "title": "Exact Certification and Guaranteed Termination for Two-Item Resource-Constrained Joint Replenishment",
+  "shortTitle": "Exact certification for two-item joint replenishment",
+  "oneLine": "For two periodically ordered items under nonnegative average-rate resource constraints, a resource-aware dual tail turns exact ratio enumeration into a guaranteed-termination certificate system and yields a new algebraic lower bound for the standard relaxation gap.",
+  "abstract": "Joint replenishment saves a common ordering cost when periodic item schedules coincide, but those coincidences make the exact objective discontinuous in the period ratio. This unrefereed candidate resolves the stated two-item problem by reducing every coprime ratio to a one-dimensional exact scale optimization and retaining resource geometry in a Lagrange-dual tail certificate. A strict synchronisation argument proves that unrestricted ratio enumeration terminates after finitely many ratios whenever the common setup cost is positive; no polynomial runtime is claimed. For the standard convex relaxation, a real-coefficient cap-reduction lemma reduces worst-case gap analysis to itemwise frequency caps. A certified triple-tie family has a unique algebraic family maximum gamma approximately 1.11188959394, improving the packaged lower bound while leaving the exact global gap open. Four finite witnesses, two interval-family verifiers, negative controls, 16 tests, deterministic documents, and producer-side fresh-extraction replay pass. There is no independent reproduction, formal verification, specialist review, peer review, field validation, complete priority audit, or evidence of operational savings.",
+  "narration": "Joint replenishment asks when two items should be ordered so that they can share a common fixed cost. The difficulty is arithmetic: periodic schedules share an order only when their cycle lengths align, so a tiny change in the ratio can change the pattern of coincidences. This candidate gives an exact certificate system for the two-item model with nonnegative average-rate resource constraints. For each rational cycle ratio, the problem becomes a one-dimensional convex scale calculation. The key new ingredient is a resource-aware tail bound. A Lagrange dual preserves the capacity geometry that an older unconstrained bound discarded, and every unexamined ratio receives a certified lower bound. The paper also proves that synchronisation always creates a strict advantage over the best desynchronised policy when the common setup cost is positive. Consequently, unrestricted ratio enumeration eventually closes, although no polynomial runtime is claimed. A second contribution concerns the standard convex relaxation used to lower-bound the problem. The candidate proves that, over real resource coefficients, worst-case gap analysis can be reduced to separate frequency caps. Inside a canonical triple-tie family it then certifies a unique algebraic maximum of about 1.11188959394. This is a rigorous global lower bound, not the exact global gap. The package contains exact witnesses, interval and elimination certificates, solver-independent checkers, negative controls, 16 tests, deterministic papers, and a fresh-extraction replay receipt. All of those checks were performed within the producing workflow. The result remains an unrefereed candidate with no independent reproduction, formal proof-assistant verification, specialist review, peer review, field validation, complete novelty audit, or demonstrated operating savings.",
+  "datePublished": "2026-08-08",
+  "dateModified": "2026-08-09",
+  "version": "1.1.0-candidate",
+  "doi": "10.5281/zenodo.21855567",
+  "conceptDoi": "10.5281/zenodo.21855566",
+  "zenodoUrl": "https://zenodo.org/records/21855567",
+  "pdfUrl": "https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.1.0-candidate/certified_two_item_jrp.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/certified-two-item-jrp/v1.1.0-candidate/paper/certified_two_item_jrp.pdf",
+  "repoUrl": "https://github.com/ipitchford/certified-two-item-jrp",
+  "releaseUrl": "https://github.com/ipitchford/certified-two-item-jrp/releases/tag/v1.1.0-candidate",
+  "authors": [
+    "Agent collective",
+    "Ian Pitchford"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Agent collective",
+      "OpenAI Codex task"
+    ],
+    "humanRole": "Problem selection, research direction, mediation, maintenance, licensing and publication by Dr Ian Pitchford.",
+    "disclosure": "The original bundle is repository-attributed to an agent collective. An OpenAI Codex task developed the extension proof, revised the software and exposition, ran producer-side checks, and prepared publication. Individual original model runs were not supplied, and no externally auditable Codex run identifier is embedded in the release."
+  },
+  "problem": {
+    "name": "Two-item resource-constrained continuous-time joint replenishment and the gap of relaxation (P)",
+    "url": "https://doi.org/10.1287/opre.2022.2390"
+  },
+  "keywords": [
+    "joint replenishment",
+    "inventory theory",
+    "exact certification",
+    "periodic synchronisation",
+    "resource constraints",
+    "Lagrange duality",
+    "integrality gap",
+    "computer-assisted proof",
+    "reproducible research",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "For every fixed coprime period ratio, the resource-constrained two-item objective reduces to an exact one-dimensional convex scale problem with a rational or quadratic-radical optimum.",
+    "A nonnegative Lagrange-dual certificate for the constrained desynchronised optimum yields a resource-aware lower bound for every omitted ratio.",
+    "When the common ordering cost is positive, a rational synchronised policy lies strictly below the desynchronised optimum, so unbounded ratio enumeration is guaranteed to terminate after finitely many ratios; no polynomial runtime is claimed.",
+    "Over nonnegative real resource systems, the supremum gap of relaxation (P) is unchanged when analysis is restricted to item-specific frequency caps; no rational-data continuity identity is claimed.",
+    "A canonical triple-tie cap family has a unique algebraic family maximum gamma satisfying 262 gamma^4 - 916 gamma^3 + 863 gamma^2 + 150 gamma - 375 = 0, with gamma approximately 1.11188959394, establishing a global lower bound but not the exact global gap.",
+    "A finite two-item alignment-configuration hull closes all four bundled regression certificates, but no multi-item separation or rounding theorem is supplied."
+  ],
+  "evidence": "An 8-page candidate theorem paper and 3-page practitioner brief in PDF and TeX; exact Python solver and fail-closed CLI; four finite rational/radical witnesses; resource-dual and tail certificates; interval verifiers for the original and canonical families; exact quartic isolation and elimination checks; a finite alignment-configuration regression certificate; schema and semantic-mutation controls; 16 tests under ordinary and optimized Python; deterministic figures and PDFs; an 82-entry SHA-256 manifest; a producer adversarial review; and producer-side fresh-extraction replay of the immutable ZIP. These checks do not constitute independent reproduction or external theorem verification.",
+  "statusDetail": "Unrefereed candidate computer-assisted result. Producer-side solver-independent replay, fresh-extraction regeneration, mutation controls, fail-closed output checks, deterministic document builds, GitHub/Zenodo archive matching, and public file readback pass. The analytic manuscript and supplied certificates have not been independently reconstructed by an unaffiliated party or formalized in a proof assistant. There has been no external specialist audit, editorial peer review, field validation, complete novelty or priority audit, or demonstration that a certified nominal policy yields operational savings. The exact global relaxation gap, multi-item alignment relaxation and rounding, column-sparsity frontier, three-item oracle, robust uncertainty, calendar phases, pointwise capacity, and wider theory remain open.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/21855567",
+      "note": "The exact candidate archive and three companion assets are publicly retrievable under a version DOI; public downloads matched the GitHub release hashes."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.1.0-candidate/certified-two-item-jrp-v1.1.0-candidate.replay-receipt.json",
+      "note": "Producer-side fresh-extraction replay, ordinary and optimized release gates, 16 tests, certificate checks, figures and both PDFs passed."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated party has reported rerunning the archived package."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The solver-independent verifiers were produced within the same research and release workflow."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No theorem has been formalized in a proof assistant."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No external inventory-theory, approximation-algorithms, or number-theory specialist has audited the paper."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or venue has conducted peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/certified-two-item-jrp/blob/v1.1.0-candidate/source_audit/reproduction_environment.json",
+      "note": "Python dependencies and the TeX toolchain are pinned and macOS arm64 fresh-extraction replay passed; no independently recreated container image is supplied."
+    }
+  },
+  "openProblems": [
+    "Determine the exact two-item and global integrality gaps, or obtain substantially tighter upper certificates that are proved to match the same relaxation and model.",
+    "Construct a multi-item alignment-aware relaxation with polynomial separation and a rounding theorem while preserving the exact two-item regression suite.",
+    "Classify the column-sparsity k=1, k=2, and fixed-k approximation or hardness frontier.",
+    "Build and independently reproduce a complete exact three-item oracle, including its regime and tail proof objects.",
+    "Develop robust correlated-uncertainty regions rather than one-at-a-time sensitivity analysis.",
+    "Extend the model to calendar phases, fixed delivery dates, and pointwise capacity without erasing synchronisation semantics.",
+    "Run a preregistered field pilot with reconciled marginal costs, operational feasibility gates, guardrails, and stop rules.",
+    "Obtain independent mathematical reconstruction, specialist review, proof-assistant formalization, and a broader novelty and priority audit."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Wildeman, R. E., Frenk, J. B. G., & Dekker, R. (1997). An efficient optimal solution method for the joint replenishment problem. European Journal of Operational Research, 99, 433-444.",
+      "url": "https://repub.eur.nl/pub/15306/AnEfficientOPtimalSolution_1997.pdf"
+    },
+    {
+      "citation": "Porras, E., & Dekker, R. (2006). An efficient optimal solution method for the joint replenishment problem with minimum order quantities. European Journal of Operational Research, 174, 1595-1615.",
+      "url": "https://doi.org/10.1016/j.ejor.2005.02.056"
+    },
+    {
+      "citation": "Porras, E., & Dekker, R. (2008). A solution method for the joint replenishment problem with correction factor. International Journal of Production Economics, 113, 834-851.",
+      "url": "https://doi.org/10.1016/j.ijpe.2007.11.008"
+    },
+    {
+      "citation": "Schulz, A. S., & Telha, C. (2024). Integer factorization: Why two-item joint replenishment is hard. Operations Research, 72, 1192-1202.",
+      "url": "https://doi.org/10.1287/opre.2022.2390"
+    },
+    {
+      "citation": "Segev, D. (2025). The continuous-time joint replenishment problem: epsilon-optimal policies via pairwise alignment. Management Science, 71, 4183-4197.",
+      "url": "https://doi.org/10.1287/mnsc.2023.00705"
+    },
+    {
+      "citation": "Segev, D. (2026). Improved approximation guarantees for joint replenishment in continuous time. Mathematics of Operations Research, 51, 1683-1712.",
+      "url": "https://doi.org/10.1287/moor.2024.0635"
+    },
+    {
+      "citation": "Segev, D. (2026). Resource-constrained joint replenishment via power-of-m policies. arXiv:2603.18720v1.",
+      "url": "https://arxiv.org/abs/2603.18720"
+    },
+    {
+      "citation": "Creemers, S., & Stephan, T. (2026). Special cases of the joint replenishment problem: A mathematical analysis. SSRN 6674418.",
+      "url": "https://doi.org/10.2139/ssrn.6674418"
+    }
+  ],
+  "citeText": "Agent collective, & Pitchford, I. (2026). Exact Certification and Guaranteed Termination for Two-Item Resource-Constrained Joint Replenishment (Version 1.1.0-candidate) [Unrefereed candidate paper and reproducibility package]. Zenodo. https://doi.org/10.5281/zenodo.21855567"
+}
