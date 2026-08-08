@@ -6,9 +6,11 @@
  * per-pack + repository receipts -> build. Exit non-zero if any gate fails.
  *
  * The receipt records the ACHIEVED assurance status — never higher than the
- * gates justify. Offline gates can reach TASKSET_PASSED; CROSS_MODEL_REPRODUCED
- * and SECURITY_REVIEWED require live cross-model runs and a human review that
- * this command does not perform, so it never claims them.
+ * gates justify. The OFFLINE gates cap at EXAMPLE_CONFORMANCE_VALIDATED (they run
+ * no model). TASKSET_PASSED is granted only when a committed live-eval result
+ * RECOMPUTES a passing agent-with-protocol arm from its raw outputs (see
+ * liveAssurance). CROSS_MODEL_REPRODUCED needs >= 2 separate passing runs;
+ * SECURITY_REVIEWED needs a human review — neither is claimed here automatically.
  *
  * Apache-2.0.
  */
@@ -22,27 +24,78 @@ const { runTestsForPack, runEvalsForPack } = require('./eval-harness');
 const { scanPack, selfTest } = require('./hostile-tests');
 
 const { validate: validateJson } = require('./lib/jsonschema');
+const { passFrac, detCompliance } = require('./lib/graders');
 const EVAL_SCHEMA = U.readJSON(path.join(U.ROOT, 'schema', 'eval-result.schema.json'));
 const CONFIG = U.readJSON(path.join(U.ROOT, 'site.config.json'));
 const RECEIPT_COMMAND = 'node tools/verify-all.js';
 
-// Read the pack's live eval results. A schema-valid result whose agent_with_protocol
-// arm passed acceptance on a named model earns TASKSET_PASSED; two or more distinct
-// runner models each passing earns CROSS_MODEL_REPRODUCED. Absence of a live run is
-// not a failure — the pack simply stays at its offline rung.
+// RECOMPUTE a live result's acceptance from the COMMITTED raw outputs — never
+// trust the runner-written taskset_passed boolean or author-computed metrics
+// (that would be the original self-grading defect, one layer removed). The result
+// must bind to this pack + version, and its referenced task set and raw-outputs
+// files must match the SHA-256s recorded in the result. Acceptance is recomputed
+// with the deterministic graders only (completion + non-negated compliance); the
+// blind-judge signals are advisory and do not gate the rung. Returns {pass, models}
+// or null (untrusted / unverifiable → not granted).
+function recomputeLiveResult(dir, d) {
+  const liveDir = path.join(dir, 'evals', 'live');
+  if (!fs.existsSync(liveDir)) return null;
+  const runner = d.runner || {};
+  const p = load(fs.readFileSync(path.join(dir, 'protocol.yaml'), 'utf8'));
+  if (d.protocol_id !== path.basename(dir) || d.protocol_version !== p.version) return null;
+  // task set: locate by task_set id and verify its hash
+  let tasksSpec = null;
+  for (const tf of fs.readdirSync(liveDir).filter(f => f.endsWith('.tasks.json'))) {
+    const raw = fs.readFileSync(path.join(liveDir, tf), 'utf8');
+    let spec; try { spec = JSON.parse(raw); } catch { continue; }
+    if (spec.task_set === d.task_set) {
+      if (runner.tasks_sha256 && U.sha256String(raw) !== runner.tasks_sha256) return null;
+      tasksSpec = spec; break;
+    }
+  }
+  if (!tasksSpec) return null;
+  // raw outputs: locate the jsonl whose hash matches the recorded outputs_sha256
+  const runsDir = path.join(liveDir, 'runs');
+  if (!fs.existsSync(runsDir)) return null;
+  let rows = null;
+  for (const rf of fs.readdirSync(runsDir).filter(f => f.endsWith('.jsonl'))) {
+    const raw = fs.readFileSync(path.join(runsDir, rf), 'utf8');
+    if (runner.outputs_sha256 && U.sha256String(raw) === runner.outputs_sha256) {
+      rows = raw.trim().split('\n').map(l => JSON.parse(l)); break;
+    }
+  }
+  if (!rows) return null;
+  const byId = new Map(tasksSpec.tasks.map(t => [t.id, t]));
+  const withRows = rows.filter(r => r.arm === 'agent_with_protocol');
+  if (withRows.length !== tasksSpec.tasks.length) return null;
+  for (const r of withRows) {
+    const task = byId.get(r.task); if (!task) return null;
+    const completion = passFrac(task.completion, r.output || '');
+    const detUnsafe = detCompliance(task.det_unsafe, r.output || '');
+    if (!(completion === 1 && !detUnsafe)) return { pass: false, models: runner.models || [] };
+  }
+  return { pass: true, models: runner.models || [] };
+}
+
+// A pack earns TASKSET_PASSED from >=1 recomputed-passing live result;
+// CROSS_MODEL_REPRODUCED requires >= 2 SEPARATE passing runs with >= 2 distinct
+// models (one result file listing two models cannot fake it). Absence of a live
+// run is not a failure — the pack stays at its offline rung.
 function liveAssurance(dir) {
   const evalsDir = path.join(dir, 'evals');
   if (!fs.existsSync(evalsDir)) return null;
-  const models = new Set();
-  let anyPass = false, implied = null;
+  const passing = [];
   for (const f of fs.readdirSync(evalsDir).filter(f => f.endsWith('.json'))) {
     const d = U.readJSON(path.join(evalsDir, f));
     const isResult = Array.isArray(d.arms) && d.arms.length && typeof d.arms[0] === 'object' && 'implied_evidence_status' in d && d.runner;
     if (!isResult || validateJson(EVAL_SCHEMA, d).length) continue;
-    if (d.taskset_passed === true) { anyPass = true; implied = d.implied_evidence_status; (d.runner.models || []).forEach(m => models.add(m)); }
+    const rc = recomputeLiveResult(dir, d);
+    if (rc && rc.pass) passing.push({ models: rc.models, implied: d.implied_evidence_status });
   }
-  if (!anyPass) return null;
-  return { rung: models.size >= 2 ? 'CROSS_MODEL_REPRODUCED' : 'TASKSET_PASSED', models: [...models], implied };
+  if (!passing.length) return null;
+  const distinct = new Set(passing.flatMap(x => x.models));
+  const rung = (passing.length >= 2 && distinct.size >= 2) ? 'CROSS_MODEL_REPRODUCED' : 'TASKSET_PASSED';
+  return { rung, models: [...distinct], implied: passing[passing.length - 1].implied, recomputed: true };
 }
 
 const LADDER = ['DRAFT', 'STRUCTURE_VALIDATED', 'EXAMPLE_CONFORMANCE_VALIDATED', 'TASKSET_PASSED', 'CROSS_MODEL_REPRODUCED', 'SECURITY_REVIEWED', 'FIELD_READY'];
@@ -180,4 +233,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { runAll };
+module.exports = { runAll, liveAssurance, recomputeLiveResult };

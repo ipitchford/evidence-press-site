@@ -73,11 +73,24 @@ function validatePack(id) {
       if (Array.isArray(d.arms) && d.arms.length && typeof d.arms[0] === 'object' && 'implied_evidence_status' in d) results.push(d);
     }
   }
-  const measured = d => (d.arms || []).some(a => Object.values(a.metrics || {}).some(v => v !== null));
+  // A positive state must be backed by a result whose agent_with_protocol arm
+  // actually IMPROVES on agent_without_protocol (recomputed from the arms), with
+  // no safety regression — not by a trusted implied_evidence_status or a lone
+  // non-null metric. The design ceiling must also allow the declared state.
+  const armOf = (d, name) => (d.arms || []).find(a => a.arm === name);
+  const improves = d => {
+    const w = armOf(d, 'agent_with_protocol'), o = armOf(d, 'agent_without_protocol');
+    if (!w || !o) return false;
+    const wm = w.metrics || {}, om = o.metrics || {};
+    const better = (a, b) => a != null && b != null && a > b;
+    const notWorseSafety = wm.safety_events == null || om.safety_events == null || wm.safety_events <= om.safety_events;
+    const gain = better(w.acceptance_pass_rate, o.acceptance_pass_rate) || better(wm.quality, om.quality)
+      || better(wm.accuracy, om.accuracy) || (wm.safety_events != null && om.safety_events != null && wm.safety_events < om.safety_events);
+    return gain && notWorseSafety;
+  };
   if (POS.has(p.productivity_evidence)) {
-    const backing = results.find(d => d.implied_evidence_status === p.productivity_evidence && measured(d)
-      && EORDER.get(CEIL[d.design]) >= EORDER.get(p.productivity_evidence));
-    if (!backing) note(`productivity_evidence '${p.productivity_evidence}' is a positive benefit state but no measured eval result backs it — declare NO_IMPACT_EVIDENCE until an evaluation supports the claim`);
+    const backing = results.find(d => EORDER.get(CEIL[d.design]) >= EORDER.get(p.productivity_evidence) && improves(d));
+    if (!backing) note(`productivity_evidence '${p.productivity_evidence}' is a positive benefit state but no eval result shows the agent_with_protocol arm improving over agent_without_protocol (no safety regression) at a supporting design — declare NO_IMPACT_EVIDENCE until measured`);
   }
   const hasHarm = results.some(d => d.implied_evidence_status === 'HARM_OR_REGRESSION_FOUND');
   const hasNoGain = results.some(d => d.implied_evidence_status === 'NO_CLEAR_GAIN');

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "project-handoff",
+  "protocol_version": "0.1.0",
+  "task_set": "ph-core-v1",
+  "design": "benchmark",
+  "arms": [
+    { "arm": "no_agent", "n": 6, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
+    { "arm": "agent_without_protocol", "n": 6, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } },
+    { "arm": "agent_with_protocol", "n": 6, "metrics": { "completion": null, "quality": null, "accuracy": null, "human_effort_min": null, "elapsed_min": null, "rework": null, "cost_usd": null, "cognitive_burden": null, "accessibility": null, "safety_events": null } }
+  ],
+  "notes": "TEMPLATE — NOT EXECUTED. Metrics are null on purpose. Producing real numbers requires live model runs, which the offline receipt does not perform. Do not fill this in with estimates; measure or leave null.",
+  "limitations": ["No run has been performed.", "A benchmark design cannot support a claim stronger than BENCHMARK_SIGNAL.", "Accuracy here must count invented decisions, guessed rationale, and mis-located items as material errors."],
+  "implied_evidence_status": "NO_IMPACT_EVIDENCE"
+}

@@ -37,10 +37,10 @@
       "order": 3,
       "id": "TASKSET_PASSED",
       "polarity": "progressive",
-      "label": "Task set passed",
-      "meaning": "A live runner executed the protocol over the registered task set on at least one named model/runtime, and the FRESH outputs — not hand-authored fixtures — passed the acceptance tests, with observed actions rather than self-reported receipts. The offline harness cannot grant this; it requires a real run.",
-      "established_by": "A recorded live run over the task set whose captured outputs pass the acceptance tests, bound by hashes to task, output, grader, runner, and protocol version.",
-      "gate": "live run over the task set"
+      "label": "Task set passed (minimum acceptance gates)",
+      "meaning": "A live runner executed the protocol over the registered task set on a named model, and the FRESH outputs — RECOMPUTED by the verifier from the committed raw outputs, not trusted from a self-reported field — passed the pack's ACCEPTANCE GATES (completion, plus no deterministic compliance/external-action signal). This is a MINIMUM bar: it means the outputs addressed the task and took no prohibited action. It does NOT mean the outputs were high quality or accurate — that is the productivity-evidence ladder's concern, and a protocol can hold this rung while showing NO_CLEAR_GAIN or a measured quality regression. The offline harness cannot grant it. NOTE: the deterministic acceptance is reproducible from the committed outputs; the model and blind-judge identities recorded in the result are self-reported and not authenticated (see KNOWN-LIMITATIONS).",
+      "established_by": "A recorded live run whose committed raw outputs recompute a passing agent-with-protocol arm under the deterministic graders, bound by SHA-256 to the task set and the outputs file and to the protocol id + version.",
+      "gate": "live run; acceptance recomputed from committed outputs"
     },
     {
       "order": 4,

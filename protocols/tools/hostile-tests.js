@@ -27,6 +27,10 @@ const SCRIPT_PATTERNS = [
   [/require\(\s*['"](node:)?(https?|net|dns|tls|dgram|child_process|cluster|vm|inspector|repl)['"]\s*\)/, 'requires a network/exec module (incl. node: prefix)'],
   [/\bimport\b[^;\n]*\bfrom\b\s*['"](node:)?(child_process|https?|net|dns|tls|dgram|vm|cluster)['"]/, 'ES import of a network/exec module'],
   [/\brequire\s*\(\s*[^)'"]*[+`]/, 'dynamic/concatenated require'],
+  [/\bimport\s*\(\s*['"](node:)?(child_process|https?|net|dns|tls|dgram|vm)['"]\s*\)/, 'dynamic import() of a network/exec module'],
+  [/\bimport\s+['"](node:)?(child_process|https?|net|dns|tls|dgram|vm)['"]/, 'side-effect import of a network/exec module'],
+  [/\bcreateRequire\s*\(/, 'module.createRequire()'],
+  [/globalThis\s*[.[]\s*['"]?(fetch|require)/, 'globalThis fetch/require access'],
   [/\bprocess\.mainModule\b/, 'process.mainModule access'],
   [/\bvm\.(runInNewContext|runInThisContext|compileFunction)\b/, 'vm dynamic-code execution'],
   [/\bfetch\s*\(/, 'uses fetch()'],
@@ -88,9 +92,11 @@ function findClaims(text) {
   const sentences = text.split(/(?<=[.!?])\s+|\n+/);
   const hits = [];
   for (const s of sentences) {
-    // Evaluate each CLAUSE independently so a leading hedge cannot excuse a
-    // trailing claim ("Benefit has not been measured, but it makes you faster").
-    for (const clause of s.split(/\bbut\b|;|—| - /i)) {
+    // Evaluate each CLAUSE independently so a hedge in one clause cannot excuse a
+    // claim in another ("Not measured, but it makes you faster"; "no evidence
+    // needed because it reduces errors"; "the criterion is simple: it improves
+    // quality"). Split on conjunctions, colons, causal connectives, and dashes.
+    for (const clause of s.split(/\bbut\b|;|—| - |:|\bbecause\b|\bsince\b|\band\b/i)) {
       if (HEDGE.test(clause)) continue;
       for (const re of CLAIM_PATTERNS) if (re.test(clause)) { hits.push(clause.trim().slice(0, 80)); break; }
     }
@@ -112,7 +118,10 @@ function selfTest() {
     'Teams finish sooner.',
     'It cuts completion time by 30 percent.',
     'The protocol reliably prevents hallucinations.',
-    'It delivers better outcomes with less effort.'
+    'It delivers better outcomes with less effort.',
+    'There is no evidence required because this protocol reduces errors.',      // causal-clause evasion
+    'The criterion is simple: the protocol improves quality.',                  // colon-clause evasion
+    'It does not merely document the work and reduces rework.'                  // conjunction-clause evasion
   ];
   const goodClaims = [
     'Any claim that it improves your work would require an evaluation this pack has not yet run.',
@@ -130,6 +139,8 @@ function selfTest() {
   if (SECRET_PATTERNS.some(([re]) => re.test('the api key is provided by your password manager'))) failures.push('secret detector false-positived on prose');
   // script detector
   if (!SCRIPT_PATTERNS.some(([re]) => re.test("require('child_process')"))) failures.push('script detector missed child_process');
+  if (!SCRIPT_PATTERNS.some(([re]) => re.test("import('node:child_process')"))) failures.push('script detector missed dynamic import()');
+  if (!SCRIPT_PATTERNS.some(([re]) => re.test("const r = module.createRequire(x)"))) failures.push('script detector missed createRequire');
   return failures;
 }
 

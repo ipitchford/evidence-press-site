@@ -42,6 +42,27 @@ not yet have: CI-issued receipts, artifact signing or a transparency log,
 clean-commit enforcement, and a verifier identity distinct from the author. That
 is planned, not done.
 
+### The live-evaluation rung specifically
+
+`TASKSET_PASSED` is **recomputed** by the verifier from the committed raw outputs:
+the deterministic acceptance graders re-run against them, bound by SHA-256 to the
+task set and the outputs file and to the protocol id + version. A fabricated
+`taskset_passed` field, a tampered outputs file, or a result for the wrong
+pack/version is rejected, not trusted. But this reproduces only the *deterministic
+acceptance*. It does **not**:
+
+- re-run the model or the judge — re-running `verify-all` rereads the committed
+  outputs; it does not regenerate them, so it replays the *acceptance
+  computation*, not the *experiment*;
+- authenticate that the recorded runner/judge models actually produced those
+  outputs, or that the judge was blind;
+- gate on the blind-judge quality/grounding scores — those are advisory only.
+
+So the live rung means precisely: *these committed outputs pass the deterministic
+acceptance gates, reproducibly.* It does not by itself prove the run was fresh,
+blind, or un-cherry-picked. CI-issued live runs with authenticated provider
+transcripts would close that gap; not done.
+
 ## The security scan is a lint, not a sandbox
 
 `hostile-tests.js` is allow-by-default static analysis. It fails closed only on

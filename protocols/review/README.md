@@ -48,3 +48,31 @@ CI-issued and signed receipts, exhaustive secret detection, and true semantic
 kernel conformance. Pretending to close these in code would be its own overclaim.
 They are stated instead in [`../KNOWN-LIMITATIONS.md`](../KNOWN-LIMITATIONS.md) and
 scoped as the path from this candidate to a trusted, deployed institution.
+
+---
+
+# Second review — after remediation + the live eval
+
+Full text: [`adversarial-review-2-sol.md`](adversarial-review-2-sol.md). This review
+judged the remediated code and the live-eval result. Its central hit was correct
+and important: **the live `TASKSET_PASSED` was still self-attested** — granted from
+a runner-written boolean, the original defect one layer removed. Every finding was
+verified against the code before acting.
+
+| # | Finding | Verdict | Action |
+|---|---|---|---|
+| B1 | `TASKSET_PASSED` granted from an author `taskset_passed` boolean | **Confirmed** | `liveAssurance` now **recomputes** acceptance from the committed raw outputs (deterministic graders in `tools/lib/graders.js`), binds the result by SHA-256 to the task set + outputs and to the pack id/version, and ignores the boolean. Tamper (wrong hash/version) → rejected. Proven. |
+| B2 | `CROSS_MODEL_REPRODUCED` fakeable by one result listing two models | **Confirmed** | Now requires ≥2 **separate** recomputed-passing result files with ≥2 distinct models. |
+| B3 | "Positive state needs measured evidence" was syntactic | **Confirmed (dormant)** | `validate.js` now requires the with-protocol arm to **actually improve** on the control (recomputed from arms, no safety regression), not a trusted `implied_evidence_status` + a lone non-null metric. |
+| M4 | `TASKSET_PASSED` name broader than its bar | **Confirmed** | Ladder definition sharpened: it is a **minimum acceptance gate** (completion + no prohibited action), explicitly **not** a quality claim; the badge page shows it beside the (red) evidence status. |
+| M5 | Comparison doesn't isolate the protocol; "proportionality measured" overreaches | **Confirmed** | `FINDINGS.md` reworded to the descriptive claim (the *verbatim full-transcript edition* scored lower on these five concise tasks), with the missing controls listed and the "proportionality proven" claim withdrawn. |
+| M6/M7 | Live provenance not authenticated; verify-all reproduces the assertion, not the experiment | **Confirmed** | `KNOWN-LIMITATIONS.md` now scopes the live rung exactly: deterministic acceptance is reproduced from committed outputs; model/judge identity + blindness are self-reported; re-running does not replay the model. |
+| M8 | Negation guard bypassable (`because`/colon/`and`) | **Confirmed** | Clause-splitting extended to those connectives; self-test extended with the evasions; all 8 packs still clean. |
+| M9 | Scanner still evadable (`import()`, side-effect import, `createRequire`, `globalThis[...]`) | **Confirmed** | Patterns added; still, and now clearly, an allow-by-default lint. |
+| M10 | Stale header comment ("offline gates can reach TASKSET_PASSED") | **Confirmed** | Corrected. |
+| M11 | FINDINGS reported grounding 1.00/1.00 not in the machine result | **Confirmed — a real factual error** | Corrected to the true measured values: accuracy/grounding **0.80 (control) vs 0.60 (protocol)**. The protocol was worse on grounding too. |
+| M12 | "Regression" stated more strongly than the design supports | **Confirmed** | Reworded to descriptive (lower mean scores at ~3.3× cost on this five-task run). |
+
+Also added: CI-issued-receipt path (`ci/`) and `tools/attest.js` (a signable digest
+over all receipts) — the infrastructure that turns *reproducible* into *trusted*,
+authored but, honestly, not yet activated or signed.

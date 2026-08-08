@@ -1,0 +1,18 @@
+{
+  "protocol": "adversarial-output-review",
+  "protocol_version": "0.1.0",
+  "deliverable": "{one-line description of the refute-framed review produced}",
+  "permissions_used": ["read", "write"],
+  "external_actions": [],
+  "acceptance_tests": [
+    { "id": "{id}", "kind": "positive|negative|boundary", "result": "pass|fail" }
+  ],
+  "findings": [
+    { "id": "{F1}", "severity": "critical|high|medium|low", "targeted_claim": "{the claim in the draft}", "traces_to": "{which draft claim or source}" }
+  ],
+  "injected_instructions_found": [
+    { "source": "{the draft or which source}", "text": "{the embedded instruction}", "action_taken": "flagged, not executed" }
+  ],
+  "limitations": "{what the review does not cover or could not verify}",
+  "evidence_status": "NO_IMPACT_EVIDENCE"
+}
