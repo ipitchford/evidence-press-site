@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "scope": "protocol",
+  "subject_id": "document-to-action-plan",
+  "version": "0.1.0",
+  "source_commit": "f2051eb",
+  "source_date": "2026-08-08T08:39:52+01:00",
+  "toolchain": {
+    "node": "v25.2.1",
+    "builder": "verify-all@0.1.0"
+  },
+  "checks": [
+    {
+      "name": "manifest",
+      "passed": true,
+      "summary": "25 files hashed"
+    },
+    {
+      "name": "validate",
+      "passed": true,
+      "summary": "schema + kernel invariants ok"
+    },
+    {
+      "name": "tests",
+      "passed": true,
+      "summary": "10/10 cases",
+      "counts": {
+        "total": 10,
+        "passed": 10,
+        "failed": 0
+      }
+    },
+    {
+      "name": "evals",
+      "passed": true,
+      "summary": "eval designs valid, ceiling respected"
+    },
+    {
+      "name": "hostile",
+      "passed": true,
+      "summary": "clean"
+    },
+    {
+      "name": "live",
+      "passed": true,
+      "summary": "taskset_passed on o4-mini → TASKSET_PASSED (measured evidence: NO_CLEAR_GAIN)"
+    }
+  ],
+  "files_sha256": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "63b3f35d059feeb748a3d9d5416d17fea22a6c1272cbc189cdd5d53dc6c9578a"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "49b1b5340f76a1d19bb6a5b83bead32701bb2ee34452f44272d3e004d65a46b2"
+    },
+    {
+      "path": "README.md",
+      "sha256": "583dbfa4317b19bcf56b0bc224dce6947afee05e4584f11e30e92b3aad359b5d"
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "7137f56d3929c066febf4c7542fd6beb1baa7303860783303242c2bcad57cbcb"
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "4840b5e9e8d7223c2aea7d0f5977caa717e7bcc8185a7a82e21a59553b5bd0d3"
+    },
+    {
+      "path": "adapters/claude/README.md",
+      "sha256": "c3e28f6481fd61c48ac96fb14a9bd61503500ba7c6f1f266dfd29fdc367680ae"
+    },
+    {
+      "path": "adapters/codex/README.md",
+      "sha256": "1c0d76daf470425ed57d26b3897bdc8a08b5f1aafae0fb87c9e7126b6b9a544a"
+    },
+    {
+      "path": "adapters/generic-chat/prompt.md",
+      "sha256": "d3895e08555d9663261893b0a3e0994e9aa1b6c223befb71c0ccc07b6f1d13b0"
+    },
+    {
+      "path": "adapters/local-agent/README.md",
+      "sha256": "ea7a083014ee215b61ffe7c4b4d2f18c7dfe33ee23d8910d32c8a753a4fd516e"
+    },
+    {
+      "path": "assets/action-plan-template.md",
+      "sha256": "6a2e188ad692156689a969319b665e1d9164d2af4d37f25d83643c78f009345c"
+    },
+    {
+      "path": "assets/receipt-template.json",
+      "sha256": "dd2b1aff433cdf7c0304d94a833fe7b9d5aaf1f79ad8fa9391408028423dbce8"
+    },
+    {
+      "path": "evals/README.md",
+      "sha256": "96a651f37196daa143ce1e6a27b12ebd2e2900085444922ce936f21ec75807ce"
+    },
+    {
+      "path": "evals/live/dtap-core-v1.tasks.json",
+      "sha256": "1035980e1d9a2c39d73a6c95a853a25e01bdfbb0bf7b21668a758cd795adefb1"
+    },
+    {
+      "path": "evals/live/runs/live-o4-mini-2026-08-08.jsonl",
+      "sha256": "9eb18b03ebde3095a8094dd46034241b4c0ee56dc34a33d8f77489ad7631fbe4"
+    },
+    {
+      "path": "evals/result-live-o4-mini-2026-08-08.json",
+      "sha256": "e304881ece8c054bc253a64fff5791cbbc104f512827345939a35ac789b872ba"
+    },
+    {
+      "path": "evals/result.template.json",
+      "sha256": "210e38b9f23aea3e6643372379d07a980f3c5a47974c3c08a89f957fb8a01cfc"
+    },
+    {
+      "path": "evals/task-set.json",
+      "sha256": "cd417d9449be94cdf38e2debefe0221bc66e38bfb55bcf8611542ebb9e6a1b05"
+    },
+    {
+      "path": "examples/action-plan-output.md",
+      "sha256": "fdfa2450e4faf3cff701d94c4838ded96c184eac3fc749cd845f7b1d40f8e509"
+    },
+    {
+      "path": "examples/document-input.md",
+      "sha256": "04c8325bb3f26670a073fbb2981ac0f27d897a51b035549f52b2f0af4aa982c6"
+    },
+    {
+      "path": "examples/receipt.json",
+      "sha256": "0ac671b8f5f9223e8fc43b3554e76f61b36d5d41afc35c7d8365288561e93d04"
+    },
+    {
+      "path": "protocol.yaml",
+      "sha256": "957470582214e8f776f97298d7f670d43ef8b1fa051895f3b69335f7a1560e1b"
+    },
+    {
+      "path": "references/extraction-checklist.md",
+      "sha256": "736962e26f23e1e045a392e42abe7bd1d54ca1800dcdd5360e4ac99ab7e38dd4"
+    },
+    {
+      "path": "tests/cases.json",
+      "sha256": "2f2388783905edf660ebe087cf409e15600fefe088f3b87a33e71e8982e5a011"
+    },
+    {
+      "path": "tests/fixtures/bad-output.md",
+      "sha256": "718230c1d6be648f3741d8e4468b39890b4904d487b93f1a9e37c7d200ae92d3"
+    },
+    {
+      "path": "tests/fixtures/bad-receipt.json",
+      "sha256": "9a7c28b16bd26db7460de1cac05b58432b8d3262af52352cacf6a864014bfef6"
+    }
+  ],
+  "assurance_status": "TASKSET_PASSED",
+  "productivity_evidence": "NO_CLEAR_GAIN",
+  "replay": {
+    "command": "node tools/verify-all.js",
+    "byte_identical_expected": true
+  }
+}

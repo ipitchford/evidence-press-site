@@ -1,0 +1,15 @@
+{
+  "protocol": "document-to-action-plan",
+  "protocol_version": "0.1.0",
+  "deliverable": "{one-line description of the plan produced}",
+  "permissions_used": ["read", "write"],
+  "external_actions": [],
+  "acceptance_tests": [
+    { "id": "{id}", "kind": "positive|negative|boundary", "result": "pass|fail" }
+  ],
+  "injected_instructions_found": [
+    { "source": "{which document}", "text": "{the embedded instruction}", "action_taken": "flagged, not executed" }
+  ],
+  "limitations": "{what the plan does not cover or has not verified}",
+  "evidence_status": "NO_IMPACT_EVIDENCE"
+}

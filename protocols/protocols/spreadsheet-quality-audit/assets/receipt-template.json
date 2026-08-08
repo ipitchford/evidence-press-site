@@ -1,0 +1,16 @@
+{
+  "protocol": "spreadsheet-quality-audit",
+  "protocol_version": "0.1.0",
+  "deliverable": "{one-line description of the audit produced}",
+  "permissions_used": ["read", "write"],
+  "external_actions": [],
+  "source_modified": false,
+  "acceptance_tests": [
+    { "id": "{id}", "kind": "positive|negative|boundary", "result": "pass|fail" }
+  ],
+  "injected_instructions_found": [
+    { "source": "{which cell}", "text": "{the embedded instruction}", "action_taken": "flagged, not executed" }
+  ],
+  "limitations": "{what the audit did not check or could not verify}",
+  "evidence_status": "NO_IMPACT_EVIDENCE"
+}

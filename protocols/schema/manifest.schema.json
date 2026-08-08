@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/protocols/api/manifest.schema.json",
+  "title": "Protocol pack manifest",
+  "description": "The file inventory of one protocol pack: every shipped file with its SHA-256, plus the pack's declared permission summary and network requirement. A downloader can verify the pack byte-for-byte against this manifest before running anything.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "pack_id", "version", "network_required", "declared_permissions", "files"],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+    "pack_id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "network_required": {
+      "type": "boolean",
+      "description": "True only if the protocol cannot deliver its output without a network call. A copy-and-run edition must be false."
+    },
+    "declared_permissions": {
+      "type": "array",
+      "items": { "enum": ["read", "write", "network", "execute", "tool"] },
+      "description": "The distinct permission classes declared in protocol.yaml, surfaced here so a reviewer sees them without parsing the whole record."
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes", "role"],
+        "properties": {
+          "path": { "type": "string", "description": "Pack-relative path." },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "bytes": { "type": "integer", "minimum": 0 },
+          "role": {
+            "enum": ["contract", "skill", "doc", "reference", "asset", "script", "example", "test", "eval", "adapter", "manifest", "receipt", "license"],
+            "description": "What the file is for. Scripts and adapters are the security-relevant roles."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "scope": "protocol",
+  "subject_id": "repetitive-workflow-capture",
+  "version": "0.1.0",
+  "source_commit": "f2051eb",
+  "source_date": "2026-08-08T08:39:52+01:00",
+  "toolchain": {
+    "node": "v25.2.1",
+    "builder": "verify-all@0.1.0"
+  },
+  "checks": [
+    {
+      "name": "manifest",
+      "passed": true,
+      "summary": "22 files hashed"
+    },
+    {
+      "name": "validate",
+      "passed": true,
+      "summary": "schema + kernel invariants ok"
+    },
+    {
+      "name": "tests",
+      "passed": true,
+      "summary": "12/12 cases",
+      "counts": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0
+      }
+    },
+    {
+      "name": "evals",
+      "passed": true,
+      "summary": "eval designs valid, ceiling respected"
+    },
+    {
+      "name": "hostile",
+      "passed": true,
+      "summary": "clean"
+    }
+  ],
+  "files_sha256": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "8ce2a2939ef9dd6a253e5013183b34ba430a28cd5edb9b916bf130fa225ba781"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "2cc72b3ad401022712a0e5767a15954f3ea37fc717b9248605f7fc785761d2fa"
+    },
+    {
+      "path": "README.md",
+      "sha256": "fc62fae8ab5bf2381b549609e10c1df904b5426c4dc60dc8f6eeeadea193d70e"
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "18b351e1c6b37aa26f69c0d3266cbbd3e6e81402d9aab675d5fa29119cc5b2ff"
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "7e416f8338fe218c357beaf59b850eb9eaf56b6c0c13f7046bffaa64d2c1d39b"
+    },
+    {
+      "path": "adapters/claude/README.md",
+      "sha256": "04659ac5645d58e8d8e0b239afeac461029823a0423901b6b09a0fcd4a922e57"
+    },
+    {
+      "path": "adapters/codex/README.md",
+      "sha256": "b7b08f49e9f176875caf3d4c3ee34edc93c47b49433c4b4a97c22f5396391c2e"
+    },
+    {
+      "path": "adapters/generic-chat/prompt.md",
+      "sha256": "adc5daeecf40130bb0a8316d08fb7a681d8c27bfed3d247af7f770bb2a9fef67"
+    },
+    {
+      "path": "adapters/local-agent/README.md",
+      "sha256": "b7de8449e23e4f21c53ee7dc0e06d8f052652425f453d85bf5d9135243625e10"
+    },
+    {
+      "path": "assets/candidate-contract-template.md",
+      "sha256": "6504c212a8958d78992b39ad939c072ee1fd66661144a6f1449d6e92020a6aab"
+    },
+    {
+      "path": "assets/receipt-template.json",
+      "sha256": "ff8cd600c734860cf50cde3b2380942cf598d2571ddcf745110b0f25d0784317"
+    },
+    {
+      "path": "evals/README.md",
+      "sha256": "016a243cd447f342ed7701f43c5b76ebabf0e4571e73addb4d62625886d5a9c4"
+    },
+    {
+      "path": "evals/result.template.json",
+      "sha256": "9f8b506e65ba84adda90785eade16551c1d3d6553029d6e5be05bfe2d3d2a6b1"
+    },
+    {
+      "path": "evals/task-set.json",
+      "sha256": "98e90f1fc5a03b49aaa6c9890b784793886422721e6db433fa8f0e8733513534"
+    },
+    {
+      "path": "examples/candidate-output.md",
+      "sha256": "29b851efd0358690b20f7a1d258152956d3020cd021a75ca48eca8f209ae7633"
+    },
+    {
+      "path": "examples/process-input.md",
+      "sha256": "523a0098e924099a5ce1dd642c22b195dea31a64d4e91534b73c332385fb7e97"
+    },
+    {
+      "path": "examples/receipt.json",
+      "sha256": "c96369ae3a8189d3152210655a0b48dec7518be22471412ffc32a1042eb2e883"
+    },
+    {
+      "path": "protocol.yaml",
+      "sha256": "25e69e1da5c6fc8e78e50a21c7fba226f5a77950b5e2c38a02d4838fa7799c47"
+    },
+    {
+      "path": "references/capture-checklist.md",
+      "sha256": "9995e02c099f30846a56a8630ee96bb4fd766ea0b5562d8e68d41938385007d6"
+    },
+    {
+      "path": "tests/cases.json",
+      "sha256": "4eb3d5594935342cd3495277d7e80dcb13013506521bf40c4b99fb188c872d84"
+    },
+    {
+      "path": "tests/fixtures/bad-output.md",
+      "sha256": "1abc796cdcdf973242fc16a7886269014b0a08b1268c6b50467dab6793168ac5"
+    },
+    {
+      "path": "tests/fixtures/bad-receipt.json",
+      "sha256": "159c51a835e084702672dd3aa491f9b3cbdc8a7cd54c6582a504b50256415ec8"
+    }
+  ],
+  "assurance_status": "EXAMPLE_CONFORMANCE_VALIDATED",
+  "productivity_evidence": "NO_IMPACT_EVIDENCE",
+  "replay": {
+    "command": "node tools/verify-all.js",
+    "byte_identical_expected": true
+  }
+}

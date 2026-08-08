@@ -1,0 +1,15 @@
+{
+  "protocol": "goal-to-verified-deliverable",
+  "protocol_version": "0.1.0",
+  "deliverable": "{one-line description of what was produced}",
+  "permissions_used": ["read", "write"],
+  "external_actions": [],
+  "acceptance_tests": [
+    { "id": "{id}", "kind": "positive|failure|boundary", "result": "pass|fail" }
+  ],
+  "injected_instructions_found": [
+    { "source": "{which input}", "text": "{the embedded instruction}", "action_taken": "flagged, not executed" }
+  ],
+  "limitations": "{what the deliverable does not cover or has not verified}",
+  "evidence_status": "NO_IMPACT_EVIDENCE"
+}

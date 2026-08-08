@@ -1,0 +1,18 @@
+{
+  "protocol": "evidence-backed-brief",
+  "protocol_version": "0.1.0",
+  "deliverable": "{one-line description of the brief produced}",
+  "permissions_used": ["read", "write"],
+  "external_actions": [],
+  "acceptance_tests": [
+    { "id": "{id}", "kind": "positive|negative|boundary", "result": "pass|fail" }
+  ],
+  "claims": [
+    { "text": "{the claim}", "type": "fact|estimate|opinion|assumption", "source": "{which source}" }
+  ],
+  "injected_instructions_found": [
+    { "source": "{which source}", "text": "{the embedded instruction}", "action_taken": "flagged, not executed" }
+  ],
+  "limitations": "{what the brief does not cover or has not verified}",
+  "evidence_status": "NO_IMPACT_EVIDENCE"
+}

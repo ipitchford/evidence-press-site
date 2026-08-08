@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "id": "productivity-evidence",
+  "title": "Productivity evidence ladder",
+  "question": "Does the protocol actually improve the work, and how do we know?",
+  "independent_from": "protocol-assurance",
+  "principle": "Benefit is measured, never assumed. A perfectly assured protocol starts at NO_IMPACT_EVIDENCE and stays there until an evaluation moves it. The negative outcomes are findings, not low rungs: a protocol found to give no clear gain, or to cause harm, has been evaluated more thoroughly than one with no evidence at all.",
+  "design_ceiling": {
+    "benchmark": "BENCHMARK_SIGNAL",
+    "controlled_user": "CONTROLLED_USER_SIGNAL",
+    "field": "FIELD_SIGNAL",
+    "causal": "CAUSAL_EFFECT_SUPPORTED"
+  },
+  "states": [
+    {
+      "order": 0,
+      "id": "NO_IMPACT_EVIDENCE",
+      "polarity": "neutral",
+      "label": "No impact evidence",
+      "meaning": "No evaluation of benefit has been run. This says nothing about whether the protocol helps, harms, or is even usable — usability and safety are the assurance ladder's concern, not this one's.",
+      "established_by": "Default for any protocol before evaluation."
+    },
+    {
+      "order": 1,
+      "id": "BENCHMARK_SIGNAL",
+      "polarity": "positive",
+      "label": "Benchmark signal",
+      "meaning": "It improves outcomes on an artificial or curated task set.",
+      "established_by": "A benchmark-design eval showing improvement on the agent-with-protocol arm versus agent-without-protocol."
+    },
+    {
+      "order": 2,
+      "id": "CONTROLLED_USER_SIGNAL",
+      "polarity": "positive",
+      "label": "Controlled user signal",
+      "meaning": "It improves at least one measured dimension in a controlled user comparison.",
+      "established_by": "A controlled_user-design eval with real participants and a stated comparison."
+    },
+    {
+      "order": 3,
+      "id": "FIELD_SIGNAL",
+      "polarity": "positive",
+      "label": "Field signal",
+      "meaning": "A real organisation or user group reports measured benefit in ordinary use.",
+      "established_by": "A field-design report with measurement, not testimonial."
+    },
+    {
+      "order": 4,
+      "id": "CAUSAL_EFFECT_SUPPORTED",
+      "polarity": "positive",
+      "label": "Causal effect supported",
+      "meaning": "A suitable design supports an attributable net productivity effect.",
+      "established_by": "A causal-design study whose identification strategy is stated and defensible. This is the claim the Policy Identification Observatory would audit."
+    },
+    {
+      "order": 98,
+      "id": "NO_CLEAR_GAIN",
+      "polarity": "negative",
+      "label": "No clear gain",
+      "meaning": "Testing found no worthwhile net improvement.",
+      "established_by": "An eval whose vector shows no dimension improved enough to matter, or gains offset by costs. Retained, not hidden."
+    },
+    {
+      "order": 99,
+      "id": "HARM_OR_REGRESSION_FOUND",
+      "polarity": "negative",
+      "label": "Harm or regression found",
+      "meaning": "It reduced quality, raised burden, or created unacceptable risk.",
+      "established_by": "An eval showing a material regression on any dimension, or any safety event. Blocks FIELD_READY on the assurance ladder until resolved."
+    }
+  ]
+}

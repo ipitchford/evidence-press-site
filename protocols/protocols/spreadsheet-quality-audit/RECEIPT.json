@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "scope": "protocol",
+  "subject_id": "spreadsheet-quality-audit",
+  "version": "0.1.0",
+  "source_commit": "f2051eb",
+  "source_date": "2026-08-08T08:39:52+01:00",
+  "toolchain": {
+    "node": "v25.2.1",
+    "builder": "verify-all@0.1.0"
+  },
+  "checks": [
+    {
+      "name": "manifest",
+      "passed": true,
+      "summary": "22 files hashed"
+    },
+    {
+      "name": "validate",
+      "passed": true,
+      "summary": "schema + kernel invariants ok"
+    },
+    {
+      "name": "tests",
+      "passed": true,
+      "summary": "10/10 cases",
+      "counts": {
+        "total": 10,
+        "passed": 10,
+        "failed": 0
+      }
+    },
+    {
+      "name": "evals",
+      "passed": true,
+      "summary": "eval designs valid, ceiling respected"
+    },
+    {
+      "name": "hostile",
+      "passed": true,
+      "summary": "clean"
+    }
+  ],
+  "files_sha256": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "3aed40faa2e15990689aba6fff3085b85e50d3f5f31b2676d65a8ce23430868c"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "f7ac3039a3435e553acbe7b0fd2fa8a264b3f59d9b126285c1a4643c497495aa"
+    },
+    {
+      "path": "README.md",
+      "sha256": "db3614f6a6c1c7bc9c0dac12d7f508dba77cc10fa06aa09d681708f8d7850f87"
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "628ae9715f5d50eb7e1cbfdbae4fe21b40d328b7ea180146ca3d9eef11547c8c"
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "662512a802b20ea623673a363e1cd50573c35791a26f5d7b6a2af92aa768e922"
+    },
+    {
+      "path": "adapters/claude/README.md",
+      "sha256": "e52a54ac43477708ba37f54e405ec2244dc2e6f01b810c07867789195ad8ccf5"
+    },
+    {
+      "path": "adapters/codex/README.md",
+      "sha256": "bb6968a1a8aec53ff2a05f1175143e4c5bf64c5141a0ad889afe42add1f3d799"
+    },
+    {
+      "path": "adapters/generic-chat/prompt.md",
+      "sha256": "36ce61a117b66162cca8fa9e337179b8f81dafb3ed2c4018d2ceeb71e18e3b98"
+    },
+    {
+      "path": "adapters/local-agent/README.md",
+      "sha256": "a04c663d055906e30af6eebaaef23a817f523503044cc9b318c4c03c2dd3a9d6"
+    },
+    {
+      "path": "assets/audit-template.md",
+      "sha256": "0ab921ec40632baef5c086b6d60757ec71565c57b88ff691c642ce80a6035c6d"
+    },
+    {
+      "path": "assets/receipt-template.json",
+      "sha256": "2e275c0c5da84e2b3d35035627bfdbded9ebb371e4d4bceb25380a4547dea4f4"
+    },
+    {
+      "path": "evals/README.md",
+      "sha256": "be14fd42700443d9f3c234d0536fab67a59cbac0618d1bcca1f696b3cb2e9a64"
+    },
+    {
+      "path": "evals/result.template.json",
+      "sha256": "f975f03f16cded8bb49b36f680153019b6313dea851a495bbf099f4f51d17dee"
+    },
+    {
+      "path": "evals/task-set.json",
+      "sha256": "11a21a9cfafa0960d57662a68b61e0c21ebe60cf558b59f26048812db9392b2b"
+    },
+    {
+      "path": "examples/audit-output.md",
+      "sha256": "6694da32b32502fdcb09253a480e58a1d07079f7cb75c3371fc0ce3e8ed0ac6d"
+    },
+    {
+      "path": "examples/receipt.json",
+      "sha256": "9ceb34c77062d8aedd46f88f26832314d90fcbf16635b248240a31ad206bddf4"
+    },
+    {
+      "path": "examples/table-input.md",
+      "sha256": "555e2c76d18898b1d23e03357b2601d14f070f45417f60edff1c007c1d9cd0c9"
+    },
+    {
+      "path": "protocol.yaml",
+      "sha256": "3cd9cee80e1d9b3c3b20f58d71ccf7112a7dba908905b4e8043019c77a4e18f5"
+    },
+    {
+      "path": "references/audit-checklist.md",
+      "sha256": "9231cf938d7c73eb5cb791372e977f0ea54472b68b4e034e21ea6cc145badfd0"
+    },
+    {
+      "path": "tests/cases.json",
+      "sha256": "303b2fa5bcd685ca523551c2597e55e93075d9ebda9f6650b9d42aba0bc16f05"
+    },
+    {
+      "path": "tests/fixtures/bad-output.md",
+      "sha256": "cdef8429d05529c3834d942ecf80440f5ef927b802fe5df82963c5b13610e81e"
+    },
+    {
+      "path": "tests/fixtures/bad-receipt.json",
+      "sha256": "e7d8d1b165e62f1fae6d6fd3ed4775147557819eaa53ea4f4ba8a9171a426320"
+    }
+  ],
+  "assurance_status": "EXAMPLE_CONFORMANCE_VALIDATED",
+  "productivity_evidence": "NO_IMPACT_EVIDENCE",
+  "replay": {
+    "command": "node tools/verify-all.js",
+    "byte_identical_expected": true
+  }
+}

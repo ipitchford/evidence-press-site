@@ -1,0 +1,27 @@
+{
+  "protocol": "decision-memo-under-uncertainty",
+  "protocol_version": "0.1.0",
+  "deliverable": "{one-line description of the memo produced}",
+  "permissions_used": ["read", "write"],
+  "external_actions": [],
+  "acceptance_tests": [
+    { "id": "{id}", "kind": "positive|negative|boundary", "result": "pass|fail" }
+  ],
+  "facts": [
+    { "text": "{the fact}", "source": "{which source}" }
+  ],
+  "assumptions": [
+    { "id": "A1", "text": "{the assumption}", "label": "assumption" }
+  ],
+  "options": [
+    { "id": "1", "text": "{the option}", "reversible": "{reversible / irreversible, with a note}" }
+  ],
+  "irreversible_actions": [
+    "{any action that cannot be undone}"
+  ],
+  "injected_instructions_found": [
+    { "source": "{which source}", "text": "{the embedded instruction}", "action_taken": "flagged, not executed" }
+  ],
+  "limitations": "{what the memo does not cover or has not verified}",
+  "evidence_status": "NO_IMPACT_EVIDENCE"
+}

@@ -1,0 +1,319 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/protocols/api/protocol.schema.json",
+  "title": "Productivity Protocol contract",
+  "description": "The platform-neutral contract for one protocol. A protocol.yaml (or .json) that validates against this schema and satisfies the structural kernel checks is STRUCTURALLY conformant with the Verified Agent Work kernel — its required fields are present and its steps are mapped. Structural conformance is not semantic fidelity (a validator cannot confirm a model actually follows the steps) and says nothing about benefit: see productivity_evidence for the separate, evidence-backed benefit claim.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "title",
+    "purpose",
+    "kernel",
+    "assurance_level",
+    "use_when",
+    "do_not_use_when",
+    "target_users",
+    "required_inputs",
+    "expected_outputs",
+    "required_capabilities",
+    "permissions",
+    "prohibited_actions",
+    "human_checkpoints",
+    "procedure",
+    "acceptance_tests",
+    "stop_conditions",
+    "failure_modes",
+    "privacy_class",
+    "risk_class",
+    "assurance_status",
+    "productivity_evidence",
+    "license",
+    "last_verified"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Version of this schema the record targets."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable kebab-case identifier, unique in the registry. Never reused for a different protocol."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of this protocol. Bumped on any change to procedure, permissions, or acceptance tests."
+    },
+    "title": { "type": "string", "minLength": 3 },
+    "purpose": {
+      "type": "string",
+      "minLength": 10,
+      "description": "One or two sentences: the task this protocol addresses and the deliverable it promises. Kernel step 1."
+    },
+    "kernel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "description": "The kernel this protocol instantiates.",
+      "properties": {
+        "id": { "const": "verified-agent-work" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" }
+      }
+    },
+    "assurance_level": {
+      "enum": ["quick", "verified", "institutional"],
+      "description": "The kernel assurance level, set by the risk of the work. Determines which kernel steps are mandatory."
+    },
+    "use_when": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Conditions under which this protocol is the right tool."
+    },
+    "do_not_use_when": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Conditions under which this protocol must not be used. A protocol with no stated non-uses is under-specified."
+    },
+    "target_users": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "required_inputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/input" },
+      "description": "Kernel step 2: what the agent works on."
+    },
+    "expected_outputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/output" },
+      "description": "Kernel steps 1 and 8: what is handed back."
+    },
+    "required_capabilities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Model/runtime capabilities the protocol needs (e.g. file-read, long-context, tool-use). Kernel step 3."
+    },
+    "optional_tools": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/optionalTool" },
+      "description": "Optional external tools/MCP connections. Each must state how the protocol degrades without it."
+    },
+    "permissions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/permission" },
+      "description": "Least-privilege grants. An action not listed here is not permitted. Kernel step 3."
+    },
+    "prohibited_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Actions that must never occur, stated explicitly even when obvious. Kernel step 3. Never inferred from the permission set."
+    },
+    "human_checkpoints": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/checkpoint" },
+      "description": "Points where a person must approve before the agent proceeds. Kernel step 4. Placed before irreversible or outward-facing actions."
+    },
+    "procedure": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/procedureStep" },
+      "description": "Ordered, verifiable checkpoints. Kernel steps 5 and 6."
+    },
+    "acceptance_tests": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/acceptanceTest" },
+      "description": "Explicit tests the deliverable must pass. Kernel step 7. At least one positive and one failure/boundary test are required by the validator."
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Conditions under which the agent must stop and surface rather than proceed. Kernel step 7."
+    },
+    "failure_modes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/failureMode" },
+      "description": "Known ways this protocol goes wrong, with detection and mitigation. Kernel step 4."
+    },
+    "privacy_class": {
+      "enum": ["public", "internal", "personal_data", "sensitive_personal_data"],
+      "description": "The most sensitive data class the protocol may touch."
+    },
+    "risk_class": {
+      "enum": ["low", "moderate", "high", "critical"],
+      "description": "Worst plausible outcome of a bad run. Drives the assurance level."
+    },
+    "tested_models": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Models the protocol has actually been run against. Empty is honest; a fabricated entry is a defect."
+    },
+    "tested_environments": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "assurance_status": {
+      "$ref": "#/$defs/assuranceStatus",
+      "description": "Where the protocol sits on the protocol-assurance ladder. Structure/testing/security — NOT benefit."
+    },
+    "productivity_evidence": {
+      "$ref": "#/$defs/productivityEvidence",
+      "description": "Where the protocol sits on the productivity-evidence ladder. Benefit — measured, never assumed. Independent of assurance_status."
+    },
+    "retest_triggers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Events that invalidate the current verification (e.g. model deprecation, tool API change)."
+    },
+    "last_verified": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO date of the most recent successful verification run."
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content", "code"],
+      "description": "Dual licence: CC0 for prose/templates, Apache-2.0 for scripts/validators.",
+      "properties": {
+        "content": { "type": "string", "description": "SPDX id for prose/templates, e.g. CC0-1.0." },
+        "code": { "type": "string", "description": "SPDX id for scripts/software, e.g. Apache-2.0." }
+      }
+    }
+  },
+  "$defs": {
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "required", "description"],
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "required": { "type": "boolean" },
+        "description": { "type": "string" },
+        "evidence_role": {
+          "enum": ["work_material", "citable_evidence", "context_only"],
+          "description": "Whether this input may be used to justify claims (kernel step 2)."
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "description"],
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "optionalTool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "why", "degraded_without"],
+      "properties": {
+        "name": { "type": "string" },
+        "mcp": { "type": "boolean" },
+        "why": { "type": "string" },
+        "degraded_without": { "type": "string", "description": "How the protocol still works, at reduced assurance, without this tool." }
+      }
+    },
+    "permission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "resource", "scope", "why"],
+      "properties": {
+        "action": {
+          "enum": ["read", "write", "network", "execute", "tool"],
+          "description": "Class of access granted."
+        },
+        "resource": { "type": "string", "description": "What the access applies to (e.g. supplied files, working directory)." },
+        "scope": {
+          "enum": ["none", "supplied-only", "working-dir", "named-tool", "broad"],
+          "description": "Breadth of the grant. 'broad' requires explicit justification and raises the risk class."
+        },
+        "why": { "type": "string" }
+      }
+    },
+    "checkpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["before", "why"],
+      "properties": {
+        "before": { "type": "string", "description": "The action that must not proceed without approval." },
+        "why": { "type": "string" }
+      }
+    },
+    "procedureStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["step", "action", "check", "kernel_step"],
+      "properties": {
+        "step": { "type": "integer", "minimum": 1 },
+        "action": { "type": "string" },
+        "check": { "type": "string", "description": "How this step is verified when it completes." },
+        "kernel_step": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "human_checkpoint": { "type": "boolean" }
+      }
+    },
+    "acceptanceTest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "statement", "kind"],
+      "properties": {
+        "id": { "type": "string" },
+        "statement": { "type": "string", "description": "What must be true of the deliverable." },
+        "kind": {
+          "enum": ["positive", "negative", "boundary"],
+          "description": "positive: it does the right thing. negative: it does NOT do a wrong thing. boundary: it behaves at an edge case."
+        },
+        "automated": { "type": "boolean", "description": "Whether tools/validate.js or a script can check this without a human." }
+      }
+    },
+    "failureMode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "detection", "mitigation"],
+      "properties": {
+        "mode": { "type": "string" },
+        "detection": { "type": "string" },
+        "mitigation": { "type": "string" }
+      }
+    },
+    "assuranceStatus": {
+      "enum": [
+        "DRAFT",
+        "STRUCTURE_VALIDATED",
+        "EXAMPLE_CONFORMANCE_VALIDATED",
+        "TASKSET_PASSED",
+        "CROSS_MODEL_REPRODUCED",
+        "SECURITY_REVIEWED",
+        "FIELD_READY",
+        "DEPRECATED"
+      ]
+    },
+    "productivityEvidence": {
+      "enum": [
+        "NO_IMPACT_EVIDENCE",
+        "BENCHMARK_SIGNAL",
+        "CONTROLLED_USER_SIGNAL",
+        "FIELD_SIGNAL",
+        "CAUSAL_EFFECT_SUPPORTED",
+        "NO_CLEAR_GAIN",
+        "HARM_OR_REGRESSION_FOUND"
+      ]
+    }
+  }
+}
