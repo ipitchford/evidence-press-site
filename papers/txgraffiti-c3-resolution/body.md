@@ -12,6 +12,10 @@ The package also develops an exact identity for a class of formula-incidence gra
 
 > **Status: unrefereed candidate.** The theorem-critical deterministic checks pass in the recorded environment, from a clean extracted copy, in the pinned core container, and in GitHub Actions. The exact release has not been independently rerun, independently reimplemented, formally verified, or conventionally peer reviewed.
 
+## Subsequent unrefereed work
+
+A separate [Evidence Press child release](https://evidencepress.org/releases/bilateral-deficiency-regular-dim/) develops bilateral deficiency into a broader residual-SAT and regular-DIM theory; its immutable archive is [doi:10.5281/zenodo.21857209](https://doi.org/10.5281/zenodo.21857209). It is subsequent unrefereed work, not a correction to this release, and it does not alter or strengthen this release's recorded claims or assurance state.
+
 ## Summary for specialists
 
 The canonical object is a connected 3-regular graph with 50 vertices and 75 edges, supplied in JSON, graph6 and edge-list encodings. The release gives an explicit independent dominating set of size 16 and proves that no independent dominating set of size at most 15 exists. Its matching witness has size 15 and is maximal, producing the strict inequality.

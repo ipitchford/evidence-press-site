@@ -80,7 +80,7 @@ These checks establish the recorded finite propositions and implementation behav
 
 The parent release supplies the motivating 50-vertex cubic graph and its certificate-backed invariant values. This child develops a broader residual-SAT parameter, a formula-graph bijection, algebraic and complexity results, the regular-DIM coordinate, connected amplification and the DIM-qualified minimum-order theorem.
 
-The distinction is archival as well as mathematical. The [parent Evidence Press page](https://evidencepress.org/releases/txgraffiti-c3-resolution/) and [parent DOI record](https://doi.org/10.5281/zenodo.21852504) remain unchanged. Any later review, formalization, correction or independent reproduction should likewise be published as a separately identified related record rather than silently changing this candidate.
+The distinction is archival as well as mathematical. The [parent DOI archive](https://doi.org/10.5281/zenodo.21852504) and its release payload remain unchanged; the [parent Evidence Press page](https://evidencepress.org/releases/txgraffiti-c3-resolution/) now carries only an explicit forward link to this separately identified child. Any later review, formalization, correction or independent reproduction should likewise be published as a separately identified related record rather than silently changing this candidate.
 
 ## Who should care, and why
 
