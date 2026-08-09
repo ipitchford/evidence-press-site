@@ -463,6 +463,41 @@ art['hahn-ewens-mixing-theorem'] = (a, b) => {
   return s;
 };
 
+/* Polydegree certificates: transverse coefficient curves and their Jacobian. */
+art['smooth-point-certificates-polydegree-containments'] = (a, b) => {
+  let s = '';
+
+  /* Two coefficient zero loci cross transversely at one certified point. */
+  s += `<path d="M 70 306 C 160 82, 302 70, 450 314" fill="none" stroke="${a}" stroke-width="5" opacity="0.94"/>`;
+  s += `<path d="M 84 112 C 210 334, 346 336, 456 96" fill="none" stroke="${b}" stroke-width="5" opacity="0.9"/>`;
+  s += `<circle cx="267" cy="205" r="16" fill="#151a1e" stroke="#e7e5e4" stroke-width="4"/>`;
+  s += `<circle cx="267" cy="205" r="6" fill="${a}"/>`;
+  s += `<line x1="267" y1="205" x2="343" y2="145" stroke="${a}" stroke-width="3" opacity="0.82"/>`;
+  s += `<line x1="267" y1="205" x2="339" y2="278" stroke="${b}" stroke-width="3" opacity="0.82"/>`;
+  s += `<text x="76" y="365" font-family="Georgia" font-size="21" fill="#e7e5e4" opacity="0.82">smooth intersection</text>`;
+
+  /* The next coefficient hypersurface stays away from the good point. */
+  s += `<path d="M 62 58 C 188 138, 346 24, 472 104" fill="none" stroke="#e7e5e4" stroke-width="2.5" stroke-dasharray="11 9" opacity="0.42"/>`;
+  s += `<text x="336" y="54" font-family="ui-monospace,monospace" font-size="17" fill="#e7e5e4" opacity="0.7">G₍d+2₎ ≠ 0</text>`;
+
+  /* Local derivative matrix and determinant-to-Jacobian identity. */
+  const ox = 560, oy = 84, cell = 58;
+  s += `<path d="M ${ox - 22} ${oy - 18} H ${ox - 34} V ${oy + 3 * cell + 12} H ${ox - 22} M ${ox + 3 * cell + 22} ${oy - 18} H ${ox + 3 * cell + 34} V ${oy + 3 * cell + 12} H ${ox + 3 * cell + 22}" fill="none" stroke="#e7e5e4" stroke-width="3" opacity="0.75"/>`;
+  for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) {
+    const hot = i === j || i + j === 2;
+    s += `<rect x="${ox + j * cell}" y="${oy + i * cell}" width="42" height="42" rx="8" fill="${hot ? (i % 2 ? b : a) : '#e7e5e4'}" opacity="${hot ? '0.72' : '0.09'}"/>`;
+    s += `<text x="${ox + j * cell + 21}" y="${oy + i * cell + 28}" text-anchor="middle" font-family="Georgia" font-size="18" fill="#151a1e">∂</text>`;
+  }
+  s += `<text x="647" y="318" text-anchor="middle" font-family="Georgia" font-size="24" fill="#e7e5e4" opacity="0.9">Jacobian</text>`;
+
+  s += `<text x="805" y="155" font-family="Georgia" font-size="38" fill="#e7e5e4" opacity="0.92">a₍d,e₎ = (−1)ᵉ det Dg</text>`;
+  s += `<path d="M 785 202 H 1126" stroke="${a}" stroke-width="3" opacity="0.78"/>`;
+  s += `<text x="805" y="258" font-family="Georgia" font-size="29" fill="${b}" opacity="0.96">simple zero ⇒ lift</text>`;
+  s += `<text x="805" y="302" font-family="ui-monospace,monospace" font-size="18" fill="#e7e5e4" opacity="0.7">finite field → ℤₚ → ℂ</text>`;
+  s += `<path d="M 478 205 H 520 M 748 205 H 782" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 8" opacity="0.5"/>`;
+  return s;
+};
+
 /* certified two-item JRP: two order lattices, shared epochs and a closing tail */
 art['certified-two-item-jrp'] = (a, b) => {
   let s = '';
@@ -517,6 +552,7 @@ const palette = {
   'bordered-jacobian-foundations': ['#34d399', '#fbbf24'],
   'exact-smith-invariants-affine-determinant-lines': ['#34d399', '#c084fc'],
   'hahn-ewens-mixing-theorem': ['#38bdf8', '#f59e0b'],
+  'smooth-point-certificates-polydegree-containments': ['#2dd4bf', '#f59e0b'],
   'certified-two-item-jrp': ['#2dd4bf', '#f59e0b']
 };
 

@@ -126,6 +126,20 @@ const SPECS = {
       <div class="note">Three components on the curve, two on its first
         jets, <b>irreducible</b> beyond — one locus decides.</div>
       <div class="eq-foot">and a screening theorem: the affine slice is never A<sup>2m+1</sup></div>`
+  },
+
+  'smooth-point-certificates-polydegree-containments': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 9 AUGUST 2026', 'POLYDEGREE CONTAINMENTS · V0.4.1'],
+    head: ['A determinant', 'becomes <em>geometry</em>'],
+    headSize: 64,
+    sub: 'A Jacobian interpretation turns an auxiliary algebraic test into a smooth-point certificate, with exact replay and explicit open limits.',
+    tag: 'SMOOTH-POINT CERTIFICATE · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">Lewis–Perry–Straub determinant</div>
+      <div class="eq eq-sm">a<sub>d,e</sub> = (−1)<sup>e</sup><br><span class="hl">det D(g<sub>d</sub>, …, g<sub>d+e−1</sub>)</span></div>
+      <div class="note">On the partial zero locus: find one <b>smooth point</b> that avoids the next coefficient hypersurface.</div>
+      <div class="eq-foot">proved identities · exact finite evidence · all-d affine theorem still open</div>`
   }
 };
 

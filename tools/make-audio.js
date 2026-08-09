@@ -9,6 +9,7 @@ const path = require('path');
 const KEY = process.env.OPENAI_API_KEY;
 if (!KEY) { console.error('Set OPENAI_API_KEY'); process.exit(1); }
 const FORCE = process.argv.includes('--force');
+const REQUESTED = new Set(process.argv.slice(2).filter(arg => arg !== '--force'));
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'assets', 'audio');
 fs.mkdirSync(OUT, { recursive: true });
@@ -32,15 +33,22 @@ async function tts(text, file) {
 }
 
 (async () => {
-  const dirs = fs.readdirSync(path.join(ROOT, 'papers')).filter(d => !d.startsWith('_'));
+  const dirs = fs.readdirSync(path.join(ROOT, 'papers'))
+    .filter(d => !d.startsWith('_'))
+    .filter(d => !REQUESTED.size || REQUESTED.has(d));
+  if (REQUESTED.size && dirs.length !== REQUESTED.size) {
+    const missing = [...REQUESTED].filter(d => !dirs.includes(d));
+    throw new Error(`unknown release slug(s): ${missing.join(', ')}`);
+  }
   for (const d of dirs) {
     const metaPath = path.join(ROOT, 'papers', d, 'meta.json');
     if (!fs.existsSync(metaPath)) continue;
     const m = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
     const file = path.join(OUT, (m.slug || d) + '.mp3');
     if (fs.existsSync(file) && !FORCE) { console.log('skip (exists):', m.slug || d); continue; }
-    const text = `${m.shortTitle}. An Evidence Press audio briefing, released ${nice(m.datePublished)}. ` +
-      `${m.narration || m.abstract} ` +
+    const text = m.narration ||
+      `${m.shortTitle}. An Evidence Press audio briefing, released ${nice(m.datePublished)}. ` +
+      `${m.abstract} ` +
       `This result has not yet been peer reviewed or independently reproduced. The full paper, the complete evidence package, and open follow-up problems are linked on this page.`;
     process.stdout.write(`tts: ${m.slug || d} (${text.length} chars) ... `);
     await tts(text, file);
