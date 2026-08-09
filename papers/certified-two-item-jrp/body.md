@@ -6,13 +6,15 @@ This candidate turns that two-item problem into an auditable certificate system.
 
 “Guaranteed termination” has a precise and limited meaning here. It says the mathematical algorithm eventually returns a certificate on every instance in the stated model. It does not give a polynomial running-time bound, solve the multi-item problem, or remove the known number-theoretic difficulty of two-item joint replenishment.
 
-The release also studies the gap of the standard convex relaxation, denoted $(P)$. A cap-reduction theorem shows that, over nonnegative real resource systems, worst-case gap analysis can be restricted to separate item-frequency caps. Inside a canonical triple-tie family, exact interval and elimination certificates locate a unique algebraic family maximum
+The release also studies the gap of the standard convex relaxation, denoted $(P)$. A cap-reduction theorem shows that, over nonnegative real resource systems, worst-case gap analysis can be restricted to separate item-frequency caps. For two items with independent caps, the new companion paper determines the exact supremum:
 
 $$
-\gamma \approx 1.11188959394.
+\Gamma_{2,\mathrm{box}}=\gamma,
+\qquad
+1.111889593939396<\gamma<1.111889593940297.
 $$
 
-This proves a global lower bound for the relaxation gap. It does **not** determine the exact global gap.
+The canonical triple-tie family attains the lower bound. A four-policy envelope, a symbolic critical interval, and a complete 212-cell exact rational outer cover prove the matching upper bound. This does **not** determine the unrestricted multi-item gap $\Gamma_P$.
 
 > **Status:** unrefereed candidate computer-assisted result. Producer-side fresh-extraction replay and solver-independent certificate checks pass. There is no independent reproduction, formal proof-assistant verification, external specialist review, peer review, field validation, complete novelty audit, or evidence of realised operating savings.
 
@@ -66,7 +68,7 @@ and the same statement remains certified with any stored dual lower bound $L(\la
 
 The strict synchronisation theorem handles an irrational minimiser of $M_R$ with one-sided continued-fraction approximants. The separable perturbation is $O(q^{-2})$, while the newly created intersection saves common cost of order $q^{-1}$. A rational feasible policy is therefore eventually strictly cheaper than $M_R$. This supplies totality without implying efficient worst-case bit complexity.
 
-## The algebraic cap family
+## The exact two-item cap gap
 
 The canonical construction normalises $K_0=1$, sets $K_1=K_2=0$, imposes frequency caps $f_1\leq x$ and $f_2\leq1$, and chooses
 
@@ -82,7 +84,7 @@ $$
 G(x)=\frac{x(3x^2-5)}{3x^3-4x^2+x-2}.
 $$
 
-Its unique family maximum occurs at the positive root of
+Its unique family maximum occurs at the relevant root of
 
 $$
 6x^4-18x^3+19x^2-5=0,
@@ -94,6 +96,14 @@ $$
 262\gamma^4-916\gamma^3+863\gamma^2+150\gamma-375=0.
 $$
 
+For the matching upper bound, every normalised cap ratio is covered by four feasible policy families. Outside the critical interval $[149/200,151/200]$, the verifier checks a complete 212-cell rational cover and proves coefficientwise domination using exact arithmetic. Inside that interval, the symbolic quartic comparison closes the remaining case. The stored minimum outer slack is
+
+$$
+\frac{3088515039309}{31027700000000000000}>0.
+$$
+
+A separate 2,829-cell rational certificate gives the coarser bound $\Gamma_{2,\mathrm{box}}<1.11189$ by a differently generated cover. This is a producer-side cross-check, not independent reproduction.
+
 The release also includes a nearby fully rational instance with exact gap
 
 $$
@@ -101,11 +111,11 @@ $$
 =1.111889593939846\ldots,
 $$
 
-closing at $S=8$ after 21 coprime ratios. The construction allows zero item-specific setup costs, exactly as the declared model does; it does not claim a perturbation theorem for a convention requiring every $K_i$ to be strictly positive.
+closing at $S=8$ after 21 coprime ratios. The exact equality is asserted for nonnegative real cost coefficients. The construction allows zero item-specific setup costs, exactly as the declared model does; it does not claim the same equality under a convention requiring every $K_i$ to be strictly positive or for rational data without a separate continuity argument.
 
 ## What the result does not establish
 
-- It does not determine the exact global gap of relaxation $(P)$.
+- It does not determine the unrestricted multi-item gap of relaxation $(P)$; only the real-coefficient two-item independent-cap gap is closed.
 - The cited upper bound is conditional on the external theorem applying to the same relaxation and model.
 - It does not give a polynomial-time algorithm in binary input length.
 - It does not solve the multi-item joint replenishment problem.
@@ -129,16 +139,16 @@ The distinction is useful beyond implementation. A finite certificate proves a p
 | Inventory and operations-research theorists | Audit a compact exact two-item oracle and a new relaxation-gap construction. | The global gap and wider approximation frontier remain open. |
 | Algorithm designers | Use resource-dual tails as stronger finite stopping certificates. | Solver-independent replay is still producer-side and is not a complexity bound. |
 | Planning-system developers | Benchmark two-item heuristic outputs against exact rational/radical certificates. | The model uses stationary average-rate constraints and omits many operational details. |
-| Approximation researchers | Reuse the cap reduction and canonical algebraic family as regression targets. | The family maximum is not a global upper certificate. |
+| Approximation researchers | Reuse the cap reduction, four-policy envelope, and exact two-item cap constant as regression targets. | The two-item upper certificate is not a multi-item upper certificate. |
 | Formal-methods researchers | Formalise the fixed-ratio, scale-floor, synchronisation, cap-reduction, and elimination arguments. | No theorem is currently proof-assistant checked. |
 | AI research agents | Retrieve exact claims, exclusions, manifests, replay commands, proof objects, and open tasks. | Preserve the candidate status and every non-inference boundary. |
 | Independent reviewers | Reconstruct the analytic proof and certificate semantics from the immutable archive. | Producer adversarial review is not an external specialist audit. |
 
 ## The extension programme remains open
 
-The supplied extension document is preserved in the release and mapped requirement by requirement. This candidate completes the exact two-item resource-aware tail, totality theorem, real-coefficient cap reduction, stronger algebraic family, and a finite local alignment prototype. It deliberately leaves later stages as separately publishable work:
+The supplied extension document is preserved in the release and mapped requirement by requirement. This candidate completes the exact two-item resource-aware tail, totality theorem, real-coefficient cap reduction, exact two-item independent-cap gap, stronger algebraic family, and a finite local alignment prototype. It deliberately leaves later stages as separately publishable work:
 
-1. close the exact global and two-item cap gaps;
+1. determine whether the unrestricted multi-item gap equals the two-item cap constant $\gamma$;
 2. build a multi-item alignment relaxation with separation and rounding;
 3. determine the column-sparsity approximation or hardness frontier;
 4. construct and independently reproduce a complete three-item oracle;
@@ -149,16 +159,16 @@ The supplied extension document is preserved in the release and mapped requireme
 
 ## How the package was checked
 
-The immutable release ZIP was rebuilt and replayed from a fresh extraction on macOS arm64 with pinned Python dependencies and a recorded TeX toolchain. The positive controls rebuild four finite witnesses, verify two parametric families, check the alignment regression, regenerate numerical outputs and six figures, run 16 tests, compile the code, and rebuild the 8-page paper and 3-page practitioner brief.
+The immutable release ZIP was rebuilt and replayed from a fresh extraction on macOS arm64 with pinned Python dependencies and a recorded TeX toolchain. The positive controls rebuild four finite witnesses, verify two parametric families, regenerate and verify both two-cap certificates, check the alignment regression, regenerate numerical outputs and six figures, run 17 tests, compile the code, and rebuild both 8-page papers and the 3-page practitioner brief.
 
-The negative controls re-hash a semantic certificate mutation and require rejection. A deliberately truncated solve must exit with status 2 and omit every optimum-named field. The release gate also runs under `python -O` so a verifier depending only on disabled `assert` statements cannot silently pass.
+The negative controls re-hash and require rejection of a finite-witness gap mutation, a two-cap upper-bound mutation, and an exact claim-scope mutation. A deliberately truncated solve must exit with status 2 and omit every optimum-named field. The release gate also runs under `python -O` so a verifier depending only on disabled `assert` statements cannot silently pass.
 
 These checks establish the declared byte, execution, and certificate facts for the archived payload. They do not establish independent reproduction, the truth of every conventional proof step, formal verification, novelty, specialist acceptance, field validity, or operational benefit.
 
 ## What is in the evidence package
 
-The [public GitHub repository](https://github.com/ipitchford/certified-two-item-jrp) contains the candidate paper and TeX, practitioner brief, exact solver, standard-library certificate verifiers, four finite witnesses, two family certificates, the alignment prototype, tests, schemas, figures, outputs, claim and AI indexes, provenance, assurance and licence records, the complete extension programme, and its requirement-to-evidence ledger.
+The [public GitHub repository](https://github.com/ipitchford/certified-two-item-jrp) contains both candidate papers and TeX sources, the practitioner brief, exact solver, standard-library certificate verifiers, four finite witnesses, family and two-cap certificates, the alignment prototype, tests, schemas, figures, outputs, claim and AI indexes, provenance, assurance and licence records, the complete extension programme, and its requirement-to-evidence ledger.
 
-The immutable candidate is tag [`v1.1.0-candidate`](https://github.com/ipitchford/certified-two-item-jrp/releases/tag/v1.1.0-candidate), commit `b7df3fb1b8b1f87d335952f22ba1389e98402b6f`. Its validated ZIP has SHA-256 `5d3dd5fa39787c5b1461da12db83810c36eede33a3b595a953422998dfb2ed6a`. The [producer replay receipt](https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.1.0-candidate/certified-two-item-jrp-v1.1.0-candidate.replay-receipt.json) is external to the ZIP so that it can identify the archive without a circular self-hash.
+The immutable candidate is tag [`v1.2.0-candidate`](https://github.com/ipitchford/certified-two-item-jrp/releases/tag/v1.2.0-candidate), commit `b31ef2c15dcf184638c1b3d9f0730c12a8ed54cf`. Its validated ZIP has SHA-256 `a1103de05bf1793119fd005d4685e161aca8aafcb6fea71e67f63f6fb0a82b13`. The [producer replay receipt](https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.2.0-candidate/certified-two-item-jrp-v1.2.0-candidate.replay-receipt.json) and [full replay log](https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.2.0-candidate/fresh-replay.log) are external to the ZIP so that they can identify the archive without a circular self-hash.
 
-The preserved version is [Zenodo record 21855567](https://zenodo.org/records/21855567), DOI [10.5281/zenodo.21855567](https://doi.org/10.5281/zenodo.21855567). Software is MIT licensed. Original non-software papers, documentation, data, certificates, metadata, figures, and release material are dedicated under CC0-1.0 to the extent the publisher holds the relevant rights; third-party literature, dependencies, names, and embedded fonts remain outside that dedication.
+The preserved version is [Zenodo record 21855894](https://zenodo.org/records/21855894), DOI [10.5281/zenodo.21855894](https://doi.org/10.5281/zenodo.21855894). The [exact two-item cap-gap paper](https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.2.0-candidate/two_cap_integrality_gap.pdf), [certification-and-termination paper](https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.2.0-candidate/certified_two_item_jrp.pdf), and [practitioner brief](https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.2.0-candidate/practitioner_brief.pdf) are separately downloadable. Software is MIT licensed. Original non-software papers, documentation, data, certificates, metadata, figures, and release material are dedicated under CC0-1.0 to the extent the publisher holds the relevant rights; third-party literature, dependencies, names, and embedded fonts remain outside that dedication.
