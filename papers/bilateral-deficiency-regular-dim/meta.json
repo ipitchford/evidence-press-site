@@ -1,0 +1,116 @@
+{
+  "slug": "bilateral-deficiency-regular-dim",
+  "title": "Bilateral Deficiency: Residual SAT Optimisation and Independent Domination in Regular-DIM Graphs",
+  "shortTitle": "Bilateral deficiency in regular-DIM graphs",
+  "oneLine": "A residual-SAT parameter exactly measures the independent-domination gap for regular graphs equipped with a dominating induced matching, yielding connected cubic-DIM families and a DIM-qualified minimum order of 50.",
+  "abstract": "This anonymous, unrefereed candidate develops bilateral deficiency as a residual optimization parameter for indexed CNF formulas. It gives the parameter an intrinsic bipolar-residual definition, proves a size-preserving bijection and solution-polynomial identity with independent dominating sets of formula graphs, and establishes algebraic operations and a width-sensitive complexity boundary. For finite simple regular graphs equipped with a dominating induced matching, the candidate identifies bilateral deficiency with i(G)-mu*(G), proves a constructive upper bound, and builds connected cubic-DIM families with linear gap. It also proves that order 50 is minimum among cubic graphs admitting a dominating induced matching for which i(G)>mu*(G); no minimum-order claim is made outside that class. Producer-side replay passes, and Lean checks three named finite LRAT claims and the finite enforcer signature. The universal theory is not fully formalized, and no journal submission, external specialist review, unaffiliated rerun, or independent reimplementation has occurred.",
+  "datePublished": "2026-08-09",
+  "version": "1.0.1-candidate",
+  "doi": "10.5281/zenodo.21857209",
+  "zenodoUrl": "https://zenodo.org/records/21857209",
+  "pdfUrl": "https://github.com/ipitchford/bilateral-deficiency/releases/download/v1.0.1-candidate/bilateral-deficiency-regular-dim-v1.0.1-candidate.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/bilateral-deficiency/v1.0.1-candidate/output/pdf/bilateral-deficiency-regular-dim-v1.0.1-candidate.pdf",
+  "repoUrl": "https://github.com/ipitchford/bilateral-deficiency",
+  "releaseUrl": "https://github.com/ipitchford/bilateral-deficiency/releases/tag/v1.0.1-candidate",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": ["AI systems under human direction", "Lean 4.32.1", "native LRAT checkers", "exact Python and C++ implementations"],
+    "humanRole": "Ian Pitchford maintains the repository and publishes the package but is not a scholarly author; scholarly attribution remains Anonymous.",
+    "disclosure": "AI systems assisted with research, calculation, code, checking, editing and release preparation. Outputs were treated as untrusted until checked through the documented producer-side workflows. Model agreement, internal review and replay are not independent verification."
+  },
+  "problem": {
+    "name": "TxGraffiti Conjecture 15/3 and the structure behind its order-50 cubic candidate counterexample",
+    "url": "https://evidencepress.org/releases/txgraffiti-c3-resolution/"
+  },
+  "keywords": [
+    "SAT",
+    "bilateral deficiency",
+    "residual CNF",
+    "independent domination",
+    "minimum maximal matching",
+    "dominating induced matching",
+    "cubic graphs",
+    "LRAT",
+    "Lean",
+    "computer-assisted mathematics",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "Bilateral deficiency is the minimum deficiency of a bipolar residual restriction and is represented by a size-preserving bijection with independent dominating sets of the formula graph, including a solution-polynomial identity.",
+    "The candidate develops additivity, width lifting, replication and MaxSAT recovery, proves the width-two identity, and establishes the stated fixed-width complexity boundary while separating uniform width from exact signed occurrence.",
+    "For every finite simple regular graph equipped with a dominating induced matching, bilateral deficiency is exactly i(G)-mu*(G), and a constructive replacement inequality gives the cubic bound i(G)<=mu*(G)+floor(mu*(G)/6).",
+    "A connected edge-cover amplifier yields connected cubic-DIM families with linear gap; the asymptotic density 1/72 is sharp only within this amplifier construction.",
+    "Order 50 is minimum among finite simple cubic graphs admitting a dominating induced matching for which i(G)>mu*(G); the minimum outside the DIM class remains open."
+  ],
+  "evidence": "A 22-page manuscript and 8-page reproducibility supplement; exact Python and C++ implementations; 25 normal and 25 optimized-Python tests; algebraic benchmark packages; three named finite threshold encodings with four native LRAT derivations and three direct Lean LRAT paths; a parser-independent Lean check of the enforcer's four-entry terminal signature over 6,561 assignments; a producer-side clean-room threshold-encoding reconstruction and seven-formula semantic corpus; typed imported-theorem dependencies; claim, assurance, provenance, environment and licence records; a SHA-256 package inventory; a fresh-extraction replay transcript; and a 1,171,146,459-byte lossless Zstandard transport of the optional 5,793,599,477-byte connected-switch LRAT proof object, with transport and recovered-stream hashes recorded. The finite checks and public infrastructure do not establish every universal theorem, independent reproduction, novelty, specialist review or journal acceptance.",
+  "statusDetail": "Anonymous, unrefereed Evidence Press child candidate of the immutable TxGraffiti release at doi:10.5281/zenodo.21852504. Producer-side tests, certificate checks and fresh-extraction replay pass. Lean checks three identified finite LRAT propositions and the hard-coded finite enforcer signature; the written universal theory, formula-to-CNF translation bridge and imported theorems are not fully formalized. Internal and simulated review records are not external specialist validation. No journal submission, editorial peer review, unaffiliated rerun, independent reimplementation, global priority determination, minimum-order result outside the cubic-DIM class, exact cubic-DIM extremal constants, or classification of all order-50 extremisers is claimed.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/21857209",
+      "note": "The immutable GitHub tag and compact release assets are public. Zenodo DOI 10.5281/zenodo.21857209 resolves publicly, and its API reports all eleven deposited files, including the losslessly compressed extended certificate and checksum inventories."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/bilateral-deficiency/actions/runs/31297291063",
+      "note": "The tagged GitHub workflow passed normal and optimized tests, the exact C++ solver, clean-room encoding validation, compact native LRAT paths and the portable nauty identity audit. A separate producer-side fresh-extraction replay passed the package hashes, the direct Lean LRAT paths and the terminal-signature theorem."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated party has reported replaying the immutable child archive."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The multiple semantic implementations and clean-room encoder were produced within the same research and release workflow, not by an unaffiliated party."
+    },
+    "formalVerification": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/bilateral-deficiency/blob/v1.0.1-candidate/ASSURANCE.md",
+      "note": "Lean checks direct LRAT certificates for three named finite threshold CNFs and proves the finite enforcer signature from ten hard-coded clauses. The universal theory, imported theorems, compiler and file-to-proposition bridges are not fully formalized."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No external SAT, graph-theory or certified-computation specialist review was sought. Internal and simulated reviews do not change this state."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal submission or venue peer review has occurred."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/bilateral-deficiency/blob/v1.0.1-candidate/ENVIRONMENT.md",
+      "note": "Tool versions, source hashes, exact commands, a fresh-extraction transcript and CI replay are recorded, but no independently recreated full environment or unaffiliated extended-proof replay is supplied."
+    }
+  },
+  "openProblems": [
+    "Determine the exact cubic-DIM extremal constants C_3^DIM and lambda_3^DIM.",
+    "Resolve the sign problem for proper simple exact signed-occurrence (3,2,2)-CNF.",
+    "Classify all order-50 cubic-DIM extremisers and determine whether the motivating graph is unique within that class.",
+    "Determine the minimum counterexample order among cubic graphs outside the DIM class.",
+    "Improve the connected amplifier through a lower-overhead terminal enforcer or a different composition theorem; changing only the cubic skeleton cannot improve the construction-specific 1/72 density.",
+    "Independently reconstruct the proofs and encoding bridge, extend the prior-art audit, and formalize the universal bijection and regular-DIM theorems in a proof assistant."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Release contributors. (2026). TxGraffiti Conjecture 15/3 resolution: a certificate-backed candidate counterexample (Version 4.0.0-rc1). Zenodo. doi:10.5281/zenodo.21852504.",
+      "url": "https://doi.org/10.5281/zenodo.21852504"
+    },
+    {
+      "citation": "Chlebik, M., & Chlebikova, J. (2008). Approximation hardness of dominating set problems in bounded degree graphs. Information and Computation, 206(11), 1264-1275.",
+      "url": "https://doi.org/10.1016/j.ic.2008.07.003"
+    },
+    {
+      "citation": "O, S., & West, D. B. (2010). Balloons, cut-edges, matchings, and total domination in regular graphs of odd degree. Journal of Graph Theory, 64(2), 116-131.",
+      "url": "https://doi.org/10.1002/jgt.20443"
+    },
+    {
+      "citation": "Zhang, T., Peitl, T., & Szeider, S. (2024). Small unsatisfiable k-CNFs with bounded literal occurrence. SAT 2024, LIPIcs 305, Article 31.",
+      "url": "https://doi.org/10.4230/LIPIcs.SAT.2024.31"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Bilateral Deficiency: Residual SAT Optimisation and Independent Domination in Regular-DIM Graphs (Version 1.0.1-candidate) [Unrefereed candidate preprint and reproducibility package]. Zenodo. https://doi.org/10.5281/zenodo.21857209"
+}
