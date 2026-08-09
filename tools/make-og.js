@@ -26,7 +26,7 @@ h1 { color:#faf7f2; font-size:${m.title.length > 80 ? 46 : 54}px; line-height:1.
 <div class="content">
   <div class="kicker">EVIDENCE PRESS · RESEARCH RELEASE</div>
   <h1>${m.title.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</h1>
-  <div class="foot"><span><b>DOI</b> ${m.doi}</span><span><b>${m.datePublished}</b></span><span>paper · code · evidence</span></div>
+  <div class="foot">${m.doi ? `<span><b>DOI</b> ${m.doi}</span>` : '<span><b>UNREFEREED CANDIDATE</b></span>'}<span><b>${m.datePublished}</b></span><span>paper · code · evidence</span></div>
 </div>
 </body></html>`;
 

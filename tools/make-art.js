@@ -412,6 +412,57 @@ art['exact-smith-invariants-affine-determinant-lines'] = (a, b) => {
   return s;
 };
 
+/* Hahn--Ewens: two endpoint laws, binomial word layers, and trace transition. */
+art['hahn-ewens-mixing-theorem'] = (a, b) => {
+  let s = '';
+
+  /* The two endpoint contributions to E|U-V|^ell. */
+  s += `<path d="M 72 326 C 92 326, 104 88, 176 78 C 244 68, 272 205, 338 322" fill="none" stroke="${a}" stroke-width="5" opacity="0.94"/>`;
+  s += `<path d="M 104 322 C 170 205, 198 70, 266 82 C 342 95, 354 326, 384 326" fill="none" stroke="${b}" stroke-width="4" stroke-dasharray="12 8" opacity="0.9"/>`;
+  s += `<line x1="72" y1="326" x2="384" y2="326" stroke="#8a938f" stroke-width="1.5" opacity="0.5"/>`;
+  s += `<circle cx="88" cy="310" r="7" fill="${a}"/><circle cx="368" cy="310" r="7" fill="${b}"/>`;
+  s += `<text x="92" y="365" font-family="Georgia" font-size="20" fill="${a}" opacity="0.9">+ endpoint</text>`;
+  s += `<text x="374" y="365" text-anchor="end" font-family="Georgia" font-size="20" fill="${b}" opacity="0.9">− endpoint</text>`;
+
+  /* Binomially many word modes arranged by square-free degree. */
+  const counts = [1, 6, 15, 20, 15, 6, 1];
+  const cx = 575, top = 55, gap = 46;
+  for (let ell = 0; ell < counts.length; ell++) {
+    const shown = Math.min(counts[ell], 9);
+    const span = (shown - 1) * 21;
+    const y = top + ell * gap;
+    s += `<line x1="442" y1="${y}" x2="706" y2="${y}" stroke="#e7e5e4" stroke-width="1" opacity="0.08"/>`;
+    for (let j = 0; j < shown; j++) {
+      const x = cx - span / 2 + j * 21;
+      const opacity = (0.36 + 0.055 * Math.min(counts[ell], 9)).toFixed(2);
+      s += `<circle cx="${x}" cy="${y}" r="${ell === 3 ? 7 : 5.5}" fill="${ell % 2 ? b : a}" opacity="${opacity}"/>`;
+    }
+    if (counts[ell] > shown) s += `<text x="700" y="${y + 6}" font-family="ui-monospace,monospace" font-size="16" fill="#e7e5e4" opacity="0.7">×${counts[ell]}</text>`;
+    s += `<text x="426" y="${y + 6}" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4" opacity="0.56">ℓ=${ell}</text>`;
+  }
+  s += `<text x="575" y="382" text-anchor="middle" font-family="Georgia" font-size="22" fill="#e7e5e4" opacity="0.86">dim Wℓ = C(N,ℓ)</text>`;
+
+  /* The trace observable drops across its N/log N scale. */
+  const left = 790, right = 1132, base = 326, ceiling = 68, threshold = 965;
+  s += `<line x1="${left}" y1="${base}" x2="${right}" y2="${base}" stroke="#8a938f" stroke-width="1.5" opacity="0.55"/>`;
+  s += `<line x1="${left}" y1="${ceiling}" x2="${left}" y2="${base}" stroke="#8a938f" stroke-width="1.5" opacity="0.55"/>`;
+  let trace = `M ${left} 88`;
+  for (let k = 0; k <= 68; k++) {
+    const x = left + k * 5;
+    const z = (x - threshold) / 22;
+    const y = 88 + 220 / (1 + Math.exp(-z));
+    trace += ` L ${x.toFixed(1)} ${y.toFixed(1)}`;
+  }
+  s += `<path d="${trace}" fill="none" stroke="${a}" stroke-width="6" opacity="0.96"/>`;
+  s += `<line x1="${threshold}" y1="${ceiling}" x2="${threshold}" y2="${base}" stroke="${b}" stroke-width="3" stroke-dasharray="10 8" opacity="0.92"/>`;
+  s += `<circle cx="${threshold}" cy="198" r="10" fill="${b}" stroke="#151a1e" stroke-width="3"/>`;
+  s += `<text x="${threshold}" y="48" text-anchor="middle" font-family="Georgia" font-size="22" fill="${b}">[log 2/(2δ)] N/log N</text>`;
+  s += `<text x="${left + 8}" y="355" font-family="Georgia" font-size="18" fill="#e7e5e4" opacity="0.7">stationary-average trace</text>`;
+
+  s += `<path d="M 398 200 H 422 M 724 200 H 768" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 8" opacity="0.5"/>`;
+  return s;
+};
+
 /* certified two-item JRP: two order lattices, shared epochs and a closing tail */
 art['certified-two-item-jrp'] = (a, b) => {
   let s = '';
@@ -465,6 +516,7 @@ const palette = {
   'certified-commitment-horizons': ['#2dd4bf', '#fbbf24'],
   'bordered-jacobian-foundations': ['#34d399', '#fbbf24'],
   'exact-smith-invariants-affine-determinant-lines': ['#34d399', '#c084fc'],
+  'hahn-ewens-mixing-theorem': ['#38bdf8', '#f59e0b'],
   'certified-two-item-jrp': ['#2dd4bf', '#f59e0b']
 };
 
