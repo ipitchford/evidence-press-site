@@ -1,0 +1,137 @@
+{
+  "slug": "exact-smith-invariants-affine-determinant-lines",
+  "title": "Exact Smith Invariants and Affine Determinant Lines of Binary-Form Factorisation",
+  "shortTitle": "Exact Smith invariants of binary-form factorisation",
+  "oneLine": "A candidate all-factor determinant-line theorem and exact Smith calculation replace the rank-one degree difference by a complete character-lattice invariant.",
+  "abstract": "This anonymous, unrefereed candidate develops an integral determinant-line and character-lattice theory for multiplication maps of several binary forms. It gives an explicit affine all-factor maximal-minor identity, a multi-border contraction formula, graph formulae for resultant-character determinants, and an exact local and global Smith calculation for the complete lattice of pairwise-resultant characters. For primitive degree data the residual cokernel is cyclic, with exact prime valuations and bad-characteristic support; arbitrary degrees follow by scaling. The geometric application identifies the finite diagonalizable residual group scheme and the generic finite-locally-free degree of normalized factorisation charts. The public package contains a 35-page manuscript, a 96-artifact manifest, exact SymPy and FLINT checks, exhaustive character-lattice tests, 129,352 positive checks, 18 deliberate negative controls, review records, and a fresh-extraction replay. The universal results rest on the written proofs. Independent reproduction, proof-assistant formalization, external specialist review, editorial peer review, and absolute novelty or priority are not claimed.",
+  "narration": "This research release asks what survives when a polynomial is written as a product of several binary forms. Multiplication forgets the relative scalings of the factors. The earlier parent paper solved the case of two factors, where only one scaling direction is lost and one degree difference appears. This candidate replaces that single number by an integer character matrix. Its Smith normal form records the finite scaling ambiguity that remains after pairwise resultants are used as normalising coordinates. The paper first gives a determinant-line formula for any number of factors. Every maximal minor of the multiplication Jacobian is a signed product of pairwise resultants times the matching Pluecker coordinate of the scaling kernel. Adding enough normalising functions converts that tensor identity into a square determinant formula. The arithmetic heart of the release studies the complete graph of pairwise resultant characters. For primitive degree data, the candidate proves that its cokernel is cyclic and gives a local presentation that determines the exact valuation at every prime. This identifies bad characteristics and the finite diagonalizable group scheme left by the normalisation. A geometric descent argument then gives the generic degree of the normalised factorisation chart. The evidence package contains the manuscript, source, exact receipts, hashes, citation and originality audits, deliberate failure controls, and fresh-extraction replay. The packaged computation reports one hundred twenty-nine thousand three hundred fifty-two positive checks and eighteen detected negative controls. Those checks test finite instances and implementation behaviour; the general theorems rest on the written proofs. This remains an anonymous, unrefereed candidate. It has not been independently reproduced, formally verified, reviewed by an external specialist, or conventionally peer reviewed, and the novelty search remains bounded. This is an Evidence Press audio briefing, released on the ninth of August, twenty twenty-six. The audio uses an AI-generated voice and is not additional mathematical evidence. The immutable parent paper remains separately linked and unchanged.",
+  "datePublished": "2026-08-09",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.21861347",
+  "conceptDoi": "10.5281/zenodo.21861346",
+  "zenodoUrl": "https://zenodo.org/records/21861347",
+  "pdfUrl": "https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/releases/download/v0.1.0-candidate/exact-smith-invariants-affine-determinant-lines-v0.1.0-candidate.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/exact-smith-invariants-affine-determinant-lines/v0.1.0-candidate/release/exact-smith-invariants-affine-determinant-lines-v0.1.0-candidate.pdf",
+  "repoUrl": "https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines",
+  "releaseUrl": "https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/releases/tag/v0.1.0-candidate",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/exact-smith-invariants-affine-determinant-lines.mp3",
+      "name": "Audio briefing — exact Smith invariants and determinant lines",
+      "description": "Plain-English AI-generated voice summary of the candidate results, lineage, evidence, and assurance boundary.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/exact-smith-invariants-affine-determinant-lines.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": ["AI systems under human direction", "GPT-5.6 Sol review workflow", "SymPy 1.14.0", "python-flint 0.9.0"],
+    "humanRole": "Research direction, continuation authorization, mediation, and publication authorization; Ian Pitchford is repository maintainer and publisher, while scholarly attribution remains Anonymous.",
+    "disclosure": "The work was developed and reviewed within one producer-directed AI-assisted workflow. Multiple simulated reviews, exact computational backends, archive replay, and public readback reduce specified risks but are not independent reproduction, external specialist review, formal verification, or editorial peer review."
+  },
+  "problem": {
+    "name": "Bordered Jacobian foundations for binary-form multiplication",
+    "url": "https://doi.org/10.5281/zenodo.21855302"
+  },
+  "keywords": [
+    "algebraic geometry",
+    "binary forms",
+    "factorisation maps",
+    "resultants",
+    "determinant lines",
+    "Smith normal form",
+    "arithmetic matroids",
+    "torus characters",
+    "finite diagonalizable group schemes",
+    "computer-assisted mathematics",
+    "AI-generated mathematics",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "For any number of positive-degree binary-form factors, the candidate identifies every maximal minor of the affine multiplication Jacobian as the product of all pairwise resultants times the complementary Pluecker coordinate of the relative-scaling kernel, with an explicit integral orientation.",
+    "A multi-border Cauchy-Binet contraction turns the complementary-minor tensor into a square determinant formula; semi-invariant normalisers contribute the determinant of their integer character matrix.",
+    "For the complete lattice of pairwise-resultant characters, the primitive cokernel is cyclic. A local presentation supplies exact prime valuations, an efficient symmetric formula, the scaled global Smith form, and the precise bad-characteristic support.",
+    "The resultant-unit map has a canonical finite diagonalizable residual group scheme on the pairwise-coprime locus; a square Laurent basis has degree equal to the lattice index times the root-partition degree.",
+    "On the squarefree generic locus, normalized factorisation charts are finite locally free of degree equal to the torus-isogeny degree times the multinomial number of labelled root partitions, with separate separable and inseparable factors."
+  ],
+  "evidence": "A 35-page manuscript and generated TeX; 28-source bibliography and citation audit; a 96-artifact deterministic manifest; seven machine-readable claims; three inherited determinant/character evidence sets plus a new exact local-Smith tier; 129,352 exact positive checks and 18 deliberate negative controls under ordinary and optimized Python; exact SymPy, FLINT, graph, Smith and local-presentation calculations; source and receipt hashes; proof, geometry, arithmetic-priority, originality, citation and reproducibility review records; a deterministic 118-entry release ZIP; and a full fresh-extraction replay that rebuilt the manuscript. The immutable GitHub and Zenodo downloads match the deposited SHA-256 ledger. These establish availability, package integrity, finite producer-side checks, and same-environment replay. The universal theorems rest on the written proofs, and none of these mechanics is independent mathematical verification.",
+  "statusDetail": "Anonymous, unrefereed candidate mathematical release. Availability, deterministic packaging, public checksum readback, and producer-side exact replay pass. The packaged evidence reports 129,352 positive checks and 18 detected negative controls in the recorded Python 3.13.5 environment. The main all-factor, Smith, and geometric assertions are universal mathematical theorems supported by prose proofs, not established by finite computation alone. The antecedent audit found classical monic and square Jacobian-resultant identities, multi-factor coprimality criteria, signed-incidence methods, and arithmetic-matroid multiplicity frameworks; it did not locate the complete affine Pluecker tensor or the exact cross-weighted local Smith presentation in its bounded search. No unaffiliated rerun, independent reimplementation, proof-assistant formalization, external specialist review, editorial peer review, or absolute priority determination is claimed.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/21861347",
+      "note": "The version DOI, concept DOI, manuscript, source, archive, receipts, bibliography, audio, graphics, and checksum ledger are public. Independent downloads from Zenodo match the release SHA-256 inventory."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/releases/tag/v0.1.0-candidate",
+      "note": "The deterministic archive passed manifest and claims validation, normal and optimized exact replay, deliberate negative controls, receipt comparison, and manuscript reconstruction from a fresh extraction."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated party has reported replaying the immutable public archive."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The SymPy, FLINT, graph, and local-Smith implementations were produced inside one coordinated workflow and do not constitute independent reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "evidenceUrl": "https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/blob/v0.1.0-candidate/package/formal/STATUS.md",
+      "note": "The package includes a formalisation scaffold and machine-readable claim boundary, but no theorem in this release has been completed in a proof assistant."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Proof, geometry, arithmetic, citation, originality, and reproducibility reviews were conducted within the producer workflow; no external specialist review has occurred."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal submission or venue peer-review decision has occurred."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/blob/v0.1.0-candidate/package/verification/README.md",
+      "note": "The replay records Python 3.13.5, SymPy 1.14.0, python-flint 0.9.0, jsonschema 4.26.0, commands, hashes, and normal/optimized receipts, but no independently recreated container, Nix, or Guix environment is supplied."
+    }
+  },
+  "openProblems": [
+    "Obtain an unaffiliated reconstruction of the all-factor affine maximal-minor theorem, including its integral orientation and multiplicity-one statement.",
+    "Reimplement the complete-edge local Smith presentation and valuation formula in a fresh exact system and compare the resulting group schemes prime by prime.",
+    "Formalize the determinant-line induction, graph-minor classification, local module presentation, and finite-locally-free descent in Lean or another proof assistant.",
+    "Extend the bounded antecedent audit across determinant complexes, Hensel lifting, signed and gain graphs, arithmetic matroids, toric arrangements, non-English literature, and theses.",
+    "Classify all regular-unit and polynomial normalisers on the pairwise-coprime locus, beyond semi-invariant and Laurent resultant coordinates.",
+    "Determine which normalized target slices have affine-space inverse images and whether the known three-dimensional Keller mechanism is isolated inside this architecture.",
+    "Seek either a construction or a no-go theorem connecting factorisation-derived maps with the unresolved four-dimensional Hessian frontier, without treating the determinant identity alone as evidence for such a connection."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Anonymous. (2026). The Bordered Jacobian of Binary-Form Multiplication (Version 0.3-candidate). Parent candidate release.",
+      "url": "https://doi.org/10.5281/zenodo.21855302"
+    },
+    {
+      "citation": "Artin, M. (2022). Algebraic Geometry: Notes on a Course. Graduate Studies in Mathematics 222. See Lemma 1.8.5 for a square polynomial-multiplication Jacobian and the Sylvester matrix.",
+      "url": "https://doi.org/10.1090/gsm/222"
+    },
+    {
+      "citation": "Bhargava, M., Cremona, J. E., Fisher, T., & Gajovic, S. (2022). The density of polynomials of degree n over Z_p having exactly r roots in Q_p.",
+      "url": "https://doi.org/10.1112/plms.12429"
+    },
+    {
+      "citation": "Chaperon, M., & Lopez de Medrano, S. (2009). Some regularities and singularities appearing in the study of polynomials and operators. Asterisque 323, 123-160.",
+      "url": "https://www.numdam.org/item/AST_2009__323__123_0/"
+    },
+    {
+      "citation": "Moci, L. (2012). A Tutte polynomial for toric arrangements. Transactions of the American Mathematical Society, 364, 1067-1088.",
+      "url": "https://doi.org/10.1090/S0002-9947-2011-05465-3"
+    },
+    {
+      "citation": "Zaslavsky, T. (1982). Signed graphs. Discrete Applied Mathematics, 4, 47-74, together with the 1983 erratum.",
+      "url": "https://doi.org/10.1016/0166-218X(82)90033-6"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Exact Smith Invariants and Affine Determinant Lines of Binary-Form Factorisation (Version 0.1.0-candidate) [Unrefereed candidate preprint and reproducibility package]. Zenodo. https://doi.org/10.5281/zenodo.21861347"
+}

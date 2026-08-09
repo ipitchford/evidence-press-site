@@ -371,6 +371,47 @@ art['bordered-jacobian-foundations'] = (a, b) => {
   return s;
 };
 
+/* Exact Smith invariants: affine minors, complete-edge characters, and SNF. */
+art['exact-smith-invariants-affine-determinant-lines'] = (a, b) => {
+  let s = '';
+
+  /* A small banded coefficient matrix with a complementary-minor border. */
+  const ox = 70, oy = 68, rows = 6, cols = 7, cw = 43, ch = 40;
+  for (let i = 0; i < rows; i++) for (let j = 0; j < cols; j++) {
+    const live = Math.abs(j - i) <= 1 || Math.abs(j - i - 2) === 0;
+    s += `<rect x="${ox + j * cw}" y="${oy + i * ch}" width="31" height="27" rx="5" fill="${live ? a : '#e7e5e4'}" opacity="${live ? (0.34 + 0.08 * ((i + j) % 3)).toFixed(2) : '0.06'}"/>`;
+  }
+  s += `<path d="M 54 326 H 384" stroke="${b}" stroke-width="4" opacity="0.9"/>`;
+  for (let j = 0; j < cols; j++) s += `<circle cx="${ox + j * cw + 15}" cy="326" r="6" fill="${j % 2 ? a : b}"/>`;
+
+  /* Complete graph of pairwise resultant characters. */
+  const cx = 620, cy = 200, R = 142, n = 5;
+  const pt = k => [cx + R * Math.cos(2 * Math.PI * k / n - Math.PI / 2), cy + R * Math.sin(2 * Math.PI * k / n - Math.PI / 2)];
+  for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
+    const [x1, y1] = pt(i), [x2, y2] = pt(j);
+    s += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${(i + j) % 2 ? a : b}" stroke-width="2.2" opacity="0.58"/>`;
+  }
+  for (let i = 0; i < n; i++) {
+    const [x, y] = pt(i);
+    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="18" fill="#151a1e" stroke="${i % 2 ? b : a}" stroke-width="3"/>`;
+    s += `<text x="${x.toFixed(1)}" y="${(y + 7).toFixed(1)}" text-anchor="middle" font-family="Georgia" font-size="21" fill="#e7e5e4">d${i + 1}</text>`;
+  }
+  s += `<circle cx="${cx}" cy="${cy}" r="34" fill="#151a1e" stroke="#e7e5e4" stroke-width="2" opacity="0.96"/>`;
+  s += `<text x="${cx}" y="${cy + 8}" text-anchor="middle" font-family="Georgia" font-size="28" fill="#e7e5e4">Res</text>`;
+
+  /* Smith factors and their local prime decomposition. */
+  const bx = 865, bw = 245;
+  for (let i = 0; i < 4; i++) {
+    const y = 82 + i * 63;
+    const w = i === 3 ? bw : 118;
+    s += `<rect x="${bx}" y="${y}" width="${w}" height="35" rx="8" fill="${i === 3 ? b : a}" opacity="${i === 3 ? '0.86' : (0.40 + i * 0.10).toFixed(2)}"/>`;
+    s += `<text x="${bx + 16}" y="${y + 25}" font-family="ui-monospace,monospace" font-size="19" fill="#151a1e">${i === 3 ? 'g h(e)' : 'g'}</text>`;
+  }
+  s += `<text x="${bx}" y="348" font-family="Georgia" font-size="25" fill="#e7e5e4" opacity="0.9">SNF = diag(g, ..., g, gh)</text>`;
+  s += `<path d="M 392 200 H 432 M 808 200 H 848" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 8" opacity="0.55"/>`;
+  return s;
+};
+
 /* certified two-item JRP: two order lattices, shared epochs and a closing tail */
 art['certified-two-item-jrp'] = (a, b) => {
   let s = '';
@@ -423,6 +464,7 @@ const palette = {
   'cyclicity-loci-exponential-periods': ['#38bdf8', '#fbbf24'],
   'certified-commitment-horizons': ['#2dd4bf', '#fbbf24'],
   'bordered-jacobian-foundations': ['#34d399', '#fbbf24'],
+  'exact-smith-invariants-affine-determinant-lines': ['#34d399', '#c084fc'],
   'certified-two-item-jrp': ['#2dd4bf', '#f59e0b']
 };
 

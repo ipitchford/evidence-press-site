@@ -19,6 +19,8 @@ It is stated as an identity over the integers for all $r,s\geq1$, including $r=s
 
 > **Status:** anonymous, unrefereed candidate. Producer-side exact replay passes. The all-degree identity rests on the manuscript proof. Independent reproduction, complete formal verification and editorial peer review have not occurred.
 
+A separate [Evidence Press child release](https://evidencepress.org/releases/exact-smith-invariants-affine-determinant-lines/) develops the all-factor determinant-line and exact character-lattice Smith theory; its immutable archive is [doi:10.5281/zenodo.21861347](https://doi.org/10.5281/zenodo.21861347). It is subsequent unrefereed work, not a correction to this release, and it does not alter or strengthen this release's recorded claims or assurance state.
+
 ## Why the formula matters
 
 The formula turns a family of large determinants into one geometric pairing. In exterior-algebra language, the top exterior power of the multiplication differential is the resultant times contraction along the lost scaling direction.
