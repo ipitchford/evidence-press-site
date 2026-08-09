@@ -1,174 +1,153 @@
-## Summary
+## The problem in everyday terms
 
-Joint replenishment asks when several items should be ordered together so that they can share a common ordering, dispatch, receiving, or changeover cost. Even with only two items, the exact objective is arithmetically delicate: periodic schedules coincide when their period ratio is rational, and the density of shared order epochs depends on the coprime numerator and denominator.
+Suppose a warehouse replenishes two items on fixed repeating schedules. Ordering either item has its own cost, but every occasion on which the warehouse places an order also carries a shared cost: administration, dispatch, receiving, a production changeover, or another setup that is paid once no matter whether one item or both are included.
 
-This candidate turns that two-item problem into an auditable certificate system. Each fixed coprime ratio becomes a one-dimensional convex scale problem. A resource-aware Lagrange-dual bound then lower-bounds every ratio not yet enumerated. The paper proves that when the common ordering cost is positive, some rational synchronised policy is strictly better than the best desynchronised policy. The improving tail therefore eventually rises above the best enumerated cost and the algorithm terminates after finitely many ratios.
+The schedules can therefore save money by meeting. If item 1 is ordered every 6 days and item 2 every 10 days, then over 30 days the first schedule has five order times and the second has three. One time is shared, so there are seven distinct order occasions rather than eight. The shared cost is paid seven times.
 
-“Guaranteed termination” has a precise and limited meaning here. It says the mathematical algorithm eventually returns a certificate on every instance in the stated model. It does not give a polynomial running-time bound, solve the multi-item problem, or remove the known number-theoretic difficulty of two-item joint replenishment.
+That simple example contains the mathematical difficulty. Whether two periodic schedules meet is controlled by the arithmetic of their periods. A tiny change from 10 days to an incommensurable period can remove all exact coincidences after time zero. The cost is therefore not a smooth function of the period ratio, even though the holding and item-specific ordering costs are smooth.
 
-The release also studies the gap of the standard convex relaxation, denoted $(P)$. A cap-reduction theorem shows that, over nonnegative real resource systems, worst-case gap analysis can be restricted to separate item-frequency caps. For two items with independent caps, the new companion paper determines the exact supremum:
-
-$$
-\Gamma_{2,\mathrm{box}}=\gamma,
-\qquad
-1.111889593939396<\gamma<1.111889593940297.
-$$
-
-The canonical triple-tie family attains the lower bound. A four-policy envelope, a symbolic critical interval, and a complete 212-cell exact rational outer cover prove the matching upper bound. This does **not** determine the unrestricted multi-item gap $\Gamma_P$.
-
-> **Status:** unrefereed candidate computer-assisted result. Producer-side fresh-extraction replay and solver-independent certificate checks pass. There is no independent reproduction, formal proof-assistant verification, external specialist review, peer review, field validation, complete novelty audit, or evidence of realised operating savings.
-
-## Summary for specialists
-
-Let item $i$ use period $T_i>0$, with item-specific cost $K_i/T_i+H_iT_i$ and common cost $K_0$ at every distinct order epoch. Resource row $d$ requires
+The problem studied here also allows average-rate resource restrictions. A row such as
 
 $$
-\frac{\alpha_{1d}}{T_1}+\frac{\alpha_{2d}}{T_2}\leq\beta_d,
-\qquad \alpha_{id}\geq0,\quad\beta_d>0.
+\frac{\alpha_1}{T_1}+\frac{\alpha_2}{T_2}\leq\beta
 $$
 
-For $T_2/T_1=p/q$ in lowest terms, set $T_1=qt$ and $T_2=pt$. The union density of the two order lattices is $(p+q-1)/(pqt)$, so the exact objective becomes
+can represent a limit on ordering effort, receiving capacity, or another resource consumed in proportion to order frequency. The model is deterministic and stationary: it asks for the best two repeating periods $T_1,T_2>0$ under any finite collection of such nonnegative restrictions.
+
+## Turning each coordination pattern into a simple calculation
+
+When the period ratio is rational, write
+
+$$
+\frac{T_2}{T_1}=\frac pq
+$$
+
+in lowest terms and set $T_1=qt$, $T_2=pt$. The integers $p$ and $q$ specify the coordination pattern; the single positive number $t$ sets its scale.
+
+The two order lattices then have union density
+
+$$
+\frac{p+q-1}{pqt}.
+$$
+
+The subtraction of one is the saving from the common order that occurs once every $pqt$ time units. For the 6-day/10-day example, $p=5$, $q=3$, and $t=2$, giving $7/30$ distinct order occasions per day.
+
+After substituting a fixed pair $(p,q)$, every cost term collapses to
 
 $$
 g_{pq}(t)=\frac{A_{pq}}{t}+B_{pq}t,
 $$
 
-where
+where $A_{pq}$ collects setup costs and $B_{pq}$ collects holding costs. The resource rows impose only a lower bound $t\geq t_{pq}^{\min}$. Thus the best scale for a chosen coordination pattern is explicit: use the unconstrained balance $\sqrt{A_{pq}/B_{pq}}$ unless the resource floor forces a larger value.
+
+This removes the continuous optimisation difficulty. What remains is an infinite discrete question: how can one know that no unexamined coprime pair $(p,q)$ is better?
+
+## Why the exact search eventually stops
+
+Imagine first that the two schedules never meet. Charging the common setup cost separately to each item gives a smooth **desynchronised benchmark**, denoted $M_R$. It is not the answer to the original problem; it is the cost approached when coordination becomes vanishingly rare.
+
+The resource constraints matter when bounding this benchmark. Ignoring them can make the lower bound much too small. The result instead keeps them through nonnegative Lagrange multipliers, producing a checked value $L(\lambda)\leq M_R$ that reflects the actual feasible region.
+
+Now enumerate all coprime pairs with $p+q\leq S$. Every omitted rational pattern—and every irrational ratio—has cost at least
 
 $$
-A_{pq}=K_0\frac{p+q-1}{pq}+\frac{K_1}{q}+\frac{K_2}{p},
-\qquad
-B_{pq}=H_1q+H_2p,
+\sqrt{\frac{S}{S+1}}\,M_R.
 $$
 
-on an exactly computable rational interval $t\geq t_{pq}^{\min}$. Its optimum is therefore rational or of the form $2\sqrt z$ with rational $z$.
+The factor on the right increases towards one as $S$ grows. This is the **resource-aware tail**: it raises a floor under everything not yet searched.
 
-The constrained desynchronised optimum in frequency variables $f_i=1/T_i$ is
+The other half of the argument shows that the true optimum is strictly below $M_R$ whenever the shared setup cost $K_0$ is positive. Even if the unique minimiser defining $M_R$ has an irrational ratio, one-sided continued-fraction approximations create rational schedules whose smooth cost disturbance is of order $q^{-2}$ while the new shared-order saving is of order $q^{-1}$. For a sufficiently good approximation, the saving wins.
 
-$$
-M_R=\min_{Af\leq\beta}
-\left[(K_0+K_1)f_1+\frac{H_1}{f_1}+(K_0+K_2)f_2+\frac{H_2}{f_2}\right].
-$$
-
-For every nonnegative multiplier vector $\lambda$, the package certifies
+There is therefore a synchronised candidate of cost $C<M_R$. Eventually
 
 $$
-L(\lambda)=2\sum_{i=1}^{2}
-\sqrt{H_i\left(K_0+K_i+\sum_d\lambda_d\alpha_{id}\right)}
--\sum_d\lambda_d\beta_d\leq M_R.
+\sqrt{\frac{S}{S+1}}\,M_R>C,
 $$
 
-After all coprime pairs with $p+q\leq S$ are enumerated, every omitted rational or irrational ratio costs at least
+so no omitted ratio can improve on the incumbent. At that point the enumeration stops with an exact certificate of optimality.
+
+This is a termination theorem, not an efficiency theorem. It guarantees a finite stopping point for every instance in the stated two-item model, but the required cutoff may be very large and no polynomial running-time bound is claimed.
+
+## What the relaxation is relaxing
+
+Approximation algorithms often start from a convex problem that is easier than the true scheduling problem. Write $f_i=1/T_i$ for order frequency. The true objective includes the density of the union of the two order lattices:
 
 $$
-\sqrt{\frac{S}{S+1}}\,M_R,
+K_0\,\operatorname{dens}(T_1,T_2)
++\sum_{i=1}^2\left(K_if_i+\frac{H_i}{f_i}\right).
 $$
 
-and the same statement remains certified with any stored dual lower bound $L(\lambda)$. The verifier checks nonnegative rational multipliers and downward dyadic radical bounds using integer arithmetic.
+The standard relaxation replaces the union density by
 
-The strict synchronisation theorem handles an irrational minimiser of $M_R$ with one-sided continued-fraction approximants. The separable perturbation is $O(q^{-2})$, while the newly created intersection saves common cost of order $q^{-1}$. A rational feasible policy is therefore eventually strictly cheaper than $M_R$. This supplies totality without implying efficient worst-case bit complexity.
+$$
+\max\{f_1,f_2\}.
+$$
+
+This imagines the best possible alignment: every order of the slower item is treated as though it could be nested inside the faster schedule. That is sometimes attainable, but the arithmetic of the two periods can prevent it. The relaxed optimum is consequently an optimistic lower bound on the true optimum.
+
+The ratio
+
+$$
+\frac{\text{true optimum}}{\text{relaxed optimum}}
+$$
+
+measures the price of the alignment information discarded by the relaxation. A ratio of one means that the optimistic schedule can really be achieved. A ratio of $1.1$ means that the true periodic problem may cost ten per cent more than the lower bound suggests.
 
 ## The exact two-item cap gap
 
-The canonical construction normalises $K_0=1$, sets $K_1=K_2=0$, imposes frequency caps $f_1\leq x$ and $f_2\leq1$, and chooses
+For two items with independent frequency limits $f_i\leq\bar f_i$ and nonnegative real cost coefficients, the worst possible ratio is exactly
 
 $$
-H_1=\frac23,
+\Gamma_{2,\mathrm{box}}=\gamma,
 \qquad
-H_2=\frac{-3x^2+7x-2}{3(1-x)}.
+1.111889593939396<\gamma<1.111889593940297,
 $$
 
-On the certified interval $0.7509\leq x\leq0.751$, the ratios $(1,1)$, $(1,2)$, and $(2,3)$ tie and every other ratio is excluded by exact finite checks plus the resource-aware tail. The gap function is
-
-$$
-G(x)=\frac{x(3x^2-5)}{3x^3-4x^2+x-2}.
-$$
-
-Its unique family maximum occurs at the relevant root of
-
-$$
-6x^4-18x^3+19x^2-5=0,
-$$
-
-and the corresponding $\gamma$ satisfies
+where $\gamma$ is the root in this interval of
 
 $$
 262\gamma^4-916\gamma^3+863\gamma^2+150\gamma-375=0.
 $$
 
-For the matching upper bound, every normalised cap ratio is covered by four feasible policy families. Outside the critical interval $[149/200,151/200]$, the verifier checks a complete 212-cell rational cover and proves coefficientwise domination using exact arithmetic. Inside that interval, the symbolic quartic comparison closes the remaining case. The stored minimum outer slack is
+In plain terms, the standard relaxation can understate the optimal two-item cost by at most about **11.19 per cent**, and there are admissible real-coefficient instances that attain that limit.
+
+The lower-bound example occurs near a normalised cap ratio
 
 $$
-\frac{3088515039309}{31027700000000000000}>0.
+x\approx0.7509471056068.
 $$
 
-A separate 2,829-cell rational certificate gives the coarser bound $\Gamma_{2,\mathrm{box}}<1.11189$ by a differently generated cover. This is a producer-side cross-check, not independent reproduction.
+At the sharp instance, three different coordination patterns—labelled $(1,1)$, $(1,2)$, and $(2,3)$—tie for the true optimum. The relaxation lies below all three by the factor $\gamma$. The meeting of three alternatives is what creates the extremal obstruction.
 
-The release also includes a nearby fully rational instance with exact gap
+## Why four policies are enough for the upper bound
+
+The matching upper proof begins by normalising any two-cap instance so that the relaxed optimum lies at frequencies $(x,1)$ with $0<x<1$. After this change of units, every instance is described by five nonnegative cost coordinates.
+
+For each $x$, consider four feasible periodic choices:
+
+- the nested ratio immediately to one side of $x$;
+- the nested ratio immediately to the other side;
+- their Farey mediant, which supplies an intermediate coordination pattern; and
+- the policy that uses the two cap periods directly.
+
+The proof constructs nonnegative weights for these policies whose weighted average cost is at most $\gamma$ times the relaxed cost in each of the five coordinates. Since the cheapest of four policies cannot cost more than their weighted average, at least one is always within the factor $\gamma$.
+
+Near the worst point, on
 
 $$
-\frac{2484309748962090917667}{2234313336955730917667}
-=1.111889593939846\ldots,
+\frac{149}{200}\leq x\leq\frac{151}{200},
 $$
 
-closing at $S=8$ after 21 coprime ratios. The exact equality is asserted for nonnegative real cost coefficients. The construction allows zero item-specific setup costs, exactly as the declared model does; it does not claim the same equality under a convention requiring every $K_i$ to be strictly positive or for rational data without a separate continuity argument.
+the weights and all remaining slacks are controlled by exact symbolic identities. Outside that narrow interval, 212 rational cells cover every possible value of $x$ and verify the same coefficientwise inequality. The symbolic critical interval and the finite outer cover meet without leaving a numerical gap.
 
-## What the result does not establish
+This explains the role of the computational work: it does not search experimentally for a large ratio. It checks a finite partition supporting a universal upper bound, while the extremal family supplies the matching lower bound.
 
-- It does not determine the unrestricted multi-item gap of relaxation $(P)$; only the real-coefficient two-item independent-cap gap is closed.
-- The cited upper bound is conditional on the external theorem applying to the same relaxation and model.
-- It does not give a polynomial-time algorithm in binary input length.
-- It does not solve the multi-item joint replenishment problem.
-- The finite alignment-configuration hull is a two-item regression prototype, not a multi-item separation oracle or rounding theorem.
-- It proves no $k=1$, $k=2$, or fixed-column-sparsity approximation or hardness frontier.
-- It supplies no complete three-item exact oracle.
-- It does not model uncertain demand, safety stock, lead times, case packs, routing, phases, fixed delivery calendars, pointwise capacity, or multi-echelon interactions.
-- Synthetic screening and sensitivity outputs are not operational evidence.
-- A local replay receipt, DOI, or agreement among producer-workflow agents is not independent mathematical verification or peer review.
+## What the result means—and where it stops
 
-## Why the resource-aware tail matters
+The first theorem gives an exact benchmark method for stylised two-item planning problems with stationary costs and average-rate constraints. It can be used to test heuristics or to generate exact small-instance reference answers. The second theorem quantifies exactly how much information the standard independent-cap relaxation can lose in that same two-item setting.
 
-An unconstrained tail can be far below the true cost when capacity or minimum-interval rows force the periods away from their unconstrained scales. The new dual bound keeps those rows in the stopping certificate. This sharply reduces the closing cutoff on the bundled instances while also supporting the proof that the unbounded algorithm eventually stops.
+The equality uses nonnegative **real** coefficients and permits zero item-specific setup costs. It does not assert the same attained value for a rational-data-only class or under a convention requiring every $K_i$ to be strictly positive.
 
-The distinction is useful beyond implementation. A finite certificate proves a particular instance after a particular enumeration. The totality theorem explains why the same method will eventually certify every instance in the stated class. Neither fact establishes a polynomial running time.
+Nor does the constant settle the unrestricted problem with three or more items. The cap-reduction argument makes $\gamma$ a rigorous lower bound for the wider multi-item relaxation gap, but it does not prove that two items are globally worst. Multi-item alignment, phases, fixed delivery calendars, pointwise capacity, uncertain demand, safety stock, lead times, routing, and multi-echelon effects remain outside the theorem.
 
-## Who should care, and why
-
-| Audience | Potential use | Required caution |
-|---|---|---|
-| Inventory and operations-research theorists | Audit a compact exact two-item oracle and a new relaxation-gap construction. | The global gap and wider approximation frontier remain open. |
-| Algorithm designers | Use resource-dual tails as stronger finite stopping certificates. | Solver-independent replay is still producer-side and is not a complexity bound. |
-| Planning-system developers | Benchmark two-item heuristic outputs against exact rational/radical certificates. | The model uses stationary average-rate constraints and omits many operational details. |
-| Approximation researchers | Reuse the cap reduction, four-policy envelope, and exact two-item cap constant as regression targets. | The two-item upper certificate is not a multi-item upper certificate. |
-| Formal-methods researchers | Formalise the fixed-ratio, scale-floor, synchronisation, cap-reduction, and elimination arguments. | No theorem is currently proof-assistant checked. |
-| AI research agents | Retrieve exact claims, exclusions, manifests, replay commands, proof objects, and open tasks. | Preserve the candidate status and every non-inference boundary. |
-| Independent reviewers | Reconstruct the analytic proof and certificate semantics from the immutable archive. | Producer adversarial review is not an external specialist audit. |
-
-## The extension programme remains open
-
-The supplied extension document is preserved in the release and mapped requirement by requirement. This candidate completes the exact two-item resource-aware tail, totality theorem, real-coefficient cap reduction, exact two-item independent-cap gap, stronger algebraic family, and a finite local alignment prototype. It deliberately leaves later stages as separately publishable work:
-
-1. determine whether the unrestricted multi-item gap equals the two-item cap constant $\gamma$;
-2. build a multi-item alignment relaxation with separation and rounding;
-3. determine the column-sparsity approximation or hardness frontier;
-4. construct and independently reproduce a complete three-item oracle;
-5. replace one-at-a-time sensitivity with correlated uncertainty regions;
-6. add phases, calendars, and pointwise constraints;
-7. run a bounded, preregistered field pilot; and
-8. develop a more general constrained periodic-synchronisation theory.
-
-## How the package was checked
-
-The immutable release ZIP was rebuilt and replayed from a fresh extraction on macOS arm64 with pinned Python dependencies and a recorded TeX toolchain. The positive controls rebuild four finite witnesses, verify two parametric families, regenerate and verify both two-cap certificates, check the alignment regression, regenerate numerical outputs and six figures, run 17 tests, compile the code, and rebuild both 8-page papers and the 3-page practitioner brief.
-
-The negative controls re-hash and require rejection of a finite-witness gap mutation, a two-cap upper-bound mutation, and an exact claim-scope mutation. A deliberately truncated solve must exit with status 2 and omit every optimum-named field. The release gate also runs under `python -O` so a verifier depending only on disabled `assert` statements cannot silently pass.
-
-These checks establish the declared byte, execution, and certificate facts for the archived payload. They do not establish independent reproduction, the truth of every conventional proof step, formal verification, novelty, specialist acceptance, field validity, or operational benefit.
-
-## What is in the evidence package
-
-The [public GitHub repository](https://github.com/ipitchford/certified-two-item-jrp) contains both candidate papers and TeX sources, the practitioner brief, exact solver, standard-library certificate verifiers, four finite witnesses, family and two-cap certificates, the alignment prototype, tests, schemas, figures, outputs, claim and AI indexes, provenance, assurance and licence records, the complete extension programme, and its requirement-to-evidence ledger.
-
-The immutable candidate is tag [`v1.2.0-candidate`](https://github.com/ipitchford/certified-two-item-jrp/releases/tag/v1.2.0-candidate), commit `b31ef2c15dcf184638c1b3d9f0730c12a8ed54cf`. Its validated ZIP has SHA-256 `a1103de05bf1793119fd005d4685e161aca8aafcb6fea71e67f63f6fb0a82b13`. The [producer replay receipt](https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.2.0-candidate/certified-two-item-jrp-v1.2.0-candidate.replay-receipt.json) and [full replay log](https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.2.0-candidate/fresh-replay.log) are external to the ZIP so that they can identify the archive without a circular self-hash.
-
-The preserved version is [Zenodo record 21855894](https://zenodo.org/records/21855894), DOI [10.5281/zenodo.21855894](https://doi.org/10.5281/zenodo.21855894). The [exact two-item cap-gap paper](https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.2.0-candidate/two_cap_integrality_gap.pdf), [certification-and-termination paper](https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.2.0-candidate/certified_two_item_jrp.pdf), and [practitioner brief](https://github.com/ipitchford/certified-two-item-jrp/releases/download/v1.2.0-candidate/practitioner_brief.pdf) are separately downloadable. Software is MIT licensed. Original non-software papers, documentation, data, certificates, metadata, figures, and release material are dedicated under CC0-1.0 to the extent the publisher holds the relevant rights; third-party literature, dependencies, names, and embedded fonts remain outside that dedication.
+The result is an unrefereed candidate computer-assisted result. Its exact arithmetic checks and fresh-extraction replay were performed within the producing workflow; independent mathematical reconstruction, formal proof-assistant verification, specialist review, peer review, and field validation have not yet occurred.
