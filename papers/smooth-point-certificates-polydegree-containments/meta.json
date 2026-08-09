@@ -1,0 +1,132 @@
+{
+  "slug": "smooth-point-certificates-polydegree-containments",
+  "title": "Smooth-Point Certificates for Polydegree Containments: A Jacobian Interpretation of the Lewis-Perry-Straub Determinant",
+  "shortTitle": "Smooth-point certificates for Polydegree containments",
+  "oneLine": "The Lewis-Perry-Straub auxiliary determinant is a Jacobian: an exact Euler syzygy turns its specialisation test into a smooth-point criterion and yields a smaller Hensel certificate, while the uniform e=3 affine theorem remains open.",
+  "abstract": "Lewis, Perry and Straub introduced integral coefficient polynomials and an auxiliary determinant whose complex specialisations imply Polydegree containments for plane polynomial automorphisms. This unrefereed candidate identifies the determinant, up to sign, as the Jacobian of the coefficient map and derives an exact weighted-Euler syzygy. In the chart x1=1, the original non-vanishing condition becomes the existence of a smooth point of the partial coefficient complete intersection outside the next coefficient hypersurface. A simple finite-field common zero with non-zero next coefficient therefore lifts to the required characteristic-zero point; no restriction excluding primes dividing d+e-1 is needed. A separate curve theorem shows how a reduced affine zero divisor supplies the same point. Exact e=3 computations prove that the entire affine intersection is reduced and avoids the next coefficient for 2 <= d <= 20. A terminating-hypergeometric and finite-free-convolution argument proves every individual boundary factor has only simple positive roots, while adjacent coprimality is checked through d=200. The all-d affine conjecture remains open. Internal exact replay, code-path diversity and controls are not represented as independent reproduction, formal verification, specialist review or peer review.",
+  "narration": "This release concerns the Polydegree Conjecture, a problem about how families of polynomial transformations of the plane fit together at their boundaries. Earlier work reduced many cases to an explicit algebraic test: several coefficient polynomials must vanish, while another coefficient and an auxiliary determinant remain non-zero. The main observation here is that the auxiliary determinant is not a separate mystery. Up to sign, it is the Jacobian determinant of the coefficient polynomials already in the problem. A Jacobian detects whether equations meet cleanly, so the test can be read geometrically: find one smooth point of the intersection that avoids the next forbidden hypersurface. An exact weighted-Euler identity makes that translation integral and leads to a smaller finite-field certificate. A simple modular zero with a non-zero next coefficient can be lifted to characteristic zero, including some primes rejected by the older determinant-unit test. The paper also proves a curve-based route to the same point and a uniform squarefreeness theorem for each individual boundary polynomial in the three-variable family. Exact calculations show the full affine property for indices two through twenty, and adjacent boundary coprimality through two hundred. Those finite ranges are not a proof for every index. This is an anonymous, unrefereed candidate. The public package contains the paper, exact evidence, manifest, replay scripts, negative controls, and review records. Producer replay has passed, but there has been no independent reconstruction, formal verification, external specialist review, or journal peer review. Release zero point four point one candidate was published on August ninth, twenty twenty-six. The paper and evidence are linked on this page and archived under the version DOI. This briefing uses an AI-generated voice. It is a communication aid, not additional evidence. End of briefing.",
+  "datePublished": "2026-08-09",
+  "version": "0.4.1-candidate",
+  "doi": "10.5281/zenodo.21864574",
+  "conceptDoi": "10.5281/zenodo.21864573",
+  "zenodoUrl": "https://zenodo.org/records/21864574",
+  "pdfUrl": "https://github.com/ipitchford/smooth-point-certificates-polydegree-containments/releases/download/v0.4.1-candidate/smooth-point-certificates-polydegree-containments-v0.4.1-candidate.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/smooth-point-certificates-polydegree-containments/v0.4.1-candidate/build/main.pdf",
+  "repoUrl": "https://github.com/ipitchford/smooth-point-certificates-polydegree-containments",
+  "releaseUrl": "https://github.com/ipitchford/smooth-point-certificates-polydegree-containments/releases/tag/v0.4.1-candidate",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/smooth-point-certificates-polydegree-containments.mp3",
+      "name": "Audio briefing -- smooth-point certificates for Polydegree containments",
+      "description": "Plain-English AI-generated voice summary of the central Jacobian interpretation, evidence boundary, and open uniform theorem.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/smooth-point-certificates-polydegree-containments.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": ["Automated research, symbolic-computation and language-model tools"],
+    "humanRole": "Problem selection, research direction, mediation, supervision, review and publication decision; the scholarly creator is cited as Anonymous.",
+    "disclosure": "Automated research, symbolic-computation and language-model tools assisted literature triage, proof exploration, exact verification, adversarial review, drafting and package preparation. They are not authors. Agreement among AI-assisted checks is not independent human review."
+  },
+  "problem": {
+    "name": "Polydegree Conjecture for plane polynomial automorphisms",
+    "url": "https://doi.org/10.1016/j.jpaa.2019.04.002"
+  },
+  "keywords": [
+    "plane polynomial automorphisms",
+    "Polydegree Conjecture",
+    "Jacobian criterion",
+    "multivariate Hensel lifting",
+    "weighted homogeneous polynomials",
+    "complete intersections",
+    "computer-assisted mathematics",
+    "reproducible research",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "The Lewis-Perry-Straub auxiliary determinant is, up to sign, the full coefficient Jacobian determinant.",
+    "An exact integral weighted-Euler syzygy reduces the determinant condition on the partial zero locus to non-vanishing of the next coefficient and an affine Jacobian minor.",
+    "A simple finite-field common zero with non-zero next coefficient gives the required complex specialisation; the prime need not avoid d+e-1.",
+    "A reduced affine zero divisor on the scheme-theoretic smooth complete-intersection curve supplies the same Jacobian point.",
+    "For e=3 and 2 <= d <= 20, exact rational and Singular computation shows the full affine intersection is reduced with the predicted length and avoids the next coefficient.",
+    "Every e=3 one-variable boundary factor is uniformly squarefree; adjacent-factor coprimality is exactly checked through d=200 and remains open uniformly."
+  ],
+  "evidence": "A 17-page candidate paper in PDF, LaTeX and accessible Markdown; bilingual abstracts; exact proof record; frozen 51-witness corpus; upstream replay reconciliation; a no-import standard-library Jacobian verifier with 10/10 symbolic gates and 51/51 witness relations under ordinary and optimised Python; 16 negative or mutation controls plus one positive bad-characteristic regression; exact rational and Singular affine computations for 2 <= d <= 20; an exact boundary-factor verifier and repaired referee memo; adjacent boundary arithmetic through d=200; citation, originality, claim-status, provenance and assurance records; and a SHA-256 manifest covering 142 release files. These are producer-side checks, not independent reproduction or external theorem verification.",
+  "statusDetail": "Anonymous, unrefereed candidate. The derivative, determinant, weighted-Euler, Hensel/localisation, curve-bridge and uniform boundary-squarefreeness results have written proofs and internal adversarial checks. Exact finite computations are bounded at d <= 20 for the full affine statement and d <= 200 for adjacent boundary coprimality. The uniform e=3 affine theorem, full Polydegree Conjecture and priority question remain open. The public repository, immutable candidate release and Zenodo record expose byte-identical assets. No unaffiliated party has independently reconstructed the proofs or computations; there is no proof-assistant formalisation, external specialist audit, editorial peer review or venue acceptance. An upstream proof-critical Python assert is retained as a disclosed fail-open robustness defect, with no evidence that a current witness is false.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/21864574",
+      "note": "The exact candidate PDF, 142-file ZIP and checksum ledger are public on Zenodo and the immutable GitHub prerelease; downloaded bytes match."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/smooth-point-certificates-polydegree-containments/actions/runs/31336017231",
+      "note": "The manifest, candidate validator, 10/10 symbolic gates, 51/51 witnesses and 17/17 controls pass under ordinary and optimised Python on the immutable tag."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated person or group has reported rerunning the immutable public package."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Different code paths and computer-algebra routes were produced inside one coordinated workflow and are not independent reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No theorem has been formalised in a proof assistant."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No external polynomial-automorphism or algebraic-geometry specialist has reviewed the candidate."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or venue has conducted peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/smooth-point-certificates-polydegree-containments/blob/v0.4.1-candidate/BUILD.md",
+      "note": "Exact scripts, receipts, dependency versions, commands and CI are supplied, but no independently recreated container or cross-platform replay is available."
+    }
+  },
+  "openProblems": [
+    "Prove or disprove that (G_d,G_(d+1)) is radical of the predicted length, with J_d and G_(d+2) units, for every d >= 2.",
+    "Prove uniform adjacent boundary coprimality across the changing terminating-hypergeometric families, or locate a counterexample.",
+    "Prove or refute triple common-zero exclusion for G_d,G_(d+1),G_(d+2) in the e=3 affine chart.",
+    "Obtain original-author feedback, authenticated specialist-database searches and an external priority assessment of the Jacobian packaging.",
+    "Independently reconstruct the proof chain and computations, and formalise the algebraic identities and Hensel bridge in a proof assistant."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Lewis, D., Perry, K., & Straub, A. (2019). An algorithmic approach to the Polydegree Conjecture for plane polynomial automorphisms. Journal of Pure and Applied Algebra, 223(12), 5346-5359.",
+      "url": "https://doi.org/10.1016/j.jpaa.2019.04.002"
+    },
+    {
+      "citation": "Perry, K. A. (2016). Polydegree properties of polynomial automorphisms. Doctoral dissertation, The University of Alabama.",
+      "url": "https://ir.ua.edu/items/f71aa1b3-0dbc-42a2-9f59-3f01eb1a5529"
+    },
+    {
+      "citation": "Edo, E., & van den Essen, A. (2014). The Strong Factorial Conjecture. Journal of Algebra, 397, 443-456.",
+      "url": "https://doi.org/10.1016/j.jalgebra.2013.09.011"
+    },
+    {
+      "citation": "Grochow, J. A. (2025). Multivariate Hensel lifting without assuming as many variables as equations. The American Mathematical Monthly, 132(4), 350-355.",
+      "url": "https://doi.org/10.1080/00029890.2024.2440297"
+    },
+    {
+      "citation": "Martinez-Finkelshtein, A., Morales, R., & Perales, D. (2024). Zeros of generalized hypergeometric polynomials via finite free convolution. Applications to multiple orthogonality. arXiv:2404.11479v2.",
+      "url": "https://arxiv.org/abs/2404.11479v2"
+    },
+    {
+      "citation": "Martinez-Finkelshtein, A., Morales, R., & Perales, D. (2024). Real roots of hypergeometric polynomials via finite free convolution. arXiv:2309.10970v3.",
+      "url": "https://arxiv.org/abs/2309.10970v3"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Smooth-Point Certificates for Polydegree Containments: A Jacobian Interpretation of the Lewis-Perry-Straub Determinant (Version 0.4.1-candidate) [Unrefereed candidate manuscript and reproducibility package]. Zenodo. https://doi.org/10.5281/zenodo.21864574"
+}
