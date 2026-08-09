@@ -330,6 +330,48 @@ art['cyclicity-loci-exponential-periods'] = (a, b) => {
   return s;
 };
 
+/* Root-span cyclicity: inverse branches, trace removal, and block fusion. */
+art['cyclicity-root-span-low-rank'] = (a, b) => {
+  let s = '';
+
+  /* Inverse branches emanate from one target value. Their pale barycentre is
+     removed before the coloured trace-free directions are counted. */
+  const source = [155, 200];
+  const branchEnds = [[360, 58], [390, 116], [405, 178], [405, 238], [390, 296], [360, 350]];
+  for (let i = 0; i < branchEnds.length; i++) {
+    const [x, y] = branchEnds[i];
+    const col = i % 2 ? b : a;
+    s += `<path d="M ${source[0]} ${source[1]} C 245 ${source[1]}, 275 ${y}, ${x} ${y}" fill="none" stroke="${col}" stroke-width="4" opacity="${(0.58 + i * 0.055).toFixed(2)}"/>`;
+    s += `<circle cx="${x}" cy="${y}" r="9" fill="${col}" stroke="#151a1e" stroke-width="3"/>`;
+  }
+  s += `<circle cx="${source[0]}" cy="${source[1]}" r="22" fill="#151a1e" stroke="#e7e5e4" stroke-width="2"/>`;
+  s += `<text x="${source[0]}" y="${source[1] + 7}" text-anchor="middle" font-family="Georgia" font-size="23" fill="#e7e5e4">z</text>`;
+  s += `<line x1="315" y1="52" x2="315" y2="350" stroke="#e7e5e4" stroke-width="1.5" stroke-dasharray="8 9" opacity="0.24"/>`;
+  s += `<text x="245" y="385" text-anchor="middle" font-family="Georgia" font-size="19" fill="#e7e5e4" opacity="0.72">inverse roots − common trace</text>`;
+
+  /* The central equality is the load-bearing statement, explicitly marked as
+     conditional rather than presented as an unconditional fact. */
+  s += `<rect x="470" y="96" width="300" height="208" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity="0.96"/>`;
+  s += `<text x="620" y="158" text-anchor="middle" font-family="Georgia" font-size="25" fill="#e7e5e4">fixed-seed rank</text>`;
+  s += `<text x="620" y="222" text-anchor="middle" font-family="Georgia" font-size="47" fill="${a}">q = dim W</text>`;
+  s += `<text x="620" y="266" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" fill="${b}" opacity="0.94">under the imported bridge</text>`;
+  s += `<path d="M 426 200 H 458 M 782 200 H 814" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 8" opacity="0.52"/>`;
+
+  /* Three outer blocks collapse onto one span. This is the unresolved
+     compositional phenomenon rather than a claimed complete atlas. */
+  const blockY = [82, 200, 318];
+  for (let i = 0; i < blockY.length; i++) {
+    const y = blockY[i];
+    s += `<rect x="835" y="${y - 35}" width="128" height="70" rx="14" fill="${i === 1 ? b : a}" opacity="${i === 1 ? '0.80' : '0.54'}"/>`;
+    s += `<text x="899" y="${y + 8}" text-anchor="middle" font-family="Georgia" font-size="27" fill="#151a1e">block ${i + 1}</text>`;
+    s += `<path d="M 963 ${y} C 1005 ${y}, 1014 200, 1052 200" fill="none" stroke="${i === 1 ? b : a}" stroke-width="4" opacity="0.88"/>`;
+  }
+  s += `<circle cx="1078" cy="200" r="32" fill="#151a1e" stroke="${b}" stroke-width="4"/>`;
+  s += `<text x="1078" y="209" text-anchor="middle" font-family="Georgia" font-size="30" fill="#e7e5e4">W</text>`;
+  s += `<text x="985" y="382" text-anchor="middle" font-family="Georgia" font-size="19" fill="#e7e5e4" opacity="0.74">composition can fuse spans</text>`;
+  return s;
+};
+
 /* Certified commitment horizons: a protected prefix and a later departure. */
 art['certified-commitment-horizons'] = (a, b) => {
   const xs = [110, 275, 440, 605, 770, 935, 1090];
@@ -548,6 +590,7 @@ const palette = {
   'txgraffiti-c3-resolution': ['#2dd4bf', '#f472b6'],
   'bilateral-deficiency-regular-dim': ['#2dd4bf', '#f472b6'],
   'cyclicity-loci-exponential-periods': ['#38bdf8', '#fbbf24'],
+  'cyclicity-root-span-low-rank': ['#a78bfa', '#2dd4bf'],
   'certified-commitment-horizons': ['#2dd4bf', '#fbbf24'],
   'bordered-jacobian-foundations': ['#34d399', '#fbbf24'],
   'exact-smith-invariants-affine-determinant-lines': ['#34d399', '#c084fc'],
