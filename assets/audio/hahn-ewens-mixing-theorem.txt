@@ -1,0 +1,15 @@
+Plain-English audio briefing
+
+This release studies a family of Markov chains on binary strings. A Markov chain is a random rule for moving from one state to another. Here the state is a word made of zeros and ones, and the rule is built from random permutations, their cycles, and two beta-distributed latent variables.
+
+The first result concerns only the number of ones. That count has a beta-binomial equilibrium distribution, and its modes are the full two-parameter family of Hahn polynomials. The paper then lifts the calculation from counts to all binary words. Each degree has one explicit eigenvalue, and the number of modes at that degree is a binomial coefficient. This matters because there are exponentially many word states even though the smaller count process has only N plus one states.
+
+The main new theorem asks how those many modes disappear over time. Two endpoint regions control the decay of the even eigenvalues. Their slower power-law exponent determines a sharp transition on the scale N divided by log N. Below the stated constant, the stationary-weighted average of the conditional chi-square distances diverges. Above it, that average goes to zero. For the canonical parameter choice, the formula specializes to the classical constant log two divided by two when both shape parameters equal one.
+
+The scope is important. This is a transition for a stationary-average trace observable. It is not a worst-case, typical-start, fixed-start, stationary-mixture, or total-variation cutoff theorem. The paper also makes no claim at the exact critical constant. Stronger classical conclusions for specified individual starting states belong to prior work.
+
+The package includes the paper and source, a preserved foundational evidence snapshot, an exact mixing verifier, ordinary and optimized Python runs, and deliberate failure controls. The mixing verifier performs three thousand one hundred seventy-seven checks per positive run and one hundred seven checks per control run. These are finite producer-side falsification checks. They help detect formula, sign, and implementation errors, but they do not prove the asymptotic theorem and they are not independent reproduction.
+
+This is an anonymous, unrefereed candidate. It has not been independently reproduced, formally verified, reviewed by an external specialist, or conventionally peer reviewed. Its novelty claim is bounded to the cited public literature, and directly relevant unpublished work could not be examined.
+
+This audio briefing uses an AI-generated voice. It is not mathematical evidence. It is only a plain-English communication aid. End of briefing.

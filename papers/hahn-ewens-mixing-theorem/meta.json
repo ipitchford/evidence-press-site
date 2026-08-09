@@ -1,0 +1,130 @@
+{
+  "slug": "hahn-ewens-mixing-theorem",
+  "title": "A stabiliser--Ewens deformation: full Hahn spectrum and a sharp stationary-average chi-square transition",
+  "shortTitle": "Hahn--Ewens spectrum and mixing transition",
+  "oneLine": "A stabiliser--cycle chain has the full Hahn count spectrum, an exact binomially layered word spectrum, and a parameter-dependent sharp stationary-average chi-square transition on the N/log N scale.",
+  "abstract": "This anonymous, unrefereed candidate constructs a three-parameter stabiliser--Ewens cycle chain whose count process is reversible for the beta-binomial law and has the full two-parameter Hahn family as an eigenbasis. A latent-beta representation diagonalises the complete binary-word chain: degree ell has eigenvalue E[(U-V)^ell] on an intrinsic subspace of dimension binom(N,ell), with coincident numerical eigenvalues aggregated across degrees. For fixed alpha,beta>0 and 0<c<min(alpha,beta), the absolute moments have two endpoint contributions with decay exponent delta=min(2c,alpha+beta-2c). The stationary-weighted average of conditional point-start chi-square distances therefore has a sharp transition at [log(2)/(2 delta)]N/log N. The canonical chain has constant (alpha+beta)log(2)/(4 alpha beta) and recovers log(2)/2 at alpha=beta=1. The result concerns this stationary-average trace observable only; it is not a fixed-start, typical-start, worst-case, stationary-mixture, or total-variation cutoff theorem, and no claim is made at the critical point. The package includes exact producer replay and deliberate negative controls, but no independent reproduction, formal verification, external specialist review, editorial peer review, or absolute priority determination.",
+  "narration": "This release studies a family of Markov chains on binary strings. A Markov chain is a random rule for moving from one state to another. Here the state is a word made of zeros and ones, and the rule is built from random permutations, their cycles, and two beta-distributed latent variables. The first result concerns only the number of ones. That count has a beta-binomial equilibrium distribution, and its modes are the full two-parameter family of Hahn polynomials. The paper then lifts the calculation from counts to all binary words. Each degree has one explicit eigenvalue, and the number of modes at that degree is a binomial coefficient. This matters because there are exponentially many word states even though the smaller count process has only N plus one states. The main new theorem asks how those many modes disappear over time. Two endpoint regions control the decay of the even eigenvalues. Their slower power-law exponent determines a sharp transition on the scale N divided by log N. Below the stated constant, the stationary-weighted average of the conditional chi-square distances diverges. Above it, that average goes to zero. For the canonical parameter choice, the formula specializes to the classical constant log two divided by two when both shape parameters equal one. The scope is important. This is a transition for a stationary-average trace observable. It is not a worst-case, typical-start, fixed-start, stationary-mixture, or total-variation cutoff theorem. The paper also makes no claim at the exact critical constant. Stronger classical conclusions for specified individual starting states belong to prior work. The package includes the paper and source, a preserved foundational evidence snapshot, an exact mixing verifier, ordinary and optimized Python runs, and deliberate failure controls. The mixing verifier performs three thousand one hundred seventy-seven checks per positive run and one hundred seven checks per control run. These are finite producer-side falsification checks. They help detect formula, sign, and implementation errors, but they do not prove the asymptotic theorem and they are not independent reproduction. This is an anonymous, unrefereed candidate. It has not been independently reproduced, formally verified, reviewed by an external specialist, or conventionally peer reviewed. Its novelty claim is bounded to the cited public literature, and directly relevant unpublished work could not be examined. This audio briefing uses an AI-generated voice. It is not mathematical evidence. It is only a plain-English communication aid. End of briefing.",
+  "datePublished": "2026-08-09",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.21864287",
+  "conceptDoi": "10.5281/zenodo.21864286",
+  "zenodoUrl": "https://zenodo.org/records/21864287",
+  "pdfUrl": "https://github.com/ipitchford/hahn-ewens-mixing-theorem/releases/download/v0.1.0-candidate/hahn-ewens-mixing-theorem-v0.1.0-candidate.pdf",
+  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/hahn-ewens-mixing-theorem/v0.1.0-candidate/package/manuscript/hahn-ewens-mixing-theorem.pdf",
+  "repoUrl": "https://github.com/ipitchford/hahn-ewens-mixing-theorem",
+  "releaseUrl": "https://github.com/ipitchford/hahn-ewens-mixing-theorem/releases/tag/v0.1.0-candidate",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/hahn-ewens-mixing-theorem.mp3",
+      "name": "Audio briefing -- Hahn--Ewens spectrum and mixing transition",
+      "description": "Plain-English AI-generated voice summary of the candidate theorem, evidence, prior-art boundary, and nonclaims.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/hahn-ewens-mixing-theorem.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": ["AI systems under human direction", "SymPy 1.14.0", "mpmath 1.3.0"],
+    "humanRole": "Research direction, continuation authorization, mediation, repository maintenance, and publication authorization; Ian Pitchford is publisher and repository maintainer, while scholarly attribution remains Anonymous.",
+    "disclosure": "The work, exact programs, and same-workflow hostile reviews were produced within one coordinated AI-assisted process. Multiple implementations, optimized-interpreter replay, mutation controls, hashes, graphics, and public readback do not constitute independent reproduction, external specialist review, formal verification, or editorial peer review."
+  },
+  "problem": {
+    "name": "A two-parameter Ewens deformation with full Hahn spectrum",
+    "url": "https://doi.org/10.1007/s11139-021-00482-z"
+  },
+  "keywords": [
+    "Hahn polynomials",
+    "beta-binomial distribution",
+    "Markov chains",
+    "mixing times",
+    "chi-square distance",
+    "hypercube spectrum",
+    "Ewens sampling formula",
+    "Burnside process",
+    "computer-assisted mathematics",
+    "AI-generated mathematics",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "The declared stabiliser--cycle construction is reversible for the beta-binomial law on counts and has the full two-parameter Hahn family as an eigenbasis.",
+    "The complete binary-word chain splits into intrinsic degree layers of dimension binom(N,ell), with eigenvalue lambda_ell=E[(U-V)^ell] and exact aggregation when numerical eigenvalues coincide.",
+    "For each fixed open-region parameter triple, the absolute moments have two explicit endpoint power-law contributions and decay exponent delta=min(2c,alpha+beta-2c).",
+    "The stationary-weighted average conditional point-start chi-square trace diverges below and vanishes above [log(2)/(2 delta)]N/log N. No conclusion at the critical point is claimed.",
+    "The canonical chain has transition constant (alpha+beta)log(2)/(4 alpha beta) and recovers the classical log(2)/2 constant at alpha=beta=1 without claiming the stronger classical point-start theorem."
+  ],
+  "evidence": "A 21-page anonymous candidate manuscript and LaTeX source; a checksum-bound foundational full-word evidence snapshot; four frozen mixing receipts; a six-file mixing manifest; 3,177 explicit predicates in each ordinary and optimized positive run; 107 predicates across ten controls in each ordinary and optimized control run; three exact eigenvalue routes; two algebraically distinct bounded word-kernel constructions; direct chi-square, trace, and spectral-sum comparisons; two same-workflow hostile reviews; public-prior-art comparison; deterministic release tooling; graphics, transcript, and audio. The executable work is finite producer-side falsification support. The endpoint asymptotic and transition theorem rest on the written proof.",
+  "statusDetail": "Anonymous, unrefereed candidate. Internal replay, explicit failure controls, manifests, and package checks pass. The theorem concerns a stationary-weighted average of conditional point-start chi-square distances, not a stationary mixture and not fixed-start, typical-start, worst-case, or total-variation cutoff. No critical-point result is claimed. Same-workflow reviews found no fatal or major mathematical defect after recorded corrections, but no unaffiliated rerun, independent reimplementation, proof-assistant formalization, external specialist review, editorial peer review, or absolute priority determination has occurred. One directly relevant unpublished work could not be assessed.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/21864287",
+      "note": "The versioned paper, source archive, exact evidence, media, and checksum ledger are publicly archived under the version DOI and mirrored in the immutable GitHub prerelease."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/hahn-ewens-mixing-theorem/releases/tag/v0.1.0-candidate",
+      "note": "Ordinary and optimized mixing runs, deliberate controls, foundational fresh-extraction replay, and static-boundary checks pass in the producer workflow."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated party has reported running the immutable public package."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The exact implementations and algebraic cross-checks were produced inside one coordinated workflow and are not independent reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No theorem in this release has been completed in a proof assistant."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Adversarial reviews are same-workflow reviews; no external Markov-chain specialist has assessed the argument."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or venue has run peer review to a decision."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/hahn-ewens-mixing-theorem/blob/v0.1.0-candidate/package/README.md",
+      "note": "Direct Python dependencies, commands, manifests, receipts, and CI are supplied, but no independently recreated container, Nix, or Guix environment is provided."
+    }
+  },
+  "openProblems": [
+    "Obtain an unaffiliated reconstruction of the latent-beta full-word diagonalisation and the endpoint asymptotic without using the production verifiers.",
+    "Determine the transition behaviour at the critical constant log(2)/(2 delta).",
+    "Upgrade or refute the stationary-average result for typical starts, specified starts, worst-case chi-square, separation, or total variation in the asymmetric parameter family.",
+    "Resolve the exact relationship with the unavailable Ewens-deformation work attributed to Chenyang Zhong and extend the bounded public-corpus search.",
+    "Formalize the full-word degree decomposition, endpoint asymptotic, and N-to-the-gamma trace split in a proof assistant.",
+    "Analyse parameter-boundary regimes where cycle labels become deterministic and irreducibility or aperiodicity can fail."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Diaconis, P., Lin, A., & Ram, A. (2025). A curiously slowly mixing Markov chain. arXiv:2511.01245.",
+      "url": "https://arxiv.org/abs/2511.01245"
+    },
+    {
+      "citation": "Diaconis, P., Lin, A., & Ram, A. (2025). Schur--Weyl duality for diagonalizing a Markov chain on the hypercube. arXiv:2512.23285.",
+      "url": "https://arxiv.org/abs/2512.23285"
+    },
+    {
+      "citation": "Diaconis, P., & Zhong, C. (2023). Hahn polynomials and the Burnside process.",
+      "url": "https://doi.org/10.1007/s11139-021-00482-z"
+    },
+    {
+      "citation": "Diaconis, P. (2005). Analysis of a Bose--Einstein Markov chain.",
+      "url": "https://doi.org/10.1016/j.anihpb.2004.09.007"
+    },
+    {
+      "citation": "Ewens, W. J. (1972). The sampling theory of selectively neutral alleles.",
+      "url": "https://doi.org/10.1016/0040-5809(72)90035-4"
+    }
+  ],
+  "citeText": "Anonymous. (2026). A stabiliser--Ewens deformation: full Hahn spectrum and a sharp stationary-average chi-square transition (Version 0.1.0-candidate) [Unrefereed candidate preprint and reproducibility package]. Zenodo. https://doi.org/10.5281/zenodo.21864287"
+}
