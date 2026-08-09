@@ -4,7 +4,7 @@ When a polynomial is presented as a product, multiplying the factors together lo
 
 The [parent paper](https://evidencepress.org/releases/bordered-jacobian-foundations/) treated two factors. There is then one lost scaling direction, and a single degree difference measures whether one extra normalising coordinate restores it. This child candidate studies any number of factors. The one degree difference becomes an integer matrix of scaling weights, and its Smith normal form records the exact finite ambiguity that remains.
 
-![Visual abstract: factor multiplication loses relative scaling directions; pairwise resultants and a character matrix restore them, and the Smith invariants record the residual finite group.](/assets/figures/exact-smith-invariants-visual-abstract.png)
+![Visual abstract: factor multiplication loses relative scaling directions; pairwise resultants and a character matrix restore them, and the Smith invariants record the residual finite group.](/assets/figures/exact-smith-invariants-visual-abstract.png?v=501c6541)
 
 The candidate separates three layers:
 
