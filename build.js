@@ -122,11 +122,13 @@ function safeUrl(url, context) {
   return raw;
 }
 
-/* Inline maths delimiters follow the Pandoc rule: an opening "$" is not
-   followed by whitespace, a closing "$" is not preceded by whitespace and not
-   followed by a digit. That last clause is what stops a currency range such as
-   "$290k–$430k" being parsed as maths. */
-const INLINE_TOKEN = /(`[^`]+`|\$(?!\s)[^$\n]*[^$\s]\$(?!\d))/g;
+/* Stash every maths delimiter supported by assets/js/math.js before Markdown
+   emphasis is expanded. In particular, the asterisk in `\mu^*` must reach
+   KaTeX unchanged. Dollar-delimited inline maths follows the Pandoc rule: an
+   opening "$" is not followed by whitespace, a closing "$" is not preceded by
+   whitespace and not followed by a digit. That last clause stops a currency
+   range such as "$290k–$430k" being parsed as maths. */
+const INLINE_TOKEN = /(`[^`]+`|\$\$[\s\S]*?\$\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$(?!\s)[^$\n]*[^$\s]\$(?!\d))/g;
 
 function inline(md) {
   const stash = [];

@@ -216,6 +216,20 @@ eq('maths adjacent to currency: both survive intact',
   inline('spend $40k to verify $x + y$ today'),
   'spend $40k to verify $x + y$ today');
 
+/* --- 14. Every KaTeX delimiter survives Markdown emphasis expansion --- */
+eq('parenthesised KaTeX protects superscript asterisks',
+  inline('the gap is \\(i(G)-\\mu^*(G)\\)'),
+  'the gap is \\(i(G)-\\mu^*(G)\\)');
+eq('bracketed KaTeX protects superscript asterisks',
+  markdown('\\[ i(G) \\le \\mu^*(G) \\]'),
+  '<p>\\[ i(G) \\le \\mu^*(G) \\]</p>');
+eq('double-dollar KaTeX protects superscript asterisks inline',
+  inline('bound $$i(G) \\le \\mu^*(G)$$ holds'),
+  'bound $$i(G) \\le \\mu^*(G)$$ holds');
+eq('ordinary Markdown emphasis still renders beside parenthesised KaTeX',
+  inline('*sharp* \\(\\mu^*(G)\\)'),
+  '<em>sharp</em> \\(\\mu^*(G)\\)');
+
 console.log(failures === 0
   ? '\nALL RENDERER TESTS PASSED'
   : `\n${failures} RENDERER TEST(S) FAILED`);
