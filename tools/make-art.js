@@ -236,6 +236,76 @@ art['txgraffiti-c3-resolution'] = (a, b) => {
   return s;
 };
 
+/* Bilateral deficiency: residual literal rails crossing into a cubic graph. */
+art['bilateral-deficiency-regular-dim'] = (a, b) => {
+  let s = '';
+
+  /* Indexed clauses and paired literal rails.  A few muted marks suggest the
+     clauses removed by a partial assignment without asserting a truth table. */
+  const clauseYs = [55, 125, 195, 265, 335];
+  const marks = [[a, '#e7e5e4', '#e7e5e4'], ['#e7e5e4', b, '#e7e5e4'],
+    ['#e7e5e4', '#e7e5e4', b], [a, '#e7e5e4', '#e7e5e4'], ['#e7e5e4', b, a]];
+  for (let i = 0; i < clauseYs.length; i++) {
+    const y = clauseYs[i];
+    s += `<rect x="50" y="${y - 23}" width="178" height="46" rx="23" fill="#151a1e" stroke="#e7e5e4" stroke-width="1.5" opacity="${i === 2 ? '0.34' : '0.78'}"/>`;
+    for (let j = 0; j < 3; j++) {
+      const x = 83 + j * 55;
+      s += `<circle cx="${x}" cy="${y}" r="7" fill="#151a1e" stroke="${marks[i][j]}" stroke-width="2" opacity="${i === 2 ? '0.38' : '0.96'}"/>`;
+      const rail = (i + j * 2) % 6;
+      const targetX = (i + j) % 2 ? 395 : 325;
+      const targetY = 45 + rail * 61;
+      s += `<path d="M ${x + 8} ${y} C 245 ${y}, 270 ${targetY}, ${targetX - 10} ${targetY}" fill="none" stroke="#e7e5e4" stroke-width="0.9" opacity="${i === 2 ? '0.08' : '0.24'}"/>`;
+    }
+  }
+  for (let i = 0; i < 6; i++) {
+    const y = 45 + i * 61;
+    s += `<circle cx="325" cy="${y}" r="11" fill="#151a1e" stroke="${a}" stroke-width="2.2" opacity="0.94"/>`;
+    s += `<circle cx="395" cy="${y}" r="11" fill="#151a1e" stroke="${b}" stroke-width="2.2" opacity="0.94"/>`;
+    s += `<line x1="337" y1="${y}" x2="383" y2="${y}" stroke="#e7e5e4" stroke-width="1" stroke-dasharray="4 5" opacity="0.38"/>`;
+  }
+
+  /* The centre is a size-preserving correspondence: two ordered banks joined
+     by balanced curves, intentionally neither a one-way arrow nor a proof tree. */
+  const leftY = [66, 112, 158, 242, 288, 334];
+  const rightY = [82, 128, 174, 226, 272, 318];
+  for (let i = 0; i < leftY.length; i++) {
+    s += `<circle cx="505" cy="${leftY[i]}" r="5.5" fill="${i < 3 ? a : '#e7e5e4'}" opacity="${i < 3 ? '0.88' : '0.48'}"/>`;
+    s += `<circle cx="670" cy="${rightY[i]}" r="5.5" fill="${i > 2 ? b : '#e7e5e4'}" opacity="${i > 2 ? '0.88' : '0.48'}"/>`;
+    for (let j = 0; j < rightY.length; j++) if ((i + j) % 2 === 0) {
+      const colour = i < 3 ? a : b;
+      s += `<path d="M 511 ${leftY[i]} C 565 ${leftY[i]}, 610 ${rightY[j]}, 664 ${rightY[j]}" fill="none" stroke="${colour}" stroke-width="1.15" opacity="0.30"/>`;
+    }
+  }
+  s += `<path d="M 545 200 C 575 154, 600 154, 630 200 C 600 246, 575 246, 545 200 Z" fill="#151a1e" stroke="#e7e5e4" stroke-width="1.5" opacity="0.82"/>`;
+  s += `<circle cx="587.5" cy="200" r="7" fill="${a}" opacity="0.9"/><circle cx="587.5" cy="200" r="15" fill="none" stroke="${b}" stroke-width="1.5" opacity="0.65"/>`;
+
+  /* A generalized Petersen graph gives an exact cubic visual scaffold.  Three separated
+     spokes are highlighted as matching edges; the artwork is illustrative,
+     not an encoding of the released 50-vertex object. */
+  const cx = 925, cy = 200, outerR = 158, innerR = 82, n = 10;
+  const outer = k => [cx + outerR * Math.cos(2 * Math.PI * k / n - Math.PI / 2), cy + outerR * Math.sin(2 * Math.PI * k / n - Math.PI / 2)];
+  const inner = k => [cx + innerR * Math.cos(2 * Math.PI * k / n - Math.PI / 2), cy + innerR * Math.sin(2 * Math.PI * k / n - Math.PI / 2)];
+  const line = (p, q, colour = '#e7e5e4', width = 1.5, opacity = 0.56) =>
+    `<line x1="${p[0].toFixed(1)}" y1="${p[1].toFixed(1)}" x2="${q[0].toFixed(1)}" y2="${q[1].toFixed(1)}" stroke="${colour}" stroke-width="${width}" opacity="${opacity}"/>`;
+  for (let i = 0; i < n; i++) {
+    s += line(outer(i), outer((i + 1) % n));
+    s += line(inner(i), inner((i + 2) % n));
+    const highlighted = [0, 3, 6].includes(i);
+    s += line(outer(i), inner(i), highlighted ? a : '#e7e5e4', highlighted ? 5 : 1.2, highlighted ? 0.98 : 0.42);
+  }
+  for (let i = 0; i < n; i++) {
+    for (const [p, isOuter] of [[outer(i), true], [inner(i), false]]) {
+      const matched = [0, 3, 6].includes(i);
+      s += `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${isOuter ? 7 : 6}" fill="${matched ? b : '#151a1e'}" stroke="${matched ? '#f8d4e8' : '#e7e5e4'}" stroke-width="1.8" opacity="0.96"/>`;
+    }
+  }
+  for (let k = 0; k < 3; k++) {
+    const x = 1110 + k * 34, y = 90 + k * 108;
+    s += `<path d="M ${x} ${y} l 24 -14 l 22 16 l -5 28 l -28 5 l -19 -18 Z" fill="none" stroke="${k % 2 ? b : a}" stroke-width="1" stroke-dasharray="3 5" opacity="${0.22 - k * 0.04}"/>`;
+  }
+  return s;
+};
+
 /* Fixed-seed cyclicity: Krylov frame meeting quartic and quintic rank loci. */
 art['cyclicity-loci-exponential-periods'] = (a, b) => {
   let s = '';
@@ -349,6 +419,7 @@ const palette = {
   'stocks-are-not-flows': ['#38bdf8', '#f59e0b'],
   'affine-diversification-fibres': ['#2dd4bf', '#fbbf24'],
   'txgraffiti-c3-resolution': ['#2dd4bf', '#f472b6'],
+  'bilateral-deficiency-regular-dim': ['#2dd4bf', '#f472b6'],
   'cyclicity-loci-exponential-periods': ['#38bdf8', '#fbbf24'],
   'certified-commitment-horizons': ['#2dd4bf', '#fbbf24'],
   'bordered-jacobian-foundations': ['#34d399', '#fbbf24'],
