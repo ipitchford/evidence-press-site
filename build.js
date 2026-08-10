@@ -1330,6 +1330,9 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
   for (const [from, to] of opts.sourceLinkReplacements || [])
     bodySource = bodySource.split(from).join(to);
   const bodyHtml = `${opts.programmeLayout ? sectionedMarkdown(bodySource, 'productivity') : markdown(bodySource)}${videoHtml}`;
+  const programmeNavHtml = opts.programmeNav && opts.programmeNav.length ? `<nav class="productivity-map" aria-label="Productivity programme sections">
+    ${opts.programmeNav.map(item => `<a href="${escAttr(item.url)}"><strong>${esc(item.label)}</strong><span>${esc(item.detail)}</span></a>`).join('')}
+  </nav>` : '';
   const companion = opts.companion ? companionParts(opts.companion) : { html: '', md: '' };
   const coverHtml = opts.art ? `<div class="cover"><img src="${opts.art}" alt="" loading="eager"></div>` : '';
   const headingHtml = `${opts.kicker ? `<p class="kicker">${esc(opts.kicker)}</p>` : ''}
@@ -1341,6 +1344,7 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
       <div>${opts.kicker ? `<p class="kicker">${esc(opts.kicker)}</p>` : ''}<h1 id="productivity-title">${esc(title)}</h1>${opts.standfirst ? `<p class="standfirst">${inline(opts.standfirst)}</p>` : ''}${opts.primaryAction ? `<p class="productivity-action"><a href="${escAttr(opts.primaryAction.url)}">${esc(opts.primaryAction.label)}</a></p>` : ''}</div>
       ${opts.evidenceBoundary ? `<aside class="productivity-boundary" aria-label="Current evidence boundary"><strong>Current evidence boundary</strong><p>${inline(opts.evidenceBoundary)}</p></aside>` : ''}
     </section>
+    ${programmeNavHtml}
     <div class="productivity-sections">${bodyHtml}</div>
   </div></article>` : opts.releaseLayout ? `<article class="release standalone-release"><div class="wrap">
     ${coverHtml}
@@ -1960,6 +1964,11 @@ simplePage('productivity/', 'Productivity Protocols', 'Bounded AI-agent workflow
   standfirst: 'Bounded agent workflows, staged evidence, and the catalogue\'s closest research links to operational productivity.',
   programmeLayout: true,
   primaryAction: { url: '/protocols/start/', label: 'Choose a first evidence stage →' },
+  programmeNav: [
+    { label: 'Research', detail: 'Exact logistics decisions', url: '#research-exact-logistics-decisions' },
+    { label: 'Evidence', detail: 'What has actually been measured', url: '#evidence-what-existing-tests-show' },
+    { label: 'Practice', detail: 'Bounded protocols and trials', url: '#practice-a-protocol-is-a-work-contract' }
+  ],
   evidenceBoundary: 'Existing live evaluations compare model outputs only. They found no clear agent-output gain. Human and company productivity remain unmeasured.'
 });
 simplePage('observatory/', 'Policy Identification Observatory', 'A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.', 'observatory.md', 'WebPage', {

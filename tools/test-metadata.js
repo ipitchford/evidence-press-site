@@ -328,6 +328,12 @@ check('Productivity highlights both logistics research releases',
   productivityHtml.includes('href="/releases/certified-commitment-horizons/"') &&
   productivityHtml.includes('href="/releases/certified-two-item-jrp/"'),
   'expected canonical links to both logistics releases');
+check('Productivity maps the research, evidence and practice layers',
+  productivityHtml.includes('class="productivity-map"') &&
+  productivityHtml.includes('href="#research-exact-logistics-decisions"') &&
+  productivityHtml.includes('href="#evidence-what-existing-tests-show"') &&
+  productivityHtml.includes('href="#practice-a-protocol-is-a-work-contract"'),
+  'expected an explicit three-layer programme map');
 check('Productivity logistics highlights retain the field-impact boundary',
   productivityHtml.includes('decision-relevant operations results, not productivity impact evidence'),
   'expected explicit separation between decision relevance and measured impact');
