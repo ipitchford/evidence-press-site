@@ -52,6 +52,9 @@ jobs:
       - name: Renderer regression tests
         run: node tools/test-render.js
 
+      - name: Operating-model contract and hostile controls
+        run: node tools/test-operating-model.js
+
       - name: Verify protocol source and regenerate ignored receipts
         run: |
           node protocols/tools/make-manifest.js

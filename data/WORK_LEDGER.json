@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "effectiveDate": "2026-08-10",
+  "baselineCommit": "6585348a0aa4c7a89ee0dafcaf29ca719cae56fd",
+  "policy": "prospective-only-no-legacy-backfill",
+  "status": "prospective-intake-ledger",
+  "claimCeiling": "This ledger records workflow observations and explicit missingness. It does not by itself identify a causal acceleration effect, validate research claims or measure policy or productivity impact.",
+  "requiredAtIntake": [
+    "attemptId",
+    "workId",
+    "registeredAt",
+    "aims",
+    "question",
+    "selectionBasis",
+    "taskClass",
+    "decisionObjectTarget",
+    "comparisonPlan"
+  ],
+  "workStatuses": [
+    "active",
+    "result-ready",
+    "release-candidate",
+    "published",
+    "stopped",
+    "abandoned",
+    "superseded"
+  ],
+  "measurementStatuses": [
+    "measured-complete",
+    "measured-partial",
+    "not-recorded"
+  ],
+  "cohorts": [
+    "prospective",
+    "left-censored-at-adoption"
+  ],
+  "resultClasses": [
+    "pending",
+    "positive",
+    "negative",
+    "partial",
+    "null",
+    "no-substantive-result"
+  ],
+  "attempts": [],
+  "updatePolicy": {
+    "cadence": "Create a record at intake, update it at each recorded milestone or status change, and close it when the work is published, stopped, abandoned or superseded.",
+    "rules": [
+      "Record every in-scope attempt at intake, not only work that later becomes a release.",
+      "Use null plus an explicit missingness reason when time, resource or cost data were not recorded; never reconstruct them from commit or publication timestamps.",
+      "Preserve stopped, abandoned and superseded attempts so the denominator and negative knowledge remain visible.",
+      "Keep workflow observations separate from research assurance and real-world impact evidence.",
+      "Append a dated revision when a published work record changes materially; do not silently rewrite its earlier status or measurements."
+    ]
+  },
+  "changeLog": [
+    {
+      "date": "2026-08-10",
+      "summary": "Created the prospective intake ledger with no reconstructed historical attempts."
+    }
+  ]
+}

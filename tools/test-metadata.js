@@ -3,7 +3,7 @@
 /*
  * Conformance and consistency tests for the built site.
  *
- * Two jobs:
+ * Three jobs:
  *   1. Validate dist/api/papers.json against the published dist/api/schema.json,
  *      using a small validator covering the subset of JSON Schema the site
  *      actually uses. A schema nobody checks is documentation, not a contract.
@@ -11,12 +11,16 @@
  *      Feed, RSS, sitemap, publication ledger and the files on disk — against
  *      each other. Disagreement between them is the failure mode that matters
  *      for a publication record, and it is invisible in any single file.
+ *   3. Validate the operating contract, method registry, abductive ledger and
+ *      prospective work ledger against their public schemas and require exact
+ *      source-to-public parity.
  *
  * Run after `node build.js`. Exit 0 = pass. No dependencies.
  */
 
 const fs = require('fs');
 const path = require('path');
+const { loadArtifacts, loadPaperMetadata } = require('./operating-model');
 
 const ROOT = path.join(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
@@ -40,6 +44,8 @@ if (!fs.existsSync(path.join(DIST, 'api', 'papers.json'))) {
 const read = rel => JSON.parse(fs.readFileSync(path.join(DIST, rel), 'utf8'));
 const papersDoc = read('api/papers.json');
 const schema = read('api/schema.json');
+const operatingArtifacts = loadArtifacts(ROOT);
+const sourcePapers = loadPaperMetadata(ROOT);
 
 /* ------------------------------------------------------- mini JSON Schema */
 /* Covers exactly the keywords the published schema uses. Anything unknown is
@@ -47,10 +53,11 @@ const schema = read('api/schema.json');
    constraint it does not understand. */
 const KNOWN = new Set(['$schema', '$id', 'title', 'description', 'type', 'required',
   'properties', 'additionalProperties', 'items', 'enum', 'const', 'pattern', 'format',
-  'minItems', 'minLength', 'minimum', '$ref', '$defs']);
+  'minItems', 'minLength', 'minimum', '$ref', '$defs', 'oneOf']);
 
 const FORMATS = {
   date: v => /^\d{4}-\d{2}-\d{2}$/.test(v) && !Number.isNaN(Date.parse(v + 'T12:00:00Z')),
+  'date-time': v => /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/.test(v) && !Number.isNaN(Date.parse(v)),
   uri: v => { try { new URL(v); return true; } catch { return false; } }
 };
 
@@ -66,6 +73,16 @@ function validate(value, node, root, pathStr, errors) {
   }
 
   if (node.$ref) return validate(value, resolveRef(node.$ref, root), root, pathStr, errors);
+
+  if (node.oneOf) {
+    const alternatives = node.oneOf.map((alternative, index) => {
+      const alternativeErrors = [];
+      validate(value, alternative, root, `${pathStr}<oneOf:${index}>`, alternativeErrors);
+      return alternativeErrors;
+    });
+    const matches = alternatives.filter(item => item.length === 0).length;
+    if (matches !== 1) errors.push(`${pathStr}: expected exactly one oneOf branch, matched ${matches}`);
+  }
 
   const types = node.type ? [].concat(node.type) : null;
   if (types) {
@@ -109,10 +126,89 @@ validate(papersDoc, schema, schema, 'papers.json', errors);
 check('catalogue validates against its own published JSON Schema',
   errors.length === 0, errors.slice(0, 12).join('\n  '));
 
+const refErrors = [];
+const visitedSchemaNodes = new Set();
+(function walkRefs(node, location) {
+  if (!node || typeof node !== 'object' || visitedSchemaNodes.has(node)) return;
+  visitedSchemaNodes.add(node);
+  if (typeof node.$ref === 'string') {
+    let target;
+    try { target = resolveRef(node.$ref, schema); } catch { target = undefined; }
+    if (!target) refErrors.push(`${location}: unresolved ${node.$ref}`);
+    else walkRefs(target, `${location} -> ${node.$ref}`);
+  }
+  for (const [key, value] of Object.entries(node)) {
+    if (key !== '$ref') walkRefs(value, `${location}.${key}`);
+  }
+})(schema, 'schema');
+check('every embedded public-schema reference resolves', refErrors.length === 0, refErrors.join('\n  '));
+
+const syntheticPaper = JSON.parse(JSON.stringify(papersDoc.papers[0]));
+syntheticPaper.slug = 'synthetic-prospective-schema-test';
+syntheticPaper.url = 'https://evidencepress.org/releases/synthetic-prospective-schema-test/';
+syntheticPaper.operatingModel = {
+  version: '1.0',
+  workId: 'ep-work:synthetic-prospective-schema-test',
+  attemptIds: ['ep-attempt:synthetic-prospective-schema-test'],
+  aims: ['science'],
+  artifactRoles: ['method-demonstration'],
+  lineageId: null,
+  accelerationPrimitives: ['certificate-first'],
+  decisionObject: { type: 'certificate', description: 'Synthetic schema fixture.', scope: 'Public-schema closure test only.' },
+  bottleneckTargeted: ['assurance'],
+  semanticBridge: { state: 'explicit', description: 'Synthetic source-to-schema mapping.', remainingRisks: ['No research claim is tested.'] },
+  humanJudgmentGates: ['Decide whether the fixture covers the authored schema.'],
+  parentLinks: [],
+  assuranceTarget: { dimensions: ['semanticValidation'], nextAction: 'Run the schema validator.', claimCeiling: 'Structural fixture only.' },
+  impactClaims: [{
+    id: 'science-no-impact', aim: 'science', outcome: 'Research-cycle acceleration', setting: 'Synthetic fixture',
+    status: 'NO_IMPACT_EVIDENCE', designClass: 'none', comparator: 'Not measured.', estimand: 'Not estimated.',
+    evidenceRefs: [], registeredDesignRef: null, independentAssessment: null
+  }]
+};
+const syntheticErrors = [];
+validate(syntheticPaper, schema.$defs.paper, schema, 'syntheticPaper', syntheticErrors);
+check('synthetic prospective paper validates through the generated public schema',
+  syntheticErrors.length === 0, syntheticErrors.slice(0, 12).join('\n  '));
+
+/* ---------------------------------------- operating contracts and parity */
+const governance = [
+  ['operating-model.json', 'operating-model.schema.json', operatingArtifacts.contract, operatingArtifacts.schemas.contract],
+  ['method-registry.json', 'method-registry.schema.json', operatingArtifacts.registry, operatingArtifacts.schemas.registry],
+  ['ibe-ledger.json', 'ibe-ledger.schema.json', operatingArtifacts.ledger, operatingArtifacts.schemas.ledger],
+  ['work-ledger.json', 'work-ledger.schema.json', operatingArtifacts.workLedger, operatingArtifacts.schemas.workLedger]
+];
+const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+for (const [dataName, schemaName, sourceData, sourceSchema] of governance) {
+  const publicData = read(`api/${dataName}`);
+  const publicSchema = read(`api/schemas/${schemaName}`);
+  const governanceErrors = [];
+  validate(publicData, publicSchema, publicSchema, dataName, governanceErrors);
+  check(`${dataName} validates against its published schema`, governanceErrors.length === 0,
+    governanceErrors.slice(0, 12).join('\n  '));
+  check(`${dataName} is an exact source-to-public copy`, sameJson(publicData, sourceData));
+  check(`${schemaName} is an exact source-to-public copy`, sameJson(publicSchema, sourceSchema));
+  check(`v1/${dataName} matches the unversioned alias`, sameJson(read(`api/v1/${dataName}`), publicData));
+  check(`v1/schemas/${schemaName} matches the unversioned alias`,
+    sameJson(read(`api/v1/schemas/${schemaName}`), publicSchema));
+}
+
+const releaseOperatingSchema = read('api/schemas/release-operating-model.schema.json');
+check('prospective release schema is an exact source-to-public copy',
+  sameJson(releaseOperatingSchema, operatingArtifacts.schemas.release));
+check('v1 prospective release schema matches the unversioned alias',
+  sameJson(read('api/v1/schemas/release-operating-model.schema.json'), releaseOperatingSchema));
+check('public v1 keeps operatingModel optional for legacy records',
+  schema.$defs.paper.properties.operatingModel && !schema.$defs.paper.required.includes('operatingModel'));
+check('additive papers schema version is 1.3', papersDoc.schemaVersion === '1.3');
+
 /* ------------------------------------------------ cross-surface agreement */
 const releasesOnDisk = fs.readdirSync(path.join(DIST, 'releases'))
   .filter(d => fs.existsSync(path.join(DIST, 'releases', d, 'index.html'))).sort();
 const apiSlugs = papersDoc.papers.map(p => p.slug).sort();
+const deterministicPaperOrder = [...papersDoc.papers]
+  .sort((a, b) => b.datePublished.localeCompare(a.datePublished) || a.slug.localeCompare(b.slug))
+  .map(p => p.slug);
 const feed = read('feed.json');
 const feedSlugs = feed.items.map(i => (String(i.url).match(/\/releases\/([^/]+)\//) || [])[1]).filter(Boolean).sort();
 const sitemap = fs.readFileSync(path.join(DIST, 'sitemap.xml'), 'utf8');
@@ -121,10 +217,13 @@ const rss = fs.readFileSync(path.join(DIST, 'feed.xml'), 'utf8');
 const rssSlugs = [...rss.matchAll(/\/releases\/([^/<]+)\//g)].map(m => m[1]);
 const ledger = JSON.parse(fs.readFileSync(path.join(ROOT, 'PUBLISHED.json'), 'utf8'));
 const ledgerSlugs = ledger.releases.map(r => r.slug).sort();
+const assignedSlugs = Object.keys(operatingArtifacts.registry.releaseAssignments).sort();
 
 const same = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
 check('declared count matches the number of records', papersDoc.count === papersDoc.papers.length,
   `count=${papersDoc.count} records=${papersDoc.papers.length}`);
+check('catalogue ordering is deterministic for equal publication dates',
+  same(papersDoc.papers.map(p => p.slug), deterministicPaperOrder));
 check('catalogue matches the release pages on disk', same(apiSlugs, releasesOnDisk),
   `api=${apiSlugs.length} disk=${releasesOnDisk.length}`);
 check('JSON Feed matches the catalogue', same(feedSlugs, apiSlugs),
@@ -133,6 +232,26 @@ check('sitemap matches the catalogue', same([...new Set(sitemapSlugs)].sort(), a
 check('RSS lists every release', apiSlugs.every(s => rssSlugs.includes(s)));
 check('every ledger release is still published', ledgerSlugs.every(s => releasesOnDisk.includes(s)),
   `missing: ${ledgerSlugs.filter(s => !releasesOnDisk.includes(s)).join(', ')}`);
+check('method registry assigns every release exactly once by slug', same(assignedSlugs, apiSlugs),
+  `assigned=${assignedSlugs.length} api=${apiSlugs.length}`);
+
+const sourceBySlug = new Map(sourcePapers.map(paper => [paper.slug, paper]));
+const operatingDrift = [];
+for (const paper of papersDoc.papers) {
+  const authored = sourceBySlug.get(paper.slug);
+  if (authored && authored.operatingModel) {
+    if (!sameJson(paper.operatingModel, authored.operatingModel)) operatingDrift.push(`${paper.slug}: source and API differ`);
+  } else if (Object.prototype.hasOwnProperty.call(paper, 'operatingModel')) {
+    operatingDrift.push(`${paper.slug}: legacy API record invents operatingModel metadata`);
+  }
+}
+check('per-release operating metadata is exact and never invented for legacy records',
+  operatingDrift.length === 0, operatingDrift.join('\n  '));
+
+const operatingPageFiles = ['operating-model/index.html', 'operating-model/index.md', 'operating-model/index.json'];
+check('operating doctrine ships human, Markdown and machine representations',
+  operatingPageFiles.every(rel => fs.existsSync(path.join(DIST, rel))),
+  operatingPageFiles.filter(rel => !fs.existsSync(path.join(DIST, rel))).join(', '));
 
 /* --------------------------------------- per-release representation set */
 const REPRESENTATIONS = ['paper.json', 'index.md', 'cite.bib', 'ro-crate-metadata.json', 'linkset.json'];
@@ -183,8 +302,9 @@ check('no operating-system metadata files in the published output',
 
 /* -------------------------------------------------- versioned API parity */
 const v1 = read('api/v1/papers.json');
-check('versioned API serves the same releases as the unversioned alias',
-  same(v1.papers.map(p => p.slug).sort(), apiSlugs));
+check('versioned papers API exactly matches the unversioned alias', sameJson(v1, papersDoc));
+check('versioned papers schema exactly matches the unversioned alias',
+  sameJson(read('api/v1/schema.json'), schema));
 check('build identity is published', (() => {
   const b = read('api/build.json');
   return !!(b.schemaVersion && b.softwareVersion);

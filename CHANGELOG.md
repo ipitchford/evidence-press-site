@@ -4,7 +4,34 @@ Notable changes to the Evidence Press publishing software. Versions follow
 semantic versioning. Research releases have their own versions and DOIs and
 are not covered here.
 
-## Unreleased
+## 1.2.0 — unreleased candidate
+
+- Added a prospective Evidence Press operating contract with four separate
+  clocks (discovery, assurance, publication and translation), a frozen 21-release legacy
+  baseline and an explicit claim ceiling. Historical process data are not
+  reconstructed.
+- Added a 13-method reusable-method registry covering all 21 releases, with
+  broad method clusters kept separate from two evidence-backed lineages, and a
+  live inference-to-the-best-explanation ledger with eight observations and
+  eight hypotheses, each retaining rivals, operational predictions, status
+  entry criteria and potential falsifiers. Registry inclusion does not
+  establish validity or acceleration.
+- Added a prospective work ledger that registers every attempt at intake,
+  including stopped and unreleased work, with explicit missingness, clocks,
+  resources, comparisons and assurance endpoints. No historical attempt data
+  were reconstructed.
+- Future releases now fail the build unless they carry a complete
+  `operatingModel` record: work and attempt identities, declared aims, artifact
+  roles, decision object, reusable methods, targeted clocks, semantic bridge, human judgement
+  gates, structured parent handoffs, assurance target and aim-scoped impact
+  claims. Unsupported impact promotions, self-authored promotion reviews and
+  dangling references are rejected by hostile tests.
+- Published the doctrine at `/operating-model/` and the source-exact contracts,
+  registries and schemas under `/api/` and `/api/v1/`. The new per-release field
+  is additive and optional in public API v1, preserving legacy compatibility.
+- Extended the guarded build, CI, machine-readable index and live preservation
+  checks so these institutional records cannot silently disappear or be
+  rewritten in place after publication.
 
 - Visitors arriving on the legacy address or www are now moved to the
   canonical domain with their path intact, via a client-side redirect. A

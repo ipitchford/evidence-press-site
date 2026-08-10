@@ -7,12 +7,20 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const {
+  loadArtifacts: loadOperatingArtifacts,
+  validateAll: validateOperatingModel
+} = require('./tools/operating-model');
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
+const OPERATING_ARTIFACTS = loadOperatingArtifacts(ROOT);
+const METHOD_BY_ID = new Map(OPERATING_ARTIFACTS.registry.methods.map(method => [method.id, method]));
+const IBE_BY_ID = new Map(OPERATING_ARTIFACTS.ledger.hypotheses.map(hypothesis => [hypothesis.id, hypothesis]));
+const WORK_ATTEMPT_BY_ID = new Map(OPERATING_ARTIFACTS.workLedger.attempts.map(attempt => [attempt.attemptId, attempt]));
 const BASE = CONFIG.baseUrl.replace(/\/$/, '');
-const SCHEMA_VERSION = '1.2';
+const SCHEMA_VERSION = '1.3';
 /* Build identity. The timestamp comes from the commit, never from the clock, so
    the same source always produces byte-identical output and a third party can
    rebuild a tag and compare. */
@@ -269,7 +277,7 @@ const papers = fs.readdirSync(papersDir)
     meta.og = fs.existsSync(path.join(ROOT, 'assets', 'og', meta.slug + '.png')) ? `/assets/og/${meta.slug}.png` : null;
     return { ...meta, body };
   })
-  .sort((a, b) => (a.datePublished < b.datePublished ? 1 : -1));
+  .sort((a, b) => b.datePublished.localeCompare(a.datePublished) || a.slug.localeCompare(b.slug));
 
 const urlOf = p => `${BASE}/releases/${p.slug}/`;
 
@@ -464,10 +472,24 @@ function roCrate(p) {
           ...(p.pdfUrl ? [{ '@id': p.pdfUrl }] : []),
           ...(api.audioUrl ? [{ '@id': api.audioUrl }] : [])
         ],
-        mentions: [{ '@id': p.repoUrl }, { '@id': p.zenodoUrl }],
+        mentions: [
+          { '@id': p.repoUrl }, { '@id': p.zenodoUrl },
+          ...(p.operatingModel ? [
+            { '@id': `${BASE}/api/method-registry.json` },
+            { '@id': `${BASE}/api/ibe-ledger.json` },
+            { '@id': `${BASE}/api/work-ledger.json` }
+          ] : [])
+        ],
         /* The assurance state travels with the package: a consumer must not
            have to infer verification status from the prose. */
-        assessment: api.assurance.map(a => `${a.dimension}: ${a.state}`)
+        assessment: [
+          ...api.assurance.map(a => `${a.dimension}: ${a.state}`),
+          ...(api.operatingModel ? [
+            `workId: ${api.operatingModel.workId}`,
+            ...api.operatingModel.impactClaims.map(claim => `impact/${claim.aim}: ${claim.status}`),
+            `semanticBridge: ${api.operatingModel.semanticBridge.state}`
+          ] : [])
+        ]
       },
       ...p.authors.map(a => ({
         '@id': `#author-${a.replace(/[^A-Za-z0-9]+/g, '-').toLowerCase()}`,
@@ -480,7 +502,12 @@ function roCrate(p) {
       ...(p.pdfUrl ? [{ '@id': p.pdfUrl, '@type': 'File', encodingFormat: 'application/pdf', name: 'Manuscript PDF' }] : []),
       ...(paperApi(p).audioUrl ? [{ '@id': paperApi(p).audioUrl, '@type': 'File', encodingFormat: 'audio/mpeg', name: 'Narrated briefing' }] : []),
       { '@id': p.repoUrl, '@type': 'SoftwareSourceCode', name: 'Evidence repository' },
-      { '@id': p.zenodoUrl, '@type': 'Dataset', name: 'Archived deposit' }
+      { '@id': p.zenodoUrl, '@type': 'Dataset', name: 'Archived deposit' },
+      ...(p.operatingModel ? [
+        { '@id': `${BASE}/api/method-registry.json`, '@type': 'File', encodingFormat: 'application/json', name: 'Evidence Press method registry' },
+        { '@id': `${BASE}/api/ibe-ledger.json`, '@type': 'File', encodingFormat: 'application/json', name: 'Evidence Press inference-to-the-best-explanation ledger' },
+        { '@id': `${BASE}/api/work-ledger.json`, '@type': 'File', encodingFormat: 'application/json', name: 'Evidence Press prospective work ledger' }
+      ] : [])
     ]
   };
 }
@@ -520,6 +547,7 @@ function linkset(p) {
 
 
 validatePapers(papers);
+validateOperatingModel({ root: ROOT, papers, artifacts: OPERATING_ARTIFACTS });
 
 
 /* ---------------------------------------------------------------- bibtex */
@@ -571,6 +599,7 @@ ${JSON.stringify(jsonld, null, 1)}
     <nav>
       <a href="/">Releases</a>
       <a href="/about/">About</a>
+      <a href="/operating-model/">Operating model</a>
       <a href="/observatory/">Observatory</a>
       <a href="/productivity/">Productivity</a>
       <a href="/ai/">For AI agents</a>
@@ -585,7 +614,7 @@ const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
     <p>${esc(CONFIG.siteName)} publishes plain-language and specialist briefings on new research released with complete, replayable evidence. Nothing here has been peer reviewed; every page says exactly what has and has not been checked.</p>
-    <p>Site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/schema.json">schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">RSS</a> · <a href="/feed.json">JSON Feed</a> · <a href="/sitemap.xml">sitemap</a></p>
+    <p>Site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">RSS</a> · <a href="/feed.json">JSON Feed</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
 </footer>
@@ -630,6 +659,25 @@ function articleJsonld(p) {
       keywords: p.keywords.join(', '),
       inLanguage: CONFIG.language,
       creativeWorkStatus: 'Unrefereed — internally replayed evidence; not peer reviewed, not independently reproduced, not formally verified',
+      ...(p.operatingModel ? {
+        additionalProperty: [
+          { '@type': 'PropertyValue', propertyID: 'Evidence Press work ID', value: p.operatingModel.workId },
+          { '@type': 'PropertyValue', propertyID: 'Evidence Press attempt IDs', value: p.operatingModel.attemptIds.join(', ') },
+          { '@type': 'PropertyValue', propertyID: 'Intended acceleration aims', value: p.operatingModel.aims.join(', ') },
+          { '@type': 'PropertyValue', propertyID: 'Artifact roles', value: p.operatingModel.artifactRoles.join(', ') },
+          { '@type': 'PropertyValue', propertyID: 'Decision object', value: `${p.operatingModel.decisionObject.type}: ${p.operatingModel.decisionObject.description}` },
+          { '@type': 'PropertyValue', propertyID: 'Targeted clocks', value: p.operatingModel.bottleneckTargeted.join(', ') },
+          ...p.operatingModel.impactClaims.map(claim => ({
+            '@type': 'PropertyValue', propertyID: `Impact evidence status: ${claim.aim}`,
+            value: `${claim.status}; ${claim.outcome}; ${claim.setting}`
+          }))
+        ],
+        subjectOf: [
+          { '@type': 'DataDownload', name: 'Evidence Press method registry', contentUrl: `${BASE}/api/method-registry.json`, encodingFormat: 'application/json' },
+          { '@type': 'DataDownload', name: 'Evidence Press IBE ledger', contentUrl: `${BASE}/api/ibe-ledger.json`, encodingFormat: 'application/json' },
+          { '@type': 'DataDownload', name: 'Evidence Press work ledger', contentUrl: `${BASE}/api/work-ledger.json`, encodingFormat: 'application/json' }
+        ]
+      } : {}),
       about: p.problem ? [{ '@type': 'Thing', name: p.problem.name, ...(p.problem.url ? { sameAs: p.problem.url } : {}) }] : undefined,
       isBasedOn: { '@id': `${url}#code` },
       discussionUrl: p.repoUrl + '/issues',
@@ -765,6 +813,97 @@ function signposting(p) {
   ].join('\n') + '\n';
 }
 
+/* Prospective operating metadata is rendered from the same source object on
+   every release surface. Legacy releases deliberately omit it: reconstructing
+   old process clocks or judgement gates from publication artefacts would turn
+   missing observations into invented data. */
+function operatingModelHtml(p) {
+  const record = p.operatingModel;
+  if (!record) return '';
+  const methods = record.accelerationPrimitives.map(id => {
+    const method = METHOD_BY_ID.get(id);
+    return method ? `${esc(method.name)} (<code>${esc(id)}</code>)` : `<code>${esc(id)}</code>`;
+  }).join('; ');
+  const hypotheses = (record.ibeHypotheses || []).map(id => {
+    const hypothesis = IBE_BY_ID.get(id);
+    return hypothesis ? `${esc(hypothesis.hypothesis)} (<code>${esc(id)}</code>)` : `<code>${esc(id)}</code>`;
+  }).join('; ');
+  const attempts = record.attemptIds.map(id => {
+    const attempt = WORK_ATTEMPT_BY_ID.get(id);
+    if (!attempt) return `<li><code>${esc(id)}</code> — unresolved (the build validator should reject this record)</li>`;
+    const measurement = attempt.measurement;
+    const resources = measurement.status === 'not-recorded'
+      ? `measurement not recorded: ${esc(measurement.missingnessReason)}`
+      : `${esc(measurement.status)}; active human minutes ${esc(measurement.activeHumanMinutes ?? 'missing')}; compute minutes ${esc(measurement.computeMinutes ?? 'missing')}; rework minutes ${esc(measurement.reworkMinutes ?? 'missing')}`;
+    return `<li><code>${esc(id)}</code> — ${esc(attempt.status)} / ${esc(attempt.resultClass)}; ${resources}; assurance endpoint ${esc(attempt.assuranceEndpoint.status)}</li>`;
+  }).join('');
+  const impactClaims = record.impactClaims.map(claim => `<li><strong>${esc(claim.aim)}</strong>: <code>${esc(claim.status)}</code> — ${esc(claim.outcome)} in ${esc(claim.setting)}. Design: ${esc(claim.designClass)}; comparator: ${esc(claim.comparator)}; estimand: ${esc(claim.estimand)}.${claim.evidenceRefs.length ? ` Evidence: ${claim.evidenceRefs.map(ref => `<a href="${esc(ref)}" rel="noopener">record</a>`).join(', ')}.` : ' No real-world effect evidence is asserted.'}</li>`).join('');
+  const parents = record.parentLinks.map(parent => {
+    const target = parent.workId || parent.legacyReleaseSlug || parent.externalUrl;
+    return `<li>${esc(parent.relation)} <code>${esc(target)}</code> — inherited claim: ${esc(parent.inheritedClaim)}; inherited ceiling: ${esc(parent.inheritedAssuranceCeiling)}</li>`;
+  }).join('');
+  return `<section class="operating-model"><h2 id="research-process-and-reusable-methods">Research process and reusable methods</h2>
+    <p class="note">Prospective process metadata under the <a href="/operating-model/">Evidence Press operating model</a>. It records the intended handoff and claim boundary; it is not evidence that the method accelerated this work.</p>
+    <dl>
+      <dt>Work ID</dt><dd><code>${esc(record.workId)}</code></dd>
+      <dt>Attempt receipts</dt><dd><ul>${attempts}</ul><a href="/api/work-ledger.json">Prospective work ledger</a></dd>
+      <dt>Intended aims</dt><dd>${record.aims.map(esc).join(', ')}</dd>
+      <dt>Artifact roles</dt><dd>${record.artifactRoles.map(esc).join(', ')}</dd>
+      <dt>Decision object</dt><dd>${esc(record.decisionObject.type)} — ${esc(record.decisionObject.description)} <span class="note">Scope: ${esc(record.decisionObject.scope)}</span></dd>
+      <dt>Reusable methods</dt><dd>${methods} · <a href="/api/method-registry.json">registry</a></dd>
+      <dt>Targeted clocks</dt><dd>${record.bottleneckTargeted.map(esc).join(', ')}</dd>
+      <dt>Semantic bridge</dt><dd>${esc(record.semanticBridge.state)} — ${esc(record.semanticBridge.description)}${record.semanticBridge.remainingRisks.length ? ` Remaining risks: ${record.semanticBridge.remainingRisks.map(esc).join('; ')}.` : ''}</dd>
+      <dt>Human judgement gates</dt><dd><ul>${record.humanJudgmentGates.map(gate => `<li>${esc(gate)}</li>`).join('')}</ul></dd>
+      <dt>Next assurance action</dt><dd>${esc(record.assuranceTarget.nextAction)} Claim ceiling: ${esc(record.assuranceTarget.claimCeiling)}</dd>
+      <dt>Aim-scoped impact evidence</dt><dd><ul>${impactClaims}</ul></dd>
+      ${parents ? `<dt>Parent handoffs</dt><dd><ul>${parents}</ul></dd>` : ''}
+      ${hypotheses ? `<dt>Defeasible explanations</dt><dd>${hypotheses} · <a href="/api/ibe-ledger.json">IBE ledger</a></dd>` : ''}
+    </dl>
+  </section>`;
+}
+
+function operatingModelMarkdown(p) {
+  const record = p.operatingModel;
+  if (!record) return '';
+  const methods = record.accelerationPrimitives.map(id => `${METHOD_BY_ID.get(id)?.name || id} (${id})`).join('; ');
+  const hypotheses = (record.ibeHypotheses || []).map(id => `${IBE_BY_ID.get(id)?.hypothesis || id} (${id})`).join('; ');
+  const attempts = record.attemptIds.map(id => {
+    const attempt = WORK_ATTEMPT_BY_ID.get(id);
+    if (!attempt) return `${id}: unresolved`;
+    const measurement = attempt.measurement.status === 'not-recorded'
+      ? `measurement not recorded (${attempt.measurement.missingnessReason})`
+      : `${attempt.measurement.status}; active human minutes ${attempt.measurement.activeHumanMinutes ?? 'missing'}; compute minutes ${attempt.measurement.computeMinutes ?? 'missing'}; rework minutes ${attempt.measurement.reworkMinutes ?? 'missing'}`;
+    return `${id}: ${attempt.status} / ${attempt.resultClass}; ${measurement}; assurance endpoint ${attempt.assuranceEndpoint.status}`;
+  }).join('; ');
+  const impactClaims = record.impactClaims.map(claim =>
+    `${claim.aim}: ${claim.status} — ${claim.outcome} in ${claim.setting}; design ${claim.designClass}; comparator ${claim.comparator}; estimand ${claim.estimand}${claim.evidenceRefs.length ? `; evidence ${claim.evidenceRefs.join(', ')}` : '; no real-world effect evidence asserted'}`
+  ).join('\n  - ');
+  const parents = record.parentLinks.map(parent => {
+    const target = parent.workId || parent.legacyReleaseSlug || parent.externalUrl;
+    return `${parent.relation} ${target}; inherited claim: ${parent.inheritedClaim}; inherited ceiling: ${parent.inheritedAssuranceCeiling}`;
+  }).join('; ');
+  return `## Research process and reusable methods
+
+This is prospective process metadata. It records the intended handoff and claim boundary; it is not evidence that the method accelerated this work.
+
+- Work ID: ${record.workId}
+- Attempt receipts: ${attempts}. Work ledger: ${BASE}/api/work-ledger.json
+- Intended aims: ${record.aims.join(', ')}
+- Artifact roles: ${record.artifactRoles.join(', ')}
+- Decision object: ${record.decisionObject.type} — ${record.decisionObject.description} Scope: ${record.decisionObject.scope}
+- Reusable methods: ${methods}. Registry: ${BASE}/api/method-registry.json
+- Targeted clocks: ${record.bottleneckTargeted.join(', ')}
+- Semantic bridge: ${record.semanticBridge.state} — ${record.semanticBridge.description}${record.semanticBridge.remainingRisks.length ? ` Remaining risks: ${record.semanticBridge.remainingRisks.join('; ')}.` : ''}
+- Human judgement gates: ${record.humanJudgmentGates.join('; ')}
+- Next assurance action: ${record.assuranceTarget.nextAction}
+- Claim ceiling: ${record.assuranceTarget.claimCeiling}
+- Aim-scoped impact evidence:
+  - ${impactClaims}
+${parents ? `- Parent handoffs: ${parents}\n` : ''}
+${hypotheses ? `- Defeasible explanations: ${hypotheses}. IBE ledger: ${BASE}/api/ibe-ledger.json\n` : ''}
+`;
+}
+
 /* --------------------------------------------------------- paper pages */
 function paperPage(p) {
   const url = urlOf(p);
@@ -832,6 +971,8 @@ ${media ? `<section class="media-section"><h2 id="media">Media</h2>${media}</sec
         <p class="note">Also available in <a href="${url}paper.json">machine-readable form</a> for research agents and follow-up projects.</p>
         <ol>${open}</ol></section>` : ''}
 
+        ${operatingModelHtml(p)}
+
         <section class="verify"><h2 id="verification-status">Verification status</h2>
         <p>${inline(p.statusDetail)}</p></section>
 
@@ -898,6 +1039,7 @@ ${p.body}
 
 ${(p.openProblems || []).map(o => `- ${o}`).join('\n')}
 
+${operatingModelMarkdown(p)}
 ## Verification status
 
 ${p.statusDetail}
@@ -953,7 +1095,8 @@ function paperApi(p) {
     reviews: publicReviews,
     evidencePackage: p.evidence,
     openProblems: p.openProblems || [],
-    relatedWorks: p.relatedWorks || []
+    relatedWorks: p.relatedWorks || [],
+    ...(p.operatingModel ? { operatingModel: p.operatingModel } : {})
   };
 }
 
@@ -1176,7 +1319,16 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
       ${opts.sidebarStatus ? `<dt>Status</dt><dd>${esc(opts.sidebarStatus)}</dd>` : ''}
     </dl>
   </aside>` : '';
-  const bodySource = fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8');
+  const sourceRel = opts.sourcePath || path.join('pages', mdFile);
+  const sourcePath = path.resolve(ROOT, sourceRel);
+  if (sourcePath !== ROOT && !sourcePath.startsWith(ROOT + path.sep))
+    throw new Error(`refusing to read page source outside repository: ${sourceRel}`);
+  const sourceText = fs.readFileSync(sourcePath, 'utf8');
+  let bodySource = opts.sourceIncludesTitle
+    ? sourceText.replace(/^#\s+.*(?:\r?\n)+/, '')
+    : sourceText;
+  for (const [from, to] of opts.sourceLinkReplacements || [])
+    bodySource = bodySource.split(from).join(to);
   const bodyHtml = `${opts.programmeLayout ? sectionedMarkdown(bodySource, 'productivity') : markdown(bodySource)}${videoHtml}`;
   const companion = opts.companion ? companionParts(opts.companion) : { html: '', md: '' };
   const coverHtml = opts.art ? `<div class="cover"><img src="${opts.art}" alt="" loading="eager"></div>` : '';
@@ -1217,7 +1369,7 @@ ${foot}`;
     ? `## Video overview\n\n- YouTube: ${opts.video.url}\n- Embedded player: ${url}#media\n\n`
     : '';
   write(rel + 'index.md', `---\ntitle: "${title.replace(/"/g, '\\"')}"\nurl: ${url}\nrepository: ${opts.repository || ''}\nrelease: ${opts.release || ''}\ndoi: ${opts.doi || ''}\nlicense: CC0-1.0\nstatus: ${opts.status || ''}\n---\n\n# ${title}\n\n${
-    opts.standfirst ? opts.standfirst + '\n\n' : ''}${audioMarkdown}${videoMarkdown}${resourceMarkdown}${companion.md}${fs.readFileSync(path.join(ROOT, 'pages', mdFile), 'utf8')}`);
+    opts.standfirst ? opts.standfirst + '\n\n' : ''}${audioMarkdown}${videoMarkdown}${resourceMarkdown}${companion.md}${bodySource}`);
   if (opts.machineRecord) write(rel + 'index.json', JSON.stringify(opts.machineRecord, null, 2) + '\n');
 }
 
@@ -1260,7 +1412,7 @@ ${items}
 function sitemap() {
   const urls = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-08' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-08' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished }))
   ];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
@@ -1290,17 +1442,22 @@ function llms() {
   const lines = [
     `# ${CONFIG.siteName}`, '',
     `> ${CONFIG.tagline}. Every release describes an unrefereed research result with an open, replayable evidence package (code, data, exact certificates, pinned environments, SHA-256 manifests) archived with a DOI. Nothing on this site is peer reviewed; each page states exactly what has and has not been verified, and lists open follow-up problems in machine-readable form.`, '',
-    `Key endpoints: full JSON index at /api/papers.json (JSON Schema at /api/schema.json); per-release JSON at /releases/<slug>/paper.json; per-release Markdown at /releases/<slug>/index.md; per-release BibTeX at /releases/<slug>/cite.bib; RSS at /feed.xml; JSON Feed at /feed.json. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
+    `Key endpoints: full JSON index at /api/papers.json (JSON Schema at /api/schema.json); operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-release Markdown at /releases/<slug>/index.md; per-release BibTeX at /releases/<slug>/cite.bib; RSS at /feed.xml; JSON Feed at /feed.json. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
     '## Releases', '',
     ...papers.map(p => `- [${p.shortTitle}](${urlOf(p)}): ${p.oneLine} (PDF: ${p.pdfUrl || 'n/a'}; DOI: https://doi.org/${p.doi}; code: ${p.repoUrl}; status: unrefereed)`),
     '',
     '## Machine-readable', '',
     `- [papers.json](${BASE}/api/papers.json): full structured index — titles, DOIs, PDF links, verification status, provenance, key results, keywords, media, and open follow-up problems for every release`,
     `- [schema.json](${BASE}/api/schema.json): JSON Schema for the index`,
+    `- [operating-model.json](${BASE}/api/operating-model.json): versioned institutional contract and frozen legacy boundary`,
+    `- [method-registry.json](${BASE}/api/method-registry.json): reusable methods, failure modes, broad method clusters, evidence-backed lineages and release assignments; inclusion is not validation`,
+    `- [ibe-ledger.json](${BASE}/api/ibe-ledger.json): rival explanations, predictions and potential falsifiers for the acceleration hypotheses`,
+    `- [work-ledger.json](${BASE}/api/work-ledger.json): prospective attempts including stopped and unreleased work, explicit missingness, resources, clocks, comparators and assurance endpoints`,
     `- [llms-full.txt](${BASE}/llms-full.txt): complete text of every release in one Markdown file`,
     '',
     '## About', '',
-    `- [About](${BASE}/about/): what these releases are, the verification ladder, and how to independently verify or refute one`,
+    `- [About](${BASE}/about/): what these releases are, the assurance matrix, and how to independently verify or refute one`,
+    `- [Operating model](${BASE}/operating-model/): the prospective doctrine for accelerating checkable work, stopping non-identified work, and publishing reusable handoffs (Markdown: ${BASE}/operating-model/index.md; JSON: ${BASE}/operating-model/index.json)`,
     `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; video: ${OBSERVATORY.video.url}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
     `- [The Case for Assurance Infrastructure](${BASE}/observatory/assurance/): why verification, not generation, binds government use of AI agents — four quantitative bounds, verification economics, research avenues, and sixteen ranked projects (Markdown: ${BASE}/observatory/assurance/index.md)`,
     `- [Productivity Protocols](${BASE}/productivity/): bounded, downloadable workflows for using AI agents, each with separate protocol-assurance and work-evidence status; human and company impact is not yet measured. Registry: ${BASE}/protocols/ (machine-readable index: ${BASE}/protocols/api/protocols.json)`,
@@ -1316,7 +1473,8 @@ function llms() {
       `- Status: unrefereed (internally replayed; not peer reviewed, not independently reproduced, not formally verified)`, '',
       p.body, '',
       `## Open directions (machine-readable copy at ${urlOf(p)}paper.json)`, '',
-      ...(p.openProblems || []).map(o => `- ${o}`), ''
+      ...(p.openProblems || []).map(o => `- ${o}`), '',
+      ...(p.operatingModel ? [operatingModelMarkdown(p).trim(), ''] : [])
     ]),
     '---', '', `# ${OBSERVATORY.title}`, '',
     `- URL: ${BASE}/observatory/`,
@@ -1328,7 +1486,14 @@ function llms() {
     `- Transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}`,
     `- Status: ${OBSERVATORY.status}`,
     `- Included case terminal status: ${OBSERVATORY.includedCase.terminalStatus}; truth certified: ${OBSERVATORY.includedCase.truthCertified}`, '',
-    OBSERVATORY_BODY, ''
+    OBSERVATORY_BODY, '',
+    '---', '', '# Evidence Press operating model', '',
+    `- URL: ${BASE}/operating-model/`,
+    `- Machine contract: ${BASE}/api/operating-model.json`,
+    `- Method registry: ${BASE}/api/method-registry.json`,
+    `- IBE ledger: ${BASE}/api/ibe-ledger.json`,
+    `- Work ledger: ${BASE}/api/work-ledger.json`, '',
+    fs.readFileSync(path.join(ROOT, OPERATING_ARTIFACTS.contract.doctrine), 'utf8').replace(/^#\s+.*(?:\r?\n)+/, ''), ''
   ];
   write('llms-full.txt', full.join('\n'));
 }
@@ -1341,8 +1506,11 @@ function apiStability() {
     currentMajor: 'v1',
     versionedBase: `${BASE}/api/v1/`,
     unversionedAliases: {
-      note: 'The unversioned paths are the original published URLs and are kept indefinitely; they currently serve the same content as v1.',
-      paths: [`${BASE}/api/papers.json`, `${BASE}/api/schema.json`]
+      note: 'Unversioned paths are stable aliases kept indefinitely; they currently serve the same content as v1.',
+      paths: [
+        `${BASE}/api/papers.json`, `${BASE}/api/schema.json`,
+        `${BASE}/api/operating-model.json`, `${BASE}/api/method-registry.json`, `${BASE}/api/ibe-ledger.json`, `${BASE}/api/work-ledger.json`
+      ]
     },
     guarantees: [
       'Within a major version, fields are added but never removed or retyped.',
@@ -1352,7 +1520,7 @@ function apiStability() {
     ],
     fieldStability: {
       stable: ['slug', 'title', 'url', 'doi', 'doiUrl', 'datePublished', 'version', 'authors', 'license', 'status', 'keywords', 'verification', 'zenodoUrl', 'repoUrl'],
-      extensible: ['assurance', 'media', 'provenance', 'reviews', 'relatedWorks', 'openProblems', 'keyResults'],
+      extensible: ['assurance', 'media', 'provenance', 'reviews', 'relatedWorks', 'openProblems', 'keyResults', 'operatingModel'],
       experimental: ['assurance[].question', 'assurance[].evidenceUrl']
     },
     deprecation: {
@@ -1386,6 +1554,7 @@ function notFoundPage() {
     <li><a href="/">All releases</a> — the full catalogue, filterable by topic</li>
     <li><a href="/api/papers.json">papers.json</a> — every release as structured data</li>
     <li><a href="/about/">About</a> — what this site publishes, and what its assurance states mean</li>
+    <li><a href="/operating-model/">Operating model</a> — the prospective doctrine, reusable method registry and defeasible inference ledger</li>
     <li><a href="/productivity/">Productivity</a> — bounded workflows with explicit assurance and work-evidence status</li>
     <li><a href="/ai/">For AI agents</a> — machine-readable endpoints and conventions</li>
   </ul>
@@ -1401,22 +1570,67 @@ function api() {
     site: CONFIG.siteName, baseUrl: BASE,
     description: CONFIG.description,
     schema: `${BASE}/api/schema.json`,
+    stability: `${BASE}/api/stability.json`,
     count: papers.length,
     papers: papers.map(paperApi)
   };
   write('api/build.json', JSON.stringify(BUILD, null, 2) + '\n');
   write('api/stability.json', JSON.stringify(apiStability(), null, 2) + '\n');
+  const governanceArtifacts = [
+    ['operating-model.json', OPERATING_ARTIFACTS.contract],
+    ['method-registry.json', OPERATING_ARTIFACTS.registry],
+    ['ibe-ledger.json', OPERATING_ARTIFACTS.ledger],
+    ['work-ledger.json', OPERATING_ARTIFACTS.workLedger]
+  ];
+  for (const [name, artifact] of governanceArtifacts) {
+    const payload = JSON.stringify(artifact, null, 2) + '\n';
+    write(`api/${name}`, payload);
+    write(`api/v1/${name}`, payload);
+  }
+  const governanceSchemas = [
+    ['operating-model.schema.json', OPERATING_ARTIFACTS.schemas.contract],
+    ['method-registry.schema.json', OPERATING_ARTIFACTS.schemas.registry],
+    ['ibe-ledger.schema.json', OPERATING_ARTIFACTS.schemas.ledger],
+    ['work-ledger.schema.json', OPERATING_ARTIFACTS.schemas.workLedger],
+    ['release-operating-model.schema.json', OPERATING_ARTIFACTS.schemas.release]
+  ];
+  for (const [name, artifact] of governanceSchemas) {
+    const payload = JSON.stringify(artifact, null, 2) + '\n';
+    write(`api/schemas/${name}`, payload);
+    write(`api/v1/schemas/${name}`, payload);
+  }
   /* Versioned routes carry the same content; the unversioned paths remain
      because they are already published and must never disappear. */
-  write('api/v1/papers.json', JSON.stringify({ ...papersDoc, schema: `${BASE}/api/v1/schema.json`, stability: `${BASE}/api/stability.json` }, null, 2));
-  write('api/papers.json', JSON.stringify({
-    schemaVersion: SCHEMA_VERSION,
-    site: CONFIG.siteName, baseUrl: BASE,
-    description: CONFIG.description,
-    schema: `${BASE}/api/schema.json`,
-    count: papers.length,
-    papers: papers.map(paperApi)
-  }, null, 2));
+  const papersPayload = JSON.stringify(papersDoc, null, 2);
+  write('api/v1/papers.json', papersPayload);
+  write('api/papers.json', papersPayload);
+  /* Reuse the authored prospective-release schema inside the public papers
+     schema. Its local definitions are rebound to the public document's $defs
+     so the two contracts cannot drift while remaining valid JSON Schema. */
+  let releaseOperatingModel = JSON.parse(JSON.stringify(OPERATING_ARTIFACTS.schemas.release));
+  const authoredOperatingDefs = releaseOperatingModel.$defs || {};
+  const embeddedName = name => `operatingModel${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+  const rewriteOperatingRefs = value => {
+    if (Array.isArray(value)) return value.map(rewriteOperatingRefs);
+    if (!value || typeof value !== 'object') return value;
+    const out = {};
+    for (const [key, item] of Object.entries(value)) {
+      if (key === '$ref' && typeof item === 'string' && item.startsWith('#/$defs/')) {
+        const sourceName = item.slice('#/$defs/'.length);
+        if (!(sourceName in authoredOperatingDefs)) throw new Error(`release operating schema has an unresolved local definition: ${item}`);
+        out[key] = `#/$defs/${embeddedName(sourceName)}`;
+      } else out[key] = rewriteOperatingRefs(item);
+    }
+    return out;
+  };
+  const embeddedOperatingDefs = Object.fromEntries(Object.entries(authoredOperatingDefs)
+    .map(([name, definition]) => [embeddedName(name), rewriteOperatingRefs(definition)]));
+  delete releaseOperatingModel.$schema;
+  delete releaseOperatingModel.$id;
+  delete releaseOperatingModel.title;
+  delete releaseOperatingModel.description;
+  delete releaseOperatingModel.$defs;
+  releaseOperatingModel = rewriteOperatingRefs(releaseOperatingModel);
   const schema = {
     $schema: 'https://json-schema.org/draft/2020-12/schema',
     $id: `${BASE}/api/schema.json`,
@@ -1432,6 +1646,8 @@ function api() {
       papers: { type: 'array', items: { $ref: '#/$defs/paper' } }
     },
     $defs: {
+      ...embeddedOperatingDefs,
+      releaseOperatingModel,
       assuranceRecord: {
         type: 'object',
         required: ['dimension', 'state'],
@@ -1505,6 +1721,7 @@ function api() {
           },
           keyResults: { type: 'array', items: { type: 'string' } },
           evidencePackage: { type: 'string' },
+          operatingModel: { $ref: '#/$defs/releaseOperatingModel' },
           openProblems: { type: 'array', items: { type: 'string' }, description: 'Concrete follow-up research problems, well-posed enough to start on' },
           relatedWorks: { type: 'array', items: { type: 'object', properties: { citation: { type: 'string' }, url: { type: 'string' } } } },
           reviews: {
@@ -1530,8 +1747,9 @@ function api() {
       }
     }
   };
-  write('api/schema.json', JSON.stringify(schema, null, 2));
-  write('api/v1/schema.json', JSON.stringify({ ...schema, $id: `${BASE}/api/v1/schema.json` }, null, 2));
+  const schemaPayload = JSON.stringify(schema, null, 2);
+  write('api/schema.json', schemaPayload);
+  write('api/v1/schema.json', schemaPayload);
 }
 
 const OBSERVATORY_URL = `${BASE}/observatory/`;
@@ -1687,6 +1905,9 @@ write('_headers', `/*
 /observatory/index.json
   Access-Control-Allow-Origin: *
 
+/operating-model/index.json
+  Access-Control-Allow-Origin: *
+
 /assets/audio/*
   Access-Control-Allow-Origin: *
 
@@ -1696,6 +1917,29 @@ write('_headers', `/*
 papers.forEach(paperPage);
 indexPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
+simplePage('operating-model/', 'Evidence Press operating model', 'A prospective, machine-enforced doctrine for accelerating checkable work, stopping non-identified work, and publishing reusable research handoffs while retaining rival explanations and falsifiers.', null, 'WebPage', {
+  sourcePath: OPERATING_ARTIFACTS.contract.doctrine,
+  sourceIncludesTitle: true,
+  sourceLinkReplacements: [
+    ['../data/OPERATING_MODEL.json', '/api/operating-model.json'],
+    ['../data/METHOD_REGISTRY.json', '/api/method-registry.json'],
+    ['../data/IBE_LEDGER.json', '/api/ibe-ledger.json'],
+    ['../data/WORK_LEDGER.json', '/api/work-ledger.json']
+  ],
+  kicker: 'Institutional contract · version 1.0 · 10 August 2026',
+  standfirst: 'Accelerate what can be checked. Stop what cannot be identified. Publish the handoff, not merely the conclusion.',
+  datePublished: OPERATING_ARTIFACTS.contract.effectiveDate,
+  dateModified: OPERATING_ARTIFACTS.contract.effectiveDate,
+  status: OPERATING_ARTIFACTS.contract.status,
+  machineRecord: OPERATING_ARTIFACTS.contract,
+  resources: [
+    { label: 'Machine contract', url: `${BASE}/api/operating-model.json`, linkText: 'operating-model.json', detail: 'The prospective authoring rule and frozen legacy baseline.' },
+    { label: 'Reusable methods', url: `${BASE}/api/method-registry.json`, linkText: 'method-registry.json', detail: 'Methods, failure modes, broad method clusters, evidence-backed lineages and release assignments; registration is not validation.' },
+    { label: 'Defeasible explanations', url: `${BASE}/api/ibe-ledger.json`, linkText: 'ibe-ledger.json', detail: 'Observations, rivals, predictions and potential falsifiers for the acceleration hypotheses.' },
+    { label: 'Prospective attempts', url: `${BASE}/api/work-ledger.json`, linkText: 'work-ledger.json', detail: 'All registered attempts, including stopped and unreleased work, with explicit clocks, resources, comparators, assurance endpoints and missingness.' },
+    { label: 'Prospective release schema', url: `${BASE}/api/schemas/release-operating-model.schema.json`, linkText: 'release-operating-model.schema.json', detail: 'Required process and handoff metadata for every future release.' }
+  ]
+});
 simplePage('productivity/', 'Productivity Protocols', 'Bounded, downloadable AI-agent workflows with staged evaluation for companies that are new to agents; current human and company productivity impact is unmeasured.', 'productivity.md', 'WebPage', {
   og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'productivity.png')) ? '/assets/og/productivity.png' : null,
   kicker: 'A programme of Evidence Press',

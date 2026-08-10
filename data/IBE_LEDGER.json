@@ -1,0 +1,900 @@
+{
+  "schemaVersion": "1.0",
+  "updated": "2026-08-10",
+  "status": "live-defeasible-ledger",
+  "focalExplanation": "Evidence Press demonstrates automation of open packaging and producer-side replay. The live working hypothesis is that these mechanisms may accelerate some discovery in bounded, certificate-friendly domains, while observed throughput remains compatible with task selection, intensive orchestration, an earlier assurance endpoint, backlog conversion and research-lineage effects.",
+  "claimCeiling": "The current record establishes publication capability and producer-side replay, not a comparative acceleration effect. It does not show faster scientific discovery or publication at matched assurance and total cost, better or faster policy decisions, greater reuse, operational savings or organisational productivity.",
+  "statusVocabulary": [
+    {
+      "id": "untested",
+      "definition": "The comparative or outcome claim has not been evaluated with evidence capable of distinguishing it from its registered rivals.",
+      "entryCriteria": [
+        "The hypothesis and scope are registered.",
+        "No qualifying comparative, field or causal evaluation has yet been recorded."
+      ],
+      "claimCeiling": "The mechanism may be plausible or partly demonstrated, but no speed, quality, reuse, policy, operational or productivity effect may be inferred."
+    },
+    {
+      "id": "mechanism-supported",
+      "definition": "Evidence shows that a specified mechanism or prerequisite operates within a bounded setting, but the predicted comparative outcome remains unmeasured.",
+      "entryCriteria": [
+        "At least one referenced observation directly bears on the stated mechanism.",
+        "The observation's inference limit excludes the comparative outcome claim."
+      ],
+      "claimCeiling": "Only the bounded mechanism is supported; downstream acceleration or impact remains untested."
+    },
+    {
+      "id": "single-case-supported",
+      "definition": "At least one qualifying case measures the predicted outcome in a declared setting, without establishing general transfer.",
+      "entryCriteria": [
+        "A referenced observation measures the outcome rather than merely the mechanism.",
+        "The case, comparator, measurement boundary and important limitations are recorded."
+      ],
+      "claimCeiling": "Support is limited to the observed case and design; generalisation and causal attribution require additional evidence."
+    },
+    {
+      "id": "benchmark-no-clear-gain",
+      "definition": "A bounded benchmark found no decision-relevant net gain under its registered tasks, models and measures.",
+      "entryCriteria": [
+        "The benchmark, comparator and decision rule are preserved.",
+        "The result does not meet the registered gain criterion."
+      ],
+      "claimCeiling": "This is a scoped negative or inconclusive result, not evidence of universal ineffectiveness."
+    },
+    {
+      "id": "field-association",
+      "definition": "A measured field association is present in a declared context, but the design does not identify a causal effect.",
+      "entryCriteria": [
+        "The field outcome, population, period, missingness and comparator are recorded.",
+        "The design's confounding and selection limits are explicit."
+      ],
+      "claimCeiling": "The association is context-bound and must not be described as causal."
+    },
+    {
+      "id": "causal-effect-supported",
+      "definition": "A preregistered randomized or defensible quasi-experimental design supports a context-bound causal effect under its stated assumptions.",
+      "entryCriteria": [
+        "The estimand, assignment or identification design, comparator, uncertainty and attrition are recorded.",
+        "The analysis meets its preregistered decision rule and has independent methodological review."
+      ],
+      "claimCeiling": "The effect is supported only for the registered population, intervention, comparator, outcomes, period and assumptions."
+    },
+    {
+      "id": "falsified-within-scope",
+      "definition": "A preregistered falsifier or negative decision rule has been met within the declared scope.",
+      "entryCriteria": [
+        "The triggering observation and applicable prediction or falsifier are referenced.",
+        "The scope and conditions under which the hypothesis may be reopened are recorded."
+      ],
+      "claimCeiling": "Only the scoped hypothesis is rejected; adjacent mechanisms or settings remain separate questions."
+    }
+  ],
+  "observations": [
+    {
+      "id": "catalogue-baseline-throughput",
+      "observedAt": "2026-08-10",
+      "statusCapabilities": [
+        "mechanism"
+      ],
+      "source": "data/OPERATING_MODEL.json#releasePolicy.baselineCommit",
+      "statement": "The adoption baseline contains 21 releases dated across 13 days, all openly represented with DOI, PDF and repository metadata.",
+      "inferenceLimit": "Publication dates do not reveal research start, claim-lock time, total labour, attempted-project denominator or matched conventional throughput."
+    },
+    {
+      "id": "catalogue-assurance-boundary",
+      "observedAt": "2026-08-10",
+      "statusCapabilities": [
+        "mechanism"
+      ],
+      "source": "/api/papers.json",
+      "statement": "All 21 baseline releases report producer-side internal replay; none reports editorial peer review, independent reproduction or end-to-end formal verification.",
+      "inferenceLimit": "This demonstrates a transparent early assurance endpoint, not comparable-assurance research acceleration."
+    },
+    {
+      "id": "catalogue-task-mix",
+      "observedAt": "2026-08-10",
+      "statusCapabilities": [
+        "context-limitation"
+      ],
+      "source": "data/METHOD_REGISTRY.json",
+      "statement": "The baseline catalogue is concentrated in exact mathematics, computational theory, certificate-friendly operations models and one substantive policy identification audit.",
+      "inferenceLimit": "The portfolio does not establish transfer to wet-lab, clinical, field, stakeholder-dependent or normatively contested work."
+    },
+    {
+      "id": "method-lineages",
+      "observedAt": "2026-08-10",
+      "statusCapabilities": [
+        "mechanism"
+      ],
+      "source": "data/METHOD_REGISTRY.json#lineages",
+      "statement": "Two bounded release programmes have explicit dependency evidence and reuse reductions, certificates or structural objects across adjacent questions; broader method clusters are not treated as lineages.",
+      "inferenceLimit": "Lineage reuse is not independent confirmation and can propagate a common defect."
+    },
+    {
+      "id": "negative-results-preserved",
+      "observedAt": "2026-08-10",
+      "statusCapabilities": [
+        "mechanism"
+      ],
+      "source": "data/METHOD_REGISTRY.json#productive-failure",
+      "statement": "The catalogue preserves non-identification, failed feasibility, unresolved parent targets, counterexamples and reusable modules from stalled work.",
+      "inferenceLimit": "Downstream avoidance of duplicated work or earlier stopping has not been measured."
+    },
+    {
+      "id": "policy-identification-case",
+      "observedAt": "2026-08-10",
+      "statusCapabilities": [
+        "mechanism",
+        "falsifier-test"
+      ],
+      "source": "/releases/stocks-are-not-flows/",
+      "statement": "A registered housing analysis stopped unique causal attribution when the admitted observation map could not distinguish the focal mechanism from rivals and specified the missing measurement.",
+      "inferenceLimit": "This is a design-conditioned non-identification result, not a policy-outcome study or proof of zero effect."
+    },
+    {
+      "id": "operations-theory-no-field",
+      "observedAt": "2026-08-10",
+      "statusCapabilities": [
+        "mechanism",
+        "context-limitation"
+      ],
+      "source": "/releases/certified-two-item-jrp/",
+      "statement": "Operations releases provide exact model-specific gaps, stability margins and certificates while explicitly leaving field evaluation open.",
+      "inferenceLimit": "No realised operational saving, adoption or model-scale transfer has been established."
+    },
+    {
+      "id": "productivity-protocol-no-impact",
+      "observedAt": "2026-08-10",
+      "statusCapabilities": [
+        "benchmark-outcome"
+      ],
+      "source": "/productivity/",
+      "statement": "Productivity Protocols preserves predecessor NO_CLEAR_GAIN results and reports NO_IMPACT_EVIDENCE for current packs.",
+      "inferenceLimit": "Structural conformance and model-only benchmarks do not measure human or company productivity."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "research-cycle-acceleration",
+      "hypothesis": "Certificate-first publication, structural compression and retained stop receipts reduce elapsed time and total human effort per reusable research result at a matched assurance boundary.",
+      "scope": "Bounded, digitally specified, certificate-friendly research tasks.",
+      "aims": [
+        "science",
+        "productivity"
+      ],
+      "epistemicStatus": "untested",
+      "statusEvidence": {
+        "status": "untested",
+        "designClass": "none",
+        "observationIds": [
+          "catalogue-baseline-throughput",
+          "method-lineages",
+          "negative-results-preserved",
+          "catalogue-assurance-boundary",
+          "catalogue-task-mix"
+        ],
+        "evidenceRefs": [],
+        "comparator": null,
+        "estimand": null,
+        "decisionRule": null,
+        "registeredDesignRef": null,
+        "independentReview": null,
+        "reason": "No prospective matched-assurance comparison records intake-to-result time, total active human effort, severe-error rates and attempted-project denominators.",
+        "inferenceLimit": "Catalogue throughput and internal reuse make the mechanism plausible but do not establish a comparative research-cycle effect."
+      },
+      "rivals": [
+        "certificate preparation offsets the verification saving",
+        "task selection rather than the operating model explains the apparent gain",
+        "short calendar time is purchased with greater human orchestration or compute",
+        "faster output carries lower independent correctness or reuse"
+      ],
+      "supportingObservations": [
+        "catalogue-baseline-throughput",
+        "method-lineages",
+        "negative-results-preserved"
+      ],
+      "limitingObservations": [
+        "catalogue-assurance-boundary",
+        "catalogue-task-mix"
+      ],
+      "predictions": [
+        {
+          "id": "research-p1",
+          "statement": "At matched scope and assurance, intake-to-accepted-artifact time and total active human time should be lower than an appropriate comparator.",
+          "estimand": "Median ratio of intake-to-accepted-artifact calendar days and active human hours per accepted artifact.",
+          "comparator": "Preregistered matched work using the incumbent workflow at the same scope and assurance endpoint.",
+          "threshold": "Exploratory: both median ratios are at most 0.80, with no material increase in severe-error or correction rates.",
+          "window": "From registered intake to accepted artifact; assess after at least 20 matched pairs and 12 months.",
+          "measurementPlan": "Register scope and assurance target before work; capture timestamps and human time prospectively; use blinded independent acceptance and error adjudication."
+        },
+        {
+          "id": "research-p2",
+          "statement": "Defects should be detected earlier and independent replay should begin sooner when a compact decision object is supplied.",
+          "estimand": "Time to first correctly confirmed material defect and time from handoff to first successful independent replay.",
+          "comparator": "Matched work without a compact decision object, at the same scope and assurance target.",
+          "threshold": "Exploratory: both median times are at most 0.80 of comparator, without lower defect yield or replay success.",
+          "window": "Research intake through 90 days after public handoff.",
+          "measurementPlan": "Timestamp defect reports and replay events; blind adjudicators to workflow; exclude producer reruns from independent replay."
+        },
+        {
+          "id": "research-p3",
+          "statement": "Evidence-backed research lineages should show declining reconstruction effort for linked follow-ups.",
+          "estimand": "Active reconstruction hours required before substantive work begins, by ordinal position within a genuine shared lineage.",
+          "comparator": "The first work in the same lineage and matched de novo follow-ups without a reusable handoff.",
+          "threshold": "Exploratory: at least 20% lower median reconstruction effort by the second or third follow-up, with no increase in inherited critical defects.",
+          "window": "First five lineages reaching at least three works, or 24 months.",
+          "measurementPlan": "Distinguish true dependency lineages from thematic clusters; record prerequisite reconstruction, inherited defects and start of substantive work."
+        }
+      ],
+      "potentialFalsifiers": [
+        "no material reduction in total human effort or elapsed time at matched assurance",
+        "higher severe-error or correction rates at equal cost",
+        "no faster independent maturation or downstream reuse",
+        "the apparent gain disappears after task selection, lineage-aware dependence adjustment and attempted-project denominators are included"
+      ]
+    },
+    {
+      "id": "publication-layer-acceleration",
+      "hypothesis": "Automation may reduce claim-lock-to-open-archived-package time while preserving structured metadata and producer replay.",
+      "scope": "The Evidence Press publication and packaging layer.",
+      "aims": [
+        "science",
+        "policy",
+        "productivity"
+      ],
+      "epistemicStatus": "untested",
+      "statusEvidence": {
+        "status": "untested",
+        "designClass": "none",
+        "observationIds": [
+          "catalogue-baseline-throughput",
+          "catalogue-assurance-boundary",
+          "catalogue-task-mix"
+        ],
+        "evidenceRefs": [],
+        "comparator": null,
+        "estimand": null,
+        "decisionRule": null,
+        "registeredDesignRef": null,
+        "independentReview": null,
+        "reason": "No prospective claim-lock receipt, matched publication comparator or complete packaging and maintenance labour record has yet been evaluated.",
+        "inferenceLimit": "The baseline establishes open publication capability and producer replay, not faster publication at matched endpoint and total cost."
+      },
+      "rivals": [
+        "the publication sprint merely converted a backlog of completed work",
+        "calendar speed is purchased with unrecorded intensive labour",
+        "structured packaging adds later maintenance cost that offsets the initial gain"
+      ],
+      "supportingObservations": [
+        "catalogue-baseline-throughput",
+        "catalogue-assurance-boundary"
+      ],
+      "limitingObservations": [
+        "catalogue-task-mix"
+      ],
+      "predictions": [
+        {
+          "id": "publication-p1",
+          "statement": "Prospective work records should show short claim-lock-to-public intervals across new releases.",
+          "estimand": "Calendar days and active packaging hours from frozen claim lock to complete public archived package.",
+          "comparator": "Matched incumbent publication route reaching the same open-access and producer-replay endpoint.",
+          "threshold": "Exploratory: median duration is at most 7 calendar days and median active packaging time is at most 0.75 of comparator.",
+          "window": "First 20 prospective releases and at least 12 months.",
+          "measurementPlan": "Create immutable claim-lock and publication receipts; record all packaging, correction and coordination time; retain missing timestamps explicitly."
+        },
+        {
+          "id": "publication-p2",
+          "statement": "Package completeness and replay should not deteriorate as release volume grows.",
+          "estimand": "Package-completeness rate, clean producer-replay rate and maintenance hours per release as volume grows.",
+          "comparator": "Successive rolling cohorts against the first prospective cohort at the same acceptance criteria.",
+          "threshold": "Exploratory non-inferiority: no decline greater than 5 percentage points in completeness or replay and no increase greater than 20% in median maintenance hours.",
+          "window": "Rolling cohorts of ten releases over 12 months.",
+          "measurementPlan": "Run frozen automated checks on every release and an independent sampled audit; record corrections, broken assets and maintenance labour."
+        }
+      ],
+      "potentialFalsifiers": [
+        "prospective claim-lock-to-public time is not materially shorter than the relevant comparator",
+        "maintenance, correction or packaging labour erases the saving",
+        "throughput falls after backlog conversion and lineage-aware dependence adjustment"
+      ]
+    },
+    {
+      "id": "policy-assessment-improvement",
+      "hypothesis": "Identification gates, rival-mechanism audits and bounded decision maps produce decision-adequate policy assessments faster and with fewer unsupported causal claims.",
+      "scope": "Policy questions whose observations, estimand and rivals can be explicitly registered.",
+      "aims": [
+        "policy"
+      ],
+      "epistemicStatus": "untested",
+      "statusEvidence": {
+        "status": "untested",
+        "designClass": "none",
+        "observationIds": [
+          "policy-identification-case",
+          "negative-results-preserved",
+          "catalogue-task-mix"
+        ],
+        "evidenceRefs": [],
+        "comparator": null,
+        "estimand": null,
+        "decisionRule": null,
+        "registeredDesignRef": null,
+        "independentReview": null,
+        "reason": "The single policy case illustrates a design-conditioned identification stop but has no matched expert-review comparison or downstream decision evaluation.",
+        "inferenceLimit": "A useful formal diagnosis in one case does not establish faster assessment, fewer unsupported claims or better policy decisions."
+      },
+      "rivals": [
+        "conventional expert review already supplies the same gain",
+        "formal models omit decisive institutional or semantic facts",
+        "correlated agents miss common defects",
+        "political and implementation constraints dominate evidence quality"
+      ],
+      "supportingObservations": [
+        "policy-identification-case",
+        "negative-results-preserved"
+      ],
+      "limitingObservations": [
+        "catalogue-task-mix"
+      ],
+      "predictions": [
+        {
+          "id": "policy-p1",
+          "statement": "Comparable cases should reach a justified terminal status sooner and contain fewer unsupported point attributions.",
+          "estimand": "Time from case registration to justified terminal status and number of unsupported point attributions per case.",
+          "comparator": "Matched conventional expert-led evidence assessment using the same corpus and decision question.",
+          "threshold": "Exploratory: at least 20% lower median time and 20% fewer unsupported attributions, with non-inferior detection of valid effects and decision adequacy.",
+          "window": "Case registration to terminal status across at least 12 matched cases.",
+          "measurementPlan": "Freeze claims and corpora; use blinded expert adjudication of attribution support, missed effects and decision adequacy; retain blocked and negative cases."
+        },
+        {
+          "id": "policy-p2",
+          "statement": "Failed identification should yield more discriminating and decision-relevant data plans.",
+          "estimand": "Proportion of proposed data plans that pass a preregistered discrimination test and could change the identified set or robust decision.",
+          "comparator": "Data recommendations produced by matched conventional expert reviews.",
+          "threshold": "Exploratory: at least 20 percentage points higher discrimination-pass rate, without worse feasibility or expected collection cost.",
+          "window": "At least 12 matched cases with six-month follow-up.",
+          "measurementPlan": "Blind a multidisciplinary panel to workflow; score discrimination, feasibility, cost and decision relevance; track whether data owners act on the plan."
+        }
+      ],
+      "potentialFalsifiers": [
+        "no gain over appropriate expert review",
+        "valid effects are missed more often because the rival or observation model is too narrow",
+        "downstream adjudicators judge the resulting decisions poorer or no faster"
+      ]
+    },
+    {
+      "id": "assurance-bottleneck-relief",
+      "hypothesis": "Moving facts and computations down a verifiability stack lets scarce human effort concentrate on semantics, values and authorisation without increasing consequential residual error.",
+      "scope": "High-volume evidence work with repeatable checks and risk-based sampling.",
+      "aims": [
+        "science",
+        "policy",
+        "productivity"
+      ],
+      "epistemicStatus": "untested",
+      "statusEvidence": {
+        "status": "untested",
+        "designClass": "none",
+        "observationIds": [
+          "catalogue-assurance-boundary",
+          "catalogue-task-mix"
+        ],
+        "evidenceRefs": [],
+        "comparator": null,
+        "estimand": null,
+        "decisionRule": null,
+        "registeredDesignRef": null,
+        "independentReview": null,
+        "reason": "No qualifying corpus comparison measures human assurance minutes at a fixed consequential residual-error bound.",
+        "inferenceLimit": "Automated checks and producer replay show that some checks can run mechanically, not that total human assurance burden falls safely."
+      },
+      "rivals": [
+        "integration, security and procurement dominate total cost",
+        "every item still requires bespoke human review",
+        "verification capability cheapens no faster than generation",
+        "authorisation rather than verification remains binding"
+      ],
+      "supportingObservations": [
+        "catalogue-assurance-boundary"
+      ],
+      "limitingObservations": [
+        "catalogue-task-mix"
+      ],
+      "predictions": [
+        {
+          "id": "assurance-p1",
+          "statement": "Exhaustive mechanical checks plus risk-based sampling should reduce human minutes per accepted claim at a fixed residual-error bound.",
+          "estimand": "Human review minutes per accepted claim at a preregistered upper bound on consequential residual error.",
+          "comparator": "Full manual review or incumbent assurance at the same residual-error target.",
+          "threshold": "Exploratory efficiency signal: at least 25% fewer human minutes while the audited upper confidence bound remains below the registered error cap.",
+          "window": "Each complete corpus and pooled analysis after at least three materially different corpora.",
+          "measurementPlan": "Randomly sample and independently adjudicate checked and unchecked items; include integration, escalation and exception-handling time."
+        },
+        {
+          "id": "assurance-p2",
+          "statement": "Human review should shift toward semantic bridges, causal assumptions, values and authorisation rather than repeatable arithmetic or source-presence checks.",
+          "estimand": "Share of human review minutes spent on semantic, causal, value, rights and authorisation judgments rather than mechanical checks.",
+          "comparator": "The incumbent manual workflow on matched corpora.",
+          "threshold": "Exploratory: a shift of at least 20 percentage points toward judgment-intensive work, with no increase in total human time or residual-error bound.",
+          "window": "The same corpora and period used for assurance-p1.",
+          "measurementPlan": "Code review activities prospectively using a frozen taxonomy; audit time records and independently classify a sample of activities."
+        }
+      ],
+      "potentialFalsifiers": [
+        "human assurance cost does not fall",
+        "severe semantic errors escape more often",
+        "sampling cannot meet the declared risk limit",
+        "integration and security costs dominate the proposed saving"
+      ]
+    },
+    {
+      "id": "open-evidence-reuse",
+      "hypothesis": "DOI-backed, openly licensed, machine-readable evidence packages shorten discovery, independent replay and downstream reuse.",
+      "scope": "Potential users able to access and interpret public digital research objects.",
+      "aims": [
+        "science",
+        "policy",
+        "productivity"
+      ],
+      "epistemicStatus": "untested",
+      "statusEvidence": {
+        "status": "untested",
+        "designClass": "none",
+        "observationIds": [
+          "catalogue-baseline-throughput",
+          "method-lineages",
+          "catalogue-assurance-boundary"
+        ],
+        "evidenceRefs": [],
+        "comparator": null,
+        "estimand": null,
+        "decisionRule": null,
+        "registeredDesignRef": null,
+        "independentReview": null,
+        "reason": "No matched comparison yet measures independent time-to-replay, reconstruction effort or unaffiliated downstream reuse.",
+        "inferenceLimit": "Open structured objects exist, but availability and internal lineage reuse do not establish external reuse or time savings."
+      },
+      "rivals": [
+        "reputation and attention dominate access",
+        "unrefereed status suppresses use",
+        "complex packaging overwhelms users",
+        "access is not the binding downstream bottleneck"
+      ],
+      "supportingObservations": [
+        "catalogue-baseline-throughput",
+        "method-lineages"
+      ],
+      "limitingObservations": [
+        "catalogue-assurance-boundary"
+      ],
+      "predictions": [
+        {
+          "id": "reuse-p1",
+          "statement": "Structured releases should receive earlier independent reruns, forks, citations or derivative use than comparable unstructured open candidates.",
+          "estimand": "Time to first qualifying unaffiliated rerun, fork, substantive citation or derivative use, plus 12-month qualifying-event incidence.",
+          "comparator": "Matched unstructured open candidates with similar field, status, age and visibility.",
+          "threshold": "Exploratory: median time to event is at most 0.75 of comparator or 12-month incidence is at least 15 percentage points higher.",
+          "window": "Twelve months after each release.",
+          "measurementPlan": "Predefine qualifying events; exclude producer activity and superficial mentions; verify events manually and adjust descriptively for visibility."
+        },
+        {
+          "id": "reuse-p2",
+          "statement": "Independent users should reach a first successful replay with less reconstruction work.",
+          "estimand": "Independent-user active hours to first successful replay and replay-success proportion.",
+          "comparator": "The same research content supplied as an unstructured PDF and repository without the structured package.",
+          "threshold": "Exploratory: at least 30% lower median active hours with replay success non-inferior within 10 percentage points.",
+          "window": "Thirty days per attempt across at least 20 users and five artifacts.",
+          "measurementPlan": "Use parallel assignment, standardized environments and blinded replay adjudication; retain failed and abandoned attempts."
+        }
+      ],
+      "potentialFalsifiers": [
+        "no improvement in time-to-replay or derivative use",
+        "users consistently abandon the structured artefacts",
+        "maintenance cost exceeds the reuse saving"
+      ]
+    },
+    {
+      "id": "operations-certificate-value",
+      "hypothesis": "Exact certificates expose heuristic error and improve operational choices enough to exceed certification cost.",
+      "scope": "Operational models whose constraints and objectives are represented with sufficient fidelity.",
+      "aims": [
+        "policy",
+        "productivity"
+      ],
+      "epistemicStatus": "untested",
+      "statusEvidence": {
+        "status": "untested",
+        "designClass": "none",
+        "observationIds": [
+          "operations-theory-no-field",
+          "catalogue-task-mix"
+        ],
+        "evidenceRefs": [],
+        "comparator": null,
+        "estimand": null,
+        "decisionRule": null,
+        "registeredDesignRef": null,
+        "independentReview": null,
+        "reason": "No external operational comparison measures plan changes, realised avoided loss, implementation cost or performance under omitted constraints and drift.",
+        "inferenceLimit": "Exact model-specific certificates establish conditional mathematical properties, not field decision value or net operational benefit."
+      },
+      "rivals": [
+        "model misspecification dominates optimisation error",
+        "existing heuristics are operationally adequate",
+        "certificate generation costs more than avoided loss",
+        "omitted constraints reverse the nominal optimum"
+      ],
+      "supportingObservations": [
+        "operations-theory-no-field"
+      ],
+      "limitingObservations": [
+        "catalogue-task-mix"
+      ],
+      "predictions": [
+        {
+          "id": "operations-p1",
+          "statement": "External operational use should find material incumbent gaps or decision boundaries often enough to change accepted plans.",
+          "estimand": "Proportion of eligible operational instances where certification reveals a preregistered material incumbent gap or changes the approved plan.",
+          "comparator": "The incumbent heuristic-only decision on the same instance.",
+          "threshold": "Set the material-gap threshold by context before analysis; exploratory programme signal if at least 20% of eligible instances change plan without safety regression.",
+          "window": "At least 20 consecutive eligible instances or one full annual planning cycle.",
+          "measurementPlan": "Run certification on all eligible instances, not selected successes; record incumbent plan, certified result, approval decision, costs and constraint violations."
+        },
+        {
+          "id": "operations-p2",
+          "statement": "The avoided loss or bounded regret should exceed the full cost of certification and implementation.",
+          "estimand": "Realised avoided loss or bounded regret minus certification, implementation, monitoring and switching costs.",
+          "comparator": "Incumbent operational policy under randomized, stepped or otherwise defensible concurrent comparison.",
+          "threshold": "Positive context-specific net value; confirmatory support requires the uncertainty interval for aggregate net value to exclude zero.",
+          "window": "At least one complete planning cycle with follow-up through subsequent replanning or drift.",
+          "measurementPlan": "Preregister the counterfactual design and cost boundary; measure realised outcomes and all human and tool costs; label non-identified comparisons as associations."
+        }
+      ],
+      "potentialFalsifiers": [
+        "certificates rarely change decisions",
+        "certification cost exceeds avoided loss",
+        "certified nominal policies perform worse after realistic constraints and drift are included"
+      ]
+    },
+    {
+      "id": "negative-result-option-value",
+      "hypothesis": "Published blockers, counterexamples and stop receipts prevent duplicated dead ends and redirect effort toward discriminating data or tractable subproblems.",
+      "scope": "Research and policy programmes with expensive downstream continuation and reusable failure information.",
+      "aims": [
+        "science",
+        "policy",
+        "productivity"
+      ],
+      "epistemicStatus": "untested",
+      "statusEvidence": {
+        "status": "untested",
+        "designClass": "none",
+        "observationIds": [
+          "negative-results-preserved",
+          "policy-identification-case",
+          "catalogue-assurance-boundary"
+        ],
+        "evidenceRefs": [],
+        "comparator": null,
+        "estimand": null,
+        "decisionRule": null,
+        "registeredDesignRef": null,
+        "independentReview": null,
+        "reason": "Preservation is observed, but no matched follow-up measures avoided duplicated work, earlier justified stopping or productive redirection.",
+        "inferenceLimit": "The existence of negative artefacts does not show that later users find, understand or act on them."
+      },
+      "rivals": [
+        "negative outputs are ignored",
+        "failure context is not transferable",
+        "documentation overhead exceeds avoided work",
+        "independent rediscovery is cheaper than understanding the receipt"
+      ],
+      "supportingObservations": [
+        "negative-results-preserved",
+        "policy-identification-case"
+      ],
+      "limitingObservations": [
+        "catalogue-assurance-boundary"
+      ],
+      "predictions": [
+        {
+          "id": "negative-p1",
+          "statement": "Later work should cite and reuse blockers, abandon registered dead routes earlier or collect the identified missing information.",
+          "estimand": "Proportion of stop receipts followed by documented reuse, earlier route abandonment or collection of the specified missing information, and time to that event.",
+          "comparator": "Matched negative or stalled work without a structured stop receipt.",
+          "threshold": "Exploratory: at least 15 percentage points higher qualifying-event incidence or 20% shorter median time to justified abandonment.",
+          "window": "Twenty-four months after each stop receipt.",
+          "measurementPlan": "Register dead routes and reopening conditions; verify external citations, pivots and data collection; exclude producer-only restatements."
+        },
+        {
+          "id": "negative-p2",
+          "statement": "Method salvage should generate independent follow-ups without presenting the parent target as resolved.",
+          "estimand": "Proportion of salvaged-method releases producing an unaffiliated follow-up that uses the method while correctly retaining the unresolved parent boundary.",
+          "comparator": "Matched stalled projects without an explicit reusable-method handoff.",
+          "threshold": "Exploratory: at least 25% yield a qualifying follow-up within 24 months and at least 90% of qualifying follow-ups preserve the parent boundary.",
+          "window": "Twenty-four months after each salvage release.",
+          "measurementPlan": "Track citations, forks and notifications; have blinded reviewers assess substantive method use and boundary fidelity."
+        }
+      ],
+      "potentialFalsifiers": [
+        "the same routes are repeatedly retried without engaging the prior stop receipt",
+        "no documented pivot or reuse occurs",
+        "total effort is unchanged or higher because the negative artefacts are too costly to interpret"
+      ]
+    },
+    {
+      "id": "protocol-workplace-productivity",
+      "hypothesis": "Bounded protocols improve accepted work per unit of total human resource relative to the same agent without the protocol.",
+      "scope": "Context-bound knowledge-work tasks and intended users measured under an appropriate comparison.",
+      "aims": [
+        "productivity"
+      ],
+      "epistemicStatus": "benchmark-no-clear-gain",
+      "statusEvidence": {
+        "status": "benchmark-no-clear-gain",
+        "designClass": "model-benchmark",
+        "observationIds": [
+          "productivity-protocol-no-impact"
+        ],
+        "evidenceRefs": [
+          {
+            "kind": "internal-artifact",
+            "ref": "protocols/protocols/document-to-action-plan/evals/result-live-o4-mini-2026-08-08.json",
+            "role": "benchmark-result"
+          },
+          {
+            "kind": "internal-artifact",
+            "ref": "protocols/protocols/evidence-backed-brief/evals/result-live-o4-mini-2026-08-08.json",
+            "role": "benchmark-result"
+          },
+          {
+            "kind": "internal-artifact",
+            "ref": "protocols/protocols/goal-to-verified-deliverable/evals/result-live-gpt-5.2-2026-08-08-xmodel.json",
+            "role": "benchmark-result"
+          }
+        ],
+        "comparator": "The same named agent model on the same registered synthetic tasks without the protocol prompt; the no-agent human arm was not run.",
+        "estimand": "Protocol-arm minus agent-without-protocol differences in recorded completion, judged output quality or accuracy, detected safety events, elapsed model time and estimated model cost on the preserved task sets.",
+        "decisionRule": "The preserved version 0.1.0 benchmark records return NO_CLEAR_GAIN when the protocol arm does not demonstrate a decision-relevant net gain; detected safety or acceptance regression takes precedence as harm or regression.",
+        "registeredDesignRef": null,
+        "independentReview": null,
+        "benchmarkBoundary": "Development-team model-output benchmarks of three version 0.1.0 predecessor protocols on tiny curated task sets; current version 0.1.1 packs do not inherit the result.",
+        "inferenceLimit": "The benchmarks used internally judged model outputs, not consenting workers or organisational outcomes; they do not estimate human or company productivity and were not independently reviewed or reproduced."
+      },
+      "rivals": [
+        "added structure is pure overhead",
+        "benefit depends on expert users",
+        "base-model capability dominates the protocol",
+        "support, review and rework erase output gains"
+      ],
+      "supportingObservations": [],
+      "limitingObservations": [
+        "productivity-protocol-no-impact"
+      ],
+      "predictions": [
+        {
+          "id": "productivity-p1",
+          "statement": "A suitable comparison should show lower active human time or rework at non-inferior blinded quality without higher material error, burden, support cost or safety risk.",
+          "estimand": "Active human minutes and rework per accepted work item, with blinded quality, material error, burden, support cost and safety as separate outcomes.",
+          "comparator": "Randomized parallel use of the same agent, model, tools and task without the protocol; manual work as a secondary operational baseline.",
+          "threshold": "Exploratory: at least 15% reduction in the primary human-resource outcome, quality non-inferior within a preregistered margin, and no decision-relevant worsening of error, burden, support or safety.",
+          "window": "Frozen evaluation period and justified sample set before allocation.",
+          "measurementPlan": "Freeze tasks and configuration; conceal quality keys; blind raters; retain missing and stopped work; measure facilitator and approver time as well as participant time."
+        },
+        {
+          "id": "productivity-p2",
+          "statement": "Any initial gain should persist in 30-day and 90-day adoption records.",
+          "estimand": "Verified actual-use proportion at days 30 and 90 and retention of the initial accepted-work-per-human-resource effect.",
+          "comparator": "Immediate post-evaluation use and the randomized agent-only group where continued access permits comparison.",
+          "threshold": "Exploratory: at least 50% verified use at day 90 and retention of at least 75% of any initial productivity signal, with no emerging harm.",
+          "window": "Day 30 and day 90 after supported use ends.",
+          "measurementPlan": "Use activity records where lawful, supplement with structured follow-up, retain nonresponse and reasons for nonuse, and do not treat adoption alone as benefit."
+        }
+      ],
+      "potentialFalsifiers": [
+        "the interval excludes a decision-relevant gain",
+        "quality or safety worsens",
+        "total human resource use rises",
+        "adoption rapidly decays after supported use"
+      ]
+    }
+  ],
+  "updatePolicy": {
+    "cadence": "Update when a new release, external review, independent reproduction, correction, operational use or material failure bears on a hypothesis; review the full ledger at least quarterly while the programme is active.",
+    "rules": [
+      "Append or date material changes; do not silently rewrite an earlier observation.",
+      "Do not promote a hypothesis from publication throughput alone.",
+      "Record evidence that weakens the focal explanation with the same prominence as supporting evidence.",
+      "Keep process conformance, research assurance and real-world impact separate.",
+      "Apply the registered status definition and entry criteria; a promotion requires new referenced observations capable of supporting the promoted claim.",
+      "Record every status change with its prior and new status, hypothesis id and evidential basis in the append-only change log.",
+      "Append corrections and superseding interpretations as new revisions; never delete or rewrite an earlier revision record."
+    ]
+  },
+  "changeLog": [
+    {
+      "sequence": 1,
+      "revisionId": "initial-ledger-2026-08-10",
+      "previousRevisionId": null,
+      "recordedAt": "2026-08-10",
+      "changeType": "initialization",
+      "scope": "ledger",
+      "basisObservationIds": [
+        "catalogue-baseline-throughput",
+        "catalogue-assurance-boundary",
+        "catalogue-task-mix",
+        "method-lineages",
+        "negative-results-preserved",
+        "policy-identification-case",
+        "operations-theory-no-field",
+        "productivity-protocol-no-impact"
+      ],
+      "summary": "Created the initial abductive ledger from the 21-release adoption baseline and retained the strongest rival explanations."
+    },
+    {
+      "sequence": 2,
+      "revisionId": "calibrate-focal-explanation-2026-08-10",
+      "previousRevisionId": "initial-ledger-2026-08-10",
+      "recordedAt": "2026-08-10",
+      "changeType": "claim-revised",
+      "scope": "ledger",
+      "basisObservationIds": [
+        "catalogue-baseline-throughput",
+        "catalogue-assurance-boundary",
+        "catalogue-task-mix",
+        "productivity-protocol-no-impact"
+      ],
+      "summary": "Separated demonstrated publication capability and producer replay from untested comparative claims about discovery, policy, reuse, operations and productivity; added explicit status entry criteria and claim ceilings."
+    },
+    {
+      "sequence": 3,
+      "revisionId": "calibrate-publication-status-2026-08-10",
+      "previousRevisionId": "calibrate-focal-explanation-2026-08-10",
+      "recordedAt": "2026-08-10",
+      "changeType": "status-changed",
+      "scope": "hypothesis",
+      "hypothesisId": "publication-layer-acceleration",
+      "fromStatus": "mechanism-supported",
+      "toStatus": "untested",
+      "basisObservationIds": [
+        "catalogue-baseline-throughput",
+        "catalogue-assurance-boundary"
+      ],
+      "summary": "The catalogue shows publication capability, but no prospective claim-lock comparator or total-effort measurement yet establishes publication acceleration."
+    },
+    {
+      "sequence": 4,
+      "revisionId": "calibrate-policy-status-2026-08-10",
+      "previousRevisionId": "calibrate-publication-status-2026-08-10",
+      "recordedAt": "2026-08-10",
+      "changeType": "status-changed",
+      "scope": "hypothesis",
+      "hypothesisId": "policy-assessment-improvement",
+      "fromStatus": "mechanism-supported",
+      "toStatus": "untested",
+      "basisObservationIds": [
+        "policy-identification-case",
+        "catalogue-task-mix"
+      ],
+      "summary": "The housing case illustrates an identification stop, not a comparative effect on assessment speed, unsupported claims or policy decisions."
+    },
+    {
+      "sequence": 5,
+      "revisionId": "calibrate-assurance-status-2026-08-10",
+      "previousRevisionId": "calibrate-policy-status-2026-08-10",
+      "recordedAt": "2026-08-10",
+      "changeType": "status-changed",
+      "scope": "hypothesis",
+      "hypothesisId": "assurance-bottleneck-relief",
+      "fromStatus": "single-case-supported",
+      "toStatus": "untested",
+      "basisObservationIds": [
+        "catalogue-assurance-boundary",
+        "catalogue-task-mix"
+      ],
+      "summary": "The ledger did not contain a qualifying measured case of reduced human assurance time at a fixed residual-error bound."
+    },
+    {
+      "sequence": 6,
+      "revisionId": "calibrate-reuse-status-2026-08-10",
+      "previousRevisionId": "calibrate-assurance-status-2026-08-10",
+      "recordedAt": "2026-08-10",
+      "changeType": "status-changed",
+      "scope": "hypothesis",
+      "hypothesisId": "open-evidence-reuse",
+      "fromStatus": "mechanism-supported",
+      "toStatus": "untested",
+      "basisObservationIds": [
+        "catalogue-baseline-throughput",
+        "method-lineages",
+        "catalogue-assurance-boundary"
+      ],
+      "summary": "Open structured artifacts exist, but comparative time-to-replay and downstream reuse have not been measured."
+    },
+    {
+      "sequence": 7,
+      "revisionId": "calibrate-operations-status-2026-08-10",
+      "previousRevisionId": "calibrate-reuse-status-2026-08-10",
+      "recordedAt": "2026-08-10",
+      "changeType": "status-changed",
+      "scope": "hypothesis",
+      "hypothesisId": "operations-certificate-value",
+      "fromStatus": "mechanism-supported",
+      "toStatus": "untested",
+      "basisObservationIds": [
+        "operations-theory-no-field",
+        "catalogue-task-mix"
+      ],
+      "summary": "Exact model-specific certificates do not establish decision changes, avoided loss or net value in operational use."
+    },
+    {
+      "sequence": 8,
+      "revisionId": "calibrate-negative-result-status-2026-08-10",
+      "previousRevisionId": "calibrate-operations-status-2026-08-10",
+      "recordedAt": "2026-08-10",
+      "changeType": "status-changed",
+      "scope": "hypothesis",
+      "hypothesisId": "negative-result-option-value",
+      "fromStatus": "mechanism-supported",
+      "toStatus": "untested",
+      "basisObservationIds": [
+        "negative-results-preserved",
+        "policy-identification-case"
+      ],
+      "summary": "Negative and stopped outputs are preserved, but later avoidance of duplicated work or redirection of effort has not been measured."
+    },
+    {
+      "sequence": 9,
+      "revisionId": "operationalize-predictions-2026-08-10",
+      "previousRevisionId": "calibrate-negative-result-status-2026-08-10",
+      "recordedAt": "2026-08-10",
+      "changeType": "prediction-revised",
+      "scope": "ledger",
+      "basisObservationIds": [],
+      "summary": "Added an estimand, comparator, explicit exploratory or confirmatory threshold, observation window and measurement plan to every registered prediction."
+    },
+    {
+      "sequence": 10,
+      "revisionId": "separate-clusters-from-lineages-2026-08-10",
+      "previousRevisionId": "operationalize-predictions-2026-08-10",
+      "recordedAt": "2026-08-10",
+      "changeType": "claim-revised",
+      "scope": "ledger",
+      "basisObservationIds": [
+        "method-lineages"
+      ],
+      "summary": "Restricted lineage claims to the two programmes with explicit dependency evidence and kept broader method clusters separate."
+    },
+    {
+      "sequence": 11,
+      "revisionId": "add-status-evidence-foundation-2026-08-10",
+      "previousRevisionId": "separate-clusters-from-lineages-2026-08-10",
+      "recordedAt": "2026-08-10",
+      "changeType": "claim-revised",
+      "scope": "ledger",
+      "basisObservationIds": [
+        "productivity-protocol-no-impact"
+      ],
+      "summary": "Added explicit science, policy and productivity aims and status-specific evidence records to every hypothesis without promoting any status; preserved the predecessor protocol result as an internally produced model-benchmark no-clear-gain finding with no independent-review claim."
+    },
+    {
+      "sequence": 12,
+      "revisionId": "classify-observation-capabilities-2026-08-10",
+      "previousRevisionId": "add-status-evidence-foundation-2026-08-10",
+      "recordedAt": "2026-08-10",
+      "changeType": "claim-revised",
+      "scope": "ledger",
+      "basisObservationIds": [
+        "catalogue-baseline-throughput",
+        "catalogue-assurance-boundary",
+        "catalogue-task-mix",
+        "method-lineages",
+        "negative-results-preserved",
+        "policy-identification-case",
+        "operations-theory-no-field",
+        "productivity-protocol-no-impact"
+      ],
+      "summary": "Classified each observation by the strongest epistemic status it can help support, so a throughput or mechanism observation cannot by itself license a benchmark, field or causal promotion."
+    }
+  ]
+}

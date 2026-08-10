@@ -1,0 +1,1128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/ibe-ledger.schema.json",
+  "title": "Evidence Press abductive ledger",
+  "description": "A live ledger of hypotheses, rival explanations, predictions, potential falsifiers and bounded observations.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "updated",
+    "status",
+    "focalExplanation",
+    "claimCeiling",
+    "statusVocabulary",
+    "observations",
+    "hypotheses",
+    "updatePolicy",
+    "changeLog"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string"
+    },
+    "focalExplanation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claimCeiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "statusVocabulary": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "$ref": "#/$defs/statusDefinition"
+      }
+    },
+    "observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/observation"
+      }
+    },
+    "hypotheses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/hypothesis"
+      }
+    },
+    "updatePolicy": {
+      "$ref": "#/$defs/updatePolicy"
+    },
+    "changeLog": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/change"
+      }
+    }
+  },
+  "$defs": {
+    "observation": {
+      "type": "object",
+      "required": [
+        "id",
+        "observedAt",
+        "statusCapabilities",
+        "source",
+        "statement",
+        "inferenceLimit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "statusCapabilities": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "context-limitation",
+              "mechanism",
+              "single-case-outcome",
+              "benchmark-outcome",
+              "field-association",
+              "causal-identification",
+              "falsifier-test"
+            ]
+          }
+        },
+        "source": {
+          "type": "string"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inferenceLimit": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "hypothesis": {
+      "type": "object",
+      "required": [
+        "id",
+        "hypothesis",
+        "scope",
+        "aims",
+        "epistemicStatus",
+        "statusEvidence",
+        "rivals",
+        "supportingObservations",
+        "limitingObservations",
+        "predictions",
+        "potentialFalsifiers"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "hypothesis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aims": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "science",
+              "policy",
+              "productivity"
+            ]
+          }
+        },
+        "epistemicStatus": {
+          "$ref": "#/$defs/statusId"
+        },
+        "statusEvidence": {
+          "$ref": "#/$defs/statusEvidence"
+        },
+        "rivals": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string"
+          }
+        },
+        "supportingObservations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitingObservations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "predictions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/prediction"
+          }
+        },
+        "potentialFalsifiers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "epistemicStatus": {
+              "const": "untested"
+            },
+            "statusEvidence": {
+              "$ref": "#/$defs/untestedStatusEvidence"
+            }
+          }
+        },
+        {
+          "properties": {
+            "epistemicStatus": {
+              "const": "mechanism-supported"
+            },
+            "statusEvidence": {
+              "$ref": "#/$defs/mechanismStatusEvidence"
+            }
+          }
+        },
+        {
+          "properties": {
+            "epistemicStatus": {
+              "const": "single-case-supported"
+            },
+            "statusEvidence": {
+              "$ref": "#/$defs/singleCaseStatusEvidence"
+            }
+          }
+        },
+        {
+          "properties": {
+            "epistemicStatus": {
+              "const": "benchmark-no-clear-gain"
+            },
+            "statusEvidence": {
+              "$ref": "#/$defs/benchmarkNoClearGainStatusEvidence"
+            }
+          }
+        },
+        {
+          "properties": {
+            "epistemicStatus": {
+              "const": "field-association"
+            },
+            "statusEvidence": {
+              "$ref": "#/$defs/fieldAssociationStatusEvidence"
+            }
+          }
+        },
+        {
+          "properties": {
+            "epistemicStatus": {
+              "const": "causal-effect-supported"
+            },
+            "statusEvidence": {
+              "$ref": "#/$defs/causalEffectStatusEvidence"
+            }
+          }
+        },
+        {
+          "properties": {
+            "epistemicStatus": {
+              "const": "falsified-within-scope"
+            },
+            "statusEvidence": {
+              "$ref": "#/$defs/falsifiedStatusEvidence"
+            }
+          }
+        }
+      ]
+    },
+    "prediction": {
+      "type": "object",
+      "required": [
+        "id",
+        "statement",
+        "estimand",
+        "comparator",
+        "threshold",
+        "window",
+        "measurementPlan"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "comparator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "threshold": {
+          "type": "string",
+          "minLength": 1
+        },
+        "window": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurementPlan": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "evidenceReference": {
+      "type": "object",
+      "required": [
+        "kind",
+        "ref",
+        "role"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "internal-artifact",
+            "public-url",
+            "registered-design",
+            "independent-review"
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": [
+            "benchmark-result",
+            "mechanism-evidence",
+            "outcome-evidence",
+            "field-record",
+            "design-registration",
+            "review",
+            "falsifier-result"
+          ]
+        }
+      }
+    },
+    "independentReview": {
+      "type": "object",
+      "required": [
+        "actor",
+        "relationship",
+        "conflictStatement",
+        "date",
+        "evidenceRef",
+        "methodologicalScope",
+        "conclusion"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationship": {
+          "enum": [
+            "unaffiliated",
+            "commissioned-independent",
+            "regulator",
+            "journal-peer-review"
+          ]
+        },
+        "conflictStatement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "evidenceRef": {
+          "type": "string",
+          "format": "uri"
+        },
+        "methodologicalScope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conclusion": {
+          "enum": [
+            "supports",
+            "mixed",
+            "challenges"
+          ]
+        }
+      }
+    },
+    "optionalIndependentReview": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/independentReview"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "untestedStatusEvidence": {
+      "type": "object",
+      "required": [
+        "status",
+        "designClass",
+        "observationIds",
+        "evidenceRefs",
+        "comparator",
+        "estimand",
+        "decisionRule",
+        "registeredDesignRef",
+        "independentReview",
+        "reason",
+        "inferenceLimit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "untested"
+        },
+        "designClass": {
+          "const": "none"
+        },
+        "observationIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        },
+        "comparator": {
+          "const": null
+        },
+        "estimand": {
+          "const": null
+        },
+        "decisionRule": {
+          "const": null
+        },
+        "registeredDesignRef": {
+          "const": null
+        },
+        "independentReview": {
+          "const": null
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inferenceLimit": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "mechanismStatusEvidence": {
+      "type": "object",
+      "required": [
+        "status",
+        "designClass",
+        "observationIds",
+        "evidenceRefs",
+        "comparator",
+        "estimand",
+        "decisionRule",
+        "registeredDesignRef",
+        "independentReview",
+        "mechanism",
+        "inferenceLimit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "mechanism-supported"
+        },
+        "designClass": {
+          "const": "mechanism-observation"
+        },
+        "observationIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        },
+        "comparator": {
+          "const": null
+        },
+        "estimand": {
+          "const": null
+        },
+        "decisionRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registeredDesignRef": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "independentReview": {
+          "$ref": "#/$defs/optionalIndependentReview"
+        },
+        "mechanism": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inferenceLimit": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "singleCaseStatusEvidence": {
+      "type": "object",
+      "required": [
+        "status",
+        "designClass",
+        "observationIds",
+        "evidenceRefs",
+        "comparator",
+        "estimand",
+        "decisionRule",
+        "registeredDesignRef",
+        "independentReview",
+        "caseBoundary",
+        "measurementBoundary",
+        "inferenceLimit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "single-case-supported"
+        },
+        "designClass": {
+          "enum": [
+            "single-case",
+            "controlled-user-study",
+            "field-observational",
+            "quasi-experimental",
+            "randomized-comparison"
+          ]
+        },
+        "observationIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        },
+        "comparator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registeredDesignRef": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "independentReview": {
+          "$ref": "#/$defs/optionalIndependentReview"
+        },
+        "caseBoundary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurementBoundary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inferenceLimit": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "benchmarkNoClearGainStatusEvidence": {
+      "type": "object",
+      "required": [
+        "status",
+        "designClass",
+        "observationIds",
+        "evidenceRefs",
+        "comparator",
+        "estimand",
+        "decisionRule",
+        "registeredDesignRef",
+        "independentReview",
+        "benchmarkBoundary",
+        "inferenceLimit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "benchmark-no-clear-gain"
+        },
+        "designClass": {
+          "const": "model-benchmark"
+        },
+        "observationIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        },
+        "comparator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registeredDesignRef": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "independentReview": {
+          "$ref": "#/$defs/optionalIndependentReview"
+        },
+        "benchmarkBoundary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inferenceLimit": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "fieldAssociationStatusEvidence": {
+      "type": "object",
+      "required": [
+        "status",
+        "designClass",
+        "observationIds",
+        "evidenceRefs",
+        "comparator",
+        "estimand",
+        "decisionRule",
+        "registeredDesignRef",
+        "independentReview",
+        "outcome",
+        "population",
+        "observationPeriod",
+        "missingness",
+        "confoundingAndSelectionLimits",
+        "inferenceLimit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "field-association"
+        },
+        "designClass": {
+          "const": "field-observational"
+        },
+        "observationIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        },
+        "comparator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registeredDesignRef": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "independentReview": {
+          "$ref": "#/$defs/optionalIndependentReview"
+        },
+        "outcome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "population": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observationPeriod": {
+          "type": "string",
+          "minLength": 1
+        },
+        "missingness": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confoundingAndSelectionLimits": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inferenceLimit": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "causalEffectStatusEvidence": {
+      "type": "object",
+      "required": [
+        "status",
+        "designClass",
+        "observationIds",
+        "evidenceRefs",
+        "comparator",
+        "estimand",
+        "decisionRule",
+        "registeredDesignRef",
+        "independentReview",
+        "population",
+        "intervention",
+        "outcome",
+        "observationPeriod",
+        "identificationAssumptions",
+        "uncertaintyAndAttrition",
+        "inferenceLimit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "causal-effect-supported"
+        },
+        "designClass": {
+          "enum": [
+            "quasi-experimental",
+            "randomized-comparison"
+          ]
+        },
+        "observationIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        },
+        "comparator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registeredDesignRef": {
+          "type": "string",
+          "format": "uri"
+        },
+        "independentReview": {
+          "$ref": "#/$defs/independentReview"
+        },
+        "population": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intervention": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outcome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observationPeriod": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identificationAssumptions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "uncertaintyAndAttrition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inferenceLimit": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "falsifiedStatusEvidence": {
+      "type": "object",
+      "required": [
+        "status",
+        "designClass",
+        "observationIds",
+        "evidenceRefs",
+        "comparator",
+        "estimand",
+        "decisionRule",
+        "registeredDesignRef",
+        "independentReview",
+        "triggeredFalsifier",
+        "reopenConditions",
+        "inferenceLimit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "falsified-within-scope"
+        },
+        "designClass": {
+          "enum": [
+            "model-benchmark",
+            "controlled-user-study",
+            "field-observational",
+            "quasi-experimental",
+            "randomized-comparison",
+            "falsifier-test"
+          ]
+        },
+        "observationIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidenceReference"
+          }
+        },
+        "comparator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registeredDesignRef": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "independentReview": {
+          "$ref": "#/$defs/optionalIndependentReview"
+        },
+        "triggeredFalsifier": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reopenConditions": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inferenceLimit": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "statusEvidence": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/untestedStatusEvidence"
+        },
+        {
+          "$ref": "#/$defs/mechanismStatusEvidence"
+        },
+        {
+          "$ref": "#/$defs/singleCaseStatusEvidence"
+        },
+        {
+          "$ref": "#/$defs/benchmarkNoClearGainStatusEvidence"
+        },
+        {
+          "$ref": "#/$defs/fieldAssociationStatusEvidence"
+        },
+        {
+          "$ref": "#/$defs/causalEffectStatusEvidence"
+        },
+        {
+          "$ref": "#/$defs/falsifiedStatusEvidence"
+        }
+      ]
+    },
+    "statusId": {
+      "enum": [
+        "untested",
+        "mechanism-supported",
+        "single-case-supported",
+        "benchmark-no-clear-gain",
+        "field-association",
+        "causal-effect-supported",
+        "falsified-within-scope"
+      ]
+    },
+    "statusDefinition": {
+      "type": "object",
+      "required": [
+        "id",
+        "definition",
+        "entryCriteria",
+        "claimCeiling"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/statusId"
+        },
+        "definition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entryCriteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "claimCeiling": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "updatePolicy": {
+      "type": "object",
+      "required": [
+        "cadence",
+        "rules"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "cadence": {
+          "type": "string"
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "change": {
+      "type": "object",
+      "required": [
+        "sequence",
+        "revisionId",
+        "previousRevisionId",
+        "recordedAt",
+        "changeType",
+        "scope",
+        "basisObservationIds",
+        "summary"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "revisionId": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "previousRevisionId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "recordedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "changeType": {
+          "enum": [
+            "initialization",
+            "observation-added",
+            "status-changed",
+            "claim-revised",
+            "prediction-revised",
+            "falsifier-triggered",
+            "correction"
+          ]
+        },
+        "scope": {
+          "enum": [
+            "ledger",
+            "hypothesis",
+            "observation",
+            "prediction"
+          ]
+        },
+        "hypothesisId": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "predictionId": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "fromStatus": {
+          "$ref": "#/$defs/statusId"
+        },
+        "toStatus": {
+          "$ref": "#/$defs/statusId"
+        },
+        "basisObservationIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

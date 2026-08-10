@@ -1,0 +1,616 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/work-ledger.schema.json",
+  "title": "Evidence Press prospective work ledger",
+  "description": "Intake-to-terminal workflow records, including explicit missingness and unpublished attempts. Structural validity does not establish acceleration or impact.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "effectiveDate",
+    "baselineCommit",
+    "policy",
+    "status",
+    "claimCeiling",
+    "requiredAtIntake",
+    "workStatuses",
+    "measurementStatuses",
+    "cohorts",
+    "resultClasses",
+    "attempts",
+    "updatePolicy",
+    "changeLog"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "baselineCommit": {
+      "const": "6585348a0aa4c7a89ee0dafcaf29ca719cae56fd"
+    },
+    "policy": {
+      "const": "prospective-only-no-legacy-backfill"
+    },
+    "status": {
+      "const": "prospective-intake-ledger"
+    },
+    "claimCeiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requiredAtIntake": {
+      "type": "array",
+      "minItems": 9,
+      "items": {
+        "type": "string"
+      }
+    },
+    "workStatuses": {
+      "type": "array",
+      "minItems": 7,
+      "items": {
+        "type": "string"
+      }
+    },
+    "measurementStatuses": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "cohorts": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "resultClasses": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "string"
+      }
+    },
+    "attempts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/attempt"
+      }
+    },
+    "updatePolicy": {
+      "$ref": "#/$defs/updatePolicy"
+    },
+    "changeLog": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/change"
+      }
+    }
+  },
+  "$defs": {
+    "attempt": {
+      "type": "object",
+      "required": [
+        "attemptId",
+        "workId",
+        "cohort",
+        "registeredAt",
+        "aims",
+        "question",
+        "selectionBasis",
+        "taskClass",
+        "status",
+        "statusAt",
+        "resultClass",
+        "statusHistory",
+        "decisionObjectTarget",
+        "comparisonPlan",
+        "measurement",
+        "assuranceEndpoint",
+        "releaseSlug",
+        "stopReason",
+        "corrections",
+        "revisions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "attemptId": {
+          "type": "string",
+          "pattern": "^ep-attempt:[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "workId": {
+          "type": "string",
+          "pattern": "^ep-work:[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "cohort": {
+          "enum": [
+            "prospective",
+            "left-censored-at-adoption"
+          ]
+        },
+        "registeredAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "aims": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "science",
+              "policy",
+              "productivity"
+            ]
+          }
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selectionBasis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "taskClass": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "active",
+            "result-ready",
+            "release-candidate",
+            "published",
+            "stopped",
+            "abandoned",
+            "superseded"
+          ]
+        },
+        "statusAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "resultClass": {
+          "enum": [
+            "pending",
+            "positive",
+            "negative",
+            "partial",
+            "null",
+            "no-substantive-result"
+          ]
+        },
+        "statusHistory": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/statusEvent"
+          }
+        },
+        "decisionObjectTarget": {
+          "type": "string",
+          "minLength": 1
+        },
+        "comparisonPlan": {
+          "$ref": "#/$defs/comparisonPlan"
+        },
+        "measurement": {
+          "$ref": "#/$defs/measurement"
+        },
+        "assuranceEndpoint": {
+          "$ref": "#/$defs/assuranceEndpoint"
+        },
+        "releaseSlug": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "stopReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "corrections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/correction"
+          }
+        },
+        "revisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/change"
+          }
+        }
+      }
+    },
+    "statusEvent": {
+      "type": "object",
+      "required": [
+        "at",
+        "status",
+        "resultClass",
+        "reason",
+        "evidenceRefs"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "enum": [
+            "active",
+            "result-ready",
+            "release-candidate",
+            "published",
+            "stopped",
+            "abandoned",
+            "superseded"
+          ]
+        },
+        "resultClass": {
+          "enum": [
+            "pending",
+            "positive",
+            "negative",
+            "partial",
+            "null",
+            "no-substantive-result"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "comparisonPlan": {
+      "type": "object",
+      "required": [
+        "status",
+        "comparator",
+        "estimand",
+        "matchedAssuranceEndpoint",
+        "reason"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "planned",
+            "not-applicable",
+            "not-recorded"
+          ]
+        },
+        "comparator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "matchedAssuranceEndpoint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "required": [
+        "status",
+        "missingnessReason",
+        "milestones",
+        "activeHumanMinutes",
+        "computeMinutes",
+        "computeCost",
+        "agentRuns",
+        "reworkMinutes",
+        "correctionCount"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "measured-complete",
+            "measured-partial",
+            "not-recorded"
+          ]
+        },
+        "missingnessReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/milestone"
+          }
+        },
+        "activeHumanMinutes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "computeMinutes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "computeCost": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "amount",
+            "currency"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "type": "number",
+              "minimum": 0
+            },
+            "currency": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            }
+          }
+        },
+        "agentRuns": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "reworkMinutes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "correctionCount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "milestone": {
+      "type": "object",
+      "required": [
+        "event",
+        "at",
+        "basis"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "event": {
+          "enum": [
+            "work-opened",
+            "result-ready",
+            "claim-locked",
+            "assurance-endpoint-reached",
+            "public-release",
+            "translation-use",
+            "work-stopped"
+          ]
+        },
+        "at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "assuranceEndpoint": {
+      "type": "object",
+      "required": [
+        "status",
+        "assessedAt",
+        "dimensions",
+        "claimCeiling",
+        "evidenceRefs",
+        "missingnessReason"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "measured-complete",
+            "measured-partial",
+            "not-recorded"
+          ]
+        },
+        "assessedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/assuranceDimension"
+          }
+        },
+        "claimCeiling": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "missingnessReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "assuranceDimension": {
+      "type": "object",
+      "required": [
+        "dimension",
+        "state",
+        "evidenceRefs"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "dimension": {
+          "enum": [
+            "availability",
+            "internalReplay",
+            "independentRerun",
+            "independentReimplementation",
+            "formalVerification",
+            "specialistReview",
+            "editorialPeerReview",
+            "dataEnvironmentReproducibility",
+            "semanticValidation",
+            "noveltyAssessment",
+            "priorityAssessment"
+          ]
+        },
+        "state": {
+          "enum": [
+            "passed",
+            "partial",
+            "failed",
+            "not-assessed",
+            "not-applicable"
+          ]
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "correction": {
+      "type": "object",
+      "required": [
+        "at",
+        "field",
+        "reason",
+        "replacement",
+        "evidenceRefs"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "replacement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "updatePolicy": {
+      "type": "object",
+      "required": [
+        "cadence",
+        "rules"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "cadence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "change": {
+      "type": "object",
+      "required": [
+        "date",
+        "summary"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

@@ -16,7 +16,9 @@ constraints below exist because the output is a publication record, not an app.
 ## Local development
 
 ```bash
-node build.js                  # writes the whole site to ./dist — no install needed
+REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh
+                               # writes the complete site to ./dist
+node tools/test-operating-model.js # operating contract + hostile controls
 node tools/test-render.js      # renderer regression and property tests
 node tools/test-metadata.js    # schema conformance + cross-surface consistency
 node tools/check-links.js      # every internal link and asset resolves
@@ -24,13 +26,13 @@ node tools/check-published.js  # publication-preservation gate
 python3 -m http.server -d dist 8000
 ```
 
-Node 18 or later. There are no dependencies and no build step beyond
-`build.js`; please keep it that way. A parser or framework added here becomes
+Node 18 or later. There are no runtime package dependencies; the composite
+builder invokes the dependency-free host and protocol builders. A parser or framework added here becomes
 part of the trusted computing base of a scholarly record.
 
 ## Before opening a pull request
 
-- Run all four checks above. CI runs the same ones on Node 18, 20 and 22.
+- Run all checks above. CI runs the same ones on Node 18, 20 and 22.
 - Rebuild twice and confirm `dist/` is byte-identical. The build must not
   depend on the wall clock or any other varying state; the build timestamp
   comes from the commit for exactly this reason.
@@ -55,6 +57,17 @@ Release metadata is validated against a strict authoring schema before
 anything is written. If the build rejects your record, read the error: it
 lists every problem at once. Do not relax the schema to make a record pass
 unless the schema is genuinely wrong about the world.
+
+Every release outside the frozen adoption baseline must also carry a complete
+`operatingModel` record and reciprocally resolve to one or more attempts in
+`data/WORK_LEDGER.json`, registered methods, exactly one broad method cluster,
+an explicit decision object, semantic bridge, human judgement gates, assurance
+target, structured parent handoffs and one scoped impact claim for every
+declared aim. A research lineage may be declared only when dependency evidence
+exists. Do not add a new slug to the legacy list to bypass that requirement,
+and do not reconstruct missing process clocks for historical releases. The
+registry classifies reusable methods; it does not validate the release or
+establish acceleration.
 
 Adding a field to the public API is a compatibility decision. Fields may be
 added within a major version but never removed or retyped; see

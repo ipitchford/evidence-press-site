@@ -11,7 +11,9 @@ Archived on Zenodo: concept DOI [10.5281/zenodo.21817379](https://doi.org/10.528
 ## Build
 
 ```
-node build.js        # writes the whole site to ./dist — no npm install needed
+REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh
+                     # writes the complete site, including /protocols/, to ./dist
+node build.js        # focused host-site build only; useful while editing the renderer
 ```
 
 Requires only Node ≥ 18 (`tools/check-published.js` uses the built-in fetch). No packages, no framework. KaTeX is vendored in `assets/katex/`.
@@ -22,32 +24,37 @@ The build is deterministic: the build timestamp comes from the commit, not the c
 
 ```
 node tools/test-render.js      # renderer regression + property tests
+node tools/test-operating-model.js # doctrine, method/IBE/work ledgers, prospective contract + hostile controls
 node tools/test-metadata.js    # schema conformance + cross-surface consistency
 node tools/check-links.js      # every internal link and asset resolves
 node tools/check-published.js  # publication-preservation gate (never lose a URL)
 ```
 
-CI runs all four on Node 18, 20 and 22, plus a byte-identical-rebuild check, an inline-script check (the pages ship a CSP with `script-src 'self'`), and an automated accessibility pass (`.pa11yci.json`). See `docs/ACCESSIBILITY.md` for what is and is not covered by automation.
+CI runs these checks on Node 18, 20 and 22, plus protocol integrity, a byte-identical-rebuild check, an inline-script check (the pages ship a CSP with `script-src 'self'`), and an automated accessibility pass (`.pa11yci.json`). See `docs/ACCESSIBILITY.md` for what is and is not covered by automation.
 
-Release metadata is validated against a strict authoring schema *before* any file is written: an invalid record fails the build rather than being published. Slugs must match `^[a-z0-9]+(-[a-z0-9]+)*$`, DOIs and canonical URLs must be unique, and only `http:`, `https:` and `mailto:` may reach an `href` or `src`.
+Release metadata is validated against strict authoring contracts *before* any file is written: an invalid record fails the build rather than being published. Slugs must match `^[a-z0-9]+(-[a-z0-9]+)*$`, DOIs and canonical URLs must be unique, and only `http:`, `https:` and `mailto:` may reach an `href` or `src`. The operating-model contract additionally enforces reciprocal attempt receipts, method references, evidence-backed lineage, semantic-bridge status, assurance targets, human judgement gates and aim-scoped impact-evidence boundaries for every post-baseline release.
 
 ## Add a new release
 
-1. Copy an existing folder in `papers/` (e.g. `papers/z20-equals-6/`) to `papers/<new-slug>/`.
-2. Edit `meta.json` — title, one-line summary, abstract, date (`YYYY-MM-DD`), version, DOI, **pdfUrl** (direct link to the manuscript PDF), Zenodo/GitHub URLs, authors as listed on the archive record, keywords, key results, evidence description, verification status, open follow-up problems, related works (each with a URL), and citation text. Set `"math": true` if the page uses LaTeX (`$...$` / `$$...$$`). Optionally add `"narration"` (plain-spoken text for the audio briefing) and `"media": [{"type":"video","url":"...","name":"..."}]` for additional audio/video.
-3. Edit `body.md` — the press release. Template sections: `## Summary` (popular), `## Summary for specialists`, `## Technical summary`, `## Who should care, and why` (audience table), `## The most valuable next projects`, `## Specialist audience candidates`, `## What is in the evidence package`.
-4. Optional but recommended, run the asset generators (outputs are committed):
+1. Before substantive work, register an `attemptId` and `workId` in `data/WORK_LEDGER.json`. Retain stopped, null, failed and unreleased attempts; use explicit missingness rather than reconstructed clocks.
+2. Copy an existing folder in `papers/` (e.g. `papers/z20-equals-6/`) to `papers/<new-slug>/`.
+3. Edit `meta.json` — title, one-line summary, abstract, date (`YYYY-MM-DD`), version, DOI, **pdfUrl** (direct link to the manuscript PDF), Zenodo/GitHub URLs, authors as listed on the archive record, keywords, key results, evidence description, verification status, open follow-up problems, related works (each with a URL), citation text, and a complete `operatingModel` record conforming to `schemas/release-operating-model.schema.json`. Its attempt IDs must reciprocate the work-ledger release link, and its artifact roles must distinguish research outputs from assessments, method demonstrations and communications. Set `"math": true` if the page uses LaTeX (`$...$` / `$$...$$`). Optionally add `"narration"` (plain-spoken text for the audio briefing) and `"media": [{"type":"video","url":"...","name":"..."}]` for additional audio/video.
+4. Add the slug to one or more appropriate method assignments and exactly one broad method cluster in `data/METHOD_REGISTRY.json`. Add it to a lineage only when a published dependency supplies the evidence. Update `data/IBE_LEDGER.json` only when the release materially bears on a recorded explanation. Registry inclusion is not a correctness or impact claim.
+5. Edit `body.md` — the press release. Template sections: `## Summary` (popular), `## Summary for specialists`, `## Technical summary`, `## Who should care, and why` (audience table), `## The most valuable next projects`, `## Specialist audience candidates`, `## What is in the evidence package`.
+6. Optional but recommended, run the asset generators (outputs are committed):
    - `node tools/make-art.js` — regenerate SVG cover art (add a motif function for the new slug, or copy an existing one).
    - `node tools/make-og.js` — regenerate Open Graph card PNGs (needs Playwright + Chromium).
    - `OPENAI_API_KEY=... node tools/make-audio.js` — generate the narrated audio briefing (skips existing files; `--force` regenerates).
-5. Run `node build.js` and check `dist/` locally (`python3 -m http.server -d dist 8000`).
-6. Commit and push — Cloudflare Pages rebuilds and deploys automatically (if connected to Git), or run `./tools/deploy.sh` (build → published-URL gate → deploy → IndexNow push). See *Before you deploy* below.
+7. Run `node tools/test-operating-model.js`, then `REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh`, and check `dist/` locally (`python3 -m http.server -d dist 8000`).
+8. Commit the candidate. Publication remains a separate, explicitly authorised action and must use `./tools/deploy.sh`. See *Before you deploy* below.
 
 The index page, feeds, sitemap, `llms.txt`, `api/papers.json`, per-release RO-Crate packages and Signposting link sets all regenerate automatically from the `papers/` folder — nothing else to update.
 
 ### Assurance and corrections
 
 Each release carries an **assurance matrix** rather than a single verification level: eight independent dimensions (availability, internal replay, independent rerun, independent reimplementation, formal verification, specialist review, editorial peer review, data and environment reproducibility), each with a state of `passed`, `partial`, `failed`, `not-assessed` or `not-applicable`. Declare any of them in `meta.json` under `assurance`; anything undeclared is reported as *not assessed*, which is a statement about what nobody has done yet, not a finding against the work. The legacy `verification` booleans are derived from this matrix, so they cannot disagree with it.
+
+Prospective workflow receipts use those eight release-object dimensions plus three explicitly epistemic targets: semantic validation, novelty assessment and priority assessment. This 11-dimension target does not retrospectively upgrade the public matrix or collapse it to a score. The release matrix describes the published object; the dated work-ledger endpoint records which assurance boundary a prospective attempt actually reached, with evidence and a claim ceiling.
 
 If a published page turns out to be wrong, add an entry to that release's `corrections` array (`date`, `scope` — one of `presentation`, `metadata`, `claim`, `evidence` — `summary`, optional `detail` and `fixedIn`). It renders as a dated notice on the release page and is published in the release's JSON. Corrections are additive: the record of the error stays.
 
@@ -58,6 +65,12 @@ If a published page turns out to be wrong, add an entry to that release's `corre
 - `/releases/<slug>/paper.json` · `index.md` · `cite.bib` — structured record, Markdown version, BibTeX (CORS-enabled JSON)
 - `/api/papers.json` + `/api/schema.json` — full structured index with JSON Schema
 - `/api/v1/papers.json` + `/api/v1/schema.json` — the same content under a versioned route
+- `/operating-model/` — the human-readable doctrine, plus Markdown and JSON representations
+- `/api/operating-model.json` — the institutional contract and frozen adoption baseline
+- `/api/method-registry.json` — reusable methods, failure modes, broad method clusters, evidence-backed lineages and release assignments
+- `/api/ibe-ledger.json` — observations, rival explanations, predictions and potential falsifiers
+- `/api/work-ledger.json` — prospective attempts, including stopped and unreleased work, clocks, resources, comparisons, assurance endpoints and explicit missingness
+- `/api/schemas/*.schema.json` — schemas for all operating artifacts and prospective release records
 - `/api/stability.json` — field stability, compatibility guarantees and deprecation procedure
 - `/api/build.json` — software version, source commit and schema version for this build
 - `/releases/<slug>/ro-crate-metadata.json` — RO-Crate 1.1 package
@@ -76,23 +89,16 @@ A build made from a branch that lacks another branch's release will silently del
 release from the live site, breaking a DOI-bearing page and its Zenodo cross-reference.
 
 ```
-./tools/deploy.sh                      # build → published-URL gate → deploy → IndexNow push
-node tools/check-published.js --record # after success, add anything newly published to the ledger
+./tools/deploy.sh # build → preservation gate → deploy → live readback/ledger → IndexNow push
 ```
 
-`tools/deploy.sh` runs the full safe sequence and, as its last step, pushes every
+`tools/deploy.sh` is the only supported deployment path. It runs the full safe sequence and, as its last step, pushes every
 sitemap URL to IndexNow (Bing, Yandex, DuckDuckGo, Seznam) via
 `tools/indexnow-submit.js`, so new or changed pages are announced on every deploy
 without a manual step. Google does not use IndexNow — that channel is Search
-Console plus the sitemap. The equivalent steps by hand:
-
-```
-node build.js
-node tools/check-published.js          # exits 1 if this build would drop a published URL
-npx wrangler pages deploy dist --project-name evidence-press
-node tools/indexnow-submit.js          # push sitemap URLs to IndexNow (reads dist/sitemap.xml)
-node tools/check-published.js --record # add anything newly published to the ledger
-```
+Console plus the sitemap. Do not invoke `wrangler pages deploy` directly: that
+would bypass the exact protocol source, operating-contract checks, live
+preservation gate and post-deploy readback.
 
 IndexNow ownership is proved by the fixed `indexNowKey` in `site.config.json`,
 which `build.js` serves as `/<key>.txt` at the domain root.
@@ -103,7 +109,8 @@ site, probing each candidate slug's `paper.json` directly, because the site's ow
 endpoints have been observed to under-report what is actually live.
 
 If the gate refuses, the build is wrong, not the ledger. Merge the missing release in and
-rebuild. Only pass `--record` after a deploy has succeeded.
+rebuild. The supported deploy wrapper performs post-deploy readback and records only
+URLs it can confirm live; do not run record mode before publication.
 
 ## Configuration
 
@@ -111,12 +118,12 @@ rebuild. Only pass `--record` after a deploy has succeeded.
 
 ## Cloudflare Pages settings
 
-- Build command: `node build.js`
+- Build command: `REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh`
 - Build output directory: `dist`
 - No environment variables required (audio/og/art generation happens at authoring time, not deploy time).
 
 ## Licensing
 
-The publishing software — `build.js`, `tools/`, `assets/style.css` and `assets/js/` — is MIT licensed (see `LICENSE`). The published research content — `papers/`, `pages/` and everything rendered from them — is dedicated to the public domain under CC0 1.0, as stated on every page of the site. Vendored KaTeX keeps its own MIT licence.
+The publishing software — `build.js`, `tools/`, `assets/style.css` and `assets/js/` — is MIT licensed (see `LICENSE`). The published research and institutional content — `papers/`, `pages/`, `docs/OPERATING_MODEL.md`, `data/` and everything rendered from them — is dedicated to the public domain under CC0 1.0, as stated on every page of the site. Vendored KaTeX keeps its own MIT licence.
 
 Cite the software with `CITATION.cff`; cite a research release with its own DOI.
