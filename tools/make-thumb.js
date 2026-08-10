@@ -63,6 +63,20 @@ const SPECS = {
       <div class="eq-foot">paper · exact code · witnesses · replay receipt</div>`
   },
 
+  'certified-two-item-jrp': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 8 AUGUST 2026', 'JOINT REPLENISHMENT · V1.2.0'],
+    head: ['Two items.', 'One exact <em>gap.</em>'],
+    headSize: 72,
+    sub: 'Shared ordering costs make periodic schedules interact arithmetically. Exact certificates determine the sharp two-item independent-cap relaxation gap.',
+    tag: 'EXACT CERTIFICATES · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">two independent frequency caps</div>
+      <div class="eq eq-sm">Γ<sub>(2,□)</sub> = <span class="hl">γ</span><br>γ ≈ <span class="hl">1.11188959394</span></div>
+      <div class="note">The exact feasible policy can cost up to <b>11.19% more</b> than the relaxation benchmark in the sharp two-item case. The unrestricted multi-item gap remains open.</div>
+      <div class="eq-foot">finite exact enumeration · 212-cell rational cover · replay receipt</div>`
+  },
+
   'erdos-848-all-n': {
     palette: 'oxblood',
     kicker: ['PRESS RELEASE · 28 JULY 2026', 'ERDŐS PROBLEM 848 · V0.1'],

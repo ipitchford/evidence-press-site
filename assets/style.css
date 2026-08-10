@@ -287,6 +287,26 @@ td .inline-img { height: 1.9em; vertical-align: middle; }
 .productivity-what-the-existing-tests-actually-show {
   border-left: 5px solid var(--amber); background: var(--amber-bg);
 }
+.productivity-closest-current-links-to-operational-productivity {
+  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem; border-top: 5px solid var(--accent-2); background: #edf8f6;
+}
+.productivity-closest-current-links-to-operational-productivity > h2,
+.productivity-closest-current-links-to-operational-productivity > p { grid-column: 1 / -1; }
+.productivity-closest-current-links-to-operational-productivity > blockquote {
+  margin: 0; padding: 1rem 1.05rem; background: var(--card); border: 1px solid var(--line);
+  border-left: 5px solid var(--accent); border-radius: 10px;
+}
+.productivity-closest-current-links-to-operational-productivity blockquote h3 { margin: 0 0 .55rem; font-size: 1.12rem; }
+.productivity-closest-current-links-to-operational-productivity blockquote p { margin: 0; color: var(--ink); font-style: normal; }
+.productivity-closest-current-links-to-operational-productivity blockquote .article-figure { margin: 0 0 .85rem; }
+.productivity-closest-current-links-to-operational-productivity blockquote .article-figure img {
+  width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 7px;
+}
+.productivity-closest-current-links-to-operational-productivity blockquote .article-figure figcaption {
+  margin-top: .35rem; color: var(--muted); font-family: var(--sans); font-size: .75rem;
+}
+.productivity-closest-current-links-to-operational-productivity blockquote > p:last-child { margin-top: .9rem; }
 .productivity-start-with-the-evidence-stage,
 .productivity-two-independent-measures-never-merged { grid-column: 1 / -1; }
 .productivity-start-with-the-evidence-stage { border-top: 5px solid var(--accent-2); }
@@ -309,6 +329,8 @@ td .inline-img { height: 1.9em; vertical-align: middle; }
   .productivity-landing { padding-top: 1.2rem; }
   .productivity-lead { grid-template-columns: 1fr; align-items: start; }
   .productivity-section { grid-column: 1 / -1; }
+  .productivity-closest-current-links-to-operational-productivity { grid-template-columns: 1fr; }
+  .productivity-closest-current-links-to-operational-productivity > blockquote { grid-column: 1 / -1; }
   .productivity-a-protocol-is-a-work-contract-not-a-prompt { display: block; }
   .productivity-a-protocol-is-a-work-contract-not-a-prompt h2 { margin-bottom: .65rem; }
   .productivity-start-with-the-evidence-stage .table-wrap { overflow: visible; }
