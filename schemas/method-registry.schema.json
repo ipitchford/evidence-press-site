@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/method-registry.schema.json",
+  "title": "Evidence Press method registry",
+  "description": "A working taxonomy of reusable research operations. Inclusion is not evidence that a release is correct, novel or impactful.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "updated",
+    "status",
+    "claimCeiling",
+    "aims",
+    "methods",
+    "methodClusters",
+    "lineages",
+    "releaseAssignments",
+    "updatePolicy",
+    "changeLog"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claimCeiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "aims": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "enum": [
+          "science",
+          "policy",
+          "productivity"
+        ]
+      }
+    },
+    "methods": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/method"
+      }
+    },
+    "methodClusters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/methodCluster"
+      }
+    },
+    "lineages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/lineage"
+      }
+    },
+    "releaseAssignments": {
+      "type": "object"
+    },
+    "updatePolicy": {
+      "$ref": "#/$defs/updatePolicy"
+    },
+    "changeLog": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/change"
+      }
+    }
+  },
+  "$defs": {
+    "method": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "definition",
+        "mechanism",
+        "applicability",
+        "failureModes",
+        "aims",
+        "representativeReleases"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "definition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mechanism": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applicability": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "failureModes": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string"
+          }
+        },
+        "aims": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "science",
+              "policy",
+              "productivity"
+            ]
+          }
+        },
+        "representativeReleases": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "programmePaths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "methodCluster": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "members",
+        "sharedBoundary"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "members": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "sharedBoundary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "rootReleaseSlug",
+        "members",
+        "basis",
+        "sharedBoundary"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rootReleaseSlug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "members": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sharedBoundary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "updatePolicy": {
+      "type": "object",
+      "required": [
+        "mode",
+        "rules"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "append-only-semantic-history"
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "change": {
+      "type": "object",
+      "required": [
+        "date",
+        "summary"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

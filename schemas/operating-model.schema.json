@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/operating-model.schema.json",
+  "title": "Evidence Press operating model contract",
+  "description": "Machine-enforced institutional policy. Structural validity does not establish acceleration or impact.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "effectiveDate",
+    "status",
+    "doctrine",
+    "methodRegistry",
+    "abductiveLedger",
+    "workLedger",
+    "maxims",
+    "clocks",
+    "claimCeiling",
+    "releasePolicy",
+    "updateRule"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "doctrine": {
+      "type": "string",
+      "const": "docs/OPERATING_MODEL.md"
+    },
+    "methodRegistry": {
+      "type": "string",
+      "const": "data/METHOD_REGISTRY.json"
+    },
+    "abductiveLedger": {
+      "type": "string",
+      "const": "data/IBE_LEDGER.json"
+    },
+    "workLedger": {
+      "type": "string",
+      "const": "data/WORK_LEDGER.json"
+    },
+    "maxims": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "clocks": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "enum": [
+          "discovery",
+          "assurance",
+          "publication",
+          "translation"
+        ]
+      }
+    },
+    "claimCeiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "releasePolicy": {
+      "type": "object",
+      "required": [
+        "mode",
+        "baselineCommit",
+        "legacyReleaseSlugs",
+        "requiredFields",
+        "aims",
+        "artifactRoles",
+        "bottleneckTypes",
+        "decisionObjectTypes",
+        "semanticBridgeStates",
+        "impactStatuses",
+        "impactDesignClasses",
+        "assuranceDimensions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "prospective-required-with-frozen-legacy-baseline"
+        },
+        "baselineCommit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "legacyReleaseSlugs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "requiredFields": {
+          "type": "array",
+          "minItems": 14,
+          "items": {
+            "type": "string"
+          }
+        },
+        "aims": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "enum": [
+              "science",
+              "policy",
+              "productivity"
+            ]
+          }
+        },
+        "artifactRoles": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "enum": [
+              "research-output",
+              "evidence-assessment",
+              "method-demonstration",
+              "communication"
+            ]
+          }
+        },
+        "bottleneckTypes": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "string"
+          }
+        },
+        "decisionObjectTypes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "semanticBridgeStates": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string"
+          }
+        },
+        "impactStatuses": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "impactDesignClasses": {
+          "type": "array",
+          "minItems": 7,
+          "items": {
+            "type": "string"
+          }
+        },
+        "assuranceDimensions": {
+          "type": "array",
+          "minItems": 11,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "updateRule": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

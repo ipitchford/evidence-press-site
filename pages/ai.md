@@ -6,6 +6,11 @@ This site is built to be read by machines as carefully as by people. If you are 
 - `/llms-full.txt` — complete text of every release in one Markdown file.
 - `/api/papers.json` — the full structured index: every release with title, DOI, direct **PDF link**, dates, version, verification status, provenance, key results, keywords, evidence-package description, related works with URLs, media, and open follow-up problems.
 - `/api/schema.json` — JSON Schema for the index, so you can validate before relying on it.
+- `/api/operating-model.json` — the prospective institutional contract, including the frozen legacy boundary and claim ceiling.
+- `/api/method-registry.json` — reusable methods, known failure modes, broad method clusters, evidence-backed lineages, and release assignments. Inclusion means "illustrates", not "validated".
+- `/api/ibe-ledger.json` — the live inference-to-the-best-explanation record: observations, serious rivals, predictions, and potential falsifiers for the acceleration hypotheses.
+- `/api/work-ledger.json` — prospective intake and attempt records, including stopped and unreleased work, resources, clocks, comparators, assurance endpoints, and explicit missingness.
+- `/api/schemas/release-operating-model.schema.json` — the process and handoff record required for future releases.
 - `/releases/<slug>/paper.json` — the same structured record for a single release (CORS-enabled).
 - `/releases/<slug>/index.md` — each release as plain Markdown with front matter.
 - `/releases/<slug>/cite.bib` — BibTeX for each release.
@@ -29,6 +34,8 @@ Every release carries a machine-readable `verification` object:
 ```
 
 and a `provenance` object disclosing AI generation and the human role. If you quote a result from this site, carry the status with it: these are unrefereed results, and stating them as established findings would be a misreading of the source.
+
+Future releases also carry an optional-in-public-v1 but mandatory-at-authoring `operatingModel` object. It identifies the work and reciprocal attempt receipts, declared science/policy/productivity aims, artifact roles that distinguish research from assessment/demonstration/communication, reusable methods, decision object, targeted discovery/assurance/publication/translation clocks, semantic bridge, retained human judgement gates, next assurance action, structured parent handoffs, aim-scoped impact evidence, and relevant IBE hypotheses. The 21 releases at the adoption baseline intentionally omit this record because their process history was not measured prospectively.
 
 ## What agents can usefully do here
 

@@ -1,0 +1,407 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/release-operating-model.schema.json",
+  "title": "Evidence Press release operating-model record",
+  "description": "Prospective process and handoff metadata linked to the work ledger. It is separate from research assurance and scoped real-world impact evidence.",
+  "type": "object",
+  "required": [
+    "version",
+    "workId",
+    "attemptIds",
+    "aims",
+    "artifactRoles",
+    "lineageId",
+    "accelerationPrimitives",
+    "decisionObject",
+    "bottleneckTargeted",
+    "semanticBridge",
+    "humanJudgmentGates",
+    "parentLinks",
+    "assuranceTarget",
+    "impactClaims"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "1.0"
+    },
+    "workId": {
+      "type": "string",
+      "pattern": "^ep-work:[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "attemptIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^ep-attempt:[a-z0-9]+(?:-[a-z0-9]+)*$"
+      }
+    },
+    "aims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "science",
+          "policy",
+          "productivity"
+        ]
+      }
+    },
+    "artifactRoles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "research-output",
+          "evidence-assessment",
+          "method-demonstration",
+          "communication"
+        ]
+      }
+    },
+    "lineageId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "accelerationPrimitives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      }
+    },
+    "decisionObject": {
+      "type": "object",
+      "required": [
+        "type",
+        "description",
+        "scope"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "certificate",
+            "checker",
+            "bound",
+            "counterexample",
+            "obstruction",
+            "identified-set",
+            "stop-receipt",
+            "stability-margin",
+            "decision-rule",
+            "measurement-requirement",
+            "reusable-method",
+            "executable-open-problem",
+            "other"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "bottleneckTargeted": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "discovery",
+          "assurance",
+          "publication",
+          "translation"
+        ]
+      }
+    },
+    "semanticBridge": {
+      "type": "object",
+      "required": [
+        "state",
+        "description",
+        "remainingRisks"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "enum": [
+            "explicit",
+            "partial",
+            "not-applicable"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "remainingRisks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "humanJudgmentGates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "parentLinks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/parentLink"
+      }
+    },
+    "assuranceTarget": {
+      "type": "object",
+      "required": [
+        "dimensions",
+        "nextAction",
+        "claimCeiling"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "dimensions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "availability",
+              "internalReplay",
+              "independentRerun",
+              "independentReimplementation",
+              "formalVerification",
+              "specialistReview",
+              "editorialPeerReview",
+              "dataEnvironmentReproducibility",
+              "semanticValidation",
+              "noveltyAssessment",
+              "priorityAssessment"
+            ]
+          }
+        },
+        "nextAction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claimCeiling": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "impactClaims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/impactClaim"
+      }
+    },
+    "ibeHypotheses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      }
+    }
+  },
+  "$defs": {
+    "parentLink": {
+      "type": "object",
+      "required": [
+        "relation",
+        "workId",
+        "legacyReleaseSlug",
+        "externalUrl",
+        "inheritedClaim",
+        "inheritedAssuranceCeiling"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "relation": {
+          "enum": [
+            "depends-on-claim",
+            "extends-result",
+            "reuses-method",
+            "reuses-evidence",
+            "supersedes",
+            "other"
+          ]
+        },
+        "workId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^ep-work:[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "legacyReleaseSlug": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "externalUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "inheritedClaim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inheritedAssuranceCeiling": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "impactClaim": {
+      "type": "object",
+      "required": [
+        "id",
+        "aim",
+        "outcome",
+        "setting",
+        "status",
+        "designClass",
+        "comparator",
+        "estimand",
+        "evidenceRefs",
+        "registeredDesignRef",
+        "independentAssessment"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "aim": {
+          "enum": [
+            "science",
+            "policy",
+            "productivity"
+          ]
+        },
+        "outcome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "setting": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "NO_IMPACT_EVIDENCE",
+            "BENCHMARK_SIGNAL",
+            "CONTROLLED_USER_SIGNAL",
+            "FIELD_SIGNAL",
+            "CAUSAL_EFFECT_SUPPORTED",
+            "NO_CLEAR_GAIN",
+            "HARM_OR_REGRESSION_FOUND"
+          ]
+        },
+        "designClass": {
+          "enum": [
+            "none",
+            "descriptive",
+            "model-benchmark",
+            "controlled-user-study",
+            "field-observational",
+            "quasi-experimental",
+            "randomized-comparison"
+          ]
+        },
+        "comparator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "registeredDesignRef": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "independentAssessment": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "actor",
+            "relationship",
+            "conflictStatement",
+            "date",
+            "evidenceUrl",
+            "conclusion"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "actor": {
+              "type": "string",
+              "minLength": 1
+            },
+            "relationship": {
+              "enum": [
+                "unaffiliated",
+                "commissioned-independent",
+                "regulator",
+                "journal-peer-review"
+              ]
+            },
+            "conflictStatement": {
+              "type": "string",
+              "minLength": 1
+            },
+            "date": {
+              "type": "string",
+              "format": "date"
+            },
+            "evidenceUrl": {
+              "type": "string",
+              "format": "uri"
+            },
+            "conclusion": {
+              "enum": [
+                "supports",
+                "mixed",
+                "challenges"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

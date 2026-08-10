@@ -1,0 +1,643 @@
+{
+  "schemaVersion": "1.0",
+  "updated": "2026-08-10",
+  "status": "working-taxonomy",
+  "claimCeiling": "Registry inclusion means that a release illustrates a reusable method. It does not establish the release's correctness, novelty, independent reproduction or real-world impact.",
+  "aims": [
+    "science",
+    "policy",
+    "productivity"
+  ],
+  "methods": [
+    {
+      "id": "certificate-first",
+      "name": "Certificate-first, proof-carrying research",
+      "definition": "Separate expensive discovery from cheaper checking by emitting a compact witness, proof object, bound or certificate with a fail-closed verifier.",
+      "mechanism": "Enables parallel candidate generation, reproducible rejection and bounded review without requiring every checker to repeat the discovery process.",
+      "applicability": [
+        "finite combinatorial search",
+        "exact optimisation",
+        "computer-assisted proof",
+        "bounded symbolic computation"
+      ],
+      "failureModes": [
+        "the substantive claim is translated incorrectly into the encoded proposition",
+        "generator and verifier share a defect",
+        "finite evidence is promoted to a universal theorem",
+        "certificate checking is described as independent reproduction"
+      ],
+      "aims": [
+        "science",
+        "productivity"
+      ],
+      "representativeReleases": [
+        "z20-equals-6",
+        "erdos-848-all-n",
+        "txgraffiti-c3-resolution",
+        "certified-two-item-jrp"
+      ]
+    },
+    {
+      "id": "structural-compression",
+      "name": "Structural compression",
+      "definition": "Replace a high-dimensional search, state space or family of calculations with a lower-dimensional coordinate, invariant, kernel, normal form or representation.",
+      "mechanism": "Reduces search and verification cost by exposing the load-bearing structure instead of enumerating the original object space.",
+      "applicability": [
+        "algebraic and geometric classification",
+        "spectral or rank problems",
+        "exact optimisation",
+        "constraint encodings"
+      ],
+      "failureModes": [
+        "the reduction faithfully solves the wrong formal object",
+        "a conditional analytic or semantic bridge is omitted",
+        "the reduced coordinate excludes relevant cases",
+        "bounded computation is mistaken for structural closure"
+      ],
+      "aims": [
+        "science",
+        "policy",
+        "productivity"
+      ],
+      "representativeReleases": [
+        "smooth-point-certificates-polydegree-containments",
+        "exact-smith-invariants-affine-determinant-lines",
+        "cyclicity-root-span-low-rank",
+        "bilateral-deficiency-regular-dim"
+      ]
+    },
+    {
+      "id": "regime-stitching",
+      "name": "Exact regime stitching",
+      "definition": "Partition a large or infinite domain into explicitly covered regimes and use the most suitable exact method in each, with checked seams and endpoints.",
+      "mechanism": "Avoids forcing one monolithic method across scales while retaining a complete coverage argument.",
+      "applicability": [
+        "all-parameter theorems",
+        "phase diagrams",
+        "tail bounds",
+        "parametric optimisation"
+      ],
+      "failureModes": [
+        "an endpoint or transition region is uncovered",
+        "normalisations differ across regimes",
+        "an external tail theorem is misapplied",
+        "the coverage checker shares the construction error"
+      ],
+      "aims": [
+        "science",
+        "productivity"
+      ],
+      "representativeReleases": [
+        "erdos-848-all-n",
+        "certified-two-item-jrp",
+        "exact-low-length-recht-re-inequalities",
+        "hahn-ewens-mixing-theorem"
+      ]
+    },
+    {
+      "id": "adversarial-controls",
+      "name": "Adversarial scientific controls",
+      "definition": "Deliberately corrupt signs, witnesses, manifests, assumptions or encodings and require the relevant validator to reject them.",
+      "mechanism": "Detects ceremonial replay, fail-open checks and fragile evidence pipelines before downstream work accumulates around them.",
+      "applicability": [
+        "scientific software",
+        "certificate checkers",
+        "data and manifest pipelines",
+        "machine-readable research packages"
+      ],
+      "failureModes": [
+        "only anticipated error classes are tested",
+        "producer-designed mutations share the producer specification",
+        "multiple internal routes are called independent",
+        "a green control suite is promoted to theorem verification"
+      ],
+      "aims": [
+        "science",
+        "policy",
+        "productivity"
+      ],
+      "representativeReleases": [
+        "exact-smith-invariants-affine-determinant-lines",
+        "smooth-point-certificates-polydegree-containments",
+        "bordered-jacobian-foundations",
+        "affine-diversification-fibres"
+      ]
+    },
+    {
+      "id": "research-lineage-reuse",
+      "name": "Explicit research-lineage reuse",
+      "definition": "Publish parent-child dependencies and reusable components so an adjacent result can inherit a bounded object without reconstructing the entire programme.",
+      "mechanism": "Lowers reconstruction cost and makes cumulative method development inspectable.",
+      "applicability": [
+        "companion theorems",
+        "method extensions",
+        "shared certificate architectures",
+        "multi-release research programmes"
+      ],
+      "failureModes": [
+        "a child is misdescribed as independent confirmation",
+        "a common parent defect propagates across a lineage",
+        "dependencies are described only in prose",
+        "publication fragments work without standalone utility"
+      ],
+      "aims": [
+        "science",
+        "policy",
+        "productivity"
+      ],
+      "representativeReleases": [
+        "z20-equals-6",
+        "vr2-k4-equals-20",
+        "bordered-jacobian-foundations",
+        "exact-smith-invariants-affine-determinant-lines"
+      ]
+    },
+    {
+      "id": "productive-failure",
+      "name": "Productive failure and stop receipts",
+      "definition": "Retain failed routes and blockers, publish independently useful modules, and state precisely why the parent target remains open or the programme stopped.",
+      "mechanism": "Converts sunk work into reusable negative knowledge and can prevent repeated dead ends or unjustified continuation.",
+      "applicability": [
+        "open conjecture attacks",
+        "feasibility pilots",
+        "non-identification",
+        "failed optimisation routes"
+      ],
+      "failureModes": [
+        "selective disclosure hides unflattering failures",
+        "a trivial failure is published without decision value",
+        "a bounded calculation is inflated into the missing theorem",
+        "the unresolved parent target is obscured"
+      ],
+      "aims": [
+        "science",
+        "policy",
+        "productivity"
+      ],
+      "representativeReleases": [
+        "irreducible-pushforwards-quartic-transitions",
+        "random-reshuffling-baseline-policy",
+        "stocks-are-not-flows",
+        "smooth-point-certificates-polydegree-containments"
+      ]
+    },
+    {
+      "id": "identification-gate",
+      "name": "Identification before estimation",
+      "definition": "Specify the estimand, observation map, accounting identities and rival mechanisms, then test whether the available evidence can distinguish the target before estimating it.",
+      "mechanism": "Prevents false precision and redirects effort toward discriminating measurements or bounded conclusions.",
+      "applicability": [
+        "causal attribution",
+        "mechanism claims",
+        "aggregate observational data",
+        "policy evidence assessment"
+      ],
+      "failureModes": [
+        "the rival class is too narrow",
+        "the observation map is semantically wrong",
+        "conditional non-identification is advertised as universal",
+        "non-identification is interpreted as a zero effect"
+      ],
+      "aims": [
+        "policy",
+        "science"
+      ],
+      "representativeReleases": [
+        "stocks-are-not-flows",
+        "affine-diversification-fibres"
+      ],
+      "programmePaths": [
+        "/observatory/"
+      ]
+    },
+    {
+      "id": "partial-identification",
+      "name": "Partial identification and robust decisions",
+      "definition": "Characterise the admissible set and its sharp extrema, report incompatibility where appropriate, and identify decisions robust across the supported set.",
+      "mechanism": "Replaces unsupported point estimates and finite random clouds with bounded decision-relevant uncertainty.",
+      "applicability": [
+        "incomplete measurement",
+        "multiple compatible latent histories",
+        "model ambiguity",
+        "value-of-information analysis"
+      ],
+      "failureModes": [
+        "input uncertainty is frozen without disclosure",
+        "plausible states are excluded",
+        "sampled extrema are called sharp",
+        "utilities, rights or information costs are omitted"
+      ],
+      "aims": [
+        "policy",
+        "science",
+        "productivity"
+      ],
+      "representativeReleases": [
+        "affine-diversification-fibres",
+        "stocks-are-not-flows",
+        "certified-commitment-horizons"
+      ],
+      "programmePaths": [
+        "/observatory/"
+      ]
+    },
+    {
+      "id": "counterexample-proxy-first",
+      "name": "Counterexample- and proxy-first analysis",
+      "definition": "Try to refute the proposed conjecture, proxy or search region before optimising or generalising it, and compare surrogates with the terminal outcome that matters.",
+      "mechanism": "Prunes invalid programmes early and exposes metric reversals, obstructions and approximation gaps.",
+      "applicability": [
+        "algorithm selection",
+        "theoretical proxies",
+        "structural conjectures",
+        "heuristic optimisation"
+      ],
+      "failureModes": [
+        "the target outcome is undefined",
+        "a narrow counterexample is overgeneralised",
+        "distributional relevance is untested",
+        "the invalidated proxy remains the decision criterion"
+      ],
+      "aims": [
+        "science",
+        "policy",
+        "productivity"
+      ],
+      "representativeReleases": [
+        "txgraffiti-c3-resolution",
+        "exact-low-length-recht-re-inequalities",
+        "random-reshuffling-baseline-policy",
+        "reducible-incidence-divisors"
+      ]
+    },
+    {
+      "id": "certified-decision-margin",
+      "name": "Certified decision margins",
+      "definition": "Compute how far inputs may move before a decision changes, or certify a result relative to a declared baseline with an explicit fallback when the sign is unresolved.",
+      "mechanism": "Concentrates recomputation and human attention near decision boundaries while preserving a safe incumbent elsewhere.",
+      "applicability": [
+        "forecast-sensitive planning",
+        "resource-constrained optimisation",
+        "selective automated action",
+        "bounded-regret decisions"
+      ],
+      "failureModes": [
+        "the baseline is mismatched",
+        "switching or measurement costs are omitted",
+        "the model is transferred beyond its declared scope",
+        "nominal stability is confused with field robustness"
+      ],
+      "aims": [
+        "policy",
+        "productivity"
+      ],
+      "representativeReleases": [
+        "certified-commitment-horizons",
+        "certified-two-item-jrp",
+        "random-reshuffling-baseline-policy",
+        "affine-diversification-fibres"
+      ]
+    },
+    {
+      "id": "assurance-vector",
+      "name": "Assurance as a vector",
+      "definition": "Keep semantic mapping, certificate checking, producer replay, independent rerun, independent reimplementation, formal verification, specialist review, peer review and impact as separate claims.",
+      "mechanism": "Prevents evidence from one dimension borrowing credibility from another and directs scarce review to the unresolved gate.",
+      "applicability": [
+        "AI-assisted research",
+        "computer-assisted proof",
+        "open evidence packages",
+        "policy and productivity evaluation"
+      ],
+      "failureModes": [
+        "one omnibus badge replaces scoped states",
+        "correlated agents are counted as independent",
+        "producer replay is described as acceptance",
+        "protocol conformance is treated as impact"
+      ],
+      "aims": [
+        "science",
+        "policy",
+        "productivity"
+      ],
+      "representativeReleases": [
+        "z20-equals-6",
+        "exact-smith-invariants-affine-determinant-lines",
+        "stocks-are-not-flows",
+        "random-reshuffling-baseline-policy"
+      ],
+      "programmePaths": [
+        "/observatory/assurance/",
+        "/productivity/"
+      ]
+    },
+    {
+      "id": "agent-readable-research-object",
+      "name": "Agent-readable research objects",
+      "definition": "Publish claims, dependencies, evidence, objections, open problems and replay routes in durable machine-readable forms alongside human explanations.",
+      "mechanism": "Reduces rediscovery and reconstruction cost when another person or agent audits, extends or challenges the work.",
+      "applicability": [
+        "open scholarly communication",
+        "distributed review",
+        "research handoff",
+        "automated evidence triage"
+      ],
+      "failureModes": [
+        "machine-readable errors propagate faster",
+        "metadata integrity is confused with scientific truth",
+        "schemas omit the semantic boundary",
+        "communication assets are counted as evidence"
+      ],
+      "aims": [
+        "science",
+        "policy",
+        "productivity"
+      ],
+      "representativeReleases": [
+        "z20-equals-6",
+        "erdos-848-all-n",
+        "exact-smith-invariants-affine-determinant-lines",
+        "random-reshuffling-baseline-policy"
+      ]
+    },
+    {
+      "id": "staged-adoption-evaluation",
+      "name": "Staged adoption and impact evaluation",
+      "definition": "Keep method conformance separate from benefit and progress through usability, feasibility, controlled comparison and organisational follow-up with explicit stop rules.",
+      "mechanism": "Prevents model-only or structural checks from becoming workplace-impact claims and preserves evidence about burden, errors, rework and adoption.",
+      "applicability": [
+        "agent workflow adoption",
+        "organisational pilots",
+        "human-computer work evaluation",
+        "method transfer"
+      ],
+      "failureModes": [
+        "an underpowered pilot is promoted",
+        "missing outcomes are deleted",
+        "field association is called causal",
+        "average gain conceals harm or support cost"
+      ],
+      "aims": [
+        "productivity",
+        "policy"
+      ],
+      "representativeReleases": [
+        "random-reshuffling-baseline-policy",
+        "certified-two-item-jrp",
+        "certified-commitment-horizons"
+      ],
+      "programmePaths": [
+        "/productivity/",
+        "/protocols/start/"
+      ]
+    }
+  ],
+  "methodClusters": [
+    {
+      "id": "binary-form-jacobian-and-obstruction",
+      "name": "Binary-form Jacobian, determinant and obstruction toolkit",
+      "members": [
+        "degree-difference-affine-slices",
+        "bordered-jacobian-foundations",
+        "exact-smith-invariants-affine-determinant-lines",
+        "smooth-point-certificates-polydegree-containments",
+        "reducible-incidence-divisors",
+        "exotic-affine-three-spheres"
+      ],
+      "sharedBoundary": "Related internal releases can reuse identities and methods but do not independently validate their shared mathematical or semantic premises."
+    },
+    {
+      "id": "cyclicity-and-spectral-compression",
+      "name": "Cyclicity and spectral compression",
+      "members": [
+        "cyclicity-loci-exponential-periods",
+        "cyclicity-root-span-low-rank",
+        "hahn-ewens-mixing-theorem"
+      ],
+      "sharedBoundary": "Exact algebraic or representation-theoretic compression does not discharge every analytic bridge or establish application-level impact."
+    },
+    {
+      "id": "exact-combinatorial-certificates",
+      "name": "Exact combinatorial certificate architecture",
+      "members": [
+        "z20-equals-6",
+        "vr2-k4-equals-20",
+        "txgraffiti-c3-resolution",
+        "bilateral-deficiency-regular-dim",
+        "erdos-848-all-n"
+      ],
+      "sharedBoundary": "Certificate replay establishes encoded bounded claims; source-to-encoding correctness and independent reconstruction remain separate."
+    },
+    {
+      "id": "identification-and-robust-operations",
+      "name": "Identification and robust operations",
+      "members": [
+        "stocks-are-not-flows",
+        "affine-diversification-fibres",
+        "certified-commitment-horizons",
+        "certified-two-item-jrp"
+      ],
+      "sharedBoundary": "Identified sets, exact bounds and decision margins are conditional on the declared observation map and model; real-world decision effects are unmeasured."
+    },
+    {
+      "id": "sampling-and-optimisation-diagnostics",
+      "name": "Sampling and optimisation diagnostics",
+      "members": [
+        "random-reshuffling-baseline-policy",
+        "exact-low-length-recht-re-inequalities"
+      ],
+      "sharedBoundary": "Exact quadratic or finite-factor counterexamples do not establish frequency or magnitude in model-scale nonlinear workloads."
+    },
+    {
+      "id": "grand-problem-salvage",
+      "name": "Grand-problem salvage",
+      "members": [
+        "irreducible-pushforwards-quartic-transitions"
+      ],
+      "sharedBoundary": "The extracted modules may be useful while the parent conjecture remains explicitly unresolved."
+    }
+  ],
+  "lineages": [
+    {
+      "id": "binary-form-programme",
+      "name": "Binary-form factorisation programme",
+      "rootReleaseSlug": "degree-difference-affine-slices",
+      "members": [
+        "degree-difference-affine-slices",
+        "exotic-affine-three-spheres",
+        "reducible-incidence-divisors",
+        "bordered-jacobian-foundations",
+        "exact-smith-invariants-affine-determinant-lines"
+      ],
+      "basis": "Each member explicitly identifies another member as foundational, parent, child, companion or continuation work in the published release metadata.",
+      "sharedBoundary": "Dependency and reuse within this programme are not independent confirmation; a shared semantic or mathematical defect can propagate across the lineage."
+    },
+    {
+      "id": "cyclicity-programme",
+      "name": "Fixed-seed cyclicity programme",
+      "rootReleaseSlug": "cyclicity-loci-exponential-periods",
+      "members": [
+        "cyclicity-loci-exponential-periods",
+        "cyclicity-root-span-low-rank"
+      ],
+      "basis": "The root-span release explicitly cites the cyclicity-loci release as its predecessor and extends the same fixed-seed cyclicity programme.",
+      "sharedBoundary": "The child release reuses the fixed-seed framework and therefore does not independently confirm the parent release or its analytic bridge."
+    }
+  ],
+  "releaseAssignments": {
+    "affine-diversification-fibres": [
+      "structural-compression",
+      "adversarial-controls",
+      "identification-gate",
+      "partial-identification",
+      "certified-decision-margin",
+      "agent-readable-research-object"
+    ],
+    "bilateral-deficiency-regular-dim": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "research-lineage-reuse"
+    ],
+    "bordered-jacobian-foundations": [
+      "structural-compression",
+      "adversarial-controls",
+      "research-lineage-reuse",
+      "assurance-vector"
+    ],
+    "certified-commitment-horizons": [
+      "certificate-first",
+      "structural-compression",
+      "partial-identification",
+      "certified-decision-margin",
+      "staged-adoption-evaluation"
+    ],
+    "certified-two-item-jrp": [
+      "certificate-first",
+      "structural-compression",
+      "regime-stitching",
+      "certified-decision-margin",
+      "staged-adoption-evaluation"
+    ],
+    "cyclicity-loci-exponential-periods": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "counterexample-proxy-first"
+    ],
+    "cyclicity-root-span-low-rank": [
+      "structural-compression",
+      "adversarial-controls",
+      "research-lineage-reuse",
+      "productive-failure"
+    ],
+    "degree-difference-affine-slices": [
+      "structural-compression",
+      "adversarial-controls",
+      "research-lineage-reuse"
+    ],
+    "erdos-848-all-n": [
+      "certificate-first",
+      "regime-stitching",
+      "adversarial-controls",
+      "agent-readable-research-object"
+    ],
+    "exact-low-length-recht-re-inequalities": [
+      "certificate-first",
+      "regime-stitching",
+      "adversarial-controls",
+      "counterexample-proxy-first"
+    ],
+    "exact-smith-invariants-affine-determinant-lines": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "research-lineage-reuse",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "exotic-affine-three-spheres": [
+      "structural-compression",
+      "adversarial-controls",
+      "counterexample-proxy-first",
+      "research-lineage-reuse"
+    ],
+    "hahn-ewens-mixing-theorem": [
+      "structural-compression",
+      "regime-stitching",
+      "adversarial-controls"
+    ],
+    "irreducible-pushforwards-quartic-transitions": [
+      "structural-compression",
+      "productive-failure",
+      "agent-readable-research-object"
+    ],
+    "random-reshuffling-baseline-policy": [
+      "certificate-first",
+      "productive-failure",
+      "counterexample-proxy-first",
+      "certified-decision-margin",
+      "assurance-vector",
+      "agent-readable-research-object",
+      "staged-adoption-evaluation"
+    ],
+    "reducible-incidence-divisors": [
+      "structural-compression",
+      "counterexample-proxy-first",
+      "research-lineage-reuse"
+    ],
+    "smooth-point-certificates-polydegree-containments": [
+      "certificate-first",
+      "structural-compression",
+      "regime-stitching",
+      "adversarial-controls",
+      "research-lineage-reuse",
+      "productive-failure"
+    ],
+    "stocks-are-not-flows": [
+      "identification-gate",
+      "partial-identification",
+      "productive-failure",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "txgraffiti-c3-resolution": [
+      "certificate-first",
+      "adversarial-controls",
+      "research-lineage-reuse",
+      "counterexample-proxy-first"
+    ],
+    "vr2-k4-equals-20": [
+      "certificate-first",
+      "research-lineage-reuse",
+      "assurance-vector"
+    ],
+    "z20-equals-6": [
+      "certificate-first",
+      "adversarial-controls",
+      "research-lineage-reuse",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ]
+  },
+  "updatePolicy": {
+    "mode": "append-only-semantic-history",
+    "rules": [
+      "Do not rewrite a published method, method cluster, lineage identity, name, basis, root or shared boundary, or release assignment in place; retain the prior entry and use a new identifier or dated successor for a semantic replacement.",
+      "Append a lineage member only at the tail after its release declares the reciprocal lineage identifier and an evidential parent link to an earlier member, unless it is the explicitly registered root; never delete, replace or reorder a published member.",
+      "Append a dated changeLog entry for every semantic addition, correction, deprecation or reassignment.",
+      "Keep broad method clustering separate from evidence-backed research lineage, and do not infer lineage from topical similarity alone.",
+      "Registry inclusion or revision does not promote correctness, novelty, independent reproduction or real-world impact."
+    ]
+  },
+  "changeLog": [
+    {
+      "date": "2026-08-10",
+      "summary": "Established the initial working taxonomy, distinguished broad method clusters from the two release programmes with explicit lineage evidence, and aligned representative releases with their release assignments."
+    },
+    {
+      "date": "2026-08-10",
+      "summary": "Named an immutable root for each lineage and adopted append-only tail membership with reciprocal per-release lineage and parent evidence; a singleton lineage records only a prospective programme root, not demonstrated reuse."
+    }
+  ]
+}

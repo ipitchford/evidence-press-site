@@ -36,6 +36,8 @@ echo "==> [2/9] exact protocol release-integrity gate"
 node protocols/tools/check-release-integrity.js
 
 echo "==> [3/9] site metadata, rendering, and link gates"
+node tools/check-operating-model.js
+node tools/test-operating-model.js
 node tools/test-render.js
 node tools/test-metadata.js
 node tools/check-links.js
@@ -54,8 +56,8 @@ echo "==> [7/9] exact protocol live byte readback"
 node protocols/tools/check-release-integrity.js --live https://evidencepress.org/
 
 echo "==> [8/9] full-site post-deploy readback"
+node tools/check-published.js --live --post-deploy
 node tools/check-publication-integrity.js --live
-node tools/check-published.js --live
 
 echo "==> [9/9] IndexNow submission"
 node tools/indexnow-submit.js
