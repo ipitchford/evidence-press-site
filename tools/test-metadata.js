@@ -315,9 +315,42 @@ const imageSources = rel => [...fs.readFileSync(path.join(DIST, rel), 'utf8')
   .matchAll(/<img\s+[^>]*src="([^"]+)"[^>]*>/g)].map(match => match[1]);
 const productivityImages = imageSources('productivity/index.html');
 const starterImages = imageSources('protocols/start/index.html');
-check('Productivity keeps one explanatory in-page image',
-  productivityImages.length === 1 && productivityImages[0] === '/assets/art/protocols-ladders.svg',
+const expectedProductivityImages = [
+  '/assets/video-thumbs/certified-commitment-horizons.jpg',
+  '/assets/video-thumbs/certified-two-item-jrp.jpg',
+  '/assets/art/protocols-ladders.svg'
+];
+check('Productivity keeps its intentional explanatory image set',
+  same(productivityImages, expectedProductivityImages),
   `images=${productivityImages.join(',') || 'none'}`);
+const productivityHtml = fs.readFileSync(path.join(DIST, 'productivity', 'index.html'), 'utf8');
+check('Productivity highlights both logistics research releases',
+  productivityHtml.includes('href="/releases/certified-commitment-horizons/"') &&
+  productivityHtml.includes('href="/releases/certified-two-item-jrp/"'),
+  'expected canonical links to both logistics releases');
+check('Productivity logistics highlights retain the field-impact boundary',
+  productivityHtml.includes('decision-relevant operations results, not productivity impact evidence'),
+  'expected explicit separation between decision relevance and measured impact');
+check('Productivity logistics highlights bind each video to its matching thumbnail',
+  productivityHtml.includes('src="/assets/video-thumbs/certified-commitment-horizons.jpg"') &&
+  productivityHtml.includes('href="https://youtu.be/G4ehJ81pl6g"') &&
+  productivityHtml.includes('src="/assets/video-thumbs/certified-two-item-jrp.jpg"') &&
+  productivityHtml.includes('href="https://youtu.be/n9SbpLgjOY4"'),
+  'expected both canonical thumbnail and video pairs');
+check('Published Productivity thumbnails exactly match their reproducible sources',
+  expectedProductivityImages.slice(0, 2).every(rel => {
+    const filename = path.basename(rel);
+    return fs.readFileSync(path.join(DIST, rel)).equals(fs.readFileSync(path.join(ROOT, 'thumbs', filename)));
+  }),
+  'expected byte-identical thumbs/ to dist/assets/video-thumbs/ copies');
+const commitmentVideo = papersDoc.papers.find(p => p.slug === 'certified-commitment-horizons').media
+  .find(item => item.type === 'video');
+const jointVideo = papersDoc.papers.find(p => p.slug === 'certified-two-item-jrp').media
+  .find(item => item.type === 'video');
+check('Release APIs expose the two supplied YouTube videos',
+  commitmentVideo && commitmentVideo.url === 'https://youtu.be/G4ehJ81pl6g' &&
+  jointVideo && jointVideo.url === 'https://youtu.be/n9SbpLgjOY4',
+  `commitment=${commitmentVideo && commitmentVideo.url} joint=${jointVideo && jointVideo.url}`);
 check('company starter owns the staged-learning cover',
   starterImages.length === 1 && starterImages[0] === '/assets/art/productivity.svg',
   `images=${starterImages.join(',') || 'none'}`);

@@ -1412,7 +1412,7 @@ ${items}
 function sitemap() {
   const urls = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-08' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-10' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished }))
   ];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
@@ -1845,6 +1845,20 @@ fs.cpSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), {
   recursive: true,
   filter: src => !JUNK.test(path.basename(src))
 });
+/* YouTube authoring thumbnails normally stay outside deployed assets. These
+   two are also editorial illustrations on the Productivity page, so publish a
+   narrow allowlist instead of exposing the whole authoring directory. */
+const PRODUCTIVITY_VIDEO_THUMBNAILS = [
+  'certified-commitment-horizons.jpg',
+  'certified-two-item-jrp.jpg'
+];
+const productivityThumbDir = path.join(DIST, 'assets', 'video-thumbs');
+fs.mkdirSync(productivityThumbDir, { recursive: true });
+for (const filename of PRODUCTIVITY_VIDEO_THUMBNAILS) {
+  const source = path.join(ROOT, 'thumbs', filename);
+  if (!fs.existsSync(source)) throw new Error(`missing Productivity video thumbnail: thumbs/${filename}`);
+  fs.copyFileSync(source, path.join(productivityThumbDir, filename));
+}
 /* The strict policy is delivered per document, in a <meta> tag emitted by
    head(), rather than as a blanket header. Two reasons, both load-bearing:
    it applies to exactly the pages this build generates, so the self-contained
@@ -1940,10 +1954,10 @@ simplePage('operating-model/', 'Evidence Press operating model', 'A prospective,
     { label: 'Prospective release schema', url: `${BASE}/api/schemas/release-operating-model.schema.json`, linkText: 'release-operating-model.schema.json', detail: 'Required process and handoff metadata for every future release.' }
   ]
 });
-simplePage('productivity/', 'Productivity Protocols', 'Bounded, downloadable AI-agent workflows with staged evaluation for companies that are new to agents; current human and company productivity impact is unmeasured.', 'productivity.md', 'WebPage', {
+simplePage('productivity/', 'Productivity Protocols', 'Bounded AI-agent workflows and exact logistics research relevant to operational productivity; current human, company and field impact remains unmeasured.', 'productivity.md', 'WebPage', {
   og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'productivity.png')) ? '/assets/og/productivity.png' : null,
   kicker: 'A programme of Evidence Press',
-  standfirst: 'Methods, not papers: bounded workflows and staged evidence for companies beginning to use AI agents.',
+  standfirst: 'Bounded agent workflows, staged evidence, and the catalogue\'s closest research links to operational productivity.',
   programmeLayout: true,
   primaryAction: { url: '/protocols/start/', label: 'Choose a first evidence stage →' },
   evidenceBoundary: 'Existing live evaluations compare model outputs only. They found no clear agent-output gain. Human and company productivity remain unmeasured.'
