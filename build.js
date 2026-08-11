@@ -173,7 +173,7 @@ function markdown(md) {
       const buf = []; i++;
       while (i < lines.length && !/^```/.test(lines[i])) buf.push(lines[i++]);
       i++;
-      out.push(`<pre><code>${esc(buf.join('\n'))}</code></pre>`);
+      out.push(`<pre tabindex="0"><code>${esc(buf.join('\n'))}</code></pre>`);
       continue;
     }
     if (/^\$\$\s*$/.test(line)) {
@@ -984,7 +984,7 @@ ${media ? `<section class="media-section"><h2 id="media">Media</h2>${media}</sec
           <div class="cite-card">
             <div class="cite-row"><span id="cite-apa">${esc(p.citeText)}</span><button class="copy" data-copy="cite-apa">Copy</button></div>
             <details><summary>BibTeX</summary>
-              <div class="cite-row"><pre class="bib" id="cite-bib">${esc(bibtex(p).trim())}</pre><button class="copy" data-copy="cite-bib">Copy</button></div>
+              <div class="cite-row"><pre class="bib" id="cite-bib" tabindex="0">${esc(bibtex(p).trim())}</pre><button class="copy" data-copy="cite-bib">Copy</button></div>
             </details>
             <p class="note">Also: <a href="${url}cite.bib">cite.bib</a> · <a href="${url}paper.json">paper.json</a> · <a href="${url}index.md">this page as Markdown</a></p>
           </div>
