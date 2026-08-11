@@ -577,6 +577,44 @@ art['certified-two-item-jrp'] = (a, b) => {
   return s;
 };
 
+/* Two very different histories, one spectrum; and the certified band. */
+art['sfs-identifiability-audit'] = (a, b) => {
+  let s = '';
+  /* Left: severe-crash history and continuous history over time. */
+  s += `<line x1="90" y1="300" x2="520" y2="300" stroke="#8a938f" stroke-width="1" opacity=".5"/>`;
+  s += `<line x1="90" y1="80" x2="90" y2="300" stroke="#8a938f" stroke-width="1" opacity=".5"/>`;
+  s += `<path d="M 100 150 L 250 150 L 250 272 L 310 272 L 310 150 L 510 150" fill="none" stroke="${a}" stroke-width="4"/>`;
+  let smooth = 'M 100 150';
+  for (let k = 0; k <= 41; k++) {
+    const x = 100 + k * 10;
+    const y = 150 + 42 * Math.exp(-((x - 280) ** 2) / 6200);
+    smooth += ` L ${x.toFixed(1)} ${y.toFixed(1)}`;
+  }
+  s += `<path d="${smooth}" fill="none" stroke="${b}" stroke-width="4" stroke-dasharray="1 0" opacity=".95"/>`;
+  s += `<text x="100" y="66" font-family="ui-monospace,monospace" font-size="16" fill="${a}">severe crash</text>`;
+  s += `<text x="290" y="66" font-family="ui-monospace,monospace" font-size="16" fill="${b}">continuous</text>`;
+  s += `<text x="100" y="340" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd" opacity=".75">two histories</text>`;
+  /* Middle: both map to one identical spectrum (bars). */
+  s += `<text x="560" y="196" font-family="ui-monospace,monospace" font-size="24" fill="#e7e5e4" opacity=".85">→</text>`;
+  for (let k = 0; k < 9; k++) {
+    const h = 150 * (1 / (k + 1)) ** 0.72;
+    s += `<rect x="${610 + k * 24}" y="${300 - h}" width="15" height="${h}" fill="#e7e5e4" opacity=".8"/>`;
+  }
+  s += `<text x="610" y="340" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd" opacity=".75">one spectrum</text>`;
+  /* Right: certified interval band between severity floor and baseline. */
+  s += `<line x1="880" y1="90" x2="880" y2="320" stroke="#8a938f" stroke-width="1" opacity=".5"/>`;
+  s += `<line x1="874" y1="110" x2="1130" y2="110" stroke="#d6dcdd" stroke-width="2" stroke-dasharray="8 7" opacity=".7"/>`;
+  s += `<text x="1130" y="102" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd">baseline 1.0</text>`;
+  s += `<line x1="874" y1="296" x2="1130" y2="296" stroke="${a}" stroke-width="2" stroke-dasharray="8 7" opacity=".85"/>`;
+  s += `<text x="1130" y="318" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" fill="${a}">claimed severity 0.1</text>`;
+  s += `<rect x="925" y="126" width="150" height="152" fill="${b}" opacity=".28"/>`;
+  s += `<line x1="925" y1="126" x2="1075" y2="126" stroke="${b}" stroke-width="3.5"/>`;
+  s += `<line x1="925" y1="278" x2="1075" y2="278" stroke="${b}" stroke-width="3.5"/>`;
+  s += `<text x="1000" y="208" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="${b}">[0.16, 0.93]</text>`;
+  s += `<text x="925" y="340" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd" opacity=".75">certified band</text>`;
+  return s;
+};
+
 /* Identification synthesis: four non-injective maps and a visible selector. */
 art['unique-answer-not-identified'] = (a, b) => {
   let s = '';
@@ -644,7 +682,8 @@ const palette = {
   'hahn-ewens-mixing-theorem': ['#38bdf8', '#f59e0b'],
   'smooth-point-certificates-polydegree-containments': ['#2dd4bf', '#f59e0b'],
   'certified-two-item-jrp': ['#2dd4bf', '#f59e0b'],
-  'unique-answer-not-identified': ['#38bdf8', '#f59e0b']
+  'unique-answer-not-identified': ['#38bdf8', '#f59e0b'],
+  'sfs-identifiability-audit': ['#f59e0b', '#38bdf8']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
