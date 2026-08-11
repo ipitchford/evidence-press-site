@@ -662,6 +662,42 @@ art['unique-answer-not-identified'] = (a, b) => {
   return s;
 };
 
+/* Wales 20 mph: one observed aggregate, a broken treatment bridge, and three compatible signs. */
+art['wales-20mph-casualty-attribution'] = (a, b) => {
+  let s = '';
+  s += `<text x="72" y="86" font-family="ui-monospace,monospace" font-size="16" fill="#e7e5e4" opacity=".72">OBSERVED 20/30 MPH AGGREGATE</text>`;
+  s += `<rect x="72" y="126" width="238" height="112" rx="16" fill="#151a1e" stroke="${a}" stroke-width="3"/>`;
+  s += `<text x="191" y="178" text-anchor="middle" font-family="Georgia" font-size="39" fill="${a}">2,402</text>`;
+  s += `<text x="191" y="211" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4" opacity=".72">BEFORE</text>`;
+  s += `<path d="M 322 182 H 402" stroke="#e7e5e4" stroke-width="3" opacity=".72"/>`;
+  s += `<path d="M 390 171 L 412 182 L 390 193" fill="none" stroke="#e7e5e4" stroke-width="3"/>`;
+  s += `<rect x="424" y="126" width="238" height="112" rx="16" fill="#151a1e" stroke="${b}" stroke-width="3"/>`;
+  s += `<text x="543" y="178" text-anchor="middle" font-family="Georgia" font-size="39" fill="${b}">1,725</text>`;
+  s += `<text x="543" y="211" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4" opacity=".72">AFTER</text>`;
+
+  s += `<rect x="720" y="84" width="226" height="214" rx="18" fill="#151a1e" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="9 8" opacity=".92"/>`;
+  s += `<text x="833" y="142" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4">AFFECTED-ROAD MAP</text>`;
+  s += `<text x="833" y="178" text-anchor="middle" font-family="Georgia" font-size="25" fill="${b}">MISSING</text>`;
+  s += `<line x1="758" y1="202" x2="908" y2="202" stroke="#e7e5e4" stroke-width="1" opacity=".35"/>`;
+  s += `<text x="833" y="239" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4">NO-POLICY OUTCOME</text>`;
+  s += `<text x="833" y="274" text-anchor="middle" font-family="Georgia" font-size="25" fill="${b}">UNOBSERVED</text>`;
+
+  const worlds = [
+    ['−50%', 104, a],
+    ['0%', 204, '#e7e5e4'],
+    ['+100%', 304, b]
+  ];
+  s += `<path d="M 958 190 H 1012" stroke="#e7e5e4" stroke-width="2" opacity=".55"/>`;
+  for (const [label, y, colour] of worlds) {
+    s += `<path d="M 1012 190 C 1040 190, 1037 ${y}, 1064 ${y}" fill="none" stroke="${colour}" stroke-width="3" opacity=".9"/>`;
+    s += `<circle cx="1082" cy="${y}" r="15" fill="#151a1e" stroke="${colour}" stroke-width="3"/>`;
+    s += `<text x="1110" y="${y + 7}" font-family="Georgia" font-size="25" fill="${colour}">${label}</text>`;
+  }
+  s += `<text x="1094" y="358" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="#e7e5e4" opacity=".62">HYPOTHETICAL WORLDS</text>`;
+  s += `<text x="590" y="385" text-anchor="middle" font-family="Georgia" font-size="29" fill="${a}">SIGN NOT IDENTIFIED</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -683,7 +719,8 @@ const palette = {
   'smooth-point-certificates-polydegree-containments': ['#2dd4bf', '#f59e0b'],
   'certified-two-item-jrp': ['#2dd4bf', '#f59e0b'],
   'unique-answer-not-identified': ['#38bdf8', '#f59e0b'],
-  'sfs-identifiability-audit': ['#f59e0b', '#38bdf8']
+  'sfs-identifiability-audit': ['#f59e0b', '#38bdf8'],
+  'wales-20mph-casualty-attribution': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
