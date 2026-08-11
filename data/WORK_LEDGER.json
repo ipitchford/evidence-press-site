@@ -179,6 +179,171 @@
       "stopReason": null,
       "corrections": [],
       "revisions": []
+    },
+    {
+      "attemptId": "ep-attempt:wales-20mph-casualty-attribution",
+      "workId": "ep-work:wales-20mph-casualty-attribution",
+      "cohort": "prospective",
+      "registeredAt": "2026-08-11T09:24:28Z",
+      "aims": [
+        "policy"
+      ],
+      "question": "Does the frozen aggregate official evidence identify the first-year causal effect, including its sign, of the Welsh default 20 mph policy on police-recorded casualties on road segments whose speed limit actually changed?",
+      "selectionBasis": "A high-salience UK policy claim supplied a concrete test of identification before estimation: the reported first-year casualty decline could be reconstructed from public official data, while treatment membership, counterfactual and measurement bridges required explicit audit.",
+      "taskClass": "policy-identification-audit",
+      "status": "release-candidate",
+      "statusAt": "2026-08-11T20:09:54Z",
+      "resultClass": "negative",
+      "statusHistory": [
+        {
+          "at": "2026-08-11T09:24:28Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "The source repository prospectively registered the exact estimand, challenged attribution claim and case before the bounded source audit.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-08-11T19:40:36Z",
+          "status": "result-ready",
+          "resultClass": "negative",
+          "reason": "The release-source commit records a bounded non-identification result, exact constructive witness, frozen evidence package and retained producer-side clean replay.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/wales-20mph-policy-analysis/commit/7ea482fa82fd2330db6383c249aba0d43ac4bea4"
+          ]
+        },
+        {
+          "at": "2026-08-11T20:09:54Z",
+          "status": "release-candidate",
+          "resultClass": "negative",
+          "reason": "The exact v1.0.0 research package is publicly archived on GitHub and Zenodo; the Evidence Press page remains a release candidate until canonical site readback.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/wales-20mph-policy-analysis/releases/tag/v1.0.0",
+            "https://doi.org/10.5281/zenodo.21894035"
+          ]
+        }
+      ],
+      "decisionObjectTarget": "A source-bound identification decision and, if point or sign identification fails, a machine-checkable counterexample or stop receipt specifying the missing measurements that could reopen estimation.",
+      "comparisonPlan": {
+        "status": "not-recorded",
+        "comparator": "No matched conventional expert assessment was registered for this attempt.",
+        "estimand": "No per-case difference in elapsed assessment time, active human effort, compute, unsupported attributions or adjudicated decision adequacy was registered.",
+        "matchedAssuranceEndpoint": "No matched assurance endpoint was prospectively assigned to a comparator.",
+        "reason": "The attempt was registered as a substantive policy identification case, not as a comparative acceleration study. Publication speed cannot substitute for a matched comparison."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "The case registration and substantive publication milestones are preserved, but active human minutes, compute minutes, compute cost, agent-run count, rework minutes and a complete correction count were not prospectively captured at a common attempt boundary and were not reconstructed.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-08-11T09:24:28Z",
+            "basis": "The source repository's prospectively registered case records."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-08-11T19:40:36Z",
+            "basis": "Release-source commit 7ea482fa82fd2330db6383c249aba0d43ac4bea4."
+          },
+          {
+            "event": "claim-locked",
+            "at": "2026-08-11T20:03:56Z",
+            "basis": "Immutable GitHub v1.0.0 release and declared release-asset checksums."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-08-11T20:09:54Z",
+            "basis": "Published Zenodo record, GitHub release readback and producer-side clean-replay receipt."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": null,
+        "reworkMinutes": null,
+        "correctionCount": null
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-08-11T20:09:54Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wales-20mph-policy-analysis/releases/tag/v1.0.0",
+              "https://doi.org/10.5281/zenodo.21894035"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wales-20mph-policy-analysis/releases/tag/v1.0.0"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wales-20mph-policy-analysis"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://doi.org/10.5281/zenodo.21894035"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wales-20mph-policy-analysis"
+            ]
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "The released aggregate corpus and declared rival class recover neither the point value nor the sign of the affected-road causal effect. This does not establish the policy's true effect, a universal impossibility result, exhaustive novelty, independent reproduction, peer review, policy merit or an acceleration impact.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/wales-20mph-policy-analysis/releases/tag/v1.0.0",
+          "https://doi.org/10.5281/zenodo.21894035"
+        ],
+        "missingnessReason": "Independent rerun, independent reimplementation, formal verification, human specialist review, editorial peer review and priority assessment have not been established; environment, semantic and novelty assessment remain partial."
+      },
+      "releaseSlug": "wales-20mph-casualty-attribution",
+      "stopReason": null,
+      "corrections": [],
+      "revisions": []
     }
   ],
   "updatePolicy": {
@@ -203,6 +368,10 @@
     {
       "date": "2026-08-11",
       "summary": "Registered the sfs-identifiability-audit publication attempt (prospective cohort, published) with reciprocal release link; measurement and comparison plans recorded as not-recorded with explicit missingness reasons."
+    },
+    {
+      "date": "2026-08-11",
+      "summary": "Registered the Wales 20 mph casualty-attribution attempt from its prospective source receipt, recorded a negative non-identification result and public research-package assurance endpoint, retained missing resource measurements, and left the Evidence Press status at release-candidate pending canonical site readback."
     }
   ]
 }

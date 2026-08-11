@@ -49,6 +49,19 @@ const PALETTES = {
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'wales-20mph-casualty-attribution': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'POLICY IDENTIFICATION · V1.0.0'],
+    head: ['A 28% fall.', '<em>Still not a causal effect.</em>'],
+    headSize: 62,
+    sub: 'The published aggregate is reproducible. The effect on roads that actually changed is not identified — not even in sign.',
+    tag: 'CONSTRUCTIVE COUNTEREXAMPLE · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">same observed aggregate</div>
+      <div class="eq eq-sm">2,402 → <span class="hl">1,725</span></div>
+      <div class="note">Compatible affected-road effects:<br><b>−50% · 0% · +100%</b></div>
+      <div class="eq-foot">hypothetical worlds · not estimates or bounds</div>`
+  },
   'sfs-identifiability-audit': {
     palette: 'pine',
     kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'POPULATION GENETICS · V0.2.0'],
