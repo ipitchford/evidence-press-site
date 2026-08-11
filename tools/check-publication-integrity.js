@@ -59,7 +59,7 @@ function candidateAsset(url) {
    content-derived cache key. Permit only that narrow successor relation: same
    origin and path, one hexadecimal v parameter, and a token that exactly
    matches the candidate file. */
-function isContentVersionedAssetSuccessor(liveUrl, candidateUrl) {
+function isContentVersionedAssetSuccessor(liveUrl, candidateUrl, candidateFile = null) {
   try {
     const live = new URL(liveUrl, BASE);
     const candidate = new URL(candidateUrl, BASE);
@@ -68,7 +68,7 @@ function isContentVersionedAssetSuccessor(liveUrl, candidateUrl) {
         live.pathname !== candidate.pathname || live.search || live.hash || candidate.hash) return false;
     const params = [...candidate.searchParams.entries()];
     if (params.length !== 1 || params[0][0] !== 'v' || !/^[a-f0-9]{10}$/.test(params[0][1])) return false;
-    const file = candidateAsset(candidateUrl);
+    const file = candidateFile || candidateAsset(candidateUrl);
     if (!file || !fs.existsSync(file)) return false;
     const expected = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0, 10);
     return params[0][1] === expected;
