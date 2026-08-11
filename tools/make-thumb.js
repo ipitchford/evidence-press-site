@@ -154,6 +154,20 @@ const SPECS = {
       <div class="eq eq-sm">a<sub>d,e</sub> = (−1)<sup>e</sup><br><span class="hl">det D(g<sub>d</sub>, …, g<sub>d+e−1</sub>)</span></div>
       <div class="note">On the partial zero locus: find one <b>smooth point</b> that avoids the next coefficient hypersurface.</div>
       <div class="eq-foot">proved identities · exact finite evidence · all-d affine theorem still open</div>`
+  },
+
+  'unique-answer-not-identified': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'IDENTIFICATION SYNTHESIS · V1.0.0-CANDIDATE'],
+    head: ['One unique answer.', '<em>Still not identified.</em>'],
+    headSize: 62,
+    sub: 'A cross-field synthesis of APC models, epidemic surveillance, sign-restricted SVARs, and aerosol–climate calibration.',
+    tag: 'FOUR FIELDS · SELECTOR LEDGER · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">the identifying question</div>
+      <div class="eq eq-sm">θ ≠ θ′<br><span class="hl">P<sub>θ</sub> = P<sub>θ′</sub></span></div>
+      <div class="note">A procedure can return one answer by fixing a default, penalty, rotation, or calibration convention. That can identify the <b>selector</b> without identifying the scientific effect.</div>
+      <div class="eq-foot">identified set · selector ledger · eight-dimensional assurance</div>`
   }
 };
 

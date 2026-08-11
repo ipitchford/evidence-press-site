@@ -577,6 +577,53 @@ art['certified-two-item-jrp'] = (a, b) => {
   return s;
 };
 
+/* Identification synthesis: four non-injective maps and a visible selector. */
+art['unique-answer-not-identified'] = (a, b) => {
+  let s = '';
+  const lanes = [
+    ['APC', 62],
+    ['EPIDEMIC', 154],
+    ['SVAR', 246],
+    ['AEROSOL', 338]
+  ];
+
+  /* Each field has distinct parameter values that reach the same observable. */
+  for (const [label, y] of lanes) {
+    s += `<text x="58" y="${y + 6}" font-family="ui-monospace,monospace" font-size="16" fill="#e7e5e4" opacity="0.72">${label}</text>`;
+    s += `<circle cx="208" cy="${y - 18}" r="9" fill="${a}" opacity="0.92"/>`;
+    s += `<circle cx="208" cy="${y + 18}" r="9" fill="${b}" opacity="0.92"/>`;
+    s += `<text x="230" y="${y - 12}" font-family="Georgia" font-size="17" fill="${a}">θ</text>`;
+    s += `<text x="230" y="${y + 24}" font-family="Georgia" font-size="17" fill="${b}">θ′</text>`;
+    s += `<path d="M 248 ${y - 18} C 300 ${y - 18}, 315 ${y}, 354 ${y}" fill="none" stroke="${a}" stroke-width="2.5" opacity="0.78"/>`;
+    s += `<path d="M 248 ${y + 18} C 300 ${y + 18}, 315 ${y}, 354 ${y}" fill="none" stroke="${b}" stroke-width="2.5" opacity="0.78"/>`;
+    s += `<circle cx="376" cy="${y}" r="22" fill="#151a1e" stroke="#e7e5e4" stroke-width="2" opacity="0.96"/>`;
+    s += `<text x="376" y="${y + 6}" text-anchor="middle" font-family="Georgia" font-size="18" fill="#e7e5e4">P</text>`;
+    s += `<path d="M 400 ${y} H 474" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="6 7" opacity="0.44"/>`;
+  }
+
+  /* The common diagnosis is a fibre, not a point. */
+  s += `<path d="M 510 46 V 354" stroke="#e7e5e4" stroke-width="1.5" opacity="0.24"/>`;
+  s += `<ellipse cx="642" cy="200" rx="104" ry="146" fill="#151a1e" stroke="${a}" stroke-width="3" opacity="0.88"/>`;
+  const fibre = [[600, 95], [667, 116], [585, 172], [696, 201], [610, 249], [674, 295]];
+  for (let i = 0; i < fibre.length; i++) {
+    const [x, y] = fibre[i];
+    s += `<circle cx="${x}" cy="${y}" r="${i === 3 ? 11 : 8}" fill="${i === 3 ? b : a}" opacity="${i === 3 ? '1' : '0.62'}"/>`;
+  }
+  s += `<text x="642" y="377" text-anchor="middle" font-family="Georgia" font-size="19" fill="#e7e5e4" opacity="0.82">identified set</text>`;
+
+  /* A rule can select one element without shrinking the identified set. */
+  s += `<path d="M 748 80 H 778 V 320 H 748" fill="none" stroke="${b}" stroke-width="4" opacity="0.9"/>`;
+  s += `<path d="M 708 201 H 862" stroke="${b}" stroke-width="3" stroke-dasharray="10 7" opacity="0.9"/>`;
+  s += `<path d="M 848 190 L 870 201 L 848 212" fill="none" stroke="${b}" stroke-width="3"/>`;
+  s += `<circle cx="922" cy="201" r="32" fill="#151a1e" stroke="${b}" stroke-width="4"/>`;
+  s += `<text x="922" y="211" text-anchor="middle" font-family="Georgia" font-size="29" fill="${b}">θ̂</text>`;
+  s += `<text x="922" y="258" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" fill="#e7e5e4" opacity="0.72">unique output</text>`;
+  s += `<text x="1080" y="155" text-anchor="middle" font-family="Georgia" font-size="22" fill="${a}">selector</text>`;
+  s += `<text x="1080" y="189" text-anchor="middle" font-family="Georgia" font-size="22" fill="${b}">≠</text>`;
+  s += `<text x="1080" y="223" text-anchor="middle" font-family="Georgia" font-size="22" fill="${a}">identification</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -596,7 +643,8 @@ const palette = {
   'exact-smith-invariants-affine-determinant-lines': ['#34d399', '#c084fc'],
   'hahn-ewens-mixing-theorem': ['#38bdf8', '#f59e0b'],
   'smooth-point-certificates-polydegree-containments': ['#2dd4bf', '#f59e0b'],
-  'certified-two-item-jrp': ['#2dd4bf', '#f59e0b']
+  'certified-two-item-jrp': ['#2dd4bf', '#f59e0b'],
+  'unique-answer-not-identified': ['#38bdf8', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {

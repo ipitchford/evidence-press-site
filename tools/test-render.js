@@ -169,6 +169,10 @@ const goldenExpected = [
 eq('markdown() golden: heading, paragraph, list, table with integers + tokens',
   markdown(goldenSrc), goldenExpected);
 
+eq('fenced code blocks expose keyboard focus for horizontal scrolling',
+  markdown('```sh\npython3 verify.py --long-option\n```'),
+  '<pre tabindex="0"><code>python3 verify.py --long-option</code></pre>');
+
 /* --- 11. Property sweep: every space-delimited integer 0..40 survives ---- */
 {
   let bad = 0;
