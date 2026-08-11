@@ -324,6 +324,15 @@ check('corrected release audio is content-versioned without a duplicate player',
   uniqueAnswer.media.some(item => item.type === 'audio' &&
     item.url === 'https://evidencepress.org/assets/audio/unique-answer-not-identified.mp3'),
   `audioUrl=${uniqueAnswer && uniqueAnswer.audioUrl} version=${uniqueAnswerVersion}`);
+const uniqueAnswerVideo = uniqueAnswer && uniqueAnswer.media
+  .find(item => item.type === 'video');
+check('unique-answer video is API-visible, privacy-enhanced and claim-calibrated',
+  uniqueAnswerVideo && uniqueAnswerVideo.url === 'https://youtu.be/l_r0fMvFbBQ' &&
+  uniqueAnswerVideo.description.includes('not additional scientific or mathematical evidence') &&
+  (uniqueAnswerHtml.match(/<iframe\b/g) || []).length === 1 &&
+  uniqueAnswerHtml.includes('src="https://www.youtube-nocookie.com/embed/l_r0fMvFbBQ?rel=0"') &&
+  uniqueAnswerHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/l_r0fMvFbBQ/hqdefault.jpg"'),
+  `video=${uniqueAnswerVideo && uniqueAnswerVideo.url}`);
 
 /* ---------------------------------------- programme visual hierarchy */
 const imageSources = rel => [...fs.readFileSync(path.join(DIST, rel), 'utf8')
