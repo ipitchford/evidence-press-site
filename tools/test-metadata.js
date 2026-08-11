@@ -20,6 +20,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { loadArtifacts, loadPaperMetadata } = require('./operating-model');
 
 const ROOT = path.join(__dirname, '..');
@@ -309,6 +310,20 @@ check('build identity is published', (() => {
   const b = read('api/build.json');
   return !!(b.schemaVersion && b.softwareVersion);
 })());
+
+const uniqueAnswer = papersDoc.papers.find(p => p.slug === 'unique-answer-not-identified');
+const uniqueAnswerAudio = path.join(ROOT, 'assets', 'audio', 'unique-answer-not-identified.mp3');
+const uniqueAnswerVersion = crypto.createHash('sha256').update(fs.readFileSync(uniqueAnswerAudio)).digest('hex').slice(0, 10);
+const uniqueAnswerAudioUrl = `https://evidencepress.org/assets/audio/unique-answer-not-identified.mp3?v=${uniqueAnswerVersion}`;
+const uniqueAnswerHtml = fs.readFileSync(path.join(DIST, 'releases', 'unique-answer-not-identified', 'index.html'), 'utf8');
+check('corrected release audio is content-versioned without a duplicate player',
+  uniqueAnswer && uniqueAnswer.audioUrl === uniqueAnswerAudioUrl &&
+  (uniqueAnswerHtml.match(/<audio\b/g) || []).length === 1 &&
+  uniqueAnswerHtml.includes(`<audio id="briefing-audio" preload="metadata" src="/assets/audio/unique-answer-not-identified.mp3?v=${uniqueAnswerVersion}"></audio>`) &&
+  uniqueAnswerHtml.includes(`href="/assets/audio/unique-answer-not-identified.mp3?v=${uniqueAnswerVersion}"`) &&
+  uniqueAnswer.media.some(item => item.type === 'audio' &&
+    item.url === 'https://evidencepress.org/assets/audio/unique-answer-not-identified.mp3'),
+  `audioUrl=${uniqueAnswer && uniqueAnswer.audioUrl} version=${uniqueAnswerVersion}`);
 
 /* ---------------------------------------- programme visual hierarchy */
 const imageSources = rel => [...fs.readFileSync(path.join(DIST, rel), 'utf8')

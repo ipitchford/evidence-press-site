@@ -590,6 +590,23 @@ function extractFunction(source, name) {
 }
 
 {
+  const stable = 'https://evidencepress.org/assets/audio/unique-answer-not-identified.mp3';
+  const file = path.join(root, 'assets', 'audio', 'unique-answer-not-identified.mp3');
+  const version = require('crypto').createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0, 10);
+  const versioned = `${stable}?v=${version}`;
+  const successor = (live, candidate) => publicationIntegrity.isContentVersionedAssetSuccessor(live, candidate, file);
+  check('published audio permits only an exact content-versioned successor',
+    successor(stable, versioned) &&
+      !successor(stable, `${stable}?v=0000000000`) &&
+      !successor(stable, `${stable}?v=${version}&extra=1`) &&
+      !successor(stable, `${versioned}#replacement`) &&
+      !successor(stable, `https://evidencepress.org/assets/audio/other.mp3?v=${version}`) &&
+      !successor(`https://example.org/assets/audio/unique-answer-not-identified.mp3`, `https://example.org/assets/audio/unique-answer-not-identified.mp3?v=${version}`) &&
+      !successor(`${stable}?v=1111111111`, versioned),
+    `versioned=${versioned}`);
+}
+
+{
   publicationIntegrity.resetFailures();
   const live = recordFor('published-prospective');
   const candidate = clone(live);
