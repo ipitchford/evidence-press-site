@@ -191,8 +191,8 @@
       "question": "Does the frozen aggregate official evidence identify the first-year causal effect, including its sign, of the Welsh default 20 mph policy on police-recorded casualties on road segments whose speed limit actually changed?",
       "selectionBasis": "A high-salience UK policy claim supplied a concrete test of identification before estimation: the reported first-year casualty decline could be reconstructed from public official data, while treatment membership, counterfactual and measurement bridges required explicit audit.",
       "taskClass": "policy-identification-audit",
-      "status": "release-candidate",
-      "statusAt": "2026-08-11T20:09:54Z",
+      "status": "published",
+      "statusAt": "2026-08-11T20:30:51Z",
       "resultClass": "negative",
       "statusHistory": [
         {
@@ -219,6 +219,16 @@
           "evidenceRefs": [
             "https://github.com/ipitchford/wales-20mph-policy-analysis/releases/tag/v1.0.0",
             "https://doi.org/10.5281/zenodo.21894035"
+          ]
+        },
+        {
+          "at": "2026-08-11T20:30:51Z",
+          "status": "published",
+          "resultClass": "negative",
+          "reason": "Canonical Evidence Press HTML, paper.json, audio and art returned HTTP 200 and the exact post-deploy publication and protocol integrity gates passed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/wales-20mph-casualty-attribution/",
+            "https://evidencepress.org/releases/wales-20mph-casualty-attribution/paper.json"
           ]
         }
       ],
@@ -253,6 +263,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-08-11T20:09:54Z",
             "basis": "Published Zenodo record, GitHub release readback and producer-side clean-replay receipt."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-08-11T20:30:51Z",
+            "basis": "Canonical Evidence Press HTML and paper.json readback after guarded Cloudflare deployment."
           }
         ],
         "activeHumanMinutes": null,
@@ -343,7 +358,12 @@
       "releaseSlug": "wales-20mph-casualty-attribution",
       "stopReason": null,
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-08-11",
+          "summary": "Appended the canonical Evidence Press publication status, status-history event and public-release milestone after exact live HTML, paper.json, audio, art, protocol and publication-integrity readback; the registered negative result and claim ceiling are unchanged."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -372,6 +392,10 @@
     {
       "date": "2026-08-11",
       "summary": "Registered the Wales 20 mph casualty-attribution attempt from its prospective source receipt, recorded a negative non-identification result and public research-package assurance endpoint, retained missing resource measurements, and left the Evidence Press status at release-candidate pending canonical site readback."
+    },
+    {
+      "date": "2026-08-11",
+      "summary": "Appended the Wales 20 mph canonical Evidence Press publication event after exact HTML, paper.json, media, protocol and publication-integrity readback; the negative result and NO_IMPACT_EVIDENCE boundary remain unchanged."
     }
   ]
 }
