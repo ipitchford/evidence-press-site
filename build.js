@@ -264,6 +264,9 @@ function sectionedMarkdown(md, prefix) {
 }
 
 /* ----------------------------------------------------------- load papers */
+const fileVersion = file => crypto.createHash('sha256')
+  .update(fs.readFileSync(file)).digest('hex').slice(0, 10);
+
 const papersDir = path.join(ROOT, 'papers');
 const papers = fs.readdirSync(papersDir)
   .filter(d => !d.startsWith('_') && fs.existsSync(path.join(papersDir, d, 'meta.json')))
@@ -272,7 +275,11 @@ const papers = fs.readdirSync(papersDir)
     const body = fs.readFileSync(path.join(papersDir, d, 'body.md'), 'utf8');
     if (!meta.slug) meta.slug = d;
     const audioFile = path.join(ROOT, 'assets', 'audio', meta.slug + '.mp3');
-    meta.audio = fs.existsSync(audioFile) ? { url: `/assets/audio/${meta.slug}.mp3`, bytes: fs.statSync(audioFile).size } : null;
+    const audioPath = `/assets/audio/${meta.slug}.mp3`;
+    const audioUrl = meta.audioContentVersioned && fs.existsSync(audioFile)
+      ? `${audioPath}?v=${fileVersion(audioFile)}`
+      : audioPath;
+    meta.audio = fs.existsSync(audioFile) ? { url: audioUrl, bytes: fs.statSync(audioFile).size } : null;
     meta.art = fs.existsSync(path.join(ROOT, 'assets', 'art', meta.slug + '.svg')) ? `/assets/art/${meta.slug}.svg` : null;
     meta.og = fs.existsSync(path.join(ROOT, 'assets', 'og', meta.slug + '.png')) ? `/assets/og/${meta.slug}.png` : null;
     return { ...meta, body };
@@ -329,6 +336,9 @@ function validatePapers(list) {
 
     if (!Array.isArray(p.keywords) || !p.keywords.length) bad('keywords must be a non-empty array');
     if (p.status != null && !STATUSES.includes(p.status)) bad(`status "${p.status}" is not one of ${STATUSES.join(', ')}`);
+    if (p.audioContentVersioned != null && typeof p.audioContentVersioned !== 'boolean')
+      bad('audioContentVersioned must be a boolean when supplied');
+    if (p.audioContentVersioned && !p.audio) bad('audioContentVersioned requires a local MP3 briefing');
 
     for (const [i, m] of (p.media || []).entries()) {
       if (!['audio', 'video'].includes(m.type)) bad(`media[${i}].type "${m.type}" must be audio or video`);
@@ -752,8 +762,7 @@ function articleJsonld(p) {
 }
 
 /* content-hashes for cache-busting static asset links */
-const assetV = file => crypto.createHash('sha256')
-  .update(fs.readFileSync(path.join(ROOT, 'assets', file))).digest('hex').slice(0, 10);
+const assetV = file => fileVersion(path.join(ROOT, 'assets', file));
 const CSS_V = assetV('style.css');
 const JS_V = assetV('js/site.js');
 const MATH_JS_V = assetV('js/math.js');
@@ -762,6 +771,16 @@ const MATH_JS_V = assetV('js/math.js');
 function youtubeId(u) {
   const m = String(u || '').match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([\w-]{11})/);
   return m ? m[1] : null;
+}
+
+function sameAssetPath(left, right) {
+  try {
+    const a = new URL(left, BASE);
+    const b = new URL(right, BASE);
+    return a.origin === b.origin && a.pathname === b.pathname;
+  } catch {
+    return false;
+  }
 }
 
 function citationMeta(p) {
@@ -923,9 +942,9 @@ function paperPage(p) {
   const open = (p.openProblems || []).map(o => `<li>${inline(o)}</li>`).join('');
   const media = (p.media || []).map(m => {
     const duplicateHeaderAudio = m.type === 'audio' && p.audio && p.audio.url &&
-      (m.url === p.audio.url || m.url === BASE + p.audio.url || m.url.endsWith(p.audio.url));
+      sameAssetPath(m.url, p.audio.url);
     if (duplicateHeaderAudio) {
-      return `<p class="media-note">The audio briefing is provided in the header above. <a href="${escAttr(m.url)}" rel="noopener">Download the MP3 briefing</a>${m.transcriptUrl ? ` · <a href="${escAttr(m.transcriptUrl)}" rel="noopener">read the transcript</a>` : ''}.</p>`;
+      return `<p class="media-note">The audio briefing is provided in the header above. <a href="${escAttr(p.audio.url)}" rel="noopener">Download the MP3 briefing</a>${m.transcriptUrl ? ` · <a href="${escAttr(m.transcriptUrl)}" rel="noopener">read the transcript</a>` : ''}.</p>`;
     }
     if (m.type === 'video') {
       const yt = youtubeId(m.url);

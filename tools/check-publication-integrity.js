@@ -8,6 +8,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { isDeepStrictEqual } = require('util');
 
 const ROOT = path.join(__dirname, '..');
@@ -51,6 +52,28 @@ function candidateAsset(url) {
     return path.join(DIST, new URL(url, BASE).pathname.replace(/^\//, ''));
   } catch {
     return null;
+  }
+}
+
+/* A corrected static asset may retain its stable path while acquiring a
+   content-derived cache key. Permit only that narrow successor relation: same
+   origin and path, one hexadecimal v parameter, and a token that exactly
+   matches the candidate file. */
+function isContentVersionedAssetSuccessor(liveUrl, candidateUrl) {
+  try {
+    const live = new URL(liveUrl, BASE);
+    const candidate = new URL(candidateUrl, BASE);
+    const siteOrigin = new URL(BASE).origin;
+    if (live.origin !== siteOrigin || candidate.origin !== siteOrigin ||
+        live.pathname !== candidate.pathname || live.search || live.hash || candidate.hash) return false;
+    const params = [...candidate.searchParams.entries()];
+    if (params.length !== 1 || params[0][0] !== 'v' || !/^[a-f0-9]{10}$/.test(params[0][1])) return false;
+    const file = candidateAsset(candidateUrl);
+    if (!file || !fs.existsSync(file)) return false;
+    const expected = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0, 10);
+    return params[0][1] === expected;
+  } catch {
+    return false;
   }
 }
 
@@ -430,7 +453,8 @@ async function main() {
       continue;
     }
     preserveMedia(`release ${live.slug}`, live.media, candidate.media);
-    if (live.audioUrl && live.audioUrl !== candidate.audioUrl) {
+    if (live.audioUrl && live.audioUrl !== candidate.audioUrl &&
+        !isContentVersionedAssetSuccessor(live.audioUrl, candidate.audioUrl)) {
       failures.push(`release ${live.slug}: changed or dropped published audio ${live.audioUrl}`);
     }
     requireLocalAssets(`release ${live.slug}`, candidate.media);
@@ -509,6 +533,7 @@ if (require.main === module) main().catch(error => {
 });
 
 module.exports = {
+  isContentVersionedAssetSuccessor,
   listedFailures,
   preserveArrayPrefix,
   preserveChangeLogPrefix,
