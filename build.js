@@ -954,7 +954,7 @@ function paperPage(p) {
     ${p.audio || ytVideo ? `<div class="briefings">
     ${p.audio ? `<div class="listen">
       <button class="play" aria-label="Play audio briefing" data-audio="briefing-audio">▶</button>
-      <div class="listen-meta"><strong>Listen to this briefing</strong><span>Narrated summary · AI-generated voice · MP3 · <a href="${p.audio.url}" download>download</a></span>
+      <div class="listen-meta"><strong>Listen to this briefing</strong><span>Narrated summary · ${esc(p.audioVoiceLabel || 'AI-generated voice')} · MP3 · <a href="${p.audio.url}" download>download</a></span>
       <audio id="briefing-audio" preload="metadata" src="${p.audio.url}"></audio></div>
     </div>` : ''}
     ${ytVideo ? `<div class="listen watch">
