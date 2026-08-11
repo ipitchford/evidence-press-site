@@ -1,0 +1,236 @@
+{
+  "slug": "sfs-identifiability-audit",
+  "title": "The SFS Identifiability Audit: What a Finite Site-Frequency Spectrum Can Identify About Population-Size History",
+  "shortTitle": "What the site-frequency spectrum can and cannot say",
+  "oneLine": "A genomic sample's allele-frequency histogram supplies only finitely many blurred averages of population history. This candidate proves exactly which historical questions those averages answer, then applies the machinery, under a pre-registered protocol, to the disputed 900,000-year-old human bottleneck: the certified reading of the claimants' own data is depressed, not severe.",
+  "abstract": "The site-frequency spectrum (SFS) compresses a genomic sample into allele-count frequencies and is widely used to reconstruct population-size history. This unrefereed candidate proves an exact boundary: over a broad positive class with scale fixed, a linear historical functional is point-identified by the exact finite-sample expected SFS if and only if its weight lies in the span of the sample's exponential kernels. An explicit rational-Laplace construction supplies distinct positive histories with identical expected spectra for every sample size, with a global Bernstein positivity certificate. The constructive replacement is certified reporting: resolution kernels, and identified-set bounds from rank-reduced linear programmes carrying 50-digit dual certificates, cross-validated by an independent Tavare-formula implementation of the coalescence-to-SFS bridge. A pre-registered two-stage audit then applies the machinery to nine published spectra from the disputed 930-813 kya human bottleneck. Stage one certifies universal class rejection: no single-population Kingman history reproduces any spectrum under a millions-of-independent-sites error model. Stage two, under a disclosed linkage-aware error model, certifies family-union depression-ratio intervals of [0.162, 0.934] and [0.132, 0.961] for two independently processed YRI spectra - certifiably below baseline, certifiably far above the claimed severity - while out-of-Africa contrasts exclude severity and never certify depression. Every certified statement is conditional on its declared setting; across the full concession ladder the sets widen to uninformative.",
+  "narration": "When researchers reconstruct ancient population sizes from modern genomes, they usually start from a simple histogram: how many genetic variants are rare, how many are common. This release proves exactly what that histogram can and cannot say. A sample of genomes delivers only a fixed, finite number of blurred averages over the past, and the paper characterises precisely which historical questions those averages answer - and which are silently filled in by the model. It also builds working machinery: certified bounds whose every endpoint carries an arithmetic certificate, checked by two independent mathematical routes. The machinery was then aimed, under a frozen, pre-registered protocol, at a live controversy: the claim that our ancestors crashed to about twelve hundred individuals nine hundred thousand years ago. The first stage found that no clean textbook model reproduces any of the nine published datasets if the data are treated as millions of independent observations. The second stage, under an honestly disclosed error model, certified a verdict on the claimants' own data: the ancient population was genuinely reduced in the disputed window - but nowhere near as severely as claimed. Two rival groups' versions of the same data agree. This is an unrefereed candidate: the full papers, code, protocols and certificates are linked, no independent group has reproduced the work, and this audio summary is not additional evidence. An artificial voice narrates this briefing.",
+  "datePublished": "2026-08-11",
+  "dateModified": "2026-08-11",
+  "version": "0.2.0-candidate",
+  "doi": "10.5281/zenodo.21894012",
+  "conceptDoi": "10.5281/zenodo.21894011",
+  "zenodoUrl": "https://zenodo.org/records/21894012",
+  "pdfUrl": "https://github.com/ipitchford/sfs-identifiability-audit/releases/download/v0.2.0-candidate/sfs-identifiability-audit-v0.2.0.pdf",
+  "altPdfUrl": "https://zenodo.org/records/21894012/files/sfs-identifiability-audit-v0.2.0.pdf",
+  "repoUrl": "https://github.com/ipitchford/sfs-identifiability-audit",
+  "releaseUrl": "https://github.com/ipitchford/sfs-identifiability-audit/releases/tag/v0.2.0-candidate",
+  "authors": [
+    "Agent collective",
+    "Ian Pitchford"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex task",
+      "Claude Fable 5"
+    ],
+    "humanRole": "Problem selection, research direction, mediation, authorisation of each publication step, maintenance and licensing by Dr Ian Pitchford.",
+    "disclosure": "The original v0.1.0 bundle was produced by an OpenAI Codex workflow. Two external model reviews identified numerical-assurance defects; a Claude workflow implemented the v0.2.0 repairs, the independent forward bridge, the certified bounds, the pre-registered audit protocols and the executed audits. All producer-side checks are same-workflow checks; no externally auditable per-run identifiers are embedded."
+  },
+  "problem": {
+    "name": "Identifiability of population-size history from the site-frequency spectrum, and the disputed 930-813 kya human bottleneck",
+    "url": "https://doi.org/10.1126/science.abq7487"
+  },
+  "keywords": [
+    "site frequency spectrum",
+    "identifiability",
+    "coalescent theory",
+    "partial identification",
+    "resolution kernels",
+    "certified bounds",
+    "preregistration",
+    "human bottleneck",
+    "population genetics",
+    "linear programming",
+    "dual certificates",
+    "reproducible research",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "Exact characterisation: a bounded linear historical functional is point-identified by the exact finite-n expected unfolded SFS if and only if its weight lies in the span of the n-1 exponential kernels, over a broad positive class with scale fixed.",
+    "An explicit rational-Laplace family gives distinct positive histories with identical expected spectra for every finite sample size; positivity is certified globally by a Bernstein polynomial bound (margin 0.1999 at epsilon 0.8).",
+    "Certified identified-set machinery: rank-reduced linear programmes whose every endpoint carries a 50-digit dual certificate and two-solver agreement; the v0.1.0 interval endpoints are superseded as artefacts of imposing noise-level equality directions.",
+    "A genuinely independent Tavare-formula implementation of the coalescence-to-SFS bridge agrees with the generator route at machine epsilon, with exact rational invertibility certificates and eight mutation controls.",
+    "A severe bottleneck and a genuinely continuous piecewise-linear history within [0.504, 1.164] of baseline have normalised expected spectra at total-variation distance 4.70e-8: roughly 5e13 independent sites for an expected log-likelihood ratio of one.",
+    "Pre-registered audit stage one (frozen before data contact): universal class rejection - none of nine published spectra, including the bottleneck claimants' own, is reproducible by any single-population Kingman history under a multinomial error model; feasibility requires conceding an effective information content of roughly 5e2 to 3e4 independent sites.",
+    "Pre-registered audit stage two (disclosed linkage-aware error model): both independently processed YRI spectra certify family-union depression ratios of [0.162, 0.934] and [0.132, 0.961] at the most information-preserving declared setting - certifiably depressed, certifiably far above the claimed severity - while CEU and CHB exclude severity and never certify depression.",
+    "Across the full declared concession ladder the identified sets widen to uninformative: every certified statement is setting-conditional, and the severity question remains class-identified."
+  ],
+  "evidence": "A 10-page candidate theorem paper in PDF and TeX; certified Python machinery (operators, independent Tavare-formula bridge with exact rational certificates, rank-reduced certified linear programmes, Charnes-Cooper ratio programmes, Bernstein positivity certificates); 23 deterministic tests plus eight mutation and negative controls; byte-reproducing replay with SHA-256 manifests; two frozen pre-registered protocol releases with binding data hashes and synthetic-only validation; two executed audit releases over nine hash-verified published spectra (4,963 certified result rows, zero aborts); deviations ledgers recording the execution harnesses and labelled post-hoc diagnostics; and four cross-linked Zenodo deposits with byte-verified GitHub release assets. All checks are producer-side.",
+  "statusDetail": "Unrefereed candidate. Producer-side deterministic replay, mutation and negative controls, independent same-producer reimplementation of the semantic bridge, exact rational certificates, two-solver agreement and high-precision dual certificates all pass; two external model reviews of v0.1.0 were remediated in v0.2.0 and the superseded numerical claims are marked as such. The audit chain is pre-registered with externally timestamped freezes, and its stage-two error model is disclosed as data-informed. No unaffiliated group has reproduced any component; no population-genetics specialist has audited the theorem, the error models or the audit conclusions; no proof has been formalised; bibliographic priority is not claimed. The certified audit findings are conditional on declared error-model settings and on the published spectra as deposited by the dispute's participants.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/21894012",
+      "note": "Five cross-linked public records (theorem package, two protocol freezes, two executed audits) with byte-verified GitHub and Zenodo assets."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/sfs-identifiability-audit/releases/tag/v0.2.0-candidate",
+      "note": "Byte-reproducing replay, 23 tests, eight mutation and negative controls, manifest verification before and after replay; CI green on Python 3.13 and 3.14 for the audit repositories."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated party has rerun any archived package."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/sfs-identifiability-audit",
+      "note": "The Tavare-formula bridge shares no code with the primary operators and agrees at machine epsilon, but it was produced within the same workflow; it is a same-producer reimplementation, not an unaffiliated one."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No theorem or certificate checker has been formalised in a proof assistant."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No population-genetics or inverse-problems specialist has audited the theorem, the error models, or the audit conclusions."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or venue has conducted peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/sfs-identifiability-audit/blob/main/requirements.lock",
+      "note": "Exact pinned dependencies replay on macOS arm64 and Ubuntu CI; float-laden receipts are byte-stable per platform but differ in final units across BLAS implementations, as documented in the audit repositories."
+    }
+  },
+  "openProblems": [
+    "Obtain an unaffiliated rerun and an independent reimplementation of the certified machinery and the audit chain.",
+    "Specialist review of the stage-two error model: a principled, pre-registered linkage and mispolarisation model replacing the disclosed data-informed ladders.",
+    "Extend the identification theorem and machinery to folded spectra, joint spectra across populations, and uncertain deep-time tails.",
+    "Formalise the finite-functional theorem, the null construction and the dual-certificate checker in a proof assistant.",
+    "A covariance-aware resolution-kernel audit on real data with genomic-block covariance, replacing the identity-covariance didactic examples.",
+    "A complete bibliographic priority review of the functional characterisation and the rational null family."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Evidence chain — Frozen protocol A1 (pre-registered before data contact). Zenodo. doi:10.5281/zenodo.21893436",
+      "url": "https://doi.org/10.5281/zenodo.21893436"
+    },
+    {
+      "citation": "Evidence chain — Executed audit B1 (universal class rejection). Zenodo. doi:10.5281/zenodo.21893572",
+      "url": "https://doi.org/10.5281/zenodo.21893572"
+    },
+    {
+      "citation": "Evidence chain — Frozen protocol A2 (disclosed linkage-aware error model). Zenodo. doi:10.5281/zenodo.21893667",
+      "url": "https://doi.org/10.5281/zenodo.21893667"
+    },
+    {
+      "citation": "Evidence chain — Executed audit B2 (certified intervals: depressed, not severe). Zenodo. doi:10.5281/zenodo.21893989",
+      "url": "https://doi.org/10.5281/zenodo.21893989"
+    },
+    {
+      "citation": "Myers, S., Fefferman, C., & Patterson, N. (2008). Can one learn history from the allelic spectrum? Theoretical Population Biology, 73(3), 342-348.",
+      "url": "https://doi.org/10.1016/j.tpb.2008.01.001"
+    },
+    {
+      "citation": "Bhaskar, A., & Song, Y. S. (2014). Descartes' rule of signs and the identifiability of population demographic models from genomic variation data. The Annals of Statistics, 42(6), 2469-2493.",
+      "url": "https://doi.org/10.1214/14-AOS1264"
+    },
+    {
+      "citation": "Terhorst, J., & Song, Y. S. (2015). Fundamental limits on the accuracy of demographic inference based on the sample frequency spectrum. PNAS, 112(25), 7677-7682.",
+      "url": "https://doi.org/10.1073/pnas.1503717112"
+    },
+    {
+      "citation": "Polanski, A., & Kimmel, M. (2003). New explicit expressions for relative frequencies of single-nucleotide polymorphisms with application to statistical inference on population growth. Genetics, 165(1), 427-436.",
+      "url": "https://doi.org/10.1093/genetics/165.1.427"
+    },
+    {
+      "citation": "DeWitt, W. S., Harris, K. D., Ragsdale, A. P., & Harris, K. (2021). Nonparametric coalescent inference of mutation spectrum history and demography. PNAS, 118(21), e2013798118.",
+      "url": "https://doi.org/10.1073/pnas.2013798118"
+    },
+    {
+      "citation": "Hu, W., et al. (2023). Genomic inference of a severe human bottleneck during the Early to Middle Pleistocene transition. Science, 381(6661), 979-984.",
+      "url": "https://doi.org/10.1126/science.abq7487"
+    },
+    {
+      "citation": "Deng, Y., Nielsen, R., & Song, Y. S. (2025). A previously reported bottleneck in human ancestry 900 kya is likely a statistical artifact. Genetics, 229(1), iyae192.",
+      "url": "https://doi.org/10.1093/genetics/iyae192"
+    },
+    {
+      "citation": "Cousins, T., & Durvasula, A. (2025). Insufficient evidence for a severe bottleneck in humans during the Early to Middle Pleistocene Transition. Molecular Biology and Evolution, 42(2), msaf041.",
+      "url": "https://doi.org/10.1093/molbev/msaf041"
+    }
+  ],
+  "citeText": "Agent collective, & Pitchford, I. (2026). The SFS Identifiability Audit: What a Finite Site-Frequency Spectrum Can Identify About Population-Size History (Version 0.2.0-candidate) [Unrefereed candidate paper, machinery and pre-registered audit chain]. Zenodo. https://doi.org/10.5281/zenodo.21894012",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:sfs-identifiability-audit",
+    "attemptIds": [
+      "ep-attempt:sfs-identifiability-audit"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "method-demonstration",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "identification-gate",
+      "partial-identification",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "reusable-method",
+      "description": "An exact identifiability characterisation plus certified identified-set machinery and a two-stage pre-registered audit template for SFS-based demographic claims.",
+      "scope": "Single-population unfolded-SFS inference under the neutral Kingman model; demonstrated on the nine published spectra of the 930-813 kya bottleneck dispute."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The coalescence-to-SFS bridge is implemented twice from mathematically independent routes (generator matrix exponential; Tavare closed-form with exact rational coefficients) agreeing at machine epsilon, with eight mutation controls proving the comparison is live.",
+      "remainingRisks": [
+        "Both bridge implementations were produced within the same workflow; an unaffiliated reimplementation is the outstanding rung.",
+        "The stage-two error model is disclosed as data-informed; a specialist-endorsed linkage and mispolarisation model could change the certified intervals.",
+        "The audit conclusions inherit the deposited spectra's own processing choices, which the audit treats as given."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Judge whether the declared error-model ladders are scientifically defensible concessions rather than tuned choices.",
+      "Assess novelty and priority of the functional characterisation and null construction beyond the bounded search.",
+      "Authorize each publication step, licensing and any applied or outreach use of the certified findings."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "specialistReview",
+        "noveltyAssessment"
+      ],
+      "nextAction": "Unaffiliated rerun of the tagged audit chain, then specialist review of the stage-two error model and a full priority search for the theorem and null family.",
+      "claimCeiling": "Certified, setting-conditional identified sets on the dispute's own published spectra under declared error models; not an adjudication of the bottleneck, a peer-reviewed result, or a priority claim."
+    },
+    "impactClaims": [
+      {
+        "id": "science-no-impact",
+        "aim": "science",
+        "outcome": "Improved claim-evidence alignment in SFS-based demographic inference",
+        "setting": "Population-genetic demographic claims from site-frequency spectra",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No adoption, citation or practice-change evidence was evaluated.",
+        "estimand": "No effect on published inference practice was estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

@@ -49,6 +49,19 @@ const PALETTES = {
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'sfs-identifiability-audit': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'POPULATION GENETICS · V0.2.0'],
+    head: ['What can a genome’s histogram', '<em>actually prove?</em>'],
+    headSize: 60,
+    sub: 'An exact identifiability theorem, certified bounds, and a pre-registered audit of the disputed 900,000-year-old human bottleneck.',
+    tag: 'CERTIFIED BOUNDS · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">certified verdict, claimants’ own data</div>
+      <div class="eq eq-sm">ratio ∈ <span class="hl">[0.16, 0.93]</span></div>
+      <div class="note"><b>Depressed, not severe.</b> Certifiably below baseline — and certifiably far above the claimed crash to 0.05–0.1.</div>
+      <div class="eq-foot">theorem · protocols · certificates · replay</div>`
+  },
   'certified-commitment-horizons': {
     palette: 'pine',
     kicker: ['RESEARCH RELEASE · 8 AUGUST 2026', 'DYNAMIC LOT SIZING · V2.1.2'],
