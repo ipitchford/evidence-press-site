@@ -1,5 +1,11 @@
 ## Plain-English summary
 
+> **Successor notice, 12 August 2026:** the later anonymous unrefereed candidate
+> *A Jacobian smooth-point criterion and the full e=3 column of the Polydegree Conjecture*
+> claims the all-degree theorem left open here. See DOI
+> [10.5281/zenodo.21909085](https://doi.org/10.5281/zenodo.21909085). That producer-side
+> successor does not change this version's historical claims or supply independent confirmation.
+
 Imagine sorting polynomial transformations of the plane by the sequence of
 degrees used to build them. The Polydegree Conjecture asks when one such family
 can occur as a limiting case of another. Earlier work turned many of these
