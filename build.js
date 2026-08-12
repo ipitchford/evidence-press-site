@@ -281,7 +281,11 @@ const papers = fs.readdirSync(papersDir)
       : audioPath;
     meta.audio = fs.existsSync(audioFile) ? { url: audioUrl, bytes: fs.statSync(audioFile).size } : null;
     meta.art = fs.existsSync(path.join(ROOT, 'assets', 'art', meta.slug + '.svg')) ? `/assets/art/${meta.slug}.svg` : null;
-    meta.og = fs.existsSync(path.join(ROOT, 'assets', 'og', meta.slug + '.png')) ? `/assets/og/${meta.slug}.png` : null;
+    const ogFile = path.join(ROOT, 'assets', 'og', meta.slug + '.png');
+    const ogPath = `/assets/og/${meta.slug}.png`;
+    meta.og = fs.existsSync(ogFile)
+      ? (meta.ogContentVersioned ? `${ogPath}?v=${fileVersion(ogFile)}` : ogPath)
+      : null;
     return { ...meta, body };
   })
   .sort((a, b) => b.datePublished.localeCompare(a.datePublished) || a.slug.localeCompare(b.slug));
@@ -339,10 +343,14 @@ function validatePapers(list) {
     if (p.audioContentVersioned != null && typeof p.audioContentVersioned !== 'boolean')
       bad('audioContentVersioned must be a boolean when supplied');
     if (p.audioContentVersioned && !p.audio) bad('audioContentVersioned requires a local MP3 briefing');
+    if (p.ogContentVersioned != null && typeof p.ogContentVersioned !== 'boolean')
+      bad('ogContentVersioned must be a boolean when supplied');
+    if (p.ogContentVersioned && !p.og) bad('ogContentVersioned requires a local Open Graph image');
 
     for (const [i, m] of (p.media || []).entries()) {
       if (!['audio', 'video'].includes(m.type)) bad(`media[${i}].type "${m.type}" must be audio or video`);
       if (!m.url) bad(`media[${i}] has no url`);
+      if (m.superseded != null && typeof m.superseded !== 'boolean') bad(`media[${i}].superseded must be a boolean when supplied`);
     }
 
     for (const [key, value] of [['slug', p.slug], ['doi', p.doi], ['url', `${BASE}/releases/${p.slug}/`]]) {
@@ -417,6 +425,11 @@ const assuranceState = (matrix, key) => (matrix.find(m => m.dimension === key) |
    next to what it now says. Silently repairing a published claim would leave
    a reader unable to tell whether they had seen the wrong version. */
 const CORRECTION_SCOPES = ['presentation', 'metadata', 'claim', 'evidence'];
+
+const authorNode = name => ({
+  '@type': name === 'Ian Pitchford' ? 'Person' : 'Organization',
+  name
+});
 
 function correctionsHtml(p) {
   const list = p.corrections || [];
@@ -662,7 +675,7 @@ function articleJsonld(p) {
       version: p.version,
       identifier: [{ '@type': 'PropertyValue', propertyID: 'DOI', value: p.doi }],
       sameAs: [`https://doi.org/${p.doi}`, p.zenodoUrl, p.releaseUrl || p.repoUrl].filter(Boolean),
-      author: p.authors.map(a => ({ '@type': 'Organization', name: a })),
+      author: p.authors.map(authorNode),
       publisher: { '@id': `${BASE}/#org` },
       isPartOf: { '@id': `${BASE}/#website` },
       license: 'https://creativecommons.org/publicdomain/zero/1.0/',
@@ -713,7 +726,7 @@ function articleJsonld(p) {
       identifier: `https://doi.org/${p.doi}`,
       license: 'https://creativecommons.org/publicdomain/zero/1.0/',
       description: `DOI-archived snapshot of the manuscript and evidence package for: ${p.title}`,
-      creator: p.authors.map(a => ({ '@type': 'Organization', name: a })),
+      creator: p.authors.map(authorNode),
       includedInDataCatalog: { '@type': 'DataCatalog', name: 'Zenodo', url: 'https://zenodo.org' }
     }
   ];
@@ -727,6 +740,7 @@ function articleJsonld(p) {
     license: 'https://creativecommons.org/publicdomain/zero/1.0/'
   });
   for (const m of p.media || []) {
+    if (m.superseded) continue;
     const yt = m.type === 'video' ? youtubeId(m.url) : null;
     graph.push({
       '@type': m.type === 'video' ? 'VideoObject' : 'AudioObject',
@@ -941,6 +955,9 @@ function paperPage(p) {
     `<li>${w.url ? `<a href="${escAttr(w.url)}" rel="noopener">${esc(w.citation)}</a>` : esc(w.citation)}</li>`).join('');
   const open = (p.openProblems || []).map(o => `<li>${inline(o)}</li>`).join('');
   const media = (p.media || []).map(m => {
+    if (m.superseded) {
+      return `<p class="media-note"><strong>Superseded briefing:</strong> <a href="${escAttr(m.url)}" rel="noopener">${esc(m.name)}</a>. ${inline(m.description || 'Retained as part of the correction history; do not use as the current summary.')}</p>`;
+    }
     const duplicateHeaderAudio = m.type === 'audio' && p.audio && p.audio.url &&
       sameAssetPath(m.url, p.audio.url);
     if (duplicateHeaderAudio) {
@@ -953,7 +970,7 @@ function paperPage(p) {
     }
     return `<figure class="media"><audio controls preload="metadata" src="${escAttr(m.url)}"></audio><figcaption>${esc(m.name)}</figcaption></figure>`;
   }).join('\n');
-  const ytVideo = (p.media || []).find(m => m.type === 'video' && youtubeId(m.url));
+  const ytVideo = (p.media || []).find(m => !m.superseded && m.type === 'video' && youtubeId(m.url));
 
   const html = `${head({
     title: `${p.shortTitle} · ${CONFIG.siteName}`,
@@ -1710,7 +1727,7 @@ function api() {
           markdownUrl: { type: 'string', format: 'uri' }, bibtexUrl: { type: 'string', format: 'uri' },
           audioUrl: { type: ['string', 'null'], format: 'uri', description: 'Narrated plain-language briefing (MP3)' },
           imageUrl: { type: ['string', 'null'], format: 'uri' }, coverArtUrl: { type: ['string', 'null'], format: 'uri' },
-          media: { type: 'array', items: { type: 'object', required: ['type', 'url'], additionalProperties: false, properties: { type: { enum: ['audio', 'video'] }, url: { type: 'string', format: 'uri' }, name: { type: 'string' }, description: { type: 'string' }, embedUrl: { type: 'string', format: 'uri' }, durationLabel: { type: 'string' }, transcriptUrl: { type: 'string', format: 'uri' } } } },
+          media: { type: 'array', items: { type: 'object', required: ['type', 'url'], additionalProperties: false, properties: { type: { enum: ['audio', 'video'] }, url: { type: 'string', format: 'uri' }, name: { type: 'string' }, description: { type: 'string' }, embedUrl: { type: 'string', format: 'uri' }, durationLabel: { type: 'string' }, transcriptUrl: { type: 'string', format: 'uri' }, superseded: { type: 'boolean' } } } },
           authors: { type: 'array', items: { type: 'string', minLength: 1 }, minItems: 1 },
           license: { const: 'CC0-1.0' },
           status: { enum: ['unrefereed-candidate', 'unrefereed-preprint'] },

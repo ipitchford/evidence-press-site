@@ -1,31 +1,45 @@
-## The problem in everyday terms
+## What this release establishes
 
-Modern genomes carry traces of ancient population sizes. The most common way to read them starts from a histogram: across a sample of genomes, how many genetic variants appear once, twice, three times, and so on. Fitting software turns that histogram into a curve of population size over hundreds of thousands of years, and headline claims — such as a crash to about 1,280 breeding individuals 900,000 years ago — are read off the curve.
+A site-frequency spectrum (SFS) is a histogram of how often genetic variants appear in a sample. The candidate theorem characterises which linear questions about population-size history are point-identified by an exact finite-sample expected SFS. The linked empirical audit is a separate application: it reports identified sets for published spectra under declared error-model settings. Its findings are conditional on those settings and spectra.
 
-The difficulty is that the histogram is a small object and the curve is a large one. A sample of n genomes yields exactly n−1 numbers about history. Everything beyond those numbers comes from the fitting method's assumptions, and different methods' assumptions fill the gap differently. That is not a hypothetical worry: the 900,000-year bottleneck claim is contested in print by three separate groups using the same public data.
+## Why finite spectra leave historical questions open
 
-## The exact boundary
+Modern genomes carry traces of ancient population sizes, but the SFS is a small summary of a much larger history. A sample of *n* genomes yields *n*−1 frequency classes. In coalescent time, those classes correspond to finitely many blurred averages of history. A fitted curve can contain much more detail, but that extra detail is supplied by a model or selector rather than identified by the finite spectrum alone.
 
-The paper's theorem draws the line precisely. In coalescent time, each of the n−1 numbers is a blurred average of history — a weighted average whose weight is a fixed exponential curve. A historical quantity is pinned down by the data if and only if it is a combination of those n−1 blurs. Averages over sharp time windows, values at particular moments, and detailed curve shapes all fall outside the span, so the data alone cannot decide them.
+This matters for claims such as a crash to about 1,280 breeding individuals roughly 900,000 years ago. Published groups have reached different conclusions from related public data and different processing or modelling choices. The release does not resolve that dispute without assumptions; it makes the relevant identification boundary and assumption dependence explicit.
 
-The theorem is constructive in both directions. For any question outside the span, the paper builds explicit pairs of genuinely different histories — one with a severe crash, one a continuous curve never dipping below half of baseline — whose expected histograms agree to fifty decimal places by construction, and in a realistic example to within one part in twenty million. Positivity of the constructed histories is certified globally, not merely spot-checked.
+## The exact theorem
 
-## Certified bounds instead of curves
+Over the positive history class and scale normalisation stated in the paper, a bounded linear historical functional is point-identified by the exact finite-sample expected SFS if and only if its weight lies in the span of the sample's exponential kernels. Values at particular times, sharp-window averages and detailed curve shapes generally lie outside that span.
 
-The constructive replacement is machinery that reports what the data actually constrain. For any declared historical quantity and any declared complexity budget on the admissible histories, linear programmes compute the full range of values consistent with the data — and every endpoint carries an arithmetic certificate computed to fifty digits, independent of the solver that produced it. A second implementation of the entire data-model bridge, built from a different mathematical route with exact rational arithmetic, agrees with the first at machine precision; eight deliberate-corruption controls confirm the checks are live. An earlier version of this package reported narrower bounds; those numbers were artefacts of imposing numerically meaningless constraints and are explicitly superseded.
+The theorem is constructive. For questions outside the span, the package builds distinct positive histories with the same exact finite expected spectrum. It also gives a severe-bottleneck history and a continuous alternative whose normalised expected spectra are extremely close. These are theorem- and model-specific constructions, not estimates of the true human history.
 
-## A pre-registered audit of the bottleneck dispute
+## What the certificates add
 
-The machinery was then pointed at the live controversy, under a discipline designed to remove the usual escape routes. Every analysis choice — data files identified by cryptographic hash, model grid, error model, complexity budgets, the mapping of the claimed epoch into coalescent time, the exact questions to be asked, and the interpretation of every possible outcome — was frozen, published, and timestamped before any real data touched the analysis code. The data are the dispute's own: the claimants' published spectra for seven populations, and two rival groups' independent processings of the same Yoruba data.
+For a declared historical quantity and a declared admissible class, rank-reduced linear programmes compute the full compatible range. Each endpoint carries a high-precision dual certificate. A Tavare-formula implementation of the coalescence-to-SFS bridge agrees with the primary generator route at machine precision, and mutation controls show that the comparison is live.
+
+Both implementations were produced within the same workflow. Their agreement is a same-producer implementation-diversity check; it is not an independent reimplementation or an unaffiliated reproduction. Earlier v0.1.0 interval endpoints, which depended on numerically meaningless equality directions, remain explicitly superseded.
+
+## How the linked audit was staged
+
+Stage one's protocol was frozen and externally timestamped before real-data contact. It fixed the data hashes, grid, multinomial error model, target questions and outcome interpretation. Stage two was different: its error-model form and parameter ladder were informed by stage-one diagnostics on the same nine spectra. The stage-two protocol was frozen before any stage-two real-data interval endpoints were computed, but it was not independent of prior real-data contact.
+
+The inputs are deposited spectra from the dispute's participants: seven population spectra associated with the original claim and two alternative processings of Yoruba data. The audit treats those spectra and their upstream processing as given.
 
 ## What stage one found
 
-Under the frozen first protocol, which treats the millions of genetic variants as independent observations, the answer was unequivocal: no clean single-population history of any shape reproduces any of the nine datasets. The rejection is itself certified, and its size is diagnostic — the error model must concede that each dataset carries the information of only a few thousand independent observations, not a few million, before any history fits. Discriminating a severe crash from a smooth alternative would require roughly ten orders of magnitude more information than the spectra contain. The failure localises where population genetics says it should: misassigned ancestral states in the high-frequency classes for most processings, and an excess of rare variants for the out-of-Africa samples.
+Under the frozen multinomial model, which treats the very large reported site counts as independent observations, no single-population Kingman history in the declared class fits any of the nine spectra. The result rejects that model-and-error combination; it does not show that no population history could have generated the genomes.
+
+Feasibility returns only after reducing the effective independent information to roughly hundreds or tens of thousands of sites, depending on the spectrum and concession. This diagnostic motivated the stage-two error-model ladder.
 
 ## What stage two found
 
-A second frozen protocol conceded these error channels honestly — a declared misassignment rate, a declared option to drop the contaminated classes, and an information budget set by the genome's recombination structure rather than by tuning. The paper is explicit that this model is informed by stage one's published diagnostics; what remained genuinely pre-registered is that no bound on the real data had ever been computed. Under the most information-preserving declared settings, the certified verdict on the claimants' own Yoruba data reads: the ancient window average sits between 16 and 93 per cent of the recent baseline — certifiably reduced, and certifiably far above the claimed crash to five or ten per cent. The rival Cousins–Durvasula processing of the same population certifies the same shape. The European and East Asian samples certify no reduction at all, matching the one point on which the disputing groups agree. Under laxer settings the ranges widen until nothing is excluded: precision here is purchased by error-model assumptions, and the purchase price is now itemised.
+At the most information-preserving declared stage-two setting, two Yoruba processings give family-union depression-ratio intervals of [0.162, 0.934] and [0.132, 0.961]. Under that setting, both intervals support depression relative to the declared baseline and exclude the claimed severity range. The European and East Asian spectra exclude the claimed severity there but do not establish depression.
 
-## What this does and does not establish
+Those statements do not survive every declared concession. As the effective information and error allowances are relaxed across the full ladder, the identified sets widen until they are uninformative. The intervals therefore support a setting-conditional reading; they are not a model-free verdict on whether, when or how severely the ancestral population changed.
 
-The certified reading — depressed, not severe — is conditional on declared error models applied to the participants' own published histograms, and the wider conclusion stands regardless of setting: the severity of the event is decided by modelling choices, not by the spectra. This page and its audio summary are communication, not evidence; the linked papers, protocols, code, certificates and deviation ledgers are the record. No independent group has reproduced any component, no specialist has reviewed the error models, no proof has been formalised, and bibliographic priority is not claimed.
+## What this does not establish
+
+This is an unrefereed candidate produced and checked within the originating workflows. No unaffiliated group has rerun the package, no independent implementation has been assessed, no population-genetics specialist review is recorded, no proof has been formalised, and bibliographic priority is not claimed. Two unarchived model critiques informed earlier repairs but are not public external reviews.
+
+The page, audio and video are communication assets, not additional evidence. The versioned paper, code, protocol records, executed-audit deposits, certificates and deviation ledgers are the evidence record. The preserved v0.2.0 release and briefing document the earlier wording; v0.2.1 supplies the additive correction.
