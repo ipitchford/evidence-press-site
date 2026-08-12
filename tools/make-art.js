@@ -698,6 +698,39 @@ art['wales-20mph-casualty-attribution'] = (a, b) => {
   return s;
 };
 
+/* Full e=3 polydegree column: three proof regimes meeting at a transverse smooth point. */
+art['full-e3-column-polydegree-conjecture'] = (a, b) => {
+  let s = '';
+  const cx = 610, cy = 198;
+  const curve = (phase, colour, opacity, width) => {
+    let p = '';
+    for (let x = 110; x <= 1110; x += 10) {
+      const t = (x - 110) / 1000;
+      const y = cy + 92 * Math.sin(2 * Math.PI * (t + phase)) * (0.35 + 0.65 * Math.abs(t - 0.5));
+      p += `${p ? ' L' : 'M'} ${x} ${y.toFixed(1)}`;
+    }
+    return `<path d="${p}" fill="none" stroke="${colour}" stroke-width="${width}" opacity="${opacity}"/>`;
+  };
+  s += curve(0, a, 0.9, 3.2);
+  s += curve(0.5, b, 0.9, 3.2);
+  s += `<circle cx="${cx}" cy="${cy}" r="12" fill="#151a1e" stroke="#e7e5e4" stroke-width="3"/>`;
+  s += `<line x1="${cx - 36}" y1="${cy}" x2="${cx + 36}" y2="${cy}" stroke="#e7e5e4" stroke-width="1.5" opacity=".72"/>`;
+  s += `<line x1="${cx}" y1="${cy - 36}" x2="${cx}" y2="${cy + 36}" stroke="#e7e5e4" stroke-width="1.5" opacity=".72"/>`;
+  const boxes = [
+    [80, 46, 'EXACT BASE', '2 ≤ d ≤ 100', a],
+    [470, 46, 'ARB BRIDGE', '97,033 CASES', '#e7e5e4'],
+    [860, 46, 'EVENTUAL', 'm ≥ 48,550', b]
+  ];
+  for (const [x, y, label, detail, colour] of boxes) {
+    s += `<rect x="${x}" y="${y}" width="260" height="70" rx="14" fill="#151a1e" stroke="${colour}" stroke-width="2" opacity=".96"/>`;
+    s += `<text x="${x + 130}" y="${y + 28}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="${colour}">${label}</text>`;
+    s += `<text x="${x + 130}" y="${y + 54}" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4">${detail}</text>`;
+  }
+  s += `<path d="M 210 116 C 320 150, 420 178, 560 194 M 600 116 V 164 M 990 116 C 885 150, 790 178, 662 194" fill="none" stroke="#8a938f" stroke-width="1.5" stroke-dasharray="7 7" opacity=".62"/>`;
+  s += `<text x="610" y="362" text-anchor="middle" font-family="Georgia" font-size="30" fill="#e7e5e4" opacity=".9">one smooth point closes every degree</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -721,6 +754,7 @@ const palette = {
   'unique-answer-not-identified': ['#38bdf8', '#f59e0b'],
   'sfs-identifiability-audit': ['#f59e0b', '#38bdf8'],
   'wales-20mph-casualty-attribution': ['#2dd4bf', '#f59e0b']
+  ,'full-e3-column-polydegree-conjecture': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
