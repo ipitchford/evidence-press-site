@@ -6,6 +6,15 @@ are not covered here.
 
 ## 1.2.0 — unreleased candidate
 
+- Added the `sfs-identifiability-audit` v0.2.1 correction as an immutable
+  successor: calibrated assurance and stage-two data-contact language, corrected
+  scholarly authorship, an explicit correction ledger, content-versioned audio
+  and Open Graph assets, and a captioned replacement video. The superseded
+  v0.2.0 briefing remains linked as history but is no longer embedded.
+- Media records may now carry a `superseded` flag, and corrected Open Graph
+  images may use content-derived version URLs. Build tests require exactly one
+  current SFS video, retain the old media URL, and fail if the independent-
+  assurance or empirical claim boundaries regress.
 - Added a prospective Evidence Press operating contract with four separate
   clocks (discovery, assurance, publication and translation), a frozen 21-release legacy
   baseline and an explicit claim ceiling. Historical process data are not

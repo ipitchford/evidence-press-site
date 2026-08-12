@@ -334,6 +334,52 @@ check('unique-answer video is API-visible, privacy-enhanced and claim-calibrated
   uniqueAnswerHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/l_r0fMvFbBQ/hqdefault.jpg"'),
   `video=${uniqueAnswerVideo && uniqueAnswerVideo.url}`);
 
+const sfsAudit = papersDoc.papers.find(p => p.slug === 'sfs-identifiability-audit');
+const sfsMeta = JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', 'sfs-identifiability-audit', 'meta.json'), 'utf8'));
+const sfsHtml = fs.readFileSync(path.join(DIST, 'releases', 'sfs-identifiability-audit', 'index.html'), 'utf8');
+const sfsAudioFile = path.join(ROOT, 'assets', 'audio', 'sfs-identifiability-audit.mp3');
+const sfsOgFile = path.join(ROOT, 'assets', 'og', 'sfs-identifiability-audit.png');
+const sfsAudioVersion = crypto.createHash('sha256').update(fs.readFileSync(sfsAudioFile)).digest('hex').slice(0, 10);
+const sfsOgVersion = crypto.createHash('sha256').update(fs.readFileSync(sfsOgFile)).digest('hex').slice(0, 10);
+const sfsCurrentVideo = sfsAudit && sfsAudit.media.find(item => item.type === 'video' && !item.superseded);
+const sfsHistoricalVideo = sfsAudit && sfsAudit.media.find(item => item.type === 'video' && item.superseded);
+check('SFS correction binds the successor DOI, sole scholarly creator and explicit correction history',
+  sfsAudit && sfsAudit.version === '0.2.1-candidate' &&
+  sfsAudit.doi === '10.5281/zenodo.21907269' &&
+  same(sfsAudit.authors, ['Ian Pitchford']) &&
+  sfsAudit.corrections.length === 3 &&
+  sfsAudit.provenance.disclosure.includes('not public external reviews'),
+  `version=${sfsAudit && sfsAudit.version} doi=${sfsAudit && sfsAudit.doi}`);
+check('SFS corrected audio and Open Graph card are content-versioned',
+  sfsAudit &&
+  sfsAudit.audioUrl === `https://evidencepress.org/assets/audio/sfs-identifiability-audit.mp3?v=${sfsAudioVersion}` &&
+  sfsAudit.imageUrl === `https://evidencepress.org/assets/og/sfs-identifiability-audit.png?v=${sfsOgVersion}` &&
+  sfsHtml.includes(`property="og:image" content="https://evidencepress.org/assets/og/sfs-identifiability-audit.png?v=${sfsOgVersion}"`),
+  `audio=${sfsAudit && sfsAudit.audioUrl} image=${sfsAudit && sfsAudit.imageUrl}`);
+check('SFS media embeds only the corrected briefing and preserves the old briefing as superseded history',
+  sfsCurrentVideo && sfsCurrentVideo.url === 'https://youtu.be/iBTcQ1Qjl_g' &&
+  sfsHistoricalVideo && sfsHistoricalVideo.url === 'https://youtu.be/QgBD6f_EGDo' &&
+  (sfsHtml.match(/<iframe\b/g) || []).length === 1 &&
+  sfsHtml.includes('src="https://www.youtube-nocookie.com/embed/iBTcQ1Qjl_g?rel=0"') &&
+  !sfsHtml.includes('src="https://www.youtube-nocookie.com/embed/QgBD6f_EGDo?rel=0"') &&
+  sfsHtml.includes('<strong>Superseded briefing:</strong>') &&
+  sfsHtml.includes('https://youtu.be/QgBD6f_EGDo'),
+  `current=${sfsCurrentVideo && sfsCurrentVideo.url} historical=${sfsHistoricalVideo && sfsHistoricalVideo.url}`);
+check('SFS public assurance does not promote same-producer diversity to independent reimplementation',
+  sfsAudit && sfsAudit.assurance.find(item => item.dimension === 'independentReimplementation').state === 'not-assessed' &&
+  sfsAudit.verification.independentlyReproduced === false &&
+  sfsHtml.includes('same-producer implementation-diversity check') &&
+  sfsHtml.includes('Stage two was different: its error-model form and parameter ladder were informed by stage-one diagnostics'),
+  'expected not-assessed independent reimplementation and explicit stage-two data-contact disclosure');
+check('SFS narration transcript exactly matches the corrected metadata source',
+  fs.readFileSync(path.join(ROOT, 'assets', 'audio', 'sfs-identifiability-audit.txt'), 'utf8').trim() === sfsMeta.narration.trim() &&
+  sfsMeta.narration.split(/\s+/).length >= 160 && sfsMeta.narration.split(/\s+/).length <= 300,
+  `words=${sfsMeta.narration.split(/\s+/).length}`);
+check('SFS scholarly JSON-LD represents Ian Pitchford as a person',
+  sfsHtml.includes('"author": [') && sfsHtml.includes('"@type": "Person"') &&
+  !sfsHtml.includes('"name": "Agent collective"'),
+  'expected Person creator and no agent scholarly author');
+
 /* ---------------------------------------- programme visual hierarchy */
 const imageSources = rel => [...fs.readFileSync(path.join(DIST, rel), 'utf8')
   .matchAll(/<img\s+[^>]*src="([^"]+)"[^>]*>/g)].map(match => match[1]);

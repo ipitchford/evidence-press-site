@@ -18,7 +18,7 @@ body { width:1200px; height:630px; background:#151a1e; font-family: Georgia, 'Ti
 .content { position:absolute; inset:0; padding:64px 70px; display:flex; flex-direction:column; justify-content:space-between; }
 .kicker { font-family:system-ui, sans-serif; font-size:22px; letter-spacing:.14em; color:#2dd4bf; font-weight:600; }
 h1 { color:#faf7f2; font-size:${m.title.length > 80 ? 46 : 54}px; line-height:1.16; max-width:940px; font-weight:700; }
-.foot { font-family:system-ui, sans-serif; font-size:22px; color:#a8a29e; display:flex; gap:28px; }
+.foot { font-family:system-ui, sans-serif; font-size:20px; color:#a8a29e; display:flex; gap:24px; flex-wrap:wrap; }
 .foot b { color:#e7e5e4; font-weight:600; }
 </style></head><body>
 <div class="art">${artSvg}</div>
@@ -26,7 +26,7 @@ h1 { color:#faf7f2; font-size:${m.title.length > 80 ? 46 : 54}px; line-height:1.
 <div class="content">
   <div class="kicker">EVIDENCE PRESS · RESEARCH RELEASE</div>
   <h1>${m.title.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</h1>
-  <div class="foot">${m.doi ? `<span><b>DOI</b> ${m.doi}</span>` : '<span><b>UNREFEREED CANDIDATE</b></span>'}<span><b>${m.datePublished}</b></span><span>paper · code · evidence</span></div>
+  <div class="foot"><span><b>${m.status === 'unrefereed-preprint' ? 'UNREFEREED PREPRINT' : 'UNREFEREED CANDIDATE'}</b></span>${m.doi ? `<span><b>DOI</b> ${m.doi}</span>` : ''}<span><b>updated ${m.dateModified || m.datePublished}</b></span><span>paper · code · evidence</span></div>
 </div>
 </body></html>`;
 

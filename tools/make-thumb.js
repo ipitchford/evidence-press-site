@@ -64,16 +64,16 @@ const SPECS = {
   },
   'sfs-identifiability-audit': {
     palette: 'pine',
-    kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'POPULATION GENETICS · V0.2.0'],
+    kicker: ['RESEARCH RELEASE · 12 AUGUST 2026', 'POPULATION GENETICS · V0.2.1'],
     head: ['What can a genome’s histogram', '<em>actually prove?</em>'],
     headSize: 60,
-    sub: 'An exact identifiability theorem, certified bounds, and a pre-registered audit of the disputed 900,000-year-old human bottleneck.',
-    tag: 'CERTIFIED BOUNDS · UNREFEREED CANDIDATE',
+    sub: 'An exact identification theorem, certified bounds, and a setting-conditional audit of the disputed 900,000-year-old bottleneck.',
+    tag: 'SETTING-CONDITIONAL · UNREFEREED CANDIDATE',
     hero: `
-      <div class="eq-label">certified verdict, claimants’ own data</div>
+      <div class="eq-label">most information-preserving declared setting</div>
       <div class="eq eq-sm">ratio ∈ <span class="hl">[0.16, 0.93]</span></div>
-      <div class="note"><b>Depressed, not severe.</b> Certifiably below baseline — and certifiably far above the claimed crash to 0.05–0.1.</div>
-      <div class="eq-foot">theorem · protocols · certificates · replay</div>`
+      <div class="note"><b>Supports depression and excludes claimed severity under this setting.</b> The full concession ladder becomes uninformative.</div>
+      <div class="eq-foot">not a model-free verdict · not independently reproduced</div>`
   },
   'certified-commitment-horizons': {
     palette: 'pine',
