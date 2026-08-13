@@ -731,6 +731,41 @@ art['full-e3-column-polydegree-conjecture'] = (a, b) => {
   return s;
 };
 
+/* Aggregation licence: two hidden states share one summary but require different targets. */
+art['aggregation-without-sufficiency'] = (a, b) => {
+  let s = '';
+  const rows = [94, 200, 306];
+  const labels = ['ECONOMY', 'FISHERY', 'EPIDEMIC'];
+  for (let i = 0; i < rows.length; i++) {
+    const y = rows[i];
+    s += `<text x="52" y="${y + 5}" font-family="ui-monospace,monospace" font-size="14" fill="#e7e5e4" opacity=".66">${labels[i]}</text>`;
+    s += `<circle cx="205" cy="${y - 20}" r="10" fill="${a}"/><circle cx="205" cy="${y + 20}" r="10" fill="${b}"/>`;
+    s += `<text x="228" y="${y - 14}" font-family="Georgia" font-size="17" fill="${a}">x</text><text x="228" y="${y + 26}" font-family="Georgia" font-size="17" fill="${b}">x′</text>`;
+    s += `<path d="M 250 ${y - 20} C 310 ${y - 20}, 320 ${y}, 370 ${y}" fill="none" stroke="${a}" stroke-width="2.5"/>`;
+    s += `<path d="M 250 ${y + 20} C 310 ${y + 20}, 320 ${y}, 370 ${y}" fill="none" stroke="${b}" stroke-width="2.5"/>`;
+    s += `<circle cx="400" cy="${y}" r="28" fill="#151a1e" stroke="#e7e5e4" stroke-width="2"/>`;
+    s += `<text x="400" y="${y + 7}" text-anchor="middle" font-family="Georgia" font-size="22" fill="#e7e5e4">A</text>`;
+    s += `<path d="M 430 ${y} H 500" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 7" opacity=".55"/>`;
+    s += `<path d="M 500 ${y} C 548 ${y}, 548 ${y - 23}, 590 ${y - 23}" fill="none" stroke="${a}" stroke-width="2.5"/>`;
+    s += `<path d="M 500 ${y} C 548 ${y}, 548 ${y + 23}, 590 ${y + 23}" fill="none" stroke="${b}" stroke-width="2.5"/>`;
+    s += `<circle cx="610" cy="${y - 23}" r="10" fill="${a}"/><circle cx="610" cy="${y + 23}" r="10" fill="${b}"/>`;
+  }
+  s += `<text x="400" y="376" text-anchor="middle" font-family="Georgia" font-size="22" fill="#e7e5e4" opacity=".86">same aggregate</text>`;
+  s += `<text x="610" y="376" text-anchor="middle" font-family="Georgia" font-size="22" fill="${b}">different target</text>`;
+  s += `<rect x="730" y="54" width="410" height="292" rx="20" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text x="935" y="98" text-anchor="middle" font-family="Georgia" font-size="28" fill="${a}">AGGREGATION LICENCE</text>`;
+  const fields = [
+    ['TARGET', 'declared'], ['INTERVENTION', 'declared'], ['TOLERANCE', 'declared'], ['EXPIRY', 'monitored']
+  ];
+  for (let i = 0; i < fields.length; i++) {
+    const y = 136 + i * 47;
+    s += `<line x1="770" y1="${y + 16}" x2="1100" y2="${y + 16}" stroke="#8a938f" stroke-width="1" opacity=".38"/>`;
+    s += `<text x="774" y="${y}" font-family="ui-monospace,monospace" font-size="14" fill="#e7e5e4" opacity=".68">${fields[i][0]}</text>`;
+    s += `<text x="1096" y="${y}" text-anchor="end" font-family="ui-monospace,monospace" font-size="14" fill="${i === 3 ? b : a}">${fields[i][1]}</text>`;
+  }
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -755,6 +790,7 @@ const palette = {
   'sfs-identifiability-audit': ['#f59e0b', '#38bdf8'],
   'wales-20mph-casualty-attribution': ['#2dd4bf', '#f59e0b']
   ,'full-e3-column-polydegree-conjecture': ['#2dd4bf', '#f59e0b']
+  ,'aggregation-without-sufficiency': ['#38bdf8', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
