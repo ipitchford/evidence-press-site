@@ -334,6 +334,17 @@ check('unique-answer video is API-visible, privacy-enhanced and claim-calibrated
   uniqueAnswerHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/l_r0fMvFbBQ/hqdefault.jpg"'),
   `video=${uniqueAnswerVideo && uniqueAnswerVideo.url}`);
 
+const walesAudit = papersDoc.papers.find(p => p.slug === 'wales-20mph-casualty-attribution');
+const walesVideo = walesAudit && walesAudit.media.find(item => item.type === 'video');
+const walesHtml = fs.readFileSync(path.join(DIST, 'releases', 'wales-20mph-casualty-attribution', 'index.html'), 'utf8');
+check('Wales video is API-visible, privacy-enhanced and evidence-calibrated',
+  walesVideo && walesVideo.url === 'https://youtu.be/a5bUnv22Sns' &&
+  walesVideo.description.includes('not additional policy evidence') &&
+  (walesHtml.match(/<iframe\b/g) || []).length === 1 &&
+  walesHtml.includes('src="https://www.youtube-nocookie.com/embed/a5bUnv22Sns?rel=0"') &&
+  walesHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/a5bUnv22Sns/hqdefault.jpg"'),
+  `video=${walesVideo && walesVideo.url}`);
+
 const sfsAudit = papersDoc.papers.find(p => p.slug === 'sfs-identifiability-audit');
 const sfsMeta = JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', 'sfs-identifiability-audit', 'meta.json'), 'utf8'));
 const sfsHtml = fs.readFileSync(path.join(DIST, 'releases', 'sfs-identifiability-audit', 'index.html'), 'utf8');
