@@ -194,6 +194,20 @@ const SPECS = {
       <div class="eq eq-sm">θ ≠ θ′<br><span class="hl">P<sub>θ</sub> = P<sub>θ′</sub></span></div>
       <div class="note">A procedure can return one answer by fixing a default, penalty, rotation, or calibration convention. That can identify the <b>selector</b> without identifying the scientific effect.</div>
       <div class="eq-foot">identified set · selector ledger · eight-dimensional assurance</div>`
+  },
+
+  'aggregation-without-sufficiency': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 13 AUGUST 2026', 'IDENTIFICATION · V0.4.0'],
+    head: ['The summary is correct.', '<em>The decision can still be wrong.</em>'],
+    headSize: 57,
+    sub: 'An aggregation licence tests whether a compact macro measure preserves the answer or action someone actually needs.',
+    tag: 'AGGREGATION LICENCE · UNREFEREED PREPRINT',
+    hero: `
+      <div class="eq-label">same reported aggregate</div>
+      <div class="eq eq-sm">A(x) = A(x′)<br><span class="hl">T(x) ≠ T(x′)</span></div>
+      <div class="note">More precise measurement of A cannot recover information that aggregation discarded. Declare the <b>target, intervention, loss, tolerance, and expiry</b>.</div>
+      <div class="eq-foot">economics · fisheries · epidemiology · producer-side checks</div>`
   }
 };
 
