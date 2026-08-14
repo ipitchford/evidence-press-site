@@ -766,6 +766,30 @@ art['aggregation-without-sufficiency'] = (a, b) => {
   return s;
 };
 
+/* Frankl entropy programme: a feasible counterdirection and repaired componentwise supports. */
+art['frankl-concavity-obstruction'] = (a, b) => {
+  let s = '';
+  const cx = 356, cy = 200;
+  s += `<ellipse cx="${cx}" cy="${cy}" rx="224" ry="144" fill="#151a1e" stroke="#e7e5e4" stroke-width="1.5" opacity=".38"/>`;
+  s += `<path d="M 132 200 C 220 112, 286 126, 356 200 C 426 274, 492 288, 580 200" fill="none" stroke="${a}" stroke-width="4" opacity=".96"/>`;
+  s += `<path d="M 132 200 C 220 288, 286 274, 356 200 C 426 126, 492 112, 580 200" fill="none" stroke="${b}" stroke-width="4" opacity=".96"/>`;
+  s += `<circle cx="${cx}" cy="${cy}" r="13" fill="#151a1e" stroke="#e7e5e4" stroke-width="3"/>`;
+  s += `<path d="M 356 200 Q 356 92 444 80" fill="none" stroke="#e7e5e4" stroke-width="3" stroke-dasharray="8 7" opacity=".82"/>`;
+  s += `<path d="M 434 71 L 454 78 L 438 91" fill="none" stroke="#e7e5e4" stroke-width="3"/>`;
+  s += `<text x="356" y="348" text-anchor="middle" font-family="Georgia" font-size="25" fill="#e7e5e4" opacity=".9">aggregate moments fixed</text>`;
+  s += `<text x="458" y="72" font-family="Georgia" font-size="24" fill="${b}">positive curvature</text>`;
+
+  s += `<path d="M 620 200 H 692" stroke="#8a938f" stroke-width="2" stroke-dasharray="7 7" opacity=".7"/>`;
+  s += `<path d="M 680 190 L 700 200 L 680 210" fill="none" stroke="#8a938f" stroke-width="2"/>`;
+  const atoms = [[770, 122, a], [850, 200, a], [770, 278, a], [1000, 122, b], [1080, 200, b], [1000, 278, b]];
+  for (const [x, y, colour] of atoms) s += `<circle cx="${x}" cy="${y}" r="14" fill="${colour}" opacity=".94"/>`;
+  s += `<path d="M 770 122 L 850 200 L 770 278 M 1000 122 L 1080 200 L 1000 278" fill="none" stroke="#e7e5e4" stroke-width="1.5" opacity=".38"/>`;
+  s += `<text x="810" y="348" text-anchor="middle" font-family="Georgia" font-size="21" fill="${a}">P₀ ≤ 3 atoms</text>`;
+  s += `<text x="1040" y="348" text-anchor="middle" font-family="Georgia" font-size="21" fill="${b}">P₁ ≤ 3 atoms</text>`;
+  s += `<text x="924" y="55" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" fill="#e7e5e4" opacity=".72">INDEPENDENT WEIGHTS · GLOBAL INEQUALITY OPEN</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -791,6 +815,7 @@ const palette = {
   'wales-20mph-casualty-attribution': ['#2dd4bf', '#f59e0b']
   ,'full-e3-column-polydegree-conjecture': ['#2dd4bf', '#f59e0b']
   ,'aggregation-without-sufficiency': ['#38bdf8', '#f59e0b']
+  ,'frankl-concavity-obstruction': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
