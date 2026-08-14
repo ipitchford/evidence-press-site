@@ -731,6 +731,39 @@ art['full-e3-column-polydegree-conjecture'] = (a, b) => {
   return s;
 };
 
+/* Furter R(3) finite theorem: 299 certified windows, one prime across three strata,
+   and a periodic obstruction to any universal one-fixed-prime proof. */
+art['furter-r3-through-299'] = (a, b) => {
+  let s = '';
+  const cols = 30, rows = 10, cellX = 17, cellY = 24, ox = 62, oy = 58;
+  for (let i = 0; i < 299; i++) {
+    const x = ox + (i % cols) * cellX;
+    const y = oy + Math.floor(i / cols) * cellY;
+    const colour = i < 48 ? b : a;
+    const opacity = i < 48 ? 0.78 : 0.34 + 0.46 * ((i % 7) / 6);
+    s += `<rect x="${x}" y="${y}" width="12" height="15" rx="3" fill="${colour}" opacity="${opacity.toFixed(2)}"/>`;
+  }
+  s += `<text x="310" y="338" text-anchor="middle" font-family="Georgia" font-size="25" fill="#e7e5e4" opacity=".92">299 exact windows</text>`;
+
+  const px = 720, py = 198;
+  s += `<circle cx="${px}" cy="${py}" r="42" fill="#151a1e" stroke="${a}" stroke-width="4"/>`;
+  s += `<text x="${px}" y="${py + 9}" text-anchor="middle" font-family="Georgia" font-size="29" fill="${a}">p</text>`;
+  for (const [x, y, label] of [[905, 88, 'x₁'], [962, 198, 'x₂'], [905, 308, 'x₃']]) {
+    s += `<path d="M ${px + 45} ${py} C 820 ${py}, 830 ${y}, ${x - 28} ${y}" fill="none" stroke="#e7e5e4" stroke-width="2" opacity=".56"/>`;
+    s += `<circle cx="${x}" cy="${y}" r="25" fill="#151a1e" stroke="${b}" stroke-width="3"/>`;
+    s += `<text x="${x}" y="${y + 7}" text-anchor="middle" font-family="Georgia" font-size="20" fill="${b}">${label}</text>`;
+  }
+  s += `<text x="838" y="36" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4" opacity=".76">SAME PRIME · THREE STRATA</text>`;
+
+  for (let k = 0; k < 7; k++) {
+    const x = 1030 + k * 20;
+    s += `<line x1="${x}" y1="72" x2="${x - 64}" y2="330" stroke="${k % 2 ? b : a}" stroke-width="3" opacity="${(0.26 + k * 0.08).toFixed(2)}"/>`;
+  }
+  s += `<path d="M 1008 340 H 1160" stroke="#e7e5e4" stroke-width="1.5" stroke-dasharray="7 7" opacity=".48"/>`;
+  s += `<text x="1082" y="374" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4" opacity=".84">no fixed prime</text>`;
+  return s;
+};
+
 /* Aggregation licence: two hidden states share one summary but require different targets. */
 art['aggregation-without-sufficiency'] = (a, b) => {
   let s = '';
@@ -791,6 +824,7 @@ const palette = {
   'wales-20mph-casualty-attribution': ['#2dd4bf', '#f59e0b']
   ,'full-e3-column-polydegree-conjecture': ['#2dd4bf', '#f59e0b']
   ,'aggregation-without-sufficiency': ['#38bdf8', '#f59e0b']
+  ,'furter-r3-through-299': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
