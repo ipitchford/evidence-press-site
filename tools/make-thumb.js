@@ -182,6 +182,20 @@ const SPECS = {
       <div class="eq-foot">proved identities · exact finite evidence · all-d affine theorem still open</div>`
   },
 
+  'full-e3-column-polydegree-conjecture': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 12 AUGUST 2026', 'POLYDEGREE CONJECTURE · V0.1.0'],
+    head: ['The full e = 3 column.', '<em>Every degree.</em>'],
+    headSize: 64,
+    sub: 'A smooth-point criterion, Fourier limits, exact finite checks and 97,033 Arb certificates join into one gap-free candidate proof.',
+    tag: 'PRODUCER-SIDE REPLAY · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">candidate theorem · every integer d ≥ 2</div>
+      <div class="eq eq-sm">𝒢<sub>(d+3)</sub> ⊆ <span class="hl" style="text-decoration:overline">𝒢<sub>(d,4)</sub></span></div>
+      <div class="note">Exact symbolic and finite-field checks, interval certificates and a rational eventual envelope cover <b>all cases with no gaps</b>.</div>
+      <div class="eq-foot">not independently rerun · not formally verified</div>`
+  },
+
   'unique-answer-not-identified': {
     palette: 'pine',
     kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'IDENTIFICATION SYNTHESIS · V1.0.0-CANDIDATE'],

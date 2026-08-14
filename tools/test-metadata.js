@@ -345,6 +345,17 @@ check('Wales video is API-visible, privacy-enhanced and evidence-calibrated',
   walesHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/a5bUnv22Sns/hqdefault.jpg"'),
   `video=${walesVideo && walesVideo.url}`);
 
+const fullE3 = papersDoc.papers.find(p => p.slug === 'full-e3-column-polydegree-conjecture');
+const fullE3Video = fullE3 && fullE3.media.find(item => item.type === 'video');
+const fullE3Html = fs.readFileSync(path.join(DIST, 'releases', 'full-e3-column-polydegree-conjecture', 'index.html'), 'utf8');
+check('full e=3 video is API-visible, privacy-enhanced and evidence-calibrated',
+  fullE3Video && fullE3Video.url === 'https://youtu.be/P3Ozi6Dp9hQ' &&
+  fullE3Video.description.includes('not additional mathematical evidence') &&
+  (fullE3Html.match(/<iframe\b/g) || []).length === 1 &&
+  fullE3Html.includes('src="https://www.youtube-nocookie.com/embed/P3Ozi6Dp9hQ?rel=0"') &&
+  fullE3Html.includes('"thumbnailUrl": "https://i.ytimg.com/vi/P3Ozi6Dp9hQ/hqdefault.jpg"'),
+  `video=${fullE3Video && fullE3Video.url}`);
+
 const sfsAudit = papersDoc.papers.find(p => p.slug === 'sfs-identifiability-audit');
 const sfsMeta = JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', 'sfs-identifiability-audit', 'meta.json'), 'utf8'));
 const sfsHtml = fs.readFileSync(path.join(DIST, 'releases', 'sfs-identifiability-audit', 'index.html'), 'utf8');
