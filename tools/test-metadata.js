@@ -403,6 +403,17 @@ check('cyclicity-root-span video is API-visible, privacy-enhanced and evidence-c
   cyclicityRootSpanHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/ZFPFIWHWihs/hqdefault.jpg"'),
   `video=${cyclicityRootSpanVideo && cyclicityRootSpanVideo.url}`);
 
+const exactSmith = papersDoc.papers.find(p => p.slug === 'exact-smith-invariants-affine-determinant-lines');
+const exactSmithVideo = exactSmith && exactSmith.media.find(item => item.type === 'video');
+const exactSmithHtml = fs.readFileSync(path.join(DIST, 'releases', 'exact-smith-invariants-affine-determinant-lines', 'index.html'), 'utf8');
+check('exact-Smith video is API-visible, privacy-enhanced and evidence-calibrated',
+  exactSmithVideo && exactSmithVideo.url === 'https://youtu.be/G16zwDUq2gs' &&
+  exactSmithVideo.description.includes('not additional mathematical evidence') &&
+  (exactSmithHtml.match(/<iframe\b/g) || []).length === 1 &&
+  exactSmithHtml.includes('src="https://www.youtube-nocookie.com/embed/G16zwDUq2gs?rel=0"') &&
+  exactSmithHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/G16zwDUq2gs/hqdefault.jpg"'),
+  `video=${exactSmithVideo && exactSmithVideo.url}`);
+
 const sfsAudit = papersDoc.papers.find(p => p.slug === 'sfs-identifiability-audit');
 const sfsMeta = JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', 'sfs-identifiability-audit', 'meta.json'), 'utf8'));
 const sfsHtml = fs.readFileSync(path.join(DIST, 'releases', 'sfs-identifiability-audit', 'index.html'), 'utf8');
