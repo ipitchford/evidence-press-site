@@ -1,14 +1,18 @@
 #!/usr/bin/env node
-/* Renders YouTube thumbnails (2560×1440, JPEG) → thumbs/<slug>.jpg
+/* Renders YouTube thumbnails (2560×1440, JPEG) to both the repository and
+ * the maintainer's central thumbnail library.
  *
  * Run at authoring time (needs Playwright + Chromium):
- *   node tools/make-thumb.js                     # every slug with a spec
+ *   node tools/make-thumb.js                     # every release
  *   node tools/make-thumb.js erdos-848-all-n     # just one
+ *   node tools/make-thumb.js --missing            # only missing repo files
+ *   node tools/make-thumb.js --check              # no rendering; CI-safe
  *
- * Output lives in thumbs/ rather than assets/ because these are for YouTube,
- * not for the site: assets/ is copied wholesale into dist/ and would publish
- * them. Outputs are committed, as with the cover art and OG cards, so the
- * artwork accompanying a release is reproducible from the repository.
+ * The committed copy lives in thumbs/ rather than assets/ because these are
+ * for YouTube, not for the site: assets/ is copied wholesale into dist/ and
+ * would publish them. Every render is also mirrored to ~/thumbs (or
+ * EVIDENCE_PRESS_THUMBNAIL_DIR), giving the maintainer one upload-ready folder
+ * without sacrificing repository provenance.
  *
  * Design rules, learned from the first thumbnail in this family:
  *   - The headline must survive being 210px wide in a YouTube sidebar, so it
@@ -23,10 +27,12 @@
  */
 'use strict';
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'thumbs');
+const CENTRAL_OUT = process.env.EVIDENCE_PRESS_THUMBNAIL_DIR || path.join(os.homedir(), 'thumbs');
 const W = 1280;
 const H = 720;
 const LIMIT = 2 * 1024 * 1024;   /* YouTube rejects thumbnails above 2 MB */
@@ -43,14 +49,40 @@ const PALETTES = {
     from: '#04231e', to: '#0a5348', glow: '#0f766e',
     ink: '#ecfdf5', dim: '#7fd8c4', accent: '#fbbf24', rule: '#2dd4bf',
     panel: 'rgba(236,253,245,.06)', panelEdge: 'rgba(45,212,191,.42)'
+  },
+  /* Deep blue — computation and verification. */
+  cobalt: {
+    from: '#071a3d', to: '#164e8a', glow: '#2563eb',
+    ink: '#eff6ff', dim: '#93c5fd', accent: '#fde047', rule: '#60a5fa',
+    panel: 'rgba(239,246,255,.07)', panelEdge: 'rgba(253,224,71,.42)'
+  },
+  /* Purple — synthesis and conceptual work. */
+  aubergine: {
+    from: '#21102f', to: '#633177', glow: '#9333ea',
+    ink: '#faf5ff', dim: '#d8b4fe', accent: '#facc15', rule: '#c084fc',
+    panel: 'rgba(250,245,255,.07)', panelEdge: 'rgba(250,204,21,.42)'
+  },
+  /* Burnished brown — history, institutions and applied work. */
+  bronze: {
+    from: '#2b1608', to: '#7c3f12', glow: '#c2410c',
+    ink: '#fff7ed', dim: '#fdba74', accent: '#fde047', rule: '#fb923c',
+    panel: 'rgba(255,247,237,.07)', panelEdge: 'rgba(253,224,71,.42)'
+  },
+  /* Dark cyan — policy and empirical identification. */
+  lagoon: {
+    from: '#06202b', to: '#0e5a6f', glow: '#0891b2',
+    ink: '#ecfeff', dim: '#a5f3fc', accent: '#facc15', rule: '#22d3ee',
+    panel: 'rgba(236,254,255,.07)', panelEdge: 'rgba(250,204,21,.42)'
   }
 };
+
+const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'lagoon'];
 
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
   'wales-20mph-casualty-attribution': {
-    palette: 'pine',
+    palette: 'auto',
     kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'POLICY IDENTIFICATION · V1.0.0'],
     head: ['A 28% fall.', '<em>Still not a causal effect.</em>'],
     headSize: 62,
@@ -63,7 +95,7 @@ const SPECS = {
       <div class="eq-foot">hypothetical worlds · not estimates or bounds</div>`
   },
   'sfs-identifiability-audit': {
-    palette: 'pine',
+    palette: 'auto',
     kicker: ['RESEARCH RELEASE · 12 AUGUST 2026', 'POPULATION GENETICS · V0.2.1'],
     head: ['What can a genome’s histogram', '<em>actually prove?</em>'],
     headSize: 60,
@@ -76,7 +108,7 @@ const SPECS = {
       <div class="eq-foot">not a model-free verdict · not independently reproduced</div>`
   },
   'certified-commitment-horizons': {
-    palette: 'pine',
+    palette: 'auto',
     kicker: ['RESEARCH RELEASE · 8 AUGUST 2026', 'DYNAMIC LOT SIZING · V2.1.2'],
     head: ['How far can a plan', '<em>safely hold?</em>'],
     headSize: 64,
@@ -90,7 +122,7 @@ const SPECS = {
   },
 
   'certified-two-item-jrp': {
-    palette: 'pine',
+    palette: 'auto',
     kicker: ['RESEARCH RELEASE · 8 AUGUST 2026', 'JOINT REPLENISHMENT · V1.2.0'],
     head: ['Two items.', 'One exact <em>gap.</em>'],
     headSize: 72,
@@ -104,7 +136,7 @@ const SPECS = {
   },
 
   'erdos-848-all-n': {
-    palette: 'oxblood',
+    palette: 'auto',
     kicker: ['PRESS RELEASE · 28 JULY 2026', 'ERDŐS PROBLEM 848 · V0.1'],
     head: ['An exact answer', 'for <em>every N</em>'],
     sub: 'The Erdős–Sárközy extremal problem, determined by certificate from the smallest cases all the way out to the asymptotic range.',
@@ -123,7 +155,7 @@ const SPECS = {
   },
 
   'degree-difference-affine-slices': {
-    palette: 'pine',
+    palette: 'auto',
     kicker: ['PRESS RELEASE · 28 JULY 2026', 'BINARY FORMS · V0.1'],
     head: ['The degree-difference', '<em>principle</em>'],
     headSize: 62,
@@ -139,7 +171,7 @@ const SPECS = {
   },
 
   'irreducible-pushforwards-quartic-transitions': {
-    palette: 'pine',
+    palette: 'auto',
     kicker: ['PRESS RELEASE · 1 AUGUST 2026', 'FURTER’S R(3) · V1.0.0'],
     head: ['What survives', 'a <em>failed proof?</em>'],
     sub: 'An attack on Furter’s R(3) stalled. Two of the methods built for it are proved, standalone and reusable elsewhere; the conjecture itself remains open.',
@@ -154,7 +186,7 @@ const SPECS = {
   },
 
   'reducible-incidence-divisors': {
-    palette: 'pine',
+    palette: 'auto',
     kicker: ['PRESS RELEASE · 28 JULY 2026', 'BINARY FORMS · V1.0'],
     head: ['When a divisor', '<em>breaks apart</em>'],
     headSize: 64,
@@ -169,7 +201,7 @@ const SPECS = {
   },
 
   'smooth-point-certificates-polydegree-containments': {
-    palette: 'pine',
+    palette: 'auto',
     kicker: ['RESEARCH RELEASE · 9 AUGUST 2026', 'POLYDEGREE CONTAINMENTS · V0.4.1'],
     head: ['A determinant', 'becomes <em>geometry</em>'],
     headSize: 64,
@@ -183,7 +215,7 @@ const SPECS = {
   },
 
   'full-e3-column-polydegree-conjecture': {
-    palette: 'pine',
+    palette: 'auto',
     kicker: ['RESEARCH RELEASE · 12 AUGUST 2026', 'POLYDEGREE CONJECTURE · V0.1.0'],
     head: ['The full e = 3 column.', '<em>Every degree.</em>'],
     headSize: 64,
@@ -197,7 +229,7 @@ const SPECS = {
   },
 
   'unique-answer-not-identified': {
-    palette: 'pine',
+    palette: 'auto',
     kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'IDENTIFICATION SYNTHESIS · V1.0.0-CANDIDATE'],
     head: ['One unique answer.', '<em>Still not identified.</em>'],
     headSize: 62,
@@ -211,7 +243,7 @@ const SPECS = {
   },
 
   'aggregation-without-sufficiency': {
-    palette: 'pine',
+    palette: 'auto',
     kicker: ['RESEARCH RELEASE · 13 AUGUST 2026', 'IDENTIFICATION · V0.4.0'],
     head: ['The summary is correct.', '<em>The decision can still be wrong.</em>'],
     headSize: 57,
@@ -222,7 +254,126 @@ const SPECS = {
       <div class="eq eq-sm">A(x) = A(x′)<br><span class="hl">T(x) ≠ T(x′)</span></div>
       <div class="note">More precise measurement of A cannot recover information that aggregation discarded. Declare the <b>target, intervention, loss, tolerance, and expiry</b>.</div>
       <div class="eq-foot">economics · fisheries · epidemiology · producer-side checks</div>`
+  },
+
+  'bilateral-deficiency-regular-dim': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 9 AUGUST 2026', 'GRAPH THEORY × SAT · V1.0.1'],
+    head: ['Bilateral deficiency', '<em>measures the gap</em>'],
+    headSize: 62,
+    sub: 'Residual SAT optimisation meets independent domination in regular graphs equipped with a dominating induced matching.',
+    tag: 'REGULAR-DIM GRAPHS · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">within the stated regular-DIM class</div>
+      <div class="eq eq-sm">β(F<sub>G</sub>) = <span class="hl">i(G) − μ*(G)</span></div>
+      <div class="note">Connected cubic-DIM families have a <b>linear gap</b>. The order-50 minimum is DIM-qualified — not a claim about all cubic graphs.</div>
+      <div class="eq-foot">exact code · finite certificates · partial Lean verification</div>`
   }
+};
+
+const escapeHtml = value => String(value == null ? '' : value)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+const truncate = (value, limit) => {
+  const text = String(value || '').replace(/\s+/g, ' ').trim();
+  if (text.length <= limit) return text;
+  const cut = text.slice(0, limit - 1).replace(/\s+\S*$/, '');
+  return `${cut || text.slice(0, limit - 1)}…`;
+};
+
+const headline = value => {
+  const text = truncate(value, 62);
+  const words = text.split(/\s+/);
+  if (words.length < 3) return [escapeHtml(text)];
+  const target = text.length / 2;
+  let width = 0;
+  let splitAt = 1;
+  for (let i = 0; i < words.length - 1; i++) {
+    width += words[i].length + (i ? 1 : 0);
+    if (Math.abs(width - target) < Math.abs(words.slice(0, splitAt).join(' ').length - target)) splitAt = i + 1;
+  }
+  return [
+    escapeHtml(words.slice(0, splitAt).join(' ')),
+    `<em>${escapeHtml(words.slice(splitAt).join(' '))}</em>`
+  ];
+};
+
+const formatDate = value => {
+  const date = new Date(`${value}T12:00:00Z`);
+  if (Number.isNaN(date.valueOf())) return String(value || '').toUpperCase();
+  return new Intl.DateTimeFormat('en-GB', {
+    day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'
+  }).format(date).toUpperCase();
+};
+
+const releaseRecords = () => fs.readdirSync(path.join(ROOT, 'papers'), { withFileTypes: true })
+  .filter(entry => entry.isDirectory() && fs.existsSync(path.join(ROOT, 'papers', entry.name, 'meta.json')))
+  .map(entry => {
+    const meta = JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', entry.name, 'meta.json'), 'utf8'));
+    if (meta.slug !== entry.name) throw new Error(`release directory ${entry.name} disagrees with meta slug ${meta.slug}`);
+    return meta;
+  })
+  .sort((a, b) => String(a.datePublished).localeCompare(String(b.datePublished)) || a.slug.localeCompare(b.slug));
+
+const automaticSpec = (meta, index) => {
+  const title = meta.shortTitle || meta.title;
+  const topic = truncate((meta.keywords || []).slice(0, 2).join(' × ') || 'RESEARCH', 38).toUpperCase();
+  const result = truncate((meta.keyResults || [])[0] || meta.oneLine || meta.abstract, 230);
+  const status = String(meta.status || 'unrefereed-candidate').replace(/-/g, ' ').toUpperCase();
+  const titleLength = String(title || '').length;
+  return {
+    palette: PALETTE_ROTATION[index % PALETTE_ROTATION.length],
+    kicker: [`RESEARCH RELEASE · ${formatDate(meta.datePublished)}`, `${topic} · V${String(meta.version || '').toUpperCase()}`],
+    head: headline(title),
+    headSize: titleLength <= 28 ? 70 : titleLength <= 44 ? 60 : 50,
+    sub: escapeHtml(truncate(meta.oneLine || meta.abstract, 175)),
+    tag: status,
+    hero: `
+      <div class="eq-label">candidate result · exact scope in the paper</div>
+      <div class="hero-title">${escapeHtml(truncate(meta.problem && meta.problem.name || topic, 86))}</div>
+      <div class="note">${escapeHtml(result)}</div>
+      <div class="eq-foot">paper · evidence package · replay information</div>`
+  };
+};
+
+const resolvedSpec = (meta, index) => {
+  const authored = SPECS[meta.slug];
+  const spec = authored ? { ...authored } : automaticSpec(meta, index);
+  if (!spec.palette || spec.palette === 'auto') {
+    spec.palette = PALETTE_ROTATION[index % PALETTE_ROTATION.length];
+  }
+  if (!PALETTES[spec.palette]) throw new Error(`${meta.slug}: unknown palette ${spec.palette}`);
+  return spec;
+};
+
+const jpegDimensions = file => {
+  const data = fs.readFileSync(file);
+  if (data[0] !== 0xff || data[1] !== 0xd8) throw new Error(`${file}: not a JPEG`);
+  let offset = 2;
+  while (offset + 8 < data.length) {
+    if (data[offset] !== 0xff) { offset++; continue; }
+    const marker = data[offset + 1];
+    if (marker === 0xd9 || marker === 0xda) break;
+    const length = data.readUInt16BE(offset + 2);
+    if (length < 2 || offset + length + 2 > data.length) throw new Error(`${file}: malformed JPEG marker`);
+    if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker)) {
+      return { height: data.readUInt16BE(offset + 5), width: data.readUInt16BE(offset + 7) };
+    }
+    offset += length + 2;
+  }
+  throw new Error(`${file}: dimensions not found`);
+};
+
+const verifyThumbnail = file => {
+  if (!fs.existsSync(file)) throw new Error(`missing thumbnail: ${file}`);
+  const bytes = fs.statSync(file).size;
+  if (bytes > LIMIT) throw new Error(`${file}: ${(bytes / 1048576).toFixed(2)} MB exceeds YouTube's 2 MB limit`);
+  const dimensions = jpegDimensions(file);
+  if (dimensions.width !== W * 2 || dimensions.height !== H * 2) {
+    throw new Error(`${file}: expected ${W * 2}×${H * 2}, got ${dimensions.width}×${dimensions.height}`);
+  }
+  return bytes;
 };
 
 const page = (spec) => {
@@ -263,6 +414,7 @@ h1 em{font-style:normal;color:${p.accent}}
 .eq sub{font-size:.62em;vertical-align:sub}
 .eq-foot{margin-top:16px;font-family:ui-monospace,Menlo,monospace;font-size:14px;
   letter-spacing:.05em;color:${p.dim};line-height:1.5}
+.hero-title{font-size:30px;line-height:1.15;color:${p.accent};margin:4px 0 14px}
 .note{margin-top:16px;font-family:system-ui,sans-serif;font-size:17px;line-height:1.45;color:${p.ink}dd}
 .note b{color:${p.accent}}
 .bars{margin-top:16px;display:flex;flex-direction:column;gap:7px}
@@ -305,27 +457,74 @@ h1 em{font-style:normal;color:${p.accent}}
 };
 
 (async () => {
-  const requested = new Set(process.argv.slice(2));
-  const slugs = Object.keys(SPECS).filter(s => !requested.size || requested.has(s));
-  if (!slugs.length) {
-    console.error(`No spec for: ${[...requested].join(', ')}. Known: ${Object.keys(SPECS).join(', ')}`);
-    process.exit(1);
+  const args = process.argv.slice(2);
+  const checkOnly = args.includes('--check');
+  const missingOnly = args.includes('--missing');
+  const unsupported = args.filter(arg => arg.startsWith('--') && !['--check', '--missing'].includes(arg));
+  if (unsupported.length) throw new Error(`unsupported option(s): ${unsupported.join(', ')}`);
+
+  const records = releaseRecords();
+  const bySlug = new Map(records.map((meta, index) => [meta.slug, { meta, index }]));
+  const requested = new Set(args.filter(arg => !arg.startsWith('--')));
+  for (const slug of requested) if (!bySlug.has(slug)) throw new Error(`no release for "${slug}"`);
+  let selected = records.filter(meta => !requested.size || requested.has(meta.slug));
+  if (missingOnly) selected = selected.filter(meta => !fs.existsSync(path.join(OUT, `${meta.slug}.jpg`)));
+
+  const requireCentral = process.env.EVIDENCE_PRESS_REQUIRE_CENTRAL_THUMBS === '1' ||
+    (process.platform === 'darwin' && os.homedir() === '/Users/admin');
+  if (checkOnly) {
+    for (const meta of records) {
+      const repoFile = path.join(OUT, `${meta.slug}.jpg`);
+      verifyThumbnail(repoFile);
+      if (requireCentral) {
+        const centralFile = path.join(CENTRAL_OUT, `${meta.slug}.jpg`);
+        verifyThumbnail(centralFile);
+        if (!fs.readFileSync(repoFile).equals(fs.readFileSync(centralFile))) {
+          throw new Error(`${meta.slug}: repository and central thumbnail bytes differ`);
+        }
+      }
+    }
+    console.log(`thumb check: ${records.length} releases complete` +
+      (requireCentral ? `; central mirror exact at ${CENTRAL_OUT}` : '; central mirror not required on this host'));
+    return;
+  }
+
+  if (!selected.length) {
+    console.log('thumb: nothing to render');
+    return;
   }
   fs.mkdirSync(OUT, { recursive: true });
+  fs.mkdirSync(CENTRAL_OUT, { recursive: true });
 
   const { chromium } = require('playwright');
   const browser = await chromium.launch(process.env.EVIDENCE_PRESS_CHROME
     ? { executablePath: process.env.EVIDENCE_PRESS_CHROME } : {});
   const tab = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 2 });
 
-  for (const slug of slugs) {
-    /* Every thumbnail belongs to a real release: a spec whose slug has no
-       paper is a typo, and silently rendering it would produce artwork for
-       something that does not exist. */
-    const metaPath = path.join(ROOT, 'papers', slug, 'meta.json');
-    if (!fs.existsSync(metaPath)) throw new Error(`no release for spec "${slug}" (${metaPath})`);
-
-    await tab.setContent(page(SPECS[slug]), { waitUntil: 'networkidle' });
+  for (const meta of selected) {
+    const slug = meta.slug;
+    const index = bySlug.get(slug).index;
+    const spec = resolvedSpec(meta, index);
+    await tab.setContent(page(spec), { waitUntil: 'networkidle' });
+    const layoutFailures = await tab.evaluate(({ width, height }) => {
+      const selectors = ['.brand', '.kicker', 'h1', '.sub', '.hero', '.tag', '.site'];
+      return selectors.flatMap(selector => [...document.querySelectorAll(selector)].flatMap(element => {
+        const rect = element.getBoundingClientRect();
+        const range = document.createRange();
+        range.selectNodeContents(element);
+        const textRect = range.getBoundingClientRect();
+        const failures = [];
+        if (rect.left < -1 || rect.top < -1 || rect.right > width + 1 || rect.bottom > height + 1) {
+          failures.push(`${selector} leaves viewport: ${JSON.stringify({ left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom })}`);
+        }
+        if (textRect.left < -1 || textRect.top < -1 || textRect.right > width + 1 || textRect.bottom > height + 1) {
+          failures.push(`${selector} text leaves viewport: ` +
+            JSON.stringify({ left: textRect.left, top: textRect.top, right: textRect.right, bottom: textRect.bottom }));
+        }
+        return failures;
+      }));
+    }, { width: W, height: H });
+    if (layoutFailures.length) throw new Error(`${slug}: thumbnail layout failure:\n- ${layoutFailures.join('\n- ')}`);
     const file = path.join(OUT, slug + '.jpg');
     /* JPEG, not PNG: at 2560×1440 a PNG of this artwork lands around 2.0 MB,
        which is YouTube's hard upload limit — a later text edit could silently
@@ -333,10 +532,12 @@ h1 em{font-style:normal;color:${p.accent}}
        indistinguishable here and an order of magnitude clear of the ceiling.
        YouTube re-encodes every thumbnail anyway. */
     await tab.screenshot({ path: file, type: 'jpeg', quality: 94 });
-    const bytes = fs.statSync(file).size;
-    if (bytes > LIMIT) throw new Error(`${slug}: ${(bytes / 1048576).toFixed(2)} MB exceeds YouTube's ${(LIMIT / 1048576).toFixed(0)} MB limit`);
-    console.log(`thumb: ${slug} → ${path.relative(ROOT, file)} ` +
-      `(${W * 2}×${H * 2}, ${(bytes / 1024).toFixed(0)} kB, ${((bytes / LIMIT) * 100).toFixed(0)}% of limit)`);
+    const bytes = verifyThumbnail(file);
+    const centralFile = path.join(CENTRAL_OUT, path.basename(file));
+    fs.copyFileSync(file, centralFile);
+    if (!fs.readFileSync(file).equals(fs.readFileSync(centralFile))) throw new Error(`${slug}: central mirror copy mismatch`);
+    console.log(`thumb: ${slug} → ${path.relative(ROOT, file)} + ${centralFile} ` +
+      `(${W * 2}×${H * 2}, ${(bytes / 1024).toFixed(0)} kB, ${((bytes / LIMIT) * 100).toFixed(0)}% of limit, ${spec.palette})`);
   }
   await browser.close();
 })().catch(e => { console.error(e); process.exit(1); });
