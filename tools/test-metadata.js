@@ -47,6 +47,8 @@ const papersDoc = read('api/papers.json');
 const schema = read('api/schema.json');
 const operatingArtifacts = loadArtifacts(ROOT);
 const sourcePapers = loadPaperMetadata(ROOT);
+const atlasRoadmap = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'ATLAS_ROADMAP.json'), 'utf8'));
+const atlasRoadmapSchema = JSON.parse(fs.readFileSync(path.join(ROOT, 'schemas', 'atlas-roadmap.schema.json'), 'utf8'));
 
 /* ----------------------------------------- high-level layout contracts */
 const homeHtml = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
@@ -196,7 +198,8 @@ const governance = [
   ['operating-model.json', 'operating-model.schema.json', operatingArtifacts.contract, operatingArtifacts.schemas.contract],
   ['method-registry.json', 'method-registry.schema.json', operatingArtifacts.registry, operatingArtifacts.schemas.registry],
   ['ibe-ledger.json', 'ibe-ledger.schema.json', operatingArtifacts.ledger, operatingArtifacts.schemas.ledger],
-  ['work-ledger.json', 'work-ledger.schema.json', operatingArtifacts.workLedger, operatingArtifacts.schemas.workLedger]
+  ['work-ledger.json', 'work-ledger.schema.json', operatingArtifacts.workLedger, operatingArtifacts.schemas.workLedger],
+  ['atlas-roadmap.json', 'atlas-roadmap.schema.json', atlasRoadmap, atlasRoadmapSchema]
 ];
 const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 for (const [dataName, schemaName, sourceData, sourceSchema] of governance) {
@@ -212,6 +215,18 @@ for (const [dataName, schemaName, sourceData, sourceSchema] of governance) {
   check(`v1/schemas/${schemaName} matches the unversioned alias`,
     sameJson(read(`api/v1/schemas/${schemaName}`), publicSchema));
 }
+
+const publicAtlasRoadmap = read('api/atlas-roadmap.json');
+const publicResearchGraph = read('api/research-graph.json');
+check('Atlas roadmap baseline matches the published source graph',
+  publicAtlasRoadmap.currentBaseline.releaseCount === publicResearchGraph.stats.releaseCount &&
+  publicAtlasRoadmap.currentBaseline.methodCount === publicResearchGraph.stats.methodCount &&
+  publicAtlasRoadmap.currentBaseline.clusterCount === publicResearchGraph.stats.clusterCount &&
+  publicAtlasRoadmap.currentBaseline.lineageCount === publicResearchGraph.stats.lineageCount &&
+  publicAtlasRoadmap.currentBaseline.acceptedRelationshipCount === publicResearchGraph.stats.edgeCount &&
+  publicAtlasRoadmap.currentBaseline.publishedProposalCount === publicResearchGraph.stats.proposedEdgeCount);
+check('Atlas page links its machine-readable roadmap and schema',
+  atlasHtml.includes('/api/atlas-roadmap.json') && atlasHtml.includes('/api/schemas/atlas-roadmap.schema.json'));
 
 const releaseOperatingSchema = read('api/schemas/release-operating-model.schema.json');
 check('prospective release schema is an exact source-to-public copy',

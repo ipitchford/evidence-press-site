@@ -17,12 +17,18 @@ const {
   buildResearchGraph,
   validateResearchGraph
 } = require('./tools/research-graph');
+const { loadAtlasRoadmap, validateAtlasRoadmap } = require('./tools/atlas-roadmap');
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const OPERATING_ARTIFACTS = loadOperatingArtifacts(ROOT);
 const RELATIONSHIP_ARTIFACTS = loadRelationshipArtifacts(ROOT);
+const ATLAS_ROADMAP_ARTIFACTS = loadAtlasRoadmap(ROOT);
+const ATLAS_ROADMAP = ATLAS_ROADMAP_ARTIFACTS.roadmap;
+const ATLAS_ROADMAP_SCHEMA = ATLAS_ROADMAP_ARTIFACTS.schema;
+const ATLAS_ROADMAP_ERRORS = validateAtlasRoadmap(ATLAS_ROADMAP);
+if (ATLAS_ROADMAP_ERRORS.length) throw new Error(`Atlas roadmap invalid: ${ATLAS_ROADMAP_ERRORS.join('; ')}`);
 const METHOD_BY_ID = new Map(OPERATING_ARTIFACTS.registry.methods.map(method => [method.id, method]));
 const IBE_BY_ID = new Map(OPERATING_ARTIFACTS.ledger.hypotheses.map(hypothesis => [hypothesis.id, hypothesis]));
 const WORK_ATTEMPT_BY_ID = new Map(OPERATING_ARTIFACTS.workLedger.attempts.map(attempt => [attempt.attemptId, attempt]));
@@ -663,7 +669,7 @@ const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
     <p>${esc(CONFIG.siteName)} publishes plain-language and specialist briefings on new research released with complete, replayable evidence. Nothing here has been peer reviewed; every page says exactly what has and has not been checked.</p>
-    <p>Site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">RSS</a> · <a href="/feed.json">JSON Feed</a> · <a href="/sitemap.xml">sitemap</a></p>
+    <p>Site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">RSS</a> · <a href="/feed.json">JSON Feed</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
 </footer>
@@ -1658,7 +1664,7 @@ function llms() {
   const lines = [
     `# ${CONFIG.siteName}`, '',
     `> ${CONFIG.tagline}. Every release describes an unrefereed research result with an open, replayable evidence package (code, data, exact certificates, pinned environments, SHA-256 manifests) archived with a DOI. Nothing on this site is peer reviewed; each page states exactly what has and has not been verified, and lists open follow-up problems in machine-readable form.`, '',
-    `Key endpoints: full JSON index at /api/papers.json (JSON Schema at /api/schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); relationship vocabulary and proposal policy at /api/relationship-registry.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-release Markdown at /releases/<slug>/index.md; per-release BibTeX at /releases/<slug>/cite.bib; RSS at /feed.xml; JSON Feed at /feed.json. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
+    `Key endpoints: full JSON index at /api/papers.json (JSON Schema at /api/schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); relationship vocabulary and proposal policy at /api/relationship-registry.json; Atlas priorities and review log at /api/atlas-roadmap.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-release Markdown at /releases/<slug>/index.md; per-release BibTeX at /releases/<slug>/cite.bib; RSS at /feed.xml; JSON Feed at /feed.json. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
     '## Releases', '',
     ...papers.map(p => `- [${p.shortTitle}](${urlOf(p)}): ${p.oneLine} (PDF: ${p.pdfUrl || 'n/a'}; DOI: https://doi.org/${p.doi}; code: ${p.repoUrl}; status: unrefereed)`),
     '',
@@ -1666,6 +1672,7 @@ function llms() {
     `- [papers.json](${BASE}/api/papers.json): full structured index — titles, DOIs, PDF links, verification status, provenance, key results, keywords, media, and open follow-up problems for every release`,
     `- [research-graph.json](${BASE}/api/research-graph.json): releases, methods, broad clusters, evidence-backed lineages, dependencies and internal citations, with content-derived identities, source pointers and inference limits`,
     `- [relationship-registry.json](${BASE}/api/relationship-registry.json): predicate meanings, knowledge-status boundaries and the additive proposal-review policy`,
+    `- [atlas-roadmap.json](${BASE}/api/atlas-roadmap.json): prioritized next steps, dependencies, acceptance criteria, stop conditions, review triggers and append-only review log`,
     `- [schema.json](${BASE}/api/schema.json): JSON Schema for the index`,
     `- [operating-model.json](${BASE}/api/operating-model.json): versioned institutional contract and frozen legacy boundary`,
     `- [method-registry.json](${BASE}/api/method-registry.json): reusable methods, failure modes, broad method clusters, evidence-backed lineages and release assignments; inclusion is not validation`,
@@ -1736,7 +1743,7 @@ function apiStability() {
       note: 'Unversioned paths are stable aliases kept indefinitely; they currently serve the same content as v1.',
       paths: [
         `${BASE}/api/papers.json`, `${BASE}/api/schema.json`,
-        `${BASE}/api/research-graph.json`, `${BASE}/api/relationship-registry.json`,
+        `${BASE}/api/research-graph.json`, `${BASE}/api/relationship-registry.json`, `${BASE}/api/atlas-roadmap.json`,
         `${BASE}/api/operating-model.json`, `${BASE}/api/method-registry.json`, `${BASE}/api/ibe-ledger.json`, `${BASE}/api/work-ledger.json`
       ]
     },
@@ -1811,6 +1818,7 @@ function api() {
     ['ibe-ledger.json', OPERATING_ARTIFACTS.ledger],
     ['work-ledger.json', OPERATING_ARTIFACTS.workLedger],
     ['relationship-registry.json', RELATIONSHIP_ARTIFACTS.registry],
+    ['atlas-roadmap.json', ATLAS_ROADMAP],
     ['research-graph.json', RESEARCH_GRAPH]
   ];
   for (const [name, artifact] of governanceArtifacts) {
@@ -1825,6 +1833,7 @@ function api() {
     ['work-ledger.schema.json', OPERATING_ARTIFACTS.schemas.workLedger],
     ['release-operating-model.schema.json', OPERATING_ARTIFACTS.schemas.release],
     ['relationship-registry.schema.json', RELATIONSHIP_ARTIFACTS.registrySchema],
+    ['atlas-roadmap.schema.json', ATLAS_ROADMAP_SCHEMA],
     ['research-graph.schema.json', RELATIONSHIP_ARTIFACTS.schema]
   ];
   for (const [name, artifact] of governanceSchemas) {

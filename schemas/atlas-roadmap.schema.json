@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/atlas-roadmap.schema.json",
+  "title": "Evidence Atlas roadmap",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "recordType",
+    "updated",
+    "status",
+    "claimCeiling",
+    "currentBaseline",
+    "principles",
+    "nextSteps",
+    "reviewPolicy",
+    "reviewLog"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "recordType": { "const": "evidence-atlas-roadmap" },
+    "updated": { "type": "string", "format": "date" },
+    "status": { "type": "string", "minLength": 1 },
+    "claimCeiling": { "type": "string", "minLength": 1 },
+    "currentBaseline": { "$ref": "#/$defs/baseline" },
+    "principles": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "nextSteps": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nextStep" } },
+    "reviewPolicy": { "$ref": "#/$defs/reviewPolicy" },
+    "reviewLog": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/review" } }
+  },
+  "$defs": {
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["releaseCount", "acceptedRelationshipCount", "publishedProposalCount"],
+      "properties": {
+        "releaseCount": { "type": "integer", "minimum": 0 },
+        "acceptedRelationshipCount": { "type": "integer", "minimum": 0 },
+        "publishedProposalCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asOf",
+        "releaseCount",
+        "methodCount",
+        "clusterCount",
+        "lineageCount",
+        "acceptedRelationshipCount",
+        "publishedProposalCount",
+        "sourceRefs"
+      ],
+      "properties": {
+        "asOf": { "type": "string", "format": "date" },
+        "releaseCount": { "type": "integer", "minimum": 0 },
+        "methodCount": { "type": "integer", "minimum": 0 },
+        "clusterCount": { "type": "integer", "minimum": 0 },
+        "lineageCount": { "type": "integer", "minimum": 0 },
+        "acceptedRelationshipCount": { "type": "integer", "minimum": 0 },
+        "publishedProposalCount": { "type": "integer", "minimum": 0 },
+        "sourceRefs": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "nextStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "priority",
+        "state",
+        "title",
+        "purpose",
+        "dependencies",
+        "deliverables",
+        "acceptanceCriteria",
+        "stopConditions"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^atlas-step-[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "priority": { "type": "integer", "minimum": 1 },
+        "state": { "enum": ["ready", "blocked", "watch", "deferred", "complete", "superseded"] },
+        "title": { "type": "string", "minLength": 1 },
+        "purpose": { "type": "string", "minLength": 1 },
+        "dependencies": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "deliverables": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "acceptanceCriteria": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "stopConditions": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "reviewPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cadence", "nextScheduledReview", "triggers", "checklist", "recordRule"],
+      "properties": {
+        "cadence": { "type": "string", "minLength": 1 },
+        "nextScheduledReview": { "type": "string", "format": "date" },
+        "triggers": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "checklist": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "recordRule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewId", "reviewedAt", "trigger", "baseline", "observations", "decision", "nextAction"],
+      "properties": {
+        "reviewId": { "type": "string", "pattern": "^atlas-review-[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "reviewedAt": { "type": "string", "format": "date" },
+        "trigger": { "type": "string", "minLength": 1 },
+        "baseline": { "$ref": "#/$defs/counts" },
+        "observations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "decision": { "enum": ["continue", "pause", "change-priority", "complete", "supersede"] },
+        "nextAction": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

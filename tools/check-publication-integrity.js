@@ -38,11 +38,13 @@ const GOVERNANCE_ROUTES = [
   ['method registry', '/api/method-registry.json', '/api/v1/method-registry.json', true],
   ['IBE ledger', '/api/ibe-ledger.json', '/api/v1/ibe-ledger.json', true],
   ['work ledger', '/api/work-ledger.json', '/api/v1/work-ledger.json', true],
+  ['Atlas roadmap', '/api/atlas-roadmap.json', '/api/v1/atlas-roadmap.json', true],
   ['operating-model schema', '/api/schemas/operating-model.schema.json', '/api/v1/schemas/operating-model.schema.json', true],
   ['method-registry schema', '/api/schemas/method-registry.schema.json', '/api/v1/schemas/method-registry.schema.json', true],
   ['IBE-ledger schema', '/api/schemas/ibe-ledger.schema.json', '/api/v1/schemas/ibe-ledger.schema.json', true],
   ['release operating-model schema', '/api/schemas/release-operating-model.schema.json', '/api/v1/schemas/release-operating-model.schema.json', true],
-  ['work-ledger schema', '/api/schemas/work-ledger.schema.json', '/api/v1/schemas/work-ledger.schema.json', true]
+  ['work-ledger schema', '/api/schemas/work-ledger.schema.json', '/api/v1/schemas/work-ledger.schema.json', true],
+  ['Atlas-roadmap schema', '/api/schemas/atlas-roadmap.schema.json', '/api/v1/schemas/atlas-roadmap.schema.json', true]
 ];
 
 const candidateJson = urlPath => readOptional(path.join(DIST, urlPath.replace(/^\//, '')));
@@ -374,10 +376,26 @@ async function main() {
   const candidateRegistry = candidateJson('/api/method-registry.json');
   const candidateIbe = candidateJson('/api/ibe-ledger.json');
   const candidateWork = candidateJson('/api/work-ledger.json');
+  const candidateAtlasRoadmap = candidateJson('/api/atlas-roadmap.json');
   const liveContract = liveGovernance.get('/api/operating-model.json');
   if (liveContract) {
     if (!isDeepStrictEqual(liveContract, candidateContract)) {
       failures.push('operating model: changed the published v1 institutional contract; publish a new major contract instead');
+    }
+  }
+
+  const liveAtlasRoadmap = liveGovernance.get('/api/atlas-roadmap.json');
+  if (liveAtlasRoadmap) {
+    const newReviews = preserveChangeLogPrefix('Atlas roadmap review log', liveAtlasRoadmap.reviewLog, candidateAtlasRoadmap.reviewLog);
+    const nextSteps = preserveIds('Atlas roadmap steps', liveAtlasRoadmap.nextSteps, candidateAtlasRoadmap.nextSteps);
+    const stepChanged = (liveAtlasRoadmap.nextSteps || []).some(step => {
+      const next = nextSteps.get(step.id);
+      return next && !isDeepStrictEqual(step, next);
+    });
+    const policyChanged = !isDeepStrictEqual(liveAtlasRoadmap.reviewPolicy, candidateAtlasRoadmap.reviewPolicy) ||
+      liveAtlasRoadmap.claimCeiling !== candidateAtlasRoadmap.claimCeiling;
+    if ((stepChanged || policyChanged) && !newReviews.length) {
+      failures.push('Atlas roadmap: steps, review policy or claim ceiling changed without an appended review-log entry');
     }
   }
 

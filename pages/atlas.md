@@ -28,11 +28,15 @@ The synchronized relationship register below the map contains the same accepted 
 
 Agents should retrieve [`research-graph.json`](/api/research-graph.json) and validate it against [`research-graph.schema.json`](/api/schemas/research-graph.schema.json). The API publishes stable node identifiers, content-derived edge identifiers, statement fingerprints, relationship status, source pointers and inference limits.
 
+The current priorities, readiness gates and periodic review checklist are published in the [`Atlas roadmap`](/api/atlas-roadmap.json), validated against its [`roadmap schema`](/api/schemas/atlas-roadmap.schema.json). The human-readable design record remains in the [public repository](https://github.com/ipitchford/evidence-press-site/blob/main/docs/EVIDENCE_ATLAS.md).
+
 ## The discovery layer
 
 The next research stage can compare release statements, dependencies, citations and methods to nominate previously unrecorded connections. Those candidates should enter the **proposal register**, with an explanation and supporting sources, rather than appear as facts.
 
 Useful candidate types may include a shared lemma under different notation, an unacknowledged antecedent, a common unresolved assumption, a reusable verifier, or two negative results that block the same strategy. A candidate becomes asserted only after additive review against resolvable evidence. Rejected and superseded proposals should remain available as negative knowledge.
+
+The next implementation step is a fail-closed proposal-intake and review-receipt layer. Relationship-discovery experiments should follow only after proposals can be retained, rejected, superseded and audited without entering the accepted graph.
 
 ## Safe reuse
 

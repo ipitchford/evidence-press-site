@@ -58,6 +58,9 @@ jobs:
       - name: Research-graph contract and hostile controls
         run: node tools/test-research-graph.js
 
+      - name: Atlas roadmap contract and hostile controls
+        run: node tools/test-atlas-roadmap.js
+
       - name: Verify protocol source and regenerate ignored receipts
         run: |
           node protocols/tools/make-manifest.js
