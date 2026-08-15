@@ -55,6 +55,9 @@ jobs:
       - name: Operating-model contract and hostile controls
         run: node tools/test-operating-model.js
 
+      - name: Research-graph contract and hostile controls
+        run: node tools/test-research-graph.js
+
       - name: Verify protocol source and regenerate ignored receipts
         run: |
           node protocols/tools/make-manifest.js
@@ -63,6 +66,9 @@ jobs:
 
       - name: Build the complete site from a clean checkout
         run: REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh
+
+      - name: Research graph source/public parity
+        run: node tools/test-research-graph.js --built
 
       - name: Protocol candidate/production byte-integrity gate
         run: |
