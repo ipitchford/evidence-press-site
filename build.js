@@ -1275,16 +1275,18 @@ ${foot}`;
 function atlasPage() {
   const url = `${BASE}/atlas/`;
   const nodeById = new Map(RESEARCH_GRAPH.nodes.map(node => [node.id, node]));
+  const publicNodeLabel = node => node.publicLabel || node.label;
+  const publicKnowledgeStatus = status => status === 'asserted' ? 'source-declared' : status;
   const relationshipRows = RESEARCH_GRAPH.edges.map(edge => {
     const source = nodeById.get(edge.source);
     const target = nodeById.get(edge.target);
     const predicate = RESEARCH_GRAPH.predicates.find(item => item.id === edge.predicate);
     return `<tr data-atlas-edge-row="${escAttr(edge.id)}">
-      <td><a href="${escAttr(source.url)}">${esc(source.label)}</a></td>
+      <td><a href="${escAttr(source.url)}">${esc(publicNodeLabel(source))}</a></td>
       <td>${esc(predicate ? predicate.label : edge.predicate)}</td>
-      <td><a href="${escAttr(target.url)}">${esc(target.label)}</a></td>
+      <td><a href="${escAttr(target.url)}">${esc(publicNodeLabel(target))}</a></td>
       <td>${esc(edge.basis)}</td>
-      <td><span class="atlas-status">${esc(edge.knowledgeStatus)}</span></td>
+      <td><span class="atlas-status">${esc(publicKnowledgeStatus(edge.knowledgeStatus))}</span></td>
       <td><a href="${escAttr(edge.sourceRefs[0])}">source record</a></td>
     </tr>`;
   }).join('\n');
@@ -1341,6 +1343,7 @@ function atlasPage() {
         <span role="listitem">${RESEARCH_GRAPH.stats.lineageCount} evidence-backed lineages</span>
         <span role="listitem">${RESEARCH_GRAPH.stats.edgeCount} accepted relationships</span>
       </div>
+      <p class="atlas-composition"><strong>${RESEARCH_GRAPH.stats.edgeCount} recorded relationships:</strong> ${RESEARCH_GRAPH.stats.directInterReleaseEdgeCount} direct · ${RESEARCH_GRAPH.stats['member-of-lineageEdgeCount']} lineage · ${RESEARCH_GRAPH.stats['member-of-clusterEdgeCount']} cluster · ${RESEARCH_GRAPH.stats['uses-methodEdgeCount']} method</p>
     </div>
   </header>
   <div class="wrap">
@@ -1352,13 +1355,14 @@ function atlasPage() {
       <h2 id="atlas-instrument-title" class="sr-only">Interactive research relationship instrument</h2>
       <div class="atlas-toolbar">
         <div class="atlas-search">
-          <label for="atlas-search">Find a release, method or programme</label>
+          <label for="atlas-search">Find a release, method or research structure</label>
           <input id="atlas-search" type="search" placeholder="Try Jacobian, identification, Ramsey…" autocomplete="off">
         </div>
         <div>
           <span class="atlas-view-label">View</span>
           <div class="atlas-view-buttons" role="group" aria-label="Choose relationship view">
-            <button type="button" data-atlas-mode="programmes" aria-pressed="true">Programmes</button>
+            <button type="button" data-atlas-mode="direct" aria-pressed="true">Direct links</button>
+            <button type="button" data-atlas-mode="structure" aria-pressed="false">Research structure</button>
             <button type="button" data-atlas-mode="methods" aria-pressed="false">Methods</button>
             <button type="button" data-atlas-mode="all" aria-pressed="false">All accepted</button>
             <button type="button" disabled title="No proposed relationships are published">Proposals (0)</button>
@@ -1378,7 +1382,7 @@ function atlasPage() {
         <div class="atlas-legend" role="list" aria-label="Node legend">
           <span role="listitem"><i class="atlas-swatch" aria-hidden="true"></i> R · release</span>
           <span role="listitem"><i class="atlas-swatch method" aria-hidden="true"></i> M · method</span>
-          <span role="listitem"><i class="atlas-swatch cluster" aria-hidden="true"></i> C · broad cluster</span>
+          <span role="listitem"><i class="atlas-swatch cluster" aria-hidden="true"></i> C · broad cluster or cluster seed</span>
           <span role="listitem"><i class="atlas-swatch lineage" aria-hidden="true"></i> L · evidence-backed lineage</span>
         </div>
       </div>
@@ -1388,6 +1392,20 @@ function atlasPage() {
         <p>Choose a coded node to inspect its full title and accepted relationships. Choose a line to see the exact recorded basis, inference limit and source pointer.</p>
         <p class="atlas-limit"><strong>Boundary.</strong> Geometry is navigation, not evidence. Position and node size do not express correctness, novelty, priority or impact.</p>
       </aside>
+    </section>
+    <section class="atlas-missingness" aria-labelledby="atlas-missingness-title">
+      <div class="atlas-missingness-copy">
+        <p class="eyebrow">Registry missingness</p>
+        <h2 id="atlas-missingness-title">What is not yet connected</h2>
+        <p><strong>No edge means that no relationship is currently accepted in the registry; it does not establish that no relationship exists.</strong> Areas never searched are not yet enumerated, because no hidden-relationship discovery run has been conducted.</p>
+      </div>
+      <dl>
+        <div><dt>${RESEARCH_GRAPH.stats.releasesWithoutDirectInterReleaseEdgeCount}</dt><dd>releases with no direct link</dd></div>
+        <div><dt>${RESEARCH_GRAPH.stats.singleReleaseMethodCount}</dt><dd>methods represented by one release</dd></div>
+        <div><dt>${RESEARCH_GRAPH.stats.clusterSeedCount}</dt><dd>singleton cluster seeds</dd></div>
+        <div><dt>${RESEARCH_GRAPH.stats.lineageRootWithoutSuccessorCount}</dt><dd>lineage roots with no successor</dd></div>
+        <div><dt>${RESEARCH_GRAPH.stats.proposedEdgeCount}</dt><dd>proposals awaiting review</dd></div>
+      </dl>
     </section>
     <details class="atlas-register">
       <summary>Accepted relationship register (${RESEARCH_GRAPH.stats.edgeCount})</summary>
@@ -1408,7 +1426,7 @@ function atlasPage() {
 </article>
 ${foot}`;
   write('atlas/index.html', html);
-  write('atlas/index.md', `---\ntitle: "Evidence Atlas"\nurl: ${url}\nlicense: CC0-1.0\nstatus: source-driven relationship map\ngraph: ${BASE}/api/research-graph.json\nschema: ${BASE}/api/schemas/research-graph.schema.json\n---\n\n# Evidence Atlas\n\n${RESEARCH_GRAPH.description}\n\n- Graph identity: ${RESEARCH_GRAPH.graphId}\n- Releases: ${RESEARCH_GRAPH.stats.releaseCount}\n- Accepted relationships: ${RESEARCH_GRAPH.stats.edgeCount}\n- Published proposals: ${RESEARCH_GRAPH.stats.proposedEdgeCount}\n\n${proseSource}`);
+  write('atlas/index.md', `---\ntitle: "Evidence Atlas"\nurl: ${url}\nlicense: CC0-1.0\nstatus: source-driven relationship map\ngraph: ${BASE}/api/research-graph.json\nschema: ${BASE}/api/schemas/research-graph.schema.json\n---\n\n# Evidence Atlas\n\n${RESEARCH_GRAPH.description}\n\n- Graph identity: ${RESEARCH_GRAPH.graphId}\n- Releases: ${RESEARCH_GRAPH.stats.releaseCount}\n- Accepted relationships: ${RESEARCH_GRAPH.stats.edgeCount} (${RESEARCH_GRAPH.stats.directInterReleaseEdgeCount} direct; ${RESEARCH_GRAPH.stats['member-of-lineageEdgeCount']} lineage; ${RESEARCH_GRAPH.stats['member-of-clusterEdgeCount']} cluster; ${RESEARCH_GRAPH.stats['uses-methodEdgeCount']} method)\n- Published proposals: ${RESEARCH_GRAPH.stats.proposedEdgeCount}\n\n${proseSource}`);
   write('atlas/index.json', JSON.stringify(RESEARCH_GRAPH, null, 2) + '\n');
 }
 

@@ -70,12 +70,12 @@
     {
       "id": "atlas-step-projection-calibration",
       "priority": 2,
-      "state": "ready",
+      "state": "complete",
       "title": "Calibrate projection weight and taxonomy legibility",
       "purpose": "Make the first visual impression distinguish direct inter-release evidence from registry-derived navigation and make broad, low-discrimination labels visibly interpretable.",
       "dependencies": [],
       "deliverables": [
-        "A tested direct-inter-release projection alongside the existing programme and method views.",
+        "A tested direct-inter-release projection alongside the research-structure and method views.",
         "Visible working-taxonomy status, edge-composition counts and method prevalence.",
         "A documented lineage eligibility rule requiring a reciprocal lineage identifier and, for a non-root member, an evidential parent link.",
         "A design note on representing machine-checked reciprocity as an evidence attribute rather than a replacement for knowledge status."
@@ -264,6 +264,26 @@
       ],
       "decision": "change-priority",
       "nextAction": "Keep fail-closed proposal intake first, then test an evidence-calibrated projection and surface taxonomy status, prevalence and lineage eligibility before the discovery pilot."
+    },
+    {
+      "reviewId": "atlas-review-2026-08-15-sol-projection",
+      "reviewedAt": "2026-08-15",
+      "trigger": "user-supplied-same-system-review",
+      "reviewer": "OpenAI Sol instance, as identified by the maintainer",
+      "provenanceNote": "The maintainer supplied the review text. This is a same-system-family design review, not independent scientific assurance; the exact model version, prompt and run record were not independently established.",
+      "baseline": {
+        "releaseCount": 28,
+        "acceptedRelationshipCount": 175,
+        "publishedProposalCount": 0
+      },
+      "observations": [
+        "The reviewer reconciled the accepted graph as 135 method assignments, 28 cluster memberships, 7 lineage memberships and 5 direct inter-release links.",
+        "The existing dense projection could visually overstate substantive inter-release relationship coverage even though the explanatory boundaries were accurate.",
+        "The reviewer recommended a first-class Direct links projection, a visible relationship-composition disclosure, method prevalence and explicit singleton cluster-seed labels.",
+        "The reviewer recommended public source-declared wording while retaining the canonical asserted machine status, and a missingness panel that does not treat absent edges as evidence of no relationship."
+      ],
+      "decision": "complete",
+      "nextAction": "Keep proposal intake as the first incomplete roadmap step, then test bounded discovery only after proposal quarantine and additive review receipts are operational."
     }
   ]
 }

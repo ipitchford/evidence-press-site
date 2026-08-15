@@ -4,7 +4,7 @@ The atlas is a map of **recorded relationships**, not a ranking of papers and no
 
 Three relationship states remain separate:
 
-- **Asserted** — an Evidence Press source record explicitly declares the classification, citation or dependency.
+- **Source-declared** — an Evidence Press source record explicitly declares the classification, citation or dependency. The canonical machine value remains `asserted` for compatibility and provenance.
 - **Computed** — a deterministic rule has detected a structural pattern from declared inputs. Computed links are not scholarly assertions.
 - **Proposed** — a person or agent has nominated a relationship for review. Proposed links are excluded from the accepted graph.
 
@@ -20,7 +20,9 @@ A shared method, a broad cluster and a research lineage are different objects:
 - A **parent edge** records an inherited result or method and carries the parent's stated assurance ceiling.
 - An **internal citation edge** records that one release names another as related work; it does not by itself establish agreement, priority or dependence.
 
-The registry is explicitly a **working taxonomy**. The default Programme view excludes method-assignment edges, but it still mixes registry-derived cluster and lineage membership with direct inter-release citations, extensions and reuse; the status line and relationship register give the exact composition. A non-root release enters an evidence-backed lineage only when its metadata declares both the reciprocal lineage identifier and an evidential parent link. A parent link alone is not lineage membership.
+The registry is explicitly a **working taxonomy**. The initial **Direct links** view contains only release-to-release citations, extensions and reuse. The **Research structure** view adds registry-derived cluster and lineage membership, while the **Methods** view shows method assignments. Method inspectors report their release prevalence, and singleton clusters are labelled **cluster seeds** so an empty neighbourhood is not mistaken for evidence of isolation. A non-root release enters an evidence-backed lineage only when its metadata declares both the reciprocal lineage identifier and an evidential parent link. A parent link alone is not lineage membership.
+
+The current composition is 5 direct inter-release links, 7 lineage memberships, 28 cluster memberships and 135 method assignments. These counts explain the graph's density; they do not measure importance or scientific support.
 
 Select any node or connection in the interactive map to inspect its basis, inference limit and exact source record.
 
@@ -29,6 +31,8 @@ Select any node or connection in the interactive map to inspect its basis, infer
 The synchronized relationship register below the map contains the same accepted edges in a conventional table. It remains usable without JavaScript and is the nonvisual alternative to the SVG map.
 
 Agents should retrieve [`research-graph.json`](/api/research-graph.json) and validate it against [`research-graph.schema.json`](/api/schemas/research-graph.schema.json). The API publishes stable node identifiers, content-derived edge identifiers, statement fingerprints, relationship status, source pointers and inference limits.
+
+The missingness panel is also source-derived. No edge means that no relationship is currently accepted in the registry; it does not establish that no relationship exists. Areas never searched are not enumerated until a documented discovery run supplies a defensible search boundary.
 
 The current priorities, readiness gates and periodic review checklist are published in the [`Atlas roadmap`](/api/atlas-roadmap.json), validated against its [`roadmap schema`](/api/schemas/atlas-roadmap.schema.json). The human-readable design record remains in the [public repository](https://github.com/ipitchford/evidence-press-site/blob/main/docs/EVIDENCE_ATLAS.md).
 
