@@ -276,6 +276,8 @@
   function render() {
     var current = visibleGraph();
     var coords = positions(current.nodes);
+    svg.setAttribute('data-atlas-mode', state.mode);
+    svg.setAttribute('viewBox', state.mode === 'proposals' ? '310 165 580 348' : '0 0 1200 720');
     var nodeById = new Map(current.nodes.map(function (node) { return [node.id, node]; }));
     var indexByType = {};
     Object.keys(modeTypes).forEach(function () {});
