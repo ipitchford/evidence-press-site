@@ -1343,10 +1343,10 @@ function atlasPage() {
         <span role="listitem">${RESEARCH_GRAPH.stats.lineageCount} evidence-backed lineages</span>
         <span role="listitem">${RESEARCH_GRAPH.stats.edgeCount} accepted relationships</span>
       </div>
-      <p class="atlas-composition"><strong>${RESEARCH_GRAPH.stats.edgeCount} recorded relationships:</strong> ${RESEARCH_GRAPH.stats.directInterReleaseEdgeCount} direct · ${RESEARCH_GRAPH.stats['member-of-lineageEdgeCount']} lineage · ${RESEARCH_GRAPH.stats['member-of-clusterEdgeCount']} cluster · ${RESEARCH_GRAPH.stats['uses-methodEdgeCount']} method</p>
     </div>
   </header>
   <div class="wrap">
+    <p class="atlas-composition"><strong>${RESEARCH_GRAPH.stats.edgeCount} recorded relationships:</strong> ${RESEARCH_GRAPH.stats.directInterReleaseEdgeCount} direct · ${RESEARCH_GRAPH.stats['member-of-lineageEdgeCount']} lineage · ${RESEARCH_GRAPH.stats['member-of-clusterEdgeCount']} cluster · ${RESEARCH_GRAPH.stats['uses-methodEdgeCount']} method</p>
     <aside class="atlas-boundary" aria-label="Atlas evidence boundary">
       <strong>What a line means—and does not mean.</strong>
       ${esc(RESEARCH_GRAPH.claimCeiling)} Geometry, proximity and node size are navigation choices, not evidence.
