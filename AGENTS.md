@@ -82,6 +82,7 @@ Run these before calling an operating-model change ready:
 ```bash
 node tools/test-operating-model.js
 node tools/check-operating-model.js
+node tools/make-thumb.js --check
 REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh
 node protocols/tools/check-release-integrity.js
 node tools/test-render.js
@@ -89,6 +90,13 @@ node tools/test-metadata.js
 node tools/check-links.js
 node tools/check-published.js
 ```
+
+Every release must have a reproducible 2560x1440 YouTube thumbnail below 2 MB.
+Generate it during authoring with `node tools/make-thumb.js <slug>`. Keep the
+committed copy under `thumbs/`, mirror the exact bytes to `/Users/admin/thumbs`
+on the maintainer Mac, and use the generator's deterministic background-palette
+rotation. A bespoke slug specification may refine the claim-specific layout;
+absence of one is not permission to omit the thumbnail.
 
 The checks establish structural conformance and producer-side replay only. They
 do not establish that the operating model improves science, policy, or
