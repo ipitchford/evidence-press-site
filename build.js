@@ -630,7 +630,7 @@ function head({ title, description, canonical, jsonld, metaExtra = '', math = fa
 <link rel="alternate" type="application/rss+xml" title="${escAttr(CONFIG.siteName)}" href="${BASE}/feed.xml">
 <link rel="alternate" type="application/feed+json" title="${escAttr(CONFIG.siteName)}" href="${BASE}/feed.json">
 ${extraLinks}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23134e4a'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%23fbbf24' font-family='Georgia'%3EE%CF%81%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/style.css?v=${CSS_V}">
+<link rel="stylesheet" href="/assets/${CSS_ASSET}">
 ${metaExtra}${math ? `<link rel="stylesheet" href="/assets/katex/katex.min.css">
 <script defer src="/assets/katex/katex.min.js"></script>
 <script defer src="/assets/katex/contrib/auto-render.min.js"></script>
@@ -804,9 +804,11 @@ function articleJsonld(p) {
 /* content-hashes for cache-busting static asset links */
 const assetV = file => fileVersion(path.join(ROOT, 'assets', file));
 const CSS_V = assetV('style.css');
+const CSS_ASSET = `style-${CSS_V}.css`;
 const JS_V = assetV('js/site.js');
 const MATH_JS_V = assetV('js/math.js');
 const ATLAS_CSS_V = assetV('atlas.css');
+const ATLAS_CSS_ASSET = `atlas-${ATLAS_CSS_V}.css`;
 const ATLAS_JS_V = assetV('js/atlas.js');
 
 /* YouTube URL -> video id (watch, youtu.be, embed, shorts, live) */
@@ -1308,7 +1310,7 @@ function atlasPage() {
       }
     ]
   };
-  const extraHead = `<link rel="stylesheet" href="/assets/atlas.css?v=${ATLAS_CSS_V}">
+  const extraHead = `<link rel="stylesheet" href="/assets/${ATLAS_CSS_ASSET}">
 <link rel="describedby" type="application/json" href="${BASE}/api/research-graph.json">
 <link rel="alternate" type="text/markdown" href="${url}index.md">
 <script defer src="/assets/js/atlas.js?v=${ATLAS_JS_V}"></script>
@@ -2076,6 +2078,11 @@ fs.cpSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), {
   recursive: true,
   filter: src => !JUNK.test(path.basename(src))
 });
+/* Cloudflare's custom-domain cache may ignore query strings for static assets.
+   Emit fingerprinted CSS filenames so each stylesheet revision has a distinct
+   cache key while preserving the stable source-named copies above. */
+fs.copyFileSync(path.join(ROOT, 'assets', 'style.css'), path.join(DIST, 'assets', CSS_ASSET));
+fs.copyFileSync(path.join(ROOT, 'assets', 'atlas.css'), path.join(DIST, 'assets', ATLAS_CSS_ASSET));
 /* YouTube authoring thumbnails normally stay outside deployed assets. These
    two are also editorial illustrations on the Productivity page, so publish a
    narrow allowlist instead of exposing the whole authoring directory. */

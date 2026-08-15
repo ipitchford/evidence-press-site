@@ -96,8 +96,8 @@ if (process.argv.includes('--built')) {
   ok(same(publicRegistrySchema, versionedRegistrySchema), 'versioned relationship-registry schema matches its unversioned alias');
   ok((atlasHtml.match(/data-atlas-edge-row=/g) || []).length === publicGraph.edges.length,
     'server-rendered relationship register contains every accepted edge');
-  ok(atlasHtml.includes('/assets/js/atlas.js?v=') && atlasHtml.includes('/assets/atlas.css?v='),
-    'atlas page loads content-versioned same-origin assets');
+  ok(atlasHtml.includes('/assets/js/atlas.js?v=') && /\/assets\/atlas-[a-f0-9]{10}\.css/.test(atlasHtml),
+    'atlas page loads versioned graph script and content-addressed stylesheet');
 }
 
 console.log(failures === 0 ? '\nALL RESEARCH GRAPH TESTS PASSED' : `\n${failures} RESEARCH GRAPH TEST(S) FAILED`);
