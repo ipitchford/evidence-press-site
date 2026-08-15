@@ -87,8 +87,14 @@
         "id": { "type": "string", "pattern": "^(release|method|cluster|lineage):[a-z0-9]+(?:-[a-z0-9]+)*$" },
         "type": { "enum": ["release", "method", "cluster", "lineage"] },
         "label": { "type": "string", "minLength": 1 },
+        "publicLabel": { "type": "string", "minLength": 1 },
         "description": { "type": "string", "minLength": 1 },
         "url": { "type": "string", "format": "uri" },
+        "releaseAssignmentCount": { "type": "integer", "minimum": 0 },
+        "releaseAssignmentDenominator": { "type": "integer", "minimum": 0 },
+        "umbrellaMethod": { "type": "boolean" },
+        "scopeStatus": { "enum": ["cluster-seed", "broad-cluster"] },
+        "directInterReleaseDegree": { "type": "integer", "minimum": 0 },
         "sourceRefs": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
       }
     },

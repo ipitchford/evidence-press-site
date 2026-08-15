@@ -14,14 +14,16 @@
   var NS = 'http://www.w3.org/2000/svg';
   var WIDTH = 1200;
   var HEIGHT = 720;
-  var state = { graph: null, mode: 'programmes', selectedNode: null, selectedEdge: null, query: '' };
+  var state = { graph: null, mode: 'direct', selectedNode: null, selectedEdge: null, query: '' };
   var modeTypes = {
-    programmes: ['release', 'cluster', 'lineage'],
+    direct: ['release'],
+    structure: ['release', 'cluster', 'lineage'],
     methods: ['release', 'method'],
     all: ['release', 'method', 'cluster', 'lineage']
   };
   var modePredicates = {
-    programmes: ['member-of-cluster', 'member-of-lineage', 'extends-result', 'reuses-method', 'cites-related-release'],
+    direct: null,
+    structure: ['member-of-cluster', 'member-of-lineage', 'extends-result', 'reuses-method', 'cites-related-release'],
     methods: ['uses-method'],
     all: null
   };
@@ -102,20 +104,36 @@
     return predicate ? predicate.label : edge.predicate;
   }
 
+  function knowledgeStatusLabel(statusValue) {
+    return statusValue === 'asserted' ? 'source-declared' : statusValue;
+  }
+
+  function nodeTypeLabel(node) {
+    if (node.scopeStatus === 'cluster-seed') return 'cluster seed';
+    return node.type;
+  }
+
+  function nodeLabel(node) {
+    return node.publicLabel || node.label;
+  }
+
   function renderInspectorNode(node) {
     var relations = state.graph.edges.filter(function (edge) { return edge.source === node.id || edge.target === node.id; });
     var links = relations.slice(0, 12).map(function (edge) {
       var otherId = edge.source === node.id ? edge.target : edge.source;
       var other = state.graph.nodes.find(function (item) { return item.id === otherId; });
       return '<button type="button" data-inspect-edge="' + esc(edge.id) + '">' +
-        esc(relationLabel(edge)) + ' · ' + esc(other ? other.label : otherId) + '</button>';
+        esc(relationLabel(edge)) + ' · ' + esc(other ? nodeLabel(other) : otherId) + '</button>';
     }).join('');
-    inspector.innerHTML = '<p class="eyebrow">' + esc(node.type) + ' · ' + esc(node.id) + '</p>' +
-      '<h2>' + esc(node.label) + '</h2><p>' + esc(node.description) + '</p>' +
+    inspector.innerHTML = '<p class="eyebrow">' + esc(nodeTypeLabel(node)) + ' · ' + esc(node.id) + '</p>' +
+      '<h2>' + esc(nodeLabel(node)) + '</h2><p>' + esc(node.description) + '</p>' +
       (node.sharedBoundary ? '<p class="atlas-limit"><strong>Shared boundary.</strong> ' + esc(node.sharedBoundary) + '</p>' : '') +
       '<dl>' +
         (node.status ? '<dt>Status</dt><dd>' + esc(node.status) + '</dd>' : '') +
         (node.doi ? '<dt>DOI</dt><dd>' + esc(node.doi) + '</dd>' : '') +
+        (node.releaseAssignmentCount != null ? '<dt>Prevalence</dt><dd>' + esc(node.releaseAssignmentCount) + ' of ' + esc(node.releaseAssignmentDenominator) + ' releases' + (node.umbrellaMethod ? ' · umbrella method' : '') + '</dd>' : '') +
+        (node.scopeStatus ? '<dt>Scope</dt><dd>' + esc(node.scopeStatus.replace(/-/g, ' ')) + '</dd>' : '') +
+        (node.directInterReleaseDegree != null ? '<dt>Direct links</dt><dd>' + esc(node.directInterReleaseDegree) + '</dd>' : '') +
         (node.statementFingerprint ? '<dt>Statement</dt><dd><code>' + esc(node.statementFingerprint) + '</code></dd>' : '') +
         '<dt>Connections</dt><dd>' + relations.length + '</dd>' +
       '</dl><p><a href="' + esc(node.url) + '">Open the source record →</a></p>' +
@@ -129,8 +147,8 @@
     var sourceNode = state.graph.nodes.find(function (node) { return node.id === edge.source; });
     var targetNode = state.graph.nodes.find(function (node) { return node.id === edge.target; });
     var refs = edge.sourceRefs.map(function (ref) { return '<li><a href="' + esc(ref) + '">' + esc(ref) + '</a></li>'; }).join('');
-    inspector.innerHTML = '<p class="eyebrow">' + esc(edge.knowledgeStatus) + ' relationship · ' + esc(edge.id) + '</p>' +
-      '<h2>' + esc(sourceNode ? sourceNode.label : edge.source) + ' <span aria-hidden="true">→</span> ' + esc(targetNode ? targetNode.label : edge.target) + '</h2>' +
+    inspector.innerHTML = '<p class="eyebrow">' + esc(knowledgeStatusLabel(edge.knowledgeStatus)) + ' relationship · ' + esc(edge.id) + '</p>' +
+      '<h2>' + esc(sourceNode ? nodeLabel(sourceNode) : edge.source) + ' <span aria-hidden="true">→</span> ' + esc(targetNode ? nodeLabel(targetNode) : edge.target) + '</h2>' +
       '<dl><dt>Relation</dt><dd>' + esc(relationLabel(edge)) + '</dd><dt>Construction</dt><dd>' + esc(edge.construction.replace(/-/g, ' ')) + '</dd></dl>' +
       '<p><strong>Recorded basis.</strong> ' + esc(edge.basis) + '</p>' +
       '<p class="atlas-limit"><strong>Inference limit.</strong> ' + esc(edge.inferenceLimit) + '</p>' +
@@ -145,7 +163,7 @@
   function selectNode(id, updateUrl) {
     var node = state.graph.nodes.find(function (item) { return item.id === id; });
     if (!node) return;
-    if (modeTypes[state.mode].indexOf(node.type) === -1) state.mode = node.type === 'method' ? 'methods' : 'programmes';
+    if (modeTypes[state.mode].indexOf(node.type) === -1) state.mode = node.type === 'method' ? 'methods' : 'structure';
     state.selectedNode = id;
     state.selectedEdge = null;
     render();
@@ -220,17 +238,17 @@
     var nodeLayer = element('g', { class: 'atlas-nodes' });
     current.nodes.forEach(function (node) {
       var point = coords[node.id];
-      var matches = query && (node.label + ' ' + node.description + ' ' + node.id).toLowerCase().indexOf(query) !== -1;
+      var matches = query && (nodeLabel(node) + ' ' + node.label + ' ' + node.description + ' ' + node.id).toLowerCase().indexOf(query) !== -1;
       var classes = ['atlas-node'];
       if (relatedIds.size && !relatedIds.has(node.id)) classes.push('is-dimmed');
       if (state.selectedNode === node.id || (state.selectedEdge && relatedIds.has(node.id))) classes.push('is-selected');
       if (matches) classes.push('is-match');
       var group = element('g', {
         class: classes.join(' '), transform: 'translate(0 0)', tabindex: '0', role: 'button',
-        'data-type': node.type, 'data-node-id': node.id,
-        'aria-label': node.type + ': ' + node.label + '. Select to inspect.'
+        'data-type': node.type, 'data-scope-status': node.scopeStatus || '', 'data-node-id': node.id,
+        'aria-label': nodeTypeLabel(node) + ': ' + nodeLabel(node) + '. Select to inspect.'
       });
-      group.appendChild(element('title', {}, node.label));
+      group.appendChild(element('title', {}, nodeLabel(node)));
       group.appendChild(shapeFor(node, point.x, point.y));
       group.appendChild(element('text', { class: 'node-code', x: point.x, y: point.y }, nodeCode(node, indexByType)));
       group.addEventListener('click', function () { selectNode(node.id); });
@@ -243,7 +261,7 @@
 
     modeButtons.forEach(function (button) { button.setAttribute('aria-pressed', button.getAttribute('data-atlas-mode') === state.mode ? 'true' : 'false'); });
     var matchesCount = query ? current.nodes.filter(function (node) {
-      return (node.label + ' ' + node.description + ' ' + node.id).toLowerCase().indexOf(query) !== -1;
+      return (nodeLabel(node) + ' ' + node.label + ' ' + node.description + ' ' + node.id).toLowerCase().indexOf(query) !== -1;
     }).length : 0;
     status.textContent = current.nodes.length + ' nodes and ' + current.edges.length + ' accepted relationships in this view' +
       (query ? '; ' + matchesCount + ' node' + (matchesCount === 1 ? '' : 's') + ' match “' + state.query.trim() + '”.' : '.');
@@ -270,7 +288,7 @@
     if (event.key !== 'Enter' || !state.query.trim()) return;
     var visible = visibleGraph().nodes;
     var q = state.query.toLowerCase().trim();
-    var match = visible.find(function (node) { return (node.label + ' ' + node.description + ' ' + node.id).toLowerCase().indexOf(q) !== -1; });
+    var match = visible.find(function (node) { return (nodeLabel(node) + ' ' + node.label + ' ' + node.description + ' ' + node.id).toLowerCase().indexOf(q) !== -1; });
     if (match) selectNode(match.id);
   });
   reset.addEventListener('click', resetView);
@@ -282,6 +300,7 @@
     state.graph = graph;
     var params = new URL(window.location.href).searchParams;
     var requestedMode = params.get('view');
+    if (requestedMode === 'programmes') requestedMode = 'structure';
     if (modeTypes[requestedMode]) state.mode = requestedMode;
     render();
     if (params.get('edge')) selectEdge(params.get('edge'), false);

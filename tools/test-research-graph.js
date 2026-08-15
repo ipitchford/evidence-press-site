@@ -47,6 +47,24 @@ ok(graph.stats.clusterCount === registry.methodClusters.length, 'every broad clu
 ok(graph.stats.lineageCount === registry.lineages.length, 'every evidence-backed lineage is represented');
 ok(graph.stats['uses-methodEdgeCount'] === Object.values(registry.releaseAssignments).flat().length,
   'every method assignment becomes one edge');
+ok(graph.stats.directInterReleaseEdgeCount === 5,
+  'direct inter-release projection contains exactly the five source-backed release links');
+ok(graph.stats.edgeCount === graph.stats['uses-methodEdgeCount'] + graph.stats['member-of-clusterEdgeCount'] +
+  graph.stats['member-of-lineageEdgeCount'] + graph.stats.directInterReleaseEdgeCount,
+  'relationship composition reconciles exactly with the accepted edge total');
+ok(graph.nodes.find(node => node.id === 'method:adversarial-controls').releaseAssignmentCount === 20 &&
+  graph.nodes.find(node => node.id === 'method:structural-compression').releaseAssignmentCount === 18,
+  'method nodes expose registry-derived prevalence');
+ok(graph.nodes.find(node => node.id === 'method:research-lineage-reuse').publicLabel === 'Lineage-aware reuse practice',
+  'public method terminology distinguishes reuse practice from evidence-backed lineage');
+ok(graph.nodes.filter(node => node.type === 'method' && node.umbrellaMethod).every(node =>
+  node.releaseAssignmentCount / node.releaseAssignmentDenominator >= 0.5),
+  'umbrella-method labels follow the documented majority threshold');
+ok(graph.stats.clusterSeedCount === graph.nodes.filter(node => node.scopeStatus === 'cluster-seed').length,
+  'singleton cluster seeds are explicitly and consistently labelled');
+ok(graph.stats.releasesWithoutDirectInterReleaseEdgeCount === graph.nodes.filter(node =>
+  node.type === 'release' && node.directInterReleaseDegree === 0).length,
+  'direct-link missingness reconciles with release node degrees');
 ok(graph.stats.proposedEdgeCount === 0 && graph.proposalRegister.relations.length === 0,
   'first release publishes no speculative relationships');
 ok(graph.edges.every(edge => edge.knowledgeStatus !== 'proposed'),
@@ -70,6 +88,19 @@ const unhashed = JSON.parse(JSON.stringify(graph));
 unhashed.edges[0].basis += ' silently changed';
 ok(validateResearchGraph(unhashed).some(error => error.includes('content-derived identity')),
   'negative control rejects an edge changed without a new identity');
+const staleMissingness = JSON.parse(JSON.stringify(graph));
+staleMissingness.stats.releasesWithoutDirectInterReleaseEdgeCount++;
+ok(validateResearchGraph(staleMissingness).some(error => error.includes('does not match release node degrees')),
+  'negative control rejects stale direct-link missingness');
+const falseUmbrella = JSON.parse(JSON.stringify(graph));
+falseUmbrella.nodes.find(node => node.type === 'method').umbrellaMethod =
+  !falseUmbrella.nodes.find(node => node.type === 'method').umbrellaMethod;
+ok(validateResearchGraph(falseUmbrella).some(error => error.includes('umbrellaMethod does not match')),
+  'negative control rejects a false umbrella-method label');
+const inventedSearchCoverage = JSON.parse(JSON.stringify(graph));
+inventedSearchCoverage.stats.unsearchedAreaRegisterCount = 1;
+ok(validateResearchGraph(inventedSearchCoverage).some(error => error.includes('bounded search-area register')),
+  'negative control rejects invented hidden-relationship search coverage');
 
 if (process.argv.includes('--built')) {
   const dist = path.join(ROOT, 'dist');

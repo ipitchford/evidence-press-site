@@ -98,6 +98,10 @@ function buildResearchGraph({ papers, methodRegistry, relationshipRegistry, base
   const nodes = [];
   const edges = [];
   const proposals = [];
+  const methodAssignmentCounts = new Map(methodRegistry.methods.map(method => [method.id, 0]));
+  for (const assignments of Object.values(methodRegistry.releaseAssignments)) {
+    for (const method of assignments) methodAssignmentCounts.set(method, (methodAssignmentCounts.get(method) || 0) + 1);
+  }
 
   for (const paper of papers) {
     const statement = String(paper.oneLine || paper.abstract || paper.title);
@@ -119,10 +123,15 @@ function buildResearchGraph({ papers, methodRegistry, relationshipRegistry, base
   }
 
   for (const method of methodRegistry.methods) {
+    const releaseAssignmentCount = methodAssignmentCounts.get(method.id) || 0;
     nodes.push({
       id: methodId(method.id), type: 'method', label: method.name,
+      publicLabel: method.id === 'research-lineage-reuse' ? 'Lineage-aware reuse practice' : method.name,
       description: method.definition, mechanism: method.mechanism,
       aims: method.aims || [], failureModes: method.failureModes || [],
+      releaseAssignmentCount,
+      releaseAssignmentDenominator: papers.length,
+      umbrellaMethod: papers.length > 0 && releaseAssignmentCount / papers.length >= 0.5,
       url: `${base}/atlas/?node=${encodeURIComponent(methodId(method.id))}`,
       sourceRefs: [`${base}/api/method-registry.json#/methods/${methodRegistry.methods.indexOf(method)}`]
     });
@@ -133,6 +142,7 @@ function buildResearchGraph({ papers, methodRegistry, relationshipRegistry, base
       id: clusterId(cluster.id), type: 'cluster', label: cluster.name,
       description: cluster.sharedBoundary, sharedBoundary: cluster.sharedBoundary,
       memberCount: cluster.members.length,
+      scopeStatus: cluster.members.length === 1 ? 'cluster-seed' : 'broad-cluster',
       url: `${base}/atlas/?node=${encodeURIComponent(clusterId(cluster.id))}`,
       sourceRefs: [`${base}/api/method-registry.json#/methodClusters/${methodRegistry.methodClusters.indexOf(cluster)}`]
     });
@@ -241,6 +251,18 @@ function buildResearchGraph({ papers, methodRegistry, relationshipRegistry, base
   edges.sort((left, right) => left.predicate.localeCompare(right.predicate) || left.source.localeCompare(right.source) || left.target.localeCompare(right.target));
   proposals.sort((left, right) => left.predicate.localeCompare(right.predicate) || left.source.localeCompare(right.source) || left.target.localeCompare(right.target));
 
+  const nodeById = new Map(nodes.map(node => [node.id, node]));
+  const directInterReleaseEdges = edges.filter(edge =>
+    nodeById.get(edge.source)?.type === 'release' && nodeById.get(edge.target)?.type === 'release');
+  const directReleaseIds = new Set(directInterReleaseEdges.flatMap(edge => [edge.source, edge.target]));
+  for (const node of nodes) {
+    if (node.type === 'release') {
+      node.directInterReleaseDegree = directInterReleaseEdges.filter(edge => edge.source === node.id || edge.target === node.id).length;
+    }
+  }
+  const lineageRootWithoutSuccessorCount = methodRegistry.lineages.filter(lineage =>
+    lineage.members.length === 1 && lineage.members[0] === lineage.rootReleaseSlug).length;
+
   const stats = {
     nodeCount: nodes.length,
     edgeCount: edges.length,
@@ -250,7 +272,13 @@ function buildResearchGraph({ papers, methodRegistry, relationshipRegistry, base
     clusterCount: nodes.filter(node => node.type === 'cluster').length,
     lineageCount: nodes.filter(node => node.type === 'lineage').length,
     assertedEdgeCount: edges.filter(edge => edge.knowledgeStatus === 'asserted').length,
-    computedEdgeCount: edges.filter(edge => edge.knowledgeStatus === 'computed').length
+    computedEdgeCount: edges.filter(edge => edge.knowledgeStatus === 'computed').length,
+    directInterReleaseEdgeCount: directInterReleaseEdges.length,
+    releasesWithoutDirectInterReleaseEdgeCount: nodes.filter(node => node.type === 'release' && !directReleaseIds.has(node.id)).length,
+    singleReleaseMethodCount: nodes.filter(node => node.type === 'method' && node.releaseAssignmentCount === 1).length,
+    clusterSeedCount: nodes.filter(node => node.type === 'cluster' && node.scopeStatus === 'cluster-seed').length,
+    lineageRootWithoutSuccessorCount,
+    unsearchedAreaRegisterCount: 0
   };
   for (const predicate of relationshipRegistry.predicates) {
     stats[`${predicate.id}EdgeCount`] = edges.filter(edge => edge.predicate === predicate.id).length;
@@ -349,6 +377,40 @@ function validateResearchGraph(graph, { relationshipRegistry = null } = {}) {
   if (graph.stats.nodeCount !== graph.nodes.length) add('stats.nodeCount does not match nodes length');
   if (graph.stats.edgeCount !== graph.edges.length) add('stats.edgeCount does not match edges length');
   if (graph.stats.proposedEdgeCount !== graph.proposalRegister.relations.length) add('stats.proposedEdgeCount does not match proposal register');
+  const graphNodeById = new Map(graph.nodes.map(node => [node.id, node]));
+  const graphDirectEdges = graph.edges.filter(edge =>
+    graphNodeById.get(edge.source)?.type === 'release' && graphNodeById.get(edge.target)?.type === 'release');
+  if (graph.stats.directInterReleaseEdgeCount !== graphDirectEdges.length) add('stats.directInterReleaseEdgeCount does not match release-to-release edges');
+  const directDegree = id => graphDirectEdges.filter(edge => edge.source === id || edge.target === id).length;
+  const releaseNodes = graph.nodes.filter(node => node.type === 'release');
+  for (const node of releaseNodes) {
+    if (node.directInterReleaseDegree !== directDegree(node.id)) add(`${node.id}.directInterReleaseDegree does not match accepted release-to-release edges`);
+  }
+  if (graph.stats.releasesWithoutDirectInterReleaseEdgeCount !== releaseNodes.filter(node => directDegree(node.id) === 0).length) {
+    add('stats.releasesWithoutDirectInterReleaseEdgeCount does not match release node degrees');
+  }
+  const methodNodes = graph.nodes.filter(node => node.type === 'method');
+  for (const node of methodNodes) {
+    if (!Number.isInteger(node.releaseAssignmentCount) || !Number.isInteger(node.releaseAssignmentDenominator)) add(`${node.id} is missing integer prevalence fields`);
+    else if (node.umbrellaMethod !== (node.releaseAssignmentDenominator > 0 && node.releaseAssignmentCount / node.releaseAssignmentDenominator >= 0.5)) {
+      add(`${node.id}.umbrellaMethod does not match its prevalence`);
+    }
+  }
+  if (graph.stats.singleReleaseMethodCount !== methodNodes.filter(node => node.releaseAssignmentCount === 1).length) {
+    add('stats.singleReleaseMethodCount does not match method prevalence');
+  }
+  const clusterNodes = graph.nodes.filter(node => node.type === 'cluster');
+  if (clusterNodes.some(node => node.scopeStatus !== (node.memberCount === 1 ? 'cluster-seed' : 'broad-cluster'))) {
+    add('cluster scopeStatus does not match memberCount');
+  }
+  if (graph.stats.clusterSeedCount !== clusterNodes.filter(node => node.scopeStatus === 'cluster-seed').length) {
+    add('stats.clusterSeedCount does not match cluster scope');
+  }
+  const lineageNodes = graph.nodes.filter(node => node.type === 'lineage');
+  if (graph.stats.lineageRootWithoutSuccessorCount !== lineageNodes.filter(node => node.memberCount === 1).length) {
+    add('stats.lineageRootWithoutSuccessorCount does not match lineage membership');
+  }
+  if (graph.stats.unsearchedAreaRegisterCount !== 0) add('stats.unsearchedAreaRegisterCount must remain zero until a bounded search-area register exists');
   if (relationshipRegistry && graph.claimCeiling !== relationshipRegistry.claimCeiling) add('graph claim ceiling does not match the relationship registry');
   return errors;
 }

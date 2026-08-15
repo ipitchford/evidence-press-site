@@ -247,6 +247,16 @@ check('Atlas page links its machine-readable roadmap and schema',
   atlasHtml.includes('/api/atlas-roadmap.json') && atlasHtml.includes('/api/schemas/atlas-roadmap.schema.json'));
 check('Atlas page surfaces working-taxonomy and reciprocal-lineage limits',
   atlasHtml.includes('working taxonomy') && atlasHtml.includes('A parent link alone is not lineage membership'));
+check('Atlas defaults to a first-class direct-links projection',
+  atlasHtml.includes('data-atlas-mode="direct" aria-pressed="true">Direct links</button>') &&
+  atlasHtml.includes('data-atlas-mode="structure" aria-pressed="false">Research structure</button>'));
+check('Atlas discloses exact relationship composition above the instrument',
+  atlasHtml.includes('175 recorded relationships:') && atlasHtml.includes('5 direct · 7 lineage · 28 cluster · 135 method'));
+check('Atlas uses reader-facing source-declared status without changing the machine enum',
+  atlasHtml.includes('source-declared') && publicResearchGraph.edges.every(edge => edge.knowledgeStatus === 'asserted'));
+check('Atlas publishes deterministic missingness and its non-inference boundary',
+  atlasHtml.includes('Registry missingness') &&
+  atlasHtml.includes('No edge means that no relationship is currently accepted in the registry; it does not establish that no relationship exists.'));
 
 const releaseOperatingSchema = read('api/schemas/release-operating-model.schema.json');
 check('prospective release schema is an exact source-to-public copy',
