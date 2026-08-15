@@ -75,6 +75,50 @@ should remain available once the proposal layer is activated.
 The geometry never encodes correctness, novelty, priority, review, influence or
 impact.
 
+## Next-step register
+
+The authoritative machine-readable roadmap is
+[`data/ATLAS_ROADMAP.json`](../data/ATLAS_ROADMAP.json), published at
+<https://evidencepress.org/api/atlas-roadmap.json>. It records dependencies,
+acceptance criteria, stop conditions, review triggers and an append-only review
+log. The initial priority order is:
+
+1. **Proposal intake and review receipts.** Implement a fail-closed route for
+   people and agents to nominate relationships without writing to the accepted
+   graph. Retain rejected and superseded decisions.
+2. **Projection and taxonomy calibration.** Test a direct-inter-release view,
+   expose the working-taxonomy status and prevalence of broad methods, and state
+   the reciprocal eligibility rule for evidence-backed lineages.
+3. **Bounded discovery pilot.** After proposal intake exists, compare separately
+   visible citation, symbolic, shared-object and semantic-retrieval routes on a
+   frozen hidden-link benchmark with negative controls.
+4. **Proposal-review workbench.** Make evidence, rival explanations, review
+   provenance and decision history accessible without visually collapsing
+   proposals into accepted edges.
+5. **Agent query surfaces.** Add filtered neighbourhood or dependency queries
+   only when a demonstrated task is materially cheaper than retrieving the
+   complete graph.
+6. **Renderer scale review.** Retain the dependency-free SVG until measured
+   accessibility, interaction or performance evidence justifies a change; the
+   current reassessment threshold is roughly 250 visible nodes.
+7. **Outcome evaluation.** Prospectively test whether the Atlas reduces
+   rediscovery, replay or reconstruction effort. Traffic, graph size, internal
+   reuse and proposal volume are not evidence of research acceleration.
+
+The highest-priority next action is therefore proposal intake, validation and
+append-only review receipts. Relationship discovery must not run as a publishing
+route until that boundary is working.
+
+The initial external model comment supplied by the maintainer independently
+reconciled all 175 accepted edges. It also prompted a new calibration task. The
+default Programme view excludes the 135 method edges, but 35 of its 40 edges are
+still registry-derived cluster or lineage memberships; only five are direct
+inter-release links. Two broad methods occur on 20 and 18 of the 28 releases.
+Those facts do not invalidate the taxonomy, but they should be legible in the
+interface. The comment also queried a Polydegree lineage. It is not currently
+eligible: a non-root lineage member must declare both a reciprocal `lineageId`
+and an evidential parent link, and the proposed successor has only the latter.
+
 ## Deterministic gates
 
 `node tools/test-research-graph.js` verifies:
@@ -141,3 +185,18 @@ predicate entry, inference limit, schema-valid source and regression test.
 Never edit generated `dist/` files, infer lineage from topical similarity, or
 move a proposed edge into the accepted graph merely because it looks plausible
 in the visualization.
+
+## Periodic review
+
+Review the Atlas whenever the maintainer asks, and at least monthly while it is
+active. Also review after five added releases, the first submitted proposal, a
+material objection or correction, or a renderer threshold event. The next
+scheduled review is 15 September 2026 unless an earlier trigger occurs.
+
+Each review should rebuild the graph; compare release, method, cluster, lineage,
+accepted-edge and proposal counts; recheck source resolution; sample accepted
+edges across predicates; inspect every proposal state; examine new external
+citations, objections and reproductions; and assess accessibility, performance
+and agent retrieval cost. Append the result to the roadmap's `reviewLog` with
+one exact next action, reviewer identity as reported, and a provenance note. Do
+not rewrite an earlier review.

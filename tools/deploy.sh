@@ -38,6 +38,7 @@ node protocols/tools/check-release-integrity.js
 echo "==> [3/9] site metadata, rendering, and link gates"
 node tools/check-operating-model.js
 node tools/test-operating-model.js
+node tools/test-atlas-roadmap.js
 node tools/test-render.js
 node tools/test-metadata.js
 node tools/check-links.js

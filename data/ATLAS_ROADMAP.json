@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "1.0",
+  "recordType": "evidence-atlas-roadmap",
+  "updated": "2026-08-15",
+  "status": "active-reviewed-roadmap",
+  "claimCeiling": "This roadmap records intended work and review decisions. It does not establish that an undiscovered relationship exists, that a proposed relationship is correct, or that the Atlas improves research outcomes.",
+  "currentBaseline": {
+    "asOf": "2026-08-15",
+    "releaseCount": 28,
+    "methodCount": 13,
+    "clusterCount": 13,
+    "lineageCount": 2,
+    "acceptedRelationshipCount": 175,
+    "publishedProposalCount": 0,
+    "relationshipComposition": {
+      "usesMethodCount": 135,
+      "clusterMembershipCount": 28,
+      "lineageMembershipCount": 7,
+      "directInterReleaseCount": 5,
+      "defaultProgrammeViewCount": 40
+    },
+    "methodPrevalenceChecks": [
+      {
+        "methodId": "adversarial-controls",
+        "releaseAssignmentCount": 20
+      },
+      {
+        "methodId": "structural-compression",
+        "releaseAssignmentCount": 18
+      }
+    ],
+    "sourceRefs": [
+      "data/RELATIONSHIP_REGISTRY.json",
+      "data/METHOD_REGISTRY.json",
+      "papers/*/meta.json"
+    ]
+  },
+  "principles": [
+    "Keep asserted, computed and proposed relationships machine-readably distinct.",
+    "Do not infer correctness, novelty, priority, influence, independence or impact from graph geometry, proximity or similarity.",
+    "Require resolvable evidence, an inference limit and additive review history for every proposal decision.",
+    "Retain rejected and superseded proposals as negative knowledge once the proposal layer is activated.",
+    "Keep machine access independent of the interactive renderer."
+  ],
+  "nextSteps": [
+    {
+      "id": "atlas-step-proposal-intake",
+      "priority": 1,
+      "state": "ready",
+      "title": "Implement fail-closed proposal intake and review receipts",
+      "purpose": "Give people and agents a safe place to nominate relationships without adding them to the accepted graph.",
+      "dependencies": [],
+      "deliverables": [
+        "A deterministic proposal validator and submission format.",
+        "Content-derived proposal identifiers and resolvable evidence references.",
+        "Append-only review receipts for awaiting-review, accepted-as-asserted, rejected and superseded states.",
+        "Negative controls for unresolved endpoints, unknown predicates, missing evidence and accidental promotion."
+      ],
+      "acceptanceCriteria": [
+        "A valid proposal is published only in the proposal register and never in the accepted edge array.",
+        "Invalid, incomplete and self-promoting proposals are rejected deterministically.",
+        "A review decision records reviewer provenance, basis, inference limit, date and predecessor state.",
+        "Rejected and superseded records remain retrievable."
+      ],
+      "stopConditions": [
+        "Stop if proposal history cannot remain append-only or if review provenance cannot be represented without overwriting prior states.",
+        "Stop if any ingestion route can write directly to the accepted graph."
+      ]
+    },
+    {
+      "id": "atlas-step-projection-calibration",
+      "priority": 2,
+      "state": "ready",
+      "title": "Calibrate projection weight and taxonomy legibility",
+      "purpose": "Make the first visual impression distinguish direct inter-release evidence from registry-derived navigation and make broad, low-discrimination labels visibly interpretable.",
+      "dependencies": [],
+      "deliverables": [
+        "A tested direct-inter-release projection alongside the existing programme and method views.",
+        "Visible working-taxonomy status, edge-composition counts and method prevalence.",
+        "A documented lineage eligibility rule requiring a reciprocal lineage identifier and, for a non-root member, an evidential parent link.",
+        "A design note on representing machine-checked reciprocity as an evidence attribute rather than a replacement for knowledge status."
+      ],
+      "acceptanceCriteria": [
+        "The initial projection does not make registry-derived density appear to be direct inter-release evidence.",
+        "Ubiquitous methods and singleton clusters carry enough prevalence or scope context to prevent over-interpretation.",
+        "Every projection reconciles exactly with the canonical graph and preserves the complete nonvisual register."
+      ],
+      "stopConditions": [
+        "Do not remove programme or method navigation merely to make the graph look sparse.",
+        "Stop if a projection requires a second relationship ontology or changes accepted graph semantics."
+      ]
+    },
+    {
+      "id": "atlas-step-discovery-pilot",
+      "priority": 3,
+      "state": "blocked",
+      "title": "Run a bounded relationship-discovery pilot",
+      "purpose": "Test whether multiple transparent retrieval routes can nominate useful hidden connections at a tolerable false-proposal burden.",
+      "dependencies": [
+        "atlas-step-proposal-intake"
+      ],
+      "deliverables": [
+        "A frozen-corpus candidate generator using separately reported citation, symbolic, shared-object and semantic-retrieval routes.",
+        "Route-specific evidence rather than one opaque credibility score.",
+        "A proposal-only output with no power to modify accepted relationships."
+      ],
+      "acceptanceCriteria": [
+        "A frozen hidden-link benchmark and lexically similar negative controls are registered before evaluation.",
+        "Recovery, false-proposal burden and reviewer time are reported separately.",
+        "Every candidate includes the strongest plausible non-relationship explanation."
+      ],
+      "stopConditions": [
+        "Stop if the benchmark cannot be frozen independently of the generator.",
+        "Stop if candidate generation cannot be isolated from accepted graph production.",
+        "Stop or narrow the route if review burden outweighs useful recoveries."
+      ]
+    },
+    {
+      "id": "atlas-step-review-workbench",
+      "priority": 4,
+      "state": "blocked",
+      "title": "Add a proposal-review workbench",
+      "purpose": "Let reviewers inspect a proposed edge, its evidence, contrary explanation and full decision history without confusing it with accepted knowledge.",
+      "dependencies": [
+        "atlas-step-proposal-intake"
+      ],
+      "deliverables": [
+        "A distinct proposals view with accessible nonvisual records.",
+        "Filters for awaiting-review, accepted, rejected and superseded proposals.",
+        "Links from every decision to source artefacts and review receipts."
+      ],
+      "acceptanceCriteria": [
+        "Proposal state is visible in text, structure and machine data, not colour alone.",
+        "No proposal geometry or ranking is described as evidence.",
+        "The accepted graph remains usable when the proposal layer is unavailable."
+      ],
+      "stopConditions": [
+        "Stop if the interface visually collapses proposed and accepted relationships.",
+        "Stop if a no-JavaScript or nonvisual reviewer cannot retrieve the same decision record."
+      ]
+    },
+    {
+      "id": "atlas-step-agent-queries",
+      "priority": 5,
+      "state": "watch",
+      "title": "Add bounded agent query surfaces when use cases justify them",
+      "purpose": "Reduce token and reconstruction cost for agents seeking neighbourhoods, dependencies, methods or unresolved proposals without replacing the canonical graph export.",
+      "dependencies": [],
+      "deliverables": [
+        "Documented filtered-query patterns or endpoints with stable identifiers and pagination.",
+        "Responses that always carry source pointers, status and inference limits."
+      ],
+      "acceptanceCriteria": [
+        "A demonstrated agent task is materially cheaper than retrieving the complete graph.",
+        "Filtered responses reconcile exactly with the canonical graph and proposal register."
+      ],
+      "stopConditions": [
+        "Defer while the complete graph remains small and cheaper to retrieve.",
+        "Stop if query convenience creates a second semantic source of truth."
+      ]
+    },
+    {
+      "id": "atlas-step-scale-renderer",
+      "priority": 6,
+      "state": "watch",
+      "title": "Reassess the renderer at catalogue scale",
+      "purpose": "Preserve usable navigation as the graph grows without making a visualization library part of the evidence model.",
+      "dependencies": [],
+      "deliverables": [
+        "Repeated desktop, mobile, keyboard and performance comparisons against the dependency-free SVG.",
+        "A bounded evaluation of Cytoscape.js or Sigma.js plus Graphology only if thresholds are crossed."
+      ],
+      "acceptanceCriteria": [
+        "The current renderer remains the default until measured usability or performance degrades.",
+        "Any replacement consumes the same canonical JSON and preserves the nonvisual register."
+      ],
+      "stopConditions": [
+        "Do not migrate for aesthetic preference alone.",
+        "Reassess when visible nodes exceed 250, interaction latency becomes material, or accessibility regresses."
+      ]
+    },
+    {
+      "id": "atlas-step-outcome-evaluation",
+      "priority": 7,
+      "state": "ready",
+      "title": "Measure whether the Atlas reduces rediscovery and reconstruction cost",
+      "purpose": "Test the Atlas as a research tool without inferring value from page views, graph size or proposal volume.",
+      "dependencies": [],
+      "deliverables": [
+        "Prospective records of qualifying discovery, replay, reuse, abandoned duplicate routes and reviewer effort.",
+        "A comparison plan aligned with the open-evidence-reuse hypothesis in the IBE ledger."
+      ],
+      "acceptanceCriteria": [
+        "Qualifying outcomes, comparator, observation window and missingness are registered before analysis.",
+        "Producer use, unaffiliated use and superficial mentions remain separate.",
+        "Null, adverse and abandoned outcomes remain in the denominator."
+      ],
+      "stopConditions": [
+        "Do not claim research acceleration from traffic, catalogue growth or internal reuse alone.",
+        "Stop causal interpretation if selection, visibility and correlated lineage reuse cannot be addressed."
+      ]
+    }
+  ],
+  "reviewPolicy": {
+    "cadence": "Review on maintainer request and at least monthly while active; also review after five added releases, the first submitted proposal, a material objection or correction, or a renderer threshold event.",
+    "nextScheduledReview": "2026-09-15",
+    "triggers": [
+      "maintainer-request",
+      "five-releases-added",
+      "proposal-submitted",
+      "material-objection-or-correction",
+      "renderer-threshold-crossed",
+      "monthly-review-due"
+    ],
+    "checklist": [
+      "Rebuild the graph and compare release, method, cluster, lineage, accepted-edge and proposal counts with the prior review.",
+      "Confirm every release and accepted relationship still resolves to its declared source record.",
+      "Sample accepted edges across predicates and recheck basis and inference limits against source artefacts.",
+      "Inspect every new, awaiting, rejected and superseded proposal without promoting similarity to fact.",
+      "Review new external citations, objections, corrections and reproductions that may change a relationship basis.",
+      "Assess accessibility, mobile layout, graph performance and agent retrieval cost.",
+      "Record decisions, unresolved questions, observed regressions and one exact next action in a new review-log entry."
+    ],
+    "recordRule": "Append a dated review-log entry. Do not rewrite a prior review, delete a rejected proposal, or change an accepted relationship without the repository's normal additive evidence and publication gates."
+  },
+  "reviewLog": [
+    {
+      "reviewId": "atlas-review-2026-08-15-baseline",
+      "reviewedAt": "2026-08-15",
+      "trigger": "initial-roadmap-record",
+      "reviewer": "Evidence Press producer workflow",
+      "provenanceNote": "Producer-side baseline review against the repository source graph and publication gates.",
+      "baseline": {
+        "releaseCount": 28,
+        "acceptedRelationshipCount": 175,
+        "publishedProposalCount": 0
+      },
+      "observations": [
+        "The first source-driven Atlas is live with accepted edges generated from declared repository records.",
+        "The proposal register is structurally present but empty.",
+        "No discovery model or similarity route currently contributes accepted or proposed relationships.",
+        "The current graph remains below the renderer reassessment threshold."
+      ],
+      "decision": "continue",
+      "nextAction": "Implement fail-closed proposal intake, validation and append-only review receipts before running relationship-discovery experiments."
+    },
+    {
+      "reviewId": "atlas-review-2026-08-15-fable-comment",
+      "reviewedAt": "2026-08-15",
+      "trigger": "user-supplied-external-model-comment",
+      "reviewer": "Anthropic Fable, as identified by the maintainer",
+      "provenanceNote": "The maintainer supplied the review text. The exact model version, prompt and run record were not independently established.",
+      "baseline": {
+        "releaseCount": 28,
+        "acceptedRelationshipCount": 175,
+        "publishedProposalCount": 0
+      },
+      "observations": [
+        "The reviewer independently reconciled 13 methods, 13 clusters, 2 lineages, 28 release assignments and all 175 accepted edges from the public registry and Atlas.",
+        "The current default programme projection already excludes 135 uses-method edges, but 35 of its 40 visible edges are cluster or lineage memberships and only 5 are direct inter-release links.",
+        "The prevalence concern is supported by the source registry: adversarial-controls is assigned to 20 of 28 releases and structural-compression to 18 of 28.",
+        "The proposed Polydegree lineage is not eligible under the registered rule because the successor declares an evidential parent link but its reciprocal lineageId is null; the public explanation should surface that rule.",
+        "A reciprocity check could add useful evidence, but reciprocity should remain separate from the asserted, computed and proposed knowledge-status axis."
+      ],
+      "decision": "change-priority",
+      "nextAction": "Keep fail-closed proposal intake first, then test an evidence-calibrated projection and surface taxonomy status, prevalence and lineage eligibility before the discovery pilot."
+    }
+  ]
+}
