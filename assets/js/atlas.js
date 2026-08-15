@@ -267,9 +267,8 @@
       row.hidden = !(modeMatch && textMatch);
     });
     proposalRows.forEach(function (row) {
-      var modeMatch = state.mode === 'proposals';
       var textMatch = !q || row.textContent.toLowerCase().indexOf(q) !== -1;
-      row.hidden = !(modeMatch && textMatch);
+      row.hidden = !textMatch;
     });
   }
 

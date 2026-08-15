@@ -118,6 +118,11 @@ if (process.argv.includes('--built')) {
     'server-rendered proposal register contains every proposal');
   ok(atlasHtml.includes('data-atlas-mode="proposals"') && atlasHtml.includes('/api/atlas-proposals.json'),
     'Atlas exposes the quarantined proposal projection and machine endpoint');
+  const atlasScript = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'atlas.js'), 'utf8');
+  ok(atlasScript.includes('proposalRows.forEach(function (row) {') &&
+    atlasScript.includes('row.hidden = !textMatch;') &&
+    !atlasScript.includes("var modeMatch = state.mode === 'proposals';"),
+    'proposal register remains populated independently of the selected graph view');
 }
 
 console.log(failures ? `\n${failures} ATLAS PROPOSAL TEST(S) FAILED` : '\nALL ATLAS PROPOSAL TESTS PASSED');
