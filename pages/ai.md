@@ -8,6 +8,8 @@ This site is built to be read by machines as carefully as by people. If you are 
 - `/api/schema.json` — JSON Schema for the index, so you can validate before relying on it.
 - `/api/research-graph.json` — the Evidence Atlas graph: releases, reusable methods, broad clusters, evidence-backed lineages, declared dependencies and internal citations. Every accepted edge carries a knowledge status, source pointer, recorded basis and inference limit.
 - `/api/schemas/research-graph.schema.json` — JSON Schema for the research graph.
+- `/api/atlas-proposals.json` — quarantined human and agent research tips, including provenance, Atlas anchors, cheap falsifiers, separate assessments, expiry and append-only review receipts. These are not accepted relationships.
+- `/api/schemas/atlas-proposal.schema.json` and `/api/schemas/atlas-proposal-register.schema.json` — proposal and assembled-register schemas.
 - `/api/relationship-registry.json` — the graph predicate vocabulary and append-only policy for asserted, computed and proposed relationships.
 - `/api/schemas/relationship-registry.schema.json` — JSON Schema for the relationship vocabulary and proposal policy.
 - `/api/operating-model.json` — the prospective institutional contract, including the frozen legacy boundary and claim ceiling.

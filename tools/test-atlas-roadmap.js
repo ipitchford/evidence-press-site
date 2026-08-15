@@ -34,5 +34,15 @@ reordered.nextSteps[1].priority = 0;
 ok(validateAtlasRoadmap(reordered).some(error => error.includes('strictly increasing priority')),
   'negative control rejects priority-order drift');
 
+const staleProposalBaseline = JSON.parse(JSON.stringify(roadmap));
+staleProposalBaseline.currentBaseline.publishedProposalCount = 0;
+ok(validateAtlasRoadmap(staleProposalBaseline).some(error => error.includes('at least one published proposal')),
+  'negative control rejects completed intake with a stale zero-proposal baseline');
+
+const prematureDiscovery = JSON.parse(JSON.stringify(roadmap));
+prematureDiscovery.nextSteps.find(step => step.id === 'atlas-step-proposal-intake').state = 'ready';
+ok(validateAtlasRoadmap(prematureDiscovery).some(error => error.includes('cannot be ready')),
+  'negative control rejects ready discovery before intake completion');
+
 console.log(failures ? `\n${failures} ATLAS ROADMAP TEST(S) FAILED` : '\nALL ATLAS ROADMAP TESTS PASSED');
 process.exitCode = failures ? 1 : 0;

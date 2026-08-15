@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/atlas-proposal-register.schema.json",
+  "title": "Evidence Atlas proposal register",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "recordType", "registerId", "generatedFrom", "claimCeiling",
+    "acceptedGraphBoundary", "policy", "stats", "proposals"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "recordType": { "const": "evidence-atlas-proposal-register" },
+    "registerId": { "type": "string", "pattern": "^ep-proposal-register:sha256:[a-f0-9]{64}$" },
+    "generatedFrom": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+    "claimCeiling": { "type": "string", "minLength": 1 },
+    "acceptedGraphBoundary": { "type": "string", "minLength": 1 },
+    "policy": { "type": "object" },
+    "stats": {
+      "type": "object", "additionalProperties": false,
+      "required": ["total", "byState", "byKind"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "byState": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "byKind": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+      }
+    },
+    "proposals": {
+      "type": "array",
+      "items": { "$ref": "atlas-proposal.schema.json" }
+    }
+  }
+}

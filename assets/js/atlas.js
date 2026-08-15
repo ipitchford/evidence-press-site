@@ -9,23 +9,28 @@
   var search = document.getElementById('atlas-search');
   var status = document.getElementById('atlas-status');
   var reset = document.getElementById('atlas-reset');
+  var stageTitle = document.getElementById('atlas-stage-title');
+  var stageNote = document.getElementById('atlas-stage-note');
   var modeButtons = Array.prototype.slice.call(document.querySelectorAll('[data-atlas-mode]'));
   var tableRows = Array.prototype.slice.call(document.querySelectorAll('[data-atlas-edge-row]'));
+  var proposalRows = Array.prototype.slice.call(document.querySelectorAll('[data-atlas-proposal-row]'));
   var NS = 'http://www.w3.org/2000/svg';
   var WIDTH = 1200;
   var HEIGHT = 720;
-  var state = { graph: null, mode: 'direct', selectedNode: null, selectedEdge: null, query: '' };
+  var state = { graph: null, proposals: null, mode: 'direct', selectedNode: null, selectedEdge: null, query: '' };
   var modeTypes = {
     direct: ['release'],
     structure: ['release', 'cluster', 'lineage'],
     methods: ['release', 'method'],
-    all: ['release', 'method', 'cluster', 'lineage']
+    all: ['release', 'method', 'cluster', 'lineage'],
+    proposals: ['proposal', 'release', 'method', 'cluster', 'lineage']
   };
   var modePredicates = {
     direct: null,
     structure: ['member-of-cluster', 'member-of-lineage', 'extends-result', 'reuses-method', 'cites-related-release'],
     methods: ['uses-method'],
-    all: null
+    all: null,
+    proposals: ['proposal-anchor']
   };
 
   function element(name, attrs, text) {
@@ -42,11 +47,40 @@
   }
 
   function nodeCode(node, indexByType) {
-    var prefix = { release: 'R', method: 'M', cluster: 'C', lineage: 'L' }[node.type] || '?';
+    var prefix = { release: 'R', method: 'M', cluster: 'C', lineage: 'L', proposal: 'P' }[node.type] || '?';
     return prefix + String(indexByType[node.type].indexOf(node.id) + 1).padStart(2, '0');
   }
 
   function visibleGraph() {
+    if (state.mode === 'proposals') {
+      var records = state.proposals ? state.proposals.proposals : [];
+      var proposalNodes = records.map(function (proposal) {
+        return {
+          id: proposal.proposalId, type: 'proposal', label: proposal.title,
+          description: proposal.summary, status: proposal.currentState,
+          url: '/api/atlas-proposals.json', proposal: proposal
+        };
+      });
+      var anchorIds = new Set();
+      records.forEach(function (proposal) {
+        proposal.atlasAnchors.forEach(function (anchor) { anchorIds.add(anchor.nodeId); });
+      });
+      var anchorNodes = state.graph.nodes.filter(function (node) { return anchorIds.has(node.id); });
+      var proposalEdges = [];
+      records.forEach(function (proposal) {
+        proposal.atlasAnchors.forEach(function (anchor, index) {
+          proposalEdges.push({
+            id: 'proposal-anchor:' + proposal.proposalId.slice(-16) + ':' + index,
+            source: proposal.proposalId, target: anchor.nodeId, predicate: 'proposal-anchor',
+            knowledgeStatus: 'proposed', construction: 'quarantined-navigation-anchor',
+            basis: anchor.basis,
+            inferenceLimit: 'This anchor explains proposal placement only. It is not an accepted relationship, research endorsement or evidence of novelty.',
+            sourceRefs: proposal.sourceRefs
+          });
+        });
+      });
+      return { nodes: proposalNodes.concat(anchorNodes), edges: proposalEdges };
+    }
     var types = modeTypes[state.mode];
     var predicates = modePredicates[state.mode];
     var nodes = state.graph.nodes.filter(function (node) { return types.indexOf(node.type) !== -1; });
@@ -80,6 +114,9 @@
   }
 
   function shapeFor(node, x, y) {
+    if (node.type === 'proposal') {
+      return element('rect', { class: 'node-shape', x: x - 19, y: y - 19, width: 38, height: 38, rx: 19 });
+    }
     if (node.type === 'lineage') {
       return element('polygon', { class: 'node-shape', points: [x + ',' + (y - 17), (x + 17) + ',' + y, x + ',' + (y + 17), (x - 17) + ',' + y].join(' ') });
     }
@@ -94,12 +131,18 @@
     if (!window.history || !window.history.replaceState) return;
     var url = new URL(window.location.href);
     url.searchParams.set('view', state.mode);
-    if (state.selectedNode) url.searchParams.set('node', state.selectedNode); else url.searchParams.delete('node');
+    if (state.selectedNode && state.selectedNode.indexOf('ep-proposal:') === 0) {
+      url.searchParams.set('proposal', state.selectedNode); url.searchParams.delete('node');
+    } else {
+      url.searchParams.delete('proposal');
+      if (state.selectedNode) url.searchParams.set('node', state.selectedNode); else url.searchParams.delete('node');
+    }
     if (state.selectedEdge) url.searchParams.set('edge', state.selectedEdge); else url.searchParams.delete('edge');
     window.history.replaceState({}, '', url.pathname + '?' + url.searchParams.toString());
   }
 
   function relationLabel(edge) {
+    if (edge.predicate === 'proposal-anchor') return 'proposal anchor';
     var predicate = state.graph.predicates.find(function (item) { return item.id === edge.predicate; });
     return predicate ? predicate.label : edge.predicate;
   }
@@ -118,10 +161,12 @@
   }
 
   function renderInspectorNode(node) {
-    var relations = state.graph.edges.filter(function (edge) { return edge.source === node.id || edge.target === node.id; });
+    if (node.type === 'proposal') return renderInspectorProposal(node.proposal);
+    var current = visibleGraph();
+    var relations = current.edges.filter(function (edge) { return edge.source === node.id || edge.target === node.id; });
     var links = relations.slice(0, 12).map(function (edge) {
       var otherId = edge.source === node.id ? edge.target : edge.source;
-      var other = state.graph.nodes.find(function (item) { return item.id === otherId; });
+      var other = current.nodes.find(function (item) { return item.id === otherId; });
       return '<button type="button" data-inspect-edge="' + esc(edge.id) + '">' +
         esc(relationLabel(edge)) + ' · ' + esc(other ? nodeLabel(other) : otherId) + '</button>';
     }).join('');
@@ -137,17 +182,49 @@
         (node.statementFingerprint ? '<dt>Statement</dt><dd><code>' + esc(node.statementFingerprint) + '</code></dd>' : '') +
         '<dt>Connections</dt><dd>' + relations.length + '</dd>' +
       '</dl><p><a href="' + esc(node.url) + '">Open the source record →</a></p>' +
-      '<div class="atlas-neighbours"><h3>Inspect connections</h3>' + (links || '<p>No accepted connection in this view.</p>') + '</div>';
+      '<div class="atlas-neighbours"><h3>Inspect connections</h3>' + (links || '<p>No connection in this view.</p>') + '</div>';
     Array.prototype.slice.call(inspector.querySelectorAll('[data-inspect-edge]')).forEach(function (button) {
       button.addEventListener('click', function () { selectEdge(button.getAttribute('data-inspect-edge')); });
     });
   }
 
+  function renderInspectorProposal(proposal) {
+    var anchors = proposal.atlasAnchors.map(function (anchor) {
+      var node = state.graph.nodes.find(function (item) { return item.id === anchor.nodeId; });
+      return '<li><button type="button" data-inspect-node="' + esc(anchor.nodeId) + '">' +
+        esc(node ? nodeLabel(node) : anchor.nodeId) + '</button> — ' + esc(anchor.basis) + '</li>';
+    }).join('');
+    var refs = proposal.sourceRefs.map(function (ref) {
+      var href = /^https:\/\//.test(ref) ? ref : 'https://github.com/ipitchford/evidence-press-site/blob/main/' + ref;
+      return '<li><a href="' + esc(href) + '">' + esc(ref) + '</a></li>';
+    }).join('');
+    inspector.innerHTML = '<p class="eyebrow">quarantined proposal · ' + esc(proposal.currentState.replace(/-/g, ' ')) + '</p>' +
+      '<h2>' + esc(proposal.title) + '</h2><p><strong>Question.</strong> ' + esc(proposal.question) + '</p>' +
+      '<p>' + esc(proposal.summary) + '</p>' +
+      '<p class="atlas-limit"><strong>Cheapest falsifier.</strong> ' + esc(proposal.cheapFalsifier) + '</p>' +
+      '<dl><dt>Kind</dt><dd>' + esc(proposal.kind.replace(/-/g, ' ')) + '</dd>' +
+      '<dt>Prior-art audit</dt><dd>' + esc(proposal.priorArtStatus.replace(/-/g, ' ')) + '</dd>' +
+      '<dt>Novelty</dt><dd>' + esc(proposal.assessments.novelty) + '</dd>' +
+      '<dt>Importance</dt><dd>' + esc(proposal.assessments.importance) + '</dd>' +
+      '<dt>Tractability</dt><dd>' + esc(proposal.assessments.tractability) + '</dd>' +
+      '<dt>Review receipts</dt><dd>' + proposal.decisionReceipts.length + '</dd></dl>' +
+      '<p class="atlas-limit"><strong>Boundary.</strong> A displayed proposal is not an accepted relationship, endorsed priority, novelty finding or commitment to investigate.</p>' +
+      '<div class="atlas-neighbours"><h3>Navigation anchors</h3><ul>' + anchors + '</ul>' +
+      '<h3>Source records</h3><ul>' + refs + '</ul></div>';
+    Array.prototype.slice.call(inspector.querySelectorAll('[data-inspect-node]')).forEach(function (button) {
+      button.addEventListener('click', function () { selectNode(button.getAttribute('data-inspect-node')); });
+    });
+  }
+
   function renderInspectorEdge(edge) {
-    var sourceNode = state.graph.nodes.find(function (node) { return node.id === edge.source; });
-    var targetNode = state.graph.nodes.find(function (node) { return node.id === edge.target; });
-    var refs = edge.sourceRefs.map(function (ref) { return '<li><a href="' + esc(ref) + '">' + esc(ref) + '</a></li>'; }).join('');
-    inspector.innerHTML = '<p class="eyebrow">' + esc(knowledgeStatusLabel(edge.knowledgeStatus)) + ' relationship · ' + esc(edge.id) + '</p>' +
+    var current = visibleGraph();
+    var sourceNode = current.nodes.find(function (node) { return node.id === edge.source; });
+    var targetNode = current.nodes.find(function (node) { return node.id === edge.target; });
+    var refs = edge.sourceRefs.map(function (ref) {
+      var href = /^https:\/\//.test(ref) ? ref : 'https://github.com/ipitchford/evidence-press-site/blob/main/' + ref;
+      return '<li><a href="' + esc(href) + '">' + esc(ref) + '</a></li>';
+    }).join('');
+    inspector.innerHTML = '<p class="eyebrow">' + esc(knowledgeStatusLabel(edge.knowledgeStatus)) + (edge.predicate === 'proposal-anchor' ? ' navigation anchor' : ' relationship') + ' · ' + esc(edge.id) + '</p>' +
       '<h2>' + esc(sourceNode ? nodeLabel(sourceNode) : edge.source) + ' <span aria-hidden="true">→</span> ' + esc(targetNode ? nodeLabel(targetNode) : edge.target) + '</h2>' +
       '<dl><dt>Relation</dt><dd>' + esc(relationLabel(edge)) + '</dd><dt>Construction</dt><dd>' + esc(edge.construction.replace(/-/g, ' ')) + '</dd></dl>' +
       '<p><strong>Recorded basis.</strong> ' + esc(edge.basis) + '</p>' +
@@ -161,9 +238,10 @@
   }
 
   function selectNode(id, updateUrl) {
-    var node = state.graph.nodes.find(function (item) { return item.id === id; });
+    var node = visibleGraph().nodes.find(function (item) { return item.id === id; }) || state.graph.nodes.find(function (item) { return item.id === id; });
     if (!node) return;
-    if (modeTypes[state.mode].indexOf(node.type) === -1) state.mode = node.type === 'method' ? 'methods' : 'structure';
+    if (node.type === 'proposal') state.mode = 'proposals';
+    else if (state.mode !== 'proposals' && modeTypes[state.mode].indexOf(node.type) === -1) state.mode = node.type === 'method' ? 'methods' : 'structure';
     state.selectedNode = id;
     state.selectedEdge = null;
     render();
@@ -172,7 +250,7 @@
   }
 
   function selectEdge(id, updateUrl) {
-    var edge = state.graph.edges.find(function (item) { return item.id === id; });
+    var edge = visibleGraph().edges.find(function (item) { return item.id === id; }) || state.graph.edges.find(function (item) { return item.id === id; });
     if (!edge) return;
     state.selectedEdge = id;
     state.selectedNode = null;
@@ -188,6 +266,11 @@
       var textMatch = !q || row.textContent.toLowerCase().indexOf(q) !== -1;
       row.hidden = !(modeMatch && textMatch);
     });
+    proposalRows.forEach(function (row) {
+      var modeMatch = state.mode === 'proposals';
+      var textMatch = !q || row.textContent.toLowerCase().indexOf(q) !== -1;
+      row.hidden = !(modeMatch && textMatch);
+    });
   }
 
   function render() {
@@ -196,12 +279,14 @@
     var nodeById = new Map(current.nodes.map(function (node) { return [node.id, node]; }));
     var indexByType = {};
     Object.keys(modeTypes).forEach(function () {});
-    ['release', 'method', 'cluster', 'lineage'].forEach(function (type) {
-      indexByType[type] = state.graph.nodes.filter(function (node) { return node.type === type; }).map(function (node) { return node.id; });
+    ['release', 'method', 'cluster', 'lineage', 'proposal'].forEach(function (type) {
+      indexByType[type] = current.nodes.filter(function (node) { return node.type === type; }).map(function (node) { return node.id; });
     });
     while (svg.firstChild) svg.removeChild(svg.firstChild);
     svg.appendChild(element('title', { id: 'atlas-svg-title' }, 'Evidence Atlas relationship map'));
-    svg.appendChild(element('desc', { id: 'atlas-svg-desc' }, 'Interactive projection of accepted release, method, cluster and lineage relationships. Use the relationship register below for a complete nonvisual representation.'));
+    svg.appendChild(element('desc', { id: 'atlas-svg-desc' }, state.mode === 'proposals'
+      ? 'Interactive quarantined projection of research proposals and their navigation anchors. Proposal lines are not accepted relationships.'
+      : 'Interactive projection of accepted release, method, cluster and lineage relationships. Use the relationship register below for a complete nonvisual representation.'));
     var grid = element('g', { 'aria-hidden': 'true' });
     for (var x = 100; x < WIDTH; x += 100) grid.appendChild(element('line', { class: 'atlas-gridline', x1: x, y1: 0, x2: x, y2: HEIGHT }));
     for (var y = 60; y < HEIGHT; y += 60) grid.appendChild(element('line', { class: 'atlas-gridline', x1: 0, y1: y, x2: WIDTH, y2: y }));
@@ -223,6 +308,7 @@
       var a = coords[edge.source]; var b = coords[edge.target];
       if (!a || !b) return;
       var classes = ['atlas-edge'];
+      if (state.mode === 'proposals') classes.push('is-proposed');
       if (relatedIds.size && !relatedIds.has(edge.id)) classes.push('is-dimmed');
       if (relatedIds.has(edge.id)) classes.push('is-related');
       if (state.selectedEdge === edge.id) classes.push('is-selected');
@@ -260,10 +346,15 @@
     svg.appendChild(nodeLayer);
 
     modeButtons.forEach(function (button) { button.setAttribute('aria-pressed', button.getAttribute('data-atlas-mode') === state.mode ? 'true' : 'false'); });
+    stageTitle.textContent = state.mode === 'proposals' ? 'Quarantined proposal projection' : 'Accepted relationship projection';
+    stageNote.textContent = state.mode === 'proposals'
+      ? 'Dashed anchors explain placement only · suggestions are not accepted evidence'
+      : 'Equal-sized release nodes · stable layout · select to inspect';
     var matchesCount = query ? current.nodes.filter(function (node) {
       return (nodeLabel(node) + ' ' + node.label + ' ' + node.description + ' ' + node.id).toLowerCase().indexOf(query) !== -1;
     }).length : 0;
-    status.textContent = current.nodes.length + ' nodes and ' + current.edges.length + ' accepted relationships in this view' +
+    var connectionLabel = state.mode === 'proposals' ? 'proposal navigation anchors' : 'accepted relationships';
+    status.textContent = current.nodes.length + ' nodes and ' + current.edges.length + ' ' + connectionLabel + ' in this view' +
       (query ? '; ' + matchesCount + ' node' + (matchesCount === 1 ? '' : 's') + ' match “' + state.query.trim() + '”.' : '.');
     renderTable(new Set(current.edges.map(function (edge) { return edge.id; })));
   }
@@ -298,12 +389,19 @@
     return response.json();
   }).then(function (graph) {
     state.graph = graph;
+    return fetch('/api/atlas-proposals.json', { headers: { accept: 'application/json' } }).then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.json();
+    });
+  }).then(function (proposals) {
+    state.proposals = proposals;
     var params = new URL(window.location.href).searchParams;
     var requestedMode = params.get('view');
     if (requestedMode === 'programmes') requestedMode = 'structure';
     if (modeTypes[requestedMode]) state.mode = requestedMode;
     render();
-    if (params.get('edge')) selectEdge(params.get('edge'), false);
+    if (params.get('proposal')) { state.mode = 'proposals'; selectNode(params.get('proposal'), false); }
+    else if (params.get('edge')) selectEdge(params.get('edge'), false);
     else if (params.get('node')) selectNode(params.get('node'), false);
   }).catch(function () {
     status.textContent = 'The interactive projection could not load. The complete relationship register below remains available.';

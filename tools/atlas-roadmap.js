@@ -76,6 +76,12 @@ function validateAtlasRoadmap(roadmap) {
   if (!discovery || !(discovery.dependencies || []).includes('atlas-step-proposal-intake')) {
     errors.push('discovery pilot must depend on proposal intake');
   }
+  if (intake && intake.state === 'complete' && roadmap.currentBaseline.publishedProposalCount < 1) {
+    errors.push('completed proposal intake requires at least one published proposal in the current baseline');
+  }
+  if (discovery && discovery.state === 'ready' && (!intake || intake.state !== 'complete')) {
+    errors.push('discovery pilot cannot be ready before proposal intake is complete');
+  }
   return errors;
 }
 

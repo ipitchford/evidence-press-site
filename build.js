@@ -18,6 +18,7 @@ const {
   validateResearchGraph
 } = require('./tools/research-graph');
 const { loadAtlasRoadmap, validateAtlasRoadmap } = require('./tools/atlas-roadmap');
+const { loadAtlasProposals, validateRegister: validateAtlasProposalRegister } = require('./tools/atlas-proposals');
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
@@ -29,6 +30,8 @@ const ATLAS_ROADMAP = ATLAS_ROADMAP_ARTIFACTS.roadmap;
 const ATLAS_ROADMAP_SCHEMA = ATLAS_ROADMAP_ARTIFACTS.schema;
 const ATLAS_ROADMAP_ERRORS = validateAtlasRoadmap(ATLAS_ROADMAP);
 if (ATLAS_ROADMAP_ERRORS.length) throw new Error(`Atlas roadmap invalid: ${ATLAS_ROADMAP_ERRORS.join('; ')}`);
+const ATLAS_PROPOSAL_SCHEMA = JSON.parse(fs.readFileSync(path.join(ROOT, 'schemas', 'atlas-proposal.schema.json'), 'utf8'));
+const ATLAS_PROPOSAL_REGISTER_SCHEMA = JSON.parse(fs.readFileSync(path.join(ROOT, 'schemas', 'atlas-proposal-register.schema.json'), 'utf8'));
 const METHOD_BY_ID = new Map(OPERATING_ARTIFACTS.registry.methods.map(method => [method.id, method]));
 const IBE_BY_ID = new Map(OPERATING_ARTIFACTS.ledger.hypotheses.map(hypothesis => [hypothesis.id, hypothesis]));
 const WORK_ATTEMPT_BY_ID = new Map(OPERATING_ARTIFACTS.workLedger.attempts.map(attempt => [attempt.attemptId, attempt]));
@@ -601,6 +604,15 @@ const RESEARCH_GRAPH_ERRORS = validateResearchGraph(RESEARCH_GRAPH, {
 });
 if (RESEARCH_GRAPH_ERRORS.length) {
   throw new Error(`Evidence Atlas graph failed validation:\n- ${RESEARCH_GRAPH_ERRORS.join('\n- ')}`);
+}
+const ATLAS_PROPOSAL_ARTIFACTS = loadAtlasProposals(ROOT, RESEARCH_GRAPH);
+if (ATLAS_PROPOSAL_ARTIFACTS.errors.length) {
+  throw new Error(`Evidence Atlas proposal register failed validation:\n- ${ATLAS_PROPOSAL_ARTIFACTS.errors.join('\n- ')}`);
+}
+const ATLAS_PROPOSALS = ATLAS_PROPOSAL_ARTIFACTS.register;
+const ATLAS_PROPOSAL_REGISTER_ERRORS = validateAtlasProposalRegister(ATLAS_PROPOSALS);
+if (ATLAS_PROPOSAL_REGISTER_ERRORS.length) {
+  throw new Error(`Evidence Atlas assembled proposal register failed validation:\n- ${ATLAS_PROPOSAL_REGISTER_ERRORS.join('\n- ')}`);
 }
 
 
@@ -1290,6 +1302,21 @@ function atlasPage() {
       <td><a href="${escAttr(edge.sourceRefs[0])}">source record</a></td>
     </tr>`;
   }).join('\n');
+  const proposalRows = ATLAS_PROPOSALS.proposals.map(proposal => {
+    const anchorLinks = proposal.atlasAnchors.map(anchor => {
+      const node = nodeById.get(anchor.nodeId);
+      const label = node ? publicNodeLabel(node) : anchor.nodeId;
+      return `<a href="${BASE}/atlas/?view=proposals&amp;proposal=${encodeURIComponent(proposal.proposalId)}">${esc(label)}</a>`;
+    }).join(' · ');
+    return `<tr data-atlas-proposal-row="${escAttr(proposal.proposalId)}">
+      <td><a href="${BASE}/atlas/?view=proposals&amp;proposal=${encodeURIComponent(proposal.proposalId)}">${esc(proposal.title)}</a></td>
+      <td>${esc(proposal.kind.replace(/-/g, ' '))}</td>
+      <td><span class="atlas-status atlas-status-proposed">${esc(proposal.currentState.replace(/-/g, ' '))}</span></td>
+      <td>${anchorLinks}</td>
+      <td>${esc(proposal.cheapFalsifier)}</td>
+      <td>${esc(proposal.assessments.novelty)}</td>
+    </tr>`;
+  }).join('\n');
   const proseSource = fs.readFileSync(path.join(ROOT, 'pages', 'atlas.md'), 'utf8');
   const jsonld = {
     '@context': 'https://schema.org',
@@ -1315,11 +1342,24 @@ function atlasPage() {
         dateModified: RELATIONSHIP_ARTIFACTS.registry.updated,
         isPartOf: { '@id': `${BASE}/#website` },
         license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+      },
+      {
+        '@type': 'Dataset', '@id': `${url}#proposals`, name: 'Evidence Atlas proposal register',
+        description: ATLAS_PROPOSALS.claimCeiling, url: `${BASE}/api/atlas-proposals.json`,
+        distribution: [{
+          '@type': 'DataDownload', contentUrl: `${BASE}/api/atlas-proposals.json`,
+          encodingFormat: 'application/json'
+        }],
+        identifier: ATLAS_PROPOSALS.registerId,
+        dateModified: ATLAS_PROPOSALS.policy.updated,
+        isPartOf: { '@id': `${BASE}/#website` },
+        license: 'https://creativecommons.org/publicdomain/zero/1.0/'
       }
     ]
   };
   const extraHead = `<link rel="stylesheet" href="/assets/${ATLAS_CSS_ASSET}">
 <link rel="describedby" type="application/json" href="${BASE}/api/research-graph.json">
+<link rel="describedby" type="application/json" href="${BASE}/api/atlas-proposals.json">
 <link rel="alternate" type="text/markdown" href="${url}index.md">
 <script defer src="/assets/js/atlas.js?v=${ATLAS_JS_V}"></script>
 `;
@@ -1342,6 +1382,7 @@ function atlasPage() {
         <span role="listitem">${RESEARCH_GRAPH.stats.clusterCount} broad clusters</span>
         <span role="listitem">${RESEARCH_GRAPH.stats.lineageCount} evidence-backed lineages</span>
         <span role="listitem">${RESEARCH_GRAPH.stats.edgeCount} accepted relationships</span>
+        <span role="listitem">${ATLAS_PROPOSALS.stats.total} quarantined research proposal${ATLAS_PROPOSALS.stats.total === 1 ? '' : 's'}</span>
       </div>
     </div>
   </header>
@@ -1355,7 +1396,7 @@ function atlasPage() {
       <h2 id="atlas-instrument-title" class="sr-only">Interactive research relationship instrument</h2>
       <div class="atlas-toolbar">
         <div class="atlas-search">
-          <label for="atlas-search">Find a release, method or research structure</label>
+          <label for="atlas-search">Find a release, method, research structure or proposal</label>
           <input id="atlas-search" type="search" placeholder="Try Jacobian, identification, Ramsey…" autocomplete="off">
         </div>
         <div>
@@ -1365,14 +1406,14 @@ function atlasPage() {
             <button type="button" data-atlas-mode="structure" aria-pressed="false">Research structure</button>
             <button type="button" data-atlas-mode="methods" aria-pressed="false">Methods</button>
             <button type="button" data-atlas-mode="all" aria-pressed="false">All accepted</button>
-            <button type="button" disabled title="No proposed relationships are published">Proposals (0)</button>
+            <button type="button" data-atlas-mode="proposals" aria-pressed="false">Agent proposals (${ATLAS_PROPOSALS.stats.total})</button>
           </div>
         </div>
         <button class="atlas-reset" id="atlas-reset" type="button">Reset focus</button>
         <p class="atlas-toolbar-status" id="atlas-status" role="status" aria-live="polite">Loading the source graph…</p>
       </div>
       <div class="atlas-display">
-        <div class="atlas-stage-head"><strong>Accepted relationship projection</strong><span>Equal-sized release nodes · stable layout · select to inspect</span></div>
+        <div class="atlas-stage-head"><strong id="atlas-stage-title">Accepted relationship projection</strong><span id="atlas-stage-note">Equal-sized release nodes · stable layout · select to inspect</span></div>
         <div class="atlas-stage-scroll" tabindex="0" role="region" aria-label="Scrollable graph area">
           <svg id="atlas-graph" viewBox="0 0 1200 720" role="group" aria-labelledby="atlas-svg-title atlas-svg-desc">
             <title id="atlas-svg-title">Evidence Atlas relationship map</title>
@@ -1384,6 +1425,7 @@ function atlasPage() {
           <span role="listitem"><i class="atlas-swatch method" aria-hidden="true"></i> M · method</span>
           <span role="listitem"><i class="atlas-swatch cluster" aria-hidden="true"></i> C · broad cluster or cluster seed</span>
           <span role="listitem"><i class="atlas-swatch lineage" aria-hidden="true"></i> L · evidence-backed lineage</span>
+          <span role="listitem"><i class="atlas-swatch proposal" aria-hidden="true"></i> P · quarantined proposal</span>
         </div>
       </div>
       <aside class="atlas-inspector" id="atlas-inspector" aria-live="polite">
@@ -1404,7 +1446,7 @@ function atlasPage() {
         <div><dt>${RESEARCH_GRAPH.stats.singleReleaseMethodCount}</dt><dd>methods represented by one release</dd></div>
         <div><dt>${RESEARCH_GRAPH.stats.clusterSeedCount}</dt><dd>singleton cluster seeds</dd></div>
         <div><dt>${RESEARCH_GRAPH.stats.lineageRootWithoutSuccessorCount}</dt><dd>lineage roots with no successor</dd></div>
-        <div><dt>${RESEARCH_GRAPH.stats.proposedEdgeCount}</dt><dd>proposals awaiting review</dd></div>
+        <div><dt>${ATLAS_PROPOSALS.stats.byState['awaiting-review']}</dt><dd>research proposals awaiting review</dd></div>
       </dl>
     </section>
     <details class="atlas-register">
@@ -1417,16 +1459,26 @@ function atlasPage() {
         </table>
       </div>
     </details>
+    <details class="atlas-register atlas-proposal-register" open>
+      <summary>Quarantined research proposal register (${ATLAS_PROPOSALS.stats.total})</summary>
+      <p class="atlas-register-note"><strong>These are suggestions, not accepted relationships or endorsed research priorities.</strong> Each record keeps novelty, importance and tractability separate; an accepted investigation still requires a review receipt and does not enter the accepted graph.</p>
+      <div class="atlas-table-wrap">
+        <table class="atlas-table atlas-proposal-table">
+          <thead><tr><th>Proposal</th><th>Kind</th><th>State</th><th>Atlas anchors</th><th>Cheapest falsifier</th><th>Novelty</th></tr></thead>
+          <tbody>${proposalRows}</tbody>
+        </table>
+      </div>
+    </details>
     <div class="atlas-prose">${markdown(proseSource)}</div>
     <aside class="atlas-discovery">
-      <strong>Discovery queue: ${RESEARCH_GRAPH.proposalRegister.count} published proposals.</strong>
-      The schema and register are ready for candidate relationships, but this first release publishes none. Similarity will not be presented as fact.
+      <strong>Submit a research tip without adding it to the accepted graph.</strong>
+      People and agents may use the <a href="${escAttr(ATLAS_PROPOSALS.policy.intakeRoutes[0].url)}">structured GitHub issue form</a>. Issue content is untrusted intake; canonical publication requires deterministic validation and an additive review record. <a href="${BASE}/api/atlas-proposals.json">Retrieve the proposal register</a> or <a href="${BASE}/api/schemas/atlas-proposal.schema.json">validate the proposal format</a>.
     </aside>
   </div>
 </article>
 ${foot}`;
   write('atlas/index.html', html);
-  write('atlas/index.md', `---\ntitle: "Evidence Atlas"\nurl: ${url}\nlicense: CC0-1.0\nstatus: source-driven relationship map\ngraph: ${BASE}/api/research-graph.json\nschema: ${BASE}/api/schemas/research-graph.schema.json\n---\n\n# Evidence Atlas\n\n${RESEARCH_GRAPH.description}\n\n- Graph identity: ${RESEARCH_GRAPH.graphId}\n- Releases: ${RESEARCH_GRAPH.stats.releaseCount}\n- Accepted relationships: ${RESEARCH_GRAPH.stats.edgeCount} (${RESEARCH_GRAPH.stats.directInterReleaseEdgeCount} direct; ${RESEARCH_GRAPH.stats['member-of-lineageEdgeCount']} lineage; ${RESEARCH_GRAPH.stats['member-of-clusterEdgeCount']} cluster; ${RESEARCH_GRAPH.stats['uses-methodEdgeCount']} method)\n- Published proposals: ${RESEARCH_GRAPH.stats.proposedEdgeCount}\n\n${proseSource}`);
+  write('atlas/index.md', `---\ntitle: "Evidence Atlas"\nurl: ${url}\nlicense: CC0-1.0\nstatus: source-driven relationship map with quarantined proposal layer\ngraph: ${BASE}/api/research-graph.json\nproposal_register: ${BASE}/api/atlas-proposals.json\nschema: ${BASE}/api/schemas/research-graph.schema.json\n---\n\n# Evidence Atlas\n\n${RESEARCH_GRAPH.description}\n\n- Graph identity: ${RESEARCH_GRAPH.graphId}\n- Releases: ${RESEARCH_GRAPH.stats.releaseCount}\n- Accepted relationships: ${RESEARCH_GRAPH.stats.edgeCount} (${RESEARCH_GRAPH.stats.directInterReleaseEdgeCount} direct; ${RESEARCH_GRAPH.stats['member-of-lineageEdgeCount']} lineage; ${RESEARCH_GRAPH.stats['member-of-clusterEdgeCount']} cluster; ${RESEARCH_GRAPH.stats['uses-methodEdgeCount']} method)\n- Quarantined research proposals: ${ATLAS_PROPOSALS.stats.total}\n- Proposal register identity: ${ATLAS_PROPOSALS.registerId}\n\n${proseSource}`);
   write('atlas/index.json', JSON.stringify(RESEARCH_GRAPH, null, 2) + '\n');
 }
 
@@ -1682,13 +1734,14 @@ function llms() {
   const lines = [
     `# ${CONFIG.siteName}`, '',
     `> ${CONFIG.tagline}. Every release describes an unrefereed research result with an open, replayable evidence package (code, data, exact certificates, pinned environments, SHA-256 manifests) archived with a DOI. Nothing on this site is peer reviewed; each page states exactly what has and has not been verified, and lists open follow-up problems in machine-readable form.`, '',
-    `Key endpoints: full JSON index at /api/papers.json (JSON Schema at /api/schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); relationship vocabulary and proposal policy at /api/relationship-registry.json; Atlas priorities and review log at /api/atlas-roadmap.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-release Markdown at /releases/<slug>/index.md; per-release BibTeX at /releases/<slug>/cite.bib; RSS at /feed.xml; JSON Feed at /feed.json. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
+    `Key endpoints: full JSON index at /api/papers.json (JSON Schema at /api/schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); quarantined research-tip register at /api/atlas-proposals.json (schemas at /api/schemas/atlas-proposal.schema.json and /api/schemas/atlas-proposal-register.schema.json); relationship vocabulary at /api/relationship-registry.json; Atlas priorities and review log at /api/atlas-roadmap.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-release Markdown at /releases/<slug>/index.md; per-release BibTeX at /releases/<slug>/cite.bib; RSS at /feed.xml; JSON Feed at /feed.json. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
     '## Releases', '',
     ...papers.map(p => `- [${p.shortTitle}](${urlOf(p)}): ${p.oneLine} (PDF: ${p.pdfUrl || 'n/a'}; DOI: https://doi.org/${p.doi}; code: ${p.repoUrl}; status: unrefereed)`),
     '',
     '## Machine-readable', '',
     `- [papers.json](${BASE}/api/papers.json): full structured index — titles, DOIs, PDF links, verification status, provenance, key results, keywords, media, and open follow-up problems for every release`,
     `- [research-graph.json](${BASE}/api/research-graph.json): releases, methods, broad clusters, evidence-backed lineages, dependencies and internal citations, with content-derived identities, source pointers and inference limits`,
+    `- [atlas-proposals.json](${BASE}/api/atlas-proposals.json): quarantined human and agent research tips with content-derived identities, provenance, cheap falsifiers, separate assessments, expiry and append-only review receipts; suggestions are not accepted relationships`,
     `- [relationship-registry.json](${BASE}/api/relationship-registry.json): predicate meanings, knowledge-status boundaries and the additive proposal-review policy`,
     `- [atlas-roadmap.json](${BASE}/api/atlas-roadmap.json): prioritized next steps, dependencies, acceptance criteria, stop conditions, review triggers and append-only review log`,
     `- [schema.json](${BASE}/api/schema.json): JSON Schema for the index`,
@@ -1700,7 +1753,7 @@ function llms() {
     '',
     '## About', '',
     `- [About](${BASE}/about/): what these releases are, the assurance matrix, and how to independently verify or refute one`,
-    `- [Evidence Atlas](${BASE}/atlas/): interactive and accessible map of recorded research relationships; geometry is navigation, not evidence (Markdown: ${BASE}/atlas/index.md; JSON: ${BASE}/api/research-graph.json)`,
+    `- [Evidence Atlas](${BASE}/atlas/): interactive and accessible map of recorded research relationships plus a visibly quarantined proposal projection; geometry is navigation, not evidence (Markdown: ${BASE}/atlas/index.md; accepted graph: ${BASE}/api/research-graph.json; proposals: ${BASE}/api/atlas-proposals.json)`,
     `- [Operating model](${BASE}/operating-model/): the prospective doctrine for accelerating checkable work, stopping non-identified work, and publishing reusable handoffs (Markdown: ${BASE}/operating-model/index.md; JSON: ${BASE}/operating-model/index.json)`,
     `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; video: ${OBSERVATORY.video.url}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
     `- [The Case for Assurance Infrastructure](${BASE}/observatory/assurance/): why verification, not generation, binds government use of AI agents — four quantitative bounds, verification economics, research avenues, and sixteen ranked projects (Markdown: ${BASE}/observatory/assurance/index.md)`,
@@ -1837,6 +1890,7 @@ function api() {
     ['work-ledger.json', OPERATING_ARTIFACTS.workLedger],
     ['relationship-registry.json', RELATIONSHIP_ARTIFACTS.registry],
     ['atlas-roadmap.json', ATLAS_ROADMAP],
+    ['atlas-proposals.json', ATLAS_PROPOSALS],
     ['research-graph.json', RESEARCH_GRAPH]
   ];
   for (const [name, artifact] of governanceArtifacts) {
@@ -1852,6 +1906,8 @@ function api() {
     ['release-operating-model.schema.json', OPERATING_ARTIFACTS.schemas.release],
     ['relationship-registry.schema.json', RELATIONSHIP_ARTIFACTS.registrySchema],
     ['atlas-roadmap.schema.json', ATLAS_ROADMAP_SCHEMA],
+    ['atlas-proposal.schema.json', ATLAS_PROPOSAL_SCHEMA],
+    ['atlas-proposal-register.schema.json', ATLAS_PROPOSAL_REGISTER_SCHEMA],
     ['research-graph.schema.json', RELATIONSHIP_ARTIFACTS.schema]
   ];
   for (const [name, artifact] of governanceSchemas) {
