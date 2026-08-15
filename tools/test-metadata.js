@@ -218,13 +218,14 @@ for (const [dataName, schemaName, sourceData, sourceSchema] of governance) {
 
 const publicAtlasRoadmap = read('api/atlas-roadmap.json');
 const publicResearchGraph = read('api/research-graph.json');
+const publicAtlasProposals = read('api/atlas-proposals.json');
 check('Atlas roadmap baseline matches the published source graph',
   publicAtlasRoadmap.currentBaseline.releaseCount === publicResearchGraph.stats.releaseCount &&
   publicAtlasRoadmap.currentBaseline.methodCount === publicResearchGraph.stats.methodCount &&
   publicAtlasRoadmap.currentBaseline.clusterCount === publicResearchGraph.stats.clusterCount &&
   publicAtlasRoadmap.currentBaseline.lineageCount === publicResearchGraph.stats.lineageCount &&
   publicAtlasRoadmap.currentBaseline.acceptedRelationshipCount === publicResearchGraph.stats.edgeCount &&
-  publicAtlasRoadmap.currentBaseline.publishedProposalCount === publicResearchGraph.stats.proposedEdgeCount);
+  publicAtlasRoadmap.currentBaseline.publishedProposalCount === publicAtlasProposals.stats.total);
 const predicateCounts = new Map();
 for (const edge of publicResearchGraph.edges) predicateCounts.set(edge.predicate, (predicateCounts.get(edge.predicate) || 0) + 1);
 const composition = publicAtlasRoadmap.currentBaseline.relationshipComposition;
@@ -250,6 +251,16 @@ check('Atlas page surfaces working-taxonomy and reciprocal-lineage limits',
 check('Atlas defaults to a first-class direct-links projection',
   atlasHtml.includes('data-atlas-mode="direct" aria-pressed="true">Direct links</button>') &&
   atlasHtml.includes('data-atlas-mode="structure" aria-pressed="false">Research structure</button>'));
+check('Atlas keeps agent proposals in a visibly quarantined projection',
+  atlasHtml.includes('data-atlas-mode="proposals" aria-pressed="false">Agent proposals (1)</button>') &&
+  atlasHtml.includes('Quarantined research proposal register (1)') &&
+  atlasHtml.includes('These are suggestions, not accepted relationships or endorsed research priorities.'));
+check('Atlas proposal projection has a mobile-fit viewport',
+  fs.readFileSync(path.join(DIST, 'assets/js/atlas.js'), 'utf8').includes("state.mode === 'proposals' ? '310 165 580 348'") &&
+  fs.readFileSync(path.join(DIST, 'assets/atlas.css'), 'utf8').includes('#atlas-graph[data-atlas-mode="proposals"] { min-width: 0; }'));
+check('Atlas proposal API is distinct from the accepted graph',
+  publicAtlasProposals.stats.total === 1 && publicResearchGraph.stats.proposedEdgeCount === 0 &&
+  !publicResearchGraph.edges.some(edge => edge.id === publicAtlasProposals.proposals[0].proposalId));
 check('Atlas discloses exact relationship composition above the instrument',
   atlasHtml.includes('175 recorded relationships:') && atlasHtml.includes('5 direct · 7 lineage · 28 cluster · 135 method'));
 check('Atlas uses reader-facing source-declared status without changing the machine enum',

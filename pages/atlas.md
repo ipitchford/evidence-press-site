@@ -8,7 +8,7 @@ Three relationship states remain separate:
 - **Computed** — a deterministic rule has detected a structural pattern from declared inputs. Computed links are not scholarly assertions.
 - **Proposed** — a person or agent has nominated a relationship for review. Proposed links are excluded from the accepted graph.
 
-This first version contains asserted relationships only. It does not generate similarity links or hidden-dependency claims.
+The accepted graph contains source-declared relationships only. A separate quarantined proposal layer can now display human or agent research suggestions and their navigation anchors without adding them to the accepted graph. It does not generate similarity links or hidden-dependency claims.
 
 ## What the map distinguishes
 
@@ -30,7 +30,7 @@ Select any node or connection in the interactive map to inspect its basis, infer
 
 The synchronized relationship register below the map contains the same accepted edges in a conventional table. It remains usable without JavaScript and is the nonvisual alternative to the SVG map.
 
-Agents should retrieve [`research-graph.json`](/api/research-graph.json) and validate it against [`research-graph.schema.json`](/api/schemas/research-graph.schema.json). The API publishes stable node identifiers, content-derived edge identifiers, statement fingerprints, relationship status, source pointers and inference limits.
+Agents should retrieve [`research-graph.json`](/api/research-graph.json) and validate it against [`research-graph.schema.json`](/api/schemas/research-graph.schema.json). Research tips are separately available as [`atlas-proposals.json`](/api/atlas-proposals.json) and validate against the [`proposal-register schema`](/api/schemas/atlas-proposal-register.schema.json). The accepted graph API publishes stable node identifiers, content-derived edge identifiers, statement fingerprints, relationship status, source pointers and inference limits.
 
 The missingness panel is also source-derived. No edge means that no relationship is currently accepted in the registry; it does not establish that no relationship exists. Areas never searched are not enumerated until a documented discovery run supplies a defensible search boundary.
 
@@ -38,11 +38,17 @@ The current priorities, readiness gates and periodic review checklist are publis
 
 ## The discovery layer
 
+People and agents can now nominate research questions, candidate connections, replication opportunities, evidence gaps, method improvements, counterexample searches and negative tips. Each canonical proposal records its exact question, provenance, Atlas anchors, source references, cheapest useful falsifier, expected information gain, resource class, risk flags, expiry and separate novelty, importance and tractability assessments.
+
+The proposal register is append-only. A content-derived proposal identity binds its immutable intake; review receipts bind their predecessor and record each state transition. Awaiting, accepted-for-investigation, deferred, rejected, merged, superseded, completed, withdrawn and expired records remain machine-readable. Acceptance for investigation is not acceptance into the research graph.
+
+The structured [GitHub research-tip form](https://github.com/ipitchford/evidence-press-site/issues/new?template=research-tip.yml) is an intake route, not a trust boundary. Issue content remains untrusted until it is normalized into the canonical schema and passes deterministic source, anchor, identity and lifecycle checks.
+
 The next research stage can compare release statements, dependencies, citations and methods to nominate previously unrecorded connections. Those candidates should enter the **proposal register**, with an explanation and supporting sources, rather than appear as facts.
 
 Useful candidate types may include a shared lemma under different notation, an unacknowledged antecedent, a common unresolved assumption, a reusable verifier, or two negative results that block the same strategy. A candidate becomes asserted only after additive review against resolvable evidence. Rejected and superseded proposals should remain available as negative knowledge.
 
-The next implementation step is a fail-closed proposal-intake and review-receipt layer. Relationship-discovery experiments should follow only after proposals can be retained, rejected, superseded and audited without entering the accepted graph.
+Fail-closed proposal intake and review receipts are now operational. Relationship-discovery experiments remain separate future work and may emit only quarantined proposals.
 
 ## Safe reuse
 

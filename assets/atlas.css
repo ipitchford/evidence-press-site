@@ -6,6 +6,7 @@
   --atlas-violet: #6750a4;
   --atlas-gold: #9a6518;
   --atlas-coral: #a94637;
+  --atlas-proposal: #b66a19;
   --atlas-grid: #d9d4ca;
   --atlas-night: #111a22;
   --atlas-night-2: #182733;
@@ -83,6 +84,10 @@
   border-color: var(--atlas-blue); background: #eaf5fb; color: #165273;
   box-shadow: inset 0 0 0 1px var(--atlas-blue);
 }
+.atlas-view-buttons button[data-atlas-mode="proposals"][aria-pressed="true"] {
+  border-color: var(--atlas-proposal); background: #fff3df; color: #74400d;
+  box-shadow: inset 0 0 0 1px var(--atlas-proposal);
+}
 .atlas-view-buttons button:disabled { cursor: not-allowed; opacity: .55; }
 .atlas-view-buttons button:hover:not(:disabled), .atlas-reset:hover { border-color: var(--atlas-blue); }
 .atlas-toolbar button:focus-visible, .atlas-toolbar input:focus-visible,
@@ -110,6 +115,9 @@
   stroke: #e27b68; stroke-width: 2.25; stroke-dasharray: 7 5; opacity: .9;
 }
 .atlas-edge[data-predicate="cites-related-release"] { stroke-dasharray: 2 6; }
+.atlas-edge.is-proposed {
+  stroke: #efb65f; stroke-width: 2.4; stroke-dasharray: 5 7; opacity: .9;
+}
 .atlas-edge-hit { stroke: transparent; stroke-width: 13; fill: none; cursor: pointer; }
 .atlas-edge.is-dimmed, .atlas-node.is-dimmed { opacity: .08; }
 .atlas-edge.is-related { opacity: .96; stroke-width: 2.8; }
@@ -121,6 +129,9 @@
 .atlas-node[data-type="cluster"] .node-shape { fill: var(--atlas-gold); }
 .atlas-node[data-scope-status="cluster-seed"] .node-shape { stroke-dasharray: 3 2; }
 .atlas-node[data-type="lineage"] .node-shape { fill: var(--atlas-violet); }
+.atlas-node[data-type="proposal"] .node-shape {
+  fill: #8d4e12; stroke: #ffd99e; stroke-width: 2.3; stroke-dasharray: 4 3;
+}
 .atlas-node .node-code {
   fill: #fff; text-anchor: middle; dominant-baseline: central;
   font: 750 9px/1 var(--sans); pointer-events: none;
@@ -160,6 +171,7 @@
 .atlas-swatch.method { background: #2e6d76; }
 .atlas-swatch.cluster { border-radius: 2px; background: var(--atlas-gold); }
 .atlas-swatch.lineage { border-radius: 2px; background: var(--atlas-violet); transform: rotate(45deg); }
+.atlas-swatch.proposal { background: var(--atlas-proposal); border: 1px dashed #ffe1ae; }
 
 .atlas-missingness {
   display: grid; gap: 1rem; margin: 2.2rem 0 0; padding: 1.15rem;
@@ -185,6 +197,14 @@
   display: inline-block; padding: .14rem .4rem; border-radius: 999px;
   background: #e7f3f8; color: #215c78; font-size: .69rem; font-weight: 750; text-transform: uppercase;
 }
+.atlas-status-proposed { background: #fff0d8; color: #74400d; }
+.atlas-proposal-register {
+  padding: .85rem 1rem 1rem; border: 1px solid #e2b776; border-radius: 12px;
+  background: #fffaf0;
+}
+.atlas-proposal-register > summary { color: #74400d; }
+.atlas-proposal-table td:nth-child(4) { max-width: 18rem; }
+.atlas-proposal-table td:nth-child(5) { min-width: 24rem; max-width: 34rem; }
 .atlas-prose { max-width: none; margin: 2.6rem 0 0; }
 .atlas-prose h2 { margin-top: 2.2rem; }
 .atlas-discovery {
@@ -206,6 +226,7 @@
   .atlas-hero .wrap { padding-top: 2.4rem; padding-bottom: 2.3rem; }
   .atlas-hero h1 { font-size: 3.1rem; }
   .atlas-stage-head { align-items: flex-start; flex-direction: column; gap: .2rem; }
+  #atlas-graph[data-atlas-mode="proposals"] { min-width: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .atlas-node { transition: none; }

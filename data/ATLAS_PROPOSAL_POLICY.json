@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0",
+  "recordType": "evidence-atlas-proposal-policy",
+  "updated": "2026-08-15",
+  "status": "active-quarantined-intake",
+  "claimCeiling": "A proposal records a research suggestion for scrutiny. It does not establish novelty, correctness, importance, tractability, priority, an accepted relationship or a commitment to investigate.",
+  "idAlgorithm": "proposalId is ep-proposal:sha256:<hex>, computed over canonical JSON of the immutable identity projection defined by tools/atlas-proposals.js; decision receipt IDs use the same algorithm over each receipt projection.",
+  "proposalKinds": [
+    "research-question",
+    "research-programme",
+    "relationship-candidate",
+    "replication-opportunity",
+    "evidence-gap",
+    "method-improvement",
+    "negative-tip",
+    "counterexample-search"
+  ],
+  "reviewStates": [
+    "awaiting-review",
+    "accepted-for-investigation",
+    "deferred",
+    "rejected",
+    "merged",
+    "superseded",
+    "completed",
+    "withdrawn",
+    "expired"
+  ],
+  "assessmentStates": [
+    "unassessed",
+    "bounded-positive",
+    "bounded-negative",
+    "mixed",
+    "not-applicable"
+  ],
+  "resourceClasses": [
+    "small",
+    "medium",
+    "large",
+    "unknown"
+  ],
+  "acceptedGraphBoundary": "The proposal loader has no write path to data/RELATIONSHIP_REGISTRY.json or the accepted research-graph edge array. Displayed proposal anchors are navigation links in a quarantined projection, not accepted relationships.",
+  "intakeRoutes": [
+    {
+      "id": "github-issue-form",
+      "url": "https://github.com/ipitchford/evidence-press-site/issues/new?template=research-tip.yml",
+      "trustBoundary": "Issue content is untrusted intake. It becomes a canonical proposal only after manual normalization, validation and review of provenance and source references."
+    }
+  ],
+  "updatePolicy": {
+    "mode": "append-only-proposals-and-receipts",
+    "rules": [
+      "Published proposal identity fields are immutable; a material correction creates a superseding proposal.",
+      "Review receipts append in sequence and bind the predecessor receipt; prior receipts are never rewritten or deleted.",
+      "Rejected, merged, superseded, withdrawn, expired and completed proposals remain retrievable.",
+      "No intake or validation route may add an accepted research-graph edge.",
+      "Novelty, importance and tractability remain separate assessments and default to unassessed."
+    ]
+  },
+  "changeLog": [
+    {
+      "date": "2026-08-15",
+      "summary": "Established the quarantined agent and human research-tip intake policy, content-derived identities, explicit expiry, separate assessments and append-only review receipts."
+    }
+  ]
+}

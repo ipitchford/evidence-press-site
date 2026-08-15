@@ -61,6 +61,9 @@ jobs:
       - name: Atlas roadmap contract and hostile controls
         run: node tools/test-atlas-roadmap.js
 
+      - name: Atlas proposal quarantine and hostile controls
+        run: node tools/test-atlas-proposals.js
+
       - name: Verify protocol source and regenerate ignored receipts
         run: |
           node protocols/tools/make-manifest.js
@@ -72,6 +75,9 @@ jobs:
 
       - name: Research graph source/public parity
         run: node tools/test-research-graph.js --built
+
+      - name: Atlas proposal source/public parity
+        run: node tools/test-atlas-proposals.js --built
 
       - name: Protocol candidate/production byte-integrity gate
         run: |

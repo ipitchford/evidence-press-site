@@ -16,8 +16,9 @@ truth claim. It has two jobs:
 2. create a controlled route through which people or agents may nominate
    previously unrecorded relationships for review.
 
-The first implementation performs the first job. The proposal schema prepares
-for the second but publishes no speculative edges.
+The accepted graph performs the first job. The separate proposal layer now
+performs a bounded version of the second without publishing speculative edges
+as accepted relationships.
 
 ## Implemented architecture
 
@@ -29,6 +30,11 @@ data/RELATIONSHIP_REGISTRY.json ----------+          |
                                                      +--> /api/v1/research-graph.json
                                                      +--> /atlas/index.json
                                                      +--> /atlas/ HTML/SVG/table
+
+data/ATLAS_PROPOSAL_POLICY.json ----------+
+data/atlas-proposals/*.json --------------+--> tools/atlas-proposals.js
+                                                     +--> /api/atlas-proposals.json
+                                                     +--> quarantined Atlas projection/table
 ```
 
 The build creates release, method, broad-cluster and evidence-backed-lineage
@@ -56,7 +62,9 @@ The graph keeps three states separate:
   decision.
 
 Only asserted and explicitly published computed edges may appear in the main
-`edges` array. Proposed edges live under `proposalRegister.relations`. Promotion
+`edges` array. Proposed relationship edges live under
+`proposalRegister.relations`. Broader research tips live in the separate
+`/api/atlas-proposals.json` register. Promotion
 is additive and requires a resolvable basis. Rejected and superseded proposals
 should remain available once the proposal layer is activated.
 
@@ -76,6 +84,9 @@ should remain available once the proposal layer is activated.
 - Equal-sized release nodes and stable deterministic geometry.
 - A complete server-rendered relationship table as the nonvisual and no-script
   representation.
+- A visibly distinct proposal view with dashed navigation anchors and a
+  complete server-rendered proposal table. Proposal anchors do not enter the
+  accepted relationship ontology.
 
 The geometry never encodes correctness, novelty, priority, review, influence or
 impact.
@@ -88,9 +99,11 @@ The authoritative machine-readable roadmap is
 acceptance criteria, stop conditions, review triggers and an append-only review
 log. The initial priority order is:
 
-1. **Proposal intake and review receipts.** Implement a fail-closed route for
-   people and agents to nominate relationships without writing to the accepted
-   graph. Retain rejected and superseded decisions.
+1. **Proposal intake and review receipts — complete.** A fail-closed route lets
+   people and agents nominate questions, relationships, replications, evidence
+   gaps, methods, counterexample searches and negative tips without writing to
+   the accepted graph. Content-derived identities and chained review receipts
+   retain rejected and superseded decisions.
 2. **Projection and taxonomy calibration — complete.** The direct-inter-release
    view is the initial projection; the interface exposes composition, method
    prevalence, cluster seeds, missingness and the reciprocal eligibility rule
@@ -111,9 +124,9 @@ log. The initial priority order is:
    rediscovery, replay or reconstruction effort. Traffic, graph size, internal
    reuse and proposal volume are not evidence of research acceleration.
 
-The highest-priority next action is therefore proposal intake, validation and
-append-only review receipts. Relationship discovery must not run as a publishing
-route until that boundary is working.
+The highest-priority incomplete action is now the bounded discovery pilot.
+Discovery remains a proposal generator only and has no accepted-graph write
+path.
 
 The initial external model comment supplied by the maintainer reconciled all
 175 accepted edges and prompted the calibration task. A later same-system Sol
@@ -136,6 +149,14 @@ evidential parent link, and the proposed successor has only the latter.
 - edge identities change when their meaning changes;
 - proposed edges cannot enter the accepted array;
 - corrupted endpoints and silent edge mutations are rejected.
+
+`node tools/test-atlas-proposals.js` additionally verifies:
+
+- proposal and review-receipt identities are content-derived;
+- Atlas anchors and evidence references resolve;
+- proposal lifecycle transitions are contiguous and append-only;
+- direct promotion fields and accepted-relationship states are rejected;
+- public, versioned and server-rendered proposal surfaces agree exactly.
 
 The normal composite build, internal-link gate, publication-preservation gate,
 byte-identical rebuild and accessibility workflow also cover the atlas.

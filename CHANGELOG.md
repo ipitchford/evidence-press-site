@@ -6,6 +6,17 @@ are not covered here.
 
 ## 1.2.0 — unreleased candidate
 
+- Added a fail-closed Evidence Atlas proposal layer for human and agent research
+  tips. Canonical proposal identities and review receipts are content-derived;
+  novelty, importance and tractability remain separate; expiry, cheapest
+  falsifiers, risk flags and provenance are explicit; terminal decisions remain
+  retrievable. A visually distinct proposal projection and nonvisual table read
+  a separate API and cannot write to the accepted relationship graph.
+- Added a structured GitHub research-tip form, proposal and register schemas,
+  exact versioned API aliases, source/public parity checks, lifecycle hostile
+  controls and live append-only preservation rules. GitHub issue content remains
+  untrusted until manually normalized and validated.
+
 - Added the `sfs-identifiability-audit` v0.2.1 correction as an immutable
   successor: calibrated assurance and stage-two data-contact language, corrected
   scholarly authorship, an explicit correction ledger, content-versioned audio

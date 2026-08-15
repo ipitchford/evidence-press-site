@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/atlas-proposal.schema.json",
+  "title": "Evidence Atlas research proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "recordType", "proposalId", "kind", "title", "question",
+    "summary", "whyNow", "submittedAt", "expiresAt", "submitter", "atlasAnchors",
+    "sourceRefs", "priorArtStatus", "assessments", "cheapFalsifier",
+    "expectedInformationGain", "resourceEstimate", "riskFlags", "currentState",
+    "decisionReceipts"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "recordType": { "const": "evidence-atlas-research-proposal" },
+    "proposalId": { "type": "string", "pattern": "^ep-proposal:sha256:[a-f0-9]{64}$" },
+    "kind": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 8 },
+    "question": { "type": "string", "minLength": 12 },
+    "summary": { "type": "string", "minLength": 20 },
+    "whyNow": { "type": "string", "minLength": 20 },
+    "submittedAt": { "type": "string", "format": "date-time" },
+    "expiresAt": { "type": "string", "format": "date-time" },
+    "submitter": { "$ref": "#/$defs/submitter" },
+    "atlasAnchors": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": { "$ref": "#/$defs/anchor" }
+    },
+    "sourceRefs": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "priorArtStatus": { "enum": ["not-started", "bounded-search", "audited"] },
+    "assessments": {
+      "type": "object", "additionalProperties": false,
+      "required": ["novelty", "importance", "tractability"],
+      "properties": {
+        "novelty": { "type": "string" },
+        "importance": { "type": "string" },
+        "tractability": { "type": "string" }
+      }
+    },
+    "cheapFalsifier": { "type": "string", "minLength": 20 },
+    "expectedInformationGain": { "type": "string", "minLength": 20 },
+    "resourceEstimate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["class", "basis"],
+      "properties": {
+        "class": { "type": "string" },
+        "basis": { "type": "string", "minLength": 10 }
+      }
+    },
+    "riskFlags": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+    },
+    "currentState": { "type": "string" },
+    "decisionReceipts": { "type": "array", "items": { "$ref": "#/$defs/decisionReceipt" } }
+  },
+  "$defs": {
+    "submitter": {
+      "type": "object", "additionalProperties": false,
+      "required": ["actorType", "displayName", "humanContributors", "agentContributors", "contactUrl"],
+      "properties": {
+        "actorType": { "enum": ["human", "agent", "human-agent-collaboration"] },
+        "displayName": { "type": "string", "minLength": 1 },
+        "humanContributors": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "agentContributors": { "type": "array", "items": { "$ref": "#/$defs/agentContributor" } },
+        "contactUrl": { "type": ["string", "null"] }
+      }
+    },
+    "agentContributor": {
+      "type": "object", "additionalProperties": false,
+      "required": ["system", "model", "role", "runRecordUrl", "provenanceNote"],
+      "properties": {
+        "system": { "type": "string", "minLength": 1 },
+        "model": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 },
+        "runRecordUrl": { "type": ["string", "null"] },
+        "provenanceNote": { "type": "string", "minLength": 1 }
+      }
+    },
+    "anchor": {
+      "type": "object", "additionalProperties": false,
+      "required": ["nodeId", "basis"],
+      "properties": {
+        "nodeId": { "type": "string", "minLength": 1 },
+        "basis": { "type": "string", "minLength": 8 }
+      }
+    },
+    "reviewer": {
+      "type": "object", "additionalProperties": false,
+      "required": ["actorType", "displayName", "provenanceNote"],
+      "properties": {
+        "actorType": { "enum": ["human", "agent", "human-agent-collaboration"] },
+        "displayName": { "type": "string", "minLength": 1 },
+        "provenanceNote": { "type": "string", "minLength": 1 }
+      }
+    },
+    "decisionReceipt": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "receiptId", "sequence", "decidedAt", "fromState", "toState", "reviewer",
+        "basis", "evidenceRefs", "inferenceLimit", "predecessorReceiptId"
+      ],
+      "properties": {
+        "receiptId": { "type": "string", "pattern": "^ep-proposal-receipt:sha256:[a-f0-9]{64}$" },
+        "sequence": { "type": "integer", "minimum": 1 },
+        "decidedAt": { "type": "string", "format": "date-time" },
+        "fromState": { "type": "string" },
+        "toState": { "type": "string" },
+        "reviewer": { "$ref": "#/$defs/reviewer" },
+        "basis": { "type": "string", "minLength": 20 },
+        "evidenceRefs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "inferenceLimit": { "type": "string", "minLength": 20 },
+        "predecessorReceiptId": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

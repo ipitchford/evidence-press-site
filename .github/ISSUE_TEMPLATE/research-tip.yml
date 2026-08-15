@@ -1,0 +1,105 @@
+name: Evidence Atlas research tip
+description: Nominate a research question, connection, obstruction, replication, evidence gap or method improvement for quarantined review.
+title: "[Atlas proposal]: "
+labels:
+  - atlas-proposal
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form creates **untrusted intake**, not an accepted Evidence Atlas relationship, endorsed priority, novelty finding or commitment to investigate. Maintainers may normalize a complete submission into the append-only proposal register. Rejected and superseded proposals remain useful negative knowledge.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Proposal kind
+      options:
+        - Research question
+        - Research programme
+        - Relationship candidate
+        - Replication opportunity
+        - Evidence gap
+        - Method improvement
+        - Negative tip or route obstruction
+        - Counterexample search
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Exact research question
+      description: State one falsifiable or otherwise decision-bounded question. Do not state an unsupported conclusion as fact.
+      placeholder: Can X be distinguished from Y under assumptions Z?
+    validations:
+      required: true
+
+  - type: textarea
+    id: why-now
+    attributes:
+      label: Why this may be worth examining now
+      description: Explain the possible information gain. Keep importance, novelty and correctness separate.
+    validations:
+      required: true
+
+  - type: textarea
+    id: atlas-anchors
+    attributes:
+      label: Evidence Atlas anchors
+      description: Link the relevant Evidence Press releases, methods, clusters or lineages and explain why each is a navigation anchor. An anchor is not an accepted relationship.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources and prior art already checked
+      description: Give direct URLs and one sentence on what each source supports. Write “none yet” if no search has been performed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: falsifier
+    attributes:
+      label: Cheapest useful falsifier or stop test
+      description: What is the least expensive check that could reject, merge or sharply narrow this proposal?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternative
+    attributes:
+      label: Strongest alternative explanation
+      description: For example, shared vocabulary without a shared mechanism, rediscovery of an established framework, or a benchmark artefact.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: resource
+    attributes:
+      label: Rough first-gate resource class
+      options:
+        - Small
+        - Medium
+        - Large
+        - Unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Submitter and agent provenance
+      description: Name human contributors; for agents give system, model/version if known, role, date and an immutable run-record URL if one exists. Never include API keys, private prompts or personal data.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: Submission boundary
+      options:
+        - label: I understand that this is an unreviewed suggestion and will not enter the accepted graph automatically.
+          required: true
+        - label: I have not included secrets, private correspondence or material I lack permission to disclose.
+          required: true

@@ -11,7 +11,7 @@
     "clusterCount": 13,
     "lineageCount": 2,
     "acceptedRelationshipCount": 175,
-    "publishedProposalCount": 0,
+    "publishedProposalCount": 1,
     "relationshipComposition": {
       "usesMethodCount": 135,
       "clusterMembershipCount": 28,
@@ -46,7 +46,7 @@
     {
       "id": "atlas-step-proposal-intake",
       "priority": 1,
-      "state": "ready",
+      "state": "complete",
       "title": "Implement fail-closed proposal intake and review receipts",
       "purpose": "Give people and agents a safe place to nominate relationships without adding them to the accepted graph.",
       "dependencies": [],
@@ -93,7 +93,7 @@
     {
       "id": "atlas-step-discovery-pilot",
       "priority": 3,
-      "state": "blocked",
+      "state": "ready",
       "title": "Run a bounded relationship-discovery pilot",
       "purpose": "Test whether multiple transparent retrieval routes can nominate useful hidden connections at a tolerable false-proposal burden.",
       "dependencies": [
@@ -118,7 +118,7 @@
     {
       "id": "atlas-step-review-workbench",
       "priority": 4,
-      "state": "blocked",
+      "state": "ready",
       "title": "Add a proposal-review workbench",
       "purpose": "Let reviewers inspect a proposed edge, its evidence, contrary explanation and full decision history without confusing it with accepted knowledge.",
       "dependencies": [
@@ -284,6 +284,27 @@
       ],
       "decision": "complete",
       "nextAction": "Keep proposal intake as the first incomplete roadmap step, then test bounded discovery only after proposal quarantine and additive review receipts are operational."
+    },
+    {
+      "reviewId": "atlas-review-2026-08-15-proposal-intake",
+      "reviewedAt": "2026-08-15",
+      "trigger": "proposal-submitted",
+      "reviewer": "Evidence Press producer workflow",
+      "provenanceNote": "Producer-side implementation and hostile-control review by the maintainer-agent workflow; not independent scientific assurance or an assessment of the proposal's novelty, importance or tractability.",
+      "baseline": {
+        "releaseCount": 28,
+        "acceptedRelationshipCount": 175,
+        "publishedProposalCount": 1
+      },
+      "observations": [
+        "A separate proposal policy, per-proposal source format, assembled register and two public JSON schemas now exist without changing the accepted research graph.",
+        "Proposal and decision-receipt identities are content-derived; review receipts form a predecessor-bound state chain and terminal records remain retrievable.",
+        "The first proposal is awaiting review with novelty, importance and tractability unassessed; maintainer interest was not converted into a positive assessment.",
+        "Hostile controls reject unresolved anchors, unsafe source references, silent identity mutation, broken receipt chains, direct accepted-edge fields and accepted-relationship status promotion.",
+        "The Atlas includes a visually distinct proposal projection, complete nonvisual register and structured GitHub issue intake; issue content remains untrusted until normalized and validated."
+      ],
+      "decision": "complete",
+      "nextAction": "Publish and read back the proposal layer through the normal two-commit Evidence Press gate before beginning any bounded relationship-discovery pilot."
     }
   ]
 }

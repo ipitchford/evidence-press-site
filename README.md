@@ -73,6 +73,7 @@ If a published page turns out to be wrong, add an entry to that release's `corre
 - `/api/method-registry.json` — reusable methods, failure modes, broad method clusters, evidence-backed lineages and release assignments
 - `/api/ibe-ledger.json` — observations, rival explanations, predictions and potential falsifiers
 - `/api/work-ledger.json` — prospective attempts, including stopped and unreleased work, clocks, resources, comparisons, assurance endpoints and explicit missingness
+- `/api/atlas-proposals.json` — quarantined research tips from people and agents, with content-derived IDs, cheap falsifiers, separate assessments, expiry and append-only review receipts
 - `/api/schemas/*.schema.json` — schemas for all operating artifacts and prospective release records
 - `/api/stability.json` — field stability, compatibility guarantees and deprecation procedure
 - `/api/build.json` — software version, source commit and schema version for this build

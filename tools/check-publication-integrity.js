@@ -39,12 +39,15 @@ const GOVERNANCE_ROUTES = [
   ['IBE ledger', '/api/ibe-ledger.json', '/api/v1/ibe-ledger.json', true],
   ['work ledger', '/api/work-ledger.json', '/api/v1/work-ledger.json', true],
   ['Atlas roadmap', '/api/atlas-roadmap.json', '/api/v1/atlas-roadmap.json', true],
+  ['Atlas proposals', '/api/atlas-proposals.json', '/api/v1/atlas-proposals.json', true],
   ['operating-model schema', '/api/schemas/operating-model.schema.json', '/api/v1/schemas/operating-model.schema.json', true],
   ['method-registry schema', '/api/schemas/method-registry.schema.json', '/api/v1/schemas/method-registry.schema.json', true],
   ['IBE-ledger schema', '/api/schemas/ibe-ledger.schema.json', '/api/v1/schemas/ibe-ledger.schema.json', true],
   ['release operating-model schema', '/api/schemas/release-operating-model.schema.json', '/api/v1/schemas/release-operating-model.schema.json', true],
   ['work-ledger schema', '/api/schemas/work-ledger.schema.json', '/api/v1/schemas/work-ledger.schema.json', true],
-  ['Atlas-roadmap schema', '/api/schemas/atlas-roadmap.schema.json', '/api/v1/schemas/atlas-roadmap.schema.json', true]
+  ['Atlas-roadmap schema', '/api/schemas/atlas-roadmap.schema.json', '/api/v1/schemas/atlas-roadmap.schema.json', true],
+  ['Atlas-proposal schema', '/api/schemas/atlas-proposal.schema.json', '/api/v1/schemas/atlas-proposal.schema.json', true],
+  ['Atlas-proposal-register schema', '/api/schemas/atlas-proposal-register.schema.json', '/api/v1/schemas/atlas-proposal-register.schema.json', true]
 ];
 
 const candidateJson = urlPath => readOptional(path.join(DIST, urlPath.replace(/^\//, '')));
@@ -377,6 +380,7 @@ async function main() {
   const candidateIbe = candidateJson('/api/ibe-ledger.json');
   const candidateWork = candidateJson('/api/work-ledger.json');
   const candidateAtlasRoadmap = candidateJson('/api/atlas-roadmap.json');
+  const candidateAtlasProposals = candidateJson('/api/atlas-proposals.json');
   const liveContract = liveGovernance.get('/api/operating-model.json');
   if (liveContract) {
     if (!isDeepStrictEqual(liveContract, candidateContract)) {
@@ -396,6 +400,45 @@ async function main() {
       liveAtlasRoadmap.claimCeiling !== candidateAtlasRoadmap.claimCeiling;
     if ((stepChanged || policyChanged) && !newReviews.length) {
       failures.push('Atlas roadmap: steps, review policy or claim ceiling changed without an appended review-log entry');
+    }
+  }
+
+  const liveAtlasProposals = liveGovernance.get('/api/atlas-proposals.json');
+  if (liveAtlasProposals) {
+    const newPolicyChanges = preserveChangeLogPrefix(
+      'Atlas proposal policy change log', liveAtlasProposals.policy.changeLog, candidateAtlasProposals.policy.changeLog
+    );
+    const stablePolicyFields = [
+      'schemaVersion', 'recordType', 'claimCeiling', 'idAlgorithm', 'proposalKinds',
+      'reviewStates', 'assessmentStates', 'resourceClasses', 'acceptedGraphBoundary',
+      'intakeRoutes', 'updatePolicy'
+    ];
+    const policyChanged = stablePolicyFields.some(field =>
+      !isDeepStrictEqual(liveAtlasProposals.policy[field], candidateAtlasProposals.policy[field]));
+    if (policyChanged && !newPolicyChanges.length) {
+      failures.push('Atlas proposal policy changed without an appended policy change-log entry');
+    }
+    const candidateProposals = new Map((candidateAtlasProposals.proposals || []).map(proposal => [proposal.proposalId, proposal]));
+    for (const oldProposal of liveAtlasProposals.proposals || []) {
+      const next = candidateProposals.get(oldProposal.proposalId);
+      if (!next) {
+        failures.push(`Atlas proposals: dropped published proposal ${oldProposal.proposalId}`);
+        continue;
+      }
+      const { currentState: oldState, decisionReceipts: oldReceipts, ...oldIdentity } = oldProposal;
+      const { currentState: nextState, decisionReceipts: nextReceipts, ...nextIdentity } = next;
+      if (!isDeepStrictEqual(oldIdentity, nextIdentity)) {
+        failures.push(`Atlas proposal ${oldProposal.proposalId}: changed immutable intake content in place`);
+      }
+      const addedReceipts = preserveArrayPrefix(
+        `Atlas proposal ${oldProposal.proposalId} decision receipts`, oldReceipts, nextReceipts, 'receipt'
+      );
+      if (oldState !== nextState && !addedReceipts.length) {
+        failures.push(`Atlas proposal ${oldProposal.proposalId}: state changed without an appended decision receipt`);
+      }
+      if (addedReceipts.length && addedReceipts[addedReceipts.length - 1].toState !== nextState) {
+        failures.push(`Atlas proposal ${oldProposal.proposalId}: appended receipt chain does not end at currentState`);
+      }
     }
   }
 
