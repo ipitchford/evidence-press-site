@@ -414,6 +414,28 @@ check('exact-Smith video is API-visible, privacy-enhanced and evidence-calibrate
   exactSmithHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/G16zwDUq2gs/hqdefault.jpg"'),
   `video=${exactSmithVideo && exactSmithVideo.url}`);
 
+const hahnEwens = papersDoc.papers.find(p => p.slug === 'hahn-ewens-mixing-theorem');
+const hahnEwensVideo = hahnEwens && hahnEwens.media.find(item => item.type === 'video');
+const hahnEwensHtml = fs.readFileSync(path.join(DIST, 'releases', 'hahn-ewens-mixing-theorem', 'index.html'), 'utf8');
+check('Hahn--Ewens video is API-visible, privacy-enhanced and evidence-calibrated',
+  hahnEwensVideo && hahnEwensVideo.url === 'https://youtu.be/J87UfVWyIhM' &&
+  hahnEwensVideo.description.includes('not additional mathematical evidence') &&
+  (hahnEwensHtml.match(/<iframe\b/g) || []).length === 1 &&
+  hahnEwensHtml.includes('src="https://www.youtube-nocookie.com/embed/J87UfVWyIhM?rel=0"') &&
+  hahnEwensHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/J87UfVWyIhM/hqdefault.jpg"'),
+  `video=${hahnEwensVideo && hahnEwensVideo.url}`);
+
+const smoothPoint = papersDoc.papers.find(p => p.slug === 'smooth-point-certificates-polydegree-containments');
+const smoothPointVideo = smoothPoint && smoothPoint.media.find(item => item.type === 'video');
+const smoothPointHtml = fs.readFileSync(path.join(DIST, 'releases', 'smooth-point-certificates-polydegree-containments', 'index.html'), 'utf8');
+check('smooth-point video is API-visible, privacy-enhanced and evidence-calibrated',
+  smoothPointVideo && smoothPointVideo.url === 'https://youtu.be/Ce24enjIdTQ' &&
+  smoothPointVideo.description.includes('not additional mathematical evidence') &&
+  (smoothPointHtml.match(/<iframe\b/g) || []).length === 1 &&
+  smoothPointHtml.includes('src="https://www.youtube-nocookie.com/embed/Ce24enjIdTQ?rel=0"') &&
+  smoothPointHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/Ce24enjIdTQ/hqdefault.jpg"'),
+  `video=${smoothPointVideo && smoothPointVideo.url}`);
+
 const sfsAudit = papersDoc.papers.find(p => p.slug === 'sfs-identifiability-audit');
 const sfsMeta = JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', 'sfs-identifiability-audit', 'meta.json'), 'utf8'));
 const sfsHtml = fs.readFileSync(path.join(DIST, 'releases', 'sfs-identifiability-audit', 'index.html'), 'utf8');
