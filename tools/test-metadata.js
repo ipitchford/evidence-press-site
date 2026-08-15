@@ -412,6 +412,25 @@ check('Frankl briefing uses the declared OpenAI British house voice with byte-bo
   franklHtml.includes('Replaced the original macOS Daniel narration') &&
   (franklHtml.match(/<audio\b/g) || []).length === 1,
   `audioUrl=${frankl && frankl.audioUrl} sha256=${franklAudioHash}`);
+const franklVideo = frankl && frankl.media.find(item => item.type === 'video');
+check('Frankl video is API-visible, privacy-enhanced and evidence-calibrated',
+  franklVideo && franklVideo.url === 'https://youtu.be/-3yX-m73yKs' &&
+  franklVideo.description.includes('not additional mathematical evidence') &&
+  (franklHtml.match(/<iframe\b/g) || []).length === 1 &&
+  franklHtml.includes('src="https://www.youtube-nocookie.com/embed/-3yX-m73yKs?rel=0"') &&
+  franklHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/-3yX-m73yKs/hqdefault.jpg"'),
+  `video=${franklVideo && franklVideo.url}`);
+
+const furterR3 = papersDoc.papers.find(p => p.slug === 'furter-r3-through-299');
+const furterR3Video = furterR3 && furterR3.media.find(item => item.type === 'video');
+const furterR3Html = fs.readFileSync(path.join(DIST, 'releases', 'furter-r3-through-299', 'index.html'), 'utf8');
+check('Furter R(3) video is API-visible, privacy-enhanced and evidence-calibrated',
+  furterR3Video && furterR3Video.url === 'https://youtu.be/AJhfMzSglR4' &&
+  furterR3Video.description.includes('not additional mathematical evidence') &&
+  (furterR3Html.match(/<iframe\b/g) || []).length === 1 &&
+  furterR3Html.includes('src="https://www.youtube-nocookie.com/embed/AJhfMzSglR4?rel=0"') &&
+  furterR3Html.includes('"thumbnailUrl": "https://i.ytimg.com/vi/AJhfMzSglR4/hqdefault.jpg"'),
+  `video=${furterR3Video && furterR3Video.url}`);
 
 const walesAudit = papersDoc.papers.find(p => p.slug === 'wales-20mph-casualty-attribution');
 const walesVideo = walesAudit && walesAudit.media.find(item => item.type === 'video');
