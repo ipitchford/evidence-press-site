@@ -232,13 +232,21 @@ td .inline-img { height: 1.9em; vertical-align: middle; }
 .companion-body { padding: .1rem 1.3rem 1.1rem; }
 
 /* Standing-programme band on the index page */
-.programme-band { margin-top: 1.7rem; }
-.programme-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
-.programme-card { display: block; background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--accent-2); border-radius: 12px; padding: 1rem 1.2rem .75rem; color: var(--ink); text-decoration: none; }
-.programme-card h3 { font-family: var(--serif); font-size: 1.18rem; margin: .15rem 0 .4rem; color: var(--accent); }
+.programme-band { margin-top: 1.25rem; }
+.programme-cards { display: grid; grid-template-columns: 1fr; gap: .7rem; }
+.programme-card {
+  display: block; min-width: 0; padding: .72rem .9rem .62rem;
+  color: var(--ink); background: var(--card); border: 1px solid var(--line);
+  border-left: 4px solid var(--accent-2); border-radius: 10px; text-decoration: none;
+}
+.programme-card h3 { font-family: var(--serif); font-size: 1.04rem; line-height: 1.2; margin: .1rem 0 .3rem; color: var(--accent); }
 .programme-card:hover h3 { text-decoration: underline; }
-.programme-card > p { margin: 0 0 .45rem; font-size: .93rem; }
-.programme-card .card-links { margin-top: .45rem; }
+.programme-card:focus-visible { outline: 3px solid var(--accent-bright); outline-offset: 3px; }
+.programme-card > p { margin: 0 0 .3rem; font-size: .82rem; line-height: 1.42; }
+.programme-card .card-date { font-size: .72rem; line-height: 1.3; }
+.programme-card .card-links { margin-top: .32rem; gap: .65rem; }
+@media (min-width: 660px) { .programme-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1040px) { .programme-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 /* Productivity is a programme landing, not a narrow essay. It keeps the same
    house shell and source Markdown while giving the evidence stages room to be

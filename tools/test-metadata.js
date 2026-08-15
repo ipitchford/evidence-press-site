@@ -48,6 +48,16 @@ const schema = read('api/schema.json');
 const operatingArtifacts = loadArtifacts(ROOT);
 const sourcePapers = loadPaperMetadata(ROOT);
 
+/* ----------------------------------------- high-level layout contracts */
+const homeHtml = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
+const siteCss = fs.readFileSync(path.join(DIST, 'assets', 'style.css'), 'utf8');
+const atlasCss = fs.readFileSync(path.join(DIST, 'assets', 'atlas.css'), 'utf8');
+check('homepage keeps four compact programme signposts',
+  (homeHtml.match(/class="programme-card"/g) || []).length === 4 &&
+  /@media\s*\(min-width:\s*1040px\)\s*\{\s*\.programme-cards\s*\{\s*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/.test(siteCss));
+check('Atlas explanatory prose aligns with the page wrapper',
+  /\.atlas-prose\s*\{[^}]*max-width:\s*none;[^}]*margin:\s*2\.6rem\s+0\s+0;/.test(atlasCss));
+
 /* ------------------------------------------------------- mini JSON Schema */
 /* Covers exactly the keywords the published schema uses. Anything unknown is
    reported rather than ignored, so the validator cannot silently pass a
