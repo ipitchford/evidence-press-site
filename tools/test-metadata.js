@@ -225,8 +225,28 @@ check('Atlas roadmap baseline matches the published source graph',
   publicAtlasRoadmap.currentBaseline.lineageCount === publicResearchGraph.stats.lineageCount &&
   publicAtlasRoadmap.currentBaseline.acceptedRelationshipCount === publicResearchGraph.stats.edgeCount &&
   publicAtlasRoadmap.currentBaseline.publishedProposalCount === publicResearchGraph.stats.proposedEdgeCount);
+const predicateCounts = new Map();
+for (const edge of publicResearchGraph.edges) predicateCounts.set(edge.predicate, (predicateCounts.get(edge.predicate) || 0) + 1);
+const composition = publicAtlasRoadmap.currentBaseline.relationshipComposition;
+const directPredicates = ['extends-result', 'reuses-method', 'cites-related-release'];
+const directInterReleaseCount = directPredicates.reduce((total, predicate) => total + (predicateCounts.get(predicate) || 0), 0);
+check('Atlas roadmap relationship composition matches the published graph',
+  composition.usesMethodCount === (predicateCounts.get('uses-method') || 0) &&
+  composition.clusterMembershipCount === (predicateCounts.get('member-of-cluster') || 0) &&
+  composition.lineageMembershipCount === (predicateCounts.get('member-of-lineage') || 0) &&
+  composition.directInterReleaseCount === directInterReleaseCount &&
+  composition.defaultProgrammeViewCount === composition.clusterMembershipCount + composition.lineageMembershipCount + directInterReleaseCount);
+const methodAssignmentCounts = new Map();
+for (const methods of Object.values(operatingArtifacts.registry.releaseAssignments)) {
+  for (const methodId of methods) methodAssignmentCounts.set(methodId, (methodAssignmentCounts.get(methodId) || 0) + 1);
+}
+check('Atlas roadmap method-prevalence observations match the source registry',
+  publicAtlasRoadmap.currentBaseline.methodPrevalenceChecks.every(item =>
+    methodAssignmentCounts.get(item.methodId) === item.releaseAssignmentCount));
 check('Atlas page links its machine-readable roadmap and schema',
   atlasHtml.includes('/api/atlas-roadmap.json') && atlasHtml.includes('/api/schemas/atlas-roadmap.schema.json'));
+check('Atlas page surfaces working-taxonomy and reciprocal-lineage limits',
+  atlasHtml.includes('working taxonomy') && atlasHtml.includes('A parent link alone is not lineage membership'));
 
 const releaseOperatingSchema = read('api/schemas/release-operating-model.schema.json');
 check('prospective release schema is an exact source-to-public copy',

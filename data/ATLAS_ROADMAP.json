@@ -12,6 +12,23 @@
     "lineageCount": 2,
     "acceptedRelationshipCount": 175,
     "publishedProposalCount": 0,
+    "relationshipComposition": {
+      "usesMethodCount": 135,
+      "clusterMembershipCount": 28,
+      "lineageMembershipCount": 7,
+      "directInterReleaseCount": 5,
+      "defaultProgrammeViewCount": 40
+    },
+    "methodPrevalenceChecks": [
+      {
+        "methodId": "adversarial-controls",
+        "releaseAssignmentCount": 20
+      },
+      {
+        "methodId": "structural-compression",
+        "releaseAssignmentCount": 18
+      }
+    ],
     "sourceRefs": [
       "data/RELATIONSHIP_REGISTRY.json",
       "data/METHOD_REGISTRY.json",
@@ -51,8 +68,31 @@
       ]
     },
     {
-      "id": "atlas-step-discovery-pilot",
+      "id": "atlas-step-projection-calibration",
       "priority": 2,
+      "state": "ready",
+      "title": "Calibrate projection weight and taxonomy legibility",
+      "purpose": "Make the first visual impression distinguish direct inter-release evidence from registry-derived navigation and make broad, low-discrimination labels visibly interpretable.",
+      "dependencies": [],
+      "deliverables": [
+        "A tested direct-inter-release projection alongside the existing programme and method views.",
+        "Visible working-taxonomy status, edge-composition counts and method prevalence.",
+        "A documented lineage eligibility rule requiring a reciprocal lineage identifier and, for a non-root member, an evidential parent link.",
+        "A design note on representing machine-checked reciprocity as an evidence attribute rather than a replacement for knowledge status."
+      ],
+      "acceptanceCriteria": [
+        "The initial projection does not make registry-derived density appear to be direct inter-release evidence.",
+        "Ubiquitous methods and singleton clusters carry enough prevalence or scope context to prevent over-interpretation.",
+        "Every projection reconciles exactly with the canonical graph and preserves the complete nonvisual register."
+      ],
+      "stopConditions": [
+        "Do not remove programme or method navigation merely to make the graph look sparse.",
+        "Stop if a projection requires a second relationship ontology or changes accepted graph semantics."
+      ]
+    },
+    {
+      "id": "atlas-step-discovery-pilot",
+      "priority": 3,
       "state": "blocked",
       "title": "Run a bounded relationship-discovery pilot",
       "purpose": "Test whether multiple transparent retrieval routes can nominate useful hidden connections at a tolerable false-proposal burden.",
@@ -77,7 +117,7 @@
     },
     {
       "id": "atlas-step-review-workbench",
-      "priority": 3,
+      "priority": 4,
       "state": "blocked",
       "title": "Add a proposal-review workbench",
       "purpose": "Let reviewers inspect a proposed edge, its evidence, contrary explanation and full decision history without confusing it with accepted knowledge.",
@@ -101,7 +141,7 @@
     },
     {
       "id": "atlas-step-agent-queries",
-      "priority": 4,
+      "priority": 5,
       "state": "watch",
       "title": "Add bounded agent query surfaces when use cases justify them",
       "purpose": "Reduce token and reconstruction cost for agents seeking neighbourhoods, dependencies, methods or unresolved proposals without replacing the canonical graph export.",
@@ -121,7 +161,7 @@
     },
     {
       "id": "atlas-step-scale-renderer",
-      "priority": 5,
+      "priority": 6,
       "state": "watch",
       "title": "Reassess the renderer at catalogue scale",
       "purpose": "Preserve usable navigation as the graph grows without making a visualization library part of the evidence model.",
@@ -141,7 +181,7 @@
     },
     {
       "id": "atlas-step-outcome-evaluation",
-      "priority": 6,
+      "priority": 7,
       "state": "ready",
       "title": "Measure whether the Atlas reduces rediscovery and reconstruction cost",
       "purpose": "Test the Atlas as a research tool without inferring value from page views, graph size or proposal volume.",
@@ -188,6 +228,8 @@
       "reviewId": "atlas-review-2026-08-15-baseline",
       "reviewedAt": "2026-08-15",
       "trigger": "initial-roadmap-record",
+      "reviewer": "Evidence Press producer workflow",
+      "provenanceNote": "Producer-side baseline review against the repository source graph and publication gates.",
       "baseline": {
         "releaseCount": 28,
         "acceptedRelationshipCount": 175,
@@ -201,6 +243,27 @@
       ],
       "decision": "continue",
       "nextAction": "Implement fail-closed proposal intake, validation and append-only review receipts before running relationship-discovery experiments."
+    },
+    {
+      "reviewId": "atlas-review-2026-08-15-fable-comment",
+      "reviewedAt": "2026-08-15",
+      "trigger": "user-supplied-external-model-comment",
+      "reviewer": "Anthropic Fable, as identified by the maintainer",
+      "provenanceNote": "The maintainer supplied the review text. The exact model version, prompt and run record were not independently established.",
+      "baseline": {
+        "releaseCount": 28,
+        "acceptedRelationshipCount": 175,
+        "publishedProposalCount": 0
+      },
+      "observations": [
+        "The reviewer independently reconciled 13 methods, 13 clusters, 2 lineages, 28 release assignments and all 175 accepted edges from the public registry and Atlas.",
+        "The current default programme projection already excludes 135 uses-method edges, but 35 of its 40 visible edges are cluster or lineage memberships and only 5 are direct inter-release links.",
+        "The prevalence concern is supported by the source registry: adversarial-controls is assigned to 20 of 28 releases and structural-compression to 18 of 28.",
+        "The proposed Polydegree lineage is not eligible under the registered rule because the successor declares an evidential parent link but its reciprocal lineageId is null; the public explanation should surface that rule.",
+        "A reciprocity check could add useful evidence, but reciprocity should remain separate from the asserted, computed and proposed knowledge-status axis."
+      ],
+      "decision": "change-priority",
+      "nextAction": "Keep fail-closed proposal intake first, then test an evidence-calibrated projection and surface taxonomy status, prevalence and lineage eligibility before the discovery pilot."
     }
   ]
 }

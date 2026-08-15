@@ -20,6 +20,8 @@ A shared method, a broad cluster and a research lineage are different objects:
 - A **parent edge** records an inherited result or method and carries the parent's stated assurance ceiling.
 - An **internal citation edge** records that one release names another as related work; it does not by itself establish agreement, priority or dependence.
 
+The registry is explicitly a **working taxonomy**. The default Programme view excludes method-assignment edges, but it still mixes registry-derived cluster and lineage membership with direct inter-release citations, extensions and reuse; the status line and relationship register give the exact composition. A non-root release enters an evidence-backed lineage only when its metadata declares both the reciprocal lineage identifier and an evidential parent link. A parent link alone is not lineage membership.
+
 Select any node or connection in the interactive map to inspect its basis, inference limit and exact source record.
 
 ## An accessible and agent-readable instrument
