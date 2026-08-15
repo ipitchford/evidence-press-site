@@ -392,6 +392,17 @@ check('bilateral-deficiency video is API-visible, privacy-enhanced and evidence-
   bilateralHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/kPqHgEkKEY8/hqdefault.jpg"'),
   `video=${bilateralVideo && bilateralVideo.url}`);
 
+const cyclicityRootSpan = papersDoc.papers.find(p => p.slug === 'cyclicity-root-span-low-rank');
+const cyclicityRootSpanVideo = cyclicityRootSpan && cyclicityRootSpan.media.find(item => item.type === 'video');
+const cyclicityRootSpanHtml = fs.readFileSync(path.join(DIST, 'releases', 'cyclicity-root-span-low-rank', 'index.html'), 'utf8');
+check('cyclicity-root-span video is API-visible, privacy-enhanced and evidence-calibrated',
+  cyclicityRootSpanVideo && cyclicityRootSpanVideo.url === 'https://youtu.be/ZFPFIWHWihs' &&
+  cyclicityRootSpanVideo.description.includes('not additional mathematical evidence') &&
+  (cyclicityRootSpanHtml.match(/<iframe\b/g) || []).length === 1 &&
+  cyclicityRootSpanHtml.includes('src="https://www.youtube-nocookie.com/embed/ZFPFIWHWihs?rel=0"') &&
+  cyclicityRootSpanHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/ZFPFIWHWihs/hqdefault.jpg"'),
+  `video=${cyclicityRootSpanVideo && cyclicityRootSpanVideo.url}`);
+
 const sfsAudit = papersDoc.papers.find(p => p.slug === 'sfs-identifiability-audit');
 const sfsMeta = JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', 'sfs-identifiability-audit', 'meta.json'), 'utf8'));
 const sfsHtml = fs.readFileSync(path.join(DIST, 'releases', 'sfs-identifiability-audit', 'index.html'), 'utf8');
