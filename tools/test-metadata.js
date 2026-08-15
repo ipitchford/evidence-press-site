@@ -52,6 +52,15 @@ const sourcePapers = loadPaperMetadata(ROOT);
 const homeHtml = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
 const siteCss = fs.readFileSync(path.join(DIST, 'assets', 'style.css'), 'utf8');
 const atlasCss = fs.readFileSync(path.join(DIST, 'assets', 'atlas.css'), 'utf8');
+const siteCssVersion = crypto.createHash('sha256').update(siteCss).digest('hex').slice(0, 10);
+const atlasCssVersion = crypto.createHash('sha256').update(atlasCss).digest('hex').slice(0, 10);
+const atlasHtml = fs.readFileSync(path.join(DIST, 'atlas', 'index.html'), 'utf8');
+check('homepage uses a content-addressed shared stylesheet filename',
+  fs.existsSync(path.join(DIST, 'assets', `style-${siteCssVersion}.css`)) &&
+  homeHtml.includes(`/assets/style-${siteCssVersion}.css`));
+check('Atlas uses a content-addressed page stylesheet filename',
+  fs.existsSync(path.join(DIST, 'assets', `atlas-${atlasCssVersion}.css`)) &&
+  atlasHtml.includes(`/assets/atlas-${atlasCssVersion}.css`));
 check('homepage keeps four compact programme signposts',
   (homeHtml.match(/class="programme-card"/g) || []).length === 4 &&
   /@media\s*\(min-width:\s*1040px\)\s*\{\s*\.programme-cards\s*\{\s*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/.test(siteCss));
