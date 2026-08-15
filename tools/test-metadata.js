@@ -436,6 +436,17 @@ check('smooth-point video is API-visible, privacy-enhanced and evidence-calibrat
   smoothPointHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/Ce24enjIdTQ/hqdefault.jpg"'),
   `video=${smoothPointVideo && smoothPointVideo.url}`);
 
+const cyclicityLoci = papersDoc.papers.find(p => p.slug === 'cyclicity-loci-exponential-periods');
+const cyclicityLociVideo = cyclicityLoci && cyclicityLoci.media.find(item => item.type === 'video');
+const cyclicityLociHtml = fs.readFileSync(path.join(DIST, 'releases', 'cyclicity-loci-exponential-periods', 'index.html'), 'utf8');
+check('cyclicity-loci video is API-visible, privacy-enhanced and evidence-calibrated',
+  cyclicityLociVideo && cyclicityLociVideo.url === 'https://youtu.be/NJkN1mfuhJ4' &&
+  cyclicityLociVideo.description.includes('not additional mathematical evidence') &&
+  (cyclicityLociHtml.match(/<iframe\b/g) || []).length === 1 &&
+  cyclicityLociHtml.includes('src="https://www.youtube-nocookie.com/embed/NJkN1mfuhJ4?rel=0"') &&
+  cyclicityLociHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/NJkN1mfuhJ4/hqdefault.jpg"'),
+  `video=${cyclicityLociVideo && cyclicityLociVideo.url}`);
+
 const sfsAudit = papersDoc.papers.find(p => p.slug === 'sfs-identifiability-audit');
 const sfsMeta = JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', 'sfs-identifiability-audit', 'meta.json'), 'utf8'));
 const sfsHtml = fs.readFileSync(path.join(DIST, 'releases', 'sfs-identifiability-audit', 'index.html'), 'utf8');
