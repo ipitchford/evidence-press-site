@@ -334,6 +334,31 @@ check('unique-answer video is API-visible, privacy-enhanced and claim-calibrated
   uniqueAnswerHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/l_r0fMvFbBQ/hqdefault.jpg"'),
   `video=${uniqueAnswerVideo && uniqueAnswerVideo.url}`);
 
+const frankl = papersDoc.papers.find(p => p.slug === 'frankl-concavity-obstruction');
+const franklMeta = JSON.parse(fs.readFileSync(
+  path.join(ROOT, 'papers', 'frankl-concavity-obstruction', 'meta.json'), 'utf8'));
+const franklAudioFile = path.join(ROOT, 'assets', 'audio', 'frankl-concavity-obstruction.mp3');
+const franklTranscriptFile = path.join(ROOT, 'assets', 'audio', 'frankl-concavity-obstruction.txt');
+const franklReceiptFile = path.join(ROOT, 'assets', 'audio', 'frankl-concavity-obstruction.provenance.json');
+const franklAudio = fs.readFileSync(franklAudioFile);
+const franklTranscript = fs.readFileSync(franklTranscriptFile, 'utf8');
+const franklReceipt = JSON.parse(fs.readFileSync(franklReceiptFile, 'utf8'));
+const franklAudioHash = crypto.createHash('sha256').update(franklAudio).digest('hex');
+const franklVersion = franklAudioHash.slice(0, 10);
+const franklHtml = fs.readFileSync(path.join(DIST, 'releases', 'frankl-concavity-obstruction', 'index.html'), 'utf8');
+check('Frankl briefing uses the declared OpenAI British house voice with byte-bound provenance',
+  frankl && franklMeta.audioVoiceLabel === 'OpenAI API synthetic voice (fable)' &&
+  franklMeta.audioContentVersioned === true &&
+  frankl.audioUrl === `https://evidencepress.org/assets/audio/frankl-concavity-obstruction.mp3?v=${franklVersion}` &&
+  franklTranscript === `${franklMeta.narration.trim()}\n` &&
+  franklReceipt.provider === 'openai' && franklReceipt.model === 'gpt-4o-mini-tts' &&
+  franklReceipt.voice === 'fable' && franklReceipt.audioSha256 === franklAudioHash &&
+  franklReceipt.audioBytes === franklAudio.length &&
+  franklHtml.includes('Narrated summary · OpenAI API synthetic voice (fable)') &&
+  franklHtml.includes('Replaced the original macOS Daniel narration') &&
+  (franklHtml.match(/<audio\b/g) || []).length === 1,
+  `audioUrl=${frankl && frankl.audioUrl} sha256=${franklAudioHash}`);
+
 const walesAudit = papersDoc.papers.find(p => p.slug === 'wales-20mph-casualty-attribution');
 const walesVideo = walesAudit && walesAudit.media.find(item => item.type === 'video');
 const walesHtml = fs.readFileSync(path.join(DIST, 'releases', 'wales-20mph-casualty-attribution', 'index.html'), 'utf8');

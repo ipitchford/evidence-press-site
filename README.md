@@ -44,7 +44,8 @@ Release metadata is validated against strict authoring contracts *before* any fi
 6. Optional but recommended, run the asset generators (outputs are committed):
    - `node tools/make-art.js` — regenerate SVG cover art (add a motif function for the new slug, or copy an existing one).
    - `node tools/make-og.js` — regenerate Open Graph card PNGs (needs Playwright + Chromium).
-   - `OPENAI_API_KEY=... node tools/make-audio.js` — generate the narrated audio briefing (skips existing files; `--force` regenerates).
+   - `node tools/make-audio.js --force <slug>` — generate the narrated audio briefing through the OpenAI API house profile (`gpt-4o-mini-tts`, British `fable` voice; requires `OPENAI_API_KEY`). The command writes the MP3, exact transcript and a byte-binding provenance receipt. It never falls back to an operating-system voice.
+   - `node tools/make-audio.js --check <slug>` — verify the committed provider/model/voice declaration and the transcript and MP3 hashes without an API key.
 7. Run `node tools/test-operating-model.js`, then `REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh`, and check `dist/` locally (`python3 -m http.server -d dist 8000`).
 8. Commit the candidate. Publication remains a separate, explicitly authorised action and must use `./tools/deploy.sh`. See *Before you deploy* below.
 
