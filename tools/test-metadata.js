@@ -381,6 +381,17 @@ check('full e=3 video is API-visible, privacy-enhanced and evidence-calibrated',
   fullE3Html.includes('"thumbnailUrl": "https://i.ytimg.com/vi/P3Ozi6Dp9hQ/hqdefault.jpg"'),
   `video=${fullE3Video && fullE3Video.url}`);
 
+const bilateral = papersDoc.papers.find(p => p.slug === 'bilateral-deficiency-regular-dim');
+const bilateralVideo = bilateral && bilateral.media.find(item => item.type === 'video');
+const bilateralHtml = fs.readFileSync(path.join(DIST, 'releases', 'bilateral-deficiency-regular-dim', 'index.html'), 'utf8');
+check('bilateral-deficiency video is API-visible, privacy-enhanced and evidence-calibrated',
+  bilateralVideo && bilateralVideo.url === 'https://youtu.be/kPqHgEkKEY8' &&
+  bilateralVideo.description.includes('not additional mathematical evidence') &&
+  (bilateralHtml.match(/<iframe\b/g) || []).length === 1 &&
+  bilateralHtml.includes('src="https://www.youtube-nocookie.com/embed/kPqHgEkKEY8?rel=0"') &&
+  bilateralHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/kPqHgEkKEY8/hqdefault.jpg"'),
+  `video=${bilateralVideo && bilateralVideo.url}`);
+
 const sfsAudit = papersDoc.papers.find(p => p.slug === 'sfs-identifiability-audit');
 const sfsMeta = JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', 'sfs-identifiability-audit', 'meta.json'), 'utf8'));
 const sfsHtml = fs.readFileSync(path.join(DIST, 'releases', 'sfs-identifiability-audit', 'index.html'), 'utf8');
