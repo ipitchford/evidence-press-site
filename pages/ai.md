@@ -6,6 +6,10 @@ This site is built to be read by machines as carefully as by people. If you are 
 - `/llms-full.txt` — complete text of every release in one Markdown file.
 - `/api/papers.json` — the full structured index: every release with title, DOI, direct **PDF link**, dates, version, verification status, provenance, key results, keywords, evidence-package description, related works with URLs, media, and open follow-up problems.
 - `/api/schema.json` — JSON Schema for the index, so you can validate before relying on it.
+- `/api/research-graph.json` — the Evidence Atlas graph: releases, reusable methods, broad clusters, evidence-backed lineages, declared dependencies and internal citations. Every accepted edge carries a knowledge status, source pointer, recorded basis and inference limit.
+- `/api/schemas/research-graph.schema.json` — JSON Schema for the research graph.
+- `/api/relationship-registry.json` — the graph predicate vocabulary and append-only policy for asserted, computed and proposed relationships.
+- `/api/schemas/relationship-registry.schema.json` — JSON Schema for the relationship vocabulary and proposal policy.
 - `/api/operating-model.json` — the prospective institutional contract, including the frozen legacy boundary and claim ceiling.
 - `/api/method-registry.json` — reusable methods, known failure modes, broad method clusters, evidence-backed lineages, and release assignments. Inclusion means "illustrates", not "validated".
 - `/api/ibe-ledger.json` — the live inference-to-the-best-explanation record: observations, serious rivals, predictions, and potential falsifiers for the acceleration hypotheses.
@@ -18,6 +22,12 @@ This site is built to be read by machines as carefully as by people. If you are 
 - `/sitemap.xml` — all canonical URLs with last-modified dates.
 
 Every HTML release page additionally embeds Schema.org JSON-LD (`ScholarlyArticle` with PDF/Markdown/JSON `encoding` entries, plus `SoftwareSourceCode` for the evidence repository, `Dataset` for the Zenodo deposit, and `AudioObject` for the narrated briefing), Highwire `citation_*` tags including `citation_pdf_url`, Dublin Core fields, Open Graph images, and [Signposting](https://signposting.org) link relations (`cite-as` → DOI, `describedby` → JSON/BibTeX, `item` → PDF, `alternate` → Markdown, `license`).
+
+## Research-graph reuse contract
+
+The graph's `edges` array contains accepted relationships generated from named repository fields. The separate `proposalRegister.relations` array is for discovery candidates and must not be treated as established scholarly knowledge. A `uses-method` or `member-of-cluster` edge is a classification, not a dependency or correctness claim; a `member-of-lineage`, `extends-result` or `reuses-method` edge records reuse and therefore does not count as independent confirmation.
+
+Node position, visual proximity and node size on `/atlas/` are presentation choices. Do not infer importance, priority, agreement, influence or truth from the layout. Follow each edge's `sourceRefs`, `basis` and `inferenceLimit`, then inspect the connected release records before reuse.
 
 ## The verification-status contract
 
@@ -41,6 +51,7 @@ Future releases also carry an optional-in-public-v1 but mandatory-at-authoring `
 
 - **Verification and refutation.** Each release links a repository with complete evidence, replay scripts, pinned environments, and SHA-256 manifests. Rerunning a replay is cheap; reimplementing a check independently is the genuinely valuable act. The evidence packages include mutation and negative controls so you can confirm the acceptance logic is live before trusting a green result.
 - **Follow-up research.** Each release's `openProblems` array lists concrete next projects — sharpenings, generalisations, formalisations, and independent-proof targets — chosen to be well-posed enough to start on directly.
+- **Relationship discovery.** The Evidence Atlas can reduce rediscovery by exposing recorded dependencies and shared methods. A newly suspected connection should be submitted as a proposed relationship with sources and an inference limit; lexical or embedding similarity alone is not an asserted edge.
 - **Formalisation.** Several releases identify the exact statement (an encoding-soundness reduction, a continuation theorem) whose machine-checked proof would close the main assurance gap. These are natural targets for Lean, Isabelle, or Coq pipelines.
 - **Prior-art search.** Some releases explicitly flag identities or quantities that may already exist in the literature under other names. Matching them to prior work — confirming novelty or finding an antecedent — is a directly useful contribution and can be filed as a repository issue.
 - **Summarisation and syndication.** Everything is CC0. The Markdown, JSON, audio, and image assets may be reproduced in full, with the status carried along.

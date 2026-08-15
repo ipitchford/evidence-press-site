@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0",
+  "updated": "2026-08-15",
+  "status": "prospective-relationship-register",
+  "claimCeiling": "The atlas records declared classifications, citations and dependencies. A displayed connection does not establish correctness, novelty, priority, independent confirmation, causal influence or real-world impact.",
+  "knowledgeStatuses": {
+    "asserted": "A named repository field explicitly records the relationship.",
+    "computed": "A deterministic rule proposes a structural relationship from declared inputs; it remains distinct from an asserted scholarly relationship.",
+    "proposed": "A person or agent has nominated a relationship for review; it is not part of the accepted Evidence Press graph."
+  },
+  "predicates": [
+    {
+      "id": "uses-method",
+      "label": "uses method",
+      "inverseLabel": "illustrated by",
+      "directed": true,
+      "meaning": "The method registry assigns the release to this reusable method.",
+      "inferenceLimit": "Assignment means that the release illustrates the method; it does not validate the method or the research result."
+    },
+    {
+      "id": "member-of-cluster",
+      "label": "shares broad cluster",
+      "inverseLabel": "contains release",
+      "directed": true,
+      "meaning": "The method registry places the release in a broad operational or thematic cluster.",
+      "inferenceLimit": "A cluster is not an evidence-backed dependency, common provenance, independent confirmation or research lineage."
+    },
+    {
+      "id": "member-of-lineage",
+      "label": "belongs to lineage",
+      "inverseLabel": "has programme member",
+      "directed": true,
+      "meaning": "The release is an explicitly registered member of an evidence-backed research programme.",
+      "inferenceLimit": "Lineage reuse is correlated evidence, not independent confirmation; a shared defect can propagate through the programme."
+    },
+    {
+      "id": "extends-result",
+      "label": "extends result",
+      "inverseLabel": "is extended by",
+      "directed": true,
+      "meaning": "The child release explicitly declares that it extends a bounded result from the parent.",
+      "inferenceLimit": "The child inherits the stated assurance ceiling and is not independent confirmation of the parent."
+    },
+    {
+      "id": "reuses-method",
+      "label": "reuses method",
+      "inverseLabel": "method reused by",
+      "directed": true,
+      "meaning": "The release explicitly declares reuse of a method or workflow from another release.",
+      "inferenceLimit": "Method reuse does not transfer correctness, review or impact evidence between releases."
+    },
+    {
+      "id": "cites-related-release",
+      "label": "cites related release",
+      "inverseLabel": "is cited as related by",
+      "directed": true,
+      "meaning": "The release metadata cites another Evidence Press release as related work.",
+      "inferenceLimit": "A citation records an authored relationship claim; it does not by itself establish dependence, priority, agreement or correctness."
+    }
+  ],
+  "assertedRelations": [],
+  "computedRelations": [],
+  "proposedRelations": [],
+  "proposalPolicy": {
+    "requiredFields": [
+      "id",
+      "source",
+      "target",
+      "predicate",
+      "basis",
+      "evidenceRefs",
+      "proposedAt",
+      "proposedBy",
+      "reviewState"
+    ],
+    "reviewStates": [
+      "awaiting-review",
+      "accepted-as-asserted",
+      "rejected",
+      "superseded"
+    ],
+    "publicationRule": "Proposed and computed relationships must remain visually and machine-readably distinct. A proposal enters the asserted graph only through an additive reviewed record with a resolvable source basis."
+  },
+  "updatePolicy": {
+    "mode": "append-only-semantic-history",
+    "rules": [
+      "Generate method, cluster, lineage, parent and internal-citation edges from their canonical source records; do not duplicate them manually here.",
+      "Do not infer dependence, priority, correctness, agreement or common provenance from topical or lexical similarity.",
+      "Do not silently promote a computed or proposed relationship to asserted.",
+      "Retain rejected and superseded proposals with their review state when proposals are first published.",
+      "Use a new predicate identifier for a semantic replacement rather than redefining a published predicate in place."
+    ]
+  },
+  "changeLog": [
+    {
+      "date": "2026-08-15",
+      "summary": "Established the Evidence Atlas predicate vocabulary, three-way knowledge-status boundary and empty prospective proposal register; all first-release edges are generated from existing repository assertions."
+    }
+  ]
+}

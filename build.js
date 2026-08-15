@@ -11,11 +11,18 @@ const {
   loadArtifacts: loadOperatingArtifacts,
   validateAll: validateOperatingModel
 } = require('./tools/operating-model');
+const {
+  loadRelationshipArtifacts,
+  validateRelationshipRegistry,
+  buildResearchGraph,
+  validateResearchGraph
+} = require('./tools/research-graph');
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const OPERATING_ARTIFACTS = loadOperatingArtifacts(ROOT);
+const RELATIONSHIP_ARTIFACTS = loadRelationshipArtifacts(ROOT);
 const METHOD_BY_ID = new Map(OPERATING_ARTIFACTS.registry.methods.map(method => [method.id, method]));
 const IBE_BY_ID = new Map(OPERATING_ARTIFACTS.ledger.hypotheses.map(hypothesis => [hypothesis.id, hypothesis]));
 const WORK_ATTEMPT_BY_ID = new Map(OPERATING_ARTIFACTS.workLedger.attempts.map(attempt => [attempt.attemptId, attempt]));
@@ -571,6 +578,24 @@ function linkset(p) {
 
 validatePapers(papers);
 validateOperatingModel({ root: ROOT, papers, artifacts: OPERATING_ARTIFACTS });
+const RELATIONSHIP_REGISTRY_ERRORS = validateRelationshipRegistry(RELATIONSHIP_ARTIFACTS.registry);
+if (RELATIONSHIP_REGISTRY_ERRORS.length) {
+  throw new Error(`Evidence Atlas relationship registry failed validation:\n- ${RELATIONSHIP_REGISTRY_ERRORS.join('\n- ')}`);
+}
+const RESEARCH_GRAPH = buildResearchGraph({
+  papers,
+  methodRegistry: OPERATING_ARTIFACTS.registry,
+  relationshipRegistry: RELATIONSHIP_ARTIFACTS.registry,
+  baseUrl: BASE,
+  sourceCommit: BUILD.sourceCommitFull,
+  sourceDate: BUILD.sourceDate
+});
+const RESEARCH_GRAPH_ERRORS = validateResearchGraph(RESEARCH_GRAPH, {
+  relationshipRegistry: RELATIONSHIP_ARTIFACTS.registry
+});
+if (RESEARCH_GRAPH_ERRORS.length) {
+  throw new Error(`Evidence Atlas graph failed validation:\n- ${RESEARCH_GRAPH_ERRORS.join('\n- ')}`);
+}
 
 
 /* ---------------------------------------------------------------- bibtex */
@@ -621,6 +646,7 @@ ${JSON.stringify(jsonld, null, 1)}
     <a class="brand" href="/"><span class="brand-mark">E</span> ${esc(CONFIG.siteName)}</a>
     <nav>
       <a href="/">Releases</a>
+      <a href="/atlas/">Atlas</a>
       <a href="/about/">About</a>
       <a href="/operating-model/">Operating model</a>
       <a href="/observatory/">Observatory</a>
@@ -637,7 +663,7 @@ const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
     <p>${esc(CONFIG.siteName)} publishes plain-language and specialist briefings on new research released with complete, replayable evidence. Nothing here has been peer reviewed; every page says exactly what has and has not been checked.</p>
-    <p>Site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">RSS</a> · <a href="/feed.json">JSON Feed</a> · <a href="/sitemap.xml">sitemap</a></p>
+    <p>Site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">RSS</a> · <a href="/feed.json">JSON Feed</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
 </footer>
@@ -780,6 +806,8 @@ const assetV = file => fileVersion(path.join(ROOT, 'assets', file));
 const CSS_V = assetV('style.css');
 const JS_V = assetV('js/site.js');
 const MATH_JS_V = assetV('js/math.js');
+const ATLAS_CSS_V = assetV('atlas.css');
+const ATLAS_JS_V = assetV('js/atlas.js');
 
 /* YouTube URL -> video id (watch, youtu.be, embed, shorts, live) */
 function youtubeId(u) {
@@ -1200,6 +1228,11 @@ ${Array.from({ length: 9 }, (_, k) => {
 <section class="wrap programme-band" aria-labelledby="programme-title">
   <h2 id="programme-title" class="sr-only">Standing programme</h2>
   <div class="programme-cards">
+    <a class="programme-card" href="/atlas/">
+      <p class="card-date">Research map · ${RESEARCH_GRAPH.stats.releaseCount} releases · source-driven</p>
+      <h3>Evidence Atlas</h3>
+      <p>Trace declared methods, broad clusters, evidence-backed lineages, parent dependencies and internal citations. Every connection exposes its basis and inference limit.</p>
+    </a>
     <a class="programme-card" href="/observatory/">
       <p class="card-date">Research programme · 2 August 2026</p>
       <h3>Policy Identification Observatory</h3>
@@ -1228,6 +1261,147 @@ ${Array.from({ length: 9 }, (_, k) => {
 </section>
 ${foot}`;
   write('index.html', html);
+}
+
+/* ------------------------------------------------------ Evidence Atlas */
+function atlasPage() {
+  const url = `${BASE}/atlas/`;
+  const nodeById = new Map(RESEARCH_GRAPH.nodes.map(node => [node.id, node]));
+  const relationshipRows = RESEARCH_GRAPH.edges.map(edge => {
+    const source = nodeById.get(edge.source);
+    const target = nodeById.get(edge.target);
+    const predicate = RESEARCH_GRAPH.predicates.find(item => item.id === edge.predicate);
+    return `<tr data-atlas-edge-row="${escAttr(edge.id)}">
+      <td><a href="${escAttr(source.url)}">${esc(source.label)}</a></td>
+      <td>${esc(predicate ? predicate.label : edge.predicate)}</td>
+      <td><a href="${escAttr(target.url)}">${esc(target.label)}</a></td>
+      <td>${esc(edge.basis)}</td>
+      <td><span class="atlas-status">${esc(edge.knowledgeStatus)}</span></td>
+      <td><a href="${escAttr(edge.sourceRefs[0])}">source record</a></td>
+    </tr>`;
+  }).join('\n');
+  const proseSource = fs.readFileSync(path.join(ROOT, 'pages', 'atlas.md'), 'utf8');
+  const jsonld = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      websiteNode(),
+      {
+        '@type': 'CollectionPage', '@id': `${url}#page`, url,
+        name: 'Evidence Atlas',
+        description: 'An interactive, source-driven map of Evidence Press releases, methods, clusters, lineages, dependencies and internal citations.',
+        isPartOf: { '@id': `${BASE}/#website` },
+        mainEntity: { '@id': `${url}#graph` },
+        inLanguage: CONFIG.language,
+        license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+      },
+      {
+        '@type': 'Dataset', '@id': `${url}#graph`, name: RESEARCH_GRAPH.title,
+        description: RESEARCH_GRAPH.description, url: `${BASE}/api/research-graph.json`,
+        distribution: [{
+          '@type': 'DataDownload', contentUrl: `${BASE}/api/research-graph.json`,
+          encodingFormat: 'application/json'
+        }],
+        identifier: RESEARCH_GRAPH.graphId,
+        dateModified: RELATIONSHIP_ARTIFACTS.registry.updated,
+        isPartOf: { '@id': `${BASE}/#website` },
+        license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+      }
+    ]
+  };
+  const extraHead = `<link rel="stylesheet" href="/assets/atlas.css?v=${ATLAS_CSS_V}">
+<link rel="describedby" type="application/json" href="${BASE}/api/research-graph.json">
+<link rel="alternate" type="text/markdown" href="${url}index.md">
+<script defer src="/assets/js/atlas.js?v=${ATLAS_JS_V}"></script>
+`;
+  const html = `${head({
+    title: `Evidence Atlas · ${CONFIG.siteName}`,
+    description: 'Explore how Evidence Press releases connect through declared methods, clusters, lineages, dependencies and citations, with inspectable provenance for every edge.',
+    canonical: url,
+    jsonld,
+    metaExtra: extraHead
+  })}
+<article class="atlas-page">
+  <header class="atlas-hero">
+    <div class="wrap">
+      <p class="atlas-kicker">Research instrument · source-driven · no inferred links</p>
+      <h1>Evidence Atlas</h1>
+      <p class="standfirst">See how the catalogue fits together—and inspect the exact record behind every connection.</p>
+      <div class="atlas-counts" role="list" aria-label="Atlas contents">
+        <span role="listitem">${RESEARCH_GRAPH.stats.releaseCount} releases</span>
+        <span role="listitem">${RESEARCH_GRAPH.stats.methodCount} reusable methods</span>
+        <span role="listitem">${RESEARCH_GRAPH.stats.clusterCount} broad clusters</span>
+        <span role="listitem">${RESEARCH_GRAPH.stats.lineageCount} evidence-backed lineages</span>
+        <span role="listitem">${RESEARCH_GRAPH.stats.edgeCount} accepted relationships</span>
+      </div>
+    </div>
+  </header>
+  <div class="wrap">
+    <aside class="atlas-boundary" aria-label="Atlas evidence boundary">
+      <strong>What a line means—and does not mean.</strong>
+      ${esc(RESEARCH_GRAPH.claimCeiling)} Geometry, proximity and node size are navigation choices, not evidence.
+    </aside>
+    <section class="atlas-workbench" aria-labelledby="atlas-instrument-title">
+      <h2 id="atlas-instrument-title" class="sr-only">Interactive research relationship instrument</h2>
+      <div class="atlas-toolbar">
+        <div class="atlas-search">
+          <label for="atlas-search">Find a release, method or programme</label>
+          <input id="atlas-search" type="search" placeholder="Try Jacobian, identification, Ramsey…" autocomplete="off">
+        </div>
+        <div>
+          <span class="atlas-view-label">View</span>
+          <div class="atlas-view-buttons" role="group" aria-label="Choose relationship view">
+            <button type="button" data-atlas-mode="programmes" aria-pressed="true">Programmes</button>
+            <button type="button" data-atlas-mode="methods" aria-pressed="false">Methods</button>
+            <button type="button" data-atlas-mode="all" aria-pressed="false">All accepted</button>
+            <button type="button" disabled title="No proposed relationships are published">Proposals (0)</button>
+          </div>
+        </div>
+        <button class="atlas-reset" id="atlas-reset" type="button">Reset focus</button>
+        <p class="atlas-toolbar-status" id="atlas-status" role="status" aria-live="polite">Loading the source graph…</p>
+      </div>
+      <div class="atlas-display">
+        <div class="atlas-stage-head"><strong>Accepted relationship projection</strong><span>Equal-sized release nodes · stable layout · select to inspect</span></div>
+        <div class="atlas-stage-scroll" tabindex="0" role="region" aria-label="Scrollable graph area">
+          <svg id="atlas-graph" viewBox="0 0 1200 720" role="group" aria-labelledby="atlas-svg-title atlas-svg-desc">
+            <title id="atlas-svg-title">Evidence Atlas relationship map</title>
+            <desc id="atlas-svg-desc">The interactive map is loading. The complete relationship register follows this instrument.</desc>
+          </svg>
+        </div>
+        <div class="atlas-legend" role="list" aria-label="Node legend">
+          <span role="listitem"><i class="atlas-swatch" aria-hidden="true"></i> R · release</span>
+          <span role="listitem"><i class="atlas-swatch method" aria-hidden="true"></i> M · method</span>
+          <span role="listitem"><i class="atlas-swatch cluster" aria-hidden="true"></i> C · broad cluster</span>
+          <span role="listitem"><i class="atlas-swatch lineage" aria-hidden="true"></i> L · evidence-backed lineage</span>
+        </div>
+      </div>
+      <aside class="atlas-inspector" id="atlas-inspector" aria-live="polite">
+        <p class="eyebrow">How to use the instrument</p>
+        <h2>Select a node or connection</h2>
+        <p>Choose a coded node to inspect its full title and accepted relationships. Choose a line to see the exact recorded basis, inference limit and source pointer.</p>
+        <p class="atlas-limit"><strong>Boundary.</strong> Geometry is navigation, not evidence. Position and node size do not express correctness, novelty, priority or impact.</p>
+      </aside>
+    </section>
+    <details class="atlas-register">
+      <summary>Accepted relationship register (${RESEARCH_GRAPH.stats.edgeCount})</summary>
+      <p class="atlas-register-note">This complete nonvisual representation is generated from the same source graph as the map. Expand it to browse every accepted edge; interactive filters may hide rows, while the unfiltered HTML retains them all.</p>
+      <div class="atlas-table-wrap">
+        <table class="atlas-table">
+          <thead><tr><th>Source</th><th>Relationship</th><th>Target</th><th>Recorded basis</th><th>Status</th><th>Provenance</th></tr></thead>
+          <tbody>${relationshipRows}</tbody>
+        </table>
+      </div>
+    </details>
+    <div class="atlas-prose">${markdown(proseSource)}</div>
+    <aside class="atlas-discovery">
+      <strong>Discovery queue: ${RESEARCH_GRAPH.proposalRegister.count} published proposals.</strong>
+      The schema and register are ready for candidate relationships, but this first release publishes none. Similarity will not be presented as fact.
+    </aside>
+  </div>
+</article>
+${foot}`;
+  write('atlas/index.html', html);
+  write('atlas/index.md', `---\ntitle: "Evidence Atlas"\nurl: ${url}\nlicense: CC0-1.0\nstatus: source-driven relationship map\ngraph: ${BASE}/api/research-graph.json\nschema: ${BASE}/api/schemas/research-graph.schema.json\n---\n\n# Evidence Atlas\n\n${RESEARCH_GRAPH.description}\n\n- Graph identity: ${RESEARCH_GRAPH.graphId}\n- Releases: ${RESEARCH_GRAPH.stats.releaseCount}\n- Accepted relationships: ${RESEARCH_GRAPH.stats.edgeCount}\n- Published proposals: ${RESEARCH_GRAPH.stats.proposedEdgeCount}\n\n${proseSource}`);
+  write('atlas/index.json', JSON.stringify(RESEARCH_GRAPH, null, 2) + '\n');
 }
 
 /* --------------------------------------------------------------- pages */
@@ -1452,7 +1626,7 @@ ${items}
 function sitemap() {
   const urls = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-10' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-10' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished }))
   ];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
@@ -1482,12 +1656,14 @@ function llms() {
   const lines = [
     `# ${CONFIG.siteName}`, '',
     `> ${CONFIG.tagline}. Every release describes an unrefereed research result with an open, replayable evidence package (code, data, exact certificates, pinned environments, SHA-256 manifests) archived with a DOI. Nothing on this site is peer reviewed; each page states exactly what has and has not been verified, and lists open follow-up problems in machine-readable form.`, '',
-    `Key endpoints: full JSON index at /api/papers.json (JSON Schema at /api/schema.json); operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-release Markdown at /releases/<slug>/index.md; per-release BibTeX at /releases/<slug>/cite.bib; RSS at /feed.xml; JSON Feed at /feed.json. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
+    `Key endpoints: full JSON index at /api/papers.json (JSON Schema at /api/schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); relationship vocabulary and proposal policy at /api/relationship-registry.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-release Markdown at /releases/<slug>/index.md; per-release BibTeX at /releases/<slug>/cite.bib; RSS at /feed.xml; JSON Feed at /feed.json. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
     '## Releases', '',
     ...papers.map(p => `- [${p.shortTitle}](${urlOf(p)}): ${p.oneLine} (PDF: ${p.pdfUrl || 'n/a'}; DOI: https://doi.org/${p.doi}; code: ${p.repoUrl}; status: unrefereed)`),
     '',
     '## Machine-readable', '',
     `- [papers.json](${BASE}/api/papers.json): full structured index — titles, DOIs, PDF links, verification status, provenance, key results, keywords, media, and open follow-up problems for every release`,
+    `- [research-graph.json](${BASE}/api/research-graph.json): releases, methods, broad clusters, evidence-backed lineages, dependencies and internal citations, with content-derived identities, source pointers and inference limits`,
+    `- [relationship-registry.json](${BASE}/api/relationship-registry.json): predicate meanings, knowledge-status boundaries and the additive proposal-review policy`,
     `- [schema.json](${BASE}/api/schema.json): JSON Schema for the index`,
     `- [operating-model.json](${BASE}/api/operating-model.json): versioned institutional contract and frozen legacy boundary`,
     `- [method-registry.json](${BASE}/api/method-registry.json): reusable methods, failure modes, broad method clusters, evidence-backed lineages and release assignments; inclusion is not validation`,
@@ -1497,6 +1673,7 @@ function llms() {
     '',
     '## About', '',
     `- [About](${BASE}/about/): what these releases are, the assurance matrix, and how to independently verify or refute one`,
+    `- [Evidence Atlas](${BASE}/atlas/): interactive and accessible map of recorded research relationships; geometry is navigation, not evidence (Markdown: ${BASE}/atlas/index.md; JSON: ${BASE}/api/research-graph.json)`,
     `- [Operating model](${BASE}/operating-model/): the prospective doctrine for accelerating checkable work, stopping non-identified work, and publishing reusable handoffs (Markdown: ${BASE}/operating-model/index.md; JSON: ${BASE}/operating-model/index.json)`,
     `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; video: ${OBSERVATORY.video.url}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
     `- [The Case for Assurance Infrastructure](${BASE}/observatory/assurance/): why verification, not generation, binds government use of AI agents — four quantitative bounds, verification economics, research avenues, and sixteen ranked projects (Markdown: ${BASE}/observatory/assurance/index.md)`,
@@ -1527,6 +1704,14 @@ function llms() {
     `- Status: ${OBSERVATORY.status}`,
     `- Included case terminal status: ${OBSERVATORY.includedCase.terminalStatus}; truth certified: ${OBSERVATORY.includedCase.truthCertified}`, '',
     OBSERVATORY_BODY, '',
+    '---', '', '# Evidence Atlas', '',
+    `- URL: ${BASE}/atlas/`,
+    `- Graph: ${BASE}/api/research-graph.json`,
+    `- Schema: ${BASE}/api/schemas/research-graph.schema.json`,
+    `- Graph identity: ${RESEARCH_GRAPH.graphId}`,
+    `- Accepted relationships: ${RESEARCH_GRAPH.stats.edgeCount}`,
+    `- Published proposals: ${RESEARCH_GRAPH.stats.proposedEdgeCount}`, '',
+    fs.readFileSync(path.join(ROOT, 'pages', 'atlas.md'), 'utf8'), '',
     '---', '', '# Evidence Press operating model', '',
     `- URL: ${BASE}/operating-model/`,
     `- Machine contract: ${BASE}/api/operating-model.json`,
@@ -1549,6 +1734,7 @@ function apiStability() {
       note: 'Unversioned paths are stable aliases kept indefinitely; they currently serve the same content as v1.',
       paths: [
         `${BASE}/api/papers.json`, `${BASE}/api/schema.json`,
+        `${BASE}/api/research-graph.json`, `${BASE}/api/relationship-registry.json`,
         `${BASE}/api/operating-model.json`, `${BASE}/api/method-registry.json`, `${BASE}/api/ibe-ledger.json`, `${BASE}/api/work-ledger.json`
       ]
     },
@@ -1561,7 +1747,7 @@ function apiStability() {
     fieldStability: {
       stable: ['slug', 'title', 'url', 'doi', 'doiUrl', 'datePublished', 'version', 'authors', 'license', 'status', 'keywords', 'verification', 'zenodoUrl', 'repoUrl'],
       extensible: ['assurance', 'media', 'provenance', 'reviews', 'relatedWorks', 'openProblems', 'keyResults', 'operatingModel'],
-      experimental: ['assurance[].question', 'assurance[].evidenceUrl']
+      experimental: ['assurance[].question', 'assurance[].evidenceUrl', 'researchGraph.proposalRegister']
     },
     deprecation: {
       procedure: 'A field to be retired is first marked deprecated here with a date, kept for at least twelve months, and only then removed in a new major version.',
@@ -1593,6 +1779,7 @@ function notFoundPage() {
   <ul>
     <li><a href="/">All releases</a> — the full catalogue, filterable by topic</li>
     <li><a href="/api/papers.json">papers.json</a> — every release as structured data</li>
+    <li><a href="/atlas/">Evidence Atlas</a> — the interactive and accessible relationship map</li>
     <li><a href="/about/">About</a> — what this site publishes, and what its assurance states mean</li>
     <li><a href="/operating-model/">Operating model</a> — the prospective doctrine, reusable method registry and defeasible inference ledger</li>
     <li><a href="/productivity/">Productivity</a> — bounded workflows with explicit assurance and work-evidence status</li>
@@ -1620,7 +1807,9 @@ function api() {
     ['operating-model.json', OPERATING_ARTIFACTS.contract],
     ['method-registry.json', OPERATING_ARTIFACTS.registry],
     ['ibe-ledger.json', OPERATING_ARTIFACTS.ledger],
-    ['work-ledger.json', OPERATING_ARTIFACTS.workLedger]
+    ['work-ledger.json', OPERATING_ARTIFACTS.workLedger],
+    ['relationship-registry.json', RELATIONSHIP_ARTIFACTS.registry],
+    ['research-graph.json', RESEARCH_GRAPH]
   ];
   for (const [name, artifact] of governanceArtifacts) {
     const payload = JSON.stringify(artifact, null, 2) + '\n';
@@ -1632,7 +1821,9 @@ function api() {
     ['method-registry.schema.json', OPERATING_ARTIFACTS.schemas.registry],
     ['ibe-ledger.schema.json', OPERATING_ARTIFACTS.schemas.ledger],
     ['work-ledger.schema.json', OPERATING_ARTIFACTS.schemas.workLedger],
-    ['release-operating-model.schema.json', OPERATING_ARTIFACTS.schemas.release]
+    ['release-operating-model.schema.json', OPERATING_ARTIFACTS.schemas.release],
+    ['relationship-registry.schema.json', RELATIONSHIP_ARTIFACTS.registrySchema],
+    ['research-graph.schema.json', RELATIONSHIP_ARTIFACTS.schema]
   ];
   for (const [name, artifact] of governanceSchemas) {
     const payload = JSON.stringify(artifact, null, 2) + '\n';
@@ -1959,6 +2150,9 @@ write('_headers', `/*
 /observatory/index.json
   Access-Control-Allow-Origin: *
 
+/atlas/index.json
+  Access-Control-Allow-Origin: *
+
 /operating-model/index.json
   Access-Control-Allow-Origin: *
 
@@ -1970,6 +2164,7 @@ write('_headers', `/*
 `);
 papers.forEach(paperPage);
 indexPage();
+atlasPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
 simplePage('operating-model/', 'Evidence Press operating model', 'A prospective, machine-enforced doctrine for accelerating checkable work, stopping non-identified work, and publishing reusable research handoffs while retaining rival explanations and falsifiers.', null, 'WebPage', {
   sourcePath: OPERATING_ARTIFACTS.contract.doctrine,
@@ -2100,4 +2295,4 @@ sitemap();
 llms();
 notFoundPage();
 api();
-console.log(`Built ${papers.length} releases plus Observatory → dist/  (paper audio: ${papers.filter(p => p.audio).length}; Observatory audio: 1; art: ${papers.filter(p => p.art).length}; og: ${papers.filter(p => p.og).length})`);
+console.log(`Built ${papers.length} releases plus Evidence Atlas and Observatory → dist/  (graph: ${RESEARCH_GRAPH.stats.nodeCount} nodes / ${RESEARCH_GRAPH.stats.edgeCount} accepted edges; paper audio: ${papers.filter(p => p.audio).length}; Observatory audio: 1; art: ${papers.filter(p => p.art).length}; og: ${papers.filter(p => p.og).length})`);
