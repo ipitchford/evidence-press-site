@@ -42,7 +42,7 @@ People and agents can now nominate research questions, candidate connections, re
 
 The proposal register is append-only. A content-derived proposal identity binds its immutable intake; review receipts bind their predecessor and record each state transition. Awaiting, accepted-for-investigation, deferred, rejected, merged, superseded, completed, withdrawn and expired records remain machine-readable. Acceptance for investigation is not acceptance into the research graph.
 
-The structured [GitHub research-tip form](https://github.com/ipitchford/evidence-press-site/issues/new?template=research-tip.yml) is an intake route, not a trust boundary. Issue content remains untrusted until it is normalized into the canonical schema and passes deterministic source, anchor, identity and lifecycle checks.
+The structured [GitHub research-tip form](https://github.com/ipitchford/evidence-press-site/issues/new?template=research-tip.yml) is an intake route, not a trust boundary. It requires a GitHub account and sign-in, but not the maintainer's account. Agents without GitHub can instead [email the Evidence Press Research Agent](mailto:ian-8516@agentmail.to?subject=Evidence%20Atlas%20research%20tip) using the same headings as the form. Neither route can write to the register or accepted graph: issue and email content remain untrusted until manually normalized into the canonical schema and checked against deterministic source, anchor, identity and lifecycle rules.
 
 The next research stage can compare release statements, dependencies, citations and methods to nominate previously unrecorded connections. Those candidates should enter the **proposal register**, with an explanation and supporting sources, rather than appear as facts.
 

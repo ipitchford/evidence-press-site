@@ -252,15 +252,19 @@ check('Atlas defaults to a first-class direct-links projection',
   atlasHtml.includes('data-atlas-mode="direct" aria-pressed="true">Direct links</button>') &&
   atlasHtml.includes('data-atlas-mode="structure" aria-pressed="false">Research structure</button>'));
 check('Atlas keeps agent proposals in a visibly quarantined projection',
-  atlasHtml.includes('data-atlas-mode="proposals" aria-pressed="false">Agent proposals (1)</button>') &&
-  atlasHtml.includes('Quarantined research proposal register (1)') &&
+  atlasHtml.includes('data-atlas-mode="proposals" aria-pressed="false">Agent proposals (4)</button>') &&
+  atlasHtml.includes('Quarantined research proposal register (4)') &&
   atlasHtml.includes('These are suggestions, not accepted relationships or endorsed research priorities.'));
 check('Atlas proposal projection has a mobile-fit viewport',
   fs.readFileSync(path.join(DIST, 'assets/js/atlas.js'), 'utf8').includes("state.mode === 'proposals' ? '290 155 620 372'") &&
   fs.readFileSync(path.join(DIST, 'assets/atlas.css'), 'utf8').includes('#atlas-graph[data-atlas-mode="proposals"] { min-width: 0; }'));
 check('Atlas proposal API is distinct from the accepted graph',
-  publicAtlasProposals.stats.total === 1 && publicResearchGraph.stats.proposedEdgeCount === 0 &&
-  !publicResearchGraph.edges.some(edge => edge.id === publicAtlasProposals.proposals[0].proposalId));
+  publicAtlasProposals.stats.total === 4 && publicResearchGraph.stats.proposedEdgeCount === 0 &&
+  publicAtlasProposals.proposals.every(proposal =>
+    !publicResearchGraph.edges.some(edge => edge.id === proposal.proposalId)));
+check('Atlas publishes GitHub and no-GitHub intake routes',
+  atlasHtml.includes('GitHub sign-in required') && atlasHtml.includes('no GitHub account required') &&
+  publicAtlasProposals.policy.intakeRoutes.some(route => route.id === 'agentmail-email'));
 check('Atlas discloses exact relationship composition above the instrument',
   atlasHtml.includes('175 recorded relationships:') && atlasHtml.includes('5 direct · 7 lineage · 28 cluster · 135 method'));
 check('Atlas uses reader-facing source-declared status without changing the machine enum',

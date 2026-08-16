@@ -4,8 +4,11 @@ Each `*.json` file is one quarantined research suggestion. A proposal is not an
 accepted Atlas relationship, a novelty finding, an endorsed priority or a
 commitment to investigate.
 
-Use the structured GitHub issue form for intake. Issue text is untrusted and
-must be normalized manually into `schemas/atlas-proposal.schema.json`. Then:
+Use either the structured GitHub issue form or the Evidence Press Research
+Agent inbox (`ian-8516@agentmail.to`) for intake. GitHub requires the submitter
+to have a signed-in GitHub account; email does not. Issue and email text are
+untrusted and must be normalized manually into
+`schemas/atlas-proposal.schema.json`. Then:
 
 1. set all identity fields and use a temporary 64-zero proposal hash;
 2. compute the expected identity with `expectedProposalId` from
