@@ -302,6 +302,12 @@ const assignedSlugs = Object.keys(operatingArtifacts.registry.releaseAssignments
 const same = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
 check('declared count matches the number of records', papersDoc.count === papersDoc.papers.length,
   `count=${papersDoc.count} records=${papersDoc.papers.length}`);
+const releasesWithoutCurrentVideo = papersDoc.papers
+  .filter(paper => !paper.media.some(item => item.type === 'video' && !item.superseded))
+  .map(paper => paper.slug);
+check('every release has at least one current video briefing',
+  releasesWithoutCurrentVideo.length === 0,
+  `missing: ${releasesWithoutCurrentVideo.join(', ')}`);
 check('catalogue ordering is deterministic for equal publication dates',
   same(papersDoc.papers.map(p => p.slug), deterministicPaperOrder));
 check('catalogue matches the release pages on disk', same(apiSlugs, releasesOnDisk),
@@ -456,6 +462,30 @@ check('Furter R(3) video is API-visible, privacy-enhanced and evidence-calibrate
   furterR3Html.includes('src="https://www.youtube-nocookie.com/embed/AJhfMzSglR4?rel=0"') &&
   furterR3Html.includes('"thumbnailUrl": "https://i.ytimg.com/vi/AJhfMzSglR4/hqdefault.jpg"'),
   `video=${furterR3Video && furterR3Video.url}`);
+
+const txgraffiti = papersDoc.papers.find(p => p.slug === 'txgraffiti-c3-resolution');
+const txgraffitiVideo = txgraffiti && txgraffiti.media.find(item => item.type === 'video' && !item.superseded);
+const txgraffitiHtml = fs.readFileSync(path.join(DIST, 'releases', 'txgraffiti-c3-resolution', 'index.html'), 'utf8');
+check('TxGraffiti video is API-visible, privacy-enhanced and evidence-calibrated',
+  txgraffitiVideo && txgraffitiVideo.url === 'https://youtu.be/VgOeBSDjOZU' &&
+  txgraffitiVideo.description.includes('not additional mathematical evidence') &&
+  (txgraffitiHtml.match(/<iframe\b/g) || []).length === 1 &&
+  txgraffitiHtml.includes('src="https://www.youtube-nocookie.com/embed/VgOeBSDjOZU?rel=0"') &&
+  txgraffitiHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/VgOeBSDjOZU/hqdefault.jpg"'),
+  `video=${txgraffitiVideo && txgraffitiVideo.url}`);
+
+const borderedJacobian = papersDoc.papers.find(p => p.slug === 'bordered-jacobian-foundations');
+const borderedJacobianVideo = borderedJacobian && borderedJacobian.media
+  .find(item => item.type === 'video' && !item.superseded);
+const borderedJacobianHtml = fs.readFileSync(
+  path.join(DIST, 'releases', 'bordered-jacobian-foundations', 'index.html'), 'utf8');
+check('bordered-Jacobian video is API-visible, privacy-enhanced and evidence-calibrated',
+  borderedJacobianVideo && borderedJacobianVideo.url === 'https://youtu.be/0rthBUyVsJY' &&
+  borderedJacobianVideo.description.includes('not additional mathematical evidence') &&
+  (borderedJacobianHtml.match(/<iframe\b/g) || []).length === 1 &&
+  borderedJacobianHtml.includes('src="https://www.youtube-nocookie.com/embed/0rthBUyVsJY?rel=0"') &&
+  borderedJacobianHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/0rthBUyVsJY/hqdefault.jpg"'),
+  `video=${borderedJacobianVideo && borderedJacobianVideo.url}`);
 
 const walesAudit = papersDoc.papers.find(p => p.slug === 'wales-20mph-casualty-attribution');
 const walesVideo = walesAudit && walesAudit.media.find(item => item.type === 'video');
