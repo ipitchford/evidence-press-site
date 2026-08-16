@@ -39,8 +39,21 @@ ok(loaded.register && validateRegister(loaded.register).length === 0,
   'assembled proposal register has a content-derived identity');
 ok(loaded.proposals.length === 4 && loaded.register.stats.total === 4,
   'four quarantined research proposals are counted exactly once');
-ok(loaded.proposals.every(proposal => proposal.currentState === 'awaiting-review' && proposal.decisionReceipts.length === 0),
-  'intake does not silently become a positive review decision');
+ok(loaded.register.stats.byState['awaiting-review'] === 1 &&
+  loaded.register.stats.byState.deferred === 1 &&
+  loaded.register.stats.byState.merged === 2 &&
+  loaded.proposals.reduce((sum, proposal) => sum + proposal.decisionReceipts.length, 0) === 3,
+  'review receipts expose one retained question, one deferral and two merged tips');
+const originalDecisionProposal = loaded.proposals.find(proposal =>
+  proposal.title === 'Decision sufficiency on observation fibres');
+ok(originalDecisionProposal.currentState === 'deferred' &&
+  originalDecisionProposal.decisionReceipts.length === 1 &&
+  originalDecisionProposal.decisionReceipts[0].fromState === 'awaiting-review',
+  'antecedent warning defers the original programme through an append-only receipt');
+const retainedQuestion = loaded.proposals.find(proposal =>
+  proposal.title === 'Is the Recht-Re metric reversal a target-sufficiency failure?');
+ok(retainedQuestion.currentState === 'awaiting-review' && retainedQuestion.decisionReceipts.length === 0,
+  'unresolved Recht-Re comparison remains quarantined without a review decision');
 ok(loaded.proposals.every(proposal =>
   !graph.edges.some(edge => edge.id === proposal.proposalId) &&
   !graph.nodes.some(node => node.id === proposal.proposalId)),
@@ -54,7 +67,7 @@ ok(loaded.policy.intakeRoutes.some(route => route.id === 'github-issue-form') &&
   'proposal policy supports GitHub and no-GitHub email intake routes');
 
 const policy = loaded.policy;
-const canonical = loaded.proposals.find(proposal => proposal.title === 'Decision sufficiency on observation fibres');
+const canonical = retainedQuestion;
 function errorsFor(mutator, rehash = false) {
   const proposal = JSON.parse(JSON.stringify(canonical));
   mutator(proposal);

@@ -74,6 +74,29 @@
     "release-pdf-not-checked-by-submitting-agent",
     "shared-vocabulary-without-shared-mechanism"
   ],
-  "currentState": "awaiting-review",
-  "decisionReceipts": []
+  "currentState": "merged",
+  "decisionReceipts": [
+    {
+      "receiptId": "ep-proposal-receipt:sha256:de401622c8a6250878c0bdb07b400acd9cebe58a308519ea3b942dcb42d226b0",
+      "sequence": 1,
+      "decidedAt": "2026-08-16T09:03:50Z",
+      "fromState": "awaiting-review",
+      "toState": "merged",
+      "reviewer": {
+        "actorType": "human-agent-collaboration",
+        "displayName": "Evidence Press producer workflow",
+        "provenanceNote": "Producer-side corpus review by the maintainer-agent workflow, informed by Fable issue 91 and direct inspection of the current manuscript and public sources; not independent mathematical review."
+      },
+      "basis": "The manuscript theorem is already expressly limited to the positive two-factor binary-form architecture, but the Evidence Press discovery copy used broader singular and higher-degree-continuation language. The proposal is merged as an additive scope and citation correction: the public summary now states the exact architecture boundary and does not classify the later Gallagher and Gao families.",
+      "evidenceRefs": [
+        "https://github.com/ipitchford/evidence-press-site/issues/91",
+        "https://arxiv.org/abs/2608.00222",
+        "https://jacobianfun.org/geometric-construction",
+        "papers/reducible-incidence-divisors/meta.json",
+        "papers/reducible-incidence-divisors/body.md"
+      ],
+      "inferenceLimit": "The correction does not establish a coordinate equivalence or inequivalence between the published slice and any external counterexample family, does not alter the theorem or proof, and does not determine novelty or correctness.",
+      "predecessorReceiptId": null
+    }
+  ]
 }

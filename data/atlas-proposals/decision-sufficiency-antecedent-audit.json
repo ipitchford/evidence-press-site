@@ -73,6 +73,26 @@
     "incomplete-source-retrieval",
     "self-audit-bias"
   ],
-  "currentState": "awaiting-review",
-  "decisionReceipts": []
+  "currentState": "merged",
+  "decisionReceipts": [
+    {
+      "receiptId": "ep-proposal-receipt:sha256:6839f6a7b78c24804482adbd359e341582023d32678f26522e95d5363e809564",
+      "sequence": 1,
+      "decidedAt": "2026-08-16T09:03:50Z",
+      "fromState": "awaiting-review",
+      "toState": "merged",
+      "reviewer": {
+        "actorType": "human-agent-collaboration",
+        "displayName": "Evidence Press producer workflow",
+        "provenanceNote": "Producer-side corpus review by the maintainer-agent workflow, informed by Fable issue 92; not independent subject-matter review or a complete antecedent audit."
+      },
+      "basis": "The negative tip was used to apply the older decision-sufficiency proposal's own stop rule. A predecessor-bound receipt now defers that programme pending direct reading of the closest antecedents and a narrower junction test; no accepted research-graph relationship was created.",
+      "evidenceRefs": [
+        "https://github.com/ipitchford/evidence-press-site/issues/92",
+        "data/atlas-proposals/decision-sufficiency-observation-fibres.json"
+      ],
+      "inferenceLimit": "Merged means the warning was incorporated into proposal governance. It does not certify every cited mapping, establish that the programme has no novel residue, or endorse any scientific claim in the issue.",
+      "predecessorReceiptId": null
+    }
+  ]
 }

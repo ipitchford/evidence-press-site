@@ -61,6 +61,28 @@
     "existing-framework-duplication",
     "self-citation-bias"
   ],
-  "currentState": "awaiting-review",
-  "decisionReceipts": []
+  "currentState": "deferred",
+  "decisionReceipts": [
+    {
+      "receiptId": "ep-proposal-receipt:sha256:1a56beec6ee0f4abf8c82c054e648e2df12cbe88da07d5410861804050d679a2",
+      "sequence": 1,
+      "decidedAt": "2026-08-16T09:03:50Z",
+      "fromState": "awaiting-review",
+      "toState": "deferred",
+      "reviewer": {
+        "actorType": "human-agent-collaboration",
+        "displayName": "Evidence Press producer workflow",
+        "provenanceNote": "Producer-side corpus review by the maintainer-agent workflow, informed by Fable issue 92; not independent subject-matter review or a literature-wide novelty audit."
+      },
+      "basis": "The proposal declared framework duplication as its cheap stop condition. Issue 92 identifies substantial antecedents across statistical sufficiency, comparison of experiments, state abstraction and stability analysis, while the existing aggregation release already describes its factorisation as elementary and not claimed new. The general-framework route is therefore deferred pending direct comparison with the closest antecedents and a narrower Pearl-Manski junction test.",
+      "evidenceRefs": [
+        "https://github.com/ipitchford/evidence-press-site/issues/92",
+        "https://proceedings.mlr.press/v48/abel16.html",
+        "https://arxiv.org/abs/2603.18551",
+        "papers/aggregation-without-sufficiency/body.md"
+      ],
+      "inferenceLimit": "This receipt records a conservative stop decision, not proof that all proposed definitions are already known, not a full novelty determination, and not a rejection of a narrower cross-field translation or Pearl-Manski junction.",
+      "predecessorReceiptId": null
+    }
+  ]
 }
