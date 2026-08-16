@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0",
   "recordType": "evidence-atlas-roadmap",
-  "updated": "2026-08-15",
+  "updated": "2026-08-16",
   "status": "active-reviewed-roadmap",
   "claimCeiling": "This roadmap records intended work and review decisions. It does not establish that an undiscovered relationship exists, that a proposed relationship is correct, or that the Atlas improves research outcomes.",
   "currentBaseline": {
-    "asOf": "2026-08-15",
+    "asOf": "2026-08-16",
     "releaseCount": 28,
     "methodCount": 13,
     "clusterCount": 13,
     "lineageCount": 2,
     "acceptedRelationshipCount": 175,
-    "publishedProposalCount": 1,
+    "publishedProposalCount": 4,
     "relationshipComposition": {
       "usesMethodCount": 135,
       "clusterMembershipCount": 28,
@@ -32,7 +32,8 @@
     "sourceRefs": [
       "data/RELATIONSHIP_REGISTRY.json",
       "data/METHOD_REGISTRY.json",
-      "papers/*/meta.json"
+      "papers/*/meta.json",
+      "data/atlas-proposals/*.json"
     ]
   },
   "principles": [
@@ -305,6 +306,27 @@
       ],
       "decision": "complete",
       "nextAction": "Publish and read back the proposal layer through the normal two-commit Evidence Press gate before beginning any bounded relationship-discovery pilot."
+    },
+    {
+      "reviewId": "atlas-review-2026-08-16-first-external-intake-batch",
+      "reviewedAt": "2026-08-16",
+      "trigger": "proposal-submitted",
+      "reviewer": "Evidence Press producer workflow",
+      "provenanceNote": "Producer-side normalization review of three public GitHub issues submitted by the maintainer with an Anthropic Claude agent. This records structurally valid intake, not independent verification of cited claims or a positive novelty, importance or tractability assessment.",
+      "baseline": {
+        "releaseCount": 28,
+        "acceptedRelationshipCount": 175,
+        "publishedProposalCount": 4
+      },
+      "observations": [
+        "Issues 91, 92 and 93 contain every required issue-form field and both submission-boundary declarations.",
+        "Each issue was normalized into a content-derived awaiting-review record that retains its public issue URL and reported human-agent provenance.",
+        "Novelty, importance and tractability remain unassessed; no decision receipt has been added and the accepted graph remains unchanged.",
+        "The issue template's requested atlas-proposal label had not existed, so GitHub omitted it; the label was created and applied to all three issues.",
+        "Because GitHub issue submission requires a signed-in GitHub account, the proposal policy now also exposes the existing AgentMail inbox as an untrusted no-GitHub email route feeding the same normalization gate."
+      ],
+      "decision": "continue",
+      "nextAction": "Publish and read back the four-record register and no-GitHub email route, then review the three new proposals separately without promoting intake completeness to scientific endorsement."
     }
   ]
 }

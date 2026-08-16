@@ -115,6 +115,20 @@ function validatePolicy(policy) {
   if ((policy.reviewStates || []).includes('accepted-as-asserted')) {
     errors.push('proposal policy may not contain accepted-as-asserted; accepted graph promotion is a separate reviewed record');
   }
+  const intakeRoutes = Array.isArray(policy.intakeRoutes) ? policy.intakeRoutes : [];
+  if (!intakeRoutes.length) errors.push('proposal policy intakeRoutes must be non-empty');
+  for (const id of duplicates(intakeRoutes.map(route => route && route.id))) errors.push(`proposal policy duplicates intake route ${id}`);
+  for (const route of intakeRoutes) {
+    if (!route || typeof route.id !== 'string' || typeof route.url !== 'string' || typeof route.trustBoundary !== 'string') {
+      errors.push('proposal policy intake route requires id, url and trustBoundary');
+    }
+  }
+  const routeById = new Map(intakeRoutes.map(route => [route && route.id, route]));
+  if (!routeById.has('github-issue-form')) errors.push('proposal policy must retain the GitHub issue intake route');
+  const emailRoute = routeById.get('agentmail-email');
+  if (!emailRoute || !/^mailto:[^?\s]+@[^?\s]+/.test(emailRoute.url || '')) {
+    errors.push('proposal policy must provide a valid AgentMail email intake route');
+  }
   return errors;
 }
 

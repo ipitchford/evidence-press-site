@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0",
+  "recordType": "evidence-atlas-research-proposal",
+  "proposalId": "ep-proposal:sha256:ccc4e1b05428eead04b85454d30580a465257ac065dc4206bda3a930bf628313",
+  "kind": "research-question",
+  "title": "Is the Recht-Re metric reversal a target-sufficiency failure?",
+  "question": "On the exact quadratic model from exact-low-length-recht-re-inequalities, does the aggregation licence's fibre-constancy criterion yield a non-vacuous condition characterising when expected-iterate norm, expected squared error and expected objective value rank two sampling schemes identically?",
+  "summary": "Instantiate the target-sufficiency criterion on a published exact metric reversal and test whether it gives a discriminating condition, merely restates that distinct risk functionals can rank schemes differently, or reduces to a known comparison-of-experiments question.",
+  "whyNow": "The Atlas places the exact metric-reversal release and the aggregation-licence release in different clusters with no accepted edge, although both expose a bounded question about when a summary preserves a decision ranking. Both artefacts are public and replayable, so the proposed falsifier is inexpensive.",
+  "submittedAt": "2026-08-16T05:31:29Z",
+  "expiresAt": "2027-02-16T00:00:00Z",
+  "submitter": {
+    "actorType": "human-agent-collaboration",
+    "displayName": "Dr Ian Pitchford and an Anthropic Claude research agent",
+    "humanContributors": [
+      "Dr Ian Pitchford"
+    ],
+    "agentContributors": [
+      {
+        "system": "Anthropic Claude",
+        "model": "claude-opus-5 during drafting; claude-fable-5 at submission",
+        "role": "Corpus comparison, bounded external literature search and proposal drafting",
+        "runRecordUrl": null,
+        "provenanceNote": "The public GitHub issue describes bounded negative searches and explicitly states that two 2026 preprint proofs were not checked. No immutable public model run record was supplied."
+      }
+    ],
+    "contactUrl": "https://github.com/ipitchford/evidence-press-site/issues/93"
+  },
+  "atlasAnchors": [
+    {
+      "nodeId": "release:exact-low-length-recht-re-inequalities",
+      "basis": "This release supplies the exact metric reversal, rational counterexample and open ranking-agreement question."
+    },
+    {
+      "nodeId": "release:aggregation-without-sufficiency",
+      "basis": "This release supplies the candidate fibre-constancy criterion to instantiate."
+    },
+    {
+      "nodeId": "release:random-reshuffling-baseline-policy",
+      "basis": "This release supplies a second recorded instance in which an ordering proxy can misrank without a bound."
+    },
+    {
+      "nodeId": "cluster:sampling-and-optimisation-diagnostics",
+      "basis": "The exact metric-reversal release belongs to this broad research cluster."
+    },
+    {
+      "nodeId": "cluster:aggregation-licence-and-target-sufficiency",
+      "basis": "The proposed criterion belongs to this separate broad cluster."
+    },
+    {
+      "nodeId": "method:counterexample-proxy-first",
+      "basis": "Both sides of the proposed comparison can be tested first on an exact published counterexample."
+    }
+  ],
+  "sourceRefs": [
+    "https://github.com/ipitchford/evidence-press-site/issues/93",
+    "https://evidencepress.org/releases/exact-low-length-recht-re-inequalities/",
+    "https://evidencepress.org/releases/aggregation-without-sufficiency/",
+    "https://proceedings.mlr.press/v23/recht12.html",
+    "https://proceedings.mlr.press/v48/abel16.html",
+    "https://arxiv.org/abs/2606.32005",
+    "https://arxiv.org/abs/2607.22620",
+    "https://arxiv.org/abs/2106.06880",
+    "https://doi.org/10.1214/aoms/1177729032"
+  ],
+  "priorArtStatus": "bounded-search",
+  "assessments": {
+    "novelty": "unassessed",
+    "importance": "unassessed",
+    "tractability": "unassessed"
+  },
+  "cheapFalsifier": "Instantiate the licence on the release's published five-factor exact counterexample for each of the three target metrics. Close the line if the admissible fibres are singletons or the criterion returns the same failure verdict for every target and instance, because it would then have no discriminating content here.",
+  "expectedInformationGain": "The exercise should determine whether target sufficiency adds a checkable agreement condition, whether the reversal is simply ordinary functional-dependent ordering, or whether the better formulation is an established Blackwell comparison-of-experiments question.",
+  "resourceEstimate": {
+    "class": "small",
+    "basis": "The first gate reuses two published and replayable artefacts and requires only a bounded exact instantiation."
+  },
+  "riskFlags": [
+    "criterion-may-be-vacuous",
+    "bounded-negative-literature-search",
+    "preprint-proofs-not-checked",
+    "rediscovery-of-comparison-of-experiments"
+  ],
+  "currentState": "awaiting-review",
+  "decisionReceipts": []
+}

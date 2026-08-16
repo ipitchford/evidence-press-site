@@ -1289,6 +1289,9 @@ function atlasPage() {
   const nodeById = new Map(RESEARCH_GRAPH.nodes.map(node => [node.id, node]));
   const publicNodeLabel = node => node.publicLabel || node.label;
   const publicKnowledgeStatus = status => status === 'asserted' ? 'source-declared' : status;
+  const proposalIntakeById = new Map(ATLAS_PROPOSALS.policy.intakeRoutes.map(route => [route.id, route]));
+  const githubProposalIntake = proposalIntakeById.get('github-issue-form');
+  const emailProposalIntake = proposalIntakeById.get('agentmail-email');
   const relationshipRows = RESEARCH_GRAPH.edges.map(edge => {
     const source = nodeById.get(edge.source);
     const target = nodeById.get(edge.target);
@@ -1472,7 +1475,7 @@ function atlasPage() {
     <div class="atlas-prose">${markdown(proseSource)}</div>
     <aside class="atlas-discovery">
       <strong>Submit a research tip without adding it to the accepted graph.</strong>
-      People and agents may use the <a href="${escAttr(ATLAS_PROPOSALS.policy.intakeRoutes[0].url)}">structured GitHub issue form</a>. Issue content is untrusted intake; canonical publication requires deterministic validation and an additive review record. <a href="${BASE}/api/atlas-proposals.json">Retrieve the proposal register</a> or <a href="${BASE}/api/schemas/atlas-proposal.schema.json">validate the proposal format</a>.
+      People and agents may use the <a href="${escAttr(githubProposalIntake.url)}">structured GitHub issue form</a> (GitHub sign-in required) or <a href="${escAttr(emailProposalIntake.url)}">email the Evidence Press Research Agent</a> (no GitHub account required). Both routes create untrusted intake; canonical publication requires manual normalization, deterministic validation and an additive review record. <a href="${BASE}/api/atlas-proposals.json">Retrieve the proposal register</a> or <a href="${BASE}/api/schemas/atlas-proposal.schema.json">validate the proposal format</a>.
     </aside>
   </div>
 </article>

@@ -37,16 +37,24 @@ const loaded = loadAtlasProposals(ROOT, graph);
 ok(loaded.errors.length === 0, 'canonical proposal files pass semantic validation', loaded.errors.join('; '));
 ok(loaded.register && validateRegister(loaded.register).length === 0,
   'assembled proposal register has a content-derived identity');
-ok(loaded.proposals.length === 1 && loaded.register.stats.total === 1,
-  'first quarantined research proposal is counted exactly once');
-ok(loaded.proposals[0].currentState === 'awaiting-review' && loaded.proposals[0].decisionReceipts.length === 0,
-  'interest does not silently become a positive review decision');
-ok(!graph.edges.some(edge => edge.id === loaded.proposals[0].proposalId) &&
-  !graph.nodes.some(node => node.id === loaded.proposals[0].proposalId),
-  'proposal identity is absent from the accepted graph');
+ok(loaded.proposals.length === 4 && loaded.register.stats.total === 4,
+  'four quarantined research proposals are counted exactly once');
+ok(loaded.proposals.every(proposal => proposal.currentState === 'awaiting-review' && proposal.decisionReceipts.length === 0),
+  'intake does not silently become a positive review decision');
+ok(loaded.proposals.every(proposal =>
+  !graph.edges.some(edge => edge.id === proposal.proposalId) &&
+  !graph.nodes.some(node => node.id === proposal.proposalId)),
+  'proposal identities are absent from the accepted graph');
+ok([91, 92, 93].every(number => loaded.proposals.some(proposal =>
+  proposal.submitter.contactUrl === `https://github.com/ipitchford/evidence-press-site/issues/${number}` &&
+  proposal.sourceRefs.includes(`https://github.com/ipitchford/evidence-press-site/issues/${number}`))),
+  'all three GitHub intake records retain their public issue provenance');
+ok(loaded.policy.intakeRoutes.some(route => route.id === 'github-issue-form') &&
+  loaded.policy.intakeRoutes.some(route => route.id === 'agentmail-email' && route.url.startsWith('mailto:')),
+  'proposal policy supports GitHub and no-GitHub email intake routes');
 
 const policy = loaded.policy;
-const canonical = loaded.proposals[0];
+const canonical = loaded.proposals.find(proposal => proposal.title === 'Decision sufficiency on observation fibres');
 function errorsFor(mutator, rehash = false) {
   const proposal = JSON.parse(JSON.stringify(canonical));
   mutator(proposal);
@@ -123,6 +131,9 @@ if (process.argv.includes('--built')) {
     atlasScript.includes('row.hidden = !textMatch;') &&
     !atlasScript.includes("var modeMatch = state.mode === 'proposals';"),
     'proposal register remains populated independently of the selected graph view');
+  ok(atlasHtml.includes('email the Evidence Press Research Agent') &&
+    atlasHtml.includes('no GitHub account required') && atlasHtml.includes('mailto:ian-8516@agentmail.to'),
+    'Atlas exposes a no-GitHub intake route without weakening quarantine');
 }
 
 console.log(failures ? `\n${failures} ATLAS PROPOSAL TEST(S) FAILED` : '\nALL ATLAS PROPOSAL TESTS PASSED');

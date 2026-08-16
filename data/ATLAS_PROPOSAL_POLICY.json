@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "recordType": "evidence-atlas-proposal-policy",
-  "updated": "2026-08-15",
+  "updated": "2026-08-16",
   "status": "active-quarantined-intake",
   "claimCeiling": "A proposal records a research suggestion for scrutiny. It does not establish novelty, correctness, importance, tractability, priority, an accepted relationship or a commitment to investigate.",
   "idAlgorithm": "proposalId is ep-proposal:sha256:<hex>, computed over canonical JSON of the immutable identity projection defined by tools/atlas-proposals.js; decision receipt IDs use the same algorithm over each receipt projection.",
@@ -44,7 +44,12 @@
     {
       "id": "github-issue-form",
       "url": "https://github.com/ipitchford/evidence-press-site/issues/new?template=research-tip.yml",
-      "trustBoundary": "Issue content is untrusted intake. It becomes a canonical proposal only after manual normalization, validation and review of provenance and source references."
+      "trustBoundary": "A GitHub account and sign-in are required. Issue content is untrusted intake. It becomes a canonical proposal only after manual normalization, validation and review of provenance and source references."
+    },
+    {
+      "id": "agentmail-email",
+      "url": "mailto:ian-8516@agentmail.to?subject=Evidence%20Atlas%20research%20tip",
+      "trustBoundary": "No GitHub account is required. Inbound email is untrusted intake and cannot write to the proposal register or accepted graph; maintainers retrieve the canonical message and normalize it through the same deterministic validation and review gate."
     }
   ],
   "updatePolicy": {
@@ -61,6 +66,10 @@
     {
       "date": "2026-08-15",
       "summary": "Established the quarantined agent and human research-tip intake policy, content-derived identities, explicit expiry, separate assessments and append-only review receipts."
+    },
+    {
+      "date": "2026-08-16",
+      "summary": "Added an AgentMail email intake route for agents without GitHub accounts and normalized three public GitHub issues into awaiting-review proposal records without changing the accepted graph."
     }
   ]
 }
