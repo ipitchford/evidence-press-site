@@ -305,8 +305,8 @@ check('declared count matches the number of records', papersDoc.count === papers
 const releasesWithoutCurrentVideo = papersDoc.papers
   .filter(paper => !paper.media.some(item => item.type === 'video' && !item.superseded))
   .map(paper => paper.slug);
-check('every release has at least one current video briefing',
-  releasesWithoutCurrentVideo.length === 0,
+check('every release has a current video except the protocol-corrected audio-only SFS release',
+  same(releasesWithoutCurrentVideo, ['sfs-identifiability-audit']),
   `missing: ${releasesWithoutCurrentVideo.join(', ')}`);
 check('catalogue ordering is deterministic for equal publication dates',
   same(papersDoc.papers.map(p => p.slug), deterministicPaperOrder));
@@ -582,14 +582,13 @@ const sfsAudioFile = path.join(ROOT, 'assets', 'audio', 'sfs-identifiability-aud
 const sfsOgFile = path.join(ROOT, 'assets', 'og', 'sfs-identifiability-audit.png');
 const sfsAudioVersion = crypto.createHash('sha256').update(fs.readFileSync(sfsAudioFile)).digest('hex').slice(0, 10);
 const sfsOgVersion = crypto.createHash('sha256').update(fs.readFileSync(sfsOgFile)).digest('hex').slice(0, 10);
-const sfsCurrentVideo = sfsAudit && sfsAudit.media.find(item => item.type === 'video' && !item.superseded);
-const sfsHistoricalVideo = sfsAudit && sfsAudit.media.find(item => item.type === 'video' && item.superseded);
-check('SFS correction binds the successor DOI, sole scholarly creator and explicit correction history',
-  sfsAudit && sfsAudit.version === '0.2.1-candidate' &&
-  sfsAudit.doi === '10.5281/zenodo.21907269' &&
-  same(sfsAudit.authors, ['Ian Pitchford']) &&
-  sfsAudit.corrections.length === 3 &&
-  sfsAudit.provenance.disclosure.includes('not public external reviews'),
+const sfsAudio = sfsAudit && sfsAudit.media.find(item => item.type === 'audio');
+check('SFS correction binds v0.3.3, Anonymous scholarship and additive history',
+  sfsAudit && sfsAudit.version === '0.3.3-candidate' &&
+  sfsAudit.doi === '10.5281/zenodo.22029532' &&
+  same(sfsAudit.authors, ['Anonymous']) &&
+  sfsAudit.corrections.length === 6 &&
+  sfsAudit.provenance.humanRole.includes('not scholarly authorship'),
   `version=${sfsAudit && sfsAudit.version} doi=${sfsAudit && sfsAudit.doi}`);
 check('SFS corrected audio and Open Graph card are content-versioned',
   sfsAudit &&
@@ -597,29 +596,27 @@ check('SFS corrected audio and Open Graph card are content-versioned',
   sfsAudit.imageUrl === `https://evidencepress.org/assets/og/sfs-identifiability-audit.png?v=${sfsOgVersion}` &&
   sfsHtml.includes(`property="og:image" content="https://evidencepress.org/assets/og/sfs-identifiability-audit.png?v=${sfsOgVersion}"`),
   `audio=${sfsAudit && sfsAudit.audioUrl} image=${sfsAudit && sfsAudit.imageUrl}`);
-check('SFS media embeds only the corrected briefing and preserves the old briefing as superseded history',
-  sfsCurrentVideo && sfsCurrentVideo.url === 'https://youtu.be/iBTcQ1Qjl_g' &&
-  sfsHistoricalVideo && sfsHistoricalVideo.url === 'https://youtu.be/QgBD6f_EGDo' &&
-  (sfsHtml.match(/<iframe\b/g) || []).length === 1 &&
-  sfsHtml.includes('src="https://www.youtube-nocookie.com/embed/iBTcQ1Qjl_g?rel=0"') &&
-  !sfsHtml.includes('src="https://www.youtube-nocookie.com/embed/QgBD6f_EGDo?rel=0"') &&
-  sfsHtml.includes('<strong>Superseded briefing:</strong>') &&
-  sfsHtml.includes('https://youtu.be/QgBD6f_EGDo'),
-  `current=${sfsCurrentVideo && sfsCurrentVideo.url} historical=${sfsHistoricalVideo && sfsHistoricalVideo.url}`);
+check('SFS active media is Evidence Press audio only, with no personal-channel video',
+  sfsAudio && sfsAudio.url === 'https://evidencepress.org/assets/audio/sfs-identifiability-audit.mp3' &&
+  !sfsAudit.media.some(item => item.type === 'video') &&
+  (sfsHtml.match(/<iframe\b/g) || []).length === 0 &&
+  !sfsHtml.includes('youtube.com') && !sfsHtml.includes('youtu.be'),
+  `media=${JSON.stringify(sfsAudit && sfsAudit.media)}`);
 check('SFS public assurance does not promote same-producer diversity to independent reimplementation',
   sfsAudit && sfsAudit.assurance.find(item => item.dimension === 'independentReimplementation').state === 'not-assessed' &&
   sfsAudit.verification.independentlyReproduced === false &&
-  sfsHtml.includes('same-producer implementation-diversity check') &&
-  sfsHtml.includes('Stage two was different: its error-model form and parameter ladder were informed by stage-one diagnostics'),
-  'expected not-assessed independent reimplementation and explicit stage-two data-contact disclosure');
+  sfsHtml.includes('same-producer expected-SFS forward routes') &&
+  sfsHtml.includes('does not adjudicate the proposed ancient human bottleneck'),
+  'expected not-assessed independent reimplementation and exact expected-summary boundary');
 check('SFS narration transcript exactly matches the corrected metadata source',
   fs.readFileSync(path.join(ROOT, 'assets', 'audio', 'sfs-identifiability-audit.txt'), 'utf8').trim() === sfsMeta.narration.trim() &&
   sfsMeta.narration.split(/\s+/).length >= 160 && sfsMeta.narration.split(/\s+/).length <= 300,
   `words=${sfsMeta.narration.split(/\s+/).length}`);
-check('SFS scholarly JSON-LD represents Ian Pitchford as a person',
-  sfsHtml.includes('"author": [') && sfsHtml.includes('"@type": "Person"') &&
-  !sfsHtml.includes('"name": "Agent collective"'),
-  'expected Person creator and no agent scholarly author');
+check('SFS scholarly JSON-LD represents Anonymous and excludes the maintainer as author',
+  sfsHtml.includes('"author": [') && sfsHtml.includes('"@type": "Organization"') &&
+  sfsHtml.includes('"name": "Anonymous"') &&
+  !sfsHtml.includes('"name": "Ian Pitchford"'),
+  'expected Anonymous creator and no maintainer scholarly author');
 
 /* ---------------------------------------- programme visual hierarchy */
 const imageSources = rel => [...fs.readFileSync(path.join(DIST, rel), 'utf8')

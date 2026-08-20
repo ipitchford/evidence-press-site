@@ -96,16 +96,16 @@ const SPECS = {
   },
   'sfs-identifiability-audit': {
     palette: 'auto',
-    kicker: ['RESEARCH RELEASE · 12 AUGUST 2026', 'POPULATION GENETICS · V0.2.1'],
-    head: ['What can a genome’s histogram', '<em>actually prove?</em>'],
-    headSize: 60,
-    sub: 'An exact identification theorem, certified bounds, and a setting-conditional audit of the disputed 900,000-year-old bottleneck.',
-    tag: 'SETTING-CONDITIONAL · UNREFEREED CANDIDATE',
+    kicker: ['CORRECTED RESEARCH RELEASE · 20 AUGUST 2026', 'POPULATION GENETICS · V0.3.3'],
+    head: ['The same spectrum.', '<em>Opposite histories.</em>'],
+    headSize: 68,
+    sub: 'Two positive histories have the same exact finite expected SFS — but opposite values for one sharp calendar-window target.',
+    tag: 'EXACT COLLISION · UNREFEREED CANDIDATE',
     hero: `
-      <div class="eq-label">most information-preserving declared setting</div>
-      <div class="eq eq-sm">ratio ∈ <span class="hl">[0.16, 0.93]</span></div>
-      <div class="note"><b>Supports depression and excludes claimed severity under this setting.</b> The full concession ladder becomes uninformative.</div>
-      <div class="eq-foot">not a model-free verdict · not independently reproduced</div>`
+      <div class="eq-label">same exact expected SFS</div>
+      <div class="eq eq-sm"><span class="hl">0.441</span> &lt; 1 &lt; <span class="hl">1.794</span></div>
+      <div class="note"><b>One calendar target says depression; the other says expansion.</b> The observation cannot choose.</div>
+      <div class="eq-foot">target-specific theorem · no human-bottleneck verdict</div>`
   },
   'certified-commitment-horizons': {
     palette: 'auto',
