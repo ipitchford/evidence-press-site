@@ -305,8 +305,8 @@ check('declared count matches the number of records', papersDoc.count === papers
 const releasesWithoutCurrentVideo = papersDoc.papers
   .filter(paper => !paper.media.some(item => item.type === 'video' && !item.superseded))
   .map(paper => paper.slug);
-check('every release has a current video except the protocol-corrected audio-only SFS release',
-  same(releasesWithoutCurrentVideo, ['sfs-identifiability-audit']),
+check('every release has a current video',
+  same(releasesWithoutCurrentVideo, []),
   `missing: ${releasesWithoutCurrentVideo.join(', ')}`);
 check('catalogue ordering is deterministic for equal publication dates',
   same(papersDoc.papers.map(p => p.slug), deterministicPaperOrder));
@@ -583,6 +583,7 @@ const sfsOgFile = path.join(ROOT, 'assets', 'og', 'sfs-identifiability-audit.png
 const sfsAudioVersion = crypto.createHash('sha256').update(fs.readFileSync(sfsAudioFile)).digest('hex').slice(0, 10);
 const sfsOgVersion = crypto.createHash('sha256').update(fs.readFileSync(sfsOgFile)).digest('hex').slice(0, 10);
 const sfsAudio = sfsAudit && sfsAudit.media.find(item => item.type === 'audio');
+const sfsVideo = sfsAudit && sfsAudit.media.find(item => item.type === 'video');
 check('SFS correction binds v0.3.3, Anonymous scholarship and additive history',
   sfsAudit && sfsAudit.version === '0.3.3-candidate' &&
   sfsAudit.doi === '10.5281/zenodo.22029532' &&
@@ -596,11 +597,16 @@ check('SFS corrected audio and Open Graph card are content-versioned',
   sfsAudit.imageUrl === `https://evidencepress.org/assets/og/sfs-identifiability-audit.png?v=${sfsOgVersion}` &&
   sfsHtml.includes(`property="og:image" content="https://evidencepress.org/assets/og/sfs-identifiability-audit.png?v=${sfsOgVersion}"`),
   `audio=${sfsAudit && sfsAudit.audioUrl} image=${sfsAudit && sfsAudit.imageUrl}`);
-check('SFS active media is Evidence Press audio only, with no personal-channel video',
+check('SFS current video is API-visible, privacy-enhanced and evidence-calibrated',
   sfsAudio && sfsAudio.url === 'https://evidencepress.org/assets/audio/sfs-identifiability-audit.mp3' &&
-  !sfsAudit.media.some(item => item.type === 'video') &&
-  (sfsHtml.match(/<iframe\b/g) || []).length === 0 &&
-  !sfsHtml.includes('youtube.com') && !sfsHtml.includes('youtu.be'),
+  sfsVideo && sfsVideo.url === 'https://youtu.be/5_cYy6CoGas' &&
+  sfsVideo.name === 'The Mathematical Collision of Genetic History' &&
+  sfsVideo.description.includes('communication aid') &&
+  sfsVideo.description.includes('not additional scientific evidence') &&
+  (sfsHtml.match(/<iframe\b/g) || []).length === 1 &&
+  sfsHtml.includes('src="https://www.youtube-nocookie.com/embed/5_cYy6CoGas?rel=0"') &&
+  sfsHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/5_cYy6CoGas/hqdefault.jpg"') &&
+  !sfsHtml.includes('iBTcQ1Qjl_g') && !sfsHtml.includes('QgBD6f_EGDo'),
   `media=${JSON.stringify(sfsAudit && sfsAudit.media)}`);
 check('SFS public assurance does not promote same-producer diversity to independent reimplementation',
   sfsAudit && sfsAudit.assurance.find(item => item.dimension === 'independentReimplementation').state === 'not-assessed' &&
