@@ -580,38 +580,43 @@ art['certified-two-item-jrp'] = (a, b) => {
 /* Two very different histories, one spectrum; and the certified band. */
 art['sfs-identifiability-audit'] = (a, b) => {
   let s = '';
-  /* Left: severe-crash history and continuous history over time. */
+  /* Left: the explicit positive n=3 histories in transformed time. */
   s += `<line x1="90" y1="300" x2="520" y2="300" stroke="#8a938f" stroke-width="1" opacity=".5"/>`;
   s += `<line x1="90" y1="80" x2="90" y2="300" stroke="#8a938f" stroke-width="1" opacity=".5"/>`;
-  s += `<path d="M 100 150 L 250 150 L 250 272 L 310 272 L 310 150 L 510 150" fill="none" stroke="${a}" stroke-width="4"/>`;
-  let smooth = 'M 100 150';
+  let plus = '';
+  let minus = '';
   for (let k = 0; k <= 41; k++) {
     const x = 100 + k * 10;
-    const y = 150 + 42 * Math.exp(-((x - 280) ** 2) / 6200);
-    smooth += ` L ${x.toFixed(1)} ${y.toFixed(1)}`;
+    const tau = k * 0.05;
+    const g = 4 * Math.exp(-tau) - 15 * Math.exp(-2 * tau) + 12 * Math.exp(-3 * tau);
+    const yp = 290 - 110 * (1 + 0.8 * g);
+    const ym = 290 - 110 * (1 - 0.8 * g);
+    plus += `${k ? ' L' : 'M'} ${x.toFixed(1)} ${yp.toFixed(1)}`;
+    minus += `${k ? ' L' : 'M'} ${x.toFixed(1)} ${ym.toFixed(1)}`;
   }
-  s += `<path d="${smooth}" fill="none" stroke="${b}" stroke-width="4" stroke-dasharray="1 0" opacity=".95"/>`;
-  s += `<text x="100" y="66" font-family="ui-monospace,monospace" font-size="16" fill="${a}">severe crash</text>`;
-  s += `<text x="290" y="66" font-family="ui-monospace,monospace" font-size="16" fill="${b}">continuous</text>`;
-  s += `<text x="100" y="340" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd" opacity=".75">two histories</text>`;
+  s += `<path d="${plus}" fill="none" stroke="${a}" stroke-width="4"/>`;
+  s += `<path d="${minus}" fill="none" stroke="${b}" stroke-width="4"/>`;
+  s += `<text x="100" y="66" font-family="ui-monospace,monospace" font-size="16" fill="${a}">h₊(τ)</text>`;
+  s += `<text x="435" y="66" font-family="ui-monospace,monospace" font-size="16" fill="${b}">h₋(τ)</text>`;
+  s += `<text x="100" y="340" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd" opacity=".75">distinct positive histories</text>`;
   /* Middle: both map to one identical spectrum (bars). */
   s += `<text x="560" y="196" font-family="ui-monospace,monospace" font-size="24" fill="#e7e5e4" opacity=".85">→</text>`;
-  for (let k = 0; k < 9; k++) {
-    const h = 150 * (1 / (k + 1)) ** 0.72;
+  for (let k = 0; k < 7; k++) {
+    const h = 142 * (1 / (k + 1)) ** 0.72;
     s += `<rect x="${610 + k * 24}" y="${300 - h}" width="15" height="${h}" fill="#e7e5e4" opacity=".8"/>`;
   }
-  s += `<text x="610" y="340" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd" opacity=".75">one spectrum</text>`;
-  /* Right: certified interval band between severity floor and baseline. */
-  s += `<line x1="880" y1="90" x2="880" y2="320" stroke="#8a938f" stroke-width="1" opacity=".5"/>`;
-  s += `<line x1="874" y1="110" x2="1130" y2="110" stroke="#d6dcdd" stroke-width="2" stroke-dasharray="8 7" opacity=".7"/>`;
-  s += `<text x="1130" y="102" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd">baseline 1.0</text>`;
-  s += `<line x1="874" y1="296" x2="1130" y2="296" stroke="${a}" stroke-width="2" stroke-dasharray="8 7" opacity=".85"/>`;
-  s += `<text x="1130" y="318" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" fill="${a}">claimed severity 0.1</text>`;
-  s += `<rect x="925" y="126" width="150" height="152" fill="${b}" opacity=".28"/>`;
-  s += `<line x1="925" y1="126" x2="1075" y2="126" stroke="${b}" stroke-width="3.5"/>`;
-  s += `<line x1="925" y1="278" x2="1075" y2="278" stroke="${b}" stroke-width="3.5"/>`;
-  s += `<text x="1000" y="208" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="${b}">[0.16, 0.93]</text>`;
-  s += `<text x="925" y="340" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd" opacity=".75">certified band</text>`;
+  s += `<text x="610" y="340" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd" opacity=".75">same expected SFS</text>`;
+  /* Right: opposite target ratios around the no-change threshold. */
+  s += `<line x1="890" y1="196" x2="1145" y2="196" stroke="#d6dcdd" stroke-width="2" opacity=".65"/>`;
+  s += `<line x1="1015" y1="100" x2="1015" y2="294" stroke="#d6dcdd" stroke-width="2" stroke-dasharray="8 7" opacity=".75"/>`;
+  s += `<circle cx="944" cy="150" r="10" fill="${a}"/>`;
+  s += `<line x1="944" y1="150" x2="1015" y2="150" stroke="${a}" stroke-width="4"/>`;
+  s += `<circle cx="1114" cy="242" r="10" fill="${b}"/>`;
+  s += `<line x1="1015" y1="242" x2="1114" y2="242" stroke="${b}" stroke-width="4"/>`;
+  s += `<text x="938" y="130" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" fill="${a}">0.441</text>`;
+  s += `<text x="1114" y="222" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" fill="${b}">1.794</text>`;
+  s += `<text x="1015" y="86" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd">no change = 1</text>`;
+  s += `<text x="888" y="340" font-family="ui-monospace,monospace" font-size="15" fill="#d6dcdd" opacity=".75">opposite calendar targets</text>`;
   return s;
 };
 
