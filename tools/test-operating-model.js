@@ -619,6 +619,57 @@ function extractFunction(source, name) {
 
 {
   publicationIntegrity.resetFailures();
+  const slug = 'corrected-successor';
+  const live = {
+    ...recordFor(slug), version: '1.0.0-candidate', doiUrl: 'https://doi.org/10.1/old',
+    url: `https://evidencepress.org/releases/${slug}/`,
+    releaseUrl: 'https://github.com/example/repo/releases/tag/v1.0.0',
+    corrections: [{ date: '2026-08-10', scope: 'presentation', summary: 'Earlier correction.', detail: 'Preserved.', fixedIn: '1.0.0-candidate' }]
+  };
+  const candidate = clone(live);
+  Object.assign(candidate, {
+    version: '1.1.0-candidate', doiUrl: 'https://doi.org/10.1/new',
+    releaseUrl: 'https://github.com/example/repo/releases/tag/v1.1.0'
+  });
+  candidate.corrections.push({
+    date: '2026-08-20', scope: 'presentation', summary: 'Retired non-compliant media.',
+    detail: 'The active release no longer links the withdrawn asset.', fixedIn: candidate.version
+  });
+  const liveAttempt = {
+    attemptId: `ep-attempt:${slug}`, releaseSlug: slug,
+    corrections: [{ at: '2026-08-10T00:00:00Z', field: 'old', reason: 'old', replacement: 'old', evidenceRefs: [] }],
+    revisions: [{ date: '2026-08-10', summary: 'Earlier correction.' }]
+  };
+  const candidateAttempt = clone(liveAttempt);
+  candidateAttempt.corrections.push({
+    at: '2026-08-20T00:00:00Z', field: 'presentation and media', reason: 'Out of protocol.',
+    replacement: 'Versioned compliant successor.',
+    evidenceRefs: [candidate.doiUrl, candidate.releaseUrl, candidate.url]
+  });
+  candidateAttempt.revisions.push({ date: '2026-08-20', summary: 'Appended corrective successor.' });
+  const liveWork = { attempts: [liveAttempt] };
+  const candidateWork = { attempts: [candidateAttempt] };
+  const authorised = publicationIntegrity.isCorrectionSuccessor(
+    live, candidate, liveWork, candidateWork, 'presentation'
+  );
+  const missingEvidence = clone(candidateWork);
+  missingEvidence.attempts[0].corrections.at(-1).evidenceRefs.pop();
+  check('versioned correction successor requires preserved dual receipts and triple-bound evidence',
+    authorised && !publicationIntegrity.isCorrectionSuccessor(
+      live, candidate, liveWork, missingEvidence, 'presentation'
+    ));
+
+  candidate.operatingModel.assuranceTarget.claimCeiling = 'Corrected bounded claim.';
+  publicationIntegrity.preserveReleaseOperatingModels(
+    [live], [candidate], new Set(), authorised ? new Set([slug]) : new Set()
+  );
+  check('authorised corrective successor may revise its prospective release record',
+    publicationIntegrity.listedFailures().length === 0,
+    publicationIntegrity.listedFailures().join('\n  '));
+}
+
+{
+  publicationIntegrity.resetFailures();
   const liveLog = [{ date: '2026-08-10', summary: 'Original published history.' }];
   const candidateLog = [{ date: '2026-08-10', summary: 'Rewritten history.' }];
   publicationIntegrity.preserveChangeLogPrefix('hostile ledger', liveLog, candidateLog);

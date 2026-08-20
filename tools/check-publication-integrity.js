@@ -286,13 +286,51 @@ function preserveMedia(label, liveItems, candidateItems) {
   }
 }
 
-function preserveLayout(label, liveHtml, nextHtml) {
+/* Corrective successors may retire a bad active surface, but only when two
+   append-only public histories independently bind the transition. The release
+   must retain its correction prefix and add a scope-specific receipt for a new
+   version/DOI. The work ledger must retain its correction/revision prefixes,
+   append both records, and cite the new DOI, GitHub release and canonical page.
+   This is deliberately stricter than accepting a free-text correction alone. */
+function isCorrectionSuccessor(live, candidate, liveWork, candidateWork, requiredScope) {
+  if (!live || !candidate || live.slug !== candidate.slug ||
+      !live.version || !candidate.version || live.version === candidate.version ||
+      !live.doiUrl || !candidate.doiUrl || live.doiUrl === candidate.doiUrl) return false;
+
+  const liveCorrections = Array.isArray(live.corrections) ? live.corrections : [];
+  const candidateCorrections = Array.isArray(candidate.corrections) ? candidate.corrections : [];
+  if (candidateCorrections.length <= liveCorrections.length ||
+      !liveCorrections.every((item, index) => isDeepStrictEqual(item, candidateCorrections[index]))) return false;
+  const addedReleaseCorrections = candidateCorrections.slice(liveCorrections.length);
+  if (!addedReleaseCorrections.some(item =>
+    item && item.scope === requiredScope && item.fixedIn === candidate.version)) return false;
+
+  const liveAttempt = (liveWork && liveWork.attempts || []).find(item => item.releaseSlug === live.slug);
+  const candidateAttempt = (candidateWork && candidateWork.attempts || []).find(item => item.releaseSlug === candidate.slug);
+  if (!liveAttempt || !candidateAttempt || liveAttempt.attemptId !== candidateAttempt.attemptId) return false;
+  const liveAttemptCorrections = Array.isArray(liveAttempt.corrections) ? liveAttempt.corrections : [];
+  const candidateAttemptCorrections = Array.isArray(candidateAttempt.corrections) ? candidateAttempt.corrections : [];
+  const liveRevisions = Array.isArray(liveAttempt.revisions) ? liveAttempt.revisions : [];
+  const candidateRevisions = Array.isArray(candidateAttempt.revisions) ? candidateAttempt.revisions : [];
+  if (candidateAttemptCorrections.length <= liveAttemptCorrections.length ||
+      !liveAttemptCorrections.every((item, index) => isDeepStrictEqual(item, candidateAttemptCorrections[index])) ||
+      candidateRevisions.length <= liveRevisions.length ||
+      !liveRevisions.every((item, index) => isDeepStrictEqual(item, candidateRevisions[index]))) return false;
+
+  const requiredEvidence = [candidate.doiUrl, candidate.releaseUrl, candidate.url];
+  return candidateAttemptCorrections.slice(liveAttemptCorrections.length).some(item => {
+    const refs = new Set(item && Array.isArray(item.evidenceRefs) ? item.evidenceRefs : []);
+    return requiredEvidence.every(reference => reference && refs.has(reference));
+  });
+}
+
+function preserveLayout(label, liveHtml, nextHtml, allowedDrops = new Set()) {
   const markers = [
     'briefings', 'media-section', 'video-embed', 'release-grid',
     'standalone-factbox', 'standalone-audio', 'page-resources'
   ];
   for (const marker of markers) {
-    if (liveHtml.includes(marker) && !nextHtml.includes(marker)) {
+    if (liveHtml.includes(marker) && !nextHtml.includes(marker) && !allowedDrops.has(marker)) {
       failures.push(`${label}: dropped live layout marker ${marker}`);
     }
   }
@@ -307,7 +345,7 @@ function requireLocalAssets(label, items) {
   }
 }
 
-function preserveReleaseOperatingModels(livePapers, candidatePapers, legacySlugs) {
+function preserveReleaseOperatingModels(livePapers, candidatePapers, legacySlugs, authorisedCorrections = new Set()) {
   const bySlug = new Map((candidatePapers || []).map(paper => [paper.slug, paper]));
   for (const live of livePapers || []) {
     const candidate = bySlug.get(live.slug);
@@ -315,7 +353,8 @@ function preserveReleaseOperatingModels(livePapers, candidatePapers, legacySlugs
     if (live.operatingModel) {
       if (!candidate.operatingModel) {
         failures.push(`release ${live.slug}: dropped its published prospective operatingModel record`);
-      } else if (!isDeepStrictEqual(live.operatingModel, candidate.operatingModel)) {
+      } else if (!isDeepStrictEqual(live.operatingModel, candidate.operatingModel) &&
+                 !authorisedCorrections.has(live.slug)) {
         failures.push(`release ${live.slug}: changed its published prospective operatingModel record; publish a linked successor instead`);
       }
     } else if (legacySlugs.has(live.slug) && candidate.operatingModel) {
@@ -506,16 +545,24 @@ async function main() {
   console.log(`Checking ${livePapers.length} live releases against candidate dist/…`);
   const legacySlugs = new Set((candidateContract && candidateContract.releasePolicy &&
     candidateContract.releasePolicy.legacyReleaseSlugs) || []);
-  preserveReleaseOperatingModels(livePapers, candidatePapers, legacySlugs);
+  const claimCorrections = new Set(livePapers.filter(live => {
+    const candidate = bySlug.get(live.slug);
+    return isCorrectionSuccessor(live, candidate, liveWork, candidateWork, 'claim');
+  }).map(paper => paper.slug));
+  preserveReleaseOperatingModels(livePapers, candidatePapers, legacySlugs, claimCorrections);
   for (const live of livePapers) {
     const candidate = bySlug.get(live.slug);
     if (!candidate) {
       failures.push(`release ${live.slug}: missing candidate record`);
       continue;
     }
-    preserveMedia(`release ${live.slug}`, live.media, candidate.media);
+    const presentationCorrection = isCorrectionSuccessor(
+      live, candidate, liveWork, candidateWork, 'presentation'
+    );
+    if (!presentationCorrection) preserveMedia(`release ${live.slug}`, live.media, candidate.media);
     if (live.audioUrl && live.audioUrl !== candidate.audioUrl &&
-        !isContentVersionedAssetSuccessor(live.audioUrl, candidate.audioUrl)) {
+        !isContentVersionedAssetSuccessor(live.audioUrl, candidate.audioUrl) &&
+        !presentationCorrection) {
       failures.push(`release ${live.slug}: changed or dropped published audio ${live.audioUrl}`);
     }
     requireLocalAssets(`release ${live.slug}`, candidate.media);
@@ -523,9 +570,12 @@ async function main() {
 
     const nextHtml = candidateHtml(live.slug);
     const liveHtml = await fetchFresh(`${BASE}/releases/${live.slug}/`, false);
-    preserveLayout(`release ${live.slug}`, liveHtml, nextHtml);
+    preserveLayout(`release ${live.slug}`, liveHtml, nextHtml,
+      presentationCorrection ? new Set(['video-embed']) : new Set());
     for (const item of live.media || []) {
-      if (item.url && !nextHtml.includes(item.url)) failures.push(`release ${live.slug}: HTML dropped ${item.url}`);
+      if (item.url && !nextHtml.includes(item.url) && !presentationCorrection) {
+        failures.push(`release ${live.slug}: HTML dropped ${item.url}`);
+      }
     }
   }
 
@@ -594,6 +644,7 @@ if (require.main === module) main().catch(error => {
 });
 
 module.exports = {
+  isCorrectionSuccessor,
   isContentVersionedAssetSuccessor,
   listedFailures,
   preserveArrayPrefix,
