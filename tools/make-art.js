@@ -372,6 +372,58 @@ art['cyclicity-root-span-low-rank'] = (a, b) => {
   return s;
 };
 
+/* Cyclicity completion: sparse inverse support passes through finite Fourier
+   ranks into block-fusion and Ritt data, with the bounded atlas kept visible. */
+art['cyclicity-support-fusion-atlas'] = (a, b) => {
+  let s = '';
+
+  /* The exceptional degree-twelve support wheel: three active channels. */
+  const cx = 190, cy = 192, radius = 126;
+  const active = new Set([1, 7, 10]);
+  for (let k = 0; k < 12; k++) {
+    const angle = -Math.PI / 2 + 2 * Math.PI * k / 12;
+    const x = cx + radius * Math.cos(angle);
+    const y = cy + radius * Math.sin(angle);
+    const on = active.has(k);
+    if (on) s += `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="${k === 7 ? b : a}" stroke-width="3" opacity=".76"/>`;
+    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${on ? 12 : 5}" fill="${on ? (k === 7 ? b : a) : '#e7e5e4'}" opacity="${on ? '.96' : '.24'}"/>`;
+  }
+  s += `<circle cx="${cx}" cy="${cy}" r="31" fill="#151a1e" stroke="#e7e5e4" stroke-width="2" opacity=".96"/>`;
+  s += `<text x="${cx}" y="${cy + 9}" text-anchor="middle" font-family="Georgia" font-size="29" fill="#e7e5e4">Σ</text>`;
+  s += `<text x="${cx}" y="372" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="${a}">Σ = {1, 7, 10}</text>`;
+
+  /* A Fourier submatrix turns active channels into exact block ranks. */
+  s += `<path d="M 337 192 H 430" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 7" opacity=".52"/>`;
+  s += `<path d="M 418 182 L 438 192 L 418 202" fill="none" stroke="#e7e5e4" stroke-width="2" opacity=".72"/>`;
+  const mx = 475, my = 72, cell = 52;
+  for (let row = 0; row < 5; row++) {
+    for (let col = 0; col < 4; col++) {
+      const phase = (row * col) % 3;
+      const colour = phase === 0 ? a : phase === 1 ? b : '#e7e5e4';
+      s += `<rect x="${mx + col * cell}" y="${my + row * cell}" width="38" height="38" rx="8" fill="${colour}" opacity="${phase === 2 ? '.20' : '.70'}"/>`;
+    }
+  }
+  s += `<path d="M 455 55 V 345 M 690 55 V 345" fill="none" stroke="#e7e5e4" stroke-width="2" opacity=".40"/>`;
+  s += `<text x="573" y="372" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4" opacity=".82">finite Fourier ranks</text>`;
+
+  /* One decomposition diamond; the full theorem classifies all eleven at rank <=3. */
+  s += `<path d="M 710 192 H 790" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 7" opacity=".52"/>`;
+  s += `<path d="M 778 182 L 798 192 L 778 202" fill="none" stroke="#e7e5e4" stroke-width="2" opacity=".72"/>`;
+  const nodes = [[925, 54, '3'], [815, 192, '1·1·1'], [1035, 192, '3'], [925, 330, '1']];
+  const edges = [[0,1],[0,2],[1,3],[2,3]];
+  for (const [i, j] of edges) {
+    const p = nodes[i], q = nodes[j];
+    s += `<line x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}" stroke="${i + j === 3 ? b : a}" stroke-width="4" opacity=".72"/>`;
+  }
+  for (let i = 0; i < nodes.length; i++) {
+    const [x, y, label] = nodes[i];
+    s += `<circle cx="${x}" cy="${y}" r="${i === 0 || i === 3 ? 30 : 38}" fill="#151a1e" stroke="${i % 2 ? b : a}" stroke-width="3"/>`;
+    s += `<text x="${x}" y="${y + 7}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="${label.length > 2 ? 17 : 23}" fill="#e7e5e4">${label}</text>`;
+  }
+  s += `<text x="925" y="388" text-anchor="middle" font-family="Georgia" font-size="19" fill="${b}">11 Ritt diamonds · 1,152 atlas cases</text>`;
+  return s;
+};
+
 /* Certified commitment horizons: a protected prefix and a later departure. */
 art['certified-commitment-horizons'] = (a, b) => {
   const xs = [110, 275, 440, 605, 770, 935, 1090];
@@ -842,6 +894,7 @@ const palette = {
   'bilateral-deficiency-regular-dim': ['#2dd4bf', '#f472b6'],
   'cyclicity-loci-exponential-periods': ['#38bdf8', '#fbbf24'],
   'cyclicity-root-span-low-rank': ['#a78bfa', '#2dd4bf'],
+  'cyclicity-support-fusion-atlas': ['#2dd4bf', '#fbbf24'],
   'certified-commitment-horizons': ['#2dd4bf', '#fbbf24'],
   'bordered-jacobian-foundations': ['#34d399', '#fbbf24'],
   'exact-smith-invariants-affine-determinant-lines': ['#34d399', '#c084fc'],

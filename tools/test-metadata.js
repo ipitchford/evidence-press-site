@@ -266,7 +266,7 @@ check('Atlas publishes GitHub and no-GitHub intake routes',
   atlasHtml.includes('GitHub sign-in required') && atlasHtml.includes('no GitHub account required') &&
   publicAtlasProposals.policy.intakeRoutes.some(route => route.id === 'agentmail-email'));
 check('Atlas discloses exact relationship composition above the instrument',
-  atlasHtml.includes('175 recorded relationships:') && atlasHtml.includes('5 direct · 7 lineage · 28 cluster · 135 method'));
+  atlasHtml.includes('186 recorded relationships:') && atlasHtml.includes('7 direct · 8 lineage · 29 cluster · 142 method'));
 check('Atlas uses reader-facing source-declared status without changing the machine enum',
   atlasHtml.includes('source-declared') && publicResearchGraph.edges.every(edge => edge.knowledgeStatus === 'asserted'));
 check('Atlas publishes deterministic missingness and its non-inference boundary',
@@ -302,12 +302,12 @@ const assignedSlugs = Object.keys(operatingArtifacts.registry.releaseAssignments
 const same = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
 check('declared count matches the number of records', papersDoc.count === papersDoc.papers.length,
   `count=${papersDoc.count} records=${papersDoc.papers.length}`);
-const releasesWithoutCurrentVideo = papersDoc.papers
-  .filter(paper => !paper.media.some(item => item.type === 'video' && !item.superseded))
+const releasesWithoutCurrentBriefing = papersDoc.papers
+  .filter(paper => !paper.media.some(item => ['audio', 'video'].includes(item.type) && !item.superseded))
   .map(paper => paper.slug);
-check('every release has a current video',
-  same(releasesWithoutCurrentVideo, []),
-  `missing: ${releasesWithoutCurrentVideo.join(', ')}`);
+check('every release has a current audio or video briefing',
+  same(releasesWithoutCurrentBriefing, []),
+  `missing: ${releasesWithoutCurrentBriefing.join(', ')}`);
 check('catalogue ordering is deterministic for equal publication dates',
   same(papersDoc.papers.map(p => p.slug), deterministicPaperOrder));
 check('catalogue matches the release pages on disk', same(apiSlugs, releasesOnDisk),
@@ -530,6 +530,43 @@ check('cyclicity-root-span video is API-visible, privacy-enhanced and evidence-c
   cyclicityRootSpanHtml.includes('src="https://www.youtube-nocookie.com/embed/ZFPFIWHWihs?rel=0"') &&
   cyclicityRootSpanHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/ZFPFIWHWihs/hqdefault.jpg"'),
   `video=${cyclicityRootSpanVideo && cyclicityRootSpanVideo.url}`);
+
+const cyclicityAtlas = papersDoc.papers.find(p => p.slug === 'cyclicity-support-fusion-atlas');
+const cyclicityAtlasMeta = JSON.parse(fs.readFileSync(
+  path.join(ROOT, 'papers', 'cyclicity-support-fusion-atlas', 'meta.json'), 'utf8'));
+const cyclicityAtlasAudioFile = path.join(ROOT, 'assets', 'audio', 'cyclicity-support-fusion-atlas.mp3');
+const cyclicityAtlasTranscriptFile = path.join(ROOT, 'assets', 'audio', 'cyclicity-support-fusion-atlas.txt');
+const cyclicityAtlasReceiptFile = path.join(ROOT, 'assets', 'audio', 'cyclicity-support-fusion-atlas.provenance.json');
+const cyclicityAtlasAudio = fs.readFileSync(cyclicityAtlasAudioFile);
+const cyclicityAtlasTranscript = fs.readFileSync(cyclicityAtlasTranscriptFile, 'utf8');
+const cyclicityAtlasReceipt = JSON.parse(fs.readFileSync(cyclicityAtlasReceiptFile, 'utf8'));
+const cyclicityAtlasAudioHash = crypto.createHash('sha256').update(cyclicityAtlasAudio).digest('hex');
+const cyclicityAtlasAudioVersion = cyclicityAtlasAudioHash.slice(0, 10);
+const cyclicityAtlasHtml = fs.readFileSync(path.join(
+  DIST, 'releases', 'cyclicity-support-fusion-atlas', 'index.html'), 'utf8');
+check('cyclicity fusion atlas preserves Anonymous scholarship and the finite-versus-all-degree boundary',
+  cyclicityAtlas && cyclicityAtlas.version === '0.5.0-candidate' &&
+  same(cyclicityAtlas.authors, ['Anonymous']) &&
+  cyclicityAtlas.status === 'unrefereed-candidate' &&
+  cyclicityAtlas.keyResults.some(item => item.includes('through degree twenty')) &&
+  cyclicityAtlas.keyResults.some(item => item.includes('remains Conjecture 13.2')) &&
+  cyclicityAtlas.assurance.find(item => item.dimension === 'independentRerun').state === 'not-assessed' &&
+  cyclicityAtlas.assurance.find(item => item.dimension === 'specialistReview').state === 'not-assessed' &&
+  cyclicityAtlasHtml.includes('The open all-degree problem') &&
+  cyclicityAtlasHtml.includes('degree thirty-two'),
+  `version=${cyclicityAtlas && cyclicityAtlas.version}`);
+check('cyclicity fusion atlas audio is version-bound and provenance-complete without an invented video',
+  cyclicityAtlas && cyclicityAtlasMeta.audioVoiceLabel === 'OpenAI API synthetic voice (fable)' &&
+  cyclicityAtlasMeta.audioContentVersioned === true &&
+  cyclicityAtlas.audioUrl === `https://evidencepress.org/assets/audio/cyclicity-support-fusion-atlas.mp3?v=${cyclicityAtlasAudioVersion}` &&
+  cyclicityAtlasTranscript === `${cyclicityAtlasMeta.narration.trim()}\n` &&
+  cyclicityAtlasReceipt.provider === 'openai' && cyclicityAtlasReceipt.model === 'gpt-4o-mini-tts' &&
+  cyclicityAtlasReceipt.voice === 'fable' && cyclicityAtlasReceipt.audioSha256 === cyclicityAtlasAudioHash &&
+  cyclicityAtlasReceipt.audioBytes === cyclicityAtlasAudio.length &&
+  !cyclicityAtlas.media.some(item => item.type === 'video') &&
+  (cyclicityAtlasHtml.match(/<iframe\b/g) || []).length === 0 &&
+  (cyclicityAtlasHtml.match(/<audio\b/g) || []).length === 1,
+  `audioUrl=${cyclicityAtlas && cyclicityAtlas.audioUrl} sha256=${cyclicityAtlasAudioHash}`);
 
 const exactSmith = papersDoc.papers.find(p => p.slug === 'exact-smith-invariants-affine-determinant-lines');
 const exactSmithVideo = exactSmith && exactSmith.media.find(item => item.type === 'video');
