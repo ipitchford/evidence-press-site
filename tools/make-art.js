@@ -408,14 +408,14 @@ art['cyclicity-root-span-low-rank'] = (a, b) => {
   return s;
 };
 
-/* Cyclicity completion: sparse inverse support passes through finite Fourier
-   ranks into the all-degree classification and its Ritt extension data. */
+/* Combined cyclicity and moment release: primitive-amplitude support passes
+   through Fourier channels to endpoint-factor and Laurent-local tests. */
 art['cyclicity-support-fusion-atlas'] = (a, b) => {
   let s = '';
 
-  /* The exceptional degree-twelve support wheel: three active channels. */
+  /* The degree-twelve rank-four amplitude from the combined manuscript. */
   const cx = 190, cy = 192, radius = 126;
-  const active = new Set([1, 7, 10]);
+  const active = new Set([1, 4, 7, 10]);
   for (let k = 0; k < 12; k++) {
     const angle = -Math.PI / 2 + 2 * Math.PI * k / 12;
     const x = cx + radius * Math.cos(angle);
@@ -426,9 +426,9 @@ art['cyclicity-support-fusion-atlas'] = (a, b) => {
   }
   s += `<circle cx="${cx}" cy="${cy}" r="31" fill="#151a1e" stroke="#e7e5e4" stroke-width="2" opacity=".96"/>`;
   s += `<text x="${cx}" y="${cy + 9}" text-anchor="middle" font-family="Georgia" font-size="29" fill="#e7e5e4">Σ</text>`;
-  s += `<text x="${cx}" y="372" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="${a}">Σ = {1, 7, 10}</text>`;
+  s += `<text x="${cx}" y="372" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="${a}">Σ(P;G) = {1, 4, 7, 10}</text>`;
 
-  /* A Fourier submatrix turns active channels into exact block ranks. */
+  /* A Fourier submatrix separates amplitude and zero-cycle channels. */
   s += `<path d="M 337 192 H 430" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 7" opacity=".52"/>`;
   s += `<path d="M 418 182 L 438 192 L 418 202" fill="none" stroke="#e7e5e4" stroke-width="2" opacity=".72"/>`;
   const mx = 475, my = 72, cell = 52;
@@ -440,23 +440,28 @@ art['cyclicity-support-fusion-atlas'] = (a, b) => {
     }
   }
   s += `<path d="M 455 55 V 345 M 690 55 V 345" fill="none" stroke="#e7e5e4" stroke-width="2" opacity=".40"/>`;
-  s += `<text x="573" y="372" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4" opacity=".82">finite Fourier ranks</text>`;
+  s += `<text x="573" y="372" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4" opacity=".82">amplitude Fourier support</text>`;
 
-  /* One decomposition diamond; the full theorem classifies all eleven at rank <=3. */
+  /* Endpoint-factor bars and a Laurent local-inverse channel. */
   s += `<path d="M 710 192 H 790" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 7" opacity=".52"/>`;
   s += `<path d="M 778 182 L 798 192 L 778 202" fill="none" stroke="#e7e5e4" stroke-width="2" opacity=".72"/>`;
-  const nodes = [[925, 54, '3'], [815, 192, '1·1·1'], [1035, 192, '3'], [925, 330, '1']];
-  const edges = [[0,1],[0,2],[1,3],[2,3]];
-  for (const [i, j] of edges) {
-    const p = nodes[i], q = nodes[j];
-    s += `<line x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}" stroke="${i + j === 3 ? b : a}" stroke-width="4" opacity=".72"/>`;
+  const heights = [58, 116, 82, 142, 70];
+  for (let i = 0; i < heights.length; i++) {
+    const x = 808 + 35 * i;
+    const h = heights[i];
+    s += `<rect x="${x}" y="${325 - h}" width="22" height="${h}" rx="7" fill="${i === 1 || i === 3 ? b : a}" opacity="${i === 1 || i === 3 ? '.92' : '.48'}"/>`;
   }
-  for (let i = 0; i < nodes.length; i++) {
-    const [x, y, label] = nodes[i];
-    s += `<circle cx="${x}" cy="${y}" r="${i === 0 || i === 3 ? 30 : 38}" fill="#151a1e" stroke="${i % 2 ? b : a}" stroke-width="3"/>`;
-    s += `<text x="${x}" y="${y + 7}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="${label.length > 2 ? 17 : 23}" fill="#e7e5e4">${label}</text>`;
+  s += `<path d="M 800 326 H 985" stroke="#e7e5e4" stroke-width="2" opacity=".42"/>`;
+  s += `<text x="895" y="366" text-anchor="middle" font-family="Georgia" font-size="18" fill="${b}">endpoint factors</text>`;
+
+  const lx = 1080, ly = 190;
+  for (let r = 28; r <= 92; r += 16) {
+    s += `<circle cx="${lx}" cy="${ly}" r="${r}" fill="none" stroke="${r % 32 === 12 ? b : a}" stroke-width="3" stroke-dasharray="${r % 32 === 12 ? '8 7' : '3 8'}" opacity="${(0.94 - r / 180).toFixed(2)}"/>`;
   }
-  s += `<text x="925" y="388" text-anchor="middle" font-family="Georgia" font-size="19" fill="${b}">all degrees · 4 extension mechanisms</text>`;
+  s += `<circle cx="${lx}" cy="${ly}" r="12" fill="${b}" opacity=".96"/>`;
+  s += `<text x="${lx}" y="${ly + 7}" text-anchor="middle" font-family="Georgia" font-size="22" fill="#151a1e">φ</text>`;
+  s += `<text x="${lx}" y="320" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="#e7e5e4">[τ^(mk−1)]</text>`;
+  s += `<text x="${lx}" y="366" text-anchor="middle" font-family="Georgia" font-size="18" fill="${a}">Laurent local channel</text>`;
   return s;
 };
 
