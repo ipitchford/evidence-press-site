@@ -1,85 +1,85 @@
 ## Summary
 
-This paper asks a basic question behind many machine-learning algorithms: is it better to shuffle a dataset and use each example once, or keep sampling examples at random? It gives the first exact account of where a leading mathematical justification for reshuffling works, where it fails, and where it recovers. It also finds something more surprising: the usual theoretical measure can say reshuffling is worse even when it actually reduces error. The proof is computer-assisted, exact, and fully replayable.
+This release connects a pure matrix-inequality classification to a broader lesson for stochastic optimisation: a statement that one sampler is “better” is incomplete until it identifies the metric, randomness protocol, instance class, stepsize and time horizon.
 
-## Summary for specialists
+The first manuscript settles the Recht–Ré inequality through five factors and proves exact six-factor divisibility families. The second develops the five-factor counterexample into a metric-aware theory of repeated random-reshuffling dynamics. On the certified rational family, the norm of the expected iterate and expected quadratic risk can rank the same sampling schemes in opposite orders.
 
-What makes this paper interesting is that it draws an exact boundary around a natural matrix inequality motivated by random reshuffling: the four-factor case always holds, the five-factor lower bound fails only at the endpoint $n=5$ and is restored from $n=6$, and six factors already yield new infinite families. The proof is backed by replayable exact certificates, while the same example reveals an important optimisation subtlety: reshuffling can worsen the norm of the expected iterate while improving expected squared error and objective value.
+This is an additive successor. The immutable v1.0.0-candidate paper and DOI remain available; v1.1.1 adds a second manuscript, repaired and extended verifier coverage, exact phase diagrams and a stronger claim-to-evidence map.
 
-## Technical summary
+## Presentation correction
 
-The Recht–Ré inequality asks whether sampling matrix-valued updates without replacement is always at least as contractive as sampling them independently with replacement. For positive semidefinite matrices $A_1, \ldots, A_n$, it compares
-
-$$
-\frac{1}{\binom{n}{m}} \sum_{\substack{i_1, \ldots, i_m \\ \text{distinct}}} A_{i_1} \cdots A_{i_m}
-$$
-
-with the corresponding with-replacement average,
+The original Evidence Press summary displayed the wrong denominator for its ordered distinct-product average. For positive semidefinite matrices $A_1,\ldots,A_n$, the normalized without-replacement expression is
 
 $$
-\left(\frac{1}{n} \sum_{i=1}^n A_i\right)^m.
+{{orderedDistinctAverageFormula}}
 $$
 
-Full random reshuffling is the special case $m = n$. The scalar analogy suggests that the without-replacement expression should have the smaller operator norm. Matrices make the problem difficult because multiplication order matters, and products of positive semidefinite matrices can have negative eigenvalues. A proof must therefore control both ends of the spectrum.
+The sum runs over ordered distinct tuples, so it contains
+$(n)_m=n(n-1)\cdots(n-m+1)=m!\binom{n}{m}$ terms. The previous display used $\binom{n}{m}$, the number of unordered subsets, and was too large by a factor of $m!$. The manuscripts and computational certificates used the correct falling-factorial normalization; this is a correction to the former web summary, not to the theorem or archived predecessor PDF.
 
-The manuscript settles the first previously unresolved product lengths:
+## Two manuscripts, one research programme
 
-- **Four factors:** the two-sided inequality holds for every $n \geq 4$.
-- **Five factors:** the upper spectral bound holds for every $n \geq 5$, but the lower bound fails at $n = 5$. An exact rational counterexample gives an eigenvalue $-285/2$, beyond the permitted $-120$. The lower bound is restored for every $n \geq 6$, so this threshold is sharp.
-- **Six factors:** the upper bound is proved when $7 \mid n$, the lower bound when $8 \mid n$, and hence the complete norm inequality whenever $56 \mid n$. The remaining six-factor cases are still open.
-
-The proof is computer-assisted but exact. It converts the matrix problem into positivity questions for noncommutative polynomials, exploits permutation symmetry to reduce their size, and supplies rational identities and positive-semidefinite certificates that can be replayed without floating-point tolerances. The accompanying package also checks the orbit classifications and representation maps through a structurally separate executable route.
-
-There is also an important optimisation lesson. On the same rational quadratic example, reshuffling produces a larger norm of the expected iterate than independent sampling, yet a smaller expected squared error and average objective value. The Recht–Ré norm comparison therefore measures one form of bias, but it is not a universal measure of algorithmic performance.
-
-## Who should care, and why
-
-The realistic audience is narrower than "people interested in machine learning", but several specialist groups have a clear reason to pay attention.
-
-| Likely audience | What should interest them | What they could do with it |
+| Manuscript | Question | Scope of the answer |
 |---|---|---|
-| Random-reshuffling and stochastic-gradient researchers | The exact quadratic example separates three quantities that theory often treats as broadly aligned: reshuffling worsens the norm of the expected iterate while improving expected squared error and the objective value. | Determine when the traditional norm proxy agrees with actual optimisation performance; identify structural assumptions that prevent the reversal; use the rational example as an adversarial test for new convergence arguments. |
-| Matrix-inequality and operator-theory researchers | A complete candidate classification for four and five factors, including the sharp failure and recovery at five factors, and a sharply defined six-factor frontier. | Close the six-factor nonmultiple cases; investigate whether the upper inequality holds more generally; classify lower-bound failures; replace parts of the computational certificate with a conceptual analytic proof. |
-| Noncommutative polynomial and sums-of-squares researchers | The work builds on the noncommutative Positivstellensatz route used by Lai and Lim — who showed the unrestricted Recht–Ré conjecture fails at five matrices — but pushes it into exact rational certificates, symmetry blocks and parametric continuation. | Generalise the free-localiser and symmetry-reduction architecture to other noncommutative inequalities; automate the orbit and representation calculations; find smaller or more intelligible certificates. |
-| Computer-assisted proof and formal-verification researchers | An unusually extensive exact replay, including mutation tests and a structurally separate semantic checker — yet still an internally checked candidate rather than an independently reproduced or formally verified proof. | Reimplement the computation independently; formalise the balanced-seed continuation theorem in Lean, Isabelle or Coq; verify the rational positivity certificates; test whether the claimed separation from the shared certificate schema is adequate. |
-| Researchers designing data-ordering schemes | Current work increasingly treats data order as something to optimise rather than merely randomise — block reshuffling and paired reversal aim to improve constants and cancel order-dependent terms. | Run those schemes on the paper's exact counterexample; ask which orderings improve all three metrics; design theoretical measures that track objective reduction rather than only the expected update operator. |
-| Randomised numerical linear algebra researchers | Recht and Ré originally connected the inequality to least-squares optimisation, stochastic gradient descent and the randomized Kaczmarz method. | Translate the low-length inequalities into short-horizon or block-iteration guarantees; test whether structured matrices arising in real linear systems avoid the pathological behaviour found in unrestricted positive-semidefinite examples. |
-| AI-assisted mathematics and reproducibility researchers | A substantial case study in moving from numerical discovery to exact, executable evidence, while explicitly documenting the limits of that evidence. | Study independent agent reproduction, certificate exchange, semantic mutation testing, claim–evidence matrices, and the transition from an executable candidate proof to an accepted theorem. |
+| *Exact Low-Length Recht–Ré Inequalities* | When does the proposed noncommutative arithmetic–geometric mean comparison hold? | Complete candidate status through five factors; balanced six-factor families. |
+| *Which Sampling Scheme Is Better? Metric-Dependent Rankings in Random Reshuffling Dynamics* | Which operator functional and sampling protocol actually determine “better” in the De Sa family? | Exact mean, Gram, replica and single-shuffle comparisons with explicit quantifiers. |
 
-## The most valuable next projects
+The first paper supplies the exact endpoint witness. The second owns the multi-epoch, stepsize, replica, single-shuffle, perturbation and simplex-family extensions. The sidebar provides separate links to both current PDFs.
 
-### 1. Characterise the metric reversal
+## Exact low-length classification
 
-This has the greatest potential significance for machine-learning theory. The important result is not simply that one inequality fails. It is that a familiar theoretical surrogate can rank two algorithms in the opposite order from expected error and objective value.
+- **Four factors:** the two-sided inequality holds for every $n\geq4$.
+- **Five factors:** the upper bound holds for every $n\geq5$. The lower bound fails at $n=5$ and is restored for every $n\geq6$, making the threshold sharp.
+- **Six factors:** the upper bound holds when $7\mid n$, the lower bound when $8\mid n$, and the complete two-sided inequality when $56\mid n$. The remaining cases are open.
 
-A useful follow-on theorem would identify conditions under which
+The proof route combines noncommutative sum-of-squares identities, permutation symmetry, exact rational positivity, a balanced-seed continuation theorem and full-matrix FLINT characteristic-polynomial certificates.
+
+## Why “better” needs a metric
+
+For a random block product $Z$, the mean propagator and Gram channel are different objects:
 
 $$
-\|\mathbb{E}[x_1]\|, \quad \mathbb{E}\|x_1\|^2, \quad \mathbb{E}[f(x_1)]
+R_s=\mathbb E_s Z,
+\qquad
+\Phi_s(H)=\mathbb E_s[Z^T HZ].
 $$
 
-must agree in their comparison of sampling schemes, and conditions under which they may diverge. Candidates include commutativity, simultaneous diagonalisation, near-identity update matrices, bounded condition number and sufficiently small step size.
+The first controls the mean iterate. The second transports a quadratic risk. With fresh independent blocks,
 
-This would connect naturally with newer trajectory-level results. For example, Liu's 2026 analysis proves that random reshuffling dominates ordinary stochastic gradient descent under the smooth-convex assumptions studied there, despite the limitations of older matrix-product proxies. The two results point towards the same conclusion: the failure of the Recht–Ré route does not imply that reshuffling performs poorly; it shows that the route measures the wrong object in some regimes.
+$$
+\mathbb E x_K=R_s^Kx_0,
+\qquad
+\mathbb E(x_K^THx_K)=x_0^T\Phi_s^K(H)x_0.
+$$
 
-### 2. Finish the six-factor classification
+Single shuffle is different again: one random permutation is drawn and its product is reused, producing the group twirl of a deterministic matrix power rather than an iterate of the fresh Gram channel. Averaging independent replicas introduces a bias–variance interpolation. Function-class convergence rates answer another question with different quantifiers.
 
-This is the cleanest continuation as pure mathematics. The current arithmetic families suggest several possible outcomes: the two-sided result extends to every sufficiently large $n$; the upper and lower bounds have different thresholds; further exceptional congruence classes contain counterexamples; or the balanced-seed method suffices only after several additional seeds are proved. The existing exact machinery narrows this into a concrete certificate-search and structural-analysis problem rather than an open-ended conjecture.
+These distinctions resolve the apparent paradox in the endpoint witness: reshuffling has the larger norm of the expected iterate, yet the smaller expected squared error and average quadratic objective.
 
-### 3. Obtain an independent proof
+## Exact dynamics results
 
-This would produce the largest immediate increase in credibility. A convincing reproduction should avoid reusing the repository's orbit encoder, certificate schema or extraction code. The strongest outcome would combine an independent implementation, formal verification of the general continuation theorem, exact checking of the finite positivity certificates, and a human-readable account of why the certificate architecture works.
+The second manuscript proves the following on its declared regular-simplex and endpoint families.
 
-## Specialist audience candidates
+- Fresh random reshuffling has a strictly smaller invariant Gram channel than with-replacement sampling for every positive epoch count on the certified five-factor family.
+- At the rational endpoint, averaging independent trajectories has an exact crossover at $r_*=145/7$ on the all-ones direction.
+- At stepsize $\eta=1$, single shuffle and fresh reshuffling agree at one epoch, while single shuffle is strictly Loewner-below fresh reshuffling for every $K\geq2$.
+- The all-horizon single-shuffle ranking persists on one uniform open neighbourhood of $\eta=1$; the theorem asserts existence with exact margins, not a claimed maximal radius.
+- At horizons $K=2$ and $K=3$, the single-shuffle versus fresh-reshuffling Gram ranking has exact isolated interior stepsize transitions near $0.815893501141$ and $0.788002536290$.
+- Symmetric factor perturbations of operator norm at most $1/8192$ preserve the strong one-epoch reversal at the endpoint, subject to the stated update-factor admissibility condition.
+- Exact rational reversal families hold for full reshuffling at $(n,k)=(5,5)$ for $\rho\in[19/20,1]$ and $(6,6)$ for $\rho\in[9/10,1]$, and for the six-step without-replacement prefix $(7,6)$ for $\rho\in[39/40,1]$. The last protocol is not a full epoch.
 
-The most natural specialist readers include researchers associated with the original Recht–Ré conjecture, the Lai–Lim counterexample and noncommutative sums-of-squares approach, and current work on random reshuffling and learned data ordering. That includes the authors of the relevant papers by Recht and Ré, Lai and Lim, Liu, and Nguyen, Phan and Kalagnanam. This identifies intellectual proximity, not a prediction that any individual will endorse the manuscript.
+The arbitrary-objective problem remains open. The package does not claim that the full Choi/Gram difference is positive semidefinite or even block positive, and it does not promote an unsupported superoperator factorization.
 
-The strongest pitch to them is:
+## What the evidence package checks
 
-> This work does two things: it determines the first unresolved finite cases of the Recht–Ré inequality, and it gives an exact example showing that the inequality's preferred metric can disagree with actual error and objective performance.
+The DOI-bound package contains both manuscripts and five exact evidence modules. Its release certificate binds both PDFs, the annotated Git tag, the complete Git tree, the deterministic archive and the clean replay receipt.
 
-That is more compelling to specialists than the general claim that the paper concerns shuffling.
+The acceptance chain includes exact stdlib and SymPy paths, a separately implemented internal semantic reconstruction, full coefficient comparisons for the six-factor characteristic polynomials, direct endpoint checks, spectral and resolvent reconstruction, bridge checks through $K_0=990$, strict tail inequalities, simplex recurrences, Bernstein positivity, ordinary and optimized Python runs, and targeted mutation controls. The final archive replayed in a fresh producer environment.
 
-## What is in the evidence package
+That is strong evidence of artifact identity and internal consistency. It is not an unaffiliated rerun, a clean-room reimplementation, formal proof-assistant verification, specialist acceptance or editorial peer review.
 
-The repository and Zenodo deposit ship exact rational sum-of-squares certificates, full-matrix positive-semidefiniteness certificates computed with FLINT characteristic polynomials, verification of all 2,312 six-factor coefficient identities, deterministic replay scripts with pinned dependencies, complete SHA-256 manifests, and mutation and negative controls that confirm the acceptance logic is live. Everything replays in exact arithmetic, without floating-point tolerances.
+## Research significance and limits
+
+The agenda-setting claim is methodological rather than universal: sampling theory should compare explicitly named operator functionals instead of treating expected iterate, expected error, objective value, replica risk and function-class rate as interchangeable.
+
+The exact examples are family-specific and metric-specific. They do not contradict convergence-rate advantages for random reshuffling under broader smooth-convex assumptions, and they do not establish a universal advantage for fresh reshuffling or single shuffle. A bounded primary-source and formula-level search found no collision for the package's exact classifications and fingerprints, but search absence does not establish novelty or priority.

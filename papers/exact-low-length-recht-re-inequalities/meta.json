@@ -1,45 +1,186 @@
 {
   "slug": "exact-low-length-recht-re-inequalities",
-  "title": "Exact low-length Recht–Ré inequalities: complete status through five factors and six-factor balanced families",
-  "shortTitle": "Exact low-length Recht–Ré inequalities",
-  "oneLine": "The first exact account of where a leading mathematical justification for shuffling data works, where it fails, and where it recovers — with a surprise: the usual theoretical measure can call reshuffling worse even when it reduces error.",
-  "abstract": "This paper asks a basic question behind many machine-learning algorithms: is it better to shuffle a dataset and use each example once, or keep sampling examples at random? It gives the first exact account of where a leading mathematical justification for reshuffling works, where it fails, and where it recovers. It also finds something more surprising: the usual theoretical measure can say reshuffling is worse even when it actually reduces error. The proof is computer-assisted, exact, and fully replayable.",
+  "title": "Exact Low-Length Recht–Ré Inequalities and Metric-Dependent Rankings in Random Reshuffling Dynamics",
+  "shortTitle": "Exact Recht–Ré inequalities and sampling dynamics",
+  "oneLine": "An exact low-length matrix-inequality classification becomes a metric-aware theory of data ordering: mean iterates, quadratic risk, fresh reshuffling, single shuffle and replica averaging can rank the same sampler differently.",
+  "abstract": "This combined unrefereed candidate contains two linked manuscripts. The first gives an exact computer-assisted classification of the Recht–Ré matrix inequality through five factors and proves balanced six-factor families. The second develops a metric-aware operator framework for random reshuffling, with exact rational examples in which a first-moment proxy ranks sampling without replacement worse while the Gram operator ranks it better. On the certified five-factor family it proves fresh-reshuffling Gram dominance for every positive epoch count, an exact replica crossover, endpoint and nearby all-horizon single-shuffle dominance, exact two- and three-epoch stepsize transitions, rational simplex families, and a perturbation radius. The package passed a clean-extraction exact replay with fail-closed verifiers and mutation controls. It has not received an unaffiliated rerun, independent reimplementation, proof-assistant verification, specialist acceptance or editorial peer review.",
+  "narration": "When is one data-ordering scheme better than another? This release shows that the answer depends on the mathematical quantity being compared. Its first paper gives an exact computer-assisted classification of the Recht–Ré matrix inequality through five factors, plus balanced six-factor families. Its second paper follows one rational counterexample into repeated optimisation dynamics. There, reshuffling can have a worse mean iterate but a better expected squared error. Fresh reshuffling beats with-replacement sampling in the certified invariant Gram channel at every positive epoch count. Reusing one permutation, called single shuffle, agrees with fresh reshuffling after one epoch but is strictly better at every later epoch at the endpoint, with exact phase transitions away from it. Averaging independent runs introduces a separate bias–variance crossover at one hundred and forty-five over seven. These are exact, family-specific and metric-specific statements, not a universal ranking of optimisation algorithms. The public archive includes both papers, exact rational certificates, separate internal verifiers, mutation controls, manifests, checksums and a clean-extraction replay receipt. Those checks establish artifact identity and producer-side internal replay. They do not establish independent reproduction, formal verification, specialist acceptance, peer review, novelty priority or real-world performance.",
   "datePublished": "2026-07-30",
-  "version": "1.0.0-candidate",
-  "doi": "10.5281/zenodo.21709239",
+  "dateModified": "2026-08-21",
+  "version": "1.1.1-candidate",
+  "doi": "10.5281/zenodo.22037371",
   "conceptDoi": "10.5281/zenodo.21709238",
-  "zenodoUrl": "https://zenodo.org/records/21709239",
-  "pdfUrl": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities/releases/download/v1.0.0-candidate/exact-low-length-recht-re-inequalities-v1.0.0-candidate.pdf",
-  "altPdfUrl": "https://raw.githubusercontent.com/ipitchford/exact-low-length-recht-re-inequalities/main/paper/exact_low_length_recht_re.pdf",
+  "zenodoUrl": "https://zenodo.org/records/22037371",
+  "pdfUrl": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities/releases/download/v1.1.1-candidate/exact-low-length-recht-re-inequalities-v1.1.1-candidate.pdf",
+  "altPdfUrl": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities/releases/download/v1.1.1-candidate/metric-aware-sampling-dynamics-v1.1.1-candidate.pdf",
+  "altPdfLabel": "Read the dynamics paper (PDF)",
   "repoUrl": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities",
-  "releaseUrl": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities/releases",
+  "releaseUrl": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities/releases/tag/v1.1.1-candidate",
   "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
   "math": true,
-  "media": [
-    { "type": "video", "url": "https://youtu.be/PXBlZLk753g", "name": "Video briefing — Exact low-length Recht–Ré inequalities", "description": "Narrated video overview of this release on the Evidence Press YouTube channel." }
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "provenance": {
+    "aiGenerated": false,
+    "aiAssisted": true,
+    "generatedBy": ["AI-assisted research, drafting and checking tools"],
+    "humanRole": "Ian Pitchford directed the research programme and maintains and publishes the repository and release infrastructure; these operational roles are not scholarly authorship.",
+    "disclosure": "Automated tools assisted research, drafting, exact computation and producer-side checking. The scholarly creator is Anonymous. Ian Pitchford is recorded only as research director, repository maintainer and publisher. No unaffiliated rerun, independent reimplementation, proof-assistant verification, verified specialist acceptance or editorial peer review has been established."
+  },
+  "problem": {
+    "name": "Metric-aware comparison of random reshuffling, with-replacement sampling and single shuffle",
+    "url": "https://proceedings.mlr.press/v23/recht12.html"
+  },
+  "orderedProductAverage": {
+    "indexing": "ordered-distinct-tuples",
+    "termCount": "(n)_m",
+    "normalizationDenominator": "(n)_m",
+    "termCountIdentity": "(n)_m = n(n-1)...(n-m+1) = m! binomial(n,m)"
+  },
+  "keywords": [
+    "Recht–Ré conjecture",
+    "matrix inequalities",
+    "random reshuffling",
+    "single shuffle",
+    "sampling without replacement",
+    "stochastic gradient descent",
+    "Gram channel",
+    "quadratic risk",
+    "noncommutative sums of squares",
+    "exact certificates",
+    "computer-assisted proof",
+    "reproducible research"
   ],
-  "problem": { "name": "Recht–Ré noncommutative arithmetic–geometric mean conjecture (low-length cases)", "url": "https://doi.org/10.48550/arXiv.1202.4184" },
-  "keywords": ["Recht–Ré conjecture", "matrix inequalities", "random reshuffling", "stochastic gradient descent", "noncommutative sums of squares", "positive semidefinite matrices", "computer-assisted proof", "exact arithmetic", "sum-of-squares certificates", "semidefinite programming", "randomised numerical linear algebra", "reproducible research"],
   "keyResults": [
-    "Four factors: the two-sided inequality holds for every n ≥ 4.",
-    "Five factors: the upper spectral bound holds for every n ≥ 5; the lower bound fails at n = 5 (exact rational counterexample with eigenvalue −285/2 against a permitted −120) and is restored for every n ≥ 6, so the threshold is sharp.",
-    "Six factors: the upper bound holds when 7 | n, the lower bound when 8 | n, hence the complete norm inequality whenever 56 | n; remaining six-factor cases are open.",
-    "Metric reversal: on an exact quadratic example, reshuffling worsens the norm of the expected iterate while improving expected squared error and objective value."
+    "Four factors: the two-sided Recht–Ré inequality holds for every n ≥ 4.",
+    "Five factors: the upper bound holds for every n ≥ 5; the lower bound fails sharply at n = 5 and is restored for every n ≥ 6.",
+    "Six factors: the upper bound holds when 7 divides n, the lower bound when 8 divides n, and the two-sided inequality when 56 divides n; other cases remain open.",
+    "On the certified five-factor family, the first-moment ranking reverses the invariant Gram ranking, and fresh reshuffling has the smaller Gram channel than with-replacement sampling for every positive epoch count.",
+    "At the endpoint, single shuffle equals fresh reshuffling at one epoch and is strictly Loewner-below it for every K ≥ 2; one uniform open stepsize neighbourhood preserves the all-horizon ranking.",
+    "Replica averaging has an exact crossover at r* = 145/7 on the all-ones direction; the K = 2 and K = 3 single-shuffle comparisons have exact interior stepsize transitions near 0.815893501141 and 0.788002536290.",
+    "Exact rational reversal families hold for full reshuffling at (n,k) = (5,5) and (6,6), and for the six-step without-replacement prefix at (7,6); this last protocol is not a full epoch."
   ],
-  "evidence": "Exact rational sum-of-squares certificates; FLINT characteristic-polynomial positive-semidefiniteness certificates; 2,312 six-factor coefficient identity checks; deterministic replay scripts with pinned dependencies; SHA-256 manifests; mutation and negative controls; hash-bound release certificate.",
-  "statusDetail": "This is an unrefereed candidate computer-assisted proof. Its internal exact replay and adversarial checks pass, but it has not received independent external reproduction, proof-assistant formalisation, expert acceptance, or peer review. Deterministic replay validates the certificates as shipped; it does not constitute formal verification.",
+  "evidence": "Two DOI-bound manuscripts; exact rational sum-of-squares and FLINT characteristic-polynomial certificates; 2,312 six-factor coefficient checks; exact spectral, bridge, tail, simplex-recurrence and Bernstein certificates; separate internal stdlib, SymPy, semantic and recurrence verifiers; ordinary and optimized-Python replay; targeted mutation and negative controls; complete SHA-256 manifests; a certificate binding both PDFs, the annotated tag and the full Git tree; and a successful fresh-extraction replay of the deterministic release archive.",
+  "statusDetail": "Anonymous unrefereed combined candidate. The immutable GitHub release and Zenodo version expose byte-matched manuscripts, archive, replay receipt, checksums and certificate. A fresh extraction passed the exact normal and optimized replay, manifest, semantic-bridge, publication-shape, FLINT PSD and mutation-control gates. These are producer-side internal checks. No unaffiliated rerun, independent reimplementation, proof-assistant verification, verified specialist acceptance, editorial peer review or exhaustive priority assessment is recorded. The optimisation results are family-, protocol-, metric-, cone-, stepsize- and horizon-specific; they are not universal sampler rankings or real-world performance claims.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://doi.org/10.5281/zenodo.22037371",
+      "note": "The immutable GitHub release and Zenodo version expose byte-matched v1.1.1 assets. Availability and identity do not establish mathematical correctness."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities/releases/tag/v1.1.1-candidate",
+      "note": "The final tagged archive passed clean-extraction exact replay, normal and optimized verifier paths, semantic bridge checks, manifests and targeted hostile controls."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated party has reported rerunning the immutable v1.1.1 package."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Multiple internal implementations remain part of the same producer workflow and are not clean-room confirmation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No load-bearing theorem has been checked in a proof assistant over a declared trusted base."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "The authoring workflow included adversarial review, but no reviewer identity or specialist credential has been independently verified."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or comparable venue has conducted editorial peer review to a decision."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities/releases/tag/v1.1.1-candidate",
+      "note": "Dependencies are pinned and the archive replayed in a fresh producer environment; no unaffiliated machine or second operating system has supplied a receipt."
+    }
+  },
   "openProblems": [
-    "Characterise the metric reversal: find conditions under which the norm of the expected iterate, the expected squared error, and the expected objective value must agree in ranking sampling schemes, and conditions under which they may diverge (candidates: commutativity, simultaneous diagonalisation, near-identity updates, bounded condition number, small step size).",
-    "Finish the six-factor classification: determine whether the two-sided result extends to every sufficiently large n, whether upper and lower bounds have different thresholds, and whether further exceptional congruence classes contain counterexamples.",
-    "Obtain an independent proof: reimplement the computation without reusing the repository's orbit encoder, certificate schema, or extraction code; formalise the balanced-seed continuation theorem in Lean, Isabelle, or Coq; check the rational positivity certificates independently.",
-    "Run recently proposed data-ordering schemes (block reshuffling, paired reversal) on the paper's exact counterexample and ask which orderings improve all three metrics simultaneously.",
-    "Translate the low-length inequalities into short-horizon or block-iteration guarantees for randomised numerical linear algebra, and test whether structured matrices from real linear systems avoid the pathological behaviour."
+    "Classify arbitrary quadratic objectives by deciding block positivity of the endpoint Choi/Gram difference, or produce an exact rational product-vector counterexample.",
+    "Determine whether the regular-simplex Gram dominance extends to all lengths; exact checks through length 19 are evidence for a conjecture, not a proof.",
+    "Find conditioning radii under which metric-specific Gram order is uniform in dimension and horizon, or construct the smallest near-identity Gram reversal.",
+    "Extend the symmetry-channel comparison to commutants with multiplicity, where invariant positive forms are matrix blocks rather than a simplicial cone.",
+    "Complete the six-factor Recht–Ré classification outside the certified divisibility families and seek conceptual proofs for the exact certificate results.",
+    "Obtain an unaffiliated clean-archive rerun, a clean-room implementation of the theorem-to-encoding bridge, proof-assistant formalisation, and verified specialist review."
   ],
   "relatedWorks": [
-    { "citation": "Recht, B., & Ré, C. (2012). Beneath the valley of the noncommutative arithmetic–geometric mean inequality: Conjectures, case-studies, and consequences (COLT 2012 version: Toward a noncommutative arithmetic-geometric mean inequality, JMLR W&CP 23).", "url": "https://arxiv.org/abs/1202.4184" },
-    { "citation": "Lai, Z., & Lim, L.-H. (2020). Recht–Ré noncommutative arithmetic–geometric mean conjecture is false. ICML 2020, PMLR 119.", "url": "https://arxiv.org/abs/2006.01510" },
-    { "citation": "Liu, Z. (2026). Random reshuffling dominates stochastic gradient descent. COLT 2026, PMLR 336.", "url": "https://arxiv.org/abs/2606.32005" },
-    { "citation": "Nguyen, L. M., Phan, D. T., & Kalagnanam, J. (2026). Learning to shuffle: Block reshuffling and reversal schemes for stochastic optimization.", "url": "https://arxiv.org/abs/2604.00260" }
+    {
+      "citation": "Recht, B., & Ré, C. (2012). Toward a noncommutative arithmetic–geometric mean inequality: conjectures, case-studies, and consequences. COLT 2012, PMLR 23.",
+      "url": "https://proceedings.mlr.press/v23/recht12.html"
+    },
+    {
+      "citation": "Lai, Z., & Lim, L.-H. (2020). Recht–Ré noncommutative arithmetic–geometric mean conjecture is false. ICML 2020, PMLR 119.",
+      "url": "https://proceedings.mlr.press/v119/lai20a.html"
+    },
+    {
+      "citation": "De Sa, C. M. (2020). Random reshuffling is not always better. NeurIPS 2020.",
+      "url": "https://proceedings.neurips.cc/paper/2020/hash/42299f06ee419aa5d9d07798b56779e2-Abstract.html"
+    },
+    {
+      "citation": "Yun, C., Sra, S., & Jadbabaie, A. (2021). Open problem: Can single-shuffle SGD be better than reshuffling SGD and GD? COLT 2021, PMLR 134.",
+      "url": "https://proceedings.mlr.press/v134/open-problem-yun21a.html"
+    },
+    {
+      "citation": "Domingo-Enrich, C. (2022). Shuffle once: the better alternative to SGD and random reshuffling for finite-sum optimization. arXiv:2206.00632.",
+      "url": "https://arxiv.org/abs/2206.00632"
+    },
+    {
+      "citation": "Lok, C., Sonthalia, R., & Rebrova, E. (2025). On the error dynamics of random reshuffling. ALT 2025, PMLR 272.",
+      "url": "https://proceedings.mlr.press/v272/lok25a.html"
+    },
+    {
+      "citation": "Liu, Z. (2026). Random reshuffling dominates stochastic gradient descent. COLT 2026, PMLR 336.",
+      "url": "https://proceedings.mlr.press/v336/liu26d.html"
+    },
+    {
+      "citation": "Peng, B. (2026). Single shuffling beats reshuffling: an affirmative answer to Yun–Sra–Jadbabaie. arXiv:2607.22620.",
+      "url": "https://arxiv.org/abs/2607.22620"
+    }
   ],
-  "citeText": "Anonymous. (2026). Exact low-length Recht–Ré inequalities: paper and exact replication package (Version 1.0.0-candidate) [Candidate manuscript and evidence package]. Zenodo. https://doi.org/10.5281/zenodo.21709239"
+  "citeText": "Anonymous. (2026). Exact Low-Length Recht–Ré Inequalities and Metric-Dependent Rankings in Random Reshuffling Dynamics (Version 1.1.1-candidate) [Unrefereed combined candidate and evidence package]. Zenodo. https://doi.org/10.5281/zenodo.22037371",
+  "corrections": [
+    {
+      "date": "2026-08-20",
+      "scope": "presentation",
+      "summary": "Corrected the normalising denominator in the displayed ordered distinct-product average from binomial(n,m) to the falling factorial (n)_m.",
+      "detail": "The former public display divided a sum over ordered distinct tuples by the number of unordered m-subsets, making it too large by a factor of m!. The manuscript, theorem statements, certificates and replay used the correct falling-factorial normalisation; this changes the Evidence Press specialist summary only.",
+      "fixedIn": "Evidence Press presentation, 20 August 2026"
+    },
+    {
+      "date": "2026-08-21",
+      "scope": "claim",
+      "summary": "Published the additive v1.1.1 combined successor after major revision, including the separate metric-aware sampling-dynamics manuscript and its exact evidence modules.",
+      "detail": "The immutable v1.0.0-candidate predecessor remains preserved under DOI 10.5281/zenodo.21709239. The successor narrows sampler claims by metric, protocol, instance family, stepsize and horizon and adds the repaired all-epoch verifier chain.",
+      "fixedIn": "1.1.1-candidate"
+    },
+    {
+      "date": "2026-08-21",
+      "scope": "presentation",
+      "summary": "Rebuilt the public audio, Open Graph card and reproducible thumbnail for the combined successor and retained the older video only as a superseded historical briefing.",
+      "detail": "Media communicate the current claim boundary and are not scientific evidence. The two current manuscripts are exposed as separately labelled PDF downloads.",
+      "fixedIn": "1.1.1-candidate"
+    }
+  ],
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/exact-low-length-recht-re-inequalities.mp3",
+      "name": "Audio briefing — exact inequalities and metric-aware sampling dynamics",
+      "description": "Plain-English synthetic-voice summary of the two-paper successor, its exact dynamics results and its assurance boundary; a communication aid, not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/exact-low-length-recht-re-inequalities.txt"
+    },
+    {
+      "type": "video",
+      "url": "https://youtu.be/PXBlZLk753g",
+      "name": "Historical v1.0 video briefing — Exact low-length Recht–Ré inequalities",
+      "description": "Retained as a historical briefing for the v1.0 predecessor. It does not cover the v1.1.1 dynamics manuscript and must not be used as the current summary or as scientific evidence.",
+      "superseded": true
+    }
+  ]
 }
