@@ -266,7 +266,7 @@ check('Atlas publishes GitHub and no-GitHub intake routes',
   atlasHtml.includes('GitHub sign-in required') && atlasHtml.includes('no GitHub account required') &&
   publicAtlasProposals.policy.intakeRoutes.some(route => route.id === 'agentmail-email'));
 check('Atlas discloses exact relationship composition above the instrument',
-  atlasHtml.includes('200 recorded relationships:') && atlasHtml.includes('8 direct · 10 lineage · 31 cluster · 151 method'));
+  atlasHtml.includes('201 recorded relationships:') && atlasHtml.includes('8 direct · 10 lineage · 32 cluster · 151 method'));
 check('Atlas uses reader-facing source-declared status without changing the machine enum',
   atlasHtml.includes('source-declared') && publicResearchGraph.edges.every(edge => edge.knowledgeStatus === 'asserted'));
 check('Atlas publishes deterministic missingness and its non-inference boundary',
@@ -544,23 +544,25 @@ const cyclicityAtlasAudioHash = crypto.createHash('sha256').update(cyclicityAtla
 const cyclicityAtlasAudioVersion = cyclicityAtlasAudioHash.slice(0, 10);
 const cyclicityAtlasHtml = fs.readFileSync(path.join(
   DIST, 'releases', 'cyclicity-support-fusion-atlas', 'index.html'), 'utf8');
-check('cyclicity fusion atlas binds the all-degree successor and Anonymous scholarship',
-  cyclicityAtlas && cyclicityAtlas.version === '0.6.0-candidate' &&
-  cyclicityAtlas.doi === '10.5281/zenodo.22045144' &&
+check('cyclicity fusion atlas binds the combined amplitude/Laurent successor and Anonymous scholarship',
+  cyclicityAtlas && cyclicityAtlas.version === '0.7.0-candidate' &&
+  cyclicityAtlas.doi === '10.5281/zenodo.22049564' &&
   cyclicityAtlas.conceptDoi === '10.5281/zenodo.22036029' &&
   same(cyclicityAtlas.authors, ['Anonymous']) &&
   cyclicityAtlas.status === 'unrefereed-candidate' &&
-  cyclicityAtlas.pdfUrl.includes('/releases/download/v0.6.0-candidate/') &&
-  cyclicityAtlas.keyResults.some(item => item.includes('every complex polynomial phase') && item.includes('cyclic rank at most three')) &&
-  cyclicityAtlas.keyResults.some(item => item.includes('Every proper rank-preserving outer extension')) &&
-  cyclicityAtlas.keyResults.some(item => item.includes('bounded regression and bridge evidence')) &&
+  cyclicityAtlas.pdfUrl.includes('/releases/download/v0.7.0-candidate/') &&
+  cyclicityAtlas.keyResults.some(item => item.includes('every polynomial amplitude') && item.includes('rank zero')) &&
+  cyclicityAtlas.keyResults.some(item => item.includes('specified zero-cycle')) &&
+  cyclicityAtlas.keyResults.some(item => item.includes('persistent endpoint moments')) &&
+  cyclicityAtlas.keyResults.some(item => item.includes('no finite all-Laurent')) &&
   cyclicityAtlas.assurance.find(item => item.dimension === 'formalVerification').state === 'partial' &&
   cyclicityAtlas.assurance.find(item => item.dimension === 'independentRerun').state === 'not-assessed' &&
   cyclicityAtlas.assurance.find(item => item.dimension === 'specialistReview').state === 'not-assessed' &&
   cyclicityAtlas.corrections.some(item => item.scope === 'claim' && item.fixedIn === '0.6.0-candidate') &&
-  cyclicityAtlasHtml.includes('The all-degree low-rank coefficient atlas') &&
-  cyclicityAtlasHtml.includes('The complete extension oracle') &&
-  cyclicityAtlasHtml.includes('relative to those named imports'),
+  cyclicityAtlas.corrections.some(item => item.scope === 'claim' && item.fixedIn === '0.7.0-candidate') &&
+  cyclicityAtlasHtml.includes('From inverse support to moment channels') &&
+  cyclicityAtlasHtml.includes('The polynomial-amplitude support theorem') &&
+  cyclicityAtlasHtml.includes('Why there is no finite all-Laurent atlas'),
   `version=${cyclicityAtlas && cyclicityAtlas.version}`);
 check('cyclicity fusion atlas audio is version-bound and provenance-complete without an invented video',
   cyclicityAtlas && cyclicityAtlasMeta.audioVoiceLabel === 'OpenAI API synthetic voice (fable)' &&

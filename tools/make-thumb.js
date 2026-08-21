@@ -96,16 +96,16 @@ const SPECS = {
   },
   'cyclicity-support-fusion-atlas': {
     palette: 'lagoon',
-    kicker: ['RESEARCH SUCCESSOR · 21 AUGUST 2026', 'POLYNOMIAL PERIODS · V0.6.0-CANDIDATE'],
-    head: ['Every degree.', 'Every rank <em>≤ 3.</em>'],
-    headSize: 66,
-    sub: 'An all-degree low-rank coefficient classification and complete extension oracle, relative to named monodromy and finite-group classifications.',
+    kicker: ['COMBINED RESEARCH SUCCESSOR · 21 AUGUST 2026', 'PERIODS AND MOMENTS · V0.7.0-CANDIDATE'],
+    head: ['One phase.', '<em>Every amplitude.</em>'],
+    headSize: 68,
+    sub: 'Inverse support controls polynomial amplitudes and zero-cycles; low-rank factors classify endpoint moments; local inverse channels govern Laurent residues.',
     tag: 'UNREFEREED THEOREM CANDIDATE · NAMED IMPORTS',
     hero: `
-      <div class="eq-label">all-degree classification over C</div>
-      <div class="eq eq-sm">q(P,dx) = <span class="hl">|Σ(P)|</span> = dim W<sub>P</sub><sup>red</sup></div>
-      <div class="note"><b>6 affine families</b><br><b>4 extension mechanisms</b><br>powers · Dickson · cubic · quartic</div>
-      <div class="eq-foot">GO specialist circulation · HOLD established theorem</div>`
+      <div class="eq-label">primitive-amplitude support</div>
+      <div class="eq eq-sm">q(P,A dx) = <span class="hl">|Σ(P;G)|</span></div>
+      <div class="note"><b>rank zero ⇔ G ∈ C[P]</b><br>endpoint atlas for q(P) ≤ 3<br>exact Laurent local channel</div>
+      <div class="eq-foot">specified-input criterion · no finite all-Laurent atlas</div>`
   },
   'finite-sample-affine-diversification': {
     palette: 'lagoon',
