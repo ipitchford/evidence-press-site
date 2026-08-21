@@ -221,6 +221,14 @@ dependency or shared provenance. Inclusion means that a release illustrates a
 method; it does not imply that its theorem, novelty or impact has been
 independently established.
 
+Published cluster semantics are append-only. If a versioned corrective
+successor materially changes a cluster boundary, the prior cluster remains
+unchanged and a new cluster may declare `supersedes` plus an `effectiveDate`.
+The successor must cover exactly the same release members and must point to the
+currently active earlier cluster. Duplicate membership without that explicit
+chain is rejected. Research-graph nodes retain both historical and active
+clusters so the change in boundary stays inspectable.
+
 Every lineage names one immutable `rootReleaseSlug`, which is also its first
 member. A singleton lineage is only an explicit prospective programme root; it
 does not demonstrate reuse, a speed gain or correlated confirmation. Later

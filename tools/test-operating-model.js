@@ -142,7 +142,7 @@ function recordFor(slug, workId = `ep-work:${slug}`) {
 function addFuture(artifacts, papers, record = recordFor('future-test-release'), attempt = null) {
   papers.push(record);
   artifacts.registry.releaseAssignments[record.slug] = [...record.operatingModel.accelerationPrimitives];
-  artifacts.registry.methodClusters[artifacts.registry.methodClusters.length - 1].members.push(record.slug);
+  artifacts.registry.methodClusters.find(cluster => cluster.id === 'grand-problem-salvage').members.push(record.slug);
   artifacts.workLedger.attempts.push(attempt || attemptFor(record.slug, record.operatingModel.workId));
   return record;
 }
@@ -247,6 +247,31 @@ function extractFunction(source, name) {
 {
   const errors = errorsFor(({ artifacts }) => { artifacts.registry.methods[1].id = artifacts.registry.methods[0].id; });
   check('duplicate method id is rejected', errors.some(e => e.includes('duplicates id')), errors.join('\n  '));
+}
+
+{
+  const errors = errorsFor(({ artifacts }) => {
+    delete artifacts.registry.methodClusters.at(-1).supersedes;
+  });
+  check('duplicate cluster membership requires an explicit successor chain',
+    errors.some(e => e.includes('duplicate requires an explicit successor')), errors.join('\n  '));
+}
+
+{
+  const errors = errorsFor(({ artifacts }) => {
+    artifacts.registry.methodClusters.at(-1).supersedes = 'missing-prior-cluster';
+  });
+  check('successor cluster must resolve to the active earlier cluster',
+    errors.some(e => e.includes('must resolve to an earlier cluster')) &&
+      errors.some(e => e.includes('duplicate requires an explicit successor')), errors.join('\n  '));
+}
+
+{
+  const errors = errorsFor(({ artifacts }) => {
+    artifacts.registry.methodClusters.at(-1).members.push('finite-sample-affine-diversification');
+  });
+  check('successor cluster cannot silently change the superseded member set',
+    errors.some(e => e.includes('must exactly match superseded cluster')), errors.join('\n  '));
 }
 
 {

@@ -137,12 +137,19 @@ function buildResearchGraph({ papers, methodRegistry, relationshipRegistry, base
     });
   }
 
+  const clusterSuccessorById = new Map(methodRegistry.methodClusters
+    .filter(cluster => cluster.supersedes)
+    .map(cluster => [cluster.supersedes, cluster.id]));
   for (const cluster of methodRegistry.methodClusters) {
     nodes.push({
       id: clusterId(cluster.id), type: 'cluster', label: cluster.name,
       description: cluster.sharedBoundary, sharedBoundary: cluster.sharedBoundary,
       memberCount: cluster.members.length,
       scopeStatus: cluster.members.length === 1 ? 'cluster-seed' : 'broad-cluster',
+      active: !clusterSuccessorById.has(cluster.id),
+      effectiveDate: cluster.effectiveDate || null,
+      supersedes: cluster.supersedes ? clusterId(cluster.supersedes) : null,
+      supersededBy: clusterSuccessorById.has(cluster.id) ? clusterId(clusterSuccessorById.get(cluster.id)) : null,
       url: `${base}/atlas/?node=${encodeURIComponent(clusterId(cluster.id))}`,
       sourceRefs: [`${base}/api/method-registry.json#/methodClusters/${methodRegistry.methodClusters.indexOf(cluster)}`]
     });
@@ -188,7 +195,11 @@ function buildResearchGraph({ papers, methodRegistry, relationshipRegistry, base
     cluster.members.forEach(slug => addEdge({
       source: releaseId(slug), target: clusterId(cluster.id), predicate: 'member-of-cluster',
       knowledgeStatus: 'asserted', construction: 'generated-from-source-record',
-      basis: `The method registry lists ${slug} as a member of ${cluster.name}.`,
+      basis: cluster.supersedes
+        ? `The method registry lists ${slug} in the dated successor cluster ${cluster.name}, which supersedes ${cluster.supersedes}.`
+        : clusterSuccessorById.has(cluster.id)
+          ? `The method registry retains ${slug} in the historical cluster ${cluster.name}, superseded by ${clusterSuccessorById.get(cluster.id)}.`
+          : `The method registry lists ${slug} as a member of ${cluster.name}.`,
       inferenceLimit: cluster.sharedBoundary,
       sourceRefs: [`${base}/api/method-registry.json#/methodClusters/${clusterIndex}`]
     }));

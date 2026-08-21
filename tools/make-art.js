@@ -409,7 +409,7 @@ art['cyclicity-root-span-low-rank'] = (a, b) => {
 };
 
 /* Cyclicity completion: sparse inverse support passes through finite Fourier
-   ranks into block-fusion and Ritt data, with the bounded atlas kept visible. */
+   ranks into the all-degree classification and its Ritt extension data. */
 art['cyclicity-support-fusion-atlas'] = (a, b) => {
   let s = '';
 
@@ -456,7 +456,7 @@ art['cyclicity-support-fusion-atlas'] = (a, b) => {
     s += `<circle cx="${x}" cy="${y}" r="${i === 0 || i === 3 ? 30 : 38}" fill="#151a1e" stroke="${i % 2 ? b : a}" stroke-width="3"/>`;
     s += `<text x="${x}" y="${y + 7}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="${label.length > 2 ? 17 : 23}" fill="#e7e5e4">${label}</text>`;
   }
-  s += `<text x="925" y="388" text-anchor="middle" font-family="Georgia" font-size="19" fill="${b}">11 Ritt diamonds · 1,152 atlas cases</text>`;
+  s += `<text x="925" y="388" text-anchor="middle" font-family="Georgia" font-size="19" fill="${b}">all degrees · 4 extension mechanisms</text>`;
   return s;
 };
 
