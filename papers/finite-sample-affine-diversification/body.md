@@ -1,24 +1,43 @@
 ## Plain-English summary
 
-One reconstructed family tree can be compatible with many different histories
-of speciation and extinction. The earlier affine-diversification release showed
-how to describe and bound those histories when the pulled diversification
-signal is treated as fixed.
+A reconstructed family tree does not preserve a unique history of speciation
+and extinction. Many different histories can produce the same observable
+signal. This creates a practical risk: one fitted curve or a large finite cloud
+can look decisive even when other histories supported by the same tree reverse
+the conclusion.
 
-This successor adds the missing finite-sample step. Under one exact fixed-stem,
-stem-survival, homogeneous time-varying model, it builds a confidence set for
-the pulled scale $F$ from the observed number of tips and unordered node ages.
-It then propagates every signal in that set through the affine fibre and reports
-one of three conclusions for a registered target:
+This candidate supplies a finite-sample safeguard against that false
+confidence. Under one exact fixed-stem, stem-survival, homogeneous
+time-varying model, it builds a confidence set for the entire pulled scale $F$
+from the observed number of tips and unordered node ages. It then carries every
+signal in that set through the affine fibre and reports one of three conclusions
+for a registered target:
 
 1. **certified incompatible** for every signal in the confidence set;
 2. **compatible throughout the band**; or
 3. **unresolved** because the decision changes across the band.
 
-The paper also preserves a bounded comparison with CRABS. Finite CRABS clouds
-missed sharp endpoints in every returned primary case, but exact certification
-changed only 13.854% of the registered decision statuses. That is below the
-preregistered 20% H4 gate, so the broad-utility claim failed.
+This matters because it distinguishes conclusions that survive finite-sample
+uncertainty from conclusions that only look secure on one estimated signal. In
+the frozen 22-tip example, the method certifies one turnover cap as incompatible
+across the whole confidence-containing set. For another cap, it withdraws a
+plug-in "compatible" answer and reports **unresolved**. The method therefore
+changes the kind of scientific conclusion that the evidence permits, not merely
+the width of an error bar.
+
+The separate CRABS benchmark produced two results that must be read together:
+
+- every one of the 240 returned primary clouds missed at least one sharp
+  endpoint beyond tolerance, with 60 additional structural censors; and
+- exact certification changed 532 of 3,840 registered decision statuses, or
+  13.854%, below the preregistered 20% H4 gate.
+
+The first result is a concrete warning: in this benchmark, a finite random cloud
+was not a certificate of the sharp limits. The second limits the breadth of the
+claim: the evidence does not show that exact certification is already a
+must-have or broadly useful complement to CRABS. Failing that ambitious utility
+gate does not erase the finite-sample method or the endpoint diagnostic; it
+states honestly how much decision impact the registered benchmark measured.
 
 > **Status:** anonymous, unrefereed theorem-and-method candidate published with
 > notes. Producer-side replay passes locally and on public Linux CI. No
