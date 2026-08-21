@@ -215,6 +215,42 @@ art['affine-diversification-fibres'] = (a, b) => {
   return s;
 };
 
+/* Finite-sample affine diversification: a signal band propagated to decisions. */
+art['finite-sample-affine-diversification'] = (a, b) => {
+  let s = '';
+  const x0 = 105, x1 = 835, y0 = 330;
+  const upper = [];
+  const lower = [];
+  const centre = [];
+  for (let x = 0; x <= x1 - x0; x += 12) {
+    const t = x / (x1 - x0);
+    const mid = y0 - 205 * (0.18 * Math.sin(2.2 * Math.PI * t) + 0.82 * t);
+    const width = 18 + 74 * t * t;
+    upper.push([x0 + x, mid - width]);
+    lower.push([x0 + x, mid + width]);
+    centre.push([x0 + x, mid]);
+  }
+  const path = points => points.map(([x, y], i) => `${i ? 'L' : 'M'} ${x.toFixed(1)} ${y.toFixed(1)}`).join(' ');
+  const band = `${path(upper)} ${path([...lower].reverse()).replace(/^M/, 'L')} Z`;
+  s += `<path d="${band}" fill="${a}" opacity="0.18"/>`;
+  s += `<path d="${path(upper)}" fill="none" stroke="${a}" stroke-width="2.2" opacity="0.88"/>`;
+  s += `<path d="${path(lower)}" fill="none" stroke="${a}" stroke-width="2.2" opacity="0.88"/>`;
+  s += `<path d="${path(centre)}" fill="none" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="8 7" opacity="0.72"/>`;
+  s += `<path d="M ${x0} 62 V 350 M ${x0} 350 H ${x1}" stroke="#8a938f" stroke-width="1" opacity="0.5"/>`;
+
+  s += `<rect x="900" y="68" width="240" height="112" rx="18" fill="#151a1e" stroke="${a}" stroke-width="2.5"/>`;
+  s += `<text x="1020" y="110" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4" opacity=".75">TURNOVER CAP 0.70</text>`;
+  s += `<text x="1020" y="151" text-anchor="middle" font-family="Georgia" font-size="29" fill="${a}">CERTIFIED OUT</text>`;
+
+  s += `<rect x="900" y="220" width="240" height="112" rx="18" fill="#151a1e" stroke="${b}" stroke-width="2.5"/>`;
+  s += `<text x="1020" y="262" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4" opacity=".75">PLUGIN COMPATIBLE</text>`;
+  s += `<text x="1020" y="303" text-anchor="middle" font-family="Georgia" font-size="29" fill="${b}">UNRESOLVED</text>`;
+
+  s += `<text x="470" y="55" text-anchor="middle" font-family="Georgia" font-size="24" fill="#e7e5e4" opacity=".9">simultaneous pulled-scale confidence set</text>`;
+  s += `<text x="470" y="382" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4" opacity=".66">EXACT FIXED STEM · FINITE SAMPLE · CONDITIONAL MODEL</text>`;
+  return s;
+};
+
 /* TxGraffiti candidate: cubic graph, explicit witnesses, and certificate tree. */
 art['txgraffiti-c3-resolution'] = (a, b) => {
   const N = 50, cx = 390, cy = 200, R = 145;
@@ -890,6 +926,7 @@ const palette = {
   'reducible-incidence-divisors': ['#4ade80', '#c084fc'],
   'stocks-are-not-flows': ['#38bdf8', '#f59e0b'],
   'affine-diversification-fibres': ['#2dd4bf', '#fbbf24'],
+  'finite-sample-affine-diversification': ['#2dd4bf', '#fbbf24'],
   'txgraffiti-c3-resolution': ['#2dd4bf', '#f472b6'],
   'bilateral-deficiency-regular-dim': ['#2dd4bf', '#f472b6'],
   'cyclicity-loci-exponential-periods': ['#38bdf8', '#fbbf24'],
