@@ -15,6 +15,38 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
+# Cloudflare Pages can expose a new deployment at its preview hostname a few
+# seconds before every custom-domain edge serves the same bytes.  Retry only
+# the read-only post-deploy gates; build, review, authentication and upload
+# failures still stop immediately.  A persistent mismatch remains fatal.
+POST_DEPLOY_READBACK_ATTEMPTS="${EP_POST_DEPLOY_READBACK_ATTEMPTS:-6}"
+POST_DEPLOY_READBACK_DELAY_SECONDS="${EP_POST_DEPLOY_READBACK_DELAY_SECONDS:-5}"
+if [[ ! "$POST_DEPLOY_READBACK_ATTEMPTS" =~ ^[1-9][0-9]*$ ]]; then
+  echo "REFUSING DEPLOY: EP_POST_DEPLOY_READBACK_ATTEMPTS must be a positive integer" >&2
+  exit 1
+fi
+if [[ ! "$POST_DEPLOY_READBACK_DELAY_SECONDS" =~ ^[0-9]+$ ]]; then
+  echo "REFUSING DEPLOY: EP_POST_DEPLOY_READBACK_DELAY_SECONDS must be a non-negative integer" >&2
+  exit 1
+fi
+
+retry_post_deploy_readback() {
+  local label="$1"
+  shift
+  local attempt
+  for ((attempt = 1; attempt <= POST_DEPLOY_READBACK_ATTEMPTS; attempt++)); do
+    if "$@"; then
+      return 0
+    fi
+    if (( attempt == POST_DEPLOY_READBACK_ATTEMPTS )); then
+      echo "REFUSING DEPLOY: ${label} failed after ${attempt} attempt(s)" >&2
+      return 1
+    fi
+    echo "${label} has not converged at the custom domain; retrying in ${POST_DEPLOY_READBACK_DELAY_SECONDS}s (${attempt}/${POST_DEPLOY_READBACK_ATTEMPTS})..." >&2
+    sleep "$POST_DEPLOY_READBACK_DELAY_SECONDS"
+  done
+}
+
 if [[ ! -f protocols/PUBLISHED.json ]]; then
   echo "REFUSING DEPLOY: protocols/PUBLISHED.json is missing" >&2
   exit 1
@@ -55,11 +87,14 @@ echo "==> [6/9] deploy to Cloudflare Pages"
 npx wrangler pages deploy dist --project-name evidence-press "$@"
 
 echo "==> [7/9] exact protocol live byte readback"
-node protocols/tools/check-release-integrity.js --live https://evidencepress.org/
+retry_post_deploy_readback "exact protocol live byte readback" \
+  node protocols/tools/check-release-integrity.js --live https://evidencepress.org/
 
 echo "==> [8/9] full-site post-deploy readback"
-node tools/check-published.js --live --post-deploy
-node tools/check-publication-integrity.js --live
+retry_post_deploy_readback "published-site post-deploy readback" \
+  node tools/check-published.js --live --post-deploy
+retry_post_deploy_readback "publication-integrity post-deploy readback" \
+  node tools/check-publication-integrity.js --live
 
 echo "==> [9/9] IndexNow submission"
 node tools/indexnow-submit.js
