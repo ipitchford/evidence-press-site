@@ -161,6 +161,13 @@
       "summary": "Replaced the active v0.6 briefing, thumbnail and Open Graph art with content-bound v0.7 combined-release media.",
       "detail": "The new media distinguish fixed-seed rank, amplitude channels, endpoint moments and Laurent residues, and retain the unrefereed-candidate and no-independent-review boundaries. They are communication aids, not additional mathematical evidence.",
       "fixedIn": "0.7.0-candidate"
+    },
+    {
+      "date": "2026-08-21",
+      "scope": "presentation",
+      "summary": "Content-versioned the release hero art after public visual readback exposed a stale cached v0.6 SVG on the v0.7 page.",
+      "detail": "The v0.7 SVG bytes were already deployed and matched the candidate under a cache-busting query, but the stable one-week-cached hero URL could still serve predecessor art. The site builder now binds every release hero URL to the committed SVG hash and tests the HTML and machine record together. No research claim, archive, DOI or assurance state changed.",
+      "fixedIn": "0.7.0-candidate"
     }
   ]
 }

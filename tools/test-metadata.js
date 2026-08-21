@@ -68,6 +68,16 @@ check('homepage keeps four compact programme signposts',
   /@media\s*\(min-width:\s*1040px\)\s*\{\s*\.programme-cards\s*\{\s*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/.test(siteCss));
 check('Atlas explanatory prose aligns with the page wrapper',
   /\.atlas-prose\s*\{[^}]*max-width:\s*none;[^}]*margin:\s*2\.6rem\s+0\s+0;/.test(atlasCss));
+check('every release hero art URL is bound to the exact committed SVG bytes',
+  papersDoc.papers.every(paper => {
+    const artFile = path.join(ROOT, 'assets', 'art', `${paper.slug}.svg`);
+    if (!fs.existsSync(artFile)) return paper.coverArtUrl === null;
+    const version = crypto.createHash('sha256').update(fs.readFileSync(artFile)).digest('hex').slice(0, 10);
+    const expectedPath = `/assets/art/${paper.slug}.svg?v=${version}`;
+    const releaseHtml = fs.readFileSync(path.join(DIST, 'releases', paper.slug, 'index.html'), 'utf8');
+    return paper.coverArtUrl === `https://evidencepress.org${expectedPath}` &&
+      releaseHtml.includes(`<img src="${expectedPath}" alt="" loading="eager">`);
+  }));
 
 /* ------------------------------------------------------- mini JSON Schema */
 /* Covers exactly the keywords the published schema uses. Anything unknown is
