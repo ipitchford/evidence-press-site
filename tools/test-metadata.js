@@ -661,6 +661,56 @@ check('SFS scholarly JSON-LD represents Anonymous and excludes the maintainer as
   !sfsHtml.includes('"name": "Ian Pitchford"'),
   'expected Anonymous creator and no maintainer scholarly author');
 
+const rechtRe = papersDoc.papers.find(p => p.slug === 'exact-low-length-recht-re-inequalities');
+const rechtReMeta = JSON.parse(fs.readFileSync(
+  path.join(ROOT, 'papers', 'exact-low-length-recht-re-inequalities', 'meta.json'), 'utf8'));
+const rechtReHtml = fs.readFileSync(
+  path.join(DIST, 'releases', 'exact-low-length-recht-re-inequalities', 'index.html'), 'utf8');
+const rechtReAudioFile = path.join(ROOT, 'assets', 'audio', 'exact-low-length-recht-re-inequalities.mp3');
+const rechtReOgFile = path.join(ROOT, 'assets', 'og', 'exact-low-length-recht-re-inequalities.png');
+const rechtReAudioVersion = crypto.createHash('sha256').update(fs.readFileSync(rechtReAudioFile)).digest('hex').slice(0, 10);
+const rechtReOgVersion = crypto.createHash('sha256').update(fs.readFileSync(rechtReOgFile)).digest('hex').slice(0, 10);
+check('Recht–Ré successor binds both current manuscripts and the additive public identity',
+  rechtRe && rechtRe.version === '1.1.1-candidate' &&
+  rechtRe.doi === '10.5281/zenodo.22037371' &&
+  rechtRe.conceptDoi === '10.5281/zenodo.21709238' &&
+  rechtRe.pdfUrl.endsWith('/exact-low-length-recht-re-inequalities-v1.1.1-candidate.pdf') &&
+  rechtRe.altPdfUrl.endsWith('/metric-aware-sampling-dynamics-v1.1.1-candidate.pdf') &&
+  rechtRe.altPdfLabel === 'Read the dynamics paper (PDF)' &&
+  rechtReHtml.includes('Read the dynamics paper (PDF)'),
+  `version=${rechtRe && rechtRe.version} doi=${rechtRe && rechtRe.doi}`);
+check('Recht–Ré ordered-product definition is machine-bound to the corrected formula',
+  rechtRe && rechtRe.orderedProductAverage &&
+  rechtRe.orderedProductAverage.indexing === 'ordered-distinct-tuples' &&
+  rechtRe.orderedProductAverage.termCount === '(n)_m' &&
+  rechtRe.orderedProductAverage.normalizationDenominator === '(n)_m' &&
+  rechtReHtml.includes('\\frac{1}{(n)_m}') &&
+  !rechtReHtml.includes('\\frac{1}{\\binom{n}{m}}') &&
+  rechtRe.corrections.some(c => c.date === '2026-08-20' && c.scope === 'presentation'),
+  `definition=${JSON.stringify(rechtRe && rechtRe.orderedProductAverage)}`);
+check('Recht–Ré audio and Open Graph card are content-versioned',
+  rechtRe &&
+  rechtRe.audioUrl === `https://evidencepress.org/assets/audio/exact-low-length-recht-re-inequalities.mp3?v=${rechtReAudioVersion}` &&
+  rechtRe.imageUrl === `https://evidencepress.org/assets/og/exact-low-length-recht-re-inequalities.png?v=${rechtReOgVersion}` &&
+  rechtReHtml.includes(`property="og:image" content="https://evidencepress.org/assets/og/exact-low-length-recht-re-inequalities.png?v=${rechtReOgVersion}"`),
+  `audio=${rechtRe && rechtRe.audioUrl} image=${rechtRe && rechtRe.imageUrl}`);
+check('Recht–Ré current narration is provenance-bound and the old video is historical only',
+  fs.readFileSync(path.join(ROOT, 'assets', 'audio', 'exact-low-length-recht-re-inequalities.txt'), 'utf8').trim() === rechtReMeta.narration.trim() &&
+  rechtReMeta.narration.split(/\s+/).length >= 160 && rechtReMeta.narration.split(/\s+/).length <= 300 &&
+  rechtRe.media.some(item => item.type === 'video' && item.superseded === true) &&
+  (rechtReHtml.match(/<iframe\b/g) || []).length === 0 &&
+  rechtReHtml.includes('Superseded briefing:'),
+  `words=${rechtReMeta.narration.split(/\s+/).length}`);
+check('Recht–Ré assurance preserves the internal-versus-independent boundary',
+  rechtRe &&
+  rechtRe.assurance.find(item => item.dimension === 'availability').state === 'passed' &&
+  rechtRe.assurance.find(item => item.dimension === 'internalReplay').state === 'passed' &&
+  rechtRe.assurance.find(item => item.dimension === 'independentRerun').state === 'not-assessed' &&
+  rechtRe.assurance.find(item => item.dimension === 'independentReimplementation').state === 'not-assessed' &&
+  rechtRe.verification.independentlyReproduced === false &&
+  rechtRe.verification.peerReviewed === false,
+  'expected public availability/internal replay without independent or editorial promotion');
+
 /* ---------------------------------------- programme visual hierarchy */
 const imageSources = rel => [...fs.readFileSync(path.join(DIST, rel), 'utf8')
   .matchAll(/<img\s+[^>]*src="([^"]+)"[^>]*>/g)].map(match => match[1]);

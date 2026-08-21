@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'exact-low-length-recht-re-inequalities': {
+    palette: 'cobalt',
+    kicker: ['CORRECTED RESEARCH RELEASE · 21 AUGUST 2026', 'RANDOM RESHUFFLING · V1.1.1-CANDIDATE'],
+    head: ['One sampler.', '<em>Different answers.</em>'],
+    headSize: 70,
+    sub: 'Exact matrix inequalities meet a metric-aware theory of mean iterates, quadratic risk, fresh reshuffling and single shuffle.',
+    tag: 'TWO-PAPER EXACT CANDIDATE · UNREFEREED',
+    hero: `
+      <div class="eq-label">same rational endpoint · opposite rankings</div>
+      <div class="eq eq-sm">mean proxy: <span class="hl">RR worse</span><br>Gram risk: <span class="hl">RR better</span></div>
+      <div class="note"><b>All fresh epochs certified.</b><br>Single shuffle wins after epoch one at the endpoint.</div>
+      <div class="eq-foot">metric · protocol · stepsize · horizon</div>`
+  },
   'cyclicity-support-fusion-atlas': {
     palette: 'lagoon',
     kicker: ['RESEARCH RELEASE · 20 AUGUST 2026', 'POLYNOMIAL PERIODS · V0.5.0-CANDIDATE'],
