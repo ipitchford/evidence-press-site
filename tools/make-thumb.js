@@ -96,16 +96,16 @@ const SPECS = {
   },
   'cyclicity-support-fusion-atlas': {
     palette: 'lagoon',
-    kicker: ['RESEARCH RELEASE · 20 AUGUST 2026', 'POLYNOMIAL PERIODS · V0.5.0-CANDIDATE'],
-    head: ['One support.', 'Every block <em>fusion.</em>'],
+    kicker: ['RESEARCH SUCCESSOR · 21 AUGUST 2026', 'POLYNOMIAL PERIODS · V0.6.0-CANDIDATE'],
+    head: ['Every degree.', 'Every rank <em>≤ 3.</em>'],
     headSize: 66,
-    sub: 'An unconditional fixed-seed rank theorem, a Fourier calculus for all polynomial decompositions and Ritt moves, and a finite coefficient atlas through degree twenty.',
-    tag: 'UNREFEREED THEOREM CANDIDATE · ALL DEGREES OPEN',
+    sub: 'An all-degree low-rank coefficient classification and complete extension oracle, relative to named monodromy and finite-group classifications.',
+    tag: 'UNREFEREED THEOREM CANDIDATE · NAMED IMPORTS',
     hero: `
-      <div class="eq-label">universal support identity</div>
+      <div class="eq-label">all-degree classification over C</div>
       <div class="eq eq-sm">q(P,dx) = <span class="hl">|Σ(P)|</span> = dim W<sub>P</sub><sup>red</sup></div>
-      <div class="note"><b>11 Ritt diamonds</b><br><b>1,152 exact atlas cases</b> through degree 20<br>zero anomalies · zero missing certificates</div>
-      <div class="eq-foot">all-degree coefficient atlas remains conjectural</div>`
+      <div class="note"><b>6 affine families</b><br><b>4 extension mechanisms</b><br>powers · Dickson · cubic · quartic</div>
+      <div class="eq-foot">GO specialist circulation · HOLD established theorem</div>`
   },
   'finite-sample-affine-diversification': {
     palette: 'lagoon',

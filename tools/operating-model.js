@@ -497,19 +497,38 @@ function validateRegistry(registry, paperSlugs, errors) {
 
   if (!Array.isArray(registry.methodClusters) || !registry.methodClusters.length) add(errors, 'METHOD_REGISTRY.methodClusters', 'must be a non-empty array');
   const clusterIds = new Set();
+  const clusterById = new Map();
   const clusterMembership = new Map();
   for (const [index, cluster] of (registry.methodClusters || []).entries()) {
     const where = `METHOD_REGISTRY.methodClusters[${index}]`;
-    if (!keys(errors, where, cluster, ['id', 'name', 'members', 'sharedBoundary'])) continue;
+    if (!keys(errors, where, cluster, ['id', 'name', 'members', 'sharedBoundary'],
+      ['id', 'name', 'members', 'sharedBoundary', 'supersedes', 'effectiveDate'])) continue;
     uniqueId(errors, `${where}.id`, cluster.id, clusterIds);
     string(errors, `${where}.name`, cluster.name);
     string(errors, `${where}.sharedBoundary`, cluster.sharedBoundary);
+    const isSuccessor = cluster.supersedes != null || cluster.effectiveDate != null;
+    if (isSuccessor) {
+      if (cluster.supersedes == null) add(errors, `${where}.supersedes`, 'is required for a dated successor cluster');
+      else string(errors, `${where}.supersedes`, cluster.supersedes, ID_RE);
+      if (cluster.effectiveDate == null) add(errors, `${where}.effectiveDate`, 'is required for a successor cluster');
+      else date(errors, `${where}.effectiveDate`, cluster.effectiveDate);
+      if (cluster.supersedes === cluster.id) add(errors, `${where}.supersedes`, 'must refer to an earlier cluster, not itself');
+      else if (cluster.supersedes != null && !clusterById.has(cluster.supersedes))
+        add(errors, `${where}.supersedes`, `must resolve to an earlier cluster, got ${JSON.stringify(cluster.supersedes)}`);
+    }
     const members = stringArray(errors, `${where}.members`, cluster.members, { min: 1, pattern: ID_RE });
+    const superseded = clusterById.get(cluster.supersedes);
+    if (superseded && !sameMembers(members, superseded.members)) {
+      add(errors, `${where}.members`, `must exactly match superseded cluster ${JSON.stringify(cluster.supersedes)}`);
+    }
     for (const slug of members) {
       if (!paperSlugs.includes(slug)) add(errors, `${where}.members`, `unknown release ${JSON.stringify(slug)}`);
-      if (clusterMembership.has(slug)) add(errors, `${where}.members`, `${JSON.stringify(slug)} already belongs to method cluster ${JSON.stringify(clusterMembership.get(slug))}`);
+      if (clusterMembership.has(slug) && cluster.supersedes !== clusterMembership.get(slug)) {
+        add(errors, `${where}.members`, `${JSON.stringify(slug)} already belongs to active method cluster ${JSON.stringify(clusterMembership.get(slug))}; a duplicate requires an explicit successor of that cluster`);
+      }
       clusterMembership.set(slug, cluster.id);
     }
+    clusterById.set(cluster.id, cluster);
   }
   for (const slug of paperSlugs) if (!clusterMembership.has(slug)) add(errors, 'METHOD_REGISTRY.methodClusters', `release ${JSON.stringify(slug)} has no method cluster`);
 
