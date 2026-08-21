@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'cyclicity-support-fusion-atlas': {
+    palette: 'lagoon',
+    kicker: ['RESEARCH RELEASE · 20 AUGUST 2026', 'POLYNOMIAL PERIODS · V0.5.0-CANDIDATE'],
+    head: ['One support.', 'Every block <em>fusion.</em>'],
+    headSize: 66,
+    sub: 'An unconditional fixed-seed rank theorem, a Fourier calculus for all polynomial decompositions and Ritt moves, and a finite coefficient atlas through degree twenty.',
+    tag: 'UNREFEREED THEOREM CANDIDATE · ALL DEGREES OPEN',
+    hero: `
+      <div class="eq-label">universal support identity</div>
+      <div class="eq eq-sm">q(P,dx) = <span class="hl">|Σ(P)|</span> = dim W<sub>P</sub><sup>red</sup></div>
+      <div class="note"><b>11 Ritt diamonds</b><br><b>1,152 exact atlas cases</b> through degree 20<br>zero anomalies · zero missing certificates</div>
+      <div class="eq-foot">all-degree coefficient atlas remains conjectural</div>`
+  },
   'wales-20mph-casualty-attribution': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'POLICY IDENTIFICATION · V1.0.0'],
