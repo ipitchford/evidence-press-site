@@ -1033,7 +1033,12 @@ function paperPage(p) {
   const open = (p.openProblems || []).map(o => `<li>${inline(o)}</li>`).join('');
   const media = (p.media || []).map(m => {
     if (m.superseded) {
-      return `<p class="media-note"><strong>Superseded briefing:</strong> <a href="${escAttr(m.url)}" rel="noopener">${esc(m.name)}</a>. ${inline(m.description || 'Retained as part of the correction history; do not use as the current summary.')}</p>`;
+      const note = `<p class="media-note"><strong>Superseded briefing:</strong> <a href="${escAttr(m.url)}" rel="noopener">${esc(m.name)}</a>. ${inline(m.description || 'Retained as part of the correction history; do not use as the current summary.')}</p>`;
+      const yt = m.type === 'video' && youtubeId(m.url);
+      if (yt) {
+        return `${note}<figure class="media superseded-media"><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/${yt}?rel=0" title="Superseded historical briefing: ${escAttr(m.name)}" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><figcaption>Historical predecessor briefing · <a href="${escAttr(m.url)}" rel="noopener">Watch on YouTube</a> · not the current release summary</figcaption></figure>`;
+      }
+      return note;
     }
     const duplicateHeaderAudio = m.type === 'audio' && p.audio && p.audio.url &&
       sameAssetPath(m.url, p.audio.url);

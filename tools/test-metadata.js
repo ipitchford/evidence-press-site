@@ -698,8 +698,11 @@ check('Recht–Ré current narration is provenance-bound and the old video is hi
   fs.readFileSync(path.join(ROOT, 'assets', 'audio', 'exact-low-length-recht-re-inequalities.txt'), 'utf8').trim() === rechtReMeta.narration.trim() &&
   rechtReMeta.narration.split(/\s+/).length >= 160 && rechtReMeta.narration.split(/\s+/).length <= 300 &&
   rechtRe.media.some(item => item.type === 'video' && item.superseded === true) &&
-  (rechtReHtml.match(/<iframe\b/g) || []).length === 0 &&
-  rechtReHtml.includes('Superseded briefing:'),
+  (rechtReHtml.match(/<iframe\b/g) || []).length === 1 &&
+  rechtReHtml.includes('src="https://www.youtube-nocookie.com/embed/PXBlZLk753g?rel=0"') &&
+  rechtReHtml.includes('Superseded briefing:') &&
+  rechtReHtml.includes('not the current release summary') &&
+  !rechtReHtml.includes('<strong>Watch this briefing</strong>'),
   `words=${rechtReMeta.narration.split(/\s+/).length}`);
 check('Recht–Ré assurance preserves the internal-versus-independent boundary',
   rechtRe &&
