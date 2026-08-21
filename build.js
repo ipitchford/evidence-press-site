@@ -318,7 +318,11 @@ const papers = fs.readdirSync(papersDir)
       ? `${audioPath}?v=${fileVersion(audioFile)}`
       : audioPath;
     meta.audio = fs.existsSync(audioFile) ? { url: audioUrl, bytes: fs.statSync(audioFile).size } : null;
-    meta.art = fs.existsSync(path.join(ROOT, 'assets', 'art', meta.slug + '.svg')) ? `/assets/art/${meta.slug}.svg` : null;
+    const artFile = path.join(ROOT, 'assets', 'art', meta.slug + '.svg');
+    const artPath = `/assets/art/${meta.slug}.svg`;
+    // Hero SVGs are cached for a week. Bind the reader-facing URL to the
+    // committed bytes so a corrected release cannot display predecessor art.
+    meta.art = fs.existsSync(artFile) ? `${artPath}?v=${fileVersion(artFile)}` : null;
     const ogFile = path.join(ROOT, 'assets', 'og', meta.slug + '.png');
     const ogPath = `/assets/og/${meta.slug}.png`;
     meta.og = fs.existsSync(ogFile)

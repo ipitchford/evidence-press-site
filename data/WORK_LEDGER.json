@@ -1295,6 +1295,17 @@
             "https://doi.org/10.5281/zenodo.22049564",
             "https://github.com/ipitchford/cyclicity-support-fusion-atlas/releases/tag/v0.7.0-candidate"
           ]
+        },
+        {
+          "at": "2026-08-21T19:53:03Z",
+          "field": "active release hero-art cache identity",
+          "reason": "Public browser readback after the v0.7 deployment showed the cached v0.6 hero SVG even though cache-busted origin bytes matched the v0.7 candidate, because release hero art used an unversioned URL with a one-week cache lifetime.",
+          "replacement": "Every release hero URL is now content-versioned from the committed SVG SHA-256 bytes, with a regression test binding both paper.json coverArtUrl and the rendered HTML image source to the exact digest. The v0.7 research package, DOI, claims and assurance vector are unchanged.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/cyclicity-support-fusion-atlas/",
+            "https://doi.org/10.5281/zenodo.22049564",
+            "https://github.com/ipitchford/cyclicity-support-fusion-atlas/releases/tag/v0.7.0-candidate"
+          ]
         }
       ],
       "revisions": [
@@ -1321,6 +1332,10 @@
         {
           "date": "2026-08-21",
           "summary": "Prepared matching content-versioned v0.7 audio, transcript, thumbnail and Open Graph assets; the media remain communication aids and do not change the research assurance vector."
+        },
+        {
+          "date": "2026-08-21",
+          "summary": "Recorded the failed public visual readback of the unversioned hero-art cache key and prepared a global content-hash query plus all-release HTML/API regression test; the v0.7 research object and assurance boundary are unchanged."
         }
       ]
     },
@@ -1633,6 +1648,10 @@
     {
       "date": "2026-08-21",
       "summary": "Recorded the matching cyclicity-support-fusion-atlas v0.7 presentation update for content-versioned audio, transcript, thumbnail and Open Graph assets; retained their communication-only status and the unchanged external-assurance and no-impact boundaries."
+    },
+    {
+      "date": "2026-08-21",
+      "summary": "Recorded the cyclicity-support-fusion-atlas hero-art cache correction after public visual readback exposed cached v0.6 art on the v0.7 page; content-versioned every release hero URL and added an all-release HTML/API binding test without changing any research claim or assurance state."
     }
   ]
 }
