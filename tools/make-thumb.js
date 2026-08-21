@@ -107,6 +107,19 @@ const SPECS = {
       <div class="note"><b>11 Ritt diamonds</b><br><b>1,152 exact atlas cases</b> through degree 20<br>zero anomalies · zero missing certificates</div>
       <div class="eq-foot">all-degree coefficient atlas remains conjectural</div>`
   },
+  'finite-sample-affine-diversification': {
+    palette: 'lagoon',
+    kicker: ['RESEARCH RELEASE · 21 AUGUST 2026', 'PHYLOGENETICS · V0.3.0-CANDIDATE-R2'],
+    head: ['Signal uncertainty.', 'Decision <em>honesty.</em>'],
+    headSize: 66,
+    sub: 'An exact fixed-stem confidence set is propagated through an affine identified set to three-valued decisions, with the failed CRABS utility gate preserved.',
+    tag: 'UNREFEREED CANDIDATE · CONDITIONAL MODEL',
+    hero: `
+      <div class="eq-label">frozen CRABS utility gate</div>
+      <div class="eq eq-sm"><span class="hl">532 / 3,840</span> = 13.854%</div>
+      <div class="note"><b>H4 FAILED below 20%.</b><br>240/240 returned primary clouds missed an endpoint; 60 more were structural censors.</div>
+      <div class="eq-foot">endpoint incompleteness ≠ broad decision utility</div>`
+  },
   'wales-20mph-casualty-attribution': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'POLICY IDENTIFICATION · V1.0.0'],

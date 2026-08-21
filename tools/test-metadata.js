@@ -266,7 +266,7 @@ check('Atlas publishes GitHub and no-GitHub intake routes',
   atlasHtml.includes('GitHub sign-in required') && atlasHtml.includes('no GitHub account required') &&
   publicAtlasProposals.policy.intakeRoutes.some(route => route.id === 'agentmail-email'));
 check('Atlas discloses exact relationship composition above the instrument',
-  atlasHtml.includes('186 recorded relationships:') && atlasHtml.includes('7 direct · 8 lineage · 29 cluster · 142 method'));
+  atlasHtml.includes('199 recorded relationships:') && atlasHtml.includes('8 direct · 10 lineage · 30 cluster · 151 method'));
 check('Atlas uses reader-facing source-declared status without changing the machine enum',
   atlasHtml.includes('source-declared') && publicResearchGraph.edges.every(edge => edge.knowledgeStatus === 'asserted'));
 check('Atlas publishes deterministic missingness and its non-inference boundary',
@@ -713,6 +713,51 @@ check('Recht–Ré assurance preserves the internal-versus-independent boundary'
   rechtRe.verification.independentlyReproduced === false &&
   rechtRe.verification.peerReviewed === false,
   'expected public availability/internal replay without independent or editorial promotion');
+
+const affineFinite = papersDoc.papers.find(p => p.slug === 'finite-sample-affine-diversification');
+const affineFiniteMeta = JSON.parse(fs.readFileSync(
+  path.join(ROOT, 'papers', 'finite-sample-affine-diversification', 'meta.json'), 'utf8'));
+const affineFiniteHtml = fs.readFileSync(path.join(
+  DIST, 'releases', 'finite-sample-affine-diversification', 'index.html'), 'utf8');
+const affineFiniteAudioFile = path.join(ROOT, 'assets', 'audio', 'finite-sample-affine-diversification.mp3');
+const affineFiniteReceipt = JSON.parse(fs.readFileSync(
+  path.join(ROOT, 'assets', 'audio', 'finite-sample-affine-diversification.provenance.json'), 'utf8'));
+const affineFiniteAudioHash = crypto.createHash('sha256').update(fs.readFileSync(affineFiniteAudioFile)).digest('hex');
+check('finite-sample affine successor binds its immutable identity and Anonymous authorship',
+  affineFinite && affineFinite.version === '0.3.0-candidate-r2' &&
+  affineFinite.doi === '10.5281/zenodo.22041054' &&
+  affineFinite.conceptDoi === '10.5281/zenodo.21851318' &&
+  same(affineFinite.authors, ['Anonymous']) &&
+  affineFinite.status === 'unrefereed-candidate' &&
+  affineFinite.pdfUrl.includes('/releases/download/v0.3.0-candidate-r2/') &&
+  affineFiniteHtml.includes('Finite-Sample Signal Uncertainty'),
+  `version=${affineFinite && affineFinite.version} doi=${affineFinite && affineFinite.doi}`);
+check('finite-sample affine successor publishes the failed H4 gate without broad-utility promotion',
+  affineFinite &&
+  affineFinite.keyResults.some(item => item.includes('532 of 3,840') && item.includes('H4 utility gate')) &&
+  affineFinite.keyResults.some(item => item.includes('prohibits claims') && item.includes('must-have')) &&
+  affineFiniteHtml.includes('13.854%') && affineFiniteHtml.includes('<strong>H4 failed</strong>') &&
+  affineFiniteHtml.includes('does not claim that the affine method is a must-have') &&
+  affineFiniteHtml.includes('measured decision impact') && affineFiniteHtml.includes('fell short of its preregistered target'),
+  'expected exact failed-gate result and no must-have claim');
+check('finite-sample affine assurance remains producer-side and unrefereed',
+  affineFinite &&
+  affineFinite.assurance.find(item => item.dimension === 'availability').state === 'passed' &&
+  affineFinite.assurance.find(item => item.dimension === 'internalReplay').state === 'passed' &&
+  affineFinite.assurance.find(item => item.dimension === 'independentRerun').state === 'not-assessed' &&
+  affineFinite.assurance.find(item => item.dimension === 'independentReimplementation').state === 'not-assessed' &&
+  affineFinite.assurance.find(item => item.dimension === 'specialistReview').state === 'not-assessed' &&
+  affineFinite.assurance.find(item => item.dimension === 'editorialPeerReview').state === 'not-assessed' &&
+  affineFinite.verification.independentlyReproduced === false && affineFinite.verification.peerReviewed === false,
+  'expected public availability/internal replay without external assurance');
+check('finite-sample affine audio is transcript- and byte-bound',
+  fs.readFileSync(path.join(ROOT, 'assets', 'audio', 'finite-sample-affine-diversification.txt'), 'utf8') ===
+    `${affineFiniteMeta.narration.trim()}\n` &&
+  affineFiniteReceipt.provider === 'openai' && affineFiniteReceipt.model === 'gpt-4o-mini-tts' &&
+  affineFiniteReceipt.voice === 'fable' && affineFiniteReceipt.audioSha256 === affineFiniteAudioHash &&
+  affineFiniteReceipt.audioBytes === fs.statSync(affineFiniteAudioFile).size &&
+  (affineFiniteHtml.match(/<audio\b/g) || []).length === 1,
+  `audioSha256=${affineFiniteAudioHash}`);
 
 /* ---------------------------------------- programme visual hierarchy */
 const imageSources = rel => [...fs.readFileSync(path.join(DIST, rel), 'utf8')
