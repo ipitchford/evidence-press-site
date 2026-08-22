@@ -63,6 +63,20 @@ function candidateAsset(url) {
   }
 }
 
+/* Source-backed receipts must also be testable before dist/ exists. Resolve a
+   same-site URL to its committed source file without permitting a pathname to
+   escape the repository root. The later build and live gates still verify the
+   generated and deployed copies independently. */
+function sourceAsset(url) {
+  try {
+    const relative = decodeURIComponent(new URL(url, BASE).pathname).replace(/^\/+/, '');
+    const file = path.resolve(ROOT, relative);
+    return file.startsWith(`${ROOT}${path.sep}`) ? file : null;
+  } catch {
+    return null;
+  }
+}
+
 /* A corrected static asset may retain its stable path while acquiring a
    content-derived cache key. Permit only that narrow successor relation: same
    origin and path, one hexadecimal v parameter, and a token that exactly
@@ -96,7 +110,7 @@ function isRecordedAudioSuccessor(liveUrl, candidateUrl, slug, liveEvents, candi
         live.pathname !== candidate.pathname || live.href === candidate.href) return false;
     const params = [...candidate.searchParams.entries()];
     if (params.length !== 1 || params[0][0] !== 'v' || !/^[a-f0-9]{10}$/.test(params[0][1])) return false;
-    const audioFile = candidateAsset(candidateUrl);
+    const audioFile = sourceAsset(candidateUrl);
     if (!audioFile || !fs.existsSync(audioFile)) return false;
     const audioHash = crypto.createHash('sha256').update(fs.readFileSync(audioFile)).digest('hex');
     if (params[0][1] !== audioHash.slice(0, 10)) return false;
