@@ -88,4 +88,4 @@ The checker was nevertheless written in the same workflow and shares parsing and
 
 ## Release boundary
 
-This is an additive successor and does not alter the immutable two-item release. Its reserved version DOI is [10.5281/zenodo.22057665](https://doi.org/10.5281/zenodo.22057665), but DOI reservation is not evidence of a published deposit, byte-identical assets, a public tag, or a canonical Evidence Press page. Those publication-integrity gates must be completed and read back separately.
+This is an additive successor and does not alter the immutable two-item release. The immutable [GitHub prerelease](https://github.com/ipitchford/certified-three-item-jrp-gap/releases/tag/v0.3.1-candidate) and published [Zenodo version DOI 10.5281/zenodo.22057665](https://doi.org/10.5281/zenodo.22057665) expose six byte-identical assets under unauthenticated public readback. That establishes identity and availability, not mathematical correctness, independent assurance, operational validation, savings, or field impact. Canonical Evidence Press readback remains a separate publication-integrity gate.
