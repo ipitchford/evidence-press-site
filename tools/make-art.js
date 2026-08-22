@@ -670,6 +670,43 @@ art['certified-two-item-jrp'] = (a, b) => {
   return s;
 };
 
+/* certified three-item JRP: three event streams close into a (3,3,2) calendar,
+   while the relaxed lower bound remains visibly separated from exact cost. */
+art['certified-three-item-jrp-gap'] = (a, b) => {
+  let s = '';
+  const x0 = 72, x1 = 555;
+  const rows = [92, 198, 304];
+  const spacings = [78, 78, 117];
+  const labels = ['ITEM 1 · 3', 'ITEM 2 · 3', 'ITEM 3 · 2'];
+  for (let r = 0; r < rows.length; r++) {
+    const y = rows[r];
+    s += `<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="#d6dcdd" stroke-width="2" opacity=".48"/>`;
+    s += `<text x="${x0}" y="${y - 27}" font-family="ui-monospace,monospace" font-size="14" fill="${r === 2 ? b : a}" opacity=".9">${labels[r]}</text>`;
+    for (let x = x0; x <= x1; x += spacings[r]) {
+      s += `<line x1="${x}" y1="${y - 18}" x2="${x}" y2="${y + 18}" stroke="${r === 2 ? b : a}" stroke-width="4"/>`;
+    }
+  }
+  for (const x of [x0, x0 + 234, x0 + 468]) {
+    s += `<line x1="${x}" y1="110" x2="${x}" y2="286" stroke="#e7e5e4" stroke-width="1.5" stroke-dasharray="6 7" opacity=".58"/>`;
+    s += `<circle cx="${x}" cy="198" r="8" fill="#e7e5e4"/>`;
+  }
+
+  s += `<path d="M 590 62 V 338" stroke="#8a938f" stroke-width="1" opacity=".45"/>`;
+  s += `<text x="642" y="96" font-family="ui-monospace,monospace" font-size="14" fill="#d6dcdd" opacity=".72">EXACT RATIO</text>`;
+  s += `<text x="642" y="164" font-family="Georgia" font-size="51" fill="${a}">1.148729</text>`;
+  s += `<text x="642" y="202" font-family="Georgia" font-size="24" fill="#e7e5e4" opacity=".9">three-item lower bound</text>`;
+  s += `<line x1="642" y1="230" x2="1118" y2="230" stroke="#8a938f" stroke-width="1" opacity=".42"/>`;
+  s += `<text x="642" y="270" font-family="ui-monospace,monospace" font-size="15" fill="${b}">14.8729% RELAXATION OPTIMISM</text>`;
+  s += `<text x="642" y="304" font-family="Georgia" font-size="21" fill="#e7e5e4" opacity=".82">synthetic model gap · not savings</text>`;
+
+  const tail = 'M 920 112 C 980 112, 1008 126, 1040 154 C 1074 184, 1092 196, 1124 202';
+  s += `<path d="${tail}" fill="none" stroke="${b}" stroke-width="3" opacity=".88"/>`;
+  s += `<line x1="922" y1="202" x2="1128" y2="202" stroke="${a}" stroke-width="2" stroke-dasharray="8 7" opacity=".78"/>`;
+  s += `<circle cx="1124" cy="202" r="7" fill="${b}"/>`;
+  s += `<text x="1024" y="82" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#d6dcdd" opacity=".72">49,981 TRIPLES · STRICT TAIL</text>`;
+  return s;
+};
+
 /* Two very different histories, one spectrum; and the certified band. */
 art['sfs-identifiability-audit'] = (a, b) => {
   let s = '';
@@ -943,6 +980,7 @@ const palette = {
   'hahn-ewens-mixing-theorem': ['#38bdf8', '#f59e0b'],
   'smooth-point-certificates-polydegree-containments': ['#2dd4bf', '#f59e0b'],
   'certified-two-item-jrp': ['#2dd4bf', '#f59e0b'],
+  'certified-three-item-jrp-gap': ['#2dd4bf', '#f59e0b'],
   'unique-answer-not-identified': ['#38bdf8', '#f59e0b'],
   'sfs-identifiability-audit': ['#f59e0b', '#38bdf8'],
   'wales-20mph-casualty-attribution': ['#2dd4bf', '#f59e0b']
