@@ -174,6 +174,20 @@ const SPECS = {
       <div class="eq-foot">finite exact enumeration · 212-cell rational cover · replay receipt</div>`
   },
 
+  'certified-three-item-jrp-gap': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 22 AUGUST 2026', 'JOINT REPLENISHMENT · V0.3.1'],
+    head: ['Three items.', 'A larger exact <em>gap.</em>'],
+    headSize: 66,
+    sub: 'A finite exact oracle separates the three-item lower bound from the two-item endpoint—and hands logistics teams a gated stress test, not a savings claim.',
+    tag: 'EXACT CERTIFICATES · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">primitive calendar (3, 3, 2)</div>
+      <div class="eq eq-sm">Γ<sub>(3,□)</sub> ≥ <span class="hl">1.1487291465</span></div>
+      <div class="note"><b>49,981 primitive triples</b> plus every boundary regime and a strict tail certificate. The 14.8729% model gap is not an operational saving.</div>
+      <div class="eq-foot">paper · exact archive · verifier · logistics field gates</div>`
+  },
+
   'erdos-848-all-n': {
     palette: 'auto',
     kicker: ['PRESS RELEASE · 28 JULY 2026', 'ERDŐS PROBLEM 848 · V0.1'],

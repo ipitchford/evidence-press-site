@@ -251,7 +251,8 @@ function extractFunction(source, name) {
 
 {
   const errors = errorsFor(({ artifacts }) => {
-    delete artifacts.registry.methodClusters.at(-1).supersedes;
+    const successor = artifacts.registry.methodClusters.findLast(cluster => cluster.supersedes);
+    delete successor.supersedes;
   });
   check('duplicate cluster membership requires an explicit successor chain',
     errors.some(e => e.includes('duplicate requires an explicit successor')), errors.join('\n  '));
@@ -259,7 +260,8 @@ function extractFunction(source, name) {
 
 {
   const errors = errorsFor(({ artifacts }) => {
-    artifacts.registry.methodClusters.at(-1).supersedes = 'missing-prior-cluster';
+    const successor = artifacts.registry.methodClusters.findLast(cluster => cluster.supersedes);
+    successor.supersedes = 'missing-prior-cluster';
   });
   check('successor cluster must resolve to the active earlier cluster',
     errors.some(e => e.includes('must resolve to an earlier cluster')) &&
@@ -268,7 +270,8 @@ function extractFunction(source, name) {
 
 {
   const errors = errorsFor(({ artifacts }) => {
-    artifacts.registry.methodClusters.at(-1).members.push('finite-sample-affine-diversification');
+    const successor = artifacts.registry.methodClusters.findLast(cluster => cluster.supersedes);
+    successor.members.push('finite-sample-affine-diversification');
   });
   check('successor cluster cannot silently change the superseded member set',
     errors.some(e => e.includes('must exactly match superseded cluster')), errors.join('\n  '));
