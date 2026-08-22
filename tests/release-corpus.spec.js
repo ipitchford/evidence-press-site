@@ -28,7 +28,11 @@ for (const viewport of [
       const response = await page.goto(`http://127.0.0.1:8080/releases/${slug}/`, { waitUntil: 'load' });
       const images = page.locator('img');
       for (let index = 0; index < await images.count(); index += 1) await images.nth(index).scrollIntoViewIfNeeded();
-      await page.waitForTimeout(75);
+      await page.waitForFunction(
+        () => [...document.images].every(image => image.complete),
+        undefined,
+        { timeout: 10000 }
+      );
       const result = await page.evaluate(() => {
         const ids = [...document.querySelectorAll('[id]')].map(node => node.id);
         return {
