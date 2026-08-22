@@ -317,8 +317,8 @@ finite-sample coverage to the earlier archived object.
 - The complete frozen CRABS ledger, receipts and derived H2/H4 tables.
 - The Stage 3-prime review and Stage 4.5 integrity report.
 
-The scholarly creator is **Anonymous**. Ian Pitchford is the repository
-maintainer and publisher, not the scholarly author. Original prose, figures,
+The scholarly creator is **Anonymous**. Operational maintenance and publication
+roles are recorded in the machine-readable provenance. Original prose, figures,
 structured records and project-created data are dedicated under CC0 1.0;
 original code is MIT-licensed; third-party exceptions retain the terms in the
 component licence map.

@@ -40,6 +40,9 @@ const GOVERNANCE_ROUTES = [
   ['work ledger', '/api/work-ledger.json', '/api/v1/work-ledger.json', true],
   ['Atlas roadmap', '/api/atlas-roadmap.json', '/api/v1/atlas-roadmap.json', true],
   ['Atlas proposals', '/api/atlas-proposals.json', '/api/v1/atlas-proposals.json', true],
+  ['page-structure policy', '/api/page-structure-policy.json', '/api/v1/page-structure-policy.json', true],
+  ['presentation-event ledger', '/api/presentation-events.json', '/api/v1/presentation-events.json', true],
+  ['audio-provenance status', '/api/audio-provenance-status.json', '/api/v1/audio-provenance-status.json', true],
   ['operating-model schema', '/api/schemas/operating-model.schema.json', '/api/v1/schemas/operating-model.schema.json', true],
   ['method-registry schema', '/api/schemas/method-registry.schema.json', '/api/v1/schemas/method-registry.schema.json', true],
   ['IBE-ledger schema', '/api/schemas/ibe-ledger.schema.json', '/api/v1/schemas/ibe-ledger.schema.json', true],
@@ -55,6 +58,20 @@ const candidateJson = urlPath => readOptional(path.join(DIST, urlPath.replace(/^
 function candidateAsset(url) {
   try {
     return path.join(DIST, new URL(url, BASE).pathname.replace(/^\//, ''));
+  } catch {
+    return null;
+  }
+}
+
+/* Source-backed receipts must also be testable before dist/ exists. Resolve a
+   same-site URL to its committed source file without permitting a pathname to
+   escape the repository root. The later build and live gates still verify the
+   generated and deployed copies independently. */
+function sourceAsset(url) {
+  try {
+    const relative = decodeURIComponent(new URL(url, BASE).pathname).replace(/^\/+/, '');
+    const file = path.resolve(ROOT, relative);
+    return file.startsWith(`${ROOT}${path.sep}`) ? file : null;
   } catch {
     return null;
   }
@@ -77,6 +94,36 @@ function isContentVersionedAssetSuccessor(liveUrl, candidateUrl, candidateFile =
     if (!file || !fs.existsSync(file)) return false;
     const expected = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0, 10);
     return params[0][1] === expected;
+  } catch {
+    return false;
+  }
+}
+
+/* A second replacement at an already content-versioned URL needs more than a
+   fresh query token. Require an append-only presentation event whose receipt
+   binds the new MP3 and transcript bytes. */
+function isRecordedAudioSuccessor(liveUrl, candidateUrl, slug, liveEvents, candidateEvents) {
+  try {
+    const live = new URL(liveUrl, BASE);
+    const candidate = new URL(candidateUrl, BASE);
+    if (live.origin !== new URL(BASE).origin || candidate.origin !== live.origin ||
+        live.pathname !== candidate.pathname || live.href === candidate.href) return false;
+    const params = [...candidate.searchParams.entries()];
+    if (params.length !== 1 || params[0][0] !== 'v' || !/^[a-f0-9]{10}$/.test(params[0][1])) return false;
+    const audioFile = sourceAsset(candidateUrl);
+    if (!audioFile || !fs.existsSync(audioFile)) return false;
+    const audioHash = crypto.createHash('sha256').update(fs.readFileSync(audioFile)).digest('hex');
+    if (params[0][1] !== audioHash.slice(0, 10)) return false;
+    const oldIds = new Set((liveEvents && liveEvents.events || []).map(event => event.eventId));
+    return (candidateEvents && candidateEvents.events || []).some(event => {
+      const artifact = event.artifact || {};
+      const transcriptFile = artifact.transcriptPath && path.join(ROOT, artifact.transcriptPath);
+      return !oldIds.has(event.eventId) && event.slug === slug && event.eventType === 'audio' &&
+        event.researchClaimChanged === false && event.researchArchiveChanged === false &&
+        artifact.audioPath === candidate.pathname.replace(/^\//, '') && artifact.audioSha256 === audioHash &&
+        transcriptFile && fs.existsSync(transcriptFile) &&
+        artifact.transcriptSha256 === crypto.createHash('sha256').update(fs.readFileSync(transcriptFile)).digest('hex');
+    });
   } catch {
     return false;
   }
@@ -420,6 +467,7 @@ async function main() {
   const candidateWork = candidateJson('/api/work-ledger.json');
   const candidateAtlasRoadmap = candidateJson('/api/atlas-roadmap.json');
   const candidateAtlasProposals = candidateJson('/api/atlas-proposals.json');
+  const candidatePresentationEvents = candidateJson('/api/presentation-events.json');
   const liveContract = liveGovernance.get('/api/operating-model.json');
   if (liveContract) {
     if (!isDeepStrictEqual(liveContract, candidateContract)) {
@@ -479,6 +527,14 @@ async function main() {
         failures.push(`Atlas proposal ${oldProposal.proposalId}: appended receipt chain does not end at currentState`);
       }
     }
+  }
+
+  const livePresentationEvents = liveGovernance.get('/api/presentation-events.json');
+  if (livePresentationEvents) {
+    preserveArrayPrefix(
+      'presentation-event ledger', livePresentationEvents.events,
+      candidatePresentationEvents.events, 'event'
+    );
   }
 
   const liveRegistry = liveGovernance.get('/api/method-registry.json');
@@ -559,9 +615,12 @@ async function main() {
     const presentationCorrection = isCorrectionSuccessor(
       live, candidate, liveWork, candidateWork, 'presentation'
     );
+    preserveArrayPrefix(`release ${live.slug} corrections`, live.corrections || [], candidate.corrections || [], 'correction');
     if (!presentationCorrection) preserveMedia(`release ${live.slug}`, live.media, candidate.media);
     if (live.audioUrl && live.audioUrl !== candidate.audioUrl &&
         !isContentVersionedAssetSuccessor(live.audioUrl, candidate.audioUrl) &&
+        !isRecordedAudioSuccessor(live.audioUrl, candidate.audioUrl, live.slug,
+          livePresentationEvents, candidatePresentationEvents) &&
         !presentationCorrection) {
       failures.push(`release ${live.slug}: changed or dropped published audio ${live.audioUrl}`);
     }
@@ -646,6 +705,7 @@ if (require.main === module) main().catch(error => {
 module.exports = {
   isCorrectionSuccessor,
   isContentVersionedAssetSuccessor,
+  isRecordedAudioSuccessor,
   listedFailures,
   preserveArrayPrefix,
   preserveChangeLogPrefix,

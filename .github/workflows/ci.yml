@@ -52,6 +52,11 @@ jobs:
       - name: Renderer regression tests
         run: node tools/test-render.js
 
+      - name: Reader-first release-page policy
+        run: |
+          node tools/test-release-pages.js
+          node tools/build-audio-provenance-status.js --check
+
       - name: Operating-model contract and hostile controls
         run: node tools/test-operating-model.js
 
@@ -147,6 +152,9 @@ jobs:
       - name: Build the site
         run: REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh
 
+      - name: Install the pinned browser-test runner
+        run: npm ci --ignore-scripts
+
       - name: Protocol candidate/production byte-integrity gate
         run: |
           if [ -f protocols/PUBLISHED.json ]; then
@@ -168,3 +176,6 @@ jobs:
         # floor, not a conformance claim: keyboard and screen-reader testing
         # are recorded separately in docs/ACCESSIBILITY.md.
         run: npx --yes pa11y-ci --config .pa11yci.json
+
+      - name: Audit every release at desktop and mobile widths
+        run: npm run test:release-corpus

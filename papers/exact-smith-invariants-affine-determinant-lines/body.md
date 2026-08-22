@@ -185,4 +185,4 @@ The package also exposes separate manifest, claim-registry, receipt-comparison, 
 - a hardened fresh-extraction verifier and its external receipt;
 - the visual abstract, lineage graphic, and plain-English audio summary with transcript.
 
-Original non-code content is dedicated to the public domain under CC0 1.0; original code is MIT. Scholarly attribution is Anonymous. Ian Pitchford acts as repository maintainer and publisher. The audio voice is AI-generated and is not mathematical evidence.
+Original non-code content is dedicated to the public domain under CC0 1.0; original code is MIT. Scholarly attribution is Anonymous. Operational maintenance and publication roles are recorded in the machine-readable provenance. The audio voice is AI-generated and is not mathematical evidence.

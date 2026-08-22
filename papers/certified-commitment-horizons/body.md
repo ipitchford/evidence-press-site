@@ -75,7 +75,7 @@ The full route is substantially slower because it includes exact large-horizon s
 5. Formalize the graph reduction, tie-radius theorem and checker in a proof assistant.
 6. Conduct a prospective operational study using genuine forecast vintages, actual costs and predeclared decision outcomes.
 
-## Sources and related work
+## Relationship to earlier work
 
 The framework begins with [Wagner and Whitin's classical dynamic lot-size model](https://doi.org/10.1287/mnsc.5.1.89). Closely related sensitivity and stability work includes [van Hoesel and Wagelmans (1993)](https://doi.org/10.1016/0166-218X(93)90016-H) and [Chakravarti and Wagelmans (1998)](https://doi.org/10.1016/S0167-6377(98)00031-5). [Forel and Grunow (2023)](https://doi.org/10.1111/poms.13881) treat forecast evolution in rolling-horizon planning.
 

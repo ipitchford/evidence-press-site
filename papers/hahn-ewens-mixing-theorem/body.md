@@ -42,6 +42,10 @@ the exact critical constant.
 > independent reproduction, formal verification, external specialist review,
 > and editorial peer review not assessed · no parent release.
 
+## Summary for specialists
+
+The candidate diagonalises the labelled-word chain by square-free degree, with eigenvalues given by beta-difference moments and binomial layer multiplicities. It then proves a sharp stationary-average chi-square trace transition at the stated constant by combining two-endpoint moment asymptotics with a sublinear degree split. The scope is the explicit observable and open parameter region, not a general cutoff theorem.
+
 ## From counts to labelled words
 
 The construction begins with a random permutation whose cycles receive new
@@ -162,7 +166,20 @@ statement alone. Further work could determine the critical-point behaviour,
 seek typical-start or worst-case analogues, analyse the boundary regimes, and
 formalize the main proof.
 
-## Package and reuse
+## Who should care, and why
+
+| Reader | Start here | Principal caution |
+|---|---|---|
+| Markov-chain researcher | Specialist summary and transition proof | The theorem is stationary-average, not worst-case or total variation. |
+| Orthogonal-polynomial researcher | Counts-to-words construction | The plausible increment is bounded relative to cited classical work. |
+| Computational reviewer | Executable evidence section | Finite checks do not prove the endpoint asymptotic. |
+| General reader | Summary | Nothing is claimed at the critical constant. |
+
+## How to inspect and reproduce the recorded checks
+
+Use the [v0.1.0 candidate release](https://github.com/ipitchford/hahn-ewens-mixing-theorem/releases/tag/v0.1.0-candidate) or the [DOI archive](https://doi.org/10.5281/zenodo.21864287). Check the release manifest before running the ordinary and optimised positive and control paths. Compare the three eigenvalue routes, the two bounded-kernel constructions and the recorded predicate counts; this tests the supplied finite semantics but does not independently reconstruct the asymptotic proof.
+
+## What is in the public package
 
 The public repository contains the 21-page PDF, LaTeX source, exact
 verifiers, frozen receipts, review records, claim registry, deterministic

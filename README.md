@@ -24,6 +24,8 @@ The build is deterministic: the build timestamp comes from the commit, not the c
 
 ```
 node tools/test-render.js      # renderer regression + property tests
+node tools/test-release-pages.js --report # reader functions, attribution and correction materiality
+node tools/build-audio-provenance-status.js --check # audio/transcript/provenance snapshot
 node tools/test-operating-model.js # doctrine, method/IBE/work ledgers, prospective contract + hostile controls
 node tools/test-metadata.js    # schema conformance + cross-surface consistency
 node tools/check-links.js      # every internal link and asset resolves
@@ -38,7 +40,7 @@ Release metadata is validated against strict authoring contracts *before* any fi
 
 1. Before substantive work, register an `attemptId` and `workId` in `data/WORK_LEDGER.json`. Retain stopped, null, failed and unreleased attempts; use explicit missingness rather than reconstructed clocks.
 2. Copy an existing folder in `papers/` (e.g. `papers/z20-equals-6/`) to `papers/<new-slug>/`.
-3. Edit `meta.json` — title, one-line summary, abstract, date (`YYYY-MM-DD`), version, DOI, **pdfUrl** (direct link to the manuscript PDF), Zenodo/GitHub URLs, authors as listed on the archive record, keywords, key results, evidence description, verification status, open follow-up problems, related works (each with a URL), citation text, and a complete `operatingModel` record conforming to `schemas/release-operating-model.schema.json`. Its attempt IDs must reciprocate the work-ledger release link, and its artifact roles must distinguish research outputs from assessments, method demonstrations and communications. Set `"math": true` if the page uses LaTeX (`$...$` / `$$...$$`). Optionally add `"narration"` (plain-spoken text for the audio briefing) and `"media": [{"type":"video","url":"...","name":"..."}]` for additional audio/video.
+3. Edit `meta.json` — title, one-line summary, abstract, date (`YYYY-MM-DD`), version, DOI, **pdfUrl** (direct link to the manuscript PDF), Zenodo/GitHub URLs, authors as listed on the archive record, keywords, key results, evidence description, verification status, open follow-up problems, related works (each with a URL), citation text, the page-structure fields defined in `data/PAGE_STRUCTURE_POLICY.json`, and a complete `operatingModel` record conforming to `schemas/release-operating-model.schema.json`. Its attempt IDs must reciprocate the work-ledger release link, and its artifact roles must distinguish research outputs from assessments, method demonstrations and communications. Set `"math": true` if the page uses LaTeX (`$...$` / `$$...$$`). Optionally add `"narration"` (plain-spoken text for the audio briefing) and `"media": [{"type":"video","url":"...","name":"..."}]` for additional audio/video.
 4. Add the slug to one or more appropriate method assignments and exactly one broad method cluster in `data/METHOD_REGISTRY.json`. Add it to a lineage only when a published dependency supplies the evidence. Update `data/IBE_LEDGER.json` only when the release materially bears on a recorded explanation. Registry inclusion is not a correctness or impact claim.
 5. Edit `body.md` — the press release. Template sections: `## Summary` (popular), `## Summary for specialists`, `## Technical summary`, `## Who should care, and why` (audience table), `## The most valuable next projects`, `## Specialist audience candidates`, `## What is in the evidence package`.
 6. Run the asset generators (outputs are committed):
@@ -59,7 +61,7 @@ Each release carries an **assurance matrix** rather than a single verification l
 
 Prospective workflow receipts use those eight release-object dimensions plus three explicitly epistemic targets: semantic validation, novelty assessment and priority assessment. This 11-dimension target does not retrospectively upgrade the public matrix or collapse it to a score. The release matrix describes the published object; the dated work-ledger endpoint records which assurance boundary a prospective attempt actually reached, with evidence and a claim ceiling.
 
-If a published page turns out to be wrong, add an entry to that release's `corrections` array (`date`, `scope` — one of `presentation`, `metadata`, `claim`, `evidence` — `summary`, optional `detail` and `fixedIn`). It renders as a dated notice on the release page and is published in the release's JSON. Corrections are additive: the record of the error stays.
+If a published page turns out to be wrong, add an entry to that release's `corrections` array (`date`, `scope` — one of `presentation`, `metadata`, `claim`, `evidence` — `summary`, optional `detail` and `fixedIn`). Corrections are additive: the record of the error stays in JSON. `publicCorrectionIndexes` selects the material subset displayed to readers. Routine audio, video, art, cache and deployment work belongs in `data/PRESENTATION_EVENTS.json`, not the scholarly correction panel. A displayed formula or numerical correction remains material even when its scope is `presentation`.
 
 ## What the build emits
 
@@ -73,6 +75,9 @@ If a published page turns out to be wrong, add an entry to that release's `corre
 - `/api/method-registry.json` — reusable methods, failure modes, broad method clusters, evidence-backed lineages and release assignments
 - `/api/ibe-ledger.json` — observations, rival explanations, predictions and potential falsifiers
 - `/api/work-ledger.json` — prospective attempts, including stopped and unreleased work, clocks, resources, comparisons, assurance endpoints and explicit missingness
+- `/api/page-structure-policy.json` — reader-first page functions, variants, positive fixtures and grandfathering rule
+- `/api/presentation-events.json` — routine communication and deployment history kept separate from scholarly corrections
+- `/api/audio-provenance-status.json` — transcript and provider/model/voice provenance status without inferred legacy facts
 - `/api/atlas-proposals.json` — quarantined research tips from people and agents, with content-derived IDs, cheap falsifiers, separate assessments, expiry and append-only review receipts
 - `/api/schemas/*.schema.json` — schemas for all operating artifacts and prospective release records
 - `/api/stability.json` — field stability, compatibility guarantees and deprecation procedure

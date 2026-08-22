@@ -137,4 +137,4 @@ The [tagged CI run](https://github.com/ipitchford/bilateral-deficiency/actions/r
 - a fresh-extraction replay transcript; and
 - a separately archived lossless Zstandard transport of the optional 5.79 GB LRAT proof, together with recovery instructions, its manifest, and both transport and recovered-object hashes.
 
-The downloadable package retains its split licence: original prose, data and figures are CC BY 4.0; original code is MIT; third-party material retains its upstream terms. The Evidence Press page and machine-readable site records use the site's CC0 terms and do not override the package licences. Scholarly attribution is Anonymous; Ian Pitchford acts only as maintainer and publisher.
+The downloadable package retains its split licence: original prose, data and figures are CC BY 4.0; original code is MIT; third-party material retains its upstream terms. The Evidence Press page and machine-readable site records use the site's CC0 terms and do not override the package licences. Scholarly attribution is Anonymous; operational maintenance and publication roles are recorded in the machine-readable provenance.

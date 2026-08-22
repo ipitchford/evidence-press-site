@@ -1,4 +1,4 @@
-## The problem in everyday terms
+## Summary
 
 Suppose a warehouse replenishes two items on fixed repeating schedules. Ordering either item has its own cost, but every occasion on which the warehouse places an order also carries a shared cost: administration, dispatch, receiving, a production changeover, or another setup that is paid once no matter whether one item or both are included.
 
@@ -67,6 +67,10 @@ $$
 so no omitted ratio can improve on the incumbent. At that point the enumeration stops with an exact certificate of optimality.
 
 This is a termination theorem, not an efficiency theorem. It guarantees a finite stopping point for every instance in the stated two-item model, but the required cutoff may be very large and no polynomial running-time bound is claimed.
+
+## Summary for specialists
+
+The candidate reduces each primitive coordination pattern to a one-variable convex objective, combines a resource-aware desynchronised lower bound with a strict rational-synchronisation improvement, and obtains a finite exact stopping certificate. Its second theorem gives the exact independent-cap relaxation gap as the isolated quartic root reported below, with a matching lower family and a four-policy coefficientwise upper envelope.
 
 ## What the relaxation is relaxing
 
@@ -151,3 +155,28 @@ The equality uses nonnegative **real** coefficients and permits zero item-specif
 Nor does the constant settle the unrestricted problem with three or more items. The cap-reduction argument makes $\gamma$ a rigorous lower bound for the wider multi-item relaxation gap, but it does not prove that two items are globally worst. Multi-item alignment, phases, fixed delivery calendars, pointwise capacity, uncertain demand, safety stock, lead times, routing, and multi-echelon effects remain outside the theorem.
 
 The result is an unrefereed candidate computer-assisted result. Its exact arithmetic checks and fresh-extraction replay were performed within the producing workflow; independent mathematical reconstruction, formal proof-assistant verification, specialist review, peer review, and field validation have not yet occurred.
+
+## Evidence and assurance boundary
+
+The package records exact rational and radical witnesses, resource-dual and tail certificates, quartic isolation, the complete 212-cell upper certificate, semantic mutations, deterministic document builds and fresh-extraction producer replay. These checks are strong evidence for finite arithmetic, package identity and implementation consistency. They do not independently establish the analytic bridge, theorem completeness, operational relevance or novelty.
+
+## Who should care, and why
+
+| Reader | Start here | Principal caution |
+|---|---|---|
+| Inventory and scheduling researcher | The exact search and cap-gap sections | The model has two stationary items and average-rate constraints. |
+| Approximation-algorithm researcher | “What the relaxation is relaxing” | The constant is not an unrestricted multi-item theorem. |
+| Computational reviewer | The evidence package and manifest | Fresh extraction remains producer-side replay. |
+| Practitioner | Everyday summary and practitioner brief | The result is a benchmark, not measured operational savings. |
+
+## How to inspect and reproduce the recorded checks
+
+Start from the [v1.2.0 candidate release](https://github.com/ipitchford/certified-two-item-jrp/releases/tag/v1.2.0-candidate) or the [DOI archive](https://doi.org/10.5281/zenodo.21855894). Verify the archive hashes before running the fail-closed command documented in the repository. Compare the reported witness, cell counts and mutation outcomes with the frozen receipt rather than treating a successful process exit alone as sufficient evidence.
+
+## The most valuable next projects
+
+The central mathematical question is whether the unrestricted multi-item gap equals the two-item constant. A complete independently implemented three-item oracle, an alignment-aware relaxation and calendar-phase or pointwise-capacity extensions would test that boundary. Any operational pilot should separately validate units, shared-event ownership, service constraints and field outcomes.
+
+## What is in the public package
+
+The archive contains two candidate theorem papers, a practitioner brief, source, the exact solver, four finite witnesses, tail and dual certificates, complete cap-gap certificates, tests, figures, manifests and producer review and replay records. Its historical scholarly creator and citation identity are preserved because they are part of the immutable DOI record; the current page does not silently rewrite that chain.
