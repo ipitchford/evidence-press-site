@@ -713,16 +713,23 @@ check('Recht–Ré audio and Open Graph card are content-versioned',
   rechtRe.imageUrl === `https://evidencepress.org/assets/og/exact-low-length-recht-re-inequalities.png?v=${rechtReOgVersion}` &&
   rechtReHtml.includes(`property="og:image" content="https://evidencepress.org/assets/og/exact-low-length-recht-re-inequalities.png?v=${rechtReOgVersion}"`),
   `audio=${rechtRe && rechtRe.audioUrl} image=${rechtRe && rechtRe.imageUrl}`);
-check('Recht–Ré current narration is provenance-bound and the old video is historical only',
+const rechtReCurrentVideo = rechtRe && rechtRe.media.find(item => item.type === 'video' && !item.superseded);
+const rechtReHistoricalVideo = rechtRe && rechtRe.media.find(item => item.type === 'video' && item.superseded === true);
+check('Recht–Ré current media are provenance-bound and the old video remains historical',
   fs.readFileSync(path.join(ROOT, 'assets', 'audio', 'exact-low-length-recht-re-inequalities.txt'), 'utf8').trim() === rechtReMeta.narration.trim() &&
   rechtReMeta.narration.split(/\s+/).length >= 160 && rechtReMeta.narration.split(/\s+/).length <= 300 &&
-  rechtRe.media.some(item => item.type === 'video' && item.superseded === true) &&
-  (rechtReHtml.match(/<iframe\b/g) || []).length === 1 &&
+  rechtReCurrentVideo && rechtReCurrentVideo.url === 'https://youtu.be/cqAHOnQwpFE' &&
+  rechtReCurrentVideo.description.includes('not additional scientific or mathematical evidence') &&
+  rechtReHistoricalVideo && rechtReHistoricalVideo.url === 'https://youtu.be/PXBlZLk753g' &&
+  (rechtReHtml.match(/<iframe\b/g) || []).length === 2 &&
+  rechtReHtml.includes('src="https://www.youtube-nocookie.com/embed/cqAHOnQwpFE?rel=0"') &&
   rechtReHtml.includes('src="https://www.youtube-nocookie.com/embed/PXBlZLk753g?rel=0"') &&
+  rechtReHtml.includes('<strong>Watch this briefing</strong>') &&
+  rechtReHtml.includes('Video briefing — The Metric Reversal: exact boundaries of the Recht–Ré inequality') &&
   rechtReHtml.includes('Superseded briefing:') &&
   rechtReHtml.includes('not the current release summary') &&
-  !rechtReHtml.includes('<strong>Watch this briefing</strong>'),
-  `words=${rechtReMeta.narration.split(/\s+/).length}`);
+  rechtRe.corrections.some(c => c.date === '2026-08-22' && c.scope === 'presentation'),
+  `words=${rechtReMeta.narration.split(/\s+/).length} current=${rechtReCurrentVideo && rechtReCurrentVideo.url}`);
 check('Recht–Ré assurance preserves the internal-versus-independent boundary',
   rechtRe &&
   rechtRe.assurance.find(item => item.dimension === 'availability').state === 'passed' &&
