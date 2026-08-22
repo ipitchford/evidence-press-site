@@ -129,9 +129,9 @@ The tagged package passes:
   every-page visual inspection.
 
 The PDF was rebuilt with readable tables and publication-scale figures. The
-scholarly creator is Anonymous. Ian Pitchford appears only in operational
-provenance as research director, repository maintainer and publisher. The
-active release metadata contains no personal-channel video.
+scholarly creator is Anonymous. Research-direction, repository and publication
+roles remain available in machine-readable provenance. The active release
+metadata contains no personal-channel video.
 
 These checks establish bounded producer-side internal consistency, replay and
 artifact identity. They do not establish theorem truth, unaffiliated

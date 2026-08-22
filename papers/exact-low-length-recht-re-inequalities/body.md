@@ -6,7 +6,7 @@ The first manuscript settles the Recht–Ré inequality through five factors and
 
 This is an additive successor. The immutable v1.0.0-candidate paper and DOI remain available; v1.1.1 adds a second manuscript, repaired and extended verifier coverage, exact phase diagrams and a stronger claim-to-evidence map.
 
-## Presentation correction
+## Summary for specialists
 
 The original Evidence Press summary displayed the wrong denominator for its ordered distinct-product average. For positive semidefinite matrices $A_1,\ldots,A_n$, the normalized without-replacement expression is
 
@@ -83,3 +83,24 @@ That is strong evidence of artifact identity and internal consistency. It is not
 The agenda-setting claim is methodological rather than universal: sampling theory should compare explicitly named operator functionals instead of treating expected iterate, expected error, objective value, replica risk and function-class rate as interchangeable.
 
 The exact examples are family-specific and metric-specific. They do not contradict convergence-rate advantages for random reshuffling under broader smooth-convex assumptions, and they do not establish a universal advantage for fresh reshuffling or single shuffle. A bounded primary-source and formula-level search found no collision for the package's exact classifications and fingerprints, but search absence does not establish novelty or priority.
+
+## Who should care, and why
+
+| Reader | Start here | Principal caution |
+|---|---|---|
+| Optimisation researcher | “Why better needs a metric” and the dynamics results | Rankings are family-, metric-, protocol-, stepsize- and horizon-specific. |
+| Matrix-inequality researcher | The low-length classification and first manuscript | The remaining six-factor cases are open. |
+| Computational reviewer | The evidence package and replay commands | Producer replay is not an independent reconstruction. |
+| General reader | Summary and the two-manuscript table | The result does not rank optimisation algorithms universally. |
+
+## How to inspect and reproduce the recorded checks
+
+Use the [versioned GitHub release](https://github.com/ipitchford/exact-low-length-recht-re-inequalities/releases/tag/v1.1.1-candidate) or the [DOI archive](https://doi.org/10.5281/zenodo.22037371), not an unpinned working tree. The repository's release certificate and manifest identify both manuscripts, exact modules and replay receipt. A successful replay establishes agreement with the supplied implementation and frozen inputs; it does not by itself validate the theorem-to-code correspondence.
+
+## The most valuable next projects
+
+The highest-value work is an unaffiliated reconstruction of the theorem-to-encoding bridge, followed by a clean-room implementation. Mathematically, the main open directions are the arbitrary-objective block-positivity problem, the remaining six-factor Recht–Ré cases and the possible all-length extension of the regular-simplex Gram comparison.
+
+## What is in the public package
+
+The public package contains both current PDFs, source, exact rational and FLINT certificates, independent internal verifier paths, mutation controls, ordinary and optimised replay receipts, manifests, a release certificate, communication media and the immutable predecessor links. The generated evidence and citation panels below provide the canonical URLs and current assurance status.

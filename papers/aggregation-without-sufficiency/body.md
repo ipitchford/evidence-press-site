@@ -102,7 +102,7 @@ These are producer-side derivations, source checks and structural tests. They ar
 - `NO IMPACT EVIDENCE`: no comparison estimates effects on modelling, review, policy or outcomes.
 - A small target diameter is only as credible as the admissible state set, metric and identifying assumptions used to obtain it.
 
-The scholarly creator is Anonymous. Ian Pitchford maintains and publishes the repository and release infrastructure; that operational role is not scholarly authorship. Original prose and structured claims are CC0-1.0, original code and tests are MIT, and third-party and supplied review material retain their existing rights.
+The scholarly creator is Anonymous. Operational maintenance and publication roles are recorded in the machine-readable provenance. Original prose and structured claims are CC0-1.0, original code and tests are MIT, and third-party and supplied review material retain their existing rights.
 
 ## Relationship to earlier work
 

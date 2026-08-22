@@ -31,6 +31,10 @@ block fusion occurs under polynomial composition.
 > conventional peer review, and novelty or priority determination have not
 > occurred.
 
+## Summary for specialists
+
+For the fixed seed one-form and declared polynomial class, the candidate identifies cyclic rank with a root-coefficient span and gives a low-rank classification relative to the named stationary-phase, monodromy and finite-classification inputs. The finite calculator is a diagnostic and certificate aid for specified polynomials; it is not a substitute for those semantic bridges.
+
 ## The idea without the machinery
 
 Suppose a polynomial equation (P(x)=z) has inverse branches
@@ -151,13 +155,26 @@ replay. They do not establish independent correctness, novelty or priority.
 
 The scholarly creator is cited as **Anonymous**. AI systems contributed to
 mathematical development, exact computation, literature work, drafting,
-adversarial review, revision and packaging. Ian Pitchford supplied research
-direction, mediated review and correction, authorized publication, and acts as
-repository maintainer and publisher. Internal AI review and system agreement
-are not independent verification.
+adversarial review, revision and packaging. Research direction, review
+mediation, correction, publication and repository roles are recorded in the
+machine-readable provenance. Internal AI review and system agreement are not
+independent verification.
 
 The audio briefing uses an AI-generated voice. It repeats the page's summary
 and is not additional mathematical evidence.
+
+## Who should care, and why
+
+| Reader | Start here | Principal caution |
+|---|---|---|
+| Singularity and Gauss–Manin researcher | The root-span statement and stationary-phase bridge | Named classification inputs remain part of the trust boundary. |
+| Polynomial decomposition researcher | The composition section | Complete fusion under arbitrary Ritt moves remains open. |
+| Computational reviewer | The calculator and recorded checks | Producer-side exact agreement is not independent theorem verification. |
+| General reader | Summary and “The idea without the machinery” | The claim is about a fixed seed, not every polynomial amplitude. |
+
+## How to inspect and reproduce the recorded checks
+
+Use the [v0.1.0 candidate release](https://github.com/ipitchford/cyclicity-root-span-low-rank/releases/tag/v0.1.0-candidate) or its [DOI archive](https://doi.org/10.5281/zenodo.21864884). Verify the static manifest, then compare ordinary and optimised receipts and run the reducer and its composition mutations. The clean-room-labelled control track is independently written within the same producing workflow, not an unaffiliated reproduction.
 
 ## The most valuable next work
 

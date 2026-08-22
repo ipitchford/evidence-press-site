@@ -40,6 +40,10 @@ for every `beta > 0`, `t != 0`, and `0 < ell <= 1`. A concave functional cannot
 have positive curvature on such a feasible line. The printed joint-concavity
 inference therefore cannot supply the claimed shared component weights.
 
+## How the obstruction works
+
+The perturbation is deliberately local. It moves the two component measures in opposite directions, so their mixture and both aggregate constraints remain fixed. The exact positive second variation then contradicts concavity on that feasible line. This mechanism challenges one printed inference while leaving the surviving lemmas and the open global inequality logically separate.
+
 ## What survives
 
 The obstruction does not collapse the entire programme. The release proves or
@@ -114,3 +118,6 @@ source map, parameterised counterdirection and PSD semantic bridge, preferably
 paired with a separately authored arithmetic implementation. Only after those
 survive should effort return to the global inequality.
 
+## What is in the public package
+
+The archive contains the candidate manuscript, accessible Markdown, source map, theorem-dependency map, frozen source identity, analytic derivations, exact and directed-rounding checkers, mutation controls, cross-platform producer receipts, deterministic manifest and clean-extraction verifier. The [v0.2.0 candidate release](https://github.com/ipitchford/frankl-concavity-obstruction/releases/tag/v0.2.0-candidate) and [DOI archive](https://doi.org/10.5281/zenodo.21938497) are the pinned inspection points.

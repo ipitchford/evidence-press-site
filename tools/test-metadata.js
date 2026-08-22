@@ -290,7 +290,28 @@ check('v1 prospective release schema matches the unversioned alias',
   sameJson(read('api/v1/schemas/release-operating-model.schema.json'), releaseOperatingSchema));
 check('public v1 keeps operatingModel optional for legacy records',
   schema.$defs.paper.properties.operatingModel && !schema.$defs.paper.required.includes('operatingModel'));
-check('additive papers schema version is 1.3', papersDoc.schemaVersion === '1.3');
+check('additive papers schema version is 1.4', papersDoc.schemaVersion === '1.4');
+for (const [name, sourcePath] of [
+  ['page-structure-policy.json', 'data/PAGE_STRUCTURE_POLICY.json'],
+  ['presentation-events.json', 'data/PRESENTATION_EVENTS.json'],
+  ['audio-provenance-status.json', 'data/AUDIO_PROVENANCE_STATUS.json']
+]) {
+  const source = JSON.parse(fs.readFileSync(path.join(ROOT, sourcePath), 'utf8'));
+  const publicRecord = read(`api/${name}`);
+  check(`${name} is an exact source-to-public copy`, sameJson(publicRecord, source));
+  check(`v1/${name} matches the unversioned alias`, sameJson(read(`api/v1/${name}`), publicRecord));
+}
+check('every release exposes complete and material correction views without history loss',
+  papersDoc.papers.every(paper => {
+    const indexes = paper.publicCorrectionIndexes == null
+      ? paper.corrections.map((_, index) => index)
+      : paper.publicCorrectionIndexes;
+    return sameJson(paper.publicCorrections, indexes.map(index => paper.corrections[index]));
+  }));
+check('all releases declare page maturity and structure provenance',
+  papersDoc.papers.every(paper =>
+    paper.pageStructureVersion && paper.pageStructureVariant &&
+    Array.isArray(paper.pageStructureWaivers) && paper.recordMaturity && paper.metadataProvenance));
 
 /* ------------------------------------------------ cross-surface agreement */
 const releasesOnDisk = fs.readdirSync(path.join(DIST, 'releases'))
@@ -450,7 +471,9 @@ check('Frankl briefing uses the declared OpenAI British house voice with byte-bo
   franklReceipt.voice === 'fable' && franklReceipt.audioSha256 === franklAudioHash &&
   franklReceipt.audioBytes === franklAudio.length &&
   franklHtml.includes('Narrated summary · OpenAI API synthetic voice (fable)') &&
-  franklHtml.includes('Replaced the original macOS Daniel narration') &&
+  !franklHtml.includes('Replaced the original macOS Daniel narration') &&
+  frankl.corrections.some(item => item.summary.includes('Replaced the original macOS Daniel narration')) &&
+  frankl.publicCorrections.length === 0 &&
   (franklHtml.match(/<audio\b/g) || []).length === 1,
   `audioUrl=${frankl && frankl.audioUrl} sha256=${franklAudioHash}`);
 const franklVideo = frankl && frankl.media.find(item => item.type === 'video');

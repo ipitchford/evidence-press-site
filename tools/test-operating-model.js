@@ -635,6 +635,26 @@ function extractFunction(source, name) {
 }
 
 {
+  const slug = 'certified-three-item-jrp-gap';
+  const meta = sourcePapers.find(paper => paper.slug === slug);
+  const file = path.join(root, 'assets', 'audio', `${slug}.mp3`);
+  const version = require('crypto').createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0, 10);
+  const candidateUrl = `https://evidencepress.org/assets/audio/${slug}.mp3?v=${version}`;
+  const events = JSON.parse(fs.readFileSync(path.join(root, 'data', 'PRESENTATION_EVENTS.json'), 'utf8'));
+  const accepted = publicationIntegrity.isRecordedAudioSuccessor(
+    `https://evidencepress.org/assets/audio/${slug}.mp3?v=1111111111`,
+    candidateUrl, slug, { events: [] }, events
+  );
+  const tampered = clone(events);
+  tampered.events.find(event => event.eventId.endsWith('role-neutral-audio')).artifact.audioSha256 = '0'.repeat(64);
+  check('already-versioned audio needs an append-only byte-bound presentation event',
+    meta && accepted && !publicationIntegrity.isRecordedAudioSuccessor(
+      `https://evidencepress.org/assets/audio/${slug}.mp3?v=1111111111`,
+      candidateUrl, slug, { events: [] }, tampered
+    ));
+}
+
+{
   publicationIntegrity.resetFailures();
   const live = recordFor('published-prospective');
   const candidate = clone(live);

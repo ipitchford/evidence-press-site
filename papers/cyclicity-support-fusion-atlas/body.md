@@ -1,4 +1,4 @@
-# From inverse support to moment channels
+## Summary: From inverse support to moment channels
 
 Version 0.7 presents the programme as one 25-page argument. It retains the
 all-degree fixed-seed classification from version 0.6, then replaces the seed
@@ -285,8 +285,8 @@ the imported fixed-seed interfaces and the new amplitude, endpoint and Laurent
 arguments, followed by an independently authored implementation and deeper
 proof-assistant formalisation.
 
-The scholarly creator is **Anonymous**. Ian Pitchford is the repository
-maintainer and publisher, not the scholarly author. Original research prose
+The scholarly creator is **Anonymous**. Operational maintenance and publication
+roles are recorded in the machine-readable provenance. Original research prose
 and data are dedicated under CC0 1.0; original code and tests are MIT-licensed;
 third-party works retain their upstream terms.
 
