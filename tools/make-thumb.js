@@ -281,6 +281,20 @@ const SPECS = {
       <div class="eq-foot">not independently rerun · not formally verified</div>`
   },
 
+  'full-e4-polydegree-column': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 23 AUGUST 2026', 'POLYDEGREE CONJECTURE · V0.1.0-CANDIDATE'],
+    head: ['The full e = 4 column.', '<em>Every degree.</em>'],
+    headSize: 62,
+    sub: 'An exact residue, 14,985 outward-rounded certificates and a uniform Fourier envelope form one gap-free candidate proof.',
+    tag: 'PRODUCER-SIDE REPLAY · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">candidate theorem · every integer d ≥ 2</div>
+      <div class="eq eq-sm">𝒢<sub>(d+4)</sub> ⊆ <span class="hl" style="text-decoration:overline">𝒢<sub>(d,5)</sub></span></div>
+      <div class="note"><b>Four residue classes.</b><br>Exact branch · finite FLINT/Arb bridge · analytic tail from m = 5000.</div>
+      <div class="eq-foot">not Furter R(3) · not monotone rigidity · not JC2 or HC4</div>`
+  },
+
   'unique-answer-not-identified': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'IDENTIFICATION SYNTHESIS · V1.0.0-CANDIDATE'],
