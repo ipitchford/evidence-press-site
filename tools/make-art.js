@@ -866,6 +866,28 @@ art['full-e3-column-polydegree-conjecture'] = (a, b) => {
   return s;
 };
 
+/* Full e=4 polydegree column: four residue lanes stitched by exact, finite-Arb
+   and eventual Fourier certificates. */
+art['full-e4-polydegree-column'] = (a, b) => {
+  let s = '';
+  const laneY = [92, 158, 224, 290];
+  const laneColours = [a, '#e7e5e4', b, '#e7e5e4'];
+  for (let r = 0; r < 4; r++) {
+    const y = laneY[r];
+    s += `<text x="72" y="${y + 7}" font-family="ui-monospace,monospace" font-size="16" fill="${laneColours[r]}" opacity=".9">r=${r}</text>`;
+    s += `<path d="M 124 ${y} H 465 C 525 ${y}, 530 200, 592 200" fill="none" stroke="${laneColours[r]}" stroke-width="3" opacity="${r === 1 ? '.98' : '.7'}"/>`;
+    for (let k = 0; k < 8; k++) {
+      const x = 150 + 38 * k;
+      s += `<circle cx="${x}" cy="${y}" r="${r === 1 ? 6 : 5}" fill="${laneColours[r]}" opacity="${(0.42 + 0.07 * k).toFixed(2)}"/>`;
+    }
+  }
+  s += `<rect x="132" y="44" width="336" height="292" rx="18" fill="#151a1e" stroke="${a}" stroke-width="1.5" opacity=".22"/>`;
+  s += `<circle cx="614" cy="200" r="16" fill="#151a1e" stroke="#e7e5e4" stroke-width="3"/>`;
+  s += `<path d="M 634 200 C 740 200, 752 86, 858 86 M 634 200 C 740 200, 752 314, 858 314" fill="none" stroke="${b}" stroke-width="3.5" opacity=".92"/>`;
+  s += `<path d="M 858 86 C 900 86, 920 142, 968 142 M 858 314 C 900 314, 920 258, 968 258" fill="none" stroke="${a}" stroke-width="2.5" stroke-dasharray="8 7" opacity=".8"/>`;
+  return s;
+};
+
 /* Furter R(3) finite theorem: 299 certified windows, one prime across three strata,
    and a periodic obstruction to any universal one-fixed-prime proof. */
 art['furter-r3-through-299'] = (a, b) => {
@@ -985,6 +1007,7 @@ const palette = {
   'sfs-identifiability-audit': ['#f59e0b', '#38bdf8'],
   'wales-20mph-casualty-attribution': ['#2dd4bf', '#f59e0b']
   ,'full-e3-column-polydegree-conjecture': ['#2dd4bf', '#f59e0b']
+  ,'full-e4-polydegree-column': ['#2dd4bf', '#f59e0b']
   ,'aggregation-without-sufficiency': ['#38bdf8', '#f59e0b']
   ,'frankl-concavity-obstruction': ['#2dd4bf', '#f59e0b']
   ,'furter-r3-through-299': ['#2dd4bf', '#f59e0b']
