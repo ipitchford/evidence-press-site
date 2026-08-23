@@ -597,7 +597,7 @@ check('cyclicity fusion atlas binds the combined amplitude/Laurent successor and
   cyclicityAtlasHtml.includes('The polynomial-amplitude support theorem') &&
   cyclicityAtlasHtml.includes('Why there is no finite all-Laurent atlas'),
   `version=${cyclicityAtlas && cyclicityAtlas.version}`);
-check('cyclicity fusion atlas audio is version-bound and provenance-complete without an invented video',
+check('cyclicity fusion atlas audio is version-bound and provenance-complete',
   cyclicityAtlas && cyclicityAtlasMeta.audioVoiceLabel === 'OpenAI API synthetic voice (fable)' &&
   cyclicityAtlasMeta.audioContentVersioned === true &&
   cyclicityAtlas.audioUrl === `https://evidencepress.org/assets/audio/cyclicity-support-fusion-atlas.mp3?v=${cyclicityAtlasAudioVersion}` &&
@@ -605,10 +605,19 @@ check('cyclicity fusion atlas audio is version-bound and provenance-complete wit
   cyclicityAtlasReceipt.provider === 'openai' && cyclicityAtlasReceipt.model === 'gpt-4o-mini-tts' &&
   cyclicityAtlasReceipt.voice === 'fable' && cyclicityAtlasReceipt.audioSha256 === cyclicityAtlasAudioHash &&
   cyclicityAtlasReceipt.audioBytes === cyclicityAtlasAudio.length &&
-  !cyclicityAtlas.media.some(item => item.type === 'video') &&
-  (cyclicityAtlasHtml.match(/<iframe\b/g) || []).length === 0 &&
   (cyclicityAtlasHtml.match(/<audio\b/g) || []).length === 1,
   `audioUrl=${cyclicityAtlas && cyclicityAtlas.audioUrl} sha256=${cyclicityAtlasAudioHash}`);
+
+const cyclicityAtlasVideo = cyclicityAtlas && cyclicityAtlas.media.find(item => item.type === 'video');
+check('cyclicity fusion atlas video is API-visible, privacy-enhanced and evidence-calibrated',
+  cyclicityAtlasVideo && cyclicityAtlasVideo.url === 'https://youtu.be/FXZpYP9KJ9I' &&
+  cyclicityAtlasVideo.name === 'The Fingerprint Coordinate System' &&
+  cyclicityAtlasVideo.description.includes('communication aid') &&
+  cyclicityAtlasVideo.description.includes('not additional scientific or mathematical evidence') &&
+  (cyclicityAtlasHtml.match(/<iframe\b/g) || []).length === 1 &&
+  cyclicityAtlasHtml.includes('src="https://www.youtube-nocookie.com/embed/FXZpYP9KJ9I?rel=0"') &&
+  cyclicityAtlasHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/FXZpYP9KJ9I/hqdefault.jpg"'),
+  `video=${cyclicityAtlasVideo && cyclicityAtlasVideo.url}`);
 
 const exactSmith = papersDoc.papers.find(p => p.slug === 'exact-smith-invariants-affine-determinant-lines');
 const exactSmithVideo = exactSmith && exactSmith.media.find(item => item.type === 'video');
