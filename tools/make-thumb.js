@@ -308,6 +308,20 @@ const SPECS = {
       <div class="eq-foot">not Furter R(3) · not monotone rigidity · not JC2 or HC4</div>`
   },
 
+  's6-extension-results-candidate': {
+    palette: 'cobalt',
+    kicker: ['RESEARCH RELEASE · 24 AUGUST 2026', 'COMPLEX GEOMETRY · V0.1.0-CANDIDATE'],
+    head: ['Interesting extensions.', '<em>One gate remains.</em>'],
+    headSize: 62,
+    sub: 'Exact arithmetic, a conductor criterion and conditional Hodge and deformation calculations around a claimed complex structure on S6.',
+    tag: 'UNREFEREED CANDIDATE · SOURCE CONSTRUCTION UNVERIFIED',
+    hero: `
+      <div class="eq-label">conditional Hodge candidate</div>
+      <div class="eq eq-sm">h<sup>1,1</sup> = <span class="hl">2</span><br>h<sup>1,2</sup> = <span class="hl">1</span></div>
+      <div class="note"><b>First referee target:</b><br>conductor-adjoint nonvanishing</div>
+      <div class="eq-foot">exact checks ≠ a verified complex S6</div>`
+  },
+
   'unique-answer-not-identified': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 11 AUGUST 2026', 'IDENTIFICATION SYNTHESIS · V1.0.0-CANDIDATE'],

@@ -276,7 +276,7 @@ check('Atlas publishes GitHub and no-GitHub intake routes',
   atlasHtml.includes('GitHub sign-in required') && atlasHtml.includes('no GitHub account required') &&
   publicAtlasProposals.policy.intakeRoutes.some(route => route.id === 'agentmail-email'));
 check('Atlas discloses exact relationship composition above the instrument',
-  atlasHtml.includes('231 recorded relationships:') && atlasHtml.includes('10 direct · 14 lineage · 35 cluster · 172 method'));
+  atlasHtml.includes('237 recorded relationships:') && atlasHtml.includes('10 direct · 14 lineage · 36 cluster · 177 method'));
 check('Atlas uses reader-facing source-declared status without changing the machine enum',
   atlasHtml.includes('source-declared') && publicResearchGraph.edges.every(edge => edge.knowledgeStatus === 'asserted'));
 check('Atlas publishes deterministic missingness and its non-inference boundary',
