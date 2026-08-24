@@ -928,6 +928,44 @@ art['full-e4-polydegree-column'] = (a, b) => {
   return s;
 };
 
+/* Claimed complex S6 extensions: a conditional Hodge core, three special
+   fibres and an intentionally unclosed outer ring for the global source gate. */
+art['s6-extension-results-candidate'] = (a, b) => {
+  let s = '';
+  const cx = 338, cy = 200, radius = 138;
+  s += `<circle cx="${cx}" cy="${cy}" r="${radius}" fill="#151a1e" stroke="${a}" stroke-width="3" opacity=".96"/>`;
+  for (const ry of [42, 82, 116]) {
+    s += `<ellipse cx="${cx}" cy="${cy}" rx="${radius - 7}" ry="${ry}" fill="none" stroke="#e7e5e4" stroke-width="1.4" opacity=".28"/>`;
+  }
+  for (const angle of [-58, -29, 0, 29, 58]) {
+    s += `<ellipse cx="${cx}" cy="${cy}" rx="${Math.max(18, radius * Math.cos(angle * Math.PI / 180)).toFixed(1)}" ry="${radius - 7}" fill="none" stroke="${b}" stroke-width="1.2" opacity=".2" transform="rotate(90 ${cx} ${cy})"/>`;
+  }
+  s += `<path d="M 208 136 A 151 151 0 0 1 452 84" fill="none" stroke="#e7e5e4" stroke-width="2.5" stroke-dasharray="10 8" opacity=".72"/>`;
+  s += `<path d="M 472 100 A 151 151 0 0 1 478 286" fill="none" stroke="#e7e5e4" stroke-width="2.5" stroke-dasharray="10 8" opacity=".72"/>`;
+  s += `<path d="M 454 312 A 151 151 0 0 1 212 300" fill="none" stroke="#e7e5e4" stroke-width="2.5" stroke-dasharray="10 8" opacity=".72"/>`;
+  s += `<text x="${cx}" y="187" text-anchor="middle" font-family="Georgia" font-size="31" fill="#e7e5e4">h¹¹ = <tspan fill="${a}">2</tspan></text>`;
+  s += `<text x="${cx}" y="229" text-anchor="middle" font-family="Georgia" font-size="31" fill="#e7e5e4">h¹² = <tspan fill="${b}">1</tspan></text>`;
+  s += `<text x="${cx}" y="259" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="#e7e5e4" opacity=".68">CONDITIONAL CANDIDATE</text>`;
+
+  s += `<path d="M 520 200 H 1132" stroke="#e7e5e4" stroke-width="2.4" opacity=".48"/>`;
+  const fibres = [
+    [650, 'W', a, 'conductor'],
+    [838, '3', b, 'multiple'],
+    [1026, '4', a, 'multiple']
+  ];
+  for (const [x, label, colour, detail] of fibres) {
+    s += `<circle cx="${x}" cy="200" r="13" fill="#151a1e" stroke="${colour}" stroke-width="4"/>`;
+    s += `<ellipse cx="${x}" cy="122" rx="55" ry="21" fill="none" stroke="${colour}" stroke-width="2.3" opacity=".9"/>`;
+    s += `<ellipse cx="${x}" cy="122" rx="21" ry="55" fill="none" stroke="${colour}" stroke-width="2.3" opacity=".55"/>`;
+    s += `<path d="M ${x} 178 V 153" stroke="${colour}" stroke-width="2" stroke-dasharray="6 5" opacity=".72"/>`;
+    s += `<text x="${x}" y="233" text-anchor="middle" font-family="Georgia" font-size="25" fill="${colour}">${label}</text>`;
+    s += `<text x="${x}" y="259" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#e7e5e4" opacity=".62">${detail}</text>`;
+  }
+  s += `<rect x="580" y="310" width="520" height="48" rx="14" fill="#151a1e" stroke="${b}" stroke-width="1.8" opacity=".96"/>`;
+  s += `<text x="840" y="340" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4">EXACT CHECKS · WRITTEN THEOREMS · SOURCE-CONDITIONAL CLAIMS</text>`;
+  return s;
+};
+
 /* Furter R(3) finite theorem: 299 certified windows, one prime across three strata,
    and a periodic obstruction to any universal one-fixed-prime proof. */
 art['furter-r3-through-299'] = (a, b) => {
@@ -1049,6 +1087,7 @@ const palette = {
   'wales-20mph-casualty-attribution': ['#2dd4bf', '#f59e0b']
   ,'full-e3-column-polydegree-conjecture': ['#2dd4bf', '#f59e0b']
   ,'full-e4-polydegree-column': ['#2dd4bf', '#f59e0b']
+  ,'s6-extension-results-candidate': ['#38bdf8', '#f59e0b']
   ,'aggregation-without-sufficiency': ['#38bdf8', '#f59e0b']
   ,'frankl-concavity-obstruction': ['#2dd4bf', '#f59e0b']
   ,'furter-r3-through-299': ['#2dd4bf', '#f59e0b']
