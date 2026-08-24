@@ -19,16 +19,6 @@ together with proposed tangent-cohomology dimensions $h^q(X,T_X)=(1,1,1,0)$ and 
 
 > **Candidate status:** Anonymous · unrefereed · exact arithmetic and symbolic replay passed · written theorem layer broader than computation · global source construction unverified · independent reconstruction, formal verification, external specialist review and editorial peer review not assessed.
 
-## The five-year-old picture
-
-Imagine somebody has drawn instructions for building an extraordinary toy globe. They say that when all the pieces are joined, the globe is an ordinary six-dimensional sphere, but it also has a special “complex” pattern.
-
-This release does not rebuild the entire globe. Instead, it checks many of the smaller gears, works out what several dials would read if the globe really fits together, and finds one especially important joint for another expert to inspect.
-
-Some gear checks use exact arithmetic and can be replayed by a computer. The Hodge-number and deformation readings depend on the big globe actually existing as described. The conductor–adjoint criterion is a smaller mathematical part that can be inspected without accepting the whole globe first.
-
-So the honest conclusion is: **many interesting extension calculations are now explicit and testable, but the central sphere claim is still a gate, not a theorem established by this release.**
-
 ## What the strongest-directions programme achieved
 
 The original research map froze two layers of the proposed construction and varied a third. It gave three directions highest priority.

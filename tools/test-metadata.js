@@ -78,6 +78,15 @@ check('every release hero art URL is bound to the exact committed SVG bytes',
     return paper.coverArtUrl === `https://evidencepress.org${expectedPath}` &&
       releaseHtml.includes(`<img src="${expectedPath}" alt="" loading="eager">`);
   }));
+const s6Art = fs.readFileSync(path.join(ROOT, 'assets', 'art', 's6-extension-results-candidate.svg'), 'utf8');
+const s6ClaimBand = s6Art.match(/<rect id="s6-claim-band"[^>]*>/)?.[0];
+const s6ClaimText = s6Art.match(/<text id="s6-claim-band-text"[^>]*>/)?.[0];
+const svgNumberAttribute = (element, name) => Number(element?.match(new RegExp(`\\s${name}="([0-9.]+)"`))?.[1]);
+const s6ClaimBandWidth = svgNumberAttribute(s6ClaimBand, 'width');
+const s6ClaimTextLength = svgNumberAttribute(s6ClaimText, 'textLength');
+check('S6 hero claim text stays inside its surrounding panel',
+  Number.isFinite(s6ClaimBandWidth) && Number.isFinite(s6ClaimTextLength) && s6ClaimTextLength <= s6ClaimBandWidth - 40,
+  `panel width=${s6ClaimBandWidth || 'missing'} text length=${s6ClaimTextLength || 'missing'}`);
 
 /* ------------------------------------------------------- mini JSON Schema */
 /* Covers exactly the keywords the published schema uses. Anything unknown is
