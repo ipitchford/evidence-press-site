@@ -272,6 +272,46 @@ art['txgraffiti-c3-resolution'] = (a, b) => {
   return s;
 };
 
+/* Order-48 TxGraffiti successor: the exact released graph in its search
+   coordinates, with the explicit matching and independent-dominating witness
+   distinguished. The right panel states the bounded order improvement rather
+   than suggesting a global-minimality result. */
+art['txgraffiti-order48-successor'] = (a, b) => {
+  const edges = [[0,1],[0,31],[0,40],[1,32],[1,39],[2,3],[2,25],[2,46],[3,36],[3,44],[4,5],[4,38],[4,42],[5,6],[5,43],[6,7],[6,42],[7,35],[7,38],[8,9],[8,13],[8,32],[9,35],[9,38],[10,11],[10,43],[10,47],[11,34],[11,37],[12,13],[12,32],[12,35],[13,39],[14,15],[14,44],[14,46],[15,33],[15,37],[16,17],[16,40],[16,41],[17,31],[17,36],[18,19],[18,41],[18,45],[19,40],[19,44],[20,21],[20,31],[20,39],[21,34],[21,47],[22,23],[22,36],[22,41],[23,30],[23,45],[24,25],[24,30],[24,33],[25,45],[26,27],[26,37],[26,46],[27,30],[27,34],[28,29],[28,42],[28,43],[29,33],[29,47]];
+  const matching = new Set(Array.from({ length: 15 }, (_, k) => `${2 * k}-${2 * k + 1}`));
+  const independent = new Set([0,5,8,11,19,21,27,28,33,35,36,38,39,41,45,46]);
+  const cx = 250, cy = 200;
+  const point = vertex => {
+    const outer = vertex < 30;
+    const index = outer ? vertex : vertex - 30;
+    const count = outer ? 30 : 18;
+    const radius = outer ? 148 : 88;
+    const angle = -Math.PI / 2 + 2 * Math.PI * index / count;
+    return [cx + radius * Math.cos(angle), cy + radius * Math.sin(angle)];
+  };
+  let s = '';
+  for (const [u, v] of edges) {
+    const [x1, y1] = point(u), [x2, y2] = point(v);
+    const key = `${Math.min(u, v)}-${Math.max(u, v)}`;
+    const isMatching = matching.has(key);
+    s += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${isMatching ? a : '#8a938f'}" stroke-width="${isMatching ? 4 : 1.15}" opacity="${isMatching ? 0.94 : 0.38}"/>`;
+  }
+  for (let vertex = 0; vertex < 48; vertex++) {
+    const [x, y] = point(vertex);
+    const isIndependent = independent.has(vertex);
+    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${isIndependent ? 7 : 4.6}" fill="${isIndependent ? b : '#151a1e'}" stroke="${isIndependent ? '#f8d4e8' : '#e7e5e4'}" stroke-width="${isIndependent ? 2 : 1.2}" opacity=".96"/>`;
+  }
+  s += `<text x="250" y="390" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#e7e5e4" opacity=".66">EXACT 48-VERTEX GRAPH · 72 EDGES · CUBIC</text>`;
+  s += `<path d="M 420 200 H 485" stroke="#8a938f" stroke-width="2" stroke-dasharray="8 8" opacity=".68"/>`;
+  s += `<path d="M 473 190 L 493 200 L 473 210" fill="none" stroke="#8a938f" stroke-width="2"/>`;
+  s += `<rect x="515" y="18" width="445" height="364" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".94"/>`;
+  s += `<text x="737" y="55" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="#e7e5e4" opacity=".72">CANDIDATE-ORDER UPPER BOUND</text>`;
+  s += `<text x="737" y="128" text-anchor="middle" font-family="Georgia" font-size="68" fill="${a}">50 → 48</text>`;
+  s += `<text x="737" y="312" text-anchor="middle" font-family="Georgia" font-size="40" fill="${b}">μ⋆ = 15 &lt; 16 = i</text>`;
+  s += `<text x="737" y="352" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#e7e5e4" opacity=".68">GLOBAL MINIMALITY REMAINS OPEN</text>`;
+  return s;
+};
+
 /* Bilateral deficiency: residual literal rails crossing into a cubic graph. */
 art['bilateral-deficiency-regular-dim'] = (a, b) => {
   let s = '';
@@ -992,6 +1032,7 @@ const palette = {
   'affine-diversification-fibres': ['#2dd4bf', '#fbbf24'],
   'finite-sample-affine-diversification': ['#2dd4bf', '#fbbf24'],
   'txgraffiti-c3-resolution': ['#2dd4bf', '#f472b6'],
+  'txgraffiti-order48-successor': ['#38bdf8', '#f472b6'],
   'bilateral-deficiency-regular-dim': ['#2dd4bf', '#f472b6'],
   'cyclicity-loci-exponential-periods': ['#38bdf8', '#fbbf24'],
   'cyclicity-root-span-low-rank': ['#a78bfa', '#2dd4bf'],

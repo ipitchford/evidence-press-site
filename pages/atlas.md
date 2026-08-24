@@ -22,7 +22,7 @@ A shared method, a broad cluster and a research lineage are different objects:
 
 The registry is explicitly a **working taxonomy**. The initial **Direct links** view contains only release-to-release citations, extensions and reuse. The **Research structure** view adds registry-derived cluster and lineage membership, while the **Methods** view shows method assignments. Method inspectors report their release prevalence, and singleton clusters are labelled **cluster seeds** so an empty neighbourhood is not mistaken for evidence of isolation. A non-root release enters an evidence-backed lineage only when its metadata declares both the reciprocal lineage identifier and an evidential parent link. A parent link alone is not lineage membership.
 
-The current composition is 9 direct inter-release links, 12 lineage memberships, 34 cluster memberships and 166 method assignments. These counts explain the graph's density; they do not measure importance or scientific support.
+The current composition is 10 direct inter-release links, 14 lineage memberships, 35 cluster memberships and 172 method assignments. These counts explain the graph's density; they do not measure importance or scientific support.
 
 Select any node or connection in the interactive map to inspect its basis, inference limit and exact source record.
 
