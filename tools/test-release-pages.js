@@ -50,6 +50,9 @@ for (const directory of fs.readdirSync(PAPERS).sort()) {
     names.set(heading.id, true);
   }
 
+  if (slug === 's6-extension-results-candidate' && headings.some(heading => heading.id === 'the-five-year-old-picture'))
+    errors.push(`${slug}: body.md contains the unapproved heading "The five-year-old picture"`);
+
   if (/\bIan Pitchford\b/i.test(body) && !(meta.pageStructureWaivers || []).includes('historical-personal-attribution-in-body'))
     errors.push(`${slug}: reader body contains routine personal operational attribution`);
   if (/\bIan Pitchford\b/i.test(meta.narration || '') && !(meta.pageStructureWaivers || []).includes('historical-personal-attribution-in-narration'))

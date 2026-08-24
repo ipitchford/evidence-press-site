@@ -961,8 +961,8 @@ art['s6-extension-results-candidate'] = (a, b) => {
     s += `<text x="${x}" y="233" text-anchor="middle" font-family="Georgia" font-size="25" fill="${colour}">${label}</text>`;
     s += `<text x="${x}" y="259" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#e7e5e4" opacity=".62">${detail}</text>`;
   }
-  s += `<rect x="580" y="310" width="520" height="48" rx="14" fill="#151a1e" stroke="${b}" stroke-width="1.8" opacity=".96"/>`;
-  s += `<text x="840" y="340" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4">EXACT CHECKS · WRITTEN THEOREMS · SOURCE-CONDITIONAL CLAIMS</text>`;
+  s += `<rect id="s6-claim-band" x="580" y="310" width="520" height="48" rx="14" fill="#151a1e" stroke="${b}" stroke-width="1.8" opacity=".96"/>`;
+  s += `<text id="s6-claim-band-text" x="840" y="340" text-anchor="middle" textLength="480" lengthAdjust="spacingAndGlyphs" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4">EXACT CHECKS · WRITTEN THEOREMS · SOURCE-CONDITIONAL CLAIMS</text>`;
   return s;
 };
 
