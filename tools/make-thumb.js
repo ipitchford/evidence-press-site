@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'txgraffiti-order48-successor': {
+    palette: 'cobalt',
+    kicker: ['RESEARCH RELEASE · 24 AUGUST 2026', 'GRAPH THEORY · V0.1.0-CANDIDATE'],
+    head: ['A smaller', '<em>counterexample.</em>'],
+    headSize: 72,
+    sub: 'One exact 48-vertex cubic graph lowers the candidate-order upper bound, with a regenerated proof tree and explicit non-claims.',
+    tag: 'CERTIFICATE-BACKED · UNREFEREED CANDIDATE',
+    hero: `
+      <div class="eq-label">candidate-order upper bound</div>
+      <div class="eq"><span class="hl">50 → 48</span></div>
+      <div class="note"><b>μ⋆ = 15 &lt; 16 = i</b><br>437,188-node exclusion tree</div>
+      <div class="eq-foot">global minimality and uniqueness remain open</div>`
+  },
   'exact-low-length-recht-re-inequalities': {
     palette: 'cobalt',
     kicker: ['CORRECTED RESEARCH RELEASE · 21 AUGUST 2026', 'RANDOM RESHUFFLING · V1.1.1-CANDIDATE'],

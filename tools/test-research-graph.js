@@ -47,12 +47,12 @@ ok(graph.stats.clusterCount === registry.methodClusters.length, 'every broad clu
 ok(graph.stats.lineageCount === registry.lineages.length, 'every evidence-backed lineage is represented');
 ok(graph.stats['uses-methodEdgeCount'] === Object.values(registry.releaseAssignments).flat().length,
   'every method assignment becomes one edge');
-ok(graph.stats.directInterReleaseEdgeCount === 9,
-  'direct inter-release projection contains exactly the nine source-backed release links');
+ok(graph.stats.directInterReleaseEdgeCount === 10,
+  'direct inter-release projection contains exactly the ten source-backed release links');
 ok(graph.stats.edgeCount === graph.stats['uses-methodEdgeCount'] + graph.stats['member-of-clusterEdgeCount'] +
   graph.stats['member-of-lineageEdgeCount'] + graph.stats.directInterReleaseEdgeCount,
   'relationship composition reconciles exactly with the accepted edge total');
-ok(graph.nodes.find(node => node.id === 'method:adversarial-controls').releaseAssignmentCount === 24 &&
+ok(graph.nodes.find(node => node.id === 'method:adversarial-controls').releaseAssignmentCount === 25 &&
   graph.nodes.find(node => node.id === 'method:structural-compression').releaseAssignmentCount === 22,
   'method nodes expose registry-derived prevalence');
 ok(graph.nodes.find(node => node.id === 'method:research-lineage-reuse').publicLabel === 'Lineage-aware reuse practice',
