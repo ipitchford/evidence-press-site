@@ -161,16 +161,16 @@ const SPECS = {
   },
   'certified-commitment-horizons': {
     palette: 'auto',
-    kicker: ['RESEARCH RELEASE · 8 AUGUST 2026', 'DYNAMIC LOT SIZING · V2.1.2'],
-    head: ['How far can a plan', '<em>safely hold?</em>'],
+    kicker: ['REVISED RESEARCH RELEASE · 24 AUGUST 2026', 'DYNAMIC LOT SIZING · V3.0.0-CANDIDATE'],
+    head: ['When does a plan', '<em>have to change?</em>'],
     headSize: 64,
-    sub: 'Exact-rational commitment horizons for forecast revisions in the Wagner–Whitin model, with replayable witnesses and explicit limits.',
+    sub: 'Exact-rational commitment horizons, a repaired classical-model bridge and local optimal-face witnesses for forecast revisions.',
     tag: 'EXACT CERTIFICATES · UNREFEREED CANDIDATE',
     hero: `
-      <div class="eq-label">three-period strict example</div>
+      <div class="eq-label">safe lower certificate · exact boundary</div>
       <div class="eq eq-sm">ρ<sub>frozen</sub> = <span class="hl">3/2</span><br>ρ<sub>strong</sub> = <span class="hl">2</span></div>
-      <div class="note">The tractable frozen certificate is a safe lower bound — but a partial-prefix certificate can be <b>strictly conservative</b>.</div>
-      <div class="eq-foot">paper · exact code · witnesses · replay receipt</div>`
+      <div class="note"><b>At the nearest finite loss:</b><br>two optimal paths differ on one divergence–remergence interval.</div>
+      <div class="eq-foot">classical bridge · exact code · witnesses · replay</div>`
   },
 
   'certified-two-item-jrp': {
