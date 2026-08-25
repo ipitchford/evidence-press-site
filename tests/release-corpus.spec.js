@@ -11,7 +11,7 @@ for (const viewport of [
   { name: 'desktop', width: 1440, height: 1000 },
   { name: 'mobile', width: 390, height: 844 }
 ]) {
-  test(`all 31 releases satisfy the browser contract at ${viewport.name}`, async ({ page }) => {
+  test(`all releases satisfy the browser contract at ${viewport.name}`, async ({ page }) => {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
     await page.route('**/*', route => {
       const request = route.request();

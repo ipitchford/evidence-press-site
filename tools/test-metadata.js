@@ -45,6 +45,8 @@ if (!fs.existsSync(path.join(DIST, 'api', 'papers.json'))) {
 const read = rel => JSON.parse(fs.readFileSync(path.join(DIST, rel), 'utf8'));
 const papersDoc = read('api/papers.json');
 const schema = read('api/schema.json');
+const articlesDoc = read('api/articles.json');
+const articleSchema = read('api/schemas/article.schema.json');
 const operatingArtifacts = loadArtifacts(ROOT);
 const sourcePapers = loadPaperMetadata(ROOT);
 const atlasRoadmap = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'ATLAS_ROADMAP.json'), 'utf8'));
@@ -166,6 +168,14 @@ const errors = [];
 validate(papersDoc, schema, schema, 'papers.json', errors);
 check('catalogue validates against its own published JSON Schema',
   errors.length === 0, errors.slice(0, 12).join('\n  '));
+
+const articleErrors = [];
+for (const [index, article] of articlesDoc.articles.entries())
+  validate(article, articleSchema, articleSchema, `articles.json.articles[${index}]`, articleErrors);
+check('every article validates against the separate public article schema',
+  articleErrors.length === 0, articleErrors.slice(0, 12).join('\n  '));
+check('article schema is an exact source-to-public copy',
+  JSON.stringify(articleSchema) === JSON.stringify(JSON.parse(fs.readFileSync(path.join(ROOT, 'schemas', 'article.schema.json'), 'utf8'))));
 
 const refErrors = [];
 const visitedSchemaNodes = new Set();
@@ -361,6 +371,27 @@ check('every ledger release is still published', ledgerSlugs.every(s => releases
 check('method registry assigns every release exactly once by slug', same(assignedSlugs, apiSlugs),
   `assigned=${assignedSlugs.length} api=${apiSlugs.length}`);
 
+const articleUrls = articlesDoc.articles.map(article => article.url).sort();
+const articleFeed = read('articles/feed.json');
+const articleFeedUrls = articleFeed.items.map(item => item.url).sort();
+const articleRss = fs.readFileSync(path.join(DIST, 'articles', 'feed.xml'), 'utf8');
+check('article count matches the distinct communication-layer records',
+  articlesDoc.count === articlesDoc.articles.length && articlesDoc.count >= 1);
+check('article JSON Feed exactly matches the article API', same(articleFeedUrls, articleUrls));
+check('article RSS lists every article', articleUrls.every(url => articleRss.includes(url)));
+check('sitemap lists every article canonical URL', articleUrls.every(url => sitemap.includes(`<loc>${url}</loc>`)));
+check('every article canonical URL publishes an article.json record matching the API',
+  articlesDoc.articles.every(article => {
+    const rel = new URL(article.url).pathname.replace(/^\//, '');
+    const record = read(path.join(rel, 'article.json'));
+    return sameJson(record, article);
+  }));
+check('article records expose GitHub browser editing without attributing the repository owner',
+  articlesDoc.articles.every(article =>
+    article.editUrl.startsWith('https://github.com/ipitchford/evidence-press-site/edit/main/') &&
+    article.metadataEditUrl.startsWith('https://github.com/ipitchford/evidence-press-site/edit/main/') &&
+    article.byline === 'Evidence Press'));
+
 const sourceBySlug = new Map(sourcePapers.map(paper => [paper.slug, paper]));
 const operatingDrift = [];
 for (const paper of papersDoc.papers) {
@@ -431,6 +462,10 @@ const v1 = read('api/v1/papers.json');
 check('versioned papers API exactly matches the unversioned alias', sameJson(v1, papersDoc));
 check('versioned papers schema exactly matches the unversioned alias',
   sameJson(read('api/v1/schema.json'), schema));
+check('versioned articles API exactly matches the unversioned alias',
+  sameJson(read('api/v1/articles.json'), articlesDoc));
+check('versioned article schema exactly matches the unversioned alias',
+  sameJson(read('api/v1/schemas/article.schema.json'), articleSchema));
 check('build identity is published', (() => {
   const b = read('api/build.json');
   return !!(b.schemaVersion && b.softwareVersion);

@@ -19,6 +19,7 @@ const {
 } = require('./tools/research-graph');
 const { loadAtlasRoadmap, validateAtlasRoadmap } = require('./tools/atlas-roadmap');
 const { loadAtlasProposals, validateRegister: validateAtlasProposalRegister } = require('./tools/atlas-proposals');
+const { loadArticles } = require('./tools/articles');
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
@@ -35,6 +36,7 @@ const ATLAS_PROPOSAL_REGISTER_SCHEMA = JSON.parse(fs.readFileSync(path.join(ROOT
 const PAGE_STRUCTURE_POLICY = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'PAGE_STRUCTURE_POLICY.json'), 'utf8'));
 const PRESENTATION_EVENTS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'PRESENTATION_EVENTS.json'), 'utf8'));
 const AUDIO_PROVENANCE_STATUS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'AUDIO_PROVENANCE_STATUS.json'), 'utf8'));
+const ARTICLE_SCHEMA = JSON.parse(fs.readFileSync(path.join(ROOT, 'schemas', 'article.schema.json'), 'utf8'));
 const METHOD_BY_ID = new Map(OPERATING_ARTIFACTS.registry.methods.map(method => [method.id, method]));
 const IBE_BY_ID = new Map(OPERATING_ARTIFACTS.ledger.hypotheses.map(hypothesis => [hypothesis.id, hypothesis]));
 const WORK_ATTEMPT_BY_ID = new Map(OPERATING_ARTIFACTS.workLedger.attempts.map(attempt => [attempt.attemptId, attempt]));
@@ -336,6 +338,12 @@ const papers = fs.readdirSync(papersDir)
   .sort((a, b) => b.datePublished.localeCompare(a.datePublished) || a.slug.localeCompare(b.slug));
 
 const urlOf = p => `${BASE}/releases/${p.slug}/`;
+const articles = loadArticles(ROOT, { releaseSlugs: papers.map(paper => paper.slug) });
+const ARTICLE_SCHEMA_VERSION = '1.0';
+const articleUrl = article => `${BASE}${article.canonicalPath}`;
+const articleBySlug = new Map(articles.map(article => [article.slug, article]));
+const paperBySlug = new Map(papers.map(paper => [paper.slug, paper]));
+const githubPath = (verb, rel) => `${CONFIG.softwareRepo}/${verb}/main/${String(rel).split('/').map(encodeURIComponent).join('/')}`;
 
 /* ------------------------------------------------- authoring-schema gate */
 /* A strict gate over authored release metadata, separate from the public API
@@ -708,6 +716,8 @@ function head({ title, description, canonical, jsonld, metaExtra = '', math = fa
 <link rel="canonical" href="${canonical}">
 <link rel="alternate" type="application/rss+xml" title="${escAttr(CONFIG.siteName)}" href="${BASE}/feed.xml">
 <link rel="alternate" type="application/feed+json" title="${escAttr(CONFIG.siteName)}" href="${BASE}/feed.json">
+<link rel="alternate" type="application/rss+xml" title="${escAttr(CONFIG.siteName)} articles" href="${BASE}/articles/feed.xml">
+<link rel="alternate" type="application/feed+json" title="${escAttr(CONFIG.siteName)} articles" href="${BASE}/articles/feed.json">
 ${extraLinks}<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23134e4a'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%23fbbf24' font-family='Georgia'%3EE%CF%81%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="/assets/${CSS_ASSET}">
 ${metaExtra}${math ? `<link rel="stylesheet" href="/assets/katex/katex.min.css">
@@ -725,6 +735,7 @@ ${JSON.stringify(jsonld, null, 1)}
     <a class="brand" href="/"><span class="brand-mark">E</span> ${esc(CONFIG.siteName)}</a>
     <nav>
       <a href="/">Releases</a>
+      <a href="/articles/">Articles</a>
       <a href="/atlas/">Atlas</a>
       <a href="/about/">About</a>
       <a href="/operating-model/">Operating model</a>
@@ -741,8 +752,8 @@ ${JSON.stringify(jsonld, null, 1)}
 const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
-    <p>${esc(CONFIG.siteName)} publishes plain-language and specialist briefings on new research released with complete, replayable evidence. Nothing here has been peer reviewed; every page says exactly what has and has not been checked.</p>
-    <p>Site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">RSS</a> · <a href="/feed.json">JSON Feed</a> · <a href="/sitemap.xml">sitemap</a></p>
+    <p>${esc(CONFIG.siteName)} publishes evidence-attached research releases and a clearly separate collection of essays, commentary and research notes. Each page states its own evidence boundary.</p>
+    <p>Original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
 </footer>
@@ -1337,11 +1348,10 @@ ${Array.from({ length: 9 }, (_, k) => {
       <p>A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.</p>
       <p class="card-links"><span class="has-audio" title="Audio briefing available">♪ audio</span><span class="has-audio" title="Video briefing available">▸ video</span></p>
     </a>
-    <a class="programme-card" href="/observatory/assurance/">
-      <p class="card-date">Observatory essay · 4 August 2026</p>
-      <h3>The Case for Assurance Infrastructure</h3>
-      <p>Why checking AI-generated evidence, not producing it, binds government use of AI agents — four quantitative bounds, the research avenues that would relax the constraint, and sixteen ranked projects. Includes a plain-English companion essay.</p>
-      <p class="card-links"><span class="has-audio" title="Audio briefing available">♪ audio</span><span class="has-audio" title="Video briefing available">▸ video</span></p>
+    <a class="programme-card" href="/articles/">
+      <p class="card-date">Essays and commentary · ${articles.length} article${articles.length === 1 ? '' : 's'}</p>
+      <h3>Articles</h3>
+      <p>Long-form arguments, syntheses and research notes, with sources, scope and corrections made explicit. Articles are not certificate-backed research releases.</p>
     </a>
     <a class="programme-card" href="/productivity/">
       <p class="card-date">Practice programme · 8 August 2026</p>
@@ -1353,12 +1363,223 @@ ${Array.from({ length: 9 }, (_, k) => {
 <section class="wrap" aria-label="Releases">
   <div class="listhead">
     <h2 class="sr-only">All releases</h2>
-    <input id="filter" type="search" placeholder="Filter by topic — e.g. Ramsey, SAT, affine, reshuffling" aria-label="Filter releases">
+    <input id="filter" class="catalogue-filter" data-card-selector=".card" data-noun="release" type="search" placeholder="Filter by topic — e.g. Ramsey, SAT, affine, reshuffling" aria-label="Filter releases">
   </div>
   <div class="cards">${cards}</div>
 </section>
 ${foot}`;
   write('index.html', html);
+}
+
+/* ------------------------------------------------------------ articles */
+/* Articles are a communication layer. Their records intentionally omit DOI,
+   replay and release-assurance fields so agents cannot confuse exposition
+   with an Evidence Press evidence package. */
+function articleRecord(article) {
+  const url = articleUrl(article);
+  return {
+    schemaVersion: ARTICLE_SCHEMA_VERSION,
+    slug: article.slug,
+    title: article.title,
+    url,
+    standfirst: article.standfirst,
+    summary: article.summary,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified,
+    articleClass: article.articleClass,
+    status: article.status,
+    byline: article.byline,
+    topics: article.topics,
+    readingMinutes: article.readingMinutes,
+    wordCount: article.wordCount,
+    newResearchClaims: article.newResearchClaims,
+    claimBoundary: article.claimBoundary,
+    sources: article.sources,
+    relatedReleases: article.relatedReleases || [],
+    relatedArticles: article.relatedArticles || [],
+    corrections: article.corrections || [],
+    license: article.license,
+    markdownUrl: `${url}index.md`,
+    sourceUrl: githubPath('blob', article.sourcePath),
+    editUrl: githubPath('edit', article.sourcePath),
+    metadataEditUrl: githubPath('edit', article.metaPath)
+  };
+}
+
+function articleJsonldNode(article) {
+  const record = articleRecord(article);
+  const author = article.byline === CONFIG.publisher
+    ? { '@type': 'Organization', '@id': `${BASE}/#org`, name: CONFIG.publisher }
+    : { '@type': 'Person', name: article.byline };
+  return {
+    '@type': 'Article',
+    '@id': `${record.url}#article`,
+    headline: article.title,
+    description: article.summary,
+    abstract: article.standfirst,
+    url: record.url,
+    mainEntityOfPage: record.url,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified,
+    author,
+    publisher: { '@id': `${BASE}/#org` },
+    inLanguage: CONFIG.language,
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+    keywords: article.topics,
+    wordCount: article.wordCount,
+    timeRequired: `PT${article.readingMinutes}M`,
+    isPartOf: { '@id': `${BASE}/articles/#collection` },
+    citation: article.sources.map(source => source.url),
+    about: (article.relatedReleases || []).map(relation => ({
+      '@type': 'ScholarlyArticle',
+      '@id': `${urlOf(paperBySlug.get(relation.slug))}#article`,
+      name: paperBySlug.get(relation.slug).title
+    }))
+  };
+}
+
+function articleBoundaryHtml(article) {
+  return `<aside class="article-boundary" aria-labelledby="article-boundary-title">
+    <strong id="article-boundary-title">What kind of publication is this?</strong>
+    <p>${inline(article.claimBoundary)}</p>
+  </aside>`;
+}
+
+function articleCorrectionsHtml(article) {
+  if (!(article.corrections || []).length) return '';
+  return `<aside class="corrections" aria-labelledby="article-corrections-heading">
+    <h2 id="article-corrections-heading">Corrections to this article</h2>
+    <ul>${article.corrections.map(correction => `<li><p class="correction-meta">${esc(niceDate(correction.date))}</p><p>${inline(correction.summary)}</p>${correction.detail ? `<p class="correction-detail">${inline(correction.detail)}</p>` : ''}</li>`).join('')}</ul>
+  </aside>`;
+}
+
+function articleReferencesHtml(article) {
+  const sources = article.sources.length ? `<section class="article-sources" aria-labelledby="article-sources-heading">
+    <h2 id="article-sources-heading">Selected source anchors</h2>
+    <p class="note">These structured links aid discovery; citations embedded in the article remain part of its source record.</p>
+    <ul>${article.sources.map(source => `<li><a href="${escAttr(source.url)}" rel="noopener">${esc(source.citation)}</a></li>`).join('')}</ul>
+  </section>` : '';
+  const releases = (article.relatedReleases || []).length ? `<section class="related" aria-labelledby="article-releases-heading">
+    <h2 id="article-releases-heading">Related Evidence Press releases</h2>
+    <ul>${article.relatedReleases.map(relation => {
+      const paper = paperBySlug.get(relation.slug);
+      return `<li><a href="/releases/${escAttr(paper.slug)}/">${esc(paper.title)}</a> — ${esc(relation.relation)}${relation.note ? `. ${inline(relation.note)}` : ''}</li>`;
+    }).join('')}</ul>
+  </section>` : '';
+  const related = (article.relatedArticles || []).length ? `<section class="related" aria-labelledby="related-articles-heading">
+    <h2 id="related-articles-heading">Related articles</h2>
+    <ul>${article.relatedArticles.map(relation => {
+      const target = articleBySlug.get(relation.slug);
+      return `<li><a href="${escAttr(target.canonicalPath)}">${esc(target.title)}</a> — ${esc(relation.relation)}${relation.note ? `. ${inline(relation.note)}` : ''}</li>`;
+    }).join('')}</ul>
+  </section>` : '';
+  return sources + releases + related;
+}
+
+function articleEditHtml(article) {
+  const record = articleRecord(article);
+  return `<section class="article-edit" aria-labelledby="article-edit-title">
+    <h2 id="article-edit-title">Suggest or make an edit</h2>
+    <p>These links open the article’s version-controlled source in GitHub. Sign in, edit the text, preview the change and propose it for publication.</p>
+    <p><a class="button secondary" href="${escAttr(record.editUrl)}" rel="noopener">Edit article</a> <a href="${escAttr(record.metadataEditUrl)}" rel="noopener">Edit title, dates or sources</a></p>
+  </section>`;
+}
+
+function generatedArticlePage(article) {
+  const record = articleRecord(article);
+  const social = [
+    ['og:type', 'article'], ['og:site_name', CONFIG.siteName], ['og:title', article.title],
+    ['og:description', article.summary], ['og:url', record.url],
+    ['article:published_time', iso(article.datePublished)],
+    ['article:modified_time', iso(article.dateModified)],
+    ['twitter:card', 'summary'], ['twitter:title', article.title], ['twitter:description', article.summary]
+  ].map(([key, value]) => key.startsWith('og:') || key.startsWith('article:')
+    ? `<meta property="${key}" content="${escAttr(value)}">`
+    : `<meta name="${key}" content="${escAttr(value)}">`).join('\n') + '\n';
+  const jsonld = { '@context': 'https://schema.org', '@graph': [websiteNode(), articleJsonldNode(article)] };
+  const editFacts = `<aside class="factbox article-factbox" aria-label="Article details">
+    <h2>Article details</h2><dl>
+      <dt>Type</dt><dd>${esc(article.articleClass)}</dd>
+      <dt>Published</dt><dd>${esc(niceDate(article.datePublished))}</dd>
+      <dt>Reading time</dt><dd>About ${article.readingMinutes} minute${article.readingMinutes === 1 ? '' : 's'}</dd>
+      <dt>Byline</dt><dd>${esc(article.byline)}</dd>
+      <dt>Status</dt><dd>${esc(article.status)}</dd>
+      <dt>Machine-readable</dt><dd><a href="${record.url}article.json">article.json</a> · <a href="${record.url}index.md">Markdown</a></dd>
+      <dt>Edit</dt><dd><a href="${escAttr(record.editUrl)}" rel="noopener">Article text</a> · <a href="${escAttr(record.metadataEditUrl)}" rel="noopener">Details</a></dd>
+      <dt>Licence</dt><dd><a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a></dd>
+    </dl></aside>`;
+  const html = `${head({
+    title: `${article.title} · ${CONFIG.siteName}`,
+    description: article.summary,
+    canonical: record.url,
+    jsonld,
+    metaExtra: social,
+    math: /(?:\$\$|\\\(|\\\[|\$(?!\s))/.test(article.body),
+    extraLinks: `<link rel="alternate" type="text/markdown" href="${record.markdownUrl}">\n<link rel="describedby" type="application/json" href="${record.url}article.json">\n<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">\n`
+  })}
+<article class="release article-page"><div class="wrap">
+  <p class="kicker">Article · ${esc(article.articleClass)} · ${esc(niceDate(article.datePublished))}</p>
+  <h1>${esc(article.title)}</h1>
+  <p class="standfirst">${inline(article.standfirst)}</p>
+  ${articleBoundaryHtml(article)}
+  <div class="release-grid"><div class="body">
+    ${articleCorrectionsHtml(article)}
+    ${markdown(article.body)}
+    ${articleReferencesHtml(article)}
+    ${articleEditHtml(article)}
+  </div>${editFacts}</div>
+</div></article>
+${foot}`;
+  write(`${article.canonicalPath.slice(1)}index.html`, html);
+  write(`${article.canonicalPath.slice(1)}index.md`, articleMarkdown(article));
+}
+
+function articleMarkdown(article) {
+  return `---\ntitle: "${article.title.replace(/"/g, '\\"')}"\nurl: ${articleUrl(article)}\ndate: ${article.datePublished}\nmodified: ${article.dateModified}\ntype: ${article.articleClass}\nbyline: ${article.byline}\nlicense: CC0-1.0\nstatus: ${article.status}\nclaim_boundary: "${article.claimBoundary.replace(/"/g, '\\"')}"\n---\n\n# ${article.title}\n\n${article.standfirst}\n\n> Publication boundary: ${article.claimBoundary}\n\n${article.body.trim()}\n\n## Selected source anchors\n\n${article.sources.map(source => `- ${source.citation} <${source.url}>`).join('\n')}\n`;
+}
+
+function writeArticleRecord(article) {
+  const rel = `${article.canonicalPath.slice(1)}article.json`;
+  write(rel, JSON.stringify(articleRecord(article), null, 2) + '\n');
+  if (article.renderMode === 'generated') generatedArticlePage(article);
+}
+
+function articlesIndexPage() {
+  const url = `${BASE}/articles/`;
+  const cards = articles.map(article => `<article class="article-card" data-keywords="${escAttr(article.topics.join(' ').toLowerCase())}">
+    <p class="card-date">${esc(article.articleClass)} · ${esc(niceDate(article.datePublished))} · ${article.readingMinutes} min</p>
+    <h2><a href="${escAttr(article.canonicalPath)}">${esc(article.title)}</a></h2>
+    <p>${inline(article.summary)}</p>
+    <p class="article-card-boundary">${article.newResearchClaims ? 'Contains bounded research claims' : 'Exposition; no new research claim'} · ${esc(article.status)}</p>
+    <p class="card-links"><a href="${escAttr(article.canonicalPath)}">Read article</a><a href="${escAttr(articleUrl(article))}article.json">JSON</a></p>
+  </article>`).join('\n');
+  const jsonld = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
+    '@type': 'CollectionPage', '@id': `${url}#collection`, url, name: 'Evidence Press articles',
+    description: 'Essays, commentary, syntheses and research notes, kept distinct from evidence-attached research releases.',
+    isPartOf: { '@id': `${BASE}/#website` },
+    mainEntity: { '@type': 'ItemList', itemListElement: articles.map((article, index) => ({
+      '@type': 'ListItem', position: index + 1, url: articleUrl(article), name: article.title
+    })) }
+  }] };
+  const html = `${head({
+    title: `Articles · ${CONFIG.siteName}`,
+    description: 'High-quality essays, commentary, syntheses and research notes from Evidence Press, with explicit sources, scope and correction history.',
+    canonical: url,
+    jsonld,
+    extraLinks: `<link rel="alternate" type="application/rss+xml" href="${url}feed.xml" title="Evidence Press articles">\n<link rel="alternate" type="application/feed+json" href="${url}feed.json" title="Evidence Press articles">\n`
+  })}
+<section class="article-index-hero"><div class="wrap">
+  <p class="kicker">Essays · commentary · synthesis · research notes</p>
+  <h1>Articles</h1>
+  <p class="standfirst">Long-form writing with explicit sources, scope and correction history. Articles may explain or develop research, but they are not certificate-backed Evidence Press releases.</p>
+</div></section>
+<section class="wrap article-index" aria-label="Articles">
+  <div class="listhead"><input id="article-filter" class="catalogue-filter" data-card-selector=".article-card" data-noun="article" type="search" placeholder="Filter articles by topic" aria-label="Filter articles"></div>
+  <div class="article-cards">${cards}</div>
+</section>
+${foot}`;
+  write('articles/index.html', html);
+  write('articles/index.md', `---\ntitle: "Evidence Press articles"\nurl: ${url}\nlicense: CC0-1.0\n---\n\n# Articles\n\nEssays, commentary, syntheses and research notes. These are communication-layer publications, not certificate-backed research releases.\n\n${articles.map(article => `- [${article.title}](${articleUrl(article)}) — ${article.summary}`).join('\n')}\n`);
 }
 
 /* ------------------------------------------------------ Evidence Atlas */
@@ -1592,7 +1813,18 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     ...(associatedMedia.length ? { associatedMedia } : {}),
     inLanguage: CONFIG.language,
     license: 'https://creativecommons.org/publicdomain/zero/1.0/',
-    isPartOf: { '@id': `${BASE}/#website` }
+    isPartOf: opts.article ? { '@id': `${BASE}/articles/#collection` } : { '@id': `${BASE}/#website` },
+    ...(opts.article ? {
+      headline: opts.article.title,
+      author: opts.article.byline === CONFIG.publisher
+        ? { '@type': 'Organization', '@id': `${BASE}/#org`, name: CONFIG.publisher }
+        : { '@type': 'Person', name: opts.article.byline },
+      publisher: { '@id': `${BASE}/#org` },
+      keywords: opts.article.topics,
+      wordCount: opts.article.wordCount,
+      timeRequired: `PT${opts.article.readingMinutes}M`,
+      citation: opts.article.sources.map(source => source.url)
+    } : {})
   };
   const audioNode = opts.audio ? [{
     '@type': 'AudioObject', '@id': `${url}#audio`,
@@ -1645,6 +1877,7 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     ] : []),
     ...(opts.video ? [`<link rel="item" type="text/html" href="${escAttr(opts.video.url)}" title="Video overview">`] : []),
     ...(opts.citeAs ? [`<link rel="cite-as" href="${escAttr(opts.citeAs)}">`] : []),
+    ...(opts.article ? [`<link rel="describedby" type="application/json" href="${url}article.json">`] : []),
     `<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">`
   ].join('\n') + '\n';
   const audioHtml = opts.audio ? `<section class="standalone-audio" aria-labelledby="standalone-audio-title">
@@ -1686,6 +1919,7 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     <dl>${opts.resources.map(resource => `<dt>${esc(resource.label)}</dt><dd>${resource.url ? `<a href="${escAttr(resource.url)}" rel="noopener">${esc(resource.linkText || resource.url)}</a>` : '<span class="pending-link">Pending final publication metadata</span>'}${resource.detail ? `<small class="fact-detail">${esc(resource.detail)}</small>` : ''}</dd>`).join('')}
       <dt>Licence</dt><dd><a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a></dd>
       ${opts.sidebarStatus ? `<dt>Status</dt><dd>${esc(opts.sidebarStatus)}</dd>` : ''}
+      ${opts.article ? `<dt>Article details</dt><dd>${esc(opts.article.articleClass)} · about ${opts.article.readingMinutes} minutes · by ${esc(opts.article.byline)}</dd><dt>Edit</dt><dd><a href="${escAttr(articleRecord(opts.article).editUrl)}" rel="noopener">Article text</a> · <a href="${escAttr(articleRecord(opts.article).metadataEditUrl)}" rel="noopener">Title, dates or sources</a></dd><dt>Article record</dt><dd><a href="${url}article.json">article.json</a></dd>` : ''}
     </dl>
   </aside>` : '';
   const sourceRel = opts.sourcePath || path.join('pages', mdFile);
@@ -1718,8 +1952,9 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
   </div></article>` : opts.releaseLayout ? `<article class="release standalone-release"><div class="wrap">
     ${coverHtml}
     ${headingHtml}
+    ${opts.article ? articleBoundaryHtml(opts.article) : ''}
     ${briefingsHtml}
-    <div class="release-grid"><div class="body">${companion.html}${bodyHtml}</div>${resourcesAside}</div>
+    <div class="release-grid"><div class="body">${articleCorrectionsHtml(opts.article || { corrections: [] })}${companion.html}${bodyHtml}${opts.article ? articleReferencesHtml(opts.article) + articleEditHtml(opts.article) : ''}</div>${resourcesAside}</div>
   </div></article>` : `<article class="release"><div class="wrap"><div class="prose">
     ${coverHtml}
     ${headingHtml}
@@ -1780,14 +2015,49 @@ ${items}
       ...(p.audio ? { attachments: [{ url: BASE + p.audio.url, mime_type: 'audio/mpeg', size_in_bytes: p.audio.bytes }] } : {})
     }))
   }, null, 2));
+
+  const articleItems = articles.map(article => `  <item>
+    <title>${esc(article.title)}</title>
+    <link>${articleUrl(article)}</link>
+    <guid isPermaLink="true">${articleUrl(article)}</guid>
+    <pubDate>${rfc822(article.datePublished)}</pubDate>
+    <description>${esc(article.summary)}</description>
+  </item>`).join('\n');
+  write('articles/feed.xml', `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>${esc(CONFIG.siteName)} articles</title>
+  <link>${BASE}/articles/</link>
+  <description>Essays, commentary, syntheses and research notes from Evidence Press.</description>
+  <language>en-gb</language>
+  <lastBuildDate>${rfc822(articles[0].dateModified)}</lastBuildDate>
+${articleItems}
+</channel>
+</rss>
+`);
+  write('articles/feed.json', JSON.stringify({
+    version: 'https://jsonfeed.org/version/1.1',
+    title: `${CONFIG.siteName} articles`,
+    home_page_url: `${BASE}/articles/`,
+    feed_url: `${BASE}/articles/feed.json`,
+    description: 'Essays, commentary, syntheses and research notes from Evidence Press.',
+    items: articles.map(article => ({
+      id: articleUrl(article), url: articleUrl(article), title: article.title,
+      content_text: article.summary, date_published: iso(article.datePublished),
+      date_modified: iso(article.dateModified), tags: article.topics
+    }))
+  }, null, 2));
 }
 
 function sitemap() {
-  const urls = [
+  const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
+    { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
     { loc: `${BASE}/about/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-10' }, { loc: `${BASE}/ai/` },
-    ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished }))
+    ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
+    ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
   ];
+  const urls = [...new Map(candidates.map(item => [item.loc, item])).values()];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n')}
@@ -1815,12 +2085,17 @@ function llms() {
   const lines = [
     `# ${CONFIG.siteName}`, '',
     `> ${CONFIG.tagline}. Every release describes an unrefereed research result with an open, replayable evidence package (code, data, exact certificates, pinned environments, SHA-256 manifests) archived with a DOI. Nothing on this site is peer reviewed; each page states exactly what has and has not been verified, and lists open follow-up problems in machine-readable form.`, '',
-    `Key endpoints: full JSON index at /api/papers.json (JSON Schema at /api/schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); quarantined research-tip register at /api/atlas-proposals.json (schemas at /api/schemas/atlas-proposal.schema.json and /api/schemas/atlas-proposal-register.schema.json); relationship vocabulary at /api/relationship-registry.json; Atlas priorities and review log at /api/atlas-roadmap.json; reader-first page contract at /api/page-structure-policy.json; non-scholarly maintenance history at /api/presentation-events.json; release-audio provenance status at /api/audio-provenance-status.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-release Markdown at /releases/<slug>/index.md; per-release BibTeX at /releases/<slug>/cite.bib; RSS at /feed.xml; JSON Feed at /feed.json. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
+    `Key endpoints: full research-release index at /api/papers.json (JSON Schema at /api/schema.json); separate article index at /api/articles.json (item schema at /api/schemas/article.schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); quarantined research-tip register at /api/atlas-proposals.json (schemas at /api/schemas/atlas-proposal.schema.json and /api/schemas/atlas-proposal-register.schema.json); relationship vocabulary at /api/relationship-registry.json; Atlas priorities and review log at /api/atlas-roadmap.json; reader-first page contract at /api/page-structure-policy.json; non-scholarly maintenance history at /api/presentation-events.json; release-audio provenance status at /api/audio-provenance-status.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-article JSON at the canonical article URL plus article.json; release RSS at /feed.xml; article RSS at /articles/feed.xml. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
     '## Releases', '',
     ...papers.map(p => `- [${p.shortTitle}](${urlOf(p)}): ${p.oneLine} (PDF: ${p.pdfUrl || 'n/a'}; DOI: https://doi.org/${p.doi}; code: ${p.repoUrl}; status: unrefereed)`),
     '',
+    '## Articles', '',
+    'Articles are communication-layer objects, not certificate-backed research releases. Read each claimBoundary before reuse.',
+    ...articles.map(article => `- [${article.title}](${articleUrl(article)}): ${article.summary} (type: ${article.articleClass}; status: ${article.status}; boundary: ${article.claimBoundary}; JSON: ${articleUrl(article)}article.json)`),
+    '',
     '## Machine-readable', '',
     `- [papers.json](${BASE}/api/papers.json): full structured index — titles, DOIs, PDF links, verification status, provenance, key results, keywords, media, and open follow-up problems for every release`,
+    `- [articles.json](${BASE}/api/articles.json): distinct communication-layer index — titles, dates, topics, source anchors, scope boundaries, correction history and edit links`,
     `- [research-graph.json](${BASE}/api/research-graph.json): releases, methods, broad clusters, evidence-backed lineages, dependencies and internal citations, with content-derived identities, source pointers and inference limits`,
     `- [atlas-proposals.json](${BASE}/api/atlas-proposals.json): quarantined human and agent research tips with content-derived identities, provenance, cheap falsifiers, separate assessments, expiry and append-only review receipts; suggestions are not accepted relationships`,
     `- [relationship-registry.json](${BASE}/api/relationship-registry.json): predicate meanings, knowledge-status boundaries and the additive proposal-review policy`,
@@ -1833,14 +2108,14 @@ function llms() {
     `- [page-structure-policy.json](${BASE}/api/page-structure-policy.json): versioned reader-first page functions, variants, fixtures and grandfathering rule`,
     `- [presentation-events.json](${BASE}/api/presentation-events.json): routine media and deployment maintenance kept separate from scholarly corrections`,
     `- [audio-provenance-status.json](${BASE}/api/audio-provenance-status.json): per-release transcript and provider/model/voice provenance status without guessing missing legacy facts`,
-    `- [llms-full.txt](${BASE}/llms-full.txt): complete text of every release in one Markdown file`,
+    `- [llms-full.txt](${BASE}/llms-full.txt): complete text of every release and article in one Markdown file`,
     '',
     '## About', '',
     `- [About](${BASE}/about/): what these releases are, the assurance matrix, and how to independently verify or refute one`,
     `- [Evidence Atlas](${BASE}/atlas/): interactive and accessible map of recorded research relationships plus a visibly quarantined proposal projection; geometry is navigation, not evidence (Markdown: ${BASE}/atlas/index.md; accepted graph: ${BASE}/api/research-graph.json; proposals: ${BASE}/api/atlas-proposals.json)`,
     `- [Operating model](${BASE}/operating-model/): the prospective doctrine for accelerating checkable work, stopping non-identified work, and publishing reusable handoffs (Markdown: ${BASE}/operating-model/index.md; JSON: ${BASE}/operating-model/index.json)`,
     `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; video: ${OBSERVATORY.video.url}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
-    `- [The Case for Assurance Infrastructure](${BASE}/observatory/assurance/): why verification, not generation, binds government use of AI agents — four quantitative bounds, verification economics, research avenues, and sixteen ranked projects (Markdown: ${BASE}/observatory/assurance/index.md)`,
+    `- [Articles](${BASE}/articles/): essays, commentary, syntheses and research notes, explicitly separate from certificate-backed releases (RSS: ${BASE}/articles/feed.xml; JSON: ${BASE}/api/articles.json)`,
     `- [Productivity Protocols](${BASE}/productivity/): bounded, downloadable workflows for using AI agents, each with separate protocol-assurance and work-evidence status; human and company impact is not yet measured. Registry: ${BASE}/protocols/ (machine-readable index: ${BASE}/protocols/api/protocols.json)`,
     `- [For AI agents](${BASE}/ai/): metadata conventions and suggested uses (verification, formalisation, follow-up research)`
   ];
@@ -1856,6 +2131,15 @@ function llms() {
       `## Open directions (machine-readable copy at ${urlOf(p)}paper.json)`, '',
       ...(p.openProblems || []).map(o => `- ${o}`), '',
       ...(p.operatingModel ? [operatingModelMarkdown(p).trim(), ''] : [])
+    ]),
+    ...articles.flatMap(article => [
+      '---', '', `# ${article.title}`, '',
+      `- URL: ${articleUrl(article)}`,
+      `- Type: ${article.articleClass}`,
+      `- Published: ${article.datePublished} · Modified: ${article.dateModified} · Licence: CC0-1.0`,
+      `- Status: ${article.status}`,
+      `- Publication boundary: ${article.claimBoundary}`, '',
+      article.body, ''
     ]),
     '---', '', `# ${OBSERVATORY.title}`, '',
     `- URL: ${BASE}/observatory/`,
@@ -1897,7 +2181,7 @@ function apiStability() {
     unversionedAliases: {
       note: 'Unversioned paths are stable aliases kept indefinitely; they currently serve the same content as v1.',
       paths: [
-        `${BASE}/api/papers.json`, `${BASE}/api/schema.json`,
+        `${BASE}/api/papers.json`, `${BASE}/api/schema.json`, `${BASE}/api/articles.json`, `${BASE}/api/schemas/article.schema.json`,
         `${BASE}/api/research-graph.json`, `${BASE}/api/relationship-registry.json`, `${BASE}/api/atlas-roadmap.json`,
         `${BASE}/api/operating-model.json`, `${BASE}/api/method-registry.json`, `${BASE}/api/ibe-ledger.json`, `${BASE}/api/work-ledger.json`,
         `${BASE}/api/page-structure-policy.json`, `${BASE}/api/presentation-events.json`, `${BASE}/api/audio-provenance-status.json`
@@ -1913,6 +2197,11 @@ function apiStability() {
       stable: ['slug', 'title', 'url', 'doi', 'doiUrl', 'datePublished', 'version', 'authors', 'license', 'status', 'keywords', 'verification', 'zenodoUrl', 'repoUrl'],
       extensible: ['assurance', 'media', 'provenance', 'reviews', 'relatedWorks', 'openProblems', 'keyResults', 'operatingModel', 'publicCorrections', 'pageStructureVersion', 'pageStructureVariant', 'pageStructureWaivers', 'recordMaturity', 'metadataProvenance', 'grandfatheredAtSchemaVersion'],
       experimental: ['assurance[].question', 'assurance[].evidenceUrl', 'researchGraph.proposalRegister']
+    },
+    articleApi: {
+      boundary: 'Articles are communication-layer publications. Their presence in the API does not imply a DOI, evidence package, replay, formal proof, independent reproduction, peer review, novelty or impact.',
+      stable: ['slug', 'title', 'url', 'datePublished', 'dateModified', 'articleClass', 'status', 'byline', 'topics', 'newResearchClaims', 'claimBoundary', 'license'],
+      extensible: ['sources', 'relatedReleases', 'relatedArticles', 'corrections', 'readingMinutes', 'wordCount', 'markdownUrl', 'sourceUrl', 'editUrl', 'metadataEditUrl']
     },
     deprecation: {
       procedure: 'A field to be retired is first marked deprecated here with a date, kept for at least twelve months, and only then removed in a new major version.',
@@ -1944,6 +2233,8 @@ function notFoundPage() {
   <ul>
     <li><a href="/">All releases</a> — the full catalogue, filterable by topic</li>
     <li><a href="/api/papers.json">papers.json</a> — every release as structured data</li>
+    <li><a href="/articles/">Articles</a> — essays, commentary, syntheses and research notes</li>
+    <li><a href="/api/articles.json">articles.json</a> — articles as a separate communication-layer index</li>
     <li><a href="/atlas/">Evidence Atlas</a> — the interactive and accessible relationship map</li>
     <li><a href="/about/">About</a> — what this site publishes, and what its assurance states mean</li>
     <li><a href="/operating-model/">Operating model</a> — the prospective doctrine, reusable method registry and defeasible inference ledger</li>
@@ -1965,6 +2256,16 @@ function api() {
     stability: `${BASE}/api/stability.json`,
     count: papers.length,
     papers: papers.map(paperApi)
+  };
+  const articlesDoc = {
+    schemaVersion: ARTICLE_SCHEMA_VERSION,
+    site: CONFIG.siteName,
+    baseUrl: BASE,
+    description: 'Communication-layer articles. Inclusion does not imply a certificate-backed research release or any release assurance state.',
+    itemSchema: `${BASE}/api/schemas/article.schema.json`,
+    stability: `${BASE}/api/stability.json`,
+    count: articles.length,
+    articles: articles.map(articleRecord)
   };
   write('api/build.json', JSON.stringify(BUILD, null, 2) + '\n');
   write('api/stability.json', JSON.stringify(apiStability(), null, 2) + '\n');
@@ -2008,6 +2309,12 @@ function api() {
   const papersPayload = JSON.stringify(papersDoc, null, 2);
   write('api/v1/papers.json', papersPayload);
   write('api/papers.json', papersPayload);
+  const articlesPayload = JSON.stringify(articlesDoc, null, 2) + '\n';
+  write('api/v1/articles.json', articlesPayload);
+  write('api/articles.json', articlesPayload);
+  const articleSchemaPayload = JSON.stringify(ARTICLE_SCHEMA, null, 2) + '\n';
+  write('api/schemas/article.schema.json', articleSchemaPayload);
+  write('api/v1/schemas/article.schema.json', articleSchemaPayload);
   /* Reuse the authored prospective-release schema inside the public papers
      schema. Its local definitions are rebound to the public document's $defs
      so the two contracts cannot drift while remaining valid JSON Schema. */
@@ -2365,7 +2672,13 @@ write('_headers', `/*
 /releases/*/paper.json
   Access-Control-Allow-Origin: *
 
+/articles/*/article.json
+  Access-Control-Allow-Origin: *
+
 /observatory/index.json
+  Access-Control-Allow-Origin: *
+
+/observatory/assurance/article.json
   Access-Control-Allow-Origin: *
 
 /atlas/index.json
@@ -2381,7 +2694,9 @@ write('_headers', `/*
   Access-Control-Allow-Origin: *
 `);
 papers.forEach(paperPage);
+articles.forEach(writeArticleRecord);
 indexPage();
+articlesIndexPage();
 atlasPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
 simplePage('operating-model/', 'Evidence Press operating model', 'A prospective, machine-enforced doctrine for accelerating checkable work, stopping non-identified work, and publishing reusable research handoffs while retaining rival explanations and falsifiers.', null, 'WebPage', {
@@ -2475,7 +2790,8 @@ simplePage('observatory/', 'Policy Identification Observatory', 'A standing agen
     license: 'https://creativecommons.org/publicdomain/zero/1.0/'
   }] : [])]
 });
-simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'Why verification, not generation, binds government use of AI agents: four quantitative bounds, the verification cost evidence, research avenues that make assurance cheaper and more capable, and sixteen ranked projects.', 'assurance.md', 'WebPage', {
+simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'Why verification, not generation, binds government use of AI agents: four quantitative bounds, the verification cost evidence, research avenues that make assurance cheaper and more capable, and sixteen ranked projects.', 'assurance.md', 'Article', {
+  article: articleBySlug.get('assurance-infrastructure'),
   releaseLayout: true,
   art: '/assets/art/assurance.svg',
   og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'assurance.png')) ? '/assets/og/assurance.png' : null,
@@ -2513,4 +2829,4 @@ sitemap();
 llms();
 notFoundPage();
 api();
-console.log(`Built ${papers.length} releases plus Evidence Atlas and Observatory → dist/  (graph: ${RESEARCH_GRAPH.stats.nodeCount} nodes / ${RESEARCH_GRAPH.stats.edgeCount} accepted edges; paper audio: ${papers.filter(p => p.audio).length}; Observatory audio: 1; art: ${papers.filter(p => p.art).length}; og: ${papers.filter(p => p.og).length})`);
+console.log(`Built ${papers.length} releases, ${articles.length} article${articles.length === 1 ? '' : 's'}, Evidence Atlas and Observatory → dist/  (graph: ${RESEARCH_GRAPH.stats.nodeCount} nodes / ${RESEARCH_GRAPH.stats.edgeCount} accepted edges; paper audio: ${papers.filter(p => p.audio).length}; Observatory audio: 1; art: ${papers.filter(p => p.art).length}; og: ${papers.filter(p => p.og).length})`);

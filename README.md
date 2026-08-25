@@ -2,6 +2,11 @@
 
 A dependency-free static site for press releases about new research published with complete, replayable evidence — designed for popular audiences, specialists, and AI research agents.
 
+The site also has a deliberately separate **Articles** collection for essays,
+commentary, syntheses and research notes. Articles carry sources, scope and
+correction history, but do not inherit the evidentiary status of a research
+release.
+
 Live site: https://evidencepress.org
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21817379.svg)](https://doi.org/10.5281/zenodo.21817379)
@@ -24,6 +29,7 @@ The build is deterministic: the build timestamp comes from the commit, not the c
 
 ```
 node tools/test-render.js      # renderer regression + property tests
+node tools/test-articles.js    # article schema + hostile authoring controls
 node tools/test-release-pages.js --report # reader functions, attribution and correction materiality
 node tools/build-audio-provenance-status.js --check # audio/transcript/provenance snapshot
 node tools/test-operating-model.js # doctrine, method/IBE/work ledgers, prospective contract + hostile controls
@@ -55,6 +61,24 @@ Release metadata is validated against strict authoring contracts *before* any fi
 
 The index page, feeds, sitemap, `llms.txt`, `api/papers.json`, per-release RO-Crate packages and Signposting link sets all regenerate automatically from the `papers/` folder — nothing else to update.
 
+## Write or edit an article
+
+Every article page includes **Edit article** and **Edit title, dates or sources**
+links. They open the version-controlled source in GitHub's browser editor, so a
+routine change needs no local development environment or separate content
+management system. Choose a new branch and pull request when saving; the public
+update still passes the ordinary automated checks and guarded deployment.
+
+To create an article locally:
+
+```sh
+node tools/new-article.js a-short-url-slug "The article title"
+```
+
+This creates `articles/<slug>/body.md` and `meta.json`. See
+[`docs/EDITING_ARTICLES.md`](docs/EDITING_ARTICLES.md) for the short editing
+guide and the boundary between an article and an evidence-attached release.
+
 ### Assurance and corrections
 
 Each release carries an **assurance matrix** rather than a single verification level: eight independent dimensions (availability, internal replay, independent rerun, independent reimplementation, formal verification, specialist review, editorial peer review, data and environment reproducibility), each with a state of `passed`, `partial`, `failed`, `not-assessed` or `not-applicable`. Declare any of them in `meta.json` under `assurance`; anything undeclared is reported as *not assessed*, which is a statement about what nobody has done yet, not a finding against the work. The legacy `verification` booleans are derived from this matrix, so they cannot disagree with it.
@@ -66,6 +90,10 @@ If a published page turns out to be wrong, add an entry to that release's `corre
 ## What the build emits
 
 - `/` — index of all releases (newest first), cover art, client-side topic filter
+- `/articles/` — distinct index of essays, commentary, syntheses and research notes
+- article canonical URL + `article.json` + `index.md` — human, machine and Markdown representations
+- `/api/articles.json` + `/api/schemas/article.schema.json` — structured article index and item contract
+- `/articles/feed.xml` + `/articles/feed.json` — dedicated article feeds, kept separate from release feeds
 - `/releases/<slug>/` — one page per release: audio briefing player, PDF button, popular/specialist/technical layers, audience table, open follow-up problems, verification status, fully linked sources, copyable APA + BibTeX
 - `/releases/<slug>/paper.json` · `index.md` · `cite.bib` — structured record, Markdown version, BibTeX (CORS-enabled JSON)
 - `/api/papers.json` + `/api/schema.json` — full structured index with JSON Schema
@@ -133,6 +161,6 @@ URLs it can confirm live; do not run record mode before publication.
 
 ## Licensing
 
-The publishing software — `build.js`, `tools/`, `assets/style.css` and `assets/js/` — is MIT licensed (see `LICENSE`). The published research and institutional content — `papers/`, `pages/`, `docs/OPERATING_MODEL.md`, `data/` and everything rendered from them — is dedicated to the public domain under CC0 1.0, as stated on every page of the site. Vendored KaTeX keeps its own MIT licence.
+The publishing software — `build.js`, `tools/`, `assets/style.css` and `assets/js/` — is MIT licensed (see `LICENSE`). The published research, article and institutional content — `papers/`, `articles/`, `pages/`, `docs/OPERATING_MODEL.md`, `data/` and everything rendered from them — is dedicated to the public domain under CC0 1.0, as stated on every page of the site. Third-party sources retain their own rights. Vendored KaTeX keeps its own MIT licence.
 
 Cite the software with `CITATION.cff`; cite a research release with its own DOI.

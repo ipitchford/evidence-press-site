@@ -52,6 +52,9 @@ jobs:
       - name: Renderer regression tests
         run: node tools/test-render.js
 
+      - name: Article authoring contract and hostile controls
+        run: node tools/test-articles.js
+
       - name: Reader-first release-page policy
         run: |
           node tools/test-release-pages.js

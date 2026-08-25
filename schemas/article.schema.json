@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/article.schema.json",
+  "title": "Evidence Press article record",
+  "description": "A communication-layer article. This record does not imply a research release, formal proof, independent reproduction, peer review, novelty or impact.",
+  "type": "object",
+  "required": [
+    "schemaVersion", "slug", "title", "url", "standfirst", "summary",
+    "datePublished", "dateModified", "articleClass", "status", "byline",
+    "topics", "readingMinutes", "wordCount", "newResearchClaims",
+    "claimBoundary", "sources", "relatedReleases", "relatedArticles",
+    "corrections", "license", "markdownUrl", "sourceUrl", "editUrl",
+    "metadataEditUrl"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "url": { "type": "string", "format": "uri" },
+    "standfirst": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "datePublished": { "type": "string", "format": "date" },
+    "dateModified": { "type": "string", "format": "date" },
+    "articleClass": { "type": "string", "enum": ["essay", "commentary", "synthesis", "research-note", "institutional-update"] },
+    "status": { "type": "string", "enum": ["published", "corrected", "superseded", "withdrawn"] },
+    "byline": { "type": "string", "minLength": 1 },
+    "topics": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "readingMinutes": { "type": "integer", "minimum": 1 },
+    "wordCount": { "type": "integer", "minimum": 1 },
+    "newResearchClaims": { "type": "boolean" },
+    "claimBoundary": { "type": "string", "minLength": 1 },
+    "sources": { "type": "array", "items": { "$ref": "#/$defs/source" } },
+    "relatedReleases": { "type": "array", "items": { "$ref": "#/$defs/relation" } },
+    "relatedArticles": { "type": "array", "items": { "$ref": "#/$defs/relation" } },
+    "corrections": { "type": "array", "items": { "$ref": "#/$defs/correction" } },
+    "license": { "type": "string", "const": "CC0-1.0" },
+    "markdownUrl": { "type": "string", "format": "uri" },
+    "sourceUrl": { "type": "string", "format": "uri" },
+    "editUrl": { "type": "string", "format": "uri" },
+    "metadataEditUrl": { "type": "string", "format": "uri" }
+  },
+  "$defs": {
+    "source": {
+      "type": "object", "required": ["citation", "url"], "additionalProperties": false,
+      "properties": { "citation": { "type": "string", "minLength": 1 }, "url": { "type": "string", "format": "uri" } }
+    },
+    "relation": {
+      "type": "object", "required": ["slug", "relation"], "additionalProperties": false,
+      "properties": { "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }, "relation": { "type": "string", "minLength": 1 }, "note": { "type": "string" } }
+    },
+    "correction": {
+      "type": "object", "required": ["date", "summary"], "additionalProperties": false,
+      "properties": { "date": { "type": "string", "format": "date" }, "summary": { "type": "string", "minLength": 1 }, "detail": { "type": "string" } }
+    }
+  }
+}
