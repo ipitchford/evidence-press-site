@@ -4,6 +4,16 @@ Evidence Press is a small, independent press office for a specific and unusual k
 
 Each release corresponds to one archived deposit: a manuscript, its evidence package, and its verification records, frozen on [Zenodo](https://zenodo.org) with a DOI and mirrored in a public GitHub repository. The releases explain each paper twice — once in plain language, once for specialists — and state, without varnish, what has and has not been verified. The current releases are mathematical; the format is built for research generally, and future releases need not be.
 
+## Articles are a different publication type
+
+The [Articles](/articles/) section contains high-quality essays, commentary,
+syntheses, research notes and institutional updates. An article has structured
+sources, an explicit claim boundary and additive correction history, but it is
+not required to carry a manuscript, repository, executable certificate or DOI.
+Its appearance on Evidence Press therefore does not inherit the assurance state
+of a research release. Where an article discusses a release, readers should
+follow the link to that release's evidence package before relying on the claim.
+
 ## The verification ladder
 
 Every result here occupies a precise rung on a ladder of assurance:

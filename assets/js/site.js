@@ -125,14 +125,14 @@
     reflect();
   });
 
-  /* ---------------------------------------------------------- release filter */
-  (function () {
-    var input = document.getElementById('filter');
-    if (!input) return;
-    var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  /* -------------------------------------------------------- catalogue filters */
+  document.querySelectorAll('.catalogue-filter').forEach(function (input) {
+    var selector = input.getAttribute('data-card-selector');
+    var cards = selector ? Array.prototype.slice.call(document.querySelectorAll(selector)) : [];
     if (!cards.length) return;
 
     var total = cards.length;
+    var noun = input.getAttribute('data-noun') || 'item';
 
     var status = document.createElement('p');
     status.className = 'filter-status';
@@ -166,13 +166,13 @@
 
       clear.hidden = !q;
       if (!q) {
-        status.textContent = 'Showing all ' + total + ' releases.';
+        status.textContent = 'Showing all ' + total + ' ' + noun + (total === 1 ? '.' : 's.');
       } else if (shown === 0) {
-        status.textContent = 'No releases match “' + query.trim() +
+        status.textContent = 'No ' + noun + 's match “' + query.trim() +
           '”. Clear the filter to see all ' + total + '.';
       } else {
         status.textContent = 'Showing ' + shown + ' of ' + total +
-          ' releases matching “' + query.trim() + '”.';
+          ' ' + noun + (total === 1 ? '' : 's') + ' matching “' + query.trim() + '”.';
       }
 
       /* A filtered view should be linkable and bookmarkable. */
@@ -196,5 +196,5 @@
       input.value = initial;
       apply(initial, false);
     }
-  })();
+  });
 })();

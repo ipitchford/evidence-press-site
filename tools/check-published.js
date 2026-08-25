@@ -38,6 +38,7 @@ if (POST_DEPLOY && !LIVE) {
 }
 const INSTITUTIONAL_ARTIFACTS = [
   '/api/papers.json',
+  '/api/articles.json',
   '/api/schema.json',
   '/api/operating-model.json',
   '/api/method-registry.json',
@@ -48,8 +49,10 @@ const INSTITUTIONAL_ARTIFACTS = [
   '/api/schemas/ibe-ledger.schema.json',
   '/api/schemas/release-operating-model.schema.json',
   '/api/schemas/work-ledger.schema.json',
+  '/api/schemas/article.schema.json',
   '/api/v1/operating-model.json',
   '/api/v1/papers.json',
+  '/api/v1/articles.json',
   '/api/v1/schema.json',
   '/api/v1/method-registry.json',
   '/api/v1/ibe-ledger.json',
@@ -58,7 +61,8 @@ const INSTITUTIONAL_ARTIFACTS = [
   '/api/v1/schemas/method-registry.schema.json',
   '/api/v1/schemas/ibe-ledger.schema.json',
   '/api/v1/schemas/release-operating-model.schema.json',
-  '/api/v1/schemas/work-ledger.schema.json'
+  '/api/v1/schemas/work-ledger.schema.json',
+  '/api/v1/schemas/article.schema.json'
 ];
 const INSTITUTIONAL_PAGES = ['/operating-model/'];
 
@@ -144,7 +148,17 @@ function distContents() {
     }
   };
   walkPages('');
-  const artifacts = INSTITUTIONAL_ARTIFACTS.filter(urlPath =>
+  const articleRecords = [];
+  const collectArticleRecords = rel => {
+    const dir = path.join(DIST, rel);
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const child = rel ? `${rel}/${entry.name}` : entry.name;
+      if (entry.isDirectory()) collectArticleRecords(child);
+      else if (entry.name === 'article.json') articleRecords.push(`/${child}`);
+    }
+  };
+  collectArticleRecords('');
+  const artifacts = [...new Set([...INSTITUTIONAL_ARTIFACTS, ...articleRecords])].filter(urlPath =>
     fs.existsSync(path.join(DIST, urlPath.replace(/^\//, ''))));
   return { releases, pages, artifacts };
 }
@@ -302,8 +316,24 @@ async function confirmInstitutionalPage(pagePath, requireCandidateEquality = fal
         }
       }
     }
+    /* New general pages are accepted into the permanent ledger only when the
+       canonical host serves the exact candidate HTML. This keeps future
+       article pages immutable without teaching the gate each article title. */
+    if (POST_DEPLOY) {
+      for (const pagePath of dist.pages) {
+        if (ledger.pages.some(page => page.path === pagePath) || INSTITUTIONAL_PAGES.includes(pagePath)) continue;
+        const rel = pagePath.replace(/^\//, '');
+        const result = await confirmCandidateBytes(pagePath, `${rel}index.html`, 'text/html');
+        if (result.ok) {
+          ledger.pages.push({ path: pagePath, firstSeen: today, source: 'confirmed live candidate' });
+          console.log(green(`  + added exact live candidate page to ledger: ${pagePath}`));
+        } else {
+          liveFailures.push(`post-deploy page does not equal candidate: ${BASE}${pagePath} (${result.reason})`);
+        }
+      }
+    }
     let confirmedArtifacts = 0;
-    for (const artifactPath of INSTITUTIONAL_ARTIFACTS) {
+    for (const artifactPath of dist.artifacts) {
       const result = POST_DEPLOY
         ? await confirmCandidateBytes(artifactPath, artifactPath.replace(/^\//, ''), 'json')
         : await confirmLiveJson(artifactPath);
@@ -317,7 +347,7 @@ async function confirmInstitutionalPage(pagePath, requireCandidateEquality = fal
         liveFailures.push(`post-deploy artifact does not equal candidate: ${BASE}${artifactPath} (${result.reason})`);
       }
     }
-    console.log(`  probed ${INSTITUTIONAL_ARTIFACTS.length} institutional artifact URLs — ${confirmedArtifacts} confirmed live`);
+    console.log(`  probed ${dist.artifacts.length} institutional artifact URLs — ${confirmedArtifacts} confirmed live`);
     writeLedger(ledger);
   }
 

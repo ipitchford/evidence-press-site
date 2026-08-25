@@ -74,6 +74,10 @@ productivity. Treat those as defeasible hypotheses recorded in the IBE ledger.
 13. Keep artifact role separate from intended aim. Do not count a communication
     or method demonstration as a new research result merely because it serves a
     scientific, policy, or productivity aim.
+14. Keep Articles separate from Releases. An article is a communication-layer
+    object with its own source, scope boundary and correction history. Article
+    inclusion never supplies a DOI, evidence package, replay, assurance state,
+    novelty assessment, peer review or impact claim.
 
 ## Required checks
 
@@ -82,6 +86,7 @@ Run these before calling an operating-model change ready:
 ```bash
 node tools/test-operating-model.js
 node tools/check-operating-model.js
+node tools/test-articles.js
 node tools/make-thumb.js --check
 REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh
 node protocols/tools/check-release-integrity.js
