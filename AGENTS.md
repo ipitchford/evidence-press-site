@@ -98,6 +98,11 @@ on the maintainer Mac, and use the generator's deterministic background-palette
 rotation. A bespoke slug specification may refine the claim-specific layout;
 absence of one is not permission to omit the thumbnail.
 
+Reader-facing summaries must use audience-respectful plain language. Do not add
+release headings framed as “Explain it like I’m five”, ELI5, or a five-year-old
+account. `node tools/test-release-pages.js` enforces this rule across every
+authored release.
+
 The checks establish structural conformance and producer-side replay only. They
 do not establish that the operating model improves science, policy, or
 productivity.

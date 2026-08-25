@@ -88,12 +88,6 @@ The UCI exercise uses real observed demand but reconstructed forecast vintages a
 - It does not validate the rule in an operating supply chain or establish economic benefit.
 - It does not extend to capacitated, multi-item, backlogging, fixed-quantity or service-constrained planning without new analysis.
 
-## Explain it like I’m five
-
-Imagine laying stepping stones across a stream. You want to promise that the first few stones will stay in the plan even if the weather forecast changes. The release measures how much the forecast can change before a best route is allowed to use a different early stone.
-
-One quick calculation draws a safe circle around the current route. The real safe circle can be larger: in the small example, the quick circle has radius $3/2$, while the exact circle has radius $2$. The new theorem says that when the promise first breaks, we can find two equally good routes that split once and meet again. But this picture is trustworthy only when the stepping-stone graph really matches the physical planning problem. Version 3 spells out when that match is valid.
-
 ## Who should care, and why
 
 | Audience | Potential use | Highest-value caution or check |
