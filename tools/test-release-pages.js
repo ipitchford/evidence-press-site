@@ -18,6 +18,40 @@ const headingText = body => body.split(/\r?\n/)
   .map(line => line.match(/^(#{1,4})\s+(.+)$/))
   .filter(Boolean)
   .map(match => ({ level: match[1].length, text: match[2].trim(), id: headingId(match[2]) }));
+const normalizedHeadingText = value => value.normalize('NFKC')
+  .replace(/[’‘]/g, "'")
+  .toLowerCase()
+  .replace(/'/g, '')
+  .replace(/[^a-z0-9]+/g, ' ')
+  .trim();
+const isAgeDirectedExplainerHeading = value => {
+  const normalized = normalizedHeadingText(value);
+  const namesYoungChild = /\b(?:five|5) year old\b/.test(normalized);
+  const explanationLabel = /\b(?:explain|explainer|explanation|summary|version|account|guide|picture)\b/.test(normalized);
+  return /\beli\s*5\b/.test(normalized)
+    || /\bexplain(?: it)? like (?:i am|im|a) (?:five|5)\b/.test(normalized)
+    || (namesYoungChild && explanationLabel);
+};
+
+if (typeof policy.ageDirectedExplanationRule !== 'string' || !policy.ageDirectedExplanationRule.trim())
+  errors.push('page-structure policy is missing ageDirectedExplanationRule');
+
+for (const heading of [
+  'Explain it like I’m five',
+  "Explain it like I'm 5",
+  'ELI5',
+  'ELI-5 summary',
+  'The five-year-old picture',
+  'Explanation for a 5-year-old'
+]) {
+  if (!isAgeDirectedExplainerHeading(heading))
+    errors.push(`age-directed heading hostile control was not rejected: "${heading}"`);
+}
+
+for (const heading of ['Plain-English summary', 'Why the problem matters', 'Five-year stability horizon']) {
+  if (isAgeDirectedExplainerHeading(heading))
+    errors.push(`ordinary reader heading was incorrectly rejected: "${heading}"`);
+}
 
 const functions = {
   summary: /summary|everyday terms|plain[- ]english/i,
@@ -46,12 +80,11 @@ for (const directory of fs.readdirSync(PAPERS).sort()) {
     if (heading.level === 1) errors.push(`${slug}: body.md contains page-level H1 "${heading.text}"`);
     if (policy.rendererOwnedHeadings.some(value => value.toLowerCase() === heading.text.toLowerCase()))
       errors.push(`${slug}: body.md authors renderer-owned heading "${heading.text}"`);
+    if (isAgeDirectedExplainerHeading(heading.text))
+      errors.push(`${slug}: body.md contains prohibited age-directed explainer heading "${heading.text}"`);
     if (names.has(heading.id)) errors.push(`${slug}: duplicate body heading id "${heading.id}"`);
     names.set(heading.id, true);
   }
-
-  if (slug === 's6-extension-results-candidate' && headings.some(heading => heading.id === 'the-five-year-old-picture'))
-    errors.push(`${slug}: body.md contains the unapproved heading "The five-year-old picture"`);
 
   if (/\bIan Pitchford\b/i.test(body) && !(meta.pageStructureWaivers || []).includes('historical-personal-attribution-in-body'))
     errors.push(`${slug}: reader body contains routine personal operational attribution`);
