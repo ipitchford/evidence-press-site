@@ -1058,6 +1058,40 @@ art['frankl-concavity-obstruction'] = (a, b) => {
   return s;
 };
 
+/* LPS structural reductions: growing determinant rows compress to a fixed
+   four-variable flag, with a separate p-adic slope signal and open tail. */
+art['lps-structural-reductions'] = (a, b) => {
+  let s = '';
+  const ox = 110, oy = 72, dx = 42, dy = 42;
+  for (let row = 0; row < 6; row++) {
+    for (let col = 0; col <= row + 2; col++) {
+      const x = ox + col * dx;
+      const y = oy + row * dy;
+      const active = col >= row - 1 && col <= row + 2;
+      s += `<circle cx="${x}" cy="${y}" r="${active ? 7 : 4}" fill="${active ? a : '#e7e5e4'}" opacity="${active ? .9 : .24}"/>`;
+      if (col > 0) s += `<line x1="${x - dx + 8}" y1="${y}" x2="${x - 8}" y2="${y}" stroke="#e7e5e4" stroke-width="1" opacity=".16"/>`;
+    }
+  }
+  s += `<path d="M 430 94 C 520 112, 520 278, 610 296" fill="none" stroke="${a}" stroke-width="4" opacity=".82"/>`;
+  s += `<path d="M 596 286 L 616 296 L 598 308" fill="none" stroke="${a}" stroke-width="4"/>`;
+  const flag = [[660, 116], [722, 170], [660, 224], [722, 278]];
+  for (let i = 0; i < flag.length; i++) {
+    const [x, y] = flag[i];
+    if (i) s += `<line x1="${flag[i - 1][0]}" y1="${flag[i - 1][1]}" x2="${x}" y2="${y}" stroke="${a}" stroke-width="5" opacity=".7"/>`;
+    s += `<circle cx="${x}" cy="${y}" r="14" fill="${i % 2 ? b : a}"/>`;
+  }
+  s += `<text x="691" y="338" text-anchor="middle" font-family="Georgia" font-size="25" fill="#e7e5e4">fixed width: 4</text>`;
+
+  s += `<line x1="840" y1="322" x2="1130" y2="322" stroke="#8a938f" stroke-width="1.5" opacity=".55"/>`;
+  s += `<line x1="858" y1="328" x2="858" y2="66" stroke="#8a938f" stroke-width="1.5" opacity=".55"/>`;
+  const pts = [[872, 288], [918, 252], [964, 216], [1010, 180], [1056, 144]];
+  s += `<path d="M ${pts.map(([x,y]) => `${x} ${y}`).join(' L ')}" fill="none" stroke="${b}" stroke-width="4"/>`;
+  for (const [x, y] of pts) s += `<circle cx="${x}" cy="${y}" r="7" fill="${b}"/>`;
+  s += `<path d="M 1056 144 L 1122 92" fill="none" stroke="${b}" stroke-width="4" stroke-dasharray="9 8" opacity=".72"/>`;
+  s += `<text x="1000" y="354" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" fill="#e7e5e4" opacity=".78">slope 4 signal · uniform law open</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1091,6 +1125,7 @@ const palette = {
   ,'aggregation-without-sufficiency': ['#38bdf8', '#f59e0b']
   ,'frankl-concavity-obstruction': ['#2dd4bf', '#f59e0b']
   ,'furter-r3-through-299': ['#2dd4bf', '#f59e0b']
+  ,'lps-structural-reductions': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
