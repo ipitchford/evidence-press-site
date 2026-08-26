@@ -131,9 +131,23 @@ th { background: #f3efe8; font-family: var(--sans); font-size: .82rem; }
   font-size: .84rem; line-height: 1.45;
 }
 
-.followups, .verify, .related, .cite, .media-section { margin-top: 1.5rem; }
+.followups, .verify, .related, .cite, .media-section, .mathematical-objects { margin-top: 1.5rem; }
 .note { font-family: var(--sans); font-size: .85rem; color: var(--muted); }
 .verify p { background: var(--amber-bg); border: 1px solid #fcd34d; border-radius: 8px; padding: .8rem 1rem; font-size: .95rem; }
+
+.math-object {
+  margin-top: .8rem; padding: .9rem 1rem; background: var(--card);
+  border: 1px solid var(--line); border-left: 4px solid var(--accent-2); border-radius: 8px;
+}
+.math-object h3 { margin: 0 0 .65rem; }
+.math-object dl { display: grid; grid-template-columns: minmax(8rem, 10rem) minmax(0, 1fr); gap: .42rem .8rem; margin: 0; }
+.math-object dt { font-family: var(--sans); font-size: .76rem; font-weight: 700; color: var(--muted); }
+.math-object dd { margin: 0; overflow-wrap: anywhere; }
+.math-object dd code { white-space: pre-wrap; }
+@media (max-width: 560px) {
+  .math-object dl { grid-template-columns: 1fr; gap: .18rem; }
+  .math-object dd + dt { margin-top: .45rem; }
+}
 
 .media { margin: 1rem 0; }
 .media audio, .media video { width: 100%; border-radius: 8px; }

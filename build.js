@@ -41,7 +41,16 @@ const METHOD_BY_ID = new Map(OPERATING_ARTIFACTS.registry.methods.map(method => 
 const IBE_BY_ID = new Map(OPERATING_ARTIFACTS.ledger.hypotheses.map(hypothesis => [hypothesis.id, hypothesis]));
 const WORK_ATTEMPT_BY_ID = new Map(OPERATING_ARTIFACTS.workLedger.attempts.map(attempt => [attempt.attemptId, attempt]));
 const BASE = CONFIG.baseUrl.replace(/\/$/, '');
-const SCHEMA_VERSION = '1.4';
+const SCHEMA_VERSION = '1.5';
+const MATH_OBJECT_SCHEMA_VERSION = '1.0';
+const MATH_OBJECT_KINDS = [
+  'statement', 'identity', 'formula', 'bound', 'recurrence',
+  'generating-function', 'sequence', 'counterexample', 'obstruction'
+];
+const MATH_OBJECT_STATUSES = [
+  'claimed-result', 'supporting-result', 'computed-finite', 'definition',
+  'conjecture', 'open-problem', 'counterexample'
+];
 /* Build identity. The timestamp comes from the commit, never from the clock, so
    the same source always produces byte-identical output and a third party can
    rebuild a tag and compare. */
@@ -395,6 +404,28 @@ function validatePapers(list) {
     else p.authors.forEach((a, i) => { if (typeof a !== 'string' || !a.trim()) bad(`authors[${i}] must be a non-empty string`); });
 
     if (!Array.isArray(p.keywords) || !p.keywords.length) bad('keywords must be a non-empty array');
+    const mathIds = new Set();
+    for (const [i, object] of (p.mathObjects || []).entries()) {
+      const at = `mathObjects[${i}]`;
+      if (!object || typeof object !== 'object' || Array.isArray(object)) {
+        bad(`${at} must be an object`);
+        continue;
+      }
+      if (!SLUG_RE.test(String(object.id || ''))) bad(`${at}.id "${object.id}" must be a stable lower-case slug`);
+      else if (mathIds.has(object.id)) bad(`${at}.id "${object.id}" is duplicated within the release`);
+      else mathIds.add(object.id);
+      if (!MATH_OBJECT_KINDS.includes(object.kind)) bad(`${at}.kind "${object.kind}" is not a supported mathematical-object kind`);
+      if (!MATH_OBJECT_STATUSES.includes(object.status)) bad(`${at}.status "${object.status}" is not a supported mathematical-object status`);
+      for (const field of ['label', 'plainText', 'scope'])
+        if (typeof object[field] !== 'string' || !object[field].trim()) bad(`${at}.${field} must be a non-empty string`);
+      if (object.latex != null && (typeof object.latex !== 'string' || !object.latex.trim()))
+        bad(`${at}.latex must be a non-empty string when supplied`);
+      if (object.sequenceTerms != null && (!Array.isArray(object.sequenceTerms)
+          || object.sequenceTerms.some(term => typeof term !== 'string' || !term.trim())))
+        bad(`${at}.sequenceTerms must be an array of non-empty strings when supplied`);
+      if (object.oeisId != null && !/^A\d{6}$/.test(String(object.oeisId)))
+        bad(`${at}.oeisId "${object.oeisId}" must have the form A123456`);
+    }
     if (p.orderedProductAverage != null) {
       try { orderedDistinctAverageFormula(p.orderedProductAverage); }
       catch (error) { bad(error.message); }
@@ -753,7 +784,7 @@ const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
     <p>${esc(CONFIG.siteName)} publishes evidence-attached research releases and a clearly separate collection of essays, commentary and research notes. Each page states its own evidence boundary.</p>
-    <p>Original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
+    <p>Original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/math-objects.json">mathematical objects</a> · <a href="/api/citations.json">citation graph</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
 </footer>
@@ -928,6 +959,10 @@ function citationMeta(p) {
     ['citation_abstract_html_url', urlOf(p)],
     ['citation_technical_report_institution', CONFIG.publisher],
     ['citation_language', 'en'],
+    ...(p.relatedWorks || []).map(work => [
+      'citation_reference',
+      `${work.citation}${doiOfRelatedWork(work) ? ` DOI: ${doiOfRelatedWork(work)}` : ''}`
+    ]),
     ['DC.title', p.title],
     ['DC.identifier', `https://doi.org/${p.doi}`],
     ['DC.date', p.datePublished],
@@ -950,6 +985,59 @@ function citationMeta(p) {
     k.startsWith('og:') || k.startsWith('article:')
       ? `<meta property="${k}" content="${escAttr(v)}">`
       : `<meta name="${k}" content="${escAttr(v)}">`).join('\n') + '\n';
+}
+
+function doiOfRelatedWork(work) {
+  const raw = String((work && work.url) || '').trim();
+  const doiMatch = raw.match(/^https:\/\/doi\.org\/(10\.\d{4,9}\/\S+)$/i);
+  if (doiMatch) return decodeURIComponent(doiMatch[1]).replace(/[).,;]+$/, '');
+  const arxivMatch = raw.match(/^https:\/\/arxiv\.org\/abs\/(\d{4}\.\d{4,5})(?:v\d+)?\/?$/i);
+  return arxivMatch ? `10.48550/arXiv.${arxivMatch[1]}` : null;
+}
+
+function normalizedRelatedWorks(p) {
+  return (p.relatedWorks || []).map(work => ({
+    citation: work.citation,
+    url: work.url || null,
+    doi: doiOfRelatedWork(work)
+  }));
+}
+
+function mathObjectsHtml(p) {
+  const objects = p.mathObjects || [];
+  if (!objects.length) return '';
+  const items = objects.map(object => `<article class="math-object" id="math-object-${escAttr(object.id)}">
+      <h3>${esc(object.label)}</h3>
+      <dl>
+        <dt>Exact searchable text</dt><dd><code>${esc(object.plainText)}</code></dd>
+        ${object.latex ? `<dt>LaTeX</dt><dd><code>${esc(object.latex)}</code></dd>` : ''}
+        ${object.sequenceTerms && object.sequenceTerms.length ? `<dt>Initial terms</dt><dd><code>${esc(object.sequenceTerms.join(', '))}</code></dd>` : ''}
+        ${object.oeisId ? `<dt>OEIS</dt><dd><a href="https://oeis.org/${escAttr(object.oeisId)}" rel="noopener">${esc(object.oeisId)}</a></dd>` : ''}
+        <dt>Object type</dt><dd>${esc(object.kind)}</dd>
+        <dt>Relation to release</dt><dd>${esc(object.status)}</dd>
+        <dt>Scope</dt><dd>${esc(object.scope)}</dd>
+      </dl>
+    </article>`).join('\n');
+  return `<section class="mathematical-objects" aria-labelledby="searchable-mathematical-objects">
+      <h2 id="searchable-mathematical-objects">Searchable mathematical objects</h2>
+      <p class="note">Exact text is provided alongside typeset mathematics so people and automated research tools can find and compare the objects without inferring a stronger assurance state.</p>
+      ${items}
+    </section>`;
+}
+
+function mathObjectsMarkdown(p) {
+  const objects = p.mathObjects || [];
+  if (!objects.length) return '';
+  return `## Searchable mathematical objects\n\n${objects.map(object => [
+    `### ${object.label}`,
+    `- Exact searchable text: \`${object.plainText}\``,
+    ...(object.latex ? [`- LaTeX: \`${object.latex}\``] : []),
+    ...(object.sequenceTerms && object.sequenceTerms.length ? [`- Initial terms: \`${object.sequenceTerms.join(', ')}\``] : []),
+    ...(object.oeisId ? [`- OEIS: https://oeis.org/${object.oeisId}`] : []),
+    `- Object type: ${object.kind}`,
+    `- Relation to release: ${object.status}`,
+    `- Scope: ${object.scope}`
+  ].join('\n')).join('\n\n')}\n\n`;
 }
 
 /* Signposting (FAIR) link relations */
@@ -1127,6 +1215,7 @@ function paperPage(p) {
     <div class="release-grid">
       <div class="body">
 ${markdown(p.body)}
+        ${mathObjectsHtml(p)}
 ${media ? `<section class="media-section"><h2 id="media">Media</h2>${media}</section>` : ''}
         ${open ? `<section class="followups"><h2 id="open-directions">Open directions for follow-up research</h2>
         <p class="note">Also available in <a href="${url}paper.json">machine-readable form</a> for research agents and follow-up projects.</p>
@@ -1139,7 +1228,7 @@ ${media ? `<section class="media-section"><h2 id="media">Media</h2>${media}</sec
 
         ${reviews ? `<section class="reviews"><h2 id="reviews">Reviews and assessments</h2>${reviews}</section>` : ''}
 
-        ${related ? `<section class="related"><h2 id="sources-and-related-work">Sources and related work</h2><ul>${related}</ul></section>` : ''}
+        ${related ? `<section class="related" aria-labelledby="references"><h2 id="references">References</h2><ol>${related}</ol></section>` : ''}
 
         <section class="cite"><h2 id="cite">Cite</h2>
           <div class="cite-card">
@@ -1197,6 +1286,8 @@ status: unrefereed (internally replayed; not peer reviewed, not independently re
 
 ${p.body}
 
+${mathObjectsMarkdown(p)}
+
 ## Open directions for follow-up research
 
 ${(p.openProblems || []).map(o => `- ${o}`).join('\n')}
@@ -1206,9 +1297,9 @@ ${operatingModelMarkdown(p)}
 
 ${p.statusDetail}
 
-## Sources and related work
+## References
 
-${(p.relatedWorks || []).map(w => `- ${w.citation}${w.url ? ` <${w.url}>` : ''}`).join('\n')}
+${(p.relatedWorks || []).map((w, index) => `${index + 1}. ${w.citation}${w.url ? ` <${w.url}>` : ''}`).join('\n')}
 `;
 }
 
@@ -1268,7 +1359,8 @@ function paperApi(p) {
     reviews: publicReviews,
     evidencePackage: p.evidence,
     openProblems: p.openProblems || [],
-    relatedWorks: p.relatedWorks || [],
+    mathObjects: p.mathObjects || [],
+    relatedWorks: normalizedRelatedWorks(p),
     ...(p.operatingModel ? { operatingModel: p.operatingModel } : {})
   };
 }
@@ -2085,7 +2177,7 @@ function llms() {
   const lines = [
     `# ${CONFIG.siteName}`, '',
     `> ${CONFIG.tagline}. Every release describes an unrefereed research result with an open, replayable evidence package (code, data, exact certificates, pinned environments, SHA-256 manifests) archived with a DOI. Nothing on this site is peer reviewed; each page states exactly what has and has not been verified, and lists open follow-up problems in machine-readable form.`, '',
-    `Key endpoints: full research-release index at /api/papers.json (JSON Schema at /api/schema.json); separate article index at /api/articles.json (item schema at /api/schemas/article.schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); quarantined research-tip register at /api/atlas-proposals.json (schemas at /api/schemas/atlas-proposal.schema.json and /api/schemas/atlas-proposal-register.schema.json); relationship vocabulary at /api/relationship-registry.json; Atlas priorities and review log at /api/atlas-roadmap.json; reader-first page contract at /api/page-structure-policy.json; non-scholarly maintenance history at /api/presentation-events.json; release-audio provenance status at /api/audio-provenance-status.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-article JSON at the canonical article URL plus article.json; release RSS at /feed.xml; article RSS at /articles/feed.xml. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
+    `Key endpoints: full research-release index at /api/papers.json (JSON Schema at /api/schema.json); exact searchable mathematical objects at /api/math-objects.json; DOI-to-DOI citation synchronization plan at /api/citations.json; separate article index at /api/articles.json (item schema at /api/schemas/article.schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); quarantined research-tip register at /api/atlas-proposals.json (schemas at /api/schemas/atlas-proposal.schema.json and /api/schemas/atlas-proposal-register.schema.json); relationship vocabulary at /api/relationship-registry.json; Atlas priorities and review log at /api/atlas-roadmap.json; reader-first page contract at /api/page-structure-policy.json; non-scholarly maintenance history at /api/presentation-events.json; release-audio provenance status at /api/audio-provenance-status.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-article JSON at the canonical article URL plus article.json; release RSS at /feed.xml; article RSS at /articles/feed.xml. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
     '## Releases', '',
     ...papers.map(p => `- [${p.shortTitle}](${urlOf(p)}): ${p.oneLine} (PDF: ${p.pdfUrl || 'n/a'}; DOI: https://doi.org/${p.doi}; code: ${p.repoUrl}; status: unrefereed)`),
     '',
@@ -2095,6 +2187,8 @@ function llms() {
     '',
     '## Machine-readable', '',
     `- [papers.json](${BASE}/api/papers.json): full structured index — titles, DOIs, PDF links, verification status, provenance, key results, keywords, media, and open follow-up problems for every release`,
+    `- [math-objects.json](${BASE}/api/math-objects.json): exact plain-text and LaTeX statements, formulas, bounds, recurrences and sequences with release DOI, version, scope and candidate status preserved`,
+    `- [citations.json](${BASE}/api/citations.json): deduplicated DOI-to-DOI Cites relationships derived from canonical doi.org references; a synchronization plan, not a claim that DataCite has accepted them`,
     `- [articles.json](${BASE}/api/articles.json): distinct communication-layer index — titles, dates, topics, source anchors, scope boundaries, correction history and edit links`,
     `- [research-graph.json](${BASE}/api/research-graph.json): releases, methods, broad clusters, evidence-backed lineages, dependencies and internal citations, with content-derived identities, source pointers and inference limits`,
     `- [atlas-proposals.json](${BASE}/api/atlas-proposals.json): quarantined human and agent research tips with content-derived identities, provenance, cheap falsifiers, separate assessments, expiry and append-only review receipts; suggestions are not accepted relationships`,
@@ -2128,6 +2222,7 @@ function llms() {
       `- Published: ${p.datePublished} · Version: ${p.version} · Licence: CC0-1.0`,
       `- Status: unrefereed (internally replayed; not peer reviewed, not independently reproduced, not formally verified)`, '',
       p.body, '',
+      ...(p.mathObjects && p.mathObjects.length ? [mathObjectsMarkdown(p).trim(), ''] : []),
       `## Open directions (machine-readable copy at ${urlOf(p)}paper.json)`, '',
       ...(p.openProblems || []).map(o => `- ${o}`), '',
       ...(p.operatingModel ? [operatingModelMarkdown(p).trim(), ''] : [])
@@ -2181,7 +2276,7 @@ function apiStability() {
     unversionedAliases: {
       note: 'Unversioned paths are stable aliases kept indefinitely; they currently serve the same content as v1.',
       paths: [
-        `${BASE}/api/papers.json`, `${BASE}/api/schema.json`, `${BASE}/api/articles.json`, `${BASE}/api/schemas/article.schema.json`,
+        `${BASE}/api/papers.json`, `${BASE}/api/schema.json`, `${BASE}/api/math-objects.json`, `${BASE}/api/citations.json`, `${BASE}/api/articles.json`, `${BASE}/api/schemas/article.schema.json`,
         `${BASE}/api/research-graph.json`, `${BASE}/api/relationship-registry.json`, `${BASE}/api/atlas-roadmap.json`,
         `${BASE}/api/operating-model.json`, `${BASE}/api/method-registry.json`, `${BASE}/api/ibe-ledger.json`, `${BASE}/api/work-ledger.json`,
         `${BASE}/api/page-structure-policy.json`, `${BASE}/api/presentation-events.json`, `${BASE}/api/audio-provenance-status.json`
@@ -2195,7 +2290,7 @@ function apiStability() {
     ],
     fieldStability: {
       stable: ['slug', 'title', 'url', 'doi', 'doiUrl', 'datePublished', 'version', 'authors', 'license', 'status', 'keywords', 'verification', 'zenodoUrl', 'repoUrl'],
-      extensible: ['assurance', 'media', 'provenance', 'reviews', 'relatedWorks', 'openProblems', 'keyResults', 'operatingModel', 'publicCorrections', 'pageStructureVersion', 'pageStructureVariant', 'pageStructureWaivers', 'recordMaturity', 'metadataProvenance', 'grandfatheredAtSchemaVersion'],
+      extensible: ['assurance', 'media', 'provenance', 'reviews', 'relatedWorks', 'mathObjects', 'openProblems', 'keyResults', 'operatingModel', 'publicCorrections', 'pageStructureVersion', 'pageStructureVariant', 'pageStructureWaivers', 'recordMaturity', 'metadataProvenance', 'grandfatheredAtSchemaVersion'],
       experimental: ['assurance[].question', 'assurance[].evidenceUrl', 'researchGraph.proposalRegister']
     },
     articleApi: {
@@ -2267,6 +2362,55 @@ function api() {
     count: articles.length,
     articles: articles.map(articleRecord)
   };
+  const mathematicalObjects = papers.flatMap(p => (p.mathObjects || []).map(object => ({
+    schemaVersion: MATH_OBJECT_SCHEMA_VERSION,
+    releaseSlug: p.slug,
+    releaseTitle: p.title,
+    releaseUrl: urlOf(p),
+    releaseDoi: p.doi,
+    releaseVersion: p.version,
+    releaseStatus: p.status || 'unrefereed-candidate',
+    ...object,
+    id: `ep-math:${p.slug}:${object.id}`,
+    sequenceTerms: object.sequenceTerms || [],
+    oeisId: object.oeisId || null
+  })));
+  const mathObjectsDoc = {
+    schemaVersion: MATH_OBJECT_SCHEMA_VERSION,
+    site: CONFIG.siteName,
+    baseUrl: BASE,
+    description: 'Exact searchable mathematical objects transcribed from release metadata. Inclusion preserves the release claim and assurance boundary; it does not independently verify the object.',
+    itemSchema: `${BASE}/api/schemas/math-object.schema.json`,
+    count: mathematicalObjects.length,
+    objects: mathematicalObjects
+  };
+  const citations = papers.flatMap(p => {
+    const seen = new Set();
+    return normalizedRelatedWorks(p).flatMap((work, index) => {
+      if (!work.doi || work.doi.toLowerCase() === p.doi.toLowerCase()) return [];
+      const key = work.doi.toLowerCase();
+      if (seen.has(key)) return [];
+      seen.add(key);
+      return [{
+        id: `ep-citation:${p.slug}:${index + 1}`,
+        relationType: 'Cites',
+        citingReleaseSlug: p.slug,
+        citingDoi: p.doi,
+        citingUrl: urlOf(p),
+        citedDoi: work.doi,
+        citedUrl: `https://doi.org/${work.doi}`,
+        citation: work.citation
+      }];
+    });
+  });
+  const citationsDoc = {
+    schemaVersion: '1.0',
+    site: CONFIG.siteName,
+    description: 'DOI-to-DOI citation relationships derived only from authored related-work URLs that use the canonical doi.org form. This is a synchronization plan, not evidence that an external DOI registry has accepted the relationships.',
+    relationType: 'Cites',
+    count: citations.length,
+    citations
+  };
   write('api/build.json', JSON.stringify(BUILD, null, 2) + '\n');
   write('api/stability.json', JSON.stringify(apiStability(), null, 2) + '\n');
   const governanceArtifacts = [
@@ -2312,6 +2456,41 @@ function api() {
   const articlesPayload = JSON.stringify(articlesDoc, null, 2) + '\n';
   write('api/v1/articles.json', articlesPayload);
   write('api/articles.json', articlesPayload);
+  const mathObjectsPayload = JSON.stringify(mathObjectsDoc, null, 2) + '\n';
+  write('api/math-objects.json', mathObjectsPayload);
+  write('api/v1/math-objects.json', mathObjectsPayload);
+  const citationsPayload = JSON.stringify(citationsDoc, null, 2) + '\n';
+  write('api/citations.json', citationsPayload);
+  write('api/v1/citations.json', citationsPayload);
+  const mathObjectSchema = {
+    $schema: 'https://json-schema.org/draft/2020-12/schema',
+    $id: `${BASE}/api/schemas/math-object.schema.json`,
+    title: 'Evidence Press searchable mathematical object',
+    type: 'object',
+    required: ['schemaVersion', 'id', 'releaseSlug', 'releaseTitle', 'releaseUrl', 'releaseDoi', 'releaseVersion', 'releaseStatus', 'kind', 'label', 'plainText', 'status', 'scope', 'sequenceTerms', 'oeisId'],
+    additionalProperties: false,
+    properties: {
+      schemaVersion: { const: MATH_OBJECT_SCHEMA_VERSION },
+      id: { type: 'string', pattern: '^ep-math:[a-z0-9-]+:[a-z0-9-]+$' },
+      releaseSlug: { type: 'string', pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$' },
+      releaseTitle: { type: 'string', minLength: 1 },
+      releaseUrl: { type: 'string', format: 'uri' },
+      releaseDoi: { type: 'string', pattern: '^10\\.\\d{4,9}/\\S+$' },
+      releaseVersion: { type: 'string', minLength: 1 },
+      releaseStatus: { enum: STATUSES },
+      kind: { enum: MATH_OBJECT_KINDS },
+      label: { type: 'string', minLength: 1 },
+      plainText: { type: 'string', minLength: 1 },
+      latex: { type: 'string', minLength: 1 },
+      status: { enum: MATH_OBJECT_STATUSES },
+      scope: { type: 'string', minLength: 1 },
+      sequenceTerms: { type: 'array', items: { type: 'string', minLength: 1 } },
+      oeisId: { type: ['string', 'null'], pattern: '^A\\d{6}$' }
+    }
+  };
+  const mathObjectSchemaPayload = JSON.stringify(mathObjectSchema, null, 2) + '\n';
+  write('api/schemas/math-object.schema.json', mathObjectSchemaPayload);
+  write('api/v1/schemas/math-object.schema.json', mathObjectSchemaPayload);
   const articleSchemaPayload = JSON.stringify(ARTICLE_SCHEMA, null, 2) + '\n';
   write('api/schemas/article.schema.json', articleSchemaPayload);
   write('api/v1/schemas/article.schema.json', articleSchemaPayload);
@@ -2471,10 +2650,11 @@ function api() {
           metadataProvenance: { type: 'string', minLength: 1 },
           grandfatheredAtSchemaVersion: { type: ['string', 'null'] },
           keyResults: { type: 'array', items: { type: 'string' } },
+          mathObjects: { type: 'array', items: { type: 'object' } },
           evidencePackage: { type: 'string' },
           operatingModel: { $ref: '#/$defs/releaseOperatingModel' },
           openProblems: { type: 'array', items: { type: 'string' }, description: 'Concrete follow-up research problems, well-posed enough to start on' },
-          relatedWorks: { type: 'array', items: { type: 'object', properties: { citation: { type: 'string' }, url: { type: 'string' } } } },
+          relatedWorks: { type: 'array', items: { type: 'object', properties: { citation: { type: 'string' }, url: { type: ['string', 'null'] }, doi: { type: ['string', 'null'] } } } },
           reviews: {
             type: 'array',
             description: 'Published reviews and assessments; draft or private records are excluded from public output.',

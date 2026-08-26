@@ -45,6 +45,9 @@ if (!fs.existsSync(path.join(DIST, 'api', 'papers.json'))) {
 const read = rel => JSON.parse(fs.readFileSync(path.join(DIST, rel), 'utf8'));
 const papersDoc = read('api/papers.json');
 const schema = read('api/schema.json');
+const mathObjectsDoc = read('api/math-objects.json');
+const mathObjectSchema = read('api/schemas/math-object.schema.json');
+const citationsDoc = read('api/citations.json');
 const articlesDoc = read('api/articles.json');
 const articleSchema = read('api/schemas/article.schema.json');
 const operatingArtifacts = loadArtifacts(ROOT);
@@ -168,6 +171,25 @@ const errors = [];
 validate(papersDoc, schema, schema, 'papers.json', errors);
 check('catalogue validates against its own published JSON Schema',
   errors.length === 0, errors.slice(0, 12).join('\n  '));
+
+const mathObjectErrors = [];
+for (const [index, object] of mathObjectsDoc.objects.entries())
+  validate(object, mathObjectSchema, mathObjectSchema, `math-objects.json.objects[${index}]`, mathObjectErrors);
+check('every searchable mathematical object validates against its public schema',
+  mathObjectErrors.length === 0, mathObjectErrors.slice(0, 12).join('\n  '));
+check('mathematical-object count and stable IDs are internally consistent',
+  mathObjectsDoc.count === mathObjectsDoc.objects.length &&
+  new Set(mathObjectsDoc.objects.map(object => object.id)).size === mathObjectsDoc.objects.length);
+check('every mathematical object resolves to a release and preserves its DOI and status',
+  mathObjectsDoc.objects.every(object => {
+    const paper = papersDoc.papers.find(candidate => candidate.slug === object.releaseSlug);
+    return paper && paper.doi === object.releaseDoi && paper.status === object.releaseStatus &&
+      paper.mathObjects.some(candidate => `ep-math:${paper.slug}:${candidate.id}` === object.id);
+  }));
+check('DOI citation plan contains only canonical, unique Cites relationships',
+  citationsDoc.relationType === 'Cites' && citationsDoc.count === citationsDoc.citations.length &&
+  new Set(citationsDoc.citations.map(item => `${item.citingDoi.toLowerCase()}|${item.citedDoi.toLowerCase()}`)).size === citationsDoc.citations.length &&
+  citationsDoc.citations.every(item => item.relationType === 'Cites' && /^10\.\d{4,9}\//.test(item.citingDoi) && /^10\.\d{4,9}\//.test(item.citedDoi)));
 
 const articleErrors = [];
 for (const [index, article] of articlesDoc.articles.entries())
@@ -309,7 +331,7 @@ check('v1 prospective release schema matches the unversioned alias',
   sameJson(read('api/v1/schemas/release-operating-model.schema.json'), releaseOperatingSchema));
 check('public v1 keeps operatingModel optional for legacy records',
   schema.$defs.paper.properties.operatingModel && !schema.$defs.paper.required.includes('operatingModel'));
-check('additive papers schema version is 1.4', papersDoc.schemaVersion === '1.4');
+check('additive papers schema version is 1.5', papersDoc.schemaVersion === '1.5');
 for (const [name, sourcePath] of [
   ['page-structure-policy.json', 'data/PAGE_STRUCTURE_POLICY.json'],
   ['presentation-events.json', 'data/PRESENTATION_EVENTS.json'],
@@ -417,6 +439,14 @@ for (const slug of releasesOnDisk)
   for (const file of REPRESENTATIONS)
     if (!fs.existsSync(path.join(DIST, 'releases', slug, file))) missing.push(`${slug}/${file}`);
 check('every release ships every machine representation', missing.length === 0, missing.join(', '));
+check('release references use a formal ordered References section and citation metadata',
+  papersDoc.papers.every(paper => {
+    const html = fs.readFileSync(path.join(DIST, 'releases', paper.slug, 'index.html'), 'utf8');
+    const metaCount = (html.match(/<meta name="citation_reference"/g) || []).length;
+    if (!paper.relatedWorks.length) return metaCount === 0;
+    return html.includes('<section class="related" aria-labelledby="references"><h2 id="references">References</h2><ol>') &&
+      !html.includes('id="sources-and-related-work"') && metaCount === paper.relatedWorks.length;
+  }));
 
 /* ----------------------------------- assurance and verification agreement */
 const drift = [];
@@ -460,6 +490,12 @@ check('no operating-system metadata files in the published output',
 /* -------------------------------------------------- versioned API parity */
 const v1 = read('api/v1/papers.json');
 check('versioned papers API exactly matches the unversioned alias', sameJson(v1, papersDoc));
+check('versioned mathematical-object API exactly matches the unversioned alias',
+  sameJson(read('api/v1/math-objects.json'), mathObjectsDoc));
+check('versioned mathematical-object schema exactly matches the unversioned alias',
+  sameJson(read('api/v1/schemas/math-object.schema.json'), mathObjectSchema));
+check('versioned DOI citation plan exactly matches the unversioned alias',
+  sameJson(read('api/v1/citations.json'), citationsDoc));
 check('versioned papers schema exactly matches the unversioned alias',
   sameJson(read('api/v1/schema.json'), schema));
 check('versioned articles API exactly matches the unversioned alias',
