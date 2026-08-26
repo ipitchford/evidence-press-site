@@ -998,7 +998,7 @@ function doiOfRelatedWork(work) {
 function normalizedRelatedWorks(p) {
   return (p.relatedWorks || []).map(work => ({
     citation: work.citation,
-    url: work.url || null,
+    ...(work.url ? { url: work.url } : {}),
     doi: doiOfRelatedWork(work)
   }));
 }
@@ -2654,7 +2654,7 @@ function api() {
           evidencePackage: { type: 'string' },
           operatingModel: { $ref: '#/$defs/releaseOperatingModel' },
           openProblems: { type: 'array', items: { type: 'string' }, description: 'Concrete follow-up research problems, well-posed enough to start on' },
-          relatedWorks: { type: 'array', items: { type: 'object', properties: { citation: { type: 'string' }, url: { type: ['string', 'null'] }, doi: { type: ['string', 'null'] } } } },
+          relatedWorks: { type: 'array', items: { type: 'object', properties: { citation: { type: 'string' }, url: { type: 'string' }, doi: { type: ['string', 'null'] } } } },
           reviews: {
             type: 'array',
             description: 'Published reviews and assessments; draft or private records are excluded from public output.',
