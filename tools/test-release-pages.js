@@ -141,6 +141,19 @@ for (const [index, event] of (presentation.events || []).entries()) {
   if (!allowedEventTypes.has(event.eventType)) errors.push(`${at}: unsupported eventType "${event.eventType}"`);
   if (event.researchClaimChanged !== false || event.researchArchiveChanged !== false)
     errors.push(`${at}: presentation ledger cannot carry research changes`);
+  if (event.artifact && event.artifact.replacesUrl != null) {
+    if (event.eventType !== 'video') errors.push(`${at}: replacesUrl is supported only for video events`);
+    for (const field of ['replacesUrl', 'url']) {
+      try {
+        const url = new URL(event.artifact[field]);
+        if (url.protocol !== 'https:') errors.push(`${at}: artifact.${field} must use https`);
+      } catch {
+        errors.push(`${at}: artifact.${field} must be an absolute URL`);
+      }
+    }
+    if (event.artifact.replacesUrl === event.artifact.url)
+      errors.push(`${at}: replacesUrl must differ from the replacement url`);
+  }
   if (event.sourceCorrectionIndex != null) {
     const source = paperRecords.get(event.slug);
     if (!source || !(source.corrections || [])[event.sourceCorrectionIndex])
