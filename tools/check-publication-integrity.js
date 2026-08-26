@@ -129,6 +129,25 @@ function isRecordedAudioSuccessor(liveUrl, candidateUrl, slug, liveEvents, candi
   }
 }
 
+/* A published video may leave the active release only through an append-only
+   presentation event that names both the retired URL and its current
+   replacement. The replacement must be present as an active candidate video;
+   research claims and archives must remain explicitly unchanged. */
+function isRecordedVideoReplacement(liveUrl, candidateItems, slug, liveEvents, candidateEvents) {
+  const candidateVideos = new Set((candidateItems || [])
+    .filter(item => item.type === 'video')
+    .map(item => String(item.url || ''))
+    .filter(Boolean));
+  const oldIds = new Set((liveEvents && liveEvents.events || []).map(event => event.eventId));
+  return (candidateEvents && candidateEvents.events || []).some(event => {
+    const artifact = event.artifact || {};
+    return !oldIds.has(event.eventId) && event.slug === slug && event.eventType === 'video' &&
+      event.researchClaimChanged === false && event.researchArchiveChanged === false &&
+      artifact.provider === 'youtube' && artifact.replacesUrl === liveUrl &&
+      artifact.url !== liveUrl && candidateVideos.has(artifact.url);
+  });
+}
+
 async function fetchFresh(url, asJson) {
   const separator = url.includes('?') ? '&' : '?';
   const response = await fetch(`${url}${separator}publication_check=${Date.now()}`, {
@@ -326,10 +345,14 @@ function preserveWorkLedger(liveWork, candidateWork) {
   }
 }
 
-function preserveMedia(label, liveItems, candidateItems) {
+function preserveMedia(label, slug, liveItems, candidateItems, liveEvents, candidateEvents) {
   const candidate = mediaUrls(candidateItems);
-  for (const url of mediaUrls(liveItems)) {
-    if (!candidate.includes(url)) failures.push(`${label}: dropped published media ${url}`);
+  for (const item of liveItems || []) {
+    const url = String(item.url || item.contentUrl || '');
+    if (!url || candidate.includes(url)) continue;
+    if (item.type === 'video' &&
+        isRecordedVideoReplacement(url, candidateItems, slug, liveEvents, candidateEvents)) continue;
+    failures.push(`${label}: dropped published media ${url}`);
   }
 }
 
@@ -616,7 +639,10 @@ async function main() {
       live, candidate, liveWork, candidateWork, 'presentation'
     );
     preserveArrayPrefix(`release ${live.slug} corrections`, live.corrections || [], candidate.corrections || [], 'correction');
-    if (!presentationCorrection) preserveMedia(`release ${live.slug}`, live.media, candidate.media);
+    if (!presentationCorrection) preserveMedia(
+      `release ${live.slug}`, live.slug, live.media, candidate.media,
+      livePresentationEvents, candidatePresentationEvents
+    );
     if (live.audioUrl && live.audioUrl !== candidate.audioUrl &&
         !isContentVersionedAssetSuccessor(live.audioUrl, candidate.audioUrl) &&
         !isRecordedAudioSuccessor(live.audioUrl, candidate.audioUrl, live.slug,
@@ -632,7 +658,10 @@ async function main() {
     preserveLayout(`release ${live.slug}`, liveHtml, nextHtml,
       presentationCorrection ? new Set(['video-embed']) : new Set());
     for (const item of live.media || []) {
-      if (item.url && !nextHtml.includes(item.url) && !presentationCorrection) {
+      const recordedVideoReplacement = item.type === 'video' && isRecordedVideoReplacement(
+        item.url, candidate.media, live.slug, livePresentationEvents, candidatePresentationEvents
+      );
+      if (item.url && !nextHtml.includes(item.url) && !presentationCorrection && !recordedVideoReplacement) {
         failures.push(`release ${live.slug}: HTML dropped ${item.url}`);
       }
     }
@@ -706,6 +735,7 @@ module.exports = {
   isCorrectionSuccessor,
   isContentVersionedAssetSuccessor,
   isRecordedAudioSuccessor,
+  isRecordedVideoReplacement,
   listedFailures,
   preserveArrayPrefix,
   preserveChangeLogPrefix,

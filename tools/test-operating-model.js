@@ -655,6 +655,42 @@ function extractFunction(source, name) {
 }
 
 {
+  const slug = 'certified-commitment-horizons';
+  const retiredUrl = 'https://youtu.be/G4ehJ81pl6g';
+  const replacementUrl = 'https://youtu.be/ikaliZ25P8I';
+  const candidateMedia = [{ type: 'video', url: replacementUrl }];
+  const event = {
+    eventId: `presentation:${slug}:2026-08-26:youtube-ikaliZ25P8I`,
+    slug,
+    occurredAt: '2026-08-26',
+    eventType: 'video',
+    artifact: { provider: 'youtube', replacesUrl: retiredUrl, url: replacementUrl },
+    researchClaimChanged: false,
+    researchArchiveChanged: false
+  };
+  const candidateEvents = { events: [event] };
+  const accepted = publicationIntegrity.isRecordedVideoReplacement(
+    retiredUrl, candidateMedia, slug, { events: [] }, candidateEvents
+  );
+  const tampered = clone(candidateEvents);
+  tampered.events[0].researchClaimChanged = true;
+  check('published video removal needs an append-only exact replacement event',
+    accepted &&
+      !publicationIntegrity.isRecordedVideoReplacement(
+        retiredUrl, candidateMedia, slug, candidateEvents, candidateEvents
+      ) &&
+      !publicationIntegrity.isRecordedVideoReplacement(
+        'https://youtu.be/unrecorded', candidateMedia, slug, { events: [] }, candidateEvents
+      ) &&
+      !publicationIntegrity.isRecordedVideoReplacement(
+        retiredUrl, [], slug, { events: [] }, candidateEvents
+      ) &&
+      !publicationIntegrity.isRecordedVideoReplacement(
+        retiredUrl, candidateMedia, slug, { events: [] }, tampered
+      ));
+}
+
+{
   publicationIntegrity.resetFailures();
   const live = recordFor('published-prospective');
   const candidate = clone(live);
