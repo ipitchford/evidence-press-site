@@ -890,7 +890,7 @@ check('Productivity logistics highlights retain the field-impact boundary',
   'expected explicit separation between decision relevance and measured impact');
 check('Productivity logistics highlights bind each video to its matching thumbnail',
   productivityHtml.includes('src="/assets/video-thumbs/certified-commitment-horizons.jpg"') &&
-  productivityHtml.includes('href="https://youtu.be/G4ehJ81pl6g"') &&
+  productivityHtml.includes('href="https://youtu.be/ikaliZ25P8I"') &&
   productivityHtml.includes('src="/assets/video-thumbs/certified-two-item-jrp.jpg"') &&
   productivityHtml.includes('href="https://youtu.be/n9SbpLgjOY4"'),
   'expected both canonical thumbnail and video pairs');
@@ -900,14 +900,15 @@ check('Published Productivity thumbnails exactly match their reproducible source
     return fs.readFileSync(path.join(DIST, rel)).equals(fs.readFileSync(path.join(ROOT, 'thumbs', filename)));
   }),
   'expected byte-identical thumbs/ to dist/assets/video-thumbs/ copies');
-const commitmentVideo = papersDoc.papers.find(p => p.slug === 'certified-commitment-horizons').media
-  .find(item => item.type === 'video');
+const commitmentVideos = papersDoc.papers.find(p => p.slug === 'certified-commitment-horizons').media
+  .filter(item => item.type === 'video');
 const jointVideo = papersDoc.papers.find(p => p.slug === 'certified-two-item-jrp').media
   .find(item => item.type === 'video');
 check('Release APIs expose the two supplied YouTube videos',
-  commitmentVideo && commitmentVideo.url === 'https://youtu.be/G4ehJ81pl6g' &&
+  commitmentVideos.length === 1 &&
+  commitmentVideos[0].url === 'https://youtu.be/ikaliZ25P8I' &&
   jointVideo && jointVideo.url === 'https://youtu.be/n9SbpLgjOY4',
-  `commitment=${commitmentVideo && commitmentVideo.url} joint=${jointVideo && jointVideo.url}`);
+  `commitment=${commitmentVideos.map(item => item.url).join(',') || 'none'} joint=${jointVideo && jointVideo.url}`);
 check('company starter owns the staged-learning cover',
   starterImages.length === 1 && starterImages[0] === '/assets/art/productivity.svg',
   `images=${starterImages.join(',') || 'none'}`);

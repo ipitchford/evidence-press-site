@@ -14,7 +14,7 @@ These two logistics releases are the catalogue's nearest bridge from exact resea
 >
 > Certifies how far forecast inputs can move while near-term lot-sizing decisions stay unchanged. The example uses reconstructed UCI forecast vintages and stylised costs; field savings remain unmeasured.
 >
-> [**Watch the video briefing →**](https://youtu.be/G4ehJ81pl6g)
+> [**Watch the video briefing →**](https://youtu.be/ikaliZ25P8I)
 
 > ### [Exact two-item joint replenishment](/releases/certified-two-item-jrp/)
 >
