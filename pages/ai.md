@@ -6,6 +6,9 @@ This site is built to be read by machines as carefully as by people. If you are 
 - `/llms-full.txt` — complete text of every release and article in one Markdown file.
 - `/api/papers.json` — the full structured index: every release with title, DOI, direct **PDF link**, dates, version, verification status, provenance, key results, keywords, evidence-package description, related works with URLs, media, and open follow-up problems.
 - `/api/schema.json` — JSON Schema for the index, so you can validate before relying on it.
+- `/api/math-objects.json` — exact plain-text and LaTeX statements, formulas, bounds, recurrences and sequences, each bound to its release DOI, version, scope and candidate status.
+- `/api/schemas/math-object.schema.json` — JSON Schema for one searchable mathematical object.
+- `/api/citations.json` — deduplicated DOI-to-DOI `Cites` relationships derived from canonical `doi.org` references. It is a synchronization plan, not evidence that an external registry has accepted the relationships.
 - `/api/articles.json` — the separate communication-layer index for essays, commentary, syntheses and research notes. Read each record's `claimBoundary`; inclusion is not a release-assurance claim.
 - `/api/schemas/article.schema.json` — JSON Schema for one article record.
 - `/api/research-graph.json` — the Evidence Atlas graph: releases, reusable methods, broad clusters, evidence-backed lineages, declared dependencies and internal citations. Every accepted edge carries a knowledge status, source pointer, recorded basis and inference limit.
