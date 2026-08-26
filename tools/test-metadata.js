@@ -902,11 +902,16 @@ check('Published Productivity thumbnails exactly match their reproducible source
   'expected byte-identical thumbs/ to dist/assets/video-thumbs/ copies');
 const commitmentVideos = papersDoc.papers.find(p => p.slug === 'certified-commitment-horizons').media
   .filter(item => item.type === 'video');
+const commitmentHtml = fs.readFileSync(
+  path.join(DIST, 'releases', 'certified-commitment-horizons', 'index.html'), 'utf8');
 const jointVideo = papersDoc.papers.find(p => p.slug === 'certified-two-item-jrp').media
   .find(item => item.type === 'video');
-check('Release APIs expose the two supplied YouTube videos',
+check('Release surfaces expose only the current commitment-horizons video',
   commitmentVideos.length === 1 &&
   commitmentVideos[0].url === 'https://youtu.be/ikaliZ25P8I' &&
+  commitmentHtml.includes('ikaliZ25P8I') &&
+  !commitmentHtml.includes('G4ehJ81pl6g') &&
+  !commitmentHtml.includes('retained and explicitly labelled as historical presentation media') &&
   jointVideo && jointVideo.url === 'https://youtu.be/n9SbpLgjOY4',
   `commitment=${commitmentVideos.map(item => item.url).join(',') || 'none'} joint=${jointVideo && jointVideo.url}`);
 check('company starter owns the staged-learning cover',

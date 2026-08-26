@@ -112,7 +112,7 @@ The UCI exercise uses real observed demand but reconstructed forecast vintages a
 
 Version 3.0.0 supersedes the v2.1.2 research package and active Evidence Press briefing. It repairs the leading-zero-demand semantic counterexample, introduces explicit graph-only and classical modes, corrects an invalid test of monotonicity across independently found unresolved upper witnesses, replaces ambiguous completion labels, adds the prefix decomposition and single-detour theorem, stratifies the compact-model corpus, strengthens the literature boundary, and rebuilds the package under Anonymous scholarly attribution with an explicit CC0/MIT/third-party rights map.
 
-The earlier YouTube briefing described v2.1.2. It is retained and explicitly labelled as historical presentation media, not as current v3 evidence. Earlier immutable DOI and Git tags likewise remain part of the concept history; this page points to version DOI [10.5281/zenodo.22086554](https://doi.org/10.5281/zenodo.22086554).
+Earlier immutable DOI and Git tags remain part of the concept history; this page points to version DOI [10.5281/zenodo.22086554](https://doi.org/10.5281/zenodo.22086554).
 
 ## What is in the public package
 
