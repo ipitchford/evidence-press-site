@@ -2145,7 +2145,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-10' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-27' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
   ];
@@ -2782,11 +2782,13 @@ fs.cpSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), {
 fs.copyFileSync(path.join(ROOT, 'assets', 'style.css'), path.join(DIST, 'assets', CSS_ASSET));
 fs.copyFileSync(path.join(ROOT, 'assets', 'atlas.css'), path.join(DIST, 'assets', ATLAS_CSS_ASSET));
 /* YouTube authoring thumbnails normally stay outside deployed assets. These
-   two are also editorial illustrations on the Productivity page, so publish a
-   narrow allowlist instead of exposing the whole authoring directory. */
+   current Productivity illustrations and the superseded two-item illustration
+   use stable public URLs, so publish a narrow allowlist instead of exposing the
+   whole authoring directory. */
 const PRODUCTIVITY_VIDEO_THUMBNAILS = [
   'certified-commitment-horizons.jpg',
-  'certified-two-item-jrp.jpg'
+  'certified-two-item-jrp.jpg',
+  'certified-three-item-jrp-gap.jpg'
 ];
 const productivityThumbDir = path.join(DIST, 'assets', 'video-thumbs');
 fs.mkdirSync(productivityThumbDir, { recursive: true });
@@ -2902,7 +2904,7 @@ simplePage('operating-model/', 'Evidence Press operating model', 'A prospective,
     { label: 'Prospective release schema', url: `${BASE}/api/schemas/release-operating-model.schema.json`, linkText: 'release-operating-model.schema.json', detail: 'Required process and handoff metadata for every future release.' }
   ]
 });
-simplePage('productivity/', 'Productivity Protocols', 'Bounded AI-agent workflows and exact logistics research relevant to operational productivity; current human, company and field impact remains unmeasured.', 'productivity.md', 'WebPage', {
+simplePage('productivity/', 'Productivity Protocols', 'Bounded AI-agent workflows and current exact-logistics research lineages relevant to operational productivity; human, company and field impact remains unmeasured.', 'productivity.md', 'WebPage', {
   og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'productivity.png')) ? '/assets/og/productivity.png' : null,
   kicker: 'A programme of Evidence Press',
   standfirst: 'Bounded agent workflows, staged evidence, and the catalogue\'s closest research links to operational productivity.',

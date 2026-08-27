@@ -6,25 +6,25 @@ Productivity Protocols is the practice layer, not a new workflow language. It of
 
 ## Research: exact logistics decisions
 
-These two logistics releases are the catalogue's nearest bridge from exact research to operational productivity. Both produce inspectable planning objects; neither has been tested in an operating supply chain or shown to save time, labour, or money.
+These two logistics research lines are the catalogue's nearest bridge from exact mathematics to operational productivity. Both produce inspectable planning objects; neither has been tested in an operating supply chain or shown to save time, labour, or money.
 
 > ### [Certified commitment horizons](/releases/certified-commitment-horizons/)
 >
 > ![Video thumbnail: How far can a plan safely hold?](/assets/video-thumbs/certified-commitment-horizons.jpg "Video briefing — certified commitment horizons")
 >
-> Certifies how far forecast inputs can move while near-term lot-sizing decisions stay unchanged. The example uses reconstructed UCI forecast vintages and stylised costs; field savings remain unmeasured.
+> Version 3.0 separates the abstract forced-source path model from its valid classical lot-sizing interpretation, then adds an exact prefix decomposition and local single-detour witnesses for the loss of a protected setup prefix. Its UCI exercise still uses reconstructed forecast vintages and stylised costs; field savings remain unmeasured.
 >
 > [**Watch the video briefing →**](https://youtu.be/ikaliZ25P8I)
 
-> ### [Exact two-item joint replenishment](/releases/certified-two-item-jrp/)
+> ### [Exact joint replenishment: from two items to three](/releases/certified-three-item-jrp-gap/)
 >
-> ![Video thumbnail: Two items. One exact gap.](/assets/video-thumbs/certified-two-item-jrp.jpg "Video briefing — exact two-item joint replenishment")
+> ![Video thumbnail: The three-item joint-replenishment gap.](/assets/video-thumbs/certified-three-item-jrp-gap.jpg "Video briefing — exact three-item joint replenishment")
 >
-> Turns the constrained two-item replenishment problem into finitely checkable exact objects and certifies a sharp worst-case relaxation gap. The unrestricted multi-item problem and any operational benefit remain open.
+> The [two-item candidate theorem](/releases/certified-two-item-jrp/) gives an exact cap-gap constant near 1.111889. Its additive three-item successor reports an exact rational bundled-instance ratio near 1.148729, 3.3132 per cent above the two-item upper endpoint. Within the successor's unrefereed proof-and-replay boundary, the two-item constant is therefore not the unrestricted multi-item answer; the exact three-item constant and every operational benefit remain open.
 >
-> [**Watch the video briefing →**](https://youtu.be/n9SbpLgjOY4)
+> [**Watch the current three-item briefing →**](https://youtu.be/3KLjS1eXaps) · [Two-item briefing](https://youtu.be/n9SbpLgjOY4)
 
-These are **decision-relevant operations results, not productivity impact evidence**. The next evidential step is prospective comparison using genuine forecasts and costs, recording whether the certificates change accepted plans and whether avoided loss or bounded regret exceeds the full human, compute, implementation, and assurance cost.
+These are **decision-relevant operations results, not productivity impact evidence**. The next evidential step is prospective comparison using genuine forecasts, costs and constraints, recording whether the certificates change accepted plans and whether avoided loss or bounded regret exceeds the full human, compute, implementation and assurance cost.
 
 ## Evidence: what existing tests show
 

@@ -904,17 +904,18 @@ const productivityImages = imageSources('productivity/index.html');
 const starterImages = imageSources('protocols/start/index.html');
 const expectedProductivityImages = [
   '/assets/video-thumbs/certified-commitment-horizons.jpg',
-  '/assets/video-thumbs/certified-two-item-jrp.jpg',
+  '/assets/video-thumbs/certified-three-item-jrp-gap.jpg',
   '/assets/art/protocols-ladders.svg'
 ];
 check('Productivity keeps its intentional explanatory image set',
   same(productivityImages, expectedProductivityImages),
   `images=${productivityImages.join(',') || 'none'}`);
 const productivityHtml = fs.readFileSync(path.join(DIST, 'productivity', 'index.html'), 'utf8');
-check('Productivity highlights both logistics research releases',
+check('Productivity highlights both logistics research lineages',
   productivityHtml.includes('href="/releases/certified-commitment-horizons/"') &&
-  productivityHtml.includes('href="/releases/certified-two-item-jrp/"'),
-  'expected canonical links to both logistics releases');
+  productivityHtml.includes('href="/releases/certified-two-item-jrp/"') &&
+  productivityHtml.includes('href="/releases/certified-three-item-jrp-gap/"'),
+  'expected canonical links to the commitment release and both replenishment generations');
 check('Productivity maps the research, evidence and practice layers',
   productivityHtml.includes('class="productivity-map"') &&
   productivityHtml.includes('href="#research-exact-logistics-decisions"') &&
@@ -927,9 +928,10 @@ check('Productivity logistics highlights retain the field-impact boundary',
 check('Productivity logistics highlights bind each video to its matching thumbnail',
   productivityHtml.includes('src="/assets/video-thumbs/certified-commitment-horizons.jpg"') &&
   productivityHtml.includes('href="https://youtu.be/ikaliZ25P8I"') &&
-  productivityHtml.includes('src="/assets/video-thumbs/certified-two-item-jrp.jpg"') &&
+  productivityHtml.includes('src="/assets/video-thumbs/certified-three-item-jrp-gap.jpg"') &&
+  productivityHtml.includes('href="https://youtu.be/3KLjS1eXaps"') &&
   productivityHtml.includes('href="https://youtu.be/n9SbpLgjOY4"'),
-  'expected both canonical thumbnail and video pairs');
+  'expected current thumbnail and video pairs plus the foundational two-item briefing');
 check('Published Productivity thumbnails exactly match their reproducible sources',
   expectedProductivityImages.slice(0, 2).every(rel => {
     const filename = path.basename(rel);
