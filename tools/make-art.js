@@ -505,6 +505,57 @@ art['cyclicity-support-fusion-atlas'] = (a, b) => {
   return s;
 };
 
+/* Amplitude modules: a degree-twelve fused residue orbit sits beside the
+   finite ordinary coefficient-Bautin window. The picture keeps the two
+   compression mechanisms distinct instead of implying that one proves the
+   other. */
+art['amplitude-modules-fused-support-bautin-bound'] = (a, b) => {
+  let s = '';
+
+  const cx = 205, cy = 194, radius = 128;
+  const fused = new Set([1, 4, 7, 10]);
+  for (let k = 0; k < 12; k++) {
+    const angle = -Math.PI / 2 + 2 * Math.PI * k / 12;
+    const x = cx + radius * Math.cos(angle);
+    const y = cy + radius * Math.sin(angle);
+    const active = fused.has(k);
+    if (active) {
+      s += `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="${k % 2 ? b : a}" stroke-width="4" opacity=".72"/>`;
+    }
+    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${active ? 12 : 5}" fill="${active ? (k % 2 ? b : a) : '#e7e5e4'}" opacity="${active ? '.96' : '.22'}"/>`;
+  }
+  s += `<circle cx="${cx}" cy="${cy}" r="34" fill="#151a1e" stroke="#e7e5e4" stroke-width="2"/>`;
+  s += `<text x="${cx}" y="${cy + 8}" text-anchor="middle" font-family="Georgia" font-size="26" fill="#e7e5e4">M₀</text>`;
+  s += `<text x="${cx}" y="374" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="${a}">fused residues · trace cancels</text>`;
+
+  s += `<path d="M 370 194 H 458" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 7" opacity=".48"/>`;
+  s += `<path d="M 446 184 L 466 194 L 446 204" fill="none" stroke="#e7e5e4" stroke-width="2" opacity=".72"/>`;
+  const modules = [
+    ['E₃', 78, a], ['M₀', 138, b], ['M₁', 198, a], ['M₂', 258, b], ['E₄', 318, a]
+  ];
+  for (const [label, y, colour] of modules) {
+    s += `<rect x="485" y="${y - 23}" width="116" height="46" rx="12" fill="${colour}" opacity=".68"/>`;
+    s += `<text x="543" y="${y + 8}" text-anchor="middle" font-family="Georgia" font-size="24" fill="#151a1e">${label}</text>`;
+  }
+  s += `<text x="543" y="374" text-anchor="middle" font-family="Georgia" font-size="19" fill="#e7e5e4" opacity=".82">all ranks 0,…,11</text>`;
+
+  s += `<path d="M 625 194 H 710" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 7" opacity=".48"/>`;
+  s += `<path d="M 698 184 L 718 194 L 698 204" fill="none" stroke="#e7e5e4" stroke-width="2" opacity=".72"/>`;
+  s += `<text x="936" y="70" text-anchor="middle" font-family="Georgia" font-size="27" fill="#e7e5e4">ordinary coefficient ideal</text>`;
+  const tiles = ['1', '2', '3', '⋯', 'd−1'];
+  for (let i = 0; i < tiles.length; i++) {
+    const x = 744 + i * 76;
+    s += `<rect x="${x}" y="118" width="58" height="58" rx="11" fill="${i % 2 ? b : a}" opacity="${i === 3 ? '.40' : '.82'}"/>`;
+    s += `<text x="${x + 29}" y="156" text-anchor="middle" font-family="Georgia" font-size="23" fill="#151a1e">${tiles[i]}</text>`;
+  }
+  s += `<path d="M 760 245 H 1092" stroke="${b}" stroke-width="5" opacity=".88"/>`;
+  s += `<path d="M 1076 234 L 1098 245 L 1076 256" fill="none" stroke="${b}" stroke-width="5"/>`;
+  s += `<text x="926" y="229" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" fill="#e7e5e4">M_d, M_{d+1}, … recur</text>`;
+  s += `<text x="926" y="303" text-anchor="middle" font-family="Georgia" font-size="31" fill="${a}">B = ⟨M₁,…,M_{d−1}⟩</text>`;
+  s += `<text x="926" y="374" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="#e7e5e4" opacity=".78">coefficient convention · unrefereed candidate</text>`;
+  return s;
+};
+
 /* Certified commitment horizons: a protected prefix and a later departure. */
 art['certified-commitment-horizons'] = (a, b) => {
   const xs = [110, 275, 440, 605, 770, 935, 1090];
@@ -1162,6 +1213,7 @@ const palette = {
   ,'furter-r3-through-299': ['#2dd4bf', '#f59e0b']
   ,'lps-structural-reductions': ['#2dd4bf', '#f59e0b']
   ,'o01d0-polar-fibre-structural-reductions': ['#38bdf8', '#f59e0b']
+  ,'amplitude-modules-fused-support-bautin-bound': ['#2dd4bf', '#fbbf24']
 };
 
 for (const [slug, fn] of Object.entries(art)) {

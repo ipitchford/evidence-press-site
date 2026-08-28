@@ -52,8 +52,8 @@ ok(graph.stats.directInterReleaseEdgeCount === 10,
 ok(graph.stats.edgeCount === graph.stats['uses-methodEdgeCount'] + graph.stats['member-of-clusterEdgeCount'] +
   graph.stats['member-of-lineageEdgeCount'] + graph.stats.directInterReleaseEdgeCount,
   'relationship composition reconciles exactly with the accepted edge total');
-ok(graph.nodes.find(node => node.id === 'method:adversarial-controls').releaseAssignmentCount === 28 &&
-  graph.nodes.find(node => node.id === 'method:structural-compression').releaseAssignmentCount === 25,
+ok(graph.nodes.find(node => node.id === 'method:adversarial-controls').releaseAssignmentCount === 29 &&
+  graph.nodes.find(node => node.id === 'method:structural-compression').releaseAssignmentCount === 26,
   'method nodes expose registry-derived prevalence');
 ok(graph.nodes.find(node => node.id === 'method:research-lineage-reuse').publicLabel === 'Lineage-aware reuse practice',
   'public method terminology distinguishes reuse practice from evidence-backed lineage');
