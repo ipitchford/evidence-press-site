@@ -1092,6 +1092,41 @@ art['lps-structural-reductions'] = (a, b) => {
   return s;
 };
 
+/* O-01d0 successor: three Hermite sections approach the open polar-fibre
+   target, while the four independent proof gates remain visibly unclosed. */
+art['o01d0-polar-fibre-structural-reductions'] = (a, b) => {
+  let s = '';
+  const curves = [
+    { y: 102, c: a, d: 'M 76 124 C 146 54, 218 170, 302 92 C 360 40, 408 68, 468 112' },
+    { y: 200, c: b, d: 'M 76 216 C 154 132, 230 270, 306 188 C 364 126, 414 160, 468 206' },
+    { y: 296, c: '#e7e5e4', d: 'M 76 306 C 150 246, 220 344, 300 284 C 362 236, 416 260, 468 300' }
+  ];
+  for (const [i, curve] of curves.entries()) {
+    s += `<path d="${curve.d}" fill="none" stroke="${curve.c}" stroke-width="4" opacity="${i === 2 ? .62 : .92}"/>`;
+    s += `<text x="84" y="${curve.y - 32}" font-family="ui-monospace,monospace" font-size="15" fill="${curve.c}">J<tspan baseline-shift="sub" font-size="11">A${i ? `+${5 * i}` : ''}</tspan></text>`;
+  }
+  s += `<path d="M 476 112 C 520 134, 536 170, 556 190 M 476 206 L 556 200 M 476 300 C 520 274, 536 232, 556 210" fill="none" stroke="#8a938f" stroke-width="2" stroke-dasharray="7 7" opacity=".72"/>`;
+
+  s += `<circle cx="632" cy="200" r="67" fill="#151a1e" stroke="${a}" stroke-width="5"/>`;
+  s += `<circle cx="632" cy="200" r="43" fill="none" stroke="${b}" stroke-width="2" stroke-dasharray="8 7" opacity=".82"/>`;
+  s += `<text x="632" y="193" text-anchor="middle" font-family="Georgia" font-size="29" fill="#e7e5e4">O-01d0</text>`;
+  s += `<text x="632" y="222" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="${b}">OPEN</text>`;
+
+  const gates = [
+    { x: 826, y: 72, label: 'PAIR CONTENT', colour: a },
+    { x: 1020, y: 72, label: 'GOOD PRIME', colour: b },
+    { x: 826, y: 286, label: 'MULTIPLIERS', colour: b },
+    { x: 1020, y: 286, label: 'CHART COVER', colour: a }
+  ];
+  for (const gate of gates) {
+    s += `<rect x="${gate.x - 82}" y="${gate.y - 28}" width="164" height="56" rx="12" fill="#151a1e" stroke="${gate.colour}" stroke-width="2.5"/>`;
+    s += `<text x="${gate.x}" y="${gate.y + 5}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#e7e5e4">${gate.label}</text>`;
+  }
+  s += `<path d="M 696 174 L 744 94 M 696 226 L 744 264 M 699 190 L 938 90 M 699 210 L 938 268" fill="none" stroke="#8a938f" stroke-width="2" stroke-dasharray="8 7" opacity=".58"/>`;
+  s += `<text x="923" y="376" text-anchor="middle" font-family="Georgia" font-size="22" fill="#e7e5e4" opacity=".9">four gates · no silent promotion</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1126,6 +1161,7 @@ const palette = {
   ,'frankl-concavity-obstruction': ['#2dd4bf', '#f59e0b']
   ,'furter-r3-through-299': ['#2dd4bf', '#f59e0b']
   ,'lps-structural-reductions': ['#2dd4bf', '#f59e0b']
+  ,'o01d0-polar-fibre-structural-reductions': ['#38bdf8', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
