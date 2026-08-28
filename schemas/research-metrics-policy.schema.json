@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/research-metrics-policy.schema.json",
+  "title": "Evidence Press research metrics policy",
+  "description": "Prospective capture and publication rules for calibratable per-attempt research metrics. Conformance is not evidence of acceleration or impact.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "effectiveAt",
+    "status",
+    "claimCeiling",
+    "appliesTo",
+    "scopeTypes",
+    "resultStates",
+    "minimumPublishableOutcomeFields",
+    "optionalTelemetryFields",
+    "definitions",
+    "publicationRules",
+    "missingnessPolicy",
+    "changeLog"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "effectiveAt": { "type": "string", "format": "date-time" },
+    "status": { "const": "prospective-required" },
+    "claimCeiling": { "type": "string", "minLength": 1 },
+    "appliesTo": {
+      "type": "object",
+      "required": ["attemptsRegisteredAtOrAfter", "intakeRule", "terminalRule", "leftCensoringRule"],
+      "additionalProperties": false,
+      "properties": {
+        "attemptsRegisteredAtOrAfter": { "type": "string", "format": "date-time" },
+        "intakeRule": { "type": "string", "minLength": 1 },
+        "terminalRule": { "type": "string", "minLength": 1 },
+        "leftCensoringRule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "scopeTypes": { "type": "array", "minItems": 5, "items": { "type": "string", "minLength": 1 } },
+    "resultStates": { "type": "array", "minItems": 7, "items": { "type": "string", "minLength": 1 } },
+    "minimumPublishableOutcomeFields": { "type": "array", "minItems": 20, "items": { "type": "string", "minLength": 1 } },
+    "optionalTelemetryFields": { "type": "array", "minItems": 4, "items": { "type": "string", "minLength": 1 } },
+    "definitions": {
+      "type": "object",
+      "required": [
+        "calendarElapsedMinutes",
+        "activeAgentMinutes",
+        "activeHumanMinutes",
+        "computeMinutes",
+        "unattendedWaitMinutes",
+        "blockedMinutes",
+        "reworkMinutes",
+        "researchCycle",
+        "falsificationGate",
+        "candidateArchitecture",
+        "positiveSignal",
+        "targetReached",
+        "deduplicatedModelTokens",
+        "substantiveReviewRound",
+        "brierScore"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "calendarElapsedMinutes": { "type": "string", "minLength": 1 },
+        "activeAgentMinutes": { "type": "string", "minLength": 1 },
+        "activeHumanMinutes": { "type": "string", "minLength": 1 },
+        "computeMinutes": { "type": "string", "minLength": 1 },
+        "unattendedWaitMinutes": { "type": "string", "minLength": 1 },
+        "blockedMinutes": { "type": "string", "minLength": 1 },
+        "reworkMinutes": { "type": "string", "minLength": 1 },
+        "researchCycle": { "type": "string", "minLength": 1 },
+        "falsificationGate": { "type": "string", "minLength": 1 },
+        "candidateArchitecture": { "type": "string", "minLength": 1 },
+        "positiveSignal": { "type": "string", "minLength": 1 },
+        "targetReached": { "type": "string", "minLength": 1 },
+        "deduplicatedModelTokens": { "type": "string", "minLength": 1 },
+        "substantiveReviewRound": { "type": "string", "minLength": 1 },
+        "brierScore": { "type": "string", "minLength": 1 }
+      }
+    },
+    "publicationRules": { "type": "array", "minItems": 5, "items": { "type": "string", "minLength": 1 } },
+    "missingnessPolicy": { "type": "array", "minItems": 4, "items": { "type": "string", "minLength": 1 } },
+    "changeLog": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["date", "summary"],
+        "additionalProperties": false,
+        "properties": {
+          "date": { "type": "string", "format": "date" },
+          "summary": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

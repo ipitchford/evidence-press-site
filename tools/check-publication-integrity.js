@@ -38,6 +38,7 @@ const GOVERNANCE_ROUTES = [
   ['method registry', '/api/method-registry.json', '/api/v1/method-registry.json', true],
   ['IBE ledger', '/api/ibe-ledger.json', '/api/v1/ibe-ledger.json', true],
   ['work ledger', '/api/work-ledger.json', '/api/v1/work-ledger.json', true],
+  ['research metrics policy', '/api/research-metrics-policy.json', '/api/v1/research-metrics-policy.json', true],
   ['Atlas roadmap', '/api/atlas-roadmap.json', '/api/v1/atlas-roadmap.json', true],
   ['Atlas proposals', '/api/atlas-proposals.json', '/api/v1/atlas-proposals.json', true],
   ['page-structure policy', '/api/page-structure-policy.json', '/api/v1/page-structure-policy.json', true],
@@ -48,6 +49,7 @@ const GOVERNANCE_ROUTES = [
   ['IBE-ledger schema', '/api/schemas/ibe-ledger.schema.json', '/api/v1/schemas/ibe-ledger.schema.json', true],
   ['release operating-model schema', '/api/schemas/release-operating-model.schema.json', '/api/v1/schemas/release-operating-model.schema.json', true],
   ['work-ledger schema', '/api/schemas/work-ledger.schema.json', '/api/v1/schemas/work-ledger.schema.json', true],
+  ['research-metrics-policy schema', '/api/schemas/research-metrics-policy.schema.json', '/api/v1/schemas/research-metrics-policy.schema.json', true],
   ['Atlas-roadmap schema', '/api/schemas/atlas-roadmap.schema.json', '/api/v1/schemas/atlas-roadmap.schema.json', true],
   ['Atlas-proposal schema', '/api/schemas/atlas-proposal.schema.json', '/api/v1/schemas/atlas-proposal.schema.json', true],
   ['Atlas-proposal-register schema', '/api/schemas/atlas-proposal-register.schema.json', '/api/v1/schemas/atlas-proposal-register.schema.json', true]
@@ -322,6 +324,24 @@ function preserveWorkLedger(liveWork, candidateWork) {
         failures.push(`work ledger ${oldAttempt.attemptId}: correctionCount must increase only with appended correction receipts`);
       }
     }
+    const oldMetrics = oldAttempt.metrics || null;
+    const nextMetrics = next.metrics || null;
+    if (!oldMetrics && nextMetrics) {
+      failures.push(`work ledger ${oldAttempt.attemptId}: added a retrospective research-metrics receipt to an already published attempt`);
+    } else if (oldMetrics) {
+      if (!nextMetrics) {
+        failures.push(`work ledger ${oldAttempt.attemptId}: dropped its published research-metrics receipt`);
+      } else {
+        for (const field of ['schemaVersion', 'measurementScope', 'scopeBoundary', 'forecast']) {
+          if (!isDeepStrictEqual(oldMetrics[field], nextMetrics[field])) {
+            failures.push(`work ledger ${oldAttempt.attemptId}: rewrote frozen research-metrics ${field}`);
+          }
+        }
+        if (oldMetrics.outcome !== null && !isDeepStrictEqual(oldMetrics.outcome, nextMetrics.outcome)) {
+          failures.push(`work ledger ${oldAttempt.attemptId}: rewrote a published terminal research-metrics outcome`);
+        }
+      }
+    }
     if (oldAttempt.releaseSlug !== null && oldAttempt.releaseSlug !== next.releaseSlug) failures.push(`work ledger ${oldAttempt.attemptId}: changed its published release link`);
 
     const oldAssurance = oldAttempt.assuranceEndpoint || {};
@@ -488,6 +508,7 @@ async function main() {
   const candidateRegistry = candidateJson('/api/method-registry.json');
   const candidateIbe = candidateJson('/api/ibe-ledger.json');
   const candidateWork = candidateJson('/api/work-ledger.json');
+  const candidateMetricsPolicy = candidateJson('/api/research-metrics-policy.json');
   const candidateAtlasRoadmap = candidateJson('/api/atlas-roadmap.json');
   const candidateAtlasProposals = candidateJson('/api/atlas-proposals.json');
   const candidatePresentationEvents = candidateJson('/api/presentation-events.json');
@@ -496,6 +517,10 @@ async function main() {
     if (!isDeepStrictEqual(liveContract, candidateContract)) {
       failures.push('operating model: changed the published v1 institutional contract; publish a new major contract instead');
     }
+  }
+  const liveMetricsPolicy = liveGovernance.get('/api/research-metrics-policy.json');
+  if (liveMetricsPolicy && !isDeepStrictEqual(liveMetricsPolicy, candidateMetricsPolicy)) {
+    failures.push('research metrics policy: changed the published v1 contract; publish a versioned successor instead');
   }
 
   const liveAtlasRoadmap = liveGovernance.get('/api/atlas-roadmap.json');

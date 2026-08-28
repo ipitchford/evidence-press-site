@@ -174,6 +174,104 @@ function measuredAttemptFor(slug, status = 'release-candidate') {
   return attempt;
 }
 
+function postPolicyAttemptFor(slug, status = 'published') {
+  const attempt = attemptFor(slug);
+  attempt.registeredAt = '2026-08-28T09:00:00Z';
+  attempt.status = status;
+  attempt.statusAt = status === 'published' ? '2026-08-28T11:00:00Z' : '2026-08-28T10:00:00Z';
+  attempt.resultClass = 'partial';
+  attempt.statusHistory = [
+    {
+      at: attempt.registeredAt, status: 'active', resultClass: 'pending',
+      reason: 'Registered with a frozen prospective metric forecast.', evidenceRefs: []
+    },
+    {
+      at: attempt.statusAt, status, resultClass: 'partial',
+      reason: 'Synthetic post-policy fixture reached its declared status.', evidenceRefs: []
+    }
+  ];
+  attempt.measurement = {
+    status: 'measured-partial',
+    missingnessReason: 'Active human time and optional token telemetry were not exposed by the synthetic runtime.',
+    milestones: [
+      { event: 'work-opened', at: attempt.registeredAt, basis: 'Synthetic prospective intake.' },
+      ...(status === 'published' ? [{ event: 'public-release', at: attempt.statusAt, basis: 'Synthetic terminal readback.' }] : [])
+    ],
+    activeHumanMinutes: null,
+    computeMinutes: status === 'published' ? 10 : null,
+    computeCost: null,
+    agentRuns: status === 'published' ? 2 : null,
+    reworkMinutes: status === 'published' ? 5 : null,
+    correctionCount: 0
+  };
+  attempt.metrics = {
+    schemaVersion: '1.0',
+    measurementScope: 'research-through-publication',
+    scopeBoundary: 'Synthetic research intake through canonical release readback.',
+    forecast: {
+      frozenAt: attempt.registeredAt,
+      procedureClass: 'synthetic-structural-research-release',
+      targetOutcome: 'Obtain one bounded positive signal and publish its exact assurance boundary.',
+      expectedActiveMinutes: 60,
+      plausibleLowMinutes: 30,
+      plausibleHighMinutes: 120,
+      expectedUnattendedWaitMinutes: 20,
+      referenceClass: {
+        label: 'Synthetic structural-release fixtures', sampleSize: 0,
+        basis: 'No measured predecessor exists; use the explicit Fermi decomposition as the prior.'
+      },
+      fermiComponents: [
+        { component: 'falsification gates', count: 2, lowMinutesPerUnit: 5, centralMinutesPerUnit: 10, highMinutesPerUnit: 20, basis: 'Two bounded exact checks.' },
+        { component: 'candidate architecture', count: 1, lowMinutesPerUnit: 10, centralMinutesPerUnit: 20, highMinutesPerUnit: 40, basis: 'One structurally distinct route.' },
+        { component: 'publication and readback', count: 1, lowMinutesPerUnit: 10, centralMinutesPerUnit: 20, highMinutesPerUnit: 40, basis: 'One deterministic publication pass.' }
+      ],
+      probabilityPositiveSignal: 0.6,
+      probabilityTargetClosure: 0.25,
+      probabilityHorizonMinutes: 120,
+      assumptions: ['The synthetic exact checker remains available.'],
+      reforecastTriggers: ['The first falsification gate exposes a different target object.'],
+      stopRule: 'Stop after the two registered gates if neither produces a positive signal.'
+    },
+    outcome: status === 'published' ? {
+      measuredAt: attempt.statusAt,
+      calendarElapsedMinutes: 120,
+      activeAgentMinutes: 60,
+      activeHumanMinutes: null,
+      computeMinutes: 10,
+      unattendedWaitMinutes: 20,
+      blockedMinutes: 0,
+      reworkMinutes: 5,
+      agentRuns: 2,
+      maxParallelAgents: 2,
+      modelTurns: 6,
+      deduplicatedModelTokens: null,
+      uncachedInputTokens: null,
+      researchCycles: { positive: 1, negative: 2, inconclusive: 0 },
+      falsificationGatesRun: 2,
+      candidateArchitecturesTested: 1,
+      candidateArchitecturesRejected: 0,
+      substantiveReviewRounds: 1,
+      p0Findings: 0,
+      p1Findings: 1,
+      prepublicationClaimCorrections: 1,
+      resultState: 'positive-signal',
+      resultSummary: 'The bounded synthetic gate produced a positive signal without closing the target.',
+      positiveSignalObserved: true,
+      targetReached: false,
+      forecastErrorMinutes: 0,
+      forecastRatio: 1,
+      withinForecastInterval: true,
+      varianceReason: null,
+      missingFields: [
+        { field: 'activeHumanMinutes', reason: 'The synthetic fixture has no human-time instrument.' },
+        { field: 'deduplicatedModelTokens', reason: 'The synthetic runtime exposes no fork-aware token counter.' },
+        { field: 'uncachedInputTokens', reason: 'The synthetic runtime exposes no uncached-input counter.' }
+      ]
+    } : null
+  };
+  return attempt;
+}
+
 const validErrors = collectErrors({ root, papers: sourcePapers, artifacts: sourceArtifacts });
 check('canonical doctrine, registries, ledgers and frozen baseline validate', validErrors.length === 0, validErrors.join('\n  '));
 
@@ -197,7 +295,7 @@ function extractFunction(source, name) {
 
 {
   const buildSource = fs.readFileSync(path.join(root, 'build.js'), 'utf8');
-  const renderHarness = new Function('METHOD_BY_ID', 'IBE_BY_ID', 'WORK_ATTEMPT_BY_ID', 'BASE', 'esc', [
+  const renderHarness = new Function('METHOD_BY_ID', 'IBE_BY_ID', 'WORK_ATTEMPT_BY_ID', 'BASE', 'esc', 'rounded', [
     extractFunction(buildSource, 'operatingModelHtml'),
     extractFunction(buildSource, 'operatingModelMarkdown'),
     'return { operatingModelHtml, operatingModelMarkdown };'
@@ -207,7 +305,8 @@ function extractFunction(source, name) {
   const attempt = attemptFor('future-test-release');
   const attemptById = new Map([[attempt.attemptId, attempt]]);
   const esc = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  const render = renderHarness(methodById, ibeById, attemptById, 'https://evidencepress.org', esc);
+  const rounded = (value, places = 2) => Math.round(value * (10 ** places)) / (10 ** places);
+  const render = renderHarness(methodById, ibeById, attemptById, 'https://evidencepress.org', esc, rounded);
   const fixture = recordFor('future-test-release');
   const html = render.operatingModelHtml(fixture);
   const markdown = render.operatingModelMarkdown(fixture);
@@ -215,6 +314,19 @@ function extractFunction(source, name) {
     html.includes('ep-attempt:future-test-release') && html.includes('Certificate-first') && html.includes('NO_IMPACT_EVIDENCE'), html);
   check('prospective Markdown links method, IBE and work ledgers',
     markdown.includes('/api/method-registry.json') && markdown.includes('/api/ibe-ledger.json') && markdown.includes('/api/work-ledger.json'), markdown);
+  const measuredAttempt = postPolicyAttemptFor('future-measured-render');
+  const measuredRender = renderHarness(methodById, ibeById, new Map([[measuredAttempt.attemptId, measuredAttempt]]), 'https://evidencepress.org', esc, rounded);
+  const measuredFixture = recordFor('future-measured-render');
+  const measuredHtml = measuredRender.operatingModelHtml(measuredFixture);
+  const measuredMarkdown = measuredRender.operatingModelMarkdown(measuredFixture);
+  check('measured release HTML publishes Fermi forecast, cycles, result and calibration',
+    measuredHtml.includes('Fermi active-time forecast') && measuredHtml.includes('Research search') &&
+      measuredHtml.includes('positive-signal') && measuredHtml.includes('actual/forecast 1') &&
+      measuredHtml.includes('target closure 0.0625'), measuredHtml);
+  check('measured release Markdown publishes scope, probabilities and rejected-route counts',
+    measuredMarkdown.includes('scope research-through-publication') && measuredMarkdown.includes('positive-signal/closure probabilities 0.6/0.25') &&
+      measuredMarkdown.includes('architectures tested/rejected 1/0') &&
+      measuredMarkdown.includes('positive-signal/target-closure Brier scores 0.16/0.0625'), measuredMarkdown);
   check('legacy release renderer emits no invented process section',
     render.operatingModelHtml({ slug: 'legacy' }) === '' && render.operatingModelMarkdown({ slug: 'legacy' }) === '');
 }
@@ -242,6 +354,83 @@ function extractFunction(source, name) {
 {
   const errors = errorsFor(({ artifacts, papers }) => addFuture(artifacts, papers));
   check('complete prospective release and attempt receipts pass', errors.length === 0, errors.join('\n  '));
+}
+
+{
+  const errors = errorsFor(({ artifacts, papers }) => {
+    const record = recordFor('future-measured-release');
+    addFuture(artifacts, papers, record, postPolicyAttemptFor(record.slug));
+  });
+  check('post-policy release with frozen Fermi forecast and terminal metrics passes', errors.length === 0, errors.join('\n  '));
+}
+
+{
+  const errors = errorsFor(({ artifacts, papers }) => {
+    const record = recordFor('future-missing-metrics');
+    const attempt = attemptFor(record.slug);
+    attempt.registeredAt = '2026-08-28T09:00:00Z';
+    attempt.statusAt = '2026-08-28T10:00:00Z';
+    attempt.statusHistory[0].at = attempt.registeredAt;
+    attempt.statusHistory[1].at = attempt.statusAt;
+    addFuture(artifacts, papers, record, attempt);
+  });
+  check('post-policy attempt without a research-metrics receipt is rejected',
+    errors.some(e => e.includes('.metrics') && e.includes('is required for attempts registered')), errors.join('\n  '));
+}
+
+{
+  const errors = errorsFor(({ artifacts, papers }) => {
+    const record = recordFor('future-late-forecast');
+    const attempt = postPolicyAttemptFor(record.slug);
+    attempt.metrics.forecast.frozenAt = '2026-08-28T09:01:00Z';
+    addFuture(artifacts, papers, record, attempt);
+  });
+  check('forecast frozen after registration is rejected',
+    errors.some(e => e.includes('frozenAt') && e.includes('exactly equal registeredAt')), errors.join('\n  '));
+}
+
+{
+  const errors = errorsFor(({ artifacts, papers }) => {
+    const record = recordFor('future-fermi-drift');
+    const attempt = postPolicyAttemptFor(record.slug);
+    attempt.metrics.forecast.expectedActiveMinutes = 61;
+    addFuture(artifacts, papers, record, attempt);
+  });
+  check('headline forecast that does not equal its Fermi components is rejected',
+    errors.some(e => e.includes('expectedActiveMinutes') && e.includes('Fermi component total')), errors.join('\n  '));
+}
+
+{
+  const errors = errorsFor(({ artifacts, papers }) => {
+    const record = recordFor('future-terminal-without-outcome');
+    const attempt = postPolicyAttemptFor(record.slug);
+    attempt.metrics.outcome = null;
+    addFuture(artifacts, papers, record, attempt);
+  });
+  check('terminal release without a metrics outcome is rejected',
+    errors.some(e => e.includes('.metrics.outcome') && e.includes('is required when attempt status is published')), errors.join('\n  '));
+}
+
+{
+  const errors = errorsFor(({ artifacts, papers }) => {
+    const record = recordFor('future-unexplained-telemetry');
+    const attempt = postPolicyAttemptFor(record.slug);
+    attempt.metrics.outcome.missingFields = attempt.metrics.outcome.missingFields.filter(item => item.field !== 'deduplicatedModelTokens');
+    addFuture(artifacts, papers, record, attempt);
+  });
+  check('null runtime telemetry without a field-specific reason is rejected',
+    errors.some(e => e.includes('missingFields') && e.includes('deduplicatedModelTokens')), errors.join('\n  '));
+}
+
+{
+  const errors = errorsFor(({ artifacts, papers }) => {
+    const record = recordFor('future-calibration-drift');
+    const attempt = postPolicyAttemptFor(record.slug);
+    attempt.metrics.outcome.forecastRatio = 0.5;
+    addFuture(artifacts, papers, record, attempt);
+  });
+  check('outcome calibration ratio that does not recompute is rejected',
+    errors.some(e => e.includes('forecastRatio') && e.includes('activeAgentMinutes / expectedActiveMinutes')), errors.join('\n  '));
 }
 
 {
@@ -872,6 +1061,49 @@ function extractFunction(source, name) {
   publicationIntegrity.preserveWorkLedger(live, candidate);
   const preservationErrors = publicationIntegrity.listedFailures();
   check('append-only work-ledger correction and revision remain permitted',
+    preservationErrors.length === 0, preservationErrors.join('\n  '));
+}
+
+{
+  publicationIntegrity.resetFailures();
+  const live = clone(sourceArtifacts.workLedger);
+  live.attempts = [postPolicyAttemptFor('published-metrics')];
+  const candidate = clone(live);
+  candidate.attempts[0].metrics.forecast.probabilityTargetClosure = 0.9;
+  candidate.attempts[0].revisions.push({ date: '2026-08-28', summary: 'Tried to improve the forecast after observing the result.' });
+  publicationIntegrity.preserveWorkLedger(live, candidate);
+  const preservationErrors = publicationIntegrity.listedFailures();
+  check('published research forecast cannot be rewritten after the outcome',
+    preservationErrors.some(error => error.includes('rewrote frozen research-metrics forecast')), preservationErrors.join('\n  '));
+}
+
+{
+  publicationIntegrity.resetFailures();
+  const live = clone(sourceArtifacts.workLedger);
+  live.attempts = [attemptFor('pre-policy-metrics-backfill')];
+  const candidate = clone(live);
+  candidate.attempts[0].metrics = postPolicyAttemptFor('pre-policy-metrics-backfill').metrics;
+  candidate.attempts[0].revisions.push({ date: '2026-08-28', summary: 'Tried to backfill a richer research-metrics receipt.' });
+  publicationIntegrity.preserveWorkLedger(live, candidate);
+  const preservationErrors = publicationIntegrity.listedFailures();
+  check('published pre-policy attempt cannot acquire reconstructed research metrics',
+    preservationErrors.some(error => error.includes('retrospective research-metrics receipt')), preservationErrors.join('\n  '));
+}
+
+{
+  publicationIntegrity.resetFailures();
+  const live = clone(sourceArtifacts.workLedger);
+  const active = postPolicyAttemptFor('terminal-outcome-append', 'release-candidate');
+  live.attempts = [active];
+  const candidate = clone(live);
+  const terminal = postPolicyAttemptFor('terminal-outcome-append', 'published');
+  candidate.attempts[0] = terminal;
+  candidate.attempts[0].statusHistory = [...active.statusHistory, terminal.statusHistory.at(-1)];
+  candidate.attempts[0].metrics.forecast = clone(active.metrics.forecast);
+  candidate.attempts[0].revisions.push({ date: '2026-08-28', summary: 'Appended the terminal outcome after publication readback.' });
+  publicationIntegrity.preserveWorkLedger(live, candidate);
+  const preservationErrors = publicationIntegrity.listedFailures();
+  check('null prospective outcome may be appended once at terminal status',
     preservationErrors.length === 0, preservationErrors.join('\n  '));
 }
 

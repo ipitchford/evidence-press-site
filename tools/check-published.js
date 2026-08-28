@@ -44,11 +44,13 @@ const INSTITUTIONAL_ARTIFACTS = [
   '/api/method-registry.json',
   '/api/ibe-ledger.json',
   '/api/work-ledger.json',
+  '/api/research-metrics-policy.json',
   '/api/schemas/operating-model.schema.json',
   '/api/schemas/method-registry.schema.json',
   '/api/schemas/ibe-ledger.schema.json',
   '/api/schemas/release-operating-model.schema.json',
   '/api/schemas/work-ledger.schema.json',
+  '/api/schemas/research-metrics-policy.schema.json',
   '/api/schemas/article.schema.json',
   '/api/v1/operating-model.json',
   '/api/v1/papers.json',
@@ -57,14 +59,16 @@ const INSTITUTIONAL_ARTIFACTS = [
   '/api/v1/method-registry.json',
   '/api/v1/ibe-ledger.json',
   '/api/v1/work-ledger.json',
+  '/api/v1/research-metrics-policy.json',
   '/api/v1/schemas/operating-model.schema.json',
   '/api/v1/schemas/method-registry.schema.json',
   '/api/v1/schemas/ibe-ledger.schema.json',
   '/api/v1/schemas/release-operating-model.schema.json',
   '/api/v1/schemas/work-ledger.schema.json',
+  '/api/v1/schemas/research-metrics-policy.schema.json',
   '/api/v1/schemas/article.schema.json'
 ];
-const INSTITUTIONAL_PAGES = ['/operating-model/'];
+const INSTITUTIONAL_PAGES = ['/operating-model/', '/research-metrics/'];
 
 const red = s => `\x1b[31m${s}\x1b[0m`;
 const green = s => `\x1b[32m${s}\x1b[0m`;
