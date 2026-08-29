@@ -19,6 +19,9 @@ const {
 } = require('./tools/research-graph');
 const { loadAtlasRoadmap, validateAtlasRoadmap } = require('./tools/atlas-roadmap');
 const { loadAtlasProposals, validateRegister: validateAtlasProposalRegister } = require('./tools/atlas-proposals');
+const { loadClaimAssurance, buildClaimAssuranceRegister } = require('./tools/claim-assurance');
+const { loadImplementationStatus, validateImplementationStatus } = require('./tools/implementation-status');
+const { loadBaselineReceipt, validateBaselineReceipt } = require('./tools/baseline-receipt');
 const { loadArticles } = require('./tools/articles');
 
 const ROOT = __dirname;
@@ -33,6 +36,13 @@ const ATLAS_ROADMAP_ERRORS = validateAtlasRoadmap(ATLAS_ROADMAP);
 if (ATLAS_ROADMAP_ERRORS.length) throw new Error(`Atlas roadmap invalid: ${ATLAS_ROADMAP_ERRORS.join('; ')}`);
 const ATLAS_PROPOSAL_SCHEMA = JSON.parse(fs.readFileSync(path.join(ROOT, 'schemas', 'atlas-proposal.schema.json'), 'utf8'));
 const ATLAS_PROPOSAL_REGISTER_SCHEMA = JSON.parse(fs.readFileSync(path.join(ROOT, 'schemas', 'atlas-proposal-register.schema.json'), 'utf8'));
+const IMPLEMENTATION_STATUS_ARTIFACTS = loadImplementationStatus(ROOT);
+const BASELINE_RECEIPT = loadBaselineReceipt(ROOT);
+const BASELINE_RECEIPT_SCHEMA = JSON.parse(fs.readFileSync(path.join(ROOT, 'schemas', 'baseline-receipt.schema.json'), 'utf8'));
+const CLAIM_ASSURANCE_SCHEMAS = Object.fromEntries([
+  'claim.schema.json', 'assurance-task.schema.json', 'replay-profile.schema.json',
+  'assurance-receipt.schema.json', 'assurance-event.schema.json'
+].map(name => [name, JSON.parse(fs.readFileSync(path.join(ROOT, 'schemas', name), 'utf8'))]));
 const PAGE_STRUCTURE_POLICY = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'PAGE_STRUCTURE_POLICY.json'), 'utf8'));
 const PRESENTATION_EVENTS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'PRESENTATION_EVENTS.json'), 'utf8'));
 const AUDIO_PROVENANCE_STATUS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'AUDIO_PROVENANCE_STATUS.json'), 'utf8'));
@@ -687,6 +697,19 @@ function linkset(p) {
 
 validatePapers(papers);
 validateOperatingModel({ root: ROOT, papers, artifacts: OPERATING_ARTIFACTS });
+const CLAIM_ASSURANCE_RESULT = buildClaimAssuranceRegister(loadClaimAssurance(ROOT), { root: ROOT, papers });
+if (CLAIM_ASSURANCE_RESULT.errors.length) {
+  throw new Error(`Claim assurance records failed validation:\n- ${CLAIM_ASSURANCE_RESULT.errors.join('\n- ')}`);
+}
+const CLAIM_ASSURANCE = CLAIM_ASSURANCE_RESULT.register;
+const IMPLEMENTATION_STATUS_ERRORS = validateImplementationStatus(IMPLEMENTATION_STATUS_ARTIFACTS.status, { root: ROOT });
+if (IMPLEMENTATION_STATUS_ERRORS.length) {
+  throw new Error(`Implementation-status matrix failed validation:\n- ${IMPLEMENTATION_STATUS_ERRORS.join('\n- ')}`);
+}
+const BASELINE_RECEIPT_ERRORS = validateBaselineReceipt(BASELINE_RECEIPT);
+if (BASELINE_RECEIPT_ERRORS.length) {
+  throw new Error(`Frozen baseline receipt failed validation:\n- ${BASELINE_RECEIPT_ERRORS.join('\n- ')}`);
+}
 const RELATIONSHIP_REGISTRY_ERRORS = validateRelationshipRegistry(RELATIONSHIP_ARTIFACTS.registry);
 if (RELATIONSHIP_REGISTRY_ERRORS.length) {
   throw new Error(`Evidence Atlas relationship registry failed validation:\n- ${RELATIONSHIP_REGISTRY_ERRORS.join('\n- ')}`);
@@ -713,6 +736,13 @@ const ATLAS_PROPOSALS = ATLAS_PROPOSAL_ARTIFACTS.register;
 const ATLAS_PROPOSAL_REGISTER_ERRORS = validateAtlasProposalRegister(ATLAS_PROPOSALS);
 if (ATLAS_PROPOSAL_REGISTER_ERRORS.length) {
   throw new Error(`Evidence Atlas assembled proposal register failed validation:\n- ${ATLAS_PROPOSAL_REGISTER_ERRORS.join('\n- ')}`);
+}
+const ATLAS_CURRENT_BASELINE_ERRORS = validateAtlasRoadmap(ATLAS_ROADMAP, {
+  graph: RESEARCH_GRAPH,
+  proposalRegister: ATLAS_PROPOSALS
+});
+if (ATLAS_CURRENT_BASELINE_ERRORS.length) {
+  throw new Error(`Evidence Atlas roadmap baseline failed current-corpus validation:\n- ${ATLAS_CURRENT_BASELINE_ERRORS.join('\n- ')}`);
 }
 
 
@@ -784,7 +814,7 @@ const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
     <p>${esc(CONFIG.siteName)} publishes evidence-attached research releases and a clearly separate collection of essays, commentary and research notes. Each page states its own evidence boundary.</p>
-    <p>Original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/math-objects.json">mathematical objects</a> · <a href="/api/citations.json">citation graph</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
+    <p>Original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/math-objects.json">mathematical objects</a> · <a href="/api/claims.json">claims</a> · <a href="/api/assurance-tasks.json">assurance tasks</a> · <a href="/api/citations.json">citation graph</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
 </footer>
@@ -1303,6 +1333,28 @@ ${(p.relatedWorks || []).map((w, index) => `${index + 1}. ${w.citation}${w.url ?
 `;
 }
 
+function claimAssuranceOf(p) {
+  const claim = CLAIM_ASSURANCE.claims.find(item => item.release.slug === p.slug);
+  if (!claim) return null;
+  const tasks = CLAIM_ASSURANCE.tasks.filter(task => task.claimId === claim.claimId);
+  const taskByKey = new Map(tasks.map(task => [task.taskKey, task]));
+  const openProblemTasks = ((p.claimAssurance || {}).openProblemBindings || []).map(binding => ({
+    openProblemIndex: binding.openProblemIndex,
+    taskIds: binding.taskKeys.map(key => taskByKey.get(key).taskId)
+  }));
+  return {
+    claimId: claim.claimId,
+    claimKey: claim.claimKey,
+    claimVersion: claim.claimVersion,
+    statementFingerprint: claim.statementFingerprint,
+    apiUrl: `${BASE}/api/claims/${claim.claimKey}.json`,
+    eventsUrl: `${BASE}/api/claims/${claim.claimKey}/events.jsonl`,
+    taskIds: tasks.map(task => task.taskId),
+    openProblemTasks,
+    claimCeiling: CLAIM_ASSURANCE.claimCeiling
+  };
+}
+
 function paperApi(p) {
   const publicReviews = (p.reviews || []).filter(r => r.status === 'published');
   const assurance = assuranceOf(p);
@@ -1361,6 +1413,7 @@ function paperApi(p) {
     openProblems: p.openProblems || [],
     mathObjects: p.mathObjects || [],
     relatedWorks: normalizedRelatedWorks(p),
+    claimAssurance: claimAssuranceOf(p),
     ...(p.operatingModel ? { operatingModel: p.operatingModel } : {})
   };
 }
@@ -2177,7 +2230,7 @@ function llms() {
   const lines = [
     `# ${CONFIG.siteName}`, '',
     `> ${CONFIG.tagline}. Every release describes an unrefereed research result with an open, replayable evidence package (code, data, exact certificates, pinned environments, SHA-256 manifests) archived with a DOI. Nothing on this site is peer reviewed; each page states exactly what has and has not been verified, and lists open follow-up problems in machine-readable form.`, '',
-    `Key endpoints: full research-release index at /api/papers.json (JSON Schema at /api/schema.json); exact searchable mathematical objects at /api/math-objects.json; DOI-to-DOI citation synchronization plan at /api/citations.json; separate article index at /api/articles.json (item schema at /api/schemas/article.schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); quarantined research-tip register at /api/atlas-proposals.json (schemas at /api/schemas/atlas-proposal.schema.json and /api/schemas/atlas-proposal-register.schema.json); relationship vocabulary at /api/relationship-registry.json; Atlas priorities and review log at /api/atlas-roadmap.json; reader-first page contract at /api/page-structure-policy.json; non-scholarly maintenance history at /api/presentation-events.json; release-audio provenance status at /api/audio-provenance-status.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; per-release JSON at /releases/<slug>/paper.json; per-article JSON at the canonical article URL plus article.json; release RSS at /feed.xml; article RSS at /articles/feed.xml. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
+    `Key endpoints: full research-release index at /api/papers.json (JSON Schema at /api/schema.json); exact searchable mathematical objects at /api/math-objects.json; claim-level assurance pilot at /api/claims.json with bounded tasks at /api/assurance-tasks.json, replay profiles at /api/replay-profiles.json, receipts at /api/assurance-receipts.json and append-only events at /api/assurance-events.jsonl; DOI-to-DOI citation synchronization plan at /api/citations.json; separate article index at /api/articles.json (item schema at /api/schemas/article.schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); quarantined research-tip register at /api/atlas-proposals.json (schemas at /api/schemas/atlas-proposal.schema.json and /api/schemas/atlas-proposal-register.schema.json); relationship vocabulary at /api/relationship-registry.json; Atlas priorities and review log at /api/atlas-roadmap.json; reader-first page contract at /api/page-structure-policy.json; non-scholarly maintenance history at /api/presentation-events.json; release-audio provenance status at /api/audio-provenance-status.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; implementation scope at /api/implementation-status.json; per-release JSON at /releases/<slug>/paper.json; per-article JSON at the canonical article URL plus article.json; release RSS at /feed.xml; article RSS at /articles/feed.xml. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
     '## Releases', '',
     ...papers.map(p => `- [${p.shortTitle}](${urlOf(p)}): ${p.oneLine} (PDF: ${p.pdfUrl || 'n/a'}; DOI: https://doi.org/${p.doi}; code: ${p.repoUrl}; status: unrefereed)`),
     '',
@@ -2188,6 +2241,10 @@ function llms() {
     '## Machine-readable', '',
     `- [papers.json](${BASE}/api/papers.json): full structured index — titles, DOIs, PDF links, verification status, provenance, key results, keywords, media, and open follow-up problems for every release`,
     `- [math-objects.json](${BASE}/api/math-objects.json): exact plain-text and LaTeX statements, formulas, bounds, recurrences and sequences with release DOI, version, scope and candidate status preserved`,
+    `- [claims.json](${BASE}/api/claims.json): exact content-derived claim identities, natural-language and LaTeX statements, non-claims, six separately scoped obligations and independent status dimensions; the first pilot is z(20)=6`,
+    `- [assurance-tasks.json](${BASE}/api/assurance-tasks.json): bounded zero-required-cash-cost integrity, replay, review, clean-room reproduction and formalisation tasks with explicit acceptance and rejection criteria`,
+    `- [assurance-receipts.json](${BASE}/api/assurance-receipts.json): artifact-bound replay evidence with mandatory independence disclosure; a receipt does not silently promote the claim`,
+    `- [assurance-events.jsonl](${BASE}/api/assurance-events.jsonl): append-only claim history in sequence- and predecessor-bound JSON Lines`,
     `- [citations.json](${BASE}/api/citations.json): deduplicated DOI-to-DOI Cites relationships derived from canonical doi.org references; a synchronization plan, not a claim that DataCite has accepted them`,
     `- [articles.json](${BASE}/api/articles.json): distinct communication-layer index — titles, dates, topics, source anchors, scope boundaries, correction history and edit links`,
     `- [research-graph.json](${BASE}/api/research-graph.json): releases, methods, broad clusters, evidence-backed lineages, dependencies and internal citations, with content-derived identities, source pointers and inference limits`,
@@ -2202,6 +2259,7 @@ function llms() {
     `- [page-structure-policy.json](${BASE}/api/page-structure-policy.json): versioned reader-first page functions, variants, fixtures and grandfathering rule`,
     `- [presentation-events.json](${BASE}/api/presentation-events.json): routine media and deployment maintenance kept separate from scholarly corrections`,
     `- [audio-provenance-status.json](${BASE}/api/audio-provenance-status.json): per-release transcript and provider/model/voice provenance status without guessing missing legacy facts`,
+    `- [implementation-status.json](${BASE}/api/implementation-status.json): honest pilot, partial and deferred status for the seven next-iteration infrastructure initiatives, including the zero-required-cash-cost boundary`,
     `- [llms-full.txt](${BASE}/llms-full.txt): complete text of every release and article in one Markdown file`,
     '',
     '## About', '',
@@ -2279,7 +2337,10 @@ function apiStability() {
         `${BASE}/api/papers.json`, `${BASE}/api/schema.json`, `${BASE}/api/math-objects.json`, `${BASE}/api/citations.json`, `${BASE}/api/articles.json`, `${BASE}/api/schemas/article.schema.json`,
         `${BASE}/api/research-graph.json`, `${BASE}/api/relationship-registry.json`, `${BASE}/api/atlas-roadmap.json`,
         `${BASE}/api/operating-model.json`, `${BASE}/api/method-registry.json`, `${BASE}/api/ibe-ledger.json`, `${BASE}/api/work-ledger.json`,
-        `${BASE}/api/page-structure-policy.json`, `${BASE}/api/presentation-events.json`, `${BASE}/api/audio-provenance-status.json`
+        `${BASE}/api/page-structure-policy.json`, `${BASE}/api/presentation-events.json`, `${BASE}/api/audio-provenance-status.json`,
+        `${BASE}/api/claims.json`, `${BASE}/api/assurance-tasks.json`, `${BASE}/api/replay-profiles.json`,
+        `${BASE}/api/assurance-receipts.json`, `${BASE}/api/assurance-events.jsonl`, `${BASE}/api/implementation-status.json`,
+        `${BASE}/api/baselines/evidence-press-stage0-2026-08-29.json`
       ]
     },
     guarantees: [
@@ -2290,7 +2351,7 @@ function apiStability() {
     ],
     fieldStability: {
       stable: ['slug', 'title', 'url', 'doi', 'doiUrl', 'datePublished', 'version', 'authors', 'license', 'status', 'keywords', 'verification', 'zenodoUrl', 'repoUrl'],
-      extensible: ['assurance', 'media', 'provenance', 'reviews', 'relatedWorks', 'mathObjects', 'openProblems', 'keyResults', 'operatingModel', 'publicCorrections', 'pageStructureVersion', 'pageStructureVariant', 'pageStructureWaivers', 'recordMaturity', 'metadataProvenance', 'grandfatheredAtSchemaVersion'],
+      extensible: ['assurance', 'claimAssurance', 'media', 'provenance', 'reviews', 'relatedWorks', 'mathObjects', 'openProblems', 'keyResults', 'operatingModel', 'publicCorrections', 'pageStructureVersion', 'pageStructureVariant', 'pageStructureWaivers', 'recordMaturity', 'metadataProvenance', 'grandfatheredAtSchemaVersion'],
       experimental: ['assurance[].question', 'assurance[].evidenceUrl', 'researchGraph.proposalRegister']
     },
     articleApi: {
@@ -2362,19 +2423,26 @@ function api() {
     count: articles.length,
     articles: articles.map(articleRecord)
   };
-  const mathematicalObjects = papers.flatMap(p => (p.mathObjects || []).map(object => ({
-    schemaVersion: MATH_OBJECT_SCHEMA_VERSION,
-    releaseSlug: p.slug,
-    releaseTitle: p.title,
-    releaseUrl: urlOf(p),
-    releaseDoi: p.doi,
-    releaseVersion: p.version,
-    releaseStatus: p.status || 'unrefereed-candidate',
-    ...object,
-    id: `ep-math:${p.slug}:${object.id}`,
-    sequenceTerms: object.sequenceTerms || [],
-    oeisId: object.oeisId || null
-  })));
+  const mathematicalObjects = papers.flatMap(p => {
+    const binding = claimAssuranceOf(p);
+    const boundObjectIds = new Set(((p.claimAssurance || {}).mathObjectIds || []));
+    return (p.mathObjects || []).map(object => ({
+      schemaVersion: MATH_OBJECT_SCHEMA_VERSION,
+      releaseSlug: p.slug,
+      releaseTitle: p.title,
+      releaseUrl: urlOf(p),
+      releaseDoi: p.doi,
+      releaseVersion: p.version,
+      releaseStatus: p.status || 'unrefereed-candidate',
+      ...object,
+      id: `ep-math:${p.slug}:${object.id}`,
+      sequenceTerms: object.sequenceTerms || [],
+      oeisId: object.oeisId || null,
+      claimId: binding && boundObjectIds.has(object.id) ? binding.claimId : null,
+      claimUrl: binding && boundObjectIds.has(object.id) ? binding.apiUrl : null,
+      assuranceTaskIds: binding && boundObjectIds.has(object.id) ? binding.taskIds : []
+    }));
+  });
   const mathObjectsDoc = {
     schemaVersion: MATH_OBJECT_SCHEMA_VERSION,
     site: CONFIG.siteName,
@@ -2411,6 +2479,22 @@ function api() {
     count: citations.length,
     citations
   };
+  const assuranceRegister = (recordType, itemSchema, field, items) => ({
+    schemaVersion: '1.0',
+    recordType,
+    site: CONFIG.siteName,
+    claimCeiling: CLAIM_ASSURANCE.claimCeiling,
+    itemSchema: `${BASE}/api/schemas/${itemSchema}`,
+    count: items.length,
+    [field]: items
+  });
+  const claimDocs = {
+    'claim-assurance.json': CLAIM_ASSURANCE,
+    'claims.json': assuranceRegister('claim-register', 'claim.schema.json', 'claims', CLAIM_ASSURANCE.claims),
+    'assurance-tasks.json': assuranceRegister('assurance-task-register', 'assurance-task.schema.json', 'tasks', CLAIM_ASSURANCE.tasks),
+    'replay-profiles.json': assuranceRegister('replay-profile-register', 'replay-profile.schema.json', 'replayProfiles', CLAIM_ASSURANCE.replayProfiles),
+    'assurance-receipts.json': assuranceRegister('assurance-receipt-register', 'assurance-receipt.schema.json', 'receipts', CLAIM_ASSURANCE.receipts)
+  };
   write('api/build.json', JSON.stringify(BUILD, null, 2) + '\n');
   write('api/stability.json', JSON.stringify(apiStability(), null, 2) + '\n');
   const governanceArtifacts = [
@@ -2422,6 +2506,8 @@ function api() {
     ['atlas-roadmap.json', ATLAS_ROADMAP],
     ['atlas-proposals.json', ATLAS_PROPOSALS],
     ['research-graph.json', RESEARCH_GRAPH],
+    ['implementation-status.json', IMPLEMENTATION_STATUS_ARTIFACTS.status],
+    ['baselines/evidence-press-stage0-2026-08-29.json', BASELINE_RECEIPT],
     ['page-structure-policy.json', PAGE_STRUCTURE_POLICY],
     ['presentation-events.json', PRESENTATION_EVENTS],
     ['audio-provenance-status.json', AUDIO_PROVENANCE_STATUS]
@@ -2441,12 +2527,32 @@ function api() {
     ['atlas-roadmap.schema.json', ATLAS_ROADMAP_SCHEMA],
     ['atlas-proposal.schema.json', ATLAS_PROPOSAL_SCHEMA],
     ['atlas-proposal-register.schema.json', ATLAS_PROPOSAL_REGISTER_SCHEMA],
-    ['research-graph.schema.json', RELATIONSHIP_ARTIFACTS.schema]
+    ['research-graph.schema.json', RELATIONSHIP_ARTIFACTS.schema],
+    ['implementation-status.schema.json', IMPLEMENTATION_STATUS_ARTIFACTS.schema],
+    ['baseline-receipt.schema.json', BASELINE_RECEIPT_SCHEMA],
+    ...Object.entries(CLAIM_ASSURANCE_SCHEMAS)
   ];
   for (const [name, artifact] of governanceSchemas) {
     const payload = JSON.stringify(artifact, null, 2) + '\n';
     write(`api/schemas/${name}`, payload);
     write(`api/v1/schemas/${name}`, payload);
+  }
+  for (const [name, artifact] of Object.entries(claimDocs)) {
+    const payload = JSON.stringify(artifact, null, 2) + '\n';
+    write(`api/${name}`, payload);
+    write(`api/v1/${name}`, payload);
+  }
+  const assuranceEventsPayload = CLAIM_ASSURANCE.events.map(event => JSON.stringify(event)).join('\n') + '\n';
+  write('api/assurance-events.jsonl', assuranceEventsPayload);
+  write('api/v1/assurance-events.jsonl', assuranceEventsPayload);
+  for (const claim of CLAIM_ASSURANCE.claims) {
+    const claimPayload = JSON.stringify(claim, null, 2) + '\n';
+    const events = CLAIM_ASSURANCE.events.filter(event => event.claimId === claim.claimId);
+    const eventPayload = events.map(event => JSON.stringify(event)).join('\n') + '\n';
+    write(`api/claims/${claim.claimKey}.json`, claimPayload);
+    write(`api/v1/claims/${claim.claimKey}.json`, claimPayload);
+    write(`api/claims/${claim.claimKey}/events.jsonl`, eventPayload);
+    write(`api/v1/claims/${claim.claimKey}/events.jsonl`, eventPayload);
   }
   /* Versioned routes carry the same content; the unversioned paths remain
      because they are already published and must never disappear. */
@@ -2467,7 +2573,7 @@ function api() {
     $id: `${BASE}/api/schemas/math-object.schema.json`,
     title: 'Evidence Press searchable mathematical object',
     type: 'object',
-    required: ['schemaVersion', 'id', 'releaseSlug', 'releaseTitle', 'releaseUrl', 'releaseDoi', 'releaseVersion', 'releaseStatus', 'kind', 'label', 'plainText', 'status', 'scope', 'sequenceTerms', 'oeisId'],
+    required: ['schemaVersion', 'id', 'releaseSlug', 'releaseTitle', 'releaseUrl', 'releaseDoi', 'releaseVersion', 'releaseStatus', 'kind', 'label', 'plainText', 'status', 'scope', 'sequenceTerms', 'oeisId', 'claimId', 'claimUrl', 'assuranceTaskIds'],
     additionalProperties: false,
     properties: {
       schemaVersion: { const: MATH_OBJECT_SCHEMA_VERSION },
@@ -2485,7 +2591,10 @@ function api() {
       status: { enum: MATH_OBJECT_STATUSES },
       scope: { type: 'string', minLength: 1 },
       sequenceTerms: { type: 'array', items: { type: 'string', minLength: 1 } },
-      oeisId: { type: ['string', 'null'], pattern: '^A\\d{6}$' }
+      oeisId: { type: ['string', 'null'], pattern: '^A\\d{6}$' },
+      claimId: { type: ['string', 'null'], pattern: '^ep-claim:sha256:[0-9a-f]{64}$' },
+      claimUrl: { type: ['string', 'null'], format: 'uri' },
+      assuranceTaskIds: { type: 'array', items: { type: 'string', pattern: '^ep-task:' } }
     }
   };
   const mathObjectSchemaPayload = JSON.stringify(mathObjectSchema, null, 2) + '\n';
@@ -2651,6 +2760,33 @@ function api() {
           grandfatheredAtSchemaVersion: { type: ['string', 'null'] },
           keyResults: { type: 'array', items: { type: 'string' } },
           mathObjects: { type: 'array', items: { type: 'object' } },
+          claimAssurance: {
+            type: ['object', 'null'],
+            additionalProperties: false,
+            required: ['claimId', 'claimKey', 'claimVersion', 'statementFingerprint', 'apiUrl', 'eventsUrl', 'taskIds', 'openProblemTasks', 'claimCeiling'],
+            properties: {
+              claimId: { type: 'string', pattern: '^ep-claim:sha256:[0-9a-f]{64}$' },
+              claimKey: { type: 'string', pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$' },
+              claimVersion: { type: 'string', pattern: '^\\d+\\.\\d+\\.\\d+$' },
+              statementFingerprint: { type: 'string', pattern: '^sha256:[0-9a-f]{64}$' },
+              apiUrl: { type: 'string', format: 'uri' },
+              eventsUrl: { type: 'string', format: 'uri' },
+              taskIds: { type: 'array', items: { type: 'string', pattern: '^ep-task:' } },
+              openProblemTasks: {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  additionalProperties: false,
+                  required: ['openProblemIndex', 'taskIds'],
+                  properties: {
+                    openProblemIndex: { type: 'integer', minimum: 0 },
+                    taskIds: { type: 'array', minItems: 1, items: { type: 'string', pattern: '^ep-task:' } }
+                  }
+                }
+              },
+              claimCeiling: { type: 'string', minLength: 1 }
+            }
+          },
           evidencePackage: { type: 'string' },
           operatingModel: { $ref: '#/$defs/releaseOperatingModel' },
           openProblems: { type: 'array', items: { type: 'string' }, description: 'Concrete follow-up research problems, well-posed enough to start on' },

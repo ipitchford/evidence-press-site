@@ -72,6 +72,12 @@ jobs:
       - name: Atlas proposal quarantine and hostile controls
         run: node tools/test-atlas-proposals.js
 
+      - name: Claim assurance, frozen baseline and zero-cost implementation status
+        run: |
+          node tools/test-claim-assurance.js
+          node tools/test-baseline-receipt.js
+          node tools/test-implementation-status.js
+
       - name: Verify protocol source and regenerate ignored receipts
         run: |
           node protocols/tools/make-manifest.js
@@ -86,6 +92,9 @@ jobs:
 
       - name: Atlas proposal source/public parity
         run: node tools/test-atlas-proposals.js --built
+
+      - name: Claim assurance source/public parity
+        run: node tools/test-claim-assurance.js --built
 
       - name: Protocol candidate/production byte-integrity gate
         run: |

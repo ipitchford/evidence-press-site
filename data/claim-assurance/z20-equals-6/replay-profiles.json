@@ -1,0 +1,43 @@
+[
+  {
+    "schemaVersion": "1.0",
+    "recordType": "replay-profile",
+    "profileId": "ep-profile:z20-equals-6:integrity:v1",
+    "profileKey": "integrity",
+    "profileVersion": "1.0.0",
+    "claimId": "ep-claim:sha256:77529f500af949b9ee0b76694fc022d8dc06d9779628df896888b6f2c8470bb1",
+    "claimVersion": "1.0.0",
+    "taskIds": ["ep-task:z20-equals-6:integrity:v1"],
+    "platforms": ["POSIX system with shasum or sha256sum"],
+    "prerequisites": ["A local checkout of tag candidate-2026-07-26", "No network access during execution"],
+    "commands": [
+      {"cwd": ".", "argv": ["shasum", "-a", "256", "-c", "RELEASE_MANIFEST.sha256"]},
+      {"cwd": "certificates", "argv": ["shasum", "-a", "256", "-c", "MANIFEST.sha256"]}
+    ],
+    "resources": {"maxWallMinutes": 15, "maxMemoryMiB": 256, "networkPolicy": "forbidden", "cashCost": "zero-required"},
+    "successCriteria": ["Every listed file reports OK and both commands exit zero."],
+    "failureCriteria": ["Any missing file, digest mismatch or nonzero command exit."],
+    "assuranceCeiling": "Passing establishes byte identity with the manifests only; it does not establish theorem truth, semantic correspondence, novelty, independence or review.",
+    "license": "CC0-1.0"
+  },
+  {
+    "schemaVersion": "1.0",
+    "recordType": "replay-profile",
+    "profileId": "ep-profile:z20-equals-6:portable-replay:v1",
+    "profileKey": "portable-replay",
+    "profileVersion": "1.0.0",
+    "claimId": "ep-claim:sha256:77529f500af949b9ee0b76694fc022d8dc06d9779628df896888b6f2c8470bb1",
+    "claimVersion": "1.0.0",
+    "taskIds": ["ep-task:z20-equals-6:producer-portable-replay:v1"],
+    "platforms": ["Python 3 on a POSIX system"],
+    "prerequisites": ["A local checkout of tag candidate-2026-07-26", "Python 3", "NumPy", "No network access during execution"],
+    "commands": [
+      {"cwd": ".", "argv": ["python3", "verification/verify_certificate.py"]}
+    ],
+    "resources": {"maxWallMinutes": 90, "maxMemoryMiB": 2048, "networkPolicy": "forbidden", "cashCost": "zero-required"},
+    "successCriteria": ["The verifier exits zero after both cores pass formula, semantic, hash and RUP checks."],
+    "failureCriteria": ["The verifier exits nonzero, a required verdict is absent or any reported check fails."],
+    "assuranceCeiling": "Passing is a producer-lineage portable replay. It does not constitute independent reproduction, a formal semantic proof, complete theorem verification, novelty review or peer review.",
+    "license": "CC0-1.0"
+  }
+]

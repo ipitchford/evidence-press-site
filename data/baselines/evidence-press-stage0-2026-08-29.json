@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0",
+  "recordType": "implementation-baseline-receipt",
+  "receiptId": "ep-baseline:sha256:051181ee233e1b8687be139090aeb6deaadb1285f690dad14c5e255d0cacf885",
+  "frozenAt": "2026-08-29",
+  "source": {
+    "remoteRef": "origin/main",
+    "commit": "90a60e942d73ac34cca6abd5311c3c03ec8e2108",
+    "commitDate": "2026-08-28T13:59:46+01:00",
+    "isolatedCleanCheckout": true
+  },
+  "corpus": {
+    "releaseCount": 37,
+    "methodCount": 13,
+    "clusterCount": 24,
+    "lineageCount": 5,
+    "acceptedRelationshipCount": 261,
+    "directInterReleaseCount": 10,
+    "usesMethodCount": 197,
+    "clusterMembershipCount": 39,
+    "lineageMembershipCount": 15,
+    "publishedProposalCount": 4,
+    "methodPrevalence": {"adversarial-controls": 29, "structural-compression": 26}
+  },
+  "tests": [
+    {"command": ["node", "tools/test-atlas-roadmap.js"], "outcome": "passed"},
+    {"command": ["node", "tools/test-research-graph.js"], "outcome": "passed"},
+    {"command": ["node", "tools/test-atlas-proposals.js"], "outcome": "passed"},
+    {"command": ["node", "tools/test-operating-model.js"], "outcome": "passed"},
+    {"command": ["node", "tools/check-operating-model.js"], "outcome": "passed"}
+  ],
+  "fileHashes": [
+    {"path": "data/ATLAS_ROADMAP.json", "sha256": "sha256:37ab1e131474e46dec07e8e6aaf421eb4f80f8d99797c07aff492d66c22c3510"},
+    {"path": "data/METHOD_REGISTRY.json", "sha256": "sha256:75d7be22c8e20ca8676ada51ed7594b4c05b85f550473c06bd0c8adbb7d6f24e"},
+    {"path": "data/RELATIONSHIP_REGISTRY.json", "sha256": "sha256:c797ae2ecdab81c38b99934a8dc6de6afd8f8fe4224e4d64bad81ff373527527"},
+    {"path": "data/OPERATING_MODEL.json", "sha256": "sha256:ea8309994c97dad344aab08bc51e2f49449929a364c43542cf90c9877b7be724"},
+    {"path": "data/IBE_LEDGER.json", "sha256": "sha256:4ba05fc7b65130a0860737c9cf1b07c51218ddd4e43c9c4fa593c8d76e43fabc"},
+    {"path": "data/WORK_LEDGER.json", "sha256": "sha256:1b41d2a60ede827f78e167fafc39f3efa7355732ef6cbeca8a0e0f3082298567"},
+    {"path": "tools/research-graph.js", "sha256": "sha256:2c76063ab9da9f18cd359a76781ade1fc2e3d4e617272f79749d6b258bee7194"},
+    {"path": "tools/test-research-graph.js", "sha256": "sha256:246b13a886a85909120b47daee3691671ea88cdb1851fe68d2384fd798d7331c"},
+    {"path": "tools/atlas-roadmap.js", "sha256": "sha256:dfc97d8a2ec891572ebfb7e51fb0c486d6b4cabb0c98065201ab8981509318a4"},
+    {"path": "tools/test-atlas-roadmap.js", "sha256": "sha256:fc7307bcf4a55485ce6cec0ae57d7e7b267eabc0780f3c548be6f7c390b28c88"},
+    {"path": "papers/z20-equals-6/meta.json", "sha256": "sha256:c9bd356d93958168e1dba822efa36e47ba0b940c532c859f2a8f15de23ef8aa7"},
+    {"path": "docs/EVIDENCE_ATLAS.md", "sha256": "sha256:f681c7a3dcf3cf99b1c1e94b6eedbdc73b3865a88a6c678a626aa5a46ea30845"}
+  ],
+  "boundaries": [
+    "This receipt freezes repository implementation state, not scientific correctness, novelty, independence, peer review or impact.",
+    "The baseline tests validate repository structure and declared invariants; they do not prove any mathematical claim.",
+    "The direct inter-release total reflects the pre-repair extractor and is preserved as historical evidence, not as the corrected current total."
+  ],
+  "cashCost": "zero-required",
+  "license": "CC0-1.0"
+}

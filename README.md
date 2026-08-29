@@ -107,7 +107,10 @@ If a published page turns out to be wrong, add an entry to that release's `corre
 - `/api/presentation-events.json` — routine communication and deployment history kept separate from scholarly corrections
 - `/api/audio-provenance-status.json` — transcript and provider/model/voice provenance status without inferred legacy facts
 - `/api/atlas-proposals.json` — quarantined research tips from people and agents, with content-derived IDs, cheap falsifiers, separate assessments, expiry and append-only review receipts
-- `/api/schemas/*.schema.json` — schemas for all operating artifacts and prospective release records
+- `/api/claims.json`, `/api/assurance-tasks.json`, `/api/replay-profiles.json`, `/api/assurance-receipts.json` and `/api/assurance-events.jsonl` — the static claim-level assurance pilot, with exact statements, non-claims, bounded zero-required-cash tasks, artifact-bound receipts and append-only history
+- `/api/implementation-status.json` — honest pilot, partial and deferred status for the seven next-iteration infrastructure initiatives
+- `/api/baselines/evidence-press-stage0-2026-08-29.json` — content-derived frozen receipt for the pre-implementation corpus baseline
+- `/api/schemas/*.schema.json` — schemas for operating artifacts, prospective release records and claim-level assurance records
 - `/api/stability.json` — field stability, compatibility guarantees and deprecation procedure
 - `/api/build.json` — software version, source commit and schema version for this build
 - `/releases/<slug>/ro-crate-metadata.json` — RO-Crate 1.1 package

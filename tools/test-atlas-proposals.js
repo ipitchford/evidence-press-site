@@ -37,8 +37,10 @@ const loaded = loadAtlasProposals(ROOT, graph);
 ok(loaded.errors.length === 0, 'canonical proposal files pass semantic validation', loaded.errors.join('; '));
 ok(loaded.register && validateRegister(loaded.register).length === 0,
   'assembled proposal register has a content-derived identity');
-ok(loaded.proposals.length === 4 && loaded.register.stats.total === 4,
-  'four quarantined research proposals are counted exactly once');
+const proposalSourceCount = fs.readdirSync(path.join(ROOT, 'data', 'atlas-proposals'))
+  .filter(name => name.endsWith('.json')).length;
+ok(loaded.proposals.length === proposalSourceCount && loaded.register.stats.total === proposalSourceCount,
+  'every quarantined research-proposal source file is counted exactly once');
 ok(loaded.register.stats.byState['awaiting-review'] === 1 &&
   loaded.register.stats.byState.deferred === 1 &&
   loaded.register.stats.byState.merged === 2 &&

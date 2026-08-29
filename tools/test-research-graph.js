@@ -8,6 +8,9 @@ const {
   buildResearchGraph,
   validateResearchGraph,
   validateRelationshipRegistry,
+  buildReleaseIdentityIndex,
+  internalReleaseSlug,
+  normalizeDoiReference,
   edgeId
 } = require('./research-graph');
 
@@ -19,6 +22,14 @@ const registryErrors = validateRelationshipRegistry(relationshipArtifacts.regist
 const papers = fs.readdirSync(path.join(ROOT, 'papers'))
   .filter(slug => fs.existsSync(path.join(ROOT, 'papers', slug, 'meta.json')))
   .map(slug => ({ slug, ...JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', slug, 'meta.json'), 'utf8')) }));
+const doiFixture = JSON.parse(fs.readFileSync(path.join(ROOT, 'tests', 'fixtures', 'research-graph', 'internal-doi-relations.json'), 'utf8'));
+const releaseIdentityIndex = buildReleaseIdentityIndex(papers);
+const expectedCitationCount = papers.reduce((count, paper) => count + (paper.relatedWorks || []).filter(work => {
+  const slug = internalReleaseSlug(work.url, BASE, releaseIdentityIndex);
+  return slug && slug !== paper.slug && papers.some(candidate => candidate.slug === slug);
+}).length, 0);
+const expectedParentCount = papers.reduce((count, paper) => count +
+  (((paper.operatingModel || {}).parentLinks || []).filter(parent => parent.legacyReleaseSlug).length), 0);
 
 let failures = 0;
 function ok(condition, label, detail = '') {
@@ -47,14 +58,24 @@ ok(graph.stats.clusterCount === registry.methodClusters.length, 'every broad clu
 ok(graph.stats.lineageCount === registry.lineages.length, 'every evidence-backed lineage is represented');
 ok(graph.stats['uses-methodEdgeCount'] === Object.values(registry.releaseAssignments).flat().length,
   'every method assignment becomes one edge');
-ok(graph.stats.directInterReleaseEdgeCount === 10,
-  'direct inter-release projection contains exactly the ten source-backed release links');
+ok(graph.stats.directInterReleaseEdgeCount === expectedCitationCount + expectedParentCount,
+  'direct inter-release projection is derived from every resolvable citation and parent record');
+ok(doiFixture.every(expected => graph.edges.some(edge =>
+  edge.source === `release:${expected.source}` &&
+  edge.target === `release:${expected.target}` &&
+  edge.predicate === 'cites-related-release' &&
+  edge.sourceRefs.some(ref => ref.endsWith(`/relatedWorks/${expected.relatedWorkIndex}`)))),
+  'regression fixture preserves every exact DOI-backed inter-release citation');
+ok(doiFixture.every(expected => normalizeDoiReference(`https://doi.org/${expected.doi}`) === expected.doi),
+  'DOI fixture normalization is exact and case-stable');
+ok(internalReleaseSlug('https://doi.org/10.5281/zenodo.21647645-extra', BASE, releaseIdentityIndex) === null,
+  'hostile near-match DOI does not resolve to an internal release');
 ok(graph.stats.edgeCount === graph.stats['uses-methodEdgeCount'] + graph.stats['member-of-clusterEdgeCount'] +
   graph.stats['member-of-lineageEdgeCount'] + graph.stats.directInterReleaseEdgeCount,
   'relationship composition reconciles exactly with the accepted edge total');
-ok(graph.nodes.find(node => node.id === 'method:adversarial-controls').releaseAssignmentCount === 29 &&
-  graph.nodes.find(node => node.id === 'method:structural-compression').releaseAssignmentCount === 26,
-  'method nodes expose registry-derived prevalence');
+ok(registry.methods.every(method => graph.nodes.find(node => node.id === `method:${method.id}`).releaseAssignmentCount ===
+  Object.values(registry.releaseAssignments).filter(assignments => assignments.includes(method.id)).length),
+  'method nodes expose registry-derived prevalence without frozen corpus totals');
 ok(graph.nodes.find(node => node.id === 'method:research-lineage-reuse').publicLabel === 'Lineage-aware reuse practice',
   'public method terminology distinguishes reuse practice from evidence-backed lineage');
 ok(graph.nodes.filter(node => node.type === 'method' && node.umbrellaMethod).every(node =>

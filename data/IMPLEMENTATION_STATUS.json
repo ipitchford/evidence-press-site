@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "recordType": "implementation-status",
+  "updated": "2026-08-29",
+  "costBoundary": "Every implemented component is generated locally as static files and requires no paid API, hosted database, object store, queue, cron service, arbitrary remote execution or remote MCP. GitHub Actions and Cloudflare Pages are permitted only within their standard public-repository and Free-plan allowances.",
+  "claimCeiling": "An implementation state describes available infrastructure, not scientific correctness, novelty, independence, peer review, adoption, impact or successful external use.",
+  "initiatives": [
+    {
+      "id": "claim-level-assurance-loop",
+      "state": "pilot",
+      "implemented": ["One backward-compatible static vertical slice for the z(20)=6 candidate with separate claim, task, replay-profile, receipt and event records.", "Deterministic local validation and hostile controls."],
+      "notImplemented": ["Public third-party attestation submission", "Automated status promotion", "Corpus-wide claim conversion"],
+      "cashCost": "zero-required",
+      "operation": "static-build",
+      "sourceRefs": ["data/claim-assurance/z20-equals-6/", "tools/claim-assurance.js"]
+    },
+    {
+      "id": "structured-assurance-tasks",
+      "state": "pilot",
+      "implemented": ["Bounded tasks with explicit inputs, acceptance and rejection criteria, dependencies, resource limits, assurance effects and independence requirements."],
+      "notImplemented": ["Remote task execution", "Unbounded agent delegation", "Automatic acceptance of submitted receipts"],
+      "cashCost": "zero-required",
+      "operation": "static-build",
+      "sourceRefs": ["schemas/assurance-task.schema.json", "data/claim-assurance/z20-equals-6/tasks.json"]
+    },
+    {
+      "id": "agent-query-mcp",
+      "state": "deferred",
+      "implemented": ["Versioned static JSON and JSONL endpoints suitable for ordinary HTTP retrieval."],
+      "notImplemented": ["Hosted MCP server", "Remote execution surface", "Filtered query service"],
+      "cashCost": "zero-required",
+      "operation": "not-operational",
+      "sourceRefs": ["data/IMPLEMENTATION_STATUS.json", "data/ATLAS_ROADMAP.json"]
+    },
+    {
+      "id": "stable-claim-identity-and-nonclaims",
+      "state": "pilot",
+      "implemented": ["Content-derived claim identifier", "Exact natural-language and LaTeX statement fingerprint", "Explicit non-claims and supersession field"],
+      "notImplemented": ["Canonical cross-publisher claim-identity federation", "Automatic semantic equivalence detection"],
+      "cashCost": "zero-required",
+      "operation": "static-build",
+      "sourceRefs": ["schemas/claim.schema.json", "data/claim-assurance/z20-equals-6/claim.json"]
+    },
+    {
+      "id": "scholarly-graph-interop",
+      "state": "partial",
+      "implemented": ["Exact DOI resolution for authored inter-release related-work records", "Regression fixture for every currently resolved DOI relation", "Hostile rejection of near-match identifiers"],
+      "notImplemented": ["Fuzzy citation matching", "External citation harvesting", "OpenAlex or Crossref synchronization"],
+      "cashCost": "zero-required",
+      "operation": "static-build",
+      "sourceRefs": ["tools/research-graph.js", "tests/fixtures/research-graph/internal-doi-relations.json"]
+    },
+    {
+      "id": "append-only-verification-history",
+      "state": "partial",
+      "implemented": ["Predecessor-linked static JSONL events", "Imported receipt with exact artifact bindings and mandatory independence disclosure", "Git and DOI provenance retained"],
+      "notImplemented": ["Rekor publication", "OpenTimestamps anchoring", "External receipt intake"],
+      "cashCost": "zero-required",
+      "operation": "static-build",
+      "sourceRefs": ["schemas/assurance-event.schema.json", "data/claim-assurance/z20-equals-6/events.jsonl"]
+    },
+    {
+      "id": "sync-diffs-and-events",
+      "state": "pilot",
+      "implemented": ["Versioned immutable static API aliases", "Append-only claim event stream", "Frozen Stage 0 baseline receipt"],
+      "notImplemented": ["Polling or webhook synchronization", "Cross-repository automatic mutation", "Notification fan-out"],
+      "cashCost": "zero-required",
+      "operation": "static-build",
+      "sourceRefs": ["data/baselines/evidence-press-stage0-2026-08-29.json", "data/claim-assurance/z20-equals-6/events.jsonl"]
+    }
+  ],
+  "sourceRefs": ["docs/OPERATING_MODEL.md", "data/ATLAS_ROADMAP.json", "data/claim-assurance/z20-equals-6/"]
+}
