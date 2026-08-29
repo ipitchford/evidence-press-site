@@ -1,0 +1,218 @@
+{
+  "slug": "extremes-do-not-always-maximise",
+  "title": "Extremes do not always maximise: a minimal monotone reversible counterexample",
+  "shortTitle": "Extremes do not always maximise",
+  "oneLine": "A four-state monotone reversible heat-bath chain is furthest apart at two incomparable states—not its minimum and maximum—at every positive time.",
+  "abstract": "For a finite monotone reversible Markov chain with a unique minimum and maximum state, must those two extremes maximise the total-variation distance between time-t laws? This anonymous, unrefereed candidate answers the general question negatively with a cardinality-minimal four-state example. On the Boolean diamond, random-scan single-site heat-bath dynamics with Gibbs weights (1,1/2,2,1) is irreducible, aperiodic, reversible and monotone. For every integer t at least one, the incomparable pair has row total variation (2/3)(1/2)^(t-1), while the extremal and all adjacent pairs have distance (1/2)^t. The candidate also classifies the endpoint-symmetric family (1,b,c,1) under bc at most one and proves that no poset with unique bottom and top and at most three states can furnish such a failure. Exact producer replay, negative controls, a separate producer encoding, public multi-version CI, fresh-extraction checks and an internal five-role review pass. The separate zero-field Ising question on every graph remains open, and novelty, priority, independent reconstruction, formal verification, external specialist review and peer review are not established.",
+  "narration": "A common intuition for monotone Markov chains is that the lowest and highest starting states should remain the furthest apart. This anonymous, unrefereed candidate shows that the intuition fails in the general reversible setting. The example has only four states, arranged as a diamond: a bottom state, a top state, and two states in between that cannot be compared. A random-scan heat-bath update uses Gibbs weights one, one half, two, and one. The resulting chain is monotone, reversible, irreducible and aperiodic. Yet after every positive number of steps, the two incomparable middle states are further apart in total variation than the bottom and top. Their distance is exactly four thirds of the extremal distance at every time. The note goes further. It derives exact formulas for an entire two-spin family and proves that four states are the smallest possible cardinality for this kind of failure when the order has a unique minimum and maximum. The boundary matters. The example uses opposing site-dependent fields, so it does not answer the separate zero-field Ising question on every graph. An exact search found no zero-field failure across all connected labelled simple graphs with at most four vertices for five temperatures and six times, but that is a finite screen, not a theorem. The public archive passed exact replay, mutation controls, deterministic PDF rebuilding, fresh-extraction checks, four public Python matrix jobs, and producer-organised internal review. Those checks do not establish independent reconstruction, formal verification, specialist review, journal peer review, novelty or priority. This synthetic-voice briefing is a communication aid, not additional mathematical evidence.",
+  "datePublished": "2026-08-29",
+  "version": "0.2.0-candidate",
+  "doi": "10.5281/zenodo.22163995",
+  "conceptDoi": "10.5281/zenodo.22163994",
+  "zenodoUrl": "https://zenodo.org/records/22163995",
+  "pdfUrl": "https://github.com/ipitchford/extremes-do-not-always-maximise/releases/download/v0.2.0-candidate/extremes-do-not-always-maximise-v0.2.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22163995/files/extremes-do-not-always-maximise-v0.2.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/extremes-do-not-always-maximise",
+  "releaseUrl": "https://github.com/ipitchford/extremes-do-not-always-maximise/releases/tag/v0.2.0-candidate",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/extremes-do-not-always-maximise.mp3",
+      "name": "Audio briefing — extremes do not always maximise",
+      "description": "Plain-English OpenAI API synthetic-voice account of the four-state counterexample, all-time gap, minimality and unresolved zero-field boundary; a communication aid, not additional mathematical evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/extremes-do-not-always-maximise.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI systems under human direction",
+      "OpenAI Codex",
+      "Python 3 standard library"
+    ],
+    "humanRole": "Problem selection, research direction, source selection, claim-boundary decisions, publication authorisation and institutional responsibility by the human creator; repository maintenance and Evidence Press publication are not scholarly authorship, and scholarly attribution remains Anonymous.",
+    "disclosure": "AI systems contributed mathematical search, exact computation, proof drafting, source auditing, internal role-separated review, editing, replay and release engineering within one producer-coordinated workflow. A separate producer encoding, cross-model review and public CI are not independent reconstruction, external specialist review or editorial peer review."
+  },
+  "problem": {
+    "name": "AIM Problem 1.6(1): extremal starts in monotone reversible chains",
+    "url": "http://aimpl.org/markovmixing/1/"
+  },
+  "keywords": [
+    "Markov chains",
+    "monotone Markov chain",
+    "reversible Markov chain",
+    "total variation",
+    "Glauber dynamics",
+    "heat-bath dynamics",
+    "coefficient of ergodicity",
+    "counterexample",
+    "exact computation",
+    "unrefereed candidate"
+  ],
+  "mathObjects": [
+    {
+      "id": "four-state-row-tv-counterexample",
+      "kind": "counterexample",
+      "label": "Four-state all-time row-TV counterexample",
+      "plainText": "For weights (1,1/2,2,1), the incomparable row distance is (2/3)(1/2)^(t-1) and the extremal distance is (1/2)^t for every integer t at least 1.",
+      "latex": "d_{\\mathrm{TV}}(P^t(10,\\cdot),P^t(01,\\cdot))=\\frac23\\left(\\frac12\\right)^{t-1}>\\left(\\frac12\\right)^t=d_{\\mathrm{TV}}(P^t(00,\\cdot),P^t(11,\\cdot))",
+      "status": "claimed-result",
+      "scope": "The specified random-scan two-spin heat-bath chain; the scholarly object is an anonymous unrefereed candidate with producer-side replay, not an independently validated theorem."
+    }
+  ],
+  "keyResults": [
+    "For Gibbs weights (1,1/2,2,1) on the Boolean diamond, random-scan single-site heat-bath dynamics is irreducible, aperiodic, reversible and monotone.",
+    "For every integer t at least one, the incomparable pair (10,01) uniquely maximises row total variation at (2/3)(1/2)^(t-1); the extremal and four adjacent pairs all have distance (1/2)^t.",
+    "For endpoint-symmetric weights (1,b,c,1) with b,c positive and bc at most one, the candidate gives exact all-time formulas for extremal, incomparable and adjacent row distances and classifies when the maximiser switches.",
+    "No monotone chain on a poset with unique minimum and maximum and at most three states can violate extremal row-TV maximisation; reversibility is not needed for this cardinality-minimality argument.",
+    "An exact bounded screen found no zero-field Ising failure among all 43 connected labelled simple graphs on two through four vertices over five stated temperatures and times one through six; this is not an all-graph theorem."
+  ],
+  "evidence": "A six-page candidate manuscript and accessible Markdown; exact rational verification of the Gibbs-to-kernel construction, stochasticity, irreducibility, aperiodicity, detailed balance, monotonicity and all-time formulas; a separately structured producer cross-check; seven targeted negative controls; exact bounded zero-field enumeration over 43 connected labelled simple graphs, 215 graph-temperature trajectories, 1,290 kernel powers and 140,340 unordered row-pair comparisons; a deterministic two-pass PDF build; an exact 45-file manifest; fresh-extraction passage of 18 release gates; source-correspondence and bounded novelty reports; five producer-organised review roles plus exact-byte confirmation; and public GitHub Actions passage on Python 3.11 and 3.13 in ordinary and optimized mode. These establish public availability, integrity and producer-side replay, not independent mathematical validation, exhaustive novelty or peer review.",
+  "statusDetail": "Anonymous, unrefereed theorem candidate at internal PASS_WITH_NOTES. The universal counterexample, family classification and cardinality-minimality claims rest on the written proofs; the programs replay exact formulas and stated finite predicates. The closest 1992 coefficient-of-ergodicity paper could not be inspected in full, so the bounded prior-art search does not establish novelty or priority. No unaffiliated rerun, independent reimplementation, proof-assistant formalisation, external specialist review or editorial peer review has occurred. The zero-field Ising question on every graph and AIM diagnostics 1.6(2) and 1.6(3) remain open.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22163995",
+      "note": "The tagged GitHub prerelease and published Zenodo record expose the six-page PDF, complete 45-file replay ZIP and checksum ledger; public downloads match the local reviewed assets byte for byte."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/extremes-do-not-always-maximise/actions/runs/33263365120",
+      "note": "The DOI-bearing tagged commit passed exact family verification, a separate producer cross-check, seven negative controls and the exact bounded zero-field enumeration on Python 3.11 and 3.13, each in ordinary and optimized mode."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated party has reported rerunning the immutable package in a separately provisioned environment."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The second exact encoding was produced within the same coordinated research process and is not an independent reconstruction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof assistant formalises the all-time formulas, monotonicity argument, family classification or three-state minimality theorem."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "The five-role review and exact-byte confirmation were internal AI editorial quality control, not unaffiliated probability or Markov-chain specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or comparable venue has conducted editorial peer review to a decision."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/extremes-do-not-always-maximise/blob/v0.2.0-candidate/ENVIRONMENT.txt",
+      "note": "The exact verifiers use the Python 3.11-or-later standard library and public CI spans Python 3.11 and 3.13; the deterministic PDF toolchain is recorded, but no unaffiliated clean-environment reconstruction is reported."
+    }
+  },
+  "openProblems": [
+    "Determine whether the extremal pair always realises row-TV diameter for zero-field ferromagnetic Ising heat-bath dynamics on every finite graph.",
+    "Obtain an unaffiliated Markov-chain specialist reconstruction of the four-state proof, family classification, source mapping and cardinality-minimality argument.",
+    "Inspect Pflug and Schachermayer's 1992 coefficient-of-ergodicity article lawfully in full and conduct a broader specialist novelty and priority audit under alternative terminology.",
+    "Formalise the Boolean-diamond kernel, stochastic monotonicity, exact powers and three-state CDF argument in a proof assistant.",
+    "Address AIM Problem 1.6 diagnostics (2) and (3), which are not answered by this counterexample."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "AIM Problem Lists. Markov chain mixing times, Problem 1.6.",
+      "url": "http://aimpl.org/markovmixing/1/"
+    },
+    {
+      "citation": "Peres, Y., & Winkler, P. (2013). Can extra updates delay mixing? Communications in Mathematical Physics, 323, 1007-1016.",
+      "url": "https://arxiv.org/abs/1112.0603"
+    },
+    {
+      "citation": "Fill, J. A., & Kahn, J. (2013). Comparison inequalities and fastest-mixing Markov chains. Annals of Applied Probability, 23, 1778-1816.",
+      "url": "https://doi.org/10.1214/12-AAP886"
+    },
+    {
+      "citation": "Pflug, G. C., & Schachermayer, W. (1992). A remark on the coefficient of ergodicity. Probability Theory and Related Fields, 93, 283-293.",
+      "url": "https://doi.org/10.2307/3214717"
+    },
+    {
+      "citation": "Qin, Q. (2025). Analysis of two-component Gibbs samplers using the theory of two projections. Annals of Applied Probability, 35, 891-921.",
+      "url": "https://doi.org/10.1214/24-AAP2066"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Extremes do not always maximise: a minimal monotone reversible counterexample (Version 0.2.0-candidate) [Anonymous unrefereed theorem candidate and evidence package]. Evidence Press. https://doi.org/10.5281/zenodo.22163995",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:extremes-do-not-always-maximise",
+    "attemptIds": ["ep-attempt:extremes-do-not-always-maximise-assurance-publication"],
+    "aims": ["science"],
+    "artifactRoles": ["research-output", "evidence-assessment", "method-demonstration", "communication"],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "A cardinality-minimal four-state monotone reversible heat-bath counterexample, together with an exact endpoint-symmetric two-spin family classification.",
+      "scope": "The separately quantified general monotone-reversible clause of AIM problem 1.6(1); not the all-graph zero-field Ising question or diagnostics 1.6(2-3)."
+    },
+    "bottleneckTargeted": ["assurance", "publication"],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The AIM general clause is mapped to the Boolean-diamond state order, random-scan heat-bath kernel, total-variation row diameter and exact all-time formulas; the zero-field clause is separately excluded.",
+      "remainingRisks": [
+        "The closest 1992 coefficient-of-ergodicity article could not be inspected beyond its publisher abstract, bibliography and cited-by records.",
+        "No unaffiliated specialist has assessed the proof or source map.",
+        "The all-graph zero-field Ising question remains open."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Assess the universal written proofs rather than inferring them from finite replay.",
+      "Assess whether the accessible-source novelty audit supports release at the bounded unrefereed-candidate ceiling.",
+      "Do not promote the bounded exact zero-field enumeration into an all-graph theorem.",
+      "Require a new release decision before claiming independent reproduction, formal verification, specialist review, peer review, novelty or priority."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Obtain unaffiliated specialist review and lawful full-text comparison with Pflug and Schachermayer before any novelty or priority upgrade.",
+      "claimCeiling": "Unrefereed theorem candidate with producer-side exact replay, a separate producer cross-check and internal editorial review; not an all-graph zero-field result, independent reproduction, formal proof, specialist review, external peer review, novelty or priority claim."
+    },
+    "impactClaims": [
+      {
+        "id": "extremes-science-no-impact",
+        "aim": "science",
+        "outcome": "More reliable evaluation of extremal-start row-diameter claims",
+        "setting": "Finite monotone reversible Markov chains and two-spin heat-bath dynamics",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched conventional research or publication workflow was prospectively registered.",
+        "estimand": "No effect on discovery time, error rate, review effort, theorem production, adoption or citation was estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ],
+    "ibeHypotheses": ["research-cycle-acceleration"]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "negative-result",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "metadataProvenance": "Authored prospectively for reader-first schema 2.0 against the confirmed scientific bytes, immutable GitHub tag, public CI, published Zenodo identities and producer-organised internal PASS_WITH_NOTES record.",
+  "grandfatheredAtSchemaVersion": null
+}

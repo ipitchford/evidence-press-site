@@ -1220,6 +1220,53 @@ art['odd-order-one-third-popular-differences'] = (a, b) => {
   return s;
 };
 
+/* A Boolean diamond and the two exact all-time row-TV modes.  The middle
+   sequence remains 4/3 above the extremal sequence without suggesting that
+   the separate zero-field Ising question has been settled. */
+art['extremes-do-not-always-maximise'] = (a, b) => {
+  let s = '';
+  const nodes = [
+    { x: 270, y: 54, label: '11', colour: a },
+    { x: 142, y: 200, label: '10', colour: b },
+    { x: 398, y: 200, label: '01', colour: b },
+    { x: 270, y: 346, label: '00', colour: a }
+  ];
+  for (const [u, v] of [[0, 1], [0, 2], [1, 3], [2, 3]]) {
+    s += '<line x1="' + nodes[u].x + '" y1="' + nodes[u].y + '" x2="' + nodes[v].x + '" y2="' + nodes[v].y + '" stroke="#8a938f" stroke-width="3" opacity=".58"/>';
+  }
+  s += '<line x1="270" y1="70" x2="270" y2="330" stroke="' + a + '" stroke-width="4" stroke-dasharray="10 9" opacity=".78"/>';
+  s += '<line x1="160" y1="200" x2="380" y2="200" stroke="' + b + '" stroke-width="5" stroke-dasharray="11 8" opacity=".96"/>';
+  for (const node of nodes) {
+    s += '<circle cx="' + node.x + '" cy="' + node.y + '" r="28" fill="#151a1e" stroke="' + node.colour + '" stroke-width="4"/>';
+    s += '<text x="' + node.x + '" y="' + (node.y + 7) + '" text-anchor="middle" font-family="ui-monospace,monospace" font-size="20" fill="#e7e5e4">' + node.label + '</text>';
+  }
+  s += '<text x="270" y="246" text-anchor="middle" font-family="Georgia" font-size="21" fill="' + b + '">incomparable</text>';
+
+  const ox = 560, oy = 330, width = 560, height = 260;
+  s += '<line x1="' + ox + '" y1="' + (oy - height) + '" x2="' + ox + '" y2="' + oy + '" stroke="#8a938f" stroke-width="2" opacity=".72"/>';
+  s += '<line x1="' + ox + '" y1="' + oy + '" x2="' + (ox + width) + '" y2="' + oy + '" stroke="#8a938f" stroke-width="2" opacity=".72"/>';
+  s += '<text x="' + (ox - 26) + '" y="' + (oy - height + 8) + '" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">TV</text>';
+  s += '<text x="' + (ox + width) + '" y="' + (oy + 28) + '" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">time</text>';
+
+  const points = [];
+  for (let t = 1; t <= 6; t++) {
+    const x = ox + 36 + (t - 1) * 96;
+    const extreme = Math.pow(.5, t);
+    const middle = (2 / 3) * Math.pow(.5, t - 1);
+    points.push({ x, ey: oy - extreme * 360, my: oy - middle * 360 });
+  }
+  const path = key => points.map((point, i) => (i ? 'L' : 'M') + ' ' + point.x.toFixed(1) + ' ' + point[key].toFixed(1)).join(' ');
+  s += '<path d="' + path('my') + '" fill="none" stroke="' + b + '" stroke-width="5" opacity=".96"/>';
+  s += '<path d="' + path('ey') + '" fill="none" stroke="' + a + '" stroke-width="4" opacity=".86"/>';
+  for (const point of points) {
+    s += '<circle cx="' + point.x + '" cy="' + point.my + '" r="6" fill="' + b + '"/>';
+    s += '<circle cx="' + point.x + '" cy="' + point.ey + '" r="5" fill="' + a + '"/>';
+  }
+  s += '<text x="760" y="102" text-anchor="middle" font-family="Georgia" font-size="25" fill="#e7e5e4">middle = 4/3 × extremes</text>';
+  s += '<text x="760" y="136" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">FOR EVERY t ≥ 1</text>';
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1257,6 +1304,7 @@ const palette = {
   ,'o01d0-polar-fibre-structural-reductions': ['#38bdf8', '#f59e0b']
   ,'amplitude-modules-fused-support-bautin-bound': ['#2dd4bf', '#fbbf24']
   ,'odd-order-one-third-popular-differences': ['#38bdf8', '#f59e0b']
+  ,'extremes-do-not-always-maximise': ['#38bdf8', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
