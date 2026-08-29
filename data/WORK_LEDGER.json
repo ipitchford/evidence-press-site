@@ -2984,7 +2984,7 @@
         },
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -3069,7 +3069,19 @@
       },
       "releaseSlug": "odd-order-one-third-popular-differences",
       "stopReason": null,
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-08-29T14:03:58Z",
+          "field": "publication timing scope, user-visible elapsed time and rework",
+          "reason": "The frozen 31-minute outcome begins at the later publication-attempt registration and therefore does not measure the full task-pane procedure experienced by the user. The user reported 83 minutes from the publication request to completion. In addition, the contemporaneous readback commit recorded five rework minutes before a later corrective commit replaced that value with zero, and the published hero art contains a clipped caption that requires a further presentation repair.",
+          "replacement": "Retain the immutable 31-minute scoped receipt as a phase measurement, but do not use it as the end-to-end publication duration. Record 83 minutes as the user-reported request-to-completion elapsed time. Treat five minutes as the contemporaneously recorded minimum rework before the present art repair; further active rework not prospectively timed remains unknown rather than zero.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/odd-order-one-third-popular-differences/",
+            "https://github.com/ipitchford/evidence-press-site/commit/885425dac157c2177290888e1387cd6f7d4ebe51",
+            "https://github.com/ipitchford/evidence-press-site/commit/898154589831da56f4486d9535e007743835701c"
+          ]
+        }
+      ],
       "metrics": {
         "schemaVersion": "1.0",
         "measurementScope": "publication-only",
@@ -3192,6 +3204,10 @@
         {
           "date": "2026-08-29",
           "summary": "Closed the publication-only attempt after canonical Evidence Press HTML and paper.json, content-versioned media, metrics surfaces, exact 38-release and 31-artifact preservation, GitHub CI and the first guarded Cloudflare deployment passed; recorded a 31-minute calendar interval, 27 active agent minutes, four unattended minutes, zero substantive compute, zero rework minutes, unavailable task-local token and human-time measures, and the unchanged PASS_WITH_NOTES assurance ceiling."
+        },
+        {
+          "date": "2026-08-29",
+          "summary": "Appended a measurement correction preserving the immutable 31-minute scoped receipt while recording the user's 83-minute request-to-completion observation, the contemporaneous five-minute minimum rework value, and the additional untimed hero-art repair; the mathematical claim, research archive, DOI and assurance vector are unchanged."
         }
       ]
     }
@@ -3378,6 +3394,10 @@
     {
       "date": "2026-08-29",
       "summary": "Closed the odd-order one-third popular-differences publication-only attempt after canonical HTML, paper.json, reader-first media, operating surfaces, exact corpus preservation, GitHub CI and the first guarded Cloudflare readback passed; recorded the prospective 31-minute calendar and 27-minute active-agent outcome, kept unavailable human and task-local token fields null, and preserved every external-assurance, novelty, priority and no-impact boundary."
+    },
+    {
+      "date": "2026-08-29",
+      "summary": "Appended the odd-order release timing and rework correction: retained the immutable scoped 31-minute phase receipt, recorded the user's 83-minute end-to-end observation and the contemporaneous five-minute minimum rework value, and marked the further art-repair effort as unknown rather than zero."
     }
   ]
 }
