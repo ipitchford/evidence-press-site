@@ -1,7 +1,7 @@
 # Evidence Press research metrics
 
 Version: 1.0  
-Effective: 28 August 2026  
+Effective: 29 August 2026
 Status: prospective measured-release supplement
 
 Evidence Press will publish a scoped forecast and outcome receipt with every
@@ -22,6 +22,10 @@ When a release packages research that predates registration, the receipt is
 scoped to publication or assurance only. The earlier discovery clock remains
 left-censored and is not reconstructed from commits, chat records or release
 dates.
+
+The enforced boundary begins at `2026-08-29T11:12:44Z`, the first intake with
+the complete forecast and telemetry contract. Earlier work-ledger attempts are
+retained as denominator records but are not retrospectively enriched.
 
 ## What is frozen at intake
 

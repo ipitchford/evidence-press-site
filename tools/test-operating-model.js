@@ -176,9 +176,9 @@ function measuredAttemptFor(slug, status = 'release-candidate') {
 
 function postPolicyAttemptFor(slug, status = 'published') {
   const attempt = attemptFor(slug);
-  attempt.registeredAt = '2026-08-28T09:00:00Z';
+  attempt.registeredAt = '2026-08-29T12:00:00Z';
   attempt.status = status;
-  attempt.statusAt = status === 'published' ? '2026-08-28T11:00:00Z' : '2026-08-28T10:00:00Z';
+  attempt.statusAt = status === 'published' ? '2026-08-29T14:00:00Z' : '2026-08-29T13:00:00Z';
   attempt.resultClass = 'partial';
   attempt.statusHistory = [
     {
@@ -368,8 +368,8 @@ function extractFunction(source, name) {
   const errors = errorsFor(({ artifacts, papers }) => {
     const record = recordFor('future-missing-metrics');
     const attempt = attemptFor(record.slug);
-    attempt.registeredAt = '2026-08-28T09:00:00Z';
-    attempt.statusAt = '2026-08-28T10:00:00Z';
+    attempt.registeredAt = '2026-08-29T12:00:00Z';
+    attempt.statusAt = '2026-08-29T13:00:00Z';
     attempt.statusHistory[0].at = attempt.registeredAt;
     attempt.statusHistory[1].at = attempt.statusAt;
     addFuture(artifacts, papers, record, attempt);
@@ -382,7 +382,7 @@ function extractFunction(source, name) {
   const errors = errorsFor(({ artifacts, papers }) => {
     const record = recordFor('future-late-forecast');
     const attempt = postPolicyAttemptFor(record.slug);
-    attempt.metrics.forecast.frozenAt = '2026-08-28T09:01:00Z';
+    attempt.metrics.forecast.frozenAt = '2026-08-29T12:01:00Z';
     addFuture(artifacts, papers, record, attempt);
   });
   check('forecast frozen after registration is rejected',

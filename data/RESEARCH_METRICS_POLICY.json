@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0",
-  "effectiveAt": "2026-08-28T00:00:00Z",
+  "effectiveAt": "2026-08-29T11:12:44Z",
   "status": "prospective-required",
   "claimCeiling": "These records describe scoped workflow inputs and outcomes. They support calibration and reference-class construction, but do not by themselves establish research acceleration, theorem correctness, novelty, independent assurance or impact.",
   "appliesTo": {
-    "attemptsRegisteredAtOrAfter": "2026-08-28T00:00:00Z",
+    "attemptsRegisteredAtOrAfter": "2026-08-29T11:12:44Z",
     "intakeRule": "Every in-scope attempt is registered before substantive work begins and freezes a decomposed forecast at the registration time.",
     "terminalRule": "Every terminal attempt records an outcome, including stopped, abandoned, superseded and unreleased work; every release page and paper.json exposes the linked receipt.",
     "leftCensoringRule": "If research predates registration, use an honestly scoped publication-only or assurance-only attempt. Do not reconstruct research clocks from commits, chat history or publication timestamps."
@@ -87,8 +87,8 @@
   ],
   "changeLog": [
     {
-      "date": "2026-08-28",
-      "summary": "Established prospective per-attempt Fermi forecasts, terminal research-cycle and resource outcomes, field-specific telemetry missingness, release-level publication and calibration, while retaining failed and unreleased work in the denominator."
+      "date": "2026-08-29",
+      "summary": "Established the enforced prospective boundary at the first fully instrumented intake. Earlier attempts remain in the denominator under the prior work-ledger contract and are not backfilled; later attempts require per-attempt Fermi forecasts, terminal research-cycle and resource outcomes, field-specific telemetry missingness, and release-level publication."
     }
   ]
 }
