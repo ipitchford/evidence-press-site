@@ -3267,7 +3267,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "The prospective workflow clock, receipt-bound unattended waits, agent activity and substantive computation were recorded. Active human time remains unavailable. A supported runtime goal counter began 36 minutes after registration, so its partial token reading is retained in the closeout receipt but is not misreported as full-attempt telemetry.",
+        "missingnessReason": "The prospective workflow clock and agent activity are being recorded. Active human time and task-local fork-aware token telemetry are not exposed at intake and will remain null unless a supported counter becomes available.",
         "milestones": [
           {
             "event": "work-opened",
@@ -3296,24 +3296,23 @@
           }
         ],
         "activeHumanMinutes": null,
-        "computeMinutes": 1,
+        "computeMinutes": 0,
         "computeCost": {
           "amount": 0,
           "currency": "GBP"
         },
-        "agentRuns": 6,
-        "reworkMinutes": 5,
+        "agentRuns": 1,
+        "reworkMinutes": 0,
         "correctionCount": 0
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
-        "assessedAt": "2026-08-29T17:04:45Z",
+        "assessedAt": "2026-08-29T16:37:26Z",
         "dimensions": [
           {
             "dimension": "availability",
             "state": "passed",
             "evidenceRefs": [
-              "https://evidencepress.org/releases/extremes-do-not-always-maximise/",
               "https://github.com/ipitchford/extremes-do-not-always-maximise/releases/tag/v0.2.0-candidate",
               "https://doi.org/10.5281/zenodo.22163995"
             ]
@@ -3380,12 +3379,11 @@
         ],
         "claimCeiling": "An anonymous unrefereed four-state counterexample, endpoint-symmetric family classification and cardinality-minimality candidate with exact producer replay, negative controls, public immutable assets and internal PASS_WITH_NOTES; not an all-graph zero-field result, independent validation, formal verification, external specialist or editorial peer review, exhaustive novelty, absolute priority, or demonstrated workflow impact.",
         "evidenceRefs": [
-          "https://evidencepress.org/releases/extremes-do-not-always-maximise/",
           "https://github.com/ipitchford/extremes-do-not-always-maximise/releases/tag/v0.2.0-candidate",
           "https://doi.org/10.5281/zenodo.22163995",
           "https://github.com/ipitchford/extremes-do-not-always-maximise/actions/runs/33263365120"
         ],
-        "missingnessReason": "Independent rerun, independent reimplementation, formal verification, external specialist review, editorial peer review and priority assessment are not established; environment reproducibility, semantic validation and novelty assessment remain partial. Site publication and communication assets add availability, not mathematical assurance."
+        "missingnessReason": "Canonical Evidence Press publication is pending. Independent rerun, independent reimplementation, formal verification, external specialist review, editorial peer review and priority assessment are not established; environment reproducibility, semantic validation and novelty assessment remain partial."
       },
       "releaseSlug": "extremes-do-not-always-maximise",
       "stopReason": null,
@@ -3463,12 +3461,12 @@
           "calendarElapsedMinutes": 101,
           "activeAgentMinutes": 95,
           "activeHumanMinutes": null,
-          "computeMinutes": 1,
+          "computeMinutes": 0,
           "unattendedWaitMinutes": 6,
           "blockedMinutes": 0,
-          "reworkMinutes": 5,
-          "agentRuns": 6,
-          "maxParallelAgents": 4,
+          "reworkMinutes": 0,
+          "agentRuns": 1,
+          "maxParallelAgents": 1,
           "modelTurns": 3,
           "deduplicatedModelTokens": null,
           "uncachedInputTokens": null,
