@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/replay-profile.schema.json",
+  "title": "Evidence Press replay profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "recordType", "profileId", "profileKey", "profileVersion", "claimId", "claimVersion", "taskIds", "platforms", "prerequisites", "commands", "resources", "successCriteria", "failureCriteria", "assuranceCeiling", "license"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" }, "recordType": { "const": "replay-profile" },
+    "profileId": { "type": "string", "pattern": "^ep-profile:[a-z0-9-]+:[a-z0-9-]+:v[1-9][0-9]*$" },
+    "profileKey": { "type": "string" }, "profileVersion": { "type": "string" },
+    "claimId": { "type": "string" }, "claimVersion": { "type": "string" },
+    "taskIds": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "platforms": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "prerequisites": { "type": "array", "items": { "type": "string" } },
+    "commands": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "required": ["cwd", "argv"],
+        "properties": {
+          "cwd": { "type": "string" },
+          "argv": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+        }
+      }
+    },
+    "resources": {
+      "type": "object", "required": ["maxWallMinutes", "maxMemoryMiB", "networkPolicy", "cashCost"],
+      "properties": {
+        "maxWallMinutes": { "type": "integer" }, "maxMemoryMiB": { "type": "integer" },
+        "networkPolicy": { "const": "forbidden" }, "cashCost": { "const": "zero-required" }
+      }
+    },
+    "successCriteria": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "failureCriteria": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "assuranceCeiling": { "type": "string", "minLength": 1 }, "license": { "const": "CC0-1.0" }
+  }
+}

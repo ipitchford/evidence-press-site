@@ -72,6 +72,10 @@ node tools/check-operating-model.js
 node tools/test-operating-model.js
 node tools/test-atlas-roadmap.js
 node tools/test-atlas-proposals.js --built
+node tools/test-research-graph.js --built
+node tools/test-claim-assurance.js --built
+node tools/test-baseline-receipt.js
+node tools/test-implementation-status.js
 node tools/test-render.js
 node tools/test-articles.js
 node tools/test-metadata.js

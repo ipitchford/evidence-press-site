@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/baseline-receipt.schema.json",
+  "title": "Evidence Press frozen implementation baseline receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "recordType", "receiptId", "frozenAt", "source", "corpus", "tests", "fileHashes", "boundaries", "cashCost", "license"],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "recordType": {"const": "implementation-baseline-receipt"},
+    "receiptId": {"type": "string", "pattern": "^ep-baseline:sha256:[0-9a-f]{64}$"},
+    "frozenAt": {"type": "string", "format": "date"},
+    "source": {"type": "object"},
+    "corpus": {"type": "object"},
+    "tests": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+    "fileHashes": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+    "boundaries": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "cashCost": {"const": "zero-required"},
+    "license": {"const": "CC0-1.0"}
+  }
+}

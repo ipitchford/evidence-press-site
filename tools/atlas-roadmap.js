@@ -16,7 +16,34 @@ function duplicates(values) {
   return values.filter(value => seen.has(value) || !seen.add(value));
 }
 
-function validateAtlasRoadmap(roadmap) {
+function computeAtlasBaseline(graph, proposalRegister, methodIds = []) {
+  const methodNodes = new Map((graph.nodes || [])
+    .filter(node => node.type === 'method')
+    .map(node => [node.id.replace(/^method:/, ''), node]));
+  const relationshipComposition = {
+    usesMethodCount: graph.stats['uses-methodEdgeCount'],
+    clusterMembershipCount: graph.stats['member-of-clusterEdgeCount'],
+    lineageMembershipCount: graph.stats['member-of-lineageEdgeCount'],
+    directInterReleaseCount: graph.stats.directInterReleaseEdgeCount,
+    defaultProgrammeViewCount: graph.stats['member-of-clusterEdgeCount'] +
+      graph.stats['member-of-lineageEdgeCount'] + graph.stats.directInterReleaseEdgeCount
+  };
+  return {
+    releaseCount: graph.stats.releaseCount,
+    methodCount: graph.stats.methodCount,
+    clusterCount: graph.stats.clusterCount,
+    lineageCount: graph.stats.lineageCount,
+    acceptedRelationshipCount: graph.stats.edgeCount,
+    publishedProposalCount: proposalRegister.stats.total,
+    relationshipComposition,
+    methodPrevalenceChecks: methodIds.map(methodId => ({
+      methodId,
+      releaseAssignmentCount: methodNodes.get(methodId)?.releaseAssignmentCount ?? null
+    }))
+  };
+}
+
+function validateAtlasRoadmap(roadmap, { graph = null, proposalRegister = null } = {}) {
   const errors = [];
   const steps = Array.isArray(roadmap.nextSteps) ? roadmap.nextSteps : [];
   const stepIds = steps.map(step => step.id);
@@ -82,6 +109,25 @@ function validateAtlasRoadmap(roadmap) {
   if (discovery && discovery.state === 'ready' && (!intake || intake.state !== 'complete')) {
     errors.push('discovery pilot cannot be ready before proposal intake is complete');
   }
+  if (graph && proposalRegister) {
+    const recorded = roadmap.currentBaseline;
+    const methodIds = (recorded.methodPrevalenceChecks || []).map(item => item.methodId);
+    const derived = computeAtlasBaseline(graph, proposalRegister, methodIds);
+    for (const field of ['releaseCount', 'methodCount', 'clusterCount', 'lineageCount', 'acceptedRelationshipCount', 'publishedProposalCount']) {
+      if (recorded[field] !== derived[field]) errors.push(`currentBaseline.${field} is stale: recorded ${recorded[field]}, derived ${derived[field]}`);
+    }
+    for (const [field, value] of Object.entries(derived.relationshipComposition)) {
+      if (recorded.relationshipComposition[field] !== value) {
+        errors.push(`currentBaseline.relationshipComposition.${field} is stale: recorded ${recorded.relationshipComposition[field]}, derived ${value}`);
+      }
+    }
+    derived.methodPrevalenceChecks.forEach((item, index) => {
+      if (item.releaseAssignmentCount === null) errors.push(`currentBaseline.methodPrevalenceChecks[${index}] has unresolved methodId ${item.methodId}`);
+      else if (recorded.methodPrevalenceChecks[index].releaseAssignmentCount !== item.releaseAssignmentCount) {
+        errors.push(`currentBaseline.methodPrevalenceChecks[${index}] is stale for ${item.methodId}`);
+      }
+    });
+  }
   return errors;
 }
 
@@ -98,4 +144,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { loadAtlasRoadmap, validateAtlasRoadmap };
+module.exports = { loadAtlasRoadmap, computeAtlasBaseline, validateAtlasRoadmap };

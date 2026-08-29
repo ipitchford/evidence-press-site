@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencepress.org/api/schemas/assurance-receipt.schema.json",
+  "title": "Evidence Press assurance receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "recordType", "receiptId", "receiptVersion", "claimId", "claimVersion", "taskId", "taskVersion", "profileId", "profileVersion", "performedAt", "recordedAt", "actor", "independenceDisclosure", "subject", "outcome", "evidenceRefs", "license"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" }, "recordType": { "const": "assurance-receipt" },
+    "receiptId": { "type": "string", "pattern": "^ep-receipt:[a-z0-9-]+:[a-z0-9-]+:v[1-9][0-9]*$" },
+    "receiptVersion": { "type": "string" }, "claimId": { "type": "string" }, "claimVersion": { "type": "string" },
+    "taskId": { "type": "string" }, "taskVersion": { "type": "string" }, "profileId": { "type": "string" }, "profileVersion": { "type": "string" },
+    "performedAt": { "type": "string", "format": "date" }, "recordedAt": { "type": "string", "format": "date" },
+    "actor": {
+      "type": "object", "required": ["name", "type", "relationshipToClaimProducer"],
+      "properties": { "name": { "type": "string" }, "type": { "type": "string" }, "relationshipToClaimProducer": { "type": "string" } }
+    },
+    "independenceDisclosure": {
+      "type": "object", "required": ["status", "basis", "publicEvidenceUrl"],
+      "properties": { "status": { "enum": ["independent", "not-independent", "unassessed"] }, "basis": { "type": "string" }, "publicEvidenceUrl": { "type": ["string", "null"] } }
+    },
+    "subject": {
+      "type": "object", "required": ["releaseVersion", "sourceTag", "reportedLocalCommit", "reportedPublicSnapshotCommit", "artifactBindings"],
+      "properties": {
+        "releaseVersion": { "type": "string" }, "sourceTag": { "type": "string" },
+        "reportedLocalCommit": { "type": "string" }, "reportedPublicSnapshotCommit": { "type": "string" },
+        "artifactBindings": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "required": ["path", "sha256"],
+            "properties": { "path": { "type": "string" }, "sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" } }
+          }
+        }
+      }
+    },
+    "outcome": {
+      "type": "object", "required": ["state", "scope", "claimsEstablished", "claimsNotEstablished"],
+      "properties": {
+        "state": { "enum": ["passed", "failed", "partial", "cancelled"] }, "scope": { "type": "string" },
+        "claimsEstablished": { "type": "array", "items": { "type": "string" } },
+        "claimsNotEstablished": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+      }
+    },
+    "evidenceRefs": { "type": "array", "minItems": 1, "items": { "type": "string" } }, "license": { "const": "CC0-1.0" }
+  }
+}

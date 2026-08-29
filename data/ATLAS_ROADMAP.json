@@ -1,23 +1,23 @@
 {
   "schemaVersion": "1.0",
   "recordType": "evidence-atlas-roadmap",
-  "updated": "2026-08-28",
+  "updated": "2026-08-29",
   "status": "active-reviewed-roadmap",
   "claimCeiling": "This roadmap records intended work and review decisions. It does not establish that an undiscovered relationship exists, that a proposed relationship is correct, or that the Atlas improves research outcomes.",
   "currentBaseline": {
-    "asOf": "2026-08-28",
+    "asOf": "2026-08-29",
     "releaseCount": 37,
     "methodCount": 13,
     "clusterCount": 24,
     "lineageCount": 5,
-    "acceptedRelationshipCount": 261,
+    "acceptedRelationshipCount": 287,
     "publishedProposalCount": 4,
     "relationshipComposition": {
       "usesMethodCount": 197,
       "clusterMembershipCount": 39,
       "lineageMembershipCount": 15,
-      "directInterReleaseCount": 10,
-      "defaultProgrammeViewCount": 64
+      "directInterReleaseCount": 36,
+      "defaultProgrammeViewCount": 90
     },
     "methodPrevalenceChecks": [
       {
@@ -119,7 +119,7 @@
     {
       "id": "atlas-step-review-workbench",
       "priority": 4,
-      "state": "ready",
+      "state": "in-progress",
       "title": "Add a proposal-review workbench",
       "purpose": "Let reviewers inspect a proposed edge, its evidence, contrary explanation and full decision history without confusing it with accepted knowledge.",
       "dependencies": [
@@ -515,6 +515,27 @@
       ],
       "decision": "complete",
       "nextAction": "Seek an unaffiliated reconstruction of the Hermite reduction and squarefreeness proof, then a proof-or-falsification attempt on the pair-content/four-factor theorem before any O-01d0 or linked-conjecture promotion."
+    },
+    {
+      "reviewId": "atlas-review-2026-08-29-source-supported-doi-edges",
+      "reviewedAt": "2026-08-29",
+      "trigger": "material-objection-or-correction",
+      "reviewer": "Evidence Press producer workflow",
+      "provenanceNote": "Producer-side registry-integrity review of exact DOI references already authored in release related-work records. This records source resolution only; it does not infer influence, priority, novelty, correctness, independence or impact.",
+      "baseline": {
+        "releaseCount": 37,
+        "acceptedRelationshipCount": 287,
+        "publishedProposalCount": 4
+      },
+      "observations": [
+        "The graph extractor previously recognized internal release-page URLs but did not resolve exact DOI URLs that identify another Evidence Press release.",
+        "Twenty-six existing related-work records now resolve through an exact normalized DOI index, with a frozen regression fixture and a hostile near-match rejection.",
+        "The current graph reconciles to 197 method assignments, 39 cluster memberships, 15 lineage memberships and 36 direct inter-release records, for 287 accepted relationships.",
+        "Of the 36 direct records, 29 are authored related-work citations and seven are authored parent links; no similarity-based or speculative relationship was added.",
+        "The proposal-review workbench is now marked in progress because the proposal table and inspector exist while the promised proposal-state filters remain incomplete."
+      ],
+      "decision": "change-priority",
+      "nextAction": "Complete the proposal-state filters and retain exact DOI resolution as a source-only extraction rule; do not extend it to fuzzy citation matching without a quarantined proposal route."
     }
   ]
 }

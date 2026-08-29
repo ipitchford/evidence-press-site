@@ -80,21 +80,47 @@ function validateRelationshipRegistry(registry) {
   return errors;
 }
 
-function internalReleaseSlug(rawUrl, baseUrl) {
+function normalizeDoiReference(rawValue, { allowBare = false } = {}) {
+  const value = String(rawValue || '').trim();
+  const prefixed = value.match(/^(?:https?:\/\/(?:dx\.)?doi\.org\/|doi:\s*)(10\.\d{4,9}\/\S+)$/i);
+  const bare = allowBare && value.match(/^(10\.\d{4,9}\/\S+)$/i);
+  const match = prefixed || bare;
+  if (!match) return null;
+  return match[1].replace(/[?#].*$/, '').replace(/\/$/, '').toLowerCase();
+}
+
+function buildReleaseIdentityIndex(papers) {
+  const byDoi = new Map();
+  for (const paper of papers) {
+    const doi = normalizeDoiReference(paper.doi, { allowBare: true });
+    if (!doi) continue;
+    if (byDoi.has(doi) && byDoi.get(doi) !== paper.slug) {
+      throw new Error(`release DOI ${doi} is ambiguous between ${byDoi.get(doi)} and ${paper.slug}`);
+    }
+    byDoi.set(doi, paper.slug);
+  }
+  return { byDoi };
+}
+
+function internalReleaseSlug(rawUrl, baseUrl, identityIndex = null) {
   try {
     const url = new URL(rawUrl, baseUrl);
     const canonical = new URL(baseUrl);
     const allowedHosts = new Set([canonical.hostname, 'evidence-press.pages.dev']);
-    if (!allowedHosts.has(url.hostname)) return null;
-    const match = url.pathname.match(/^\/releases\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/);
-    return match ? match[1] : null;
-  } catch { return null; }
+    if (allowedHosts.has(url.hostname)) {
+      const match = url.pathname.match(/^\/releases\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/);
+      if (match) return match[1];
+    }
+  } catch { /* A DOI reference need not parse as a URL. */ }
+  const doi = normalizeDoiReference(rawUrl);
+  return doi && identityIndex ? identityIndex.byDoi.get(doi) || null : null;
 }
 
 function buildResearchGraph({ papers, methodRegistry, relationshipRegistry, baseUrl, sourceCommit = null, sourceDate = null }) {
   const base = String(baseUrl).replace(/\/$/, '');
   const predicateById = new Map(relationshipRegistry.predicates.map(item => [item.id, item]));
   const paperBySlug = new Map(papers.map(paper => [paper.slug, paper]));
+  const releaseIdentityIndex = buildReleaseIdentityIndex(papers);
   const nodes = [];
   const edges = [];
   const proposals = [];
@@ -230,7 +256,7 @@ function buildResearchGraph({ papers, methodRegistry, relationshipRegistry, base
     });
 
     (paper.relatedWorks || []).forEach((work, index) => {
-      const targetSlug = internalReleaseSlug(work.url, base);
+      const targetSlug = internalReleaseSlug(work.url, base, releaseIdentityIndex);
       if (!targetSlug || !paperBySlug.has(targetSlug)) return;
       addEdge({
         source: releaseId(paper.slug), target: releaseId(targetSlug),
@@ -432,5 +458,7 @@ module.exports = {
   buildResearchGraph,
   validateResearchGraph,
   internalReleaseSlug,
+  normalizeDoiReference,
+  buildReleaseIdentityIndex,
   edgeId
 };

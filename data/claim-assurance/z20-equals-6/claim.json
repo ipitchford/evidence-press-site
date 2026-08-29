@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "recordType": "claim",
+  "claimId": "ep-claim:sha256:77529f500af949b9ee0b76694fc022d8dc06d9779628df896888b6f2c8470bb1",
+  "claimKey": "z20-equals-6-main",
+  "claimVersion": "1.0.0",
+  "statementFingerprint": "sha256:117128e0c8c96aefb59c21d3f8d936c12ea5c5840fc4985873ac3d6cb7513faa",
+  "statement": {
+    "short": "z(20) = 6",
+    "naturalLanguage": "For every finite simple graph G on 20 vertices, the cochromatic number z(G) is at most 6, and there exists a finite simple graph on 20 vertices whose cochromatic number is 6; equivalently, z(20)=6.",
+    "latex": "z(20)=\\max_{|V(G)|=20} z(G)=6",
+    "definitions": [
+      "For a finite simple graph G, z(G) is the minimum number of parts in a partition of V(G) in which every part induces either a clique or an independent set.",
+      "For n >= 1, z(n) is the maximum of z(G) over finite simple graphs G with n vertices."
+    ]
+  },
+  "release": {
+    "slug": "z20-equals-6",
+    "version": "candidate-2026-07-26",
+    "doi": "10.5281/zenodo.21647645",
+    "status": "unrefereed-candidate",
+    "repository": "https://github.com/ipitchford/z20-cochromatic",
+    "sourceCommit": "3c7e520fdc0615f5c700761c2b1e5108dcc836e7",
+    "sourceTag": "candidate-2026-07-26"
+  },
+  "scope": {
+    "resolution": "finite-case",
+    "domain": "finite graph theory; cochromatic numbers; fixed finite order n=20",
+    "canonicalProblem": {
+      "name": "Erdos problem 758 (the n=20 cochromatic-number case)",
+      "url": "https://www.erdosproblems.com/758"
+    },
+    "assumptions": [
+      "Graphs are finite, simple and undirected.",
+      "The computer-assisted upper bound depends on the mathematical reduction, catalogue generation, graph-to-CNF encoding, exact CNFs, proof objects and checker behavior described separately below."
+    ]
+  },
+  "nonClaims": [
+    {
+      "id": "no-external-reproduction",
+      "statement": "This record does not claim independent external reproduction of the complete result."
+    },
+    {
+      "id": "no-end-to-end-formalisation",
+      "statement": "This record does not claim an end-to-end proof-assistant formalisation of the graph-theoretic theorem or its reduction to SAT."
+    },
+    {
+      "id": "no-human-peer-review",
+      "statement": "This record does not claim completed human mathematical peer review."
+    },
+    {
+      "id": "no-formal-encoding-proof",
+      "statement": "The formally verified LRAT checking core does not by itself verify catalogue generation, the graph-to-CNF semantic bridge or the theorem statement."
+    },
+    {
+      "id": "no-independent-companion",
+      "statement": "The companion VR2(K4)=20 release reuses these proof objects and is not an independent reproduction."
+    }
+  ],
+  "obligations": [
+    {
+      "id": "lower-bound",
+      "label": "Paley(17) lower bound",
+      "state": "proof-text-present",
+      "evidenceRefs": [
+        "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/paper/z20_equals_6_proof.tex",
+        "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/src/lower_bound_result.txt"
+      ],
+      "claimCeiling": "A hand-checkable lower-bound argument is present; this registry records its availability but is not a substitute for specialist review."
+    },
+    {
+      "id": "reduction",
+      "label": "Reduction to two order-16 Ramsey cores",
+      "state": "partial",
+      "evidenceRefs": [
+        "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/paper/z20_equals_6_proof.tex",
+        "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/src/gen44.c"
+      ],
+      "claimCeiling": "The manuscript gives the reduction and producer-side catalogue replay is reported; the catalogue program and reduction are not formally verified or independently reimplemented."
+    },
+    {
+      "id": "cnf",
+      "label": "Exact fixed-core CNF construction",
+      "state": "producer-replayed",
+      "evidenceRefs": [
+        "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/certificates/generate.py",
+        "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/certificates/MANIFEST.sha256"
+      ],
+      "claimCeiling": "Exact CNF regeneration and hashes were reported on a producer-side machine; this does not establish the semantic bridge or independent reproduction."
+    },
+    {
+      "id": "certificate",
+      "label": "DRUP and LRAT refutation objects",
+      "state": "producer-replayed",
+      "evidenceRefs": [
+        "https://github.com/ipitchford/z20-cochromatic/tree/candidate-2026-07-26/certificates"
+      ],
+      "claimCeiling": "The preserved proof objects were reported to refute the two exact preserved CNFs; this is narrower than the graph-theoretic theorem."
+    },
+    {
+      "id": "checker",
+      "label": "Certificate-checker behavior",
+      "state": "producer-replayed",
+      "evidenceRefs": [
+        "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/verification/verify_certificate.py",
+        "https://github.com/tanyongkiam/cake_lpr"
+      ],
+      "claimCeiling": "Multiple checker verdicts, including a formally verified LRAT checking core, were reported on one machine; this is not end-to-end theorem formalisation or external reproduction."
+    },
+    {
+      "id": "semantic-bridge",
+      "label": "Graph statement to exact-CNF semantic correspondence",
+      "state": "partial",
+      "evidenceRefs": [
+        "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/verification/verify_certificate.py",
+        "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/paper/z20_equals_6_replay_receipt_2026-07-26.md"
+      ],
+      "claimCeiling": "Deterministic semantic spot checks are reported, but no proof-assistant formalisation or independent clean-room implementation closes the semantic bridge."
+    }
+  ],
+  "statuses": {
+    "database": "registered-candidate",
+    "authorClaimed": "candidate-proof",
+    "formalVerification": "certificate-checking-core-only",
+    "independentReproduction": "none-reported",
+    "humanReview": "none-reported",
+    "novelty": "repository-reported-not-independently-audited",
+    "systemAssessment": "candidate-with-producer-replay-and-open-semantic-bridge",
+    "assessedAt": "2026-08-29"
+  },
+  "dependencies": [
+    {
+      "id": "ramsey-r44",
+      "kind": "cited-theorem",
+      "statement": "R(4,4)=18.",
+      "status": "published-classical-result",
+      "sourceRef": "https://doi.org/10.4153/CJM-1955-001-4"
+    },
+    {
+      "id": "order16-ramsey-cores",
+      "kind": "external-classification-and-local-regeneration",
+      "statement": "There are two non-isomorphic (4,4)-Ramsey graphs on 16 vertices used as the fixed cores.",
+      "status": "producer-regenerated-not-independently-reimplemented",
+      "sourceRef": "https://users.cecs.anu.edu.au/~bdm/data/ramsey.html"
+    },
+    {
+      "id": "checker-assumptions",
+      "kind": "computational-assumption",
+      "statement": "The preserved programs, runtime, hardware and checker invocations behaved as recorded in the producer replay receipt.",
+      "status": "producer-reported",
+      "sourceRef": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/paper/z20_equals_6_replay_receipt_2026-07-26.md"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "paper/z20_equals_6_proof.pdf",
+      "role": "candidate manuscript",
+      "sha256": "sha256:045e826bd5d249456ae4759155256d7562c95b850fc83fa1de39283dd7691db3",
+      "url": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/paper/z20_equals_6_proof.pdf"
+    },
+    {
+      "path": "paper/z20_equals_6_proof.tex",
+      "role": "manuscript source",
+      "sha256": "sha256:fdbe212ffca1fb7d6b4724054f6fdb1b3ae4eff8ab03939e92208e81398ffdb6",
+      "url": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/paper/z20_equals_6_proof.tex"
+    },
+    {
+      "path": "paper/z20_equals_6_replay_receipt_2026-07-26.md",
+      "role": "historical producer replay receipt",
+      "sha256": "sha256:2ad26844ecdceb934d70b227753e256a65b201e7e6a09c448eb5fe54f18a00ee",
+      "url": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/paper/z20_equals_6_replay_receipt_2026-07-26.md"
+    },
+    {
+      "path": "certificates/z20_core0.cnf",
+      "role": "core 0 formula",
+      "sha256": "sha256:cbfea7b0b2cb712ad8b4f8b129f74c7f010e879064414eaef76e74aa88be3f44",
+      "url": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/certificates/z20_core0.cnf"
+    },
+    {
+      "path": "certificates/z20_core0.drup",
+      "role": "core 0 DRUP refutation",
+      "sha256": "sha256:3f7aa99011da35a3e2746348bab550eab3f918d10e8a6c619041c72e7033649a",
+      "url": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/certificates/z20_core0.drup"
+    },
+    {
+      "path": "certificates/core0.lrat",
+      "role": "core 0 LRAT refutation",
+      "sha256": "sha256:df04c4615dd6e44fd81c870e0b82433b6116f0bea135550a393a6d41ad7a1d57",
+      "url": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/certificates/core0.lrat"
+    },
+    {
+      "path": "certificates/z20_core1.cnf",
+      "role": "core 1 formula",
+      "sha256": "sha256:d3d96a3c2a719c753242673b81aabc3977c5e435bb5996b4c58c85a82d11dc5a",
+      "url": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/certificates/z20_core1.cnf"
+    },
+    {
+      "path": "certificates/z20_core1.drup",
+      "role": "core 1 DRUP refutation",
+      "sha256": "sha256:ebe9821bb9939f1331f9908415cb8499f6c1d216c0143a0d048ff47533df446b",
+      "url": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/certificates/z20_core1.drup"
+    },
+    {
+      "path": "certificates/core1.lrat",
+      "role": "core 1 LRAT refutation",
+      "sha256": "sha256:72b7cc4fcce0c4558b457bc14f6c795bc7401b1e7d990c5b679ebbda3708e06c",
+      "url": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/certificates/core1.lrat"
+    },
+    {
+      "path": "verification/verify_certificate.py",
+      "role": "separate implementation verifier supplied by the producers",
+      "sha256": "sha256:821a5bb500f011befcf700c84823d4ec7fe9e3757491e8d8fcd768d4c683e913",
+      "url": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/verification/verify_certificate.py"
+    }
+  ],
+  "provenance": [
+    {
+      "name": "GPT 5.6 Sol",
+      "role": "repository-reported mathematical and computational contribution",
+      "type": "AI system"
+    },
+    {
+      "name": "Claude Opus 4.8 / 5",
+      "role": "repository-reported mathematical and computational contribution",
+      "type": "AI system"
+    },
+    {
+      "name": "Repository maintainer",
+      "role": "problem selection, research mediation, repository maintenance and publication",
+      "type": "human; individual identity not asserted in this Evidence Press record"
+    }
+  ],
+  "license": "CC0-1.0",
+  "supersedes": null,
+  "sourceRefs": [
+    "https://doi.org/10.5281/zenodo.21647645",
+    "https://github.com/ipitchford/z20-cochromatic/releases/tag/candidate-2026-07-26",
+    "https://evidencepress.org/releases/z20-equals-6/"
+  ]
+}

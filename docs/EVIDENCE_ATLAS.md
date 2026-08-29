@@ -44,7 +44,8 @@ nodes. Accepted edges currently come from:
 - method-cluster membership;
 - evidence-backed lineage membership;
 - structured internal parent links;
-- internal Evidence Press citations in `relatedWorks`.
+- internal Evidence Press citations in `relatedWorks`, resolved by an exact
+  Evidence Press release URL or exact DOI identity only.
 
 Every edge includes a content-derived identifier, predicate, knowledge status,
 construction route, recorded basis, inference limit and source references.
@@ -111,9 +112,10 @@ log. The initial priority order is:
 3. **Bounded discovery pilot.** After proposal intake exists, compare separately
    visible citation, symbolic, shared-object and semantic-retrieval routes on a
    frozen hidden-link benchmark with negative controls.
-4. **Proposal-review workbench.** Make evidence, rival explanations, review
-   provenance and decision history accessible without visually collapsing
-   proposals into accepted edges.
+4. **Proposal-review workbench — in progress.** The distinct proposal view,
+   table and inspector exist. Proposal-state filters remain to be completed;
+   evidence, rival explanations, review provenance and decision history must
+   remain accessible without visually collapsing proposals into accepted edges.
 5. **Agent query surfaces.** Add filtered neighbourhood or dependency queries
    only when a demonstrated task is materially cheaper than retrieving the
    complete graph.
@@ -128,16 +130,21 @@ The highest-priority incomplete action is now the bounded discovery pilot.
 Discovery remains a proposal generator only and has no accepted-graph write
 path.
 
-The initial external model comment supplied by the maintainer reconciled all
-175 accepted edges and prompted the calibration task. A later same-system Sol
-review recommended making the five direct inter-release links first-class and
-displaying the composition beside the headline statistics. The current
-interface implements that recommendation without treating either review as
-independent scientific assurance. Two broad methods occur on 20 and 18 of the
-28 releases, so prevalence is now shown rather than left implicit. The earlier
-comment also queried a Polydegree lineage. It is not currently eligible: a
-non-root lineage member must declare both a reciprocal `lineageId` and an
-evidential parent link, and the proposed successor has only the latter.
+Historical calibration note (15 August 2026): the initial external model
+comment supplied by the maintainer reconciled the then-current 175 accepted
+edges and prompted the calibration task. A later same-system Sol review
+recommended making the then-current five direct inter-release links
+first-class and displaying the composition beside the headline statistics.
+At that historical 28-release baseline, two broad methods occurred on 20 and
+18 releases. These numbers are retained as review history, not current corpus
+totals. Current totals are generated from source and published in
+`/api/research-graph.json` and `/api/atlas-roadmap.json`; the roadmap validator
+now rejects a baseline that drifts from the generated graph or proposal
+register. Neither model comment is treated as independent scientific
+assurance. The earlier comment also queried a Polydegree lineage. It is not
+currently eligible: a non-root lineage member must declare both a reciprocal
+`lineageId` and an evidential parent link, and the proposed successor has only
+the latter.
 
 ## Deterministic gates
 
@@ -149,6 +156,10 @@ evidential parent link, and the proposed successor has only the latter.
 - edge identities change when their meaning changes;
 - proposed edges cannot enter the accepted array;
 - corrupted endpoints and silent edge mutations are rejected.
+- every exact DOI-backed internal citation in the frozen regression fixture is
+  resolved, while a near-match DOI is rejected;
+- current corpus totals and method prevalence are derived rather than frozen
+  in tests.
 
 `node tools/test-atlas-proposals.js` additionally verifies:
 

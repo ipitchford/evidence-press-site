@@ -1,0 +1,62 @@
+[
+  {
+    "schemaVersion": "1.0",
+    "recordType": "assurance-receipt",
+    "receiptId": "ep-receipt:z20-equals-6:producer-replay-20260726:v1",
+    "receiptVersion": "1.0.0",
+    "claimId": "ep-claim:sha256:77529f500af949b9ee0b76694fc022d8dc06d9779628df896888b6f2c8470bb1",
+    "claimVersion": "1.0.0",
+    "taskId": "ep-task:z20-equals-6:producer-portable-replay:v1",
+    "taskVersion": "1.0.0",
+    "profileId": "ep-profile:z20-equals-6:portable-replay:v1",
+    "profileVersion": "1.0.0",
+    "performedAt": "2026-07-26",
+    "recordedAt": "2026-08-29",
+    "actor": {
+      "name": "Evidence-package producer workflow on macOS/arm64",
+      "type": "repository-reported local replay",
+      "relationshipToClaimProducer": "claim-producer-workflow"
+    },
+    "independenceDisclosure": {
+      "status": "not-independent",
+      "basis": "The historical receipt explicitly describes a local replay on one machine performed while preparing the producer evidence package. The verifier is a separate implementation within the same producer lineage, not an unaffiliated reproduction.",
+      "publicEvidenceUrl": "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/paper/z20_equals_6_replay_receipt_2026-07-26.md"
+    },
+    "subject": {
+      "releaseVersion": "candidate-2026-07-26",
+      "sourceTag": "candidate-2026-07-26",
+      "reportedLocalCommit": "61e8300",
+      "reportedPublicSnapshotCommit": "8d9829edebecdfc78384eef5b41617ddd32b11ea",
+      "artifactBindings": [
+        {"path": "paper/z20_equals_6_replay_receipt_2026-07-26.md", "sha256": "sha256:2ad26844ecdceb934d70b227753e256a65b201e7e6a09c448eb5fe54f18a00ee"},
+        {"path": "certificates/z20_core0.cnf", "sha256": "sha256:cbfea7b0b2cb712ad8b4f8b129f74c7f010e879064414eaef76e74aa88be3f44"},
+        {"path": "certificates/z20_core0.drup", "sha256": "sha256:3f7aa99011da35a3e2746348bab550eab3f918d10e8a6c619041c72e7033649a"},
+        {"path": "certificates/core0.lrat", "sha256": "sha256:df04c4615dd6e44fd81c870e0b82433b6116f0bea135550a393a6d41ad7a1d57"},
+        {"path": "certificates/z20_core1.cnf", "sha256": "sha256:d3d96a3c2a719c753242673b81aabc3977c5e435bb5996b4c58c85a82d11dc5a"},
+        {"path": "certificates/z20_core1.drup", "sha256": "sha256:ebe9821bb9939f1331f9908415cb8499f6c1d216c0143a0d048ff47533df446b"},
+        {"path": "certificates/core1.lrat", "sha256": "sha256:72b7cc4fcce0c4558b457bc14f6c795bc7401b1e7d990c5b679ebbda3708e06c"},
+        {"path": "verification/verify_certificate.py", "sha256": "sha256:821a5bb500f011befcf700c84823d4ec7fe9e3757491e8d8fcd768d4c683e913"}
+      ]
+    },
+    "outcome": {
+      "state": "passed",
+      "scope": "Repository-reported producer-side replay of catalogue generation, residual cocolourability checks, exact CNF regeneration, deterministic semantic spot checks and multiple proof-checker validations on one macOS/arm64 machine.",
+      "claimsEstablished": [
+        "The historical receipt reports successful replay behavior for the preserved programs and proof objects on the named machine.",
+        "The historical receipt reports that the exact preserved DRUP and LRAT objects establish UNSAT for the two exact preserved CNFs under the named checkers."
+      ],
+      "claimsNotEstablished": [
+        "Independent external reproduction",
+        "Formal verification of catalogue generation or graph-to-CNF correspondence",
+        "End-to-end formal verification of z(20)=6",
+        "Human mathematical peer review",
+        "Independent novelty or priority assessment"
+      ]
+    },
+    "evidenceRefs": [
+      "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/paper/z20_equals_6_replay_receipt_2026-07-26.md",
+      "https://github.com/ipitchford/z20-cochromatic/blob/candidate-2026-07-26/RELEASE_MANIFEST.sha256"
+    ],
+    "license": "CC0-1.0"
+  }
+]
