@@ -315,6 +315,14 @@ function extractFunction(source, name) {
   check('prospective Markdown links method, IBE and work ledgers',
     markdown.includes('/api/method-registry.json') && markdown.includes('/api/ibe-ledger.json') && markdown.includes('/api/work-ledger.json'), markdown);
   const measuredAttempt = postPolicyAttemptFor('future-measured-render');
+  measuredAttempt.corrections.push({
+    at: '2026-08-29T14:03:58Z',
+    fields: ['metrics.outcome.calendarElapsedMinutes'],
+    reason: 'The frozen phase measurement was narrower than the user-visible request-to-readback interval.',
+    replacement: 'Retain the immutable phase measurement and record the reported end-to-end interval as 83 minutes.',
+    evidenceRefs: ['https://evidencepress.org/releases/future-measured-render/']
+  });
+  measuredAttempt.measurement.correctionCount = 1;
   const measuredRender = renderHarness(methodById, ibeById, new Map([[measuredAttempt.attemptId, measuredAttempt]]), 'https://evidencepress.org', esc, rounded);
   const measuredFixture = recordFor('future-measured-render');
   const measuredHtml = measuredRender.operatingModelHtml(measuredFixture);
@@ -323,6 +331,9 @@ function extractFunction(source, name) {
     measuredHtml.includes('Fermi active-time forecast') && measuredHtml.includes('Research search') &&
       measuredHtml.includes('positive-signal') && measuredHtml.includes('actual/forecast 1') &&
       measuredHtml.includes('target closure 0.0625'), measuredHtml);
+  check('measured release HTML publishes append-only measurement corrections',
+    measuredHtml.includes('Measurement corrections') && measuredHtml.includes('83 minutes') &&
+      measuredHtml.includes('immutable phase measurement'), measuredHtml);
   check('measured release Markdown publishes scope, probabilities and rejected-route counts',
     measuredMarkdown.includes('scope research-through-publication') && measuredMarkdown.includes('positive-signal/closure probabilities 0.6/0.25') &&
       measuredMarkdown.includes('architectures tested/rejected 1/0') &&

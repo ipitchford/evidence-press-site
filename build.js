@@ -1122,6 +1122,11 @@ function operatingModelHtml(p) {
       const targetClosureBrier = outcome
         ? (forecast.probabilityTargetClosure - Number(outcome.targetReached)) ** 2
         : null;
+      const corrections = (attempt.corrections || []).length
+        ? `<dt>Measurement corrections</dt><dd><ul>${attempt.corrections.map(correction =>
+          `<li><strong>${esc(correction.field)}</strong> — ${esc(correction.replacement)} <span class="note">Reason: ${esc(correction.reason)}</span></li>`
+        ).join('')}</ul></dd>`
+        : '';
       const result = outcome ? [
         `<dt>Observed clocks</dt><dd>${esc(outcome.activeAgentMinutes)} active-agent; ${esc(outcome.activeHumanMinutes ?? 'unknown')} active-human; ${esc(outcome.computeMinutes ?? 'unknown')} substantive-compute; ${esc(outcome.unattendedWaitMinutes)} unattended-wait; ${esc(outcome.blockedMinutes)} blocked; ${esc(outcome.reworkMinutes)} rework minutes. Calendar elapsed: ${esc(outcome.calendarElapsedMinutes)} minutes.</dd>`,
         `<dt>Research search</dt><dd>Cycles: ${esc(outcome.researchCycles.positive)} positive, ${esc(outcome.researchCycles.negative)} negative, ${esc(outcome.researchCycles.inconclusive)} inconclusive. Falsification gates: ${esc(outcome.falsificationGatesRun)}. Candidate architectures: ${esc(outcome.candidateArchitecturesTested)} tested, ${esc(outcome.candidateArchitecturesRejected)} rejected.</dd>`,
@@ -1135,6 +1140,7 @@ function operatingModelHtml(p) {
         <dt>Fermi active-time forecast</dt><dd>${esc(forecast.expectedActiveMinutes)} minutes; plausible interval ${esc(forecast.plausibleLowMinutes)}–${esc(forecast.plausibleHighMinutes)}; expected unattended wait ${esc(forecast.expectedUnattendedWaitMinutes)}. Reference class: ${esc(forecast.referenceClass.label)} (n=${esc(forecast.referenceClass.sampleSize)}) — ${esc(forecast.referenceClass.basis)}.<ul>${components}</ul></dd>
         <dt>Tractability forecast</dt><dd>Within ${esc(forecast.probabilityHorizonMinutes)} active minutes: positive signal ${esc(forecast.probabilityPositiveSignal)}; target closure ${esc(forecast.probabilityTargetClosure)}. Stop rule: ${esc(forecast.stopRule)}</dd>
         ${result}
+        ${corrections}
       </dl></article></li>`;
     }
     const measurement = attempt.measurement;
@@ -1188,7 +1194,10 @@ function operatingModelMarkdown(p) {
         ? rounded((forecast.probabilityPositiveSignal - Number(outcome.positiveSignalObserved)) ** 2, 4)
         : 'not scored';
       const targetClosureBrier = rounded((forecast.probabilityTargetClosure - Number(outcome.targetReached)) ** 2, 4);
-      return `${id}: ${attempt.status} / ${attempt.resultClass}; scope ${metrics.measurementScope}; target ${forecast.targetOutcome}; active forecast ${forecast.expectedActiveMinutes} minutes (${forecast.plausibleLowMinutes}-${forecast.plausibleHighMinutes}); Fermi components ${components}; positive-signal/closure probabilities ${forecast.probabilityPositiveSignal}/${forecast.probabilityTargetClosure} within ${forecast.probabilityHorizonMinutes} active minutes; observed active-agent/human/compute/wait/blocked/rework minutes ${outcome.activeAgentMinutes}/${outcome.activeHumanMinutes ?? 'unknown'}/${outcome.computeMinutes ?? 'unknown'}/${outcome.unattendedWaitMinutes}/${outcome.blockedMinutes}/${outcome.reworkMinutes}; cycles positive/negative/inconclusive ${outcome.researchCycles.positive}/${outcome.researchCycles.negative}/${outcome.researchCycles.inconclusive}; falsification gates ${outcome.falsificationGatesRun}; architectures tested/rejected ${outcome.candidateArchitecturesTested}/${outcome.candidateArchitecturesRejected}; result ${outcome.resultState}; target reached ${outcome.targetReached}; forecast error ${outcome.forecastErrorMinutes} minutes; ratio ${outcome.forecastRatio}; inside interval ${outcome.withinForecastInterval}; positive-signal/target-closure Brier scores ${positiveSignalBrier}/${targetClosureBrier}${missing}`;
+      const corrections = (attempt.corrections || []).length
+        ? `; appended measurement corrections ${attempt.corrections.map(correction => `${correction.field}: ${correction.replacement} (reason: ${correction.reason})`).join('; ')}`
+        : '';
+      return `${id}: ${attempt.status} / ${attempt.resultClass}; scope ${metrics.measurementScope}; target ${forecast.targetOutcome}; active forecast ${forecast.expectedActiveMinutes} minutes (${forecast.plausibleLowMinutes}-${forecast.plausibleHighMinutes}); Fermi components ${components}; positive-signal/closure probabilities ${forecast.probabilityPositiveSignal}/${forecast.probabilityTargetClosure} within ${forecast.probabilityHorizonMinutes} active minutes; observed active-agent/human/compute/wait/blocked/rework minutes ${outcome.activeAgentMinutes}/${outcome.activeHumanMinutes ?? 'unknown'}/${outcome.computeMinutes ?? 'unknown'}/${outcome.unattendedWaitMinutes}/${outcome.blockedMinutes}/${outcome.reworkMinutes}; cycles positive/negative/inconclusive ${outcome.researchCycles.positive}/${outcome.researchCycles.negative}/${outcome.researchCycles.inconclusive}; falsification gates ${outcome.falsificationGatesRun}; architectures tested/rejected ${outcome.candidateArchitecturesTested}/${outcome.candidateArchitecturesRejected}; result ${outcome.resultState}; target reached ${outcome.targetReached}; forecast error ${outcome.forecastErrorMinutes} minutes; ratio ${outcome.forecastRatio}; inside interval ${outcome.withinForecastInterval}; positive-signal/target-closure Brier scores ${positiveSignalBrier}/${targetClosureBrier}${missing}${corrections}`;
     }
     const measurement = attempt.measurement.status === 'not-recorded'
       ? `measurement not recorded (${attempt.measurement.missingnessReason})`

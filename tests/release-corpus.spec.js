@@ -65,3 +65,34 @@ for (const viewport of [
     expect(failures, failures.join('\n')).toEqual([]);
   });
 }
+
+test('all release hero SVG text remains inside its viewBox', async ({ page }) => {
+  const failures = [];
+
+  for (const slug of slugs) {
+    const response = await page.goto(`http://127.0.0.1:8080/assets/art/${slug}.svg`, { waitUntil: 'load' });
+    if (!response || response.status() !== 200) {
+      failures.push(`${slug}: hero SVG returned HTTP ${response && response.status()}`);
+      continue;
+    }
+    const escaped = await page.evaluate(() => {
+      const svg = document.querySelector('svg');
+      if (!svg || !svg.viewBox || !svg.viewBox.baseVal) return ['missing SVG viewBox'];
+      const view = svg.viewBox.baseVal;
+      const tolerance = 0.5;
+      return [...svg.querySelectorAll('text')].flatMap((node, index) => {
+        const box = node.getBBox();
+        const outside = box.x < view.x - tolerance
+          || box.y < view.y - tolerance
+          || box.x + box.width > view.x + view.width + tolerance
+          || box.y + box.height > view.y + view.height + tolerance;
+        return outside
+          ? [`text ${index} ${JSON.stringify(node.textContent)} has bbox ${box.x.toFixed(1)},${box.y.toFixed(1)},${box.width.toFixed(1)},${box.height.toFixed(1)} outside ${view.x},${view.y},${view.width},${view.height}`]
+          : [];
+      });
+    });
+    for (const problem of escaped) failures.push(`${slug}: ${problem}`);
+  }
+
+  expect(failures, failures.join('\n')).toEqual([]);
+});

@@ -1183,39 +1183,40 @@ art['o01d0-polar-fibre-structural-reductions'] = (a, b) => {
    marker preserves the open endpoint rather than presenting it as solved. */
 art['odd-order-one-third-popular-differences'] = (a, b) => {
   let s = '';
-  const layerY = [92, 198, 304];
+  const layerY = [82, 200, 318];
   const layerLabels = ['H × {0}', 'Y × {1}', 'H × {2}'];
   const counts = [9, 6, 9];
   for (let row = 0; row < layerY.length; row++) {
     const y = layerY[row];
-    s += `<text x="66" y="${y + 6}" font-family="ui-monospace,monospace" font-size="17" fill="${row === 1 ? b : a}">${layerLabels[row]}</text>`;
+    s += `<text x="64" y="${y + 6}" font-family="ui-monospace,monospace" font-size="17" fill="${row === 1 ? b : a}">${layerLabels[row]}</text>`;
     for (let i = 0; i < counts[row]; i++) {
-      const x = 202 + i * 35;
+      const x = 190 + i * 30;
       s += `<circle cx="${x}" cy="${y}" r="${row === 1 ? 7 : 9}" fill="${row === 1 ? b : a}" opacity="${row === 1 ? .92 : .78}"/>`;
     }
-    s += `<line x1="194" y1="${y}" x2="492" y2="${y}" stroke="${row === 1 ? b : a}" stroke-width="2" opacity=".34"/>`;
+    s += `<line x1="182" y1="${y}" x2="438" y2="${y}" stroke="${row === 1 ? b : a}" stroke-width="2" opacity=".34"/>`;
   }
-  s += `<path d="M 514 92 C 568 112, 568 176, 606 198 C 568 220, 568 284, 514 304" fill="none" stroke="#8a938f" stroke-width="3" stroke-dasharray="8 8" opacity=".72"/>`;
-  s += `<text x="574" y="172" text-anchor="middle" font-family="Georgia" font-size="23" fill="#e7e5e4">differences</text>`;
+  s += `<path d="M 460 82 C 500 104, 500 166, 526 200 C 500 234, 500 296, 460 318" fill="none" stroke="#8a938f" stroke-width="3" stroke-dasharray="8 8" opacity=".72"/>`;
+  s += `<text x="505" y="184" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4">difference</text>`;
+  s += `<text x="505" y="209" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4">layers</text>`;
 
   const diffLabels = ['−2', '−1', '0', '+1', '+2'];
   const diffCounts = ['h', '2m', '≥2h', '2m', 'h'];
   for (let i = 0; i < diffLabels.length; i++) {
-    const y = 58 + i * 70;
+    const y = 48 + i * 76;
     const strong = i === 0 || i === 4;
-    s += `<rect x="646" y="${y - 24}" width="138" height="48" rx="12" fill="#151a1e" stroke="${strong ? a : b}" stroke-width="2"/>`;
-    s += `<text x="677" y="${y + 7}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" fill="#e7e5e4">${diffLabels[i]}</text>`;
-    s += `<text x="746" y="${y + 7}" text-anchor="middle" font-family="Georgia" font-size="22" fill="${strong ? a : b}">${diffCounts[i]}</text>`;
+    s += `<rect x="570" y="${y - 25}" width="176" height="50" rx="12" fill="#151a1e" stroke="${strong ? a : b}" stroke-width="2"/>`;
+    s += `<text x="610" y="${y + 7}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" fill="#e7e5e4">${diffLabels[i]}</text>`;
+    s += `<text x="700" y="${y + 7}" text-anchor="middle" font-family="Georgia" font-size="23" fill="${strong ? a : b}">${diffCounts[i]}</text>`;
   }
 
-  s += `<line x1="850" y1="322" x2="1134" y2="322" stroke="#8a938f" stroke-width="1.5" opacity=".55"/>`;
-  s += `<line x1="872" y1="328" x2="872" y2="76" stroke="#8a938f" stroke-width="1.5" opacity=".55"/>`;
-  s += `<line x1="872" y1="174" x2="1134" y2="174" stroke="${b}" stroke-width="2" stroke-dasharray="9 8" opacity=".7"/>`;
-  s += `<text x="1126" y="163" text-anchor="end" font-family="ui-monospace,monospace" font-size="16" fill="${b}">2/5 open</text>`;
-  const pts = [[902, 250], [958, 220], [1014, 202], [1070, 190], [1122, 183]];
-  s += `<path d="M ${pts.map(([x, y]) => `${x} ${y}`).join(' L ')}" fill="none" stroke="${a}" stroke-width="4"/>`;
-  for (const [x, y] of pts) s += `<circle cx="${x}" cy="${y}" r="7" fill="${a}"/>`;
-  s += `<text x="1000" y="356" text-anchor="middle" font-family="Georgia" font-size="22" fill="#e7e5e4">obstruction from below · not a sharpness theorem</text>`;
+  s += `<path d="M 770 200 H 810" stroke="#8a938f" stroke-width="3" stroke-dasharray="8 7" opacity=".75"/>`;
+  s += `<path d="M 800 190 L 814 200 L 800 210" fill="none" stroke="#8a938f" stroke-width="3" opacity=".75"/>`;
+  s += `<rect x="836" y="62" width="300" height="276" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2" opacity=".96"/>`;
+  s += `<text x="986" y="128" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" letter-spacing="2" fill="#8a938f">COUNTEREXAMPLES FOR</text>`;
+  s += `<text x="986" y="205" text-anchor="middle" font-family="Georgia" font-size="58" fill="${b}">θ &lt; 2/5</text>`;
+  s += `<line x1="890" y1="231" x2="1082" y2="231" stroke="${b}" stroke-width="2" stroke-dasharray="9 8" opacity=".7"/>`;
+  s += `<text x="986" y="277" text-anchor="middle" font-family="Georgia" font-size="25" fill="#e7e5e4">obstruction from below</text>`;
+  s += `<text x="986" y="310" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" fill="${a}">ENDPOINT 2/5 REMAINS OPEN</text>`;
   return s;
 };
 
