@@ -28,11 +28,13 @@ const ARTIFACT_PATHS = Object.freeze({
   registry: 'data/METHOD_REGISTRY.json',
   ledger: 'data/IBE_LEDGER.json',
   workLedger: 'data/WORK_LEDGER.json',
+  metricsPolicy: 'data/RESEARCH_METRICS_POLICY.json',
   doctrine: 'docs/OPERATING_MODEL.md',
   contractSchema: 'schemas/operating-model.schema.json',
   registrySchema: 'schemas/method-registry.schema.json',
   ledgerSchema: 'schemas/ibe-ledger.schema.json',
   workLedgerSchema: 'schemas/work-ledger.schema.json',
+  metricsPolicySchema: 'schemas/research-metrics-policy.schema.json',
   releaseSchema: 'schemas/release-operating-model.schema.json'
 });
 
@@ -57,11 +59,13 @@ function loadArtifacts(root) {
     registry: readJson(root, ARTIFACT_PATHS.registry),
     ledger: readJson(root, ARTIFACT_PATHS.ledger),
     workLedger: readJson(root, ARTIFACT_PATHS.workLedger),
+    metricsPolicy: readJson(root, ARTIFACT_PATHS.metricsPolicy),
     schemas: {
       contract: readJson(root, ARTIFACT_PATHS.contractSchema),
       registry: readJson(root, ARTIFACT_PATHS.registrySchema),
       ledger: readJson(root, ARTIFACT_PATHS.ledgerSchema),
       workLedger: readJson(root, ARTIFACT_PATHS.workLedgerSchema),
+      metricsPolicy: readJson(root, ARTIFACT_PATHS.metricsPolicySchema),
       release: readJson(root, ARTIFACT_PATHS.releaseSchema)
     }
   };
@@ -251,7 +255,210 @@ function validateContract(contract, paperSlugs, errors) {
   stringArray(errors, 'OPERATING_MODEL.releasePolicy.assuranceDimensions', contract.releasePolicy.assuranceDimensions, { min: 11 });
 }
 
-function validateWorkLedger(ledger, paperSlugs, policy, errors) {
+function nonNegativeInteger(errors, where, value, { min = 0, nullable = false } = {}) {
+  if (nullable && value === null) return true;
+  if (!Number.isInteger(value) || value < min) {
+    add(errors, where, `must be ${nullable ? 'null or ' : ''}an integer at least ${min}`);
+    return false;
+  }
+  return true;
+}
+
+function probability(errors, where, value) {
+  if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 1) {
+    add(errors, where, 'must be a finite number from 0 to 1');
+    return false;
+  }
+  return true;
+}
+
+function validateMetricsPolicy(metricsPolicy, errors) {
+  const required = ['schemaVersion', 'effectiveAt', 'status', 'claimCeiling', 'appliesTo', 'scopeTypes',
+    'resultStates', 'minimumPublishableOutcomeFields', 'optionalTelemetryFields', 'definitions',
+    'publicationRules', 'missingnessPolicy', 'changeLog'];
+  if (!keys(errors, 'RESEARCH_METRICS_POLICY', metricsPolicy, required)) return;
+  if (metricsPolicy.schemaVersion !== '1.0') add(errors, 'RESEARCH_METRICS_POLICY.schemaVersion', 'must equal "1.0"');
+  dateTime(errors, 'RESEARCH_METRICS_POLICY.effectiveAt', metricsPolicy.effectiveAt);
+  if (metricsPolicy.status !== 'prospective-required') add(errors, 'RESEARCH_METRICS_POLICY.status', 'must equal "prospective-required"');
+  string(errors, 'RESEARCH_METRICS_POLICY.claimCeiling', metricsPolicy.claimCeiling);
+  if (keys(errors, 'RESEARCH_METRICS_POLICY.appliesTo', metricsPolicy.appliesTo,
+    ['attemptsRegisteredAtOrAfter', 'intakeRule', 'terminalRule', 'leftCensoringRule'])) {
+    dateTime(errors, 'RESEARCH_METRICS_POLICY.appliesTo.attemptsRegisteredAtOrAfter', metricsPolicy.appliesTo.attemptsRegisteredAtOrAfter);
+    if (metricsPolicy.appliesTo.attemptsRegisteredAtOrAfter !== metricsPolicy.effectiveAt)
+      add(errors, 'RESEARCH_METRICS_POLICY.appliesTo.attemptsRegisteredAtOrAfter', 'must equal effectiveAt');
+    for (const field of ['intakeRule', 'terminalRule', 'leftCensoringRule'])
+      string(errors, `RESEARCH_METRICS_POLICY.appliesTo.${field}`, metricsPolicy.appliesTo[field]);
+  }
+  const expectedScopes = ['research-through-publication', 'research-only', 'assurance-through-publication', 'publication-only', 'communication-only'];
+  const expectedResults = ['target-closed', 'positive-signal', 'partial', 'falsified', 'stopped', 'no-substantive-result', 'not-applicable'];
+  const expectedOptional = ['activeHumanMinutes', 'computeMinutes', 'deduplicatedModelTokens', 'uncachedInputTokens'];
+  const scopes = stringArray(errors, 'RESEARCH_METRICS_POLICY.scopeTypes', metricsPolicy.scopeTypes, { min: expectedScopes.length });
+  const results = stringArray(errors, 'RESEARCH_METRICS_POLICY.resultStates', metricsPolicy.resultStates, { min: expectedResults.length });
+  const optional = stringArray(errors, 'RESEARCH_METRICS_POLICY.optionalTelemetryFields', metricsPolicy.optionalTelemetryFields, { min: expectedOptional.length });
+  if (!sameMembers(scopes, expectedScopes)) add(errors, 'RESEARCH_METRICS_POLICY.scopeTypes', 'must preserve the five registered scope types');
+  if (!sameMembers(results, expectedResults)) add(errors, 'RESEARCH_METRICS_POLICY.resultStates', 'must preserve the seven registered result states');
+  if (!sameMembers(optional, expectedOptional)) add(errors, 'RESEARCH_METRICS_POLICY.optionalTelemetryFields', 'must preserve the four optional telemetry fields');
+  stringArray(errors, 'RESEARCH_METRICS_POLICY.minimumPublishableOutcomeFields', metricsPolicy.minimumPublishableOutcomeFields, { min: 20 });
+  stringArray(errors, 'RESEARCH_METRICS_POLICY.publicationRules', metricsPolicy.publicationRules, { min: 5 });
+  stringArray(errors, 'RESEARCH_METRICS_POLICY.missingnessPolicy', metricsPolicy.missingnessPolicy, { min: 4 });
+  const definitionFields = ['calendarElapsedMinutes', 'activeAgentMinutes', 'activeHumanMinutes', 'computeMinutes',
+    'unattendedWaitMinutes', 'blockedMinutes', 'reworkMinutes', 'researchCycle', 'falsificationGate',
+    'candidateArchitecture', 'positiveSignal', 'targetReached', 'deduplicatedModelTokens', 'substantiveReviewRound', 'brierScore'];
+  if (keys(errors, 'RESEARCH_METRICS_POLICY.definitions', metricsPolicy.definitions, definitionFields)) {
+    for (const field of definitionFields) string(errors, `RESEARCH_METRICS_POLICY.definitions.${field}`, metricsPolicy.definitions[field]);
+  }
+  if (!Array.isArray(metricsPolicy.changeLog) || !metricsPolicy.changeLog.length)
+    add(errors, 'RESEARCH_METRICS_POLICY.changeLog', 'must be a non-empty array');
+  for (const [index, change] of (metricsPolicy.changeLog || []).entries())
+    validateChange(errors, `RESEARCH_METRICS_POLICY.changeLog[${index}]`, change);
+}
+
+function validateResearchMetrics(errors, where, attempt, metricsPolicy) {
+  const effectiveAt = metricsPolicy.effectiveAt;
+  const requiredForAttempt = String(attempt.registeredAt) >= String(effectiveAt);
+  const metrics = attempt.metrics;
+  if (!metrics) {
+    if (requiredForAttempt) add(errors, `${where}.metrics`, `is required for attempts registered on or after ${effectiveAt}`);
+    return;
+  }
+  if (String(attempt.registeredAt) < String(effectiveAt)) {
+    add(errors, `${where}.metrics`, 'must not reconstruct the richer metric receipt for a pre-policy attempt');
+    return;
+  }
+  const required = ['schemaVersion', 'measurementScope', 'scopeBoundary', 'forecast', 'outcome'];
+  if (!keys(errors, `${where}.metrics`, metrics, required)) return;
+  if (metrics.schemaVersion !== metricsPolicy.schemaVersion) add(errors, `${where}.metrics.schemaVersion`, 'must match RESEARCH_METRICS_POLICY.schemaVersion');
+  if (!metricsPolicy.scopeTypes.includes(metrics.measurementScope)) add(errors, `${where}.metrics.measurementScope`, 'is not registered by the metrics policy');
+  string(errors, `${where}.metrics.scopeBoundary`, metrics.scopeBoundary);
+
+  const forecastWhere = `${where}.metrics.forecast`;
+  const forecastRequired = ['frozenAt', 'procedureClass', 'targetOutcome', 'expectedActiveMinutes', 'plausibleLowMinutes',
+    'plausibleHighMinutes', 'expectedUnattendedWaitMinutes', 'referenceClass', 'fermiComponents',
+    'probabilityPositiveSignal', 'probabilityTargetClosure', 'probabilityHorizonMinutes', 'assumptions',
+    'reforecastTriggers', 'stopRule'];
+  const forecast = metrics.forecast;
+  if (!keys(errors, forecastWhere, forecast, forecastRequired)) return;
+  dateTime(errors, `${forecastWhere}.frozenAt`, forecast.frozenAt);
+  if (forecast.frozenAt !== attempt.registeredAt) add(errors, `${forecastWhere}.frozenAt`, 'must exactly equal registeredAt so the forecast is prospective');
+  for (const field of ['procedureClass', 'targetOutcome', 'stopRule']) string(errors, `${forecastWhere}.${field}`, forecast[field]);
+  nonNegativeInteger(errors, `${forecastWhere}.expectedActiveMinutes`, forecast.expectedActiveMinutes, { min: 1 });
+  nonNegativeInteger(errors, `${forecastWhere}.plausibleLowMinutes`, forecast.plausibleLowMinutes);
+  nonNegativeInteger(errors, `${forecastWhere}.plausibleHighMinutes`, forecast.plausibleHighMinutes, { min: 1 });
+  nonNegativeInteger(errors, `${forecastWhere}.expectedUnattendedWaitMinutes`, forecast.expectedUnattendedWaitMinutes);
+  nonNegativeInteger(errors, `${forecastWhere}.probabilityHorizonMinutes`, forecast.probabilityHorizonMinutes, { min: 1 });
+  probability(errors, `${forecastWhere}.probabilityPositiveSignal`, forecast.probabilityPositiveSignal);
+  probability(errors, `${forecastWhere}.probabilityTargetClosure`, forecast.probabilityTargetClosure);
+  if (forecast.probabilityTargetClosure > forecast.probabilityPositiveSignal)
+    add(errors, `${forecastWhere}.probabilityTargetClosure`, 'cannot exceed probabilityPositiveSignal');
+  if (forecast.plausibleLowMinutes > forecast.expectedActiveMinutes || forecast.expectedActiveMinutes > forecast.plausibleHighMinutes)
+    add(errors, forecastWhere, 'requires plausibleLowMinutes <= expectedActiveMinutes <= plausibleHighMinutes');
+  stringArray(errors, `${forecastWhere}.assumptions`, forecast.assumptions, { min: 1 });
+  stringArray(errors, `${forecastWhere}.reforecastTriggers`, forecast.reforecastTriggers, { min: 1 });
+  if (keys(errors, `${forecastWhere}.referenceClass`, forecast.referenceClass, ['label', 'sampleSize', 'basis'])) {
+    string(errors, `${forecastWhere}.referenceClass.label`, forecast.referenceClass.label);
+    nonNegativeInteger(errors, `${forecastWhere}.referenceClass.sampleSize`, forecast.referenceClass.sampleSize);
+    string(errors, `${forecastWhere}.referenceClass.basis`, forecast.referenceClass.basis);
+  }
+  if (!Array.isArray(forecast.fermiComponents) || !forecast.fermiComponents.length)
+    add(errors, `${forecastWhere}.fermiComponents`, 'must contain at least one component');
+  const fermiTotals = { low: 0, central: 0, high: 0 };
+  for (const [index, component] of (forecast.fermiComponents || []).entries()) {
+    const componentWhere = `${forecastWhere}.fermiComponents[${index}]`;
+    const componentFields = ['component', 'count', 'lowMinutesPerUnit', 'centralMinutesPerUnit', 'highMinutesPerUnit', 'basis'];
+    if (!keys(errors, componentWhere, component, componentFields)) continue;
+    string(errors, `${componentWhere}.component`, component.component);
+    string(errors, `${componentWhere}.basis`, component.basis);
+    nonNegativeInteger(errors, `${componentWhere}.count`, component.count, { min: 1 });
+    for (const field of ['lowMinutesPerUnit', 'centralMinutesPerUnit', 'highMinutesPerUnit'])
+      nonNegativeInteger(errors, `${componentWhere}.${field}`, component[field]);
+    if (component.lowMinutesPerUnit > component.centralMinutesPerUnit || component.centralMinutesPerUnit > component.highMinutesPerUnit)
+      add(errors, componentWhere, 'requires lowMinutesPerUnit <= centralMinutesPerUnit <= highMinutesPerUnit');
+    fermiTotals.low += component.count * component.lowMinutesPerUnit;
+    fermiTotals.central += component.count * component.centralMinutesPerUnit;
+    fermiTotals.high += component.count * component.highMinutesPerUnit;
+  }
+  if (fermiTotals.low !== forecast.plausibleLowMinutes) add(errors, `${forecastWhere}.plausibleLowMinutes`, `must equal Fermi component total ${fermiTotals.low}`);
+  if (fermiTotals.central !== forecast.expectedActiveMinutes) add(errors, `${forecastWhere}.expectedActiveMinutes`, `must equal Fermi component total ${fermiTotals.central}`);
+  if (fermiTotals.high !== forecast.plausibleHighMinutes) add(errors, `${forecastWhere}.plausibleHighMinutes`, `must equal Fermi component total ${fermiTotals.high}`);
+
+  const terminalStatuses = new Set(['published', 'stopped', 'abandoned', 'superseded']);
+  const outcome = metrics.outcome;
+  if (outcome === null) {
+    if (terminalStatuses.has(attempt.status)) add(errors, `${where}.metrics.outcome`, `is required when attempt status is ${attempt.status}`);
+    return;
+  }
+  if (!terminalStatuses.has(attempt.status)) add(errors, `${where}.metrics.outcome`, 'may be frozen only at a terminal attempt status');
+  const outcomeWhere = `${where}.metrics.outcome`;
+  const outcomeFields = ['measuredAt', 'calendarElapsedMinutes', 'activeAgentMinutes', 'activeHumanMinutes', 'computeMinutes',
+    'unattendedWaitMinutes', 'blockedMinutes', 'reworkMinutes', 'agentRuns', 'maxParallelAgents', 'modelTurns',
+    'deduplicatedModelTokens', 'uncachedInputTokens', 'researchCycles', 'falsificationGatesRun',
+    'candidateArchitecturesTested', 'candidateArchitecturesRejected', 'substantiveReviewRounds', 'p0Findings',
+    'p1Findings', 'prepublicationClaimCorrections', 'resultState', 'resultSummary', 'positiveSignalObserved',
+    'targetReached', 'forecastErrorMinutes', 'forecastRatio', 'withinForecastInterval', 'varianceReason', 'missingFields'];
+  if (!keys(errors, outcomeWhere, outcome, outcomeFields)) return;
+  dateTime(errors, `${outcomeWhere}.measuredAt`, outcome.measuredAt);
+  if (outcome.measuredAt !== attempt.statusAt) add(errors, `${outcomeWhere}.measuredAt`, 'must equal the terminal statusAt receipt');
+  const elapsed = Math.round((Date.parse(attempt.statusAt) - Date.parse(attempt.registeredAt)) / 60000);
+  nonNegativeInteger(errors, `${outcomeWhere}.calendarElapsedMinutes`, outcome.calendarElapsedMinutes);
+  if (outcome.calendarElapsedMinutes !== elapsed) add(errors, `${outcomeWhere}.calendarElapsedMinutes`, `must equal the rounded registeredAt-to-statusAt duration ${elapsed}`);
+  for (const field of ['activeAgentMinutes', 'unattendedWaitMinutes', 'blockedMinutes', 'reworkMinutes',
+    'falsificationGatesRun', 'candidateArchitecturesTested', 'candidateArchitecturesRejected',
+    'substantiveReviewRounds', 'p0Findings', 'p1Findings', 'prepublicationClaimCorrections'])
+    nonNegativeInteger(errors, `${outcomeWhere}.${field}`, outcome[field]);
+  for (const field of ['agentRuns', 'maxParallelAgents', 'modelTurns'])
+    nonNegativeInteger(errors, `${outcomeWhere}.${field}`, outcome[field], { min: 1 });
+  for (const field of metricsPolicy.optionalTelemetryFields)
+    nonNegativeInteger(errors, `${outcomeWhere}.${field}`, outcome[field], { nullable: true });
+  if (outcome.maxParallelAgents > outcome.agentRuns) add(errors, `${outcomeWhere}.maxParallelAgents`, 'cannot exceed agentRuns');
+  if (outcome.candidateArchitecturesRejected > outcome.candidateArchitecturesTested)
+    add(errors, `${outcomeWhere}.candidateArchitecturesRejected`, 'cannot exceed candidateArchitecturesTested');
+  if (keys(errors, `${outcomeWhere}.researchCycles`, outcome.researchCycles, ['positive', 'negative', 'inconclusive'])) {
+    for (const field of ['positive', 'negative', 'inconclusive']) nonNegativeInteger(errors, `${outcomeWhere}.researchCycles.${field}`, outcome.researchCycles[field]);
+  }
+  if (!metricsPolicy.resultStates.includes(outcome.resultState)) add(errors, `${outcomeWhere}.resultState`, 'is not registered by the metrics policy');
+  string(errors, `${outcomeWhere}.resultSummary`, outcome.resultSummary);
+  if (outcome.positiveSignalObserved !== null && typeof outcome.positiveSignalObserved !== 'boolean')
+    add(errors, `${outcomeWhere}.positiveSignalObserved`, 'must be boolean or null');
+  if (typeof outcome.targetReached !== 'boolean') add(errors, `${outcomeWhere}.targetReached`, 'must be boolean');
+  if (outcome.targetReached !== (outcome.resultState === 'target-closed'))
+    add(errors, `${outcomeWhere}.targetReached`, 'must be true exactly when resultState is target-closed');
+  if (outcome.resultState === 'positive-signal' && outcome.positiveSignalObserved !== true)
+    add(errors, `${outcomeWhere}.positiveSignalObserved`, 'must be true when resultState is positive-signal');
+  if (outcome.resultState === 'target-closed' && outcome.positiveSignalObserved !== true)
+    add(errors, `${outcomeWhere}.positiveSignalObserved`, 'must be true when resultState is target-closed');
+  const expectedError = outcome.activeAgentMinutes - forecast.expectedActiveMinutes;
+  if (outcome.forecastErrorMinutes !== expectedError) add(errors, `${outcomeWhere}.forecastErrorMinutes`, `must equal activeAgentMinutes - expectedActiveMinutes (${expectedError})`);
+  if (typeof outcome.forecastRatio !== 'number' || !Number.isFinite(outcome.forecastRatio) || outcome.forecastRatio < 0)
+    add(errors, `${outcomeWhere}.forecastRatio`, 'must be a finite non-negative number');
+  const expectedRatio = outcome.activeAgentMinutes / forecast.expectedActiveMinutes;
+  if (Math.abs(outcome.forecastRatio - expectedRatio) > 0.005)
+    add(errors, `${outcomeWhere}.forecastRatio`, `must equal activeAgentMinutes / expectedActiveMinutes (${expectedRatio.toFixed(4)}) within 0.005`);
+  const expectedCoverage = outcome.activeAgentMinutes >= forecast.plausibleLowMinutes && outcome.activeAgentMinutes <= forecast.plausibleHighMinutes;
+  if (outcome.withinForecastInterval !== expectedCoverage) add(errors, `${outcomeWhere}.withinForecastInterval`, `must be ${expectedCoverage}`);
+  optionalString(errors, `${outcomeWhere}.varianceReason`, outcome.varianceReason);
+  if (!expectedCoverage && !outcome.varianceReason) add(errors, `${outcomeWhere}.varianceReason`, 'is required when active work falls outside the frozen interval');
+
+  if (!Array.isArray(outcome.missingFields)) add(errors, `${outcomeWhere}.missingFields`, 'must be an array');
+  const missing = new Map();
+  for (const [index, item] of (outcome.missingFields || []).entries()) {
+    const missingWhere = `${outcomeWhere}.missingFields[${index}]`;
+    if (!keys(errors, missingWhere, item, ['field', 'reason'])) continue;
+    if (!metricsPolicy.optionalTelemetryFields.includes(item.field)) add(errors, `${missingWhere}.field`, 'is not optional telemetry');
+    if (missing.has(item.field)) add(errors, `${missingWhere}.field`, `duplicates ${JSON.stringify(item.field)}`);
+    missing.set(item.field, item.reason);
+    string(errors, `${missingWhere}.reason`, item.reason);
+  }
+  for (const field of metricsPolicy.optionalTelemetryFields) {
+    if (outcome[field] === null && !missing.has(field)) add(errors, `${outcomeWhere}.missingFields`, `must explain null ${field}`);
+    if (outcome[field] !== null && missing.has(field)) add(errors, `${outcomeWhere}.missingFields`, `must not mark populated ${field} as missing`);
+  }
+  if (attempt.measurement.status === 'not-recorded') add(errors, `${where}.measurement.status`, 'cannot be not-recorded when a terminal research-metrics outcome exists');
+  for (const field of ['activeHumanMinutes', 'computeMinutes', 'agentRuns', 'reworkMinutes']) {
+    if (attempt.measurement[field] !== outcome[field]) add(errors, `${where}.measurement.${field}`, `must equal metrics.outcome.${field}`);
+  }
+}
+
+function validateWorkLedger(ledger, paperSlugs, policy, metricsPolicy, errors) {
   const required = ['schemaVersion', 'effectiveDate', 'baselineCommit', 'policy', 'status', 'claimCeiling', 'requiredAtIntake',
     'workStatuses', 'measurementStatuses', 'cohorts', 'resultClasses', 'attempts', 'updatePolicy', 'changeLog'];
   if (!keys(errors, 'WORK_LEDGER', ledger, required)) return { attemptById: new Map(), attemptsByWorkId: new Map() };
@@ -283,7 +490,7 @@ function validateWorkLedger(ledger, paperSlugs, policy, errors) {
       'taskClass', 'status', 'statusAt', 'resultClass', 'statusHistory', 'decisionObjectTarget', 'comparisonPlan',
       'measurement', 'assuranceEndpoint', 'releaseSlug', 'stopReason', 'revisions'];
     attemptRequired.splice(attemptRequired.length - 1, 0, 'corrections');
-    if (!keys(errors, where, attempt, attemptRequired)) continue;
+    if (!keys(errors, where, attempt, attemptRequired, [...attemptRequired, 'metrics'])) continue;
     if (string(errors, `${where}.attemptId`, attempt.attemptId, ATTEMPT_ID_RE)) {
       if (attemptById.has(attempt.attemptId)) add(errors, `${where}.attemptId`, `duplicates ${JSON.stringify(attempt.attemptId)}`);
       attemptById.set(attempt.attemptId, attempt);
@@ -392,6 +599,7 @@ function validateWorkLedger(ledger, paperSlugs, policy, errors) {
       if (attempt.cohort === 'left-censored-at-adoption' && measurement.status !== 'not-recorded')
         add(errors, `${where}.measurement.status`, 'left-censored work must keep pre-adoption clocks and resources not-recorded; open a prospective attempt for later work');
     }
+    validateResearchMetrics(errors, where, attempt, metricsPolicy);
 
     if (keys(errors, `${where}.assuranceEndpoint`, attempt.assuranceEndpoint,
       ['status', 'assessedAt', 'dimensions', 'claimCeiling', 'evidenceRefs', 'missingnessReason'])) {
@@ -1043,7 +1251,7 @@ function validateWorkGraph(papers, errors) {
   for (const workId of byWorkId.keys()) visit(workId, [workId]);
 }
 
-function validateSchemaBindings(schemas, contract, errors) {
+function validateSchemaBindings(schemas, contract, metricsPolicy, errors) {
   const expected = {
     contract: { title: 'Evidence Press operating model contract', required: ['schemaVersion', 'effectiveDate', 'workLedger', 'releasePolicy'] },
     registry: { title: 'Evidence Press method registry', required: ['schemaVersion', 'methods', 'methodClusters', 'lineages', 'releaseAssignments', 'changeLog'] },
@@ -1077,6 +1285,14 @@ function validateSchemaBindings(schemas, contract, errors) {
   for (const [field, schemaValues, policyValues] of bindings) {
     if (!sameMembers(schemaValues, policyValues)) add(errors, `schemas.release.${field}`, 'enum does not match OPERATING_MODEL.releasePolicy');
   }
+  const metricsBindings = [
+    ['measurementScope', schemas.workLedger?.$defs?.researchMetrics?.properties?.measurementScope?.enum, metricsPolicy.scopeTypes],
+    ['resultState', schemas.workLedger?.$defs?.researchMetricsOutcome?.properties?.resultState?.enum, metricsPolicy.resultStates],
+    ['missingFields.field', schemas.workLedger?.$defs?.researchMetricsMissingField?.properties?.field?.enum, metricsPolicy.optionalTelemetryFields]
+  ];
+  for (const [field, schemaValues, policyValues] of metricsBindings) {
+    if (!sameMembers(schemaValues, policyValues)) add(errors, `schemas.workLedger.${field}`, 'enum does not match RESEARCH_METRICS_POLICY');
+  }
 }
 
 function collectErrors({ root, papers, artifacts }) {
@@ -1087,10 +1303,11 @@ function collectErrors({ root, papers, artifacts }) {
   if (new Set(paperSlugs).size !== paperSlugs.length) add(errors, 'papers', 'contains duplicate slugs');
 
   validateContract(loaded.contract, paperSlugs, errors);
+  validateMetricsPolicy(loaded.metricsPolicy, errors);
   const registryState = validateRegistry(loaded.registry, paperSlugs, errors);
   const ledgerState = validateLedger(loaded.ledger, loaded.contract.releasePolicy || {}, root, errors);
-  const workLedgerState = validateWorkLedger(loaded.workLedger, paperSlugs, loaded.contract.releasePolicy || {}, errors);
-  validateSchemaBindings(loaded.schemas, loaded.contract, errors);
+  const workLedgerState = validateWorkLedger(loaded.workLedger, paperSlugs, loaded.contract.releasePolicy || {}, loaded.metricsPolicy, errors);
+  validateSchemaBindings(loaded.schemas, loaded.contract, loaded.metricsPolicy, errors);
 
   const policy = loaded.contract.releasePolicy || {};
   const releaseSlugsByWorkId = new Map();

@@ -205,6 +205,9 @@
         "measurement": {
           "$ref": "#/$defs/measurement"
         },
+        "metrics": {
+          "$ref": "#/$defs/researchMetrics"
+        },
         "assuranceEndpoint": {
           "$ref": "#/$defs/assuranceEndpoint"
         },
@@ -410,6 +413,209 @@
           ],
           "minimum": 0
         }
+      }
+    },
+    "researchMetrics": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "measurementScope",
+        "scopeBoundary",
+        "forecast",
+        "outcome"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": { "const": "1.0" },
+        "measurementScope": {
+          "enum": [
+            "research-through-publication",
+            "research-only",
+            "assurance-through-publication",
+            "publication-only",
+            "communication-only"
+          ]
+        },
+        "scopeBoundary": { "type": "string", "minLength": 1 },
+        "forecast": { "$ref": "#/$defs/researchMetricsForecast" },
+        "outcome": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/researchMetricsOutcome" }
+          ]
+        }
+      }
+    },
+    "researchMetricsForecast": {
+      "type": "object",
+      "required": [
+        "frozenAt",
+        "procedureClass",
+        "targetOutcome",
+        "expectedActiveMinutes",
+        "plausibleLowMinutes",
+        "plausibleHighMinutes",
+        "expectedUnattendedWaitMinutes",
+        "referenceClass",
+        "fermiComponents",
+        "probabilityPositiveSignal",
+        "probabilityTargetClosure",
+        "probabilityHorizonMinutes",
+        "assumptions",
+        "reforecastTriggers",
+        "stopRule"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "frozenAt": { "type": "string", "format": "date-time" },
+        "procedureClass": { "type": "string", "minLength": 1 },
+        "targetOutcome": { "type": "string", "minLength": 1 },
+        "expectedActiveMinutes": { "type": "integer", "minimum": 1 },
+        "plausibleLowMinutes": { "type": "integer", "minimum": 0 },
+        "plausibleHighMinutes": { "type": "integer", "minimum": 1 },
+        "expectedUnattendedWaitMinutes": { "type": "integer", "minimum": 0 },
+        "referenceClass": { "$ref": "#/$defs/researchMetricsReferenceClass" },
+        "fermiComponents": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/researchMetricsFermiComponent" }
+        },
+        "probabilityPositiveSignal": { "type": "number", "minimum": 0, "maximum": 1 },
+        "probabilityTargetClosure": { "type": "number", "minimum": 0, "maximum": 1 },
+        "probabilityHorizonMinutes": { "type": "integer", "minimum": 1 },
+        "assumptions": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "reforecastTriggers": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "stopRule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "researchMetricsReferenceClass": {
+      "type": "object",
+      "required": ["label", "sampleSize", "basis"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "sampleSize": { "type": "integer", "minimum": 0 },
+        "basis": { "type": "string", "minLength": 1 }
+      }
+    },
+    "researchMetricsFermiComponent": {
+      "type": "object",
+      "required": ["component", "count", "lowMinutesPerUnit", "centralMinutesPerUnit", "highMinutesPerUnit", "basis"],
+      "additionalProperties": false,
+      "properties": {
+        "component": { "type": "string", "minLength": 1 },
+        "count": { "type": "integer", "minimum": 1 },
+        "lowMinutesPerUnit": { "type": "integer", "minimum": 0 },
+        "centralMinutesPerUnit": { "type": "integer", "minimum": 0 },
+        "highMinutesPerUnit": { "type": "integer", "minimum": 0 },
+        "basis": { "type": "string", "minLength": 1 }
+      }
+    },
+    "researchMetricsOutcome": {
+      "type": "object",
+      "required": [
+        "measuredAt",
+        "calendarElapsedMinutes",
+        "activeAgentMinutes",
+        "activeHumanMinutes",
+        "computeMinutes",
+        "unattendedWaitMinutes",
+        "blockedMinutes",
+        "reworkMinutes",
+        "agentRuns",
+        "maxParallelAgents",
+        "modelTurns",
+        "deduplicatedModelTokens",
+        "uncachedInputTokens",
+        "researchCycles",
+        "falsificationGatesRun",
+        "candidateArchitecturesTested",
+        "candidateArchitecturesRejected",
+        "substantiveReviewRounds",
+        "p0Findings",
+        "p1Findings",
+        "prepublicationClaimCorrections",
+        "resultState",
+        "resultSummary",
+        "positiveSignalObserved",
+        "targetReached",
+        "forecastErrorMinutes",
+        "forecastRatio",
+        "withinForecastInterval",
+        "varianceReason",
+        "missingFields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "measuredAt": { "type": "string", "format": "date-time" },
+        "calendarElapsedMinutes": { "type": "integer", "minimum": 0 },
+        "activeAgentMinutes": { "type": "integer", "minimum": 0 },
+        "activeHumanMinutes": { "type": ["integer", "null"], "minimum": 0 },
+        "computeMinutes": { "type": ["integer", "null"], "minimum": 0 },
+        "unattendedWaitMinutes": { "type": "integer", "minimum": 0 },
+        "blockedMinutes": { "type": "integer", "minimum": 0 },
+        "reworkMinutes": { "type": "integer", "minimum": 0 },
+        "agentRuns": { "type": "integer", "minimum": 1 },
+        "maxParallelAgents": { "type": "integer", "minimum": 1 },
+        "modelTurns": { "type": "integer", "minimum": 1 },
+        "deduplicatedModelTokens": { "type": ["integer", "null"], "minimum": 0 },
+        "uncachedInputTokens": { "type": ["integer", "null"], "minimum": 0 },
+        "researchCycles": { "$ref": "#/$defs/researchMetricsCycles" },
+        "falsificationGatesRun": { "type": "integer", "minimum": 0 },
+        "candidateArchitecturesTested": { "type": "integer", "minimum": 0 },
+        "candidateArchitecturesRejected": { "type": "integer", "minimum": 0 },
+        "substantiveReviewRounds": { "type": "integer", "minimum": 0 },
+        "p0Findings": { "type": "integer", "minimum": 0 },
+        "p1Findings": { "type": "integer", "minimum": 0 },
+        "prepublicationClaimCorrections": { "type": "integer", "minimum": 0 },
+        "resultState": {
+          "enum": [
+            "target-closed",
+            "positive-signal",
+            "partial",
+            "falsified",
+            "stopped",
+            "no-substantive-result",
+            "not-applicable"
+          ]
+        },
+        "resultSummary": { "type": "string", "minLength": 1 },
+        "positiveSignalObserved": { "type": ["boolean", "null"] },
+        "targetReached": { "type": "boolean" },
+        "forecastErrorMinutes": { "type": "integer" },
+        "forecastRatio": { "type": "number", "minimum": 0 },
+        "withinForecastInterval": { "type": "boolean" },
+        "varianceReason": { "type": ["string", "null"] },
+        "missingFields": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/researchMetricsMissingField" }
+        }
+      }
+    },
+    "researchMetricsCycles": {
+      "type": "object",
+      "required": ["positive", "negative", "inconclusive"],
+      "additionalProperties": false,
+      "properties": {
+        "positive": { "type": "integer", "minimum": 0 },
+        "negative": { "type": "integer", "minimum": 0 },
+        "inconclusive": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "researchMetricsMissingField": {
+      "type": "object",
+      "required": ["field", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "enum": [
+            "activeHumanMinutes",
+            "computeMinutes",
+            "deduplicatedModelTokens",
+            "uncachedInputTokens"
+          ]
+        },
+        "reason": { "type": "string", "minLength": 1 }
       }
     },
     "milestone": {

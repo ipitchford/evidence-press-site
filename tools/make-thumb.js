@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'odd-order-one-third-popular-differences': {
+    palette: 'cobalt',
+    kicker: ['RESEARCH RELEASE · 29 AUGUST 2026', 'ADDITIVE COMBINATORICS · V0.1.0-CANDIDATE'],
+    head: ['One third.', '<em>Counterexample.</em>'],
+    headSize: 72,
+    sub: 'An eight-point set in Z/21Z refutes the AIM implication; a three-layer family obstructs every fixed threshold below 2/5.',
+    tag: 'ANONYMOUS · UNREFEREED COUNTEREXAMPLE CANDIDATE',
+    hero: `
+      <div class="eq-label">exact finite witness</div>
+      <div class="eq eq-sm">|A| = <span class="hl">8</span> · min r<sub>A</sub> = <span class="hl">3</span></div>
+      <div class="note"><b>3 &gt; 8/3</b><br>|A−A| = 15<br>not ≤3 cosets of one subgroup</div>
+      <div class="eq-foot">below 2/5 obstructed · endpoint still open</div>`
+  },
   'o01d0-polar-fibre-structural-reductions': {
     palette: 'aubergine',
     kicker: ['RESEARCH RELEASE · 28 AUGUST 2026', 'POLAR FIBRES × HERMITE SECTIONS · V0.1.0-CANDIDATE'],

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "1.0",
+  "effectiveAt": "2026-08-29T11:12:44Z",
+  "status": "prospective-required",
+  "claimCeiling": "These records describe scoped workflow inputs and outcomes. They support calibration and reference-class construction, but do not by themselves establish research acceleration, theorem correctness, novelty, independent assurance or impact.",
+  "appliesTo": {
+    "attemptsRegisteredAtOrAfter": "2026-08-29T11:12:44Z",
+    "intakeRule": "Every in-scope attempt is registered before substantive work begins and freezes a decomposed forecast at the registration time.",
+    "terminalRule": "Every terminal attempt records an outcome, including stopped, abandoned, superseded and unreleased work; every release page and paper.json exposes the linked receipt.",
+    "leftCensoringRule": "If research predates registration, use an honestly scoped publication-only or assurance-only attempt. Do not reconstruct research clocks from commits, chat history or publication timestamps."
+  },
+  "scopeTypes": [
+    "research-through-publication",
+    "research-only",
+    "assurance-through-publication",
+    "publication-only",
+    "communication-only"
+  ],
+  "resultStates": [
+    "target-closed",
+    "positive-signal",
+    "partial",
+    "falsified",
+    "stopped",
+    "no-substantive-result",
+    "not-applicable"
+  ],
+  "minimumPublishableOutcomeFields": [
+    "calendarElapsedMinutes",
+    "activeAgentMinutes",
+    "unattendedWaitMinutes",
+    "blockedMinutes",
+    "reworkMinutes",
+    "agentRuns",
+    "maxParallelAgents",
+    "modelTurns",
+    "researchCycles",
+    "falsificationGatesRun",
+    "candidateArchitecturesTested",
+    "candidateArchitecturesRejected",
+    "substantiveReviewRounds",
+    "p0Findings",
+    "p1Findings",
+    "prepublicationClaimCorrections",
+    "resultState",
+    "positiveSignalObserved",
+    "targetReached",
+    "forecastErrorMinutes",
+    "forecastRatio",
+    "withinForecastInterval"
+  ],
+  "optionalTelemetryFields": [
+    "activeHumanMinutes",
+    "computeMinutes",
+    "deduplicatedModelTokens",
+    "uncachedInputTokens"
+  ],
+  "definitions": {
+    "calendarElapsedMinutes": "Rounded wall-clock minutes from prospective registration to the current terminal status receipt. This is not active work.",
+    "activeAgentMinutes": "Model-mediated working time attributable to the attempt, excluding unattended waits and blocked time. Record from a task-local runtime or workflow receipt, not message timestamps.",
+    "activeHumanMinutes": "Human direction, review, repair or approval time attributable to the attempt. It may be unknown, but a missing value needs a field-specific reason.",
+    "computeMinutes": "Wall-clock time spent by substantive computation, excluding ordinary build, CI and deployment checks; overlapping parallel jobs are not summed as elapsed time.",
+    "unattendedWaitMinutes": "Time waiting for CI, deployment propagation, long-running external services or other unattended processes.",
+    "blockedMinutes": "Time during the measured work window when an explicit external dependency prevented progress; ordinary offline gaps are not active or blocked time.",
+    "reworkMinutes": "Active time spent replacing or materially repairing work that had previously been treated as ready for its next gate.",
+    "researchCycle": "One stated candidate route taken through a decisive test and classified positive, negative or inconclusive. Routine reruns and packaging checks are not research cycles.",
+    "falsificationGate": "A preregistered or explicitly stated test capable of decisively rejecting a claim, route, encoding or transfer hypothesis.",
+    "candidateArchitecture": "A materially distinct proof, computation or identification route; parameter tweaks and repeat executions are not new architectures.",
+    "positiveSignal": "A preregistered observation that increases the tractability of the scoped target without necessarily closing it.",
+    "targetReached": "The exact target outcome frozen in the forecast was achieved at the declared claim ceiling.",
+    "deduplicatedModelTokens": "Task-local fork-aware model-token usage supplied by the runtime. Never sum rollout token events or infer tokens from file size.",
+    "substantiveReviewRound": "A review round with a distinct scientific or semantic information target. Deterministic reruns and presentation checks are excluded.",
+    "brierScore": "The squared error between a frozen probability and its binary terminal outcome. Release representations derive this score from the immutable forecast and outcome; lower is better, and a single score is not evidence of calibration."
+  },
+  "publicationRules": [
+    "Publish the forecast, measured outcome, scope boundary, field-specific missingness and calibration on the release page, in paper.json and in the work ledger.",
+    "Keep discovery, assurance, publication and translation clocks separate; do not report one as a proxy for another.",
+    "Retain stopped, abandoned, superseded, null and unreleased attempts in the public work ledger so release metrics have an attempted-work denominator.",
+    "Do not rank researchers, models or fields from these descriptive records without a separately registered comparison and matched assurance endpoint.",
+    "Do not use release count, token count, elapsed time or model agreement as evidence of correctness, novelty, productivity or impact."
+  ],
+  "missingnessPolicy": [
+    "Core outcome fields are mandatory for terminal attempts and cannot be replaced by a generic missingness statement.",
+    "Optional telemetry may be null only when missingFields names the exact field and gives a non-empty reason.",
+    "A release with left-censored research must say so in measurementScope and scopeBoundary; it may publish measured publication or assurance metrics without implying a research-time observation.",
+    "Historical unknowns remain unknown."
+  ],
+  "changeLog": [
+    {
+      "date": "2026-08-29",
+      "summary": "Established the enforced prospective boundary at the first fully instrumented intake. Earlier attempts remain in the denominator under the prior work-ledger contract and are not backfilled; later attempts require per-attempt Fermi forecasts, terminal research-cycle and resource outcomes, field-specific telemetry missingness, and release-level publication."
+    }
+  ]
+}

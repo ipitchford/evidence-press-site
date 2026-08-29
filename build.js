@@ -51,12 +51,17 @@ const METHOD_BY_ID = new Map(OPERATING_ARTIFACTS.registry.methods.map(method => 
 const IBE_BY_ID = new Map(OPERATING_ARTIFACTS.ledger.hypotheses.map(hypothesis => [hypothesis.id, hypothesis]));
 const WORK_ATTEMPT_BY_ID = new Map(OPERATING_ARTIFACTS.workLedger.attempts.map(attempt => [attempt.attemptId, attempt]));
 const BASE = CONFIG.baseUrl.replace(/\/$/, '');
-const SCHEMA_VERSION = '1.5';
+const SCHEMA_VERSION = '1.6';
 const MATH_OBJECT_SCHEMA_VERSION = '1.0';
 const MATH_OBJECT_KINDS = [
   'statement', 'identity', 'formula', 'bound', 'recurrence',
   'generating-function', 'sequence', 'counterexample', 'obstruction'
 ];
+
+function rounded(value, places = 2) {
+  const scale = 10 ** places;
+  return Math.round(value * scale) / scale;
+}
 const MATH_OBJECT_STATUSES = [
   'claimed-result', 'supporting-result', 'computed-finite', 'definition',
   'conjecture', 'open-problem', 'counterexample'
@@ -626,7 +631,8 @@ function roCrate(p) {
           ...(p.operatingModel ? [
             { '@id': `${BASE}/api/method-registry.json` },
             { '@id': `${BASE}/api/ibe-ledger.json` },
-            { '@id': `${BASE}/api/work-ledger.json` }
+            { '@id': `${BASE}/api/work-ledger.json` },
+            { '@id': `${BASE}/api/research-metrics-policy.json` }
           ] : [])
         ],
         /* The assurance state travels with the package: a consumer must not
@@ -655,7 +661,8 @@ function roCrate(p) {
       ...(p.operatingModel ? [
         { '@id': `${BASE}/api/method-registry.json`, '@type': 'File', encodingFormat: 'application/json', name: 'Evidence Press method registry' },
         { '@id': `${BASE}/api/ibe-ledger.json`, '@type': 'File', encodingFormat: 'application/json', name: 'Evidence Press inference-to-the-best-explanation ledger' },
-        { '@id': `${BASE}/api/work-ledger.json`, '@type': 'File', encodingFormat: 'application/json', name: 'Evidence Press prospective work ledger' }
+        { '@id': `${BASE}/api/work-ledger.json`, '@type': 'File', encodingFormat: 'application/json', name: 'Evidence Press prospective work ledger' },
+        { '@id': `${BASE}/api/research-metrics-policy.json`, '@type': 'File', encodingFormat: 'application/json', name: 'Evidence Press research metrics policy' }
       ] : [])
     ]
   };
@@ -814,7 +821,7 @@ const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
     <p>${esc(CONFIG.siteName)} publishes evidence-attached research releases and a clearly separate collection of essays, commentary and research notes. Each page states its own evidence boundary.</p>
-    <p>Original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/math-objects.json">mathematical objects</a> · <a href="/api/claims.json">claims</a> · <a href="/api/assurance-tasks.json">assurance tasks</a> · <a href="/api/citations.json">citation graph</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
+    <p>Original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/math-objects.json">mathematical objects</a> · <a href="/api/claims.json">claims</a> · <a href="/api/assurance-tasks.json">assurance tasks</a> · <a href="/api/citations.json">citation graph</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/research-metrics-policy.json">research metrics</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
 </footer>
@@ -875,7 +882,8 @@ function articleJsonld(p) {
         subjectOf: [
           { '@type': 'DataDownload', name: 'Evidence Press method registry', contentUrl: `${BASE}/api/method-registry.json`, encodingFormat: 'application/json' },
           { '@type': 'DataDownload', name: 'Evidence Press IBE ledger', contentUrl: `${BASE}/api/ibe-ledger.json`, encodingFormat: 'application/json' },
-          { '@type': 'DataDownload', name: 'Evidence Press work ledger', contentUrl: `${BASE}/api/work-ledger.json`, encodingFormat: 'application/json' }
+          { '@type': 'DataDownload', name: 'Evidence Press work ledger', contentUrl: `${BASE}/api/work-ledger.json`, encodingFormat: 'application/json' },
+          { '@type': 'DataDownload', name: 'Evidence Press research metrics policy', contentUrl: `${BASE}/api/research-metrics-policy.json`, encodingFormat: 'application/json' }
         ]
       } : {}),
       about: p.problem ? [{ '@type': 'Thing', name: p.problem.name, ...(p.problem.url ? { sameAs: p.problem.url } : {}) }] : undefined,
@@ -1102,22 +1110,49 @@ function operatingModelHtml(p) {
   const attempts = record.attemptIds.map(id => {
     const attempt = WORK_ATTEMPT_BY_ID.get(id);
     if (!attempt) return `<li><code>${esc(id)}</code> — unresolved (the build validator should reject this record)</li>`;
+    if (attempt.metrics) {
+      const metrics = attempt.metrics;
+      const forecast = metrics.forecast;
+      const outcome = metrics.outcome;
+      const components = forecast.fermiComponents.map(component =>
+        `<li>${esc(component.component)}: ${esc(component.count)} × ${esc(component.lowMinutesPerUnit)}/${esc(component.centralMinutesPerUnit)}/${esc(component.highMinutesPerUnit)} minutes (low/central/high) — ${esc(component.basis)}</li>`).join('');
+      const positiveSignalBrier = outcome && typeof outcome.positiveSignalObserved === 'boolean'
+        ? (forecast.probabilityPositiveSignal - Number(outcome.positiveSignalObserved)) ** 2
+        : null;
+      const targetClosureBrier = outcome
+        ? (forecast.probabilityTargetClosure - Number(outcome.targetReached)) ** 2
+        : null;
+      const result = outcome ? [
+        `<dt>Observed clocks</dt><dd>${esc(outcome.activeAgentMinutes)} active-agent; ${esc(outcome.activeHumanMinutes ?? 'unknown')} active-human; ${esc(outcome.computeMinutes ?? 'unknown')} substantive-compute; ${esc(outcome.unattendedWaitMinutes)} unattended-wait; ${esc(outcome.blockedMinutes)} blocked; ${esc(outcome.reworkMinutes)} rework minutes. Calendar elapsed: ${esc(outcome.calendarElapsedMinutes)} minutes.</dd>`,
+        `<dt>Research search</dt><dd>Cycles: ${esc(outcome.researchCycles.positive)} positive, ${esc(outcome.researchCycles.negative)} negative, ${esc(outcome.researchCycles.inconclusive)} inconclusive. Falsification gates: ${esc(outcome.falsificationGatesRun)}. Candidate architectures: ${esc(outcome.candidateArchitecturesTested)} tested, ${esc(outcome.candidateArchitecturesRejected)} rejected.</dd>`,
+        `<dt>Agent and review load</dt><dd>${esc(outcome.agentRuns)} agent runs; maximum parallelism ${esc(outcome.maxParallelAgents)}; ${esc(outcome.modelTurns)} model turns; ${esc(outcome.deduplicatedModelTokens ?? 'unknown')} deduplicated model tokens; ${esc(outcome.substantiveReviewRounds)} substantive review rounds; P0/P1 findings ${esc(outcome.p0Findings)}/${esc(outcome.p1Findings)}; pre-publication claim corrections ${esc(outcome.prepublicationClaimCorrections)}.</dd>`,
+        `<dt>Result and calibration</dt><dd><code>${esc(outcome.resultState)}</code> — ${esc(outcome.resultSummary)} Positive signal: ${esc(outcome.positiveSignalObserved === null ? 'not adjudicated' : outcome.positiveSignalObserved)}; target reached: ${esc(outcome.targetReached)}. Active-time error ${esc(outcome.forecastErrorMinutes)} minutes; actual/forecast ${esc(outcome.forecastRatio)}; inside interval: ${esc(outcome.withinForecastInterval)}. Brier score: positive signal ${esc(positiveSignalBrier === null ? 'not scored' : rounded(positiveSignalBrier, 4))}; target closure ${esc(rounded(targetClosureBrier, 4))}.${outcome.varianceReason ? ` Variance: ${esc(outcome.varianceReason)}` : ''}</dd>`,
+        ...(outcome.missingFields.length ? [`<dt>Missing telemetry</dt><dd>${outcome.missingFields.map(item => `${esc(item.field)} — ${esc(item.reason)}`).join('; ')}</dd>`] : [])
+      ].join('') : '<dt>Outcome</dt><dd>Not terminal; no outcome is frozen yet.</dd>';
+      return `<li><article class="research-metrics-receipt"><p><code>${esc(id)}</code> — ${esc(attempt.status)} / ${esc(attempt.resultClass)}</p><dl>
+        <dt>Measurement scope</dt><dd><code>${esc(metrics.measurementScope)}</code> — ${esc(metrics.scopeBoundary)}</dd>
+        <dt>Frozen target</dt><dd>${esc(forecast.targetOutcome)}</dd>
+        <dt>Fermi active-time forecast</dt><dd>${esc(forecast.expectedActiveMinutes)} minutes; plausible interval ${esc(forecast.plausibleLowMinutes)}–${esc(forecast.plausibleHighMinutes)}; expected unattended wait ${esc(forecast.expectedUnattendedWaitMinutes)}. Reference class: ${esc(forecast.referenceClass.label)} (n=${esc(forecast.referenceClass.sampleSize)}) — ${esc(forecast.referenceClass.basis)}.<ul>${components}</ul></dd>
+        <dt>Tractability forecast</dt><dd>Within ${esc(forecast.probabilityHorizonMinutes)} active minutes: positive signal ${esc(forecast.probabilityPositiveSignal)}; target closure ${esc(forecast.probabilityTargetClosure)}. Stop rule: ${esc(forecast.stopRule)}</dd>
+        ${result}
+      </dl></article></li>`;
+    }
     const measurement = attempt.measurement;
     const resources = measurement.status === 'not-recorded'
       ? `measurement not recorded: ${esc(measurement.missingnessReason)}`
       : `${esc(measurement.status)}; active human minutes ${esc(measurement.activeHumanMinutes ?? 'missing')}; compute minutes ${esc(measurement.computeMinutes ?? 'missing')}; rework minutes ${esc(measurement.reworkMinutes ?? 'missing')}`;
-    return `<li><code>${esc(id)}</code> — ${esc(attempt.status)} / ${esc(attempt.resultClass)}; ${resources}; assurance endpoint ${esc(attempt.assuranceEndpoint.status)}</li>`;
+    return `<li><code>${esc(id)}</code> — ${esc(attempt.status)} / ${esc(attempt.resultClass)}; research metrics were not recorded under the policy effective 28 August 2026; earlier ledger status: ${resources}; assurance endpoint ${esc(attempt.assuranceEndpoint.status)}</li>`;
   }).join('');
   const impactClaims = record.impactClaims.map(claim => `<li><strong>${esc(claim.aim)}</strong>: <code>${esc(claim.status)}</code> — ${esc(claim.outcome)} in ${esc(claim.setting)}. Design: ${esc(claim.designClass)}; comparator: ${esc(claim.comparator)}; estimand: ${esc(claim.estimand)}.${claim.evidenceRefs.length ? ` Evidence: ${claim.evidenceRefs.map(ref => `<a href="${esc(ref)}" rel="noopener">record</a>`).join(', ')}.` : ' No real-world effect evidence is asserted.'}</li>`).join('');
   const parents = record.parentLinks.map(parent => {
     const target = parent.workId || parent.legacyReleaseSlug || parent.externalUrl;
     return `<li>${esc(parent.relation)} <code>${esc(target)}</code> — inherited claim: ${esc(parent.inheritedClaim)}; inherited ceiling: ${esc(parent.inheritedAssuranceCeiling)}</li>`;
   }).join('');
-  return `<section class="operating-model"><h2 id="research-process-and-reusable-methods">Research process and reusable methods</h2>
-    <p class="note">Prospective process metadata under the <a href="/operating-model/">Evidence Press operating model</a>. It records the intended handoff and claim boundary; it is not evidence that the method accelerated this work.</p>
+  return `<section class="operating-model"><h2 id="research-process-and-reusable-methods">Research process, metrics and reusable methods</h2>
+    <p class="note">Prospective process metadata under the <a href="/operating-model/">Evidence Press operating model</a> and <a href="/research-metrics/">research-metrics policy</a>. It records the intended handoff, measured scope and claim boundary; it is not evidence that the method accelerated this work.</p>
     <dl>
       <dt>Work ID</dt><dd><code>${esc(record.workId)}</code></dd>
-      <dt>Attempt receipts</dt><dd><ul>${attempts}</ul><a href="/api/work-ledger.json">Prospective work ledger</a></dd>
+      <dt>Attempt and metric receipts</dt><dd><ul>${attempts}</ul><a href="/api/work-ledger.json">Prospective work ledger</a> · <a href="/api/research-metrics-policy.json">metrics policy</a></dd>
       <dt>Intended aims</dt><dd>${record.aims.map(esc).join(', ')}</dd>
       <dt>Artifact roles</dt><dd>${record.artifactRoles.map(esc).join(', ')}</dd>
       <dt>Decision object</dt><dd>${esc(record.decisionObject.type)} — ${esc(record.decisionObject.description)} <span class="note">Scope: ${esc(record.decisionObject.scope)}</span></dd>
@@ -1141,10 +1176,24 @@ function operatingModelMarkdown(p) {
   const attempts = record.attemptIds.map(id => {
     const attempt = WORK_ATTEMPT_BY_ID.get(id);
     if (!attempt) return `${id}: unresolved`;
+    if (attempt.metrics) {
+      const metrics = attempt.metrics;
+      const forecast = metrics.forecast;
+      const components = forecast.fermiComponents.map(component =>
+        `${component.component}: ${component.count} x ${component.lowMinutesPerUnit}/${component.centralMinutesPerUnit}/${component.highMinutesPerUnit} minutes low/central/high (${component.basis})`).join('; ');
+      if (!metrics.outcome) return `${id}: ${attempt.status} / ${attempt.resultClass}; scope ${metrics.measurementScope}; target ${forecast.targetOutcome}; active forecast ${forecast.expectedActiveMinutes} minutes (${forecast.plausibleLowMinutes}-${forecast.plausibleHighMinutes}); Fermi components ${components}; positive-signal/closure probabilities ${forecast.probabilityPositiveSignal}/${forecast.probabilityTargetClosure} within ${forecast.probabilityHorizonMinutes} active minutes; outcome not yet frozen`;
+      const outcome = metrics.outcome;
+      const missing = outcome.missingFields.length ? `; missing telemetry ${outcome.missingFields.map(item => `${item.field}: ${item.reason}`).join('; ')}` : '';
+      const positiveSignalBrier = typeof outcome.positiveSignalObserved === 'boolean'
+        ? rounded((forecast.probabilityPositiveSignal - Number(outcome.positiveSignalObserved)) ** 2, 4)
+        : 'not scored';
+      const targetClosureBrier = rounded((forecast.probabilityTargetClosure - Number(outcome.targetReached)) ** 2, 4);
+      return `${id}: ${attempt.status} / ${attempt.resultClass}; scope ${metrics.measurementScope}; target ${forecast.targetOutcome}; active forecast ${forecast.expectedActiveMinutes} minutes (${forecast.plausibleLowMinutes}-${forecast.plausibleHighMinutes}); Fermi components ${components}; positive-signal/closure probabilities ${forecast.probabilityPositiveSignal}/${forecast.probabilityTargetClosure} within ${forecast.probabilityHorizonMinutes} active minutes; observed active-agent/human/compute/wait/blocked/rework minutes ${outcome.activeAgentMinutes}/${outcome.activeHumanMinutes ?? 'unknown'}/${outcome.computeMinutes ?? 'unknown'}/${outcome.unattendedWaitMinutes}/${outcome.blockedMinutes}/${outcome.reworkMinutes}; cycles positive/negative/inconclusive ${outcome.researchCycles.positive}/${outcome.researchCycles.negative}/${outcome.researchCycles.inconclusive}; falsification gates ${outcome.falsificationGatesRun}; architectures tested/rejected ${outcome.candidateArchitecturesTested}/${outcome.candidateArchitecturesRejected}; result ${outcome.resultState}; target reached ${outcome.targetReached}; forecast error ${outcome.forecastErrorMinutes} minutes; ratio ${outcome.forecastRatio}; inside interval ${outcome.withinForecastInterval}; positive-signal/target-closure Brier scores ${positiveSignalBrier}/${targetClosureBrier}${missing}`;
+    }
     const measurement = attempt.measurement.status === 'not-recorded'
       ? `measurement not recorded (${attempt.measurement.missingnessReason})`
       : `${attempt.measurement.status}; active human minutes ${attempt.measurement.activeHumanMinutes ?? 'missing'}; compute minutes ${attempt.measurement.computeMinutes ?? 'missing'}; rework minutes ${attempt.measurement.reworkMinutes ?? 'missing'}`;
-    return `${id}: ${attempt.status} / ${attempt.resultClass}; ${measurement}; assurance endpoint ${attempt.assuranceEndpoint.status}`;
+    return `${id}: ${attempt.status} / ${attempt.resultClass}; research metrics were not recorded under the policy effective 28 August 2026; earlier ledger status ${measurement}; assurance endpoint ${attempt.assuranceEndpoint.status}`;
   }).join('; ');
   const impactClaims = record.impactClaims.map(claim =>
     `${claim.aim}: ${claim.status} — ${claim.outcome} in ${claim.setting}; design ${claim.designClass}; comparator ${claim.comparator}; estimand ${claim.estimand}${claim.evidenceRefs.length ? `; evidence ${claim.evidenceRefs.join(', ')}` : '; no real-world effect evidence asserted'}`
@@ -1153,12 +1202,12 @@ function operatingModelMarkdown(p) {
     const target = parent.workId || parent.legacyReleaseSlug || parent.externalUrl;
     return `${parent.relation} ${target}; inherited claim: ${parent.inheritedClaim}; inherited ceiling: ${parent.inheritedAssuranceCeiling}`;
   }).join('; ');
-  return `## Research process and reusable methods
+  return `## Research process, metrics and reusable methods
 
-This is prospective process metadata. It records the intended handoff and claim boundary; it is not evidence that the method accelerated this work.
+This is prospective process metadata under the Evidence Press operating model and research-metrics policy. It records the intended handoff, measured scope and claim boundary; it is not evidence that the method accelerated this work.
 
 - Work ID: ${record.workId}
-- Attempt receipts: ${attempts}. Work ledger: ${BASE}/api/work-ledger.json
+- Attempt and metric receipts: ${attempts}. Work ledger: ${BASE}/api/work-ledger.json. Metrics policy: ${BASE}/api/research-metrics-policy.json
 - Intended aims: ${record.aims.join(', ')}
 - Artifact roles: ${record.artifactRoles.join(', ')}
 - Decision object: ${record.decisionObject.type} — ${record.decisionObject.description} Scope: ${record.decisionObject.scope}
@@ -1355,6 +1404,27 @@ function claimAssuranceOf(p) {
   };
 }
 
+function researchMetricsForPaper(p) {
+  if (!p.operatingModel) return null;
+  return {
+    schemaVersion: OPERATING_ARTIFACTS.metricsPolicy.schemaVersion,
+    policyUrl: `${BASE}/api/research-metrics-policy.json`,
+    workLedgerUrl: `${BASE}/api/work-ledger.json`,
+    claimCeiling: OPERATING_ARTIFACTS.metricsPolicy.claimCeiling,
+    attempts: p.operatingModel.attemptIds.map(attemptId => {
+      const attempt = WORK_ATTEMPT_BY_ID.get(attemptId);
+      if (!attempt) return { attemptId, status: 'unresolved', resultClass: null, metrics: null, missingnessReason: 'The linked attempt did not resolve; the build validator should reject this release.' };
+      return {
+        attemptId,
+        status: attempt.status,
+        resultClass: attempt.resultClass,
+        metrics: attempt.metrics || null,
+        missingnessReason: attempt.metrics ? null : 'Research metrics were not recorded under the prospective policy effective 28 August 2026; historical unknowns were not reconstructed.'
+      };
+    })
+  };
+}
+
 function paperApi(p) {
   const publicReviews = (p.reviews || []).filter(r => r.status === 'published');
   const assurance = assuranceOf(p);
@@ -1414,7 +1484,7 @@ function paperApi(p) {
     mathObjects: p.mathObjects || [],
     relatedWorks: normalizedRelatedWorks(p),
     claimAssurance: claimAssuranceOf(p),
-    ...(p.operatingModel ? { operatingModel: p.operatingModel } : {})
+    ...(p.operatingModel ? { operatingModel: p.operatingModel, researchMetrics: researchMetricsForPaper(p) } : {})
   };
 }
 
@@ -2198,7 +2268,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-27' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-27' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
   ];
@@ -2230,7 +2300,7 @@ function llms() {
   const lines = [
     `# ${CONFIG.siteName}`, '',
     `> ${CONFIG.tagline}. Every release describes an unrefereed research result with an open, replayable evidence package (code, data, exact certificates, pinned environments, SHA-256 manifests) archived with a DOI. Nothing on this site is peer reviewed; each page states exactly what has and has not been verified, and lists open follow-up problems in machine-readable form.`, '',
-    `Key endpoints: full research-release index at /api/papers.json (JSON Schema at /api/schema.json); exact searchable mathematical objects at /api/math-objects.json; claim-level assurance pilot at /api/claims.json with bounded tasks at /api/assurance-tasks.json, replay profiles at /api/replay-profiles.json, receipts at /api/assurance-receipts.json and append-only events at /api/assurance-events.jsonl; DOI-to-DOI citation synchronization plan at /api/citations.json; separate article index at /api/articles.json (item schema at /api/schemas/article.schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); quarantined research-tip register at /api/atlas-proposals.json (schemas at /api/schemas/atlas-proposal.schema.json and /api/schemas/atlas-proposal-register.schema.json); relationship vocabulary at /api/relationship-registry.json; Atlas priorities and review log at /api/atlas-roadmap.json; reader-first page contract at /api/page-structure-policy.json; non-scholarly maintenance history at /api/presentation-events.json; release-audio provenance status at /api/audio-provenance-status.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; implementation scope at /api/implementation-status.json; per-release JSON at /releases/<slug>/paper.json; per-article JSON at the canonical article URL plus article.json; release RSS at /feed.xml; article RSS at /articles/feed.xml. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
+    `Key endpoints: full research-release index at /api/papers.json (JSON Schema at /api/schema.json); exact searchable mathematical objects at /api/math-objects.json; claim-level assurance pilot at /api/claims.json with bounded tasks at /api/assurance-tasks.json, replay profiles at /api/replay-profiles.json, receipts at /api/assurance-receipts.json and append-only events at /api/assurance-events.jsonl; DOI-to-DOI citation synchronization plan at /api/citations.json; separate article index at /api/articles.json (item schema at /api/schemas/article.schema.json); source-driven research graph at /api/research-graph.json (schema at /api/schemas/research-graph.schema.json); quarantined research-tip register at /api/atlas-proposals.json (schemas at /api/schemas/atlas-proposal.schema.json and /api/schemas/atlas-proposal-register.schema.json); relationship vocabulary at /api/relationship-registry.json; Atlas priorities and review log at /api/atlas-roadmap.json; reader-first page contract at /api/page-structure-policy.json; non-scholarly maintenance history at /api/presentation-events.json; release-audio provenance status at /api/audio-provenance-status.json; operating contract at /api/operating-model.json; reusable method registry at /api/method-registry.json; defeasible inference ledger at /api/ibe-ledger.json; prospective attempt ledger at /api/work-ledger.json; prospective research-metrics policy at /api/research-metrics-policy.json; implementation scope at /api/implementation-status.json; per-release JSON at /releases/<slug>/paper.json; per-article JSON at the canonical article URL plus article.json; release RSS at /feed.xml; article RSS at /articles/feed.xml. Direct paper PDFs are in each release's metadata (pdfUrl).`, '',
     '## Releases', '',
     ...papers.map(p => `- [${p.shortTitle}](${urlOf(p)}): ${p.oneLine} (PDF: ${p.pdfUrl || 'n/a'}; DOI: https://doi.org/${p.doi}; code: ${p.repoUrl}; status: unrefereed)`),
     '',
@@ -2256,6 +2326,7 @@ function llms() {
     `- [method-registry.json](${BASE}/api/method-registry.json): reusable methods, failure modes, broad method clusters, evidence-backed lineages and release assignments; inclusion is not validation`,
     `- [ibe-ledger.json](${BASE}/api/ibe-ledger.json): rival explanations, predictions and potential falsifiers for the acceleration hypotheses`,
     `- [work-ledger.json](${BASE}/api/work-ledger.json): prospective attempts including stopped and unreleased work, explicit missingness, resources, clocks, comparators and assurance endpoints`,
+    `- [research-metrics-policy.json](${BASE}/api/research-metrics-policy.json): prospective Fermi forecasts, terminal metric receipts, field-specific missingness and per-release calibration`,
     `- [page-structure-policy.json](${BASE}/api/page-structure-policy.json): versioned reader-first page functions, variants, fixtures and grandfathering rule`,
     `- [presentation-events.json](${BASE}/api/presentation-events.json): routine media and deployment maintenance kept separate from scholarly corrections`,
     `- [audio-provenance-status.json](${BASE}/api/audio-provenance-status.json): per-release transcript and provider/model/voice provenance status without guessing missing legacy facts`,
@@ -2266,6 +2337,7 @@ function llms() {
     `- [About](${BASE}/about/): what these releases are, the assurance matrix, and how to independently verify or refute one`,
     `- [Evidence Atlas](${BASE}/atlas/): interactive and accessible map of recorded research relationships plus a visibly quarantined proposal projection; geometry is navigation, not evidence (Markdown: ${BASE}/atlas/index.md; accepted graph: ${BASE}/api/research-graph.json; proposals: ${BASE}/api/atlas-proposals.json)`,
     `- [Operating model](${BASE}/operating-model/): the prospective doctrine for accelerating checkable work, stopping non-identified work, and publishing reusable handoffs (Markdown: ${BASE}/operating-model/index.md; JSON: ${BASE}/operating-model/index.json)`,
+    `- [Research metrics](${BASE}/research-metrics/): the prospective attempt-level forecast, measurement and release-publication contract (Markdown: ${BASE}/research-metrics/index.md; JSON: ${BASE}/research-metrics/index.json)`,
     `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; video: ${OBSERVATORY.video.url}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
     `- [Articles](${BASE}/articles/): essays, commentary, syntheses and research notes, explicitly separate from certificate-backed releases (RSS: ${BASE}/articles/feed.xml; JSON: ${BASE}/api/articles.json)`,
     `- [Productivity Protocols](${BASE}/productivity/): bounded, downloadable workflows for using AI agents, each with separate protocol-assurance and work-evidence status; human and company impact is not yet measured. Registry: ${BASE}/protocols/ (machine-readable index: ${BASE}/protocols/api/protocols.json)`,
@@ -2319,7 +2391,12 @@ function llms() {
     `- Method registry: ${BASE}/api/method-registry.json`,
     `- IBE ledger: ${BASE}/api/ibe-ledger.json`,
     `- Work ledger: ${BASE}/api/work-ledger.json`, '',
-    fs.readFileSync(path.join(ROOT, OPERATING_ARTIFACTS.contract.doctrine), 'utf8').replace(/^#\s+.*(?:\r?\n)+/, ''), ''
+    fs.readFileSync(path.join(ROOT, OPERATING_ARTIFACTS.contract.doctrine), 'utf8').replace(/^#\s+.*(?:\r?\n)+/, ''), '',
+    '---', '', '# Evidence Press research metrics', '',
+    `- URL: ${BASE}/research-metrics/`,
+    `- Machine policy: ${BASE}/api/research-metrics-policy.json`,
+    `- Work ledger: ${BASE}/api/work-ledger.json`, '',
+    fs.readFileSync(path.join(ROOT, 'docs', 'RESEARCH_METRICS.md'), 'utf8').replace(/^#\s+.*(?:\r?\n)+/, ''), ''
   ];
   write('llms-full.txt', full.join('\n'));
 }
@@ -2336,7 +2413,7 @@ function apiStability() {
       paths: [
         `${BASE}/api/papers.json`, `${BASE}/api/schema.json`, `${BASE}/api/math-objects.json`, `${BASE}/api/citations.json`, `${BASE}/api/articles.json`, `${BASE}/api/schemas/article.schema.json`,
         `${BASE}/api/research-graph.json`, `${BASE}/api/relationship-registry.json`, `${BASE}/api/atlas-roadmap.json`,
-        `${BASE}/api/operating-model.json`, `${BASE}/api/method-registry.json`, `${BASE}/api/ibe-ledger.json`, `${BASE}/api/work-ledger.json`,
+        `${BASE}/api/operating-model.json`, `${BASE}/api/method-registry.json`, `${BASE}/api/ibe-ledger.json`, `${BASE}/api/work-ledger.json`, `${BASE}/api/research-metrics-policy.json`,
         `${BASE}/api/page-structure-policy.json`, `${BASE}/api/presentation-events.json`, `${BASE}/api/audio-provenance-status.json`,
         `${BASE}/api/claims.json`, `${BASE}/api/assurance-tasks.json`, `${BASE}/api/replay-profiles.json`,
         `${BASE}/api/assurance-receipts.json`, `${BASE}/api/assurance-events.jsonl`, `${BASE}/api/implementation-status.json`,
@@ -2351,7 +2428,7 @@ function apiStability() {
     ],
     fieldStability: {
       stable: ['slug', 'title', 'url', 'doi', 'doiUrl', 'datePublished', 'version', 'authors', 'license', 'status', 'keywords', 'verification', 'zenodoUrl', 'repoUrl'],
-      extensible: ['assurance', 'claimAssurance', 'media', 'provenance', 'reviews', 'relatedWorks', 'mathObjects', 'openProblems', 'keyResults', 'operatingModel', 'publicCorrections', 'pageStructureVersion', 'pageStructureVariant', 'pageStructureWaivers', 'recordMaturity', 'metadataProvenance', 'grandfatheredAtSchemaVersion'],
+      extensible: ['assurance', 'claimAssurance', 'media', 'provenance', 'reviews', 'relatedWorks', 'mathObjects', 'openProblems', 'keyResults', 'operatingModel', 'researchMetrics', 'publicCorrections', 'pageStructureVersion', 'pageStructureVariant', 'pageStructureWaivers', 'recordMaturity', 'metadataProvenance', 'grandfatheredAtSchemaVersion'],
       experimental: ['assurance[].question', 'assurance[].evidenceUrl', 'researchGraph.proposalRegister']
     },
     articleApi: {
@@ -2502,6 +2579,7 @@ function api() {
     ['method-registry.json', OPERATING_ARTIFACTS.registry],
     ['ibe-ledger.json', OPERATING_ARTIFACTS.ledger],
     ['work-ledger.json', OPERATING_ARTIFACTS.workLedger],
+    ['research-metrics-policy.json', OPERATING_ARTIFACTS.metricsPolicy],
     ['relationship-registry.json', RELATIONSHIP_ARTIFACTS.registry],
     ['atlas-roadmap.json', ATLAS_ROADMAP],
     ['atlas-proposals.json', ATLAS_PROPOSALS],
@@ -2522,6 +2600,7 @@ function api() {
     ['method-registry.schema.json', OPERATING_ARTIFACTS.schemas.registry],
     ['ibe-ledger.schema.json', OPERATING_ARTIFACTS.schemas.ledger],
     ['work-ledger.schema.json', OPERATING_ARTIFACTS.schemas.workLedger],
+    ['research-metrics-policy.schema.json', OPERATING_ARTIFACTS.schemas.metricsPolicy],
     ['release-operating-model.schema.json', OPERATING_ARTIFACTS.schemas.release],
     ['relationship-registry.schema.json', RELATIONSHIP_ARTIFACTS.registrySchema],
     ['atlas-roadmap.schema.json', ATLAS_ROADMAP_SCHEMA],
@@ -2789,6 +2868,33 @@ function api() {
           },
           evidencePackage: { type: 'string' },
           operatingModel: { $ref: '#/$defs/releaseOperatingModel' },
+          researchMetrics: {
+            type: 'object',
+            required: ['schemaVersion', 'policyUrl', 'workLedgerUrl', 'claimCeiling', 'attempts'],
+            additionalProperties: false,
+            properties: {
+              schemaVersion: { type: 'string', minLength: 1 },
+              policyUrl: { type: 'string', format: 'uri' },
+              workLedgerUrl: { type: 'string', format: 'uri' },
+              claimCeiling: { type: 'string', minLength: 1 },
+              attempts: {
+                type: 'array',
+                minItems: 1,
+                items: {
+                  type: 'object',
+                  required: ['attemptId', 'status', 'resultClass', 'metrics', 'missingnessReason'],
+                  additionalProperties: false,
+                  properties: {
+                    attemptId: { type: 'string', minLength: 1 },
+                    status: { type: 'string', minLength: 1 },
+                    resultClass: { type: ['string', 'null'] },
+                    metrics: { type: ['object', 'null'] },
+                    missingnessReason: { type: ['string', 'null'] }
+                  }
+                }
+              }
+            }
+          },
           openProblems: { type: 'array', items: { type: 'string' }, description: 'Concrete follow-up research problems, well-posed enough to start on' },
           relatedWorks: { type: 'array', items: { type: 'object', properties: { citation: { type: 'string' }, url: { type: 'string' }, doi: { type: ['string', 'null'] } } } },
           reviews: {
@@ -3005,6 +3111,9 @@ write('_headers', `/*
 /operating-model/index.json
   Access-Control-Allow-Origin: *
 
+/research-metrics/index.json
+  Access-Control-Allow-Origin: *
+
 /assets/audio/*
   Access-Control-Allow-Origin: *
 
@@ -3037,7 +3146,24 @@ simplePage('operating-model/', 'Evidence Press operating model', 'A prospective,
     { label: 'Reusable methods', url: `${BASE}/api/method-registry.json`, linkText: 'method-registry.json', detail: 'Methods, failure modes, broad method clusters, evidence-backed lineages and release assignments; registration is not validation.' },
     { label: 'Defeasible explanations', url: `${BASE}/api/ibe-ledger.json`, linkText: 'ibe-ledger.json', detail: 'Observations, rivals, predictions and potential falsifiers for the acceleration hypotheses.' },
     { label: 'Prospective attempts', url: `${BASE}/api/work-ledger.json`, linkText: 'work-ledger.json', detail: 'All registered attempts, including stopped and unreleased work, with explicit clocks, resources, comparators, assurance endpoints and missingness.' },
+    { label: 'Research metrics', url: `${BASE}/api/research-metrics-policy.json`, linkText: 'research-metrics-policy.json', detail: 'Prospective Fermi forecasts, terminal outcome metrics, calibration and field-specific missingness required from 28 August 2026.' },
     { label: 'Prospective release schema', url: `${BASE}/api/schemas/release-operating-model.schema.json`, linkText: 'release-operating-model.schema.json', detail: 'Required process and handoff metadata for every future release.' }
+  ]
+});
+simplePage('research-metrics/', 'Evidence Press research metrics', 'The prospective attempt-level forecast, measurement and release-publication contract used to calibrate tractability without reconstructing history or mistaking throughput for correctness.', null, 'WebPage', {
+  sourcePath: 'docs/RESEARCH_METRICS.md',
+  sourceIncludesTitle: true,
+  kicker: 'Measured-release supplement · version 1.0 · 28 August 2026',
+  standfirst: 'Freeze the estimate. Count the failed routes. Publish the outcome.',
+  datePublished: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10),
+  dateModified: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10),
+  status: OPERATING_ARTIFACTS.metricsPolicy.status,
+  machineRecord: OPERATING_ARTIFACTS.metricsPolicy,
+  resources: [
+    { label: 'Machine policy', url: `${BASE}/api/research-metrics-policy.json`, linkText: 'research-metrics-policy.json', detail: 'Definitions, effective boundary, required terminal fields and publication rules.' },
+    { label: 'Policy schema', url: `${BASE}/api/schemas/research-metrics-policy.schema.json`, linkText: 'research-metrics-policy.schema.json', detail: 'Machine-readable shape of the metrics policy.' },
+    { label: 'Prospective attempts', url: `${BASE}/api/work-ledger.json`, linkText: 'work-ledger.json', detail: 'The full attempted-work denominator, including failed and unreleased work.' },
+    { label: 'Release index', url: `${BASE}/api/papers.json`, linkText: 'papers.json', detail: 'Each prospective release embeds its linked researchMetrics receipt.' }
   ]
 });
 simplePage('productivity/', 'Productivity Protocols', 'Bounded AI-agent workflows and current exact-logistics research lineages relevant to operational productivity; human, company and field impact remains unmeasured.', 'productivity.md', 'WebPage', {

@@ -99,7 +99,7 @@ check('S6 hero claim text stays inside its surrounding panel',
    constraint it does not understand. */
 const KNOWN = new Set(['$schema', '$id', 'title', 'description', 'type', 'required',
   'properties', 'additionalProperties', 'items', 'enum', 'const', 'pattern', 'format',
-  'minItems', 'minLength', 'minimum', '$ref', '$defs', 'oneOf']);
+  'minItems', 'minLength', 'minimum', 'maximum', '$ref', '$defs', 'oneOf']);
 
 const FORMATS = {
   date: v => /^\d{4}-\d{2}-\d{2}$/.test(v) && !Number.isNaN(Date.parse(v + 'T12:00:00Z')),
@@ -148,6 +148,8 @@ function validate(value, node, root, pathStr, errors) {
     errors.push(`${pathStr}: shorter than minLength ${node.minLength}`);
   if (node.minimum != null && typeof value === 'number' && value < node.minimum)
     errors.push(`${pathStr}: below minimum ${node.minimum}`);
+  if (node.maximum != null && typeof value === 'number' && value > node.maximum)
+    errors.push(`${pathStr}: above maximum ${node.maximum}`);
 
   if (Array.isArray(value)) {
     if (node.minItems != null && value.length < node.minItems)
@@ -250,6 +252,7 @@ const governance = [
   ['method-registry.json', 'method-registry.schema.json', operatingArtifacts.registry, operatingArtifacts.schemas.registry],
   ['ibe-ledger.json', 'ibe-ledger.schema.json', operatingArtifacts.ledger, operatingArtifacts.schemas.ledger],
   ['work-ledger.json', 'work-ledger.schema.json', operatingArtifacts.workLedger, operatingArtifacts.schemas.workLedger],
+  ['research-metrics-policy.json', 'research-metrics-policy.schema.json', operatingArtifacts.metricsPolicy, operatingArtifacts.schemas.metricsPolicy],
   ['atlas-roadmap.json', 'atlas-roadmap.schema.json', atlasRoadmap, atlasRoadmapSchema]
 ];
 const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
@@ -332,7 +335,7 @@ check('v1 prospective release schema matches the unversioned alias',
   sameJson(read('api/v1/schemas/release-operating-model.schema.json'), releaseOperatingSchema));
 check('public v1 keeps operatingModel optional for legacy records',
   schema.$defs.paper.properties.operatingModel && !schema.$defs.paper.required.includes('operatingModel'));
-check('additive papers schema version is 1.5', papersDoc.schemaVersion === '1.5');
+check('additive papers schema version is 1.6', papersDoc.schemaVersion === '1.6');
 for (const [name, sourcePath] of [
   ['page-structure-policy.json', 'data/PAGE_STRUCTURE_POLICY.json'],
   ['presentation-events.json', 'data/PRESENTATION_EVENTS.json'],
@@ -428,7 +431,26 @@ for (const paper of papersDoc.papers) {
 check('per-release operating metadata is exact and never invented for legacy records',
   operatingDrift.length === 0, operatingDrift.join('\n  '));
 
-const operatingPageFiles = ['operating-model/index.html', 'operating-model/index.md', 'operating-model/index.json'];
+const researchMetricsDrift = [];
+for (const paper of papersDoc.papers) {
+  const authored = sourceBySlug.get(paper.slug);
+  if (authored && authored.operatingModel) {
+    if (!paper.researchMetrics || paper.researchMetrics.policyUrl !== 'https://evidencepress.org/api/research-metrics-policy.json') {
+      researchMetricsDrift.push(`${paper.slug}: missing the derived researchMetrics policy binding`);
+      continue;
+    }
+    const expectedAttempts = authored.operatingModel.attemptIds;
+    if (!sameJson(paper.researchMetrics.attempts.map(item => item.attemptId), expectedAttempts))
+      researchMetricsDrift.push(`${paper.slug}: researchMetrics attempt ids drift from operatingModel`);
+  } else if (Object.prototype.hasOwnProperty.call(paper, 'researchMetrics')) {
+    researchMetricsDrift.push(`${paper.slug}: legacy API record invents researchMetrics metadata`);
+  }
+}
+check('per-release research metrics derive only from linked prospective attempts',
+  researchMetricsDrift.length === 0, researchMetricsDrift.join('\n  '));
+
+const operatingPageFiles = ['operating-model/index.html', 'operating-model/index.md', 'operating-model/index.json',
+  'research-metrics/index.html', 'research-metrics/index.md', 'research-metrics/index.json'];
 check('operating doctrine ships human, Markdown and machine representations',
   operatingPageFiles.every(rel => fs.existsSync(path.join(DIST, rel))),
   operatingPageFiles.filter(rel => !fs.existsSync(path.join(DIST, rel))).join(', '));
