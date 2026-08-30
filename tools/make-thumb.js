@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'four-point-inductive-cubical-excision': {
+    palette: 'aubergine',
+    kicker: ['RESEARCH RELEASE · 30 AUGUST 2026', 'CUBICAL HOMOLOGY · V0.2.0-CANDIDATE'],
+    head: ['Four points.', '<em>Excision fails.</em>'],
+    headSize: 70,
+    sub: 'An exact interior cover sends a nonzero integral relative one-cycle to zero—for the directed interval with the inductive box product.',
+    tag: 'ANONYMOUS · UNREFEREED COUNTEREXAMPLE CANDIDATE',
+    hero: `
+      <div class="eq-label">inclusion-induced relative-homology map</div>
+      <div class="eq"><span class="hl">ℤ → 0</span></div>
+      <div class="note"><b>Source:</b> two edge difference<br><b>Target:</b> filled by the identity square<br>15 tests · six semantic mutations</div>
+      <div class="eq-foot">integral normalized (J+, boxdot)-cubical theory only</div>`
+  },
   'negative-square-energy-five-vertex-valley': {
     palette: 'cobalt',
     kicker: ['RESEARCH RELEASE · 30 AUGUST 2026', 'SPECTRAL GRAPH THEORY · V0.2.0-CANDIDATE'],
