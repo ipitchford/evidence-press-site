@@ -1348,6 +1348,38 @@ art['four-point-inductive-cubical-excision'] = (a, b) => {
   return s;
 };
 
+/* Four-element rowmotion obstruction: the non-graded rooted tree on the
+   left, and the two independent local infinite-order certificates on the
+   right.  The lower ruler records the proved global four-versus-three size
+   boundary without implying novelty for the already-published Hasse shape. */
+art['four-element-rowmotion-periodicity'] = (a, b) => {
+  let s = '';
+  const p = { r: [255, 72], a: [120, 192], b: [390, 192], c: [390, 326] };
+  for (const [u, v] of [['a', 'r'], ['b', 'r'], ['c', 'b']]) {
+    const [x1, y1] = p[u], [x2, y2] = p[v];
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#e7e5e4" stroke-width="5" opacity=".72"/>`;
+  }
+  for (const [label, [x, y]] of Object.entries(p)) {
+    s += `<circle cx="${x}" cy="${y}" r="28" fill="#151a1e" stroke="${label === 'c' ? b : a}" stroke-width="4"/>`;
+    s += `<text x="${x}" y="${y + 8}" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="25" fill="#e7e5e4">${label}</text>`;
+  }
+  s += `<text x="255" y="382" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">NON-GRADED ROOTED TREE · FOUR ELEMENTS</text>`;
+
+  s += `<rect x="520" y="48" width="620" height="304" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text x="830" y="94" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">TWO LOCAL OBSTRUCTIONS</text>`;
+  s += `<text x="570" y="142" font-family="Georgia" font-size="25" fill="${a}">birational</text>`;
+  s += `<text x="570" y="183" font-family="Georgia" font-size="28" fill="#e7e5e4">t⁹ − t − 1 = 0</text>`;
+  s += `<text x="570" y="216" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">8 NONREAL EMBEDDINGS</text>`;
+  s += `<line x1="835" y1="120" x2="835" y2="242" stroke="#8a938f" stroke-width="2" opacity=".55"/>`;
+  s += `<text x="875" y="142" font-family="Georgia" font-size="25" fill="${b}">piecewise-linear</text>`;
+  s += `<text x="875" y="183" font-family="Georgia" font-size="34" fill="#e7e5e4">J₂(−1)</text>`;
+  s += `<text x="875" y="216" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">NONTRIVIAL JORDAN BLOCK</text>`;
+  s += `<line x1="570" y1="270" x2="1090" y2="270" stroke="#8a938f" stroke-width="2" opacity=".55"/>`;
+  s += `<circle cx="654" cy="310" r="14" fill="#e7e5e4" opacity=".55"/><circle cx="760" cy="310" r="14" fill="#e7e5e4" opacity=".55"/><circle cx="866" cy="310" r="14" fill="#e7e5e4" opacity=".55"/><circle cx="972" cy="310" r="18" fill="${b}"/>`;
+  s += `<text x="1050" y="317" font-family="Georgia" font-size="25" fill="${b}">minimal</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1388,6 +1420,7 @@ const palette = {
   ,'extremes-do-not-always-maximise': ['#38bdf8', '#f59e0b']
   ,'negative-square-energy-five-vertex-valley': ['#38bdf8', '#f59e0b']
   ,'four-point-inductive-cubical-excision': ['#2dd4bf', '#f59e0b']
+  ,'four-element-rowmotion-periodicity': ['#a78bfa', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {

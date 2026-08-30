@@ -39,6 +39,7 @@ const receipt = {
 };
 
 const clone = value => JSON.parse(JSON.stringify(value));
+const recursiveRemoveOptions = { recursive: true, force: true, maxRetries: 5, retryDelay: 50 };
 let checks = 0;
 function test(name, mutate, expected) {
   const candidate = clone(receipt);
@@ -133,13 +134,13 @@ function testLedgerOnlyCommitReproducesBuildA() {
     fs.writeFileSync(path.join(copiedRoot, 'PUBLISHED.json'), '{}\n');
     git(['add', 'protocols/PUBLISHED.json']);
     git(['commit', '-q', '-m', 'ledger-only control B']);
-    fs.rmSync(path.join(copiedRoot, 'dist'), { recursive: true, force: true });
+    fs.rmSync(path.join(copiedRoot, 'dist'), recursiveRemoveOptions);
     const atB = generate(sourceA);
     assert.deepStrictEqual(atB, atA, 'clean commit B must reproduce every protocol byte emitted at A');
     checks++;
     console.log('  ✓ ledger-only commit B reproduces build A byte for byte');
   } finally {
-    fs.rmSync(temporary, { recursive: true, force: true });
+    fs.rmSync(temporary, recursiveRemoveOptions);
   }
 }
 
