@@ -1380,6 +1380,35 @@ art['four-element-rowmotion-periodicity'] = (a, b) => {
   return s;
 };
 
+/* Pure-tensor analytic-rank obstruction: the left panel shows that one active
+   diagonal coordinate stays one under every fixed-order Kronecker power.  The
+   right panel contrasts the constant analytic rank with the decaying literal
+   scalar comparator, then records the powered-identity diagonal diagnostic. */
+art['pure-tensor-analytic-rank-counterexample'] = (a, b) => {
+  let s = '';
+  s += `<rect x="48" y="48" width="424" height="304" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text x="260" y="92" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">PURE DIAGONAL SUPPORT</text>`;
+  s += `<text x="94" y="148" font-family="Georgia" font-size="31" font-style="italic" fill="${a}">A</text>`;
+  s += `<circle cx="184" cy="138" r="25" fill="${a}"/><circle cx="306" cy="138" r="25" fill="none" stroke="#8a938f" stroke-width="3" opacity=".5"/>`;
+  s += `<text x="184" y="183" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#e7e5e4">1 active</text>`;
+  s += `<path d="M 184 211 V 258" stroke="#e7e5e4" stroke-width="4"/><path d="M 171 244 L 184 263 L 197 244" fill="none" stroke="#e7e5e4" stroke-width="4"/>`;
+  s += `<text x="234" y="241" font-family="Georgia" font-size="22" fill="#e7e5e4">power m</text>`;
+  s += `<circle cx="184" cy="302" r="25" fill="${a}"/><circle cx="306" cy="302" r="25" fill="none" stroke="#8a938f" stroke-width="3" opacity=".5"/>`;
+  s += `<text x="356" y="309" font-family="Georgia" font-size="24" fill="${a}">still 1</text>`;
+
+  s += `<rect x="510" y="48" width="640" height="304" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text x="830" y="92" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">LITERAL UNNORMALISED COMPARATOR</text>`;
+  s += `<text x="558" y="146" font-family="Georgia" font-size="31" fill="#e7e5e4">arank(A<tspan baseline-shift="super" font-size="19">m</tspan>) =</text>`;
+  s += `<text x="918" y="146" font-family="Georgia" font-size="38" fill="${a}">a</text>`;
+  s += `<text x="558" y="202" font-family="Georgia" font-size="31" fill="#e7e5e4">(2ac)<tspan baseline-shift="super" font-size="19">m</tspan> →</text>`;
+  s += `<text x="918" y="202" font-family="Georgia" font-size="38" fill="${b}">0</text>`;
+  s += `<text x="1048" y="175" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="${b}">2a &lt; 1</text>`;
+  s += `<line x1="558" y1="235" x2="1102" y2="235" stroke="#8a938f" stroke-width="2" opacity=".55"/>`;
+  s += `<text x="830" y="278" text-anchor="middle" font-family="Georgia" font-size="27" fill="#e7e5e4">powered identity: ratio = (k/n)<tspan baseline-shift="super" font-size="17">m</tspan></text>`;
+  s += `<text x="830" y="323" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="${a}">LITERAL BRANCH REFUTED · NORMALISED BRANCH OPEN</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1421,6 +1450,7 @@ const palette = {
   ,'negative-square-energy-five-vertex-valley': ['#38bdf8', '#f59e0b']
   ,'four-point-inductive-cubical-excision': ['#2dd4bf', '#f59e0b']
   ,'four-element-rowmotion-periodicity': ['#a78bfa', '#f59e0b']
+  ,'pure-tensor-analytic-rank-counterexample': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {

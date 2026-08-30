@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'pure-tensor-analytic-rank-counterexample': {
+    palette: 'cobalt',
+    kicker: ['RESEARCH RELEASE · 30 AUGUST 2026', 'ANALYTIC RANK · V0.2.0-CANDIDATE'],
+    head: ['Pure tensor.', '<em>Scalar bound fails.</em>'],
+    headSize: 67,
+    sub: 'One active diagonal coordinate stays one under every power, while the literal unnormalised identity-rank comparator decays to zero.',
+    tag: 'ANONYMOUS · UNREFEREED CONDITIONAL COUNTEREXAMPLE',
+    hero: `
+      <div class="eq-label">literal analytic-rank comparator</div>
+      <div class="eq eq-sm">arank(A<sup>m</sup>) = <span class="hl">a</span><br>(2ac)<sup>m</sup> → <span class="hl">0</span></div>
+      <div class="note"><b>Exact hinge:</b> 16/9 &lt; 2<br><b>Powered identity:</b> ratio = (k/n)<sup>m</sup><br>partition rank unresolved</div>
+      <div class="eq-foot">literal branch refuted · normalized branch open</div>`
+  },
   'four-element-rowmotion-periodicity': {
     palette: 'aubergine',
     kicker: ['RESEARCH RELEASE · 30 AUGUST 2026', 'ROWMOTION · V0.1.0-CANDIDATE'],
