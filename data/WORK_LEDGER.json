@@ -3603,8 +3603,8 @@
           "currency": "GBP"
         },
         "agentRuns": 1,
-        "reworkMinutes": 2,
-        "correctionCount": 0
+        "reworkMinutes": 0,
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -3688,7 +3688,18 @@
       },
       "releaseSlug": "negative-square-energy-five-vertex-valley",
       "stopReason": null,
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-08-30T05:56:00Z",
+          "field": "provisional publication rework and terminal outcome scope",
+          "reason": "The first canonical deployment published the prospective measurement record with zero rework minutes before the terminal outcome was assembled. The terminal closeout subsequently measured two rework minutes, and replacing the already-public provisional field would erase that publication-time observation.",
+          "replacement": "Retain zero in both immutable structured rework fields and record the later two-minute closeout observation in this append-only correction receipt. The correction explains the scope difference; no research claim, assurance state, milestone time or forecast value changes.",
+          "evidenceRefs": [
+            "https://evidencepress.org/api/work-ledger.json",
+            "https://github.com/ipitchford/evidence-press-site/commit/eecb97d83e7e6b7110a1b95ffe13bababcec8b83"
+          ]
+        }
+      ],
       "metrics": {
         "schemaVersion": "1.0",
         "measurementScope": "assurance-through-publication",
@@ -3765,7 +3776,7 @@
           "computeMinutes": 1,
           "unattendedWaitMinutes": 6,
           "blockedMinutes": 0,
-          "reworkMinutes": 2,
+          "reworkMinutes": 0,
           "agentRuns": 1,
           "maxParallelAgents": 1,
           "modelTurns": 1,
