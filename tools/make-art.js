@@ -1281,10 +1281,14 @@ art['negative-square-energy-five-vertex-valley'] = (a, b) => {
     const [x1, y1] = nodes[left], [x2, y2] = nodes[right];
     s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#8a938f" stroke-width="5" opacity=".72"/>`;
   }
-  for (const [left, right, label] of [['u', 'b', '+ e₁'], ['v', 'c', '+ e₂']]) {
+  const additions = [
+    ['u', 'b', '+ e₁', 320, 112],
+    ['v', 'c', '+ e₂', 345, 187]
+  ];
+  for (const [left, right, label, labelX, labelY] of additions) {
     const [x1, y1] = nodes[left], [x2, y2] = nodes[right];
     s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${b}" stroke-width="4" stroke-dasharray="11 9" opacity=".94"/>`;
-    s += `<text x="${(x1 + x2) / 2}" y="${(y1 + y2) / 2 - 12}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="${b}">${label}</text>`;
+    s += `<text x="${labelX}" y="${labelY}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="${b}">${label}</text>`;
   }
   for (const [label, [x, y]] of Object.entries(nodes)) {
     s += `<circle cx="${x}" cy="${y}" r="25" fill="#151a1e" stroke="${a}" stroke-width="4"/>`;
@@ -1303,10 +1307,10 @@ art['negative-square-energy-five-vertex-valley'] = (a, b) => {
     s += `<circle cx="${x}" cy="${y}" r="9" fill="${b}"/>`;
     s += `<text x="${x}" y="${y - 17}" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4">${i === 1 ? '&lt; 3697/784' : '5'}</text>`;
   }
-  s += `<text x="720" y="280" text-anchor="middle" font-family="Georgia" font-size="24" fill="${b}">strict prescribed-order valley</text>`;
+  s += `<text data-art-role="valley-label" x="720" y="268" text-anchor="middle" font-family="Georgia" font-size="22" fill="${b}">strict prescribed-order valley</text>`;
 
-  const fav = [[600, 326], [680, 302], [760, 278], [840, 302], [920, 308], [1000, 316], [1080, 326]];
-  s += `<path d="M ${fav.map(([x,y]) => `${x} ${y}`).join(' L ')}" fill="none" stroke="${a}" stroke-width="4" opacity=".9"/>`;
+  const fav = [[600, 326], [680, 314], [760, 296], [840, 314], [920, 319], [1000, 323], [1080, 326]];
+  s += `<path data-art-role="favourable-trace" d="M ${fav.map(([x,y]) => `${x} ${y}`).join(' L ')}" fill="none" stroke="${a}" stroke-width="4" opacity=".9"/>`;
   for (const [x, y] of fav) s += `<circle cx="${x}" cy="${y}" r="5" fill="${a}"/>`;
   s += `<text x="920" y="370" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="${a}">A FAVOURABLE ORDER STILL EXISTS</text>`;
   return s;
