@@ -1,0 +1,101 @@
+{
+  "slug": "four-element-rowmotion-periodicity",
+  "title": "A four-element obstruction to birational and piecewise-linear rowmotion periodicity",
+  "shortTitle": "Four-element rowmotion obstruction",
+  "oneLine": "A non-graded four-element rooted tree has infinite-order birational and piecewise-linear rowmotion, and exhaustive exact replay proves that no smaller finite poset can do so.",
+  "abstract": "This anonymous, unrefereed theorem candidate proves infinite order for standard birational rowmotion and order-polytope piecewise-linear rowmotion on the four-element poset with covers a<r, b<r and c<b. The birational proof uses an algebraic fixed point and a totally-real-field contradiction for its derivative; the piecewise-linear proof uses a rational interior fixed point with a nontrivial Jordan block at -1. Exhaustive enumeration of every strict partial order through size three proves global size-minimality for both lifts. The underlying Hasse shape was already published, up to duality, in Grinberg and Roby Example 70; the candidate contribution is the infinite-order proof and mathematical minimality, not discovery of the shape. A written proof, exact Python replay, language-separated JavaScript corroboration, five semantic mutations, public Linux CI, review repair and immutable GitHub and Zenodo assets support the candidate. Historical priority, independent reconstruction, formal verification, external specialist review and peer review remain unestablished.",
+  "narration": "Rowmotion is a dynamical operation on labels attached to a partially ordered set. Many important families are periodic: after finitely many steps, every generic labelling returns to where it started. This anonymous, unrefereed candidate gives a smallest possible obstruction for two standard lifted versions of rowmotion. The poset has four elements. Two elements sit below a top element, and one of those has a further element below it. Its two maximal chains have different lengths. For birational rowmotion, the proof constructs a positive algebraic fixed point using the positive root t of t to the ninth minus t minus one. If the map had finite order, its derivative at that fixed point would also have finite order, forcing a coefficient field into a totally real cyclotomic field. Exact irreducibility and real-root calculations show that the field instead has eight nonreal embeddings, a contradiction. Piecewise-linear rowmotion has a separate rational fixed point. Its local derivative contains a nontrivial Jordan block at minus one, which also cannot occur for a finite-order map. Minimality is global, not just a search among rooted trees. The verifier enumerates all labelled strict partial orders on zero through three elements, quotients them by relabelling, and finds exact birational periods for all nine isomorphism classes. Subtraction-free tropicalisation transfers those finite-order identities to the piecewise-linear maps. Five deliberately corrupted certificates are rejected. The underlying four-element Hasse diagram is not claimed as new: it already appears, with the opposite orientation, in earlier work by Grinberg and Roby. A supplied review independently recalculated the central argument, but the reviewer's identity and unaffiliated status were not authenticated. Producer replay, public availability and review repair are not independent validation, formal proof, specialist review or peer review. This synthetic-voice briefing is a communication aid, not additional mathematical evidence.",
+  "datePublished": "2026-08-30",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22178666",
+  "conceptDoi": "10.5281/zenodo.22178665",
+  "zenodoUrl": "https://zenodo.org/records/22178666",
+  "pdfUrl": "https://github.com/ipitchford/four-element-rowmotion-candidate/releases/download/v0.1.0-candidate/four-element-rowmotion-paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22178666/files/four-element-rowmotion-paper.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/four-element-rowmotion-candidate",
+  "releaseUrl": "https://github.com/ipitchford/four-element-rowmotion-candidate/releases/tag/v0.1.0-candidate",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/four-element-rowmotion-periodicity.mp3",
+      "name": "Audio briefing — four-element rowmotion obstruction",
+      "description": "Plain-English synthetic-voice account of the two local infinite-order obstructions, exhaustive size-three minimality and assurance limits; a communication aid, not additional evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/four-element-rowmotion-periodicity.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": ["AI systems under human direction", "OpenAI Codex", "Python 3 standard library", "Node.js standard library"],
+    "humanRole": "Research direction, candidate selection, review provision, claim-boundary decisions, publication authorization and institutional responsibility by the human creator; repository maintenance and Evidence Press publication are not scholarly authorship, and scholarly attribution remains Anonymous.",
+    "disclosure": "AI systems contributed proof reconstruction, exact computation, manuscript drafting, source and novelty auditing, review repair, editing, replay and release engineering within one producer-coordinated workflow. Language-separated corroboration and the supplied review do not by themselves establish unaffiliated reconstruction, specialist review or editorial peer review."
+  },
+  "problem": {
+    "name": "AIM Dynamical Algebraic Combinatorics Problem 4.3: birational rowmotion on d-complete posets",
+    "url": "https://aimath.org/pastworkshops/dac_preworkshop.pdf"
+  },
+  "keywords": ["rowmotion", "birational dynamics", "piecewise-linear dynamics", "d-complete poset", "fence poset", "rooted tree", "infinite order", "minimal obstruction", "unrefereed candidate"],
+  "keyResults": [
+    "The four-element poset with covers a<r, b<r and c<b has infinite-order standard birational rowmotion.",
+    "The same poset has infinite-order order-polytope piecewise-linear rowmotion.",
+    "The birational obstruction is a fixed point whose derivative would force a non-totally-real degree-nine field into a totally real cyclotomic subfield under finite order.",
+    "The piecewise-linear obstruction is a rational interior fixed point with a nontrivial Jordan block at eigenvalue -1.",
+    "Exact exhaustive enumeration of all finite posets through three elements proves that four elements is globally size-minimal for both phenomena."
+  ],
+  "evidence": "A five-page DOI-bearing manuscript and aligned Markdown; an explicit proof certificate; dependency-free Python exact replay; language-separated JavaScript finite-field, quotient-ring, determinant and real-root corroboration; exhaustive enumeration of the 1, 1, 3 and 19 labelled strict partial orders on zero through three elements and reduction to nine isomorphism classes; exact periods for all nine classes; five semantic certificate mutations; source, convention, citation and bounded novelty audits; a supplied full review and explicit response; one hash-bound confirmation; a public GitHub Actions replay and PDF rebuild; a complete manifested ZIP; and exact GitHub and Zenodo asset readback. These establish public availability, integrity, producer replay and the stated finite computations—not historical priority, unaffiliated reproduction, formal verification, authenticated external specialist review, editorial peer review or impact.",
+  "statusDetail": "Anonymous, unrefereed algebraic-combinatorics theorem candidate at PASS_WITH_NOTES after minor-revision repair. The supplied review independently recalculated the central theorem as correct, but reviewer identity and unaffiliated status were not authenticated. The four-element Hasse shape is prior art up to duality; no exact theorem collision was found in the bounded search, and no first or priority claim is made.",
+  "assurance": {
+    "availability": {"state": "passed", "evidenceUrl": "https://zenodo.org/records/22178666", "note": "The tagged GitHub prerelease and published Zenodo record expose the DOI-bearing PDF, complete ZIP, checksum ledger, release notes and manifest; all five public assets were read back and matched local bytes."},
+    "internalReplay": {"state": "passed", "evidenceUrl": "https://github.com/ipitchford/four-element-rowmotion-candidate/actions/runs/33321822649", "note": "Public Linux CI verifies the shipped bytes, runs Python normally and with optimization, checks the exhaustive small-poset certificate, rejects five semantic mutations, runs the JavaScript corroboration and rebuilds and inspects the PDF."},
+    "independentRerun": {"state": "not-assessed", "note": "No authenticated unaffiliated clean-environment rerun is reported."},
+    "independentReimplementation": {"state": "not-assessed", "note": "Python and JavaScript were produced within one coordinated workflow and are not independent implementations in the assurance sense."},
+    "formalVerification": {"state": "not-assessed", "note": "No proof assistant formalizes the rational map, fixed-point derivative arguments, field obstruction, piecewise-linear chamber or global minimality transfer."},
+    "specialistReview": {"state": "not-assessed", "note": "A supplied review recalculated the central theorem, but the reviewer's identity, specialist credentials and unaffiliated status were not authenticated."},
+    "editorialPeerReview": {"state": "not-assessed", "note": "No journal or comparable external venue has conducted editorial peer review."},
+    "dataEnvironmentReproducibility": {"state": "partial", "evidenceUrl": "https://github.com/ipitchford/four-element-rowmotion-candidate/blob/v0.1.0-candidate/ENVIRONMENT.txt", "note": "Commands, declared versions, exact certificates, manifests and Linux CI are public, but PDF byte determinism is producer-environment scoped and no bit-reproducible system image is supplied."}
+  },
+  "openProblems": [
+    "Classify finite-order and infinite-order birational rowmotion on non-graded rooted trees or on d-complete posets more broadly.",
+    "Determine which asymmetric two-segment fences have finite-order birational or piecewise-linear rowmotion.",
+    "Independently reconstruct both fixed-point derivative obstructions in a materially separate stack.",
+    "Formalize the birational field argument, piecewise-linear Jordan obstruction and exhaustive size-three minimality in a proof assistant.",
+    "Obtain an authenticated specialist review and a broader historical-priority assessment."
+  ],
+  "relatedWorks": [
+    {"citation": "Propp, J., Roby, T., Striker, J., & Williams, N. (2015). Problems for the 2015 AIM Workshop on Dynamical Algebraic Combinatorics, Problem 4.3.", "url": "https://aimath.org/pastworkshops/dac_preworkshop.pdf"},
+    {"citation": "Grinberg, D., & Roby, T. (2016). Iterative properties of birational rowmotion I: Generalities and skeletal posets. Electronic Journal of Combinatorics 23(1), P1.33.", "url": "https://www.combinatorics.org/ojs/index.php/eljc/article/view/v23i1p33"},
+    {"citation": "Einstein, D., & Propp, J. (2014). Piecewise-linear and birational toggling. DMTCS Proceedings, AT, 513–524.", "url": "https://dmtcs.episciences.org/2419"},
+    {"citation": "Dangwal, P., Kimble, J., Liang, J., Lou, J., Sagan, B. E., & Stewart, Z. (2023). Rowmotion on rooted trees. Séminaire Lotharingien de Combinatoire 88, B88a.", "url": "https://arxiv.org/abs/2208.12155"},
+    {"citation": "Proctor, R. A., & Scoppetta, L. M. (2019). d-Complete posets: Local structural axioms, properties, and equivalent definitions. Order 36, 399–422.", "url": "https://doi.org/10.1007/s11083-018-9473-4"},
+    {"citation": "Mertin, A., & Poznanović, S. (2024). Toggleability spaces of fences. Electronic Journal of Combinatorics 31(4), P4.46.", "url": "https://www.combinatorics.org/ojs/index.php/eljc/article/view/v31i4p46"}
+  ],
+  "citeText": "Anonymous. (2026). A four-element obstruction to birational and piecewise-linear rowmotion periodicity (Version 0.1.0-candidate) [Anonymous unrefereed theorem candidate and evidence package]. Evidence Press. https://doi.org/10.5281/zenodo.22178666",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:four-element-rowmotion-periodicity",
+    "attemptIds": ["ep-attempt:four-element-rowmotion-periodicity-assurance-publication"],
+    "aims": ["science"],
+    "artifactRoles": ["research-output", "evidence-assessment", "method-demonstration", "communication"],
+    "lineageId": null,
+    "accelerationPrimitives": ["certificate-first", "structural-compression", "adversarial-controls", "assurance-vector", "agent-readable-research-object"],
+    "decisionObject": {"type": "obstruction", "description": "Two exact local derivative obstructions proving infinite order for the birational and piecewise-linear lifts on one four-element poset, together with exhaustive global size-minimality.", "scope": "The poset with covers a<r, b<r and c<b; standard birational rowmotion with boundary labels one and order-polytope piecewise-linear rowmotion with boundary labels zero and one; not a classification of d-complete posets or fences, an originality finding, or external validation."},
+    "bottleneckTargeted": ["assurance", "publication", "translation"],
+    "semanticBridge": {"state": "explicit", "description": "The manuscript states the toggle conventions and fixed points; the exact verifier recomputes the defining polynomial, derivatives, field tests, Jordan certificate and every size-three poset period in labelled and isomorphism-class form.", "remainingRisks": ["Producer-written encodings may share a mistaken convention despite mutation controls.", "The bounded literature search cannot establish historical priority.", "The supplied reviewer's identity, specialist credentials and unaffiliated status were not authenticated."]},
+    "humanJudgmentGates": ["Keep the result limited to the two stated lifted maps and boundary conventions.", "Treat the four-element Hasse shape as prior art up to duality.", "Inspect the written fixed-point and field arguments rather than treating executable replay as a proof oracle.", "Keep producer corroboration, supplied review, independent reconstruction, formal verification and peer review distinct.", "Keep mathematical size-minimality separate from historical novelty or priority."],
+    "parentLinks": [{"relation": "depends-on-claim", "workId": null, "legacyReleaseSlug": null, "externalUrl": "https://www.combinatorics.org/ojs/index.php/eljc/article/view/v23i1p33", "inheritedClaim": "Grinberg and Roby define the relevant birational framework, preserve rowmotion order under duality, prove finite order for skeletal posets and display the same four-element non-skeletal tree up to duality.", "inheritedAssuranceCeiling": "That source fixes framework and object ancestry but does not supply this candidate's infinite-order proofs, global minimality or assurance."}],
+    "assuranceTarget": {"dimensions": ["independentRerun", "independentReimplementation", "formalVerification", "specialistReview", "dataEnvironmentReproducibility", "semanticValidation", "noveltyAssessment", "priorityAssessment"], "nextAction": "Obtain an authenticated unaffiliated reconstruction and rowmotion-specialist assessment, then formalize the two local obstructions and size-three minimality.", "claimCeiling": "An anonymous unrefereed theorem candidate proving infinite order for two named rowmotion lifts on one four-element poset and exact global size-minimality, with public immutable assets and producer-side replay; not a d-complete or fence classification, historical-priority finding, unaffiliated validation, formal verification, external specialist review or editorial peer review."},
+    "impactClaims": [{"id": "four-element-rowmotion-science-no-impact", "aim": "science", "outcome": "Faster or more reliable resolution and assurance of algebraic-combinatorics open problems", "setting": "AI-assisted exact proof reconstruction, exhaustive finite minimality, source audit, review repair and guarded candidate publication", "status": "NO_IMPACT_EVIDENCE", "designClass": "none", "comparator": "No matched conventional workflow was registered.", "estimand": "No effect on discovery time, human effort, compute, correction rate, proof quality, assurance time, uptake, citation or field outcomes was estimated.", "evidenceRefs": [], "registeredDesignRef": null, "independentAssessment": null}]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "metadataProvenance": "Authored prospectively for Evidence Press against the DOI-bearing tagged theorem candidate and its repaired review record on 30 August 2026. Canonical site-readback fields remain pending until deployment and are appended only after exact public verification.",
+  "grandfatheredAtSchemaVersion": null
+}

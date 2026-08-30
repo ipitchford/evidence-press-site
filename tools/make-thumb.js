@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'four-element-rowmotion-periodicity': {
+    palette: 'aubergine',
+    kicker: ['RESEARCH RELEASE · 30 AUGUST 2026', 'ROWMOTION · V0.1.0-CANDIDATE'],
+    head: ['Four elements.', '<em>Infinite order.</em>'],
+    headSize: 70,
+    sub: 'Two exact fixed-point derivative obstructions prove nonperiodicity—and exhaustive replay shows that no smaller finite poset can do it.',
+    tag: 'ANONYMOUS · UNREFEREED THEOREM CANDIDATE',
+    hero: `
+      <div class="eq-label">birational + piecewise-linear rowmotion</div>
+      <div class="eq"><span class="hl">|P| = 4</span></div>
+      <div class="note"><b>Field obstruction:</b> 8 nonreal embeddings<br><b>Jordan obstruction:</b> J₂(−1)<br>all posets through size 3 classified</div>
+      <div class="eq-foot">minimality proved · shape itself is prior art</div>`
+  },
   'four-point-inductive-cubical-excision': {
     palette: 'aubergine',
     kicker: ['RESEARCH RELEASE · 30 AUGUST 2026', 'CUBICAL HOMOLOGY · V0.2.0-CANDIDATE'],
