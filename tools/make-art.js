@@ -1267,6 +1267,51 @@ art['extremes-do-not-always-maximise'] = (a, b) => {
   return s;
 };
 
+/* The witness graph and its two order-sensitive energy traces.  The large
+   three-point trace is the certified strict valley; the smaller seven-point
+   trace records the favourable order for the same starting tree, keeping the
+   universal counterexample visually separate from the open existential claim. */
+art['negative-square-energy-five-vertex-valley'] = (a, b) => {
+  let s = '';
+  const nodes = {
+    u: [102, 200], v: [246, 94], a: [246, 306], b: [424, 80], c: [424, 320]
+  };
+  const edges = [['u', 'a'], ['u', 'c'], ['v', 'a'], ['v', 'b']];
+  for (const [left, right] of edges) {
+    const [x1, y1] = nodes[left], [x2, y2] = nodes[right];
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#8a938f" stroke-width="5" opacity=".72"/>`;
+  }
+  for (const [left, right, label] of [['u', 'b', '+ e₁'], ['v', 'c', '+ e₂']]) {
+    const [x1, y1] = nodes[left], [x2, y2] = nodes[right];
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${b}" stroke-width="4" stroke-dasharray="11 9" opacity=".94"/>`;
+    s += `<text x="${(x1 + x2) / 2}" y="${(y1 + y2) / 2 - 12}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="${b}">${label}</text>`;
+  }
+  for (const [label, [x, y]] of Object.entries(nodes)) {
+    s += `<circle cx="${x}" cy="${y}" r="25" fill="#151a1e" stroke="${a}" stroke-width="4"/>`;
+    s += `<text x="${x}" y="${y + 7}" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="23" fill="#e7e5e4">${label}</text>`;
+  }
+  s += `<text x="262" y="382" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">SAME FIVE-VERTEX TREE</text>`;
+
+  const x0 = 548, y0 = 338;
+  s += `<line x1="${x0}" y1="62" x2="${x0}" y2="${y0}" stroke="#8a938f" stroke-width="2" opacity=".68"/>`;
+  s += `<line x1="${x0}" y1="${y0}" x2="1140" y2="${y0}" stroke="#8a938f" stroke-width="2" opacity=".68"/>`;
+  s += `<text x="528" y="74" text-anchor="end" font-family="ui-monospace,monospace" font-size="14" fill="#8a938f">S⁻</text>`;
+
+  const valley = [[600, 128], [720, 234], [840, 128]];
+  s += `<path d="M ${valley.map(([x,y]) => `${x} ${y}`).join(' L ')}" fill="none" stroke="${b}" stroke-width="6"/>`;
+  for (const [i, [x, y]] of valley.entries()) {
+    s += `<circle cx="${x}" cy="${y}" r="9" fill="${b}"/>`;
+    s += `<text x="${x}" y="${y - 17}" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4">${i === 1 ? '&lt; 3697/784' : '5'}</text>`;
+  }
+  s += `<text x="720" y="280" text-anchor="middle" font-family="Georgia" font-size="24" fill="${b}">strict prescribed-order valley</text>`;
+
+  const fav = [[600, 326], [680, 302], [760, 278], [840, 302], [920, 308], [1000, 316], [1080, 326]];
+  s += `<path d="M ${fav.map(([x,y]) => `${x} ${y}`).join(' L ')}" fill="none" stroke="${a}" stroke-width="4" opacity=".9"/>`;
+  for (const [x, y] of fav) s += `<circle cx="${x}" cy="${y}" r="5" fill="${a}"/>`;
+  s += `<text x="920" y="370" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="${a}">A FAVOURABLE ORDER STILL EXISTS</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1305,6 +1350,7 @@ const palette = {
   ,'amplitude-modules-fused-support-bautin-bound': ['#2dd4bf', '#fbbf24']
   ,'odd-order-one-third-popular-differences': ['#38bdf8', '#f59e0b']
   ,'extremes-do-not-always-maximise': ['#38bdf8', '#f59e0b']
+  ,'negative-square-energy-five-vertex-valley': ['#38bdf8', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
