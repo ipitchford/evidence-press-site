@@ -4518,14 +4518,14 @@
           }
         ],
         "activeHumanMinutes": null,
-        "computeMinutes": 4,
+        "computeMinutes": 2,
         "computeCost": {
           "amount": 0,
           "currency": "GBP"
         },
         "agentRuns": 1,
-        "reworkMinutes": 2,
-        "correctionCount": 0
+        "reworkMinutes": 1,
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -4607,11 +4607,23 @@
           "https://evidencepress.org/releases/pure-tensor-analytic-rank-counterexample/",
           "https://github.com/ipitchford/evidence-press-site/pull/173"
         ],
-        "missingnessReason": "Independent rerun, independent reimplementation, formal verification, external specialist review, editorial peer review and priority assessment are not established; environment reproducibility, semantic validation and novelty assessment remain partial."
+        "missingnessReason": "Canonical Evidence Press publication is pending. Independent rerun, independent reimplementation, formal verification, external specialist review, editorial peer review and priority assessment are not established; environment reproducibility, semantic validation and novelty assessment remain partial."
       },
       "releaseSlug": "pure-tensor-analytic-rank-counterexample",
       "stopReason": null,
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-08-30T21:44:08Z",
+          "field": "release-candidate resource snapshot, terminal resource outcome and assurance timing",
+          "reason": "The first canonical deployment made the 21:28 release-candidate snapshot public with two compute minutes, one rework minute and canonical Evidence Press publication still pending. The terminal closeout subsequently measured four compute minutes and two rework minutes after the first deployment and established canonical availability. Replacing the already-public provisional fields would erase the publication-time observation.",
+          "replacement": "Retain computeMinutes 2, reworkMinutes 1 and the pending-canonical clause in the immutable release-candidate measurement and assurance snapshot. Record the later four-compute-minute and two-rework-minute totals only in the appended terminal metrics outcome, and use the appended published status, public-release milestone and canonical evidence references to establish the later availability state. The mathematical claim and assurance dimensions are unchanged.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/pure-tensor-analytic-rank-counterexample/",
+            "https://evidencepress.org/api/work-ledger.json",
+            "https://github.com/ipitchford/evidence-press-site/commit/60e05d82b878b405717960321e2766d62989ac1d"
+          ]
+        }
+      ],
       "metrics": {
         "schemaVersion": "1.0",
         "measurementScope": "publication-only",
@@ -4685,10 +4697,10 @@
           "calendarElapsedMinutes": 25,
           "activeAgentMinutes": 21,
           "activeHumanMinutes": null,
-          "computeMinutes": 4,
+          "computeMinutes": 2,
           "unattendedWaitMinutes": 4,
           "blockedMinutes": 0,
-          "reworkMinutes": 2,
+          "reworkMinutes": 1,
           "agentRuns": 1,
           "maxParallelAgents": 1,
           "modelTurns": 1,
@@ -4742,6 +4754,10 @@
         {
           "date": "2026-08-30",
           "summary": "Closed the identity-through-publication attempt after reader-first authoring, provenance-bound media, composite A/B sealing, four-job site CI, guarded zero-cost deployment, bounded custom-domain protocol convergence, exact 43-release and 31-artifact canonical readback, publication preservation and accepted IndexNow submission; recorded 25 calendar minutes, 21 active-agent minutes, four unattended minutes, four compute minutes and two presentation-rework minutes while retaining unavailable human-time and task-local token telemetry and every conditional-claim, partition-rank, novelty, priority, external-assurance and no-impact boundary."
+        },
+        {
+          "date": "2026-08-30",
+          "summary": "Appended a measurement-and-assurance timing correction after the preservation gate protected the first live release-candidate snapshot: retained its two compute minutes, one rework minute and pending-canonical clause, while keeping the later four/two terminal totals and canonical availability only in appended outcome, status, milestone and evidence records."
         }
       ]
     }
@@ -4968,6 +4984,10 @@
     {
       "date": "2026-08-30",
       "summary": "Closed pure-tensor-analytic-rank-counterexample after four-job Evidence Press CI, guarded zero-cost deployment, bounded protocol convergence, exact 43-release and 31-institutional-artifact canonical readback, full publication preservation and IndexNow acceptance; recorded the prospective publication metrics outcome and preserved every literal-interpretation, normalization, partition-rank, historical-intention, novelty, priority, external-assurance and no-impact boundary."
+    },
+    {
+      "date": "2026-08-30",
+      "summary": "Appended the pure-tensor publication measurement correction required by the immutable first live snapshot: retained provisional compute, rework and pending-canonical fields while preserving the later terminal totals and availability through additive outcome, status, milestone and evidence records."
     }
   ]
 }
