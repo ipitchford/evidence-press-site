@@ -96,3 +96,23 @@ test('all release hero SVG text remains inside its viewBox', async ({ page }) =>
 
   expect(failures, failures.join('\n')).toEqual([]);
 });
+
+test('negative square-energy hero separates the valley label from the favourable trace', async ({ page }) => {
+  const response = await page.goto(
+    'http://127.0.0.1:8080/assets/art/negative-square-energy-five-vertex-valley.svg',
+    { waitUntil: 'load' }
+  );
+  expect(response && response.status()).toBe(200);
+
+  const spacing = await page.evaluate(() => {
+    const label = document.querySelector('[data-art-role="valley-label"]');
+    const trace = document.querySelector('[data-art-role="favourable-trace"]');
+    if (!label || !trace) return null;
+    const labelBox = label.getBBox();
+    const traceBox = trace.getBBox();
+    return traceBox.y - (labelBox.y + labelBox.height);
+  });
+
+  expect(spacing, 'expected named SVG regions for the spacing regression').not.toBeNull();
+  expect(spacing, 'valley label needs a visible gap above the favourable trace').toBeGreaterThanOrEqual(12);
+});
