@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'negative-square-energy-five-vertex-valley': {
+    palette: 'cobalt',
+    kicker: ['RESEARCH RELEASE · 30 AUGUST 2026', 'SPECTRAL GRAPH THEORY · V0.2.0-CANDIDATE'],
+    head: ['Down. Then up.', '<em>Five vertices.</em>'],
+    headSize: 70,
+    sub: 'An exact smallest strict valley refutes universal prescribed-order peak-unimodality—while a favourable order for the same tree preserves the existential question.',
+    tag: 'ANONYMOUS · UNREFEREED COUNTEREXAMPLE CANDIDATE',
+    hero: `
+      <div class="eq-label">negative square energy</div>
+      <div class="eq"><span class="hl">5 ↓ &lt; 3697/784 ↑ 5</span></div>
+      <div class="note"><b>Five vertices are necessary.</b><br>840 labelled valleys · 9 orbits<br>one favourable full order also certified</div>
+      <div class="eq-foot">universal order claim refuted · existential forms open</div>`
+  },
   'odd-order-one-third-popular-differences': {
     palette: 'cobalt',
     kicker: ['RESEARCH RELEASE · 29 AUGUST 2026', 'ADDITIVE COMBINATORICS · V0.1.0-CANDIDATE'],
