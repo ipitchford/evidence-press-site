@@ -1316,6 +1316,38 @@ art['negative-square-energy-five-vertex-valley'] = (a, b) => {
   return s;
 };
 
+/* Four-point inductive cubical excision: the directed square, its two-set
+   interior cover, and the relative-homology map killed by the identity cube. */
+art['four-point-inductive-cubical-excision'] = (a, b) => {
+  let s = '';
+  const p = { '00': [150, 300], '10': [390, 300], '01': [150, 80], '11': [390, 80] };
+  s += `<path d="M 118 332 L 422 332 L 422 48 L 118 48 Z" fill="${a}" opacity=".08"/>`;
+  s += `<path d="M 180 332 L 422 332 L 422 48 L 118 48 Z" fill="${b}" opacity=".08"/>`;
+  for (const [u, v] of [['00','10'], ['00','01'], ['10','11'], ['01','11']]) {
+    const [x1,y1] = p[u], [x2,y2] = p[v];
+    const dx = x2 - x1, dy = y2 - y1, m = Math.hypot(dx,dy);
+    const ex = x2 - 30 * dx / m, ey = y2 - 30 * dy / m;
+    s += `<line x1="${x1}" y1="${y1}" x2="${ex}" y2="${ey}" stroke="#e7e5e4" stroke-width="4" opacity=".72"/>`;
+    const px = -dy / m, py = dx / m;
+    s += `<path d="M ${x2-22*dx/m} ${y2-22*dy/m} L ${x2-38*dx/m+10*px} ${y2-38*dy/m+10*py} L ${x2-38*dx/m-10*px} ${y2-38*dy/m-10*py} Z" fill="#e7e5e4" opacity=".82"/>`;
+  }
+  s += `<line x1="150" y1="300" x2="390" y2="80" stroke="${b}" stroke-width="4" stroke-dasharray="12 9" opacity=".8"/>`;
+  for (const [label,[x,y]] of Object.entries(p)) {
+    s += `<circle cx="${x}" cy="${y}" r="27" fill="#151a1e" stroke="${label === '00' ? a : b}" stroke-width="4"/>`;
+    s += `<text x="${x}" y="${y+7}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="20" fill="#e7e5e4">${label}</text>`;
+  }
+  s += `<text x="270" y="382" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">X = J₊ ⊡ J₊ · FOUR POINTS</text>`;
+
+  s += `<rect x="535" y="52" width="590" height="296" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text x="830" y="112" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="#8a938f">RELATIVE HOMOLOGY · INTEGRAL COEFFICIENTS</text>`;
+  s += `<text x="665" y="205" text-anchor="middle" font-family="Georgia" font-size="40" fill="${a}">H₁(B,L) ≅ ℤ</text>`;
+  s += `<path d="M 790 190 H 915" stroke="#e7e5e4" stroke-width="4"/><path d="M 898 177 L 920 190 L 898 203" fill="none" stroke="#e7e5e4" stroke-width="4"/>`;
+  s += `<text x="1000" y="205" text-anchor="middle" font-family="Georgia" font-size="40" fill="${b}">H₁(X,A)=0</text>`;
+  s += `<text x="830" y="286" text-anchor="middle" font-family="Georgia" font-size="30" fill="#e7e5e4">the excision map is not injective</text>`;
+  s += `<text x="830" y="323" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="${b}">UNREFEREED CANDIDATE · PRIORITY UNRESOLVED</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1355,6 +1387,7 @@ const palette = {
   ,'odd-order-one-third-popular-differences': ['#38bdf8', '#f59e0b']
   ,'extremes-do-not-always-maximise': ['#38bdf8', '#f59e0b']
   ,'negative-square-energy-five-vertex-valley': ['#38bdf8', '#f59e0b']
+  ,'four-point-inductive-cubical-excision': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
