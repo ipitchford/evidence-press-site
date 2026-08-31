@@ -1409,6 +1409,49 @@ art['pure-tensor-analytic-rank-counterexample'] = (a, b) => {
   return s;
 };
 
+/* Free-by-cyclic BNS family: a labelled m=4 weighted-chord schematic on the
+   left and the corresponding five-wall character-space fan on the right.
+   The fan is intentionally not coloured by alleged Out-orbits: the release
+   proves only a growing lower bound, not an exact orbit classification. */
+art['unbounded-bns-component-orbits'] = (a, b) => {
+  let s = '';
+  const vertices = [
+    [250, 62], [405, 150], [350, 316], [150, 316], [95, 150]
+  ];
+  for (let i = 0; i < vertices.length; i += 1) {
+    const [x1, y1] = vertices[i];
+    const [x2, y2] = vertices[(i + 1) % vertices.length];
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#e7e5e4" stroke-width="4" opacity=".58"/>`;
+  }
+  for (const [target, weight, lx, ly] of [[2, 2, 282, 176], [3, 3, 205, 210], [4, 4, 166, 154]]) {
+    const [x1, y1] = vertices[0];
+    const [x2, y2] = vertices[target];
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${b}" stroke-width="4" stroke-dasharray="10 7" opacity=".9"/>`;
+    s += `<circle cx="${lx}" cy="${ly}" r="14" fill="#151a1e" stroke="${b}" stroke-width="2"/><text class="og-hide" x="${lx}" y="${ly + 5}" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="${b}">${weight}</text>`;
+  }
+  vertices.forEach(([x, y], i) => {
+    s += `<circle cx="${x}" cy="${y}" r="23" fill="#151a1e" stroke="${i === 0 ? b : a}" stroke-width="4"/>`;
+    s += `<text class="og-hide" x="${x}" y="${y + 6}" text-anchor="middle" font-family="Georgia" font-size="19" fill="#e7e5e4">v<tspan baseline-shift="sub" font-size="12">${i}</tspan></text>`;
+  });
+  s += `<text class="og-hide" x="250" y="382" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">m = 4 WEIGHTED-CHORD SCHEMATIC</text>`;
+
+  s += `<rect x="520" y="42" width="630" height="316" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="835" y="82" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">m = 4 CHARACTER-SPACE FAN</text>`;
+  const cx = 625, cy = 201;
+  for (const [dx, dy] of [[0, 116], [42, 116], [82, 116], [116, 105], [144, 80]]) {
+    s += `<line x1="${cx - dx}" y1="${cy - dy}" x2="${cx + dx}" y2="${cy + dy}" stroke="${a}" stroke-width="3" opacity=".8"/>`;
+  }
+  s += `<circle cx="${cx}" cy="${cy}" r="7" fill="${b}"/>`;
+  s += `<text class="og-hide" x="625" y="340" text-anchor="middle" font-family="Georgia" font-size="22" fill="#e7e5e4">x + iy = 0,  0 ≤ i ≤ 4</text>`;
+  s += `<line x1="790" y1="105" x2="790" y2="322" stroke="#8a938f" stroke-width="2" opacity=".5"/>`;
+  s += `<text class="og-hide" x="850" y="135" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">GENERAL FAMILY</text>`;
+  s += `<text class="og-hide" x="850" y="181" text-anchor="middle" font-family="Georgia" font-size="27" fill="${a}">m+1 walls</text>`;
+  s += `<text class="og-hide" x="850" y="225" text-anchor="middle" font-family="Georgia" font-size="27" fill="#e7e5e4">2m+2 components</text>`;
+  s += `<text class="og-hide" x="850" y="269" text-anchor="middle" font-family="Georgia" font-size="27" fill="${b}">≥ m+1 Out-orbits</text>`;
+  s += `<text class="og-hide" x="850" y="308" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="#8a938f">EXACT ORBIT COUNT OPEN</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1451,6 +1494,7 @@ const palette = {
   ,'four-point-inductive-cubical-excision': ['#2dd4bf', '#f59e0b']
   ,'four-element-rowmotion-periodicity': ['#a78bfa', '#f59e0b']
   ,'pure-tensor-analytic-rank-counterexample': ['#2dd4bf', '#f59e0b']
+  ,'unbounded-bns-component-orbits': ['#38bdf8', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {

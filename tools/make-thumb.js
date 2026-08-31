@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'unbounded-bns-component-orbits': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 31 AUGUST 2026', 'BNS INVARIANTS · V0.2.0-CANDIDATE'],
+    head: ['BNS chambers.', '<em>Orbit count grows.</em>'],
+    headSize: 67,
+    sub: 'Weighted-chord free-by-cyclic groups give an exact BNS component count and a deliberately non-exact growing outer-orbit lower bound.',
+    tag: 'ANONYMOUS · UNREFEREED THEOREM CANDIDATE',
+    hero: `
+      <div class="eq-label">for every integer m ≥ 2</div>
+      <div class="eq eq-sm"><span class="hl">2m+2</span> BNS components</div>
+      <div class="note"><b>At least m+1 Out(G<sub>m</sub>)-orbits.</b><br>b<sub>1</sub>(G<sub>m</sub>) = m+2<br>exact orbit count not determined</div>
+      <div class="eq-foot">Cashen–Levitt criterion · eight negative controls</div>`
+  },
   'pure-tensor-analytic-rank-counterexample': {
     palette: 'cobalt',
     kicker: ['RESEARCH RELEASE · 30 AUGUST 2026', 'ANALYTIC RANK · V0.2.0-CANDIDATE'],

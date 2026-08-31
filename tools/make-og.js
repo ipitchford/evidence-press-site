@@ -14,6 +14,7 @@ const html = (m, artSvg) => `<!DOCTYPE html><html><head><meta charset="utf-8"><s
 body { width:1200px; height:630px; background:#151a1e; font-family: Georgia, 'Times New Roman', serif; position:relative; overflow:hidden; }
 .art { position:absolute; inset:0; opacity:.5; }
 .art svg { width:1200px; height:630px; }
+.art .og-hide { display:none; }
 .grad { position:absolute; inset:0; background:linear-gradient(100deg, #151a1eee 38%, #151a1e55 75%, transparent); }
 .content { position:absolute; inset:0; padding:64px 70px; display:flex; flex-direction:column; justify-content:space-between; }
 .kicker { font-family:system-ui, sans-serif; font-size:22px; letter-spacing:.14em; color:#2dd4bf; font-weight:600; }
