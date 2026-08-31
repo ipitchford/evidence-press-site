@@ -1547,6 +1547,36 @@ art['factorial-spikes-fi-noetherianity'] = (a, b) => {
 
 function jColor(width, a, b) { return width === 4 ? b : a; }
 
+/* HC4 structural reductions: repeated conic at left, tangent/secant split in
+   the middle, and a sparse 16-column kernel slice entering a large row block. */
+art['hc4-five-support-structural-reductions'] = (a, b) => {
+  let s = '';
+  s += `<ellipse cx="220" cy="200" rx="145" ry="112" fill="none" stroke="${a}" stroke-width="4" opacity=".9"/>`;
+  s += `<ellipse cx="220" cy="200" rx="116" ry="89" fill="none" stroke="${a}" stroke-width="2" opacity=".5"/>`;
+  for (let k = 0; k < 5; k += 1) {
+    const t = -1.05 + k * .52;
+    const x = 220 + 145 * Math.cos(t), y = 200 + 112 * Math.sin(t);
+    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" fill="${k === 4 ? b : '#e7e5e4'}" opacity=".95"/>`;
+  }
+  s += `<path d="M 385 200 C 455 200 470 112 535 112 M 385 200 C 455 200 470 288 535 288" fill="none" stroke="#8a938f" stroke-width="3" opacity=".7"/>`;
+  s += `<circle cx="535" cy="112" r="15" fill="${a}"/><circle cx="535" cy="288" r="15" fill="${b}"/>`;
+  s += `<path d="M 550 112 H 660" stroke="${a}" stroke-width="5"/><path d="M 550 288 H 660" stroke="${b}" stroke-width="5" stroke-dasharray="12 8"/>`;
+  const ox = 710, oy = 54, cell = 13;
+  for (let row = 0; row < 23; row += 1) for (let col = 0; col < 28; col += 1) {
+    const active = ((row * 17 + col * 11 + 3) % 31) < 4;
+    if (active) s += `<rect x="${ox + col * cell}" y="${oy + row * cell}" width="8" height="8" rx="2" fill="#e7e5e4" opacity=".22"/>`;
+  }
+  for (let col = 0; col < 16; col += 1) {
+    const x = ox + 42 + col * 17;
+    s += `<line x1="${x}" y1="78" x2="${x}" y2="330" stroke="${col === 0 ? b : a}" stroke-width="3" opacity="${col === 0 ? .95 : .55}"/>`;
+  }
+  s += `<text class="og-hide" x="220" y="365" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4">five supports excluded</text>`;
+  s += `<text class="og-hide" x="535" y="82" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="${a}">TANGENT CLOSED</text>`;
+  s += `<text class="og-hide" x="535" y="340" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="${b}">SECANT OPEN</text>`;
+  s += `<text class="og-hide" x="892" y="365" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4">16 rational source syzygies</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1592,6 +1622,7 @@ const palette = {
   ,'unbounded-bns-component-orbits': ['#38bdf8', '#f59e0b']
   ,'factorial-spikes-fi-noetherianity': ['#2dd4bf', '#f59e0b']
   ,'degree-independent-rhombus-criterion': ['#2dd4bf', '#f59e0b']
+  ,'hc4-five-support-structural-reductions': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
