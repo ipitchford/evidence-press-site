@@ -1,0 +1,254 @@
+{
+  "slug": "unbounded-bns-component-orbits",
+  "title": "A linearly growing free-by-cyclic family with unbounded BNS component-orbit count",
+  "shortTitle": "Unbounded BNS component orbits",
+  "oneLine": "For every m>=2, an explicit linearly growing free-by-cyclic group has first Betti number m+2, exactly 2m+2 BNS components, and at least m+1 component orbits under its outer automorphism group.",
+  "abstract": "For every integer m>=2, this anonymous, unrefereed theorem candidate constructs an explicit linearly growing automorphism of F_(2m+1) whose mapping torus G_m has first Betti number m+2. Cashen and Levitt's graph-of-groups criterion identifies its Bieri-Neumann-Strebel invariant as the complement of the m+1 rational hyperplanes x+i y=0 for 0<=i<=m, giving exactly 2m+2 connected components. A direct Bass-Serre calculation gives rank ker chi = 1+m|x|+sum_(i=1)^m |x+i y| for primitive integral BNS characters. The minimum kernel ranks on the outer antipodal component pair and the m interior antipodal pairs are respectively 1+2m and 1+m(m+1)+2j^2 for 0<=j<m. These m+1 values are distinct and invariant under group automorphisms, so the action of Out(G_m) has at least m+1 component orbits. This supplies the requested unbounded family if the candidate proof is correct. It does not compute Out(G_m), determine the exact orbit count, establish historical priority, or provide external validation. Exact producer replay for 2<=m<=8, eight negative controls, internal review and public immutable assets support the candidate without replacing the universal written proof or the imported Cashen-Levitt theorem.",
+  "narration": "The Bieri-Neumann-Strebel invariant, usually called the BNS invariant, divides the possible real-valued directions on a group into regions with different finiteness behaviour. An AIM problem asks whether free-by-cyclic groups can have arbitrarily many of these regions even after symmetries from the outer automorphism group are taken into account. This anonymous candidate proposes an explicit family indexed by an integer m. Each group comes from a linearly growing automorphism of a free group of rank two m plus one. Its first Betti number is m plus two. The construction produces m plus one deleted hyperplanes, and these divide the BNS invariant into exactly two m plus two connected components. Counting components is not enough, because an outer automorphism could permute several of them. The proof therefore assigns each component a coordinate-free number: the smallest rank of the kernel of a primitive integral character in that component. A direct Bass-Serre calculation gives one value for the outer pair and m strictly separated values for the interior pairs. Since automorphisms preserve kernel rank, components with different minima cannot belong to the same orbit. This proves a lower bound of m plus one orbits, which grows without bound. It does not prove that this is the exact orbit count or compute the full outer automorphism group. The BNS identification imports a theorem of Cashen and Levitt, while finite Python and JavaScript checks only corroborate the universal written argument. This is an anonymous, AI-assisted, unrefereed candidate. This is release 0.2.0-candidate, dated 31 August 2026; the paper and evidence are linked at evidencepress.org. This AI-generated voice is a communication aid, not additional mathematical evidence.",
+  "datePublished": "2026-08-31",
+  "version": "0.2.0-candidate",
+  "doi": "10.5281/zenodo.22201487",
+  "conceptDoi": "10.5281/zenodo.22201484",
+  "zenodoUrl": "https://zenodo.org/records/22201487",
+  "pdfUrl": "https://github.com/ipitchford/unbounded-bns-component-orbits/releases/download/v0.2.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22201487/files/paper.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/unbounded-bns-component-orbits",
+  "releaseUrl": "https://github.com/ipitchford/unbounded-bns-component-orbits/releases/tag/v0.2.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/unbounded-bns-component-orbits.mp3",
+      "name": "Audio briefing — unbounded BNS component orbits",
+      "description": "Plain-English synthetic-voice account of the explicit family, exact component count, componentwise kernel-rank invariant, orbit lower bound and assurance limits; a communication aid, not additional evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/unbounded-bns-component-orbits.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI systems under human direction",
+      "OpenAI Codex",
+      "Python 3 standard library",
+      "Node.js standard library"
+    ],
+    "humanRole": "Research direction, candidate selection, review provision, claim-boundary decisions, publication authorization and institutional responsibility by the human creator; repository maintenance and Evidence Press publication are not scholarly authorship, and scholarly attribution remains Anonymous.",
+    "disclosure": "AI systems contributed candidate discovery, symbolic derivation, proof drafting, software implementation, source and novelty triage, review remediation, editing, replay and release engineering within one producer-coordinated workflow. Same-producer cross-language agreement, the supplied review and role-separated internal review do not establish unaffiliated reconstruction, authenticated specialist review or editorial peer review."
+  },
+  "problem": {
+    "name": "AIM Problem 6.2: BNS components up to the action of Out(G)",
+    "url": "https://web.archive.org/web/20240828224509id_/http://aimpl.org/freebycyclic/6/"
+  },
+  "keywords": [
+    "free-by-cyclic group",
+    "Bieri-Neumann-Strebel invariant",
+    "mapping torus",
+    "linearly growing automorphism",
+    "graph of groups",
+    "Bass-Serre theory",
+    "kernel rank",
+    "outer automorphism",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "For every integer m>=2, the stated graph map induces a linearly growing automorphism of F_(2m+1), and its mapping torus G_m has first Betti number m+2.",
+    "Conditional on Cashen-Levitt Corollary 2.10, Sigma^1(G_m) is the complement of x+i y=0 for 0<=i<=m and has exactly 2m+2 connected components.",
+    "Every primitive integral BNS character has free kernel of rank 1+m|x|+sum_(i=1)^m |x+i y|.",
+    "The componentwise minimum kernel ranks are 1+2m for the outer antipodal pair and 1+m(m+1)+2j^2 for the j-th interior antipodal pair, 0<=j<m.",
+    "The m+1 distinct minimum values are invariant under Out(G_m), proving at least m+1 component orbits and hence an unbounded orbit-count family."
+  ],
+  "evidence": "A twelve-page DOI-bearing bilingual manuscript and aligned Markdown; a compact proof certificate; a complete written universal argument; the explicitly cited Cashen-Levitt structural dependency; dependency-free Python exact replay in normal and optimized modes; a same-producer language-separated JavaScript reconstruction; exact graph, abelianization, edge-form and chamber-minimum checks for 2<=m<=8; eight certificate and claim-boundary negative controls, including rejection of an exact-orbit overclaim; claim, source-correspondence, citation and bounded novelty audits; an inherited producer-coordinated five-role internal editorial record, one supplied full review and one bounded focused confirmation; a 64-member all-files ZIP containing 63 manifested payloads plus its root manifest; public GitHub Actions replay; and exact GitHub and Zenodo asset readback. These establish public availability, integrity, producer replay and the stated unrefereed theorem candidate. They do not establish the exact Out(G_m)-orbit count, historical priority, unaffiliated reconstruction, formal verification, authenticated external specialist review, editorial peer review or impact.",
+  "statusDetail": "Anonymous, AI-assisted, unrefereed geometric-group-theory theorem candidate at PASS_WITH_NOTES after actioning a supplied full review and completing one bounded producer-coordinated confirmation. Reviewer identity, specialist credentials and unaffiliated status were not authenticated. The BNS identification imports Cashen-Levitt Corollary 2.10, finite replay is corroborative only, and no exact orbit-count, first-discovery or historical-priority claim is made. The Traditional Chinese abstract's formulas were checked, but its linguistic quality was not independently assessed by a fluent reviewer.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22201487",
+      "note": "The tagged GitHub prerelease and published Zenodo record expose the DOI-bearing PDF, all-files ZIP and manifest; every asset was independently downloaded from both services and matched the local SHA-256 value."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/unbounded-bns-component-orbits/actions/runs/33374136735",
+      "note": "Public Linux CI runs the exact Python verifier normally and with optimization, rejects all eight certificate and claim-boundary mutations, runs the language-separated JavaScript reconstruction, and checks source parity, PDF structure and package integrity."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No authenticated unaffiliated clean-environment rerun is reported."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The Python and JavaScript implementations were produced within one coordinated workflow and are not independent implementations in the assurance sense."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof assistant formalizes the graph-map equivalence, Cashen-Levitt applicability, Bass-Serre kernel-rank calculation, chamber minimization or outer-orbit obstruction."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "The supplied review and internal role reports are not authenticated unaffiliated review by a geometric group theory or BNS specialist."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or comparable external venue has conducted editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/unbounded-bns-component-orbits/blob/v0.2.0-candidate/ENVIRONMENT.txt",
+      "note": "Commands, declared runtime versions, exact certificates, manifests and public Linux replay are available, but no bit-reproducible system image or authenticated unaffiliated reconstruction is supplied."
+    }
+  },
+  "openProblems": [
+    "Compute Out(G_m) or otherwise determine the exact number of its orbits on the 2m+2 BNS components; the present theorem proves only a lower bound of m+1.",
+    "Determine whether the two components in each antipodal pair lie in one orbit, two orbits, or a pattern depending on m.",
+    "Independently reconstruct the graph-of-groups presentation, verify the hypotheses of Cashen-Levitt Corollary 2.10 and rederive the kernel-rank minima in a materially separate stack.",
+    "Formalize the graph map, BNS dependency interface, Bass-Serre calculation and integer chamber minimization in a proof assistant.",
+    "Classify broader linearly or polynomially growing free-by-cyclic families with unbounded BNS component-orbit count and obtain authenticated specialist and historical-priority assessments."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "American Institute of Mathematics. Rigidity properties of free-by-cyclic groups, BNS invariants, Problem 6.2. Archived 28 August 2024.",
+      "url": "https://web.archive.org/web/20240828224509id_/http://aimpl.org/freebycyclic/6/"
+    },
+    {
+      "citation": "Cashen, C. H., & Levitt, G. (2016). Mapping tori of free group automorphisms, and the Bieri-Neumann-Strebel invariant of graphs of groups. Journal of Group Theory 19, 191-216.",
+      "url": "https://doi.org/10.1515/jgth-2015-0038"
+    },
+    {
+      "citation": "Bieri, R., Neumann, W. D., & Strebel, R. (1987). A geometric invariant of discrete groups. Inventiones Mathematicae 90, 451-477.",
+      "url": "https://doi.org/10.1007/BF01389175"
+    },
+    {
+      "citation": "Funke, F., & Kielak, D. (2018). Alexander and Thurston norms, and the Bieri-Neumann-Strebel invariants for free-by-cyclic groups. Geometry & Topology 22, 2647-2696.",
+      "url": "https://doi.org/10.2140/gt.2018.22.2647"
+    },
+    {
+      "citation": "Kielak, D. (2020). The Bieri-Neumann-Strebel invariants via Newton polytopes. Inventiones Mathematicae 219, 1009-1068.",
+      "url": "https://doi.org/10.1007/s00222-019-00919-9"
+    },
+    {
+      "citation": "Andrew, N., & Martino, A. (2022). Free-by-cyclic groups, automorphisms and actions on nearly canonical trees. Journal of Algebra 604, 451-495.",
+      "url": "https://doi.org/10.1016/j.jalgebra.2022.03.033"
+    },
+    {
+      "citation": "Jaikin-Zapirain, A., Kudlinska, M., & Sánchez-Peralta, P. (2026). Thurston norm, polytopes and splitting complexity. arXiv:2606.31774v1.",
+      "url": "https://arxiv.org/abs/2606.31774v1"
+    },
+    {
+      "citation": "Mutanguha, J. P. (2024). On polynomial free-by-cyclic groups. arXiv:2412.16150v1.",
+      "url": "https://arxiv.org/abs/2412.16150v1"
+    }
+  ],
+  "citeText": "Anonymous. (2026). A linearly growing free-by-cyclic family with unbounded BNS component-orbit count (Version 0.2.0-candidate) [Anonymous unrefereed theorem candidate and evidence package]. Evidence Press. https://doi.org/10.5281/zenodo.22201487",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:unbounded-bns-component-orbits",
+    "attemptIds": [
+      "ep-attempt:unbounded-bns-component-orbits-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "method-demonstration",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "An explicit linearly growing free-by-cyclic family with exactly 2m+2 BNS components and an automorphism-invariant sequence of componentwise minimum kernel ranks proving at least m+1 Out(G_m)-orbits.",
+      "scope": "The groups G_m defined by the weighted-chord graph maps for m>=2, the BNS description conditional on Cashen-Levitt Corollary 2.10, and the lower bound of m+1 component orbits; not an exact orbit count, a computation of Out(G_m), a classification of free-by-cyclic BNS invariants, a historical-priority finding or external validation."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication",
+      "translation"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The package records the archived AIM request, the exact Cashen-Levitt dependency, the weighted-chord graph map and graph-of-groups presentation, the character coordinates, the edge forms x+i y, the direct Bass-Serre kernel-rank formula, the integer chamber minima and replay predicates. This exposes every transition from the problem wording to the orbit lower bound.",
+      "remainingRisks": [
+        "A producer-side mistake in the graph-of-groups conventions or in checking the hypotheses of Cashen-Levitt Corollary 2.10 could propagate through the proof and replay.",
+        "The Python and JavaScript checks share the same producer-defined certificate and do not independently validate the universal argument.",
+        "The component invariant separates m+1 classes but does not determine whether equal-minimum components lie in the same Out(G_m)-orbit.",
+        "The bounded novelty search cannot establish historical priority."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Keep the exact 2m+2 component count separate from the at-least-m+1 orbit count.",
+      "Do not infer that each antipodal component pair is one Out(G_m)-orbit.",
+      "Inspect the hypotheses and application of Cashen-Levitt Corollary 2.10 rather than treating the edge-form computation as self-sufficient.",
+      "Treat replay for 2<=m<=8 as regression evidence for the formulas, not as proof of the universal theorem.",
+      "Keep same-producer cross-language corroboration, internal editorial review, unaffiliated reconstruction, formal verification and peer review distinct.",
+      "Make no first-discovery or historical-priority claim from a bounded search."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://web.archive.org/web/20240828224509id_/http://aimpl.org/freebycyclic/6/",
+        "inheritedClaim": "AIM Problem 6.2 asks for free-by-cyclic families with b1 greater than two and many BNS components up to the action of Out(G).",
+        "inheritedAssuranceCeiling": "The archived page fixes the existence request and wording but does not establish this construction, its correctness, novelty, priority or exact orbit count."
+      },
+      {
+        "relation": "extends-result",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://doi.org/10.1515/jgth-2015-0038",
+        "inheritedClaim": "Cashen and Levitt provide the graph-of-groups BNS criterion used here, a linearly growing circle-of-tori family with many excluded subspheres, and a general fiber-rank formula.",
+        "inheritedAssuranceCeiling": "Their work supplies the structural criterion and closest located architecture, but not the present weighted-chord family, displayed chamber-minimum sequence or claimed m+1 orbit lower bound."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "dataEnvironmentReproducibility",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Obtain an authenticated unaffiliated reconstruction of the Cashen-Levitt application and Bass-Serre minimum argument, then compute or further constrain Out(G_m) without promoting the present lower bound to an exact orbit count.",
+      "claimCeiling": "An anonymous, AI-assisted, unrefereed theorem candidate constructing a linearly growing free-by-cyclic family with exactly 2m+2 BNS components and at least m+1 Out(G_m)-orbits, supported by a complete written proof, one cited structural theorem, public immutable assets, producer replay and internal review; not an exact orbit classification, historical-priority finding, unaffiliated validation, formal verification, authenticated external specialist review or editorial peer review."
+    },
+    "impactClaims": [
+      {
+        "id": "unbounded-bns-component-orbits-science-no-impact",
+        "aim": "science",
+        "outcome": "Faster or more reliable construction and assurance of geometric-group-theory examples addressing open problem-list requests",
+        "setting": "AI-assisted explicit construction, symbolic proof, source correspondence, adversarial replay, internal review and guarded candidate publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched conventional research or publication workflow was registered.",
+        "estimand": "No effect on discovery time, active human effort, compute, correction rate, proof quality, independent-assurance time, uptake, citation or field outcomes was estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "metadataProvenance": "Authored prospectively against the DOI-bearing tagged v0.2.0-candidate, supplied-review response, bounded internal confirmation, public hosted replay and exact GitHub and Zenodo three-asset readback on 31 August 2026. Canonical Evidence Press deployment and later terminal publication metrics are recorded separately and do not promote the mathematical assurance ceiling.",
+  "grandfatheredAtSchemaVersion": null
+}
