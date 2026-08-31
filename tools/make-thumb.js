@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'factorial-spikes-fi-noetherianity': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 31 AUGUST 2026', 'FI-ALGEBRAS · V0.1.0-CANDIDATE'],
+    head: ['Finite components.', '<em>Infinite FI-chain.</em>'],
+    headSize: 65,
+    sub: 'Factorial spikes make every fixed component affine and Noetherian while a genuinely new generator orbit appears at every width.',
+    tag: 'ANONYMOUS · UNREFEREED THEOREM CANDIDATE',
+    hero: `
+      <div class="eq-label">componentwise versus FI-Noetherianity</div>
+      <div class="eq eq-sm">A(S) <span class="hl">Noetherian</span><br>J₂ ⊊ J₃ ⊊ J₄ ⊊ ···</div>
+      <div class="note"><b>g<sub>r</sub> = x₁···x<sub>r−1</sub>x<sub>r</sub><sup>r!</sup></b><br>every field · exact monomial proof<br>A is not FI-finitely generated</div>
+      <div class="eq-foot">four hostile controls · scope boundaries explicit</div>`
+  },
   'unbounded-bns-component-orbits': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 31 AUGUST 2026', 'BNS INVARIANTS · V0.2.0-CANDIDATE'],

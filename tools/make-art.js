@@ -1452,6 +1452,51 @@ art['unbounded-bns-component-orbits'] = (a, b) => {
   return s;
 };
 
+/* Factorial-spike separation: the left panel shows increasingly tall native
+   width generators; the right panel keeps every finite component boxed while
+   the compatible FI-ideal chain continues beyond every chosen width. */
+art['factorial-spikes-fi-noetherianity'] = (a, b) => {
+  let s = '';
+  s += `<rect x="46" y="42" width="500" height="316" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="296" y="82" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">NATIVE-WIDTH FACTORIAL SPIKES</text>`;
+  const spikes = [
+    { x: 112, width: 2, exp: '2', height: 66 },
+    { x: 242, width: 3, exp: '6', height: 118 },
+    { x: 382, width: 4, exp: '24', height: 208 }
+  ];
+  for (const spike of spikes) {
+    for (let j = 0; j < spike.width - 1; j += 1) {
+      s += `<rect x="${spike.x + j * 18}" y="310" width="12" height="18" rx="3" fill="#e7e5e4" opacity=".55"/>`;
+    }
+    const peakX = spike.x + (spike.width - 1) * 18 + 10;
+    s += `<rect x="${peakX}" y="${328 - spike.height}" width="22" height="${spike.height}" rx="5" fill="${jColor(spike.width, a, b)}" opacity=".94"/>`;
+    s += `<text class="og-hide" x="${peakX + 11}" y="${316 - spike.height}" text-anchor="middle" font-family="Georgia" font-size="19" fill="${spike.width === 4 ? b : a}">${spike.exp}</text>`;
+    s += `<text class="og-hide" x="${peakX + 11}" y="350" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="#8a938f">r=${spike.width}</text>`;
+  }
+  s += `<path d="M 438 185 H 505" stroke="${b}" stroke-width="4" stroke-dasharray="9 7"/><path d="M 492 173 L 510 185 L 492 197" fill="none" stroke="${b}" stroke-width="4"/>`;
+
+  s += `<rect x="584" y="42" width="570" height="316" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="869" y="82" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">LOCAL FINITENESS · GLOBAL NON-STABILIZATION</text>`;
+  for (let i = 0; i < 4; i += 1) {
+    const x = 626 + i * 78;
+    const h = 52 + i * 28;
+    s += `<rect x="${x}" y="${276 - h}" width="54" height="${h}" rx="8" fill="none" stroke="${a}" stroke-width="3" opacity="${0.52 + i * 0.1}"/>`;
+    s += `<text class="og-hide" x="${x + 27}" y="305" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="#8a938f">A${i + 2}</text>`;
+  }
+  s += `<text class="og-hide" x="782" y="340" text-anchor="middle" font-family="Georgia" font-size="20" fill="#e7e5e4">each component affine</text>`;
+  s += `<line x1="958" y1="130" x2="1108" y2="130" stroke="${b}" stroke-width="4"/>`;
+  for (let i = 0; i < 5; i += 1) {
+    const x = 968 + i * 30;
+    s += `<circle cx="${x}" cy="130" r="${7 + i}" fill="${i === 4 ? b : a}"/>`;
+  }
+  s += `<path d="M 1095 118 L 1113 130 L 1095 142" fill="none" stroke="${b}" stroke-width="4"/>`;
+  s += `<text class="og-hide" x="1034" y="180" text-anchor="middle" font-family="Georgia" font-size="25" fill="${b}">J₂ ⊊ J₃ ⊊ J₄ ⊊ ···</text>`;
+  s += `<text class="og-hide" x="1034" y="224" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#8a938f">ONE NEW ORBIT PER WIDTH</text>`;
+  return s;
+};
+
+function jColor(width, a, b) { return width === 4 ? b : a; }
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1495,6 +1540,7 @@ const palette = {
   ,'four-element-rowmotion-periodicity': ['#a78bfa', '#f59e0b']
   ,'pure-tensor-analytic-rank-counterexample': ['#2dd4bf', '#f59e0b']
   ,'unbounded-bns-component-orbits': ['#38bdf8', '#f59e0b']
+  ,'factorial-spikes-fi-noetherianity': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
