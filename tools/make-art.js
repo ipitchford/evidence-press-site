@@ -1452,6 +1452,56 @@ art['unbounded-bns-component-orbits'] = (a, b) => {
   return s;
 };
 
+/* Degree-independent rhombus criterion: the ternary coefficient triangle and
+   one elementary rhombus sit apart from three higher-dimensional outcomes.
+   The open 4--6 normalized cases remain visually central rather than being
+   swallowed by the coordinate-face and Fano obstructions. */
+art['degree-independent-rhombus-criterion'] = (a, b) => {
+  let s = '';
+  const ox = 64, oy = 326, dx = 58, dy = 54;
+  const nodes = [];
+  for (let row = 0; row < 6; row += 1) {
+    for (let col = 0; col <= row; col += 1) {
+      const x = ox + (5 - row) * dx / 2 + col * dx;
+      const y = oy - (5 - row) * dy;
+      nodes.push([x, y]);
+      s += `<circle cx="${x}" cy="${y}" r="7" fill="${row === 3 && (col === 1 || col === 2) ? b : a}" opacity="${0.48 + row * 0.08}"/>`;
+    }
+  }
+  for (let row = 1; row < 6; row += 1) {
+    for (let col = 0; col < row; col += 1) {
+      const x = ox + (5 - row) * dx / 2 + col * dx;
+      const y = oy - (5 - row) * dy;
+      s += `<line x1="${x}" y1="${y}" x2="${x + dx}" y2="${y}" stroke="#8a938f" stroke-width="2" opacity=".32"/>`;
+      s += `<line x1="${x}" y1="${y}" x2="${x + dx / 2}" y2="${y - dy}" stroke="#8a938f" stroke-width="2" opacity=".32"/>`;
+      s += `<line x1="${x + dx}" y1="${y}" x2="${x + dx / 2}" y2="${y - dy}" stroke="#8a938f" stroke-width="2" opacity=".32"/>`;
+    }
+  }
+  const rx = ox + dx, ry = oy - 2 * dy;
+  s += `<path d="M ${rx} ${ry} L ${rx + dx / 2} ${ry - dy} L ${rx + 3 * dx / 2} ${ry - dy} L ${rx + dx} ${ry} Z" fill="${b}" fill-opacity=".12" stroke="${b}" stroke-width="5"/>`;
+  s += `<text class="og-hide" x="238" y="374" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">TERNARY COEFFICIENT HIVE</text>`;
+  s += `<rect x="378" y="72" width="250" height="248" rx="22" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="503" y="112" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">EVERY DEGREE d</text>`;
+  s += `<text x="503" y="188" text-anchor="middle" font-family="Georgia" font-size="51" fill="${a}">Q ≥ 3</text>`;
+  s += `<path d="M 428 215 H 578" stroke="${b}" stroke-width="3" stroke-dasharray="9 7"/>`;
+  s += `<text class="og-hide" x="503" y="258" text-anchor="middle" font-family="Georgia" font-size="26" fill="#e7e5e4">real-stable</text>`;
+  s += `<text class="og-hide" x="503" y="292" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="${b}">UNREFEREED CANDIDATE</text>`;
+
+  s += `<rect x="668" y="48" width="472" height="304" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="904" y="84" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">HIGHER-DIMENSIONAL READINGS</text>`;
+  const rows = [
+    { y: 130, left: 'coordinate faces', right: 'NO FINITE FACTOR', colour: b },
+    { y: 202, left: 'normalized m = 4,5,6', right: 'OPEN', colour: a },
+    { y: 274, left: 'normalized m ≥ 7', right: 'FANO BOUNDARY', colour: b }
+  ];
+  for (const row of rows) {
+    s += `<rect x="704" y="${row.y - 28}" width="400" height="56" rx="12" fill="#0e1215" stroke="${row.colour}" stroke-width="2" opacity=".98"/>`;
+    s += `<text class="og-hide" x="730" y="${row.y + 6}" font-family="Georgia" font-size="20" fill="#e7e5e4">${row.left}</text>`;
+    s += `<text class="og-hide" x="1078" y="${row.y + 5}" text-anchor="end" font-family="ui-monospace,monospace" font-size="14" fill="${row.colour}">${row.right}</text>`;
+  }
+  return s;
+};
+
 /* Factorial-spike separation: the left panel shows increasingly tall native
    width generators; the right panel keeps every finite component boxed while
    the compatible FI-ideal chain continues beyond every chosen width. */
@@ -1541,6 +1591,7 @@ const palette = {
   ,'pure-tensor-analytic-rank-counterexample': ['#2dd4bf', '#f59e0b']
   ,'unbounded-bns-component-orbits': ['#38bdf8', '#f59e0b']
   ,'factorial-spikes-fi-noetherianity': ['#2dd4bf', '#f59e0b']
+  ,'degree-independent-rhombus-criterion': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {

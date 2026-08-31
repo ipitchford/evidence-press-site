@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'degree-independent-rhombus-criterion': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 31 AUGUST 2026', 'STABLE POLYNOMIALS · V0.2.0-CANDIDATE'],
+    head: ['Three variables.', '<em>One fixed factor.</em>'],
+    headSize: 66,
+    sub: 'A factor-3 ternary rhombus criterion is degree-independent; higher-dimensional extensions split into failures, a Fano boundary and open cases.',
+    tag: 'ANONYMOUS · UNREFEREED PARTIAL THEOREM CANDIDATE',
+    hero: `
+      <div class="eq-label">positive ternary homogeneous polynomials</div>
+      <div class="eq eq-sm">Q ≥ <span class="hl">3</span> ⇒ real-stable</div>
+      <div class="note"><b>Every degree d.</b><br>Coordinate faces: no finite factor<br>Normalized m=4,5,6: open · m≥7: Fano boundary</div>
+      <div class="eq-foot">producer replay passed · external validation open</div>`
+  },
   'factorial-spikes-fi-noetherianity': {
     palette: 'pine',
     kicker: ['RESEARCH RELEASE · 31 AUGUST 2026', 'FI-ALGEBRAS · V0.1.0-CANDIDATE'],
