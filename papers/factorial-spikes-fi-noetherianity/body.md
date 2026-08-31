@@ -60,7 +60,7 @@ same target variable. Their light-variable sets must partition the other
 $R-1$ variables. This constrains both the number of light variables and the
 peak exponent.
 
-## The exact factorisation criterion
+## The exact result: factorisation criterion
 
 More generally, replace $r!$ by integers $a_r\ge2$ and write
 
