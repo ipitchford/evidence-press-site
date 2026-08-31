@@ -149,6 +149,10 @@ th { background: #f3efe8; font-family: var(--sans); font-size: .82rem; }
   .math-object dd + dt { margin-top: .45rem; }
 }
 
+/* Terminal research receipts can contain exact dotted field paths. Keep that
+   immutable evidence inside the prose column even through nested dl/ul margins. */
+.research-metrics-receipt { max-width: 100%; overflow-wrap: anywhere; }
+
 .media { margin: 1rem 0; }
 .media audio, .media video { width: 100%; border-radius: 8px; }
 .media figcaption { font-family: var(--sans); font-size: .82rem; color: var(--muted); margin-top: .3rem; }

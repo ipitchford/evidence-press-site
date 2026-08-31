@@ -445,6 +445,44 @@ function extractFunction(source, name) {
 }
 
 {
+  const errors = errorsFor(({ artifacts, papers }) => {
+    const record = recordFor('future-corrected-agent-count');
+    const attempt = postPolicyAttemptFor(record.slug);
+    attempt.measurement.agentRuns = 0;
+    attempt.corrections.push({
+      at: attempt.statusAt,
+      field: 'measurement.agentRuns -> metrics.outcome.agentRuns',
+      reason: 'The first public snapshot recorded zero before the terminal task-tree audit.',
+      replacement: 'Retain the snapshot and record two audited runs in the terminal outcome.',
+      evidenceRefs: ['https://evidencepress.org/releases/future-corrected-agent-count/']
+    });
+    attempt.measurement.correctionCount = 1;
+    addFuture(artifacts, papers, record, attempt);
+  });
+  check('exact field correction permits an immutable snapshot and corrected terminal outcome',
+    errors.length === 0, errors.join('\n  '));
+}
+
+{
+  const errors = errorsFor(({ artifacts, papers }) => {
+    const record = recordFor('future-vague-agent-correction');
+    const attempt = postPolicyAttemptFor(record.slug);
+    attempt.measurement.agentRuns = 0;
+    attempt.corrections.push({
+      at: attempt.statusAt,
+      field: 'measurement.agentRuns',
+      reason: 'A vague field label must not authorize a terminal mismatch.',
+      replacement: 'Two runs.',
+      evidenceRefs: ['https://evidencepress.org/releases/future-vague-agent-correction/']
+    });
+    attempt.measurement.correctionCount = 1;
+    addFuture(artifacts, papers, record, attempt);
+  });
+  check('vague correction cannot bypass measurement-to-outcome equality',
+    errors.some(e => e.includes('measurement.agentRuns -> metrics.outcome.agentRuns')), errors.join('\n  '));
+}
+
+{
   const errors = errorsFor(({ artifacts }) => { artifacts.registry.methods[1].id = artifacts.registry.methods[0].id; });
   check('duplicate method id is rejected', errors.some(e => e.includes('duplicates id')), errors.join('\n  '));
 }
