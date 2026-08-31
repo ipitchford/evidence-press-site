@@ -57,7 +57,7 @@ over $\mathbb Q$. A separate producer-coordinated implementation bypasses the CS
 | sixteen-column test | sixteen exact rational source syzygies | a gauge action that simplifies the inhomogeneous target |
 | global HC4 programme | sharply smaller normal-layer frontier | polynomial-level and full-family closure |
 
-## Why the sixteen-column test matters
+## The technical mechanism: why the sixteen-column test matters
 
 The fourth target had already lifted to very high $173$-adic precision, but rational reconstruction failed in the fixed gauge: 8,579 coordinates remained unresolved, and several preregistered recovery architectures failed their exact checks. Simply adding more digits had become a poor experiment.
 
@@ -65,7 +65,7 @@ The new test changes the question. It asks whether the source matrix contains ra
 
 It does **not** prove that any linear combination of those directions makes the fourth target rationally reconstructible. That is the next experiment, not a corollary of this one.
 
-## How to read the evidence
+## Package map: where to inspect and replay the evidence
 
 The shortest route through the package is:
 
@@ -101,9 +101,8 @@ The three colon elements show repeated structure but do not determine $I:M^\inft
 
 The fastest assurance gain is an unaffiliated reconstruction of one load-bearing unit: the seven five-support branches, the seven tangent highest-weight families with stabiliser spans, or the sixteen direct polynomial syzygies. A separately authored implementation is more informative than another run of the supplied scripts.
 
-## Claim boundary
+## Limitations and claim boundary
 
 The release proves bounded structural statements inside one pinned normal-layer programme. It does not prove that the secant residual orbit is contained in the multiplicity-six nullcone, that the fourth target belongs to the relevant ideal over $\mathbb Q$, that the displayed colon elements generate a colon or saturation, that the full family lifts from the normal layer, or that HC4 or JC2 is true.
 
 Those missing implications are the difference between a promising structural release and a solution.
-
