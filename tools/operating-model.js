@@ -454,7 +454,11 @@ function validateResearchMetrics(errors, where, attempt, metricsPolicy) {
   }
   if (attempt.measurement.status === 'not-recorded') add(errors, `${where}.measurement.status`, 'cannot be not-recorded when a terminal research-metrics outcome exists');
   for (const field of ['activeHumanMinutes', 'computeMinutes', 'agentRuns', 'reworkMinutes']) {
-    if (attempt.measurement[field] !== outcome[field]) add(errors, `${where}.measurement.${field}`, `must equal metrics.outcome.${field}`);
+    const correctionField = `measurement.${field} -> metrics.outcome.${field}`;
+    const hasExactCorrection = (attempt.corrections || []).some(correction => correction.field === correctionField);
+    if (attempt.measurement[field] !== outcome[field] && !hasExactCorrection) {
+      add(errors, `${where}.measurement.${field}`, `must equal metrics.outcome.${field} unless an append-only correction names ${JSON.stringify(correctionField)}`);
+    }
   }
 }
 
