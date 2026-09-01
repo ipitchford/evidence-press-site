@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'fisk-toeplitz-deletion-interlacing-through-five': {
+    palette: 'cobalt',
+    kicker: ['RESEARCH RELEASE · 1 SEPTEMBER 2026', 'REAL-ROOTED POLYNOMIALS · V0.3.0-CANDIDATE'],
+    head: ['Five variables.', '<em>Roots interlace.</em>'],
+    headSize: 68,
+    sub: 'Exact positive Bezout certificates prove arbitrary-deletion interlacing through five positive entries; the all-degree Fisk conjecture remains open.',
+    tag: 'ANONYMOUS · UNREFEREED FINITE THEOREM CANDIDATE',
+    hero: `
+      <div class="eq-label">for every positive alphabet · n ≤ 5</div>
+      <div class="eq eq-sm">F<sub>ρ∖i</sub> <span class="hl">≺</span> F<sub>ρ</sub></div>
+      <div class="note"><b>61,192 exact positive terms.</b><br>five leading Bezout minors<br>degree six partial · all degrees open</div>
+      <div class="eq-foot">producer replay passed · external validation open</div>`
+  },
   'degree-independent-rhombus-criterion': {
     palette: 'pine',
     kicker: ['RESEARCH RELEASE · 31 AUGUST 2026', 'STABLE POLYNOMIALS · V0.2.0-CANDIDATE'],
