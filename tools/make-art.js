@@ -1502,6 +1502,52 @@ art['degree-independent-rhombus-criterion'] = (a, b) => {
   return s;
 };
 
+/* Fisk deletion interlacing through five: two negative-root lines alternate
+   strictly at left, the five positive Bezout-minor streams form a certificate
+   ladder in the centre, and the degree-six/all-degree frontier remains open at
+   right.  The image encodes the finite theorem without implying universal
+   preservation. */
+art['fisk-toeplitz-deletion-interlacing-through-five'] = (a, b) => {
+  let s = '';
+  s += `<line x1="72" y1="142" x2="474" y2="142" stroke="#8a938f" stroke-width="3" opacity=".72"/>`;
+  s += `<line x1="110" y1="252" x2="436" y2="252" stroke="#8a938f" stroke-width="3" opacity=".72"/>`;
+  const largeRoots = [96, 178, 260, 342, 424];
+  const smallRoots = [137, 219, 301, 383];
+  for (const x of largeRoots) s += `<circle cx="${x}" cy="142" r="12" fill="${a}"/>`;
+  for (const x of smallRoots) s += `<circle cx="${x}" cy="252" r="10" fill="${b}"/>`;
+  for (let i = 0; i < smallRoots.length; i += 1) {
+    s += `<path d="M ${largeRoots[i] + 14} 155 L ${smallRoots[i]} 238 L ${largeRoots[i + 1] - 14} 155" fill="none" stroke="#e7e5e4" stroke-width="2" opacity=".38"/>`;
+  }
+  s += `<text class="og-hide" x="273" y="102" text-anchor="middle" font-family="Georgia" font-size="24" fill="#e7e5e4">F<tspan baseline-shift="sub" font-size="15">(X,y)</tspan> · five roots</text>`;
+  s += `<text class="og-hide" x="273" y="296" text-anchor="middle" font-family="Georgia" font-size="24" fill="#e7e5e4">F<tspan baseline-shift="sub" font-size="15">X</tspan> · strict deletion interlacing</text>`;
+  s += `<text class="og-hide" x="273" y="350" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="${a}">ALL ROOTS SIMPLE AND NEGATIVE</text>`;
+
+  s += `<rect x="512" y="42" width="330" height="316" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="677" y="82" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">DEGREE-FIVE BEZOUT MINORS</text>`;
+  const counts = ['15', '771', '8,790', '29,460', '22,156'];
+  for (let i = 0; i < counts.length; i += 1) {
+    const y = 118 + i * 45;
+    const width = 62 + i * 42;
+    s += `<rect x="552" y="${y}" width="${width}" height="27" rx="7" fill="${i === 4 ? b : a}" opacity="${0.48 + i * 0.1}"/>`;
+    s += `<text class="og-hide" x="806" y="${y + 20}" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" fill="#e7e5e4">Δ${i + 1} · ${counts[i]}</text>`;
+  }
+  s += `<text class="og-hide" x="677" y="340" text-anchor="middle" font-family="Georgia" font-size="24" fill="${b}">61,192 positive terms</text>`;
+
+  s += `<rect x="882" y="42" width="266" height="316" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  const frontier = [
+    { y: 105, label: 'n ≤ 5', value: 'PROVED', colour: a },
+    { y: 190, label: 'n = 6', value: 'MINORS 1–3', colour: b },
+    { y: 275, label: 'all n', value: 'OPEN', colour: b }
+  ];
+  for (const row of frontier) {
+    s += `<text class="og-hide" x="914" y="${row.y}" font-family="Georgia" font-size="25" fill="#e7e5e4">${row.label}</text>`;
+    s += `<text class="og-hide" x="1116" y="${row.y}" text-anchor="end" font-family="ui-monospace,monospace" font-size="14" fill="${row.colour}">${row.value}</text>`;
+    s += `<line x1="914" y1="${row.y + 18}" x2="1116" y2="${row.y + 18}" stroke="${row.colour}" stroke-width="2" opacity=".55"/>`;
+  }
+  s += `<text class="og-hide" x="1015" y="334" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="#8a938f">ZERO BOUNDARY OPEN</text>`;
+  return s;
+};
+
 /* Factorial-spike separation: the left panel shows increasingly tall native
    width generators; the right panel keeps every finite component boxed while
    the compatible FI-ideal chain continues beyond every chosen width. */
@@ -1622,6 +1668,7 @@ const palette = {
   ,'unbounded-bns-component-orbits': ['#38bdf8', '#f59e0b']
   ,'factorial-spikes-fi-noetherianity': ['#2dd4bf', '#f59e0b']
   ,'degree-independent-rhombus-criterion': ['#2dd4bf', '#f59e0b']
+  ,'fisk-toeplitz-deletion-interlacing-through-five': ['#38bdf8', '#f59e0b']
   ,'hc4-five-support-structural-reductions': ['#2dd4bf', '#f59e0b']
 };
 
