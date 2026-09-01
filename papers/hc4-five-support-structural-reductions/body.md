@@ -1,14 +1,32 @@
 ## Summary
 
-The Jacobian Conjecture asks when a polynomial map with constant non-zero Jacobian has a polynomial inverse. One influential reformulation studies special homogeneous polynomials whose Hessian matrices are nilpotent. The quartic case in dimension four—HC4—is an early unresolved boundary of that programme.
+> **Post-publication scope clarification — 1 September 2026.** The first version of this page used “the quartic Hessian conjecture in dimension four” ambiguously and omitted Zixiang Ni's directly relevant preprint. The immutable v0.1.0 research package has not been changed. This page now distinguishes the degree-at-most-four theorem candidate from **full $HC_4$**, and identifies the release's actual ternary-quintic scope.
 
-This release does **not** solve HC4 or the two-dimensional Jacobian Conjecture. It makes one difficult normal-layer route substantially more explicit.
+The Hessian Conjecture asks when a polynomial potential with constant non-zero Hessian determinant has a polynomial inverse gradient map. In four variables, this page uses **full $HC_4$** for the statement with no degree bound:
+
+$$
+\text{for every }f\in\mathbb C[x_1,x_2,x_3,x_4],\qquad
+\det\operatorname{Hess}(f)\in\mathbb C^\times
+\Longrightarrow \nabla f\in\operatorname{Aut}(\mathbb C^4).
+$$
+
+“Full” therefore means **all finite polynomial degrees in dimension four**. It does not mean only quartic polynomials.
+
+| statement | quantifies over | present status recorded here |
+|---|---|---|
+| degree-at-most-four Hessian Conjecture in dimension four | $f\in\mathbb C[x_1,x_2,x_3,x_4]$ with $\deg f\leq4$ | [Ni's 2026 preprint](https://arxiv.org/abs/2608.14217) claims a proof; a producer-side claim-level audit found no gap in four load-bearing interfaces, but this remains unrefereed and has no unaffiliated specialist validation recorded here |
+| full $HC_4$ | the same implication for arbitrary finite $\deg f$ | open on the assurance record used by this release; Ni explicitly leaves degree at least five outside his theorem |
+| two-dimensional Jacobian Conjecture | every plane polynomial map with non-zero constant Jacobian | not solved here; full $HC_4$ would imply it through the standard cotangent-doubling reduction, but the degree-at-most-four case alone does not |
+
+This release begins instead with a **ternary quintic** $h_5$. Its binary-decimic and repeated-conic calculations therefore belong to a degree-five branch of full $HC_4$: the first degree beyond Ni's stated theorem, not a competing treatment of the degree-at-most-four case.
+
+This release does **not** solve full $HC_4$ or the two-dimensional Jacobian Conjecture. It makes one difficult degree-five normal-layer route substantially more explicit.
 
 The work associates a binary polynomial of degree ten—a binary decimic—to the repeated-conic boundary. Exact certificates rule out the case where that decimic has exactly five distinct roots. On one of the two remaining residual orbits, the tangent orbit, all 31 equations defining the required multiplicity-six locus are proved to vanish. On the harder secant orbit, three exact rational colon identities expose structure without proving the full saturation.
 
 The closing test then selects sixteen particularly sparse source directions by a rule fixed before their transfer was computed. All sixteen survive exact lifting and rational reconstruction. They form sixteen explicit rational relations in the fourth Macaulay block. That is a real positive signal—but it is a statement about the source kernel, not yet a solution of the fourth target equation.
 
-> **Candidate status:** Anonymous · AI-assisted · unrefereed · exact computer-assisted structural results and bounded source-kernel theorem · internal editorial review and clean replay passed · no fourth-target membership, secant closure, HC4 or JC2 claim · no unaffiliated reconstruction, formal verification, external specialist review or peer review.
+> **Candidate status:** Anonymous · AI-assisted · unrefereed · exact computer-assisted structural results and bounded source-kernel theorem · internal editorial review and clean replay passed · no fourth-target membership, secant closure, full $HC_4$ or JC2 claim · Ni's degree-at-most-four result separately remains an unrefereed theorem candidate · no unaffiliated reconstruction, formal verification, external specialist review or peer review.
 
 ## Summary for specialists
 
@@ -55,7 +73,7 @@ over $\mathbb Q$. A separate producer-coordinated implementation bypasses the CS
 | secant chart | three successive rational localized-colon elements | full colon equality or saturation |
 | fixed fourth target | congruence lift through $173^{96}$ | rational target identity |
 | sixteen-column test | sixteen exact rational source syzygies | a gauge action that simplifies the inhomogeneous target |
-| global HC4 programme | sharply smaller normal-layer frontier | polynomial-level and full-family closure |
+| degree-five branch of full $HC_4$ | sharply smaller normal-layer frontier | polynomial-level and full-family closure |
 
 ## The technical mechanism: why the sixteen-column test matters
 
@@ -103,6 +121,6 @@ The fastest assurance gain is an unaffiliated reconstruction of one load-bearing
 
 ## Limitations and claim boundary
 
-The release proves bounded structural statements inside one pinned normal-layer programme. It does not prove that the secant residual orbit is contained in the multiplicity-six nullcone, that the fourth target belongs to the relevant ideal over $\mathbb Q$, that the displayed colon elements generate a colon or saturation, that the full family lifts from the normal layer, or that HC4 or JC2 is true.
+The release proves bounded structural statements inside one pinned degree-five normal-layer programme. It does not prove that the secant residual orbit is contained in the multiplicity-six nullcone, that the fourth target belongs to the relevant ideal over $\mathbb Q$, that the displayed colon elements generate a colon or saturation, that the full family lifts from the normal layer, or that full $HC_4$ or JC2 is true. It also does not supply an independent review of Ni's degree-at-most-four theorem candidate.
 
 Those missing implications are the difference between a promising structural release and a solution.
