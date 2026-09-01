@@ -6044,14 +6044,14 @@
           }
         ],
         "activeHumanMinutes": null,
-        "computeMinutes": 34,
+        "computeMinutes": 0,
         "computeCost": {
           "amount": 0,
           "currency": "GBP"
         },
-        "agentRuns": 6,
-        "reworkMinutes": 24,
-        "correctionCount": 2
+        "agentRuns": 1,
+        "reworkMinutes": 0,
+        "correctionCount": 5
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -6278,6 +6278,38 @@
           "evidenceRefs": [
             "https://github.com/ipitchford/pinching-free-normal-cover-critical-exponent/releases/tag/v0.2.0-candidate"
           ]
+        },
+        {
+          "at": "2026-09-01T12:28:05.000Z",
+          "field": "measurement.computeMinutes -> metrics.outcome.computeMinutes",
+          "reason": "The first public active-attempt snapshot recorded zero before producer builds, hosted CI and terminal compute aggregation had completed.",
+          "replacement": "Retain the immutable zero snapshot and record the conservative 34-minute aggregate of local builds, hosted research CI and hosted site CI only in the terminal outcome.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/pinching-free-normal-cover-critical-exponent/actions/runs/33504333038",
+            "https://github.com/ipitchford/evidence-press-site/actions/runs/33507468937",
+            "https://evidencepress.org/releases/pinching-free-normal-cover/"
+          ]
+        },
+        {
+          "at": "2026-09-01T12:28:05.000Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "The first public active-attempt snapshot counted only the root run before the terminal root-and-review-role audit.",
+          "replacement": "Retain the immutable one-run snapshot and record six audited root-and-review-role runs, with maximum parallelism five, only in the terminal outcome.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/actions/runs/33507468937",
+            "https://evidencepress.org/releases/pinching-free-normal-cover/"
+          ]
+        },
+        {
+          "at": "2026-09-01T12:28:05.000Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "The first public active-attempt snapshot preceded the browser-geometry and audio-registry repairs, so it recorded no rework.",
+          "replacement": "Retain the immutable zero-rework snapshot and record the conservative 24-minute repair total only in the terminal outcome.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/187",
+            "https://github.com/ipitchford/evidence-press-site/actions/runs/33507251021",
+            "https://evidencepress.org/releases/pinching-free-normal-cover/"
+          ]
         }
       ],
       "revisions": [
@@ -6288,6 +6320,10 @@
         {
           "date": "2026-09-01",
           "summary": "Closed the prospectively registered assurance-through-publication attempt after review repair, a nine-page deterministic candidate, five-role internal review, exact-archive confirmation, immutable GitHub and Zenodo identity, provenance-bound media, repaired hosted CI, guarded zero-cost deployment and exact canonical readback; recorded a 152-minute calendar interval, 140 derived active-agent minutes, 12 unattended wait minutes, 34 conservative aggregate compute minutes, 24 rework minutes and unavailable rather than zero token telemetry while preserving every reduced-space, external-assurance, novelty, priority and no-impact boundary."
+        },
+        {
+          "date": "2026-09-01",
+          "summary": "Preserved the first live active-attempt measurement snapshot after the guarded deploy correctly rejected in-place replacement of its compute, agent-run and rework fields; appended three exact measurement-to-terminal-outcome correction receipts while retaining the derived 34 compute minutes, six audited runs and 24 rework minutes only in the terminal outcome."
         }
       ]
     }
