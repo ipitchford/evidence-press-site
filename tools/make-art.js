@@ -1623,6 +1623,51 @@ art['hc4-five-support-structural-reductions'] = (a, b) => {
   return s;
 };
 
+/* Four-term-AP Ramsey diameter 36: the exact interval and Graham witness sit
+   above a certificate-backed 26-versus-27 boundary. Missing witness positions
+   are hollow rather than coloured, so the art does not suggest a valid
+   red-blue colouring of the non-2-colourable set. */
+art['ap4-ramsey-diameter-36'] = (a, b) => {
+  let s = '';
+  const graham = new Set([1, 4, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+    19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 30, 31, 34, 37]);
+  const x0 = 72, x1 = 1128, y = 92;
+  const px = n => x0 + (n - 1) * (x1 - x0) / 36;
+  s += `<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="#8a938f" stroke-width="3" opacity=".58"/>`;
+  for (let n = 1; n <= 37; n += 1) {
+    const x = px(n).toFixed(1);
+    if (graham.has(n)) {
+      s += `<circle cx="${x}" cy="${y}" r="7" fill="${a}" opacity=".95"/>`;
+    } else {
+      s += `<circle cx="${x}" cy="${y}" r="5" fill="#151a1e" stroke="#8a938f" stroke-width="2" opacity=".9"/>`;
+    }
+  }
+  for (const n of [1, 4, 7, 10]) {
+    const x = px(n).toFixed(1);
+    s += `<line x1="${x}" y1="${y + 10}" x2="${x}" y2="132" stroke="${b}" stroke-width="3" opacity=".8"/>`;
+  }
+  s += `<path d="M ${px(1).toFixed(1)} 135 H ${px(10).toFixed(1)}" stroke="${b}" stroke-width="3" stroke-dasharray="7 6"/>`;
+  s += `<text class="og-hide" x="${x0}" y="58" font-family="ui-monospace,monospace" font-size="14" fill="#8a938f">[1,37] · GRAHAM'S 27 SELECTED POSITIONS</text>`;
+  s += `<text class="og-hide" x="${x0}" y="126" font-family="Georgia" font-size="16" fill="#e7e5e4">1</text>`;
+  s += `<text class="og-hide" x="${x1}" y="126" text-anchor="end" font-family="Georgia" font-size="16" fill="#e7e5e4">37</text>`;
+
+  s += `<rect x="72" y="158" width="486" height="176" rx="22" fill="#151a1e" stroke="${b}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="315" y="198" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#8a938f">LOWER CERTIFICATE</text>`;
+  s += `<text x="315" y="258" text-anchor="middle" font-family="Georgia" font-size="44" fill="${b}">26 impossible</text>`;
+  s += `<text class="og-hide" x="315" y="302" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#e7e5e4">1,579 VARS · 5,761 CLAUSES · 2,012 CUTS</text>`;
+
+  s += `<path d="M 578 246 H 626" stroke="#e7e5e4" stroke-width="4" opacity=".62"/><path d="M 614 234 L 632 246 L 614 258" fill="none" stroke="#e7e5e4" stroke-width="4" opacity=".62"/>`;
+
+  s += `<rect x="652" y="158" width="476" height="176" rx="22" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="890" y="198" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#8a938f">UPPER CERTIFICATE</text>`;
+  s += `<text x="890" y="258" text-anchor="middle" font-family="Georgia" font-size="44" fill="${a}">27 witnessed</text>`;
+  s += `<text class="og-hide" x="890" y="302" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#e7e5e4">98 PROGRESSIONS · SEPARATE DRAT PROOF</text>`;
+
+  s += `<text class="og-hide" x="600" y="376" text-anchor="middle" font-family="Georgia" font-size="25" fill="#e7e5e4">v₂,₄([37]) = 27</text>`;
+  s += `<text class="og-hide" x="1096" y="376" text-anchor="end" font-family="ui-monospace,monospace" font-size="14" fill="${b}">W*(4) OPEN</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1670,6 +1715,7 @@ const palette = {
   ,'degree-independent-rhombus-criterion': ['#2dd4bf', '#f59e0b']
   ,'fisk-toeplitz-deletion-interlacing-through-five': ['#38bdf8', '#f59e0b']
   ,'hc4-five-support-structural-reductions': ['#2dd4bf', '#f59e0b']
+  ,'ap4-ramsey-diameter-36': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
