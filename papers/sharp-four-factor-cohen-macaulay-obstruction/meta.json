@@ -1,0 +1,253 @@
+{
+  "slug": "sharp-four-factor-cohen-macaulay-obstruction",
+  "title": "A sharp four-factor Cohen–Macaulay obstruction to integral Schubert deformation",
+  "shortTitle": "Four-factor Schubert deformation obstruction",
+  "oneLine": "Coordinate Schubert surface unions are Cohen–Macaulay exactly for connected active graphs, but deform to integral surfaces exactly for complete multipartite graphs.",
+  "abstract": "An AIM problem asks which unions of Schubert varieties deform to irreducibles and whether Cohen–Macaulayness is sufficient. This anonymous, AI-assisted, unrefereed theorem candidate completely answers the coordinate-surface case in products of projective lines. Encode a union by a graph G, with an edge ij selecting the surface on which only factors i and j vary. The union is Cohen–Macaulay if and only if the active graph is connected, while it admits an embedded flat deformation with geometrically integral generic fibre if and only if the graph is complete multipartite. The path with edges 12, 23 and 34 is therefore a reduced pure Cohen–Macaulay union of three Schubert surfaces in (P1)^4 with no such integral deformation. Four factors and three components are both minimal. The proof combines a Stanley–Reisner model, multidegree support and rank-two matroids, a direct integral realization, and a scheme-theoretic multiplicity-free degeneration theorem. Python and Macaulay2 replay the finite algebraic and combinatorial certificate, but do not independently verify the cited geometric bridge, novelty or written proof. Independent reconstruction, formal verification, authenticated external specialist review, editorial peer review, exhaustive novelty and historical priority remain open or unassessed.",
+  "narration": "Which unions of Schubert varieties can occur as the special fibre of a family whose general surface is irreducible? An AIM problem asks whether Cohen–Macaulayness is enough. This anonymous, unrefereed candidate gives a sharp negative answer for coordinate surfaces in products of projective lines. Encode the union by a graph: an edge between i and j selects the surface on which just those two coordinates vary. The candidate proves two exact classifications. The union is Cohen–Macaulay precisely when the active graph is connected. It deforms, inside the same product, to a geometrically integral surface precisely when the graph is complete multipartite. These graph properties first separate for the four-vertex path. Its three edges select three surface components in four factors. The graph is connected, so the union is Cohen–Macaulay, but it is not complete multipartite, so no integral deformation of the stated kind exists. The proof links Stanley–Reisner rings to connectivity and links multidegree support to rank-two matroids. It also constructs the integral surface for every complete multipartite graph and invokes a scheme-theoretic multiplicity-free degeneration theorem. Python and Macaulay2 replay the four-factor ideal, Hilbert–Burch data, basis-exchange failure and minimal cases. Those are producer-side checks, not an independent proof of the geometric argument. This is version 0.1.0-candidate, dated 4 September 2026. The paper, evidence and limitations are linked on this page. This AI-generated voice is a communication aid, not additional mathematical evidence.",
+  "datePublished": "2026-09-04",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22304827",
+  "conceptDoi": "10.5281/zenodo.22304826",
+  "zenodoUrl": "https://zenodo.org/records/22304827",
+  "pdfUrl": "https://github.com/ipitchford/sharp-four-factor-cohen-macaulay-obstruction/releases/download/v0.1.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22304827/files/paper.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/sharp-four-factor-cohen-macaulay-obstruction",
+  "releaseUrl": "https://github.com/ipitchford/sharp-four-factor-cohen-macaulay-obstruction/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/sharp-four-factor-cohen-macaulay-obstruction.mp3",
+      "name": "Audio briefing — the sharp four-factor Schubert obstruction",
+      "description": "Plain-English synthetic-voice account of the two graph classifications, the four-vertex path and the assurance boundary; a communication aid, not additional evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/sharp-four-factor-cohen-macaulay-obstruction.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI systems under human direction",
+      "OpenAI Codex",
+      "Python 3.14.6",
+      "SymPy 1.14.0",
+      "Macaulay2 1.26.06"
+    ],
+    "humanRole": "Research direction, problem selection, review provision, claim-boundary decisions, publication authorization and institutional responsibility by the human creator; repository maintenance and Evidence Press publication are not scholarly authorship, and scholarly attribution remains Anonymous.",
+    "disclosure": "AI systems contributed reconstruction of the graph classification, source and novelty search, proof exposition, finite checks, action of the supplied review, internal role-separated review and release engineering within one producer-coordinated workflow. Exact producer replay, implementation diversity and internal editorial closure do not establish unaffiliated reconstruction, authenticated specialist review or editorial peer review."
+  },
+  "problem": {
+    "name": "AIM Degenerations in Algebraic Geometry problem session, Problem 2.2",
+    "url": "https://aimath.org/pastworkshops/degenalggeomproblems.pdf"
+  },
+  "keywords": [
+    "Schubert varieties",
+    "Cohen–Macaulay",
+    "flat degeneration",
+    "multidegrees",
+    "algebraic polymatroids",
+    "rank-two matroids",
+    "complete multipartite graphs",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "A nonempty coordinate Schubert surface union Y_G in (P1)^n is Cohen–Macaulay if and only if its active graph G is connected.",
+    "The same union has an embedded flat deformation with geometrically integral generic fibre if and only if G is complete multipartite.",
+    "The path 1–2–3–4 gives a reduced pure Cohen–Macaulay union of three surfaces in four factors with no integral deformation of the stated kind.",
+    "Four active factors and three irreducible surface components are both minimal for a coordinate-surface obstruction.",
+    "The four-factor Cox ideal is (y1 y3, y1 y4, y2 y4), with an explicit Hilbert–Burch resolution; its multidegree support violates rank-two basis exchange."
+  ],
+  "evidence": "A seven-page DOI-bearing manuscript and aligned Markdown; an explicit Stanley–Reisner reduction, multidegree-to-matroid obstruction, complete-multipartite realization and scheme-theoretic degeneration bridge; a finite certificate for the four-factor ideal, Hilbert–Burch minors, basis-exchange failure and all smaller graph cases; Python replay in normal and optimized modes; three hostile certificate mutations; a separate Macaulay2 recomputation of the ideal, dimension, depth and projective dimension; exact local PDF-text comparison and a portable 2,328-token hosted PDF prose check; complete manifest coverage; source, citation and bounded novelty audits; a supplied Minor Revision review retained privately under NOASSERTION with its hash and response matrix public; five producer-coordinated internal editorial reports and one bounded confirmation; green public GitHub replay; and byte-identical GitHub and Zenodo PDF, ZIP and checksum assets. These establish availability, package integrity, producer replay and an internally reviewed unrefereed candidate. They do not establish unaffiliated reconstruction, formal verification of the geometric argument, authenticated external specialist review, journal peer review, exhaustive novelty, historical priority or impact.",
+  "statusDetail": "Anonymous, AI-assisted, unrefereed algebraic-geometry theorem candidate after actioning a supplied Minor Revision review, completing a five-role producer-coordinated editorial gate and passing one frozen-target confirmation with no P0 or P1 findings. The complete coordinate-surface classification is written as a mathematical proof and supported by finite producer-side replay. The result does not classify higher-dimensional Schubert unions or arbitrary flag varieties. Novelty is candidate-only and priority is unestablished.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22304827",
+      "note": "The annotated GitHub prerelease and published Zenodo record expose the same PDF, complete review/replay ZIP and checksum sidecar; unauthenticated public downloads matched all local SHA-256 values."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/sharp-four-factor-cohen-macaulay-obstruction/actions/runs/33873057438",
+      "note": "Public Linux CI checks the complete manifest, replays the finite certificate in Python 3.11 and 3.13, rejects three hostile mutations, checks the durable Macaulay2 record and compares the full ordered PDF prose stream. A fresh producer-side Macaulay2 run and exact local PDF-text comparison are separately recorded."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No authenticated unaffiliated party has rerun the immutable package and published a separate environment and result receipt."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Python and Macaulay2 are implementation-diverse but remain producer-controlled and do not constitute unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof assistant formalizes the Cox-ring bridge, Reisner specialization, multidegree argument, rank-two classification or degeneration theorem application."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "The supplied review and five-role internal reports are not authenticated unaffiliated review by an algebraic geometer."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or comparable external venue has conducted editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/sharp-four-factor-cohen-macaulay-obstruction/blob/v0.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Software versions, exact inputs, manifests and hosted Python replay are public, but the TeX and Macaulay2 environments are not bit-identical and no unaffiliated clean-environment reconstruction is reported."
+    }
+  },
+  "openProblems": [
+    "Obtain an authenticated unaffiliated reconstruction of the Cox-ring, matroid-support and degeneration arguments in a materially separate notation and implementation.",
+    "Formally verify the coordinate-surface classification, including the scheme-theoretic bridge from multiplicity-free multidegrees to the reduced standard coordinate union.",
+    "Classify Cohen–Macaulay coordinate Schubert unions of dimension at least three and determine when their supports are algebraic polymatroids realizable by integral varieties.",
+    "Extend or refute analogous sharp classifications for Schubert unions in flag varieties beyond products of projective lines.",
+    "Obtain authenticated specialist review and a broader MathSciNet or zbMATH assessment of novelty and historical priority."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "American Institute of Mathematics. Degenerations in Algebraic Geometry: Problem Session, Problem 2.2 (2016).",
+      "url": "https://aimath.org/pastworkshops/degenalggeomproblems.pdf"
+    },
+    {
+      "citation": "Ardila, F., and Boocher, A. (2016). The closure of a linear space in a product of lines. Journal of Algebraic Combinatorics 43, 199–235.",
+      "url": "https://doi.org/10.1007/s10801-015-0634-x"
+    },
+    {
+      "citation": "Brion, M. (2003). Multiplicity-free subvarieties of flag varieties. Contemporary Mathematics 331, 13–23.",
+      "url": "https://doi.org/10.1090/conm/331/05900"
+    },
+    {
+      "citation": "Castillo, F., Cid-Ruiz, Y., Li, B., Montaño, J., and Zhang, N. (2020). When are multidegrees positive? Advances in Mathematics 374, 107382.",
+      "url": "https://doi.org/10.1016/j.aim.2020.107382"
+    },
+    {
+      "citation": "Caminata, A., Cid-Ruiz, Y., and Conca, A. (2023). Multidegrees, prime ideals, and non-standard gradings. Advances in Mathematics 435, 109361.",
+      "url": "https://doi.org/10.1016/j.aim.2023.109361"
+    },
+    {
+      "citation": "Reisner, G. A. (1976). Cohen–Macaulay quotients of polynomial rings. Advances in Mathematics 21, 30–49.",
+      "url": "https://doi.org/10.1016/0001-8708(76)90114-6"
+    }
+  ],
+  "citeText": "Anonymous. (2026). A sharp four-factor Cohen–Macaulay obstruction to integral Schubert deformation (Version 0.1.0-candidate) [Anonymous unrefereed theorem candidate and evidence package]. Evidence Press. https://doi.org/10.5281/zenodo.22304827",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:sharp-four-factor-cohen-macaulay-obstruction",
+    "attemptIds": [
+      "ep-attempt:sharp-four-factor-cohen-macaulay-obstruction-publication-completion"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "method-demonstration",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "obstruction",
+      "description": "An exact graph classification and minimal four-factor path obstruction separating Cohen–Macaulay coordinate Schubert surface unions from those admitting embedded integral deformation.",
+      "scope": "Nonempty coordinate Schubert surface unions in fixed ambient products (P1)^n over algebraically closed fields; not higher-dimensional unions, arbitrary flag varieties, independent validation, exhaustive novelty or historical priority."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication",
+      "translation"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The paper maps coordinate surface components to graph edges, the Cox quotient to a graph Stanley–Reisner ring, flat-family multidegrees to rank-two matroid bases, complete multipartite graphs to direct integral realizations, and multiplicity-free classes to the exact reduced coordinate special fibre.",
+      "remainingRisks": [
+        "The specialization of the cited geometric theorems and the Cox-chart descent have not been reconstructed by an unaffiliated algebraic geometer.",
+        "The two finite computational routes are producer-controlled and do not verify the universal geometric proof.",
+        "The targeted literature search may miss an implicit or differently phrased prior classification.",
+        "The result covers coordinate surfaces only and supplies no higher-dimensional or general-flag classification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Check the fixed-ambient embedded deformation definition and keep it separate from abstract smoothability or deformations in another ambient space.",
+      "Verify the dimension-indexed multidegree convention and complementary Chow exponents before applying the rank-two basis classification.",
+      "Audit the scheme-theoretic multiplicity-free degeneration bridge rather than inferring the special fibre from cycle equality alone.",
+      "Keep the complete coordinate-surface result separate from the full AIM problem in higher dimensions and other flag varieties.",
+      "Treat producer replay, internal editorial closure, external specialist review, formal verification, novelty and priority as separate assurance dimensions."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://aimath.org/pastworkshops/degenalggeomproblems.pdf",
+        "inheritedClaim": "AIM Problem 2.2 asks which subsets of Schubert varieties deform to irreducibles, whether Cohen–Macaulayness is sufficient, and identifies (P1)^n as the first case to try.",
+        "inheritedAssuranceCeiling": "The problem source fixes the broader question but does not state or establish this coordinate-surface classification, four-factor obstruction, correctness, novelty or priority."
+      },
+      {
+        "relation": "extends-result",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://doi.org/10.1007/s10801-015-0634-x",
+        "inheritedClaim": "Ardila and Boocher construct closures of linear spaces in products of lines with matroid-controlled multidegrees and Cohen–Macaulay initial ideals.",
+        "inheritedAssuranceCeiling": "Their construction supplies the adjacent integral realization and dual matroid convention, not the exact located connectivity versus complete-multipartiteness statement or sharp path minimality."
+      },
+      {
+        "relation": "extends-result",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://doi.org/10.1016/j.aim.2020.107382",
+        "inheritedClaim": "Castillo and collaborators prove that multidegree support of an integral multiprojective variety is a discrete algebraic polymatroid and exhibit a larger Cohen–Macaulay non-polymatroidal support.",
+        "inheritedAssuranceCeiling": "Their general obstruction supplies the support mechanism, not the rank-two graph classification, four-factor witness or minimality theorem."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "dataEnvironmentReproducibility",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Obtain authenticated unaffiliated specialist reconstruction of the Cox-ring and degeneration bridges, then formalize the complete coordinate-surface classification and investigate the first higher-dimensional case.",
+      "claimCeiling": "An anonymous, AI-assisted, unrefereed theorem candidate classifying Cohen–Macaulayness and embedded integral deformability for coordinate Schubert surface unions in (P1)^n, with a sharp four-factor path obstruction, complete written proof, public immutable assets, producer replay and internal editorial closure; not the full AIM problem, independent validation, formal verification, authenticated external specialist review, editorial peer review, exhaustive novelty, historical priority or demonstrated workflow impact."
+    },
+    "impactClaims": [
+      {
+        "id": "sharp-four-factor-cohen-macaulay-obstruction-science-no-impact",
+        "aim": "science",
+        "outcome": "Faster or more reliable classification and assurance of Schubert-degeneration obstructions",
+        "setting": "AI-assisted structural reduction, exact finite replay, internal review and guarded candidate publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched conventional research, specialist-review or publication workflow was registered.",
+        "estimand": "No effect on discovery time, active human effort, compute, correction rate, proof quality, independent-assurance time, uptake, citation or field outcomes was estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "metadataProvenance": "Authored prospectively against the DOI-bearing tagged v0.1.0-candidate, green three-job public replay, exact GitHub and Zenodo three-asset readback, supplied-review response, five-role internal editorial record and bounded frozen-target confirmation on 4 September 2026. Canonical Evidence Press deployment and terminal publication metrics are recorded separately and do not promote the mathematical assurance ceiling.",
+  "grandfatheredAtSchemaVersion": null
+}

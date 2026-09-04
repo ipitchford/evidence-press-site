@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'sharp-four-factor-cohen-macaulay-obstruction': {
+    palette: 'pine',
+    kicker: ['RESEARCH RELEASE · 4 SEPTEMBER 2026', 'SCHUBERT DEGENERATIONS · V0.1.0-CANDIDATE'],
+    head: ['Connected.', '<em>Still not deformable.</em>'],
+    headSize: 62,
+    sub: 'A four-vertex path gives the first coordinate Schubert surface union that is Cohen–Macaulay but has no integral deformation.',
+    tag: 'ANONYMOUS · UNREFEREED THEOREM CANDIDATE',
+    hero: `
+      <div class="eq-label">the sharp active graph</div>
+      <div class="eq eq-sm">1 — 2 — 3 — 4</div>
+      <div class="note"><b>connected ⇒ Cohen–Macaulay</b><br>not complete multipartite<br><b>no integral deformation</b></div>
+      <div class="eq-foot">4 factors · 3 components · both minimal</div>`
+  },
   'fisk-toeplitz-deletion-interlacing-through-five': {
     palette: 'cobalt',
     kicker: ['RESEARCH RELEASE · 1 SEPTEMBER 2026', 'REAL-ROOTED POLYNOMIALS · V0.3.0-CANDIDATE'],

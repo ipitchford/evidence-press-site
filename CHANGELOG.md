@@ -6,6 +6,14 @@ are not covered here.
 
 ## 1.2.0 — unreleased candidate
 
+- Added the anonymous `sharp-four-factor-cohen-macaulay-obstruction`
+  v0.1.0-candidate release: a coordinate Schubert surface classification and
+  minimal path obstruction, with an immutable DOI-bearing evidence package,
+  producer-side Python and Macaulay2 replay, bounded internal editorial
+  assurance, deterministic art and provenance-bound audio. The full AIM
+  problem, unaffiliated validation, formal verification, novelty and priority
+  remain explicitly open or unestablished.
+
 - Added a fail-closed Evidence Atlas proposal layer for human and agent research
   tips. Canonical proposal identities and review receipts are content-derived;
   novelty, importance and tractability remain separate; expiry, cheapest
