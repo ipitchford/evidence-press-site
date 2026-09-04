@@ -1668,6 +1668,39 @@ art['ap4-ramsey-diameter-36'] = (a, b) => {
   return s;
 };
 
+/* Sharp Schubert-surface obstruction: the connected four-vertex path passes
+   the Cohen--Macaulay gate but stops at the complete-multipartite gate. */
+art['sharp-four-factor-cohen-macaulay-obstruction'] = (a, b) => {
+  let s = '';
+  s += `<rect x="52" y="42" width="500" height="316" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="302" y="84" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">THE ACTIVE GRAPH</text>`;
+  const nodes = [118, 238, 358, 478];
+  for (let i = 0; i < nodes.length - 1; i += 1) {
+    s += `<line x1="${nodes[i]}" y1="182" x2="${nodes[i + 1]}" y2="182" stroke="${a}" stroke-width="7" opacity=".88"/>`;
+  }
+  for (let i = 0; i < nodes.length; i += 1) {
+    const colour = i === 1 || i === 2 ? b : a;
+    s += `<circle cx="${nodes[i]}" cy="182" r="25" fill="#151a1e" stroke="${colour}" stroke-width="6"/>`;
+    s += `<text class="og-hide" x="${nodes[i]}" y="190" text-anchor="middle" font-family="Georgia" font-size="24" fill="#e7e5e4">${i + 1}</text>`;
+  }
+  s += `<text class="og-hide" x="302" y="252" text-anchor="middle" font-family="Georgia" font-size="29" fill="#e7e5e4">P₄ is connected</text>`;
+  s += `<text class="og-hide" x="302" y="298" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="${a}">X₁₂ ∪ X₂₃ ∪ X₃₄</text>`;
+  s += `<text class="og-hide" x="302" y="332" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="#8a938f">4 FACTORS · 3 COMPONENTS</text>`;
+
+  s += `<rect x="590" y="42" width="558" height="316" rx="24" fill="#151a1e" stroke="${b}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="869" y="84" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">TWO EXACT GRAPH TESTS</text>`;
+  s += `<rect x="632" y="108" width="474" height="84" rx="16" fill="${a}" opacity=".11" stroke="${a}" stroke-width="2"/>`;
+  s += `<text class="og-hide" x="662" y="143" font-family="Georgia" font-size="23" fill="#e7e5e4">connected</text>`;
+  s += `<text class="og-hide" x="1070" y="143" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" fill="${a}">COHEN–MACAULAY ✓</text>`;
+  s += `<text class="og-hide" x="662" y="174" font-family="ui-monospace,monospace" font-size="13" fill="#8a938f">Stanley–Reisner · Reisner criterion</text>`;
+  s += `<rect x="632" y="212" width="474" height="96" rx="16" fill="${b}" opacity=".10" stroke="${b}" stroke-width="2"/>`;
+  s += `<text class="og-hide" x="662" y="247" font-family="Georgia" font-size="23" fill="#e7e5e4">not complete multipartite</text>`;
+  s += `<text class="og-hide" x="1070" y="247" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" fill="${b}">DEFORMATION ✕</text>`;
+  s += `<text class="og-hide" x="662" y="278" font-family="ui-monospace,monospace" font-size="13" fill="#8a938f">rank-two basis exchange fails</text>`;
+  s += `<text class="og-hide" x="869" y="338" text-anchor="middle" font-family="Georgia" font-size="22" fill="${b}">sharp in factors and components</text>`;
+  return s;
+};
+
 const palette = {
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
@@ -1716,6 +1749,7 @@ const palette = {
   ,'fisk-toeplitz-deletion-interlacing-through-five': ['#38bdf8', '#f59e0b']
   ,'hc4-five-support-structural-reductions': ['#2dd4bf', '#f59e0b']
   ,'ap4-ramsey-diameter-36': ['#2dd4bf', '#f59e0b']
+  ,'sharp-four-factor-cohen-macaulay-obstruction': ['#2dd4bf', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
