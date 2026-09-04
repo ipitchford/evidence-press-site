@@ -1,0 +1,190 @@
+{
+  "slug": "fixed-d-toeplitz-obstruction",
+  "title": "A fixed-d Toeplitz obstruction to degree-wise coherence for FI_d",
+  "shortTitle": "Fixed-d Toeplitz coherence obstruction",
+  "oneLine": "For every fixed finite d at least two in characteristic zero, a two-color Toeplitz family gives a morphism of finite-degree-presented FI_d-modules with no kernel inside that subcategory.",
+  "abstract": "An AIM problem asks whether modules presented in finite degree form an abelian category beyond FI and records the expectation that FI_d for d greater than one is probably negative. This anonymous, AI-assisted, unrefereed theorem candidate proves the fixed-finite-d characteristic-zero case. It forms a countable direct sum of bidiagonal blocks from two colored transition maps. Exact symmetric-group coinvariants send the rth block to a Toeplitz matrix over k[x_1,...,x_d] whose first-syzygy module has rank one and a minimal generator in internal degree r+1. The resulting ambient kernel is generated in degree at most one, but the first Tor of its polynomial specialization is nonzero in unbounded degrees, so it is not presented in finite degree. Principal representables and a Yoneda argument then force any putative internal kernel to equal that ambient kernel. The closest published antecedent found, Di--Li--Liang Example 3.6, shares the broad bounded-generator/unbounded-relation mechanism but uses countably many object coordinates and a sum norm. No novelty or priority claim is made. Producer replay, hostile controls, internal review, a supplied-review response, deterministic artifact QA and Linux CI pass; independent reconstruction, formal verification, authenticated specialist review and journal peer review remain unassessed.",
+  "narration": "Can a category behave well in every fixed finite piece and still fail to have kernels in a natural subcategory? This anonymous, unrefereed candidate answers yes for F I d modules in characteristic zero whenever d is fixed and at least two. Two colors build a sequence of bidiagonal Toeplitz matrices. In the block numbered r, adjacent terms cancel along one syzygy, and its minimal degree is r plus one. Putting all blocks together keeps the generators in degree one while forcing relation degrees to grow without bound. Exact symmetric-group coinvariants make that obstruction visible over a polynomial ring. A second argument using representable modules and Yoneda shows that the category cannot hide the failure by choosing a different kernel. So the modules presented in finite degree do not form an abelian category. A published example by Di, Li and Liang uses the same broad unbounded-relation idea in a category with countably many coordinates; this release contributes the fixed finite d Toeplitz realization and explicit internal-kernel argument, without claiming priority. Python and Singular replay the formulas and hostile controls, but remain producer-controlled. The paper, code, review response and assurance limits are linked on this page. This OpenAI synthetic voice is a communication aid, not additional mathematical evidence.",
+  "datePublished": "2026-09-04",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22306413",
+  "conceptDoi": "10.5281/zenodo.22306412",
+  "zenodoUrl": "https://zenodo.org/records/22306413",
+  "pdfUrl": "https://github.com/ipitchford/fixed-d-toeplitz-obstruction/releases/download/v0.1.0-candidate/fixed-d-toeplitz-obstruction-v0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22306413/files/fixed-d-toeplitz-obstruction-v0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/fixed-d-toeplitz-obstruction",
+  "releaseUrl": "https://github.com/ipitchford/fixed-d-toeplitz-obstruction/releases/tag/v0.1.0-candidate",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/fixed-d-toeplitz-obstruction.mp3",
+      "name": "Audio briefing — the fixed-d Toeplitz obstruction",
+      "description": "Plain-English synthetic-voice account of the Toeplitz blocks, unbounded syzygy degrees, internal-kernel argument, and assurance boundary; a communication aid, not additional evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/fixed-d-toeplitz-obstruction.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": ["AI systems under human direction", "OpenAI Codex", "Python 3.14.6", "Singular 4.4.1", "XeTeX / TeX Live 2026"],
+    "humanRole": "Research direction, problem selection, review provision, claim-boundary decisions, publication authorization and final publication accountability by the directing human operator; scholarly attribution remains Anonymous.",
+    "disclosure": "AI systems contributed source inspection, proof reconstruction, exposition, exact checks, response to the supplied review, producer-coordinated internal review, release engineering and site authoring. Different programs and operating systems do not by themselves establish unaffiliated reproduction, external specialist review, novelty or priority."
+  },
+  "problem": {
+    "name": "AIM Problem Lists, Representation stability, item 3.1: Coherence",
+    "url": "https://aimpl.org/repnstability/3/"
+  },
+  "keywords": ["FI_d modules", "representation stability", "degree-wise coherence", "abelian categories", "Toeplitz matrices", "syzygies", "unrefereed candidate"],
+  "keyResults": [
+    "For every characteristic-zero field and every fixed finite d at least two, FI_d-modules presented in finite degree do not form an abelian category.",
+    "A morphism from a degree-zero free module to a module with degree-zero generators and degree-one relations has an ambient kernel generated in degree at most one but not presented in finite degree.",
+    "After exact coinvariants, the rth bidiagonal Toeplitz block has a rank-one first-syzygy module whose minimal generator is unique up to a unit and lies in internal degree r+1.",
+    "Any kernel internal to the full subcategory would be forced by representables and Yoneda to equal the forbidden ambient kernel.",
+    "The argument needs two colors and exact characteristic-zero coinvariants; it makes no positive-characteristic claim."
+  ],
+  "evidence": "A seven-page DOI-bearing manuscript and aligned accessible Markdown; exact characteristic-zero structural and Yoneda proofs; Python formula replay through r=128 in normal and optimized modes; exact enumeration of 45 colored-injection orbit cases and 1,899 color-transition cases; sign, order, shift, wrong-color and Singular-protocol hostile controls; a producer-controlled Singular 4.4.1 syzygy recomputation through r=16; eight unit tests; two byte-identical clean PDF builds; embedded-font, PDF-structure, text and all-page visual preflight; complete 53-file manifest coverage; source, citation and bounded novelty audits; the supplied Minor Revision report and response; a five-role producer-coordinated internal review plus one bounded final confirmation; public Ubuntu CI; and byte-identical GitHub and Zenodo PDF, ZIP and checksum assets. These establish availability, package integrity, producer replay and internally reviewed candidate status. They do not establish independent reconstruction, formal verification, authenticated external specialist review, journal peer review, exhaustive novelty, historical priority or impact.",
+  "statusDetail": "Anonymous, AI-assisted, unrefereed representation-theory theorem candidate after actioning a supplied Minor Revision review and passing producer-side replay, internal editorial review and one frozen-artifact confirmation. The result is limited to characteristic-zero fields and fixed finite d at least two. The close Di--Li--Liang antecedent is stated directly; novelty is partial and priority is unassessed.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22306413",
+      "note": "GitHub and Zenodo expose the same PDF, complete ZIP and checksum sidecar; unauthenticated public readback matched the frozen local SHA-256 values."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/fixed-d-toeplitz-obstruction/actions/runs/33884559354",
+      "note": "Public Linux CI checks the complete manifest, ordinary and optimized Python, hostile controls, exact Singular markers and a full PDF rebuild. The release workstation separately records byte-identical clean PDF builds and all-page visual inspection."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No authenticated unaffiliated party has rerun the immutable release and published a separate environment and result receipt."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Python and Singular are implementation-diverse but producer-controlled; they are not unaffiliated reimplementations."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof assistant formalizes the relative-free coinvariant lemma, Tor obstruction, Toeplitz gcd argument or internal Yoneda kernel proof."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "The supplied review's identity and independence are not authenticated, and the five-role reports are internal producer-coordinated evidence."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or comparable external venue has conducted editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/fixed-d-toeplitz-obstruction/blob/v0.1.0-candidate/ENVIRONMENT.md",
+      "note": "Dependencies, exact inputs, hashes and a Linux reconstruction route are public, but the environment is not hermetic or fully version-locked and Linux PDF bytes are not claimed identical to the producer PDF."
+    }
+  },
+  "openProblems": [
+    "Determine whether an analogue of the fixed-d theorem holds in positive characteristic, where symmetric-group coinvariants are not exact.",
+    "Obtain an authenticated unaffiliated reconstruction of the relative-free specialization, Tor obstruction and Yoneda kernel argument.",
+    "Formalize the categorical and commutative-algebra proof in a proof assistant.",
+    "Classify which useful subclasses of finite-degree-presented FI_d-modules remain closed under kernels and cokernels.",
+    "Obtain external specialist review and a broader historical novelty and priority assessment, especially around the Di--Li--Liang mechanism."
+  ],
+  "relatedWorks": [
+    {"citation": "American Institute of Mathematics. Representation stability: Coherence, AIM Problem Lists item 3.1 (2016).", "url": "https://aimpl.org/repnstability/3/"},
+    {"citation": "Ramos, E. (2017). Generalized representation stability and FI_d-modules. Proceedings of the American Mathematical Society 145, 4647–4660.", "url": "https://doi.org/10.1090/proc/13618"},
+    {"citation": "Ramos, E. (2017). On the degree-wise coherence of FI_G-modules. New York Journal of Mathematics 23, 873–895.", "url": "https://arxiv.org/abs/1606.04514"},
+    {"citation": "Sam, S. V., and Snowden, A. (2017). Gröbner methods for representations of combinatorial categories. Journal of the American Mathematical Society 30, 159–203.", "url": "https://doi.org/10.1090/jams/859"},
+    {"citation": "Gan, W. L., and Li, L. (2020). Castelnuovo–Mumford regularity of representations of certain product categories. Journal of Algebra 555, 246–264.", "url": "https://doi.org/10.1016/j.jalgebra.2020.01.031"},
+    {"citation": "Di, Z., Li, L., and Liang, L. (2025). Representations of N-infinity-type combinatorial categories. Journal of Algebra 666, 47–81.", "url": "https://doi.org/10.1016/j.jalgebra.2024.11.020"}
+  ],
+  "citeText": "Anonymous. (2026). A fixed-d Toeplitz obstruction to degree-wise coherence for FI_d (Version 0.1.0-candidate) [Anonymous unrefereed theorem candidate and evidence package]. Evidence Press. https://doi.org/10.5281/zenodo.22306413",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:fixed-d-toeplitz-obstruction",
+    "attemptIds": ["ep-attempt:fixed-d-toeplitz-obstruction-assurance-publication"],
+    "aims": ["science"],
+    "artifactRoles": ["research-output", "evidence-assessment", "method-demonstration", "communication"],
+    "lineageId": null,
+    "accelerationPrimitives": ["structural-compression", "adversarial-controls", "assurance-vector", "agent-readable-research-object"],
+    "decisionObject": {
+      "type": "obstruction",
+      "description": "A fixed-finite-d two-color Toeplitz family whose unbounded first-syzygy degrees obstruct closure under kernels for modules presented in finite degree.",
+      "scope": "FI_d-modules over characteristic-zero fields for fixed finite d at least two; not positive characteristic, finite generation, external verification, novelty or priority."
+    },
+    "bottleneckTargeted": ["assurance", "publication", "translation"],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The paper maps colored FI_d transitions to polynomial variables using exact symmetric-group coinvariants, maps the block-diagonal natural transformation to Toeplitz matrices, converts unbounded first Tor into failure of finite-degree presentation, and uses representables plus Yoneda to rule out a different internal kernel.",
+      "remainingRisks": [
+        "The universal proof and cited FI_d specialization have not been reconstructed by an authenticated unaffiliated specialist.",
+        "Python and Singular check formulas and finite encodings but do not prove the universal categorical theorem.",
+        "The bounded literature search may miss an implicit or differently phrased fixed-d construction.",
+        "The proof does not extend through the same exactness step in positive characteristic."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Keep finite generation distinct from presentation in finite degree with infinitely many uniformly bounded summands.",
+      "Check that characteristic zero is used precisely for exactness of every symmetric-group coinvariant functor.",
+      "Verify that unbounded syzygy degree belongs to the polynomial specializations Phi(K_r), not directly to K_r.",
+      "Audit the Yoneda step so failure of an ambient kernel is not mistaken for failure of an internal kernel without proof.",
+      "Keep producer replay, internal review, independent reconstruction, formal verification, specialist review, novelty and priority separate."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://aimpl.org/repnstability/3/",
+        "inheritedClaim": "AIM item 3.1 asks whether the FI finite-degree coherence theorem persists for other categories and records the expectation that FI_d for d greater than one is probably negative.",
+        "inheritedAssuranceCeiling": "The problem source states the question and expectation but supplies no proof of this theorem, construction, novelty or priority."
+      },
+      {
+        "relation": "extends-result",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://doi.org/10.1090/proc/13618",
+        "inheritedClaim": "Ramos develops FI_d representation stability and records the exact characteristic-zero coinvariant specialization used here.",
+        "inheritedAssuranceCeiling": "The cited result supplies definitions, local-noetherian context and the exact functor, not the fixed-d Toeplitz obstruction or internal-kernel theorem."
+      },
+      {
+        "relation": "extends-result",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://doi.org/10.1016/j.jalgebra.2024.11.020",
+        "inheritedClaim": "Di, Li and Liang Example 3.6 gives a countable-direct-sum failure with bounded generator degree and unbounded relation degree for a sum norm on an N-infinity-type category.",
+        "inheritedAssuranceCeiling": "The published antecedent supplies the broad mechanism, not this fixed-finite-d two-color Toeplitz specialization or its explicit internal Yoneda kernel closure."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": ["independentRerun", "independentReimplementation", "formalVerification", "specialistReview", "dataEnvironmentReproducibility", "semanticValidation", "noveltyAssessment", "priorityAssessment"],
+      "nextAction": "Obtain an authenticated unaffiliated specialist reconstruction, then formalize the proof and investigate the positive-characteristic obstruction boundary.",
+      "claimCeiling": "An anonymous, AI-assisted, unrefereed fixed-d characteristic-zero theorem candidate with a complete written proof, immutable public assets, producer replay, hostile controls and internal editorial closure; not independent validation, formal verification, authenticated specialist review, editorial peer review, exhaustive novelty, historical priority or demonstrated workflow impact."
+    },
+    "impactClaims": [
+      {
+        "id": "fixed-d-toeplitz-obstruction-science-no-impact",
+        "aim": "science",
+        "outcome": "Faster or more reliable resolution and assurance of categorical coherence obstructions",
+        "setting": "AI-assisted structural reduction, exact replay, internal review and guarded candidate publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched conventional research, specialist-review or publication workflow was registered.",
+        "estimand": "No effect on discovery time, active human effort, compute, correction rate, proof quality, independent-assurance time, uptake, citation or field outcomes was estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Authored prospectively against the DOI-bearing tagged v0.1.0-candidate, three-job public replay, exact GitHub and Zenodo asset readback, supplied-review response, five-role internal editorial record and one bounded frozen-artifact confirmation on 4 September 2026. Canonical Evidence Press deployment and terminal workflow metrics are recorded separately and do not promote the mathematical assurance ceiling."
+}

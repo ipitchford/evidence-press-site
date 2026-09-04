@@ -81,6 +81,19 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'fixed-d-toeplitz-obstruction': {
+    palette: 'cobalt',
+    kicker: ['RESEARCH RELEASE · 4 SEPTEMBER 2026', 'FI-d MODULES · V0.1.0-CANDIDATE'],
+    head: ['Degree one.', '<em>Relations unbounded.</em>'],
+    headSize: 61,
+    sub: 'Two colors and a Toeplitz family prove that fixed-d finite-degree-presented FI-d modules are not an abelian category in characteristic zero.',
+    tag: 'ANONYMOUS · UNREFEREED THEOREM CANDIDATE',
+    hero: `
+      <div class="eq-label">the rth polynomial block</div>
+      <div class="eq eq-sm">A<sub>r</sub> · v<sub>r</sub> = <span class="hl">0</span></div>
+      <div class="note"><b>one minimal syzygy</b><br>internal degree r + 1<br>Tor<sub>1</sub> unbounded</div>
+      <div class="eq-foot">fixed d ≥ 2 · characteristic zero</div>`
+  },
   'sharp-four-factor-cohen-macaulay-obstruction': {
     palette: 'pine',
     kicker: ['RESEARCH RELEASE · 4 SEPTEMBER 2026', 'SCHUBERT DEGENERATIONS · V0.1.0-CANDIDATE'],

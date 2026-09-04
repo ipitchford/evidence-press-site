@@ -1668,6 +1668,38 @@ art['ap4-ramsey-diameter-36'] = (a, b) => {
   return s;
 };
 
+/* Fixed-d FI_d coherence obstruction: a growing family of bidiagonal
+   Toeplitz blocks feeds one rank-one syzygy into every new degree. */
+art['fixed-d-toeplitz-obstruction'] = (a, b) => {
+  let s = '';
+  s += `<rect x="54" y="42" width="650" height="316" rx="24" fill="#151a1e" stroke="${a}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="379" y="80" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">BIDIAGONAL BLOCKS FROM TWO COLORS</text>`;
+  for (let block = 0; block < 3; block += 1) {
+    const rows = block + 2, cols = rows + 1;
+    const ox = 92 + block * 202, oy = 112;
+    s += `<text class="og-hide" x="${ox + 72}" y="105" text-anchor="middle" font-family="Georgia" font-size="18" fill="#e7e5e4">A${rows}</text>`;
+    for (let row = 0; row < rows; row += 1) for (let col = 0; col < cols; col += 1) {
+      const active = col === row || col === row + 1;
+      if (!active) continue;
+      const colour = col === row ? a : b;
+      s += `<rect x="${ox + col * 30}" y="${oy + row * 38}" width="24" height="24" rx="5" fill="${colour}" opacity="${(.86 - block * .08).toFixed(2)}"/>`;
+    }
+    s += `<path d="M ${ox - 12} ${oy - 10} h -10 v ${rows * 38 + 2} h 10 M ${ox + cols * 30 + 2} ${oy - 10} h 10 v ${rows * 38 + 2} h -10" fill="none" stroke="#8a938f" stroke-width="2" opacity=".58"/>`;
+  }
+  s += `<path d="M 734 82 C 790 82 790 112 824 112 L 824 316" fill="none" stroke="#8a938f" stroke-width="3" opacity=".58"/>`;
+  s += `<rect x="790" y="42" width="356" height="316" rx="24" fill="#151a1e" stroke="${b}" stroke-width="2.5" opacity=".96"/>`;
+  s += `<text class="og-hide" x="968" y="80" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#8a938f">MINIMAL SYZYGY DEGREE</text>`;
+  const bars = [2, 3, 4, 5, 6];
+  for (let i = 0; i < bars.length; i += 1) {
+    const y = 110 + i * 44, width = 38 + i * 42;
+    s += `<text class="og-hide" x="824" y="${y + 17}" font-family="Georgia" font-size="18" fill="#e7e5e4">r=${i + 1}</text>`;
+    s += `<rect x="872" y="${y}" width="${width}" height="22" rx="5" fill="${i % 2 ? b : a}" opacity=".86"/>`;
+    s += `<text class="og-hide" x="${884 + width}" y="${y + 17}" font-family="ui-monospace,monospace" font-size="14" fill="${i % 2 ? b : a}">${bars[i]}</text>`;
+  }
+  s += `<text class="og-hide" x="968" y="340" text-anchor="middle" font-family="Georgia" font-size="22" fill="${b}">Tor₁ is unbounded</text>`;
+  return s;
+};
+
 /* Sharp Schubert-surface obstruction: the connected four-vertex path passes
    the Cohen--Macaulay gate but stops at the complete-multipartite gate. */
 art['sharp-four-factor-cohen-macaulay-obstruction'] = (a, b) => {
@@ -1750,6 +1782,7 @@ const palette = {
   ,'hc4-five-support-structural-reductions': ['#2dd4bf', '#f59e0b']
   ,'ap4-ramsey-diameter-36': ['#2dd4bf', '#f59e0b']
   ,'sharp-four-factor-cohen-macaulay-obstruction': ['#2dd4bf', '#f59e0b']
+  ,'fixed-d-toeplitz-obstruction': ['#38bdf8', '#f59e0b']
 };
 
 for (const [slug, fn] of Object.entries(art)) {
