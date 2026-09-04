@@ -6943,8 +6943,8 @@
           "currency": "GBP"
         },
         "agentRuns": 1,
-        "reworkMinutes": 3,
-        "correctionCount": 0
+        "reworkMinutes": 0,
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -7159,7 +7159,20 @@
           ]
         }
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-04T13:07:13.000Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "The first public release-candidate snapshot recorded zero before the hosted whole-corpus audio-provenance failure and its bounded derived-index repair were observed.",
+          "replacement": "Retain the immutable zero-rework snapshot and record the conservative three-minute derived-index repair total only in the terminal outcome.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/201",
+            "https://github.com/ipitchford/evidence-press-site/actions/runs/33874949564",
+            "https://github.com/ipitchford/evidence-press-site/actions/runs/33875229950",
+            "https://evidencepress.org/releases/sharp-four-factor-cohen-macaulay-obstruction/"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-04",
@@ -7172,6 +7185,10 @@
         {
           "date": "2026-09-04",
           "summary": "Closed the publication-completion attempt after repaired four-job Evidence Press CI, guarded zero-cost deployment, exact canonical HTML, paper.json, audio and protocol readback, full 51-release and 31-institutional-artifact preservation and IndexNow acceptance; recorded a 26-minute calendar interval, 21 active-agent minutes, five unattended-wait minutes and three rework minutes while preserving the full AIM, higher-dimensional, general-flag, external-assurance, novelty, priority and no-impact boundaries."
+        },
+        {
+          "date": "2026-09-04",
+          "summary": "Preserved the first live release-candidate measurement snapshot after the guarded closeout deploy correctly rejected in-place replacement of its zero rework field; appended an exact measurement-to-terminal-outcome correction receipt while retaining the later observed three-minute repair total only in the terminal outcome."
         }
       ]
     }
@@ -7478,6 +7495,10 @@
     {
       "date": "2026-09-04",
       "summary": "Closed sharp-four-factor-cohen-macaulay-obstruction after repaired four-job Evidence Press CI, guarded zero-cost deployment, exact canonical HTML, paper.json, audio and protocol readback, 51-release and 31-institutional-artifact preservation and IndexNow acceptance; recorded the prospectively scoped publication metrics outcome while preserving every full-AIM, higher-dimensional, general-flag, external-assurance, novelty, priority and no-impact boundary."
+    },
+    {
+      "date": "2026-09-04",
+      "summary": "Appended the sharp-four-factor-cohen-macaulay-obstruction measurement correction required by the immutable first live snapshot: retained zero rework in the machine measurement and recorded the later three-minute whole-corpus audio-index repair only in the terminal outcome."
     }
   ]
 }
