@@ -6,6 +6,15 @@ are not covered here.
 
 ## 1.2.0 — unreleased candidate
 
+- Added the anonymous `fixed-d-toeplitz-obstruction` v0.1.0-candidate
+  release: an explicit characteristic-zero construction showing that finitely
+  presented `FI_d`-modules are not abelian for every fixed finite `d >= 2`,
+  with the closest known published mechanism compared directly, exact Python
+  and Singular producer replay, portable Linux manuscript CI, bounded internal
+  editorial assurance, deterministic art, a YouTube thumbnail and
+  provenance-bound fable audio. Positive characteristic, `d = 1`, unaffiliated
+  validation, exhaustive novelty and priority remain open or unestablished.
+
 - Added the anonymous `sharp-four-factor-cohen-macaulay-obstruction`
   v0.1.0-candidate release: a coordinate Schubert surface classification and
   minimal path obstruction, with an immutable DOI-bearing evidence package,
