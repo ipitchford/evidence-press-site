@@ -7613,8 +7613,8 @@
         "computeMinutes": null,
         "computeCost": null,
         "agentRuns": 6,
-        "reworkMinutes": 13,
-        "correctionCount": 0
+        "reworkMinutes": 0,
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -7678,7 +7678,7 @@
           "https://github.com/ipitchford/evidence-press-site/pull/207",
           "https://github.com/ipitchford/evidence-press-site/actions/runs/33962925799"
         ],
-        "missingnessReason": "Canonical publication passed; unaffiliated rerun, independent reimplementation, formal verification, external specialist or editorial peer review, exhaustive novelty, priority and impact remain unestablished. No assurance state changed at publication."
+        "missingnessReason": "Canonical Evidence Press readback is pending. Unaffiliated rerun, independent reimplementation, formal verification, authenticated external specialist and editorial peer review, exhaustive novelty, priority and impact remain unestablished."
       },
       "releaseSlug": "rbm31-exact-kl-radius",
       "stopReason": null,
@@ -7835,7 +7835,18 @@
           ]
         }
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-05T11:34:30Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "The published pre-deployment measurement recorded zero rework. Later recorded generation intervals include the CI repair and reconciliation window. Preserve the earlier field rather than overwrite a public historical observation.",
+          "replacement": "The terminal metrics.outcome records 13 minutes as an upper attribution bound for recorded generation in that repair window; the earlier measurement.reworkMinutes remains zero. Neither number is a complete labor total.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/207",
+            "https://github.com/ipitchford/evidence-press-site/pull/209"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-05",
@@ -7847,7 +7858,7 @@
         },
         {
           "date": "2026-09-05",
-          "summary": "Recorded first canonical public readback and terminal outcome with explicit runtime-clock censoring; retained frozen forecast, prior assurance timestamp and unavailable telemetry. The generated audio-catalogue repair and concurrent video preservation did not alter research or media bytes."
+          "summary": "Recorded first canonical public readback and terminal outcome with explicit runtime-clock censoring; retained frozen forecast, prior assurance timestamp and unavailable telemetry. The generated audio-catalogue repair and concurrent video preservation did not alter research or media bytes. Historical measurement.reworkMinutes=0 and assurance missingness wording remain the earlier snapshot, not the terminal measurement; the appended publication milestone and metrics.outcome contain the later state."
         }
       ]
     }
