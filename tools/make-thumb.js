@@ -93,6 +93,15 @@ const SPECS = {
       <div class="note"><b>p* ≈ 1.147720381</b><br>ordinary coefficient powers<br>strict real roots above p*</div>
       <div class="eq-foot">written proof · scoped algebra checks</div>`
   },
+  'rbm31-exact-kl-radius': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 5 SEPTEMBER 2026', 'THREE-BIT MIXTURES · V0.1.0-CANDIDATE'],
+    head: ['Three bits.', '<em>An exact limit.</em>'],
+    headSize: 74,
+    sub: 'Two independent patterns cannot capture every distribution. An exact certificate identifies the worst cases: even and odd parity.',
+    tag: 'ANONYMOUS · UNREFEREED THEOREM CANDIDATE',
+    hero: `<div class="eq-label">exact radius · natural-log units</div><div class="eq eq-sm">−¾ ln(2√3 − 3)</div><div class="note"><b>≈ 0.831 bits</b><br>16,600 exact cover pieces<br>only two maximizing targets</div><div class="eq-foot">three bits · two product components</div>`
+  },
   'fixed-d-toeplitz-obstruction': {
     palette: 'cobalt',
     kicker: ['RESEARCH RELEASE · 4 SEPTEMBER 2026', 'FI-d MODULES · V0.1.0-CANDIDATE'],

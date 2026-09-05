@@ -33,6 +33,25 @@ ${inner}
 
 const art = {};
 
+/* Exact RBM(3,1) radius: the two parity supports on labelled three-cubes. */
+art['rbm31-exact-kl-radius'] = (a,b) => {
+  let s='';
+  for (const [ox,parity,col] of [[120,0,a],[850,1,b]]) {
+    const pt=x=>[ox+110*((x>>0)&1)+62*((x>>2)&1),250-110*((x>>1)&1)-58*((x>>2)&1)];
+    for(let x=0;x<8;x++)for(const bit of [1,2,4])if(!(x&bit)){
+      const [x1,y1]=pt(x),[x2,y2]=pt(x^bit);
+      s+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#a8b8b6" opacity=".4" stroke-width="2"/>`;
+    }
+    for(let x=0;x<8;x++){
+      const [px,py]=pt(x),on=x.toString(2).replace(/0/g,'').length%2===parity;
+      s+=`<circle cx="${px}" cy="${py}" r="${on?12:6}" fill="${on?col:'#63716f'}"/><text x="${px}" y="${py+29}" text-anchor="middle" fill="#e7e5e4" font-family="monospace" font-size="15">${x.toString(2).padStart(3,'0')}</text>`;
+    }
+    s+=`<text x="${ox+86}" y="335" text-anchor="middle" fill="${col}" font-family="Georgia" font-size="24">${parity?'odd':'even'} parity</text>`;
+  }
+  s+='<text x="600" y="155" text-anchor="middle" font-family="Georgia" font-size="52" fill="#faf7f2">0.831 bits</text><text x="600" y="197" text-anchor="middle" font-family="system-ui" font-size="18" fill="#b9c8c5">rounded exact worst-case radius</text><text x="600" y="254" text-anchor="middle" font-family="system-ui" font-size="20" fill="#2dd4bf">16,600 exact cover pieces</text><text x="600" y="293" text-anchor="middle" font-family="system-ui" font-size="16" fill="#b9c8c5">three bits · two products · candidate</text>';
+  return s;
+};
+
 /* Recht–Ré: matrix heat grid + spectral curve */
 art['exact-low-length-recht-re-inequalities'] = (a, b) => {
   const r = rng(hash('recht'));
@@ -1754,6 +1773,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 
 const palette = {
   'sharp-quartic-hadamard-powers': ['#2dd4bf', '#fbbf24'],
+  'rbm31-exact-kl-radius': ['#2dd4bf', '#f59e0b'],
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
   'vr2-k4-equals-20': ['#f87171', '#60a5fa'],
