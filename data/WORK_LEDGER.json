@@ -7567,9 +7567,9 @@
       "workId": "ep-work:sharp-quartic-hadamard-powers",
       "cohort": "prospective",
       "registeredAt": "2026-09-05T10:18:27.402Z",
-      "status": "active",
-      "statusAt": "2026-09-05T14:10:45.255Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-05T14:50:37.000Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -7586,7 +7586,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "No supported task-local deduplicated token counter or active-human instrument is available. Discovery predates this attempt. Active and unattended intervals will be recorded prospectively; exact hardware and service costs are unavailable.",
+        "missingnessReason": "Active-agent minutes are a measured lower bound from explicit completed runtime generation intervals across six task-owned threads. Unattended wait records instrumented compaction only, blocked time records only explicit overload intervals, and rework records generation inside the identified preservation-repair window; unrecorded time is not imputed. Active-human minutes, substantive compute, fork-aware model tokens and cost were unavailable. Earlier theorem discovery remains excluded.",
         "milestones": [
           {
             "event": "work-opened",
@@ -7597,13 +7597,18 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-09-05T14:10:45.255Z",
             "basis": "Green Linux CI, immutable candidate tag, published Zenodo and ten matching public asset downloads; site remains pending."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-05T14:50:37.000Z",
+            "basis": "Guarded production deployment at https://f0ba82be.evidence-press.pages.dev completed after exact canonical protocol convergence, 54-release preservation, canonical publication-integrity readback and accepted IndexNow submission."
           }
         ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
         "agentRuns": 6,
-        "reworkMinutes": null,
+        "reworkMinutes": 1,
         "correctionCount": 0
       },
       "assuranceEndpoint": {
@@ -7682,6 +7687,18 @@
           "resultClass": "pending",
           "reason": "Research package is published with exact public asset readback; full candidate workflow remains active pending site gates and deployment.",
           "evidenceRefs": ["https://zenodo.org/records/22346503", "https://github.com/ipitchford/sharp-quartic-hadamard-powers/actions/runs/33970746672"]
+        },
+        {
+          "at": "2026-09-05T14:50:37.000Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "The review-repaired quartic candidate, bounded negative stretch result and all publication surfaces reached the declared target at the unrefereed-candidate ceiling; this C/D cycle publishes the terminal receipt.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/sharp-quartic-hadamard-powers/",
+            "https://evidencepress.org/releases/sharp-quartic-hadamard-powers/paper.json",
+            "https://github.com/ipitchford/evidence-press-site/pull/211",
+            "https://github.com/ipitchford/evidence-press-site/pull/212"
+          ]
         }
       ],
       "metrics": {
@@ -7751,12 +7768,72 @@
           ],
           "stopRule": "At 75 minutes consolidate and open no new research branches; at 150 minutes remove optional work; at 240 elapsed minutes pause for explicit continuation. Stop immediately on an unresolved integrity or authority gate. No four-star grade or higher-degree theorem may be inferred from publishing."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-05T14:50:37.000Z",
+          "calendarElapsedMinutes": 272,
+          "activeAgentMinutes": 19,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 21,
+          "blockedMinutes": 36,
+          "reworkMinutes": 1,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 15,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 1,
+            "negative": 1,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 2,
+          "candidateArchitecturesTested": 2,
+          "candidateArchitecturesRejected": 1,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "The supplied review was actioned and the quartic candidate passed the frozen deterministic package and five-role internal editorial gate. One positive cycle closed the stated quartic publication target; one negative cycle rejected the direct higher-degree stretch as insufficient for a four-star or higher-degree claim. Immutable GitHub and Zenodo assets matched across ten downloads, and the first canonical Evidence Press deployment passed exact protocol and publication-preservation readback. A caught append-only work-log ordering defect required a site-only repair before upload and changed no research or media bytes. The result remains an unrefereed candidate without external reproduction, formal verification, journal peer review, exhaustive priority or demonstrated impact.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -131,
+          "forecastRatio": 0.127,
+          "withinForecastInterval": false,
+          "varianceReason": "Active-agent minutes are a runtime-instrumented lower bound and exclude unrecorded generation, tool execution and human work; the much longer wall-clock span includes 21 recorded minutes of compaction wait, 36 recorded minutes of explicit overload blocking and an additional user-attributed overload interruption that was not imputed. Earlier theorem discovery was deliberately left-censored, and there is no matched comparator. The one-minute rework figure is generation captured inside the identified ledger-preservation repair window, not total repair elapsed time.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "No task-local human-work timer was available."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Substantive compute was not measured separately from ordinary replay, build and publication processes; no retrospective estimate was made."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "No supported fork-aware task-local token counter was available; rollout token events were not summed."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "No supported task-local uncached-input counter was available."
+            }
+          ]
+        }
       },
       "revisions": [
         {
           "date": "2026-09-05",
           "summary": "Registered before substantive successor work; excluded earlier discovery, retained bounded stretch and all external-assurance limits."
+        },
+        {
+          "date": "2026-09-05",
+          "summary": "Actioned the supplied review, completed the frozen five-role internal Accept gate, published immutable GitHub and Zenodo identities with ten matching downloads, and rejected the direct higher-degree stretch as insufficient for four-star promotion."
+        },
+        {
+          "date": "2026-09-05",
+          "summary": "Recorded the first canonical public readback and terminal prospectively scoped outcome. Preserved the earlier assurance assessment and its pending-site wording as a historical snapshot; the appended public-release milestone and metrics outcome carry the later site state. A pre-upload append-only ledger-order defect was repaired in PR 212 without changing scientific or media bytes."
         }
       ],
       "corrections": []
@@ -8392,6 +8469,10 @@
     {
       "date": "2026-09-05",
       "summary": "Registered the sharp-quartic-hadamard-powers assurance-through-publication attempt prospectively; no mathematical or impact status promoted."
+    },
+    {
+      "date": "2026-09-05",
+      "summary": "Closed sharp-quartic-hadamard-powers after review repair, bounded negative higher-degree stretch, five-role internal Accept, immutable GitHub and Zenodo publication, ten exact public asset downloads, guarded Evidence Press deployment, canonical 54-release preservation and terminal metrics receipt; retained unrefereed status and every external-assurance, priority, four-star and impact limitation."
     }
   ]
 }
