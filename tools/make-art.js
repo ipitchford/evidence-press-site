@@ -33,6 +33,21 @@ ${inner}
 
 const art = {};
 
+/* Schematic chain lift, not a drawing of the enormous witness graph. */
+art['linear-nonbacktracking-jordan-growth'] = (a,b) => {
+  let s='<text class="og-hide" x="70" y="65" fill="#e7e5e4" font-family="monospace" font-size="18">COUNTING NON-BACKTRACKING MATRICES</text>';
+  for(let i=0;i<7;i++){
+    const x=95+i*65;
+    if(i<6)s+=`<path d="M ${x+13} 185 H ${x+51} l -8 -6 m 8 6 l -8 6" fill="none" stroke="${a}" stroke-width="3"/>`;
+    s+=`<circle cx="${x}" cy="185" r="12" fill="${a}"/>`;
+  }
+  s+='<text class="og-hide" x="285" y="245" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="23">a growing Jordan chain</text>';
+  s+=`<text class="og-hide" x="875" y="193" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="66">f(n) = Θ(n)</text>`;
+  s+='<text class="og-hide" x="875" y="248" text-anchor="middle" fill="#e7e5e4" font-family="monospace" font-size="17">fixed maximum degree is possible</text>';
+  s+='<text class="og-hide" x="600" y="344" text-anchor="middle" fill="#b9c8c5" font-family="monospace" font-size="17">PENCIL → INTEGER ENCODING → SIMPLE GRAPH · UNREFEREED CANDIDATE</text>';
+  return s;
+};
+
 /* Exact RBM(3,1) radius: the two parity supports on labelled three-cubes. */
 art['rbm31-exact-kl-radius'] = (a,b) => {
   let s='';
@@ -1772,6 +1787,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'linear-nonbacktracking-jordan-growth': ['#38bdf8', '#fbbf24'],
   'sharp-quartic-hadamard-powers': ['#2dd4bf', '#fbbf24'],
   'rbm31-exact-kl-radius': ['#2dd4bf', '#f59e0b'],
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],

@@ -81,6 +81,18 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'linear-nonbacktracking-jordan-growth': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 5 SEPTEMBER 2026', 'NON-BACKTRACKING GRAPHS · PART (1)'],
+    head: ['Jordan blocks.', '<em>Linear growth.</em>'],
+    headSize: 72,
+    sub: 'A constructive proof candidate for counting matrices, even under one fixed maximum-degree bound.',
+    tag: 'ANONYMOUS · UNREFEREED THEOREM CANDIDATE',
+    hero: `<div class="eq-label">extremal block size on n vertices</div>
+      <div class="eq">f(n) = <span class="hl">Θ(n)</span></div>
+      <div class="note">simple · connected · leafless<br>maximum degree ≤ 393217 is possible</div>
+      <div class="eq-foot">written proof · exact finite controls</div>`
+  },
   'sharp-quartic-hadamard-powers': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 5 SEPTEMBER 2026', 'REAL-ROOTED QUARTICS · V0.1.0-CANDIDATE'],

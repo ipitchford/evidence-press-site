@@ -1,0 +1,218 @@
+{
+  "slug": "linear-nonbacktracking-jordan-growth",
+  "title": "Linear Jordan-block growth in non-backtracking graphs",
+  "shortTitle": "Jordan blocks grow linearly",
+  "oneLine": "A constructive proof candidate shows that non-backtracking Jordan blocks can grow linearly with graph order, even under one fixed maximum-degree bound.",
+  "abstract": "For the counting non-backtracking matrix of a finite simple undirected leafless n-vertex graph, this anonymous unrefereed theorem candidate proves that the extremal complex Jordan-block size f(n) is Theta(n). Explicit bounds are max(1,floor((n-1)/131072)-3)<=f(n)<=2n for n>=3. Linear growth also holds at maximum degree at most 393217, with lower bound max(1,floor(n/12714016)). A banded determinant valuation, fixed-dimensional rational encoding and signed-fiber graph realization provide the arbitrary-parameter proof. Exact finite computations are supporting controls, not the proof of asymptotic growth. AIM Problem 1.3(1) is addressed; part (2), optimal constants, exact extremal values and historical priority are not claimed.",
+  "narration": "Imagine walking through a network with one rule: you cannot immediately go back along the edge you just used. The counting matrix for these walks need not behave like a symmetric matrix, even when the network itself is undirected. Its Jordan blocks describe chains of generalized eigenvectors, structure that a list of eigenvalues alone does not reveal. How large can those blocks become as the network grows? This anonymous, unrefereed candidate gives a constructive answer: the largest possible block size grows linearly with the number of vertices. There is a universal linear upper bound, and a family of simple connected graphs supplies a matching order of growth. The family can even keep every vertex degree below one fixed bound, three hundred and ninety-three thousand, two hundred and seventeen. This is not a claim about regular graphs, typical networks, or normalized random walks. The proof first constructs a small structured matrix pencil. It then replaces its algebraic entries by integer blocks and embeds the resulting action into a simple graph. The witness graphs are enormous and are specified by an edge-generating rule, not stored in full. Exact code checks finite pencils, small graphs, and deliberately broken examples. The universal conclusion rests on the written proof. The constants are not claimed optimal, and external specialist validation and historical priority remain unresolved. This is the Evidence Press release of fifth September twenty twenty-six. The paper and complete evidence package are linked on this page. This AI-generated OpenAI voice is a communication aid, not additional evidence.",
+  "datePublished": "2026-09-05",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22375005",
+  "conceptDoi": "10.5281/zenodo.22375004",
+  "zenodoUrl": "https://zenodo.org/records/22375005",
+  "pdfUrl": "https://github.com/ipitchford/linear-nonbacktracking-jordan-growth/releases/download/v0.1.0-candidate/linear-nonbacktracking-jordan-growth-0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22375005/files/linear-nonbacktracking-jordan-growth-0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/linear-nonbacktracking-jordan-growth",
+  "releaseUrl": "https://github.com/ipitchford/linear-nonbacktracking-jordan-growth/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex under human direction",
+      "Python, SymPy and python-flint exact controls",
+      "Pandoc and pdfLaTeX"
+    ],
+    "humanRole": "Research direction, candidate selection, supplied review, scope and full-publication authorization; scholarly creator remains Anonymous.",
+    "disclosure": "AI assistance contributed proof development, code, exposition, review repair and producer-coordinated editorial review. Supplied review observations are not authenticated unaffiliated validation."
+  },
+  "problem": {
+    "name": "AIM Problem 1.3(1): non-backtracking Jordan-block growth",
+    "url": "https://www.unsolvedmath.com"
+  },
+  "keywords": [
+    "non-backtracking graphs",
+    "Jordan blocks",
+    "spectral graph theory",
+    "quadratic pencils",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "For n>=3, max(1,floor((n-1)/131072)-3)<=f(n)<=2n, hence f(n)=Theta(n).",
+    "At maximum degree at most 393217, block sizes still grow linearly: f(n)>=max(1,floor(n/12714016)).",
+    "Constructed long blocks occur at the fixed conjugate eigenvalues plus or minus 512i.",
+    "The graph family is simple, connected and leafless; zero-valued padding reaches every larger order."
+  ],
+  "evidence": "Eight-page arbitrary-parameter proof, exact construction code, historical r-through-20 pencil controls, fresh normal and optimized r-through-12 replay, three fully enumerated small graph embeddings, published baselines, padding, 50,104 bounded determinant permutations and ten scientific negative-control instances. Complete manifests, source note, review response, licences and separate historical and publication receipts are supplied.",
+  "statusDetail": "Anonymous AI-assisted unrefereed theorem candidate. Five producer-coordinated editorial roles completed one round; the sole required Minor exposition repair is closed and the final internal decision is Accept/PASS_WITH_NOTES. No external validation, formal verification, exhaustive novelty or historical priority is asserted.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22375005",
+      "note": "All five assets downloaded from both GitHub and published Zenodo match local SHA-256 values. DOI issuance and byte identity establish availability, not correctness."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/linear-nonbacktracking-jordan-growth/actions/runs/33983850624",
+      "note": "Producer fresh-extraction normal and optimized finite checks pass. The arbitrary-parameter proof is written, not formally certified by these tests. Hosted Linux Python 3.11 and 3.13 normal/optimized checks passed."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "The supplied separate-host report is not authenticated unaffiliated evidence."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Supplied bounded reconstruction and coordinated roles do not establish independent theorem reconstruction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No end-to-end proof-assistant verification."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No authenticated external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated editorial approval is not journal peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/linear-nonbacktracking-jordan-growth/blob/v0.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Pinned arithmetic libraries and exact inputs; no hermetic OS or byte-reproducible PDF toolchain."
+    }
+  },
+  "openProblems": [
+    "Obtain unaffiliated reconstruction of the valuation, encoding and graph lift.",
+    "Improve constants and determine exact extremal sizes or the smallest useful degree bound.",
+    "Complete broader prior-art and priority assessment.",
+    "Investigate formal verification of the arbitrary-parameter argument; AIM part (2) remains separate."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "AIM Problem Lists. Spectra of hypergraphs, Problem 1.3(1). Dated source and notation bridge in the package.",
+      "url": "https://aimpl.org/spectralhypergraph/1/"
+    },
+    {
+      "citation": "Glover, C., and Kempton, M. (2021). Some spectral properties of the non-backtracking matrix of a graph. LAA 618, 37–57.",
+      "url": "https://doi.org/10.1016/j.laa.2021.01.022"
+    },
+    {
+      "citation": "Heysse, K., Lorenzen, K., and Reinhart, C. (2025). Defective eigenvalues of the non-backtracking matrix. ELA 41, 511–528.",
+      "url": "https://doi.org/10.13001/ela.2025.8835"
+    },
+    {
+      "citation": "Takata, K., Mock, A., Notomi, M., and Shinya, A. (2026). Higher-order exceptional points unveiled by nilpotence and mathematical induction. Communications Physics 9, 274.",
+      "url": "https://doi.org/10.1038/s42005-026-02649-w"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Linear Jordan-block growth in non-backtracking graphs (Version 0.1.0-candidate) [Unrefereed theorem candidate and evidence package]. Evidence Press. https://doi.org/10.5281/zenodo.22375005",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:nonbacktracking-jordan-growth",
+    "attemptIds": [
+      "ep-attempt:nonbacktracking-jordan-growth-assurance-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "method-demonstration",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Two-sided linear Jordan-block growth bounds with explicit graph generation and proof bridges.",
+      "scope": "Counting non-backtracking operators of finite simple undirected leafless graphs, n>=3."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication",
+      "translation"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Banded valuation forces a long pencil chain; uniform rational encoding preserves it; signed fibers realize the adjacency and degree actions; incidence transfer and zero-valued padding preserve the chain in a simple graph.",
+      "remainingRisks": [
+        "The universal proof is not formally verified or externally reconstructed.",
+        "Finite checks do not establish exact all-parameter block sizes.",
+        "Priority and real-world relevance are not established."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Audit the source counting convention and all quantifiers.",
+      "Reconstruct valuation, rational encoding and graph realization.",
+      "Preserve third-party rights and prior attribution.",
+      "Keep internal review and publication separate from external assurance."
+    ],
+    "parentLinks": [
+      {
+        "relation": "reuses-method",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://doi.org/10.1016/j.laa.2021.01.022",
+        "inheritedClaim": "Reduced non-backtracking matrix and quadratic-pencil framework.",
+        "inheritedAssuranceCeiling": "Standard antecedent framework, not independent confirmation of the present growth construction."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Seek unaffiliated mathematical reconstruction and wider source reconciliation before stronger assurance claims.",
+      "claimCeiling": "Unrefereed constructive theorem candidate for part (1), with producer controls; no part (2), exact extremum, optimal constants, priority, external validation or impact established."
+    },
+    "impactClaims": [
+      {
+        "id": "linear-jordan-no-impact",
+        "aim": "science",
+        "outcome": "More inspectable spectral graph constructions",
+        "setting": "Producer-coordinated research and publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched conventional-workflow comparator.",
+        "estimand": "No causal acceleration, reliability, uptake or scientific-impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Research-package assurance assessed at 2026-09-05T18:27:02.545Z against immutable payload 49e763e511a4cbff260b87c7f53e6cecb2d3afaa, internal editorial closure, hosted CI and ten matching public downloads. Canonical site readback is a separate pending event.",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/linear-nonbacktracking-jordan-growth.mp3",
+      "name": "Audio briefing — linear Jordan-block growth",
+      "description": "Plain-English synthetic narration; communication, not additional evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/linear-nonbacktracking-jordan-growth.txt"
+    }
+  ]
+}
