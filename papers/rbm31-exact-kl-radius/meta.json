@@ -1,0 +1,241 @@
+{
+  "slug": "rbm31-exact-kl-radius",
+  "title": "The Exact KL Radius of Two Bernoulli Products on Three Bits",
+  "shortTitle": "An exact three-bit KL radius",
+  "oneLine": "A computer-assisted proof candidate gives the exact worst-case error of two Bernoulli products on three bits, attained only by the two uniform parity distributions.",
+  "abstract": "How badly can a two-component product mixture approximate an arbitrary distribution on three binary variables? This anonymous, AI-assisted, unrefereed candidate proves an exact worst-case forward-KL error of -3/4 log(2 sqrt(3)-3) nats, approximately 0.830615532444 bits. Only the two uniform parity targets attain it. A short log-supermodular multiplier certificate gives the matching lower bound. Reverse local stochastic channels reduce all targets to six support orbits; 16,600 exact witness simplices cover every real weight vector remaining. A standard-library checker verifies 93,792 vertex conditions. The release also supplies a rational target-to-witness program and an elementary conditioning corollary for mixtures of 2^(n-2) products on n bits. The constant and general transfer mechanism have prior antecedents; higher-dimensional sharpness, unaffiliated verification, formal proof and external peer review are not claimed.",
+  "narration": "How much error is unavoidable when three yes-or-no variables are modelled by a mixture of just two independent patterns? This anonymous, unrefereed candidate gives an exact answer: about zero point eight three one bits of forward Kullback Leibler divergence in the worst case. Only the two uniform parity distributions reach that limit. Parity means that the number of ones is always even, or always odd. The proposed constant was already recorded in a review by Guido Montufar; this release offers a computer-assisted proof candidate, not a claim to have invented the constant. The proof first reverses simple local random changes to reduce every target to six kinds of support. It then covers the remaining continuous spaces with sixteen thousand six hundred pieces. Each piece has one explicit two-component mixture that works throughout it. Exact arithmetic checks the vertices, while convexity carries their bounds to every point inside. A short algebraic argument supplies the matching parity lower bound. The bundle also turns this construction into a program: supply rational probabilities and receive exact feasible mixture parameters and a trace. Conditioning transfers the bound to a specified family of larger product-mixture models, without proving their worst-case error is exactly the same. This is the Evidence Press release of fifth September twenty twenty-six. The paper, certificates, source, review response and assurance limits are linked on this page. Producer checks and internal model review are not independent mathematical validation. This OpenAI synthetic voice is a communication aid, not additional evidence.",
+  "datePublished": "2026-09-05",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22339153",
+  "conceptDoi": "10.5281/zenodo.22339152",
+  "zenodoUrl": "https://zenodo.org/records/22339153",
+  "pdfUrl": "https://github.com/ipitchford/rbm31-exact-kl-radius/releases/download/v0.1.0-candidate/rbm31-exact-kl-radius-0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22339153/files/rbm31-exact-kl-radius-0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/rbm31-exact-kl-radius",
+  "releaseUrl": "https://github.com/ipitchford/rbm31-exact-kl-radius/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/rbm31-exact-kl-radius.mp3",
+      "name": "Audio briefing — the exact three-bit KL radius",
+      "description": "Plain-English synthetic-voice account of the parity extremizers, channel reduction, exact convex cover and nonsharp conditioning extension; a communication aid, not additional evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/rbm31-exact-kl-radius.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex under human direction",
+      "Python standard library",
+      "XeLaTeX / TeX Live 2026"
+    ],
+    "humanRole": "Research direction, problem selection, supplied review, scope decisions and full-publication authorization; scholarly attribution remains Anonymous.",
+    "disclosure": "AI assistance contributed proof search, mathematical exposition, exact code, revision, producer-coordinated internal editorial review and publishing. Different programs, roles and execution platforms do not establish unaffiliated assurance."
+  },
+  "problem": {
+    "name": "AIM-PROBABILITY-0002: maximum divergence of RBM(3,1)",
+    "url": "https://www.unsolvedmath.com"
+  },
+  "keywords": [
+    "Kullback-Leibler divergence",
+    "Bernoulli mixtures",
+    "restricted Boltzmann machines",
+    "algebraic statistics",
+    "convex-cover certificates",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "The closed three-bit two-product-mixture model has exact forward-KL radius -3/4 log(2 sqrt(3)-3) nats.",
+    "Only the two uniform parity targets maximize the radius; each has four translated nearest distributions.",
+    "52 root simplices and 16,600 leaves cover every real target remaining after exact channel reduction; 93,792 vertex conditions include 552 exact parity incidences.",
+    "A rational query interface returns certified feasible mixture parameters and a channel, symmetry and leaf trace, not a generally optimal projection.",
+    "For n at least three and k at least 2^(n-2), mixtures of k n-bit Bernoulli products have radius at most the same constant; higher-dimensional sharpness is not proved."
+  ],
+  "evidence": "An 11-page DOI-bearing paper, aligned Markdown, six exact certificate files unchanged from the original reviewed bundle, standalone standard-library checker, 13 verifier controls, five constructive-interface test groups, normal and optimized fresh-extraction replay, a worked channel example, explicit analytic-to-code map, primary-source comparison, original review-response matrix, rights and AI disclosures, and SHA-256 manifests. Internal editorial, immutable availability and hosted-CI receipts are recorded separately before publication. The exact calculation is producer-coordinated, not unaffiliated validation. Hosted replay: https://github.com/ipitchford/rbm31-exact-kl-radius/actions/runs/33961635189. Internal editorial decision: https://github.com/ipitchford/rbm31-exact-kl-radius/blob/v0.1.0-candidate/editorial/DECISION.md. All four public assets match across GitHub, Zenodo and the local release.",
+  "statusDetail": "Anonymous AI-assisted unrefereed computer-assisted theorem candidate after actioning the supplied minor-revision review. The sharp result is three-bit and two-component; the all-n consequence is an upper bound for the specified product-mixture budget. Four-star potential was considered but is not claimed achieved.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22339153",
+      "note": "The versioned GitHub release and published Zenodo record serve byte-identical PDF, final ZIP, frozen Stage-1 review ZIP and checksum sidecar; all four public downloads were hashed against the final local assets."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/rbm31-exact-kl-radius/blob/v0.1.0-candidate/verification.json",
+      "note": "Normal and optimized standard-library verification and all 18 tests pass locally; fresh final extraction and hosted Python 3.11/3.13 CI pass. Continuous coverage relies on the explicitly stated analytic bridges. Five differentiated producer-coordinated internal roles recommend Accept, without upgrading unaffiliated assurance."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No authenticated unaffiliated rerun receipt is supplied."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Discovery/checker separation and a reviewer-reported alternate check do not establish unaffiliated reconstruction; no separate reviewer implementation was supplied."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof assistant verifies the analytic bridges or checker."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "The supplied review is not authenticated unaffiliated specialist review; the five-role gate is producer-coordinated internal review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external journal or comparable venue has conducted editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/rbm31-exact-kl-radius/blob/v0.1.0-candidate/ENVIRONMENT.md",
+      "note": "Exact certificate inputs, source, hashes and standard-library replay route are provided. The environment is not hermetic; optional discovery and cross-platform PDF bytes are separate reproducibility boundaries."
+    }
+  },
+  "openProblems": [
+    "Obtain an authenticated unaffiliated reconstruction of the cone, boundary, channel and equality arguments and a separately written exact checker.",
+    "Determine whether the conditioning upper bound is sharp for any n greater than three at the stated component budget.",
+    "Compress or formally verify the finite convex-cover certificate and its analytic interfaces.",
+    "Study other component budgets without conflating product mixtures with larger RBMs.",
+    "Assess broader mathematical significance through specialist review and actual downstream reuse, not a producer-assigned four-star label."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Montúfar, G. (2018). Restricted Boltzmann Machines: Introduction and Review, Section 9 item 10.",
+      "url": "https://arxiv.org/abs/1806.07066"
+    },
+    {
+      "citation": "Allman, E. S., Rhodes, J. A., Sturmfels, B., and Zwiernik, P. (2015). Tensors of Nonnegative Rank Two.",
+      "url": "https://doi.org/10.1016/j.laa.2013.10.046"
+    },
+    {
+      "citation": "Allman et al. (2019). Maximum Likelihood Estimation of the Latent Class Model through Model Boundary Decomposition.",
+      "url": "https://doi.org/10.18409/jas.v10i1.75"
+    },
+    {
+      "citation": "Seigal, A., and Montúfar, G. (2018). Mixtures and products in two graphical models. A different model.",
+      "url": "https://arxiv.org/abs/1709.05276"
+    },
+    {
+      "citation": "Alexandr, Y., and Hoşten, S. (2025). Maximum information divergence from linear and toric models, Proposition 2.",
+      "url": "https://doi.org/10.1007/s41884-025-00166-3"
+    },
+    {
+      "citation": "Montúfar, G., Rauh, J., and Ay, N. (2013). Maximal Information Divergence from Statistical Models Defined by Neural Networks, Lemma 6.",
+      "url": "https://arxiv.org/abs/1303.0268"
+    }
+  ],
+  "citeText": "Anonymous. (2026). The Exact KL Radius of Two Bernoulli Products on Three Bits (Version 0.1.0-candidate) [Unrefereed computer-assisted theorem candidate and evidence package]. Evidence Press. https://doi.org/10.5281/zenodo.22339153",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:rbm31-exact-kl-radius",
+    "attemptIds": [
+      "ep-attempt:rbm31-exact-kl-radius-revision-stretch-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "method-demonstration",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "A finite exact convex-cover certificate and constructive target-to-witness interface for a continuous probability-model radius.",
+      "scope": "Exact three-bit two-product-mixture radius; specified non-sharp all-n conditioning upper bound."
+    },
+    "bottleneckTargeted": [
+      "discovery",
+      "assurance",
+      "publication",
+      "translation"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Necessary log-supermodularity plus three multipliers gives the lower bound; reverse local channels give six support orbits; exact midpoint trees cover continuous simplices; first-argument convexity and strict data processing complete the value and equality proofs; disjoint-context KL cancellation proves the conditioning lift.",
+      "remainingRisks": [
+        "Analytic and code interfaces remain unaffiliated-unverified.",
+        "The checker is not proof-assistant certified.",
+        "Bounded novelty searches may miss differently phrased or unpublished work.",
+        "No higher-dimensional sharpness or general-RBM transfer is proved."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Check necessary cone inclusion and boundary limits, not just the candidate star fit.",
+      "Check that simplex coverage and common-witness convexity justify the continuous quantifiers.",
+      "Keep diagnostic floating-point comparisons out of exact proof decisions.",
+      "Distinguish feasible approximation from optimal projection and product mixtures from larger RBMs.",
+      "Preserve anonymous authorship, rights, prior attribution and separate assurance dimensions."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/1806.07066",
+        "inheritedClaim": "Section 9 item 10 records the proposed constant and asks for maximizers.",
+        "inheritedAssuranceCeiling": "The recorded conjecture is not a proof or an explicit parity-maximizer identification."
+      },
+      {
+        "relation": "extends-result",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/1303.0268",
+        "inheritedClaim": "Lemma 6 supplies the classical disjoint-support mixture decomposition used in the conditioning transfer.",
+        "inheritedAssuranceCeiling": "This mechanism does not establish the candidate sharp three-bit constant or higher-dimensional sharpness."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Obtain unaffiliated specialist reconstruction and a separate checker before stronger assurance claims; investigate higher-dimensional sharpness as new research.",
+      "claimCeiling": "Anonymous AI-assisted unrefereed computer-assisted theorem candidate for the exact three-bit two-product-mixture KL radius, with a constructive rational interface and a non-sharp conditioning corollary. Not unaffiliated verification, formal proof, authenticated specialist review, journal peer review, exhaustive novelty, priority, a four-star rating or demonstrated impact."
+    },
+    "impactClaims": [
+      {
+        "id": "rbm31-exact-kl-radius-no-impact",
+        "aim": "science",
+        "outcome": "More reusable exact approximation-error certificates",
+        "setting": "Producer-coordinated mathematical research and publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched conventional workflow comparator was assigned.",
+        "estimand": "No causal discovery-time, effort, reliability, uptake or field-impact effect was estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Assessed on 2026-09-05T10:54:17.188Z against immutable commit ec82819b13493d12430338b309d81f08d6a4db09, DOI 10.5281/zenodo.22339153, exact four-asset GitHub/Zenodo public readback, hosted Python 3.11/3.13 replay, five-role internal editorial reports and full-audio round-trip. Canonical site readback and terminal workflow metrics are recorded separately; no external assurance dimension is promoted."
+}
