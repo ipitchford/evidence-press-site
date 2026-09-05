@@ -81,6 +81,18 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'sharp-quartic-hadamard-powers': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 5 SEPTEMBER 2026', 'REAL-ROOTED QUARTICS · V0.1.0-CANDIDATE'],
+    head: ['Power the coefficients.', '<em>Where do roots stay real?</em>'],
+    headSize: 58,
+    sub: 'An isolated exponent at one, a failure gap, then a sharp universal threshold for every quartic with positive coefficients.',
+    tag: 'ANONYMOUS · UNREFEREED THEOREM CANDIDATE',
+    hero: `<div class="eq-label">the sharp universal exponent set</div>
+      <div class="eq eq-sm">{1} ∪ [<span class="hl">p*</span>, ∞)</div>
+      <div class="note"><b>p* ≈ 1.147720381</b><br>ordinary coefficient powers<br>strict real roots above p*</div>
+      <div class="eq-foot">written proof · scoped algebra checks</div>`
+  },
   'rbm31-exact-kl-radius': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 5 SEPTEMBER 2026', 'THREE-BIT MIXTURES · V0.1.0-CANDIDATE'],

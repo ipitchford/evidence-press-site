@@ -1752,7 +1752,27 @@ art['sharp-four-factor-cohen-macaulay-obstruction'] = (a, b) => {
   return s;
 };
 
+/* Quartic powers: an isolated identity exponent, a failure gap and a sharp
+   closed successful tail. Positions are schematic, not a numerical axis. */
+art['sharp-quartic-hadamard-powers'] = (a, b) => {
+  let s = `<text class="og-hide" x="66" y="64" font-family="ui-monospace,monospace" font-size="16" fill="#e7e5e4">ORDINARY COEFFICIENT POWERS · QUARTICS</text>`;
+  s += `<text class="og-hide" x="1134" y="64" text-anchor="end" font-family="ui-monospace,monospace" font-size="14" fill="${b}">UNREFEREED CANDIDATE</text>`;
+  s += `<line x1="88" y1="220" x2="1116" y2="220" stroke="#8a938f" stroke-width="2"/>`;
+  s += `<line x1="304" y1="220" x2="562" y2="220" stroke="${b}" stroke-width="7" stroke-dasharray="9 12"/>`;
+  s += `<line x1="588" y1="220" x2="1100" y2="220" stroke="${a}" stroke-width="10"/>`;
+  s += `<path d="M 1094 205 L 1118 220 L 1094 235" fill="none" stroke="${a}" stroke-width="8"/>`;
+  s += `<circle cx="278" cy="220" r="13" fill="${a}"/><circle cx="588" cy="220" r="13" fill="${a}"/>`;
+  s += `<text x="278" y="180" text-anchor="middle" font-family="Georgia" font-size="38" fill="#e7e5e4">1</text>`;
+  s += `<text x="588" y="180" text-anchor="middle" font-family="Georgia" font-size="38" fill="#e7e5e4">p*</text>`;
+  s += `<text class="og-hide" x="430" y="272" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" fill="${b}">FAILURE FOR SOME INPUTS</text>`;
+  s += `<text class="og-hide" x="850" y="272" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" fill="${a}">EVERY INPUT PRESERVED</text>`;
+  s += `<text class="og-hide" x="850" y="155" text-anchor="middle" font-family="Georgia" font-size="34" fill="${a}">p* ≈ 1.147720381</text>`;
+  s += `<text class="og-hide" x="600" y="352" text-anchor="middle" font-family="Georgia" font-size="28" fill="#e7e5e4">6<tspan baseline-shift="super" font-size="18">p*</tspan> − 2 · 4<tspan baseline-shift="super" font-size="18">p*</tspan> + 2 = 0</text>`;
+  return s;
+};
+
 const palette = {
+  'sharp-quartic-hadamard-powers': ['#2dd4bf', '#fbbf24'],
   'rbm31-exact-kl-radius': ['#2dd4bf', '#f59e0b'],
   'exact-low-length-recht-re-inequalities': ['#2dd4bf', '#f59e0b'],
   'z20-equals-6': ['#818cf8', '#f472b6'],
