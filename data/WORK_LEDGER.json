@@ -7568,7 +7568,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-05T10:18:27.402Z",
       "status": "active",
-      "statusAt": "2026-09-05T10:18:27.402Z",
+      "statusAt": "2026-09-05T14:10:45.255Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -7592,24 +7592,81 @@
             "event": "work-opened",
             "at": "2026-09-05T10:18:27.402Z",
             "basis": "Prospective review repair, bounded higher-degree stretch assessment, internal editorial assurance and full candidate publication. The theorem and earlier discovery predate this attempt and are excluded; historical research effort is not reconstructed."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-05T14:10:45.255Z",
+            "basis": "Green Linux CI, immutable candidate tag, published Zenodo and ten matching public asset downloads; site remains pending."
           }
         ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": 1,
+        "agentRuns": 6,
         "reworkMinutes": null,
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": "Written theorem candidate plus exact auxiliary algebra checks; no unaffiliated reproduction, formal verification, specialist or journal review, exhaustive novelty, priority or impact established.",
-        "evidenceRefs": [],
-        "missingnessReason": "Publication assurance gates have not run on the successor."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-05T14:10:45.255Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/22346503"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/sharp-quartic-hadamard-powers/actions/runs/33970746672"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/sharp-quartic-hadamard-powers/blob/main/ENVIRONMENT.txt"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed quartic theorem candidate with exact auxiliary checks; no external validation, formal proof, full AIM solution, all-degree classification, historical priority, four-star grade or impact established.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/sharp-quartic-hadamard-powers/releases/tag/v0.1.0-candidate",
+          "https://zenodo.org/records/22346503",
+          "https://github.com/ipitchford/sharp-quartic-hadamard-powers/actions/runs/33970746672",
+          "https://github.com/ipitchford/sharp-quartic-hadamard-powers/blob/v0.1.0-candidate/editorial/DECISION.md"
+        ],
+        "missingnessReason": "Canonical site publication remains pending. External assurance, exhaustive novelty, priority and impact are not established."
       },
-      "releaseSlug": null,
+      "releaseSlug": "sharp-quartic-hadamard-powers",
       "stopReason": null,
       "statusHistory": [
         {
@@ -7618,6 +7675,13 @@
           "resultClass": "pending",
           "reason": "Prospective review repair, bounded higher-degree stretch assessment, internal editorial assurance and full candidate publication. The theorem and earlier discovery predate this attempt and are excluded; historical research effort is not reconstructed.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-05T14:10:45.255Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research package is published with exact public asset readback; full candidate workflow remains active pending site gates and deployment.",
+          "evidenceRefs": ["https://zenodo.org/records/22346503", "https://github.com/ipitchford/sharp-quartic-hadamard-powers/actions/runs/33970746672"]
         }
       ],
       "metrics": {
@@ -7694,7 +7758,8 @@
           "date": "2026-09-05",
           "summary": "Registered before substantive successor work; excluded earlier discovery, retained bounded stretch and all external-assurance limits."
         }
-      ]
+      ],
+      "corrections": []
     },
     {
       "attemptId": "ep-attempt:rbm31-exact-kl-radius-revision-stretch-publication",
