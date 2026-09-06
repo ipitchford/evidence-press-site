@@ -48,9 +48,9 @@
       "workId": "ep-work:rbm43-eight-point-obstruction",
       "cohort": "prospective",
       "registeredAt": "2026-09-06T18:35:18Z",
-      "status": "active",
-      "statusAt": "2026-09-06T18:35:18Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-06T19:21:59.864Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -67,30 +67,131 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Task-local workflow stopwatch and runtime token receipts retained. Human active time and inference hardware costs unavailable; prior research excluded.",
+        "missingnessReason": "Continuous task-local coordinator-session stopwatch, with explicitly recorded unattended waits excluded; not inference hardware time or human labour. Native own-thread cumulative token counter deltas are cross-checked against unique response increments. Compute and human costs unavailable. One minute of separately timed CI diagnosis/repair is a lower bound on rework; earlier corrections were not separately timed and are disclosed in the append-only correction.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-06T18:35:18Z",
             "basis": "Prospective assurance and publication after registration only. Scientific discovery, supplied review and the earlier publication intake/token-limit pause predate registration and are excluded, with separate historical receipts retained. No retrospective research forecast."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-09-06T19:08:36Z",
+            "basis": "Observed ready: final source/PDF, manifest, fresh-extraction replay, hosted CI and public archival readback passed."
+          },
+          {
+            "event": "claim-locked",
+            "at": "2026-09-06T19:08:36Z",
+            "basis": "Exact archived candidate downloaded from both public GitHub and Zenodo; scientific claims frozen."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-06T19:21:59.864Z",
+            "basis": "First canonical release, exact public archive bytes, required CI, page/media QA and guarded preservation passed at the unchanged unrefereed claim ceiling. Second ledger-sealing deployment and administrative closeout are outside the frozen first-readback target."
           }
         ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": 1,
-        "reworkMinutes": 0,
-        "correctionCount": 0
+        "agentRuns": 6,
+        "reworkMinutes": 1,
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Prospective assurance endpoint pending."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-06T19:21:59.864Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/rbm43-eight-point-obstruction/",
+              "https://evidencepress.org/releases/rbm43-eight-point-obstruction/paper.json",
+              "https://github.com/ipitchford/rbm43-eight-point-obstruction/releases/tag/v0.2.0-candidate",
+              "https://doi.org/10.5281/zenodo.22550044"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/rbm43-eight-point-obstruction/actions/runs/34053796279"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/rbm43-eight-point-obstruction/blob/v0.2.0-candidate/ENVIRONMENT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/rbm43-eight-point-obstruction/blob/v0.2.0-candidate/editorial/DECISION.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/rbm43-eight-point-obstruction/blob/v0.2.0-candidate/CITATION_AUDIT.md"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate: closure-wide RBM(4,3) leakage inequality, nonuniversality, non-sharp TV lower bounds and parity-plus-one representability. No four-hidden sufficiency, minimal support, full classification, formal proof, external specialist review or historical priority.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/rbm43-eight-point-obstruction/",
+          "https://evidencepress.org/releases/rbm43-eight-point-obstruction/paper.json",
+          "https://github.com/ipitchford/rbm43-eight-point-obstruction/releases/tag/v0.2.0-candidate",
+          "https://doi.org/10.5281/zenodo.22550044"
+        ],
+        "missingnessReason": "Producer replay, coordinated AI editorial reconstruction and public availability do not establish unaffiliated reproduction, human specialist endorsement, formal verification or exhaustive priority."
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-06T19:21:59.864Z",
+          "field": "reworkMinutes interpretation",
+          "reason": "Earlier PDF/test concurrency repair, art-palette correction, README repair and metadata validation repairs were not separately timed. Deployment also required completing shallow Git history and a second pre-deployment PR for an omitted method-registry changeLog entry. Zero would be false; total active rework is unavailable.",
+          "replacement": "The numeric value 1 records only the rounded dedicated 19:11:39–19:12:39 UTC CI diagnosis/repair interval. Treat it as a minimum, not total rework. Subsequent validation and publication repair overlapped other scoped work. PR 223 is a recorded exception to the normal two-PR route; research assets and claims did not change.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/222",
+            "https://github.com/ipitchford/evidence-press-site/pull/223",
+            "https://github.com/ipitchford/rbm43-eight-point-obstruction/blob/v0.2.0-candidate/PDF_QA.md"
+          ]
+        }
+      ],
       "releaseSlug": "rbm43-eight-point-obstruction",
       "stopReason": null,
       "statusHistory": [
@@ -100,6 +201,18 @@
           "resultClass": "pending",
           "reason": "Prospective assurance and publication after registration only. Scientific discovery, supplied review and the earlier publication intake/token-limit pause predate registration and are excluded, with separate historical receipts retained. No retrospective research forecast.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-06T19:21:59.864Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "First canonical release, exact public archive bytes, required CI, page/media QA and guarded preservation passed at the unchanged unrefereed claim ceiling. Second ledger-sealing deployment and administrative closeout are outside the frozen first-readback target.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/rbm43-eight-point-obstruction/",
+            "https://evidencepress.org/releases/rbm43-eight-point-obstruction/paper.json",
+            "https://github.com/ipitchford/rbm43-eight-point-obstruction/releases/tag/v0.2.0-candidate",
+            "https://doi.org/10.5281/zenodo.22550044"
+          ]
         }
       ],
       "metrics": {
@@ -168,12 +281,60 @@
           ],
           "stopRule": "User removed time/token caps; continue until publication, but fail closed on unresolved scientific, rights, authorization or byte-integrity failures. No claim expansion."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-06T19:21:59.864Z",
+          "calendarElapsedMinutes": 47,
+          "activeAgentMinutes": 44,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 3,
+          "blockedMinutes": 0,
+          "reworkMinutes": 1,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 6,
+          "deduplicatedModelTokens": 17599917,
+          "uncachedInputTokens": 748404,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "First canonical release, exact public archive bytes, required CI, page/media QA and guarded preservation passed at the unchanged unrefereed claim ceiling. Second ledger-sealing deployment and administrative closeout are outside the frozen first-readback target.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -106,
+          "forecastRatio": 0.29333333333333333,
+          "withinForecastInterval": false,
+          "varianceReason": "The forecast was an uncalibrated full-candidate prior. Existing proof/certificate, concurrent bounded role review and established publication tools made the first canonical release faster despite disclosed tooling repairs. This is descriptive, not causal acceleration evidence.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human direction and review time not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Individual exact-check wall/CPU times are retained in receipts; complete nonoverlapping substantive-compute and inference-hardware accounting is unavailable, and ordinary builds/CI/deployment are not substantive research compute."
+            }
+          ]
+        }
       },
       "revisions": [
         {
           "date": "2026-09-06",
           "summary": "Registered prospective review repair, assurance and publication. Historical research and intake excluded."
+        },
+        {
+          "date": "2026-09-06",
+          "summary": "First canonical release, exact public archive bytes, required CI, page/media QA and guarded preservation passed at the unchanged unrefereed claim ceiling. Second ledger-sealing deployment and administrative closeout are outside the frozen first-readback target. Native counters and workflow stopwatch are scoped after registration; historical research/intake excluded. Rework is explicitly a measured minimum, not zero or a reconstructed total."
         }
       ]
     },
