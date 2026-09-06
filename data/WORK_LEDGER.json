@@ -8421,6 +8421,213 @@
           ]
         }
       }
+    },
+    {
+      "attemptId": "ep-attempt:potts-censoring-counterexample-assurance-publication",
+      "workId": "ep-work:potts-censoring-counterexample",
+      "cohort": "prospective",
+      "registeredAt": "2026-09-06T17:03:07.016Z",
+      "status": "release-candidate",
+      "statusAt": "2026-09-06T17:18:04.278Z",
+      "resultClass": "positive",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the reviewed finite-horizon ferromagnetic Potts counterexample pass supplemental exact replay and the full bounded Evidence Press publication gates?",
+      "selectionBasis": "User-supplied minor-revision report and full-publication authority; original scientific discovery is left-censored.",
+      "taskClass": "assurance-and-full-candidate-publication",
+      "decisionObjectTarget": "An exact finite counterexample with readable proof, replayable evidence, internal editorial reports and immutable public archives.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "No matched workflow comparator.",
+        "estimand": "No acceleration or impact effect estimated.",
+        "matchedAssuranceEndpoint": "No comparator endpoint.",
+        "reason": "Selected single publication attempt."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Task-local runtime intervals and command waits will be retained. Human time, compute cost and deduplicated model tokens unavailable. Pre-registration work excluded. The initial supplemental trial preceded registration by seconds and is excluded; post-registration fresh replays and editorial assurance are in scope.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-06T17:03:07.016Z",
+            "basis": "Prospective supplemental assurance and publication only. The exact discovery, supplied review, and initial wording/documentation edits predate registration and are excluded; no historical discovery clock is reconstructed."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-06T17:16:56.806Z",
+            "basis": "Internal five-role Accept, exact final replay, green hosted CI and four byte-identical GitHub/Zenodo assets."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 6,
+        "reworkMinutes": 0,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-09-06T17:16:56.806Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/22546547"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/potts-censoring-counterexample/blob/v0.1.0-candidate/replay-receipt.json"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/potts-censoring-counterexample/blob/v0.1.0-candidate/ENVIRONMENT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed exact finite-horizon q=3 counterexample candidate. No mixing-time, random-scan, every-q, minimality, practical speed-up, exhaustive novelty, priority, unaffiliated validation, formal proof or impact claim.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/potts-censoring-counterexample/releases/tag/v0.1.0-candidate",
+          "https://github.com/ipitchford/potts-censoring-counterexample/actions/runs/34047938420",
+          "https://zenodo.org/records/22546547",
+          "https://github.com/ipitchford/potts-censoring-counterexample/blob/v0.1.0-candidate/editorial/DECISION.md"
+        ],
+        "missingnessReason": "External assurance, exhaustive novelty, priority and impact remain unestablished. Site publication is a separate pending endpoint."
+      },
+      "releaseSlug": "potts-censoring-counterexample",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-09-06T17:03:07.016Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Prospective supplemental assurance and publication only. The exact discovery, supplied review, and initial wording/documentation edits predate registration and are excluded; no historical discovery clock is reconstructed.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-06T17:18:04.278Z",
+          "status": "release-candidate",
+          "resultClass": "positive",
+          "reason": "Research package publicly archived at its declared unrefereed assurance ceiling; site publication remains pending.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/potts-censoring-counterexample/releases/tag/v0.1.0-candidate",
+            "https://github.com/ipitchford/potts-censoring-counterexample/actions/runs/34047938420",
+            "https://zenodo.org/records/22546547",
+            "https://github.com/ipitchford/potts-censoring-counterexample/blob/v0.1.0-candidate/editorial/DECISION.md"
+          ]
+        }
+      ],
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Prospective supplemental assurance and publication only. The exact discovery, supplied review, and initial wording/documentation edits predate registration and are excluded; no historical discovery clock is reconstructed.",
+        "forecast": {
+          "frozenAt": "2026-09-06T17:03:07.016Z",
+          "procedureClass": "minor-revision-assurance-full-candidate",
+          "targetOutcome": "Supplemental exact checks, complete package and PDF, five-role internal editorial gate, public GitHub and Zenodo archives, media and two guarded publication cycles.",
+          "expectedActiveMinutes": 120,
+          "plausibleLowMinutes": 80,
+          "plausibleHighMinutes": 180,
+          "expectedUnattendedWaitMinutes": 20,
+          "referenceClass": {
+            "label": "Evidence Press full-candidate procedure",
+            "sampleSize": 1,
+            "basis": "Procedural reference only; not a calibrated comparative sample."
+          },
+          "fermiComponents": [
+            {
+              "component": "Exact supplements, packaging and PDF",
+              "count": 1,
+              "lowMinutesPerUnit": 20,
+              "centralMinutesPerUnit": 30,
+              "highMinutesPerUnit": 45,
+              "basis": "Existing written proof and three exact checkers."
+            },
+            {
+              "component": "Five-role editorial gate",
+              "count": 1,
+              "lowMinutesPerUnit": 15,
+              "centralMinutesPerUnit": 25,
+              "highMinutesPerUnit": 40,
+              "basis": "Frozen target and bounded differentiated roles."
+            },
+            {
+              "component": "Immutable identities, page and media",
+              "count": 1,
+              "lowMinutesPerUnit": 25,
+              "centralMinutesPerUnit": 35,
+              "highMinutesPerUnit": 50,
+              "basis": "Established generators and authenticated services."
+            },
+            {
+              "component": "Two deployment cycles and closeout",
+              "count": 1,
+              "lowMinutesPerUnit": 20,
+              "centralMinutesPerUnit": 30,
+              "highMinutesPerUnit": 45,
+              "basis": "Required new-slug A/B and C/D cycles."
+            }
+          ],
+          "probabilityPositiveSignal": 0.95,
+          "probabilityTargetClosure": 0.85,
+          "probabilityHorizonMinutes": 180,
+          "assumptions": [
+            "Exact witnesses replay.",
+            "Authenticated publishing services available.",
+            "No critical editorial finding."
+          ],
+          "reforecastTriggers": [
+            "Scientific or rights defect.",
+            "Authentication failure.",
+            "Concurrent site conflict."
+          ],
+          "stopRule": "Fail closed on scientific, rights, CI or public-byte-integrity failures; no expansion of the mathematical claim."
+        },
+        "outcome": null
+      },
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-09-06",
+          "summary": "Registered remaining assurance and publication; discovery and initial documentation revisions honestly excluded."
+        },
+        {
+          "date": "2026-09-06",
+          "summary": "Recorded exact producer assurance and immutable research availability, without external assurance promotion."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -8765,6 +8972,10 @@
     {
       "date": "2026-09-05",
       "summary": "Recorded the first canonical Jordan-growth release and partial resource outcome; research assurance remains unrefereed and external validation is unestablished."
+    },
+    {
+      "date": "2026-09-06",
+      "summary": "Registered remaining assurance and publication; discovery and initial documentation revisions honestly excluded."
     }
   ]
 }

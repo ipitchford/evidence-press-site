@@ -33,6 +33,16 @@ ${inner}
 
 const art = {};
 
+/* Exact labelled house graph and fixed deletion, not a mixing-time plot. */
+art['potts-censoring-counterexample'] = (a,b) => {
+  const nodes={A:[150,170],B:[390,170],C:[270,65],D:[150,315],E:[390,315]};
+  let s='';
+  for(const [u,v] of ['AB','AC','AD','BC','BE','DE']){const p=nodes[u],q=nodes[v];s+=`<line x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}" stroke="${a}" stroke-width="4"/>`;}
+  for(const [name,[x,y]] of Object.entries(nodes))s+=`<circle cx="${x}" cy="${y}" r="10" fill="${a}"/><text x="${x+18}" y="${y+8}" fill="#e7e5e4" font-family="Georgia" font-size="25">${name}</text>`;
+  s+=`<text class="og-hide" x="820" y="105" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="30">One omitted update</text><text class="og-hide" x="820" y="157" text-anchor="middle" fill="${b}" font-family="monospace" font-size="24">C E B C B A [E] B E</text><text class="og-hide" x="820" y="223" text-anchor="middle" fill="${a}" font-family="Georgia" font-size="28">a strictly closer final law</text><text class="og-hide" x="820" y="273" text-anchor="middle" fill="#b9c8c5" font-family="monospace" font-size="18">3 colours · activity 30 · exact arithmetic</text><text class="og-hide" x="820" y="326" text-anchor="middle" fill="#b9c8c5" font-family="monospace" font-size="17">FINITE HORIZON · UNREFEREED CANDIDATE</text>`;
+  return s;
+};
+
 /* Schematic chain lift, not a drawing of the enormous witness graph. */
 art['linear-nonbacktracking-jordan-growth'] = (a,b) => {
   let s='<text class="og-hide" x="70" y="65" fill="#e7e5e4" font-family="monospace" font-size="18">COUNTING NON-BACKTRACKING MATRICES</text>';
@@ -1787,6 +1797,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'potts-censoring-counterexample': ['#2dd4bf', '#fbbf24'],
   'linear-nonbacktracking-jordan-growth': ['#38bdf8', '#fbbf24'],
   'sharp-quartic-hadamard-powers': ['#2dd4bf', '#fbbf24'],
   'rbm31-exact-kl-radius': ['#2dd4bf', '#f59e0b'],

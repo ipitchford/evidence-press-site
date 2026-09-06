@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'potts-censoring-counterexample': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 6 SEPTEMBER 2026', 'FERROMAGNETIC POTTS · V0.1.0-CANDIDATE'],
+    head: ['Skip one update.', '<em>End closer.</em>'],
+    headSize: 73,
+    sub: 'An exact three-colour counterexample at a fixed horizon. Not a mixing-time or practical speed-up claim.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">one predetermined deletion</div><div class="eq eq-sm">5 vertices</div><div class="note"><b>9 opportunities</b><br>3 colours · activity 30<br>strictly positive exact gap</div><div class="eq-foot">full equilibrium · finite horizon</div>'
+  },
   'linear-nonbacktracking-jordan-growth': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 5 SEPTEMBER 2026', 'NON-BACKTRACKING GRAPHS · PART (1)'],
