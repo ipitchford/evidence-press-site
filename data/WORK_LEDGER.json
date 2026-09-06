@@ -93,9 +93,9 @@
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": 6,
-        "reworkMinutes": 1,
-        "correctionCount": 1
+        "agentRuns": 1,
+        "reworkMinutes": 0,
+        "correctionCount": 3
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -189,6 +189,26 @@
             "https://github.com/ipitchford/evidence-press-site/pull/222",
             "https://github.com/ipitchford/evidence-press-site/pull/223",
             "https://github.com/ipitchford/rbm43-eight-point-obstruction/blob/v0.2.0-candidate/PDF_QA.md"
+          ]
+        },
+        {
+          "at": "2026-09-06T19:21:59.864Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "The already public intake measurement agentRuns=1 is a historical opening snapshot, not the completed-attempt total. It must remain unchanged.",
+          "replacement": "The terminal metrics outcome records agentRuns=6. Agent runs include the coordinator and five bounded reviewers; reworkMinutes remains the explicitly disclosed measured minimum, not total rework.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/222",
+            "https://github.com/ipitchford/evidence-press-site/pull/223"
+          ]
+        },
+        {
+          "at": "2026-09-06T19:21:59.864Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "The already public intake measurement reworkMinutes=0 is a historical opening snapshot, not the completed-attempt total. It must remain unchanged.",
+          "replacement": "The terminal metrics outcome records reworkMinutes=1. Agent runs include the coordinator and five bounded reviewers; reworkMinutes remains the explicitly disclosed measured minimum, not total rework.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/222",
+            "https://github.com/ipitchford/evidence-press-site/pull/223"
           ]
         }
       ],
