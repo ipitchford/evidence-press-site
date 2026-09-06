@@ -1,0 +1,228 @@
+{
+  "slug": "rbm43-eight-point-obstruction",
+  "title": "An eight-point obstruction to universality of RBM(4,3)",
+  "shortTitle": "Eight states an RBM cannot fit",
+  "oneLine": "An explicit eight-state distribution cannot be approximated arbitrarily well by a classical binary model with four visible and three hidden units.",
+  "abstract": "This unrefereed candidate proves a necessary leakage inequality on the entire real binary RBM(4,3) visible closure. Forty-two integer identities and an exhaustive selector cover exclude a specified eight-point support. The written proof also supplies a strictly positive excluded distribution and non-sharp total-variation separation bounds. A contrasting proposition represents every distribution on a nine-point parity-plus-one support. The result makes at least four hidden units necessary for universality on four visible bits, without showing that four suffice. Exact producer checks and internal AI editorial review are not unaffiliated validation or formal proof.",
+  "narration": "Can a small probabilistic neural network represent every distribution on four yes-or-no variables? Four binary variables have sixteen possible patterns. A restricted Boltzmann machine with four visible units and three hidden units has nineteen adjustable parameters. That sounds plentiful, but counting parameters does not settle what the model can represent. This unrefereed candidate gives a negative answer. Choose eight particular patterns and assign equal probability to them, with zero probability elsewhere. The proof shows that the model cannot get arbitrarily close to this distribution, even when its parameters grow without bound. The key is a leakage inequality. If every chosen pattern receives appreciable probability, some probability must remain outside the chosen set. Forty-two exact integer identities, expanded through cube symmetries, cover every relevant hidden-state selection. A short written argument turns that finite certificate into a statement about the entire model closure. The paper also gives a strictly positive excluded distribution and explicit lower bounds on approximation error. Those bounds are tiny and not claimed to be sharp; they do not measure a practical training penalty. In contrast, every distribution on a specified nine-pattern parity-plus-one support is attainable. Geometry matters, not just the number of patterns. At least four hidden units are therefore necessary for universal approximation, but this work does not show that four are sufficient. This is an Evidence Press unrefereed candidate release dated sixth September twenty twenty-six. The full paper, exact evidence and limitations are linked. Producer replay and internal AI review are not independent mathematical validation. This AI-generated OpenAI synthetic voice is a communication aid, not additional evidence.",
+  "datePublished": "2026-09-06",
+  "version": "0.2.0-candidate",
+  "doi": "10.5281/zenodo.22550044",
+  "conceptDoi": "10.5281/zenodo.22550043",
+  "zenodoUrl": "https://zenodo.org/records/22550044",
+  "pdfUrl": "https://github.com/ipitchford/rbm43-eight-point-obstruction/releases/download/v0.2.0-candidate/rbm43-eight-point-obstruction-0.2.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22550044/files/rbm43-eight-point-obstruction-0.2.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/rbm43-eight-point-obstruction",
+  "releaseUrl": "https://github.com/ipitchford/rbm43-eight-point-obstruction/releases/tag/v0.2.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/rbm43-eight-point-obstruction.mp3",
+      "name": "Audio briefing — eight states an RBM cannot fit",
+      "description": "Plain-English synthetic narration; communication, not additional evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/rbm43-eight-point-obstruction.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex under human direction",
+      "Python standard library; Z3 and SymPy for historical discovery",
+      "Pandoc 3.9 and pdfLaTeX"
+    ],
+    "humanRole": "Problem selection, research direction, supplied review and full-publication authorization. Scholarly creator remains Anonymous.",
+    "disclosure": "AI assistance contributed proof, code, exposition, repairs and internal editorial review. The supplied AI review reports a separate reconstruction, but its linked audit ZIP was not retrieved here; no unaffiliated assurance promotion."
+  },
+  "problem": {
+    "name": "RBM(4,3) universality — screening dataset AIM-PROBABILITY-0001",
+    "url": "https://aimath.org/pastworkshops/boltzmannrep.pdf"
+  },
+  "keywords": [
+    "restricted Boltzmann machine",
+    "universal approximation",
+    "algebraic statistics",
+    "finite integer certificate",
+    "model closure",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "A closure-wide necessary inequality excludes the specified eight-point support for real binary RBM(4,3).",
+    "A strictly positive distribution is also excluded, with certified non-sharp total-variation lower bounds.",
+    "Every law on the specified parity-plus-one support is attainable.",
+    "At least four hidden units are necessary; four-hidden sufficiency and smallest excluded support remain undetermined."
+  ],
+  "evidence": "Nine-page manuscript, printable and JSON 42-row certificate, standalone standard-library verifiers, two exhaustive selector-cover implementations, exact auxiliary constructions, normal/optimized replay, mutation and immutable-receipt controls, manifest, source comparison and scoped review response. Internal editorial reports and exact archive identity are linked with the release.",
+  "statusDetail": "Unrefereed candidate for classical real binary RBM(4,3), including the full visible closure. No four-hidden sufficiency, minimal excluded support, complete classification, sharp error radius, practical training penalty, formal proof, unaffiliated reproduction or historical priority is claimed.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22550044",
+      "note": "All four assets downloaded from public GitHub and Zenodo and SHA-256 matched on 2026-09-06 at 19:08 UTC. This is archival availability, not validation of the mathematical result."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/rbm43-eight-point-obstruction/blob/v0.2.0-candidate/replay-receipt.json",
+      "note": "Exact integer and rational checks, normal/optimized replay and hostile/read-only controls. Coordinated review is internal only."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/rbm43-eight-point-obstruction/blob/v0.2.0-candidate/ENVIRONMENT.md",
+      "note": "Standard-library replay and pinned recorded runtimes; no hermetic or cross-platform PDF-byte identity claim."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Supplied AI review reports additional execution, but its separate audit archive was not retrieved; no authenticated unaffiliated evidence establishes this dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Supplied AI review reports additional execution, but its separate audit archive was not retrieved; no authenticated unaffiliated evidence establishes this dimension."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No external specialist/venue decision or proof-assistant theorem establishes this dimension. Internal AI role review does not qualify."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No external specialist/venue decision or proof-assistant theorem establishes this dimension. Internal AI role review does not qualify."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external specialist/venue decision or proof-assistant theorem establishes this dimension. Internal AI role review does not qualify."
+    }
+  },
+  "openProblems": [
+    "Obtain an unaffiliated reconstruction with a publicly retrievable receipt and specialist review.",
+    "Determine the exact minimum universal hidden-unit count for four visible bits.",
+    "Find sharp approximation distances or smaller excluded supports.",
+    "Generalize the certificate-to-leakage method while checking the new selector domain separately."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "American Institute of Mathematics. Boltzmann machines workshop summary, page 2: fixed-size question, parity-plus-one investigation and eight-vertex proof outline.",
+      "url": "https://aimath.org/pastworkshops/boltzmannrep.pdf"
+    },
+    {
+      "citation": "Montúfar (2018). Restricted Boltzmann Machines: Introduction and Review, Sections 6 and 9.",
+      "url": "https://arxiv.org/abs/1806.07066"
+    },
+    {
+      "citation": "Seigal and Montúfar (2018). Mixtures and products in two graphical models. Real inequalities for RBM(3,2).",
+      "url": "https://arxiv.org/abs/1709.05276"
+    },
+    {
+      "citation": "Sonthalia, Seigal and Montúfar (2023). Supermodular Rank: Set Function Decomposition and Optimization.",
+      "url": "https://arxiv.org/abs/2305.14632"
+    },
+    {
+      "citation": "Antolini, Montúfar and Oneto (2025). Hadamard ranks of algebraic varieties. Generic complex rank is a different boundary.",
+      "url": "https://arxiv.org/abs/2510.05231"
+    },
+    {
+      "citation": "Reinhart and De les Coves (2026). Universal spin models are universal approximators in machine learning. Hidden size may vary.",
+      "url": "https://doi.org/10.1103/b3xp-wtwx"
+    }
+  ],
+  "citeText": "Anonymous. (2026). An eight-point obstruction to universality of RBM(4,3) (Version 0.2.0-candidate) [Unrefereed candidate and exact evidence package]. Evidence Press. DOI: 10.5281/zenodo.22550044.",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:rbm43-eight-point-obstruction",
+    "attemptIds": [
+      "ep-attempt:rbm43-eight-point-obstruction-assurance-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "counterexample-proxy-first",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "obstruction",
+      "description": "Finite integer certificate giving a visible leakage inequality and explicit excluded distributions.",
+      "scope": "Classical real binary RBM(4,3) including the entire visible closure."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Augmented sufficient-statistic identities imply normalized probability monomials; exhaustive hidden selectors supply an identity at every parameter value; leakage and continuity give the closure-wide obstruction.",
+      "remainingRisks": [
+        "Written analytic bridge is not formally verified.",
+        "Coordinated checkers/reviewers may share errors.",
+        "Bounded novelty search does not establish priority.",
+        "No practical modelling penalty follows from tiny certified lower bounds."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Check the full-model-to-selector and continuity arguments.",
+      "Separate real probability laws from generic complex decompositions.",
+      "Assess source correspondence and historical priority.",
+      "Preserve rights, Anonymous authorship and assurance boundaries."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://aimath.org/pastworkshops/boltzmannrep.pdf",
+        "inheritedClaim": "Fixed (4,3) universality question and workshop proof outline supply historical problem framing.",
+        "inheritedAssuranceCeiling": "Source framing, not a theorem dependency or priority clearance."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated exact reconstruction and specialist assessment; larger architectures remain new research.",
+      "claimCeiling": "Unrefereed candidate for classical real binary RBM(4,3), including the full visible closure. No four-hidden sufficiency, minimal excluded support, complete classification, sharp error radius, practical training penalty, formal proof, unaffiliated reproduction or historical priority is claimed."
+    },
+    "impactClaims": [
+      {
+        "id": "rbm43-eight-point-obstruction-no-impact",
+        "aim": "science",
+        "outcome": "Reusable fixed-architecture obstruction",
+        "setting": "Producer-coordinated mathematical candidate publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched comparator.",
+        "estimand": "No research acceleration, reuse or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Research assurance assessed on 2026-09-06 at 19:08 UTC after local replay, hosted Python 3.10/3.12/3.14 CI and byte-identical GitHub/Zenodo readback. Canonical site-publication readback is recorded separately in PUBLISHED.json only after deployment. Historical research and initial publication intake are excluded from the prospectively registered assurance/publication clock."
+}

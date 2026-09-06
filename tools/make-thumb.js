@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'rbm43-eight-point-obstruction': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 6 SEPTEMBER 2026', 'RESTRICTED BOLTZMANN MACHINES'],
+    head: ['Three hidden units.', '<em>Not universal.</em>'],
+    headSize: 66,
+    sub: 'An eight-point obstruction, valid across the full real model closure. Not a practical training-loss estimate.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">classical binary model</div><div class="eq eq-sm">RBM(4,3)</div><div class="note"><b>4 visible · 3 hidden</b><br>8-point obstruction<br>42 integer identities</div><div class="eq-foot">four-hidden sufficiency remains open here</div>'
+  },
   'potts-censoring-counterexample': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 6 SEPTEMBER 2026', 'FERROMAGNETIC POTTS · V0.1.0-CANDIDATE'],
