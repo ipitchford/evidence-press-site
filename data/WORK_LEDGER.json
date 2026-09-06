@@ -8427,8 +8427,8 @@
       "workId": "ep-work:potts-censoring-counterexample",
       "cohort": "prospective",
       "registeredAt": "2026-09-06T17:03:07.016Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-06T17:18:04.278Z",
+      "status": "published",
+      "statusAt": "2026-09-06T17:33:47.585Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -8457,6 +8457,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-09-06T17:16:56.806Z",
             "basis": "Internal five-role Accept, exact final replay, green hosted CI and four byte-identical GitHub/Zenodo assets."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-06T17:33:47.585Z",
+            "basis": "First guarded canonical release, exact protocol and corpus readback, desktop/mobile browser and matching paper.json. Final live-ledger seal follows this measurement cut."
           }
         ],
         "activeHumanMinutes": null,
@@ -8464,7 +8469,7 @@
         "computeCost": null,
         "agentRuns": 6,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 2
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -8547,6 +8552,16 @@
             "https://zenodo.org/records/22546547",
             "https://github.com/ipitchford/potts-censoring-counterexample/blob/v0.1.0-candidate/editorial/DECISION.md"
           ]
+        },
+        {
+          "at": "2026-09-06T17:33:47.585Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Canonical paper and media are live at the unrefereed finite-counterexample ceiling. This first-readback receipt precedes the mandatory second ledger-sealing cycle.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/potts-censoring-counterexample/",
+            "https://github.com/ipitchford/evidence-press-site/pull/219"
+          ]
         }
       ],
       "metrics": {
@@ -8615,9 +8630,74 @@
           ],
           "stopRule": "Fail closed on scientific, rights, CI or public-byte-integrity failures; no expansion of the mathematical claim."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-06T17:33:47.585Z",
+          "calendarElapsedMinutes": 31,
+          "activeAgentMinutes": 5,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 4,
+          "blockedMinutes": 0,
+          "reworkMinutes": 1,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 6,
+          "deduplicatedModelTokens": 12260070,
+          "uncachedInputTokens": 532071,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "positive-signal",
+          "resultSummary": "Exact supplemental assurance, five internal Accept reports, immutable GitHub/Zenodo identity and the first canonical Evidence Press release passed. No new discovery cycle is claimed. The frozen target also includes the second ledger-sealing deployment, still pending at this immutable measurement cut; final Git/CI/deployment receipts establish that later event separately.",
+          "positiveSignalObserved": true,
+          "targetReached": false,
+          "forecastErrorMinutes": -115,
+          "forecastRatio": 0.041666666666666664,
+          "withinForecastInterval": false,
+          "varianceReason": "Generation and context-compaction wait are observed lower bounds, not complete labour or wait totals. Rework is an upper attribution bound on coordinator generation during the first failed site-build to repaired-content build window. Token scope uses response-completion timestamps; a boundary-crossing response may include some pre-registration input. Cached input is included in raw tokens and separated below. No acceleration inference. This first-publication cut is narrower than the forecast full closeout; no performance or forecast-success conclusion follows.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "No contemporaneous human active-time telemetry."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No complete resource-time accounting for all local and hosted checks."
+            }
+          ]
+        }
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-06T17:33:47.585Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "The first snapshot retained zero before site preflight identified stale derived Atlas counts and missing catalogue audio metadata.",
+          "replacement": "Retain zero in the historical snapshot; terminal measured rework is 1 rounded minutes, an upper attribution bound on instrumented coordinator generation during the repair window, not complete labour.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/potts-censoring-counterexample/",
+            "https://github.com/ipitchford/evidence-press-site/pull/219"
+          ]
+        },
+        {
+          "at": "2026-09-06T17:33:47.585Z",
+          "field": "measurement.missingnessReason -> metrics.outcome.deduplicatedModelTokens and metrics.outcome.uncachedInputTokens",
+          "reason": "Runtime token_usage_record events were subsequently identified; the initial unavailability statement remains a historical snapshot.",
+          "replacement": "Terminal token totals deduplicate response_id, match each source file own thread identity, and include cached input in the raw total. No cumulative token_count or inherited fork counters are summed; boundary-completion timing and incomplete active-generation coverage are disclosed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/potts-censoring-counterexample/",
+            "https://github.com/ipitchford/evidence-press-site/pull/219"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-06",
@@ -8626,6 +8706,10 @@
         {
           "date": "2026-09-06",
           "summary": "Recorded exact producer assurance and immutable research availability, without external assurance promotion."
+        },
+        {
+          "date": "2026-09-06",
+          "summary": "Appended first canonical readback, scoped runtime outcome and explicit historical-measurement corrections. Second live-ledger deployment remains outside this frozen outcome."
         }
       ]
     }
@@ -8976,6 +9060,10 @@
     {
       "date": "2026-09-06",
       "summary": "Registered remaining assurance and publication; discovery and initial documentation revisions honestly excluded."
+    },
+    {
+      "date": "2026-09-06",
+      "summary": "Recorded first canonical Potts finite-counterexample publication, append-only runtime corrections and the explicit pending second-seal measurement boundary; no mathematical or external-assurance promotion."
     }
   ]
 }
