@@ -1,0 +1,220 @@
+{
+  "slug": "potts-censoring-counterexample",
+  "title": "A five-vertex counterexample to ferromagnetic Potts censoring",
+  "shortTitle": "Skipping one Potts update",
+  "oneLine": "An exact five-vertex example shows that omitting one predetermined update can leave a ferromagnetic three-colour Potts model closer to equilibrium at a fixed horizon.",
+  "abstract": "This anonymous unrefereed candidate gives a finite-horizon counterexample to the universal ferromagnetic Potts censoring inequality from a monochromatic start. On a five-vertex six-edge graph with three colours, no external fields and uniform activity 30, deleting the seventh update from a nine-opportunity heat-bath word strictly reduces total-variation distance to the full Gibbs law. The positive gap is an exact rational, approximately 1.0319815176e-8. A written reduction to 27 marginal entries, three producer-side exact reconstructions, complete final distributions and adversarial controls are supplied. Exact supplementary checks explain the reversal after a common suffix and certify a longer all-sites-updated witness. No mixing-time improvement, practical speed-up, minimality, historical priority or external validation is claimed.",
+  "narration": "Can doing less leave a random system closer to equilibrium? For some ordered mathematical models, a censoring theorem says that skipping updates cannot help when the system starts at its top state. This unrefereed candidate shows that the analogous rule fails for a three-colour ferromagnetic Potts model started entirely one colour. Picture five points joined by six edges: a triangle sharing one edge with a four-sided loop. Neighbouring points prefer to have matching colours. At each scheduled update, one point receives a colour sampled from its exact conditional probabilities. Compare nine scheduled opportunities with the same schedule but one predetermined update omitted. At the final horizon, the distribution produced by skipping that update is slightly closer to the full equilibrium distribution. The gap is tiny, around one hundred-millionth, but it is an exact positive fraction, not floating-point noise. Three producer-side calculations reconstruct the result, and the written argument reduces two hundred and forty-three states to twenty-seven marginal entries. The extra update initially helps its own chain. Later shared updates reverse the ordering between the two distances, while each chain separately moves closer to equilibrium. This does not imply faster simulation, better mixing times, or that skipping updates usually helps. This is the Evidence Press release of sixth September twenty twenty-six, an unrefereed candidate. The full paper, exact evidence and limitations are linked. Producer checks and internal model review are not independent mathematical validation. This AI-generated OpenAI synthetic voice is a communication aid, not additional evidence.",
+  "datePublished": "2026-09-06",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22546547",
+  "conceptDoi": "10.5281/zenodo.22546546",
+  "zenodoUrl": "https://zenodo.org/records/22546547",
+  "pdfUrl": "https://github.com/ipitchford/potts-censoring-counterexample/releases/download/v0.1.0-candidate/potts-censoring-counterexample-0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22546547/files/potts-censoring-counterexample-0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/potts-censoring-counterexample",
+  "releaseUrl": "https://github.com/ipitchford/potts-censoring-counterexample/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/potts-censoring-counterexample.mp3",
+      "name": "Audio briefing — skipping one Potts update",
+      "description": "Plain-English synthetic narration; communication, not additional evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/potts-censoring-counterexample.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex under human direction",
+      "Python standard library",
+      "XeLaTeX / TeX Live 2026"
+    ],
+    "humanRole": "Research direction, problem selection, supplied review and publication authorization; scholarly creator remains Anonymous.",
+    "disclosure": "AI assistance produced research, proof exposition, code, revisions, internal editorial review and packaging. No unaffiliated assurance follows from multiple coordinated programs or reviewers."
+  },
+  "problem": {
+    "name": "AIM-PROBABILITY-0035: Censoring for the Potts model",
+    "url": "https://www.unsolvedmath.com"
+  },
+  "keywords": [
+    "Potts model",
+    "censoring inequality",
+    "heat-bath dynamics",
+    "total variation",
+    "exact counterexample",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "A predetermined interior update deletion strictly reduces finite-horizon total-variation distance for the specified ferromagnetic q=3 monochromatic-start model.",
+    "Exact 243-state laws reduce to 27 marginal rows with the full unconditioned Gibbs reference.",
+    "The extra update initially helps; relative distance ordering reverses after the shared suffix.",
+    "A separate activity-100 supporting witness updates every site in both words."
+  ],
+  "evidence": "Six-page DOI-bearing paper, aligned mathematical Markdown, exact distributions and marginal certificate, three producer-side exact implementations, supplemental exact trajectory and all-sites witness, 14 adversarial test groups, normal/optimized and fresh-extraction replay, hosted Python CI, a supplied-review response, five frozen internal editorial reports and synthesis, source comparison and component licences. Public assets match across GitHub, Zenodo and local hashes. Internal editorial decision: https://github.com/ipitchford/potts-censoring-counterexample/blob/v0.1.0-candidate/editorial/DECISION.md.",
+  "statusDetail": "Unrefereed exact finite-horizon q=3 counterexample candidate. No mixing-time, random-scan, every-q, minimality, practical speed-up, exhaustive novelty, priority, unaffiliated validation, formal proof or impact claim.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22546547",
+      "note": "Public GitHub and Zenodo assets were independently downloaded and hashed against the local frozen files."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/potts-censoring-counterexample/blob/v0.1.0-candidate/replay-receipt.json",
+      "note": "Three producer-side exact implementations, supplemental trajectory and all-sites witness, 14 test groups in normal and optimized modes, fresh extraction and hosted Python CI. Five internal AI editorial roles accept; no external assurance promotion."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/potts-censoring-counterexample/blob/v0.1.0-candidate/ENVIRONMENT.md",
+      "note": "Standard-library exact replay, source inputs and hashes supplied; no hermetic environment or cross-platform PDF identity claim."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No authenticated unaffiliated evidence establishes this dimension. Producer-coordinated implementations and internal AI review do not qualify."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No authenticated unaffiliated evidence establishes this dimension. Producer-coordinated implementations and internal AI review do not qualify."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No authenticated unaffiliated evidence establishes this dimension. Producer-coordinated implementations and internal AI review do not qualify."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No authenticated unaffiliated evidence establishes this dimension. Producer-coordinated implementations and internal AI review do not qualify."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No authenticated unaffiliated evidence establishes this dimension. Producer-coordinated implementations and internal AI review do not qualify."
+    }
+  },
+  "openProblems": [
+    "Obtain an unaffiliated reconstruction and authenticated specialist review.",
+    "Determine smaller graphs or shorter schedules; no minimality was proved.",
+    "Find explicit activity intervals and assess other colour counts.",
+    "Identify structural conditions controlling relative-distance reversal without inferring mixing-time or practical gains."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Peres and Winkler (2013). Can extra updates delay mixing? Monotone-system positive theorem.",
+      "url": "https://doi.org/10.1007/s00220-013-1776-0"
+    },
+    {
+      "citation": "Holroyd (2011). Some circumstances where extra updates can delay mixing. Antiferromagnetic failure and ferromagnetic constant-start question.",
+      "url": "https://doi.org/10.1007/s10955-011-0365-x"
+    },
+    {
+      "citation": "Fill and Kahn (2013). Comparison inequalities and fastest-mixing Markov chains.",
+      "url": "https://doi.org/10.1214/12-AAP886"
+    },
+    {
+      "citation": "Blanca and Tahmidur (2026). Mixing and cutoff for the systematic scan dynamics of the mean-field ferromagnetic Potts model. Different asymptotic setting.",
+      "url": "https://arxiv.org/abs/2607.09841"
+    }
+  ],
+  "citeText": "Anonymous. (2026). A five-vertex counterexample to ferromagnetic Potts censoring (Version 0.1.0-candidate) [Unrefereed candidate and exact evidence package]. Evidence Press. https://doi.org/10.5281/zenodo.22546547",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:potts-censoring-counterexample",
+    "attemptIds": [
+      "ep-attempt:potts-censoring-counterexample-assurance-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "counterexample-proxy-first",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Explicit finite ferromagnetic Potts heat-bath update word and exact positive distance gap.",
+      "scope": "q=3, five vertices, activity 30, monochromatic start and one fixed nine-opportunity comparison."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Neighbour-count heat-bath probabilities, full Gibbs-fibre reconstruction and conditional-factor marginal reduction target the same finite state laws and predetermined deletion.",
+      "remainingRisks": [
+        "Same-producer implementation and semantic errors remain possible.",
+        "No proof-assistant certification.",
+        "Inaccessible original AIM endpoint; bounded priority search.",
+        "No broader mixing-time or practical consequence established."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Check the source-to-state-law and unconditioned-equilibrium bridge.",
+      "Preserve finite-horizon scope and distinguish contraction from relative ordering.",
+      "Assess priority separately from exact correctness.",
+      "Preserve rights, Anonymous authorship and assurance separation."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/1101.4690",
+        "inheritedClaim": "Primary text poses the ferromagnetic constant-start censoring question.",
+        "inheritedAssuranceCeiling": "Historical question framing, not a proof or current priority clearance."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Seek unaffiliated exact reconstruction and specialist assessment; treat extensions as new research.",
+      "claimCeiling": "Unrefereed exact finite-horizon q=3 counterexample candidate. No mixing-time, random-scan, every-q, minimality, practical speed-up, exhaustive novelty, priority, unaffiliated validation, formal proof or impact claim."
+    },
+    "impactClaims": [
+      {
+        "id": "potts-censoring-counterexample-no-impact",
+        "aim": "science",
+        "outcome": "Reusable exact censoring obstruction",
+        "setting": "Producer-coordinated mathematical candidate publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched workflow comparator.",
+        "estimand": "No discovery, effort, reuse or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Research assurance assessed 2026-09-06T17:16:56.806Z against the frozen mathematical target and its identity-bearing successor. Internal editorial review and producer replay do not promote external assurance. Canonical publication readback and terminal metrics are separate later events."
+}

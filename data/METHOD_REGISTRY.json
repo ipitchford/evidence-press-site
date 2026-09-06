@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "updated": "2026-09-05",
+  "updated": "2026-09-06",
   "status": "working-taxonomy",
   "claimCeiling": "Registry inclusion means that a release illustrates a reusable method. It does not establish the release's correctness, novelty, independent reproduction or real-world impact.",
   "aims": [
@@ -739,13 +739,22 @@
         "sharp-quartic-hadamard-powers"
       ],
       "sharedBoundary": "Unrefereed quartic theorem candidate with exact auxiliary checks; no external validation, formal proof, full AIM solution, all-degree classification, historical priority, four-star grade or impact established."
-    }
-    ,
+    },
     {
       "id": "nonbacktracking-jordan-valuation-realization",
       "name": "Non-backtracking Jordan valuation and graph realization",
-      "members": ["linear-nonbacktracking-jordan-growth"],
+      "members": [
+        "linear-nonbacktracking-jordan-growth"
+      ],
       "sharedBoundary": "Written arbitrary-parameter valuation and graph embedding, with finite producer controls; no independent validation, exact extremum, optimal constants, priority or impact established."
+    },
+    {
+      "id": "potts-finite-word-censoring-obstruction-2026-09-06",
+      "name": "Exact finite-word ferromagnetic Potts censoring obstruction",
+      "members": [
+        "potts-censoring-counterexample"
+      ],
+      "sharedBoundary": "Unrefereed exact finite-horizon q=3 counterexample candidate. No mixing-time, random-scan, every-q, minimality, practical speed-up, exhaustive novelty, priority, unaffiliated validation, formal proof or impact claim."
     }
   ],
   "lineages": [
@@ -811,7 +820,12 @@
     }
   ],
   "releaseAssignments": {
-    "linear-nonbacktracking-jordan-growth": ["structural-compression", "adversarial-controls", "assurance-vector", "agent-readable-research-object"],
+    "linear-nonbacktracking-jordan-growth": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
     "aggregation-without-sufficiency": [
       "structural-compression",
       "adversarial-controls",
@@ -1207,6 +1221,14 @@
       "adversarial-controls",
       "assurance-vector",
       "agent-readable-research-object"
+    ],
+    "potts-censoring-counterexample": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "counterexample-proxy-first",
+      "assurance-vector",
+      "agent-readable-research-object"
     ]
   },
   "updatePolicy": {
@@ -1371,6 +1393,10 @@
     {
       "date": "2026-09-05",
       "summary": "Registered linear Jordan-growth valuation, uniform encoding and simple-graph realization; no internal lineage, external assurance, priority or impact promotion."
+    },
+    {
+      "date": "2026-09-06",
+      "summary": "Registered the exact finite-word Potts censoring counterexample methods; no internal lineage, external assurance, priority or impact promotion."
     }
   ]
 }
