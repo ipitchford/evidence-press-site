@@ -32,6 +32,31 @@ ${inner}
 }
 
 const art = {};
+/* Two three-cube layers display all sixteen visible states; selected nodes are S. */
+art['rbm43-eight-point-obstruction'] = (a,b) => {
+  const support=new Set([0,1,2,4,7,9,10,12]);
+  let s='';
+  for(const layer of [0,1]){
+    const ox=55+270*layer;
+    const pt=x=>[ox+110*(x&1)+54*((x>>2)&1),268-110*((x>>1)&1)-58*((x>>2)&1)];
+    for(let x=0;x<8;x++)for(const bit of [1,2,4])if(!(x&bit)){
+      const p=pt(x),q=pt(x^bit);
+      s+='<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+q[0]+'" y2="'+q[1]+'" stroke="#83938f" opacity=".4" stroke-width="2"/>';
+    }
+    for(let x=0;x<8;x++){
+      const p=pt(x),v=8*layer+x,on=support.has(v);
+      s+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+(on?12:6)+'" fill="'+(on?a:'#62706d')+'"/><text x="'+p[0]+'" y="'+(p[1]+29)+'" text-anchor="middle" fill="#e7e5e4" font-family="monospace" font-size="15">'+v.toString(2).padStart(4,'0')+'</text>';
+    }
+  }
+  s+='<text class="og-hide" x="275" y="352" text-anchor="middle" fill="'+a+'" font-family="monospace" font-size="18">eight selected patterns · S</text>';
+  s+='<text class="og-hide" x="850" y="113" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="34">Three hidden units</text>';
+  s+='<text class="og-hide" x="850" y="174" text-anchor="middle" fill="'+b+'" font-family="Georgia" font-size="39">not universal</text>';
+  s+='<text class="og-hide" x="850" y="237" text-anchor="middle" fill="'+a+'" font-family="monospace" font-size="22">42 integer identities</text>';
+  s+='<text class="og-hide" x="850" y="290" text-anchor="middle" fill="#b9c8c5" font-family="monospace" font-size="17">full real model closure</text>';
+  s+='<text class="og-hide" x="850" y="345" text-anchor="middle" fill="#b9c8c5" font-family="monospace" font-size="16">RBM(4,3) · UNREFEREED CANDIDATE</text>';
+  return s;
+};
+
 
 /* Exact labelled house graph and fixed deletion, not a mixing-time plot. */
 art['potts-censoring-counterexample'] = (a,b) => {
@@ -1797,6 +1822,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'rbm43-eight-point-obstruction': ['#2dd4bf', '#fbbf24'],
   'potts-censoring-counterexample': ['#2dd4bf', '#fbbf24'],
   'linear-nonbacktracking-jordan-growth': ['#38bdf8', '#fbbf24'],
   'sharp-quartic-hadamard-powers': ['#2dd4bf', '#fbbf24'],
