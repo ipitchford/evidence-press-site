@@ -32,6 +32,17 @@ ${inner}
 }
 
 const art = {};
+/* Schematic symmetric profiles and radius mixtures; not computed free-convolution data. */
+art['symmetric-unimodality-free-convolution'] = (a,b) => {
+  let s='';
+  for(const [cx,scale,color] of [[200,95,a],[490,120,b]]){
+    s+=`<line x1="${cx-130}" y1="295" x2="${cx+130}" y2="295" stroke="#7d908a"/>`;
+    for(let j=1;j<=4;j++)s+=`<path d="M${cx-j*25} 295 V${295-(5-j)*38} H${cx+j*25} V295" fill="none" stroke="${color}" stroke-width="2" opacity=".45"/>`;
+    const pts=Array.from({length:81},(_,i)=>{const x=(i-40)/40;return `${cx+130*x},${295-scale*Math.exp(-4*x*x)}`;}).join(' ');
+    s+=`<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="4"/>`;
+  }
+  return s+`<text class="og-hide" x="345" y="345" text-anchor="middle" fill="#b9c8c5" font-family="monospace" font-size="17">uniform mixtures · schematic profiles</text><text class="og-hide" x="900" y="118" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="34">Symmetric unimodality</text><text class="og-hide" x="900" y="185" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="32">under free addition</text><text class="og-hide" x="900" y="246" text-anchor="middle" fill="${a}" font-family="monospace" font-size="18">an analytic closure argument</text><text class="og-hide" x="900" y="316" text-anchor="middle" fill="#b9c8c5" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 art['affine-elementary-symmetric-total-nonnegativity'] = (a,b) => {
   let s='';
   for(let i=0;i<5;i++)for(let j=0;j<5;j++){
@@ -1852,6 +1863,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'symmetric-unimodality-free-convolution': ['#a78bfa', '#2dd4bf'],
   'affine-elementary-symmetric-total-nonnegativity': ['#58c4ad', '#e9bd76'],
   'hilbert-eight-points-reducedness': ['#58c4ad', '#e9bd76'],
   'dyck-transpositions-n-log-n': ['#38bdf8', '#fbbf24'],
