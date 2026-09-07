@@ -10401,6 +10401,173 @@
           ]
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:sharp-local-minor-ratios-assurance-publication",
+      "workId": "ep-work:sharp-local-minor-ratios",
+      "cohort": "prospective",
+      "registeredAt": "2026-09-07T22:24:46.799Z",
+      "status": "active",
+      "statusAt": "2026-09-07T22:35:46.018Z",
+      "resultClass": "pending",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the sharp local minor-ratio proof candidate pass internal editorial and full publication gates?",
+      "selectionBasis": "User-supplied minor-revision report and full publishing authority.",
+      "taskClass": "assurance-and-full-candidate-publication",
+      "decisionObjectTarget": "Inspectable analytic proof candidate with exact finite diagnostics and immutable publication archives.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Task-local observed runtime intervals are lower bounds; human effort and complete token accounting may be unavailable.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-07T22:24:46.799Z",
+            "basis": "Prospective remaining assurance and publication only. Completed discovery, supplied review, intake and initial textual review corrections predate registration and are excluded. No historical discovery clock is reconstructed."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-07T22:33:21.846Z",
+            "basis": "Five-role internal acceptance of frozen manuscript and exact producer replay; no external validation."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 1,
+        "reworkMinutes": 0,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-09-07T22:33:21.846Z",
+        "dimensions": [
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/sharp-local-minor-ratios/blob/v0.1.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed analytic sharp-threshold proof candidate for the explicitly normalized local condition; no independent specialist review, formal verification, priority clearance or identity with an omitted workshop formula.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/sharp-local-minor-ratios/blob/v0.1.0-candidate/EDITORIAL_DECISION.md"
+        ],
+        "missingnessReason": "External assurance dimensions remain unassessed."
+      },
+      "releaseSlug": "sharp-local-minor-ratios",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-09-07T22:24:46.799Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Prospective remaining assurance and publication only. Completed discovery, supplied review, intake and initial textual review corrections predate registration and are excluded. No historical discovery clock is reconstructed.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-07T22:35:46.018Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Internal assurance complete; immutable archives and canonical publication pending.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/sharp-local-minor-ratios/blob/v0.1.0-candidate/EDITORIAL_DECISION.md"
+          ]
+        }
+      ],
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Prospective remaining assurance and publication only. Completed discovery, supplied review, intake and initial textual review corrections predate registration and are excluded. No historical discovery clock is reconstructed.",
+        "forecast": {
+          "frozenAt": "2026-09-07T22:24:46.799Z",
+          "procedureClass": "minor-revision-assurance-full-candidate",
+          "targetOutcome": "Revised analytic proof, exact replay and negative controls, five-role internal editorial review, immutable GitHub and Zenodo assets and guarded canonical public readback.",
+          "expectedActiveMinutes": 150,
+          "plausibleLowMinutes": 100,
+          "plausibleHighMinutes": 210,
+          "expectedUnattendedWaitMinutes": 25,
+          "referenceClass": {
+            "label": "Evidence Press full-candidate procedural prior",
+            "sampleSize": 0,
+            "basis": "Procedural prior, not an empirical calibrated sample."
+          },
+          "fermiComponents": [
+            {
+              "component": "Package and PDF checks",
+              "count": 1,
+              "lowMinutesPerUnit": 25,
+              "centralMinutesPerUnit": 35,
+              "highMinutesPerUnit": 50,
+              "basis": "Existing analytic manuscript and exact rational diagnostics."
+            },
+            {
+              "component": "Five-role editorial review",
+              "count": 1,
+              "lowMinutesPerUnit": 20,
+              "centralMinutesPerUnit": 30,
+              "highMinutesPerUnit": 45,
+              "basis": "One bounded round."
+            },
+            {
+              "component": "Archives, page and media",
+              "count": 1,
+              "lowMinutesPerUnit": 35,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 65,
+              "basis": "Established scripts and authenticated services."
+            },
+            {
+              "component": "Guarded public readback",
+              "count": 1,
+              "lowMinutesPerUnit": 20,
+              "centralMinutesPerUnit": 35,
+              "highMinutesPerUnit": 50,
+              "basis": "Composite gates and CI."
+            }
+          ],
+          "probabilityPositiveSignal": 0.95,
+          "probabilityTargetClosure": 0.85,
+          "probabilityHorizonMinutes": 240,
+          "assumptions": [
+            "No fatal editorial finding.",
+            "Publishing authentication works.",
+            "Exact byte gates pass."
+          ],
+          "reforecastTriggers": [
+            "Scientific or rights issue.",
+            "Authentication or site conflict."
+          ],
+          "stopRule": "Fail closed on proof, rights, CI or byte-integrity failures; do not expand the claim."
+        },
+        "outcome": null
+      },
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-09-07",
+          "summary": "Registered remaining sharp local minor-ratio assurance and publication with pre-registration work excluded."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -10789,6 +10956,10 @@
     {
       "date": "2026-09-07",
       "summary": "Recorded essential Hurwitz first canonical publication; no external assurance or acceleration promotion."
+    },
+    {
+      "date": "2026-09-07",
+      "summary": "Registered remaining sharp local minor-ratio assurance and publication with pre-registration work excluded."
     }
   ]
 }

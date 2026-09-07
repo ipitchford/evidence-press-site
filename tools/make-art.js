@@ -32,6 +32,13 @@ ${inner}
 }
 
 const art = {};
+/* Schematic nested minors and simultaneous transfer, not numerical data. */
+art['sharp-local-minor-ratios'] = (a,b) => {
+  let s='';
+  for(let i=0;i<6;i++)for(let j=0;j<6;j++)s+=`<rect x="${65+43*j}" y="${65+43*i}" width="31" height="31" rx="3" fill="${i<2&&j<2?b:a}" opacity="${i<2&&j<2?1:0.55}"/>`;
+  s+=`<path d="M350 185 H490 M480 175 L490 185 L480 195" stroke="${b}" stroke-width="3" fill="none"/>`;
+  return s+`<text class="og-hide" x="190" y="365" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">common pivot · local minors</text><text class="og-hide" x="840" y="110" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="34">A sharp local threshold</text><text class="og-hide" x="840" y="185" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="38">total positivity</text><text class="og-hide" x="840" y="250" text-anchor="middle" fill="${a}" font-family="monospace" font-size="20">simultaneous ratio transfer</text><text class="og-hide" x="840" y="325" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* Ten-by-ten trace matrix and its degree-correcting factor; schematic, not data. */
 art['essential-hurwitz-trace-formula'] = (a,b) => {
   let s='';
@@ -1873,6 +1880,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'sharp-local-minor-ratios': ['#5eead4', '#fbbf24'],
   'essential-hurwitz-trace-formula': ['#60a5fa', '#fbbf24'],
   'symmetric-unimodality-free-convolution': ['#a78bfa', '#2dd4bf'],
   'affine-elementary-symmetric-total-nonnegativity': ['#58c4ad', '#e9bd76'],
