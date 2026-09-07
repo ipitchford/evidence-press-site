@@ -9909,9 +9909,9 @@
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": 7,
-        "reworkMinutes": 8,
-        "correctionCount": 0
+        "agentRuns": 1,
+        "reworkMinutes": 0,
+        "correctionCount": 2
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -10090,11 +10090,36 @@
           ]
         }
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-07T20:29:57.687Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "The first public measurement value is an opening snapshot and must remain unchanged; it was not a final attempt total.",
+          "replacement": "Retain measurement.agentRuns=1. The separately frozen terminal outcome records agentRuns=7. Runtime response receipts and scoped repair observations are documented by the terminal record; no original discovery effort or mathematical assurance upgrade is inferred.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/233",
+            "https://github.com/ipitchford/evidence-press-site/pull/234"
+          ]
+        },
+        {
+          "at": "2026-09-07T20:29:57.687Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "The first public measurement value is an opening snapshot and must remain unchanged; it was not a final attempt total.",
+          "replacement": "Retain measurement.reworkMinutes=0. The separately frozen terminal outcome records reworkMinutes=8. Runtime response receipts and scoped repair observations are documented by the terminal record; no original discovery effort or mathematical assurance upgrade is inferred.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/233",
+            "https://github.com/ipitchford/evidence-press-site/pull/234"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-07",
           "summary": "Registered remaining assurance and publication with pre-registration work explicitly excluded."
+        },
+        {
+          "date": "2026-09-07",
+          "summary": "Appended first canonical publication and terminal outcome. Retained initial measurement snapshot values; final scoped totals are recorded separately in metrics.outcome. No change to the earlier research-assurance decision or scientific claim."
         }
       ]
     }
