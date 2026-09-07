@@ -9033,8 +9033,8 @@
       "workId": "ep-work:dyck-transpositions-n-log-n",
       "cohort": "prospective",
       "registeredAt": "2026-09-06T22:20:18.057Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-06T22:40:22.511Z",
+      "status": "published",
+      "statusAt": "2026-09-07T07:43:55.075Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -9063,6 +9063,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-09-06T22:40:22.511Z",
             "basis": "Internal editorial minor repairs verified; local final replay, hosted Linux CI and all four downloaded GitHub/Zenodo assets match."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-07T07:43:55.075Z",
+            "basis": "The frozen assurance-through-first-publication target passed: final analytic candidate and finite replay, five-role internal editorial acceptance, byte-identical GitHub/Zenodo archives, standard media, guarded canonical readback and matching paper.json. No new research cycle or external validation is claimed. The mandatory publication-ledger reseal and final closeout occur after this immutable measurement cut."
           }
         ],
         "activeHumanMinutes": null,
@@ -9070,7 +9075,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 3
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -9153,6 +9158,16 @@
             "https://github.com/ipitchford/dyck-transpositions-n-log-n/actions/runs/34064576394",
             "https://github.com/ipitchford/dyck-transpositions-n-log-n/blob/v0.1.0-candidate/EDITORIAL_DECISION.md"
           ]
+        },
+        {
+          "at": "2026-09-07T07:43:55.075Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "The frozen assurance-through-first-publication target passed: final analytic candidate and finite replay, five-role internal editorial acceptance, byte-identical GitHub/Zenodo archives, standard media, guarded canonical readback and matching paper.json. No new research cycle or external validation is claimed. The mandatory publication-ledger reseal and final closeout occur after this immutable measurement cut.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/dyck-transpositions-n-log-n/",
+            "https://github.com/ipitchford/evidence-press-site/pull/225"
+          ]
         }
       ],
       "metrics": {
@@ -9220,13 +9235,92 @@
           ],
           "stopRule": "Fail closed on proof, rights, CI or byte-integrity failures; do not expand the claim."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-07T07:43:55.075Z",
+          "calendarElapsedMinutes": 564,
+          "activeAgentMinutes": 9,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 4,
+          "blockedMinutes": 0,
+          "reworkMinutes": 2,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 12,
+          "deduplicatedModelTokens": 16990561,
+          "uncachedInputTokens": 954617,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "The frozen assurance-through-first-publication target passed: final analytic candidate and finite replay, five-role internal editorial acceptance, byte-identical GitHub/Zenodo archives, standard media, guarded canonical readback and matching paper.json. No new research cycle or external validation is claimed. The mandatory publication-ledger reseal and final closeout occur after this immutable measurement cut. One release negative-control suite is counted as one gate, not twelve research cycles.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -141,
+          "forecastRatio": 0.06,
+          "withinForecastInterval": false,
+          "varianceReason": "Active generation and recorded context-compaction wait are observed lower bounds, not complete labour or service-wait totals. The overnight administrative pause/offline gap is neither active nor externally blocked. Rework is an upper attribution bound on coordinator generation during the recorded audio-repair window 22:42–22:46:31 UTC on September 6. Boundary-crossing token responses may contain earlier input. Cached input is included; no monetary-cost or acceleration inference. The calendar horizon was exceeded during the administrative pause; eventual target closure is not closure within the original 240-minute horizon. The user removed workflow caps without changing the frozen forecast.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "No contemporaneous human active-time telemetry."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No complete scoped substantive-computation timing; normal builds and CI are not research compute."
+            }
+          ]
+        }
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-07T07:43:55.075Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "The intake snapshot predates completed reviewers and media repair.",
+          "replacement": "Terminal runtime receipt records 6; the earlier snapshot is preserved.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/dyck-transpositions-n-log-n/",
+            "https://github.com/ipitchford/evidence-press-site/pull/225"
+          ]
+        },
+        {
+          "at": "2026-09-07T07:43:55.075Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "The intake snapshot predates completed reviewers and media repair.",
+          "replacement": "Terminal runtime receipt records 2; the earlier snapshot is preserved.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/dyck-transpositions-n-log-n/",
+            "https://github.com/ipitchford/evidence-press-site/pull/225"
+          ]
+        },
+        {
+          "at": "2026-09-07T07:43:55.075Z",
+          "field": "assuranceEndpoint.missingnessReason",
+          "reason": "The historical assessment explicitly marked canonical publication pending.",
+          "replacement": "Canonical publication is now established by the separate public-release milestone; the earlier assurance timestamp and external-assurance limitations remain unchanged.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/dyck-transpositions-n-log-n/",
+            "https://github.com/ipitchford/evidence-press-site/pull/225"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-06",
           "summary": "Registered remaining assurance and publication with pre-registration work explicitly excluded."
+        },
+        {
+          "date": "2026-09-07",
+          "summary": "Appended first canonical readback and immutable scoped runtime outcome, with original forecast, historical snapshots and no-cap user continuation preserved. Final ledger deployment follows separately."
         }
       ]
     }
