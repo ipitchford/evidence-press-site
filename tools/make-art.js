@@ -32,6 +32,17 @@ ${inner}
 }
 
 const art = {};
+/* Schematic global-to-local reduction, not an embedding of the Hilbert scheme. */
+art['hilbert-eight-points-reducedness'] = (a,b) => {
+  let s='';
+  for(let i=0;i<8;i++){
+    const t=i*Math.PI/4;
+    s+=`<circle cx="${220+105*Math.cos(t)}" cy="${175+105*Math.sin(t)}" r="11" fill="${a}"/>`;
+  }
+  s+=`<path d="M350 175 H435 M435 175 L505 110 M435 175 L505 245" fill="none" stroke="${b}" stroke-width="3"/>`;
+  for(const [label,y] of [['B15',110],['B16',245]])s+=`<rect x="510" y="${y-30}" width="100" height="60" rx="8" fill="none" stroke="${a}" stroke-width="2"/><text x="560" y="${y+8}" text-anchor="middle" fill="#e7e5e4" font-family="monospace" font-size="25">${label}</text>`;
+  return s+`<text class="og-hide" x="225" y="340" text-anchor="middle" fill="#b9c8c5" font-family="monospace" font-size="19">eight points · two local models</text><text class="og-hide" x="910" y="118" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="36">Reducedness</text><text class="og-hide" x="910" y="184" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="32">Hilb⁸(A⁴)</text><text class="og-hide" x="910" y="244" text-anchor="middle" fill="${a}" font-family="monospace" font-size="21">characteristic zero</text><text class="og-hide" x="910" y="312" text-anchor="middle" fill="#b9c8c5" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* One nonnegative excursion, with the two conditioning cuts highlighted. */
 art['dyck-transpositions-n-log-n'] = (a,b) => {
   const heights=[0,1,2,1,2,3,2,3,4,3,2,1,2,1,0,1,0,1,2,1,0];
@@ -1831,6 +1842,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'hilbert-eight-points-reducedness': ['#58c4ad', '#e9bd76'],
   'dyck-transpositions-n-log-n': ['#38bdf8', '#fbbf24'],
   'rbm43-eight-point-obstruction': ['#2dd4bf', '#fbbf24'],
   'potts-censoring-counterexample': ['#2dd4bf', '#fbbf24'],
