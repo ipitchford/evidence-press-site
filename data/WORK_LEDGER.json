@@ -9869,9 +9869,9 @@
       "workId": "ep-work:symmetric-unimodality-free-convolution",
       "cohort": "prospective",
       "registeredAt": "2026-09-07T19:52:47.514Z",
-      "status": "active",
-      "statusAt": "2026-09-07T20:19:01.332Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-07T20:25:21.587Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -9888,7 +9888,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Task-local observed runtime intervals are lower bounds; human effort and complete token accounting may be unavailable.",
+        "missingnessReason": "Observed coordinator workflow interval, excluding separately recorded unattended wait; not summed parallel model compute. Eight minutes of bounded audio/metadata/merge repair rounded from local workflow observations. Model calls counted from unique runtime response IDs within registration/readback boundaries; no token totals inferred. Human effort and substantive compute telemetry unavailable.",
         "milestones": [
           {
             "event": "work-opened",
@@ -9899,13 +9899,18 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-09-07T20:06:38.900Z",
             "basis": "Five-role producer-coordinated internal editorial acceptance; not external review."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-07T20:25:21.587Z",
+            "basis": "First verified canonical desktop/mobile page, exact protocol and publication readback. Earlier internal research-assurance timestamp retained."
           }
         ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": 1,
-        "reworkMinutes": 0,
+        "agentRuns": 7,
+        "reworkMinutes": 8,
         "correctionCount": 0
       },
       "assuranceEndpoint": {
@@ -9952,6 +9957,16 @@
           "resultClass": "pending",
           "reason": "Internal assurance complete; public GitHub and Zenodo asset hashes verified. Canonical site publication remains pending.",
           "evidenceRefs": [
+            "https://zenodo.org/records/22649756"
+          ]
+        },
+        {
+          "at": "2026-09-07T20:25:21.587Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Scoped assurance/publication target reached at first verified canonical readback; mandatory ledger reseal follows separately.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/symmetric-unimodality-free-convolution/",
             "https://zenodo.org/records/22649756"
           ]
         }
@@ -10021,7 +10036,59 @@
           ],
           "stopRule": "Fail closed on proof, rights, CI or byte-integrity failures; do not expand the claim."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-07T20:25:21.587Z",
+          "calendarElapsedMinutes": 33,
+          "activeAgentMinutes": 33,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 0,
+          "reworkMinutes": 8,
+          "agentRuns": 7,
+          "maxParallelAgents": 4,
+          "modelTurns": 152,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Revised unrefereed analytic proof candidate, internally accepted, public byte-identical archives, communication assets and first canonical release. Original discovery and pre-registration repairs excluded; no independent whole-proof validation or novelty/impact claim.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -117,
+          "forecastRatio": 0.22,
+          "withinForecastInterval": false,
+          "varianceReason": "Existing manuscript and authenticated release scripts allowed completion below the conservative procedural prior; no acceleration inference. Concurrent release reconciliation included.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human direction and supplied-review effort not instrumented in this scoped run."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No substantive compute meter; routine symbolic replay, build and CI are not a research-compute estimate."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "No authoritative task-local fork-aware total; token events were not summed."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "No authoritative task-local uncached-input total supplied."
+            }
+          ]
+        }
       },
       "corrections": [],
       "revisions": [
@@ -10406,6 +10473,10 @@
     {
       "date": "2026-09-07",
       "summary": "Registered remaining assurance and publication with pre-registration work explicitly excluded."
+    },
+    {
+      "date": "2026-09-07",
+      "summary": "Recorded first canonical symmetric-unimodality publication and scoped prospective outcome, without upgrading internal mathematical assurance."
     }
   ]
 }
