@@ -32,6 +32,16 @@ ${inner}
 }
 
 const art = {};
+art['affine-elementary-symmetric-total-nonnegativity'] = (a,b) => {
+  let s='';
+  for(let i=0;i<5;i++)for(let j=0;j<5;j++){
+    const x=70+66*j,y=45+58*i,on=j>=i;
+    s+=`<rect x="${x}" y="${y}" width="48" height="42" rx="5" fill="${on?a:'#435254'}" opacity="${on?0.9:0.3}"/>`;
+  }
+  s+=`<path d="M425 182 H515" stroke="${b}" stroke-width="3"/><path d="M505 172 L515 182 L505 192" fill="none" stroke="${b}" stroke-width="3"/>`;
+  for(let k=0;k<4;k++)s+=`<rect x="${555+45*k}" y="${240-35*k}" width="25" height="${35+35*k}" fill="${b}"/>`;
+  return s+`<text class="og-hide" x="225" y="365" text-anchor="middle" fill="#d5ddda" font-family="monospace" font-size="18">every finite Toeplitz minor</text><text class="og-hide" x="945" y="100" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="30">One affine factor</text><text class="og-hide" x="945" y="170" text-anchor="middle" fill="${a}" font-family="Georgia" font-size="32">(1 + kt)eₖ(X)</text><text class="og-hide" x="945" y="240" text-anchor="middle" fill="${b}" font-family="monospace" font-size="18">nonnegative coefficients</text><text class="og-hide" x="945" y="310" text-anchor="middle" fill="#d5ddda" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* Schematic global-to-local reduction, not an embedding of the Hilbert scheme. */
 art['hilbert-eight-points-reducedness'] = (a,b) => {
   let s='';
@@ -1842,6 +1852,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'affine-elementary-symmetric-total-nonnegativity': ['#58c4ad', '#e9bd76'],
   'hilbert-eight-points-reducedness': ['#58c4ad', '#e9bd76'],
   'dyck-transpositions-n-log-n': ['#38bdf8', '#fbbf24'],
   'rbm43-eight-point-obstruction': ['#2dd4bf', '#fbbf24'],
