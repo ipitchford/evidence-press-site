@@ -32,6 +32,15 @@ ${inner}
 }
 
 const art = {};
+/* One nonnegative excursion, with the two conditioning cuts highlighted. */
+art['dyck-transpositions-n-log-n'] = (a,b) => {
+  const heights=[0,1,2,1,2,3,2,3,4,3,2,1,2,1,0,1,0,1,2,1,0];
+  const points=heights.map((h,i)=>`${60+24*i},${310-42*h}`).join(' ');
+  let s=`<line x1="60" y1="310" x2="540" y2="310" stroke="#748582"/><polyline points="${points}" fill="none" stroke="${a}" stroke-width="5"/>`;
+  for(const i of [6,14])s+=`<line x1="${60+24*i}" y1="65" x2="${60+24*i}" y2="325" stroke="${b}" stroke-width="2" stroke-dasharray="6 7"/>`;
+  s+=`<text class="og-hide" x="300" y="366" text-anchor="middle" fill="#b9c8c5" font-family="monospace" font-size="18">two cuts · one constrained path</text><text class="og-hide" x="860" y="120" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="35">Random transpositions</text><text class="og-hide" x="860" y="205" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="56">Θ(n log n)</text><text class="og-hide" x="860" y="268" text-anchor="middle" fill="${a}" font-family="monospace" font-size="20">original rejection clock</text><text class="og-hide" x="860" y="337" text-anchor="middle" fill="#b9c8c5" font-family="monospace" font-size="18">UNREFEREED PROOF CANDIDATE</text>`;
+  return s;
+};
 /* Two three-cube layers display all sixteen visible states; selected nodes are S. */
 art['rbm43-eight-point-obstruction'] = (a,b) => {
   const support=new Set([0,1,2,4,7,9,10,12]);
@@ -1822,6 +1831,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'dyck-transpositions-n-log-n': ['#38bdf8', '#fbbf24'],
   'rbm43-eight-point-obstruction': ['#2dd4bf', '#fbbf24'],
   'potts-censoring-counterexample': ['#2dd4bf', '#fbbf24'],
   'linear-nonbacktracking-jordan-growth': ['#38bdf8', '#fbbf24'],

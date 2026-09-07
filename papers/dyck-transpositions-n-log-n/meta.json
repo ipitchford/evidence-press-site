@@ -1,0 +1,228 @@
+{
+  "slug": "dyck-transpositions-n-log-n",
+  "title": "Random transpositions on Dyck paths mix in order n log n",
+  "shortTitle": "Shuffling a constrained path",
+  "oneLine": "A two-cut entropy argument gives a proof candidate for n log n mixing of the original Dyck-path random-transposition rejection walk.",
+  "abstract": "For Dyck words of length 2n, choose two coordinates independently and uniformly, swap their letters if the result remains Dyck, and otherwise hold. This unrefereed analytic proof candidate gives worst-start total-variation mixing time Theta(n log n) in that original proposal clock. A two-cut matroid conditional-entropy bound, uniform height-channel classical log-Sobolev estimate and discrete hypercontractive composition lead to entropy factorization. A constant-factor retained-fibre comparison returns to the original chain. A midpoint drift argument gives the lower bound (n/2) log n - O(n). Finite exact audits corroborate identities, not the all-size theorem. No cutoff, sharp upper constant, sampler optimality, external validation or priority clearance is claimed.",
+  "narration": "How long does a constrained random shuffle take to forget where it started? Imagine a path made of up and down steps. It must stay above ground and finish back at ground level. Mathematicians study these constrained paths. In the shuffle studied here, each update picks two positions independently at random and swaps their steps. If the swap would break the constraint, nothing changes. This unrefereed proof candidate says that, for paths of length twice n, the worst-start mixing time grows on the order of n times log n. Crucially, rejected proposals still count. The argument looks at heights at two separated positions. Conditioning on either height controls much of the remaining uncertainty. A one-dimensional inequality then controls the information shared by those two heights. The final comparison returns this analysis to the original shuffle, without paying an extra size-dependent factor. A path that first climbs all the way up and then descends supplies the matching lower order. The package includes the analytic argument, exact finite checks and preserved unsuccessful routes. Finite checks do not prove the statement at every size, and internal AI review is not independent mathematical validation. The upper constant is unspecified. This is not a numerical burn-in prescription, an implementation-runtime bound, or a claim to the fastest sampling algorithm. This is an Evidence Press unrefereed candidate release. The full paper, evidence and limitations are linked. The voice is AI-generated using an OpenAI synthetic voice. This audio briefing is not additional research evidence. It is only a communication aid. Thank you for listening.",
+  "datePublished": "2026-09-06",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22556925",
+  "conceptDoi": "10.5281/zenodo.22556924",
+  "zenodoUrl": "https://zenodo.org/records/22556925",
+  "pdfUrl": "https://github.com/ipitchford/dyck-transpositions-n-log-n/releases/download/v0.1.0-candidate/dyck-transpositions-n-log-n-0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22556925/files/dyck-transpositions-n-log-n-0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/dyck-transpositions-n-log-n",
+  "releaseUrl": "https://github.com/ipitchford/dyck-transpositions-n-log-n/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/dyck-transpositions-n-log-n.mp3",
+      "name": "Audio briefing — shuffling a constrained path",
+      "description": "Synthetic plain-English communication, not additional evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/dyck-transpositions-n-log-n.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex under human direction",
+      "Python standard library",
+      "pdfLaTeX / TeX Live 2026"
+    ],
+    "humanRole": "Problem selection, research direction, supplied advice and review, and publication authority; scholarly creator remains Anonymous.",
+    "disclosure": "AI-assisted proof exploration, code, exposition, internal review and publishing. Coordinated model review is not independent or external assurance."
+  },
+  "problem": {
+    "name": "AIM-PROBABILITY-0039: Random transpositions on Dyck paths",
+    "url": "https://www.unsolvedmath.com"
+  },
+  "keywords": [
+    "Dyck paths",
+    "mixing time",
+    "entropy factorization",
+    "matroid bases",
+    "hypercontractivity",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "Analytic proof candidate for Theta(n log n) worst-start mixing in the original ordered-coordinate rejection clock.",
+    "An absolute one-step entropy contraction of order 1/n.",
+    "Lower bound (n/2) log n - O(n); no sharp upper constant or cutoff claim.",
+    "Bounded exact kernels, height identities and labelled-fibre embeddings are replayable."
+  ],
+  "evidence": "Standalone paper and accessible proof, expanded historical notes, seven finite replay stages, twelve release negative controls, fresh-extraction manifest check, primary-source attribution, supplied-review response and five internal editorial reports with synthesis. Byte-identical public GitHub and Zenodo release assets. Internal decision: https://github.com/ipitchford/dyck-transpositions-n-log-n/blob/v0.1.0-candidate/EDITORIAL_DECISION.md",
+  "statusDetail": "Unrefereed analytic proof candidate for the original length-2n ordered independent-coordinate Dyck rejection walk. No cutoff, sharp upper constant, numerical burn-in guarantee, computational-runtime bound, sampler optimality, external peer review, formal verification or priority clearance.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22556925",
+      "note": "Public GitHub and Zenodo assets downloaded and checked against exact local hashes."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/dyck-transpositions-n-log-n/blob/v0.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Seven bounded producer replay stages and twelve release negative controls; five-role internal editorial round. These do not certify the all-size theorem."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/dyck-transpositions-n-log-n/blob/v0.1.0-candidate/ENVIRONMENT.md",
+      "note": "Standard-library Python replay and source supplied; no hermetic environment or cross-platform PDF byte-identity claim."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated implementation and AI review do not establish this dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated implementation and AI review do not establish this dimension."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated implementation and AI review do not establish this dimension."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated implementation and AI review do not establish this dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated implementation and AI review do not establish this dimension."
+    }
+  },
+  "openProblems": [
+    "Obtain unaffiliated specialist scrutiny of the uniform Hardy and channel-composition arguments.",
+    "Independently reconstruct the retained-fibre embedding and original-clock comparison.",
+    "Derive an explicit upper constant and investigate sharp asymptotics or cutoff as new work.",
+    "Assess extensions without transferring the result to different Catalan kernels by analogy alone."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Cohen, Tetali and Yeliussizov (2015). Lattice Path Matroids: Negative Correlation and Fast Mixing.",
+      "url": "https://arxiv.org/abs/1505.06710"
+    },
+    {
+      "citation": "Cryan, Guo and Mousa (2021). Modified log-Sobolev inequalities for strongly log-concave distributions. Deletion entropy input.",
+      "url": "https://arxiv.org/abs/1903.06081v3"
+    },
+    {
+      "citation": "Barthe and Roberto (2003). Sobolev inequalities for probability measures on the real line. Hardy framework.",
+      "url": "https://doi.org/10.4064/sm159-3-9"
+    },
+    {
+      "citation": "Carlen and Cordero-Erausquin (2009). Subadditivity of the entropy and its relation to Brascamp-Lieb type inequalities.",
+      "url": "https://doi.org/10.1007/s00039-009-0001-y"
+    },
+    {
+      "citation": "Anari et al. (2021). Log-concave polynomials IV. General down-up mixing for a different kernel.",
+      "url": "https://arxiv.org/abs/2004.07220v2"
+    },
+    {
+      "citation": "Feng and Paguyo (2026), version 2. Analysis of a twisted Bose-Einstein Markov chain with applications to sampling Catalan structures. Different sampler.",
+      "url": "https://arxiv.org/abs/2605.16244v2"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Random transpositions on Dyck paths mix in order n log n (Version 0.1.0-candidate) [Unrefereed proof candidate]. Evidence Press. https://doi.org/10.5281/zenodo.22556925",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:dyck-transpositions-n-log-n",
+    "attemptIds": [
+      "ep-attempt:dyck-transpositions-n-log-n-assurance-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "regime-stitching",
+      "productive-failure",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Analytic two-cut entropy factorization and exact constant-factor return to the original rejection chain.",
+      "scope": "Uniform Dyck words of length 2n, ordered independent-coordinate proposals, rejection holds, worst-start total variation at 1/4."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Ballot height laws, conditional matroid fibres and stochastic-mixture comparison refer to the same original kernel; spatial channel positions are not mixing-clock steps.",
+      "remainingRisks": [
+        "All-size analytic estimates remain subject to specialist scrutiny.",
+        "Finite computations cannot establish the universal theorem.",
+        "Novelty and priority search is bounded.",
+        "No practical runtime or sampler-optimality claim."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Check uniformity over rare heights and all sizes.",
+      "Check fibre entropy normalization and original-clock comparison.",
+      "Separate imported theorems from the proposed construction.",
+      "Preserve Anonymous authorship, component rights and assurance boundaries."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/1903.06081v3",
+        "inheritedClaim": "Matroid deletion-entropy contraction, Lemma 11.",
+        "inheritedAssuranceCeiling": "Established external input; not validation of this candidate application."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Seek unaffiliated analytic and computational scrutiny; sharp constants and extensions remain new work.",
+      "claimCeiling": "Unrefereed analytic proof candidate for the original length-2n ordered independent-coordinate Dyck rejection walk. No cutoff, sharp upper constant, numerical burn-in guarantee, computational-runtime bound, sampler optimality, external peer review, formal verification or priority clearance."
+    },
+    "impactClaims": [
+      {
+        "id": "dyck-transpositions-n-log-n-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable original-clock mixing proof candidate",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched workflow comparator.",
+        "estimand": "No discovery-speed, effort, reuse or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Research assurance assessed 2026-09-06T22:39:45.266Z separately from subsequent site publication. Internal editorial review and producer replay do not promote external assurance."
+}

@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'dyck-transpositions-n-log-n': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 6 SEPTEMBER 2026', 'DYCK PATHS · ORIGINAL REJECTION WALK'],
+    head: ['A constrained shuffle.', '<em>n log n mixing.</em>'],
+    headSize: 66,
+    sub: 'A two-cut entropy proof candidate. Rejected proposals count; no sharp upper constant or cutoff claim.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">paths of length 2n</div><div class="eq eq-sm">Θ(n log n)</div><div class="note"><b>original proposal clock</b><br>two cuts · entropy<br>analytic all-size argument</div><div class="eq-foot">finite checks are not the proof</div>'
+  },
   'rbm43-eight-point-obstruction': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 6 SEPTEMBER 2026', 'RESTRICTED BOLTZMANN MACHINES'],
