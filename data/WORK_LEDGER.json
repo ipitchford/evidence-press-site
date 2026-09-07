@@ -9599,9 +9599,9 @@
       "workId": "ep-work:affine-elementary-symmetric-total-nonnegativity",
       "cohort": "prospective",
       "registeredAt": "2026-09-07T19:46:45.411Z",
-      "status": "active",
-      "statusAt": "2026-09-07T19:46:45.411Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-07T20:14:27.485Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -9624,6 +9624,16 @@
             "event": "work-opened",
             "at": "2026-09-07T19:46:45.411Z",
             "basis": "Remaining review repairs, internal assurance and first canonical publication only. Completed discovery, supplied review, initial source reading and extraction predate this registration and are excluded; no historical research clock is reconstructed. Final ledger reseal and closeout are measured separately."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-07T20:06:06.762Z",
+            "basis": "Fresh replay, PDF and source gates plus five-role internal acceptance; public availability assessed separately."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-07T20:14:27.485Z",
+            "basis": "Review-repaired candidate, exact complete archive, internal editorial acceptance, public GitHub/Zenodo byte readback, standard media and first guarded canonical publication completed. Final ledger reseal follows outside this measurement cut. No external mathematical assurance or discovery-speed claim."
           }
         ],
         "activeHumanMinutes": null,
@@ -9631,15 +9641,66 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": null,
-        "correctionCount": 0
+        "correctionCount": 2
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Successor gates pending."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-07T20:14:27.485Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/22649676"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/affine-elementary-symmetric-total-nonnegativity/blob/v0.1.0-candidate/REPLAY_RECEIPT.json"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/affine-elementary-symmetric-total-nonnegativity/blob/v0.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed uniform written proof candidate for one affine factor. Finite diagnostics and internal AI review do not establish external validation, formal verification, historical priority or impact.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/affine-elementary-symmetric-total-nonnegativity/",
+          "https://zenodo.org/records/22649676",
+          "https://github.com/ipitchford/affine-elementary-symmetric-total-nonnegativity/releases/tag/v0.1.0-candidate"
+        ],
+        "missingnessReason": "Unaffiliated reproduction, external whole-proof review, formal verification, novelty and priority remain unestablished."
       },
       "releaseSlug": "affine-elementary-symmetric-total-nonnegativity",
       "stopReason": null,
@@ -9650,6 +9711,16 @@
           "resultClass": "pending",
           "reason": "Remaining review repairs, internal assurance and first canonical publication only. Completed discovery, supplied review, initial source reading and extraction predate this registration and are excluded; no historical research clock is reconstructed. Final ledger reseal and closeout are measured separately.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-07T20:14:27.485Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Review-repaired candidate, exact complete archive, internal editorial acceptance, public GitHub/Zenodo byte readback, standard media and first guarded canonical publication completed. Final ledger reseal follows outside this measurement cut. No external mathematical assurance or discovery-speed claim.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/affine-elementary-symmetric-total-nonnegativity/",
+            "https://zenodo.org/records/22649676"
+          ]
         }
       ],
       "metrics": {
@@ -9716,15 +9787,82 @@
           ],
           "stopRule": "Fail closed on integrity or authority failure; time thresholds are telemetry and do not terminate authorized publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-07T20:14:27.485Z",
+          "calendarElapsedMinutes": 28,
+          "activeAgentMinutes": 2,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 3,
+          "blockedMinutes": 0,
+          "reworkMinutes": 0,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 121,
+          "deduplicatedModelTokens": 15713719,
+          "uncachedInputTokens": 398717,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Review-repaired candidate, exact complete archive, internal editorial acceptance, public GitHub/Zenodo byte readback, standard media and first guarded canonical publication completed. Final ledger reseal follows outside this measurement cut. No external mathematical assurance or discovery-speed claim. The finite diagnostic and negative-control suite is one adversarial gate, not a new research cycle.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -148,
+          "forecastRatio": 0.013333333333333334,
+          "withinForecastInterval": false,
+          "varianceReason": "Active time is the union of instrumented Reasoning and AgentMessage intervals; unattended time includes instrumented compaction only. Both are observable lower bounds, not complete labour/wait totals. Tool-call generation and uninstrumented provider waits are excluded. Deduplicated response IDs remove fork copies. Cached inputs remain part of raw tokens. No historical discovery clock is inferred. Offline gaps and unnecessary administrative pauses are not classified as external blocking. Rework is an uninstrumented zero lower bound, not absence of repairs: URL wrapping, metadata normalization, audio phrasing and media-index binding were repaired. Incomplete active-time coverage cannot support a speed-gain claim; discovery is excluded.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "No contemporaneous human active-time instrument."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No complete scoped substantive-computation wall clock; ordinary CI/build time is not research compute."
+            }
+          ]
+        }
       },
       "revisions": [
         {
           "date": "2026-09-07",
           "summary": "Prospective registration of remaining assurance and publication; prior work excluded."
+        },
+        {
+          "date": "2026-09-07",
+          "summary": "Appended first canonical publication and deduplicated runtime outcome with explicitly incomplete active/wait coverage. Active minutes floor the instrumented 2.51-minute lower bound to the integer schema; the fractional receipt is retained locally. Original forecast remains unchanged."
         }
       ],
-      "corrections": []
+      "corrections": [
+        {
+          "at": "2026-09-07T20:14:27.485Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Prospective snapshot predates five completed internal reviewers.",
+          "replacement": "Terminal receipt records six agent runs; original intake snapshot retained.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/affine-elementary-symmetric-total-nonnegativity/"
+          ]
+        },
+        {
+          "at": "2026-09-07T20:14:27.485Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "No complete repair-specific active-time instrument; terminal zero is an explicit lower bound.",
+          "replacement": "Actual repairs are disclosed in outcome varianceReason; zero does not mean no repair.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/affine-elementary-symmetric-total-nonnegativity/"
+          ]
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -10093,6 +10231,10 @@
     {
       "date": "2026-09-07",
       "summary": "Registered remaining affine total-nonnegativity assurance and publication without reconstructing discovery."
+    },
+    {
+      "date": "2026-09-07",
+      "summary": "Recorded affine single-factor first canonical publication; no external assurance or acceleration promotion."
     }
   ]
 }
