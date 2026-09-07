@@ -10128,9 +10128,9 @@
       "workId": "ep-work:essential-hurwitz-trace-formula",
       "cohort": "prospective",
       "registeredAt": "2026-09-07T21:21:37.984Z",
-      "status": "active",
-      "statusAt": "2026-09-07T21:21:37.984Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-07T21:56:04.731Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -10153,6 +10153,16 @@
             "event": "work-opened",
             "at": "2026-09-07T21:21:37.984Z",
             "basis": "Remaining review repairs, internal assurance and first canonical publication only. Completed discovery, supplied review, initial source reading and extraction predate this registration and are excluded; no historical research clock is reconstructed. Final ledger reseal and closeout are measured separately."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-07T21:47:23.504Z",
+            "basis": "Fresh replay, PDF and source gates plus five-role internal acceptance; public availability assessed separately."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-07T21:56:04.731Z",
+            "basis": "Review-repaired candidate, exact complete archive, internal editorial acceptance, public GitHub/Zenodo byte readback, standard media and first guarded canonical publication completed. Final ledger reseal follows outside this measurement cut. No external mathematical assurance or discovery-speed claim."
           }
         ],
         "activeHumanMinutes": null,
@@ -10160,15 +10170,66 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": null,
-        "correctionCount": 0
+        "correctionCount": 3
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Successor gates pending."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-07T21:56:04.731Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/22650445"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/essential-hurwitz-trace-formula/blob/v0.1.0-candidate/REPLAY_RECEIPT.json"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/essential-hurwitz-trace-formula/blob/v0.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed compact formula and uniform written proof candidate. Producer finite replay and internal AI review do not establish unaffiliated whole-proof acceptance, formal verification, historical priority or practical improvement.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/essential-hurwitz-trace-formula/",
+          "https://zenodo.org/records/22650445",
+          "https://github.com/ipitchford/essential-hurwitz-trace-formula/releases/tag/v0.1.0-candidate"
+        ],
+        "missingnessReason": "Unaffiliated reproduction, external whole-proof review, formal verification, novelty and priority remain unestablished."
       },
       "releaseSlug": "essential-hurwitz-trace-formula",
       "stopReason": null,
@@ -10179,6 +10240,16 @@
           "resultClass": "pending",
           "reason": "Remaining review repairs, internal assurance and first canonical publication only. Completed discovery, supplied review, initial source reading and extraction predate this registration and are excluded; no historical research clock is reconstructed. Final ledger reseal and closeout are measured separately.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-07T21:56:04.731Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Review-repaired candidate, exact complete archive, internal editorial acceptance, public GitHub/Zenodo byte readback, standard media and first guarded canonical publication completed. Final ledger reseal follows outside this measurement cut. No external mathematical assurance or discovery-speed claim.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/essential-hurwitz-trace-formula/",
+            "https://zenodo.org/records/22650445"
+          ]
         }
       ],
       "metrics": {
@@ -10245,15 +10316,91 @@
           ],
           "stopRule": "Fail closed on integrity or authority failure; time thresholds are telemetry and do not terminate authorized publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-07T21:56:04.731Z",
+          "calendarElapsedMinutes": 34,
+          "activeAgentMinutes": 8,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 3,
+          "blockedMinutes": 0,
+          "reworkMinutes": 0,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 118,
+          "deduplicatedModelTokens": 11699501,
+          "uncachedInputTokens": 365523,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Review-repaired candidate, exact complete archive, internal editorial acceptance, public GitHub/Zenodo byte readback, standard media and first guarded canonical publication completed. Final ledger reseal follows outside this measurement cut. No external mathematical assurance or discovery-speed claim. The finite diagnostic and negative-control suite is one adversarial gate, not a new research cycle.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -142,
+          "forecastRatio": 0.05333333333333334,
+          "withinForecastInterval": false,
+          "varianceReason": "Active time is the union of instrumented Reasoning and AgentMessage intervals; unattended time includes instrumented compaction only. Both are observable lower bounds, not complete labour/wait totals. Tool-call generation and uninstrumented provider waits are excluded. Deduplicated response IDs remove fork copies. Cached inputs remain part of raw tokens. No historical discovery clock is inferred. Offline gaps and unnecessary administrative pauses are not classified as external blocking. Rework is an uninstrumented zero lower bound, not absence of repairs: bibliographic pointers, the explicit rank qualification, exact-input documentation, audio phrasing and media-index binding were repaired. Incomplete active-time coverage cannot support a speed-gain claim; discovery is excluded. Public integer-minute fields are floored from measured lower bounds 8.83 active and 3.57 compaction-wait minutes; the original measurement cut is unchanged.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "No contemporaneous human active-time instrument."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No complete scoped substantive-computation wall clock; ordinary CI/build time is not research compute."
+            }
+          ]
+        }
       },
       "revisions": [
         {
           "date": "2026-09-07",
           "summary": "Prospective registration of remaining assurance and publication; prior work excluded."
+        },
+        {
+          "date": "2026-09-07",
+          "summary": "Appended first canonical publication and deduplicated runtime outcome with explicitly incomplete active/wait coverage. Original forecast remains unchanged."
         }
       ],
-      "corrections": []
+      "corrections": [
+        {
+          "at": "2026-09-07T21:56:04.731Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Prospective snapshot predates five completed internal reviewers.",
+          "replacement": "Terminal receipt records six agent runs; original intake snapshot retained.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/essential-hurwitz-trace-formula/"
+          ]
+        },
+        {
+          "at": "2026-09-07T21:56:04.731Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "No complete repair-specific active-time instrument; terminal zero is an explicit lower bound.",
+          "replacement": "Actual repairs are disclosed in outcome varianceReason; zero does not mean no repair.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/essential-hurwitz-trace-formula/"
+          ]
+        },
+        {
+          "at": "2026-09-07T21:57:32.116Z",
+          "field": "metrics.outcome integer-minute projection",
+          "reason": "Prepublication schema check requires integer minutes; precise first-cut receipt retained separately.",
+          "replacement": "Floor rather than round up incomplete lower bounds; derived calibration fields recalculated.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/essential-hurwitz-trace-formula/"
+          ]
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -10638,6 +10785,10 @@
     {
       "date": "2026-09-07",
       "summary": "Registered remaining essential Hurwitz assurance and publication without reconstructing discovery."
+    },
+    {
+      "date": "2026-09-07",
+      "summary": "Recorded essential Hurwitz first canonical publication; no external assurance or acceleration promotion."
     }
   ]
 }
