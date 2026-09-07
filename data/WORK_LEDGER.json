@@ -9329,9 +9329,9 @@
       "workId": "ep-work:hilbert-eight-points-reducedness",
       "cohort": "prospective",
       "registeredAt": "2026-09-07T11:43:40.746Z",
-      "status": "active",
-      "statusAt": "2026-09-07T11:43:40.746Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-07T13:11:29.445Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -9354,6 +9354,16 @@
             "event": "work-opened",
             "at": "2026-09-07T11:43:40.746Z",
             "basis": "Remaining review revision, assurance and first canonical publication only. Discovery, initial intake, extraction and initial verifier-wrapper implementation predate registration and are excluded; their time is not reconstructed. Final ledger reseal and closeout are reported separately."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-07T12:10:22.675Z",
+            "basis": "Seven successor local gates and five-role internal disposition after minor replay-instruction repair; public availability assessed separately."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-07T13:11:29.445Z",
+            "basis": "Review-repaired candidate, exact complete archive, internal editorial acceptance, public GitHub/Zenodo byte readback, standard media and first guarded canonical publication completed. Final ledger reseal follows outside this measurement cut. No external mathematical assurance or discovery-speed claim."
           }
         ],
         "activeHumanMinutes": null,
@@ -9361,15 +9371,66 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": null,
-        "correctionCount": 0
+        "correctionCount": 2
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Local internal assurance passed; public asset byte readback is in progress and the final scoped endpoint is not yet recorded."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-07T13:11:29.445Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/22643443"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/hilbert-eight-points-reducedness/blob/v0.1.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/hilbert-eight-points-reducedness/blob/v0.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed, author-claimed complete computer-assisted proof in characteristic zero only. No external whole-proof validation, formal verification, exhaustive novelty clearance or priority determination.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/hilbert-eight-points-reducedness/",
+          "https://zenodo.org/records/22643443",
+          "https://github.com/ipitchford/hilbert-eight-points-reducedness/releases/tag/v0.1.0-candidate"
+        ],
+        "missingnessReason": "Unaffiliated reproduction, external whole-proof review, formal verification, novelty and priority remain unestablished."
       },
       "releaseSlug": "hilbert-eight-points-reducedness",
       "stopReason": null,
@@ -9380,6 +9441,16 @@
           "resultClass": "pending",
           "reason": "Remaining review revision, assurance and first canonical publication only. Discovery, initial intake, extraction and initial verifier-wrapper implementation predate registration and are excluded; their time is not reconstructed. Final ledger reseal and closeout are reported separately.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-07T13:11:29.445Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Review-repaired candidate, exact complete archive, internal editorial acceptance, public GitHub/Zenodo byte readback, standard media and first guarded canonical publication completed. Final ledger reseal follows outside this measurement cut. No external mathematical assurance or discovery-speed claim.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/hilbert-eight-points-reducedness/",
+            "https://zenodo.org/records/22643443"
+          ]
         }
       ],
       "metrics": {
@@ -9446,15 +9517,82 @@
           ],
           "stopRule": "Fail closed on unresolved integrity or authority gates; do not expand the mathematical claim. Time thresholds are recorded telemetry, not an arbitrary termination rule."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-07T13:11:29.445Z",
+          "calendarElapsedMinutes": 88,
+          "activeAgentMinutes": 19,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 3,
+          "blockedMinutes": 0,
+          "reworkMinutes": 0,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 244,
+          "deduplicatedModelTokens": 33201497,
+          "uncachedInputTokens": 921311,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Review-repaired candidate, exact complete archive, internal editorial acceptance, public GitHub/Zenodo byte readback, standard media and first guarded canonical publication completed. Final ledger reseal follows outside this measurement cut. No external mathematical assurance or discovery-speed claim. Eighteen mode/corruption cases constitute one adversarial gate, not eighteen research cycles.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -131,
+          "forecastRatio": 0.12666666666666668,
+          "withinForecastInterval": false,
+          "varianceReason": "Active time is the union of instrumented Reasoning and AgentMessage intervals; unattended time includes instrumented compaction only. Both are observable lower bounds, not complete labour/wait totals. Tool-call generation and uninstrumented provider waits are excluded. Deduplicated response IDs remove fork copies. Cached inputs remain part of raw tokens. No historical discovery clock is inferred. Offline gaps and unnecessary administrative pauses are not classified as external blocking. Rework time is a zero instrumented lower bound, not a claim that no repair occurred: the replay recipe, narration and generated audio index were repaired. This incomplete timing coverage is not suitable for claiming a forecast speed gain. Earlier discovery and pre-registration work remain excluded.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "No contemporaneous human active-time instrument."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No complete scoped substantive-computation wall clock; ordinary CI/build time is not research compute."
+            }
+          ]
+        }
       },
       "revisions": [
         {
           "date": "2026-09-07",
           "summary": "Registered remaining work prospectively with initial work explicitly excluded."
+        },
+        {
+          "date": "2026-09-07",
+          "summary": "Appended first canonical publication and deduplicated runtime outcome with explicitly incomplete active/wait coverage. Original forecast remains unchanged."
         }
       ],
-      "corrections": []
+      "corrections": [
+        {
+          "at": "2026-09-07T13:11:29.445Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Prospective snapshot predates five completed internal reviewers.",
+          "replacement": "Terminal receipt records six agent runs; original intake snapshot retained.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/hilbert-eight-points-reducedness/"
+          ]
+        },
+        {
+          "at": "2026-09-07T13:11:29.445Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "Intake snapshot was unknown; terminal timing records an explicitly incomplete zero instrumented lower bound.",
+          "replacement": "See outcome varianceReason: actual replay-instruction, audio and governance repairs are disclosed; zero is not an absence-of-rework claim.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/hilbert-eight-points-reducedness/"
+          ]
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -9815,6 +9953,10 @@
     {
       "date": "2026-09-07",
       "summary": "Registered remaining Hilbert-eight-points assurance and publication; no scientific assurance promotion."
+    },
+    {
+      "date": "2026-09-07",
+      "summary": "Recorded Hilb8 first canonical publication; no external assurance or acceleration promotion."
     }
   ]
 }
