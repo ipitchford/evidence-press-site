@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'essential-hurwitz-trace-formula': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 7 SEPTEMBER 2026', 'ALGEBRAIC GEOMETRY · EXACT FORMULA'],
+    head: ['A large polynomial.', '<em>A small trace matrix.</em>'],
+    headSize: 62,
+    sub: 'A compact Hurwitz-form proof candidate. Global denominator cancellation, not an expanded coefficient list.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">essential Hurwitz form</div><div class="eq eq-sm">H = D⁴ det T</div><div class="note"><b>10 × 10 trace matrix</b><br>degree 30 in Pluecker coordinates</div><div class="eq-foot">written proof · exact finite controls</div>'
+  },
   'hilbert-eight-points-reducedness': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 7 SEPTEMBER 2026', 'HILBERT SCHEMES · CHARACTERISTIC ZERO'],
