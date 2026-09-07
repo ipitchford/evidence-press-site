@@ -9,8 +9,13 @@ The result is a complete written proof candidate for an explicitly specified con
 For a real \(n\times n\) matrix and \(1\le k<n\), assume all minors of orders at most \(k\) are positive. For each pair of increasing \((k+1)\)-element index sets, write \(I=P\cup\{i,i'\}\), \(J=Q\cup\{j,j'\}\), with \(P,Q\) the first \(k-1\) indices. Impose
 
 \[
-\frac{\Delta(Pi,Qj)\Delta(Pi',Qj')}{\Delta(Pi,Qj')\Delta(Pi',Qj)}>
-4\cos^2\frac{\pi}{n-k+2}.
+R=\frac{\Delta(Pi,Qj)\Delta(Pi',Qj')}{\Delta(Pi,Qj')\Delta(Pi',Qj)}.
+\]
+
+The required bound is
+
+\[
+R>4\cos^2\frac{\pi}{n-k+2}.
 \]
 
 The candidate proves total positivity and sharpness for this normalized family. Every smaller threshold admits a matrix with every proper minor positive and negative full determinant. For each fixed \(k\), the optimal dimension-independent threshold is 4.
