@@ -32,6 +32,16 @@ ${inner}
 }
 
 const art = {};
+/* Ten-by-ten trace matrix and its degree-correcting factor; schematic, not data. */
+art['essential-hurwitz-trace-formula'] = (a,b) => {
+  let s='';
+  for(let i=0;i<10;i++)for(let j=0;j<10;j++){
+    const opacity=0.25+0.65*((i+j)%5)/4;
+    s+='<rect x="'+(65+27*j)+'" y="'+(50+27*i)+'" width="20" height="20" rx="2" fill="'+(i===j?b:a)+'" opacity="'+opacity+'"/>';
+  }
+  s+='<path d="M365 180 H470 M460 170 L470 180 L460 190" fill="none" stroke="'+b+'" stroke-width="3"/>';
+  return s+'<text class="og-hide" x="200" y="370" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="18">ten-dimensional trace pairing</text><text class="og-hide" x="830" y="105" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="34">The essential Hurwitz form</text><text class="og-hide" x="830" y="187" text-anchor="middle" fill="'+b+'" font-family="Georgia" font-size="46">H = D⁴ det T</text><text class="og-hide" x="830" y="255" text-anchor="middle" fill="'+a+'" font-family="monospace" font-size="20">a compact global formula</text><text class="og-hide" x="830" y="330" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="18">UNREFEREED CANDIDATE</text>';
+};
 /* Schematic symmetric profiles and radius mixtures; not computed free-convolution data. */
 art['symmetric-unimodality-free-convolution'] = (a,b) => {
   let s='';
@@ -1863,6 +1873,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'essential-hurwitz-trace-formula': ['#60a5fa', '#fbbf24'],
   'symmetric-unimodality-free-convolution': ['#a78bfa', '#2dd4bf'],
   'affine-elementary-symmetric-total-nonnegativity': ['#58c4ad', '#e9bd76'],
   'hilbert-eight-points-reducedness': ['#58c4ad', '#e9bd76'],
