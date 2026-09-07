@@ -1,0 +1,211 @@
+{
+  "slug": "sharp-local-minor-ratios",
+  "title": "Sharp local minor-ratio conditions for total positivity",
+  "shortTitle": "A sharp threshold for positive minors",
+  "oneLine": "A proof candidate finds the exact strength of local minor ratios needed to force total positivity.",
+  "abstract": "For a real n-square matrix and 1≤k<n, assume every minor through order k is positive. On every (k+1)-square submatrix, use its first k−1 rows and columns as a common pivot and compare the two products of bordered k-minors. Requiring their ratio to exceed 4 cos²(π/(n−k+2)) forces total positivity, and every smaller threshold admits a matrix with all proper minors positive but negative determinant. The optimal dimension-independent threshold is 4. This is an unrefereed written proof candidate for this precise condition, not a claim of identity with an omitted AIM workshop formula.",
+  "narration": "How much local information can force a matrix to be totally positive? Total positivity means that every square submatrix has a positive determinant. Checking small pieces alone is usually not enough. This candidate adds a quantitative condition: selected ratios of small minors must clear a threshold. The paper identifies the exact threshold for each matrix size and minor order. Across all dimensions, the optimal threshold is four. Sufficiency follows from a classical determinant theorem and a standard bordering identity. The difficult direction is sharpness. The construction starts with a smaller matrix whose proper minors are positive but whose full determinant is negative. A carefully scaled border raises the matrix size while transferring every required local ratio at once. Repeating this construction supplies counterexamples below the threshold. The package includes a full written proof, ten exact rational examples and fifty-three symbolic identities. A separate regression preserves a correction: using one common threshold is stronger than allowing thresholds that vary with submatrix size. The finite computations do not prove the general theorem. This is an unrefereed Evidence Press candidate, with internal AI review, not independent specialist validation. Historical priority and identity with an omitted workshop formula remain unestablished. The paper and evidence package are linked. This narration uses an OpenAI synthetic voice and provides no additional mathematical evidence.",
+  "datePublished": "2026-09-07",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22650759",
+  "conceptDoi": "10.5281/zenodo.22650758",
+  "zenodoUrl": "https://zenodo.org/records/22650759",
+  "pdfUrl": "https://github.com/ipitchford/sharp-local-minor-ratios/releases/download/v0.1.0-candidate/sharp-local-minor-ratios-0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22650759/files/sharp-local-minor-ratios-0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/sharp-local-minor-ratios",
+  "releaseUrl": "https://github.com/ipitchford/sharp-local-minor-ratios/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [{"type":"audio","url":"https://evidencepress.org/assets/audio/sharp-local-minor-ratios.mp3","name":"Plain-English audio briefing","description":"AI-generated communication summary, not additional mathematical evidence.","transcriptUrl":"https://evidencepress.org/assets/audio/sharp-local-minor-ratios.txt"}],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex under human direction",
+      "SymPy 1.14.0",
+      "LaTeX"
+    ],
+    "humanRole": "Problem selection, research direction, supplied review and full publication authorization; scholarly creator Anonymous.",
+    "disclosure": "AI-assisted proof, code, revision, internal editorial review and publication. No independent human whole-proof verification is inferred."
+  },
+  "problem": {
+    "name": "AIM-LINEAR_ALGEBRA-0017 / AIM Problem 1.65",
+    "url": "http://aimpl.org/totalpos/1/"
+  },
+  "keywords": [
+    "total positivity",
+    "minor ratios",
+    "Schur complement",
+    "sharp threshold",
+    "unrefereed candidate"
+  ],
+  "keyResults": [
+    "Exact dimension-dependent threshold for the specified common-pivot local condition.",
+    "Optimal dimension-independent threshold 4 for each fixed minor order.",
+    "Scale-separated bordering transfers all local ratios simultaneously.",
+    "Explicit nonvacuity and a relative minor-data perturbation bound."
+  ],
+  "evidence": "Five-page proof, exact rational and symbolic diagnostics, five negative controls, corrected historical note, supplied-review response and five internal editorial role reports. Internal decision: https://github.com/ipitchford/sharp-local-minor-ratios/blob/v0.1.0-candidate/EDITORIAL_DECISION.md",
+  "statusDetail": "Unrefereed complete written proof candidate for an explicitly normalized local condition. No independent specialist validation, formal verification, absolute priority clearance, optimal testing complexity or identity with the omitted workshop formula is claimed.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22650759",
+      "note": "Public archive bytes verified before deployment."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/sharp-local-minor-ratios/blob/v0.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Ten rational examples, 53 symbolic identities, review regression and five rejection controls. Finite corroboration only."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/sharp-local-minor-ratios/blob/v0.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Pinned SymPy and Linux CI, not a hermetic environment."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated model review and replay do not establish this external assurance dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated model review and replay do not establish this external assurance dimension."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated model review and replay do not establish this external assurance dimension."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated model review and replay do not establish this external assurance dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated model review and replay do not establish this external assurance dimension."
+    }
+  },
+  "openProblems": [
+    "Unaffiliated scrutiny of the all-minors asymptotics and simultaneous-transfer argument.",
+    "Independent reconstruction of diagnostic formulas from the manuscript.",
+    "Determine the relationship to the omitted workshop formula and complete the priority audit."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Johnson and Karp, AIM Problem 1.65.",
+      "url": "http://aimpl.org/totalpos/1/"
+    },
+    {
+      "citation": "Katkova and Vishnyakova, consulted preprint Theorem 1(ii).",
+      "url": "https://arxiv.org/abs/math/0504183v1"
+    },
+    {
+      "citation": "Fallat, Johnson and Sokal (2017), with 2021 corrigendum; exterior bordering comparison.",
+      "url": "https://arxiv.org/abs/1612.02210v2"
+    },
+    {
+      "citation": "Gasca and Mühlbach (1987), generalized Schur-complement tests; abstract only inspected.",
+      "url": "https://doi.org/10.1016/0168-9274(87)90049-3"
+    },
+    {
+      "citation": "Fallat, Gupta and Johnson, Sufficient conditions for total positivity, compounds, and Dodgson condensation.",
+      "url": "https://arxiv.org/abs/2405.06069v1"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Sharp local minor-ratio conditions for total positivity (Version 0.1.0-candidate) [Unrefereed proof candidate]. Evidence Press. https://doi.org/10.5281/zenodo.22650759",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:sharp-local-minor-ratios",
+    "attemptIds": [
+      "ep-attempt:sharp-local-minor-ratios-assurance-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "reusable-method",
+      "description": "Sharp local total-positivity criterion and simultaneous-transfer construction.",
+      "scope": "Real n-square matrices, 1≤k<n, explicitly normalized common-pivot k-minor ratios."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Ordered minors define the local ratios; Sylvester transfers scalar sufficiency; all-minors asymptotics and finite margins transfer sharpness simultaneously.",
+      "remainingRisks": [
+        "Written proof awaits unaffiliated specialist scrutiny.",
+        "Finite exact checks do not certify arbitrary dimensions.",
+        "The original workshop condition is not displayed."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Assess all-minors asymptotics and finite simultaneous margins.",
+      "Preserve normalization and positivity hypotheses.",
+      "Assess historical priority separately.",
+      "Preserve rights, creator and unrefereed status."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/math/0504183v1",
+        "inheritedClaim": "Theorem 1(ii), strict scalar determinant threshold.",
+        "inheritedAssuranceCeiling": "Imported theorem does not validate the new simultaneous lift."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Seek unaffiliated proof scrutiny and separate diagnostic reconstruction.",
+      "claimCeiling": "Unrefereed complete written proof candidate for an explicitly normalized local condition. No independent specialist validation, formal verification, absolute priority clearance, optimal testing complexity or identity with the omitted workshop formula is claimed."
+    },
+    "impactClaims": [
+      {
+        "id": "sharp-local-minor-ratios-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable sharp-threshold proof candidate",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched comparator.",
+        "estimand": "No speed or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Internal research assurance is recorded separately from canonical publication; publication does not upgrade external assurance."
+}
