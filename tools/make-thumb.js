@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'hilbert-eight-points-reducedness': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 7 SEPTEMBER 2026', 'HILBERT SCHEMES · CHARACTERISTIC ZERO'],
+    head: ['Eight points.', '<em>No hidden nilpotents?</em>'],
+    headSize: 58,
+    sub: 'A computer-assisted reducedness proof candidate. Reduced does not mean smooth or irreducible.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">eight points in affine four-space</div><div class="eq eq-sm">Hilb⁸(A⁴)</div><div class="note"><b>two local models</b><br>B15 · B16<br>an all-degree proof argument</div><div class="eq-foot">finite checks are not the whole proof</div>'
+  },
   'dyck-transpositions-n-log-n': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 6 SEPTEMBER 2026', 'DYCK PATHS · ORIGINAL REJECTION WALK'],
