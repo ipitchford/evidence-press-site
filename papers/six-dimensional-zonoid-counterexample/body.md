@@ -3,8 +3,12 @@
 The cross-polytope does not maximize the zonoid enclosure factor among all origin-symmetric convex bodies. This candidate gives a concrete counterexample in six dimensions:
 
 \[
-K=\operatorname{conv}\{\pm4e_1,\ldots,\pm4e_6,\pm(1,1,1,1,2,2)\},
-\qquad \lambda(K)=\frac{122}{65}=\frac{15}{8}+\frac1{520}.
+\begin{aligned}
+K&=\operatorname{conv}\{\pm v_1,\ldots,\pm v_7\},\\
+v_j&=4e_j\quad(1\le j\le6),\\
+v_7&=(1,1,1,1,2,2),\\
+\lambda(K)&=\frac{122}{65}=\frac{15}{8}+\frac1{520}.
+\end{aligned}
 \]
 
 Here \(\lambda(K)\) is the smallest factor \(t\) for which some zonoid lies between \(K\) and \(tK\). A zonoid is a Hausdorff limit of Minkowski sums of segments. The benchmark \(\lambda(C_6)=15/8\) is the value recorded in Schneider’s AIM question. The strict gap is small but exact; no floating-point tolerance enters the final certificate checks.
