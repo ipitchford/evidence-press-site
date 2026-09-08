@@ -12232,9 +12232,9 @@
       "workId": "ep-work:bounded-product-transposition-cutoff",
       "cohort": "prospective",
       "registeredAt": "2026-09-08T13:46:59.596Z",
-      "status": "active",
-      "statusAt": "2026-09-08T14:08:53.863Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-08T14:18:20.271Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -12262,6 +12262,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-09-08T14:06:49.522Z",
             "basis": "Five role reports Accept; no scientific repair required; public identity and deployment are separate."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-08T14:18:20.271Z",
+            "basis": "Byte-matched public archives and guarded canonical desktop/mobile readback; not external mathematical validation."
           }
         ],
         "activeHumanMinutes": null,
@@ -12269,7 +12274,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 2
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -12315,6 +12320,16 @@
           "resultClass": "pending",
           "reason": "Internal assurance endpoint recorded; publication remains in progress.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-08T14:18:20.271Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Reviewed product-weight candidate publication reached first canonical readback; final ledger seal follows separately.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/bounded-product-transposition-cutoff/",
+            "https://zenodo.org/records/22662125"
+          ]
         }
       ],
       "metrics": {
@@ -12381,9 +12396,80 @@
           ],
           "stopRule": "Fail closed for scientific, rights and provider failures; preserve original claim ceiling. Workflow forecast is not a permission limit."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-08T14:18:20.271Z",
+          "calendarElapsedMinutes": 31,
+          "activeAgentMinutes": 31,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 0,
+          "reworkMinutes": 2,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 63,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Supplied review actioned; five internal roles Accept; unrefereed product-weight cutoff candidate archived with exact finite diagnostics, matching public assets and guarded canonical readback. Historical research excluded.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -119,
+          "forecastRatio": 0.21,
+          "withinForecastInterval": false,
+          "varianceReason": "Existing six-page proof and reusable publisher tools. Active minutes are the attended coordinator interval minus explicitly recorded unattended/blocked intervals, including short interleaved tool waits; not summed agent CPU. Operational rework included accessible-text conversion, art palette, metadata schema and mobile equation layout, but no distinct rework clock was instrumented. Model turns count available coordinator reasoning records only, excluding reviewer forks. No comparative acceleration claim. The rework field is a rounded observed lower bound: mobile-repair commentary interval 14:10:04.385–14:11:18.918 UTC plus audio-index repair 14:13:36.354 UTC to seal commit 14:13:53 UTC, totaling 91.179 seconds. Earlier unsegmented packaging/schema repair time is included in active time but not this subtotal.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No complete inference or research compute meter; publication build time is not a substitute."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "No authoritative task-local fork-aware runtime counter; inherited token events not summed."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "No authoritative task-local uncached-input counter."
+            }
+          ]
+        }
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-08T14:18:20.271Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "Opening zero is retained as intake snapshot; terminal field records two observed repair windows, not an exhaustive rework clock.",
+          "replacement": "2 rounded minutes, an observed lower bound of 91.179 seconds; other unsegmented repair time excluded from subtotal.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/256"
+          ]
+        },
+        {
+          "at": "2026-09-08T14:18:20.271Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Opening count retained; terminal total includes coordinator and five separate role reviewers.",
+          "replacement": "Opening 1 remains; terminal total 6.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/bounded-product-transposition-cutoff/blob/v1.0.0-candidate/EDITORIAL_DECISION.md"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-08",
@@ -12392,6 +12478,10 @@
         {
           "date": "2026-09-08",
           "summary": "Recorded internal review and exact finite diagnostic assurance, with external dimensions unassessed."
+        },
+        {
+          "date": "2026-09-08",
+          "summary": "Appended terminal assurance-publication receipt at first canonical readback. Research history, human effort and unavailable model tokens remain outside this measured scope."
         }
       ]
     }
