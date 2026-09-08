@@ -32,6 +32,17 @@ ${inner}
 }
 
 const art = {};
+/* Schematic clique covers and stars; a subclass motif, not a counterexample. */
+art['three-coloured-paths-partial-results'] = (a,b) => {
+  let s='';
+  for(const [cx,cy,color] of [[140,145,a],[360,145,b]]){
+    const pts=[[cx,cy-60],[cx-55,cy+40],[cx+55,cy+40]];
+    s+=`<polygon points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="${color}" stroke-width="5"/>`;
+    for(const [x,y] of pts)s+=`<circle cx="${x}" cy="${y}" r="9" fill="${color}"/>`;
+  }
+  for(const [x,y] of [[165,260],[260,230],[360,260]])s+=`<line x1="260" y1="315" x2="${x}" y2="${y}" stroke="#c4a9ef" stroke-width="5"/><circle cx="${x}" cy="${y}" r="8" fill="#c4a9ef"/>`;
+  return s+`<circle cx="260" cy="315" r="10" fill="#c4a9ef"/><text class="og-hide" x="835" y="105" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="35">Three-coloured paths</text><text class="og-hide" x="835" y="180" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="36">Partial results</text><text class="og-hide" x="835" y="245" text-anchor="middle" fill="${a}" font-family="monospace" font-size="20">the parent problem remains open</text><text class="og-hide" x="835" y="320" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="18">UNREFEREED CANDIDATE</text>`;
+};
 /* Schematic nested minors and simultaneous transfer, not numerical data. */
 art['sharp-local-minor-ratios'] = (a,b) => {
   let s='';
@@ -1880,6 +1891,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'three-coloured-paths-partial-results': ['#38bdf8', '#fbbf24'],
   'sharp-local-minor-ratios': ['#5eead4', '#fbbf24'],
   'essential-hurwitz-trace-formula': ['#60a5fa', '#fbbf24'],
   'symmetric-unimodality-free-convolution': ['#a78bfa', '#2dd4bf'],
