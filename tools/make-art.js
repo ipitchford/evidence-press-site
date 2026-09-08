@@ -32,6 +32,16 @@ ${inner}
 }
 
 const art = {};
+/* Product squares and diagonal choices; schematic, not a computed divisor. */
+art['triangulated-graph-product-picard'] = (a,b) => {
+  let s='';
+  for(let i=0;i<3;i++)for(let j=0;j<4;j++){
+    const x=60+90*j,y=50+90*i;
+    s+=`<rect x="${x}" y="${y}" width="90" height="90" fill="none" stroke="${a}" stroke-width="3"/>`;
+    s+=`<path d="M${x} ${y+((i+j)%2?90:0)} L${x+90} ${y+((i+j)%2?0:90)}" stroke="${b}" stroke-width="2"/>`;
+  }
+  return s+`<text class="og-hide" x="240" y="365" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">cuts · cycles · integer classes</text><text class="og-hide" x="825" y="110" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="35">The Picard group</text><text class="og-hide" x="825" y="175" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="35">of a graph product</text><text class="og-hide" x="825" y="245" text-anchor="middle" fill="${a}" font-family="monospace" font-size="20">every diagonal choice</text><text class="og-hide" x="825" y="320" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="18">UNREFEREED CANDIDATE</text>`;
+};
 /* Schematic clique covers and stars; a subclass motif, not a counterexample. */
 art['three-coloured-paths-partial-results'] = (a,b) => {
   let s='';
@@ -1893,6 +1903,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 const palette = {
   'three-coloured-paths-partial-results': ['#38bdf8', '#fbbf24'],
   'sharp-local-minor-ratios': ['#5eead4', '#fbbf24'],
+  'triangulated-graph-product-picard': ['#6ee7b7', '#fbbf24'],
   'essential-hurwitz-trace-formula': ['#60a5fa', '#fbbf24'],
   'symmetric-unimodality-free-convolution': ['#a78bfa', '#2dd4bf'],
   'affine-elementary-symmetric-total-nonnegativity': ['#58c4ad', '#e9bd76'],
