@@ -1,0 +1,215 @@
+{
+  "slug": "biased-small-world-mixing",
+  "title": "Biased random walks on small-world networks",
+  "shortTitle": "When drift speeds up a small world",
+  "oneLine": "Candidate proof of the stated AIM mixing bounds for four fixed-weight clock conventions: logarithmic in the denser regime, square-root up to polylogarithmic factors in the sparser regime.",
+  "abstract": "A cycle with independent undirected shortcuts and fixed forward and backward weights admits a candidate worst-start mixing theorem under four explicit clocks. At shortcut probability epsilon/n the mixing order is logarithmic; at epsilon n^(-3/2), the bounds run from c sqrt(n) log n to C sqrt(n)(log n)^18. The proof keeps random spacing, physical crossing durations, exceptional starts and parity separate. Exact rational tests corroborate finite identities only.",
+  "narration": "Imagine walking around a ring of locations, with occasional shortcuts joining distant points. A short route across the network does not automatically mean a random walker quickly forgets where it started. This candidate asks what changes when movement around the ring has a fixed directional bias. The written proof gives two answers for an explicitly defined random network. With the larger shortcut density, the claimed mixing time grows only logarithmically with the number of locations. With fewer shortcuts, it grows on a square-root scale, up to logarithmic factors. The sparse upper and lower bounds do not match exactly. The argument covers four ways of measuring time, including a discrete walk that never deliberately stays still. Several obstacles matter. Fast mixing among shortcut endpoints can hide slow movement between them. Travel duration and destination are dependent. An average starting point is not the worst starting point. And a nonlazy walk can retain an even-odd obstruction. The proof treats each issue separately using random spacing, joint clock estimates and parity control. Readers can inspect the detailed proof modules and rerun exact rational checks of finite matrix identities. Those checks do not certify the asymptotic theorem. The weights and directional bias are fixed as the network grows; arbitrary weight rules and vanishing bias are excluded. This is an unrefereed Evidence Press candidate dated September eighth, twenty twenty-six. The full paper, code and evidence are linked on the release page. This is an AI-generated voice summary, not additional mathematical evidence.",
+  "datePublished": "2026-09-08",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22663470",
+  "conceptDoi": "10.5281/zenodo.22663469",
+  "zenodoUrl": "https://zenodo.org/records/22663470",
+  "pdfUrl": "https://github.com/ipitchford/biased-small-world-mixing/releases/download/v0.1.0-candidate/biased-small-world-mixing-0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22663470/files/biased-small-world-mixing-0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/biased-small-world-mixing",
+  "releaseUrl": "https://github.com/ipitchford/biased-small-world-mixing/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/biased-small-world-mixing.mp3",
+      "name": "Audio briefing",
+      "description": "AI-generated communication summary; not additional mathematical evidence."
+    }
+  ],
+  "keywords": [
+    "small-world networks",
+    "nonreversible mixing",
+    "Markov renewal",
+    "random graphs",
+    "parity"
+  ],
+  "problem": {
+    "name": "AIM-PROBABILITY-0043 / Markov mixing Problem 3.2",
+    "url": "https://www.unsolvedmath.com"
+  },
+  "keyResults": [
+    "Worst-start Theta(log n) mixing in the denser bounded-average-degree regime.",
+    "Sparse lower c sqrt(n) log n and upper C sqrt(n)(log n)^18, with high probability.",
+    "Four fixed-weight clocks, including nonlazy discrete time with explicit parity analysis.",
+    "A consolidated dimension-uniform clock–endpoint renewal statement with stationary moments."
+  ],
+  "evidence": "Seven-page entry-point paper; detailed proof modules; standard-library exact matrix checks; normal, optimized and fresh-archive replay; three semantic mutants; source comparison and internal editorial reports.",
+  "statusDetail": "Unrefereed candidate proof for four fixed-weight clocks. Sparse bounds differ by polylogarithmic factors. No vanishing drift, arbitrary kernel, historical priority, external specialist validation, formal verification or impact claim.",
+  "openProblems": [
+    "Obtain unaffiliated scrutiny of the dimension-uniform renewal, adaptive phase and connected-set estimates.",
+    "Reduce the sparse logarithmic gap without changing the fixed-weight model.",
+    "Investigate vanishing drift or other weights as new problems, not consequences of this theorem.",
+    "Determine the reach of the renewal and clock-potential lemmas in other graph models."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Addario-Berry and Lei, The mixing time of the Newman-Watts small-world model (2015): reversible lazy benchmark.",
+      "url": "https://doi.org/10.1239/aap/1427814580"
+    },
+    {
+      "citation": "Gerencsér, Mixing times of Markov chains on a cycle with additional long range connections; arXiv v3, Theorems 23–24.",
+      "url": "https://arxiv.org/abs/1401.1692v3"
+    },
+    {
+      "citation": "Gerencsér and Hendrickx, Improved mixing rates of directed cycles with additional sparse interconnections (2023).",
+      "url": "https://arxiv.org/abs/2307.09949"
+    },
+    {
+      "citation": "Feng and Gerencsér, Mixing on the cycle with constant size perturbation (2026): fixed shortcut count.",
+      "url": "https://doi.org/10.1214/26-EJP1545"
+    },
+    {
+      "citation": "Espuny Díaz, Morris, Perarnau and Serra, Speeding up random walk mixing by starting from a uniform vertex (2024).",
+      "url": "https://doi.org/10.1214/24-EJP1091"
+    },
+    {
+      "citation": "Janson, The probability that a random multigraph is simple (2009).",
+      "url": "https://doi.org/10.1017/S0963548308009644"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Biased random walks on small-world networks (Version 0.1.0-candidate) [Unrefereed candidate]. Evidence Press. https://doi.org/10.5281/zenodo.22663470",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex under human direction",
+      "Python standard-library rational arithmetic",
+      "Pandoc and Tectonic"
+    ],
+    "humanRole": "Problem selection, supervision, supplied review and full publication authorization; scholarly creator Anonymous.",
+    "disclosure": "AI-assisted proof development and producer-coordinated internal review. No unaffiliated whole-proof verification inferred."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22663470",
+      "note": "Public archive bytes checked before site deployment."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/biased-small-world-mixing/blob/v0.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Finite rational identities and producer mutation controls; not asymptotic certification."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/biased-small-world-mixing/blob/v0.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Standard-library checks with recorded Python and Linux CI; PDF toolchain recorded, not hermetically pinned."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Supplied reviewer reports and internal model roles do not establish unaffiliated or journal assurance."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Supplied reviewer reports and internal model roles do not establish unaffiliated or journal assurance."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Supplied reviewer reports and internal model roles do not establish unaffiliated or journal assurance."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Supplied reviewer reports and internal model roles do not establish unaffiliated or journal assurance."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Supplied reviewer reports and internal model roles do not establish unaffiliated or journal assurance."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:biased-small-world-mixing",
+    "attemptIds": [
+      "ep-attempt:biased-small-world-mixing-assurance-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [],
+    "accelerationPrimitives": [
+      "structural-compression",
+      "regime-stitching",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Two-regime worst-start mixing bounds under four fixed-weight clocks.",
+      "scope": "Biased cycle with independent noncycle unit shortcuts and fixed positive directional bias."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Trace expansion is bridged to physical mixing using random gaps, joint durations, a worst-start potential and parity control.",
+      "remainingRisks": [
+        "Written asymptotic argument awaits external scrutiny.",
+        "Finite matrix replay cannot certify graph-uniform estimates.",
+        "Priority remains bounded uncertainty."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Audit dimension-uniform estimates and graph conditioning.",
+      "Keep physical clocks and starting-state quantifiers separate.",
+      "Assess historical priority and significance separately.",
+      "Preserve rights, creator and assurance boundaries."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Obtain unaffiliated proof reconstruction and separately implemented finite checks.",
+      "claimCeiling": "Unrefereed candidate proof for four fixed-weight clocks. Sparse bounds differ by polylogarithmic factors. No vanishing drift, arbitrary kernel, historical priority, external specialist validation, formal verification or impact claim."
+    },
+    "impactClaims": [
+      {
+        "id": "biased-small-world-mixing-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable small-world mixing candidate and renewal statement",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched comparator.",
+        "estimand": "No speed or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Internal assurance timestamp is separate from later public readback; publication does not upgrade proof assurance."
+}

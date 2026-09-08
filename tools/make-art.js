@@ -32,6 +32,15 @@ ${inner}
 }
 
 const art = {};
+/* Biased cycle and irregular shortcuts: schematic, not sampled evidence. */
+art['biased-small-world-mixing'] = (a,b) => {
+  const pts=Array.from({length:18},(_,i)=>[280+145*Math.cos(i*2*Math.PI/18),200+145*Math.sin(i*2*Math.PI/18)]);
+  let s='<circle cx="280" cy="200" r="145" fill="none" stroke="'+a+'" stroke-width="4"/>';
+  for(const [i,j] of [[0,7],[2,11],[5,14],[7,16]])s+=`<path d="M${pts[i].join(' ')} L${pts[j].join(' ')}" stroke="${b}" stroke-width="3" opacity=".75"/>`;
+  for(const [x,y] of pts)s+=`<circle cx="${x}" cy="${y}" r="6" fill="#e7e5e4"/>`;
+  s+=`<path d="M385 91 L402 108 L379 111" fill="none" stroke="${a}" stroke-width="6"/>`;
+  return s+`<text class="og-hide" x="820" y="105" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="37">A small world with drift</text><text class="og-hide" x="820" y="190" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="31">Four clocks. Two regimes.</text><text class="og-hide" x="820" y="260" text-anchor="middle" fill="${a}" font-family="monospace" font-size="18">fixed weights · worst-start bounds</text><text class="og-hide" x="820" y="330" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* Weighted transposition directions; diagrammatic, not measured mixing curves. */
 art['bounded-product-transposition-cutoff'] = (a,b) => {
   const pts=Array.from({length:7},(_,i)=>[270+135*Math.cos(i*2*Math.PI/7),190+135*Math.sin(i*2*Math.PI/7)]);
@@ -2011,6 +2020,7 @@ const palette = {
   ,'fixed-d-toeplitz-obstruction': ['#38bdf8', '#f59e0b']
 };
 
+palette['biased-small-world-mixing'] = ['#2dd4bf', '#fbbf24'];
 for (const [slug, fn] of Object.entries(art)) {
   const [a, b] = palette[slug];
   fs.writeFileSync(path.join(OUT, slug + '.svg'), frame(fn(a, b), a, b));
