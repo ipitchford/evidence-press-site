@@ -12490,8 +12490,8 @@
       "workId": "ep-work:biased-small-world-mixing",
       "cohort": "prospective",
       "registeredAt": "2026-09-08T15:12:24.508Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-08T15:29:05.489Z",
+      "status": "published",
+      "statusAt": "2026-09-08T15:47:23.420Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -12515,6 +12515,11 @@
             "event": "work-opened",
             "at": "2026-09-08T15:12:24.508Z",
             "basis": "Prospective remaining assurance and publication only. Completed discovery and initial historical notices, notation guide and consolidated-lemma revisions predate this work-ledger registration and are excluded. No discovery clock is reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-08T15:47:23.420Z",
+            "basis": "Exact public GitHub/Zenodo assets, canonical browser and guarded live integrity readback."
           }
         ],
         "activeHumanMinutes": null,
@@ -12522,7 +12527,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -12630,6 +12635,16 @@
           "evidenceRefs": [
             "https://github.com/ipitchford/biased-small-world-mixing/blob/main/EDITORIAL_DECISION.md"
           ]
+        },
+        {
+          "at": "2026-09-08T15:47:23.420Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Internal editorial acceptance, exact public archive checks and first guarded canonical release completed. Final publication-ledger seal follows separately.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/biased-small-world-mixing/",
+            "https://zenodo.org/records/22663470"
+          ]
         }
       ],
       "metrics": {
@@ -12697,9 +12712,63 @@
           ],
           "stopRule": "Fail closed on proof, rights, CI or byte-integrity defects. Publication timing forecasts are not stopping caps."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-08T15:47:23.420Z",
+          "calendarElapsedMinutes": 35,
+          "activeAgentMinutes": 20,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 0,
+          "reworkMinutes": 0,
+          "agentRuns": 5,
+          "maxParallelAgents": 4,
+          "modelTurns": 135,
+          "deduplicatedModelTokens": 16297067,
+          "uncachedInputTokens": 489800,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 3,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Review clarification, five-role internal editorial acceptance, finite exact replay, byte-identical public archives and first canonical publication completed. The prior research is outside this measured attempt. No external whole-proof validation, priority or impact is claimed.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -130,
+          "forecastRatio": 0.13333333333333333,
+          "withinForecastInterval": false,
+          "varianceReason": "Active minutes are the floored union of observed model-response output spans, a strict lower bound excluding initial latency and tool execution, not a comparable total-effort or acceleration estimate. Tokens deduplicate per-response receipts across root and four editorial agents; cached context is included. Zero wait, blocked and rework minutes means no separately metered interval, not absence of CI/build waiting or repairs. Transport fallback, PDF tooling, historical text/locator clarification, forecast decomposition and audio inventory repairs are documented in the publication record. Three finite semantic mutant families were rejected. One existing proof architecture was assessed; research discovery and initial review revisions predate registration.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort was not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Substantive compute time was not separately metered."
+            }
+          ]
+        }
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-08T15:47:23.420Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Preserve opening root-only snapshot; terminal total includes four completed internal editorial agents.",
+          "replacement": "Opening 1 retained; terminal 5.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/biased-small-world-mixing/"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-08",
@@ -12708,6 +12777,10 @@
         {
           "date": "2026-09-08",
           "summary": "Corrected intake Fermi lower-component sum from 100 to the already-frozen 120-minute lower forecast; headline interval and central forecast unchanged. Original intake retained privately; this is a schema/decomposition correction, not empirical recalibration."
+        },
+        {
+          "date": "2026-09-08",
+          "summary": "Appended first-publication terminal outcome; preserved original research-assurance assessedAt and opening measurement. Runtime is an observational lower bound, not evidence of acceleration."
         }
       ]
     }
@@ -13146,6 +13219,10 @@
     {
       "date": "2026-09-08",
       "summary": "Corrected intake Fermi lower-component sum from 100 to the already-frozen 120-minute lower forecast; headline interval and central forecast unchanged. Original intake retained privately; this is a schema/decomposition correction, not empirical recalibration."
+    },
+    {
+      "date": "2026-09-08",
+      "summary": "Recorded first canonical small-world candidate release and scoped terminal publication metrics."
     }
   ]
 }
