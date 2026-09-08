@@ -11945,8 +11945,8 @@
       "workId": "ep-work:symmetric-determinantal-hilbert-threshold",
       "cohort": "prospective",
       "registeredAt": "2026-09-08T12:43:58.127Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-08T13:03:06.517Z",
+      "status": "published",
+      "statusAt": "2026-09-08T13:13:25.116Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -11970,6 +11970,11 @@
             "event": "work-opened",
             "at": "2026-09-08T12:43:58.127Z",
             "basis": "Prospective remaining publication only, beginning after integrated manuscript preparation. Original discovery, prior review, source audit, original local held-attempt registration and initial integration are excluded. No historical research clock is reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-08T13:13:25.116Z",
+            "basis": "Guarded production deployment; canonical HTML, JSON and desktop/mobile readback."
           }
         ],
         "activeHumanMinutes": null,
@@ -11977,7 +11982,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 2
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -12070,6 +12075,16 @@
             "https://github.com/ipitchford/orthogonal-tensor-algebraicity/releases/tag/v0.1.0-candidate",
             "https://zenodo.org/records/22660867"
           ]
+        },
+        {
+          "at": "2026-09-08T13:13:25.116Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Publication-only target closed: immutable matching archives, green CI and guarded canonical readback. This is not a measurement of mathematical discovery.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/symmetric-determinantal-hilbert-threshold/",
+            "https://github.com/ipitchford/orthogonal-tensor-algebraicity/blob/v0.1.0-candidate/EDITORIAL_DECISION.md"
+          ]
         }
       ],
       "metrics": {
@@ -12127,7 +12142,59 @@
           ],
           "stopRule": "Fail closed on fatal scientific, rights or authority issues; ordinary time forecasts do not stop authorized publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-08T13:13:25.116Z",
+          "calendarElapsedMinutes": 29,
+          "activeAgentMinutes": 29,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 0,
+          "reworkMinutes": 8,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 84,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 0,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Scoped publication-only target: accepted unrefereed orthogonal classification archived and canonically published. Final ledger-seal propagation is recorded separately in workflow closeout; no discovery or impact inference.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -71,
+          "forecastRatio": 0.29,
+          "withinForecastInterval": false,
+          "varianceReason": "Integrated manuscript and substantive review already existed and are excluded. Active agent time is the continuously attended coordinator workflow interval, including short interleaved service waits, not CPU or summed parallel-agent time; no unattended or wholly blocked interval occurred. Node Zenodo access failed while other work continued, and ordinary curl restored it. Eight-minute rework subtotal is approximate. Model turns count unique recorded root-coordinator model responses through the runtime receipt, excluding reviewer forks. One five-role confirmation round occurred; no new substantive review round or research cycle. Final post-readback seal/deployment time is outside this frozen public-availability endpoint and recorded in final workflow closeout.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No complete substantive compute meter; ordinary publishing builds are not research compute."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Root-only unique response records available in local receipt, but complete reviewer-tree usage cannot be established; no sum of cumulative snapshots."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Root-only partial counter available; reviewer-tree total unavailable."
+            }
+          ]
+        }
       },
       "revisions": [
         {
@@ -12135,7 +12202,26 @@
           "summary": "Registered remaining publication prospectively; all earlier discovery and preparation excluded."
         }
       ],
-      "corrections": []
+      "corrections": [
+        {
+          "at": "2026-09-08T13:13:25.116Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Opening one-coordinator snapshot preserved; terminal count includes five differentiated confirmation reviewers.",
+          "replacement": "Opening 1 retained; terminal 6.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/orthogonal-tensor-algebraicity/blob/v0.1.0-candidate/EDITORIAL_DECISION.md"
+          ]
+        },
+        {
+          "at": "2026-09-08T13:13:25.116Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "Opening zero snapshot preserved; later schema, formula-layout and shallow-clone repair subtotal recorded separately from scientific work.",
+          "replacement": "Terminal approximately eight minutes of operational rework; no mathematical claim correction.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/253"
+          ]
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -12560,6 +12646,10 @@
     {
       "date": "2026-09-08",
       "summary": "Registered remaining orthogonal-classification publication prospectively at the preserved local intake timestamp; earlier research excluded."
+    },
+    {
+      "date": "2026-09-08",
+      "summary": "Closed remaining orthogonal publication attempt at canonical availability; preserved opening snapshots, frozen forecast, explicit scope and external-assurance missingness."
     }
   ]
 }
