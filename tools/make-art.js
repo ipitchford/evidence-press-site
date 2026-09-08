@@ -32,6 +32,15 @@ ${inner}
 }
 
 const art = {};
+/* Schematic derivative contributions, not measured stable-density curves. */
+art['stable-power-concavity-gaussian-boundary'] = (a,b) => {
+  let s='<path d="M65 305 H500 M65 305 V55" fill="none" stroke="#798d89" stroke-width="2"/>';
+  for(const [color,fn] of [[a,t=>Math.exp(-4*t*t)],[b,t=>0.14/(0.2+t)]]){
+    const pts=Array.from({length:101},(_,i)=>{const t=i/100;return `${65+430*t},${305-210*fn(t)}`;});
+    s+=`<polyline points="${pts.join(' ')}" fill="none" stroke="${color}" stroke-width="4"/>`;
+  }
+  return s+`<text class="og-hide" x="280" y="360" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="16">Gaussian + tail · schematic</text><text class="og-hide" x="840" y="100" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="36">Almost Gaussian.</text><text class="og-hide" x="840" y="175" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="36">Globally different.</text><text class="og-hide" x="840" y="250" text-anchor="middle" fill="${a}" font-family="monospace" font-size="18">sharp logarithmic degeneration</text><text class="og-hide" x="840" y="325" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* Product squares and diagonal choices; schematic, not a computed divisor. */
 art['triangulated-graph-product-picard'] = (a,b) => {
   let s='';
@@ -1919,6 +1928,7 @@ const palette = {
   'sharp-local-minor-ratios': ['#5eead4', '#fbbf24'],
   'triangulated-graph-product-picard': ['#6ee7b7', '#fbbf24'],
   'symmetry-respecting-tree-torsors': ['#5eead4', '#c4a9ef'],
+  'stable-power-concavity-gaussian-boundary': ['#5eead4', '#c4a9ef'],
   'essential-hurwitz-trace-formula': ['#60a5fa', '#fbbf24'],
   'symmetric-unimodality-free-convolution': ['#a78bfa', '#2dd4bf'],
   'affine-elementary-symmetric-total-nonnegativity': ['#58c4ad', '#e9bd76'],

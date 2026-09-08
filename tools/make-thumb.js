@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'stable-power-concavity-gaussian-boundary': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 8 SEPTEMBER 2026', 'PROBABILITY · STABLE DENSITIES'],
+    head: ['Almost Gaussian.', '<em>Globally different.</em>'],
+    headSize: 65,
+    sub: 'A sharp power-concavity proof candidate. Local convergence does not control the distant tails.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">optimal density exponent</div><div class="eq eq-sm">−⅙ log(1/ε)</div><div class="note"><b>as α = 2 − ε approaches 2</b><br>Gaussian endpoint: zero</div><div class="eq-foot">written proof · separate finite certificate</div>'
+  },
   'essential-hurwitz-trace-formula': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 7 SEPTEMBER 2026', 'ALGEBRAIC GEOMETRY · EXACT FORMULA'],
