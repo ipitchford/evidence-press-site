@@ -11645,9 +11645,9 @@
       "workId": "ep-work:six-dimensional-zonoid-counterexample",
       "cohort": "prospective",
       "registeredAt": "2026-09-08T12:17:15.937Z",
-      "status": "active",
-      "statusAt": "2026-09-08T12:32:07.163Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-08T12:45:19.871Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -11675,6 +11675,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-09-08T12:32:07.163Z",
             "basis": "Five role reports completed; non-scientific Markdown repair and bibliography export verified. Public identity and deployment gates remain separate."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-08T12:45:19.871Z",
+            "basis": "Immutable matching archives and guarded canonical desktop/mobile readback; not external mathematical validation."
           }
         ],
         "activeHumanMinutes": null,
@@ -11682,7 +11687,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 4
+        "correctionCount": 6
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -11729,6 +11734,16 @@
           "reason": "Internal assurance endpoint reached; public archive and deployment gates continue.",
           "evidenceRefs": [
             "https://github.com/ipitchford/six-dimensional-zonoid-counterexample/blob/v1.0.0-candidate/EDITORIAL_DECISION.md"
+          ]
+        },
+        {
+          "at": "2026-09-08T12:45:19.871Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Exact-counterexample candidate publication reached canonical first readback; final ledger seal follows separately.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/six-dimensional-zonoid-counterexample/",
+            "https://zenodo.org/records/22660175"
           ]
         }
       ],
@@ -11796,7 +11811,59 @@
           ],
           "stopRule": "Fail closed for scientific, rights and provider failures; preserve original claim ceiling. Workflow forecast is not a permission limit."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-08T12:45:19.871Z",
+          "calendarElapsedMinutes": 28,
+          "activeAgentMinutes": 28,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 0,
+          "reworkMinutes": 12,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 68,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Reviewed exact-counterexample candidate published with rational replay, five differentiated internal reports, matching immutable archives and guarded canonical readback. Original numerical forecast retained; copied partial-results wording corrected transparently. Historical research excluded.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -122,
+          "forecastRatio": 0.19,
+          "withinForecastInterval": false,
+          "varianceReason": "Existing exact certificates and reusable publisher tools. Active time is the continuous coordinator workflow interval minus explicitly recorded unattended/blocked intervals, including short interleaved waits; not summed agent CPU. Twelve minutes is an approximate operational repair subtotal for packaging, layout, CI schema and intake-descriptor issues, not scientific revision. Model turns count available coordinator reasoning records only, excluding reviewer forks. No comparative acceleration claim.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No complete substantive compute meter across model calls; ordinary publication builds do not stand for research compute."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "No authoritative task-local fork-aware counter; inherited token events not summed."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "No authoritative task-local uncached input counter."
+            }
+          ]
+        }
       },
       "corrections": [
         {
@@ -11834,6 +11901,24 @@
           "evidenceRefs": [
             "https://github.com/ipitchford/six-dimensional-zonoid-counterexample/blob/v1.0.0-candidate/CLAIMS.json"
           ]
+        },
+        {
+          "at": "2026-09-08T12:45:19.871Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Opening snapshot retained, terminal count includes coordinator plus five separate role reviewers.",
+          "replacement": "Opening 1 remains; terminal total 6.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/six-dimensional-zonoid-counterexample/blob/v1.0.0-candidate/EDITORIAL_DECISION.md"
+          ]
+        },
+        {
+          "at": "2026-09-08T12:46:00.413Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "Initial zero was an opening snapshot, not a terminal measurement; original retained.",
+          "replacement": "Terminal approximate operational repair subtotal is twelve minutes, not scientific rework.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/251"
+          ]
         }
       ],
       "revisions": [
@@ -11848,6 +11933,10 @@
         {
           "date": "2026-09-08",
           "summary": "Corrected inherited intake descriptors transparently before publication; frozen numerical forecast, registration and scope unchanged."
+        },
+        {
+          "date": "2026-09-08",
+          "summary": "Appended terminal assurance-publication outcome at first canonical readback; historical research, human time and unavailable tokens remain outside measured scope."
         }
       ]
     }
