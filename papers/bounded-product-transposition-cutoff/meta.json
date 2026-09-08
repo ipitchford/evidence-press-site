@@ -1,0 +1,219 @@
+{
+  "slug": "bounded-product-transposition-cutoff",
+  "title": "Cutoff for bounded product-weight random transpositions",
+  "shortTitle": "Biased shuffles still cut off",
+  "oneLine": "Arbitrary bounded product weights admit a cutoff proof with mixing order n log n and window upper bound n log log n.",
+  "abstract": "For independent label draws with fixed bounds c/n ≤ p_i ≤ C/n, a conjugacy-invariant reference gradient gives an all-time constant-factor comparison. Entropy estimates yield total-variation cutoff and an O(n log log n) window on the n log n scale. Averaging and binomial smoothing recover the original discrete-time chain. The result is a product-branch proof candidate, not a sharp-location or nonproduct theorem.",
+  "narration": "How abruptly does a biased shuffle become random? Imagine assigning every card a probability, drawing two labels independently, and swapping them. If the same label is drawn twice, nothing happens. This candidate studies probabilities bounded above and below by fixed multiples of one divided by the number of cards. It allows arbitrarily many different probability classes. The proposed theorem says that these shuffles have total variation cutoff: the transition from far from random to close to random occupies a vanishing fraction of the overall mixing time. The mixing time is of order n log n. The proved window upper bound is of order n log log n. These are asymptotic orders, not a formula telling you exactly how many shuffles to perform. The key argument compares a weighted gradient with the symmetric gradient of the uniform shuffle. The comparison cost remains fixed over time. Entropy estimates then give the narrow transition, and a smoothing argument transfers the result back to ordinary discrete steps despite the shrinking chance of doing nothing. The written proof is the main evidence. Exact checks on permutations of two through five labels test several finite identities, but cannot certify the theorem for every size. Earlier work gives sharper results for two equally sized probability classes. This candidate instead addresses general bounded product weights. It does not resolve arbitrary nonproduct swap rates, an optimal window, or a limiting profile. This is an unrefereed Evidence Press candidate dated eight September twenty twenty six. The paper and replay package are linked on the release page. This OpenAI synthetic voice briefing is not additional evidence.",
+  "datePublished": "2026-09-08",
+  "version": "1.0.0-candidate",
+  "doi": "10.5281/zenodo.22662125",
+  "conceptDoi": "10.5281/zenodo.22662123",
+  "zenodoUrl": "https://zenodo.org/records/22662125",
+  "pdfUrl": "https://github.com/ipitchford/bounded-product-transposition-cutoff/releases/download/v1.0.0-candidate/bounded-product-transposition-cutoff-1.0.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22662125/files/bounded-product-transposition-cutoff-1.0.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/bounded-product-transposition-cutoff",
+  "releaseUrl": "https://github.com/ipitchford/bounded-product-transposition-cutoff/releases/tag/v1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/bounded-product-transposition-cutoff.mp3",
+      "name": "Plain-English audio briefing",
+      "description": "OpenAI synthetic voice (fable); communication only, not mathematical evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/bounded-product-transposition-cutoff.txt"
+    }
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex under human direction",
+      "Python exact rational diagnostics",
+      "XeLaTeX"
+    ],
+    "humanRole": "Research selection, direction, supplied review and publication authorization; scholarly creator Anonymous.",
+    "disclosure": "AI-assisted research, manuscript, software, internal role review and publication. Supplied review authorship and independence were not established; no external assurance inferred."
+  },
+  "problem": {
+    "name": "AIM-PROBABILITY-0050 — product-weight branch",
+    "url": "https://aimath.org/pastworkshops/markovmixing.html"
+  },
+  "keywords": [
+    "random transpositions",
+    "cutoff",
+    "Markov chains",
+    "entropy",
+    "gradient comparison"
+  ],
+  "keyResults": [
+    "Cutoff for every sequence with fixed bounds c/n ≤ p_i ≤ C/n.",
+    "Mixing order n log n, with O(n log log n) window upper bound.",
+    "All-time gradient comparison pays the distortion constant once.",
+    "Binomial smoothing removes averaging despite holding probability of order 1/n."
+  ],
+  "evidence": "Written proof, standard-library exact finite diagnostics, five semantic rejection controls, normal/optimized clean replay and five internal role reports. https://github.com/ipitchford/bounded-product-transposition-cutoff/blob/v1.0.0-candidate/EDITORIAL_DECISION.md",
+  "statusDetail": "Unrefereed proof candidate for the product-weight branch only. Producer finite checks and internal model-assisted editorial review are not independent reproduction, unaffiliated specialist review or formal verification. No explicit cutoff location, optimal window, limiting profile, nonproduct resolution or historical priority is claimed.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22662125",
+      "note": "Public archive byte identity checked before deployment."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/bounded-product-transposition-cutoff/blob/v1.0.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Finite exact checks on S_2 through S_5 and five rejection controls. These do not certify the all-n theorem."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/bounded-product-transposition-cutoff/blob/v1.0.0-candidate/ENVIRONMENT.txt",
+      "note": "Standard-library diagnostics on local macOS and Linux CI; no independent reproduction inferred."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated model review and replay do not establish this external dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated model review and replay do not establish this external dimension."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated model review and replay do not establish this external dimension."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated model review and replay do not establish this external dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated model review and replay do not establish this external dimension."
+    }
+  },
+  "openProblems": [
+    "Determine an explicit cutoff location for general bounded vectors.",
+    "Improve the window bound and investigate limiting profiles.",
+    "Fix normalization and periodicity conventions before extending to nonproduct rates.",
+    "Independently assess the proof, contribution-specific novelty and priority."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "AIM Markov chain mixing times workshop (2016), originating problem context.",
+      "url": "https://aimath.org/pastworkshops/markovmixing.html"
+    },
+    {
+      "citation": "Nestoridi–Yan (2024), Cutoff for the biased random transposition shuffle: sharper two-class comparator.",
+      "url": "https://arxiv.org/abs/2409.16387v1"
+    },
+    {
+      "citation": "Pedrotti–Salez (2025), A new cutoff criterion for non-negatively curved chains: entropy method and normalized inputs.",
+      "url": "https://arxiv.org/abs/2501.13079v1"
+    },
+    {
+      "citation": "Pedrotti–Salez (2026), The local product condition implies cutoff: general subcommutation context.",
+      "url": "https://arxiv.org/abs/2607.05345v2"
+    },
+    {
+      "citation": "Hermon–Peres (2017), The power of averaging at two consecutive time steps.",
+      "url": "https://doi.org/10.1214/16-AIHP782"
+    }
+  ],
+  "citeText": "Anonymous (2026). Cutoff for bounded product-weight random transpositions. Version 1.0.0-candidate. Zenodo. https://doi.org/10.5281/zenodo.22662125",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:bounded-product-transposition-cutoff",
+    "attemptIds": [
+      "ep-attempt:bounded-product-transposition-cutoff-remaining-assurance-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "research-lineage-reuse",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Total-variation cutoff for arbitrary bounded product-weight transpositions.",
+      "scope": "Independent pair draws, including identity moves, with fixed c/n and C/n bounds."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Conjugacy-invariant reference-gradient comparison yields all-time subcommutation; entropy controls the continuous window, then averaging and binomial smoothing give the original discrete-time theorem.",
+      "remainingRisks": [
+        "Written argument awaits unaffiliated specialist scrutiny.",
+        "No proof-assistant verification.",
+        "Historical priority remains bounded uncertainty."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Check the entropy and discrete-time transfer arguments.",
+      "Assess contribution-specific novelty and significance.",
+      "Preserve product-only scope, candidate status and component rights."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/2501.13079v1",
+        "inheritedClaim": "Normalized log-Sobolev and information-differential inputs.",
+        "inheritedAssuranceCeiling": "Published literature input is not validation of this application."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Obtain unaffiliated probability-specialist scrutiny of the complete argument.",
+      "claimCeiling": "Unrefereed proof candidate for the product-weight branch only. Producer finite checks and internal model-assisted editorial review are not independent reproduction, unaffiliated specialist review or formal verification. No explicit cutoff location, optimal window, limiting profile, nonproduct resolution or historical priority is claimed."
+    },
+    "impactClaims": [
+      {
+        "id": "bounded-product-transposition-cutoff-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable mathematical proof candidate",
+        "setting": "Producer-coordinated publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched comparator.",
+        "estimand": "No speed or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Producer-coordinated proof assessment and finite diagnostics are separate from canonical publication; availability does not upgrade external validation."
+}

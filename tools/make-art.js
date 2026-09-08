@@ -32,6 +32,14 @@ ${inner}
 }
 
 const art = {};
+/* Weighted transposition directions; diagrammatic, not measured mixing curves. */
+art['bounded-product-transposition-cutoff'] = (a,b) => {
+  const pts=Array.from({length:7},(_,i)=>[270+135*Math.cos(i*2*Math.PI/7),190+135*Math.sin(i*2*Math.PI/7)]);
+  let s='';
+  for(let i=0;i<7;i++)for(let j=i+1;j<7;j++)s+=`<path d="M${pts[i].join(' ')} L${pts[j].join(' ')}" stroke="${a}" stroke-width="${1+(i+j)%3}" opacity=".3"/>`;
+  pts.forEach(([x,y],i)=>s+=`<circle cx="${x}" cy="${y}" r="${7+i}" fill="${i%2?a:b}"/>`);
+  return s+`<text class="og-hide" x="270" y="365" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">bounded weights · schematic</text><text class="og-hide" x="840" y="105" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="36">Biased shuffles</text><text class="og-hide" x="840" y="175" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="40">still cut off</text><text class="og-hide" x="840" y="250" text-anchor="middle" fill="${a}" font-family="monospace" font-size="21">n log n · product weights</text><text class="og-hide" x="840" y="325" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 art['symmetric-determinantal-hilbert-threshold'] = (a,b) => {
   let s='';
   for(let i=1;i<=7;i++)s+=`<rect x="${55+(i-1)*65}" y="${290-i*28}" width="42" height="${i*28}" rx="7" fill="${i<=3?a:b}" opacity=".85"/><text x="${76+(i-1)*65}" y="325" text-anchor="middle" fill="#e7e5e4" font-size="23">${i}</text>`;
@@ -1934,6 +1942,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'bounded-product-transposition-cutoff': ['#38bdf8', '#fbbf24'],
   'symmetric-determinantal-hilbert-threshold': ['#2dd4bf', '#fbbf24'],
   'six-dimensional-zonoid-counterexample': ['#38bdf8', '#fbbf24'],
   'three-coloured-paths-partial-results': ['#38bdf8', '#fbbf24'],
