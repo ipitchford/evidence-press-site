@@ -32,6 +32,11 @@ ${inner}
 }
 
 const art = {};
+/* Clipped-cube schematic, not a projection faithful to six-dimensional geometry. */
+art['six-dimensional-zonoid-counterexample'] = (a,b) => {
+  const s=`<polygon points="110,95 380,95 450,165 450,285 180,285 110,215" fill="none" stroke="${a}" stroke-width="4"/><path d="M110 95 L180 165 H450 M180 165 V285 M380 95 V215 H110 M380 215 L450 285" stroke="${a}" stroke-width="2" fill="none"/><path d="M125 115 L405 265 M145 95 L425 245" stroke="${b}" stroke-width="5"/>`;
+  return s+`<text class="og-hide" x="280" y="355" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="16">clipped cube · schematic polar</text><text class="og-hide" x="835" y="110" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="36">Beyond the cross-polytope</text><text class="og-hide" x="835" y="195" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="48">122/65 &gt; 15/8</text><text class="og-hide" x="835" y="260" text-anchor="middle" fill="${a}" font-family="monospace" font-size="18">six dimensions · exact certificates</text><text class="og-hide" x="835" y="330" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* Schematic derivative contributions, not measured stable-density curves. */
 art['stable-power-concavity-gaussian-boundary'] = (a,b) => {
   let s='<path d="M65 305 H500 M65 305 V55" fill="none" stroke="#798d89" stroke-width="2"/>';
@@ -1924,6 +1929,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'six-dimensional-zonoid-counterexample': ['#38bdf8', '#fbbf24'],
   'three-coloured-paths-partial-results': ['#38bdf8', '#fbbf24'],
   'sharp-local-minor-ratios': ['#5eead4', '#fbbf24'],
   'triangulated-graph-product-picard': ['#6ee7b7', '#fbbf24'],

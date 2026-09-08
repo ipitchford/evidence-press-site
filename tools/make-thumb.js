@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'six-dimensional-zonoid-counterexample': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 8 SEPTEMBER 2026', 'CONVEX GEOMETRY · EXACT COUNTEREXAMPLE'],
+    head: ['The cross-polytope.', '<em>Not the maximum.</em>'],
+    headSize: 64,
+    sub: 'A fourteen-vertex body in six dimensions exceeds the proposed zonoid-approximation benchmark.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">exact dilation factor</div><div class="eq eq-sm">122/65 &gt; 15/8</div><div class="note"><b>strict gap: 1/520</b><br>rational lower witness<br>53-generator matching enclosure</div><div class="eq-foot">no least-dimension or priority claim</div>'
+  },
   'stable-power-concavity-gaussian-boundary': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 8 SEPTEMBER 2026', 'PROBABILITY · STABLE DENSITIES'],
