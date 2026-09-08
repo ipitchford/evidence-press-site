@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'symmetric-determinantal-hilbert-threshold': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 8 SEPTEMBER 2026', 'ORTHOGONAL GROUPS · TENSOR MULTIPLICITIES'],
+    head: ['Algebraicity', '<em>stops at three.</em>'],
+    headSize: 66,
+    sub: 'A uniform classification candidate for every fixed, nonzero genuine orthogonal representation.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">orthogonal dimension</div><div class="eq">m ≤ 3</div><div class="note"><b>algebraic exactly here</b><br>D-finite in every dimension</div><div class="eq-foot">written proof · finite diagnostics separate</div>'
+  },
   'six-dimensional-zonoid-counterexample': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 8 SEPTEMBER 2026', 'CONVEX GEOMETRY · EXACT COUNTEREXAMPLE'],

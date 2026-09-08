@@ -32,6 +32,11 @@ ${inner}
 }
 
 const art = {};
+art['symmetric-determinantal-hilbert-threshold'] = (a,b) => {
+  let s='';
+  for(let i=1;i<=7;i++)s+=`<rect x="${55+(i-1)*65}" y="${290-i*28}" width="42" height="${i*28}" rx="7" fill="${i<=3?a:b}" opacity=".85"/><text x="${76+(i-1)*65}" y="325" text-anchor="middle" fill="#e7e5e4" font-size="23">${i}</text>`;
+  return s+`<path d="M240 55 V305" stroke="#e7e5e4" stroke-width="2" stroke-dasharray="7 7"/><text class="og-hide" x="820" y="125" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="36">Algebraicity stops at three</text><text class="og-hide" x="820" y="205" text-anchor="middle" fill="${a}" font-family="monospace" font-size="23">every fixed genuine O(m) type</text><text class="og-hide" x="820" y="285" text-anchor="middle" fill="${b}" font-family="monospace" font-size="18">UNREFEREED CANDIDATE</text>`;
+};
 /* Clipped-cube schematic, not a projection faithful to six-dimensional geometry. */
 art['six-dimensional-zonoid-counterexample'] = (a,b) => {
   const s=`<polygon points="110,95 380,95 450,165 450,285 180,285 110,215" fill="none" stroke="${a}" stroke-width="4"/><path d="M110 95 L180 165 H450 M180 165 V285 M380 95 V215 H110 M380 215 L450 285" stroke="${a}" stroke-width="2" fill="none"/><path d="M125 115 L405 265 M145 95 L425 245" stroke="${b}" stroke-width="5"/>`;
@@ -1929,6 +1934,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'symmetric-determinantal-hilbert-threshold': ['#2dd4bf', '#fbbf24'],
   'six-dimensional-zonoid-counterexample': ['#38bdf8', '#fbbf24'],
   'three-coloured-paths-partial-results': ['#38bdf8', '#fbbf24'],
   'sharp-local-minor-ratios': ['#5eead4', '#fbbf24'],
