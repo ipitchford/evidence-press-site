@@ -11190,9 +11190,9 @@
       "workId": "ep-work:symmetry-respecting-tree-torsors",
       "cohort": "prospective",
       "registeredAt": "2026-09-08T08:13:20.812Z",
-      "status": "active",
-      "statusAt": "2026-09-08T08:13:20.812Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-08T09:03:48.795Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -11215,6 +11215,11 @@
             "event": "work-opened",
             "at": "2026-09-08T08:13:20.812Z",
             "basis": "Prospective bounded structural extension, review repair, assurance and publication. Original discovery and initial extension idea predate registration and are excluded; no discovery clock is reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-08T09:03:48.795Z",
+            "basis": "Exact public asset, canonical browser and guarded protocol readback."
           }
         ],
         "activeHumanMinutes": null,
@@ -11222,15 +11227,35 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 2
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Internal editorial and publication gates pending."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-08T08:32:23.054Z",
+        "dimensions": [
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/symmetry-respecting-tree-torsors/blob/v0.2.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed minimum-equivariance criterion and all-k generalized-theta classification. Five producer-coordinated internal AI reviews accepted; no external whole-proof specialist validation, historical priority, unique natural choice, minor consistency or impact established.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/symmetry-respecting-tree-torsors/blob/v0.2.0-candidate/EDITORIAL_DECISION.md"
+        ],
+        "missingnessReason": "Internal reviews and exact finite diagnostics do not establish external validation or priority."
       },
       "releaseSlug": "symmetry-respecting-tree-torsors",
       "stopReason": null,
@@ -11241,6 +11266,16 @@
           "resultClass": "pending",
           "reason": "Prospective bounded structural extension, review repair, assurance and publication. Original discovery and initial extension idea predate registration and are excluded; no discovery clock is reconstructed.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-08T09:03:48.795Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Scoped generalized-theta extension, review repair and first guarded canonical publication completed; final ledger seal follows separately.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/symmetry-respecting-tree-torsors/",
+            "https://zenodo.org/records/22656609"
+          ]
         }
       ],
       "metrics": {
@@ -11308,13 +11343,80 @@
           ],
           "stopRule": "Stop the extension if a proof gap survives bounded analysis; retain the valid existing candidate. Fail closed on scientific, rights or byte-integrity failures; publication time is not a stopping cap."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-08T09:03:48.795Z",
+          "calendarElapsedMinutes": 50,
+          "activeAgentMinutes": 26,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 2,
+          "blockedMinutes": 0,
+          "reworkMinutes": 4,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 175,
+          "deduplicatedModelTokens": 20271092,
+          "uncachedInputTokens": 604504,
+          "researchCycles": {
+            "positive": 1,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 3,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 1,
+          "resultState": "target-closed",
+          "resultSummary": "All-k cut-flow classification, exact class/action counts and subdivision consequences; supplied review actioned, five internal roles accepted, producer exact diagnostics and immutable public archives verified. Modest nonredundant extension, not an established high-significance or priority result.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -154,
+          "forecastRatio": 0.14444444444444443,
+          "withinForecastInterval": false,
+          "varianceReason": "Active minutes are a strict lower bound from observable model-response generation spans in the task-local runtime, not elapsed time, total research effort or a comparable speed estimate. Initial latency and tool time are excluded. CI waits overlapped other work; only separately timed unattended intervals are counted. Original discovery and initial extension idea are excluded. Rework is an approximate four-minute observed repair allocation for rendering, media inventory and seal invocation. Three falsification gate families: graph invariants, optimized failure policy, corrupted bundle/claim rejection. The claim correction is finite-decidability/novelty calibration, not a theorem reversal.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Substantive computation duration not separately metered."
+            }
+          ]
+        }
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-08T09:03:48.795Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Opening snapshot is preserved; terminal receipt records scoped totals.",
+          "replacement": "Opening 1 retained; terminal 6.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/symmetry-respecting-tree-torsors/"
+          ]
+        },
+        {
+          "at": "2026-09-08T09:03:48.795Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "Opening snapshot is preserved; terminal receipt records scoped totals.",
+          "replacement": "Opening 0 retained; terminal 4.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/symmetry-respecting-tree-torsors/"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-08",
           "summary": "Registered bounded torsor extension and publication prospectively; original discovery excluded."
+        },
+        {
+          "date": "2026-09-08",
+          "summary": "Added terminal outcome and independent research-assurance timestamp; opening forecast and snapshots preserved."
         }
       ]
     }
@@ -11725,6 +11827,10 @@
     {
       "date": "2026-09-08",
       "summary": "Recorded triangulated graph-product Picard first canonical publication; no external assurance or acceleration promotion."
+    },
+    {
+      "date": "2026-09-08",
+      "summary": "Recorded first canonical torsor publication, scoped generalized-theta extension outcome and explicitly lower-bound runtime telemetry without priority, impact or external-assurance promotion."
     }
   ]
 }
