@@ -11425,9 +11425,9 @@
       "workId": "ep-work:stable-power-concavity-gaussian-boundary",
       "cohort": "prospective",
       "registeredAt": "2026-09-08T10:18:07.500Z",
-      "status": "active",
-      "statusAt": "2026-09-08T10:18:07.500Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-08T12:12:39.439Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -11450,6 +11450,11 @@
             "event": "work-opened",
             "at": "2026-09-08T10:18:07.500Z",
             "basis": "Prospective remaining assurance and publication only. Completed research and initial review-driven textual revisions predate this work-ledger registration and are excluded. The separate publication-state forecast predates those revisions. No historical discovery clock is reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-08T12:12:39.439Z",
+            "basis": "Exact archived assets, canonical browser and guarded protocol readback."
           }
         ],
         "activeHumanMinutes": null,
@@ -11457,7 +11462,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -11486,6 +11491,16 @@
           "resultClass": "pending",
           "reason": "Prospective remaining assurance and publication only. Completed research and initial review-driven textual revisions predate this work-ledger registration and are excluded. The separate publication-state forecast predates those revisions. No historical discovery clock is reconstructed.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-08T12:12:39.439Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Internal review and first guarded canonical publication completed; final publication ledger seal follows separately.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/stable-power-concavity-gaussian-boundary/",
+            "https://zenodo.org/records/22659265"
+          ]
         }
       ],
       "metrics": {
@@ -11553,9 +11568,63 @@
           ],
           "stopRule": "Fail closed on proof, rights, CI or byte-integrity defects. Publication timing forecasts are not stopping caps."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-08T12:12:39.439Z",
+          "calendarElapsedMinutes": 115,
+          "activeAgentMinutes": 17,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 82,
+          "reworkMinutes": 0,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 171,
+          "deduplicatedModelTokens": 20406869,
+          "uncachedInputTokens": 647558,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 3,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Review revisions, five-role internal editorial acceptance, producer interval checks, exact public archives and first canonical release completed. The research predated this assurance/publication attempt; no new discovery cycle, external validation or priority is claimed.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -133,
+          "forecastRatio": 0.11333333333333333,
+          "withinForecastInterval": false,
+          "varianceReason": "Active time is the floored union of observed model-response generation spans, a strict lower bound excluding initial latency and tool execution; it is not a comparable total-cost or speed estimate. The recorded Zenodo transport block spans 10:25:38 to successful curl readback at 11:47:38 UTC (82 rounded minutes), including intervening user-response waits. CI and builds overlapped other work; zero unattended/rework minutes means no separately metered interval, not absence of waiting or repair. Packaging repairs included curl transport, local iCloud hydration, forecast arithmetic, pending assurance and audio inventory. Three falsification families: undertruncation, optimized rejection, false semantic claims. One existing architecture assessed; discovery cycles and initial review revisions predate registration.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort was not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Substantive computation was not separately metered."
+            }
+          ]
+        }
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-08T12:12:39.439Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Preserve opening one-agent snapshot; terminal count includes five completed internal role agents.",
+          "replacement": "Opening 1 retained; terminal 6.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/stable-power-concavity-gaussian-boundary/"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-08",
@@ -11564,6 +11633,10 @@
         {
           "date": "2026-09-08",
           "summary": "Before first publication, corrected lower forecast total from 120 to 100 to match the unchanged component estimates (25+20+35+20). Central 150 and upper 210 unchanged. Original 120 lower headline remains recorded here and in the retained intake forecast; no outcome-based reforecast."
+        },
+        {
+          "date": "2026-09-08",
+          "summary": "Appended terminal publication outcome; preserved opening snapshots and earlier research-assurance assessment timestamp. Metrics are observational lower bounds, not discovery or impact evidence."
         }
       ]
     }
@@ -11982,6 +12055,10 @@
     {
       "date": "2026-09-08",
       "summary": "Registered remaining stable-density assurance and publication; completed research and initial textual revisions excluded."
+    },
+    {
+      "date": "2026-09-08",
+      "summary": "Recorded first canonical stable-density candidate publication and bounded assurance/publication metrics."
     }
   ]
 }
