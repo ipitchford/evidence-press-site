@@ -10664,9 +10664,9 @@
       "workId": "ep-work:three-coloured-paths-partial-results",
       "cohort": "prospective",
       "registeredAt": "2026-09-08T07:36:04.919Z",
-      "status": "active",
-      "statusAt": "2026-09-08T08:05:08.618Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-08T08:17:35.436Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -10694,6 +10694,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-09-08T08:05:08.618Z",
             "basis": "Five internal role reports, bounded repairs, final PDF, Linux CI and exact archive checks completed. Recorded now; historical assessment time not reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-08T08:17:35.436Z",
+            "basis": "Exact public archives, guarded deployment and canonical desktop/mobile readback. Not a solution of AIM-COMBINATORICS-0050."
           }
         ],
         "activeHumanMinutes": null,
@@ -10701,7 +10706,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 2
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -10748,6 +10753,16 @@
           "reason": "Internal assurance complete; canonical site publication pending.",
           "evidenceRefs": [
             "https://github.com/ipitchford/three-coloured-paths-partial-results/blob/v0.1.0-candidate/EDITORIAL_DECISION.md"
+          ]
+        },
+        {
+          "at": "2026-09-08T08:17:35.436Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Bounded publication target reached by first guarded canonical readback; parent mathematics remains unresolved. Final ledger seal follows separately.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/three-coloured-paths-partial-results/",
+            "https://zenodo.org/records/22655876"
           ]
         }
       ],
@@ -10815,13 +10830,88 @@
           ],
           "stopRule": "Fail closed for scientific, rights and provider failures; preserve original claim ceiling. Workflow forecast is not a permission limit."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-08T08:17:35.436Z",
+          "calendarElapsedMinutes": 42,
+          "activeAgentMinutes": 42,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 0,
+          "reworkMinutes": 8,
+          "agentRuns": 5,
+          "maxParallelAgents": 4,
+          "modelTurns": 72,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Bounded partial-results publication target closed; parent problem remains unresolved. One internal five-role round (domain/applications overlap disclosed), scoped replay, immutable matching archives and canonical first readback. Historical discovery excluded.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -108,
+          "forecastRatio": 0.28,
+          "withinForecastInterval": false,
+          "varianceReason": "Existing research dossier and reusable tools shortened the procedural prior. Active coordinator workflow interval recorded from the task-local clock, with short interleaved tool waits; no unattended interval claimed unless separately logged. Rework is an approximately eight-minute observed operational repair subtotal, not scientific revision. Model turns count available coordinator reasoning records only and are a lower bound, excluding unavailable earlier/fork records. Five agent runs count coordinator plus three review runs and one separate applications follow-up; no speed or impact inference.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No complete CPU/GPU meter across solver history, builds and hosted model calls; not inferred from wall time."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "No authoritative fork-aware complete task-local total; inherited token events not summed."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "No authoritative task-local uncached-input total."
+            }
+          ]
+        }
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-08T08:17:35.436Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Opening measurement remains immutable, not a final total.",
+          "replacement": "Opening 1 retained; terminal 5 counts coordinator and four reviewer executions.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/241"
+          ]
+        },
+        {
+          "at": "2026-09-08T08:17:35.436Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "Opening snapshot is not a final total.",
+          "replacement": "Retain opening reworkMinutes=0; terminal approximately eight-minute recorded operational repair subtotal is disclosed as approximate.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/242"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-08",
           "summary": "Registered remaining assurance/publication scope, excluding pre-registration work."
+        },
+        {
+          "date": "2026-09-08",
+          "summary": "Appended bounded publication outcome and explicit telemetry limitations. Original forecast and research assurance timestamp preserved; parent remains unresolved."
         }
       ]
     }
