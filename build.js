@@ -1743,6 +1743,7 @@ function generatedArticlePage(article) {
   <p class="kicker">Article · ${esc(article.articleClass)} · ${esc(niceDate(article.datePublished))}</p>
   <h1>${esc(article.title)}</h1>
   <p class="standfirst">${inline(article.standfirst)}</p>
+  <p class="note">By ${esc(article.byline)}</p>
   ${articleBoundaryHtml(article)}
   <div class="release-grid"><div class="body">
     ${articleCorrectionsHtml(article)}

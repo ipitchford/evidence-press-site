@@ -88,21 +88,21 @@ These five will not converge on any timetable that can be predicted from here, a
 
 [OpenAI. (2026, September 8). *On the Navier–Stokes Millennium Prize Problem*.](https://openai.com/index/navier-stokes-solution/)
 
-[OpenAI. (2026). *Finite time blowup for Navier–Stokes* [Preprint].](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf)
+[OpenAI. (2026). *Finite time blowup for Navier–Stokes* (Preprint).](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf)
 
-[Bubeck, S. (2026, September 8). *Response concerning the Alpöge–Buckmaster collaboration and authorship* [Post]. X.](https://x.com/SebastienBubeck/status/2097379411691516310)
+[Bubeck, S. (2026, September 8). *Response concerning the Alpöge–Buckmaster collaboration and authorship* (Post). X.](https://x.com/SebastienBubeck/status/2097379411691516310)
 
-[OpenAI. (2026). *NavierStokesAndEuler: formalization.yaml* [Formalisation metadata]. GitHub.](https://github.com/openai/NavierStokesAndEuler/blob/main/formalization.yaml)
+[OpenAI. (2026). *NavierStokesAndEuler: formalization.yaml* (Formalisation metadata). GitHub.](https://github.com/openai/NavierStokesAndEuler/blob/main/formalization.yaml)
 
-[OpenAI. (2026). *NavierStokesAndEuler: ComparatorChallenges/README.md* [Independent checking instructions]. GitHub.](https://github.com/openai/NavierStokesAndEuler/blob/main/ComparatorChallenges/README.md)
+[OpenAI. (2026). *NavierStokesAndEuler: ComparatorChallenges/README.md* (Independent checking instructions). GitHub.](https://github.com/openai/NavierStokesAndEuler/blob/main/ComparatorChallenges/README.md)
 
-[OpenAI [@OpenAI]. (2026, September 8). *We congratulate Levent Alpöge and Tristan Buckmaster on their remarkable mathematical work* [Post]. X.](https://x.com/OpenAI/status/2097375276384567642)
+[OpenAI (@OpenAI). (2026, September 8). *We congratulate Levent Alpöge and Tristan Buckmaster on their remarkable mathematical work* (Post). X.](https://x.com/OpenAI/status/2097375276384567642)
 
 [Buckmaster, T. (2026, September 8). *Statement*. Courant Institute, New York University.](https://cims.nyu.edu/~tristanb/statement.pdf)
 
-[Alpöge, L., & Buckmaster, T. (2026). *Blowup for the Euler equations with smooth forcing* [Preprint].](https://cims.nyu.edu/~tristanb/euler.pdf)
+[Alpöge, L., & Buckmaster, T. (2026). *Blowup for the Euler equations with smooth forcing* (Preprint).](https://cims.nyu.edu/~tristanb/euler.pdf)
 
-[Buckmaster, T. [@tristanbuckmaster]. (2026, September 8). *Today, Levent Alpöge and I have made public three results* [Post]. Mastodon.](https://mastodon.social/@tristanbuckmaster/117233413705701198)
+[Buckmaster, T. (@tristanbuckmaster). (2026, September 8). *Today, Levent Alpöge and I have made public three results* (Post). Mastodon.](https://mastodon.social/@tristanbuckmaster/117233413705701198)
 
 ### The problem statement and the Clay Mathematics Institute
 
@@ -110,7 +110,7 @@ These five will not converge on any timetable that can be predicted from here, a
 
 [Clay Mathematics Institute. (n.d.). *Rules for the Millennium Prizes*.](https://www.claymath.org/millennium-problems/rules/)
 
-[Clay Mathematics Institute. (2018). *Rules for the Millennium Prize Problems* [PDF].](https://www.claymath.org/wp-content/uploads/2022/03/millennium_prize_rules_0.pdf)
+[Clay Mathematics Institute. (2018). *Rules for the Millennium Prize Problems* (PDF).](https://www.claymath.org/wp-content/uploads/2022/03/millennium_prize_rules_0.pdf)
 
 [Clay Mathematics Institute. (n.d.). *Navier–Stokes equation*.](https://www.claymath.org/millennium/navier-stokes-equation/)
 
@@ -120,7 +120,7 @@ These five will not converge on any timetable that can be predicted from here, a
 
 [Tao, T. (2026, September 7). Finite time blowup with smooth forcing term for the incompressible porous medium, Boussinesq, and incompressible Euler equations. *What's New*.](https://terrytao.wordpress.com/2026/09/07/finite-time-blowup-with-smooth-forcing-term-for-the-incompressible-porous-medium-boussinesq-and-incompressible-euler-equations/)
 
-[Tao, T. [@tao]. (2026, September 3). *It seems intuitive that a solved problem is unquestionably better than an unsolved problem* [Thread]. Mathstodon.](https://mathstodon.xyz/@tao/117204929023813310)
+[Tao, T. (@tao). (2026, September 3). *It seems intuitive that a solved problem is unquestionably better than an unsolved problem* (Thread). Mathstodon.](https://mathstodon.xyz/@tao/117204929023813310)
 
 [Duminil-Copin, H. (2026, August 30). Care for a little more AI? *Proofs and Prompts*.](https://proofsandprompts.com/2026/08/30/care-for-a-little-more-ai/)
 
