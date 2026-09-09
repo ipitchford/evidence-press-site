@@ -32,6 +32,14 @@ ${inner}
 }
 
 const art = {};
+/* A six-cycle with alternating perfect matchings; the r=3 combinatorial object. */
+art['moment-ideals-unbounded-generator-degrees'] = (a,b) => {
+  const pts=Array.from({length:6},(_,i)=>[280+140*Math.cos(i*Math.PI/3-Math.PI/2),195+140*Math.sin(i*Math.PI/3-Math.PI/2)]);
+  let s='';
+  for(let i=0;i<6;i++){const u=pts[i],v=pts[(i+1)%6];s+=`<line x1="${u[0]}" y1="${u[1]}" x2="${v[0]}" y2="${v[1]}" stroke="${i%2?a:b}" stroke-width="7"/>`;}
+  for(const [x,y] of pts)s+=`<circle cx="${x}" cy="${y}" r="10" fill="#e7e5e4"/>`;
+  return s+`<text class="og-hide" x="280" y="380" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">two matchings · one full-model fibre</text><text class="og-hide" x="835" y="100" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="37">No uniform degree bound</text><text class="og-hide" x="835" y="175" text-anchor="middle" fill="${b}" font-family="Georgia" font-size="34">for full moment ideals</text><text class="og-hide" x="835" y="250" text-anchor="middle" fill="${a}" font-family="monospace" font-size="21">both n and d vary</text><text class="og-hide" x="835" y="325" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* Biased cycle and irregular shortcuts: schematic, not sampled evidence. */
 art['biased-small-world-mixing'] = (a,b) => {
   const pts=Array.from({length:18},(_,i)=>[280+145*Math.cos(i*2*Math.PI/18),200+145*Math.sin(i*2*Math.PI/18)]);
@@ -1951,6 +1959,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'moment-ideals-unbounded-generator-degrees': ['#2dd4bf', '#fbbf24'],
   'bounded-product-transposition-cutoff': ['#38bdf8', '#fbbf24'],
   'symmetric-determinantal-hilbert-threshold': ['#2dd4bf', '#fbbf24'],
   'six-dimensional-zonoid-counterexample': ['#38bdf8', '#fbbf24'],

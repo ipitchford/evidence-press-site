@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'moment-ideals-unbounded-generator-degrees': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 9 SEPTEMBER 2026', 'MOMENT VARIETIES · GRAPH FACES'],
+    head: ['No uniform', '<em>degree bound.</em>'],
+    headSize: 72,
+    sub: 'A constructive proof candidate for the full moment model. Both n and d vary.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">two cycle matchings</div><div class="eq">P − Q</div><div class="note"><b>degree r is necessary</b><br>every r ≥ 3<br>no off-face shortcut</div><div class="eq-foot">written proof · exact finite checks</div>'
+  },
   'symmetric-determinantal-hilbert-threshold': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 8 SEPTEMBER 2026', 'ORTHOGONAL GROUPS · TENSOR MULTIPLICITIES'],
