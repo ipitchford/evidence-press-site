@@ -12789,9 +12789,9 @@
       "workId": "ep-work:moment-ideals-unbounded-generator-degrees",
       "cohort": "prospective",
       "registeredAt": "2026-09-09T17:18:34.317Z",
-      "status": "active",
-      "statusAt": "2026-09-09T17:18:34.317Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-09T18:23:39.221Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -12814,6 +12814,11 @@
             "event": "work-opened",
             "at": "2026-09-09T17:18:34.317Z",
             "basis": "Prospective remaining editorial assurance and publication only. Completed discovery, supplied review and initial four minor revisions predate this registration and are excluded; discovery time is not reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-09T18:23:39.221Z",
+            "basis": "Exact public archive files, canonical browser and guarded live integrity readback."
           }
         ],
         "activeHumanMinutes": null,
@@ -12821,7 +12826,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -12920,6 +12925,16 @@
           "resultClass": "pending",
           "reason": "Prospective remaining editorial assurance and publication only. Completed discovery, supplied review and initial four minor revisions predate this registration and are excluded; discovery time is not reconstructed.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-09T18:23:39.221Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Internal editorial acceptance, exact public GitHub/Zenodo files and guarded canonical publication completed. Final publication-ledger seal follows separately.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/moment-ideals-unbounded-generator-degrees/",
+            "https://zenodo.org/records/22680540"
+          ]
         }
       ],
       "metrics": {
@@ -12987,13 +13002,71 @@
           ],
           "stopRule": "Fail closed on proof, rights, CI or byte-integrity defects. Publication timing forecasts are not stopping caps."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-09T18:23:39.221Z",
+          "calendarElapsedMinutes": 65,
+          "activeAgentMinutes": 18,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 29,
+          "reworkMinutes": 0,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 146,
+          "deduplicatedModelTokens": 19197807,
+          "uncachedInputTokens": 1228706,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 13,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Internal editorial acceptance, non-destructive exact finite replay, byte-identical public archives and canonical publication completed. Original discovery and initial four minor revisions predate registration. No external proof validation, priority, formal verification or impact is claimed.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -132,
+          "forecastRatio": 0.12,
+          "withinForecastInterval": false,
+          "varianceReason": "Active minutes are floored union of observable model-output spans, a strict lower bound excluding initial latency and tool execution, not total effort or acceleration. Tokens deduplicate per-response receipts across root and five internal reviewers, including cached context. Blocked minutes measure saved provider-block checkpoint through successful upload verification on resumption, not the exact duration of the Zenodo outage. Zero wait and rework minutes mean no separately metered interval, not absence of CI waiting or metadata/audio repairs. Thirteen semantic mutations were rejected; added software regressions are separate. One existing proof architecture was assessed; prior discovery is excluded.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort was not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Substantive compute was not separately metered."
+            }
+          ]
+        }
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-09T18:23:39.221Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Preserve opening root-only snapshot; terminal count includes five completed internal editorial roles.",
+          "replacement": "Opening 1 retained; terminal 6.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/moment-ideals-unbounded-generator-degrees/"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-09",
           "summary": "Registered remaining moment-ideal assurance and publication, excluding completed discovery and initial minor revisions."
+        },
+        {
+          "date": "2026-09-09",
+          "summary": "Appended first-publication terminal outcome; research-assurance date and opening measurement preserved. Runtime is a lower bound, not acceleration evidence."
         }
       ]
     }
@@ -13440,6 +13513,10 @@
     {
       "date": "2026-09-09",
       "summary": "Registered remaining moment-ideal assurance and publication, excluding completed discovery and initial minor revisions."
+    },
+    {
+      "date": "2026-09-09",
+      "summary": "Recorded canonical moment-ideal candidate release and scoped terminal publication metrics, retaining provider-block interval."
     }
   ]
 }
