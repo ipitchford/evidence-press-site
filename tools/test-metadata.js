@@ -412,11 +412,11 @@ check('every article canonical URL publishes an article.json record matching the
     const record = read(path.join(rel, 'article.json'));
     return sameJson(record, article);
   }));
-check('article records expose GitHub browser editing without attributing the repository owner',
+check('article records expose GitHub editing and preserve the explicitly authored byline',
   articlesDoc.articles.every(article =>
     article.editUrl.startsWith('https://github.com/ipitchford/evidence-press-site/edit/main/') &&
     article.metadataEditUrl.startsWith('https://github.com/ipitchford/evidence-press-site/edit/main/') &&
-    article.byline === 'Evidence Press'));
+    article.byline === JSON.parse(fs.readFileSync(path.join(ROOT, 'articles', article.slug, 'meta.json'), 'utf8')).byline));
 
 const sourceBySlug = new Map(sourcePapers.map(paper => [paper.slug, paper]));
 const operatingDrift = [];
