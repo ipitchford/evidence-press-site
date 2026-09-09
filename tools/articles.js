@@ -17,7 +17,7 @@ const STATUSES = ['published', 'corrected', 'superseded', 'withdrawn'];
 const RENDER_MODES = ['generated', 'existing-page'];
 const META_FIELDS = new Set([
   'schemaVersion', 'slug', 'title', 'standfirst', 'summary', 'datePublished',
-  'dateModified', 'articleClass', 'status', 'byline', 'topics',
+  'dateModified', 'articleClass', 'status', 'byline', 'bylineType', 'topics',
   'newResearchClaims', 'claimBoundary', 'sources', 'relatedReleases',
   'relatedArticles', 'corrections', 'license', 'renderMode', 'canonicalPath',
   'sourcePath'
@@ -51,6 +51,8 @@ function validateMeta(meta, context) {
   });
   if (!ARTICLE_CLASSES.includes(meta.articleClass)) bad(`articleClass must be one of ${ARTICLE_CLASSES.join(', ')}`);
   if (!STATUSES.includes(meta.status)) bad(`status must be one of ${STATUSES.join(', ')}`);
+  if (meta.bylineType != null && !['person', 'organization', 'ai-systems'].includes(meta.bylineType))
+    bad('bylineType must be person, organization or ai-systems');
   if (!RENDER_MODES.includes(meta.renderMode || 'generated')) bad(`renderMode must be one of ${RENDER_MODES.join(', ')}`);
   if (!isRealDate(meta.datePublished)) bad('datePublished must be a real YYYY-MM-DD date');
   if (!isRealDate(meta.dateModified)) bad('dateModified must be a real YYYY-MM-DD date');
@@ -161,4 +163,15 @@ function loadArticles(root, options = {}) {
   return articles.sort((a, b) => b.datePublished.localeCompare(a.datePublished) || a.slug.localeCompare(b.slug));
 }
 
-module.exports = { ARTICLE_CLASSES, STATUSES, RENDER_MODES, loadArticles, validateMeta };
+function articleAttribution(article, publisher, baseUrl) {
+  // Schema.org's author range is Person/Organization. A named model is neither:
+  // preserve the agreed authorship as creditText, not a fictional human author.
+  if (article.bylineType === 'ai-systems') return { creditText: article.byline };
+  const organization = article.bylineType === 'organization' ||
+    (!article.bylineType && article.byline === publisher);
+  return { author: organization
+    ? { '@type': 'Organization', ...(article.byline === publisher ? { '@id': `${baseUrl}/#org` } : {}), name: article.byline }
+    : { '@type': 'Person', name: article.byline } };
+}
+
+module.exports = { ARTICLE_CLASSES, STATUSES, RENDER_MODES, loadArticles, validateMeta, articleAttribution };

@@ -5,7 +5,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const assert = require('assert');
-const { loadArticles, validateMeta } = require('./articles');
+const { loadArticles, validateMeta, articleAttribution } = require('./articles');
 
 let passed = 0;
 function check(name, fn) {
@@ -35,6 +35,16 @@ const valid = {
 check('hostile metadata cannot smuggle a non-https source into a page', () => {
   const bad = { ...valid, sources: [{ citation: 'Bad source', url: 'javascript:alert(1)' }] };
   assert.ok(validateMeta(bad, 'fixture').some(error => error.includes('https URL')));
+});
+
+check('explicit AI authorship remains a credit, not a fictitious Person', () => {
+  const meta = { ...valid, byline: 'Model A and Model B', bylineType: 'ai-systems' };
+  assert.deepStrictEqual(validateMeta(meta, 'fixture'), []);
+  assert.deepStrictEqual(articleAttribution(meta, 'Evidence Press', 'https://evidencepress.org'),
+    { creditText: 'Model A and Model B' });
+  assert.ok(validateMeta({ ...meta, bylineType: 'guessed' }, 'fixture').some(error => error.includes('bylineType')));
+  assert.strictEqual(articleAttribution(valid, 'Evidence Press', 'https://evidencepress.org').author['@type'], 'Organization');
+  assert.strictEqual(articleAttribution({ ...valid, byline: 'Named Author' }, 'Evidence Press', 'https://evidencepress.org').author['@type'], 'Person');
 });
 
 check('misspelled or invented metadata fields fail closed', () => {

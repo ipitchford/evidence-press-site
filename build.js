@@ -22,7 +22,7 @@ const { loadAtlasProposals, validateRegister: validateAtlasProposalRegister } = 
 const { loadClaimAssurance, buildClaimAssuranceRegister } = require('./tools/claim-assurance');
 const { loadImplementationStatus, validateImplementationStatus } = require('./tools/implementation-status');
 const { loadBaselineReceipt, validateBaselineReceipt } = require('./tools/baseline-receipt');
-const { loadArticles } = require('./tools/articles');
+const { loadArticles, articleAttribution } = require('./tools/articles');
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
@@ -1613,6 +1613,7 @@ function articleRecord(article) {
     articleClass: article.articleClass,
     status: article.status,
     byline: article.byline,
+    ...(article.bylineType ? { bylineType: article.bylineType } : {}),
     topics: article.topics,
     readingMinutes: article.readingMinutes,
     wordCount: article.wordCount,
@@ -1632,9 +1633,6 @@ function articleRecord(article) {
 
 function articleJsonldNode(article) {
   const record = articleRecord(article);
-  const author = article.byline === CONFIG.publisher
-    ? { '@type': 'Organization', '@id': `${BASE}/#org`, name: CONFIG.publisher }
-    : { '@type': 'Person', name: article.byline };
   return {
     '@type': 'Article',
     '@id': `${record.url}#article`,
@@ -1645,7 +1643,7 @@ function articleJsonldNode(article) {
     mainEntityOfPage: record.url,
     datePublished: article.datePublished,
     dateModified: article.dateModified,
-    author,
+    ...articleAttribution(article, CONFIG.publisher, BASE),
     publisher: { '@id': `${BASE}/#org` },
     inLanguage: CONFIG.language,
     license: 'https://creativecommons.org/publicdomain/zero/1.0/',
@@ -1745,6 +1743,7 @@ function generatedArticlePage(article) {
   <p class="kicker">Article · ${esc(article.articleClass)} · ${esc(niceDate(article.datePublished))}</p>
   <h1>${esc(article.title)}</h1>
   <p class="standfirst">${inline(article.standfirst)}</p>
+  <p class="note">By ${esc(article.byline)}</p>
   ${articleBoundaryHtml(article)}
   <div class="release-grid"><div class="body">
     ${articleCorrectionsHtml(article)}
@@ -2040,9 +2039,7 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     isPartOf: opts.article ? { '@id': `${BASE}/articles/#collection` } : { '@id': `${BASE}/#website` },
     ...(opts.article ? {
       headline: opts.article.title,
-      author: opts.article.byline === CONFIG.publisher
-        ? { '@type': 'Organization', '@id': `${BASE}/#org`, name: CONFIG.publisher }
-        : { '@type': 'Person', name: opts.article.byline },
+      ...articleAttribution(opts.article, CONFIG.publisher, BASE),
       publisher: { '@id': `${BASE}/#org` },
       keywords: opts.article.topics,
       wordCount: opts.article.wordCount,

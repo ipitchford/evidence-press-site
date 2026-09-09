@@ -47,6 +47,12 @@ The byline defaults to **Evidence Press**. Name a person or model only when that
 attribution has been deliberately agreed and recorded; never infer a byline
 from the repository owner or publisher.
 
+When the agreed byline credits AI models, set `bylineType` to `ai-systems`.
+The visible byline and article JSON retain that exact credit. Structured web
+metadata uses `creditText` instead of falsely describing models as a `Person`.
+The optional alternatives are `person` and `organization`; existing articles
+without this field retain their previous attribution behaviour.
+
 ## What belongs here
 
 The Articles section is for essays, commentary, synthesis, research notes and
