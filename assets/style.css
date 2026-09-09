@@ -290,7 +290,27 @@ td .inline-img { height: 1.9em; vertical-align: middle; }
   max-width: 52rem; margin: 1rem 0 1.5rem; padding: .9rem 1rem;
   background: var(--amber-bg); border: 1px solid #f0c86e; border-radius: 10px;
 }
+.article-banner {
+  width: 100%; max-width: 100%; margin: 0 0 1.75rem;
+  overflow: hidden; background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.article-banner img {
+  display: block; width: 100%; max-width: 100%; aspect-ratio: 3 / 1;
+  object-fit: cover; background: var(--dark);
+}
+.article-banner figcaption {
+  padding: .7rem 1rem; color: var(--muted); font-family: var(--sans);
+  font-size: .82rem; line-height: 1.5; overflow-wrap: anywhere;
+}
+@media (max-width: 659px) {
+  .article-banner img { aspect-ratio: 16 / 9; }
+}
 .article-boundary strong { font-family: var(--sans); color: var(--amber); }
+.article-audio { padding: 1rem 1.2rem; margin: 0 0 1.7rem; background: #edf7f5; border: 1px solid #b6d8d2; border-radius: 10px; }
+.article-audio h2 { margin: 0 0 .45rem; }
+.article-audio p { margin: .45rem 0; }
+.article-audio audio { display: block; width: 100%; max-width: 100%; margin: .7rem 0; }
 .article-boundary p { margin: .3rem 0 0; }
 .article-factbox h2 { margin-top: 0; }
 .article-sources, .article-edit { margin-top: 2.2rem; padding-top: .35rem; border-top: 1px solid var(--line); }

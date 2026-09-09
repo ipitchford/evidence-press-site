@@ -26,6 +26,8 @@
     "status": { "type": "string", "enum": ["published", "corrected", "superseded", "withdrawn"] },
     "byline": { "type": "string", "minLength": 1 },
     "bylineType": { "type": "string", "enum": ["person", "organization", "ai-systems"] },
+    "banner": { "$ref": "#/$defs/banner" },
+    "audio": { "$ref": "#/$defs/audio" },
     "topics": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
     "readingMinutes": { "type": "integer", "minimum": 1 },
     "wordCount": { "type": "integer", "minimum": 1 },
@@ -42,6 +44,24 @@
     "metadataEditUrl": { "type": "string", "format": "uri" }
   },
   "$defs": {
+    "audio": {
+      "type": "object", "required": ["src", "transcript", "provenance", "durationSeconds", "voiceLabel"], "additionalProperties": false,
+      "properties": {
+        "src": { "type": "string", "pattern": "^/assets/audio/[a-z0-9]+(?:-[a-z0-9]+)*\\.mp3$" },
+        "transcript": { "type": "string", "pattern": "^/assets/audio/[a-z0-9]+(?:-[a-z0-9]+)*\\.txt$" },
+        "provenance": { "type": "string", "pattern": "^/assets/audio/[a-z0-9]+(?:-[a-z0-9]+)*\\.provenance\\.json$" },
+        "durationSeconds": { "type": "number", "minimum": 0.001 },
+        "voiceLabel": { "const": "OpenAI API synthetic voice (fable)" }
+      }
+    },
+    "banner": {
+      "type": "object", "required": ["src", "alt", "caption"], "additionalProperties": false,
+      "properties": {
+        "src": { "type": "string", "pattern": "^/assets/articles/[a-zA-Z0-9][a-zA-Z0-9_-]*\\.(?:png|jpg|jpeg|webp|svg)$" },
+        "alt": { "type": "string", "minLength": 1, "pattern": "\\S" },
+        "caption": { "type": "string", "minLength": 1, "pattern": "\\S" }
+      }
+    },
     "source": {
       "type": "object", "required": ["citation", "url"], "additionalProperties": false,
       "properties": { "citation": { "type": "string", "minLength": 1 }, "url": { "type": "string", "format": "uri" } }
