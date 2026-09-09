@@ -1614,6 +1614,8 @@ function articleRecord(article) {
     status: article.status,
     byline: article.byline,
     ...(article.bylineType ? { bylineType: article.bylineType } : {}),
+    ...(article.banner ? { banner: { ...article.banner } } : {}),
+    ...(article.audio ? { audio: { ...article.audio } } : {}),
     topics: article.topics,
     readingMinutes: article.readingMinutes,
     wordCount: article.wordCount,
@@ -1639,6 +1641,14 @@ function articleJsonldNode(article) {
     headline: article.title,
     description: article.summary,
     abstract: article.standfirst,
+    ...(article.banner ? { image: `${BASE}${article.banner.src}` } : {}),
+    ...(article.audio ? { associatedMedia: {
+      '@type': 'AudioObject', name: 'Full article narration',
+      contentUrl: `${BASE}${article.audio.src}`, encodingFormat: 'audio/mpeg',
+      duration: `PT${Math.round(article.audio.durationSeconds)}S`,
+      description: `Main article text, excluding bibliography. ${article.audio.voiceLabel}.`,
+      isBasedOn: record.url
+    } } : {}),
     url: record.url,
     mainEntityOfPage: record.url,
     datePublished: article.datePublished,
@@ -1714,7 +1724,9 @@ function generatedArticlePage(article) {
     ['og:description', article.summary], ['og:url', record.url],
     ['article:published_time', iso(article.datePublished)],
     ['article:modified_time', iso(article.dateModified)],
-    ['twitter:card', 'summary'], ['twitter:title', article.title], ['twitter:description', article.summary]
+    ...(article.banner ? [['og:image', BASE + article.banner.src], ['og:image:alt', article.banner.alt],
+      ['twitter:image', BASE + article.banner.src], ['twitter:image:alt', article.banner.alt]] : []),
+    ['twitter:card', article.banner ? 'summary_large_image' : 'summary'], ['twitter:title', article.title], ['twitter:description', article.summary]
   ].map(([key, value]) => key.startsWith('og:') || key.startsWith('article:')
     ? `<meta property="${key}" content="${escAttr(value)}">`
     : `<meta name="${key}" content="${escAttr(value)}">`).join('\n') + '\n';
@@ -1740,12 +1752,23 @@ function generatedArticlePage(article) {
     extraLinks: `<link rel="alternate" type="text/markdown" href="${record.markdownUrl}">\n<link rel="describedby" type="application/json" href="${record.url}article.json">\n<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">\n`
   })}
 <article class="release article-page"><div class="wrap">
+  ${article.banner ? `<figure class="article-banner">
+    <img src="${escAttr(article.banner.src)}" alt="${escAttr(article.banner.alt)}" loading="eager" decoding="async" fetchpriority="high">
+    <figcaption>${esc(article.banner.caption)}</figcaption>
+  </figure>` : ''}
   <p class="kicker">Article · ${esc(article.articleClass)} · ${esc(niceDate(article.datePublished))}</p>
   <h1>${esc(article.title)}</h1>
   <p class="standfirst">${inline(article.standfirst)}</p>
   <p class="note">By ${esc(article.byline)}</p>
   ${articleBoundaryHtml(article)}
   <div class="release-grid"><div class="body">
+    ${article.audio ? `<section class="article-audio" aria-labelledby="article-audio-title">
+      <h2 id="article-audio-title">Listen to the article</h2>
+      <p>Full main text · ${Math.round(article.audio.durationSeconds / 60)} minutes · ${esc(article.audio.voiceLabel)}</p>
+      <audio controls preload="metadata" src="${escAttr(article.audio.src)}" aria-label="Full article narration"><a href="${escAttr(article.audio.src)}">Download the MP3</a></audio>
+      <p class="note"><a href="${escAttr(article.audio.src)}" download>Download MP3</a> · <a href="${escAttr(article.audio.transcript)}">Transcript</a> · <a href="${escAttr(article.audio.provenance)}">Recording details</a></p>
+      <p class="note">References remain in the article below. The synthetic narration is a reading, not additional evidence.</p>
+    </section>` : ''}
     ${articleCorrectionsHtml(article)}
     ${markdown(article.body)}
     ${articleReferencesHtml(article)}
@@ -1758,7 +1781,8 @@ ${foot}`;
 }
 
 function articleMarkdown(article) {
-  return `---\ntitle: "${article.title.replace(/"/g, '\\"')}"\nurl: ${articleUrl(article)}\ndate: ${article.datePublished}\nmodified: ${article.dateModified}\ntype: ${article.articleClass}\nbyline: ${article.byline}\nlicense: CC0-1.0\nstatus: ${article.status}\nclaim_boundary: "${article.claimBoundary.replace(/"/g, '\\"')}"\n---\n\n# ${article.title}\n\n${article.standfirst}\n\n> Publication boundary: ${article.claimBoundary}\n\n${article.body.trim()}\n\n## Selected source anchors\n\n${article.sources.map(source => `- ${source.citation} <${source.url}>`).join('\n')}\n`;
+  const banner = article.banner ? `![${article.banner.alt.replace(/[\\\[\]]/g, '\\$&').replace(/[\r\n]+/g, ' ')}](${BASE}${article.banner.src})\n\n${article.banner.caption.replace(/[\\`*_{}\[\]()#+.!<>|~-]/g, '\\$&').replace(/[\r\n]+/g, ' ')}\n\n` : '';
+  return `---\ntitle: "${article.title.replace(/"/g, '\\"')}"\nurl: ${articleUrl(article)}\ndate: ${article.datePublished}\nmodified: ${article.dateModified}\ntype: ${article.articleClass}\nbyline: ${article.byline}\nlicense: CC0-1.0\nstatus: ${article.status}\nclaim_boundary: "${article.claimBoundary.replace(/"/g, '\\"')}"\n---\n\n${banner}# ${article.title}\n\n${article.standfirst}\n\n> Publication boundary: ${article.claimBoundary}\n\n${article.body.trim()}\n\n## Selected source anchors\n\n${article.sources.map(source => `- ${source.citation} <${source.url}>`).join('\n')}\n`;
 }
 
 function writeArticleRecord(article) {

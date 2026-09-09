@@ -15,12 +15,13 @@ const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const ARTICLE_CLASSES = ['essay', 'commentary', 'synthesis', 'research-note', 'institutional-update'];
 const STATUSES = ['published', 'corrected', 'superseded', 'withdrawn'];
 const RENDER_MODES = ['generated', 'existing-page'];
+const BANNER_SRC_RE = /^\/assets\/articles\/[a-zA-Z0-9][a-zA-Z0-9_-]*\.(?:png|jpg|jpeg|webp|svg)$/;
 const META_FIELDS = new Set([
   'schemaVersion', 'slug', 'title', 'standfirst', 'summary', 'datePublished',
   'dateModified', 'articleClass', 'status', 'byline', 'bylineType', 'topics',
   'newResearchClaims', 'claimBoundary', 'sources', 'relatedReleases',
   'relatedArticles', 'corrections', 'license', 'renderMode', 'canonicalPath',
-  'sourcePath'
+  'sourcePath', 'banner', 'audio'
 ]);
 
 function isRealDate(value) {
@@ -53,6 +54,38 @@ function validateMeta(meta, context) {
   if (!STATUSES.includes(meta.status)) bad(`status must be one of ${STATUSES.join(', ')}`);
   if (meta.bylineType != null && !['person', 'organization', 'ai-systems'].includes(meta.bylineType))
     bad('bylineType must be person, organization or ai-systems');
+  if (Object.hasOwn(meta, 'banner')) {
+    const banner = meta.banner;
+    if (!banner || typeof banner !== 'object' || Array.isArray(banner)) {
+      bad('banner must be an object containing src, alt and caption');
+    } else {
+      if (typeof banner.src !== 'string' || !BANNER_SRC_RE.test(banner.src))
+        bad('banner.src must be a safe /assets/articles/ image path (png, jpg, jpeg, webp or svg)');
+      for (const field of ['alt', 'caption']) {
+        if (typeof banner[field] !== 'string' || !banner[field].trim())
+          bad(`banner.${field} must be a non-empty string`);
+      }
+      if (Object.keys(banner).some(field => !['src', 'alt', 'caption'].includes(field)))
+        bad('banner contains an unknown field');
+    }
+  }
+  if (Object.hasOwn(meta, 'audio')) {
+    const audio = meta.audio;
+    if (!audio || typeof audio !== 'object' || Array.isArray(audio)) {
+      bad('audio must be an object');
+    } else {
+      for (const [field, extension] of Object.entries({ src: 'mp3', transcript: 'txt', provenance: 'provenance.json' })) {
+        if (audio[field] !== `/assets/audio/${meta.slug}.${extension}`)
+          bad(`audio.${field} must name the local article ${extension} asset`);
+      }
+      if (!Number.isFinite(audio.durationSeconds) || audio.durationSeconds < 0.001)
+        bad('audio.durationSeconds must be a positive number');
+      if (audio.voiceLabel !== 'OpenAI API synthetic voice (fable)')
+        bad('audio.voiceLabel must disclose the house synthetic voice');
+      if (Object.keys(audio).some(field => !['src', 'transcript', 'provenance', 'durationSeconds', 'voiceLabel'].includes(field)))
+        bad('audio contains an unknown field');
+    }
+  }
   if (!RENDER_MODES.includes(meta.renderMode || 'generated')) bad(`renderMode must be one of ${RENDER_MODES.join(', ')}`);
   if (!isRealDate(meta.datePublished)) bad('datePublished must be a real YYYY-MM-DD date');
   if (!isRealDate(meta.dateModified)) bad('dateModified must be a real YYYY-MM-DD date');
@@ -118,6 +151,13 @@ function loadArticles(root, options = {}) {
       }
       const body = fs.readFileSync(sourceAbs, 'utf8');
       if (!body.trim()) errors.push(`${sourceRel}: article body cannot be empty`);
+      if (meta.audio) {
+        try {
+          const receipt = require('./make-article-audio').verifyArticleAudio(meta.slug, root);
+          if (Math.abs(receipt.durationSeconds - meta.audio.durationSeconds) > 0.01)
+            errors.push(`${metaRel}: audio duration differs from its receipt`);
+        } catch (error) { errors.push(`${metaRel}: ${error.message}`); }
+      }
       for (const [index, relation] of (meta.relatedReleases || []).entries()) {
         if (!relation || !SLUG_RE.test(String(relation.slug || '')))
           errors.push(`${metaRel}: relatedReleases[${index}].slug is invalid`);
@@ -174,4 +214,4 @@ function articleAttribution(article, publisher, baseUrl) {
     : { '@type': 'Person', name: article.byline } };
 }
 
-module.exports = { ARTICLE_CLASSES, STATUSES, RENDER_MODES, loadArticles, validateMeta, articleAttribution };
+module.exports = { ARTICLE_CLASSES, STATUSES, RENDER_MODES, BANNER_SRC_RE, loadArticles, validateMeta, articleAttribution };

@@ -53,6 +53,57 @@ metadata uses `creditText` instead of falsely describing models as a `Person`.
 The optional alternatives are `person` and `organization`; existing articles
 without this field retain their previous attribution behaviour.
 
+## Optional article banner
+
+For a generated article, upload an image to `assets/articles/` and add a
+`banner` object to `meta.json`:
+
+```json
+"banner": {
+  "src": "/assets/articles/article-banner.webp",
+  "alt": "A concise description of what the image shows.",
+  "caption": "Illustrative artwork, not a simulation or research result."
+}
+```
+
+The three fields are required when a banner is supplied. Use plain text for
+`alt` and `caption`. The path must name one local PNG, JPG, JPEG, WebP or SVG
+under `assets/articles/`; use letters, digits, hyphens or underscores in its
+filename. External URLs, nested paths, query strings and extra fields are
+rejected. Existing articles without a banner are unchanged.
+
+The banner appears above the headline with its caption below, never overlaid
+on the artwork. It is cropped to about 3:1 on desktop and 16:9 on mobile, so
+keep meaningful subjects near the centre and avoid text in the image. The
+same image supplies the article's social preview, structured metadata and
+Markdown export. Explain whether it is illustration, a schematic or actual
+evidence in the caption; decoration must not imply independent validation.
+
+## Optional full-text audio
+
+Articles may offer a single "Listen to the article" player before the main
+text, with native playback/seek controls, an MP3 download and a transcript.
+This is a full reading, not the two-minute briefing used for research releases.
+Use the established OpenAI `gpt-4o-mini-tts` / `fable` British narration profile;
+never substitute an operating-system voice. Clearly disclose synthetic speech.
+
+Keep the exact spoken input at `assets/audio/<slug>.txt`. Include the main
+text and its qualifications; omit the bibliography URLs and expand mathematical
+notation for speech without changing its meaning. Generate bounded chunks
+using the speech skill's official SDK CLI, then assemble with
+`tools/make-article-audio.js`. Its `--prepare`, `--assemble` and `--check`
+commands keep generation separate from normal builds. No API calls occur
+during build or deployment.
+
+Add an optional `audio` object with `src`, `transcript`, and `provenance`
+pointing to `/assets/audio/<slug>.mp3`, `.txt` and `.provenance.json`;
+`durationSeconds` must match the recording receipt and `voiceLabel` must be
+`OpenAI API synthetic voice (fable)`. The build verifies transcript, source
+article and audio hashes. After editing the text, regenerate and check the
+recording or remove the audio field until it is current. Listen/check for
+omissions and pronunciation errors before publication. Keep the final MP3
+below Cloudflare Pages' 25 MiB per-file limit.
+
 ## What belongs here
 
 The Articles section is for essays, commentary, synthesis, research notes and

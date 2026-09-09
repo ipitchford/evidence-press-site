@@ -32,6 +32,58 @@ for (const viewport of [
         editLinks: [...document.querySelectorAll('a')].filter(link => link.href.includes('github.com/') && link.href.includes('/edit/main/')).length
       }));
       const problems = [];
+      if (article.renderMode === 'generated') {
+        const bannerState = await page.evaluate(() => {
+          const figure = document.querySelector('.article-banner');
+          const image = figure && figure.querySelector('img');
+          const heading = document.querySelector('h1');
+          const rect = image && image.getBoundingClientRect();
+          const graph = [...document.querySelectorAll('script[type="application/ld+json"]')]
+            .flatMap(script => JSON.parse(script.textContent)['@graph'] || []);
+          const node = graph.find(item => item['@type'] === 'Article');
+          return {
+            count: document.querySelectorAll('.article-banner').length,
+            src: image && image.getAttribute('src'), alt: image && image.alt,
+            caption: figure && figure.querySelector('figcaption')?.textContent,
+            eager: image && image.loading === 'eager',
+            loaded: image && image.complete && image.naturalWidth > 0,
+            beforeHeading: figure && Boolean(figure.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING),
+            ratio: rect && rect.width / rect.height,
+            ogImage: document.querySelector('meta[property="og:image"]')?.content,
+            twitterImage: document.querySelector('meta[name="twitter:image"]')?.content,
+            twitterCard: document.querySelector('meta[name="twitter:card"]')?.content,
+            jsonldImage: node && node.image,
+            author: node && node.author,
+            creditText: node && node.creditText
+          };
+        });
+        if (article.banner) {
+          const expectedImage = 'https://evidencepress.org' + article.banner.src;
+          if (bannerState.count !== 1 || bannerState.src !== article.banner.src) problems.push('missing or wrong banner');
+          if (bannerState.alt !== article.banner.alt || bannerState.caption !== article.banner.caption) problems.push('banner descriptions changed');
+          if (!bannerState.eager || !bannerState.loaded || !bannerState.beforeHeading) problems.push('banner loading or placement incorrect');
+          if (Math.abs(bannerState.ratio - (viewport.name === 'mobile' ? 16 / 9 : 3)) > 0.02) problems.push('banner aspect ratio incorrect');
+          if ([bannerState.ogImage, bannerState.twitterImage, bannerState.jsonldImage].some(url => url !== expectedImage)) problems.push('banner metadata image mismatch');
+          if (bannerState.twitterCard !== 'summary_large_image') problems.push('banner missing large social card');
+        } else if (bannerState.count || bannerState.ogImage || bannerState.twitterImage || bannerState.jsonldImage || bannerState.twitterCard !== 'summary') {
+          problems.push('no-banner article behaviour changed');
+        }
+        if (article.bylineType === 'ai-systems' && (bannerState.author || bannerState.creditText !== article.byline)) problems.push('AI byline misrepresented in structured metadata');
+        const audioState = await page.evaluate(() => {
+          const section = document.querySelector('.article-audio');
+          const player = section && section.querySelector('audio');
+          return { count: document.querySelectorAll('.article-audio audio').length,
+            src: player && player.getAttribute('src'), controls: player && player.controls,
+            autoplay: player && player.autoplay, text: section && section.textContent,
+            links: section ? [...section.querySelectorAll('a')].map(a => a.getAttribute('href')) : [] };
+        });
+        if (article.audio) {
+          if (audioState.count !== 1 || audioState.src !== article.audio.src || !audioState.controls || audioState.autoplay)
+            problems.push('article audio missing, duplicated or lacks manual controls');
+          if (!audioState.text.includes(article.audio.voiceLabel) || !audioState.links.includes(article.audio.transcript) || !audioState.links.includes(article.audio.provenance))
+            problems.push('article audio lacks disclosure, transcript or provenance');
+        } else if (audioState.count) problems.push('unexpected article audio');
+      }
       if (!response || response.status() !== 200) problems.push(`HTTP ${response && response.status()}`);
       if (result.h1Count !== 1) problems.push(`${result.h1Count} H1 elements`);
       if (result.overflow > 1) problems.push(`${result.overflow}px horizontal overflow`);
