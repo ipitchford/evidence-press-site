@@ -13211,9 +13211,9 @@
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": 2,
+        "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -13318,7 +13318,15 @@
           ]
         }
       ],
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-11T12:55:33.385Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "The intake snapshot counted the root run; the terminal response-receipt audit also includes the confirmation reviewer within the measured interval.",
+          "replacement": "Preserve the original one-run snapshot and record the two observed runs only in the terminal outcome.",
+          "evidenceRefs": ["https://evidencepress.org/releases/biased-transposition-profile-counterexample/"]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-11",
