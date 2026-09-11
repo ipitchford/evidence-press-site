@@ -13075,9 +13075,9 @@
       "workId": "ep-work:biased-transposition-profile-counterexample",
       "cohort": "prospective",
       "registeredAt": "2026-09-11T12:18:19Z",
-      "status": "active",
-      "statusAt": "2026-09-11T12:18:19Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-11T12:55:33.385Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -13094,18 +13094,94 @@
           "plausibleLowMinutes": 120,
           "plausibleHighMinutes": 210,
           "expectedUnattendedWaitMinutes": 30,
-          "referenceClass": {"label":"Full-candidate route prior","sampleSize":0,"basis":"Existing publication-state prior; no empirical speed claim."},
+          "referenceClass": {
+            "label": "Full-candidate route prior",
+            "sampleSize": 0,
+            "basis": "Existing publication-state prior; no empirical speed claim."
+          },
           "fermiComponents": [
-            {"component":"Remaining assurance and archive","count":1,"lowMinutesPerUnit":40,"centralMinutesPerUnit":50,"highMinutesPerUnit":70,"basis":"Bounded confirmation and deterministic repairs."},
-            {"component":"Page and communication assets","count":1,"lowMinutesPerUnit":40,"centralMinutesPerUnit":50,"highMinutesPerUnit":70,"basis":"Established site generators."},
-            {"component":"CI, deployment and public readback","count":1,"lowMinutesPerUnit":40,"centralMinutesPerUnit":50,"highMinutesPerUnit":70,"basis":"Two standard seal and deployment cycles."}
+            {
+              "component": "Remaining assurance and archive",
+              "count": 1,
+              "lowMinutesPerUnit": 40,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 70,
+              "basis": "Bounded confirmation and deterministic repairs."
+            },
+            {
+              "component": "Page and communication assets",
+              "count": 1,
+              "lowMinutesPerUnit": 40,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 70,
+              "basis": "Established site generators."
+            },
+            {
+              "component": "CI, deployment and public readback",
+              "count": 1,
+              "lowMinutesPerUnit": 40,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 70,
+              "basis": "Two standard seal and deployment cycles."
+            }
           ],
-          "probabilityPositiveSignal":0.9,"probabilityTargetClosure":0.8,"probabilityHorizonMinutes":300,
-          "assumptions":["No new scientific blocker.","Provider credentials permit publication."],
-          "reforecastTriggers":["Provider or integrity failure."],
-          "stopRule":"Resolve integrity defects; timing forecast is telemetry and not a publication cap."
+          "probabilityPositiveSignal": 0.9,
+          "probabilityTargetClosure": 0.8,
+          "probabilityHorizonMinutes": 300,
+          "assumptions": [
+            "No new scientific blocker.",
+            "Provider credentials permit publication."
+          ],
+          "reforecastTriggers": [
+            "Provider or integrity failure."
+          ],
+          "stopRule": "Resolve integrity defects; timing forecast is telemetry and not a publication cap."
         },
-        "outcome":null
+        "outcome": {
+          "measuredAt": "2026-09-11T12:55:33.385Z",
+          "calendarElapsedMinutes": 37,
+          "activeAgentMinutes": 9,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 0,
+          "reworkMinutes": 0,
+          "agentRuns": 2,
+          "maxParallelAgents": 2,
+          "modelTurns": 148,
+          "deduplicatedModelTokens": 19095439,
+          "uncachedInputTokens": 349927,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 23,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 0,
+          "p0Findings": 0,
+          "p1Findings": 3,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Repaired candidate published with exact public archive parity, internal replay, CI, media and canonical site readback; no external verification, priority or replacement profile claimed.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -141,
+          "forecastRatio": 0.06,
+          "withinForecastInterval": false,
+          "varianceReason": "Active minutes are the floored union of observable model-output spans, a strict lower bound excluding initial latency and tools, not an acceleration estimate. Tokens deduplicate response receipts across root and confirmation reviewer, including cached input. Registration excludes discovery, supplied review, initial five-role review and substantive repairs, and also excludes the first three minutes of confirmation. Zero wait, blocked and rework minutes mean no separately metered intervals, not absence of provider waits or repair work. The scoped interval has one bounded confirmation, three packaging P1 findings and no new scientific P0/P1; substantiveReviewRounds is zero because the initial round predates registration. Twenty-three hostile controls test the existing candidate; no new research architecture search. Outcome ends at first successful public readback; administrative ledger reseal and redeployment follow.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort was not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Tool and compute execution were not separately metered."
+            }
+          ]
+        }
       },
       "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -13125,22 +13201,100 @@
             "event": "work-opened",
             "at": "2026-09-11T12:18:19Z",
             "basis": "Prospective confirmation-review and public-release work only; completed research, supplied review, initial five-role review and substantive repairs predate this registration and are excluded."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-11T12:55:33.385Z",
+            "basis": "Repaired candidate published with exact public archive parity, internal replay, CI, media and canonical site readback; no external verification, priority or replacement profile claimed."
           }
         ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": 1,
+        "agentRuns": 2,
         "reworkMinutes": 0,
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Confirmation review and final public evidence are not yet complete."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-11T12:31:10Z",
+        "dimensions": [
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate counterexample to arXiv v1 profile in the stated two-class regime; no replacement profile or general sharp mixing upper bound.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md"
+        ],
+        "missingnessReason": "Producer-coordinated model review and replay only; external and formal assurance dimensions remain unestablished. Assessment timestamp is the frozen scientific commit, separate from public readback."
       },
       "releaseSlug": "biased-transposition-profile-counterexample",
       "stopReason": null,
@@ -13151,6 +13305,17 @@
           "resultClass": "pending",
           "reason": "Prospective confirmation-review and public-release work only; earlier research and repair work are explicitly excluded.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-11T12:55:33.385Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Repaired candidate published with exact public archive parity, internal replay, CI, media and canonical site readback; no external verification, priority or replacement profile claimed.",
+          "evidenceRefs": [
+            "https://doi.org/10.5281/zenodo.22708622",
+            "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ASSURANCE.md",
+            "https://evidencepress.org/releases/biased-transposition-profile-counterexample/"
+          ]
         }
       ],
       "corrections": [],
@@ -13158,6 +13323,10 @@
         {
           "date": "2026-09-11",
           "summary": "Registered remaining confirmation review and publication prospectively; completed research, supplied review, five-role review and substantive repairs are excluded."
+        },
+        {
+          "date": "2026-09-11",
+          "summary": "Recorded public publication endpoint and immutable scoped runtime outcome; original forecast preserved."
         }
       ]
     }
@@ -13612,6 +13781,10 @@
     {
       "date": "2026-09-11",
       "summary": "Registered remaining biased-transposition confirmation review and publication prospectively; completed research, review and substantive repairs are excluded."
+    },
+    {
+      "date": "2026-09-11",
+      "summary": "Closed the biased-transposition prospective publication attempt after canonical readback, preserving scoped clocks and separate assurance dimensions."
     }
   ]
 }
