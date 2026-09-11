@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'biased-transposition-profile-counterexample': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 11 SEPTEMBER 2026', 'RANDOM SHUFFLES · A PROFILE COUNTEREXAMPLE'],
+    head: ['A shuffle profile', '<em>fails the test.</em>'],
+    headSize: 66,
+    sub: 'Two slow fixed labels reveal a strict gap in the proposed transition formula.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">one observable event</div><div class="eq eq-sm">0.7106…</div><div class="note"><b>&gt; 0.6816…</b><br>lower bound exceeds<br>the conjectured profile</div><div class="eq-foot">exact inequality · written proof</div>'
+  },
   'moment-ideals-unbounded-generator-degrees': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 9 SEPTEMBER 2026', 'MOMENT VARIETIES · GRAPH FACES'],

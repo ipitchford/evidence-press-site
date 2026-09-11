@@ -32,6 +32,17 @@ ${inner}
 }
 
 const art = {};
+/* Two fixed slow labels witness a profile gap; card diagram is schematic. */
+art['biased-transposition-profile-counterexample'] = (a,b) => {
+  let s='';
+  for(let i=0;i<8;i++) {
+    const x=65+(i%4)*112,y=75+Math.floor(i/4)*125,c=i<4?a:b;
+    s+=`<rect x="${x}" y="${y}" width="82" height="108" rx="10" fill="${c}" fill-opacity=".12" stroke="${c}" stroke-width="3"/>`;
+    s+=`<circle cx="${x+41}" cy="${y+54}" r="${i<2?18:9}" fill="${c}" opacity="${i<2?1:.5}"/>`;
+    if(i<2)s+=`<circle cx="${x+41}" cy="${y+54}" r="28" fill="none" stroke="#faf7f2" stroke-width="2"/>`;
+  }
+  return s+`<text class="og-hide" x="275" y="355" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">two slow labels · one event</text><text class="og-hide" x="850" y="105" text-anchor="middle" fill="#faf7f2" font-family="Georgia" font-size="36">A profile fails</text><text class="og-hide" x="850" y="175" text-anchor="middle" fill="${a}" font-family="Georgia" font-size="36">the subset test</text><text class="og-hide" x="850" y="250" text-anchor="middle" fill="${b}" font-family="monospace" font-size="25">0.7106… &gt; 0.6816…</text><text class="og-hide" x="850" y="325" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* A six-cycle with alternating perfect matchings; the r=3 combinatorial object. */
 art['moment-ideals-unbounded-generator-degrees'] = (a,b) => {
   const pts=Array.from({length:6},(_,i)=>[280+140*Math.cos(i*Math.PI/3-Math.PI/2),195+140*Math.sin(i*Math.PI/3-Math.PI/2)]);
@@ -1959,6 +1970,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'biased-transposition-profile-counterexample': ['#a78bfa', '#2dd4bf'],
   'moment-ideals-unbounded-generator-degrees': ['#2dd4bf', '#fbbf24'],
   'bounded-product-transposition-cutoff': ['#38bdf8', '#fbbf24'],
   'symmetric-determinantal-hilbert-threshold': ['#2dd4bf', '#fbbf24'],

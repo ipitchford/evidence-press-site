@@ -1,0 +1,72 @@
+{
+  "slug": "biased-transposition-profile-counterexample",
+  "title": "Untouched subsets and a counterexample to the biased-transposition limit-profile conjecture",
+  "shortTitle": "A shuffle profile fails the subset test",
+  "oneLine": "Two slow fixed labels force a total-variation lower bound above the conjectured profile.",
+  "abstract": "In a shuffle with two equally sized probability classes, an event involving the slow class yields an asymptotic distance of at least 0.710647716, above the conjectured 0.681595297. The candidate disproves the formula in Nestoridi–Yan arXiv v1 and gives general deterministic-subset lower bounds. It supplies no replacement profile or matching general upper bound.",
+  "narration": "When does a shuffled deck really become random? If some cards are selected less often than others, the slow cards can retain information that a single overall count misses. This research candidate examines a precise mathematical model. Each step chooses two labels independently and swaps them. Half the labels are slow, and half are fast. Choosing the same label twice leaves the deck unchanged. An existing conjecture predicted the shape of the transition towards randomness. The new argument tests that prediction using one simple event: at least two slow labels remain in their original positions. A label that has never been selected must still be fixed. That observation provides a lower bound on how often the event happens during the shuffle. The proof compares it with how often the same event happens in a uniformly random permutation. At a particular point in the transition, the resulting distance is at least about zero point seven one one. The conjectured formula gives about zero point six eight two. The strict gap rules out that formula. It does not overturn the established cutoff theorem, and it does not supply a replacement profile. The paper also develops a general way to use chosen subsets to bound mixing from below. Exact arithmetic verifies the key numerical inequalities, and a separate implementation within the package replays finite examples. These checks support inspection but do not formally verify the asymptotic proof. The practical lesson is a research direction: subgroup-sensitive diagnostics can reveal information hidden by aggregate statistics. No performance guarantee for other sampling algorithms follows. This is an unrefereed Evidence Press candidate. The full paper, code and evidence are linked on the release page. This AI-generated OpenAI voice summary is communication, not additional evidence.",
+  "datePublished": "2026-09-11",
+  "version": "1.0.1-candidate",
+  "doi": "10.5281/zenodo.22708622",
+  "conceptDoi": "10.5281/zenodo.22708621",
+  "zenodoUrl": "https://zenodo.org/records/22708622",
+  "pdfUrl": "https://github.com/ipitchford/biased-transposition-profile-counterexample/releases/download/v1.0.1-candidate/biased-transposition-profile-counterexample-1.0.1-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22708622/files/biased-transposition-profile-counterexample-1.0.1-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/biased-transposition-profile-counterexample",
+  "releaseUrl": "https://github.com/ipitchford/biased-transposition-profile-counterexample/releases/tag/v1.0.1-candidate",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [{"type":"audio","url":"https://evidencepress.org/assets/audio/biased-transposition-profile-counterexample.mp3","name":"Plain-English audio briefing","description":"OpenAI synthetic voice; communication only.","transcriptUrl":"https://evidencepress.org/assets/audio/biased-transposition-profile-counterexample.txt"}],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": ["OpenAI Codex under human direction", "Python exact arithmetic and finite replay", "Pandoc and Tectonic"],
+    "humanRole": "Research selection, supplied review, direction and publication authorization; scholarly creator Anonymous.",
+    "disclosure": "AI-assisted manuscript, software, internal editorial review and publication. Supplied review authorship and external independence are unestablished."
+  },
+  "keywords": ["random transpositions", "limit profile", "total variation", "Markov chains", "counterexample", "untouched labels"],
+  "keyResults": [
+    "For every fixed 0 < b < 1, the equal-half conjectured profile fails at s = log(6).",
+    "The event of at least two fixed slow labels gives B0 = 0.710647716… > D0 = 0.681595297….",
+    "An exact finite-moment witness supplies a second unconditional contradiction.",
+    "A deterministic-subset Poisson argument gives general one-sided lower bounds."
+  ],
+  "evidence": "Written proofs, exact arithmetic contract, 23 hostile controls, finite-state replay and five internal role reports plus bounded confirmation and deterministic closure. https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/EDITORIAL_DECISION.md",
+  "statusDetail": "Unrefereed candidate. Internal model review and producer replay support inspection; formal verification, external reproduction, external peer review and priority remain unestablished. No replacement profile or general t_mix = t_star + O(n) upper bound is supplied.",
+  "assurance": {
+    "availability": {"state":"passed","evidenceUrl":"https://zenodo.org/records/22708622","note":"Exact public archive bytes checked before deployment."},
+    "internalReplay": {"state":"passed","evidenceUrl":"https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/REPLAY_RECEIPT.md","note":"Exact inequalities, eight 61-row trajectories and 23 hostile controls; no formal proof of the asymptotic argument."},
+    "dataEnvironmentReproducibility": {"state":"partial","evidenceUrl":"https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ENVIRONMENT.txt","note":"Pinned numerical dependency, normal/optimized local replay and Linux CI."},
+    "independentRerun": {"state":"not-assessed","note":"Producer-coordinated replay only."},
+    "independentReimplementation": {"state":"not-assessed","note":"The alternate implementation belongs to the producing process."},
+    "formalVerification": {"state":"not-assessed","note":"No proof-assistant verification."},
+    "specialistReview": {"state":"not-assessed","note":"No unaffiliated specialist review recorded."},
+    "editorialPeerReview": {"state":"not-assessed","note":"Model-assisted internal review only."}
+  },
+  "openProblems": ["Determine a replacement limit profile.", "Establish a matching upper bound at the untouched-label centre for general bounded product weights.", "Obtain external scrutiny of the written proof and contribution-specific novelty."],
+  "relatedWorks": [
+    {"citation":"Nestoridi and Yan (2024), Cutoff for the biased random transposition shuffle, arXiv v1: Conjecture 1.6 is the precise target.","url":"https://arxiv.org/abs/2409.16387v1"},
+    {"citation":"Nestoridi and Yan (2025), FPSAC proceedings article: cutoff and spectrum results, distinct from the profile conjecture.","url":"https://www.mat.univie.ac.at/~slc/wpapers/FPSAC2025/6.pdf"},
+    {"citation":"Nestoridi and Yan, official FPSAC 2025 poster: restates the profile conjecture.","url":"https://www.math.sci.hokudai.ac.jp/sympo/fpsac2025/public/posters/107.pdf"},
+    {"citation":"Teyssier (2020), Limit profile for random transpositions: the uniform-shuffle benchmark.","url":"https://doi.org/10.1214/20-AOP1424"},
+    {"citation":"Evidence Press (2026), Biased shuffles still cut off: related bounded-product cutoff candidate.","url":"https://evidencepress.org/releases/bounded-product-transposition-cutoff/"}
+  ],
+  "citeText": "Anonymous (2026). Untouched subsets and a counterexample to the Nestoridi–Yan biased-transposition limit-profile conjecture. Version 1.0.1-candidate. Zenodo. https://doi.org/10.5281/zenodo.22708622",
+  "operatingModel": {
+    "version":"1.0","workId":"ep-work:biased-transposition-profile-counterexample","attemptIds":["ep-attempt:biased-transposition-profile-counterexample-assurance-publication"],"aims":["science"],"artifactRoles":["research-output","evidence-assessment"],"lineageId":null,
+    "accelerationPrimitives":["structural-compression","research-lineage-reuse","adversarial-controls","assurance-vector","agent-readable-research-object"],
+    "decisionObject":{"type":"counterexample","description":"An observable-event contradiction to a specified limit-profile formula.","scope":"Equal-half product-weight transpositions, fixed 0 < b < 1, s = log(6)."},
+    "bottleneckTargeted":["assurance","publication"],
+    "semanticBridge":{"state":"explicit","description":"Untouched slow labels imply fixed slow labels; event probability differences bound full total variation.","remainingRisks":["Written asymptotic argument awaits external scrutiny.","Priority search is bounded."]},
+    "humanJudgmentGates":["Inspect the asymptotic moment argument and source correspondence.","Assess novelty and retain candidate qualifications."],
+    "parentLinks":[{"relation":"depends-on-claim","workId":null,"legacyReleaseSlug":null,"externalUrl":"https://arxiv.org/abs/2409.16387v1","inheritedClaim":"The stated equal-half profile conjecture and model conventions define the target.","inheritedAssuranceCeiling":"The source conjecture is a target, not a proved input or external validation."}],
+    "assuranceTarget":{"dimensions":["independentRerun","formalVerification","specialistReview","semanticValidation","noveltyAssessment","priorityAssessment"],"nextAction":"Obtain external probability-specialist inspection and replay.","claimCeiling":"Candidate counterexample to the pinned profile formula; no replacement profile or general sharp upper bound."},
+    "impactClaims":[{"id":"biased-transposition-profile-counterexample-no-impact","aim":"science","outcome":"Inspectable candidate counterexample","setting":"Producer-coordinated publication","status":"NO_IMPACT_EVIDENCE","designClass":"none","comparator":"No matched comparator.","estimand":"No impact effect estimated.","evidenceRefs":[],"registeredDesignRef":null,"independentAssessment":null}]
+  },
+  "pageStructureVersion":"2.0","pageStructureVariant":"canonical-theorem","pageStructureWaivers":[],"recordMaturity":"current","grandfatheredAtSchemaVersion":null,
+  "metadataProvenance":"Internal review and finite replay are separate from public availability and external scientific validation."
+}
