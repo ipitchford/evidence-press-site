@@ -13609,7 +13609,9 @@
           "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
           "reason": "The intake snapshot counted the root run; the terminal response-receipt audit also includes the confirmation reviewer within the measured interval.",
           "replacement": "Preserve the original one-run snapshot and record the two observed runs only in the terminal outcome.",
-          "evidenceRefs": ["https://evidencepress.org/releases/biased-transposition-profile-counterexample/"]
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/biased-transposition-profile-counterexample/"
+          ]
         }
       ],
       "revisions": [
@@ -13620,6 +13622,218 @@
         {
           "date": "2026-09-11",
           "summary": "Recorded public publication endpoint and immutable scoped runtime outcome; original forecast preserved."
+        }
+      ]
+    },
+    {
+      "attemptId": "ep-attempt:two-class-transposition-profiles-assurance-publication",
+      "workId": "ep-work:two-class-transposition-profiles",
+      "cohort": "prospective",
+      "registeredAt": "2026-09-12T15:03:27.060Z",
+      "status": "release-candidate",
+      "statusAt": "2026-09-12T15:19:15.476Z",
+      "resultClass": "positive",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the reviewed two-class profile proof complete source repairs, internal approval and public release gates?",
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Prospective remaining source/documentation repair, internal editorial approval and publication only. Completed discovery, original proof, supplied reviews and intake/source inspection before registration are excluded. No discovery clock is reconstructed.",
+        "forecast": {
+          "frozenAt": "2026-09-12T15:03:27.060Z",
+          "procedureClass": "reviewed-mathematics-publication",
+          "targetOutcome": "Complete review revisions and publish GitHub/Zenodo assets and guarded Evidence Press page, media and readback.",
+          "expectedActiveMinutes": 90,
+          "plausibleLowMinutes": 60,
+          "plausibleHighMinutes": 150,
+          "expectedUnattendedWaitMinutes": 15,
+          "referenceClass": {
+            "label": "Completed proof with minor revisions",
+            "sampleSize": 0,
+            "basis": "Procedural prior, not measured discovery."
+          },
+          "fermiComponents": [
+            {
+              "component": "Source repairs and internal editorial gate",
+              "count": 1,
+              "lowMinutesPerUnit": 20,
+              "centralMinutesPerUnit": 30,
+              "highMinutesPerUnit": 50,
+              "basis": "Established publication route; not an empirical speed comparison."
+            },
+            {
+              "component": "Immutable archives and communication assets",
+              "count": 1,
+              "lowMinutesPerUnit": 20,
+              "centralMinutesPerUnit": 30,
+              "highMinutesPerUnit": 50,
+              "basis": "Established publication route; not an empirical speed comparison."
+            },
+            {
+              "component": "Composite CI and two deployment cycles",
+              "count": 1,
+              "lowMinutesPerUnit": 20,
+              "centralMinutesPerUnit": 30,
+              "highMinutesPerUnit": 50,
+              "basis": "Established publication route; not an empirical speed comparison."
+            }
+          ],
+          "probabilityPositiveSignal": 0.95,
+          "probabilityTargetClosure": 0.85,
+          "probabilityHorizonMinutes": 240,
+          "assumptions": [
+            "No fatal integrity defect.",
+            "Providers available."
+          ],
+          "reforecastTriggers": [
+            "Provider outage or integrity failure."
+          ],
+          "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
+        },
+        "outcome": null
+      },
+      "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
+      "taskClass": "assurance-and-full-candidate-publication",
+      "decisionObjectTarget": "Complete written full-density and TV profile proof for fixed bias and every vanishing-bias crossover, with scoped finite checks.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Prospective remaining source/documentation repair, internal editorial approval and publication only. Completed discovery, original proof, supplied reviews and intake/source inspection before registration are excluded. No discovery clock is reconstructed. Human and total compute effort are not instrumented.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-12T15:03:27.060Z",
+            "basis": "Prospective remaining source/documentation repair, internal editorial approval and publication only. Completed discovery, original proof, supplied reviews and intake/source inspection before registration are excluded. No discovery clock is reconstructed."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 1,
+        "reworkMinutes": 0,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-09-12T15:17:33.816Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          }
+        ],
+        "claimCeiling": "Complete written equal-class full-density and TV profile candidate for fixed bias and all vanishing-bias crossover sequences; no b-down-to-zero uniformity. Unrefereed; no external assurance or priority established.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/ASSURANCE.md"
+        ],
+        "missingnessReason": "Internal producer assessment only; external dimensions not established."
+      },
+      "releaseSlug": "two-class-transposition-profiles",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-09-12T15:03:27.060Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Prospective remaining source/documentation repair, internal editorial approval and publication only. Completed discovery, original proof, supplied reviews and intake/source inspection before registration are excluded. No discovery clock is reconstructed.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-12T15:19:15.476Z",
+          "status": "release-candidate",
+          "resultClass": "positive",
+          "reason": "Five internal role reports Accept; deterministic finite baseline passed. Public deployment remains operational work.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/two-class-transposition-profiles/blob/main/EDITORIAL_DECISION.md"
+          ]
+        }
+      ],
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-09-12",
+          "summary": "Registered remaining two-class profile assurance and publication; prior research and intake excluded."
         }
       ]
     }
@@ -14078,6 +14292,10 @@
     {
       "date": "2026-09-11",
       "summary": "Closed the biased-transposition prospective publication attempt after canonical readback, preserving scoped clocks and separate assurance dimensions."
+    },
+    {
+      "date": "2026-09-12",
+      "summary": "Registered remaining two-class profile assurance and publication; prior research and intake excluded."
     }
   ]
 }
