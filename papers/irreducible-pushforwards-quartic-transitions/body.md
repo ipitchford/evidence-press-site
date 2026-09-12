@@ -1,14 +1,16 @@
 ## Summary
 
+> **External development, 12 September 2026:** an [unrefereed preprint by liqsweep](https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf) proposes a general proof of polynomial-composition rigidity. The external candidate proposes a general proof of R(m,n), including the original R(3) target. It does not supply this release's uniform deck-norm irreducibility or global contour, cycle, Stokes and period estimates; the standalone geometric and quartic results retain their original scope. [Internal source review and scope audit](https://github.com/ipitchford/evidence-press-site/blob/main/docs/RIGIDITY_EXTERNAL_REVIEW_2026-09-12.md) are not unaffiliated verification. Original archives and release-time audio/video are unchanged.
+
 This paper does not solve Furter's $R(3)$ conjecture. It reports a productive failure.
 
-The original target was Furter's $R(3)$ conjecture, an open problem about three consecutive coefficients of a generating function and the ideal they generate. The project did not solve that problem. Instead, it isolated two pieces of mathematics that no longer depend on the unfinished global argument and may be useful elsewhere.
+The original target was Furter's $R(3)$ conjecture, then an open problem about three consecutive coefficients of a generating function and the ideal they generate. The project did not solve that problem. Instead, it isolated two pieces of mathematics that no longer depend on the unfinished global argument and may be useful elsewhere.
 
 The first is a geometric separation principle. Very roughly, an irreducible polynomial seen on the base of a map can certify that a collection of zeros upstairs is really one indivisible algebraic point. If two rational functions have pole orders differing by exactly one, that indivisibility leaves no room for them to share a zero. On an elliptic double cover, a second group-law test prevents the zero set from colliding with its mirror image under the deck involution.
 
 The second is an exact calculation at a quartic transition, the kind of local model that appears when several saddle points coalesce. After reducing polynomial amplitudes in a twisted de Rham quotient, three natural classes lose rank on the aligned transition curve. The determinant, rank strata, and first correction are all computed exactly.
 
-These are proved statements. Their role in Furter's family is more limited. At each fixed index, the geometric method applies if an explicit deck norm is irreducible. The release checks that irreducibility exactly for $3\le n\le40$. That finite range is evidence, not an all-index theorem. Uniform irreducibility, the global contour and period estimates, and Furter's $R(3)$ conjecture remain open.
+These are proved statements. Their role in Furter's family is more limited. At each fixed index, the geometric method applies if an explicit deck norm is irreducible. The release checks that irreducibility exactly for $3\le n\le40$. That finite range is evidence, not an all-index theorem. Uniform irreducibility and the global contour and period estimates are not supplied here. The external candidate offers a different route to $R(3)$; it does not establish those method-specific obligations.
 
 ## Summary for specialists
 
@@ -92,7 +94,8 @@ The correct status is therefore:
 | Quartic determinant, rank strata, and first-correction cancellation | Proved |
 | Furter divisor separation at one fixed index | Conditional on that index's deck-norm irreducibility |
 | Deck norms for $3\le n\le40$ | Exactly checked finite evidence |
-| Uniform norm irreducibility, global analytic control, and $R(3)$ | Open |
+| Uniform norm irreducibility and global analytic control | Not established by this release or the external argument |
+| Original $R(3)$ target | External candidate answer identified on 12 September 2026; unaffiliated verification not established |
 
 ## Why the methods may travel
 

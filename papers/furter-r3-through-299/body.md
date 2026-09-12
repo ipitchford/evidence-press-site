@@ -1,6 +1,8 @@
 ## Plain-English summary
 
-Furter's $R(3)$ asks whether a long run of cancellations in a composition of two polynomials forces both polynomials to be trivial. The universal conjecture asks this for every starting index and remains open.
+> **External development, 12 September 2026:** an [unrefereed preprint by liqsweep](https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf) proposes a general proof of polynomial-composition rigidity. The Universal R(3) Challenge now has an external candidate answer via complex dynamics, not yet independently verified. The immutable package still proves only its recorded finite range; the external argument does not replay those certificates or establish the challenge's Euler-socle and finite-prime constructions. The restricted Strong Factorial starting-exponent range is 1 through 300 (rigidity index n corresponds to exponent n+1, with exponent 1 already known). [Internal source review and scope audit](https://github.com/ipitchford/evidence-press-site/blob/main/docs/RIGIDITY_EXTERNAL_REVIEW_2026-09-12.md) are not unaffiliated verification. Original archives and release-time audio/video are unchanged.
+
+Furter's $R(3)$ asks whether a long run of cancellations in a composition of two polynomials forces both polynomials to be trivial. The universal assertion asks this for every starting index; it now has the external candidate answer described above.
 
 This anonymous, unrefereed candidate proves the first 299 instances:
 
@@ -32,7 +34,7 @@ $$
 
 Furter's index is $n=d-1$, so this is precisely $R(3,n)$ for $1\le n\le299$. Furter's Theorem B and symmetry lemma then give the length-two Polydegree closure equality for $(4,k)$ and $(k,4)$ for $2\le k\le300$.
 
-The Strong Factorial consequence is narrower: Edo and van den Essen identify $R(3)$ with the Strong Factorial assertion for a particular three-variable family. This finite theorem therefore proves only the corresponding starting exponents through 299 in that restricted family, not the unrestricted Strong Factorial Conjecture.
+The Strong Factorial consequence is narrower: Edo and van den Essen identify $R(3)$ with the Strong Factorial assertion for a particular three-variable family. Index correction, 12 September 2026: Furter's two-map $R(3,n)$ corresponds to Edo and van den Essen's $R(3)_{n+1}$. Together with the known lower-width cases, this supplies starting exponents 2 through 300, with exponent 1 already known, in that restricted family. It does not prove the unrestricted Strong Factorial Conjecture. See their [Definition 2.14, Theorem 2.25 and Lemma 2.26](https://arxiv.org/html/1304.3956v2).
 
 ## How the result works
 
@@ -55,7 +57,7 @@ $$
 n\equiv-k\pmod p,\qquad 2\le k\le K_p,
 $$
 
-then $g_{n,3}$ is the zero polynomial modulo $p$. These periodic zero bands force infinitely many BAD windows for each fixed $p$, so a universal proof by one fixed GOOD prime is impossible. A finite-prime product automaton remains a live possibility.
+then $g_{n,3}$ is the zero polynomial modulo $p$. These periodic zero bands force infinitely many BAD windows for each fixed $p$, so a universal proof by one fixed GOOD prime is impossible. A finite-prime product automaton remains a live possibility. Failure of the general contact bound in positive characteristic does not rule out every uniform finite-field method for fixed $R(3)$; the example's factor degrees depend on the prime.
 
 ## What is classical, and what is offered here
 
@@ -102,7 +104,7 @@ A separate Evidence Press candidate proves the full $e=3$ Polydegree containment
 
 | Audience | Potential use | Required caution |
 |---|---|---|
-| Polynomial-automorphism researchers | Inspect exact certificate coverage for 299 rigidity instances, including 251 windows beyond the $d<50$ benchmark. | Universal $R(3)$ remains open, and the dictionary still merits unaffiliated reconstruction. |
+| Polynomial-automorphism researchers | Inspect exact certificate coverage for 299 rigidity instances, including 251 windows beyond the $d<50$ benchmark. | The external universal candidate and this package's index dictionary both merit unaffiliated reconstruction. |
 | Commutative algebra and algebraic geometry researchers | Examine the good-special-fibre, complete-intersection and Euler-socle architecture. | The largest finite lane retains a hashed Singular runtime rather than portable cofactors for every case. |
 | Automatic-sequence and finite-field researchers | Attack the finite-prime product automaton suggested by the zero-band theorem. | Coefficient automaticity alone is not a GOOD-ideal certificate. |
 | Computer-assisted mathematics researchers | Reuse the frozen receipts, controls, manifests and exact finite theorem benchmark. | Producer replay checks the encoded proposition; it is not independent mathematical reconstruction. |
@@ -126,6 +128,8 @@ FULL_EVIDENCE_REPLAY=1 ./REPLAY.sh
 The full path requires the recorded Singular and Python dependencies and is substantially slower. The expected terminal marker is `R3_STAGE0_REPLAY_PASS`. A third party should publish its environment, logs and receipt rather than merely reporting that the command ran.
 
 ## The most valuable next projects
+
+First assess the external candidate answer. The projects below remain useful for certificate construction and independent checking, but are not established prerequisites for its complex-dynamical proof.
 
 1. Independently reconstruct the Furter/LPS/properness bridge and the exact coverage partition from the definitions.
 2. Reimplement the projective-stratum checker or export portable exact cofactors for every $50\le d\le300$ instance.

@@ -7,6 +7,7 @@
   "narration": "This release concerns the Polydegree Conjecture, a problem about how families of polynomial transformations of the plane fit together at their boundaries. Earlier work reduced many cases to an explicit algebraic test: several coefficient polynomials must vanish, while another coefficient and an auxiliary determinant remain non-zero. The main observation here is that the auxiliary determinant is not a separate mystery. Up to sign, it is the Jacobian determinant of the coefficient polynomials already in the problem. A Jacobian detects whether equations meet cleanly, so the test can be read geometrically: find one smooth point of the intersection that avoids the next forbidden hypersurface. An exact weighted-Euler identity makes that translation integral and leads to a smaller finite-field certificate. A simple modular zero with a non-zero next coefficient can be lifted to characteristic zero, including some primes rejected by the older determinant-unit test. The paper also proves a curve-based route to the same point and a uniform squarefreeness theorem for each individual boundary polynomial in the three-variable family. Exact calculations show the full affine property for indices two through twenty, and adjacent boundary coprimality through two hundred. Those finite ranges are not a proof for every index. This is an anonymous, unrefereed candidate. The public package contains the paper, exact evidence, manifest, replay scripts, negative controls, and review records. Producer replay has passed, but there has been no independent reconstruction, formal verification, external specialist review, or journal peer review. Release zero point four point one candidate was published on August ninth, twenty twenty-six. The paper and evidence are linked on this page and archived under the version DOI. This briefing uses an AI-generated voice. It is a communication aid, not additional evidence. End of briefing.",
   "datePublished": "2026-08-09",
   "version": "0.4.1-candidate",
+  "dateModified": "2026-09-12",
   "doi": "10.5281/zenodo.21864574",
   "conceptDoi": "10.5281/zenodo.21864573",
   "zenodoUrl": "https://zenodo.org/records/21864574",
@@ -75,7 +76,7 @@
     "Every e=3 one-variable boundary factor is uniformly squarefree; adjacent-factor coprimality is exactly checked through d=200 and remains open uniformly."
   ],
   "evidence": "A 17-page candidate paper in PDF, LaTeX and accessible Markdown; bilingual abstracts; exact proof record; frozen 51-witness corpus; upstream replay reconciliation; a no-import standard-library Jacobian verifier with 10/10 symbolic gates and 51/51 witness relations under ordinary and optimised Python; 16 negative or mutation controls plus one positive bad-characteristic regression; exact rational and Singular affine computations for 2 <= d <= 20; an exact boundary-factor verifier and repaired referee memo; adjacent boundary arithmetic through d=200; citation, originality, claim-status, provenance and assurance records; and a SHA-256 manifest covering 142 release files. These are producer-side checks, not independent reproduction or external theorem verification.",
-  "statusDetail": "Anonymous, unrefereed candidate. The derivative, determinant, weighted-Euler, Hensel/localisation, curve-bridge and uniform boundary-squarefreeness results have written proofs and internal adversarial checks. Exact finite computations are bounded at d <= 20 for the full affine statement and d <= 200 for adjacent boundary coprimality. In this immutable version the uniform e=3 affine theorem, full Polydegree Conjecture and priority question remained open; a later anonymous unrefereed successor, DOI 10.5281/zenodo.21909085, claims the all-degree e=3 theorem without supplying independent confirmation of this parent. The public repository, immutable candidate release and Zenodo record expose byte-identical assets. No unaffiliated party has independently reconstructed the proofs or computations; there is no proof-assistant formalisation, external specialist audit, editorial peer review or venue acceptance. An upstream proof-critical Python assert is retained as a disclosed fail-open robustness defect, with no evidence that a current witness is false.",
+  "statusDetail": "Anonymous, unrefereed candidate. The derivative, determinant, weighted-Euler, Hensel/localisation, curve-bridge and uniform boundary-squarefreeness results have written proofs and internal adversarial checks. Exact finite computations are bounded at d <= 20 for the full affine statement and d <= 200 for adjacent boundary coprimality. In this immutable version the uniform e=3 affine theorem, full Polydegree Conjecture and priority question remained open; a later anonymous unrefereed successor, DOI 10.5281/zenodo.21909085, claims the all-degree e=3 theorem without supplying independent confirmation of this parent. The public repository, immutable candidate release and Zenodo record expose byte-identical assets. No unaffiliated party has independently reconstructed the proofs or computations; there is no proof-assistant formalisation, external specialist audit, editorial peer review or venue acceptance. An upstream proof-critical Python assert is retained as a disclosed fail-open robustness defect, with no evidence that a current witness is false. External-development update, 12 September 2026: Conditional on the external contact bound, triple common-zero exclusion and invertibility of G_(d+2) modulo (G_d,G_(d+1)) follow. Uniform reducedness, Jacobian invertibility and the predicted affine length are not established by that argument. The August successor claimed the containment, not the entire stronger uniform affine theorem. Internal source review found no load-bearing gap in the proposed main argument; this is not unaffiliated review, formal verification or independent reproduction of either package.",
   "assurance": {
     "availability": {
       "state": "passed",
@@ -116,7 +117,7 @@
   "openProblems": [
     "Prove or disprove that (G_d,G_(d+1)) is radical of the predicted length, with J_d and G_(d+2) units, for every d >= 2.",
     "Prove uniform adjacent boundary coprimality across the changing terminating-hypergeometric families, or locate a counterexample.",
-    "Prove or refute triple common-zero exclusion for G_d,G_(d+1),G_(d+2) in the e=3 affine chart.",
+    "Check the external candidate proof of triple common-zero exclusion and its precise e=3 chart bridge; do not infer reducedness, Jacobian invertibility or predicted length from that exclusion.",
     "Obtain original-author feedback, authenticated specialist-database searches and an external priority assessment of the Jacobian packaging.",
     "Independently reconstruct the proof chain and computations, and formalise the algebraic identities and Hensel bridge in a proof assistant."
   ],
@@ -148,6 +149,18 @@
     {
       "citation": "Anonymous (2026). A Jacobian smooth-point criterion and the full e=3 column of the Polydegree Conjecture. Version 0.1.0-candidate. Direct successor.",
       "url": "https://doi.org/10.5281/zenodo.21909085"
+    },
+    {
+      "citation": "liqsweep (2026). Polynomial composition rigidity via critical values. External unrefereed preprint; frozen commit b17b6b9, inspected 12 September 2026.",
+      "url": "https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf"
+    }
+  ],
+  "corrections": [
+    {
+      "date": "2026-09-12",
+      "scope": "claim",
+      "summary": "Recorded an external candidate proof of general polynomial-composition rigidity and clarified its consequences for this release.",
+      "detail": "Conditional on the external contact bound, triple common-zero exclusion and invertibility of G_(d+2) modulo (G_d,G_(d+1)) follow. Uniform reducedness, Jacobian invertibility and the predicted affine length are not established by that argument. The August successor claimed the containment, not the entire stronger uniform affine theorem. Original archive, version DOI, evidence and assurance ratings are unchanged. Audio and video describe the release-time position; the dated page update supplies the current context."
     }
   ],
   "citeText": "Anonymous. (2026). Smooth-Point Certificates for Polydegree Containments: A Jacobian Interpretation of the Lewis-Perry-Straub Determinant (Version 0.4.1-candidate) [Unrefereed candidate manuscript and reproducibility package]. Zenodo. https://doi.org/10.5281/zenodo.21864574",

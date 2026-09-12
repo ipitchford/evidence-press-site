@@ -1,5 +1,7 @@
 ## Summary
 
+> **External development, 12 September 2026:** an [unrefereed preprint by liqsweep](https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf) proposes a general proof of polynomial-composition rigidity. Conditional on the external rigidity proof and Furter's Theorem B, every length-two closure equality follows, including this e=3 containment and all fixed-e singleton containments. That alternative argument does not validate this release's Fourier estimates, interval certificates or smooth-point construction. [Internal source review and scope audit](https://github.com/ipitchford/evidence-press-site/blob/main/docs/RIGIDITY_EXTERNAL_REVIEW_2026-09-12.md) are not unaffiliated verification. Original archives and release-time audio/video are unchanged.
+
 Plane polynomial automorphisms can be sorted by the degree sequence of the elementary maps used to build them. The Polydegree Conjecture asks when one such family lies in the closure of another. A long-standing column of that problem asks whether
 
 $$
@@ -74,7 +76,7 @@ The documented public-record search, frozen on 12 August 2026, found no earlier 
 
 | Audience | Potential use | Required caution |
 |---|---|---|
-| Polynomial-automorphism researchers | Inspect a claimed resolution of the full $e=3$ containment column and reuse the smooth-point formulation. | The full conjecture and fixed-$e$ programme remain open. |
+| Polynomial-automorphism researchers | Inspect a claimed resolution of the full $e=3$ containment column and reuse the smooth-point formulation. | The external candidate would cover every fixed-$e$ containment, not all stronger certificate-geometry claims or arbitrary-length classification. |
 | Algebraic geometers | Study the weighted-Jacobian factorisation and local smoothness bridge. | The Lewis--Perry--Straub translation and analytic bridge still merit independent reconstruction. |
 | Analysts and special-functions researchers | Examine an explicit Fourier-exponential limit with quantitative $C^1$ persistence. | The eventual constants and norm translations are producer-authored and computer assisted. |
 | Computer-assisted mathematics researchers | Audit a proof object that joins exact, interval and analytic regimes through one normative specification. | Replay establishes the encoded predicates and byte integrity, not an unaffiliated proof. |
@@ -86,7 +88,7 @@ The documented public-record search, frozen on 12 August 2026, found no earlier 
 2. Implement the finite and eventual checkers independently and rerun the immutable public locator sequence without producer intermediates.
 3. Obtain specialist reviews in polynomial automorphisms, algebraic geometry, asymptotic analysis and interval certification, retaining any corrections publicly.
 4. Formalise the Jacobian--Euler factorisation and the analytic persistence theorem over an explicit trusted base.
-5. Investigate the fixed-$e$ extension only after the $e=3$ result survives independent review; keep failures and changed thresholds visible.
+5. Assess the external general rigidity proof before commissioning another fixed-$e$ containment proof. Extend Fourier persistence only for additional structural or certificate information; keep failures and changed thresholds visible.
 
 ## Specialist audience candidates
 

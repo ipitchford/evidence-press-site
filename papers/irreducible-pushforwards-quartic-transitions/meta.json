@@ -6,7 +6,7 @@
   "abstract": "This anonymous methods preprint extracts two proved pieces of mathematics from an unfinished study of Furter's R(3) conjecture. The first shows that, under an exact divisor-pushforward hypothesis, irreducibility of one polynomial forces adjacent rational functions on a curve to have disjoint zero sets; on an elliptic double cover, a nontorsion condition also prevents collision with the deck-transformed divisor. The second reduces a constrained quartic phase in twisted polynomial de Rham cohomology and obtains the exact determinant (9b/64)(-3K^3+K+3b^2), together with its rank strata and a first-order cancellation. For Furter's family the geometric conclusion is conditional at each fixed index on irreducibility of an explicit deck norm. Exact checks for 3 <= n <= 40 are finite evidence only. Uniform irreducibility, the global contour and period estimates, and R(3) itself remain open.",
   "narration": "A difficult open problem can still produce useful mathematics before it is solved. This preprint isolates two such tools from a study of Furter's R three conjecture. The first turns an irreducible polynomial downstairs into a strong statement about zeros upstairs on an algebraic curve: two adjacent functions cannot vanish at the same point, and on an elliptic double cover a nontorsion test also rules out collision with the mirror divisor. The second studies a quartic transition and finds an exact determinant that vanishes on the aligned transition curve, explaining why three natural quantities collapse to rank two, and then rank one at the origin. Both results are proved and exactly replayed. Their application to every Furter index is not proved: the required uniform irreducibility and global contour estimates remain open, as does the original R three conjecture.",
   "datePublished": "2026-08-01",
-  "dateModified": "2026-08-02",
+  "dateModified": "2026-09-12",
   "version": "1.0.0",
   "doi": "10.5281/zenodo.21745937",
   "conceptDoi": "10.5281/zenodo.21745936",
@@ -50,7 +50,7 @@
     "For each fixed Furter index, irreducibility of the exact deck norm implies the required adjacent and self-deck divisor disjointness. The package verifies irreducibility only for 3 <= n <= 40; no uniform all-index theorem or proof of R(3) is claimed."
   ],
   "evidence": "A 14-page anonymous methods preprint; exact symbolic replay under normal and optimized Python with SymPy 1.14.0; a self-contained exact Furter deck-norm audit for 3 <= n <= 40 plus auxiliary deck diagnostics through n = 20; 22-file SHA-256 manifest; fresh git-archive extraction and complete replay; negative assurance boundaries and a seven-mode publication-integrity report; byte-identical GitHub and Zenodo release assets.",
-  "statusDetail": "Anonymous, unrefereed methods preprint. The standalone irreducible-pushforward, elliptic deck-collision, and constrained-quartic identities are proved in the manuscript and replayed exactly. The Furter application is conditional at each fixed index on deck-norm irreducibility; checks through n = 40 remain finite evidence and do not imply uniform irreducibility. The work has not been independently reproduced, formally verified in a proof assistant, accepted by experts, or peer reviewed; internal AI-assisted audits are not independent assessment. The remaining global contour, cycle, Stokes, and period estimates and Furter's R(3) conjecture are open.",
+  "statusDetail": "Anonymous, unrefereed methods preprint. The standalone irreducible-pushforward, elliptic deck-collision, and constrained-quartic identities are proved in the manuscript and replayed exactly. The Furter application is conditional at each fixed index on deck-norm irreducibility; checks through n = 40 remain finite evidence and do not imply uniform irreducibility. The work has not been independently reproduced, formally verified in a proof assistant, accepted by experts, or peer reviewed; internal AI-assisted audits are not independent assessment. The global analytic estimates are not supplied by this release; its original R(3) target now has the external candidate answer described below. External-development update, 12 September 2026: The external candidate proposes a general proof of R(m,n), including the original R(3) target. It does not supply this release's uniform deck-norm irreducibility or global contour, cycle, Stokes and period estimates; the standalone geometric and quartic results retain their original scope. Internal source review found no load-bearing gap in the proposed main argument; this is not unaffiliated review, formal verification or independent reproduction of either package.",
   "openProblems": [
     "Prove or disprove uniform irreducibility of the exact Furter deck norms for every index, without treating a longer finite computation as the principal result.",
     "Complete the global analytic step: construct a contour deformation and Stokes-compatible cycle control with uniform period estimates through the constrained quartic transition.",
@@ -82,6 +82,18 @@
     {
       "citation": "Hien, M. (2009). Periods for Flat Algebraic Connections. Inventiones Mathematicae, 178(1), 1-22.",
       "url": "https://doi.org/10.1007/s00222-009-0185-7"
+    },
+    {
+      "citation": "liqsweep (2026). Polynomial composition rigidity via critical values. External unrefereed preprint; frozen commit b17b6b9, inspected 12 September 2026.",
+      "url": "https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf"
+    }
+  ],
+  "corrections": [
+    {
+      "date": "2026-09-12",
+      "scope": "claim",
+      "summary": "Recorded an external candidate proof of general polynomial-composition rigidity and clarified its consequences for this release.",
+      "detail": "The external candidate proposes a general proof of R(m,n), including the original R(3) target. It does not supply this release's uniform deck-norm irreducibility or global contour, cycle, Stokes and period estimates; the standalone geometric and quartic results retain their original scope. Original archive, version DOI, evidence and assurance ratings are unchanged. Audio and video describe the release-time position; the dated page update supplies the current context."
     }
   ],
   "citeText": "Anonymous. (2026). Irreducible Pushforwards and Constrained Quartic Transitions: Two Reusable Methods from a Study of Furter's R(3) Conjecture (Version 1.0.0) [Unrefereed methods preprint and reproducibility package]. Zenodo. https://doi.org/10.5281/zenodo.21745937",

@@ -1,5 +1,7 @@
 ## Summary
 
+> **External development, 12 September 2026:** an [unrefereed preprint by liqsweep](https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf) proposes a general proof of polynomial-composition rigidity. Conditional on the external contact bound, the full inverse-coefficient-window radical condition follows and length-two containment has an alternative proof route. The determinant nonmembership in the shorter-window radical, adjacent-flag transversality, localized chart obligations and arithmetic mechanisms studied here are not established by that argument. [Internal source review and scope audit](https://github.com/ipitchford/evidence-press-site/blob/main/docs/RIGIDITY_EXTERNAL_REVIEW_2026-09-12.md) are not unaffiliated verification. Original archives and release-time audio/video are unchanged.
+
 Several famous problems about polynomial maps meet at a stubborn algebraic bottleneck. Furter's rigidity problem R(3), the Polydegree Conjecture, the Strong Factorial Conjecture, the two-dimensional Jacobian Conjecture and a quartic Hessian problem are connected by known implication routes, but this release does not claim to solve any of them.
 
 Instead, this anonymous, unrefereed candidate makes one shared route smaller and more explicit. A complementary-minor duality turns a growing family of equations in the Lewis--Perry--Straub programme into a fixed-width adjacent-flag problem. For the first genuinely coupled case, $d=5$, the remaining geometry lives in four variables. Exact quartic calculations remove several special loci and distinguish two coefficient gauges that agree only after localization. A separate p-adic note gives certified prime-shift examples and isolates a valuation law that could turn finite evidence into an all-index argument.
@@ -38,7 +40,7 @@ The p-adic addendum gives a certificate mechanism for two norm families. Twelve 
 
 The structural manuscript removes inessential dimension growth. The quartic companion studies the surviving four-variable geometry and makes the gauge change explicit. The p-adic note supplies a possible arithmetic route for the hardest norm-coprimality step.
 
-This is an emerging approach, not a completed implication chain. Adjacent-flag transversality can identify two bad loci; it does not by itself prove that either locus is empty. Likewise, a pure $x_4$ initial monomial proves zero-dimensionality in the tested chart, not saturation or radical membership. The uniform radical-membership bridge required by the LPS induction is still open.
+This is an emerging approach, not a completed implication chain. Adjacent-flag transversality can identify two bad loci; it does not by itself prove that either locus is empty. Likewise, a pure $x_4$ initial monomial proves zero-dimensionality in the tested chart, not saturation or radical membership. The determinant-side bridge required by this LPS route is not established here or by the external argument. It is distinct from the full-window radical condition supplied by general rigidity: determinant nonmembership in the radical of a shorter coefficient window does not follow merely from emptiness of the full window.
 
 ## What is established in the candidate
 

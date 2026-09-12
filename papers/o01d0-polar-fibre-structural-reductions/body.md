@@ -1,5 +1,7 @@
 ## Summary
 
+> **External development, 12 September 2026:** an [unrefereed preprint by liqsweep](https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf) proposes a general proof of polynomial-composition rigidity. Conditional on the external contact bound, the full four-coefficient window has only the origin as a common zero. O-01d0 replaces its last coefficient by a polar derivative; the external argument supplies no bridge to that different ideal, its transversality interface or the four arithmetic and chart gates. [Internal source review and scope audit](https://github.com/ipitchford/evidence-press-site/blob/main/docs/RIGIDITY_EXTERNAL_REVIEW_2026-09-12.md) are not unaffiliated verification. Original archives and release-time audio/video are unchanged.
+
 O-01d0 asks whether four explicit weighted-homogeneous polynomials have no common weighted-projective zero for every index $n\ge 6$. It is a sharply stated internal gate in the Lewis--Perry--Straub route toward the Polydegree programme. This anonymous, unrefereed release does **not** prove or falsify O-01d0.
 
 What it does is make the surviving route unusually explicit. A fixed-index theorem explains why one empty integral polar fibre controls a complete-intersection deformation. The lower arithmetic obstruction is compressed to triple coprimality for three consecutive members of a one-variable Hermite family $J_A$. Exact lemmas then control incidence, multiplicity, two boundary fibres, and an $A\mapsto A+20$ derivative connection.
