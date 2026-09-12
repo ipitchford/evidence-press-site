@@ -13630,8 +13630,8 @@
       "workId": "ep-work:two-class-transposition-profiles",
       "cohort": "prospective",
       "registeredAt": "2026-09-12T15:03:27.060Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-12T15:19:15.476Z",
+      "status": "published",
+      "statusAt": "2026-09-12T15:49:52.578Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -13692,7 +13692,51 @@
           ],
           "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-12T15:49:52.578Z",
+          "calendarElapsedMinutes": 46,
+          "activeAgentMinutes": 18,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 14,
+          "reworkMinutes": 0,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 123,
+          "deduplicatedModelTokens": 15609310,
+          "uncachedInputTokens": 556974,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Supplied minor source/provenance revisions actioned; five internal roles Accept; finite replay and self-loop mutation controls passed; identical public GitHub/Zenodo assets and canonical release confirmed. Final preservation-ledger reseal is recorded separately. Prior discovery is excluded; no external validation or impact claim.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -72,
+          "forecastRatio": 0.2,
+          "withinForecastInterval": false,
+          "varianceReason": "Active minutes are the floored union of task-local response-output spans ending at usage receipts, a model-generation lower bound excluding initial latency and tool execution, not total active effort or a speed comparison. Tokens are deduplicated by response ID across root and five scoped internal editorial agents. Blocked minutes use the explicit permission hold and its approved resolution. Zero wait/rework means no separately instrumented interval, not absence of CI, deployment waits or packaging repairs. One pre-existing proof architecture assessed; no new discovery cycle. Unlicensed review files excluded, duplicate synchronized files preserved via isolated checkout. The frozen procedural prior and this lower-bound observation are not directly comparable.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort was not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Substantive computation time was not separately instrumented."
+            }
+          ]
+        }
       },
       "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -13712,6 +13756,11 @@
             "event": "work-opened",
             "at": "2026-09-12T15:03:27.060Z",
             "basis": "Prospective remaining source/documentation repair, internal editorial approval and publication only. Completed discovery, original proof, supplied reviews and intake/source inspection before registration are excluded. No discovery clock is reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-12T15:49:52.578Z",
+            "basis": "Guarded deployment, exact public archives, canonical desktop/mobile and byte readback."
           }
         ],
         "activeHumanMinutes": null,
@@ -13719,7 +13768,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -13827,13 +13876,37 @@
           "evidenceRefs": [
             "https://github.com/ipitchford/two-class-transposition-profiles/blob/main/EDITORIAL_DECISION.md"
           ]
+        },
+        {
+          "at": "2026-09-12T15:49:52.578Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Internal editorial acceptance, exact public archive assets and canonical release readback completed; final preservation-ledger deployment follows.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/two-class-transposition-profiles/",
+            "https://zenodo.org/records/22727156"
+          ]
         }
       ],
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-12T15:49:52.578Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Opening root-only snapshot retained; terminal count includes five completed editorial agents.",
+          "replacement": "Opening 1 retained; terminal 6.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/two-class-transposition-profiles/"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-12",
           "summary": "Registered remaining two-class profile assurance and publication; prior research and intake excluded."
+        },
+        {
+          "date": "2026-09-12",
+          "summary": "Appended first-publication terminal outcome; preserved original forecast and research-assurance timestamp. Permission pause and runtime lower-bound limits retained."
         }
       ]
     }
@@ -14296,6 +14369,10 @@
     {
       "date": "2026-09-12",
       "summary": "Registered remaining two-class profile assurance and publication; prior research and intake excluded."
+    },
+    {
+      "date": "2026-09-12",
+      "summary": "Recorded canonical two-class profile candidate release with scoped terminal publication metrics."
     }
   ]
 }
