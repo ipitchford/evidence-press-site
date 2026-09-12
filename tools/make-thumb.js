@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'sharp-bilagrangian-smoothness': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 12 SEPTEMBER 2026', 'TWO ALTERNATING FORMS · SMOOTHNESS'],
+    head: ['When is the space', '<em>smooth?</em>'],
+    headSize: 72,
+    sub: 'A sharp criterion for the reduced bi-Lagrangian Grassmannian.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">every Jordan pencil block</div><div class="eq">dim = 2</div><div class="note"><b>exactly the smooth case</b><br>Kronecker blocks unrestricted</div><div class="eq-foot">written proof · finite checks separate</div>'
+  },
   'biased-transposition-profile-counterexample': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 11 SEPTEMBER 2026', 'RANDOM SHUFFLES · A PROFILE COUNTEREXAMPLE'],

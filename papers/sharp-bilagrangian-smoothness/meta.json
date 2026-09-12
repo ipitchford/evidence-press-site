@@ -1,0 +1,196 @@
+{
+  "slug": "sharp-bilagrangian-smoothness",
+  "title": "A sharp smoothness criterion for bi-Lagrangian Grassmannians",
+  "shortTitle": "When two forms give a smooth space",
+  "oneLine": "The reduced parameter space is smooth exactly when every Jordan pencil block has dimension two.",
+  "abstract": "A written proof candidate settles the sharp smoothness part of AMR-020-0502. Kronecker blocks impose no restriction; longer Jordan blocks create a singular fixed-locus obstruction. The single-block singularity and proposed criterion are prior work. Orbit classification, incidence-scheme reducedness and nonlinear integrability remain outside the result.",
+  "datePublished": "2026-09-12",
+  "version": "0.2.0-candidate",
+  "doi": "10.5281/zenodo.22725777",
+  "zenodoUrl": "https://zenodo.org/records/22725777",
+  "pdfUrl": "https://github.com/ipitchford/sharp-bilagrangian-smoothness/releases/download/v0.2.0-candidate/paper.pdf",
+  "repoUrl": "https://github.com/ipitchford/sharp-bilagrangian-smoothness",
+  "releaseUrl": "https://github.com/ipitchford/sharp-bilagrangian-smoothness/releases/tag/v0.2.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "keywords": [
+    "bi-Lagrangian Grassmannian",
+    "alternating pencil",
+    "Jordan-Kronecker decomposition",
+    "smoothness",
+    "integrable systems"
+  ],
+  "evidence": "Universal written proof, explicit quotient chart, exact finite symbolic checks for n=2,...,8, 28 reconstructed subspaces and three semantic mutation controls. Internal editorial reports are producer-coordinated, not external review. https://github.com/ipitchford/sharp-bilagrangian-smoothness/blob/v0.2.0-candidate/EDITORIAL_DECISION.md",
+  "statusDetail": "Unrefereed candidate. Written proof and internal model editorial acceptance; no independent reproduction, external peer review, formal verification or historical-priority claim. Funding and competing-interest declarations not applicable at submitter direction.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex",
+      "Python and SymPy",
+      "XeLaTeX and BibTeX"
+    ],
+    "humanRole": "Research direction, review mediation and publication authorization; scholarly creator Anonymous.",
+    "disclosure": "AI-assisted proof, manuscript, software, internal editorial review and publication preparation. Supplied review independence is unestablished."
+  },
+  "keyResults": [
+    "Smoothness of the reduced complex variety is equivalent to dimension-two Jordan pencil blocks; Kronecker blocks are unrestricted.",
+    "The smooth variety is a product of ordinary Lagrangian Grassmannians.",
+    "A length-n block has a distinguished chart A^(n-2) times {a^n+cz=0}.",
+    "The same semisimplicity criterion governs real algebraic smoothness and the embedded real smooth locus being a manifold."
+  ],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22725777",
+      "note": "Public GitHub and Zenodo assets independently downloaded and SHA-256 matched."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Exact checks at seven sizes and all semantic corruptions, including normal/optimized and colour-setting regressions.",
+      "evidenceUrl": "https://github.com/ipitchford/sharp-bilagrangian-smoothness/blob/v0.2.0-candidate/REPLAY_RECEIPT.json"
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Pinned Python dependencies and fresh-extraction producer replay; no independent clean-room reproduction.",
+      "evidenceUrl": "https://github.com/ipitchford/sharp-bilagrangian-smoothness/blob/v0.2.0-candidate/ENVIRONMENT.txt"
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Producer workflow only."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independently available second implementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Written proof, not proof-assistant verification."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal AI review does not establish unaffiliated specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Internal model editorial process only."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Bolsinov, Matveev, Miranda and Tabachnikov (2018), Problem 5.3: the motivating smoothness and orbit questions.",
+      "url": "https://doi.org/10.1098/rsta.2017.0430"
+    },
+    {
+      "citation": "Kozlov (2024), Geometry of bi-Lagrangian Grassmannian, Sections 3 and 13, Problem 14.8 and Remark 14.4.",
+      "url": "https://arxiv.org/abs/2409.09855v1"
+    },
+    {
+      "citation": "Malkin, Ostrik and Vybornov (2005), Section 5.1.1: classical single-block affine-Schubert singularities.",
+      "url": "https://arxiv.org/abs/math/0305095"
+    },
+    {
+      "citation": "Pappas and Zhou (2025), Theorem 1.1: affine-Schubert smooth loci at absolutely special vertices.",
+      "url": "https://doi.org/10.1007/s00208-025-03123-8"
+    }
+  ],
+  "openProblems": [
+    "Classify the full singular locus for mixed Jordan blocks.",
+    "Determine when the original incidence scheme is reduced.",
+    "Continue the separate orbit-classification programme.",
+    "Obtain unaffiliated scrutiny of the proof and contribution-specific prior-work comparison."
+  ],
+  "narration": "When can a family of mathematical choices form a smooth space, without singular points? This candidate studies subspaces constrained by two alternating forms. Such pairs appear in the linear algebra behind bi-Hamiltonian systems. The collection of simultaneous Lagrangian subspaces is called a bi-Lagrangian Grassmannian. The question is whether this parameter space is smooth. The proposed answer is precise. Decompose the pencil of forms into its standard Jordan and Kronecker blocks. Every Jordan pencil block must have dimension two. Kronecker blocks can have any allowed size. Repeated eigenvalues are not a problem: in the smooth case, the answer is a product of familiar Lagrangian Grassmannians. To prove necessity, the paper examines one larger Jordan block. Near a carefully chosen subspace, explicit coordinates reveal a classical singular surface, together with some free coordinates. An involution isolates that block inside the full problem. Its fixed set transfers the obstruction to arbitrary mixtures of blocks. The paper also treats real forms, including nonreal conjugate eigenvalues. The proposed criterion and the single-block singularity were already present in earlier research. This contribution is an explicit proof of the complete smoothness criterion, not a claim to have invented those ingredients. It does not solve the entire orbit-classification programme or prove nonlinear integrability. Exact symbolic checks and deliberate corruptions support inspection of the calculation, but they are not a formal verification of the universal proof. This is the 12 September 2026 Evidence Press unrefereed candidate, When two forms give a smooth space. The paper and evidence package are linked on the release page. This OpenAI synthetic voice briefing is communication, not additional evidence.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "citeText": "Anonymous (2026). A sharp smoothness criterion for bi-Lagrangian Grassmannians. Version 0.2.0-candidate. Zenodo. https://doi.org/10.5281/zenodo.22725777",
+  "metadataProvenance": "Internal scientific acceptance and finite producer replay are separate from archival availability and external validation.",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:sharp-bilagrangian-smoothness",
+    "attemptIds": [
+      "ep-attempt:sharp-bilagrangian-smoothness-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "obstruction",
+      "description": "Sharp smoothness criterion via a singular fixed-locus factor.",
+      "scope": "Reduced complex bi-Lagrangian variety of an alternating pencil; real algebraic and embedded real-locus versions."
+    },
+    "bottleneckTargeted": [
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Core quotient and recursion operator preserve both pencil generators; regular chart maps and involution fixed locus transfer the obstruction.",
+      "remainingRisks": [
+        "Universal proof awaits unaffiliated scrutiny.",
+        "Prior-work comparison bounded.",
+        "Incidence scheme and full orbit classification not settled."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Assess mathematical proof and exact source correspondence.",
+      "Retain candidate and priority qualifications."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/2409.09855v1",
+        "inheritedClaim": "Core/eigenvalue reductions and proposed smoothness criterion.",
+        "inheritedAssuranceCeiling": "Published source is a structural input and conjecture attribution, not validation of this candidate."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated proof scrutiny and exact replay.",
+      "claimCeiling": "Reduced-variety smoothness candidate only; no entire orbit classification, priority or impact."
+    },
+    "impactClaims": [
+      {
+        "id": "sharp-bilagrangian-smoothness-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable sharp smoothness proof candidate",
+        "setting": "Producer-coordinated publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched comparator.",
+        "estimand": "No impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "conceptDoi": "10.5281/zenodo.22725776",
+  "altPdfUrl": "https://zenodo.org/records/22725777/files/paper.pdf?download=1"
+}
