@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "article-audio-1.0",
+  "slug": "when-polynomials-cannot-hide",
+  "sourceBodyPath": "articles/when-polynomials-cannot-hide/body.md",
+  "sourceBodySha256": "3cbe21705b88efd7136c401367230300155ee2f29488aa7e021feb5508b18caa",
+  "transcriptPath": "assets/audio/when-polynomials-cannot-hide.txt",
+  "transcriptSha256": "2353fb101f341d183a023297a9c6cf945470ee0ae1a7b76069c85c0d95104fcc",
+  "transcriptCharacters": 8069,
+  "inputSha256": "0b61078ce8973c5ed387decc1c7e30287d6ba957e3ca222fa9796c4b5b2a8e67",
+  "inputNormalization": "Trim leading and trailing whitespace per chunk; inputSha256 joins those inputs with two newlines.",
+  "inputRangeUnit": "UTF-16 code units in the exact UTF-8 transcript decoded as a JavaScript string",
+  "maximumChunkCharacters": 3000,
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "speed": 1,
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "audioPath": "assets/audio/when-polynomials-cannot-hide.mp3",
+  "limitations": [
+    "bundled CLI does not expose API request IDs",
+    "The receipt binds prepared inputs, configured provider profile and observed output bytes; it is not an independent attestation of provider execution or spoken-word completeness.",
+    "Offline checking verifies the final MP3 hash and recorded segment metadata, not deleted or unavailable private segment files."
+  ],
+  "assembledAt": "2026-09-12T15:29:04.743Z",
+  "generator": "bundled speech skill text_to_speech.py speak-batch",
+  "requestId": null,
+  "chunks": [
+    {
+      "index": 1,
+      "start": 0,
+      "end": 2920,
+      "sourceTextSha256": "91c8a862c1073d480458577188e1fa4e4d3bd70d550a474425e91392f8c3d6d0",
+      "inputSha256": "95c0e9cb032909a793992f371acccdbd597f37926f4d755121feb299b726a731",
+      "inputCharacters": 2918,
+      "requestId": null,
+      "audioSha256": "de4b3e64471962b3b2b4f442bd9a48ade29120640a03d51e074040c6c5790b7b",
+      "audioBytes": 2932224,
+      "durationSeconds": 183.264
+    },
+    {
+      "index": 2,
+      "start": 2920,
+      "end": 5454,
+      "sourceTextSha256": "4a97f04dea4e3d713e2dcfb55f37bb70a0fb0708b437dbe2012322cb55ef347e",
+      "inputSha256": "4056755352d3b6752ac1f8f43d9f8b5cfa1811824ed99780205713c7c093bf86",
+      "inputCharacters": 2532,
+      "requestId": null,
+      "audioSha256": "037bbebb149387132bd85ce2dc3cddca1ba6620e9d920618771b8f61f449e45f",
+      "audioBytes": 2481024,
+      "durationSeconds": 155.064
+    },
+    {
+      "index": 3,
+      "start": 5454,
+      "end": 8069,
+      "sourceTextSha256": "ab3f44c325c75a1d78be2a2511c172a785ea13e0d01786e723db1c388d214907",
+      "inputSha256": "06e51d148baaac72926b0ccf9c3b6e01871a3de3ed55ad0760d869951be9296a",
+      "inputCharacters": 2614,
+      "requestId": null,
+      "audioSha256": "b87058d58981c076460bd24fce3f887298d7f501586709c7507e808bf32f45b3",
+      "audioBytes": 2687232,
+      "durationSeconds": 167.952
+    }
+  ],
+  "transform": {
+    "tool": "ffmpeg",
+    "method": "concat-demuxer then re-encode",
+    "codec": "libmp3lame",
+    "bitrate": "64k",
+    "channels": 1,
+    "sampleRate": 24000,
+    "maximumBytesExclusive": 26214400
+  },
+  "audioSha256": "c3d43a44db69b87f392be844ef5ec32748b32c9e987a176b7271814d85f11b92",
+  "audioBytes": 4050860,
+  "durationSeconds": 506.28
+}
