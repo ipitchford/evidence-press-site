@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'quartic-inverse-coefficients': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 12 SEPTEMBER 2026', 'QUARTIC INVERSION · ROOT GEOMETRY'],
+    head: ['Roots that', '<em>never meet.</em>'],
+    headSize: 76,
+    sub: 'Strict boundary interlacing. The affine count uses external rigidity.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">adjacent boundary factors</div><div class="eq eq-sm">● ○ ● ○ ● ○</div><div class="note"><b>strictly alternating</b><br>even-indexed root first</div><div class="eq-foot">written proof · finite checks separate</div>'
+  },
   'sharp-bilagrangian-smoothness': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 12 SEPTEMBER 2026', 'TWO ALTERNATING FORMS · SMOOTHNESS'],
