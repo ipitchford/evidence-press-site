@@ -48,8 +48,8 @@
       "workId": "ep-work:quartic-inverse-coefficients",
       "cohort": "prospective",
       "registeredAt": "2026-09-12T16:06:30.879Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-12T16:23:03.118Z",
+      "status": "published",
+      "statusAt": "2026-09-12T17:40:08.456Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -110,7 +110,59 @@
           ],
           "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-12T17:40:08.456Z",
+          "calendarElapsedMinutes": 94,
+          "activeAgentMinutes": 22,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 2,
+          "blockedMinutes": 0,
+          "reworkMinutes": 1,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 2,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Public GitHub/Zenodo and first guarded canonical site publication completed. Clocks are instrumented lower bounds, not total effort: 18 minutes in the registered initial coordinator window plus four in the resumed observed window; two minutes of CI wait and one minute of tooling repair separately observed. The interrupted permission discussion and other uninstrumented intervals are not assigned to active effort or retrospectively reconstructed; blockedMinutes=0 means no separately timed blocked interval, not absence of a blocker. A speech-API approval interruption occurred and was resolved by explicit user clarification. Final ledger deployment is outside this outcome boundary. modelTurns counts the two publication execution turns, not intervening clarification messages or API inference rounds. No discovery-time, causal acceleration or independent validation claim.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -128,
+          "forecastRatio": 0.14666666666666667,
+          "withinForecastInterval": false,
+          "varianceReason": "Partial lower-bound coordinator timing and an interrupted run are not comparable to the complete-route forecast. Do not use this observation as a full-effort speed estimate.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort was not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Hardware inference time was not instrumented."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "No task-local fork-aware cumulative counter available."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "No task-local uncached-input counter available."
+            }
+          ]
+        }
       },
       "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -137,7 +189,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 2
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -245,13 +297,48 @@
           "evidenceRefs": [
             "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
           ]
+        },
+        {
+          "at": "2026-09-12T17:40:08.456Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "First guarded deployment, exact protocol and full publication-integrity readback passed. Final preservation-ledger seal and transcript-link repair are recorded separately; research assurance assessment unchanged.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/277",
+            "https://evidencepress.org/releases/quartic-inverse-coefficients/"
+          ]
         }
       ],
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-12T17:40:08.456Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "The intake snapshot remains unchanged; the terminal receipt records the observed total or explicitly limited measurement.",
+          "replacement": "metrics.outcome.agentRuns=6. Agent runs include coordinator and five reviewers. Timing values are instrumented lower bounds, not complete effort estimates.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/277",
+            "https://evidencepress.org/releases/quartic-inverse-coefficients/"
+          ]
+        },
+        {
+          "at": "2026-09-12T17:40:08.456Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "The intake snapshot remains unchanged; the terminal receipt records the observed total or explicitly limited measurement.",
+          "replacement": "metrics.outcome.reworkMinutes=1. Agent runs include coordinator and five reviewers. Timing values are instrumented lower bounds, not complete effort estimates.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/277",
+            "https://evidencepress.org/releases/quartic-inverse-coefficients/"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-12",
           "summary": "Registered remaining quartic assurance and publication; prior discovery and initial edits excluded."
+        },
+        {
+          "date": "2026-09-12",
+          "summary": "Appended live-publication status and explicitly limited terminal metrics; preserved frozen forecast and research-assurance assessment."
         }
       ]
     },
