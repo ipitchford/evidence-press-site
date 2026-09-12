@@ -32,6 +32,15 @@ ${inner}
 }
 
 const art = {};
+/* Alternating roots: schematic ordering, not sampled numerical locations. */
+art['quartic-inverse-coefficients'] = (a,b) => {
+  let s='<path d="M65 195 H540" stroke="#cbd5d1" stroke-width="2"/>';
+  for(let i=0;i<8;i++) {
+    const x=90+60*i, c=i%2?b:a;
+    s+=`<circle cx="${x}" cy="195" r="12" fill="${c}"/><path d="M${x} 170 V${i%2?260:105}" stroke="${c}" stroke-width="3"/>`;
+  }
+  return s+`<text class="og-hide" x="300" y="335" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">strict ordering · schematic</text><text class="og-hide" x="855" y="100" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="35">Roots that never meet</text><text class="og-hide" x="855" y="180" text-anchor="middle" fill="${a}" font-family="Georgia" font-size="31">Quartic boundary interlacing</text><text class="og-hide" x="855" y="255" text-anchor="middle" fill="${b}" font-family="monospace" font-size="19">affine count uses external rigidity</text><text class="og-hide" x="855" y="330" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* Two class-specific counts: schematic sufficient-statistic diagram, not data. */
 art['two-class-transposition-profiles'] = (a,b) => {
   let s='';
@@ -1991,6 +2000,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'quartic-inverse-coefficients': ['#89c8ad', '#dab583'],
   'two-class-transposition-profiles': ['#a78bfa', '#2dd4bf'],
   'sharp-bilagrangian-smoothness': ['#2dd4bf', '#fbbf24'],
   'biased-transposition-profile-counterexample': ['#a78bfa', '#2dd4bf'],

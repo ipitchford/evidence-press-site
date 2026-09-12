@@ -44,6 +44,218 @@
   ],
   "attempts": [
     {
+      "attemptId": "ep-attempt:quartic-inverse-coefficients-assurance-publication",
+      "workId": "ep-work:quartic-inverse-coefficients",
+      "cohort": "prospective",
+      "registeredAt": "2026-09-12T16:06:30.879Z",
+      "status": "release-candidate",
+      "statusAt": "2026-09-12T16:23:03.118Z",
+      "resultClass": "positive",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the reviewed quartic boundary theorem and R3-dependent structural affine classification pass the remaining assurance and complete public release gates?",
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Prospective remaining assurance and publication only. Original discovery, submitted review and initial source/test edits precede registration and are excluded; no discovery clock is reconstructed.",
+        "forecast": {
+          "frozenAt": "2026-09-12T16:06:30.879Z",
+          "procedureClass": "reviewed-mathematics-publication",
+          "targetOutcome": "Complete review revisions and publish GitHub/Zenodo assets and guarded Evidence Press page, media and readback.",
+          "expectedActiveMinutes": 150,
+          "plausibleLowMinutes": 90,
+          "plausibleHighMinutes": 240,
+          "expectedUnattendedWaitMinutes": 15,
+          "referenceClass": {
+            "label": "Completed proof with minor revisions",
+            "sampleSize": 0,
+            "basis": "Procedural prior, not measured discovery."
+          },
+          "fermiComponents": [
+            {
+              "component": "Source repairs and internal editorial gate",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Established publication route; not an empirical speed comparison."
+            },
+            {
+              "component": "Immutable archives and communication assets",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Established publication route; not an empirical speed comparison."
+            },
+            {
+              "component": "Composite CI and two deployment cycles",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Established publication route; not an empirical speed comparison."
+            }
+          ],
+          "probabilityPositiveSignal": 0.95,
+          "probabilityTargetClosure": 0.85,
+          "probabilityHorizonMinutes": 240,
+          "assumptions": [
+            "No fatal integrity defect.",
+            "Providers available."
+          ],
+          "reforecastTriggers": [
+            "Provider outage or integrity failure."
+          ],
+          "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
+        },
+        "outcome": null
+      },
+      "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
+      "taskClass": "assurance-and-full-candidate-publication",
+      "decisionObjectTarget": "Uniform boundary strict interlacing and coprimality, with R3-dependent affine simplicity, unit properties and exact geometric point count.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Prospective remaining assurance and publication only. Original discovery, submitted review and initial source/test edits precede registration and are excluded; no discovery clock is reconstructed. Human effort and substantive compute are not instrumented.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-12T16:06:30.879Z",
+            "basis": "Prospective remaining assurance and publication only. Original discovery, submitted review and initial source/test edits precede registration and are excluded; no discovery clock is reconstructed."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 1,
+        "reworkMinutes": 0,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-09-12T16:23:03.118Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          }
+        ],
+        "claimCeiling": "Uniform boundary strict interlacing and coprimality, with R3-dependent affine simplicity, unit properties and exact geometric point count. Unrefereed; internal AI assessment only.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+        ],
+        "missingnessReason": "No unaffiliated review, reproduction, formal verification or exhaustive priority assessment."
+      },
+      "releaseSlug": "quartic-inverse-coefficients",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-09-12T16:06:30.879Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Prospective remaining assurance and publication only. Original discovery, submitted review and initial source/test edits precede registration and are excluded; no discovery clock is reconstructed.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-12T16:23:03.118Z",
+          "status": "release-candidate",
+          "resultClass": "positive",
+          "reason": "Five internal roles Accept and normal/optimized/fresh-extraction gates passed; public site completion remains pending.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/quartic-inverse-coefficients/blob/v0.1.0-candidate/ASSURANCE.md"
+          ]
+        }
+      ],
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-09-12",
+          "summary": "Registered remaining quartic assurance and publication; prior discovery and initial edits excluded."
+        }
+      ]
+    },
+    {
       "attemptId": "ep-attempt:sharp-bilagrangian-smoothness-publication",
       "workId": "ep-work:sharp-bilagrangian-smoothness",
       "cohort": "prospective",
@@ -14373,6 +14585,10 @@
     {
       "date": "2026-09-12",
       "summary": "Recorded canonical two-class profile candidate release with scoped terminal publication metrics."
+    },
+    {
+      "date": "2026-09-12",
+      "summary": "Registered remaining quartic assurance and publication; prior research and initial edits excluded. Five internal roles accept; guarded publication remains pending."
     }
   ]
 }
