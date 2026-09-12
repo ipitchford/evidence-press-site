@@ -1,0 +1,224 @@
+{
+  "slug": "two-class-transposition-profiles",
+  "title": "Exact profiles and a vanishing-bias crossover for two-class random transpositions",
+  "shortTitle": "Two counts describe the remaining shuffle",
+  "oneLine": "A candidate full-law profile for a two-class biased shuffle, including the crossover as bias vanishes.",
+  "abstract": "For independent label sampling in two equal classes, this unrefereed candidate approximates the full permutation density by a normalized tilt in the two class-specific fixed-point counts. It gives exact limiting total-variation profiles for fixed bias and every vanishing-bias crossover, including infinity. A separate uniform spectral tail bridges the parameter regimes. Finite exact checks corroborate specified identities only.",
+  "datePublished": "2026-09-12",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22727156",
+  "conceptDoi": "10.5281/zenodo.22727155",
+  "zenodoUrl": "https://zenodo.org/records/22727156",
+  "pdfUrl": "https://github.com/ipitchford/two-class-transposition-profiles/releases/download/v0.1.0-candidate/two-class-transposition-profiles-0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22727156/files/two-class-transposition-profiles-0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/two-class-transposition-profiles",
+  "releaseUrl": "https://github.com/ipitchford/two-class-transposition-profiles/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/two-class-transposition-profiles.mp3",
+      "name": "Audio briefing",
+      "description": "AI-generated communication, not additional mathematical evidence."
+    }
+  ],
+  "keywords": [
+    "random transpositions",
+    "cutoff profile",
+    "vanishing bias",
+    "Littlewood–Richardson",
+    "mixing times"
+  ],
+  "problem": {
+    "name": "Two-class biased random-transposition profile and vanishing-bias crossover",
+    "url": "https://arxiv.org/abs/2409.16387v1"
+  },
+  "keyResults": [
+    "Stationary-L2 approximation of the full permutation density by a two-count tilt.",
+    "Fixed-bias full total-variation profile from the slow-class fixed points.",
+    "Two-Poisson crossover at bias scale 1/log N, including both endpoints.",
+    "Asymptotic conditional sufficiency, not exact finite-size sufficiency."
+  ],
+  "evidence": "Fourteen-page complete candidate paper; normal and optimized exact checks; rejected semantic mutants; scoped supplied spectral checks; source crosswalk; five producer-coordinated internal editorial reports; file manifest.",
+  "statusDetail": "Unrefereed equal-class, identity-start full-density and TV profile candidate. Finite checks do not certify asymptotics. No uniformity as b tends to zero, unequal-class extension, external validation, formal verification, priority or impact claim.",
+  "openProblems": [
+    "Unequal or additional sampling classes require new estimates.",
+    "Bias tending to zero lies outside the uniform theorem.",
+    "Quantitative finite-size conditional-sufficiency errors remain open.",
+    "Transfer the norm-saturation mechanism to other noncentral walks."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Nestoridi and Yan, Cutoff for the Biased Random Transposition Shuffle, arXiv:2409.16387v1: spectrum and fixed-bias bulk input.",
+      "url": "https://arxiv.org/abs/2409.16387v1"
+    },
+    {
+      "citation": "Anonymous, Untouched subsets and a counterexample to the biased-transposition limit-profile conjecture, Evidence Press (2026): antecedent lower-bound obstruction.",
+      "url": "https://doi.org/10.5281/zenodo.22708622"
+    },
+    {
+      "citation": "Teyssier, Limit profile for random transpositions (2020): uniform endpoint.",
+      "url": "https://doi.org/10.1214/20-AOP1424"
+    },
+    {
+      "citation": "Teyssier, Cutoff profiles for conjugacy invariant random walks on symmetric groups, arXiv:2605.28770v2 (2026): related central-character framework.",
+      "url": "https://arxiv.org/abs/2605.28770v2"
+    },
+    {
+      "citation": "Jain and Sawhney, Hitting time mixing for the random transposition walk (2026): planted fixed-set comparison.",
+      "url": "https://doi.org/10.1007/s00440-026-01479-9"
+    },
+    {
+      "citation": "Francis and Nestoridi, Limit Profiles for Separation Distance, arXiv:2605.19084v1 (2026): different metric and singleton-class perturbation.",
+      "url": "https://arxiv.org/abs/2605.19084v1"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Exact profiles and a vanishing-bias crossover for two-class random transpositions (Version 0.1.0-candidate) [Unrefereed candidate]. Evidence Press. https://doi.org/10.5281/zenodo.22727156",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Source repairs and internal assessment are distinct from subsequent operational publication and public readback.",
+  "narration": "Imagine a deck split into two equal groups. Cards in one group are chosen for swaps less often than cards in the other. As the deck approaches randomness, what information about its starting order remains? This candidate gives an answer for the whole permutation, not just one convenient statistic. Asymptotically, the remaining discrepancy is captured by two counts: fixed cards in the slow group and fixed cards in the fast group. With a fixed bias, only the slow count contributes to the limiting distance from randomness. As the bias disappears, both counts can matter. The transition occurs when the bias is comparable to one divided by the logarithm of the deck size. The proof connects three pieces. It identifies the joint fixed-point counts, controls the complete spectral contribution of the shuffle, and shows that a density depending on those counts accounts for the full limiting norm. Counting fixed cards alone would not prove that last step. The result applies to independent sampling of labels with replacement in two equal classes, using the stated discrete-time clock. It does not cover arbitrary weights or bias tending toward its extreme value. Finite decks can retain additional information. The package includes a written proof, exact finite checks, source comparisons and internal editorial records. Computer checks do not certify the asymptotic theorem. This is an unrefereed Evidence Press candidate dated September twelfth, twenty twenty-six. The full paper and evidence are linked on the release page. This is an AI-generated voice summary, not additional mathematical evidence.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex under user direction",
+      "Python exact arithmetic and numerical diagnostics",
+      "Pandoc and Tectonic"
+    ],
+    "humanRole": "Research direction, supplied reviews and full publication authority; scholarly creator Anonymous.",
+    "disclosure": "Internal model review and supplied-review checks do not establish unaffiliated mathematical validation."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22727156",
+      "note": "Public archive bytes checked before site deployment."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Finite exact identities and semantic controls, not asymptotic certification."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/two-class-transposition-profiles/blob/v0.1.0-candidate/README.md",
+      "note": "Standard-library replay with Linux CI; diagnostic environment pinned; PDF build not hermetic."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Internal model reports and supplied evidence do not establish this external assurance dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Internal model reports and supplied evidence do not establish this external assurance dimension."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Internal model reports and supplied evidence do not establish this external assurance dimension."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal model reports and supplied evidence do not establish this external assurance dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Internal model reports and supplied evidence do not establish this external assurance dimension."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:two-class-transposition-profiles",
+    "attemptIds": [
+      "ep-attempt:two-class-transposition-profiles-assurance-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [
+      {
+        "relation": "extends-result",
+        "workId": "ep-work:biased-transposition-profile-counterexample",
+        "legacyReleaseSlug": null,
+        "externalUrl": null,
+        "inheritedClaim": "Earlier slow-subset profile obstruction is reconstructed and extended to a full-law profile.",
+        "inheritedAssuranceCeiling": "Unrefereed parent; reuse is not independent confirmation."
+      }
+    ],
+    "accelerationPrimitives": [
+      "structural-compression",
+      "regime-stitching",
+      "research-lineage-reuse",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Full-density and total-variation profile in two bias regimes.",
+      "scope": "Two equal sampling classes, identity start, independent label samples with replacement."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Coloured moments, full spectral norm and positive norm saturation identify the complete permutation density.",
+      "remainingRisks": [
+        "Written proof and imported source estimates require mathematical judgment.",
+        "Finite checks cannot certify all-degree asymptotic estimates.",
+        "Bounded source search does not establish priority."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Assess the full-law bridge and imported estimates.",
+      "Preserve scope and historical source boundaries.",
+      "Separate mathematical validity, novelty and publication."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Inspect the written full-law argument and test extensions as separate research; external review is not a publication prerequisite.",
+      "claimCeiling": "Unrefereed equal-class, identity-start full-density and TV profile candidate. Finite checks do not certify asymptotics. No uniformity as b tends to zero, unequal-class extension, external validation, formal verification, priority or impact claim."
+    },
+    "impactClaims": [
+      {
+        "id": "two-class-transposition-profiles-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable two-class profile and crossover candidate",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
