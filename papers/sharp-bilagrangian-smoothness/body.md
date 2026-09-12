@@ -14,9 +14,10 @@ historical priority remain unestablished.
 ## Summary for specialists
 
 Let $A,B$ be alternating forms on a finite-dimensional complex space $V$,
-and let $r$ be the maximum pencil rank. Define
+and let $r$ be the maximum pencil rank. Put $d=\dim V-r/2$.
+Inside $\operatorname{Gr}(d,V)$, take the reduced variety
 
-$$X=\{L\in\operatorname{Gr}(\dim V-r/2,V):A|_L=B|_L=0\}_{\mathrm{red}}.$$
+$$X=\{L:A|_L=B|_L=0\}_{\mathrm{red}}.$$
 
 The candidate proves that $X$ is smooth if and only if every Jordan pencil
 block has dimension two, with arbitrary Kronecker blocks. In that case
@@ -40,7 +41,9 @@ self-adjoint recursion operator $P$.
 Semisimplicity gives the product of ordinary Lagrangian Grassmannians. For a
 longer block, an explicit quotient basis yields the local chart
 
-$$\mathbb A^{n-2}\times\operatorname{Spec}\mathbb C[a,c,z]/(a^n+cz),\qquad n\ge2.$$
+$$\mathbb A^{n-2}\times\{a^n+cz=0\},$$
+
+where $n\ge2$ and the surface lies in $\mathbb A^3$ with coordinates $a,c,z$.
 
 Polynomial division and regular inverse maps establish this as a chart of
 the reduced variety. At its origin the tangent dimension exceeds the local
