@@ -48,9 +48,9 @@
       "workId": "ep-work:sharp-bilagrangian-smoothness",
       "cohort": "prospective",
       "registeredAt": "2026-09-12T13:03:56.801Z",
-      "status": "active",
-      "statusAt": "2026-09-12T13:03:56.801Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-12T13:33:53.039Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -67,12 +67,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Remaining publication only; earlier research, repairs, review and initial media excluded. Human and compute effort not metered.",
+        "missingnessReason": "Publication-only coordinator-session workflow clock from registration, excluding explicitly measured unattended waits; not inference hardware time or human labour. One root run/turn, no post-registration agents. Rework zero is an instrumented lower bound, not zero actual repair time; see correction.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-12T13:03:56.801Z",
             "basis": "Remaining archival and site publication only."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-12T13:33:53.039Z",
+            "basis": "First canonical publication, exact archives and desktop/mobile QA passed. Final ledger sealing excluded. Research/review predate registration; no independent assurance or priority inferred."
           }
         ],
         "activeHumanMinutes": null,
@@ -80,7 +85,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -166,7 +171,8 @@
         ],
         "claimCeiling": "Unrefereed reduced-variety smoothness proof candidate; no external validation, full orbit classification or priority.",
         "evidenceRefs": [
-          "https://github.com/ipitchford/sharp-bilagrangian-smoothness/actions/runs/34695569586"
+          "https://github.com/ipitchford/sharp-bilagrangian-smoothness/actions/runs/34695569586",
+          "https://evidencepress.org/releases/sharp-bilagrangian-smoothness/"
         ],
         "missingnessReason": "Only producer replay and internal model review; external and formal dimensions unestablished."
       },
@@ -179,13 +185,37 @@
           "resultClass": "pending",
           "reason": "Remaining publication prospectively registered.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-12T13:33:53.039Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "First canonical publication, exact archives and desktop/mobile QA passed. Final ledger sealing excluded. Research/review predate registration; no independent assurance or priority inferred.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/sharp-bilagrangian-smoothness/"
+          ]
         }
       ],
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-12T13:33:53.039Z",
+          "field": "measurement.reworkMinutes",
+          "reason": "Initial zero was not a complete rework measurement. Mobile equations, media metadata/schema, audio index and registry history needed repair, but repair intervals were not separately timed.",
+          "replacement": "Preserve zero as the instrumented lower bound only, including outcome.reworkMinutes. Actual total rework is unknown; do not interpret as no repairs.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/269",
+            "https://github.com/ipitchford/evidence-press-site/pull/270"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-12",
           "summary": "Registered publication only; completed research and review excluded."
+        },
+        {
+          "date": "2026-09-12",
+          "summary": "Recorded confirmed publication, scoped clock outcome and explicit lower-bound rework correction; initial intake and assurance snapshots preserved."
         }
       ],
       "metrics": {
@@ -243,7 +273,59 @@
           ],
           "stopRule": "Integrity/authority gates remain mandatory; forecast not a cap."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-12T13:33:53.039Z",
+          "calendarElapsedMinutes": 30,
+          "activeAgentMinutes": 26,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 4,
+          "blockedMinutes": 0,
+          "reworkMinutes": 0,
+          "agentRuns": 1,
+          "maxParallelAgents": 1,
+          "modelTurns": 1,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 3,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 0,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "First canonical publication, exact archives and desktop/mobile QA passed. Final ledger sealing excluded. Research/review predate registration; no independent assurance or priority inferred. Rework is an instrumented lower bound; modelTurns counts the continuous root task turn, not API inference rounds.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -64,
+          "forecastRatio": 0.28888888888888886,
+          "withinForecastInterval": false,
+          "varianceReason": "Uncalibrated publication-only prior; existing frozen artifacts and established tools shortened this selected attempt despite repairs. Not causal acceleration evidence.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Complete task-scoped accounting not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Complete task-scoped accounting not instrumented."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "No task-local runtime counter available."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "No task-local runtime counter available."
+            }
+          ]
+        }
       }
     },
     {
