@@ -32,6 +32,18 @@ ${inner}
 }
 
 const art = {};
+/* Schematic operator chains; a pencil block has two equal-length chains. */
+art['sharp-bilagrangian-smoothness'] = (a,b) => {
+  let s='';
+  for (const [y,n,color] of [[95,1,a],[185,3,b],[275,5,b]]) {
+    for(let i=0;i<n;i++) {
+      const x=100+i*75;
+      s+=`<circle cx="${x}" cy="${y}" r="17" fill="${color}"/>`;
+      if(i)s+=`<path d="M${x-55} ${y} H${x-24} l-8 -6 m8 6 l-8 6" fill="none" stroke="${color}" stroke-width="3"/>`;
+    }
+  }
+  return s+`<text class="og-hide" x="265" y="350" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">operator chains · schematic</text><text class="og-hide" x="845" y="105" text-anchor="middle" fill="#faf7f2" font-family="Georgia" font-size="33">Smoothness has a threshold</text><text class="og-hide" x="845" y="190" text-anchor="middle" fill="${a}" font-family="Georgia" font-size="27">Jordan pencil blocks: dimension 2</text><text class="og-hide" x="845" y="260" text-anchor="middle" fill="${b}" font-family="monospace" font-size="19">longer chains force singularities</text><text class="og-hide" x="845" y="330" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* Two fixed slow labels witness a profile gap; card diagram is schematic. */
 art['biased-transposition-profile-counterexample'] = (a,b) => {
   let s='';
@@ -1970,6 +1982,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'sharp-bilagrangian-smoothness': ['#2dd4bf', '#fbbf24'],
   'biased-transposition-profile-counterexample': ['#a78bfa', '#2dd4bf'],
   'moment-ideals-unbounded-generator-degrees': ['#2dd4bf', '#fbbf24'],
   'bounded-product-transposition-cutoff': ['#38bdf8', '#fbbf24'],
