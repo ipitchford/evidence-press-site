@@ -32,6 +32,15 @@ ${inner}
 }
 
 const art = {};
+/* Two class-specific counts: schematic sufficient-statistic diagram, not data. */
+art['two-class-transposition-profiles'] = (a,b) => {
+  let s='';
+  for(let i=0;i<8;i++){
+    const x=65+(i%4)*108,y=70+Math.floor(i/4)*130,c=i<4?a:b;
+    s+=`<rect x="${x}" y="${y}" width="78" height="105" rx="9" fill="${c}" fill-opacity=".12" stroke="${c}" stroke-width="3"/><circle cx="${x+39}" cy="${y+52}" r="${i===0||i===4?20:8}" fill="${c}"/>`;
+  }
+  return s+`<text class="og-hide" x="265" y="355" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">two classes · two fixed-point counts</text><text class="og-hide" x="840" y="105" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="35">What remains of a shuffle?</text><text class="og-hide" x="840" y="180" text-anchor="middle" fill="${a}" font-family="Georgia" font-size="34">Two counts. One full law.</text><text class="og-hide" x="840" y="255" text-anchor="middle" fill="${b}" font-family="monospace" font-size="22">vanishing-bias crossover</text><text class="og-hide" x="840" y="330" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* Schematic operator chains; a pencil block has two equal-length chains. */
 art['sharp-bilagrangian-smoothness'] = (a,b) => {
   let s='';
@@ -1982,6 +1991,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'two-class-transposition-profiles': ['#a78bfa', '#2dd4bf'],
   'sharp-bilagrangian-smoothness': ['#2dd4bf', '#fbbf24'],
   'biased-transposition-profile-counterexample': ['#a78bfa', '#2dd4bf'],
   'moment-ideals-unbounded-generator-degrees': ['#2dd4bf', '#fbbf24'],
