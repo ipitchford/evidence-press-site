@@ -1,8 +1,10 @@
 ## Plain-English summary
 
+> **External development, 12 September 2026:** an [unrefereed preprint by liqsweep](https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf) proposes a general proof of polynomial-composition rigidity. Conditional on the external contact bound, triple common-zero exclusion and invertibility of G_(d+2) modulo (G_d,G_(d+1)) follow. Uniform reducedness, Jacobian invertibility and the predicted affine length are not established by that argument. The August successor claimed the containment, not the entire stronger uniform affine theorem. [Internal source review and scope audit](https://github.com/ipitchford/evidence-press-site/blob/main/docs/RIGIDITY_EXTERNAL_REVIEW_2026-09-12.md) are not unaffiliated verification. Original archives and release-time audio/video are unchanged.
+
 > **Successor notice, 12 August 2026:** the later anonymous unrefereed candidate
 > *A Jacobian smooth-point criterion and the full e=3 column of the Polydegree Conjecture*
-> claims the all-degree theorem left open here. See DOI
+> claims the all-degree containment left open here, not the entire stronger affine theorem. See DOI
 > [10.5281/zenodo.21909085](https://doi.org/10.5281/zenodo.21909085). That producer-side
 > successor does not change this version's historical claims or supply independent confirmation.
 
@@ -211,8 +213,8 @@ verifier outputs.
    $(G_d,G_{d+1})$, with both $J_d$ and $G_{d+2}$ invertible.
 2. Prove uniform adjacent boundary coprimality, or find the first
    counterexample across the changing hypergeometric families.
-3. Exclude triple common zeros of $G_d,G_{d+1},G_{d+2}$ structurally rather
-   than by extending a finite table.
+3. Check the external candidate's triple common-zero exclusion for $G_d,G_{d+1},G_{d+2}$ rather
+   than extending a finite table; keep reducedness, Jacobian invertibility and predicted length separate.
 4. Obtain an unaffiliated proof reconstruction, original-author feedback, and
    external algebraic-geometry or polynomial-automorphism review.
 5. Formalise the derivative identities, Euler syzygy, and Hensel bridge in a

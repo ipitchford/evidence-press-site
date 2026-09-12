@@ -6,6 +6,7 @@
   "abstract": "Lewis, Perry and Straub reduced a Polydegree Conjecture containment to the existence of a complex specialisation satisfying explicit coefficient and determinant conditions. This anonymous, unrefereed candidate identifies that determinant with the coefficient Jacobian and uses a weighted-Euler syzygy to reformulate the criterion as a smooth codimension-two point away from the next hypersurface. For e=3, factorially normalised coefficients converge in C1 to explicit Fourier-exponential sums with transverse zeros. Quantitative Newton--Kantorovich bounds and an exact-rational defect envelope prove persistence from m=48,550 onward. Exact finite-field checks cover d from 2 through 100, the residue-one class has an exact special point, and 97,033 outward-rounded FLINT/Arb certificates close the remaining finite bridge with no failure. Together these establish G_(d+3) contained in the closure of G_(d,4) for every integer d at least 2. Producer-side replay and cross-model adversarial review are recorded; no unaffiliated full Arb rerun, independent implementation, formal verification, external specialist review or editorial peer review is claimed.",
   "narration": "A long-standing part of the Polydegree Conjecture asks whether one family of plane polynomial automorphisms lies in the closure of another for every degree. This anonymous, unrefereed candidate proves the full case indexed by e equals three. The first step replaces an auxiliary determinant with a geometric question: can we find one smooth common zero of two coefficient polynomials where a third does not vanish? An explicit Fourier limit provides model zeros for the two difficult residue classes. Quantitative Newton--Kantorovich bounds then carry those zeros to all sufficiently large degrees. Exact finite-field certificates cover degrees two through one hundred, one residue class has an exact special point, and ninety-seven thousand and thirty-three outward-rounded Arb calculations close the remaining finite interval with no failures. A separate exact-rational envelope covers every later degree. The public package includes the formulas, exact locators, every case row, receipts, code, manifests and review responses. This is a producer-side theoretical and computer-assisted proof. It has not been independently implemented or reconstructed, formally verified, reviewed by an external specialist, or peer reviewed. The fixed-e extension remains a conjectural research programme. This synthetic-voice briefing is a communication aid, not additional mathematical evidence.",
   "version": "0.1.0-candidate",
+  "dateModified": "2026-09-12",
   "datePublished": "2026-08-12",
   "doi": "10.5281/zenodo.21909085",
   "conceptDoi": "10.5281/zenodo.21909084",
@@ -81,7 +82,7 @@
     "The fixed-e continuation is a conjectural programme and is not proved by this release."
   ],
   "evidence": "A 13-page candidate paper and accessible Markdown; a normative formula-to-checker specification; exact symbolic and finite-field checks; an exact-rational eventual envelope; a pinned Python-FLINT/Arb checker; 97,033 complete result rows with exact Gaussian-rational locators; terminal finite and eventual receipts; fresh producer replay under ordinary and optimized Python; positive and semantic negative controls; claim, provenance, licence, citation, novelty and assurance records; review dispositions; CI; and complete SHA-256 manifests. These establish producer-side replay and artifact identity, not an unaffiliated theorem reconstruction.",
-  "statusDetail": "Anonymous unrefereed candidate. The main all-degree e=3 containment is presented as a theoretical and computer-assisted theorem. Exact algebra, finite-field checks, a rational eventual envelope and the complete finite Arb bridge have passed producer-side replay, and the final review requested only bounded minor revisions. No unaffiliated party has rerun the full immutable Arb package or independently reconstructed the proof; there is no separately authored checker, proof-assistant formalisation, external specialist review, editorial peer review or venue acceptance. The dated public-record search found no earlier published all-degree e=3 proof; it is not a specialist priority adjudication.",
+  "statusDetail": "Anonymous unrefereed candidate. The main all-degree e=3 containment is presented as a theoretical and computer-assisted theorem. Exact algebra, finite-field checks, a rational eventual envelope and the complete finite Arb bridge have passed producer-side replay, and the final review requested only bounded minor revisions. No unaffiliated party has rerun the full immutable Arb package or independently reconstructed the proof; there is no separately authored checker, proof-assistant formalisation, external specialist review, editorial peer review or venue acceptance. The dated public-record search found no earlier published all-degree e=3 proof; it is not a specialist priority adjudication. External-development update, 12 September 2026: Conditional on the external rigidity proof and Furter's Theorem B, every length-two closure equality follows, including this e=3 containment and all fixed-e singleton containments. That alternative argument does not validate this release's Fourier estimates, interval certificates or smooth-point construction. Internal source review found no load-bearing gap in the proposed main argument; this is not unaffiliated review, formal verification or independent reproduction of either package.",
   "assurance": {
     "availability": {
       "state": "passed",
@@ -124,7 +125,7 @@
     "Write a separate interval implementation and rerun all 97,033 immutable locators without producer intermediates.",
     "Obtain external specialist reviews in polynomial automorphisms, algebraic geometry, asymptotic analysis and validated numerics, retaining corrections publicly.",
     "Formalise the structural identities and persistence theorem over an explicit trusted base.",
-    "Investigate the fixed-e extension only after the e=3 proof survives independent review, publishing changed thresholds and failed routes."
+    "Assess the external general rigidity proof before commissioning another fixed-e containment proof; pursue Fourier-persistence extensions only for additional structural or certificate information."
   ],
   "relatedWorks": [
     {
@@ -142,6 +143,18 @@
     {
       "citation": "Ortega, J. M., & Rheinboldt, W. C. (1970). Iterative Solution of Nonlinear Equations in Several Variables.",
       "url": "https://doi.org/10.1137/1.9780898719468"
+    },
+    {
+      "citation": "liqsweep (2026). Polynomial composition rigidity via critical values. External unrefereed preprint; frozen commit b17b6b9f7440b12fd85df2c2db9c98209ecc174d, inspected 12 September 2026.",
+      "url": "https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf"
+    }
+  ],
+  "corrections": [
+    {
+      "date": "2026-09-12",
+      "scope": "claim",
+      "summary": "Recorded an external candidate proof of general polynomial-composition rigidity and clarified its consequences for this release.",
+      "detail": "Conditional on the external rigidity proof and Furter's Theorem B, every length-two closure equality follows, including this e=3 containment and all fixed-e singleton containments. That alternative argument does not validate this release's Fourier estimates, interval certificates or smooth-point construction. Original archive, version DOI, evidence and assurance ratings are unchanged. Audio and video describe the release-time position; the dated page update supplies the current context."
     }
   ],
   "citeText": "Anonymous. (2026). A Jacobian smooth-point criterion and the full e=3 column of the Polydegree Conjecture (Version 0.1.0-candidate) [Unrefereed candidate manuscript and reproducibility package]. Evidence Press. https://doi.org/10.5281/zenodo.21909085",

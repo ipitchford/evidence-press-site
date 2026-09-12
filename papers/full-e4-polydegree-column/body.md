@@ -1,5 +1,7 @@
 ## Summary
 
+> **External development, 12 September 2026:** an [unrefereed preprint by liqsweep](https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf) proposes a general proof of polynomial-composition rigidity. Conditional on the external rigidity proof and Furter's Theorem B, every length-two closure equality follows, including this e=4 containment and the e=5 target. The Fourier/Arb construction, scoped Lean identity and conditional boundary-norm theorem retain their separate assurance boundaries. [Internal source review and scope audit](https://github.com/ipitchford/evidence-press-site/blob/main/docs/RIGIDITY_EXTERNAL_REVIEW_2026-09-12.md) are not unaffiliated verification. Original archives and release-time audio/video are unchanged.
+
 Plane polynomial automorphisms can be grouped by the degree sequence of the elementary maps used to construct them. The Polydegree Conjecture asks when one such group lies in the closure of another. This anonymous, unrefereed candidate presents the full column indexed by $e=4$:
 
 $$
@@ -105,7 +107,7 @@ Replaying these programs tests the supplied encoded predicates and byte bindings
 2. Implement the finite and eventual certificates in a separate interval stack and compare all 14,985 cases.
 3. Formalize the smooth-zero reduction and quantitative persistence theorem, connecting them to the existing Lean companion.
 4. Obtain external specialist reports in polynomial automorphisms, asymptotic analysis, validated numerics, formalization and boundary geometry, preserving objections and corrections publicly.
-5. Investigate $e=5$ without extrapolating an all-$e$ or monotone rigidity theorem from the $e=3$ and $e=4$ cases.
+5. Assess the external general rigidity proof before commissioning an $e=5$ containment proof. Pursue further Fourier or smooth-point constructions only for explicitly additional structural or certificate information.
 
 ## What is in the public package
 
