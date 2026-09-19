@@ -32,6 +32,13 @@ ${inner}
 }
 
 const art = {};
+/* Three exact witness times; height differences enlarged, not a scale plot. */
+art['cooper-spencer-temporal-unimodality'] = (a,b) => {
+  let s='<path d="M80 95 V295 H515" fill="none" stroke="#cbd5d1" stroke-width="2"/>';
+  s+=`<path d="M135 140 L295 230 L455 190" fill="none" stroke="${a}" stroke-width="6"/>`;
+  for(const [x,y,t] of [[135,140,65],[295,230,67],[455,190,69]])s+=`<circle cx="${x}" cy="${y}" r="10" fill="${b}"/><text x="${x}" y="325" text-anchor="middle" fill="#e7e5e4" font-family="monospace" font-size="23">${t}</text>`;
+  return s+`<text class="og-hide" x="295" y="375" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="16">schematic · differences enlarged</text><text class="og-hide" x="850" y="105" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="33">A fall, then a rise</text><text class="og-hide" x="850" y="180" text-anchor="middle" fill="${a}" font-family="Georgia" font-size="29">Random-walk unimodality fails</text><text class="og-hide" x="850" y="255" text-anchor="middle" fill="${b}" font-family="monospace" font-size="20">exact witness · dimension 26</text><text class="og-hide" x="850" y="330" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text>`;
+};
 /* Alternating roots: schematic ordering, not sampled numerical locations. */
 art['quartic-inverse-coefficients'] = (a,b) => {
   let s='<path d="M65 195 H540" stroke="#cbd5d1" stroke-width="2"/>';
@@ -2000,6 +2007,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'cooper-spencer-temporal-unimodality': ['#2dd4bf', '#fbbf24'],
   'quartic-inverse-coefficients': ['#89c8ad', '#dab583'],
   'two-class-transposition-profiles': ['#a78bfa', '#2dd4bf'],
   'sharp-bilagrangian-smoothness': ['#2dd4bf', '#fbbf24'],
