@@ -32,6 +32,18 @@ ${inner}
 }
 
 const art = {};
+/* Fano incidence diagram and the nineteen distinct homogeneous eigenvalues.
+ * Repeated roots are shown once; this is an illustration, not a certificate. */
+art['fano-plane-spectrum'] = (a,b) => {
+  const pts=[[240,50],[84.1154,320],[395.8846,320],[162.0577,185],[240,320],[317.9423,185],[240,230]];
+  let s=`<g fill="none" stroke="${a}" stroke-width="2.6" opacity=".72"><path d="M240 50 L84.1154 320 L395.8846 320 Z M240 50 L240 320 M84.1154 320 L317.9423 185 M395.8846 320 L162.0577 185"/><circle cx="240" cy="230" r="90"/></g>`;
+  for(const [x,y] of pts) s+=`<circle cx="${x}" cy="${y}" r="8" fill="${a}" stroke="#142027" stroke-width="3"/>`;
+  s+=`<path d="M655 220 H1160 M900 30 V380" stroke="#b9c7c9" opacity=".2"/><path d="M470 190 C550 125 610 125 670 190 M470 240 C550 305 610 305 670 240" stroke="${b}" stroke-width="1.4" opacity=".25" fill="none"/>`;
+  const roots=[[0,0],[1,0],[2,0],[3,0],[.574743073887,0]];
+  for(const [x,y] of [[.5,Math.sqrt(3)/2],[-1,Math.sqrt(5)],[-.5,Math.sqrt(3)/2],[-.5,Math.sqrt(7)/2],[-1.28737153694,1.349996398],[1.192440401,.547877446],[-.692440401,.318147958]]) roots.push([x,y],[x,-y]);
+  for(const [x,y] of roots) s+=`<circle cx="${900+70*x}" cy="${220-70*y}" r="6" fill="${b}"/><circle cx="${900+70*x}" cy="${220-70*y}" r="12" fill="none" stroke="${b}" opacity=".18"/>`;
+  return s;
+};
 /* Three exact witness times; height differences enlarged, not a scale plot. */
 art['cooper-spencer-temporal-unimodality'] = (a,b) => {
   let s='<path d="M80 95 V295 H515" fill="none" stroke="#cbd5d1" stroke-width="2"/>';
@@ -2083,6 +2095,7 @@ const palette = {
 };
 
 palette['biased-small-world-mixing'] = ['#2dd4bf', '#fbbf24'];
+palette['fano-plane-spectrum'] = ['#79d6c3', '#e9be78'];
 // Reviewed image-led compositions supersede the historical slide-like covers.
 const { motifs } = require('./art-direction');
 for (const [slug, spec] of Object.entries(motifs)) {
