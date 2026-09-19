@@ -48,8 +48,8 @@
       "workId": "ep-work:fano-plane-spectrum",
       "cohort": "prospective",
       "registeredAt": "2026-09-19T20:41:33.272Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-19T21:26:39.363Z",
+      "status": "published",
+      "statusAt": "2026-09-19T21:36:25.946Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -73,14 +73,19 @@
             "event": "work-opened",
             "at": "2026-09-19T20:41:33.272Z",
             "basis": "Prospective remaining assurance and publication only. Supplied discovery, external review text and prior local reconstruction precede this registration; no discovery clock is reconstructed. Setup before this intake is recorded separately in PUBLICATION_STATE.json."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-19T21:36:25.946Z",
+            "basis": "Guarded deployment and canonical desktop/mobile readback."
           }
         ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": 1,
-        "reworkMinutes": 0,
-        "correctionCount": 0
+      "agentRuns": 1,
+      "reworkMinutes": 0,
+      "correctionCount": 2
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -188,9 +193,38 @@
           "evidenceRefs": [
             "https://zenodo.org/records/22850084"
           ]
+        },
+        {
+          "at": "2026-09-19T21:36:25.946Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Exact public archive parity and first guarded canonical page/media readback passed; final preservation-ledger cycle follows without changing research assurance.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/fano-plane-spectrum/",
+            "https://zenodo.org/records/22850084"
+          ]
         }
       ],
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-19T21:36:25.946Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "replacement": "7",
+          "reason": "Root coordination plus five internal role executions and one focused confirmation.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/fano-plane-spectrum/"
+          ]
+        },
+        {
+          "at": "2026-09-19T21:36:25.946Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "replacement": "2",
+          "reason": "Previously recorded two-minute seal/log race repair; other repair time not separately instrumented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/fano-plane-spectrum/"
+          ]
+        }
+      ],
       "metrics": {
         "schemaVersion": "1.0",
         "measurementScope": "assurance-through-publication",
@@ -246,12 +280,68 @@
           ],
           "stopRule": "Timing is telemetry, not a cap. Continue unless integrity or provider access blocks completion."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-19T21:36:25.946Z",
+          "calendarElapsedMinutes": 55,
+          "activeAgentMinutes": 6,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 5,
+          "reworkMinutes": 2,
+          "agentRuns": 7,
+          "maxParallelAgents": 4,
+          "modelTurns": 146,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 5,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 2,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 9,
+          "resultState": "target-closed",
+          "resultSummary": "Supplied review actioned; five internal roles and focused confirmation accepted the bounded candidate. Public GitHub/Zenodo bytes match and first canonical page/media readback passed. Final ledger-only deployment follows. No external validation, priority or impact established.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -144,
+          "forecastRatio": 0.04,
+          "withinForecastInterval": false,
+          "varianceReason": "ActiveAgentMinutes is an instrumented LOWER BOUND: union of explicit root Reasoning/AgentMessage runtime spans, rounded down. It excludes reviewer runtime, pre-output latency, tool execution and uninstrumented work; it is not comparable to the frozen total-effort forecast, so the arithmetic ratio is NOT an acceleration estimate. ModelTurns counts root response records only. Zero unattendedWaitMinutes means no separately instrumented exclusive wait intervals, not no CI waits. Five blocked minutes is the conservative whole-minute Zenodo dependency window from the recorded 21:17:23 rejection to 21:22:49 draft creation, overlapping some other activity. Rework records only the observed initial two-minute seal race. Five mutation classes tested in two modes; one existing architecture audited, no discovery cycles. Nine claim/evidence repairs correspond to the first nine supplied-review response rows; the private review predates intake. P0/P1 counts concern internal post-intake review rounds.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Substantive computation not separately instrumented; ordinary producer replay and build/CI are excluded."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Root response-level deduplication available locally, but complete all-agent accounting unavailable; no partial total presented as complete."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Root-only cache accounting available, complete all-agent total unavailable."
+            }
+          ]
+        }
       },
       "revisions": [
         {
           "date": "2026-09-19",
           "summary": "Prospective intake preserved; appended internally assessed assurance endpoint and archive identity after exact public-byte comparison. Initial missing revisions field corrected before first site publication."
+        },
+        {
+          "date": "2026-09-19",
+          "summary": "Appended first canonical publication outcome with explicit runtime lower bounds, provider disruption, missing telemetry and non-comparability to the total-effort forecast."
         }
       ]
     },
