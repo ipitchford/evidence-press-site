@@ -14214,8 +14214,8 @@
       "workId": "ep-work:cooper-spencer-temporal-unimodality",
       "cohort": "prospective",
       "registeredAt": "2026-09-19T20:18:22.003Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-19T20:35:09.089Z",
+      "status": "published",
+      "statusAt": "2026-09-19T20:42:16.644Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -14276,7 +14276,51 @@
           ],
           "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-19T20:42:16.644Z",
+          "calendarElapsedMinutes": 24,
+          "activeAgentMinutes": 18,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 0,
+          "reworkMinutes": 0,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 101,
+          "deduplicatedModelTokens": 11230088,
+          "uncachedInputTokens": 536224,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 1,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Review revisions and stronger rounded family incorporated before registration; five internal roles accepted after minor documentation repairs. Exact public archives and first canonical page/media readback passed. Final preservation-ledger deployment follows; no external validation or priority claim.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -72,
+          "forecastRatio": 0.2,
+          "withinForecastInterval": false,
+          "varianceReason": "Union of task-local output creation-to-token-receipt runtime spans; excludes initial latency and tool execution. Lower bound, not total effort. Tokens deduplicated by response_id across root and five scoped review agents. This lower bound and the frozen total-effort forecast are not directly comparable. Zero wait/rework means no separately instrumented intervals, not absence of CI waits or catalogue repairs. One existing proof architecture assessed, no new discovery cycle. Pre-registration research and revisions are excluded.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort was not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Substantive computation was not separately instrumented; routine replay/build checks are excluded."
+            }
+          ]
+        }
       },
       "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -14296,6 +14340,11 @@
             "event": "work-opened",
             "at": "2026-09-19T20:18:22.003Z",
             "basis": "Prospective publication-only scope from this registration. Discovery, supplied review, intake, source inspection and initial revisions already completed are left-censored and excluded. No historical research clock is reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-19T20:42:16.644Z",
+            "basis": "Guarded deployment, exact public archive comparison and canonical desktop/mobile readback."
           }
         ],
         "activeHumanMinutes": null,
@@ -14303,7 +14352,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -14411,13 +14460,37 @@
           "evidenceRefs": [
             "https://zenodo.org/records/22849717"
           ]
+        },
+        {
+          "at": "2026-09-19T20:42:16.644Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Exact public archives and first guarded canonical deployment verified. Final preservation-ledger cycle follows without changing the research assurance endpoint.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/cooper-spencer-temporal-unimodality/",
+            "https://zenodo.org/records/22849717"
+          ]
         }
       ],
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-19T20:42:16.644Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "reason": "Opening root-only snapshot retained; terminal count includes five completed internal editorial agents.",
+          "replacement": "Opening 1 retained; terminal 6.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/cooper-spencer-temporal-unimodality/"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-19",
           "summary": "Prospective publication-only scope from this registration. Discovery, supplied review, intake, source inspection and initial revisions already completed are left-censored and excluded. No historical research clock is reconstructed."
+        },
+        {
+          "date": "2026-09-19",
+          "summary": "Appended truthful first-publication outcome and scoped runtime lower-bound metrics; preserved frozen forecast and research-assurance timestamp."
         }
       ]
     }
@@ -14888,6 +14961,10 @@
     {
       "date": "2026-09-12",
       "summary": "Registered remaining quartic assurance and publication; prior research and initial edits excluded. Five internal roles accept; guarded publication remains pending."
+    },
+    {
+      "date": "2026-09-19",
+      "summary": "Recorded canonical Cooper–Spencer candidate publication, with publication-only terminal metrics and no reconstructed discovery clock."
     }
   ]
 }
