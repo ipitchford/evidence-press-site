@@ -2083,8 +2083,22 @@ const palette = {
 };
 
 palette['biased-small-world-mixing'] = ['#2dd4bf', '#fbbf24'];
+// Reviewed image-led compositions supersede the historical slide-like covers.
+const { motifs } = require('./art-direction');
+for (const [slug, spec] of Object.entries(motifs)) {
+  art[slug] = spec.draw;
+  palette[slug] = spec.colors;
+}
+const requested = new Set(process.argv.slice(2));
+for (const slug of requested) {
+  if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
+}
 for (const [slug, fn] of Object.entries(art)) {
+  if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
-  fs.writeFileSync(path.join(OUT, slug + '.svg'), frame(fn(a, b), a, b));
+  let svg = frame(fn(a, b), a, b);
+  if (motifs[slug]) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"')
+    .replace('<defs>', `<desc id="art-description">${motifs[slug].description}</desc><defs>`);
+  fs.writeFileSync(path.join(OUT, slug + '.svg'), svg);
   console.log('art:', slug);
 }

@@ -62,7 +62,12 @@ for (const viewport of [
           if (bannerState.count !== 1 || bannerState.src !== article.banner.src) problems.push('missing or wrong banner');
           if (bannerState.alt !== article.banner.alt || bannerState.caption !== article.banner.caption) problems.push('banner descriptions changed');
           if (!bannerState.eager || !bannerState.loaded || !bannerState.beforeHeading) problems.push('banner loading or placement incorrect');
-          if (Math.abs(bannerState.ratio - (viewport.name === 'mobile' ? 16 / 9 : 3)) > 0.02) problems.push('banner aspect ratio incorrect');
+          if (viewport.name === 'desktop' && Math.abs(bannerState.ratio - 3) > 0.02) problems.push('banner aspect ratio incorrect');
+          if (viewport.name === 'mobile') {
+            const uncropped = await page.locator('.article-banner img').evaluate(image =>
+              Math.abs(image.getBoundingClientRect().width / image.getBoundingClientRect().height - image.naturalWidth / image.naturalHeight) < 0.02);
+            if (!uncropped) problems.push('mobile banner crops the source composition');
+          }
           if ([bannerState.ogImage, bannerState.twitterImage, bannerState.jsonldImage].some(url => url !== expectedImage)) problems.push('banner metadata image mismatch');
           if (bannerState.twitterCard !== 'summary_large_image') problems.push('banner missing large social card');
         } else if (bannerState.count || bannerState.ogImage || bannerState.twitterImage || bannerState.jsonldImage || bannerState.twitterCard !== 'summary') {

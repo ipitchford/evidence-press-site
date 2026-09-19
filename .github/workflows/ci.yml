@@ -127,6 +127,7 @@ jobs:
           diff /tmp/first.sha /tmp/second.sha && echo "Byte-identical rebuild."
 
       - name: No inline scripts (the CSP forbids them)
+        # Image-led art has its own deterministic source/asset check.
         run: |
           # Scoped to generated pages: the self-contained comic bundle under
           # assets/ legitimately carries inline script and is deliberately not
@@ -136,6 +137,9 @@ jobs:
             exit 1
           fi
           echo "No inline scripts."
+
+      - name: Check image-led cover regeneration
+        run: node tools/test-art-direction.js
 
   accessibility:
     name: Accessibility (axe via pa11y-ci)

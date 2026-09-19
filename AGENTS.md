@@ -97,6 +97,9 @@ node tools/check-published.js
 ```
 
 Every release must have a reproducible 2560x1440 YouTube thumbnail below 2 MB.
+Before authoring or replacing graphics, read `docs/ART_DIRECTION.md`. Banners,
+explanatory figures and thumbnails serve different jobs. Inspect changed art at
+desktop and mobile display sizes; passing file/overflow tests is not visual approval.
 Generate it during authoring with `node tools/make-thumb.js <slug>`. Keep the
 committed copy under `thumbs/`, mirror the exact bytes to `/Users/admin/thumbs`
 on the maintainer Mac, and use the generator's deterministic background-palette
