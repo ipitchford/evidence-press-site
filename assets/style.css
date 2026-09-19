@@ -304,7 +304,8 @@ td .inline-img { height: 1.9em; vertical-align: middle; }
   font-size: .82rem; line-height: 1.5; overflow-wrap: anywhere;
 }
 @media (max-width: 659px) {
-  .article-banner img { aspect-ratio: 16 / 9; }
+  /* Preserve the full composition; a forced taller crop discards both sides. */
+  .article-banner img { aspect-ratio: auto; height: auto; object-fit: contain; }
 }
 .article-boundary strong { font-family: var(--sans); color: var(--amber); }
 .article-audio { padding: 1rem 1.2rem; margin: 0 0 1.7rem; background: #edf7f5; border: 1px solid #b6d8d2; border-radius: 10px; }
