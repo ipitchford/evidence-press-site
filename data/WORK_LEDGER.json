@@ -44,6 +44,123 @@
   ],
   "attempts": [
     {
+      "attemptId": "ep-attempt:fano-plane-spectrum-assurance-publication",
+      "workId": "ep-work:fano-plane-spectrum",
+      "cohort": "prospective",
+      "registeredAt": "2026-09-19T20:41:33.272Z",
+      "status": "active",
+      "statusAt": "2026-09-19T20:41:33.272Z",
+      "resultClass": "pending",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the reviewed Fano homogeneous adjacency spectrum and eigenvector geometry pass revision, producer replay and complete open publication gates?",
+      "selectionBasis": "User-supplied candidate and review with explicit authorization to action the review and complete publication.",
+      "taskClass": "assurance-and-full-candidate-publication",
+      "decisionObjectTarget": "Exact degree-448 resultant factorization, nineteen eigenvalues, H-spectrum and characteristic-zero eigenvector-curve certificate.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Prospective remaining assurance and publication only. Supplied discovery, external review text and prior local reconstruction precede this registration; no discovery clock is reconstructed. Setup before this intake is recorded separately in PUBLICATION_STATE.json. Human effort and hardware inference time are not instrumented.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-19T20:41:33.272Z",
+            "basis": "Prospective remaining assurance and publication only. Supplied discovery, external review text and prior local reconstruction precede this registration; no discovery clock is reconstructed. Setup before this intake is recorded separately in PUBLICATION_STATE.json."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 1,
+        "reworkMinutes": 0,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "not-recorded",
+        "assessedAt": null,
+        "dimensions": [],
+        "claimCeiling": "Unrefereed candidate; producer checks and internal model reviews are not unaffiliated validation, formal proof, priority or impact.",
+        "evidenceRefs": [],
+        "missingnessReason": "Prospective endpoint pending."
+      },
+      "releaseSlug": "fano-plane-spectrum",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-09-19T20:41:33.272Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Prospective remaining assurance and publication only. Supplied discovery, external review text and prior local reconstruction precede this registration; no discovery clock is reconstructed. Setup before this intake is recorded separately in PUBLICATION_STATE.json.",
+          "evidenceRefs": []
+        }
+      ],
+      "corrections": [],
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Prospective remaining assurance and publication only. Supplied discovery, external review text and prior local reconstruction precede this registration; no discovery clock is reconstructed. Setup before this intake is recorded separately in PUBLICATION_STATE.json.",
+        "forecast": {
+          "frozenAt": "2026-09-19T20:41:33.272Z",
+          "procedureClass": "reviewed-mathematics-full-candidate",
+          "targetOutcome": "Complete review revisions and GitHub, Zenodo and guarded Evidence Press publication with media and public readback.",
+          "expectedActiveMinutes": 150,
+          "plausibleLowMinutes": 90,
+          "plausibleHighMinutes": 240,
+          "expectedUnattendedWaitMinutes": 30,
+          "referenceClass": {
+            "label": "Reviewed exact-computation package",
+            "sampleSize": 0,
+            "basis": "Procedural estimate, not an empirical speed comparison."
+          },
+          "fermiComponents": [
+            {
+              "component": "Scientific integration, verifier hardening and editorial gate",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Existing exact package."
+            },
+            {
+              "component": "Immutable archives and communication assets",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Standard release route."
+            },
+            {
+              "component": "Composite CI and deployment/readback cycles",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Standard guarded route."
+            }
+          ],
+          "probabilityPositiveSignal": 0.95,
+          "probabilityTargetClosure": 0.85,
+          "probabilityHorizonMinutes": 240,
+          "assumptions": [
+            "No fatal integrity defect.",
+            "Providers remain available."
+          ],
+          "reforecastTriggers": [
+            "New mathematical defect or provider outage."
+          ],
+          "stopRule": "Timing is telemetry, not a cap. Continue unless integrity or provider access blocks completion."
+        },
+        "outcome": null
+      }
+    },
+    {
       "attemptId": "ep-attempt:quartic-inverse-coefficients-assurance-publication",
       "workId": "ep-work:quartic-inverse-coefficients",
       "cohort": "prospective",

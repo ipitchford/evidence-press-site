@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'fano-plane-spectrum': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 19 SEPTEMBER 2026', 'FANO PLANE · TENSOR SPECTRUM'],
+    head: ['Seven points.', '<em>Nineteen roots.</em>'],
+    headSize: 72,
+    sub: 'An exact spectral computation with a hidden curve of eigenvectors.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">homogeneous adjacency spectrum</div><div class="eq">7 → 448 → 19</div><div class="note"><b>points · polynomial degree · distinct roots</b><br>One eigenvector family is a smooth<br>degree-eight, genus-three curve.</div><div class="eq-foot">exact computation · producer replay</div>'
+  },
   'quartic-inverse-coefficients': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 12 SEPTEMBER 2026', 'QUARTIC INVERSION · ROOT GEOMETRY'],
