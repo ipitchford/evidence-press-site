@@ -48,9 +48,9 @@
       "workId": "ep-work:fano-plane-spectrum",
       "cohort": "prospective",
       "registeredAt": "2026-09-19T20:41:33.272Z",
-      "status": "active",
-      "statusAt": "2026-09-19T20:41:33.272Z",
-      "resultClass": "pending",
+      "status": "release-candidate",
+      "statusAt": "2026-09-19T21:26:39.363Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -83,12 +83,92 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": "Unrefereed candidate; producer checks and internal model reviews are not unaffiliated validation, formal proof, priority or impact.",
-        "evidenceRefs": [],
-        "missingnessReason": "Prospective endpoint pending."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-19T21:26:39.363Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed computational theorem candidate; producer replay and internal model review do not establish external validation, formal proof, historical priority or impact.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/fano-plane-spectrum/blob/v0.1.0-candidate/ASSURANCE.md"
+        ],
+        "missingnessReason": "External dimensions remain unestablished; novelty and semantic audits bounded."
       },
       "releaseSlug": "fano-plane-spectrum",
       "stopReason": null,
@@ -99,6 +179,15 @@
           "resultClass": "pending",
           "reason": "Prospective remaining assurance and publication only. Supplied discovery, external review text and prior local reconstruction precede this registration; no discovery clock is reconstructed. Setup before this intake is recorded separately in PUBLICATION_STATE.json.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-19T21:26:39.363Z",
+          "status": "release-candidate",
+          "resultClass": "positive",
+          "reason": "Internal acceptance and public GitHub/Zenodo byte parity passed; Evidence Press deployment pending.",
+          "evidenceRefs": [
+            "https://zenodo.org/records/22850084"
+          ]
         }
       ],
       "corrections": [],
@@ -158,7 +247,13 @@
           "stopRule": "Timing is telemetry, not a cap. Continue unless integrity or provider access blocks completion."
         },
         "outcome": null
-      }
+      },
+      "revisions": [
+        {
+          "date": "2026-09-19",
+          "summary": "Prospective intake preserved; appended internally assessed assurance endpoint and archive identity after exact public-byte comparison. Initial missing revisions field corrected before first site publication."
+        }
+      ]
     },
     {
       "attemptId": "ep-attempt:quartic-inverse-coefficients-assurance-publication",
