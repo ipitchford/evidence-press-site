@@ -14801,8 +14801,8 @@
       "workId": "ep-work:gk-shared-phosphatase-connectedness",
       "cohort": "prospective",
       "registeredAt": "2026-09-20T12:38:06Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-20T12:55:25Z",
+      "status": "published",
+      "statusAt": "2026-09-20T13:02:24Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -14863,7 +14863,59 @@
           ],
           "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-20T13:02:24Z",
+          "calendarElapsedMinutes": 24,
+          "activeAgentMinutes": 5,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 2,
+          "blockedMinutes": 0,
+          "reworkMinutes": 0,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 6,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 3,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Supplied minor attribution and geometry revisions actioned; five internal editorial roles accepted after documentary repair. Exact public GitHub/Zenodo assets and first canonical page/media readback passed. Final preservation-ledger deployment follows without upgrading research assurance.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -145,
+          "forecastRatio": 0.0333,
+          "withinForecastInterval": false,
+          "varianceReason": "Active minutes are a stopwatch lower bound covering only the remaining deployment and closeout segment; earlier publication effort was not instrumented. Explicit unattended CI waits were subtracted. This lower bound is not directly comparable with the frozen full-route forecast. Model turns count six task/reviewer invocations, not individual model sampling calls. Rework zero means no separately timed rework segment in this stopwatch, not absence of earlier packaging repairs. No discovery-time or acceleration inference.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort was not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Substantive compute was not separately instrumented; routine build/replay excluded."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Fork-aware runtime token counter unavailable; rollout events were not summed."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Runtime token counter unavailable."
+            }
+          ]
+        }
       },
       "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -14883,12 +14935,17 @@
             "event": "work-opened",
             "at": "2026-09-20T12:38:06Z",
             "basis": "Publication-only from registration; prior discovery, supplied review, intake inspection and initial minor text revisions are left-censored and excluded. No discovery clock reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-20T13:02:24Z",
+            "basis": "Exact GitHub/Zenodo parity and guarded canonical readback; final preservation-ledger cycle follows."
           }
         ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": 1,
+        "agentRuns": 6,
         "reworkMinutes": 0,
         "correctionCount": 0
       },
@@ -14898,9 +14955,9 @@
         "dimensions": [
           {
             "dimension": "availability",
-            "state": "not-assessed",
+            "state": "passed",
             "evidenceRefs": [
-              "https://github.com/ipitchford/gk-shared-phosphatase-connectedness/blob/v0.1.0-candidate/ASSURANCE.md"
+              "https://evidencepress.org/releases/gk-shared-phosphatase-connectedness/"
             ]
           },
           {
@@ -14998,6 +15055,16 @@
           "evidenceRefs": [
             "https://zenodo.org/records/22858244"
           ]
+        },
+        {
+          "at": "2026-09-20T13:02:24Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "First canonical deployment and public byte checks passed; final preservation-ledger cycle follows.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/gk-shared-phosphatase-connectedness/",
+            "https://zenodo.org/records/22858244"
+          ]
         }
       ],
       "corrections": [],
@@ -15005,6 +15072,10 @@
         {
           "date": "2026-09-20",
           "summary": "Publication-only from registration; prior discovery, supplied review, intake inspection and initial minor text revisions are left-censored and excluded. No discovery clock reconstructed."
+        },
+        {
+          "date": "2026-09-20",
+          "summary": "Recorded first canonical publication and scoped lower-bound operational metrics; frozen forecast and scientific assessment date retained."
         }
       ]
     }
