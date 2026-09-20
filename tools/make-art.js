@@ -2102,6 +2102,18 @@ for (const [slug, spec] of Object.entries(motifs)) {
   art[slug] = spec.draw;
   palette[slug] = spec.colors;
 }
+// Schematic overlapping physical images; not a numerical section of parameter space.
+art['gk-shared-phosphatase-connectedness'] = (a,b) => `
+<g fill="none" stroke-width="3">
+<path d="M110 210 C170 40 365 35 420 185 C480 335 265 355 110 210Z" stroke="${a}" fill="${a}" fill-opacity=".10"/>
+<path d="M1080 190 C990 30 820 65 770 210 C710 345 970 355 1080 190Z" stroke="${b}" fill="${b}" fill-opacity=".10"/>
+<path d="M260 195 C390 195 460 95 570 170 C680 250 730 195 910 195" stroke="${a}" stroke-width="6"/>
+<path d="M270 230 C410 300 495 215 600 190 C690 125 790 170 920 225" stroke="${b}" stroke-width="6"/>
+<ellipse cx="590" cy="190" rx="70" ry="50" stroke="#eee9df" stroke-width="2"/>
+</g><circle cx="585" cy="195" r="9" fill="#eee9df"/>
+<g fill="${a}"><circle cx="200" cy="145" r="8"/><circle cx="320" cy="265" r="8"/></g>
+<g fill="${b}"><circle cx="990" cy="140" r="8"/><circle cx="890" cy="275" r="8"/></g>`;
+palette['gk-shared-phosphatase-connectedness'] = ['#79d6c3','#e9be78'];
 const requested = new Set(process.argv.slice(2));
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
