@@ -48,8 +48,8 @@
       "workId": "ep-work:unlinked-gamma-regression",
       "cohort": "prospective",
       "registeredAt": "2026-09-20T12:58:36.903Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-20T13:23:51.686Z",
+      "status": "published",
+      "statusAt": "2026-09-20T13:37:04.920Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -73,6 +73,11 @@
             "event": "work-opened",
             "at": "2026-09-20T12:58:36.903Z",
             "basis": "Prospective remaining publication assurance only. Discovery, supplied reviews, intake reading and initial presentation revisions predate registration; no discovery clock is reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-20T13:37:04.920Z",
+            "basis": "Canonical HTML/JSON/media and desktop/mobile readback after guarded deployment."
           }
         ],
         "activeHumanMinutes": null,
@@ -80,7 +85,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 2
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -188,9 +193,38 @@
           "evidenceRefs": [
             "https://zenodo.org/records/22858495"
           ]
+        },
+        {
+          "at": "2026-09-20T13:37:04.920Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "First guarded canonical deployment and browser/archive readback passed. Preservation-ledger sealing follows without upgrading scientific assurance.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/unlinked-gamma-regression/",
+            "https://zenodo.org/records/22858495"
+          ]
         }
       ],
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-20T13:37:04.920Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
+          "replacement": "6",
+          "reason": "Root coordinator plus five internal editorial role runs.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/unlinked-gamma-regression/"
+          ]
+        },
+        {
+          "at": "2026-09-20T13:37:04.920Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "replacement": "6",
+          "reason": "Observed rounded publication repair work: mutation tests, Markdown mapping, registry receipts and schema/history reconciliation.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/unlinked-gamma-regression/"
+          ]
+        }
+      ],
       "metrics": {
         "schemaVersion": "1.0",
         "measurementScope": "publication-only",
@@ -246,7 +280,59 @@
           ],
           "stopRule": "Timing is telemetry, not a cap. Continue unless integrity or provider access blocks completion."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-20T13:37:04.920Z",
+          "calendarElapsedMinutes": 38,
+          "activeAgentMinutes": 30,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 8,
+          "blockedMinutes": 0,
+          "reworkMinutes": 6,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 68,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 4,
+          "candidateArchitecturesTested": 0,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Revised existing Gamma candidate passed internal editorial and producer checks and reached public GitHub, Zenodo and guarded Evidence Press readback; no discovery or comparative acceleration claim.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -120,
+          "forecastRatio": 0.2,
+          "withinForecastInterval": false,
+          "varianceReason": "Existing completed proof package and reusable publishing tools reduced active work below the broad procedural prior. Active minutes are rounded attended coordinator work-window accounting with separately observed unattended waits, including short interleaved tool waits; not inference time, summed reviewer CPU or discovery effort. Rework is a rounded observed operational estimate. Model turns count unique coordinator Reasoning events after registration, excluding reviewer forks. A missing append-only registry receipt required an extra pre-upload repair PR. No comparative speed or productivity inference.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No substantive discovery computation in this publication-only scope; packaging/check runtimes not tracked as research compute."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "No task-local fork-aware runtime token counter available."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "No task-local uncached-input counter available."
+            }
+          ]
+        }
       },
       "revisions": [
         {
@@ -256,6 +342,10 @@
         {
           "date": "2026-09-19",
           "summary": "Appended first canonical publication outcome with explicit runtime lower bounds, provider disruption, missing telemetry and non-comparability to the total-effort forecast."
+        },
+        {
+          "date": "2026-09-20",
+          "summary": "Recorded first canonical Gamma publication at 2026-09-20T13:37:04.920Z, frozen prospective forecast, scoped rounded attended-work and wait estimates, and two retained measurement corrections. Earlier pre-publication revision summaries are preserved history; their 2026-09-19 date and wording about a publication outcome do not establish a public event. This appended receipt and timestamped status history identify the actual publication event. No provider outage or research-assurance upgrade is asserted."
         }
       ]
     },
@@ -15784,6 +15874,10 @@
     {
       "date": "2026-09-20",
       "summary": "Registered the remaining unlinked Gamma publication-only attempt; discovery and initial presentation revisions predate this receipt and remain unmeasured."
+    },
+    {
+      "date": "2026-09-20",
+      "summary": "Recorded canonical unlinked Gamma candidate publication and scoped terminal metrics; prior discovery unmeasured, scientific assurance timestamp unchanged."
     }
   ]
 }
