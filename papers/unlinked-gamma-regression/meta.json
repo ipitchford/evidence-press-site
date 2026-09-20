@@ -1,0 +1,213 @@
+{
+  "slug": "unlinked-gamma-regression",
+  "title": "Unlinked Gamma regression: exact identifiability and optimal cumulant order",
+  "shortTitle": "Lost links, finite choices",
+  "oneLine": "A minimal counterexample, a complete coefficient-fiber classification, and the exact condition that restores identification.",
+  "abstract": "When predictor and response observations lose their links, even independent non-Gaussian predictors can admit distinct minimal coefficient vectors. This unrefereed candidate classifies every ambiguity for a fixed known Gamma shape dictionary, gives a sharp subset-sum condition for identification, and proves an optimal worst-case consecutive cumulant cutoff. It is a population theorem, not a validated finite-sample estimator.",
+  "datePublished": "2026-09-20",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22858495",
+  "conceptDoi": "10.5281/zenodo.22858494",
+  "zenodoUrl": "https://zenodo.org/records/22858495",
+  "pdfUrl": "https://github.com/ipitchford/unlinked-gamma-regression/releases/download/v0.1.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22858495/files/paper.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/unlinked-gamma-regression",
+  "releaseUrl": "https://github.com/ipitchford/unlinked-gamma-regression/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/unlinked-gamma-regression.mp3",
+      "name": "Audio briefing",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/unlinked-gamma-regression.txt",
+      "description": "AI-generated communication, not additional mathematical evidence."
+    }
+  ],
+  "keywords": [
+    "unlinked regression",
+    "Gamma convolution",
+    "identifiability",
+    "cumulants",
+    "Prony reconstruction",
+    "subset sums"
+  ],
+  "problem": {
+    "name": "Fixed-dictionary Gamma regression identification",
+    "url": "https://arxiv.org/abs/2507.14986v1"
+  },
+  "keyResults": [
+    "A three-predictor minimal counterexample to signed-permutation identification.",
+    "All fixed-dictionary Gamma coefficient fibers are finite allocation problems.",
+    "An exact subset-sum criterion restores uniform identification up to equal-shape permutations.",
+    "Cumulants through order 2d+1 suffice, with a matching worst-case bound for signed coefficients."
+  ],
+  "evidence": "Written proofs; exact 2,055-vector grid; rational-polynomial identities in dimensions 1\u201320; normal and optimized fresh-extraction replay; four rejected semantic mutations; internal editorial role reports.",
+  "statusDetail": "Unrefereed candidate. Population identification for known fixed Gamma shapes, with signed coefficients. No validated finite-sample estimator, external mathematical validation, proof-assistant verification, exhaustive priority or impact claim.",
+  "openProblems": [
+    "Unaffiliated proof audit and fresh implementation of the complete allocation classification.",
+    "Statistical estimation and stability when effective scales nearly coincide.",
+    "Classification beyond the specified analytic convolution families.",
+    "Broader primary-source investigation of the allocation and sharpness formulations."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Balabdaoui, Slawski and Steffani (2025), Identifiability in unlinked linear regression, version 1. Targeted conjecture and Gamma convolution obstacle.",
+      "url": "https://arxiv.org/abs/2507.14986v1"
+    },
+    {
+      "citation": "Azadkia and Balabdaoui (2024), Linear regression with unmatched data: A deconvolution perspective. Statistical estimation context.",
+      "url": "https://jmlr.org/papers/v25/22-0930.html"
+    },
+    {
+      "citation": "Balabdaoui, Di Noia and Durot (2026), Deconvolution in unlinked linear models. Latent-law estimation with nonunique coefficients.",
+      "url": "https://jmlr.org/papers/v27/25-0516.html"
+    },
+    {
+      "citation": "James, Roynette and Yor (2008), Generalized Gamma convolutions, Dirichlet means, Thorin measures, with explicit examples. Classical invariant context.",
+      "url": "https://doi.org/10.1214/07-PS118"
+    },
+    {
+      "citation": "Kunis, Peter, R\u00f6mer and von der Ohe (2016), A multivariate generalization of Prony\u2019s method. Classical reconstruction machinery.",
+      "url": "https://doi.org/10.1016/j.laa.2015.10.023"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Unlinked Gamma regression: exact identifiability and optimal cumulant order (Version 0.1.0-candidate) [Unrefereed candidate]. Evidence Press. https://doi.org/10.5281/zenodo.22858495",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "User-supplied candidate and reviews; producer-coordinated revisions, exact checks and internal editorial review. External reviewer identities and processes unauthenticated.",
+  "narration": "Suppose you have two lists. One records predictors, and the other records outcomes. The links between individual observations have disappeared. Even if you know both distributions perfectly, can you recover the coefficients of a linear relationship? This Evidence Press candidate studies that question for independent Gamma predictors with known shapes, centered and scaled to unit variance. A three-predictor example shows that using every predictor does not guarantee a unique answer, even after allowing signs and permutations. Two different coefficient vectors give exactly the same response distribution. The paper then describes every possible answer in this Gamma model. The distribution reveals the total Gamma shape assigned to each effective scale. What remains is a finite allocation problem: which predictor labels can supply each of those totals? A precise subset-sum condition makes that allocation unique up to permutations of predictors with equal shapes. The paper also asks how much distributional information is enough. For a dictionary with d predictors, cumulants through order two d plus one suffice. A matching construction shows that this highest consecutive order cannot be lowered uniformly when signed coefficients and arbitrary dictionaries are allowed. These are exact population results. They do not establish a reliable estimator from noisy, finite data, and numerical instability can still matter. The package includes written proofs and finite exact-arithmetic checks. Historical priority remains uncertain. Released on twenty September twenty twenty-six, this is an unrefereed Evidence Press candidate. The full paper and evidence are linked on the release page. This is an AI-generated voice summary, not additional mathematical evidence.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex under human direction",
+      "Python standard-library rational arithmetic",
+      "LaTeX and Pandoc"
+    ],
+    "humanRole": "Research direction, supplied candidate and review, and full publication authorization; scholarly creator Anonymous.",
+    "disclosure": "Supplied reviews are not authenticated external endorsements; internal model review and producer replay remain separate from external validation."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22858495",
+      "note": "Public archive readback establishes availability, not correctness."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/unlinked-gamma-regression/blob/v0.1.0-candidate/ASSURANCE.md",
+      "note": "2,055 finite-grid vectors, polynomial identities in dimensions 1\u201320, four rejected mutations and clean normal/optimized replay. General results rest on written proofs."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/unlinked-gamma-regression/blob/v0.1.0-candidate/ASSURANCE.md",
+      "note": "Standard-library Python checks; Linux CI plus macOS producer replay; no hermetic or bit-identical PDF build claim."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Internal model review and producer-coordinated checks do not establish this external assurance dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Internal model review and producer-coordinated checks do not establish this external assurance dimension."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Internal model review and producer-coordinated checks do not establish this external assurance dimension."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal model review and producer-coordinated checks do not establish this external assurance dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Internal model review and producer-coordinated checks do not establish this external assurance dimension."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:unlinked-gamma-regression",
+    "attemptIds": [
+      "ep-attempt:unlinked-gamma-regression-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [],
+    "accelerationPrimitives": [
+      "identification-gate",
+      "structural-compression",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "identified-set",
+      "description": "Complete coefficient fiber for a fixed known Gamma dictionary.",
+      "scope": "Independent centered standardized Gamma predictors, arbitrary positive known shapes and real coefficients; stated extensions only."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Transform poles recover aggregate shape weights; fixed-label allocation describes coefficients; normalized cumulants reduce to finite-atomic moments.",
+      "remainingRisks": [
+        "Written arguments have no proof-assistant formalization.",
+        "Finite computation does not prove universal claims.",
+        "Historical novelty remains uncertain."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Audit mathematical arguments and equation encoding.",
+      "Assess prior art and priority separately.",
+      "Retain rights and assurance boundaries."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated proof audit and independent implementation.",
+      "claimCeiling": "Unrefereed candidate. Population identification for known fixed Gamma shapes, with signed coefficients. No validated finite-sample estimator, external mathematical validation, proof-assistant verification, exhaustive priority or impact claim."
+    },
+    "impactClaims": [
+      {
+        "id": "unlinked-gamma-regression-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable population identification and nonidentification criteria",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
