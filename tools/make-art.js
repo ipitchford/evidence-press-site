@@ -2124,6 +2124,15 @@ art['gk-shared-phosphatase-connectedness'] = (a,b) => `
 <g fill="${a}"><circle cx="200" cy="145" r="8"/><circle cx="320" cy="265" r="8"/></g>
 <g fill="${b}"><circle cx="990" cy="140" r="8"/><circle cx="890" cy="275" r="8"/></g>`;
 palette['gk-shared-phosphatase-connectedness'] = ['#79d6c3','#e9be78'];
+// Five intersections, schematically spaced; not a numerical residual plot.
+art['tcell-exactly-five'] = (a,b) => {
+  let s = '<path d="M90 200 H1110" stroke="#e5ece7" stroke-opacity=".3" stroke-width="2"/>';
+  const xs=[180,390,600,810,1020];
+  s += '<path d="M90 95 C130 95 135 200 180 200 S240 310 285 310 S345 200 390 200 S450 90 495 90 S555 200 600 200 S660 310 705 310 S765 200 810 200 S870 90 915 90 S975 200 1020 200 S1070 305 1110 305" fill="none" stroke="'+a+'" stroke-width="5"/>';
+  for (const x of xs) s += '<circle cx="'+x+'" cy="200" r="12" fill="'+b+'"/><circle cx="'+x+'" cy="200" r="26" fill="none" stroke="'+b+'" stroke-opacity=".35" stroke-width="2"/>';
+  return s;
+};
+palette['tcell-exactly-five'] = ['#79d6c3','#e9be78'];
 const requested = new Set(process.argv.slice(2));
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);

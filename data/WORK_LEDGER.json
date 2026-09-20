@@ -44,6 +44,218 @@
   ],
   "attempts": [
     {
+      "attemptId": "ep-attempt:tcell-exactly-five-publication",
+      "workId": "ep-work:tcell-exactly-five",
+      "cohort": "prospective",
+      "registeredAt": "2026-09-20T16:32:25Z",
+      "status": "release-candidate",
+      "statusAt": "2026-09-20T16:54:55Z",
+      "resultClass": "positive",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the reviewed exactly-five two-ligand T-cell equilibrium candidate pass internal editorial and full open publication gates?",
+      "selectionBasis": "User-supplied candidate and review with explicit authorization to action the review and complete publication.",
+      "taskClass": "assurance-and-full-candidate-publication",
+      "decisionObjectTarget": "Exact N=100 witness, five simple scalar roots and an open neighborhood in the twelve named continuous parameters.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Remaining assurance and publication only. Discovery, supplied reviews and initial intake replay predate registration; discovery clocks are not reconstructed.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-20T16:32:25Z",
+            "basis": "Remaining assurance and publication only. Discovery, supplied reviews and initial intake replay predate registration; discovery clocks are not reconstructed."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 6,
+        "reworkMinutes": 3,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-09-20T16:54:55Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed two-ligand N100 exact-five candidate; no external validation, formalization, stability, physiological or priority claim.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/tcell-exactly-five/blob/v0.1.0-candidate/ASSURANCE.md"
+        ],
+        "missingnessReason": "External assurance and priority remain unestablished."
+      },
+      "releaseSlug": "tcell-exactly-five",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-09-20T16:32:25Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Remaining assurance and publication only. Discovery, supplied reviews and initial intake replay predate registration; discovery clocks are not reconstructed.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-20T16:54:55Z",
+          "status": "release-candidate",
+          "resultClass": "positive",
+          "reason": "Internal editorial acceptance and exact public archive parity passed; guarded website publication pending.",
+          "evidenceRefs": [
+            "https://zenodo.org/records/22861212"
+          ]
+        }
+      ],
+      "corrections": [],
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "publication-only",
+        "scopeBoundary": "Remaining assurance and publication only. Discovery, supplied reviews and initial intake replay predate registration; discovery clocks are not reconstructed.",
+        "forecast": {
+          "frozenAt": "2026-09-20T16:32:25Z",
+          "procedureClass": "reviewed-mathematics-full-candidate",
+          "targetOutcome": "Publish revised exact-five candidate with GitHub/Zenodo asset parity and guarded Evidence Press page, media and readback.",
+          "expectedActiveMinutes": 150,
+          "plausibleLowMinutes": 90,
+          "plausibleHighMinutes": 240,
+          "expectedUnattendedWaitMinutes": 30,
+          "referenceClass": {
+            "label": "Reviewed exact-computation package",
+            "sampleSize": 0,
+            "basis": "Procedural estimate, not an empirical speed comparison."
+          },
+          "fermiComponents": [
+            {
+              "component": "Scientific integration, verifier hardening and editorial gate",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Existing exact package."
+            },
+            {
+              "component": "Immutable archives and communication assets",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Standard release route."
+            },
+            {
+              "component": "Composite CI and deployment/readback cycles",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Standard guarded route."
+            }
+          ],
+          "probabilityPositiveSignal": 0.95,
+          "probabilityTargetClosure": 0.85,
+          "probabilityHorizonMinutes": 240,
+          "assumptions": [
+            "No fatal integrity defect.",
+            "Providers remain available."
+          ],
+          "reforecastTriggers": [
+            "New mathematical defect or provider outage."
+          ],
+          "stopRule": "Timing is telemetry, not a cap. Continue unless integrity or provider access blocks completion."
+        },
+        "outcome": null
+      },
+      "revisions": [
+        {
+          "date": "2026-09-20",
+          "summary": "Registered this publication-only attempt and recorded internal editorial acceptance plus public GitHub/Zenodo asset parity. Template-only historical revision text was removed before first publication; no prior T-cell publication event is asserted."
+        }
+      ]
+    },
+    {
       "attemptId": "ep-attempt:unlinked-gamma-regression-publication",
       "workId": "ep-work:unlinked-gamma-regression",
       "cohort": "prospective",
@@ -1376,7 +1588,7 @@
           "at": "2026-09-06T19:21:59.864Z",
           "field": "reworkMinutes interpretation",
           "reason": "Earlier PDF/test concurrency repair, art-palette correction, README repair and metadata validation repairs were not separately timed. Deployment also required completing shallow Git history and a second pre-deployment PR for an omitted method-registry changeLog entry. Zero would be false; total active rework is unavailable.",
-          "replacement": "The numeric value 1 records only the rounded dedicated 19:11:39–19:12:39 UTC CI diagnosis/repair interval. Treat it as a minimum, not total rework. Subsequent validation and publication repair overlapped other scoped work. PR 223 is a recorded exception to the normal two-PR route; research assets and claims did not change.",
+          "replacement": "The numeric value 1 records only the rounded dedicated 19:11:39\u201319:12:39 UTC CI diagnosis/repair interval. Treat it as a minimum, not total rework. Subsequent validation and publication repair overlapped other scoped work. PR 223 is a recorded exception to the normal two-PR route; research assets and claims did not change.",
           "evidenceRefs": [
             "https://github.com/ipitchford/evidence-press-site/pull/222",
             "https://github.com/ipitchford/evidence-press-site/pull/223",
@@ -10460,7 +10672,7 @@
           "forecastErrorMinutes": -141,
           "forecastRatio": 0.06,
           "withinForecastInterval": false,
-          "varianceReason": "Active generation and recorded context-compaction wait are observed lower bounds, not complete labour or service-wait totals. The overnight administrative pause/offline gap is neither active nor externally blocked. Rework is an upper attribution bound on coordinator generation during the recorded audio-repair window 22:42–22:46:31 UTC on September 6. Boundary-crossing token responses may contain earlier input. Cached input is included; no monetary-cost or acceleration inference. The calendar horizon was exceeded during the administrative pause; eventual target closure is not closure within the original 240-minute horizon. The user removed workflow caps without changing the frozen forecast.",
+          "varianceReason": "Active generation and recorded context-compaction wait are observed lower bounds, not complete labour or service-wait totals. The overnight administrative pause/offline gap is neither active nor externally blocked. Rework is an upper attribution bound on coordinator generation during the recorded audio-repair window 22:42\u201322:46:31 UTC on September 6. Boundary-crossing token responses may contain earlier input. Cached input is included; no monetary-cost or acceleration inference. The calendar horizon was exceeded during the administrative pause; eventual target closure is not closure within the original 240-minute horizon. The user removed workflow caps without changing the frozen forecast.",
           "missingFields": [
             {
               "field": "activeHumanMinutes",
@@ -13621,7 +13833,7 @@
           "forecastErrorMinutes": -119,
           "forecastRatio": 0.21,
           "withinForecastInterval": false,
-          "varianceReason": "Existing six-page proof and reusable publisher tools. Active minutes are the attended coordinator interval minus explicitly recorded unattended/blocked intervals, including short interleaved tool waits; not summed agent CPU. Operational rework included accessible-text conversion, art palette, metadata schema and mobile equation layout, but no distinct rework clock was instrumented. Model turns count available coordinator reasoning records only, excluding reviewer forks. No comparative acceleration claim. The rework field is a rounded observed lower bound: mobile-repair commentary interval 14:10:04.385–14:11:18.918 UTC plus audio-index repair 14:13:36.354 UTC to seal commit 14:13:53 UTC, totaling 91.179 seconds. Earlier unsegmented packaging/schema repair time is included in active time but not this subtotal.",
+          "varianceReason": "Existing six-page proof and reusable publisher tools. Active minutes are the attended coordinator interval minus explicitly recorded unattended/blocked intervals, including short interleaved tool waits; not summed agent CPU. Operational rework included accessible-text conversion, art palette, metadata schema and mobile equation layout, but no distinct rework clock was instrumented. Model turns count available coordinator reasoning records only, excluding reviewer forks. No comparative acceleration claim. The rework field is a rounded observed lower bound: mobile-repair commentary interval 14:10:04.385\u201314:11:18.918 UTC plus audio-index repair 14:13:36.354 UTC to seal commit 14:13:53 UTC, totaling 91.179 seconds. Earlier unsegmented packaging/schema repair time is included in active time but not this subtotal.",
           "missingFields": [
             {
               "field": "activeHumanMinutes",
@@ -14828,7 +15040,7 @@
       "aims": [
         "science"
       ],
-      "question": "Can the revised Cooper–Spencer counterexample complete internal approval and all public release gates?",
+      "question": "Can the revised Cooper\u2013Spencer counterexample complete internal approval and all public release gates?",
       "metrics": {
         "schemaVersion": "1.0",
         "measurementScope": "publication-only",
@@ -15865,7 +16077,7 @@
     },
     {
       "date": "2026-09-19",
-      "summary": "Recorded canonical Cooper–Spencer candidate publication, with publication-only terminal metrics and no reconstructed discovery clock."
+      "summary": "Recorded canonical Cooper\u2013Spencer candidate publication, with publication-only terminal metrics and no reconstructed discovery clock."
     },
     {
       "date": "2026-09-20",
@@ -15878,6 +16090,10 @@
     {
       "date": "2026-09-20",
       "summary": "Recorded canonical unlinked Gamma candidate publication and scoped terminal metrics; prior discovery unmeasured, scientific assurance timestamp unchanged."
+    },
+    {
+      "date": "2026-09-20",
+      "summary": "Registered publication-only T-cell exact-five attempt; prior discovery clocks unknown and not reconstructed."
     }
   ]
 }
