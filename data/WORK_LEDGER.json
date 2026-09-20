@@ -48,8 +48,8 @@
       "workId": "ep-work:tcell-exactly-five",
       "cohort": "prospective",
       "registeredAt": "2026-09-20T16:32:25Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-20T16:54:55Z",
+      "status": "published",
+      "statusAt": "2026-09-20T17:02:54Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -73,6 +73,11 @@
             "event": "work-opened",
             "at": "2026-09-20T16:32:25Z",
             "basis": "Remaining assurance and publication only. Discovery, supplied reviews and initial intake replay predate registration; discovery clocks are not reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-20T17:02:54Z",
+            "basis": "First guarded canonical deployment and exact readback passed; preservation-ledger cycle follows without changing research assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -188,6 +193,16 @@
           "evidenceRefs": [
             "https://zenodo.org/records/22861212"
           ]
+        },
+        {
+          "at": "2026-09-20T17:02:54Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "First guarded canonical deployment and exact readback passed; preservation-ledger cycle follows without changing research assurance.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/tcell-exactly-five/",
+            "https://zenodo.org/records/22861212"
+          ]
         }
       ],
       "corrections": [],
@@ -246,12 +261,68 @@
           ],
           "stopRule": "Timing is telemetry, not a cap. Continue unless integrity or provider access blocks completion."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-20T17:02:54Z",
+          "calendarElapsedMinutes": 30,
+          "activeAgentMinutes": 1,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 0,
+          "blockedMinutes": 0,
+          "reworkMinutes": 3,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 6,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 3,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Review revisions integrated; five-role internal editorial round closed without a P0/P1 issue. Immutable research assets pass exact replay, negative controls and public byte parity; first canonical site and media readback passed. Final preservation-ledger deployment follows.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -149,
+          "forecastRatio": 0.0067,
+          "withinForecastInterval": false,
+          "varianceReason": "Active-agent minutes are a lower-bound attended workflow clock covering only the closing segment from 17:01 UTC through first canonical readback, including attended tool execution; earlier publication work was not separately timed. Unattended wait is zero only in this narrowly measured segment. Rework retains the previously recorded three-minute estimate and is not an additional closing-segment clock. The frozen whole-route forecast is not directly comparable with this partial clock. Model turns count the six coordinator/reviewer task invocations, not model sampling calls. No discovery-speed or acceleration inference is supported.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No separate substantive compute clock."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Fork-aware runtime counter unavailable; rollout events were not summed."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Runtime counter unavailable."
+            }
+          ]
+        }
       },
       "revisions": [
         {
           "date": "2026-09-20",
           "summary": "Registered this publication-only attempt and recorded internal editorial acceptance plus public GitHub/Zenodo asset parity. Template-only historical revision text was removed before first publication; no prior T-cell publication event is asserted."
+        },
+        {
+          "date": "2026-09-20",
+          "summary": "Appended canonical publication event and explicitly partial closing-segment timing; frozen intake and research assurance retained."
         }
       ]
     },
@@ -16094,6 +16165,10 @@
     {
       "date": "2026-09-20",
       "summary": "Registered publication-only T-cell exact-five attempt; prior discovery clocks unknown and not reconstructed."
+    },
+    {
+      "date": "2026-09-20",
+      "summary": "Recorded canonical publication of tcell-exactly-five and scoped terminal publication metrics."
     }
   ]
 }
