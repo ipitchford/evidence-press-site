@@ -14945,7 +14945,7 @@
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": 6,
+        "agentRuns": 1,
         "reworkMinutes": 0,
         "correctionCount": 0
       },
@@ -14955,9 +14955,9 @@
         "dimensions": [
           {
             "dimension": "availability",
-            "state": "passed",
+            "state": "not-assessed",
             "evidenceRefs": [
-              "https://evidencepress.org/releases/gk-shared-phosphatase-connectedness/"
+              "https://github.com/ipitchford/gk-shared-phosphatase-connectedness/blob/v0.1.0-candidate/ASSURANCE.md"
             ]
           },
           {
@@ -15067,7 +15067,17 @@
           ]
         }
       ],
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-09-20T13:07:00Z",
+          "field": "measurement.agentRuns and assuranceEndpoint.dimensions",
+          "reason": "Final pre-deployment preservation gate rejected changes to already-recorded intake and assurance fields. Restored their first-publication values; terminal run count remains in metrics.outcome.agentRuns, while public availability is documented by release metadata and dated status history. No research assurance upgrade.",
+          "replacement": "Historical fields retained; appended outcome remains authoritative for terminal scope.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/285"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-09-20",
