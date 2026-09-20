@@ -14947,7 +14947,7 @@
         "computeCost": null,
         "agentRuns": 1,
         "reworkMinutes": 0,
-        "correctionCount": 0
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -15069,8 +15069,8 @@
       ],
       "corrections": [
         {
-          "at": "2026-09-20T13:07:00Z",
-          "field": "measurement.agentRuns and assuranceEndpoint.dimensions",
+          "at": "2026-09-20T13:07:01Z",
+          "field": "measurement.agentRuns -> metrics.outcome.agentRuns",
           "reason": "Final pre-deployment preservation gate rejected changes to already-recorded intake and assurance fields. Restored their first-publication values; terminal run count remains in metrics.outcome.agentRuns, while public availability is documented by release metadata and dated status history. No research assurance upgrade.",
           "replacement": "Historical fields retained; appended outcome remains authoritative for terminal scope.",
           "evidenceRefs": [
