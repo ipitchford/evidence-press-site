@@ -32,6 +32,15 @@ ${inner}
 }
 
 const art = {};
+// Equal aggregate masses with distinct allocations of shapes 1, 1 and 2.
+art['unlinked-gamma-regression'] = (a,b) => {
+ let s='';
+ for(const x of [360,840]) s+=`<circle cx="${x}" cy="200" r="105" fill="none" stroke="${a}" stroke-width="3" opacity=".65"/><circle cx="${x}" cy="200" r="88" fill="${a}" opacity=".05"/>`;
+ s+=`<path d="M465 180 C580 65 620 65 735 180 M465 220 C580 335 620 335 735 220" fill="none" stroke="${b}" stroke-width="3" opacity=".6"/>`;
+ for(const [x,y,r] of [[330,180,23],[390,220,23],[840,200,33]]) s+=`<circle cx="${x}" cy="${y}" r="${r}" fill="${b}"/><circle cx="${x}" cy="${y}" r="${r+7}" fill="none" stroke="${b}" opacity=".3"/>`;
+ return s;
+};
+
 /* Fano incidence diagram and the nineteen distinct homogeneous eigenvalues.
  * Repeated roots are shown once; this is an illustration, not a certificate. */
 art['fano-plane-spectrum'] = (a,b) => {
@@ -2095,6 +2104,7 @@ const palette = {
 };
 
 palette['biased-small-world-mixing'] = ['#2dd4bf', '#fbbf24'];
+palette['unlinked-gamma-regression'] = ['#79d6c3', '#e9be78'];
 palette['fano-plane-spectrum'] = ['#79d6c3', '#e9be78'];
 // Reviewed image-led compositions supersede the historical slide-like covers.
 const { motifs } = require('./art-direction');
