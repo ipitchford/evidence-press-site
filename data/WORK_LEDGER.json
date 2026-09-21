@@ -15683,8 +15683,8 @@
       "workId": "ep-work:median-radius-obstructions",
       "cohort": "prospective",
       "registeredAt": "2026-09-21T15:21:19Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-21T15:34:45Z",
+      "status": "published",
+      "statusAt": "2026-09-21T15:42:36Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -15745,7 +15745,59 @@
           ],
           "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-21T15:42:36Z",
+          "calendarElapsedMinutes": 21,
+          "activeAgentMinutes": 4,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 1,
+          "blockedMinutes": 0,
+          "reworkMinutes": 0,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 6,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 3,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Supplied review actioned; five internal roles accepted; immutable GitHub and Zenodo asset parity and first canonical website/media readback passed. Final preservation-ledger deployment follows. Earlier work remains left-censored.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -146,
+          "forecastRatio": 0.0267,
+          "withinForecastInterval": false,
+          "varianceReason": "Active minutes are an instrumented lower bound for the remaining merge/deploy/readback segment only, excluding explicitly timed unattended waits. Earlier publication work was not instrumented and is excluded; this is not total route effort and is not directly comparable with the full remaining-publication forecast. Model turns are a lower bound of six distinct root/reviewer invocations; individual sampling turns are unavailable. Rework zero means no separately timed rework segment in this stopwatch, not no prior repairs. No discovery-time, acceleration or impact inference.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No separately instrumented substantive-compute total; ordinary validation excluded."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Supported fork-aware counter unavailable."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Runtime cache/token accounting unavailable."
+            }
+          ]
+        }
       },
       "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -15765,6 +15817,11 @@
             "event": "work-opened",
             "at": "2026-09-21T15:21:19Z",
             "basis": "Remaining publication only from registration. Discovery, supplied review, source comparison, manuscript revisions and initial checker runs precede registration and are left-censored; no discovery clock is reconstructed."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-21T15:42:36Z",
+            "basis": "First canonical readback after guarded production deployment."
           }
         ],
         "activeHumanMinutes": null,
@@ -15772,7 +15829,7 @@
         "computeCost": null,
         "agentRuns": 6,
         "reworkMinutes": null,
-        "correctionCount": 0
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -15850,15 +15907,39 @@
           "evidenceRefs": [
             "https://zenodo.org/records/22878369"
           ]
+        },
+        {
+          "at": "2026-09-21T15:42:36Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "First guarded deployment and exact canonical readback passed. Mandatory final preservation-ledger deployment follows.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/median-radius-obstructions/",
+            "https://zenodo.org/records/22878369"
+          ]
         }
       ],
       "revisions": [
         {
           "date": "2026-09-21",
           "summary": "Remaining publication only from registration. Discovery, supplied review, source comparison, manuscript revisions and initial checker runs precede registration and are left-censored; no discovery clock is reconstructed."
+        },
+        {
+          "date": "2026-09-21",
+          "summary": "Recorded first canonical publication and explicitly partial stopwatch lower-bound operational metrics; frozen forecast and prior assurance record retained."
         }
       ],
-      "corrections": []
+      "corrections": [
+        {
+          "at": "2026-09-21T15:42:36Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "The intake retains unknown total rework. Terminal zero refers only to no separately timed rework interval in the instrumented final segment, not absence of earlier packaging repairs.",
+          "replacement": "Preserve intake null; retain scoped lower-bound terminal value and variance explanation.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/292"
+          ]
+        }
+      ]
     }
   ],
   "updatePolicy": {
