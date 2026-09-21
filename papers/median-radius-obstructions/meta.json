@@ -1,0 +1,239 @@
+{
+  "slug": "median-radius-obstructions",
+  "title": "Superexponential strict-improvement distances in median graphs",
+  "shortTitle": "When a better graph center is far away",
+  "oneLine": "Integer separation forces very long strictly improving moves, even in median graphs.",
+  "abstract": "This unrefereed candidate realizes minimum integer separation norm exactly as the distance to a strict radius improvement on a grid, then transfers the construction to ordinary eccentricity without increasing cube dimension. An explicit Fibonacci family disproves dimension-linear locality. An attributed Alon\u2013V\u0169 theorem gives a superexponential lower bound in every sufficiently large dimension, with a matching leading logarithmic exponent for corner profiles. This is not an algorithmic running-time lower bound.",
+  "datePublished": "2026-09-21",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22878369",
+  "conceptDoi": "10.5281/zenodo.22878368",
+  "zenodoUrl": "https://zenodo.org/records/22878369",
+  "pdfUrl": "https://github.com/ipitchford/median-radius-obstructions/releases/download/v0.1.0-candidate/median-radius-obstructions-v0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22878369/files/median-radius-obstructions-v0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/median-radius-obstructions",
+  "releaseUrl": "https://github.com/ipitchford/median-radius-obstructions/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/median-radius-obstructions.mp3",
+      "name": "Audio briefing",
+      "description": "AI-generated communication, not additional mathematical evidence."
+    }
+  ],
+  "keywords": [
+    "median graphs",
+    "eccentricity",
+    "local unimodality",
+    "threshold weights",
+    "integer separation"
+  ],
+  "problem": {
+    "name": "Ducoffe, Radius functions in median graphs, Open Problem 2",
+    "url": "https://ems.press/content/serial-article-files/53603"
+  },
+  "keyResults": [
+    "Exact Fibonacci first-improvement distance 2F_d \u2212 1 in every odd dimension d \u2265 3.",
+    "Dimension-preserving transfer from integer separation to ordinary graph eccentricity.",
+    "All-dimensions superexponential lower bound using Alon\u2013V\u0169.",
+    "Matching leading logarithmic exponent for binary corner profiles on grids."
+  ],
+  "evidence": "Written proofs; standard-library exact checker; normal and optimized producer replay; three semantic negative controls; internal editorial reports and complete manifest.",
+  "statusDetail": "Unrefereed candidate. No authenticated external peer review, formal verification, historical priority, or algorithmic running-time lower bound is established.",
+  "openProblems": [
+    "Determine upper locality bounds for ordinary eccentricity on all finite median graphs.",
+    "Understand what plateau moves permit and their dependence on dimension.",
+    "Find smaller graphs realizing large strict-improvement distances."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Ducoffe (2026), Radius functions in median graphs: source Open Problem 2, p. 506.",
+      "url": "https://ems.press/content/serial-article-files/53603"
+    },
+    {
+      "citation": "Alon and V\u0169 (1997), Anti-Hadamard matrices, coin weighing, threshold gates, and indecomposable hypergraphs: external large-weight theorem.",
+      "url": "https://doi.org/10.1006/jcta.1997.2780"
+    },
+    {
+      "citation": "Berg\u00e9, Ducoffe and Habib (2025), Quasilinear-time eccentricities computation, and more, on median graphs.",
+      "url": "https://arxiv.org/abs/2410.10235"
+    },
+    {
+      "citation": "Chalopin et al. (2025), On G^p-unimodality of radius functions in graphs.",
+      "url": "https://arxiv.org/abs/2503.15011"
+    }
+  ],
+  "citeText": "Anonymous. (2026). Superexponential strict-improvement distances in median graphs (Version 0.1.0-candidate) [Unrefereed candidate]. Evidence Press. https://doi.org/10.5281/zenodo.22878369",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Source repairs and internal assessment are distinct from subsequent operational publication and public readback.",
+  "narration": "Suppose you are looking for a central point in a network: a vertex whose greatest distance to any other vertex is as small as possible. A natural approach is to look nearby for a better choice. How far must you look before the absence of a strict improvement tells you that you have found a center? This candidate studies median graphs, a structured family that includes rectangular grids. It shows that cube dimension alone does not provide the proposed linear search radius. An explicit family requires a move whose length grows like a Fibonacci number before eccentricity strictly decreases. The construction connects two mathematical objects: integer solutions of separation inequalities, and distances from selected corners of a grid. Adding paths at those corners converts the example into ordinary, unweighted graph eccentricity. Combining this transfer with an established theorem of Alon and Vu gives a stronger, superexponential obstruction in every sufficiently large dimension. A complementary bound identifies the leading logarithmic scale for the restricted corner-profile model. The distinction is strict improvement. Equal-value moves can sometimes lead to a later decrease, and the result does not prove that every center-finding algorithm is slow. The evidence package contains the complete written proof, source code and exact finite checks, including a fifty-one-vertex example. Those checks do not establish the infinite-family theorems or historical priority. This is an unrefereed Evidence Press candidate dated September twenty-first, twenty twenty-six. The paper and evidence are linked on the release page. This is an AI-generated voice summary, not additional evidence.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex under user direction",
+      "Python exact integer arithmetic",
+      "Pandoc and Tectonic"
+    ],
+    "humanRole": "Research direction, supplied reviews and explicit publication authority; scholarly creator Anonymous.",
+    "disclosure": "User-supplied review actioned; internal model role reports do not establish external validation."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22878369",
+      "note": "Public GitHub and Zenodo archive, PDF and checksum files downloaded independently and matched to local SHA-256 ledger."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/median-radius-obstructions/blob/v0.1.0-candidate/verification.json",
+      "note": "Exact finite examples, graph medians and three corrupted-input controls; normal and optimized Python. General conclusions use written proofs."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/median-radius-obstructions/blob/v0.1.0-candidate/README.md",
+      "note": "Standard-library Python; PDF rebuild is not hermetic."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Internal model reports and supplied evidence do not establish this external assurance dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Internal model reports and supplied evidence do not establish this external assurance dimension."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Internal model reports and supplied evidence do not establish this external assurance dimension."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal model reports and supplied evidence do not establish this external assurance dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Internal model reports and supplied evidence do not establish this external assurance dimension."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:median-radius-obstructions",
+    "attemptIds": [
+      "ep-attempt:median-radius-obstructions-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [],
+    "accelerationPrimitives": [
+      "certificate-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Exact sign-separation transfer and strict-improvement obstruction family.",
+      "scope": "Dimension-linear radius unimodality question; corner-profile upper bound is restricted."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Corner distances are dN minus signed dot products; strict improvement is equivalent to integer strict separation. Pendant paths preserve cube dimension.",
+      "remainingRisks": [
+        "Written proof and external threshold theorem require mathematical judgment.",
+        "Plateau-permitting algorithms are outside the obstruction.",
+        "Priority remains unestablished."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Assess the source-to-claim correspondence and written proof.",
+      "Preserve rights, status and priority boundaries.",
+      "Publication is authorised; external review is a separate dimension."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Inspect and independently reproduce the bounded result; explore extensions separately. External review is not a publication prerequisite.",
+      "claimCeiling": "Unrefereed candidate. No authenticated external peer review, formal verification, historical priority, or algorithmic running-time lower bound is established."
+    },
+    "impactClaims": [
+      {
+        "id": "median-radius-obstructions-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable locality counterexample and exact graph transfer",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "schemaVersion": "1.0",
+      "reviewId": "median-internal-editorial-v1",
+      "reviewClass": "editorial-assessment",
+      "status": "published",
+      "subject": {
+        "canonicalUrl": "https://evidencepress.org/releases/median-radius-obstructions/",
+        "doi": "10.5281/zenodo.22878369",
+        "version": "0.1.0-candidate",
+        "releaseTag": "v0.1.0-candidate",
+        "title": "Superexponential strict-improvement distances in median graphs"
+      },
+      "reviewer": {
+        "name": "Five internal model reviewer roles",
+        "independence": "producer-coordinated"
+      },
+      "assessment": {
+        "title": "Internal five-role editorial assessment",
+        "date": "2026-09-21",
+        "recommendation": "Accept"
+      },
+      "assuranceImpact": {
+        "changesVerificationStatus": false,
+        "changesPeerReviewedFlag": false,
+        "changesIndependentReproductionFlag": false,
+        "changesFormalVerificationFlag": false,
+        "explanation": "Internal model-mediated review does not establish external review or formal proof."
+      },
+      "publication": {
+        "publicUrl": "https://github.com/ipitchford/median-radius-obstructions/blob/v0.1.0-candidate/reviews/EDITORIAL_DECISION.md",
+        "publicSummary": "All five internal roles recommended acceptance of the same frozen submission. No required repairs; priority, external assurance and general algorithmic lower bounds remain unestablished."
+      }
+    }
+  ]
+}

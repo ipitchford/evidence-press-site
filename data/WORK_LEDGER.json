@@ -15677,6 +15677,188 @@
           "summary": "Recorded first canonical publication and scoped lower-bound operational metrics; frozen forecast and scientific assessment date retained."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:median-radius-obstructions-publication",
+      "workId": "ep-work:median-radius-obstructions",
+      "cohort": "prospective",
+      "registeredAt": "2026-09-21T15:21:19Z",
+      "status": "release-candidate",
+      "statusAt": "2026-09-21T15:34:45Z",
+      "resultClass": "positive",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the revised median-radius candidate complete the remaining internal editorial and full public release gates?",
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "publication-only",
+        "scopeBoundary": "Remaining publication only from registration. Discovery, supplied review, source comparison, manuscript revisions and initial checker runs precede registration and are left-censored; no discovery clock is reconstructed.",
+        "forecast": {
+          "frozenAt": "2026-09-21T15:21:19Z",
+          "procedureClass": "reviewed-mathematics-publication",
+          "targetOutcome": "Internal editorial approval, immutable GitHub and Zenodo candidate assets, and complete Evidence Press page/media/canonical readback.",
+          "expectedActiveMinutes": 150,
+          "plausibleLowMinutes": 90,
+          "plausibleHighMinutes": 240,
+          "expectedUnattendedWaitMinutes": 20,
+          "referenceClass": {
+            "label": "Reviewed exact mathematics release",
+            "sampleSize": 0,
+            "basis": "Procedural prior; no measured speed comparison."
+          },
+          "fermiComponents": [
+            {
+              "component": "Source repairs and internal editorial gate",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Established publication route; not an empirical speed comparison."
+            },
+            {
+              "component": "Immutable archives and communication assets",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Established publication route; not an empirical speed comparison."
+            },
+            {
+              "component": "Composite CI and two deployment cycles",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Established publication route; not an empirical speed comparison."
+            }
+          ],
+          "probabilityPositiveSignal": 0.95,
+          "probabilityTargetClosure": 0.85,
+          "probabilityHorizonMinutes": 240,
+          "assumptions": [
+            "No fatal integrity defect.",
+            "Providers available."
+          ],
+          "reforecastTriggers": [
+            "Provider outage or integrity failure."
+          ],
+          "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
+        },
+        "outcome": null
+      },
+      "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
+      "taskClass": "assurance-and-full-candidate-publication",
+      "decisionObjectTarget": "Strict-improvement counterexample family and exact sign-system transfer.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Remaining publication only from registration. Discovery, supplied review, source comparison, manuscript revisions and initial checker runs precede registration and are left-censored; no discovery clock is reconstructed.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-21T15:21:19Z",
+            "basis": "Remaining publication only from registration. Discovery, supplied review, source comparison, manuscript revisions and initial checker runs precede registration and are left-censored; no discovery clock is reconstructed."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 6,
+        "reworkMinutes": null,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-09-21T15:34:45Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/22878369"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/median-radius-obstructions/blob/v0.1.0-candidate/verification.json"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/median-radius-obstructions/blob/v0.1.0-candidate/README.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate. No authenticated external peer review, formal verification, historical priority, or algorithmic running-time lower bound is established.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/median-radius-obstructions/blob/v0.1.0-candidate/ASSURANCE.md",
+          "https://github.com/ipitchford/median-radius-obstructions/blob/v0.1.0-candidate/reviews/EDITORIAL_DECISION.md"
+        ],
+        "missingnessReason": "External assurance and priority remain unestablished; site deployment is pending."
+      },
+      "releaseSlug": "median-radius-obstructions",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-09-21T15:21:19Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Remaining publication only from registration. Discovery, supplied review, source comparison, manuscript revisions and initial checker runs precede registration and are left-censored; no discovery clock is reconstructed.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-21T15:34:45Z",
+          "status": "release-candidate",
+          "resultClass": "positive",
+          "reason": "Five internal roles accepted; immutable GitHub and Zenodo assets published with exact public parity. Website deployment pending.",
+          "evidenceRefs": [
+            "https://zenodo.org/records/22878369"
+          ]
+        }
+      ],
+      "revisions": [
+        {
+          "date": "2026-09-21",
+          "summary": "Remaining publication only from registration. Discovery, supplied review, source comparison, manuscript revisions and initial checker runs precede registration and are left-censored; no discovery clock is reconstructed."
+        }
+      ],
+      "corrections": []
     }
   ],
   "updatePolicy": {

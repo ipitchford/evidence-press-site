@@ -2133,6 +2133,23 @@ art['tcell-exactly-five'] = (a,b) => {
   return s;
 };
 palette['tcell-exactly-five'] = ['#79d6c3','#e9be78'];
+art['median-radius-obstructions'] = (a,b) => {
+ let s='';
+ const pt=(i,j)=>[250+95*i+35*j,280-55*j];
+ for(let i=0;i<7;i++) for(let j=0;j<4;j++) {
+  const [x,y]=pt(i,j);
+  if(i<6){const [xx,yy]=pt(i+1,j);s+=`<path d="M${x} ${y} L${xx} ${yy}" stroke="${a}" stroke-width="2" opacity=".65"/>`;}
+  if(j<3){const [xx,yy]=pt(i,j+1);s+=`<path d="M${x} ${y} L${xx} ${yy}" stroke="${a}" stroke-width="2" opacity=".65"/>`;}
+  s+=`<circle cx="${x}" cy="${y}" r="4" fill="${a}"/>`;
+ }
+ for(const [i,j,dx,dy] of [[0,0,-30,9],[0,3,-28,-12],[6,0,30,9],[6,3,25,-12]]) {
+  const [x,y]=pt(i,j);
+  for(let k=1;k<=5;k++)s+=`<path d="M${x+(k-1)*dx} ${y+(k-1)*dy} L${x+k*dx} ${y+k*dy}" stroke="${b}" stroke-width="3"/><circle cx="${x+k*dx}" cy="${y+k*dy}" r="5" fill="${b}"/>`;
+ }
+ const [x,y]=pt(3,1);s+=`<circle cx="${x}" cy="${y}" r="12" fill="#f5f1e8"/>`;
+ return s;
+};
+palette['median-radius-obstructions']=['#79d6c3','#e9be78'];
 const requested = new Set(process.argv.slice(2));
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
