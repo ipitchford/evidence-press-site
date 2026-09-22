@@ -1,0 +1,60 @@
+IDENTITY: all 75 labelled edges and all 20 ordered signed clauses match EP v4.0.0-rc1
+ENVIRONMENT: 3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)] macOS-26.6.2-arm64-arm-64bit-Mach-O
+COMMAND: python3 /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/source/anc/verify_structure.py /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/source/anc/counterexample.json
+STRUCTURE VERIFIED
+connected cubic graph: n=50, m=75
+15 pair edges form a maximal matching
+16-vertex dominating witness verified
+edge-domination lower bound: ceil(75/5)=15 in every cubic graph
+therefore gamma_e(G)=15 and gamma(G)<=16
+COMMAND: python3 /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/source/anc/check_dom15_certificate.py /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/ep.edgelist /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/source/anc/dom15.tree
+CERTIFICATE VERIFIED
+graph: connected cubic, n=50, m=75
+no dominating set of size <= 15
+nodes=893049 branches=223262 leaves=669787 maxdepth=15
+COMMAND: python3 -O /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/source/anc/check_dom15_certificate.py /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/ep.edgelist /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/source/anc/dom15.tree
+CERTIFICATE VERIFIED
+graph: connected cubic, n=50, m=75
+no dominating set of size <= 15
+nodes=893049 branches=223262 leaves=669787 maxdepth=15
+COMMAND: python3 /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/source/anc/check_dom15_certificate.py /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/ep.edgelist /var/folders/zw/csz72k695vl0vzqj_fpgn8kr0000gn/T/tmpc2vxy6g_/truncated
+truncated certificate
+COMMAND: python3 /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/source/anc/check_dom15_certificate.py /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/ep.edgelist /var/folders/zw/csz72k695vl0vzqj_fpgn8kr0000gn/T/tmpc2vxy6g_/trailing
+trailing certificate bytes: 1
+COMMAND: python3 /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/source/anc/check_dom15_certificate.py /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/ep.edgelist /var/folders/zw/csz72k695vl0vzqj_fpgn8kr0000gn/T/tmpc2vxy6g_/bad-magic
+bad certificate magic
+COMMAND: python3 /Users/admin/Documents/Codex/2026-07-26/th/txgraffiti-followup-20260922/source/anc/paper_audit.py
+ t   C(20,t)   min L   residual   min exact total
+ 0         1      15          1                16
+ 1        20      16          0                 -
+ 2       190      16          0                 -
+ 3      1140      15          7                16
+ 4      4845      14         40                16
+ 5     15504      14        211                16
+ 6     38760      14        938                16
+ 7     77520      14       2189                16
+ 8    125970      15       1917                16
+ 9    167960      15        590                16
+10    184756      15         38                16
+11    167960      16          0                 -
+12    125970      16          0                 -
+13     77520      17          0                 -
+14     38760      17          0                 -
+15     15504      18          0                 -
+16      4845      18          0                 -
+17      1140      19          0                 -
+18       190      19          0                 -
+19        20      20          0                 -
+20         1      20          0                 -
+VERIFIED: every dominating set has size at least 16
+SHA256:
+ec6cd8abe893d0529ee0f8b5e3a382ea3d2f09cfd41262368562327f9910541d arxiv-source.tar
+63363b5e9c8bdd119418024fe80da7bba36f71119f6e89778519d3fbd8a916b2 ep.edgelist
+1753ad874d1b09f101f06e91f7a53cfc27026fb4c1166bf7bd16269dae7fbd0f ep.json
+502b159cc2a196c50904022bcfbe296cfb3bd0a292706f49b712b828c2a5d13b source/anc/counterexample.json
+9831484783d987253e310560412515a26bcfa16ed6852a8de6a684ff0f747375 source/anc/check_dom15_certificate.py
+ae158cc959c865c3566202ef644a83bf4498dba0154cb38896b459c99e8c7be6 source/anc/verify_structure.py
+2ec9b644be44904eb81f570ddbafa684ce16460e8cb44358cf026304797bca03 source/anc/paper_audit.py
+c10df15cff4f12f70c4937895656308a9080a4b3bf05fcd1c44b8d2e2a830639 source/anc/dom15.tree
+ec4fbfd2b43a8cf3e865a2ddef4217d8bb782f95cbfa87302ae79db835b86d92 replay.py
+PASS: EP local replay only; no formal or unaffiliated exact-release verification claimed.
