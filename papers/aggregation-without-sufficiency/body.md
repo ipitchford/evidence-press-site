@@ -10,6 +10,12 @@ The unifying diagnostic is simple. Name the underlying state, the reported aggre
 
 The proposed repair is an **aggregation licence**: a bounded, versioned and revocable statement that one compression is adequate for one target, population, intervention family, loss and time horizon. It tells readers what the aggregate may support, what additional state is needed, and which changes make the permission expire.
 
+## Subsequent related work
+
+**22 September 2026.** [Quentin Thommen's September preprint](https://arxiv.org/abs/2609.17031v1) gives a complementary example: even the full dynamics at one environmental condition need not identify the response to changing it. The missing information is which reaction channels depend on the environment, not a detail discarded by compressing trajectories. This broadens the illustrations, rather than strengthening the elementary factorisation theorem below.
+
+Our shared [exact identification benchmark](/assets/benchmarks/single-condition-response-2026-09-22/README.md) implements the attributed birth–death pair. At $u=1$ the models have the same generator, but their stationary means have environmental elasticities 1 and 0. It includes a repeated-condition negative control and a second-condition positive control, with fixed parameters and explicit chemical assumptions. Local algebraic tests pass; this is not empirical validation of the aggregation licence or a change to this release's archived assurance.
+
 ## The central claim or finding
 
 The central claim answers one question: can the desired answer be computed from the aggregate alone? Let $x\in\mathcal X$ be an admissible microstate, $A(x)\in\mathcal Z$ a reported aggregate and $T(x)\in\mathcal Y$ the target. An exact set-theoretic rule $g:A(\mathcal X)\to\mathcal Y$ on the reached image satisfying

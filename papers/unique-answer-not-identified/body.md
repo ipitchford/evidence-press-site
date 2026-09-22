@@ -8,6 +8,12 @@ The practical output is a **Selector Ledger**. It asks analysts to record what t
 
 > **Candidate status:** anonymous author(s) · unrefereed candidate · producer-side checks passed · no unaffiliated rerun, independent reimplementation, formal verification, external field-specialist review or editorial peer review.
 
+## Subsequent related work
+
+**22 September 2026.** [Quentin Thommen's September preprint](https://arxiv.org/abs/2609.17031v1) supplies an exact reaction-network example of the distinction made here. Two models have identical internal-state path laws at one environmental condition, yet different stationary responses to changing that condition. Choosing which reaction channel depends on the environment therefore selects a response that the reference-condition data alone do not identify.
+
+The shared [exact identification benchmark](/assets/benchmarks/single-condition-response-2026-09-22/README.md) records that choice explicitly and tests a discriminating second condition. It separates fixed parameters from condition-specific refitting, and exact observations from finite noisy samples. The local algebraic checks support this attributed example, not empirical effectiveness of the Selector Ledger, formal verification of the preprint, or an upgrade of this release's original assurance.
+
 ## The central claim or finding
 
 Let \(\theta\) denote a structural state and let \(P_\theta\) be the distribution of observations under a fixed model and observation regime. Full-parameter identification requires the forward map

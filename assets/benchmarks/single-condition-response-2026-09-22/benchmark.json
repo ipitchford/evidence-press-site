@@ -1,0 +1,34 @@
+{
+  "id": "ep-benchmark:single-condition-response:2026-09-22",
+  "type": "attributed-exact-identification-teaching-benchmark",
+  "sourceAuthor": "Quentin Thommen",
+  "sourceVersion": "2609.17031v1",
+  "sourceUrl": "https://arxiv.org/abs/2609.17031v1",
+  "sourceLocation": "Sections III-V, especially equations 14-21",
+  "referenceCondition": 1,
+  "environment": "positive dimensionless chemostat concentration u, normalized by its reference value",
+  "parameterPolicy": "fixed-across-conditions",
+  "parameters": "k > 0, gamma > 0",
+  "stateSpace": "nonnegative integer count Y; nonexplosive immigration-death processes",
+  "observation": "exact generator at u=1, or full internal-state path law with the same initial distribution; no independent chemical-channel information",
+  "models": {
+    "A": {"birth": "k*u", "death": "gamma*y", "stationaryMean": "k*u/gamma", "environmentalChannelPowers": [1, 0]},
+    "B": {"birth": "k*u", "death": "gamma*u*y", "stationaryMean": "k/gamma", "environmentalChannelPowers": [1, 1]}
+  },
+  "target": "d log(stationary mean) / d log(u)",
+  "elasticities": {"A": 1, "B": 0},
+  "negativeControl": "repeat observations at u=1; identical path laws persist",
+  "positiveControl": "exact second-condition observation at u>0, u!=1 separates this fixed-parameter pair",
+  "assumptionFailureControl": "allow gamma_B(u)=gamma/u by condition-specific refitting; generator equality can be restored",
+  "scopeLimits": [
+    "Not identification over every possible environmental embedding",
+    "Finite noisy samples need a separate statistical discrimination analysis",
+    "Constant stationary mean is not evidence of a feedback-control architecture",
+    "No empirical validation of either EP reporting protocol",
+    "No replay of the paper's separate linear-noise claims",
+    "No change to the original release DOI or assurance vector"
+  ],
+  "relatedReleases": ["aggregation-without-sufficiency", "unique-answer-not-identified"],
+  "assessment": "EP local algebraic implementation and tests; not formal verification or unaffiliated reproduction",
+  "licences": {"originalProseAndMetadata": "CC0-1.0", "originalCode": "MIT", "citedPaper": "upstream terms; not redistributed"}
+}
