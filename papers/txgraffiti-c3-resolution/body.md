@@ -14,6 +14,12 @@ The package also develops an exact identity for a class of formula-incidence gra
 
 ## Subsequent unrefereed work
 
+**22 September 2026 — ordinary domination follow-up.** [Koyar Afrasyab's 9 September preprint](https://arxiv.org/abs/2609.10783v1) claims the stronger result $\gamma(G)=16>15=\gamma_e(G)$ for the same labelled 50-vertex graph. Here $\gamma$ is ordinary domination, whereas this release concerns independent domination $i$. Since $\gamma(G)\leq i(G)$, the original $i(G)=16$ certificate did not establish the stronger lower bound.
+
+Evidence Press has now matched all 75 labelled edges and 20 ordered clauses to the original tagged graph and locally replayed Afrasyab's ordinary-domination proof tree and exact enumeration. Both pass. The [dated replay receipt, commands and hashes](/assets/replays/txgraffiti-ordinary-domination-2026-09-22/receipt.md) record the scope and packaging adaptations. This supports the attributed stronger result at the level of **EP local replay**, not formal verification, peer review or an unaffiliated rerun of the original release. Its DOI, claims and assurance record remain unchanged.
+
+The preprint's separate order-50 minimality argument uses [Gupta's Proposition 7](https://arxiv.org/html/2608.22498v1#S6), which in turn imports the [Zhang–Peitl–Szeider 20-clause classification](https://doi.org/10.4230/LIPIcs.SAT.2024.31). We checked that dependency and its stated scope, but did not rerun the classification. This is minimality for the **ordinary-domination** inequality, not the independent-domination inequality: the latter already has a separate [48-vertex EP candidate](/releases/txgraffiti-order48-successor/). These are subsequent results, not corrections to the archived 50-vertex release.
+
 A separate [Evidence Press child release](https://evidencepress.org/releases/bilateral-deficiency-regular-dim/) develops bilateral deficiency into a broader residual-SAT and regular-DIM theory; its immutable archive is [doi:10.5281/zenodo.21857209](https://doi.org/10.5281/zenodo.21857209). It is subsequent unrefereed work, not a correction to this release, and it does not alter or strengthen this release's recorded claims or assurance state.
 
 ## Summary for specialists
