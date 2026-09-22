@@ -15946,8 +15946,8 @@
       "workId": "ep-work:wishart-reachable-noise",
       "cohort": "prospective",
       "registeredAt": "2026-09-22T07:07:24Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-22T07:30:51Z",
+      "status": "published",
+      "statusAt": "2026-09-22T07:49:30Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -16008,7 +16008,59 @@
           ],
           "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-22T07:49:30Z",
+          "calendarElapsedMinutes": 42,
+          "activeAgentMinutes": 36,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 6,
+          "blockedMinutes": 0,
+          "reworkMinutes": 0,
+          "agentRuns": 6,
+          "maxParallelAgents": 4,
+          "modelTurns": 6,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 3,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Review actioned; five internal roles accepted; immutable GitHub/Zenodo public asset parity and canonical website/media readback passed. Preservation-ledger final cycle remains a publication-maintenance step.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -74,
+          "forecastRatio": 0.3273,
+          "withinForecastInterval": false,
+          "varianceReason": "Prospective root attended-work stopwatch from registration through first canonical readback, with explicitly logged passive waits excluded. Parallel reviewer effort is not aggregated, human effort and fork-aware token totals are unavailable. Discovery and pre-registration intake are excluded. Mandatory preservation-ledger closeout continues after this public-availability endpoint. No speed or impact comparison. Model turns are a lower bound of six distinct root/reviewer invocations, not per-sampling counts. Rework was not separately timed; ordinary packaging/schema repairs are included in active time. The schema-required numeric rework value is a zero lower bound for separately timed rework intervals, not an estimate that packaging repairs took no time; the intake unknown is preserved by the exact correction receipt.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No separately instrumented total; ordinary validation excluded."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Fork-aware runtime counter unavailable."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Runtime token/cache accounting unavailable."
+            }
+          ]
+        }
       },
       "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -16028,6 +16080,11 @@
             "event": "work-opened",
             "at": "2026-09-22T07:07:24Z",
             "basis": "Prospective assurance-through-publication from this registration: minor exposition revisions, five-role internal editorial gate, archive and site publication. Discovery, earlier reviews and initial intake replay are left-censored. Root attended-work stopwatch excludes explicitly logged waits; subagent effort is not aggregated. No acceleration comparison."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-22T07:49:30Z",
+            "basis": "First canonical publication readback after guarded production deployment."
           }
         ],
         "activeHumanMinutes": null,
@@ -16035,7 +16092,7 @@
         "computeCost": null,
         "agentRuns": 6,
         "reworkMinutes": null,
-        "correctionCount": 0
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -16113,15 +16170,39 @@
           "evidenceRefs": [
             "https://zenodo.org/records/22892681"
           ]
+        },
+        {
+          "at": "2026-09-22T07:49:30Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "All research assets and the first guarded canonical website deployment passed exact public readback. The mandatory preservation-ledger reseal follows.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/wishart-reachable-noise/",
+            "https://zenodo.org/records/22892681"
+          ]
         }
       ],
       "revisions": [
         {
           "date": "2026-09-22",
           "summary": "Prospective assurance-through-publication from this registration: minor exposition revisions, five-role internal editorial gate, archive and site publication. Discovery, earlier reviews and initial intake replay are left-censored. Root attended-work stopwatch excludes explicitly logged waits; subagent effort is not aggregated. No acceleration comparison."
+        },
+        {
+          "date": "2026-09-22",
+          "summary": "Recorded first canonical availability and prospectively instrumented root effort with explicit unmeasured reviewer/human/token components; frozen forecast and research-assurance timestamp retained."
         }
       ],
-      "corrections": []
+      "corrections": [
+        {
+          "at": "2026-09-22T07:51:10Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "Total rework was not separately instrumented; it is included in root active work. The terminal schema requires a number, so zero denotes only the lower bound of separately timed rework intervals, not zero actual repair effort.",
+          "replacement": "Preserve the intake null and retain the explicitly limited terminal lower bound; do not use it as a total rework estimate.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/295"
+          ]
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -16618,6 +16699,10 @@
     {
       "date": "2026-09-22",
       "summary": "Registered and advanced the prospective Wishart assurance-through-publication attempt; discovery and pre-registration intake remain excluded, with no acceleration or impact inference."
+    },
+    {
+      "date": "2026-09-22",
+      "summary": "Recorded canonical Wishart publication and scoped root-work timing through first public readback, preserving frozen forecast and explicit missingness for external assurance, reviewer effort aggregation and rework."
     }
   ]
 }
