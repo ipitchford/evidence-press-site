@@ -2150,6 +2150,17 @@ art['median-radius-obstructions'] = (a,b) => {
  return s;
 };
 palette['median-radius-obstructions']=['#79d6c3','#e9be78'];
+// Evolving reachable directions: schematic, not sampled process data.
+art['wishart-reachable-noise'] = (a,b) => {
+ let s='';
+ for(let i=0;i<15;i++) {
+  const t=i/14, x=160+870*t, y=295-195*t, rx=16+115*t, ry=6+56*t;
+  s+=`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${-35+65*t} ${x} ${y})" fill="none" stroke="${i%3===0?b:a}" stroke-width="${i%3===0?3:1.5}" opacity="${.35+.55*t}"/>`;
+ }
+ s+=`<path d="M160 295 C370 265 560 215 1030 100" fill="none" stroke="${b}" stroke-width="3"/><circle cx="160" cy="295" r="8" fill="${b}"/>`;
+ return s;
+};
+palette['wishart-reachable-noise']=['#8dcde0','#efc685'];
 const requested = new Set(process.argv.slice(2));
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);

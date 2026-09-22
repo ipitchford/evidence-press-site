@@ -684,6 +684,14 @@ const SPECS = {
   }
 };
 
+SPECS['wishart-reachable-noise'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 22 SEPTEMBER 2026','STOCHASTIC ANALYSIS · V0.1.0'],
+ head:['Where noise','<em>can reach</em>'], headSize:76,
+ sub:'A candidate existence classification for operator-valued Wishart covariance processes.',
+ tag:'WRITTEN PROOF · FINITE CHECKS · UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">the dimension that matters</div><div class="eq eq-sm">Noise + drift<br><span class="hl">Reachable space</span></div><div class="note">One input direction can reach <b>infinitely many</b> directions. Initial covariance and Gaussian continuity also constrain existence.</div><div class="eq-foot">Candidate classification · external review unestablished</div>'
+};
+
 const escapeHtml = value => String(value == null ? '' : value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
