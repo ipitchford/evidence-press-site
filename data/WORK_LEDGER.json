@@ -16209,8 +16209,8 @@
       "workId": "ep-work:catenary-placement-classification",
       "cohort": "prospective",
       "registeredAt": "2026-09-23T04:27:21Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-23T05:08:04Z",
+      "status": "published",
+      "statusAt": "2026-09-23T05:23:57Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -16271,7 +16271,59 @@
           ],
           "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-23T05:23:57Z",
+          "calendarElapsedMinutes": 57,
+          "activeAgentMinutes": 54,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 2,
+          "blockedMinutes": 0.0,
+          "reworkMinutes": 0,
+          "agentRuns": 5,
+          "maxParallelAgents": 4,
+          "modelTurns": 5,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 4,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Review actioned; five internal roles completed and the editor accepted after minor repairs; immutable GitHub/Zenodo public asset parity and canonical website/media readback passed. Preservation-ledger final cycle remains a publication-maintenance step.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -126,
+          "forecastRatio": 0.3,
+          "withinForecastInterval": false,
+          "varianceReason": "Prospective root attended-work stopwatch from registration through first canonical readback, with explicitly logged passive waits excluded. Parallel reviewer effort is not aggregated, human effort and fork-aware token totals are unavailable. Discovery and pre-registration intake are excluded. Mandatory preservation-ledger closeout continues after this public-availability endpoint. No speed or impact comparison. Model turns are a lower bound of five distinct root/reviewer invocations, not per-sampling counts. ReworkMinutes=0 counts separately logged rework intervals (none were recorded), not an estimate of total repair effort; ordinary packaging/schema repairs are included in active time.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No separately instrumented total; ordinary validation excluded."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Fork-aware runtime counter unavailable."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Runtime token/cache accounting unavailable."
+            }
+          ]
+        }
       },
       "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -16285,12 +16337,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Prospective assurance-through-publication from this registration: action supplied reviews, typeset a self-contained article, internal editorial gate, immutable archive, Evidence Press media and canonical readback. Discovery, earlier proof/review work and initial intake are left-censored. Root attended-work stopwatch excludes explicitly logged waits; reviewer effort is not aggregated. No acceleration comparison.",
+        "missingnessReason": "Prospective assurance-through-publication from this registration: action supplied reviews, typeset a self-contained article, internal editorial gate, immutable archive, Evidence Press media and canonical readback. Discovery, earlier proof/review work and initial intake are left-censored. Root attended-work stopwatch excludes explicitly logged waits; reviewer effort is not aggregated. No acceleration comparison. ReworkMinutes counts separately logged rework intervals only; zero does not mean no repair effort.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-23T04:27:21Z",
             "basis": "Prospective assurance-through-publication from this registration: action supplied reviews, typeset a self-contained article, internal editorial gate, immutable archive, Evidence Press media and canonical readback. Discovery, earlier proof/review work and initial intake are left-censored. Root attended-work stopwatch excludes explicitly logged waits; reviewer effort is not aggregated. No acceleration comparison."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-23T05:23:57Z",
+            "basis": "First canonical publication readback after guarded production deployment."
           }
         ],
         "activeHumanMinutes": null,
@@ -16376,12 +16433,26 @@
           "evidenceRefs": [
             "https://zenodo.org/records/22909460"
           ]
+        },
+        {
+          "at": "2026-09-23T05:23:57Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "All research assets and the first guarded canonical website deployment passed exact public readback. The mandatory preservation-ledger reseal follows.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/catenary-placement-classification/",
+            "https://zenodo.org/records/22909460"
+          ]
         }
       ],
       "revisions": [
         {
           "date": "2026-09-23",
           "summary": "Prospective assurance-through-publication from this registration: action supplied reviews, typeset a self-contained article, internal editorial gate, immutable archive, Evidence Press media and canonical readback. Discovery, earlier proof/review work and initial intake are left-censored. Root attended-work stopwatch excludes explicitly logged waits; reviewer effort is not aggregated. No acceleration comparison."
+        },
+        {
+          "date": "2026-09-23",
+          "summary": "Recorded first canonical availability and prospectively instrumented root effort with explicit unmeasured reviewer/human/token components; frozen forecast and research-assurance timestamp retained."
         }
       ],
       "corrections": []
@@ -16889,6 +16960,10 @@
     {
       "date": "2026-09-23",
       "summary": "Registered the catenary publication attempt with a prospective time forecast and measured research-assurance endpoint; public deployment and terminal work measurements remain pending."
+    },
+    {
+      "date": "2026-09-23",
+      "summary": "Recorded canonical catenary publication and scoped prospective root-work timing through first public readback; retained frozen forecast and missing reviewer, human and token effort."
     }
   ]
 }
