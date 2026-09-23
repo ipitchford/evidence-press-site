@@ -692,6 +692,14 @@ SPECS['wishart-reachable-noise'] = {
  hero:'<div class="eq-label">the dimension that matters</div><div class="eq eq-sm">Noise + drift<br><span class="hl">Reachable space</span></div><div class="note">One input direction can reach <b>infinitely many</b> directions. Initial covariance and Gaussian continuity also constrain existence.</div><div class="eq-foot">Candidate classification · external review unestablished</div>'
 };
 
+SPECS['catenary-placement-classification'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 23 SEPTEMBER 2026','STRUCTURAL IDENTIFIABILITY · V0.1.0'],
+ head:['Where to put','<em>the sensors</em>'], headSize:76,
+ sub:'A candidate placement rule for inputs, observations and leaks in compartment chains.',
+ tag:'WRITTEN PROOF · FINITE CHECKS · UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">the structural question</div><div class="eq eq-sm">Known placement<br><span class="hl">Distinguishable rates?</span></div><div class="note">All chain lengths. Arbitrary prescribed ports and leaks. <b>Local</b> identifiability with ideal transfer data.</div><div class="eq-foot">Finite ambiguity allowed · external review unestablished</div>'
+};
+
 const escapeHtml = value => String(value == null ? '' : value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');

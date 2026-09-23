@@ -2161,6 +2161,18 @@ art['wishart-reachable-noise'] = (a,b) => {
  return s;
 };
 palette['wishart-reachable-noise']=['#8dcde0','#efc685'];
+// Seven-compartment obstruction: input 1, outputs 5/6/7, leak 7.
+art['catenary-placement-classification'] = (a,b) => {
+ let s=''; const xs=[150,300,450,600,750,900,1050], y=205;
+ for(let i=0;i<6;i++) { const l=xs[i]+30,r=xs[i+1]-30;
+  s+=`<path d="M${l} ${y-10} H${r} l-10 -7 M${r} ${y+10} H${l} l10 7" fill="none" stroke="${a}" stroke-width="3"/>`; }
+ for(let i=0;i<7;i++) s+=`<circle cx="${xs[i]}" cy="${y}" r="27" fill="${i>=4?b:'none'}" fill-opacity="${i>=4?.32:0}" stroke="${i>=4?b:a}" stroke-width="3"/>`;
+ s+=`<path d="M150 92 V165 l-9 -12 M150 165 l9 -12" fill="none" stroke="${b}" stroke-width="4"/>`;
+ for(const x of xs.slice(4)) s+=`<path d="M${x} 250 V294" stroke="${b}" stroke-width="3"/><circle cx="${x}" cy="307" r="10" fill="none" stroke="${b}" stroke-width="3"/>`;
+ s+=`<path d="M1078 186 L1130 125 l-13 3 M1130 125 l-2 13" fill="none" stroke="${b}" stroke-width="3"/>`;
+ return s;
+};
+palette['catenary-placement-classification']=['#8dcde0','#efc685'];
 const requested = new Set(process.argv.slice(2));
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
