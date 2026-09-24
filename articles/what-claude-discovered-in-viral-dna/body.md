@@ -34,6 +34,8 @@ The RNA evidence gives the genomic pattern biological substance. Reanalysis of a
 
 Experiments expressing ART components in laboratory bacteria also produced sequencing patterns consistent with shorter RNA products. These experiments used one culture per construct, and the proposed RNA boundaries were inferred from sequencing coverage. They support transcription more firmly than they establish the identities and processing of mature RNA molecules. [Yoon et al., pp. 6–9 and 35–36](https://www-cdn.anthropic.com/22573675ada52a8ca8a97a1a4b4326b2f208a071.pdf#page=6)
 
+![Solid teal marks reported sequence and transcription evidence. Dashed gold marks the unproved step from array RNA to reverse-transcription activity. This explanatory schematic is not an assay result.](/assets/articles/art-discovery-evidence.svg)
+
 The central distinction is compact:
 
 | The paper provides evidence for | It has not demonstrated |

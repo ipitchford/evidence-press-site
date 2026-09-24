@@ -47,4 +47,6 @@ fs.mkdirSync(dir, { recursive: false });
 fs.writeFileSync(path.join(dir, 'meta.json'), JSON.stringify(meta, null, 2) + '\n');
 fs.writeFileSync(path.join(dir, 'body.md'), 'Write the article here.\n\n## First section\n\nContinue here.\n');
 console.log(`Created articles/${slug}/body.md and meta.json`);
-console.log('Next: edit both files, then run `node tools/test-articles.js && node build.js`.');
+console.log('Next: edit both files; add an informative banner, useful explanatory figures and full-text OpenAI fable audio (docs/EDITING_ARTICLES.md).');
+console.log('Media fields remain optional for legacy compatibility, not permission to omit standard media from a new publication.');
+console.log('Then run `node tools/test-articles.js` and the composite publication checks.');
