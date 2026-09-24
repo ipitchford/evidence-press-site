@@ -5,6 +5,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const assert = require('assert');
+const { execFileSync } = require('child_process');
 const { loadArticles, validateMeta, articleAttribution, BANNER_SRC_RE } = require('./articles');
 
 let passed = 0;
@@ -21,6 +22,17 @@ check('current article corpus satisfies the separate authoring contract', () => 
   assert.ok(articles.length >= 1);
   assert.ok(articles.some(article => article.slug === 'assurance-infrastructure'));
   assert.ok(articles.every(article => article.claimBoundary && article.license === 'CC0-1.0'));
+});
+
+check('ART commentary retains informative reproducible media and full-text audio', () => {
+  const slug = 'what-claude-discovered-in-viral-dna';
+  const meta = JSON.parse(fs.readFileSync(path.join(ROOT, 'articles', slug, 'meta.json'), 'utf8'));
+  const body = fs.readFileSync(path.join(ROOT, 'articles', slug, 'body.md'), 'utf8');
+  assert.ok(meta.banner && meta.audio);
+  assert.ok(body.includes('/assets/articles/art-discovery-evidence.svg'));
+  assert.ok(meta.banner.caption.includes('not been demonstrated'));
+  assert.deepStrictEqual(meta.sources, []);
+  execFileSync(process.execPath, [path.join(ROOT, 'tools/make-art-discovery-article-art.js'), '--check']);
 });
 
 const valid = {

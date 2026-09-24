@@ -53,7 +53,20 @@ metadata uses `creditText` instead of falsely describing models as a `Person`.
 The optional alternatives are `person` and `organization`; existing articles
 without this field retain their previous attribution behaviour.
 
-## Optional article banner
+## Standard article media
+
+New Evidence Press articles include an informative subject-specific banner,
+useful explanatory graphics where they improve understanding, and full-text
+OpenAI house-voice audio. Omit these only at the user's explicit request or
+with a clearly reported technical blocker; do not silently publish a text-only
+page as complete. Schema optionality preserves older articles and preparation
+states, not an editorial preference to omit media. Video is not required.
+
+Graphics must teach a source-backed relationship, not supply interchangeable
+decoration. Use reproducible diagrams for scientific structure, label schematics,
+distinguish observations from hypotheses, and inspect desktop and phone layouts.
+
+## Article banner
 
 For a generated article, upload an image to `assets/articles/` and add a
 `banner` object to `meta.json`:
@@ -73,15 +86,15 @@ filename. External URLs, nested paths, query strings and extra fields are
 rejected. Existing articles without a banner are unchanged.
 
 The banner appears above the headline with its caption below, never overlaid
-on the artwork. It is cropped to about 3:1 on desktop and 16:9 on mobile, so
-keep meaningful subjects near the centre and avoid text in the image. The
+on the artwork. Use a 3:1 composition for the desktop frame; the current mobile
+renderer preserves the full image. Keep essential labels readable at phone width. The
 same image supplies the article's social preview, structured metadata and
 Markdown export. Explain whether it is illustration, a schematic or actual
 evidence in the caption; decoration must not imply independent validation.
 
-## Optional full-text audio
+## Full-text audio
 
-Articles may offer a single "Listen to the article" player before the main
+Articles offer a single "Listen to the article" player before the main
 text, with native playback/seek controls, an MP3 download and a transcript.
 This is a full reading, not the two-minute briefing used for research releases.
 Use the established OpenAI `gpt-4o-mini-tts` / `fable` British narration profile;

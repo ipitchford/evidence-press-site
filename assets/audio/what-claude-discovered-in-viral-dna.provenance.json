@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "article-audio-1.0",
+  "slug": "what-claude-discovered-in-viral-dna",
+  "sourceBodyPath": "articles/what-claude-discovered-in-viral-dna/body.md",
+  "sourceBodySha256": "b8871ec2117ad2cd82933cf0d814a383a5ff5612902c3f8087575b2f4123bb54",
+  "transcriptPath": "assets/audio/what-claude-discovered-in-viral-dna.txt",
+  "transcriptSha256": "ebd5c4d3c1be32b0d3392a60dc8e369639b8a4e9c7179ad95b41c773a3a9130a",
+  "transcriptCharacters": 10952,
+  "inputSha256": "6cc460c4dc6c38e0261bf5c9e7bcaf706d3b54ec67492d3daa339e70c813e4be",
+  "inputNormalization": "Trim leading and trailing whitespace per chunk; inputSha256 joins those inputs with two newlines.",
+  "inputRangeUnit": "UTF-16 code units in the exact UTF-8 transcript decoded as a JavaScript string",
+  "maximumChunkCharacters": 3000,
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "speed": 1,
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "audioPath": "assets/audio/what-claude-discovered-in-viral-dna.mp3",
+  "limitations": [
+    "bundled CLI does not expose API request IDs",
+    "The receipt binds prepared inputs, configured provider profile and observed output bytes; it is not an independent attestation of provider execution or spoken-word completeness.",
+    "Offline checking verifies the final MP3 hash and recorded segment metadata, not deleted or unavailable private segment files."
+  ],
+  "assembledAt": "2026-09-24T13:56:56.006Z",
+  "generator": "bundled speech skill text_to_speech.py speak-batch",
+  "requestId": null,
+  "chunks": [
+    {
+      "index": 1,
+      "start": 0,
+      "end": 2793,
+      "sourceTextSha256": "156b9daba568953e2d32b0cc6c5311aca05e649c1457cdf87fa6aa704465e644",
+      "inputSha256": "d9214fc492b58a6bb59d284260ff7fe848ac9b6bc4039f881d5c7481a4f16c08",
+      "inputCharacters": 2790,
+      "requestId": null,
+      "audioSha256": "9da6bc0ee8d28ef0cf40c29b6c252a2b6d16ee92bd6bdf276d8575cd873198cc",
+      "audioBytes": 2725632,
+      "durationSeconds": 170.352
+    },
+    {
+      "index": 2,
+      "start": 2793,
+      "end": 5675,
+      "sourceTextSha256": "f3a01af962d4a0fa438a633ce75f27b2155d996cd90c3c199a2059a38932c6d2",
+      "inputSha256": "cabe9a6b0f89be4b1c0651b1a134d1a8039af9b3f90bc308261cc065fe9af49d",
+      "inputCharacters": 2880,
+      "requestId": null,
+      "audioSha256": "736bb37322d1c7fafae7e387b14c20cf9a9f18157024d29c7e404f38f20709d2",
+      "audioBytes": 2884992,
+      "durationSeconds": 180.312
+    },
+    {
+      "index": 3,
+      "start": 5675,
+      "end": 8413,
+      "sourceTextSha256": "444b20d694aeae144d50f17d6db372efb6b39fc3de7f131f29e361da1517d888",
+      "inputSha256": "b599e36dd41c0851ccae5b618150d43a6cf36a5882f838c1ac8dead01635c721",
+      "inputCharacters": 2736,
+      "requestId": null,
+      "audioSha256": "4b3f01acdd3624aa8716794abdcc9a2923c58a8d8d1399c90f69132a4bc274d0",
+      "audioBytes": 2688768,
+      "durationSeconds": 168.048
+    },
+    {
+      "index": 4,
+      "start": 8413,
+      "end": 10952,
+      "sourceTextSha256": "9fc7ff81bc88fb15c79ef3aee7cb8cc355451cb5113dac902798c394ba1d377b",
+      "inputSha256": "4939b3e7e1191d42f957f8e265c8eba10af08992e720e6b93b28e583fd6fad87",
+      "inputCharacters": 2538,
+      "requestId": null,
+      "audioSha256": "a3af55f4b86c02216d0eed027296a0b156fdaee1f7a74d5f319f82a7ebd2f8bc",
+      "audioBytes": 2651180,
+      "durationSeconds": 165.624
+    }
+  ],
+  "transform": {
+    "tool": "ffmpeg",
+    "method": "concat-demuxer then re-encode",
+    "codec": "libmp3lame",
+    "bitrate": "64k",
+    "channels": 1,
+    "sampleRate": 24000,
+    "maximumBytesExclusive": 26214400
+  },
+  "audioSha256": "413fe757b90f0d5c4fcec99801ffe666b864f45d39a11235d2f337151444b002",
+  "audioBytes": 5475308,
+  "durationSeconds": 684.336
+}
