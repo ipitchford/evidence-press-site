@@ -16729,9 +16729,9 @@
       "workId": "ep-work:seymour-second-neighbourhood-2delta3",
       "cohort": "prospective",
       "registeredAt": "2026-09-24T19:15:07Z",
-      "status": "active",
-      "statusAt": "2026-09-24T19:15:07Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-24T22:49:00Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -16809,7 +16809,59 @@
           ],
           "stopRule": "Timing is telemetry, not a cap; continue unless integrity, rights or provider access blocks publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-24T22:49:00Z",
+          "calendarElapsedMinutes": 214,
+          "activeAgentMinutes": 190,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 24,
+          "blockedMinutes": 0.0,
+          "reworkMinutes": 20,
+          "agentRuns": 5,
+          "maxParallelAgents": 5,
+          "modelTurns": 6,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 42,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 4,
+          "prepublicationClaimCorrections": 4,
+          "resultState": "target-closed",
+          "resultSummary": "Five-role internal gate returned Minor Revision; all 18 required repairs applied (4 material: DeVos scope by reading, Fisher 1996, Bai-Li-Park Thm 1.4, SSS Thm 1.1 credit). Confirmation round waived by the publisher. 42-gate deterministic run passed; GitHub/Zenodo byte parity verified by independent download; canonical page read back.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -50,
+          "forecastRatio": 0.7917,
+          "withinForecastInterval": true,
+          "varianceReason": "Active minutes estimated from session timestamps (registration 19:15Z to first readback 22:49Z) less ~24 min of logged upload/download waiting; the repair batch dominated. Confirmation round waived by publisher instruction. No speed or impact comparison. modelTurns is a lower bound (distinct root and reviewer invocations), not a per-sampling count.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No separately instrumented total."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Fork-aware runtime counter unavailable."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Runtime token/cache accounting unavailable."
+            }
+          ]
+        }
       },
       "selectionBasis": "User-supplied completed candidate with explicit authority (24 Sep 2026) to add the DeVos refutation and take the release through the full Evidence Press publishing workflow.",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -16822,23 +16874,86 @@
         "reason": "Selected single publication attempt."
       },
       "measurement": {
-        "status": "not-recorded",
-        "missingnessReason": "Registered at intake; prospective measurements are recorded at the terminal status. Prospective assurance-through-publication from this registration: deterministic publication-readiness baseline, the mandatory five-role internal editorial gate with repairs and one confirmation round, research repository and immutable GitHub/Zenodo identity (including a ~3 GB certificate archive), Evidence Press page, media and canonical readback. Discovery, the earlier proof and computation work, the earlier external AI review and its revision, and the DeVos-refutation addition before this registration are left-censored and are not reconstructed. No acceleration comparison.",
-        "milestones": [],
+        "status": "measured-partial",
+        "missingnessReason": "Prospective assurance-through-publication from this registration: deterministic publication-readiness baseline, the mandatory five-role internal editorial gate with repairs and one confirmation round, research repository and immutable GitHub/Zenodo identity (including a ~3 GB certificate archive), Evidence Press page, media and canonical readback. Discovery, the earlier proof and computation work, the earlier external AI review and its revision, and the DeVos-refutation addition before this registration are left-censored and are not reconstructed. No acceleration comparison. Active agent minutes are an estimate from session timestamps; human effort and fork-aware token totals are unavailable.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-24T19:15:07Z",
+            "basis": "Prospective registration at publication intake."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-24T22:49:00Z",
+            "basis": "First canonical publication readback after guarded production deployment."
+          }
+        ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": null,
-        "reworkMinutes": null,
-        "correctionCount": null
+        "agentRuns": 5,
+        "reworkMinutes": 20,
+        "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Assurance endpoint not yet reached at registration; it is recorded after the internal editorial gate and public readback."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-24T22:49:00Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/22947147"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/seymour-second-neighbourhood-2delta3/blob/v0.1.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/seymour-second-neighbourhood-2delta3/blob/v0.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/seymour-second-neighbourhood-2delta3/blob/v0.1.0-candidate/frontier/CAKE_REPLAY_cubes.json"
+            ]
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate; the conjecture and its case n = 2\u03b4+3 remain open; the graph-to-formula reduction is not machine-checked.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/seymour-second-neighbourhood-2delta3/",
+          "https://zenodo.org/records/22947147"
+        ],
+        "missingnessReason": null
       },
       "releaseSlug": "seymour-second-neighbourhood-2delta3",
       "stopReason": null,
@@ -16849,6 +16964,16 @@
           "resultClass": "pending",
           "reason": "Prospective assurance-through-publication from this registration: deterministic publication-readiness baseline, the mandatory five-role internal editorial gate with repairs and one confirmation round, research repository and immutable GitHub/Zenodo identity (including a ~3 GB certificate archive), Evidence Press page, media and canonical readback. Discovery, the earlier proof and computation work, the earlier external AI review and its revision, and the DeVos-refutation addition before this registration are left-censored and are not reconstructed. No acceleration comparison.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-24T22:49:00Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "All research assets and the first guarded canonical deployment passed exact public readback; the confirmation round was waived by the publisher.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/seymour-second-neighbourhood-2delta3/",
+            "https://zenodo.org/records/22947147"
+          ]
         }
       ],
       "corrections": [],
@@ -16856,6 +16981,10 @@
         {
           "date": "2026-09-24",
           "summary": "Registered at publication intake with a frozen decomposed forecast; research predating registration is left-censored."
+        },
+        {
+          "date": "2026-09-24",
+          "summary": "Terminal outcome recorded after first canonical readback."
         }
       ]
     }
