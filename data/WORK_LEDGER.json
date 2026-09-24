@@ -16607,8 +16607,8 @@
         "computeMinutes": null,
         "computeCost": null,
         "agentRuns": 5,
-        "reworkMinutes": 3,
-        "correctionCount": 0
+        "reworkMinutes": 0,
+        "correctionCount": 1
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -16706,9 +16706,23 @@
         {
           "date": "2026-09-24",
           "summary": "Recorded first canonical availability and prospectively instrumented root effort with explicit unmeasured reviewer/human/token components; frozen forecast and research-assurance timestamp retained."
+        },
+        {
+          "date": "2026-09-24",
+          "summary": "Preserved originally published rework initialization and appended an explicit correction linking it to the separately labelled terminal estimate; no research or assurance change."
         }
       ],
-      "corrections": []
+      "corrections": [
+        {
+          "at": "2026-09-24T17:36:36Z",
+          "field": "measurement.reworkMinutes -> metrics.outcome.reworkMinutes",
+          "reason": "The first public registration retained a zero initialization for rework, not a separately timed no-rework observation. Preserve that historical field and explicitly distinguish the later rounded allocation estimate in the outcome.",
+          "replacement": "metrics.outcome.reworkMinutes = 3, a rounded estimate within measured root active time through first canonical availability; no separate rework stopwatch.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/evidence-press-site/pull/310"
+          ]
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -17221,6 +17235,10 @@
     {
       "date": "2026-09-24",
       "summary": "Recorded canonical Casas-Alvero publication and scoped prospective root-work timing through first public readback; retained frozen forecast and missing reviewer, human and token effort."
+    },
+    {
+      "date": "2026-09-24",
+      "summary": "Repaired Casas-Alvero rework-record history by preserving the live measurement and appending its correction receipt."
     }
   ]
 }
