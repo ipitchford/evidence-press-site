@@ -2184,6 +2184,38 @@ art['casas-alvero-eight-term'] = (a,b) => {
 };
 palette['casas-alvero-eight-term']=['#86cdd5','#e9bf7d'];
 
+// Left: counterexample order n (Theorem 7.1; KL + Brukhman before). Right: the Eulerian graph G8 of Section 8 with
+// the weights forced on every losing density; the second condition fails at vertex 7 (1/8 < 1/4). Exact, not schematic.
+art['seymour-second-neighbourhood-2delta3'] = (a,b) => {
+ const g='#8a979c', t='#edf3ee';
+ let s=`<defs><marker id="sey-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="${a}"/></marker></defs><g font-family="Arial, sans-serif">`;
+ s+=`<text class="og-hide" x="70" y="72" fill="${t}" font-size="24">ORDER OF A COUNTEREXAMPLE</text>`;
+ const x0=80, dx=58, y=200;
+ s+=`<path d="M${x0-10} ${y} H${x0+8*dx+20}" stroke="${g}" stroke-width="2"/>`;
+ for(let i=0;i<=8;i++){ const n=12+i, x=x0+i*dx;
+  const c = n<=16 ? g : (n===17 ? b : a), fill = n<=16 ? g : (n===17 ? b : 'none');
+  s+=`<circle cx="${x}" cy="${y}" r="${n===17?16:11}" fill="${fill}" fill-opacity="${n<=16?.5:(n===17?.9:0)}" stroke="${c}" stroke-width="3"/>`;
+  s+=`<text x="${x}" y="${y+48}" text-anchor="middle" fill="${n===17?b:(n<=16?g:t)}" font-size="${n===17?26:21}">${n}</text>`; }
+ s+=`<text class="og-hide" x="${x0}" y="${y-44}" fill="${g}" font-size="19">≤ 16: excluded before</text>`;
+ s+=`<text class="og-hide" x="${x0+5*dx}" y="${y+92}" text-anchor="middle" fill="${b}" font-size="21">17: excluded here</text>`;
+ s+=`<text class="og-hide" x="${x0+5*dx}" y="${y+118}" text-anchor="middle" fill="#cfddd8" font-size="17">379 LRAT proofs, two checkers</text>`;
+ s+=`<text class="og-hide" x="${x0+7*dx}" y="${y-44}" text-anchor="middle" fill="${a}" font-size="19">18+: open</text>`;
+ s+=`<path d="M600 60 V340" stroke="${g}" stroke-opacity=".35" stroke-width="2"/>`;
+ const P={6:[690,200],2:[790,145],3:[790,255],7:[890,200],0:[990,120],4:[990,280],5:[845,68],1:[845,332]};
+ const E=[[0,5],[1,6],[2,7],[3,7],[4,1],[5,6],[6,2],[6,3],[7,0],[7,4]];
+ for(const [u,v] of E){ const [x1,y1]=P[u],[x2,y2]=P[v], L=Math.hypot(x2-x1,y2-y1), r=22;
+  s+=`<path d="M${(x1+(x2-x1)*r/L).toFixed(1)} ${(y1+(y2-y1)*r/L).toFixed(1)} L${(x2-(x2-x1)*r/L).toFixed(1)} ${(y2-(y2-y1)*r/L).toFixed(1)}" stroke="${a}" stroke-width="2.5" marker-end="url(#sey-arr)"/>`; }
+ for(const [v,[x,yy]] of Object.entries(P)){ const hot = v==='7', mid = v==='2'||v==='3', src = v==='6';
+  s+=`<circle cx="${x}" cy="${yy}" r="19" fill="#151a1e" stroke="${hot||src||mid?b:a}" stroke-width="${hot?4:2.5}"/><text x="${x}" y="${yy+7}" text-anchor="middle" fill="${t}" font-size="20">${v}</text>`; }
+ s+=`<text class="og-hide" x="690" y="248" text-anchor="middle" fill="${b}" font-size="17">1/8</text>`;
+ s+=`<text class="og-hide" x="790" y="206" text-anchor="middle" fill="${b}" font-size="16">p₂+p₃ = 1/4</text>`;
+ s+=`<text class="og-hide" x="1035" y="195" fill="${t}" font-size="18">every losing</text><text class="og-hide" x="1035" y="218" fill="${t}" font-size="18">density: 1/8 at</text><text class="og-hide" x="1035" y="241" fill="${t}" font-size="18">0, 1, 4, 5, 6, 7</text>`;
+ s+=`<text class="og-hide" x="640" y="385" fill="${b}" font-size="19">second condition at 7: p₆ = 1/8 &lt; p₂ + p₃ = 1/4, so it fails</text>`;
+ s+=`<text class="og-hide" x="640" y="42" fill="${t}" font-size="20">G₈ (girth 5): no distribution meets DeVos's conditions</text></g>`;
+ return s;
+};
+palette['seymour-second-neighbourhood-2delta3']=['#86cdd5','#e9bf7d'];
+
 const requested = new Set(process.argv.slice(2));
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);

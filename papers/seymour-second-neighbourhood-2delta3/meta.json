@@ -1,0 +1,256 @@
+{
+  "slug": "seymour-second-neighbourhood-2delta3",
+  "title": "Seymour's second neighbourhood conjecture at order 2δ+3: structure of counterexamples, a certified 18-vertex lower bound, and a refutation of DeVos's conjecture as recorded in Sullivan's survey",
+  "shortTitle": "Eighteen vertices, and a DeVos counterexample",
+  "oneLine": "A candidate study of the densest open case of Seymour's conjecture proves structural limits, certifies that every counterexample has at least 18 vertices, and refutes DeVos's conjecture as printed in Sullivan's survey.",
+  "abstract": "This unrefereed candidate studies hypothetical counterexamples to Seymour's second neighbourhood conjecture with n = 2δ+3 vertices, the first order beyond Brukhman's dense-case theorem. It proves that such a counterexample has at least four perfect vertices, at least n/4 vertices of minimum out-degree and a linear number of minimum-degree in-neighbours at every vertex. Using these as constraints, a cube-and-conquer SAT computation with 379 retained LRAT proofs, each accepted by two checkers (one with a formally verified core), excludes (n, δ) = (17, 7), so every counterexample has at least 18 vertices. It shows that no losing density need satisfy Fisher's averaged inequality, at arbitrarily large girth, which refutes DeVos's conjecture as printed in Sullivan's survey. The conjecture and its case n = 2δ+3 remain open.",
+  "datePublished": "2026-09-24",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22947147",
+  "conceptDoi": "10.5281/zenodo.22947146",
+  "zenodoUrl": "https://zenodo.org/records/22947147",
+  "pdfUrl": "https://github.com/ipitchford/seymour-second-neighbourhood-2delta3/releases/download/v0.1.0-candidate/seymour-second-neighbourhood-2delta3-v0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22947147/files/seymour-second-neighbourhood-2delta3-v0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/seymour-second-neighbourhood-2delta3",
+  "releaseUrl": "https://github.com/ipitchford/seymour-second-neighbourhood-2delta3/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/seymour-second-neighbourhood-2delta3.mp3",
+      "name": "Audio briefing",
+      "description": "AI-generated communication, not additional mathematical evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/seymour-second-neighbourhood-2delta3.txt"
+    }
+  ],
+  "keywords": [
+    "Seymour's second neighbourhood conjecture",
+    "oriented graphs",
+    "minimum out-degree",
+    "LRAT proof certificates",
+    "cube-and-conquer SAT",
+    "losing density",
+    "DeVos conjecture"
+  ],
+  "problem": {
+    "name": "Seymour's second neighbourhood conjecture (case n = 2δ+3)",
+    "url": "https://arxiv.org/abs/math/0605646"
+  },
+  "keyResults": [
+    "A counterexample with n = 2δ+3 has at least four perfect vertices, at least n/4 vertices of out-degree δ, and at every vertex at least max{1, ⌈(δ−10)/27.5⌉} in-neighbours of out-degree δ (δ ≥ 3).",
+    "No counterexample has (n, δ) = (17, 7): 379 retained LRAT proofs, each accepted by lratcheck and by cake_lpr, whose checking core is formally verified. So every counterexample has at least 18 vertices, without the δ = 7 preprint.",
+    "No losing density need satisfy Fisher's averaged inequality, at arbitrarily large directed girth and degree; DeVos's conjecture as printed in Sullivan's survey is false, and a girth-5 example also refutes its sign variants and a support-restricted reading.",
+    "Lemma 3.1 of Glover's claimed proof (arXiv:2501.00614v14) is false as literally stated."
+  ],
+  "evidence": "Written proofs; exact verifiers in normal and optimized Python with semantic negative controls; an encoder tested up to (17, 7); 379 + 25 retained LRAT proofs accepted by two checkers; byte-exact replay of every formula; a 42-gate publication-ready run; internal editorial records.",
+  "statusDetail": "Unrefereed candidate. Seymour's conjecture and its case n = 2δ+3 remain open. The reduction to the SAT formula rests on written proof and is not machine-checked; independent reproduction, specialist and journal review, and unconditional novelty are not established.",
+  "openProblems": [
+    "Obtain unaffiliated specialist examination of the written proofs behind the SAT constraints, and an independent rerun of the 379 LRAT refutations.",
+    "Raise the pointwise bound on minimum-degree in-neighbours towards the average δ/4 and test whether, with k = B + 𝒟, it excludes counterexamples at n = 2δ+3.",
+    "Decide whether the support-restricted reading of DeVos's conjecture fails at every girth.",
+    "Extend the certified exclusion to (19, 8); the same encoding yields 631 cubes, some of them slow."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Brukhman (2026): the conjecture for n ≤ 2δ+2, whose count stops at 2δ+3 (unrefereed).",
+      "url": "https://arxiv.org/abs/2608.11530"
+    },
+    {
+      "citation": "Sullivan (2006): survey recording DeVos's Conjecture 6.28 and its averaging note.",
+      "url": "https://arxiv.org/abs/math/0605646"
+    },
+    {
+      "citation": "Fisher (1996): the tournament case by losing densities, with the remark that a losing density on the directed 4-cycle fails the pointwise condition.",
+      "url": "https://doi.org/10.1002/(SICI)1097-0118(199609)23:1%3C43::AID-JGT4%3E3.0.CO;2-K"
+    },
+    {
+      "citation": "Sadhukhan, Sandeep and Sen (2026): claimed δ = 7 case, and a Seymour vertex within distance two of any minimum-degree vertex (unrefereed).",
+      "url": "https://arxiv.org/abs/2606.30588"
+    },
+    {
+      "citation": "Bai, Li and Park (2026): for δ ≤ 4 a Seymour vertex of minimum out-degree exists.",
+      "url": "https://arxiv.org/abs/2607.18047"
+    },
+    {
+      "citation": "Guo, Kang and Zwaneveld (2026): Seymour-tight orientations and products preserving counterexamples.",
+      "url": "https://arxiv.org/abs/2603.29626"
+    },
+    {
+      "citation": "Tan, Heule and Myreen: cake_lpr, the CakeML-verified proof checker used here.",
+      "url": "https://doi.org/10.1007/s10009-022-00690-y"
+    }
+  ],
+  "citeText": "Anonymous (2026). Seymour's second neighbourhood conjecture at order 2δ+3: structure of counterexamples, a certified 18-vertex lower bound, and a refutation of DeVos's conjecture as recorded in Sullivan's survey. Version 0.1.0-candidate. Evidence Press. 10.5281/zenodo.22947147.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Research, repairs after the internal editorial gate and publication are recorded separately; the confirmation round was waived by the publisher and no confirmation reports exist.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Claude (Anthropic) research agent under user direction",
+      "Python exact arithmetic, PySAT and CaDiCaL 3.0.1",
+      "lratcheck (this work) and cake_lpr (CakeML-verified)",
+      "pdfTeX and pandoc"
+    ],
+    "humanRole": "The user supplied publication authority; scholarly creator Anonymous. No human mathematical contribution is claimed.",
+    "disclosure": "AI-produced research, computation and drafting. Internal refute passes by a different AI model, one commissioned AI-based external review of an earlier version, and a producer-coordinated five-role AI editorial gate (Minor Revision; confirmation round waived by the publisher). None of these is specialist or journal peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22947147",
+      "note": "Public GitHub release and published Zenodo record (6 files each) downloaded independently; every file matched the SHA-256 ledger."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/seymour-second-neighbourhood-2delta3/blob/v0.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "42-gate publication-ready run from a fresh extraction with the proof archives, including exact verifiers in both Python modes, read-only negative controls, encoder tests up to (17, 7), byte-exact regeneration of every formula and the strict-checker replay of all 379 + 25 proofs. cake_lpr acceptance of every proof is reused evidence on unchanged bytes."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/seymour-second-neighbourhood-2delta3/actions",
+      "note": "Linux CI runs the exact checks, negative controls and encoding tests; versions and binary hashes are recorded. Byte-exact base-formula regeneration needs the recorded PySAT version; the proof replay needs the 3 GB asset set. Typesetting is not pinned."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated internal model reviews do not establish this external assurance dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "lratcheck and cake_lpr were written independently but run inside one producer workflow: implementation diversity, not independent reproduction."
+    },
+    "formalVerification": {
+      "state": "partial",
+      "note": "cake_lpr's checking core is formally verified in CakeML and accepted every LRAT proof. The encoding, the reduction to it and every written proof are not formally verified."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated internal model reviews do not establish this external assurance dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated internal model reviews do not establish this external assurance dimension."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:seymour-second-neighbourhood-2delta3",
+    "attemptIds": [
+      "ep-attempt:seymour-second-neighbourhood-2delta3-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [],
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Every counterexample to Seymour's second neighbourhood conjecture has at least 18 vertices; structural necessary conditions at n = 2δ+3; a refutation of DeVos's conjecture as printed in Sullivan's survey.",
+      "scope": "Finite oriented graphs; the order bound relies on Kaneko–Locke (δ ≤ 6, as reported) and a re-derived dense-case count, not on the δ = 7 preprint."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Written proofs of Theorems 4.3, 5.2 and 6.1 justify the constraints C1–C6, C8, C9; the encoding is tested against independently computed properties up to (17, 7); two checkers accept every retained refutation.",
+      "remainingRisks": [
+        "The graph-to-formula reduction is not machine-checked.",
+        "Kaneko–Locke is used as reported, not read in the original.",
+        "The confirmation round for the material repairs was waived."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Assess the written proofs behind the SAT constraints.",
+      "Preserve the survey scope of the DeVos result and the candidate status.",
+      "Publication is authorised; external review is a separate dimension."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independently rerun the LRAT refutations and examine the written reduction; external review is not a publication prerequisite.",
+      "claimCeiling": "Unrefereed candidate. The conjecture and its case n = 2δ+3 remain open; formal verification of the reduction, external review and unconditional priority are not established."
+    },
+    "impactClaims": [
+      {
+        "id": "seymour-second-neighbourhood-2delta3-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable order bound and refutation",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "schemaVersion": "1.0",
+      "reviewId": "seymour-2delta3-internal-editorial-v1",
+      "reviewClass": "editorial-assessment",
+      "status": "published",
+      "subject": {
+        "canonicalUrl": "https://evidencepress.org/releases/seymour-second-neighbourhood-2delta3/",
+        "doi": "10.5281/zenodo.22947147",
+        "version": "0.1.0-candidate",
+        "releaseTag": "v0.1.0-candidate",
+        "title": "Seymour's second neighbourhood conjecture at order 2δ+3: structure of counterexamples, a certified 18-vertex lower bound, and a refutation of DeVos's conjecture as recorded in Sullivan's survey"
+      },
+      "reviewer": {
+        "name": "Five internal model editorial roles",
+        "independence": "producer-coordinated"
+      },
+      "assessment": {
+        "title": "Internal five-role editorial assessment",
+        "date": "2026-09-24",
+        "recommendation": "Minor Revision"
+      },
+      "assuranceImpact": {
+        "changesVerificationStatus": false,
+        "changesPeerReviewedFlag": false,
+        "changesIndependentReproductionFlag": false,
+        "changesFormalVerificationFlag": false,
+        "explanation": "Producer-coordinated model review does not establish external peer review, reproduction or formal proof. The single confirmation round was waived by the publisher."
+      },
+      "publication": {
+        "publicUrl": "https://github.com/ipitchford/seymour-second-neighbourhood-2delta3/blob/v0.1.0-candidate/review/EDITORIAL_DECISION.md",
+        "publicSummary": "Five roles reviewed one frozen target (Minor Revision; no fatal defect). All 18 required repairs were applied, four of them material to claim scope or credit, and recorded in a response matrix. The publisher waived the confirmation round, so the repairs were checked by the author and a 42-gate deterministic run only."
+      }
+    }
+  ],
+  "narration": "Seymour's second neighbourhood conjecture is a simple question about directed networks. Take any network in which no two points point at each other. Is there always a point that reaches at least as many new points in two steps as it reaches in one? The answer is known for tournaments, and for networks in which some point sends at most six arrows, but not in general. This release studies the densest case that is still open: networks whose number of points is two times the minimum number of outgoing arrows, plus three. It does not settle that case. It proves that any counterexample there would need a rigid structure, including at least four points joined to every other point. Using these facts as constraints, a large computer search rules out a counterexample with seventeen points. Every one of its three hundred and seventy-nine proof certificates is kept, and each was accepted by two separate checkers, one of them formally verified. So any counterexample must have at least eighteen points. The paper also shows that a weighted version of the classical tournament proof cannot work in general. As a result, a stronger conjecture attributed to DeVos, as printed in a 2006 survey, is false. The main limitation is this: the step from the graph question to the computer formula rests on written proofs that have not been machine-checked or reviewed by independent specialists. This is an unrefereed candidate from Evidence Press, dated September twenty-fourth, twenty twenty-six. The paper and all evidence are linked on the release page. This is an AI-generated voice summary, not additional evidence."
+}
