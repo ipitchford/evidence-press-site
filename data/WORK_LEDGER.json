@@ -16462,8 +16462,8 @@
       "workId": "ep-work:casas-alvero-eight-term",
       "cohort": "prospective",
       "registeredAt": "2026-09-24T16:59:18Z",
-      "status": "release-candidate",
-      "statusAt": "2026-09-24T17:21:31Z",
+      "status": "published",
+      "statusAt": "2026-09-24T17:29:35Z",
       "resultClass": "positive",
       "aims": [
         "science"
@@ -16524,7 +16524,59 @@
           ],
           "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-24T17:29:35Z",
+          "calendarElapsedMinutes": 30,
+          "activeAgentMinutes": 29,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 2,
+          "blockedMinutes": 0.0,
+          "reworkMinutes": 3,
+          "agentRuns": 5,
+          "maxParallelAgents": 4,
+          "modelTurns": 5,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 4,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 0,
+          "prepublicationClaimCorrections": 0,
+          "resultState": "target-closed",
+          "resultSummary": "Review actioned; five internal roles completed and the editor accepted after minor repairs; immutable GitHub/Zenodo public asset parity and canonical website/media readback passed. Preservation-ledger final cycle remains a publication-maintenance step.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -121,
+          "forecastRatio": 0.1933,
+          "withinForecastInterval": false,
+          "varianceReason": "Prospective root attended-work stopwatch from registration through first canonical readback, with explicitly logged passive waits excluded. Parallel reviewer effort is not aggregated, human effort and fork-aware token totals are unavailable. Discovery and pre-registration intake are excluded. Mandatory preservation-ledger closeout continues after this public-availability endpoint. No speed or impact comparison. Model turns are a lower bound of five distinct root/reviewer invocations, not per-sampling counts. Rework is a rounded three-minute allocation estimate within measured active time, covering the manifest-inventory, page-contract, local-port and provenance-index repairs; no separate rework stopwatch was available.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No separately instrumented total; ordinary validation excluded."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Fork-aware runtime counter unavailable."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Runtime token/cache accounting unavailable."
+            }
+          ]
+        }
       },
       "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -16544,13 +16596,18 @@
             "event": "work-opened",
             "at": "2026-09-24T16:59:18Z",
             "basis": "Prospective assurance-through-publication from this registration: complete publication-readiness checks and remaining editorial revisions, internal editorial gate, immutable archive, Evidence Press media and canonical readback. Discovery, earlier proof/review work, initial intake and the initial minor-revision edits before this registration are left-censored. Root attended-work stopwatch excludes explicitly logged waits; reviewer effort is not aggregated. No acceleration comparison."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-24T17:29:35Z",
+            "basis": "First canonical publication readback after guarded production deployment."
           }
         ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
         "agentRuns": 5,
-        "reworkMinutes": 0,
+        "reworkMinutes": 3,
         "correctionCount": 0
       },
       "assuranceEndpoint": {
@@ -16629,12 +16686,26 @@
           "evidenceRefs": [
             "https://zenodo.org/records/22943640"
           ]
+        },
+        {
+          "at": "2026-09-24T17:29:35Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "All research assets and the first guarded canonical website deployment passed exact public readback. The mandatory preservation-ledger reseal follows.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/casas-alvero-eight-term/",
+            "https://zenodo.org/records/22943640"
+          ]
         }
       ],
       "revisions": [
         {
           "date": "2026-09-24",
           "summary": "Prospective assurance-through-publication from this registration: complete publication-readiness checks and remaining editorial revisions, internal editorial gate, immutable archive, Evidence Press media and canonical readback. Discovery, earlier proof/review work, initial intake and the initial minor-revision edits before this registration are left-censored. Root attended-work stopwatch excludes explicitly logged waits; reviewer effort is not aggregated. No acceleration comparison."
+        },
+        {
+          "date": "2026-09-24",
+          "summary": "Recorded first canonical availability and prospectively instrumented root effort with explicit unmeasured reviewer/human/token components; frozen forecast and research-assurance timestamp retained."
         }
       ],
       "corrections": []
@@ -17146,6 +17217,10 @@
     {
       "date": "2026-09-23",
       "summary": "Recorded canonical catenary publication and scoped prospective root-work timing through first public readback; retained frozen forecast and missing reviewer, human and token effort."
+    },
+    {
+      "date": "2026-09-24",
+      "summary": "Recorded canonical Casas-Alvero publication and scoped prospective root-work timing through first public readback; retained frozen forecast and missing reviewer, human and token effort."
     }
   ]
 }
