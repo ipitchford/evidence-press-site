@@ -16456,6 +16456,188 @@
         }
       ],
       "corrections": []
+    },
+    {
+      "attemptId": "ep-attempt:casas-alvero-eight-term-publication",
+      "workId": "ep-work:casas-alvero-eight-term",
+      "cohort": "prospective",
+      "registeredAt": "2026-09-24T16:59:18Z",
+      "status": "release-candidate",
+      "statusAt": "2026-09-24T17:21:31Z",
+      "resultClass": "positive",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the reviewed eight-term Casas-Alvero bound complete publication readiness and the full unrefereed candidate publication workflow?",
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Prospective assurance-through-publication from this registration: complete publication-readiness checks and remaining editorial revisions, internal editorial gate, immutable archive, Evidence Press media and canonical readback. Discovery, earlier proof/review work, initial intake and the initial minor-revision edits before this registration are left-censored. Root attended-work stopwatch excludes explicitly logged waits; reviewer effort is not aggregated. No acceleration comparison.",
+        "forecast": {
+          "frozenAt": "2026-09-24T16:59:18Z",
+          "procedureClass": "mathematical-candidate-minor-revision-publication",
+          "targetOutcome": "Internal editorial approval, immutable research assets and canonical Evidence Press availability.",
+          "expectedActiveMinutes": 150,
+          "plausibleLowMinutes": 100,
+          "plausibleHighMinutes": 240,
+          "expectedUnattendedWaitMinutes": 15,
+          "referenceClass": {
+            "label": "Reviewed mathematical candidate publication",
+            "sampleSize": 0,
+            "basis": "Procedural prior only; no acceleration comparison."
+          },
+          "fermiComponents": [
+            {
+              "component": "Remaining exposition and deterministic readiness",
+              "count": 1,
+              "lowMinutesPerUnit": 25,
+              "centralMinutesPerUnit": 40,
+              "highMinutesPerUnit": 65,
+              "basis": "Procedural prior; no comparative acceleration claim."
+            },
+            {
+              "component": "Internal editorial gate",
+              "count": 1,
+              "lowMinutesPerUnit": 25,
+              "centralMinutesPerUnit": 35,
+              "highMinutesPerUnit": 60,
+              "basis": "Procedural prior; no comparative acceleration claim."
+            },
+            {
+              "component": "Archive, media and guarded deployment",
+              "count": 1,
+              "lowMinutesPerUnit": 50,
+              "centralMinutesPerUnit": 75,
+              "highMinutesPerUnit": 115,
+              "basis": "Procedural prior; no comparative acceleration claim."
+            }
+          ],
+          "probabilityPositiveSignal": 0.95,
+          "probabilityTargetClosure": 0.85,
+          "probabilityHorizonMinutes": 240,
+          "assumptions": [
+            "No fatal integrity defect.",
+            "Providers available."
+          ],
+          "reforecastTriggers": [
+            "Provider outage or integrity failure."
+          ],
+          "stopRule": "Timing is telemetry, not a cap; continue unless integrity or provider access blocks publication."
+        },
+        "outcome": null
+      },
+      "selectionBasis": "User-supplied candidate and full review with explicit authority to action the review and complete the Evidence Press publishing workflow.",
+      "taskClass": "assurance-and-full-candidate-publication",
+      "decisionObjectTarget": "At least eight centered nonzero monomials in any nontrivial characteristic-zero degree-twenty Casas-Alvero polynomial.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Prospective assurance-through-publication from this registration: complete publication-readiness checks and remaining editorial revisions, internal editorial gate, immutable archive, Evidence Press media and canonical readback. Discovery, earlier proof/review work, initial intake and the initial minor-revision edits before this registration are left-censored. Root attended-work stopwatch excludes explicitly logged waits; reviewer effort is not aggregated. No acceleration comparison.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-24T16:59:18Z",
+            "basis": "Prospective assurance-through-publication from this registration: complete publication-readiness checks and remaining editorial revisions, internal editorial gate, immutable archive, Evidence Press media and canonical readback. Discovery, earlier proof/review work, initial intake and the initial minor-revision edits before this registration are left-censored. Root attended-work stopwatch excludes explicitly logged waits; reviewer effort is not aggregated. No acceleration comparison."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 5,
+        "reworkMinutes": 0,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-09-24T17:21:31Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/22943640"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/casas-alvero-eight-term/blob/v0.1.0-candidate/verification/publication/"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/casas-alvero-eight-term/blob/v0.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate. The full degree-twenty conjecture, formal verification, external journal acceptance and unconditional priority are not established.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/casas-alvero-eight-term/blob/v0.1.0-candidate/ASSURANCE.md",
+          "https://github.com/ipitchford/casas-alvero-eight-term/blob/v0.1.0-candidate/EDITORIAL_DECISION.md"
+        ],
+        "missingnessReason": "External assurance and priority remain unestablished. Canonical website readback is a separate publication event."
+      },
+      "releaseSlug": "casas-alvero-eight-term",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-09-24T16:59:18Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Prospective assurance-through-publication from this registration: complete publication-readiness checks and remaining editorial revisions, internal editorial gate, immutable archive, Evidence Press media and canonical readback. Discovery, earlier proof/review work, initial intake and the initial minor-revision edits before this registration are left-censored. Root attended-work stopwatch excludes explicitly logged waits; reviewer effort is not aggregated. No acceleration comparison.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-24T17:21:31Z",
+          "status": "release-candidate",
+          "resultClass": "positive",
+          "reason": "Five-role internal gate accepted after minor editorial repairs; exact public GitHub/Zenodo assets verified. Website deployment pending.",
+          "evidenceRefs": [
+            "https://zenodo.org/records/22943640"
+          ]
+        }
+      ],
+      "revisions": [
+        {
+          "date": "2026-09-24",
+          "summary": "Prospective assurance-through-publication from this registration: complete publication-readiness checks and remaining editorial revisions, internal editorial gate, immutable archive, Evidence Press media and canonical readback. Discovery, earlier proof/review work, initial intake and the initial minor-revision edits before this registration are left-censored. Root attended-work stopwatch excludes explicitly logged waits; reviewer effort is not aggregated. No acceleration comparison."
+        }
+      ],
+      "corrections": []
     }
   ],
   "updatePolicy": {
