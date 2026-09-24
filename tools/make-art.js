@@ -2173,6 +2173,17 @@ art['catenary-placement-classification'] = (a,b) => {
  return s;
 };
 palette['catenary-placement-classification']=['#8dcde0','#efc685'];
+// Theorem 1: centered term-count boundary; boxes denote monomials, not roots.
+art['casas-alvero-eight-term'] = (a,b) => {
+ let s=`<g font-family="Arial, sans-serif"><text class="og-hide" x="65" y="57" fill="#edf3ee" font-size="27">CENTERED DEGREE TWENTY</text>`;
+ for (const [y,n,color] of [[112,7,b],[245,8,a]]) {
+  for(let i=0;i<n;i++) s+=`<rect x="${65+i*73}" y="${y}" width="54" height="54" rx="5" fill="${i===0?'#edf3ee':color}" fill-opacity="${y===112?.8:.14}" stroke="${i===0?'#edf3ee':color}" stroke-width="2"/>`;
+ }
+ s+=`<path d="M60 140 H565" stroke="#151a1e" stroke-width="4"/><text class="og-hide" x="700" y="132" fill="${b}" font-size="40">7 or fewer: excluded</text><text class="og-hide" x="700" y="170" fill="#cfddd8" font-size="22">under the CA conditions</text><text class="og-hide" x="700" y="280" fill="${a}" font-size="40">8+: unresolved here</text><text class="og-hide" x="65" y="348" fill="#cfddd8" font-size="24">One box = one nonzero monomial; the leading term counts.</text></g>`;
+ return s;
+};
+palette['casas-alvero-eight-term']=['#86cdd5','#e9bf7d'];
+
 const requested = new Set(process.argv.slice(2));
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
