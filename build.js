@@ -1086,6 +1086,11 @@ function signposting(p) {
   ].join('\n') + '\n';
 }
 
+/* Reader-value correction (23 September 2026): a release shows either its authored next-work section or the
+   generated "Open directions" list, never both. openProblems always remain in paper.json for agents. */
+const AUTHORED_NEXT_WORK = /^##[ \t]+(?:[^\n]*\bnext\b[^\n]*|what would (?:most )?improve[^\n]*|[^\n]*\bremains? open\b[^\n]*|executable remaining gates)[ \t]*$/im;
+function hasAuthoredNextWork(p) { return AUTHORED_NEXT_WORK.test(p.body || ''); }
+
 /* Process metadata (operating model, research metrics) is machine-only: it
    ships in paper.json and the API ledgers, never in release HTML or Markdown
    (reader-value correction, 23 September 2026). */
@@ -1105,7 +1110,7 @@ function paperPage(p) {
   }).join('\n');
   const related = (p.relatedWorks || []).map(w =>
     `<li>${w.url ? `<a href="${escAttr(w.url)}" rel="noopener">${esc(w.citation)}</a>` : esc(w.citation)}</li>`).join('');
-  const open = (p.openProblems || []).map(o => `<li>${inline(o)}</li>`).join('');
+  const open = hasAuthoredNextWork(p) ? '' : (p.openProblems || []).map(o => `<li>${inline(o)}</li>`).join('');
   const media = (p.media || []).map(m => {
     if (m.superseded) {
       const note = `<p class="media-note"><strong>Superseded briefing:</strong> <a href="${escAttr(m.url)}" rel="noopener">${esc(m.name)}</a>. ${inline(m.description || 'Retained as part of the correction history; do not use as the current summary.')}</p>`;
@@ -1230,11 +1235,11 @@ ${p.body}
 
 ${mathObjectsMarkdown(p)}
 
-## Open directions for follow-up research
+${!hasAuthoredNextWork(p) && (p.openProblems || []).length ? `## Open directions for follow-up research
 
-${(p.openProblems || []).map(o => `- ${o}`).join('\n')}
+${p.openProblems.map(o => `- ${o}`).join('\n')}
 
-## Verification status
+` : ''}## Verification status
 
 ${p.statusDetail}
 
@@ -2236,8 +2241,9 @@ function llms() {
       `- Status: unrefereed (internally replayed; not peer reviewed, not independently reproduced, not formally verified)`, '',
       p.body, '',
       ...(p.mathObjects && p.mathObjects.length ? [mathObjectsMarkdown(p).trim(), ''] : []),
-      `## Open directions (machine-readable copy at ${urlOf(p)}paper.json)`, '',
-      ...(p.openProblems || []).map(o => `- ${o}`), '',
+      ...(hasAuthoredNextWork(p)
+        ? [`- Open directions (machine-readable): ${urlOf(p)}paper.json`, '']
+        : [`## Open directions (machine-readable copy at ${urlOf(p)}paper.json)`, '', ...(p.openProblems || []).map(o => `- ${o}`), '']),
       ...(p.operatingModel ? [`- Process metadata (operating model and research metrics): ${urlOf(p)}paper.json`, ''] : [])
     ]),
     ...articles.flatMap(article => [

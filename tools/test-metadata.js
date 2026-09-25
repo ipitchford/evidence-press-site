@@ -472,6 +472,32 @@ for (const paper of papersDoc.papers) {
 }
 check('per-release paper.json keeps operating model and research metrics', machineLoss.length === 0, machineLoss.join(', '));
 
+/* A release shows either its authored next-work section or the generated Open directions list, never both;
+   paper.json keeps openProblems either way. The heading rule is read from build.js so the test cannot drift. */
+const buildSrc = fs.readFileSync(path.join(__dirname, '..', 'build.js'), 'utf8');
+const AUTHORED_NEXT_WORK = eval(buildSrc.match(/const AUTHORED_NEXT_WORK = (\/.*\/im);/)[1]);
+const followupDuplicates = [];
+const followupMissing = [];
+const openProblemsLoss = [];
+for (const paper of papersDoc.papers) {
+  const authored = sourceBySlug.get(paper.slug);
+  if (!authored) continue;
+  const html = fs.readFileSync(path.join(DIST, 'releases', paper.slug, 'index.html'), 'utf8');
+  const md = fs.readFileSync(path.join(DIST, 'releases', paper.slug, 'index.md'), 'utf8');
+  const generated = html.includes('id="open-directions"') || md.includes('## Open directions for follow-up research');
+  const bodyPath = path.join(ROOT, 'papers', paper.slug, 'body.md');
+  const hasAuthored = AUTHORED_NEXT_WORK.test(fs.existsSync(bodyPath) ? fs.readFileSync(bodyPath, 'utf8') : '');
+  if (hasAuthored && generated) followupDuplicates.push(paper.slug);
+  if (!hasAuthored && (authored.openProblems || []).length && !generated) followupMissing.push(paper.slug);
+  const perRelease = JSON.parse(fs.readFileSync(path.join(DIST, 'releases', paper.slug, 'paper.json'), 'utf8'));
+  if (!sameJson(perRelease.openProblems || [], authored.openProblems || [])) openProblemsLoss.push(paper.slug);
+}
+check('no release renders both authored next work and generated open directions',
+  followupDuplicates.length === 0, followupDuplicates.join(', '));
+check('releases without authored next work still render their open directions',
+  followupMissing.length === 0, followupMissing.join(', '));
+check('per-release paper.json keeps every open direction', openProblemsLoss.length === 0, openProblemsLoss.join(', '));
+
 const operatingPageFiles = ['operating-model/index.html', 'operating-model/index.md', 'operating-model/index.json',
   'research-metrics/index.html', 'research-metrics/index.md', 'research-metrics/index.json'];
 check('operating doctrine ships human, Markdown and machine representations',
