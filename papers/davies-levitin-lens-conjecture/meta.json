@@ -1,0 +1,246 @@
+{
+  "slug": "davies-levitin-lens-conjecture",
+  "title": "A proof of the Davies–Levitin lens conjecture for the indefinite tridiagonal pencil",
+  "shortTitle": "The Davies–Levitin lens, for every n",
+  "oneLine": "A candidate proof that every complex eigenvalue of the Davies–Levitin indefinite tridiagonal pencil lies in the lens where its two Gershgorin disks overlap, for every matrix size.",
+  "abstract": "This unrefereed candidate proves Conjecture 5.3 of Davies and Levitin (2014), which implies the closed-disk form of AIM 2015 Problem 11.1. Let H(c) be the 2n×2n symmetric tridiagonal matrix with diagonal c and off-diagonal entries 1, and let S = diag(1,…,1,−1,…,−1) with n entries of each sign. For every n ≥ 1 and real c, every non-real eigenvalue λ of the pencil H(c) − λS satisfies |λ − c| < 2 and |λ + c| < 2, so the non-real spectrum lies in the intersection, not merely the union, of the two Gershgorin disks. The conjecture was previously known for n ≤ 3 and for eigenvalues equidistant from c and −c. A familiar Weyl-function mechanism, applied to the known Chebyshev form of the characteristic equation, reduces it to a new comparison lemma for an explicit sum of Lorentzians centred at the zeros of U(n−1), evaluated at two points of equal height. The lemma is proved by explicit estimates with finitely many Arb-certified constants for n ≥ 8, elementary arguments for n ≤ 2 and, for 3 ≤ n ≤ 7, an explicit estimate combined with a short interval certificate with rational endpoints and Arb ball arithmetic. Certified examples show that the lens fails for some other spectral measures, for a balanced pencil with one weakened coupling, and for unbalanced pencils. The work was produced by an AI research agent and has not been checked by a human specialist.",
+  "datePublished": "2026-09-25",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22962499",
+  "conceptDoi": "10.5281/zenodo.22962498",
+  "zenodoUrl": "https://zenodo.org/records/22962499",
+  "pdfUrl": "https://github.com/ipitchford/davies-levitin-lens-conjecture/releases/download/v0.1.0-candidate/davies-levitin-lens-conjecture-v0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22962499/files/davies-levitin-lens-conjecture-v0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/davies-levitin-lens-conjecture",
+  "releaseUrl": "https://github.com/ipitchford/davies-levitin-lens-conjecture/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/davies-levitin-lens-conjecture.mp3",
+      "name": "Audio briefing",
+      "description": "AI-generated communication, not additional mathematical evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/davies-levitin-lens-conjecture.txt"
+    }
+  ],
+  "keywords": [
+    "Davies–Levitin conjecture",
+    "Conjecture 5.3 of Davies and Levitin",
+    "indefinite linear pencil",
+    "non-self-adjoint matrices",
+    "non-real eigenvalues",
+    "Krein space",
+    "indefinite Jacobi matrix",
+    "Chebyshev polynomials",
+    "Herglotz functions",
+    "interval arithmetic"
+  ],
+  "problem": {
+    "name": "Davies–Levitin lens conjecture (Conjecture 5.3; AIM 2015 Problem 11.1)",
+    "url": "https://doi.org/10.1016/j.laa.2014.01.025"
+  },
+  "keyResults": [
+    "For every n ≥ 1 and real c, every non-real eigenvalue λ of the 2n×2n pencil H(c) − λS satisfies |λ − c| < 2 and |λ + c| < 2; hence |Re λ| < 2 − |c| (Theorem 1.1).",
+    "A familiar Weyl-function mechanism, applied to the known Chebyshev form, reduces the conjecture to one new comparison lemma, Ψ(x) ≥ Ψ(y) at equal heights, for an explicit Lorentzian sum Ψ over the zeros of U(n−1) (Lemma 3.1); the lemma and its proof are the original contribution.",
+    "The comparison lemma is proved by explicit estimates with finitely many Arb-certified constants for n ≥ 8, elementary arguments for n ≤ 2, and a short fail-closed Arb interval certificate for 3 ≤ n ≤ 7 (minimum margin 0.107).",
+    "Every non-real eigenvalue off the imaginary axis satisfies the hypothesis of Davies–Levitin's asymptotic Theorem 5.4, and their localisation (50) holds for every n in strict form.",
+    "Certified examples show the lens fails for some other spectral measures, for a balanced pencil with one weakened coupling, and for unbalanced pencils m ≠ n (Remark 8.4)."
+  ],
+  "evidence": "Written proof (11 pages); two essential Arb certificates (numerical constants; the inequality for 3 ≤ n ≤ 7) with per-constant and coverage mutation controls; an additional certificate for n ≤ 60 with an independent mpmath re-certification; certified root isolation of the theorem (20,744 non-real eigenvalues, none outside the lens) and of the counterexamples; regression tests for two repaired defects; model-based and internal editorial records.",
+  "statusDetail": "Unrefereed candidate produced by an AI research agent. The theorem rests on a written proof and two short interval-arithmetic certificates. There is no formal verification, independent reproduction or specialist or journal review; asymptotic sharpness of the lens is numerical only; novelty is established only within a bounded literature search.",
+  "openProblems": [
+    "Obtain specialist checking of the written proof and an independent rerun of certificates C1 and C2.",
+    "Replace the interval certificate for 3 ≤ n ≤ 7 by a short elementary inequality.",
+    "Prove the observed 2/3 slack in the comparison lemma and the asymptotic sharpness of the lens.",
+    "Find the correct localisation for unbalanced pencils m ≠ n and other Jacobi blocks, where the lens itself fails (Remark 8.4)."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Davies and Levitin (2014): spectra of a class of non-self-adjoint matrices; Conjecture 5.3 and Theorems 2.3, 3.3 and 5.4.",
+      "url": "https://doi.org/10.1016/j.laa.2014.01.025"
+    },
+    {
+      "citation": "Öztürk (2023): the conjecture for n ≤ 3 and for eigenvalues equidistant from c and −c; the Chebyshev statement (Remark 1.2).",
+      "url": "https://doi.org/10.1002/mma.8766"
+    },
+    {
+      "citation": "Levitin and Öztürk (2018): an associated two-parameter eigenvalue problem.",
+      "url": "https://doi.org/10.1007/978-3-319-75996-8_19"
+    },
+    {
+      "citation": "American Institute of Mathematics (2015): open problems from the workshop Mathematical aspects of physics with non-self-adjoint operators, Problem 11.1.",
+      "url": "https://aimath.org/pastworkshops/nonselfadjointproblems.pdf"
+    }
+  ],
+  "citeText": "Anonymous (2026). A proof of the Davies–Levitin lens conjecture for the indefinite tridiagonal pencil. Version 0.1.0-candidate. Evidence Press. 10.5281/zenodo.22962499.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Research, the response to a commissioned external AI review, the internal editorial gate with its confirmation round, and publication are recorded separately.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Claude (Anthropic) research agent under user direction",
+      "Python with python-flint (FLINT/Arb ball arithmetic), mpmath, NumPy and SymPy",
+      "pdfTeX and pandoc"
+    ],
+    "humanRole": "The user supplied publication authority and copies of two cited sources; scholarly creator Anonymous. No human mathematical contribution is claimed.",
+    "disclosure": "AI-produced research, computation and drafting. A blind model referee, an independent model re-certification, two refute passes by a different AI model, one commissioned AI-based external review, a producer-coordinated five-role AI editorial gate (Minor Revision) and a two-reviewer AI confirmation round (Accept with minor edits). None of these is specialist or journal peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22962499",
+      "note": "Public GitHub prerelease v0.1.0-candidate and published Zenodo record (3 files each); every file matched the SHA-256 sums by server checksum and by independent download."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/davies-levitin-lens-conjecture/blob/v0.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Fresh-extraction replay: manifest; certificates C1 and C2, regression tests and five negative controls in normal and optimised Python; certificate C3 for n ≤ 60; numerical checks."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/davies-levitin-lens-conjecture/actions",
+      "note": "Linux CI (Python 3.12, python-flint 0.9.0) runs the replay; versions are recorded. Typesetting is not pinned."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated internal model reviews do not establish this external assurance dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "An independent model re-certified the n ≤ 60 inequality in mpmath iv from the definitions, inside one producer workflow: implementation diversity, not independent reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Neither the written proof nor the certificates are formalised in a proof assistant."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated internal model reviews do not establish this external assurance dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated internal model reviews do not establish this external assurance dimension."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:davies-levitin-lens-conjecture",
+    "attemptIds": [
+      "ep-attempt:davies-levitin-lens-conjecture-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [],
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "For every n ≥ 1 and real c, every non-real eigenvalue of H(c) − λS lies in the lens |λ − c| < 2, |λ + c| < 2.",
+      "scope": "The balanced 2n×2n pencil with constant diagonal c and unit couplings; the lens fails for unbalanced pencils, weakened couplings and other spectral measures (Remark 8.4)."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The written reduction (Section 3) and Lemmas 4.1 and 5.1–5.4 turn the theorem into the one-variable inequality of Proposition 6.2; Table 1 lists the argument used for each range; certificate C1 checks its numerical constants and certificate C2 covers 3 ≤ n ≤ 7.",
+      "remainingRisks": [
+        "The written proof has not been checked by an independent specialist.",
+        "The certificates trust python-flint 0.9.0 (FLINT/Arb) and exact rational conversion.",
+        "Asymptotic sharpness and the 2/3 slack are numerical observations."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Assess the written reduction and the x-side and y-side lemmas.",
+      "Preserve the candidate status and the bounded novelty wording.",
+      "Publication is authorised; external review is a separate dimension."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Specialist checking of the written proof and an independent rerun of certificates C1 and C2; external review is not a publication prerequisite.",
+      "claimCeiling": "Unrefereed candidate. A written proof with two essential interval certificates; formal verification, external review and unconditional priority are not established."
+    },
+    "impactClaims": [
+      {
+        "id": "davies-levitin-lens-conjecture-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable proof of a stated conjecture",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "schemaVersion": "1.0",
+      "reviewId": "davies-levitin-lens-internal-editorial-v1",
+      "reviewClass": "editorial-assessment",
+      "status": "published",
+      "subject": {
+        "canonicalUrl": "https://evidencepress.org/releases/davies-levitin-lens-conjecture/",
+        "doi": "10.5281/zenodo.22962499",
+        "version": "0.1.0-candidate",
+        "releaseTag": "v0.1.0-candidate",
+        "title": "A proof of the Davies–Levitin lens conjecture for the indefinite tridiagonal pencil"
+      },
+      "reviewer": {
+        "name": "Five internal model editorial roles and two confirmation reviewers",
+        "independence": "producer-coordinated"
+      },
+      "assessment": {
+        "title": "Internal five-role editorial assessment with confirmation round",
+        "date": "2026-09-25",
+        "recommendation": "Minor Revision"
+      },
+      "assuranceImpact": {
+        "changesVerificationStatus": false,
+        "changesPeerReviewedFlag": false,
+        "changesIndependentReproductionFlag": false,
+        "changesFormalVerificationFlag": false,
+        "explanation": "Producer-coordinated model review does not establish external peer review, reproduction or formal proof."
+      },
+      "publication": {
+        "publicUrl": "https://github.com/ipitchford/davies-levitin-lens-conjecture/blob/v0.1.0-candidate/review/EDITORIAL_DECISION.md",
+        "publicSummary": "Five roles reviewed one frozen target (all Minor Revision; no error found in the proof). All 51 items were answered in one repair batch; 50 were made and one journal-version note was deferred. Material repairs added certified counterexamples for unbalanced pencils and a weakened coupling, reframed the reduction as a known mechanism, and hardened the essential certificates. Two confirmation reviewers accepted the repairs with minor edits, which were applied."
+      }
+    }
+  ],
+  "narration": "Picture a chain of sites, an even number of them. Every site carries the same value, and each neighbouring pair is linked with the same strength. Now give the left half of the chain a weight of plus one and the right half a weight of minus one. The eigenvalue problem for this chain is not symmetric in the usual sense, so some of its eigenvalues are complex numbers. A classical theorem of Gershgorin places every eigenvalue inside one of two disks of radius two, one centred at the site value and one at its negative. In twenty fourteen, Brian Davies and Michael Levitin conjectured, from computer experiments, something much sharper: that every complex eigenvalue lies inside both disks at once, in the lens-shaped region where they overlap. The question was listed among the open problems of a twenty fifteen workshop on non-self-adjoint operators in physics. Until now it was proved only for chains of at most six sites, and for eigenvalues that are purely imaginary. This release proves the conjecture for chains of every length. The proof rewrites the eigenvalue equation using Chebyshev polynomials, and a familiar step reduces it to comparing one explicit function at two points of equal height. The new part is the proof of that comparison. Explicit estimates, backed by a handful of computer-certified numerical constants, handle long chains. For chain lengths from six to fourteen sites, one short computer check in rigorous interval arithmetic completes the argument. The paper also shows, with certified examples, that the lens fails for chains with unequal halves, for a chain with one weakened link, and for other simple weightings, so the exact structure is essential. The research and the proof were produced by an AI research agent. The main limitation is this: the proof has been checked by the producing workflow and by several AI reviewers, but not yet by any human specialist, and nothing has been formally verified. This is an unrefereed candidate from Evidence Press, dated September twenty-fifth, twenty twenty-six. The paper, certificates and review records are linked from the release page."
+}
