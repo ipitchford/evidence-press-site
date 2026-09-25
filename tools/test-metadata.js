@@ -449,6 +449,29 @@ for (const paper of papersDoc.papers) {
 check('per-release research metrics derive only from linked prospective attempts',
   researchMetricsDrift.length === 0, researchMetricsDrift.join('\n  '));
 
+/* Reader-value correction (23 September 2026): process metadata is machine-only. Reader surfaces
+   (release HTML, release Markdown, llms-full.txt) must not render it; each release's paper.json keeps it. */
+const PROCESS_MARKERS = ['Research process, metrics', 'research-process-and-reusable-methods', 'research-metrics-receipt'];
+const processLeaks = [];
+for (const paper of papersDoc.papers)
+  for (const rel of ['index.html', 'index.md']) {
+    const text = fs.readFileSync(path.join(DIST, 'releases', paper.slug, rel), 'utf8');
+    if (PROCESS_MARKERS.some(marker => text.includes(marker))) processLeaks.push(`${paper.slug}/${rel}`);
+  }
+if (fs.existsSync(path.join(DIST, 'llms-full.txt')) &&
+    PROCESS_MARKERS.some(marker => fs.readFileSync(path.join(DIST, 'llms-full.txt'), 'utf8').includes(marker)))
+  processLeaks.push('llms-full.txt');
+check('release reader surfaces render no process-metadata section', processLeaks.length === 0, processLeaks.join(', '));
+const machineLoss = [];
+for (const paper of papersDoc.papers) {
+  const authored = sourceBySlug.get(paper.slug);
+  if (!(authored && authored.operatingModel)) continue;
+  const perRelease = JSON.parse(fs.readFileSync(path.join(DIST, 'releases', paper.slug, 'paper.json'), 'utf8'));
+  if (!sameJson(perRelease.operatingModel, authored.operatingModel) || !perRelease.researchMetrics)
+    machineLoss.push(paper.slug);
+}
+check('per-release paper.json keeps operating model and research metrics', machineLoss.length === 0, machineLoss.join(', '));
+
 const operatingPageFiles = ['operating-model/index.html', 'operating-model/index.md', 'operating-model/index.json',
   'research-metrics/index.html', 'research-metrics/index.md', 'research-metrics/index.json'];
 check('operating doctrine ships human, Markdown and machine representations',

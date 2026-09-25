@@ -277,69 +277,14 @@ check('canonical doctrine, registries, ledgers and frozen baseline validate', va
 
 /* Exercise future render paths even though the frozen legacy baseline contains
    no prospective records by design. */
-function extractFunction(source, name) {
-  const start = source.indexOf(`function ${name}(`);
-  if (start === -1) throw new Error(`cannot find ${name} in build.js`);
-  let cursor = source.indexOf('{', start);
-  let depth = 0;
-  for (; cursor < source.length; cursor++) {
-    if (source[cursor] === '{') depth++;
-    else if (source[cursor] === '}') {
-      depth--;
-      if (depth === 0) break;
-    }
-  }
-  if (depth !== 0) throw new Error(`unbalanced ${name} in build.js`);
-  return source.slice(start, cursor + 1);
-}
-
 {
+  /* Reader-value correction (23 September 2026): process metadata is machine-only. It must stay in
+     paper.json and the API ledgers (checked against the built site in test-metadata.js) and must never be
+     rendered into release HTML or Markdown again. */
   const buildSource = fs.readFileSync(path.join(root, 'build.js'), 'utf8');
-  const renderHarness = new Function('METHOD_BY_ID', 'IBE_BY_ID', 'WORK_ATTEMPT_BY_ID', 'BASE', 'esc', 'rounded', [
-    extractFunction(buildSource, 'operatingModelHtml'),
-    extractFunction(buildSource, 'operatingModelMarkdown'),
-    'return { operatingModelHtml, operatingModelMarkdown };'
-  ].join('\n'));
-  const methodById = new Map(sourceArtifacts.registry.methods.map(method => [method.id, method]));
-  const ibeById = new Map(sourceArtifacts.ledger.hypotheses.map(hypothesis => [hypothesis.id, hypothesis]));
-  const attempt = attemptFor('future-test-release');
-  const attemptById = new Map([[attempt.attemptId, attempt]]);
-  const esc = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  const rounded = (value, places = 2) => Math.round(value * (10 ** places)) / (10 ** places);
-  const render = renderHarness(methodById, ibeById, attemptById, 'https://evidencepress.org', esc, rounded);
-  const fixture = recordFor('future-test-release');
-  const html = render.operatingModelHtml(fixture);
-  const markdown = render.operatingModelMarkdown(fixture);
-  check('prospective HTML renders receipt, method and scoped non-impact status',
-    html.includes('ep-attempt:future-test-release') && html.includes('Certificate-first') && html.includes('NO_IMPACT_EVIDENCE'), html);
-  check('prospective Markdown links method, IBE and work ledgers',
-    markdown.includes('/api/method-registry.json') && markdown.includes('/api/ibe-ledger.json') && markdown.includes('/api/work-ledger.json'), markdown);
-  const measuredAttempt = postPolicyAttemptFor('future-measured-render');
-  measuredAttempt.corrections.push({
-    at: '2026-08-29T14:03:58Z',
-    fields: ['metrics.outcome.calendarElapsedMinutes'],
-    reason: 'The frozen phase measurement was narrower than the user-visible request-to-readback interval.',
-    replacement: 'Retain the immutable phase measurement and record the reported end-to-end interval as 83 minutes.',
-    evidenceRefs: ['https://evidencepress.org/releases/future-measured-render/']
-  });
-  measuredAttempt.measurement.correctionCount = 1;
-  const measuredRender = renderHarness(methodById, ibeById, new Map([[measuredAttempt.attemptId, measuredAttempt]]), 'https://evidencepress.org', esc, rounded);
-  const measuredFixture = recordFor('future-measured-render');
-  const measuredHtml = measuredRender.operatingModelHtml(measuredFixture);
-  const measuredMarkdown = measuredRender.operatingModelMarkdown(measuredFixture);
-  check('measured release HTML publishes Fermi forecast, cycles, result and calibration',
-    measuredHtml.includes('Fermi active-time forecast') && measuredHtml.includes('Research search') &&
-      measuredHtml.includes('positive-signal') && measuredHtml.includes('actual/forecast 1') &&
-      measuredHtml.includes('target closure 0.0625'), measuredHtml);
-  check('measured release HTML publishes append-only measurement corrections',
-    measuredHtml.includes('Measurement corrections') && measuredHtml.includes('83 minutes') &&
-      measuredHtml.includes('immutable phase measurement'), measuredHtml);
-  check('measured release Markdown publishes scope, probabilities and rejected-route counts',
-    measuredMarkdown.includes('scope research-through-publication') && measuredMarkdown.includes('positive-signal/closure probabilities 0.6/0.25') &&
-      measuredMarkdown.includes('architectures tested/rejected 1/0') &&
-      measuredMarkdown.includes('positive-signal/target-closure Brier scores 0.16/0.0625'), measuredMarkdown);
-  check('legacy release renderer emits no invented process section',
-    render.operatingModelHtml({ slug: 'legacy' }) === '' && render.operatingModelMarkdown({ slug: 'legacy' }) === '');
+  check('release renderer emits no process-metadata section',
+    !buildSource.includes('Research process, metrics') && !buildSource.includes('research-process-and-reusable-methods') &&
+      !buildSource.includes('research-metrics-receipt') && !/function operatingModel(Html|Markdown)\(/.test(buildSource));
 }
 
 {
