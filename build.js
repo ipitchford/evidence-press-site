@@ -47,8 +47,6 @@ const PAGE_STRUCTURE_POLICY = JSON.parse(fs.readFileSync(path.join(ROOT, 'data',
 const PRESENTATION_EVENTS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'PRESENTATION_EVENTS.json'), 'utf8'));
 const AUDIO_PROVENANCE_STATUS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'AUDIO_PROVENANCE_STATUS.json'), 'utf8'));
 const ARTICLE_SCHEMA = JSON.parse(fs.readFileSync(path.join(ROOT, 'schemas', 'article.schema.json'), 'utf8'));
-const METHOD_BY_ID = new Map(OPERATING_ARTIFACTS.registry.methods.map(method => [method.id, method]));
-const IBE_BY_ID = new Map(OPERATING_ARTIFACTS.ledger.hypotheses.map(hypothesis => [hypothesis.id, hypothesis]));
 const WORK_ATTEMPT_BY_ID = new Map(OPERATING_ARTIFACTS.workLedger.attempts.map(attempt => [attempt.attemptId, attempt]));
 const BASE = CONFIG.baseUrl.replace(/\/$/, '');
 const SCHEMA_VERSION = '1.6';
@@ -58,10 +56,6 @@ const MATH_OBJECT_KINDS = [
   'generating-function', 'sequence', 'counterexample', 'obstruction'
 ];
 
-function rounded(value, places = 2) {
-  const scale = 10 ** places;
-  return Math.round(value * scale) / scale;
-}
 const MATH_OBJECT_STATUSES = [
   'claimed-result', 'supporting-result', 'computed-finite', 'definition',
   'conjecture', 'open-problem', 'counterexample'
@@ -1092,147 +1086,9 @@ function signposting(p) {
   ].join('\n') + '\n';
 }
 
-/* Prospective operating metadata is rendered from the same source object on
-   every release surface. Legacy releases deliberately omit it: reconstructing
-   old process clocks or judgement gates from publication artefacts would turn
-   missing observations into invented data. */
-function operatingModelHtml(p) {
-  const record = p.operatingModel;
-  if (!record) return '';
-  const methods = record.accelerationPrimitives.map(id => {
-    const method = METHOD_BY_ID.get(id);
-    return method ? `${esc(method.name)} (<code>${esc(id)}</code>)` : `<code>${esc(id)}</code>`;
-  }).join('; ');
-  const hypotheses = (record.ibeHypotheses || []).map(id => {
-    const hypothesis = IBE_BY_ID.get(id);
-    return hypothesis ? `${esc(hypothesis.hypothesis)} (<code>${esc(id)}</code>)` : `<code>${esc(id)}</code>`;
-  }).join('; ');
-  const attempts = record.attemptIds.map(id => {
-    const attempt = WORK_ATTEMPT_BY_ID.get(id);
-    if (!attempt) return `<li><code>${esc(id)}</code> — unresolved (the build validator should reject this record)</li>`;
-    if (attempt.metrics) {
-      const metrics = attempt.metrics;
-      const forecast = metrics.forecast;
-      const outcome = metrics.outcome;
-      const components = forecast.fermiComponents.map(component =>
-        `<li>${esc(component.component)}: ${esc(component.count)} × ${esc(component.lowMinutesPerUnit)}/${esc(component.centralMinutesPerUnit)}/${esc(component.highMinutesPerUnit)} minutes (low/central/high) — ${esc(component.basis)}</li>`).join('');
-      const positiveSignalBrier = outcome && typeof outcome.positiveSignalObserved === 'boolean'
-        ? (forecast.probabilityPositiveSignal - Number(outcome.positiveSignalObserved)) ** 2
-        : null;
-      const targetClosureBrier = outcome
-        ? (forecast.probabilityTargetClosure - Number(outcome.targetReached)) ** 2
-        : null;
-      const corrections = (attempt.corrections || []).length
-        ? `<dt>Measurement corrections</dt><dd><ul>${attempt.corrections.map(correction =>
-          `<li><strong>${esc(correction.field)}</strong> — ${esc(correction.replacement)} <span class="note">Reason: ${esc(correction.reason)}</span></li>`
-        ).join('')}</ul></dd>`
-        : '';
-      const result = outcome ? [
-        `<dt>Observed clocks</dt><dd>${esc(outcome.activeAgentMinutes)} active-agent; ${esc(outcome.activeHumanMinutes ?? 'unknown')} active-human; ${esc(outcome.computeMinutes ?? 'unknown')} substantive-compute; ${esc(outcome.unattendedWaitMinutes)} unattended-wait; ${esc(outcome.blockedMinutes)} blocked; ${esc(outcome.reworkMinutes)} rework minutes. Calendar elapsed: ${esc(outcome.calendarElapsedMinutes)} minutes.</dd>`,
-        `<dt>Research search</dt><dd>Cycles: ${esc(outcome.researchCycles.positive)} positive, ${esc(outcome.researchCycles.negative)} negative, ${esc(outcome.researchCycles.inconclusive)} inconclusive. Falsification gates: ${esc(outcome.falsificationGatesRun)}. Candidate architectures: ${esc(outcome.candidateArchitecturesTested)} tested, ${esc(outcome.candidateArchitecturesRejected)} rejected.</dd>`,
-        `<dt>Agent and review load</dt><dd>${esc(outcome.agentRuns)} agent runs; maximum parallelism ${esc(outcome.maxParallelAgents)}; ${esc(outcome.modelTurns)} model turns; ${esc(outcome.deduplicatedModelTokens ?? 'unknown')} deduplicated model tokens; ${esc(outcome.substantiveReviewRounds)} substantive review rounds; P0/P1 findings ${esc(outcome.p0Findings)}/${esc(outcome.p1Findings)}; pre-publication claim corrections ${esc(outcome.prepublicationClaimCorrections)}.</dd>`,
-        `<dt>Result and calibration</dt><dd><code>${esc(outcome.resultState)}</code> — ${esc(outcome.resultSummary)} Positive signal: ${esc(outcome.positiveSignalObserved === null ? 'not adjudicated' : outcome.positiveSignalObserved)}; target reached: ${esc(outcome.targetReached)}. Active-time error ${esc(outcome.forecastErrorMinutes)} minutes; actual/forecast ${esc(outcome.forecastRatio)}; inside interval: ${esc(outcome.withinForecastInterval)}. Brier score: positive signal ${esc(positiveSignalBrier === null ? 'not scored' : rounded(positiveSignalBrier, 4))}; target closure ${esc(rounded(targetClosureBrier, 4))}.${outcome.varianceReason ? ` Variance: ${esc(outcome.varianceReason)}` : ''}</dd>`,
-        ...(outcome.missingFields.length ? [`<dt>Missing telemetry</dt><dd>${outcome.missingFields.map(item => `${esc(item.field)} — ${esc(item.reason)}`).join('; ')}</dd>`] : [])
-      ].join('') : '<dt>Outcome</dt><dd>Not terminal; no outcome is frozen yet.</dd>';
-      return `<li><article class="research-metrics-receipt"><p><code>${esc(id)}</code> — ${esc(attempt.status)} / ${esc(attempt.resultClass)}</p><dl>
-        <dt>Measurement scope</dt><dd><code>${esc(metrics.measurementScope)}</code> — ${esc(metrics.scopeBoundary)}</dd>
-        <dt>Frozen target</dt><dd>${esc(forecast.targetOutcome)}</dd>
-        <dt>Fermi active-time forecast</dt><dd>${esc(forecast.expectedActiveMinutes)} minutes; plausible interval ${esc(forecast.plausibleLowMinutes)}–${esc(forecast.plausibleHighMinutes)}; expected unattended wait ${esc(forecast.expectedUnattendedWaitMinutes)}. Reference class: ${esc(forecast.referenceClass.label)} (n=${esc(forecast.referenceClass.sampleSize)}) — ${esc(forecast.referenceClass.basis)}.<ul>${components}</ul></dd>
-        <dt>Tractability forecast</dt><dd>Within ${esc(forecast.probabilityHorizonMinutes)} active minutes: positive signal ${esc(forecast.probabilityPositiveSignal)}; target closure ${esc(forecast.probabilityTargetClosure)}. Stop rule: ${esc(forecast.stopRule)}</dd>
-        ${result}
-        ${corrections}
-      </dl></article></li>`;
-    }
-    const measurement = attempt.measurement;
-    const resources = measurement.status === 'not-recorded'
-      ? `measurement not recorded: ${esc(measurement.missingnessReason)}`
-      : `${esc(measurement.status)}; active human minutes ${esc(measurement.activeHumanMinutes ?? 'missing')}; compute minutes ${esc(measurement.computeMinutes ?? 'missing')}; rework minutes ${esc(measurement.reworkMinutes ?? 'missing')}`;
-    return `<li><code>${esc(id)}</code> — ${esc(attempt.status)} / ${esc(attempt.resultClass)}; research metrics were not recorded under the policy effective 28 August 2026; earlier ledger status: ${resources}; assurance endpoint ${esc(attempt.assuranceEndpoint.status)}</li>`;
-  }).join('');
-  const impactClaims = record.impactClaims.map(claim => `<li><strong>${esc(claim.aim)}</strong>: <code>${esc(claim.status)}</code> — ${esc(claim.outcome)} in ${esc(claim.setting)}. Design: ${esc(claim.designClass)}; comparator: ${esc(claim.comparator)}; estimand: ${esc(claim.estimand)}.${claim.evidenceRefs.length ? ` Evidence: ${claim.evidenceRefs.map(ref => `<a href="${esc(ref)}" rel="noopener">record</a>`).join(', ')}.` : ' No real-world effect evidence is asserted.'}</li>`).join('');
-  const parents = record.parentLinks.map(parent => {
-    const target = parent.workId || parent.legacyReleaseSlug || parent.externalUrl;
-    return `<li>${esc(parent.relation)} <code>${esc(target)}</code> — inherited claim: ${esc(parent.inheritedClaim)}; inherited ceiling: ${esc(parent.inheritedAssuranceCeiling)}</li>`;
-  }).join('');
-  return `<section class="operating-model"><h2 id="research-process-and-reusable-methods">Research process, metrics and reusable methods</h2>
-    <p class="note">Prospective process metadata under the <a href="/operating-model/">Evidence Press operating model</a> and <a href="/research-metrics/">research-metrics policy</a>. It records the intended handoff, measured scope and claim boundary; it is not evidence that the method accelerated this work.</p>
-    <dl>
-      <dt>Work ID</dt><dd><code>${esc(record.workId)}</code></dd>
-      <dt>Attempt and metric receipts</dt><dd><ul>${attempts}</ul><a href="/api/work-ledger.json">Prospective work ledger</a> · <a href="/api/research-metrics-policy.json">metrics policy</a></dd>
-      <dt>Intended aims</dt><dd>${record.aims.map(esc).join(', ')}</dd>
-      <dt>Artifact roles</dt><dd>${record.artifactRoles.map(esc).join(', ')}</dd>
-      <dt>Decision object</dt><dd>${esc(record.decisionObject.type)} — ${esc(record.decisionObject.description)} <span class="note">Scope: ${esc(record.decisionObject.scope)}</span></dd>
-      <dt>Reusable methods</dt><dd>${methods} · <a href="/api/method-registry.json">registry</a></dd>
-      <dt>Targeted clocks</dt><dd>${record.bottleneckTargeted.map(esc).join(', ')}</dd>
-      <dt>Semantic bridge</dt><dd>${esc(record.semanticBridge.state)} — ${esc(record.semanticBridge.description)}${record.semanticBridge.remainingRisks.length ? ` Remaining risks: ${record.semanticBridge.remainingRisks.map(esc).join('; ')}.` : ''}</dd>
-      <dt>Human judgement gates</dt><dd><ul>${record.humanJudgmentGates.map(gate => `<li>${esc(gate)}</li>`).join('')}</ul></dd>
-      <dt>Next assurance action</dt><dd>${esc(record.assuranceTarget.nextAction)} Claim ceiling: ${esc(record.assuranceTarget.claimCeiling)}</dd>
-      <dt>Aim-scoped impact evidence</dt><dd><ul>${impactClaims}</ul></dd>
-      ${parents ? `<dt>Parent handoffs</dt><dd><ul>${parents}</ul></dd>` : ''}
-      ${hypotheses ? `<dt>Defeasible explanations</dt><dd>${hypotheses} · <a href="/api/ibe-ledger.json">IBE ledger</a></dd>` : ''}
-    </dl>
-  </section>`;
-}
-
-function operatingModelMarkdown(p) {
-  const record = p.operatingModel;
-  if (!record) return '';
-  const methods = record.accelerationPrimitives.map(id => `${METHOD_BY_ID.get(id)?.name || id} (${id})`).join('; ');
-  const hypotheses = (record.ibeHypotheses || []).map(id => `${IBE_BY_ID.get(id)?.hypothesis || id} (${id})`).join('; ');
-  const attempts = record.attemptIds.map(id => {
-    const attempt = WORK_ATTEMPT_BY_ID.get(id);
-    if (!attempt) return `${id}: unresolved`;
-    if (attempt.metrics) {
-      const metrics = attempt.metrics;
-      const forecast = metrics.forecast;
-      const components = forecast.fermiComponents.map(component =>
-        `${component.component}: ${component.count} x ${component.lowMinutesPerUnit}/${component.centralMinutesPerUnit}/${component.highMinutesPerUnit} minutes low/central/high (${component.basis})`).join('; ');
-      if (!metrics.outcome) return `${id}: ${attempt.status} / ${attempt.resultClass}; scope ${metrics.measurementScope}; target ${forecast.targetOutcome}; active forecast ${forecast.expectedActiveMinutes} minutes (${forecast.plausibleLowMinutes}-${forecast.plausibleHighMinutes}); Fermi components ${components}; positive-signal/closure probabilities ${forecast.probabilityPositiveSignal}/${forecast.probabilityTargetClosure} within ${forecast.probabilityHorizonMinutes} active minutes; outcome not yet frozen`;
-      const outcome = metrics.outcome;
-      const missing = outcome.missingFields.length ? `; missing telemetry ${outcome.missingFields.map(item => `${item.field}: ${item.reason}`).join('; ')}` : '';
-      const positiveSignalBrier = typeof outcome.positiveSignalObserved === 'boolean'
-        ? rounded((forecast.probabilityPositiveSignal - Number(outcome.positiveSignalObserved)) ** 2, 4)
-        : 'not scored';
-      const targetClosureBrier = rounded((forecast.probabilityTargetClosure - Number(outcome.targetReached)) ** 2, 4);
-      const corrections = (attempt.corrections || []).length
-        ? `; appended measurement corrections ${attempt.corrections.map(correction => `${correction.field}: ${correction.replacement} (reason: ${correction.reason})`).join('; ')}`
-        : '';
-      return `${id}: ${attempt.status} / ${attempt.resultClass}; scope ${metrics.measurementScope}; target ${forecast.targetOutcome}; active forecast ${forecast.expectedActiveMinutes} minutes (${forecast.plausibleLowMinutes}-${forecast.plausibleHighMinutes}); Fermi components ${components}; positive-signal/closure probabilities ${forecast.probabilityPositiveSignal}/${forecast.probabilityTargetClosure} within ${forecast.probabilityHorizonMinutes} active minutes; observed active-agent/human/compute/wait/blocked/rework minutes ${outcome.activeAgentMinutes}/${outcome.activeHumanMinutes ?? 'unknown'}/${outcome.computeMinutes ?? 'unknown'}/${outcome.unattendedWaitMinutes}/${outcome.blockedMinutes}/${outcome.reworkMinutes}; cycles positive/negative/inconclusive ${outcome.researchCycles.positive}/${outcome.researchCycles.negative}/${outcome.researchCycles.inconclusive}; falsification gates ${outcome.falsificationGatesRun}; architectures tested/rejected ${outcome.candidateArchitecturesTested}/${outcome.candidateArchitecturesRejected}; result ${outcome.resultState}; target reached ${outcome.targetReached}; forecast error ${outcome.forecastErrorMinutes} minutes; ratio ${outcome.forecastRatio}; inside interval ${outcome.withinForecastInterval}; positive-signal/target-closure Brier scores ${positiveSignalBrier}/${targetClosureBrier}${missing}${corrections}`;
-    }
-    const measurement = attempt.measurement.status === 'not-recorded'
-      ? `measurement not recorded (${attempt.measurement.missingnessReason})`
-      : `${attempt.measurement.status}; active human minutes ${attempt.measurement.activeHumanMinutes ?? 'missing'}; compute minutes ${attempt.measurement.computeMinutes ?? 'missing'}; rework minutes ${attempt.measurement.reworkMinutes ?? 'missing'}`;
-    return `${id}: ${attempt.status} / ${attempt.resultClass}; research metrics were not recorded under the policy effective 28 August 2026; earlier ledger status ${measurement}; assurance endpoint ${attempt.assuranceEndpoint.status}`;
-  }).join('; ');
-  const impactClaims = record.impactClaims.map(claim =>
-    `${claim.aim}: ${claim.status} — ${claim.outcome} in ${claim.setting}; design ${claim.designClass}; comparator ${claim.comparator}; estimand ${claim.estimand}${claim.evidenceRefs.length ? `; evidence ${claim.evidenceRefs.join(', ')}` : '; no real-world effect evidence asserted'}`
-  ).join('\n  - ');
-  const parents = record.parentLinks.map(parent => {
-    const target = parent.workId || parent.legacyReleaseSlug || parent.externalUrl;
-    return `${parent.relation} ${target}; inherited claim: ${parent.inheritedClaim}; inherited ceiling: ${parent.inheritedAssuranceCeiling}`;
-  }).join('; ');
-  return `## Research process, metrics and reusable methods
-
-This is prospective process metadata under the Evidence Press operating model and research-metrics policy. It records the intended handoff, measured scope and claim boundary; it is not evidence that the method accelerated this work.
-
-- Work ID: ${record.workId}
-- Attempt and metric receipts: ${attempts}. Work ledger: ${BASE}/api/work-ledger.json. Metrics policy: ${BASE}/api/research-metrics-policy.json
-- Intended aims: ${record.aims.join(', ')}
-- Artifact roles: ${record.artifactRoles.join(', ')}
-- Decision object: ${record.decisionObject.type} — ${record.decisionObject.description} Scope: ${record.decisionObject.scope}
-- Reusable methods: ${methods}. Registry: ${BASE}/api/method-registry.json
-- Targeted clocks: ${record.bottleneckTargeted.join(', ')}
-- Semantic bridge: ${record.semanticBridge.state} — ${record.semanticBridge.description}${record.semanticBridge.remainingRisks.length ? ` Remaining risks: ${record.semanticBridge.remainingRisks.join('; ')}.` : ''}
-- Human judgement gates: ${record.humanJudgmentGates.join('; ')}
-- Next assurance action: ${record.assuranceTarget.nextAction}
-- Claim ceiling: ${record.assuranceTarget.claimCeiling}
-- Aim-scoped impact evidence:
-  - ${impactClaims}
-${parents ? `- Parent handoffs: ${parents}\n` : ''}
-${hypotheses ? `- Defeasible explanations: ${hypotheses}. IBE ledger: ${BASE}/api/ibe-ledger.json\n` : ''}
-`;
-}
-
+/* Process metadata (operating model, research metrics) is machine-only: it
+   ships in paper.json and the API ledgers, never in release HTML or Markdown
+   (reader-value correction, 23 September 2026). */
 /* --------------------------------------------------------- paper pages */
 function paperPage(p) {
   const url = urlOf(p);
@@ -1309,8 +1165,6 @@ ${media ? `<section class="media-section"><h2 id="media">Media</h2>${media}</sec
         <p class="note">Also available in <a href="${url}paper.json">machine-readable form</a> for research agents and follow-up projects.</p>
         <ol>${open}</ol></section>` : ''}
 
-        ${operatingModelHtml(p)}
-
         <section class="verify"><h2 id="verification-status">Verification status</h2>
         <p>${inline(p.statusDetail)}</p></section>
 
@@ -1380,7 +1234,6 @@ ${mathObjectsMarkdown(p)}
 
 ${(p.openProblems || []).map(o => `- ${o}`).join('\n')}
 
-${operatingModelMarkdown(p)}
 ## Verification status
 
 ${p.statusDetail}
@@ -2385,7 +2238,7 @@ function llms() {
       ...(p.mathObjects && p.mathObjects.length ? [mathObjectsMarkdown(p).trim(), ''] : []),
       `## Open directions (machine-readable copy at ${urlOf(p)}paper.json)`, '',
       ...(p.openProblems || []).map(o => `- ${o}`), '',
-      ...(p.operatingModel ? [operatingModelMarkdown(p).trim(), ''] : [])
+      ...(p.operatingModel ? [`- Process metadata (operating model and research metrics): ${urlOf(p)}paper.json`, ''] : [])
     ]),
     ...articles.flatMap(article => [
       '---', '', `# ${article.title}`, '',
