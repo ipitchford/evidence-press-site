@@ -16993,9 +16993,9 @@
       "workId": "ep-work:davies-levitin-lens-conjecture",
       "cohort": "prospective",
       "registeredAt": "2026-09-25T16:11:46Z",
-      "status": "active",
-      "statusAt": "2026-09-25T16:11:46Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-25T19:11:30Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -17072,7 +17072,59 @@
           ],
           "stopRule": "Timing is telemetry, not a cap; continue unless integrity, rights or provider access blocks publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-25T19:11:30Z",
+          "calendarElapsedMinutes": 180,
+          "activeAgentMinutes": 60,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 15,
+          "blockedMinutes": 105,
+          "reworkMinutes": 10,
+          "agentRuns": 7,
+          "maxParallelAgents": 5,
+          "modelTurns": 8,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 0,
+            "negative": 0,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 10,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 2,
+          "prepublicationClaimCorrections": 3,
+          "resultState": "target-closed",
+          "resultSummary": "Five-role internal gate: all Minor Revision, no error found in the proof; 51 items, 50 applied and 1 deferred (2 Major: AI-use disclosure; false m != n extension replaced by certified counterexamples). Two-reviewer confirmation round: Accept with minor edits, applied. Deterministic batches passed on the confirmation target and the final archive; GitHub/Zenodo byte parity verified by server checksum and download; canonical page read back after guarded deployment (one registry change-log fix PR). DOI registration at DataCite was still pending at readback.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": -120,
+          "forecastRatio": 0.3333,
+          "withinForecastInterval": false,
+          "varianceReason": "Active minutes are an estimate from session timestamps: registration 16:11:46Z to the pause at about 16:45Z, and resumption at about 18:50Z to readback. About 105 minutes were blocked by a model-provider usage limit that stopped both confirmation reviewers; about 15 minutes were reviewer and CI waiting. Part of the five-role gate ran before registration and is left-censored. Rework covers the sanitisation re-run and the registry change-log fix. modelTurns is a lower bound (distinct root and reviewer invocations). Below the forecast interval because the pre-registration LaTeX and review repairs had already been done; no speed or impact comparison.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No separately instrumented total."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Fork-aware runtime counter unavailable."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Runtime token/cache accounting unavailable."
+            }
+          ]
+        }
       },
       "selectionBasis": "User-supplied completed candidate with explicit authority (25 Sep 2026) to action a commissioned external review and take the release through the full Evidence Press publishing workflow.",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -17085,23 +17137,84 @@
         "reason": "Selected single publication attempt."
       },
       "measurement": {
-        "status": "not-recorded",
-        "missingnessReason": "Pending: recorded at the terminal outcome after canonical readback. Prospective publication-scope measurement from this registration: action of the commissioned external AI review (already applied at registration), deterministic readiness baseline, the mandatory five-role internal editorial gate with one repair batch, research repository and immutable GitHub/Zenodo identity, Evidence Press page, media and canonical readback. The procedural forecast below was frozen in the local publication state at 2026-09-25T15:49:44Z and is copied unchanged. Problem selection, discovery, the proof, certificates, earlier model reviews, the LaTeX conversion and the external-review repairs before registration are left-censored and are not reconstructed. No acceleration comparison.",
-        "milestones": [],
+        "status": "measured-partial",
+        "missingnessReason": "Prospective publication-scope measurement from registration. Active minutes estimated from session timestamps; human effort, compute and fork-aware token totals unavailable. Discovery and pre-registration work left-censored.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-25T16:11:46Z",
+            "basis": "Ledger registration at publication intake."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-25T19:11:30Z",
+            "basis": "First canonical publication readback after guarded production deployment."
+          }
+        ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": null,
-        "reworkMinutes": null,
-        "correctionCount": null
+        "agentRuns": 7,
+        "reworkMinutes": 10,
+        "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Pending: assessed at release after canonical readback."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-25T19:11:30Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/22962499"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/davies-levitin-lens-conjecture/blob/v0.1.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/davies-levitin-lens-conjecture/blob/v0.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate; a written proof with two essential interval certificates; no formal verification, independent reproduction or specialist review.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/davies-levitin-lens-conjecture/",
+          "https://zenodo.org/records/22962499"
+        ],
+        "missingnessReason": null
       },
       "releaseSlug": "davies-levitin-lens-conjecture",
       "stopReason": null,
@@ -17112,6 +17225,16 @@
           "resultClass": "pending",
           "reason": "Prospective publication-scope measurement from this registration: action of the commissioned external AI review (already applied at registration), deterministic readiness baseline, the mandatory five-role internal editorial gate with one repair batch, research repository and immutable GitHub/Zenodo identity, Evidence Press page, media and canonical readback. The procedural forecast below was frozen in the local publication state at 2026-09-25T15:49:44Z and is copied unchanged. Problem selection, discovery, the proof, certificates, earlier model reviews, the LaTeX conversion and the external-review repairs before registration are left-censored and are not reconstructed. No acceleration comparison.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-25T19:11:30Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "All research assets and the guarded canonical deployment passed public readback; the confirmation round accepted the repairs with minor edits.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/davies-levitin-lens-conjecture/",
+            "https://zenodo.org/records/22962499"
+          ]
         }
       ],
       "corrections": [],
@@ -17119,6 +17242,10 @@
         {
           "date": "2026-09-25",
           "summary": "Registered at publication intake with the frozen decomposed procedural forecast; research predating registration is left-censored."
+        },
+        {
+          "date": "2026-09-25",
+          "summary": "Terminal outcome recorded after first canonical readback."
         }
       ]
     }
@@ -17641,6 +17768,10 @@
     {
       "date": "2026-09-25",
       "summary": "Registered the Davies\u2013Levitin lens conjecture publication attempt (publication scope; discovery left-censored)."
+    },
+    {
+      "date": "2026-09-25",
+      "summary": "Recorded the Davies-Levitin lens conjecture publication outcome after canonical readback."
     }
   ]
 }
