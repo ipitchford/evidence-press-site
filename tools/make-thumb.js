@@ -700,6 +700,14 @@ SPECS['catenary-placement-classification'] = {
  hero:'<div class="eq-label">the structural question</div><div class="eq eq-sm">Known placement<br><span class="hl">Distinguishable rates?</span></div><div class="note">All chain lengths. Arbitrary prescribed ports and leaks. <b>Local</b> identifiability with ideal transfer data.</div><div class="eq-foot">Finite ambiguity allowed · external review unestablished</div>'
 };
 
+SPECS['davies-levitin-lens-conjecture'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 25 SEPTEMBER 2026','NON-SELF-ADJOINT SPECTRA · V0.1.0'],
+ head:['Inside both disks,','<em>for every n</em>'], headSize:74,
+ sub:'A candidate proof of the Davies–Levitin lens conjecture for the indefinite tridiagonal pencil.',
+ tag:'WRITTEN PROOF · ARB CERTIFICATES · UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">every non-real eigenvalue λ</div><div class="eq eq-sm">|λ − c| &lt; 2<br><span class="hl">|λ + c| &lt; 2</span></div><div class="note">The intersection of the two Gershgorin disks, not just their union. Previously known for <b>n ≤ 3</b>.</div><div class="eq-foot">Candidate proof · external review unestablished</div>'
+};
+
 const escapeHtml = value => String(value == null ? '' : value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
