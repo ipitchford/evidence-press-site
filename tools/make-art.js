@@ -2291,6 +2291,10 @@ art['hilbert-series-ternary-septic-octic-nonic'] = (a,b) => {
 };
 palette['hilbert-series-ternary-septic-octic-nonic']=['#9ad0e8','#f2c078'];
 
+const ptolemaicArt = require('./ptolemaic-art');
+art['ptolemaic-negative-type'] = ptolemaicArt.cover;
+palette['ptolemaic-negative-type'] = ['#69dbc6', '#f2c373'];
+
 const requested = new Set(process.argv.slice(2));
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
@@ -2301,6 +2305,11 @@ for (const [slug, fn] of Object.entries(art)) {
   let svg = frame(fn(a, b), a, b);
   if (motifs[slug]) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"')
     .replace('<defs>', `<desc id="art-description">${motifs[slug].description}</desc><defs>`);
+  if (slug === 'ptolemaic-negative-type') {
+    svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"')
+      .replace('<defs>', `<desc id="art-description">${ptolemaicArt.description}</desc><defs>`);
+    fs.writeFileSync(path.join(OUT, slug + '-witness.svg'), ptolemaicArt.witness());
+  }
   fs.writeFileSync(path.join(OUT, slug + '.svg'), svg);
   console.log('art:', slug);
 }

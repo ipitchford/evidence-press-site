@@ -222,6 +222,15 @@ const SPECS = {
       <div class="note"><b>p* ≈ 1.147720381</b><br>ordinary coefficient powers<br>strict real roots above p*</div>
       <div class="eq-foot">written proof · scoped algebra checks</div>`
   },
+  'ptolemaic-negative-type': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 26 SEPTEMBER 2026', 'PTOLEMAIC METRICS · V1.0'],
+    head: ['Seven points.', '<em>One sharp limit.</em>'],
+    headSize: 76,
+    sub: 'A distance diagram shows why the seven-point negative-type threshold cannot be raised.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: require('./ptolemaic-art').thumbnailHero()
+  },
   'rbm31-exact-kl-radius': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 5 SEPTEMBER 2026', 'THREE-BIT MIXTURES · V0.1.0-CANDIDATE'],

@@ -1,0 +1,112 @@
+{
+  "slug": "ptolemaic-negative-type",
+  "title": "Sharp negative type of finite Ptolemaic metrics",
+  "shortTitle": "Ptolemaic metrics: the sharp exponent",
+  "oneLine": "An analytic proof candidate gives the exact distance-power threshold guaranteed for every finite Ptolemaic metric, with strictness below it and explicit examples showing that it cannot be raised.",
+  "abstract": "Ptolemy's inequality constrains every four-point configuration in a metric space. How much must its distances be compressed by a power before the result is guaranteed to embed in Euclidean space? This anonymous, unrefereed manuscript claims the sharp universal negative-type exponent P(m) = log_2(1 + m/floor((m-1)^2/4)) for every m >= 6, together with strict negative type below that threshold. Its analytic proof combines star packing, normalised inverse correlations and an induction whose strictness assumptions concern only smaller metrics. Complete split metrics show sharpness. The argument recovers the known six-point case; the advance beyond the inspected earlier results begins at seven points. Adding the cited smaller endpoints gives the all-cardinality formula and the rank-two uniform threshold q(n)=P(n-1), not every matroid threshold. Exact and symbolic replay checks identities and witnesses, not the universal proof; formal verification, unaffiliated reproduction and external specialist review are not claimed.",
+  "narration": "Can a table of distances be realised by points in Euclidean space? Not always. Raising the distances to a smaller power can help by compressing the ratio between long and short distances. This anonymous research candidate asks exactly how much compression guarantees success for a special class called Ptolemaic metrics. These satisfy an inequality involving every four points. The paper proposes a sharp answer depending only on the number of points. Its analytic proof covers six points onwards; cited earlier results supply the smaller cases. The first new cardinality relative to the inspected established results is seven. The exponent in the negative-type inequality is twice the exponent applied to distances for the Euclidean embedding. Keeping those two powers separate matters. The page's seven-point diagram explains sharpness. Three points form one group and four form another. Distances are one, except between pairs in the four-point group, where they are two. A balanced positive and negative weighting gives an exact test. At the proposed threshold the test is zero; above it the test becomes positive and rules out the guarantee. This example supplies the upper bound. The universal lower bound comes from the written star-packing and inverse-correlation arguments, not from numerical experiments. The result would connect a local four-point condition to a global embedding guarantee. It does not establish practical performance improvements or settle every matroid threshold. Exact replay supports particular identities and examples, not formal verification of the proof. This is the Evidence Press release of Sharp negative type of finite Ptolemaic metrics, dated twenty-sixth September twenty twenty-six, version one point zero candidate. It is unrefereed. The paper and evidence are linked on the release page. This AI-generated synthetic voice adds no mathematical evidence.",
+  "datePublished": "2026-09-26",
+  "version": "1.0.0-candidate",
+  "doi": "10.5281/zenodo.22983333",
+  "conceptDoi": "10.5281/zenodo.22983332",
+  "zenodoUrl": "https://zenodo.org/records/22983333",
+  "pdfUrl": "https://github.com/ipitchford/ptolemaic-negative-type/releases/download/v1.0.0-candidate/ptolemaic.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22983333/files/ptolemaic.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/ptolemaic-negative-type",
+  "releaseUrl": "https://github.com/ipitchford/ptolemaic-negative-type/releases/tag/v1.0.0-candidate",
+  "authors": ["Anonymous"],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioUrl": "/assets/audio/ptolemaic-negative-type.mp3",
+  "audioTranscriptUrl": "/assets/audio/ptolemaic-negative-type.txt",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [{"type":"audio","url":"https://evidencepress.org/assets/audio/ptolemaic-negative-type.mp3","name":"Plain-English audio briefing","description":"OpenAI synthetic voice; communication only.","transcriptUrl":"https://evidencepress.org/assets/audio/ptolemaic-negative-type.txt"}],
+  "keywords": ["Ptolemaic metrics", "negative type", "metric embedding", "snowflake", "Schoenberg matrix", "metric inversion", "Lorentzian matrices", "triangular hyperfields", "star packing", "complete split metrics"],
+  "problem": {
+    "name": "Baker–Huh–Kummer–Lorscheid Conjecture 6.4: the rank-two uniform threshold",
+    "url": "https://arxiv.org/html/2607.15375v2"
+  },
+  "keyResults": [
+    "For every integer m >= 6, every m-point Ptolemaic metric has p_m-negative type, where p_m = log_2(1 + m/floor((m-1)^2/4)); every exponent 0 < p < p_m gives strict negative type.",
+    "For each m, a complete split metric on m points fails p-negative type for every p > p_m, proving that the proposed universal threshold is sharp.",
+    "The first thresholds beyond the inspected established cases are P(7)=log_2(16/9) and P(8)=log_2(5/3); P(6)=1 is independently recovered rather than claimed as a new value.",
+    "The cited three-, four- and five-point endpoints extend the formula to all m >= 3. Through the established identity q(n)=P(n-1), it gives the conjectured threshold for rank-two uniform matroids.",
+    "The proposed analytic mechanism is a dimension-independent star-packing bound and a normalised inverse-correlation induction. The anchor constants and complete-split thresholds have prior antecedents and are not claimed as new."
+  ],
+  "evidence": "Analytic manuscript with explicit hypotheses and a two-induction dependency map; exact rational and symbolic checks; complete split witnesses; separately labelled numerical exploration; source and evidence ledgers; supplied review and revision response; immutable-input replay wrapper and rejection controls.",
+  "statusDetail": "Unrefereed analytic proof candidate. The universal theorem rests on the written argument, not on finite computation or numerical search. Producer-side intake replay passed the full nine-check route; the exact five-check route reproduced its compared outputs byte-for-byte. Optimized Python was deliberately refused, not passed as an optimized science replay. Eleven scoped rejection controls passed. Numerical convergence differences are retained separately. No unaffiliated reproduction, end-to-end formalisation, authenticated external specialist endorsement, journal peer review, exhaustive priority finding, or measured impact is claimed.",
+  "openProblems": [],
+  "relatedWorks": [
+    {
+      "citation": "Baker, Huh, Kummer and Lorscheid (2026), version 2: Conjecture 6.4 gives the parity formula; Proposition 7.5 identifies q(n)=P(n-1); Theorem 7.16 and Corollary 7.17 provide the four-point endpoint.",
+      "url": "https://arxiv.org/abs/2607.15375v2"
+    },
+    {
+      "citation": "Ercan (2026), version 1, Theorem 1.1: P(5)=log_2(9/4) and P(6)=1, with partial correlations, copositivity and coefficient transport under inversion. The external five-point certificate is not a premise of the new m >= 6 proof.",
+      "url": "https://arxiv.org/abs/2608.20606v1"
+    },
+    {
+      "citation": "Korea Superintelligence Labs, Sharp constants for Ptolemaic negative type, version 3 (source snapshot 7 September 2026): Sections 11–12 derive general anchor constants, split thresholds and an obstruction above exponent one; Section 15 leaves the general low-exponent estimate unresolved.",
+      "url": "https://ideosphere.ai/papers/ptolemaic-negtype-v3.pdf"
+    },
+    {
+      "citation": "Schoenberg (1938), Metric spaces and positive definite functions: the classical negative-type and Euclidean-embedding background. The finite Gram identity used here is derived in the manuscript.",
+      "url": "https://doi.org/10.1090/S0002-9947-1938-1501980-0"
+    },
+    {
+      "citation": "Li and Weston (2010), Strict p-negative type of a metric space: strict descent supports the optional below-endpoint statement for the imported small cases, not the new cardinality induction.",
+      "url": "https://doi.org/10.1007/s11117-009-0035-2"
+    },
+    {
+      "citation": "Sánchez (2012), On the supremal p-negative type of finite metric spaces: classical inverse-distance criteria; no new metric M-constant is claimed here.",
+      "url": "https://doi.org/10.1016/j.jmaa.2011.11.041"
+    }
+  ],
+  "citeText": "Anonymous (2026). Sharp negative type of finite Ptolemaic metrics. Version 1.0.0-candidate. Unrefereed manuscript and evidence package. Zenodo. https://doi.org/10.5281/zenodo.22983333",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:ptolemaic-negative-type",
+    "attemptIds": ["ep-attempt:ptolemaic-negative-type-publication"],
+    "aims": ["science"],
+    "artifactRoles": ["research-output", "evidence-assessment"],
+    "lineageId": null,
+    "accelerationPrimitives": ["structural-compression", "regime-stitching", "adversarial-controls", "assurance-vector", "agent-readable-research-object"],
+    "decisionObject": {"type":"bound","description":"A candidate sharp cardinality-dependent negative-type threshold for finite Ptolemaic metrics.","scope":"The new analytic proof covers every m >= 6; the all-cardinality statement imports the cited smaller endpoints. The matroid consequence concerns rank-two uniform matroids only."},
+    "bottleneckTargeted": ["assurance", "publication"],
+    "semanticBridge": {"state":"explicit","description":"A negative-type inequality for distance power p gives a Euclidean embedding for distance power p/2. The known correspondence q(n)=P(n-1) transfers the result to the rank-two uniform threshold.","remainingRisks":["The universal packing and inverse-correlation arguments are unrefereed and not formally verified.","Finite replay does not establish the universal theorem.","The source comparison is bounded and does not establish exhaustive priority."]},
+    "humanJudgmentGates": ["Publication authorisation only; no human scientific contribution or additional review stage is inferred."],
+    "parentLinks": [
+      {"relation":"depends-on-claim","workId":null,"legacyReleaseSlug":null,"externalUrl":"https://arxiv.org/abs/2607.15375v2","inheritedClaim":"The rank-two uniform conjecture, the correspondence q(n)=P(n-1), and the four-point endpoint.","inheritedAssuranceCeiling":"Published preprint statements used as scoped mathematical sources; not external validation of this release."},
+      {"relation":"depends-on-claim","workId":null,"legacyReleaseSlug":null,"externalUrl":"https://arxiv.org/abs/2608.20606v1","inheritedClaim":"The five-point endpoint used in the all-cardinality corollary, and the already established six-point baseline.","inheritedAssuranceCeiling":"The external five-point certificate was not replayed in this intake; the new m >= 6 argument does not depend on it."},
+      {"relation":"other","workId":null,"legacyReleaseSlug":null,"externalUrl":"https://ideosphere.ai/papers/ptolemaic-negtype-v3.pdf","inheritedClaim":"Prior anchor constants, complete-split thresholds and the above-one obstruction constrain the contribution claim.","inheritedAssuranceCeiling":"A bounded version-pinned attribution comparison, not external validation or exhaustive novelty clearance."}
+    ],
+    "assuranceTarget": {"dimensions":["independentRerun","formalVerification","specialistReview","semanticValidation","noveltyAssessment","priorityAssessment"],"nextAction":"Obtain unaffiliated reconstruction of the two-induction proof and its exact source correspondence.","claimCeiling":"Unrefereed analytic proof candidate with scoped producer replay; no general matroid theorem, external endorsement, formal verification or exhaustive priority claim."},
+    "impactClaims": [{"id":"ptolemaic-negative-type-no-impact","aim":"science","outcome":"Inspectable candidate sharp threshold and analytic mechanism","setting":"Producer-coordinated publication","status":"NO_IMPACT_EVIDENCE","designClass":"none","comparator":"No matched comparator.","estimand":"No impact effect estimated.","evidenceRefs":[],"registeredDesignRef":null,"independentAssessment":null}]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "The supplied 25 September bundle is preserved. The 26 September intake source comparison adds the Ideosphere attribution without changing the theorem or inferring external review. GitHub v1.0.0-candidate and Zenodo record 22983333 are published; all six downloadable assets were fetched from both services and matched to local SHA-256 hashes on 26 September. Research assurance is separate from subsequent site-publication readback in the publication ledger.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": ["AI-assisted mathematical research and manuscript preparation; exact originating model identities are not asserted", "Producer-side Python exact, symbolic and numerical checks", "Codex publication-intake source comparison and release authoring"],
+    "humanRole": "Publication authority and supplied materials; no human mathematical contribution is inferred. Scholarly creator remains Anonymous.",
+    "disclosure": "The supplied review, internal checks and publication-intake replay belong to a producer-coordinated workflow. They do not establish unaffiliated reproduction, authenticated specialist review or formal verification."
+  },
+  "assurance": {
+    "availability": {"state": "passed", "evidenceUrl": "https://zenodo.org/records/22983333", "note": "Published GitHub and Zenodo assets were fully downloaded and matched to the local SHA-256 inventory. DOI/archive availability does not validate the analytic theorem."},
+    "internalReplay": {"state": "passed", "note": "Producer-side fresh intake: full nine-check replay passed; exact five-check route reproduced its compared outputs byte-for-byte; eleven scoped rejection controls passed. Python -O was refused. Numerical convergence differences are retained separately, not treated as exact matches or proof."},
+    "independentRerun": {"state": "not-assessed", "note": "No unaffiliated rerun is evidenced; coordinated agents and supplied replay records do not establish independence."},
+    "independentReimplementation": {"state": "not-assessed", "note": "Auxiliary symbolic and exact checks are implementation diversity within the producing workflow."},
+    "formalVerification": {"state": "not-assessed", "note": "No proof-assistant verification of this analytic theorem. Formalisation claims in prior work concern different results."},
+    "specialistReview": {"state": "not-assessed", "note": "The supplied favourable review is retained as a document, not an authenticated external specialist endorsement."},
+    "editorialPeerReview": {"state": "not-assessed", "note": "No journal or external venue peer review is claimed."},
+    "dataEnvironmentReproducibility": {"state": "partial", "evidenceUrl": "https://github.com/ipitchford/ptolemaic-negative-type/actions/runs/36274292333", "note": "Pinned Linux full-replay CI passed at commit ce622e0053f287d6184baa0fbbfcd1f776d1d20c. The public receipt separately records the fresh macOS exact replay, reused semantic controls and differing local dependency versions. Numerical convergence can vary; PDF build is not hermetic."}
+  },
+  "reviews": []
+}
