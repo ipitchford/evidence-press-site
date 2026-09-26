@@ -18010,7 +18010,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-26T22:38:38.525Z",
       "status": "active",
-      "statusAt": "2026-09-26T22:38:38.525Z",
+      "statusAt": "2026-09-26T23:14:04.354Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -18096,12 +18096,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "No outcome measured yet; earlier research and intake are excluded. Compute, tokens and human effort are not instrumented.",
+        "missingnessReason": "Research assets and the release are publicly available and canonically read back. Active/pending denotes incomplete measured-work closeout only, not unfinished publication. Rework-specific time, all-agent turns, human effort, tokens and inference compute were not fully instrumented; no counters are inferred. This observation ends at first readback and excludes subsequent ledger resealing.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-26T22:38:38.525Z",
             "basis": "Prospective remaining-publication registration; earlier intake is left-censored."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-26T23:14:04.354Z",
+            "basis": "Research assets and the release are publicly available and canonically read back. Active/pending denotes incomplete measured-work closeout only, not unfinished publication. Rework-specific time, all-agent turns, human effort, tokens and inference compute were not fully instrumented; no counters are inferred. This observation ends at first readback and excludes subsequent ledger resealing."
           }
         ],
         "activeHumanMinutes": null,
@@ -18112,12 +18117,89 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Publication endpoint not yet reached."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-26T23:14:04.354Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/decision-geometry/",
+              "https://github.com/ipitchford/decision-geometry/releases/tag/v1.0.0-candidate",
+              "https://zenodo.org/records/22983737"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/decision-geometry/releases/download/v1.0.0-candidate/REPLAY_RECEIPT.json",
+              "https://github.com/ipitchford/decision-geometry/actions/runs/36277499580",
+              "https://github.com/ipitchford/decision-geometry/blob/v1.0.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/decision-geometry/blob/v1.0.0-candidate/ENVIRONMENT.txt",
+              "https://github.com/ipitchford/decision-geometry/blob/v1.0.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/decision-geometry/blob/v1.0.0-candidate/CLAIMS.json",
+              "https://github.com/ipitchford/decision-geometry/blob/v1.0.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/decision-geometry/blob/v1.0.0-candidate/SOURCES.md",
+              "https://github.com/ipitchford/decision-geometry/blob/v1.0.0-candidate/CITATION_AUDIT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed model-conditional analytic candidate. Producer replay checks finite exact receipts and numerical examples, not universal correctness. Availability, CI and asset parity are not independent reproduction, formal proof, external review, exhaustive novelty, priority or biological validation.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/decision-geometry/",
+          "https://github.com/ipitchford/decision-geometry/releases/tag/v1.0.0-candidate",
+          "https://zenodo.org/records/22983737"
+        ],
+        "missingnessReason": "External and formal assurance remain unestablished. Semantic and novelty checks are bounded and producer-side; workflow measurements are incomplete."
       },
       "releaseSlug": "decision-geometry",
       "stopReason": null,
@@ -18128,6 +18210,17 @@
           "resultClass": "pending",
           "reason": "Only the remaining publication work from this registration is measured: final package assembly and bounded assurance repairs, GitHub and Zenodo publication, page/media completion, deployment and canonical readback. The mathematical research and all intake, source refresh, provider diagnosis and checks performed before registration are excluded and left-censored. This is not a discovery-time observation, a complete intake-to-publication clock or an acceleration comparison.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-26T23:14:04.354Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research assets and the release are publicly available and canonically read back. Active/pending denotes incomplete measured-work closeout only, not unfinished publication. Rework-specific time, all-agent turns, human effort, tokens and inference compute were not fully instrumented; no counters are inferred. This observation ends at first readback and excludes subsequent ledger resealing.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/decision-geometry/",
+            "https://github.com/ipitchford/decision-geometry/releases/tag/v1.0.0-candidate",
+            "https://zenodo.org/records/22983737"
+          ]
         }
       ],
       "corrections": [],
@@ -18135,6 +18228,10 @@
         {
           "date": "2026-09-26",
           "summary": "Prospective registration of remaining publication only. Earlier research and intake excluded."
+        },
+        {
+          "date": "2026-09-26",
+          "summary": "Appended verified public availability and scoped producer assurance without inventing missing workflow counters or altering the frozen forecast."
         }
       ]
     }
@@ -18685,6 +18782,10 @@
     {
       "date": "2026-09-26",
       "summary": "Registered remaining decision-geometry publication prospectively at the recorded attempt timestamp; prior research and intake are excluded, outcome is pending and unknown resource measurements remain null."
+    },
+    {
+      "date": "2026-09-26",
+      "summary": "Recorded verified public delivery and partial producer assurance for decision-geometry; missing resource counters remain unknown rather than fabricated."
     }
   ]
 }
