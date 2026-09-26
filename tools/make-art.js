@@ -2296,6 +2296,9 @@ art['ptolemaic-negative-type'] = ptolemaicArt.cover;
 palette['ptolemaic-negative-type'] = ['#69dbc6', '#f2c373'];
 
 const requested = new Set(process.argv.slice(2));
+const decisionGeometryArt = require('./decision-geometry-art');
+art['decision-geometry'] = decisionGeometryArt.cover;
+palette['decision-geometry'] = ['#6ddbc4', '#f3c779'];
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
@@ -2311,5 +2314,10 @@ for (const [slug, fn] of Object.entries(art)) {
     fs.writeFileSync(path.join(OUT, slug + '-witness.svg'), ptolemaicArt.witness());
   }
   fs.writeFileSync(path.join(OUT, slug + '.svg'), svg);
+  if (slug === 'decision-geometry') {
+    svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${decisionGeometryArt.description}</desc><defs>`);
+    fs.writeFileSync(path.join(OUT, slug + '.svg'), svg);
+    fs.writeFileSync(path.join(OUT, slug + '-boundary.svg'), decisionGeometryArt.boundary());
+  }
   console.log('art:', slug);
 }
