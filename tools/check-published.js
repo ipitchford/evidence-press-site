@@ -21,6 +21,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const { checkHtmlIdentity, checkRecordIdentity } = require('./institutional-page-identity');
 
 const ROOT = path.join(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
@@ -233,10 +234,8 @@ async function confirmInstitutionalPage(pagePath, requireCandidateEquality = fal
       return { ok: false, reason: 'HTML route did not return text/html' };
     }
     const html = await response.text();
-    if (!html.includes(`<link rel="canonical" href="${pageUrl}">`) ||
-        !html.includes('<h1>Evidence Press operating model</h1>')) {
-      return { ok: false, reason: 'HTML lacks the canonical operating-model identity markers' };
-    }
+    const htmlFailure = checkHtmlIdentity(pagePath, pageUrl, html);
+    if (htmlFailure) return { ok: false, reason: htmlFailure };
 
     const recordResponse = await fetch(cacheBusted(`${pageUrl}index.json`), {
       redirect: 'manual',
@@ -247,10 +246,8 @@ async function confirmInstitutionalPage(pagePath, requireCandidateEquality = fal
       return { ok: false, reason: 'index.json did not return JSON' };
     }
     const record = await recordResponse.json();
-    if (record.status !== 'prospective-institutional-contract' ||
-        !/^[0-9a-f]{40}$/.test(String(record.releasePolicy && record.releasePolicy.baselineCommit || ''))) {
-      return { ok: false, reason: 'index.json is not the Evidence Press operating-model contract' };
-    }
+    const recordFailure = checkRecordIdentity(pagePath, record);
+    if (recordFailure) return { ok: false, reason: recordFailure };
     return { ok: true };
   } catch (error) {
     return { ok: false, reason: error.message };
