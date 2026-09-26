@@ -125,6 +125,25 @@ try {
     assert(env.NODE_OPTIONS.includes('build-runtime-guard.js'));
     assert.equal(env.TZ, 'UTC');
   });
+  test('A/B replay admits exact copied modules but rejects changed copies', () => {
+    const f = fixture('copy-replay');
+    write(path.join(f.root, 'tools/copy-probe.js'), 'console.log("exact-source-copy");');
+    commit(f.root);
+    // The normalized Unix build environment deliberately does not inherit TMPDIR.
+    const replay = fs.mkdtempSync('/tmp/pp-build-replay-');
+    try {
+      const file = path.join(replay, 'tools/copy-probe.js');
+      write(file, fs.readFileSync(path.join(f.root, 'tools/copy-probe.js')));
+      const options = { cwd: replay, env: A.buildEnvironment(f.root), encoding: 'utf8' };
+      const exact = cp.spawnSync(process.execPath, ['tools/copy-probe.js'], options);
+      assert.equal(exact.status, 0, exact.stderr);
+      assert(exact.stdout.includes('exact-source-copy'));
+      write(file, 'console.log("unbound-copy");');
+      const changed = cp.spawnSync(process.execPath, ['tools/copy-probe.js'], options);
+      assert.notEqual(changed.status, 0);
+      assert(changed.stderr.includes('outside the composite build closure'));
+    } finally { fs.rmSync(replay, { recursive: true, force: true }); }
+  });
   console.log(`build-artifact hostile tests: PASS (${checks} checks)`);
 } finally {
   if (originalThumbDir === undefined) delete process.env.EVIDENCE_PRESS_THUMBNAIL_DIR;
