@@ -4,8 +4,8 @@
 const bg='#172933', ink='#f1f5ee', teal='#6ddbc4', gold='#f3c779', muted='#b8c8d0';
 const sets=[[3],[1,3],[2,3],[1,2,3]];
 const desc='At the manuscript’s exact double-boundary example q=(2/5,2/5,3/10,1/5), the nearby compatibility sets are {3}, {1,3}, {2,3}, and {1,2,3}. Every set contains orientation 3, but the complete set varies. Lines indicate set inclusion, not parameter-space distances. Conditional on the stated evolutionary model.';
-function node(x,y,set,small=false){const r=small?32:40,gap=small?68:90;let s=`<g transform="translate(${x} ${y})">`;
- for(let k=1;k<=3;k++){const xx=(k-2)*gap,active=set.includes(k);s+=`<circle cx="${xx}" cy="0" r="${r}" fill="${active?(k===3?teal:gold):bg}" stroke="${active?(k===3?teal:gold):muted}" stroke-width="3" ${active?'':'stroke-dasharray="5 6" opacity=".45"'}/><text x="${xx}" y="${small?10:13}" text-anchor="middle" font-family="Arial,sans-serif" font-size="${small?28:35}" font-weight="700" fill="${active?bg:muted}" ${active?'':'opacity=".55"'}>${k}</text>`;}
+function node(x,y,set,small=false){const r=small?32:40,gap=small?68:90;let s='<g>';
+ for(let k=1;k<=3;k++){const xx=x+(k-2)*gap,active=set.includes(k);s+=`<circle cx="${xx}" cy="${y}" r="${r}" fill="${active?(k===3?teal:gold):bg}" stroke="${active?(k===3?teal:gold):muted}" stroke-width="3" ${active?'':'stroke-dasharray="5 6" opacity=".45"'}/><text x="${xx}" y="${y+(small?10:13)}" text-anchor="middle" font-family="Arial,sans-serif" font-size="${small?28:35}" font-weight="700" fill="${active?bg:muted}" ${active?'':'opacity=".55"'}>${k}</text>`;}
  return s+'</g>';}
 function cover(){let s=`<rect width="1200" height="400" fill="${bg}"/><g fill="none" stroke="${muted}" stroke-width="3" opacity=".45"><path d="M215 200 L520 95 L975 200 L520 305 Z"/></g>`;
  for(const [i,[x,y]] of [[190,200],[580,92],[580,308],[1010,200]].entries())s+=node(x,y,sets[i],true);
