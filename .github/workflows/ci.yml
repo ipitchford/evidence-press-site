@@ -120,7 +120,9 @@ jobs:
 
       - name: Publication-preservation gate
         # Refuses any build that would drop a previously published URL.
-        run: node tools/check-published.js
+        run: |
+          node tools/test-institutional-page-identity.js
+          node tools/check-published.js
 
       - name: Build is reproducible from the same source
         # The build must not depend on the wall clock or on any other state that
