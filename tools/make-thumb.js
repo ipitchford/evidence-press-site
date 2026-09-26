@@ -708,6 +708,14 @@ SPECS['davies-levitin-lens-conjecture'] = {
  hero:'<div class="eq-label">every non-real eigenvalue λ</div><div class="eq eq-sm">|λ − c| &lt; 2<br><span class="hl">|λ + c| &lt; 2</span></div><div class="note">The intersection of the two Gershgorin disks, not just their union. Previously known for <b>n ≤ 3</b>.</div><div class="eq-foot">Candidate proof · external review unestablished</div>'
 };
 
+SPECS['hilbert-series-matrix-septic-invariants'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 26 SEPTEMBER 2026','INVARIANT THEORY · V0.1.0'],
+ head:['Counting matrix','<em>invariants exactly</em>'], headSize:74,
+ sub:'Nine new Hilbert series for 4×4 and 5×5 matrices, and a candidate series for plane septics.',
+ tag:'COMPUTER-ASSISTED · EXACT CERTIFICATES · UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">least denominator, 4×4 matrices, k = 3…10</div><div class="eq eq-sm">(1−t)<sup>3k−3</sup>(1−t²)<sup>4k−4</sup><br><span class="hl">(1−t³)<sup>5k−5</sup>(1−t⁴)<sup>4k−3</sup></span></div><div class="note">Exactly as <b>Berele conjectured</b>, in all nine new cases.</div><div class="eq-foot">Candidate result · external review unestablished</div>'
+};
+
 const escapeHtml = value => String(value == null ? '' : value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
