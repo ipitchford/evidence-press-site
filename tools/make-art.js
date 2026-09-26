@@ -2266,6 +2266,31 @@ art['hilbert-series-matrix-septic-invariants'] = (a,b) => {
 };
 palette['hilbert-series-matrix-septic-invariants']=['#8fd0c0','#f0b77b'];
 
+// Ternary forms of degree d: degree of the least denominator of the Hilbert series (filled bar) against the a priori
+// torus (universal-denominator) bound used to certify it (outline). d = 5, 6 known (Bedratyuk-Xin); d = 7, 8, 9 new.
+// Exact values from the release data (certify_ternary.py / pole_bounds.py). Not schematic.
+art['hilbert-series-ternary-septic-octic-nonic'] = (a,b) => {
+ const g='#8a979c', t='#edf3ee';
+ const D=[[5,297,327],[6,230,248],[7,1386,1452],[8,2331,2433],[9,1393,1427]];
+ const x0=110, y0=330, H=250, max=2500, Y=v=>y0-H*v/max, bw=58, gap=46;
+ let s=`<g font-family="Arial, sans-serif">`;
+ s+=`<path d="M${x0-10} ${y0} H${x0+5*(bw+gap)}" stroke="${g}" stroke-width="2"/>`;
+ for(const v of [0,1000,2000]) s+=`<text class="og-hide" x="${x0-18}" y="${Y(v)+5}" text-anchor="end" fill="${g}" font-size="15">${v}</text><path d="M${x0-10} ${Y(v)} H${x0+5*(bw+gap)}" stroke="${g}" stroke-opacity=".15"/>`;
+ D.forEach(([d,tr,bd],i)=>{ const x=x0+i*(bw+gap), c=d>=7?a:g;
+  s+=`<rect x="${x}" y="${Y(bd)}" width="${bw}" height="${y0-Y(bd)}" fill="none" stroke="${d>=7?b:g}" stroke-width="2" stroke-dasharray="5 4"/>`;
+  s+=`<rect x="${x+6}" y="${Y(tr)}" width="${bw-12}" height="${y0-Y(tr)}" fill="${c}" fill-opacity="${d>=7?.9:.55}"/>`;
+  s+=`<text x="${x+bw/2}" y="${y0+26}" text-anchor="middle" fill="${t}" font-size="20">d = ${d}</text>`;
+  s+=`<text class="og-hide" x="${x+bw/2}" y="${Y(bd)-10}" text-anchor="middle" fill="${d>=7?t:g}" font-size="16">${tr}</text>`; });
+ s+=`<text class="og-hide" x="70" y="44" fill="${t}" font-size="19">Degree of the least denominator (bar) vs the a priori bound (dashed)</text>`;
+ s+=`<text class="og-hide" x="${x0}" y="${y0+54}" fill="${g}" font-size="15">d = 5, 6 known (2011) · d = 7, 8, 9 determined here</text>`;
+ s+=`<text class="og-hide" x="900" y="110" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="31">Invariants of plane curves</text>`;
+ s+=`<text class="og-hide" x="900" y="170" text-anchor="middle" fill="${a}" font-family="Georgia" font-size="25">septics, octics and nonics</text>`;
+ s+=`<text class="og-hide" x="900" y="232" text-anchor="middle" fill="${b}" font-family="monospace" font-size="18">exact Hilbert series, d = 7, 8, 9</text>`;
+ s+=`<text class="og-hide" x="900" y="290" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="16">UNREFEREED CANDIDATE</text></g>`;
+ return s;
+};
+palette['hilbert-series-ternary-septic-octic-nonic']=['#9ad0e8','#f2c078'];
+
 const requested = new Set(process.argv.slice(2));
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
