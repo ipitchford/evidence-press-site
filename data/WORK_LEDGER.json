@@ -17777,7 +17777,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-26T21:41:58Z",
       "status": "active",
-      "statusAt": "2026-09-26T21:41:58Z",
+      "statusAt": "2026-09-26T22:15:32.684Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -17863,12 +17863,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Only this registration milestone is recorded at intake. Earlier research and publication intake are excluded; resource totals and terminal outcome are not yet observed.",
+        "missingnessReason": "Publication delivery is observed, but the complete measured-work outcome is unavailable. Rework time and all-agent model-turn units were not reliably instrumented; human direction/approval time, inference compute, monetary cost and exact tokens also remain unknown. Earlier research/intake and later ledger-closeout are excluded. The active/pending state refers to metric closeout only.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-26T21:41:58Z",
             "basis": "Prospective registration of remaining publication work, after earlier intake; no earlier clock is inferred."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-26T22:15:32.684Z",
+            "basis": "Partial availability-and-producer-check endpoint only. Research assets and the Evidence Press release are publicly available and canonically read back. This attempt remains active/pending solely because complete measured-work closeout is unavailable: no separately recorded rework stopwatch or defined all-agent model-turn count exists. This is not a claim that research or publication remains unfinished. The publication observation ends at this first readback and excludes subsequent ledger-closeout and resealing work. No unsupported counters or acceleration effect are inferred."
           }
         ],
         "activeHumanMinutes": null,
@@ -17876,15 +17881,94 @@
         "computeCost": null,
         "agentRuns": null,
         "reworkMinutes": null,
-        "correctionCount": null
+        "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-      "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "The terminal publication assurance endpoint has not yet been assessed."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-26T22:15:32.684Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/ptolemaic-negative-type/",
+              "https://github.com/ipitchford/ptolemaic-negative-type/releases/tag/v1.0.0-candidate",
+              "https://zenodo.org/records/22983333"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/ptolemaic-negative-type/releases/download/v1.0.0-candidate/REPLAY_RECEIPT.json",
+              "https://github.com/ipitchford/ptolemaic-negative-type/blob/v1.0.0-candidate/INTAKE_CHECKS.md",
+              "https://github.com/ipitchford/ptolemaic-negative-type/actions/runs/36274292333"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/ptolemaic-negative-type/blob/v1.0.0-candidate/INTAKE_CHECKS.md",
+              "https://github.com/ipitchford/ptolemaic-negative-type/blob/v1.0.0-candidate/requirements.txt",
+              "https://github.com/ipitchford/ptolemaic-negative-type/blob/v1.0.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/ptolemaic-negative-type/blob/v1.0.0-candidate/ASSURANCE.md",
+              "https://github.com/ipitchford/ptolemaic-negative-type/blob/v1.0.0-candidate/review/CLAIM_CHECK_MAP.csv"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/ptolemaic-negative-type/blob/v1.0.0-candidate/SOURCES.md",
+              "https://github.com/ipitchford/ptolemaic-negative-type/blob/v1.0.0-candidate/CITATION_AUDIT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed analytic proof candidate. Producer replay checks identities, finite witnesses and packaging, not the universal theorem. Availability, CI and asset parity do not establish independent reproduction, formal verification, external specialist endorsement, exhaustive novelty, priority or impact.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/ptolemaic-negative-type/",
+          "https://github.com/ipitchford/ptolemaic-negative-type/releases/tag/v1.0.0-candidate",
+          "https://zenodo.org/records/22983333",
+          "https://github.com/ipitchford/ptolemaic-negative-type/actions/runs/36274292333"
+        ],
+        "missingnessReason": "Independent rerun, independent reimplementation, formal proof, external specialist review, editorial peer review and priority assessment remain unestablished. Semantic and novelty checks are bounded and producer-side; workflow measurements are incomplete."
       },
       "releaseSlug": "ptolemaic-negative-type",
       "stopReason": null,
@@ -17895,6 +17979,17 @@
           "resultClass": "pending",
           "reason": "Only the remaining publication work from this registration is measured: final package assembly and bounded assurance repairs, GitHub and Zenodo publication, page/media completion, deployment and canonical readback. The mathematical research and all intake, source refresh, provider diagnosis and checks performed before registration are excluded and left-censored. This is not a discovery-time observation, a complete intake-to-publication clock or an acceleration comparison.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-26T22:15:32.684Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research assets and the Evidence Press release are publicly available and canonically read back. This attempt remains active/pending solely because complete measured-work closeout is unavailable: no separately recorded rework stopwatch or defined all-agent model-turn count exists. This is not a claim that research or publication remains unfinished. The publication observation ends at this first readback and excludes subsequent ledger-closeout and resealing work. No unsupported counters or acceleration effect are inferred.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/ptolemaic-negative-type/",
+            "https://github.com/ipitchford/ptolemaic-negative-type/releases/tag/v1.0.0-candidate",
+            "https://zenodo.org/records/22983333"
+          ]
         }
       ],
       "corrections": [],
@@ -17902,6 +17997,10 @@
         {
           "date": "2026-09-26",
           "summary": "Registered the remaining publication-only scope with a prospective decomposed forecast. Earlier research and intake remain left-censored; no terminal outcome or assurance is claimed."
+        },
+        {
+          "date": "2026-09-26",
+          "summary": "Appended the first canonical publication readback and scoped assurance evidence. Retained the frozen forecast and null metrics outcome because required rework and all-agent turn measurements are unavailable; active/pending denotes measurement closeout only, not unfinished publication."
         }
       ]
     }
@@ -18444,6 +18543,10 @@
     {
       "date": "2026-09-26",
       "summary": "Registered the remaining ptolemaic-negative-type publication scope prospectively; earlier research and intake are excluded, the outcome remains pending, and no impact or independent assurance is inferred."
+    },
+    {
+      "date": "2026-09-26",
+      "summary": "Recorded public delivery and partial assurance for ptolemaic-negative-type after canonical readback, while explicitly retaining an incomplete measured-work receipt rather than fabricating mandatory counters or an acceleration result."
     }
   ]
 }
