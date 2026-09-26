@@ -17515,9 +17515,9 @@
       "workId": "ep-work:hilbert-series-ternary-septic-octic-nonic",
       "cohort": "prospective",
       "registeredAt": "2026-09-26T14:18:59Z",
-      "status": "active",
-      "statusAt": "2026-09-26T14:18:59Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-09-26T19:55:58Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -17594,7 +17594,59 @@
           ],
           "stopRule": "Timing is telemetry, not a cap; continue unless integrity, rights or provider access blocks publication."
         },
-        "outcome": null
+        "outcome": {
+          "measuredAt": "2026-09-26T19:55:58Z",
+          "calendarElapsedMinutes": 337,
+          "activeAgentMinutes": 225,
+          "activeHumanMinutes": null,
+          "computeMinutes": null,
+          "unattendedWaitMinutes": 52,
+          "blockedMinutes": 60,
+          "reworkMinutes": 60,
+          "agentRuns": 7,
+          "maxParallelAgents": 5,
+          "modelTurns": 12,
+          "deduplicatedModelTokens": null,
+          "uncachedInputTokens": null,
+          "researchCycles": {
+            "positive": 2,
+            "negative": 1,
+            "inconclusive": 0
+          },
+          "falsificationGatesRun": 9,
+          "candidateArchitecturesTested": 1,
+          "candidateArchitecturesRejected": 0,
+          "substantiveReviewRounds": 1,
+          "p0Findings": 0,
+          "p1Findings": 6,
+          "prepublicationClaimCorrections": 5,
+          "resultState": "target-closed",
+          "resultSummary": "External model review (Major) and five-role internal gate (Major Revision; no mathematical error) actioned in one repair batch: self-contained pole-order lemmas, the out-of-sample prediction made part of the certificate with undersized-denominator controls, second-algorithm exact agreement over the whole determining range (packed weight counting), sharper generator counts, a centraliser-bound hypothesis tested and largely refuted, and a cross-reference gate. Published after deterministic checks; the full replay mode is documented but not receipted.",
+          "positiveSignalObserved": true,
+          "targetReached": true,
+          "forecastErrorMinutes": 105,
+          "forecastRatio": 1.875,
+          "withinForecastInterval": false,
+          "varianceReason": "Active minutes estimated from session timestamps. Overrun came from the editorial gate's material repairs (second algorithm, certificate change), a replay-receipt/manifest binding redo, an accessibility overflow fix, a missing method-registry changeLog entry, and a confirmation round and a 3.5-hour full replay that are not part of the Evidence Press process and were stopped at the publisher's direction; about 60 minutes were blocked by a usage limit. modelTurns (12) is an estimate of user-facing turns since registration; the count is not instrumented across the context compaction.",
+          "missingFields": [
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Human effort not instrumented."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "No separately instrumented total."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Fork-aware runtime counter unavailable."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Runtime token/cache accounting unavailable."
+            }
+          ]
+        }
       },
       "selectionBasis": "Follow-up to v0.1.0 (doi:10.5281/zenodo.22974308) at the user's request (26 Sep 2026: pole-order bound; prior-art check; 'Action this review and then take the candidate through the full Evidence Press publishing workflow').",
       "taskClass": "assurance-and-full-candidate-publication",
@@ -17607,23 +17659,84 @@
         "reason": "Selected single publication attempt."
       },
       "measurement": {
-        "status": "not-recorded",
-        "missingnessReason": "Pending: recorded at the terminal outcome after canonical readback. Prospective publication-scope measurement from this registration: completion of the recomputation with raw residues, the internal five-role editorial gate with one repair batch, research repository and immutable GitHub/Zenodo identity, Evidence Press page, media and canonical readback. The procedural forecast was frozen in the local publication state at registration. The unconditional septic argument, the octic/nonic computations, the external review and its repairs before registration are left-censored; research-phase forecasts and outcomes are in the package's PRE-REGISTERED.md. No acceleration comparison.",
-        "milestones": [],
+        "status": "measured-partial",
+        "missingnessReason": "Prospective publication-scope measurement from registration. Active minutes estimated from session timestamps; human effort, compute and fork-aware tokens not instrumented.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-26T14:18:59Z",
+            "basis": "Ledger registration at publication intake."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-09-26T19:55:58Z",
+            "basis": "Canonical page readback after guarded production deployment."
+          }
+        ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": null,
-        "reworkMinutes": null,
-        "correctionCount": null
+        "agentRuns": 7,
+        "reworkMinutes": 60,
+        "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Pending: assessed at release after canonical readback."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-26T19:55:58Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/22978726"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/hilbert-series-ternary-forms/blob/v0.2.0-candidate/REPLAY_RECEIPT_fresh.json"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/hilbert-series-ternary-forms/blob/v0.2.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate; computer-assisted theorems for d = 7, 8, 9 by known methods; no formal verification or external review.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/hilbert-series-ternary-septic-octic-nonic/",
+          "https://zenodo.org/records/22978726"
+        ],
+        "missingnessReason": null
       },
       "releaseSlug": "hilbert-series-ternary-septic-octic-nonic",
       "stopReason": null,
@@ -17634,6 +17747,16 @@
           "resultClass": "pending",
           "reason": "Prospective publication-scope measurement from this registration: completion of the recomputation with raw residues, the internal five-role editorial gate with one repair batch, research repository and immutable GitHub/Zenodo identity, Evidence Press page, media and canonical readback. The procedural forecast was frozen in the local publication state at registration. The unconditional septic argument, the octic/nonic computations, the external review and its repairs before registration are left-censored; research-phase forecasts and outcomes are in the package's PRE-REGISTERED.md. No acceleration comparison.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-26T19:55:58Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "All research assets verified by server checksum and download; guarded canonical deployment passed public readback.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/hilbert-series-ternary-septic-octic-nonic/",
+            "https://zenodo.org/records/22978726"
+          ]
         }
       ],
       "corrections": [],
@@ -17641,6 +17764,10 @@
         {
           "date": "2026-09-26",
           "summary": "Registered at publication intake with the frozen decomposed procedural forecast; research predating registration is left-censored."
+        },
+        {
+          "date": "2026-09-26",
+          "summary": "Terminal outcome recorded after canonical readback."
         }
       ]
     }
