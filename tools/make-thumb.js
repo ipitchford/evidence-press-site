@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'decision-geometry': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 26 SEPTEMBER 2026', 'EVOLUTION · SEQUENTIAL INFERENCE'],
+    head: ['What can the', '<em>data certify?</em>'],
+    headSize: 73,
+    sub: 'A complete answer can be impossible while a useful answer survives.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: require('./decision-geometry-art').thumbnailHero()
+  },
   'fano-plane-spectrum': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 19 SEPTEMBER 2026', 'FANO PLANE · TENSOR SPECTRUM'],
