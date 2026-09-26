@@ -46,11 +46,17 @@ jobs:
         run: |
           node --check build.js
           for f in tools/*.js assets/js/*.js; do node --check "$f"; done
+          node --check tools/build-runtime-loader.mjs
           node --check protocols/build-protocols.js
           for f in protocols/tools/*.js protocols/tools/lib/*.js protocols/tests/release-integrity/run.js; do node --check "$f"; done
 
       - name: Renderer regression tests
         run: node tools/test-render.js
+
+      - name: Build-artifact reuse and deployment boundary hostile controls
+        run: |
+          node tools/test-build-artifact.js
+          node tools/test-deploy-build-artifact.js
 
       - name: Article authoring contract and hostile controls
         run: node tools/test-articles.js

@@ -132,6 +132,27 @@ release from the live site, breaking a DOI-bearing page and its Zenodo cross-ref
 ./tools/deploy.sh # build → preservation gate → deploy → live readback/ledger → IndexNow push
 ```
 
+The wrapper now preserves a content-addressed composite build outside the
+checkout and uploads those exact bytes. To build and inspect once before
+deploying the same clean final commit:
+
+```sh
+node tools/build-artifact.js prepare --receipt /absolute/outside-checkout/build.json
+./tools/deploy.sh --build-receipt /absolute/outside-checkout/build.json --branch main
+```
+
+Reuse binds actual source files, the Git and protocol-source identities, runtime,
+normalized environment, central thumbnails and every output file. A changed
+input, missing output or tampered copy refuses reuse. A new commit (including a
+ledger commit) needs a new build. Existing A/B and new-slug C/D seals, runtime CI,
+accessibility and live preservation/readback remain required. The receipt is
+local build evidence, not scientific validation or independent reproduction.
+
+After canonical readback the wrapper writes a separate operational deployment
+receipt alongside the build receipt, outside the site's self-hash. An IndexNow
+failure is recorded as a discovery failure and can be retried without another
+deployment; upload, preservation and readback failures still fail closed.
+
 `tools/deploy.sh` is the only supported deployment path. It runs the full safe sequence and, as its last step, pushes every
 sitemap URL to IndexNow (Bing, Yandex, DuckDuckGo, Seznam) via
 `tools/indexnow-submit.js`, so new or changed pages are announced on every deploy
