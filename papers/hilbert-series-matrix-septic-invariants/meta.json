@@ -1,0 +1,255 @@
+{
+  "slug": "hilbert-series-matrix-septic-invariants",
+  "title": "Hilbert series of the invariants of tuples of 4×4 and 5×5 matrices, and a candidate series for plane septics",
+  "shortTitle": "Matrix invariants: nine new Hilbert series",
+  "oneLine": "Exact counts of the invariants of three to ten 4×4 matrices and of three 5×5 matrices, confirming Berele's denominator conjecture in these nine cases, plus a plane-septic Hilbert series proved to degree 760.",
+  "abstract": "This unrefereed candidate determines the one-variable Hilbert series of the ring of invariants of k generic n×n matrices under simultaneous conjugation for n = 4 with 3 ≤ k ≤ 10 and for (n, k) = (5, 3). Within the literature we found, series with three or more matrices were previously known only for n ≤ 3. Each series is a computer-assisted theorem: Van den Bergh's denominator theorem, the Cohen–Macaulay property and Formanek's functional equation reduce it to finitely many coefficients, which are computed exactly modulo several primes by evaluating the Molien–Weyl integral on grids of roots of unity. In all nine cases the least denominator is the one conjectured by Berele (J. Algebra, 2023), which therefore holds for these pairs. The leading constants of the series fix the number of secondary invariants for any choice of primary degrees. For plane septics (SL3 acting on ternary forms of degree 7) the release gives an explicit candidate rational function R(t) with a least denominator of degree 1386, proves that the Hilbert series agrees with it in every coefficient up to degree 760, and proves full equality conditionally on the existence of a homogeneous system of parameters with compatible degrees, which is unknown. An a priori denominator whose pole set coincides with that of R reduces an unconditional proof to exact coefficients up to degree 10902. Agreement modulo single primes extends to degree 4300 as evidence, not proof. The work was produced by an AI research agent and has not been checked by a human specialist.",
+  "datePublished": "2026-09-26",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.22974308",
+  "conceptDoi": "10.5281/zenodo.22974307",
+  "zenodoUrl": "https://zenodo.org/records/22974308",
+  "pdfUrl": "https://github.com/ipitchford/hilbert-series-matrix-septic-invariants/releases/download/v0.1.0-candidate/hilbert-series-matrix-septic-invariants-v0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/22974308/files/hilbert-series-matrix-septic-invariants-v0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/hilbert-series-matrix-septic-invariants",
+  "releaseUrl": "https://github.com/ipitchford/hilbert-series-matrix-septic-invariants/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/hilbert-series-matrix-septic-invariants.mp3",
+      "name": "Audio briefing",
+      "description": "AI-generated communication, not additional mathematical evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/hilbert-series-matrix-septic-invariants.txt"
+    }
+  ],
+  "keywords": [
+    "invariant theory",
+    "Hilbert series",
+    "Poincaré series",
+    "generic matrices",
+    "trace identities",
+    "Berele conjecture",
+    "ternary forms",
+    "plane septics",
+    "Molien–Weyl formula",
+    "computer-assisted proof"
+  ],
+  "problem": {
+    "name": "Least denominators of one-variable Poincaré series of generic matrices (Berele, Conjecture 1)",
+    "url": "https://doi.org/10.1016/j.jalgebra.2022.11.023"
+  },
+  "keyResults": [
+    "Exact one-variable Hilbert series of the pure trace ring C̄(4,k) for 3 ≤ k ≤ 10 and of C̄(5,3); for n = 4 the least denominator is (1−t)^{3k−3}(1−t²)^{4k−4}(1−t³)^{5k−5}(1−t⁴)^{4k−3} (Theorem 1).",
+    "Berele's Conjecture 1 on the least denominator holds in all nine cases (exact gcd and denominator-equality checks).",
+    "The leading constants c_{n,k} fix the number of secondary invariants for any primary degrees; for example c_{4,3} = 521/(2^25·3^8), so the product of any primary degrees of C̄(4,3) is divisible by 2^25·3^8.",
+    "Plane septics: the Hilbert series of SL3-invariants of ternary septics agrees with an explicit candidate R(t) in every coefficient up to degree 760 (Theorem 2(1)); full equality holds if an hsop of compatible degrees with sum at most 1557 exists (Theorem 2(2)); whether one exists is unknown.",
+    "An a priori septic denominator of degree 21840 from the 1761 extreme rays of the weight cone has exactly the pole set of R, reducing an unconditional proof to exact coefficients up to degree 10902 (Section 7).",
+    "An independent symmetric-group character formula reproduces every matrix series through degree 32; 19 negative controls are rejected."
+  ],
+  "evidence": "Eleven-page paper; ten matrix certificates recomputed from stored exact residues on every replay; exact septic integers to degree 760 regenerable from scratch; a separate grid computation exact to degree 700; modular agreement to degrees 2100 and 4300; an independent character-formula check; 19 semantic negative controls; a machine-readable verification summary labelling each check exact or modular; model-based review records.",
+  "statusDetail": "Unrefereed candidate produced by an AI research agent. The matrix theorems are computer-assisted proofs resting on published theorems and exact computation; the septic identity is proved only through degree 760 and conditionally beyond. There is no formal verification, independent human reproduction, or specialist or journal review; novelty is established only within a bounded literature search.",
+  "openProblems": [
+    "Obtain specialist checking of the certificate argument (Proposition 5) and an independent rerun or reimplementation of the matrix grid engine.",
+    "Prove the septic identity unconditionally: compute exact coefficients up to degree 10902 (about 3000 CPU-hours with the present engine), sharpen the a priori pole-order bounds, or construct a homogeneous system of parameters.",
+    "Extend to C̄(5,k) for k ≥ 4, C̄(6,3), ternary octics and quaternary quartics.",
+    "Construct explicit primary invariants for C̄(4,3) compatible with the divisibility constraint from c_{4,3}."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Berele (2023): denominators for one-variable Poincaré series of generic matrices; Conjecture 1 (least denominator).",
+      "url": "https://doi.org/10.1016/j.jalgebra.2022.11.023"
+    },
+    {
+      "citation": "de Mello Koch and Jevicki (2025): structure of loop space at finite N; Hilbert series for two matrices up to N = 7 and Hironaka decompositions.",
+      "url": "https://doi.org/10.1007/JHEP06(2025)011"
+    },
+    {
+      "citation": "Kristensson and Wilhelm (2020): partition functions of N = 4 SYM theory at finite N, including two-matrix series and mixed su(2|3) partition functions.",
+      "url": "https://arxiv.org/abs/2005.06480"
+    },
+    {
+      "citation": "Djoković (2007): Poincaré series of pure and mixed trace algebras of two generic matrices.",
+      "url": "https://arxiv.org/abs/math/0609262"
+    },
+    {
+      "citation": "Bedratyuk and Xin (2011): Poincaré series of invariants of ternary and quaternary forms by MacMahon partition analysis.",
+      "url": "https://doi.org/10.1080/03081087.2010.536763"
+    },
+    {
+      "citation": "Herbig and Schwarz (2013): the Koszul complex of a moment map; irreducible non-coregular modules are 2-large.",
+      "url": "https://arxiv.org/abs/1205.4608"
+    }
+  ],
+  "citeText": "Anonymous (2026). Hilbert series of the invariants of tuples of 4×4 and 5×5 matrices, and a candidate series for plane septics. Version 0.1.0-candidate. Evidence Press. 10.5281/zenodo.22974308.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Research, the responses to a GPT-5.6 adversarial review and to a publisher-supplied external model review, the internal editorial gate, and publication are recorded separately.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Claude (Anthropic) research agent under user direction",
+      "C with OpenMP (GCC); Python with python-flint (FLINT), SymPy, NumPy and SciPy",
+      "pdfTeX and pandoc"
+    ],
+    "humanRole": "The user set the task and supplied publication authority and an external review; scholarly creator Anonymous. No human mathematical contribution is claimed.",
+    "disclosure": "AI-produced research, computation and drafting. Separate AI agents wrote the independent septic checks and ran a literature search; one cross-vendor adversarial review (GPT-5.6, Major Revision), one publisher-supplied external model review (Major Revision, no fatal defect) and a producer-coordinated five-role AI editorial gate. None of these is specialist or journal peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22974308",
+      "note": "Public GitHub prerelease v0.1.0-candidate and published Zenodo record (3 files each); every file matched the SHA-256 sums by server checksum and by independent download."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/hilbert-series-matrix-septic-invariants/blob/v0.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Fresh-extraction FULL replay of the final candidate: manifest before and after; engine validation; ten matrix certificates; the blind second engine over every certificate range; exact septic regeneration to degree 760; character check to degree 32; septic grid, pole-set and Theorem 2 checks; 19 negative controls in normal and optimised Python. Linux CI runs the quick replay."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/hilbert-series-matrix-septic-invariants/actions",
+      "note": "Linux CI runs the quick replay; versions recorded. Recomputing the stored grid residues takes CPU-hours and is documented, not replayed."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Model reviewers re-ran the replay and small computations inside one producer workflow; not an unaffiliated rerun."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Separately written code inside one producer workflow (blind septic weight counting; a second matrix grid engine; a character formula; reviewers' own grids): implementation diversity, not independent reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof assistant; the C engines and Python checkers are trusted."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated and external model reviews do not establish this external assurance dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or venue review."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:hilbert-series-matrix-septic-invariants",
+    "attemptIds": [
+      "ep-attempt:hilbert-series-matrix-septic-invariants-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [],
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "Exact one-variable Hilbert series of C̄(4,k), 3 ≤ k ≤ 10, and C̄(5,3), with least denominators equal to Berele's Conjecture 1; the plane-septic series agrees with the candidate R(t) through degree 760.",
+      "scope": "Unrefined total-degree grading; septic identity conditional beyond degree 760."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Lemma 3 (exact grid evaluation) supplies residues; Proposition 5 (Van den Bergh, Hochster–Roberts, Formanek) turns agreement of finitely many coefficients into equality; certify_mat.py implements it and checks Berele's denominator. Theorem 2 rests on exact weight-counting integers and the functional-equation chain of §3.1.",
+      "remainingRisks": [
+        "The C grid engine and the checkers are trusted; no formal verification.",
+        "Van den Bergh, Formanek and Knop are used through published restatements.",
+        "The septic identity is unconditional only through degree 760."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Assess Proposition 5 and the grid lemma.",
+      "Preserve candidate status, the conditional septic wording and the bounded novelty statement.",
+      "Publication is authorised; external review is a separate dimension."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Specialist checking of Proposition 5 and an unaffiliated rerun of the matrix grid engine; the finite computation to degree 10902 for the septics.",
+      "claimCeiling": "Unrefereed candidate. Computer-assisted theorems for nine matrix cases; the septic series proved through degree 760 and conditionally beyond; no formal verification or external review."
+    },
+    "impactClaims": [
+      {
+        "id": "hilbert-series-matrix-septic-invariants-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable computer-assisted Hilbert series",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "schemaVersion": "1.0",
+      "reviewId": "hilbert-series-matrix-septic-internal-editorial-v1",
+      "reviewClass": "editorial-assessment",
+      "status": "published",
+      "subject": {
+        "canonicalUrl": "https://evidencepress.org/releases/hilbert-series-matrix-septic-invariants/",
+        "doi": "10.5281/zenodo.22974308",
+        "version": "0.1.0-candidate",
+        "releaseTag": "v0.1.0-candidate",
+        "title": "Hilbert series of the invariants of tuples of 4×4 and 5×5 matrices, and a candidate series for plane septics"
+      },
+      "reviewer": {
+        "name": "Five internal model editorial roles and two confirmation reviewers",
+        "independence": "producer-coordinated"
+      },
+      "assessment": {
+        "title": "Internal five-role editorial assessment with confirmation round",
+        "date": "2026-09-26",
+        "recommendation": "Minor Revision"
+      },
+      "assuranceImpact": {
+        "changesVerificationStatus": false,
+        "changesPeerReviewedFlag": false,
+        "changesIndependentReproductionFlag": false,
+        "changesFormalVerificationFlag": false,
+        "explanation": "Producer-coordinated model review does not establish external peer review, reproduction or formal proof."
+      },
+      "publication": {
+        "publicUrl": "https://github.com/ipitchford/hilbert-series-matrix-septic-invariants/blob/v0.1.0-candidate/review/editorial-gate/EDITORIAL_DECISION.md",
+        "publicSummary": "Five roles reviewed one frozen target; all recommended Minor Revision and none found a mathematical error. Several re-computed load-bearing results with their own code. The repair batch fixed an artefact defect (a negative control had overwritten a shipped evidence record), reframed the septic result as a candidate series with an explicitly unknown hsop hypothesis, added an a priori septic denominator that reduces an unconditional proof to a finite computation, stated Berele's conjecture explicitly, corrected the prior-art table, and added a second matrix engine written blind by a separate agent that agrees over every certificate range. Two confirmation reviewers (mathematics, computation) accepted the repairs with minor edits, which were applied; both independently reproduced the new a priori pole-set computation."
+      }
+    }
+  ],
+  "narration": "Take a handful of square matrices, and ask which polynomial quantities stay the same when every matrix is rotated by the same change of basis. Traces of products of the matrices are the basic examples, and together they form what mathematicians call a ring of matrix invariants. The number of independent invariants in each degree is recorded by a generating function called the Hilbert series. In physics the same numbers count the states of matrix models with a finite number of colours. For two matrices these series were known up to seven by seven. For three or more matrices they were known only up to three by three. This release determines them exactly for three to ten four-by-four matrices, and for three five-by-five matrices. Each case is a computer-assisted theorem: published results reduce it to finitely many coefficients, and those are computed exactly, using sums over roots of unity modulo large primes. In all nine cases the answer confirms a conjecture made by Allan Berele about the shape of these series. A second result concerns curves of degree seven in the plane. Here the release gives a candidate formula and proves that it is correct for every degree up to seven hundred and sixty. Full equality is proved only under an extra assumption, and the paper sets out the finite computation that would remove it. The research was produced by an AI research agent. The main limitation is this: the results have been checked by the producing workflow and by several AI reviewers, but not by any human specialist, and nothing has been formally verified. This is an unrefereed candidate from Evidence Press, dated September twenty-sixth, twenty twenty-six. The paper, code and data are linked from the release page. This briefing uses an AI-generated voice, and it is not additional evidence.",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true
+}

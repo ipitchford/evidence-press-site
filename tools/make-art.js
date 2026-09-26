@@ -2234,6 +2234,38 @@ art['davies-levitin-lens-conjecture'] = (a,b) => {
 };
 palette['davies-levitin-lens-conjecture']=['#8fc9e8','#f0c27b'];
 
+// Hilbert series of matrix invariants: exact ratio a_d / (free multi-trace count) for THREE generic n×n matrices,
+// d = 1..16, n = 2, 3 (known series) and n = 4, 5 (series certified in this release). Values from the certified
+// rational functions and the symmetric-group character formula (independent/matrix_characters.py). Exact, not schematic.
+art['hilbert-series-matrix-septic-invariants'] = (a,b) => {
+ const g='#8a979c', t='#edf3ee';
+ const R={2:[1,1,.7436,.5814,.391,.2635,.1618,.0985,.0561,.0316,.017,.009,.0046,.0023,.0011,.0006],
+  3:[1,1,1,.8837,.782,.6578,.5329,.4158,.3144,.2294,.1625,.1118,.0749,.0489,.0312,.0194],
+  4:[1,1,1,1,.9474,.8972,.8247,.7457,.6563,.5665,.477,.3933,.3169,.2501,.1932,.1463],
+  5:[1,1,1,1,1,.9775,.9532,.9171,.8733,.8205,.7609,.6956,.6269,.5566,.4868,.4194]};
+ const x0=95, x1=575, y0=330, y1=70, X=d=>x0+(d-1)*(x1-x0)/15, Y=r=>y0-(y0-y1)*r;
+ let s=`<g font-family="Arial, sans-serif">`;
+ s+=`<path d="M${x0} ${y1-10} V${y0} H${x1+10}" stroke="${g}" stroke-width="2" fill="none"/>`;
+ for(const r of [0,.5,1]) s+=`<path d="M${x0-6} ${Y(r)} H${x0}" stroke="${g}" stroke-width="2"/><text class="og-hide" x="${x0-12}" y="${Y(r)+6}" text-anchor="end" fill="${g}" font-size="16">${r}</text>`;
+ for(const d of [1,4,5,8,12,16]) s+=`<text class="og-hide" x="${X(d)}" y="${y0+24}" text-anchor="middle" fill="${g}" font-size="16">${d}</text>`;
+ s+=`<text class="og-hide" x="${(x0+x1)/2}" y="${y0+50}" text-anchor="middle" fill="#cfddd8" font-size="17">degree d</text>`;
+ const col={2:g,3:g,4:a,5:b};
+ for(const n of [2,3,4,5]){ const pts=R[n].map((r,i)=>`${X(i+1).toFixed(1)} ${Y(r).toFixed(1)}`).join(' L');
+  s+=`<path d="M${pts}" fill="none" stroke="${col[n]}" stroke-width="${n>=4?4:2.5}" stroke-opacity="${n>=4?1:.7}"/>`;
+  R[n].forEach((r,i)=>{ if(n>=4) s+=`<circle cx="${X(i+1).toFixed(1)}" cy="${Y(r).toFixed(1)}" r="3.6" fill="${col[n]}"/>`; });
+  const L={2:[6,22],3:[10,-12],4:[16,6],5:[16,6]}[n], dl=L[0]; s+=`<text x="${X(dl)+8}" y="${Y(R[n][dl-1])+L[1]}" fill="${col[n]}" font-size="19">${n}×${n}</text>`; }
+ s+=`<path d="M${X(5)} ${y1-4} V${y0}" stroke="${a}" stroke-dasharray="4 5" stroke-opacity=".6" stroke-width="1.5"/>`;
+ s+=`<text class="og-hide" x="${X(5)+8}" y="${y1-10}" fill="${a}" font-size="15">4×4: first trace relations at d = 5</text>`;
+ s+=`<text class="og-hide" x="70" y="42" fill="${t}" font-size="19">THREE MATRICES: invariants ÷ free trace words, by degree</text>`;
+ s+=`<text class="og-hide" x="880" y="105" text-anchor="middle" fill="#e7e5e4" font-family="Georgia" font-size="32">Invariants of k matrices</text>`;
+ s+=`<text class="og-hide" x="880" y="165" text-anchor="middle" fill="${a}" font-family="Georgia" font-size="25">4×4 for k = 3…10, and 5×5, k = 3</text>`;
+ s+=`<text class="og-hide" x="880" y="228" text-anchor="middle" fill="${b}" font-family="monospace" font-size="19">least denominator = Berele's conjecture</text>`;
+ s+=`<text class="og-hide" x="880" y="280" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">+ plane septics to degree 760</text>`;
+ s+=`<text class="og-hide" x="880" y="335" text-anchor="middle" fill="#cbd5d1" font-family="monospace" font-size="17">UNREFEREED CANDIDATE</text></g>`;
+ return s;
+};
+palette['hilbert-series-matrix-septic-invariants']=['#8fd0c0','#f0b77b'];
+
 const requested = new Set(process.argv.slice(2));
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
