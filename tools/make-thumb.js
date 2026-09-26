@@ -716,6 +716,14 @@ SPECS['hilbert-series-matrix-septic-invariants'] = {
  hero:'<div class="eq-label">least denominator, 4×4 matrices, k = 3…10</div><div class="eq eq-sm">(1−t)<sup>3k−3</sup>(1−t²)<sup>4k−4</sup><br><span class="hl">(1−t³)<sup>5k−5</sup>(1−t⁴)<sup>4k−3</sup></span></div><div class="note">Exactly as <b>Berele conjectured</b>, in all nine new cases.</div><div class="eq-foot">Candidate result · external review unestablished</div>'
 };
 
+SPECS['hilbert-series-ternary-septic-octic-nonic'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 26 SEPTEMBER 2026','INVARIANT THEORY · V0.2.0'],
+ head:['Invariants of','<em>plane curves</em>'], headSize:74,
+ sub:'Exact Hilbert series for plane curves of degree 7, 8 and 9: ternary septics, octics and nonics.',
+ tag:'COMPUTER-ASSISTED · EXACT CERTIFICATES · UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">least denominator degree</div><div class="eq eq-sm">d = 7: 1386<br><span class="hl">d = 8: 2331</span><br>d = 9: 1393</div><div class="note">Nonics: exactly <b>45</b> basic invariants of degree 8, <b>118</b> of degree 9.</div><div class="eq-foot">Candidate result · specialist review unestablished</div>'
+};
+
 const escapeHtml = value => String(value == null ? '' : value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
