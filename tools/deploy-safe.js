@@ -15,4 +15,4 @@ function run(command, args) {
 const forwarded = process.argv.slice(2);
 run('./tools/deploy.sh', forwarded.length ? forwarded : ['--branch', 'main']);
 
-console.log('\nSafe production deployment completed through tools/deploy.sh.');
+console.log('\nGuarded deployment and canonical readback completed through tools/deploy.sh; see its separate IndexNow status.');

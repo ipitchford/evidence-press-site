@@ -2,18 +2,36 @@
 # Evidence Press — one-command publish.
 #
 #   ./tools/deploy.sh            # build, gate, deploy, then push URLs to IndexNow
-#   ./tools/deploy.sh --commit-dirty=true   # extra args are forwarded to wrangler
+#   ./tools/deploy.sh --build-receipt /tmp/reviewed/receipt.json --branch main
+# Extra args are forwarded to Wrangler; a dirty source tree is always refused.
 #
 # Steps, in order (any failure aborts — set -e): build the exact ledgered
 # candidate; run protocol, site, link and live-preservation gates; verify
 # Cloudflare authentication; deploy; perform exact protocol and full-site live
-# readback; then submit the sitemap to IndexNow.
+# readback; then submit the sitemap to IndexNow. Discovery failure does not
+# negate successful publication; its separate retry is recorded outside dist.
 #
 # IndexNow submission is wired in here so Bing/Yandex/DuckDuckGo/Seznam learn of
 # new or changed pages on every deploy, with no separate manual step. It runs
 # LAST, after the pages and the key file are live, so ownership validation passes.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+
+BUILD_RECEIPT=""
+WRANGLER_ARGS=()
+while (( $# )); do
+  case "$1" in
+    --build-receipt)
+      if (( $# < 2 )) || [[ -z "$2" || "$2" == --* || -n "$BUILD_RECEIPT" ]]; then
+        echo "REFUSING DEPLOY: --build-receipt needs one receipt path" >&2
+        exit 1
+      fi
+      BUILD_RECEIPT="$2"
+      shift 2
+      ;;
+    *) WRANGLER_ARGS+=("$1"); shift ;;
+  esac
+done
 
 # Cloudflare Pages can expose a new deployment at its preview hostname a few
 # seconds before every custom-domain edge serves the same bytes.  Retry only
@@ -47,22 +65,12 @@ retry_post_deploy_readback() {
   done
 }
 
-if [[ ! -f protocols/PUBLISHED.json ]]; then
-  echo "REFUSING DEPLOY: protocols/PUBLISHED.json is missing" >&2
-  exit 1
+echo "==> [1/9] verified composite artifact (build once or reuse exact reviewed bytes)"
+if [[ -n "$BUILD_RECEIPT" ]]; then
+  node tools/build-artifact.js verify --receipt "$BUILD_RECEIPT"
+else
+  BUILD_RECEIPT="$(node tools/build-artifact.js prepare --print-receipt)"
 fi
-read -r PROTOCOL_SOURCE_COMMIT PROTOCOL_SOURCE_DIRTY < <(node -e '
-  const ledger = require("./protocols/PUBLISHED.json");
-  process.stdout.write(String(ledger.source && ledger.source.commit) + " " + String(ledger.source && ledger.source.dirty) + "\n");
-')
-if [[ ! "$PROTOCOL_SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ || "$PROTOCOL_SOURCE_DIRTY" != "false" ]]; then
-  echo "REFUSING DEPLOY: protocol ledger must pin a full clean source commit; reseal the candidate after commit A" >&2
-  exit 1
-fi
-
-echo "==> [1/9] composite build (main site + exact ledgered /protocols/ source)"
-PRODUCTIVITY_PROTOCOLS_SOURCE_COMMIT="$PROTOCOL_SOURCE_COMMIT" \
-  REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh
 
 echo "==> [2/9] exact protocol release-integrity gate"
 node protocols/tools/check-release-integrity.js
@@ -89,7 +97,11 @@ echo "==> [5/9] verify Cloudflare authentication"
 npx wrangler whoami
 
 echo "==> [6/9] deploy to Cloudflare Pages"
-npx wrangler pages deploy dist --project-name evidence-press "$@"
+# Recheck after all local/live pre-upload gates and authentication: they must
+# not mutate either the source, the checked dist tree, or the preserved copy.
+BUILD_ARTIFACT="$(node tools/build-artifact.js verify --receipt "$BUILD_RECEIPT" --print-artifact)"
+# macOS ships Bash 3.2, where an empty array trips nounset with the usual form.
+npx wrangler pages deploy "$BUILD_ARTIFACT" --project-name evidence-press ${WRANGLER_ARGS[@]+"${WRANGLER_ARGS[@]}"}
 
 echo "==> [7/9] exact protocol live byte readback"
 retry_post_deploy_readback "exact protocol live byte readback" \
@@ -102,7 +114,13 @@ retry_post_deploy_readback "publication-integrity post-deploy readback" \
   node tools/check-publication-integrity.js --live
 
 echo "==> [9/9] IndexNow submission"
-node tools/indexnow-submit.js
+DISCOVERY_STATUS="accepted"
+if ! node tools/indexnow-submit.js; then
+  DISCOVERY_STATUS="failed"
+  echo "Publication and canonical readback passed; IndexNow discovery failed. Retry only: node tools/indexnow-submit.js" >&2
+fi
+DEPLOYMENT_RECEIPT="$(node tools/build-artifact.js deployment-result --receipt "$BUILD_RECEIPT" --discovery "$DISCOVERY_STATUS")"
 
 echo
-echo "Guarded deployment and post-deploy readback completed."
+echo "Guarded deployment and canonical post-deploy readback completed. IndexNow: ${DISCOVERY_STATUS}."
+echo "Operational deployment receipt: ${DEPLOYMENT_RECEIPT}"
