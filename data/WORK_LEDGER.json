@@ -18241,7 +18241,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-27T10:09:07.917Z",
       "status": "active",
-      "statusAt": "2026-09-27T10:09:07.917Z",
+      "statusAt": "2026-09-27T10:48:27.250Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -18327,12 +18327,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "No endpoint yet. Human effort, inference compute, total agent tokens and prior discovery clocks are not instrumented.",
+        "missingnessReason": "Public research assets and the site are canonically read back. Active/pending describes incomplete resource measurement, not unfinished publication. All-agent token/compute counts and separately measured rework/active clocks are unavailable and not reconstructed.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-27T10:09:07.917Z",
             "basis": "Only work after this registration is measured. Earlier research, supplied reviews, intake and initial targeted checking are left-censored. No comparative acceleration or discovery-time claim."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-27T10:48:27.250Z",
+            "basis": "Public research assets and the site are canonically read back. Active/pending describes incomplete resource measurement, not unfinished publication. All-agent token/compute counts and separately measured rework/active clocks are unavailable and not reconstructed."
           }
         ],
         "activeHumanMinutes": null,
@@ -18343,12 +18348,88 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Endpoint not reached."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-27T10:48:27.250Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/free-fermion-frustration-graphs/",
+              "https://github.com/ipitchford/free-fermion-frustration-graphs/releases/tag/v1.0.0-candidate",
+              "https://zenodo.org/records/22994980"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/free-fermion-frustration-graphs/releases/download/v1.0.0-candidate/REPLAY_RECEIPT.json",
+              "https://github.com/ipitchford/free-fermion-frustration-graphs/actions/runs/36312894887"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/free-fermion-frustration-graphs/blob/v1.0.0-candidate/ENVIRONMENT.txt",
+              "https://github.com/ipitchford/free-fermion-frustration-graphs/blob/v1.0.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/free-fermion-frustration-graphs/blob/v1.0.0-candidate/CLAIMS.json",
+              "https://github.com/ipitchford/free-fermion-frustration-graphs/blob/v1.0.0-candidate/review/REVISION_RESPONSE_V4.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/free-fermion-frustration-graphs/blob/v1.0.0-candidate/SOURCES.md",
+              "https://github.com/ipitchford/free-fermion-frustration-graphs/blob/v1.0.0-candidate/CITATION_AUDIT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate. Exact sparse107 identities, partialoriginalFLINT63, numerical rechecks and written proofs remain separate. No unaffiliated reproduction, external review, formal proof, exhaustive novelty or priority claim.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/free-fermion-frustration-graphs/",
+          "https://github.com/ipitchford/free-fermion-frustration-graphs/releases/tag/v1.0.0-candidate",
+          "https://zenodo.org/records/22994980"
+        ],
+        "missingnessReason": "External/formal assurance and complete resource measurement remain unestablished."
       },
       "releaseSlug": "free-fermion-frustration-graphs",
       "stopReason": null,
@@ -18359,6 +18440,17 @@
           "resultClass": "pending",
           "reason": "Only work after this registration is measured. Earlier research, supplied reviews, intake and initial targeted checking are left-censored. No comparative acceleration or discovery-time claim.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-27T10:48:27.250Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Public research assets and the site are canonically read back. Active/pending describes incomplete resource measurement, not unfinished publication. All-agent token/compute counts and separately measured rework/active clocks are unavailable and not reconstructed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/free-fermion-frustration-graphs/",
+            "https://github.com/ipitchford/free-fermion-frustration-graphs/releases/tag/v1.0.0-candidate",
+            "https://zenodo.org/records/22994980"
+          ]
         }
       ],
       "corrections": [],
@@ -18366,6 +18458,10 @@
         {
           "date": "2026-09-27",
           "summary": "Registered remaining revision and publication; no reconstructed historical clocks."
+        },
+        {
+          "date": "2026-09-27",
+          "summary": "Appended canonical public availability and bounded producer assurance without inventing missing counters."
         }
       ]
     }
@@ -18924,6 +19020,10 @@
     {
       "date": "2026-09-27",
       "summary": "Registered remaining free-fermion frustration-graphs revision and publication, with prior discovery and initial intake left-censored."
+    },
+    {
+      "date": "2026-09-27",
+      "summary": "Recorded public delivery and partial assurance for free-fermion-frustration-graphs; preserved the prospective forecast and unknown resource measurements."
     }
   ]
 }
