@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'free-fermion-frustration-graphs': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 27 SEPTEMBER 2026', 'QUANTUM SPINS · EXACT SPECTRA'],
+    head: ['When spins', '<em>look free</em>'],
+    headSize: 78,
+    sub: 'A graph criterion—and why free blocks are not the whole story.',
+    tag: 'ANONYMOUS · UNREFEREED CANDIDATE',
+    hero: require('./free-fermion-art').thumbnailHero()
+  },
   'decision-geometry': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 26 SEPTEMBER 2026', 'EVOLUTION · SEQUENTIAL INFERENCE'],
