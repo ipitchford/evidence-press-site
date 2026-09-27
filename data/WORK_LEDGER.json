@@ -18471,7 +18471,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-27T17:17:14.806Z",
       "status": "active",
-      "statusAt": "2026-09-27T17:17:14.806Z",
+      "statusAt": "2026-09-27T17:42:42.786Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -18549,12 +18549,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Endpoint not reached; human effort, compute and exact tokens uninstrumented.",
+        "missingnessReason": "Public research assets and the site are canonically read back. Active/pending describes incomplete resource measurement, not unfinished publication. All-agent token/compute counts and separately measured rework/active clocks are unavailable and not reconstructed.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-27T17:17:14.806Z",
             "basis": "Only remaining publication from this registration is measured; earlier research, intake and repairs are excluded, and missing clocks are not reconstructed."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-27T17:42:42.786Z",
+            "basis": "Public research assets and the site are canonically read back. Active/pending describes incomplete resource measurement, not unfinished publication. All-agent token/compute counts and separately measured rework/active clocks are unavailable and not reconstructed."
           }
         ],
         "activeHumanMinutes": null,
@@ -18565,12 +18570,86 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Publication endpoint not reached."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-27T17:42:42.786Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/ptolemaic-split-stability/",
+              "https://github.com/ipitchford/ptolemaic-split-stability/releases/tag/v0.3.1-candidate",
+              "https://zenodo.org/records/23000081"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/ptolemaic-split-stability/releases/download/v0.3.1-candidate/REPLAY_RECEIPT.json",
+              "https://github.com/ipitchford/ptolemaic-split-stability/actions/runs/36336907272"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/ptolemaic-split-stability/blob/v0.3.1-candidate/requirements.txt"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/ptolemaic-split-stability/blob/v0.3.1-candidate/review/REVISION_RESPONSE_V031.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/ptolemaic-split-stability/blob/v0.3.1-candidate/SOURCES.md",
+              "https://github.com/ipitchford/ptolemaic-split-stability/blob/v0.3.1-candidate/CITATION_AUDIT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate. Exact finite certificates, universal symbolic identities, numerical checks and written arguments remain separate. Supplied separate checker was replayed locally, not by an unaffiliated reproducer. No formal proof, external peer review, exhaustive novelty or priority claim.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/ptolemaic-split-stability/",
+          "https://github.com/ipitchford/ptolemaic-split-stability/releases/tag/v0.3.1-candidate",
+          "https://zenodo.org/records/23000081"
+        ],
+        "missingnessReason": "External/formal assurance and complete resource measurement remain unestablished."
       },
       "releaseSlug": "ptolemaic-split-stability",
       "stopReason": null,
@@ -18581,6 +18660,17 @@
           "resultClass": "pending",
           "reason": "Only remaining publication from this registration is measured; earlier research, intake and repairs are excluded, and missing clocks are not reconstructed.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-27T17:42:42.786Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Public research assets and the site are canonically read back. Active/pending describes incomplete resource measurement, not unfinished publication. All-agent token/compute counts and separately measured rework/active clocks are unavailable and not reconstructed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/ptolemaic-split-stability/",
+            "https://github.com/ipitchford/ptolemaic-split-stability/releases/tag/v0.3.1-candidate",
+            "https://zenodo.org/records/23000081"
+          ]
         }
       ],
       "corrections": [],
@@ -18588,6 +18678,10 @@
         {
           "date": "2026-09-27",
           "summary": "Registered remaining publication without reconstructing earlier clocks."
+        },
+        {
+          "date": "2026-09-27",
+          "summary": "Appended canonical public availability and bounded producer assurance without inventing missing counters."
         }
       ]
     }
@@ -19154,6 +19248,10 @@
     {
       "date": "2026-09-27",
       "summary": "Registered remaining Ptolemaic split stability publication."
+    },
+    {
+      "date": "2026-09-27",
+      "summary": "Recorded public delivery and partial assurance for ptolemaic-split-stability; preserved the prospective forecast and unknown resource measurements."
     }
   ]
 }
