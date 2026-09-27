@@ -2296,6 +2296,9 @@ art['ptolemaic-negative-type'] = ptolemaicArt.cover;
 palette['ptolemaic-negative-type'] = ['#69dbc6', '#f2c373'];
 
 const requested = new Set(process.argv.slice(2));
+const freeFermionArt = require('./free-fermion-art');
+art['free-fermion-frustration-graphs'] = freeFermionArt.cover;
+palette['free-fermion-frustration-graphs'] = ['#6ddbc4', '#f0c274'];
 const decisionGeometryArt = require('./decision-geometry-art');
 art['decision-geometry'] = decisionGeometryArt.cover;
 palette['decision-geometry'] = ['#6ddbc4', '#f3c779'];
@@ -2320,4 +2323,9 @@ for (const [slug, fn] of Object.entries(art)) {
     fs.writeFileSync(path.join(OUT, slug + '-boundary.svg'), decisionGeometryArt.boundary());
   }
   console.log('art:', slug);
+  if (slug === 'free-fermion-frustration-graphs') {
+    svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${freeFermionArt.description}</desc><defs>`);
+    fs.writeFileSync(path.join(OUT, slug + '.svg'), svg);
+    fs.writeFileSync(path.join(OUT, slug + '-parity.svg'), freeFermionArt.parity());
+  }
 }
