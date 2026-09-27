@@ -2296,6 +2296,10 @@ art['ptolemaic-negative-type'] = ptolemaicArt.cover;
 palette['ptolemaic-negative-type'] = ['#69dbc6', '#f2c373'];
 
 const requested = new Set(process.argv.slice(2));
+const splitStabilityArt = require('./ptolemaic-stability-art');
+art['ptolemaic-split-stability'] = splitStabilityArt.cover;
+palette['ptolemaic-split-stability'] = ['#61d9c0', '#f0c274'];
+if (!requested.size || requested.has('ptolemaic-split-stability')) fs.writeFileSync(path.join(OUT, 'ptolemaic-split-stability-rates.svg'), splitStabilityArt.rates());
 const freeFermionArt = require('./free-fermion-art');
 art['free-fermion-frustration-graphs'] = freeFermionArt.cover;
 palette['free-fermion-frustration-graphs'] = ['#6ddbc4', '#f0c274'];
