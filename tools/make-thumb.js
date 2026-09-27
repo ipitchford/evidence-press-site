@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'ptolemaic-split-stability': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 27 SEPTEMBER 2026', 'METRIC GEOMETRY · SHARP LOCAL RATES'],
+    head: ['Leaving', '<em>equality.</em>'],
+    headSize: 90,
+    sub: 'How fast does a gap open? Exact rates—and a four-point exception.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">seven-point split · first-order gap / h</div><div class="eq eq-sm">2p/21 <span class="hl">⟷</span> 16p/7</div><div class="note">Both rates attained.<br><b>p = log₂(16/9)</b><br>Mean cross-distance fixed at 1.</div><div class="eq-foot">four-point star: quadratic, not linear</div>'
+  },
   'free-fermion-frustration-graphs': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 27 SEPTEMBER 2026', 'QUANTUM SPINS · EXACT SPECTRA'],
