@@ -6,6 +6,7 @@
   "abstract": "This unrefereed analytic candidate solves the model-restricted information projection for every off-boundary distribution in the open three-leaf Jukes–Cantor triangle-network union. The resulting sequential procedure is pointwise asymptotically optimal for certifying the complete compatible set as the error allowance tends to zero. At model boundaries, local label constancy classifies finite-output questions admitting reliable finite-mean termination. Exact rational acceptance checks accompany the written arguments. The guarantees assume iid observations and the stated evolutionary model; they do not establish biological validity, a unique generating network, formal verification or independent reproduction.",
   "narration": "Evolutionary data can fit more than one history. Sometimes even perfect knowledge of the observed distribution cannot tell those histories apart. This research candidate asks a different question: which histories are compatible, and when have we collected enough data to certify the answer? The paper studies a model with three sampled leaves and one hybridisation event. Different orientations of its triangle network can overlap. The authors calculate the information distance to a different complete answer, restricting rival distributions to those the model actually allows. That restriction matters. The nearest ordinary sign change can lie outside the model, making a simpler method unnecessarily conservative. In one exact example, using the model reduces the leading expected sample requirement by about fifteen per cent. That is a high-confidence limiting comparison, not a guaranteed saving for every data set. The sequential procedure permits repeated inspections while controlling the chance of an incorrect conclusion. But more observations do not solve every question. The diagram on this page gives an exact boundary example with four nearby answers. All include orientation three, so that useful statement can be certified. The complete set varies, and reliable finite-time certification of that complete answer is obstructed. These are mathematical guarantees under specific assumptions: independent observations, a particular substitution model and no coalescence. They are not a test of whether the model fits biological reality. The universal results depend on written proofs. Rational certificates and numerical experiments check narrower implementation facts. This is Evidence Press, Information-optimal anytime certification of triangle-network compatibility, released on the twenty-sixth of September twenty twenty-six, version one point zero candidate. It is unrefereed. The paper and complete evidence package are linked on this page. This AI-generated synthetic voice adds no scientific evidence.",
   "datePublished": "2026-09-26",
+  "dateModified": "2026-09-27",
   "version": "1.0.0-candidate",
   "doi": "10.5281/zenodo.22983737",
   "conceptDoi": "10.5281/zenodo.22983736",
@@ -60,7 +61,7 @@
     "Outward rational enclosures with the specified precision schedule preserve the leading complete-set stopping constant."
   ],
   "evidence": "Analytic manuscript, exact and symbolic identities, 174 saved rational acceptance receipts, synthetic experiments with censored observations retained, numerical projection diagnostics, preserved review/source history and final rejection controls.",
-  "statusDetail": "Unrefereed analytic proof candidate. The full eleven-job producer replay passed; exact outputs matched while three numerical reports differed within accepted checks under local library versions. Four semantic and five integrity/optimization rejection controls passed. Written proofs remain separate from finite checks. No independent reproduction, formal verification, authenticated external review, model validation or exhaustive priority claim.",
+  "statusDetail": "Unrefereed analytic proof candidate. All 174 archived rational acceptance receipts replay, but a 27 September audit with pinned NumPy 2.3.5 found exact seed-regeneration discrepancies: 9/20 double-boundary runs and 8/20 overlap runs matched saved checkpoint counts. The original eleven-job PASS allowed changed simulation output and did not establish archived trajectory reproducibility. Cause unresolved; archive unchanged. Written proofs remain separate from these finite checks. No independent reproduction, formal verification, authenticated external review, model validation or exhaustive priority claim.",
   "openProblems": [],
   "relatedWorks": [
     {
@@ -190,8 +191,9 @@
       "note": "All six GitHub and Zenodo assets were fully downloaded and SHA-256 matched to the final local release files. Availability does not validate the mathematics."
     },
     "internalReplay": {
-      "state": "passed",
-      "note": "Eleven full replay jobs, 174 saved rational receipts, four semantic controls and five integrity/optimization controls passed. Exact and numerical outcomes remain separate."
+      "state": "partial",
+      "evidenceUrl": "https://evidencepress.org/assets/data/decision-geometry-seed-audit-2026-09-27.json",
+      "note": "All 174 archived rational receipts pass. The original eleven-job replay allowed nonidentical simulation output; pinned-version regeneration matches saved checkpoint counts for only 9/20 double-boundary and 8/20 overlap runs. Stopping outcomes match 17/20 and 19/20 respectively. Four other cases match. Exact receipt validity and seed regeneration are separate."
     },
     "independentRerun": {
       "state": "not-assessed",
@@ -216,8 +218,16 @@
     "dataEnvironmentReproducibility": {
       "state": "partial",
       "evidenceUrl": "https://github.com/ipitchford/decision-geometry/actions/runs/36277499580",
-      "note": "Full Linux replay with pinned requirements passed at tagged payload cb882301ce23afb05699bd3b99b987cff63cab3a. The local macOS receipt separately records exact agreement and numerical-version differences; PDF build is not hermetic."
+      "note": "Linux CI passed its replay criteria at tagged payload cb882301ce23afb05699bd3b99b987cff63cab3a, but those criteria permit changed simulation output. A fresh macOS/Python3.13 run with pinned NumPy2.3.5 does not regenerate all archived checkpoint counts or stopping outcomes. Repeating this audit produces identical new output. Original-environment cause unresolved; PDF build is not hermetic."
     }
   },
-  "reviews": []
+  "reviews": [],
+  "corrections": [
+    {
+      "date": "2026-09-27",
+      "scope": "evidence",
+      "summary": "Receipt replay does not establish seed regeneration of the archived experiment.",
+      "detail": "A pinned-NumPy audit reproduces saved counts in only 9 of 20 double-boundary runs (17 stopping outcomes) and 8 of 20 overlap runs (19 stopping outcomes). All 174 archived rational receipts still pass. The earlier replay PASS allowed changed simulation output; the cause of the mismatch remains unresolved. Internal replay is now recorded as partial. See the dated audit in Evidence, assurance and limitations; the archived research package remains unchanged."
+    }
+  ]
 }
