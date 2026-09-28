@@ -1,0 +1,204 @@
+{
+  "slug": "flat-schmidt-chains",
+  "title": "Same local spectra, different quantum gaps",
+  "shortTitle": "Flat Schmidt-rank-two chains",
+  "oneLine": "A geometric classification separates every gapped and gapless chain in a precise entanglement class—even when familiar short-chain measurements agree.",
+  "abstract": "For homogeneous open nearest-neighbour chains with a normalised rank-one local projector whose forbidden vector has exactly two equal nonzero Schmidt probabilities, a written proof candidate classifies gappedness in every finite local dimension. Gaplessness is equivalent to a balanced-marker form and has exact finite-length gap 1−cos(π/N). All other interactions in the class have explicit uniform lower bounds. A complete qutrit short-spectrum fibre has fixed Schmidt probabilities, two- and three-site spectra and ground-space dimension at every length, yet only its endpoint is gapless. The proof distinguishes compatible propagation from an obstruction to four-site saturation.",
+  "narration": "Can two quantum chains look identical in small tests, yet behave differently when they become long? This research candidate gives a precise example—and a classification explaining why. The spectral gap is the energy needed to leave the ground-state space. A uniformly gapped chain keeps a positive energy threshold as its length grows. In a gapless chain, that threshold can shrink towards zero. The paper studies a restricted but natural class: neighbouring sites are constrained by one forbidden quantum state, and that state has exactly two equal nonzero Schmidt probabilities. These probabilities describe its entanglement across the pair. The classification turns on how two support planes meet. If they share a line, a special geometric condition decides whether a low-energy disturbance can propagate. On the gapless side, the paper gives an exact formula for every finite chain length. On the other side, it proves a positive lower bound that does not vanish as the chain grows. The most revealing family has the same entanglement probabilities, the same complete two-site and three-site spectra, and the same number of ground states at every length. Nevertheless, its endpoint is gapless while all earlier points are gapped. Those particular summaries therefore do not determine the long-chain gap. Four overlapping sites reveal information the shorter spectral lists miss. The package contains analytic arguments, exact finite certificates, numerical diagnostics and an exact-input classifier. A supplied review identified a symbolic-parameter bug; the revision rejects unspecialised parameters and tests the exceptional case explicitly. This remains an unrefereed candidate, not a formally verified theorem or an authenticated independent reproduction. It does not classify arbitrary interactions, periodic chains or every meaning of a quantum phase. This is Evidence Press, flat Schmidt-rank-two chains, released on the twenty-eighth of September twenty twenty-six. The paper and evidence are linked on this page. This synthetic AI voice is an explanation, not additional scientific evidence.",
+  "datePublished": "2026-09-28",
+  "version": "1.0.1-candidate",
+  "doi": "10.5281/zenodo.23024569",
+  "conceptDoi": "10.5281/zenodo.23024568",
+  "zenodoUrl": "https://zenodo.org/records/23024569",
+  "pdfUrl": "https://github.com/ipitchford/flat-schmidt-chains/releases/download/v1.0.1-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23024569/files/paper.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/flat-schmidt-chains",
+  "releaseUrl": "https://github.com/ipitchford/flat-schmidt-chains/releases/tag/v1.0.1-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioUrl": "/assets/audio/flat-schmidt-chains.mp3",
+  "audioTranscriptUrl": "/assets/audio/flat-schmidt-chains.txt",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/flat-schmidt-chains.mp3",
+      "name": "Plain-English audio briefing",
+      "description": "OpenAI synthetic voice; explanation, not scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/flat-schmidt-chains.txt"
+    }
+  ],
+  "keywords": [
+    "spectral gap",
+    "quantum spin chains",
+    "Schmidt rank",
+    "frustration free",
+    "qutrit",
+    "isospectral fibre"
+  ],
+  "problem": {
+    "name": "Which flat Schmidt-rank-two forbidden states give gapped open chains?",
+    "url": "https://arxiv.org/abs/1503.04035"
+  },
+  "keyResults": [
+    "Complete gapped/gapless classification for the stated flat Schmidt-rank-two forbidden-vector class, in every finite local dimension.",
+    "Every gapless member has exact finite-chain gap 1−cos(π/N); all other members have explicit uniform positive lower bounds.",
+    "The specified qutrit short-spectrum fibre has a complete one-parameter normal form and gap lower bound cos²(θ)/6 away from its endpoint.",
+    "Ground-space dimension F_(2N+2) stays fixed throughout that fibre, including the gapless endpoint."
+  ],
+  "evidence": "Written analytic proofs, seven exact finite positivity certificates, finite full-Hamiltonian diagnostics, a parameter-free exact classifier and semantic mutation controls.",
+  "statusDetail": "Unrefereed candidate. Producer-side exact and numerical replay corroborates finite statements, not universal analytic proofs. Supplied referee implementation and review are not authenticated unaffiliated reproduction or peer review. No exhaustive priority, experimental or impact claim.",
+  "openProblems": [],
+  "relatedWorks": [
+    {
+      "citation": "Bravyi and Gosset (2015), Gapped and gapless phases of frustration-free spin-1/2 chains. Theorem 1 supplies the complete qubit predecessor; it does not classify distinct intersecting qutrit supports.",
+      "url": "https://arxiv.org/abs/1503.04035"
+    },
+    {
+      "citation": "Movassagh et al. (2010), Unfrustrated qudit chains and their ground states. Section II, equation (11), is the antecedent for the ground-space recurrence; the candidate proves persistence along its entire specified fibre.",
+      "url": "https://arxiv.org/abs/1001.1006"
+    },
+    {
+      "citation": "Bravyi et al. (2012), Criticality without frustration for quantum spin-1 chains. Step 1 uses the known unbiased hopping gap and separates hopping from pair creation.",
+      "url": "https://arxiv.org/abs/1203.5801"
+    },
+    {
+      "citation": "Lemm (2019), Gaplessness is not generic for translation-invariant spin chains. Established adjacent-overlap and finite-size methods precede the saturation analysis here.",
+      "url": "https://arxiv.org/abs/1903.00108"
+    },
+    {
+      "citation": "Rai et al. (2026), A hierarchy of spectral gap certificates for frustration-free spin systems. A broader certificate framework, not a classification of this specified support geometry.",
+      "url": "https://doi.org/10.22331/q-2026-04-13-2065"
+    }
+  ],
+  "citeText": "Anonymous (2026). A spectral-gap classification for flat Schmidt-rank-two chains. Version 1.0.1-candidate. Zenodo. https://doi.org/10.5281/zenodo.23024569",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:flat-schmidt-chains",
+    "attemptIds": [
+      "ep-attempt:flat-schmidt-chains-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "certificate-first",
+      "regime-stitching",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "Support-geometric classification with exact gapless formula and uniform lower bounds.",
+      "scope": "Homogeneous open unpinned chains; rank-one local projector; exactly two equal nonzero Schmidt probabilities."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Schmidt supports and four-site range inequalities are connected to full open-chain gaps by analytic propagation and clipped-window arguments.",
+      "remainingRisks": [
+        "Universal arguments are not formally verified.",
+        "Finite numerical spectra do not settle arbitrary length or parameters.",
+        "Classification is not a general qutrit or rank-two-projector result."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authorisation only; no human scientific contribution or additional review stage is inferred."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated audit of saturation and normal-form proofs; independently reproduce the exact checks.",
+      "claimCeiling": "Unrefereed analytic candidate with finite producer checks."
+    },
+    "impactClaims": [
+      {
+        "id": "flat-schmidt-chains-no-impact",
+        "aim": "science",
+        "outcome": "Reusable support-geometric gap classification",
+        "setting": "Producer-coordinated research publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied v1.0 manuscript and review; v1.0.1 repairs the symbolic classifier contract and clarifies antecedents and the full range-Gram decomposition. Main theorem statements unchanged.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research; originating model identities unauthenticated",
+      "Supplied review; reviewer independence unauthenticated",
+      "Codex bounded revisions, exact checks and publication"
+    ],
+    "humanRole": "Publication authority and supplied materials only; no human scientific contribution is inferred. Scholarly creator remains Anonymous.",
+    "disclosure": "Received reviews, internal replay and publication checks are producer-coordinated evidence, not authenticated external review or independent reproduction."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "Public GitHub and Zenodo inventories and all six asset downloads hash-matched on 28 September 2026; publication identity, not proof validity."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "43 exact groups, seven positivity certificates, 146 full-Hamiltonian cases, 24 complex checks and all five historical programs passed; referee implementation rerun separately. Symbolic-domain controls pass under optimisation."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun is evidenced; coordinated agents and supplied replay records do not establish independence."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Supplied separately written code is implementation diversity; unaffiliated provenance not authenticated."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant verification of the analytic claims."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Supplied favourable review not authenticated as independent specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or external venue peer review is claimed."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Pinned Python 3.13, SymPy 1.14.0, NumPy 2.3.5 and SciPy 1.17.0; finite replay only. PDF build not hermetic."
+    }
+  },
+  "reviews": []
+}
