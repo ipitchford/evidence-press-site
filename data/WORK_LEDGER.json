@@ -18910,7 +18910,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-28T15:53:03.137Z",
       "status": "active",
-      "statusAt": "2026-09-28T15:53:03.137Z",
+      "statusAt": "2026-09-28T16:13:34.721Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -18988,12 +18988,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Endpoint pending; active effort, compute and tokens uninstrumented.",
+        "missingnessReason": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-28T15:53:03.137Z",
             "basis": "Remaining publication from registration; earlier research/intake/revision clocks left-censored."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-28T16:13:34.721Z",
+            "basis": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed."
           }
         ],
         "activeHumanMinutes": null,
@@ -19004,12 +19009,85 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Endpoint pending."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-28T16:13:34.721Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/free-parafermion-converse/",
+              "https://github.com/ipitchford/free-parafermion-converse/releases/tag/v1.0.1-candidate",
+              "https://zenodo.org/records/23019437"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/free-parafermion-converse/releases/download/v1.0.1-candidate/REPLAY_RECEIPT.json",
+              "https://github.com/ipitchford/free-parafermion-converse/actions/runs/36448091118"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/free-parafermion-converse/blob/v1.0.1-candidate/requirements.txt"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/free-parafermion-converse/blob/v1.0.1-candidate/REVISION_RESPONSE_V101.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/free-parafermion-converse/blob/v1.0.1-candidate/CITATION_AUDIT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate. Universal written proof and finite checks are distinct; optimization controls test safe refusal. No unaffiliated reproduction, formal proof, authenticated external review or exhaustive priority clearance.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/free-parafermion-converse/",
+          "https://github.com/ipitchford/free-parafermion-converse/releases/tag/v1.0.1-candidate",
+          "https://zenodo.org/records/23019437"
+        ],
+        "missingnessReason": "External/formal assurance and complete resource measurement unestablished."
       },
       "releaseSlug": "free-parafermion-converse",
       "stopReason": null,
@@ -19020,6 +19098,17 @@
           "resultClass": "pending",
           "reason": "Remaining publication from registration; earlier research/intake/revision clocks left-censored.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-28T16:13:34.721Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/free-parafermion-converse/",
+            "https://github.com/ipitchford/free-parafermion-converse/releases/tag/v1.0.1-candidate",
+            "https://zenodo.org/records/23019437"
+          ]
         }
       ],
       "corrections": [],
@@ -19027,6 +19116,10 @@
         {
           "date": "2026-09-28",
           "summary": "Registered remaining publication; no reconstructed discovery metrics."
+        },
+        {
+          "date": "2026-09-28",
+          "summary": "Appended public readback and bounded assurance; unknown metrics preserved."
         }
       ]
     }
@@ -19609,6 +19702,10 @@
     {
       "date": "2026-09-28",
       "summary": "Registered remaining free-parafermion publication."
+    },
+    {
+      "date": "2026-09-28",
+      "summary": "Free-parafermion public delivery recorded separately from incomplete resource measurement."
     }
   ]
 }
