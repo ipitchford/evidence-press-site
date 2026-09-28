@@ -19129,7 +19129,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-28T17:48:44.547Z",
       "status": "active",
-      "statusAt": "2026-09-28T17:48:44.547Z",
+      "statusAt": "2026-09-28T19:48:22.422Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -19207,12 +19207,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Endpoint pending; active effort, compute and tokens uninstrumented.",
+        "missingnessReason": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-28T17:48:44.547Z",
             "basis": "Remaining publication from registration; earlier research/intake/revision clocks left-censored."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-28T19:48:22.422Z",
+            "basis": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed."
           }
         ],
         "activeHumanMinutes": null,
@@ -19223,12 +19228,85 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Endpoint pending."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-28T19:48:22.422Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/field-uniform-spin-chains/",
+              "https://github.com/ipitchford/field-uniform-spin-chains/releases/tag/v1.0.1-candidate",
+              "https://zenodo.org/records/23021227"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/field-uniform-spin-chains/releases/download/v1.0.1-candidate/REPLAY_RECEIPT.json",
+              "https://github.com/ipitchford/field-uniform-spin-chains/actions/runs/36461431144"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/field-uniform-spin-chains/blob/v1.0.1-candidate/requirements.txt"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/field-uniform-spin-chains/blob/v1.0.1-candidate/REVISION_RESPONSE_V101.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/field-uniform-spin-chains/blob/v1.0.1-candidate/CITATION_AUDIT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate. Universal written proof and finite checks are distinct. No unaffiliated reproduction, formal proof, authenticated external review or exhaustive priority clearance.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/field-uniform-spin-chains/",
+          "https://github.com/ipitchford/field-uniform-spin-chains/releases/tag/v1.0.1-candidate",
+          "https://zenodo.org/records/23021227"
+        ],
+        "missingnessReason": "External/formal assurance and complete resource measurement unestablished."
       },
       "releaseSlug": "field-uniform-spin-chains",
       "stopReason": null,
@@ -19239,6 +19317,17 @@
           "resultClass": "pending",
           "reason": "Remaining publication from registration; earlier research/intake/revision clocks left-censored.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-28T19:48:22.422Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/field-uniform-spin-chains/",
+            "https://github.com/ipitchford/field-uniform-spin-chains/releases/tag/v1.0.1-candidate",
+            "https://zenodo.org/records/23021227"
+          ]
         }
       ],
       "corrections": [],
@@ -19246,6 +19335,10 @@
         {
           "date": "2026-09-28",
           "summary": "Registered remaining publication; no reconstructed discovery metrics."
+        },
+        {
+          "date": "2026-09-28",
+          "summary": "Appended public readback and bounded assurance; unknown metrics preserved."
         }
       ]
     }
@@ -19836,6 +19929,10 @@
     {
       "date": "2026-09-28",
       "summary": "Registered remaining field-uniform spin-chain publication."
+    },
+    {
+      "date": "2026-09-28",
+      "summary": "Field-uniform spin-chain public delivery recorded separately from incomplete resource measurement."
     }
   ]
 }
