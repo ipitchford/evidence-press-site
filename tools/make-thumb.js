@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'field-uniform-spin-chains': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 28 SEPTEMBER 2026', 'SPIN CHAINS · FIELD-UNIFORM OBSTRUCTION'],
+    head: ['Change every field.', '<em>The obstruction stays.</em>'],
+    headSize: 66,
+    sub: 'An exact limit on restoring local conservation laws.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">spin-1 interaction plane</div><svg viewBox="0 0 440 245" style="width:100%;height:245px"><circle cx="220" cy="120" r="108" fill="none" stroke="#ccb0da" stroke-width="2"/><path d="M220 12 V228 M144 44 L296 196 M144 196 L296 44" stroke="#f7ce48" stroke-width="5"/><circle cx="220" cy="120" r="7" fill="#301c45" stroke="white" stroke-width="2"/></svg><div class="note"><b>Three exceptional lines.</b><br>Elsewhere: no allowed higher-range<br>charge for any on-site fields.</div><div class="eq-foot">periodic N ≥ 6 · ranges 3 to ⌊N/2⌋</div>'
+  },
   'free-parafermion-converse': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 28 SEPTEMBER 2026', 'PARAFERMIONS · EXACT GRAPH CRITERION'],
