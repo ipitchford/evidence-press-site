@@ -18691,7 +18691,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-28T12:21:26.345Z",
       "status": "active",
-      "statusAt": "2026-09-28T12:21:26.345Z",
+      "statusAt": "2026-09-28T12:40:41.582Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -18769,12 +18769,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Endpoint pending; human effort, compute and tokens uninstrumented.",
+        "missingnessReason": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active/rework/compute/token clocks unavailable and not reconstructed.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-28T12:21:26.345Z",
             "basis": "Remaining publication only from this registration. Earlier research/intake/repair clocks left-censored."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-28T12:40:41.582Z",
+            "basis": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active/rework/compute/token clocks unavailable and not reconstructed."
           }
         ],
         "activeHumanMinutes": null,
@@ -18785,12 +18790,85 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Endpoint pending."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-28T12:40:41.582Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/perron-minima/",
+              "https://github.com/ipitchford/perron-minima/releases/tag/v1.0.1-candidate",
+              "https://zenodo.org/records/23014818"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/perron-minima/releases/download/v1.0.1-candidate/REPLAY_RECEIPT.json",
+              "https://github.com/ipitchford/perron-minima/actions/runs/36421901694"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/perron-minima/blob/v1.0.1-candidate/requirements.txt"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/perron-minima/blob/v1.0.1-candidate/PUBLICATION_AUDIT.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/perron-minima/blob/v1.0.1-candidate/SOURCES.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate. Exact/symbolic checks, tolerance-based numerical replay and written proofs are separate. No unaffiliated reproduction, formal verification, authenticated external review or exhaustive priority clearance.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/perron-minima/",
+          "https://github.com/ipitchford/perron-minima/releases/tag/v1.0.1-candidate",
+          "https://zenodo.org/records/23014818"
+        ],
+        "missingnessReason": "External/formal assurance and complete resource measurement unestablished."
       },
       "releaseSlug": "perron-minima",
       "stopReason": null,
@@ -18801,6 +18879,17 @@
           "resultClass": "pending",
           "reason": "Remaining publication only from this registration. Earlier research/intake/repair clocks left-censored.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-28T12:40:41.582Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active/rework/compute/token clocks unavailable and not reconstructed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/perron-minima/",
+            "https://github.com/ipitchford/perron-minima/releases/tag/v1.0.1-candidate",
+            "https://zenodo.org/records/23014818"
+          ]
         }
       ],
       "corrections": [],
@@ -18808,6 +18897,10 @@
         {
           "date": "2026-09-28",
           "summary": "Registered remaining publication; no reconstructed historical metrics."
+        },
+        {
+          "date": "2026-09-28",
+          "summary": "Appended public readback and bounded assurance; unknown metrics preserved."
         }
       ]
     }
@@ -19382,6 +19475,10 @@
     {
       "date": "2026-09-28",
       "summary": "Registered remaining Perron minima publication."
+    },
+    {
+      "date": "2026-09-28",
+      "summary": "Perron minima public delivery recorded separately from missing resource measurements."
     }
   ]
 }
