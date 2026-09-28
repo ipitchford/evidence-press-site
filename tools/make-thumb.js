@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'flat-schmidt-chains': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 28 SEPTEMBER 2026', 'QUANTUM CHAINS · SPECTRAL GAPS'],
+    head: ['Small chains agree.', '<em>Long chains differ.</em>'],
+    headSize: 68,
+    sub: 'The same local spectra can conceal a vanishing energy gap.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">one exact family</div><div style="font-size:64px;margin:32px 0">GAPPED<br><span class="hl">→</span><br>GAPLESS</div><div class="note">Same two- and three-site spectra.<br>Same ground-state counts.</div><div class="eq-foot">flat Schmidt rank two · open chains</div>'
+  },
   'field-uniform-spin-chains': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 28 SEPTEMBER 2026', 'SPIN CHAINS · FIELD-UNIFORM OBSTRUCTION'],
