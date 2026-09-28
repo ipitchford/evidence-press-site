@@ -2297,6 +2297,9 @@ palette['ptolemaic-negative-type'] = ['#69dbc6', '#f2c373'];
 
 const requested = new Set(process.argv.slice(2));
 const parafermionArt = require('./parafermion-art');
+const fieldUniformArt = require('./field-uniform-art');
+art['field-uniform-spin-chains'] = fieldUniformArt.cover;
+palette['field-uniform-spin-chains'] = ['#55d4c0', '#f5bd60'];
 art['free-parafermion-converse'] = parafermionArt.cover;
 palette['free-parafermion-converse'] = ['#61d9c0', '#f0c274'];
 if (!requested.size || requested.has('free-parafermion-converse')) fs.writeFileSync(path.join(OUT, 'free-parafermion-converse-obstructions.svg'), parafermionArt.obstructions());
