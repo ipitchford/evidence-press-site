@@ -2296,6 +2296,10 @@ art['ptolemaic-negative-type'] = ptolemaicArt.cover;
 palette['ptolemaic-negative-type'] = ['#69dbc6', '#f2c373'];
 
 const requested = new Set(process.argv.slice(2));
+const perronArt = require('./perron-art');
+art['perron-minima'] = perronArt.cover;
+palette['perron-minima'] = ['#61d9c0', '#f0c274'];
+if (!requested.size || requested.has('perron-minima')) fs.writeFileSync(path.join(OUT, 'perron-minima-landscape.svg'), perronArt.landscape());
 const splitStabilityArt = require('./ptolemaic-stability-art');
 art['ptolemaic-split-stability'] = splitStabilityArt.cover;
 palette['ptolemaic-split-stability'] = ['#61d9c0', '#f0c274'];

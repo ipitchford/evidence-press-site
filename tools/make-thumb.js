@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'perron-minima': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 28 SEPTEMBER 2026', 'SPECTRAL OPTIMISATION · STRUCTURAL LIMITS'],
+    head: ['No traps.', '<em>Until one change.</em>'],
+    headSize: 72,
+    sub: 'Factorised interactions make local minima global. A small departure can break the guarantee.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">four-member example · one pair +1%</div><div class="eq">24 <span class="hl">→</span> 16 + 8</div><div class="note"><b>strict local minima</b><br>Sixteen lie above the other eight.<br>They cannot be global minima.</div><div class="eq-foot">exact polynomials · checked intervals</div>'
+  },
   'ptolemaic-split-stability': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 27 SEPTEMBER 2026', 'METRIC GEOMETRY · SHARP LOCAL RATES'],
