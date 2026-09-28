@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'free-parafermion-converse': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 28 SEPTEMBER 2026', 'PARAFERMIONS · EXACT GRAPH CRITERION'],
+    head: ['One spectrum.', '<em>One shared pattern.</em>'],
+    headSize: 68,
+    sub: 'When separate simple sectors do not make a free whole spectrum.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: '<div style="font-size:30px;letter-spacing:.04em">THE ALL-ORDER CONVERSE</div><div style="font-size:100px;margin:34px 0">N ≥ 3</div><div style="font-size:35px;line-height:1.5">No induced fork.<br>No directed cycle.</div><div style="font-size:23px;margin-top:32px">Independent couplings<br>Canonical full spectrum</div>'
+  },
   'perron-minima': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 28 SEPTEMBER 2026', 'SPECTRAL OPTIMISATION · STRUCTURAL LIMITS'],
