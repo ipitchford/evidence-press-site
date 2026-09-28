@@ -1,0 +1,210 @@
+{
+  "slug": "perron-minima",
+  "title": "Exact Perron optimisation with factorised pair interactions",
+  "shortTitle": "When every local minimum is global",
+  "oneLine": "Factorised pair interactions make every local Perron minimum globally optimal; an arbitrarily small departure can create a trap.",
+  "abstract": "For positive factorised pair weights, a nonnegative diagonal and a bias parameter strictly between zero and one, this candidate classifies all local Perron minima on the skew box: they are precisely saturated transitive orders, and all share one characteristic polynomial and global optimum. It derives a common-optimiser robust design rule, characterises factorisation through order-independent spectra, and exhibits strict nonglobal minima under arbitrarily small nonfactorised perturbations. A separate even-order tournament result gives constructive recovery with a spectral deficit bound.",
+  "narration": "A search algorithm can stop improving without finding the best possible answer. This candidate identifies a matrix problem where that cannot happen, and then shows how fragile the guarantee can be. The quantity being minimised is the Perron eigenvalue: the dominant growth factor of a positive matrix. Think of the off-diagonal entries as paired interactions. Each pair has a fixed total, while a direction of bias redistributes that total between its two entries. The key assumption is factorisation. Every pair strength comes from one positive weight attached to each of its two members. Under this assumption, every local minimum has a simple form. The members can be placed in a complete order, and each pair is biased as far as allowed in the direction specified by that order. Every such order gives the same global minimum. The proof compresses all these possibilities into one polynomial. The same ordering also remains optimal when the weights, diagonal entries and bias vary within the permitted model. For a rectangular uncertainty range, the worst optimal growth factor occurs at one specified corner. This gives a test for the existence of a fixed robustly stable orientation. It is not a guarantee for arbitrary switching between matrices. There is a sharp warning. In a four-member example, changing just one pair strength by one percent separates twenty-four strict local minima into two spectral levels. Sixteen are worse than the other eight. More generally, arbitrarily small departures from factorisation can create such traps. The archive provides written proofs, exact checks, numerical experiments and replay code. Publication testing found tiny numerical differences despite matching random seeds; these are now checked with explicit tolerances, while exact checks retain exact equality. This remains an unrefereed candidate, not an independently verified theorem or an empirically validated model. This is Evidence Press, Perron minima, released on the twenty-eighth of September twenty twenty-six, version one point zero point one candidate. The paper and evidence are linked on this page. This synthetic AI voice is an explanation, not additional scientific evidence.",
+  "datePublished": "2026-09-28",
+  "version": "1.0.1-candidate",
+  "doi": "10.5281/zenodo.23014818",
+  "conceptDoi": "10.5281/zenodo.23014817",
+  "zenodoUrl": "https://zenodo.org/records/23014818",
+  "pdfUrl": "https://github.com/ipitchford/perron-minima/releases/download/v1.0.1-candidate/perron_minima.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23014818/files/perron_minima.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/perron-minima",
+  "releaseUrl": "https://github.com/ipitchford/perron-minima/releases/tag/v1.0.1-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioUrl": "/assets/audio/perron-minima.mp3",
+  "audioTranscriptUrl": "/assets/audio/perron-minima.txt",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/perron-minima.mp3",
+      "name": "Plain-English audio briefing",
+      "description": "OpenAI synthetic voice; explanation, not scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/perron-minima.txt"
+    }
+  ],
+  "keywords": [
+    "Perron eigenvalue",
+    "spectral optimisation",
+    "positive matrices",
+    "robust stability",
+    "tournament matrices",
+    "factorised interactions"
+  ],
+  "problem": {
+    "name": "Local and global Perron minima under fixed factorised pair sums",
+    "url": "https://github.com/ipitchford/perron-minima"
+  },
+  "keyResults": [
+    "Every local minimum is saturated and transitive; all n! orders attain the same global minimum under the stated factorisation.",
+    "One fixed transitive order optimises every admissible parameter instance, giving an exact rectangular-uncertainty worst corner.",
+    "For n≥4, factorisation is characterised by transitive-order cospectrality for every nonnegative diagonal.",
+    "Arbitrarily small nonfactorised perturbations can create strict nonglobal local minima; multiplicative near-factorisation still gives a κ² approximation bound.",
+    "A separate constructive even-order tournament recovery bound need not return the nearest extremiser."
+  ],
+  "evidence": "Written proofs, exact and symbolic checks, interval certificates, 40 semantic controls and six numerical-corruption controls; replay of historical and supplied referee code.",
+  "statusDetail": "Unrefereed candidate. Producer-side replay is not formal verification or unaffiliated reproduction. Numerical checks are tolerance-based; the general arguments remain written proofs. No applied validation, arbitrary-switching stability or exhaustive priority claim.",
+  "openProblems": [],
+  "relatedWorks": [
+    {
+      "citation": "Psarrakos and Tsatsomeros (2003): rank-one skew perturbations and the Levinger connection. The current diagonal-plus-rank-one hypotheses must be compared explicitly, not identified with the earlier setting.",
+      "url": "https://doi.org/10.1016/S0024-3795(02)00439-1"
+    },
+    {
+      "citation": "Psarrakos and Tsatsomeros (2006): variance comparisons and restricted Brualdi–Li results, notably Theorem 14, Corollary 15 and Section 6.",
+      "url": "https://doi.org/10.1016/j.laa.2005.12.018"
+    },
+    {
+      "citation": "Kirkland (1995): spectral radii of tournament matrices related by an arc reversal; related local transformations in a distinct problem.",
+      "url": "https://doi.org/10.1016/0024-3795(94)00160-F"
+    },
+    {
+      "citation": "Engel and Sergeev: independent row-permutation optimisation, Definition 1.1 and Theorems 3.3–3.4; a different admissible domain.",
+      "url": "https://arxiv.org/abs/2209.01991"
+    },
+    {
+      "citation": "Drton, Sturmfels and Sullivant: classical one-factor tetrad relations, Theorem 16. The algebraic criterion is prior work; the spectral equivalence is the claimed contribution here.",
+      "url": "https://arxiv.org/abs/math/0509390"
+    },
+    {
+      "citation": "Drury: author exposition of the Brualdi–Li endpoint argument using a rank-one/skew decomposition.",
+      "url": "https://www.math.mcgill.ca/drury/research/brualdili/"
+    }
+  ],
+  "citeText": "Anonymous (2026). Exact Perron optimisation with factorised pair interactions: Robust design, structural limits and constructive tournament stability. Version 1.0.1-candidate. Zenodo. https://doi.org/10.5281/zenodo.23014818",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:perron-minima",
+    "attemptIds": [
+      "ep-attempt:perron-minima-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "stability-margin",
+      "description": "Exact minimum Perron root and fixed-orientation robust stability criterion.",
+      "scope": "Factorised positive pair interactions, nonnegative diagonal, 0<t<1; no arbitrary switching."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Derivative and resolvent arguments force saturated transitive minima; a shared characteristic polynomial converts local classification into a global optimum.",
+      "remainingRisks": [
+        "Written general arguments are not formalised.",
+        "Near-factorised local minima need not be global.",
+        "Finite replay is not universal proof or independent reproduction."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authorisation only; no human scientific contribution or additional review stage is inferred."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated audit of the local-to-global proof and robust quantifiers, with independent replay.",
+      "claimCeiling": "Unrefereed candidate with producer-side checks."
+    },
+    "impactClaims": [
+      {
+        "id": "perron-minima-no-impact",
+        "aim": "science",
+        "outcome": "Reusable spectral optimisation and robustness criteria",
+        "setting": "Producer-coordinated publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied v1.0 retained by input hash. Publication revision clarifies fixed-orientation existence and replaces a nonportable numerical byte-equality gate with an explicit tolerance contract and corruption controls. Public asset identities and bytes checked on 28 September 2026.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research; originating model identities not authenticated",
+      "Supplied review and checking code",
+      "Codex publication intake, targeted repair and replay"
+    ],
+    "humanRole": "Publication authority and supplied materials; no human mathematical contribution is inferred. Scholarly creator remains Anonymous.",
+    "disclosure": "The supplied review, internal checks and publication-intake replay belong to a producer-coordinated workflow. They do not establish unaffiliated reproduction, authenticated specialist review or formal verification."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "All six release assets fully downloaded from GitHub and Zenodo and matched to the frozen inventory.",
+      "evidenceUrl": "https://zenodo.org/records/23014818"
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Eleven full local jobs pass: exact/symbolic checks, semantic controls, historical and supplied referee replay. Numerical equality uses a tested tolerance contract."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun is evidenced; coordinated agents and supplied replay records do not establish independence."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Auxiliary symbolic and exact checks are implementation diversity within the producing workflow."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant verification of these written arguments."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "The supplied favourable review is retained as a document, not an authenticated external specialist endorsement."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or external venue peer review is claimed."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Normal and optimised pinned Linux replay pass at the tagged commit; clean-extraction macOS replay also passes. Numerical outputs use explicit tolerances, not byte identity. PDF build is not hermetic.",
+      "evidenceUrl": "https://github.com/ipitchford/perron-minima/actions/runs/36421901694"
+    }
+  },
+  "reviews": []
+}
