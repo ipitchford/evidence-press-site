@@ -1,0 +1,33 @@
+'use strict';
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const { palettes, assign, validate, check } = require('./banner-palettes');
+check();
+const registry = { schemaVersion: 1, legacySlugs: [], assignments: [] };
+for (let i = 0; i < 12; i++) assign(registry, 'fixture-' + i);
+assert.equal(new Set(registry.assignments.slice(0, 6).map(x => x.palette)).size, 6);
+const before = JSON.stringify(registry);
+assign(registry, 'fixture-0');
+assert.equal(JSON.stringify(registry), before, 'Rebuild cannot reshuffle saved palettes');
+const slugs = registry.assignments.map(x => x.slug);
+const svg = slug => {
+  const p = registry.assignments.find(x => x.slug === slug).palette;
+  return 'data-banner-palette="' + p + '" ' + palettes[p].map(c => 'stop-color="' + c + '"').join(' ');
+};
+validate(registry, slugs, svg);
+assert.throws(() => validate(registry, [...slugs, 'unregistered-new-release'], svg), /saved rotated palette/);
+assert.throws(() => validate(registry, slugs, () => ''), /Regenerate/);
+assert.throws(() => validate(registry, slugs, s => svg(s) + '<rect width="1200" height="400" fill="#17282e"/>'), /hides shared palette/);
+const bad = JSON.parse(before);
+bad.assignments[1].palette = bad.assignments[0].palette;
+assert.throws(() => validate(bad, slugs, s => {
+  const p = bad.assignments.find(x => x.slug === s).palette;
+  return 'data-banner-palette="' + p + '" ' + palettes[p].map(c => 'stop-color="' + c + '"').join(' ');
+}), /must vary/);
+const css = fs.readFileSync(path.join(__dirname, '../assets/style.css'), 'utf8');
+assert.ok(!/\.cards\s+\.card:first-child/.test(css), 'Do not stretch the first banner into a different aspect ratio');
+assert.ok(!/\.card-art\[href/.test(css), 'No slug-specific banner fit patches');
+assert.match(css, /\.card-art\s*\{[^}]*aspect-ratio: 3 \/ 1/);
+assert.match(css, /\.card-art img\s*\{[^}]*height: auto;[^}]*object-fit: contain/);
+console.log('Banner contract: saved six-family rotation, missing/stale palette rejection, and uniform uncropped card frames passed.');

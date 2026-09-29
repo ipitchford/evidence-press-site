@@ -59,6 +59,29 @@ separately redesigning those assets. Never edit generated files alone.
 
 ## Acceptance, within existing media QA
 
+### Fit and colour are shared contracts
+
+Catalogue banners use the same native 3:1 frame in every card, including the
+newest card. Never stretch the first card to 6:1, crop scientific labels, or add
+slug-specific CSS fitting exceptions. The homepage uses equal-width cards.
+
+Background families rotate through indigo, oxblood, petrol, bronze, plum and
+slate via `tools/banner-palettes.js`. `make-art.js` saves each new assignment
+in `data/BANNER_PALETTES.json`; commit it with the generated art. Saved choices
+do not change when releases are reordered or rebuilt. The frozen legacy list
+preserves unchanged historical artwork; never extend it to bypass the new-art
+gate. Bespoke generators must use the same palette resolver. Foreground colours
+can encode mathematical distinctions: do not recolour those merely for variety.
+Reconcile concurrent palette allocations before merging so successive new
+assignments differ. Regenerate only changed covers and their OG previews.
+
+The normal build rejects missing/stale new palette assignments, and the existing
+art test rejects a return to the first-card crop. In the existing browser pass,
+inspect the **homepage itself**, not only the release page or an isolated image,
+at 1440px and 390px. Verify full composition, edge-to-edge fit and varied recent
+backgrounds. Include the first card; an image loading successfully is not a fit
+test. These checks supplement, not replace, the two visual verdicts below.
+
 Inspect every changed banner at full size, at its actual catalogue-card size,
 and in the real page at desktop and 390px mobile width; inspect its social card
 too. Compare with the selected reference. **Two separate verdicts must pass:**

@@ -5,6 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const OUT = path.join(__dirname, '..', 'assets', 'art');
+const { resolve: bannerPalette } = require('./banner-palettes');
 fs.mkdirSync(OUT, { recursive: true });
 
 const W = 1200, H = 400;
@@ -15,14 +16,15 @@ function rng(seed) { // mulberry32
 }
 const hash = s => [...s].reduce((h, c) => Math.imul(h ^ c.charCodeAt(0), 2654435761) >>> 0, 7);
 
-function frame(inner, accent, accent2) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-hidden="true">
+function frame(inner, accent, accent2, background) {
+  const colors = background?.colors || ['#151a1e', '#1e2a2e'];
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"${background ? ' data-banner-palette="' + background.name + '"' : ''} role="img" aria-hidden="true">
 <defs>
 <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="#151a1e"/><stop offset="1" stop-color="#1e2a2e"/>
+<stop offset="0" stop-color="${colors[0]}"/><stop offset="1" stop-color="${colors[1]}"/>
 </linearGradient>
 <radialGradient id="glow" cx="0.75" cy="0.3" r="0.9">
-<stop offset="0" stop-color="${accent}" stop-opacity="0.25"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
+<stop offset="0" stop-color="${accent}" stop-opacity="${background ? '0.06' : '0.25'}"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
 </radialGradient>
 </defs>
 <rect width="${W}" height="${H}" fill="url(#bg)"/>
@@ -2329,7 +2331,7 @@ for (const slug of requested) {
 for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
-  let svg = frame(fn(a, b), a, b);
+  let svg = frame(fn(a, b), a, b, bannerPalette(slug));
   if (slug === 'modular-code-obstructions') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${modularCodeArt.description}</desc><defs>`);
   if (slug === 'flat-schmidt-chains') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${flatSchmidtArt.description}</desc><defs>`);
   if (motifs[slug]) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"')

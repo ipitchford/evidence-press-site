@@ -4,7 +4,7 @@ const ink='#eff4ed', muted='#b9ced0', bg='#17282e', teal='#6ddbc4', gold='#f0c27
 const description='Two induced obstructions to all-coupling whole-spectrum freeness: a claw K1,3 and an even hole illustrated by C6. Their exclusion is necessary and sufficient under faithful Pauli realisation. Sector-wise freeness is a different property.';
 const text=(x,y,s,size=23,col=ink)=>`<text class="og-hide" x="${x}" y="${y}" text-anchor="middle" font-family="Arial,sans-serif" font-size="${size}" fill="${col}">${s}</text>`;
 function graph(p,e,c){return e.map(([i,j])=>`<path d="M${p[i]} L${p[j]}" stroke="${c}" stroke-width="4"/>`).join('')+p.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="11" fill="${c}" stroke="${bg}" stroke-width="3"/>`).join('');}
-function cover(){let s=`<rect width="1200" height="400" fill="${bg}"/>`;
+function cover(){let s='';
  s+=text(600,44,'WHOLE-SPECTRUM FREENESS AT EVERY COUPLING',23,muted);
  s+=graph([[210,208],[125,122],[120,285],[315,208]],[[0,1],[0,2],[0,3]],gold);
  const hex=Array.from({length:6},(_,i)=>[565+91*Math.cos(i*Math.PI/3),207+91*Math.sin(i*Math.PI/3)]);

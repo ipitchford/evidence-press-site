@@ -25,6 +25,7 @@ const { loadBaselineReceipt, validateBaselineReceipt } = require('./tools/baseli
 const { loadArticles, articleAttribution } = require('./tools/articles');
 
 const ROOT = __dirname;
+require('./tools/banner-palettes').check(ROOT);
 const DIST = path.join(ROOT, 'dist');
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const OPERATING_ARTIFACTS = loadOperatingArtifacts(ROOT);
