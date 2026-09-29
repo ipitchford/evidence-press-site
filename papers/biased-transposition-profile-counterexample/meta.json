@@ -14,21 +14,48 @@
   "altPdfUrl": "https://zenodo.org/records/22708622/files/biased-transposition-profile-counterexample-1.0.1-candidate.pdf?download=1",
   "repoUrl": "https://github.com/ipitchford/biased-transposition-profile-counterexample",
   "releaseUrl": "https://github.com/ipitchford/biased-transposition-profile-counterexample/releases/tag/v1.0.1-candidate",
-  "authors": ["Anonymous"],
+  "authors": [
+    "Anonymous"
+  ],
   "status": "unrefereed-candidate",
   "math": true,
   "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
   "audioContentVersioned": true,
   "ogContentVersioned": true,
-  "media": [{"type":"audio","url":"https://evidencepress.org/assets/audio/biased-transposition-profile-counterexample.mp3","name":"Plain-English audio briefing","description":"OpenAI synthetic voice; communication only.","transcriptUrl":"https://evidencepress.org/assets/audio/biased-transposition-profile-counterexample.txt"}],
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/biased-transposition-profile-counterexample.mp3",
+      "name": "Plain-English audio briefing",
+      "description": "OpenAI synthetic voice; communication only.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/biased-transposition-profile-counterexample.txt"
+    },
+    {
+      "type": "video",
+      "url": "https://youtu.be/KGTDfaQebEg",
+      "name": "A Shuffle Profile Fails the Subset Test",
+      "description": "Evidence Press video overview of this release. This is a communication aid; it does not extend the release's claims or assurance status and is not additional research evidence."
+    }
+  ],
   "provenance": {
     "aiGenerated": true,
     "aiAssisted": true,
-    "generatedBy": ["OpenAI Codex under human direction", "Python exact arithmetic and finite replay", "Pandoc and Tectonic"],
+    "generatedBy": [
+      "OpenAI Codex under human direction",
+      "Python exact arithmetic and finite replay",
+      "Pandoc and Tectonic"
+    ],
     "humanRole": "Research selection, supplied review, direction and publication authorization; scholarly creator Anonymous.",
     "disclosure": "AI-assisted manuscript, software, internal editorial review and publication. Supplied review authorship and external independence are unestablished."
   },
-  "keywords": ["random transpositions", "limit profile", "total variation", "Markov chains", "counterexample", "untouched labels"],
+  "keywords": [
+    "random transpositions",
+    "limit profile",
+    "total variation",
+    "Markov chains",
+    "counterexample",
+    "untouched labels"
+  ],
   "keyResults": [
     "For every fixed 0 < b < 1, the equal-half conjectured profile fails at s = log(6).",
     "The event of at least two fixed slow labels gives B0 = 0.710647716… > D0 = 0.681595297….",
@@ -38,35 +65,154 @@
   "evidence": "Written proofs, exact arithmetic contract, 23 hostile controls, finite-state replay and five internal role reports plus bounded confirmation and deterministic closure. https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/EDITORIAL_DECISION.md",
   "statusDetail": "Unrefereed candidate. Internal model review and producer replay support inspection; formal verification, external reproduction, external peer review and priority remain unestablished. No replacement profile or general t_mix = t_star + O(n) upper bound is supplied.",
   "assurance": {
-    "availability": {"state":"passed","evidenceUrl":"https://zenodo.org/records/22708622","note":"Exact public archive bytes checked before deployment."},
-    "internalReplay": {"state":"passed","evidenceUrl":"https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/REPLAY_RECEIPT.md","note":"Exact inequalities, eight 61-row trajectories and 23 hostile controls; no formal proof of the asymptotic argument."},
-    "dataEnvironmentReproducibility": {"state":"partial","evidenceUrl":"https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ENVIRONMENT.txt","note":"Pinned numerical dependency, normal/optimized local replay and Linux CI."},
-    "independentRerun": {"state":"not-assessed","note":"Producer-coordinated replay only."},
-    "independentReimplementation": {"state":"not-assessed","note":"The alternate implementation belongs to the producing process."},
-    "formalVerification": {"state":"not-assessed","note":"No proof-assistant verification."},
-    "specialistReview": {"state":"not-assessed","note":"No unaffiliated specialist review recorded."},
-    "editorialPeerReview": {"state":"not-assessed","note":"Model-assisted internal review only."}
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/22708622",
+      "note": "Exact public archive bytes checked before deployment."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/REPLAY_RECEIPT.md",
+      "note": "Exact inequalities, eight 61-row trajectories and 23 hostile controls; no formal proof of the asymptotic argument."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/biased-transposition-profile-counterexample/blob/v1.0.1-candidate/ENVIRONMENT.txt",
+      "note": "Pinned numerical dependency, normal/optimized local replay and Linux CI."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Producer-coordinated replay only."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The alternate implementation belongs to the producing process."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant verification."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No unaffiliated specialist review recorded."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Model-assisted internal review only."
+    }
   },
-  "openProblems": ["Determine a replacement limit profile.", "Establish a matching upper bound at the untouched-label centre for general bounded product weights.", "Obtain external scrutiny of the written proof and contribution-specific novelty."],
+  "openProblems": [
+    "Determine a replacement limit profile.",
+    "Establish a matching upper bound at the untouched-label centre for general bounded product weights.",
+    "Obtain external scrutiny of the written proof and contribution-specific novelty."
+  ],
   "relatedWorks": [
-    {"citation":"Nestoridi and Yan (2024), Cutoff for the biased random transposition shuffle, arXiv v1: Conjecture 1.6 is the precise target.","url":"https://arxiv.org/abs/2409.16387v1"},
-    {"citation":"Nestoridi and Yan (2025), FPSAC proceedings article: cutoff and spectrum results, distinct from the profile conjecture.","url":"https://www.mat.univie.ac.at/~slc/wpapers/FPSAC2025/6.pdf"},
-    {"citation":"Nestoridi and Yan, official FPSAC 2025 poster: restates the profile conjecture.","url":"https://www.math.sci.hokudai.ac.jp/sympo/fpsac2025/public/posters/107.pdf"},
-    {"citation":"Teyssier (2020), Limit profile for random transpositions: the uniform-shuffle benchmark.","url":"https://doi.org/10.1214/20-AOP1424"},
-    {"citation":"Evidence Press (2026), Biased shuffles still cut off: related bounded-product cutoff candidate.","url":"https://evidencepress.org/releases/bounded-product-transposition-cutoff/"}
+    {
+      "citation": "Nestoridi and Yan (2024), Cutoff for the biased random transposition shuffle, arXiv v1: Conjecture 1.6 is the precise target.",
+      "url": "https://arxiv.org/abs/2409.16387v1"
+    },
+    {
+      "citation": "Nestoridi and Yan (2025), FPSAC proceedings article: cutoff and spectrum results, distinct from the profile conjecture.",
+      "url": "https://www.mat.univie.ac.at/~slc/wpapers/FPSAC2025/6.pdf"
+    },
+    {
+      "citation": "Nestoridi and Yan, official FPSAC 2025 poster: restates the profile conjecture.",
+      "url": "https://www.math.sci.hokudai.ac.jp/sympo/fpsac2025/public/posters/107.pdf"
+    },
+    {
+      "citation": "Teyssier (2020), Limit profile for random transpositions: the uniform-shuffle benchmark.",
+      "url": "https://doi.org/10.1214/20-AOP1424"
+    },
+    {
+      "citation": "Evidence Press (2026), Biased shuffles still cut off: related bounded-product cutoff candidate.",
+      "url": "https://evidencepress.org/releases/bounded-product-transposition-cutoff/"
+    }
   ],
   "citeText": "Anonymous (2026). Untouched subsets and a counterexample to the Nestoridi–Yan biased-transposition limit-profile conjecture. Version 1.0.1-candidate. Zenodo. https://doi.org/10.5281/zenodo.22708622",
   "operatingModel": {
-    "version":"1.0","workId":"ep-work:biased-transposition-profile-counterexample","attemptIds":["ep-attempt:biased-transposition-profile-counterexample-assurance-publication"],"aims":["science"],"artifactRoles":["research-output","evidence-assessment"],"lineageId":null,
-    "accelerationPrimitives":["structural-compression","research-lineage-reuse","adversarial-controls","assurance-vector","agent-readable-research-object"],
-    "decisionObject":{"type":"counterexample","description":"An observable-event contradiction to a specified limit-profile formula.","scope":"Equal-half product-weight transpositions, fixed 0 < b < 1, s = log(6)."},
-    "bottleneckTargeted":["assurance","publication"],
-    "semanticBridge":{"state":"explicit","description":"Untouched slow labels imply fixed slow labels; event probability differences bound full total variation.","remainingRisks":["Written asymptotic argument awaits external scrutiny.","Priority search is bounded."]},
-    "humanJudgmentGates":["Inspect the asymptotic moment argument and source correspondence.","Assess novelty and retain candidate qualifications."],
-    "parentLinks":[{"relation":"depends-on-claim","workId":null,"legacyReleaseSlug":null,"externalUrl":"https://arxiv.org/abs/2409.16387v1","inheritedClaim":"The stated equal-half profile conjecture and model conventions define the target.","inheritedAssuranceCeiling":"The source conjecture is a target, not a proved input or external validation."}],
-    "assuranceTarget":{"dimensions":["independentRerun","formalVerification","specialistReview","semanticValidation","noveltyAssessment","priorityAssessment"],"nextAction":"Obtain external probability-specialist inspection and replay.","claimCeiling":"Candidate counterexample to the pinned profile formula; no replacement profile or general sharp upper bound."},
-    "impactClaims":[{"id":"biased-transposition-profile-counterexample-no-impact","aim":"science","outcome":"Inspectable candidate counterexample","setting":"Producer-coordinated publication","status":"NO_IMPACT_EVIDENCE","designClass":"none","comparator":"No matched comparator.","estimand":"No impact effect estimated.","evidenceRefs":[],"registeredDesignRef":null,"independentAssessment":null}]
+    "version": "1.0",
+    "workId": "ep-work:biased-transposition-profile-counterexample",
+    "attemptIds": [
+      "ep-attempt:biased-transposition-profile-counterexample-assurance-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "research-lineage-reuse",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "An observable-event contradiction to a specified limit-profile formula.",
+      "scope": "Equal-half product-weight transpositions, fixed 0 < b < 1, s = log(6)."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Untouched slow labels imply fixed slow labels; event probability differences bound full total variation.",
+      "remainingRisks": [
+        "Written asymptotic argument awaits external scrutiny.",
+        "Priority search is bounded."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Inspect the asymptotic moment argument and source correspondence.",
+      "Assess novelty and retain candidate qualifications."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/2409.16387v1",
+        "inheritedClaim": "The stated equal-half profile conjecture and model conventions define the target.",
+        "inheritedAssuranceCeiling": "The source conjecture is a target, not a proved input or external validation."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Obtain external probability-specialist inspection and replay.",
+      "claimCeiling": "Candidate counterexample to the pinned profile formula; no replacement profile or general sharp upper bound."
+    },
+    "impactClaims": [
+      {
+        "id": "biased-transposition-profile-counterexample-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable candidate counterexample",
+        "setting": "Producer-coordinated publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched comparator.",
+        "estimand": "No impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
   },
-  "pageStructureVersion":"2.0","pageStructureVariant":"canonical-theorem","pageStructureWaivers":[],"recordMaturity":"current","grandfatheredAtSchemaVersion":null,
-  "metadataProvenance":"Internal review and finite replay are separate from public availability and external scientific validation."
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Internal review and finite replay are separate from public availability and external scientific validation."
 }
