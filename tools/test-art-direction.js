@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { motifs } = require('./art-direction');
 const root = path.join(__dirname, '..');
+require('./test-banner-contract');
 for (const [slug, spec] of Object.entries(motifs)) {
   assert.equal(spec.colors.length, 2);
   assert.ok(spec.description.length > 40, `${slug}: describe the semantic boundary`);

@@ -7,7 +7,7 @@ const desc='At the manuscript’s exact double-boundary example q=(2/5,2/5,3/10,
 function node(x,y,set,small=false){const r=small?32:40,gap=small?68:90;let s='<g>';
  for(let k=1;k<=3;k++){const xx=x+(k-2)*gap,active=set.includes(k);s+=`<circle cx="${xx}" cy="${y}" r="${r}" fill="${active?(k===3?teal:gold):bg}" stroke="${active?(k===3?teal:gold):muted}" stroke-width="3" ${active?'':'stroke-dasharray="5 6" opacity=".45"'}/><text x="${xx}" y="${y+(small?10:13)}" text-anchor="middle" font-family="Arial,sans-serif" font-size="${small?28:35}" font-weight="700" fill="${active?bg:muted}" ${active?'':'opacity=".55"'}>${k}</text>`;}
  return s+'</g>';}
-function cover(){let s=`<rect width="1200" height="400" fill="${bg}"/><g fill="none" stroke="${muted}" stroke-width="3" opacity=".45"><path d="M215 200 L520 95 L975 200 L520 305 Z"/></g>`;
+function cover(){let s=`<g fill="none" stroke="${muted}" stroke-width="3" opacity=".45"><path d="M215 200 L520 95 L975 200 L520 305 Z"/></g>`;
  for(const [i,[x,y]] of [[190,200],[580,92],[580,308],[1010,200]].entries())s+=node(x,y,sets[i],true);
  return s;}
 function boundary(){let s=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1000" role="img" aria-labelledby="dg-title dg-desc"><title id="dg-title">One conclusion shared by four nearby answers</title><desc id="dg-desc">${desc}</desc><rect width="900" height="1000" fill="${bg}"/><g font-family="Arial, sans-serif" fill="${ink}"><text x="450" y="65" text-anchor="middle" font-size="35">Four nearby compatibility sets</text><text x="450" y="112" text-anchor="middle" font-size="25" fill="${muted}">Exact boundary example · manuscript §6.1</text>`;
