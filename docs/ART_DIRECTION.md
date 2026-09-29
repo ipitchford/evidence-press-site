@@ -74,6 +74,8 @@ gate. Bespoke generators must use the same palette resolver. Foreground colours
 can encode mathematical distinctions: do not recolour those merely for variety.
 Reconcile concurrent palette allocations before merging so successive new
 assignments differ. Regenerate only changed covers and their OG previews.
+Both banner and social-preview URLs are content-versioned by the renderer;
+never make cache invalidation an opt-in per-release flag.
 
 The normal build rejects missing/stale new palette assignments, and the existing
 art test rejects a return to the first-card crop. In the existing browser pass,
