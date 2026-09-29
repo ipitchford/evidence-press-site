@@ -19567,7 +19567,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-29T21:01:50.499Z",
       "status": "active",
-      "statusAt": "2026-09-29T21:01:50.499Z",
+      "statusAt": "2026-09-29T21:30:17.805Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -19645,12 +19645,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Endpoint pending; active effort and compute not instrumented.",
+        "missingnessReason": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-29T21:01:50.499Z",
             "basis": "Remaining publication only; preceding research and revision clocks are not reconstructed."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-29T21:30:17.805Z",
+            "basis": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed."
           }
         ],
         "activeHumanMinutes": null,
@@ -19661,12 +19666,85 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Pending."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-29T21:30:17.805Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/modular-code-obstructions/",
+              "https://github.com/ipitchford/modular-code-obstructions/releases/tag/v2.1-candidate",
+              "https://zenodo.org/records/23046770"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/modular-code-obstructions/releases/download/v2.1-candidate/REPLAY_RECEIPT.json",
+              "https://github.com/ipitchford/modular-code-obstructions/actions/runs/36631572299"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/modular-code-obstructions/blob/v2.1-candidate/requirements.txt"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/modular-code-obstructions/blob/v2.1-candidate/REVISION_RESPONSE_V21.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/modular-code-obstructions/blob/v2.1-candidate/SOURCES.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate. Universal written proof and finite checks are distinct. No authenticated unaffiliated reproduction, formal proof, external review or exhaustive priority clearance.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/modular-code-obstructions/",
+          "https://github.com/ipitchford/modular-code-obstructions/releases/tag/v2.1-candidate",
+          "https://zenodo.org/records/23046770"
+        ],
+        "missingnessReason": "External/formal assurance and complete resource measurement unestablished."
       },
       "releaseSlug": "modular-code-obstructions",
       "stopReason": null,
@@ -19677,6 +19755,17 @@
           "resultClass": "pending",
           "reason": "Remaining publication only; preceding research and revision clocks are not reconstructed.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-29T21:30:17.805Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/modular-code-obstructions/",
+            "https://github.com/ipitchford/modular-code-obstructions/releases/tag/v2.1-candidate",
+            "https://zenodo.org/records/23046770"
+          ]
         }
       ],
       "corrections": [],
@@ -19684,6 +19773,10 @@
         {
           "date": "2026-09-29",
           "summary": "Registered remaining publication without reconstructed metrics."
+        },
+        {
+          "date": "2026-09-29",
+          "summary": "Appended public readback and bounded assurance; unknown metrics preserved."
         }
       ]
     }
@@ -20290,6 +20383,10 @@
     {
       "date": "2026-09-29",
       "summary": "Registered modular-code publication."
+    },
+    {
+      "date": "2026-09-29",
+      "summary": "Modular-code public delivery recorded separately from incomplete resource measurement."
     }
   ]
 }
