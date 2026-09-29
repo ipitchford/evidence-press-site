@@ -1,0 +1,204 @@
+{
+  "slug": "modular-code-obstructions",
+  "title": "When algebraic symmetry weakens a code",
+  "shortTitle": "Modular-code distance obstructions",
+  "oneLine": "A short-support mechanism limits error protection in a specified family of symmetric codes—even when their information rate stays positive.",
+  "abstract": "A written proof candidate shows that a characteristic-two XOR-circulant graph code of matrix order n=2^r has a subcode of dimension at least n/4 supported on at most n coordinates whenever its coefficient span has binary dimension at most r. It also proves an all-prime vector-valued quotient-concentration theorem, yielding relative distance O(1/r) for free modular group-algebra codes at fixed field and index as elementary-abelian rank r grows. The revision gives a sharp characteristic-two alphabet threshold using a classical Cauchy construction and explicit boundary examples. Scalar binary H-code badness is credited to Charpin; the finite attaining formula is Li–Wang.",
+  "narration": "Error-correcting codes protect messages by making valid messages different from one another. Their minimum distance counts the fewest symbol changes separating two valid messages. A large distance provides room to detect or correct corruption. Algebraic symmetry can make a code compact to describe. But this research candidate shows that one particular kind of symmetry can also impose a hidden weakness. The paper studies codes built from modular group algebras, with especially clear examples based on binary addition. Its first argument finds a whole subcode confined to a small set of coordinates. That forces an upper limit on the original code’s minimum distance. For a matrix of order eight over the eight-element field, the limit is seven, and an older construction attains it. The broader result concerns what happens as the codes grow. Under precise assumptions, with the field and number of coordinate blocks fixed, free modular codes can keep a positive information rate while their relative minimum distance tends to zero. Here free describes their algebraic module structure, not a lack of constraints. This is not a claim that all symmetric codes are poor, or that coding theory has reached a universal limit. Nonfree codes outside the stated assumptions remain outside the theorem. The proof concentrates coefficient sums into one quotient fibre, producing a low-weight codeword. The binary scalar case has an important predecessor in Charpin’s work. The proposed extensions concern vector coefficients, every prime characteristic and module-level bounds. The package provides written proofs, exact checkers, explicit certificates and deliberately corrupted cases that the checker must reject. The result remains an unrefereed candidate, with incomplete historical priority clearance and no formal proof-assistant verification. This is Evidence Press, modular-code obstructions, released on the twenty-ninth of September twenty twenty-six. The paper and evidence are linked here. This synthetic AI voice explains the research; it is not additional scientific evidence.",
+  "datePublished": "2026-09-29",
+  "version": "2.1-candidate",
+  "doi": "10.5281/zenodo.23046770",
+  "conceptDoi": "10.5281/zenodo.23046769",
+  "zenodoUrl": "https://zenodo.org/records/23046770",
+  "pdfUrl": "https://github.com/ipitchford/modular-code-obstructions/releases/download/v2.1-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23046770/files/paper.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/modular-code-obstructions",
+  "releaseUrl": "https://github.com/ipitchford/modular-code-obstructions/releases/tag/v2.1-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioUrl": "/assets/audio/modular-code-obstructions.mp3",
+  "audioTranscriptUrl": "/assets/audio/modular-code-obstructions.txt",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/modular-code-obstructions.mp3",
+      "name": "Plain-English audio briefing",
+      "description": "OpenAI synthetic voice; explanation, not scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/modular-code-obstructions.txt"
+    }
+  ],
+  "keywords": [
+    "coding theory",
+    "minimum distance",
+    "modular group algebras",
+    "H-codes",
+    "Hadamard matrices",
+    "quotient concentration"
+  ],
+  "problem": {
+    "name": "How does modular algebraic structure limit code distance?",
+    "url": "https://www.numdam.org/item/BURO_1983__41__3_0/"
+  },
+  "keyResults": [
+    "Coefficient-span e≤r forces a subcode of dimension at least n/4 on at most n of 2n coordinates.",
+    "For n≥8, the minimum characteristic-two alphabet admitting Hadamard branch number at least n is 2n; a classical Cauchy matrix attains n+1.",
+    "Vector-valued quotient concentration holds at an explicit sufficient threshold in every prime characteristic.",
+    "At fixed field, index and positive free rank, relative distance is O(1/r) as elementary-abelian rank grows."
+  ],
+  "evidence": "Written analytic proofs; 2,097,152-kernel exact checker, 30 concentration certificates, finite minor controls and semantic rejection tests.",
+  "statusDetail": "Unrefereed candidate. Producer replay is not unaffiliated reproduction or proof-assistant verification. Scalar binary badness and the attaining formula have credited predecessors. Nonbinary H-code priority remains incompletely checked; no general nonfree-code or unrestricted AME claim.",
+  "openProblems": [],
+  "relatedWorks": [
+    {
+      "citation": "Charpin (1983), Étude sur la valuation des H-codes binaires. The binary scalar bound and asymptotic badness are predecessors, not new results here.",
+      "url": "https://www.numdam.org/item/BURO_1983__41__3_0/"
+    },
+    {
+      "citation": "Charpin (1996), Self-dual codes which are principal ideals of the group algebra. Later treatment of the binary H-code mechanism.",
+      "url": "https://doi.org/10.1016/0378-3758(95)00011-9"
+    },
+    {
+      "citation": "Li and Wang (2017), Design of lightweight linear diffusion layers from near-MDS matrices. Their formula supplies the finite attaining example.",
+      "url": "https://doi.org/10.13154/tosc.v2017.i1.129-155"
+    },
+    {
+      "citation": "Borello and Willems, On the algebraic structure of quasi group codes. Free coordinate actions and module structure must be distinguished.",
+      "url": "https://arxiv.org/abs/1912.09167"
+    },
+    {
+      "citation": "Fan and Lin (2022), Asymptotic properties of quasi-group codes. Good families in other limits do not contradict this restricted modular obstruction.",
+      "url": "https://arxiv.org/abs/2203.00958"
+    }
+  ],
+  "citeText": "Anonymous (2026). Small-support subcodes and distance collapse in modular group-algebra codes. Version 2.1-candidate. Zenodo. https://doi.org/10.5281/zenodo.23046770",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:modular-code-obstructions",
+    "attemptIds": [
+      "ep-attempt:modular-code-obstructions-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "certificate-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "obstruction",
+      "description": "Coefficient-rank and augmentation-based distance bounds.",
+      "scope": "Specified XOR-circulant and free modular fixed-index families; not arbitrary codes."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Short-support subcodes and repeated-coset words link algebraic hypotheses directly to Hamming distance.",
+      "remainingRisks": [
+        "Universal proofs not formalised.",
+        "Finite tests do not establish universal claims.",
+        "Nonbinary H-code priority comparison incomplete."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authorisation only; no human scientific contribution or additional review stage is inferred."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated proof audit, exact replay and extended nonbinary H-code comparison.",
+      "claimCeiling": "Unrefereed written candidate with finite producer checks."
+    },
+    "impactClaims": [
+      {
+        "id": "modular-code-obstructions-no-impact",
+        "aim": "science",
+        "outcome": "Reusable modular-code obstruction",
+        "setting": "Producer-coordinated mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied v2.0 manuscript and referee audit; v2.1 addresses all bounded review requests, adds sharp-threshold and boundary examples, and preserves historical-source limitations.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Supplied AI-assisted research; original model identities unauthenticated",
+      "Supplied review; independent provenance unauthenticated",
+      "Codex revisions, exact checking and publication"
+    ],
+    "humanRole": "Publication authority and supplied materials only; no human scientific contribution is inferred. Scholarly creator remains Anonymous.",
+    "disclosure": "Received reviews, internal replay and publication checks are producer-coordinated evidence, not authenticated external review or independent reproduction."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "GitHub candidate release and published Zenodo record read back; all six public assets downloaded from both providers and their hashes matched the local release manifest."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Original exhaustive checker and all certificates regenerated; revision and explicit certificate controls also run under Python optimisation."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun is evidenced; coordinated agents and supplied replay records do not establish independence."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Supplied separately written code is implementation diversity; unaffiliated provenance not authenticated."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant verification of the analytic claims."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Supplied favourable review not authenticated as independent specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or external venue peer review is claimed."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.13, NumPy 2.4.4 and C++17; exact finite replay. PDF build not hermetic."
+    }
+  },
+  "reviews": [],
+  "researchAssuranceAssessedAt": "2026-09-29T21:16:32.613Z"
+}
