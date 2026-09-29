@@ -349,9 +349,8 @@ const papers = fs.readdirSync(papersDir)
     meta.art = fs.existsSync(artFile) ? `${artPath}?v=${fileVersion(artFile)}` : null;
     const ogFile = path.join(ROOT, 'assets', 'og', meta.slug + '.png');
     const ogPath = `/assets/og/${meta.slug}.png`;
-    meta.og = fs.existsSync(ogFile)
-      ? (meta.ogContentVersioned ? `${ogPath}?v=${fileVersion(ogFile)}` : ogPath)
-      : null;
+    // Like banners, changed social previews must not reuse a week-cached URL.
+    meta.og = fs.existsSync(ogFile) ? `${ogPath}?v=${fileVersion(ogFile)}` : null;
     return { ...meta, body };
   })
   .sort((a, b) => b.datePublished.localeCompare(a.datePublished) || a.slug.localeCompare(b.slug));

@@ -30,4 +30,6 @@ assert.ok(!/\.cards\s+\.card:first-child/.test(css), 'Do not stretch the first b
 assert.ok(!/\.card-art\[href/.test(css), 'No slug-specific banner fit patches');
 assert.match(css, /\.card-art\s*\{[^}]*aspect-ratio: 3 \/ 1/);
 assert.match(css, /\.card-art img\s*\{[^}]*height: auto;[^}]*object-fit: contain/);
+const build = fs.readFileSync(path.join(__dirname, '../build.js'), 'utf8');
+assert.ok(!build.includes('meta.ogContentVersioned ?'), 'Changed social previews must never reuse stale URLs');
 console.log('Banner contract: saved six-family rotation, missing/stale palette rejection, and uniform uncropped card frames passed.');
