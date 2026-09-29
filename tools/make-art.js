@@ -2296,6 +2296,9 @@ art['ptolemaic-negative-type'] = ptolemaicArt.cover;
 palette['ptolemaic-negative-type'] = ['#69dbc6', '#f2c373'];
 
 const requested = new Set(process.argv.slice(2));
+const modularCodeArt = require('./modular-code-art');
+art['modular-code-obstructions'] = modularCodeArt.cover;
+palette['modular-code-obstructions'] = ['#61d9c0', '#f0c274'];
 const parafermionArt = require('./parafermion-art');
 const fieldUniformArt = require('./field-uniform-art');
 const flatSchmidtArt = require('./flat-schmidt-art');
@@ -2327,6 +2330,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b);
+  if (slug === 'modular-code-obstructions') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${modularCodeArt.description}</desc><defs>`);
   if (slug === 'flat-schmidt-chains') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${flatSchmidtArt.description}</desc><defs>`);
   if (motifs[slug]) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"')
     .replace('<defs>', `<desc id="art-description">${motifs[slug].description}</desc><defs>`);
