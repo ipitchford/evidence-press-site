@@ -533,3 +533,52 @@ td .inline-img { height: 1.9em; vertical-align: middle; }
   font-family: var(--sans); font-size: .78rem; color: var(--muted);
   margin: .5rem 0 0; letter-spacing: .01em;
 }
+
+
+/* Support: institutional funding page, using the shared site shell. */
+.support-page { padding: 3.8rem 0 3rem; }
+.support-page .intro { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(19rem, .8fr); gap: 4.5rem; align-items: start; }
+.support-page h1 { font-size: clamp(2.4rem, 4.8vw, 3.9rem); line-height: 1.09; letter-spacing: -.035em; margin: 0 0 1.7rem; font-weight: 500; }
+.support-page .kicker { margin-bottom: 1.4rem; color: var(--accent); }
+.support-page .lead { font-size: 1.45rem; line-height: 1.5; color: #44403c; }
+.support-page .context { max-width: 38rem; color: var(--muted); }
+.support-page .principle { font-style: italic; color: var(--accent); }
+.support-page .intro p { margin-top: 0; }
+.support-page .support { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: 4px 4px 12px 12px; padding: 1.7rem 1.8rem; }
+.support-page h2 { font-size: 1.95rem; line-height: 1.25; font-weight: 500; margin: 0 0 1.3rem; }
+.support-page .support h2 { font-size: 1.7rem; }
+.support-page .small { font: .9rem/1.65 var(--sans); color: var(--muted); }
+.support-page .button { display: block; margin-top: 1.5rem; padding: .9rem .75rem; border-radius: 7px; text-align: center; text-decoration: none; font: 600 .95rem/1.5 var(--sans); background: var(--accent); color: white; }
+.support-page .button:hover { background: var(--accent-2); }
+.support-page .fine { font: .8rem/1.6 var(--sans); color: var(--muted); margin-bottom: 0; }
+.support-page .rule { margin: 3rem 0; border: 0; border-top: 1px solid var(--line); }
+.support-page .uses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.2rem; }
+.support-page .num { font: .75rem/1.4 var(--sans); letter-spacing: .1em; color: var(--accent-2); }
+.support-page h3 { font-size: 1.45rem; line-height: 1.3; font-weight: 500; margin: .7rem 0; }
+.support-page .uses p { margin: 0; color: var(--muted); }
+.support-page .open-note { margin-top: 2.2rem; background: #edf3ef; border-left: 3px solid var(--accent); padding: 1.45rem 1.7rem; }
+.support-page .open-note strong { font-size: 1.3rem; font-weight: 500; }
+.support-page .open-note p { margin: .4rem 0 0; }
+.support-page .inspect { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+.support-page .inspect a { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 1.3rem; text-decoration: none; font-size: 1.25rem; }
+.support-page .inspect a:hover { border-color: var(--accent); }
+.support-page .inspect a span { display: block; color: var(--muted); font: .85rem/1.6 var(--sans); margin-top: .45rem; }
+.support-page .example { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 1.6rem 1.75rem; margin-bottom: 1.45rem; max-width: 56rem; }
+.support-page .example h3 { font-size: 1.7rem; margin: .5rem 0 .75rem; }
+.support-page .example p { color: var(--muted); margin: .6rem 0; }
+.support-page .example .status { font: .75rem/1.6 var(--sans); color: var(--accent); }
+.support-page .example .example-links { display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; font: .9rem/1.7 var(--sans); margin-top: 1.1rem; }
+.support-page .faq { max-width: 52rem; }
+.support-page .faq details { border-bottom: 1px solid var(--line); padding: 1.1rem 0; }
+.support-page .faq summary { font-size: 1.25rem; cursor: pointer; }
+.support-page .faq p { margin: .8rem 0 .15rem; color: var(--muted); }
+@media (max-width: 850px) {
+  .support-page { padding-top: 2.4rem; }
+  .support-page .intro { grid-template-columns: 1fr; gap: 1.9rem; }
+  .support-page .support { max-width: 35rem; }
+  .support-page .uses, .support-page .inspect { grid-template-columns: 1fr; gap: 1.45rem; }
+  .support-page .rule { margin: 2.2rem 0; }
+}
+@media (max-width: 450px) {
+  .support-page .support, .support-page .open-note, .support-page .example { padding: 1.3rem; }
+}
