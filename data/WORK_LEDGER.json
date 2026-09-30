@@ -20168,7 +20168,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-30T17:08:09.700Z",
       "status": "active",
-      "statusAt": "2026-09-30T17:08:09.700Z",
+      "statusAt": "2026-09-30T17:30:00.390Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -20244,12 +20244,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Earlier clocks and token counters unavailable.",
+        "missingnessReason": "Public candidate delivered and read back. Active/pending reflects unavailable complete resource measurement, not unfinished publication; do not infer research time from this status.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-30T17:08:09.700Z",
             "basis": "Remaining publication registered."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-30T17:30:00.390Z",
+            "basis": "Public candidate delivered and read back. Active/pending reflects unavailable complete resource measurement, not unfinished publication; do not infer research time from this status."
           }
         ],
         "activeHumanMinutes": null,
@@ -20260,12 +20265,63 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Publication endpoint not reached."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-30T17:30:00.390Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23066520"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/regular-heptagon-octagon-local-minimality/blob/v1.0.1-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/regular-heptagon-octagon-local-minimality/actions/runs/36750313820"
+            ]
+          }
+        ],
+        "claimCeiling": "Candidate computer-assisted proof with producer-side cross-platform replay. Not formally verified or externally peer reviewed.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/regular-heptagon-octagon-local-minimality/",
+          "https://github.com/ipitchford/regular-heptagon-octagon-local-minimality/releases/tag/v1.0.1-candidate",
+          "https://zenodo.org/records/23066520"
+        ],
+        "missingnessReason": "Active, wait and token clocks were not instrumented separately; external and formal assurance unestablished."
       },
       "releaseSlug": "regular-heptagon-octagon-local-minimality",
       "stopReason": null,
@@ -20276,6 +20332,17 @@
           "resultClass": "pending",
           "reason": "Remaining package, media and publication only; prior research and revision effort left-censored.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-30T17:30:00.390Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Public candidate delivered and read back. Active/pending reflects unavailable complete resource measurement, not unfinished publication; do not infer research time from this status.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/regular-heptagon-octagon-local-minimality/",
+            "https://github.com/ipitchford/regular-heptagon-octagon-local-minimality/releases/tag/v1.0.1-candidate",
+            "https://zenodo.org/records/23066520"
+          ]
         }
       ],
       "corrections": [],
@@ -20283,6 +20350,10 @@
         {
           "date": "2026-09-30",
           "summary": "Registered remaining polygon publication without reconstructing earlier clocks."
+        },
+        {
+          "date": "2026-09-30",
+          "summary": "Recorded canonical public delivery and separate assurance dimensions; no invented resource outcome."
         }
       ]
     }
@@ -20913,6 +20984,10 @@
     {
       "date": "2026-09-30",
       "summary": "Registered remaining polygon publication without reconstructing earlier clocks."
+    },
+    {
+      "date": "2026-09-30",
+      "summary": "Polygon local-minimality candidate public delivery recorded; unavailable process telemetry remains explicit."
     }
   ]
 }
