@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'szollosi-mub-exclusion': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 30 SEPTEMBER 2026', 'QUANTUM BASES · DIMENSION SIX'],
+    head: ['A fourth basis?', '<em>One route closes.</em>'],
+    headSize: 67,
+    sub: 'The whole Szöllősi family, including its boundary. The general problem remains open.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">the specified two-parameter family</div><div class="eq">2 + 2 <span class="hl">✕</span></div><div class="note">Standard + Hadamard basis<br><b>cannot gain two more</b><br>mutually unbiased bases.</div><div class="eq-foot">closed domain · interval and graph checks</div>'
+  },
   'flat-schmidt-chains': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 28 SEPTEMBER 2026', 'QUANTUM CHAINS · SPECTRAL GAPS'],
