@@ -800,6 +800,7 @@ ${JSON.stringify(jsonld, null, 1)}
       <a href="/articles/">Articles</a>
       <a href="/atlas/">Atlas</a>
       <a href="/about/">About</a>
+      <a href="/support/">Support</a>
       <a href="/operating-model/">Operating model</a>
       <a href="/observatory/">Observatory</a>
       <a href="/productivity/">Productivity</a>
@@ -815,6 +816,7 @@ const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
     <p>${esc(CONFIG.siteName)} publishes evidence-attached research releases and a clearly separate collection of essays, commentary and research notes. Each page states its own evidence boundary.</p>
+    <p><a href="/support/">Support open knowledge at Evidence Press</a>.</p>
     <p>Original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/math-objects.json">mathematical objects</a> · <a href="/api/claims.json">claims</a> · <a href="/api/assurance-tasks.json">assurance tasks</a> · <a href="/api/citations.json">citation graph</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/research-metrics-policy.json">research metrics</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
@@ -1890,6 +1892,23 @@ ${foot}`;
 }
 
 /* --------------------------------------------------------------- pages */
+function supportPage() {
+  const url = `${BASE}/support/`;
+  const title = 'Support Evidence Press';
+  const description = 'Knowledge should belong to everyone. Help sustain open AI-assisted research, its evidence and its explanations.';
+  const jsonld = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
+    '@type': 'WebPage', '@id': `${url}#page`, url, name: title, description,
+    inLanguage: CONFIG.language, isPartOf: { '@id': `${BASE}/#website` },
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  }] };
+  const metaExtra = [
+    ['og:type', 'website'], ['og:site_name', CONFIG.siteName],
+    ['og:title', title], ['og:description', description], ['og:url', url]
+  ].map(([name, value]) => `<meta property="${name}" content="${escAttr(value)}">`).join('\n') + '\n';
+  const body = fs.readFileSync(path.join(ROOT, 'pages', 'support.html'), 'utf8');
+  write('support/index.html', `${head({ title, description, canonical: url, jsonld, metaExtra })}\n${body}\n${foot}`);
+}
+
 /* ------------------------------------------ plain-English companion essay */
 function companionParts(companion) {
   const raw = fs.readFileSync(path.join(ROOT, 'pages', companion.mdFile), 'utf8');
@@ -2156,7 +2175,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-27' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-27' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
   ];
@@ -3015,6 +3034,7 @@ indexPage();
 articlesIndexPage();
 atlasPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
+supportPage();
 simplePage('operating-model/', 'Evidence Press operating model', 'A prospective, machine-enforced doctrine for accelerating checkable work, stopping non-identified work, and publishing reusable research handoffs while retaining rival explanations and falsifiers.', null, 'WebPage', {
   sourcePath: OPERATING_ARTIFACTS.contract.doctrine,
   sourceIncludesTitle: true,
