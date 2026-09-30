@@ -19779,6 +19779,122 @@
           "summary": "Appended public readback and bounded assurance; unknown metrics preserved."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:szollosi-mub-exclusion-publication",
+      "workId": "ep-work:szollosi-mub-exclusion",
+      "cohort": "prospective",
+      "registeredAt": "2026-09-30T04:09:34.069Z",
+      "status": "active",
+      "statusAt": "2026-09-30T04:09:34.069Z",
+      "resultClass": "pending",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the repaired MUB candidate complete fresh replay and exact-version publication?",
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "publication-only",
+        "scopeBoundary": "Remaining replay monitoring, final packaging and publication. Prior repairs are left-censored here, not reconstructed.",
+        "forecast": {
+          "frozenAt": "2026-09-30T04:09:34.069Z",
+          "procedureClass": "remaining-mathematical-candidate-publication",
+          "targetOutcome": "Passed complete replay, public identical archives and canonical site readback.",
+          "expectedActiveMinutes": 90,
+          "plausibleLowMinutes": 60,
+          "plausibleHighMinutes": 150,
+          "expectedUnattendedWaitMinutes": 240,
+          "referenceClass": {
+            "label": "Remaining-task decomposition",
+            "sampleSize": 0,
+            "basis": "Judgment forecast; current four-worker full replay dominates elapsed time."
+          },
+          "fermiComponents": [
+            {
+              "component": "Final evidence, archive and providers",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 45,
+              "highMinutesPerUnit": 75,
+              "basis": "Replay completion and package freeze pending."
+            },
+            {
+              "component": "Site QA, CI and guarded publication",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 45,
+              "highMinutesPerUnit": 75,
+              "basis": "Two new-slug publication cycles."
+            }
+          ],
+          "probabilityPositiveSignal": 0.9,
+          "probabilityTargetClosure": 0.8,
+          "probabilityHorizonMinutes": 480,
+          "assumptions": [
+            "Full replay completes without a fatal defect.",
+            "Providers remain available."
+          ],
+          "reforecastTriggers": [
+            "Replay or provider failure.",
+            "Material semantic or rights defect."
+          ],
+          "stopRule": "No workflow cap; continue required gates. Hold publication for unresolved fatal defects."
+        },
+        "outcome": null
+      },
+      "selectionBasis": "User request. Earlier intake and implemented repairs are recorded locally but excluded from this remaining-work forecast.",
+      "taskClass": "remaining-full-candidate-publication",
+      "decisionObjectTarget": "Specified closed Szollosi-family exclusion.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None: a single selected publication task.",
+        "estimand": "No comparative research, publication-speed or impact effect is estimated.",
+        "matchedAssuranceEndpoint": "Unrefereed candidate with scoped producer checks and public archival readback.",
+        "reason": "No matched or randomized comparison is registered."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Remaining-work registration only; earlier intake recorded separately. Resource counters unavailable.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-09-30T04:09:34.069Z",
+            "basis": "Remaining-work registration; do not infer discovery duration."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": null,
+        "reworkMinutes": null,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "not-recorded",
+        "assessedAt": null,
+        "dimensions": [],
+        "claimCeiling": null,
+        "evidenceRefs": [],
+        "missingnessReason": "Not reached."
+      },
+      "releaseSlug": "szollosi-mub-exclusion",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-09-30T04:09:34.069Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Remaining replay monitoring, final packaging and publication. Prior repairs are left-censored here, not reconstructed.",
+          "evidenceRefs": []
+        }
+      ],
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-09-30",
+          "summary": "Registered remaining publication; prior repairs not backdated."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -20387,6 +20503,10 @@
     {
       "date": "2026-09-29",
       "summary": "Modular-code public delivery recorded separately from incomplete resource measurement."
+    },
+    {
+      "date": "2026-09-30",
+      "summary": "Registered remaining publication; prior repairs not backdated."
     }
   ]
 }
