@@ -2332,6 +2332,9 @@ const decisionGeometryArt = require('./decision-geometry-art');
 art['decision-geometry'] = decisionGeometryArt.cover;
 palette['decision-geometry'] = ['#6ddbc4', '#f3c779'];
 const polygonsArt = require('./polygons-art');
+const akltArt = require('./aklt-art');
+art['kagome-aklt-spectral-gap'] = akltArt.cover;
+palette['kagome-aklt-spectral-gap'] = ['#83d5e8', '#f4c675'];
 art['regular-heptagon-octagon-local-minimality'] = polygonsArt.cover;
 palette['regular-heptagon-octagon-local-minimality'] = ['#65d7ec', '#f4c275'];
 for (const slug of requested) {
@@ -2341,6 +2344,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'kagome-aklt-spectral-gap') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${akltArt.description}</desc><defs>`);
   if (slug === 'regular-heptagon-octagon-local-minimality') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${polygonsArt.description}</desc><defs>`);
   if (slug === 'bunkbed-flow-obstructions') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${bunkbedArt.description}</desc><defs>`);
   if (slug === 'szollosi-mub-exclusion') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${szollosiArt.description}</desc><defs>`);
