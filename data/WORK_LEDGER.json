@@ -20363,7 +20363,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-30T21:15:25.955Z",
       "status": "active",
-      "statusAt": "2026-09-30T21:15:25.955Z",
+      "statusAt": "2026-09-30T21:56:22.897Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -20439,12 +20439,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Earlier clocks and token counters unavailable.",
+        "missingnessReason": "Public candidate delivered and read back. Active/pending reflects unavailable complete resource measurement, not unfinished publication; do not infer research time from this status.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-30T21:15:25.955Z",
             "basis": "Remaining publication registered."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-30T21:56:22.897Z",
+            "basis": "Public candidate delivered and read back. Active/pending reflects unavailable complete resource measurement, not unfinished publication; do not infer research time from this status."
           }
         ],
         "activeHumanMinutes": null,
@@ -20455,12 +20460,63 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Publication endpoint not reached."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-30T21:56:22.897Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23070704"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/kagome-aklt-spectral-gap/blob/v0.3.1-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/kagome-aklt-spectral-gap/actions/runs/36779225218"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed computer-assisted proof candidate under explicit arithmetic and semantic assumptions; producer replay, not formal or unaffiliated verification.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/kagome-aklt-spectral-gap/",
+          "https://github.com/ipitchford/kagome-aklt-spectral-gap/releases/tag/v0.3.1-candidate",
+          "https://zenodo.org/records/23070704"
+        ],
+        "missingnessReason": "Active, wait and token clocks were not instrumented separately; external and formal assurance unestablished."
       },
       "releaseSlug": "kagome-aklt-spectral-gap",
       "stopReason": null,
@@ -20471,6 +20527,17 @@
           "resultClass": "pending",
           "reason": "Remaining packaging, media and public delivery only; earlier research/revision clocks left-censored.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-30T21:56:22.897Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Public candidate delivered and read back. Active/pending reflects unavailable complete resource measurement, not unfinished publication; do not infer research time from this status.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/kagome-aklt-spectral-gap/",
+            "https://github.com/ipitchford/kagome-aklt-spectral-gap/releases/tag/v0.3.1-candidate",
+            "https://zenodo.org/records/23070704"
+          ]
         }
       ],
       "corrections": [],
@@ -20478,6 +20545,10 @@
         {
           "date": "2026-09-30",
           "summary": "Registered remaining AKLT publication without reconstructed discovery clocks."
+        },
+        {
+          "date": "2026-09-30",
+          "summary": "Recorded canonical public delivery and separate assurance dimensions; no invented resource outcome."
         }
       ]
     }
@@ -21116,6 +21187,10 @@
     {
       "date": "2026-09-30",
       "summary": "Registered remaining AKLT publication without reconstructed discovery clocks."
+    },
+    {
+      "date": "2026-09-30",
+      "summary": "Kagome AKLT spectral-gap candidate public delivery recorded; unavailable process telemetry remains explicit."
     }
   ]
 }
