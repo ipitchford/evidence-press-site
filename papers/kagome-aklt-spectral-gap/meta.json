@@ -1,0 +1,210 @@
+{
+  "slug": "kagome-aklt-spectral-gap",
+  "title": "A finite certificate for a kagome quantum gap",
+  "shortTitle": "The spin-2 kagome AKLT gap",
+  "oneLine": "A grouped local test gives a size-independent lower energy gap for a specified kagome quantum-spin model.",
+  "abstract": "A deterministic computer-assisted proof candidate gives gap(H) ≥ 11(2−√3)(59−3√313)/3360 > 0.0051 for the spin-2 AKLT model, with total-spin-four edge projectors, on rectangular kagome tori m,n≥3 and finite unions of complete down-star edge sets. Exact rational tensors and 54 validated positivity tests feed a written local-to-global argument. Arithmetic and semantic assumptions remain explicit; no arbitrary-boundary or perturbative-stability theorem is claimed.",
+  "datePublished": "2026-09-30",
+  "version": "0.3.1-candidate",
+  "doi": "10.5281/zenodo.23070704",
+  "conceptDoi": "10.5281/zenodo.23070703",
+  "zenodoUrl": "https://zenodo.org/records/23070704",
+  "repoUrl": "https://github.com/ipitchford/kagome-aklt-spectral-gap",
+  "releaseUrl": "https://github.com/ipitchford/kagome-aklt-spectral-gap/releases/tag/v0.3.1-candidate",
+  "pdfUrl": "https://github.com/ipitchford/kagome-aklt-spectral-gap/releases/download/v0.3.1-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23070704/files/paper.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Unrefereed computer-assisted proof candidate under explicit arithmetic and semantic assumptions; producer replay, not formal or unaffiliated verification.",
+  "evidence": "Exact rational constructors, 15 pair + 35 triple + 4 block positive-definiteness checks, all-entry residual bounds, exact local ordering, geometry and adversarial controls.",
+  "math": true,
+  "keywords": [
+    "AKLT model",
+    "kagome lattice",
+    "spectral gap",
+    "quantum spin systems",
+    "validated numerics",
+    "computer-assisted proof"
+  ],
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/kagome-aklt-spectral-gap.mp3",
+      "name": "Plain-English audio briefing",
+      "description": "Synthetic explanatory narration, not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/kagome-aklt-spectral-gap.txt"
+    }
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioUrl": "/assets/audio/kagome-aklt-spectral-gap.mp3",
+  "audioTranscriptUrl": "/assets/audio/kagome-aklt-spectral-gap.txt",
+  "narration": "A quantum system can have many states close to its lowest energy. A spectral gap asks whether there is a definite energy step between the ground-state space and the first excitation. The difficult question is whether that step can stay positive as the system grows. This research candidate addresses a particular model of spin-two particles arranged on the kagome lattice, a pattern of corner-sharing triangles. Its proposed lower bound is just over zero point zero zero five, in the paper’s chosen energy units. It is a conservative guarantee, not a prediction of the exact excitation energy. The proof does not try to diagonalise an enormous lattice. It studies overlapping local blocks, groups two before comparing them with a third, and uses symmetry to reduce the required calculations. Fifty-four positive-definiteness tests then support a written argument that carries the local bounds to every allowed system size. The computer first constructs exact rational inputs. Approximate matrix factors are only suggestions: a checker bounds every entry of their errors before accepting the result. The largest matrix has eleven thousand five hundred and twenty-four rows. The stated volumes matter. The claim covers rectangular periodic lattices with both periods at least three, and a specified family of open patches. It is not a theorem for arbitrary boundaries, and it does not establish stability under perturbations. The open package includes the proof, code, receipts and deliberately failing tests. Fresh replay passed, but the work remains an unrefereed candidate, with explicit software and arithmetic assumptions. This is Evidence Press, the spin-two kagome AKLT gap, dated the thirtieth of September twenty twenty-six. The paper and evidence are linked on the release page. This synthetic AI voice is explanatory, not additional scientific evidence.",
+  "relatedWorks": [
+    {
+      "citation": "Affleck, Kennedy, Lieb and Tasaki (1988), Valence bond ground states in isotropic quantum antiferromagnets: model background.",
+      "url": "https://doi.org/10.1007/BF01218021"
+    },
+    {
+      "citation": "Guo, Pomata and Wei (2021), Nonzero spectral gap in several uniformly spin-2 and hybrid-spin AKLT models: natural kagome cover and the unsuccessful pair-only threshold.",
+      "url": "https://doi.org/10.1103/PhysRevResearch.3.013255"
+    },
+    {
+      "citation": "Pomata and Wei (2020), Demonstrating the AKLT spectral gap on 2D degree-3 lattices: projector-compression antecedent.",
+      "url": "https://doi.org/10.1103/PhysRevLett.124.177203"
+    },
+    {
+      "citation": "Lemm, Sandvik and Wang (2020), Existence of a spectral gap in the AKLT model on the hexagonal lattice: weighted finite-size and DMRG precedent for a different model.",
+      "url": "https://doi.org/10.1103/PhysRevLett.124.177204"
+    },
+    {
+      "citation": "Rai et al. (2026), A hierarchy of spectral gap certificates for frustration-free spin systems: broader local-positivity methodology.",
+      "url": "https://doi.org/10.22331/q-2026-04-13-2065"
+    },
+    {
+      "citation": "Rump (2011), Verified bounds for singular values, in particular for the spectral norm of a matrix and its inverse: residual-based numerical verification.",
+      "url": "https://doi.org/10.1007/s10543-010-0294-0"
+    }
+  ],
+  "openProblems": [
+    "Independently audit the tensor-to-model correspondence, sector coverage and full floating-error checker.",
+    "Investigate sharper local inequalities without confusing a validation margin with the physical spectral gap.",
+    "Determine what additional arguments would establish boundary conditions beyond the stated patch family or perturbative stability."
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied candidate and model-assisted review revised 30 September 2026; external reviewer independence is not authenticated.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Supplied model-assisted research and review; exact system identities not authenticated",
+      "Codex exposition revisions, source checks, replay and publication"
+    ],
+    "humanRole": "Publication authorisation only; no human mathematical contribution inferred.",
+    "disclosure": "Anonymous scholarly creator. Producer-coordinated checks are not unaffiliated reproduction."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "All six public GitHub and Zenodo assets matched to the frozen local hashes by full download.",
+      "evidenceUrl": "https://zenodo.org/records/23070704"
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Fresh frozen-source macOS replay and Linux CI passed all 20 stages: 15 pair, 35 triple and four block tests, exact local ordering, geometry, adversarial controls and selected optimized-Python checks.",
+      "evidenceUrl": "https://github.com/ipitchford/kagome-aklt-spectral-gap/blob/v0.3.1-candidate/REPLAY_RECEIPT.md"
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Not established by publication preparation."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Not established by publication preparation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Not established by publication preparation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Not established by publication preparation."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Not established by publication preparation."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Pinned dependencies and producer-coordinated Mac/Linux replay. No unaffiliated reproduction or full alternative validator.",
+      "evidenceUrl": "https://github.com/ipitchford/kagome-aklt-spectral-gap/actions/runs/36779225218"
+    }
+  },
+  "citeText": "Anonymous (2026). A deterministic spectral-gap certificate for the spin-2 AKLT model on the kagome lattice. Version 0.3.1-candidate. Zenodo. https://doi.org/10.5281/zenodo.23070704",
+  "keyResults": [
+    "Uniform lower gap greater than 0.0051 for the stated finite volumes.",
+    "Sector-dependent two-plus-one grouping succeeds where the pair-only threshold does not.",
+    "54 deterministic acceptance tests with exact inputs and full residual bounds."
+  ],
+  "problem": {
+    "name": "Uniform spectral gap of the spin-2 kagome AKLT model",
+    "url": "https://arxiv.org/abs/2010.03137"
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:kagome-aklt-spectral-gap",
+    "attemptIds": [
+      "ep-attempt:kagome-aklt-spectral-gap-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Positive uniform gap in the specified spin-2 kagome AKLT model.",
+      "scope": "Rectangular tori m,n≥3 and complete down-star edge unions only."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Exact polynomial ground spaces and sector-dependent local projector inequalities feed the written cover-counting argument.",
+      "remainingRisks": [
+        "Written tensor/model and symmetry correspondence remains trusted.",
+        "Conventional binary64/BLAS error model and implementation remain trusted.",
+        "No formal or unaffiliated full verification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authorisation only; no human scientific contribution or additional review stage is inferred."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independently derive and implement the full acceptance pipeline.",
+      "claimCeiling": "Unrefereed candidate with scoped producer replay."
+    },
+    "impactClaims": [
+      {
+        "id": "kagome-aklt-spectral-gap-no-impact",
+        "aim": "science",
+        "outcome": "Reusable grouped local certificate for a quantum-spin gap",
+        "setting": "Producer-coordinated mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No comparative impact estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
