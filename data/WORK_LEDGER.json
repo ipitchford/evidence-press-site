@@ -19973,7 +19973,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-30T14:19:17.259Z",
       "status": "active",
-      "statusAt": "2026-09-30T14:19:17.259Z",
+      "statusAt": "2026-09-30T14:53:59.979Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -20049,12 +20049,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Earlier effort and token counters unavailable; not reconstructed.",
+        "missingnessReason": "Public candidate delivered and canonically read back. Active/pending records incomplete resource measurement, not unfinished publication. Active effort, token and compute clocks unavailable, not reconstructed.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-30T14:19:17.259Z",
             "basis": "Remaining publication registration."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-30T14:53:59.979Z",
+            "basis": "Public candidate delivered and canonically read back. Active/pending records incomplete resource measurement, not unfinished publication. Active effort, token and compute clocks unavailable, not reconstructed."
           }
         ],
         "activeHumanMinutes": null,
@@ -20065,12 +20070,63 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Publication endpoint not reached."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-30T14:53:59.979Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23063182"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/bunkbed-flow-obstructions/blob/v0.3.1-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/bunkbed-flow-obstructions/actions/runs/36730583295"
+            ]
+          }
+        ],
+        "claimCeiling": "Written universal proof candidate with full producer-side polynomial reconstruction, exact certificates and negative controls. Not formally verified or externally peer reviewed.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/bunkbed-flow-obstructions/",
+          "https://github.com/ipitchford/bunkbed-flow-obstructions/releases/tag/v0.3.1-candidate",
+          "https://zenodo.org/records/23063182"
+        ],
+        "missingnessReason": "External/formal assurance and complete resource measurements remain unestablished."
       },
       "releaseSlug": "bunkbed-flow-obstructions",
       "stopReason": null,
@@ -20081,6 +20137,17 @@
           "resultClass": "pending",
           "reason": "Remaining reconstruction, packaging, media and publication only; prior research and edits are left-censored.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-30T14:53:59.979Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Public candidate delivered and canonically read back. Active/pending records incomplete resource measurement, not unfinished publication. Active effort, token and compute clocks unavailable, not reconstructed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/bunkbed-flow-obstructions/",
+            "https://github.com/ipitchford/bunkbed-flow-obstructions/releases/tag/v0.3.1-candidate",
+            "https://zenodo.org/records/23063182"
+          ]
         }
       ],
       "corrections": [],
@@ -20088,6 +20155,10 @@
         {
           "date": "2026-09-30",
           "summary": "Registered remaining bunkbed publication without backdating research or revision clocks."
+        },
+        {
+          "date": "2026-09-30",
+          "summary": "Appended canonical public readback and assurance boundary; resource missingness retained."
         }
       ]
     }
@@ -20710,6 +20781,10 @@
     {
       "date": "2026-09-30",
       "summary": "Registered remaining bunkbed publication without backdating research or revision clocks."
+    },
+    {
+      "date": "2026-09-30",
+      "summary": "Bunkbed public delivery recorded separately from unknown research/resource clocks."
     }
   ]
 }
