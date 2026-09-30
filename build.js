@@ -800,7 +800,7 @@ ${JSON.stringify(jsonld, null, 1)}
       <a href="/articles/">Articles</a>
       <a href="/atlas/">Atlas</a>
       <a href="/about/">About</a>
-      <a href="/support/">Support</a>
+      <a class="support-nav" href="/support/">Keep knowledge open</a>
       <a href="/operating-model/">Operating model</a>
       <a href="/observatory/">Observatory</a>
       <a href="/productivity/">Productivity</a>
@@ -1093,6 +1093,14 @@ function signposting(p) {
 const AUTHORED_NEXT_WORK = /^##[ \t]+(?:[^\n]*\bnext\b[^\n]*|what would (?:most )?improve[^\n]*|[^\n]*\bremains? open\b[^\n]*|executable remaining gates)[ \t]*$/im;
 function hasAuthoredNextWork(p) { return AUTHORED_NEXT_WORK.test(p.body || ''); }
 
+function supportInvitation() {
+  return `<aside class="support-invitation" aria-label="Support open knowledge">
+    <p class="support-invitation-title">Knowledge travels further when everyone can use it.</p>
+    <p>Help keep research, evidence and explanations freely available.</p>
+    <a class="support-invitation-link" href="/support/">Keep knowledge open</a>
+  </aside>`;
+}
+
 /* Process metadata (operating model, research metrics) is machine-only: it
    ships in paper.json and the API ledgers, never in release HTML or Markdown
    (reader-value correction, 23 September 2026). */
@@ -1174,6 +1182,8 @@ ${media ? `<section class="media-section"><h2 id="media">Media</h2>${media}</sec
 
         <section class="verify"><h2 id="verification-status">Verification status</h2>
         <p>${inline(p.statusDetail)}</p></section>
+
+        ${supportInvitation()}
 
         ${reviews ? `<section class="reviews"><h2 id="reviews">Reviews and assessments</h2>${reviews}</section>` : ''}
 
@@ -1631,6 +1641,7 @@ function generatedArticlePage(article) {
     </section>` : ''}
     ${articleCorrectionsHtml(article)}
     ${markdown(article.body)}
+    ${supportInvitation()}
     ${articleReferencesHtml(article)}
     ${articleEditHtml(article)}
   </div>${editFacts}</div>
@@ -2054,7 +2065,7 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     : sourceText;
   for (const [from, to] of opts.sourceLinkReplacements || [])
     bodySource = bodySource.split(from).join(to);
-  const bodyHtml = `${opts.programmeLayout ? sectionedMarkdown(bodySource, 'productivity') : markdown(bodySource)}${videoHtml}`;
+  const bodyHtml = `${opts.programmeLayout ? sectionedMarkdown(bodySource, 'productivity') : markdown(bodySource)}${videoHtml}${opts.article || opts.video ? supportInvitation() : ''}`;
   const programmeNavHtml = opts.programmeNav && opts.programmeNav.length ? `<nav class="productivity-map" aria-label="Productivity programme sections">
     ${opts.programmeNav.map(item => `<a href="${escAttr(item.url)}"><strong>${esc(item.label)}</strong><span>${esc(item.detail)}</span></a>`).join('')}
   </nav>` : '';
