@@ -2298,6 +2298,9 @@ art['ptolemaic-negative-type'] = ptolemaicArt.cover;
 palette['ptolemaic-negative-type'] = ['#69dbc6', '#f2c373'];
 
 const requested = new Set(process.argv.slice(2));
+const bunkbedArt = require('./bunkbed-art');
+art['bunkbed-flow-obstructions'] = bunkbedArt.cover;
+palette['bunkbed-flow-obstructions'] = ['#a4dfed', '#f5c47b'];
 const szollosiArt = require('./szollosi-art');
 art['szollosi-mub-exclusion'] = szollosiArt.cover;
 palette['szollosi-mub-exclusion'] = ['#9fd8e4', '#f5c47b'];
@@ -2335,6 +2338,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'bunkbed-flow-obstructions') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${bunkbedArt.description}</desc><defs>`);
   if (slug === 'szollosi-mub-exclusion') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${szollosiArt.description}</desc><defs>`);
   if (slug === 'modular-code-obstructions') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${modularCodeArt.description}</desc><defs>`);
   if (slug === 'flat-schmidt-chains') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${flatSchmidtArt.description}</desc><defs>`);
