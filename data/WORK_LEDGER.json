@@ -19786,7 +19786,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-09-30T04:09:34.069Z",
       "status": "active",
-      "statusAt": "2026-09-30T04:09:34.069Z",
+      "statusAt": "2026-09-30T07:04:24.725Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -19854,12 +19854,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Remaining-work registration only; earlier intake recorded separately. Resource counters unavailable.",
+        "missingnessReason": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-09-30T04:09:34.069Z",
             "basis": "Remaining-work registration; do not infer discovery duration."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-09-30T07:04:24.725Z",
+            "basis": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed."
           }
         ],
         "activeHumanMinutes": null,
@@ -19870,12 +19875,63 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Not reached."
+        "status": "measured-partial",
+        "assessedAt": "2026-09-30T07:04:24.725Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23051062"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/szollosi-mub-exclusion/blob/v3.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/szollosi-mub-exclusion/actions/runs/36679180874"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate with complete fresh local replay. Not end-to-end formally verified or externally peer reviewed. The full dimension-six MUB problem remains open.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/szollosi-mub-exclusion/",
+          "https://github.com/ipitchford/szollosi-mub-exclusion/releases/tag/v3.0-candidate",
+          "https://zenodo.org/records/23051062"
+        ],
+        "missingnessReason": "External/formal assurance and complete resource measurement unestablished."
       },
       "releaseSlug": "szollosi-mub-exclusion",
       "stopReason": null,
@@ -19886,6 +19942,17 @@
           "resultClass": "pending",
           "reason": "Remaining replay monitoring, final packaging and publication. Prior repairs are left-censored here, not reconstructed.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-09-30T07:04:24.725Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Public candidate delivered and canonically read back. Active/pending denotes incomplete resource measurement, not unfinished publication. Active, rework, compute and token clocks unavailable and not reconstructed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/szollosi-mub-exclusion/",
+            "https://github.com/ipitchford/szollosi-mub-exclusion/releases/tag/v3.0-candidate",
+            "https://zenodo.org/records/23051062"
+          ]
         }
       ],
       "corrections": [],
@@ -19893,6 +19960,10 @@
         {
           "date": "2026-09-30",
           "summary": "Registered remaining publication; prior repairs not backdated."
+        },
+        {
+          "date": "2026-09-30",
+          "summary": "Appended public readback and scoped assurance; unknown resource metrics preserved."
         }
       ]
     }
@@ -20507,6 +20578,10 @@
     {
       "date": "2026-09-30",
       "summary": "Registered remaining publication; prior repairs not backdated."
+    },
+    {
+      "date": "2026-09-30",
+      "summary": "Szollosi public delivery recorded separately from incomplete resource measurement."
     }
   ]
 }
