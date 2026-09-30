@@ -1097,7 +1097,7 @@ function supportInvitation() {
   return `<aside class="support-invitation" aria-label="Support open knowledge">
     <p class="support-invitation-title">Knowledge travels further when everyone can use it.</p>
     <p>Help keep research, evidence and explanations freely available.</p>
-    <a class="support-invitation-link" href="/support/">Keep knowledge open <span aria-hidden="true">→</span></a>
+    <a class="support-invitation-link" href="/support/">Keep knowledge open</a>
   </aside>`;
 }
 
