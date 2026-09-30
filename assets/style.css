@@ -35,6 +35,42 @@ img { max-width: 100%; display: block; }
 .site-head nav { flex-wrap: wrap; row-gap: .2rem; }
 .site-head nav a { color: var(--muted); text-decoration: none; white-space: nowrap; }
 .site-head nav a:hover { color: var(--accent); text-decoration: underline; }
+.site-head nav .support-nav {
+  color: #92400e; font-weight: 650; border-bottom: 2px solid #d6a256;
+}
+.site-head nav .support-nav:hover { color: #78350f; }
+.support-nav:focus-visible, .support-invitation-link:focus-visible {
+  outline: 3px solid var(--amber); outline-offset: 4px; border-radius: 2px;
+}
+
+/* A reading invitation: present without scripting, highlighted once in view. */
+.support-invitation {
+  margin: 2rem 0; padding: 1.25rem 1.4rem; border: 1px solid #d6b995;
+  border-radius: 10px; background: var(--paper);
+}
+.support-invitation p { margin: .35rem 0; color: var(--muted); font-size: 1rem; }
+.support-invitation .support-invitation-title {
+  margin-top: 0; color: var(--ink); font-size: 1.18rem; line-height: 1.4; font-weight: 600;
+}
+.support-invitation-link {
+  display: inline-flex; align-items: center; gap: .55rem; min-height: 44px;
+  margin-top: .35rem; color: #92400e; font: 600 .94rem/1.5 var(--sans);
+  text-decoration-thickness: 1px; text-underline-offset: 4px;
+}
+.support-invitation-link:hover { color: #78350f; }
+@media (prefers-reduced-motion: no-preference) {
+  .support-invitation.is-highlighted { animation: support-border-light 1.8s ease-in-out; }
+  @keyframes support-border-light {
+    0%, 100% { box-shadow: 0 0 0 transparent; }
+    20% { box-shadow: 0 -3px 12px -3px rgba(180, 83, 9, .32); }
+    40% { box-shadow: 3px 0 12px -3px rgba(180, 83, 9, .32); }
+    60% { box-shadow: 0 3px 12px -3px rgba(180, 83, 9, .32); }
+    80% { box-shadow: -3px 0 12px -3px rgba(180, 83, 9, .32); }
+  }
+}
+@media print {
+  .support-invitation, .site-head nav .support-nav { display: none; }
+}
 
 /* hero */
 .hero { position: relative; color: #f0fdfa; overflow: hidden; background: var(--accent); }

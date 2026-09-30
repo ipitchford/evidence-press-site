@@ -23,6 +23,34 @@
     return;
   }
 
+  /* Support stays ordinary linked HTML. Only its brief, once-per-page-visit
+     border highlight needs an observer; it never hides or moves the copy. */
+  var supportInvitations = document.querySelectorAll('.support-invitation');
+  if (supportInvitations.length && window.IntersectionObserver && window.matchMedia) {
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!reducedMotion.matches) {
+      var supportObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.35) return;
+          supportObserver.unobserve(entry.target);
+          if (reducedMotion.matches) return;
+          entry.target.classList.add('is-highlighted');
+          entry.target.addEventListener('animationend', function () {
+            entry.target.classList.remove('is-highlighted');
+          }, { once: true });
+        });
+      }, { threshold: 0.35 });
+      supportInvitations.forEach(function (invitation) { supportObserver.observe(invitation); });
+      if (reducedMotion.addEventListener) {
+        reducedMotion.addEventListener('change', function () {
+          if (!reducedMotion.matches) return;
+          supportObserver.disconnect();
+          supportInvitations.forEach(function (invitation) { invitation.classList.remove('is-highlighted'); });
+        });
+      }
+    }
+  }
+
   /* One polite live region, created lazily, for state that would otherwise be
      conveyed only visually: copy confirmations, filter counts, media errors. */
   var announcer = null;
