@@ -2336,6 +2336,9 @@ art['decision-geometry'] = decisionGeometryArt.cover;
 palette['decision-geometry'] = ['#6ddbc4', '#f3c779'];
 const polygonsArt = require('./polygons-art');
 const akltArt = require('./aklt-art');
+const multiplaneLensingArt = require('./multiplane-lensing-art');
+art['multiplane-lensing-sparse-bound'] = multiplaneLensingArt.cover;
+palette['multiplane-lensing-sparse-bound'] = ['#9edce8', '#f3c878'];
 art['kagome-aklt-spectral-gap'] = akltArt.cover;
 palette['kagome-aklt-spectral-gap'] = ['#83d5e8', '#f4c675'];
 art['regular-heptagon-octagon-local-minimality'] = polygonsArt.cover;
@@ -2348,6 +2351,7 @@ for (const [slug, fn] of Object.entries(art)) {
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
   if (slug === 'central-configuration-kernel-rigidity') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${centralKernelArt.description}</desc><defs>`);
+  if (slug === 'multiplane-lensing-sparse-bound') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${multiplaneLensingArt.description}</desc><defs>`);
   if (slug === 'kagome-aklt-spectral-gap') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${akltArt.description}</desc><defs>`);
   if (slug === 'regular-heptagon-octagon-local-minimality') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${polygonsArt.description}</desc><defs>`);
   if (slug === 'bunkbed-flow-obstructions') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${bunkbedArt.description}</desc><defs>`);

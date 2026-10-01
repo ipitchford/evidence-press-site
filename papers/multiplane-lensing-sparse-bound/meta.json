@@ -1,0 +1,219 @@
+{
+  "slug": "multiplane-lensing-sparse-bound",
+  "title": "A tighter ceiling on gravitationally lensed images",
+  "shortTitle": "The multiplane lensing bound",
+  "oneLine": "Keeping neighbouring lens planes in the equations lowers the two-binary image ceiling from 41 to 33; the known 25-image construction leaves a sharp question open.",
+  "abstract": "The manuscript proves an upper bound N ≤ U_K for regular, unobstructed images in K-plane positive point-mass lenses with positive nearest-neighbour distance coefficients, no external shear and no continuous matter. The recurrence U_i=(1+g_i²)U_{i−1}+2g_iV_{i−1}, V_i=g_iU_{i−1}+V_{i−1}, starting at (1,0), evaluates a sparse mixed-volume envelope. It gives 33 for two binary planes and 213 for three, compared with Perry’s 41 and 365. The general prose proof is accompanied by exact finite checks and a certificate for at least 25 images in a known example. The sharp maximum and exhaustive priority remain unresolved.",
+  "datePublished": "2026-10-01",
+  "version": "0.2.0-candidate",
+  "doi": "10.5281/zenodo.23075650",
+  "zenodoUrl": "https://zenodo.org/records/23075650",
+  "repoUrl": "https://github.com/ipitchford/multiplane-lensing-sparse-bound",
+  "releaseUrl": "https://github.com/ipitchford/multiplane-lensing-sparse-bound/releases/tag/v0.2.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/multiplane-lensing-sparse-bound/releases/download/v0.2.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23075650/files/paper.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Complete prose proof with exact finite checks; unrefereed candidate. The sharp physical-image maximum, exhaustive priority, formal verification and unaffiliated reproduction are not established.",
+  "evidence": "Written sparse mixed-volume proof; producer checks of 17,577 subset pairs, 340 weighted cases and 80 seeded cases; supplied ChatGPT review code checking 250,953 pairs through K=10; exact rational certificates for 25 regular roots in a known construction.",
+  "math": true,
+  "keywords": [
+    "gravitational lensing",
+    "multiplane point-mass lenses",
+    "image counting",
+    "mixed volume",
+    "Bernstein theorem",
+    "sparse polynomial systems",
+    "transfer recurrence"
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioUrl": "/assets/audio/multiplane-lensing-sparse-bound.mp3",
+  "audioTranscriptUrl": "/assets/audio/multiplane-lensing-sparse-bound.txt",
+  "narration": "Light from a distant source can reach us along different paths when gravity bends it through layers of matter. Each path can appear as a separate image. How many images can a collection of point masses produce when those masses lie in several lens planes?\n\nThis candidate supplies a tighter upper bound. For two planes containing two masses each, the previous general ceiling was forty-one images. The new bound lowers it to thirty-three. A published construction already produces twenty-five. The remaining gap, between twenty-five and thirty-three, is still unresolved.\n\nThe proof keeps track of where each ray crosses every plane. This preserves one fact: in the equations, a plane couples directly only to its immediate neighbours. Turning the equations into polynomials then leads to a counting problem along a path. A short recurrence evaluates the bound for any number of planes and any positive number of masses in each plane.\n\nThe improvement matters particularly as the number of planes grows. It does not turn the bound into a linear function of the mass counts, and it does not prove that any lens reaches the new ceiling.\n\nThe package contains a written proof and exact, reproducible checks. It also certifies twenty-five separate regular images in the earlier published example. That certificate establishes a lower example, not a complete catalogue of its images.\n\nThe assumptions exclude external shear and continuous matter, and only regular, unobstructed images are counted. The work remains an unrefereed candidate. Supplied ChatGPT checks are not human peer review or unaffiliated reproduction.\n\nThis is Evidence Press, the multiplane lensing sparse bound, dated the first of October twenty twenty-six. The paper and evidence are linked on the release page. This synthetic AI voice is explanatory, not additional scientific evidence.",
+  "relatedWorks": [
+    {
+      "citation": "Perry (2021), An upper bound for the number of gravitationally lensed images in a multiplane point-mass ensemble: the general E²+O² comparator.",
+      "url": "https://doi.org/10.1007/s13324-021-00478-4"
+    },
+    {
+      "citation": "Keeton, Lundberg and Perry (2023), Multiplane gravitational lenses with an abundance of images: the attained product construction and physical recurrence.",
+      "url": "https://arxiv.org/pdf/2302.11735v1"
+    },
+    {
+      "citation": "Mao, Witt and An (2014), Three-dimensional microlensing: Bernstein-method precedent and the known two-one-mass six-image case.",
+      "url": "https://doi.org/10.1093/mnras/stt1988"
+    },
+    {
+      "citation": "Petters (1997), Multiplane gravitational lensing. III. Upper bound on number of images: the earlier one-mass-per-plane upper bound.",
+      "url": "https://doi.org/10.1063/1.531818"
+    },
+    {
+      "citation": "Bernshtein (1975), The number of roots of a system of equations: the classical sparse root-counting theorem used in the proof.",
+      "url": "https://doi.org/10.1007/BF01075595"
+    },
+    {
+      "citation": "Verschelde (2007), Homotopy methods for solving polynomial systems: isolated-root and multihomogeneous bound formulations.",
+      "url": "https://homepages.math.uic.edu/~jan/tutorial.pdf"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the v0.2.0-candidate proof package and supplied ChatGPT review, with exact baseline parameter readback. Reviewer independence and human specialist status are not inferred.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Codex research, proof exposition, exact replay and release preparation",
+      "Supplied ChatGPT review and accompanying checking code; institutional independence unestablished"
+    ],
+    "humanRole": "The user authorised publication. No human scientific contribution or formal review role is inferred.",
+    "disclosure": "Anonymous is the scholarly creator and Evidence Press the publisher. Additional AI-assisted implementations remain separate from unaffiliated reproduction and human peer review."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "At 2026-10-01T06:01:59Z, public archive availability was confirmed: full downloads of all four versioned GitHub and published Zenodo assets matched the frozen local files. Canonical site delivery is recorded separately from this archive-availability assessment.",
+      "evidenceUrl": "https://zenodo.org/records/23075650"
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Producer exact finite combinatorial checks, normal/optimised Python, semantic negative controls and 25-root rational interval replay passed. These checks support specified computations, not a formal proof of the general theorem.",
+      "evidenceUrl": "https://github.com/ipitchford/multiplane-lensing-sparse-bound/blob/v0.2.0-candidate/REPLAY_RECEIPT.md"
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Supplied ChatGPT review-session reruns do not establish unaffiliated reproduction."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Separately written review code supplies implementation diversity; independent institutional or human reproduction is not established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "The universal proof is mathematical prose, not an end-to-end proof-assistant artifact."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "The supplied ChatGPT report is not authenticated external human specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal editorial peer review is established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Standard-library Python checkers, exact rational inputs and replay commands are supplied. Their producer and review-session execution does not establish an unaffiliated environment reproduction.",
+      "evidenceUrl": "https://github.com/ipitchford/multiplane-lensing-sparse-bound/blob/v0.2.0-candidate/baseline/README.md"
+    }
+  },
+  "citeText": "Anonymous (2026). Sparse algebraic image bounds for multiplane point-mass lenses. Version 0.2.0-candidate. Zenodo. https://doi.org/10.5281/zenodo.23075650",
+  "keyResults": [
+    "A recurrence bounds regular unobstructed images for any K and positive mass counts g_i.",
+    "Two binary planes: known attained 25, upper bound 33, previous general upper bound 41.",
+    "Three binary planes: upper bound 213 versus Perry’s 365; the sharp product conjecture remains open."
+  ],
+  "problem": {
+    "name": "The maximum number of images in multiplane point-mass lensing",
+    "url": "https://arxiv.org/abs/2302.11735v1"
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:multiplane-lensing-sparse-bound",
+    "attemptIds": [
+      "ep-attempt:multiplane-lensing-sparse-bound-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "The explicit recurrence N ≤ U_K for regular unobstructed images in positive multiplane point-mass lenses.",
+      "scope": "Positive nearest-neighbour distance coefficients, distinct masses within each plane, no external shear or continuous matter; not a sharpness or attainment theorem."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The proof injects regular unobstructed physical images into simple polynomial roots, encloses their sparse supports and evaluates the mixed-volume envelope through feasible subset pairs on a path.",
+      "remainingRisks": [
+        "The prose reduction and use of classical algebraic root bounds are not formally verified.",
+        "Finite recurrence checks and the 25-root example do not prove the universal theorem or global exhaustion.",
+        "Priority is not settled by bounded literature searches; Perry’s relevant dissertation remains unread."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication was authorised by the user; no human scientific or referee role is inferred.",
+      "A future qualified review can assess the prose proof, physical-to-algebraic interpretation and unresolved priority boundary."
+    ],
+    "parentLinks": [
+      {
+        "relation": "reuses-evidence",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/pdf/2302.11735v1",
+        "inheritedClaim": "Published existence of product_i(5g_i−5) nondegenerate images for g_i≥2, including the 25-image two-binary construction.",
+        "inheritedAssuranceCeiling": "Cited mathematical construction. The local interval replay proves at least 25 roots at the specified parameters; it does not establish global exhaustion or the sharp maximum."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "semanticValidation",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Obtain a qualified unaffiliated check of the full sparse proof and physical-root bridge, and resolve the remaining dissertation and citation-network priority checks.",
+      "claimCeiling": "Unrefereed proof candidate with scoped exact checks; no sharp-maximum, formal-verification, human-peer-review or exhaustive-priority claim."
+    },
+    "impactClaims": [
+      {
+        "id": "multiplane-lensing-sparse-bound-no-impact",
+        "aim": "science",
+        "outcome": "A reusable general upper bound and auditable sparse counting argument",
+        "setting": "AI-assisted mathematical research and candidate publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched-assurance research or workflow comparator is registered.",
+        "estimand": "No discovery-speed, publication-speed, scientific-adoption or real-world impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "conceptDoi": "10.5281/zenodo.23075649",
+  "audioContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/multiplane-lensing-sparse-bound.mp3",
+      "name": "The multiplane lensing bound",
+      "description": "A synthetic OpenAI fable briefing in the house British style. This explanation is not additional scientific evidence.",
+      "durationLabel": "1 min 55 sec",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/multiplane-lensing-sparse-bound.txt"
+    }
+  ]
+}
