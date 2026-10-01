@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'multiplane-lensing-sparse-bound': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 1 OCTOBER 2026', 'MULTIPLANE GRAVITATIONAL LENSING'],
+    head: ['Through', '<em>several lenses</em>'],
+    headSize: 78,
+    sub: 'Keeping adjacent-plane structure tightens the image-count ceiling.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: require('./multiplane-lensing-art').thumbnailHero()
+  },
   'central-configuration-kernel-rigidity': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 1 OCTOBER 2026', 'SEVEN BODIES · LOCAL EXCLUSION'],
