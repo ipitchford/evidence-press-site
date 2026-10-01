@@ -20641,9 +20641,9 @@
       "workId": "ep-work:multiplane-lensing-sparse-bound",
       "cohort": "prospective",
       "registeredAt": "2026-10-01T05:38:39.289Z",
-      "status": "active",
-      "statusAt": "2026-10-01T05:38:39.289Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-01T07:10:24.136Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -20718,12 +20718,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Only the remaining publication attempt is registered prospectively here. Earlier discovery, proof revision and research-intake timestamps were not measured under this ledger; human, compute, token and rework totals are unavailable and are not reconstructed.",
+        "missingnessReason": "Publication is complete: exact canonical readback passed. Earlier discovery, proof revision and pre-registration publication clocks remain left-censored. Active agent/human, unattended-wait, blocked, compute and rework durations, runs, cost and token totals were not separately recorded and remain unknown. The current schema requires numerical core telemetry for status published and has no unmeasured-completion variant; result-ready/positive records the delivered publication without inventing a terminal metrics outcome. It does not mean publication is pending. No speed, productivity or research-impact effect is inferred.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-10-01T05:38:39.289Z",
             "basis": "Registered remaining publication now; earlier clocks were not backdated."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-10-01T07:10:24.136Z",
+            "basis": "Publication complete: the guarded deployment of commit aff9450f55f3c61650f73fb645baf79d224701ec passed exact canonical protocol and release-record readbacks plus published-URL preservation at https://evidencepress.org/releases/multiplane-lensing-sparse-bound/. This is the publication endpoint, not stronger scientific assurance. The public-release event requires status published and an unavailable numerical terminal outcome, so this supported event records completion explicitly; no missing historical or resource clock is reconstructed."
           }
         ],
         "activeHumanMinutes": null,
@@ -20734,12 +20739,66 @@
         "correctionCount": null
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Archival parity, actual public availability and canonical readback remain pending for the root publication workflow."
+        "status": "measured-partial",
+        "assessedAt": "2026-10-01T07:10:24.136Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/multiplane-lensing-sparse-bound/releases/tag/v0.2.0-candidate",
+              "https://zenodo.org/records/23075650",
+              "https://evidencepress.org/releases/multiplane-lensing-sparse-bound/"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/multiplane-lensing-sparse-bound/blob/v0.2.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/multiplane-lensing-sparse-bound/blob/v0.2.0-candidate/baseline/README.md"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed mathematical candidate: a general prose proof of a sparse upper recurrence, scoped exact producer checks, and a 25-root certificate for a known lower construction. Sharpness, exhaustive priority, formal verification, unaffiliated reproduction and authenticated human specialist or editorial peer review remain unestablished. Supplied ChatGPT review is not independent human assurance.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/multiplane-lensing-sparse-bound/",
+          "https://github.com/ipitchford/evidence-press-site/pull/392",
+          "https://github.com/ipitchford/multiplane-lensing-sparse-bound/releases/tag/v0.2.0-candidate",
+          "https://zenodo.org/records/23075650"
+        ],
+        "missingnessReason": "Public GitHub/Zenodo assets passed full-download parity and canonical site delivery passed exact readback. These establish availability, not mathematical correctness or stronger assurance. Unaffiliated/formal/human-review dimensions and historical/resource measurements remain unestablished; internal replay and reproducibility retain the release metadata scope."
       },
       "releaseSlug": "multiplane-lensing-sparse-bound",
       "stopReason": null,
@@ -20750,6 +20809,18 @@
           "resultClass": "pending",
           "reason": "Remaining publication in progress; historical research clocks unavailable.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-01T07:10:24.136Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Publication complete after exact canonical readback. The result-ready/positive representation preserves actual completion while the schema lacks an unmeasured-completion state; missing core telemetry prevents a truthful terminal metrics outcome, not publication completion.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/multiplane-lensing-sparse-bound/",
+            "https://github.com/ipitchford/evidence-press-site/pull/392",
+            "https://github.com/ipitchford/multiplane-lensing-sparse-bound/releases/tag/v0.2.0-candidate",
+            "https://zenodo.org/records/23075650"
+          ]
         }
       ],
       "corrections": [],
@@ -20757,6 +20828,10 @@
         {
           "date": "2026-10-01",
           "summary": "Registered only remaining publication at actual intake time, retaining missing historical clocks and no workflow-speed or impact claim."
+        },
+        {
+          "date": "2026-10-01",
+          "summary": "Recorded completed candidate publication after exact canonical readback; retained the frozen intake/forecast, null resource telemetry, unresolved sharpness/priority and internal-versus-independent assurance boundaries."
         }
       ]
     }
@@ -21407,6 +21482,10 @@
     {
       "date": "2026-10-01",
       "summary": "Recorded completed central-configuration publication after canonical exact readback; retained null telemetry and an explicit result-ready schema limitation rather than inventing a numerical terminal outcome."
+    },
+    {
+      "date": "2026-10-01",
+      "summary": "Recorded completed multiplane-lensing candidate publication after exact canonical readback. Result-ready/positive reflects the telemetry-schema limitation; no historical clocks, speed effect or stronger scientific assurance inferred."
     }
   ]
 }
