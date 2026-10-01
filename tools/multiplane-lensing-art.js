@@ -12,8 +12,8 @@ function plane(x, y, scale, color, mass, index) {
     <circle cx="-13" cy="-62" r="11" fill="${mass}"/>
     <circle cx="2" cy="66" r="11" fill="${mass}"/>
     <circle cx="0" cy="0" r="7" fill="#faf7f2"/>
-    <text x="18" y="13" fill="#faf7f2" font-family="Georgia,serif" font-size="27">z<tspan dy="5" font-size="17">${index}</tspan></text>
-  </g>`;
+  </g>
+  <text x="${x + 18 * scale}" y="${y + 13 * scale}" fill="#faf7f2" font-family="Georgia,serif" font-size="${27 * scale}">z<tspan dy="${5 * scale}" font-size="${17 * scale}">${index}</tspan></text>`;
 }
 
 exports.cover = (a, b) => {
