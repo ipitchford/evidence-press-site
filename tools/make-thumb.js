@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'central-configuration-kernel-rigidity': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 1 OCTOBER 2026', 'SEVEN BODIES · LOCAL EXCLUSION'],
+    head: ['Two boxes.', '<em>Ruled out.</em>'],
+    headSize: 85,
+    sub: 'Exact certificates exclude complete central-configuration kernels in two small regions.',
+    tag: 'LOCAL RESULT · UNREFEREED CANDIDATE',
+    hero: require('./central-kernel-art').thumbnailHero()
+  },
   'szollosi-mub-exclusion': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 30 SEPTEMBER 2026', 'QUANTUM BASES · DIMENSION SIX'],

@@ -2298,6 +2298,9 @@ art['ptolemaic-negative-type'] = ptolemaicArt.cover;
 palette['ptolemaic-negative-type'] = ['#69dbc6', '#f2c373'];
 
 const requested = new Set(process.argv.slice(2));
+const centralKernelArt = require('./central-kernel-art');
+art['central-configuration-kernel-rigidity'] = centralKernelArt.cover;
+palette['central-configuration-kernel-rigidity'] = ['#a9d8eb', '#f1c67c'];
 const bunkbedArt = require('./bunkbed-art');
 art['bunkbed-flow-obstructions'] = bunkbedArt.cover;
 palette['bunkbed-flow-obstructions'] = ['#a4dfed', '#f5c47b'];
@@ -2344,6 +2347,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'central-configuration-kernel-rigidity') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${centralKernelArt.description}</desc><defs>`);
   if (slug === 'kagome-aklt-spectral-gap') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${akltArt.description}</desc><defs>`);
   if (slug === 'regular-heptagon-octagon-local-minimality') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${polygonsArt.description}</desc><defs>`);
   if (slug === 'bunkbed-flow-obstructions') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${bunkbedArt.description}</desc><defs>`);
