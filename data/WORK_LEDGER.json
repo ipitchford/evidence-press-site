@@ -20977,9 +20977,9 @@
       "workId": "ep-work:ctln-six-is-minimal",
       "cohort": "prospective",
       "registeredAt": "2026-10-01T19:34:57.992Z",
-      "status": "active",
-      "statusAt": "2026-10-01T19:54:17.847Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-01T20:04:44.925Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -21054,7 +21054,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Original discovery and initial revision clocks are unmeasured. Remaining public delivery is pending; active human, token, compute and cost counters are unavailable and remain null.",
+        "missingnessReason": "Publication complete with exact canonical readback. Active work, unattended wait, tokens and compute cost were not separately instrumented and remain unknown. The current schema requires numerical telemetry for status published; result-ready/positive records the delivered result without inventing a terminal metrics outcome. Earlier research and revision clocks remain unmeasured.",
         "milestones": [
           {
             "event": "work-opened",
@@ -21065,6 +21065,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-01T19:54:17.847Z",
             "basis": "Hosted exact replay and full public asset download parity verified; no local queue completion claimed."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-01T20:04:44.925Z",
+            "basis": "Guarded production deployment and exact canonical publication readback passed at bc1ac4406272947d3980eaf985f68aabef2e08ae. This is the site-delivery endpoint, not stronger scientific assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -21131,7 +21136,7 @@
           "https://zenodo.org/records/23089682",
           "https://github.com/ipitchford/ctln-six-is-minimal/actions/runs/36916831654"
         ],
-        "missingnessReason": "Internal exact replay and archival parity established. Site publication still pending; unaffiliated and formal assurance and full resource telemetry remain unestablished."
+        "missingnessReason": "Internal exact replay and archival parity established; canonical site delivery now separately confirmed. Unaffiliated and formal assurance and full resource telemetry remain unestablished."
       },
       "releaseSlug": "ctln-six-is-minimal",
       "stopReason": null,
@@ -21153,6 +21158,17 @@
             "https://zenodo.org/records/23089682",
             "https://github.com/ipitchford/ctln-six-is-minimal/actions/runs/36916831654"
           ]
+        },
+        {
+          "at": "2026-10-01T20:04:44.925Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Publication complete; explicit telemetry-schema limitation retained without fabricated resource outcomes.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/ctln-six-is-minimal/",
+            "https://github.com/ipitchford/evidence-press-site/pull/400",
+            "https://zenodo.org/records/23089682"
+          ]
         }
       ],
       "corrections": [],
@@ -21164,6 +21180,10 @@
         {
           "date": "2026-10-01",
           "summary": "Exact replay completed on hosted GitHub CI after cancelling only this publication’s waiting local job; archival parity verified."
+        },
+        {
+          "date": "2026-10-01",
+          "summary": "Recorded exact canonical site delivery separately from research assurance and unknown resource measurements."
         }
       ]
     }
@@ -21822,6 +21842,10 @@
     {
       "date": "2026-10-01",
       "summary": "Registered remaining CTLN candidate publication; earlier research and initial revision clocks remain unmeasured."
+    },
+    {
+      "date": "2026-10-01",
+      "summary": "CTLN candidate publication complete after canonical readback; result-ready/positive preserves unknown resource telemetry rather than fabricating a terminal numerical outcome."
     }
   ]
 }
