@@ -23,6 +23,7 @@ const { loadClaimAssurance, buildClaimAssuranceRegister } = require('./tools/cla
 const { loadImplementationStatus, validateImplementationStatus } = require('./tools/implementation-status');
 const { loadBaselineReceipt, validateBaselineReceipt } = require('./tools/baseline-receipt');
 const { loadArticles, articleAttribution } = require('./tools/articles');
+const { withBriefingAudio } = require('./tools/audio-media');
 
 const ROOT = __dirname;
 require('./tools/banner-palettes').check(ROOT);
@@ -1321,7 +1322,9 @@ function paperApi(p) {
     audioUrl: p.audio ? BASE + p.audio.url : null,
     imageUrl: p.og ? BASE + p.og : null,
     coverArtUrl: p.art ? BASE + p.art : null,
-    media: p.media || [],
+    media: withBriefingAudio(p.media, p.audio ? BASE + p.audio.url : null,
+      fs.existsSync(path.join(ROOT, 'assets', 'audio', p.slug + '.txt'))
+        ? `${BASE}/assets/audio/${p.slug}.txt` : null),
     authors: p.authors, license: 'CC0-1.0',
     status: p.status || 'unrefereed-candidate',
     /* Derived from the assurance matrix, never asserted separately, so the

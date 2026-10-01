@@ -22,6 +22,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const { loadArtifacts, loadPaperMetadata } = require('./operating-model');
+const { sameAudioAsset, withBriefingAudio } = require('./audio-media');
 
 const ROOT = path.join(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
@@ -384,6 +385,29 @@ const releasesWithoutCurrentBriefing = papersDoc.papers
 check('every release has a current audio or video briefing',
   same(releasesWithoutCurrentBriefing, []),
   `missing: ${releasesWithoutCurrentBriefing.join(', ')}`);
+const missingIndexedAudio = papersDoc.papers.filter(paper => paper.audioUrl &&
+  !paper.media.some(item => item.type === 'audio' && !item.superseded && sameAudioAsset(item.url, paper.audioUrl)));
+check('every available audio briefing is indexed in media', missingIndexedAudio.length === 0,
+  missingIndexedAudio.map(paper => paper.slug).join(', '));
+const audioFixture = 'https://evidencepress.org/assets/audio/fixture.mp3';
+const existingAudio = [{ type: 'audio', url: audioFixture, name: 'Authored label' }];
+check('audio indexing preserves authored records and ignores cache-query differences',
+  withBriefingAudio(existingAudio, audioFixture + '?v=123', null) === existingAudio);
+check('audio indexing does not invent unavailable files or transcripts',
+  withBriefingAudio([], null, null).length === 0 &&
+  !Object.hasOwn(withBriefingAudio([], audioFixture, null)[0], 'transcriptUrl'));
+const historicalAudio = [{ ...existingAudio[0], superseded: true }];
+const indexedHistorical = withBriefingAudio(historicalAudio, audioFixture, audioFixture + '.txt');
+check('historical audio is retained but does not hide the current briefing',
+  indexedHistorical.length === 2 && indexedHistorical[0] === historicalAudio[0] && historicalAudio.length === 1);
+check('audio indexing is idempotent and distinguishes external URLs',
+  withBriefingAudio(indexedHistorical, audioFixture, null) === indexedHistorical &&
+  !sameAudioAsset(audioFixture, audioFixture.replace('evidencepress.org', 'example.org')));
+const inconsistentAudioMedia = papersDoc.papers.filter(paper => {
+  const perRelease = JSON.parse(fs.readFileSync(path.join(DIST, 'releases', paper.slug, 'paper.json'), 'utf8'));
+  return JSON.stringify(perRelease.media) !== JSON.stringify(paper.media);
+});
+check('catalogue and per-release media indexes agree', inconsistentAudioMedia.length === 0);
 check('catalogue ordering is deterministic for equal publication dates',
   same(papersDoc.papers.map(p => p.slug), deterministicPaperOrder));
 check('catalogue matches the release pages on disk', same(apiSlugs, releasesOnDisk),
