@@ -1,0 +1,13 @@
+How many neurons does a mathematical network need before its stable activity can break a simple clique rule? In this model, the answer is six.
+
+A clique is a group in which every neuron sends an edge to every other. Earlier work suggested that stable activity should always have this tightly connected form, with an additional condition on neurons outside the group. A six-neuron counterexample by Jesse Geneson showed that the rule could fail. But could it fail with five?
+
+This candidate closes that gap. It checks every directed graph on up to five vertices, across the whole allowed range of the model’s two parameters. There are just over one million labelled graphs. Symmetries reduce them to fewer than ten thousand classes. Exact polynomial obstructions rule out each nonclique possibility. This is not a numerical scan at a selection of parameter values.
+
+The package also gives exact rational numbers for the known six-neuron example, and describes precisely where that example is stable. A further construction enlarges it to networks with six, eleven, sixteen, and then five more neurons at each step.
+
+There is an important qualification. The parameters change as the networks grow, and part of their stability margin becomes smaller. The result does not provide an equally robust family at one fixed parameter pair.
+
+The proof, certificates and small Python checker are available for inspection. The work remains an unrefereed candidate. AI-assisted review and exact computation are not human peer review or a proof checked by a formal proof assistant. Nor does this idealised network result demonstrate how measured biological neurons behave.
+
+This is Evidence Press, Six is minimal, dated the first of October twenty twenty-six. The paper and evidence package are linked on the release page. This synthetic AI voice explains the research; it is not additional scientific evidence.

@@ -1,0 +1,203 @@
+{
+  "slug": "ctln-six-is-minimal",
+  "title": "Six is minimal",
+  "shortTitle": "Six is minimal",
+  "oneLine": "An exact all-parameter certificate rules out stable nonclique activity on five or fewer neurons; a known six-neuron graph makes the bound sharp.",
+  "abstract": "For nondegenerate legal combinatorial threshold-linear networks with uniform positive drive, the minimum stable nonclique support size is exactly six. Integer-polynomial obstructions cover all 9,846 graph classes through five vertices across the full legal parameter region. The six-neuron graph is due to Geneson. The candidate also supplies an exact phase classification of that seed and an explicit stable family on 5r+6 vertices, with size-dependent parameters and shrinking stability margin. Model checking and exact producer replay are not external human peer review or proof-assistant verification.",
+  "datePublished": "2026-10-01",
+  "version": "1.1.0-candidate",
+  "doi": "10.5281/zenodo.23089682",
+  "zenodoUrl": "https://zenodo.org/records/23089682",
+  "repoUrl": "https://github.com/ipitchford/ctln-six-is-minimal",
+  "releaseUrl": "https://github.com/ipitchford/ctln-six-is-minimal/releases/tag/v1.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/ctln-six-is-minimal/releases/download/v1.1.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23089682/files/paper.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Unrefereed computer-assisted mathematical candidate. The graph is prior work; the sharp lower bound, family and phase certificates have separate scopes. No formal verification or unaffiliated reproduction is established.",
+  "evidence": "Exact integer-polynomial exclusions across 9,846 graph classes; rational six-neuron witness; symbolic all-size and phase certificates; supplied model audit with separately written implementations.",
+  "math": true,
+  "keywords": [
+    "combinatorial threshold-linear networks",
+    "CTLN",
+    "stable fixed points",
+    "target-free clique conjecture",
+    "exact certificates",
+    "Hurwitz stability",
+    "neural network dynamics"
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioUrl": "/assets/audio/ctln-six-is-minimal.mp3",
+  "audioTranscriptUrl": "/assets/audio/ctln-six-is-minimal.txt",
+  "narration": "How many neurons does a mathematical network need before its stable activity can break a simple clique rule? In this model, the answer is six.\n\nA clique is a group in which every neuron sends an edge to every other. Earlier work suggested that stable activity should always have this tightly connected form, with an additional condition on neurons outside the group. A six-neuron counterexample by Jesse Geneson showed that the rule could fail. But could it fail with five?\n\nThis candidate closes that gap. It checks every directed graph on up to five vertices, across the whole allowed range of the model’s two parameters. There are just over one million labelled graphs. Symmetries reduce them to fewer than ten thousand classes. Exact polynomial obstructions rule out each nonclique possibility. This is not a numerical scan at a selection of parameter values.\n\nThe package also gives exact rational numbers for the known six-neuron example, and describes precisely where that example is stable. A further construction enlarges it to networks with six, eleven, sixteen, and then five more neurons at each step.\n\nThere is an important qualification. The parameters change as the networks grow, and part of their stability margin becomes smaller. The result does not provide an equally robust family at one fixed parameter pair.\n\nThe proof, certificates and small Python checker are available for inspection. The work remains an unrefereed candidate. AI-assisted review and exact computation are not human peer review or a proof checked by a formal proof assistant. Nor does this idealised network result demonstrate how measured biological neurons behave.\n\nThis is Evidence Press, Six is minimal, dated the first of October twenty twenty-six. The paper and evidence package are linked on the release page. This synthetic AI voice explains the research; it is not additional scientific evidence.",
+  "relatedWorks": [
+    {
+      "citation": "Geneson (2026), A six-neuron counterexample to the target-free clique conjecture. The prior graph and counterexample; not discovered by this release.",
+      "url": "https://arxiv.org/abs/2607.21396v1"
+    },
+    {
+      "citation": "Curto, Geneson and Morrison (2024), Stable fixed points of combinatorial threshold-linear networks. Small-support results, simply-added splits and composite graphs.",
+      "url": "https://doi.org/10.1016/j.aam.2023.102652"
+    },
+    {
+      "citation": "Curto, Geneson and Morrison (2019), Fixed points of competitive threshold-linear networks. The fixed-point and graph-rule framework.",
+      "url": "https://doi.org/10.1162/neco_a_01151"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the supplied v1.0 research and model-audit archives, revised as v1.1. Original archive hash and all review dispositions are recorded. No human research role or independent institutional assurance inferred.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research; original model identity not established in the supplied package",
+      "Codex revision, scoped checks and publication",
+      "Supplied AI-generated referee audit; not authenticated human review"
+    ],
+    "humanRole": "The user authorised publication. No human scientific contribution is inferred.",
+    "disclosure": "Anonymous is the scholarly creator. Evidence Press is the publisher. Model review and implementation diversity are distinct from unaffiliated reproduction."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "Public GitHub and Zenodo assets verified by complete downloads against the frozen package SHA-256 ledger on 1 October 2026."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Python 3.13.15 hosted clean-extraction exact regeneration, nine semantic corruptions and five wrapper/optimized-mode controls passed. Every frozen archive file matches the tested commit. Internal, not unaffiliated verification."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Supplied model-audit reruns do not establish unaffiliated reproduction."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Supplied separately written audit code provides implementation diversity, not authenticated institutional independence."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No end-to-end proof-assistant verification."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Supplied review is AI generated, not authenticated human specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No editorial peer review established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python standard-library exact checker and environment instructions supplied; unaffiliated environment reproduction unestablished."
+    }
+  },
+  "citeText": "Anonymous (2026). Six Is Minimal: Exact Certification and Infinite Families of Stable Nonclique CTLNs. Version 1.1.0-candidate. Zenodo. https://doi.org/10.5281/zenodo.23089682",
+  "keyResults": [
+    "Six is the exact minimum stable nonclique support size under the stated legal and nondegeneracy assumptions.",
+    "All 9,846 graph classes through five vertices are covered over the full legal parameter domain.",
+    "An exact seed phase region and a family of sizes 5r+6; no fixed-parameter or uniform-margin claim."
+  ],
+  "problem": {
+    "name": "Minimum stable nonclique support size in legal CTLNs",
+    "url": "https://arxiv.org/abs/2607.21396v1"
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:ctln-six-is-minimal",
+    "attemptIds": [
+      "ep-attempt:ctln-six-is-minimal-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "All-parameter exclusion through five plus a rational six-neuron witness.",
+      "scope": "Nondegenerate legal CTLNs with uniform positive input; exact minimum stable nonclique support size."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Nonedge matrices encode directed missing inputs; Cramer positivity and Hurwitz stability are checked on the entire legal quadrant. The active Jacobian is -epsilon K.",
+      "remainingRisks": [
+        "Prose reductions and checker implementation are not formally verified.",
+        "The weighted quotient is not a smaller ordinary CTLN.",
+        "Biological transfer, global convergence and exhaustive novelty are not established."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication was authorised by the user; no human scientific or referee role is inferred.",
+      "A future qualified review can assess the prose proof, physical-to-algebraic interpretation and unresolved priority boundary."
+    ],
+    "parentLinks": [
+      {
+        "relation": "reuses-evidence",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/2607.21396v1",
+        "inheritedClaim": "The six-neuron counterexample graph, explicitly credited to Geneson.",
+        "inheritedAssuranceCeiling": "Cited preprint construction; exact witness reconstruction does not establish external peer review."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated replay and review of the all-parameter coverage and dynamical reduction.",
+      "claimCeiling": "Unrefereed computer-assisted candidate, not formal proof or biological validation."
+    },
+    "impactClaims": [
+      {
+        "id": "ctln-six-is-minimal-no-impact",
+        "aim": "science",
+        "outcome": "Reusable exact minimality and stability certificates",
+        "setting": "AI-assisted mathematical research and candidate publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched-assurance research or workflow comparator is registered.",
+        "estimand": "No discovery-speed, publication-speed, scientific-adoption or real-world impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "conceptDoi": "10.5281/zenodo.23089681",
+  "audioContentVersioned": true,
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/ctln-six-is-minimal.mp3",
+      "name": "Six is minimal",
+      "description": "Synthetic OpenAI fable briefing; explanation, not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/ctln-six-is-minimal.txt"
+    }
+  ]
+}
