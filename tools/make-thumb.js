@@ -81,6 +81,12 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'ctln-six-is-minimal': {
+    palette: 'auto', kicker: ['RESEARCH RELEASE · 1 OCTOBER 2026', 'COMBINATORIAL NEURAL NETWORKS'],
+    head: ['Six is', '<em>minimal.</em>'], headSize: 96,
+    sub: 'The exact threshold where stable activity can escape the clique rule.',
+    tag: 'UNREFEREED CANDIDATE', hero: require('./ctln-art').thumbnailHero()
+  },
   'multiplane-lensing-sparse-bound': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 1 OCTOBER 2026', 'MULTIPLANE GRAVITATIONAL LENSING'],
