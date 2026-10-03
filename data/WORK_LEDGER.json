@@ -21615,9 +21615,9 @@
       "workId": "ep-work:wilhelm-heinrich-large-gain",
       "cohort": "prospective",
       "registeredAt": "2026-10-03T18:58:48.632Z",
-      "status": "active",
-      "statusAt": "2026-10-03T20:13:22.590Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-03T20:23:51.298Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -21684,7 +21684,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Historical discovery and intake unmeasured; separate active effort, token and cost counters unavailable.",
+        "missingnessReason": "Publication delivered with exact canonical readback. Active effort, unattended wait, tokens and compute cost were not separately instrumented and remain unknown. The current terminal-metrics schema requires numerical active-effort counters, so result-ready/positive records delivery without fabricating them. Earlier discovery clocks remain left-censored.",
         "milestones": [
           {
             "event": "work-opened",
@@ -21695,6 +21695,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-03T20:13:22.590Z",
             "basis": "Frozen-archive replay, hosted CI and full public archival parity verified; site publication is a separate endpoint."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-03T20:23:51.298Z",
+            "basis": "Guarded production deployment and exact canonical readback passed at 327508fa180da250a8f03b7e3fa8d235973fc04e. Site delivery does not upgrade scientific assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -21782,6 +21787,16 @@
             "https://zenodo.org/records/23126164",
             "https://github.com/ipitchford/wilhelm-heinrich-large-gain/actions/runs/37149483177"
           ]
+        },
+        {
+          "at": "2026-10-03T20:23:51.298Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Publication delivered; unknown resource telemetry retained rather than fabricated.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/wilhelm-heinrich-large-gain/",
+            "https://zenodo.org/records/23126164"
+          ]
         }
       ],
       "corrections": [],
@@ -21793,6 +21808,10 @@
         {
           "date": "2026-10-03",
           "summary": "Recorded complete review response, repaired local persistence lemma and exact archival assurance; no full-conjecture or independent-review promotion."
+        },
+        {
+          "date": "2026-10-03",
+          "summary": "Appended canonical site-delivery endpoint separately from research assurance and unknown resource measurements."
         }
       ]
     }
@@ -22475,6 +22494,10 @@
     {
       "date": "2026-10-03",
       "summary": "Registered remaining Wilhelm–Heinrich revision and publication without reconstructing discovery clocks."
+    },
+    {
+      "date": "2026-10-03",
+      "summary": "Wilhelm–Heinrich candidate delivered with canonical readback; result-ready/positive preserves explicit missing runtime telemetry."
     }
   ]
 }
