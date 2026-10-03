@@ -81,6 +81,12 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'wilhelm-heinrich-large-gain': {
+    palette: 'auto', kicker: ['RESEARCH RELEASE · 3 OCTOBER 2026', 'DYNAMICAL SYSTEMS'],
+    head: ['One rhythm.', '<em>At large gain.</em>'], headSize: 83,
+    sub: 'Geometry proves uniqueness in an explicit region.',
+    tag: 'UNREFEREED CANDIDATE', hero: require('./wilhelm-art').thumbnailHero()
+  },
   'ctln-six-is-minimal': {
     palette: 'auto', kicker: ['RESEARCH RELEASE · 1 OCTOBER 2026', 'COMBINATORIAL NEURAL NETWORKS'],
     head: ['Six is', '<em>minimal.</em>'], headSize: 96,

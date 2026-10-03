@@ -1,0 +1,215 @@
+{
+  "slug": "wilhelm-heinrich-large-gain",
+  "title": "One rhythm at large gain",
+  "shortTitle": "Wilhelm–Heinrich large-gain uniqueness",
+  "oneLine": "Convex geometry and exact stability formulas establish one attracting cycle in an explicit parameter region; the full uniqueness question remains open.",
+  "abstract": "For positive rates r0 >= 1000 max(a0,b0)^2/min(a0,b0), this candidate proves one attracting positive periodic orbit of the Wilhelm–Heinrich oscillator. The positive-interior attractor is a convex-function graph, with a disk domain only above Hopf. Exact Floquet formulas and a source-mapped local slow-graph result accompany the large-gain theorem. Selected scalar constants have rational interval bounds; finite orbit computations remain diagnostics. The intermediate parameter region is unresolved.",
+  "datePublished": "2026-10-03",
+  "version": "3.1.0-candidate",
+  "doi": "10.5281/zenodo.23126164",
+  "conceptDoi": "10.5281/zenodo.23126163",
+  "zenodoUrl": "https://zenodo.org/records/23126164",
+  "repoUrl": "https://github.com/ipitchford/wilhelm-heinrich-large-gain",
+  "releaseUrl": "https://github.com/ipitchford/wilhelm-heinrich-large-gain/releases/tag/v3.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/wilhelm-heinrich-large-gain/releases/download/v3.1.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23126164/files/paper.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Unrefereed written-proof candidate with internal model checking, exact symbolic tests and selected rational interval bounds. Not formal verification or external specialist review.",
+  "evidence": "Written large-gain and attractor proofs; 198 symbolic identities; finite cycle/geometry diagnostics; 56 selected outward rational comparisons and deliberate-error controls.",
+  "math": true,
+  "keywords": [
+    "Wilhelm–Heinrich oscillator",
+    "limit cycles",
+    "competitive dynamics",
+    "convex attractor",
+    "Floquet multipliers",
+    "large-gain uniqueness",
+    "rational interval certificates"
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioUrl": "/assets/audio/wilhelm-heinrich-large-gain.mp3",
+  "audioTranscriptUrl": "/assets/audio/wilhelm-heinrich-large-gain.txt",
+  "audioContentVersioned": true,
+  "narration": "Can a simple feedback system settle into more than one repeating rhythm?\n\nThe Wilhelm–Heinrich oscillator is a small mathematical model connected to chemical reactions and delayed population growth. Above a critical setting, it oscillates. Previous research established that only finitely many repeating cycles can occur, but did not settle whether there is always exactly one.\n\nThis candidate proves a substantial part of that claim. When the feedback gain is sufficiently large, every possible cycle is attracting, and there is exactly one. The threshold is explicit, so the result identifies a parameter region rather than merely saying that large enough values should work.\n\nThe proof uses geometry. Although the system has three state variables, its long-term positive dynamics lie on the graph of a convex function. Above the oscillation threshold, that graph sits over a disk. The authors derive exact formulas describing whether disturbances away from a cycle grow or shrink. Those formulas, together with bounds that apply to every cycle, establish uniqueness in the large-gain region.\n\nThe distinction between every cycle and one simulated cycle matters. A computer can find an attracting rhythm without ruling out another one elsewhere. Here, the written argument supplies that missing universal step within its stated region.\n\nThe revised package includes exact algebraic checks, rigorous interval bounds for selected scalar constants, and numerical experiments. It also repairs a previously assumed local invariant-manifold step. That repair strengthens a separate small-parameter result, but does not make it a global theorem.\n\nThe intermediate parameter region remains open. The work is an unrefereed candidate, not a formally verified proof or an independently accepted solution of the full problem.\n\nThis is Evidence Press, One rhythm at large gain, dated the third of October twenty twenty-six. The paper and evidence package are linked on the release page. This synthetic AI voice explains the research; it is not additional scientific evidence.",
+  "relatedWorks": [
+    {
+      "citation": "Smith (2012). Global dynamics of the smallest chemical reaction system with Hopf bifurcation. Permanence, finiteness and convergence; the cycle-count question remains open in this source.",
+      "url": "https://doi.org/10.1007/s10910-011-9946-9"
+    },
+    {
+      "citation": "Boros and Hofbauer (2023). Some minimal bimolecular mass-action systems with limit cycles. Theorem 13 summarizes the original model; its mass-conserving extension is a different system.",
+      "url": "https://doi.org/10.1016/j.nonrwa.2023.103839"
+    },
+    {
+      "citation": "Baigent (2019). Convex geometry of the carrying simplex for the May-Leonard map. A related convexity mechanism for face-preserving competitive maps, not a direct theorem for this flow.",
+      "url": "https://doi.org/10.3934/dcdsb.2018288"
+    },
+    {
+      "citation": "Mierczyński (2020). The C1 property of convex carrying simplices for competitive maps. A regularity antecedent with different face-invariance hypotheses.",
+      "url": "https://doi.org/10.1017/etds.2018.85"
+    },
+    {
+      "citation": "Eldering (2013). Normally hyperbolic invariant manifolds: the noncompact case. Theorem 3.2 and Remark 3.3 support the source-mapped local slow-graph repair.",
+      "url": "https://doi.org/10.2991/978-94-6239-003-4"
+    },
+    {
+      "citation": "Wilhelm and Heinrich (1996). Mathematical analysis of the smallest chemical reaction system with Hopf bifurcation. Model and local-bifurcation antecedent; full original text not obtained in this intake.",
+      "url": "https://doi.org/10.1007/BF01165179"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied v3.0 research and review revised as v3.1 with explicit dispositions and input hashes. No human scientific contribution inferred.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research; original model identity not established",
+      "Supplied model review and audit",
+      "Codex scoped revision, exact checks and publication"
+    ],
+    "humanRole": "Publication authorised by the user; no human scientific role is inferred.",
+    "disclosure": "Anonymous is the scholarly creator. Evidence Press is the publisher. Internal model checking is not external peer review."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "All four release assets checked against GitHub and Zenodo public provider checksums and full public downloads on 3 October 2026."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Full required suite passed in the pinned local environment, from a fresh extraction of the frozen archive, and in hosted CI. Selected rational endpoints and correction controls passed normally and with Python -O. This is producer-side replay, not independent reproduction."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Supplied model-audit reruns do not establish unaffiliated reproduction."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Supplied separately written audit code provides implementation diversity, not authenticated institutional independence."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No end-to-end proof-assistant verification."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Supplied review is AI generated, not authenticated human specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No editorial peer review established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Pinned Python numerical environment and reproducible driver; some historical/cartography tables are retained rather than regenerated. No unaffiliated environment reproduction established."
+    }
+  },
+  "citeText": "Anonymous (2026). Convex attractor geometry, exact stability formulas and large-gain uniqueness for the Wilhelm–Heinrich oscillator. Version 3.1.0-candidate. Zenodo. https://doi.org/10.5281/zenodo.23126164",
+  "keyResults": [
+    "Unique attracting cycle for k >= 1000 max(1,mu^3).",
+    "Convex-function attractor graph and exact weak-exponent formulas; disk domain only above Hopf.",
+    "Local wedge uniqueness with a source-mapped slow-graph lemma, plus selected scalar interval bounds."
+  ],
+  "problem": {
+    "name": "Does the Wilhelm–Heinrich oscillator have exactly one cycle at every oscillatory parameter?",
+    "url": "https://arxiv.org/abs/1109.5204"
+  },
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/wilhelm-heinrich-large-gain.mp3",
+      "name": "Wilhelm–Heinrich large-gain briefing",
+      "description": "Synthetic OpenAI fable narration; not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/wilhelm-heinrich-large-gain.txt"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:wilhelm-heinrich-large-gain",
+    "attemptIds": [
+      "ep-attempt:wilhelm-heinrich-large-gain-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "Explicit large-gain uniqueness region and exact multiplier criterion.",
+      "scope": "Positive Wilhelm–Heinrich rates; no all-parameter uniqueness claim."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Positive-interior attractor, coordinate/time changes and all-cycle quantifiers are kept distinct from finite orbit diagnostics.",
+      "remainingRisks": [
+        "Written proof not formally verified.",
+        "Intermediate parameter and global small-rate-ratio regimes remain open.",
+        "Priority gaps include Li (1981) and inaccessible originals."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication was authorised by the user; no human scientific or referee role is inferred.",
+      "A future qualified review can assess the prose proof, physical-to-algebraic interpretation and unresolved priority boundary."
+    ],
+    "parentLinks": [
+      {
+        "relation": "reuses-evidence",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/1109.5204",
+        "inheritedClaim": "Permanence, finiteness and convergence in the original oscillator.",
+        "inheritedAssuranceCeiling": "Published mathematical antecedent; not assurance of this new proof."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Specialist checking of the large-gain/attractor proofs and unaffiliated replay of exact bounds.",
+      "claimCeiling": "Unrefereed written-proof candidate with internal replay and bounded source assessment."
+    },
+    "impactClaims": [
+      {
+        "id": "wilhelm-heinrich-large-gain-no-impact",
+        "aim": "science",
+        "outcome": "Explicit uniqueness region and reusable convexity and stability tools",
+        "setting": "AI-assisted mathematical research and candidate publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched-assurance research or workflow comparator is registered.",
+        "estimand": "No discovery-speed, publication-speed, scientific-adoption or real-world impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
