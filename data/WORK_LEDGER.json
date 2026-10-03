@@ -21192,9 +21192,9 @@
       "workId": "ep-work:square-maximises-dirichlet-ratio-quadrilaterals",
       "cohort": "prospective",
       "registeredAt": "2026-10-02T20:03:00Z",
-      "status": "active",
-      "statusAt": "2026-10-02T20:03:00Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-03T06:35:18.956Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -21268,23 +21268,109 @@
         "outcome": null
       },
       "measurement": {
-        "status": "not-recorded",
-        "missingnessReason": "Attempt in progress; measurement is recorded at the terminal status.",
-        "milestones": [],
+        "status": "measured-partial",
+        "missingnessReason": "Publication is complete: exact canonical readback passed. The referee response before registration, the research and its clocks remain left-censored. Human effort, compute, cost and rework were not instrumented. A transcript-gap measurement of the main agent session (inter-event gaps of at most 10 minutes counted as active, longer gaps as unattended replay, CI or provider wait) gives about 57 active agent minutes and 576 unattended minutes from registration to readback; it is not entered as a terminal metrics outcome because blocked and rework minutes were not separated and the frozen forecast covers the whole referee-response procedure from 2026-10-02T18:29:59Z, so the required forecast comparison would compare unlike scopes. One recorded defect: the first deployment refused before upload because the method-registry change lacked a changeLog entry; repaired in a second PR.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-02T20:03:00Z",
+            "basis": "Ledger registration at publication intake."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-10-03T06:35:18.956Z",
+            "basis": "Guarded deployment of commit dae093904f05e55d8dcedbbaf25b5c0641c0d958 (https://290e2ccf.evidence-press.pages.dev) passed exact canonical protocol and release-record readbacks and published-URL preservation at https://evidencepress.org/releases/square-maximises-dirichlet-ratio-quadrilaterals/; GitHub and Zenodo assets verified by provider digests and download."
+          }
+        ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": null,
+        "agentRuns": 1,
         "reworkMinutes": null,
-        "correctionCount": null
+        "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Attempt in progress; the assurance endpoint is recorded at the terminal status."
+        "status": "measured-partial",
+        "assessedAt": "2026-10-03T06:35:18.956Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/releases/tag/v0.1.0-candidate",
+              "https://zenodo.org/records/23109314",
+              "https://evidencepress.org/releases/square-maximises-dirichlet-ratio-quadrilaterals/"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/blob/v0.1.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/blob/v0.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/blob/v0.1.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/blob/v0.1.0-candidate/PRIOR_ART.md"
+            ]
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed computer-assisted candidate: λ₂/λ₁ ≤ 5/2 for every simple quadrilateral, equality only for squares. Producer-side replays, including from a fresh extraction of the frozen archive; no independent rerun, formal verification, specialist or journal review; the dart certificates have no second implementation; novelty bounded by the recorded search.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/square-maximises-dirichlet-ratio-quadrilaterals/",
+          "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/releases/tag/v0.1.0-candidate",
+          "https://zenodo.org/records/23109314",
+          "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/blob/v0.1.0-candidate/ASSURANCE.md",
+          "https://github.com/ipitchford/evidence-press-site/pull/404",
+          "https://github.com/ipitchford/evidence-press-site/pull/405"
+        ],
+        "missingnessReason": "Public GitHub/Zenodo assets passed digest and download parity and canonical site delivery passed exact readback. These establish availability, not mathematical correctness. The separately written checks in verify/ come from the same workflow (implementation diversity, not independent reimplementation); the external referee report of 2 October 2026 is of unrecorded authorship and does not establish specialist review."
       },
       "releaseSlug": "square-maximises-dirichlet-ratio-quadrilaterals",
       "stopReason": null,
@@ -21295,10 +21381,28 @@
           "resultClass": "pending",
           "reason": "Prospective publication-scope measurement from this registration: actioning the external referee report of 2 October 2026 (already in progress at registration), the frozen archive and its fresh-extraction replay, research repository and immutable GitHub/Zenodo identity, Evidence Press page, media and canonical readback. The procedural forecast below was frozen in the local publication state at 2026-10-02T18:29:59Z and is copied unchanged. Problem selection, the proofs, the certified covers and their replays, and the cross-vendor adversarial reviews (30 September – 2 October 2026) are left-censored and are not reconstructed here. No acceleration comparison.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-03T06:35:18.956Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Publication complete after exact canonical readback: GitHub release and published Zenodo record with byte-identical assets, guarded deployment of dae093904f05 with exact protocol and release-record readbacks. The result-ready/positive representation records actual completion while the schema's terminal published status requires resource telemetry that was not instrumented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/square-maximises-dirichlet-ratio-quadrilaterals/",
+            "https://zenodo.org/records/23109314",
+            "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/releases/tag/v0.1.0-candidate",
+            "https://github.com/ipitchford/evidence-press-site/pull/404",
+            "https://github.com/ipitchford/evidence-press-site/pull/405"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-03",
+          "summary": "Recorded the completed candidate publication after exact canonical readback; retained the frozen intake and forecast, null resource telemetry with a transcript-gap note, and the internal-versus-independent assurance boundary."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -21963,6 +22067,10 @@
     {
       "date": "2026-10-03",
       "summary": "Registered the square-maximises-λ₂/λ₁ quadrilateral candidate publication at intake (2026-10-02T20:03Z); the referee response before registration, the research and its earlier clocks remain left-censored."
+    },
+    {
+      "date": "2026-10-03",
+      "summary": "Square-maximises-λ₂/λ₁ quadrilateral publication complete after canonical readback; result-ready/positive preserves uninstrumented resource telemetry rather than fabricating a terminal numerical outcome."
     }
   ]
 }
