@@ -21403,6 +21403,192 @@
           "summary": "Recorded the completed candidate publication after exact canonical readback; retained the frozen intake and forecast, null resource telemetry with a transcript-gap note, and the internal-versus-independent assurance boundary."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:hidden-dissipation-floor-publication",
+      "workId": "ep-work:hidden-dissipation-floor",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-03T09:28:08.140Z",
+      "status": "active",
+      "statusAt": "2026-10-03T09:42:35.513Z",
+      "resultClass": "pending",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the revised hidden-dissipation candidate complete exact-version archival and site publication?",
+      "selectionBasis": "Explicit user request to action the supplied review, strengthen and publish. Record begins now; earlier discovery and revision clocks are not reconstructed.",
+      "taskClass": "assurance-and-full-candidate-publication",
+      "decisionObjectTarget": "Zero-cost classification with bounded-observable positive separation.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "publication-only",
+        "scopeBoundary": "Remaining publication from registration; earlier discovery and revision are left-censored.",
+        "forecast": {
+          "frozenAt": "2026-10-03T09:28:08.140Z",
+          "procedureClass": "remaining-mathematical-candidate-publication",
+          "targetOutcome": "Exact-version public research archive and canonical Evidence Press release with standard media.",
+          "expectedActiveMinutes": 45,
+          "plausibleLowMinutes": 30,
+          "plausibleHighMinutes": 75,
+          "expectedUnattendedWaitMinutes": 15,
+          "referenceClass": {
+            "label": "Remaining publication after completed revision and local checks",
+            "sampleSize": 0,
+            "basis": "Prospective procedural estimate, not an empirical speed claim."
+          },
+          "fermiComponents": [
+            {
+              "component": "Frozen-package evidence and public archival release",
+              "count": 1,
+              "lowMinutesPerUnit": 10,
+              "centralMinutesPerUnit": 15,
+              "highMinutesPerUnit": 25,
+              "basis": "Small archive; checks already passed locally."
+            },
+            {
+              "component": "Site QA, two CI/deploy cycles and public readback",
+              "count": 1,
+              "lowMinutesPerUnit": 20,
+              "centralMinutesPerUnit": 30,
+              "highMinutesPerUnit": 50,
+              "basis": "Mandatory new-slug deployment workflow."
+            }
+          ],
+          "probabilityPositiveSignal": 0.9,
+          "probabilityTargetClosure": 0.9,
+          "probabilityHorizonMinutes": 120,
+          "assumptions": [
+            "Reviewed exact checks already passed locally.",
+            "Public provider and required CI gates remain available."
+          ],
+          "reforecastTriggers": [
+            "A replay failure or an integrity defect in the frozen archive.",
+            "Provider outage, credential expiry or integrity failure."
+          ],
+          "stopRule": "Timing is telemetry, not a cap; continue unless integrity, rights or provider access blocks publication."
+        },
+        "outcome": null
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Original discovery and initial revision clocks unmeasured. Active effort, token, compute and cost counters unavailable.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-03T09:28:08.140Z",
+            "basis": "Prospective registration of remaining publication; not backdated."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-10-03T09:42:35.513Z",
+            "basis": "Clean-extraction exact replay, green hosted CI and full public asset download parity verified. Site publication is a separate endpoint."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": null,
+        "reworkMinutes": null,
+        "correctionCount": null
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-10-03T09:42:35.513Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23118474"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/hidden-dissipation-floor/actions/runs/37113410645"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/hidden-dissipation-floor/actions/runs/37113410645"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed theoretical candidate with internal exact-arithmetic replay and supplied model review. Not formal verification, external human peer review or empirical validation.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/hidden-dissipation-floor/releases/tag/v1.1.0-candidate",
+          "https://zenodo.org/records/23118474",
+          "https://github.com/ipitchford/hidden-dissipation-floor/actions/runs/37113410645"
+        ],
+        "missingnessReason": "Internal exact replay and full public archival parity established. Canonical site publication is pending; unaffiliated and formal assurance and full resource telemetry remain unestablished."
+      },
+      "releaseSlug": "hidden-dissipation-floor",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-10-03T09:28:08.140Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Remaining publication underway.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-03T09:42:35.513Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research archival assurance recorded; site publication still active.",
+          "evidenceRefs": [
+            "https://zenodo.org/records/23118474",
+            "https://github.com/ipitchford/hidden-dissipation-floor/actions/runs/37113410645"
+          ]
+        }
+      ],
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-10-03",
+          "summary": "Registered remaining hidden-dissipation publication; missing research clocks remain unknown."
+        },
+        {
+          "date": "2026-10-03",
+          "summary": "Recorded internal replay and verified public research archives, before site publication."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -22071,6 +22257,10 @@
     {
       "date": "2026-10-03",
       "summary": "Square-maximises-λ₂/λ₁ quadrilateral publication complete after canonical readback; result-ready/positive preserves uninstrumented resource telemetry rather than fabricating a terminal numerical outcome."
+    },
+    {
+      "date": "2026-10-03",
+      "summary": "Registered remaining hidden-dissipation publication without reconstructing historical research metrics."
     }
   ]
 }
