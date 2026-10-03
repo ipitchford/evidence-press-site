@@ -2347,6 +2347,9 @@ palette['kagome-aklt-spectral-gap'] = ['#83d5e8', '#f4c675'];
 art['regular-heptagon-octagon-local-minimality'] = polygonsArt.cover;
 palette['regular-heptagon-octagon-local-minimality'] = ['#65d7ec', '#f4c275'];
 const quadrilateralRatioArt = require('./quadrilateral-ratio-art');
+const hiddenDissipationArt = require('./hidden-dissipation-art');
+art['hidden-dissipation-floor'] = hiddenDissipationArt.cover;
+palette['hidden-dissipation-floor'] = ['#a6dbe4', '#f3c779'];
 art['square-maximises-dirichlet-ratio-quadrilaterals'] = quadrilateralRatioArt.cover;
 palette['square-maximises-dirichlet-ratio-quadrilaterals'] = ['#f2c46f', '#8ed6ea'];
 for (const slug of requested) {
@@ -2356,6 +2359,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'hidden-dissipation-floor') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${hiddenDissipationArt.description}</desc><defs>`);
   if (slug === 'ctln-six-is-minimal') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${ctlnArt.description}</desc><defs>`);
   if (slug === 'central-configuration-kernel-rigidity') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${centralKernelArt.description}</desc><defs>`);
   if (slug === 'multiplane-lensing-sparse-bound') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${multiplaneLensingArt.description}</desc><defs>`);

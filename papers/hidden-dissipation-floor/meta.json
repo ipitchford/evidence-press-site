@@ -1,0 +1,214 @@
+{
+  "slug": "hidden-dissipation-floor",
+  "title": "Hidden dissipation without a known architecture",
+  "shortTitle": "Hidden dissipation",
+  "oneLine": "Some waiting-time laws force a positive thermodynamic cost, however many hidden states a compatible model contains.",
+  "abstract": "For finite-realizable stationary two-label alternating-renewal laws, zero all-dimension dissipation cost is equivalent to hyperexponential complete dwell laws and a finite reversible exact realization. A fixed-window certificate gives a concrete lower bound above 0.017568198744; a high-variance example and deterministic error-box corollary show further uses. The equilibrium spectral restriction is inherited; the unrestricted zero-cost closure is the claimed advance. The positive optimum and statistical confidence construction remain open.",
+  "datePublished": "2026-10-03",
+  "version": "1.1.0-candidate",
+  "doi": "10.5281/zenodo.23118474",
+  "conceptDoi": "10.5281/zenodo.23118473",
+  "zenodoUrl": "https://zenodo.org/records/23118474",
+  "repoUrl": "https://github.com/ipitchford/hidden-dissipation-floor",
+  "releaseUrl": "https://github.com/ipitchford/hidden-dissipation-floor/releases/tag/v1.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/hidden-dissipation-floor/releases/download/v1.1.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23118474/files/paper.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Unrefereed theoretical candidate with internal exact-arithmetic replay and supplied model review. Not formal verification, external human peer review or empirical validation.",
+  "evidence": "Self-contained analytic classification and path comparison; exact rational certificate enclosures; high-variance realization; six semantic rejection controls; symbolic identities and floating-point diagnostics.",
+  "math": true,
+  "keywords": [
+    "entropy production",
+    "hidden Markov processes",
+    "alternating renewal",
+    "stochastic thermodynamics",
+    "hyperexponential distributions",
+    "exact certificates"
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioUrl": "/assets/audio/hidden-dissipation-floor.mp3",
+  "audioTranscriptUrl": "/assets/audio/hidden-dissipation-floor.txt",
+  "audioContentVersioned": true,
+  "narration": "Could a system consume energy even when everything you can see looks the same forwards and backwards in time?\n\nImagine watching a molecular switch that alternates between two visible states. Inside, there may be many hidden states. One tempting explanation is that a sufficiently complicated hidden mechanism could reproduce what you see while dissipating almost no energy.\n\nThis mathematical candidate shows exactly when that escape is possible, within a carefully specified class of stationary models. The complete waiting-time distributions must both be positive mixtures of exponential distributions. If they have that form, a finite reversible model exists. If not, adding more hidden states cannot make the minimum entropy-production rate approach zero.\n\nThe paper also turns a particular pattern in past and future waiting times into a numerical certificate. In one example, the certified floor is more than twice the earlier certificate for the same observations. This is a lower bound, not a measurement of the true minimum cost.\n\nA second example passes a simple variance test for equilibrium but fails the full distribution test. It shows why the shape of the waiting-time law matters, not just its average or spread. A further result keeps the certificate positive when the observed probabilities lie inside a sufficiently small error box.\n\nThe research package includes the proofs, exact-arithmetic checks and code. It remains an unrefereed candidate. The assumptions exclude some important physical systems, and the paper does not provide a ready-made statistical confidence procedure for experimental data.\n\nThis is Evidence Press, Hidden dissipation without a known architecture, dated the third of October twenty twenty-six. The paper and evidence package are linked on the release page. This synthetic AI voice explains the research; it is not additional scientific evidence.",
+  "relatedWorks": [
+    {
+      "citation": "Skinner and Dunkel (2021). Estimating entropy production from waiting time distributions. Established equilibrium spectral-mixture restriction and waiting-time inference.",
+      "url": "https://doi.org/10.1103/PhysRevLett.127.198101"
+    },
+    {
+      "citation": "Ehrich (2021). Tightest bound on hidden entropy production from partially observed dynamics. Model fitting and the hidden-dimension question.",
+      "url": "https://doi.org/10.1088/1742-5468/ac150e"
+    },
+    {
+      "citation": "Nitzan, Ghosal and Bisker (2023). Universal bounds on entropy production inferred from observed statistics. Optimization using hypothesized topology and observed statistics.",
+      "url": "https://doi.org/10.1103/PhysRevResearch.5.043251"
+    },
+    {
+      "citation": "Tu (2008). The nonequilibrium mechanism for ultrasensitivity in a biological switch. Earlier dwell-time antecedent.",
+      "url": "https://doi.org/10.1073/pnas.0804641105"
+    },
+    {
+      "citation": "Aznagulov (2026). Thermodynamic realizability of hidden Markov processes. Preprint supplying the exact target and zero-limit question.",
+      "url": "https://arxiv.org/abs/2609.14623v1"
+    },
+    {
+      "citation": "Aznagulov (2026). The spectral cost of detecting nonequilibrium at finite temporal resolution. Related preprint using additive reversibilization.",
+      "url": "https://arxiv.org/abs/2609.37205v1"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied v1.0 research and model-review audit revised as v1.1; original hashes and full dispositions are archived. No human scientific contribution inferred.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research; original model identity not established",
+      "Supplied model review and audit",
+      "Codex scoped revision, exact checks and publication"
+    ],
+    "humanRole": "Publication authorised by the user; no human scientific role is inferred.",
+    "disclosure": "Anonymous is the scholarly creator. Evidence Press is the publisher. Internal model checking is not external peer review."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "All four GitHub and Zenodo release assets verified by full public downloads against the frozen SHA-256 ledger on 3 October 2026."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Four revised programs passed normally and with Python -O; exact extension enclosure, six semantic rejection controls, one-way-edge and reversible controls, thirteen symbolic identities and bounded floating diagnostics. Internal checking only."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Supplied model-audit reruns do not establish unaffiliated reproduction."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Supplied separately written audit code provides implementation diversity, not authenticated institutional independence."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No end-to-end proof-assistant verification."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Supplied review is AI generated, not authenticated human specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No editorial peer review established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Exact core uses Python standard library; optional diagnostics have pinned dependencies. No unaffiliated environment reproduction established."
+    }
+  },
+  "citeText": "Anonymous (2026). An architecture-independent dissipation floor for alternating-renewal observations. Version 1.1.0-candidate. Zenodo. https://doi.org/10.5281/zenodo.23118474",
+  "keyResults": [
+    "Zero cost iff hyperexponential complete dwell laws iff a finite reversible exact realization, within the stated renewal class.",
+    "A fixed-window certificate proves V_infinity(P_1/20)>0.017568198744, without determining the optimum.",
+    "A four-state high-variance example and a conservative deterministic observational-error bound."
+  ],
+  "problem": {
+    "name": "Can increasing hidden architecture make exact-law dissipation cost approach zero?",
+    "url": "https://arxiv.org/abs/2609.14623v1"
+  },
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/hidden-dissipation-floor.mp3",
+      "name": "Hidden dissipation briefing",
+      "description": "Synthetic OpenAI fable explanation; not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/hidden-dissipation-floor.txt"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:hidden-dissipation-floor",
+    "attemptIds": [
+      "ep-attempt:hidden-dissipation-floor-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "Zero-cost classification with bounded-observable positive separation.",
+      "scope": "Finite-realizable stationary ergodic two-label alternating renewal; finite hidden CTMCs and deterministic even-variable observation."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The target is a complete stationary path law, not dwell moments alone. Uninterrupted persistence gives conditional Bernoulli tests; additive reversibilization preserves stationary masses and exit rates.",
+      "remainingRisks": [
+        "Written analytic closure proof is not formally verified.",
+        "No claim that the numerical lower certificate is optimal.",
+        "Experimental confidence, odd-variable reversal and nonrenewal sufficiency are outside scope."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication was authorised by the user; no human scientific or referee role is inferred.",
+      "A future qualified review can assess the prose proof, physical-to-algebraic interpretation and unresolved priority boundary."
+    ],
+    "parentLinks": [
+      {
+        "relation": "reuses-evidence",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/2609.14623v1",
+        "inheritedClaim": "Exact alternating-renewal target and zero-limit question.",
+        "inheritedAssuranceCeiling": "Cited preprint target; its compactification claims are not relied on."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated assessment of the zero-cost closure and reproduction of exact certificate arithmetic.",
+      "claimCeiling": "Unrefereed theoretical candidate; internal replay, not formal proof or empirical validation."
+    },
+    "impactClaims": [
+      {
+        "id": "hidden-dissipation-floor-no-impact",
+        "aim": "science",
+        "outcome": "Reusable analytic classification and observable dissipation certificates",
+        "setting": "AI-assisted mathematical research and candidate publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched-assurance research or workflow comparator is registered.",
+        "estimand": "No discovery-speed, publication-speed, scientific-adoption or real-world impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
