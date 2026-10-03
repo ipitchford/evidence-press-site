@@ -1,0 +1,297 @@
+{
+  "slug": "square-maximises-dirichlet-ratio-quadrilaterals",
+  "title": "The square maximises the ratio of the first two Dirichlet eigenvalues among quadrilaterals",
+  "shortTitle": "The square maximises λ₂/λ₁ among quadrilaterals",
+  "oneLine": "A computer-assisted proof that among all quadrilaterals, convex or not, the square uniquely maximises the ratio λ₂/λ₁ of the first two Dirichlet eigenvalues, with value 5/2: the k = 4 case of the polygonal Payne–Pólya–Weinberger conjecture.",
+  "abstract": "This unrefereed candidate proves that λ₂(Q)/λ₁(Q) ≤ 5/2 for the Dirichlet Laplacian on every simple quadrilateral Q, convex or not, with equality only for squares. This is the case k = 4 of the polygonal Payne–Pólya–Weinberger conjecture (Siudeja; Antunes–Freitas); the triangle case is due to Siudeja and to Arbon, Mannan, Psenka and Ragavan. The proof is computer-assisted. Two analytic lemmas remove near-triangles and thin shapes. A certified local step covers an explicit neighbourhood of the square through an inertia criterion for a 3×3 Rayleigh–Ritz pencil and a Kato–Temple bound expanded as Taylor models. Certified box covers of the remaining convex shapes bound λ₂ by Rayleigh–Ritz and λ₁ by a Lehmann–Goerisch inequality with an exactly divergence-matched flux, transported by a piecewise-affine map and a Piola transform; a band of elongated shapes is covered by one-dimensional bounds certified by Sturm oscillation. Non-convex quadrilaterals are handled by analytic lemmas (Dirichlet–Neumann bracketing, one-dimensional bounds with exponential tails) and certified covers in charts uniform in the arm lengths. All certificates are computed in ball or exact rational arithmetic and replayed by fail-closed verifiers; the frozen archive was replayed from a fresh extraction. The paper also identifies two gaps in an earlier local argument (Arbon 2022).",
+  "datePublished": "2026-10-03",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.23109314",
+  "conceptDoi": "10.5281/zenodo.23109313",
+  "zenodoUrl": "https://zenodo.org/records/23109314",
+  "pdfUrl": "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/releases/download/v0.1.0-candidate/square-maximises-dirichlet-ratio-quadrilaterals-v0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23109314/files/square-maximises-dirichlet-ratio-quadrilaterals-v0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals",
+  "releaseUrl": "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/square-maximises-dirichlet-ratio-quadrilaterals.mp3",
+      "name": "Audio briefing",
+      "description": "AI-generated communication, not additional mathematical evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/square-maximises-dirichlet-ratio-quadrilaterals.txt"
+    }
+  ],
+  "keywords": [
+    "Dirichlet Laplacian",
+    "eigenvalue ratio",
+    "Payne–Pólya–Weinberger inequality",
+    "Ashbaugh–Benguria inequality",
+    "quadrilaterals",
+    "spectral geometry",
+    "shape optimisation",
+    "computer-assisted proof",
+    "validated numerics",
+    "Lehmann–Goerisch method"
+  ],
+  "problem": {
+    "name": "Polygonal Payne–Pólya–Weinberger conjecture for quadrilaterals (Siudeja 2010, Conjecture 1.2; Antunes–Freitas 2008)",
+    "url": "https://doi.org/10.1512/iumj.2010.59.3744"
+  },
+  "keyResults": [
+    "Theorem 1: λ₂(Q)/λ₁(Q) ≤ 5/2 for every simple quadrilateral Q, convex or not, with equality if and only if Q is a square.",
+    "Theorem 2 (local step): ξ(Q_p) < 5/2 for 0 < |p|∞ ≤ 1/20 in the Endo–Osting parametrisation, certified by 960 direction boxes with exact rational sign bounds.",
+    "The convex case away from the square: 8 216 shell certificates, 31 426 transported certificates with 18 756 exclusion leaves, and 44 268 one-dimensional certificates for the band 1/10 < width/diameter ≤ 2/5.",
+    "Theorem 5 (darts): complete analytic lemmas for the degenerate and unbounded parts of the non-convex shape space (Supplement S) and certified covers of 462 849 leaves in 14 logs.",
+    "An exact calculation showing that the first-order rule of an earlier local argument (Arbon 2022, eq. 3.16) is invalid for the double eigenvalue: for the trapezoid direction the true first-order term is 0, the rule gives about −1.664."
+  ],
+  "evidence": "Paper (with soundness specification, dependency table and assurance record) and Supplement S; all final certificate logs, verifiers, pins and manifests; exhaustive fail-closed replays bound by SHA-256 to log records and verifier sources; a fresh-extraction replay of the frozen archive components; separately written checks of coverage and exclusions (convex covers, band), of 60 transported and 400 band certificates, of the local-step records and of 160 000 sampled darts; an exact receipt state machine with a mutation test; the response to an external referee report.",
+  "statusDetail": "Unrefereed candidate produced by AI systems. A computer-assisted proof whose certificates were replayed by the producer, including from a fresh extraction of the frozen archive. No independent rerun, formal verification, specialist or journal review; the dart certificates have no second implementation; novelty is established only within a bounded literature search.",
+  "openProblems": [
+    "An independent rerun of the archive by an unaffiliated party, and an independently written checker for the dart certificates.",
+    "Formalise the certificate primitives (Lehmann–Goerisch with transported fluxes, the Sturm cell rule, the Taylor-model inertia criterion) in a proof assistant.",
+    "Extend the method to regular k-gons for k ≥ 5, where the conjectured maximisers are the regular polygons.",
+    "Turn the local certificate into a quantitative stability (deficit) estimate near the square."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Arbon, Mannan, Psenka and Ragavan (2022). A proof of the triangular Ashbaugh–Benguria–Payne–Pólya–Weinberger inequality. J. Spectr. Theory 12(2), 515–533. The case k = 3.",
+      "url": "https://doi.org/10.4171/JST/409",
+      "doi": "10.4171/JST/409"
+    },
+    {
+      "citation": "Siudeja (2010). Isoperimetric inequalities for eigenvalues of triangles. Indiana Univ. Math. J. 59(3), 1097–1120. Acute triangles; states the polygonal conjecture (Conjecture 1.2).",
+      "url": "https://doi.org/10.1512/iumj.2010.59.3744",
+      "doi": "10.1512/iumj.2010.59.3744"
+    },
+    {
+      "citation": "Arbon (2022). Global and local bounds on the fundamental ratio of triangles and quadrilaterals. arXiv:2207.05814. Local result near the square; two gaps identified in §1 of this paper.",
+      "url": "https://arxiv.org/abs/2207.05814",
+      "doi": null
+    },
+    {
+      "citation": "Endo and Osting (2026). Maximizing the fundamental Laplace–Neumann eigenvalue on quadrilaterals. arXiv:2609.02784. The Neumann analogue; source of the parametrisation and box-cover architecture.",
+      "url": "https://arxiv.org/abs/2609.02784",
+      "doi": null
+    },
+    {
+      "citation": "Ashbaugh and Benguria (1992). A sharp bound for the ratio of the first two eigenvalues of Dirichlet Laplacians and extensions. Ann. of Math. 135(3), 601–628. The disk is extremal among all domains.",
+      "url": "https://doi.org/10.2307/2946578",
+      "doi": "10.2307/2946578"
+    },
+    {
+      "citation": "Antunes and Freitas (2008). A numerical study of the spectral gap. J. Phys. A 41(5), 055201. Numerical evidence for the polygonal conjecture.",
+      "url": "https://doi.org/10.1088/1751-8113/41/5/055201",
+      "doi": "10.1088/1751-8113/41/5/055201"
+    }
+  ],
+  "citeText": "Anonymous (2026). The square maximises the ratio of the first two Dirichlet eigenvalues among quadrilaterals. Version 0.1.0-candidate. Evidence Press. 10.5281/zenodo.23109314.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Research, the cross-vendor adversarial reviews, the response to a publisher-supplied external referee report, the fresh-extraction replay and publication are recorded separately; the research phase before publication intake is left-censored in the work ledger.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Claude (Anthropic) research agent under user direction",
+      "OpenAI GPT-5.6 ('Sol') as adversarial reviewer",
+      "Python with python-flint (FLINT/Arb), SymPy, NumPy, SciPy and scikit-fem; Julia with Arblib.jl",
+      "pandoc and pdfTeX"
+    ],
+    "humanRole": "The user chose the problem from an agent-compiled list, set compute and scope constraints, supplied an external referee report and the publication authority; scholarly creator Anonymous. No human mathematical contribution is claimed.",
+    "disclosure": "AI-produced research, computation and drafting. Separate AI agents wrote the separately written checkers, verified the bibliography, typeset the supplement and ran literature searches. A cross-vendor model (GPT-5.6) reviewed every part adversarially in several rounds. An external referee report of unrecorded authorship, supplied by the publisher, recommended major revisions; all items were addressed. None of these is specialist or journal peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23109314",
+      "note": "Public GitHub prerelease v0.1.0-candidate and published Zenodo record (4 files each); every file matched the SHA-256 sums by provider checksum, and the paper, supplement and checksum list also by full download from both providers."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/blob/v0.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Exhaustive fail-closed replays of every certified cover; then a replay of all five components from a fresh extraction of the frozen archive components (local step, band, shell, transport cover, darts), with receipts."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/blob/v0.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Versions pinned (requirements.txt; Julia Project and Manifest); the dart replay binds a runtime inventory of the Python installation. No container image; the full replays take hours and CI runs structural checks only."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated party has reported rerunning the archive."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Separately written checkers (coverage, exclusions, certificate samples, receipts) come from the same producer workflow: implementation diversity, not independent reproduction. The dart certificates have no second implementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof assistant; the verifiers, Arb/FLINT, Julia and Python are trusted."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Cross-vendor model reviews and an external referee report of unrecorded authorship do not establish specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or venue review."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:square-maximises-dirichlet-ratio-quadrilaterals",
+    "attemptIds": [
+      "ep-attempt:square-maximises-dirichlet-ratio-quadrilaterals-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [],
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "λ₂/λ₁ ≤ 5/2 for every simple quadrilateral, equality only for squares: analytic lemmas plus certified covers of the convex and non-convex shape spaces.",
+      "scope": "Dirichlet Laplacian; simple quadrilaterals (interior angles different from π); the dart supremum 7/3 is an observation, not claimed."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Appendix A specifies inputs, hypotheses and conclusions of every certificate primitive with the enforcing files; Appendix B maps each theorem to its primitives, certificate data and replays; Supplement S proves the dart lemmas and the exact accounting of the decomposition.",
+      "remainingRisks": [
+        "The verifiers and Arb/FLINT are trusted; no formal verification.",
+        "The dart certificates have no second implementation.",
+        "External theorems (Endo–Osting Theorem 2.1, the triangle theorem, Krahn–Szegő, Andrews–Clutterbuck, Hersch, Liu's bound) are used as published."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Assess Lemma 4.1 with the transported flux, the Sturm cell rule and the Taylor-model deletions (Corollary 3.3).",
+      "Assess Supplement S, in particular the mixed-boundary bracketing and the chart accounting.",
+      "Publication is authorised; external review is a separate dimension."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "An unaffiliated rerun of the archive and an independently written dart certificate checker; specialist review of Supplement S.",
+      "claimCeiling": "Unrefereed candidate. Computer-assisted proof replayed by the producer, including from a fresh extraction; no formal verification, independent reproduction or specialist review."
+    },
+    "impactClaims": [
+      {
+        "id": "square-maximises-dirichlet-ratio-quadrilaterals-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable computer-assisted spectral inequality",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "schemaVersion": "1.0",
+      "reviewId": "square-maximises-dirichlet-ratio-quadrilaterals-external-referee-2026-10-02",
+      "reviewClass": "external-review",
+      "status": "published",
+      "subject": {
+        "canonicalUrl": "https://evidencepress.org/releases/square-maximises-dirichlet-ratio-quadrilaterals/",
+        "doi": null,
+        "version": "draft of 2 October 2026",
+        "releaseTag": null,
+        "title": "The square maximises the ratio of the first two Dirichlet eigenvalues among quadrilaterals"
+      },
+      "reviewer": {
+        "name": "External referee (identity and affiliation not recorded); report supplied by the publisher",
+        "independence": "external, unverified"
+      },
+      "assessment": {
+        "title": "Referee report on the draft of 2 October 2026",
+        "date": "2026-10-02",
+        "recommendation": "Major revisions"
+      },
+      "limitationsAndNonClaims": [
+        "The report's text and audit bundle are not redistributed; the response summarises every item.",
+        "Reviewer identity and expertise are not recorded; this record does not establish specialist or journal peer review."
+      ],
+      "assuranceImpact": {
+        "changesVerificationStatus": false,
+        "changesPeerReviewedFlag": false,
+        "changesIndependentReproductionFlag": false,
+        "changesFormalVerificationFlag": false,
+        "explanation": "A publisher-supplied report of unrecorded authorship; it led to repairs and new evidence but does not change the assurance dimensions."
+      },
+      "publication": {
+        "publicUrl": "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/blob/v0.1.0-candidate/REFEREE_RESPONSE.md",
+        "publicSummary": "Recommended major revisions: a frozen proof archive; the angular hypothesis of the thin-wedge lemma and complete non-convex proofs; published correction coefficients, remainders and sign bounds for the local step; a soundness specification of the certificate primitives; separation of replay, independent implementation and sampling; minor corrections. All items were addressed: Supplement S, Appendices A–C, published local-step records with a separately written check, a verified bibliography, an exact calculation for the earlier local argument, two defects of the producer's own checkers repaired, a portability patch of the dart verifier, and a fresh-extraction replay of the frozen archive."
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "reviewId": "square-maximises-dirichlet-ratio-quadrilaterals-adversarial-model-reviews",
+      "reviewClass": "research-assessment",
+      "status": "published",
+      "subject": {
+        "canonicalUrl": "https://evidencepress.org/releases/square-maximises-dirichlet-ratio-quadrilaterals/",
+        "doi": null,
+        "version": "working versions of 30 September – 2 October 2026",
+        "releaseTag": null,
+        "title": "The square maximises the ratio of the first two Dirichlet eigenvalues among quadrilaterals"
+      },
+      "reviewer": {
+        "name": "OpenAI GPT-5.6 ('Sol'), prompted to refute; several rounds",
+        "independence": "producer-coordinated"
+      },
+      "assessment": {
+        "title": "Cross-vendor adversarial reviews of the local step, the global covers, Lemma B′ and the darts",
+        "date": "2026-10-02",
+        "recommendation": "Defects found in code and harness were repaired and the affected logs re-certified or replayed; the final dart rounds found no defect in the certificates"
+      },
+      "assuranceImpact": {
+        "changesVerificationStatus": false,
+        "changesPeerReviewedFlag": false,
+        "changesIndependentReproductionFlag": false,
+        "changesFormalVerificationFlag": false,
+        "explanation": "Producer-coordinated model review does not establish external peer review, reproduction or formal proof."
+      },
+      "publication": {
+        "publicUrl": "https://github.com/ipitchford/square-maximises-dirichlet-ratio-quadrilaterals/blob/v0.1.0-candidate/paper/PAPER.md",
+        "publicSummary": "Findings and repairs are recorded in Appendix C of the paper; review transcripts are not redistributed."
+      }
+    }
+  ],
+  "narration": "Strike a drum and you hear its lowest tone, and above it the next. How far apart can those two tones be? Measured by the ratio of their squared frequencies, the answer for drums of every shape has been known since 1992: the round drum is best, with a ratio of about two point five four. If the drum must be a polygon with a fixed number of sides, the regular polygon is believed to be best. For triangles this was completed in 2022: the equilateral triangle wins, with a ratio of seven thirds.\n\nThis release from Evidence Press settles the next case. It proves that among all four-sided drums, convex or dented, the square has the largest ratio, exactly five halves, and that no other quadrilateral reaches it.\n\nThe proof combines short mathematical arguments with a very large number of rigorous computations. Nearly triangular shapes and very thin shapes are handled by hand. Near the square, a careful expansion shows that every small deformation lowers the ratio. Everywhere else, the shapes are divided into hundreds of thousands of small families. For each family, a certificate computed in interval arithmetic, which keeps track of every rounding error, proves the inequality for every shape in it at once. Every certificate was checked again by replay programs that stop at the first discrepancy, and the frozen archive was replayed once more from a fresh copy.\n\nThe result is an unrefereed candidate. It has not been reproduced by an independent team, formally verified or peer reviewed.\n\nThe paper, its supplement, the code and every certificate log are linked from this page, and archived on Zenodo as version zero point one point zero candidate, released in October 2026. This summary uses an AI-generated voice. It is a communication aid, not additional mathematical evidence."
+}

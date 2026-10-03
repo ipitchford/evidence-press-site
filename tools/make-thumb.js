@@ -829,6 +829,14 @@ SPECS['hilbert-series-ternary-septic-octic-nonic'] = {
  hero:'<div class="eq-label">least denominator degree</div><div class="eq eq-sm">d = 7: 1386<br><span class="hl">d = 8: 2331</span><br>d = 9: 1393</div><div class="note">Nonics: exactly <b>45</b> basic invariants of degree 8, <b>118</b> of degree 9.</div><div class="eq-foot">Candidate result · specialist review unestablished</div>'
 };
 
+SPECS['square-maximises-dirichlet-ratio-quadrilaterals'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 3 OCTOBER 2026','SPECTRAL GEOMETRY · V0.1.0'],
+ head:['Four sides.','<em>The square wins.</em>'], headSize:80,
+ sub:'Among all quadrilaterals, convex or not, the square uniquely maximises the ratio of the first two Dirichlet eigenvalues.',
+ tag:'COMPUTER-ASSISTED PROOF · UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">first two Dirichlet eigenvalues</div><div class="eq">λ₂/λ₁ ≤ <span class="hl">5/2</span></div><div class="note">triangles ≤ 7/3 (2022)<br><b>quadrilaterals ≤ 5/2 (this candidate)</b><br>all planar shapes ≤ 2.539 (1992)</div><div class="eq-foot">equality only for the square</div>'
+};
+
 const escapeHtml = value => String(value == null ? '' : value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
