@@ -21409,9 +21409,9 @@
       "workId": "ep-work:hidden-dissipation-floor",
       "cohort": "prospective",
       "registeredAt": "2026-10-03T09:28:08.140Z",
-      "status": "active",
-      "statusAt": "2026-10-03T09:42:35.513Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-03T09:51:00.335Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -21478,7 +21478,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Original discovery and initial revision clocks unmeasured. Active effort, token, compute and cost counters unavailable.",
+        "missingnessReason": "Publication delivered with exact canonical readback. Active effort, unattended wait, tokens and compute cost were not separately instrumented and remain unknown. The current terminal-metrics schema requires numerical active-effort counters, so result-ready/positive records delivery without fabricating them. Earlier research and revision clocks remain left-censored.",
         "milestones": [
           {
             "event": "work-opened",
@@ -21489,6 +21489,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-03T09:42:35.513Z",
             "basis": "Clean-extraction exact replay, green hosted CI and full public asset download parity verified. Site publication is a separate endpoint."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-03T09:51:00.335Z",
+            "basis": "Guarded production deployment and exact canonical publication readback passed at bc3e47d001f89f32668446911d94920ce0fd3d38. This records site delivery, not stronger scientific assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -21576,6 +21581,17 @@
             "https://zenodo.org/records/23118474",
             "https://github.com/ipitchford/hidden-dissipation-floor/actions/runs/37113410645"
           ]
+        },
+        {
+          "at": "2026-10-03T09:51:00.335Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Publication delivered; missing runtime telemetry explicitly retained instead of inventing a terminal numerical outcome.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/hidden-dissipation-floor/",
+            "https://github.com/ipitchford/evidence-press-site/pull/408",
+            "https://zenodo.org/records/23118474"
+          ]
         }
       ],
       "corrections": [],
@@ -21587,6 +21603,10 @@
         {
           "date": "2026-10-03",
           "summary": "Recorded internal replay and verified public research archives, before site publication."
+        },
+        {
+          "date": "2026-10-03",
+          "summary": "Appended canonical site-delivery endpoint separately from research assurance and unknown resource measurements."
         }
       ]
     }
@@ -22261,6 +22281,10 @@
     {
       "date": "2026-10-03",
       "summary": "Registered remaining hidden-dissipation publication without reconstructing historical research metrics."
+    },
+    {
+      "date": "2026-10-03",
+      "summary": "Hidden-dissipation candidate delivered with canonical readback; result-ready/positive preserves explicit missing runtime telemetry."
     }
   ]
 }
