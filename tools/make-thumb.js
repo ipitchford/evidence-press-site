@@ -81,6 +81,7 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'quadratic-equilibrium-sharpness': {palette:'auto', kicker:['RESEARCH RELEASE · 4 OCTOBER 2026','CHEMICAL REACTION NETWORKS'], head:['Five reactions.','<em>Four equilibria.</em>'], headSize:78, sub:'The sharp equilibrium bound is attained for every number of species from two upwards.', tag:'UNREFEREED CANDIDATE', hero:require('./quadratic-equilibrium-art').thumbnailHero()},
   'tree-network-separation': {palette:'auto', kicker:['RESEARCH RELEASE · 4 OCTOBER 2026','PHYLOGENETICS · SHARP RANK BOUNDS'], head:['The extra edge','<em>leaves a trace.</em>'], headSize:78, sub:'A rank gap rules out two tree classes on one topology.', tag:'UNREFEREED CANDIDATE', hero:require('./tree-network-art').thumbnailHero()},
   'three-copy-werner-undistillability': {palette:'auto', kicker:['RESEARCH RELEASE · 4 OCTOBER 2026','QUANTUM INFORMATION'], head:['Three copies.','<em>One boundary.</em>'], headSize:88, sub:'An exact certificate for the qutrit Werner threshold.', tag:'UNREFEREED CANDIDATE', hero:require('./werner-art').thumbnailHero()},
   'wilhelm-heinrich-large-gain': {

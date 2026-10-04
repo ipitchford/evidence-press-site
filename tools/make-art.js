@@ -2361,6 +2361,9 @@ palette['three-copy-werner-undistillability'] = ['#a6dbe4', '#f3c779'];
 const treeNetworkArt = require('./tree-network-art');
 art['tree-network-separation'] = treeNetworkArt.cover;
 palette['tree-network-separation'] = ['#a9dfed', '#f4c77b'];
+const quadraticEquilibriumArt = require('./quadratic-equilibrium-art');
+art['quadratic-equilibrium-sharpness'] = quadraticEquilibriumArt.cover;
+palette['quadratic-equilibrium-sharpness'] = ['#a8ece4', '#f4c97c'];
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
@@ -2368,6 +2371,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'quadratic-equilibrium-sharpness') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${quadraticEquilibriumArt.description}</desc><defs>`);
   if (slug === 'tree-network-separation') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${treeNetworkArt.description}</desc><defs>`);
   if (slug === 'three-copy-werner-undistillability') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${wernerArt.description}</desc><defs>`);
   if (slug === 'wilhelm-heinrich-large-gain') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${wilhelmArt.description}</desc><defs>`);
