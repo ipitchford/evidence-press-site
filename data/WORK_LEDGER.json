@@ -21821,7 +21821,7 @@
       "cohort": "prospective",
       "registeredAt": "2026-10-04T09:18:42.929Z",
       "status": "active",
-      "statusAt": "2026-10-04T09:18:42.929Z",
+      "statusAt": "2026-10-04T10:00:21.728Z",
       "resultClass": "pending",
       "aims": [
         "science"
@@ -21895,6 +21895,11 @@
             "event": "work-opened",
             "at": "2026-10-04T09:18:42.929Z",
             "basis": "Prospective registration before manuscript changes and new replay."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-10-04T10:00:21.728Z",
+            "basis": "Final frozen archive, both local modes, hosted Linux CI, semantic controls and full GitHub/Zenodo downloads passed."
           }
         ],
         "activeHumanMinutes": null,
@@ -21905,12 +21910,69 @@
         "correctionCount": null
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Awaiting final exact-version hosted CI and public asset readback."
+        "status": "measured-partial",
+        "assessedAt": "2026-10-04T10:00:21.728Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/three-copy-werner-undistillability/releases/tag/v1.1.0-candidate",
+              "https://zenodo.org/records/23134454",
+              "https://github.com/ipitchford/three-copy-werner-undistillability/actions/runs/37193275340"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/three-copy-werner-undistillability/releases/tag/v1.1.0-candidate",
+              "https://zenodo.org/records/23134454",
+              "https://github.com/ipitchford/three-copy-werner-undistillability/actions/runs/37193275340"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/three-copy-werner-undistillability/releases/tag/v1.1.0-candidate",
+              "https://zenodo.org/records/23134454",
+              "https://github.com/ipitchford/three-copy-werner-undistillability/actions/runs/37193275340"
+            ]
+          }
+        ],
+        "claimCeiling": "Computer-assisted mathematical candidate with exact producer replay and a supplied alternative audit. No authenticated external specialist or editorial peer review; no proof-assistant formalisation.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/three-copy-werner-undistillability/releases/tag/v1.1.0-candidate",
+          "https://zenodo.org/records/23134454",
+          "https://github.com/ipitchford/three-copy-werner-undistillability/actions/runs/37193275340"
+        ],
+        "missingnessReason": "Exact producer replay and public archival parity established. External/formal assurance and detailed resource telemetry remain unestablished. Site publication is a separate endpoint."
       },
       "releaseSlug": "three-copy-werner-undistillability",
       "stopReason": null,
@@ -21921,6 +21983,17 @@
           "resultClass": "pending",
           "reason": "Review revision and publication underway.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-04T10:00:21.728Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Archival assurance complete; canonical site publication pending.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/three-copy-werner-undistillability/releases/tag/v1.1.0-candidate",
+            "https://zenodo.org/records/23134454",
+            "https://github.com/ipitchford/three-copy-werner-undistillability/actions/runs/37193275340"
+          ]
         }
       ],
       "corrections": [],
@@ -21928,6 +22001,10 @@
         {
           "date": "2026-10-04",
           "summary": "Registered review revision and publication; historical discovery resources remain unknown."
+        },
+        {
+          "date": "2026-10-04",
+          "summary": "Recorded exact final-archive replay and public archival parity, separately from site delivery and unknown resource telemetry."
         }
       ]
     }
