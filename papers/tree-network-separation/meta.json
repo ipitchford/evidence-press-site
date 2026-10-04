@@ -1,0 +1,210 @@
+{
+  "slug": "tree-network-separation",
+  "title": "When a network cannot look like a tree",
+  "shortTitle": "When a network cannot look like a tree",
+  "oneLine": "A sharp rank gap separates a four-state reticulation cycle from any mixture of two trees sharing one topology.",
+  "abstract": "This candidate proves sharp matrix-rank bounds for a four-leaf single-reticulation cycle with positive invertible Markov channels. Two flattenings have full rank d², while the crossed flattening has rank at least d(d+1)/2, with equality attained. For four states, this rules out every two-class general Markov tree mixture on a common topology. A separate argument gives all-parameter triangle separation for a shared irreducible reversible generator at stationarity, positive finite cycle lengths and interior inheritance, with at least three states or a nonuniform binary stationary distribution, including four-state GTR. The conclusions concern exact distributions under explicit assumptions, not unrestricted histories or practical detection from short sequences.",
+  "datePublished": "2026-10-04",
+  "version": "v0.1.0-candidate",
+  "doi": "10.5281/zenodo.23140370",
+  "conceptDoi": "10.5281/zenodo.23140369",
+  "zenodoUrl": "https://zenodo.org/records/23140370",
+  "repoUrl": "https://github.com/ipitchford/tree-network-separation",
+  "releaseUrl": "https://github.com/ipitchford/tree-network-separation/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/tree-network-separation/releases/download/v0.1.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23140370/files/paper.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Unrefereed mathematical candidate with coordinated internal proof, citation and code audits. Fresh exact replay and public archival parity passed. No authenticated external specialist review, independent reproduction, formal verification or priority claim is established.",
+  "evidence": "Analytic proofs; exact symbolic identities and rational tensor examples in dimensions 2–5; matching normal/optimized Python replays and eight expected fault-probe failures. These finite checks support selected identities and examples, not the universal proof quantifiers.",
+  "math": true,
+  "keywords": [
+    "phylogenetic networks",
+    "general Markov model",
+    "GTR",
+    "tree mixtures",
+    "flattening rank",
+    "identifiability"
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "An evolutionary tree describes lineages that branch. A network also allows a lineage to have two possible parents. Could that extra connection become completely invisible in the genetic patterns we observe?\n\nThis candidate studies a network with four observed species and one cycle. The result says that, under precise positivity and invertibility assumptions, its full probability distribution cannot be matched even by a mixture of two tree classes sharing the same branching shape.\n\nThe key is a mathematical quantity called matrix rank. Group the four species into two pairs and arrange their pattern probabilities in a matrix. Every split of the network has rank at least ten. But two tree classes on the same topology have rank at most eight on their shared split. Ten cannot fit into eight.\n\nThe paper proves that the network bound is sharp. It also treats smaller triangular cycles under a shared, stationary irreducible reversible mutation model, including the standard four-state GTR model. That part uses decay rates and a third moment when all nonzero rates coincide.\n\nThe evidence combines written proofs with exact algebra checks, boundary examples and internal audits. These checks do not replace external specialist review. The result concerns exact distributions, not a guarantee that a short genetic sequence will reveal the network. Mixtures of different tree shapes and more complicated histories remain separate questions.\n\nThis is Evidence Press, When a network cannot look like a tree, dated the fourth of October twenty twenty-six. The paper and evidence package are linked on the release page. This synthetic AI voice explains the research. It is not additional scientific evidence.",
+  "relatedWorks": [
+    {
+      "citation": "Brits, Holtgrefe, van Iersel and Martin (2026). On Tree-Network Distinguishability and Full Identifiability of Phylogenetic Networks, arXiv:2607.12919v3. Motivating group-based-model results and broader GTR question.",
+      "url": "https://arxiv.org/abs/2607.12919v3"
+    },
+    {
+      "citation": "Snyman, Fox and Bryant (2023). Parsimony and the rank of a flattening matrix. Established all-parameter tree-rank and rerooting mechanisms.",
+      "url": "https://doi.org/10.1007/s00285-023-01875-y"
+    },
+    {
+      "citation": "Allman, Rhodes and Sullivant (2012). When Do Phylogenetic Mixture Models Mimic Other Phylogenetic Models? Existing same-topology mixture rank arguments and model-specific separation results.",
+      "url": "https://arxiv.org/abs/1202.2396v2"
+    },
+    {
+      "citation": "Englander et al. (2025). Identifiability of Phylogenetic Level-2 Networks under the Jukes–Cantor Model. Proposition 2.26 supplies the known JC triangle special case.",
+      "url": "https://doi.org/10.1101/2025.04.18.649493"
+    },
+    {
+      "citation": "Currie et al. (2026). Semialgebraic Conditions for Identifying Triangles in Phylogenetic Networks. Theorem 3.1 and Appendix A treat the JC triangle case and credit earlier work.",
+      "url": "https://arxiv.org/abs/2606.26673v1"
+    },
+    {
+      "citation": "Sullivant (2026). Phylogenetic Network Models as Graphical Models. Theorem 7.8 gives universal upper bounds; Theorem 7.11 gives generic lower bounds.",
+      "url": "https://arxiv.org/abs/2507.23056v2"
+    },
+    {
+      "citation": "Sullivant (2025), IMSI lecture slides, slide 23. Generic network-rank announcement attributed to Casanellas, Fernández-Sánchez, Gross, Hollering and Sullivant. The complete announced manuscript was not located in the bounded audit.",
+      "url": "https://cdn.imsi.institute/videos/59496/IKcB160s62/slides.pdf"
+    },
+    {
+      "citation": "Casanellas and Fernández-Sánchez (2025). Phylogenetic Invariants: From the General Markov to Equivariant Models. Theorem 5.9 concerns reticulation-free clade rank bounds.",
+      "url": "https://doi.org/10.1137/24M1644821"
+    },
+    {
+      "citation": "Long and Kubatko (2021). Hypothesis Testing With Rank Conditions in Phylogenetics. Established singular-value residual tools.",
+      "url": "https://doi.org/10.3389/fgene.2021.664357"
+    },
+    {
+      "citation": "Hoeffding (1963). Probability Inequalities for Sums of Bounded Random Variables. Concentration bound used for the conservative iid test.",
+      "url": "https://doi.org/10.1080/01621459.1963.10500830"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Final manuscript and claim map audited internally. Frozen v0.1.0-candidate archive passed clean-extraction replay, hosted Python 3.11/3.13 CI and full downloads of all three assets from both GitHub and Zenodo on 4 October 2026. Site delivery is recorded separately.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Codex mathematical derivation and coordinated internal audits",
+      "Codex scoped revision and publication preparation"
+    ],
+    "humanRole": "User authorized the revision and publication; no human scientific contribution is inferred.",
+    "disclosure": "Anonymous is the scholarly creator and Evidence Press the publisher. Internal agent audits are not authenticated external peer review or independent reproduction."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "All three release assets were fully downloaded from public GitHub and published Zenodo record 23140370 and matched the frozen local bytes on 4 October 2026."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Fresh clean-extraction pure-Python replay with SymPy 1.14.0 passed in normal and optimized modes, with matching exact mathematical outputs and eight expected fault-probe failures. Hosted Python 3.11/3.13 CI passed at 9e6f26e48e63708e92e67292dc89b1970d2164dc. Producer-side finite checks do not establish the universal statements by sampling."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated replay is established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Coordinated internal checking does not establish independent reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No end-to-end proof-assistant verification."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No authenticated external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial acceptance."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Pinned portable dependencies passed on local Python 3.14.7 and hosted Python 3.11/3.13 in the pure-Python ground domain. Unaffiliated reproduction or a second computer-algebra implementation is not established."
+    }
+  },
+  "keyResults": [
+    "Sharp four-cycle rank bounds: d², d² and at least d(d+1)/2; the lower bound is attained.",
+    "For four states, no mixture of two general Markov trees on one common topology matches the positive four-cycle.",
+    "All-parameter triangle separation with one shared irreducible reversible generator at stationarity, positive finite cycle lengths and interior inheritance; at least three states, or nonuniform binary frequencies.",
+    "Pointwise positive distance from the relevant tree-model closures, with a conservative level-alpha consistent rank test for iid quartet data."
+  ],
+  "problem": {
+    "name": "Can a reticulation network exactly mimic a tree or a mixture of trees on one topology?",
+    "url": "https://arxiv.org/abs/2607.12919v3"
+  },
+  "media": [],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:tree-network-separation",
+    "attemptIds": [
+      "ep-attempt:tree-network-separation-revision-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "regime-stitching",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "obstruction",
+      "description": "A sharp flattening-rank obstruction to exact tree-mixture mimicry.",
+      "scope": "Positive invertible single-reticulation four-cycles and fixed-topology mixtures; triangle conclusions have a separate shared-generator boundary."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The written proofs map displayed-tree mixture semantics to tensor flattenings and compare their ranks with the common split of a tree mixture.",
+      "remainingRisks": [
+        "The mathematical arguments are not proof-assistant formalized.",
+        "The four-cycle mixture comparison requires one common topology; triangle claims require a shared irreducible reversible generator, stationarity, positive finite cycle lengths and interior inheritance.",
+        "Bounded literature comparison is not proof of priority."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorized; no human scientific role is inferred.",
+      "Qualified specialists can assess the network-model semantics and mathematical scope."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "specialistReview",
+        "formalVerification",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated audit of the sharp-rank argument and the exact evolutionary-model assumptions.",
+      "claimCeiling": "Internally checked mathematical candidate with public archival parity and exact producer replay; no authenticated external peer review, formal verification or priority assertion."
+    },
+    "impactClaims": [
+      {
+        "id": "tree-network-separation-no-impact",
+        "aim": "science",
+        "outcome": "A scoped separation theorem and inspectable mathematical evidence",
+        "setting": "AI-assisted mathematical research and publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched-assurance comparison is registered.",
+        "estimand": "No discovery-speed, cost, adoption or impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "audioUrl": "/assets/audio/tree-network-separation.mp3",
+  "citeText": "Anonymous (2026). Sharp rank bounds and all-parameter tree–network separation. v0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23140370"
+}
