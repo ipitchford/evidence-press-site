@@ -1,0 +1,221 @@
+{
+  "slug": "quadratic-equilibrium-sharpness",
+  "title": "Five reactions, four equilibria",
+  "shortTitle": "Five reactions, four equilibria",
+  "oneLine": "An explicit mass-action realization reaches the positive-equilibrium bound, with a construction in every dimension.",
+  "abstract": "This unrefereed candidate realizes the established Phillipson–Rojas polynomial chain as a quadratic mass-action network with n species, n+2 reactions, rank n and exactly n+1 positive nondegenerate equilibria for every integer n≥2. Integer products and positive rational rates attain the bound discussed by Banaji and Feliu. Two three-species examples provide an inflow-free realization with maximum product molecularity ten and an exact one-rate interval, and a reciprocal example with two sinks and two saddles. Quadratic restricts sources, not products; no experimental realization or global dynamical classification is claimed.",
+  "datePublished": "2026-10-04",
+  "version": "v1.0.0-candidate",
+  "doi": "10.5281/zenodo.23146115",
+  "conceptDoi": "10.5281/zenodo.23146114",
+  "zenodoUrl": "https://zenodo.org/records/23146115",
+  "repoUrl": "https://github.com/ipitchford/quadratic-mass-action-sharpness",
+  "releaseUrl": "https://github.com/ipitchford/quadratic-mass-action-sharpness/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/quadratic-mass-action-sharpness/releases/download/v1.0.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23146115/files/paper.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Unrefereed mathematical candidate with coordinated internal proof, citation and exact-code audits. Fresh archive replay and full public GitHub/Zenodo asset parity passed. No authenticated external specialist review, unaffiliated reproduction, journal acceptance or official research rating is established.",
+  "evidence": "Analytic realization and root-count proofs; fresh exact normal/optimized replay with 678 checks, 11 rejected corruption controls, source-support enumeration and the supplied 1,791-check program. Hosted Ubuntu/Python 3.12 CI passed at 82789d3449ef4e8cc2cd149ca2872110d3d6c889. Finite checks corroborate the universal written proof.",
+  "math": true,
+  "keywords": [
+    "mass-action kinetics",
+    "chemical reaction networks",
+    "positive equilibria",
+    "multistationarity",
+    "fewnomial systems",
+    "quadratic networks",
+    "bistability"
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "narration": "How many different steady states can a small reaction system support under the same rate constants?\n\nThis candidate gives a precise example: three chemical species, five reactions, and four distinct positive equilibria. Every equilibrium is nondegenerate, meaning that the local equilibrium equations have a nonsingular Jacobian. The count is supported by exact algebra, rather than a numerical plot alone.\n\nThe result extends to any number of species, starting with two. With two more reactions than species, the construction attains one more positive equilibrium than species. An earlier theorem supplied the matching upper bound.\n\nThe central contribution connects two mathematical settings. Phillipson and Rojas had already constructed a quadratic polynomial family with the maximum number of positive roots. This paper realizes that family using admissible mass-action reactions, integer product coefficients and positive rational rates. It does not claim a new abstract polynomial family.\n\nOne three-species example reduces to a curve crossing a horizontal line four times. In that example, two equilibria are locally attracting and two are saddles. Another example needs no inflow reaction and uses products containing at most ten molecules. Its four-equilibrium range is determined exactly as one rate changes.\n\nQuadratic here limits the reactants to at most two molecules. Products may be larger. These are mathematical networks, not experimentally demonstrated chemistry, and the result does not promise four stable states or a global description of the dynamics.\n\nThe release includes the written proofs, reaction data, exact verification code and deliberately corrupted test cases. It remains an unrefereed candidate; internal checks and the supplied review do not establish authenticated external peer review.\n\nThis is Evidence Press, Five reactions, four equilibria, dated the fourth of October twenty twenty-six. The paper and evidence package are linked on the release page. This synthetic AI voice explains the research. It is not additional scientific evidence.",
+  "relatedWorks": [
+    {
+      "citation": "Banaji and Feliu (2026). Positive equilibria in mass action networks: geometry and bounds. Theorem 5.5 supplies the bound; Remark 5.8 asks whether quadratic networks attain it for n≥3.",
+      "url": "https://link.springer.com/article/10.1007/s00285-026-02429-8"
+    },
+    {
+      "citation": "Phillipson and Rojas (2013). Fewnomial systems with many roots, and an Adelic Tau Conjecture. Theorem 1.6 provides the extremal polynomial chain realized chemically here; the root mechanism is prior work.",
+      "url": "https://arxiv.org/pdf/1011.4128"
+    },
+    {
+      "citation": "Banaji, Boros and Hofbauer (2024). Bifurcations in planar, quadratic mass-action networks with few reactions and low molecularity. Remark 38 gives an earlier two-species, four-reaction example with three positive equilibria.",
+      "url": "https://doi.org/10.1007/s11071-024-10068-1"
+    },
+    {
+      "citation": "Bihan (2015). Maximally positive polynomial systems supported on circuits. Earlier extremal polynomial-system framework.",
+      "url": "https://doi.org/10.1016/j.jsc.2014.09.003"
+    },
+    {
+      "citation": "El Hilany (2017). Characterization of circuits supporting polynomial systems with the maximal number of positive solutions. Earlier support characterization.",
+      "url": "https://doi.org/10.1007/s00454-017-9897-4"
+    },
+    {
+      "citation": "Bihan, Dickenstein and Forsgård (2021). Optimal Descartes’ rule of signs for systems supported on circuits. Established circuit root bounds.",
+      "url": "https://doi.org/10.1007/s00208-021-02216-4"
+    },
+    {
+      "citation": "Evidence Press (2026). Exactly five positive steady states in a two-ligand T-cell activation model. A related candidate using scalar reduction and exact root counting in a different model; not confirmation of this result.",
+      "url": "https://evidencepress.org/releases/tcell-exactly-five/"
+    },
+    {
+      "citation": "Evidence Press (2026). Path connectedness of multistationarity in a two-layer phosphorylation cascade with a shared phosphatase. Related parameter-region geometry under different model assumptions.",
+      "url": "https://evidencepress.org/releases/gk-shared-phosphatase-connectedness/"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Derived from the revised manuscript, structured claims and bounded primary-source audit. Frozen archive SHA-256 d7f31298f68adad52a3417de09c1ed79bd2d0e1048445e0f6f16d2ee5dbebad7; producer replay and public archive delivery checked on 4 October 2026. Canonical site publication is recorded separately in the publication ledger.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Codex mathematical derivation and coordinated internal audits",
+      "Codex scoped review response and publication preparation"
+    ],
+    "humanRole": "The user authorized the research and publication and supplied an AI/referee-style assessment; no human scientific contribution is inferred.",
+    "disclosure": "Anonymous is the scholarly creator and Evidence Press the publisher. Coordinated agent checks are internal. The supplied assessment has unauthenticated author identity and reported execution provenance; no external assurance promotion follows."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "All four release assets were fully downloaded from both public GitHub and published Zenodo record 23146115 and matched the frozen local bytes on 4 October 2026."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Fresh archive extraction passed 678 exact checks in identical normal/optimized Python runs, 11 rejected corruption controls, exact source-support enumeration, and the supplied 1,791-check verifier. Hosted Ubuntu/Python 3.12 CI passed. Both symbolic implementations use SymPy; finite checks do not prove the universal statement by sampling."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun is authenticated. The supplied assessment’s reported checks are recorded with their provenance limit."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Coordinated internal derivations and a supplied unauthenticated assessment do not establish independent reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No end-to-end proof-assistant verification."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "The supplied AI/referee-style assessment is retained as review material; no authenticated external specialist review is established."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial acceptance or official research-assessment rating."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Portable SymPy 1.14.0 programs passed locally on Python 3.14.7 and in hosted Ubuntu/Python 3.12 CI. No unaffiliated replay or independence from the shared computer-algebra backend is established."
+    }
+  },
+  "keyResults": [
+    "For every integer n≥2, a quadratic (n,n+2,n) mass-action network attains exactly n+1 positive nondegenerate equilibria.",
+    "An explicit chemical realization of the existing Phillipson–Rojas extremal polynomial chain, with integer products and positive rational rates.",
+    "An inflow-free three-species, five-reaction example has maximum product molecularity ten and four positive nondegenerate equilibria precisely for 1568<L<117649/75 when its fourth rate is 1/L.",
+    "The reciprocal N=7, K=145 example has two locally attracting equilibria and two saddles, each with one unstable direction."
+  ],
+  "problem": {
+    "name": "Can quadratic three-species, five-reaction networks attain four positive nondegenerate equilibria?",
+    "url": "https://link.springer.com/article/10.1007/s00285-026-02429-8"
+  },
+  "media": [],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:quadratic-equilibrium-sharpness",
+    "attemptIds": [
+      "ep-attempt:quadratic-equilibrium-sharpness-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Explicit admissible mass-action witnesses attaining the positive-equilibrium upper bound.",
+      "scope": "Quadratic sources, integer nonnegative products and positive rational rates in full-rank (n,n+2,n) networks for every integer n≥2; stability claims concern only the specified reciprocal example."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The manuscript checks stoichiometric admissibility, source rank and a positive flux kernel, and uses an invertible equation map from the earlier polynomial chain to the chemical equilibrium system. Original Jacobians are treated separately from scalar roots.",
+      "remainingRisks": [
+        "The written arguments are not proof-assistant formalized.",
+        "Equation transformations preserve equilibria and Jacobian nonsingularity, not dynamics or stability.",
+        "Large products are allowed; experimental chemistry and thermodynamic restrictions are outside scope.",
+        "Bounded literature comparison does not establish exhaustive priority."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorized; no human scientific role is inferred.",
+      "Qualified specialists can assess the mathematical realization, source assumptions and boundary of chemical interpretation."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/pdf/1011.4128",
+        "inheritedClaim": "Phillipson–Rojas Theorem 1.6 supplies the established polynomial chain with n+1 nondegenerate positive roots.",
+        "inheritedAssuranceCeiling": "The direct realization invokes the published mathematical theorem under checked assumptions. The chemical interpretation and its Jacobian map require their own argument; no inherited dynamical stability claim."
+      },
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://link.springer.com/article/10.1007/s00285-026-02429-8",
+        "inheritedClaim": "Banaji–Feliu Theorem 5.5 supplies the upper bound under its dynamic-nontriviality and source-rank hypotheses.",
+        "inheritedAssuranceCeiling": "The construction verifies those hypotheses; its attainment proof is distinct from the cited upper-bound theorem."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "specialistReview",
+        "formalVerification",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated audit of the chemical realization, positive reconstruction, original Jacobians and precise source-to-claim attribution.",
+      "claimCeiling": "Internally checked mathematical candidate; final archive replay and public availability are separate from independent, formal or external-review assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "quadratic-equilibrium-sharpness-no-impact",
+        "aim": "science",
+        "outcome": "A scoped sharpness result and inspectable exact mathematical evidence",
+        "setting": "AI-assisted mathematical research and publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched-assurance comparison is registered.",
+        "estimand": "No discovery-speed, cost, adoption or impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "citeText": "Anonymous (2026). Sharp positive-equilibrium counts in quadratic mass-action networks with two more reactions than species. v1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23146115"
+}
