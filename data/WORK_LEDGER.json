@@ -21820,9 +21820,9 @@
       "workId": "ep-work:three-copy-werner-undistillability",
       "cohort": "prospective",
       "registeredAt": "2026-10-04T09:18:42.929Z",
-      "status": "active",
-      "statusAt": "2026-10-04T10:00:21.728Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-04T10:10:16.832Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -21889,7 +21889,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Active human effort, compute cost and historical discovery telemetry are unavailable. New verification wall time will be retained separately.",
+        "missingnessReason": "Publication delivered with exact canonical readback. Active effort, unattended wait, tokens and compute cost were not separately instrumented and remain unknown. Result-ready/positive records delivery without fabricating terminal resource counters; earlier discovery clocks remain left-censored.",
         "milestones": [
           {
             "event": "work-opened",
@@ -21900,6 +21900,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-04T10:00:21.728Z",
             "basis": "Final frozen archive, both local modes, hosted Linux CI, semantic controls and full GitHub/Zenodo downloads passed."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-04T10:10:16.832Z",
+            "basis": "Canonical readback confirms all 109 release records at merged commit 7baef49000e4ca4e120f0de4761b6c19f895dc7e; public assets already verified separately."
           }
         ],
         "activeHumanMinutes": null,
@@ -21994,6 +21999,16 @@
             "https://zenodo.org/records/23134454",
             "https://github.com/ipitchford/three-copy-werner-undistillability/actions/runs/37193275340"
           ]
+        },
+        {
+          "at": "2026-10-04T10:10:16.832Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Guarded production deployment and canonical exact readback passed. Publication delivery is separate from research assurance.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/three-copy-werner-undistillability/",
+            "https://zenodo.org/records/23134454"
+          ]
         }
       ],
       "corrections": [],
@@ -22005,6 +22020,10 @@
         {
           "date": "2026-10-04",
           "summary": "Recorded exact final-archive replay and public archival parity, separately from site delivery and unknown resource telemetry."
+        },
+        {
+          "date": "2026-10-04",
+          "summary": "Recorded canonical site delivery separately from exact research assurance; unknown resource telemetry retained."
         }
       ]
     }
@@ -22695,6 +22714,10 @@
     {
       "date": "2026-10-04",
       "summary": "Registered the three-copy Werner referee-revision and publication attempt without reconstructing discovery clocks."
+    },
+    {
+      "date": "2026-10-04",
+      "summary": "Recorded canonical delivery of the three-copy Werner candidate without an acceleration or impact claim."
     }
   ]
 }
