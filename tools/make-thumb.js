@@ -81,6 +81,7 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'three-copy-werner-undistillability': {palette:'auto', kicker:['RESEARCH RELEASE · 4 OCTOBER 2026','QUANTUM INFORMATION'], head:['Three copies.','<em>One boundary.</em>'], headSize:88, sub:'An exact certificate for the qutrit Werner threshold.', tag:'UNREFEREED CANDIDATE', hero:require('./werner-art').thumbnailHero()},
   'wilhelm-heinrich-large-gain': {
     palette: 'auto', kicker: ['RESEARCH RELEASE · 3 OCTOBER 2026', 'DYNAMICAL SYSTEMS'],
     head: ['One rhythm.', '<em>At large gain.</em>'], headSize: 83,

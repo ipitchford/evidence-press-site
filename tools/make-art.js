@@ -2355,6 +2355,9 @@ art['hidden-dissipation-floor'] = hiddenDissipationArt.cover;
 palette['hidden-dissipation-floor'] = ['#a6dbe4', '#f3c779'];
 art['square-maximises-dirichlet-ratio-quadrilaterals'] = quadrilateralRatioArt.cover;
 palette['square-maximises-dirichlet-ratio-quadrilaterals'] = ['#f2c46f', '#8ed6ea'];
+const wernerArt = require('./werner-art');
+art['three-copy-werner-undistillability'] = wernerArt.cover;
+palette['three-copy-werner-undistillability'] = ['#a6dbe4', '#f3c779'];
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
@@ -2362,6 +2365,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'three-copy-werner-undistillability') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${wernerArt.description}</desc><defs>`);
   if (slug === 'wilhelm-heinrich-large-gain') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${wilhelmArt.description}</desc><defs>`);
   if (slug === 'hidden-dissipation-floor') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${hiddenDissipationArt.description}</desc><defs>`);
   if (slug === 'ctln-six-is-minimal') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${ctlnArt.description}</desc><defs>`);
