@@ -1,0 +1,15 @@
+How much branching complexity should we expect in a random tree of a given size? Counting leaves is not enough: a long chain of side branches and a balanced tree can have very different branching orders.
+
+This candidate studies two mathematical models. They share the language of branching, but the results and limits are different.
+
+In critical Tokunaga trees, the paper conditions on exactly a given number of leaves. It derives not just the leading logarithmic growth of the branching order, but a distribution describing its fluctuations. The correction depends on the fractional part of a logarithm, producing a repeating dependence on scale. The familiar binary-tree case was already classical; the claim covers the full stated parameter family.
+
+For Kingman’s coalescent, earlier work established the leading exponential decay of branch frequencies. This paper adds a positive prefactor. That is stronger than knowing an exponential rate: after the exponential decay is removed, the normalized frequency approaches a finite, nonzero number.
+
+The proof needs an extra structural bound. Converging ratios alone would not establish that positive limit. A fractional-linear comparison supplies the missing control.
+
+The package contains written analytical proofs, exact finite algebraic checks and numerical diagnostics. A numerical instability identified by the supplied review has been repaired and tested at two resolutions. Those calculations are not certified decimal expansions and do not replace the proofs.
+
+The Kingman result takes the large-tree limit first, at each fixed order. It does not allow arbitrary simultaneous limits. Nor does either theorem establish that real river networks follow these models.
+
+This is Evidence Press, Beyond the branching exponent, dated the fifth of October twenty twenty-six. The paper and evidence package are linked on the release page. The work remains an unrefereed candidate. This synthetic AI voice is an explanation, not additional scientific evidence.
