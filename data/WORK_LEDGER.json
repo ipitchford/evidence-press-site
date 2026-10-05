@@ -22930,9 +22930,9 @@
       "question": "Resolve supplied K2P review and publish the qualified exact counterexample and classification.",
       "selectionBasis": "User-selected candidate. Local publication state predates this site registration; earlier revisions are not backdated.",
       "taskClass": "remaining-full-candidate-publication",
-      "status": "active",
-      "statusAt": "2026-10-05T15:12:52.955Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-05T15:42:55.673Z",
+      "resultClass": "positive",
       "statusHistory": [
         {
           "at": "2026-10-05T15:12:52.955Z",
@@ -22940,6 +22940,16 @@
           "resultClass": "pending",
           "reason": "Remaining publication in progress",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-05T15:42:55.673Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Publication delivered; missing resource telemetry retained.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/k2p-tree-network-counterexample/",
+            "https://zenodo.org/records/23165616"
+          ]
         }
       ],
       "decisionObjectTarget": "Exact K2P tree-network non-identification with explicit rate restrictions.",
@@ -22952,12 +22962,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "No separate active-time, token or cost telemetry; earlier discovery not recorded.",
+        "missingnessReason": "Publication delivered with canonical readback. Active effort, unattended wait, tokens and cost were not separately instrumented and remain unknown. Result-ready/positive records delivery without fabricating terminal resource metrics; discovery clocks remain left-censored.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-10-05T15:12:52.955Z",
             "basis": "Registration of remaining publication only."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-05T15:42:55.673Z",
+            "basis": "Guarded production deployment and exact canonical readback passed at fdd33e196a6ad7a7a637d6961a9708454cdde603. Site delivery does not upgrade research assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -23089,6 +23104,10 @@
         {
           "date": "2026-10-05",
           "summary": "Public GitHub and Zenodo assets verified byte-identical; research assurance endpoint recorded separately from pending website delivery."
+        },
+        {
+          "date": "2026-10-05",
+          "summary": "Canonical site delivery appended separately from research assurance and missing resource measurements."
         }
       ]
     }
@@ -23835,6 +23854,10 @@
     {
       "date": "2026-10-05",
       "summary": "Registered K2P publication attempt."
+    },
+    {
+      "date": "2026-10-05",
+      "summary": "K2P tree-network candidate delivered with canonical readback; explicit missing resource telemetry retained."
     }
   ]
 }
