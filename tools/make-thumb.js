@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'seven-cycle-fourth-power-upper112': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 5 OCTOBER 2026', 'SEVEN-CYCLE · V0.1.0-CANDIDATE'],
+    head: ['Four seven-cycles:', '<em>at most 112</em>'],
+    headSize: 60,
+    sub: 'An exact finite exclusion narrows the interval to 108–112. The precise answer remains open.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: '<div class="eq-label">two exhaustive cases</div><div class="hero-title">Maximum neighbouring pairs<br>share a layer<br>or are disjoint.</div><div class="note">Both cases exclude 113 messages.</div><div class="eq-foot">paper · certificates · full replay</div>'
+  },
   'quadratic-equilibrium-sharpness': {palette:'auto', kicker:['RESEARCH RELEASE · 4 OCTOBER 2026','CHEMICAL REACTION NETWORKS'], head:['Five reactions.','<em>Four equilibria.</em>'], headSize:78, sub:'The sharp equilibrium bound is attained for every number of species from two upwards.', tag:'UNREFEREED CANDIDATE', hero:require('./quadratic-equilibrium-art').thumbnailHero()},
   'tree-network-separation': {palette:'auto', kicker:['RESEARCH RELEASE · 4 OCTOBER 2026','PHYLOGENETICS · SHARP RANK BOUNDS'], head:['The extra edge','<em>leaves a trace.</em>'], headSize:78, sub:'A rank gap rules out two tree classes on one topology.', tag:'UNREFEREED CANDIDATE', hero:require('./tree-network-art').thumbnailHero()},
   'three-copy-werner-undistillability': {palette:'auto', kicker:['RESEARCH RELEASE · 4 OCTOBER 2026','QUANTUM INFORMATION'], head:['Three copies.','<em>One boundary.</em>'], headSize:88, sub:'An exact certificate for the qutrit Werner threshold.', tag:'UNREFEREED CANDIDATE', hero:require('./werner-art').thumbnailHero()},
