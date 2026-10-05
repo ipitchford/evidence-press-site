@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "slug": "centroidal-equilibrium-creation",
+  "generatedAt": "2026-10-05T16:28:51.954Z",
+  "sourceMetadata": "papers/centroidal-equilibrium-creation/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "97d2083490078a1b09cb003ca7406d26bcc8d240cdedbfc38b2db40eccac37a6",
+  "transcriptPath": "assets/audio/centroidal-equilibrium-creation.txt",
+  "transcriptSha256": "d339c514f297df330a771ed00a7bd4178338da530ba37fb2bf959713043a4d91",
+  "audioPath": "assets/audio/centroidal-equilibrium-creation.mp3",
+  "audioSha256": "6bd925db62edd74e11d90dbfaf208aa0cdf5146cb6f806561964edf1286a9185",
+  "audioBytes": 1904684,
+  "responseContentType": "audio/mpeg",
+  "requestId": "req_eace89b77ab14bc88752353a7eec053a",
+  "postprocessing": {
+    "reason": "Whole-file and tail ASR found omitted closing disclosure; appended exact separately generated sentence.",
+    "operation": "ffmpeg audio concat, libmp3lame 128k",
+    "originalAudioSha256": "f966fb8bd09d78fecd34564c501b5cfb283dfd5fc93fb7c32e6849c8f78c8808",
+    "closingInput": "This is synthetic speech.",
+    "closingInputSha256": "de159c906bb0f3dccd27a95ecadba2e3a7561506a1c3b653266e3428edd0c5b2",
+    "closingRequestId": "req_775457d27601485fb44e769831749cfe",
+    "closingAudioSha256": "6ce1c85bbf830933be48410a92e914d9461637e86b8b4d4b23a0a7c15a67f3cb",
+    "completedAt": "2026-10-05T16:42:54.938Z"
+  }
+}

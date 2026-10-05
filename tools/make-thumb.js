@@ -81,6 +81,8 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'rational-laguerre-mosaics': {palette:'auto',kicker:['RESEARCH RELEASE · 5 OCTOBER 2026','CONVEX MOSAICS'],head:['Beyond the','<em>four barrier.</em>'],headSize:87,sub:'An exact periodic construction breaks a proposed harmonic-degree bound.',tag:'UNREFEREED CANDIDATE',hero:'<div class="eq-label">rational weighted mosaic</div><div class="hero-title">468 / 115 &gt; 4</div><div class="note">373 vertices · 432 cells<br>3,276 incidences</div><div class="eq-foot">exact arithmetic · written geometric proof</div>'},
+  'centroidal-equilibrium-creation': {palette:'auto',kicker:['RESEARCH RELEASE · 5 OCTOBER 2026','CURVATURE FLOW'],head:['Smoothing creates','<em>balance points.</em>'],headSize:74,sub:'A strictly convex body gains two minimum–saddle pairs under forward curvature flow.',tag:'UNREFEREED CANDIDATE',hero:'<div class="eq-label">centroidal equilibria</div><div class="hero-title">22 → 26</div><div class="note">Two antipodal births<br>at positive time</div><div class="eq-foot">sufficiently small parameter · no numerical threshold</div>'},
   'seven-cycle-fourth-power-upper112': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 5 OCTOBER 2026', 'SEVEN-CYCLE · V0.1.0-CANDIDATE'],

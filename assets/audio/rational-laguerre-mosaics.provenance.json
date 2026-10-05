@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "slug": "rational-laguerre-mosaics",
+  "generatedAt": "2026-10-05T16:29:06.857Z",
+  "sourceMetadata": "papers/rational-laguerre-mosaics/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "0c0a69381b9a44abf5721df7e06855ce962c15b0f1203d5350a1ad87802e0d16",
+  "transcriptPath": "assets/audio/rational-laguerre-mosaics.txt",
+  "transcriptSha256": "911fb134b87122816415972e38b3eac27dff0023a8592bff70d7a2f686b31c36",
+  "audioPath": "assets/audio/rational-laguerre-mosaics.mp3",
+  "audioSha256": "5ff616df21146703ab4c49bb22b24c8362244f19ba18490fe4a50099f2ed6fbc",
+  "audioBytes": 1740716,
+  "responseContentType": "audio/mpeg",
+  "requestId": "req_fd2be8713ca047978902369268c68ca1",
+  "postprocessing": {
+    "reason": "Whole-file and tail ASR found omitted closing disclosure; appended exact separately generated sentence.",
+    "operation": "ffmpeg audio concat, libmp3lame 128k",
+    "originalAudioSha256": "de43297f3a4cd54827ddf6002eba1ad015f02a6732f3c4373087455b41583e6c",
+    "closingInput": "This is synthetic speech.",
+    "closingInputSha256": "de159c906bb0f3dccd27a95ecadba2e3a7561506a1c3b653266e3428edd0c5b2",
+    "closingRequestId": "req_775457d27601485fb44e769831749cfe",
+    "closingAudioSha256": "6ce1c85bbf830933be48410a92e914d9461637e86b8b4d4b23a0a7c15a67f3cb",
+    "completedAt": "2026-10-05T16:42:54.542Z"
+  }
+}

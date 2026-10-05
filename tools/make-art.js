@@ -2373,6 +2373,11 @@ palette['k2p-tree-network-counterexample'] = ['#a9dcf2','#f4c283'];
 const sevenCycleArt = require('./seven-cycle-art');
 art['seven-cycle-fourth-power-upper112'] = sevenCycleArt.draw;
 palette['seven-cycle-fourth-power-upper112'] = sevenCycleArt.colors;
+const mosaicAbrasionArt = require('./mosaic-abrasion-art');
+art['rational-laguerre-mosaics'] = mosaicAbrasionArt.mosaics;
+palette['rational-laguerre-mosaics'] = ['#a9d9f5','#f3c17c'];
+art['centroidal-equilibrium-creation'] = mosaicAbrasionArt.abrasion;
+palette['centroidal-equilibrium-creation'] = ['#efb8c9','#f3d38b'];
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
@@ -2380,6 +2385,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (['rational-laguerre-mosaics','centroidal-equilibrium-creation'].includes(slug)) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${mosaicAbrasionArt.descriptions[slug==='rational-laguerre-mosaics'?'mosaics':'abrasion']}</desc><defs>`);
   if (slug === 'k2p-tree-network-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${k2pArt.description}</desc><defs>`);
   if (slug === 'seven-cycle-fourth-power-upper112') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${sevenCycleArt.description}</desc><defs>`);
   if (slug === 'horton-tokunaga-kingman-asymptotics') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${hortonArt.description}</desc><defs>`);
