@@ -1,0 +1,213 @@
+{
+  "slug": "k2p-tree-network-counterexample",
+  "title": "When a network looks exactly like a tree",
+  "shortTitle": "K2P tree–network coincidence",
+  "oneLine": "Two reticulations can leave exactly the same complete pattern probabilities as a tree—even with continuous-time, transition-biased mutation.",
+  "abstract": "An exact K2,3 construction in the uniform-root displayed-tree model matches all 64 three-leaf pattern probabilities of a star tree, with strictly interior edge-specific continuous-time transition-biased K2P parameters in both models. On the larger stochastic region, anchoring classifies reduced trinets through level three: 30 of 83 are distinguishable and 53 admit coincidences. Written proofs propagate examples to arbitrary leaf counts and levels. A separate convexity obstruction excludes the same construction when both models share one prescribed rate ratio greater than one.",
+  "datePublished": "2026-10-05",
+  "version": "1.1.0-candidate",
+  "doi": "10.5281/zenodo.23165616",
+  "conceptDoi": "10.5281/zenodo.23165615",
+  "zenodoUrl": "https://zenodo.org/records/23165616",
+  "repoUrl": "https://github.com/ipitchford/k2p-tree-network-counterexample",
+  "releaseUrl": "https://github.com/ipitchford/k2p-tree-network-counterexample/releases/tag/v1.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/k2p-tree-network-counterexample/releases/download/v1.1.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23165616/files/paper.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Unrefereed mathematical candidate with supplied review actioned and internal exact finite checks. No authenticated external review, unaffiliated reproduction or formal verification.",
+  "evidence": "Three exact 64-pattern comparisons; rank-three and rank-nine minors; graph inventories and deletion-route witnesses; four rejected corruption controls in normal and optimized Python. Universal extensions remain written proofs.",
+  "math": true,
+  "keywords": [
+    "phylogenetic networks",
+    "K2P",
+    "Kimura two-parameter",
+    "identifiability",
+    "exact counterexample",
+    "anchoring"
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "Can perfect knowledge of DNA-pattern probabilities distinguish an evolutionary tree from a network? This candidate gives an exact example where it cannot.\n\nThe network has three observed species and two reticulations, where a lineage has a choice of parental path. Its four displayed trees share mutation parameters according to the network.\n\nAt an explicit parameter point, this network produces exactly the same sixty-four pattern probabilities as an ordinary three-leaf tree. Every probability agrees in exact arithmetic. Both models use continuous-time mutation with transitions favoured over transversions. But the rate ratio may differ between edges.\n\nThat qualification matters. If both models must share one fixed rate ratio greater than one, a convexity argument rules out this particular coincidence. Different assumptions produce different answers.\n\nAn anchoring condition prevents other networks from imitating trees. Among eighty-three reduced three-leaf shapes at level three, thirty are anchored. The other fifty-three have routes to exact counterexamples on a larger stochastic parameter region. Only a subset is established under the stricter continuous-time conditions. Written arguments extend examples to more leaves and higher levels.\n\nThe package supplies exact certificates, graph witnesses, replay code and deliberate corruption tests. These internal checks are not external peer review or formal verification.\n\nThis is a precise limit of identification, not a claim that networks are generally undetectable or that these parameters are typical of real data. Read the paper and evidence package on Evidence Press. This is synthetic speech.",
+  "relatedWorks": [
+    {
+      "citation": "Brits et al. (2026), arXiv version 3. Higher-level separation under JC; K2P extension left open.",
+      "url": "https://arxiv.org/abs/2607.12919v3"
+    },
+    {
+      "citation": "Allman, Rhodes and Sullivant (2012). Mixture mimicry and topology-qualified non-mimicking results.",
+      "url": "https://doi.org/10.1093/sysbio/sys064"
+    },
+    {
+      "citation": "Sullivant (2026). Graphical-model local modification and suppression framework.",
+      "url": "https://doi.org/10.1007/s11538-026-01695-3"
+    },
+    {
+      "citation": "Kouwenhoven (2025). Earlier failure of a proposed K2P invariant, distinct from full-distribution equality.",
+      "url": "https://repository.tudelft.nl/file/File_533b1802-6a2f-4320-bc51-9941bd9f7f3b"
+    },
+    {
+      "citation": "Holtgrefe et al. (2025), version 2. Quartet information under specified level-two structural conditions.",
+      "url": "https://arxiv.org/abs/2507.17308v2"
+    },
+    {
+      "citation": "Evidence Press: When a network cannot look like a tree. Different single-cycle and shared-generator hypotheses; not contradicted by this two-reticulation example.",
+      "url": "https://evidencepress.org/releases/tree-network-separation/"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied candidate and review, bounded source comparison and explicit review response; no reconstructed discovery metrics.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Supplied research package; original model identity not established",
+      "Codex review revisions and publication checks"
+    ],
+    "humanRole": "Publication authorization only; no scientific contribution inferred.",
+    "disclosure": "Anonymous is scholarly creator. Supplied review and private audit have no authenticated external identity."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "GitHub and Zenodo public: all four assets downloaded and matched byte-for-byte to the frozen local payload."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Working exact finite replays passed in normal and optimized Python; fresh archive replay is recorded separately."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Pinned Python dependencies; no unaffiliated reproduction."
+    }
+  },
+  "keyResults": [
+    "Exact transition-biased continuous-time K2,3/star coincidence with edge-specific rates.",
+    "Anchoring suffices at every level and classifies reduced trinets through level three on the larger stochastic region.",
+    "Written propagation gives examples for every n≥3 and k≥2.",
+    "One common prescribed kappa>1 on both models excludes L2-1/tree coincidence."
+  ],
+  "problem": {
+    "name": "Does higher-level JC tree–network separation extend to K2P?",
+    "url": "https://arxiv.org/abs/2607.12919v3"
+  },
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/k2p-tree-network-counterexample.mp3",
+      "name": "K2P tree–network coincidence — audio briefing",
+      "description": "Synthetic explanation, not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/k2p-tree-network-counterexample.txt"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:k2p-tree-network-counterexample",
+    "attemptIds": [
+      "ep-attempt:k2p-tree-network-counterexample-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "identification-gate",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Exact full-distribution coincidence under explicit K2P assumptions.",
+      "scope": "Uniform-root displayed-tree mixture; edge-specific rates; region-specific finite classification."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Probability-space summation checks the complete distribution separately from Fourier binomials; rate restrictions and graph reductions are stated.",
+      "remainingRisks": [
+        "Universal written proofs not formalized.",
+        "Positive Fourier box need not be stochastic.",
+        "Finite search hits do not prove existence or nonexistence.",
+        "Bounded novelty search, no empirical validation."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorized; no human scientific role is inferred.",
+      "Qualified specialists can assess the network-model semantics and mathematical scope."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/2607.12919v3",
+        "inheritedClaim": "Displayed-tree framework, level-one K2P inequality and structural reduction lemmas.",
+        "inheritedAssuranceCeiling": "Source theorem assumptions are retained; no external assurance inherited for the counterexample."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "specialistReview",
+        "formalVerification",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated audit of the full-distribution construction and propagation interfaces.",
+      "claimCeiling": "Unrefereed candidate with internal exact finite replay, not universal formal verification."
+    },
+    "impactClaims": [
+      {
+        "id": "k2p-tree-network-counterexample-no-impact",
+        "aim": "science",
+        "outcome": "A scoped exact non-identification example and structural classification",
+        "setting": "AI-assisted mathematical research and publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched-assurance comparison is registered.",
+        "estimand": "No discovery-speed, cost, adoption or impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "audioUrl": "/assets/audio/k2p-tree-network-counterexample.mp3",
+  "citeText": "Anonymous (2026). Tree–network distinguishability fails under the Kimura two-parameter model. Version 1.1.0-candidate. https://doi.org/10.5281/zenodo.23165616"
+}

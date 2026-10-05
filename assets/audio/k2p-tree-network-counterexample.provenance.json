@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "slug": "k2p-tree-network-counterexample",
+  "generatedAt": "2026-10-05T15:28:01.331Z",
+  "sourceMetadata": "papers/k2p-tree-network-counterexample/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "47c17290e94588bbaabb4d2597885f55d61cc0071bf6b09dd4b8468f11c0d97c",
+  "transcriptPath": "assets/audio/k2p-tree-network-counterexample.txt",
+  "transcriptSha256": "338f7a35f4402514460a80230b283b946c7de97d9296da9413d9ba7b2ddd1fdb",
+  "audioPath": "assets/audio/k2p-tree-network-counterexample.mp3",
+  "audioSha256": "ecf3f129e99ff32e7bee6ceb542866158e5c679bd230b943b978cb38744847e5",
+  "audioBytes": 1689644,
+  "responseContentType": "audio/mpeg",
+  "requestId": "req_4ff01d66f27a4146bc8942f5c9322733",
+  "postprocessing": {
+    "reason": "Whole-file and tail ASR showed omitted final disclosure; appended a separately generated exact closing sentence.",
+    "operation": "ffmpeg audio concat, libmp3lame 128k",
+    "originalAudioSha256": "be0cb0b1fffbed8b5064ebefc18488a6a72dea1ddf846394e4d651b1592d1fab",
+    "closingInput": "This is synthetic speech.",
+    "closingInputSha256": "de159c906bb0f3dccd27a95ecadba2e3a7561506a1c3b653266e3428edd0c5b2",
+    "closingRequestId": "req_bcbca07943eb4c6598d310eb559ab4a7",
+    "closingAudioSha256": "79d90a53c9e7855601d950848d74a18cd1edbbb54658c15c17a92d8402e334bb",
+    "completedAt": "2026-10-05T15:31:29.042Z"
+  }
+}

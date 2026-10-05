@@ -2367,6 +2367,9 @@ palette['quadratic-equilibrium-sharpness'] = ['#a8ece4', '#f4c97c'];
 const hortonArt = require('./horton-art');
 art['horton-tokunaga-kingman-asymptotics'] = hortonArt.cover;
 palette['horton-tokunaga-kingman-asymptotics'] = ['#b7d9f6', '#f0c488'];
+const k2pArt = require('./k2p-art');
+art['k2p-tree-network-counterexample'] = k2pArt.cover;
+palette['k2p-tree-network-counterexample'] = ['#a9dcf2','#f4c283'];
 const sevenCycleArt = require('./seven-cycle-art');
 art['seven-cycle-fourth-power-upper112'] = sevenCycleArt.draw;
 palette['seven-cycle-fourth-power-upper112'] = sevenCycleArt.colors;
@@ -2377,6 +2380,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'k2p-tree-network-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${k2pArt.description}</desc><defs>`);
   if (slug === 'seven-cycle-fourth-power-upper112') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${sevenCycleArt.description}</desc><defs>`);
   if (slug === 'horton-tokunaga-kingman-asymptotics') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${hortonArt.description}</desc><defs>`);
   if (slug === 'quadratic-equilibrium-sharpness') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${quadraticEquilibriumArt.description}</desc><defs>`);
