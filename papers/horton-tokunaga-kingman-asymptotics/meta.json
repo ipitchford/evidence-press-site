@@ -1,0 +1,216 @@
+{
+  "slug": "horton-tokunaga-kingman-asymptotics",
+  "title": "Beyond the branching exponent",
+  "shortTitle": "Tokunaga and Kingman asymptotics",
+  "oneLine": "Exact conditioning reveals order fluctuations in one random-tree model; a positive prefactor sharpens the branching law in another.",
+  "abstract": "For every critical Tokunaga parameter c>1, this candidate derives a phase-dependent conditional law for Horton–Strahler order at exactly n leaves, including absolute moments and a continuous periodic correction to log base 2c of n. For Kingman’s deterministic limiting branch densities it proves a positive geometric prefactor, with tree size tending to infinity before order. Written analytic proofs are supplemented by exact finite checks and stabilized numerical diagnostics, not certified decimal constants.",
+  "datePublished": "2026-10-05",
+  "version": "1.1.0-candidate",
+  "doi": "10.5281/zenodo.23160583",
+  "conceptDoi": "10.5281/zenodo.23160582",
+  "zenodoUrl": "https://zenodo.org/records/23160583",
+  "repoUrl": "https://github.com/ipitchford/horton-tokunaga-kingman-asymptotics",
+  "releaseUrl": "https://github.com/ipitchford/horton-tokunaga-kingman-asymptotics/releases/tag/v1.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/horton-tokunaga-kingman-asymptotics/releases/download/v1.1.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23160583/files/paper.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Unrefereed analytical candidate with supplied review actioned and internal finite replay. No authenticated external specialist review, formal proof or independent reproduction.",
+  "evidence": "Written local-limit and hierarchy-comparison proofs; exact finite rational and symbolic checks; separate 40/60-order numerical stability tests and six rejected error controls.",
+  "math": true,
+  "keywords": [
+    "Horton-Strahler order",
+    "Tokunaga trees",
+    "Kingman coalescent",
+    "local limit theorem",
+    "branching processes"
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "narration": "How much branching complexity should we expect in a random tree of a given size? Counting leaves is not enough: a long chain of side branches and a balanced tree can have very different branching orders.\n\nThis candidate studies two mathematical models. They share the language of branching, but the results and limits are different.\n\nIn critical Tokunaga trees, the paper conditions on exactly a given number of leaves. It derives not just the leading logarithmic growth of the branching order, but a distribution describing its fluctuations. The correction depends on the fractional part of a logarithm, producing a repeating dependence on scale. The familiar binary-tree case was already classical; the claim covers the full stated parameter family.\n\nFor Kingman’s coalescent, earlier work established the leading exponential decay of branch frequencies. This paper adds a positive prefactor. That is stronger than knowing an exponential rate: after the exponential decay is removed, the normalized frequency approaches a finite, nonzero number.\n\nThe proof needs an extra structural bound. Converging ratios alone would not establish that positive limit. A fractional-linear comparison supplies the missing control.\n\nThe package contains written analytical proofs, exact finite algebraic checks and numerical diagnostics. A numerical instability identified by the supplied review has been repaired and tested at two resolutions. Those calculations are not certified decimal expansions and do not replace the proofs.\n\nThe Kingman result takes the large-tree limit first, at each fixed order. It does not allow arbitrary simultaneous limits. Nor does either theorem establish that real river networks follow these models.\n\nThis is Evidence Press, Beyond the branching exponent, dated the fifth of October twenty twenty-six. The paper and evidence package are linked on the release page. The work remains an unrefereed candidate. This synthetic AI voice is an explanation, not additional scientific evidence.",
+  "relatedWorks": [
+    {
+      "citation": "Kovchegov and Zaliapin (2020). Random self-similar trees: A mathematical theory of Horton laws. Model definitions, inverse pruning and open questions.",
+      "url": "https://doi.org/10.1214/19-PS331"
+    },
+    {
+      "citation": "Kovchegov and Zaliapin (2017). Horton self-similarity of Kingman’s coalescent tree. Existing root-Horton and endpoint comparison framework.",
+      "url": "https://doi.org/10.1214/16-AIHP748"
+    },
+    {
+      "citation": "Flajolet, Raoult and Vuillemin (1979). The number of registers required for evaluating arithmetic expressions. Classical binary case.",
+      "url": "https://doi.org/10.1016/0304-3975(79)90009-4"
+    },
+    {
+      "citation": "Brandenberger, Devroye and Reddad (2021). The Horton–Strahler number of conditioned Galton–Watson trees.",
+      "url": "https://doi.org/10.1214/21-EJP678"
+    },
+    {
+      "citation": "Khanfir (2025). The Horton–Strahler number of Galton–Watson trees with possibly infinite variance.",
+      "url": "https://doi.org/10.1214/25-AAP2204"
+    },
+    {
+      "citation": "Khanfir (2025, v2). Fluctuations of the Horton–Strahler number of stable Galton–Watson trees.",
+      "url": "https://arxiv.org/abs/2401.13771v2"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Derived from the supplied proof package and review, revised as 1.1.0-candidate; discovery metrics unknown.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Supplied research package; original model identity not established",
+      "Codex review response and publication preparation"
+    ],
+    "humanRole": "Publication authorization; no scientific contribution inferred.",
+    "disclosure": "Anonymous is scholarly creator. Supplied review is not authenticated external assurance."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "GitHub and Zenodo public: all four assets downloaded and matched byte-for-byte to the frozen local payload."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Normal and optimized exact checks, numerical stability comparison and six corruption controls passed locally; archive replay recorded separately."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Not established by this publication workflow."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Not established by this publication workflow."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Not established by this publication workflow."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Not established by this publication workflow."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Not established by this publication workflow."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Pinned scientific Python environment; no unaffiliated reproduction."
+    }
+  },
+  "keyResults": [
+    "Exact-leaf-conditioned Tokunaga order law for every c>1, including phase-dependent fluctuations and moments.",
+    "Positive geometric Kingman prefactor H, after taking the finite-size limit at each fixed order.",
+    "Weighted local bounds and a Mobius comparison make the two limiting arguments explicit."
+  ],
+  "problem": {
+    "name": "Refined Tokunaga order and strong geometric Kingman Horton asymptotics",
+    "url": "https://doi.org/10.1214/19-PS331"
+  },
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/horton-tokunaga-kingman-asymptotics.mp3",
+      "name": "Beyond the branching exponent — audio briefing",
+      "description": "Synthetic explanation, not additional research evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/horton-tokunaga-kingman-asymptotics.txt"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:horton-tokunaga-kingman-asymptotics",
+    "attemptIds": [
+      "ep-attempt:horton-tokunaga-kingman-asymptotics-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "reusable-method",
+      "description": "Weighted exact-conditioning argument and positive geometric normalization.",
+      "scope": "Critical Tokunaga c>1; deterministic Kingman branch-density limits with size before order."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Auxiliary immigration marginals, lattice inversion and ordered ODE comparisons are distinguished from model assumptions and finite diagnostics.",
+      "remainingRisks": [
+        "Written proofs not formalized.",
+        "Bounded novelty comparison.",
+        "No empirical applicability or joint-limit theorem."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authorized; no human research role inferred.",
+      "Unaffiliated specialists may scrutinize local-limit and normalization arguments."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://doi.org/10.1214/19-PS331",
+        "inheritedClaim": "Critical Tokunaga model and inverse pruning.",
+        "inheritedAssuranceCeiling": "Published mathematical input; not independent assurance of the new conditioning theorem."
+      },
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://doi.org/10.1214/16-AIHP748",
+        "inheritedClaim": "Kingman limiting density and ODE framework.",
+        "inheritedAssuranceCeiling": "Published baseline; no inherited positive-prefactor conclusion."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independent analytic scrutiny and unaffiliated replay.",
+      "claimCeiling": "Unrefereed analytic candidate with internal diagnostics."
+    },
+    "impactClaims": [
+      {
+        "id": "horton-tokunaga-kingman-asymptotics-no-impact",
+        "aim": "science",
+        "outcome": "Refined mathematical tree asymptotics",
+        "setting": "AI-assisted mathematical research and publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched-assurance comparison is registered.",
+        "estimand": "No discovery-speed, cost, adoption or impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "citeText": "Anonymous (2026). Leaf-conditioned order in critical Tokunaga trees and strong Horton asymptotics for Kingman's coalescent. Version 1.1.0-candidate. https://doi.org/10.5281/zenodo.23160583"
+}
