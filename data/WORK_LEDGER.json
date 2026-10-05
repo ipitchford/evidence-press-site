@@ -22546,9 +22546,9 @@
       "question": "Resolve supplied review and publish scoped random-tree asymptotic candidate.",
       "selectionBasis": "User-requested publication. Local state initialized earlier; this site-ledger registration occurs after revisions and working replay, which are not backdated.",
       "taskClass": "remaining-full-candidate-publication",
-      "status": "active",
-      "statusAt": "2026-10-05T11:25:51.177Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-05T11:51:02.167Z",
+      "resultClass": "positive",
       "statusHistory": [
         {
           "at": "2026-10-05T11:25:51.177Z",
@@ -22556,6 +22556,16 @@
           "resultClass": "pending",
           "reason": "Remaining publication in progress",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-05T11:51:02.167Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Publication delivered; missing resource telemetry retained.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/horton-tokunaga-kingman-asymptotics/",
+            "https://zenodo.org/records/23160583"
+          ]
         }
       ],
       "decisionObjectTarget": "Exact conditioning and positive geometric prefactor.",
@@ -22568,12 +22578,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Discovery and earlier revision effort unknown; separate token, cost and active-time counters unavailable.",
+        "missingnessReason": "Publication delivered with canonical readback. Active effort, unattended wait, tokens and cost were not separately instrumented and remain unknown. Result-ready/positive records delivery without fabricating terminal resource metrics; discovery clocks remain left-censored.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-10-05T11:25:51.177Z",
             "basis": "Registration of remaining publication; not discovery start."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-05T11:51:02.167Z",
+            "basis": "Guarded production deployment and exact canonical readback passed at 253b9c28565939e44477e8836be20173be3f7443. Site delivery does not upgrade research assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -22705,6 +22720,10 @@
         {
           "date": "2026-10-05",
           "summary": "Public GitHub and Zenodo assets verified byte-identical; research assurance endpoint recorded separately from pending website delivery."
+        },
+        {
+          "date": "2026-10-05",
+          "summary": "Canonical site delivery appended separately from research assurance and missing resource measurements."
         }
       ]
     }
@@ -23431,6 +23450,10 @@
     {
       "date": "2026-10-05",
       "summary": "Registered Horton-Tokunaga/Kingman publication attempt."
+    },
+    {
+      "date": "2026-10-05",
+      "summary": "Tokunaga and Kingman candidate delivered with canonical readback; explicit missing resource telemetry retained."
     }
   ]
 }
