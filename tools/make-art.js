@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['compact-cross-compliance-contact'] = require('./friction-art').draw;
 // Equal aggregate masses with distinct allocations of shapes 1, 1 and 2.
 art['unlinked-gamma-regression'] = (a,b) => {
  let s='';
@@ -2374,6 +2375,7 @@ const sevenCycleArt = require('./seven-cycle-art');
 art['seven-cycle-fourth-power-upper112'] = sevenCycleArt.draw;
 palette['seven-cycle-fourth-power-upper112'] = sevenCycleArt.colors;
 const mosaicAbrasionArt = require('./mosaic-abrasion-art');
+palette['compact-cross-compliance-contact'] = ['#b4c8fa','#f1bd8a'];
 art['rational-laguerre-mosaics'] = mosaicAbrasionArt.mosaics;
 palette['rational-laguerre-mosaics'] = ['#a9d9f5','#f3c17c'];
 art['centroidal-equilibrium-creation'] = mosaicAbrasionArt.abrasion;

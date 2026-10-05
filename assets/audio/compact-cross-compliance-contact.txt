@@ -1,0 +1,13 @@
+When two elastic bodies press against one another, friction ties sliding to the pressure holding them together. But that pressure is not known in advance. It must be found as part of the solution. This feedback makes three-dimensional contact difficult to analyse.
+
+This mathematical candidate identifies a special architecture in which an incremental contact solution exists without requiring the friction coefficient to be small. The bodies are smooth, anchored away from contact, and share a closed interface. At every point of that interface, the sum of two elastic parameters, lambda and mu, must agree on both sides. The materials themselves need not be identical.
+
+Why does this help? Tangential forces can produce normal motion. The matching condition cancels the leading part of that cross response. Lower-order coupling can remain, but it has a compactness property that makes a mathematical existence argument work. Compact does not mean zero.
+
+A concrete example uses parameter pairs two and one on one side, and one and two on the other. Both sums are three. A finite-layer calculation shows how the leading cancellation can coexist with nonzero coupling at long wavelengths. That calculation illustrates the distinction; it is not a simulation proving the general theorem.
+
+The paper also identifies when a particular unrestricted weak-product property fails. Failure of that property does not prove that a contact solution is impossible. Separate results about rate-and-state friction assume prescribed pressure, so they must not be confused with the unknown-pressure contact theorem.
+
+The supplied review has been addressed, and supporting symbolic and numerical checks have been replayed. The infinite-dimensional proofs remain written arguments, without formal verification or independently authenticated specialist review. Contact edges, general mismatched materials and the full continuous-time problem remain outside the result.
+
+The manuscript and reproducible package are linked on Evidence Press. This is synthetic speech.

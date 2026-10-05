@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "slug": "compact-cross-compliance-contact",
+  "generatedAt": "2026-10-05T21:01:47.532Z",
+  "sourceMetadata": "papers/compact-cross-compliance-contact/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "ad546bdfaf7f7614f08032148730b8f5988359b56cd936e80a874db181afee4d",
+  "transcriptPath": "assets/audio/compact-cross-compliance-contact.txt",
+  "transcriptSha256": "35fd4b68ac0cb66104a50b270dba588cb118d5c3af35c8ada653882fb7205080",
+  "audioPath": "assets/audio/compact-cross-compliance-contact.mp3",
+  "audioSha256": "b0992004e5298ee269889fdad507f208519602db51055b953001dc13d5a13d17",
+  "audioBytes": 2027948,
+  "responseContentType": "audio/mpeg",
+  "requestId": "req_8646f269f02a40928384ba9517af297e",
+  "postprocessing": {
+    "reason": "Whole-file and tail ASR found omitted closing disclosure; appended exact separately generated sentence.",
+    "operation": "ffmpeg audio concat, libmp3lame 128k",
+    "originalAudioSha256": "feafec1672654915ac6975f6e43444177d1bba1d05e145cc0c545b0d0fb5015a",
+    "closingInput": "This is synthetic speech.",
+    "closingInputSha256": "de159c906bb0f3dccd27a95ecadba2e3a7561506a1c3b653266e3428edd0c5b2",
+    "closingRequestId": "req_0069279855b143dfa1b447adfae1bdfc",
+    "closingAudioSha256": "92c72d92857aa9765df3921bff7eca956bbbb0df0caee0512efad84bdb7de03a",
+    "completedAt": "2026-10-05T21:06:56.036Z"
+  }
+}

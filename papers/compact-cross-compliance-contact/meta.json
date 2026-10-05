@@ -1,0 +1,206 @@
+{
+  "slug": "compact-cross-compliance-contact",
+  "title": "Frictional contact without a small-friction bound",
+  "shortTitle": "Compact cross-compliance contact",
+  "oneLine": "A matched elastic interface removes the leading normal–tangential coupling and gives a three-dimensional incremental contact existence theorem—even when lower-order coupling remains.",
+  "abstract": "A written candidate proves incremental Signorini–Coulomb existence when the normal–tangential elastic cross-compliance is compact. Smooth anchored isotropic bodies sharing a closed interface realize this condition when λ₊+μ₊=λ₋+μ₋, with arbitrary finite nonnegative W¹,∞ friction. The normal pressure remains an unknown reaction. Matching also characterizes an unrestricted dominated weak-product property, not contact existence itself. Separate prescribed-pressure rate-and-state refinements retain their own assumptions.",
+  "datePublished": "2026-10-05",
+  "version": "2.1.0-candidate",
+  "doi": "10.5281/zenodo.23171696",
+  "conceptDoi": "10.5281/zenodo.23171695",
+  "zenodoUrl": "https://zenodo.org/records/23171696",
+  "repoUrl": "https://github.com/ipitchford/compact-cross-compliance-contact",
+  "releaseUrl": "https://github.com/ipitchford/compact-cross-compliance-contact/releases/tag/v2.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/compact-cross-compliance-contact/releases/download/v2.1.0-candidate/manuscript.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23171696/files/manuscript.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Unrefereed mathematical candidate with supplied review actioned and internal exact finite checks. No authenticated external review, unaffiliated reproduction or formal verification.",
+  "evidence": "Written functional-analytic proofs plus twelve supporting algebraic and numerical groups, normal and optimized replay, and six semantic-corruption invocations. No formal or unaffiliated verification.",
+  "math": true,
+  "keywords": [
+    "frictional contact",
+    "Signorini-Coulomb",
+    "elasticity",
+    "cross compliance",
+    "pseudomonotonicity",
+    "rate and state"
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "When two elastic bodies press against one another, friction ties sliding to the pressure holding them together. But that pressure is not known in advance. It must be found as part of the solution. This feedback makes three-dimensional contact difficult to analyse.\n\nThis mathematical candidate identifies a special architecture in which an incremental contact solution exists without requiring the friction coefficient to be small. The bodies are smooth, anchored away from contact, and share a closed interface. At every point of that interface, the sum of two elastic parameters, lambda and mu, must agree on both sides. The materials themselves need not be identical.\n\nWhy does this help? Tangential forces can produce normal motion. The matching condition cancels the leading part of that cross response. Lower-order coupling can remain, but it has a compactness property that makes a mathematical existence argument work. Compact does not mean zero.\n\nA concrete example uses parameter pairs two and one on one side, and one and two on the other. Both sums are three. A finite-layer calculation shows how the leading cancellation can coexist with nonzero coupling at long wavelengths. That calculation illustrates the distinction; it is not a simulation proving the general theorem.\n\nThe paper also identifies when a particular unrestricted weak-product property fails. Failure of that property does not prove that a contact solution is impossible. Separate results about rate-and-state friction assume prescribed pressure, so they must not be confused with the unknown-pressure contact theorem.\n\nThe supplied review has been addressed, and supporting symbolic and numerical checks have been replayed. The infinite-dimensional proofs remain written arguments, without formal verification or independently authenticated specialist review. Contact edges, general mismatched materials and the full continuous-time problem remain outside the result.\n\nThe manuscript and reproducible package are linked on Evidence Press. This is synthetic speech.",
+  "relatedWorks": [
+    {
+      "citation": "Ballard and Iurlano (2024), Existence results for the time-incremental elastic contact problem with Coulomb friction in 2D. Normal-reaction formulation and earlier arbitrary-friction theorem.",
+      "url": "https://doi.org/10.1142/S0218202524500477"
+    },
+    {
+      "citation": "Jarušek (1983), Contact problems with bounded friction. Coercive case. Earlier small-friction results.",
+      "url": "https://doi.org/10.21136/CMJ.1983.101875"
+    },
+    {
+      "citation": "Tan and Liu (2023), Determining the Lamé coefficients and elastic Dirichlet-to-Neumann map. Principal-symbol input.",
+      "url": "https://arxiv.org/abs/2211.06650"
+    },
+    {
+      "citation": "Pipping et al. (2016), On the efficient and reliable numerical solution of rate-and-state friction problems. Earlier state elimination and nonconvexity.",
+      "url": "https://doi.org/10.1093/gji/ggv512"
+    },
+    {
+      "citation": "Gräser, Kornhuber and Podlesny (2024), Numerical simulation of multiscale fault systems with rate- and state-dependent friction. Logarithmic implicit Euler precedent.",
+      "url": "https://doi.org/10.1007/s10596-023-10231-4"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied candidate and review, bounded source comparison and explicit review response; no reconstructed discovery metrics.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Supplied research package; original model identity not established",
+      "Codex review revisions and publication checks"
+    ],
+    "humanRole": "Publication authorization only; no scientific contribution inferred.",
+    "disclosure": "Anonymous is scholarly creator. Supplied review actioned; external independence is not authenticated. Older reviewer audit applies to v1 only."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "GitHub and Zenodo are public; all four release assets downloaded and matched to frozen local bytes."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Twelve supporting groups replayed in normal and optimized Python; six semantic rejection invocations. Written analytic proofs are not formalized."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Pinned Python dependencies; no unaffiliated reproduction."
+    }
+  },
+  "keyResults": [
+    "Compact cross compliance gives incremental contact existence with an unknown normal reaction.",
+    "Equality of λ+μ realizes the hypothesis for smooth anchored bodies with a closed common interface.",
+    "Lower-order coupling may remain: compactness is not exact decoupling.",
+    "The converse concerns an unrestricted weak-product property, not necessity for contact existence."
+  ],
+  "problem": {
+    "name": "Three-dimensional incremental Signorini–Coulomb contact",
+    "url": "https://arxiv.org/abs/2303.16298"
+  },
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/compact-cross-compliance-contact.mp3",
+      "name": "Compact cross-compliance contact — audio briefing",
+      "description": "Synthetic explanation, not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/compact-cross-compliance-contact.txt"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:compact-cross-compliance-contact",
+    "attemptIds": [
+      "ep-attempt:compact-cross-compliance-contact-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "reusable-method",
+      "description": "A matched elastic interface removes the leading normal–tangential coupling and gives a three-dimensional incremental contact existence theorem—even when lower-order coupling remains.",
+      "scope": "Smooth anchored isotropic elasticity, closed matched interface, incremental contact and finite W1-infinity friction."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Boundary-symbol cancellation yields compact cross compliance; the normal-reaction map has type (S)+ and satisfies the pseudomonotone existence hypotheses.",
+      "remainingRisks": [
+        "Written endpoint and boundary-calculus arguments require specialist scrutiny.",
+        "Neither mismatch nor weak-product failure establishes contact nonexistence.",
+        "Rate-and-state pressure is prescribed, not solved."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorized; no human scientific contribution inferred.",
+      "Future independent specialist assessment remains possible."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/2303.16298",
+        "inheritedClaim": "Normal-reaction formulation and pseudomonotone variational inequality framework.",
+        "inheritedAssuranceCeiling": "The two-dimensional fine-product theorem is not imported into three dimensions."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "specialistReview",
+        "formalVerification",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independent scrutiny of the endpoint measure argument, boundary calculus and scope against contact literature.",
+      "claimCeiling": "Unrefereed written candidate with internal supporting replay."
+    },
+    "impactClaims": [
+      {
+        "id": "compact-cross-compliance-contact-no-impact",
+        "aim": "science",
+        "outcome": "A matched elastic interface removes the leading normal–tangential coupling and gives a three-dimensional incremental contact existence theorem—even when lower-order coupling remains.",
+        "setting": "AI-assisted mathematical research and publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched-assurance comparison is registered.",
+        "estimand": "No discovery-speed, cost, adoption or impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "audioUrl": "/assets/audio/compact-cross-compliance-contact.mp3",
+  "citeText": "Anonymous (2026). Cross-compliance compactness in three-dimensional frictional contact. Version 2.1.0-candidate. https://doi.org/10.5281/zenodo.23171696"
+}
