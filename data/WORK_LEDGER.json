@@ -23698,9 +23698,9 @@
       "question": "Action the supplied IHC review and publish the revised candidate.",
       "selectionBasis": "User-selected candidate; remaining publication registration, not reconstructed discovery telemetry.",
       "taskClass": "remaining-full-candidate-publication",
-      "status": "active",
-      "statusAt": "2026-10-05T22:24:05.723Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-05T22:43:40.235Z",
+      "resultClass": "positive",
       "statusHistory": [
         {
           "at": "2026-10-05T22:24:05.723Z",
@@ -23708,6 +23708,16 @@
           "resultClass": "pending",
           "reason": "Remaining publication",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-05T22:43:40.235Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Publication delivered; unknown telemetry retained.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/internally-heated-convection-flux-bounds/",
+            "https://zenodo.org/records/23172948"
+          ]
         }
       ],
       "decisionObjectTarget": "A minimum-principle argument raises the guaranteed heat loss through the base of an internally heated fluid, with different scaling laws for rigid and stress-free plates.",
@@ -23720,12 +23730,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "No active effort, token or cost telemetry; research history not measured.",
+        "missingnessReason": "Publication delivered; active effort, tokens, cost and waiting components not separately instrumented. No discovery-productivity estimate.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-10-05T22:24:05.723Z",
             "basis": "Remaining publication only"
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-05T22:43:40.235Z",
+            "basis": "Guarded canonical readback at bff45f6d369735b6f98f457f71f10aa49d98dcdc; no scientific assurance upgrade."
           }
         ],
         "activeHumanMinutes": null,
@@ -23857,6 +23872,10 @@
         {
           "date": "2026-10-05",
           "summary": "Public archive parity recorded separately from pending site delivery."
+        },
+        {
+          "date": "2026-10-05",
+          "summary": "Canonical delivery recorded separately from research assurance."
         }
       ]
     }
@@ -24627,6 +24646,10 @@
     {
       "date": "2026-10-05",
       "summary": "Registered IHC publication attempt."
+    },
+    {
+      "date": "2026-10-05",
+      "summary": "Internally heated convection publication delivered with canonical readback."
     }
   ]
 }
