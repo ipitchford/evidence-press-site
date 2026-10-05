@@ -1,0 +1,201 @@
+{
+  "slug": "internally-heated-convection-flux-bounds",
+  "title": "How much heat must escape through the floor?",
+  "shortTitle": "Internally heated convection flux bounds",
+  "oneLine": "A minimum-principle argument raises the guaranteed heat loss through the base of an internally heated fluid, with different scaling laws for rigid and stress-free plates.",
+  "abstract": "For infinite-Prandtl convection in a periodic slab with fixed horizontal periods, a written candidate proves bottom heat-flux lower bounds of order (R log R)^(−1/3) for no-slip plates and R^(−1/2) for stress-free plates. A drift-independent temperature ceiling closes the proof. Numerical prefactors remain estimates; finite-window flow data and finite-range roll scans illustrate, rather than establish, the continuum theorem.",
+  "datePublished": "2026-10-05",
+  "version": "2.1.0-candidate",
+  "doi": "10.5281/zenodo.23172948",
+  "conceptDoi": "10.5281/zenodo.23172947",
+  "zenodoUrl": "https://zenodo.org/records/23172948",
+  "repoUrl": "https://github.com/ipitchford/internally-heated-convection-flux-bounds",
+  "releaseUrl": "https://github.com/ipitchford/internally-heated-convection-flux-bounds/releases/tag/v2.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/internally-heated-convection-flux-bounds/releases/download/v2.1.0-candidate/manuscript.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23172948/files/manuscript.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Unrefereed written mathematical candidate with supplied review actioned and internal supporting replay. No formal or independently authenticated verification.",
+  "evidence": "Written PDE proofs; 194 supporting arithmetic checks in normal and optimized Python; off-grid profile and snapshot regression controls. No fresh full simulation campaign.",
+  "math": true,
+  "keywords": [
+    "internally heated convection",
+    "infinite Prandtl number",
+    "minimum principle",
+    "Stokes kernel",
+    "heat transport"
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "Imagine a layer of fluid that generates heat throughout its interior. Both its floor and ceiling are kept cold. Warm fluid rises, so convection tends to carry more heat upwards. But can it make the heat escaping through the floor arbitrarily small?\n\nThis mathematical candidate gives stronger limits on how small that bottom heat loss can become. It studies an idealized regime called infinite Prandtl number, where the velocity responds through a Stokes equation. The horizontal size is fixed, and the solutions are assumed to remain classical.\n\nThe answer depends on the boundaries. With rigid, no-slip plates, the guaranteed heat loss decreases roughly as the inverse cube root of the heating parameter, with a logarithmic correction. With stress-free plates, the bound decreases as the inverse square root. These improve the powers in earlier unconditional bounds, within the stated fixed-domain setting.\n\nThe proof starts with a minimum principle: temperature stays nonnegative. A pointwise estimate then limits how strongly fluid motion can carry heat at each height. An integrating factor turns that local restriction into a lower bound on the heat leaving the base. Finally, a temperature ceiling removes an unknown feature of the particular flow from the estimate.\n\nThe distinction between proof and calculation matters. The exponents follow from written analytical arguments. Sampled decimal prefactors are estimates, not certified numerical bounds. The stored simulations cover finite time windows and do not establish long-time statistical convergence.\n\nThe review also uncovered a useful caution. One temperature profile appeared to satisfy an inequality at every sampled grid point, yet exceeded it very close to the upper wall. New boundary-slope and between-grid checks detect that effect. It does not disprove the corresponding stationary hypothesis.\n\nThe result does not show that any actual flow reaches these bounds, and it does not solve the finite-Prandtl or arbitrary-domain problem. The manuscript and supporting checks are available on Evidence Press as an unrefereed candidate. This is synthetic speech.",
+  "relatedWorks": [
+    {
+      "citation": "Arslan and Rojas (2025), New bounds for heat transport in internally heated convection at infinite Prandtl number. Earlier unconditional exponents.",
+      "url": "https://doi.org/10.1063/5.0209505"
+    },
+    {
+      "citation": "Chen et al. (2024), Temperature and heat flux bounds of convection driven by non-uniform internal heating. Related conditional profile bound.",
+      "url": "https://doi.org/10.1007/s10409-024-23630-x"
+    },
+    {
+      "citation": "Sondak, Smith and Waleffe (2015), Optimal heat transport solutions for Rayleigh–Bénard convection. Competing roll optima.",
+      "url": "https://doi.org/10.1017/jfm.2015.615"
+    },
+    {
+      "citation": "Wen, Takla, Goluskin and Chini, Steady Rayleigh–Bénard convection: strongly nonlinear high-wavenumber rolls. Three-tenths scaling precedent.",
+      "url": "https://arxiv.org/abs/2212.05407"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied candidate and review, bounded source comparison and explicit review response; no reconstructed discovery metrics.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Supplied research package; original model identity not established",
+      "Codex review revisions and publication checks"
+    ],
+    "humanRole": "Publication authorization only; no scientific contribution inferred.",
+    "disclosure": "Anonymous is scholarly creator. Supplied review actioned; independent reviewer identity and affiliation are not authenticated."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "GitHub and Zenodo are public; all four release assets downloaded and matched to frozen local bytes."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Written PDE proofs; 194 supporting arithmetic checks in normal and optimized Python; off-grid profile and snapshot regression controls. No fresh full simulation campaign."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Not established by this workflow."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Actual cross-version replay environment recorded; historical pinned environment and full simulations not rerun."
+    }
+  },
+  "keyResults": [
+    "No-slip bottom-flux order (R log R)^(−1/3) at fixed horizontal periods.",
+    "Stress-free bottom-flux order R^(−1/2) under the same solution assumptions.",
+    "An eventual drift-independent temperature ceiling removes a solution-dependent parameter.",
+    "Finite-window profiles and sampled roll optima remain numerical illustrations."
+  ],
+  "problem": {
+    "name": "Bottom heat loss in internally heated infinite-Prandtl convection",
+    "url": "https://arxiv.org/abs/2403.14407"
+  },
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/internally-heated-convection-flux-bounds.mp3",
+      "name": "Internally heated convection — audio briefing",
+      "description": "Synthetic explanation, not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/internally-heated-convection-flux-bounds.txt"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:internally-heated-convection-flux-bounds",
+    "attemptIds": [
+      "ep-attempt:internally-heated-convection-flux-bounds-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "reusable-method",
+      "description": "A minimum-principle argument raises the guaranteed heat loss through the base of an internally heated fluid, with different scaling laws for rigid and stress-free plates.",
+      "scope": "Global classical infinite-Prandtl solutions; fixed horizontal periods; uniform heating and isothermal plates."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Minimum principle and wall Stokes estimates supply a local flux inequality; integrating factor and eventual temperature ceiling give fixed-domain lower bounds.",
+      "remainingRisks": [
+        "Written continuum arguments not formally verified.",
+        "Decimal constants are not uniform enclosures.",
+        "Finite windows and finite scans do not establish asymptotic attainment."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorized; no human scientific contribution inferred.",
+      "Future independent specialist assessment remains possible."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/2403.14407",
+        "inheritedClaim": "Earlier unconditional bounds and common nondimensionalization.",
+        "inheritedAssuranceCeiling": "Comparator, not verification of the new proof."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "specialistReview",
+        "formalVerification",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Specialist scrutiny of the continuum proof and independent validated kernel estimates.",
+      "claimCeiling": "Unrefereed written candidate with internal supporting replay."
+    },
+    "impactClaims": [
+      {
+        "id": "internally-heated-convection-flux-bounds-no-impact",
+        "aim": "science",
+        "outcome": "A minimum-principle argument raises the guaranteed heat loss through the base of an internally heated fluid, with different scaling laws for rigid and stress-free plates.",
+        "setting": "AI-assisted mathematical research and publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched-assurance comparison is registered.",
+        "estimand": "No discovery-speed, cost, adoption or impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "audioUrl": "/assets/audio/internally-heated-convection-flux-bounds.mp3",
+  "citeText": "Anonymous (2026). Heat escaping through the base of internally heated convection at infinite Prandtl number. Version 2.1.0-candidate. https://doi.org/10.5281/zenodo.23172948"
+}
