@@ -1,0 +1,193 @@
+{
+  "slug": "seven-cycle-fourth-power-upper112",
+  "title": "A tighter bound for four seven-cycles",
+  "shortTitle": "Four seven-cycles: at most 112",
+  "oneLine": "An exact finite exclusion narrows the independence-number interval to 108–112; the precise answer remains open.",
+  "abstract": "This computer-assisted candidate excludes every 113-word independent set in the fourth strong power of the seven-cycle. A complete cubic catalogue, exhaustive band-allocation checks and integer completion certificates give 108 ≤ α(C₇^⊠4) ≤ 112, improving the historical upper endpoint 115 recorded in 2019. Auxiliary results classify maximum-square boundary traces, exclude the zero-saturation-excess balanced 112 case, determine the square-factor gadget maximum 106 and certify feasibility of a specified two-block moment relaxation at 109–112. These scoped results do not determine the exact independence number or Shannon capacity.",
+  "datePublished": "2026-10-05",
+  "version": "v0.1.0-candidate",
+  "doi": "10.5281/zenodo.23160075",
+  "conceptDoi": "10.5281/zenodo.23160074",
+  "zenodoUrl": "https://zenodo.org/records/23160075",
+  "repoUrl": "https://github.com/ipitchford/seven-cycle-fourth-power-upper112",
+  "releaseUrl": "https://github.com/ipitchford/seven-cycle-fourth-power-upper112/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/seven-cycle-fourth-power-upper112/releases/download/v0.1.0-candidate/paper.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23160075/files/paper.pdf?download=1",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "statusDetail": "Unrefereed computer-assisted mathematical candidate. Producer-side exact replay and internal semantic checks are distinct from unaffiliated reproduction, formal verification and external peer review.",
+  "evidence": "Complete cubic census; exhaustive adjacent and nonadjacent band allocations; additions-only RUP checks and exact integer completion inequalities. Acceptance receipts identify the complete replay scope.",
+  "math": true,
+  "keywords": [
+    "Shannon capacity",
+    "strong graph product",
+    "seven-cycle",
+    "independence number",
+    "computer-assisted proof",
+    "exact certificates"
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "audioContentVersioned": true,
+  "ogContentVersioned": true,
+  "narration": "Imagine sending a four-symbol message, where each symbol has seven possible values arranged around a circle. Neighbouring values can be confused. Two messages are safely distinguishable if at least one position separates them by more than one step around that circle.\n\nHow many messages can we choose so that every pair is distinguishable? A construction with one hundred and eight messages has been known since two thousand and two. The historical upper bound was one hundred and fifteen.\n\nThis candidate lowers that upper bound to one hundred and twelve. The exact answer remains unknown: it could still be any integer from one hundred and eight to one hundred and twelve.\n\nThe proof starts by supposing that one hundred and thirteen messages exist. Split them into seven layers according to one symbol. Each pair of neighbouring layers can contain at most thirty-three messages. Counting these overlapping pairs forces at least two to reach that maximum.\n\nThere are two possibilities: the maximum pairs share a layer, or they do not. The evidence package checks both cases exhaustively, using a complete catalogue of smaller codes. Every surviving partial arrangement is ruled out by an inequality evaluated with exact integers.\n\nThe package also records useful limits on future approaches. One particular construction using two-dimensional ingredients can reach at most one hundred and six messages. A specified moment relaxation is too weak to settle the remaining gap. Neither statement rules out a better construction by other means.\n\nReaders can inspect the mathematical reductions, source code, certificates and full replay instructions. This is an unrefereed computer-assisted candidate, not a determination of Shannon capacity or an independently formalised proof.\n\nThis is Evidence Press, A tighter bound for four seven-cycles, dated the fifth of October twenty twenty-six. The paper and evidence are linked on the release page. This synthetic AI voice is an explanation, not additional scientific evidence.",
+  "relatedWorks": [
+    {
+      "citation": "Vesel and Žerovnik (2002). Improved lower bound on the Shannon capacity of C7. Original 108 construction; publisher abstract checked, full text unavailable in this revision.",
+      "url": "https://doi.org/10.1016/S0020-0190(01)00229-0"
+    },
+    {
+      "citation": "Polak and Schrijver (2019). New lower bound on the Shannon capacity of C7 from circular graphs. Table 1 records the historical fourth-power bounds 108–115.",
+      "url": "https://doi.org/10.1016/j.ipl.2018.11.006"
+    },
+    {
+      "citation": "Itty, Rosin, Carstensen and Reichman (2026), v2. Improved lower bounds for the Shannon capacity of odd cycles.",
+      "url": "https://arxiv.org/abs/2607.21517v2"
+    },
+    {
+      "citation": "Gao (2026), v1. A recursive construction improving the lower bound on the Shannon capacity of C7. The gadget construction examined here.",
+      "url": "https://arxiv.org/abs/2607.27869v1"
+    },
+    {
+      "citation": "Buys, Polak and Zuiddam (2026), v1. Lean-verified lower bounds for the Shannon capacity of odd cycles. Valid-tuple reformulation and higher-dimensional iteration.",
+      "url": "https://arxiv.org/abs/2607.29681v1"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Derived from the revised manuscript and dated claim-to-source audit. Scientific replay, archive publication and canonical website readback are recorded separately.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Codex mathematical analysis, code and exact replay",
+      "Codex review response and publication preparation"
+    ],
+    "humanRole": "The user authorized the research and publication and supplied an AI-assisted review; no human scholarly contribution is inferred.",
+    "disclosure": "Anonymous is the scholarly creator; Evidence Press is the publisher. Internal checks and the supplied AI-assisted review are not authenticated external specialist review."
+  },
+  "reviews": [],
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "Immutable GitHub prerelease and published Zenodo DOI 10.5281/zenodo.23160075 verified against frozen assets. Full downloads matched for the manuscript formats and checksum list; provider digests and sizes matched for the evidence bundle."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Fresh complete main replay passed all 1,016 classes in both A and N, with prerequisite checks and actual successful exits. All scoped auxiliaries passed separately. Frozen package checks, normal/optimized runs and semantic negative controls passed. Producer-side verification, not unaffiliated reproduction."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Not established by this producer-side workflow."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Not established by this producer-side workflow."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Not established by this producer-side workflow."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Not established by this producer-side workflow."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Not established by this producer-side workflow."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Portable Python and C++ source and exact certificates; no unaffiliated replay established."
+    }
+  },
+  "keyResults": [
+    "108 ≤ α(C₇^⊠4) ≤ 112; the exact value remains open.",
+    "Consequently α(C₇^⊠5) ≤ 392.",
+    "All 1,003,520 oriented maximum-square traces classified by their largest cubic extension.",
+    "At size 112 with no 33-band, zero saturation excess is excluded.",
+    "Maximum 106 within two square-factor Gao gadgets, including nonmaximum seeds.",
+    "The specified two-block invariant degree-three relaxation is feasible at 109–112."
+  ],
+  "problem": {
+    "name": "What is the independence number of the fourth strong power of the seven-cycle?",
+    "url": "https://arxiv.org/html/1808.07438v2"
+  },
+  "media": [],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:seven-cycle-fourth-power-upper112",
+    "attemptIds": [
+      "ep-attempt:seven-cycle-fourth-power-upper112-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Exact finite exclusion of every 113-word independent set.",
+      "scope": "Fourth strong power of C7; lower witness 108, upper bound 112, exact optimum unknown."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Band normalization, exact trace relations, physical allocation coverage and integer completion bounds connect graph codes to the checked finite instances.",
+      "remainingRisks": [
+        "Written reductions and checkers are not formally verified.",
+        "Complete census and encoding semantics remain part of the trusted mathematical argument.",
+        "Bounded source search does not establish priority."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authorized by the user.",
+      "Specialists can assess the semantic reductions, exhaustive coverage and literature comparison."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "specialistReview",
+        "formalVerification",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated full replay and audit of the graph-to-encoding reductions.",
+      "claimCeiling": "Producer-checked unrefereed candidate; exact independence number remains open."
+    },
+    "impactClaims": [
+      {
+        "id": "seven-cycle-fourth-power-upper112-no-impact",
+        "aim": "science",
+        "outcome": "An inspectable finite upper-bound certificate and scoped auxiliary results",
+        "setting": "AI-assisted mathematical research and publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched-assurance comparison is registered.",
+        "estimand": "No discovery-speed, cost, adoption or impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "citeText": "Anonymous (2026). An upper bound of 112 for the fourth strong power of the seven-cycle. v0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23160075"
+}
