@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['steady-stream-power-landscapes'] = require('./landscape-art').draw;
 art['internally-heated-convection-flux-bounds'] = require('./ihc-art').draw;
 art['compact-cross-compliance-contact'] = require('./friction-art').draw;
 // Equal aggregate masses with distinct allocations of shapes 1, 1 and 2.
@@ -2032,6 +2033,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'steady-stream-power-landscapes': ['#65ddd0', '#f6c76d'],
   'cooper-spencer-temporal-unimodality': ['#2dd4bf', '#fbbf24'],
   'quartic-inverse-coefficients': ['#89c8ad', '#dab583'],
   'two-class-transposition-profiles': ['#a78bfa', '#2dd4bf'],
