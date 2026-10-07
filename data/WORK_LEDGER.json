@@ -24182,9 +24182,9 @@
       "workId": "ep-work:planar-transport-map-sensitivity-certificates",
       "cohort": "prospective",
       "registeredAt": "2026-10-07T07:20:49Z",
-      "status": "active",
-      "statusAt": "2026-10-07T07:20:49Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-07T08:41:51Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -24266,23 +24266,109 @@
         "outcome": null
       },
       "measurement": {
-        "status": "not-recorded",
-        "missingnessReason": "Registered at publication intake; human effort, compute, cost and rework are not instrumented. Milestones will be appended at the assurance endpoint.",
-        "milestones": [],
+        "status": "measured-partial",
+        "missingnessReason": "Publication is complete: exact canonical readback passed twice (deployments of main 36d5f98 and 9290f77). The 0.1.0 research by the Codex assistant and the external review are left-censored. Human effort, compute, cost and rework were not instrumented; agent wall time from the local publication state is recorded in its closeout, not entered here, because blocked and rework minutes were not separated.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-07T07:20:49Z",
+            "basis": "Ledger registration at publication intake."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-10-07T08:36:13Z",
+            "basis": "Guarded deployment of commit 36d5f98 (https://b1fc2e63.evidence-press.pages.dev) passed exact canonical protocol and release-record readbacks and published-URL preservation at https://evidencepress.org/releases/planar-transport-map-sensitivity-certificates/; GitHub and Zenodo assets verified by full download."
+          }
+        ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
-        "agentRuns": null,
+        "agentRuns": 1,
         "reworkMinutes": null,
-        "correctionCount": null
+        "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Publication in progress at registration; the assurance endpoint is assessed after canonical readback and will be appended as a dated revision."
+        "status": "measured-partial",
+        "assessedAt": "2026-10-07T08:36:13Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/releases/tag/v0.2.0-candidate",
+              "https://zenodo.org/records/23205731",
+              "https://evidencepress.org/releases/planar-transport-map-sensitivity-certificates/"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/blob/v0.2.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/blob/v0.2.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/blob/v0.2.0-candidate/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/blob/v0.2.0-candidate/PRIOR_ART.md"
+            ]
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate: possible-winner envelope valid for every realisation of a coefficient box, tightness linear in the radius, convergent subdivision with realised lower bounds, three-atom calibration; producer replay including from a fresh extraction; no formal verification, independent reproduction, specialist or journal review; novelty bounded by the recorded search.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/planar-transport-map-sensitivity-certificates/",
+          "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/releases/tag/v0.2.0-candidate",
+          "https://zenodo.org/records/23205731",
+          "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/blob/v0.2.0-candidate/ASSURANCE.md",
+          "https://github.com/ipitchford/evidence-press-site/pull/458",
+          "https://github.com/ipitchford/evidence-press-site/pull/459"
+        ],
+        "missingnessReason": "Public GitHub/Zenodo assets passed digest and download parity and canonical site delivery passed exact readback. These establish availability, not mathematical correctness. The separately implemented geometry covers only the overlay; the external review of 0.1.0 is of unrecorded authorship and the cross-vendor model review is producer-coordinated, so neither establishes specialist review."
       },
       "releaseSlug": "planar-transport-map-sensitivity-certificates",
       "stopReason": null,
@@ -24293,10 +24379,28 @@
           "resultClass": "pending",
           "reason": "Prospective registration at publication intake; the review actions were in progress at registration.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-07T08:41:51Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Publication complete after exact canonical readback: GitHub prerelease and published Zenodo record with byte-identical assets, guarded deployments of 36d5f98 and 9290f77 with exact protocol and release-record readbacks. The result-ready/positive representation records actual completion while the terminal published status requires resource telemetry that was not instrumented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/planar-transport-map-sensitivity-certificates/",
+            "https://zenodo.org/records/23205731",
+            "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/releases/tag/v0.2.0-candidate",
+            "https://github.com/ipitchford/evidence-press-site/pull/458",
+            "https://github.com/ipitchford/evidence-press-site/pull/459"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-07",
+          "summary": "Recorded the completed candidate publication after exact canonical readback; retained the frozen intake and forecast, null resource telemetry, and the internal-versus-independent assurance boundary. Recorded in a separate ledger-only cycle because the closure was omitted from the readback commit."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -25077,6 +25181,10 @@
     {
       "date": "2026-10-07",
       "summary": "Registered the planar transport-map sensitivity certificate publication attempt (review actions in progress at registration; the 0.1.0 research and the external review are left-censored)."
+    },
+    {
+      "date": "2026-10-07",
+      "summary": "Planar transport-map sensitivity certificates publication delivered with canonical readback; attempt closed as result-ready/positive with the assurance endpoint."
     }
   ]
 }
