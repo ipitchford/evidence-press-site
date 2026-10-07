@@ -10,6 +10,20 @@ two-parameter Szöllősi family of complex Hadamard matrices. It includes the
 family's boundary and degenerate cases, not just sampled parameter values.
 It does **not** settle the full six-dimensional problem.
 
+**External development — 7 October 2026.** OpenAI's collection includes a
+[paper claiming the unrestricted maximum is three](https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026).
+Its [formalization scope document](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/docs/266.md)
+explicitly distinguishes that claim from the linked five-basis bound and
+supporting Fourier statements. Those statements do not certify exclusion of
+four arbitrary bases. The manuscript describes a completed computation, but
+the referenced verification sources and execution archive were not present in
+its directory at the audited commit; no repository release assets supplied
+them either. We therefore did not replay that computation and do not treat the
+general problem as resolved on this evidence. A verified unrestricted result
+would subsume this release's family-specific exclusion, but would not certify
+its implementation. The original archive, briefings and assurance remain
+unchanged. See the [scope and checking record](https://github.com/ipitchford/evidence-press-site/blob/main/docs/audits/openai-math-20261007.md).
+
 The method separates finding possible solutions from checking them. A numerical
 program proposes small regions containing candidate vectors. A separately
 implemented checker must prove that those regions cover every relevant vector

@@ -35,6 +35,10 @@ All have exact `/api/v1/` aliases. The individual claim is also available at
 
 ## Obligation boundary
 
+For external proof-assistant inputs, use [formal claim mapping](FORMAL_CLAIM_MAPPING.md).
+Compilation, exact statement correspondence and allowed-axiom checking are
+separate obligations; none promotes this pilot's existing receipts automatically.
+
 The pilot keeps these six obligations separate:
 
 1. the Paley(17) lower bound;

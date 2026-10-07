@@ -1,0 +1,4 @@
+'OAI.SeymourSecondNeighborhood.exists_goodVertex' depends on axioms: [propext, Classical.choice, Quot.sound]
+OAI.SeymourSecondNeighborhood.exists_goodVertex.{u_1} {V : Type u_1} [Fintype V] [DecidableEq V] [Nonempty V]
+  (r : V → V → Prop) (hr : OAI.SeymourSecondNeighborhood.IsOriented r) :
+  ∃ v, OAI.SeymourSecondNeighborhood.GoodVertex r v
