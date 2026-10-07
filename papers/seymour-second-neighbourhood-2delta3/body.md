@@ -1,10 +1,26 @@
 ## Summary
 
-In a directed network, each point sends arrows to some others: follower relations, say, or who-beats-whom in a tournament. Paul Seymour conjectured in 1990 that every such network, if no two points point at each other, has a point that reaches at least as many new points in two steps as it does in one. This is the *second neighbourhood conjecture*. It is one of the best-known open problems about directed graphs. It is proved for tournaments, where every pair is connected, and for networks where every point has at most seven outgoing arrows, although the seven case is claimed only in a recent unrefereed preprint.
+In a directed network, each point sends arrows to some others: follower relations, say, or who-beats-whom in a tournament. Paul Seymour conjectured in 1990 that every such network, if no two points point at each other, has a point that reaches at least as many new points in two steps as it does in one. This is the *second neighbourhood conjecture*. At the original release it was one of the best-known open problems about directed graphs; see the dated development below. It is proved for tournaments, where every pair is connected, and for networks where every point has at most seven outgoing arrows, although the seven case is claimed only in a recent unrefereed preprint.
 
-This release studies the densest case that remains open: networks with exactly $2\delta+3$ points, where $\delta$ is the smallest number of outgoing arrows. It does not settle that case. It proves strong restrictions on what a counterexample would have to look like, and uses them to make a large computer search feasible. The search rules out a counterexample with 17 points, so any counterexample must have at least 18. A separate part of the paper shows that a natural route to a general proof cannot work. That route extends the classical tournament proof by weighting points with a probability distribution. The same examples show that a stronger conjecture, attributed to DeVos in a 2006 survey, is false as printed there.
+This release studies what was then the densest unresolved case: networks with exactly $2\delta+3$ points, where $\delta$ is the smallest number of outgoing arrows. It does not settle that case. It proves strong restrictions on what a counterexample would have to look like, and uses them to make a large computer search feasible. The search rules out a counterexample with 17 points, so any counterexample must have at least 18. A separate part of the paper shows that a natural route to a general proof cannot work. That route extends the classical tournament proof by weighting points with a probability distribution. The same examples show that a stronger conjecture, attributed to DeVos in a 2006 survey, is false as printed there.
 
-**The decisive qualification:** Seymour's conjecture remains open, and so does the case $n = 2\delta+3$. This is an unrefereed candidate, checked by the producing workflow, not by independent mathematicians.
+**Scope of this release:** this candidate does not prove Seymour's conjecture or settle the case $n = 2\delta+3$. Its original account of those questions as open should now be read alongside the external development below. It remains an unrefereed candidate, checked by the producing workflow, not by independent mathematicians.
+
+**External development — 7 October 2026.** OpenAI's collection includes a
+[claimed proof of the full conjecture](https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/A-proof-of-Seymours-second-neighborhood-conjecture-September-23-2026),
+with a [Lean statement covering finite nonempty oriented graphs](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/docs/173.md).
+The second neighbourhood excludes both the starting vertex and its direct
+out-neighbours; sinks are allowed. A local build and an explicit statement
+check passed; Lean reported only `propext`, `Classical.choice` and `Quot.sound`
+as axioms. A hardened Comparator run and second-kernel check were not performed.
+This is not an external review of this release or a new verification of its
+SAT encoding. If the general result is accepted, it supersedes the need to
+search for counterexamples, including at $n=2\delta+3$. The archived finite
+certificates remain inspectable, and the distinct refutations of weighted
+strengthenings do not follow from, or conflict with, the unweighted conjecture.
+See the [scope and checking record](https://github.com/ipitchford/evidence-press-site/blob/main/docs/audits/openai-math-20261007.md).
+The original PDF and briefings describe the original release; they have not
+been rewritten to incorporate this development.
 
 ## Summary for specialists
 
@@ -74,5 +90,8 @@ From the research repository (Python 3.10+ with NumPy and SciPy), run `python sc
 
 - An independent rerun of the 379 retained LRAT refutations, and specialist checking of the written proofs of Theorems 4.3, 5.2 and 6.1, which the SAT reduction relies on.
 - A machine-checked version of the reduction from the graph statement to the formula.
-- The case $(19,8)$. The same encoding gives 631 cubes, some of them slow. If the $\delta = 7$ preprint is confirmed, excluding $(19,8)$ would give an order bound of 20.
-- A pointwise bound on minimum-degree in-neighbours close to the average $\delta/4$.
+- A hardened statement-and-axiom check of the external general proof. Further
+  counterexample searches, including the original $(19,8)$ proposal, should not
+  be prioritised without first resolving that proof's status.
+- Further study of the distinct weighted-strengthening obstructions, which a
+  proof of the ordinary conjecture does not remove.

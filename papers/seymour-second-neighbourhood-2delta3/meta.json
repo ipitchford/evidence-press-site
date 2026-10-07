@@ -2,8 +2,8 @@
   "slug": "seymour-second-neighbourhood-2delta3",
   "title": "Seymour's second neighbourhood conjecture at order 2δ+3: structure of counterexamples, a certified 18-vertex lower bound, and a refutation of DeVos's conjecture as recorded in Sullivan's survey",
   "shortTitle": "Eighteen vertices, and a DeVos counterexample",
-  "oneLine": "A candidate study of the densest open case of Seymour's conjecture proves structural limits, certifies that every counterexample has at least 18 vertices, and refutes DeVos's conjecture as printed in Sullivan's survey.",
-  "abstract": "This unrefereed candidate studies hypothetical counterexamples to Seymour's second neighbourhood conjecture with n = 2δ+3 vertices, the first order beyond Brukhman's dense-case theorem. It proves that such a counterexample has at least four perfect vertices, at least n/4 vertices of minimum out-degree and a linear number of minimum-degree in-neighbours at every vertex. Using these as constraints, a cube-and-conquer SAT computation with 379 retained LRAT proofs, each accepted by two checkers (one with a formally verified core), excludes (n, δ) = (17, 7), so every counterexample has at least 18 vertices. It shows that no losing density need satisfy Fisher's averaged inequality, at arbitrarily large girth, which refutes DeVos's conjecture as printed in Sullivan's survey. The conjecture and its case n = 2δ+3 remain open.",
+  "oneLine": "A candidate study gives structural restrictions and finite certificates for Seymour's conjecture, and refutes DeVos's printed strengthening; a dated note addresses the subsequent general-proof claim.",
+  "abstract": "This unrefereed candidate studies hypothetical counterexamples to Seymour's second neighbourhood conjecture with n = 2δ+3 vertices, the first order beyond Brukhman's dense-case theorem. It proves that such a counterexample has at least four perfect vertices, at least n/4 vertices of minimum out-degree and a linear number of minimum-degree in-neighbours at every vertex. Using these as constraints, a cube-and-conquer SAT computation with 379 retained LRAT proofs, each accepted by two checkers (one with a formally verified core), excludes (n, δ) = (17, 7), so every counterexample has at least 18 vertices. It shows that no losing density need satisfy Fisher's averaged inequality, at arbitrarily large girth, which refutes DeVos's conjecture as printed in Sullivan's survey. This release does not settle the conjecture; a 7 October note records a separately checked external general-proof claim.",
   "datePublished": "2026-09-24",
   "version": "0.1.0-candidate",
   "doi": "10.5281/zenodo.22947147",
@@ -56,12 +56,12 @@
     "Lemma 3.1 of Glover's claimed proof (arXiv:2501.00614v14) is false as literally stated."
   ],
   "evidence": "Written proofs; exact verifiers in normal and optimized Python with semantic negative controls; an encoder tested up to (17, 7); 379 + 25 retained LRAT proofs accepted by two checkers; byte-exact replay of every formula; a 42-gate publication-ready run; internal editorial records.",
-  "statusDetail": "Unrefereed candidate. Seymour's conjecture and its case n = 2δ+3 remain open. The reduction to the SAT formula rests on written proof and is not machine-checked; independent reproduction, specialist and journal review, and unconditional novelty are not established.",
+  "statusDetail": "Unrefereed candidate. See the 7 October external-development note for the general-proof claim and local Lean check. This release's SAT reduction remains a written, unformalised argument; independent reproduction, specialist and journal review, and unconditional novelty are not established.",
   "openProblems": [
     "Obtain unaffiliated specialist examination of the written proofs behind the SAT constraints, and an independent rerun of the 379 LRAT refutations.",
-    "Raise the pointwise bound on minimum-degree in-neighbours towards the average δ/4 and test whether, with k = B + 𝒟, it excludes counterexamples at n = 2δ+3.",
+    "Complete a hardened statement-and-axiom audit of the pinned external general proof before investing in further counterexample searches.",
     "Decide whether the support-restricted reading of DeVos's conjecture fails at every girth.",
-    "Extend the certified exclusion to (19, 8); the same encoding yields 631 cubes, some of them slow."
+    "Use the retained finite certificates as inspectable historical examples rather than assuming further counterexample exclusions remain a research priority."
   ],
   "relatedWorks": [
     {
