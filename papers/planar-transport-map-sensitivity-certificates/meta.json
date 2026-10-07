@@ -1,0 +1,307 @@
+{
+  "slug": "planar-transport-map-sensitivity-certificates",
+  "title": "Exact sensitivity certificates for planar transport maps: coefficient uncertainty, a convergent box refinement and a sharp three-atom calibration",
+  "shortTitle": "Exact sensitivity certificates for planar transport maps",
+  "oneLine": "Exact rational certificates for how far an optimal transport map on a polygon can move when the coefficients of the comparison potential are only known to lie in a box: a possible-winner envelope valid for every realisation, a proof that its gap is linear in the box radius, and a convergent bisection that brackets the true worst case with a lower bound reached by an explicit realisation.",
+  "abstract": "This unrefereed candidate gives an exact-arithmetic certificate procedure for finite affine-max transport maps from a uniform source on a rational convex polygon. It computes the squared L² discrepancy between two maps, separately certifies the target transport cost by an exact primal–dual witness, and bounds the map discrepancy uniformly over an independent affine-coefficient box by a possible-winner envelope that needs neither fixed cell combinatorics nor fixed target masses. The envelope relaxes the problem in two distinct ways, and an admissible two-plane family shows that its relative conservatism is unbounded: the envelope is 4 while the sharp maximum is ε²/4. The note proves that the gap is nevertheless linear in the largest coefficient radius, with an explicit rational constant, and derives a convergent box-subdivision refinement returning a certified interval around the sharp maximum whose lower end is attained by an explicit point of the box. A two-parameter extension of an existing three-atom construction gives closed formulas for map error, target distance and their difference, with a corner maximum on admissible rectangles. A bounded 65-case benchmark compares the envelope with the elementary slope-diameter bound, with explicit realisations and with the refinement. Version 0.2.0 actions an external review of the unpublished version 0.1.0 in full.",
+  "datePublished": "2026-10-07",
+  "version": "0.2.0-candidate",
+  "doi": "10.5281/zenodo.23205731",
+  "conceptDoi": "10.5281/zenodo.23205730",
+  "zenodoUrl": "https://zenodo.org/records/23205731",
+  "pdfUrl": "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/releases/download/v0.2.0-candidate/planar-transport-map-sensitivity-certificates-v0.2.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23205731/files/planar-transport-map-sensitivity-certificates-v0.2.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates",
+  "releaseUrl": "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/releases/tag/v0.2.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/planar-transport-map-sensitivity-certificates.mp3",
+      "name": "Audio briefing",
+      "description": "AI-generated communication, not additional mathematical evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/planar-transport-map-sensitivity-certificates.txt"
+    }
+  ],
+  "keywords": [
+    "optimal transport",
+    "Brenier map",
+    "semi-discrete transport",
+    "power diagram",
+    "stability of transport maps",
+    "coefficient uncertainty",
+    "interval certificate",
+    "branch and bound",
+    "exact rational arithmetic",
+    "computer-assisted mathematics"
+  ],
+  "problem": {
+    "name": "Quantitative stability of optimal transport maps under perturbation of the target (Mérigot–Delalande–Chazal 2020; Delalande–Mérigot 2023; Letrouit 2026, Conjecture 3)",
+    "url": "https://doi.org/10.5802/crmath.834"
+  },
+  "keyResults": [
+    "Theorem 2: for every single realisation of an independent coefficient box around the comparison potential, the squared map discrepancy F is at most the possible-winner envelope B, computed exactly by a finite line arrangement; no fixed cell combinatorics, positive masses or fixed target masses are assumed.",
+    "Proposition 3 (adverse family, supplied by the external review and rederived): on K = [1,2]×[0,1] with u = x₁ and v_b = max{x₁, b x₁ + ε}, b ∈ [−1,1], the envelope is 4 while sup F = ε²/4 at the interior parameter b = 1 − ε/2; the two relaxations cost factors 8/ε² and exactly 2.",
+    "Theorem 4 (tightness): 0 ≤ B − F(u, v_nominal) ≤ 2rΛ + 2r² + 4rR_K D_K n(n−1)Λ/|K|, linear in the largest radius with an explicit rational constant; a margin form and a slope-separation form follow.",
+    "Theorem 6 (convergent subdivision): any finite cover of the box by sub-boxes gives LB ≤ sup F ≤ UB with UB − LB bounded by the tightness constant at the largest sub-box radius; best-first bisection with centre and endpoint probes returns a valid interval at every budget, the lower end attained by an explicit point of the box (within 0.12 % of ε²/4 after 256 sub-boxes on the adverse family).",
+    "Theorem 7 and Corollary 8: on the two-parameter three-atom family, F = H(s,b) + (a+s)b² and W₂² = |s| + (a+s)b² with an exact primal–dual witness; the overlap coupling is target-optimal exactly when |s| ≥ |b|; the maximum of F over an admissible rectangle is attained at a corner; a 65-case benchmark records B/B₀, LB/B, UB/B, regions, time and memory."
+  ],
+  "evidence": "Paper (11 pages) with complete proofs of P1–P7 and an accessible proof text; a standard-library Python implementation in exact rational arithmetic (overlay, primal–dual witness, envelope, baseline, tightness constant, subdivision refinement); 14 test methods including a separately implemented geometry algorithm, 404 adverse-family grid evaluations, the tightness inequality on 108 random boxes, semantic negative controls and malformed-input rejections; three recorded example recomputations; a 65-case benchmark recomputed exactly by its --check mode; producer replay of the frozen files and a fresh-extraction replay of the archive with an altered-result negative control; SHA-256 manifest; the response to the external review of version 0.1.0 and the findings of a cross-vendor adversarial review of the new results.",
+  "statusDetail": "Unrefereed candidate produced by AI systems. Written scoped proofs and an exact implementation replayed by the producer, including from a fresh extraction of the frozen archive. An external review of the unpublished version 0.1.0 (authorship not recorded) recommended major revisions and found no counterexample; every item was actioned. The new results of 0.2.0 were sent to a cross-vendor model prompted to refute them; its findings were applied before freezing. No independent rerun, formal verification, specialist or journal review; novelty is established only within a bounded literature search.",
+  "openProblems": [
+    "A refinement whose cost is polynomial rather than exponential in the box dimension 3n, for example compatibility-aware pointwise costs or coordinate-wise relaxations with a proved tightening.",
+    "An independent rerun of the archive by an unaffiliated party and an independently written envelope computation (the tests contain a second geometry only for the overlay).",
+    "A weighted or higher-dimensional integration backend; the proofs of Theorems 2, 4 and 6 do not use the dimension, but no concrete application has yet justified the implementation.",
+    "Certified enclosures of the dual intercepts from given uncertainty in target sites and prescribed masses, which would connect the direct coefficient box to the inverse semi-discrete problem."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Mérigot, Delalande and Chazal (2020). Quantitative stability of optimal transport maps and linearization of the 2-Wasserstein space. PMLR 108, 3186–3196, with supplement. The L² map distance from a fixed source; Lemma 5.1 of the supplement already gives square-root sensitivity with fixed positive atom masses.",
+      "url": "https://proceedings.mlr.press/v108/merigot20a.html",
+      "doi": null
+    },
+    {
+      "citation": "Delalande and Mérigot (2023). Quantitative stability of optimal transport maps under variations of the target measure. Duke Math. J. 172(17), 3321–3357. Fixed source, varying target: the closest stability context, with exponent 1/6 in the compact convex case.",
+      "url": "https://doi.org/10.1215/00127094-2022-0106",
+      "doi": "10.1215/00127094-2022-0106"
+    },
+    {
+      "citation": "Letrouit (2026). Unstable optimal transport maps. C. R. Math. 364, 333–344. No exponent above 1/3 for a uniform source on a suitable bounded open set; conjectures 1/2 for convex sources.",
+      "url": "https://doi.org/10.5802/crmath.834",
+      "doi": "10.5802/crmath.834"
+    },
+    {
+      "citation": "Divol, Niles-Weed and Pooladian (2025). Tight stability bounds for entropic Brenier maps. IMRN 2025(7), rnaf078. Semi-discrete map stability of order W₂^{1/3} for discrete targets with possibly different supports.",
+      "url": "https://doi.org/10.1093/imrn/rnaf078",
+      "doi": "10.1093/imrn/rnaf078"
+    },
+    {
+      "citation": "Bansil and Kitagawa (2022). Quantitative stability in the geometry of semi-discrete optimal transport. IMRN 2022(10), 7354–7389. Cell stability when masses change on a fixed site set, without a lower bound on individual masses.",
+      "url": "https://doi.org/10.1093/imrn/rnaa355",
+      "doi": "10.1093/imrn/rnaa355"
+    },
+    {
+      "citation": "An, Lei and Gu (2022). Approximate discrete optimal transport plan with auxiliary measure method. ECCV 2022, LNCS, 619–635. The common-source overlay coupling, and the observation that it need not be optimal.",
+      "url": "https://doi.org/10.1007/978-3-031-20050-2_36",
+      "doi": "10.1007/978-3-031-20050-2_36"
+    },
+    {
+      "citation": "Xie, Cheng, Yiu, Sun and Chen (2013). UV-diagram: a Voronoi diagram for uncertain spatial databases. VLDB J. 22, 319–344. Possible-nearest-neighbour regions from distance envelopes: the same screening principle as the possible-winner envelope, in a different setting.",
+      "url": "https://doi.org/10.1007/s00778-012-0290-x",
+      "doi": "10.1007/s00778-012-0290-x"
+    },
+    {
+      "citation": "OpenAI mathematics repository, family 374 (25 September 2026). Sharp one-third stability of Brenier maps, section 'Sharpness on a fixed cube'. The three-atom construction extended here; its general theorem is neither used nor validated.",
+      "url": "https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Sharp-One-Third-Stability-of-Brenier-Maps-September-25-2026",
+      "doi": null
+    }
+  ],
+  "citeText": "Anonymous (2026). Exact sensitivity certificates for planar transport maps: coefficient uncertainty, a convergent box refinement and a sharp three-atom calibration. Version 0.2.0-candidate. Evidence Press. 10.5281/zenodo.23205731.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "The 0.1.0 research (OpenAI Codex assistant, 7 October 2026), the external review supplied by the publisher, the 0.2.0 revision (Anthropic Claude), the cross-vendor adversarial review, the fresh-extraction replay and publication are recorded separately; the research phase before publication intake is left-censored in the work ledger.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex assistant (version 0.1.0 research, code and manuscript) under user direction",
+      "Claude (Anthropic) research agent (version 0.2.0: new theorems, refinement, benchmark, literature, package and publication)",
+      "OpenAI GPT-5.6 ('Sol') as adversarial reviewer of the new results",
+      "Python standard library (exact rational arithmetic); pdfTeX"
+    ],
+    "humanRole": "The publisher selected the opportunity from an agent-compiled shortlist, supplied an external review of version 0.1.0 and authorised actioning it in full and publishing the result; scholarly creator Anonymous. No human mathematical contribution is claimed.",
+    "disclosure": "AI-produced research, computation and drafting in two stages by different vendors' models. An external review of unrecorded authorship, supplied by the publisher, recommended major revisions of the unpublished 0.1.0; all items were addressed. A cross-vendor model reviewed the new results adversarially; its findings were applied. None of these is specialist or journal peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23205731",
+      "note": "Public GitHub prerelease v0.2.0-candidate and published Zenodo record (4 files each); every file matched the SHA-256 sums by provider checksum and by full download from both providers."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/blob/v0.2.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Tests in normal and optimised Python, three exact CLI recomputations, the 65-case benchmark recomputation and the manifest, on the frozen files and from a fresh extraction of the archive with an altered-result negative control; the fresh-extraction receipt is a release asset."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/blob/v0.2.0-candidate/ENVIRONMENT.txt",
+      "note": "Standard library only; interpreter and platform recorded; CI repeats the replay on CPython 3.12 and 3.13 on Linux. No container image."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated party has reported rerunning the archive."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The separately implemented geometry in the tests covers the overlay only and comes from the same producer workflow; the external review of 0.1.0 reported an independent oracle agreeing on 13 box integrals and 8 overlays, which is not redistributed."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof assistant; the written proofs, the implementation and CPython's rational arithmetic are trusted."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "A same-model internal review, an external review of unrecorded authorship and a cross-vendor adversarial model review do not establish specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or venue review."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:planar-transport-map-sensitivity-certificates",
+    "attemptIds": [
+      "ep-attempt:planar-transport-map-sensitivity-certificates-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [],
+    "accelerationPrimitives": [
+      "certificate-first",
+      "adversarial-controls",
+      "certified-decision-margin",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "For every realisation of an affine-coefficient box, the squared map discrepancy is at most the possible-winner envelope; the gap is linear in the box radius; bisection returns a certified interval around the sharp maximum with a realised lower bound.",
+      "scope": "Uniform source on a rational convex planar polygon; finite affine-max potentials; targets are the pushforwards of the supplied potentials (not a prescribed-mass solver)."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "CLAIMS.json binds each of P1–P7 to its proof section, implementing function and test; the AI index maps claims to code; the trusted base is listed in ASSURANCE.md.",
+      "remainingRisks": [
+        "The implementation and CPython's Fraction arithmetic are trusted; no formal verification.",
+        "The envelope has no second implementation; only the overlay does.",
+        "Uniform refinement is exponential in the box dimension; the benchmark covers n ≤ 8 planes."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Assess Theorem 4 (strip-area argument, merged-index bookkeeping) and Theorem 6 (pruning and termination).",
+      "Assess whether the benchmark families are representative of an intended application.",
+      "Publication is authorised; external review is a separate dimension."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview",
+        "noveltyAssessment",
+        "priorityAssessment"
+      ],
+      "nextAction": "An unaffiliated rerun of the archive and an independently written envelope computation; specialist review of Theorems 4 and 6.",
+      "claimCeiling": "Unrefereed candidate. Written scoped proofs and exact replay by the producer; no formal verification, independent reproduction or specialist review."
+    },
+    "impactClaims": [
+      {
+        "id": "planar-transport-map-sensitivity-certificates-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable exact certificates with proved tightness and convergence",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "schemaVersion": "1.0",
+      "reviewId": "planar-transport-map-sensitivity-certificates-external-review-2026-10-07",
+      "reviewClass": "external-review",
+      "status": "published",
+      "subject": {
+        "canonicalUrl": "https://evidencepress.org/releases/planar-transport-map-sensitivity-certificates/",
+        "doi": null,
+        "version": "0.1.0 (local bundle of 7 October 2026, never public)",
+        "releaseTag": null,
+        "title": "Exact sensitivity certificates for planar transport maps: coefficient uncertainty and a sharp three-atom calibration"
+      },
+      "reviewer": {
+        "name": "External reviewer (identity and affiliation not recorded); report supplied by the publisher",
+        "independence": "external, unverified"
+      },
+      "assessment": {
+        "title": "Full review and prospective REF-style assessment of version 0.1.0",
+        "date": "2026-10-07",
+        "recommendation": "Major revisions"
+      },
+      "limitationsAndNonClaims": [
+        "The report's text and audit bundle are not redistributed; the response summarises every item.",
+        "Reviewer identity and expertise are not recorded; this record does not establish specialist or journal peer review."
+      ],
+      "assuranceImpact": {
+        "changesVerificationStatus": false,
+        "changesPeerReviewedFlag": false,
+        "changesIndependentReproductionFlag": false,
+        "changesFormalVerificationFlag": false,
+        "explanation": "A publisher-supplied report of unrecorded authorship; it led to new theorems, a benchmark, literature additions and two software repairs, but does not change the assurance dimensions."
+      },
+      "publication": {
+        "publicUrl": "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/blob/v0.2.0-candidate/REVIEW_RESPONSE.md",
+        "publicSummary": "Found no counterexample to P1–P5 and reproduced all documented commands with an independent exact geometry oracle. Requested: an exact adverse example and both sources of the envelope's looseness; a completed literature comparison; a benchmark against the elementary baseline; a proved refinement with feasible lower bounds; tightness conditions; two software repairs and minor corrections. All items were addressed in version 0.2.0: Proposition 3, Theorems 4 and 6, Table 1, the 65-case benchmark, the refinement implementation, and the repairs."
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "reviewId": "planar-transport-map-sensitivity-certificates-adversarial-model-review-2026-10-07",
+      "reviewClass": "research-assessment",
+      "status": "published",
+      "subject": {
+        "canonicalUrl": "https://evidencepress.org/releases/planar-transport-map-sensitivity-certificates/",
+        "doi": null,
+        "version": "working version 0.2.0 of 7 October 2026, before freezing",
+        "releaseTag": null,
+        "title": "Exact sensitivity certificates for planar transport maps: coefficient uncertainty, a convergent box refinement and a sharp three-atom calibration"
+      },
+      "reviewer": {
+        "name": "OpenAI GPT-5.6 ('Sol'), prompted to refute",
+        "independence": "producer-coordinated"
+      },
+      "assessment": {
+        "title": "Cross-vendor adversarial review of Proposition 3, Theorems 4 and 6 and the refinement code",
+        "date": "2026-10-07",
+        "recommendation": "Theorem 4 not refuted; three wording and interface defects found (an overstated heading, a termination claim needing a positive tolerance, a returned realisation that was not a literal box point) and repaired before freezing"
+      },
+      "assuranceImpact": {
+        "changesVerificationStatus": false,
+        "changesPeerReviewedFlag": false,
+        "changesIndependentReproductionFlag": false,
+        "changesFormalVerificationFlag": false,
+        "explanation": "Producer-coordinated model review does not establish external peer review, reproduction or formal proof."
+      },
+      "publication": {
+        "publicUrl": "https://github.com/ipitchford/planar-transport-map-sensitivity-certificates/blob/v0.2.0-candidate/STATUS.md",
+        "publicSummary": "Findings and dispositions are recorded in STATUS.md; the review transcript is not redistributed."
+      }
+    }
+  ],
+  "narration": "Optimal transport asks how to move one distribution of mass onto another at least cost; the answer is a map sending each source point to a destination. A long-standing question is how much that map can change when the target changes only a little. The unsettling answer is that the map can move much further than the target does.\n\nThis release from Evidence Press gives exact certificates for that movement in a planar setting: a uniform source on a polygon, and maps that come from maxima of finitely many planes. The method computes exactly how far two maps differ, checks the transport cost between the two targets by an exact witness, and, when the coefficients of the second map are only known to lie in a box, returns a bound that holds for every single choice inside the box, without assuming that cells keep their shape or that any mass stays positive.\n\nThat bound can be far too generous. A two-plane example supplied by an external reviewer has a bound of four while the true worst case is one four-hundredth. The release turns this weakness into a theorem: the gap shrinks in proportion to the size of the box, with an explicit constant. Cutting the box into pieces therefore gives a certified bracket around the true worst case, whose lower end is reached by an explicit choice of coefficients; on the reviewer's example the bracket closes to within a tenth of a percent after two hundred and fifty-six pieces.\n\nThe result is an unrefereed candidate. The proofs are short and the code runs in exact arithmetic, but nothing has been formally verified, independently reproduced or peer reviewed.\n\nThe paper, code, tests and benchmark are linked from this page and archived on Zenodo as version zero point two point zero candidate, released in October 2026. This summary uses an AI-generated voice. It is a communication aid, not additional mathematical evidence."
+}

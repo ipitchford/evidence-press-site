@@ -859,6 +859,14 @@ SPECS['square-maximises-dirichlet-ratio-quadrilaterals'] = {
  hero:'<div class="eq-label">first two Dirichlet eigenvalues</div><div class="eq">λ₂/λ₁ ≤ <span class="hl">5/2</span></div><div class="note">triangles ≤ 7/3 (2022)<br><b>quadrilaterals ≤ 5/2 (this candidate)</b><br>all planar shapes ≤ 2.539 (1992)</div><div class="eq-foot">equality only for the square</div>'
 };
 
+SPECS['planar-transport-map-sensitivity-certificates'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 7 OCTOBER 2026','OPTIMAL TRANSPORT · V0.2.0'],
+ head:['When the target moves,','<em>certify the map.</em>'], headSize:76,
+ sub:'Exact certificates for how far a planar transport map can move when its coefficients are only known to lie in a box, with a convergent refinement.',
+ tag:'EXACT RATIONAL CERTIFICATES · UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">worst case over the coefficient box</div><div class="eq">4 → <span class="hl">1/400</span></div><div class="note">possible-winner envelope: 1600× loose<br><b>bisection bracket: within 0.12 %</b><br>lower bound reached by an explicit slope</div><div class="eq-foot">adverse family, ε = 1/10</div>'
+};
+
 const escapeHtml = value => String(value == null ? '' : value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');

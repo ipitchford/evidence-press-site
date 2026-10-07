@@ -1,0 +1,9 @@
+Optimal transport asks how to move one distribution of mass onto another at least cost; the answer is a map sending each source point to a destination. A long-standing question is how much that map can change when the target changes only a little. The unsettling answer is that the map can move much further than the target does.
+
+This release from Evidence Press gives exact certificates for that movement in a planar setting: a uniform source on a polygon, and maps that come from maxima of finitely many planes. The method computes exactly how far two maps differ, checks the transport cost between the two targets by an exact witness, and, when the coefficients of the second map are only known to lie in a box, returns a bound that holds for every single choice inside the box, without assuming that cells keep their shape or that any mass stays positive.
+
+That bound can be far too generous. A two-plane example supplied by an external reviewer has a bound of four while the true worst case is one four-hundredth. The release turns this weakness into a theorem: the gap shrinks in proportion to the size of the box, with an explicit constant. Cutting the box into pieces therefore gives a certified bracket around the true worst case, whose lower end is reached by an explicit choice of coefficients; on the reviewer's example the bracket closes to within a tenth of a percent after two hundred and fifty-six pieces.
+
+The result is an unrefereed candidate. The proofs are short and the code runs in exact arithmetic, but nothing has been formally verified, independently reproduced or peer reviewed.
+
+The paper, code, tests and benchmark are linked from this page and archived on Zenodo as version zero point two point zero candidate, released in October 2026. This summary uses an AI-generated voice. It is a communication aid, not additional mathematical evidence.

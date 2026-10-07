@@ -2384,6 +2384,9 @@ art['rational-laguerre-mosaics'] = mosaicAbrasionArt.mosaics;
 palette['rational-laguerre-mosaics'] = ['#a9d9f5','#f3c17c'];
 art['centroidal-equilibrium-creation'] = mosaicAbrasionArt.abrasion;
 palette['centroidal-equilibrium-creation'] = ['#efb8c9','#f3d38b'];
+const transportSensitivityArt = require('./transport-sensitivity-art');
+art['planar-transport-map-sensitivity-certificates'] = transportSensitivityArt.draw;
+palette['planar-transport-map-sensitivity-certificates'] = ['#f2c46f', '#8ed6ea'];
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
@@ -2406,6 +2409,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'kagome-aklt-spectral-gap') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${akltArt.description}</desc><defs>`);
   if (slug === 'regular-heptagon-octagon-local-minimality') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${polygonsArt.description}</desc><defs>`);
   if (slug === 'square-maximises-dirichlet-ratio-quadrilaterals') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${quadrilateralRatioArt.description}</desc><defs>`);
+  if (slug === 'planar-transport-map-sensitivity-certificates') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${transportSensitivityArt.description}</desc><defs>`);
   if (slug === 'bunkbed-flow-obstructions') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${bunkbedArt.description}</desc><defs>`);
   if (slug === 'szollosi-mub-exclusion') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${szollosiArt.description}</desc><defs>`);
   if (slug === 'modular-code-obstructions') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${modularCodeArt.description}</desc><defs>`);
