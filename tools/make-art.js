@@ -2385,6 +2385,8 @@ palette['rational-laguerre-mosaics'] = ['#a9d9f5','#f3c17c'];
 art['centroidal-equilibrium-creation'] = mosaicAbrasionArt.abrasion;
 palette['centroidal-equilibrium-creation'] = ['#efb8c9','#f3d38b'];
 const transportSensitivityArt = require('./transport-sensitivity-art');
+art['efx-nine-chores'] = require('./efx-nine-art').draw;
+palette['efx-nine-chores'] = ['#8ed6ea','#f2c46f'];
 art['planar-transport-map-sensitivity-certificates'] = transportSensitivityArt.draw;
 palette['planar-transport-map-sensitivity-certificates'] = ['#f2c46f', '#8ed6ea'];
 for (const slug of requested) {

@@ -1,0 +1,202 @@
+{
+  "slug": "efx-nine-chores",
+  "title": "Nine chores for three agents: complete EFX existence with an exact computational certificate",
+  "shortTitle": "Nine chores for three agents",
+  "oneLine": "Any nine indivisible chores can be shared among three agents with a strong fairness guarantee—even when their additive costs disagree and some chores cost nothing.",
+  "abstract": "A computer-assisted candidate proof establishes complete EFX existence for three agents and nine chores with arbitrary nonnegative additive real costs, including deletion of owned zero-cost chores. A written reduction gives a canonical 21-variable counterexample domain; exact input reconstruction, rational Farkas certificates and reverse unit propagation refute it. The package includes a rational-input allocation finder, a general minimum-lowering lemma and a supplementary finite representative bound. It does not settle arbitrary chore counts or validate real-world cost elicitation.",
+  "datePublished": "2026-10-08",
+  "version": "1.1.0-candidate",
+  "doi": "10.5281/zenodo.23234194",
+  "conceptDoi": "10.5281/zenodo.23234193",
+  "zenodoUrl": "https://zenodo.org/records/23234194",
+  "pdfUrl": "https://github.com/ipitchford/efx-nine-chores/releases/download/v1.1.0-candidate/efx-nine-chores-v1.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23234194/files/efx-nine-chores-v1.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/efx-nine-chores",
+  "releaseUrl": "https://github.com/ipitchford/efx-nine-chores/releases/tag/v1.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/efx-nine-chores.mp3",
+      "name": "Audio briefing",
+      "description": "Synthetic speech; communication, not additional evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/efx-nine-chores.txt"
+    }
+  ],
+  "keywords": [
+    "fair division",
+    "chores",
+    "EFX",
+    "additive costs",
+    "exact certificates",
+    "linear real arithmetic"
+  ],
+  "problem": {
+    "name": "Three-agent EFX existence for nine chores",
+    "url": "https://arxiv.org/abs/2609.10585v2"
+  },
+  "keyResults": [
+    "Theorem 1: complete EFX allocation exists for every nonnegative additive real-cost instance with three agents and nine chores; every owned chore, including zero-cost chores, is covered.",
+    "Lemma 3: lowering one global minimum in each row to zero preserves nonexistence for any finite number of agents and chores.",
+    "The exact unbounded 21-variable counterexample formula is refuted by 370,780 rational arithmetic axioms and 172,146 RUP deductions.",
+    "For rational costs an exhaustive fixed-size finder returns an allocation with all 18 literal deletion comparisons; bit complexity depends on input size."
+  ],
+  "evidence": "Written reductions and precise source dependencies; exact SMT input; complete selected arithmetic and Boolean proof objects; standard-library checkers and semantic controls; normal and optimized internal replay; exact allocation finder and worked example; manifest and AI index.",
+  "statusDetail": "Unrefereed candidate: written reduction and internally replayed exact computational certificate; no end-to-end formal verification, established external reproduction or specialist peer review. The supplied review recommended minor revisions and did not identify a mathematical defect. Reviewer identity and independence are not established; prospective star ratings are not publication assurance.",
+  "openProblems": [
+    "An unaffiliated rerun and a separately implemented checker would strengthen assurance.",
+    "Formalise the written reduction and input semantics, not only the arithmetic refutation.",
+    "Investigate ten chores after a fresh prior-art check; no claim about that case is made here."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Zhang (2026), EFX Allocations for Three Agents and Seven or Eight Chores, v2. Theorem 1.2 supplies the eight-chore baseline; Section 6 leaves nine chores open.",
+      "url": "https://arxiv.org/abs/2609.10585v2"
+    },
+    {
+      "citation": "Kobayashi, Mahara and Sakamoto, EFX Allocations for Indivisible Chores: Matching-Based Approach. Full-preprint Lemma 4.2 supplies shared-cheapest insertion; Theorem 3.1 covers at most twice as many chores as agents.",
+      "url": "https://doi.org/10.1016/j.tcs.2024.115010",
+      "doi": "10.1016/j.tcs.2024.115010"
+    },
+    {
+      "citation": "He and Tao (2026), EFX for Additive Chores. Nonexistence for every number of agents at least four does not settle the present three-agent case.",
+      "url": "https://arxiv.org/abs/2606.08872"
+    },
+    {
+      "citation": "Alkassar, Fouz and Mehlhorn (2026), Complete EFX Allocations Exist for Four Additive Agents and Up to Nine Goods. Computational precedent for goods, not this chore theorem.",
+      "url": "https://arxiv.org/abs/2608.08590"
+    },
+    {
+      "citation": "Akrami et al. (2026), A Counterexample to EFX via SAT-Solving, v3. Section 9 validates an abstract encoding in Lean; it is not end-to-end implementation verification.",
+      "url": "https://arxiv.org/abs/2604.18216v3"
+    }
+  ],
+  "citeText": "Anonymous (2026). Nine chores for three agents. Version 1.1.0-candidate. Evidence Press. 10.5281/zenodo.23234194.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied research and review, revised and internally checked at publication intake on 8 October 2026. Discovery effort and reviewer identity are not reconstructed.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI research agents in the supplied package; exact originating model not established",
+      "OpenAI Codex assistant: review actions, internal replay and publication"
+    ],
+    "humanRole": "Publication authority; no human research or verification contribution asserted.",
+    "reviewStatus": "Unrefereed candidate: written reduction and internally replayed exact computational certificate; no end-to-end formal verification, established external reproduction or specialist peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23234194",
+      "note": "Published GitHub/Zenodo assets verified against the frozen local archive; availability is not proof or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/efx-nine-chores/blob/v1.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Internal exact replay and semantic/adversarial controls; not an unaffiliated reproduction."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/efx-nine-chores/blob/v1.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Standard-library checking, pinned input and full proof objects; Darwin skips the unsupported address-space cap. No container or unaffiliated environment replay."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:efx-nine-chores",
+    "attemptIds": [
+      "ep-attempt:efx-nine-chores-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [],
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "Exact refutation of every canonical nine-chore EFX counterexample, combined with written reductions.",
+      "scope": "Three agents, nine chores, nonnegative additive real costs."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Written reduction plus allocation-by-allocation reconstruction ties the exact real formula to failure of EFX.",
+      "remainingRisks": [
+        "Written mathematics, parser and checker/runtime are trusted; no end-to-end formalisation."
+      ]
+    },
+    "humanJudgmentGates": [
+      "External specialist assessment remains open; no human research judgement is claimed."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "independentReimplementation",
+        "formalVerification",
+        "specialistReview"
+      ],
+      "nextAction": "Unaffiliated replay and specialist assessment of the semantic reduction.",
+      "claimCeiling": "Unrefereed candidate: written reduction and internally replayed exact computational certificate; no end-to-end formal verification, established external reproduction or specialist peer review."
+    },
+    "impactClaims": [
+      {
+        "id": "efx-nine-chores-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable fixed-size fair-division theorem and certificates",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No acceleration or empirical welfare effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "narration": "Three people have nine chores to share. They may disagree completely about which jobs are unpleasant. Can the chores always be divided with a strong fairness guarantee?\n\nThis Evidence Press candidate says yes, provided each person’s costs add across chores. The guarantee is called envy-freeness up to any chore. Remove any one chore from your own bundle, even a chore you consider costless. What remains must be no more costly, by your own standards, than either person’s entire bundle. It does not mean everyone receives the same number of chores, or that their total burdens are equal.\n\nThe proof first narrows any hypothetical counterexample to twenty-one real variables. There are nineteen thousand six hundred and eighty-three complete assignments. The formula handles assignments where everyone has at least one chore. A written argument covers the other assignments. Separate checking software checks each step of the contradiction, using exact fractions and elementary logical deductions. It does not simply accept a solver’s verdict.\n\nThe package also includes an allocation finder. Given rational costs, it returns a division and the eighteen inequalities that let a reader check it directly. The result extends an earlier eight-chore existence theorem. It does not settle arbitrary numbers of chores, strategic reporting or real-world measurement of inconvenience.\n\nThis remains an unrefereed candidate. Internal replay is not independent external reproduction, and the complete proof has not been formalised in a proof assistant. The paper, source code and proof objects accompany Nine chores for three agents, released on the eighth of October twenty twenty-six. This briefing uses an AI-generated voice and is not additional mathematical evidence."
+}
