@@ -24407,9 +24407,9 @@
       "workId": "ep-work:efx-nine-chores",
       "cohort": "prospective",
       "registeredAt": "2026-10-08T08:52:41Z",
-      "status": "active",
-      "statusAt": "2026-10-08T09:12:53Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-08T09:23:32Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -24466,7 +24466,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Research time, token costs and human effort not instrumented; publication still underway.",
+        "missingnessReason": "Publication delivery verified. Active effort, aggregate compute and token telemetry were not instrumented; unknown values remain null, not inferred from wall duration.",
         "milestones": [
           {
             "event": "work-opened",
@@ -24477,6 +24477,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-08T09:12:53Z",
             "basis": "Frozen archive preflight, green Linux CI and public GitHub/Zenodo asset verification; not site delivery."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-08T09:23:32Z",
+            "basis": "Completed authorized publication with exact canonical readback, separately from the earlier research-assurance endpoint."
           }
         ],
         "activeHumanMinutes": null,
@@ -24563,10 +24568,26 @@
             "https://github.com/ipitchford/efx-nine-chores/releases/tag/v1.1.0-candidate",
             "https://zenodo.org/records/23234194"
           ]
+        },
+        {
+          "at": "2026-10-08T09:23:32Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Canonical site delivery verified after guarded deployment and exact protocol/release readback. GitHub and Zenodo assets match the frozen archive. Result-ready/positive records the completed research result; terminal published metrics require active-resource measurements that were not instrumented, so no duration or token values are invented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/efx-nine-chores/",
+            "https://github.com/ipitchford/evidence-press-site/pull/461",
+            "https://zenodo.org/records/23234194"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-08",
+          "summary": "Recorded completed canonical site delivery without changing the frozen intake, forecast or earlier research-assurance endpoint. Resource telemetry remains explicitly unknown."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -25359,6 +25380,10 @@
     {
       "date": "2026-10-08",
       "summary": "Recorded nine-chores research assurance separately from pending canonical site delivery."
+    },
+    {
+      "date": "2026-10-08",
+      "summary": "Recorded canonical delivery of the nine-chores EFX candidate, separately from research assurance; no acceleration or impact claim."
     }
   ]
 }
