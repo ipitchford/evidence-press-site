@@ -52,6 +52,10 @@ Start with the research repository's **AI_INDEX.md** and the complete release ZI
 
 Do not mistake the receipt binder for a replay: it checks consistency among existing receipts but executes no proof steps. For a quick practical check, run `python3 src/solve_efx9.py examples/costs9.json --out allocation.json`. The returned example has bundle sizes five, two and two and supplies all 18 original deletion comparisons. Equal numbers of chores are not required.
 
+## The most valuable next projects
+
+The first priority is to reduce the trust placed in this implementation: an unaffiliated replay and a separately implemented check of the formula-to-allocation correspondence would address different risks. Extending the number of chores is a subsequent research problem, not a substitute for checking this result. The concrete open directions below distinguish those goals.
+
 ## What is in the evidence package
 
 The scientific manuscript and editable sources; original exact proof objects and historical receipts; revised portable orchestration; allocation finder and worked example; adversarial controls; source-comparison and review-response records; component licence map; versioned manifests; and an agent-readable evidence index. Large proof streams are included in the downloadable archive. The banner illustrates the paper's worked example; audio is a communication aid, not additional evidence.
