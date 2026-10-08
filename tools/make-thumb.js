@@ -867,6 +867,13 @@ SPECS['planar-transport-map-sensitivity-certificates'] = {
  hero:'<div class="eq-label">worst case over the coefficient box</div><div class="eq">4 → <span class="hl">1/400</span></div><div class="note">possible-winner envelope: 1600× loose<br><b>bisection bracket: within 0.12 %</b><br>lower bound reached by an explicit slope</div><div class="eq-foot">adverse family, ε = 1/10</div>'
 };
 
+SPECS['binary-quadratic-informational-substitutes'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 8 OCTOBER 2026','BINARY SIGNALS · QUADRATIC SCORE'],
+ head:['Every disclosure.','<em>Four tests.</em>'], headSize:82,
+ sub:'An exact diminishing-returns criterion for two yes-or-no signals.',
+ tag:'UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">two endpoints · both orders</div><div class="eq eq-sm">Mₐ₀ ≥ 0 &nbsp; Mₐ₁ ≥ 0<br><span class="hl">Mᵦ₀ ≥ 0 &nbsp; Mᵦ₁ ≥ 0</span></div><div class="note">All pass: every admissible disclosure.<br><b>One fails: a concrete witness.</b></div><div class="eq-foot">fixed score · precise scope in the paper</div>'
+};
 const escapeHtml = value => String(value == null ? '' : value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
