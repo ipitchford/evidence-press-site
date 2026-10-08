@@ -24594,9 +24594,9 @@
       "workId": "ep-work:binary-quadratic-informational-substitutes",
       "cohort": "prospective",
       "registeredAt": "2026-10-08T12:12:30.111Z",
-      "status": "active",
-      "statusAt": "2026-10-08T12:37:37Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-08T12:47:24Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -24653,7 +24653,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Active time, tokens and aggregate compute not instrumented; publication ongoing.",
+        "missingnessReason": "Publication delivery verified. Active effort, aggregate compute and token telemetry were not instrumented; unknown values remain null, not inferred from wall duration.",
         "milestones": [
           {
             "event": "work-opened",
@@ -24664,6 +24664,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-08T12:37:37Z",
             "basis": "Archive-bound preflight, green Linux CI and public asset parity; not site delivery."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-08T12:47:24Z",
+            "basis": "Completed authorized publication with exact canonical readback, separately from the earlier research-assurance endpoint."
           }
         ],
         "activeHumanMinutes": null,
@@ -24750,10 +24755,26 @@
             "https://github.com/ipitchford/binary-quadratic-informational-substitutes/releases/tag/v1.1.0-candidate",
             "https://zenodo.org/records/23238557"
           ]
+        },
+        {
+          "at": "2026-10-08T12:47:24Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Canonical site delivery verified after guarded deployment and exact protocol/release readback. GitHub and Zenodo assets match the frozen archive. Result-ready/positive records the completed research result; terminal published metrics require active-resource measurements that were not instrumented, so no duration or token values are invented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/binary-quadratic-informational-substitutes/",
+            "https://github.com/ipitchford/evidence-press-site/pull/463",
+            "https://zenodo.org/records/23238557"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-08",
+          "summary": "Recorded canonical site delivery without changing the frozen intake, forecast or earlier research-assurance endpoint. Resource telemetry remains explicitly unknown."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -25558,6 +25579,10 @@
     {
       "date": "2026-10-08",
       "summary": "Recorded binary-quadratic research assurance separately from site delivery."
+    },
+    {
+      "date": "2026-10-08",
+      "summary": "Recorded canonical delivery of the binary quadratic informational-substitutes candidate, separately from research assurance; no acceleration or impact claim."
     }
   ]
 }
