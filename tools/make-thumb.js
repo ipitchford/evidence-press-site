@@ -881,6 +881,13 @@ SPECS['hartree-small-charge-rigidity'] = {
  tag:'UNREFEREED CANDIDATE',
  hero:'<div class="eq-label">one uniform small-charge interval</div><div class="eq">0 &lt; q &lt; q₀</div><div class="note">The unique minimiser:<br><b>a ball, up to translation.</b></div><div class="eq-foot">fixed volume · analytic proof candidate</div>'
 };
+SPECS['bol-prime-cube-classification'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 9 OCTOBER 2026','BOL LOOPS · PRIME-CUBE ORDER'],
+ head:['Many descriptions.','<em>One classification.</em>'], headSize:78,
+ sub:'Explicit representatives at every prime, with the small cases kept distinct.',
+ tag:'UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">centrally nilpotent · ordinary isomorphism</div><div class="eq">11 <span class="hl">/ p + 10</span></div><div class="note">At p = 2 / at every odd prime.<br><b>Five groups included in each total.</b></div><div class="eq-foot">written all-prime proof · finite replay checks</div>'
+};
 const escapeHtml = value => String(value == null ? '' : value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
