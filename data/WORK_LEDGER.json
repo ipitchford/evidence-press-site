@@ -24781,9 +24781,9 @@
       "workId": "ep-work:hartree-small-charge-rigidity",
       "cohort": "prospective",
       "registeredAt": "2026-10-09T19:56:02.472Z",
-      "status": "active",
-      "statusAt": "2026-10-09T20:05:40.509Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-09T20:21:26.599Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -24840,7 +24840,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Active time, token and aggregate compute telemetry unavailable.",
+        "missingnessReason": "Publication delivery verified. Active effort, aggregate compute and token telemetry were not instrumented; unknown values remain null.",
         "milestones": [
           {
             "event": "work-opened",
@@ -24851,6 +24851,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-09T20:05:40.509Z",
             "basis": "Archive preflight, green Linux CI and full public asset downloads; not site delivery."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-09T20:21:26.599Z",
+            "basis": "Authorised publication and exact canonical readback, separate from earlier research assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -24937,10 +24942,26 @@
             "https://github.com/ipitchford/hartree-small-charge-rigidity/releases/tag/v1.0.0-candidate",
             "https://zenodo.org/records/23269957"
           ]
+        },
+        {
+          "at": "2026-10-09T20:21:26.599Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Canonical publication verified; result-ready records the completed candidate. Terminal published metrics require unrecorded resource telemetry, so no duration/token values are invented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/hartree-small-charge-rigidity/",
+            "https://github.com/ipitchford/evidence-press-site/pull/467",
+            "https://zenodo.org/records/23269957"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-09",
+          "summary": "Recorded canonical site delivery without revising frozen intake, forecast or research-assurance endpoint; resource telemetry remains unknown."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -25757,6 +25778,10 @@
     {
       "date": "2026-10-09",
       "summary": "Recorded Hartree research assurance separately from site delivery."
+    },
+    {
+      "date": "2026-10-09",
+      "summary": "Recorded canonical Hartree publication separately from research assurance; no acceleration or impact claim."
     }
   ]
 }
