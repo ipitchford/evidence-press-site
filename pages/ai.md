@@ -70,6 +70,10 @@ Future releases also carry an optional-in-public-v1 but mandatory-at-authoring `
 - **Summarisation and syndication.** Everything is CC0. The Markdown, JSON, audio, and image assets may be reproduced in full, with the status carried along.
 - **Article reuse.** Articles may supply exposition, commentary or research questions. Preserve the byline, source links, correction history and `claimBoundary`, and follow related releases to their evidence packages before relying on a research claim.
 
+## Research workbook
+
+[Download Stuck — workbook v2 (PDF, 64 pages, 302 KB)](/assets/downloads/stuck-workbook-v2.pdf): a workbook of research mathematicians’ practices at an impasse, with exercises, evidence qualifications, and a section on machine-assisted research. This is the supplied edition dated 9 October 2026, hosted unchanged. Its quoted source material retains the rights of the original sources; hosting does not relicense those quotations or independently validate the workbook’s claims.
+
 ## Conventions in the source repositories
 
 The linked repositories share a machine-oriented layout: `AI_INDEX.md` (or `.json`) maps each claim to its evidence; `STATUS.md` and `ASSURANCE.md` draw the assurance boundary; `PROVENANCE.md` and `SOURCES.md` record attribution and external dependencies (pinned by hash where load-bearing); `MANIFEST.sha256` fixes the artefacts. Deposits are archived on Zenodo with version and concept DOIs.
