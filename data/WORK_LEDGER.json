@@ -24962,6 +24962,172 @@
           "summary": "Recorded canonical site delivery without revising frozen intake, forecast or research-assurance endpoint; resource telemetry remains unknown."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:cgf-majorisation-counterexample-publication",
+      "workId": "ep-work:cgf-majorisation-counterexample",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-09T20:32:50.269Z",
+      "status": "active",
+      "statusAt": "2026-10-09T20:41:48.114Z",
+      "resultClass": "pending",
+      "aims": [
+        "science"
+      ],
+      "question": "Action the supplied cyclotomic majorisation review and publish the revised counterexample.",
+      "selectionBasis": "Explicit publisher request with research and review bundles.",
+      "taskClass": "review-actions-and-full-candidate-publication",
+      "decisionObjectTarget": "Suffix counterexample with reduced-presentation and lower-prefix separation, exact finite arithmetic and analytic positivity.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Remaining publication from registration; earlier research and initial revisions are left-censored. No discovery duration reconstructed.",
+        "forecast": {
+          "frozenAt": "2026-10-09T20:32:50.269Z",
+          "procedureClass": "cgf-publication",
+          "targetOutcome": "Immutable research publication and canonical site readback",
+          "expectedActiveMinutes": 60,
+          "plausibleLowMinutes": 45,
+          "plausibleHighMinutes": 75,
+          "expectedUnattendedWaitMinutes": 15,
+          "referenceClass": {
+            "label": "Full candidate publication",
+            "sampleSize": 0,
+            "basis": "Procedure estimate, not observed benchmark"
+          },
+          "fermiComponents": [
+            {
+              "component": "Revisions, archive, media, providers and guarded site cycles",
+              "count": 1,
+              "lowMinutesPerUnit": 45,
+              "centralMinutesPerUnit": 60,
+              "highMinutesPerUnit": 75,
+              "basis": "Mandatory remaining work"
+            }
+          ],
+          "probabilityPositiveSignal": 0.95,
+          "probabilityTargetClosure": 0.85,
+          "probabilityHorizonMinutes": 120,
+          "assumptions": [
+            "No new integrity failure; providers remain accessible."
+          ],
+          "reforecastTriggers": [
+            "Provider or CI failure."
+          ],
+          "stopRule": "No hard cap; complete mandatory gates or report a precise blocker."
+        },
+        "outcome": null
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Active time, tokens and aggregate compute telemetry unavailable.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-09T20:32:50.269Z",
+            "basis": "Actual registration after initial intake and bounded revisions."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-10-09T20:41:48.114Z",
+            "basis": "Archive preflight, green Linux CI and full public asset downloads; not site delivery."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 1,
+        "reworkMinutes": null,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-10-09T20:41:48.114Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23270364"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/cgf-majorisation-counterexample/blob/v1.1.0-candidate/VERIFICATION.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/cgf-majorisation-counterexample/blob/v1.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed written-proof candidate with exact internal arithmetic replay. No external peer review, unaffiliated reproduction, formal verification, minimality or absolute priority is established.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/cgf-majorisation-counterexample/releases/tag/v1.1.0-candidate",
+          "https://zenodo.org/records/23270364"
+        ],
+        "missingnessReason": "Archive availability and internal finite checks established; analytic proof is not formally verified or externally peer reviewed. Site delivery pending."
+      },
+      "releaseSlug": "cgf-majorisation-counterexample",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-10-09T20:32:50.269Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Publication registered without reconstructed research clocks.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-09T20:41:48.114Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research assurance endpoint recorded; site delivery pending.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/cgf-majorisation-counterexample/releases/tag/v1.1.0-candidate",
+            "https://zenodo.org/records/23270364"
+          ]
+        }
+      ],
+      "corrections": [],
+      "revisions": []
     }
   ],
   "updatePolicy": {
@@ -25782,6 +25948,14 @@
     {
       "date": "2026-10-09",
       "summary": "Recorded canonical Hartree publication separately from research assurance; no acceleration or impact claim."
+    },
+    {
+      "date": "2026-10-09",
+      "summary": "Registered CGF majorisation publication with explicit missing research clocks."
+    },
+    {
+      "date": "2026-10-09",
+      "summary": "Recorded CGF research assurance separately from site delivery."
     }
   ]
 }

@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['cgf-majorisation-counterexample'] = require('./cgf-art').draw;
 art['hartree-small-charge-rigidity'] = require('./hartree-art').draw;
 art['steady-stream-power-landscapes'] = require('./landscape-art').draw;
 art['internally-heated-convection-flux-bounds'] = require('./ihc-art').draw;
@@ -2390,6 +2391,7 @@ art['efx-nine-chores'] = require('./efx-nine-art').draw;
 art['binary-quadratic-informational-substitutes'] = require('./binary-quadratic-art').draw;
 palette['binary-quadratic-informational-substitutes'] = ['#b5d8f4','#f4c682'];
 palette['hartree-small-charge-rigidity'] = ['#b5d8f4','#f4c682'];
+palette['cgf-majorisation-counterexample'] = ['#b3deec','#f4c882'];
 palette['efx-nine-chores'] = ['#8ed6ea','#f2c46f'];
 art['planar-transport-map-sensitivity-certificates'] = transportSensitivityArt.draw;
 palette['planar-transport-map-sensitivity-certificates'] = ['#f2c46f', '#8ed6ea'];
