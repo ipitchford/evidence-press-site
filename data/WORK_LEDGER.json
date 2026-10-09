@@ -24775,6 +24775,172 @@
           "summary": "Recorded canonical site delivery without changing the frozen intake, forecast or earlier research-assurance endpoint. Resource telemetry remains explicitly unknown."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:hartree-small-charge-rigidity-publication",
+      "workId": "ep-work:hartree-small-charge-rigidity",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-09T19:56:02.472Z",
+      "status": "active",
+      "statusAt": "2026-10-09T20:05:40.509Z",
+      "resultClass": "pending",
+      "aims": [
+        "science"
+      ],
+      "question": "Action the supplied Hartree minor-revision review and publish the revised analytic candidate.",
+      "selectionBasis": "Explicit publisher request with research bundle and full review.",
+      "taskClass": "review-actions-and-full-candidate-publication",
+      "decisionObjectTarget": "Exact small-charge ball rigidity for the quartic Hartree functional, with representative-sensitive equality.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Remaining publication from this registration; preceding research and initial editorial revision are left-censored. No discovery duration inferred.",
+        "forecast": {
+          "frozenAt": "2026-10-09T19:56:02.472Z",
+          "procedureClass": "remaining-hartree-publication",
+          "targetOutcome": "Immutable research publication and canonical site readback",
+          "expectedActiveMinutes": 50,
+          "plausibleLowMinutes": 35,
+          "plausibleHighMinutes": 80,
+          "expectedUnattendedWaitMinutes": 15,
+          "referenceClass": {
+            "label": "Remaining full publication",
+            "sampleSize": 0,
+            "basis": "Procedure estimate, not observed benchmark"
+          },
+          "fermiComponents": [
+            {
+              "component": "Archive, media, providers and guarded site cycles",
+              "count": 1,
+              "lowMinutesPerUnit": 35,
+              "centralMinutesPerUnit": 50,
+              "highMinutesPerUnit": 80,
+              "basis": "Remaining mandatory work"
+            }
+          ],
+          "probabilityPositiveSignal": 0.95,
+          "probabilityTargetClosure": 0.85,
+          "probabilityHorizonMinutes": 120,
+          "assumptions": [
+            "No new integrity failure; providers remain accessible."
+          ],
+          "reforecastTriggers": [
+            "Provider or CI failure."
+          ],
+          "stopRule": "No hard cap; complete mandatory gates or report a precise blocker."
+        },
+        "outcome": null
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Active time, token and aggregate compute telemetry unavailable.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-09T19:56:02.472Z",
+            "basis": "Actual registration after initial intake and minor revisions."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-10-09T20:05:40.509Z",
+            "basis": "Archive preflight, green Linux CI and full public asset downloads; not site delivery."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 1,
+        "reworkMinutes": null,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-10-09T20:05:40.509Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23269957"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/hartree-small-charge-rigidity/blob/v1.0.0-candidate/VERIFICATION.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/hartree-small-charge-rigidity/blob/v1.0.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed analytic proof candidate. Internal proof inspection and finite sanity checks are not external peer review, independent reproduction or formal verification. Priority remains uncertain.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/hartree-small-charge-rigidity/releases/tag/v1.0.0-candidate",
+          "https://zenodo.org/records/23269957"
+        ],
+        "missingnessReason": "Archive availability and internal finite checks established; analytic proof is not formally verified or externally peer reviewed. Site delivery pending."
+      },
+      "releaseSlug": "hartree-small-charge-rigidity",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-10-09T19:56:02.472Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Remaining publication registered without reconstructed research clocks.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-09T20:05:40.509Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research assurance endpoint recorded; site delivery pending.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/hartree-small-charge-rigidity/releases/tag/v1.0.0-candidate",
+            "https://zenodo.org/records/23269957"
+          ]
+        }
+      ],
+      "corrections": [],
+      "revisions": []
     }
   ],
   "updatePolicy": {
@@ -25583,6 +25749,14 @@
     {
       "date": "2026-10-08",
       "summary": "Recorded canonical delivery of the binary quadratic informational-substitutes candidate, separately from research assurance; no acceleration or impact claim."
+    },
+    {
+      "date": "2026-10-09",
+      "summary": "Registered remaining Hartree rigidity candidate publication; earlier research clocks not reconstructed."
+    },
+    {
+      "date": "2026-10-09",
+      "summary": "Recorded Hartree research assurance separately from site delivery."
     }
   ]
 }

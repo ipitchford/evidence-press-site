@@ -874,6 +874,13 @@ SPECS['binary-quadratic-informational-substitutes'] = {
  tag:'UNREFEREED CANDIDATE',
  hero:'<div class="eq-label">two endpoints · both orders</div><div class="eq eq-sm">Mₐ₀ ≥ 0 &nbsp; Mₐ₁ ≥ 0<br><span class="hl">Mᵦ₀ ≥ 0 &nbsp; Mᵦ₁ ≥ 0</span></div><div class="note">All pass: every admissible disclosure.<br><b>One fails: a concrete witness.</b></div><div class="eq-foot">fixed score · precise scope in the paper</div>'
 };
+SPECS['hartree-small-charge-rigidity'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 9 OCTOBER 2026','HARTREE SHAPE ENERGY'],
+ head:['Weak repulsion.','<em>Exact roundness.</em>'], headSize:78,
+ sub:'From nearly spherical minimisers to one unique shape.',
+ tag:'UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">one uniform small-charge interval</div><div class="eq">0 &lt; q &lt; q₀</div><div class="note">The unique minimiser:<br><b>a ball, up to translation.</b></div><div class="eq-foot">fixed volume · analytic proof candidate</div>'
+};
 const escapeHtml = value => String(value == null ? '' : value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
