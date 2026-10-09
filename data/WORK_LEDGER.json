@@ -25155,9 +25155,9 @@
       "workId": "ep-work:bol-prime-cube-classification",
       "cohort": "prospective",
       "registeredAt": "2026-10-09T21:20:23.044Z",
-      "status": "active",
-      "statusAt": "2026-10-09T21:27:22.539Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-09T21:41:20.705Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -25214,7 +25214,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Active time, tokens and aggregate compute telemetry unavailable.",
+        "missingnessReason": "Publication delivery verified. Active effort, aggregate compute and token telemetry were not instrumented; unknown values remain null.",
         "milestones": [
           {
             "event": "work-opened",
@@ -25225,6 +25225,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-09T21:27:22.539Z",
             "basis": "Archive preflight, green Linux CI and full public asset downloads; not site delivery."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-09T21:41:20.705Z",
+            "basis": "Authorised publication and exact canonical readback, separate from earlier research assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -25311,10 +25316,26 @@
             "https://github.com/ipitchford/bol-prime-cube-classification/releases/tag/v3.1.0-candidate",
             "https://zenodo.org/records/23270849"
           ]
+        },
+        {
+          "at": "2026-10-09T21:41:20.705Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Canonical publication verified; result-ready records the completed candidate. Terminal published metrics require unrecorded resource telemetry, so no duration/token values are invented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/bol-prime-cube-classification/",
+            "https://eb807d3f.evidence-press.pages.dev",
+            "https://zenodo.org/records/23270849"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-09",
+          "summary": "Recorded canonical site delivery without revising frozen intake, forecast or research-assurance endpoint; resource telemetry remains unknown."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -26155,6 +26176,10 @@
     {
       "date": "2026-10-09",
       "summary": "Recorded Bol research assurance separately from site delivery."
+    },
+    {
+      "date": "2026-10-09",
+      "summary": "Recorded canonical Bol publication separately from research assurance; no acceleration or impact claim."
     }
   ]
 }
