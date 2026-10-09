@@ -24968,9 +24968,9 @@
       "workId": "ep-work:cgf-majorisation-counterexample",
       "cohort": "prospective",
       "registeredAt": "2026-10-09T20:32:50.269Z",
-      "status": "active",
-      "statusAt": "2026-10-09T20:41:48.114Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-09T20:52:53.440Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -25027,7 +25027,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Active time, tokens and aggregate compute telemetry unavailable.",
+        "missingnessReason": "Publication delivery verified. Active effort, aggregate compute and token telemetry were not instrumented; unknown values remain null.",
         "milestones": [
           {
             "event": "work-opened",
@@ -25038,6 +25038,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-09T20:41:48.114Z",
             "basis": "Archive preflight, green Linux CI and full public asset downloads; not site delivery."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-09T20:52:53.440Z",
+            "basis": "Authorised publication and exact canonical readback, separate from earlier research assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -25124,10 +25129,26 @@
             "https://github.com/ipitchford/cgf-majorisation-counterexample/releases/tag/v1.1.0-candidate",
             "https://zenodo.org/records/23270364"
           ]
+        },
+        {
+          "at": "2026-10-09T20:52:53.440Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Canonical publication verified; result-ready records the completed candidate. Terminal published metrics require unrecorded resource telemetry, so no duration/token values are invented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/cgf-majorisation-counterexample/",
+            "https://github.com/ipitchford/evidence-press-site/pull/469",
+            "https://zenodo.org/records/23270364"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-09",
+          "summary": "Recorded canonical site delivery without revising frozen intake, forecast or research-assurance endpoint; resource telemetry remains unknown."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -25956,6 +25977,10 @@
     {
       "date": "2026-10-09",
       "summary": "Recorded CGF research assurance separately from site delivery."
+    },
+    {
+      "date": "2026-10-09",
+      "summary": "Recorded canonical CGF publication separately from research assurance; no acceleration or impact claim."
     }
   ]
 }
