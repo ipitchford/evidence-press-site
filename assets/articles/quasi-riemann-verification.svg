@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1150" role="img" aria-labelledby="ver-title ver-desc">
+<title id="ver-title">What the Lean check certifies</title>
+<desc id="ver-desc">A nine-line challenge states that zeta has no zeros with real part above 7/8, using Mathlib’s definition, and ends in sorry. A solution module, whose import closure has 2,924 modules and 486,483 lines once comments are removed, supplies the proof. Comparator checks that the solution proves exactly the challenge theorem, uses only the three standard axioms, and passes the Lean kernel in a sandboxed replay. Dave Goldblatt re-ran Comparator, once with the second kernel nanoda; tomoto0 rebuilt the closure with no errors. The Evidence Press static scan found no escape hatches but is only a screen. The check does not certify the paper’s prose or how the proof was found.</desc>
+<defs><linearGradient id="ver-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101d25"/><stop offset="1" stop-color="#1b3037"/></linearGradient>
+<marker id="ver-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#81ddd0" stroke-width="1.8"/></marker></defs>
+<rect width="800" height="1150" rx="20" fill="url(#ver-bg)"/>
+<path d="M40 50H84" stroke="#81ddd0" stroke-width="4"/>
+<text x="98" y="56" font-size="15" fill="#adbfbe" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" letter-spacing="2">EVIDENCE PRESS · EXPLAINER</text>
+<text x="40" y="110" font-size="36" fill="#f4efe5" font-family="Georgia, 'Times New Roman', serif">What the Lean check certifies</text>
+<text x="40" y="146" font-size="20" fill="#adbfbe" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Result family 003 · openai/math at fd4aeeb · 10 October 2026</text>
+<g font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<rect x="40" y="180" width="350" height="186" rx="12" fill="#19363b" stroke="#4ea99e" stroke-width="1.5"/>
+<text x="64" y="216" font-size="16" fill="#81ddd0" font-weight="600" letter-spacing="1.2">CHALLENGE · 9 LINES</text>
+<text x="64" y="260" font-size="26" fill="#f4efe5" font-weight="650">ζ(s) ≠ 0 if Re s &gt; 7/8</text>
+<path d="M64 282H366" stroke="#416368"/>
+<text x="64" y="316" font-size="20" fill="#d8e0dc">Uses Mathlib’s own ζ</text>
+<text x="64" y="346" font-size="20" fill="#adbfbe">Proof body: sorry</text>
+<rect x="410" y="180" width="350" height="186" rx="12" fill="#19363b" stroke="#4ea99e" stroke-width="1.5"/>
+<text x="434" y="216" font-size="16" fill="#81ddd0" font-weight="600" letter-spacing="1.2">SOLUTION · IMPORT CLOSURE</text>
+<text x="434" y="260" font-size="26" fill="#f4efe5" font-weight="650">2,924 modules</text>
+<path d="M434 282H736" stroke="#416368"/>
+<text x="434" y="316" font-size="19" fill="#d8e0dc">486,483 lines, comments removed</text>
+<text x="434" y="346" font-size="20" fill="#adbfbe">Imports Mathlib + two libraries</text>
+<path d="M215 370V420" stroke="#81ddd0" stroke-width="2.5" marker-end="url(#ver-arrow)"/>
+<path d="M585 370V420" stroke="#81ddd0" stroke-width="2.5" marker-end="url(#ver-arrow)"/>
+<rect x="40" y="430" width="720" height="214" rx="12" fill="#19363b" stroke="#4ea99e" stroke-width="1.5"/>
+<text x="64" y="466" font-size="16" fill="#81ddd0" font-weight="600" letter-spacing="1.2">COMPARATOR CHECKS THREE THINGS</text>
+<path d="M68 503l7 7l13 -15" fill="none" stroke="#81ddd0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="104" y="512" font-size="22" fill="#f4efe5">The solution proves exactly the challenge theorem</text>
+<path d="M68 551l7 7l13 -15" fill="none" stroke="#81ddd0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="104" y="560" font-size="22" fill="#f4efe5">Only propext, Quot.sound and Classical.choice</text>
+<path d="M68 599l7 7l13 -15" fill="none" stroke="#81ddd0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="104" y="608" font-size="22" fill="#f4efe5">The Lean kernel accepts the sandboxed replay</text>
+<text x="40" y="694" font-size="24" fill="#f4efe5" font-weight="650">Re-run outside OpenAI</text>
+<rect x="40" y="712" width="350" height="150" rx="12" fill="#19363b" stroke="#4ea99e" stroke-width="1.5"/>
+<text x="64" y="748" font-size="16" fill="#81ddd0" font-weight="600" letter-spacing="1.2">GOLDBLATT</text>
+<text x="64" y="790" font-size="21" fill="#d8e0dc">Comparator: accepted</text>
+<text x="64" y="826" font-size="21" fill="#d8e0dc">With second kernel: accepted</text>
+<rect x="410" y="712" width="350" height="150" rx="12" fill="#19363b" stroke="#4ea99e" stroke-width="1.5"/>
+<text x="434" y="748" font-size="16" fill="#81ddd0" font-weight="600" letter-spacing="1.2">TOMOTO0</text>
+<text x="434" y="790" font-size="21" fill="#d8e0dc">Full rebuild: 0 errors</text>
+<text x="434" y="826" font-size="21" fill="#d8e0dc">About 4 hours on 8 cores</text>
+<rect x="40" y="884" width="720" height="112" rx="12" fill="#19363b" stroke="#4ea99e" stroke-width="1.5" stroke-dasharray="7 6"/>
+<text x="64" y="920" font-size="16" fill="#81ddd0" font-weight="600" letter-spacing="1.2">EVIDENCE PRESS STATIC SCAN · A SCREEN ONLY</text>
+<text x="64" y="956" font-size="20" fill="#d8e0dc">No sorry, admit, axiom, native_decide, extern, unsafe,</text>
+<text x="64" y="982" font-size="20" fill="#d8e0dc">opaque or custom syntax in the 2,924-module closure</text>
+<rect x="40" y="1018" width="720" height="104" rx="12" fill="#34342d" stroke="#d4b365" stroke-width="1.5"/>
+<text x="64" y="1054" font-size="16" fill="#ebcc83" font-weight="600" letter-spacing="1.2">NOT CERTIFIED BY THE CHECK</text>
+<text x="64" y="1092" font-size="21" fill="#f4efe5">The 199-page paper’s prose · how the proof was found</text>
+</g></svg>

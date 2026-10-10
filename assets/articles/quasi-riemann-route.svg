@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1360" role="img" aria-labelledby="route-title route-desc">
+<title id="route-title">From a Möbius sum to a zero-free half-plane</title>
+<desc id="route-desc">Eight stages. 1, target: a Möbius sum A1(D) over the Eisenstein integers; a power-saving bound for it excludes zeros. 2, new: embed it in a sextic family and keep the sixth-power rows, which reproduce the target. 3, Poisson summation turns sextic characters into sextic Gauss sums. 4, new: a Gauss-sum identity going back to Hasse absorbs the Möbius function into a cubic Gauss sum. 5, Patterson’s formula identifies cubic Gauss sums with coefficients of Kubota’s cubic theta function. 6, new: the transformation law produces the twist chi to the minus three, which is quadratic because chi has order six. 7, the near-optimal quadratic large sieve applies. 8, Heath-Brown’s recursion on scales closes the argument. Outcome: A1(D) is at most D to the 11/12 plus epsilon, so there are no zeros with real part above 11/12; the 30 September paper refines the machinery to reach 7/8.</desc>
+<defs><linearGradient id="route-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101d25"/><stop offset="1" stop-color="#1b3037"/></linearGradient>
+<marker id="route-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#81ddd0" stroke-width="1.8"/></marker></defs>
+<rect width="800" height="1360" rx="20" fill="url(#route-bg)"/>
+<path d="M40 50H84" stroke="#81ddd0" stroke-width="4"/>
+<text x="98" y="56" font-size="15" fill="#adbfbe" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" letter-spacing="2">EVIDENCE PRESS · EXPLAINER</text>
+<text x="40" y="110" font-size="36" fill="#f4efe5" font-family="Georgia, 'Times New Roman', serif">From a Möbius sum to a zero-free half-plane</text>
+<text x="40" y="146" font-size="20" fill="#adbfbe" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">The 11/12 proof, simplified · logical order, not discovery order</text>
+<g font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<circle cx="52" cy="190" r="9" fill="#efbe65"/>
+<text x="70" y="197" font-size="20" fill="#d8e0dc">New move in this proof</text>
+<circle cx="330" cy="190" r="9" fill="none" stroke="#fff9ed" stroke-width="2.5"/>
+<text x="348" y="197" font-size="20" fill="#d8e0dc">Known tool</text>
+<path d="M64 266V1200" stroke="#416368" stroke-width="3"/>
+<circle cx="64" cy="266" r="22" fill="#101d25" stroke="#fff9ed" stroke-width="2.5"/><text x="64" y="274" font-size="22" fill="#fff9ed" text-anchor="middle" font-weight="700">1</text>
+<text x="104" y="275" font-size="25" fill="#f4efe5" font-weight="650">Target: a Möbius sum A₁(D) over ℤ[ω]</text>
+<text x="104" y="311" font-size="21" fill="#d8e0dc">If A₁(D) ≪ D<tspan font-size="70%" baseline-shift="super">θ + ε</tspan>, no zeros with Re s &gt; θ</text>
+<circle cx="64" cy="368" r="22" fill="#efbe65"/><text x="64" y="376" font-size="22" fill="#152430" text-anchor="middle" font-weight="700">2</text>
+<text x="104" y="377" font-size="25" fill="#efbe65" font-weight="650">Amplify: keep the sixth-power rows</text>
+<text x="104" y="413" font-size="21" fill="#d8e0dc">In the sextic family A<tspan font-size="70%" baseline-shift="sub">u</tspan>(D), rows u = p⁶</text>
+<text x="104" y="443" font-size="21" fill="#d8e0dc">reproduce A₁(D) almost unchanged</text>
+<circle cx="64" cy="500" r="22" fill="#101d25" stroke="#fff9ed" stroke-width="2.5"/><text x="64" y="508" font-size="22" fill="#fff9ed" text-anchor="middle" font-weight="700">3</text>
+<text x="104" y="509" font-size="25" fill="#f4efe5" font-weight="650">Poisson summation in u</text>
+<text x="104" y="545" font-size="21" fill="#d8e0dc">Sextic characters become sextic Gauss sums</text>
+<circle cx="64" cy="602" r="22" fill="#efbe65"/><text x="64" y="610" font-size="22" fill="#152430" text-anchor="middle" font-weight="700">4</text>
+<text x="104" y="611" font-size="25" fill="#efbe65" font-weight="650">Bridge: a Gauss-sum identity absorbs μ</text>
+<text x="104" y="647" font-size="21" fill="#d8e0dc">μ(n)·γ₋₁(n) = fixed factors × cubic Gauss sum γ₂(n)</text>
+<text x="104" y="677" font-size="21" fill="#d8e0dc">(an identity going back to Hasse)</text>
+<circle cx="64" cy="734" r="22" fill="#101d25" stroke="#fff9ed" stroke-width="2.5"/><text x="64" y="742" font-size="22" fill="#fff9ed" text-anchor="middle" font-weight="700">5</text>
+<text x="104" y="743" font-size="25" fill="#f4efe5" font-weight="650">Patterson (1977)</text>
+<text x="104" y="779" font-size="21" fill="#d8e0dc">Cubic Gauss sums are Fourier coefficients</text>
+<text x="104" y="809" font-size="21" fill="#d8e0dc">of Kubota’s cubic theta function</text>
+<circle cx="64" cy="866" r="22" fill="#efbe65"/><text x="64" y="874" font-size="22" fill="#152430" text-anchor="middle" font-weight="700">6</text>
+<text x="104" y="875" font-size="25" fill="#efbe65" font-weight="650">Twist drops to order two</text>
+<text x="104" y="911" font-size="21" fill="#d8e0dc">χ⁻¹ · χ⁻² = χ⁻³ is quadratic because χ has</text>
+<text x="104" y="941" font-size="21" fill="#d8e0dc">order six, available over ℚ(√−3)</text>
+<circle cx="64" cy="998" r="22" fill="#101d25" stroke="#fff9ed" stroke-width="2.5"/><text x="64" y="1006" font-size="22" fill="#fff9ed" text-anchor="middle" font-weight="700">7</text>
+<text x="104" y="1007" font-size="25" fill="#f4efe5" font-weight="650">Quadratic large sieve</text>
+<text x="104" y="1043" font-size="21" fill="#d8e0dc">Near-optimal loss M + L</text>
+<text x="104" y="1073" font-size="21" fill="#d8e0dc">(Heath-Brown; Goldmakher and Louvel)</text>
+<circle cx="64" cy="1130" r="22" fill="#101d25" stroke="#fff9ed" stroke-width="2.5"/><text x="64" y="1138" font-size="22" fill="#fff9ed" text-anchor="middle" font-weight="700">8</text>
+<text x="104" y="1139" font-size="25" fill="#f4efe5" font-weight="650">Recursion on scales</text>
+<text x="104" y="1175" font-size="21" fill="#d8e0dc">Heath-Brown’s 1995 self-improving exponents</text>
+<path d="M64 1170V1196" stroke="#81ddd0" stroke-width="2.5" marker-end="url(#route-arrow)"/>
+<rect x="40" y="1204" width="720" height="132" rx="12" fill="#19363b" stroke="#4ea99e" stroke-width="1.5"/>
+<text x="64" y="1240" font-size="16" fill="#81ddd0" font-weight="600" letter-spacing="1.2">OUTCOME</text>
+<text x="64" y="1282" font-size="24" fill="#f4efe5" font-weight="650">A₁(D) ≪ D<tspan font-size="70%" baseline-shift="super">11/12 + ε</tspan>, so no zeros with Re s &gt; 11/12</text>
+<text x="64" y="1316" font-size="20" fill="#d8e0dc">The 30 September paper refines the machinery to reach 7/8</text>
+</g></svg>
