@@ -25529,9 +25529,9 @@
       "workId": "ep-work:three-gaussian-projection-counterexample",
       "cohort": "prospective",
       "registeredAt": "2026-10-10T15:20:40.635Z",
-      "status": "active",
-      "statusAt": "2026-10-10T15:31:05.719Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-10T15:37:09.977Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -25588,7 +25588,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Active time, tokens and aggregate compute unavailable.",
+        "missingnessReason": "Publication delivery verified. Active effort, aggregate compute and token telemetry were not instrumented; unknown values remain null.",
         "milestones": [
           {
             "event": "work-opened",
@@ -25599,6 +25599,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-10T15:31:05.719Z",
             "basis": "Archive preflight, green Linux CI and full public asset downloads; not site delivery."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-10T15:37:09.977Z",
+            "basis": "Authorised publication and exact canonical readback, separate from earlier research assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -25685,10 +25690,26 @@
             "https://github.com/ipitchford/three-gaussian-projection-counterexample/releases/tag/v1.1.0-candidate",
             "https://zenodo.org/records/23284191"
           ]
+        },
+        {
+          "at": "2026-10-10T15:37:09.977Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Canonical publication verified; result-ready records the completed candidate. Terminal published metrics require unrecorded resource telemetry, so no duration/token values are invented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/three-gaussian-projection-counterexample/",
+            "https://3cb75d6c.evidence-press.pages.dev",
+            "https://zenodo.org/records/23284191"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-10",
+          "summary": "Recorded canonical site delivery without revising frozen intake, forecast or research-assurance endpoint; resource telemetry remains unknown."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -26553,6 +26574,10 @@
     {
       "date": "2026-10-10",
       "summary": "Recorded Three-Gaussian research assurance separately from site delivery."
+    },
+    {
+      "date": "2026-10-10",
+      "summary": "Recorded canonical Three-Gaussian publication separately from research assurance; no acceleration or impact claim."
     }
   ]
 }
