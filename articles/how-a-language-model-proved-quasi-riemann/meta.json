@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0",
+  "slug": "how-a-language-model-proved-quasi-riemann",
+  "title": "How did a language model prove a quasi-Riemann hypothesis?",
+  "standfirst": "What has been verified about OpenAI's zero-free half-plane for the Riemann zeta function, how the argument works, and what the public record reveals about how a model found it.",
+  "summary": "OpenAI's claim that the Riemann zeta function has no zeros with real part above 7/8: the Lean verification and its caveats, the anatomy of the proof, a graded reconstruction of how it was found, and what another system would need.",
+  "datePublished": "2026-10-10",
+  "dateModified": "2026-10-10",
+  "articleClass": "commentary",
+  "status": "published",
+  "byline": "Evidence Press",
+  "bylineType": "organization",
+  "banner": {
+    "src": "/assets/articles/quasi-riemann-zero-free-strip.svg",
+    "alt": "The critical strip drawn sideways, with height on a logarithmic scale. Zeros of the zeta function sit on the line Re s = 1/2. A thin aqua sliver below Re s = 1 marks the classical zero-free region, which narrows as height grows; a gold band of constant width marks the new zero-free half-plane above Re s = 7/8.",
+    "caption": "Exact coordinates, schematic purpose. Shading marks what is proved at every height. Dots are the first 100 zeros of ζ, computed with mpmath. The aqua region is the explicit classical region σ ≥ 1 − 1/(5.558691 log t) of Mossinghoff, Trudgian and Yang, which dips below 7/8 only for t below about 4.2; the gold band is the Lean-verified half-plane Re s > 7/8. Neither shading depicts the proof."
+  },
+  "topics": [
+    "Riemann zeta function",
+    "zero-free regions",
+    "AI-assisted mathematics",
+    "formal verification",
+    "research provenance"
+  ],
+  "newResearchClaims": false,
+  "claimBoundary": "A sourced commentary on OpenAI's quasi-Riemann hypothesis result (family 003) as of 10 October 2026, at openai/math commit fd4aeeb. The theorem's status rests on Comparator and Lean-kernel checks, repeated outside OpenAI by one checker with Comparator and a second kernel and by another through a full rebuild. Evidence Press ran only a static scan of the Lean import closure, exact recomputation of quoted exponents and a small illustrative computation; these are screens, not independent verification. The account of how the proof was found is inference from public documents, because OpenAI has published no reasoning record for this result. Inclusion does not establish the correctness of the papers' prose, priority or specialist assessment.",
+  "sources": [
+    {
+      "citation": "OpenAI — openai/math repository, README and history at commit fd4aeeb (7 October 2026)",
+      "url": "https://github.com/openai/math/tree/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+    },
+    {
+      "citation": "OpenAI — The quasi-Riemann hypothesis: a zero-free half-plane Re(s) > 7/8 (preprint, 30 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+    },
+    {
+      "citation": "OpenAI — The quasi-Riemann hypothesis, human-edited 11/12 proof (preprint, 5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-October-5-2026/paper2.pdf"
+    },
+    {
+      "citation": "OpenAI — Uniform exclusion of Landau–Siegel zeros (preprint, 1 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-exclusion-of-Landau-Siegel-zeros-October-1-2026/paper.pdf"
+    },
+    {
+      "citation": "OpenAI — Comparator challenges and configurations",
+      "url": "https://github.com/openai/math/tree/main/lean/ComparatorChallenges"
+    },
+    {
+      "citation": "Goldblatt — independent Comparator and nanoda check (6–7 October 2026)",
+      "url": "https://github.com/davegoldblatt/openai-zeta-proof-check"
+    },
+    {
+      "citation": "tomoto0 — full rebuild and audit of the 7/8 formalisation (7 October 2026)",
+      "url": "https://github.com/tomoto0/quasi-riemann-hypothesis-7-8-verification"
+    },
+    {
+      "citation": "MathOverflow 515849 — which OpenAI results went against conventional wisdom",
+      "url": "https://mathoverflow.net/questions/515849"
+    },
+    {
+      "citation": "Quanta Magazine — Transformation (live updates, 6 October 2026)",
+      "url": "https://www.quantamagazine.org/updates/transformation/"
+    },
+    {
+      "citation": "Advisory Group on Mathematics and Artificial Intelligence — Responsible release of AI-generated mathematics (29 September 2026)",
+      "url": "https://agmai.org/general-sep29/"
+    }
+  ],
+  "relatedReleases": [],
+  "relatedArticles": [
+    {
+      "slug": "navier-stokes-informed-reaction",
+      "relation": "The earlier OpenAI Millennium-problem campaign that supplies context for this result"
+    },
+    {
+      "slug": "assurance-infrastructure",
+      "relation": "Background on keeping claims, evidence and assurance distinct"
+    }
+  ],
+  "corrections": [],
+  "license": "CC0-1.0",
+  "renderMode": "generated"
+}

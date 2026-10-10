@@ -40,6 +40,18 @@ check('ART commentary retains reviewed editorial media and full-text audio', () 
   execFileSync(process.execPath, [path.join(ROOT, 'tools/make-art-discovery-article-art.js'), '--check']);
 });
 
+check('quasi-Riemann commentary keeps reproducible exact-coordinate art', () => {
+  const slug = 'how-a-language-model-proved-quasi-riemann';
+  const meta = JSON.parse(fs.readFileSync(path.join(ROOT, 'articles', slug, 'meta.json'), 'utf8'));
+  const body = fs.readFileSync(path.join(ROOT, 'articles', slug, 'body.md'), 'utf8');
+  assert.strictEqual(meta.banner.src, '/assets/articles/quasi-riemann-zero-free-strip.svg');
+  for (const figure of ['quasi-riemann-verification.svg', 'quasi-riemann-route.svg'])
+    assert.ok(body.includes(`/assets/articles/${figure}`));
+  assert.strictEqual(meta.newResearchClaims, false);
+  assert.ok(meta.claimBoundary.includes('not independent verification'));
+  execFileSync(process.execPath, [path.join(ROOT, 'tools/make-quasi-riemann-article-art.js'), '--check']);
+});
+
 const valid = {
   schemaVersion: '1.0', slug: 'fixture', title: 'Fixture', standfirst: 'Standfirst.',
   summary: 'Summary.', datePublished: '2026-08-25', dateModified: '2026-08-25',
