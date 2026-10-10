@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['three-gaussian-projection-counterexample'] = require('./three-gaussian-art').draw;
 art['knese-symmetric-multiaffine-agler'] = require('./knese-art').draw;
 art['cgf-majorisation-counterexample'] = require('./cgf-art').draw;
 art['bol-prime-cube-classification'] = require('./bol-art').draw;
@@ -2396,6 +2397,7 @@ palette['hartree-small-charge-rigidity'] = ['#b5d8f4','#f4c682'];
 palette['cgf-majorisation-counterexample'] = ['#b3deec','#f4c882'];
 palette['bol-prime-cube-classification'] = ['#94d8ef','#ffc879'];
 palette['knese-symmetric-multiaffine-agler'] = ['#a8d8ff','#f1bf78'];
+palette['three-gaussian-projection-counterexample'] = ['#9ddfda','#f4bb7a'];
 palette['efx-nine-chores'] = ['#8ed6ea','#f2c46f'];
 art['planar-transport-map-sensitivity-certificates'] = transportSensitivityArt.draw;
 palette['planar-transport-map-sensitivity-certificates'] = ['#f2c46f', '#8ed6ea'];
