@@ -19,7 +19,6 @@ All three ingredients can be reproduced in principle. The third, automatic forma
 The rest of this article sets out what is established, then the anatomy of the proof, then the evidence about process, and finally what another system would need.
 
 What the Lean file is, and what has been verified.
-
 The challenge file contains one theorem. Its name says that the Riemann zeta function is nonzero when the real part of its argument exceeds seven eighths, and its body is "sorry". That is deliberate. A configuration file beside it names the solution module, which concerns the nonvanishing of Dirichlet L-functions, and fixes the permitted axioms as propositional extensionality, quotient soundness and classical choice. Comparator checks three things: that the solution states exactly the same theorem as the challenge; that it uses no other axioms; and that the Lean kernel accepts it when the whole environment is replayed inside a sandbox.
 
 Sister challenges cover the same bound for every Dirichlet L-function, and for every finite-order Hecke L-function over the field obtained by adjoining the square root of minus three to the rational numbers. A further challenge covers a uniform exclusion of Landau–Siegel zeros, of the form c over log q.
@@ -31,7 +30,6 @@ We traced every import from the solution module through OpenAI's library, and sc
 The closure contains two thousand, nine hundred and twenty-four OpenAI modules, and four hundred and eighty-six thousand, four hundred and eighty-three lines once comments are removed, and none of these constructs appears. The only outside dependencies are Mathlib and two external libraries, Prime Number Theorem And, and Rellich Kondrachov. Our counts agree with the two independent re-checks. Dave Goldblatt reports two thousand, nine hundred and twenty-four modules and four hundred and eighty-six thousand, four hundred and ninety lines. He ran Comparator with OpenAI's configuration, and then again with the second kernel, nanoda, switched on. Both runs accepted the proof with only the three standard axioms. A second checker, under the handle tomoto zero, rebuilt the full closure: two thousand, nine hundred and twenty-four modules, about four hours on eight cores, no errors.
 
 Four caveats matter.
-
 First, the second kernel is off in OpenAI's own configuration for this challenge, as it is in all but two of the four hundred and sixteen configurations at that commit. Dual-kernel acceptance therefore rests on Goldblatt's single run.
 
 Second, part of the build runs outside the sandbox. Setting up the build applies patches to dependencies, so a deliberately adversarial repository could in principle interfere. Nobody has suggested this one does.
@@ -45,7 +43,6 @@ The formal check certifies the theorem, not the prose of the one-hundred-and-nin
 This puts family zero-zero-three on firmer ground than most of the release. About forty-two per cent of the top-line results are formalised. On 7 October OpenAI withdrew three Hodge-related papers because of a sign error.
 
 Two adjustments to the framing.
-
 The first concerns uniqueness. The quasi-Riemann hypothesis is not the only claim in the catalogue that specialists thought out of reach. The same release claims a negative solution of Hilbert's tenth problem over the rational numbers; Erdős's conjecture that sets with divergent reciprocal sums contain arbitrarily long arithmetic progressions; an isomorphism between free group factors; a counterexample to Sidorenko's conjecture; and a counterexample to the hyperinvariant-subspace problem.
 
 Two features set family zero-zero-three apart. It is formally verified from Mathlib's own definition of zeta. And it breaks a barrier that had not moved in shape since de la Vallée Poussin's zero-free region of 1899. Every unconditional region since then, including the Vinogradov–Korobov region, has narrowed towards the line where the real part of s equals one, as the height grows. A strip of fixed width was widely regarded as hopeless. Several reactions say so directly. Alex Kontorovich wrote that if a human had done this, "it would be an instant Fields Medal". Ben Green called it "absolutely shocking". Jakob Glas said he had believed there was a "broad consensus among mathematicians" that the quasi-Riemann hypothesis was "completely out of reach".
@@ -55,7 +52,6 @@ The second adjustment concerns the claim that the result is beyond what human ma
 It is more accurate to say that the parts were on the shelf but nobody had connected them. That makes "how" a tractable question: a route was found, not a new foundation laid.
 
 Anatomy of the argument.
-
 The clearest account is the 5 October companion paper, which proves the half-plane where the real part of s exceeds eleven twelfths, and which OpenAI says was edited by a person for readability. We follow it in six steps, because each one shows where the creative work lay.
 
 A second diagram shows the route from a Möbius sum to a zero-free half-plane, in eight stages, with gold marking the three moves this article identifies as new. The decisive turn is the Gauss-sum identity that absorbs the Möbius function into a cubic Gauss sum, the Fourier coefficient of Kubota's cubic theta function. The diagram shows logical order, not the order in which the model found the steps, which is unrecorded.
@@ -94,7 +90,7 @@ By Patterson's 1977 formula, cubic Gauss sums are Fourier coefficients of Kubota
 
 We regard this as the conceptual heart of the proof. The identity was known. Using it to convert a zero-free-region problem into a metaplectic one apparently was not.
 
-The numerical coincidence. Applying the theta function's transformation law changes the twisting character. At a prime dividing the new row variable, the Fourier and theta factors combine as chi to the minus one times chi to the minus two. The product is chi to the minus three, which equals chi cubed, and that is quadratic, because the sextic character has order six.
+The numerical coincidence. Applying the theta function's transformation law changes the twisting character. At a prime dividing the new row variable, the Fourier and theta factors combine as chi to the minus one times chi to the minus two. The product is chi to the minus three, which equals chi cubed. That character is quadratic, because the sextic character has order six.
 
 A quadratic twist allows the near-optimal quadratic large sieve of Heath-Brown, generalised to number fields by Goldmakher and Louvel. Its loss factor is M plus L, rather than the extra factor of M times L to the power two thirds in the general n-th order large sieve of Blomer, Goldmakher and Louvel. The chain closes only because one plus two is three, and six divided by two is three. This is presumably the kind of thing meant by the "amazing numerical coincidences" that a friend of Lichtman's saw in the cubic machinery.
 
@@ -115,7 +111,6 @@ The argument also passes the "does it prove too much?" test. Without an exceptio
 So within a week the model produced two unrelated advances in the same corner of analytic number theory, each drawing on a different distant field.
 
 How the model probably got there.
-
 What is on record. OpenAI has published no reasoning summary for family zero-zero-three. The ten summaries it did release cover other results, and none of them mentions zeta functions, zero-free regions or Gauss sums.
 
 The repository's README says most results came from a fixed procedure: about three hours of ChatGPT Pro thinking compute per result, across roughly four thousand posed problems. It names the zeta zero-free work, and the Hodge conjecture for abelian varieties with complex multiplication, among the exceptions. It does not say how they were exceptional.
@@ -127,7 +122,6 @@ Acer's post says he watched the model make progress on this problem first-hand, 
 The dates on the manuscripts complete the picture. On 25 September: an unconditional proof of Patterson's first-moment conjecture for cubic Gauss sums; Dunn and Radziwiłł's 2024 Annals proof had assumed the Generalised Riemann Hypothesis. On 30 September: the seven-eighths paper. On 1 October: the Siegel-zero paper. On 4 October: a paper on Artin's primitive-root conjecture, which, according to Sawin, contains a third, weaker zero-free half-plane, valid over number fields containing the twelfth roots of unity. And on 5 October: the human-edited eleven-twelfths version.
 
 Inferences, graded.
-
 Strong. This was a targeted, heavily resourced attempt on the Riemann hypothesis, run by a multi-agent system with people observing. The quasi-Riemann hypothesis is what that attempt could actually prove. The README's exception, Quanta's framing and Acer's post all point the same way.
 
 Moderate. The route ran through the cubic Gauss-sum programme. The 25 September paper uses the same objects and normalisations as the zeta paper: primary generators, Patterson's coefficients, and Dunn and Radziwiłł's conventions. To remove Dunn and Radziwiłł's assumption of the Generalised Riemann Hypothesis, one must control sums over primes, or of the Möbius function, twisted by Hecke characters on exactly this family. An agent working on that would be pushed towards the relationship between the Möbius function and Gauss sums that later powers the zeta proof.
@@ -144,14 +138,13 @@ Humans prune long, fragile routes early, partly because checking them is so cost
 
 What the creative step consisted of. Four moves stand out: connecting the theory of zero-free regions to the theory of metaplectic theta functions; keeping the degenerate power rows as copies of the target; choosing a field in which the order of the dual twist drops to two; and carrying a long recursive argument through with thin but positive margins.
 
-The first three are combinatorial creativity of a high order: the right pieces recognised and assembled from different shelves. The fourth is stamina.
+The first three are combinatorial creativity of a high order: the right pieces recognised and assembled from different shelves; and the fourth is stamina.
 
 None of them requires a new kind of cognition. They do require something human specialists rarely have at once: working fluency, at the level of individual lemmas, in about ten separate specialist literatures. These run from Kubota's 1969 lectures, through Heath-Brown's large sieves, to Dunn and Radziwiłł's cusp expansions of 2024. They also require patience with a one-hundred-and-ninety-nine-page argument, and a cheap way to check it.
 
 On why humans had not found the route, we can offer only hypotheses. The key tools are recent: Goldmakher and Louvel in 2013; Blomer, Goldmakher and Louvel in 2014; Dunn and Radziwiłł's preprint in 2021. Specialists believed the target was out of reach, which discourages long attempts. And the argument's thin margins make it unattractive to begin by hand. None of this can be tested until the reasoning record is published.
 
 What another system would need.
-
 The reconstruction suggests a practical recipe. Each element can be built into an agent pipeline today. For each one we give the instruction for the pipeline, followed by the evidence from this proof.
 
 One. Look for a family in which the target recurs, and amplify. Make "in which family does my object occur many times?" a standard prompt for any problem that asks for a pointwise bound. Here the sixth-power rows did the work; elsewhere it might be translates, powers, Hecke operators or Galois conjugates.
@@ -175,13 +168,11 @@ For systems with weaker base capabilities the binding constraints are probably t
 Retrieval over full texts and disciplined decomposition into lemmas can partly substitute for the first two. The third is an engineering investment in its own right.
 
 What remains unknown.
-
 Several questions remain open as of 10 October 2026: what the "exception to the procedure" consisted of, how much compute it used, and whether people suggested the cubic route or any intermediate target; whether the seven-eighths argument contains slack that specialists will use to push the exponent further; and the reasoning record itself. The Advisory Group on Mathematics and Artificial Intelligence asked laboratories to publish, with each result, the model's name, the prompts, a summarised chain of thought, the time taken and the estimated compute cost. For this result OpenAI has published none of these.
 
 The formal verification settles the theorem. It does not settle understanding. We found no published assessment, as of 10 October 2026, from the specialists whose work the proof builds on most directly, such as Heath-Brown, Radziwiłł, Dunn, Goldmakher or Blomer. Their reading will be the best test of whether the reconstruction above captures how the proof works.
 
 How our checks were made.
-
 The static scan, the exact recomputation of exponents and the toy computation were run on 10 October 2026, against OpenAI's repository at its commit of 7 October. The scan reads source files; it does not run Lean, Comparator or a proof kernel, so it is a screen, and not a substitute for the third-party kernel checks cited above. A mechanical cross-check confirmed that the twenty numerical claims drawn from the scan, the computations, the papers' texts and page counts, and the repository's history file match their sources. The scripts, their outputs and our working notes on the reasoning summaries and on reception are in the Evidence Press repository, with commands for rerunning them. The full list of sources appears with the article.
 
 This is an Evidence Press commentary, based on the public record of 10 October 2026. The diagrams and this narration explain the argument; they add no mathematical evidence.
