@@ -1,0 +1,15 @@
+This is a synthetic-voice briefing from Evidence Press, not additional evidence.
+
+Can every one-dimensional view give the right comparison while the full two-dimensional comparison fails? This candidate shows that it can, even for a small mixture of Gaussian distributions.
+
+The comparison is called convex order. Roughly, it asks whether every convex cost has a larger average under one distribution than another. Projecting onto a line gives a simpler test. One can repeat that test in every direction, not just along the coordinate axes.
+
+Here the target is a centred Gaussian cloud. The comparison distribution is a mixture of three centred Gaussian components. Three quarters of its probability lies on a horizontal line. One eighth lies on each diagonal. The component scales are chosen so that every projected convex-order test passes.
+
+Yet a convex function of both coordinates reverses the comparison. It is built as the maximum of six affine expressions. A small threshold shift reveals that the two distributions allocate different amounts of probability to the region where the function changes. At zero threshold their expectations agree. After the shift, the target expectation is strictly greater.
+
+The proof supplies an exact positive lower bound, rather than relying on a numerical plot. Adding a specified small amount of Gaussian noise makes every covariance matrix positive definite, and the same separating function still works. So the result is not merely an artefact of components supported on lines.
+
+Earlier work shows that two centred Gaussian components behave differently: in that setting the projection tests suffice. This construction establishes the three-component failure. It does not classify every mixture, and the general distinction between projected and joint convex order is not new.
+
+The package includes the written proof, exact checks, two numerical diagnostics and a review response. It remains an unrefereed candidate, without formal verification or external specialist confirmation. The diagnostics support checking; they do not replace the proof over every direction.

@@ -1,0 +1,187 @@
+{
+  "slug": "three-gaussian-projection-counterexample",
+  "title": "Every projection passes. The joint comparison fails.",
+  "shortTitle": "Three Gaussian components break projection tests",
+  "oneLine": "A centred Gaussian and a three-component Gaussian mixture pass every one-dimensional convex-order test, yet an explicit joint convex function separates them.",
+  "abstract": "An exact planar construction separates projected from joint convex order for a centred Gaussian compared with three centred Gaussian components. The written proof covers every projection direction, gives a strictly positive rational lower bound for a six-plane convex witness, and preserves the counterexample after adding a specified positive covariance to every component. An explicit family explains how directional scale and probability allocation separate. Numerical quadrature is diagnostic only.",
+  "datePublished": "2026-10-10",
+  "version": "1.1.0-candidate",
+  "doi": "10.5281/zenodo.23284191",
+  "conceptDoi": "10.5281/zenodo.23284190",
+  "zenodoUrl": "https://zenodo.org/records/23284191",
+  "pdfUrl": "https://github.com/ipitchford/three-gaussian-projection-counterexample/releases/download/v1.1.0-candidate/three-gaussian-projection-counterexample-v1.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23284191/files/three-gaussian-projection-counterexample-v1.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/three-gaussian-projection-counterexample",
+  "releaseUrl": "https://github.com/ipitchford/three-gaussian-projection-counterexample/releases/tag/v1.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/three-gaussian-projection-counterexample.mp3",
+      "name": "Audio briefing",
+      "description": "Synthetic speech; communication, not additional mathematical evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/three-gaussian-projection-counterexample.txt"
+    }
+  ],
+  "keywords": [
+    "convex order",
+    "Gaussian mixtures",
+    "projection tests",
+    "multivariate stochastic orders"
+  ],
+  "problem": {
+    "name": "Does projected convex order suffice for three centred Gaussian components?",
+    "url": "https://arxiv.org/abs/2610.07404"
+  },
+  "keyResults": [
+    "Every projection direction passes the convex-order comparison; an exact joint witness reverses it.",
+    "Witness expectation gap is strictly greater than 37/18432.",
+    "The failure persists with positive definite covariance matrices, with an explicit positive lower bound."
+  ],
+  "evidence": "Written all-directions proof; exact rational checks; two numerical implementations and semantic corruption controls; supplied model-assisted review and itemised response.",
+  "statusDetail": "Unrefereed written-proof candidate with internal finite replay. No external peer review, unaffiliated reproduction, formal verification or absolute priority is established.",
+  "openProblems": [],
+  "relatedWorks": [
+    {
+      "citation": "Guéant (2026), Convex Order Beyond Dimension One: Theorem 4 proves the two-component case; Section 4 leaves larger mixtures open.",
+      "url": "https://arxiv.org/abs/2610.07404"
+    },
+    {
+      "citation": "Jourdain and Pagès, Convex comparison of Gaussian mixtures: inspected arXiv v1, Theorem 1.1; final journal body not inspected.",
+      "url": "https://arxiv.org/abs/2410.07958v1"
+    },
+    {
+      "citation": "Koshevoy and Mosler (1998), Lift zonoids, random convex hulls and the variability of random vectors: classical weaker projection order.",
+      "url": "https://wisostat.uni-koeln.de/sites/dep_econometrics/pdf_publikationen/1998_KoshevoyM98.pdf"
+    },
+    {
+      "citation": "Pinelis, explicit finite-support failure of projection sufficiency; inspected arXiv v3.",
+      "url": "https://arxiv.org/abs/2510.04269v3"
+    }
+  ],
+  "citeText": "Anonymous (2026). Projection tests fail for three centred Gaussian components. Version 1.1.0-candidate. Evidence Press. 10.5281/zenodo.23284191.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied candidate and model-assisted review; publication revisions dated 10 October 2026. No historical research duration or independent reviewer status inferred.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted supplied research; originating model not established",
+      "OpenAI Codex assistant: review actions and publication"
+    ],
+    "humanRole": "Publication authority only; no human research contribution asserted.",
+    "reviewStatus": "Unrefereed written-proof candidate with internal finite replay. No external peer review, unaffiliated reproduction, formal verification or absolute priority is established."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23284191",
+      "note": "Public GitHub and Zenodo assets verified by full downloads against the frozen archive; availability is not proof or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/three-gaussian-projection-counterexample/blob/v1.1.0-candidate/VERIFICATION.md",
+      "note": "Exact identities, two numerical diagnostics and wrong-weight/wrong-gap controls pass normally and under optimized Python. The continuum claim rests on written proof."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/three-gaussian-projection-counterexample/blob/v1.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Python, NumPy and SciPy versions and replay route supplied; external reproduction not established."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:three-gaussian-projection-counterexample",
+    "attemptIds": [
+      "ep-attempt:three-gaussian-projection-counterexample-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [],
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Failure of projection sufficiency for three centred Gaussian components.",
+      "scope": "One centred Gaussian and one three-component centred Gaussian mixture in two dimensions."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "An exhaustive directional inequality establishes all projected comparisons; a max-of-affine convex witness has a strictly reversed expectation.",
+      "remainingRisks": [
+        "The analytic argument is not formally verified.",
+        "Priority is bounded by inspected literature; one final journal body remains uninspected."
+      ]
+    },
+    "humanJudgmentGates": [
+      "External specialist assessment remains open; no human research judgement claimed."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "formalVerification"
+      ],
+      "nextAction": "Audit the projection criterion, gap estimate and common-noise extension.",
+      "claimCeiling": "Unrefereed written-proof candidate with internal finite replay. No external peer review, unaffiliated reproduction, formal verification or absolute priority is established."
+    },
+    "impactClaims": [
+      {
+        "id": "three-gaussian-projection-counterexample-no-impact",
+        "aim": "science",
+        "outcome": "Explicit boundary for Gaussian-mixture projection tests",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No measured acceleration or downstream benefit.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "narration": "This is a synthetic-voice briefing from Evidence Press, not additional evidence.\n\nCan every one-dimensional view give the right comparison while the full two-dimensional comparison fails? This candidate shows that it can, even for a small mixture of Gaussian distributions.\n\nThe comparison is called convex order. Roughly, it asks whether every convex cost has a larger average under one distribution than another. Projecting onto a line gives a simpler test. One can repeat that test in every direction, not just along the coordinate axes.\n\nHere the target is a centred Gaussian cloud. The comparison distribution is a mixture of three centred Gaussian components. Three quarters of its probability lies on a horizontal line. One eighth lies on each diagonal. The component scales are chosen so that every projected convex-order test passes.\n\nYet a convex function of both coordinates reverses the comparison. It is built as the maximum of six affine expressions. A small threshold shift reveals that the two distributions allocate different amounts of probability to the region where the function changes. At zero threshold their expectations agree. After the shift, the target expectation is strictly greater.\n\nThe proof supplies an exact positive lower bound, rather than relying on a numerical plot. Adding a specified small amount of Gaussian noise makes every covariance matrix positive definite, and the same separating function still works. So the result is not merely an artefact of components supported on lines.\n\nEarlier work shows that two centred Gaussian components behave differently: in that setting the projection tests suffice. This construction establishes the three-component failure. It does not classify every mixture, and the general distinction between projected and joint convex order is not new.\n\nThe package includes the written proof, exact checks, two numerical diagnostics and a review response. It remains an unrefereed candidate, without formal verification or external specialist confirmation. The diagnostics support checking; they do not replace the proof over every direction."
+}
