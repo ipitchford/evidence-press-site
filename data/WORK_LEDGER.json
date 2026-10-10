@@ -25342,9 +25342,9 @@
       "workId": "ep-work:knese-symmetric-multiaffine-agler",
       "cohort": "prospective",
       "registeredAt": "2026-10-10T14:16:57.064Z",
-      "status": "active",
-      "statusAt": "2026-10-10T14:25:05.921Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-10T14:35:18.965Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -25401,7 +25401,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Active time, tokens and aggregate compute telemetry unavailable.",
+        "missingnessReason": "Publication delivery verified. Active effort, aggregate compute and token telemetry were not instrumented; unknown values remain null.",
         "milestones": [
           {
             "event": "work-opened",
@@ -25412,6 +25412,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-10T14:25:05.921Z",
             "basis": "Archive preflight, green Linux CI and full public asset downloads; not site delivery."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-10T14:35:18.965Z",
+            "basis": "Authorised publication and exact canonical readback, separate from earlier research assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -25498,10 +25503,26 @@
             "https://github.com/ipitchford/knese-symmetric-multiaffine-agler/releases/tag/v1.1.0-candidate",
             "https://zenodo.org/records/23283382"
           ]
+        },
+        {
+          "at": "2026-10-10T14:35:18.965Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Canonical publication verified; result-ready records the completed candidate. Terminal published metrics require unrecorded resource telemetry, so no duration/token values are invented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/knese-symmetric-multiaffine-agler/",
+            "https://e738b59c.evidence-press.pages.dev",
+            "https://zenodo.org/records/23283382"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-10",
+          "summary": "Recorded canonical site delivery without revising frozen intake, forecast or research-assurance endpoint; resource telemetry remains unknown."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -26354,6 +26375,10 @@
     {
       "date": "2026-10-10",
       "summary": "Recorded Knese–Agler research assurance separately from site delivery."
+    },
+    {
+      "date": "2026-10-10",
+      "summary": "Recorded canonical Knese–Agler publication separately from research assurance; no acceleration or impact claim."
     }
   ]
 }
