@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'cross-polytope-signaling-dimension-six': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 11 OCTOBER 2026', 'SIGNALING DIMENSION · CROSS-POLYTOPE'],
+    head: ['Twelve vertices.', '<em>Three symbols.</em>'],
+    headSize: 76,
+    sub: 'Every input–output correlation of the six-dimensional cross-polytope is exactly simulable by a three-symbol classical alphabet with shared randomness.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: require('./cross-polytope-art').thumbnailHero()
+  },
   'noninteger-sliced-wasserstein': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 11 OCTOBER 2026', 'OPTIMAL TRANSPORT · NONINTEGER EXPONENTS'],
