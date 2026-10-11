@@ -26081,9 +26081,9 @@
       "workId": "ep-work:small-exponent-percolation",
       "cohort": "prospective",
       "registeredAt": "2026-10-11T08:02:35.328Z",
-      "status": "active",
-      "statusAt": "2026-10-11T08:11:51.292Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-11T08:20:43.242Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -26140,7 +26140,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Active effort, tokens and aggregate compute unavailable.",
+        "missingnessReason": "Publication delivery verified. Active effort, aggregate compute and token telemetry were not instrumented; unknown values remain null.",
         "milestones": [
           {
             "event": "work-opened",
@@ -26151,6 +26151,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-11T08:11:51.292Z",
             "basis": "Archive preflight, green Linux CI and full public asset downloads; not site delivery."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-11T08:20:43.242Z",
+            "basis": "Authorised publication and exact canonical readback, separate from earlier research assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -26237,10 +26242,26 @@
             "https://github.com/ipitchford/small-exponent-percolation/releases/tag/v1.1.0-candidate",
             "https://zenodo.org/records/23294525"
           ]
+        },
+        {
+          "at": "2026-10-11T08:20:43.242Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Canonical publication verified; result-ready records the completed candidate. Terminal published metrics require unrecorded resource telemetry, so no duration/token values are invented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/small-exponent-percolation/",
+            "https://ef1460e4.evidence-press.pages.dev",
+            "https://zenodo.org/records/23294525"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-11",
+          "summary": "Recorded canonical site delivery without revising frozen intake, forecast or research-assurance endpoint; resource telemetry remains unknown."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -27137,6 +27158,10 @@
     {
       "date": "2026-10-11",
       "summary": "Recorded Small-exponent percolation research assurance separately from site delivery."
+    },
+    {
+      "date": "2026-10-11",
+      "summary": "Recorded canonical Small-exponent percolation publication separately from research assurance; no acceleration or impact claim."
     }
   ]
 }
