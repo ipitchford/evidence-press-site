@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['small-exponent-percolation'] = require('./percolation-art').draw;
 art['stable-random-radial-profile'] = require('./radial-profile-art').draw;
 art['three-gaussian-projection-counterexample'] = require('./three-gaussian-art').draw;
 art['knese-symmetric-multiaffine-agler'] = require('./knese-art').draw;
@@ -2400,6 +2401,7 @@ palette['bol-prime-cube-classification'] = ['#94d8ef','#ffc879'];
 palette['knese-symmetric-multiaffine-agler'] = ['#a8d8ff','#f1bf78'];
 palette['three-gaussian-projection-counterexample'] = ['#9ddfda','#f4bb7a'];
 palette['stable-random-radial-profile'] = ['#9cd9ec','#efc17c'];
+palette['small-exponent-percolation'] = ['#a9dcf1','#f0c480'];
 palette['efx-nine-chores'] = ['#8ed6ea','#f2c46f'];
 const pmmsEightArt = require('./pmms-eight-art');
 art['pmms-three-agents-eight-goods'] = pmmsEightArt.draw;

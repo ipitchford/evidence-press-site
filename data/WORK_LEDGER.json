@@ -26075,6 +26075,172 @@
           "summary": "Recorded canonical site delivery without revising frozen intake, forecast or research-assurance endpoint; resource telemetry remains unknown."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:small-exponent-percolation-publication",
+      "workId": "ep-work:small-exponent-percolation",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-11T08:02:35.328Z",
+      "status": "active",
+      "statusAt": "2026-10-11T08:11:51.292Z",
+      "resultClass": "pending",
+      "aims": [
+        "science"
+      ],
+      "question": "Action the supplied percolation review, pursue justified extensions, and publish the final candidate.",
+      "selectionBasis": "Explicit publisher request with source and review bundles.",
+      "taskClass": "review-extension-and-full-candidate-publication",
+      "decisionObjectTarget": "Uniform first correction to the critical mean degree in small-exponent long-range bond percolation and justified kernel extensions.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Work after this registration; original research and initial extension work are left-censored. No historical clocks reconstructed.",
+        "forecast": {
+          "frozenAt": "2026-10-11T08:02:35.328Z",
+          "procedureClass": "percolation-extension-publication",
+          "targetOutcome": "Immutable research publication and canonical site readback",
+          "expectedActiveMinutes": 110,
+          "plausibleLowMinutes": 90,
+          "plausibleHighMinutes": 165,
+          "expectedUnattendedWaitMinutes": 20,
+          "referenceClass": {
+            "label": "Targeted extension and full candidate publication",
+            "sampleSize": 0,
+            "basis": "Procedural estimate, not measured benchmark"
+          },
+          "fermiComponents": [
+            {
+              "component": "Research closure, archive, media and guarded publication",
+              "count": 1,
+              "lowMinutesPerUnit": 90,
+              "centralMinutesPerUnit": 110,
+              "highMinutesPerUnit": 165,
+              "basis": "Mandatory stages with new extension audits"
+            }
+          ],
+          "probabilityPositiveSignal": 0.9,
+          "probabilityTargetClosure": 0.8,
+          "probabilityHorizonMinutes": 480,
+          "assumptions": [
+            "The audited extensions remain valid in final text; providers remain accessible."
+          ],
+          "reforecastTriggers": [
+            "A substantive proof issue or provider failure."
+          ],
+          "stopRule": "No hard cap; complete mandatory gates or report a precise blocker."
+        },
+        "outcome": null
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Active effort, tokens and aggregate compute unavailable.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-11T08:02:35.328Z",
+            "basis": "Actual registration after initial review/extension work; no inferred clock."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-10-11T08:11:51.292Z",
+            "basis": "Archive preflight, green Linux CI and full public asset downloads; not site delivery."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 3,
+        "reworkMinutes": null,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-10-11T08:11:51.292Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23294525"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/small-exponent-percolation/blob/v1.1.0-candidate/VERIFICATION.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/small-exponent-percolation/blob/v1.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed written-proof candidate with internal checking; no formal verification, external specialist review or unaffiliated reproduction established.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/small-exponent-percolation/releases/tag/v1.1.0-candidate",
+          "https://zenodo.org/records/23294525"
+        ],
+        "missingnessReason": "Archive availability and internal finite checks established; analytic proof is not formally verified or externally peer reviewed. Site delivery pending."
+      },
+      "releaseSlug": "small-exponent-percolation",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-10-11T08:02:35.328Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Publication registration with explicit missingness.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-11T08:11:51.292Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research assurance endpoint recorded; site delivery pending.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/small-exponent-percolation/releases/tag/v1.1.0-candidate",
+            "https://zenodo.org/records/23294525"
+          ]
+        }
+      ],
+      "corrections": [],
+      "revisions": []
     }
   ],
   "updatePolicy": {
@@ -26963,6 +27129,14 @@
     {
       "date": "2026-10-11",
       "summary": "Recorded canonical Stable radial publication separately from research assurance; no acceleration or impact claim."
+    },
+    {
+      "date": "2026-10-11",
+      "summary": "Registered small-exponent percolation extension and publication; unmeasured clocks remain unknown."
+    },
+    {
+      "date": "2026-10-11",
+      "summary": "Recorded Small-exponent percolation research assurance separately from site delivery."
     }
   ]
 }
