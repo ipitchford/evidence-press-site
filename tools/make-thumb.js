@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'noninteger-sliced-wasserstein': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 11 OCTOBER 2026', 'OPTIMAL TRANSPORT · NONINTEGER EXPONENTS'],
+    head: ['Projections control', '<em>full transport.</em>'],
+    headSize: 75,
+    sub: 'For each fixed noninteger p > 1, sliced Wasserstein distance uniformly controls Wₚ on the full critical moment ball.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: require('./sliced-wasserstein-art').thumbnailHero()
+  },
   'small-exponent-percolation': {palette:'auto',kicker:['RESEARCH RELEASE · 11 OCTOBER 2026','LONG-RANGE PERCOLATION'],head:['The cost of','<em>stepping back.</em>'],headSize:80,sub:'Why an infinite random cluster needs slightly more than one neighbour per point.',tag:'UNREFEREED CANDIDATE',hero:'<div class="eq-label">critical mean degree · exponent s → 0</div><div class="hero-title">1 + (π² / 12)s²</div><div class="note">The first correction.<br>A two-step return to the start.</div><div class="eq-foot">cubic remainder · undirected linear bond law</div>'},
   'steady-stream-power-landscapes': {palette:'auto', kicker:['RESEARCH RELEASE · 6 OCTOBER 2026','COUPLED LANDSCAPE MODEL'], head:['A steady','<em>shape.</em>'], headSize:100, sub:'Elevation and drainage solved together, near the diffusion-dominated state.', tag:'UNREFEREED CANDIDATE', hero:'<div class="eq-label">constant forcing · sufficiently weak erosion</div><div class="hero-title">Elevation<br>⇄<br>Drainage</div><div class="note">A locally unique branch.<br>A controlled iterative construction.</div><div class="eq-foot">specified geometric margin and multiplier class</div>'},
   'compact-cross-compliance-contact': {palette:'auto',kicker:['RESEARCH RELEASE · 5 OCTOBER 2026','ELASTIC CONTACT'],head:['Coupled, but','<em>compact.</em>'],headSize:91,sub:'Matched interfaces permit contact existence without a small-friction bound.',tag:'UNREFEREED CANDIDATE',hero:'<div class="eq-label">different materials · equal sums</div><div class="hero-title">2 + 1 = 1 + 2</div><div class="note">Leading coupling cancels.<br>Lower-order coupling can remain.</div><div class="eq-foot">smooth closed interface · incremental problem</div>'},
