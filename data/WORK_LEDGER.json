@@ -25710,6 +25710,108 @@
           "summary": "Recorded canonical site delivery without revising frozen intake, forecast or research-assurance endpoint; resource telemetry remains unknown."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:pmms-three-agents-eight-goods-publication",
+      "workId": "ep-work:pmms-three-agents-eight-goods",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-10T15:46:59Z",
+      "status": "active",
+      "statusAt": "2026-10-10T15:46:59Z",
+      "resultClass": "pending",
+      "aims": [
+        "science"
+      ],
+      "question": "Publish the three-agent eight-good PMMS existence candidate (m* = 9) with its trimmed certificates and explicit assurance boundaries.",
+      "selectionBasis": "Explicit publisher request after the research and review actions were complete.",
+      "taskClass": "full-candidate-publication",
+      "decisionObjectTarget": "LRAT refutations of the ten eight-good normal-form formulas, combined with the written reduction.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Forecast from this registration onward. Research, certificate production, trimming and review actions from 7 to 10 October 2026 are left-censored in this ledger; no discovery-time or total research-effort claim.",
+        "forecast": {
+          "frozenAt": "2026-10-10T15:46:59Z",
+          "procedureClass": "remaining-publication-after-research-checks",
+          "targetOutcome": "Immutable research publication and canonical site readback",
+          "expectedActiveMinutes": 150,
+          "plausibleLowMinutes": 90,
+          "plausibleHighMinutes": 240,
+          "expectedUnattendedWaitMinutes": 240,
+          "referenceClass": {
+            "label": "Remaining full-publication steps with a 33 GB evidence upload",
+            "sampleSize": 0,
+            "basis": "Procedural estimate. The unattended wait is dominated by uploading about 33 GB of certificates over a measured 28 Mbit/s uplink."
+          },
+          "fermiComponents": [
+            {
+              "component": "Archive, GitHub, site validation and two deployment cycles",
+              "count": 1,
+              "lowMinutesPerUnit": 90,
+              "centralMinutesPerUnit": 150,
+              "highMinutesPerUnit": 240,
+              "basis": "Remaining mandatory gates; no assurance waived for time."
+            }
+          ],
+          "probabilityPositiveSignal": 0.9,
+          "probabilityTargetClosure": 0.8,
+          "probabilityHorizonMinutes": 480,
+          "assumptions": [
+            "The last certificate's low-memory trim and checks succeed; providers remain accessible."
+          ],
+          "reforecastTriggers": [
+            "Trim or checker failure.",
+            "Provider or CI failure."
+          ],
+          "stopRule": "No hard cap; complete mandatory gates or report a precise blocker."
+        },
+        "outcome": null
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Research time, token costs and human effort not instrumented; publication still underway.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-10T15:46:59Z",
+            "basis": "Actual ledger registration during publication preparation."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 1,
+        "reworkMinutes": null,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "not-recorded",
+        "assessedAt": null,
+        "dimensions": [],
+        "claimCeiling": null,
+        "evidenceRefs": [],
+        "missingnessReason": "Publication underway; the research assurance endpoint is recorded once the public archive is verified."
+      },
+      "releaseSlug": "pmms-three-agents-eight-goods",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-10-10T15:46:59Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Registered at the start of publication; research stages left-censored.",
+          "evidenceRefs": []
+        }
+      ],
+      "corrections": [],
+      "revisions": []
     }
   ],
   "updatePolicy": {
@@ -26578,6 +26680,10 @@
     {
       "date": "2026-10-10",
       "summary": "Recorded canonical Three-Gaussian publication separately from research assurance; no acceleration or impact claim."
+    },
+    {
+      "date": "2026-10-10",
+      "summary": "Registered the three-agent eight-good PMMS publication attempt with honest left-censoring and unmeasured resources."
     }
   ]
 }

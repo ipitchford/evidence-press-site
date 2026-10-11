@@ -1,0 +1,208 @@
+{
+  "slug": "pmms-three-agents-eight-goods",
+  "title": "Pairwise maximin share allocations for three agents exist up to eight goods",
+  "shortTitle": "PMMS for three agents up to eight goods",
+  "oneLine": "Three people can always share up to eight indivisible items under pairwise maximin share fairness; nine is the smallest number of items where it can fail.",
+  "abstract": "A computer-assisted candidate proof shows that every instance with three agents, nonnegative additive valuations and at most eight indivisible goods has a complete pairwise maximin share (PMMS) allocation. With the published nine-good counterexamples, nine is the least number of goods in a three-agent counterexample. A written reduction turns a hypothetical eight-good counterexample into ten propositional formulas through a normal form; six- and seven-good existence is re-proved in the same framework and injected. Every formula is re-derived clause by clause by a separate verifier, and every refutation is a trimmed LRAT certificate accepted by two checkers. The paper also proves a sufficient condition for PMMS with 3q-1 goods involving one balanced agent, and reports hard eight-good instances that defeat natural constructions.",
+  "datePublished": "2026-10-10",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.23284137",
+  "conceptDoi": "10.5281/zenodo.23284136",
+  "zenodoUrl": "https://zenodo.org/records/23284137",
+  "pdfUrl": "https://github.com/ipitchford/pmms-three-agents-eight-goods/releases/download/v0.1.0-candidate/pmms-three-agents-eight-goods-v0.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23284137/files/pmms-three-agents-eight-goods-v0.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/pmms-three-agents-eight-goods",
+  "releaseUrl": "https://github.com/ipitchford/pmms-three-agents-eight-goods/releases/tag/v0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/pmms-three-agents-eight-goods.mp3",
+      "name": "Audio briefing",
+      "description": "Synthetic speech; communication, not additional evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/pmms-three-agents-eight-goods.txt"
+    }
+  ],
+  "keywords": [
+    "fair division",
+    "pairwise maximin share",
+    "PMMS",
+    "indivisible goods",
+    "SAT",
+    "LRAT certificates"
+  ],
+  "problem": {
+    "name": "Least number of goods in a three-agent PMMS counterexample",
+    "url": "https://arxiv.org/abs/2609.08954"
+  },
+  "keyResults": [
+    "Theorem 1: every three-agent instance with nonnegative additive valuations and at most eight goods has a complete PMMS allocation.",
+    "Corollary: with the nine-good counterexamples of Gölz and of Bei, Lin, Liu, Luan and Tao, the least counterexample size is nine.",
+    "Ten eight-good normal-form formulas, each with 252,930 variables, are refuted by trimmed LRAT certificates accepted by lrat-check and a standard-library Python checker; every formula is re-derived clause by clause.",
+    "Proposition 7: one q-balanced agent and a second agent c with 3v_c(P) ≤ v_c(M) for the third agent's top q−1 goods P guarantee PMMS with 3q−1 goods."
+  ],
+  "evidence": "Written reduction with complete clause schemas; fourteen formulas with variable dictionaries; independent clause verifier; trimmed LRAT certificates with two checkers' receipts; nine-good enumeration; generator controls; one-command replay; manifest, claim ledger and AI index.",
+  "statusDetail": "Unrefereed candidate: written reduction and producer-side replay of clause re-derivation and LRAT certificates checked by two checkers; no formalisation in a proof assistant, unaffiliated reproduction, specialist review or editorial peer review. An external review of the PDF of unrecorded authorship and three adversarial model reviews were actioned.",
+  "openProblems": [
+    "A human-readable proof of the eight-good theorem; the hardest instances found have no balanced agent.",
+    "Explain why the pair template fails on the instance of Observation 3(a) and find a construction that covers such instances.",
+    "Unaffiliated replay of the certificates and formalisation of the written reduction.",
+    "The four-agent analogue, where the smallest known counterexample has 52 goods."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Gölz (2026), PMMS allocations need not exist for 3 agents with additive valuations. Nine-good counterexample and the remark that nine is believed minimal or almost minimal.",
+      "url": "https://arxiv.org/abs/2609.08954"
+    },
+    {
+      "citation": "Bei, Lin, Liu, Luan and Tao (2026), Non-existence of PMMS allocations and a 4/3-PMMS guarantee for additive chores. A second nine-good goods instance (Table 2).",
+      "url": "https://arxiv.org/abs/2609.10493"
+    },
+    {
+      "citation": "Aziz (2026), Pairwise maximin share allocations need not exist. Four agents, 52 goods.",
+      "url": "https://arxiv.org/abs/2609.06282"
+    },
+    {
+      "citation": "Amanatidis, Markakis and Ntokos (2020), Multiple birds with one stone: beating 1/2 for EFX and GMMS via envy cycle elimination. Theorem 18 and Corollary 19 give existence for at most n+2 goods.",
+      "url": "https://doi.org/10.1609/aaai.v34i02.5545",
+      "doi": "10.1609/aaai.v34i02.5545"
+    },
+    {
+      "citation": "Akrami, Mayorov, Mehlhorn, Srinivas and Weidenbach (2026), A counterexample to EFX via SAT-solving, v3. Closest methodological precedent: subset-order encoding, Lean-formalised reduction, DRAT checking.",
+      "url": "https://arxiv.org/abs/2604.18216v3"
+    },
+    {
+      "citation": "Caragiannis, Kurokawa, Moulin, Procaccia, Shah and Wang (2019), The unreasonable fairness of maximum Nash welfare. Definition of PMMS.",
+      "url": "https://doi.org/10.1145/3355902",
+      "doi": "10.1145/3355902"
+    }
+  ],
+  "citeText": "Anonymous (2026). Pairwise maximin share allocations for three agents exist up to eight goods. Version 0.1.0-candidate. Evidence Press. 10.5281/zenodo.23284137.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Produced, revised and internally checked between 7 and 10 October 2026 from a supplied research package; recorded at publication on 10 October 2026. Discovery effort is not reconstructed.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "Anthropic Claude models (Claude Code): encoding, generator, verifier, certificates, paper and publication",
+      "OpenAI gpt-5.6-sol: three adversarial reviews",
+      "AI research agents in the supplied seven-good package; exact originating model not established"
+    ],
+    "humanRole": "Publication authority; no human research or verification contribution asserted.",
+    "reviewStatus": "Unrefereed candidate: written reduction and producer-side replay of clause re-derivation and LRAT certificates checked by two checkers; no formalisation, unaffiliated reproduction, specialist review or editorial peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23284137",
+      "note": "Published GitHub/Zenodo assets verified against the local SHA-256 ledger; availability is not proof or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/pmms-three-agents-eight-goods/blob/v0.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Producer-side replay of every check, including from a fresh extraction of the published assets; not an unaffiliated reproduction."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/pmms-three-agents-eight-goods/blob/v0.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Replay needs only standard-library Python, a C compiler and gzip; formulas regenerate with identical digests. No container or unaffiliated environment replay."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension. lrat-check is third-party; the clause verifier and Python checker were written by the producer."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No qualifying evidence establishing this dimension."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:pmms-three-agents-eight-goods",
+    "attemptIds": [
+      "ep-attempt:pmms-three-agents-eight-goods-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "parentLinks": [],
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "LRAT refutations of the ten eight-good normal-form formulas, combined with the written reduction and the re-proved six- and seven-good cases.",
+      "scope": "Three agents, at most eight goods, nonnegative additive real valuations."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Written reduction with complete clause schemas and a soundness proposition; a separate verifier re-derives every clause of every formula from its definitions.",
+      "remainingRisks": [
+        "The written reduction, the clause verifier, the checkers and their runtimes are trusted; no formalisation."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Specialist assessment of the normal-form reduction remains open; no human research judgement is claimed."
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "formalVerification",
+        "specialistReview"
+      ],
+      "nextAction": "Unaffiliated replay and specialist assessment of the reduction.",
+      "claimCeiling": "Unrefereed candidate: written reduction and producer-side replay of clause re-derivation and LRAT certificates checked by two checkers; no formalisation, unaffiliated reproduction, specialist review or editorial peer review."
+    },
+    "impactClaims": [
+      {
+        "id": "pmms-three-agents-eight-goods-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable fixed-size fair-division threshold theorem and certificates",
+        "setting": "Producer-coordinated mathematical publication",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No acceleration or empirical welfare effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "narration": "Three people want to share a few indivisible items, and each of them values the items differently. When is a division fair?\n\nOne demanding answer is called pairwise maximin share fairness. Take any two of the people. Imagine they pooled their items, and one of them split the pool into two piles, knowing she would be left with the worse pile. A division passes the test if everyone already has at least what that split could guarantee, against each of the other two.\n\nIn September twenty twenty-six, researchers showed that such a division can fail to exist. For three people, the examples used nine items. That left an obvious question: is nine the smallest number that can go wrong?\n\nThis Evidence Press candidate says yes. With eight items or fewer, a fair division in this sense always exists, provided each person's values simply add up across items.\n\nThe proof turns a hypothetical eight-item failure into ten large logical puzzles, and shows that none of them has a solution. A separate program rebuilds every rule of every puzzle from the definitions, and two separate proof checkers confirm each refutation. Smaller cases, with six and seven items, are proved again along the way.\n\nThis remains an unrefereed candidate. The checks were run by the producer, not yet by an unaffiliated team, and the argument has not been formalised in a proof assistant.\n\nThe paper, code and certificates accompany Pairwise maximin share allocations for three agents exist up to eight goods, released on the tenth of October twenty twenty-six. This briefing uses an AI-generated voice and is not additional mathematical evidence."
+}
