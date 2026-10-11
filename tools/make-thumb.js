@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'delayed-cascade-recovery': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 11 OCTOBER 2026', 'NETWORK CASCADES · PLANTED SET RECOVERY'],
+    head: ['Below √n.', '<em>Asymptotic recovery.</em>'],
+    headSize: 76,
+    sub: 'A widest rapid-window estimator recovers a planted dense set from one SI cascade for every fixed exponent 1/3 < α < 1.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: require('./delayed-cascade-art').thumbnailHero()
+  },
   'cross-polytope-signaling-dimension-six': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 11 OCTOBER 2026', 'SIGNALING DIMENSION · CROSS-POLYTOPE'],

@@ -2412,6 +2412,9 @@ palette['noninteger-sliced-wasserstein'] = slicedWassersteinArt.colors;
 const crossPolytopeArt = require('./cross-polytope-art');
 art['cross-polytope-signaling-dimension-six'] = crossPolytopeArt.draw;
 palette['cross-polytope-signaling-dimension-six'] = crossPolytopeArt.colors;
+const delayedCascadeArt = require('./delayed-cascade-art');
+art['delayed-cascade-recovery'] = delayedCascadeArt.draw;
+palette['delayed-cascade-recovery'] = delayedCascadeArt.colors;
 art['planar-transport-map-sensitivity-certificates'] = transportSensitivityArt.draw;
 palette['planar-transport-map-sensitivity-certificates'] = ['#f2c46f', '#8ed6ea'];
 for (const slug of requested) {
@@ -2443,6 +2446,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'pmms-three-agents-eight-goods') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${pmmsEightArt.description}</desc><defs>`);
   if (slug === 'noninteger-sliced-wasserstein') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${slicedWassersteinArt.description}</desc><defs>`);
   if (slug === 'cross-polytope-signaling-dimension-six') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${crossPolytopeArt.description}</desc><defs>`);
+  if (slug === 'delayed-cascade-recovery') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${delayedCascadeArt.description}</desc><defs>`);
   if (slug === 'flat-schmidt-chains') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${flatSchmidtArt.description}</desc><defs>`);
   if (motifs[slug]) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"')
     .replace('<defs>', `<desc id="art-description">${motifs[slug].description}</desc><defs>`);
