@@ -25888,6 +25888,172 @@
           "summary": "Recorded research assurance endpoint and completed canonical site delivery without changing the frozen intake or forecast. Resource telemetry remains explicitly unknown."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:stable-random-radial-profile-publication",
+      "workId": "ep-work:stable-random-radial-profile",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-11T04:42:14.839Z",
+      "status": "active",
+      "statusAt": "2026-10-11T04:54:10.211Z",
+      "resultClass": "pending",
+      "aims": [
+        "science"
+      ],
+      "question": "Action the supplied radial-profile review, pursue justified extensions, and publish the final candidate.",
+      "selectionBasis": "Explicit publisher request with source and review bundles.",
+      "taskClass": "review-extension-and-full-candidate-publication",
+      "decisionObjectTarget": "Random microscopic radial measure for isotropic regularly varying Kac coefficients, its smoothness and tail-index endpoint limits.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Selected single publication attempt."
+      },
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Work after this registration; original research and initial extension work are left-censored. No historical clocks reconstructed.",
+        "forecast": {
+          "frozenAt": "2026-10-11T04:42:14.839Z",
+          "procedureClass": "radial-profile-extension-publication",
+          "targetOutcome": "Immutable research publication and canonical site readback",
+          "expectedActiveMinutes": 110,
+          "plausibleLowMinutes": 90,
+          "plausibleHighMinutes": 165,
+          "expectedUnattendedWaitMinutes": 20,
+          "referenceClass": {
+            "label": "Targeted extension and full candidate publication",
+            "sampleSize": 0,
+            "basis": "Procedural estimate, not measured benchmark"
+          },
+          "fermiComponents": [
+            {
+              "component": "Research closure, archive, media and guarded publication",
+              "count": 1,
+              "lowMinutesPerUnit": 90,
+              "centralMinutesPerUnit": 110,
+              "highMinutesPerUnit": 165,
+              "basis": "Mandatory stages with new extension audits"
+            }
+          ],
+          "probabilityPositiveSignal": 0.9,
+          "probabilityTargetClosure": 0.8,
+          "probabilityHorizonMinutes": 480,
+          "assumptions": [
+            "The audited extensions remain valid in final text; providers remain accessible."
+          ],
+          "reforecastTriggers": [
+            "A substantive proof issue or provider failure."
+          ],
+          "stopRule": "No hard cap; complete mandatory gates or report a precise blocker."
+        },
+        "outcome": null
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Active effort, tokens and aggregate compute unavailable.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-11T04:42:14.839Z",
+            "basis": "Actual registration after initial review/extension work; no inferred clock."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-10-11T04:54:10.211Z",
+            "basis": "Archive preflight, green Linux CI and full public asset downloads; not site delivery."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": 3,
+        "reworkMinutes": null,
+        "correctionCount": 0
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-10-11T04:54:10.211Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23291843"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/stable-random-radial-profile/blob/v1.1.0-candidate/VERIFICATION.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/stable-random-radial-profile/blob/v1.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed written-proof candidate with internal proof audits and diagnostic checks; no formal verification, external specialist review or unaffiliated reproduction established.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/stable-random-radial-profile/releases/tag/v1.1.0-candidate",
+          "https://zenodo.org/records/23291843"
+        ],
+        "missingnessReason": "Archive availability and internal finite checks established; analytic proof is not formally verified or externally peer reviewed. Site delivery pending."
+      },
+      "releaseSlug": "stable-random-radial-profile",
+      "stopReason": null,
+      "statusHistory": [
+        {
+          "at": "2026-10-11T04:42:14.839Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Publication registration with explicit missingness.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-11T04:54:10.211Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research assurance endpoint recorded; site delivery pending.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/stable-random-radial-profile/releases/tag/v1.1.0-candidate",
+            "https://zenodo.org/records/23291843"
+          ]
+        }
+      ],
+      "corrections": [],
+      "revisions": []
     }
   ],
   "updatePolicy": {
@@ -26764,6 +26930,14 @@
     {
       "date": "2026-10-11",
       "summary": "Three-agent eight-good PMMS publication delivered with canonical readback; attempt closed as result-ready/positive with the assurance endpoint."
+    },
+    {
+      "date": "2026-10-11",
+      "summary": "Registered stable random radial profile extension and publication; unmeasured clocks remain unknown."
+    },
+    {
+      "date": "2026-10-11",
+      "summary": "Recorded Stable radial research assurance separately from site delivery."
     }
   ]
 }
