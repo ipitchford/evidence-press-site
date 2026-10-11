@@ -859,6 +859,14 @@ SPECS['square-maximises-dirichlet-ratio-quadrilaterals'] = {
  hero:'<div class="eq-label">first two Dirichlet eigenvalues</div><div class="eq">λ₂/λ₁ ≤ <span class="hl">5/2</span></div><div class="note">triangles ≤ 7/3 (2022)<br><b>quadrilaterals ≤ 5/2 (this candidate)</b><br>all planar shapes ≤ 2.539 (1992)</div><div class="eq-foot">equality only for the square</div>'
 };
 
+SPECS['pmms-three-agents-eight-goods'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 10 OCTOBER 2026','FAIR DIVISION · V0.1.0'],
+ head:['Eight goods:','<em>always fair.</em>'], headSize:84,
+ sub:'Three agents with additive values can always share eight indivisible goods with pairwise maximin share fairness. Nine is the smallest counterexample.',
+ tag:'COMPUTER-ASSISTED PROOF · UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">least goods in a three-agent PMMS counterexample</div><div class="eq">m* = <span class="hl">9</span></div><div class="note">≤ 5 goods: known (2020)<br>6–7 goods: re-proved<br><b>8 goods: ten checked certificates</b><br>9 goods: counterexamples (2026)</div><div class="eq-foot">additive valuations · precise scope in the paper</div>'
+};
+
 SPECS['planar-transport-map-sensitivity-certificates'] = {
  palette:'auto', kicker:['RESEARCH RELEASE · 7 OCTOBER 2026','OPTIMAL TRANSPORT · V0.2.0'],
  head:['When the target moves,','<em>certify the map.</em>'], headSize:76,
