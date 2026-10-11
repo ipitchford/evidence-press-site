@@ -1,0 +1,17 @@
+Can a collection of one-dimensional views tell us whether two probability distributions are close?
+
+Imagine two clouds of points. Comparing them directly means asking how much work it takes to move one cloud into the other. A simpler approach projects both clouds onto lines, compares those one-dimensional views, and averages over directions. This is called sliced Wasserstein distance.
+
+The question is whether small differences in those views guarantee a small difference between the full distributions.
+
+This candidate proves that they do under a particular condition. The transport cost uses a fixed power greater than one that is not an integer, and the distributions have a bounded moment of that same order. No bounded support or stronger moment assumption is needed. Even tiny amounts of probability travelling arbitrarily far away are covered.
+
+The distinction between integer and noninteger powers is essential. Earlier counterexamples show that the corresponding uniform guarantee fails at integer powers. This result addresses the remaining noninteger case.
+
+The proof tracks moment mass using logarithmic distance and direction. Classical transform formulas then help turn agreement between projections into control of full transport. The revised argument gives a stronger power-law bound, using a classical positive smoothing kernel.
+
+A further consequence handles finitely many weighted directions, but retains an error term for angular coverage. Finite projections alone cannot identify every distribution.
+
+There are important limits. The bound is not claimed to be sharp, its constant has not been numerically calibrated, and this is an unrefereed written-proof candidate, not a formally verified theorem. The small diagnostic tests do not prove the general result.
+
+This is the Evidence Press briefing for the noninteger sliced Wasserstein release, dated the eleventh of October, twenty twenty-six. The page links the paper, source and checks. This synthetic voice briefing is an explanation, not additional evidence.
