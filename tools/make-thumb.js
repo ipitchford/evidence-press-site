@@ -81,6 +81,15 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'primitive-su-primitivity': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 11 OCTOBER 2026', 'TOPOLOGICAL ORDER · SIMPLE-CURRENT SECTORS'],
+    head: ['Two obstructions.', '<em>One primitive series.</em>'],
+    headSize: 70,
+    sub: 'Rank dominance excludes a two-object vortex factor; an electron-exchanged pair excludes the one-object fixed alternative for every even N ≥ 4.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: require('./primitive-su-art').thumbnailHero()
+  },
   'delayed-cascade-recovery': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 11 OCTOBER 2026', 'NETWORK CASCADES · PLANTED SET RECOVERY'],
