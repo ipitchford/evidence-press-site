@@ -25894,9 +25894,9 @@
       "workId": "ep-work:stable-random-radial-profile",
       "cohort": "prospective",
       "registeredAt": "2026-10-11T04:42:14.839Z",
-      "status": "active",
-      "statusAt": "2026-10-11T04:54:10.211Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-11T05:12:25.400Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -25953,7 +25953,7 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Active effort, tokens and aggregate compute unavailable.",
+        "missingnessReason": "Publication delivery verified. Active effort, aggregate compute and token telemetry were not instrumented; unknown values remain null.",
         "milestones": [
           {
             "event": "work-opened",
@@ -25964,6 +25964,11 @@
             "event": "assurance-endpoint-reached",
             "at": "2026-10-11T04:54:10.211Z",
             "basis": "Archive preflight, green Linux CI and full public asset downloads; not site delivery."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-11T05:12:25.400Z",
+            "basis": "Authorised publication and exact canonical readback, separate from earlier research assurance."
           }
         ],
         "activeHumanMinutes": null,
@@ -26050,10 +26055,26 @@
             "https://github.com/ipitchford/stable-random-radial-profile/releases/tag/v1.1.0-candidate",
             "https://zenodo.org/records/23291843"
           ]
+        },
+        {
+          "at": "2026-10-11T05:12:25.400Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Canonical publication verified; result-ready records the completed candidate. Terminal published metrics require unrecorded resource telemetry, so no duration/token values are invented.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/stable-random-radial-profile/",
+            "https://3c19151a.evidence-press.pages.dev",
+            "https://zenodo.org/records/23291843"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-11",
+          "summary": "Recorded canonical site delivery without revising frozen intake, forecast or research-assurance endpoint; resource telemetry remains unknown."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -26938,6 +26959,10 @@
     {
       "date": "2026-10-11",
       "summary": "Recorded Stable radial research assurance separately from site delivery."
+    },
+    {
+      "date": "2026-10-11",
+      "summary": "Recorded canonical Stable radial publication separately from research assurance; no acceleration or impact claim."
     }
   ]
 }
