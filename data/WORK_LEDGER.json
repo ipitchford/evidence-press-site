@@ -25716,9 +25716,9 @@
       "workId": "ep-work:pmms-three-agents-eight-goods",
       "cohort": "prospective",
       "registeredAt": "2026-10-10T15:46:59Z",
-      "status": "active",
-      "statusAt": "2026-10-10T15:46:59Z",
-      "resultClass": "pending",
+      "status": "result-ready",
+      "statusAt": "2026-10-11T04:31:00Z",
+      "resultClass": "positive",
       "aims": [
         "science"
       ],
@@ -25782,6 +25782,16 @@
             "event": "work-opened",
             "at": "2026-10-10T15:46:59Z",
             "basis": "Actual ledger registration during publication preparation."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-10-11T04:24:00Z",
+            "basis": "Fresh-extraction gate batch 7/7 and publication-ready preflight bound to the frozen core archive; not site delivery."
+          },
+          {
+            "event": "result-ready",
+            "at": "2026-10-11T04:31:00Z",
+            "basis": "Completed authorized publication with guarded deployment and exact canonical readback, separately from the research-assurance endpoint."
           }
         ],
         "activeHumanMinutes": null,
@@ -25792,12 +25802,62 @@
         "correctionCount": 0
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Publication underway; the research assurance endpoint is recorded once the public archive is verified."
+        "status": "measured-partial",
+        "assessedAt": "2026-10-11T04:24:00Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23284137"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/pmms-three-agents-eight-goods/blob/v0.1.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/pmms-three-agents-eight-goods/blob/v0.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate: written reduction and producer-side replay of clause re-derivation and LRAT certificates checked by two checkers; no formalisation, unaffiliated reproduction, specialist review or editorial peer review.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/pmms-three-agents-eight-goods/releases/tag/v0.1.0-candidate",
+          "https://zenodo.org/records/23284137"
+        ],
+        "missingnessReason": "Producer-side replay from a fresh extraction of the published assets and archive availability established; independent reproduction, formal verification and peer review not established."
       },
       "releaseSlug": "pmms-three-agents-eight-goods",
       "stopReason": null,
@@ -25808,10 +25868,26 @@
           "resultClass": "pending",
           "reason": "Registered at the start of publication; research stages left-censored.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-11T04:31:00Z",
+          "status": "result-ready",
+          "resultClass": "positive",
+          "reason": "Zenodo record and GitHub release published; canonical site delivery verified after guarded deployment. Resource telemetry was not instrumented, so no duration or token values are invented. Upload took about six hours because the first attempts sent a generic User-Agent and ran parallel retries; recorded as rework, not measured.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/pmms-three-agents-eight-goods/releases/tag/v0.1.0-candidate",
+            "https://zenodo.org/records/23284137",
+            "https://evidencepress.org/releases/pmms-three-agents-eight-goods/"
+          ]
         }
       ],
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-11",
+          "summary": "Recorded research assurance endpoint and completed canonical site delivery without changing the frozen intake or forecast. Resource telemetry remains explicitly unknown."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -26684,6 +26760,10 @@
     {
       "date": "2026-10-10",
       "summary": "Registered the three-agent eight-good PMMS publication attempt with honest left-censoring and unmeasured resources."
+    },
+    {
+      "date": "2026-10-11",
+      "summary": "Three-agent eight-good PMMS publication delivered with canonical readback; attempt closed as result-ready/positive with the assurance endpoint."
     }
   ]
 }
