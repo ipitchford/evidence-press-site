@@ -1,0 +1,15 @@
+Could the timing of a single spreading event reveal a hidden community, even when we cannot see the network itself?
+
+This Evidence Press candidate studies an idealised version of that question. Imagine a large random network containing a smaller, densely connected group. One randomly chosen vertex starts a spreading process. Infection travels independently along each available connection, at a known rate, with no recovery. We observe every infection time and, for recovery of the group, the identity of each infected vertex.
+
+The proposed rule scans those times for a long interval in which infections arrive unusually quickly. It selects the widest qualifying interval. The proof first controls contamination across all possible intervals, before making that choice. That is important: choosing an interval because it looks unusual must not invalidate the probability calculation.
+
+For one specified background density, the written proof gives recovery when the hidden group grows faster than the cube root of network size, multiplied by a stated logarithmic factor. The fraction of misclassified vertices then tends to zero as the network grows. A revision also extends the sufficient conditions to other known background densities. The rule does not need to know the group's size or its internal connection probability.
+
+The comparison with earlier work is specific. Earlier researchers already developed the first-entry and growth arguments. This candidate combines those ideas with simultaneous contamination control and an observable selection rule to reach a smaller sufficient group-size regime. It does not improve every earlier guarantee, and it does not establish an optimal threshold.
+
+There is a crucial practical limitation. All twelve planted cases in the small numerical pilot failed: the algorithm returned an empty set. In eight cases, its minimum output size made relative error below one impossible, regardless of the observations. The other four planted cases also failed. The four null cases correctly returned no group.
+
+So this is an asymptotic recovery result, not a working community-detection tool validated at practical sizes. Noisy observations, unknown spreading rates, and sharp limits remain open. The public package preserves the failed pilot, the code and the proof. It is an unrefereed candidate with internal checks, not a formally verified theorem or an independently validated application.
+
+This is the Evidence Press release for delayed cascade recovery, dated the eleventh of October, twenty twenty-six. The page links the paper and evidence. This AI voice briefing is an explanation, not additional evidence.

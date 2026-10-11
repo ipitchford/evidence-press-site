@@ -1,0 +1,185 @@
+{
+  "slug": "delayed-cascade-recovery",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "title": "Recovering a dense planted set below square-root size from one SI cascade",
+  "shortTitle": "A hidden cluster in one cascade",
+  "oneLine": "A written-proof candidate recovers a hidden dense set from infection times in a specified random-graph model, while its small pilot records twelve failures.",
+  "abstract": "A widest rapid-window estimator consistently detects and approximately recovers a planted dense set of size n^alpha for 1/3<alpha<1 when background mean degree is log² n. A strengthened theorem permits known d=np with d/log n tending to infinity and arbitrary s≤n whenever nd(log n)²/s³+d(log n)²/s tends to zero. The recorded sixteen-run pilot returned empty sets throughout; no practical finite-size performance is established.",
+  "datePublished": "2026-10-11",
+  "authors": [
+    "Anonymous"
+  ],
+  "version": "1.1.0-candidate",
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "SI cascade",
+    "planted dense subgraph",
+    "statistical recovery",
+    "counting processes",
+    "negative pilot"
+  ],
+  "problem": {
+    "name": "Recovery of a planted dense set from a single network cascade",
+    "url": "https://arxiv.org/abs/2610.08766v1"
+  },
+  "keyResults": [
+    "Consistent relative recovery below square-root size in the specified known-background model.",
+    "General sufficient condition nd(log n)²/s³+d(log n)²/s→0 for d/log n→∞.",
+    "All twelve planted pilot runs failed; eight face a deterministic minimum-width obstruction."
+  ],
+  "evidence": "Written probabilistic proof with internal extension audit; seven finite diagnostic tests passed in normal and optimized Python, plus byte-identical replay of all sixteen preserved pilot outcomes in normal Python. All twelve planted pilot cases failed.",
+  "statusDetail": "Unrefereed written-proof candidate with fresh internal finite-code replay. No formal verification, unaffiliated reproduction or external peer review established; the negative pilot demonstrates no useful finite-size power.",
+  "openProblems": [],
+  "relatedWorks": [
+    {
+      "citation": "Dreveton, Mürmann and Thiran (2026), Estimation and Recovery of a Planted Dense Subgraph from a Single Network Cascade, v1: first-entry and growth comparisons; sharper error in the overlap and nuisance-parameter estimation.",
+      "url": "https://arxiv.org/abs/2610.08766v1"
+    },
+    {
+      "citation": "Brandenberger, Mossel and Sridhar (2025), Detecting abrupt changes in point processes: Fundamental limits and applications.",
+      "url": "https://arxiv.org/abs/2501.08392v1"
+    },
+    {
+      "citation": "Prokhorenkova, Tikhonov and Litvak (2022), When less is more: Systematic analysis of cascade-based community detection.",
+      "url": "https://doi.org/10.1145/3494563"
+    }
+  ],
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied manuscript and review, preserved negative pilot and bounded internal general-background proof extension. Earlier research clocks unknown.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex: source comparison, internal checking and publication preparation"
+    ],
+    "humanRole": "Publication authority only; no human research contribution asserted.",
+    "reviewStatus": "Unrefereed written-proof candidate with fresh internal finite-code replay. No formal verification, unaffiliated reproduction or external peer review established; the negative pilot demonstrates no useful finite-size power."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23298826",
+      "note": "Public research assets match the frozen package; availability does not establish correctness."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/delayed-cascade-recovery/blob/v1.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Seven finite tests passed in normal and optimized Python with semantic negative controls, plus byte-identical replay of all sixteen recorded pilot outcomes in normal Python. These coordinated internal checks do not prove the asymptotic theorem."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/delayed-cascade-recovery/blob/v1.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Code, inputs, adverse results and environment are retained; no unaffiliated reproduction is established."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "This assurance dimension is not established by the coordinated internal checks or publication."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "This assurance dimension is not established by the coordinated internal checks or publication."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "This assurance dimension is not established by the coordinated internal checks or publication."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "This assurance dimension is not established by the coordinated internal checks or publication."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "This assurance dimension is not established by the coordinated internal checks or publication."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:delayed-cascade-recovery",
+    "attemptIds": [
+      "ep-attempt:delayed-cascade-recovery-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "productive-failure",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Sufficient conditions for relative recovery of a hidden dense set from one SI cascade.",
+      "scope": "Independent-edge model, fixed internal density, known background and rate-one clocks, complete observations."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Observable rapid windows are controlled simultaneously before the widest is selected; a latent planted burst supplies a witness.",
+      "remainingRisks": [
+        "Written proof is not formally verified.",
+        "Negative pilot establishes no useful finite-size power.",
+        "No optimal threshold or unknown-rate theorem."
+      ]
+    },
+    "humanJudgmentGates": [
+      "External scrutiny of the probabilistic proof and relevance of the observation model remains open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview"
+      ],
+      "nextAction": "Audit the asymptotic proof and reproduce the preserved pilot outside the producer workflow.",
+      "claimCeiling": "Unrefereed written-proof candidate with fresh internal finite-code replay. No formal verification, unaffiliated reproduction or external peer review established; the negative pilot demonstrates no useful finite-size power."
+    },
+    "impactClaims": [
+      {
+        "id": "delayed-cascade-recovery-no-impact",
+        "aim": "science",
+        "outcome": "Relative recovery in a specified single-cascade model",
+        "setting": "Producer-coordinated theoretical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No measured acceleration, reuse or downstream scientific benefit.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "narration": "Could the timing of a single spreading event reveal a hidden community, even when we cannot see the network itself?\n\nThis Evidence Press candidate studies an idealised version of that question. Imagine a large random network containing a smaller, densely connected group. One randomly chosen vertex starts a spreading process. Infection travels independently along each available connection, at a known rate, with no recovery. We observe every infection time and, for recovery of the group, the identity of each infected vertex.\n\nThe proposed rule scans those times for a long interval in which infections arrive unusually quickly. It selects the widest qualifying interval. The proof first controls contamination across all possible intervals, before making that choice. That is important: choosing an interval because it looks unusual must not invalidate the probability calculation.\n\nFor one specified background density, the written proof gives recovery when the hidden group grows faster than the cube root of network size, multiplied by a stated logarithmic factor. The fraction of misclassified vertices then tends to zero as the network grows. A revision also extends the sufficient conditions to other known background densities. The rule does not need to know the group's size or its internal connection probability.\n\nThe comparison with earlier work is specific. Earlier researchers already developed the first-entry and growth arguments. This candidate combines those ideas with simultaneous contamination control and an observable selection rule to reach a smaller sufficient group-size regime. It does not improve every earlier guarantee, and it does not establish an optimal threshold.\n\nThere is a crucial practical limitation. All twelve planted cases in the small numerical pilot failed: the algorithm returned an empty set. In eight cases, its minimum output size made relative error below one impossible, regardless of the observations. The other four planted cases also failed. The four null cases correctly returned no group.\n\nSo this is an asymptotic recovery result, not a working community-detection tool validated at practical sizes. Noisy observations, unknown spreading rates, and sharp limits remain open. The public package preserves the failed pilot, the code and the proof. It is an unrefereed candidate with internal checks, not a formally verified theorem or an independently validated application.\n\nThis is the Evidence Press release for delayed cascade recovery, dated the eleventh of October, twenty twenty-six. The page links the paper and evidence. This AI voice briefing is an explanation, not additional evidence.",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/delayed-cascade-recovery.mp3",
+      "name": "Audio briefing — A hidden cluster in one cascade",
+      "description": "Synthetic explanation, not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/delayed-cascade-recovery.txt"
+    }
+  ],
+  "doi": "10.5281/zenodo.23298826",
+  "conceptDoi": "10.5281/zenodo.23298825",
+  "zenodoUrl": "https://zenodo.org/records/23298826",
+  "pdfUrl": "https://zenodo.org/records/23298826/files/delayed-cascade-recovery-v1.1.0-candidate.pdf",
+  "altPdfUrl": "https://github.com/ipitchford/delayed-cascade-recovery/releases/download/v1.1.0-candidate/delayed-cascade-recovery-v1.1.0-candidate.pdf",
+  "repoUrl": "https://github.com/ipitchford/delayed-cascade-recovery",
+  "releaseUrl": "https://github.com/ipitchford/delayed-cascade-recovery/releases/tag/v1.1.0-candidate",
+  "citeText": "Anonymous (2026). Recovering a dense planted set below square-root size from one SI cascade. Version 1.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23298826"
+}
