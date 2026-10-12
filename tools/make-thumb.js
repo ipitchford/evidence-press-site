@@ -81,6 +81,7 @@ const savedPalettes = require('./thumbnail-palettes');
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'theta-graphs-c3-e-positive': {palette:'auto',kicker:['RESEARCH RELEASE · 12 OCTOBER 2026','GRAPH COLOURINGS · E-POSITIVITY'],head:['Three paths.','<em>Positive sums.</em>'],headSize:80,sub:'A three-edge route unlocks the next infinite family.',tag:'UNREFEREED CANDIDATE',hero:require('./theta-c3-art').thumbnailHero()},
   'sun-circular-primitive-permutation': {palette:'auto',kicker:['RESEARCH RELEASE · 12 OCTOBER 2026','FINITE FIELDS · HAMILTONIAN CYCLES'],head:['A primitive circle,','<em>except once.</em>'],headSize:78,sub:'An exact obstruction and finite-field certificates complete the classification.',tag:'UNREFEREED CANDIDATE',hero:require('./sun-circular-art').thumbnailHero()},
   'sun-hou-primitive-sum-circle': {palette:'auto',kicker:['RESEARCH RELEASE · 12 OCTOBER 2026','FINITE FIELDS · SUN–HOU CONJECTURE'],head:['A circle of','<em>primitive sums.</em>'],headSize:84,sub:'An exact sieve and 53 explicit cycles close the finite remainder.',tag:'UNREFEREED CANDIDATE',hero:require('./sun-hou-art').thumbnailHero()},
   'primitive-su-primitivity': {

@@ -9,6 +9,8 @@ function load() {
   for (const row of registry.assignments) {
     if (seen.has(row.slug) || !rotation.includes(row.palette)) throw new Error('Invalid thumbnail palette: ' + row.slug);
     seen.add(row.slug);
+    if (row.editorialPalette && (!rotation.includes(row.editorialPalette) || !row.editorialReason?.trim()))
+      throw new Error('Invalid editorial thumbnail palette override: ' + row.slug);
   }
   const recent = registry.assignments.filter(row => !row.legacy);
   for (let i = 1; i < recent.length; i++) {
@@ -20,7 +22,7 @@ function load() {
 function resolve(slug, allocate = false) {
   const registry = load();
   const saved = registry.assignments.find(row => row.slug === slug);
-  if (saved) return saved.palette;
+  if (saved) return saved.editorialPalette || saved.palette;
   if (!allocate) throw new Error('Generate thumbnail to allocate a saved palette: ' + slug);
   const last = registry.assignments.at(-1);
   const palette = rotation[(rotation.indexOf(last?.palette) + 1) % rotation.length];

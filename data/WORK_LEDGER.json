@@ -27430,6 +27430,188 @@
           "summary": "Recorded canonical delivery separately from research assurance; unknown resource telemetry preserved."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:theta-graphs-c3-e-positive-publication",
+      "workId": "ep-work:theta-graphs-c3-e-positive",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-12T08:12:28.561Z",
+      "aims": [
+        "science"
+      ],
+      "question": "Revise and publish the theta c3 weighted-regrouping candidate with a sharp equality proof.",
+      "selectionBasis": "User-supplied candidate and prose review. This site ledger registration occurs during publication; earlier research, review and preparation time is left-censored, not reconstructed.",
+      "taskClass": "review-extension-and-full-candidate-publication",
+      "status": "active",
+      "statusAt": "2026-10-12T08:46:57.720Z",
+      "resultClass": "pending",
+      "statusHistory": [
+        {
+          "at": "2026-10-12T08:12:28.561Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Registered the publication attempt while final research CI and site preparation proceed.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-12T08:46:57.720Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research archives publicly verified; site publication still pending.",
+          "evidenceRefs": [
+            "https://zenodo.org/records/23312724",
+            "https://github.com/ipitchford/theta-graphs-c3-e-positive/releases/tag/v1.1.0-candidate"
+          ]
+        }
+      ],
+      "decisionObjectTarget": "Nonnegative weighted composition groups for every a>=b>=3, with an exact zero-group classification.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration, productivity or downstream impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "This is a single theoretical publication attempt, not a comparative workflow evaluation."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Registration occurs after research preparation; active effort, compute and token telemetry were not instrumented.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-12T08:12:28.561Z",
+            "basis": "Actual site-ledger registration, not discovery intake."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": null,
+        "reworkMinutes": null,
+        "correctionCount": null
+      },
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Site-ledger registration onward; earlier preparation is left-censored.",
+        "forecast": {
+          "frozenAt": "2026-10-12T08:12:28.561Z",
+          "procedureClass": "full-candidate",
+          "targetOutcome": "Immutable research publication and canonical site readback",
+          "expectedActiveMinutes": 90,
+          "plausibleLowMinutes": 60,
+          "plausibleHighMinutes": 150,
+          "expectedUnattendedWaitMinutes": 30,
+          "referenceClass": {
+            "label": "Remaining full-candidate publication",
+            "sampleSize": 0,
+            "basis": "Procedural forecast, not measured benchmark"
+          },
+          "fermiComponents": [
+            {
+              "component": "Provider publication and asset readback",
+              "count": 1,
+              "lowMinutesPerUnit": 10,
+              "centralMinutesPerUnit": 20,
+              "highMinutesPerUnit": 35,
+              "basis": "Small archive; provider latency remains variable."
+            },
+            {
+              "component": "Media, page and browser QA",
+              "count": 1,
+              "lowMinutesPerUnit": 20,
+              "centralMinutesPerUnit": 30,
+              "highMinutesPerUnit": 50,
+              "basis": "New release and exact banner."
+            },
+            {
+              "component": "Both guarded A/B and C/D deployment cycles and closeout",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 40,
+              "highMinutesPerUnit": 65,
+              "basis": "Required CI, preservation and canonical readback."
+            }
+          ],
+          "probabilityPositiveSignal": 0.9,
+          "probabilityTargetClosure": 0.8,
+          "probabilityHorizonMinutes": 480,
+          "assumptions": [
+            "The frozen candidate remains unchanged and provider, CI and deployment routes remain accessible."
+          ],
+          "reforecastTriggers": [
+            "A substantive integrity finding, provider failure or CI failure."
+          ],
+          "stopRule": "No hard cap; complete mandatory gates or report a precise blocker."
+        },
+        "outcome": null
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-10-12T08:46:57.720Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23312724"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/theta-graphs-c3-e-positive/blob/v1.1.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/theta-graphs-c3-e-positive/blob/v1.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed written-proof candidate with finite internal testing; no formal verification or unaffiliated reproduction.",
+        "evidenceRefs": [
+          "https://zenodo.org/records/23312724",
+          "https://github.com/ipitchford/theta-graphs-c3-e-positive/releases/tag/v1.1.0-candidate"
+        ],
+        "missingnessReason": "Archive publication and internal replay established; site delivery pending and external assurance absent."
+      },
+      "releaseSlug": "theta-graphs-c3-e-positive",
+      "stopReason": null,
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-10-12",
+          "summary": "Bound public research assets and scoped internal replay without inferring site delivery or external assurance."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -28398,6 +28580,14 @@
     {
       "date": "2026-10-12",
       "summary": "Recorded Sun circular primitive-permutation canonical publication; no acceleration or impact claim."
+    },
+    {
+      "date": "2026-10-12",
+      "summary": "Registered theta c3 publication with explicit left-censoring and no inferred resource telemetry."
+    },
+    {
+      "date": "2026-10-12",
+      "summary": "Recorded theta c3 archive availability and exact public asset parity."
     }
   ]
 }
