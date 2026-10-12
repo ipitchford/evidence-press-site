@@ -1,0 +1,13 @@
+Can every nonzero number in a finite arithmetic system be arranged around a circle under a demanding rule? Multiply each pair of neighbours, add a fixed number, and the result must be primitive. That means its powers visit every nonzero number in the system.
+
+Sun conjectured that this was always possible for fields with more than seven elements. This candidate gives a precise correction: there is exactly one exception, in arithmetic modulo eleven when the fixed number is two.
+
+The obstruction is small enough to see. Two vertices, labelled two and nine, each have only two possible neighbours: three and eight. Any circle visiting every vertex would have to use all four of those links. But those links already close a four-vertex circle. The other six vertices cannot join it.
+
+Why should every other case work? Earlier research settled all sufficiently large fields and the zero-parameter case. An improved bound leaves five hundred and ten field sizes. A search then generates circular orderings for every required nonzero parameter, and a separate checker verifies the field arithmetic, every vertex and every neighbouring product. The complete witness streams are regenerated during replay rather than stored in the archive.
+
+The revision also gives a limited robustness result: where the bound has enough room, deleting some vertices and some edges still leaves a Hamiltonian circle. It is a sufficient condition, not a sharp limit.
+
+This remains an unrefereed computer-assisted candidate. Its exact classification is a specialist contribution built on substantial earlier work; the checks do not establish formal verification or external peer review.
+
+This Evidence Press briefing is dated the twelfth of October, twenty twenty-six. The paper and replay package are linked on the release page. This synthetic voice explanation is not additional evidence.

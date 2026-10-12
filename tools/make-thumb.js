@@ -76,11 +76,12 @@ const PALETTES = {
   }
 };
 
-const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'lagoon'];
+const savedPalettes = require('./thumbnail-palettes');
 
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'sun-circular-primitive-permutation': {palette:'auto',kicker:['RESEARCH RELEASE · 12 OCTOBER 2026','FINITE FIELDS · HAMILTONIAN CYCLES'],head:['A primitive circle,','<em>except once.</em>'],headSize:78,sub:'An exact obstruction and finite-field certificates complete the classification.',tag:'UNREFEREED CANDIDATE',hero:require('./sun-circular-art').thumbnailHero()},
   'sun-hou-primitive-sum-circle': {palette:'auto',kicker:['RESEARCH RELEASE · 12 OCTOBER 2026','FINITE FIELDS · SUN–HOU CONJECTURE'],head:['A circle of','<em>primitive sums.</em>'],headSize:84,sub:'An exact sieve and 53 explicit cycles close the finite remainder.',tag:'UNREFEREED CANDIDATE',hero:require('./sun-hou-art').thumbnailHero()},
   'primitive-su-primitivity': {
     palette: 'auto',
@@ -986,7 +987,7 @@ const automaticSpec = (meta, index) => {
   const status = String(meta.status || 'unrefereed-candidate').replace(/-/g, ' ').toUpperCase();
   const titleLength = String(title || '').length;
   return {
-    palette: PALETTE_ROTATION[index % PALETTE_ROTATION.length],
+    palette: 'auto',
     kicker: [`RESEARCH RELEASE · ${formatDate(meta.datePublished)}`, `${topic} · V${String(meta.version || '').toUpperCase()}`],
     head: headline(title),
     headSize: titleLength <= 28 ? 70 : titleLength <= 44 ? 60 : 50,
@@ -1003,9 +1004,7 @@ const automaticSpec = (meta, index) => {
 const resolvedSpec = (meta, index) => {
   const authored = SPECS[meta.slug];
   const spec = authored ? { ...authored } : automaticSpec(meta, index);
-  if (!spec.palette || spec.palette === 'auto') {
-    spec.palette = PALETTE_ROTATION[index % PALETTE_ROTATION.length];
-  }
+  spec.palette = savedPalettes.resolve(meta.slug, true);
   if (!PALETTES[spec.palette]) throw new Error(`${meta.slug}: unknown palette ${spec.palette}`);
   return spec;
 };
@@ -1136,7 +1135,12 @@ h1 em{font-style:normal;color:${p.accent}}
   const requireCentral = process.env.EVIDENCE_PRESS_REQUIRE_CENTRAL_THUMBS === '1' ||
     (process.platform === 'darwin' && os.homedir() === '/Users/admin');
   if (checkOnly) {
+    require('./test-thumbnail-palettes');
+    for (const row of savedPalettes.load().assignments) {
+      if (!bySlug.has(row.slug)) throw new Error(`palette assignment has no release: ${row.slug}`);
+    }
     for (const meta of records) {
+      savedPalettes.resolve(meta.slug);
       const repoFile = path.join(OUT, `${meta.slug}.jpg`);
       verifyThumbnail(repoFile);
       if (requireCentral) {
