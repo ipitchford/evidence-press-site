@@ -4,7 +4,7 @@ England has seen a striking shift from owner occupation to private renting, espe
 
 That explanation may be true in part. The available aggregate data cannot tell us how much.
 
-This paper reconstructs the public evidence and then asks a stricter question: do the observed tenure shares, house prices, rents, mortgage rates, housing supply, and dwelling stocks distinguish wealthy-investor pressure from other plausible mechanisms? In the registered design, they do not. Credit conditions, housing supply, demographics, tax changes, middle-resource losses, institutional entry, and combinations of these mechanisms can produce the same observed pattern.
+This paper reconstructs the public evidence and then asks a stricter question: do the observed tenure shares, house prices, rents, mortgage rates, housing supply, and dwelling stocks distinguish wealthy-investor pressure from other plausible mechanisms? In the registered synthetic design, they do not: combinations of the other mechanisms (credit, interest rates, supply, demographics, landlord tax, middle-resource loss) together with constructed rivals such as institutional entry can reproduce the investor mechanism's predicted signature.
 
 The result is deliberately neither "wealthy investors caused the shift" nor "wealthy investors had no effect." It is that the public aggregate series usually brought into this debate do not identify the effect. The project therefore stopped before fitting a structural model that would have produced a precise-looking but non-unique historical attribution.
 

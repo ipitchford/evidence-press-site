@@ -50,7 +50,7 @@ f_B(t)=\frac{81}{160}e^{-3t/4}
 -\frac{49}{160}e^{-7t/4}
 +\frac{1}{200}e^{-t/100}.
 $$
-Its squared coefficient of variation is $324697/112903>1$, so the elementary equilibrium variance condition does not exclude it. Its negative exponential residue does. The classification therefore establishes positive minimum cost without assigning its value.
+Its squared coefficient of variation is $324697/112903>1$, so the elementary equilibrium variance condition does not exclude it. Its negative exponential residue does. The classification therefore shows that the lowest achievable cost is positive, without giving its value or showing that it is attained.
 
 A further corollary tolerates a simultaneous error box: if $p\geq p_0>0$, $a\geq a_0\geq0$ and $b\leq b_1$ with $\eta=a_0^2-b_1>0$, then the fixed-window floor is $16p_0\eta^2/t$.
 

@@ -135,7 +135,7 @@ After two scalar exclusions, the exact root certificate partitions 314 determina
 
 For fixed rational spectra and cusp Smith form, the written classification is an arithmetic double-coset presentation with an equivalence decision and recursive enumeration. It is not a printed finite list of all integral matrices.
 
-The notes also construct infinite scaled $(3,4,\infty)$ and unimodular $(12,12,\infty)$ integral families and solve their displayed period equations over the open base. In the nonsplit $(12,12,\infty)$ case, compactification remains an explicit unresolved obstruction. An integral monodromy triple is therefore not automatically a compact holomorphic family.
+The notes also construct infinite scaled $(3,4,\infty)$ and unimodular $(12,12,\infty)$ integral families, and solve the open-base period equations for the scaled $(3,4,\infty)$ family and the split $(12,12,\infty)$ case. In the split case, compactification reduces to an explicit residue obstruction; the nonsplit case is not evaluated. An integral monodromy triple is therefore not automatically a compact holomorphic family.
 
 ## Exceptional algebraic fibres
 

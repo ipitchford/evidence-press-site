@@ -2,7 +2,7 @@
 
 A famous result of Ramsey theory says that if you connect 18 points in every possible way and paint each connection red or blue, you will always find four points whose six mutual connections are all the same colour — a monochromatic foursome. Eighteen is exactly the threshold: with 17 points you can avoid it.
 
-This release asks the natural next question. How many points do you need before you are guaranteed *two* monochromatic foursomes that share no points at all? The claimed answer is exactly 20. With 19 points there is a way out — an elegant colouring built from two copies of a highly symmetric structure (a "Paley twin") avoids any two disjoint foursomes, and you can check this directly with a small program included in the release. With 20 points, escape is claimed to be impossible.
+This release asks the natural next question. How many points do you need before you are guaranteed *two* monochromatic foursomes that share no points at all? The claimed answer is exactly 20. With 19 points there is a way out — a colouring built from one highly symmetric 17-vertex network (the Paley graph), with one vertex replaced by three "twin" copies of it, avoids any two disjoint foursomes, and you can check this directly with a small program included in the release. With 20 points, escape is claimed to be impossible.
 
 The impossibility half is where the heavy machinery lives: it reuses the certified SAT computations from this project's companion release on Erdős problem 758, so the two results stand or fall together.
 
@@ -12,21 +12,21 @@ Define $\mathrm{VR}_2(K_4)$ as the least $n$ such that every 2-colouring of $E(K
 
 The lower bound is an explicit 19-vertex colouring — a Paley-twin construction — admitting no two vertex-disjoint monochromatic $K_4$s, checked by a dependency-free direct verifier whose output ships with the release. The upper bound reuses the reduction and proof objects of the companion $z(20) = 6$ release (pinned to a specific repository commit): via $R(4,4) = 18$, obstructions concentrate on the two 16-vertex $(4,4)$-Ramsey graphs, and the residual case analysis is discharged by the same two CNF unsatisfiability certificates, LRAT-checked including by the formally verified cake_lpr.
 
-A caveat specialists should note: the notation and definition are as given by the project, which did not locate an independent literature source for this exact quantity. Anyone aware of prior work on it under another name would materially help situate the result.
+A note for specialists: $\mathrm{VR}_t(F)$, the vertex-disjoint Ramsey number, is an established quantity (Jent, Osborn and Zhang; Jent and Zhang); this release claims the value of $\mathrm{VR}_2(K_4)$. A wider search for any earlier statement of that value is welcome.
 
 ## Technical summary
 
-The lower bound is constructive. Take two 17-vertex Paley-type pieces and overlay them into a 19-vertex colouring — the release calls it a Paley twin — arranged so that monochromatic $K_4$s exist but any two of them intersect. The construction ships as an explicit adjacency list; the dependency-free verifier enumerates all $\binom{19}{4}$ potential monochromatic $K_4$s in both colours and confirms that no two vertex-disjoint ones occur. Its full output is included, so the check is inspectable without running anything.
+The lower bound is constructive. Start from the 17-vertex Paley graph, delete one vertex and add three mutually non-adjacent copies of it, each joined to that vertex's former neighbours. The resulting 19-vertex colouring — the release calls it a Paley twin — is arranged so that monochromatic $K_4$s exist but any two of them intersect. The construction ships as an explicit adjacency list; the dependency-free verifier enumerates all $\binom{19}{4}$ potential monochromatic $K_4$s in both colours and confirms that no two vertex-disjoint ones occur. Its full output is included, so the check is inspectable without running anything.
 
 The upper bound rides on the companion release's machinery. Any red–blue colouring of $K_{20}$ with no two disjoint monochromatic $K_4$s would in particular constrain every 18-vertex subset through $R(4,4) = 18$; the same reduction to the two 16-vertex $(4,4)$-Ramsey cores applies, and the residual case analysis is exactly the two CNF instances already refuted with DRUP/LRAT certificates in the z(20) work (pinned by commit hash). The logical bridge from those certificates to the $\mathrm{VR}_2$ statement is set out in the candidate paper's short derivation, and it is the part a referee should read first.
 
-Two caveats frame the result. The quantity $\mathrm{VR}_2(K_4)$ is defined by the project, which did not locate prior literature on it under this or another name — prior-art search is explicitly requested. And the upper bound inherits the companion release's assurance boundary: certified below the CNFs, spot-tested above them.
+Two caveats frame the result. The quantity $\mathrm{VR}_t(F)$ is the established vertex-disjoint Ramsey number (Jent, Osborn and Zhang; Jent and Zhang); this release claims the value of $\mathrm{VR}_2(K_4)$, and a wider search for any earlier statement of that value is welcome. And the upper bound inherits the companion release's assurance boundary: the SAT refutations are certified, the encoding is proved correct on paper (Proposition 5.2), and the program that generates the formulas is not formally verified and is spot-tested against a separate direct implementation.
 
 ## Who should care, and why
 
 | Likely audience | What should interest them | What they could do with it |
 |---|---|---|
-| Ramsey theory researchers | A clean vertex-disjointness variant sitting one step beyond R(4,4) = 18, with a sharp claimed value and an explicit extremal construction at 19 vertices. | Check the derivation that transfers the z(20) certificates; search for prior appearances of the quantity; attack VR2(K5) or VRk(Km). |
+| Ramsey theory researchers | A clean vertex-disjointness variant sitting one step beyond R(4,4) = 18, with a sharp claimed value and an explicit extremal construction at 19 vertices. | Check the derivation that transfers the z(20) certificates; search for any earlier statement of the value; attack VR2(K5) or VRk(Km). |
 | Extremal construction specialists | The Paley-twin witness — a structured 19-vertex colouring in which every pair of monochromatic K4s intersects. | Study whether the construction generalises; look for a counting or design-theoretic explanation of why 19 is achievable and 20 is not. |
 | SAT and verification researchers | A second named result discharged by the *same* two CNF refutations — an economical reuse of certified computation. | Verify the pinning (commit hash, SHA-256) and the transfer argument; formalise the derivation on top of an already-verified LRAT check. |
 | Recreational and expository mathematics writers | The statement needs no background beyond colouring edges and spotting foursomes, and the 19-vertex escape artist is genuinely surprising. | Present the result as a puzzle; the included verifier makes it independently checkable by readers. |
@@ -35,7 +35,7 @@ Two caveats frame the result. The quantity $\mathrm{VR}_2(K_4)$ is defined by th
 
 ### 1. Establish priority or prior art
 
-The quantity is natural enough that it may exist in the literature on vertex-disjoint monochromatic subgraphs under other notation. Either outcome is valuable: an antecedent would connect the result to known theory (and test the claimed value against it); confirmed novelty would establish the release as the defining reference.
+The vertex-disjoint Ramsey number $\mathrm{VR}_t(F)$ is established (Jent, Osborn and Zhang; Jent and Zhang), and recent work has determined it for triangles, paths, stars, matchings and other small graphs. Whether the value for $K_4$ has been stated before is not yet settled. Either outcome is valuable: an antecedent would test the claimed value against known work; confirmed novelty would establish the release as the reference for this value.
 
 ### 2. Independent verification of the 19-vertex witness
 
