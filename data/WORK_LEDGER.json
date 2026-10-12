@@ -28238,6 +28238,181 @@
           "summary": "Recorded canonical delivery separately from research assurance; unknown resource telemetry preserved."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:wales-20mph-attribution-manuscript-publication",
+      "workId": "ep-work:wales-20mph-attribution-manuscript",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-12T21:06:11.000Z",
+      "aims": [
+        "policy"
+      ],
+      "question": "Write and publish the missing manuscript for the 11 August 2026 Wales 20 mph casualty attribution evidence package as an independent companion release.",
+      "selectionBasis": "Publisher instruction: the August package was published without a paper. Site-ledger registration occurs after drafting and archive publication; earlier timing is left-censored, not reconstructed.",
+      "taskClass": "companion-manuscript-and-full-candidate-publication",
+      "status": "active",
+      "statusAt": "2026-10-12T21:06:11.000Z",
+      "resultClass": "pending",
+      "statusHistory": [
+        {
+          "at": "2026-10-12T21:06:11.000Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Manuscript drafted, adversarially reviewed and archived; site publication pending.",
+          "evidenceRefs": [
+            "https://zenodo.org/records/23326288",
+            "https://github.com/ipitchford/wales-20mph-attribution-manuscript/releases/tag/v1.0.0-candidate"
+          ]
+        }
+      ],
+      "decisionObjectTarget": "Companion manuscript stating the descriptive replay, affected-road estimand and constructive non-identification witness of the parent package.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration, productivity or downstream impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "Single companion-manuscript publication, not a comparative workflow evaluation."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Publication verified. Active effort, aggregate compute and token telemetry remain unknown.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-12T21:06:11.000Z",
+            "basis": "Actual site-ledger registration, not discovery intake."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": null,
+        "reworkMinutes": null,
+        "correctionCount": null
+      },
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Site-ledger registration onward; earlier preparation is left-censored.",
+        "forecast": {
+          "frozenAt": "2026-10-12T21:06:11.000Z",
+          "procedureClass": "full-candidate",
+          "targetOutcome": "Immutable companion-manuscript publication and canonical site readback",
+          "expectedActiveMinutes": 90,
+          "plausibleLowMinutes": 60,
+          "plausibleHighMinutes": 150,
+          "expectedUnattendedWaitMinutes": 30,
+          "referenceClass": {
+            "label": "Remaining full-candidate publication",
+            "sampleSize": 0,
+            "basis": "Procedural forecast, not measured benchmark"
+          },
+          "fermiComponents": [
+            {
+              "component": "Provider publication and asset readback",
+              "count": 1,
+              "lowMinutesPerUnit": 10,
+              "centralMinutesPerUnit": 20,
+              "highMinutesPerUnit": 35,
+              "basis": "Small archive; provider latency remains variable."
+            },
+            {
+              "component": "Media, page and browser QA",
+              "count": 1,
+              "lowMinutesPerUnit": 20,
+              "centralMinutesPerUnit": 30,
+              "highMinutesPerUnit": 50,
+              "basis": "New release, banner, thumbnail and audio."
+            },
+            {
+              "component": "Both guarded A/B and C/D deployment cycles and closeout",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 40,
+              "highMinutesPerUnit": 65,
+              "basis": "Required CI, preservation and canonical readback."
+            }
+          ],
+          "probabilityPositiveSignal": 0.9,
+          "probabilityTargetClosure": 0.8,
+          "probabilityHorizonMinutes": 480,
+          "assumptions": [
+            "The frozen manuscript remains unchanged and provider, CI and deployment routes remain accessible."
+          ],
+          "reforecastTriggers": [
+            "A substantive integrity finding, provider failure or CI failure."
+          ],
+          "stopRule": "No hard cap; complete mandatory gates or report a precise blocker."
+        },
+        "outcome": null
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-10-12T21:06:11.000Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23326288"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wales-20mph-attribution-manuscript/tree/v1.0.0-candidate/review/replay-2026-10-12"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wales-20mph-policy-analysis/blob/v1.0.0/uv.lock"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Within the frozen aggregate evidence and declared rival class, neither the point value nor the sign of the affected-road causal effect is identified. No effect estimate, independent reproduction, peer review or policy judgement is established.",
+        "evidenceRefs": [
+          "https://zenodo.org/records/23326288",
+          "https://github.com/ipitchford/wales-20mph-attribution-manuscript/releases/tag/v1.0.0-candidate"
+        ],
+        "missingnessReason": "Archive publication and producer replay established; site delivery pending and external assurance absent."
+      },
+      "releaseSlug": "wales-20mph-attribution-manuscript",
+      "stopReason": null,
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-10-12",
+          "summary": "Bound public archive availability without inferring site delivery or external assurance."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -29254,6 +29429,10 @@
     {
       "date": "2026-10-12",
       "summary": "Recorded overpartition collection canonical publication; no acceleration or impact claim."
+    },
+    {
+      "date": "2026-10-12",
+      "summary": "Registered the Wales 20 mph companion manuscript with explicit missing historical telemetry and archive availability."
     }
   ]
 }

@@ -1052,6 +1052,28 @@ check('company starter owns the staged-learning cover',
   starterImages.length === 1 && starterImages[0] === '/assets/art/productivity.svg',
   `images=${starterImages.join(',') || 'none'}`);
 
+{
+  /* Manuscript-PDF publication gate over the built catalogue, with hostile controls. */
+  const { checkManuscriptPdf, loadWaivers } = require('./manuscript-pdf-gate');
+  const register = loadWaivers();
+  const built = papersDoc.papers;
+  const gateErrors = checkManuscriptPdf(built, register);
+  check('every built release links a manuscript PDF or holds an exact historical waiver',
+    gateErrors.length === 0, gateErrors.join('; '));
+  const sample = built.find(p => p.pdfUrl);
+  const clone = (extra) => [...built, { ...sample, slug: 'hostile-no-pdf', pdfUrl: null, datePublished: '2026-10-13', ...extra }];
+  check('gate rejects a new release without a PDF',
+    checkManuscriptPdf(clone({}), register).some(e => e.includes('hostile-no-pdf')));
+  check('gate rejects a non-PDF manuscript link',
+    checkManuscriptPdf(clone({ pdfUrl: 'https://example.org/paper.html' }), register).some(e => e.includes('.pdf')));
+  const lateWaiver = { ...register, waivers: [...register.waivers, { slug: 'hostile-no-pdf', version: sample.version, reason: 'x', companionRelease: register.waivers[0].companionRelease }] };
+  check('gate rejects a waiver for a release published after the gate',
+    checkManuscriptPdf(clone({}), lateWaiver).some(e => e.includes('not allowed')));
+  const wrongVersion = { ...register, waivers: register.waivers.map(w => ({ ...w, version: '9.9.9' })) };
+  check('gate rejects a waiver whose version differs from the record',
+    checkManuscriptPdf(built, wrongVersion).some(e => e.includes('names version')));
+}
+
 console.log(failures === 0
   ? '\nALL METADATA TESTS PASSED'
   : `\n${failures} METADATA TEST(S) FAILED`);
