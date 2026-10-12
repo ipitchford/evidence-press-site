@@ -74,16 +74,19 @@
   },
   "assurance": {
     "availability": {
-      "state": "not-assessed",
-      "note": "Not established by publication or internal checking."
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23314214",
+      "note": "The frozen ZIP, PDF and checksum file were fully downloaded from both GitHub and Zenodo and matched the local publication assets. Byte parity is not correctness or peer review."
     },
     "internalReplay": {
-      "state": "not-assessed",
-      "note": "Not established by publication or internal checking."
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/cayley-weighted-fixed-points/blob/v1.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Fresh-extraction exact checks enumerate Cayley words through length eight, including fixed-alphabet strata and signed weights; count formulas agree through n=30. Four false expectations are rejected under normal and optimized Python. Finite tests do not prove the all-length written theorem."
     },
     "dataEnvironmentReproducibility": {
-      "state": "not-assessed",
-      "note": "Not established by publication or internal checking."
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/cayley-weighted-fixed-points/blob/v1.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Python 3.13 standard-library scripts and exact inputs supplied. Local and Linux internal replay are not unaffiliated reproduction."
     },
     "independentRerun": {
       "state": "not-assessed",
@@ -178,7 +181,7 @@
       "type": "audio",
       "url": "https://evidencepress.org/assets/audio/cayley-weighted-fixed-points.mp3",
       "name": "Audio briefing — Weighted fixed points of Cayley permutations",
-      "description": "Synthetic explanation, not additional scientific evidence.",
+      "description": "Synthetic plain-English briefing, not additional scientific evidence.",
       "transcriptUrl": "https://evidencepress.org/assets/audio/cayley-weighted-fixed-points.txt"
     }
   ]

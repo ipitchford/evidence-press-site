@@ -27645,7 +27645,7 @@
       "selectionBasis": "User-supplied candidate and prose review. This site ledger registration occurs during publication; earlier research, review and preparation time is left-censored, not reconstructed.",
       "taskClass": "review-extension-and-full-candidate-publication",
       "status": "active",
-      "statusAt": "2026-10-12T09:47:38.083Z",
+      "statusAt": "2026-10-12T13:23:52.509Z",
       "resultClass": "pending",
       "statusHistory": [
         {
@@ -27654,6 +27654,16 @@
           "resultClass": "pending",
           "reason": "Registered the publication attempt while final research CI and site preparation proceed.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-12T13:23:52.509Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research archives publicly verified; site publication still pending.",
+          "evidenceRefs": [
+            "https://zenodo.org/records/23314214",
+            "https://github.com/ipitchford/cayley-weighted-fixed-points/releases/tag/v1.1.0-candidate"
+          ]
         }
       ],
       "decisionObjectTarget": "CCEG Conjecture 7.4 for every n>=1, with a fixed-alphabet weighted refinement.",
@@ -27739,33 +27749,71 @@
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
-        "assessedAt": "2026-10-12T09:47:38.083Z",
+        "assessedAt": "2026-10-12T13:23:52.509Z",
         "dimensions": [
           {
-            "dimension": "internalReplay",
-            "state": "partial",
+            "dimension": "availability",
+            "state": "passed",
             "evidenceRefs": [
-              "https://github.com/ipitchford/cayley-weighted-fixed-points/blob/main/REPLAY_RECEIPT.md"
+              "https://zenodo.org/records/23314214"
             ]
           },
           {
-            "dimension": "availability",
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/cayley-weighted-fixed-points/blob/v1.1.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
             "state": "partial",
             "evidenceRefs": [
-              "https://github.com/ipitchford/cayley-weighted-fixed-points"
+              "https://github.com/ipitchford/cayley-weighted-fixed-points/blob/v1.1.0-candidate/ENVIRONMENT.txt"
             ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
           }
         ],
         "claimCeiling": "Unrefereed written-proof candidate with finite internal testing; no formal verification or unaffiliated reproduction.",
         "evidenceRefs": [
-          "https://github.com/ipitchford/cayley-weighted-fixed-points"
+          "https://zenodo.org/records/23314214",
+          "https://github.com/ipitchford/cayley-weighted-fixed-points/releases/tag/v1.1.0-candidate"
         ],
-        "missingnessReason": "Immutable archive and site delivery pending; external assurance absent."
+        "missingnessReason": "Archive publication and internal replay established; site delivery pending and external assurance absent."
       },
       "releaseSlug": "cayley-weighted-fixed-points",
       "stopReason": null,
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-12",
+          "summary": "Bound public research assets and scoped internal replay without inferring site delivery or external assurance."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -28750,6 +28798,10 @@
     {
       "date": "2026-10-12",
       "summary": "Registered Cayley fixed-point publication with explicit left-censoring and no inferred resource telemetry."
+    },
+    {
+      "date": "2026-10-12",
+      "summary": "Recorded Cayley fixed-point archive availability and exact public asset parity."
     }
   ]
 }
