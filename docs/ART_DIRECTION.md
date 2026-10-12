@@ -61,6 +61,17 @@ separately redesigning those assets. Never edit generated files alone.
 
 ### Fit and colour are shared contracts
 
+YouTube thumbnail backgrounds use persistent assignments in
+`data/THUMBNAIL_PALETTES.json`, not a release's mutable catalogue index.
+`make-thumb.js` allocates the next of six background families only for a new
+slug. Commit the assignment with the JPEG and mirror identical bytes to the
+central thumbnail library. Historical assignments are preserved; subsequent
+assignments must follow the six-colour cycle, which `--check` validates.
+Reconcile concurrent allocations before merging. A palette-only repair preserves
+headline, mathematical content and claim qualifications. Inspect the recent
+thumbnail strip as a group as well as individual files; separate filenames or
+successful rendering do not establish colour variety.
+
 Catalogue banners use the same native 3:1 frame in every card, including the
 newest card. Never stretch the first card to 6:1, crop scientific labels, or add
 slug-specific CSS fitting exceptions. The homepage uses equal-width cards.
