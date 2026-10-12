@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['overpartition-congruences-and-towers'] = require('./overpartition-art').draw;
 art['theta-graphs-c3-e-positive'] = require('./theta-c3-art').draw;
 art['cayley-weighted-fixed-points'] = require('./cayley-fixed-art').draw;
 art['small-exponent-percolation'] = require('./percolation-art').draw;
@@ -2428,6 +2429,7 @@ art['sun-circular-primitive-permutation'] = require('./sun-circular-art').draw;
 palette['sun-circular-primitive-permutation'] = ['#91d8ef','#f3bf77'];
 palette['theta-graphs-c3-e-positive'] = ['#91d8ef','#f3bf77'];
 palette['cayley-weighted-fixed-points'] = ['#cbb7eb','#edbd85'];
+palette['overpartition-congruences-and-towers'] = ['#e6c1d0','#f1c77b'];
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
