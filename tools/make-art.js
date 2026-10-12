@@ -34,6 +34,8 @@ ${inner}
 }
 
 const art = {};
+const walesManuscriptArt = require('./wales-manuscript-art');
+art['wales-20mph-attribution-manuscript'] = walesManuscriptArt.draw;
 art['two-colour-overpartition-congruences'] = require('./two-colour-art').draw;
 art['overpartition-congruences-and-towers'] = require('./overpartition-art').draw;
 art['theta-graphs-c3-e-positive'] = require('./theta-c3-art').draw;
@@ -2044,6 +2046,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'wales-20mph-attribution-manuscript': ['#f2c46f', '#e79a8a'],
   'two-colour-overpartition-congruences': ['#f5cd82', '#d28d83'],
   'steady-stream-power-landscapes': ['#65ddd0', '#f6c76d'],
   'cooper-spencer-temporal-unimodality': ['#2dd4bf', '#fbbf24'],
@@ -2463,6 +2466,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'cross-polytope-signaling-dimension-six') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${crossPolytopeArt.description}</desc><defs>`);
   if (slug === 'delayed-cascade-recovery') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${delayedCascadeArt.description}</desc><defs>`);
   if (slug === 'primitive-su-primitivity') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${primitiveSuArt.description}</desc><defs>`);
+  if (slug === 'wales-20mph-attribution-manuscript') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${walesManuscriptArt.description}</desc><defs>`);
   if (slug === 'flat-schmidt-chains') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${flatSchmidtArt.description}</desc><defs>`);
   if (motifs[slug]) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"')
     .replace('<defs>', `<desc id="art-description">${motifs[slug].description}</desc><defs>`);
