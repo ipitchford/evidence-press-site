@@ -1,0 +1,13 @@
+Imagine arranging every number in a finite arithmetic system around a circle. There is one rule: add any two neighbours, and the answer must be a primitive element. A primitive element is a nonzero number whose successive powers visit every nonzero number in the system.
+
+Sun and Hou asked whether such a circle always exists when the field has more than seven elements. Earlier work settled all sufficiently large fields, and all sufficiently large prime fields. This candidate closes the finite remainder.
+
+There are seven hundred and twenty-eight field sizes to check. A mathematical bound settles six hundred and seventy-five. For the remaining fifty-three, the package gives actual circular orderings. A separate verifier checks that every field element appears exactly once and that every neighbouring sum has the required multiplicative order. It also checks the polynomial used to represent each field.
+
+The smallest example on the page uses arithmetic modulo eleven. Its neighbouring sums are two, six, seven or eight: exactly the primitive elements in that field. This picture illustrates the rule; the downloadable certificates contain the full computational evidence.
+
+The revised proof also gives a limited robustness result. Over the field with thirty-two elements, the bound still guarantees a circle after any six vertices are removed. This is a sufficient bound, not an optimal threshold.
+
+The contribution needs perspective. Many small cases were already known, and the large-field theorem is inherited. This is a computer-assisted completion using established ideas. It remains an unrefereed candidate, without formal verification or independent external reproduction.
+
+This is the Evidence Press briefing for the primitive-sum circle release, dated the twelfth of October, twenty twenty-six. The paper, code and certificates are linked on the page. This synthetic voice explanation is not additional evidence.

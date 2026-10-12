@@ -1,0 +1,192 @@
+{
+  "slug": "sun-hou-primitive-sum-circle",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "title": "Primitive neighbours around every finite field",
+  "shortTitle": "A circle of primitive sums",
+  "oneLine": "An exact sieve and 53 explicit cycles close the finite remainder of the Sun–Hou ordering conjecture for every finite field with more than seven elements.",
+  "abstract": "For every prime power q>7, the candidate supplies a circular ordering of all elements of Fq in which each adjacent sum is primitive. It inherits She’s large-field and prime-field ranges and treats the remaining 728 field orders: an exact sieved Chvátal–Erdős criterion covers 675, and explicit Hamilton cycles cover 53. The package records field moduli, exact witnesses, frozen cycles and non-destructive checks. A classical primitive-normal-basis Gray construction handles characteristic two; a sufficient deletion corollary follows from the same bound. This is a finite computer-assisted closure, not a new asymptotic theorem or a claim that every individual case was previously unknown.",
+  "datePublished": "2026-10-12",
+  "doi": "10.5281/zenodo.23307587",
+  "zenodoUrl": "https://zenodo.org/records/23307587",
+  "pdfUrl": "https://github.com/ipitchford/sun-hou-primitive-sum-circle/releases/download/v1.1.0-candidate/sun-hou-primitive-sum-circle-v1.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23307587/files/sun-hou-primitive-sum-circle-v1.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/sun-hou-primitive-sum-circle",
+  "releaseUrl": "https://github.com/ipitchford/sun-hou-primitive-sum-circle/releases/tag/v1.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "version": "1.1.0-candidate",
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "finite fields",
+    "Hamiltonian cycles",
+    "primitive elements",
+    "Sun–Hou conjecture",
+    "computer-assisted proof"
+  ],
+  "problem": {
+    "name": "Sun–Hou primitive adjacent-sum conjecture, Conjecture 3.5(i)",
+    "url": "https://arxiv.org/abs/1309.1679v9"
+  },
+  "keyResults": [
+    "The primitive-sum graph on all of Fq is Hamiltonian for every prime power q>7, using inherited ranges and a finite closure.",
+    "Of 728 remaining orders, 675 satisfy the exact criterion and 53 have frozen explicit cycles.",
+    "A sufficient vertex-deletion bound follows from the same proof; over F32 it permits any six deletions."
+  ],
+  "evidence": "Written proof, exact rational criterion witnesses, explicit quotient-ring moduli and 53 cycle certificates checked with a separately implemented verifier.",
+  "statusDetail": "Unrefereed computer-assisted proof candidate with internal replay and targeted internal review; no formal verification or unaffiliated reproduction established.",
+  "openProblems": [],
+  "relatedWorks": [
+    {
+      "citation": "Sun, Some new problems in additive combinatorics, arXiv v9, Conjecture 3.5(i) and Remark 3.5(a): source problem and earlier small cases.",
+      "url": "https://arxiv.org/abs/1309.1679v9"
+    },
+    {
+      "citation": "She, Hamiltonicity in graphs defined by primes and primitive elements, v1: inherited large-field and prime-field results.",
+      "url": "https://arxiv.org/abs/2609.19114v1"
+    },
+    {
+      "citation": "Cohen, Oliveira e Silva and Trudgian, On consecutive primitive elements in a finite field: prime-field ingredient and sieve mechanism.",
+      "url": "https://doi.org/10.1112/blms/bdv018"
+    },
+    {
+      "citation": "Chvátal and Erdős, A note on Hamiltonian circuits: connectivity versus independence criterion.",
+      "url": "https://doi.org/10.1016/0012-365X(72)90079-9"
+    },
+    {
+      "citation": "Cohen and Huczynska, The strong primitive normal basis theorem: classical normal-basis ingredient.",
+      "url": "https://doi.org/10.4064/aa143-4-1"
+    }
+  ],
+  "citeText": "Anonymous (2026). A proof of the Sun–Hou conjecture on circular orderings of finite fields with primitive adjacent sums. Version 1.1.0-candidate. Evidence Press. 10.5281/zenodo.23307587.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Supplied candidate and prose review, with source-backed revisions and reconstructed audit supplements on 12 October 2026. The separately referenced reviewer ZIP was unavailable.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research workflow",
+      "Codex: review revisions, internal checking and publication"
+    ],
+    "humanRole": "Publication authority only; no human research contribution asserted.",
+    "reviewStatus": "Unrefereed computer-assisted proof candidate with internal replay and targeted internal review; no formal verification or unaffiliated reproduction established."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23307587",
+      "note": "The frozen ZIP, PDF and checksum file were fully downloaded from both GitHub and Zenodo and matched the local publication assets. Byte parity is not correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/sun-hou-primitive-sum-circle/blob/v1.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Fresh-extraction exact witness, modulus and cycle checks passed with five rejected controls; optimized Python passed. Regeneration matched all 53 cycles. Linux CI passed."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/sun-hou-primitive-sum-circle/blob/v1.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Pinned Python dependency, source and field representations supplied. Local and Linux internal replay are not unaffiliated reproduction."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Not established by internal checking or publication."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Not established by internal checking or publication."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Not established by internal checking or publication."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Not established by internal checking or publication."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Not established by internal checking or publication."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:sun-hou-primitive-sum-circle",
+    "attemptIds": [
+      "ep-attempt:sun-hou-primitive-sum-circle-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "Finite closure of the primitive-sum ordering conjecture.",
+      "scope": "All prime powers q>7; large-field and prime-field ranges inherited."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The vertices are all field elements. Edges join distinct vertices precisely when their sum has order q−1; explicit moduli and quotient-ring tests bind certificates to that graph.",
+      "remainingRisks": [
+        "Written and inherited theorems are not formally verified.",
+        "No unaffiliated reproduction or exhaustive novelty assessment."
+      ]
+    },
+    "humanJudgmentGates": [
+      "External specialist scrutiny remains open; no human research work inferred."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentReimplementation"
+      ],
+      "nextAction": "Independently inspect the inherited ranges and implement a verifier directly from the recorded field representations.",
+      "claimCeiling": "Unrefereed computer-assisted proof candidate with internal replay and targeted internal review; no formal verification or unaffiliated reproduction established."
+    },
+    "impactClaims": [
+      {
+        "id": "sun-hou-primitive-sum-circle-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable finite computer-assisted closure",
+        "setting": "Producer-coordinated mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No measured acceleration or downstream benefit.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "narration": "Imagine arranging every number in a finite arithmetic system around a circle. There is one rule: add any two neighbours, and the answer must be a primitive element. A primitive element is a nonzero number whose successive powers visit every nonzero number in the system.\n\nSun and Hou asked whether such a circle always exists when the field has more than seven elements. Earlier work settled all sufficiently large fields, and all sufficiently large prime fields. This candidate closes the finite remainder.\n\nThere are seven hundred and twenty-eight field sizes to check. A mathematical bound settles six hundred and seventy-five. For the remaining fifty-three, the package gives actual circular orderings. A separate verifier checks that every field element appears exactly once and that every neighbouring sum has the required multiplicative order. It also checks the polynomial used to represent each field.\n\nThe smallest example on the page uses arithmetic modulo eleven. Its neighbouring sums are two, six, seven or eight: exactly the primitive elements in that field. This picture illustrates the rule; the downloadable certificates contain the full computational evidence.\n\nThe revised proof also gives a limited robustness result. Over the field with thirty-two elements, the bound still guarantees a circle after any six vertices are removed. This is a sufficient bound, not an optimal threshold.\n\nThe contribution needs perspective. Many small cases were already known, and the large-field theorem is inherited. This is a computer-assisted completion using established ideas. It remains an unrefereed candidate, without formal verification or independent external reproduction.\n\nThis is the Evidence Press briefing for the primitive-sum circle release, dated the twelfth of October, twenty twenty-six. The paper, code and certificates are linked on the page. This synthetic voice explanation is not additional evidence.",
+  "conceptDoi": "10.5281/zenodo.23307586",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/sun-hou-primitive-sum-circle.mp3",
+      "name": "Audio briefing — A circle of primitive sums",
+      "description": "Synthetic plain-English briefing, not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/sun-hou-primitive-sum-circle.txt"
+    }
+  ]
+}

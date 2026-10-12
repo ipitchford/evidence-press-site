@@ -81,6 +81,7 @@ const PALETTE_ROTATION = ['pine', 'oxblood', 'cobalt', 'aubergine', 'bronze', 'l
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'sun-hou-primitive-sum-circle': {palette:'auto',kicker:['RESEARCH RELEASE · 12 OCTOBER 2026','FINITE FIELDS · SUN–HOU CONJECTURE'],head:['A circle of','<em>primitive sums.</em>'],headSize:84,sub:'An exact sieve and 53 explicit cycles close the finite remainder.',tag:'UNREFEREED CANDIDATE',hero:require('./sun-hou-art').thumbnailHero()},
   'primitive-su-primitivity': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 11 OCTOBER 2026', 'TOPOLOGICAL ORDER · SIMPLE-CURRENT SECTORS'],
