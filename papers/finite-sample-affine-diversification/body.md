@@ -40,7 +40,10 @@ gate does not erase the finite-sample method or the endpoint diagnostic; it
 states honestly how much decision impact the registered benchmark measured.
 
 > **Status:** anonymous, unrefereed theorem-and-method candidate published with
-> notes. Producer-side replay passes locally and on public Linux CI. No
+> notes. Producer-side replay passes locally on macOS (as reported in the
+> manuscript) and in a later
+> [public Linux CI run](https://github.com/ipitchford/affine-diversification-fibres/actions/runs/32458618950)
+> on the tagged release. No
 > unaffiliated reproduction, external specialist review, proof-assistant
 > formalisation, editorial peer review, empirical validation, or broad CRABS
 > utility is claimed.
@@ -224,7 +227,9 @@ The release package contains:
 - exact H2/H4 summaries and transition tables;
 - source, citation, licence, provenance, status and assurance records;
 - a 5,033-entry successor release manifest; and
-- public GitHub Actions replay, including a pinned Linux-container job.
+- public GitHub Actions replay, including a pinned Linux-container job
+  ([run on the tagged release](https://github.com/ipitchford/affine-diversification-fibres/actions/runs/32458618950),
+  recorded after the manuscript was finalised).
 
 The quick successor gate is:
 

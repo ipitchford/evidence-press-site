@@ -12,7 +12,7 @@ The public object contains three manuscripts, exact code and data, ordinary and 
 
 ## Summary for specialists
 
-For the Lewis--Perry--Straub determinant $a_{d,e}$, the structural paper gives a complementary-minor congruence exchanging $(d,e)$ with $(e+1,d-1)$ modulo the relevant inverse-coefficient prefix. Together with rigidity duality and a chart-preserving translation field, the second radical-membership obstruction becomes a prefix-rank condition. Triangular inverse coordinates identify that condition with transversality of a fixed-width adjacent flag in $d-1$ variables.
+For the Lewis--Perry--Straub determinant $a_{d,e}$, the structural paper gives a complementary-minor congruence exchanging $(d,e)$ with $(e+1,d-1)$ modulo the relevant inverse-coefficient prefix. Together with rigidity duality and a chart-preserving translation field, the prefix-rank condition would make the second radical membership equivalent to the first on the chart $x_e \neq 0$. Triangular inverse coordinates identify that condition with transversality of a fixed-width adjacent flag in $d-1$ variables.
 
 For $d=5$, the target is quartic. The companion separates the centered staircase gauge
 

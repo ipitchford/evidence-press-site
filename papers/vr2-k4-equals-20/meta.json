@@ -52,12 +52,12 @@
     "The upper bound reuses the z(20) = 6 reduction and SAT unsatisfiability certificates (DRUP/LRAT, checked including by the formally verified cake_lpr)."
   ],
   "evidence": "A human-readable candidate paper with TeX source; a hand-checkable 19-vertex lower-bound construction; a dependency-free direct verifier with its output included; reused DRUP/LRAT proof objects from the z20 release (pinned to a specific commit); an AI-readable claim/evidence index; SHA-256 manifest.",
-  "statusDetail": "Unrefereed candidate result, marked as a prerelease. No independent external reproduction, peer review, or full formal verification is claimed. The lower-bound witness is directly inspectable and replayable; the upper bound inherits the assurance boundary of the z(20) = 6 release, including the fact that encoding soundness is spot-tested rather than proved. The definition and notation VR2(K4) are as given by the project; the release is authored by AI systems with human project mediation.",
+  "statusDetail": "Unrefereed candidate result, marked as a prerelease. No independent external reproduction, peer review, or full formal verification is claimed. The lower-bound witness is directly inspectable and replayable; the upper bound inherits the assurance boundary of the z(20) = 6 release: the encoding is proved correct on paper (Proposition 5.2), while the program that generates the formulas is not formally verified and is spot-tested against a separate direct implementation. VR_t(F), the vertex-disjoint Ramsey number, is an established quantity (Jent, Osborn and Zhang; Jent and Zhang); this release claims the value of VR2(K4); the release is authored by AI systems with human project mediation.",
   "openProblems": [
     "Verify the 19-vertex Paley-twin construction independently — it is small enough for a fresh implementation in an afternoon.",
     "Determine VR2(K5), or more generally VRk(Km) for small k and m, for which the same reduction-plus-SAT architecture is a plausible route.",
     "Establish whether VR2(K4) = 20 admits a certificate-free human proof, given that R(4,4) = 18 does.",
-    "Search the literature for prior appearances of this quantity under other notation, and connect it to known results on vertex-disjoint monochromatic structures.",
+    "Search the literature for any earlier statement of the value VR2(K4) = 20, and connect it to known results on vertex-disjoint Ramsey numbers.",
     "Formalise the reduction linking the z(20) proof objects to the VR2 claim."
   ],
   "relatedWorks": [
