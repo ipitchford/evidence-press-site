@@ -24,6 +24,7 @@ const { loadImplementationStatus, validateImplementationStatus } = require('./to
 const { loadBaselineReceipt, validateBaselineReceipt } = require('./tools/baseline-receipt');
 const { loadArticles, articleAttribution } = require('./tools/articles');
 const { withBriefingAudio } = require('./tools/audio-media');
+const { checkManuscriptPdf } = require('./tools/manuscript-pdf-gate');
 
 const ROOT = __dirname;
 require('./tools/banner-palettes').check(ROOT);
@@ -698,6 +699,13 @@ function linkset(p) {
 
 
 validatePapers(papers);
+{
+  const pdfErrors = checkManuscriptPdf(papers);
+  if (pdfErrors.length) {
+    console.error(`Manuscript-PDF publication gate refused the build:\n  - ${pdfErrors.join('\n  - ')}`);
+    process.exit(1);
+  }
+}
 validateOperatingModel({ root: ROOT, papers, artifacts: OPERATING_ARTIFACTS });
 const CLAIM_ASSURANCE_RESULT = buildClaimAssuranceRegister(loadClaimAssurance(ROOT), { root: ROOT, papers });
 if (CLAIM_ASSURANCE_RESULT.errors.length) {
