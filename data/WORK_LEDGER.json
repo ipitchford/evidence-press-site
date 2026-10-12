@@ -27834,6 +27834,188 @@
           "summary": "Recorded canonical delivery separately from research assurance; unknown resource telemetry preserved."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:overpartition-congruences-and-towers-publication",
+      "workId": "ep-work:overpartition-congruences-and-towers",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-12T14:06:56.765Z",
+      "aims": [
+        "science"
+      ],
+      "question": "Revise and publish the three-paper overpartition collection, including tractable structural refinements.",
+      "selectionBasis": "User supplied three candidates and review. Site-ledger registration occurs after revision work; earlier timing is left-censored, not reconstructed.",
+      "taskClass": "review-extension-and-full-candidate-publication",
+      "status": "active",
+      "statusAt": "2026-10-12T14:24:05.617Z",
+      "resultClass": "pending",
+      "statusHistory": [
+        {
+          "at": "2026-10-12T14:06:56.765Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research revised and locally checked; frozen publication gates and public delivery still pending.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-12T14:24:05.617Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Research archives publicly verified; site publication still pending.",
+          "evidenceRefs": [
+            "https://zenodo.org/records/23319157",
+            "https://github.com/ipitchford/overpartition-congruences-and-towers/releases/tag/v1.1.0-candidate"
+          ]
+        }
+      ],
+      "decisionObjectTarget": "Only the stated prime, class and Legendre restrictions; overlapping base results counted once.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No acceleration, productivity or downstream impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "This is a single theoretical publication attempt, not a comparative workflow evaluation."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Earlier work is left-censored; active effort and resource telemetry not instrumented.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-12T14:06:56.765Z",
+            "basis": "Actual site-ledger registration, not discovery intake."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": null,
+        "reworkMinutes": null,
+        "correctionCount": null
+      },
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Site-ledger registration onward; earlier preparation is left-censored.",
+        "forecast": {
+          "frozenAt": "2026-10-12T14:06:56.765Z",
+          "procedureClass": "full-candidate",
+          "targetOutcome": "Immutable research publication and canonical site readback",
+          "expectedActiveMinutes": 90,
+          "plausibleLowMinutes": 60,
+          "plausibleHighMinutes": 150,
+          "expectedUnattendedWaitMinutes": 30,
+          "referenceClass": {
+            "label": "Remaining full-candidate publication",
+            "sampleSize": 0,
+            "basis": "Procedural forecast, not measured benchmark"
+          },
+          "fermiComponents": [
+            {
+              "component": "Provider publication and asset readback",
+              "count": 1,
+              "lowMinutesPerUnit": 10,
+              "centralMinutesPerUnit": 20,
+              "highMinutesPerUnit": 35,
+              "basis": "Small archive; provider latency remains variable."
+            },
+            {
+              "component": "Media, page and browser QA",
+              "count": 1,
+              "lowMinutesPerUnit": 20,
+              "centralMinutesPerUnit": 30,
+              "highMinutesPerUnit": 50,
+              "basis": "New release and exact banner."
+            },
+            {
+              "component": "Both guarded A/B and C/D deployment cycles and closeout",
+              "count": 1,
+              "lowMinutesPerUnit": 30,
+              "centralMinutesPerUnit": 40,
+              "highMinutesPerUnit": 65,
+              "basis": "Required CI, preservation and canonical readback."
+            }
+          ],
+          "probabilityPositiveSignal": 0.9,
+          "probabilityTargetClosure": 0.8,
+          "probabilityHorizonMinutes": 480,
+          "assumptions": [
+            "The frozen candidate remains unchanged and provider, CI and deployment routes remain accessible."
+          ],
+          "reforecastTriggers": [
+            "A substantive integrity finding, provider failure or CI failure."
+          ],
+          "stopRule": "No hard cap; complete mandatory gates or report a precise blocker."
+        },
+        "outcome": null
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-10-12T14:24:05.617Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23319157"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/overpartition-congruences-and-towers/blob/v1.1.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/overpartition-congruences-and-towers/blob/v1.1.0-candidate/requirements.txt"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Unrefereed computer-assisted proof collection. Internal replay and implementation diversity do not establish formal verification, unaffiliated reproduction, external peer review or broad significance.",
+        "evidenceRefs": [
+          "https://zenodo.org/records/23319157",
+          "https://github.com/ipitchford/overpartition-congruences-and-towers/releases/tag/v1.1.0-candidate"
+        ],
+        "missingnessReason": "Archive publication and internal replay established; site delivery pending and external assurance absent."
+      },
+      "releaseSlug": "overpartition-congruences-and-towers",
+      "stopReason": null,
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-10-12",
+          "summary": "Bound public archive availability without inferring site delivery or external assurance."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -28826,6 +29008,14 @@
     {
       "date": "2026-10-12",
       "summary": "Recorded Cayley fixed-point canonical publication; no acceleration or impact claim."
+    },
+    {
+      "date": "2026-10-12",
+      "summary": "Registered overpartition collection with explicit missing historical telemetry."
+    },
+    {
+      "date": "2026-10-12",
+      "summary": "Recorded overpartition collection archive availability and exact public asset parity."
     }
   ]
 }
