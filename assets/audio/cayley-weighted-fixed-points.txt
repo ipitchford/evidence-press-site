@@ -1,0 +1,11 @@
+Take three small words: eleven, one two, and two one. They are all the Cayley words of length two. A Cayley word uses every positive label up to its largest label, with no gaps. Repeated labels are allowed.
+
+Now look for a fixed point: a position where the label equals the position number. Give that match a weight equal to its position. Eleven contributes one. One two contributes one plus two, making three. Two one contributes nothing. Across the three words, the total is four.
+
+Add every letter instead, and the total is eight. Divide by the word length, two, and you again get four. There are also eight primitive Cayley words of length three. Primitive means neighbouring letters are different. Half of eight is four once more.
+
+This candidate proves that the same three-way equality holds at every positive length. It resolves a conjecture of Cerbai, Claesson, Ernst and Golab. The key is symmetry: swapping positions preserves the collection of unrestricted Cayley words. Each position therefore sees the same distribution of labels. That turns a weighted count of matches into an average letter sum. It does not require the letters to be independent.
+
+The counting formulas and ordered-block construction were known already. The contribution is the explicit fixed-point interpretation, not a new number sequence or a broad breakthrough. The revised note includes an elementary counting recurrence and a refinement for a fixed number of labels.
+
+Exact enumeration checks every Cayley word through length eight. The written argument, not that finite calculation, supports the statement at all lengths. This is an unrefereed Evidence Press candidate dated the twelfth of October, twenty twenty-six. The paper and code are linked on the page. This synthetic briefing is not additional scientific evidence.

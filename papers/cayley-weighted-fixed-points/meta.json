@@ -1,0 +1,188 @@
+{
+  "slug": "cayley-weighted-fixed-points",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "title": "Weighted fixed points of Cayley permutations",
+  "shortTitle": "When position meets value",
+  "oneLine": "A short symmetry argument proves a weighted fixed-point identity for every Cayley-word length, linking it to classical rank counts.",
+  "abstract": "Unrefereed written-proof candidate resolving Cerbai, Claesson, Ernst and Golab Conjecture 7.4 for every n>=1: half the primitive Cayley-word count at n+1 equals the total letter sum at n divided by n and the weighted fixed-point sum. Classical scalar enumeration and barred arrangements are credited; the contribution is the explicit fixed-point interpretation. Includes explanatory fixed-alphabet arbitrary-weight refinement and elementary primitive recurrence. Exact internal enumeration through length eight and count checks through n=30 do not substitute for the universal proof, external peer review or formal verification.",
+  "datePublished": "2026-10-12",
+  "doi": "10.5281/zenodo.23314214",
+  "zenodoUrl": "https://zenodo.org/records/23314214",
+  "pdfUrl": "https://github.com/ipitchford/cayley-weighted-fixed-points/releases/download/v1.1.0-candidate/cayley-weighted-fixed-points-v1.1.0-candidate.pdf",
+  "altPdfUrl": "https://zenodo.org/records/23314214/files/cayley-weighted-fixed-points-v1.1.0-candidate.pdf?download=1",
+  "repoUrl": "https://github.com/ipitchford/cayley-weighted-fixed-points",
+  "releaseUrl": "https://github.com/ipitchford/cayley-weighted-fixed-points/releases/tag/v1.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "version": "1.1.0-candidate",
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Cayley permutations",
+    "fixed points",
+    "ordered partitions",
+    "combinatorics",
+    "exchangeability"
+  ],
+  "problem": {
+    "name": "CCEG Conjecture 7.4",
+    "url": "https://arxiv.org/abs/2407.19583"
+  },
+  "keyResults": [
+    "The weighted fixed-point identity holds for every n>=1.",
+    "Within each alphabet size k, arbitrary fixed-point weights sum to (k-1)! S(n,k) times the sum of the first k weights.",
+    "An elementary primitive-word recurrence removes the numerical proof’s dependence on species theory."
+  ],
+  "evidence": "Written elementary proof; direct enumeration through n=7, ordered-partition insertion through length eight, count formulas through n=30 and four negative-control subprocesses.",
+  "statusDetail": "Unrefereed written-proof candidate with internal exact checks. Classical scalar enumeration is inherited; no formal verification, unaffiliated reproduction or external peer review established.",
+  "openProblems": [],
+  "relatedWorks": [
+    {
+      "citation": "Cerbai, Claesson, Ernst and Golab (2026), Pattern-avoiding Cayley permutations via combinatorial species: Theorem 7.2 and Conjecture 7.4.",
+      "url": "https://arxiv.org/abs/2407.19583"
+    },
+    {
+      "citation": "Sloane and Wieder (2004), The number of hierarchical orderings, Section 4: classical rank marginal and scalar enumerator.",
+      "url": "https://arxiv.org/abs/math/0307064"
+    },
+    {
+      "citation": "Ahlbach, Usatine and Pippenger (2013), Barred preferential arrangements, Section 3: standard marked cut.",
+      "url": "https://doi.org/10.37236/2482"
+    },
+    {
+      "citation": "Cerbai and Claesson (2026), Counting fixed-point-free Cayley permutations: a distinct fixed-point question.",
+      "url": "https://arxiv.org/abs/2507.09304v4"
+    }
+  ],
+  "citeText": "Anonymous (2026). Weighted fixed points of Cayley permutations. Version 1.1.0-candidate. Evidence Press. 10.5281/zenodo.23314214.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "User-supplied candidate and review, revised 12 October 2026; source ZIP and full review preserved separately.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research workflow",
+      "Codex: revisions, explanatory refinements, internal checks and publication"
+    ],
+    "humanRole": "Publication authority only; no human research contribution asserted.",
+    "reviewStatus": "Unrefereed written-proof candidate with internal exact checks. Classical scalar enumeration is inherited; no formal verification, unaffiliated reproduction or external peer review established."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23314214",
+      "note": "The frozen ZIP, PDF and checksum file were fully downloaded from both GitHub and Zenodo and matched the local publication assets. Byte parity is not correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/cayley-weighted-fixed-points/blob/v1.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Fresh-extraction exact checks enumerate Cayley words through length eight, including fixed-alphabet strata and signed weights; count formulas agree through n=30. Four false expectations are rejected under normal and optimized Python. Finite tests do not prove the all-length written theorem."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/cayley-weighted-fixed-points/blob/v1.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Python 3.13 standard-library scripts and exact inputs supplied. Local and Linux internal replay are not unaffiliated reproduction."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Not established by publication or internal checking."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Not established by publication or internal checking."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Not established by publication or internal checking."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Not established by publication or internal checking."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Not established by publication or internal checking."
+    }
+  },
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:cayley-weighted-fixed-points",
+    "attemptIds": [
+      "ep-attempt:cayley-weighted-fixed-points-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Universal weighted fixed-point identity from equal marginals.",
+      "scope": "All n>=1; fixed alphabet 1<=k<=n; no direct species bijection."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Position symmetry equates the weighted diagonal count with a one-position rank marginal. Label symmetry gives the fixed-k refinement; primitive recurrence and block reversal complete the numerical identity.",
+      "remainingRisks": [
+        "Written proof is not formally verified.",
+        "Priority is bounded uncertainty; the scalar enumeration is classical."
+      ]
+    },
+    "humanJudgmentGates": [
+      "External specialist scrutiny remains open; no human research work inferred."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentReimplementation"
+      ],
+      "nextAction": "Inspect the elementary proof and source positioning; independently reproduce exact counts.",
+      "claimCeiling": "Unrefereed written-proof candidate with internal exact checks. Classical scalar enumeration is inherited; no formal verification, unaffiliated reproduction or external peer review established."
+    },
+    "impactClaims": [
+      {
+        "id": "cayley-weighted-fixed-points-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable focused conjecture-resolution candidate",
+        "setting": "Producer-coordinated mathematics",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No acceleration or applied benefit measured.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "narration": "Take three small words: eleven, one two, and two one. They are all the Cayley words of length two. A Cayley word uses every positive label up to its largest label, with no gaps. Repeated labels are allowed.\n\nNow look for a fixed point: a position where the label equals the position number. Give that match a weight equal to its position. Eleven contributes one. One two contributes one plus two, making three. Two one contributes nothing. Across the three words, the total is four.\n\nAdd every letter instead, and the total is eight. Divide by the word length, two, and you again get four. There are also eight primitive Cayley words of length three. Primitive means neighbouring letters are different. Half of eight is four once more.\n\nThis candidate proves that the same three-way equality holds at every positive length. It resolves a conjecture of Cerbai, Claesson, Ernst and Golab. The key is symmetry: swapping positions preserves the collection of unrestricted Cayley words. Each position therefore sees the same distribution of labels. That turns a weighted count of matches into an average letter sum. It does not require the letters to be independent.\n\nThe counting formulas and ordered-block construction were known already. The contribution is the explicit fixed-point interpretation, not a new number sequence or a broad breakthrough. The revised note includes an elementary counting recurrence and a refinement for a fixed number of labels.\n\nExact enumeration checks every Cayley word through length eight. The written argument, not that finite calculation, supports the statement at all lengths. This is an unrefereed Evidence Press candidate dated the twelfth of October, twenty twenty-six. The paper and code are linked on the page. This synthetic briefing is not additional scientific evidence.",
+  "conceptDoi": "10.5281/zenodo.23314213",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/cayley-weighted-fixed-points.mp3",
+      "name": "Audio briefing — Weighted fixed points of Cayley permutations",
+      "description": "Synthetic plain-English briefing, not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/cayley-weighted-fixed-points.txt"
+    }
+  ]
+}
