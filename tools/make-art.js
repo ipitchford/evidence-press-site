@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['two-colour-overpartition-congruences'] = require('./two-colour-art').draw;
 art['overpartition-congruences-and-towers'] = require('./overpartition-art').draw;
 art['theta-graphs-c3-e-positive'] = require('./theta-c3-art').draw;
 art['cayley-weighted-fixed-points'] = require('./cayley-fixed-art').draw;
@@ -2043,6 +2044,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'two-colour-overpartition-congruences': ['#f5cd82', '#d28d83'],
   'steady-stream-power-landscapes': ['#65ddd0', '#f6c76d'],
   'cooper-spencer-temporal-unimodality': ['#2dd4bf', '#fbbf24'],
   'quartic-inverse-coefficients': ['#89c8ad', '#dab583'],
