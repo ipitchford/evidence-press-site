@@ -2420,6 +2420,8 @@ art['primitive-su-primitivity'] = primitiveSuArt.draw;
 palette['primitive-su-primitivity'] = primitiveSuArt.colors;
 art['planar-transport-map-sensitivity-certificates'] = transportSensitivityArt.draw;
 palette['planar-transport-map-sensitivity-certificates'] = ['#f2c46f', '#8ed6ea'];
+art['sun-hou-primitive-sum-circle'] = require('./sun-hou-art').draw;
+palette['sun-hou-primitive-sum-circle'] = ['#87d9ef','#f6c66b'];
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
