@@ -67,6 +67,10 @@ YouTube thumbnail backgrounds use persistent assignments in
 slug. Commit the assignment with the JPEG and mirror identical bytes to the
 central thumbnail library. Historical assignments are preserved; subsequent
 assignments must follow the six-colour cycle, which `--check` validates.
+An explicit editorial colour correction may set `editorialPalette` with a
+nonempty `editorialReason`; rendering honours it persistently while the scheduled
+cycle remains intact. The cycle test checks allocation, not perceptual variety:
+inspect the actual rendered colours and retain deliberate corrections.
 Reconcile concurrent allocations before merging. A palette-only repair preserves
 headline, mathematical content and claim qualifications. Inspect the recent
 thumbnail strip as a group as well as individual files; separate filenames or

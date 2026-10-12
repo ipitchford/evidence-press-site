@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['theta-graphs-c3-e-positive'] = require('./theta-c3-art').draw;
 art['small-exponent-percolation'] = require('./percolation-art').draw;
 art['stable-random-radial-profile'] = require('./radial-profile-art').draw;
 art['three-gaussian-projection-counterexample'] = require('./three-gaussian-art').draw;
@@ -2424,6 +2425,7 @@ art['sun-hou-primitive-sum-circle'] = require('./sun-hou-art').draw;
 palette['sun-hou-primitive-sum-circle'] = ['#87d9ef','#f6c66b'];
 art['sun-circular-primitive-permutation'] = require('./sun-circular-art').draw;
 palette['sun-circular-primitive-permutation'] = ['#91d8ef','#f3bf77'];
+palette['theta-graphs-c3-e-positive'] = ['#91d8ef','#f3bf77'];
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
