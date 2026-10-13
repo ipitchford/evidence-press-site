@@ -36,6 +36,7 @@ ${inner}
 const art = {};
 const fkkMajorityArt = require("./fkk-majority-art");
 art["fkk-majority-partitions"] = fkkMajorityArt.draw;
+art['debt-disclosure-bounds'] = require('./debt-disclosure-art').draw;
 const walesManuscriptArt = require('./wales-manuscript-art');
 art['wales-20mph-attribution-manuscript'] = walesManuscriptArt.draw;
 art['two-colour-overpartition-congruences'] = require('./two-colour-art').draw;
@@ -2048,6 +2049,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'debt-disclosure-bounds': ['#f3c16b', '#e59b9c'],
   'wales-20mph-attribution-manuscript': ['#f2c46f', '#e79a8a'],
   'two-colour-overpartition-congruences': ['#f5cd82', '#d28d83'],
   'steady-stream-power-landscapes': ['#65ddd0', '#f6c76d'],
@@ -2449,6 +2451,7 @@ for (const [slug, fn] of Object.entries(art)) {
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
   if (slug === "fkk-majority-partitions") svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${fkkMajorityArt.description}</desc><defs>`);
+  if (slug === 'debt-disclosure-bounds') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./debt-disclosure-art').description}</desc><defs>`);
   if (['rational-laguerre-mosaics','centroidal-equilibrium-creation'].includes(slug)) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${mosaicAbrasionArt.descriptions[slug==='rational-laguerre-mosaics'?'mosaics':'abrasion']}</desc><defs>`);
   if (slug === 'concentratable-entanglement-spectator-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${ceSpectatorArt.description}</desc><defs>`);
   if (slug === 'k2p-tree-network-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${k2pArt.description}</desc><defs>`);
