@@ -2438,6 +2438,9 @@ palette['theta-graphs-c3-e-positive'] = ['#91d8ef','#f3bf77'];
 palette['cayley-weighted-fixed-points'] = ['#cbb7eb','#edbd85'];
 palette['overpartition-congruences-and-towers'] = ['#e6c1d0','#f1c77b'];
 palette["fkk-majority-partitions"] = fkkMajorityArt.colors;
+const ceSpectatorArt = require('./ce-spectator-art');
+art['concentratable-entanglement-spectator-counterexample'] = ceSpectatorArt.draw;
+palette['concentratable-entanglement-spectator-counterexample'] = ['#f5ce7b','#ee9b99'];
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
@@ -2447,6 +2450,7 @@ for (const [slug, fn] of Object.entries(art)) {
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
   if (slug === "fkk-majority-partitions") svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${fkkMajorityArt.description}</desc><defs>`);
   if (['rational-laguerre-mosaics','centroidal-equilibrium-creation'].includes(slug)) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${mosaicAbrasionArt.descriptions[slug==='rational-laguerre-mosaics'?'mosaics':'abrasion']}</desc><defs>`);
+  if (slug === 'concentratable-entanglement-spectator-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${ceSpectatorArt.description}</desc><defs>`);
   if (slug === 'k2p-tree-network-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${k2pArt.description}</desc><defs>`);
   if (slug === 'seven-cycle-fourth-power-upper112') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${sevenCycleArt.description}</desc><defs>`);
   if (slug === 'horton-tokunaga-kingman-asymptotics') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${hortonArt.description}</desc><defs>`);
