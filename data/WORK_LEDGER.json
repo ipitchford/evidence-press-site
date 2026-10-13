@@ -28830,7 +28830,7 @@
       "selectionBasis": "User request; registration follows review and source checks. Earlier clocks are left-censored, not reconstructed.",
       "taskClass": "review-response-extension-and-full-candidate-publication",
       "status": "active",
-      "statusAt": "2026-10-13T10:06:42.482Z",
+      "statusAt": "2026-10-13T10:26:59.139Z",
       "resultClass": "pending",
       "statusHistory": [
         {
@@ -28839,6 +28839,16 @@
           "resultClass": "pending",
           "reason": "Candidate revised and locally checked; final archive and public delivery gates remain.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-13T10:26:59.139Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Frozen research gates and public archive parity passed; canonical site delivery pending.",
+          "evidenceRefs": [
+            "https://zenodo.org/records/23337976",
+            "https://github.com/ipitchford/debt-disclosure-bounds/releases/tag/v1.1.0-candidate"
+          ]
         }
       ],
       "decisionObjectTarget": "Exact debt-exposure bounds and explicit accounting identification boundaries.",
@@ -28931,17 +28941,72 @@
         "outcome": null
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Final archive-bound endpoint and public delivery pending."
+        "status": "measured-partial",
+        "assessedAt": "2026-10-13T10:26:59.139Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23337976"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/debt-disclosure-bounds/blob/v1.1.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/debt-disclosure-bounds/blob/v1.1.0-candidate/data/EXTERNAL_INPUTS.md"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed methods application with exact encoded-model certificates, not verified national fiscal exposure or measured policy benefit.",
+        "evidenceRefs": [
+          "https://zenodo.org/records/23337976",
+          "https://github.com/ipitchford/debt-disclosure-bounds/releases/tag/v1.1.0-candidate"
+        ],
+        "missingnessReason": "Public archives and internal replay verified; site delivery pending. External assurance and resource telemetry remain absent."
       },
       "releaseSlug": "debt-disclosure-bounds",
       "stopReason": null,
       "corrections": [],
-      "revisions": []
+      "revisions": [
+        {
+          "date": "2026-10-13",
+          "summary": "Bound archive availability and internal exact replay separately from pending site delivery."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -29986,6 +30051,10 @@
     {
       "date": "2026-10-13",
       "summary": "Registered remaining debt-disclosure publication with explicit late registration and unmeasured earlier clocks."
+    },
+    {
+      "date": "2026-10-13",
+      "summary": "Bound debt-disclosure archives and scoped internal assurance; no independent or impact claim."
     }
   ]
 }
