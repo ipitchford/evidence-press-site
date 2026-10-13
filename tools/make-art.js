@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['inclusion-link-chernoff-concentration'] = require('./inclusion-link-chernoff-art').draw;
 const fkkMajorityArt = require("./fkk-majority-art");
 art["fkk-majority-partitions"] = fkkMajorityArt.draw;
 art['debt-disclosure-bounds'] = require('./debt-disclosure-art').draw;
@@ -2049,6 +2050,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'inclusion-link-chernoff-concentration': require('./inclusion-link-chernoff-art').colors,
   'debt-disclosure-bounds': ['#f3c16b', '#e59b9c'],
   'wales-20mph-attribution-manuscript': ['#f2c46f', '#e79a8a'],
   'two-colour-overpartition-congruences': ['#f5cd82', '#d28d83'],
@@ -2450,6 +2452,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'inclusion-link-chernoff-concentration') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./inclusion-link-chernoff-art').description}</desc><defs>`);
   if (slug === "fkk-majority-partitions") svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${fkkMajorityArt.description}</desc><defs>`);
   if (slug === 'debt-disclosure-bounds') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./debt-disclosure-art').description}</desc><defs>`);
   if (['rational-laguerre-mosaics','centroidal-equilibrium-creation'].includes(slug)) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${mosaicAbrasionArt.descriptions[slug==='rational-laguerre-mosaics'?'mosaics':'abrasion']}</desc><defs>`);

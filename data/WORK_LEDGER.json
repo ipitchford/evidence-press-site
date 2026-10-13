@@ -34307,6 +34307,180 @@
           "summary": "Reconciled delivered publication status from canonical readback; retained original history, assurance and frozen forecast with explicit unavailable telemetry."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:inclusion-link-chernoff-concentration-publication",
+      "workId": "ep-work:inclusion-link-chernoff-concentration",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-13T20:42:19.952Z",
+      "aims": [
+        "science"
+      ],
+      "question": "Revise the inclusion-link Chernoff candidate, test tractable extensions and publish the warranted final result.",
+      "selectionBasis": "User-requested review and publication. Site registration follows initial review and extension drafting; these earlier stages are left-censored. Private workflow forecast was recorded at intake.",
+      "taskClass": "review-response-extension-and-full-candidate-publication",
+      "status": "active",
+      "statusAt": "2026-10-13T20:55:21.649Z",
+      "resultClass": "pending",
+      "statusHistory": [
+        {
+          "at": "2026-10-13T20:42:19.952Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Extension under internal review; publication gates pending.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-13T20:55:21.649Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Final research assurance assessed; archive and site delivery pending.",
+          "evidenceRefs": [
+            "https://github.com/ipitchford/inclusion-link-chernoff-concentration/blob/v1.1.0-candidate/ASSURANCE.md"
+          ]
+        }
+      ],
+      "decisionObjectTarget": "Scalar concentration inequalities under inclusion-link covariance bounds, with explicit conditioning and observable boundaries.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "None.",
+        "estimand": "No comparative acceleration or impact estimate.",
+        "matchedAssuranceEndpoint": "None.",
+        "reason": "One requested mathematical revision and publication, not a comparative workflow study."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Historical discovery and active effort were not instrumented; do not reconstruct from publication timestamps.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-13T20:42:19.952Z",
+            "basis": "Actual site registration; not historical research intake."
+          },
+          {
+            "event": "assurance-endpoint-reached",
+            "at": "2026-10-13T20:55:21.649Z",
+            "basis": "Actual final internal research assessment; not publication time."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": null,
+        "reworkMinutes": null,
+        "correctionCount": null
+      },
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Remaining assurance and publication after site registration; earlier research is left-censored.",
+        "forecast": {
+          "frozenAt": "2026-10-13T20:42:19.952Z",
+          "procedureClass": "full-candidate",
+          "targetOutcome": "Warranted final candidate archived and canonically published",
+          "expectedActiveMinutes": 150,
+          "plausibleLowMinutes": 120,
+          "plausibleHighMinutes": 210,
+          "expectedUnattendedWaitMinutes": 30,
+          "referenceClass": {
+            "label": "Full candidate route",
+            "sampleSize": 0,
+            "basis": "Procedural forecast, not measured benchmark"
+          },
+          "fermiComponents": [
+            {
+              "component": "Remaining scientific assurance, archive, media and guarded delivery",
+              "count": 1,
+              "lowMinutesPerUnit": 120,
+              "centralMinutesPerUnit": 150,
+              "highMinutesPerUnit": 210,
+              "basis": "New candidate with a short analytic extension and modest finite diagnostics."
+            }
+          ],
+          "probabilityPositiveSignal": 0.8,
+          "probabilityTargetClosure": 0.8,
+          "probabilityHorizonMinutes": 480,
+          "assumptions": [
+            "No unresolved mathematical defect; providers available."
+          ],
+          "reforecastTriggers": [
+            "Substantive finding or provider failure."
+          ],
+          "stopRule": "No hard cap; complete mandatory assurance or report the specific blocker."
+        },
+        "outcome": null
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-10-13T20:55:21.649Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://zenodo.org/records/23351344"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/inclusion-link-chernoff-concentration/blob/v1.1.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/inclusion-link-chernoff-concentration/blob/v1.1.0-candidate/ENVIRONMENT.txt"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed scalar concentration candidate with internal checks, not formal verification or global novelty certification.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/inclusion-link-chernoff-concentration/blob/v1.1.0-candidate/ASSURANCE.md",
+          "https://github.com/ipitchford/inclusion-link-chernoff-concentration/blob/v1.1.0-candidate/REPLAY_RECEIPT.md"
+        ],
+        "missingnessReason": "Internal research assurance assessed separately from publication; archive parity verified. Resource telemetry and external assurance remain absent."
+      },
+      "releaseSlug": "inclusion-link-chernoff-concentration",
+      "stopReason": null,
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-10-13",
+          "summary": "Bound final research assurance and release slug; delivery still pending."
+        },
+        {
+          "date": "2026-10-13",
+          "summary": "Verified published archive parity; site delivery remains pending."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -35363,6 +35537,14 @@
     {
       "date": "2026-10-13",
       "summary": "Reconciled 40 audited publication attempts after fresh canonical readback, without reconstructing historical measurements or changing scientific assurance. Evidence: https://evidencepress.org/assets/operations/publication-records-20261013.json"
+    },
+    {
+      "date": "2026-10-13",
+      "summary": "Registered inclusion-link concentration publication with explicit late intake, final internal research assurance and still-pending delivery. No impact or reconstructed effort claim."
+    },
+    {
+      "date": "2026-10-13",
+      "summary": "Recorded verified GitHub/Zenodo availability for inclusion-link concentration, without upgrading other assurance dimensions."
     }
   ]
 }

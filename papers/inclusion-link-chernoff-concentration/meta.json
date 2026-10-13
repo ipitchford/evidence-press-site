@@ -1,0 +1,201 @@
+{
+  "slug": "inclusion-link-chernoff-concentration",
+  "title": "Chernoff concentration from inclusion-link spectral bounds",
+  "shortTitle": "Concentration without independent choices",
+  "oneLine": "A retained-set construction turns inclusion-link covariance control into scalar concentration, with a proposed mean-sensitive bound for variable-size samples.",
+  "abstract": "This unrefereed analytic candidate derives a two-sided concentration inequality for additive statistics on fixed-size random sets from spectral bounds on every inclusion link. An extension assumes an inclusion-link covariance bound and obtains a negative-binomial moment-generating-function comparison and a mean-sensitive upper tail for arbitrary variable-size random sets, with a Poisson comparison at parameter one. The proof uses an attributed birth–death spectral-gap criterion and a retained-face construction that recovers original untilted inclusion laws. It does not claim matrix concentration, arbitrary Lipschitz concentration, a variable-rank lower tail or resolution of the separate TD-threshold question.",
+  "datePublished": "2026-10-13",
+  "doi": "10.5281/zenodo.23351344",
+  "conceptDoi": "10.5281/zenodo.23351343",
+  "zenodoUrl": "https://zenodo.org/records/23351344",
+  "pdfUrl": "https://zenodo.org/records/23351344/files/inclusion-link-chernoff-concentration-v1.1.0-candidate.pdf",
+  "altPdfUrl": "https://github.com/ipitchford/inclusion-link-chernoff-concentration/releases/download/v1.1.0-candidate/inclusion-link-chernoff-concentration-v1.1.0-candidate.pdf",
+  "repoUrl": "https://github.com/ipitchford/inclusion-link-chernoff-concentration",
+  "releaseUrl": "https://github.com/ipitchford/inclusion-link-chernoff-concentration/releases/tag/v1.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "version": "1.1.0-candidate",
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "concentration inequalities",
+    "inclusion links",
+    "spectral independence",
+    "covariance bounds",
+    "dependent sampling",
+    "Chernoff bounds",
+    "independent thinning"
+  ],
+  "problem": {
+    "name": "Scalar lifted-vertex concentration from inclusion-link spectral bounds",
+    "url": "https://arxiv.org/abs/2404.10961v2"
+  },
+  "keyResults": [
+    "For rank d, link-walk bounds λ₂(P_A) ≤ η/r imply a two-sided additive concentration bound with exponent −ε²d/[4(1+η)].",
+    "The proposed covariance-based extension gives a mean-sensitive upper tail for bounded additive statistics on variable-size random sets.",
+    "A negative-binomial MGF comparison has a Poisson limit at covariance parameter one; it is not a distributional identity.",
+    "The retained-face construction recovers original inclusion-link laws and uses an explicitly attributed auxiliary spectral-gap criterion."
+  ],
+  "evidence": "Written analytic proof with coordinated internal checking; supplied audit replay on 205 laws and original extension diagnostics on 100 laws and 1161 thinned links. Finite tests are not universal proof.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. No external peer review, unaffiliated reproduction, formal verification or global priority finding.",
+  "openProblems": [],
+  "relatedWorks": [
+    {
+      "citation": "Dikstein and Hopkins, Chernoff Bounds and Reverse Hypercontractivity on HDX, arXiv:2404.10961v2. The scalar lifted-vertex spectral-independence branch is the motivating question; other branches remain separate.",
+      "url": "https://arxiv.org/abs/2404.10961v2"
+    },
+    {
+      "citation": "Chen and coauthors, Rapid Mixing on Random Regular Graphs beyond Uniqueness, arXiv:2504.03406v2, Theorem 1.9 and Section 4.1. Attributed field-dynamics input.",
+      "url": "https://arxiv.org/abs/2504.03406v2"
+    },
+    {
+      "citation": "Göbel and coauthors, A simple proof of rapid mixing on random regular graphs beyond uniqueness, arXiv:2606.27545v1, Theorem 1.2. Existing local matrix criterion specialized in the argument.",
+      "url": "https://arxiv.org/abs/2606.27545v1"
+    },
+    {
+      "citation": "Kaufman, Kyng and Soldá, Scalar and Matrix Chernoff Bounds from ℓ∞ Independence, arXiv:2111.02177v2. Earlier one-sided-influence concentration, under a different hypothesis.",
+      "url": "https://arxiv.org/abs/2111.02177v2"
+    },
+    {
+      "citation": "Anari and coauthors, Entropic Independence II, arXiv:2111.03247v1. Related concentration and restricted-field methods; arbitrary-field stability is not attributed to this work.",
+      "url": "https://arxiv.org/abs/2111.03247v1"
+    },
+    {
+      "citation": "Blanca and coauthors, On mixing of Markov chains: Coupling, spectral independence, and entropy factorization, arXiv:2103.07459v1. Theorems 1.7 and 5.1 assume marginal boundedness.",
+      "url": "https://arxiv.org/abs/2103.07459v1"
+    }
+  ],
+  "citeText": "Anonymous (2026). Chernoff concentration from inclusion-link spectral bounds. Version 1.1.0-candidate. https://doi.org/10.5281/zenodo.23351344",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Revised manuscript, exact-version archive and internal checks, 13 October 2026; provider availability is recorded separately.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research workflow",
+      "OpenAI Codex: release-draft and media preparation"
+    ],
+    "humanRole": "Publication authority; no human mathematical contribution asserted.",
+    "reviewStatus": "Coordinated internal proof and diagnostic checks; no external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23351344",
+      "note": "Published GitHub and Zenodo assets match the frozen local manifest; public downloads verified. Archiving is not proof verification."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/inclusion-link-chernoff-concentration/blob/v1.1.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Fresh extraction passed normal and optimized diagnostic runs and two semantic negative controls; universal claims remain written proofs."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reproduction established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant verification established."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Model review does not establish external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/inclusion-link-chernoff-concentration/blob/v1.1.0-candidate/ENVIRONMENT.txt",
+      "note": "Python and NumPy versions recorded; GitHub CI passed. No hermetic reconstruction or unaffiliated reproduction established."
+    }
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "media": [
+    {
+      "type": "audio",
+      "url": "https://evidencepress.org/assets/audio/inclusion-link-chernoff-concentration.mp3",
+      "name": "Audio briefing — Concentration without independent choices",
+      "description": "Synthetic explanation; not additional scientific evidence.",
+      "transcriptUrl": "https://evidencepress.org/assets/audio/inclusion-link-chernoff-concentration.txt"
+    }
+  ],
+  "narration": "Concentration without independent choices. An Evidence Press briefing.\n\nSuppose a random sample contains choices that influence one another. How unlikely is a total much larger than its average? For independent choices, concentration inequalities answer that question. Dependence makes it harder.\n\nThis candidate studies a particular way to control dependence. Imagine learning that several elements are present in the sample. The assumption limits the covariance that remains, after every such piece of information.\n\nThe original theorem uses this local condition to bound deviations of a weighted total in a fixed-size sample. A proposed extension allows the sample size to vary and makes the upper-tail bound depend on the total's expected value. A small expected count can then give a more informative bound.\n\nThe key move is to create an intermediate set. First, favour samples with larger totals. Then keep each selected element with a carefully chosen probability. Conditional on the retained set, the remainder follows an original inclusion-conditioned distribution. The proof can therefore use the assumptions it actually has, without demanding that they survive arbitrary changes of weights.\n\nAn existing birth-and-death-chain result supplies part of the argument. The paper credits it explicitly. Its proposed extension compares a moment-generating function with a negative-binomial form, reducing to a Poisson comparison at one parameter value. That does not say the total has either distribution.\n\nThe scope matters. These are scalar, additive statistics. The paper does not establish a matrix theorem, a result for every Lipschitz function, or a variable-size lower-tail bound. Computational checks are diagnostics, not a universal proof.\n\nThe revised proof and finite checks have been examined internally. The manuscript also gives an example showing why a comparable lower-tail statement needs more assumptions when sample size varies. The paper and code are linked on Evidence Press. This is an unrefereed candidate dated the thirteenth of October, twenty twenty-six. The narration uses a synthetic British voice and is not additional scientific evidence.",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:inclusion-link-chernoff-concentration",
+    "attemptIds": [
+      "ep-attempt:inclusion-link-chernoff-concentration-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Scalar concentration and mean-sensitive upper-tail inequalities.",
+      "scope": "Every feasible inclusion-link covariance bound; bounded additive observables. Variable-rank lower tails and general observables excluded."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The retained-face posterior is the original inclusion-conditioned law; independent thinning transfers the count MGF to bounded weights.",
+      "remainingRisks": [
+        "No formal verification or external specialist review.",
+        "Bounded prior-art audit does not establish global priority.",
+        "Applications must verify every inclusion-link hypothesis."
+      ]
+    },
+    "humanJudgmentGates": [
+      "No human mathematical contribution asserted; external specialist scrutiny remains open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview"
+      ],
+      "nextAction": "Scrutinize the written proofs and contribution outside the production workflow.",
+      "claimCeiling": "Unrefereed scalar concentration candidate with internal checks, not formal verification or global novelty certification."
+    },
+    "impactClaims": [
+      {
+        "id": "inclusion-link-chernoff-concentration-no-impact",
+        "aim": "science",
+        "outcome": "Reusable inclusion-link concentration argument",
+        "setting": "Producer-coordinated theoretical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No measured research acceleration or downstream benefit.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
