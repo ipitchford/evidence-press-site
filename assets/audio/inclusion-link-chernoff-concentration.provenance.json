@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "bounded-disclosed-v1",
+  "segments": [
+    {
+      "input": "Concentration without independent choices. An Evidence Press briefing.\n\nSuppose a random sample contains choices that influence one another. How unlikely is a total much larger than its average? For independent choices, concentration inequalities answer that question. Dependence makes it harder.\n\nThis candidate studies a particular way to control dependence. Imagine learning that several elements are present in the sample. The assumption limits the covariance that remains, after every such piece of information.\n\nThe original theorem uses this local condition to bound deviations of a weighted total in a fixed-size sample. A proposed extension allows the sample size to vary and makes the upper-tail bound depend on the total's expected value. A small expected count can then give a more informative bound.\n\nThe key move is to create an intermediate set. First, favour samples with larger totals. Then keep each selected element with a carefully chosen probability. Conditional on the retained set, the remainder follows an original inclusion-conditioned distribution. The proof can therefore use the assumptions it actually has, without demanding that they survive arbitrary changes of weights.\n\nAn existing birth-and-death-chain result supplies part of the argument. The paper credits it explicitly. Its proposed extension compares a moment-generating function with a negative-binomial form, reducing to a Poisson comparison at one parameter value. That does not say the total has either distribution.\n\nThe scope matters. These are scalar, additive statistics. The paper does not establish a matrix theorem, a result for every Lipschitz function, or a variable-size lower-tail bound. Computational checks are diagnostics, not a universal proof.\n\nThe revised proof and finite checks have been examined internally. The manuscript also gives an example showing why a comparable lower-tail statement needs more assumptions when sample size varies. The paper and code are linked on Evidence Press. This is an unrefereed candidate dated the thirteenth of October, twenty twenty-six. The narration uses a synthetic British voice and is not additional scientific evidence. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "eefd0caec648cd82d3b64a1d4edf5a4e8b0f286c56bdccd51e37e50faded6908",
+      "audioSha256": "18ff1163cd10fbe27ffbf1fdc08a50c69dea2822dfc666d25fbfbc81d470bcb1",
+      "requestId": "req_f17d8e58722b4b2a9682747617fed9cb",
+      "contentType": "audio/mpeg"
+    }
+  ],
+  "slug": "inclusion-link-chernoff-concentration",
+  "generatedAt": "2026-10-13T20:56:03.581Z",
+  "sourceMetadata": "papers/inclusion-link-chernoff-concentration/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "eefd0caec648cd82d3b64a1d4edf5a4e8b0f286c56bdccd51e37e50faded6908",
+  "transcriptPath": "assets/audio/inclusion-link-chernoff-concentration.txt",
+  "transcriptSha256": "151a6195df8105ba98eb4c5393bbf240a0c5642f2d390fe95af7b383099d0a0d",
+  "audioPath": "assets/audio/inclusion-link-chernoff-concentration.mp3",
+  "audioSha256": "7d64d8c02fbdd762f59ba17d8be55e96210f068ccf282085d0745e420d986004",
+  "audioBytes": 2098988,
+  "responseContentType": "audio/mpeg",
+  "requestId": null
+}

@@ -1,0 +1,15 @@
+Concentration without independent choices. An Evidence Press briefing.
+
+Suppose a random sample contains choices that influence one another. How unlikely is a total much larger than its average? For independent choices, concentration inequalities answer that question. Dependence makes it harder.
+
+This candidate studies a particular way to control dependence. Imagine learning that several elements are present in the sample. The assumption limits the covariance that remains, after every such piece of information.
+
+The original theorem uses this local condition to bound deviations of a weighted total in a fixed-size sample. A proposed extension allows the sample size to vary and makes the upper-tail bound depend on the total's expected value. A small expected count can then give a more informative bound.
+
+The key move is to create an intermediate set. First, favour samples with larger totals. Then keep each selected element with a carefully chosen probability. Conditional on the retained set, the remainder follows an original inclusion-conditioned distribution. The proof can therefore use the assumptions it actually has, without demanding that they survive arbitrary changes of weights.
+
+An existing birth-and-death-chain result supplies part of the argument. The paper credits it explicitly. Its proposed extension compares a moment-generating function with a negative-binomial form, reducing to a Poisson comparison at one parameter value. That does not say the total has either distribution.
+
+The scope matters. These are scalar, additive statistics. The paper does not establish a matrix theorem, a result for every Lipschitz function, or a variable-size lower-tail bound. Computational checks are diagnostics, not a universal proof.
+
+The revised proof and finite checks have been examined internally. The manuscript also gives an example showing why a comparable lower-tail statement needs more assumptions when sample size varies. The paper and code are linked on Evidence Press. This is an unrefereed candidate dated the thirteenth of October, twenty twenty-six. The narration uses a synthetic British voice and is not additional scientific evidence.
