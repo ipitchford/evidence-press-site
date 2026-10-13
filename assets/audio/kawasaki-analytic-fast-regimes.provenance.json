@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "bounded-disclosed-v1",
+  "segments": [
+    {
+      "input": "Global swaps, fast mixing. An Evidence Press briefing.\n\nImagine particles occupying some vertices of a graph. The number of particles must stay fixed. At each step, a sampler chooses one occupied and one empty vertex, then proposes to exchange them. The vertices need not be neighbours.\n\nHow long before the system largely forgets its starting configuration? This mathematical candidate gives an upper bound proportional to n times log n, where n is the number of vertices, in two precisely defined regimes.\n\nBelow the source paper's critical inverse temperature, the bound covers every particle density. Above it, the density must be sufficiently unbalanced, beyond a separate analytic threshold. The inequalities are strict. The critical temperature and the low-temperature threshold boundaries are not included.\n\nThe proof follows information through an intermediate experiment. Retain each occupied vertex independently, then generate auxiliary bonds from the retained set. An entropy argument shows that enough information survives this thinning. Given the bonds, a simpler fixed-size sampling law supplies the next inequality.\n\nThe final step returns directly to the original discrete exchange chain. It does not add artificial waiting steps or change the clock.\n\nTwo extensions retain a more precise finite-size coefficient and allow unequal nonnegative interactions in a conditional entropy theorem. The second still requires its independence hypothesis; it is not a new unconditional mixing theorem for all such models.\n\nFinite computational audits check the algebraic identities and numerical entropy calculations. They do not prove the general result. This remains an unrefereed candidate, with no claim about nearest-neighbour dynamics, cutoff, or practical runtime constants. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "93e2cce123dd2f464dbac7171793e1186c11adb16329cd363c9bf2a242b821bc",
+      "audioSha256": "e4cc334eb9313515e7cc899b2fb4dbe3fdfe21676fd758565cd78e30c29fb85f",
+      "requestId": "req_613f77411c714e49abafcb0d704ec5b4",
+      "contentType": "audio/mpeg"
+    }
+  ],
+  "slug": "kawasaki-analytic-fast-regimes",
+  "generatedAt": "2026-10-13T23:27:01.592Z",
+  "sourceMetadata": "papers/kawasaki-analytic-fast-regimes/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "93e2cce123dd2f464dbac7171793e1186c11adb16329cd363c9bf2a242b821bc",
+  "transcriptPath": "assets/audio/kawasaki-analytic-fast-regimes.txt",
+  "transcriptSha256": "2f13b86be0027947d730c5fff35a4e6622df777208c496324c7bcbe2642dcb8f",
+  "audioPath": "assets/audio/kawasaki-analytic-fast-regimes.mp3",
+  "audioSha256": "e8daf1594bd14e5c80b982e657dfa5900e5652ca3d1355d673431e934199300f",
+  "audioBytes": 1917356,
+  "responseContentType": "audio/mpeg",
+  "requestId": null
+}
