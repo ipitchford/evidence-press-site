@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "2.0",
+  "effectiveDate": "2026-10-13",
+  "extends": "https://evidencepress.org/api/v1/research-metrics-policy.json",
+  "scope": "Versioned successor for terminal measurement missingness. All v1 intake, forecast, measured-outcome, scientific-assurance and preservation rules remain unchanged except the core-outcome missingness rule explicitly replaced below.",
+  "outcomeAlternatives": ["measured-v1", "unavailable-v2"],
+  "unavailableOutcome": {
+    "status": "unavailable",
+    "policyVersion": "2.0",
+    "calibration": null,
+    "requiredEvidence": ["present-dated terminal observation", "field-specific missingness for every core and optional metric", "canonical page and machine-record readback for publication", "dated public-release milestone for publication"],
+    "rule": "Verified delivery may reach published status even when genuine effort telemetry was not recorded. Use the strict unavailable outcome variant, never zero, estimated counts, a generic pass flag or a reconstructed clock. It is not a measured outcome and cannot update calibration. Preserve frozen forecasts and prior observations; never replace an existing measured outcome with unavailable."
+  },
+  "claimCeiling": "Publication delivery, scientific assurance and measurement completeness are separate. This policy does not establish correctness, novelty, independent review, productivity or impact. Unavailable records are excluded from measured calibration, not from the attempted-work denominator.",
+  "changeLog": [{"date":"2026-10-13","summary":"Introduced an explicit, evidence-bound unavailable-telemetry alternative while preserving the published v1 policy and all historical observations."}]
+}

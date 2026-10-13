@@ -1297,6 +1297,7 @@ function researchMetricsForPaper(p) {
   return {
     schemaVersion: OPERATING_ARTIFACTS.metricsPolicy.schemaVersion,
     policyUrl: `${BASE}/api/research-metrics-policy.json`,
+    outcomePolicyUrl: `${BASE}/api/v2/research-metrics-policy.json`,
     workLedgerUrl: `${BASE}/api/work-ledger.json`,
     claimCeiling: OPERATING_ARTIFACTS.metricsPolicy.claimCeiling,
     attempts: p.operatingModel.attemptIds.map(attemptId => {
@@ -2525,6 +2526,7 @@ function api() {
     write(`api/${name}`, payload);
     write(`api/v1/${name}`, payload);
   }
+  write('api/v2/research-metrics-policy.json', JSON.stringify(OPERATING_ARTIFACTS.metricsPolicyV2, null, 2) + '\n');
   const governanceSchemas = [
     ['operating-model.schema.json', OPERATING_ARTIFACTS.schemas.contract],
     ['method-registry.schema.json', OPERATING_ARTIFACTS.schemas.registry],
@@ -2805,6 +2807,7 @@ function api() {
             properties: {
               schemaVersion: { type: 'string', minLength: 1 },
               policyUrl: { type: 'string', format: 'uri' },
+              outcomePolicyUrl: { type: 'string', const: `${BASE}/api/v2/research-metrics-policy.json` },
               workLedgerUrl: { type: 'string', format: 'uri' },
               claimCeiling: { type: 'string', minLength: 1 },
               attempts: {
@@ -3084,14 +3087,15 @@ simplePage('operating-model/', 'Evidence Press operating model', 'A prospective,
 simplePage('research-metrics/', 'Evidence Press research metrics', 'The prospective attempt-level forecast, measurement and release-publication contract used to calibrate tractability without reconstructing history or mistaking throughput for correctness.', null, 'WebPage', {
   sourcePath: 'docs/RESEARCH_METRICS.md',
   sourceIncludesTitle: true,
-  kicker: 'Measured-release supplement · version 1.0 · 28 August 2026',
+  kicker: 'Measured-release supplement · v1 preserved · v2 missingness extension',
   standfirst: 'Freeze the estimate. Count the failed routes. Publish the outcome.',
   datePublished: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10),
-  dateModified: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10),
+  dateModified: OPERATING_ARTIFACTS.metricsPolicyV2.effectiveDate,
   status: OPERATING_ARTIFACTS.metricsPolicy.status,
   machineRecord: OPERATING_ARTIFACTS.metricsPolicy,
   resources: [
-    { label: 'Machine policy', url: `${BASE}/api/research-metrics-policy.json`, linkText: 'research-metrics-policy.json', detail: 'Definitions, effective boundary, required terminal fields and publication rules.' },
+    { label: 'Preserved v1 policy', url: `${BASE}/api/research-metrics-policy.json`, linkText: 'research-metrics-policy.json', detail: 'Original definitions, effective boundary, required terminal fields and publication rules.' },
+    { label: 'Version 2 missingness policy', url: `${BASE}/api/v2/research-metrics-policy.json`, linkText: 'v2/research-metrics-policy.json', detail: 'Explicit unavailable telemetry without invented clocks or calibration, separate from verified delivery.' },
     { label: 'Policy schema', url: `${BASE}/api/schemas/research-metrics-policy.schema.json`, linkText: 'research-metrics-policy.schema.json', detail: 'Machine-readable shape of the metrics policy.' },
     { label: 'Prospective attempts', url: `${BASE}/api/work-ledger.json`, linkText: 'work-ledger.json', detail: 'The full attempted-work denominator, including failed and unreleased work.' },
     { label: 'Release index', url: `${BASE}/api/papers.json`, linkText: 'papers.json', detail: 'Each prospective release embeds its linked researchMetrics receipt.' }

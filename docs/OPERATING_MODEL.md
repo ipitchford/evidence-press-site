@@ -161,6 +161,13 @@ The linked work-ledger attempts are the denominator. They record selection,
 terminal status, null or negative results, comparisons, milestones, active
 human and compute resources, rework, corrections and the assurance endpoint.
 Missing values require an explicit reason and cannot be reconstructed later.
+Verified publication may be recorded with an explicit unavailable-telemetry
+outcome. Its dated delivery observations do not supply historical research
+clocks or justify a calibration update. Retrospective administrative
+reconciliation appends a current receipt while preserving prior observations,
+forecasts and assurance states. This alternative is defined in the
+[version 2 missingness policy](/api/v2/research-metrics-policy.json); the
+published version 1 policy remains preserved.
 One underlying `workId` may have more than one attempt or press artifact; those
 records remain distinct through `attemptId`, release slug and artifact role.
 

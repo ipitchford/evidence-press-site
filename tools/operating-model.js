@@ -29,6 +29,7 @@ const ARTIFACT_PATHS = Object.freeze({
   ledger: 'data/IBE_LEDGER.json',
   workLedger: 'data/WORK_LEDGER.json',
   metricsPolicy: 'data/RESEARCH_METRICS_POLICY.json',
+  metricsPolicyV2: 'data/RESEARCH_METRICS_POLICY_V2.json',
   doctrine: 'docs/OPERATING_MODEL.md',
   contractSchema: 'schemas/operating-model.schema.json',
   registrySchema: 'schemas/method-registry.schema.json',
@@ -60,6 +61,7 @@ function loadArtifacts(root) {
     ledger: readJson(root, ARTIFACT_PATHS.ledger),
     workLedger: readJson(root, ARTIFACT_PATHS.workLedger),
     metricsPolicy: readJson(root, ARTIFACT_PATHS.metricsPolicy),
+    metricsPolicyV2: readJson(root, ARTIFACT_PATHS.metricsPolicyV2),
     schemas: {
       contract: readJson(root, ARTIFACT_PATHS.contractSchema),
       registry: readJson(root, ARTIFACT_PATHS.registrySchema),
@@ -389,6 +391,32 @@ function validateResearchMetrics(errors, where, attempt, metricsPolicy) {
   }
   if (!terminalStatuses.has(attempt.status)) add(errors, `${where}.metrics.outcome`, 'may be frozen only at a terminal attempt status');
   const outcomeWhere = `${where}.metrics.outcome`;
+  if (outcome.status === 'unavailable') {
+    if (!keys(errors, outcomeWhere, outcome, ['status', 'policyVersion', 'recordedAt', 'reason', 'missingFields', 'calibration'])) return;
+    if(outcome.policyVersion!=='2.0' || String(outcome.recordedAt).slice(0,10)<'2026-10-13') add(errors,outcomeWhere,'requires the version 2 missingness policy and a current observation');
+    dateTime(errors, `${outcomeWhere}.recordedAt`, outcome.recordedAt);
+    if (outcome.recordedAt !== attempt.statusAt) add(errors, `${outcomeWhere}.recordedAt`, 'must equal the terminal status receipt, not a reconstructed historical date');
+    if (typeof outcome.reason !== 'string' || outcome.reason.trim().length < 20) add(errors, `${outcomeWhere}.reason`, 'requires a specific missing-telemetry reason');
+    if (outcome.calibration !== null) add(errors, `${outcomeWhere}.calibration`, 'unavailable measurements cannot update calibration');
+    const expected = [...metricsPolicy.minimumPublishableOutcomeFields, ...metricsPolicy.optionalTelemetryFields];
+    const missing = new Map();
+    for (const [index, item] of (Array.isArray(outcome.missingFields) ? outcome.missingFields : []).entries()) {
+      if (!keys(errors, `${outcomeWhere}.missingFields[${index}]`, item, ['field', 'reason'])) continue;
+      if (!expected.includes(item.field) || missing.has(item.field)) add(errors, `${outcomeWhere}.missingFields`, 'unknown or duplicate missing field');
+      string(errors, `${outcomeWhere}.missingFields[${index}].reason`, item.reason);
+      missing.set(item.field, item.reason);
+    }
+    for (const field of expected) if (!missing.has(field)) add(errors, `${outcomeWhere}.missingFields`, `must explain unavailable ${field}`);
+    if (attempt.status === 'published') {
+      const receipt = (attempt.statusHistory || []).at(-1);
+      const canonical = `https://evidencepress.org/releases/${attempt.releaseSlug}/`;
+      if (!receipt?.evidenceRefs?.includes(canonical) || !receipt?.evidenceRefs?.includes(`${canonical}paper.json`))
+        add(errors, outcomeWhere, 'published with unavailable telemetry requires canonical page and machine-record readback references');
+      if (!(attempt.measurement?.milestones || []).some(m => m.event === 'public-release'))
+        add(errors, outcomeWhere, 'published with unavailable telemetry requires a dated public-release observation');
+    }
+    return;
+  }
   const outcomeFields = ['measuredAt', 'calendarElapsedMinutes', 'activeAgentMinutes', 'activeHumanMinutes', 'computeMinutes',
     'unattendedWaitMinutes', 'blockedMinutes', 'reworkMinutes', 'agentRuns', 'maxParallelAgents', 'modelTurns',
     'deduplicatedModelTokens', 'uncachedInputTokens', 'researchCycles', 'falsificationGatesRun',
@@ -1308,6 +1336,10 @@ function collectErrors({ root, papers, artifacts }) {
 
   validateContract(loaded.contract, paperSlugs, errors);
   validateMetricsPolicy(loaded.metricsPolicy, errors);
+  const successor=loaded.metricsPolicyV2;
+  if(!successor || successor.schemaVersion!=='2.0' || successor.effectiveDate!=='2026-10-13' || successor.extends!=='https://evidencepress.org/api/v1/research-metrics-policy.json' ||
+      successor.unavailableOutcome?.calibration!==null || successor.unavailableOutcome?.policyVersion!=='2.0' || successor.unavailableOutcome?.requiredEvidence?.length!==4)
+    add(errors,'RESEARCH_METRICS_POLICY_V2','missing or invalid strict missingness successor');
   const registryState = validateRegistry(loaded.registry, paperSlugs, errors);
   const ledgerState = validateLedger(loaded.ledger, loaded.contract.releasePolicy || {}, root, errors);
   const workLedgerState = validateWorkLedger(loaded.workLedger, paperSlugs, loaded.contract.releasePolicy || {}, loaded.metricsPolicy, errors);
