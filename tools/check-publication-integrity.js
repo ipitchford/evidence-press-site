@@ -522,6 +522,10 @@ async function main() {
   if (liveMetricsPolicy && !isDeepStrictEqual(liveMetricsPolicy, candidateMetricsPolicy)) {
     failures.push('research metrics policy: changed the published v1 contract; publish a versioned successor instead');
   }
+  const liveMetricsV2=await fetchOptionalJson(`${BASE}/api/v2/research-metrics-policy.json`);
+  const candidateMetricsV2=candidateJson('/api/v2/research-metrics-policy.json');
+  if(!candidateMetricsV2 || (liveMetricsV2 && !isDeepStrictEqual(liveMetricsV2,candidateMetricsV2)))
+    failures.push('research metrics policy v2: missing successor or changed published contract; retain it and version a further successor');
 
   const liveAtlasRoadmap = liveGovernance.get('/api/atlas-roadmap.json');
   if (liveAtlasRoadmap) {

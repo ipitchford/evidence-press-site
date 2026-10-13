@@ -216,6 +216,7 @@ function deploymentResult(receiptFile, discovery) {
   // Called only by deploy.sh after every canonical readback succeeded. This
   // operational receipt is outside dist, avoiding a publication self-hash loop.
   const result = { schemaVersion: VERSION, completedAt: new Date().toISOString(), buildReceiptSha256: receipt.receiptSha256,
+    buildReceipt: { path: path.resolve(receiptFile), sha256: sha(fs.readFileSync(receiptFile)) },
     artifactSha256: receipt.output.dist.sha256, sourceCommit: receipt.input.head,
     publication: { status: 'canonical-readback-passed', canonical: 'https://evidencepress.org/' },
     discovery: { provider: 'IndexNow', status: discovery, retryCommand: discovery === 'failed' ? 'node tools/indexnow-submit.js' : null } };

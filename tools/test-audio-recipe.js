@@ -1,0 +1,18 @@
+'use strict';
+const assert=require('node:assert/strict');
+const {plannedText,segments,DISCLOSURE,verifySegments}=require('./audio-recipe');
+assert.throws(()=>plannedText(' '));
+const text=plannedText('A mathematical result.');
+assert(text.endsWith(DISCLOSURE));
+assert.equal(plannedText(text),text,'disclosure must not accumulate');
+const long=plannedText(Array.from({length:900},(_,i)=>'word'+i).join(' '));
+const parts=segments(long);
+assert(parts.length>1 && parts.every(p=>p.length<=2500));
+assert.equal(parts.join(' '),long,'bounded segments must retain every word and disclosure');
+assert.throws(()=>segments('x'.repeat(2600)));
+const records=parts.map(input=>({input,inputSha256:require('node:crypto').createHash('sha256').update(input).digest('hex'),audioSha256:'a'.repeat(64),contentType:'audio/mpeg'}));
+verifySegments(long,records);
+assert.throws(()=>verifySegments(long,records.slice(1)));
+assert.throws(()=>verifySegments(long,[...records].reverse()));
+assert.throws(()=>verifySegments(long,records.map((r,i)=>i? r : {...r,inputSha256:'0'.repeat(64)})));
+console.log('PASS audio recipe: disclosure planned once, bounded exact input, no provider calls');

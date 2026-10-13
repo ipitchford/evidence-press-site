@@ -441,8 +441,28 @@
         "outcome": {
           "oneOf": [
             { "type": "null" },
-            { "$ref": "#/$defs/researchMetricsOutcome" }
+            { "$ref": "#/$defs/researchMetricsOutcome" },
+            { "$ref": "#/$defs/unavailableResearchMetricsOutcome" }
           ]
+        }
+      }
+    },
+    "unavailableResearchMetricsOutcome": {
+      "type": "object",
+      "required": ["status", "policyVersion", "recordedAt", "reason", "missingFields", "calibration"],
+      "additionalProperties": false,
+      "properties": {
+        "status": { "const": "unavailable" },
+        "policyVersion": { "const": "2.0" },
+        "recordedAt": { "type": "string", "format": "date-time" },
+        "reason": { "type": "string", "minLength": 20 },
+        "calibration": { "type": "null" },
+        "missingFields": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "required": ["field", "reason"], "additionalProperties": false,
+            "properties": { "field": { "type": "string", "minLength": 1 }, "reason": { "type": "string", "minLength": 1 } }
+          }
         }
       }
     },

@@ -1,6 +1,6 @@
 # Evidence Press research metrics
 
-Version: 1.0  
+Version: 1.0 preserved; version 2 missingness extension added 13 October 2026
 Effective: 29 August 2026
 Status: prospective measured-release supplement
 
@@ -68,8 +68,15 @@ adjudicated. The score is computed from the source receipt rather than entered
 again. A single score is not calibration; a reference class of comparable
 prospective attempts is.
 
-Optional telemetry may be unknown only with a field-specific reason. Core
-clocks, cycle counts and calibration fields are mandatory.
+Under the preserved v1 contract, optional telemetry requires a field-specific
+reason and core clocks, counts and calibration are mandatory. The explicit
+[version 2 successor](/api/v2/research-metrics-policy.json) adds a distinct
+`unavailable` outcome for genuinely missing telemetry: every missing field needs
+a reason, calibration stays null, and verified publication needs canonical page
+and machine-record evidence. It does not change an existing measured outcome,
+invent a historical clock or imply a scientific assurance upgrade. Delivery can
+be complete while measurement is incomplete. Such records remain in the attempted
+work denominator but are excluded from measured calibration.
 
 ## How to read the metrics
 

@@ -1101,6 +1101,26 @@ check('canonical doctrine, registries, ledgers and frozen baseline validate', va
     preservationErrors.length === 0, preservationErrors.join('\n  '));
 }
 
+// Missing historical telemetry cannot be invented, but must not falsify delivery status.
+for(const [label, mutate, expectedError] of [
+  ['explicit unavailable outcome preserves a verified publication',()=>{},null],
+  ['unavailable outcome requires its versioned policy',a=>a.metrics.outcome.policyVersion='1.0','requires the version 2'],
+  ['unavailable outcome cannot hide missing fields',a=>a.metrics.outcome.missingFields.pop(),'must explain unavailable'],
+  ['unavailable outcome cannot invent calibration',a=>a.metrics.outcome.calibration={ratio:1},'cannot update calibration'],
+  ['unavailable outcome cannot smuggle in effort',a=>a.metrics.outcome.activeAgentMinutes=0,'unexpected property'],
+  ['unavailable publication requires machine readback',a=>a.statusHistory.at(-1).evidenceRefs=a.statusHistory.at(-1).evidenceRefs.filter(r=>!r.endsWith('paper.json')),'readback references'],
+  ['unavailable publication requires delivery milestone',a=>a.measurement.milestones=a.measurement.milestones.filter(m=>m.event!=='public-release'),'public-release observation'],
+  ['unavailable outcome cannot backdate the receipt',a=>a.metrics.outcome.recordedAt=a.registeredAt,'must equal the terminal'],
+  ['unavailable outcome cannot close active research',a=>{a.status='active';a.statusHistory.at(-1).status='active';},'terminal attempt status']
+]) {
+  const errors=errorsFor(({artifacts})=>{
+    const a=artifacts.workLedger.attempts.find(a=>a.metrics?.outcome?.status==='unavailable');
+    if(!a) throw Error('Expected retained reconciliation fixture');
+    mutate(a);
+  });
+  check(label,expectedError?errors.some(e=>e.includes(expectedError)):errors.length===0,errors.join('\n  '));
+}
+
 console.log(failures === 0
   ? '\nALL OPERATING MODEL TESTS PASSED'
   : `\n${failures} OPERATING MODEL TEST(S) FAILED`);

@@ -9,6 +9,9 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const {plannedText,segments,verifySegments} = require('./audio-recipe');
+const {spawnSync} = require('child_process');
+const os = require('os');
 
 const FORCE = process.argv.includes('--force');
 const CHECK = process.argv.includes('--check');
@@ -77,7 +80,10 @@ function verify(slug, meta, files) {
   const transcript = fs.readFileSync(files.transcript, 'utf8');
   const receipt = JSON.parse(fs.readFileSync(files.receipt, 'utf8'));
   const audio = fs.readFileSync(files.audio);
-  const text = narrationFor(meta).trim();
+  const text = receipt.narrationRecipe === 'bounded-disclosed-v1' ? plannedText(narrationFor(meta)) : narrationFor(meta).trim();
+  if(receipt.narrationRecipe === 'bounded-disclosed-v1') {
+    try { verifySegments(text,receipt.segments); } catch(e) { problems.push(e.message); }
+  }
   if (transcript !== `${text}\n`) problems.push('transcript differs from the generated narration source');
   if (meta.audioVoiceLabel !== voiceLabel) problems.push(`audioVoiceLabel must be ${JSON.stringify(voiceLabel)}`);
   if (receipt.provider !== TTS.provider || receipt.model !== TTS.model || receipt.voice !== TTS.voice)
@@ -110,14 +116,29 @@ function verify(slug, meta, files) {
     const files = pathsFor(slug);
     if (CHECK) { verify(slug, m, files); continue; }
     if (fs.existsSync(files.audio) && !FORCE) { console.log('skip (exists):', slug); continue; }
-    const text = narrationFor(m);
+    const text = plannedText(narrationFor(m));
+    const chunks = segments(text);
+    if(spawnSync('ffmpeg',['-version'],{stdio:'ignore'}).status!==0) throw new Error('Run audio environment preflight: ffmpeg missing');
     process.stdout.write(`tts: ${slug} (${text.length} chars; ${TTS.model}/${TTS.voice}) ... `);
-    const response = await tts(text);
+    const temporary = fs.mkdtempSync(path.join(os.tmpdir(),'ep-tts-'));
+    const parts=[];
+    for(const [index,input] of chunks.entries()) {
+      const part=await tts(input);
+      const name=path.join(temporary,`part-${index}.mp3`);fs.writeFileSync(name,part.bytes);
+      parts.push({path:name,input,inputSha256:sha256(Buffer.from(input)),audioSha256:sha256(part.bytes),requestId:part.requestId,contentType:part.contentType});
+    }
+    const list=path.join(temporary,'concat.txt');
+    fs.writeFileSync(list,parts.map(p=>`file '${p.path}'`).join('\n'));
+    const combined=path.join(temporary,'combined.mp3');
+    if(spawnSync('ffmpeg',['-v','error','-xerror','-f','concat','-safe','0','-i',list,'-codec:a','libmp3lame','-b:a','128k',combined],{stdio:'inherit'}).status!==0) throw new Error('Narration assembly failed; private segments retained at '+temporary);
+    const response={bytes:fs.readFileSync(combined),contentType:'audio/mpeg',requestId:null};
     fs.writeFileSync(files.audio, response.bytes);
     fs.writeFileSync(files.transcript, `${text.trim()}\n`);
     const transcript = fs.readFileSync(files.transcript);
     const receipt = {
       schemaVersion: '1.0',
+      narrationRecipe: 'bounded-disclosed-v1',
+      segments: parts.map(({path,...record})=>record),
       slug,
       generatedAt: new Date().toISOString(),
       sourceMetadata: `papers/${d}/meta.json`,

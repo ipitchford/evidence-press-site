@@ -64,6 +64,7 @@ jobs:
       - name: Reader-first release-page policy
         run: |
           node tools/test-release-pages.js
+          node tools/test-audio-recipe.js
           node tools/build-audio-provenance-status.js --check
 
       - name: Operating-model contract and hostile controls
