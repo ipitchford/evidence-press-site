@@ -683,6 +683,26 @@
       ],
       "decision": "continue",
       "nextAction": "Maintainer intake and scrutiny of the seven drafts against the connected artefacts; on confirmation, assert relationships additively in the registry, then re-freeze and re-evaluate against the enlarged benchmark with a blinded labelled sample to estimate burden."
+    },
+    {
+      "reviewId": "atlas-review-2026-10-14-discovery-objects-and-burden",
+      "reviewedAt": "2026-10-14",
+      "trigger": "maintainer-request",
+      "reviewer": "Evidence Press producer workflow",
+      "provenanceNote": "Producer-side extension of the discovery pilot after its first deployment: a model-assisted symbolic-object route (tools/atlas-objects.js, Claude Opus 5.5 batch msgbatch_0123MhfJ7GqgXDYP5FY1Muvg) and a blinded, calibrated burden estimate (tools/atlas-burden.js, batch msgbatch_01TfCf5bwv7YfS7373PPcZAd). Both are same-vendor model outputs recorded as retrieval aids and evaluation statistics; neither is maintainer review, independent assurance, or an accepted relationship.",
+      "baseline": {
+        "releaseCount": 151,
+        "acceptedRelationshipCount": 956,
+        "publishedProposalCount": 4
+      },
+      "observations": [
+        "Object extraction returned 13 to 25 named objects per release (2,633 in total, 702 named external results, no failures). The symbolic-object route alone recovers 8 of 16 hidden recorded pairs at rank 25 with no negative control inside rank 50; the union ordering now has 406 candidates and recovers 10 of 16 hidden pairs at rank 25 (6 of the 9 that do not name their counterpart), 14 of 16 at rank 100.",
+        "The burden labeller, blind to rank and role, accepted 27 of 32 recorded pairs (sensitivity 0.84, interval 0.68 to 0.93) and rejected all 10 confirmed controls (specificity 1.00, interval 0.72 to 1.00). Its five misses on recorded pairs are links the metadata records as method reuse or thematic relation, which the cheap falsifier deliberately does not count.",
+        "Acceptance rises with route-signal count: 0 of 15 with one signal, 2 of 15 with two, 4 of 15 with three, 5 of 10 with four, 7 of 8 with five, 3 of 4 with six. Projected over 396 candidates, about 25 would survive the cheap falsifier (interval 11 to 109, the upper bound driven by the unsampled single-signal stratum).",
+        "All model outputs sit under data/atlas-discovery/ with model, batch and per-request hashes; the build does not publish them, and no draft entered the proposal register."
+      ],
+      "decision": "continue",
+      "nextAction": "Maintainer intake of drafts starting from candidates with three or more route signals, where the blind labeller accepted a majority; treat single-signal candidates as low-yield unless a maintainer has a specific reason; re-estimate burden after the registry absorbs confirmed relationships."
     }
   ]
 }

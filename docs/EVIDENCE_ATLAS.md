@@ -188,6 +188,9 @@ the latter.
   confirmation time after the freeze time are refused;
 - hidden benchmark edges are removed from the citation-path input, and a
   leakage audit flags hidden pairs whose members name each other;
+- the model-assisted symbolic-object route and the blinded burden estimate
+  record model, batch and request provenance and run only from quarantined
+  files keyed by corpus fingerprint;
 - every candidate carries every route field, recorded adjacency, a
   rule-generated rival explanation and an inference limit, and every rival
   rule is reachable;

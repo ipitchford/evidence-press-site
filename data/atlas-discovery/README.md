@@ -18,7 +18,14 @@ Nothing here is built into the public site.
   only when a maintainer moves it into `data/atlas-proposals/` and publishes
   through the normal gate.
 
+- `objects/<corpus-fingerprint>.json`: model-extracted named objects per
+  release from `tools/atlas-objects.js extract`, with model, batch id and
+  request hashes. Read by the generator's `symbolic-object` route only.
+- `burden/`: blinded calibrated burden estimates from `tools/atlas-burden.js`.
+
 Negative-control candidates are proposed by `tools/atlas-negatives.js`; the
-freeze in `tools/atlas-benchmark.js` never calls it.
+freeze in `tools/atlas-benchmark.js` never calls it. Model-produced files
+here are retrieval aids and evaluation statistics, not metadata, not
+reviews and not relationships.
 
 No file here can add an accepted Atlas relationship.

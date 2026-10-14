@@ -27,11 +27,16 @@ policy already requires.
 |---|---|
 | `tools/atlas-benchmark.js` | Freezes the benchmark from the accepted graph and a human-confirmed negative-control list. Does not import the generator; it extracts positives itself from the site's graph builder, and a test cross-checks the two extractions. |
 | `tools/atlas-negatives.js` | Generator-assisted helper that proposes negative-control candidates for a maintainer to confirm. Never called by the freeze. |
+| `tools/atlas-claude-batch.js` | Minimal Message Batches client (raw HTTP, no dependency) with per-request hashing and resume by batch id. |
+| `tools/atlas-objects.js` | One-off model extraction of named formal objects per release into `data/atlas-discovery/objects/<fingerprint>.json`; feeds the `symbolic-object` route. |
+| `tools/atlas-burden.js` | Blinded, calibrated, stratified model labelling of emitted candidates to estimate false-proposal burden; writes `data/atlas-discovery/burden/`. |
 | `tools/atlas-discovery.js` | Generator with `run`, `evaluate`, `draft` and `intake` subcommands. Dependency-free CommonJS. Every write is confined to `data/atlas-discovery/` (or a directory outside the repository for tests); any other repository path, including through a symlink, is refused. |
 | `tools/test-atlas-discovery.js` | Deterministic gates listed below. |
 | `data/atlas-discovery/BENCHMARK.json` | Frozen corpus fingerprint, positive pairs, hidden subset, negative controls, freeze provenance. |
 | `data/atlas-discovery/runs/<date>-<corpus-hash>.json` | One run record per corpus state. Repository-only; not built into `dist/`. |
 | `data/atlas-discovery/drafts/` | Drafts written by `draft`: generator output with no proposal identity, submission time or review state. `intake` turns one into a validated proposal under `drafts/intake/`. Not loaded by the build. |
+| `data/atlas-discovery/objects/` | Model-extracted object lists keyed by corpus fingerprint, with model, batch id and per-request hashes. Quarantined metadata, never written to `papers/`. |
+| `data/atlas-discovery/burden/` | Burden-estimate records: sample design, blind labels, calibration and projections. |
 
 Run records and drafts stay out of the public site because a candidate pair is
 not a proposal and must not be mistaken for a relationship claim.
@@ -83,10 +88,44 @@ No route is combined into a single credibility number.
    `K` is over eligible pairs. If the flag is set and no credential is
    available the run fails; the route is never silently dropped.
 
-Symbolic normalisation is excluded from this pilot. Only 11 of 151 releases
-declare `mathObjects`, so there is no reliable formal-object layer to
-normalise. The exclusion is recorded here and in the run record's
-`routesNotRun` field.
+6. `symbolic-object`: overlap of named formal objects and named external
+   results extracted once per release by a Claude batch
+   (`tools/atlas-objects.js`, Opus 5.5, structured output, effort high) into
+   `data/atlas-discovery/objects/<corpus-fingerprint>.json`. Names are
+   normalised (case, diacritics, punctuation, leading articles) and generic
+   words such as "theorem" or "bound" never match. The route runs only when an
+   extraction exists for the live corpus fingerprint; otherwise it is recorded
+   as not run with the reason. The run record carries the extraction file's
+   path, hash, model and batch id. Evidence lists the shared names with each
+   side's label, kind and role, and states that the extraction is
+   model-generated and unverified. Declared `mathObjects` alone (11 of 151
+   releases) remain too sparse to use, which is why extraction is needed.
+
+## Burden estimate
+
+The negative controls bound burden on the lexical and semantic routes only.
+To estimate burden among emitted candidates, `tools/atlas-burden.js` draws a
+deterministic stratified sample of candidates from a production run (strata by
+route-signal count, up to 15 per stratum, selected by hash of the run record
+and pair key), mixes in every recorded direct pair and every confirmed
+negative control as calibration items, orders the items by hash so neither
+role nor stratum is inferable, and has a Claude batch (Opus 5.5, structured
+output, effort high) apply the cheap falsifier to each pair from the two
+releases' reading excerpts alone. The record stores the design, every
+request's hash, the labels, the labeller's sensitivity on recorded pairs and
+specificity on controls with Wilson intervals, the per-stratum accept rate
+with intervals, and the projected number of accepts across all candidates.
+
+First estimate (14 October 2026, 109 items): sensitivity 0.84 on recorded
+pairs, specificity 1.00 on controls; acceptance by route-signal count 0/15,
+2/15, 4/15, 5/10, 7/8 and 3/4 for one to six signals; about 25 of 396
+candidates projected to survive the cheap falsifier, interval 11 to 109.
+The labeller's misses on recorded pairs were links recorded as method reuse
+or thematic relation, which the cheap falsifier does not count.
+
+The labeller is a same-vendor model. Its labels are an evaluation statistic
+for the pilot. They never enter the proposal register, are not intake
+decisions, and are not independent assurance; the record says so.
 
 ## Candidate assembly
 
@@ -213,6 +252,13 @@ the register.
 - the freeze refuses a confirmation time after the freeze time;
 - lexical and semantic top-K are taken over eligible pairs only;
 - the leakage audit detects explicit counterpart mentions;
+- the batch client creates, polls, fetches and hashes requests against a fake
+  API, reports errored results and refusals, and fails without a key;
+- the burden sample design is deterministic, caps each stratum, never draws a
+  control, interleaves roles blindly, and refuses revealing framing or ids;
+- the symbolic-object route matches normalised names across spellings, never
+  matches generic names, turns on only with a live-corpus extraction, ignores
+  dry-run extractions, and records provenance;
 - a draft has no identity, submission time or review state; intake produces a
   proposal that passes the live validator; drafts refuse run records outside
   `runs/`, from another generator version or corpus, or whose bytes changed;

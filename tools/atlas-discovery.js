@@ -20,10 +20,11 @@ const {
 const { expectedProposalId, validateProposal } = require('./atlas-proposals');
 const text = require('./atlas-text');
 
-const GENERATOR_VERSION = '0.2.0';
+const GENERATOR_VERSION = '0.3.0';
 const GENERATOR_SOURCE_FILES = ['tools/atlas-text.js', 'tools/atlas-discovery.js'];
 const BASE_URL = 'https://evidencepress.org';
-const ROUTES = ['citation-overlap', 'citation-path', 'shared-object', 'lexical', 'semantic'];
+const ROUTES = ['citation-overlap', 'citation-path', 'shared-object', 'symbolic-object', 'lexical', 'semantic'];
+const OBJECTS_DIR = 'data/atlas-discovery/objects';
 const EMBEDDING_MODEL = 'text-embedding-3-small';
 const EMBEDDING_CLIP_CHARS = 24000;
 const CUTOFFS = [25, 50, 100];
@@ -214,6 +215,50 @@ function routeSharedObject(papers) {
   });
 }
 
+// Model-extracted formal objects (tools/atlas-objects.js), keyed by corpus
+// fingerprint. The route runs only when an extraction exists for the live
+// corpus; it reads that file and nothing else.
+const GENERIC_OBJECT_NAMES = new Set(['theorem', 'lemma', 'conjecture', 'proof', 'bound', 'algorithm', 'model', 'certificate', 'main theorem', 'main result', 'corollary', 'proposition', 'definition', 'problem', 'dataset']);
+function normalizeObjectName(name) {
+  const base = String(name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ').replace(/^(?:the|a|an) /, '').replace(/\s+/g, ' ').trim();
+  if (base.length < 4 || GENERIC_OBJECT_NAMES.has(base)) return null;
+  return base;
+}
+function loadObjectsForCorpus(root, fingerprint) {
+  const file = path.join(root, OBJECTS_DIR, `${fingerprint}.json`);
+  if (!fs.existsSync(file)) return null;
+  const raw = fs.readFileSync(file, 'utf8');
+  const record = JSON.parse(raw);
+  if (record.corpusFingerprint !== fingerprint || record.dryRun) return null;
+  return { record, sha256: text.sha256(raw), path: `${OBJECTS_DIR}/${fingerprint}.json` };
+}
+function routeSymbolicObject(objectsRecord, slugs) {
+  const perSlug = new Map();
+  for (const slug of slugs) {
+    const entry = (objectsRecord.releases || {})[slug];
+    const objects = new Map();
+    const external = new Map();
+    for (const o of (entry && entry.objects) || []) {
+      for (const candidate of [o.canonicalName, ...(o.aliases || [])]) {
+        const name = normalizeObjectName(candidate);
+        if (name && !objects.has(name)) objects.set(name, { label: o.label, kind: o.kind, role: o.role });
+      }
+    }
+    for (const e of (entry && entry.externalResults) || []) {
+      const name = normalizeObjectName(e.canonicalName || e.name);
+      if (name && !external.has(name)) external.set(name, e.name);
+    }
+    perSlug.set(slug, { objects, external });
+  }
+  return pairwise(perSlug, (a, b) => {
+    const sharedObjects = [...a.objects.keys()].filter(n => b.objects.has(n)).sort().map(name => ({ name, a: a.objects.get(name), b: b.objects.get(name) }));
+    const sharedExternalResults = [...a.external.keys()].filter(n => b.external.has(n)).sort();
+    const score = sharedObjects.length + sharedExternalResults.length;
+    return score ? { score, evidence: { sharedObjects, sharedExternalResults, provenance: 'model-extracted (tools/atlas-objects.js); unverified' } } : null;
+  });
+}
+
 // Top-K is taken over ELIGIBLE pairs only (excluded pairs never consume a slot).
 function routeLexical(texts, topK, excluded = new Set()) {
   const { vectors } = text.tfidfVectors(texts);
@@ -270,6 +315,11 @@ const RIVAL_RULES = [
     text: c => `Declared keyword overlap: ${[...c.routes['shared-object'].evidence.keywords, ...c.routes['shared-object'].evidence.mathObjects].join(', ')} may be broad field labels rather than a shared object.`
   },
   {
+    id: 'standard-named-object',
+    when: c => signals(c).join() === 'symbolic-object',
+    text: c => `Model-extracted object overlap: ${[...c.routes['symbolic-object'].evidence.sharedObjects.map(o => o.name), ...c.routes['symbolic-object'].evidence.sharedExternalResults].join(', ')} may be field-standard names rather than one specific shared object, and the extraction is model-generated and unverified.`
+  },
+  {
     id: 'field-convention',
     when: () => true,
     text: () => 'Coincident vocabulary and references within one research area: the signals may reflect field convention rather than a specific shared lemma, antecedent, assumption or dependency.'
@@ -277,13 +327,14 @@ const RIVAL_RULES = [
 ];
 
 // Synthetic evidence patterns proving every rule is reachable (tested).
-const EMPTY_ROUTES = { 'citation-overlap': null, 'citation-path': null, 'shared-object': null, lexical: null, semantic: 'not-run' };
+const EMPTY_ROUTES = { 'citation-overlap': null, 'citation-path': null, 'shared-object': null, 'symbolic-object': 'not-run', lexical: null, semantic: 'not-run' };
 const RIVAL_RULE_SAMPLES = [
   { routes: { ...EMPTY_ROUTES }, existingAdjacency: [{ nodeId: 'cluster:sample', predicate: 'member-of-cluster' }] },
   { routes: { ...EMPTY_ROUTES, lexical: { score: 0.2, evidence: { terms: [{ term: 'bound', contribution: 0.1 }] } } }, existingAdjacency: [] },
   { routes: { ...EMPTY_ROUTES, 'citation-overlap': { score: 1, evidence: { sharedReferences: ['doi:10.1000/x'] } } }, existingAdjacency: [] },
   { routes: { ...EMPTY_ROUTES, 'citation-path': { score: 1, evidence: { pathType: 'undirected-distance-two', intermediaries: ['sample'] } } }, existingAdjacency: [] },
   { routes: { ...EMPTY_ROUTES, 'shared-object': { score: 1, evidence: { keywords: ['sat'], mathObjects: [] } } }, existingAdjacency: [] },
+  { routes: { ...EMPTY_ROUTES, 'symbolic-object': { score: 1, evidence: { sharedObjects: [{ name: 'sample object', a: {}, b: {} }], sharedExternalResults: [] } } }, existingAdjacency: [] },
   { routes: { ...EMPTY_ROUTES, lexical: { score: 0.2, evidence: { terms: [] } }, 'citation-overlap': { score: 1, evidence: { sharedReferences: ['doi:10.1000/x'] } } }, existingAdjacency: [] }
 ];
 
@@ -327,14 +378,13 @@ function assembleCandidates({ routes, excluded, adjacencyMap, benchmark = null }
   return candidates;
 }
 
-function buildRunRecord({ root, mode, corpus, routes, candidates, topK, routesRequested, benchmarkInfo, evaluation, semanticProvenance }) {
+function buildRunRecord({ root, mode, corpus, routes, candidates, topK, routesRequested, benchmarkInfo, evaluation, semanticProvenance, objectExtraction = null }) {
   const routesRun = ROUTES.filter(r => routes[r] instanceof Map);
-  const routesNotRun = ROUTES.filter(r => routes[r] === 'not-run')
-    .map(route => ({ route, reason: route === 'semantic' ? 'not requested (--semantic absent)' : 'not implemented' }));
-  routesNotRun.push({
-    route: 'symbolic-normalisation',
-    reason: 'excluded from the pilot: only a small minority of releases declare mathObjects, so there is no reliable formal-object layer to normalise'
-  });
+  const notRunReasons = {
+    semantic: 'not requested (--semantic absent)',
+    'symbolic-object': `no object extraction for this corpus fingerprint under ${OBJECTS_DIR}/ (run tools/atlas-objects.js extract); declared mathObjects alone are too sparse to normalise`
+  };
+  const routesNotRun = ROUTES.filter(r => routes[r] === 'not-run').map(route => ({ route, reason: notRunReasons[route] || 'not implemented' }));
   return {
     schemaVersion: '1.0',
     recordType: RUN_RECORD_TYPE,
@@ -348,6 +398,7 @@ function buildRunRecord({ root, mode, corpus, routes, candidates, topK, routesRe
     routesRun,
     routesNotRun,
     semanticProvenance,
+    objectExtraction,
     determinism: semanticProvenance
       ? 'Non-semantic routes are deterministic for a corpus fingerprint and generator source hash. The semantic route is reproducible only while semanticProvenance.vectorsSha256 matches; provider or model changes can alter it.'
       : 'All routes run are deterministic for a corpus fingerprint and generator source hash.',
@@ -373,18 +424,21 @@ function runDiscovery(root, { topK = 100, semanticVectors = null, benchmark = nu
     semantic = semanticScoresFromVectors(semanticVectors, topK, EMBEDDING_MODEL, excluded);
     semanticProvenance = vectorProvenance(semanticVectors);
   }
+  const objects = loadObjectsForCorpus(root, corpus.fingerprint);
   const routes = {
     'citation-overlap': routeCitationOverlap(corpus.papers, identityIndex(corpus.papers)),
     'citation-path': routeCitationPath(graph, hiddenKeys),
     'shared-object': routeSharedObject(corpus.papers),
+    'symbolic-object': objects ? routeSymbolicObject(objects.record, corpus.slugs) : 'not-run',
     lexical: routeLexical(corpus.texts, topK, excluded),
     semantic
   };
+  const objectExtraction = objects ? { path: objects.path, sha256: objects.sha256, model: objects.record.extractor && objects.record.extractor.model, batchId: objects.record.batch && objects.record.batch.id, extractedAt: objects.record.extractedAt } : null;
   const candidates = assembleCandidates({ routes, excluded, adjacencyMap: adjacency(graph), benchmark });
   const routesRequested = ROUTES.filter(r => routes[r] !== 'not-run');
   return buildRunRecord({
     root, mode: benchmark ? 'evaluate' : 'run', corpus, routes, candidates, topK, routesRequested,
-    benchmarkInfo: null, evaluation: null, semanticProvenance
+    benchmarkInfo: null, evaluation: null, semanticProvenance, objectExtraction
   });
 }
 
@@ -564,6 +618,7 @@ function routeSummary(candidate) {
   if (has('citation-overlap')) parts.push(`shared external references: ${r['citation-overlap'].evidence.sharedReferences.join(', ')}`);
   if (has('citation-path')) parts.push(`undirected distance two through: ${r['citation-path'].evidence.intermediaries.join(', ')}`);
   if (has('shared-object')) parts.push(`shared declared objects: ${[...r['shared-object'].evidence.keywords, ...r['shared-object'].evidence.mathObjects].join(', ')}`);
+  if (has('symbolic-object')) parts.push(`model-extracted shared objects: ${[...r['symbolic-object'].evidence.sharedObjects.map(o => o.name), ...r['symbolic-object'].evidence.sharedExternalResults].join(', ')}`);
   if (has('lexical')) parts.push(`lexical cosine ${r.lexical.score} on terms ${r.lexical.evidence.terms.slice(0, 6).map(t => t.term).join(', ')}`);
   if (has('semantic')) parts.push(`embedding cosine ${r.semantic.score} (${r.semantic.evidence.model})`);
   return parts.join('; ') || 'no route signal';
@@ -874,6 +929,7 @@ module.exports = {
   GENERATOR_VERSION, GENERATOR_SOURCE_FILES, ROUTES, RIVAL_RULES, RIVAL_RULE_SAMPLES, INFERENCE_LIMIT, CLAIM_CEILING, EMBEDDING_MODEL,
   EMBEDDING_CLIP_CHARS, BASE_URL, CUTOFFS, QUARANTINE_DIR, RUNS_DIR, DRAFTS_DIR, INTAKE_DIR, BENCHMARK_PATH, DRAFT_RECORD_TYPE, RUN_RECORD_TYPE,
   GENRE_KEYWORDS, generatorSourceSha256, confinePath, identityIndex, loadGraph, directPairs, adjacency, normalizeExternalReference,
+  OBJECTS_DIR, normalizeObjectName, loadObjectsForCorpus, routeSymbolicObject,
   routeCitationOverlap, routeCitationPath, routeSharedObject, routeLexical, signals, rivalExplanation, assembleCandidates,
   buildRunRecord, runDiscovery, embedTexts, validCachedVector, vectorProvenance, semanticScoresFromVectors, semanticVectorsForCorpus,
   rankingStats, leakageAudit, evaluateRun, evaluateDiscovery, routeSummary, loadRunRecordForDraft, draftProposal, draftGroupProposal,
