@@ -154,7 +154,7 @@ async function main() {
     ok(strip(first) === strip(second), 'two runs on the same corpus are identical apart from generatedAt');
     ok(first.corpusFingerprint === text.loadCorpus(ROOT).fingerprint, 'run record carries the live corpus fingerprint');
     ok(first.generatorVersion === disc.GENERATOR_VERSION && first.generatorSourceSha256 === disc.generatorSourceSha256(ROOT), 'run record carries the generator version and source hash');
-    ok(first.routesNotRun.some(r => r.route === 'semantic') && first.routesNotRun.some(r => r.route === 'symbolic-normalisation'), 'disabled and excluded routes are recorded, not dropped');
+    ok(first.routesNotRun.some(r => r.route === 'semantic') && first.routesNotRun.some(r => r.route === 'symbolic-object' && /extract/.test(r.reason)), 'disabled routes are recorded with their reason, not dropped');
     const required = ['pair', 'pairKey', 'routes', 'routeSignalCount', 'existingAdjacency', 'rivalExplanation', 'inferenceLimit', 'benchmarkRole'];
     ok(first.candidates.every(c => required.every(k => k in c) && disc.ROUTES.every(r => r in c.routes)), 'every candidate carries every route and required field');
     const direct = disc.directPairs(disc.loadGraph(ROOT, text.loadCorpus(ROOT).papers));
@@ -384,12 +384,105 @@ async function main() {
 
   // ------------------------------------------------------- write-path gate ---
   {
-    const files = ['atlas-discovery.js', 'atlas-benchmark.js', 'atlas-text.js', 'atlas-negatives.js'];
+    const files = ['atlas-discovery.js', 'atlas-benchmark.js', 'atlas-text.js', 'atlas-negatives.js', 'atlas-claude-batch.js', 'atlas-burden.js', 'atlas-objects.js'];
     const source = files.map(f => fs.readFileSync(path.join(ROOT, 'tools', f), 'utf8')).join('\n');
     const writes = source.match(/writeFileSync\([^;]*/g) || [];
     ok(writes.length > 0 && !/RELATIONSHIP_REGISTRY|METHOD_REGISTRY|atlas-proposals|papers/.test(writes.join('\n')), 'generator sources never write to the registry, method registry, proposals or papers', writes.join(' | '));
     ok(!/require\(['"]\.\/build['"]\)/.test(source), 'generator does not import the site build');
   }
+  // ------------------------------------------------ batch client (fake API) ---
+  const claude = require('./atlas-claude-batch');
+  {
+    const calls = [];
+    const fakeFetch = async (url, init = {}) => {
+      calls.push({ url, method: init.method || 'GET' });
+      if (url.endsWith('/v1/messages/batches') && init.method === 'POST') {
+        const body = JSON.parse(init.body);
+        return { ok: true, status: 200, json: async () => ({ id: 'msgbatch_test', processing_status: 'in_progress', created_at: 't0', request_counts: { processing: body.requests.length } }) };
+      }
+      if (url.endsWith('/v1/messages/batches/msgbatch_test')) {
+        const n = calls.filter(c => c.url.endsWith('/msgbatch_test')).length;
+        return { ok: true, status: 200, json: async () => (n < 2 ? { id: 'msgbatch_test', processing_status: 'in_progress' } : { id: 'msgbatch_test', processing_status: 'ended', ended_at: 't1', results_url: 'https://api.anthropic.com/results', request_counts: { succeeded: 2, errored: 0 } }) };
+      }
+      if (url.endsWith('/results')) {
+        return { ok: true, status: 200, text: async () => [
+          JSON.stringify({ custom_id: 'a', result: { type: 'succeeded', message: { model: 'claude-opus-5-5', stop_reason: 'end_turn', content: [{ type: 'text', text: '{"verdict":"accept"}' }], usage: { input_tokens: 1 } } } }),
+          JSON.stringify({ custom_id: 'b', result: { type: 'errored', error: { type: 'x' } } })
+        ].join('\n') };
+      }
+      return { ok: false, status: 404, text: async () => 'nope' };
+    };
+    const requests = [claude.structuredRequest('a', { user: 'hi', schema: { type: 'object' } }), claude.structuredRequest('b', { user: 'hi', schema: { type: 'object' } })];
+    ok(requests[0].params.model === 'claude-opus-5-5' && requests[0].params.output_config.format.type === 'json_schema' && requests[0].params.output_config.effort === 'high', 'structured requests target Opus 5.5 with a json_schema format and explicit effort');
+    const run = await claude.runBatch(requests, { apiKey: 'k', fetchImpl: fakeFetch, pollMs: 1, sleep: async () => {} });
+    ok(run.batchId === 'msgbatch_test' && run.byId.size === 2 && run.requestSha256ById.get('a').length === 64, 'runBatch creates, polls to ended, fetches results and hashes each request');
+    ok(claude.parseStructuredResult(run.byId.get('a')).ok && claude.parseStructuredResult(run.byId.get('a')).value.verdict === 'accept', 'structured results parse to JSON');
+    ok(!claude.parseStructuredResult(run.byId.get('b')).ok && /errored/.test(claude.parseStructuredResult(run.byId.get('b')).reason), 'errored results are reported, not parsed');
+    ok(!claude.parseStructuredResult({ result: { type: 'succeeded', message: { stop_reason: 'refusal', content: [] } } }).ok, 'refusals are reported as failures');
+    let threw = null;
+    try { await claude.createBatch([], { apiKey: '', fetchImpl: fakeFetch }); } catch (e) { threw = e.message; }
+    ok(threw && /ANTHROPIC_API_KEY/.test(threw), 'batch creation fails loudly without a key');
+  }
+
+  // ---------------------------------------------------------- burden design ---
+  const burden = require('./atlas-burden');
+  {
+    const w = burden.wilson(8, 10);
+    ok(w.estimate === 0.8 && w.low > 0.4 && w.high < 1 && burden.wilson(0, 0).estimate === null, 'Wilson interval behaves');
+    const record = disc.runDiscovery(ROOT, { topK: 60 });
+    const benchmark = bench.loadBenchmark(ROOT).benchmark;
+    const d1 = burden.designSample({ record, runSha256: 'r'.repeat(64), benchmark, perStratum: 4 });
+    const d2 = burden.designSample({ record, runSha256: 'r'.repeat(64), benchmark, perStratum: 4 });
+    ok(JSON.stringify(d1.items) === JSON.stringify(d2.items), 'sample design is deterministic for a run hash');
+    ok(d1.items.filter(i => i.role === 'calibration-positive').length === benchmark.positives.length && d1.items.filter(i => i.role === 'calibration-negative').length === benchmark.negatives.length, 'all recorded pairs and controls enter as calibration items');
+    ok(d1.strataSummary.every(s => s.sampled <= 4 && s.sampled <= s.population), 'per-stratum sampling respects the cap and population');
+    const negKeys = new Set(benchmark.negatives.map(n => text.pairKey(...n.pair)));
+    ok(d1.items.filter(i => i.role === 'sample').every(i => !negKeys.has(i.pairKey)), 'controls are never drawn into the sample');
+    const roles = d1.items.map(i => i.role);
+    ok(roles.slice(0, 8).some(r => r !== roles[0]) || roles.length < 8, 'blind order interleaves roles');
+    const corpus = text.loadCorpus(ROOT);
+    const requests = burden.buildRequests(ROOT, d1.items.slice(0, 3), corpus);
+    burden.assertBlind(requests);
+    ok(requests.every(r => /RELEASE A/.test(r.params.messages[0].content) && !/stratum|calibration|benchmark/i.test(r.params.system)), 'labeller requests carry the two excerpts and no design information');
+    let threw = null;
+    try { burden.assertBlind([{ custom_id: 'calibration-positive-1', params: requests[0].params }]); } catch (e) { threw = e.message; }
+    ok(threw && /revealing/.test(threw), 'a revealing custom id is refused');
+    const labels = new Map(d1.items.map(i => [i.customId, { verdict: i.role === 'calibration-negative' ? 'reject' : 'accept', confidence: 'high', sharedObject: null, basis: 'test' }]));
+    const summary = burden.summarise(d1.items, labels, d1.strataSummary);
+    ok(summary.calibration.sensitivityOnRecordedPairs.estimate === 1 && summary.calibration.specificityOnNegativeControls.estimate === 1, 'calibration sensitivity and specificity are computed from the labels');
+    ok(summary.projectedAcceptsAcrossCandidates.population === d1.strataSummary.reduce((a, s) => a + s.population, 0), 'projection covers every sampled stratum');
+  }
+
+  // ---------------------------------------------------- symbolic-object route ---
+  const objectsTool = require('./atlas-objects');
+  {
+    ok(disc.normalizeObjectName('The Lewis–Perry–Straub Determinant') === 'lewis perry straub determinant' && disc.normalizeObjectName('Theorem') === null && disc.normalizeObjectName('ab') === null, 'object names normalise and generic names are dropped');
+    const objects = { corpusFingerprint: 'x', releases: {
+      a: { objects: [{ label: 'LPS determinant a_{d,e}', canonicalName: 'lewis-perry-straub determinant', kind: 'invariant', role: 'uses', aliases: ['a_{d,e}'] }, { label: 'Main theorem', canonicalName: 'theorem', kind: 'theorem', role: 'proves', aliases: [] }], externalResults: [{ name: 'Furter Theorem B', canonicalName: 'furter theorem b', source: 'Furter' }] },
+      b: { objects: [{ label: 'the Lewis-Perry-Straub determinant', canonicalName: 'Lewis Perry Straub determinant', kind: 'invariant', role: 'extends', aliases: [] }], externalResults: [{ name: 'Theorem B of Furter', canonicalName: 'furter theorem b', source: 'Furter' }] },
+      c: { objects: [{ label: 'x', canonicalName: 'theorem', kind: 'theorem', role: 'proves', aliases: [] }], externalResults: [] }
+    } };
+    const route = disc.routeSymbolicObject(objects, ['a', 'b', 'c']);
+    ok(route.get('a|b') && route.get('a|b').score === 2 && route.get('a|b').evidence.sharedObjects[0].name === 'lewis perry straub determinant' && route.get('a|b').evidence.sharedExternalResults[0] === 'furter theorem b', 'symbolic-object route matches canonical names across spellings and shared external results');
+    ok(!route.has('a|c') && !route.has('b|c'), 'generic object names never create a match');
+    ok(disc.rivalExplanation({ routes: { 'citation-overlap': null, 'citation-path': null, 'shared-object': null, 'symbolic-object': route.get('a|b'), lexical: null, semantic: 'not-run' }, existingAdjacency: [] }).ruleId === 'standard-named-object', 'symbolic-only candidates get the model-extraction rival');
+    ok(disc.loadObjectsForCorpus(ROOT, 'f'.repeat(64)) === null, 'no extraction file means the route is not run');
+    const dir = tmpRepo();
+    fs.mkdirSync(path.join(dir, 'data', 'atlas-discovery', 'objects'), { recursive: true });
+    const fp = text.loadCorpus(dir).fingerprint;
+    const live = { recordType: 'evidence-atlas-discovery-object-extraction', corpusFingerprint: fp, dryRun: false, extractor: { model: 'claude-opus-5-5' }, batch: { id: 'msgbatch_x' }, extractedAt: '2026-10-14T00:00:00Z', releases: { 'efx-nine-chores': { objects: [{ label: 'EFX', canonicalName: 'envy-freeness up to any chore', kind: 'definition', role: 'proves', aliases: [] }], externalResults: [] }, 'pmms-three-agents-eight-goods': { objects: [{ label: 'EFX', canonicalName: 'envy freeness up to any chore', kind: 'definition', role: 'uses', aliases: [] }], externalResults: [] } } };
+    fs.writeFileSync(path.join(dir, 'data', 'atlas-discovery', 'objects', `${fp}.json`), JSON.stringify(live));
+    const withObjects = disc.runDiscovery(dir, { topK: 10 });
+    ok(withObjects.routesRun.includes('symbolic-object') && withObjects.objectExtraction && withObjects.objectExtraction.batchId === 'msgbatch_x' && /^[a-f0-9]{64}$/.test(withObjects.objectExtraction.sha256), 'an extraction for the live corpus turns the route on and is recorded with provenance');
+    const hit = withObjects.candidates.find(c => c.pairKey === 'efx-nine-chores|pmms-three-agents-eight-goods');
+    ok(hit && hit.routes['symbolic-object'] && hit.routes['symbolic-object'].evidence.sharedObjects[0].name === 'envy freeness up to any chore', 'the live run surfaces the shared extracted object');
+    const dry = { ...live, dryRun: true };
+    fs.writeFileSync(path.join(dir, 'data', 'atlas-discovery', 'objects', `${fp}.json`), JSON.stringify(dry));
+    ok(disc.loadObjectsForCorpus(dir, fp) === null, 'a dry-run extraction never feeds the route');
+    const reqs = objectsTool.buildRequests(ROOT, text.loadCorpus(ROOT)).slice(0, 2);
+    ok(reqs.length === 2 && reqs[0].params.output_config.format.schema.required.includes('objects') && reqs[0].params.messages[0].content.length <= objectsTool.BODY_CLIP_CHARS + 2000, 'extraction requests carry the schema and a clipped body');
+  }
+
 }
 
 main().then(() => {

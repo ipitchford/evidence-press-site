@@ -6,6 +6,16 @@ are not covered here.
 
 ## 1.2.0 — unreleased candidate
 
+- Extended the Evidence Atlas discovery pilot with a `symbolic-object`
+  route fed by a one-off Claude batch extraction of named formal objects per
+  release (`tools/atlas-objects.js`, quarantined under
+  `data/atlas-discovery/objects/`) and a blinded, calibrated, stratified
+  burden estimate of emitted candidates (`tools/atlas-burden.js`, under
+  `data/atlas-discovery/burden/`), both through a dependency-free Message
+  Batches client with per-request hashing and resume. Model outputs are
+  retrieval aids and evaluation statistics only; nothing enters `papers/`,
+  the registries, the proposal register or `dist/`.
+
 - Added the bounded Evidence Atlas relationship-discovery pilot:
   `tools/atlas-discovery.js` nominates unrecorded release pairs through
   separately reported citation-overlap, citation-path, shared-object and

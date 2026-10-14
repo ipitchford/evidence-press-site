@@ -103,4 +103,35 @@ function topContributingTerms(a, b, n = 10) {
   return terms.slice(0, n).map(({ term, contribution }) => ({ term, contribution: Number(contribution.toFixed(6)) }));
 }
 
-module.exports = { sha256, pairKey, corpusFingerprint, loadCorpus, tokenize, tfidfVectors, cosine, topContributingTerms, STOP };
+// Deterministic reading excerpt for a release: the specialist summary, the
+// technical account and the relationship-to-earlier-work section when present,
+// otherwise the second and third level-two sections. Used by the burden
+// labeller and the object extractor so every reader sees the same text.
+function sectionOf(body, heading) {
+  const re = new RegExp('^## ' + heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*\\n([\\s\\S]*?)(?=^## |(?![\\s\\S]))', 'm');
+  const match = body.match(re);
+  return match ? match[1].trim() : '';
+}
+
+function releaseExcerpt(meta, body, { perSection = 2600 } = {}) {
+  const headings = [...body.matchAll(/^## (.*)$/gm)].map(m => m[1]);
+  let specialist = sectionOf(body, 'Summary for specialists');
+  let technical = sectionOf(body, 'Technical account');
+  const earlier = sectionOf(body, 'Relationship to earlier work');
+  if (!specialist && !technical) {
+    const fallback = headings.slice(1, 3).map(h => `[${h}] ${sectionOf(body, h).slice(0, perSection)}`);
+    specialist = fallback.join('\n\n');
+  }
+  return [
+    `TITLE: ${meta.title || meta.slug}`,
+    `ONE LINE: ${meta.oneLine || ''}`,
+    `KEYWORDS: ${(meta.keywords || []).join('; ')}`,
+    `ABSTRACT: ${String(meta.abstract || '').slice(0, perSection)}`,
+    specialist ? `SPECIALIST SUMMARY: ${specialist.slice(0, perSection)}` : '',
+    technical ? `TECHNICAL ACCOUNT: ${technical.slice(0, perSection)}` : '',
+    earlier ? `RELATIONSHIP TO EARLIER WORK: ${earlier.slice(0, perSection)}` : '',
+    `EXTERNAL REFERENCES: ${(meta.relatedWorks || []).slice(0, 10).map(w => String(w.citation || '').slice(0, 160)).join(' | ')}`
+  ].filter(Boolean).join('\n');
+}
+
+module.exports = { sha256, pairKey, corpusFingerprint, loadCorpus, tokenize, tfidfVectors, cosine, topContributingTerms, sectionOf, releaseExcerpt, STOP };
