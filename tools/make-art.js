@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['unique-equilibrium-lsi-separation'] = require('./lsi-separation-art').draw;
 art['ferromagnetic-full-threshold-glauber'] = require('./ferromagnetic-trimming-art').draw;
 art['rbm-nonnegative-logarithmic-mixing'] = require('./rbm-mixing-art').draw;
 art['kawasaki-analytic-fast-regimes'] = require('./kawasaki-art').draw;
@@ -2447,6 +2448,7 @@ palette['overpartition-congruences-and-towers'] = ['#e6c1d0','#f1c77b'];
 palette["fkk-majority-partitions"] = fkkMajorityArt.colors;
 palette['kawasaki-analytic-fast-regimes'] = require('./kawasaki-art').colors;
 palette['rbm-nonnegative-logarithmic-mixing'] = require('./rbm-mixing-art').colors;
+palette['unique-equilibrium-lsi-separation'] = require('./lsi-separation-art').colors;
 palette['ferromagnetic-full-threshold-glauber'] = require('./ferromagnetic-trimming-art').colors;
 const ceSpectatorArt = require('./ce-spectator-art');
 art['concentratable-entanglement-spectator-counterexample'] = ceSpectatorArt.draw;
@@ -2458,6 +2460,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'unique-equilibrium-lsi-separation') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./lsi-separation-art').description}</desc><defs>`);
   if (slug === 'ferromagnetic-full-threshold-glauber') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./ferromagnetic-trimming-art').description}</desc><defs>`);
   if (slug === 'rbm-nonnegative-logarithmic-mixing') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./rbm-mixing-art').description}</desc><defs>`);
   if (slug === 'kawasaki-analytic-fast-regimes') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./kawasaki-art').description}</desc><defs>`);
