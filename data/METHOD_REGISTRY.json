@@ -1483,6 +1483,14 @@
         "rbm-nonnegative-logarithmic-mixing"
       ],
       "sharedBoundary": "Nonnegative interactions and biases; averaged coefficients use the preceding layer fresh randomness. FullTV product sharpness applies to disjoint edges only."
+    },
+    {
+      "id": "ferromagnetic-full-threshold-glauber",
+      "name": "Deterministic pinning and scalar-field entropy",
+      "members": [
+        "ferromagnetic-full-threshold-glauber"
+      ],
+      "sharedBoundary": "Finite-horizon coupling requires a valid pinned initialization and control of original-trajectory exits. The entropy and influence inputs retain their stated model assumptions."
     }
   ],
   "lineages": [
@@ -2559,6 +2567,12 @@
       "adversarial-controls",
       "assurance-vector",
       "agent-readable-research-object"
+    ],
+    "ferromagnetic-full-threshold-glauber": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
     ]
   },
   "updatePolicy": {
@@ -3107,6 +3121,10 @@
     {
       "date": "2026-10-14",
       "summary": "Registered nonnegative RBM mixing proof and product sharpness with finite-audit and no-impact boundaries."
+    },
+    {
+      "date": "2026-10-14",
+      "summary": "Registered full-threshold ferromagnetic mixing proof with finite-audit, imported-theorem and no-impact boundaries."
     }
   ]
 }
