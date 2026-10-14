@@ -668,7 +668,7 @@
       "reviewedAt": "2026-10-14",
       "trigger": "maintainer-request",
       "reviewer": "Evidence Press producer workflow",
-      "provenanceNote": "Producer-side build of the bounded relationship-discovery pilot (tools/atlas-discovery.js, tools/atlas-benchmark.js, tools/test-atlas-discovery.js, docs/ATLAS_DISCOVERY_PILOT.md). Records tool readiness and graph conformance only; no candidate has been reviewed, no proposal promoted, and no accepted relationship changed.",
+      "provenanceNote": "Producer-side build of the bounded relationship-discovery pilot (tools/atlas-discovery.js, tools/atlas-benchmark.js, tools/atlas-negatives.js, tools/test-atlas-discovery.js, docs/ATLAS_DISCOVERY_PILOT.md), revised the same day after a cross-model adversarial review recorded in docs/audits/2026-10-14-atlas-discovery-adversarial-review.md. Records tool readiness, the first evaluation and graph conformance only; no candidate was reviewed into the register, no proposal was promoted, and no accepted relationship changed.",
       "baseline": {
         "releaseCount": 151,
         "acceptedRelationshipCount": 956,
@@ -677,11 +677,12 @@
       "observations": [
         "At 151 releases the accepted graph holds 50 direct inter-release edges and 107 releases with no direct link; 133 of 138 clusters are seeds.",
         "A pre-build lexical scan placed 31 of 32 recorded direct pairs inside the top 100 of 11,325 candidate pairs, so a hidden-link benchmark is feasible.",
-        "The generator reports citation-overlap, citation-path, shared-object and lexical routes separately, with an optional fail-closed embedding route; symbolic normalisation is excluded because only 11 releases declare mathObjects.",
-        "Benchmark freezing is a separate script with maintainer-confirmed negative controls; the generator has no write path to the registry, method registry, papers or the live proposal register, and its outputs are not built into the public site."
+        "The generator reports citation-overlap, undirected distance-two citation-path, shared-object (with a genre-keyword stop-list), lexical and optional embedding routes separately, with version and source hashes on every record; symbolic normalisation is excluded because only 11 releases declare mathObjects.",
+        "The benchmark (32 recorded pairs, 16 hidden, 10 maintainer-confirmed negative controls confirmed before the freeze) is frozen by a module that does not import the generator. A leakage audit found that 7 of the 16 hidden pairs name their counterpart explicitly; on the 9 that do not, the union ordering recovered 5 at rank 25, 7 at rank 50 and 8 at rank 100. The controls bound burden on the lexical and semantic routes only and are not an estimate of burden among unlabelled candidates.",
+        "Seven identity-free drafts (six pairs and one six-member group asking which pairs share a formal object) were written for maintainer intake; none entered the proposal register. All generator writes are confined to data/atlas-discovery/, which the build does not publish."
       ],
       "decision": "continue",
-      "nextAction": "Confirm the negative-control list, freeze the benchmark, run evaluate, record reviewer effort, and review the top candidates as quarantined drafts without promoting any to the accepted graph."
+      "nextAction": "Maintainer intake and scrutiny of the seven drafts against the connected artefacts; on confirmation, assert relationships additively in the registry, then re-freeze and re-evaluate against the enlarged benchmark with a blinded labelled sample to estimate burden."
     }
   ]
 }

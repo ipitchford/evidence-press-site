@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0",
+  "recordType": "evidence-atlas-discovery-draft",
+  "generatorVersion": "0.2.0",
+  "generatorSourceSha256": "04e2e7d801dbc70cd67a4d80462d6123e6ecdd8da5f6b3b863250814b1d13d21",
+  "draftedAt": "2026-10-14T14:11:16Z",
+  "runRecord": {
+    "path": "data/atlas-discovery/runs/2026-10-14-16c5d2a231be.json",
+    "sha256": "ec30d1af389927616d3525b4b30ea7a39b1b09587ed21053332fb55877c3368d",
+    "corpusFingerprint": "16c5d2a231bef8e50a2a0a8d6a78d1cd285366f08f32ec5b76351aaae8c217bd"
+  },
+  "claimCeiling": "A draft is generator output awaiting intake. It has no proposal identity, no submission time and no review state until a person takes it into the register through the normal publication gate.",
+  "proposalTemplate": {
+    "kind": "relationship-candidate",
+    "title": "Candidate connection: Nine chores for three agents and PMMS for three agents up to eight goods",
+    "question": "Do releases efx-nine-chores and pmms-three-agents-eight-goods share a lemma, antecedent, unresolved assumption, reusable verifier or dependency that the Atlas does not record?",
+    "summary": "Discovery routes with signal: shared external references: https://arxiv.org/abs/2604.18216; shared declared objects: fair division; lexical cosine 0.338725 on terms chores, allocation, goods, bundles, person, fairness. Rule-generated rival explanation (field-convention): Coincident vocabulary and references within one research area: the signals may reflect field convention rather than a specific shared lemma, antecedent, assumption or dependency.",
+    "whyNow": "Nominated at rank 18 of 361 in run record data/atlas-discovery/runs/2026-10-14-16c5d2a231be.json (routes run: citation-overlap, citation-path, shared-object, lexical, semantic; corpus 16c5d2a231bef8e50a2a0a8d6a78d1cd285366f08f32ec5b76351aaae8c217bd). The pair has no direct Atlas edge.",
+    "submitter": {
+      "actorType": "agent",
+      "displayName": "Evidence Atlas discovery generator",
+      "humanContributors": [],
+      "agentContributors": [
+        {
+          "system": "Evidence Atlas discovery generator",
+          "model": "atlas-discovery 0.2.0",
+          "role": "Deterministic multi-route retrieval over the frozen Evidence Press corpus",
+          "runRecordUrl": "data/atlas-discovery/runs/2026-10-14-16c5d2a231be.json",
+          "provenanceNote": "Rule-generated from run record data/atlas-discovery/runs/2026-10-14-16c5d2a231be.json at corpus 16c5d2a231bef8e50a2a0a8d6a78d1cd285366f08f32ec5b76351aaae8c217bd; no model judgment was applied to this draft."
+        }
+      ],
+      "contactUrl": null
+    },
+    "atlasAnchors": [
+      {
+        "nodeId": "release:efx-nine-chores",
+        "basis": "First member of the candidate pair; shared external references: https://arxiv.org/abs/2604.18216; shared declared objects: fair division; lexical cosine 0.338725 on terms chores, allocation, goods, bundles, person, fairness"
+      },
+      {
+        "nodeId": "release:pmms-three-agents-eight-goods",
+        "basis": "Second member of the candidate pair; shared external references: https://arxiv.org/abs/2604.18216; shared declared objects: fair division; lexical cosine 0.338725 on terms chores, allocation, goods, bundles, person, fairness"
+      }
+    ],
+    "sourceRefs": [
+      "https://evidencepress.org/releases/efx-nine-chores/",
+      "https://evidencepress.org/releases/pmms-three-agents-eight-goods/",
+      "data/atlas-discovery/runs/2026-10-14-16c5d2a231be.json"
+    ],
+    "priorArtStatus": "not-started",
+    "assessments": {
+      "novelty": "unassessed",
+      "importance": "unassessed",
+      "tractability": "unassessed"
+    },
+    "cheapFalsifier": "Read both technical accounts and check whether the shared terms, references or intermediaries name the same mathematical object or the same dependency; if they do not, reject the candidate.",
+    "expectedInformationGain": "If a maintainer confirms a specific shared object or dependency, one relationship can be asserted additively in the registry; if rejected, the rule-generated rival explanation is retained as negative knowledge.",
+    "resourceEstimate": {
+      "class": "small",
+      "basis": "Two release pages and their evidence packages are public and replayable."
+    },
+    "riskFlags": [
+      "route-derived-candidate",
+      "rival-explanation-untested"
+    ]
+  }
+}

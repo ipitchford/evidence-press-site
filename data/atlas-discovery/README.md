@@ -11,8 +11,14 @@ Nothing here is built into the public site.
   consumed by `freeze`.
 - `runs/`: one run record per corpus state and mode. Candidates in a run
   record are retrieval results, not relationships.
-- `drafts/`: draft proposals written by `tools/atlas-discovery.js draft`.
-  A draft enters the live register only when moved into
-  `data/atlas-proposals/` and published through the normal gate.
+- `drafts/`: identity-free drafts written by `tools/atlas-discovery.js draft`.
+  `drafts/intake/`: proposals produced from drafts by
+  `tools/atlas-discovery.js intake --submitted-at <ISO UTC>`, validated with
+  the live proposal validator. An intake proposal enters the live register
+  only when a maintainer moves it into `data/atlas-proposals/` and publishes
+  through the normal gate.
+
+Negative-control candidates are proposed by `tools/atlas-negatives.js`; the
+freeze in `tools/atlas-benchmark.js` never calls it.
 
 No file here can add an accepted Atlas relationship.

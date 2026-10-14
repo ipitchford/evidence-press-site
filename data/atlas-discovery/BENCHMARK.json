@@ -1,7 +1,10 @@
 {
   "schemaVersion": "1.0",
   "recordType": "evidence-atlas-discovery-benchmark",
-  "frozenAt": "2026-10-14T13:40:05Z",
+  "benchmarkVersion": "0.2.0",
+  "benchmarkSourceSha256": "01ea824dcf22b872ee70a43861315c616e5cab73f7babd8bc34decb4c6e47135",
+  "generatorSourceSha256AtFreeze": "04e2e7d801dbc70cd67a4d80462d6123e6ecdd8da5f6b3b863250814b1d13d21",
+  "frozenAt": "2026-10-14T14:08:38Z",
   "corpusFingerprint": "16c5d2a231bef8e50a2a0a8d6a78d1cd285366f08f32ec5b76351aaae8c217bd",
   "releaseCount": 151,
   "positives": [
@@ -275,8 +278,10 @@
   "freezeProvenance": {
     "negativeControlsPath": "data/atlas-discovery/NEGATIVE_CONTROLS.json",
     "confirmedBy": "Evidence Press maintainer (Ian Pitchford), confirmed in session 2026-10-14 from twelve proposed pairs; two dropped as possibly related",
-    "confirmedAt": "2026-10-14T18:00:00Z",
-    "selectionRule": "sha256(fingerprint:pairKey) ascending, first floor(n/2)"
+    "confirmedAt": "2026-10-14T13:39:00Z",
+    "confirmationNote": "Recorded to the minute from the session transcript: the maintainer confirmation message (accept ten of twelve proposed pairs, drop 6 and 10) immediately preceded the first freeze command at 2026-10-14T13:40:05Z. An earlier copy of this file carried 18:00:00Z, an entry error corrected the same day after an adversarial review flagged that the recorded confirmation postdated the freeze.",
+    "selectionRule": "sha256(fingerprint:pairKey) ascending, first floor(n/2)",
+    "positivesSource": "release-to-release edges of the accepted graph built by tools/research-graph.js, extracted in tools/atlas-benchmark.js without importing the generator"
   },
-  "claimCeiling": "The benchmark freezes links already recorded in the accepted Atlas graph and maintainer-confirmed negative controls. Recovery against it shows only that a route can find links of the recorded kind."
+  "claimCeiling": "The benchmark freezes links already recorded in the accepted Atlas graph and maintainer-confirmed negative controls. Recovery against it shows only that a route can find links of the recorded kind, subject to the leakage audit in the evaluation record. The controls were proposed as lexically similar pairs with no declared signal, so they bound burden on the lexical and semantic routes only."
 }

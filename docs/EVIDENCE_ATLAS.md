@@ -114,9 +114,11 @@ log. The initial priority order is:
    [`ATLAS_DISCOVERY_PILOT.md`](ATLAS_DISCOVERY_PILOT.md). Citation-overlap,
    citation-path, shared-object, lexical and optional embedding routes are
    reported separately against a frozen hidden-link benchmark with
-   maintainer-confirmed negative controls. Symbolic normalisation is excluded
-   for now. Recovery, false-proposal burden and reviewer effort are recorded
-   per run and never combined.
+   maintainer-confirmed negative controls and a leakage audit. Symbolic
+   normalisation is excluded for now. Recovery, false-proposal burden and
+   reviewer effort are recorded per run and never combined. The first
+   evaluation and an adversarial review are recorded in
+   [`audits/2026-10-14-atlas-discovery-adversarial-review.md`](audits/2026-10-14-atlas-discovery-adversarial-review.md).
 4. **Proposal-review workbench — in progress.** The distinct proposal view,
    table and inspector exist. Proposal-state filters remain to be completed;
    evidence, rival explanations, review provenance and decision history must
@@ -178,15 +180,21 @@ the latter.
 `node tools/test-atlas-discovery.js` additionally verifies:
 
 - two generator runs on the same corpus are byte-identical apart from the
-  timestamp;
-- the benchmark fingerprint matches the live corpus and a stale benchmark is
-  refused;
-- hidden benchmark edges are removed from the citation-path input;
+  timestamp, and every record carries the generator version and source hash;
+- every output path is confined to `data/atlas-discovery/`; other repository
+  paths and symlinks back into the repository are refused;
+- the benchmark module does not import the generator; its independent
+  positive extraction agrees with the generator; a stale benchmark and a
+  confirmation time after the freeze time are refused;
+- hidden benchmark edges are removed from the citation-path input, and a
+  leakage audit flags hidden pairs whose members name each other;
 - every candidate carries every route field, recorded adjacency, a
   rule-generated rival explanation and an inference limit, and every rival
   rule is reachable;
-- drafts validate with the live proposal validator and name no human;
-- negative-control pairs cannot be drafted without an explicit flag;
+- drafts have no identity, submission time or review state; intake proposals
+  validate with the live proposal validator and name no human;
+- negative-control pairs cannot be drafted, singly or in a group, without an
+  explicit flag;
 - the generator sources never write to the registry, method registry, papers
   or the live proposal register.
 
