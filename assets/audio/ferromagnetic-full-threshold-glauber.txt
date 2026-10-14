@@ -1,0 +1,13 @@
+A controlled core, a faster mixing bound. An Evidence Press briefing.
+
+Imagine a network of binary variables whose neighbours favour agreement. A local sampler chooses one vertex at random and redraws its value using the current neighbours. How many such updates are needed before the distribution largely forgets its starting state?
+
+This mathematical candidate gives a near-linear bound throughout a precisely specified, strictly subcritical ferromagnetic field range. At fixed accuracy, the bound grows like the number of vertices times the square of its logarithm. It permits unequal parameters, arbitrarily high finite degrees and extremely rare configurations, within the stated parameter envelope.
+
+The mechanism is a controlled comparison. After a burn-in period, vertices with especially high degree or bias are overwhelmingly likely to have spin one. The proof temporarily pins those vertices for analysis. That leaves a residual system whose conditional probabilities can be controlled. An existing entropy theorem bounds its mixing, and a coupling transfers the estimate back to the original sampler. The actual sampler is not modified.
+
+Three errors are kept separate: residual mixing, departures from the pinned region, and the stationary cost of conditioning. A separate corollary gives a linear relaxation bound, but does not replace this worst-start argument.
+
+The threshold endpoint remains open, and a sharper mixing bound is not proved. The result counts single-site updates, not measured computing time. Finite numerical checks support selected identities, not the universal theorem.
+
+This is an unrefereed candidate released through Evidence Press on the fourteenth of October, twenty twenty-six. The paper and its full evidence package are linked on the release page. This briefing uses an AI-generated voice. It is not additional scientific evidence.
