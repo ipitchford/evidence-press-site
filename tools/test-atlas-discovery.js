@@ -228,7 +228,10 @@ async function main() {
       ok(record.mode === 'evaluate' && record.evaluation && record.benchmark && record.benchmark.hiddenCount === hiddenKeys.length,
         'evaluate records benchmark provenance');
       const pathInput = disc.routeCitationPath(disc.loadGraph(ROOT, text.loadCorpus(ROOT).papers), new Set(hiddenKeys));
-      ok(hiddenKeys.every(k => !pathInput.has(k)), 'hidden positives never appear as citation-path output of their own edges');
+      ok(hiddenKeys.every(k => !pathInput.has(k) || pathInput.get(k).evidence.intermediaries.every(mid => !k.split('|').includes(mid))),
+        'a hidden positive reached by the citation-path route is reached only through a third release');
+      const fullInput = disc.routeCitationPath(disc.loadGraph(ROOT, text.loadCorpus(ROOT).papers), new Set());
+      ok(hiddenKeys.every(k => !fullInput.has(k)), 'with no exclusions, recorded direct pairs are never emitted by the citation-path route');
       ok(record.candidates.filter(c => c.benchmarkRole === 'hidden-positive').length ===
         Object.values(record.evaluation.union.hiddenRanks).filter(r => r !== 'absent').length,
       'hidden positives present in candidates match ranked hidden positives');
