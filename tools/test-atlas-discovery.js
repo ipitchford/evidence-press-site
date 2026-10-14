@@ -154,7 +154,11 @@ async function main() {
     ok(strip(first) === strip(second), 'two runs on the same corpus are identical apart from generatedAt');
     ok(first.corpusFingerprint === text.loadCorpus(ROOT).fingerprint, 'run record carries the live corpus fingerprint');
     ok(first.generatorVersion === disc.GENERATOR_VERSION && first.generatorSourceSha256 === disc.generatorSourceSha256(ROOT), 'run record carries the generator version and source hash');
-    ok(first.routesNotRun.some(r => r.route === 'semantic') && first.routesNotRun.some(r => r.route === 'symbolic-object' && /extract/.test(r.reason)), 'disabled routes are recorded with their reason, not dropped');
+    ok(first.routesNotRun.some(r => r.route === 'semantic'), 'disabled routes are recorded with their reason, not dropped');
+    const liveExtraction = disc.loadObjectsForCorpus(ROOT, first.corpusFingerprint);
+    ok(liveExtraction ? (first.routesRun.includes('symbolic-object') && first.objectExtraction && first.objectExtraction.sha256 === liveExtraction.sha256)
+      : first.routesNotRun.some(r => r.route === 'symbolic-object' && /extract/.test(r.reason)),
+    'symbolic-object runs with recorded provenance when an extraction exists for the live corpus, otherwise its absence is recorded with the reason');
     const required = ['pair', 'pairKey', 'routes', 'routeSignalCount', 'existingAdjacency', 'rivalExplanation', 'inferenceLimit', 'benchmarkRole'];
     ok(first.candidates.every(c => required.every(k => k in c) && disc.ROUTES.every(r => r in c.routes)), 'every candidate carries every route and required field');
     const direct = disc.directPairs(disc.loadGraph(ROOT, text.loadCorpus(ROOT).papers));
