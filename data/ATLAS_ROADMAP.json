@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "recordType": "evidence-atlas-roadmap",
-  "updated": "2026-09-03",
+  "updated": "2026-10-14",
   "status": "active-reviewed-roadmap",
   "claimCeiling": "This roadmap records intended work and review decisions. It does not establish that an undiscovered relationship exists, that a proposed relationship is correct, or that the Atlas improves research outcomes.",
   "currentBaseline": {
@@ -94,7 +94,7 @@
     {
       "id": "atlas-step-discovery-pilot",
       "priority": 3,
-      "state": "ready",
+      "state": "in-progress",
       "title": "Run a bounded relationship-discovery pilot",
       "purpose": "Test whether multiple transparent retrieval routes can nominate useful hidden connections at a tolerable false-proposal burden.",
       "dependencies": [
@@ -204,7 +204,7 @@
   ],
   "reviewPolicy": {
     "cadence": "Review on maintainer request and at least monthly while active; also review after five added releases, the first submitted proposal, a material objection or correction, or a renderer threshold event.",
-    "nextScheduledReview": "2026-09-15",
+    "nextScheduledReview": "2026-11-14",
     "triggers": [
       "maintainer-request",
       "five-releases-added",
@@ -662,6 +662,26 @@
       ],
       "decision": "complete",
       "nextAction": "Seek an authenticated unaffiliated reconstruction of the fixed-kernel group-space bridge and collar estimate, followed by a Fuchsian-group specialist assessment of the AIM interpretation and closest prior art."
+    },
+    {
+      "reviewId": "atlas-review-2026-10-14-discovery-pilot-build",
+      "reviewedAt": "2026-10-14",
+      "trigger": "maintainer-request",
+      "reviewer": "Evidence Press producer workflow",
+      "provenanceNote": "Producer-side build of the bounded relationship-discovery pilot (tools/atlas-discovery.js, tools/atlas-benchmark.js, tools/test-atlas-discovery.js, docs/ATLAS_DISCOVERY_PILOT.md). Records tool readiness and graph conformance only; no candidate has been reviewed, no proposal promoted, and no accepted relationship changed.",
+      "baseline": {
+        "releaseCount": 151,
+        "acceptedRelationshipCount": 956,
+        "publishedProposalCount": 4
+      },
+      "observations": [
+        "At 151 releases the accepted graph holds 50 direct inter-release edges and 107 releases with no direct link; 133 of 138 clusters are seeds.",
+        "A pre-build lexical scan placed 31 of 32 recorded direct pairs inside the top 100 of 11,325 candidate pairs, so a hidden-link benchmark is feasible.",
+        "The generator reports citation-overlap, citation-path, shared-object and lexical routes separately, with an optional fail-closed embedding route; symbolic normalisation is excluded because only 11 releases declare mathObjects.",
+        "Benchmark freezing is a separate script with maintainer-confirmed negative controls; the generator has no write path to the registry, method registry, papers or the live proposal register, and its outputs are not built into the public site."
+      ],
+      "decision": "continue",
+      "nextAction": "Confirm the negative-control list, freeze the benchmark, run evaluate, record reviewer effort, and review the top candidates as quarantined drafts without promoting any to the accepted graph."
     }
   ]
 }

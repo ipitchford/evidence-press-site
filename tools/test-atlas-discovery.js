@@ -275,6 +275,13 @@ async function main() {
     ok(!/require\(['"]\.\/build['"]\)/.test(source), 'generator does not import the site build');
   }
 
+  {
+    const outDir = fs.mkdtempSync(path.join(os.tmpdir(), 'runs-'));
+    const record = disc.buildRunRecord({ mode: 'run', corpus: { fingerprint: 'a'.repeat(64), slugs: [] }, routes: {}, candidates: [], topK: 1, routesRequested: [], benchmarkInfo: null, evaluation: null });
+    const file = disc.writeRun(ROOT, record, outDir);
+    ok(file.startsWith(outDir) && fs.existsSync(file), 'writeRun honours an absolute output directory');
+  }
+
 }
 
 main().then(() => {

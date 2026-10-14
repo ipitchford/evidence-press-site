@@ -92,6 +92,7 @@ REQUIRE_COMMITTED_MANIFESTS=1 ./protocols/deploy/integrate.sh
 node protocols/tools/check-release-integrity.js
 node tools/test-render.js
 node tools/test-metadata.js
+node tools/test-atlas-discovery.js
 node tools/check-links.js
 node tools/check-published.js
 ```

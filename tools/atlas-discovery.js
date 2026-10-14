@@ -506,7 +506,7 @@ function parseArgs(argv) {
 }
 
 function writeRun(root, record, outDir) {
-  const dir = path.join(root, outDir);
+  const dir = path.isAbsolute(outDir) ? outDir : path.join(root, outDir);
   fs.mkdirSync(dir, { recursive: true });
   const stamp = record.generatedAt.slice(0, 10);
   const suffix = record.mode === 'evaluate' ? '-evaluation' : '';
