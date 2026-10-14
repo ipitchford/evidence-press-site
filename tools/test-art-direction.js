@@ -32,3 +32,21 @@ const sevenCycleSvg = fs.readFileSync(path.join(root, 'assets/art/seven-cycle-fo
 assert.ok(sevenCycleSvg.includes(diagram), 'regenerate committed C7 diagram');
 assert.ok(sevenCycleSvg.includes(sevenCycle.description), 'C7 accessible description');
 console.log('C7 labelled case-split diagram: semantic labels and exact regeneration passed.');
+
+// Exact finite objects and explanatory labels; this is media QA, not proof replay.
+const katthan = require('./katthan-art');
+assert.equal(katthan.left.length, 60);
+assert.equal(katthan.right.length, 59);
+assert.equal(katthan.betti.length, 56);
+assert.ok(katthan.betti.every(m => katthan.left.includes(m) && katthan.right.includes(m)));
+assert.deepEqual(katthan.left.filter(m => !katthan.right.includes(m)), [62]);
+assert.ok(!katthan.betti.includes(62));
+const katthanDiagram = katthan.draw(...katthan.colors);
+assert.equal(katthanDiagram, katthan.draw(...katthan.colors));
+for (const label of ['60 lcm elements', '59 lcm elements', 'B(I) ≅ B(J)', 'same 56 Betti elements', 'spdim I = 3', 'spdim J = 2', 'delete 23456'])
+  assert.ok(katthanDiagram.includes(label), `Katthan diagram omits semantic label: ${label}`);
+assert.ok(!/NaN|undefined/.test(katthanDiagram));
+const katthanSvg = fs.readFileSync(path.join(root, 'assets/art/katthan-betti-poset-counterexample.svg'), 'utf8');
+assert.ok(katthanSvg.includes(katthanDiagram), 'regenerate committed Katthan diagram');
+assert.ok(katthanSvg.includes(katthan.description), 'Katthan accessible description');
+console.log('Katthan labelled lattice diagrams: 60/59 nodes, common 56 Betti elements, deletion and exact regeneration passed.');
