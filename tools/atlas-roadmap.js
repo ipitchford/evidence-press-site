@@ -106,8 +106,8 @@ function validateAtlasRoadmap(roadmap, { graph = null, proposalRegister = null }
   if (intake && intake.state === 'complete' && roadmap.currentBaseline.publishedProposalCount < 1) {
     errors.push('completed proposal intake requires at least one published proposal in the current baseline');
   }
-  if (discovery && discovery.state === 'ready' && (!intake || intake.state !== 'complete')) {
-    errors.push('discovery pilot cannot be ready before proposal intake is complete');
+  if (discovery && ['ready', 'in-progress', 'complete'].includes(discovery.state) && (!intake || intake.state !== 'complete')) {
+    errors.push('discovery pilot cannot be ready, in progress or complete before proposal intake is complete');
   }
   if (graph && proposalRegister) {
     const recorded = roadmap.currentBaseline;

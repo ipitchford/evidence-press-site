@@ -6,6 +6,19 @@ are not covered here.
 
 ## 1.2.0 — unreleased candidate
 
+- Added the bounded Evidence Atlas relationship-discovery pilot:
+  `tools/atlas-discovery.js` nominates unrecorded release pairs through
+  separately reported citation-overlap, citation-path, shared-object and
+  lexical routes (plus an optional fail-closed embedding route), attaches a
+  rule-generated rival explanation to every candidate, evaluates against a
+  benchmark frozen by `tools/atlas-benchmark.js` without importing the
+  generator, audits hidden pairs for explicit counterpart mentions, and
+  writes identity-free drafts that a separate `intake` step validates into
+  proposals. Every output path is confined to `data/atlas-discovery/`, which
+  never enters `dist/` or the accepted graph. Revised the same day after an
+  adversarial review (`docs/audits/2026-10-14-atlas-discovery-adversarial-review.md`).
+  Design record: `docs/ATLAS_DISCOVERY_PILOT.md`.
+
 - Added the anonymous `fixed-d-toeplitz-obstruction` v0.1.0-candidate
   release: an explicit characteristic-zero construction showing that finitely
   presented `FI_d`-modules are not abelian for every fixed finite `d >= 2`,

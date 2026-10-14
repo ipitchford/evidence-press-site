@@ -109,9 +109,16 @@ log. The initial priority order is:
    view is the initial projection; the interface exposes composition, method
    prevalence, cluster seeds, missingness and the reciprocal eligibility rule
    for evidence-backed lineages.
-3. **Bounded discovery pilot.** After proposal intake exists, compare separately
-   visible citation, symbolic, shared-object and semantic-retrieval routes on a
-   frozen hidden-link benchmark with negative controls.
+3. **Bounded discovery pilot — in progress.** The generator, independent
+   benchmark freeze and draft route are implemented; see
+   [`ATLAS_DISCOVERY_PILOT.md`](ATLAS_DISCOVERY_PILOT.md). Citation-overlap,
+   citation-path, shared-object, lexical and optional embedding routes are
+   reported separately against a frozen hidden-link benchmark with
+   maintainer-confirmed negative controls and a leakage audit. Symbolic
+   normalisation is excluded for now. Recovery, false-proposal burden and
+   reviewer effort are recorded per run and never combined. The first
+   evaluation and an adversarial review are recorded in
+   [`audits/2026-10-14-atlas-discovery-adversarial-review.md`](audits/2026-10-14-atlas-discovery-adversarial-review.md).
 4. **Proposal-review workbench — in progress.** The distinct proposal view,
    table and inspector exist. Proposal-state filters remain to be completed;
    evidence, rival explanations, review provenance and decision history must
@@ -126,7 +133,8 @@ log. The initial priority order is:
    rediscovery, replay or reconstruction effort. Traffic, graph size, internal
    reuse and proposal volume are not evidence of research acceleration.
 
-The highest-priority incomplete action is now the bounded discovery pilot.
+The highest-priority incomplete action is now evaluating the pilot's
+candidates against the frozen benchmark and reviewing quarantined drafts.
 Discovery remains a proposal generator only and has no accepted-graph write
 path.
 
@@ -169,10 +177,37 @@ the latter.
 - direct promotion fields and accepted-relationship states are rejected;
 - public, versioned and server-rendered proposal surfaces agree exactly.
 
+`node tools/test-atlas-discovery.js` additionally verifies:
+
+- two generator runs on the same corpus are byte-identical apart from the
+  timestamp, and every record carries the generator version and source hash;
+- every output path is confined to `data/atlas-discovery/`; other repository
+  paths and symlinks back into the repository are refused;
+- the benchmark module does not import the generator; its independent
+  positive extraction agrees with the generator; a stale benchmark and a
+  confirmation time after the freeze time are refused;
+- hidden benchmark edges are removed from the citation-path input, and a
+  leakage audit flags hidden pairs whose members name each other;
+- every candidate carries every route field, recorded adjacency, a
+  rule-generated rival explanation and an inference limit, and every rival
+  rule is reachable;
+- drafts have no identity, submission time or review state; intake proposals
+  validate with the live proposal validator and name no human;
+- negative-control pairs cannot be drafted, singly or in a group, without an
+  explicit flag;
+- the generator sources never write to the registry, method registry, papers
+  or the live proposal register.
+
 The normal composite build, internal-link gate, publication-preservation gate,
 byte-identical rebuild and accessibility workflow also cover the atlas.
 
 ## Stage 2: relationship-discovery research
+
+Implemented on 14 October 2026 as `tools/atlas-discovery.js` and
+`tools/atlas-benchmark.js`, with the design record in
+[`ATLAS_DISCOVERY_PILOT.md`](ATLAS_DISCOVERY_PILOT.md). Outputs live under
+`data/atlas-discovery/` and are never built into `dist/`. The pipeline below
+is the design the implementation follows.
 
 Candidate generation should remain a separate, reproducible job. A feasible
 pipeline is:
