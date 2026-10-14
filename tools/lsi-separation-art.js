@@ -1,0 +1,23 @@
+'use strict';
+// Source: tagged-coordinate lifting, exact deficit and Fourier gap in paper.tex.
+// The cosine is the exact relative density 1 + 0.55 cos(theta), not sampled data.
+const colors=['#f4c76d','#c7b8ef'];
+const description='A tagged-coordinate disturbance and a global nonlinear comparison are distinct variational tests. Rotation symmetry makes each particle marginal Haar. The relative density one plus epsilon cosine theta-one yields particle lambda-N at most one for every N. In the nonlinear proof, the first Fourier mode is penalised by the interaction and other nonconstant modes have squared frequency at least four. A global compactness and rigidity argument, not the mode diagram alone, proves lambda-MF strictly greater than one. The optimum and particle limit remain undetermined.';
+function draw(a=colors[0],b=colors[1]){
+ const ink='#fff6e9',dim='#ddd7e7';let s=`<g font-family="Arial,Helvetica,sans-serif"><text x="45" y="43" font-size="19" fill="${a}" letter-spacing=".8">MICROSCOPIC TEST</text><text x="670" y="43" font-size="19" fill="${b}" letter-spacing=".8">GLOBAL NONLINEAR GAP</text>`;
+ // A product-coordinate schematic: circles represent coordinates, not independence.
+ for(let j=0;j<7;j++){let x=75+j*57; s+=`<circle cx="${x}" cy="96" r="19" fill="none" stroke="${j===0?a:dim}" stroke-opacity="${j===0?1:.38}" stroke-width="${j===0?3:1.6}"/><text x="${x}" y="102" fill="${j===0?a:dim}" text-anchor="middle" font-size="17">${j===0?'1':j===6?'N':j+1}</text>`;}
+ s+=`<text x="458" y="102" fill="${dim}" font-size="22">…</text><path d="M75 120V145H210V167" stroke="${a}" stroke-width="1.5" fill="none"/><text x="267" y="154" font-family="Georgia,serif" fill="${ink}" font-size="24">gε = 1 + ε cos θ₁</text>`;
+ const x0=60,y0=251,w=432,scale=54;let d='';for(let k=0;k<=128;k++){let t=2*Math.PI*k/128,x=x0+w*k/128,y=y0-scale*.55*Math.cos(t);d+=`${k?'L':'M'}${x.toFixed(3)} ${y.toFixed(3)} `;}
+ s+=`<path d="M${x0} 187V286H${x0+w}" stroke="${dim}" opacity=".4" fill="none"/><path d="M${x0} ${y0}H${x0+w}" stroke="${dim}" opacity=".28" stroke-dasharray="4 5"/><path d="${d}" stroke="${a}" stroke-width="3.5" fill="none"/><text x="43" y="257" text-anchor="end" font-size="16" fill="${dim}">1</text><text x="60" y="308" fill="${dim}" font-size="15">0</text><text x="276" y="308" text-anchor="middle" fill="${dim}" font-size="15">π</text><text x="492" y="308" text-anchor="end" fill="${dim}" font-size="15">2π</text><text x="276" y="343" text-anchor="middle" fill="${ink}" font-size="19">same marginal for every N</text>`;
+ s+=`<path d="M550 64V349" stroke="${dim}" opacity=".25"/><text x="907" y="88" text-anchor="middle" fill="${ink}" font-family="Georgia,serif" font-size="27">Fourier modes near the uniform law</text>`;
+ // Exact squared-frequency levels, not unknown optimal constants.
+ const levels=[{k:1,cost:1,x:748,c:a},{k:2,cost:4,x:916,c:b},{k:3,cost:9,x:1084,c:b}];
+ s+=`<path d="M691 257H1138" stroke="${dim}" opacity=".35"/>`;
+ for(const v of levels){let h=13*v.cost;s+=`<rect x="${v.x-22}" y="${257-h}" width="44" height="${h}" rx="5" fill="${v.c}" fill-opacity=".72"/><text x="${v.x}" y="${245-h}" text-anchor="middle" fill="${v.c}" font-size="25">${v.cost}</text><text x="${v.x}" y="284" text-anchor="middle" fill="${dim}" font-size="17">k = ${v.k}</text>`;}
+ s+=`<text x="1119" y="128" fill="${dim}" font-size="19">…</text><path d="M634 198Q680 158 723 200M713 195L724 201L720 189" stroke="${a}" stroke-width="2" fill="none"/><text x="629" y="226" fill="${a}" font-size="17">+ interaction</text><text x="910" y="321" text-anchor="middle" fill="${dim}" font-size="18">squared frequencies · k ≥ 2 costs at least 4</text><text x="910" y="347" text-anchor="middle" fill="${ink}" font-size="19">a global proof excludes escape from this comparison</text>`;
+ s+=`<path d="M46 361H1154" stroke="${dim}" opacity=".22"/><text x="46" y="389" fill="${dim}" font-size="14">fixed a &gt; 0 · circle length 2π · unrestricted particle tests</text><text x="1153" y="390" text-anchor="end" fill="${ink}" font-family="Georgia,serif" font-size="27">λN ≤ 1 &lt; λMF</text></g>`;
+ return s.replace(/<text /g,'<text class="og-hide" ');
+}
+function thumbnailHero(){return '<div class="eq-label">one fixed smooth circle model</div><div style="font-family:Georgia,serif;font-size:61px;text-align:center;margin-top:45px">λ<sub>N</sub> ≤ 1 &lt; λ<sub>MF</sub></div><div style="text-align:center;font-size:31px;margin-top:32px">every particle count N</div><div class="eq-foot">unrestricted tests · exact optima not determined</div>';}
+module.exports={colors,description,draw,thumbnailHero};
