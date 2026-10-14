@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "bounded-disclosed-v1",
+  "segments": [
+    {
+      "input": "Two layers, logarithmic mixing. An Evidence Press briefing.\n\nA restricted Boltzmann machine has two layers of binary variables. Its sampler redraws the first layer using the second, then redraws the second using the first. Those two updates make one complete sweep.\n\nHow many sweeps are needed before the distribution largely forgets its starting point? This candidate gives a logarithmic upper bound when both the interactions and the biases are nonnegative. The same constant works for uneven layers, different interaction strengths and arbitrary graph degrees. Interactions may be extremely weak or strong, as long as every parameter is finite.\n\nFor one million vertices, the displayed theorem guarantees total-variation distance at most one hundredth after thirty complete sweeps. This is not a measured runtime. Each sweep updates every variable and calculates its conditional probability.\n\nThe key idea is to use the randomness created by the preceding layer update. Averaged logistic influences shrink discrepancies between coupled chains. The proof conditions on the history before fresh random numbers are drawn, avoiding a false assumption that the discrepancies are independent.\n\nA second calculation studies disjoint pairs of variables. It gives an exact distance formula and shows that logarithmically many sweeps can genuinely be necessary. Its sharp transition is an elementary product-model example, not a cutoff theorem for every restricted Boltzmann machine.\n\nThe sign restrictions matter. Negative biases are not covered, and the universal numerical constant is not claimed optimal. Written proofs and finite checks are available with the paper. This is an unrefereed candidate, published through Evidence Press on the fourteenth of October, twenty twenty-six. The paper and its full evidence package are linked on the release page. This briefing uses an AI-generated voice. It is not additional scientific evidence.",
+      "inputSha256": "293a21715514895e2188227e1382f53997fdb86fa4dbe6605033c8d7fcbcbafe",
+      "audioSha256": "fa604150f8da0cea8745b79a173df467a18b6e6ecf00eb79c6e6fc6d466b56fd",
+      "requestId": "req_e096ff203d324d8d94591fa3edca0c98",
+      "contentType": "audio/mpeg"
+    }
+  ],
+  "slug": "rbm-nonnegative-logarithmic-mixing",
+  "generatedAt": "2026-10-14T03:14:49.462Z",
+  "sourceMetadata": "papers/rbm-nonnegative-logarithmic-mixing/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "293a21715514895e2188227e1382f53997fdb86fa4dbe6605033c8d7fcbcbafe",
+  "transcriptPath": "assets/audio/rbm-nonnegative-logarithmic-mixing.txt",
+  "transcriptSha256": "be332b8fb4fb94e1534013dfd30acdd75c85ad36ea3b7a3b50f6fb4e16e5dacc",
+  "audioPath": "assets/audio/rbm-nonnegative-logarithmic-mixing.mp3",
+  "audioSha256": "bb0ab6a456b9936bc245936dba4a09dbed6878b7b243bc645a720626bd6770fa",
+  "audioBytes": 1923884,
+  "responseContentType": "audio/mpeg",
+  "requestId": null
+}
