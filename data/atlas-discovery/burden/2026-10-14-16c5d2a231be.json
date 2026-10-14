@@ -1,0 +1,1667 @@
+{
+  "schemaVersion": "1.0",
+  "recordType": "evidence-atlas-discovery-burden-estimate",
+  "toolVersion": "0.1.0",
+  "generatorVersion": "0.3.0",
+  "corpusFingerprint": "16c5d2a231bef8e50a2a0a8d6a78d1cd285366f08f32ec5b76351aaae8c217bd",
+  "runRecord": {
+    "path": "data/atlas-discovery/runs/2026-10-14-16c5d2a231be.json",
+    "sha256": "036295e863cd3ff73e012255c7d5016adfd58caf6e3deca3b5f7479f66f8fcab",
+    "candidateCount": 406
+  },
+  "benchmark": {
+    "path": "data/atlas-discovery/BENCHMARK.json",
+    "sha256": "da2acf968454c3e8f0c8f6a962a6136653e038c21e6db9c9ae278571a4e587ac",
+    "positives": 32,
+    "negatives": 10
+  },
+  "design": {
+    "method": "stratified by routeSignalCount; deterministic selection by sha256(runSha256:sample:pairKey); calibration items mixed in; blind order by sha256(runSha256:order:pairKey)",
+    "perStratum": 15,
+    "strata": [
+      {
+        "routeSignalCount": 1,
+        "population": 312,
+        "sampled": 15
+      },
+      {
+        "routeSignalCount": 2,
+        "population": 45,
+        "sampled": 15
+      },
+      {
+        "routeSignalCount": 3,
+        "population": 17,
+        "sampled": 15
+      },
+      {
+        "routeSignalCount": 4,
+        "population": 10,
+        "sampled": 10
+      },
+      {
+        "routeSignalCount": 5,
+        "population": 8,
+        "sampled": 8
+      },
+      {
+        "routeSignalCount": 6,
+        "population": 4,
+        "sampled": 4
+      }
+    ],
+    "itemCount": 109,
+    "labellerSees": "title, one-line, keywords, abstract, specialist summary, technical account, relationship to earlier work and up to ten external references of each release; nothing else"
+  },
+  "labeller": {
+    "model": "claude-opus-5-5",
+    "vendor": "Anthropic",
+    "effort": "high",
+    "outputSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verdict",
+        "confidence",
+        "sharedObject",
+        "basis"
+      ],
+      "properties": {
+        "verdict": {
+          "type": "string",
+          "enum": [
+            "accept",
+            "reject"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "sharedObject": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "basis": {
+          "type": "string"
+        }
+      }
+    },
+    "system": "You are reading two research releases from the same small publisher and applying one test. ACCEPT only if the two releases share the SAME specific mathematical or empirical object (a named theorem, conjecture, construction, invariant, model, dataset, bound or problem instance), or one result applies to, generalises, specialises, extends, is a stated companion of, or is a successor to the other. REJECT if they share only a field, a method, a genre, a background citation, or vocabulary. Use only the supplied texts. Default to REJECT unless the texts support a specific shared object or dependency. Answer with the JSON object only: verdict, confidence, sharedObject (the shared object or dependency in a few words, or null), basis (one sentence).",
+    "independenceNote": "Same-vendor model as the agent that built the generator. Its labels are an evaluation statistic for the pilot, not an independent review and not intake decisions."
+  },
+  "claimCeiling": "This record estimates how many emitted candidates a model reader would accept under the cheap falsifier, with calibration against recorded pairs and confirmed controls. It does not make any pair a relationship, does not replace maintainer intake, and is not independent assurance.",
+  "generatedAt": "2026-10-14T15:41:43Z",
+  "batch": {
+    "id": "msgbatch_01TfCf5bwv7YfS7373PPcZAd",
+    "createdAt": "2026-10-14T15:38:41.256376+00:00",
+    "endedAt": "2026-10-14T15:41:10.169366+00:00",
+    "requestCounts": {
+      "processing": 0,
+      "succeeded": 109,
+      "errored": 0,
+      "canceled": 0,
+      "expired": 0
+    }
+  },
+  "items": [
+    {
+      "pairKey": "affine-elementary-symmetric-total-nonnegativity|fisk-toeplitz-deletion-interlacing-through-five",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-001",
+      "requestSha256": "62584f6039551fe1290a77e533e1b9ca697700585c8fc000c973033d8eff9872",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Release A proves coefficientwise total nonnegativity of Toeplitz minors for the affine sequence (1+kt)e_k(X), while Release B proves real-rootedness and interlacing for Fisk's rectangular-Schur transform in at most five variables; they share only Toeplitz/Schur vocabulary and the AIM workshop report as a background citation, not a common problem or dependency."
+      }
+    },
+    {
+      "pairKey": "irreducible-pushforwards-quartic-transitions|o01d0-polar-fibre-structural-reductions",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-002",
+      "requestSha256": "8ad47915ca07e4f41db90a9552d72c83293268e31cf871bd2542e9585f5deec3",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Furter's R(3) conjecture (polynomial composition rigidity)",
+        "basis": "Release A extracts tools from a stalled attack on Furter's R(3), and Release B studies O-01d0 as a transversality interface whose resolution would feed the same R(3)/Polydegree programme, citing the same Furter and liqsweep sources; the link is a shared target conjecture rather than a direct dependency between the two results."
+      }
+    },
+    {
+      "pairKey": "finite-sample-affine-diversification|sfs-identifiability-audit",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-003",
+      "requestSha256": "1bbebd07f8c51d5b8240e3ddc871a4491139d7aae5719b4388aa2305150d0c8a",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A studies sharp partial identification of birth-death diversification histories on phylogenetic timetrees using pulled-rate confidence bands, while Release B studies non-identifiability of calendar-window demographic targets from the expected site-frequency spectrum under the Kingman coalescent, so they share only the partial-identification theme and vocabulary, not a specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "furter-r3-through-299|irreducible-pushforwards-quartic-transitions",
+      "role": "sample",
+      "stratum": 4,
+      "customId": "item-004",
+      "requestSha256": "9d89b0d7b1e8e034a3509e393f726d150045a2877a3d03b65ca92eedf6e6b346",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Furter's R(3) conjecture (R(3,n) for the inverse-series family)",
+        "basis": "Both releases address the same named conjecture: A proves Furter's R(3,n) exactly for 1 <= n <= 299, and B develops methods aimed at R(3) for Furter's family, with conditional per-index conclusions and exact checks for 3 <= n <= 40."
+      }
+    },
+    {
+      "pairKey": "bordered-jacobian-foundations|reducible-incidence-divisors",
+      "role": "sample",
+      "stratum": 4,
+      "customId": "item-005",
+      "requestSha256": "9f128fce93bb4505807792a368f286b2a26534259d526df97c1ce82acfc0c7e9",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Binary-form factorisation map and its degree-difference determinant law (common upstream release)",
+        "basis": "Release A generalises the degree-difference determinant identity det DΦ_{r,s}=±(r−s)Res² from the earlier release 'The degree-difference principle and affine slices of binary-form factorisation spaces', and Release B names that same release as its foundational companion, conditioning its isolation theorem on its cubic classification and citing the same ±(s−r)ρ² determinant law."
+      }
+    },
+    {
+      "pairKey": "stocks-are-not-flows|unique-answer-not-identified",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-006",
+      "requestSha256": "219808e642a8c4ac8361b5481fa02f49156192749b6768f93ba473715bb82c5b",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Both releases deal with identification failure and partial identification. However, A audits English housing tenure data and the Stevenson top-resource mechanism, while B is a cross-domain synthesis of APC, epidemic, SVAR and climate cases that never mentions A's housing model or data, so they share only a method and a citation (Tamer 2010)."
+      }
+    },
+    {
+      "pairKey": "bounded-product-transposition-cutoff|two-class-transposition-profiles",
+      "role": "sample",
+      "stratum": 5,
+      "customId": "item-007",
+      "requestSha256": "37b49ea85ee87284ad3b52beb255e3b4abd4d3866ad0c6521b4a1d9e55ab9a10",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Product-weight (biased) random transposition walk on S_n; B's two-class instance is a special case of A's bounded-weight class",
+        "basis": "A proves cutoff for every independent-label transposition walk with weights c/n ≤ p_i ≤ C/n, and B's equal two-class model with weights b/N and (2-b)/N at fixed bias satisfies those bounds, so A's result applies to B's model while B refines it to an exact limit profile."
+      }
+    },
+    {
+      "pairKey": "bilateral-deficiency-regular-dim|txgraffiti-order48-successor",
+      "role": "sample",
+      "stratum": 5,
+      "customId": "item-008",
+      "requestSha256": "26008c1ccb4cdad975e1eb330c66975d4fda21bf6230e4487cbe72bea8060995",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Cubic counterexamples to i(G) ≤ mu*(G) (TxGraffiti conjecture), minimum order 50 vs 48",
+        "basis": "Both releases study the same problem instance, cubic graphs with independent domination number exceeding minimum maximal matching number: A proves 50 is minimum within the DIM-qualified class, and B gives a 48-vertex counterexample that lowers the public 50-vertex upper bound, building on A's result and the shared TxGraffiti predecessor."
+      }
+    },
+    {
+      "pairKey": "furter-r3-through-299|lps-structural-reductions",
+      "role": "sample",
+      "stratum": 5,
+      "customId": "item-009",
+      "requestSha256": "faac6ca5f46211b451903833af49b61831622a3bf3125547ad64cc38ecded6bb",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Polydegree Conjecture / Furter rigidity radical-membership targets (LPS formulation)",
+        "basis": "Release A proves Furter's R(3,n) for n≤299 and derives Polydegree closure cases from it, while Release B gives structural reductions and p-adic certificates for the same Lewis–Perry–Straub radical-membership obstruction to the Polydegree Conjecture, which involves Furter rigidity; both make partial progress on the same named conjecture rather than merely sharing a field."
+      }
+    },
+    {
+      "pairKey": "pinching-free-normal-cover|ptolemaic-split-stability",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-010",
+      "requestSha256": "1183a2fb357b3d1c148be65cbf3f4465b519d71cdddc3b1f612b311ffb412067",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A studies Poincaré critical exponents of Fuchsian normal-cover groups in a quasiconformal Teichmuller space, while Release B studies negative-type stability of finite Ptolemaic split metrics, so they share only the phrase \"critical exponent\", which names unrelated objects in each."
+      }
+    },
+    {
+      "pairKey": "furter-r3-through-299|smooth-point-certificates-polydegree-containments",
+      "role": "sample",
+      "stratum": 6,
+      "customId": "item-011",
+      "requestSha256": "bc3f5784800ddabe9227c0622028057a98da17215714c220c6e842909257ca45",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "LPS coefficient polynomials g_{n,3} and the e=3 Polydegree containment column",
+        "basis": "Both releases study the same integral coefficient polynomials g_{d,3} from Lewis–Perry–Straub. A proves radical-maximality of three consecutive g_{d,3}, giving a Polydegree corollary for the e=3 column. B gives a Jacobian smooth-point criterion for that same column, and both cite the same Evidence Press e=3 Jacobian smooth-point candidate."
+      }
+    },
+    {
+      "pairKey": "vr2-k4-equals-20|z20-equals-6",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-012",
+      "requestSha256": "1fa5a9c6511973bf63e369ceb650329ad6582daca26800fffc4538140044e9e9",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "SAT certificates for z(20)=6 upper bound reused for VR2(K4)=20",
+        "basis": "Each release names the other as its companion, and Release A's upper bound reuses Release B's reduction to the two 16-vertex (4,4)-Ramsey graphs and its CNF unsatisfiability certificates."
+      }
+    },
+    {
+      "pairKey": "factorial-spikes-fi-noetherianity|unbounded-bns-component-orbits",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-013",
+      "requestSha256": "4ee3e625560c79ee9cdc18a3f2d740be49b338814b0f4e7d0daaafbcd348da95",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A builds a factorial-spike sub-FI-algebra in commutative algebra and Release B builds a free-by-cyclic family with BNS invariant components in geometric group theory; they share no specific object or dependency, only the genre (unrefereed AIM-problem candidates) and the publisher."
+      }
+    },
+    {
+      "pairKey": "aggregation-without-sufficiency|unique-answer-not-identified",
+      "role": "sample",
+      "stratum": 4,
+      "customId": "item-014",
+      "requestSha256": "a54f55c8617b1cc966a988d3c493eacc5ee3131f7ab93a434853336cffa3635d",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Shared single-condition response benchmark (Thommen's birth–death pair)",
+        "basis": "Both releases explicitly adopt the same publisher-built exact identification benchmark, which implements Thommen's birth–death model pair with matched single-condition dynamics but different environmental responses, and each uses it as a direct example of its central non-identification claim rather than as a mere background citation."
+      }
+    },
+    {
+      "pairKey": "bounded-product-transposition-cutoff|hahn-ewens-mixing-theorem",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-015",
+      "requestSha256": "c2c642929091e2cc1bb0e180334e397e41dd95458f8a04a2aadf546bfbe4f252",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves total-variation cutoff for bounded product-weight random transpositions on S_n via entropy comparison, whereas Release B studies a stabiliser–Ewens cycle chain with Hahn spectrum and a stationary-average chi-square transition, so they share only the general field of Markov chain mixing times and no specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "free-fermion-frustration-graphs|free-parafermion-converse",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-016",
+      "requestSha256": "c67d8f64d93ae01e1af41cf294db59aef4b9dcddfc106754f02fd817c6720aa0",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Release A proves a converse to the even-hole, claw-free free-fermion theorem for Pauli realisations, while Release B proves a separate converse to the oriented-indifference free-parafermion theorem for order N ≥ 3 only. B neither covers nor cites A's N=2 result, so the two share a proof strategy and a research programme but no specific theorem, model or dependency."
+      }
+    },
+    {
+      "pairKey": "planar-transport-map-sensitivity-certificates|square-maximises-dirichlet-ratio-quadrilaterals",
+      "role": "calibration-negative",
+      "stratum": null,
+      "customId": "item-017",
+      "requestSha256": "639c1f26adff14a911ab59af188f656fd32934e456f0705e1d83a0d9970e5971",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A certifies the sensitivity of semi-discrete optimal transport maps under coefficient boxes, while Release B proves the quadrilateral case of the polygonal Payne–Pólya–Weinberger eigenvalue-ratio conjecture; they share only computer-assisted, box-cover and exact-arithmetic methodology, with no common object or dependency."
+      }
+    },
+    {
+      "pairKey": "degree-difference-affine-slices|exotic-affine-three-spheres",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-018",
+      "requestSha256": "ccb692bb9210d54fb9e621c712eaaaea0e5dac6323bc12d851fe2890043be145",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Affine slices of binary-form factorisation spaces (linear–quadratic, quadratic–cubic slices, induced Keller maps)",
+        "basis": "Release B names Release A as its foundational companion and studies the same normalised linear–quadratic and quadratic–cubic slices of the binary-form factorisation space and their induced Keller maps that Release A develops, so B extends A."
+      }
+    },
+    {
+      "pairKey": "hilbert-series-matrix-septic-invariants|hilbert-series-ternary-septic-octic-nonic",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-019",
+      "requestSha256": "db325e5ad8f4dcd57684def26f58f6a80b82c2ab9f523094a826694c90cd137e",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Hilbert series of SL3-invariants of plane septics (candidate R_7)",
+        "basis": "Release B proves unconditionally that the septic Hilbert series equals the candidate R(t) that Release A proposed and proved only through degree 760, and it explicitly presents itself as the successor to Release A, including attribution corrections to it."
+      }
+    },
+    {
+      "pairKey": "bilateral-deficiency-regular-dim|txgraffiti-c3-resolution",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-020",
+      "requestSha256": "bb4491948c6ec691eacf69a5a8ecdcde07ef59c8feef914c3667d8df77025979",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Bilateral deficiency identity and order-50 cubic DIM threshold for i(G) > mu*(G)",
+        "basis": "Release B presents the 50-vertex cubic counterexample with the bilateral-deficiency formula-graph identity and the conditional DIM order threshold, and it cites Release A as its subsequent child candidate; Release A cites B and proves order 50 is minimum within the cubic-DIM class."
+      }
+    },
+    {
+      "pairKey": "amplitude-modules-fused-support-bautin-bound|pinching-free-normal-cover",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-021",
+      "requestSha256": "2993c89108b6d071f80788eb862c8893acfdeee294047ab3659ebd20db9caecc",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A treats polynomial phases, Dickson and Ritt amplitude modules and coefficient-Bautin bounds on zero-cycles, while Release B treats critical exponents of normal-cover Fuchsian groups in quasiconformal Teichmuller space, so they share no specific object or dependency beyond the unrefereed-candidate genre."
+      }
+    },
+    {
+      "pairKey": "full-e3-column-polydegree-conjecture|lps-structural-reductions",
+      "role": "sample",
+      "stratum": 5,
+      "customId": "item-022",
+      "requestSha256": "78dc0c7cbcadd6987813eb0667a0c479c26cd09619bd7727e4ca138fac43205e",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Lewis–Perry–Straub determinant a_{d,e} and containment criterion for the Polydegree Conjecture",
+        "basis": "Both releases prove new results about the same specific object: A identifies the LPS determinant a_{d,e} with a coefficient Jacobian to settle the e=3 containments, while B proves a complementary-minor congruence for that same a_{d,e} to reduce its radical-membership obstructions."
+      }
+    },
+    {
+      "pairKey": "dyck-transpositions-n-log-n|kawasaki-analytic-fast-regimes",
+      "role": "calibration-negative",
+      "stratum": null,
+      "customId": "item-023",
+      "requestSha256": "7d905b1f3cddc450d72d4c7c5b6f11af9206f9cdb849aa2badd0ee2ded886274",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A analyses a random-transposition rejection walk on Dyck paths, while Release B analyses global Kawasaki dynamics for the canonical Ising model on bounded-degree graphs; the only overlap is the entropy-contraction method genre and a shared background citation (Cryan–Guo–Mousa), with no common object or dependency."
+      }
+    },
+    {
+      "pairKey": "wales-20mph-attribution-manuscript|wales-20mph-casualty-attribution",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-024",
+      "requestSha256": "2acf5651f61264018821a29596816eec089611b7ada396f621d8961e17282e23",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Wales 20 mph casualty non-identification result (2,402→1,725 witness)",
+        "basis": "Release A is explicitly the companion manuscript to the evidence package in Release B, and both present the same estimand and the same constructive witness implying -50%, 0% and +100% effects from identical aggregates."
+      }
+    },
+    {
+      "pairKey": "finite-sample-affine-diversification|stocks-are-not-flows",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-025",
+      "requestSha256": "7e0c60e4b254301519393ec0f6dfca02cf77ea4d669454e03c2383549e91fa2f",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A concerns birth-death diversification histories and phylogenetic pulled-rate confidence bands, while Release B audits identification of investor effects on English housing tenure; they share only the general partial-identification method and a background Manski citation, not a specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "full-e4-polydegree-column|lps-structural-reductions",
+      "role": "sample",
+      "stratum": 5,
+      "customId": "item-026",
+      "requestSha256": "16367e2a95cb20ce66bcd0d82d39dc1179eb0f579da73a2dbdcf7529b7f473d3",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Polydegree Conjecture via the Lewis–Perry–Straub determinant/specialization criterion",
+        "basis": "Both releases attack the same named conjecture, the Polydegree Conjecture, through the same Lewis–Perry–Straub determinant formulation: A settles the full e=4 column, while B gives structural reductions of the radical-membership obstruction for that determinant."
+      }
+    },
+    {
+      "pairKey": "ferromagnetic-full-threshold-glauber|unique-equilibrium-lsi-separation",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-027",
+      "requestSha256": "5336bb2386db3672dd26af9e381778725a037afdbeba14495811891d773105a9",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves Glauber mixing bounds for the Feng–Guo–Yang heterogeneous ferromagnetic spin class, while Release B separates particle and mean-field log–Sobolev constants for a circle cosine interaction model; their only overlap is the general log–Sobolev tool and vocabulary, with no shared model, theorem or dependency."
+      }
+    },
+    {
+      "pairKey": "cyclicity-loci-exponential-periods|cyclicity-support-fusion-atlas",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-028",
+      "requestSha256": "3c20f569dd81901df034602cf4cc2c12a50c84f64b97086b31126d34884a4e37",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Fixed-seed cyclic rank of polynomial exponential periods (Gauss-Manin Krylov rank of a specified amplitude)",
+        "basis": "Release B explicitly cites Release A ('Fixed-Seed Cyclicity Loci for Polynomial Exponential Periods') and extends the same fixed-seed cyclic-rank object for polynomial phases, generalising from the dx seed to arbitrary polynomial amplitudes, which makes it a successor building on A's fixed-seed framework."
+      }
+    },
+    {
+      "pairKey": "affine-elementary-symmetric-total-nonnegativity|cgf-majorisation-counterexample",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-029",
+      "requestSha256": "487d35fd4cd8c3bfbdd1286c42c2f57d547544fa2ff74d47d7ca93d42c305e1b",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves coefficientwise total nonnegativity of Toeplitz minors for the affine elementary-symmetric sequence, while Release B refutes the suffix part of Billey–Swanson Conjecture 33 via a cyclotomic generating function; the only overlap is the broad theme of coefficient positivity, with no shared object or dependency."
+      }
+    },
+    {
+      "pairKey": "cyclicity-root-span-low-rank|cyclicity-support-fusion-atlas",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-030",
+      "requestSha256": "5ef0948d3c71223cbe81ce3c560f0e115e8ea5916b972966b22ed76604670875",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Fixed-seed cyclic rank theorem: q(P,dx) = reduced constant span of inverse roots",
+        "basis": "Release B cites Release A (Version 0.1.0-candidate) and restates and extends its central theorem identifying fixed-seed cyclic rank with the reduced inverse-root span: it completes the rank-at-most-three classification that A left open because of block fusion, and it generalises the theorem from dx to arbitrary polynomial amplitudes."
+      }
+    },
+    {
+      "pairKey": "seymour-second-neighbourhood-2delta3|z20-equals-6",
+      "role": "calibration-negative",
+      "stratum": null,
+      "customId": "item-031",
+      "requestSha256": "ede9c880d5b22caf49b334a2e8e78891075e1e086fa15764ff6b71625e1b4776",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A concerns Seymour's second neighbourhood conjecture for oriented graphs and Release B concerns the cochromatic number z(20) (Erdős problem 758), so they share only the method of SAT computation with LRAT certificates and the cake_lpr checker, not a specific mathematical object."
+      }
+    },
+    {
+      "pairKey": "quadratic-equilibrium-sharpness|tcell-exactly-five",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-032",
+      "requestSha256": "0e9574f47062edcde9d4666f33c2701fc6ad1f7b07d8a9a039faecdf9ee7dd68",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A realizes the Phillipson–Rojas chain as mass-action networks attaining the Banaji–Feliu bound, while Release B certifies five equilibria in the François/Rendall–Sontag T-cell model, and A itself says the two concern different models and share only exact root-counting methods and the multistationarity theme."
+      }
+    },
+    {
+      "pairKey": "ap4-ramsey-diameter-36|vr2-k4-equals-20",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-033",
+      "requestSha256": "26f8522dfa427d375590d9141e30cbf0ff7f17cd5d0d63097ae00013fc6884e7",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A determines the minimum four-term-AP Ramsey subset of [37] (AIM Problem 1.9), while Release B determines the vertex-disjoint Ramsey number VR2(K4) as a companion to z(20)=6, so the two share only Ramsey theory and SAT-certificate methodology, not a specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "amplitude-modules-fused-support-bautin-bound|cyclicity-root-span-low-rank",
+      "role": "sample",
+      "stratum": 4,
+      "customId": "item-034",
+      "requestSha256": "8eea08224f9ca17bf09ebe156fe37be899643feca1f219acf32c1ce787a0d0da",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Cyclic rank of polynomial exponential-period systems as reduced inverse-root/fibre span, with fusion under composition",
+        "basis": "Release B proves fixed-seed ([dx]) cyclic rank equals the reduced constant span of inverse roots and flags degree-twelve block fusion as open; Release A extends this to general amplitudes G'dx, using the same rank-as-reduced-constant-span bridge, and resolves the degree-twelve Ritt collision (x^4+x)^3 with explicit fused modules."
+      }
+    },
+    {
+      "pairKey": "kawasaki-analytic-fast-regimes|small-exponent-percolation",
+      "role": "calibration-negative",
+      "stratum": null,
+      "customId": "item-035",
+      "requestSha256": "543cc057033af8c3a193d9d0f7a6495ba27542fe8269796d34de030c4a4b5561",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves mixing bounds for global Kawasaki dynamics of the canonical Ising model in the KPPY regimes, while Release B computes the first correction to the critical mean degree in one-dimensional long-range percolation via lace expansion; beyond general statistical-mechanics vocabulary, they share no specific object, result or dependency."
+      }
+    },
+    {
+      "pairKey": "gk-shared-phosphatase-connectedness|median-radius-obstructions",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-036",
+      "requestSha256": "62508e1ed8fda4a1a585aee146bbca551cc70c1ab013dd17480405bfa33ccdb3",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves path connectedness of the multistationarity region of a phosphorylation cascade network, while Release B builds median graphs with long strict eccentricity-improvement distances; they share no specific object, result or dependency, only the unrefereed-candidate format."
+      }
+    },
+    {
+      "pairKey": "exotic-affine-three-spheres|reducible-incidence-divisors",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-037",
+      "requestSha256": "15bcb66f4a3e6277a38a9b05c8ecbb7a95429bdddf46959c65f1407de58d30ec",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Affine slices of binary-form factorisation spaces (quadratic–cubic/linear–quadratic slices); B is the stated continuation of A",
+        "basis": "A lists B as its continuation and B lists itself as continuing A, and both study the same objects: normalised slices of the binary-form factorisation space, including the linear–quadratic tangent slice that is affine three-space and the quadratic–cubic (m=2) slices shown not to be affine five-space."
+      }
+    },
+    {
+      "pairKey": "biased-transposition-profile-counterexample|bounded-product-transposition-cutoff",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-038",
+      "requestSha256": "f55dba60b349cfc9b47c3b2bf708a14d9ad8a4478280f6366db200e1a82d20e2",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Independent-pair weighted random transposition shuffle (A's two-class Nestoridi–Yan model is a special case of B's bounded product weights)",
+        "basis": "A's chain, with half the labels weighted b/N and half (2-b)/N and two labels drawn independently, is an instance of B's bounded product-weight walk (c=b, C=2-b), so B's cutoff theorem applies to A's model, and A explicitly names B as the related cutoff candidate, even though A's profile-counterexample proof does not depend on it."
+      }
+    },
+    {
+      "pairKey": "gk-shared-phosphatase-connectedness|tcell-exactly-five",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-039",
+      "requestSha256": "f9f3b0ddd7a1d53f66264828515c3a73ef179b68e092af238a72724b144ec842",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves path connectedness of the multistationarity region of a phosphorylation cascade with a shared phosphatase, while Release B certifies exactly five positive steady states in the François T-cell activation model, so they share only the general theme of multistationarity and exact certificates, not a specific model, result or dependency."
+      }
+    },
+    {
+      "pairKey": "k2p-tree-network-counterexample|tree-network-separation",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-040",
+      "requestSha256": "d9e1db9d0c4cf3bb7ee35e380dfde1d7b6bf542473133583bf70dcb5f568c06d",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Exact tree–network distinguishability of pattern distributions (Brits et al. open K2P/GTR question)",
+        "basis": "Release A cites Release B by name as its earlier companion and sets its two-reticulation, edge-specific K2P coincidence against B's single-cycle and shared-generator separation theorems, so A marks where B's no-coincidence results stop holding on the same exact network-versus-tree question."
+      }
+    },
+    {
+      "pairKey": "bordered-jacobian-foundations|degree-difference-affine-slices",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-041",
+      "requestSha256": "4a94548c3a1c422403fa8719a94f2b61c5f221ab4ea959de46f358843053d51e",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "degree-difference determinant identity det DΦ_{r,s} = ±(r−s)Res(A,B)^2",
+        "basis": "Release A cites Release B by title and states that its bordered Jacobian formula recovers B's central degree-difference identity via Euler contraction, so A generalises B's result."
+      }
+    },
+    {
+      "pairKey": "exact-low-length-recht-re-inequalities|random-reshuffling-baseline-policy",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-042",
+      "requestSha256": "b6a7c5bc9be161ead7f1655720832eb59ea3069208f5f1ffb3cd38c026dd8cde",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Both releases study random reshuffling and cite Recht–Ré and De Sa. However, A classifies the Recht–Ré matrix inequality and ranks samplers (with versus without replacement, single shuffle) under different metrics, while B builds order-selection policies and NP-hardness results for one-epoch common-Hessian quadratics, with no shared theorem, construction or stated dependency."
+      }
+    },
+    {
+      "pairKey": "extremes-do-not-always-maximise|odd-order-one-third-popular-differences",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-043",
+      "requestSha256": "8d53db21a3eb2ff7e3cda5cf050cb87c9247aacb4072fe1496602e9103494abb",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A is a counterexample for a monotone reversible Markov chain question (AIM Problem 1.6 on mixing times), and Release B is a counterexample for a popular-differences question in additive combinatorics (AIM Problem 1.18); they share only the counterexample-to-an-AIM-problem genre and no mathematical object."
+      }
+    },
+    {
+      "pairKey": "odd-order-one-third-popular-differences|unbounded-bns-component-orbits",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-044",
+      "requestSha256": "9dc50e19d735a7816d946cbfd8a9f2d70693a85986b2071c9d2debc276a8ac29",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A builds a counterexample to AIM Problem 1.18 on popular differences in cyclic groups, while Release B constructs free-by-cyclic groups with unbounded BNS component-orbit counts for a different AIM problem, so they share only a genre and publisher style, not a mathematical object."
+      }
+    },
+    {
+      "pairKey": "gk-shared-phosphatase-connectedness|quadratic-equilibrium-sharpness",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-045",
+      "requestSha256": "f6bbb4055c223d60e1f27155af74ca01a6a3eac7185880fac3252e0de24db73e",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release B cites Release A only as a related candidate on a different biochemical model and says it gives no independent confirmation, while A proves path connectedness for a specific shared-phosphatase cascade and B builds mass-action networks attaining the Banaji–Feliu equilibrium bound, so no object or dependency is shared."
+      }
+    },
+    {
+      "pairKey": "txgraffiti-c3-resolution|txgraffiti-order48-successor",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-046",
+      "requestSha256": "f442519f155761f393138d52ae16b1ad182e49b1226e50594c4814e97e023dcd",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "TxGraffiti Conjecture (i(G) ≤ mu*(G) for cubic graphs) counterexample; B improves A's 50-vertex order bound to 48",
+        "basis": "Release B cites Release A and gives a 48-vertex cubic counterexample to the same independent-domination versus minimum-maximal-matching inequality, explicitly lowering the 50-vertex candidate-order upper bound established in A."
+      }
+    },
+    {
+      "pairKey": "furter-r3-through-299|o01d0-polar-fibre-structural-reductions",
+      "role": "sample",
+      "stratum": 4,
+      "customId": "item-047",
+      "requestSha256": "9a427e7d915be0b9961266e31c7387c872ac8fc6dba7da85c84ef255bd74ab20",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Release A certifies Furter's R(3,n) through a three-generator ideal in x1..x3. Release B studies a distinct programme-local four-generator, four-variable ideal O-01d0 with a derivative generator, and it explicitly disclaims any implication for R(3). The overlap is therefore the Furter/Polydegree field, the properness-transfer method and shared background citations, not a common object or a stated dependency."
+      }
+    },
+    {
+      "pairKey": "biased-transposition-profile-counterexample|two-class-transposition-profiles",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-048",
+      "requestSha256": "177d580452fcb2768cc511a0b1eb41e1ea7bb3091aff58eab1ee76e0afa8a372",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Limit profile of the two-class biased random transposition shuffle (Nestoridi–Yan Conjecture 1.6)",
+        "basis": "Release B explicitly calls itself the successor to Release A's counterexample: A disproves the conjectured limit profile for the same two-class biased shuffle, and B supplies the replacement full-law profile."
+      }
+    },
+    {
+      "pairKey": "extremes-do-not-always-maximise|potts-censoring-counterexample",
+      "role": "sample",
+      "stratum": 4,
+      "customId": "item-049",
+      "requestSha256": "57c56172ce4aa7f81a882ef20f44fb266e22cc9189a3e11b8ad2b5ed926538e5",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A answers AIM Problem 1.6(1) on whether extremal states maximise total-variation distance in monotone reversible chains, using a four-state Boolean-diamond example, while Release B gives a Potts-model counterexample to the Holroyd ferromagnetic censoring question; beyond heat-bath dynamics, total variation and shared background citations (Peres–Winkler, Fill–Kahn), they address different problems and share no specific object."
+      }
+    },
+    {
+      "pairKey": "exact-low-length-recht-re-inequalities|free-fermion-frustration-graphs",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-050",
+      "requestSha256": "3a2c34dca64b716711a15b6431331318c8fa78741a18801aad011c8e42b9289b",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A studies Recht–Ré matrix inequalities and random reshuffling in optimization, while Release B classifies frustration graphs that give free-fermion spectra; the two share only generic methodology such as exact certificates, not any specific mathematical object or dependency."
+      }
+    },
+    {
+      "pairKey": "bordered-jacobian-foundations|exact-smith-invariants-affine-determinant-lines",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-051",
+      "requestSha256": "9d743c1bcd43d86bb17ae01f525b02b5cf55972749b1db927dade773d8a3a3fa",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Bordered Jacobian/determinant formula for binary-form multiplication (B generalises A to k factors)",
+        "basis": "Release B cites Release A as its parent candidate and explicitly states that A's two-factor bordered Jacobian theorem is the rank-one case of B's character-matrix determinant formula, while A lists B as its subsequent child release."
+      }
+    },
+    {
+      "pairKey": "bounded-product-transposition-cutoff|concentratable-entanglement-spectator-counterexample",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-052",
+      "requestSha256": "7cc2f58b151e1c9419eaeba8b8ffea0d4602d34c329966c2be3307f9c7e06668",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves cutoff for product-weight random transposition walks on S_n, while Release B gives counterexamples to a concentratable-entanglement upper bound, so they share no specific object or dependency beyond generic tools such as Jensen's inequality."
+      }
+    },
+    {
+      "pairKey": "aggregation-without-sufficiency|certified-commitment-horizons",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-053",
+      "requestSha256": "be4fe1586b66cb171df1c065607e1616e1310b99447ffa0eac8f8f485121d07f",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A studies aggregation licences, fibre-constant factorisation and identification across economics, fisheries and epidemiology, while Release B certifies commitment radii for Wagner–Whitin lot sizing; beyond generic vocabulary such as certification, regret and unrefereed status, they share no specific theorem, model, dataset or dependency."
+      }
+    },
+    {
+      "pairKey": "overpartition-congruences-and-towers|two-colour-overpartition-congruences",
+      "role": "sample",
+      "stratum": 4,
+      "customId": "item-054",
+      "requestSha256": "aab670070ad712fcafa87328f11bd1ac422e1f0c7f6c1408d13a79bb6b8b0ec0",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves odd-prime congruences (mod 7, 13, 17, 19, 23) for the ordinary overpartition function, while Release B proves power-of-two congruences for the distinct two-colour overpartition function, so they share only the field, Sturm/eta-quotient methods and a general overpartition background rather than a specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "lps-structural-reductions|quartic-inverse-coefficients",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-055",
+      "requestSha256": "9cf47bcd47d4fbe14c88783ac654b890f0fd96c7dad72e51cb86557d57774b48",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Complementary-minor duality / fixed-width reduction structural candidate for the Lewis–Perry–Straub Polydegree programme",
+        "basis": "Release B explicitly credits the anonymous 'Complementary-minor duality and fixed-width reductions for the Polydegree Ideal Conjecture' candidate, which is Release A's structural paper, for the differential identities it uses to prove transversality of the quartic inverse-coefficient intersections, and both work on the same Lewis–Perry–Straub inverse-coefficient objects with liqsweep's rigidity input."
+      }
+    },
+    {
+      "pairKey": "aggregation-without-sufficiency|stocks-are-not-flows",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-056",
+      "requestSha256": "f6e5feb618bf2525100787e56b827eaccfa0bec4ad9b221067dccb095e815168",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Both releases concern identification limits of aggregates and partial identification, but A's aggregation licence (economics, fisheries, epidemiology, birth–death benchmark) and B's English housing tenure IDENT-0 audit share no specific theorem, model, dataset or stated dependency, only a general theme and method."
+      }
+    },
+    {
+      "pairKey": "affine-diversification-fibres|aggregation-without-sufficiency",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-057",
+      "requestSha256": "e3d7d63f02269db1c5141b60016d5951f6d0898af05bff741e878be32c9f1372",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A studies sharp partial identification of phylogenetic birth-death diversification histories from a pulled speciation rate, while Release B proposes a cross-domain aggregation licence whose birth-death example is an unrelated chemical reaction-network pair, so the two share only identification vocabulary and a generic model family name, not a specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "certified-three-item-jrp-gap|certified-two-item-jrp",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-058",
+      "requestSha256": "9fcb454b2304c2d49bf47becb1623a7baed57b84a306e69c5d65af015b421822",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Independent-cap (max-frequency) relaxation gap for joint replenishment; A is the three-item successor to B's two-item result",
+        "basis": "Release A calls itself a successor candidate, cites Release B directly, and extends B's exact two-item independent-cap relaxation gap (about 1.1119) to a three-item lower bound of about 1.1487, which it measures against the two-item upper endpoint."
+      }
+    },
+    {
+      "pairKey": "negative-square-energy-five-vertex-valley|six-dimensional-zonoid-counterexample",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-059",
+      "requestSha256": "f859f7f6d8e296145768d58cf5f5f5d59bc043d574dd56cef6e4694f206c94c6",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A concerns negative square energy of graphs under edge addition, while Release B concerns zonoid enclosure factors of convex bodies, so they share only the counterexample genre and AIM-sourced problems, with no common object or dependency."
+      }
+    },
+    {
+      "pairKey": "lps-structural-reductions|o01d0-polar-fibre-structural-reductions",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-060",
+      "requestSha256": "0e722cdfce28f9a54556f8f58781872ec3679c48e9c1fc232ea43417e5d4cf68",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Quartic (d=5) adjacent-flag transversality / radical-membership target in the LPS Polydegree programme",
+        "basis": "Release B explicitly cites Release A and studies the open quartic transversality target in four variables (x_1..x_4) with p-adic degeneration that Release A reduces to and leaves open, so B extends A's reduction."
+      }
+    },
+    {
+      "pairKey": "biased-small-world-mixing|dyck-transpositions-n-log-n",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-061",
+      "requestSha256": "93f908ec0bfe53a255d4349bdbafc6148c1e3dae4cb559f19699709a0f130e3b",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A studies mixing of biased walks on a cycle with random shortcuts, while Release B studies a random-transposition rejection walk on Dyck paths, so they share only the general topic of Markov chain mixing times and no specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "full-e3-column-polydegree-conjecture|quartic-inverse-coefficients",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-062",
+      "requestSha256": "4c790e283fed35b9e13fed12aa49d050eda53324456ec73212fdd63c1b3831c5",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "e=3 coefficient polynomials g_{n,3} of the Polydegree Conjecture (quartic inverse coefficients), with Jacobian and next-coefficient nonvanishing",
+        "basis": "Release B explicitly cites Release A as the existential full-e=3 containment candidate and studies the same affine intersections V(G_d, G_{d+1}) of quartic inverse coefficients. It strengthens A's existence of one smooth point off the next hypersurface to a classification of all points, with the Jacobian and G_{d+2} as units."
+      }
+    },
+    {
+      "pairKey": "ferromagnetic-full-threshold-glauber|kawasaki-analytic-fast-regimes",
+      "role": "calibration-negative",
+      "stratum": null,
+      "customId": "item-063",
+      "requestSha256": "29c93f5346faf30b1b70cb67e54c496a92c21b0ec67dc286219ae9963ed80bb0",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A treats Glauber dynamics for the Feng–Guo–Yang heterogeneous ferromagnetic two-spin class below λc, while Release B treats global Kawasaki dynamics for the fixed-magnetisation Ising model in the KPPY regimes, so they share only methods and vocabulary (mixed pinning, entropy and spectral independence, mixing bounds), not a specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "ptolemaic-negative-type|ptolemaic-split-stability",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-064",
+      "requestSha256": "5d3f4d7621ea548d7412170fb288bc196b1d4b20eeef1d71e008fd5dfdfcaed4",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Complete split metrics CS(a,r) at the sharp Ptolemaic negative-type threshold P(m)",
+        "basis": "Release B describes itself as a companion to Release A's global threshold theorem, and it studies local stability at the same complete split metrics that serve as A's sharpness witnesses (e.g. CS(3,4) with p=log_2(16/9)), so the two releases share a specific object and a stated companion relationship."
+      }
+    },
+    {
+      "pairKey": "ferromagnetic-full-threshold-glauber|potts-censoring-counterexample",
+      "role": "calibration-negative",
+      "stratum": null,
+      "customId": "item-065",
+      "requestSha256": "d8765e007f450ad605d7cc200854039623556428df79be1699dc0bcc961066ec",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves a near-linear Glauber mixing bound for the two-spin heterogeneous ferromagnetic Feng–Guo–Yang class, while Release B gives an exact counterexample to censoring for the three-colour ferromagnetic Potts model, so they share only the general area of heat-bath dynamics and ferromagnetic systems, with no common theorem, model instance or dependency."
+      }
+    },
+    {
+      "pairKey": "degree-difference-affine-slices|exact-smith-invariants-affine-determinant-lines",
+      "role": "sample",
+      "stratum": 4,
+      "customId": "item-066",
+      "requestSha256": "2ae3c9035fec45e8d36eab1abae6f00fbe92786be9e061805b806ab3fb1604da",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Degree-difference Jacobian identity for the binary-form multiplication–resultant map",
+        "basis": "Release B's character-matrix determinant formula for multiplying several binary forms explicitly reduces, for two factors, to the degree difference times the squared resultant, which is exactly Release A's central identity, so B generalises A's theorem."
+      }
+    },
+    {
+      "pairKey": "cyclicity-loci-exponential-periods|txgraffiti-c3-resolution",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-067",
+      "requestSha256": "043bf5d18830481fd4b67ba50e11a2486fe155d37974e184769e916ffdfa4837",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A studies Krylov-determinant rank loci for polynomial exponential periods (quartic and odd-quintic families), while Release B gives a 50-vertex cubic-graph counterexample about independent domination and maximal matchings, and the two share no specific object or dependency beyond the publisher's reproducibility genre."
+      }
+    },
+    {
+      "pairKey": "rbm31-exact-kl-radius|rbm43-eight-point-obstruction",
+      "role": "sample",
+      "stratum": 4,
+      "customId": "item-068",
+      "requestSha256": "74e287c1a81df0164a111f8f20ba8209eb71dfa9ff8c1d2d7821cba880cfc40a",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A establishes the exact KL radius of the two-product mixture model RBM(3,1) on three bits, while Release B proves a non-universality obstruction for RBM(4,3) on four bits; they are different models with different results, sharing only the RBM and algebraic-statistics field and background citations such as Montúfar's review and Seigal–Montúfar."
+      }
+    },
+    {
+      "pairKey": "full-e4-polydegree-column|smooth-point-certificates-polydegree-containments",
+      "role": "sample",
+      "stratum": 6,
+      "customId": "item-069",
+      "requestSha256": "95580a866a43cf4c28b685d066fe8f7904a5b05f0eb073e3d6d7576a7683b797",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Lewis-Perry-Straub determinant smooth-point (Jacobian) criterion for Polydegree containments",
+        "basis": "Release B establishes the weighted-Euler identity that turns the Lewis-Perry-Straub determinant into a smooth-point Jacobian criterion, and Release A applies that same weighted-Euler smooth-zero formulation to prove the e=4 column; both also cite the same e=3 Jacobian smooth-point companion release."
+      }
+    },
+    {
+      "pairKey": "kawasaki-analytic-fast-regimes|rbm-nonnegative-logarithmic-mixing",
+      "role": "calibration-negative",
+      "stratum": null,
+      "customId": "item-070",
+      "requestSha256": "b1142f9bb7cdca48a7b38859aa7c2688e9685f8d9bc0b242c29bbbd34e124b4b",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves entropy-contraction mixing for global Kawasaki dynamics on the canonical Ising model in the KPPY regimes, while Release B proves coupling-based alternating-scan mixing for nonnegative RBMs answering a Feng–Guo–Yang question; they share only the general field of Markov-chain mixing for Ising-type models, not a specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "full-e3-column-polydegree-conjecture|furter-r3-through-299",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-071",
+      "requestSha256": "ea58cafb24a6d4fc48519c2a9b5447d61bc08c9946486fc83335b6a683ad3753",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "e=3 coefficient polynomials g_(d,3) and the Polydegree containments G_(d+3) vs G_(d,4) (LPS criterion)",
+        "basis": "Both releases study the same inverse-series coefficient polynomials g_(d,3) and the Lewis–Perry–Straub e=3 Polydegree containment for (d,4). B explicitly cites A as a companion that has already completed the e=3 column, and B's Polydegree corollary overlaps that same column."
+      }
+    },
+    {
+      "pairKey": "o01d0-polar-fibre-structural-reductions|smooth-point-certificates-polydegree-containments",
+      "role": "sample",
+      "stratum": 5,
+      "customId": "item-072",
+      "requestSha256": "06fdf1734044379795934a3d10a86c220e74733412ee9b4bc0ded7e814b72e0a",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Lewis-Perry-Straub coefficient-polynomial complete intersections for the Polydegree Conjecture",
+        "basis": "Both releases study transversality and smoothness of the weighted-homogeneous coefficient-polynomial ideals from the Lewis-Perry-Straub approach to the Polydegree Conjecture (A the four-variable all-index O-01d0 interface, B the Jacobian smooth-point criterion and the e=3 case), and each reduces to coprimality of hypergeometric polynomial factors; neither text explicitly identifies A's h_j with B's g_{n,e}, hence medium confidence."
+      }
+    },
+    {
+      "pairKey": "flat-schmidt-chains|kagome-aklt-spectral-gap",
+      "role": "sample",
+      "stratum": 4,
+      "customId": "item-073",
+      "requestSha256": "8cf3abfbe9034f9997a6f72a6328a0ca8fb781df0c075b6c08672a4ba8569b2e",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A classifies gaps for open frustration-free chains with flat Schmidt-rank-two rank-one projectors, while Release B certifies a gap for the spin-2 AKLT model on kagome tori, so they share only the spectral-gap field, finite-size methods and a background citation (Rai et al.), not a specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "davies-levitin-lens-conjecture|full-e4-polydegree-column",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-074",
+      "requestSha256": "187348f6a8017b79ab8e5c71d470c10762ee6374f660034460d0ab7b240fc49c",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves the Davies–Levitin lens conjecture for eigenvalues of an indefinite tridiagonal pencil, while Release B proves the e=4 case of the Polydegree Conjecture for plane polynomial automorphisms, so they share only methods (interval arithmetic, Arb) and no specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "cyclicity-loci-exponential-periods|irreducible-pushforwards-quartic-transitions",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-075",
+      "requestSha256": "bde655c42eb4a2647ef8143467b075cde17906c7acb8f3b194e809cc733916fd",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Quartic-phase twisted de Rham Krylov determinant and rank strata (Release B, Theorem 6.2/Proposition 6.3)",
+        "basis": "Release A explicitly cites Release B's Theorem 6.2 and Proposition 6.3, and it generalises B's constrained-quartic determinant and rank-strata calculation in the twisted polynomial de Rham quotient to full depressed quartics and an odd quintic with a fixed seed."
+      }
+    },
+    {
+      "pairKey": "bounded-product-transposition-cutoff|ferromagnetic-full-threshold-glauber",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-076",
+      "requestSha256": "b061ba90bf24454f768ce783d7e738989e69c7c45450cf2327dce0e6b08002d6",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves cutoff for bounded product-weight random transpositions on S_n, while Release B bounds Glauber mixing for heterogeneous ferromagnetic two-spin systems below λc, so they share only Markov-chain mixing methods such as entropy and log-Sobolev arguments, not a specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "multiplane-lensing-sparse-bound|planar-transport-map-sensitivity-certificates",
+      "role": "calibration-negative",
+      "stratum": null,
+      "customId": "item-077",
+      "requestSha256": "65125b7957d2cb12228a30db4cb2c4ce09fe70493fc6cb4533774836e74fb799",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A bounds the number of images in multiplane point-mass gravitational lenses using Bernstein mixed volumes, and Release B certifies the sensitivity of planar optimal transport maps under coefficient boxes, so they share no specific object, result or dependency."
+      }
+    },
+    {
+      "pairKey": "ferromagnetic-full-threshold-glauber|rbm-nonnegative-logarithmic-mixing",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-078",
+      "requestSha256": "b2e481b9c13725cafe2c1ff9cfb196607853ae892c7174ff6a6f7f961930cb0d",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Both build on Feng–Guo–Yang (arXiv:2604.00963v2) but answer different questions: A proves full-range near-linear single-site Glauber mixing for the heterogeneous (β,γ,λ) ferromagnetic class on general graphs, while B removes a minimum-interaction assumption for alternating-scan sweeps on nonnegative bipartite RBMs, so the link is a common source citation rather than a shared theorem or a dependency between them."
+      }
+    },
+    {
+      "pairKey": "debt-disclosure-bounds|stocks-are-not-flows",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-079",
+      "requestSha256": "30c4aabee76169f8b2b13f2250679022cd6edd73f6d31c2eaa94af9c04edb65f",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A explicitly calls its link to Stocks Are Not Flows a thematic connection about identifying accounting quantities before estimating them, not an inherited proof or confirmation, and the two releases study different objects (UK debt maturity disclosures and interest-rate exposure versus English housing tenure attribution) that share only partial-identification methods."
+      }
+    },
+    {
+      "pairKey": "bunkbed-flow-obstructions|concentratable-entanglement-spectator-counterexample",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-080",
+      "requestSha256": "f143cafc3733199e8f5ddad9911a9ffcf626e0ba6df2b15fc07da6ef2d7ebde0",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A studies bunkbed counterexamples in the random-cluster model via flow polynomials, while Release B disproves an upper bound on concentratable entanglement in quantum information; their only common ground is the counterexample genre, with no shared object or dependency."
+      }
+    },
+    {
+      "pairKey": "affine-diversification-fibres|finite-sample-affine-diversification",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-081",
+      "requestSha256": "3dcd9f2a28545734838814f8655fa0e18c33b50d4793cc9edb5eba34d2e44442",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Affine cumulative-loss coordinate A below the survival barrier for pulled scale F (sharp partial identification of birth-death histories)",
+        "basis": "Release B describes itself as a successor candidate, cites Release A directly, and extends A's fixed-signal affine cumulative-loss representation (same A, F, λ, μ formulas and turnover-cap sharp bounds) by propagating a finite-sample simultaneous confidence band for F through it."
+      }
+    },
+    {
+      "pairKey": "pmms-three-agents-eight-goods|seymour-second-neighbourhood-2delta3",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-082",
+      "requestSha256": "4a35c3db6a7c0fa7713c3e88849e631b541605c15a5183968918169a6d8a69fe",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A concerns pairwise maximin share allocations in fair division, while Release B concerns Seymour's second neighbourhood conjecture for oriented graphs, and they share only the SAT/LRAT certificate method, not any specific mathematical object or dependency."
+      }
+    },
+    {
+      "pairKey": "amplitude-modules-fused-support-bautin-bound|cyclicity-loci-exponential-periods",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-083",
+      "requestSha256": "cfb7a5e01f852bdda39cd556c01bddacb0322536f7047c00cc05aff53dc67f56",
+      "label": {
+        "verdict": "accept",
+        "confidence": "low",
+        "sharedObject": "Cyclic/differential rank of the exponential-period system generated by a fixed amplitude A(x)e^{sP(x)}dx",
+        "basis": "A computes the rank q(P, A dx) of the period system generated by a chosen amplitude for Dickson and Ritt-collision phases, and B computes where a fixed amplitude seed loses that same differential rank under Gauss-Manin (including scale-direction) differentiation for quartic and quintic phases; the specific phase families differ and neither release cites the other."
+      }
+    },
+    {
+      "pairKey": "full-e4-polydegree-column|quartic-inverse-coefficients",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-084",
+      "requestSha256": "7045d5d5ce98c4382046120583cd759dcf565b840fd3b5b0c13a2f5a3e635ef6",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Lewis–Perry–Straub inverse-coefficient criterion for the Polydegree Conjecture (g_n coefficient zero loci)",
+        "basis": "Both releases study the common-zero and nonvanishing conditions on the Lewis–Perry–Straub inverse coefficients g_n that decide Polydegree containments, and both extend the same full-e=3 candidate: A proves the e=4 column for all degrees, while B classifies the quartic (e=3) affine intersections G_d=G_{d+1}=0 with Jacobian and G_{d+2} as units."
+      }
+    },
+    {
+      "pairKey": "amplitude-modules-fused-support-bautin-bound|cyclicity-support-fusion-atlas",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-085",
+      "requestSha256": "5b02d22a4b45b96f2dca2424486cda7a6d8f4657ebcbe8ff9c2496878abf9df4",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Amplitude-induced cyclic rank q(P,G'dx) via non-trace channels of G(ξ(t))",
+        "basis": "Release A explicitly cites Release B (Inverse-Root Support, Polynomial Amplitudes, v0.7.0) and builds directly on its amplitude-rank bridge, classifying all amplitudes for Dickson phases and the degree-twelve quartic collision that appear in B's atlas."
+      }
+    },
+    {
+      "pairKey": "sun-circular-primitive-permutation|sun-hou-primitive-sum-circle",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-086",
+      "requestSha256": "4a81aaaccbde1b97acecc11c35de8cad00bad2ee3da6c4eb357cf23c01dfcd8f",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Release A treats Sun's Conjecture 3.8 on shifted products a+xy over nonzero elements, while Release B treats a different problem, Sun's Conjecture 3.5(i) on adjacent sums over all field elements, and A explicitly calls B's problem distinct, so they share only methods (primitive-element sieve, Chvátal–Erdős) and the genre."
+      }
+    },
+    {
+      "pairKey": "tree-network-separation|unique-answer-not-identified",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-087",
+      "requestSha256": "fdfd117221b5192b68126f7838692d9d29b453a6b7fcce2b91b8d0e76cc6d865",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves flattening-rank bounds separating phylogenetic reticulation cycles from tree mixtures, while Release B is a cross-domain synthesis on selectors versus identification in APC, epidemic, SVAR and climate models, so the two share only the general theme of identifiability and no specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "bordered-jacobian-foundations|cyclicity-loci-exponential-periods",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-088",
+      "requestSha256": "8a6e18f2f2f5bed7cb4da96d8756136babfdf648600c70d64370e10193619da4",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A proves a bordered Jacobian/resultant identity for binary-form multiplication, while Release B studies Krylov determinant loci for Gauss-Manin differentiation of polynomial exponential periods; they share only computer-assisted determinantal methods and genre, and neither text cites or depends on the other."
+      }
+    },
+    {
+      "pairKey": "decision-geometry|tree-network-separation",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-089",
+      "requestSha256": "c6b69000659733c85785a924f2bca901e4b54315fe9fba9bc628d1cd9229989e",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Both cite Currie et al.'s Jukes–Cantor triangle result, but A builds sequential certification of triangle-orientation compatibility on that characterisation, while B proves flattening-rank and triangle-versus-tree separation results under GTR and general Markov models. Neither result applies to, extends or depends on the other, so the link is only a shared background citation."
+      }
+    },
+    {
+      "pairKey": "cyclicity-loci-exponential-periods|erdos-848-all-n",
+      "role": "sample",
+      "stratum": 1,
+      "customId": "item-090",
+      "requestSha256": "c33ca34a9aa550d688804ee0bc5cc792ffb0c6175c3e50551d284b4c8c0fa773",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A studies Krylov determinantal rank loci for polynomial exponential periods under Gauss-Manin differentiation, while Release B determines the exact extremal function for Erdős problem 848 on nonsquarefree ab+1, so they share only a computer-assisted certificate genre and no mathematical object or dependency."
+      }
+    },
+    {
+      "pairKey": "full-e4-polydegree-column|irreducible-pushforwards-quartic-transitions",
+      "role": "sample",
+      "stratum": 2,
+      "customId": "item-091",
+      "requestSha256": "be82d29f93698ff1194d79518f0c03610ebeade8c52e6f62b3b948a78547c409",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Release A proves the e=4 column of the Polydegree Conjecture, while Release B develops tools toward Furter's R(3) composition-rigidity conjecture; A mentions R(3) only to disclaim it, and otherwise the two share just the field of plane polynomial automorphisms and background citations (Lewis–Perry–Straub, liqsweep)."
+      }
+    },
+    {
+      "pairKey": "bordered-jacobian-foundations|exotic-affine-three-spheres",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-092",
+      "requestSha256": "4bb26a52ab442549d834331c4119bc128c063b4935d638b6518986fa96adef4b",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Binary-form multiplication/factorisation map and the degree-difference parent release",
+        "basis": "Both releases study the same binary-form multiplication (factorisation) map: A gives its bordered Jacobian and recovers the degree-difference determinant, while B studies affine slices and induced Keller maps of that factorisation space. Both explicitly build on the same parent release, 'The degree-difference principle and affine slices of binary-form factorisation spaces'."
+      }
+    },
+    {
+      "pairKey": "dyck-transpositions-n-log-n|ferromagnetic-full-threshold-glauber",
+      "role": "calibration-negative",
+      "stratum": null,
+      "customId": "item-093",
+      "requestSha256": "c4fc74155c2c8beb50744c50532928d81351900d01793ba0565b4d6fef9fed04",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A analyses a random-transposition rejection walk on Dyck paths, while Release B analyses Glauber dynamics for heterogeneous ferromagnetic two-spin systems below the Feng–Guo–Yang threshold; they share only the general method of entropy and log-Sobolev mixing-time analysis, not a specific object or dependency."
+      }
+    },
+    {
+      "pairKey": "full-e4-polydegree-column|o01d0-polar-fibre-structural-reductions",
+      "role": "sample",
+      "stratum": 5,
+      "customId": "item-094",
+      "requestSha256": "94d4b528113d9432b978b211789740fae31eb1ecf2f0ec785cbb62f588716e04",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Release A proves the e=4 Polydegree containment by constructing smooth common zeros of g_{d,4}-type rows, while Release B studies a different internal target, O-01d0: emptiness of a four-generator weighted ideal tied to Furter-rigidity transversality. Beyond the broad Polydegree programme and the shared Lewis–Perry–Straub and liqsweep citations, the texts state no common specific object and no dependency between the two releases."
+      }
+    },
+    {
+      "pairKey": "quartic-inverse-coefficients|smooth-point-certificates-polydegree-containments",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-095",
+      "requestSha256": "58a7e20e35ca54bd002d37fd846e885b56e5b39828fd80b35bca1072b8878a19",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "e=3 Polydegree affine intersection conjecture (quartic inverse-coefficient boundary factors, adjacent coprimality)",
+        "basis": "Release A cites Release B ('Smooth-point certificates for Polydegree containments') as the source of its motivating affine conjecture. A proves the all-d adjacent coprimality, interlacing and affine count that B leaves open, having checked them only through d=200 and d=20."
+      }
+    },
+    {
+      "pairKey": "exact-smith-invariants-affine-determinant-lines|full-e4-polydegree-column",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-096",
+      "requestSha256": "bfec6112cc53e1e2bd58805493b53df36eb6dc8bb8bafcfef044150b35f7c7a1",
+      "label": {
+        "verdict": "reject",
+        "confidence": "low",
+        "sharedObject": null,
+        "basis": "Both releases mention a bordered-Jacobian identity: A builds on a parent release about the bordered Jacobian of binary-form multiplication, and B packages a Lean-checked universal bordered-Jacobian identity, but B never says its identity is A's parent result or concerns binary-form multiplication, and B's main object (the e=4 Polydegree containment) is unrelated to A's Smith invariants of resultant-character lattices."
+      }
+    },
+    {
+      "pairKey": "bounded-product-transposition-cutoff|dyck-transpositions-n-log-n",
+      "role": "calibration-negative",
+      "stratum": null,
+      "customId": "item-097",
+      "requestSha256": "7dd0c5dc4eeb1287b0e33ed36931173d93d4ed4564a4b9abb26f93275d95e295",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A studies cutoff for the product-weighted random transposition walk on the symmetric group S_n, while Release B studies mixing of a rejection random-transposition walk on Dyck paths; they share only the 'random transpositions' vocabulary, the n log n scale and entropy methods, with no common chain, theorem or dependency."
+      }
+    },
+    {
+      "pairKey": "bordered-jacobian-foundations|full-e4-polydegree-column",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-098",
+      "requestSha256": "d0f726606387cdd326d91c96b888c2f3c179ef9d197d0b5ac35585b7f66cf17e",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Release A proves a resultant-times-pairing formula for the bordered Jacobian of binary-form multiplication, while Release B proves the e=4 Polydegree containment via Fourier and interval certificates; B's 'universal bordered-Jacobian identity' is not tied to binary-form multiplication or the resultant, and neither release cites the other, so the overlap is only vocabulary and technique."
+      }
+    },
+    {
+      "pairKey": "full-e4-polydegree-column|furter-r3-through-299",
+      "role": "sample",
+      "stratum": 6,
+      "customId": "item-099",
+      "requestSha256": "19b83dbeff4837ecb4fc86fc157fae07d176616958f198d41a53b854318dfb09",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Both releases work toward the broad Polydegree Conjecture and cite the same background works (Lewis–Perry–Straub, the e=3 column candidate), but they treat different objects: A proves the e=4 containment column via g_{d,4}, while B certifies Furter's R(3,n) via g_{d,3}, whose corollary concerns the already-completed e=3 column, and A explicitly disclaims R(3)."
+      }
+    },
+    {
+      "pairKey": "lps-structural-reductions|smooth-point-certificates-polydegree-containments",
+      "role": "sample",
+      "stratum": 6,
+      "customId": "item-100",
+      "requestSha256": "d0a3ae6097c3e61b3b3d0203718fcf3324142e6a61ae4a2069e42b8905b4a8f9",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Lewis–Perry–Straub auxiliary determinant a_{d,e} in the Polydegree Conjecture",
+        "basis": "Both releases prove new structural results about the same specific object, the Lewis–Perry–Straub determinant a_{d,e} and its Polydegree containment criterion: A gives a complementary-minor duality and p-adic certificates for it, and B identifies it as a Jacobian and derives smooth-point and Hensel certificates."
+      }
+    },
+    {
+      "pairKey": "exact-smith-invariants-affine-determinant-lines|reducible-incidence-divisors",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-101",
+      "requestSha256": "26baa6540030ec1bdd7811bfa563095e3afb52e279fc3bcef5c9e0eee6e0c3d0",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Two-factor binary-form factorisation Jacobian determinant law (degree difference times resultant)",
+        "basis": "Release A generalises the rank-one degree-difference Jacobian determinant formula for normalised binary-form multiplication to k factors, while Release B's isolation theorem works inside the normalised two-factor factorisation architecture, which rests on that same degree-difference determinant law (det = ±(s−r)ρ²) and its upstream degree-difference release; B explicitly excludes multifactor constructions, so the dependency is indirect, hence medium confidence."
+      }
+    },
+    {
+      "pairKey": "symmetry-respecting-tree-torsors|triangulated-graph-product-picard",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-102",
+      "requestSha256": "80b43c82eb54c2c875ddaa457b7acd44db9a2f71ff78dd95cd53f230de46822a",
+      "label": {
+        "verdict": "reject",
+        "confidence": "high",
+        "sharedObject": null,
+        "basis": "Release A classifies symmetry-compatible critical-group torsors on spanning trees of parallel-path graphs, while Release B computes tropical Picard groups of triangulated graph products; they share only the critical-group background and the AIM chip-firing problem list, citing different problems (8 versus 31)."
+      }
+    },
+    {
+      "pairKey": "cyclicity-loci-exponential-periods|cyclicity-root-span-low-rank",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-103",
+      "requestSha256": "0c97d4b1517363905f51e0a3014cd70feb30354b9d931173283d9b390aa285e5",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Fixed-seed cyclic rank of polynomial exponential periods (B cites A as parent release)",
+        "basis": "Release B cites Release A ('Fixed-Seed Cyclicity Loci for Polynomial Exponential Periods') as its parent and builds on it, studying the same fixed-seed cyclic rank of the Gauss-Manin/Krylov system for polynomial exponential phases, so B is a successor to A."
+      }
+    },
+    {
+      "pairKey": "full-e3-column-polydegree-conjecture|o01d0-polar-fibre-structural-reductions",
+      "role": "sample",
+      "stratum": 5,
+      "customId": "item-104",
+      "requestSha256": "848589b813f218c5730134978c700f5f2ce0fe7d9083d612fef8acdbd1207be1",
+      "label": {
+        "verdict": "accept",
+        "confidence": "medium",
+        "sharedObject": "Polydegree Conjecture via the Lewis–Perry–Straub coefficient-polynomial criterion",
+        "basis": "Release A proves the e=3 column of the Polydegree Conjecture through a Jacobian smooth-point form of the Lewis–Perry–Straub criterion, and Release B studies a transversality target for a weighted-homogeneous ideal of coefficient polynomials and a partial-derivative generator that it explicitly links to the Polydegree Conjecture, though B never states the connection to the LPS criterion directly."
+      }
+    },
+    {
+      "pairKey": "full-e3-column-polydegree-conjecture|smooth-point-certificates-polydegree-containments",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-105",
+      "requestSha256": "81e0659a3c50ce1cd5445009e30e04300f7fe6467c21b54a226d755cc778db76",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Jacobian interpretation of the Lewis-Perry-Straub determinant and the e=3 Polydegree containment",
+        "basis": "Release A builds on B's identity a_{d,e}=(-1)^e det D(g) and its smooth-point criterion to prove the e=3 containment that B leaves open for all d, and B cites A as its direct successor."
+      }
+    },
+    {
+      "pairKey": "stocks-are-not-flows|wales-20mph-casualty-attribution",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-106",
+      "requestSha256": "646aa68029f277dad0be055a5ef010f02c591c6723a3bf04ede24696c370cce8",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Release B explicitly cites Release A, but only as the source of a reused identification-before-estimation method, and disclaims being a confirmation of it; the objects themselves differ (English housing tenure and investor pressure versus Welsh 20 mph road casualties), so the link is a shared method rather than a shared object or result dependency."
+      }
+    },
+    {
+      "pairKey": "efx-nine-chores|pmms-three-agents-eight-goods",
+      "role": "sample",
+      "stratum": 3,
+      "customId": "item-107",
+      "requestSha256": "00fd92a27dd78ab350a2ab45eb48ebf62111beb44a54611a0dd83f6fb99f4135",
+      "label": {
+        "verdict": "reject",
+        "confidence": "medium",
+        "sharedObject": null,
+        "basis": "Release B calls A a 'companion' release but explicitly says it concerns a different fairness notion (EFX for chores versus PMMS for goods), so the two share only the computer-assisted fair-division method and genre, with no common theorem, instance or dependency."
+      }
+    },
+    {
+      "pairKey": "full-e3-column-polydegree-conjecture|full-e4-polydegree-column",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-108",
+      "requestSha256": "653d72f69a2cbaf3b301d1188bb3e4d63989d9c683f18be24a43b1dce813b101",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Polydegree Conjecture containment G_(d+e) ⊆ closure G_(d,e+1) via the Lewis–Perry–Straub criterion (e=3 and e=4 columns)",
+        "basis": "Release B extends Release A's Jacobian smooth-point and Fourier-envelope method from the e=3 column to the e=4 column of the same Polydegree containment, and it cites Release A directly."
+      }
+    },
+    {
+      "pairKey": "degree-difference-affine-slices|reducible-incidence-divisors",
+      "role": "calibration-positive",
+      "stratum": null,
+      "customId": "item-109",
+      "requestSha256": "89ff9ce7c82e6903af95545afcf65879cda62ac5de00ee22a66b3008a9a9d0a7",
+      "label": {
+        "verdict": "accept",
+        "confidence": "high",
+        "sharedObject": "Affine slices of binary-form factorisation spaces; B's isolation theorem depends on A's upstream cubic classification (tangent nonosculating linear–quadratic slice)",
+        "basis": "Release B explicitly names Release A as its foundational companion and makes its isolation theorem conditional on A's classification of the same tangent nonosculating linear–quadratic slices, so B extends A rather than merely sharing a field."
+      }
+    }
+  ],
+  "failures": [],
+  "summary": {
+    "calibration": {
+      "sensitivityOnRecordedPairs": {
+        "estimate": 0.8438,
+        "low": 0.6825,
+        "high": 0.9314,
+        "n": 32
+      },
+      "specificityOnNegativeControls": {
+        "estimate": 1,
+        "low": 0.7225,
+        "high": 1,
+        "n": 10
+      },
+      "note": "Recorded pairs are links the maintainer already asserted; the labeller should accept them. Negative controls were confirmed unrelated; the labeller should reject them. Both are limits on what the sample labels mean, not evidence about any candidate."
+    },
+    "perStratum": [
+      {
+        "routeSignalCount": 1,
+        "population": 312,
+        "sampled": 15,
+        "labelled": 15,
+        "accepted": 0,
+        "acceptRate": {
+          "estimate": 0,
+          "low": 0,
+          "high": 0.2039,
+          "n": 15
+        },
+        "projectedAcceptsInPopulation": {
+          "estimate": 0,
+          "low": 0,
+          "high": 63.6
+        }
+      },
+      {
+        "routeSignalCount": 2,
+        "population": 45,
+        "sampled": 15,
+        "labelled": 15,
+        "accepted": 2,
+        "acceptRate": {
+          "estimate": 0.1333,
+          "low": 0.0374,
+          "high": 0.3788,
+          "n": 15
+        },
+        "projectedAcceptsInPopulation": {
+          "estimate": 6,
+          "low": 1.7,
+          "high": 17
+        }
+      },
+      {
+        "routeSignalCount": 3,
+        "population": 17,
+        "sampled": 15,
+        "labelled": 15,
+        "accepted": 4,
+        "acceptRate": {
+          "estimate": 0.2667,
+          "low": 0.109,
+          "high": 0.5195,
+          "n": 15
+        },
+        "projectedAcceptsInPopulation": {
+          "estimate": 4.5,
+          "low": 1.9,
+          "high": 8.8
+        }
+      },
+      {
+        "routeSignalCount": 4,
+        "population": 10,
+        "sampled": 10,
+        "labelled": 10,
+        "accepted": 5,
+        "acceptRate": {
+          "estimate": 0.5,
+          "low": 0.2366,
+          "high": 0.7634,
+          "n": 10
+        },
+        "projectedAcceptsInPopulation": {
+          "estimate": 5,
+          "low": 2.4,
+          "high": 7.6
+        }
+      },
+      {
+        "routeSignalCount": 5,
+        "population": 8,
+        "sampled": 8,
+        "labelled": 8,
+        "accepted": 7,
+        "acceptRate": {
+          "estimate": 0.875,
+          "low": 0.5291,
+          "high": 0.9776,
+          "n": 8
+        },
+        "projectedAcceptsInPopulation": {
+          "estimate": 7,
+          "low": 4.2,
+          "high": 7.8
+        }
+      },
+      {
+        "routeSignalCount": 6,
+        "population": 4,
+        "sampled": 4,
+        "labelled": 4,
+        "accepted": 3,
+        "acceptRate": {
+          "estimate": 0.75,
+          "low": 0.3006,
+          "high": 0.9544,
+          "n": 4
+        },
+        "projectedAcceptsInPopulation": {
+          "estimate": 3,
+          "low": 1.2,
+          "high": 3.8
+        }
+      }
+    ],
+    "projectedAcceptsAcrossCandidates": {
+      "estimate": 25.5,
+      "low": 11.4,
+      "high": 108.6,
+      "population": 396
+    }
+  },
+  "dryRun": false
+}

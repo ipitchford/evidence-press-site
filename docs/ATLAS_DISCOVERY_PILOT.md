@@ -116,6 +116,13 @@ request's hash, the labels, the labeller's sensitivity on recorded pairs and
 specificity on controls with Wilson intervals, the per-stratum accept rate
 with intervals, and the projected number of accepts across all candidates.
 
+First estimate (14 October 2026, 109 items): sensitivity 0.84 on recorded
+pairs, specificity 1.00 on controls; acceptance by route-signal count 0/15,
+2/15, 4/15, 5/10, 7/8 and 3/4 for one to six signals; about 25 of 396
+candidates projected to survive the cheap falsifier, interval 11 to 109.
+The labeller's misses on recorded pairs were links recorded as method reuse
+or thematic relation, which the cheap falsifier does not count.
+
 The labeller is a same-vendor model. Its labels are an evaluation statistic
 for the pilot. They never enter the proposal register, are not intake
 decisions, and are not independent assurance; the record says so.
