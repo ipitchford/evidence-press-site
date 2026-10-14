@@ -199,6 +199,82 @@ async function main() {
     ok(/^[a-f0-9]{64}$/.test(loaded.sha256) && loaded.benchmark.negatives.length === 2, 'loadBenchmark returns the file hash and content');
   }
 
+  // --- Task 5: evaluate ---
+  {
+    const record = { candidates: [
+      { pairKey: 'a|b', benchmarkRole: 'hidden-positive', routes: { lexical: { score: 0.9 }, 'citation-overlap': null, 'citation-path': null, 'shared-object': null, semantic: 'not-run' } },
+      { pairKey: 'c|d', benchmarkRole: 'negative-control', routes: { lexical: { score: 0.8 }, 'citation-overlap': { score: 1 }, 'citation-path': null, 'shared-object': null, semantic: 'not-run' } },
+      { pairKey: 'e|f', benchmarkRole: null, routes: { lexical: { score: 0.7 }, 'citation-overlap': null, 'citation-path': null, 'shared-object': null, semantic: 'not-run' } }
+    ] };
+    const benchmark = { hidden: [['a', 'b'], ['x', 'y']], negatives: [{ pair: ['c', 'd'] }] };
+    const ev = disc.evaluateRun(record, benchmark);
+    ok(ev.union.recoveryAt[25].hits === 1 && ev.union.recoveryAt[25].fraction === 0.5, 'union recovery counts hidden positives in the top 25');
+    ok(ev.union.hiddenRanks['a|b'] === 1 && ev.union.hiddenRanks['x|y'] === 'absent', 'hidden ranks list rank or absent');
+    ok(ev.union.negativesAt[25] === 1, 'negative controls inside the cutoff are counted');
+    ok(ev.perRoute['citation-overlap'].ranked === 1 && ev.perRoute['citation-overlap'].hiddenRanks['a|b'] === 'absent',
+      'per-route ranking only counts pairs with signal on that route');
+    ok(ev.reviewerEffort === null, 'reviewer effort is left for a person');
+  }
+  {
+    const stale = { corpusFingerprint: '0'.repeat(64), hidden: [], negatives: [], positives: [] };
+    let threw = null;
+    try { disc.evaluateDiscovery(ROOT, { topK: 10, benchmark: stale }); } catch (e) { threw = e.message; }
+    ok(threw && /fingerprint/.test(threw), 'evaluate refuses a benchmark frozen on a different corpus', threw);
+    const live = fs.existsSync(path.join(ROOT, 'data', 'atlas-discovery', 'BENCHMARK.json'));
+    if (live) {
+      const { benchmark } = bench.loadBenchmark(ROOT);
+      const record = disc.evaluateDiscovery(ROOT, { topK: 100, benchmark });
+      const hiddenKeys = benchmark.hidden.map(p => text.pairKey(...p));
+      ok(record.mode === 'evaluate' && record.evaluation && record.benchmark && record.benchmark.hiddenCount === hiddenKeys.length,
+        'evaluate records benchmark provenance');
+      const pathInput = disc.routeCitationPath(disc.loadGraph(ROOT, text.loadCorpus(ROOT).papers), new Set(hiddenKeys));
+      ok(hiddenKeys.every(k => !pathInput.has(k)), 'hidden positives never appear as citation-path output of their own edges');
+      ok(record.candidates.filter(c => c.benchmarkRole === 'hidden-positive').length ===
+        Object.values(record.evaluation.union.hiddenRanks).filter(r => r !== 'absent').length,
+      'hidden positives present in candidates match ranked hidden positives');
+    } else {
+      console.log('skip    live benchmark checks (BENCHMARK.json not yet frozen)');
+    }
+  }
+
+  // --- Task 6: draft ---
+  {
+    const { validateProposal, expectedProposalId } = require('./atlas-proposals');
+    const corpus = text.loadCorpus(ROOT);
+    const graph = disc.loadGraph(ROOT, corpus.papers);
+    const policy = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'ATLAS_PROPOSAL_POLICY.json'), 'utf8'));
+    const record = disc.runDiscovery(ROOT, { topK: 30 });
+    const runPath = 'data/atlas-discovery/runs/test-run.json';
+    fs.mkdirSync(path.join(ROOT, 'data', 'atlas-discovery', 'runs'), { recursive: true });
+    fs.writeFileSync(path.join(ROOT, runPath), JSON.stringify(record));
+    try {
+      const candidate = record.candidates[0];
+      const draft = disc.draftProposal({ root: ROOT, record, runPath, pairKey: candidate.pairKey, submittedAt: '2026-10-14T12:00:00Z' });
+      const errors = validateProposal(draft, { policy, graph, root: ROOT });
+      ok(errors.length === 0, 'draft validates with the live proposal validator', errors.join('; '));
+      ok(draft.proposalId === expectedProposalId(draft), 'draft identity is content-derived');
+      ok(draft.submitter.actorType === 'agent' && draft.submitter.humanContributors.length === 0, 'draft names no human');
+      ok(draft.currentState === 'awaiting-review' && draft.decisionReceipts.length === 0, 'draft starts awaiting review with no receipts');
+      const benchmark = { hidden: [], negatives: [{ pair: candidate.pair, reason: 'test' }], positives: [] };
+      let threw = null;
+      try { disc.draftProposal({ root: ROOT, record, runPath, pairKey: candidate.pairKey, submittedAt: '2026-10-14T12:00:00Z', benchmark }); } catch (e) { threw = e.message; }
+      ok(threw && /negative control/.test(threw), 'draft refuses a negative-control pair without --allow-negative', threw);
+      const allowed = disc.draftProposal({ root: ROOT, record, runPath, pairKey: candidate.pairKey, submittedAt: '2026-10-14T12:00:00Z', benchmark, allowNegative: true });
+      ok(allowed.riskFlags.includes('benchmark-negative-control'), 'an allowed negative draft is flagged');
+      let missing = null;
+      try { disc.draftProposal({ root: ROOT, record, runPath, pairKey: 'nope|nothing', submittedAt: '2026-10-14T12:00:00Z' }); } catch (e) { missing = e.message; }
+      ok(missing && /not a candidate/.test(missing), 'draft refuses a pair absent from the run record', missing);
+    } finally { fs.unlinkSync(path.join(ROOT, runPath)); }
+  }
+  {
+    const files = ['atlas-discovery.js', 'atlas-benchmark.js', 'atlas-text.js'];
+    const source = files.map(f => fs.readFileSync(path.join(ROOT, 'tools', f), 'utf8')).join('\n');
+    const writes = source.match(/writeFileSync\([^;]*/g) || [];
+    ok(writes.length > 0 && !/RELATIONSHIP_REGISTRY|METHOD_REGISTRY|atlas-proposals|papers/.test(writes.join('\n')),
+      'generator sources never write to the registry, method registry, proposals or papers', writes.join(' | '));
+    ok(!/require\(['"]\.\/build['"]\)/.test(source), 'generator does not import the site build');
+  }
+
 }
 
 main().then(() => {

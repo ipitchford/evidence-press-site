@@ -377,6 +377,122 @@ async function semanticRoute(root, { apiKey = process.env.OPENAI_API_KEY, cacheD
   return semanticScoresFromVectors(vectors, topK, model);
 }
 
+function rankingStats(ordered, hiddenKeys, negativeKeys) {
+  const position = new Map(ordered.map((key, i) => [key, i + 1]));
+  const recoveryAt = {};
+  const negativesAt = {};
+  for (const k of CUTOFFS) {
+    const hits = hiddenKeys.filter(key => position.has(key) && position.get(key) <= k).length;
+    recoveryAt[k] = { hits, fraction: hiddenKeys.length ? Number((hits / hiddenKeys.length).toFixed(4)) : null };
+    negativesAt[k] = negativeKeys.filter(key => position.has(key) && position.get(key) <= k).length;
+  }
+  const hiddenRanks = {};
+  for (const key of hiddenKeys) hiddenRanks[key] = position.has(key) ? position.get(key) : 'absent';
+  return { ranked: ordered.length, recoveryAt, negativesAt, hiddenRanks };
+}
+
+function evaluateRun(record, benchmark) {
+  const hiddenKeys = benchmark.hidden.map(p => text.pairKey(...p));
+  const negativeKeys = benchmark.negatives.map(n => text.pairKey(...n.pair));
+  const perRoute = {};
+  for (const route of ROUTES) {
+    const withSignal = record.candidates.filter(c => c.routes[route] && c.routes[route] !== 'not-run');
+    if (!withSignal.length) { perRoute[route] = { ranked: 0, note: 'no signal or not run' }; continue; }
+    withSignal.sort((x, y) => y.routes[route].score - x.routes[route].score || (x.pairKey < y.pairKey ? -1 : 1));
+    perRoute[route] = rankingStats(withSignal.map(c => c.pairKey), hiddenKeys, negativeKeys);
+  }
+  return {
+    hiddenCount: hiddenKeys.length,
+    negativeCount: negativeKeys.length,
+    cutoffs: CUTOFFS,
+    perRoute,
+    union: rankingStats(record.candidates.map(c => c.pairKey), hiddenKeys, negativeKeys),
+    reviewerEffort: null,
+    note: 'recovery, false-proposal burden and reviewer effort are reported separately and never combined'
+  };
+}
+
+function evaluateDiscovery(root, { topK = 100, semanticScores = null, benchmark, benchmarkInfo = null } = {}) {
+  const corpus = text.loadCorpus(root);
+  if (!benchmark || benchmark.corpusFingerprint !== corpus.fingerprint) {
+    throw new Error(`benchmark corpus fingerprint ${String(benchmark && benchmark.corpusFingerprint).slice(0, 12)} does not match the live corpus ${corpus.fingerprint.slice(0, 12)}; refreeze before evaluating`);
+  }
+  const record = runDiscovery(root, { topK, semanticScores, benchmark });
+  record.benchmark = benchmarkInfo || { path: BENCHMARK_PATH, sha256: null, hiddenCount: benchmark.hidden.length, negativeCount: benchmark.negatives.length };
+  record.evaluation = evaluateRun(record, benchmark);
+  return record;
+}
+
+function routeSummary(candidate) {
+  const parts = [];
+  const r = candidate.routes;
+  const has = route => r[route] && r[route] !== 'not-run';
+  if (has('citation-overlap')) parts.push(`shared external references: ${r['citation-overlap'].evidence.sharedReferences.join(', ')}`);
+  if (has('citation-path')) parts.push(`shared citation intermediaries: ${r['citation-path'].evidence.intermediaries.join(', ')}`);
+  if (has('shared-object')) parts.push(`shared declared objects: ${[...r['shared-object'].evidence.keywords, ...r['shared-object'].evidence.mathObjects].join(', ')}`);
+  if (has('lexical')) parts.push(`lexical cosine ${r.lexical.score} on terms ${r.lexical.evidence.terms.slice(0, 6).map(t => t.term).join(', ')}`);
+  if (has('semantic')) parts.push(`embedding cosine ${r.semantic.score} (${r.semantic.evidence.model})`);
+  return parts.join('; ') || 'no route signal';
+}
+
+function draftProposal({ root, record, runPath, pairKey, submittedAt, allowNegative = false, benchmark = null }) {
+  const candidate = record.candidates.find(c => c.pairKey === pairKey);
+  if (!candidate) throw new Error(`pair ${pairKey} is not a candidate in ${runPath}`);
+  const negatives = new Set(benchmark ? benchmark.negatives.map(n => text.pairKey(...n.pair)) : []);
+  if (negatives.has(pairKey) && !allowNegative) throw new Error(`pair ${pairKey} is a benchmark negative control; pass --allow-negative to draft it deliberately`);
+  if (!fs.existsSync(path.join(root, runPath))) throw new Error(`run record ${runPath} does not exist under the repository`);
+  const [a, b] = candidate.pair;
+  const meta = slug => JSON.parse(fs.readFileSync(path.join(root, 'papers', slug, 'meta.json'), 'utf8'));
+  const metaA = meta(a);
+  const metaB = meta(b);
+  const rank = record.candidates.indexOf(candidate) + 1;
+  const evidence = routeSummary(candidate);
+  const expires = new Date(Date.parse(submittedAt) + 183 * 86400000).toISOString().replace(/\.\d+Z$/, 'Z');
+  const riskFlags = ['route-derived-candidate', 'rival-explanation-untested'];
+  if (candidate.existingAdjacency.length) riskFlags.push('existing-adjacency');
+  if (negatives.has(pairKey)) riskFlags.push('benchmark-negative-control');
+  const draft = {
+    schemaVersion: '1.0',
+    recordType: 'evidence-atlas-research-proposal',
+    proposalId: null,
+    kind: 'relationship-candidate',
+    title: `Candidate connection: ${metaA.shortTitle || a} and ${metaB.shortTitle || b}`,
+    question: `Do releases ${a} and ${b} share a lemma, antecedent, unresolved assumption, reusable verifier or dependency that the Atlas does not record?`,
+    summary: `Discovery routes with signal: ${evidence}. Rule-generated rival explanation (${candidate.rivalExplanation.ruleId}): ${candidate.rivalExplanation.text}`,
+    whyNow: `Nominated at rank ${rank} of ${record.candidateCount} in run record ${runPath} (routes run: ${record.routesRun.join(', ')}; corpus ${record.corpusFingerprint}). The pair has no direct Atlas edge.`,
+    submittedAt,
+    expiresAt: expires,
+    submitter: {
+      actorType: 'agent',
+      displayName: 'Evidence Atlas discovery generator',
+      humanContributors: [],
+      agentContributors: [{
+        system: 'Evidence Atlas discovery generator',
+        model: `atlas-discovery ${GENERATOR_VERSION}`,
+        role: 'Deterministic multi-route retrieval over the frozen Evidence Press corpus',
+        runRecordUrl: runPath,
+        provenanceNote: `Rule-generated from run record ${runPath} at corpus ${record.corpusFingerprint}; no model judgment was applied to this draft.`
+      }],
+      contactUrl: null
+    },
+    atlasAnchors: [
+      { nodeId: `release:${a}`, basis: `First member of the candidate pair; ${evidence}` },
+      { nodeId: `release:${b}`, basis: `Second member of the candidate pair; ${evidence}` }
+    ],
+    sourceRefs: [`${BASE_URL}/releases/${a}/`, `${BASE_URL}/releases/${b}/`, runPath],
+    priorArtStatus: 'not-started',
+    assessments: { novelty: 'unassessed', importance: 'unassessed', tractability: 'unassessed' },
+    cheapFalsifier: 'Read both technical accounts and check whether the shared terms, references or intermediaries name the same mathematical object or the same dependency; if they do not, reject the candidate.',
+    expectedInformationGain: 'If confirmed, one recorded relationship replaces an isolated pair in the Atlas; if rejected, the rule-generated rival explanation is retained as negative knowledge.',
+    resourceEstimate: { class: 'small', basis: 'Two release pages and their evidence packages are public and replayable.' },
+    riskFlags,
+    currentState: 'awaiting-review',
+    decisionReceipts: []
+  };
+  draft.proposalId = expectedProposalId(draft);
+  return draft;
+}
+
 function parseArgs(argv) {
   const args = { _: [] };
   for (let i = 0; i < argv.length; i++) {
@@ -412,6 +528,34 @@ async function main() {
     console.log(`wrote ${path.relative(root, file)}: ${record.candidateCount} candidates from routes ${record.routesRun.join(', ')}`);
     return;
   }
+  if (command === 'evaluate') {
+    const { loadBenchmark } = require('./atlas-benchmark');
+    const { benchmark, sha256 } = loadBenchmark(root);
+    const semanticScores = args.semantic ? await semanticRoute(root, { topK }) : null;
+    const benchmarkInfo = { path: BENCHMARK_PATH, sha256, hiddenCount: benchmark.hidden.length, negativeCount: benchmark.negatives.length };
+    const record = evaluateDiscovery(root, { topK, semanticScores, benchmark, benchmarkInfo });
+    const file = writeRun(root, record, outDir);
+    const u = record.evaluation.union;
+    const h = record.evaluation.hiddenCount;
+    console.log(`wrote ${path.relative(root, file)}: union recovery@25 ${u.recoveryAt[25].hits}/${h}, @100 ${u.recoveryAt[100].hits}/${h}; negatives@25 ${u.negativesAt[25]}`);
+    return;
+  }
+  if (command === 'draft') {
+    if (!args.run || !args.pair) throw new Error('draft needs --run <repo-relative run record> and --pair a,b');
+    const runPath = String(args.run).replace(/^\.\//, '');
+    const record = JSON.parse(fs.readFileSync(path.join(root, runPath), 'utf8'));
+    const [a, b] = String(args.pair).split(',');
+    const benchmarkFile = path.join(root, BENCHMARK_PATH);
+    const benchmark = fs.existsSync(benchmarkFile) ? JSON.parse(fs.readFileSync(benchmarkFile, 'utf8')) : null;
+    const submittedAt = args['submitted-at'] || isoNow();
+    const draft = draftProposal({ root, record, runPath, pairKey: text.pairKey(a, b), submittedAt, allowNegative: Boolean(args['allow-negative']), benchmark });
+    const dir = path.join(root, DRAFTS_DIR);
+    fs.mkdirSync(dir, { recursive: true });
+    const file = path.join(dir, `${[a, b].sort().join('--')}.json`);
+    fs.writeFileSync(file, JSON.stringify(draft, null, 2) + '\n');
+    console.log(`wrote ${path.relative(root, file)} (${draft.proposalId})`);
+    return;
+  }
   throw new Error(`unknown command ${command}; use run | evaluate | draft`);
 }
 
@@ -420,7 +564,8 @@ module.exports = {
   RUNS_DIR, DRAFTS_DIR, BENCHMARK_PATH,
   identityIndex, loadGraph, directPairs, adjacency, normalizeExternalReference,
   routeCitationOverlap, routeCitationPath, routeSharedObject, routeLexical,
-  signals, rivalExplanation, assembleCandidates, buildRunRecord, runDiscovery, embedTexts, semanticScoresFromVectors, semanticRoute, parseArgs, writeRun
+  signals, rivalExplanation, assembleCandidates, buildRunRecord, runDiscovery, embedTexts, semanticScoresFromVectors, semanticRoute,
+  rankingStats, evaluateRun, evaluateDiscovery, routeSummary, draftProposal, parseArgs, writeRun
 };
 
 if (require.main === module) main().catch(error => { console.error(error.message); process.exit(1); });
