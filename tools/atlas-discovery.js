@@ -321,8 +321,61 @@ function runDiscovery(root, { topK = 100, semanticScores = null, benchmark = nul
   });
 }
 
-// Task 3 replaces this stub with the embedding route.
-async function semanticRoute() { throw new Error('semantic route not yet implemented'); }
+function defaultCacheDir() { return path.join(os.homedir(), 'Library', 'Caches', 'evidence-press-atlas-discovery'); }
+
+async function embedTexts(texts, { apiKey, cacheDir = defaultCacheDir(), fetchImpl = globalThis.fetch, model = EMBEDDING_MODEL, batchSize = 32 } = {}) {
+  const dir = path.join(cacheDir, model);
+  fs.mkdirSync(dir, { recursive: true });
+  const vectors = new Map();
+  const pending = [];
+  for (const [slug, body] of [...texts].sort((x, y) => (x[0] < y[0] ? -1 : 1))) {
+    const clipped = body.slice(0, 24000);
+    const file = path.join(dir, `${text.sha256(clipped)}.json`);
+    if (fs.existsSync(file)) vectors.set(slug, JSON.parse(fs.readFileSync(file, 'utf8')).vector);
+    else pending.push({ slug, clipped, file });
+  }
+  for (let i = 0; i < pending.length; i += batchSize) {
+    const batch = pending.slice(i, i + batchSize);
+    const response = await fetchImpl('https://api.openai.com/v1/embeddings', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model, input: batch.map(item => item.clipped) })
+    });
+    if (!response.ok) throw new Error(`semantic route: embeddings request failed with HTTP ${response.status}`);
+    const payload = await response.json();
+    for (const item of payload.data) {
+      const target = batch[item.index];
+      fs.writeFileSync(target.file, JSON.stringify({ model, vector: item.embedding }));
+      vectors.set(target.slug, item.embedding);
+    }
+  }
+  return vectors;
+}
+
+function semanticScoresFromVectors(vectors, topK, model = EMBEDDING_MODEL) {
+  const norm = v => Math.sqrt(v.reduce((s, x) => s + x * x, 0)) || 1;
+  const slugs = [...vectors.keys()].sort();
+  const norms = new Map(slugs.map(s => [s, norm(vectors.get(s))]));
+  const scored = [];
+  for (let i = 0; i < slugs.length; i++) {
+    for (let j = i + 1; j < slugs.length; j++) {
+      const a = vectors.get(slugs[i]);
+      const b = vectors.get(slugs[j]);
+      let dot = 0;
+      for (let k = 0; k < a.length; k++) dot += a[k] * b[k];
+      scored.push({ key: text.pairKey(slugs[i], slugs[j]), score: dot / (norms.get(slugs[i]) * norms.get(slugs[j])) });
+    }
+  }
+  scored.sort((x, y) => y.score - x.score || (x.key < y.key ? -1 : 1));
+  return new Map(scored.slice(0, topK).map(item => [item.key, { score: Number(item.score.toFixed(6)), evidence: { model } }]));
+}
+
+async function semanticRoute(root, { apiKey = process.env.OPENAI_API_KEY, cacheDir, fetchImpl, model = EMBEDDING_MODEL, topK = 100 } = {}) {
+  if (!apiKey) throw new Error('semantic route requested with --semantic but OPENAI_API_KEY is not set; the route is never silently skipped');
+  const corpus = text.loadCorpus(root);
+  const vectors = await embedTexts(corpus.texts, { apiKey, cacheDir, fetchImpl, model });
+  return semanticScoresFromVectors(vectors, topK, model);
+}
 
 function parseArgs(argv) {
   const args = { _: [] };
@@ -367,7 +420,7 @@ module.exports = {
   RUNS_DIR, DRAFTS_DIR, BENCHMARK_PATH,
   identityIndex, loadGraph, directPairs, adjacency, normalizeExternalReference,
   routeCitationOverlap, routeCitationPath, routeSharedObject, routeLexical,
-  signals, rivalExplanation, assembleCandidates, buildRunRecord, runDiscovery, semanticRoute, parseArgs, writeRun
+  signals, rivalExplanation, assembleCandidates, buildRunRecord, runDiscovery, embedTexts, semanticScoresFromVectors, semanticRoute, parseArgs, writeRun
 };
 
 if (require.main === module) main().catch(error => { console.error(error.message); process.exit(1); });

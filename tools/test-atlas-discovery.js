@@ -134,6 +134,71 @@ async function main() {
       'candidates are ordered by route signal count first');
   }
 
+  // --- Task 3: semantic route ---
+  {
+    let threw = null;
+    try { await disc.semanticRoute(ROOT, { apiKey: '', cacheDir: fs.mkdtempSync(path.join(os.tmpdir(), 'emb-')) }); } catch (error) { threw = error.message; }
+    ok(threw && /semantic/.test(threw) && /OPENAI_API_KEY/.test(threw), 'semantic route fails loudly without a credential', threw);
+  }
+  {
+    const cacheDir = fs.mkdtempSync(path.join(os.tmpdir(), 'emb-'));
+    const calls = [];
+    const fakeFetch = async (url, init) => {
+      const body = JSON.parse(init.body);
+      calls.push(body.input.length);
+      return { ok: true, status: 200, json: async () => ({ data: body.input.map((t, i) => ({ index: i, embedding: t.includes('alpha') ? [1, 0] : [0, 1] })) }) };
+    };
+    const texts = new Map([['alpha', 'alpha text'], ['beta', 'beta text'], ['gamma', 'alpha again']]);
+    const first = await disc.embedTexts(texts, { apiKey: 'test', cacheDir, fetchImpl: fakeFetch });
+    const second = await disc.embedTexts(texts, { apiKey: 'test', cacheDir, fetchImpl: fakeFetch });
+    ok(first.get('alpha')[0] === 1 && second.get('gamma')[0] === 1, 'embedTexts returns vectors per slug');
+    ok(calls.length === 1, 'cached vectors are not re-requested', String(calls));
+    const scores = disc.semanticScoresFromVectors(first, 10);
+    ok(scores.get('alpha|gamma').score === 1 && scores.get('alpha|beta').score === 0, 'semantic scores are cosines over vectors');
+    const failing = async () => ({ ok: false, status: 429, json: async () => ({}) });
+    let threw = null;
+    try { await disc.embedTexts(new Map([['delta', 'delta text']]), { apiKey: 'test', cacheDir, fetchImpl: failing }); } catch (error) { threw = error.message; }
+    ok(threw && /429/.test(threw), 'embedding HTTP failures are raised, not swallowed', threw);
+  }
+
+  // --- Task 4: benchmark ---
+  const bench = require('./atlas-benchmark');
+  {
+    const positives = [['a', 'b'], ['c', 'd'], ['e', 'f'], ['g', 'h'], ['i', 'j']];
+    const h1 = bench.selectHidden(positives, 'f'.repeat(64));
+    const h2 = bench.selectHidden(positives, 'f'.repeat(64));
+    ok(h1.length === 2 && JSON.stringify(h1) === JSON.stringify(h2), 'hidden selection is deterministic and takes floor(n/2)');
+    ok(h1.every(p => positives.some(q => q[0] === p[0] && q[1] === p[1])), 'hidden pairs are drawn from the positives');
+  }
+  {
+    const proposals = bench.proposeNegatives(ROOT, { count: 5 });
+    ok(proposals.length === 5 && proposals.every(p => p.pair.length === 2 && p.lexicalScore > 0 && p.reasons.length >= 3),
+      'proposeNegatives returns lexically similar pairs with no declared signal');
+  }
+  {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bench-'));
+    for (const rel of ['papers', 'schemas']) fs.symlinkSync(path.join(ROOT, rel), path.join(dir, rel));
+    fs.mkdirSync(path.join(dir, 'data', 'atlas-discovery'), { recursive: true });
+    for (const f of ['METHOD_REGISTRY.json', 'RELATIONSHIP_REGISTRY.json']) fs.copyFileSync(path.join(ROOT, 'data', f), path.join(dir, 'data', f));
+    const direct = [...disc.directPairs(disc.loadGraph(ROOT, text.loadCorpus(ROOT).papers)).keys()];
+    const [x, y] = direct[0].split('|');
+    const controls = { confirmedBy: 'test', confirmedAt: '2026-10-14T00:00:00Z', pairs: [{ pair: [x, y], reason: 'deliberately a positive' }] };
+    const controlsPath = path.join(dir, 'data', 'atlas-discovery', 'NEGATIVE_CONTROLS.json');
+    fs.writeFileSync(controlsPath, JSON.stringify(controls));
+    let threw = null;
+    try { bench.freezeBenchmark(dir, { frozenAt: '2026-10-14T00:00:00Z' }); } catch (e) { threw = e.message; }
+    ok(threw && /positive/.test(threw), 'freeze rejects a negative control that is a recorded positive', threw);
+    const prop = bench.proposeNegatives(ROOT, { count: 2 });
+    controls.pairs = prop.map(p => ({ pair: p.pair, reason: 'test' }));
+    fs.writeFileSync(controlsPath, JSON.stringify(controls));
+    const frozen = bench.freezeBenchmark(dir, { frozenAt: '2026-10-14T00:00:00Z' });
+    ok(frozen.positives.length === direct.length && frozen.hidden.length === Math.floor(direct.length / 2), 'freeze records every direct pair and hides half');
+    ok(frozen.corpusFingerprint === text.loadCorpus(ROOT).fingerprint, 'benchmark carries the corpus fingerprint');
+    ok(fs.existsSync(path.join(dir, 'data', 'atlas-discovery', 'BENCHMARK.json')), 'freeze writes BENCHMARK.json');
+    const loaded = bench.loadBenchmark(dir);
+    ok(/^[a-f0-9]{64}$/.test(loaded.sha256) && loaded.benchmark.negatives.length === 2, 'loadBenchmark returns the file hash and content');
+  }
+
 }
 
 main().then(() => {
