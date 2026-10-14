@@ -1,0 +1,189 @@
+{
+  "slug": "rbm-nonnegative-logarithmic-mixing",
+  "title": "Logarithmic alternating-scan mixing for restricted Boltzmann machines with nonnegative interactions and biases",
+  "shortTitle": "Two layers, logarithmic mixing",
+  "oneLine": "A uniform logarithmic sweep bound removes a minimum-interaction assumption for nonnegative RBMs; an elementary disjoint-edge example shows the order is necessary.",
+  "abstract": "An unrefereed mathematical candidate proves worst-start full-joint total-variation distance at most min{1,(n/2)(2/e)^(2k−2)} after k complete alternating heat-bath sweeps for every finite binary bipartite RBM with finite nonnegative interactions and biases. The constants are independent of graph degree and parameter size. The argument combines an averaged logistic-influence inequality with conditioning before a layer's fresh update. The revised manuscript gives finite-degree sufficient constants, an exact disjoint-edge product reduction, logarithmic-order sharpness and a lattice-qualified cutoff profile for that example. It does not prove optimality of 2/e or general cutoff, and does not cover arbitrary negative biases or signed interactions.",
+  "datePublished": "2026-10-14",
+  "doi": "10.5281/zenodo.23355831",
+  "conceptDoi": "10.5281/zenodo.23355830",
+  "zenodoUrl": "https://zenodo.org/records/23355831",
+  "pdfUrl": "https://zenodo.org/records/23355831/files/rbm-nonnegative-logarithmic-mixing-v2.0.0-candidate.pdf",
+  "altPdfUrl": "https://github.com/ipitchford/rbm-nonnegative-logarithmic-mixing/releases/download/v2.0.0-candidate/rbm-nonnegative-logarithmic-mixing-v2.0.0-candidate.pdf",
+  "repoUrl": "https://github.com/ipitchford/rbm-nonnegative-logarithmic-mixing",
+  "releaseUrl": "https://github.com/ipitchford/rbm-nonnegative-logarithmic-mixing/releases/tag/v2.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "version": "2.0.0-candidate",
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "restricted Boltzmann machines",
+    "alternating Gibbs sampler",
+    "mixing time",
+    "monotone coupling",
+    "nonnegative biases",
+    "logistic influence",
+    "product-chain cutoff"
+  ],
+  "problem": {
+    "name": "Remove the positive minimum-interaction assumption in alternating-scan RBM mixing",
+    "url": "https://arxiv.org/abs/2604.00963v2"
+  },
+  "keyResults": [
+    "A candidate O(log(n/ε)) complete-sweep bound for all finite heterogeneous nonnegative interactions and biases, with absolute constants.",
+    "A universal sufficient aggregate logistic-influence coefficient 2/e, applied through fresh-history conditional independence.",
+    "An exact binomial full-joint distance reduction and bounded-window cutoff for a disjoint-edge example show logarithmic-order sharpness.",
+    "Finite-degree sufficient refinements do not establish optimality of the universal coefficient; a negative-bias obstruction preserves the sign boundary."
+  ],
+  "evidence": "Written analytic proof, supplied numerical referee diagnostics and separately scoped finite extension checks. Finite diagnostics do not establish the universal theorem.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. No external human peer review, unaffiliated reproduction, proof-assistant verification or global priority certification established.",
+  "openProblems": [],
+  "relatedWorks": [
+    {
+      "citation": "Feng, Guo and Yang, Rapid mixing in positively weighted restricted Boltzmann machines, arXiv:2604.00963v2. Theorem 1 and the following minimum-interaction question.",
+      "url": "https://arxiv.org/abs/2604.00963v2"
+    },
+    {
+      "citation": "Tosh, Mixing Rates for the Alternating Gibbs Sampler over Restricted Boltzmann Machines and Friends, ICML 2016, PMLR 48, 840–849. Alternating-kernel coupling and a norm-restricted RBM mixing theorem.",
+      "url": "https://proceedings.mlr.press/v48/tosh16.html"
+    },
+    {
+      "citation": "Kwon, Qin, Wang and Wei, A phase transition in sampling from restricted Boltzmann machines, Annals of Applied Probability 36(2), 1615–1652 (2026), DOI 10.1214/25-AAP2265. Appendix A Lemma 21 refers specifically to the linked arXiv version 1.",
+      "url": "https://arxiv.org/abs/2410.08423v1"
+    },
+    {
+      "citation": "Chen and Kumagai, Cutoffs for product chains, Stochastic Processes and their Applications128(11), 3840–3879 (2018). Product-chain context; update-clock constants are not imported.",
+      "url": "https://doi.org/10.1016/j.spa.2018.01.002"
+    },
+    {
+      "citation": "Chin, Moitra, Mossel and Sandon, The power of an adversary in Glauber dynamics, COLT2024, PMLR247, 1102–1124. Methodological context for strong-field concavity, not the uniform alternating-RBM theorem.",
+      "url": "https://proceedings.mlr.press/v247/chin24a.html"
+    }
+  ],
+  "citeText": "Anonymous (2026). Logarithmic alternating-scan mixing for restricted Boltzmann machines with nonnegative interactions and biases. Version 2.0.0-candidate. https://doi.org/10.5281/zenodo.23355831",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Revised manuscript, archive-bound replay and scoped internal proof checks, 14 October 2026; public availability is assessed separately.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research workflow",
+      "OpenAI Codex: release-draft and media preparation"
+    ],
+    "humanRole": "Publication authority; no human mathematical contribution asserted.",
+    "reviewStatus": "Coordinated internal mathematical checking and supplied AI-assisted referee material; no external human peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23355831",
+      "note": "Published GitHub and Zenodo assets matched the frozen local package by provider digests and downloaded bytes; site readback is recorded separately."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/rbm-nonnegative-logarithmic-mixing/blob/v2.0.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Supplied finite audits and fresh public diagnostics passed normal and optimized execution; exact product identities and floating mixing diagnostics are distinguished. Universal statements remain written proofs."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reproduction established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Separately written checks in a coordinated workflow do not establish unaffiliated independent reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant verification established."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal model and supplied AI-assisted reviews do not establish external human specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/rbm-nonnegative-logarithmic-mixing/blob/v2.0.0-candidate/ENVIRONMENT.txt",
+      "note": "Python standard-library diagnostics and version information supplied. No hermetic reconstruction or unaffiliated reproduction established."
+    }
+  },
+  "media": [],
+  "narration": "Two layers, logarithmic mixing. An Evidence Press briefing.\n\nA restricted Boltzmann machine has two layers of binary variables. Its sampler redraws the first layer using the second, then redraws the second using the first. Those two updates make one complete sweep.\n\nHow many sweeps are needed before the distribution largely forgets its starting point? This candidate gives a logarithmic upper bound when both the interactions and the biases are nonnegative. The same constant works for uneven layers, different interaction strengths and arbitrary graph degrees. Interactions may be extremely weak or strong, as long as every parameter is finite.\n\nFor one million vertices, the displayed theorem guarantees total-variation distance at most one hundredth after thirty complete sweeps. This is not a measured runtime. Each sweep updates every variable and calculates its conditional probability.\n\nThe key idea is to use the randomness created by the preceding layer update. Averaged logistic influences shrink discrepancies between coupled chains. The proof conditions on the history before fresh random numbers are drawn, avoiding a false assumption that the discrepancies are independent.\n\nA second calculation studies disjoint pairs of variables. It gives an exact distance formula and shows that logarithmically many sweeps can genuinely be necessary. Its sharp transition is an elementary product-model example, not a cutoff theorem for every restricted Boltzmann machine.\n\nThe sign restrictions matter. Negative biases are not covered, and the universal numerical constant is not claimed optimal. Written proofs and finite checks are available with the paper. This is an unrefereed candidate, published through Evidence Press on the fourteenth of October, twenty twenty-six. The paper and its full evidence package are linked on the release page. This briefing uses an AI-generated voice. It is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:rbm-nonnegative-logarithmic-mixing",
+    "attemptIds": [
+      "ep-attempt:rbm-nonnegative-logarithmic-mixing-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "evidence-assessment",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Worst-start logarithmic alternating-scan mixing for nonnegative RBMs, with exact disjoint-edge sharpness.",
+      "scope": "Arbitrary finite nonnegative interactions and biases; full sweeps, not serial runtime. Product cutoff only for disjoint edges."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Fresh-layer conditioning excludes a discrepancy own-bit dependence, yields averaged logistic contraction, then full-joint sandwich coupling.",
+      "remainingRisks": [
+        "No formal verification or external specialist review.",
+        "Bounded prior-art search is not global priority proof.",
+        "No arbitrary negative-bias theorem or optimal universal contraction constant."
+      ]
+    },
+    "humanJudgmentGates": [
+      "No human mathematical contribution asserted; external specialist scrutiny remains open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview"
+      ],
+      "nextAction": "Scrutinize the full written source-interface proof outside the production workflow.",
+      "claimCeiling": "Unrefereed parameter-uniform written-proof candidate with internal finite checks, not formal verification or global priority certification."
+    },
+    "impactClaims": [
+      {
+        "id": "rbm-nonnegative-logarithmic-mixing-no-impact",
+        "aim": "science",
+        "outcome": "Reusable fresh-history averaged-influence argument",
+        "setting": "Producer-coordinated theoretical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None.",
+        "estimand": "No measured research acceleration or downstream benefit.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

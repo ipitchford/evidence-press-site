@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['rbm-nonnegative-logarithmic-mixing'] = require('./rbm-mixing-art').draw;
 art['kawasaki-analytic-fast-regimes'] = require('./kawasaki-art').draw;
 art['inclusion-link-chernoff-concentration'] = require('./inclusion-link-chernoff-art').draw;
 const fkkMajorityArt = require("./fkk-majority-art");
@@ -2444,6 +2445,7 @@ palette['cayley-weighted-fixed-points'] = ['#cbb7eb','#edbd85'];
 palette['overpartition-congruences-and-towers'] = ['#e6c1d0','#f1c77b'];
 palette["fkk-majority-partitions"] = fkkMajorityArt.colors;
 palette['kawasaki-analytic-fast-regimes'] = require('./kawasaki-art').colors;
+palette['rbm-nonnegative-logarithmic-mixing'] = require('./rbm-mixing-art').colors;
 const ceSpectatorArt = require('./ce-spectator-art');
 art['concentratable-entanglement-spectator-counterexample'] = ceSpectatorArt.draw;
 palette['concentratable-entanglement-spectator-counterexample'] = ['#f5ce7b','#ee9b99'];
@@ -2454,6 +2456,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'rbm-nonnegative-logarithmic-mixing') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./rbm-mixing-art').description}</desc><defs>`);
   if (slug === 'kawasaki-analytic-fast-regimes') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./kawasaki-art').description}</desc><defs>`);
   if (slug === 'inclusion-link-chernoff-concentration') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./inclusion-link-chernoff-art').description}</desc><defs>`);
   if (slug === "fkk-majority-partitions") svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${fkkMajorityArt.description}</desc><defs>`);
