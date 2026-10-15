@@ -1,28 +1,28 @@
 {
   "schemaVersion": "1.0",
   "recordType": "evidence-atlas-roadmap",
-  "updated": "2026-10-14",
+  "updated": "2026-10-15",
   "status": "active-reviewed-roadmap",
   "claimCeiling": "This roadmap records intended work and review decisions. It does not establish that an undiscovered relationship exists, that a proposed relationship is correct, or that the Atlas improves research outcomes.",
   "currentBaseline": {
-    "asOf": "2026-10-14",
-    "releaseCount": 151,
+    "asOf": "2026-10-15",
+    "releaseCount": 152,
     "methodCount": 13,
-    "clusterCount": 138,
+    "clusterCount": 139,
     "lineageCount": 5,
-    "acceptedRelationshipCount": 956,
+    "acceptedRelationshipCount": 964,
     "publishedProposalCount": 4,
     "relationshipComposition": {
-      "usesMethodCount": 738,
-      "clusterMembershipCount": 153,
+      "usesMethodCount": 745,
+      "clusterMembershipCount": 154,
       "lineageMembershipCount": 15,
       "directInterReleaseCount": 50,
-      "defaultProgrammeViewCount": 218
+      "defaultProgrammeViewCount": 219
     },
     "methodPrevalenceChecks": [
       {
         "methodId": "adversarial-controls",
-        "releaseAssignmentCount": 131
+        "releaseAssignmentCount": 132
       },
       {
         "methodId": "structural-compression",
@@ -703,6 +703,26 @@
       ],
       "decision": "continue",
       "nextAction": "Maintainer intake of drafts starting from candidates with three or more route signals, where the blind labeller accepted a majority; treat single-signal candidates as low-yield unless a maintainer has a specific reason; re-estimate burden after the registry absorbs confirmed relationships."
+    },
+    {
+      "reviewId": "atlas-review-2026-10-15-state-contingent-comparability",
+      "reviewedAt": "2026-10-15",
+      "trigger": "renderer-threshold-crossed",
+      "reviewer": "Evidence Press producer workflow",
+      "provenanceNote": "Additive graph reconciliation for the state-contingent comparability release after self-contained version-3 authoring and prospective publication-ledger registration. This records registry conformance only; it does not establish mathematical correctness, priority, external review, institutional applicability, research acceleration or impact.",
+      "baseline": {
+        "releaseCount": 152,
+        "acceptedRelationshipCount": 964,
+        "publishedProposalCount": 4
+      },
+      "observations": [
+        "The release adds seven declared method assignments and one bounded method-cluster membership; it creates no evidence-backed research lineage or direct inter-release edge.",
+        "The accepted graph now reconciles to 745 method edges, 154 cluster memberships, 15 lineage memberships and 50 direct inter-release records, for 964 accepted relationships across 152 releases.",
+        "Adversarial controls occur in 132 of 152 release assignments and structural compression in 124 of 152; these are working-taxonomy navigation counts, not evidence that either method is effective.",
+        "No proposal changed status and the four published proposal records remain separate from the accepted graph."
+      ],
+      "decision": "complete",
+      "nextAction": "Continue the registered discovery pilot and seek an unaffiliated reconstruction of the new release's source-to-trigger-domain bridge before treating its certificate pattern as externally confirmed."
     }
   ]
 }
