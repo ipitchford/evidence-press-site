@@ -35,6 +35,7 @@ ${inner}
 
 const art = {};
 art['complementary-disclosures'] = require('./complementary-disclosures-art').draw;
+art['state-contingent-comparability'] = require('./state-contingent-art').draw;
 art['katthan-betti-poset-counterexample'] = require('./katthan-art').draw;
 art['unique-equilibrium-lsi-separation'] = require('./lsi-separation-art').draw;
 art['ferromagnetic-full-threshold-glauber'] = require('./ferromagnetic-trimming-art').draw;
@@ -2453,6 +2454,7 @@ palette['rbm-nonnegative-logarithmic-mixing'] = require('./rbm-mixing-art').colo
 palette['unique-equilibrium-lsi-separation'] = require('./lsi-separation-art').colors;
 palette['katthan-betti-poset-counterexample'] = require('./katthan-art').colors;
 palette['complementary-disclosures'] = require('./complementary-disclosures-art').colors;
+palette['state-contingent-comparability'] = require('./state-contingent-art').colors;
 palette['ferromagnetic-full-threshold-glauber'] = require('./ferromagnetic-trimming-art').colors;
 const ceSpectatorArt = require('./ce-spectator-art');
 art['concentratable-entanglement-spectator-counterexample'] = ceSpectatorArt.draw;
@@ -2465,6 +2467,7 @@ for (const [slug, fn] of Object.entries(art)) {
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
   if (slug === 'complementary-disclosures') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./complementary-disclosures-art').description}</desc><defs>`);
+  if (slug === 'state-contingent-comparability') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./state-contingent-art').description}</desc><defs>`);
   if (slug === 'katthan-betti-poset-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./katthan-art').description}</desc><defs>`);
   if (slug === 'unique-equilibrium-lsi-separation') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./lsi-separation-art').description}</desc><defs>`);
   if (slug === 'ferromagnetic-full-threshold-glauber') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./ferromagnetic-trimming-art').description}</desc><defs>`);
