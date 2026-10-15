@@ -700,11 +700,12 @@ const walesAudit = papersDoc.papers.find(p => p.slug === 'wales-20mph-casualty-a
 const walesVideo = walesAudit && walesAudit.media.find(item => item.type === 'video');
 const walesHtml = fs.readFileSync(path.join(DIST, 'releases', 'wales-20mph-casualty-attribution', 'index.html'), 'utf8');
 check('Wales video is API-visible, privacy-enhanced and evidence-calibrated',
-  walesVideo && walesVideo.url === 'https://youtu.be/a5bUnv22Sns' &&
+  walesVideo && walesVideo.url === 'https://www.youtube.com/watch?v=mnSKP305xCY' &&
   walesVideo.description.includes('not additional policy evidence') &&
   (walesHtml.match(/<iframe\b/g) || []).length === 1 &&
-  walesHtml.includes('src="https://www.youtube-nocookie.com/embed/a5bUnv22Sns?rel=0"') &&
-  walesHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/a5bUnv22Sns/hqdefault.jpg"'),
+  walesHtml.includes('src="https://www.youtube-nocookie.com/embed/mnSKP305xCY?rel=0"') &&
+  walesHtml.includes('"thumbnailUrl": "https://i.ytimg.com/vi/mnSKP305xCY/hqdefault.jpg"') &&
+  !walesHtml.includes('embed/a5bUnv22Sns'),
   `video=${walesVideo && walesVideo.url}`);
 
 const fullE3 = papersDoc.papers.find(p => p.slug === 'full-e3-column-polydegree-conjecture');
