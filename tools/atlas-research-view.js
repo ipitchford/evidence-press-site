@@ -28,7 +28,7 @@ module.exports=function researchView(version){return `
       <h3>3. Inspect the route and its limits</h3>
       <label for="research-query">Find a lemma or obstruction in the curated library</label>
       <input id="research-query" type="search" placeholder="Try SAT, upper bound, minimum, independence">
-      <ul id="research-routes" class="research-routes"></ul>
+      <ul id="research-routes" class="research-routes" tabindex="0" aria-label="Conditional research routes"></ul>
     </div>
   </div>
   <details><summary>Why this is a research test, and what it does not establish</summary>

@@ -42,7 +42,9 @@
   el('research-example').addEventListener('click',()=>{el('research-input').value=JSON.stringify(graph48,null,2);invalidate();try{inspect();}catch(e){status.textContent=e.message;}});
   el('research-cancel').addEventListener('click',()=>{
     generation++;
-    if(worker){worker.terminate();worker=null;history.push({status:'cancelled',at:new Date().toISOString(),scope:'No negative mathematical conclusion.'});}
+    if(worker){worker.terminate();worker=null;}
+    history.push({status:'cancelled',at:new Date().toISOString(),input:inspected?.input,scope:'No negative mathematical conclusion.'});
+    el('research-download').disabled=false;
     busy(false);status.textContent='Cancelled; no impossibility conclusion.';
   });
   el('research-run').addEventListener('click',async()=>{
@@ -61,6 +63,7 @@
         worker.terminate();worker=null;busy(false);
         if(event.data.error){status.textContent=event.data.error;return;}
         const {run,after}=event.data;
+        inspected.facts=run.facts;
         const record={schemaVersion:'1.0',startedAt,finishedAt:new Date().toISOString(),elapsedMs:performance.now()-begin,inputSha256,hashEncoding:'JSON.stringify parsed input; not original file bytes',coreVersion:core.VERSION,coreAssetVersion:panel.dataset.coreVersion,input,result:{before:plan,run,after},ceiling:'Internal finite witness / restricted-route test, not novelty or general acceleration.'};
         history.push(record);
         status.textContent=run.status==='witness-found'?'Checked witness found':run.status==='no-transversal'?'No transversal of this matching':'Budget exhausted — inconclusive';
