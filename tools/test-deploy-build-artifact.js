@@ -25,6 +25,7 @@ function run(name, env = {}, args = []) {
         }
         if (args[1] === 'deployment-result') console.log('/fixture/deployment.json');
       } else {
+        if (process.env.EP_TEST_STATIC_FAIL === '1' && args[0] === 'tools/check-static-hosting.js') process.exit(2);
         if (process.env.EP_TEST_LOCAL_FAIL === '1' && args[0] === 'tools/test-metadata.js') process.exit(2);
         if (process.env.EP_TEST_READBACK_FAIL === '1' && args[0] === 'protocols/tools/check-release-integrity.js' && args.includes('--live')) process.exit(2);
         if (process.env.EP_TEST_DISCOVERY_FAIL === '1' && args[0] === 'tools/indexnow-submit.js') process.exit(2);
@@ -51,7 +52,8 @@ try {
     assert.deepEqual(upload.args, ['wrangler', 'pages', 'deploy', '/fixture/sha256-reviewed', '--project-name', 'evidence-press', '--branch', 'main']);
     const verify = r.calls.findIndex(c => c.args.includes('--print-artifact'));
     const uploadIndex = r.calls.indexOf(upload);
-    assert.equal(uploadIndex, verify + 1);
+    assert.equal(uploadIndex, verify + 2);
+    assert.equal(r.calls[verify + 1].args[0], 'tools/check-static-hosting.js');
     assert(has(r, '--post-deploy')); assert(has(r, 'deployment-result'));
   });
   test('explicit reviewed receipt never runs builder', () => {
@@ -61,7 +63,7 @@ try {
     assert.equal(r.calls.filter(c => c.args.includes('verify')).length, 2);
     assert(r.calls.filter(c => c.args.includes('verify')).every(c => c.args.includes('/reviewed/receipt.json')));
   });
-  for (const [name, variable] of [['artifact mutation', 'EP_TEST_VERIFY_FAIL'], ['site gate', 'EP_TEST_LOCAL_FAIL'], ['authentication', 'EP_TEST_AUTH_FAIL']]) {
+  for (const [name, variable] of [['artifact mutation', 'EP_TEST_VERIFY_FAIL'], ['site gate', 'EP_TEST_LOCAL_FAIL'], ['authentication', 'EP_TEST_AUTH_FAIL'], ['static cost policy', 'EP_TEST_STATIC_FAIL']]) {
     test(`${name} failure refuses upload`, () => {
       const r = run(variable, { [variable]: '1' });
       assert.notEqual(r.status, 0); assert(!has(r, 'deploy')); assert(!has(r, 'deployment-result'));
@@ -86,6 +88,12 @@ try {
   test('malformed duplicate receipt flags are rejected', () => {
     const r = run('bad-args', {}, ['--build-receipt', '/x', '--build-receipt', '/y']);
     assert.notEqual(r.status, 0); assert.equal(r.calls.length, 0);
+  });
+  test('configuration, directory and duplicate branch overrides fail before any command', () => {
+    for (const args of [['--cwd','/elsewhere'], ['--config','/elsewhere/wrangler.toml'], ['--env-file','/elsewhere/.env'], ['--project-name','other'], ['--branch'], ['--branch','main','--branch','other']]) {
+      const r = run('unsafe-' + checks + '-' + args.join('-').replace(/[^a-z0-9]/gi, '_'), {}, args);
+      assert.notEqual(r.status, 0); assert.equal(r.calls.length, 0);
+    }
   });
   console.log(`deploy artifact wrapper tests: PASS (${checks} checks)`);
 } finally { fs.rmSync(temporary, { recursive: true, force: true }); }

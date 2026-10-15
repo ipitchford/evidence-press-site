@@ -1,3 +1,11 @@
+## Research memory for agents
+
+Start with the [agent quickstart](/atlas/agents.md) and [source-bound index](/api/atlas-memory.json). The local packet tool retrieves specific research moves, obstructions, source passages and next tests, showing matched, conflicting and unknown conditions separately. It searches all release summaries while keeping the smaller curated card library visibly distinct. A match is a reading priority, not a theorem-applicability certificate.
+
+The index is regenerated from local source files during the ordinary site build. Per-release and per-card fingerprints let agents compare versions without treating an unchanged source as new evidence. Selected [case notes](/atlas/cases.md) are retrospective extractions, not reconstructed experimental histories. The [evaluation recorder](/atlas/evaluation.md) can register future comparisons and retain every attempt, including failures and missing outcomes. Its existence is not evidence of a research benefit.
+
+All of this runs locally from static downloads. No hosted model, server-side search, automatic campaign or paid Cloudflare service is required. Queries and private campaign records are not uploaded.
+
 ## Develop a checkable research route
 
 The [research route workbench](#atlas-research) goes beyond navigating papers: it checks hypotheses, composes source-linked lemma cards and runs a bounded graph-to-SAT search. A returned vertex witness is checked directly against the original graph. You can supply your own graph and download the input-bound attempts.

@@ -28,8 +28,10 @@ const { checkManuscriptPdf } = require('./tools/manuscript-pdf-gate');
 const ATLAS_ROUTE_LIBRARY = require('./data/ATLAS_RESEARCH_ROUTES.json');
 require('./assets/js/atlas-route-core').validateLibrary(ATLAS_ROUTE_LIBRARY);
 const atlasResearchView = require('./tools/atlas-research-view');
+const atlasMemory = require('./tools/atlas-memory');
 
 const ROOT = __dirname;
+const ATLAS_MEMORY = atlasMemory.buildIndex(ROOT);
 require('./tools/banner-palettes').check(ROOT);
 const DIST = path.join(ROOT, 'dist');
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
@@ -1829,6 +1831,18 @@ function atlasPage() {
       <strong>What a line means—and does not mean.</strong>
       ${esc(RESEARCH_GRAPH.claimCeiling)} Geometry, proximity and node size are navigation choices, not evidence.
     </aside>
+    <section id="atlas-agents" class="atlas-research" aria-labelledby="atlas-agents-title">
+      <p class="atlas-kicker">For research agents · local computation · static downloads</p>
+      <h2 id="atlas-agents-title">Ask the archive what to try next</h2>
+      <p>Retrieve source-linked research moves, necessary hypotheses, counterexamples and decisive next tests. A packet is a starting point for investigation, not a proof or a novelty verdict. Unknown conditions stay unknown.</p>
+      <p><a href="/atlas/agents.md">Agent quickstart and commands</a> · <a href="/api/atlas-memory.json">Download the source-bound index</a> · <a href="/atlas/evaluation.md">Record and compare research attempts</a></p>
+      <ul>
+        <li>Find the exact assumptions that make a transfer possible—or invalidate it.</li>
+        <li>Compare two index versions to revisit only changed sources and affected cards.</li>
+        <li>Retain unsuccessful and budget-limited attempts alongside successful ones, without inventing missing measurements.</li>
+      </ul>
+      <p>The catalogue is indexed automatically; detailed research cards cover selected cases only. No match does not mean no prior art. These tools run on your machine, do not send your question to a server, and make no automatic model calls.</p>
+    </section>
     ${atlasResearchView(assetV('js/atlas-route-core.js'))}
     <section class="atlas-workbench" aria-labelledby="atlas-instrument-title">
       <h2 id="atlas-instrument-title" class="sr-only">Interactive research relationship instrument</h2>
@@ -2254,6 +2268,8 @@ function llms() {
     `- [math-objects.json](${BASE}/api/math-objects.json): exact plain-text and LaTeX statements, formulas, bounds, recurrences and sequences with release DOI, version, scope and candidate status preserved`,
     `- [claims.json](${BASE}/api/claims.json): exact content-derived claim identities, natural-language and LaTeX statements, non-claims, six separately scoped obligations and independent status dimensions; the first pilot is z(20)=6`,
     `- [atlas-research-routes.json](${BASE}/api/atlas-research-routes.json): source-linked conditional lemma cards for the bounded graph-to-SAT workbench; execute locally at /atlas/#atlas-research, not a general theorem prover`,
+    `- [Atlas agent quickstart](${BASE}/atlas/agents.md): local research packets, source-hashed changes, obstructions and prospective attempt recording; use before developing an archive-linked extension`,
+    `- [atlas-memory.json](${BASE}/api/atlas-memory.json): deterministic release index and selected research cards; condition matching is not theorem verification or novelty clearance`,
     `- [assurance-tasks.json](${BASE}/api/assurance-tasks.json): bounded zero-required-cash-cost integrity, replay, review, clean-room reproduction and formalisation tasks with explicit acceptance and rejection criteria`,
     `- [assurance-receipts.json](${BASE}/api/assurance-receipts.json): artifact-bound replay evidence with mandatory independence disclosure; a receipt does not silently promote the claim`,
     `- [assurance-events.jsonl](${BASE}/api/assurance-events.jsonl): append-only claim history in sequence- and predecessor-bound JSON Lines`,
@@ -2527,6 +2543,7 @@ function api() {
     ['atlas-roadmap.json', ATLAS_ROADMAP],
     ['atlas-proposals.json', ATLAS_PROPOSALS],
     ['atlas-research-routes.json', ATLAS_ROUTE_LIBRARY],
+    ['atlas-memory.json', ATLAS_MEMORY],
     ['research-graph.json', RESEARCH_GRAPH],
     ['implementation-status.json', IMPLEMENTATION_STATUS_ARTIFACTS.status],
     ['baselines/evidence-press-stage0-2026-08-29.json', BASELINE_RECEIPT],
@@ -2541,6 +2558,12 @@ function api() {
   }
   for (const file of fs.readdirSync(path.join(ROOT, 'data/atlas-research')).filter(f => f.endsWith('.json'))) {
     write(`assets/atlas-research/${file}`, fs.readFileSync(path.join(ROOT, 'data/atlas-research', file), 'utf8'));
+  }
+  write('atlas/agents.md', fs.readFileSync(path.join(ROOT, 'docs/ATLAS_AGENTS.md'), 'utf8'));
+  write('atlas/evaluation.md', fs.readFileSync(path.join(ROOT, 'docs/ATLAS_EVALUATION.md'), 'utf8'));
+  write('atlas/cases.md', fs.readFileSync(path.join(ROOT, 'docs/ATLAS_MEMORY_CASES.md'), 'utf8'));
+  for (const name of ['atlas-agent.js', 'atlas-memory.js', 'atlas-campaign.js']) {
+    write(`atlas/tools/${name}`, fs.readFileSync(path.join(ROOT, 'tools', name), 'utf8'));
   }
   write('api/v2/research-metrics-policy.json', JSON.stringify(OPERATING_ARTIFACTS.metricsPolicyV2, null, 2) + '\n');
   const governanceSchemas = [

@@ -3,7 +3,8 @@
 #
 #   ./tools/deploy.sh            # build, gate, deploy, then push URLs to IndexNow
 #   ./tools/deploy.sh --build-receipt /tmp/reviewed/receipt.json --branch main
-# Extra args are forwarded to Wrangler; a dirty source tree is always refused.
+# Only an explicit branch selector is forwarded; arbitrary Wrangler configuration
+# or working-directory overrides could evade the static-only cost boundary.
 #
 # Steps, in order (any failure aborts — set -e): build the exact ledgered
 # candidate; run protocol, site, link and live-preservation gates; verify
@@ -29,7 +30,15 @@ while (( $# )); do
       BUILD_RECEIPT="$2"
       shift 2
       ;;
-    *) WRANGLER_ARGS+=("$1"); shift ;;
+    --branch)
+      if (( $# < 2 )) || [[ -z "$2" || "$2" == --* || ${#WRANGLER_ARGS[@]} -ne 0 ]]; then
+        echo "REFUSING DEPLOY: --branch needs one value and may occur only once" >&2
+        exit 1
+      fi
+      WRANGLER_ARGS=(--branch "$2")
+      shift 2
+      ;;
+    *) echo "REFUSING DEPLOY: unsupported option $1 (configuration overrides are forbidden)" >&2; exit 1 ;;
   esac
 done
 
@@ -79,6 +88,10 @@ echo "==> [3/9] site metadata, rendering, and link gates"
 node tools/check-operating-model.js
 node tools/test-operating-model.js
 node tools/test-atlas-roadmap.js
+node tools/test-atlas-memory.js
+node tools/test-atlas-campaign.js
+node tools/test-atlas-delivery.js
+node tools/test-static-hosting.js
 node tools/test-atlas-proposals.js --built
 node tools/test-research-graph.js --built
 node tools/test-claim-assurance.js --built
@@ -100,6 +113,8 @@ echo "==> [6/9] deploy to Cloudflare Pages"
 # Recheck after all local/live pre-upload gates and authentication: they must
 # not mutate either the source, the checked dist tree, or the preserved copy.
 BUILD_ARTIFACT="$(node tools/build-artifact.js verify --receipt "$BUILD_RECEIPT" --print-artifact)"
+# The owner has not authorised billable Cloudflare compute or new services.
+node tools/check-static-hosting.js "$BUILD_ARTIFACT"
 # macOS ships Bash 3.2, where an empty array trips nounset with the usual form.
 npx wrangler pages deploy "$BUILD_ARTIFACT" --project-name evidence-press ${WRANGLER_ARGS[@]+"${WRANGLER_ARGS[@]}"}
 
