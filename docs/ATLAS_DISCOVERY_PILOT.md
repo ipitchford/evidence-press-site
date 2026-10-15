@@ -127,6 +127,21 @@ The labeller is a same-vendor model. Its labels are an evaluation statistic
 for the pilot. They never enter the proposal register, are not intake
 decisions, and are not independent assurance; the record says so.
 
+## Completion review, 15 October 2026
+
+The [completion review](audits/2026-10-15-atlas-completion-review.md) records a
+disposition for every draft. The historical 11–109 range above sums marginal
+Wilson endpoints; it is not a calibrated joint confidence interval and includes
+sampling uncertainty for strata that were fully labelled. Future summaries
+treat census strata exactly and suppress aggregate projections if labels are
+missing. Model error remains unquantified. The 0.84 calibration is agreement
+with recorded pairs, some of which are thematic/method links outside the
+labeller's narrower target. Neither quantity establishes scientific validity.
+
+Keep the original benchmark and outputs frozen. A changed catalogue must still
+be refused for historical evaluation; routine CI now exercises evaluation on
+an ephemeral current-corpus fixture and separately tests this refusal.
+
 ## Candidate assembly
 
 A pair enters the candidate list when any route places it inside that route's

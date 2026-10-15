@@ -114,12 +114,16 @@ function summarise(items, labels, strataSummary) {
   const calibration = {
     sensitivityOnRecordedPairs: wilson(pos.filter(accepted).length, pos.length),
     specificityOnNegativeControls: wilson(neg.filter(i => !accepted(i)).length, neg.length),
-    note: 'Recorded pairs are links the maintainer already asserted; the labeller should accept them. Negative controls were confirmed unrelated; the labeller should reject them. Both are limits on what the sample labels mean, not evidence about any candidate.'
+    note: 'Agreement with recorded pairs is not ground-truth sensitivity: the accepted graph includes thematic and method links outside this narrower shared-object test. Controls were selected to lack declared signals. Neither calibration establishes candidate correctness.'
   };
   const perStratum = strataSummary.map(s => {
     const sample = items.filter(i => i.role === 'sample' && i.stratum === s.routeSignalCount && labelled(i));
     const rate = wilson(sample.filter(accepted).length, sample.length);
-    const projected = rate.estimate === null ? null : { estimate: Number((rate.estimate * s.population).toFixed(1)), low: Number((rate.low * s.population).toFixed(1)), high: Number((rate.high * s.population).toFixed(1)) };
+    const complete = sample.length === s.sampled;
+    const census = complete && sample.length === s.population;
+    const projected = !complete || rate.estimate === null ? null : census
+      ? { estimate: sample.filter(accepted).length, low: sample.filter(accepted).length, high: sample.filter(accepted).length }
+      : { estimate: Number((rate.estimate * s.population).toFixed(1)), low: Number((rate.low * s.population).toFixed(1)), high: Number((rate.high * s.population).toFixed(1)) };
     return { ...s, labelled: sample.length, accepted: sample.filter(accepted).length, acceptRate: rate, projectedAcceptsInPopulation: projected };
   });
   const total = perStratum.reduce((acc, s) => {
@@ -127,7 +131,9 @@ function summarise(items, labels, strataSummary) {
     acc.estimate += s.projectedAcceptsInPopulation.estimate; acc.low += s.projectedAcceptsInPopulation.low; acc.high += s.projectedAcceptsInPopulation.high; acc.population += s.population;
     return acc;
   }, { estimate: 0, low: 0, high: 0, population: 0 });
-  return { calibration, perStratum, projectedAcceptsAcrossCandidates: { ...total, estimate: Number(total.estimate.toFixed(1)), low: Number(total.low.toFixed(1)), high: Number(total.high.toFixed(1)) } };
+  return { calibration, perStratum,
+    uncertaintyNote: 'Low/high sum marginal Wilson bounds for sampled strata; they are not a calibrated joint 95% interval. Fully labelled census strata have no sampling uncertainty. Model-label error remains unquantified. Missing sample labels suppress the overall projection.',
+    projectedAcceptsAcrossCandidates: perStratum.some(s => !s.projectedAcceptsInPopulation) ? null : { ...total, estimate: Number(total.estimate.toFixed(1)), low: Number(total.low.toFixed(1)), high: Number(total.high.toFixed(1)) } };
 }
 
 async function estimateBurden(root, { runPathArg, apiKey = process.env.ANTHROPIC_API_KEY, fetchImpl, perStratum = 15, dryRun = false, batchId = null, pollMs, sleep, onPoll } = {}) {
@@ -177,7 +183,7 @@ async function main() {
     const s = result.summary;
     console.log(`calibration: sensitivity ${JSON.stringify(s.calibration.sensitivityOnRecordedPairs)} specificity ${JSON.stringify(s.calibration.specificityOnNegativeControls)}`);
     for (const st of s.perStratum) console.log(`stratum ${st.routeSignalCount}: ${st.accepted}/${st.labelled} accepted -> projected ${JSON.stringify(st.projectedAcceptsInPopulation)} of ${st.population}`);
-    console.log(`projected accepts across ${s.projectedAcceptsAcrossCandidates.population} candidates: ${JSON.stringify(s.projectedAcceptsAcrossCandidates)}`);
+    console.log(`projected accepts (null means incomplete labels): ${JSON.stringify(s.projectedAcceptsAcrossCandidates)}`);
   }
 }
 

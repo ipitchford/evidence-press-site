@@ -7,6 +7,9 @@
 
   var inspector = document.getElementById('atlas-inspector');
   var search = document.getElementById('atlas-search');
+  var searchResults = document.getElementById('atlas-search-results');
+  var proposalFilter = document.getElementById('atlas-proposal-filter');
+  var proposalState = document.getElementById('atlas-proposal-state');
   var status = document.getElementById('atlas-status');
   var reset = document.getElementById('atlas-reset');
   var stageTitle = document.getElementById('atlas-stage-title');
@@ -53,7 +56,9 @@
 
   function visibleGraph() {
     if (state.mode === 'proposals') {
-      var records = state.proposals ? state.proposals.proposals : [];
+      var records = (state.proposals ? state.proposals.proposals : []).filter(function (p) {
+        return !proposalState || proposalState.value === 'all' || p.currentState === proposalState.value;
+      });
       var proposalNodes = records.map(function (proposal) {
         return {
           id: proposal.proposalId, type: 'proposal', label: proposal.title,
@@ -88,6 +93,14 @@
     var edges = state.graph.edges.filter(function (edge) {
       return ids.has(edge.source) && ids.has(edge.target) && (!predicates || predicates.indexOf(edge.predicate) !== -1);
     });
+    if (state.mode === 'direct') {
+      var connected = new Set();
+      edges.forEach(function (edge) { connected.add(edge.source); connected.add(edge.target); });
+      var q = state.query.toLowerCase().trim();
+      nodes = nodes.filter(function (node) {
+        return connected.has(node.id) || (q && (nodeLabel(node) + ' ' + node.label + ' ' + node.description + ' ' + node.id).toLowerCase().indexOf(q) !== -1) || node.id === state.selectedNode;
+      });
+    }
     return { nodes: nodes, edges: edges };
   }
 
@@ -131,6 +144,9 @@
     if (!window.history || !window.history.replaceState) return;
     var url = new URL(window.location.href);
     url.searchParams.set('view', state.mode);
+    if (state.query) url.searchParams.set('q', state.query); else url.searchParams.delete('q');
+    if (state.mode === 'proposals' && proposalState && proposalState.value !== 'all') url.searchParams.set('state', proposalState.value);
+    else url.searchParams.delete('state');
     if (state.selectedNode && state.selectedNode.indexOf('ep-proposal:') === 0) {
       url.searchParams.set('proposal', state.selectedNode); url.searchParams.delete('node');
     } else {
@@ -268,15 +284,22 @@
     });
     proposalRows.forEach(function (row) {
       var textMatch = !q || row.textContent.toLowerCase().indexOf(q) !== -1;
-      row.hidden = !textMatch;
+      var id = row.getAttribute('data-atlas-proposal-row');
+      var p = state.proposals.proposals.find(function (item) { return item.proposalId === id; });
+      var stateMatch = state.mode !== 'proposals' || !proposalState || proposalState.value === 'all' || (p && p.currentState === proposalState.value);
+      row.hidden = !(textMatch && stateMatch);
     });
   }
 
   function render() {
+    if (!state.graph || !state.proposals) return;
     var current = visibleGraph();
     var coords = positions(current.nodes);
     svg.setAttribute('data-atlas-mode', state.mode);
-    svg.setAttribute('viewBox', state.mode === 'proposals' ? '290 155 620 372' : '0 0 1200 720');
+    // Proposal anchors use the same outer ring as release nodes. Cropping to
+    // the centre hides those anchors and the endpoints of their dashed links.
+    svg.setAttribute('viewBox', '0 0 1200 720');
+    if (proposalFilter) proposalFilter.hidden = state.mode !== 'proposals';
     var nodeById = new Map(current.nodes.map(function (node) { return [node.id, node]; }));
     var indexByType = {};
     Object.keys(modeTypes).forEach(function () {});
@@ -350,13 +373,26 @@
     stageTitle.textContent = state.mode === 'proposals' ? 'Quarantined proposal projection' : 'Accepted relationship projection';
     stageNote.textContent = state.mode === 'proposals'
       ? 'Dashed anchors explain placement only · suggestions are not accepted evidence'
-      : 'Equal-sized release nodes · stable layout · select to inspect';
+      : state.mode === 'direct' ? 'Connected releases · search also finds unlinked releases · select to inspect' : 'Equal-sized release nodes · stable layout · select to inspect';
     var matchesCount = query ? current.nodes.filter(function (node) {
       return (nodeLabel(node) + ' ' + node.label + ' ' + node.description + ' ' + node.id).toLowerCase().indexOf(query) !== -1;
     }).length : 0;
     var connectionLabel = state.mode === 'proposals' ? 'proposal navigation anchors' : 'accepted relationships';
+    if (searchResults) {
+      searchResults.replaceChildren();
+      searchResults.hidden = !query;
+      current.nodes.filter(function (node) {
+        return query && (nodeLabel(node) + ' ' + node.label + ' ' + node.description + ' ' + node.id).toLowerCase().indexOf(query) !== -1;
+      }).slice(0, 20).forEach(function (node) {
+        var li = document.createElement('li');
+        var button = document.createElement('button');
+        button.type = 'button'; button.textContent = nodeLabel(node);
+        button.addEventListener('click', function () { selectNode(node.id); });
+        li.appendChild(button); searchResults.appendChild(li);
+      });
+    }
     status.textContent = current.nodes.length + ' nodes and ' + current.edges.length + ' ' + connectionLabel + ' in this view' +
-      (query ? '; ' + matchesCount + ' node' + (matchesCount === 1 ? '' : 's') + ' match “' + state.query.trim() + '”.' : '.');
+      (query ? '; ' + matchesCount + ' node' + (matchesCount === 1 ? '' : 's') + ' match “' + state.query.trim() + '”.' + (matchesCount > 20 ? ' First 20 listed; refine your search.' : '') : '.');
     renderTable(new Set(current.edges.map(function (edge) { return edge.id; })));
   }
 
@@ -375,7 +411,8 @@
       render(); setUrl();
     });
   });
-  search.addEventListener('input', function () { state.query = search.value; render(); });
+  search.addEventListener('input', function () { state.query = search.value; if (state.graph && state.proposals) { render(); setUrl(); } });
+  if (proposalState) proposalState.addEventListener('change', function () { resetView(); });
   search.addEventListener('keydown', function (event) {
     if (event.key !== 'Enter' || !state.query.trim()) return;
     var visible = visibleGraph().nodes;
@@ -400,6 +437,8 @@
     var requestedMode = params.get('view');
     if (requestedMode === 'programmes') requestedMode = 'structure';
     if (modeTypes[requestedMode]) state.mode = requestedMode;
+    state.query = params.get('q') || ''; search.value = state.query;
+    if (proposalState && Array.prototype.some.call(proposalState.options, function (o) { return o.value === params.get('state'); })) proposalState.value = params.get('state');
     render();
     if (params.get('proposal')) { state.mode = 'proposals'; selectNode(params.get('proposal'), false); }
     else if (params.get('edge')) selectEdge(params.get('edge'), false);

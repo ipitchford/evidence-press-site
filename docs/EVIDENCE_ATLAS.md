@@ -115,12 +115,13 @@ log. The initial priority order is:
    citation-path, shared-object, lexical and optional embedding routes are
    reported separately against a frozen hidden-link benchmark with
    maintainer-confirmed negative controls and a leakage audit. Symbolic
-   normalisation is excluded for now. Recovery, false-proposal burden and
+   object-name extraction is also implemented as a quarantined model aid, not
+   algebraic equivalence checking. Recovery, false-proposal burden and
    reviewer effort are recorded per run and never combined. The first
    evaluation and an adversarial review are recorded in
    [`audits/2026-10-14-atlas-discovery-adversarial-review.md`](audits/2026-10-14-atlas-discovery-adversarial-review.md).
 4. **Proposal-review workbench — in progress.** The distinct proposal view,
-   table and inspector exist. Proposal-state filters remain to be completed;
+   table, inspector, proposal-state filters and titled search results exist;
    evidence, rival explanations, review provenance and decision history must
    remain accessible without visually collapsing proposals into accepted edges.
 5. **Agent query surfaces.** Add filtered neighbourhood or dependency queries
@@ -133,8 +134,10 @@ log. The initial priority order is:
    rediscovery, replay or reconstruction effort. Traffic, graph size, internal
    reuse and proposal volume are not evidence of research acceleration.
 
-The highest-priority incomplete action is now evaluating the pilot's
-candidates against the frozen benchmark and reviewing quarantined drafts.
+The seven pilot drafts now have bounded source-reading dispositions in the
+[15 October completion review](audits/2026-10-15-atlas-completion-review.md).
+The highest-priority research action is primary-artifact comparison of the
+shuffle specialisation and DIM/non-DIM scope pairs before proposing exact links.
 Discovery remains a proposal generator only and has no accepted-graph write
 path.
 

@@ -143,7 +143,8 @@ if (process.argv.includes('--built')) {
     'Atlas exposes the quarantined proposal projection and machine endpoint');
   const atlasScript = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'atlas.js'), 'utf8');
   ok(atlasScript.includes('proposalRows.forEach(function (row) {') &&
-    atlasScript.includes('row.hidden = !textMatch;') &&
+    atlasScript.includes('row.hidden = !(textMatch && stateMatch);') &&
+    atlasScript.includes("var stateMatch = state.mode !== 'proposals'") &&
     !atlasScript.includes("var modeMatch = state.mode === 'proposals';"),
     'proposal register remains populated independently of the selected graph view');
   ok(atlasHtml.includes('email the Evidence Press Research Agent') &&
