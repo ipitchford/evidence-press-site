@@ -1,0 +1,175 @@
+{
+  "slug": "iid-multiunit-prophet-limits",
+  "title": "Limits of online selection with a fixed number of choices",
+  "shortTitle": "How close can online choices get to hindsight?",
+  "oneLine": "An unrefereed mathematical candidate characterises the long-horizon worst-case ratio for every fixed selection budget and certifies a narrow interval near 83.7% for two choices.",
+  "abstract": "For independent, identically distributed nonnegative observations from a known law with finite positive mean, an online decision maker may accept at most k values. This candidate proves existence of the worst-case optimal-online-to-top-k-prophet ratio as the horizon tends to infinity, for each fixed positive integer k, and identifies it with a continuum minimax value. Written transfer and compactness arguments cover the general theorem. For k=2, explicit policy and value-profile witnesses certified with Arb give 0.83695 <= gamma_2* <= 0.8372914, within the rounded headline interval [0.83695, 0.83730]. A separate certified comparison establishes asymptotic non-tightness of the specified earlier nonlinear-system value. No equality with the infimum over all horizons, exact constant, uniform-in-k rate, or numerical certificate for k>=3 is claimed.",
+  "datePublished": "2026-10-15",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.23404235",
+  "repoUrl": "https://github.com/ipitchford/iid-multiunit-prophet-limits",
+  "pdfUrl": "https://github.com/ipitchford/iid-multiunit-prophet-limits/releases/download/v0.1.0-candidate/paper.pdf",
+  "conceptDoi": "10.5281/zenodo.23404234",
+  "citeText": "Anonymous (2026). Asymptotic i.i.d. prophet inequalities: fixed-capacity limits and certified two-unit bounds. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23404235.",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "iid prophet inequalities",
+    "online selection",
+    "multiple stopping",
+    "continuum minimax",
+    "quantile policies",
+    "certified bounds"
+  ],
+  "keyResults": [
+    "For each fixed positive integer k, the worst-case optimal-online/top-k-prophet ratio has a limit as the number of observations grows.",
+    "The limit equals a continuum profile infimum and a compact cumulative-coverage game maximum; this does not assert attainment by a bounded policy or worst-case profile.",
+    "For two selections, the supplied certified witnesses give [0.83695, 0.8372914], and hence the rounded interval [0.83695, 0.83730].",
+    "The specified earlier two-unit nonlinear-system value is strictly below this asymptotic constant; the all-horizon infimum question remains separate.",
+    "An occupancy-weighted threshold construction dominates finite policy mixtures; this is attributed to established occupancy/flow principles, not claimed as a new purification principle."
+  ],
+  "evidence": "Integrated written analytic proofs and explicit two-unit witnesses with Arb ball-arithmetic certification, supported by internal AI-assisted checking and a bounded primary-source comparison. Targeted integrated-manuscript re-review found no remaining mandatory mathematical revision. Frozen replay passed all 10 runs: four certifiers and the regression suite, each in normal and optimized Python modes. Producer-operated Linux CI also passed. Full downloads of all three release assets from GitHub and Zenodo matched the frozen SHA-256 values.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate with integrated written proofs, completed producer replay and verified public archive assets. No external peer review, unaffiliated reproduction, formal verification, exhaustive novelty finding or priority clearance is established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared on 15 October 2026 from the integrated manuscript, targeted re-review, producer replay and dated prior-art refresh. Inspected source SHA-256 f1cd1e3a4450588acaae58a436eb5f24e4a2b2d62df5ffda74e96d103085d0a3; final PDF SHA-256 872b5afab8c7bed53995dfe2578a9790a08412389b37ccb5e011e0c6eb8d5aa7; archive SHA-256 aaeccd251a733ccd3d710608f0e5869125ee3ed7ad2a9f2126f70bca79d508a7. Zenodo record 23404235 is published. Full-download parity passed for the ZIP, paper.pdf and SHA256SUMS on Zenodo and GitHub release v0.1.0-candidate at commit 30789207c579d1a873e507fc7b22820056815093. Linux CI run 38799210335 passed. These are archive and producer-check observations, not a canonical site-delivery receipt.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex coordinated mathematical development, checking and drafting"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred from account ownership.",
+    "reviewStatus": "Internal AI-assisted proof and source checking; not external human peer review or independent reproduction."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "Public Zenodo record https://zenodo.org/records/23404235 and GitHub release https://github.com/ipitchford/iid-multiunit-prophet-limits/releases/tag/v0.1.0-candidate provide the ZIP, paper.pdf and SHA256SUMS. All three assets were fully downloaded from both providers and matched the frozen SHA-256 values. This establishes archive availability, not external scientific endorsement or canonical site delivery."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The clean frozen replay passed 10 runs: mixture, upper-bound, nonlinear-system and deterministic-policy certifiers plus the regression suite, each in normal and optimized (-O) Python modes. Producer-operated Ubuntu/Python 3.11 CI also passed. These checks cover encoded certificates and tested controls, not the universal analytic proof."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Coordinated producer checking is not independent reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Written proofs and ball arithmetic are not proof-assistant verification."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal AI scrutiny is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal peer review established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Witness inputs, checking code, pinned python-flint environment and replay instructions are publicly archived with verified byte identity. Frozen local replay and producer-operated Linux CI passed; no unaffiliated rerun or independent reimplementation is established."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Jiang, Ma and Zhang, Tightness without counterexamples: finite-horizon occupancy/quantile linear programming and numerical two-unit bounds.",
+      "url": "https://arxiv.org/abs/2205.00588v5"
+    },
+    {
+      "citation": "Brustle, Perez-Salazar and Verdugo, Splitting guarantees for prophet inequalities via nonlinear systems: asymptotic lower-bound construction.",
+      "url": "https://arxiv.org/abs/2406.17767v2"
+    },
+    {
+      "citation": "Molina, Gast, Loiseau and Perchet, Prophet inequalities: competing with the top l items is easy: multi-selection lower-bound systems.",
+      "url": "https://arxiv.org/abs/2408.07616v2"
+    },
+    {
+      "citation": "Loiseau, Molina, Perchet, Perez-Salazar and Verdugo, Kernel methods for refined prophet inequalities: adjacent single-threshold minimax methodology.",
+      "url": "https://arxiv.org/abs/2608.08662"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:iid-multiunit-prophet-limits",
+    "attemptIds": [
+      "ep-attempt:iid-multiunit-prophet-limits-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "A continuum characterisation for fixed selection budgets and an explicit certified two-unit interval.",
+      "scope": "Known iid nonnegative law with finite positive mean; optimal adaptive at-most-k selection versus the expected top-k sum; n tends to infinity with k fixed."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Tail-quantile layer-cake identities connect cumulative policy coverage to expected rewards; analytic finite-horizon transfer connects the continuum game to the worst-case iid ratio.",
+      "remainingRisks": [
+        "Written proof and mathematical encoding require semantic scrutiny.",
+        "Arb certificates certify supplied witnesses, not all statements in the manuscript.",
+        "No inference to unknown distributions, correlated arrivals, growing budgets or all-horizon infima."
+      ]
+    },
+    "humanJudgmentGates": [
+      "The user authorises publication; no scientific endorsement is inferred.",
+      "Development-independent proof, novelty and priority scrutiny remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "availability",
+        "internalReplay",
+        "semanticValidation",
+        "specialistReview",
+        "noveltyAssessment"
+      ],
+      "nextAction": "Seek development-independent scrutiny of the written proof and certificate-to-theorem connection; retain the archived producer checks, bounded prior-art comparison and external-assurance limits.",
+      "claimCeiling": "Unrefereed mathematical candidate with internal producer checks; no formal verification, external peer review, priority clearance or measured impact."
+    },
+    "impactClaims": [
+      {
+        "id": "iid-multiunit-prophet-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable limiting characterisation and bounded numerical certificates",
+        "setting": "Coordinated AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No causal research-speed or real-world decision improvement estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "How close can online choices get to hindsight? An Evidence Press audio briefing. Imagine seeing a sequence of offers, one at a time. You know the probability distribution, but you cannot see the next offer. Once you reject an offer, it is gone. You may accept at most a fixed number of them. A prophet, by contrast, sees the whole sequence and takes the best offers. The question is how much of the prophet's expected total an optimal online strategy can guarantee, even for the hardest distribution. The offers must be independent draws from the same known distribution, with nonnegative values and a finite positive average. This research candidate proves that, for every fixed number of allowed choices, the worst-case ratio approaches a limit as the sequence becomes longer. It characterises that limit by balancing selection strategies against difficult value distributions. For two choices, certified bounds put the limit between eighty-three point six nine five percent and eighty-three point seven three zero percent. This is a narrow interval, not an exact constant, and not a promise for every finite sequence length. The proof connects a continuous-time model back to finite sequences. Explicit strategy and distribution witnesses are checked using arithmetic that bounds rounding errors. The work also shows that one earlier two-choice lower-bound construction does not reach the asymptotic optimum. It does not settle the worst ratio over all sequence lengths or provide new numerical constants for larger selection budgets. This is AI-assisted, unrefereed mathematics, not a study of real purchasing or hiring decisions. The manuscript and checking materials are the route to inspecting the evidence. This briefing accompanies the fifteenth of October twenty twenty-six candidate on iid multi-unit prophet limits. This briefing uses an AI-generated voice and is not additional scientific evidence."
+}

@@ -6,27 +6,27 @@
   "claimCeiling": "This roadmap records intended work and review decisions. It does not establish that an undiscovered relationship exists, that a proposed relationship is correct, or that the Atlas improves research outcomes.",
   "currentBaseline": {
     "asOf": "2026-10-15",
-    "releaseCount": 153,
+    "releaseCount": 154,
     "methodCount": 13,
-    "clusterCount": 140,
+    "clusterCount": 141,
     "lineageCount": 5,
-    "acceptedRelationshipCount": 970,
+    "acceptedRelationshipCount": 975,
     "publishedProposalCount": 4,
     "relationshipComposition": {
-      "usesMethodCount": 749,
-      "clusterMembershipCount": 155,
+      "usesMethodCount": 753,
+      "clusterMembershipCount": 156,
       "lineageMembershipCount": 15,
       "directInterReleaseCount": 51,
-      "defaultProgrammeViewCount": 221
+      "defaultProgrammeViewCount": 222
     },
     "methodPrevalenceChecks": [
       {
         "methodId": "adversarial-controls",
-        "releaseAssignmentCount": 132
+        "releaseAssignmentCount": 133
       },
       {
         "methodId": "structural-compression",
-        "releaseAssignmentCount": 125
+        "releaseAssignmentCount": 126
       }
     ],
     "sourceRefs": [
@@ -756,6 +756,22 @@
       ],
       "decision": "complete",
       "nextAction": "Complete the new release's separate asset-identity and public-delivery gates without interpreting this baseline reconciliation as scientific assurance or measured impact."
+    },
+    {
+      "reviewId": "atlas-review-2026-10-15-iid-multiunit-prophet-limits",
+      "reviewedAt": "2026-10-15",
+      "trigger": "maintainer-request",
+      "reviewer": "Codex producer-side publication integration",
+      "provenanceNote": "Mechanical current-baseline reconciliation derived through computeAtlasBaseline with buildResearchGraph and loadAtlasProposals. All historical review baselines and roadmap decisions are preserved. No scientific, priority, public-availability or impact assurance is supplied by these counts.",
+      "baseline": { "releaseCount": 154, "acceptedRelationshipCount": 975, "publishedProposalCount": 4 },
+      "observations": [
+        "The iid-multiunit-prophet-limits candidate adds four existing method assignments and one singleton cluster membership, with no new lineage or direct inter-release relationship.",
+        "The graph now contains 753 method edges, 156 cluster memberships, 15 lineage memberships and 51 direct inter-release relationships, totalling 975. The default programme view contains 222 relationships.",
+        "Adversarial controls occur in 133 assignments and structural compression in 126. These are taxonomy counts, not effectiveness or correctness measurements.",
+        "The four published proposal records are unchanged; no proposal promotion or historical-baseline rewrite occurred."
+      ],
+      "decision": "complete",
+      "nextAction": "Finish the candidate's separate archive-identity and guarded publication gates; preserve the historical discovery benchmark and its current-corpus staleness boundary."
     }
   ]
 }
