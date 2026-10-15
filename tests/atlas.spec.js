@@ -1,6 +1,34 @@
 const { test, expect } = require('@playwright/test');
 
 for (const width of [1440, 390]) {
+  test(`Atlas executable research route at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    const errors = [];
+    page.on('pageerror', e => errors.push(String(e)));
+    await page.goto(`${process.env.ATLAS_TEST_BASE || 'http://127.0.0.1:8080'}/atlas/#atlas-research`);
+    await expect(page.locator('#research-status')).toContainText('48 vertices');
+    await page.locator('#research-run').click();
+    await expect(page.locator('#research-status')).toHaveText('Checked witness found');
+    await expect(page.locator('#research-result')).toContainText('317 satisfying assignments');
+    await expect(page.locator('#research-result')).toContainText('Ordinary domination ≤ 15');
+    await expect(page.locator('#research-result')).toContainText('not independent');
+    const download = page.waitForEvent('download');
+    await page.locator('#research-download').click();
+    expect((await download).suggestedFilename()).toBe('atlas-research-attempts.json');
+    await page.locator('#research-budget').fill('1');
+    await page.locator('#research-run').click();
+    await expect(page.locator('#research-status')).toContainText('inconclusive');
+    await page.locator('#research-query').fill('SAT');
+    await expect(page.locator('#research-routes')).toContainText('SAT');
+    await page.locator('#atlas-research details').first().locator('summary').click();
+    await page.locator('#research-input').fill('{"order":2,"edges":[[0,0]],"maximal_matching":[[0,1]]}');
+    await expect(page.locator('#research-run')).toBeDisabled();
+    await page.locator('#research-inspect').click();
+    await expect(page.locator('#research-run')).toBeDisabled();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
+    expect(errors).toEqual([]);
+  });
+
   test(`Atlas search, state filters and anchors at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     const errors = [];

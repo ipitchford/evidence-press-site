@@ -356,7 +356,7 @@
       var group = element('g', {
         class: classes.join(' '), transform: 'translate(0 0)', tabindex: '0', role: 'button',
         'data-type': node.type, 'data-scope-status': node.scopeStatus || '', 'data-node-id': node.id,
-        'aria-label': nodeTypeLabel(node) + ': ' + nodeLabel(node) + '. Select to inspect.'
+        'aria-label': nodeCode(node, indexByType) + '. ' + nodeTypeLabel(node) + ': ' + nodeLabel(node) + '. Select to inspect.'
       });
       group.appendChild(element('title', {}, nodeLabel(node)));
       group.appendChild(shapeFor(node, point.x, point.y));

@@ -1,0 +1,24 @@
+{
+  "id": "atlas-transversal-pilot-20261015",
+  "registeredAt": "2026-10-15T13:20:25Z",
+  "question": "Can the Atlas construct a checked ordinary dominating set of at most 15 vertices for the canonical order-48 TxGraffiti graph, while refusing an invalid independent-to-ordinary lower-bound transfer and preserving the limits of a failed transversal search?",
+  "selection": "A real existing release, an exact finite object, a plausible but invalid strengthening, and an external graph-to-SAT bridge with a cheap finite test. Selected before executing the new search. Not a novel general theorem campaign.",
+  "priorArt": {
+    "date": "2026-10-15",
+    "queries": ["48 Afrasyab domination graph", "txgraffiti-order48 domination", "48-vertex domination 15 16", "Gupta cubic graphs 48 domination edge domination 2026"],
+    "services": ["web search", "arXiv HTML full text", "GitHub tagged tree", "local Evidence Press release source"],
+    "sources": [
+      {"url": "https://arxiv.org/html/2608.22498v1", "location": "Definition 2, Proposition 6, Lemma 2, Proposition 7", "finding": "The endpoint-transversal SAT equivalence is explicit. The order-48 theorem imports the minimum unsatisfiable (3,2,2)-formula classification; this pilot will instead enumerate the actual formula and verify its witness without that dependency."},
+      {"url": "https://arxiv.org/html/2609.10783v1", "location": "Sections 2, 7, 8", "finding": "Ordinary domination 16 is claimed for the different 50-vertex graph. A failed transversal is not itself an ordinary-domination lower bound."},
+      {"url": "https://github.com/ipitchford/txgraffiti-order48-successor/tree/46a53247cedfcba35b0e2b59474d0099eb962b36", "location": "counterexample.json; release summary", "finding": "Canonical 48-vertex graph and 15-edge matching. Independent domination is recorded as 16; ordinary domination is not determined here."}
+    ],
+    "decision": "Proceed as a constructive method-transfer and falsification pilot. Do not claim a new order-48 theorem or priority. Search is bounded, not exhaustive; imported preprints are not independently verified general theorems."
+  },
+  "comparison": {
+    "baseline": "Release text / similarity navigation supplies i(G)=16 and mu*(G)=15, but no ordinary dominating-set witness. A direct enumeration of all 15-subsets would have binomial(48,15) candidates; this is a search-space comparison, not a runtime trial against a competent solver.",
+    "intervention": "Explicit endpoint-transversal reformulation, hypothesis checks, bounded exhaustive Boolean search, reconstruction and a separate graph-only witness checker.",
+    "success": ["Produce a dominating set with at most 15 distinct vertices checked from raw edges", "Reject invalid lower-bound transfer and corrupt witnesses", "On a negative control, distinguish no transversal from no dominating set", "Removing the bridge leaves the route unavailable rather than hallucinating a certificate"],
+    "failure": "If no witness or useful obstruction is obtained, retain a null result. Do not replace this pilot silently or call documentation a research gain.",
+    "limit": "One selected internal pilot, no blinded comparison, no causal acceleration or novelty claim. This tests practical route execution, not all nine discovery methods."
+  }
+}

@@ -1,3 +1,9 @@
+## Develop a checkable research route
+
+The [research route workbench](#atlas-research) goes beyond navigating papers: it checks hypotheses, composes source-linked lemma cards and runs a bounded graph-to-SAT search. A returned vertex witness is checked directly against the original graph. You can supply your own graph and download the input-bound attempts.
+
+The [recorded pilot](/assets/atlas-research/pilot-result.json) constructs a 15-vertex ordinary dominating set for the published 48-vertex graph, ruling out a proposed strengthening from independent to ordinary domination. Prior art already covers the general inequality; this is a constructive method-transfer test, not a new theorem. A failed restricted search does not rule out other dominating sets. Only this first operator is executable; the tool does not yet generate arbitrary research projects or demonstrate general acceleration.
+
 ## How to read the atlas
 
 The atlas is a map of **recorded relationships**, not a ranking of papers and not a verdict on their claims. Release nodes have equal visual weight. The position of a node is a stable layout choice, not evidence of importance, influence, correctness or priority.

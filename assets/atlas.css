@@ -235,3 +235,22 @@
 @media (prefers-reduced-motion: reduce) {
   .atlas-node { transition: none; }
 }
+/* Executable research instrument. Keep long data and lemmas inside the viewport. */
+.atlas-research { margin: 2rem 0; padding: clamp(1rem, 3vw, 2rem); background: #faf5e9; color: #29271f; border: 1px solid #c9b98e; border-radius: 12px; }
+.atlas-research .atlas-kicker { color: #6b4a13; }
+.research-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; }
+.research-columns > div { min-width: 0; }
+.atlas-research label { display: block; font-weight: 600; margin-top: 1rem; }
+.atlas-research input, .atlas-research textarea { box-sizing: border-box; width: 100%; max-width: 100%; padding: .65rem; color: #29271f; background: #fff; border: 1px solid #80775d; border-radius: 5px; }
+.atlas-research textarea { font: .85rem/1.4 monospace; }
+.atlas-research button { margin: .5rem .5rem .5rem 0; padding: .7rem 1rem; border: 1px solid #66532f; border-radius: 5px; background: #fff; color: #34290f; cursor: pointer; font: inherit; }
+.atlas-research button:disabled { opacity: .55; cursor: default; }
+.atlas-research :focus-visible { outline: 3px solid #865300; outline-offset: 3px; }
+.atlas-research details { margin: 1rem 0; }
+.atlas-research summary { cursor: pointer; font-weight: 600; }
+.research-routes { list-style: none; padding: 0; max-height: 40rem; overflow: auto; }
+.research-routes li { padding: .8rem 1rem; background: #fffdf8; border-left: 3px solid #9f782c; margin: .8rem 0; overflow-wrap: anywhere; }
+.research-routes h4 { margin: 0; }
+.research-routes p { font-size: .92rem; }
+#research-result { overflow-wrap: anywhere; }
+@media (max-width: 760px) { .research-columns { grid-template-columns: minmax(0, 1fr); } .research-routes { max-height: none; } }
