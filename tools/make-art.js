@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['sharp-logconcave-moment-comparison'] = require('./mrtt-art').draw;
 art['iid-multiunit-prophet-limits'] = require('./prophet-art').draw;
 art['finite-signal-quadratic-substitutes'] = require('./finite-signals-art').draw;
 art['complementary-disclosures'] = require('./complementary-disclosures-art').draw;
@@ -2059,6 +2060,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'sharp-logconcave-moment-comparison': require('./mrtt-art').colors,
   'inclusion-link-chernoff-concentration': require('./inclusion-link-chernoff-art').colors,
   'debt-disclosure-bounds': ['#f3c16b', '#e59b9c'],
   'wales-20mph-attribution-manuscript': ['#f2c46f', '#e79a8a'],
@@ -2470,6 +2472,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'sharp-logconcave-moment-comparison') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./mrtt-art').description.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</desc><defs>`);
   if (slug === 'iid-multiunit-prophet-limits') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./prophet-art').description}</desc><defs>`);
   if (slug === 'finite-signal-quadratic-substitutes') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./finite-signals-art').description}</desc><defs>`);
   if (slug === 'complementary-disclosures') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./complementary-disclosures-art').description}</desc><defs>`);
