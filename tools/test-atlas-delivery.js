@@ -26,6 +26,9 @@ try {
   const delta = JSON.parse(execFileSync(process.execPath, [path.join(temporary, 'atlas-agent.js'),'delta','--old',path.join(temporary,'index.json'),'--new',path.join(temporary,'index.json')], {cwd:temporary,encoding:'utf8'}));
   assert.deepStrictEqual(delta.impactedCards, []);
   const html = fs.readFileSync(path.join(dist,'atlas/index.html'),'utf8');
+  const graph = html.indexOf('id="atlas-graph"');
+  assert(graph > 0 && graph < html.indexOf('id="atlas-agents"'), 'main chart must precede agent tools in reading order');
+  assert(graph < html.indexOf('Research route workbench'), 'main chart must precede research route workbench');
   for (const link of ['/atlas/agents.md','/api/atlas-memory.json','/atlas/evaluation.md']) assert(html.includes(link));
   console.log('Atlas delivered-index parity, portable query/delta, documentation and page links: PASS');
 } finally { fs.rmSync(temporary, {recursive:true,force:true}); }
