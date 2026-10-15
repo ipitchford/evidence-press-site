@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['iid-multiunit-prophet-limits'] = require('./prophet-art').draw;
 art['finite-signal-quadratic-substitutes'] = require('./finite-signals-art').draw;
 art['complementary-disclosures'] = require('./complementary-disclosures-art').draw;
 art['state-contingent-comparability'] = require('./state-contingent-art').draw;
@@ -2457,6 +2458,7 @@ palette['katthan-betti-poset-counterexample'] = require('./katthan-art').colors;
 palette['complementary-disclosures'] = require('./complementary-disclosures-art').colors;
 palette['state-contingent-comparability'] = require('./state-contingent-art').colors;
 palette['finite-signal-quadratic-substitutes'] = require('./finite-signals-art').colors;
+palette['iid-multiunit-prophet-limits'] = require('./prophet-art').colors;
 palette['ferromagnetic-full-threshold-glauber'] = require('./ferromagnetic-trimming-art').colors;
 const ceSpectatorArt = require('./ce-spectator-art');
 art['concentratable-entanglement-spectator-counterexample'] = ceSpectatorArt.draw;
@@ -2468,6 +2470,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'iid-multiunit-prophet-limits') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./prophet-art').description}</desc><defs>`);
   if (slug === 'finite-signal-quadratic-substitutes') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./finite-signals-art').description}</desc><defs>`);
   if (slug === 'complementary-disclosures') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./complementary-disclosures-art').description}</desc><defs>`);
   if (slug === 'state-contingent-comparability') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./state-contingent-art').description}</desc><defs>`);
