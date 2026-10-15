@@ -116,7 +116,14 @@
       "note": "Python standard-library diagnostics and version information supplied. No hermetic reconstruction or unaffiliated reproduction established."
     }
   },
-  "media": [],
+  "media": [
+    {
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=v7T_BvZWXDs",
+      "name": "A Million Units, 30 Sweeps: Logarithmic Mixing for Nonnegative RBMs",
+      "description": "Evidence Press video overview of this release. This is a communication aid; it does not extend the release's claims or assurance status and is not additional research evidence."
+    }
+  ],
   "narration": "Two layers, logarithmic mixing. An Evidence Press briefing.\n\nA restricted Boltzmann machine has two layers of binary variables. Its sampler redraws the first layer using the second, then redraws the second using the first. Those two updates make one complete sweep.\n\nHow many sweeps are needed before the distribution largely forgets its starting point? This candidate gives a logarithmic upper bound when both the interactions and the biases are nonnegative. The same constant works for uneven layers, different interaction strengths and arbitrary graph degrees. Interactions may be extremely weak or strong, as long as every parameter is finite.\n\nFor one million vertices, the displayed theorem guarantees total-variation distance at most one hundredth after thirty complete sweeps. This is not a measured runtime. Each sweep updates every variable and calculates its conditional probability.\n\nThe key idea is to use the randomness created by the preceding layer update. Averaged logistic influences shrink discrepancies between coupled chains. The proof conditions on the history before fresh random numbers are drawn, avoiding a false assumption that the discrepancies are independent.\n\nA second calculation studies disjoint pairs of variables. It gives an exact distance formula and shows that logarithmically many sweeps can genuinely be necessary. Its sharp transition is an elementary product-model example, not a cutoff theorem for every restricted Boltzmann machine.\n\nThe sign restrictions matter. Negative biases are not covered, and the universal numerical constant is not claimed optimal. Written proofs and finite checks are available with the paper. This is an unrefereed candidate, published through Evidence Press on the fourteenth of October, twenty twenty-six. The paper and its full evidence package are linked on the release page. This briefing uses an AI-generated voice. It is not additional scientific evidence.",
   "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
   "operatingModel": {
