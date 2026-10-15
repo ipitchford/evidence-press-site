@@ -16,13 +16,13 @@ function draw(a = colors[0], b = colors[1]) {
       <circle cx="152" cy="152" r="8" fill="${a}"/>
       <circle cx="152" cy="152" r="19" fill="none" stroke="${a}" stroke-opacity=".34" stroke-width="2"/>
       <g class="og-hide" fill="#fff7ed" font-size="20">
-        <text x="-5" y="326">u = 0</text><text x="266" y="326">u = 1</text>
-        <text x="-31" y="19">v = 1</text><text x="-31" y="304">v = 0</text>
+        <text x="8" y="326">u = 0</text><text x="266" y="326">u = 1</text>
+        <text x="8" y="26">v = 1</text><text x="8" y="294">v = 0</text>
       </g>
       <g class="og-hide" text-anchor="middle">
         <text x="88" y="84" fill="${a}" font-size="23">trigger off</text>
         <text x="224" y="242" fill="${b}" font-size="23">trigger on</text>
-        <text x="152" y="-15" fill="#f7efe5" font-size="18">one p before v is known</text>
+        <text x="152" y="28" fill="#f7efe5" font-size="18">one p before v is known</text>
       </g>
     </g>
 
