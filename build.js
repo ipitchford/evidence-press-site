@@ -1831,19 +1831,6 @@ function atlasPage() {
       <strong>What a line means—and does not mean.</strong>
       ${esc(RESEARCH_GRAPH.claimCeiling)} Geometry, proximity and node size are navigation choices, not evidence.
     </aside>
-    <section id="atlas-agents" class="atlas-research" aria-labelledby="atlas-agents-title">
-      <p class="atlas-kicker">For research agents · local computation · static downloads</p>
-      <h2 id="atlas-agents-title">Ask the archive what to try next</h2>
-      <p>Retrieve source-linked research moves, necessary hypotheses, counterexamples and decisive next tests. A packet is a starting point for investigation, not a proof or a novelty verdict. Unknown conditions stay unknown.</p>
-      <p><a href="/atlas/agents.md">Agent quickstart and commands</a> · <a href="/api/atlas-memory.json">Download the source-bound index</a> · <a href="/atlas/evaluation.md">Record and compare research attempts</a></p>
-      <ul>
-        <li>Find the exact assumptions that make a transfer possible—or invalidate it.</li>
-        <li>Compare two index versions to revisit only changed sources and affected cards.</li>
-        <li>Retain unsuccessful and budget-limited attempts alongside successful ones, without inventing missing measurements.</li>
-      </ul>
-      <p>The catalogue is indexed automatically; detailed research cards cover selected cases only. No match does not mean no prior art. These tools run on your machine, do not send your question to a server, and make no automatic model calls.</p>
-    </section>
-    ${atlasResearchView(assetV('js/atlas-route-core.js'))}
     <section class="atlas-workbench" aria-labelledby="atlas-instrument-title">
       <h2 id="atlas-instrument-title" class="sr-only">Interactive research relationship instrument</h2>
       <div class="atlas-toolbar">
@@ -1892,6 +1879,19 @@ function atlasPage() {
         <p class="atlas-limit"><strong>Boundary.</strong> Geometry is navigation, not evidence. Position and node size do not express correctness, novelty, priority or impact.</p>
       </aside>
     </section>
+    <section id="atlas-agents" class="atlas-research" aria-labelledby="atlas-agents-title">
+      <p class="atlas-kicker">For research agents · local computation · static downloads</p>
+      <h2 id="atlas-agents-title">Ask the archive what to try next</h2>
+      <p>Retrieve source-linked research moves, necessary hypotheses, counterexamples and decisive next tests. A packet is a starting point for investigation, not a proof or a novelty verdict. Unknown conditions stay unknown.</p>
+      <p><a href="/atlas/agents.md">Agent quickstart and commands</a> · <a href="/api/atlas-memory.json">Download the source-bound index</a> · <a href="/atlas/evaluation.md">Record and compare research attempts</a></p>
+      <ul>
+        <li>Find the exact assumptions that make a transfer possible—or invalidate it.</li>
+        <li>Compare two index versions to revisit only changed sources and affected cards.</li>
+        <li>Retain unsuccessful and budget-limited attempts alongside successful ones, without inventing missing measurements.</li>
+      </ul>
+      <p>The catalogue is indexed automatically; detailed research cards cover selected cases only. No match does not mean no prior art. These tools run on your machine, do not send your question to a server, and make no automatic model calls.</p>
+    </section>
+    ${atlasResearchView(assetV('js/atlas-route-core.js'))}
     <section class="atlas-missingness" aria-labelledby="atlas-missingness-title">
       <div class="atlas-missingness-copy">
         <p class="eyebrow">Registry missingness</p>
