@@ -108,7 +108,14 @@
       "note": "Python standard-library diagnostics and version information supplied. No hermetic reconstruction or unaffiliated reproduction established."
     }
   },
-  "media": [],
+  "media": [
+    {
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=KM06Zh-Zfp0",
+      "name": "Pin the Hubs, Not the Sampler: Near-Linear Glauber Mixing for Ferromagnets",
+      "description": "Evidence Press video overview of this release. This is a communication aid; it does not extend the release's claims or assurance status and is not additional research evidence."
+    }
+  ],
   "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
   "narration": "A controlled core, a faster mixing bound. An Evidence Press briefing.\n\nImagine a network of binary variables whose neighbours favour agreement. A local sampler chooses one vertex at random and redraws its value using the current neighbours. How many such updates are needed before the distribution largely forgets its starting state?\n\nThis mathematical candidate gives a near-linear bound throughout a precisely specified, strictly subcritical ferromagnetic field range. At fixed accuracy, the bound grows like the number of vertices times the square of its logarithm. It permits unequal parameters, arbitrarily high finite degrees and extremely rare configurations, within the stated parameter envelope.\n\nThe mechanism is a controlled comparison. After a burn-in period, vertices with especially high degree or bias are overwhelmingly likely to have spin one. The proof temporarily pins those vertices for analysis. That leaves a residual system whose conditional probabilities can be controlled. An existing entropy theorem bounds its mixing, and a coupling transfers the estimate back to the original sampler. The actual sampler is not modified.\n\nThree errors are kept separate: residual mixing, departures from the pinned region, and the stationary cost of conditioning. A separate corollary gives a linear relaxation bound, but does not replace this worst-start argument.\n\nThe threshold endpoint remains open, and a sharper mixing bound is not proved. The result counts single-site updates, not measured computing time. Finite numerical checks support selected identities, not the universal theorem.\n\nThis is an unrefereed candidate released through Evidence Press on the fourteenth of October, twenty twenty-six. The paper and its full evidence package are linked on the release page. This briefing uses an AI-generated voice. It is not additional scientific evidence.",
   "operatingModel": {
