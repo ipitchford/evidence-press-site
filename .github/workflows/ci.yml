@@ -82,6 +82,13 @@ jobs:
       - name: Atlas discovery and burden regression tests
         run: node tools/test-atlas-discovery.js
 
+      - name: Agent research memory, prospective records and static cost boundary
+        run: |
+          node tools/test-atlas-memory.js
+          node tools/test-atlas-campaign.js
+          node tools/test-static-hosting.js
+          node tools/check-static-hosting.js
+
       - name: Executable Atlas routes and semantic negative controls
         run: |
           node tools/test-atlas-research.js
@@ -108,6 +115,9 @@ jobs:
 
       - name: Research graph source/public parity
         run: node tools/test-research-graph.js --built
+
+      - name: Atlas agent downloadable-byte and standalone parity
+        run: node tools/test-atlas-delivery.js
 
       - name: Atlas proposal source/public parity
         run: node tools/test-atlas-proposals.js --built
