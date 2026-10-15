@@ -82,6 +82,15 @@ jobs:
       - name: Atlas discovery and burden regression tests
         run: node tools/test-atlas-discovery.js
 
+      - name: Executable Atlas routes and semantic negative controls
+        run: |
+          node tools/test-atlas-research.js
+          node tools/atlas-research.js run data/atlas-research/graph48.json --out /tmp/atlas-ci-witness.json > /tmp/atlas-ci-run.log
+          python3 -B tools/check-atlas-witness.py /tmp/atlas-ci-witness.json
+          python3 -O -B tools/check-atlas-witness.py /tmp/atlas-ci-witness.json
+          python3 -B tools/test-atlas-witness.py
+          python3 -O -B tools/test-atlas-witness.py
+
       - name: Claim assurance, frozen baseline and zero-cost implementation status
         run: |
           node tools/test-claim-assurance.js

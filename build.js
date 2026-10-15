@@ -25,6 +25,9 @@ const { loadBaselineReceipt, validateBaselineReceipt } = require('./tools/baseli
 const { loadArticles, articleAttribution } = require('./tools/articles');
 const { withBriefingAudio } = require('./tools/audio-media');
 const { checkManuscriptPdf } = require('./tools/manuscript-pdf-gate');
+const ATLAS_ROUTE_LIBRARY = require('./data/ATLAS_RESEARCH_ROUTES.json');
+require('./assets/js/atlas-route-core').validateLibrary(ATLAS_ROUTE_LIBRARY);
+const atlasResearchView = require('./tools/atlas-research-view');
 
 const ROOT = __dirname;
 require('./tools/banner-palettes').check(ROOT);
@@ -1794,6 +1797,8 @@ function atlasPage() {
 <link rel="describedby" type="application/json" href="${BASE}/api/atlas-proposals.json">
 <link rel="alternate" type="text/markdown" href="${url}index.md">
 <script defer src="/assets/js/atlas.js?v=${ATLAS_JS_V}"></script>
+<script defer src="/assets/js/atlas-route-core.js?v=${assetV('js/atlas-route-core.js')}"></script>
+<script defer src="/assets/js/atlas-research-ui.js?v=${assetV('js/atlas-research-ui.js')}"></script>
 `;
   const html = `${head({
     title: `Evidence Atlas · ${CONFIG.siteName}`,
@@ -1807,7 +1812,7 @@ function atlasPage() {
     <div class="wrap">
       <p class="atlas-kicker">Research instrument · source-driven · no inferred links</p>
       <h1>Evidence Atlas</h1>
-      <p class="standfirst">See how the catalogue fits together—and inspect the exact record behind every connection.</p>
+      <p class="standfirst">Develop a checkable research route, then explore the evidence behind it.</p>
       <div class="atlas-counts" role="list" aria-label="Atlas contents">
         <span role="listitem">${RESEARCH_GRAPH.stats.releaseCount} releases</span>
         <span role="listitem">${RESEARCH_GRAPH.stats.methodCount} reusable methods</span>
@@ -1824,6 +1829,7 @@ function atlasPage() {
       <strong>What a line means—and does not mean.</strong>
       ${esc(RESEARCH_GRAPH.claimCeiling)} Geometry, proximity and node size are navigation choices, not evidence.
     </aside>
+    ${atlasResearchView(assetV('js/atlas-route-core.js'))}
     <section class="atlas-workbench" aria-labelledby="atlas-instrument-title">
       <h2 id="atlas-instrument-title" class="sr-only">Interactive research relationship instrument</h2>
       <div class="atlas-toolbar">
@@ -2247,6 +2253,7 @@ function llms() {
     `- [papers.json](${BASE}/api/papers.json): full structured index — titles, DOIs, PDF links, verification status, provenance, key results, keywords, media, and open follow-up problems for every release`,
     `- [math-objects.json](${BASE}/api/math-objects.json): exact plain-text and LaTeX statements, formulas, bounds, recurrences and sequences with release DOI, version, scope and candidate status preserved`,
     `- [claims.json](${BASE}/api/claims.json): exact content-derived claim identities, natural-language and LaTeX statements, non-claims, six separately scoped obligations and independent status dimensions; the first pilot is z(20)=6`,
+    `- [atlas-research-routes.json](${BASE}/api/atlas-research-routes.json): source-linked conditional lemma cards for the bounded graph-to-SAT workbench; execute locally at /atlas/#atlas-research, not a general theorem prover`,
     `- [assurance-tasks.json](${BASE}/api/assurance-tasks.json): bounded zero-required-cash-cost integrity, replay, review, clean-room reproduction and formalisation tasks with explicit acceptance and rejection criteria`,
     `- [assurance-receipts.json](${BASE}/api/assurance-receipts.json): artifact-bound replay evidence with mandatory independence disclosure; a receipt does not silently promote the claim`,
     `- [assurance-events.jsonl](${BASE}/api/assurance-events.jsonl): append-only claim history in sequence- and predecessor-bound JSON Lines`,
@@ -2519,6 +2526,7 @@ function api() {
     ['relationship-registry.json', RELATIONSHIP_ARTIFACTS.registry],
     ['atlas-roadmap.json', ATLAS_ROADMAP],
     ['atlas-proposals.json', ATLAS_PROPOSALS],
+    ['atlas-research-routes.json', ATLAS_ROUTE_LIBRARY],
     ['research-graph.json', RESEARCH_GRAPH],
     ['implementation-status.json', IMPLEMENTATION_STATUS_ARTIFACTS.status],
     ['baselines/evidence-press-stage0-2026-08-29.json', BASELINE_RECEIPT],
@@ -2530,6 +2538,9 @@ function api() {
     const payload = JSON.stringify(artifact, null, 2) + '\n';
     write(`api/${name}`, payload);
     write(`api/v1/${name}`, payload);
+  }
+  for (const file of fs.readdirSync(path.join(ROOT, 'data/atlas-research')).filter(f => f.endsWith('.json'))) {
+    write(`assets/atlas-research/${file}`, fs.readFileSync(path.join(ROOT, 'data/atlas-research', file), 'utf8'));
   }
   write('api/v2/research-metrics-policy.json', JSON.stringify(OPERATING_ARTIFACTS.metricsPolicyV2, null, 2) + '\n');
   const governanceSchemas = [
