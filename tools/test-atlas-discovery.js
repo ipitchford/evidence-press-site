@@ -298,7 +298,17 @@ async function main() {
     try { disc.evaluateDiscovery(ROOT, { topK: 10, benchmark: stale }); } catch (e) { threw = e.message; }
     ok(threw && /fingerprint/.test(threw), 'evaluate refuses a benchmark frozen on a different corpus', threw);
     if (fs.existsSync(path.join(ROOT, 'data', 'atlas-discovery', 'BENCHMARK.json'))) {
-      const { benchmark } = bench.loadBenchmark(ROOT);
+      const { benchmark: historical } = bench.loadBenchmark(ROOT);
+      if (historical.corpusFingerprint !== text.loadCorpus(ROOT).fingerprint) {
+        let refused = false;
+        try { disc.evaluateDiscovery(ROOT, { benchmark: historical }); } catch (e) { refused = /fingerprint/.test(e.message); }
+        ok(refused, 'historical benchmark remains frozen and is refused against a changed catalogue');
+      }
+      // Evaluate an ephemeral current-corpus fixture without rewriting history.
+      const corpus = text.loadCorpus(ROOT);
+      const positives = bench.recordedDirectPairs(ROOT, corpus);
+      const benchmark = { corpusFingerprint: corpus.fingerprint, positives,
+        hidden: bench.selectHidden(positives, corpus.fingerprint), negatives: [] };
       const record = disc.evaluateDiscovery(ROOT, { topK: 100, benchmark });
       const hiddenKeys = benchmark.hidden.map(p => text.pairKey(...p));
       ok(record.mode === 'evaluate' && record.evaluation && record.benchmark && record.benchmark.hiddenCount === hiddenKeys.length, 'evaluate records benchmark provenance');
@@ -455,6 +465,11 @@ async function main() {
     const summary = burden.summarise(d1.items, labels, d1.strataSummary);
     ok(summary.calibration.sensitivityOnRecordedPairs.estimate === 1 && summary.calibration.specificityOnNegativeControls.estimate === 1, 'calibration sensitivity and specificity are computed from the labels');
     ok(summary.projectedAcceptsAcrossCandidates.population === d1.strataSummary.reduce((a, s) => a + s.population, 0), 'projection covers every sampled stratum');
+    const partial = new Map(labels);
+    partial.delete(d1.items.find(i => i.role === 'sample').customId);
+    ok(burden.summarise(d1.items, partial, d1.strataSummary).projectedAcceptsAcrossCandidates === null, 'missing sample labels suppress the overall projection');
+    const census = burden.summarise([{ customId: 'x', role: 'sample', stratum: 1 }], new Map([['x', { verdict: 'accept' }]]), [{ routeSignalCount: 1, population: 1, sampled: 1 }]);
+    ok(census.projectedAcceptsAcrossCandidates.low === 1 && census.projectedAcceptsAcrossCandidates.high === 1, 'complete census strata have no sampling uncertainty');
   }
 
   // ---------------------------------------------------- symbolic-object route ---

@@ -75,6 +75,10 @@
   font: .91rem/1.2 var(--sans);
 }
 .atlas-view-buttons { display: flex; flex-wrap: wrap; gap: .4rem; }
+#atlas-search-results { margin: .5rem 0 0; padding: 0; list-style: none; max-height: 15rem; overflow: auto; }
+#atlas-search-results button { width: 100%; padding: .5rem; text-align: left; white-space: normal; overflow-wrap: anywhere; border: 0; background: #fff; color: #165273; cursor: pointer; }
+#atlas-search-results button:hover, #atlas-search-results button:focus-visible { background: #eaf5fb; }
+#atlas-proposal-state { max-width: 100%; min-height: 2.65rem; padding: .4rem; font: inherit; }
 .atlas-view-buttons button, .atlas-reset {
   min-height: 2.45rem; padding: .5rem .72rem; border: 1px solid #cfc8bd;
   border-radius: 8px; background: #f7f4ee; color: var(--atlas-ink); cursor: pointer;

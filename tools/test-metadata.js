@@ -310,8 +310,8 @@ check('Atlas keeps agent proposals in a visibly quarantined projection',
   atlasHtml.includes(`data-atlas-mode="proposals" aria-pressed="false">Agent proposals (${publicAtlasProposals.stats.total})</button>`) &&
   atlasHtml.includes(`Quarantined research proposal register (${publicAtlasProposals.stats.total})`) &&
   atlasHtml.includes('These are suggestions, not accepted relationships or endorsed research priorities.'));
-check('Atlas proposal projection has a mobile-fit viewport',
-  fs.readFileSync(path.join(DIST, 'assets/js/atlas.js'), 'utf8').includes("state.mode === 'proposals' ? '290 155 620 372'") &&
+check('Atlas proposal projection fits mobile without cropping outer-ring anchors',
+  fs.readFileSync(path.join(DIST, 'assets/js/atlas.js'), 'utf8').includes("svg.setAttribute('viewBox', '0 0 1200 720')") &&
   fs.readFileSync(path.join(DIST, 'assets/atlas.css'), 'utf8').includes('#atlas-graph[data-atlas-mode="proposals"] { min-width: 0; }'));
 check('Atlas proposal API is distinct from the accepted graph',
   publicAtlasProposals.stats.total === publicAtlasProposals.proposals.length && publicResearchGraph.stats.proposedEdgeCount === 0 &&

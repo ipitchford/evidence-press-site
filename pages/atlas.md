@@ -22,9 +22,11 @@ A shared method, a broad cluster and a research lineage are different objects:
 
 The registry is explicitly a **working taxonomy**. The initial **Direct links** view contains only release-to-release citations, extensions and reuse. The **Research structure** view adds registry-derived cluster and lineage membership, while the **Methods** view shows method assignments. Method inspectors report their release prevalence, and singleton clusters are labelled **cluster seeds** so an empty neighbourhood is not mistaken for evidence of isolation. A non-root release enters an evidence-backed lineage only when its metadata declares both the reciprocal lineage identifier and an evidential parent link. A parent link alone is not lineage membership.
 
-The current composition is 10 direct inter-release links, 14 lineage memberships, 35 cluster memberships and 172 method assignments. These counts explain the graph's density; they do not measure importance or scientific support.
+The current composition is generated from the source records and displayed above the map. These counts explain the graph's density; they do not measure importance or scientific support.
 
 Select any node or connection in the interactive map to inspect its basis, inference limit and exact source record.
+
+Direct links initially shows connected releases rather than crowding the map with unlinked nodes. Search still finds unlinked releases by title or identifier; the missingness panel preserves their count. Search results are selectable by name, and the proposal view can be filtered by review state. Search and filter choices can be shared through the page URL.
 
 ## An accessible and agent-readable instrument
 
@@ -44,12 +46,14 @@ The proposal register is append-only. A content-derived proposal identity binds 
 
 The structured [GitHub research-tip form](https://github.com/ipitchford/evidence-press-site/issues/new?template=research-tip.yml) is an intake route, not a trust boundary. It requires a GitHub account and sign-in, but not the maintainer's account. Agents without GitHub can instead [email the Evidence Press Research Agent](mailto:ian-8516@agentmail.to?subject=Evidence%20Atlas%20research%20tip) using the same headings as the form. Neither route can write to the register or accepted graph: issue and email content remain untrusted until manually normalized into the canonical schema and checked against deterministic source, anchor, identity and lifecycle rules.
 
-The next research stage can compare release statements, dependencies, citations and methods to nominate previously unrecorded connections. Those candidates should enter the **proposal register**, with an explanation and supporting sources, rather than appear as facts.
+The bounded discovery pilot of 14 October 2026 compared citations, declared keywords, extracted object names and release text to nominate previously unrecorded connections. Its repository-only candidates are retrieval results, not discoveries or accepted relationships. Review against the connected claims must precede any proposal or registry change.
 
 Useful candidate types may include a shared lemma under different notation, an unacknowledged antecedent, a common unresolved assumption, a reusable verifier, or two negative results that block the same strategy. A candidate becomes asserted only after additive review against resolvable evidence. Rejected and superseded proposals should remain available as negative knowledge.
 
-Fail-closed proposal intake and review receipts are now operational. Relationship-discovery experiments remain separate future work and may emit only quarantined proposals.
+Fail-closed proposal intake and review receipts are operational. The [discovery pilot](https://github.com/ipitchford/evidence-press-site/blob/main/docs/ATLAS_DISCOVERY_PILOT.md) is implemented, with a frozen evaluation and explicit limitations. Its model-labelled sample is not independent scientific review or evidence of research acceleration.
 
 ## Safe reuse
+
+The [15 October completion review](https://github.com/ipitchford/evidence-press-site/blob/main/docs/audits/2026-10-15-atlas-completion-review.md) records dispositions for all seven pilot drafts, including rejected transfers and deferred comparisons. None has been promoted to an accepted edge by similarity alone.
 
 Start from the selected release page and its archived evidence package. Carry the release's status and assurance boundaries into downstream work. A graph edge can lower discovery cost; it cannot substitute for reading the connected claims, checking their semantic bridge or reproducing their evidence.

@@ -79,6 +79,9 @@ jobs:
       - name: Atlas proposal quarantine and hostile controls
         run: node tools/test-atlas-proposals.js
 
+      - name: Atlas discovery and burden regression tests
+        run: node tools/test-atlas-discovery.js
+
       - name: Claim assurance, frozen baseline and zero-cost implementation status
         run: |
           node tools/test-claim-assurance.js

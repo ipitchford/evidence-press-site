@@ -1830,6 +1830,7 @@ function atlasPage() {
         <div class="atlas-search">
           <label for="atlas-search">Find a release, method, research structure or proposal</label>
           <input id="atlas-search" type="search" placeholder="Try Jacobian, identification, Ramsey…" autocomplete="off">
+          <ul id="atlas-search-results" aria-label="Matching nodes" hidden></ul>
         </div>
         <div>
           <span class="atlas-view-label">View</span>
@@ -1842,6 +1843,10 @@ function atlasPage() {
           </div>
         </div>
         <button class="atlas-reset" id="atlas-reset" type="button">Reset focus</button>
+        <div id="atlas-proposal-filter" hidden>
+          <label for="atlas-proposal-state">Proposal state</label>
+          <select id="atlas-proposal-state"><option value="all">All states</option>${['awaiting-review', 'accepted-for-investigation', 'deferred', 'rejected', 'merged', 'superseded', 'completed', 'withdrawn', 'expired'].map(s => `<option value="${s}">${s.replace(/-/g, ' ')}</option>`).join('')}</select>
+        </div>
         <p class="atlas-toolbar-status" id="atlas-status" role="status" aria-live="polite">Loading the source graph…</p>
       </div>
       <div class="atlas-display">
@@ -1871,7 +1876,7 @@ function atlasPage() {
       <div class="atlas-missingness-copy">
         <p class="eyebrow">Registry missingness</p>
         <h2 id="atlas-missingness-title">What is not yet connected</h2>
-        <p><strong>No edge means that no relationship is currently accepted in the registry; it does not establish that no relationship exists.</strong> Areas never searched are not yet enumerated, because no hidden-relationship discovery run has been conducted.</p>
+        <p><strong>No edge means that no relationship is currently accepted in the registry; it does not establish that no relationship exists.</strong> A bounded discovery pilot ran on 14 October 2026. Its retrieval candidates remain separate from accepted relationships; it does not exhaustively identify unsearched areas. See the <a href="https://github.com/ipitchford/evidence-press-site/blob/main/docs/ATLAS_DISCOVERY_PILOT.md">pilot scope and limitations</a>.</p>
       </div>
       <dl>
         <div><dt>${RESEARCH_GRAPH.stats.releasesWithoutDirectInterReleaseEdgeCount}</dt><dd>releases with no direct link</dd></div>
