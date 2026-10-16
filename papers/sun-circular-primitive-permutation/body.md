@@ -36,7 +36,7 @@ The package separates written arguments, inherited theorems, exact residual enum
 
 Full historical witness streams are not stored. Reproduction regenerates them and checks them; validating a receipt is not the same task. The supplied reviewer freshly reran both residual routes and 332 fields. Publication-stage execution has its own source-bound receipts. These remain coordinated internal checks, not unaffiliated reproduction, formal verification or journal peer review.
 
-The supplied referee’s central prospective assessment was 2★ overall, with a borderline 3★ interpretation possible and rigour assessed at 3★. The extension and stronger replay do not establish 4★ significance. These are provisional judgements, not REF decisions.
+The extension and stronger replay support the stated finite classification and computational closure. They do not by themselves establish broader mathematical significance or downstream impact.
 
 ## Relationship to earlier work
 

@@ -28,7 +28,7 @@ For the ellipse $x^2/4+y^2<1$, the normalized torsion margin is exactly $1/5$. S
 
 The evidence consists of written proofs, exact symbolic identities, radial and channel quadratures, nonradial refinement tests, exact-rational polynomial bounds and corrupted-input controls. The release records normal and optimized replay with pinned dependencies. The supplied audit also reported a cross-version replay; its provenance does not establish authenticated unaffiliated reproduction.
 
-The audit's bounded revisions were addressed in a [comment-by-comment response](https://github.com/ipitchford/steady-stream-power-landscapes/blob/v1.3.0-candidate/REVIEW_RESPONSE.md). AI-assisted review is not human specialist acceptance. REF assessments in the supplied review are prospective opinions, not official ratings, and are not publication badges.
+The audit's bounded revisions were addressed in a [comment-by-comment response](https://github.com/ipitchford/steady-stream-power-landscapes/blob/v1.3.0-candidate/REVIEW_RESPONSE.md). AI-assisted review is not human specialist acceptance. Internal contribution assessments do not establish external validation or downstream impact.
 
 No result here establishes arbitrary-erosion nonradial existence, general nonradial dynamics, empirical terrain prediction, or general wet–dry well-posedness. The channel obstruction does not exclude weak initial layers or settle the strictly positive infinite-support conjecture.
 

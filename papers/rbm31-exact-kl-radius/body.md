@@ -39,7 +39,7 @@ Normal and optimized Python runs, fresh extraction, semantic rejection controls,
 
 All five internal roles recommend Accept with no Critical or Major findings. Read the [editorial decision and review limits](https://github.com/ipitchford/rbm31-exact-kl-radius/blob/v0.1.0-candidate/editorial/DECISION.md) and the [response to their nonblocking notes](https://github.com/ipitchford/rbm31-exact-kl-radius/blob/v0.1.0-candidate/editorial/RESPONSE.md). The exact frozen review ZIP remains a separate release asset.
 
-The four-star stretch produced an executable interface and an infinite-family consequence. These demonstrate scoped reuse, not a substantiated four-star rating or measured impact.
+The extension work produced an executable interface and an infinite-family consequence. These demonstrate scoped reuse, not established broader significance or measured impact.
 
 ## Relationship to earlier work
 

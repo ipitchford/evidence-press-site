@@ -54,7 +54,7 @@ function buildEnvironment(root) {
   // No credentials, NODE_OPTIONS, NODE_PATH, Git overrides, proxy variables or
   // model-provider configuration reaches this offline, dependency-free build.
   const env = {
-    PATH: `${path.dirname(process.execPath)}:/usr/bin:/bin:/usr/sbin:/sbin`,
+    PATH: `${path.dirname(process.execPath)}:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin`,
     HOME: os.homedir(), LANG: 'C', LC_ALL: 'C', TZ: 'UTC',
     GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_GLOBAL: '/dev/null', GIT_NO_REPLACE_OBJECTS: '1',
     REQUIRE_COMMITTED_MANIFESTS: '1',
@@ -85,7 +85,7 @@ function snapshot(root) {
   if (tracked.split('\n').some(line => /^160000 /.test(line))) throw new Error('submodules require a separate dependency closure');
   const source = inventory(root, rel => ['.git', 'node_modules', '.wrangler', 'test-results', 'playwright-report'].includes(rel) || rel.endsWith('/node_modules') || generated(rel));
   const tools = {};
-  for (const name of ['node', 'git', 'bash', 'sh', 'cp', 'rm', 'dirname']) {
+  for (const name of ['node', 'git', 'bash', 'sh', 'cp', 'rm', 'dirname', 'python3', 'pdftotext']) {
     const file = resolveCommand(name, env);
     tools[name] = { path: file, sha256: sha(fs.readFileSync(file)) };
   }
@@ -173,6 +173,8 @@ function verify(root, receiptFile) {
   if (fs.realpathSync(artifact) !== artifact || inventory(artifact).sha256 !== receipt.output.dist.sha256) {
     throw new Error('content-addressed artifact changed after build');
   }
+  require('./check-public-text').check(root, 'source', undefined, { env: receipt.input.environment });
+  require('./check-public-text').check(root, 'built', artifact, { env: receipt.input.environment });
   return { receipt, receiptFile, artifact };
 }
 
@@ -189,8 +191,10 @@ function prepare(root, requestedReceipt) {
   const lock = receiptFile + '.lock';
   fs.mkdirSync(lock); // fail closed on concurrent preparation, never steal locks
   try {
+    require('./check-public-text').check(root, 'source', undefined, { env: input.environment });
     run(root, input.environment, resolveCommand('bash', input.environment), ['protocols/deploy/integrate.sh']);
     run(root, input.environment, process.execPath, ['protocols/tools/check-release-integrity.js']);
+    require('./check-public-text').check(root, 'built', undefined, { env: input.environment });
     if (digest(snapshot(root)) !== digest(input)) throw new Error('source/environment changed during the build');
     const output = outputSnapshot(root);
     const artifact = path.join(path.dirname(receiptFile), `sha256-${output.dist.sha256}`);
@@ -203,7 +207,7 @@ function prepare(root, requestedReceipt) {
     for (const entry of output.dist.files.filter(item => item.sha256)) fs.chmodSync(path.join(artifact, entry.path), entry.executable ? 0o555 : 0o444);
     const payload = { schemaVersion: VERSION, kind: 'local-composite-build', createdAt: new Date().toISOString(),
       inputSha256: digest(input), input, output,
-      gates: ['REQUIRE_COMMITTED_MANIFESTS=1 protocols/deploy/integrate.sh', 'node protocols/tools/check-release-integrity.js'],
+      gates: ['REQUIRE_COMMITTED_MANIFESTS=1 protocols/deploy/integrate.sh', 'node protocols/tools/check-release-integrity.js', 'public-text source and complete built payload'],
       assurance: 'Local build/replay identity only; not CI, browser QA, publication, independent review or scientific validation.' };
     fs.writeFileSync(receiptFile, JSON.stringify({ ...payload, receiptSha256: digest(payload) }, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
     return { ...verify(root, receiptFile), reused: false };

@@ -42,7 +42,7 @@ The main evidence is the written universal argument. Fresh internal checks passe
 
 The supplied review found no error in the universal route but requested fuller exposition, more precise attribution and a corrected diagnostic label. The revised code distinguishes objects lying over electron-invariant parent orbits from objects proved individually electron-fixed. The theorem does not rely on that auxiliary statistic.
 
-This is an unrefereed candidate with coordinated internal checking. It is not proof-assistant certified, independently reproduced outside the workflow, or experimentally validated. It does not supply full fusion tables, a microscopic Hamiltonian, or a new superconducting family. The historical prospective REF assessment remains unchanged and is not an official rating; editorial repairs and the elementary quantitative corollary do not automatically increase significance.
+This is an unrefereed candidate with coordinated internal checking. It is not proof-assistant certified, independently reproduced outside the workflow, or experimentally validated. It does not supply full fusion tables, a microscopic Hamiltonian, or a new superconducting family. Editorial repairs and the elementary quantitative corollary do not automatically increase significance.
 
 ## Relationship to earlier work
 

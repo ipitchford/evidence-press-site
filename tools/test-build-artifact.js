@@ -21,6 +21,10 @@ function commit(root) {
 function fixture(name, control = {}) {
   const root = path.join(temporary, name);
   fs.mkdirSync(root);
+  const publicText = require('./check-public-text');
+  for (const dir of publicText.SOURCE_ROOTS) fs.mkdirSync(path.join(root, dir), {recursive:true});
+  for (const file of publicText.SERVED_DOCS) write(path.join(root,file), 'Fixture public documentation.');
+  write(path.join(root,'site.config.json'), '{}');
   git(root, 'init', '-q');
   write(path.join(root, '.gitignore'), 'dist/\nprotocols/dist/\nprotocols/RECEIPT.json\nprotocols/protocols/*/RECEIPT.json\nignored-source.txt\nnode_modules/\n');
   write(path.join(root, 'source.txt'), 'reviewed source\n');
@@ -46,6 +50,7 @@ function fixture(name, control = {}) {
         'dist/protocols/index.html','dist/protocols/api/protocols.json',
         'protocols/dist/index.html','protocols/RECEIPT.json','protocols/protocols/test/RECEIPT.json']) write(p,'reviewed bytes');
     if (control.mutate) write('source.txt','changed during build');
+    if (control.publicLeak) write('dist/index.html','The REF assessment is 4-star overall.');
   `);
   commit(root);
   write(path.join(root, 'protocols/PUBLISHED.json'), JSON.stringify({ source: { commit: git(root, 'rev-parse', 'HEAD'), dirty: false } }));
@@ -103,6 +108,7 @@ try {
   rejectsMutation('ignored input symlink escape', f => fs.symlinkSync(path.join(f.root, 'source.txt'), path.join(f.root, 'ignored-source.txt')), /symlink/);
   rejectsMutation('protocol receipt symlink escape', f => { fs.unlinkSync(path.join(f.root, 'protocols/RECEIPT.json')); fs.symlinkSync(path.join(f.root, 'source.txt'), path.join(f.root, 'protocols/RECEIPT.json')); }, /regular file/);
   for (const [name, control, pattern] of [
+    ['public rating in built output never gets receipt', { publicLeak: true }, /public-text/],
     ['failed builder never gets receipt', { fail: true }, /failed/],
     ['failed exact protocol gate never gets receipt', { gateFail: true }, /failed/],
     ['source mutation during build never gets receipt', { mutate: true }, /clean|changed during/],

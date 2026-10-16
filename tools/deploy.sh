@@ -75,6 +75,7 @@ retry_post_deploy_readback() {
 }
 
 echo "==> [1/9] verified composite artifact (build once or reuse exact reviewed bytes)"
+node tools/check-public-text.js --source > /dev/null
 if [[ -n "$BUILD_RECEIPT" ]]; then
   node tools/build-artifact.js verify --receipt "$BUILD_RECEIPT"
 else
@@ -113,6 +114,7 @@ echo "==> [6/9] deploy to Cloudflare Pages"
 # Recheck after all local/live pre-upload gates and authentication: they must
 # not mutate either the source, the checked dist tree, or the preserved copy.
 BUILD_ARTIFACT="$(node tools/build-artifact.js verify --receipt "$BUILD_RECEIPT" --print-artifact)"
+node tools/check-public-text.js --built --built-root "$BUILD_ARTIFACT" > /dev/null
 # The owner has not authorised billable Cloudflare compute or new services.
 node tools/check-static-hosting.js "$BUILD_ARTIFACT"
 # macOS ships Bash 3.2, where an empty array trips nounset with the usual form.

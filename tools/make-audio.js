@@ -12,6 +12,7 @@ const crypto = require('crypto');
 const {plannedText,segments,verifySegments} = require('./audio-recipe');
 const {spawnSync} = require('child_process');
 const os = require('os');
+const {checkText} = require('./check-public-text');
 
 const FORCE = process.argv.includes('--force');
 const CHECK = process.argv.includes('--check');
@@ -47,6 +48,7 @@ const narrationFor = meta => meta.narration ||
   `This result has not yet been peer reviewed or independently reproduced. The full paper, the complete evidence package, and open follow-up problems are linked on this page.`;
 
 async function tts(text) {
+  checkText(text, 'exact outgoing TTS narration');
   const res = await fetch(TTS.endpoint, {
     method: 'POST',
     headers: { Authorization: `Bearer ${KEY}`, 'Content-Type': 'application/json' },
@@ -112,11 +114,13 @@ function verify(slug, meta, files) {
     const metaPath = path.join(ROOT, 'papers', d, 'meta.json');
     if (!fs.existsSync(metaPath)) continue;
     const m = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
+    checkText(JSON.stringify(m), `public metadata for ${d}`);
     const slug = m.slug || d;
     const files = pathsFor(slug);
     if (CHECK) { verify(slug, m, files); continue; }
     if (fs.existsSync(files.audio) && !FORCE) { console.log('skip (exists):', slug); continue; }
     const text = plannedText(narrationFor(m));
+    checkText(text, `planned narration for ${d}`);
     const chunks = segments(text);
     if(spawnSync('ffmpeg',['-version'],{stdio:'ignore'}).status!==0) throw new Error('Run audio environment preflight: ffmpeg missing');
     process.stdout.write(`tts: ${slug} (${text.length} chars; ${TTS.model}/${TTS.voice}) ... `);

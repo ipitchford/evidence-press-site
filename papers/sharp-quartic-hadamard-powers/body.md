@@ -86,7 +86,7 @@ The five-role editorial process is producer-coordinated internal AI review.
 It is not unaffiliated reproduction, formal verification, authenticated
 specialist review or journal peer review. Some later full texts and the
 original AIM page remained inaccessible. No absolute novelty, historical
-priority, four-star grade or measured workflow impact is claimed.
+priority or measured workflow impact is claimed.
 
 ## Relationship to earlier work
 
@@ -147,7 +147,7 @@ and requires Pandoc and pdfLaTeX; the archived PDF has its own exact hash.
 
 The stretch assessment identifies the higher-degree programme as potentially
 substantial, but it supplies neither a higher-degree theorem nor a credible
-six-hour four-star closure estimate. It therefore does not enlarge this
+six-hour completion estimate. It therefore does not enlarge this
 release's claim.
 
 ## What is in the evidence package

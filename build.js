@@ -31,6 +31,7 @@ const atlasResearchView = require('./tools/atlas-research-view');
 const atlasMemory = require('./tools/atlas-memory');
 
 const ROOT = __dirname;
+require('./tools/check-public-text').check(ROOT, 'source');
 const ATLAS_MEMORY = atlasMemory.buildIndex(ROOT);
 require('./tools/banner-palettes').check(ROOT);
 const DIST = path.join(ROOT, 'dist');
@@ -3249,4 +3250,5 @@ sitemap();
 llms();
 notFoundPage();
 api();
+require('./tools/check-public-text').check(ROOT, 'built');
 console.log(`Built ${papers.length} releases, ${articles.length} article${articles.length === 1 ? '' : 's'}, Evidence Atlas and Observatory → dist/  (graph: ${RESEARCH_GRAPH.stats.nodeCount} nodes / ${RESEARCH_GRAPH.stats.edgeCount} accepted edges; paper audio: ${papers.filter(p => p.audio).length}; Observatory audio: 1; art: ${papers.filter(p => p.art).length}; og: ${papers.filter(p => p.og).length})`);

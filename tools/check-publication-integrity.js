@@ -10,6 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const { isDeepStrictEqual } = require('util');
+const {correctedComparison} = require('./public-text-corrections');
 
 const ROOT = path.join(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
@@ -465,9 +466,10 @@ async function main() {
 
   const liveApi = await fetchFresh(`${BASE}/api/papers.json`, true);
   const candidateApi = read(candidateApiFile);
-  const livePapers = Array.isArray(liveApi) ? liveApi : (liveApi.papers || []);
+  let livePapers = Array.isArray(liveApi) ? liveApi : (liveApi.papers || []);
   const candidatePapers = Array.isArray(candidateApi) ? candidateApi : (candidateApi.papers || []);
   const bySlug = new Map(candidatePapers.map(paper => [paper.slug, paper]));
+  livePapers = livePapers.map(paper => correctedComparison(paper,bySlug.get(paper.slug),`papers/${paper.slug}/meta.json`));
 
   /* These contracts are additive public memory. Before their first deployment
      the live endpoints legitimately return 404; after they exist, IDs and
@@ -487,7 +489,9 @@ async function main() {
       fetchOptionalJson(`${BASE}${unversionedPath}`),
       fetchOptionalJson(`${BASE}${versionedPath}`)
     ]);
-    liveGovernance.set(unversionedPath, liveUnversioned);
+    const correctionSources = {'/api/work-ledger.json':'data/WORK_LEDGER.json','/api/method-registry.json':'data/METHOD_REGISTRY.json'};
+    liveGovernance.set(unversionedPath, correctionSources[unversionedPath]
+      ? correctedComparison(liveUnversioned,candidateUnversioned,correctionSources[unversionedPath]) : liveUnversioned);
     if (requireLegacyLiveParity && !!liveUnversioned !== !!liveVersioned) {
       failures.push(`${label}: live unversioned and v1 aliases do not have matching presence`);
     } else if (requireLegacyLiveParity && liveUnversioned && !isDeepStrictEqual(liveUnversioned, liveVersioned)) {
