@@ -48,7 +48,7 @@ The package includes the written proofs, exact arithmetic code, a claim map, an 
 
 The family checker corroborates 60,000 modulo-eight instances, 60 excluded-parameter witnesses, 274,780 dyadic instances and 10,416 support instances. These are finite checks, not substitutes for the universal arguments.
 
-This is an **unrefereed candidate collection**. Implementation diversity and targeted AI-assisted review remain internal checking. No formal verification, unaffiliated reproduction, external peer review or demonstrated applied impact is claimed. The extensions strengthen the result structurally; they do not justify an automatic four-star rating.
+This is an **unrefereed candidate collection**. Implementation diversity and targeted AI-assisted review remain internal checking. No formal verification, unaffiliated reproduction, external peer review or demonstrated applied impact is claimed. The extensions strengthen the result structurally; they do not automatically establish broader mathematical significance.
 
 ## Relationship to earlier work
 

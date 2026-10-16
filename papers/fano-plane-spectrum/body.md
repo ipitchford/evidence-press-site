@@ -68,8 +68,8 @@ or every finite number-field decomposition. Those original artifacts and
 their source programs are preserved. CAS correctness and the translation from
 incidence data to equations remain trust boundaries. Internal editorial
 assessment is not unaffiliated specialist review, independent reproduction or
-proof-assistant verification. No official research-quality star rating,
-historical first-solution claim or measured impact is asserted.
+proof-assistant verification. No historical first-solution claim or measured
+impact is asserted.
 
 ## Relationship to earlier work
 

@@ -44,7 +44,7 @@ The release includes written arguments, failure-sensitive scripts, pinned depend
 
 This is an **unrefereed computer-assisted proof collection**. The universal conclusions depend on the written modularity and cusp arguments, not finite numerical agreement alone. Implementation diversity and AI-assisted adversarial review remain within a coordinated workflow. No formal verification, unaffiliated reproduction or external peer review is established. In particular, the symbolic cusp engine was inspected and replayed, not independently reimplemented from scratch.
 
-The supplied review judged the work a specialised contribution. The revisions improve its clarity and certificates; they do not establish broad impact or a four-star research outcome.
+The supplied review judged the work a specialised contribution. The revisions improve its clarity and certificates; they do not establish broad impact.
 
 ## Relationship to earlier work
 

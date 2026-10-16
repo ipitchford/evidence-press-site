@@ -42,6 +42,15 @@ jobs:
             '
           fi
 
+      - name: Public text boundary dependencies and source gate
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils
+          python3 -B -m unittest discover -s tools -p test_ref_leak_scanner.py
+          python3 -O -B -m unittest discover -s tools -p test_ref_leak_scanner.py
+          node tools/test-public-text.js
+          node tools/check-public-text.js --source > /tmp/public-text-source.json
+
       - name: Syntax check every script
         run: |
           node --check build.js
@@ -116,6 +125,9 @@ jobs:
       - name: Research graph source/public parity
         run: node tools/test-research-graph.js --built
 
+      - name: Complete public payload text boundary
+        run: node tools/check-public-text.js --built > /tmp/public-text-built.json
+
       - name: Atlas agent downloadable-byte and standalone parity
         run: node tools/test-atlas-delivery.js
 
@@ -183,6 +195,12 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
+
+      - name: Install fail-closed public-text extraction dependency
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils
+          node tools/check-public-text.js --source > /tmp/public-text-source.json
 
       - name: Select ledgered protocol build source when production-sealed
         run: |

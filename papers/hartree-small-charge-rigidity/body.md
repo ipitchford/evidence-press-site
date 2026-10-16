@@ -32,7 +32,7 @@ The universal claim rests on the written proof and its cited global and elliptic
 
 Automated checks verify the frozen package's hashes and sizes, elementary expansion/scaling identities, normalisation and a mode-sign sanity check. They run normally and under optimized Python, including a deliberately wrong-sign rejection. **They do not verify the analytic proof.** The supplied reviewer identity and external independence are not established. No specialist peer review, independent reproduction or proof-assistant verification is claimed.
 
-There is no explicit maximal charge, quantitative energy deficit, strong-charge shape classification or theorem for the different quadratic interaction. A conservative prospective rating in the supplied review is not an official assessment or an assurance badge.
+There is no explicit maximal charge, quantitative energy deficit, strong-charge shape classification or theorem for the different quadratic interaction. The supplied internal review is not external validation or a substitute for the written argument.
 
 ## Relationship to earlier work
 

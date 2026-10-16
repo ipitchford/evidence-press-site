@@ -44,7 +44,7 @@ The genuine-representation qualification is substantive. In dimension four the t
 
 ## Evidence, assurance and limitations
 
-The package contains a thirteen-page integrated manuscript, precise source comparison, response matrix, preserved substantive reviews and five confirmation reports. Internal editorial confirmation accepted the scoped candidate with attribution and priority qualifications; it does not constitute independent journal peer review or an externally certified star rating.
+The package contains a thirteen-page integrated manuscript, precise source comparison, response matrix, preserved substantive reviews and five confirmation reports. Internal editorial confirmation accepted the scoped candidate with attribution and priority qualifications; it does not constitute independent journal peer review or externally established significance.
 
 Producer replay compares 463 tableau shapes, checks 841 weight and 841 spin multiplicities, verifies parity and dimension identities, and rejects a deliberately corrupted hook divisor under normal and optimized Python. Fresh extraction and Linux CI validate the shipped finite diagnostics. They do not prove the universal theorem. No formal verification or independent reimplementation is claimed.
 

@@ -40,6 +40,9 @@ cp -R protocols/dist dist/protocols
 echo "7/7  sitemap merge    (fold /protocols/ page URLs into dist/sitemap.xml)"
 node tools/merge-protocols-sitemap.js
 
+# Scan the mounted payload too: protocol downloads and pages are public bytes.
+node tools/check-public-text.js --built > /dev/null
+
 echo "done: merged site in dist/  ·  /protocols/ is available and in the main sitemap"
 echo "verify locally:  python3 -m http.server 8080 -d dist   # then open /protocols/"
 echo "deploy (MAINTAINER step, not run here):  wrangler pages deploy dist"
