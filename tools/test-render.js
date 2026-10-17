@@ -56,6 +56,7 @@ const harnessSrc = [
   extractLine('ALLOWED_SCHEMES'),
   extractFunction('safeUrl'),
   extractLine('INLINE_TOKEN'),
+  extractFunction('linkRel'),
   extractFunction('inline'),
   extractFunction('markdown'),
   'return { esc, inline, markdown, safeUrl };'
@@ -142,6 +143,12 @@ eq('HTML escapes outside tokens', inline('a < b & c'), 'a &lt; b &amp; c');
 eq('HTML escapes inside code tokens', inline('run `a < b` now'), 'run <code>a &lt; b</code> now');
 
 /* --- 9. Links and images unaffected --- */
+eq('query-string ampersand in a link href is escaped exactly once',
+  inline('[x](https://example.org/s?a=1&b=2)'),
+  '<a href="https://example.org/s?a=1&amp;b=2" rel="noopener">x</a>');
+eq('Amazon Associates link is marked sponsored',
+  inline('[b](https://www.amazon.com/s?k=x&tag=t-20)'),
+  '<a href="https://www.amazon.com/s?k=x&amp;tag=t-20" rel="sponsored noopener">b</a>');
 eq('link with integer and token in same block',
   inline('see [item 3](https://example.org/p) plus `x` and 4 more'),
   'see <a href="https://example.org/p" rel="noopener">item 3</a> plus <code>x</code> and 4 more');
