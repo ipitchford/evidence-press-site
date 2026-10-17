@@ -1968,6 +1968,75 @@ function supportPage() {
   write('support/index.html', `${head({ title, description, canonical: url, jsonld, metaExtra })}\n${body}\n${foot}`);
 }
 
+/* /shop/: Fourthwall poster gallery plus Amazon picks, from pages/shop.json.
+   Every Amazon link sits under the "Ad" heading and gets rel="sponsored". */
+function shopPage() {
+  const SHOP = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'shop.json'), 'utf8'));
+  const url = `${BASE}/shop/`;
+  const title = 'Shop';
+  const description = SHOP.description;
+  const posters = SHOP.gallery.posters;
+  const posterBySlug = Object.fromEntries(posters.map(p => [p.slug, p]));
+  const amazon = SHOP.picks.shelves.flatMap(s => s.items.map(i => i.url));
+  if (!amazon.every(u => /^https:\/\/www\.amazon\.com\/.*[?&]tag=aphonicdrift-20(&|$)/.test(u)))
+    throw new Error('pages/shop.json: every pick must be a tagged https://www.amazon.com/ link');
+  for (const p of posters) {
+    if (!fs.existsSync(path.join(ROOT, p.image.replace(/^\//, ''))))
+      throw new Error(`pages/shop.json: missing poster image ${p.image}`);
+    if (!/^https:\/\/evidencepress-shop\.fourthwall\.com\/products\//.test(p.url))
+      throw new Error(`pages/shop.json: ${p.slug} must link to a Fourthwall product`);
+  }
+  for (const s of SHOP.picks.shelves)
+    if (!posterBySlug[s.banner]) throw new Error(`pages/shop.json: unknown banner ${s.banner}`);
+  const itemHtml = i => `<a href="${escAttr(i.url)}"${linkRel(i.url)}>${i.author ? `${esc(i.author)}, <i>${esc(i.title)}</i>` : esc(i.label)}</a>`;
+  const itemMd = i => `[${i.author ? `${i.author}, *${i.title}*` : i.label}](${i.url})`;
+  const jsonld = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
+    '@type': 'WebPage', '@id': `${url}#page`, url, name: title, description,
+    inLanguage: CONFIG.language, isPartOf: { '@id': `${BASE}/#website` },
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  }] };
+  const metaExtra = [
+    ['og:type', 'website'], ['og:site_name', CONFIG.siteName],
+    ['og:title', title], ['og:description', description], ['og:url', url],
+    ['twitter:card', 'summary'], ['twitter:title', title], ['twitter:description', description]
+  ].map(([k, v]) => k.startsWith('og:')
+    ? `<meta property="${k}" content="${escAttr(v)}">`
+    : `<meta name="${k}" content="${escAttr(v)}">`).join('\n') + '\n';
+  const extraLinks = `<link rel="alternate" type="text/markdown" href="${url}index.md">
+<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">
+`;
+  const g = SHOP.gallery, k = SHOP.picks;
+  const body = `<article class="shop-page"><div class="wrap">
+<section class="shop-hero" aria-labelledby="shop-title"><h1 id="shop-title">${esc(title)}</h1>
+<p class="lede">${esc(SHOP.lede)}</p></section>
+<section aria-labelledby="shop-gallery-title"><h2 id="shop-gallery-title">${esc(g.heading)}</h2>
+<p>${esc(g.intro)}</p>
+<ul class="shop-gallery">
+${posters.map(p => `<li><a href="${escAttr(p.url)}" rel="noopener"><img src="${escAttr(p.image)}" alt="${escAttr(p.alt)}" width="600" height="900" loading="lazy" decoding="async"><span class="shop-poster-title">${esc(p.title)}</span><span class="shop-poster-topic">${esc(p.topic)}</span></a></li>`).join('\n')}
+</ul>
+<p><a class="shop-cta" href="${escAttr(g.shopUrl)}" rel="noopener">${esc(g.shopLabel)} →</a></p>
+</section>
+<section class="shop-picks" aria-labelledby="shop-picks-title"><h2 id="shop-picks-title">${esc(k.heading)} <span class="shop-adtag">${esc(k.tag)}</span></h2>
+<p class="shop-disclose">${esc(k.statement)} ${esc(k.note)}</p>
+<div class="shop-shelves">
+${k.shelves.map(s => `<section class="shop-shelf"><img class="shop-band" src="${escAttr(posterBySlug[s.banner].image)}" alt="" width="600" height="900" loading="lazy" decoding="async"><div class="shop-shelf-body">
+<h3>${esc(s.title)}</h3><p class="shop-why">${esc(s.why)}</p>
+<ul>${s.items.map(i => `<li>${itemHtml(i)}</li>`).join('')}</ul>
+${s.film ? `<p class="shop-film"><a href="${escAttr(s.film.url)}" rel="noopener"><span aria-hidden="true">▶ </span>${esc(s.film.label)}</a></p>` : ''}
+</div></section>`).join('\n')}
+</div>
+</section>
+<p class="shop-disclose shop-closing">${esc(SHOP.closing).replace('Donate', '<a href="/support/">Donate</a>')}</p>
+</div></article>`;
+  write('shop/index.html', `${head({ title: `${title} · ${CONFIG.siteName}`, description, canonical: url, jsonld, metaExtra, extraLinks })}
+${body}
+${foot}`);
+  const md = `---\ntitle: "${title}"\nurl: ${url}\nlicense: CC0-1.0\n---\n\n# ${title}\n\n${SHOP.lede}\n\n## ${g.heading}\n\n${g.intro}\n\n${
+    posters.map(p => `- [${p.title}](${p.url}) (${p.topic})`).join('\n')}\n\n[${g.shopLabel}](${g.shopUrl})\n\n## ${k.heading} (${k.tag})\n\n${k.statement} ${k.note}\n\n${
+    k.shelves.map(s => `### ${s.title}\n\n${s.why}\n\n${s.items.map(i => `- ${itemMd(i)}`).join('\n')}\n${s.film ? `\nFilm: [${s.film.label}](${s.film.url})\n` : ''}`).join('\n')}\n${SHOP.closing.replace('Donate', '[Donate](/support/)')}\n`;
+  write('shop/index.md', md);
+}
+
 /* ------------------------------------------ plain-English companion essay */
 function companionParts(companion) {
   const raw = fs.readFileSync(path.join(ROOT, 'pages', companion.mdFile), 'utf8');
@@ -3255,7 +3324,7 @@ simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'W
 simplePage('ai/', 'For AI agents and automated research tools', 'Machine-readable endpoints, metadata conventions, and follow-up problem lists for research agents.', 'ai.md', 'WebPage');
 simplePage('privacy/', 'Privacy policy', `How ${CONFIG.siteName} handles data: no accounts, cookies or analytics on this site, and the private YouTube channel tool that uses YouTube API Services.`, 'privacy.md', 'WebPage');
 simplePage('terms/', 'Terms of service', `Licences, status and limits of the material published by ${CONFIG.siteName}, including its YouTube channel.`, 'terms.md', 'WebPage');
-simplePage('shop/', 'Shop', `Posters, mugs and T-shirts made from the ${CONFIG.siteName} films' pictures, printed to order, and partner books, puzzles and kits; purchases help keep the research free to read and watch.`, 'shop.md', 'WebPage');
+shopPage();
 feeds();
 sitemap();
 llms();
