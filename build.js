@@ -2016,7 +2016,10 @@ ${posters.map(p => `<li><a href="${escAttr(p.url)}" rel="noopener"><img src="${e
 </ul>
 <p><a class="shop-cta" href="${escAttr(g.shopUrl)}" rel="noopener">${esc(g.shopLabel)} →</a></p>
 </section>
-<section class="shop-picks" aria-labelledby="shop-picks-title"><h2 id="shop-picks-title">${esc(k.heading)} <span class="shop-adtag">${esc(k.tag)}</span></h2>
+${SHOP.book ? `<section aria-labelledby="shop-book-title"><h2 id="shop-book-title">${esc(SHOP.book.heading)}</h2>
+<p><i>${esc(SHOP.book.title)}</i> ${esc(SHOP.book.text)} <a href="${escAttr(SHOP.book.url)}">${esc(SHOP.book.label)} →</a></p>
+</section>
+` : ''}<section class="shop-picks" aria-labelledby="shop-picks-title"><h2 id="shop-picks-title">${esc(k.heading)} <span class="shop-adtag">${esc(k.tag)}</span></h2>
 <p class="shop-disclose">${esc(k.statement)} ${esc(k.note)}</p>
 <div class="shop-shelves">
 ${k.shelves.map(s => `<section class="shop-shelf"><img class="shop-band" src="${escAttr(posterBySlug[s.banner].image)}" alt="" width="600" height="900" loading="lazy" decoding="async"><div class="shop-shelf-body">
@@ -2032,9 +2035,102 @@ ${s.film ? `<p class="shop-film"><a href="${escAttr(s.film.url)}" rel="noopener"
 ${body}
 ${foot}`);
   const md = `---\ntitle: "${title}"\nurl: ${url}\nlicense: CC0-1.0\n---\n\n# ${title}\n\n${SHOP.lede}\n\n## ${g.heading}\n\n${g.intro}\n\n${
-    posters.map(p => `- [${p.title}](${p.url}) (${p.topic})`).join('\n')}\n\n[${g.shopLabel}](${g.shopUrl})\n\n## ${k.heading} (${k.tag})\n\n${k.statement} ${k.note}\n\n${
+    posters.map(p => `- [${p.title}](${p.url}) (${p.topic})`).join('\n')}\n\n[${g.shopLabel}](${g.shopUrl})\n\n${SHOP.book ? `## ${SHOP.book.heading}\n\n*${SHOP.book.title}* ${SHOP.book.text} [${SHOP.book.label}](${SHOP.book.url})\n\n` : ''}## ${k.heading} (${k.tag})\n\n${k.statement} ${k.note}\n\n${
     k.shelves.map(s => `### ${s.title}\n\n${s.why}\n\n${s.items.map(i => `- ${itemMd(i)}`).join('\n')}\n${s.film ? `\nFilm: [${s.film.label}](${s.film.url})\n` : ''}`).join('\n')}\n${SHOP.closing.replace('Donate', '[Donate](/support/)')}\n`;
   write('shop/index.md', md);
+}
+
+/* /think-again/: the book page and its puzzle-by-puzzle source list. The
+   book's copyright page sends readers here ("The sources for the facts are
+   listed at evidencepress.org"), so the URL is permanent. Metadata lives in
+   pages/think-again.json (amazonUrl is the release-day edit); the source list
+   in pages/think-again-sources.json was converted from the book project's
+   fact-check tables (claim, how it was checked, source). */
+function thinkAgainPage() {
+  const BOOK = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'think-again.json'), 'utf8'));
+  const SOURCES = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'think-again-sources.json'), 'utf8'));
+  const url = `${BASE}/think-again/`;
+  const puzzles = SOURCES.sections.flatMap(s => s.puzzles);
+  if (puzzles.length !== 100 || puzzles.some((p, i) => p.n !== i + 1))
+    throw new Error('pages/think-again-sources.json: expected puzzles 1-100 in book order');
+  if (puzzles.some(p => !p.rows.length))
+    throw new Error('pages/think-again-sources.json: every puzzle needs at least one sourced claim');
+  if (!/^97[89]\d{10}$/.test(BOOK.isbn)) throw new Error('pages/think-again.json: isbn must be ISBN-13 digits');
+  if (BOOK.amazonUrl && !/^https:\/\/www\.amazon\.(com|co\.uk)\//.test(BOOK.amazonUrl))
+    throw new Error('pages/think-again.json: amazonUrl must be an https://www.amazon.com/ or .co.uk/ URL');
+  for (const f of [BOOK.cover.webp, BOOK.cover.jpg, BOOK.og])
+    if (!fs.existsSync(path.join(ROOT, f.replace(/^\//, '')))) throw new Error(`pages/think-again.json: missing ${f}`);
+  const fullTitle = `${BOOK.title}: ${BOOK.subtitle}`;
+  const description = BOOK.description;
+  const jsonld = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
+    '@type': 'WebPage', '@id': `${url}#page`, url, name: `${BOOK.title}: sources and fact checks`, description,
+    inLanguage: CONFIG.language, isPartOf: { '@id': `${BASE}/#website` }, about: { '@id': `${url}#book` },
+    datePublished: BOOK.datePublished, dateModified: BOOK.dateModified,
+    image: BASE + BOOK.og, license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  }, {
+    '@type': 'Book', '@id': `${url}#book`, name: BOOK.title, alternativeHeadline: BOOK.subtitle,
+    author: { '@id': `${BASE}/#org` }, publisher: { '@id': `${BASE}/#org` },
+    isbn: BOOK.isbn, bookFormat: 'https://schema.org/Paperback', numberOfPages: 212,
+    inLanguage: CONFIG.language, image: BASE + BOOK.cover.jpg, url,
+    copyrightYear: 2026, copyrightHolder: { '@id': `${BASE}/#org` }
+  }] };
+  const metaExtra = [
+    ['og:type', 'book'], ['og:site_name', CONFIG.siteName],
+    ['og:title', fullTitle], ['og:description', description], ['og:url', url],
+    ['og:image', BASE + BOOK.og], ['og:image:width', '1200'], ['og:image:height', '630'],
+    ['og:image:alt', BOOK.cover.alt], ['book:isbn', BOOK.isbn],
+    ['twitter:card', 'summary_large_image'], ['twitter:title', fullTitle], ['twitter:description', description],
+    ['twitter:image', BASE + BOOK.og]
+  ].map(([k, v]) => /^(og|book):/.test(k)
+    ? `<meta property="${k}" content="${escAttr(v)}">`
+    : `<meta name="${k}" content="${escAttr(v)}">`).join('\n') + '\n';
+  const extraLinks = `<link rel="alternate" type="text/markdown" href="${url}index.md">
+<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">
+`;
+  const buy = BOOK.amazonUrl
+    ? `<a href="${escAttr(BOOK.amazonUrl)}" rel="noopener">${esc(BOOK.amazonLabel)}</a>`
+    : esc(BOOK.availability);
+  const rowHtml = r => `<li><span class="ta-claim">${inline(r.claim)}</span> <span class="ta-source">${inline(r.source)}</span> <span class="ta-check">${inline(r.check)}</span></li>`;
+  const puzzleHtml = p => `<section class="ta-puzzle" id="puzzle-${p.n}" aria-labelledby="puzzle-${p.n}-title">
+<h3 id="puzzle-${p.n}-title">${p.n}. ${esc(p.title)}</h3>
+<ul class="ta-sources">${p.rows.map(rowHtml).join('')}</ul>
+${p.health.length ? `<h4>Health check</h4>
+<ul class="ta-sources">${p.health.map(rowHtml).join('')}</ul>` : ''}
+</section>`;
+  const body = `<article class="release think-again"><div class="wrap"><div class="prose">
+<p class="kicker">${esc(BOOK.kicker)}</p>
+<div class="ta-head">
+<picture class="ta-cover"><source srcset="${escAttr(BOOK.cover.webp)}" type="image/webp"><img src="${escAttr(BOOK.cover.jpg)}" alt="${escAttr(BOOK.cover.alt)}" width="${BOOK.cover.width}" height="${BOOK.cover.height}" loading="eager" decoding="async"></picture>
+<div>
+<h1>${esc(BOOK.title)}</h1>
+<p class="standfirst">${esc(BOOK.subtitle)}</p>
+${BOOK.summary.map(t => `<p>${inline(t)}</p>`).join('\n')}
+<p class="ta-facts">ISBN ${esc(BOOK.isbnDisplay)} · ${esc(BOOK.format)} · Evidence Press, 2026<br>${buy}</p>
+</div>
+</div>
+<div class="body">
+<h2 id="how-the-facts-were-checked">${esc(BOOK.methodHeading)}</h2>
+${BOOK.method.map(t => `<p>${inline(t)}</p>`).join('\n')}
+<h2 id="reading-the-source-list">${esc(BOOK.keyHeading)}</h2>
+${BOOK.key.map(t => `<p>${inline(t)}</p>`).join('\n')}
+<h2 id="sources">${esc(BOOK.sourcesHeading)}</h2>
+${SOURCES.sections.map(s => `<details class="companion-essay ta-section" id="section-${s.letter.toLowerCase()}"><summary>${esc(s.letter)}. ${esc(s.name)}<span class="companion-note">Puzzles ${s.first}–${s.last}</span></summary>
+<div class="companion-body">
+${s.puzzles.map(puzzleHtml).join('\n')}
+</div></details>`).join('\n')}
+<p class="note">${inline(BOOK.rights)}</p>
+</div>
+</div></div></article>`;
+  write('think-again/index.html', `${head({ title: `${fullTitle} · ${CONFIG.siteName}`, description, canonical: url, jsonld, metaExtra, extraLinks })}
+${body}
+${foot}`);
+  const rowMd = r => `- ${r.claim}. Source: ${r.source}. (${r.check})`;
+  const md = `---\ntitle: "${fullTitle}"\nurl: ${url}\nisbn: ${BOOK.isbn}\nlicense: CC0-1.0 (this source list; the book itself is all rights reserved)\n---\n\n# ${fullTitle}\n\n${
+    BOOK.summary.join('\n\n')}\n\nISBN ${BOOK.isbnDisplay} · ${BOOK.format} · Evidence Press, 2026. ${BOOK.amazonUrl ? `[${BOOK.amazonLabel}](${BOOK.amazonUrl})` : BOOK.availability}\n\n## ${BOOK.methodHeading}\n\n${
+    BOOK.method.join('\n\n')}\n\n## ${BOOK.keyHeading}\n\n${BOOK.key.join('\n\n')}\n\n## ${BOOK.sourcesHeading}\n\n${
+    SOURCES.sections.map(s => `### ${s.letter}. ${s.name} (puzzles ${s.first}–${s.last})\n\n${
+      s.puzzles.map(p => `#### ${p.n}. ${p.title}\n\n${p.rows.map(rowMd).join('\n')}\n${p.health.length ? `\nHealth check:\n\n${p.health.map(rowMd).join('\n')}\n` : ''}`).join('\n')}`).join('\n')}\n${BOOK.rights}\n`;
+  write('think-again/index.md', md);
 }
 
 /* ------------------------------------------ plain-English companion essay */
@@ -2303,7 +2399,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-27' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-27' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
   ];
@@ -3325,6 +3421,7 @@ simplePage('ai/', 'For AI agents and automated research tools', 'Machine-readabl
 simplePage('privacy/', 'Privacy policy', `How ${CONFIG.siteName} handles data: no accounts, cookies or analytics on this site, and the private YouTube channel tool that uses YouTube API Services.`, 'privacy.md', 'WebPage');
 simplePage('terms/', 'Terms of service', `Licences, status and limits of the material published by ${CONFIG.siteName}, including its YouTube channel.`, 'terms.md', 'WebPage');
 shopPage();
+thinkAgainPage();
 feeds();
 sitemap();
 llms();

@@ -1,0 +1,4031 @@
+{
+ "sections": [
+  {
+   "letter": "A",
+   "name": "Chance, statistics and evidence",
+   "first": 1,
+   "last": 21,
+   "puzzles": [
+    {
+     "n": 1,
+     "title": "The test says yes",
+     "topic": "Base rates (Chance)",
+     "rows": [
+      {
+       "claim": "Bayes was a Presbyterian minister in Tunbridge Wells and died in 1761",
+       "check": "Checked",
+       "source": "MacTutor, \"Thomas Bayes\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Biographies/Bayes/) (minister of the Presbyterian chapel, Tunbridge Wells, c. 1733–52; died 17 April 1761)"
+      },
+      {
+       "claim": "Price found the essay among Bayes's papers and sent it to the Royal Society, where it was read on 23 December 1763",
+       "check": "Two or more sources agree",
+       "source": "The essay's own heading, \"Read Dec. 23, 1763\" (Phil. Trans. 53, 370–418), from the transcription at [york.ac.uk](https://www.york.ac.uk/depts/maths/histstat/essay.htm); MacTutor (above); Stigler, \"The True Title of Bayes's Essay\", [arXiv:1310.0173](https://arxiv.org/abs/1310.0173)"
+      },
+      {
+       "claim": "1978 Harvard study: 60 students and doctors; the commonest answer was 95%; the right answer was about 2%; 11 of 60 gave it",
+       "check": "Two or more sources agree (secondary)",
+       "source": "Casscells W, Schoenberger A, Graboys TB, \"Interpretation by physicians of clinical laboratory results\", *N Engl J Med* 1978;299:999–1001. Figures as summarised by NEJM's CardioExchange blog: [blogs.nejm.org](https://blogs.nejm.org/cardioexchange/2011/08/25/numbers-traps-in-clinical-practice/) (11/60 correct; 27/60 said 95%). The 2% figure was recomputed: 1/(1+0.05×999) = 1.96%. Details confirmed through Manrai AK et al., \"Medicine's uncomfortable relationship with math\", *JAMA Intern Med* 2014;174:991–993, [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC4955674) (20 students, 20 house officers and 20 attending physicians at Harvard Medical School). The original 1978 paper itself was not seen; these figures rest on secondary accounts."
+      },
+      {
+       "claim": "Puzzle arithmetic: 9 ÷ 108 ≈ 8%; Try this 90/(90+90) = 50%",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Disease and test are labelled invented; numbers illustrative",
+       "check": "Confirmed",
+       "source": "Text (labelled on puzzle page)"
+      },
+      {
+       "claim": "1% prevalence, 90% sensitivity, 10% false-positive rate gives PPV of 9/108, about 8%",
+       "check": "Confirmed",
+       "source": "Computed; matches standard Bayes/PPV method (e.g. NHS screening leaflets present results per 1,000)"
+      },
+      {
+       "claim": "\"a positive screening result is usually followed by a confirmatory test\"",
+       "check": "Confirmed",
+       "source": "UK National Screening Committee, \"Screening tests: false positives and negatives\", [gov.uk](https://www.gov.uk/government/publications/nhs-population-screening-explained) (this link no longer resolved when checked on 17 October 2026) (screening identifies people needing further tests)"
+      },
+      {
+       "claim": "Casscells et al. 1978: 60 participants, commonest answer 95%, correct about 2%, 11 of 60",
+       "check": "Confirmed (secondary; original paper not seen)",
+       "source": "Casscells, Schoenberger, Graboys, NEJM 1978;299:999; replication Manrai et al. 2014, [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC4955674)"
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "title": "The praise that backfired",
+     "topic": "Regression to the mean (Statistics)",
+     "rows": [
+      {
+       "claim": "Galton described the effect in 1885 (BA Section H address, *Nature* 24 Sept 1885) and set out the evidence in 1886: \"Regression towards mediocrity in hereditary stature\", *J. Anthrop. Inst.* 15 (1886) 246–263; 928 adult children (Table I) of 205 mid-parents",
+       "check": "Two or more sources agree, corrected (draft said \"in 1886\" only)",
+       "source": "Galton's scan: [pdf.galton.org](https://pdf.galton.org/essays/1880-1889/galton-1886-jaigi-regression-stature.pdf) ; Miller, \"Regression\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/r/)"
+      },
+      {
+       "claim": "\"mediocrity\" meant only the middle; statistics kept \"regression\"",
+       "check": "Checked",
+       "source": "Miller (above)"
+      },
+      {
+       "claim": "Kahneman: Israeli air force flight instructors; praise vs shouting; he recognised regression",
+       "check": "Two or more sources agree",
+       "source": "Kahneman, Nobel autobiography (2002): [nobelprize.org](https://www.nobelprize.org/prizes/economic-sciences/2002/kahneman/biographical/) ; *Thinking, Fast and Slow* (2011) ch. 17"
+      },
+      {
+       "claim": "A best-tenth lesson is followed by a worse one 19 times in 20 (independent luck)",
+       "check": "Calculated",
+       "source": "= 0.95 (holds for any continuous i.i.d. luck)"
+      },
+      {
+       "claim": "Football: improvement after sacking a manager is easy to misattribute",
+       "check": "General knowledge (hedged)",
+       "source": "reasoning; no figure claimed"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 3,
+     "title": "The coin that owes you",
+     "topic": "Law of large numbers (Chance)",
+     "rows": [
+      {
+       "claim": "Jacob Bernoulli, *Ars Conjectandi*, Basel 1713, posthumous (died 16 Aug 1705, \"eight years after his death\"); theorem in Part IV; pondered \"for twenty years\"",
+       "check": "Two or more sources agree",
+       "source": "MacTutor: [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Biographies/Bernoulli_Jacob/) ; Edwards, *Significance* 2013, quoting Sylla's translation: [jhanley.biostat.mcgill.ca](https://jhanley.biostat.mcgill.ca/bios601/Surveys/EdwardsOnBernoulli.pdf)"
+      },
+      {
+       "claim": "Poisson used \"loi des grands nombres\" in 1835 and popularised it in his 1837 book",
+       "check": "Checked, corrected (draft said 1837)",
+       "source": "Miller, \"Law of large numbers\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/l/)"
+      },
+      {
+       "claim": "510 heads expected, 51%; lead of 20; Ann ≈ 38%, Ben ≈ 1 in 7 billion (1.36 × 10⁻¹⁰)",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Simulated run in the answer figure",
+       "check": "Illustrative",
+       "source": "seed 5 in ; captioned \"one simulated run\""
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 4,
+     "title": "Who shares a birthday?",
+     "topic": "Birthday problem (Chance)",
+     "rows": [
+      {
+       "claim": "Usually credited to Richard von Mises, 1939 (\"Über Aufteilungs- und Besetzungswahrscheinlichkeiten\", *Rev. Fac. Sci. Univ. Istanbul* N.S. 4, 145–163)",
+       "check": "Two or more sources agree",
+       "source": "[en.wikipedia.org](https://en.wikipedia.org/wiki/Birthday_problem) (pointer); Springer 10.1007/s11009-023-10028-z"
+      },
+      {
+       "claim": "Davenport discussed it c. 1927, unpublished, because he could not believe it was new (\"is said to\")",
+       "check": "Checked (secondary chain)",
+       "source": "Coxeter, *Mathematical Recreations and Essays* 11th edn (1940) p. 45, via Good (1950) and Singmaster, *Sources* §8.B"
+      },
+      {
+       "claim": "0.493 / 0.507 at 23; 71% at 30; 99% at 57; 253 pairs; 253 for \"your birthday\"",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Uneven real birthday distribution makes a match more likely",
+       "check": "Checked (standard result: any non-uniform distribution raises the collision probability)",
+       "source": "Munford, *Am. Stat.* 31 (1977) 119 (standard reference; not fetched)"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 5,
+     "title": "Ice cream and the sea",
+     "topic": "Correlation is not causation (Statistics)",
+     "rows": [
+      {
+       "claim": "Galton, \"Co-relations and their measurement…\", *Proc. R. Soc.* 45 (1888) 135–145, read 20 Dec 1888",
+       "check": "Two or more sources agree",
+       "source": "[galton.org](https://galton.org/essays/1880-1889/galton-1888-co-relations-royal-soc/galton_corr.html) ; Miller \"Correlation\""
+      },
+      {
+       "claim": "Pearson's standard formula, *Phil. Trans. A* 187 (1896)",
+       "check": "Checked",
+       "source": "Miller \"Correlation\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/c/)"
+      },
+      {
+       "claim": "Pearson coined \"spurious correlation\", *Proc. R. Soc.* 60 (1897)",
+       "check": "Checked",
+       "source": "Miller \"S\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/s/)"
+      },
+      {
+       "claim": "Yule 1926, \"Why do we sometimes get nonsense-correlations between time-series?\", *JRSS* 89",
+       "check": "Two or more sources agree",
+       "source": "Miller \"C\", \"S\"; [doi:10.2307/2341482](https://doi.org/10.2307/2341482)"
+      },
+      {
+       "claim": "Ice cream / rescues; fire engines; feet and reading",
+       "check": "Illustrative / general knowledge",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 6,
+     "title": "Twice as dangerous",
+     "topic": "Absolute vs relative risk (Evidence)",
+     "rows": [
+      {
+       "claim": "October 1995: CSM warned that pills containing gestodene or desogestrel carried about twice the venous-clot risk of older pills (\"Dear Doctor\" letter 18 Oct 1995)",
+       "check": "Two or more sources agree",
+       "source": "Furedi, *Hum. Reprod. Update* 5 (1999) 621–626, [doi:10.1093/humupd/5.6.621](https://doi.org/10.1093/humupd/5.6.621) ; BMJ: [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC27461)"
+      },
+      {
+       "claim": "\"1 in 7,000 to 2 in 7,000\" attributed to Gigerenzer's summary, not to the CSM",
+       "check": "Checked (as Gigerenzer's framing)",
+       "source": "Gigerenzer et al., *Psychol. Sci. Public Interest* 8 (2007); APS release: [psychologicalscience.org](https://www.psychologicalscience.org/news/releases/just-a-numbers-game-making-sense-of-health-statistics.html)"
+      },
+      {
+       "claim": "Abortions, England and Wales residents: 154,315 (1995) → 167,916 (1996)",
+       "check": "Two or more sources agree",
+       "source": "ONS series via [johnstonsarchive.net](https://johnstonsarchive.net/policy/abortion/uk/ab-ukenglandwales.html) ; BMJ 1999 \"rose by 9%\": [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC1115440) ; Del Bono et al. (2011) [repository.essex.ac.uk](https://repository.essex.ac.uk/2573/)"
+      },
+      {
+       "claim": "\"Number needed to treat\" proposed 1988 (Laupacis, Sackett & Roberts, *NEJM* 318:1728–33)",
+       "check": "Checked",
+       "source": "[doi:10.1056/NEJM198806303182605](https://doi.org/10.1056/NEJM198806303182605)"
+      },
+      {
+       "claim": "Puzzle and Try-this numbers (1→2 in 7,000; 4→3 in 1,000; 1,000 screened)",
+       "check": "Illustrative, computed",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Puzzle baseline \"1 woman in 7,000\" a year on the older pill (labelled illustrative)",
+       "check": "Text revised after this check",
+       "source": "Current MHRA (2014) figures: about 2 per 10,000 non-users, 5–7 per 10,000 on levonorgestrel/norethisterone/norgestimate pills, 9–12 per 10,000 on desogestrel/gestodene/drospirenone, i.e. about 1 in 1,700 vs 1 in 1,000. GPnotebook table citing MHRA, [gpnotebook.com](https://gpnotebook.com/pages/gynaecology/absolute-risk-of-venous-thromboembolism-dvt-/-pe-according-to-coc) ; Pulse on MHRA advice, [pulsetoday.co.uk](https://www.pulsetoday.co.uk/?p=22547) . The puzzle's real-world scale is roughly 4x too low; a reader could take 1 in 7,000 as today's risk. The relative risk (1.5–2x) is right."
+      },
+      {
+       "claim": "CSM, Oct 1995: gestodene/desogestrel pills about twice the venous-clot risk",
+       "check": "Confirmed",
+       "source": "Furedi, Hum Reprod Update 1999, [doi:10.1093/humupd/5.6.621](https://doi.org/10.1093/humupd/5.6.621)"
+      },
+      {
+       "claim": "Gigerenzer's \"1 in 7,000 to 2 in 7,000\" summary",
+       "check": "Confirmed (correctly attributed as his framing)",
+       "source": "Gigerenzer et al., Psychol Sci Public Interest 2007"
+      },
+      {
+       "claim": "\"Many women stopped taking the pill\"; abortions 154,315 (1995) to 167,916 (1996), linked \"in part\" to the scare",
+       "check": "Confirmed",
+       "source": "BMJ 1999, [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC1115440) ; ONS series (main source table)"
+      },
+      {
+       "claim": "Absolute risk small compared with what clinicians emphasise: clot risk in pregnancy exceeds pill risk",
+       "check": "Text revised after this check",
+       "source": "Vinogradova et al., BMJ 2015, [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC4444976) ; Pharmaceutical Journal summary, [pharmaceutical-journal.com](https://pharmaceutical-journal.com/article/news/newer-contraceptive-pills-associated-with-higher-risk-of-clots)"
+      },
+      {
+       "claim": "NNT proposed 1988",
+       "check": "Confirmed",
+       "source": "Laupacis et al., NEJM 1988;318:1728"
+      },
+      {
+       "claim": "Try this: screening 4 to 3 per 1,000 over ten years, 1,000 screened per death prevented",
+       "check": "Confirmed (illustrative; mirrors Gigerenzer's breast-screening example)",
+       "source": "Computed"
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "title": "Where to put the armour",
+     "topic": "Survivorship bias (Evidence)",
+     "rows": [
+      {
+       "claim": "Wald, Statistical Research Group, Columbia; eight memoranda (1943) on estimating vulnerability from damage on survivors",
+       "check": "Two or more sources agree",
+       "source": "CNA reprint CRC 432 (1980): [apps.dtic.mil](https://apps.dtic.mil/sti/pdfs/ADA091073.pdf) ; Casselman, \"The Legend of Abraham Wald\", AMS Feature Column (June 2016): [ams.org](https://www.ams.org/samplings/feature-column/fc-2016-06)"
+      },
+      {
+       "claim": "Wallis recalled the military's inclination to protect the most-hit parts",
+       "check": "Checked",
+       "source": "Wallis, \"The Statistical Research Group, 1942–1945\", *JASA* 75 (1980) 320–330 and rejoinder"
+      },
+      {
+       "claim": "Popular \"armour the engines\" telling goes beyond the record; the dotted-bomber picture was drawn in 2016 †",
+       "check": "† labelled",
+       "source": "Casselman (above); [commons.wikimedia.org](https://commons.wikimedia.org/wiki/File:Survivorship-bias.png) (McGeddon, 12 Nov 2016)"
+      },
+      {
+       "claim": "Old buildings / successful firms",
+       "check": "General knowledge",
+       "source": "reasoning"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Try this: survey of 80-year-old smokers is biased because damaged smokers died earlier",
+       "check": "Confirmed",
+       "source": "Doll et al., BMJ 2004 (50-year British doctors study: smokers die ~10 years earlier), [bmj.com](https://www.bmj.com/content/328/7455/1519)"
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "title": "Better in every group",
+     "topic": "Simpson's paradox (Statistics)",
+     "rows": [
+      {
+       "claim": "Pearson and colleagues 1899; Yule 1903 (*Biometrika* 2); Simpson 1951 (*JRSS B* 13, 238–241); named by Blyth 1972 (*JASA* 67)",
+       "check": "Checked, corrected (draft credited Yule alone as first)",
+       "source": "Miller \"S\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/s/)"
+      },
+      {
+       "claim": "Berkeley, autumn 1973: 8,442 men, 44% admitted; 4,321 women, 35%; little department-level bias against women; women applied more to departments with low admission rates",
+       "check": "Two or more sources agree",
+       "source": "Bickel, Hammel & O'Connell, *Science* 187 (1975) 398–404: [homepage.stat.uiowa.edu](https://homepage.stat.uiowa.edu/~mbognar/1030/Bickel-Berkeley.pdf) (this link no longer resolved when checked on 17 October 2026)"
+      },
+      {
+       "claim": "Hospital figures 635/1,000 vs 860/1,000",
+       "check": "Illustrative, computed",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Hospitals and figures labelled invented",
+       "check": "Confirmed",
+       "source": "Text"
+      },
+      {
+       "claim": "Surgeon taking hardest cases can have worse crude survival while better within case-mix groups",
+       "check": "Confirmed",
+       "source": "Standard case-mix adjustment rationale (e.g. NHS Digital SHMI methodology, [digital.nhs.uk](https://digital.nhs.uk/data-and-information/publications/ci-hub/summary-hospital-level-mortality-indicator-shmi))"
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "title": "The shape of the curve",
+     "topic": "The bell curve and its limits (Statistics)",
+     "rows": [
+      {
+       "claim": "de Moivre 1733 (pamphlet dated 12 Nov 1733)",
+       "check": "Two or more sources agree",
+       "source": "MacTutor (gives 13 Nov): [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Biographies/De_Moivre/) ; [mathpages.com](https://mathpages.com/home/kmath642/kmath642.htm) (text gives year only)"
+      },
+      {
+       "claim": "Gauss 1809, errors of astronomical measurement (*Theoria motus*)",
+       "check": "Checked",
+       "source": "standard; Pearson 1920"
+      },
+      {
+       "claim": "Quetelet, chests of Scottish soldiers (1846)",
+       "check": "Two or more sources agree",
+       "source": "HistData ChestSizes, citing Stigler (1986) p. 208"
+      },
+      {
+       "claim": "Pearson popularised \"normal curve\" and later regretted it (\"…leading people to believe that all other distributions of frequency are in one sense or another 'abnormal'\", *Biometrika* 13 (1920) p. 25)",
+       "check": "Two or more sources agree",
+       "source": "[archive.org](https://archive.org/details/sim_biometrika_1920-10_13_1) ; Miller \"N\""
+      },
+      {
+       "claim": "68 / 95 / 99.7%; 2.3% above +2 SD; heights 162 ± 7 cm illustrative",
+       "check": "Calculated / illustrative",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Heights within one sex close to normal; incomes right-skewed; town sizes long-tailed",
+       "check": "General knowledge",
+       "source": "figure labelled schematic in alt text"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Adult height is the sum of many genetic and environmental (childhood diet, health) influences; near-normal within one sex/generation",
+       "check": "Confirmed",
+       "source": "NCD-RisC, eLife 2016 (height determinants); standard human genetics (polygenic trait)"
+      },
+      {
+       "claim": "Try this: women average 162 cm, SD 7 cm; ~2.3% above 176 cm",
+       "check": "Confirmed (hypothetical \"if\"; UK women ~162 cm, SD ~6–7 cm)",
+       "source": "Health Survey for England anthropometric data; computed"
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "title": "A millionaire walks into a pub",
+     "topic": "Mean vs median (Statistics)",
+     "rows": [
+      {
+       "claim": "Galton first used \"median\" in English in 1881; Cournot \"valeur médiane\" 1843",
+       "check": "Checked, corrected (draft \"early 1880s\")",
+       "source": "Miller \"M\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/m/)"
+      },
+      {
+       "claim": "\"Average\" from French *avarie* / Italian *avaria*, damage to ship or cargo; loss shared (\"general average\")",
+       "check": "Two or more sources agree (Arabic root uncertain, so not mentioned)",
+       "source": "[etymonline.com](https://www.etymonline.com/word/average) ; Merriam-Webster"
+      },
+      {
+       "claim": "UK April 2025 (provisional): full-time median £39,039, mean £48,512",
+       "check": "Checked",
+       "source": "ONS ASHE 2025 bulletin, Table 1.7a: [ons.gov.uk](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/bulletins/annualsurveyofhoursandearnings/2025) — these are the provisional April 2025 figures; the 2026 survey was due in late October 2026, after the book went to press"
+      },
+      {
+       "claim": "Pub £1,027,000 / £30,000; houses £612,000 / £220,000",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 11,
+     "title": "The bigger poll",
+     "topic": "Sample size vs bias (Statistics)",
+     "rows": [
+      {
+       "claim": "*Literary Digest* 1936: about 10 million ballots, about 2.4 million returned (2,376,523); predicted Landon",
+       "check": "Two or more sources agree",
+       "source": "Lusinchi, *Social Science History* 36 (2012): [pdixon.stat.iastate.edu](https://pdixon.stat.iastate.edu/stat587/resources/president-landon-and-the-1936-literary-digest-poll-were-automobile-and-telephone-owners-to-blame.pdf) ; arXiv 2107.14166"
+      },
+      {
+       "claim": "Roosevelt won 46 of 48 states",
+       "check": "Two or more sources agree",
+       "source": "Lusinchi; Emory: [math.oxford.emory.edu](https://math.oxford.emory.edu/site/math117/historicalBlunders/)"
+      },
+      {
+       "claim": "Gallup's far smaller sample predicted Roosevelt (sample size not stated)",
+       "check": "Checked",
+       "source": "Lusinchi (Gallup 55.7% two-party)"
+      },
+      {
+       "claim": "Mailing lists slanted, nonresponse the bigger problem",
+       "check": "Two or more sources agree",
+       "source": "Squire, *POQ* 52 (1988) 125–133; Lusinchi 2012"
+      },
+      {
+       "claim": "±3.1 at 1,000; ±2.2 at 2,000; ÷√2",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 12,
+     "title": "What p = 0.03 means",
+     "topic": "p-values (Evidence)",
+     "rows": [
+      {
+       "claim": "Pearson 1900 chi-squared P values",
+       "check": "Checked",
+       "source": "*Phil. Mag.* (5) 50: 157–175"
+      },
+      {
+       "claim": "Fisher 1925, \"convenient\" to take P = .05 as a limit",
+       "check": "Checked (verbatim)",
+       "source": "*SMRW* ch. III §12: [psychclassics.yorku.ca](https://psychclassics.yorku.ca/Fisher/Methods/chap3.htm)"
+      },
+      {
+       "claim": "ASA 2016 statement: p-values do not measure the probability that the hypothesis is true",
+       "check": "Checked",
+       "source": "Wasserstein & Lazar, *Am. Stat.* 70 (2016) 129–133, [doi:10.1080/00031305.2016.1154108](https://doi.org/10.1080/00031305.2016.1154108)"
+      },
+      {
+       "claim": "20 × 0.05 = 1; 1 − 0.95²⁰ = 64%",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Trial labelled invented; definition C (two-sided p-value under no effect)",
+       "check": "Confirmed",
+       "source": "ASA Statement on p-values 2016, [doi.org](https://doi.org/10.1080/00031305.2016.1154108)"
+      },
+      {
+       "claim": "A large trial can give a tiny p for a trivial benefit; a small trial can miss a real effect",
+       "check": "Confirmed",
+       "source": "ASA 2016 (principles 5, 6)"
+      },
+      {
+       "claim": "20 independent null tests at 0.05: ~1 expected, 64% chance of at least one",
+       "check": "Confirmed",
+       "source": "Computed (1 − 0.95^20 = 0.642)"
+      }
+     ]
+    },
+    {
+     "n": 13,
+     "title": "The cold cure",
+     "topic": "Fair tests and controls (Evidence)",
+     "rows": [
+      {
+       "claim": "Lind, 20 May 1747, HMS *Salisbury*, twelve scurvy patients, six pairs, oranges and lemons fastest; *Treatise* 1753",
+       "check": "Two or more sources agree",
+       "source": "James Lind Library: [jameslindlibrary.org](https://www.jameslindlibrary.org/lind-j-1753/)"
+      },
+      {
+       "claim": "Lind did not draw the clear conclusion now drawn",
+       "check": "Checked (standard historiography; JLL commentary)",
+       "source": "JLL (above)"
+      },
+      {
+       "claim": "Colds clear up \"within a week or two\"",
+       "check": "Checked, corrected (draft \"about a week\")",
+       "source": "NHS: [nhs.uk](https://www.nhs.uk/conditions/common-cold/) (\"feel better in about 1 to 2 weeks\")"
+      }
+     ],
+     "health": [
+      {
+       "claim": "\"Most colds clear up within a week or two whatever you do\"",
+       "check": "Confirmed",
+       "source": "NHS \"Common cold\" (feel better in about 1 to 2 weeks), [nhs.uk](https://www.nhs.uk/conditions/common-cold/) ; nidirect (7–10 days adults, cough may last 2–3 weeks), [nidirect.gov.uk](https://www.nidirect.gov.uk/conditions/common-cold)"
+      },
+      {
+       "claim": "Remedy X invented; control group comparison",
+       "check": "Confirmed",
+       "source": "Text; standard trial design"
+      },
+      {
+       "claim": "Lind, 20 May 1747, HMS Salisbury, 12 sailors, 6 pairs, oranges and lemons fastest",
+       "check": "Confirmed",
+       "source": "James Lind Library, [jameslindlibrary.org](https://www.jameslindlibrary.org/lind-j-1753/)"
+      },
+      {
+       "claim": "Try this: placebo controls for expectation and allows blinding of assessors",
+       "check": "Confirmed",
+       "source": "Cochrane Handbook ch. 8 (performance/detection bias), [training.cochrane.org](https://training.cochrane.org/handbook)"
+      }
+     ]
+    },
+    {
+     "n": 14,
+     "title": "The impressive trial",
+     "topic": "Randomisation (Evidence)",
+     "rows": [
+      {
+       "claim": "Fisher argued for randomisation at Rothamsted in the 1920s (1926 \"The arrangement of field experiments\"); *The Design of Experiments* 1935",
+       "check": "Checked",
+       "source": "standard bibliography; JLL"
+      },
+      {
+       "claim": "MRC streptomycin trial, *BMJ* 30 Oct 1948, Bradford Hill, random numbers in sealed envelopes; deaths by six months 4/55 vs 14/52",
+       "check": "Two or more sources agree",
+       "source": "JLL: [jameslindlibrary.org](https://www.jameslindlibrary.org/medical-research-council-1948b/) ; Senn, *Dicing with Death*"
+      },
+      {
+       "claim": "Called \"a landmark\", not \"the first RCT\"",
+       "check": "Wording follows the fact-check",
+       "source": "JLL on Amberson 1931 and Bell 1941"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Doctor-chosen allocation causes selection bias; random allocation prevents systematic differences \"measured or not\"",
+       "check": "Confirmed",
+       "source": "Cochrane Handbook ch. 8 (selection bias, allocation concealment)"
+      },
+      {
+       "claim": "\"2,000 patients are enough for many trials\"",
+       "check": "Confirmed",
+       "source": "Standard power considerations"
+      },
+      {
+       "claim": "MRC 1948 streptomycin trial: sealed envelopes; 4/55 vs 14/52 deaths at six months",
+       "check": "Confirmed",
+       "source": "MRC, BMJ 1948;2:769; James Lind Library, [jameslindlibrary.org](https://www.jameslindlibrary.org/medical-research-council-1948b/)"
+      },
+      {
+       "claim": "Try this: predictable allocation lets recruiters steer; concealed random draw prevents it",
+       "check": "Confirmed",
+       "source": "Schulz et al., JAMA 1995 (inadequate concealment exaggerates effects)"
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "title": "Three doors",
+     "topic": "Monty Hall (Chance)",
+     "rows": [
+      {
+       "claim": "Selvin, *Am. Stat.* 29(1) Feb 1975 p. 67; named in 29(3) Aug 1975 p. 134",
+       "check": "Two or more sources agree",
+       "source": "[en.wikipedia.org](https://en.wikipedia.org/wiki/Monty_Hall_problem) ; [tomrocksmaths.com](https://tomrocksmaths.com/2021/02/27/monty-hall-origins)"
+      },
+      {
+       "claim": "Monty Hall hosted *Let's Make a Deal*",
+       "check": "Two or more sources agree",
+       "source": "[en.wikipedia.org](https://en.wikipedia.org/wiki/Let%27s_Make_a_Deal)"
+      },
+      {
+       "claim": "vos Savant, *Parade* 9 Sept 1990; ~10,000 letters, most disagreeing; close to 1,000 signed with PhDs",
+       "check": "Checked",
+       "source": "Tierney, *NYT* 21 July 1991: [academicweb.nd.edu](https://academicweb.nd.edu/~rwilliam/stats1/appendices/Monty-NYTimes.pdf)"
+      },
+      {
+       "claim": "1/3, 2/3; 99/100",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 16,
+     "title": "A prize five times the stake",
+     "topic": "Expected value (Chance)",
+     "rows": [
+      {
+       "claim": "Pascal–Fermat letters, 1654, problem of points; Pascal's 2–1 case",
+       "check": "Checked",
+       "source": "[york.ac.uk](https://www.york.ac.uk/depts/maths/histstat/pascal.htm)"
+      },
+      {
+       "claim": "Huygens 1657, first printed probability book; his \"value\" (Dutch *waerde*); Latin translation by van Schooten called it *expectatio*",
+       "check": "Two or more sources agree, corrected (draft implied Huygens's own term)",
+       "source": "Miller \"E\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/e/) ; arXiv 2407.13312"
+      },
+      {
+       "claim": "UK National Lottery: 55p in prizes per £1, 1 Apr 2024–31 Mar 2025",
+       "check": "Checked (official)",
+       "source": "Gambling Commission: [gamblingcommission.gov.uk](https://www.gamblingcommission.gov.uk/statistics-and-research/publication/pence-per-pound-breakdown-of-national-lottery-sales-1-april-2024-to-31-march)"
+      },
+      {
+       "claim": "83p, 17p; £15/£5",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 17,
+     "title": "The weed on the pond",
+     "topic": "Exponential growth (Growth)",
+     "rows": [
+      {
+       "claim": "Malthus, *Essay on the Principle of Population*, 1798, published anonymously; \"geometrical ratio\" vs \"arithmetical ratio\"",
+       "check": "Two or more sources agree",
+       "source": "Liberty Fund OLL, 1798 first edition: [oll.libertyfund.org](https://oll.libertyfund.org/titles/malthus-an-essay-on-the-principle-of-population-1798-1st-ed) ; Garrison–Morton (historyofmedicine.com) on anonymous first edition, name added in 1803"
+      },
+      {
+       "claim": "\"Exponent\" introduced by Michael Stifel in 1544 (*Arithmetica integra*)",
+       "check": "Checked",
+       "source": "Jeff Miller, *Earliest Known Uses of Some of the Words of Mathematics*, \"E\" (MacTutor mirror): [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/e/) , quoting Stifel and citing Smith, *History of Mathematics* vol. 2, p. 521"
+      },
+      {
+       "claim": "Latin *exponere*, \"to put forth\"",
+       "check": "Checked (standard dictionary sense: ex- \"out\" + ponere \"to put\")",
+       "source": "Lewis & Short s.v. *expono*; etymonline page returned 403 and was not read"
+      },
+      {
+       "claim": "Chessboard legend: told in many versions, no identifiable inventor †",
+       "check": "Two or more sources agree",
+       "source": "Wikipedia, \"Wheat and chessboard problem\" (earliest firm record Ibn Khallikān, 13th c.) and \"Sissa (mythical brahmin)\" (\"mainly regarded as a myth\"). The text names no source date for the legend."
+      },
+      {
+       "claim": "1.07^10 ≈ 1.97, ^20 ≈ 3.87, ^30 ≈ 7.61; exact doubling time 10.24 years; 2^63 vs 2^63 − 1",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 18,
+     "title": "The first digit",
+     "topic": "Benford's law (Statistics)",
+     "rows": [
+      {
+       "claim": "Newcomb 1881, worn early pages of logarithm tables (*Am. J. Math.* 4, 39–40)",
+       "check": "Two or more sources agree",
+       "source": "[ams.org](https://www.ams.org/featurecolumn/archive/newcomb.html)"
+      },
+      {
+       "claim": "Benford, GE physicist, 1938, 20,229 numbers from 20 sources; 30.6% begin with 1 on the \"Average\" row",
+       "check": "Two or more sources agree",
+       "source": "Benford, *Proc. Am. Phil. Soc.* 78 (1938) 551–572; table: [archive.lib.msu.edu](https://archive.lib.msu.edu/crcmath/math/math/b/b099.htm)"
+      },
+      {
+       "claim": "Theory log₁₀(2) = 30.1%; 9,000→10,000 = 11%",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Audit use; mismatch is not proof",
+       "check": "Checked (Nigrini) / courts claim dropped",
+       "source": "[en.wikipedia.org](https://en.wikipedia.org/wiki/Benford%27s_law) (pointer)"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 19,
+     "title": "One in a million",
+     "topic": "Coincidences (Chance)",
+     "rows": [
+      {
+       "claim": "Diaconis & Mosteller 1989, \"law of truly large numbers\"; quotation verbatim",
+       "check": "Checked",
+       "source": "*JASA* 84 (1989) 853–861: [stat.berkeley.edu](https://www.stat.berkeley.edu/~aldous/157/Papers/diaconis_mosteller.pdf)"
+      },
+      {
+       "claim": "Evelyn Marie Adams, New Jersey lottery 1985 and 1986; \"1 in 17 trillion\"; Samuels & McCabe \"better than 1 in 30\" within four months",
+       "check": "Checked",
+       "source": "same paper"
+      },
+      {
+       "claim": "60 a day, ~22,000 a year; 81% for five heads in a row in 100 tosses",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 20,
+     "title": "A one-in-a-million match",
+     "topic": "Prosecutor's fallacy (Evidence)",
+     "rows": [
+      {
+       "claim": "Thompson & Schumann named it, 1987 (*Law Hum. Behav.* 11, 167–187)",
+       "check": "Two or more sources agree",
+       "source": "[faculty.sites.uci.edu](https://faculty.sites.uci.edu/wthompson/publications)"
+      },
+      {
+       "claim": "Sally Clark convicted 1999 of murdering her two baby sons (died 1996 and 1998)",
+       "check": "Checked",
+       "source": "*R v Clark* [2003] EWCA Crim 1020: [caselaw.nationalarchives.gov.uk](https://caselaw.nationalarchives.gov.uk/ewca/crim/2003/1020)"
+      },
+      {
+       "claim": "\"1 in 73 million\" by squaring 1 in 8,543",
+       "check": "Two or more sources agree",
+       "source": "judgment; 8,543² = 72,982,849"
+      },
+      {
+       "claim": "RSS objections: independence assumption; double murder may be rarer still",
+       "check": "Checked",
+       "source": "RSS statement 23 Oct 2001 (phrases via secondary); RSS President's letter to the Lord Chancellor, 23 Jan 2002: [rss.org.uk](https://www.rss.org.uk/RSS/media/File-library/Membership/Sections/2020/Sally-Clark-RSS-letter-2002.pdf)"
+      },
+      {
+       "claim": "Quashed 2003 chiefly because microbiology evidence was not disclosed",
+       "check": "Checked",
+       "source": "judgment (above)"
+      },
+      {
+       "claim": "Died 2007 (day differs between sources, so only the year is given)",
+       "check": "Two or more sources agree",
+       "source": "[en.wikipedia.org](https://en.wikipedia.org/wiki/Sally_Clark)"
+      },
+      {
+       "claim": "~10 other matches among 10 million; 1 in 11",
+       "check": "Calculated, illustrative",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 21,
+     "title": "Six throws, one six",
+     "topic": "\"At least one\" (Chance)",
+     "rows": [
+      {
+       "claim": "Pascal to Fermat, 29 July 1654: de Méré's two dice bets; complaint that arithmetic contradicts itself",
+       "check": "Checked",
+       "source": "[york.ac.uk](https://www.york.ac.uk/depts/maths/histstat/pascal.htm)"
+      },
+      {
+       "claim": "Antoine Gombaud; \"Chevalier de Méré\" a pen-name, not a title",
+       "check": "Checked, corrected",
+       "source": "[en.wikipedia.org](https://en.wikipedia.org/wiki/Antoine_Gombaud) ; [universalis.fr](https://www.universalis.fr/encyclopedie/antoine-mere/)"
+      },
+      {
+       "claim": "66.5%; 51.8%; 49.1%; 25 throws to pass half; 26% for 1-in-100 a year over 30 years",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    }
+   ]
+  },
+  {
+   "letter": "B",
+   "name": "Number, shape and logic",
+   "first": 22,
+   "last": 43,
+   "puzzles": [
+    {
+     "n": 22,
+     "title": "Divide by nothing",
+     "topic": "Zero (Number)",
+     "rows": [
+      {
+       "claim": "Babylonian scribes, from about the 4th century BC, marked an empty place *inside* a number with a sign, but did not treat it as a number",
+       "check": "Checked (corrected: draft draft said \"Seleucid\"; MacTutor dates it c. 400 BC; form varied)",
+       "source": "MacTutor, \"A history of Zero\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/HistTopics/Zero/)"
+      },
+      {
+       "claim": "Brahmagupta, 628 (*Brāhmasphuṭasiddhānta*): number minus itself is zero; times zero is zero; 0 ÷ 0 = 0 (rejected later)",
+       "check": "Two or more sources agree",
+       "source": "MacTutor, Brahmagupta: [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Biographies/Brahmagupta/) ; HistTopics/Zero (above)"
+      },
+      {
+       "claim": "*śūnya* → Arabic *ṣifr* (a translation) → Fibonacci *zephirum* (1202) → Italian → *zero*; *cipher* from the same Arabic word",
+       "check": "Two or more sources agree",
+       "source": "Miller, \"Z\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/z/) ; HistTopics/Zero"
+      },
+      {
+       "claim": "7 ÷ 0 undefined; 0 ÷ 0 indeterminate; #DIV/0!; zero is even",
+       "check": "General knowledge",
+       "source": "reasoning"
+      },
+      {
+       "claim": "205 vs 25",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 23,
+     "title": "Below zero, twice",
+     "topic": "Negative numbers (Number)",
+     "rows": [
+      {
+       "claim": "*Nine Chapters* ch. 8 (compiled by about the 1st century AD) gives rules for adding and subtracting positive and negative numbers",
+       "check": "Two or more sources agree",
+       "source": "MacTutor, Nine Chapters: [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/HistTopics/Nine_chapters/) ; Shen Kangshen et al. translation (1999) quoted in bibnum.publimath.fr/ACF/ACF11039.pdf"
+      },
+      {
+       "claim": "Red and black rods are in Liu Hui's commentary of 263, not the main text",
+       "check": "Checked, corrected (many popular sources put them in the main text)",
+       "source": "as above"
+      },
+      {
+       "claim": "Brahmagupta 628: fortunes and debts; product of two debts is a fortune",
+       "check": "Checked",
+       "source": "MacTutor, Brahmagupta"
+      },
+      {
+       "claim": "Stifel, *numeri absurdi*, *Arithmetica integra* (1544)",
+       "check": "Two or more sources agree",
+       "source": "Miller, \"N\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/n/)"
+      },
+      {
+       "claim": "Maseres, *Dissertation on the Use of the Negative Sign in Algebra* (1758)",
+       "check": "Checked",
+       "source": "MacTutor, Maseres: [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Biographies/Maseres/)"
+      },
+      {
+       "claim": "(−3)×(−5) = 15 from the distributive law; −3 °C → 5 °C is 8 degrees; Try: 11",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 24,
+     "title": "Multiply and add one",
+     "topic": "Infinitely many primes (Number)",
+     "rows": [
+      {
+       "claim": "Euclid, *Elements* IX.20, c. 300 BC: \"Prime numbers are more than any assigned multitude of prime numbers\" (Heath)",
+       "check": "Two or more sources agree",
+       "source": "Joyce's Euclid: [mathcs.clarku.edu](https://mathcs.clarku.edu/~djoyce/elements/bookIX/propIX20.html)"
+      },
+      {
+       "claim": "Euclid's proof uses three primes and is mostly direct, not by contradiction",
+       "check": "Checked (nuance: one sub-step is by contradiction; text says \"mostly directly\")",
+       "source": "Hardy & Woodgold, *Math. Intelligencer* 31(4) (2009) (citation confirmed, not read in full)"
+      },
+      {
+       "claim": "Unique factorisation first clearly stated and proved in its modern form by Gauss, 1801",
+       "check": "Checked (wording hedged: al-Fārisī c. 1300 has a claim to the existence part)",
+       "source": "Gauss, *Disquisitiones* art. 16; Agargün & Özkan, *Hist. Math.* 28 (2001)"
+      },
+      {
+       "claim": "30,031 = 59 × 509; remainders 1; earlier products 3, 7, 31, 211, 2,311 prime; Try 16 = 2⁴",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 25,
+     "title": "More fractions?",
+     "topic": "Some infinities are bigger (Number)",
+     "rows": [
+      {
+       "claim": "Galileo, *Two New Sciences* (1638): squares pair with whole numbers; \"greater\"/\"less\" do not apply to infinite quantities",
+       "check": "Checked",
+       "source": "Galileo, First Day (via [en.wikipedia.org](https://en.wikipedia.org/wiki/Galileo%27s_paradox) as pointer)"
+      },
+      {
+       "claim": "Cantor: letters to Dedekind 1873 (fractions listable; 7 Dec 1873 reals not); 1874 paper (Crelle 77)",
+       "check": "Two or more sources agree",
+       "source": "[en.wikipedia.org](https://en.wikipedia.org/wiki/Georg_Cantor%27s_first_set_theory_article) ; MacTutor Cantor"
+      },
+      {
+       "claim": "Diagonal argument 1891 (*Jahresbericht der DMV* 1)",
+       "check": "Checked",
+       "source": "as above"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 26,
+     "title": "A square corner",
+     "topic": "Pythagoras before Pythagoras (Shape) — contested history",
+     "rows": [
+      {
+       "claim": "Plimpton 322: clay tablet from Iraq (probably Larsa), about 1800 BC; 15 rows; short side and diagonal of right triangles with whole-number sides, e.g. 119 and 169 (third side 120)",
+       "check": "Two or more sources agree",
+       "source": "MacTutor, \"Pythagoras's theorem in Babylonian mathematics\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/HistTopics/Babylonian_Pythagoras/) ; Columbia Magazine, \"Babylon revisited\": [magazine.columbia.edu](https://magazine.columbia.edu/article/babylon-revisited) (Robson c. 1822–1784 BC)"
+      },
+      {
+       "claim": "Purpose debated: table of triples (Neugebauer & Sachs 1945); teacher's aid built from reciprocal pairs (Robson 2001, 2002); 2017 \"exact sexagesimal trigonometry\" claim (Mansfield & Wildberger) criticised by specialists",
+       "check": "Checked (text says \"criticised\", not \"refuted\")",
+       "source": "Scientific American blog (E. Lamb, 2017): [blogs.scientificamerican.com](https://blogs.scientificamerican.com/roots-of-unity/dont-fall-for-babylonian-trigonometry-hype/) ; Robson, *Hist. Math.* 28 (2001) 167–206"
+      },
+      {
+       "claim": "Pythagoras c. 570–c. 490 BC (C: draft said 495); left no writings; linked with the theorem only by much later writers",
+       "check": "Two or more sources agree",
+       "source": "Stanford Encyclopedia of Philosophy, \"Pythagoras\": [plato.stanford.edu](https://plato.stanford.edu/entries/pythagoras/)"
+      },
+      {
+       "claim": "Oldest surviving proof: Euclid I.47",
+       "check": "Checked",
+       "source": "standard"
+      },
+      {
+       "claim": "Egyptian 3-4-5 rope †",
+       "check": "† dagger: 19th-century guess (Moritz Cantor), no ancient evidence",
+       "source": "Wikipedia \"Rope stretcher\" (pointer); proofwiki"
+      },
+      {
+       "claim": "Backlog said \"Babylonian tablet Plimpton 322 (c. 1800 BC)\" as the *origin* of the theorem",
+       "check": "Corrected reframed",
+       "source": "the text says the relation was \"in use\" over a thousand years before Pythagoras; it does not claim the tablet states a theorem"
+      },
+      {
+       "claim": "36+64=100; 4,5,6 → 82.8°; 5,5,7 → 88.85°; wall 10 m → 20 cm; 20,21,29",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 27,
+     "title": "Round the tin",
+     "topic": "π is not 22/7 (Shape)",
+     "rows": [
+      {
+       "claim": "Archimedes, *Measurement of a Circle* Prop. 3, 96-sided polygons: 3 10/71 < π < 3 1/7",
+       "check": "Checked",
+       "source": "MacTutor, \"Pi through the ages\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/HistTopics/Pi_through_the_ages/)"
+      },
+      {
+       "claim": "Lambert's irrationality proof published 1768",
+       "check": "Checked (corrected: \"1761\" is the year of presentation in some accounts; text says \"published in 1768\")",
+       "source": "MacTutor Lambert; Pi through the ages"
+      },
+      {
+       "claim": "Zu Chongzhi (429–501): 3.1415926 < π < 3.1415927; 355/113",
+       "check": "Checked",
+       "source": "MacTutor, Zu Chongzhi"
+      },
+      {
+       "claim": "Jones 1706; Euler made π standard",
+       "check": "Two or more sources agree",
+       "source": "Miller, symbols for constants: [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathsym/constants/)"
+      },
+      {
+       "claim": "22/7 − π = 0.00126 (1 part in 2,484); tin gap 0.09 mm; π − 3.14 = 0.00159",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 28,
+     "title": "Up and down",
+     "topic": "Percentages aren't symmetric (Number)",
+     "rows": [
+      {
+       "claim": "Under Augustus, a tax of one hundredth on goods sold at auction (*centesima rerum venalium*)",
+       "check": "Checked (corrected: \"under\", not \"introduced by\"; Tacitus *Ann.* 1.78)",
+       "source": "Smith's *Dictionary of Greek and Roman Antiquities*, \"Centesima\": [penelope.uchicago.edu](https://penelope.uchicago.edu/Thayer/E/Roman/Texts/secondary/SMIGRA*/Centesima.html)"
+      },
+      {
+       "claim": "*per cento*; % sign from merchants' abbreviations, early form in a 15th-century Italian manuscript; later \"per o/o\"",
+       "check": "Checked (secondary; Smith *Rara Arithmetica*, *History of Mathematics* vol. 2 not read directly; text says \"15th century\" rather than \"c. 1425\")",
+       "source": "[en.wikipedia.org](https://en.wikipedia.org/wiki/Percent_sign) (pointer to Smith)"
+      },
+      {
+       "claim": "£75 either order; 20% cut needs 25%; 10% up/down → 99%",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 29,
+     "title": "Interest, more often",
+     "topic": "Compound interest and e (Growth)",
+     "rows": [
+      {
+       "claim": "Jacob Bernoulli, paper published 1690 (*Acta Eruditorum*): continuous compounding stays between 2 and 3",
+       "check": "Checked, corrected (draft said 1683; the 1685 *Journal des Sçavans* problems were about dice)",
+       "source": "Pulskamp translations: [gtfp.cs.rhul.ac.uk](http://gtfp.cs.rhul.ac.uk/pulskamp/JakobBernoulli/JakobB.html) ; MacTutor \"The number e\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/HistTopics/e/)"
+      },
+      {
+       "claim": "Euler wrote e in a manuscript of c. 1727–28; in print 1736 (*Mechanica*); 23 decimals in 1748 (*Introductio*)",
+       "check": "Two or more sources agree, corrected (Britannica/MacTutor \"18 decimals\" is wrong; *Introductio* ch. VII shows 23)",
+       "source": "Miller, constants; quadrivium.info/MathInt/Notes/Euler_e.pdf"
+      },
+      {
+       "claim": "UK lenders must quote APR",
+       "check": "General knowledge (Consumer Credit Act regime)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "£2.61 monthly, £2.71 daily, 2.71828; 1%/month = 12.68%",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 30,
+     "title": "The price of a loaf",
+     "topic": "The rule of 72 (Growth)",
+     "rows": [
+      {
+       "claim": "Pacioli, *Summa de arithmetica* (Venice 1494): keep 72 in mind and divide by the rate; no explanation; earliest surviving statement",
+       "check": "Checked (secondary only: f. 181 no. 44 \"tieni per regola 72\"; confirmed through Vacca G., \"A Napierian logarithm before Napier\" (1915), reprinted at MacTutor: [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Extras/Pacioli_logarithm/) , which quotes the Italian; no scan of the 1494 folio was seen, so this is a secondary source)",
+       "source": "[en.wikipedia.org](https://en.wikipedia.org/wiki/Rule_of_72)"
+      },
+      {
+       "claim": "1.08⁹ = 1.999; 9.006 years; 8p → 16p in year 10; 3% → 23.4; 6% → 11.9",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 31,
+     "title": "One step up the scale",
+     "topic": "Logarithmic scales (Scale)",
+     "rows": [
+      {
+       "claim": "Napier, *Mirifici Logarithmorum Canonis Descriptio*, Edinburgh 1614; coined \"logarithm\", usually read as \"ratio-number\" (he never explained it)",
+       "check": "Two or more sources agree (corrected: \"reckoning\" gloss dropped)",
+       "source": "Miller \"L\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/l/) ; MacTutor Napier"
+      },
+      {
+       "claim": "Richter 1935, *BSSA*, worked out with Gutenberg",
+       "check": "Two or more sources agree",
+       "source": "Britannica; USGS"
+      },
+      {
+       "claim": "One step ≈ ×10 recorded amplitude, ≈ ×32 energy; moment magnitude 1979 (Hanks & Kanamori) used for large quakes",
+       "check": "Two or more sources agree",
+       "source": "USGS earthquake-magnitude FAQ; Hanks & Kanamori, *JGR* 84 (1979) 2348"
+      },
+      {
+       "claim": "Bel/decibel named after Bell; name adopted by Bell System engineers 1928 (announced 1929)",
+       "check": "Two or more sources agree",
+       "source": "W. H. Martin, *BSTJ* Jan 1929; Wikipedia \"Decibel\""
+      },
+      {
+       "claim": "10 dB = ×10 intensity; pH 4 vs 6 = ×100; lemon/coffee ×1,000",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 32,
+     "title": "The giant",
+     "topic": "Square–cube law (Scale)",
+     "rows": [
+      {
+       "claim": "Galileo, *Two New Sciences* (Leiden 1638), Day Two: ships, palaces, trees, animals cannot be enlarged without limit; bone three times as long drawn much thicker",
+       "check": "Checked (primary text, Crew & de Salvio trans., pp. 130–131)",
+       "source": "[spirasolaris.ca](https://www.spirasolaris.ca/sbb6Second_Day.pdf)"
+      },
+      {
+       "claim": "Haldane, \"On Being the Right Size\", *Harper's*, March 1926: mouse/rat/man broken/horse splashes (paraphrase)",
+       "check": "Two or more sources agree",
+       "source": "[cs.utexas.edu](https://www.cs.utexas.edu/~witchel/S25-380L/papers/right-size.html)"
+      },
+      {
+       "claim": "Ant survives falls; elephant legs proportionally stout",
+       "check": "General knowledge",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "×8 weight, ×4 area, ×2 stress; ×10 at scale 10; sugar 24 → 48 cm²",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 33,
+     "title": "There and back",
+     "topic": "Average speed (Number)",
+     "rows": [
+      {
+       "claim": "Archytas fragment, preserved by Porphyry, defines arithmetic, geometric and \"subcontrary, which they call harmonic\" means",
+       "check": "Two or more sources agree (corrected: the \"renamed from subcontrary\" story is Iamblichus, later)",
+       "source": "SEP, \"Archytas\": [plato.stanford.edu](https://plato.stanford.edu/entries/archytas/) ; MacTutor Archytas"
+      },
+      {
+       "claim": "Who named it is disputed among ancient writers",
+       "check": "† stated as such",
+       "source": "Heath, *HGM* I p. 85"
+      },
+      {
+       "claim": "45 + 30 min; 48 mph; cyclist 15 mph",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 34,
+     "title": "Finding one name",
+     "topic": "Algorithms (Logic)",
+     "rows": [
+      {
+       "claim": "al-Khwārizmī worked in Baghdad, early 9th century, \"traditionally linked\" with the House of Wisdom (formal post undocumented, per the AI review 2.16); book on Indian numerals; Arabic lost; Latin version opens \"Dixit Algorizmi\"",
+       "check": "Two or more sources agree",
+       "source": "MacTutor al-Khwārizmī: [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Biographies/Al-Khwarizmi/) ; Miller \"A\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Miller/mathword/a/)"
+      },
+      {
+       "claim": "\"algorism\" → \"algorithm\" shaped by Greek *arithmos*; \"algebra\" from *al-jabr*",
+       "check": "Two or more sources agree",
+       "source": "Miller \"A\" (OED)"
+      },
+      {
+       "claim": "Euclid's algorithm (VII.1–2) among the oldest still in use",
+       "check": "Two or more sources agree",
+       "source": "Knuth, *TAOCP* vol. 2 §4.5.2 (quoted)"
+      },
+      {
+       "claim": "2²⁰ = 1,048,576; at most 976 after 10 looks, 1 after 19 (C: draft said 977); 30 looks for a billion; gcd(1071, 462) = 21",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 35,
+     "title": "Five switches",
+     "topic": "Binary (Number)",
+     "rows": [
+      {
+       "claim": "Leibniz, \"Explication de l'arithmétique binaire\", *Mémoires* for 1703 (printed 1705); worked on binary since at least 1679",
+       "check": "Two or more sources agree",
+       "source": "historyofinformation.com/detail.php?id=395; arXiv 1612.06373"
+      },
+      {
+       "claim": "Bouvet's letter (sent 1701) reached Leibniz in 1703 with the Fu Xi hexagram order; read as binary 0–63",
+       "check": "Two or more sources agree",
+       "source": "arXiv 1612.06373; Swarthmore Leibniz–Bouvet edition"
+      },
+      {
+       "claim": "No evidence the Chinese authors meant arithmetic",
+       "check": "Checked",
+       "source": "Maitre, *Science in Context* (abstract)"
+      },
+      {
+       "claim": "Harriot binary in unpublished papers about a century earlier (early 1600s)",
+       "check": "Two or more sources agree",
+       "source": "MacTutor, \"Harriot's binary numbers\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Extras/Harriot_binary_numbers/)"
+      },
+      {
+       "claim": "2⁵ = 32; 10110 = 22; 1011 = 11",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 36,
+     "title": "Seven bridges",
+     "topic": "Networks (Logic)",
+     "rows": [
+      {
+       "claim": "Euler's paper read to the St Petersburg Academy 1735/36, printed 1741 (vol. for 1736)",
+       "check": "Two or more sources agree (corrected: \"1736\" in draft; the 26 Aug 1735 date may be a misprint)",
+       "source": "Grötschel & Yuan, *Documenta Math.* Extra Vol. ISMP (2012) 43–50; Sachs, Stiebitz & Wilson, *J. Graph Theory* 12 (1988)"
+      },
+      {
+       "claim": "Bridges 5, 3, 3, 3; impossibility proof; sufficiency stated without proof; Hierholzer's proof published 1873 after his death",
+       "check": "Two or more sources agree",
+       "source": "as above"
+      },
+      {
+       "claim": "Euler used a map and letters, not dots and lines",
+       "check": "Checked",
+       "source": "Robin Wilson (quoted)"
+      },
+      {
+       "claim": "Königsberg now Kaliningrad; war destroyed several bridges",
+       "check": "Checked (number of survivors conflicts; no number printed)",
+       "source": "[kconrad.math.uconn.edu](http://kconrad.math.uconn.edu/kaliningrad/)"
+      },
+      {
+       "claim": "Degrees 5,3,3,3; house figure odd corners = 2 bottom",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 37,
+     "title": "Pieces of a circle",
+     "topic": "Patterns aren't proof (Logic)",
+     "rows": [
+      {
+       "claim": "Pólya 1919 conjecture",
+       "check": "Two or more sources agree",
+       "source": "MathWorld, \"Pólya Conjecture\": [mathworld.wolfram.com](https://mathworld.wolfram.com/PolyaConjecture.html)"
+      },
+      {
+       "claim": "Haselgrove 1958 disproof without explicit counterexample; Lehman 1960 (906,180,359); Tanaka 1980: smallest 906,150,257",
+       "check": "Two or more sources agree (corrected: draft implied Haselgrove found the first failure)",
+       "source": "MathWorld; Wikipedia \"Pólya conjecture\""
+      },
+      {
+       "claim": "\"Moser's circle problem\", named after Leo Moser; now a standard warning (the text no longer says Moser himself used it so)",
+       "check": "Two or more sources agree",
+       "source": "MathWorld, \"Circle Division by Chords\"; arXiv 1701.08155"
+      },
+      {
+       "claim": "1, 2, 4, 8, 16, 31, 57; C(6,4)=15; even hexagon 30; n²+n+41 prime 0–39, 1,681 = 41²",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 38,
+     "title": "Measuring the coast",
+     "topic": "Fractals: coastline (Shape)",
+     "rows": [
+      {
+       "claim": "Richardson; published posthumously 1961 (*General Systems Yearbook* 6)",
+       "check": "Two or more sources agree",
+       "source": "Mandelbrot 1967 (below); Wikipedia \"Coastline paradox\""
+      },
+      {
+       "claim": "Spain–Portugal border figures 987 km and 1,214 km (which country gave which is disputed; not stated)",
+       "check": "Two or more sources agree",
+       "source": "Wikipedia \"Coastline paradox\"; futilitycloset.com/2013/12/02/the-richardson-effect/"
+      },
+      {
+       "claim": "Mandelbrot, *Science* 156 (1967) 636–638; west coast of Britain D ≈ 1.25",
+       "check": "Two or more sources agree (paper read)",
+       "source": "gsp.humboldt.edu/olm_2021/Courses/GSP_510/Articles/Mandelbrot1967.pdf"
+      },
+      {
+       "claim": "\"fractal\" coined 1975, Latin *fractus*",
+       "check": "Two or more sources agree",
+       "source": "Science News; etymonline"
+      },
+      {
+       "claim": "Halving ruler → ×2^0.25 = 1.19 (\"about a fifth\"); Koch (4/3)^10 = 17.8",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 39,
+     "title": "The portrait’s proportions",
+     "topic": "The golden ratio myth (Shape) — contested history",
+     "rows": [
+      {
+       "claim": "Euclid: \"extreme and mean ratio\" (VI Def. 3), used for the pentagon (IV) and regular solids (XIII)",
+       "check": "Two or more sources agree",
+       "source": "Joyce's Euclid, VI Def. 3; MacTutor \"The Golden ratio\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/HistTopics/Golden_ratio/)"
+      },
+      {
+       "claim": "Pacioli, *De divina proportione* (1509), Leonardo's illustrations; for buildings he recommended (Vitruvian) simpler proportions",
+       "check": "Two or more sources agree, corrected (popular claim that he urged it on artists traces to Montucla 1799)",
+       "source": "Livio via Wikipedia \"Golden ratio\"; A. J. Cain (2026) blog: ajcain.codeberg.page/posts/2026-02-21-golden-ratio-myth-development.html"
+      },
+      {
+       "claim": "\"Golden section\" usually traced to Martin Ohm's textbook (1835)",
+       "check": "Checked (corrected: \"first used\" is doubtful; possible earlier use in Gehler's *Physikalisches Wörterbuch* not seen; text says \"popularised\")",
+       "source": "Fowler, *Fibonacci Quarterly* 20 (1982): mathstat.dal.ca/FQ/Scanned/20-2/fowler.pdf"
+      },
+      {
+       "claim": "Zeising 1854, universal law; source of the modern myth",
+       "check": "Two or more sources agree",
+       "source": "Fowler; Cain; Wikipedia"
+      },
+      {
+       "claim": "Rectangle-preference tests mixed (Fechner 1876 onwards)",
+       "check": "Two or more sources agree",
+       "source": "Wikipedia; Markowsky (below)"
+      },
+      {
+       "claim": "Parthenon / Great Pyramid claims rest on choosing what to measure",
+       "check": "Two or more sources agree",
+       "source": "Markowsky, \"Misconceptions about the golden ratio\", *College Math. J.* 23 (1992) 2–19"
+      },
+      {
+       "claim": "Le Corbusier's Modulor used it deliberately",
+       "check": "Two or more sources agree",
+       "source": "Wikipedia; Fondation Le Corbusier"
+      },
+      {
+       "claim": "Golden angle in plant phyllotaxis genuine",
+       "check": "Checked",
+       "source": "Wikipedia; Swinton et al., *R. Soc. Open Sci.* 3 (2016) 160091 (about 1 spiral count in 5 non-Fibonacci; not printed)"
+      },
+      {
+       "claim": "Illustrative model: 12 log-uniform lengths in 1–10 cm, 66 pairs, P(some ratio within 1% of φ) = 0.59 (100,000 trials)",
+       "check": "Calculated, labelled illustrative",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "13/8 = 1.625, 34/21 = 1.619",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 40,
+     "title": "Two shops",
+     "topic": "Prisoner's dilemma (Logic)",
+     "rows": [
+      {
+       "claim": "1950: Flood and Dresher (RAND) had Alchian and Williams play 100 times",
+       "check": "Two or more sources agree",
+       "source": "SEP, \"Prisoner's Dilemma\": [plato.stanford.edu](https://plato.stanford.edu/entries/prisoner-dilemma/) ; Poundstone (via Wikipedia)"
+      },
+      {
+       "claim": "Tucker added the prisoners' story for Stanford psychologists, 1950; name stuck",
+       "check": "Checked (month U, not printed)",
+       "source": "SEP"
+      },
+      {
+       "claim": "Axelrod 1980 tournaments; Rapoport's tit for tat won",
+       "check": "Two or more sources agree",
+       "source": "Axelrod, *J. Conflict Resolution* 24 (1980)"
+      },
+      {
+       "claim": "Payoffs 10/10, 3/12, 12/3, 6/6",
+       "check": "Illustrative",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 41,
+     "title": "The nosy courier",
+     "topic": "Public-key cryptography (Logic)",
+     "rows": [
+      {
+       "claim": "Diffie & Hellman, Nov 1976 (*IEEE Trans. IT* 22(6)); Merkle's related work",
+       "check": "Two or more sources agree",
+       "source": "Crossref 10.1109/TIT.1976.1055638; ACM Turing Award 2015 release"
+      },
+      {
+       "claim": "RSA 1977",
+       "check": "Two or more sources agree",
+       "source": "Crossref 10.1145/359340.359342"
+      },
+      {
+       "claim": "GCHQ: Ellis 1970, Cocks 1973, Williamson 1974; made public 1997",
+       "check": "Two or more sources agree (corrected: draft had \"Cox\"; correct is Clifford **Cocks**)",
+       "source": "Schneier, essay 377; University of Bristol (Cocks)"
+      },
+      {
+       "claim": "3,233 = 53 × 61; 2048-bit RSA modulus = 617 digits (\"more than 600\")",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 42,
+     "title": "Nearly the same start",
+     "topic": "Chaos (Logic)",
+     "rows": [
+      {
+       "claim": "Lorenz, MIT, 1961, twelve-variable model; typed 0.506 for 0.506127",
+       "check": "Two or more sources agree",
+       "source": "APS News (Jan 2003): [aps.org](https://www.aps.org/apsnews/2003/01/lorenz-butterfly-effect-1961)"
+      },
+      {
+       "claim": "1963 simpler model (\"Deterministic Nonperiodic Flow\", *J. Atmos. Sci.* 20)",
+       "check": "Checked",
+       "source": "Crossref"
+      },
+      {
+       "claim": "1972 AAAS talk; butterfly title supplied by the convener (Philip Merilees)",
+       "check": "Two or more sources agree",
+       "source": "Wikipedia \"Butterfly effect\"; arXiv 0910.2213"
+      },
+      {
+       "claim": "Poincaré 1908 (*Science et méthode*)",
+       "check": "Two or more sources agree",
+       "source": "Britannica"
+      },
+      {
+       "claim": "For large weather systems, useful skill to roughly ten days; near-perfect data would push the limit to about two weeks",
+       "check": "Checked (Zhang et al., *JAS* 76 (2019))",
+       "source": "adapt.psu.edu/ZHANG/papers/Zhangetal2019JAS.pdf"
+      },
+      {
+       "claim": "Shift-map sequences; Lorenz-63 figure (σ=10, ρ=28, β=8/3; starts 1.0 and 1.0001)",
+       "check": "Calculated / illustrative",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Error doubling every two days → ×1,024 in 20 days",
+       "check": "Calculated, labelled illustrative",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 43,
+     "title": "A lifetime of heartbeats",
+     "topic": "Estimation (Scale)",
+     "rows": [
+      {
+       "claim": "Fermi at Trinity, 16 July 1945: paper scraps, blast ~40 s after, moved ~2½ m, ~10,000 tons TNT",
+       "check": "Two or more sources agree (Fermi's own report)",
+       "source": "[atomicarchive.com](https://www.atomicarchive.com/resources/documents/trinity/fermi.html)"
+      },
+      {
+       "claim": "Modern yield ~21–25 kt",
+       "check": "Two or more sources agree",
+       "source": "LANL 1663 (2022); Selby et al., arXiv 2103.06258"
+      },
+      {
+       "claim": "Piano tuners in Chicago \"traditionally linked to\" Fermi",
+       "check": "† (labelled as tradition)",
+       "source": "themathdoctors.org; no contemporary record"
+      },
+      {
+       "claim": "Resting heart ~70 bpm (60–80 used as range)",
+       "check": "General knowledge",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "2.9 billion; 2.2–3.8 billion; 947 million seconds; rubbish 100 t/person/yr = 0.27 t/day",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": [
+      {
+       "claim": "~70 beats a minute as a rough lifetime average; children faster, slower in sleep",
+       "check": "Confirmed",
+       "source": "NHS \"How do I check my pulse?\" (normal resting adult 60–100 bpm), [nhs.uk](https://www.nhs.uk/common-health-questions/accidents-first-aid-and-treatments/how-do-i-check-my-pulse/) ; BHF"
+      },
+      {
+       "claim": "~2.9 billion beats in 80 years",
+       "check": "Confirmed",
+       "source": "Computed"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "letter": "C",
+   "name": "Matter, motion and energy",
+   "first": 44,
+   "last": 64,
+   "puzzles": [
+    {
+     "n": 44,
+     "title": "The cup on the table",
+     "topic": "Inertia (Motion)",
+     "rows": [
+      {
+       "claim": "Aristotle: a body moves only while a mover acts on it; for projectiles, the air (*Physics* VIII.10, 266b–267a)",
+       "check": "Checked",
+       "source": "Bekker refs; Wikipedia \"Inertia\" (pointer)"
+      },
+      {
+       "claim": "Galileo: a ball on a level surface with nothing to slow it would move for ever; his \"level\" follows the Earth's curve (*Dialogue* 1632; *Two New Sciences* 1638, Third and Fourth Days)",
+       "check": "Two or more sources agree",
+       "source": "Crew & de Salvio trans.: [archive.org](https://archive.org/details/cu31924012322701)"
+      },
+      {
+       "claim": "Descartes, *Principia Philosophiae* (1644), II.37 and 39: straight-line persistence",
+       "check": "Checked",
+       "source": "Cambridge Descartes Lexicon, \"Inertia\""
+      },
+      {
+       "claim": "Newton, *Principia* (1687), Law I",
+       "check": "Checked",
+       "source": "Principia, Axiomata"
+      },
+      {
+       "claim": "Train 30 m/s braking 1.2 m/s², cup friction 0.05 → 28.8 and 29.5 m/s after 1 s; spanner 3.6 km",
+       "check": "Calculated, labelled illustrative",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 45,
+     "title": "Two steel balls",
+     "topic": "Heavy and light fall together (Motion)",
+     "rows": [
+      {
+       "claim": "Aristotle: heavier bodies fall faster (*De Caelo* I.6; *Physics* IV.8)",
+       "check": "Checked",
+       "source": "Bekker refs"
+      },
+      {
+       "claim": "Philoponus (6th c.): weights differing greatly differ only slightly in time of fall",
+       "check": "Two or more sources agree",
+       "source": "Cohen & Drabkin trans.; Encyclopedia.com \"John Philoponus\""
+      },
+      {
+       "claim": "Stevin & de Groot, 1586, two lead balls (one ten times heavier), about 30 ft, Delft church tower (Stevin names no church)",
+       "check": "Checked, corrected (church)",
+       "source": "Wikipedia \"Delft tower experiment\" (citing Sarton, *Isis* 21, 1934); DBNL Dutch text"
+      },
+      {
+       "claim": "Galileo's inclined planes; *Two New Sciences* 1638",
+       "check": "Checked",
+       "source": "Crew & de Salvio"
+      },
+      {
+       "claim": "Pisa drop rests only on Viviani's *Racconto istorico* (written 1654, printed 1717); Galileo never mentions it †",
+       "check": "† (dagger in text)",
+       "source": "Museo Galileo: [brunelleschi.imss.fi.it](https://brunelleschi.imss.fi.it/pencil/eng/html/Space/02%20Torre.htm)"
+      },
+      {
+       "claim": "Apollo 15, 2 Aug 1971, David Scott, hammer and falcon feather",
+       "check": "Two or more sources agree",
+       "source": "NASA NSSDC: [nssdc.gsfc.nasa.gov](https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_15_feather_drop.html)"
+      },
+      {
+       "claim": "1 kg and 10 kg steel spheres (7,850 kg/m³) are 6.2 and 13.4 cm across; from 10 m: 1.43 s in vacuum; with drag (Cd 0.47, air 1.204 kg/m³) the 1 kg ball is 1.5 cm and 1.1 ms behind",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Galileo's tied-stones argument (Try this)",
+       "check": "Checked",
+       "source": "*Two New Sciences*, First Day"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 46,
+     "title": "The ball that stops bouncing",
+     "topic": "Conservation of energy (Energy)",
+     "rows": [
+      {
+       "claim": "Mayer 1842, *Ann. Chem. Pharm.* 42, 233–240",
+       "check": "Checked",
+       "source": "Wikipedia \"History of energy\" (pointer)"
+      },
+      {
+       "claim": "Joule, *Phil. Trans.* 140 (1850): 772 lb falling 1 ft warms 1 lb water by 1 °F (Joule did not say \"BTU\")",
+       "check": "Two or more sources agree",
+       "source": "Scan: [www2.lawrence.edu](https://www2.lawrence.edu/fast/STONEKIM/COURSES/Joule_1850.pdf)"
+      },
+      {
+       "claim": "Helmholtz, *Über die Erhaltung der Kraft*, 1847",
+       "check": "Checked",
+       "source": "as above"
+      },
+      {
+       "claim": "Ball warms ≈ 0.005 °C per metre (rubber 2,000 J/kg K, illustrative); waterfall 100 m → 0.23 °C",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 47,
+     "title": "Ten molecules in a box",
+     "topic": "Entropy (Energy)",
+     "rows": [
+      {
+       "claim": "Clausius 1865, *Ann. Phys. Chem.* 125, 353–400: \"entropy\" from τροπή, transformation, made similar to \"energy\"",
+       "check": "Two or more sources agree",
+       "source": "Giunta, Le Moyne (Magie trans.): [web.lemoyne.edu](https://web.lemoyne.edu/giunta/Clausius.html)"
+      },
+      {
+       "claim": "Boltzmann 1877 statistical interpretation",
+       "check": "Checked",
+       "source": "standard histories"
+      },
+      {
+       "claim": "S = k log W on Boltzmann's monument, Zentralfriedhof Vienna (bust 1933); form and k due to Planck",
+       "check": "Two or more sources agree",
+       "source": "Atlas Obscura; Planck's Nobel lecture"
+      },
+      {
+       "claim": "1/1,024; 1/1,048,576; 2^100; teaspoon of milk (5 g water) ≈ 1.7×10²³ molecules; 1 in 10^(5.0×10²²)",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 48,
+     "title": "Spark or splash",
+     "topic": "Heat vs temperature (Heat)",
+     "rows": [
+      {
+       "claim": "Sparkler sparks \"more than 1,000 °C\"",
+       "check": "Checked (conservative; sources say ≈2,000 °F ≈ 1,100 °corrected)",
+       "source": "VUMC news (2026); KSL"
+      },
+      {
+       "claim": "Sparklers burn many children; fire services advise none for under-fives",
+       "check": "Checked (US injury data; UK fire-service advice)",
+       "source": "as above; UK fire and rescue services"
+      },
+      {
+       "claim": "Black: heat vs temperature; latent heat c. 1761–62; specific heat; *Lectures* (ed. Robison) 1803",
+       "check": "Checked (standard)",
+       "source": "Britannica \"Joseph Black\""
+      },
+      {
+       "claim": "c(iron) ≈ 450, c(water) ≈ 4,184 J/(kg K); 1 mg at 1,100 → 35 °C gives 0.48 J; 50 g tea 70 → 35 °C gives 7,322 J; ratio ≈ 15,000; iron/water heat per gram 0.11",
+       "check": "Calculated (illustrative masses)",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 49,
+     "title": "How cold can it get?",
+     "topic": "Absolute zero (Heat)",
+     "rows": [
+      {
+       "claim": "Amontons c. 1702: equal steps in temperature give equal steps in pressure; zero of \"spring\" ≈ −240 °C",
+       "check": "Two or more sources agree",
+       "source": "Britannica (Amontons); Wikipedia"
+      },
+      {
+       "claim": "Thomson 1848 absolute scale (zero at −∞); Joule–Thomson 1854 scale with zero near −273 °C",
+       "check": "Corrected",
+       "source": "MIT history note; Wikipedia \"Kelvin\""
+      },
+      {
+       "claim": "0 K = −273.15 °C; kelvin defined via k = 1.380649×10⁻²³ J/K since 2019",
+       "check": "Checked",
+       "source": "BIPM SI Brochure"
+      },
+      {
+       "claim": "He boils 4.22 K (−268.9 °C), N₂ 77.36 K (−195.8 °C), dry ice sublimes −78.5 °C",
+       "check": "Standard",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "CMB 2.7255 K",
+       "check": "Checked",
+       "source": "Fixsen 2009"
+      },
+      {
+       "claim": "Atoms cooled below a billionth of a kelvin (MIT 2003 ≈ 450 pK; Bremen 2021, 38 pK effective)",
+       "check": "Checked",
+       "source": "Leanhardt et al., *Science* 301 (2003); Deppner et al., *PRL* 127 (2021)"
+      },
+      {
+       "claim": "Unattainability (Nernst; stated 1912)",
+       "check": "Checked (not dated in text)",
+       "source": "arXiv 1904.11696"
+      },
+      {
+       "claim": "283 → 293 K is +3.5%",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 50,
+     "title": "The longest straw",
+     "topic": "Suction is a push (Pressure)",
+     "rows": [
+      {
+       "claim": "*Two New Sciences* (1638): pumps cannot lift water above 18 braccia (≈10.5 m)",
+       "check": "Checked",
+       "source": "Crew & de Salvio p. 64"
+      },
+      {
+       "claim": "Torricelli's mercury tube (1643 or 1644, probably performed by Viviani; text says \"in the 1640s … had a tube filled\"); letter to Ricci 11 June 1644, \"Noi viviamo sommersi nel fondo d'un pelago d'aria elementare\"",
+       "check": "Two or more sources agree",
+       "source": "Chemistry World; IMSS: [imss.fi.it](https://www.imss.fi.it/vuoto/ericci.html)"
+      },
+      {
+       "claim": "Périer, Puy de Dôme, 19 Sept 1648, at Pascal's request",
+       "check": "Checked (standard)",
+       "source": "Britannica \"Pascal\""
+      },
+      {
+       "claim": "101,325 Pa ≈ 1.03 kg-weight per cm²; water column 10.35 m; with vapour pressure 2.339 kPa at 20 °C, 10.11 m; mercury 76.0 cm",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 51,
+     "title": "The anchor overboard",
+     "topic": "Buoyancy (Pressure)",
+     "rows": [
+      {
+       "claim": "Archimedes, *On Floating Bodies* I, Props 5 and 7",
+       "check": "Checked",
+       "source": "Heath, *Works of Archimedes* (1897)"
+      },
+      {
+       "claim": "Eureka story from Vitruvius IX, about two centuries later †",
+       "check": "Two or more sources agree (dagger in text)",
+       "source": "NYU, Rorres: [math.nyu.edu](https://www.math.nyu.edu/~crorres/Archimedes/Crown/CrownIntro.html)"
+      },
+      {
+       "claim": "20 kg anchor: 20 L vs 2.54 L; 17.5 L; pool 10 × 5 m → 0.35 mm; iron 7.87 g/cm³",
+       "check": "Calculated (illustrative anchor and pool)",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Ice cube melting leaves the level unchanged (fresh water)",
+       "check": "Checked",
+       "source": "Archimedes' principle"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 52,
+     "title": "A blue sky",
+     "topic": "Why the sky is blue (Light)",
+     "rows": [
+      {
+       "claim": "Tyndall, 1869: fine particles scatter faint blue light; proposed it as the cause of the sky's colour",
+       "check": "Checked",
+       "source": "Tyndall J., \"On the blue colour of the sky, the polarization of skylight, and on the polarization of light by cloudy matter generally\", *Proc. R. Soc. Lond.* 17 (1869) 223–233, [doi:10.1098/rspl.1868.0033](https://doi.org/10.1098/rspl.1868.0033) (cited via Wikipedia \"Rayleigh scattering\")"
+      },
+      {
+       "claim": "Rayleigh, 1871: scattering by particles much smaller than the wavelength varies as 1/λ⁴",
+       "check": "Two or more sources agree",
+       "source": "Strutt J.W., \"On the light from the sky, its polarization and colour\", *Phil. Mag.* 41 (1871) 107–120 and 274–279; Wrocław digital library summary; Physics Today (1982) on Rayleigh"
+      },
+      {
+       "claim": "Rayleigh, 1899: air molecules alone suffice",
+       "check": "Checked",
+       "source": "Rayleigh, \"On the transmission of light through an atmosphere containing small particles in suspension, and on the origin of the blue of the sky\", *Phil. Mag.* 47 (1899) 375–384, [doi:10.1080/14786449908621276](https://doi.org/10.1080/14786449908621276)"
+      },
+      {
+       "claim": "Rayleigh = John William Strutt",
+       "check": "Checked",
+       "source": "standard (Rayleigh was the 3rd Baron's title)"
+      },
+      {
+       "claim": "Why not violet: less violet in sunlight, lower eye sensitivity, mixture looks pale blue",
+       "check": "Checked",
+       "source": "Smith G.S., \"Human color vision and the unsaturated blue color of the daytime sky\", *Am. J. Phys.* 73 (2005) 590–597"
+      },
+      {
+       "claim": "(700/450)^4 = 5.86 (\"nearly six times\"); chart values 9.4× … 1.0×",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Sunset light has crossed \"tens of times as much air\" as at noon",
+       "check": "Calculated",
+       "source": "Kasten & Young (1989) air-mass formula gives ≈ 38 at the horizon (relative to overhead); noon Sun is rarely overhead, so \"tens of times\" is conservative"
+      },
+      {
+       "claim": "Moon's daytime sky is black",
+       "check": "Checked",
+       "source": "no appreciable atmosphere; Apollo surface photography"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 53,
+     "title": "A pause on the line",
+     "topic": "Light takes time (Light)",
+     "rows": [
+      {
+       "claim": "In August 1676 the Paris Observatory predicted that an emergence of Io in November would run about ten minutes late; on 9 November one did, and on 21 November Rømer explained it; ~22 min across Earth's orbit",
+       "check": "Two or more sources agree, corrected (corrected against the full text of Bobis & Lequeux 2008)",
+       "source": "Bobis L. & Lequeux J., \"Cassini, Rømer and the velocity of light\", *J. Astron. Hist. Heritage* 11 (2008) 97–105, [articles.adsabs.harvard.edu](https://articles.adsabs.harvard.edu/pdf/2008JAHH...11...97B) ; Britannica \"Ole Rømer\"; ESA \"30 September\"; Observatoire de Paris"
+      },
+      {
+       "claim": "Io's period 1.769 d ≈ 42½ h",
+       "check": "Checked (standard)",
+       "source": "NASA Io page"
+      },
+      {
+       "claim": "c = 299,792,458 m/s exactly (17th CGPM, 1983)",
+       "check": "Checked",
+       "source": "BIPM"
+      },
+      {
+       "claim": "Apollo round trip ≈ 2.6 s (NASA ALSJ: 2.568 s Madrid–Moon–Madrid; 2.712 s heard in Houston)",
+       "check": "Checked",
+       "source": "[nasa.gov](https://www.nasa.gov/history/alsj/a12/A12Audio_Moon_Houston.html)"
+      },
+      {
+       "claim": "Moon 384,400 km → 2.56 s round trip (2.38–2.71 s perigee–apogee); Sun 499 s; Mars 3.0–22.3 min; 225 million km → 12.5 min; orbit crossing 16.6 min; half a minute is 11.7× the round trip",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 54,
+     "title": "Flash, then rumble",
+     "topic": "Counting the thunder (Sound)",
+     "rows": [
+      {
+       "claim": "Lightning channel heated to up to 50,000 °F (≈28,000 °C)",
+       "check": "Checked, corrected",
+       "source": "NWS: [weather.gov](https://www.weather.gov/safety/lightning-temperature)"
+      },
+      {
+       "claim": "Met Office: divide seconds by 3 for km",
+       "check": "Checked",
+       "source": "[weather.metoffice.gov.uk](https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/thunder-and-lightning)"
+      },
+      {
+       "claim": "NWS: lightning can strike up to 10 miles from the storm",
+       "check": "Checked",
+       "source": "[weather.gov](https://www.weather.gov/safety/lightning-science-thunder)"
+      },
+      {
+       "claim": "Mersenne and Gassendi, 1630s, gun-flash timing, ≈448 and ≈478 m/s (too high); Gassendi: cannon and musket travel equally fast",
+       "check": "Two or more sources agree",
+       "source": "Finn, *Isis* 55 (1964) 7–19; Whewell"
+      },
+      {
+       "claim": "Paris Academy 1738 ≈ 337 m/s",
+       "check": "Checked",
+       "source": "Finn"
+      },
+      {
+       "claim": "Newton too low by almost a fifth; Laplace's correction, memoir 1816",
+       "check": "Checked, corrected (dates)",
+       "source": "Finn"
+      },
+      {
+       "claim": "c(20 °C) = 343.2 m/s (ideal dry air); 6 s → 2.06 km; 2.9 s/km; 4.7 s/mile; light over 2 km 6.7 µs; 15 s → 5.1 km; cricket 150 m → 0.44 s",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 55,
+     "title": "A bird on the wire",
+     "topic": "Voltage vs current (Electricity)",
+     "rows": [
+      {
+       "claim": "Volta's letter to Banks, 20 March 1800, *Phil. Trans.* 90 (1800)",
+       "check": "Checked (standard)",
+       "source": "[doi:10.1098/rstl.1800.0018](https://doi.org/10.1098/rstl.1800.0018)"
+      },
+      {
+       "claim": "Ohm, *Die galvanische Kette, mathematisch bearbeitet*, 1827",
+       "check": "Checked (standard)",
+       "source": "MacTutor \"Ohm\""
+      },
+      {
+       "claim": "Paris 1881 congress adopted volt, ohm and ampere internationally",
+       "check": "Checked, corrected (\"adopted\")",
+       "source": "NBS Circular 475"
+      },
+      {
+       "claim": "Large birds electrocuted when wings bridge conductors or earthed metal; mitigation",
+       "check": "Two or more sources agree",
+       "source": "APLIC 2006; APLIC 1996"
+      },
+      {
+       "claim": "UK distribution 11 kV, rated between phases; phase to earth 11,000/√3 ≈ 6,350 V",
+       "check": "Checked (standard), corrected after the AI review",
+       "source": "ENA"
+      },
+      {
+       "claim": "UK advice: keep well clear of a fallen line (ENA/SSEN: at least 5 m; the AI review cited 10 m, so no figure is printed); call 105 in Great Britain",
+       "check": "Two or more sources agree",
+       "source": "ENA/SSEN leaflet; SSEN \"Stay alive, call 105\""
+      },
+      {
+       "claim": "Feet 5 cm apart, 200 A, 0.2 Ω/km → 0.002 V",
+       "check": "Calculated, labelled illustrative",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Current flows only with a voltage difference; one live wire and nothing else makes no path",
+       "check": "Confirmed (physics) — but see safety note below",
+       "source": "Standard"
+      },
+      {
+       "claim": "11 kV line, ~6,350 V phase to earth",
+       "check": "Confirmed",
+       "source": "ENA; 11,000/√3"
+      },
+      {
+       "claim": "Bird's body conducts well enough; line currents far exceed lethal levels",
+       "check": "Confirmed",
+       "source": "Standard (lethal ~tens of mA)"
+      },
+      {
+       "claim": "Large birds electrocuted bridging wires or wire and earthed metal",
+       "check": "Confirmed",
+       "source": "APLIC 2006"
+      },
+      {
+       "claim": "Try this: step-potential near a fallen line; \"Keep well clear and, in Great Britain, call 105\"",
+       "check": "Text revised after this check",
+       "source": "ENA/SSEN: keep at least 5 m away, assume the line is live, call 105; **for danger to life or injury dial 999 and say electricity is involved**. SSEN \"Stay alive, call 105\", [ssen.co.uk](https://www.ssen.co.uk/news-views/2019/2019-stay-alive-call-105) (this link no longer resolved when checked on 17 October 2026) ; UK Power Networks (\"if lines are down or causing significant risk to the public please call 999\"), [ukpowernetworks.co.uk](https://ukpowernetworks.co.uk/help/how-do-i-get-my-power-turned-off-urgently) . Omitting 999 could delay help where someone is hurt."
+      },
+      {
+       "claim": "Physics lesson could be misread as \"touching one wire is safe\" for people",
+       "check": "Text revised after this check",
+       "source": "People standing on the ground or a ladder are earthed; the text's \"touches nothing else\" condition covers this, and the eagle line reinforces it. No change needed if space is tight."
+      }
+     ]
+    },
+    {
+     "n": 56,
+     "title": "Which pole is which?",
+     "topic": "The Earth is a magnet (Magnetism)",
+     "rows": [
+      {
+       "claim": "Gilbert, *De Magnete* (1600): terrella, Earth a great magnet; coined *electricus*",
+       "check": "Checked (standard)",
+       "source": "Britannica; MacTutor \"Gilbert\""
+      },
+      {
+       "claim": "Gellibrand 1635: declination changes over time",
+       "check": "Checked (standard)",
+       "source": "MacTutor \"Gellibrand\""
+      },
+      {
+       "claim": "North magnetic pole moving from Canada towards Siberia; 50–60 km/yr c. 2000–2015, now ≈ 35 km/yr",
+       "check": "Two or more sources agree",
+       "source": "BGS WMM2025 news; NOAA NCEI 2025 report"
+      },
+      {
+       "claim": "Greenwich compasses pointed to true north in September 2019, first time in ~360 years",
+       "check": "Two or more sources agree",
+       "source": "BGS; Royal Museums Greenwich"
+      },
+      {
+       "claim": "Arctic pole is physically a south magnetic pole; dip needle vertical there",
+       "check": "Checked",
+       "source": "basic physics; BGS education pages"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 57,
+     "title": "Clocks in orbit",
+     "topic": "Time runs at different rates (Relativity)",
+     "rows": [
+      {
+       "claim": "Einstein 1905 (*Ann. Phys.* 17), 1907 (*Jahrbuch*), GR 1915",
+       "check": "Checked (standard)",
+       "source": "[doi:10.1002/andp.19053221004](https://doi.org/10.1002/andp.19053221004)"
+      },
+      {
+       "claim": "Pound–Rebka 1959 (PRL 1960), 22.6 m tower",
+       "check": "Checked, corrected (height)",
+       "source": "APS: [physics.aps.org](https://physics.aps.org/story/v16/st1)"
+      },
+      {
+       "claim": "Hafele–Keating Oct 1971 (*Science* 1972)",
+       "check": "Checked (standard)",
+       "source": "[doi:10.1126/science.177.4044.166](https://doi.org/10.1126/science.177.4044.166)"
+      },
+      {
+       "claim": "NTS-2 (1977), first caesium clock in orbit, confirmed shift",
+       "check": "Checked",
+       "source": "Ashby, *Living Rev. Relativ.* 6 (2003) 1"
+      },
+      {
+       "claim": "GPS: a = 26,561.75 km (altitude 20,190 km above mean radius), v = 3.87 km/s, period 11.97 h; +45.8 (gravity) −7.2 (speed) = +38.6 µs/day; offset 4.465×10⁻¹⁰; light travels 11.6 km in 38.6 µs; 9.4 ns/day per km of height",
+       "check": "Calculated (Ashby gives 45.7, 7.1, 38.6; differences are rounding of the ground clock's potential)",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 58,
+     "title": "Firing at gold",
+     "topic": "Atoms are mostly empty (Atoms)",
+     "rows": [
+      {
+       "claim": "Geiger & Marsden, *Proc. R. Soc. A* 82 (1909) 495: ≈1 in 8,000 α reflected, platinum",
+       "check": "Two or more sources agree, corrected (platinum)",
+       "source": "[chemteam.info](https://www.chemteam.info/Chem-History/GM-1909.html)"
+      },
+      {
+       "claim": "Rutherford 1911 (*Phil. Mag.* 21, 669) \"central charge\"; \"nucleus\" from 1912",
+       "check": "Checked",
+       "source": "Etymonline; ChemTeam"
+      },
+      {
+       "claim": "Thomson's 1904 model (positive charge spread through the atom)",
+       "check": "Checked (standard)",
+       "source": "arXiv 1208.5262"
+      },
+      {
+       "claim": "15-inch shell remark, lecture \"Forty Years of Physics\", 1936, printed 1938; wording varies †",
+       "check": "† (dagger in text)",
+       "source": "Needham & Pagel (eds), *Background to Modern Science* (CUP 1938)"
+      },
+      {
+       "claim": "Gold leaf ≈ 0.1 µm (Rutherford's foils ≈ 0.4 µm) = 350–1,400 atoms",
+       "check": "Checked / computed",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Atom/nucleus diameter: gold ≈ 21,000, hydrogen ≈ 63,000; pea 8 mm → 165 m, 500 m; nuclear density 2.3×10¹⁷ kg/m³; 8 billion × 50 kg → 1.7 cm³",
+       "check": "Calculated (r = 1.2 fm A^⅓; proton 0.8414 fm; illustrative 50 kg average)",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 59,
+     "title": "An old atom",
+     "topic": "Half-life (Atoms)",
+     "rows": [
+      {
+       "claim": "Becquerel 1896; Curie \"radioactivité\" 1898",
+       "check": "Two or more sources agree",
+       "source": "AIP exhibit; Britannica"
+      },
+      {
+       "claim": "Rutherford 1900 (*Phil. Mag.* 49): thorium emanation halves in about a minute",
+       "check": "Checked",
+       "source": "Giunta, Le Moyne: [web.lemoyne.edu](https://web.lemoyne.edu/giunta/classicalcs/rutherhalfnote.html)"
+      },
+      {
+       "claim": "Libby radiocarbon 1949; Nobel Chemistry 1960",
+       "check": "Two or more sources agree",
+       "source": "nobelprize.org"
+      },
+      {
+       "claim": "Rn-222 half-life 3.82 d (text: 3.8)",
+       "check": "Checked (standard)",
+       "source": "NNDC"
+      },
+      {
+       "claim": "C-14 half-life 5,700 ± 30 yr",
+       "check": "Checked",
+       "source": "Kutschera, *Radiocarbon* (2019)"
+      },
+      {
+       "claim": "Memoryless decay",
+       "check": "Checked",
+       "source": "standard physics"
+      },
+      {
+       "claim": "3 × 5,700 = 17,100 years",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Radon-222 half-life 3.8 days",
+       "check": "Confirmed",
+       "source": "NNDC/IAEA (3.8235 d)"
+      },
+      {
+       "claim": "No health claim about radon is made",
+       "check": "Confirmed",
+       "source": "(Radon is the second cause of lung cancer in the UK, UKHSA, [ukradon.org](https://www.ukradon.org/) — not needed on this page)"
+      },
+      {
+       "claim": "C-14 half-life ~5,700 years; Libby 1949, Nobel 1960",
+       "check": "Confirmed",
+       "source": "Standard"
+      }
+     ]
+    },
+    {
+     "n": 60,
+     "title": "The bridge in the wind",
+     "topic": "Resonance and Tacoma Narrows (Waves)",
+     "rows": [
+      {
+       "claim": "Opened 1 July 1940; collapsed 7 Nov 1940; wind 38 rising to 42 mph (68 km/h); \"Galloping Gertie\"; only death a dog (Tubby)",
+       "check": "Two or more sources agree",
+       "source": "HistoryLink 5048; WSDOT; STRUCTURE magazine (Griggs 2022)"
+      },
+      {
+       "claim": "Twisting from about 10 a.m.; collapse about 11 a.m. (\"swayed for an hour\")",
+       "check": "Checked",
+       "source": "HistoryLink; WSDOT"
+      },
+      {
+       "claim": "Torsional flutter (self-excited), not forced resonance: twisting ≈ 0.2 Hz vs vortex shedding ≈ 1 Hz at 42 mph",
+       "check": "Two or more sources agree",
+       "source": "Billah & Scanlan, *Am. J. Phys.* 59 (1991) 118; arXiv physics/0408101"
+      },
+      {
+       "claim": "Broughton Suspension Bridge, 12 April 1831, about 70 soldiers (60th Rifles) marching in step; faulty bolt also blamed",
+       "check": "Checked, corrected (number)",
+       "source": "Grace's Guide"
+      },
+      {
+       "claim": "Army \"break step\" order †",
+       "check": "† (dagger in text)",
+       "source": "Grace's Guide (no primary order found)"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 61,
+     "title": "Down the plughole",
+     "topic": "The Coriolis effect (Motion)",
+     "rows": [
+      {
+       "claim": "Coriolis 1835, *J. École polytechnique* 15",
+       "check": "Checked (standard)",
+       "source": "Persson, *BAMS* 1998"
+      },
+      {
+       "claim": "Shapiro 1962 (*Nature* 196, 1080): tank about 6 ft (2 m) across, left ~24 h, anticlockwise",
+       "check": "Two or more sources agree",
+       "source": "Naked Scientists; Australian Geographic"
+      },
+      {
+       "claim": "Trefethen et al. 1965 (*Nature* 207, 1084), Sydney, clockwise",
+       "check": "Checked",
+       "source": "Australian Geographic"
+      },
+      {
+       "claim": "Ordinary baths: leftover motion and shape decide",
+       "check": "Two or more sources agree",
+       "source": "as above; Snopes"
+      },
+      {
+       "claim": "Equator demonstrations are tricks",
+       "check": "Two or more sources agree (sceptic and travel sources)",
+       "source": "Snopes; Metabunk"
+      },
+      {
+       "claim": "Tropical cyclones rarely form within ≈500 km of the equator; turning senses",
+       "check": "Checked",
+       "source": "NOAA HRD FAQ A15, D3"
+      },
+      {
+       "claim": "London (51.5° N): Coriolis parameter f = 2Ω sin φ → inertial circle once per 15.3 h (Foucault period 30.6 h, not used after the AI adversarial review); swirl 1 cm/s at 10 cm → 63 s per turn, ≈ 880 times faster",
+       "check": "Calculated, corrected",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 62,
+     "title": "Red light, zinc plate",
+     "topic": "Light comes in packets (Light)",
+     "rows": [
+      {
+       "claim": "Hallwachs 1888 (UV discharges negative zinc); Lenard 1902 (electron energy depends on frequency, not intensity)",
+       "check": "Two or more sources agree",
+       "source": "Britannica \"Photoelectric effect\""
+      },
+      {
+       "claim": "Planck 14 Dec 1900; Einstein 1905 (*Ann. Phys.* 17, 132); Nobel 1921 (awarded 1922) \"especially for … the photoelectric effect\"",
+       "check": "Checked",
+       "source": "nobelprize.org"
+      },
+      {
+       "claim": "\"Photon\" popularised by Lewis 1926 (earlier uses Troland 1916, Wolfers 1926)",
+       "check": "Corrected (\"popularised\")",
+       "source": "Kragh, arXiv 1401.0293"
+      },
+      {
+       "claim": "Zinc work function ≈ 4.3 eV (3.7–4.9 by surface)",
+       "check": "Checked",
+       "source": "HyperPhysics"
+      },
+      {
+       "claim": "Sunburn mainly UVB; B&W paper red-insensitive",
+       "check": "Checked (standard)",
+       "source": "WHO; Ilford"
+      },
+      {
+       "claim": "Photon energies: 700 nm 1.77 eV, 550 nm 2.25, 450 nm 2.76, 300 nm 4.13, 254 nm 4.88",
+       "check": "Calculated (hc/λe, CODATA exact)",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 63,
+     "title": "Sunlight in, heat out",
+     "topic": "The greenhouse effect (Heat)",
+     "rows": [
+      {
+       "claim": "Fourier 1824 (*Ann. Chim. Phys.* 27)",
+       "check": "Checked (standard)",
+       "source": "Fleming, *Historical Perspectives on Climate Change*"
+      },
+      {
+       "claim": "Foote 1856 (*Am. J. Sci.* 22, 382), CO₂ cylinder hotter in sunlight; read by Henry at AAAS, 23 Aug 1856",
+       "check": "Two or more sources agree",
+       "source": "Physics Today; McNeill 2016"
+      },
+      {
+       "claim": "Tyndall 1859: water vapour and CO₂ strong absorbers, N₂ and O₂ nearly transparent (*Phil. Trans.* 151, 1861)",
+       "check": "Checked",
+       "source": "Royal Society"
+      },
+      {
+       "claim": "Arrhenius 1896 (*Phil. Mag.* 41)",
+       "check": "Checked",
+       "source": "standard"
+      },
+      {
+       "claim": "Greenhouses warm mainly by suppressing convection (Wood 1909, still debated)",
+       "check": "Checked (worded \"mainly\")",
+       "source": "Wood, *Phil. Mag.* 17 (1909) 319"
+      },
+      {
+       "claim": "Effective temperature 254.6 K (−18.6 °C) for S = 1361 W/m², albedo 0.30 (−17.7 °C at 0.29); surface ≈ 288 K (15 °C); difference ≈ 33 °C",
+       "check": "Calculated; checked for inputs (Kopp & Lean 2011; NASA fact sheet)",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Interior heat 47 TW (Davies & Davies 2010) → 0.092 W/m²; absorbed sunlight 238 W/m²; ratio ≈ 2,600",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "N₂ + O₂ ≈ 99% of dry air",
+       "check": "Checked (standard: 78.08% + 20.95%)",
+       "source": "NOAA"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 64,
+     "title": "Floating in orbit",
+     "topic": "Weightless isn't gravity-free (Motion)",
+     "rows": [
+      {
+       "claim": "Newton's cannonball in *Principia* (Def. V) and *A Treatise of the System of the World* (1728, figure)",
+       "check": "Two or more sources agree",
+       "source": "Reed College Principia text; Wikipedia \"Newton's cannonball\""
+      },
+      {
+       "claim": "ISS 400–420 km, 7.66 km/s, ≈15.5 orbits a day (NASA rounds to 16)",
+       "check": "Checked",
+       "source": "NASA; issinfo.net"
+      },
+      {
+       "claim": "NASA: astronauts float because in free fall; ~90% gravity",
+       "check": "Checked",
+       "source": "NASA \"What is microgravity?\""
+      },
+      {
+       "claim": "Parabolic flights 20–25 s",
+       "check": "Two or more sources agree",
+       "source": "Wikipedia \"Reduced-gravity aircraft\" (citing NASA)"
+      },
+      {
+       "claim": "(6,400/6,800)² = 0.886; 6.25% farther; at 400 km (R = 6,371) 0.885; v(410 km) 7.67 km/s, 92.6 min, 15.5/day; surface orbit 7.91 km/s = 28,500 km/h",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    }
+   ]
+  },
+  {
+   "letter": "D",
+   "name": "Chemistry",
+   "first": 65,
+   "last": 73,
+   "puzzles": [
+    {
+     "n": 65,
+     "title": "The log in the glass box",
+     "topic": "Mass is conserved (Chemistry)",
+     "rows": [
+      {
+       "claim": "Lavoisier, *Traité élémentaire de chimie* (1789), Part I ch. XIII: nothing is created in the operations of art or nature; equal quantity of matter before and after",
+       "check": "Checked",
+       "source": "Gutenberg #52489 (French 1789), #30775 (Kerr's English 1790)"
+      },
+      {
+       "claim": "Lomonosov stated a conservation principle in a letter of 1748; little influence",
+       "check": "Checked, corrected (framing)",
+       "source": "Shiltsev, arXiv 1801.00909"
+      },
+      {
+       "claim": "Van Helmont: 5 lb willow, 200 lb dried earth, 5 years, about 169 lb, earth lost about 2 oz; concluded water; printed 1648",
+       "check": "Checked",
+       "source": "Howe 1965 translation, faculty.csbsju.edu/SSAUPE/biol115/van_helmont.htm"
+      },
+      {
+       "claim": "Dry wood ≈ 50% C, 6% H, 44% O; heat of combustion ≈ 18–21 MJ/kg (19 used)",
+       "check": "Checked (approximate)",
+       "source": "Rowell, *Handbook of Wood Chemistry*; BioResources hardwood study"
+      },
+      {
+       "claim": "10 kg wood → ≈ 13.7 kg O₂ used, ≈ 23.7 kg CO₂ + H₂O; heat 190 MJ ↔ 2.1 µg",
+       "check": "Calculated (illustrative composition)",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Box reading 152 kg",
+       "check": "Illustrative, labelled",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 66,
+     "title": "Burning metal",
+     "topic": "Oxygen and fire (Chemistry)",
+     "rows": [
+      {
+       "claim": "Phlogiston named and popularised by Stahl, early 1700s",
+       "check": "Checked, corrected (Becher's *terra pinguis*, 1669, not used)",
+       "source": "Wikipedia \"Phlogiston theory\"; Universalis"
+      },
+      {
+       "claim": "Scheele: fire air by about 1772; book 1777",
+       "check": "Checked",
+       "source": "Uppsala University Scheele page; ABAA listing"
+      },
+      {
+       "claim": "Priestley: 1 Aug 1774, mercurius calcinatus, burning lens; \"dephlogisticated air\"; told Lavoisier in Paris, October 1774",
+       "check": "Checked",
+       "source": "Science History Institute, Priestley biography"
+      },
+      {
+       "claim": "Lavoisier: combustion as combination with oxygen; name from Greek \"acid-former\"; *oxygène* fixed 1787; all acids contain it (wrong)",
+       "check": "Checked, corrected (date)",
+       "source": "Science History Institute, Lavoisier biography; chemteam.info"
+      },
+      {
+       "claim": "10 g Fe → 13.8 g Fe₃O₄ (14.3 g Fe₂O₃)",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Candle under a jar goes out before all oxygen is used",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 67,
+     "title": "The next metal down",
+     "topic": "The periodic table predicts (Chemistry)",
+     "rows": [
+      {
+       "claim": "Melting points Li 180.5, Na 97.8, K 63.5, Rb 39.3, Cs 28.5 °C",
+       "check": "Checked (±0.1 °corrected between sources)",
+       "source": "CRC; Wikipedia \"Alkali metal\""
+      },
+      {
+       "claim": "Steps 82.7, 34.3, 24.2, then 10.8",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Mendeleev's table March 1869 (17 Feb O.S.); detailed predictions 1871",
+       "check": "Checked (standard)",
+       "source": "Scerri"
+      },
+      {
+       "claim": "Gallium 1875, scandium 1879, germanium 1886",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "Lecoq's first density 4.7; Mendeleev ≈ 5.9; 5.935 on remeasurement in 1876",
+       "check": "Two or more sources agree",
+       "source": "Wikipedia \"Gallium\"; *Scientific American* 15 June 1878"
+      },
+      {
+       "claim": "Lothar Meyer independent; Davy Medal shared 1882",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 68,
+     "title": "Fruit or factory",
+     "topic": "Everything is chemicals (Chemistry)",
+     "rows": [
+      {
+       "claim": "Ascorbic acid C₆H₈O₆; synthetic and natural identical",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "Synthetic vitamin E (all-rac) is a mixture of 8 stereoisomers; natural is RRR",
+       "check": "Checked",
+       "source": "Linus Pauling Institute, vitamin E"
+      },
+      {
+       "claim": "Natural vs synthetic vanillin told apart by isotope ratios (δ¹³C, SNIF-NMR)",
+       "check": "Checked",
+       "source": "[PMC8625575](https://pmc.ncbi.nlm.nih.gov/articles/PMC8625575/)"
+      },
+      {
+       "claim": "Wöhler 1828, letter to Berzelius (22 Feb 1828), \"without needing kidneys or any animal\"",
+       "check": "Checked",
+       "source": "Encyclopedia.com; *Ann. Phys. Chem.* 88 (1828)"
+      },
+      {
+       "claim": "\"Killed vitalism\" is a myth",
+       "check": "Two or more sources agree",
+       "source": "McKie, *Nature* 153 (1944) 608; Ramberg, *Ambix* 47 (2000) 170"
+      },
+      {
+       "claim": "Caffeine C₈H₁₀N₄O₂",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Natural and synthetic ascorbic acid are the same molecule and behave the same in the body",
+       "check": "Confirmed",
+       "source": "Carr & Vissers, \"Synthetic or food-derived vitamin C — are they equally bioavailable?\", Nutrients 2013, [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC3847730/) (no difference in humans)"
+      },
+      {
+       "claim": "Option B (synthetic causes more side effects) is wrong",
+       "check": "Confirmed",
+       "source": "Same"
+      },
+      {
+       "claim": "Synthetic vitamin E is a mixture of eight stereoisomers, only one the main natural (RRR) form; not equivalent mg for mg",
+       "check": "Confirmed",
+       "source": "Linus Pauling Institute, Vitamin E, [lpi.oregonstate.edu](https://lpi.oregonstate.edu/mic/vitamins/vitamin-E) ; NIH ODS fact sheet (1 mg all-rac ≈ 0.45 mg RRR), [ods.od.nih.gov](https://ods.od.nih.gov/factsheets/VitaminE-HealthProfessional/)"
+      },
+      {
+       "claim": "\"an orange is far more than its vitamin C\"",
+       "check": "Confirmed",
+       "source": "Carr & Vissers 2013"
+      },
+      {
+       "claim": "Nature makes some of the most poisonous substances known",
+       "check": "Confirmed",
+       "source": "Botulinum toxin (CDC)"
+      },
+      {
+       "claim": "Caffeine C8H10N4O2, same molecule in tea and cola",
+       "check": "Confirmed",
+       "source": "PubChem CID 2519"
+      }
+     ]
+    },
+    {
+     "n": 69,
+     "title": "Drinking water",
+     "topic": "The dose makes the poison (Chemistry)",
+     "rows": [
+      {
+       "claim": "Paracelsus, third of the *Seven Defences*, written 1538, printed 1564: \"alle ding sind gifft / und nichts ohn gifft / Allein die dosis macht das ein ding kein gifft ist\"",
+       "check": "Checked, corrected (printing date)",
+       "source": "Aronson, BMJ blog, 9 Aug 2019"
+      },
+      {
+       "claim": "Kidneys excrete at most ≈ 0.8–1.0 L of free water an hour",
+       "check": "Checked",
+       "source": "systematic review, [PMC8663108](https://pmc.ncbi.nlm.nih.gov/articles/PMC8663108/)"
+      },
+      {
+       "claim": "Water-intoxication deaths in contests (e.g. Sacramento, 2007, ≈ 7.5 L in ~3 h) and in endurance runners (13% of 2002 Boston runners hyponatraemic; Almond et al., *NEJM* 2005)",
+       "check": "Two or more sources agree",
+       "source": "ABC News; CBS; *NEJM* 352:1550"
+      },
+      {
+       "claim": "Botulinum toxin used medically in tiny measured doses (< 1 ng active toxin per 100-unit vial; mass not printed after the AI adversarial review, as it is product-specific)",
+       "check": "Checked, corrected",
+       "source": "[PMC3586120](https://pmc.ncbi.nlm.nih.gov/articles/PMC3586120/); *Toxins* 10:535"
+      },
+      {
+       "claim": "Oxygen toxicity (lungs, nervous system)",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      }
+     ],
+     "health": [
+      {
+       "claim": "\"drinking when thirsty is safe for healthy people\"",
+       "check": "Confirmed",
+       "source": "NHS \"Water, drinks and your health\" (6–8 glasses a day; drink more in heat/exercise), [nhs.uk](https://www.nhs.uk/live-well/eat-well/food-guidelines-and-food-labels/water-drinks-nutrition/)"
+      },
+      {
+       "claim": "Kidneys excrete free water up to about a litre an hour",
+       "check": "Confirmed",
+       "source": "Noakes et al., \"Peak rates of diuresis in healthy humans during oral fluid overload\", S Afr Med J 2001 (~900 mL/h), [pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/11732457/) ; review [PMC8663108](https://pmc.ncbi.nlm.nih.gov/articles/PMC8663108/)"
+      },
+      {
+       "claim": "Hormones in hard exercise, stress or illness hold water back (ADH/vasopressin)",
+       "check": "Confirmed",
+       "source": "Hew-Butler et al., EAH consensus statement, Clin J Sport Med 2015"
+      },
+      {
+       "claim": "Dilution of blood sodium, cell swelling, brain swelling: confusion, fits, death; \"hyponatraemia\"",
+       "check": "Confirmed",
+       "source": "NHS Inform / Merck Manual \"Hyponatremia\"; Hew-Butler 2015"
+      },
+      {
+       "claim": "Deaths in water-drinking contests and in runners drinking more than they sweat",
+       "check": "Confirmed",
+       "source": "Sacramento 2007 contest; Almond et al., NEJM 2005;352:1550"
+      },
+      {
+       "claim": "\"Confusion, vomiting, severe headache or fits after drinking a great deal need urgent medical help\"",
+       "check": "Confirmed",
+       "source": "NHS 111/999 guidance for seizures and confusion"
+      },
+      {
+       "claim": "Botulinum toxin injected in tiny doses into muscles to relax them",
+       "check": "Confirmed",
+       "source": "NHS \"Botulinum toxin\" / MHRA product information"
+      },
+      {
+       "claim": "\"for many poisons there are doses too small to do measurable harm\"",
+       "check": "Confirmed (hedged correctly; not claimed for all, e.g. genotoxic carcinogens)",
+       "source": "WHO IPCS principles of risk assessment"
+      },
+      {
+       "claim": "Try this: pure oxygen for long periods or at high pressure damages lungs and nervous system; divers and hospitals keep limits",
+       "check": "Confirmed",
+       "source": "Standard (pulmonary and CNS oxygen toxicity); BTS oxygen guideline 2017 (target saturations), [brit-thoracic.org.uk](https://www.brit-thoracic.org.uk/quality-improvement/guidelines/emergency-oxygen/)"
+      }
+     ]
+    },
+    {
+     "n": 70,
+     "title": "Lemon and coffee",
+     "topic": "pH is logarithmic (Chemistry)",
+     "rows": [
+      {
+       "claim": "Lemon juice ≈ pH 2 (2–2.6), black coffee ≈ pH 5",
+       "check": "Checked (typical; labelled)",
+       "source": "standard"
+      },
+      {
+       "claim": "10³ = 1,000; 10⁴ = 10,000",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Ocean surface ≈ 8.2 → 8.1 since pre-industrial times; 10^0.1 = 1.26, \"about a quarter more\" (NOAA rounds to 30%)",
+       "check": "Checked, computed",
+       "source": "NOAA ocean acidification page"
+      },
+      {
+       "claim": "Sørensen 1909, Carlsberg Laboratory; p_H, \"hydrogen-ion exponent\"; meaning of p unknown",
+       "check": "Checked",
+       "source": "Wikipedia \"pH\"; Nørby, *TIBS* 2000"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 71,
+     "title": "The black powder",
+     "topic": "Catalysts (Chemistry)",
+     "rows": [
+      {
+       "claim": "2 H₂O₂ → 2 H₂O + O₂; MnO₂ recovered unchanged",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "Kirchhoff 1811, acid converts starch to sugar, acid recovered",
+       "check": "Checked",
+       "source": "*Educación Química* history of catalysis"
+      },
+      {
+       "claim": "Döbereiner's lamp 1823",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "Berzelius 1835, \"catalysis\", Greek \"loosening\"",
+       "check": "Checked",
+       "source": "*Educación Química*"
+      },
+      {
+       "claim": "Converters on US cars from the 1975 model year; lead poisons them",
+       "check": "Checked",
+       "source": "Wikipedia \"Catalytic converter\"; Science History Institute"
+      },
+      {
+       "claim": "Catalyst does not shift equilibrium",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Enzymes, most of them proteins, speed reactions, often millions of times over",
+       "check": "Confirmed",
+       "source": "Standard biochemistry. Ribozymes are the exception, and \"most\" covers them."
+      },
+      {
+       "claim": "Enzymes in biological washing powders break down protein and fat stains in a cool wash",
+       "check": "Confirmed",
+       "source": "Proteases and lipases are standard in detergents (standard)."
+      },
+      {
+       "claim": "Converter turns CO and unburnt fuel into CO2 and water",
+       "check": "Confirmed",
+       "source": "Not a health claim. It leaves out the reduction of NOx, which is acceptable here (main source table)."
+      },
+      {
+       "claim": "Lead poisons converters; lead's harm to health was the other great reason for the phase-out",
+       "check": "Confirmed",
+       "source": "main source table (Science History Institute); US EPA phase-down was health-driven."
+      }
+     ]
+    },
+    {
+     "n": 72,
+     "title": "The bottom of the lake",
+     "topic": "Ice floats (Chemistry)",
+     "rows": [
+      {
+       "claim": "Max density 0.99997 g/cm³ at 3.98 °C; ice 0.9167",
+       "check": "Checked (standard, CRC)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "Ice ≈ 9% larger; 10.6% of ice above sea water (1.025)",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Bottom water under winter ice ≈ 4 °C, often 1–4 °C",
+       "check": "Checked (with caveat in text)",
+       "source": "limnology standard"
+      },
+      {
+       "claim": "Pressure lowers freezing point ≈ 0.0074 °C/atm → 0.02 °C at 30 m",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Galileo 1612, *Discorso*, ice lighter than water",
+       "check": "Checked",
+       "source": "Gutenberg #37729"
+      },
+      {
+       "claim": "Florentine observers 1660s (Accademia del Cimento) saw water expand before freezing",
+       "check": "Likely (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "Hope 1805, *Trans. RSE* 5, maximum density ≈ 39–40 °F",
+       "check": "Checked",
+       "source": "Cambridge Core abstract"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 73,
+     "title": "A spoonful and the sea",
+     "topic": "Counting atoms: the mole (Chemistry)",
+     "rows": [
+      {
+       "claim": "Teaspoon 1.67 × 10²³ molecules; oceans 2.66 × 10²³ teaspoons; ratio 1.6",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Ocean volume 1.332 × 10⁹ km³",
+       "check": "Checked",
+       "source": "Charette & Smith, *Oceanography* 23(2) 2010"
+      },
+      {
+       "claim": "Avogadro 1811; Loschmidt 1865; Perrin 1909 (name), Nobel 1926; Ostwald \"Mol\" 1890s; N_A fixed 20 May 2019",
+       "check": "Checked, corrected (Ostwald date)",
+       "source": "Wikipedia \"Avogadro constant\", \"Jean Perrin\"; chemteam.info"
+      },
+      {
+       "claim": "Breath 0.5 L ÷ 24 L/mol × N_A ≈ 1.3 × 10²²",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    }
+   ]
+  },
+  {
+   "letter": "E",
+   "name": "Life and health",
+   "first": 74,
+   "last": 86,
+   "puzzles": [
+    {
+     "n": 74,
+     "title": "The drug that stopped working",
+     "topic": "Natural selection (Life)",
+     "rows": [
+      {
+       "claim": "Darwin and Wallace papers read together, neither present, Linnean Society, 1 July 1858",
+       "check": "Two or more sources agree",
+       "source": "Linnean Society, 160th-anniversary note (2018): [linnean.org](https://www.linnean.org/the-society/news/2018/07/01/1st-july-2018-160th-anniversary-of-the-presentation-of-on-the-tendency-of-species-to-form-varieties) ; Wikipedia article on the joint paper (J. Proc. Linn. Soc. Zool. 3, 20 Aug 1858, 45–62)"
+      },
+      {
+       "claim": "*Origin of Species* published November 1859",
+       "check": "Checked",
+       "source": "standard (24 Nov 1859)"
+      },
+      {
+       "claim": "Darwin chose \"natural selection\" to mark its relation to breeders' selection",
+       "check": "Checked",
+       "source": "Darwin, *Origin* (1859) ch. 3: \"…in order to mark its relation to man's power of selection.\""
+      },
+      {
+       "claim": "Spencer coined \"survival of the fittest\" in 1864 (*Principles of Biology*)",
+       "check": "Two or more sources agree",
+       "source": "Britannica, \"survival of the fittest\"; Darwin Correspondence Project, \"Survival of the fittest\": [darwinproject.ac.uk](https://www.darwinproject.ac.uk/commentary/survival-fittest)"
+      },
+      {
+       "claim": "Wallace urged Darwin to adopt it (letter of 2 July 1866); Darwin added it in the 5th edition of the *Origin*, 1869",
+       "check": "Two or more sources agree",
+       "source": "Darwin Correspondence Project (above); phrases.org.uk / History Revealed (5th ed., 10 Feb 1869). The text does not mention the 1868 *Variation* use, which one source claims and we did not verify."
+      },
+      {
+       "claim": "Weeds resistant to weedkillers; lice resistant to lotions; resistance often has a fitness cost",
+       "check": "Checked in the health check for this puzzle",
+       "source": "See the health check below."
+      },
+      {
+       "claim": "10^10 × 10^-8 = 100; 100 × 2^20 ≈ 1.05 × 10^8 (illustrative)",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Resistance belongs to the bacteria, not the patient (A wrong)",
+       "check": "Confirmed",
+       "source": "WHO fact sheet \"Antimicrobial resistance\": AMR occurs \"when bacteria, viruses, fungi and parasites do not respond to these medicines\", [who.int](https://www.who.int/news-room/fact-sheets/detail/antimicrobial-resistance)"
+      },
+      {
+       "claim": "Variants arise by chance copying errors or genes picked up from other bacteria, and may be present before treatment or arise during it",
+       "check": "Confirmed",
+       "source": "Mutation and horizontal gene transfer (standard; WHO, above)."
+      },
+      {
+       "claim": "10^10 × 10^-8 = 100 survivors; 20 half-hour doublings → ~100 million",
+       "check": "Text revised after this check",
+       "source": "The arithmetic is correct and the illustration is labelled. However, it implies the 100 survivors regrow unopposed. In a patient, the immune system usually clears small numbers, and that is why most treated infections do not relapse. A clinician would want \"unchecked\" added."
+      },
+      {
+       "claim": "Weeds resistant to weedkillers; lice resistant to lotions once used against them",
+       "check": "Confirmed",
+       "source": "Permethrin and malathion resistance in UK head lice is documented (UK schoolchild study: permethrin 87% and malathion 64% failure, cited via NHS Scotland formulary, [formulary.nhs.scot](https://formulary.nhs.scot/east/skin/parasite-infections/head-lice/) )."
+      },
+      {
+       "claim": "In a gut with no drug, a resistant bacterium often grows more slowly",
+       "check": "Confirmed",
+       "source": "Andersson & Hughes, *Nat Rev Microbiol* 8 (2010) 260, [doi.org](https://doi.org/10.1038/nrmicro2319) . Most resistance carries a cost, which can be compensated; \"often\" is the right word."
+      }
+     ]
+    },
+    {
+     "n": 75,
+     "title": "Soho, 1854",
+     "topic": "Germs cause disease (Health)",
+     "rows": [
+      {
+       "claim": "\"Upwards of five hundred fatal attacks of cholera in ten days\" (616 in all)",
+       "check": "Checked",
+       "source": "Snow, *On the Mode of Communication of Cholera*, 2nd ed. 1855 (Gutenberg #72894)"
+      },
+      {
+       "claim": "Workhouse: 535 inmates, 5 deaths, own well; brewery: above 70 workmen, none died, malt liquor and own well",
+       "check": "Checked",
+       "source": "Snow 1855"
+      },
+      {
+       "claim": "Hampstead widow had Broad Street water brought to her and died (2 Sept); unnamed in Snow",
+       "check": "Checked",
+       "source": "Snow 1855"
+      },
+      {
+       "claim": "Contamination from a nearby cesspool",
+       "check": "Checked (standard; Whitehead's investigation)",
+       "source": "Wikipedia \"1854 Broad Street cholera outbreak\""
+      },
+      {
+       "claim": "Handle removed 8 Sept after Snow met the Guardians on 7 Sept; deaths already falling (Snow's own remark)",
+       "check": "Checked",
+       "source": "Snow 1855"
+      },
+      {
+       "claim": "Vienna 1846: First Clinic 459/4,010 = 11.4%; Second 105/3,754 = 2.8%; alternate-day admission; chlorinated lime from mid-May 1847; June 2.2%, July 1.2%, Aug 1.9%",
+       "check": "Two or more sources agree",
+       "source": "Wikipedia \"Ignaz Semmelweis\"; Loudon, *JRSM* 2013"
+      },
+      {
+       "claim": "Semmelweis died 13 Aug 1865 in a Vienna asylum of pyaemia from a hand wound; beating disputed; legends dagger-labelled",
+       "check": "Checked, corrected",
+       "source": "Wikipedia; kepmas.hu"
+      },
+      {
+       "claim": "Pacini 1854; Koch pure culture Jan 1884, anthrax 1876, TB 24 March 1882; Pasteur 1861–62",
+       "check": "Checked",
+       "source": "Wikipedia \"Filippo Pacini\", \"Vibrio cholerae\", \"Louis Pasteur\"; PBS"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Cholera caused by a germ in pump water from a nearby cesspool",
+       "check": "Confirmed",
+       "source": "WHO cholera fact sheet: caused by \"consuming food or water contaminated with the bacterium *Vibrio cholerae*\", [who.int](https://www.who.int/news-room/fact-sheets/detail/cholera) ; Snow 1855 (main source table)"
+      },
+      {
+       "claim": "Many diseases are caused by microbes passing person to person in water, food, air or by touch; blocking routes can reduce or stop spread",
+       "check": "Confirmed",
+       "source": "Std. \"Many\" allows for vector-borne exceptions."
+      },
+      {
+       "claim": "Handwashing is a central reason",
+       "check": "Confirmed",
+       "source": "Std (WHO hand hygiene)."
+      },
+      {
+       "claim": "Vienna 1846: 11.4% vs 2.8%; chlorinated lime May 1847; ~2% within months",
+       "check": "Confirmed",
+       "source": "Loudon, *JRSM* 2013 (main source table)"
+      },
+      {
+       "claim": "Semmelweis died in an asylum in 1865 of an infected wound",
+       "check": "Confirmed",
+       "source": "main source table"
+      }
+     ]
+    },
+    {
+     "n": 76,
+     "title": "How many must be immune?",
+     "topic": "Vaccination and herd immunity (Health)",
+     "rows": [
+      {
+       "claim": "Threshold 1 − 1/R₀ under random mixing and complete immunity; 1 − 1/15 = 93.3%; 15 × 0.2 = 3; 15 × 0.05 = 0.75; R₀ = 2 → 50%",
+       "check": "Checked; computed",
+       "source": "Fine, Eames & Heymann, *Clin Infect Dis* 52 (2011) 911"
+      },
+      {
+       "claim": "Measles R₀ often quoted 12–18, real estimates vary more",
+       "check": "Checked",
+       "source": "Guerra et al., *Lancet Infect Dis* 17 (2017) e420"
+      },
+      {
+       "claim": "WHO: ≥ 95% coverage with two doses",
+       "check": "Checked",
+       "source": "WHO/UNICEF statement"
+      },
+      {
+       "claim": "Two MMR doses ≈ 97% effective against measles (one dose 93%)",
+       "check": "Checked",
+       "source": "CDC measles vaccine considerations"
+      },
+      {
+       "claim": "Jenner 14 May 1796, James Phipps (8), cowpox from Sarah Nelmes; challenged 1 July 1796",
+       "check": "Checked",
+       "source": "historyofvaccines.org; Wikipedia \"James Phipps\""
+      },
+      {
+       "claim": "*vacca*; smallpox declared eradicated 8 May 1980 (WHA33.3)",
+       "check": "Checked",
+       "source": "Science Friday; UN press release"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Threshold 1 − 1/R0; 93.3% for R0 = 15; it does not mean no cases",
+       "check": "Confirmed",
+       "source": "Fine, Eames & Heymann, *Clin Infect Dis* 52 (2011) 911 (main source table). The idealisation is labelled on the page."
+      },
+      {
+       "claim": "Vaccination protects babies too young and people with medical contraindications",
+       "check": "Confirmed",
+       "source": "Std (NHS/UKHSA herd protection messaging)."
+      },
+      {
+       "claim": "WHO aims for ≥95% coverage with each of two doses",
+       "check": "Confirmed",
+       "source": "WHO/UNICEF (main source table)"
+      },
+      {
+       "claim": "\"two doses protect about 97% of those who get them\"",
+       "check": "Text revised after this check",
+       "source": "CDC: two doses \"97% (range: 67% to 100%) effective\", [cdc.gov](https://www.cdc.gov/measles/hcp/vaccine-considerations/index.html) . NHS: after 2 doses \"around 99% of people will be protected against measles\", [nhs.uk](https://www.nhs.uk/vaccinations/mmr-vaccine/) . A UK reader who checks the NHS page will see 99%, so \"97 to 99%\" is safer."
+      },
+      {
+       "claim": "Jenner 1796, Phipps, Nelmes; smallpox eradicated 1980",
+       "check": "Confirmed",
+       "source": "main source table"
+      }
+     ]
+    },
+    {
+     "n": 77,
+     "title": "The colour that came back",
+     "topic": "Genes and inheritance (Life)",
+     "rows": [
+      {
+       "claim": "Mendel: Brünn society, 8 Feb and 8 Mar 1865; published 1866; flower colour 705 : 224 (3.15 : 1)",
+       "check": "Checked; computed",
+       "source": "MendelWeb translation; Villanova"
+      },
+      {
+       "claim": "Rediscovery 1900 chiefly by de Vries and Correns",
+       "check": "Checked",
+       "source": "Villanova"
+      },
+      {
+       "claim": "Johannsen \"gene\" 1909",
+       "check": "Checked",
+       "source": "[PMC4258773](https://pmc.ncbi.nlm.nih.gov/articles/PMC4258773/)"
+      },
+      {
+       "claim": "Fisher's \"too good\" anomaly unresolved; fraud unproven",
+       "check": "Checked",
+       "source": "Franklin et al., *Ending the Mendel–Fisher Controversy* (2008)"
+      },
+      {
+       "claim": "Eye colour polygenic; brown-eyed parents can have blue-eyed children",
+       "check": "Checked",
+       "source": "The Tech \"Ask a geneticist\"; Cosmos"
+      },
+      {
+       "claim": "Try: 2/3 of purple plants carry p",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 78,
+     "title": "Counting the letters",
+     "topic": "DNA's double helix (Life)",
+     "rows": [
+      {
+       "claim": "Human DNA ≈ A 30, T 30, G 20, C 20 (Chargaff 1952: 29.3/30.0/20.7/20.0); Chargaff 1950",
+       "check": "Checked",
+       "source": "Wikipedia \"Chargaff's rules\" (citing Bansal 2003)"
+      },
+      {
+       "claim": "Photo 51, May 1952, Gosling under Franklin",
+       "check": "Checked",
+       "source": "Embryo Project (ASU)"
+      },
+      {
+       "claim": "Wilkins showed it to Watson in late January 1953 without Franklin's knowledge; MRC report (Dec 1952) passed by Perutz",
+       "check": "Checked",
+       "source": "historyofinformation.com; *Nature* 424, 127"
+      },
+      {
+       "claim": "*Nature* 171, 25 April 1953: three papers",
+       "check": "Checked",
+       "source": "University of Manchester news"
+      },
+      {
+       "claim": "Cobb & Comfort, *Nature* 616 (2023) 657: \"equal member\"",
+       "check": "Checked",
+       "source": "as above"
+      },
+      {
+       "claim": "Franklin died 16 April 1958, aged 37; never nominated; 1962 Nobel (Physiology or Medicine) to Watson, Crick, Wilkins",
+       "check": "Checked, corrected",
+       "source": "CSHL; LMU"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Human DNA about 30% A, 20% G",
+       "check": "Confirmed",
+       "source": "Chargaff 1952 (29.3/20.7) (main source table)"
+      },
+      {
+       "claim": "Base pairing lets laboratories read DNA and compare it in paternity and criminal cases",
+       "check": "Confirmed",
+       "source": "Std. Profiling uses STR/PCR, which relies on primer pairing."
+      },
+      {
+       "claim": "Franklin died 1958 aged 37",
+       "check": "Confirmed",
+       "source": "main source table"
+      }
+     ]
+    },
+    {
+     "n": 79,
+     "title": "Not made of cells",
+     "topic": "Cells (Life)",
+     "rows": [
+      {
+       "claim": "Hooke, *Micrographia* (1665), Obs. XVIII: \"much like a Honey-comb\", \"these pores, or cells\"",
+       "check": "Checked",
+       "source": "Gutenberg text via MIT OCW reading"
+      },
+      {
+       "claim": "Monks' cells naming †",
+       "check": "† (dagger)",
+       "source": "as above"
+      },
+      {
+       "claim": "Schleiden 1838, Schwann 1839, Virchow 1855 drawing on Remak",
+       "check": "Checked",
+       "source": "standard; Virchow's *Archiv* 1855"
+      },
+      {
+       "claim": "Influenza virion ≈ 80–120 nm; red cell 7.5–8 µm → \"some seventy times narrower\"; 125–133 cells per mm",
+       "check": "Checked (standard); computed",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "≈ 30 trillion human cells; ≈ 200 cell types",
+       "check": "Checked (Sender et al. 2016); standard",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Influenza virus about 0.1 µm, ~70× narrower than a red cell",
+       "check": "Confirmed",
+       "source": "Frontiers in Microbiology review, \"80–120 nm\", envelope \"derived from the host cellular membrane during the budding\", [frontiersin.org](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2011.00269/full)"
+      },
+      {
+       "claim": "\"a few strands of genetic material, RNA\"",
+       "check": "Text revised after this check",
+       "source": "Influenza A and B have exactly eight negative-sense RNA segments ([PMC3074182](https://pmc.ncbi.nlm.nih.gov/articles/PMC3074182/), [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC3074182) ). \"A few\" undersells eight; the exact number costs nothing."
+      },
+      {
+       "claim": "Fatty envelope taken from host cell; no machinery to make proteins or harness energy; multiplies only in a cell",
+       "check": "Confirmed",
+       "source": "Same review. The virus carries its own RNA polymerase, but that is not protein-making or energy machinery."
+      },
+      {
+       "claim": "Typical adult ~30 million million cells",
+       "check": "Confirmed",
+       "source": "Sender et al. 2016 (main source table). Hatton et al. 2023 give ~36 trillion for a man and ~28 trillion for a woman, consistent with this."
+      },
+      {
+       "claim": "\"of roughly two hundred kinds\"",
+       "check": "Text revised after this check",
+       "source": "~200 is the traditional textbook count. Hatton et al., *PNAS* 120 (2023) e2303077120, [ncbi.nlm.nih.gov](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10523466/) , work with ~400 cell types, and cell atlases split further still. \"a few hundred kinds\" is safe."
+      },
+      {
+       "claim": "Nerve cells a metre long; red cells a few µm",
+       "check": "Confirmed",
+       "source": "Std (sciatic motor axons)."
+      }
+     ]
+    },
+    {
+     "n": 80,
+     "title": "Eighty per cent",
+     "topic": "Heritability (Life)",
+     "rows": [
+      {
+       "claim": "Heritability = share of phenotypic variance in a population associated with genetic variance; not individual",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "Height heritability ≈ 0.8 or more in twin studies of well-fed populations",
+       "check": "Checked",
+       "source": "Silventoinen et al., *Twin Res.* 6 (2003) 399"
+      },
+      {
+       "claim": "Heights rose in the 20th century (up to +20 cm, South Korean women)",
+       "check": "Checked",
+       "source": "NCD-RisC, *eLife* 2016"
+      },
+      {
+       "claim": "Fisher 1918; Lush 1937",
+       "check": "Checked, corrected (Lush year)",
+       "source": "*Trans. R. Soc. Edinb.* 52; Springer *Biol. Theory* 2021"
+      },
+      {
+       "claim": "Finger number: genetic but low heritability",
+       "check": "Checked (teaching example; unattributed)",
+       "source": "Standard fact; no single source recorded"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Heritability is a population variance statistic, not individual; can change with environment; equalising environment can raise it",
+       "check": "Confirmed",
+       "source": "Std quantitative genetics (Visscher, Hill & Wray, *Nat Rev Genet* 2008)."
+      },
+      {
+       "claim": "Heights rose by several cm over the 20th century, in a few by much more",
+       "check": "Confirmed",
+       "source": "NCD-RisC, *eLife* 2016 (main source table)"
+      },
+      {
+       "claim": "Twin studies of well-fed populations put height heritability at roughly 70–90%",
+       "check": "Confirmed",
+       "source": "Silventoinen et al., *Twin Res* 6 (2003) 399 (main source table)"
+      },
+      {
+       "claim": "Finger number genetic but low heritability",
+       "check": "Confirmed",
+       "source": "Std teaching example."
+      }
+     ]
+    },
+    {
+     "n": 81,
+     "title": "How much of you is bacteria?",
+     "topic": "Your microbes, recounted (Life)",
+     "rows": [
+      {
+       "claim": "3.8 × 10¹³ bacteria, 3.0 × 10¹³ human cells (70 kg reference man); 0.2 kg bacteria; colon contents ≈ 0.4 kg; RBC 84% of cells; defecation removes ¼–⅓ of colon bacteria",
+       "check": "Checked",
+       "source": "Sender, Fuchs & Milo, *PLOS Biol* 14 (2016) e1002533"
+      },
+      {
+       "claim": "10:1 from Luckey 1972 (1 L × 10¹¹/g = 10¹⁴ vs 10¹³)",
+       "check": "Checked",
+       "source": "as above"
+      },
+      {
+       "claim": "Shares 56% by number, 0.29% by mass; 30/10 = 3, 100/38 = 2.6",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": [
+      {
+       "claim": "38 trillion bacteria vs 30 trillion human cells; ~0.2 kg; colon contents 400 g; RBC 84%; defecation removes ¼–⅓",
+       "check": "Confirmed",
+       "source": "Sender, Fuchs & Milo, *PLOS Biol* 14 (2016) e1002533 (main source table)"
+      },
+      {
+       "claim": "No health advice given (no probiotic or diet claims)",
+       "check": "Confirmed",
+       "source": "—"
+      }
+     ]
+    },
+    {
+     "n": 82,
+     "title": "How much of your brain?",
+     "topic": "The 10% brain myth (Body)",
+     "rows": [
+      {
+       "claim": "Brain ≈ 2% of weight, ≈ 20% of resting energy",
+       "check": "Checked",
+       "source": "Raichle & Gusnard, *PNAS* 99 (2002) 10237"
+      },
+      {
+       "claim": "James 1907: \"We are making use of only a small part of our possible mental and physical resources\" (no number)",
+       "check": "Checked",
+       "source": "psychclassics.yorku.ca"
+      },
+      {
+       "claim": "Lowell Thomas 1936 preface: \"ten percent of his latent mental ability\" †",
+       "check": "Checked (quote), † (attribution to James)",
+       "source": "Wikipedia \"Ten percent of the brain myth\"; Beyerstein 1999"
+      },
+      {
+       "claim": "Einstein misattribution",
+       "check": "Checked (no source exists)",
+       "source": "Beyerstein 1999"
+      },
+      {
+       "claim": "≈ 86 billion neurons; glia:neuron < 1:1",
+       "check": "Checked",
+       "source": "Azevedo et al. 2009; von Bartheld et al., *J Comp Neurol* 524 (2016) 3865"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Brain 2% of weight, ~20% of resting energy; ~10× per gram",
+       "check": "Confirmed",
+       "source": "Raichle & Gusnard, *PNAS* 99 (2002) 10237 (main source table)"
+      },
+      {
+       "claim": "Damage to most parts takes something away; some small injuries go unnoticed",
+       "check": "Confirmed",
+       "source": "Std. Covert (\"silent\") strokes are common."
+      },
+      {
+       "claim": "\"If every nerve cell fired together, the result would not be genius but a seizure\"",
+       "check": "Text revised after this check",
+       "source": "The rhetoric works, but a seizure is a burst of abnormal, synchronised activity in large groups of neurons, not all of them firing at once. A neurologist would quibble; a small rewording fixes it."
+      },
+      {
+       "claim": "86 billion neurons, similar number of other cells, mostly glia",
+       "check": "Confirmed",
+       "source": "Azevedo et al. 2009; von Bartheld et al. 2016 (main source table)"
+      }
+     ]
+    },
+    {
+     "n": 83,
+     "title": "Where does the blood go?",
+     "topic": "Blood circulates (Body)",
+     "rows": [
+      {
+       "claim": "70 mL × 70/min = 4.9 L/min; 294 L/h; 7,056 L/day; exercise 20–25 L/min → 12–15 s",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Blood volume ≈ 5 L; red cell life ≈ 120 days",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "Galen; Ibn al-Nafīs (13th c.); Harvey *De motu cordis* 1628, ch. 9 argument with ranges; Malpighi 1661 capillaries",
+       "check": "Checked",
+       "source": "Wikisource Harvey ch. 9; standard"
+      },
+      {
+       "claim": "Harvey's ligature/vein-valve demonstrations",
+       "check": "Checked (standard; *De motu* ch. 13)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Adult ~5 L blood; stroke volume ~70 mL; HR ~70; ~4.9 L/min; circuit ~once a minute",
+       "check": "Confirmed",
+       "source": "Std physiology (Guyton & Hall). 5 L is the reference-man figure; women have ~4–4.5 L, and \"about\" covers this."
+      },
+      {
+       "claim": "Red blood cell lasts about four months",
+       "check": "Confirmed",
+       "source": "~120 days (standard)"
+      },
+      {
+       "claim": "Arteries out, veins back, carrying oxygen and nutrients, removing wastes",
+       "check": "Confirmed",
+       "source": "Std"
+      },
+      {
+       "claim": "Fit person in hard exercise 20–25 L/min",
+       "check": "Confirmed",
+       "source": "Std. Elite endurance athletes reach 35–40 L/min, so the figure is conservative."
+      },
+      {
+       "claim": "Arm vein valves direct flow towards the heart; Harvey's demonstration",
+       "check": "Confirmed",
+       "source": "Harvey *De motu* ch. 13 (main source table)"
+      }
+     ]
+    },
+    {
+     "n": 84,
+     "title": "A plant in the dark",
+     "topic": "Body clocks (Body)",
+     "rows": [
+      {
+       "claim": "de Mairan 1729, mimosa leaf movements persist in darkness; reported to the Académie",
+       "check": "Checked, corrected (\"Marchant\" dropped)",
+       "source": "Emery et al., *J Biol Rhythms* 38 (2023) 245; ScienceBlogs"
+      },
+      {
+       "claim": "de Candolle 1832, ≈ 22 h in constant light",
+       "check": "Checked",
+       "source": "as above"
+      },
+      {
+       "claim": "Human free-running period 24.18 h",
+       "check": "Checked",
+       "source": "Czeisler et al., *Science* 284 (1999) 2177"
+      },
+      {
+       "claim": "Halberg \"circadian\" 1959",
+       "check": "Checked",
+       "source": "as above"
+      },
+      {
+       "claim": "0.2 h × 10 = 2 h",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Answer diagram: illustrative period of about 23 h (mimosa periods reported ≈ 22–23 h), not the human 24.2 h",
+       "check": "Illustrative, labelled",
+       "source": "de Candolle 1832"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Cells in plants and in us run a gene–protein feedback loop of about a day; light resets it; it free-runs and may damp in constant conditions",
+       "check": "Confirmed",
+       "source": "Std chronobiology. Plant and animal clock genes differ, but both use a transcription–translation loop."
+      },
+      {
+       "claim": "Human clock about 24.2 h; drift 2 h in 10 days",
+       "check": "Confirmed",
+       "source": "Czeisler et al., *Science* 284 (1999) 2177 (main source table)"
+      },
+      {
+       "claim": "Jet lag: body keeps old time; days of daylight at the new place shift it",
+       "check": "Confirmed",
+       "source": "NHS \"Jet lag\": \"usually improves within a few days\"; \"natural light will help your body clock adjust\", [nhs.uk](https://www.nhs.uk/conditions/jet-lag/)"
+      }
+     ]
+    },
+    {
+     "n": 85,
+     "title": "Peanut or sugar?",
+     "topic": "Calories are combustion (Body)",
+     "rows": [
+      {
+       "claim": "Sucrose 5,645 kJ/mol → 16.5 kJ/g; peanut (49.2% fat, 25.8% protein, 16.1% carbohydrate; 39.5/23.6/17.2 kJ/g) → 28.3 kJ/g; ratio 1.7; food tables 567 vs 387 kcal/100 g → 1.47",
+       "check": "Checked (standard, USDA); computed",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Protein: nitrogen leaves as urea",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "Lavoisier & Laplace, guinea pig, ice calorimeter, winter 1782–83; respiration a slow combustion",
+       "check": "Checked",
+       "source": "IUPAC *Pure Appl. Chem.* 59 (1987) 91"
+      },
+      {
+       "claim": "Atwater's respiration calorimeter, 1890s",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "kcal = 4.184 kJ",
+       "check": "Checked (definition)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Fat ~39 kJ/g, sugar ~16.5 kJ/g; peanut ~28 kJ/g; ratio 1.7",
+       "check": "Confirmed",
+       "source": "Gross combustion values (main source table, )"
+      },
+      {
+       "claim": "Body gets nearly as much energy from digestible fat and carbohydrate as a flame would",
+       "check": "Confirmed",
+       "source": "Atwater factors: 37 vs ~39 kJ/g for fat, 17 vs ~17 kJ/g for carbohydrate (standard)."
+      },
+      {
+       "claim": "Protein: nitrogen leaves as urea, which still holds energy; tables allow for that and for fibre; peanuts ~1.5× sugar",
+       "check": "Confirmed",
+       "source": "USDA 567 vs 387 kcal/100 g (main source table). Measured metabolisable energy of whole nuts can be lower still than the tables, but this is not needed on the page."
+      },
+      {
+       "claim": "Sugar \"quick to use\" but less energy per gram",
+       "check": "Confirmed",
+       "source": "Std"
+      },
+      {
+       "claim": "Label Calorie = kcal = 4.184 kJ",
+       "check": "Confirmed",
+       "source": "Definition"
+      }
+     ]
+    },
+    {
+     "n": 86,
+     "title": "Take away the starfish",
+     "topic": "Keystone species (Life)",
+     "rows": [
+      {
+       "claim": "Paine: from June 1963, Mukkaw Bay (near Neah Bay, Washington), *Pisaster ochraceus* removed; 15 → 8 species; *Balanus glandula* first, then *Mytilus californianus* and *Mitella polymerus*",
+       "check": "Checked",
+       "source": "Paine, *Am. Nat.* 100 (1966) 65–75, p. 70"
+      },
+      {
+       "claim": "\"Keystone species\", 1969",
+       "check": "Checked",
+       "source": "Paine, *Am. Nat.* 103 (1969) 91"
+      },
+      {
+       "claim": "Otters, urchins and kelp",
+       "check": "Checked",
+       "source": "Estes & Palmisano, *Science* 185 (1974) 1058"
+      }
+     ],
+     "health": []
+    }
+   ]
+  },
+  {
+   "letter": "F",
+   "name": "Earth and sky",
+   "first": 87,
+   "last": 95,
+   "puzzles": [
+    {
+     "n": 87,
+     "title": "Measuring the world with a stick",
+     "topic": "Measuring the Earth (Earth)",
+     "rows": [
+      {
+       "claim": "Eratosthenes of Cyrene, c. 276–194 BC, librarian at Alexandria",
+       "check": "Two or more sources agree",
+       "source": "MacTutor, \"Eratosthenes\": [mathshistory.st-andrews.ac.uk](https://mathshistory.st-andrews.ac.uk/Biographies/Eratosthenes/) ; Wikipedia \"Eratosthenes\""
+      },
+      {
+       "claim": "His book is lost; method survives in Cleomedes; 1/50 of a circle; 5,000 stades; 250,000 stades",
+       "check": "Two or more sources agree",
+       "source": "Cleomedes, *Caelestia* I.7.49–52 (Bowen & Todd trans., 2004), via Wikipedia \"Eratosthenes\" and Heath's translation quoted at roger-pearse.com (2017); MacTutor (250,000)"
+      },
+      {
+       "claim": "Accuracy depends on the unknown length of the stade; 1% claims doubtful †",
+       "check": "Two or more sources agree",
+       "source": "MacTutor; Wikipedia lists stade values 160–210 m (Matthew 2023). 250,000 stades = 39,375 km (157.5 m) to 46,250 km (185 m), calculated"
+      },
+      {
+       "claim": "Credited with coining \"geography\"",
+       "check": "Checked (secondary)",
+       "source": "Roller, *Eratosthenes' Geography* (2010), pp. ix, 1, via Wikipedia"
+      },
+      {
+       "claim": "Aswan–Alexandria: latitude difference 7.11°, meridian distance ≈ 790 km, circumference ≈ 40,000 km; Alexandria ~3° west",
+       "check": "Calculated",
+       "source": "calculated (coordinates Aswan 24.089 N 32.900 E; Alexandria 31.200 N 29.919 E)"
+      },
+      {
+       "claim": "Midsummer Sun about a third of a degree short of overhead at Aswan in Eratosthenes' day",
+       "check": "Calculated (approximate)",
+       "source": "obliquity c. 240 BC ≈ 23.72° (IAU polynomial extrapolated; literature gives ≈ 23.7°) vs Aswan latitude 24.09° → ≈ 0.36°"
+      },
+      {
+       "claim": "Try this: 36 × 1,110 = 39,960 km",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 88,
+     "title": "Midwinter in London",
+     "topic": "Seasons come from tilt (Earth)",
+     "rows": [
+      {
+       "claim": "Perihelion early January, ≈147.1 million km; aphelion early July, ≈152.1 million km",
+       "check": "Checked",
+       "source": "USNO \"Earth's Seasons\"; NASA Earth fact sheet"
+      },
+      {
+       "claim": "London noon Sun ≈15° (Dec) and ≈62° (Jun); day under 8 h and over 16½ h; ≈7% more sunlight in January",
+       "check": "Calculated",
+       "source": "calculated (51.5° N, obliquity 23.44°, refraction allowance −0.833°)"
+      },
+      {
+       "claim": "Ptolemy's obliquity 23°51′(20″)",
+       "check": "Checked",
+       "source": "Almagest I.12 (Toomer); Jones, *JHA* 33 (2002)"
+      },
+      {
+       "claim": "Hipparchus: spring 94½ d, summer 92½ d",
+       "check": "Checked",
+       "source": "Almagest III.4 (Toomer p. 153)"
+      },
+      {
+       "claim": "Kepler 1609: Mars on an ellipse",
+       "check": "Checked, corrected",
+       "source": "*Astronomia nova*; extended to all planets in the *Epitome* (1617–21)"
+      },
+      {
+       "claim": "Northern spring+summer ≈186 d, autumn+winter ≈179 d",
+       "check": "Checked",
+       "source": "USNO equinox/solstice dates"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 89,
+     "title": "A thin crescent",
+     "topic": "Moon phases (Sky)",
+     "rows": [
+      {
+       "claim": "Parmenides \"alien light\"",
+       "check": "Checked",
+       "source": "Diels–Kranz 28 B14"
+      },
+      {
+       "claim": "Anaxagoras: the Moon's light comes from the Sun",
+       "check": "Checked",
+       "source": "Plato, *Cratylus* 409a"
+      },
+      {
+       "claim": "Aristotle: curved shadow in lunar eclipses → spherical Earth",
+       "check": "Checked",
+       "source": "*De Caelo* II.14, 297b"
+      },
+      {
+       "claim": "Leonardo explained earthshine, c. 1506–1510",
+       "check": "Checked",
+       "source": "Codex Leicester f. 2r; Louvre 2019 catalogue"
+      },
+      {
+       "claim": "Lunar eclipses only at full Moon",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 90,
+     "title": "High water",
+     "topic": "Two tides (Earth)",
+     "rows": [
+      {
+       "claim": "Barycentre ≈4,700 km from the Earth's centre",
+       "check": "Checked, computed",
+       "source": "NASA (4,671 km); calculated (4,668 km)"
+      },
+      {
+       "claim": "Sun's tide ≈46% of the Moon's (\"a little under half\")",
+       "check": "Checked, computed",
+       "source": "NOAA tides tutorial; calculated (0.46)"
+      },
+      {
+       "claim": "High tides on average 12 h 25 min apart",
+       "check": "Checked",
+       "source": "NOAA"
+      },
+      {
+       "claim": "Gulf of Mexico diurnal tides",
+       "check": "Checked",
+       "source": "NOAA \"Types and causes of tidal cycles\""
+      },
+      {
+       "claim": "Galileo 1632 attributed tides to the Earth's motions; \"the moon's dominion over the waters\"",
+       "check": "Checked (phrase)",
+       "source": "*Dialogue*, Fourth Day (Drake transl.); Drake's wording confirmed via Wikiquote, \"Theory of tides\", and Blåsjö, [arXiv:2102.06595](https://arxiv.org/abs/2102.06595), fn. 203; the page (p. 462 of the 1953 edition) is likely but was not seen. The book prints only the phrase"
+      },
+      {
+       "claim": "Newton 1687 explained tides by Moon and Sun",
+       "check": "Checked",
+       "source": "*Principia* I.66, III.24, 36–37"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 91,
+     "title": "An ocean opening",
+     "topic": "Continents drift (Earth)",
+     "rows": [
+      {
+       "claim": "4,000 km at 3 cm a year → 133 million years",
+       "check": "Calculated (illustrative, labelled)",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Plates move about as fast as fingernails grow",
+       "check": "Checked",
+       "source": "USGS FAQ \"How fast do tectonic plates move?\""
+      },
+      {
+       "claim": "South Atlantic opening ≈130–140 Ma; present full rate ≈3–3.5 cm/yr",
+       "check": "Checked",
+       "source": "USGS event summaries; DeMets et al. 2010 (MORVEL)"
+      },
+      {
+       "claim": "Wegener lecture 6 Jan 1912, Frankfurt; *Mesosaurus*, glacial evidence",
+       "check": "Checked",
+       "source": "Geological Society, \"Pioneers of plate tectonics\""
+      },
+      {
+       "claim": "Forces too weak (Jeffreys 1924); Greenland ≈20 m/yr claim wrong",
+       "check": "Checked, corrected",
+       "source": "Polar Record, \"The supposed westward drift of Greenland\""
+      },
+      {
+       "claim": "Hess 1960–62 (preprint 1960); Dietz 1961, independently; Vine & Matthews 1963; Morley independently (rejected 1963); plate tectonics 1965–68",
+       "check": "Checked",
+       "source": "GSA Buddington volume; *Nature* 199, 947; Dietz, *Nature* 190 (1961) 854"
+      },
+      {
+       "claim": "Oldest open-ocean floor ≈180 Ma",
+       "check": "Checked (standard)",
+       "source": "— (eastern Mediterranean may be older; text says \"open oceans\")"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 92,
+     "title": "A join in the rocks",
+     "topic": "Deep time (Earth)",
+     "rows": [
+      {
+       "claim": "Siccar Point basal breccia made of greywacke fragments",
+       "check": "Checked",
+       "source": "BGS Earthwise, Siccar Point excursion; Scottish Geology Trust geoguide"
+      },
+      {
+       "claim": "Lower beds ≈435 Ma (Llandovery); upper ≈370 Ma (Late Devonian); gap ≈65 Myr",
+       "check": "Checked, corrected",
+       "source": "BGS Earthwise"
+      },
+      {
+       "claim": "Ussher 1650, 4004 BC",
+       "check": "Checked",
+       "source": "*Annales Veteris Testamenti*"
+      },
+      {
+       "claim": "Steno 1669",
+       "check": "Checked",
+       "source": "*Prodromus*"
+      },
+      {
+       "claim": "Hutton read 1785, \"we find no vestige of a beginning,—no prospect of an end.\"",
+       "check": "Checked (scan)",
+       "source": "Trans. RSE 1 (1788) 304"
+      },
+      {
+       "claim": "1788 voyage with Playfair and Hall",
+       "check": "Checked (scan)",
+       "source": "Playfair, Trans. RSE 5 (1805) 71–73"
+      },
+      {
+       "claim": "\"The mind seemed to grow giddy by looking so far into the abyss of time\"",
+       "check": "Checked (scan)",
+       "source": "ibid., p. 73"
+      },
+      {
+       "claim": "Patterson 1956, 4.55 ± 0.07 Gyr; modern 4.54 ± 0.05",
+       "check": "Checked",
+       "source": "*GCA* 10, 230; USGS"
+      },
+      {
+       "claim": "Last 10,000 years ≈ 0.19 s of a day",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 93,
+     "title": "Stars without end",
+     "topic": "Olbers' paradox (Sky)",
+     "rows": [
+      {
+       "claim": "Kepler 1610",
+       "check": "Checked",
+       "source": "*Dissertatio cum Nuncio Sidereo*"
+      },
+      {
+       "claim": "De Chéseaux 1744: every point as bright as the Sun's disc",
+       "check": "Checked, corrected",
+       "source": "*Traité de la comète*, App. II; *Physics Today* \"Why the sky is dark at night\""
+      },
+      {
+       "claim": "Olbers 1823, absorption",
+       "check": "Checked, corrected (date)",
+       "source": "Bode's *Jahrbuch für 1826*; Linda Hall Library"
+      },
+      {
+       "claim": "Poe, *Eureka* (1848): light from the background has not yet reached us",
+       "check": "Checked",
+       "source": "Gutenberg #32037"
+      },
+      {
+       "claim": "Kelvin 1901",
+       "check": "Checked",
+       "source": "*Phil. Mag.* 2 (1901) 161"
+      },
+      {
+       "claim": "Finite age the main resolution; expansion minor",
+       "check": "Checked",
+       "source": "Harrison, *Darkness at Night* (1987)"
+      },
+      {
+       "claim": "Dust would heat and re-radiate",
+       "check": "Checked (standard)",
+       "source": "Standard reference fact or general knowledge; no single source recorded"
+      },
+      {
+       "claim": "Age 13.8 Gyr",
+       "check": "Checked",
+       "source": "Planck 2018"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 94,
+     "title": "Raisins in the dough",
+     "topic": "The universe is expanding (Sky)",
+     "rows": [
+      {
+       "claim": "Raisins: 1 cm and 3 cm",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "≈70 km/s per Mpc (3.26 Mly); measurements 67–73",
+       "check": "Checked",
+       "source": "Planck 2018; Riess et al. 2022"
+      },
+      {
+       "claim": "Andromeda approaching",
+       "check": "Checked",
+       "source": "van der Marel et al. 2012 (≈110 km/s relative to the Milky Way)"
+      },
+      {
+       "claim": "Slipher from 1912; 21 of 25 receding by 1917",
+       "check": "Checked",
+       "source": "*Proc. Am. Phil. Soc.* 56 (1917)"
+      },
+      {
+       "claim": "Lemaître 1927 derived and estimated the rate (625 km/s/Mpc) from Slipher's velocities and Hubble's distances",
+       "check": "Checked",
+       "source": "*Ann. Soc. Sci. Bruxelles* A47; Livio, *Nature* 479 (2011)"
+      },
+      {
+       "claim": "Hubble 1929",
+       "check": "Checked",
+       "source": "*PNAS* 15, 168"
+      },
+      {
+       "claim": "IAU 2018 recommendation \"Hubble–Lemaître law\"",
+       "check": "Checked",
+       "source": "IAU press release iau1812"
+      },
+      {
+       "claim": "1 Gly at 70 km/s/Mpc → ≈21,500 km/s; 1/H₀ ≈ 14.0 Gyr",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 95,
+     "title": "Two forecasts",
+     "topic": "Weather is not climate (Earth)",
+     "rows": [
+      {
+       "claim": "Predictability limit ≈2 weeks",
+       "check": "Checked",
+       "source": "Zhang et al., *J. Atmos. Sci.* 76 (2019)"
+      },
+      {
+       "claim": "Daily temperature chart",
+       "check": "Illustrative (invented, labelled)",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "IMO 1935, 1901–1930 normals; WMO standard 1991–2020",
+       "check": "Checked",
+       "source": "WMO-No. 1203"
+      },
+      {
+       "claim": "Lorenz 1963; 1975 two kinds of predictability",
+       "check": "Checked",
+       "source": "*J. Atmos. Sci.* 20; GARP Pub. 16"
+      },
+      {
+       "claim": "Herbertson 1901: \"Climate is what on an average we may expect, weather is what we actually get.\"",
+       "check": "Checked",
+       "source": "*Outlines of Physiography* (1901), via Quote Investigator"
+      }
+     ],
+     "health": []
+    }
+   ]
+  },
+  {
+   "letter": "G",
+   "name": "How we know",
+   "first": 96,
+   "last": 100,
+   "puzzles": [
+    {
+     "n": 96,
+     "title": "Normal temperature",
+     "topic": "False precision (Measurement)",
+     "rows": [
+      {
+       "claim": "36.5–37.5 °C → 97.7–99.5 °F; 200 °C → 392 °F",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Mackowiak et al. 1992: 148 adults 18–40, mean 36.8 °C (98.2 °F) oral, daily amplitude ≈0.5 °C, lowest 6 a.m., highest 4–6 p.m.",
+       "check": "Checked",
+       "source": "*JAMA* 268 (1992) 1578 (PMID 1302471)"
+      },
+      {
+       "claim": "Protsiv et al. 2020: decline ≈0.03 °C per birth decade",
+       "check": "Checked",
+       "source": "*eLife* 9:e49555"
+      },
+      {
+       "claim": "Wunderlich 1868; \"some millions\" of observations, nearly 25,000 cases; axilla; 15–20 min to settle",
+       "check": "Checked",
+       "source": "1871 New Sydenham Society translation (archive.org)"
+      },
+      {
+       "claim": "1871 translation prints 98.6°",
+       "check": "Checked",
+       "source": "ibid. §2"
+      },
+      {
+       "claim": "His thermometer read almost 2 °C high",
+       "check": "Checked (oral account)",
+       "source": "Mackowiak, Freakonomics Radio no. 268; Mackowiak & Worden, *Clin Infect Dis* 18 (1994) 458"
+      }
+     ],
+     "health": [
+      {
+       "claim": "Normal temperature differs between people, varies through the day (lowest early morning, highest late afternoon), and depends on site",
+       "check": "Confirmed",
+       "source": "Mackowiak et al., *JAMA* 268 (1992) 1578 (main source table); NHS \"Fever in adults\": \"Normal body temperature is different for everyone and changes during the day\", [nhs.uk](https://www.nhs.uk/conditions/fever-in-adults/)"
+      },
+      {
+       "claim": "1992 study: 148 adults, mean 36.8 °C (98.2 °F) oral, ~0.5° daily swing",
+       "check": "Confirmed",
+       "source": "Mackowiak 1992 (main source table)"
+      },
+      {
+       "claim": "2020 study: average temperatures have fallen slightly since the 19th century",
+       "check": "Confirmed",
+       "source": "Protsiv et al., *eLife* 9 (2020) e49555 (main source table)"
+      },
+      {
+       "claim": "Answer interval 97.7–99.5 °F is about rounding, not a clinical normal range",
+       "check": "Confirmed",
+       "source": "The page never presents it as a clinical range, and gives no fever threshold. NHS uses 38 °C or above as a high temperature, so nothing on the page conflicts with that. No change needed."
+      },
+      {
+       "claim": "Wunderlich thermometer read nearly 2 °C high (\"reportedly\")",
+       "check": "Confirmed",
+       "source": "Mackowiak & Worden 1994 (main source table)"
+      }
+     ]
+    },
+    {
+     "n": 97,
+     "title": "Small pushes on the way to Mars",
+     "topic": "Units matter (Measurement)",
+     "rows": [
+      {
+       "claim": "1 lbf·s = 4.448 N·s (exact definition 4.448 221 615 260 5)",
+       "check": "Checked, computed",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "MCO lost 23 Sept 1999; lbf-s instead of N-s; underestimated by 4.45; 226 km planned, 57 km, 80 km survivable",
+       "check": "Checked",
+       "source": "MCO MIB Phase I report, 10 Nov 1999"
+      },
+      {
+       "claim": "Gimli Glider 23 July 1983; 1.77 vs ≈0.8; less than half the fuel; no deaths",
+       "check": "Checked",
+       "source": "Board of Inquiry (Lockwood 1985)"
+      },
+      {
+       "claim": "50 mph = 80.5 km/h (61% more)",
+       "check": "Calculated",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Metre 1791; Delambre & Méchain 1792–98; standards 1799; Metre Convention 1875; SI 1960",
+       "check": "Checked",
+       "source": "BIPM; Alder, *The Measure of All Things*"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 98,
+     "title": "Two explanations",
+     "topic": "Occam's razor (Reasoning)",
+     "rows": [
+      {
+       "claim": "0.5² = 25%; 0.9⁵ ≈ 59%; Try: 0.8² = 64%",
+       "check": "Calculated (illustrative, labelled)",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Ockham c. 1287–1347; \"Numquam ponenda est pluralitas sine necessitate\"",
+       "check": "Checked",
+       "source": "SEP \"William of Ockham\"; *In I Sent.* d. 27 q. 2 (Thorburn appendix)"
+      },
+      {
+       "claim": "\"Entities must not be multiplied…\" not in Ockham; Punch 1639 (*sine*); Clauberg 1654 (*praeter*)",
+       "check": "Checked, corrected",
+       "source": "Thorburn, *Mind* 27 (1918) 345"
+      },
+      {
+       "claim": "Froidmont 1649 *novacula Occami*",
+       "check": "Checked (likely)",
+       "source": "Ariew (via secondary)"
+      },
+      {
+       "claim": "Principle older (Aristotle)",
+       "check": "Checked",
+       "source": "SEP \"Simplicity\""
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 99,
+     "title": "Both came true",
+     "topic": "Falsifiability (Reasoning)",
+     "rows": [
+      {
+       "claim": "*Logik der Forschung* 1934 (imprint 1935); English 1959",
+       "check": "Checked",
+       "source": "Standard fact; no single source recorded"
+      },
+      {
+       "claim": "1919: Eddington; Adler anecdote, \"thousandfold experience\" / \"thousand-and-one-fold\"",
+       "check": "Checked",
+       "source": "*Conjectures and Refutations* (1963), ch. 1"
+      },
+      {
+       "claim": "Neptune 1846 near Le Verrier's position; Vulcan never found; GR explains Mercury",
+       "check": "Checked",
+       "source": "Standard fact; no single source recorded"
+      },
+      {
+       "claim": "Duhem–Quine point (blame an auxiliary assumption)",
+       "check": "Checked",
+       "source": "SEP \"Karl Popper\" §4"
+      }
+     ],
+     "health": []
+    },
+    {
+     "n": 100,
+     "title": "A whisper and a cough",
+     "topic": "Feedback loops (Systems)",
+     "rows": [
+      {
+       "claim": "Over ×100 after 49 trips (1.1⁴⁹ ≈ 107), over ×1,000 after 73 (≈1,051); 49 trips ≈ 0.49 s at ≈0.01 s a trip",
+       "check": "Calculated (illustrative, labelled)",
+       "source": "Calculated for the book"
+      },
+      {
+       "claim": "Ktesibios float regulator",
+       "check": "Checked",
+       "source": "Mayr, *The Origins of Feedback Control* (1970)"
+      },
+      {
+       "claim": "Watt's governor 1788; Boulton's letter on mill governors (28 May 1788)",
+       "check": "Checked",
+       "source": "Mayr 1970"
+      },
+      {
+       "claim": "Maxwell, \"On Governors\", *Proc. R. Soc.* 16 (1868)",
+       "check": "Checked",
+       "source": "Standard fact; no single source recorded"
+      },
+      {
+       "claim": "Black, 2 Aug 1927, Lackawanna ferry, *New York Times* page",
+       "check": "Checked",
+       "source": "Black, *IEEE Spectrum* Dec 1977"
+      }
+     ],
+     "health": []
+    }
+   ]
+  }
+ ]
+}
