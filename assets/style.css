@@ -620,3 +620,36 @@ td .inline-img { height: 1.9em; vertical-align: middle; }
 @media (max-width: 450px) {
   .support-page .support, .support-page .open-note, .support-page .example { padding: 1.3rem; }
 }
+
+/* /shop/: poster gallery and Amazon picks */
+.shop-page { padding: 2.4rem 0 3rem; }
+.shop-page .wrap { max-width: 65rem; }
+.shop-page h1 { font-size: 2.25rem; line-height: 1.18; margin: 0 0 1rem; }
+.shop-page h2 { font-size: 1.5rem; margin: 2.6rem 0 .6rem; }
+.shop-hero .lede { font-size: 1.15rem; max-width: 42rem; margin: 0; }
+.shop-gallery { list-style: none; padding: 0; margin: 1rem 0 .8rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+.shop-gallery a { display: block; color: var(--ink); text-decoration: none; }
+.shop-gallery img { width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 4px; background: var(--dark); box-shadow: 0 2px 10px rgba(0,0,0,.18); transition: transform .15s; }
+.shop-gallery a:hover img, .shop-gallery a:focus-visible img { transform: translateY(-3px); }
+.shop-gallery a:hover .shop-poster-title { text-decoration: underline; }
+.shop-poster-title { display: block; font-size: .9rem; line-height: 1.25; margin-top: .4rem; }
+.shop-poster-topic { display: block; font-family: var(--sans); font-size: .76rem; color: var(--muted); }
+.shop-cta { display: inline-block; color: var(--accent); padding: .55rem .95rem; border: 1px solid currentColor; border-radius: 4px; text-decoration: none; }
+.shop-picks h2 { display: flex; align-items: baseline; flex-wrap: wrap; gap: .6rem; }
+.shop-adtag { font: 600 .72rem/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; background: #f0e2c4; color: #5a4211; padding: .3rem .45rem; border-radius: 3px; }
+.shop-disclose { font-family: var(--sans); font-size: .88rem; color: var(--muted); margin: .2rem 0 0; }
+.shop-shelves { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 18px; margin-top: 1.1rem; }
+.shop-shelf { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--card); }
+.shop-band { width: 100%; height: 96px; object-fit: cover; object-position: center; background: var(--dark); }
+.shop-shelf-body { padding: .85rem 1rem 1rem; }
+.shop-shelf h3 { margin: .1rem 0 .3rem; font-size: 1.1rem; }
+.shop-why { margin: .1rem 0 .6rem; font-size: .92rem; color: var(--muted); }
+.shop-shelf ul { margin: 0; padding-left: 1.1rem; font-size: .93rem; }
+.shop-shelf li { margin: .28rem 0; }
+.shop-film { margin: .7rem 0 0; font-size: .86rem; }
+.shop-closing { margin-top: 1.6rem; }
+@media (max-width: 560px) {
+  .shop-page { padding-top: 1.6rem; }
+  .shop-page h1 { font-size: 1.9rem; }
+  .shop-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+}
