@@ -1986,6 +1986,8 @@ function shopPage() {
     if (!/^https:\/\/evidencepress-shop\.fourthwall\.com\/products\//.test(p.url))
       throw new Error(`pages/shop.json: ${p.slug} must link to a Fourthwall product`);
   }
+  if (SHOP.book && SHOP.book.cover && !fs.existsSync(path.join(ROOT, SHOP.book.cover.image.replace(/^\//, ''))))
+    throw new Error(`pages/shop.json: missing book cover ${SHOP.book.cover.image}`);
   for (const s of SHOP.picks.shelves)
     if (!posterBySlug[s.banner]) throw new Error(`pages/shop.json: unknown banner ${s.banner}`);
   const itemHtml = i => `<a href="${escAttr(i.url)}"${linkRel(i.url)}>${i.author ? `${esc(i.author)}, <i>${esc(i.title)}</i>` : esc(i.label)}</a>`;
@@ -2017,7 +2019,10 @@ ${posters.map(p => `<li><a href="${escAttr(p.url)}" rel="noopener"><img src="${e
 <p><a class="shop-cta" href="${escAttr(g.shopUrl)}" rel="noopener">${esc(g.shopLabel)} →</a></p>
 </section>
 ${SHOP.book ? `<section aria-labelledby="shop-book-title"><h2 id="shop-book-title">${esc(SHOP.book.heading)}</h2>
-<p><i>${esc(SHOP.book.title)}</i> ${esc(SHOP.book.text)} <a href="${escAttr(SHOP.book.url)}">${esc(SHOP.book.label)} →</a></p>
+<div class="shop-book">${SHOP.book.cover ? `<a class="shop-book-cover" href="${escAttr(SHOP.book.url)}"><img src="${escAttr(SHOP.book.cover.image)}" alt="${escAttr(SHOP.book.cover.alt)}" width="${SHOP.book.cover.width}" height="${SHOP.book.cover.height}" loading="lazy" decoding="async"></a>` : ''}<div class="shop-book-body">
+<p><i>${esc(SHOP.book.title)}</i> ${esc(SHOP.book.text)}</p>
+<p><a class="shop-cta" href="${escAttr(SHOP.book.url)}">${esc(SHOP.book.label)} →</a></p>
+</div></div>
 </section>
 ` : ''}<section class="shop-picks" aria-labelledby="shop-picks-title"><h2 id="shop-picks-title">${esc(k.heading)} <span class="shop-adtag">${esc(k.tag)}</span></h2>
 <p class="shop-disclose">${esc(k.statement)} ${esc(k.note)}</p>
