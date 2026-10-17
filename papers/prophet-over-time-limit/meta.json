@@ -1,0 +1,173 @@
+{
+  "slug": "prophet-over-time-limit",
+  "title": "The long-run price of committing before seeing the future",
+  "shortTitle": "Rent today, or commit for the season?",
+  "oneLine": "An unrefereed candidate proves a limiting guarantee for i.i.d. prophet inequalities over time, with certified bounds below the inverse golden ratio.",
+  "abstract": "An online decision maker rents one resource over a finite horizon, observing independent nonnegative offers from a known common distribution with finite positive mean. The optimal expected reward is compared with a prophet who knows every offer. This candidate proves that the worst-case ratio converges as the horizon grows, identifies the limit with a continuum minimax value, and shows that deterministic threshold schedules approach that value arbitrarily closely. Explicit Arb-certified witnesses give 0.60922 <= gamma* <= 0.609816, strictly below the inverse golden ratio. No exact constant or attainment by a bounded schedule is established. Atomic distributions may require randomised threshold-tie handling. A separate million-period instance gives ratio at most 0.6123450.",
+  "datePublished": "2026-10-17",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.23442742",
+  "repoUrl": "https://github.com/ipitchford/prophet-over-time-limit",
+  "pdfUrl": "https://zenodo.org/records/23442742/files/paper.pdf",
+  "conceptDoi": "10.5281/zenodo.23442741",
+  "zenodoUrl": "https://zenodo.org/records/23442742",
+  "releaseUrl": "https://github.com/ipitchford/prophet-over-time-limit/releases/tag/v0.1.0-candidate",
+  "citeText": "Anonymous (2026). The optimal i.i.d. prophet inequality over time is not the inverse golden ratio. Version 0.1.0-candidate. https://doi.org/10.5281/zenodo.23442742",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "prophet inequalities over time",
+    "online commitment",
+    "iid arrivals",
+    "continuum minimax",
+    "deterministic thresholds",
+    "certified bounds"
+  ],
+  "keyResults": [
+    "The worst-case optimal-online-to-prophet ratio has a limit as the number of periods tends to infinity.",
+    "The limit equals a continuum profile infimum and a cumulative-coverage minimax value.",
+    "Explicit witnesses certify 0.60922 <= gamma* <= 0.609816 < 1/phi.",
+    "Deterministic threshold schedules approach the limit; attainment by one bounded schedule is not proved, and atomic laws may require randomised ties.",
+    "A separate finite witness at one million periods certifies a ratio at most 0.6123450; it is not the asymptotic upper bound."
+  ],
+  "evidence": "Integrated written analytic arguments and explicit strategy/profile witnesses checked using Arb ball arithmetic. Normal and optimized replay from clean archive extraction passed, with five excessive targets rejected; GitHub CI also passed. Numerical replay certifies the stated witness inequalities, not the complete analytic proof.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. No external peer review, unaffiliated reproduction, formal verification or exhaustive priority clearance is established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the integrated manuscript and frozen version 0.1.0-candidate archive, SHA-256 06e55af3c307d46d2f792522b26cecc5a4444824f273617d0073208c94d31048. Research repository payload f5d4e7181e3fc5253465fa90539ae76b7bb80347. Numerical and analytic assurance remain distinct.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex coordinated mathematical development, checking and drafting"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred from account ownership.",
+    "reviewStatus": "Internal AI-assisted proof and source checking; not external peer review or independent reproduction."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "Versioned GitHub and public Zenodo record 23442742 verified by full downloads of the archive, manuscript and checksum manifest against frozen local hashes."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Final archive clean-extraction normal and optimized certifiers passed, including five excessive-target rejection controls. CI passed at the tagged payload. Numerical replay does not certify the universal written proof."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Coordinated producer checking is not independent reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "Written proofs and ball arithmetic are not proof-assistant verification."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal AI scrutiny is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal peer review established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Exact rational witness inputs, pinned python-flint 0.9.0, checking code, replay instructions and normal/optimized receipts are included. Unaffiliated reproduction remains unestablished."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Abels, Pitschmann and Schmand, Prophet Inequalities over Time: the model, optimal-online recurrence and inverse-golden-ratio upper bound.",
+      "url": "https://arxiv.org/abs/2211.10471v2"
+    },
+    {
+      "citation": "Perez-Salazar and Verdugo, i.i.d. prophet inequalities over time: quantile strategies and finite-horizon convex characterisation.",
+      "url": "https://arxiv.org/abs/2408.11224v1"
+    },
+    {
+      "citation": "Fan, Minimax theorems, Proceedings of the National Academy of Sciences 39 (1953), 42–47: minimax methodology.",
+      "url": "https://doi.org/10.1073/pnas.39.1.42"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:prophet-over-time-limit",
+    "attemptIds": [
+      "ep-attempt:prophet-over-time-limit-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "A long-horizon worst-case rental guarantee with explicit limiting and finite-horizon witnesses.",
+      "scope": "Known iid nonnegative law with finite positive mean; one resource rented over time, compared with the clairvoyant optimum."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Tail-quantile coverage and two-way finite-horizon transfer connect threshold strategies and value profiles to the limiting worst-case ratio.",
+      "remainingRisks": [
+        "Analytic transfer and minimax assumptions require mathematical scrutiny.",
+        "Arb replay certifies supplied witnesses, not the complete analytic proof.",
+        "No exact constant, attained bounded schedule or practically useful general convergence rate is claimed."
+      ]
+    },
+    "humanJudgmentGates": [
+      "The user authorises publication; no scientific endorsement is inferred.",
+      "Development-independent proof, novelty and priority scrutiny remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "availability",
+        "internalReplay",
+        "semanticValidation",
+        "specialistReview",
+        "noveltyAssessment"
+      ],
+      "nextAction": "Seek development-independent scrutiny of the written proof and certificate-to-theorem connection; retain the archived producer checks, bounded prior-art comparison and external-assurance limits.",
+      "claimCeiling": "Unrefereed mathematical candidate with internal producer checks; no formal verification, external peer review, priority clearance or measured impact."
+    },
+    "impactClaims": [
+      {
+        "id": "prophet-over-time-limit-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable limiting characterisation and certified rental-ratio bounds",
+        "setting": "Coordinated AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No causal research-speed or real-world decision improvement estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "How much is hindsight worth when a decision lasts? An Evidence Press audio briefing. Imagine lending out one machine. Each day brings a new offer. You know the distribution of offers, but not tomorrow's price. You can rent the machine for one day and reconsider, or commit it for the rest of the season at today's daily rate. A prophet knows every future offer in advance. This mathematical model assumes independent offers from the same known distribution, with nonnegative values and a finite, positive average. It asks how much of the prophet's expected earnings an optimal online strategy can guarantee against the hardest distribution. The candidate proves that this worst-case ratio approaches a limit as the season grows longer. It characterises the limit through a continuous-time competition between threshold strategies and difficult value distributions. Explicit witnesses, checked with arithmetic that encloses rounding errors, place the limit between sixty point nine two two percent and sixty point nine eight one six percent. That is below the inverse golden ratio, roughly sixty-one point eight percent. The interval is certified, but the exact constant remains unknown. The proof also shows that deterministic threshold schedules can approach the limiting value as closely as desired. It does not produce one schedule proved to attain that value. Distributions with repeated values can still require randomisation when breaking threshold ties. These are long-horizon statements, not guarantees at every finite season length. A separate million-period example gives a different upper bound, and the general convergence estimate is too coarse for practical timing advice. This is AI-assisted, unrefereed mathematics. Written proofs and numerical certificates have different roles; neither establishes real-world rental performance. This briefing uses an AI-generated voice and is not additional scientific evidence."
+}

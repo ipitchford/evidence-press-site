@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['prophet-over-time-limit'] = require('./prophet-over-time-art').draw;
 art['sharp-logconcave-moment-comparison'] = require('./mrtt-art').draw;
 art['iid-multiunit-prophet-limits'] = require('./prophet-art').draw;
 art['finite-signal-quadratic-substitutes'] = require('./finite-signals-art').draw;
@@ -2461,6 +2462,7 @@ palette['complementary-disclosures'] = require('./complementary-disclosures-art'
 palette['state-contingent-comparability'] = require('./state-contingent-art').colors;
 palette['finite-signal-quadratic-substitutes'] = require('./finite-signals-art').colors;
 palette['iid-multiunit-prophet-limits'] = require('./prophet-art').colors;
+palette['prophet-over-time-limit'] = require('./prophet-over-time-art').colors;
 palette['ferromagnetic-full-threshold-glauber'] = require('./ferromagnetic-trimming-art').colors;
 const ceSpectatorArt = require('./ce-spectator-art');
 art['concentratable-entanglement-spectator-counterexample'] = ceSpectatorArt.draw;
@@ -2474,6 +2476,7 @@ for (const [slug, fn] of Object.entries(art)) {
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
   if (slug === 'sharp-logconcave-moment-comparison') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./mrtt-art').description.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</desc><defs>`);
   if (slug === 'iid-multiunit-prophet-limits') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./prophet-art').description}</desc><defs>`);
+  if (slug === 'prophet-over-time-limit') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./prophet-over-time-art').description}</desc><defs>`);
   if (slug === 'finite-signal-quadratic-substitutes') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./finite-signals-art').description}</desc><defs>`);
   if (slug === 'complementary-disclosures') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./complementary-disclosures-art').description}</desc><defs>`);
   if (slug === 'state-contingent-comparability') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./state-contingent-art').description}</desc><defs>`);
