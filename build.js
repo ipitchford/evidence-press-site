@@ -186,6 +186,13 @@ function safeUrl(url, context) {
    range such as "$290k–$430k" being parsed as maths. */
 const INLINE_TOKEN = /(`[^`]+`|\$\$[\s\S]*?\$\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$(?!\s)[^$\n]*[^$\s]\$(?!\d))/g;
 
+/* Amazon Associates links (only on /shop/, under its "Ad" heading) are paid
+   links: rel="sponsored" marks them as such for search engines. */
+function linkRel(u) {
+  if (/^https:\/\/www\.amazon\.com\//.test(u)) return ' rel="sponsored noopener"';
+  return /^https?:/.test(u) ? ' rel="noopener"' : '';
+}
+
 function inline(md) {
   const stash = [];
   // U+0000 cannot survive the sanitisation below, so the sentinels can never
@@ -196,8 +203,10 @@ function inline(md) {
   s = esc(s);
   s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (m, a, u) =>
     `<img class="inline-img" src="${escAttr(safeUrl(u, 'image'))}" alt="${escAttr(a)}">`);
+  // u is already HTML-escaped by esc(s) above; escaping it again would turn a
+  // query-string "&" into "&amp;amp;" and break the link (found on /shop/, 2026-10-17).
   s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, t, u) =>
-    `<a href="${escAttr(safeUrl(u, 'link'))}"${/^https?:/.test(u) ? ' rel="noopener"' : ''}>${t}</a>`);
+    `<a href="${safeUrl(u, 'link')}"${linkRel(u)}>${t}</a>`);
   s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   s = s.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
   s = s.replace(/\u0000(\d+)\u0000/g, (m, i) => {
@@ -3246,7 +3255,7 @@ simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'W
 simplePage('ai/', 'For AI agents and automated research tools', 'Machine-readable endpoints, metadata conventions, and follow-up problem lists for research agents.', 'ai.md', 'WebPage');
 simplePage('privacy/', 'Privacy policy', `How ${CONFIG.siteName} handles data: no accounts, cookies or analytics on this site, and the private YouTube channel tool that uses YouTube API Services.`, 'privacy.md', 'WebPage');
 simplePage('terms/', 'Terms of service', `Licences, status and limits of the material published by ${CONFIG.siteName}, including its YouTube channel.`, 'terms.md', 'WebPage');
-simplePage('shop/', 'Shop', `Posters, mugs and T-shirts made from the ${CONFIG.siteName} films' pictures, printed to order; purchases help keep the research free to read and watch.`, 'shop.md', 'WebPage');
+simplePage('shop/', 'Shop', `Posters, mugs and T-shirts made from the ${CONFIG.siteName} films' pictures, printed to order, and partner books, puzzles and kits; purchases help keep the research free to read and watch.`, 'shop.md', 'WebPage');
 feeds();
 sitemap();
 llms();
