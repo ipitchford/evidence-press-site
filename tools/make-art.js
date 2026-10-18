@@ -2473,7 +2473,7 @@ art['concentratable-entanglement-spectator-counterexample'] = ceSpectatorArt.dra
 palette['concentratable-entanglement-spectator-counterexample'] = ['#f5ce7b','#ee9b99'];
 palette['reverse-reaction-attracting-oscillations'] = reverseReactionArt.colors;
 palette['robust-gaussian-inverse-estimation'] = robustInverseArt.colors;
-for (const [slug,moduleName] of [['uniform-split-reliability','split-reliability-art'],['two-host-dormancy-oscillations','dormancy-art'],['infinite-birth-death-thinned-counts','thinned-counts-art']]) {
+for (const [slug,moduleName] of [['rfim-unbounded-fields-entropy','rfim-entropy-art'],['uniform-split-reliability','split-reliability-art'],['two-host-dormancy-oscillations','dormancy-art'],['infinite-birth-death-thinned-counts','thinned-counts-art']]) {
   const spec=require('./'+moduleName); art[slug]=spec.draw; palette[slug]=spec.colors;
 }
 for (const slug of requested) {
@@ -2483,6 +2483,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if(slug==='rfim-unbounded-fields-entropy')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${require('./rfim-entropy-art').description}</desc><defs>`);
   if(slug==='uniform-split-reliability')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${require('./split-reliability-art').description}</desc><defs>`);
   if (['two-host-dormancy-oscillations','infinite-birth-death-thinned-counts'].includes(slug)) {
     const spec=require(slug==='two-host-dormancy-oscillations'?'./dormancy-art':'./thinned-counts-art');
