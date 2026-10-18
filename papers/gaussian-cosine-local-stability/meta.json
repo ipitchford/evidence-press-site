@@ -1,0 +1,188 @@
+{
+  "slug": "gaussian-cosine-local-stability",
+  "doi": "10.5281/zenodo.23453252",
+  "conceptDoi": "10.5281/zenodo.23453251",
+  "zenodoUrl": "https://zenodo.org/records/23453252",
+  "repoUrl": "https://github.com/ipitchford/gaussian-cosine-local-stability",
+  "releaseUrl": "https://github.com/ipitchford/gaussian-cosine-local-stability/releases/tag/v1.0.0-candidate",
+  "title": "Local stability of cosine configurations for Gaussian minima",
+  "shortTitle": "Cosine configurations resist every small tilt",
+  "oneLine": "Equally spaced planar directions are strict local minima for Gaussian minimum moments, even against rank-increasing perturbations, for every n ≥ 3 and p > 1.",
+  "abstract": "An explicit second-variation formula proves strict local stability of the cosine correlation configuration for every number of coordinates n ≥ 3 and every moment order p > 1. Angular changes yield a cycle Laplacian; normal changes yield a shifted signed-cycle matrix whose kernel consists precisely of rotations. The analytic argument includes covariance-rank increases and the integrable singularity for 1 < p < 2. The neighbourhood radius is existential. Four-coordinate supporting comparisons, finite evaluators and retained optimisation records are separate from the universal proof. The global Gaussian-minimum inequality and stronger stochastic conjecture remain unresolved here.",
+  "datePublished": "2026-10-18",
+  "version": "1.0.0",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Gaussian minima",
+    "cosine configuration",
+    "local stability",
+    "second variation",
+    "signed cycle",
+    "correlation matrices"
+  ],
+  "citeText": "Anonymous (2026). Local stability of cosine configurations for Gaussian minima. Version 1.0.0. Evidence Press. https://doi.org/10.5281/zenodo.23453252",
+  "evidence": "Analytic all-n, p>1 local theorem; exact finite algebra and floating-point four-row diagnostics have narrower scope.",
+  "statusDetail": "Unrefereed AI-assisted candidate. Local stability, not a global solution; no external peer review or formal verification established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Version 1.0.0 manuscript, claim map and clean-package replay checked on 18 October 2026. Public GitHub and Zenodo PDF, ZIP and checksum assets were downloaded in full and matched against the frozen local bytes. Availability does not establish mathematical correctness or external review.",
+  "keyResults": [
+    "Strict local minimality in the full correlation domain for every fixed n ≥ 3 and p > 1, including rank-increasing perturbations.",
+    "An explicit angular Laplacian and normal signed-cycle form isolate the rotational zero modes and give quadratic growth near the orbit.",
+    "For four coordinates, independence is a nonglobal strict local minimum; an independent-noise bound excludes a specified interior region, not the full domain."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research workflow",
+      "OpenAI Codex: mathematical extension, checking, revision and publication"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted assessment, not external peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "Cosine configurations resist every small tilt. An Evidence Press briefing for the eighteenth of October, twenty twenty-six. Imagine several bell-shaped random quantities, each with the same variance. On every trial, keep the one closest to zero. How should their correlations be arranged to make this minimum small? A proposed answer uses equally spaced directions in a plane. But checking only planar arrangements misses a crucial possibility: perhaps tilting those directions out of the plane improves the result. This paper proves that sufficiently small tilts do not. For any number of coordinates at least three, and any moment order greater than one, the cosine configuration is a strict local minimum, including changes that increase the covariance rank. The proof separates changes to the angles from changes perpendicular to the plane. A signed cycle describes the latter. Its only zero-cost motions rotate the entire arrangement; all genuine nearby changes have a positive quadratic cost. Moving boundaries between the smallest coordinates are included in the calculation. This is local stability, not a global solution. No explicit neighbourhood radius is certified. A distant configuration might still do better. In fact, for four coordinates, independence is another strict local minimum with a higher value. That explains why an optimiser stopping successfully cannot settle the conjecture. The package provides the written proof, finite algebra checks, numerical evaluators and saved searches, including unsuccessful runs. These checks do not replace the universal argument, and the stronger global stochastic conjecture remains unresolved. This is an anonymous, AI-assisted, unrefereed candidate. The manuscript and evidence package are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "Public GitHub v1.0.0-candidate and Zenodo record 23453252: full downloads of PDF, ZIP and checksum manifest matched the frozen local assets on 18 October 2026. DOI issuance and byte parity do not establish scientific validity."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Clean-package producer replay passed ordinary and optimised Python: exact four-cycle algebra, all 200 saved endpoints including 22 unsuccessful flags, 200 sampled-frame comparisons, eight local paths, four Sobol sanity comparisons and seven semantic regression methods. Original optimisation trajectories were not regenerated. Finite diagnostics do not prove the analytic all-n, p>1 theorem or global optimality."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Producer-workflow implementation diversity is not independent reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant verification established."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No external specialist review established."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Internal AI-assisted assessment is not external peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "not-assessed",
+      "note": "Cross-version numerical validation does not reproduce the exact historical environment."
+    }
+  },
+  "problem": {
+    "name": "Gaussian-minimum cosine conjecture",
+    "url": "https://arxiv.org/abs/2605.02023v1"
+  },
+  "relatedWorks": [
+    {
+      "citation": "D. Kunisky (2026), A revision of Litvak's conjecture on Gaussian minima and a volumetric zone conjecture. Version 1.",
+      "url": "https://arxiv.org/abs/2605.02023v1"
+    },
+    {
+      "citation": "Y. Long (2025), Hyperbolic embedding of infinite-dimensional convex bodies. Known intrinsic-volume identity.",
+      "url": "https://doi.org/10.1007/s10711-024-00957-5",
+      "doi": "10.1007/s10711-024-00957-5"
+    },
+    {
+      "citation": "Y.-F. Zhong, T. Ma and Z.-C. Hu (2020), A note on the Gaussian minimum conjecture.",
+      "url": "https://arxiv.org/abs/2008.06211v1"
+    },
+    {
+      "citation": "cyclemath (2026), Convex Hulls of Great Subspheres and Gaussian Minima. Preliminary AI-assisted manuscript v0.1; different convex bodies and conditional comparisons.",
+      "url": "https://github.com/cyclemath/great-subspheres-gaussian-minima"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:gaussian-cosine-local-stability",
+    "attemptIds": [
+      "ep-attempt:gaussian-cosine-local-stability-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "productive-failure",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "stability-margin",
+      "description": "Explicit positive transverse quadratic form at the cosine frame.",
+      "scope": "Local, fixed n ≥ 3 and p > 1; existential neighbourhood, not global optimality."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Unit-vector factors cover nearby correlation matrices, including rank increases; rotational zero modes are removed before strictness is claimed.",
+      "remainingRisks": [
+        "Analytic regularity is not formally verified.",
+        "Finite numerical evaluators cannot certify the global domain."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authorised; unaffiliated specialist assessment remains open."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/2605.02023v1",
+        "inheritedClaim": "Cosine law, moment values and global stochastic conjecture.",
+        "inheritedAssuranceCeiling": "Published source claim; no independent or external assurance inferred."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Scrutinise the moving-interface regularity proof and independently replay supporting computations.",
+      "claimCeiling": "All-n local analytic candidate only; the global conjecture remains unresolved."
+    },
+    "impactClaims": [
+      {
+        "id": "gaussian-cosine-local-stability-no-impact",
+        "aim": "science",
+        "outcome": "A local stability theorem and explicit remaining global obligations.",
+        "setting": "AI-assisted theoretical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No comparative acceleration or downstream scientific-impact effect measured.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pdfUrl": "https://github.com/ipitchford/gaussian-cosine-local-stability/releases/download/v1.0.0-candidate/gaussian-cosine-local-stability.pdf"
+}
