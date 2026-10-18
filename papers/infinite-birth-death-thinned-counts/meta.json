@@ -1,0 +1,192 @@
+{
+  "slug": "infinite-birth-death-thinned-counts",
+  "title": "Sharp variance and functional limits for thinned counts in infinite birth–death chains",
+  "shortTitle": "When event counts have a Brownian limit",
+  "oneLine": "An exact edge-energy criterion separates finite from divergent stationary variance rates, with functional limits and a joint-count covariance extension.",
+  "abstract": "This unrefereed candidate treats independently retained jumps of nonexplosive, irreducible, positive recurrent continuous-time birth–death chains with finite retained intensity. A cumulative edge-energy series gives the exact finite-versus-infinite stationary variance-rate boundary without requiring square-integrable intensity or finite mean raw activity. Finite energy yields a functional central limit theorem from every fixed initial distribution; variance convergence requires additional control of that distribution. A multivariate extension gives explicit covariance for correlated detections at the same jump, and worked examples separate weak convergence from convergence of moments.",
+  "keywords": [
+    "birth–death chain",
+    "thinned counts",
+    "functional central limit theorem",
+    "variance",
+    "correlated marks"
+  ],
+  "problem": {
+    "name": "Infinite-state extension of thinned birth–death counts",
+    "url": "https://doi.org/10.1007/s11134-026-09974-5"
+  },
+  "keyResults": [
+    "The stationary variance rate is finite exactly when a cumulative edge-energy series converges; otherwise variance divided by time diverges.",
+    "Finite energy gives a Brownian functional limit from every fixed initial probability law.",
+    "A heavy-tailed starting distribution can have infinite variance at every positive time despite the weak functional limit.",
+    "Joint counts allow dependent marks at the same jump, with an explicit covariance matrix separating shared-chain effects from simultaneous detection."
+  ],
+  "relatedWorks": [
+    {
+      "citation": "Daley, Nazarathy and Wang (2026), Second order properties of thinned counts in finite birth–death processes.",
+      "url": "https://doi.org/10.1007/s11134-026-09974-5",
+      "doi": "10.1007/s11134-026-09974-5"
+    },
+    {
+      "citation": "Chojecki (2011), On the central limit theorem for some birth and death processes: close cumulative-square antecedent for discrete-time state observables.",
+      "url": "https://doi.org/10.2478/v10062-011-0003-8",
+      "doi": "10.2478/v10062-011-0003-8"
+    },
+    {
+      "citation": "Anantharam and Konstantopoulos (1995), A functional central limit theorem for the jump counts of Markov processes.",
+      "url": "https://doi.org/10.2307/1427836",
+      "doi": "10.2307/1427836"
+    },
+    {
+      "citation": "Wu (1999), Forward-backward martingale decomposition and compactness results for additive functionals.",
+      "url": "https://doi.org/10.1016/S0246-0203(99)80008-9",
+      "doi": "10.1016/S0246-0203(99)80008-9"
+    }
+  ],
+  "narration": "When event counts have a Brownian limit. An Evidence Press briefing. Imagine a queue that moves up or down one state at a time, while a detector records only some transitions. How much do the recorded totals fluctuate over a long observation period? For an infinite-state birth and death chain, this candidate gives an exact mathematical boundary. A series built from cumulative imbalance across the edges is finite precisely when the stationary variance grows at a finite asymptotic rate. If the series diverges, variance divided by time diverges too. When it is finite, the rescaled count process approaches Brownian motion from every fixed starting distribution. But there is an important distinction. Weak convergence does not automatically imply that variances converge. The paper constructs a starting distribution with infinite count variance at every positive time, even though the Brownian functional limit still holds. The result also allows finite detected activity when the mean rate of all underlying jumps is infinite. A joint-count extension handles several detectors whose decisions at the same jump may be correlated. Their individual detection probabilities do not determine their joint uncertainty; the simultaneous marking law matters. Earlier work already contains related cumulative-square criteria and general jump-count limit theorems. The contribution here is the stated infinite-state, integrability and marking scope, not the invention of that whole method. The package contains analytic proofs, worked examples and exact finite-state checks. These checks test formulas, not the entire infinite-state theorem. Released on 18 October 2026, this anonymous, AI-assisted candidate remains unrefereed. The paper and evidence are linked on Evidence Press. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "datePublished": "2026-10-18",
+  "version": "1.0.0",
+  "doi": "10.5281/zenodo.23448519",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "evidence": "Self-contained analytic manuscript with exact producer-side computations and scoped internal assessment; finite checks do not establish the full analytic theorem.",
+  "statusDetail": "Unrefereed AI-assisted candidate. No external peer review, unaffiliated reproduction or proof-assistant formalisation established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final version-1.0.0 manuscript, supplied substantive review and exact frozen archive. Research commit ee3e2d422bb70ce069d4de86796acb7580cb9474; archive SHA-256 25d07b8bd2892e56bb6df4781a57c1eb83021130af78ab8d62c07db9513eaa9e. Public GitHub and Zenodo assets verified byte-identical on 18 October 2026.",
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research workflow",
+      "OpenAI Codex: checking, revision and publication"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted assessment, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23448519",
+      "note": "GitHub and Zenodo preserve the exact frozen ZIP, PDF and checksum manifest; availability is not correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/infinite-birth-death-thinned-counts/blob/v1.0.0-candidate/REPLAY_RECEIPT.md",
+      "note": "Normal and optimized producer replay, semantic corruption controls and fresh archive checks pass. Exact finite tests support formula consistency but do not prove the infinite-state analytic arguments."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No external assurance established by this publication workflow."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No external assurance established by this publication workflow."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No external assurance established by this publication workflow."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No external assurance established by this publication workflow."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external assurance established by this publication workflow."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "not-assessed",
+      "note": "No external assurance established by this publication workflow."
+    }
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "zenodoUrl": "https://zenodo.org/records/23448519",
+  "repoUrl": "https://github.com/ipitchford/infinite-birth-death-thinned-counts",
+  "releaseUrl": "https://github.com/ipitchford/infinite-birth-death-thinned-counts/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/infinite-birth-death-thinned-counts/releases/download/v1.0.0-candidate/infinite-birth-death-thinned-counts.pdf",
+  "citeText": "Anonymous (2026). Sharp variance and functional limits for thinned counts in infinite birth–death chains. Version 1.0.0. Evidence Press. https://doi.org/10.5281/zenodo.23448519",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:infinite-birth-death-thinned-counts",
+    "attemptIds": [
+      "ep-attempt:infinite-birth-death-thinned-counts-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "reusable-method",
+      "description": "Sharp cumulative-energy variance criterion and scalar and joint functional limits for thinned crossing counts.",
+      "scope": "Nonexplosive positive recurrent birth-death chains under stated finite-intensity and energy assumptions; weak limits do not imply unrestricted initial-law moment convergence."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Detailed balance links edge conductances to the counting martingale and finite-energy corrector; finite exact checks do not prove the infinite-state theorem.",
+      "remainingRisks": [
+        "Written analytic arguments are not formally verified.",
+        "Producer checks are not unaffiliated reproduction.",
+        "Bounded source comparison is not exhaustive priority clearance."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; external specialist scrutiny of the infinite-state arguments and their integrability assumptions remains open."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://doi.org/10.1007/s11134-026-09974-5",
+        "inheritedClaim": "The thinned-count variance framework and its infinite-state regularity question, compared with the candidate's explicit energy criterion.",
+        "inheritedAssuranceCeiling": "Published source; the new candidate remains unrefereed."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated reconstruction of the written argument and certificate replay, with specialist scrutiny of the stated boundary cases.",
+      "claimCeiling": "Nonexplosive positive recurrent birth-death chains under stated finite-intensity and energy assumptions; weak limits do not imply unrestricted initial-law moment convergence. Unrefereed candidate, not formal verification, independent reproduction or exhaustive priority clearance."
+    },
+    "impactClaims": [
+      {
+        "id": "infinite-birth-death-thinned-counts-no-impact",
+        "aim": "science",
+        "outcome": "Sharp cumulative-energy variance criterion and scalar and joint functional limits for thinned crossing counts.",
+        "setting": "AI-assisted theoretical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No causal research-speed or downstream scientific effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

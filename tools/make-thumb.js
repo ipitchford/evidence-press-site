@@ -1021,6 +1021,8 @@ const automaticSpec = (meta, index) => {
   };
 };
 
+SPECS['two-host-dormancy-oscillations']={palette:'auto',kicker:['TWO-HOST DORMANCY','EXACT MODEL COUNTEREXAMPLE'],head:['COEXISTENCE','CAN OSCILLATE'],headSize:65,sub:'Stable small cycles near a certified Hopf boundary.',tag:'UNREFEREED CANDIDATE',hero:'<div class="eq-label">local bifurcation · exact certificate</div><div class="hero-title">q<sub>H</sub> ≈ 0.976916</div><div class="note">Invasion does not imply convergence.<br>Global periodic attraction is not established.</div>'};
+SPECS['infinite-birth-death-thinned-counts']={palette:'auto',kicker:['INFINITE BIRTH–DEATH CHAINS','THINNED EVENT COUNTS'],head:['COUNTING','UNCERTAINTY'],headSize:68,sub:'An exact boundary between finite and divergent variance rates.',tag:'UNREFEREED CANDIDATE',hero:'<div class="eq-label">cumulative edge energy</div><div class="hero-title">Σ H<sub>k</sub>² / c<sub>k</sub></div><div class="note">Finite: Brownian functional limit.<br>Infinite: stationary variance / time diverges.</div>'};
 const resolvedSpec = (meta, index) => {
   const authored = SPECS[meta.slug];
   const spec = authored ? { ...authored } : automaticSpec(meta, index);
