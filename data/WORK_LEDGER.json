@@ -40112,25 +40112,296 @@
       ]
     },
     {
-      "attemptId":"ep-attempt:assignment-aligned-effective-states-publication",
-      "workId":"ep-work:assignment-aligned-effective-states",
-      "cohort":"prospective",
-      "registeredAt":"2026-10-18T15:24:40Z",
-      "aims":["science"],
-      "question":"Can the bounded single-checkpoint audit be published with exact public replay and licensing scope?",
-      "selectionBasis":"Authorised remaining publication; all earlier research, replay and revision are left-censored.",
-      "taskClass":"remaining-full-candidate-publication",
-      "status":"active",
-      "statusAt":"2026-10-18T15:24:40Z",
-      "resultClass":"pending",
-      "statusHistory":[{"at":"2026-10-18T15:24:40Z","status":"active","resultClass":"pending","reason":"Remaining publication intake; no earlier clock inferred.","evidenceRefs":[]}],
-      "decisionObjectTarget":"A report separating semantic ranking, threshold fidelity and edit sufficiency.",
-      "comparisonPlan":{"status":"not-applicable","comparator":"No matched publication comparator.","estimand":"No acceleration or impact estimated.","matchedAssuranceEndpoint":"Unrefereed candidate with scoped producer replay.","reason":"Selected publication, not workflow experiment."},
-      "measurement":{"status":"measured-partial","missingnessReason":"Earlier work left-censored; full resource telemetry unavailable.","milestones":[{"event":"work-opened","at":"2026-10-18T15:24:40Z","basis":"Contemporaneous remaining-publication registration."}],"activeHumanMinutes":null,"computeMinutes":null,"computeCost":null,"agentRuns":null,"reworkMinutes":null,"correctionCount":null},
-      "metrics":{"schemaVersion":"1.0","measurementScope":"assurance-through-publication","scopeBoundary":"Remaining publication only; prior research and replay left-censored.","forecast":{"frozenAt":"2026-10-18T15:24:40Z","procedureClass":"remaining-candidate-delivery","targetOutcome":"Scoped archived candidate with canonical readback.","expectedActiveMinutes":90,"plausibleLowMinutes":45,"plausibleHighMinutes":180,"expectedUnattendedWaitMinutes":30,"referenceClass":{"label":"Remaining candidate publication","sampleSize":0,"basis":"Procedural judgement, not empirical calibration."},"fermiComponents":[{"component":"Archive, media and guarded delivery","count":1,"lowMinutesPerUnit":45,"centralMinutesPerUnit":90,"highMinutesPerUnit":180,"basis":"Final package/provider/site gates remain."}],"probabilityPositiveSignal":0.9,"probabilityTargetClosure":0.8,"probabilityHorizonMinutes":360,"assumptions":["No provider or rights blocker."],"reforecastTriggers":["Provider failure or public-byte mismatch."],"stopRule":"Never weaken assurance to meet forecast."},"outcome":null},
-      "assuranceEndpoint":{"status":"not-recorded","assessedAt":null,"claimCeiling":null,"dimensions":[],"evidenceRefs":[],"missingnessReason":"Final publication endpoint pending; single-checkpoint scope, no external replication inferred."},
-      "releaseSlug":"assignment-aligned-effective-states",
-      "stopReason":null,"corrections":[],"revisions":[{"date":"2026-10-18","summary":"Registered remaining publication; earlier research remains left-censored."}]
+      "attemptId": "ep-attempt:assignment-aligned-effective-states-publication",
+      "workId": "ep-work:assignment-aligned-effective-states",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-18T15:24:40Z",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the bounded single-checkpoint audit be published with exact public replay and licensing scope?",
+      "selectionBasis": "Authorised remaining publication; all earlier research, replay and revision are left-censored.",
+      "taskClass": "remaining-full-candidate-publication",
+      "status": "published",
+      "statusAt": "2026-10-18T17:25:21.471Z",
+      "resultClass": "positive",
+      "statusHistory": [
+        {
+          "at": "2026-10-18T15:24:40Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Remaining publication intake; no earlier clock inferred.",
+          "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-18T17:25:21.471Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Observed canonical browser readback at 2026-10-18T17:25:21.471Z; publication is not independent scientific reproduction.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/assignment-aligned-effective-states/",
+            "https://evidencepress.org/releases/assignment-aligned-effective-states/paper.json",
+            "https://zenodo.org/records/23454637",
+            "https://github.com/ipitchford/assignment-aligned-effective-states/releases/tag/v4.8.0-candidate"
+          ]
+        }
+      ],
+      "decisionObjectTarget": "A report separating semantic ranking, threshold fidelity and edit sufficiency.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "No matched publication comparator.",
+        "estimand": "No acceleration or impact estimated.",
+        "matchedAssuranceEndpoint": "Unrefereed candidate with scoped producer replay.",
+        "reason": "Selected publication, not workflow experiment."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Earlier work left-censored; full resource telemetry unavailable.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-18T15:24:40Z",
+            "basis": "Contemporaneous remaining-publication registration."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-10-18T17:25:21.471Z",
+            "basis": "Observed canonical browser readback at 2026-10-18T17:25:21.471Z; publication is not independent scientific reproduction."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": null,
+        "reworkMinutes": null,
+        "correctionCount": null
+      },
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Remaining publication only; prior research and replay left-censored.",
+        "forecast": {
+          "frozenAt": "2026-10-18T15:24:40Z",
+          "procedureClass": "remaining-candidate-delivery",
+          "targetOutcome": "Scoped archived candidate with canonical readback.",
+          "expectedActiveMinutes": 90,
+          "plausibleLowMinutes": 45,
+          "plausibleHighMinutes": 180,
+          "expectedUnattendedWaitMinutes": 30,
+          "referenceClass": {
+            "label": "Remaining candidate publication",
+            "sampleSize": 0,
+            "basis": "Procedural judgement, not empirical calibration."
+          },
+          "fermiComponents": [
+            {
+              "component": "Archive, media and guarded delivery",
+              "count": 1,
+              "lowMinutesPerUnit": 45,
+              "centralMinutesPerUnit": 90,
+              "highMinutesPerUnit": 180,
+              "basis": "Final package/provider/site gates remain."
+            }
+          ],
+          "probabilityPositiveSignal": 0.9,
+          "probabilityTargetClosure": 0.8,
+          "probabilityHorizonMinutes": 360,
+          "assumptions": [
+            "No provider or rights blocker."
+          ],
+          "reforecastTriggers": [
+            "Provider failure or public-byte mismatch."
+          ],
+          "stopRule": "Never weaken assurance to meet forecast."
+        },
+        "outcome": {
+          "status": "unavailable",
+          "policyVersion": "2.0",
+          "recordedAt": "2026-10-18T17:25:21.471Z",
+          "reason": "Gate and delivery observations do not provide complete effort telemetry. No retrospective reconstruction or calibration.",
+          "missingFields": [
+            {
+              "field": "calendarElapsedMinutes",
+              "reason": "Observed opening and delivery times are retained as milestones; elapsed wall time is not active effort and no numeric metrics series is emitted."
+            },
+            {
+              "field": "activeAgentMinutes",
+              "reason": "The scoped activeAgentMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "unattendedWaitMinutes",
+              "reason": "The scoped unattendedWaitMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "blockedMinutes",
+              "reason": "The scoped blockedMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "reworkMinutes",
+              "reason": "The scoped reworkMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "agentRuns",
+              "reason": "The scoped agentRuns counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "maxParallelAgents",
+              "reason": "The scoped maxParallelAgents counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "modelTurns",
+              "reason": "The scoped modelTurns counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "researchCycles",
+              "reason": "The scoped researchCycles counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "falsificationGatesRun",
+              "reason": "The scoped falsificationGatesRun counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "candidateArchitecturesTested",
+              "reason": "The scoped candidateArchitecturesTested counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "candidateArchitecturesRejected",
+              "reason": "The scoped candidateArchitecturesRejected counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "substantiveReviewRounds",
+              "reason": "The scoped substantiveReviewRounds counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "p0Findings",
+              "reason": "The scoped p0Findings counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "p1Findings",
+              "reason": "The scoped p1Findings counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "prepublicationClaimCorrections",
+              "reason": "The scoped prepublicationClaimCorrections counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "resultState",
+              "reason": "Published candidate delivery is observed in statusHistory; incomplete workflow telemetry does not negate publication."
+            },
+            {
+              "field": "positiveSignalObserved",
+              "reason": "Candidate publication evidence is retained separately; no calibrated signal metric is inferred."
+            },
+            {
+              "field": "targetReached",
+              "reason": "Delivery target is recorded in statusHistory; no calibrated target metric is inferred."
+            },
+            {
+              "field": "forecastErrorMinutes",
+              "reason": "Active effort was not measured; forecast error cannot be computed from wall time."
+            },
+            {
+              "field": "forecastRatio",
+              "reason": "Active effort was not measured; elapsed time is not a valid active-effort denominator."
+            },
+            {
+              "field": "withinForecastInterval",
+              "reason": "Active effort was not measured, so interval membership is unknown."
+            },
+            {
+              "field": "activeHumanMinutes",
+              "reason": "The scoped activeHumanMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "The scoped computeMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "The scoped deduplicatedModelTokens counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "The scoped uncachedInputTokens counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            }
+          ],
+          "calibration": null
+        }
+      },
+      "assuranceEndpoint": {
+        "status": "measured-partial",
+        "assessedAt": "2026-10-18T17:25:21.471Z",
+        "claimCeiling": "Unrefereed single-checkpoint audit. Strong semantic ranking does not establish threshold fidelity, native intervention prediction or broad representational conclusions. Public producer replay covers 18 stages, not the private 23-stage historical route.",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/assignment-aligned-effective-states/",
+              "https://evidencepress.org/releases/assignment-aligned-effective-states/paper.json",
+              "https://zenodo.org/records/23454637",
+              "https://github.com/ipitchford/assignment-aligned-effective-states/releases/tag/v4.8.0-candidate"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/assignment-aligned-effective-states/releases/download/v4.8.0-candidate/REPLAY_RECEIPT.json"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/assignment-aligned-effective-states/",
+          "https://evidencepress.org/releases/assignment-aligned-effective-states/paper.json",
+          "https://zenodo.org/records/23454637",
+          "https://github.com/ipitchford/assignment-aligned-effective-states/releases/tag/v4.8.0-candidate"
+        ],
+        "missingnessReason": "Unaffiliated replication, independent reimplementation, formal verification, external review and second-host replay unestablished."
+      },
+      "releaseSlug": "assignment-aligned-effective-states",
+      "stopReason": null,
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-10-18",
+          "summary": "Registered remaining publication; earlier research remains left-censored."
+        },
+        {
+          "date": "2026-10-18",
+          "summary": "Appended observed canonical delivery and scoped assurance; retained frozen forecast and left-censored history, with unavailable resource telemetry explicit."
+        }
+      ]
     }
   ],
   "updatePolicy": {
@@ -41315,6 +41586,10 @@
     {
       "date": "2026-10-18",
       "summary": "Registered the remaining assignment-aligned-effective-states publication attempt; earlier research remains left-censored, with no inferred research speedup, resource measurement or impact."
+    },
+    {
+      "date": "2026-10-18",
+      "summary": "Recorded canonical publication of assignment-aligned-effective-states after archive parity and scoped producer replay; no external assurance or workflow performance inferred."
     }
   ]
 }
