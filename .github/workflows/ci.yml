@@ -150,6 +150,9 @@ jobs:
       - name: Metadata conformance and cross-surface consistency
         run: node tools/test-metadata.js
 
+      - name: Component-specific licence scope
+        run: node tools/test-license-scope.js --built
+
       - name: Internal link and asset check
         run: node tools/check-links.js
 

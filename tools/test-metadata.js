@@ -100,7 +100,7 @@ check('S6 hero claim text stays inside its surrounding panel',
    constraint it does not understand. */
 const KNOWN = new Set(['$schema', '$id', 'title', 'description', 'type', 'required',
   'properties', 'additionalProperties', 'items', 'enum', 'const', 'pattern', 'format',
-  'minItems', 'minLength', 'minimum', 'maximum', '$ref', '$defs', 'oneOf']);
+  'minItems', 'minLength', 'maxLength', 'minimum', 'maximum', '$ref', '$defs', 'oneOf']);
 
 const FORMATS = {
   date: v => /^\d{4}-\d{2}-\d{2}$/.test(v) && !Number.isNaN(Date.parse(v + 'T12:00:00Z')),
@@ -147,6 +147,8 @@ function validate(value, node, root, pathStr, errors) {
     errors.push(`${pathStr}: ${JSON.stringify(value)} is not a valid ${node.format}`);
   if (node.minLength != null && typeof value === 'string' && value.length < node.minLength)
     errors.push(`${pathStr}: shorter than minLength ${node.minLength}`);
+  if (node.maxLength != null && typeof value === 'string' && Array.from(value).length > node.maxLength)
+    errors.push(`${pathStr}: longer than maxLength ${node.maxLength}`);
   if (node.minimum != null && typeof value === 'number' && value < node.minimum)
     errors.push(`${pathStr}: below minimum ${node.minimum}`);
   if (node.maximum != null && typeof value === 'number' && value > node.maximum)
@@ -171,6 +173,12 @@ function validate(value, node, root, pathStr, errors) {
 }
 
 const errors = [];
+const tooLongScope = [];
+validate('abc', {type:'string',maxLength:2}, {}, 'licenseScope', tooLongScope);
+check('maxLength rejects an oversized licence scope', tooLongScope.some(e=>e.includes('longer than maxLength')));
+const unicodeScope = [];
+validate('😀', {type:'string',maxLength:1}, {}, 'licenseScope', unicodeScope);
+check('maxLength counts Unicode characters rather than UTF-16 units', unicodeScope.length===0);
 validate(papersDoc, schema, schema, 'papers.json', errors);
 check('catalogue validates against its own published JSON Schema',
   errors.length === 0, errors.slice(0, 12).join('\n  '));

@@ -2468,6 +2468,9 @@ palette['finite-signal-quadratic-substitutes'] = require('./finite-signals-art')
 palette['iid-multiunit-prophet-limits'] = require('./prophet-art').colors;
 palette['prophet-over-time-limit'] = require('./prophet-over-time-art').colors;
 palette['ferromagnetic-full-threshold-glauber'] = require('./ferromagnetic-trimming-art').colors;
+const assignmentAlignedArt = require('./assignment-aligned-art');
+art['assignment-aligned-effective-states'] = assignmentAlignedArt.draw;
+palette['assignment-aligned-effective-states'] = assignmentAlignedArt.colors;
 const ceSpectatorArt = require('./ce-spectator-art');
 art['concentratable-entanglement-spectator-counterexample'] = ceSpectatorArt.draw;
 palette['concentratable-entanglement-spectator-counterexample'] = ['#f5ce7b','#ee9b99'];
@@ -2483,6 +2486,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if(slug==='assignment-aligned-effective-states')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${assignmentAlignedArt.description}</desc><defs>`);
   if(slug==='gaussian-cosine-local-stability')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${require('./gaussian-cosine-art').description}</desc><defs>`);
   if(slug==='rfim-unbounded-fields-entropy')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${require('./rfim-entropy-art').description}</desc><defs>`);
   if(slug==='uniform-split-reliability')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${require('./split-reliability-art').description}</desc><defs>`);
