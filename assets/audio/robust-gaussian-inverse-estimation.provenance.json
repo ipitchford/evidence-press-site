@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "bounded-disclosed-v1",
+  "segments": [
+    {
+      "input": "Spectrum-matched robustness. An Evidence Press briefing.\n\nInverse problems try to reconstruct an unknown signal from noisy, indirect measurements. They become harder when each observed sample can also be perturbed by an adversary with a bounded amount of energy.\n\nThis candidate studies linear estimators in a Gaussian model. Its proposed rule adapts to the singular spectrum of the forward operator. The paper proves that the rule is asymptotically optimal among linear estimators for normalized robust risk, and gives a finite-dimensional additive regret bound that is uniform over the problem class. This is an additive statement, not a risk-ratio guarantee.\n\nThere is also an implementation result. When the minimizing dual parameter is positive, population linear least squares trained with coordinate-dependent Gaussian input jitter reproduces the robust spectral estimator exactly. The jitter is anisotropic: weak and strong spectral directions generally receive different variances. Under positive-noise active-estimation hypotheses, one common isotropic variance works exactly only when the positive singular spectrum is flat. A rational two-band example certifies a strict advantage for anisotropic jitter.\n\nPopulation is the important word. The paper does not prove that a finite training sample learns the rule, compare nonlinear estimators, or report empirical performance. It also does not turn additive regret into multiplicative control when the optimum risk is small.\n\nThe evidence package contains the manuscript, exact two-band certificate and finite numerical checks. Normal and optimized-wrapper replay reproduce their stated scope. The asymptotic proof remains written mathematics, not proof-assistant verification.\n\nThis is an anonymous, AI-assisted and unrefereed candidate. Internal checking is not external peer review or independent reproduction. This briefing uses an AI-generated voice and adds no scientific evidence. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "44ecf9c79ff78fd0b2e89ddc9f4922e006914b070732c7996946220e604e3f00",
+      "audioSha256": "a5abd88b8a8b4b37acab2c15ce04565240ecfa96b998bf463a649aa5fe164471",
+      "requestId": "req_5a9635645f1748b2b9a1bde71be7b13e",
+      "contentType": "audio/mpeg"
+    }
+  ],
+  "slug": "robust-gaussian-inverse-estimation",
+  "generatedAt": "2026-10-18T05:46:48.855Z",
+  "sourceMetadata": "papers/robust-gaussian-inverse-estimation/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "44ecf9c79ff78fd0b2e89ddc9f4922e006914b070732c7996946220e604e3f00",
+  "transcriptPath": "assets/audio/robust-gaussian-inverse-estimation.txt",
+  "transcriptSha256": "9268c2153629b6274732fe1b76e243cd9e4d0307f8e038f19ad359810f87c516",
+  "audioPath": "assets/audio/robust-gaussian-inverse-estimation.mp3",
+  "audioSha256": "8371f8b6b17bff550eb591ca38d65737517049567314fc05cfda75ad050c86be",
+  "audioBytes": 2090156,
+  "responseContentType": "audio/mpeg",
+  "requestId": null
+}
