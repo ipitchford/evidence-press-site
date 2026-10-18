@@ -39811,9 +39811,9 @@
       "question": "Can the all-dimension local Gaussian stability candidate complete publication without being presented as a global theorem or numerical certificate?",
       "selectionBasis": "Authorised publication; earlier research, revision and initial page/media preparation are left-censored.",
       "taskClass": "remaining-full-candidate-publication",
-      "status": "active",
-      "statusAt": "2026-10-18T13:58:03.607Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-10-18T14:26:31.665Z",
+      "resultClass": "positive",
       "statusHistory": [
         {
           "at": "2026-10-18T13:58:03.607Z",
@@ -39821,6 +39821,18 @@
           "resultClass": "pending",
           "reason": "Contemporaneous registration of remaining publication work.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-18T14:26:31.665Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Observed canonical readback from c4b293b1336c91fcd15e7907e6a70a0aeb199799; receipt SHA256 e81b225e017565aae3cc235fc528867bd666c7b16363dbaa52bc207542ea7a1f. Publication is not proof or external review.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/gaussian-cosine-local-stability/",
+            "https://evidencepress.org/releases/gaussian-cosine-local-stability/paper.json",
+            "https://zenodo.org/records/23453252",
+            "https://github.com/ipitchford/gaussian-cosine-local-stability/releases/tag/v1.0.0-candidate"
+          ]
         }
       ],
       "decisionObjectTarget": "Positive transverse quadratic form at the cosine frame for each fixed n >= 3 and p > 1.",
@@ -39833,12 +39845,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Earlier work left-censored; complete active effort and resource telemetry unavailable.",
+        "missingnessReason": "Registration and delivery observations retained; earlier work left-censored and complete effort/resource telemetry unavailable.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-10-18T13:58:03.607Z",
             "basis": "Contemporaneous registration; no earlier research clock inferred."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-10-18T14:26:31.665Z",
+            "basis": "Observed canonical readback, not inferred first-live time; c4b293b1336c91fcd15e7907e6a70a0aeb199799, receipt e81b225e017565aae3cc235fc528867bd666c7b16363dbaa52bc207542ea7a1f."
           }
         ],
         "activeHumanMinutes": null,
@@ -39886,15 +39903,199 @@
           ],
           "stopRule": "Complete every mandatory gate or retain a precise blocker; never weaken assurance to meet the forecast."
         },
-        "outcome": null
+        "outcome": {
+          "status": "unavailable",
+          "policyVersion": "2.0",
+          "recordedAt": "2026-10-18T14:26:31.665Z",
+          "reason": "Gate and delivery observations do not provide complete effort telemetry. No retrospective reconstruction or calibration.",
+          "missingFields": [
+            {
+              "field": "calendarElapsedMinutes",
+              "reason": "Observed opening and delivery times are retained as milestones; elapsed wall time is not active effort and no numeric metrics series is emitted."
+            },
+            {
+              "field": "activeAgentMinutes",
+              "reason": "The scoped activeAgentMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "unattendedWaitMinutes",
+              "reason": "The scoped unattendedWaitMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "blockedMinutes",
+              "reason": "The scoped blockedMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "reworkMinutes",
+              "reason": "The scoped reworkMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "agentRuns",
+              "reason": "The scoped agentRuns counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "maxParallelAgents",
+              "reason": "The scoped maxParallelAgents counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "modelTurns",
+              "reason": "The scoped modelTurns counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "researchCycles",
+              "reason": "The scoped researchCycles counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "falsificationGatesRun",
+              "reason": "The scoped falsificationGatesRun counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "candidateArchitecturesTested",
+              "reason": "The scoped candidateArchitecturesTested counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "candidateArchitecturesRejected",
+              "reason": "The scoped candidateArchitecturesRejected counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "substantiveReviewRounds",
+              "reason": "The scoped substantiveReviewRounds counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "p0Findings",
+              "reason": "The scoped p0Findings counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "p1Findings",
+              "reason": "The scoped p1Findings counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "prepublicationClaimCorrections",
+              "reason": "The scoped prepublicationClaimCorrections counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "resultState",
+              "reason": "Published candidate delivery is observed in statusHistory; incomplete workflow telemetry does not negate publication."
+            },
+            {
+              "field": "positiveSignalObserved",
+              "reason": "Candidate publication evidence is retained separately; no calibrated signal metric is inferred."
+            },
+            {
+              "field": "targetReached",
+              "reason": "Delivery target is recorded in statusHistory; no calibrated target metric is inferred."
+            },
+            {
+              "field": "forecastErrorMinutes",
+              "reason": "Active effort was not measured; forecast error cannot be computed from wall time."
+            },
+            {
+              "field": "forecastRatio",
+              "reason": "Active effort was not measured; elapsed time is not a valid active-effort denominator."
+            },
+            {
+              "field": "withinForecastInterval",
+              "reason": "Active effort was not measured, so interval membership is unknown."
+            },
+            {
+              "field": "activeHumanMinutes",
+              "reason": "The scoped activeHumanMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "The scoped computeMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "The scoped deduplicatedModelTokens counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "The scoped uncachedInputTokens counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            }
+          ],
+          "calibration": null
+        }
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "claimCeiling": null,
-        "dimensions": [],
-        "evidenceRefs": [],
-        "missingnessReason": "Final provider and publication gates remain pending."
+        "status": "measured-partial",
+        "assessedAt": "2026-10-18T14:26:31.665Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/gaussian-cosine-local-stability/",
+              "https://evidencepress.org/releases/gaussian-cosine-local-stability/paper.json",
+              "https://zenodo.org/records/23453252",
+              "https://github.com/ipitchford/gaussian-cosine-local-stability/releases/tag/v1.0.0-candidate"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/gaussian-cosine-local-stability/blob/v1.0.0-candidate/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/gaussian-cosine-local-stability/blob/v1.0.0-candidate/CLAIMS.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/gaussian-cosine-local-stability/blob/v1.0.0-candidate/CITATION_AUDIT.md"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed all-n, p>1 local stability candidate. Radius existential; finite numerical checks do not prove global optimality. Independent reproduction, formal verification and external peer review unestablished.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/gaussian-cosine-local-stability/",
+          "https://evidencepress.org/releases/gaussian-cosine-local-stability/paper.json",
+          "https://zenodo.org/records/23453252",
+          "https://github.com/ipitchford/gaussian-cosine-local-stability/releases/tag/v1.0.0-candidate"
+        ],
+        "missingnessReason": "External assurance and exhaustive priority unestablished; historical numerical environment and optimisation trajectories not reproduced."
       },
       "releaseSlug": "gaussian-cosine-local-stability",
       "stopReason": null,
@@ -39903,6 +40104,10 @@
         {
           "date": "2026-10-18",
           "summary": "Remaining publication registered prospectively; earlier work left-censored."
+        },
+        {
+          "date": "2026-10-18",
+          "summary": "Appended canonical delivery and scoped assurance after archive parity; original forecast and left-censored history retained, unavailable telemetry explicit."
         }
       ]
     }
@@ -41081,6 +41286,10 @@
     {
       "date": "2026-10-18",
       "summary": "Registered remaining Gaussian local-stability publication prospectively; earlier research, revision and initial media preparation remain left-censored, without invented resource measurements or impact claims."
+    },
+    {
+      "date": "2026-10-18",
+      "summary": "Recorded canonical Gaussian local-stability candidate publication with exact readback; preserved the prospective forecast, missing resource telemetry and local-versus-global boundary."
     }
   ]
 }
