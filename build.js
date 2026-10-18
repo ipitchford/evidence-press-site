@@ -2490,7 +2490,7 @@ function llms() {
     ...papers.flatMap(p => [
       `---`, '', `# ${p.title}`, '',
       `- URL: ${urlOf(p)}`, `- PDF: ${p.pdfUrl || 'n/a'}`, `- DOI: https://doi.org/${p.doi}`, `- Code: ${p.repoUrl}`,
-      `- Published: ${p.datePublished} · Version: ${p.version} · Licence: ${releaseLicense.fields(p).license}${p.licenseScope ? ` — ${p.licenseScope}` : ''}`,
+      `- Published: ${p.datePublished} · Version: ${p.version} · Licence: ${p.licenseScope ? `component-specific — ${p.licenseScope}` : 'CC0-1.0'}`,
       `- Status: unrefereed (internally replayed; not peer reviewed, not independently reproduced, not formally verified)`, '',
       p.body, '',
       ...(p.mathObjects && p.mathObjects.length ? [mathObjectsMarkdown(p).trim(), ''] : []),
@@ -2934,7 +2934,9 @@ function api() {
           imageUrl: { type: ['string', 'null'], format: 'uri' }, coverArtUrl: { type: ['string', 'null'], format: 'uri' },
           media: { type: 'array', items: { type: 'object', required: ['type', 'url'], additionalProperties: false, properties: { type: { enum: ['audio', 'video'] }, url: { type: 'string', format: 'uri' }, name: { type: 'string' }, description: { type: 'string' }, embedUrl: { type: 'string', format: 'uri' }, durationLabel: { type: 'string' }, transcriptUrl: { type: 'string', format: 'uri' }, superseded: { type: 'boolean' } } } },
           authors: { type: 'array', items: { type: 'string', minLength: 1 }, minItems: 1 },
-          license: { enum: ['CC0-1.0', 'LicenseRef-Component-Specific'] },
+          license: { const: 'CC0-1.0' },
+          licenseAppliesTo: { const: 'original prose, data and diagrams only' },
+          archiveLicense: { const: 'LicenseRef-Component-Specific' },
           licenseScope: { type: 'string', minLength: 1, maxLength: 2000 },
           status: { enum: ['unrefereed-candidate', 'unrefereed-preprint'] },
           verification: {
