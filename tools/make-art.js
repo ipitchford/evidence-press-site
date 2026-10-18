@@ -65,6 +65,10 @@ art['hartree-small-charge-rigidity'] = require('./hartree-art').draw;
 art['steady-stream-power-landscapes'] = require('./landscape-art').draw;
 art['internally-heated-convection-flux-bounds'] = require('./ihc-art').draw;
 art['compact-cross-compliance-contact'] = require('./friction-art').draw;
+const reverseReactionArt = require('./reverse-reaction-art');
+art['reverse-reaction-attracting-oscillations'] = reverseReactionArt.draw;
+const robustInverseArt = require('./robust-inverse-art');
+art['robust-gaussian-inverse-estimation'] = robustInverseArt.draw;
 // Equal aggregate masses with distinct allocations of shapes 1, 1 and 2.
 art['unlinked-gamma-regression'] = (a,b) => {
  let s='';
@@ -2467,6 +2471,8 @@ palette['ferromagnetic-full-threshold-glauber'] = require('./ferromagnetic-trimm
 const ceSpectatorArt = require('./ce-spectator-art');
 art['concentratable-entanglement-spectator-counterexample'] = ceSpectatorArt.draw;
 palette['concentratable-entanglement-spectator-counterexample'] = ['#f5ce7b','#ee9b99'];
+palette['reverse-reaction-attracting-oscillations'] = reverseReactionArt.colors;
+palette['robust-gaussian-inverse-estimation'] = robustInverseArt.colors;
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
@@ -2490,6 +2496,8 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'debt-disclosure-bounds') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./debt-disclosure-art').description}</desc><defs>`);
   if (['rational-laguerre-mosaics','centroidal-equilibrium-creation'].includes(slug)) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${mosaicAbrasionArt.descriptions[slug==='rational-laguerre-mosaics'?'mosaics':'abrasion']}</desc><defs>`);
   if (slug === 'concentratable-entanglement-spectator-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${ceSpectatorArt.description}</desc><defs>`);
+  if (slug === 'reverse-reaction-attracting-oscillations') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${reverseReactionArt.description}</desc><defs>`);
+  if (slug === 'robust-gaussian-inverse-estimation') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${robustInverseArt.description}</desc><defs>`);
   if (slug === 'k2p-tree-network-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${k2pArt.description}</desc><defs>`);
   if (slug === 'seven-cycle-fourth-power-upper112') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${sevenCycleArt.description}</desc><defs>`);
   if (slug === 'horton-tokunaga-kingman-asymptotics') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${hortonArt.description}</desc><defs>`);
