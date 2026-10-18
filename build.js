@@ -7,6 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const releaseLicense = require('./tools/license-scope');
 const {
   loadArtifacts: loadOperatingArtifacts,
   validateAll: validateOperatingModel
@@ -350,6 +351,7 @@ const papers = fs.readdirSync(papersDir)
   .filter(d => !d.startsWith('_') && fs.existsSync(path.join(papersDir, d, 'meta.json')))
   .map(d => {
     const meta = JSON.parse(fs.readFileSync(path.join(papersDir, d, 'meta.json'), 'utf8'));
+    releaseLicense.scope(meta);
     const bodySource = fs.readFileSync(path.join(papersDir, d, 'body.md'), 'utf8');
     if (!meta.slug) meta.slug = d;
     const body = materializeResearchDefinitions(meta, bodySource);
@@ -627,7 +629,7 @@ function roCrate(p) {
         version: p.version,
         identifier: `https://doi.org/${p.doi}`,
         url,
-        license: { '@id': 'https://creativecommons.org/publicdomain/zero/1.0/' },
+        license: p.licenseScope ? releaseLicense.jsonld(p) : { '@id': 'https://creativecommons.org/publicdomain/zero/1.0/' },
         author: p.authors.map(a => ({ '@id': `#author-${a.replace(/[^A-Za-z0-9]+/g, '-').toLowerCase()}` })),
         keywords: p.keywords.join(', '),
         hasPart: [
@@ -701,7 +703,7 @@ function linkset(p) {
         { href: `${url}ro-crate-metadata.json`, type: 'application/ld+json', profile: 'https://w3id.org/ro/crate/1.1' },
         { href: `${url}cite.bib`, type: 'application/x-bibtex' }
       ],
-      license: [{ href: 'https://creativecommons.org/publicdomain/zero/1.0/' }],
+      license: [{ href: p.licenseScope ? `${urlOf(p)}paper.json` : 'https://creativecommons.org/publicdomain/zero/1.0/' }],
       type: [
         { href: 'https://schema.org/ScholarlyArticle' },
         { href: 'https://schema.org/AboutPage' }
@@ -883,7 +885,7 @@ function articleJsonld(p) {
       author: p.authors.map(authorNode),
       publisher: { '@id': `${BASE}/#org` },
       isPartOf: { '@id': `${BASE}/#website` },
-      license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+      license: releaseLicense.jsonld(p),
       keywords: p.keywords.join(', '),
       inLanguage: CONFIG.language,
       creativeWorkStatus: 'Unrefereed — internally replayed evidence; not peer reviewed, not independently reproduced, not formally verified',
@@ -921,7 +923,7 @@ function articleJsonld(p) {
       '@type': 'SoftwareSourceCode', '@id': `${url}#code`,
       name: `${p.shortTitle} — evidence and replay package`,
       codeRepository: p.repoUrl,
-      license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+      license: releaseLicense.jsonld(p),
       description: p.evidence,
       ...(p.releaseUrl ? { downloadUrl: p.releaseUrl } : {})
     },
@@ -930,7 +932,7 @@ function articleJsonld(p) {
       name: `${p.shortTitle} — archived deposit (Zenodo)`,
       url: p.zenodoUrl,
       identifier: `https://doi.org/${p.doi}`,
-      license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+      license: releaseLicense.jsonld(p),
       description: `DOI-archived snapshot of the manuscript and evidence package for: ${p.title}`,
       creator: p.authors.map(authorNode),
       includedInDataCatalog: { '@type': 'DataCatalog', name: 'Zenodo', url: 'https://zenodo.org' }
@@ -1109,7 +1111,7 @@ function signposting(p) {
     `<link rel="describedby" type="application/x-bibtex" href="${url}cite.bib">`,
     ...(p.pdfUrl ? [`<link rel="item" type="application/pdf" href="${escAttr(p.pdfUrl)}">`] : []),
     `<link rel="alternate" type="text/markdown" href="${url}index.md">`,
-    `<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">`
+    `<link rel="license" href="${p.licenseScope ? `${url}paper.json` : 'https://creativecommons.org/publicdomain/zero/1.0/'}">`
   ].join('\n') + '\n';
 }
 
@@ -1236,7 +1238,7 @@ ${media ? `<section class="media-section"><h2 id="media">Media</h2>${media}</sec
           <dt>Code &amp; evidence</dt><dd><a href="${escAttr(p.repoUrl)}" rel="noopener">GitHub repository</a>${p.releaseUrl ? ` · <a href="${escAttr(p.releaseUrl)}" rel="noopener">release</a>` : ''}</dd>
           ${p.problem ? `<dt>Problem</dt><dd>${p.problem.url ? `<a href="${escAttr(p.problem.url)}" rel="noopener">${esc(p.problem.name)}</a>` : esc(p.problem.name)}</dd>` : ''}
           <dt>Version</dt><dd>${esc(p.version)}</dd>
-          <dt>Licence</dt><dd><a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a></dd>
+          <dt>Licence</dt><dd>${releaseLicense.html(p, esc)}</dd>
           <dt>Status</dt><dd>Unrefereed · internally replayed; awaiting independent verification</dd>
           <dt>Machine-readable</dt><dd><a href="${url}paper.json">JSON</a> · <a href="${url}index.md">Markdown</a> · <a href="${url}cite.bib">BibTeX</a></dd>
         </dl>
@@ -1262,7 +1264,7 @@ doi: ${p.doi}
 pdf: ${p.pdfUrl || ''}
 repository: ${p.repoUrl}
 archive: ${p.zenodoUrl}
-license: CC0-1.0
+${releaseLicense.yaml(p)}
 status: unrefereed (internally replayed; not peer reviewed, not independently reproduced, not formally verified)
 ---
 
@@ -1350,7 +1352,7 @@ function paperApi(p) {
     media: withBriefingAudio(p.media, p.audio ? BASE + p.audio.url : null,
       fs.existsSync(path.join(ROOT, 'assets', 'audio', p.slug + '.txt'))
         ? `${BASE}/assets/audio/${p.slug}.txt` : null),
-    authors: p.authors, license: 'CC0-1.0',
+    authors: p.authors, ...releaseLicense.fields(p),
     status: p.status || 'unrefereed-candidate',
     /* Derived from the assurance matrix, never asserted separately, so the
        coarse booleans and the scoped matrix cannot drift apart. A dimension
@@ -2488,7 +2490,7 @@ function llms() {
     ...papers.flatMap(p => [
       `---`, '', `# ${p.title}`, '',
       `- URL: ${urlOf(p)}`, `- PDF: ${p.pdfUrl || 'n/a'}`, `- DOI: https://doi.org/${p.doi}`, `- Code: ${p.repoUrl}`,
-      `- Published: ${p.datePublished} · Version: ${p.version} · Licence: CC0-1.0`,
+      `- Published: ${p.datePublished} · Version: ${p.version} · Licence: ${releaseLicense.fields(p).license}${p.licenseScope ? ` — ${p.licenseScope}` : ''}`,
       `- Status: unrefereed (internally replayed; not peer reviewed, not independently reproduced, not formally verified)`, '',
       p.body, '',
       ...(p.mathObjects && p.mathObjects.length ? [mathObjectsMarkdown(p).trim(), ''] : []),
@@ -2932,7 +2934,8 @@ function api() {
           imageUrl: { type: ['string', 'null'], format: 'uri' }, coverArtUrl: { type: ['string', 'null'], format: 'uri' },
           media: { type: 'array', items: { type: 'object', required: ['type', 'url'], additionalProperties: false, properties: { type: { enum: ['audio', 'video'] }, url: { type: 'string', format: 'uri' }, name: { type: 'string' }, description: { type: 'string' }, embedUrl: { type: 'string', format: 'uri' }, durationLabel: { type: 'string' }, transcriptUrl: { type: 'string', format: 'uri' }, superseded: { type: 'boolean' } } } },
           authors: { type: 'array', items: { type: 'string', minLength: 1 }, minItems: 1 },
-          license: { const: 'CC0-1.0' },
+          license: { enum: ['CC0-1.0', 'LicenseRef-Component-Specific'] },
+          licenseScope: { type: 'string', minLength: 1, maxLength: 2000 },
           status: { enum: ['unrefereed-candidate', 'unrefereed-preprint'] },
           verification: {
             type: 'object',
