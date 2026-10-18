@@ -39189,9 +39189,9 @@
       "question": "Can the split-reliability candidate be delivered with finite and all-order boundaries intact?",
       "selectionBasis": "Authorised publication; earlier research, revision and initial media creation left-censored.",
       "taskClass": "remaining-full-candidate-publication",
-      "status": "active",
-      "statusAt": "2026-10-18T10:01:11.865Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-10-18T10:58:41.993Z",
+      "resultClass": "positive",
       "statusHistory": [
         {
           "at": "2026-10-18T10:01:11.865Z",
@@ -39199,6 +39199,18 @@
           "resultClass": "pending",
           "reason": "Contemporaneous remaining publication registration.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-18T10:58:41.993Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Canonical readback completed for 324a0cc9fd93c0b52ed3b0e6ec75a7a4b968c146; receipt SHA-256 020df2baf6947b497dbf66d8298b84dbf7d28298908b3d1ab135f96d597cef80. Archive parity and exact producer replay recorded separately; no external assurance inferred.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/uniform-split-reliability/",
+            "https://evidencepress.org/releases/uniform-split-reliability/paper.json",
+            "https://zenodo.org/records/23450265",
+            "https://github.com/ipitchford/uniform-split-reliability/releases/tag/v1.0.0"
+          ]
         }
       ],
       "decisionObjectTarget": "Existence classification and partial-probability cone comparison.",
@@ -39211,12 +39223,17 @@
       },
       "measurement": {
         "status": "measured-partial",
-        "missingnessReason": "Earlier work left-censored; resource telemetry unavailable.",
+        "missingnessReason": "Registration and public-delivery observations retained; earlier work left-censored and complete effort/resource telemetry unavailable.",
         "milestones": [
           {
             "event": "work-opened",
             "at": "2026-10-18T10:01:11.865Z",
             "basis": "Contemporaneous registration."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-10-18T10:58:41.993Z",
+            "basis": "Observed canonical readback, not inferred first-public time; source 324a0cc9fd93c0b52ed3b0e6ec75a7a4b968c146; receipt 020df2baf6947b497dbf66d8298b84dbf7d28298908b3d1ab135f96d597cef80."
           }
         ],
         "activeHumanMinutes": null,
@@ -39264,15 +39281,199 @@
           ],
           "stopRule": "Complete every mandatory gate or retain a precise blocker; never weaken assurance to meet the forecast."
         },
-        "outcome": null
+        "outcome": {
+          "status": "unavailable",
+          "policyVersion": "2.0",
+          "recordedAt": "2026-10-18T10:58:41.993Z",
+          "reason": "Gate and delivery observations do not provide complete effort telemetry. No retrospective reconstruction or calibration.",
+          "missingFields": [
+            {
+              "field": "calendarElapsedMinutes",
+              "reason": "Observed opening and delivery times are retained as milestones; elapsed wall time is not active effort and no numeric metrics series is emitted."
+            },
+            {
+              "field": "activeAgentMinutes",
+              "reason": "The scoped activeAgentMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "unattendedWaitMinutes",
+              "reason": "The scoped unattendedWaitMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "blockedMinutes",
+              "reason": "The scoped blockedMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "reworkMinutes",
+              "reason": "The scoped reworkMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "agentRuns",
+              "reason": "The scoped agentRuns counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "maxParallelAgents",
+              "reason": "The scoped maxParallelAgents counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "modelTurns",
+              "reason": "The scoped modelTurns counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "researchCycles",
+              "reason": "The scoped researchCycles counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "falsificationGatesRun",
+              "reason": "The scoped falsificationGatesRun counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "candidateArchitecturesTested",
+              "reason": "The scoped candidateArchitecturesTested counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "candidateArchitecturesRejected",
+              "reason": "The scoped candidateArchitecturesRejected counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "substantiveReviewRounds",
+              "reason": "The scoped substantiveReviewRounds counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "p0Findings",
+              "reason": "The scoped p0Findings counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "p1Findings",
+              "reason": "The scoped p1Findings counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "prepublicationClaimCorrections",
+              "reason": "The scoped prepublicationClaimCorrections counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "resultState",
+              "reason": "Published candidate delivery is observed in statusHistory; incomplete workflow telemetry does not negate publication."
+            },
+            {
+              "field": "positiveSignalObserved",
+              "reason": "Candidate publication evidence is retained separately; no calibrated signal metric is inferred."
+            },
+            {
+              "field": "targetReached",
+              "reason": "Delivery target is recorded in statusHistory; no calibrated target metric is inferred."
+            },
+            {
+              "field": "forecastErrorMinutes",
+              "reason": "Active effort was not measured; forecast error cannot be computed from wall time."
+            },
+            {
+              "field": "forecastRatio",
+              "reason": "Active effort was not measured; elapsed time is not a valid active-effort denominator."
+            },
+            {
+              "field": "withinForecastInterval",
+              "reason": "Active effort was not measured, so interval membership is unknown."
+            },
+            {
+              "field": "activeHumanMinutes",
+              "reason": "The scoped activeHumanMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "The scoped computeMinutes counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "The scoped deduplicatedModelTokens counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "The scoped uncachedInputTokens counter was not instrumented or aggregated; unknown is not zero, and no estimate is inferred from logs, elapsed time or left-censored work."
+            }
+          ],
+          "calibration": null
+        }
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "missingnessReason": "Final endpoint pending; no external assurance inferred.",
-        "assessedAt": null,
-        "claimCeiling": null,
-        "dimensions": [],
-        "evidenceRefs": []
+        "status": "measured-partial",
+        "assessedAt": "2026-10-18T10:58:41.993Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://evidencepress.org/releases/uniform-split-reliability/",
+              "https://evidencepress.org/releases/uniform-split-reliability/paper.json",
+              "https://zenodo.org/records/23450265",
+              "https://github.com/ipitchford/uniform-split-reliability/releases/tag/v1.0.0"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/uniform-split-reliability/blob/v1.0.0/REPLAY.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/uniform-split-reliability/blob/v1.0.0/CLAIMS.json"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/uniform-split-reliability/blob/v1.0.0/CITATION_AUDIT.md"
+            ]
+          }
+        ],
+        "claimCeiling": "Unrefereed candidate; full finite certification n≤51 does not establish the all-order boundary inequality, and partial probability intervals are not uniform optimality.",
+        "evidenceRefs": [
+          "https://evidencepress.org/releases/uniform-split-reliability/",
+          "https://evidencepress.org/releases/uniform-split-reliability/paper.json",
+          "https://zenodo.org/records/23450265",
+          "https://github.com/ipitchford/uniform-split-reliability/releases/tag/v1.0.0"
+        ],
+        "missingnessReason": "External reproduction, formal verification, external specialist review and exhaustive priority remain unestablished."
       },
       "releaseSlug": "uniform-split-reliability",
       "stopReason": null,
@@ -39281,6 +39482,10 @@
         {
           "date": "2026-10-18",
           "summary": "Remaining publication registered; earlier work left-censored."
+        },
+        {
+          "date": "2026-10-18",
+          "summary": "Recorded canonical publication after archive parity and guarded readback; appended scoped assurance and explicit missing telemetry without revising the forecast or earlier history."
         }
       ]
     }
@@ -40440,6 +40645,7 @@
       "date": "2026-10-18",
       "summary": "Recorded canonical delivery of two-host dormancy and infinite-chain thinned counts; preserved frozen forecasts and left-censored research history, with no external-assurance or productivity promotion."
     },
-    {"date":"2026-10-18","summary":"Registered remaining uniform-split-reliability publication; earlier research, revision and initial media creation remain left-censored."}
+    {"date":"2026-10-18","summary":"Registered remaining uniform-split-reliability publication; earlier research, revision and initial media creation remain left-censored."},
+    {"date":"2026-10-18","summary":"Recorded canonical uniform-split-reliability delivery after public archive parity and guarded readback; retained frozen forecast and left-censored history, with scoped assurance and unavailable resource telemetry rather than inferred impact or calibration."}
   ]
 }
