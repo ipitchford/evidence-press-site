@@ -6,27 +6,27 @@
   "claimCeiling": "This roadmap records intended work and review decisions. It does not establish that an undiscovered relationship exists, that a proposed relationship is correct, or that the Atlas improves research outcomes.",
   "currentBaseline": {
     "asOf": "2026-10-18",
-    "releaseCount": 162,
+    "releaseCount": 163,
     "methodCount": 13,
-    "clusterCount": 149,
+    "clusterCount": 150,
     "lineageCount": 5,
-    "acceptedRelationshipCount": 1017,
+    "acceptedRelationshipCount": 1023,
     "publishedProposalCount": 4,
     "relationshipComposition": {
-      "usesMethodCount": 787,
-      "clusterMembershipCount": 164,
+      "usesMethodCount": 792,
+      "clusterMembershipCount": 165,
       "lineageMembershipCount": 15,
       "directInterReleaseCount": 51,
-      "defaultProgrammeViewCount": 230
+      "defaultProgrammeViewCount": 231
     },
     "methodPrevalenceChecks": [
       {
         "methodId": "adversarial-controls",
-        "releaseAssignmentCount": 138
+        "releaseAssignmentCount": 139
       },
       {
         "methodId": "structural-compression",
-        "releaseAssignmentCount": 131
+        "releaseAssignmentCount": 132
       }
     ],
     "sourceRefs": [
@@ -730,7 +730,11 @@
       "trigger": "maintainer-request",
       "reviewer": "Codex producer-side tooling and source-reading review",
       "provenanceNote": "Review of 512025d and the frozen discovery artefacts; dispositions and limits in docs/audits/2026-10-15-atlas-completion-review.md. No independent theorem verification or accepted relationship promotion.",
-      "baseline": { "releaseCount": 152, "acceptedRelationshipCount": 964, "publishedProposalCount": 4 },
+      "baseline": {
+        "releaseCount": 152,
+        "acceptedRelationshipCount": 964,
+        "publishedProposalCount": 4
+      },
       "observations": [
         "Routine publication invalidates the historical benchmark for current-corpus evaluation; regression tests now preserve this refusal while exercising evaluation with an ephemeral fixture.",
         "All seven draft dispositions are recorded without changing their original bytes or the accepted graph.",
@@ -747,7 +751,11 @@
       "trigger": "maintainer-request",
       "reviewer": "Codex producer-side publication integration",
       "provenanceNote": "Current baseline derived through tools/atlas-roadmap.js computeAtlasBaseline using the current research graph and proposal register. Historical review records are unchanged. This is structural reconciliation, not independent scientific review or a public-delivery receipt.",
-      "baseline": { "releaseCount": 153, "acceptedRelationshipCount": 970, "publishedProposalCount": 4 },
+      "baseline": {
+        "releaseCount": 153,
+        "acceptedRelationshipCount": 970,
+        "publishedProposalCount": 4
+      },
       "observations": [
         "The finite-signal release adds four method assignments, one singleton method-cluster membership and one declared extends-result parent relationship; no evidence-backed lineage is added.",
         "The graph contains 749 method edges, 155 cluster memberships, 15 lineage memberships and 51 direct inter-release records, totalling 970 accepted relationships. The default programme view contains 221 relationships.",
@@ -763,7 +771,11 @@
       "trigger": "maintainer-request",
       "reviewer": "Codex producer-side publication integration",
       "provenanceNote": "Mechanical current-baseline reconciliation derived through computeAtlasBaseline with buildResearchGraph and loadAtlasProposals. All historical review baselines and roadmap decisions are preserved. No scientific, priority, public-availability or impact assurance is supplied by these counts.",
-      "baseline": { "releaseCount": 154, "acceptedRelationshipCount": 975, "publishedProposalCount": 4 },
+      "baseline": {
+        "releaseCount": 154,
+        "acceptedRelationshipCount": 975,
+        "publishedProposalCount": 4
+      },
       "observations": [
         "The iid-multiunit-prophet-limits candidate adds four existing method assignments and one singleton cluster membership, with no new lineage or direct inter-release relationship.",
         "The graph now contains 753 method edges, 156 cluster memberships, 15 lineage memberships and 51 direct inter-release relationships, totalling 975. The default programme view contains 222 relationships.",
