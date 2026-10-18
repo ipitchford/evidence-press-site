@@ -2473,6 +2473,9 @@ art['concentratable-entanglement-spectator-counterexample'] = ceSpectatorArt.dra
 palette['concentratable-entanglement-spectator-counterexample'] = ['#f5ce7b','#ee9b99'];
 palette['reverse-reaction-attracting-oscillations'] = reverseReactionArt.colors;
 palette['robust-gaussian-inverse-estimation'] = robustInverseArt.colors;
+for (const [slug,moduleName] of [['two-host-dormancy-oscillations','dormancy-art'],['infinite-birth-death-thinned-counts','thinned-counts-art']]) {
+  const spec=require('./'+moduleName); art[slug]=spec.draw; palette[slug]=spec.colors;
+}
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
@@ -2480,6 +2483,11 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (['two-host-dormancy-oscillations','infinite-birth-death-thinned-counts'].includes(slug)) {
+    const spec=require(slug==='two-host-dormancy-oscillations'?'./dormancy-art':'./thinned-counts-art');
+    svg=svg.replace(/<text /g,'<text class="og-hide" ');
+    svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${spec.description}</desc><defs>`);
+  }
   if (slug === 'sharp-logconcave-moment-comparison') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./mrtt-art').description.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</desc><defs>`);
   if (slug === 'iid-multiunit-prophet-limits') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./prophet-art').description}</desc><defs>`);
   if (slug === 'prophet-over-time-limit') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./prophet-over-time-art').description}</desc><defs>`);
