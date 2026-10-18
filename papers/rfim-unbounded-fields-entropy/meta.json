@@ -1,0 +1,189 @@
+{
+  "slug": "rfim-unbounded-fields-entropy",
+  "doi": "10.5281/zenodo.23452100",
+  "conceptDoi": "10.5281/zenodo.23452099",
+  "zenodoUrl": "https://zenodo.org/records/23452100",
+  "repoUrl": "https://github.com/ipitchford/rfim-unbounded-fields-entropy",
+  "pdfUrl": "https://github.com/ipitchford/rfim-unbounded-fields-entropy/releases/download/v1.0.0/rfim-unbounded-fields-entropy.pdf",
+  "releaseUrl": "https://github.com/ipitchford/rfim-unbounded-fields-entropy/releases/tag/v1.0.0",
+  "title": "Modified log-Sobolev inequalities for the random field Ising model with unbounded fields",
+  "shortTitle": "Entropy decay without a field ceiling",
+  "oneLine": "Sign-adapted localisation controls continuous-time entropy decay and mixing under strong disorder, without an upper bound on finite field strengths.",
+  "abstract": "This unrefereed mathematical candidate proves a field-uniform Dirichlet-form modified log-Sobolev inequality for heat-bath Glauber dynamics on arbitrary finite bounded-degree graphs under a strong-disorder anti-concentration hypothesis. Sign-adapted localisation leaves opposite-preference strong-field edges interacting, and controls the resulting low-activity endpoint. A site-covering warm-up gives field-tail-free continuous-time total-variation mixing on the same high-probability event. Independent nonidentically distributed field magnitudes are also covered under a common small-field bound. One-step entropy contraction and approximate tensorization are not established; explicit constants can be very large.",
+  "datePublished": "2026-10-18",
+  "version": "1.0.0",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "random field Ising model",
+    "modified log-Sobolev inequality",
+    "Glauber dynamics",
+    "entropy decay",
+    "localisation",
+    "strong disorder"
+  ],
+  "citeText": "Anonymous (2026). Modified log-Sobolev inequalities for the random field Ising model with unbounded fields. Version 1.0.0. Evidence Press. https://doi.org/10.5281/zenodo.23452100",
+  "evidence": "Written analytic proof with finite computational checks of selected identities and endpoint estimates; computations are not the universal proof.",
+  "statusDetail": "Unrefereed AI-assisted candidate. Continuous-time Dirichlet-form entropy decay, not one-step contraction. No external peer review or formal verification established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the revised version 1.0.0 manuscript, research commit d1892668a811428749284881bba542b894f57350. Full GitHub and Zenodo downloads of PDF, ZIP and checksum manifest matched the frozen local bytes on 18 October 2026. Research ZIP SHA-256 c67fb599d26dc35a3b9d4ce9edd5bbea87f249e93f94ebcc99759b36683705fa.",
+  "keyResults": [
+    "A field-uniform continuous-time entropy-decay bound holds with probability 1 − O(1/n) under the stated independent-magnitude anti-concentration hypothesis.",
+    "Sign-adapted localisation retains strong opposite-preference edges; the endpoint is not a product measure.",
+    "A known site-covering warm-up yields O(n^(1+c) log(n/epsilon)) mixing on the same event without a field-tail assumption; the explicit exponent may be large."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research workflow",
+      "OpenAI Codex: checking, revision and publication"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted assessment, not external peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "Entropy decay without a field ceiling. An Evidence Press briefing. Imagine a network of tiny magnets. Neighbours favour agreement, but each magnet also feels its own local field. A strong positive field prefers one direction; a strong negative field prefers the other. Can a random updating process approach equilibrium when these fields have no fixed upper bound? This mathematical candidate gives a continuous-time entropy-decay bound under a strong-disorder assumption: weak fields must be sufficiently uncommon, and the field magnitudes must be independent. Their signs may be arbitrary. The result also allows different magnitude distributions, provided they share the required bound on small-field probabilities. The proof adapts its local events to the preferred signs. Crucially, edges joining strong vertices with opposite preferences remain interacting. The endpoint is not a collection of independent spins. Rare minority spins instead form a low-activity system that can be controlled. A known warm-up method waits long enough for every site to have been updated. Combined with the entropy inequality, it removes field-tail dependence from the continuous-time mixing estimate on the same high-probability event. This is a structural result, not a practical runtime promise: the explicit constants and exponent can be very large. It does not establish the stronger one-step entropy contraction or approximate tensorization. The package contains a written proof and finite checks of selected ingredients, not a computer proof of the universal theorem. This is an anonymous, AI-assisted, unrefereed candidate, with no external peer review or formal verification established. The paper and reproducible package are linked on the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23452100",
+      "note": "Full public downloads of manuscript PDF, research ZIP and checksum manifest from GitHub and Zenodo matched frozen local bytes. Archiving does not establish mathematical correctness."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/rfim-unbounded-fields-entropy/blob/v1.0.0/REPLAY_RECEIPT.md",
+      "note": "Four revised numerical diagnostics and 11 regression tests in ordinary and optimised Python passed. Finite sampled cases and bounded local optimization are diagnostic only; rejected optimizer starts are explicit. No global search, certified lower bound or independent reproduction is established."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "Not established by this producer-coordinated workflow."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Not established by this producer-coordinated workflow."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation established."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "No external specialist review established."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "Internal model assessment is not external peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "not-assessed",
+      "note": "Finite mathematical checks do not establish empirical data reproducibility."
+    }
+  },
+  "problem": {
+    "name": "Unbounded-field entropy inequalities for the random field Ising model",
+    "url": "https://arxiv.org/abs/2605.02002v1"
+  },
+  "relatedWorks": [
+    {
+      "citation": "Han (2026), Glauber dynamics for random field Ising models on bounded degree graphs and MLSI. Version 1.",
+      "url": "https://arxiv.org/abs/2605.02002v1"
+    },
+    {
+      "citation": "Niles-Weed (2026), Reweighted information inequalities. Known heat-bath mixture comparison.",
+      "url": "https://arxiv.org/abs/2603.13135v1"
+    },
+    {
+      "citation": "Wang (2026), Optimal Mixing of Glauber Dynamics for the Sherrington–Kirkpatrick Model at beta < 1/2. Version 2, Lemma 4.4.",
+      "url": "https://arxiv.org/abs/2608.22159v2"
+    },
+    {
+      "citation": "Caputo, Chen, Gu and Polyanskiy (2025), Entropy contractions in Markov chains: Half-step, full-step and continuous-time.",
+      "url": "https://doi.org/10.1214/25-EJP1372",
+      "doi": "10.1214/25-EJP1372"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:rfim-unbounded-fields-entropy",
+    "attemptIds": [
+      "ep-attempt:rfim-unbounded-fields-entropy-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "research-lineage-reuse",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Field-uniform continuous-time entropy and mixing bounds.",
+      "scope": "Independent finite field magnitudes under common strong-disorder anti-concentration; not one-step contraction."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "One total heat-bath update per unit time; Dirichlet-form entropy decay is distinct from one-step contraction.",
+      "remainingRisks": [
+        "Analytic proof is not formally verified.",
+        "Finite checks do not prove unrestricted entropy inequalities."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authorised; external specialist assessment remains open."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/2605.02002v1",
+        "inheritedClaim": "Disagreement-percolation and localisation architecture under anti-concentration.",
+        "inheritedAssuranceCeiling": "Source-dependent analytic argument; no external review inferred."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated analytic proof scrutiny and supporting-check replay.",
+      "claimCeiling": "Independent finite field magnitudes under common strong-disorder anti-concentration; not one-step contraction. No external assurance inferred."
+    },
+    "impactClaims": [
+      {
+        "id": "rfim-unbounded-fields-entropy-no-impact",
+        "aim": "science",
+        "outcome": "Field-uniform continuous-time entropy and mixing bounds.",
+        "setting": "AI-assisted theoretical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No comparative research-speed or scientific-impact effect measured.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
