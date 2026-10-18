@@ -19,6 +19,17 @@ for (const [slug, spec] of Object.entries(motifs)) {
 console.log(`Art direction: ${Object.keys(motifs).length} deterministic image-led covers checked; visual acceptance is separate.`);
 
 // Labelled scientific covers use their own semantic and regeneration contract.
+const assignmentAligned = require('./assignment-aligned-art');
+const assignmentDiagram = assignmentAligned.draw(...assignmentAligned.colors);
+assert.equal(assignmentDiagram, assignmentAligned.draw(...assignmentAligned.colors));
+for (const label of ['0.992', '88 / 125', 'cutoff 0.5', 'same checkpoint', 'Separate Boolean edit witness', 'SAT', 'UNSAT'])
+  assert.ok(assignmentDiagram.includes(label), `Assignment diagram omits scope label: ${label}`);
+assert.ok(assignmentDiagram.includes('width="452.672"'), 'Positive-detection bar must equal 643 * 88 / 125');
+assert.equal((assignmentDiagram.match(/<circle\b/g)||[]).length,2,'two distinct edit endpoints');
+assert.ok(!/NaN|undefined/.test(assignmentDiagram));
+const assignmentSvg=fs.readFileSync(path.join(root,'assets/art/assignment-aligned-effective-states.svg'),'utf8');
+assert.ok(assignmentSvg.includes(assignmentDiagram),'regenerate assignment diagram');
+assert.ok(assignmentSvg.includes(assignmentAligned.description),'assignment accessible description');
 const sevenCycle = require('./seven-cycle-art');
 const diagram = sevenCycle.draw(...sevenCycle.colors);
 assert.equal(diagram, sevenCycle.draw(...sevenCycle.colors));
