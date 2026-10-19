@@ -40512,32 +40512,110 @@
           "recordedAt": "2026-10-19T13:42:51.447Z",
           "reason": "Gate and delivery observations do not provide complete effort telemetry. No retrospective reconstruction or calibration is made.",
           "missingFields": [
-            { "field": "calendarElapsedMinutes", "reason": "Opening and delivery timestamps are milestones, not a measurement of active effort." },
-            { "field": "activeAgentMinutes", "reason": "Active agent effort was not instrumented; unknown is not zero." },
-            { "field": "unattendedWaitMinutes", "reason": "Unattended waiting was not instrumented; unknown is not zero." },
-            { "field": "blockedMinutes", "reason": "Blocked time was not instrumented; unknown is not zero." },
-            { "field": "reworkMinutes", "reason": "Rework effort was not instrumented; unknown is not zero." },
-            { "field": "agentRuns", "reason": "Agent-run counts were not instrumented across the left-censored work." },
-            { "field": "maxParallelAgents", "reason": "Peak parallelism was not instrumented across the left-censored work." },
-            { "field": "modelTurns", "reason": "Model turns were not instrumented across the left-censored work." },
-            { "field": "researchCycles", "reason": "Research-cycle counts were not instrumented across the left-censored work." },
-            { "field": "falsificationGatesRun", "reason": "Falsification-gate counts were not prospectively aggregated." },
-            { "field": "candidateArchitecturesTested", "reason": "Candidate-architecture counts do not apply cleanly and were not recorded." },
-            { "field": "candidateArchitecturesRejected", "reason": "Rejected-architecture counts do not apply cleanly and were not recorded." },
-            { "field": "substantiveReviewRounds", "reason": "Review evidence exists, but no prospective numeric telemetry series was instrumented." },
-            { "field": "p0Findings", "reason": "Finding severity counts were not prospectively instrumented." },
-            { "field": "p1Findings", "reason": "Finding severity counts were not prospectively instrumented." },
-            { "field": "prepublicationClaimCorrections", "reason": "Claim corrections were not prospectively aggregated as a numeric metric." },
-            { "field": "resultState", "reason": "The published candidate state is preserved in statusHistory; no calibrated metric is inferred." },
-            { "field": "positiveSignalObserved", "reason": "Publication evidence is recorded separately; no calibrated signal metric is inferred." },
-            { "field": "targetReached", "reason": "Delivery is recorded in statusHistory; no calibrated target metric is inferred." },
-            { "field": "forecastErrorMinutes", "reason": "Active effort was not measured, so forecast error cannot be computed from wall time." },
-            { "field": "forecastRatio", "reason": "Active effort was not measured, so no forecast ratio can be computed." },
-            { "field": "withinForecastInterval", "reason": "Active effort was not measured, so interval membership is unknown." },
-            { "field": "activeHumanMinutes", "reason": "Active human effort was not instrumented; unknown is not zero." },
-            { "field": "computeMinutes", "reason": "Compute time was not prospectively aggregated; unknown is not zero." },
-            { "field": "deduplicatedModelTokens", "reason": "Deduplicated token use was not instrumented; unknown is not zero." },
-            { "field": "uncachedInputTokens", "reason": "Uncached input tokens were not instrumented; unknown is not zero." }
+            {
+              "field": "calendarElapsedMinutes",
+              "reason": "Opening and delivery timestamps are milestones, not a measurement of active effort."
+            },
+            {
+              "field": "activeAgentMinutes",
+              "reason": "Active agent effort was not instrumented; unknown is not zero."
+            },
+            {
+              "field": "unattendedWaitMinutes",
+              "reason": "Unattended waiting was not instrumented; unknown is not zero."
+            },
+            {
+              "field": "blockedMinutes",
+              "reason": "Blocked time was not instrumented; unknown is not zero."
+            },
+            {
+              "field": "reworkMinutes",
+              "reason": "Rework effort was not instrumented; unknown is not zero."
+            },
+            {
+              "field": "agentRuns",
+              "reason": "Agent-run counts were not instrumented across the left-censored work."
+            },
+            {
+              "field": "maxParallelAgents",
+              "reason": "Peak parallelism was not instrumented across the left-censored work."
+            },
+            {
+              "field": "modelTurns",
+              "reason": "Model turns were not instrumented across the left-censored work."
+            },
+            {
+              "field": "researchCycles",
+              "reason": "Research-cycle counts were not instrumented across the left-censored work."
+            },
+            {
+              "field": "falsificationGatesRun",
+              "reason": "Falsification-gate counts were not prospectively aggregated."
+            },
+            {
+              "field": "candidateArchitecturesTested",
+              "reason": "Candidate-architecture counts do not apply cleanly and were not recorded."
+            },
+            {
+              "field": "candidateArchitecturesRejected",
+              "reason": "Rejected-architecture counts do not apply cleanly and were not recorded."
+            },
+            {
+              "field": "substantiveReviewRounds",
+              "reason": "Review evidence exists, but no prospective numeric telemetry series was instrumented."
+            },
+            {
+              "field": "p0Findings",
+              "reason": "Finding severity counts were not prospectively instrumented."
+            },
+            {
+              "field": "p1Findings",
+              "reason": "Finding severity counts were not prospectively instrumented."
+            },
+            {
+              "field": "prepublicationClaimCorrections",
+              "reason": "Claim corrections were not prospectively aggregated as a numeric metric."
+            },
+            {
+              "field": "resultState",
+              "reason": "The published candidate state is preserved in statusHistory; no calibrated metric is inferred."
+            },
+            {
+              "field": "positiveSignalObserved",
+              "reason": "Publication evidence is recorded separately; no calibrated signal metric is inferred."
+            },
+            {
+              "field": "targetReached",
+              "reason": "Delivery is recorded in statusHistory; no calibrated target metric is inferred."
+            },
+            {
+              "field": "forecastErrorMinutes",
+              "reason": "Active effort was not measured, so forecast error cannot be computed from wall time."
+            },
+            {
+              "field": "forecastRatio",
+              "reason": "Active effort was not measured, so no forecast ratio can be computed."
+            },
+            {
+              "field": "withinForecastInterval",
+              "reason": "Active effort was not measured, so interval membership is unknown."
+            },
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Active human effort was not instrumented; unknown is not zero."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Compute time was not prospectively aggregated; unknown is not zero."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Deduplicated token use was not instrumented; unknown is not zero."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Uncached input tokens were not instrumented; unknown is not zero."
+            }
           ],
           "calibration": null
         }
@@ -40638,6 +40716,112 @@
           "summary": "Appended canonical publication after archive parity, green merged-main CI and guarded readback; preserved the frozen forecast, left-censored history, scoped assurance and explicit unavailable telemetry without calibration."
         }
       ]
+    },
+    {
+      "attemptId": "ep-attempt:wmy5-graded-obstructions-publication",
+      "workId": "ep-work:wmy5-graded-obstructions",
+      "cohort": "prospective",
+      "registeredAt": "2026-10-19T14:20:59.611Z",
+      "aims": [
+        "science"
+      ],
+      "question": "Can the reviewed WMY5 obstruction results be delivered as a coherent, bounded and independently inspectable research candidate without implying resolution of the global five-dimensional problem?",
+      "selectionBasis": "Authorised remaining publication after substantive mathematical revision and internal reassessment; all earlier research and review work is left-censored.",
+      "taskClass": "remaining-full-candidate-publication",
+      "status": "active",
+      "statusAt": "2026-10-19T14:20:59.611Z",
+      "resultClass": "pending",
+      "statusHistory": [
+        {
+          "at": "2026-10-19T14:20:59.611Z",
+          "status": "active",
+          "resultClass": "pending",
+          "reason": "Remaining publication intake; no earlier discovery, revision or assurance clock is inferred.",
+          "evidenceRefs": []
+        }
+      ],
+      "decisionObjectTarget": "Exact exclusions for two complete displayed graded-compression families and one auxiliary-affine Hessian family, with the global WMY5 problem explicitly left open.",
+      "comparisonPlan": {
+        "status": "not-applicable",
+        "comparator": "No matched publication comparator.",
+        "estimand": "No acceleration or scientific-impact effect is estimated.",
+        "matchedAssuranceEndpoint": "Unrefereed computer-assisted candidate with scoped producer replay and explicit external-assurance gaps.",
+        "reason": "This is a selected research publication, not a workflow experiment."
+      },
+      "measurement": {
+        "status": "measured-partial",
+        "missingnessReason": "Earlier research and review are left-censored; complete human, compute, token and rework telemetry was not instrumented.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-19T14:20:59.611Z",
+            "basis": "Contemporaneous remaining-publication registration."
+          }
+        ],
+        "activeHumanMinutes": null,
+        "computeMinutes": null,
+        "computeCost": null,
+        "agentRuns": null,
+        "reworkMinutes": null,
+        "correctionCount": null
+      },
+      "assuranceEndpoint": {
+        "status": "not-recorded",
+        "assessedAt": null,
+        "dimensions": [],
+        "claimCeiling": null,
+        "evidenceRefs": [],
+        "missingnessReason": "Publication endpoint not yet reached."
+      },
+      "releaseSlug": "wmy5-graded-obstructions",
+      "stopReason": null,
+      "corrections": [],
+      "revisions": [
+        {
+          "date": "2026-10-19",
+          "summary": "Registered remaining publication after final mathematical revision; earlier research and review remain left-censored."
+        }
+      ],
+      "metrics": {
+        "schemaVersion": "1.0",
+        "measurementScope": "assurance-through-publication",
+        "scopeBoundary": "Remaining publication only; prior research, extension work and substantive review are left-censored.",
+        "forecast": {
+          "frozenAt": "2026-10-19T14:20:59.611Z",
+          "procedureClass": "full-candidate",
+          "targetOutcome": "Scoped archived candidate with standard media and canonical Evidence Press readback.",
+          "expectedActiveMinutes": 150,
+          "plausibleLowMinutes": 120,
+          "plausibleHighMinutes": 210,
+          "expectedUnattendedWaitMinutes": 30,
+          "referenceClass": {
+            "label": "Full candidate publication after scientific revision",
+            "sampleSize": 0,
+            "basis": "Procedural judgement, not empirical calibration."
+          },
+          "fermiComponents": [
+            {
+              "component": "Freeze, archive, media and guarded delivery",
+              "count": 1,
+              "lowMinutesPerUnit": 120,
+              "centralMinutesPerUnit": 150,
+              "highMinutesPerUnit": 210,
+              "basis": "Final identity, media, site and readback gates remain; no scientific gate is weakened."
+            }
+          ],
+          "probabilityPositiveSignal": 0.9,
+          "probabilityTargetClosure": 0.8,
+          "probabilityHorizonMinutes": 360,
+          "assumptions": [
+            "No provider, rights or final-byte mismatch blocks publication."
+          ],
+          "reforecastTriggers": [
+            "Provider failure, public-byte mismatch or a new load-bearing scientific defect."
+          ],
+          "stopRule": "Never weaken assurance or omit canonical readback to meet the forecast."
+        },
+        "outcome": null
+      }
     }
   ],
   "updatePolicy": {
@@ -41834,6 +42018,10 @@
     {
       "date": "2026-10-19",
       "summary": "Recorded canonical sharp rank-three Chollet candidate publication after exact archive parity, merged-main CI and guarded readback; retained the frozen forecast, left-censored history, scoped assurance and unavailable resource telemetry without external-review or impact promotion."
+    },
+    {
+      "date": "2026-10-19",
+      "summary": "Registered the remaining WMY5 graded-obstruction publication after final scientific revision; earlier research and review remain left-censored, with no inferred speedup or impact."
     }
   ]
 }
