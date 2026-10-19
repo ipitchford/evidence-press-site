@@ -22,6 +22,7 @@ const inside = (parent, child) => child === parent || child.startsWith(parent + 
 const generated = rel => rel === 'dist' || rel.startsWith('dist/') ||
   rel === 'protocols/dist' || rel.startsWith('protocols/dist/') ||
   rel === 'protocols/RECEIPT.json' || /^protocols\/protocols\/[^/]+\/RECEIPT\.json$/.test(rel);
+const operatingSystemMetadata = rel => /(^|\/)(\.DS_Store|\._[^/]+|Thumbs\.db|desktop\.ini|\.localized)$/i.test(rel);
 
 function inventory(root, skip = () => false) {
   const files = [];
@@ -83,7 +84,8 @@ function snapshot(root) {
   if (git(['ls-files', '-v']).split('\n').some(line => /^[a-zS] /.test(line))) throw new Error('Git assume-unchanged/skip-worktree flags are unsupported');
   const tracked = git(['ls-files', '--stage']);
   if (tracked.split('\n').some(line => /^160000 /.test(line))) throw new Error('submodules require a separate dependency closure');
-  const source = inventory(root, rel => ['.git', 'node_modules', '.wrangler', 'test-results', 'playwright-report'].includes(rel) || rel.endsWith('/node_modules') || generated(rel));
+  const source = inventory(root, rel => ['.git', 'node_modules', '.wrangler', 'test-results', 'playwright-report'].includes(rel) ||
+    rel.endsWith('/node_modules') || generated(rel) || operatingSystemMetadata(rel));
   const tools = {};
   for (const name of ['node', 'git', 'bash', 'sh', 'cp', 'rm', 'dirname', 'python3', 'pdftotext']) {
     const file = resolveCommand(name, env);
