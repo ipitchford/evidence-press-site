@@ -40414,9 +40414,9 @@
       "question": "Can the reviewed rank-three permanent theorem, exact rational certificate and mixed extension be delivered as a coherent, bounded and independently inspectable research candidate?",
       "selectionBasis": "Authorised remaining publication after substantive mathematical revision and confirmation review; all earlier research and review work is left-censored.",
       "taskClass": "remaining-full-candidate-publication",
-      "status": "active",
-      "statusAt": "2026-10-19T12:22:08.486Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-10-19T13:42:51.447Z",
+      "resultClass": "positive",
       "statusHistory": [
         {
           "at": "2026-10-19T12:22:08.486Z",
@@ -40424,6 +40424,18 @@
           "resultClass": "pending",
           "reason": "Remaining publication intake; no earlier discovery, revision or assurance clock is inferred.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-19T13:42:51.447Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Observed canonical Evidence Press readback from merge commit 47fe77e5ac3055eb0fe593387626e54e97328021 and content-addressed artifact 18688cb69eef0bf87ec99e92f0cfd0df8fb306de8abad0aead19d7065bcfadc4; publication is not external scientific review.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/sharp-rank-three-chollet-order-five/",
+            "https://evidencepress.org/releases/sharp-rank-three-chollet-order-five/paper.json",
+            "https://zenodo.org/records/23474553",
+            "https://github.com/ipitchford/sharp-rank-three-chollet-order-five/releases/tag/v1.0.0"
+          ]
         }
       ],
       "decisionObjectTarget": "A sharp order-five rank-three permanent inequality, exact certificate and complete self-product and mixed equality classifications.",
@@ -40442,6 +40454,11 @@
             "event": "work-opened",
             "at": "2026-10-19T12:22:08.486Z",
             "basis": "Contemporaneous remaining-publication registration."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-10-19T13:42:51.447Z",
+            "basis": "Observed canonical readback; merge commit 47fe77e5ac3055eb0fe593387626e54e97328021 and deployment receipt artifact 18688cb69eef0bf87ec99e92f0cfd0df8fb306de8abad0aead19d7065bcfadc4."
           }
         ],
         "activeHumanMinutes": null,
@@ -40489,7 +40506,41 @@
           ],
           "stopRule": "Never weaken assurance or omit canonical readback to meet the forecast."
         },
-        "outcome": null
+        "outcome": {
+          "status": "unavailable",
+          "policyVersion": "2.0",
+          "recordedAt": "2026-10-19T13:42:51.447Z",
+          "reason": "Gate and delivery observations do not provide complete effort telemetry. No retrospective reconstruction or calibration is made.",
+          "missingFields": [
+            { "field": "calendarElapsedMinutes", "reason": "Opening and delivery timestamps are milestones, not a measurement of active effort." },
+            { "field": "activeAgentMinutes", "reason": "Active agent effort was not instrumented; unknown is not zero." },
+            { "field": "unattendedWaitMinutes", "reason": "Unattended waiting was not instrumented; unknown is not zero." },
+            { "field": "blockedMinutes", "reason": "Blocked time was not instrumented; unknown is not zero." },
+            { "field": "reworkMinutes", "reason": "Rework effort was not instrumented; unknown is not zero." },
+            { "field": "agentRuns", "reason": "Agent-run counts were not instrumented across the left-censored work." },
+            { "field": "maxParallelAgents", "reason": "Peak parallelism was not instrumented across the left-censored work." },
+            { "field": "modelTurns", "reason": "Model turns were not instrumented across the left-censored work." },
+            { "field": "researchCycles", "reason": "Research-cycle counts were not instrumented across the left-censored work." },
+            { "field": "falsificationGatesRun", "reason": "Falsification-gate counts were not prospectively aggregated." },
+            { "field": "candidateArchitecturesTested", "reason": "Candidate-architecture counts do not apply cleanly and were not recorded." },
+            { "field": "candidateArchitecturesRejected", "reason": "Rejected-architecture counts do not apply cleanly and were not recorded." },
+            { "field": "substantiveReviewRounds", "reason": "Review evidence exists, but no prospective numeric telemetry series was instrumented." },
+            { "field": "p0Findings", "reason": "Finding severity counts were not prospectively instrumented." },
+            { "field": "p1Findings", "reason": "Finding severity counts were not prospectively instrumented." },
+            { "field": "prepublicationClaimCorrections", "reason": "Claim corrections were not prospectively aggregated as a numeric metric." },
+            { "field": "resultState", "reason": "The published candidate state is preserved in statusHistory; no calibrated metric is inferred." },
+            { "field": "positiveSignalObserved", "reason": "Publication evidence is recorded separately; no calibrated signal metric is inferred." },
+            { "field": "targetReached", "reason": "Delivery is recorded in statusHistory; no calibrated target metric is inferred." },
+            { "field": "forecastErrorMinutes", "reason": "Active effort was not measured, so forecast error cannot be computed from wall time." },
+            { "field": "forecastRatio", "reason": "Active effort was not measured, so no forecast ratio can be computed." },
+            { "field": "withinForecastInterval", "reason": "Active effort was not measured, so interval membership is unknown." },
+            { "field": "activeHumanMinutes", "reason": "Active human effort was not instrumented; unknown is not zero." },
+            { "field": "computeMinutes", "reason": "Compute time was not prospectively aggregated; unknown is not zero." },
+            { "field": "deduplicatedModelTokens", "reason": "Deduplicated token use was not instrumented; unknown is not zero." },
+            { "field": "uncachedInputTokens", "reason": "Uncached input tokens were not instrumented; unknown is not zero." }
+          ],
+          "calibration": null
+        }
       },
       "assuranceEndpoint": {
         "status": "measured-partial",
@@ -40581,6 +40632,10 @@
         {
           "date": "2026-10-19",
           "summary": "Registered remaining publication after final mathematical revision; earlier research and review remain left-censored."
+        },
+        {
+          "date": "2026-10-19",
+          "summary": "Appended canonical publication after archive parity, green merged-main CI and guarded readback; preserved the frozen forecast, left-censored history, scoped assurance and explicit unavailable telemetry without calibration."
         }
       ]
     }
@@ -41775,6 +41830,10 @@
     {
       "date": "2026-10-19",
       "summary": "Registered the remaining sharp rank-three Chollet publication after final scientific revision; earlier research and review remain left-censored, with no inferred speedup or impact."
+    },
+    {
+      "date": "2026-10-19",
+      "summary": "Recorded canonical sharp rank-three Chollet candidate publication after exact archive parity, merged-main CI and guarded readback; retained the frozen forecast, left-censored history, scoped assurance and unavailable resource telemetry without external-review or impact promotion."
     }
   ]
 }
