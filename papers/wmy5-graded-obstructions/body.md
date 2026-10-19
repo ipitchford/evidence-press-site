@@ -112,7 +112,7 @@ python3 discovery/generalized_hessian_check.py
 python3 -O discovery/generalized_hessian_check.py
 ```
 
-The expected outcomes are five exact-check groups passed, all four corruptions rejected, the chain residual $16{,}367{,}616$, inventory totals 27 and 28, and the factored Hessian determinant above. The [GitHub release](https://github.com/ipitchford/wmy5-graded-obstructions/releases/tag/v1.0.0) and [Zenodo record](https://zenodo.org/records/23477226) carry the frozen version-of-record assets.
+The expected outcomes are five exact-check groups passed, all four corruptions rejected, the chain residual $16{,}367{,}616$, inventory totals 27 and 28, and the factored Hessian determinant above. The [GitHub release](https://github.com/ipitchford/wmy5-graded-obstructions/releases/tag/v1.0.2) and [Zenodo record](https://zenodo.org/records/23478563) carry the frozen version-of-record assets. Version 1.0.2 is an archive-and-assurance-metadata successor: no theorem, proof, manuscript, certificate, verifier or scientific claim changed from the original release.
 
 ## The most valuable next projects
 
