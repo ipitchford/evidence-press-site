@@ -40728,9 +40728,9 @@
       "question": "Can the reviewed WMY5 obstruction results be delivered as a coherent, bounded and independently inspectable research candidate without implying resolution of the global five-dimensional problem?",
       "selectionBasis": "Authorised remaining publication after substantive mathematical revision and internal reassessment; all earlier research and review work is left-censored.",
       "taskClass": "remaining-full-candidate-publication",
-      "status": "active",
-      "statusAt": "2026-10-19T14:20:59.611Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-10-19T15:04:12.420Z",
+      "resultClass": "positive",
       "statusHistory": [
         {
           "at": "2026-10-19T14:20:59.611Z",
@@ -40738,6 +40738,18 @@
           "resultClass": "pending",
           "reason": "Remaining publication intake; no earlier discovery, revision or assurance clock is inferred.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-19T15:04:12.420Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Observed canonical Evidence Press readback from merge commit 9d56f27c1c16e62ca6833f5d3c6d9c8c2fc14cb7 and content-addressed artifact 926c5ea809cf0ddf4d17d8f30458bd36cc799c6d2d0c33f558a1d68958730c89; publication is not external scientific review.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/wmy5-graded-obstructions/",
+            "https://evidencepress.org/releases/wmy5-graded-obstructions/paper.json",
+            "https://zenodo.org/records/23477226",
+            "https://github.com/ipitchford/wmy5-graded-obstructions/releases/tag/v1.0.0"
+          ]
         }
       ],
       "decisionObjectTarget": "Exact exclusions for two complete displayed graded-compression families and one auxiliary-affine Hessian family, with the global WMY5 problem explicitly left open.",
@@ -40756,6 +40768,11 @@
             "event": "work-opened",
             "at": "2026-10-19T14:20:59.611Z",
             "basis": "Contemporaneous remaining-publication registration."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-10-19T15:04:12.420Z",
+            "basis": "Observed canonical readback; merge commit 9d56f27c1c16e62ca6833f5d3c6d9c8c2fc14cb7 and deployment receipt artifact 926c5ea809cf0ddf4d17d8f30458bd36cc799c6d2d0c33f558a1d68958730c89."
           }
         ],
         "activeHumanMinutes": null,
@@ -40766,12 +40783,87 @@
         "correctionCount": null
       },
       "assuranceEndpoint": {
-        "status": "not-recorded",
-        "assessedAt": null,
-        "dimensions": [],
-        "claimCeiling": null,
-        "evidenceRefs": [],
-        "missingnessReason": "Publication endpoint not yet reached."
+        "status": "measured-partial",
+        "assessedAt": "2026-10-19T15:04:12.420Z",
+        "dimensions": [
+          {
+            "dimension": "availability",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wmy5-graded-obstructions/releases/tag/v1.0.0",
+              "https://doi.org/10.5281/zenodo.23477226"
+            ]
+          },
+          {
+            "dimension": "internalReplay",
+            "state": "passed",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wmy5-graded-obstructions/blob/v1.0.0/ASSURANCE.md",
+              "https://github.com/ipitchford/wmy5-graded-obstructions/blob/v1.0.0/REPLAY_RECEIPT.md"
+            ]
+          },
+          {
+            "dimension": "independentRerun",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "independentReimplementation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wmy5-graded-obstructions/blob/v1.0.0/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "formalVerification",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "specialistReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "editorialPeerReview",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          },
+          {
+            "dimension": "dataEnvironmentReproducibility",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wmy5-graded-obstructions/blob/v1.0.0/ENVIRONMENT.md"
+            ]
+          },
+          {
+            "dimension": "semanticValidation",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wmy5-graded-obstructions/blob/v1.0.0/CLAIMS.json",
+              "https://github.com/ipitchford/wmy5-graded-obstructions/blob/v1.0.0/ASSURANCE.md"
+            ]
+          },
+          {
+            "dimension": "noveltyAssessment",
+            "state": "partial",
+            "evidenceRefs": [
+              "https://github.com/ipitchford/wmy5-graded-obstructions/blob/v1.0.0/SOURCES.md",
+              "https://github.com/ipitchford/wmy5-graded-obstructions/blob/v1.0.0/sources.json"
+            ]
+          },
+          {
+            "dimension": "priorityAssessment",
+            "state": "not-assessed",
+            "evidenceRefs": []
+          }
+        ],
+        "claimCeiling": "Exact producer replay and bounded internal reimplementation support the stated exclusions for the complete displayed parallel and chain graded-compression families and the auxiliary affine-Hessian family; this does not solve the global WMY5 problem and is not formal verification, independent external reproduction, specialist review, editorial peer review, or a priority determination.",
+        "evidenceRefs": [
+          "https://github.com/ipitchford/wmy5-graded-obstructions/releases/tag/v1.0.0",
+          "https://doi.org/10.5281/zenodo.23477226"
+        ],
+        "missingnessReason": "No independent external rerun, formal verification, specialist review, editorial peer review, or priority assessment was obtained; environment, semantic and novelty checks remain bounded internal evidence."
       },
       "releaseSlug": "wmy5-graded-obstructions",
       "stopReason": null,
@@ -40780,6 +40872,10 @@
         {
           "date": "2026-10-19",
           "summary": "Registered remaining publication after final mathematical revision; earlier research and review remain left-censored."
+        },
+        {
+          "date": "2026-10-19",
+          "summary": "Appended canonical publication after archive parity, green merged-main CI and guarded readback; preserved the frozen forecast, left-censored history, scoped assurance and explicit unavailable telemetry without calibration."
         }
       ],
       "metrics": {
@@ -40820,7 +40916,119 @@
           ],
           "stopRule": "Never weaken assurance or omit canonical readback to meet the forecast."
         },
-        "outcome": null
+        "outcome": {
+          "status": "unavailable",
+          "policyVersion": "2.0",
+          "recordedAt": "2026-10-19T15:04:12.420Z",
+          "reason": "Gate and delivery observations do not provide complete effort telemetry. No retrospective reconstruction or calibration is made.",
+          "missingFields": [
+            {
+              "field": "calendarElapsedMinutes",
+              "reason": "Opening and delivery timestamps are milestones, not a measurement of active effort."
+            },
+            {
+              "field": "activeAgentMinutes",
+              "reason": "activeAgentMinutes was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "unattendedWaitMinutes",
+              "reason": "unattendedWaitMinutes was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "blockedMinutes",
+              "reason": "blockedMinutes was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "reworkMinutes",
+              "reason": "reworkMinutes was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "agentRuns",
+              "reason": "agentRuns was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "maxParallelAgents",
+              "reason": "maxParallelAgents was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "modelTurns",
+              "reason": "modelTurns was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "researchCycles",
+              "reason": "researchCycles was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "falsificationGatesRun",
+              "reason": "falsificationGatesRun was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "candidateArchitecturesTested",
+              "reason": "candidateArchitecturesTested was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "candidateArchitecturesRejected",
+              "reason": "candidateArchitecturesRejected was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "substantiveReviewRounds",
+              "reason": "substantiveReviewRounds was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "p0Findings",
+              "reason": "p0Findings was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "p1Findings",
+              "reason": "p1Findings was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "prepublicationClaimCorrections",
+              "reason": "prepublicationClaimCorrections was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "resultState",
+              "reason": "resultState was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "positiveSignalObserved",
+              "reason": "positiveSignalObserved was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "targetReached",
+              "reason": "targetReached was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "forecastErrorMinutes",
+              "reason": "forecastErrorMinutes was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "forecastRatio",
+              "reason": "forecastRatio was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "withinForecastInterval",
+              "reason": "withinForecastInterval was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "activeHumanMinutes",
+              "reason": "activeHumanMinutes was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "computeMinutes was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "deduplicatedModelTokens was not prospectively instrumented across the left-censored work; unknown is not zero."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "uncachedInputTokens was not prospectively instrumented across the left-censored work; unknown is not zero."
+            }
+          ],
+          "calibration": null
+        }
       }
     }
   ],
@@ -42022,6 +42230,10 @@
     {
       "date": "2026-10-19",
       "summary": "Registered the remaining WMY5 graded-obstruction publication after final scientific revision; earlier research and review remain left-censored, with no inferred speedup or impact."
+    },
+    {
+      "date": "2026-10-19",
+      "summary": "Recorded canonical WMY5 graded-obstructions publication from observed readback, with scoped assurance, explicit unavailable telemetry and no retrospective calibration."
     }
   ]
 }
