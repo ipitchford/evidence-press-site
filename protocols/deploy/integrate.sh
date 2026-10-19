@@ -40,6 +40,10 @@ cp -R protocols/dist dist/protocols
 echo "7/7  sitemap merge    (fold /protocols/ page URLs into dist/sitemap.xml)"
 node tools/merge-protocols-sitemap.js
 
+# Finder may recreate this ignored cache between builds. It is never a public
+# site input and the full-payload scanner must not be asked to interpret it.
+rm -f dist/.DS_Store
+
 # Scan the mounted payload too: protocol downloads and pages are public bytes.
 node tools/check-public-text.js --built > /dev/null
 
