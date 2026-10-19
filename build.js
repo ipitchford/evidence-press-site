@@ -3166,7 +3166,7 @@ const OBSERVATORY_RECORD = {
 };
 
 /* ---------------------------------------------------------------- main */
-fs.rmSync(DIST, { recursive: true, force: true });
+fs.rmSync(DIST, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
 fs.mkdirSync(DIST, { recursive: true });
 /* Copy assets, but never operating-system metadata: .DS_Store and friends are
    invisible locally and end up publicly served, and they differ between
