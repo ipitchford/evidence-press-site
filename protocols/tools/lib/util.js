@@ -111,7 +111,10 @@ function gitIdentity(root, requestedCommit) {
   }
   const porcelain = sourceCommitFull ? run(['status', '--porcelain', '--untracked-files=normal']) : null;
   return {
-    sourceCommit: sourceCommitFull ? run(['rev-parse', '--short', sourceCommitFull]) : null,
+    // Keep generated protocol bytes independent of repository-local and runner
+    // Git abbreviation settings.  GitHub's default is commonly seven while
+    // maintainer checkouts may set core.abbrev to eight or more.
+    sourceCommit: sourceCommitFull ? run(['rev-parse', '--short=8', sourceCommitFull]) : null,
     sourceCommitFull,
     sourceTree: sourceCommitFull ? run(['rev-parse', `${sourceCommitFull}^{tree}`]) : null,
     sourceDate: sourceCommitFull ? run(['show', '-s', '--format=%cI', sourceCommitFull]) : null,
