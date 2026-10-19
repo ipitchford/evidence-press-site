@@ -74,6 +74,9 @@ retry_post_deploy_readback() {
   done
 }
 
+echo "==> canonical CI admission (exact deployed commit)"
+node tools/check-deploy-ci.js
+
 echo "==> [1/9] verified composite artifact (build once or reuse exact reviewed bytes)"
 node tools/check-public-text.js --source > /dev/null
 if [[ -n "$BUILD_RECEIPT" ]]; then

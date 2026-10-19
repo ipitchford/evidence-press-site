@@ -166,8 +166,11 @@ function verify(root, receiptFile) {
   root = fs.realpathSync(root);
   receiptFile = externalPath(root, receiptFile);
   const receipt = readReceipt(receiptFile);
-  if (digest(snapshot(root)) !== receipt.inputSha256 || digest(receipt.input) !== receipt.inputSha256) {
-    throw new Error('build inputs changed; prepare and review a new composite artifact');
+  const currentInput = snapshot(root);
+  if (digest(currentInput) !== receipt.inputSha256 || digest(receipt.input) !== receipt.inputSha256) {
+    const changed = [...new Set([...Object.keys(currentInput), ...Object.keys(receipt.input)])]
+      .filter(key => digest(currentInput[key] ?? null) !== digest(receipt.input[key] ?? null));
+    throw new Error(`build inputs changed (${changed.join(', ') || 'receipt input digest'}); prepare and review a new composite artifact`);
   }
   const output = outputSnapshot(root);
   if (digest(output) !== digest(receipt.output)) throw new Error('generated output changed after build; reviewed artifact cannot be reused');
