@@ -34,6 +34,7 @@ const TTS = Object.freeze({
   instructions: 'Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.'
 });
 const voiceLabel = `OpenAI API synthetic voice (${TTS.voice})`;
+const MAX_SEGMENT_CHARACTERS = 800;
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const pathsFor = slug => ({
   audio: path.join(OUT, `${slug}.mp3`),
@@ -84,7 +85,8 @@ function verify(slug, meta, files) {
   const audio = fs.readFileSync(files.audio);
   const text = receipt.narrationRecipe === 'bounded-disclosed-v1' ? plannedText(narrationFor(meta)) : narrationFor(meta).trim();
   if(receipt.narrationRecipe === 'bounded-disclosed-v1') {
-    try { verifySegments(text,receipt.segments); } catch(e) { problems.push(e.message); }
+    const max = receipt.maxSegmentCharacters || 2500;
+    try { verifySegments(text,receipt.segments,max); } catch(e) { problems.push(e.message); }
   }
   if (transcript !== `${text}\n`) problems.push('transcript differs from the generated narration source');
   if (meta.audioVoiceLabel !== voiceLabel) problems.push(`audioVoiceLabel must be ${JSON.stringify(voiceLabel)}`);
@@ -121,7 +123,7 @@ function verify(slug, meta, files) {
     if (fs.existsSync(files.audio) && !FORCE) { console.log('skip (exists):', slug); continue; }
     const text = plannedText(narrationFor(m));
     checkText(text, `planned narration for ${d}`);
-    const chunks = segments(text);
+    const chunks = segments(text,MAX_SEGMENT_CHARACTERS);
     if(spawnSync('ffmpeg',['-version'],{stdio:'ignore'}).status!==0) throw new Error('Run audio environment preflight: ffmpeg missing');
     process.stdout.write(`tts: ${slug} (${text.length} chars; ${TTS.model}/${TTS.voice}) ... `);
     const temporary = fs.mkdtempSync(path.join(os.tmpdir(),'ep-tts-'));
@@ -142,6 +144,7 @@ function verify(slug, meta, files) {
     const receipt = {
       schemaVersion: '1.0',
       narrationRecipe: 'bounded-disclosed-v1',
+      maxSegmentCharacters: MAX_SEGMENT_CHARACTERS,
       segments: parts.map(({path,...record})=>record),
       slug,
       generatedAt: new Date().toISOString(),

@@ -11,9 +11,9 @@ function segments(text,max=2500) {
   if(result.join(' ')!==text.trim())throw new Error('Narration segmentation lost text');
   return result;
 }
-function verifySegments(text,records) {
+function verifySegments(text,records,max=2500) {
   const crypto=require('node:crypto');
-  const expected=segments(text);
+  const expected=segments(text,max);
   if(!Array.isArray(records) || records.length!==expected.length) throw new Error('Narration segment count differs');
   for(const [i,part] of records.entries()) {
     if(part.input!==expected[i] || part.inputSha256!==crypto.createHash('sha256').update(expected[i]).digest('hex') ||
