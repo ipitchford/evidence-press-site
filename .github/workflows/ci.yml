@@ -60,7 +60,9 @@ jobs:
           for f in protocols/tools/*.js protocols/tools/lib/*.js protocols/tests/release-integrity/run.js; do node --check "$f"; done
 
       - name: Renderer regression tests
-        run: node tools/test-render.js
+        run: |
+          node tools/test-render.js
+          node tools/test-deploy-ci.js
 
       - name: Build-artifact reuse and deployment boundary hostile controls
         run: |
