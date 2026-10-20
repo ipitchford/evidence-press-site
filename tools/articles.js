@@ -21,7 +21,7 @@ const META_FIELDS = new Set([
   'dateModified', 'articleClass', 'status', 'byline', 'bylineType', 'topics',
   'newResearchClaims', 'claimBoundary', 'sources', 'relatedReleases',
   'relatedArticles', 'corrections', 'license', 'renderMode', 'canonicalPath',
-  'sourcePath', 'banner', 'audio'
+  'sourcePath', 'banner', 'audio', 'video'
 ]);
 
 function isRealDate(value) {
@@ -84,6 +84,21 @@ function validateMeta(meta, context) {
         bad('audio.voiceLabel must disclose the house synthetic voice');
       if (Object.keys(audio).some(field => !['src', 'transcript', 'provenance', 'durationSeconds', 'voiceLabel'].includes(field)))
         bad('audio contains an unknown field');
+    }
+  }
+  if (Object.hasOwn(meta, 'video')) {
+    // An Evidence Press film of the article: one YouTube watch URL, shown in a
+    // privacy-enhanced embed. Presentation only; it is not additional evidence.
+    const video = meta.video;
+    if (!video || typeof video !== 'object' || Array.isArray(video)) {
+      bad('video must be an object containing url, title and uploadDate');
+    } else {
+      if (typeof video.url !== 'string' || !/^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/.test(video.url))
+        bad('video.url must be a https://www.youtube.com/watch?v=<11-character id> URL');
+      if (typeof video.title !== 'string' || !video.title.trim()) bad('video.title must be a non-empty string');
+      if (!isRealDate(video.uploadDate)) bad('video.uploadDate must be a real YYYY-MM-DD date');
+      if (Object.keys(video).some(field => !['url', 'title', 'uploadDate'].includes(field)))
+        bad('video contains an unknown field');
     }
   }
   if (!RENDER_MODES.includes(meta.renderMode || 'generated')) bad(`renderMode must be one of ${RENDER_MODES.join(', ')}`);

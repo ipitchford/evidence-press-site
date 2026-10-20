@@ -117,6 +117,25 @@ recording or remove the audio field until it is current. Listen/check for
 omissions and pronunciation errors before publication. Keep the final MP3
 below Cloudflare Pages' 25 MiB per-file limit.
 
+## Article film
+
+When an Evidence Press film of the article is public on YouTube, add an
+optional `video` object to `meta.json`:
+
+```json
+"video": {
+  "url": "https://www.youtube.com/watch?v=VIDEO_ID",
+  "title": "The film's title",
+  "uploadDate": "2026-10-20"
+}
+```
+
+The page shows it in a privacy-enhanced (`youtube-nocookie.com`) player under
+"Watch the film", after the audio; the article record, Markdown export and
+structured data (`VideoObject`) include it. The film is presentation, not
+additional evidence. Adding it changes only `meta.json`, so it does not
+invalidate the full-text narration, which is bound to `body.md`.
+
 ## What belongs here
 
 The Articles section is for essays, commentary, synthesis, research notes and
