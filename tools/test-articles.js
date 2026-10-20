@@ -70,6 +70,16 @@ const audio = {
   provenance: '/assets/audio/fixture.provenance.json', durationSeconds: 125.5,
   voiceLabel: 'OpenAI API synthetic voice (fable)'
 };
+const video = { url: 'https://www.youtube.com/watch?v=Kt8pc2_JvGo', title: 'Fixture film', uploadDate: '2026-10-20' };
+check('article video requires one YouTube watch URL, a title and a real upload date', () => {
+  assert.deepStrictEqual(validateMeta({ ...valid, video }, 'fixture'), []);
+  for (const value of [null, [], {}, { ...video, url: 'https://youtu.be/Kt8pc2_JvGo' },
+    { ...video, url: 'https://example.com/watch?v=Kt8pc2_JvGo' }, { ...video, title: ' ' },
+    { ...video, uploadDate: '2026-02-30' }, { ...video, autoplay: true }]) {
+    assert.ok(validateMeta({ ...valid, video: value }, 'fixture').some(error => error.includes('video')));
+  }
+});
+
 check('article audio requires safe matching assets, positive duration and synthetic disclosure', () => {
   assert.deepStrictEqual(validateMeta({ ...valid, audio }, 'fixture'), []);
   for (const value of [null, [], {}, { ...audio, src: 'https://example.com/track.mp3' },

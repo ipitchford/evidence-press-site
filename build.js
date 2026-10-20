@@ -1516,6 +1516,7 @@ function articleRecord(article) {
     ...(article.bylineType ? { bylineType: article.bylineType } : {}),
     ...(article.banner ? { banner: { ...article.banner } } : {}),
     ...(article.audio ? { audio: { ...article.audio } } : {}),
+    ...(article.video ? { video: { ...article.video } } : {}),
     topics: article.topics,
     readingMinutes: article.readingMinutes,
     wordCount: article.wordCount,
@@ -1548,6 +1549,13 @@ function articleJsonldNode(article) {
       duration: `PT${Math.round(article.audio.durationSeconds)}S`,
       description: `Main article text, excluding bibliography. ${article.audio.voiceLabel}.`,
       isBasedOn: record.url
+    } } : {}),
+    ...(article.video ? { video: {
+      '@type': 'VideoObject', name: article.video.title,
+      description: `Evidence Press film of the article: ${article.title}`,
+      url: article.video.url, embedUrl: `https://www.youtube-nocookie.com/embed/${youtubeId(article.video.url)}`,
+      thumbnailUrl: `https://i.ytimg.com/vi/${youtubeId(article.video.url)}/hqdefault.jpg`,
+      uploadDate: article.video.uploadDate, isBasedOn: record.url
     } } : {}),
     url: record.url,
     mainEntityOfPage: record.url,
@@ -1669,6 +1677,11 @@ function generatedArticlePage(article) {
       <p class="note"><a href="${escAttr(article.audio.src)}" download>Download MP3</a> · <a href="${escAttr(article.audio.transcript)}">Transcript</a> · <a href="${escAttr(article.audio.provenance)}">Recording details</a></p>
       <p class="note">References remain in the article below. The synthetic narration is a reading, not additional evidence.</p>
     </section>` : ''}
+    ${article.video ? `<section class="article-video" aria-labelledby="article-video-title">
+      <h2 id="article-video-title">Watch the film</h2>
+      <figure class="media"><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/${youtubeId(article.video.url)}?rel=0" title="${escAttr(article.video.title)}" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><figcaption>${esc(article.video.title)} · <a href="${escAttr(article.video.url)}" rel="noopener">Watch on YouTube</a></figcaption></figure>
+      <p class="note">A narrated explainer of this article. The film is a presentation, not additional evidence.</p>
+    </section>` : ''}
     ${articleCorrectionsHtml(article)}
     ${markdown(article.body)}
     ${supportInvitation()}
@@ -1683,7 +1696,7 @@ ${foot}`;
 
 function articleMarkdown(article) {
   const banner = article.banner ? `![${article.banner.alt.replace(/[\\\[\]]/g, '\\$&').replace(/[\r\n]+/g, ' ')}](${BASE}${article.banner.src})\n\n${article.banner.caption.replace(/[\\`*_{}\[\]()#+.!<>|~-]/g, '\\$&').replace(/[\r\n]+/g, ' ')}\n\n` : '';
-  return `---\ntitle: "${article.title.replace(/"/g, '\\"')}"\nurl: ${articleUrl(article)}\ndate: ${article.datePublished}\nmodified: ${article.dateModified}\ntype: ${article.articleClass}\nbyline: ${article.byline}\nlicense: CC0-1.0\nstatus: ${article.status}\nclaim_boundary: "${article.claimBoundary.replace(/"/g, '\\"')}"\n---\n\n${banner}# ${article.title}\n\n${article.standfirst}\n\n> Publication boundary: ${article.claimBoundary}\n\n${article.body.trim()}\n\n## Selected source anchors\n\n${article.sources.map(source => `- ${source.citation} <${source.url}>`).join('\n')}\n`;
+  return `---\ntitle: "${article.title.replace(/"/g, '\\"')}"\nurl: ${articleUrl(article)}\ndate: ${article.datePublished}\nmodified: ${article.dateModified}\ntype: ${article.articleClass}\nbyline: ${article.byline}\nlicense: CC0-1.0\nstatus: ${article.status}\nclaim_boundary: "${article.claimBoundary.replace(/"/g, '\\"')}"\n---\n\n${banner}# ${article.title}\n\n${article.standfirst}\n\n> Publication boundary: ${article.claimBoundary}\n\n${article.video ? `Watch the film: [${article.video.title.replace(/[\[\]]/g, '')}](${article.video.url})\n\n` : ''}${article.body.trim()}\n\n## Selected source anchors\n\n${article.sources.map(source => `- ${source.citation} <${source.url}>`).join('\n')}\n`;
 }
 
 function writeArticleRecord(article) {
