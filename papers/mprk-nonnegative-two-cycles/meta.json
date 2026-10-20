@@ -1,0 +1,185 @@
+{
+  "slug": "mprk-nonnegative-two-cycles",
+  "title": "Nonnegative Runge–Kutta coefficients do not make modified Patankar schemes globally stable: a counterexample with attracting two-cycles",
+  "shortTitle": "Positive coefficients, wrong destination",
+  "oneLine": "A positivity-preserving MPRK22 scheme with only positive coefficients can lock into a two-cycle instead of reaching the correct steady state, refuting the natural reading of a 2024 global-stability conjecture.",
+  "abstract": "Modified Patankar–Runge–Kutta (MPRK) schemes keep stiff production–destruction models positive and mass-conserving for every step size. Izgin, Kopecz, Meister and Schilling (2024) conjectured that MPRK schemes with nonnegative Runge–Kutta coefficients are globally linearly stable. This candidate shows that the natural formal reading of that conjecture is false: MPRK22(4/7), whose nonzero coefficients 4/7, 1/8 and 7/8 are positive, applied with step size 1 to the two-species linear system with rates 9990 and 10 and started at (1/2, 1/2), converges to an attracting two-cycle although the steady state (0.001, 0.999) is its unique positive fixed point and locally asymptotically stable. The complete phase portrait is determined: only first components in a certified interval of length about 0.108 reach the steady state. Two-cycles occur for every α in (1/2, (√5−1)/2) at sufficiently asymmetric equilibria and large steps; certified examples cover explicit parameter regions, a three-species chain and the third-order scheme MPRK43II(37/50). Global convergence is proved for two species at α = 1/2 and α = 1, and a refined conjecture is stated. Computer-assisted statements use exact rational interval arithmetic. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-20",
+  "version": "1.0.1-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "modified Patankar–Runge–Kutta schemes",
+    "positivity-preserving integrators",
+    "global stability",
+    "spurious periodic orbits",
+    "production–destruction systems",
+    "computer-assisted proof"
+  ],
+  "repoUrl": "https://github.com/ipitchford/mprk-nonnegative-two-cycles",
+  "releaseUrl": "https://github.com/ipitchford/mprk-nonnegative-two-cycles/releases/tag/v1.0.1-candidate",
+  "pdfUrl": "https://github.com/ipitchford/mprk-nonnegative-two-cycles/releases/download/v1.0.1-candidate/mprk-nonnegative-two-cycles-1.0.1-candidate.pdf",
+  "doi": "10.5281/zenodo.23511175",
+  "zenodoUrl": "https://zenodo.org/records/23511175",
+  "citeText": "Anonymous (2026). Nonnegative Runge–Kutta coefficients do not make modified Patankar schemes globally stable: a counterexample with attracting two-cycles. Version 1.0.1-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23511175",
+  "evidence": "Written proofs; seven exact rational interval-arithmetic certificates (C1–C7) that regenerate byte for byte; negative controls showing the checks reject the symmetric system, α = 1/2, 2/3 and 1, tampered certificates and a known misprint; labelled floating-point explorations.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Written proofs and exact certificates have the stated scope; internal AI-assisted and adversarial review only. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the approved revised manuscript and its exact certificates. Versioned GitHub and Zenodo research archives were checked against the frozen release assets on 20 October 2026.",
+  "keyResults": [
+    "MPRK22(4/7), with all nonzero coefficients positive, converges from (1/2, 1/2) to an attracting two-cycle on a stiff two-species linear system whose steady state is its unique positive fixed point and locally stable (certified).",
+    "Complete phase portrait of this example: only first components in a certified interval of length about 0.108 reach the steady state; the interval's ends form a repelling two-cycle.",
+    "Two-cycles for every α in (1/2, (√5−1)/2) at sufficiently asymmetric equilibria and large steps (proof), with certified explicit regions, a three-species chain and the third-order MPRK43II(37/50).",
+    "Global convergence for every two-species linear system at α = 1/2 and α = 1 (proofs), and a refined conjecture."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review and adversarial review (including OpenAI gpt-5.6-sol)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "Positive coefficients are not enough. An Evidence Press briefing. Models in chemistry and ocean ecology track quantities that can never be negative, such as concentrations or biomass. Modified Patankar Runge Kutta schemes, called M-P-R-K schemes, are time-stepping methods built for these models. They keep every quantity positive and conserve total mass, however large the time step. In 2024, Izgin, Kopecz, Meister and Schilling conjectured that when the coefficients behind such a scheme are all non-negative, it always settles at the correct steady state, from any starting point and with any step size. This release shows that this natural reading of the conjecture is false. Take the scheme M-P-R-K two-two with parameter four-sevenths, whose coefficients are all positive, and a simple reaction between two species, one fast and one slow. With a step size of one and the mass split evenly at the start, the computed solution never reaches the true steady state, where the first species holds one thousandth of the mass. Instead it jumps back and forth for ever between two wrong states. Positivity and mass are preserved exactly, so the usual sanity checks notice nothing. The true steady state is still the scheme's only steady state, and it is locally stable, but only about eleven per cent of starting splits reach it. Every failure found combines two ingredients: a lopsided equilibrium, where one species holds about one per cent or less of its partner's share, and a step far longer than the fastest time scale. The symmetric tests behind the conjecture had neither, which helps explain why they missed it. Both ingredients are common in stiff chemistry, so the paper recommends the member with parameter one, and advises users to watch for values that flip back and forth from one step to the next. The paper also proves that two common members of the family always converge for two species, and proposes a refined conjecture. The key results are certified in exact arithmetic, and the checks can be rerun. This is an anonymous, unrefereed candidate, not peer reviewed or independently reproduced. Published on 20 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All seven exact certificates (C1–C7) regenerate byte for byte from the archived verifiers in optimised Python, including a separate clean replay and the publication gate on the frozen archive; negative controls pass in normal and optimised mode."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "AI reviewers recomputed key values with separate mpmath and sympy code inside the producer workflow; this is implementation diversity, not external reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the verifiers are Python programs and the interpreter is in the trust boundary."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Verifiers use only the Python standard library; exploratory scripts need NumPy, Matplotlib and mpmath and are not pinned."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Izgin, Kopecz, Meister and Schilling (2024), On the non-global linear stability and spurious fixed points of MPRK schemes with negative RK parameters. Numerical Algorithms 96, 1221–1242.",
+      "url": "https://doi.org/10.1007/s11075-024-01770-7"
+    },
+    {
+      "citation": "Izgin, Kopecz and Meister (2022), On Lyapunov stability of positive and conservative time integrators and application to second order modified Patankar–Runge–Kutta schemes. ESAIM: M2AN 56, 1053–1080.",
+      "url": "https://doi.org/10.1051/m2an/2022031"
+    },
+    {
+      "citation": "Izgin and Öffner (2023), A study of the local dynamics of modified Patankar DeC and higher order modified Patankar–RK methods. ESAIM: M2AN 57, 2319–2348.",
+      "url": "https://doi.org/10.1051/m2an/2023053"
+    },
+    {
+      "citation": "Kopecz and Meister (2018), On order conditions for modified Patankar–Runge–Kutta schemes. Applied Numerical Mathematics 123, 159–179.",
+      "url": "https://doi.org/10.1016/j.apnum.2017.09.004"
+    },
+    {
+      "citation": "Burchard, Deleersnijder and Meister (2003), A high-order conservative Patankar-type discretisation for stiff systems of production–destruction equations. Applied Numerical Mathematics 47, 1–30.",
+      "url": "https://doi.org/10.1016/S0168-9274(03)00101-6"
+    },
+    {
+      "citation": "Humphries (1993), Spurious solutions of numerical methods for initial value problems. IMA Journal of Numerical Analysis 13, 263–290.",
+      "url": "https://doi.org/10.1093/imanum/13.2.263"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:mprk-nonnegative-two-cycles",
+    "attemptIds": [
+      "ep-attempt:mprk-nonnegative-two-cycles-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "A certified attracting two-cycle of the positive-coefficient scheme MPRK22(4/7) refutes the natural formal reading of the Izgin–Kopecz–Meister–Schilling global-stability conjecture.",
+      "scope": "MPRK22(alpha) and MPRK43II(gamma) applied to positive conservative linear systems; the refuted statement is the paper's formalisation (Definition 1, Conjecture 2) of a conjecture stated in words. Nonlinear systems and other schemes are explored only numerically."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "MPRK22(alpha) and MPRK43II(gamma) applied to positive conservative linear systems; the refuted statement is the paper's formalisation (Definition 1, Conjecture 2) of a conjecture stated in words. Nonlinear systems and other schemes are explored only numerically.",
+      "remainingRisks": [
+        "The conjecture was stated in words; the refuted universal statement is the paper's formalisation.",
+        "Certificates rely on Python execution and on the written reduction of each scheme to the evaluated map.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independently check the reduction of MPRK22 to the scalar map and replay certificates C1 and C2 in an independent interval library.",
+      "claimCeiling": "MPRK22(alpha) and MPRK43II(gamma) applied to positive conservative linear systems; the refuted statement is the paper's formalisation (Definition 1, Conjecture 2) of a conjecture stated in words. Nonlinear systems and other schemes are explored only numerically. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "mprk-nonnegative-two-cycles-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable counterexample and continuation target.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

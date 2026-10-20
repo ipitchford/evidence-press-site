@@ -34,6 +34,7 @@ ${inner}
 }
 
 const art = {};
+art['mprk-nonnegative-two-cycles'] = require('./mprk-two-cycle-art').draw;
 const appliedTrioArt = require('./applied-trio-art');
 art['williamson-order-transfer'] = appliedTrioArt.williamson;
 art['processor-sharing-freshness'] = appliedTrioArt.freshness;
@@ -2074,6 +2075,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'mprk-nonnegative-two-cycles':['#ffc184','#a9ebd3'],
   'williamson-order-transfer':['#a9ebd3','#ffc184'],
   'processor-sharing-freshness':['#a9ebd3','#ffc184'],
   'algebraic-extinction-compartments':['#a9ebd3','#ffc184'],
@@ -2556,6 +2558,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'primitive-su-primitivity') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${primitiveSuArt.description}</desc><defs>`);
   if (slug === 'wales-20mph-attribution-manuscript') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${walesManuscriptArt.description}</desc><defs>`);
   if (slug === 'flat-schmidt-chains') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${flatSchmidtArt.description}</desc><defs>`);
+  if (slug === 'mprk-nonnegative-two-cycles') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./mprk-two-cycle-art').description}</desc><defs>`);
   if (motifs[slug]) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"')
     .replace('<defs>', `<desc id="art-description">${motifs[slug].description}</desc><defs>`);
   if (slug === 'ptolemaic-negative-type') {
