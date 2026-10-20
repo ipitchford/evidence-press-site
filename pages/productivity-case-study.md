@@ -1,5 +1,7 @@
 Evidence Press is an experiment run in public: what can one person do with today's AI? It is a publisher, a research group, a film studio and a bookshop, and it has one person behind it, working with AI systems, mainly Anthropic's Claude and OpenAI's models. Everything it makes is published and dated, so it doubles as a running benchmark of what is becoming possible.
 
+![A mosaic of 169 small, colourful mathematical illustrations in a 13 by 13 grid: the cover art of every Evidence Press research release, in publication order.](/assets/productivity/release-wall.webp "Every research release so far: 169 covers, in publication order.")
+
 ## What the work is
 
 Most of it is new mathematics, released with the data and code needed to check it, and explained in plain-English films. A few of the results:
@@ -11,6 +13,8 @@ Most of it is new mathematics, released with the data and code needed to check i
 - **Sharing chores fairly.** Any nine chores can be [divided among three people](/releases/efx-nine-chores/) so that nobody would rather have someone else's share once a single chore is taken off their own list, however differently they rate the chores.
 - **A public question.** Casualties on Welsh roads fell by 28% in the first year of the 20 mph limit. Evidence Press [showed what the published figures can and cannot tell us](/releases/wales-20mph-casualty-attribution/) about how much of that fall the policy caused.
 
+![Six release cover illustrations in a three-by-two grid.](/assets/productivity/example-covers.webp "Covers of the six releases above, in order: Erdős problem 848, Erdős problem 758, the square drum, gravitational lensing, fair division of chores, and the Wales 20 mph audit.")
+
 Alongside the research come long-form articles that examine the biggest AI news as it breaks, from [OpenAI's claimed resolution of a Millennium Prize Problem](/articles/navier-stokes-informed-reaction/) to [what is really inside a neural network](/articles/neural-networks-already-clean/), and a book of 100 puzzles, [Think Again](/think-again/).
 
 ## Why it matters
@@ -19,6 +23,7 @@ Mathematics is where the effect of AI shows earliest and most clearly, because a
 
 ## How it compares
 
+
 In its first twelve weeks, from 28 July to 20 October 2026, Evidence Press published:
 
 - **169 research results**, each with a DOI, its data and code;
@@ -26,11 +31,15 @@ In its first twelve weeks, from 28 July to 20 October 2026, Evidence Press publi
 - **171 explanatory films** and 127 short videos;
 - **a book**, in hardback and Kindle editions.
 
+![A mosaic of 171 film thumbnails in a 19 by 9 grid, each with a bold short title over a mathematical image.](/assets/productivity/film-wall.webp "Every explanatory film so far: 171 thumbnails, in upload order. A second body of work, of a different kind.")
+
 For comparison, a classic study of scientific careers found that researchers typically first-author a handful of papers, often between three and six, in the first fifteen years of their careers ([Fanelli and Larivière, 2016](https://doi.org/10.1371/journal.pone.0149504)). Each result is narrower than a typical paper, but the difference in scale is more than a hundredfold, from one person, for about $500 a month.
 
 ## Where AI is heading
 
 Evidence Press is possible because of a change that is still accelerating. For six years, the length of task an AI agent can complete on its own, measured by how long the same task takes a skilled person, doubled about every seven months; since 2024 it has been doubling roughly every three ([METR, 2025](https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/) and [2026](https://metr.org/blog/2026-1-29-time-horizon-1-1/)). By May 2026 METR put the public frontier at about twelve hours of skilled human work, with the most capable models it had examined beyond two full working days, while warning that its tests can no longer measure reliably above sixteen hours and that its estimates are highly uncertain ([METR, 2026](https://metr.org/blog/2026-05-19-frontier-risk-report/)). Over the same period the price of a given level of capability has fallen between nine and nine hundred times a year, depending on the task ([Epoch AI, 2025](https://epoch.ai/data-insights/llm-inference-price-trends)).
+
+![Chart: starting from about 12 hours in May 2026, doubling every 7 months reaches about 130 hours by May 2028, and doubling every 3 months about 3,000 hours, more than a working year.](/assets/productivity/agent-horizon-projection.svg "A projection, not a forecast: METR's measured doubling times applied to its May 2026 estimate.")
 
 The second change is from one assistant to fleets. A team of AI agents, one directing and others searching in parallel, outperformed a single agent by 90% on Anthropic's research tasks, at around fifteen times the computing cost ([Anthropic, 2025](https://www.anthropic.com/engineering/multi-agent-research-system)). In February 2026 Anthropic described sixteen agents working for two weeks, for under $20,000, to write a 100,000-line C compiler able to build the Linux kernel ([Anthropic, 2026](https://www.anthropic.com/engineering/building-c-compiler)). In September 2026 OpenAI reported a fleet of about 10,000 agents working for 88 hours on the Navier–Stokes problem, one of the Clay Millennium Prize Problems ([Evidence Press commentary](/articles/navier-stokes-informed-reaction/)).
 
@@ -51,6 +60,8 @@ Sam Altman has described a betting pool among technology leaders on the first ye
 On the production side, Evidence Press shows the answer is already yes: one person can now run what used to need an institution. The next frontier is the business side, reaching readers and turning output into income, and Evidence Press has just begun on it, with a shop, a book and its first funding applications.
 
 ## One morning
+
+![Timeline of 20 October 2026: report handed over at 3:58, four errors found by 4:25, article and narration done by 5:00, film rendered by 6:15.](/assets/productivity/one-morning-timeline.svg)
 
 On 20 October 2026, a little before 4 a.m., the AI was handed a finished research report on a disputed claim about how AI models work, and asked to turn it into a public article. Three AI agents checked every claim against the original sources in parallel and found four errors to fix by 4:25. By 5:00 the article was written and a full narrated reading recorded and checked word for word. It went live once the person approved it. By 6:15 a 14-minute explanatory film had been scripted, reviewed by a second AI model looking for mistakes (it found one: a number read out ten thousand times too large), narrated, animated and rendered. The person's part was a few minutes of direction and approval.
 
