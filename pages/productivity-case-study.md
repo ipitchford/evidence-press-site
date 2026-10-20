@@ -21,7 +21,7 @@ Mathematics is where the effect of AI shows earliest and most clearly, because a
 
 In its first twelve weeks, from 28 July to 20 October 2026, Evidence Press published:
 
-- **166 research results**, each with a DOI, its data and code;
+- **169 research results**, each with a DOI, its data and code;
 - **seven long-form articles**, each with a full narrated version;
 - **171 explanatory films** and 127 short videos;
 - **a book**, in hardback and Kindle editions.
