@@ -17,9 +17,9 @@ Keep it light. The first tests of these methods found that heavier versions cost
 
 ## How Evidence Press works
 
-Evidence Press is a publisher, a research group and a film studio run by one person working with AI. One morning in October it turned a research report into a fact-checked, narrated article, ready to publish, and a 14-minute film in a little over two hours. In twelve weeks it published 166 research results, seven articles, 171 films and a book, for about $500 a month.
+Evidence Press is a live, public benchmark of what one person can now do with AI. It is a publisher, a research group and a film studio with one person behind it. In twelve weeks it published 166 research results, including a candidate proof of a published conjecture, seven articles, 171 films and a book, for about $500 a month, and its weekly output is still rising.
 
-The case study describes that morning, and six habits behind it that anyone can try on an ordinary job: hand over whole jobs, run several AI workers at once, make one AI check another, turn repeated jobs into recipes, keep a notebook the AI reads, and keep the decisions human.
+The case study covers what the work is, how it compares with ordinary research output, what it suggests about productivity growth and the one-person company, one morning's work hour by hour, and six habits anyone can try on an ordinary job.
 
 [**Read the case study →**](/productivity/case-study/)
 

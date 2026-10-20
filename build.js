@@ -3366,9 +3366,9 @@ simplePage('productivity/', 'Productivity Protocols', 'Open methods for getting 
   ],
   evidenceBoundary: 'The methods are open and inspectable. Benchmarks of earlier versions found no clear gain in model output, and their effect on people\'s working time has not yet been measured. The self-test and results ledger are how that evidence will be gathered.'
 });
-simplePage('productivity/case-study/', 'How Evidence Press Works', 'A publisher, research group and film studio run by one person with AI: one morning\'s work, what twelve weeks produced, and six habits anyone can borrow.', 'productivity-case-study.md', 'WebPage', {
+simplePage('productivity/case-study/', 'One Person, a Whole Press', 'Evidence Press as a live benchmark of what one person can do with AI: the work, how it compares, its trajectory, what it means for productivity growth, and six habits anyone can borrow.', 'productivity-case-study.md', 'WebPage', {
   kicker: 'Productivity Protocols · case study',
-  standfirst: 'A publisher, a research group and a film studio, run by one person with AI. One morning\'s work, what twelve weeks produced, and six habits anyone can borrow.'
+  standfirst: 'A publisher, a research group and a film studio with one person behind it: a running benchmark of what is becoming possible with AI.'
 });
 simplePage('productivity/measure/', 'Measure Your Own Gains', 'A two-week self-test for whether an AI method raises productivity on recurring tasks, with a record sheet and an open, anonymised results ledger.', 'productivity-measure.md', 'WebPage', {
   kicker: 'Productivity Protocols · self-test',
