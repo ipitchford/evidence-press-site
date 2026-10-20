@@ -1,0 +1,191 @@
+{
+  "slug": "pass-and-swap-bounded-swaps",
+  "title": "Bounded swaps in pass-and-swap queues: counterexamples to a conjecture of Dorsman and Gardner, and a proof for bipartite swapping graphs with odd caps",
+  "shortTitle": "When capped swaps lock in",
+  "oneLine": "Capping the swaps in pass-and-swap queues can trap the system in arrangements the product-form theory excludes: a 2024 conjecture fails for every cap of two or more, exactly on rings of 2kw+1 jobs and beyond, but holds for bipartite swapping graphs with odd caps.",
+  "abstract": "Pass-and-swap queues extend order-independent queues, whose stationary laws have a product form, by letting a finishing job hand its place along a chain of compatible jobs. Dorsman and Gardner (2024) capped each service at w swaps, proved product form whenever the placement orientation of the swapping graph has no directed path longer than w edges, and conjectured that, if the swapping graph is (w+1)-colourable, every state with a longer path is transient. This candidate shows that the conjecture fails for every w ≥ 2. The balanced states of the odd cycle C_{2w+1} form a closed class of height w+1 for every admissible rate function, recurrent under positive rates, with (2w+2)!/(w!)² states. Under positive rates, the cycle C_n has a recurrent class of excessive height if and only if n ≡ 1 (mod 2w), and it is then unique. Two odd cycles joined by a path give further counterexamples, and an exact census of all connected graphs with at most seven vertices finds 1355 violating (graph, cap) pairs, none bipartite and none at w = 1. Conversely, the conjecture holds for bipartite swapping graphs with odd caps under positive rates; exact computation finds no counterexample for any cap on bipartite graphs with at most nine vertices. On the counterexample class, homogeneous rates give an explicit product-form law, while for additive per-job rates scaling the original product weights by one constant per orientation is stationary only when rates are constant within each queue. Proofs are written; finite claims are certified by exact, replayable verifiers. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-20",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "pass-and-swap queues",
+    "bounded swaps",
+    "product-form stationary distribution",
+    "order-independent queues",
+    "redundancy scheduling",
+    "acyclic orientations",
+    "promotion on linear extensions",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/pass-and-swap-bounded-swaps",
+  "releaseUrl": "https://github.com/ipitchford/pass-and-swap-bounded-swaps/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/pass-and-swap-bounded-swaps/releases/download/v1.0.0-candidate/pass-and-swap-bounded-swaps-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23515841",
+  "zenodoUrl": "https://zenodo.org/records/23515841",
+  "citeText": "Anonymous (2026). Bounded swaps in pass-and-swap queues: counterexamples to a conjecture of Dorsman and Gardner, and a proof for bipartite swapping graphs with odd caps under positive service rates. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23515841",
+  "evidence": "Written proofs; fifteen exact standard-library Python verifiers whose JSON certificates regenerate byte for byte under python -O, including a census of all connected graphs with at most seven vertices and of bipartite graphs with at most nine; cross-checks of three independent descriptions on all graphs with at most six vertices; negative controls rejecting a wrong cap and a wrong cycle rule and detecting tampered files.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Written proofs and exact certificates have the stated scope; internal AI-assisted and adversarial review only. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the approved revised manuscript and its exact certificates. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 20 October 2026.",
+  "keyResults": [
+    "Conjecture 1 of Dorsman and Gardner fails for every cap w ≥ 2: the balanced states of the odd cycle C_{2w+1} form a closed class of height w+1, recurrent under positive rates, with (2w+2)!/(w!)² states (proof).",
+    "Under positive rates the cycle C_n has a recurrent class of excessive height if and only if n ≡ 1 (mod 2w), and it is unique (proof).",
+    "Two odd cycles joined by a path fail at an explicit cap (proof); all connected graphs with at most seven vertices give 1355 violating (graph, cap) pairs, none bipartite and none at w = 1 (exact census).",
+    "For bipartite swapping graphs with odd caps and positive rates the conjecture holds (proof); no bipartite counterexample exists for any cap up to nine vertices (exact census), and the even-cap case is conjectured.",
+    "On the counterexample class, homogeneous rates give an explicit product-form law; for additive rates that vary within a queue, orientation-scaled product weights are not stationary (proof)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, verification re-review and adversarial review (including OpenAI gpt-5.6-sol)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "Bounded swaps in pass-and-swap queues. An Evidence Press briefing. Many service systems match jobs with resources that can handle them, such as computing tasks with servers that hold the right data. For some queues, long-run behaviour has a simple formula, called a product form. In a pass-and-swap queue, a job that finishes service hands its place to a later job it is allowed to swap with, and that job passes the turn further back. A swapping graph says which jobs may swap. In 2024, Dorsman and Gardner limited each service to at most a fixed number of swaps, called the cap, a step motivated by redundancy scheduling. They proved the simple formula holds while no chain of swappable jobs is longer than the cap, and conjectured that, under a colouring condition, longer chains always die out. This release proves the conjecture false for every cap of two or more. In the smallest example, five jobs sit in a ring with a cap of two. There are a hundred and eighty arrangements, each with a chain that is too long, which the system can never leave and keeps revisiting. For jobs in a ring, such a trap exists exactly when the number of jobs leaves remainder one on division by twice the cap. Other networks fail too: a computer census of networks with up to seven jobs finds one thousand three hundred and fifty-five failures, none of them bipartite, meaning split into two groups that only swap across groups. For bipartite networks with an odd cap, the release proves the conjecture true, if every position is served. Inside the traps, the natural formula needs equal rates within each queue. The theorems have written proofs, and the counts are checked by exact programs that can be rerun. This is an anonymous, unrefereed candidate, not peer reviewed or independently reproduced. Published on 20 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All fifteen certificate runs, including the nine-vertex bipartite census, regenerate byte for byte under optimised Python in a separate clean replay; the fourteen shorter runs and the negative controls were replayed again on the frozen release archive."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Internal AI reviewers recomputed the main counts with their own simulation code inside the producer workflow; this is implementation diversity, not external reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the verifiers are Python programs and the interpreter is in the trust boundary."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Verifiers use only the Python standard library with exact arithmetic and deterministic output; continuous integration replays them on two Python versions."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Dorsman and Gardner (2024), New directions in pass-and-swap queues. Queueing Systems 107, 205–256.",
+      "url": "https://doi.org/10.1007/s11134-024-09914-1"
+    },
+    {
+      "citation": "Comte and Dorsman (2021), Pass-and-swap queues. Queueing Systems 98, 275–331.",
+      "url": "https://doi.org/10.1007/s11134-021-09700-3"
+    },
+    {
+      "citation": "Gardner and Righter (2020), Product forms for FCFS queueing models with arbitrary server-job compatibilities: an overview. Queueing Systems 96, 3–51.",
+      "url": "https://doi.org/10.1007/s11134-020-09668-6"
+    },
+    {
+      "citation": "Ayyer, Klee and Schilling (2014), Combinatorial Markov chains on linear extensions. Journal of Algebraic Combinatorics 39, 853–881.",
+      "url": "https://doi.org/10.1007/s10801-013-0470-9"
+    },
+    {
+      "citation": "Anton and Gardner (2023), The stationary distribution of the redundancy-d model with random order of service. ACM SIGMETRICS Performance Evaluation Review 51(2), 9–11.",
+      "url": "https://doi.org/10.1145/3626570.3626575"
+    },
+    {
+      "citation": "Gast and Van Houdt (2024), Approximations to study the impact of the service discipline in systems with redundancy. Proceedings of the ACM on Measurement and Analysis of Computing Systems 8(1), 1–33.",
+      "url": "https://doi.org/10.1145/3639040"
+    },
+    {
+      "citation": "Berezner, Kriel and Krzesinski (1995), Quasi-reversible multiclass queues with order independent departure rates. Queueing Systems 19, 345–359.",
+      "url": "https://doi.org/10.1007/BF01151928"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:pass-and-swap-bounded-swaps",
+    "attemptIds": [
+      "ep-attempt:pass-and-swap-bounded-swaps-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "The balanced class of the odd cycle C_{2w+1} refutes the Dorsman–Gardner bounded-swap conjecture for every w ≥ 2; the release adds an exact cycle criterion, further counterexample families and a proof for bipartite swapping graphs with odd caps.",
+      "scope": "Closed tandems of two pass-and-swap queues with one job per class (or the symmetric lift), simple swapping graphs and equal caps; recurrence and transience results assume positive service at every position. Census results hold only in their stated finite ranges."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The conjecture is quoted verbatim with the source's definitions, and the conventions (partite versus colourable, path length in vertices or edges, one job per class, rates, transition rule) are reconciled in Section 2.3 of the paper; the counterexamples violate both path-length readings.",
+      "remainingRisks": [
+        "Certificates rely on Python execution and on the verifiers implementing Definition 2.2 of the paper.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independently check the binding-move lemma and replay the cycle and census certificates with separate code; examine Conjecture 7.2.",
+      "claimCeiling": "Closed tandems of two pass-and-swap queues with one job per class, simple swapping graphs and equal caps; recurrence results under positive rates; census results in their finite ranges. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "pass-and-swap-bounded-swaps-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable counterexample, classification and continuation target.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
