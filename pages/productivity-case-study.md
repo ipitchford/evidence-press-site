@@ -59,7 +59,7 @@ On 20 October 2026, a little before 4 a.m., the AI was handed a finished researc
 1. **Hand over whole jobs, not single questions.** Describe the result and the limits, and let the AI work through the steps.
 2. **Run several AI workers at once.** Three fact-checkers in parallel take the time of one.
 3. **Make one AI check another.** A second model told to find mistakes catches the confident slip a tired person misses.
-4. **Turn every repeated job into a recipe.** The first attempt is slow; the written method makes the next one quick. The [methods on these pages](/productivity/) are recipes of this kind.
+4. **Turn every repeated job into a recipe.** The first attempt is slow; the written method makes the next one quick. The [six habits](/productivity/) each come with a starter to copy.
 5. **Keep a notebook the AI reads.** Decisions and lessons written down once are never explained twice.
 6. **Keep the decisions human.** The person chooses what is worth doing, approves what goes out and answers for it.
 

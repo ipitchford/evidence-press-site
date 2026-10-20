@@ -1480,7 +1480,7 @@ ${Array.from({ length: 9 }, (_, k) => {
     <a class="programme-card" href="/productivity/">
       <p class="card-date">Practice programme · 8 August 2026</p>
       <h3>Productivity Protocols</h3>
-      <p>Open methods for getting more useful work done with AI: start with a recurring task, try a method, and measure the gain. Includes how Evidence Press itself works.</p>
+      <p>Six working habits that multiply what one person can do with AI, the case study of how Evidence Press runs on them, and a way to measure the gain.</p>
     </a>
   </div>
 </section>
@@ -2508,7 +2508,7 @@ function llms() {
     `- [Research metrics](${BASE}/research-metrics/): the prospective attempt-level forecast, measurement and release-publication contract (Markdown: ${BASE}/research-metrics/index.md; JSON: ${BASE}/research-metrics/index.json)`,
     `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; video: ${OBSERVATORY.video.url}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
     `- [Articles](${BASE}/articles/): essays, commentary, syntheses and research notes, explicitly separate from certificate-backed releases (RSS: ${BASE}/articles/feed.xml; JSON: ${BASE}/api/articles.json)`,
-    `- [Productivity Protocols](${BASE}/productivity/): open, downloadable methods for getting more useful work done with AI, organised by task; an Evidence Press case study (${BASE}/productivity/case-study/); a two-week self-test and open results ledger (${BASE}/productivity/measure/, ${BASE}/assets/productivity/results.json). Effects on people's working time are not yet measured. Registry: ${BASE}/protocols/ (machine-readable index: ${BASE}/protocols/api/protocols.json)`,
+    `- [Productivity Protocols](${BASE}/productivity/): six working habits for getting more done with AI, each with a starter prompt; an Evidence Press case study (${BASE}/productivity/case-study/); a two-week self-test and open results ledger (${BASE}/productivity/measure/, ${BASE}/assets/productivity/results.json). Effects on people's working time are not yet measured. Registry: ${BASE}/protocols/ (machine-readable index: ${BASE}/protocols/api/protocols.json)`,
     `- [For AI agents](${BASE}/ai/): metadata conventions and suggested uses (verification, formalisation, follow-up research)`
   ];
   write('llms.txt', lines.join('\n') + '\n');
@@ -2640,7 +2640,7 @@ function notFoundPage() {
     <li><a href="/atlas/">Evidence Atlas</a> — the interactive and accessible relationship map</li>
     <li><a href="/about/">About</a> — what this site publishes, and what its assurance states mean</li>
     <li><a href="/operating-model/">Operating model</a> — the prospective doctrine, reusable method registry and defeasible inference ledger</li>
-    <li><a href="/productivity/">Productivity</a> — open methods for getting more useful work done with AI, and a way to measure the gain</li>
+    <li><a href="/productivity/">Productivity</a> — six working habits for getting more done with AI, and a way to measure the gain</li>
     <li><a href="/ai/">For AI agents</a> — machine-readable endpoints and conventions</li>
   </ul>
   <p>Automated clients: this response carries HTTP status 404. A release that exists always serves <code>paper.json</code> at <code>/releases/&lt;slug&gt;/paper.json</code> with a matching <code>slug</code> field.</p>
@@ -3353,18 +3353,18 @@ simplePage('research-metrics/', 'Evidence Press research metrics', 'The prospect
     { label: 'Release index', url: `${BASE}/api/papers.json`, linkText: 'papers.json', detail: 'Each prospective release embeds its linked researchMetrics receipt.' }
   ]
 });
-simplePage('productivity/', 'Productivity Protocols', 'Open methods for getting more useful work done with AI: start with a recurring task, try a method, and measure the gain. Includes the Evidence Press case study and a two-week self-test.', 'productivity.md', 'WebPage', {
+simplePage('productivity/', 'Productivity Protocols', 'Six working habits that multiply what one person can do with AI, each with a starter to copy, plus the Evidence Press case study and a two-week self-test.', 'productivity.md', 'WebPage', {
   og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'productivity.png')) ? '/assets/og/productivity.png' : null,
   kicker: 'A programme of Evidence Press',
-  standfirst: 'Open methods for getting more useful work done with AI. Start with one recurring task, try a method on it, and measure whether it helps.',
+  standfirst: 'Six working habits that multiply what one person can do with AI. They run Evidence Press, and they work on ordinary jobs too.',
   programmeLayout: true,
-  primaryAction: { url: '#start-with-a-task', label: 'Find a method for a task →' },
+  primaryAction: { url: '#six-habits-that-multiply-what-one-person-can-do', label: 'Start with the six habits →' },
   programmeNav: [
-    { label: 'Start', detail: 'Pick a task and a method', url: '#start-with-a-task' },
+    { label: 'Six habits', detail: 'What works, with starters to copy', url: '#six-habits-that-multiply-what-one-person-can-do' },
     { label: 'Case study', detail: 'One person, a whole press', url: '/productivity/case-study/' },
     { label: 'Measure', detail: 'The two-week self-test', url: '/productivity/measure/' }
   ],
-  evidenceBoundary: 'Every method is open and free to use. The gain depends on the task, so each one can be tested on real work with the two-week self-test, and results go into an open ledger.'
+  evidenceBoundary: 'The habits are free to use with any capable AI assistant. How much they help depends on the job, so each can be tested on real work with the two-week self-test, and results go into an open ledger.'
 });
 simplePage('productivity/case-study/', 'One Person, a Whole Press', 'Evidence Press as a live benchmark of what one person can do with AI: the work, how it compares, its trajectory, what it means for productivity growth, and six habits anyone can borrow.', 'productivity-case-study.md', 'WebPage', {
   kicker: 'Productivity Protocols · case study',
