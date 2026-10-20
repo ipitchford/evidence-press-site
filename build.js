@@ -244,7 +244,8 @@ function markdown(md) {
     const image = line.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)\s*$/);
     if (image) {
       const [, alt, src, caption] = image;
-      out.push(`<figure class="article-figure"><img src="${escAttr(src)}" alt="${escAttr(alt)}" loading="lazy"><figcaption>${inline(caption || alt)}</figcaption></figure>`);
+      // A title of "-" suppresses the visible caption (the alt text still describes the image).
+      out.push(`<figure class="article-figure"><img src="${escAttr(src)}" alt="${escAttr(alt)}" loading="lazy">${caption === '-' ? '' : `<figcaption>${inline(caption || alt)}</figcaption>`}</figure>`);
       i++; continue;
     }
     const h = line.match(/^(#{1,4})\s+(.*)$/);
@@ -3358,6 +3359,7 @@ simplePage('productivity/', 'Productivity Protocols', 'Six working habits that m
   kicker: 'A programme of Evidence Press',
   standfirst: 'Six working habits that multiply what one person can do with AI. They run Evidence Press, and they work on ordinary jobs too.',
   programmeLayout: true,
+  art: '/assets/productivity/release-wall.webp',
   primaryAction: { url: '#six-habits-that-multiply-what-one-person-can-do', label: 'Start with the six habits →' },
   programmeNav: [
     { label: 'Six habits', detail: 'What works, with starters to copy', url: '#six-habits-that-multiply-what-one-person-can-do' },
