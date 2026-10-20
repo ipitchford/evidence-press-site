@@ -2,13 +2,16 @@ Evidence Press is an experiment run in public: what can one person do with today
 
 ## What the work is
 
-Most of it is new mathematics, released with the data and code needed to check it. A few examples:
+Most of it is new mathematics, released with the data and code needed to check it, and explained in plain-English films. A few of the results:
 
-- **A proof of a published conjecture.** Davies and Levitin conjectured that the complex eigenvalues of a certain family of matrices always lie in the lens-shaped region where two circles overlap, for every matrix size. Evidence Press published [a proof](/releases/davies-levitin-lens-conjecture/).
-- **The exact limit of a fair-sharing rule.** When three people divide indivisible items under a standard fairness test, a fair split always exists for up to eight items; [nine is the smallest number where it can fail](/releases/pmms-three-agents-eight-goods/).
-- **What public statistics can and cannot tell.** An analysis of [what published debt figures establish](/releases/debt-disclosure-bounds/) about a government's exposure to interest rates, and what they leave unknown.
+- **An Erdős problem, answered for every number.** Paul Erdős and András Sárközy asked how many whole numbers up to N can be chosen so that multiplying any two of them and adding one never gives a squarefree number. Earlier work had settled it for very large N. In its first week, Evidence Press published [the exact answer for every N](/releases/erdos-848-all-n/).
+- **The first open case of another.** Erdős problem 758 asks how few groups any network can be split into, if each group must be either fully connected or not connected at all. For 20 points the answer was known to be 6 or 7. Evidence Press [showed it is 6](/releases/z20-equals-6/), with the computer part checked by four independent checkers, one of them formally verified.
+- **The best four-sided drum.** Among all drums shaped like a four-sided figure, [the square holds its two lowest notes furthest apart](/releases/square-maximises-dirichlet-ratio-quadrilaterals/): the four-sided case of a conjecture about which shapes do this best.
+- **How many times can one galaxy appear?** A massive object between us and a distant galaxy bends its light into several images. For a lens made of two pairs of stars at different distances, Evidence Press [lowered the proven maximum from 41 images to 33](/releases/multiplane-lensing-sparse-bound/).
+- **Sharing chores fairly.** Any nine chores can be [divided among three people](/releases/efx-nine-chores/) so that nobody would rather have someone else's share once a single chore is taken off their own list, however differently they rate the chores.
+- **A public question.** Casualties on Welsh roads fell by 28% in the first year of the 20 mph limit. Evidence Press [showed what the published figures can and cannot tell us](/releases/wales-20mph-casualty-attribution/) about how much of that fall the policy caused.
 
-Alongside the research come plain-English films that explain each result, long-form articles, and a book of 100 puzzles, [Think Again](/think-again/).
+Alongside the research come long-form articles that examine the biggest AI news as it breaks, from [OpenAI's claimed resolution of a Millennium Prize Problem](/articles/navier-stokes-informed-reaction/) to [what is really inside a neural network](/articles/neural-networks-already-clean/), and a book of 100 puzzles, [Think Again](/think-again/).
 
 ## Why it matters
 
