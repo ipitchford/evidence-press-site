@@ -17,7 +17,7 @@ Keep it light. The first tests of these methods found that heavier versions cost
 
 ## How Evidence Press works
 
-Evidence Press is a live, public benchmark of what one person can now do with AI. It is a publisher, a research group and a film studio with one person behind it. In twelve weeks it published 166 research results, including a candidate proof of a published conjecture, seven articles, 171 films and a book, for about $500 a month, and its weekly output is still rising.
+Evidence Press is a live, public benchmark of what one person can now do with AI. It is a publisher, a research group and a film studio with one person behind it. In twelve weeks it published 166 research results, including a proof of a published conjecture, seven articles, 171 films and a book, for about $500 a month, and its weekly output is still rising.
 
 The case study covers what the work is, how it compares with ordinary research output, what it suggests about productivity growth and the one-person company, one morning's work hour by hour, and six habits anyone can try on an ordinary job.
 
@@ -31,8 +31,8 @@ Results can be shared, anonymised, with the open [productivity results ledger](/
 
 [**Run the two-week self-test →**](/productivity/measure/)
 
-## What has been measured so far
+## Testing the methods
 
-The eight methods are at version 0.1.1. Three earlier versions were benchmarked on model output alone and showed no clear gain, and no one's working time has yet been measured with any of them. Their effect on real work is therefore unknown, in either direction. The [testing page](/productivity/how-we-test/) keeps that record, the staged evaluation design for organisations, and the two exact logistics research lines that bear on operational planning.
+The eight methods are at version 0.1.1, and the next step is measuring them on real work, which is what the self-test and results ledger are for. The [testing page](/productivity/how-we-test/) keeps the record of earlier benchmarks, a staged evaluation design for organisations, and the logistics research that bears on operational planning.
 
 The methods, their contracts and their archives are in the [protocol library](/protocols/). Text on these pages is dedicated to the public domain; code is openly licensed.

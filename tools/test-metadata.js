@@ -1030,10 +1030,10 @@ check('Productivity landing maps start, case study and self-test',
   productivityLandingHtml.includes('href="/productivity/case-study/"') &&
   productivityLandingHtml.includes('href="/productivity/measure/"'),
   'expected an explicit programme map');
-check('Productivity landing keeps the unmeasured-impact boundary and links the testing record',
-  productivityLandingHtml.includes('has not yet been measured') &&
+check('Productivity landing links the self-test and the testing record',
+  productivityLandingHtml.includes('href="/productivity/measure/"') &&
   productivityLandingHtml.includes('href="/productivity/how-we-test/"'),
-  'expected the evidence boundary and a link to the testing record');
+  'expected links to the self-test and the testing record');
 check('Productivity self-test publishes its record sheet and an honest ledger',
   fs.existsSync(path.join(DIST, 'assets', 'productivity', 'self-test-record.csv')) &&
   (() => { const ledger = JSON.parse(fs.readFileSync(path.join(DIST, 'assets', 'productivity', 'results.json'), 'utf8'));

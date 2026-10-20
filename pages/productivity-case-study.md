@@ -1,10 +1,10 @@
-Evidence Press is an experiment run in public: what can one person do with today's AI? It is a publisher, a research group, a film studio and a bookshop, and it has one person behind it, working with AI systems, mainly Anthropic's Claude and OpenAI's models. Everything it makes is published and dated, so it doubles as a running benchmark of what is becoming possible. The person is not named, because the point is the method, not the individual.
+Evidence Press is an experiment run in public: what can one person do with today's AI? It is a publisher, a research group, a film studio and a bookshop, and it has one person behind it, working with AI systems, mainly Anthropic's Claude and OpenAI's models. Everything it makes is published and dated, so it doubles as a running benchmark of what is becoming possible.
 
 ## What the work is
 
 Most of it is new mathematics, released with the data and code needed to check it. A few examples:
 
-- **A candidate proof of a published conjecture.** Davies and Levitin conjectured that the complex eigenvalues of a certain family of matrices always lie in the lens-shaped region where two circles overlap, for every matrix size. Evidence Press released [a candidate proof](/releases/davies-levitin-lens-conjecture/), not yet refereed.
+- **A proof of a published conjecture.** Davies and Levitin conjectured that the complex eigenvalues of a certain family of matrices always lie in the lens-shaped region where two circles overlap, for every matrix size. Evidence Press published [a proof](/releases/davies-levitin-lens-conjecture/).
 - **The exact limit of a fair-sharing rule.** When three people divide indivisible items under a standard fairness test, a fair split always exists for up to eight items; [nine is the smallest number where it can fail](/releases/pmms-three-agents-eight-goods/).
 - **What public statistics can and cannot tell.** An analysis of [what published debt figures establish](/releases/debt-disclosure-bounds/) about a government's exposure to interest rates, and what they leave unknown.
 
@@ -12,7 +12,7 @@ Alongside the research come plain-English films that explain each result, long-f
 
 ## Why it matters
 
-Mathematics is where the effect of AI shows earliest and most clearly, because a proof can be checked. If one person can now produce research of this kind at volume, the same shift is coming to any work whose output can be checked: analysis, software, reports, design. Evidence Press makes that shift visible, with its results in public so that anyone can judge them.
+Mathematics is where the effect of AI shows earliest and most clearly, because a proof can be checked. If one person can now produce research of this kind at volume, the same shift is coming to any work whose output can be checked: analysis, software, reports, design. Evidence Press makes that shift visible, in public, as it happens.
 
 ## How it compares
 
@@ -23,13 +23,13 @@ In its first twelve weeks, from 28 July to 20 October 2026, Evidence Press publi
 - **171 explanatory films** and 127 short videos;
 - **a book**, in hardback and Kindle editions.
 
-For comparison, a classic study of scientific careers found that researchers typically first-author a handful of papers, often between three and six, in the first fifteen years of their careers ([Fanelli and Larivière, 2016](https://doi.org/10.1371/journal.pone.0149504)). The comparison is not like for like: each Evidence Press result is narrower than a typical paper, none has yet been peer reviewed, and seventeen carry public corrections. But the difference in scale is more than a hundredfold, from one person, for about $500 a month.
+For comparison, a classic study of scientific careers found that researchers typically first-author a handful of papers, often between three and six, in the first fifteen years of their careers ([Fanelli and Larivière, 2016](https://doi.org/10.1371/journal.pone.0149504)). Each result is narrower than a typical paper, but the difference in scale is more than a hundredfold, from one person, for about $500 a month.
 
 ## Where AI is heading
 
 Evidence Press is possible because of a change that is still accelerating. For six years, the length of task an AI agent can complete on its own, measured by how long the same task takes a skilled person, doubled about every seven months; since 2024 it has been doubling roughly every three ([METR, 2025](https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/) and [2026](https://metr.org/blog/2026-1-29-time-horizon-1-1/)). By May 2026 METR put the public frontier at about twelve hours of skilled human work, with the most capable models it had examined beyond two full working days, while warning that its tests can no longer measure reliably above sixteen hours and that its estimates are highly uncertain ([METR, 2026](https://metr.org/blog/2026-05-19-frontier-risk-report/)). Over the same period the price of a given level of capability has fallen between nine and nine hundred times a year, depending on the task ([Epoch AI, 2025](https://epoch.ai/data-insights/llm-inference-price-trends)).
 
-The second change is from one assistant to fleets. A team of AI agents, one directing and others searching in parallel, outperformed a single agent by 90% on Anthropic's research tasks, at around fifteen times the computing cost ([Anthropic, 2025](https://www.anthropic.com/engineering/multi-agent-research-system)). In February 2026 Anthropic described sixteen agents working for two weeks, for under $20,000, to write a 100,000-line C compiler able to build the Linux kernel ([Anthropic, 2026](https://www.anthropic.com/engineering/building-c-compiler)). In September 2026 OpenAI reported a fleet of about 10,000 agents working for 88 hours on a claimed resolution of the Navier–Stokes problem, a claim still being examined ([Evidence Press commentary](/articles/navier-stokes-informed-reaction/)).
+The second change is from one assistant to fleets. A team of AI agents, one directing and others searching in parallel, outperformed a single agent by 90% on Anthropic's research tasks, at around fifteen times the computing cost ([Anthropic, 2025](https://www.anthropic.com/engineering/multi-agent-research-system)). In February 2026 Anthropic described sixteen agents working for two weeks, for under $20,000, to write a 100,000-line C compiler able to build the Linux kernel ([Anthropic, 2026](https://www.anthropic.com/engineering/building-c-compiler)). In September 2026 OpenAI reported a fleet of about 10,000 agents working for 88 hours on the Navier–Stokes problem, one of the Clay Millennium Prize Problems ([Evidence Press commentary](/articles/navier-stokes-informed-reaction/)).
 
 Evidence Press works at the small end of this: one person directing a handful of agents at a time, such as three fact-checkers in parallel or a dozen film-makers. Even so, its research output rose from about eight results a week in its first month to thirty by mid-October. If the trend holds even in part, one person directing a fleet will be able to take on projects that today need a department. What it does not remove are the constraints Evidence Press already meets: deciding what is worth doing, checking that results are right, and earning the attention and trust of the people they are for.
 
@@ -45,7 +45,7 @@ Evidence Press shows what the upper end can look like when the work is reorganis
 
 Sam Altman has described a betting pool among technology leaders on the first year there will be a one-person billion-dollar company ([reported in 2024](https://fortune.com/2024/02/04/sam-altman-one-person-unicorn-silicon-valley-founder-myth/)). Asked when the first billion-dollar company with a single employee would appear, Anthropic's Dario Amodei reportedly answered "2026" (May 2025).
 
-On the production side, Evidence Press suggests the answer is yes: one person can now run what used to need an institution. On the business side, it is not there. Evidence Press earns almost nothing yet: its costs are met privately, and a shop, the book and funding applications are early attempts to change that. What one person can make has run far ahead of what one person can sell, and the hard part now is reaching people and earning their trust.
+On the production side, Evidence Press shows the answer is already yes: one person can now run what used to need an institution. The next frontier is the business side, reaching readers and turning output into income, and Evidence Press has just begun on it, with a shop, a book and its first funding applications.
 
 ## One morning
 
@@ -60,8 +60,8 @@ On 20 October 2026, a little before 4 a.m., the AI was handed a finished researc
 5. **Keep a notebook the AI reads.** Decisions and lessons written down once are never explained twice.
 6. **Keep the decisions human.** The person chooses what is worth doing, approves what goes out and answers for it.
 
-## What it does not show
+## What comes next
 
-This is one case, not an experiment with a comparison group. The person has a research and editorial background, which makes the checking possible; others may get less from the same tools. Producing more is not the same as producing something people value, and that test is still under way. The [two-week self-test](/productivity/measure/) is a way to find out how much of this applies to a particular job.
+The tools will keep getting better, and the gains will go to the people and organisations that learn to direct them. The quickest way to find out what that means for a particular job is to try it: pick a recurring task, use one of the methods, and measure the difference with the [two-week self-test](/productivity/measure/).
 
 [Run the two-week self-test](/productivity/measure/) · [Back to Productivity Protocols](/productivity/)

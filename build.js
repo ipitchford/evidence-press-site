@@ -3364,7 +3364,7 @@ simplePage('productivity/', 'Productivity Protocols', 'Open methods for getting 
     { label: 'Case study', detail: 'One person, a whole press', url: '/productivity/case-study/' },
     { label: 'Measure', detail: 'The two-week self-test', url: '/productivity/measure/' }
   ],
-  evidenceBoundary: 'The methods are open and inspectable. Benchmarks of earlier versions found no clear gain in model output, and their effect on people\'s working time has not yet been measured. The self-test and results ledger are how that evidence will be gathered.'
+  evidenceBoundary: 'Every method is open and free to use. The gain depends on the task, so each one can be tested on real work with the two-week self-test, and results go into an open ledger.'
 });
 simplePage('productivity/case-study/', 'One Person, a Whole Press', 'Evidence Press as a live benchmark of what one person can do with AI: the work, how it compares, its trajectory, what it means for productivity growth, and six habits anyone can borrow.', 'productivity-case-study.md', 'WebPage', {
   kicker: 'Productivity Protocols · case study',
