@@ -1,0 +1,92 @@
+Are Neural Networks Already Clean?
+
+By Evidence Press.
+
+This is an AI-generated reading of the main article. Charts, references and links are available on the Evidence Press page.
+
+Written 20 October 2026, five days after the essay appeared. Goodfire's companion technical paper has not yet been published, and some of what follows may be overtaken by it.
+
+On 15 October Nick Cammarata of the interpretability company Goodfire published a long essay with a short, provocative title: Neural networks are already clean. Its central estimate is that, in preliminary audits of the open-weight language model Qwen 3, 32-B, "roughly 90% of neuron poles have one main job, often with small related offshoots; another about 7% have two related jobs; and only about 2 to 4% are not yet understood." A footnote adds that the figure is closer to 97% if only a neuron's strong activations are counted. The essay argues that the obstacle the field thought it faced, neurons that pack unrelated concepts together, was largely a misreading.
+
+Within a day the essay had become one of the most argued-over pieces of AI research of the year. Some readers compared it to the paper that introduced the transformer. Others, including several of the field's best-known interpretability researchers, called it interesting but modest. This article sets out what was claimed, how people reacted, and what an Evidence Press audit of the publicly released evidence can and cannot support.
+
+The problem the essay says it dissolves
+
+Mechanistic interpretability tries to explain what a trained neural network is doing by looking inside it. The most natural place to start is the individual neuron: one coordinate in one layer. If each neuron did one recognisable thing, a large model could in principle be read like a very long parts list.
+
+For years the field concluded that this could not work. The 2020 Distill paper Zoom In, of which Cammarata was the second author, described "polysemantic" neurons in an image model. Its best-known example responds to cat faces, fronts of cars and cat legs. The paper also named a possible cause: a network might represent more features than it has neurons by spreading them across shared directions, which it called superposition. Anthropic's 2022 paper Toy Models of Superposition developed the idea in detail. A 2023 OpenAI study that used GPT-4 to write explanations for every neuron in GPT-2 X-L found that the explanations for only 1.7% of neurons scored above 0.7 when used to predict the neurons' actual activations. Partly for these reasons, much of the field moved away from neurons towards learned alternatives such as sparse autoencoders.
+
+Cammarata's essay argues that this turn was a mistake. Looking again at the same image model with better tools, he concludes of the famous neuron that "it's not a cat and car neuron, it's a V-shape neuron": it detects a shape that cats' ears and the fronts of cars both happen to have. He also offers a different account of why neurons appear to mix things, which he calls recursive generalisation. As a neuron learns, it "sprouts offshoots the way a tree branch sprouts sub-branches". His example is a neuron that detected the letters "i y", then "d i y", then the phrase "do it yourself", which no longer contains "i y" at all. On this view a neuron's uses look unrelated only when the intermediate steps are hidden. In his words, "Polysemanticity is often more a claim about the observer than the neuron."
+
+On one point the essay is more careful than much of the commentary about it. It distinguishes the claim it is attacking, arbitrary packing of unrelated computations into the same neurons, from the broader geometric fact that a network can represent more features than it has dimensions. It does not claim to have abolished the second. It also reports similar results in models up to trillions of parameters, such as Kimi K3, while noting that full audits at that scale have not yet begun; the details are deferred to the companion paper.
+
+Hype and anti-hype
+
+The strongest enthusiasm came largely from people at OpenAI. Dean W. Ball wrote that this "may be one of the most important single days in deep learning history". Roon predicted it "may be remembered as a major moment in scientific history". Adam Majmudar placed it at the level of "Attention Is All You Need" and suggested alignment might be solved within a year, before adding that he meant "controllability" rather than alignment as a whole, that two to four years was more realistic, and that the comparison was "pretty aggressive".
+
+Interpretability researchers were cooler. Neel Nanda wrote: "This is interesting work, but I don't think it's a significant update to the big picture of interpretability." He accepted that neuron-based analysis may work well for practical questions, but argued that superposition remains real, especially for the vast store of facts a language model memorises. Leo Gao argued that "if you can't simulate a neuron you haven't really explained it". Jake Mendel noted how few empirical results had been shown so far, and that interpretability has a history of overclaiming. Eliezer Yudkowsky compared the moment to engineers celebrating the repair of a screwdriver they had only meant to use to start taking the panel off a computer.
+
+The most useful single contribution came from an outsider with a small budget. The essay's showcase example of a neuron that looks polysemantic but makes sense once traced is one a Goodfire colleague found in a dense Qwen model: listed by standard automated tools as a "polysemantic comma neuron", it turned out to track Colorado. "Steering it made the model want to go hiking." Within a day a researcher posting as Brangus reported that the same neuron also fires on code using the Tornado Python web framework, "just as hard", but not on equivalent code using other libraries. The overlap affects behaviour. Asked to pick the US state it most associates with Tornado, the model put 59% of its probability on Colorado, falling to 15% when that one neuron was switched off. The test, he said, cost "about 6 bucks and 15 minutes", and attempts to find a hidden link, such as the shared ""ado"" ending, came up empty. A neuron chosen to illustrate a single unifying concept turns out to have at least two.
+
+Zvi Mowshowitz's round-up of the debate lands in the middle: an important update about how networks are organised, and a useful guide to some practical tasks, but not evidence that interpretability is nearly solved, still less alignment.
+
+What the released evidence shows
+
+Most of the argument so far has been about the essay's prose. Goodfire has, however, released a substantial body of evidence alongside it: a gallery of 1,000 neuron reports, 500 from Qwen 3, 32-B and 500 from the mixture-of-experts model Qwen 3.6, 35-B, A-3-B, each with a written review and most with exported numbers from intervention experiments. Evidence Press drew a fixed random sample of 50 neurons from each model, recovered all 100 reports, recounted the published review labels mechanically and reanalysed 6,901 exported intervention rows. No model was run and no neuron was re-judged. This is an audit of what Goodfire published, not a replication.
+
+Three findings matter most.
+
+The reviews are mostly favourable, and the headline figure depends on how they are grouped. Each neuron has two poles, its positive and its negative activity, giving 100 poles per model. In Goodfire's own review categories, "one idea" and "branching structure" together cover 86 of the 100 dense-model poles and 83 of the expert-model poles. Add the category "one idea plus unplaced cases" and the totals rise to 94 and 89. Both groupings are defensible readings of the same labels, and the eight-point difference shows how much a precise-sounding percentage depends on what counts as understood.
+
+The labels come from a particular instrument. Each review page states that it was written by an AI model, Claude Opus 5.5, and that "the scores are its judgment, not measurements". The reviews count a firing as strong when it is within about half of that pole's maximum. The essay's own demonstrations use a 30-percent-of-maximum criterion, and the gallery's 1-to-10 cleanliness scores are a third measure again. None has yet been validated against independent human judgement. The counts therefore show that the released reports are mostly coherent by Goodfire's own reviewing procedure. They neither confirm nor refute a 90% figure for the model as a whole.
+
+The gallery is not a uniform sample of the network. The essay describes the gallery's neurons as chosen randomly. Qwen 3, 32-B has 64 layers of equal width, so a uniform random sample of its neurons would place roughly a quarter in each quarter of the layers. The gallery's dense-model neurons are concentrated in later layers instead: 53, 92, 142 and 213 in successive quarters, so 355 of 500, or 71%, come from the second half of the network. The expert-model gallery is balanced, at 249 against 251.
+
+This is not evidence of cherry-picking. A random design may deliberately sample unevenly, or by strata. But no sampling frame, seed or inclusion probabilities have been published, so there is no justified way to weight the gallery up to the whole model. Until the technical paper explains how neurons were chosen, conclusions about cleanliness apply to the gallery, not to Qwen 3, 32-B.
+
+Strong activity matters more than weak, but that does not settle the argument about weak activity. Critics such as Nanda suspect that a neuron's weak activations, the ones a clean explanation tends to set aside, carry real information. The expert-model exports allow a limited test, using activity values recorded in the intervention rows themselves. Of 3,556 routed rows, 1,201 had weak activity (below 30% of the neuron's reference extreme) and 2,355 had strong activity. With later routing held fixed, the median change in the model's output distribution was 0.000264 for weak examples and 0.000582 for strong. Within individual neurons, strong examples had the larger median effect in 41 of 50. So on Goodfire's selected examples, stronger activity usually does more. That is weaker than it sounds. The examples were chosen to illustrate each neuron, not drawn in proportion to ordinary use, and a neuron's main job can fire weakly while a secondary one fires strongly. The comparison does not show that secondary behaviour is unimportant.
+
+The audit also found two measurement traps that anyone reusing the data should know about. In the expert model, some similarly named control fields record interventions in which later routing was free to change, while the main effect field records fixed routing; comparing the two would mix different experiments. And separately exported activation values could be matched to intervention rows for only about one row in eight. Among the 429 expert-model matches, only 15 agreed numerically, so these values cannot be treated as the activations at the time of the intervention.
+
+The independent checks so far
+
+Three independent projects had published partial replications by 19 October, and each found something real.
+
+A replication on a small TinyStories model tested what happens when activations are removed. Deleting the weakest 75% of activations raised the loss by only 0.037, while deleting the strongest 3.2%, matched on total activation, raised it by 2.030. That supports the idea that most of a neuron's influence sits in its larger activations, at least in a four-layer model. The weak deletion still changed 8.7% of predictions.
+
+A re-examination of the original cat-and-car neuron across all 50,000 ImageNet validation images reproduced the contrast in the essay's hand-picked examples. Class-level tests then scored 0.70 for "pointed" classes and 0.67 for "round" ones, both inside the range the author had declared inconclusive in advance. The V-shape reading is plausible but not yet established.
+
+A third project measured the 500 Qwen 3, 32-B gallery neurons over a million tokens of text from the Pile 10k sample, inheriting Goodfire's labels. The Evidence Press audit of its published report found a concentration problem. Of the 20,000 extreme examples it records, 13,264, or 66%, come from a single Books3 document. If the reported token positions are accurate, that one book supplies at least 89% of the million tokens. The measurements are genuine, but a million tokens drawn mostly from one book says much less about a neuron's general behaviour than the round number suggests. The finding concerns that replication's corpus, not Goodfire's own data.
+
+None of these projects tests a representative sample of the whole model against independent judgements, and none was designed to.
+
+The practical method also has stronger independent support from before the essay. Transluce's 2025 study Language model circuits are sparse in the neuron basis showed that a model's own neurons, combined with a better attribution method, can yield circuits as compact and faithful as those built from sparse-autoencoder features. Its authors are explicit that learned bases may still be more monosemantic, and they do not claim to have mapped a whole model. Other work points the other way. The RAVEL benchmark found that a learned distributed method separated factual attributes better than methods built on individual coordinates, though in a different part of the network.
+
+The question the evidence cannot answer
+
+Even if every published label were accurate, one central claim of the essay would remain untested. Recursive generalisation is a claim about history: about how a neuron came to do what it does. Everything released so far shows neurons at the end of training.
+
+Consider a neuron that responds to two contexts that look unrelated. A better explanation might reveal what they share, and an intervention might confirm that the neuron affects both. That would make a shared computation much more credible. It would still not say how the computation was acquired. A broad response may have narrowed; a useful detector may have been reused; correlated tasks may have shared weights; a shortage of capacity may have pushed features together. Several of these could be true at once. The same endpoint is compatible with all of them, including the superposition story the essay sets out to replace.
+
+Telling them apart requires measurements during training. A recursive-generalisation account should predict which new kinds of input a neuron will acquire when the training data is changed in a controlled way; a capacity-based account should predict different outcomes when the width of the network is varied instead. Neither the essay nor its critics have yet presented such an experiment.
+
+What would settle it
+
+The Evidence Press audit includes a protocol for a study that could answer a bounded version of the question. It has two parts, and neither has been run.
+
+The first would measure how much of a model is explained. Draw neuron poles at random from the whole of Qwen 3, 32-B, all 3,276,800 of them, rather than from a gallery. Write an explanation for each on one body of text, freeze it, and test it on fresh text, including cases it predicts should fire and do not. Count unresolved cases as unresolved rather than leaving them out, because dropping them flatters the result. In an illustrative case of 216 passes, 12 failures and 28 unresolved cases among 256 draws, the confirmed pass rate is 84%, while ignoring the unresolved cases would report 95%. The design checks the running total at 64, 128, 256, 512 and 1,024 draws. At 1,024 draws, 895 passes or fewer would be evidence that the true rate is below 90%, and 947 or more evidence that it is above. If the true rate were 85%, the design would detect the shortfall about 99% of the time. Statistical precision cannot rescue a weak definition of "understood", so that definition has to be fixed first.
+
+The second part would test the developmental claim directly, by training models under controlled changes to how related concepts are, how often they occur together, and how much capacity is available, with predictions written down before each run.
+
+Where this leaves things
+
+A summary of where things stand.
+A model's own neurons are useful units for interpretation and circuit analysis: substantial support, from Transluce's circuit work and the ablation replication.
+About 90% of Qwen 3, 32-B neuron poles have one main job: unresolved, because the labels are coherent under Goodfire's rubric, but lack independent validation and a whole-model sampling frame.
+Recursive generalisation explains most apparent polysemanticity: unresolved, because the evidence describes endpoints, not how they arose.
+Weak activity and secondary behaviours can generally be set aside: unresolved, because strength, frequency and meaning need separate measurement.
+Understanding neurons is close to understanding a frontier model: not demonstrated.
+
+The essay has done something valuable whatever the technical paper shows. It has persuaded many people to look at neurons again, it has released enough data to be checked, and it has already prompted independent experiments that cost a few dollars and produced real findings. Its practical message, that a network's own neurons deserve serious use, is well supported. Its larger claim, about why networks are organised as they are, has not yet been tested. Confidence in the first should not transfer automatically to the second.
+
+Evidence Press audited Goodfire's published gallery and exports and the three replications' published outputs. It did not run any model, re-judge any neuron or replicate Goodfire's experiments. The figures in this article are generated from the audit's numeric extracts; the audit's scripts and extracts are retained by Evidence Press.
