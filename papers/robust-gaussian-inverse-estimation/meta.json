@@ -4,11 +4,26 @@
   "shortTitle": "Spectrum-matched robustness",
   "oneLine": "A spectral linear estimator attains asymptotically optimal normalized robust risk with a uniform additive guarantee, and anisotropic jitter can implement it at population level.",
   "abstract": "This unrefereed candidate studies Gaussian inverse problems under samplewise norm-bounded attacks. It proves asymptotic optimality of a proposed spectral estimator among linear estimators and a uniform finite-dimensional additive risk-regret bound. When the minimizing dual parameter is positive, population linear least squares trained with anisotropic Gaussian input jitter implements the estimator exactly. Under positive-noise active-estimation hypotheses, isotropic jitter suffices exactly for a flat positive spectrum. A rational two-band certificate gives a strict anisotropic advantage. The result does not address finite-sample training, nonlinear estimators, risk ratios or empirical performance.",
-  "datePublished": "2026-10-18", "version": "1.0.0", "doi": "10.5281/zenodo.23447009", "zenodoUrl": "https://zenodo.org/records/23447009",
-  "pdfUrl": "https://github.com/ipitchford/robust-gaussian-inverse-estimation/releases/download/v1.0.0/paper.pdf", "repoUrl": "https://github.com/ipitchford/robust-gaussian-inverse-estimation", "releaseUrl": "https://github.com/ipitchford/robust-gaussian-inverse-estimation/releases/tag/v1.0.0",
+  "datePublished": "2026-10-18",
+  "version": "1.0.0",
+  "doi": "10.5281/zenodo.23447009",
+  "zenodoUrl": "https://zenodo.org/records/23447009",
+  "pdfUrl": "https://github.com/ipitchford/robust-gaussian-inverse-estimation/releases/download/v1.0.0/paper.pdf",
+  "repoUrl": "https://github.com/ipitchford/robust-gaussian-inverse-estimation",
+  "releaseUrl": "https://github.com/ipitchford/robust-gaussian-inverse-estimation/releases/tag/v1.0.0",
   "citeText": "Anonymous (2026). Quantitative robust estimation for Gaussian inverse problems. Version 1.0.0. Evidence Press. https://doi.org/10.5281/zenodo.23447009",
-  "authors": ["Anonymous"], "status": "unrefereed-candidate", "math": true,
-  "keywords": ["inverse problems", "robust estimation", "Gaussian models", "spectral estimators", "anisotropic jitter"],
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "inverse problems",
+    "robust estimation",
+    "Gaussian models",
+    "spectral estimators",
+    "anisotropic jitter"
+  ],
   "keyResults": [
     "The proposed spectral estimator is asymptotically optimal among linear estimators for normalized robust risk under samplewise norm-bounded attacks.",
     "A uniform finite-dimensional theorem bounds its additive risk regret; it is not a risk-ratio guarantee.",
@@ -18,28 +33,159 @@
   "evidence": "Self-contained analytic manuscript, exact rational two-band certificate, finite numerical checks, normal and optimized-wrapper internal replay, semantic negative controls, bounded source comparison and private internal AI-assisted assessment. No finite-sample learning experiment is claimed.",
   "statusDetail": "Unrefereed AI-assisted candidate. Written proofs and producer-side finite replay do not establish external peer review, unaffiliated reproduction, formal verification or empirical estimator performance.",
   "relatedWorks": [
-    {"citation": "Krainovic, A., Soltanolkotabi, M., & Heckel, R. (2023). Learning provably robust estimators for inverse problems via jittering. Advances in Neural Information Processing Systems, 36, 57276–57305. arXiv:2307.12822. Source of the robust-risk framework and the proposed spectral rule (Conjecture 3.3).", "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/b3411e30afa6caeefa4d6d39a5ea84cd-Paper-Conference.pdf"},
-    {"citation": "Guan, P., & Davenport, M. A. (2025). SGD jittering: A training strategy for robust and accurate model-based architectures. Proceedings of the 42nd International Conference on Machine Learning, PMLR 267, 20553–20571. A different procedure: iteration-wise noise injection in nonlinear reconstruction.", "url": "https://proceedings.mlr.press/v267/guan25b.html"},
-    {"citation": "Standard Tikhonov and spectral regularisation literature supplies the inverse-problem background; the claimed contribution is the quantitative robust-risk and jitter characterisation in this model.", "url": "https://doi.org/10.1137/1.9781611971232", "doi": "10.1137/1.9781611971232"}
+    {
+      "citation": "Krainovic, A., Soltanolkotabi, M., & Heckel, R. (2023). Learning provably robust estimators for inverse problems via jittering. Advances in Neural Information Processing Systems, 36, 57276–57305. arXiv:2307.12822. Source of the robust-risk framework and the proposed spectral rule (Conjecture 3.3).",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/b3411e30afa6caeefa4d6d39a5ea84cd-Paper-Conference.pdf"
+    },
+    {
+      "citation": "Guan, P., & Davenport, M. A. (2025). SGD jittering: A training strategy for robust and accurate model-based architectures. Proceedings of the 42nd International Conference on Machine Learning, PMLR 267, 20553–20571. A different procedure: iteration-wise noise injection in nonlinear reconstruction.",
+      "url": "https://proceedings.mlr.press/v267/guan25b.html"
+    },
+    {
+      "citation": "Standard Tikhonov and spectral regularisation literature supplies the inverse-problem background; the claimed contribution is the quantitative robust-risk and jitter characterisation in this model.",
+      "url": "https://doi.org/10.1137/1.9781611971232",
+      "doi": "10.1137/1.9781611971232"
+    }
   ],
-  "pageStructureVersion": "2.0", "pageStructureVariant": "canonical-theorem", "pageStructureWaivers": [], "recordMaturity": "current", "grandfatheredAtSchemaVersion": null,
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
   "metadataProvenance": "Prepared from the final version-1.0.0 manuscript, exact frozen archive, supplied review and internal five-role assessment on 18 October 2026. Research commit b9b67b7c4340d7715dde4f533c0aa1f01b36a1d3; archive SHA-256 ee229749400c471dcb8d4f7e5a5dc2b36146becb43d03cffde71c33803482590.",
-  "provenance": {"aiGenerated": true, "aiAssisted": true, "generatedBy": ["AI-assisted research workflow", "OpenAI Codex: checking, revision and publication"], "humanRole": "Publication authority only; no human research contribution inferred from ownership.", "reviewStatus": "Supplied review and internal AI-assisted assessment; no external human specialist or editorial peer review established."},
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research workflow",
+      "OpenAI Codex: checking, revision and publication"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred from ownership.",
+    "reviewStatus": "Supplied review and internal AI-assisted assessment; no external human specialist or editorial peer review established."
+  },
   "assurance": {
-    "availability": {"state": "passed", "evidenceUrl": "https://zenodo.org/records/23447009", "note": "GitHub and Zenodo preserve the exact frozen release assets; availability is not correctness or peer review."},
-    "internalReplay": {"state": "passed", "evidenceUrl": "https://github.com/ipitchford/robust-gaussian-inverse-estimation/blob/v1.0.0/REPLAY.md", "note": "Finite and exact certificate checks replay in normal and optimized-wrapper modes. Written asymptotic arguments are not machine proofs."},
-    "independentRerun": {"state": "not-assessed", "note": "No unaffiliated rerun established."}, "independentReimplementation": {"state": "not-assessed", "note": "Coordinated checking is not unaffiliated reimplementation."}, "formalVerification": {"state": "not-assessed", "note": "No proof-assistant formalisation established."}, "specialistReview": {"state": "not-assessed", "note": "Internal model assessment is not external specialist review."}, "editorialPeerReview": {"state": "not-assessed", "note": "No journal editorial peer review established."}, "dataEnvironmentReproducibility": {"state": "partial", "evidenceUrl": "https://github.com/ipitchford/robust-gaussian-inverse-estimation/blob/v1.0.0/ENVIRONMENT.md", "note": "Inputs, code and environment are archived; unaffiliated cross-environment replay is not established."}
+    "availability": {
+      "state": "passed",
+      "evidenceUrl": "https://zenodo.org/records/23447009",
+      "note": "GitHub and Zenodo preserve the exact frozen release assets; availability is not correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "evidenceUrl": "https://github.com/ipitchford/robust-gaussian-inverse-estimation/blob/v1.0.0/REPLAY.md",
+      "note": "Finite and exact certificate checks replay in normal and optimized-wrapper modes. Written asymptotic arguments are not machine proofs."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Coordinated checking is not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation established."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal model assessment is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal editorial peer review established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "evidenceUrl": "https://github.com/ipitchford/robust-gaussian-inverse-estimation/blob/v1.0.0/ENVIRONMENT.md",
+      "note": "Inputs, code and environment are archived; unaffiliated cross-environment replay is not established."
+    }
   },
   "operatingModel": {
-    "version": "1.0", "workId": "ep-work:robust-gaussian-inverse-estimation", "attemptIds": ["ep-attempt:robust-gaussian-inverse-estimation-publication"], "aims": ["science"], "artifactRoles": ["research-output", "communication"], "lineageId": null,
-    "accelerationPrimitives": ["structural-compression", "certificate-first", "adversarial-controls", "assurance-vector", "agent-readable-research-object"],
-    "decisionObject": {"type": "certificate", "description": "A spectral linear estimator, uniform additive regret bound and population jitter implementation with a strict two-band separation.", "scope": "Gaussian inverse model, samplewise norm-bounded attack and linear estimators; not finite-sample or nonlinear optimality."},
-    "bottleneckTargeted": ["assurance", "publication"],
-    "semanticBridge": {"state": "explicit", "description": "The singular spectrum diagonalises the population linear risk; the robust dual rule maps to coordinatewise input-jitter variances when the minimizing dual parameter is positive.", "remainingRisks": ["No finite-sample training theorem or experiment.", "No nonlinear-estimator comparison.", "Bounded source search is not proof of priority."]},
-    "humanJudgmentGates": ["Publication is authorised; practical estimator selection and external specialist scrutiny remain open."], "parentLinks": [{"relation": "depends-on-claim", "workId": null, "legacyReleaseSlug": null, "externalUrl": "https://arxiv.org/abs/2412.14407", "inheritedClaim": "Gaussian inverse-problem robust-risk framework and proposed spectral rule.", "inheritedAssuranceCeiling": "Preprint-level antecedent; reuse is not independent validation."}],
-    "assuranceTarget": {"dimensions": ["independentRerun", "specialistReview", "formalVerification", "priorityAssessment"], "nextAction": "Obtain unaffiliated proof reconstruction, then derive finite-sample learning guarantees before any empirical interpretation.", "claimCeiling": "Unrefereed population-level linear-estimator theory with finite and exact producer checks; no finite-sample, nonlinear, risk-ratio, empirical, formal-verification or exhaustive-priority claim."},
-    "impactClaims": [{"id": "robust-inverse-no-impact", "aim": "science", "outcome": "Inspectable population-level robust-estimation theorem and boundary certificate", "setting": "AI-assisted theoretical research", "status": "NO_IMPACT_EVIDENCE", "designClass": "none", "comparator": "None registered.", "estimand": "No causal research-speed or estimator-performance effect estimated.", "evidenceRefs": [], "registeredDesignRef": null, "independentAssessment": null}]
+    "version": "1.0",
+    "workId": "ep-work:robust-gaussian-inverse-estimation",
+    "attemptIds": [
+      "ep-attempt:robust-gaussian-inverse-estimation-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "certificate-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "A spectral linear estimator, uniform additive regret bound and population jitter implementation with a strict two-band separation.",
+      "scope": "Gaussian inverse model, samplewise norm-bounded attack and linear estimators; not finite-sample or nonlinear optimality."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The singular spectrum diagonalises the population linear risk; the robust dual rule maps to coordinatewise input-jitter variances when the minimizing dual parameter is positive.",
+      "remainingRisks": [
+        "No finite-sample training theorem or experiment.",
+        "No nonlinear-estimator comparison.",
+        "Bounded source search is not proof of priority."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; practical estimator selection and external specialist scrutiny remain open."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://arxiv.org/abs/2412.14407",
+        "inheritedClaim": "Gaussian inverse-problem robust-risk framework and proposed spectral rule.",
+        "inheritedAssuranceCeiling": "Preprint-level antecedent; reuse is not independent validation."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Obtain unaffiliated proof reconstruction, then derive finite-sample learning guarantees before any empirical interpretation.",
+      "claimCeiling": "Unrefereed population-level linear-estimator theory with finite and exact producer checks; no finite-sample, nonlinear, risk-ratio, empirical, formal-verification or exhaustive-priority claim."
+    },
+    "impactClaims": [
+      {
+        "id": "robust-inverse-no-impact",
+        "aim": "science",
+        "outcome": "Inspectable population-level robust-estimation theorem and boundary certificate",
+        "setting": "AI-assisted theoretical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No causal research-speed or estimator-performance effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
   },
   "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
-  "narration": "Spectrum-matched robustness. An Evidence Press briefing.\n\nInverse problems try to reconstruct an unknown signal from noisy, indirect measurements. They become harder when each observed sample can also be perturbed by an adversary with a bounded amount of energy.\n\nThis candidate studies linear estimators in a Gaussian model. Its proposed rule adapts to the singular spectrum of the forward operator. The paper proves that the rule is asymptotically optimal among linear estimators for normalized robust risk, and gives a finite-dimensional additive regret bound that is uniform over the problem class. This is an additive statement, not a risk-ratio guarantee.\n\nThere is also an implementation result. When the minimizing dual parameter is positive, population linear least squares trained with coordinate-dependent Gaussian input jitter reproduces the robust spectral estimator exactly. The jitter is anisotropic: weak and strong spectral directions generally receive different variances. Under positive-noise active-estimation hypotheses, one common isotropic variance works exactly only when the positive singular spectrum is flat. A rational two-band example certifies a strict advantage for anisotropic jitter.\n\nPopulation is the important word. The paper does not prove that a finite training sample learns the rule, compare nonlinear estimators, or report empirical performance. It also does not turn additive regret into multiplicative control when the optimum risk is small.\n\nThe evidence package contains the manuscript, exact two-band certificate and finite numerical checks. Normal and optimized-wrapper replay reproduce their stated scope. The asymptotic proof remains written mathematics, not proof-assistant verification.\n\nThis is an anonymous, AI-assisted and unrefereed candidate. Internal checking is not external peer review or independent reproduction. This briefing uses an AI-generated voice and adds no scientific evidence."
+  "narration": "Spectrum-matched robustness. An Evidence Press briefing.\n\nInverse problems try to reconstruct an unknown signal from noisy, indirect measurements. They become harder when each observed sample can also be perturbed by an adversary with a bounded amount of energy.\n\nThis candidate studies linear estimators in a Gaussian model. Its proposed rule adapts to the singular spectrum of the forward operator. The paper proves that the rule is asymptotically optimal among linear estimators for normalized robust risk, and gives a finite-dimensional additive regret bound that is uniform over the problem class. This is an additive statement, not a risk-ratio guarantee.\n\nThere is also an implementation result. When the minimizing dual parameter is positive, population linear least squares trained with coordinate-dependent Gaussian input jitter reproduces the robust spectral estimator exactly. The jitter is anisotropic: weak and strong spectral directions generally receive different variances. Under positive-noise active-estimation hypotheses, one common isotropic variance works exactly only when the positive singular spectrum is flat. A rational two-band example certifies a strict advantage for anisotropic jitter.\n\nPopulation is the important word. The paper does not prove that a finite training sample learns the rule, compare nonlinear estimators, or report empirical performance. It also does not turn additive regret into multiplicative control when the optimum risk is small.\n\nThe evidence package contains the manuscript, exact two-band certificate and finite numerical checks. Normal and optimized-wrapper replay reproduce their stated scope. The asymptotic proof remains written mathematics, not proof-assistant verification.\n\nThis is an anonymous, AI-assisted and unrefereed candidate. Internal checking is not external peer review or independent reproduction. This briefing uses an AI-generated voice and adds no scientific evidence.",
+  "media": [
+    {
+      "type": "video",
+      "url": "https://www.youtube.com/watch?v=7FnganlS9Mg",
+      "name": "Shrink Where It Is Blind: Robust Linear Estimation for Gaussian Inverse Problems",
+      "description": "Evidence Press video overview of this release. This is a communication aid; it does not extend the release's claims or assurance status and is not additional research evidence."
+    }
+  ]
 }
