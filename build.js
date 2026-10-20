@@ -1480,7 +1480,7 @@ ${Array.from({ length: 9 }, (_, k) => {
     <a class="programme-card" href="/productivity/">
       <p class="card-date">Practice programme · 8 August 2026</p>
       <h3>Productivity Protocols</h3>
-      <p>Bounded, downloadable workflows for using AI agents, each with separate assurance and work-evidence status. Human and company impact is not yet measured.</p>
+      <p>Open methods for getting more useful work done with AI: start with a recurring task, try a method, and measure the gain. Includes how Evidence Press itself works.</p>
     </a>
   </div>
 </section>
@@ -2433,7 +2433,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-08-27' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
   ];
@@ -2508,7 +2508,7 @@ function llms() {
     `- [Research metrics](${BASE}/research-metrics/): the prospective attempt-level forecast, measurement and release-publication contract (Markdown: ${BASE}/research-metrics/index.md; JSON: ${BASE}/research-metrics/index.json)`,
     `- [Policy Identification Observatory](${BASE}/observatory/): the standing agent-native audit programme — case protocol, terminal statuses, identification and partial-identification outputs, robust-decision analysis, and how to refute or reproduce a case (JSON: ${BASE}/observatory/index.json; Markdown: ${BASE}/observatory/index.md; audio: ${BASE + OBSERVATORY.audio.url}; transcript: ${BASE + OBSERVATORY.audio.transcriptUrl}; video: ${OBSERVATORY.video.url}; repository: ${OBSERVATORY_PUBLIC.repositoryUrl || 'pending final publication metadata'}; versioned release: ${OBSERVATORY_PUBLIC.releaseUrl || 'pending final publication metadata'}; DOI: ${OBSERVATORY_PUBLIC.doiUrl || 'pending final publication metadata'})`,
     `- [Articles](${BASE}/articles/): essays, commentary, syntheses and research notes, explicitly separate from certificate-backed releases (RSS: ${BASE}/articles/feed.xml; JSON: ${BASE}/api/articles.json)`,
-    `- [Productivity Protocols](${BASE}/productivity/): bounded, downloadable workflows for using AI agents, each with separate protocol-assurance and work-evidence status; human and company impact is not yet measured. Registry: ${BASE}/protocols/ (machine-readable index: ${BASE}/protocols/api/protocols.json)`,
+    `- [Productivity Protocols](${BASE}/productivity/): open, downloadable methods for getting more useful work done with AI, organised by task; an Evidence Press case study (${BASE}/productivity/case-study/); a two-week self-test and open results ledger (${BASE}/productivity/measure/, ${BASE}/assets/productivity/results.json). Effects on people's working time are not yet measured. Registry: ${BASE}/protocols/ (machine-readable index: ${BASE}/protocols/api/protocols.json)`,
     `- [For AI agents](${BASE}/ai/): metadata conventions and suggested uses (verification, formalisation, follow-up research)`
   ];
   write('llms.txt', lines.join('\n') + '\n');
@@ -2640,7 +2640,7 @@ function notFoundPage() {
     <li><a href="/atlas/">Evidence Atlas</a> — the interactive and accessible relationship map</li>
     <li><a href="/about/">About</a> — what this site publishes, and what its assurance states mean</li>
     <li><a href="/operating-model/">Operating model</a> — the prospective doctrine, reusable method registry and defeasible inference ledger</li>
-    <li><a href="/productivity/">Productivity</a> — bounded workflows with explicit assurance and work-evidence status</li>
+    <li><a href="/productivity/">Productivity</a> — open methods for getting more useful work done with AI, and a way to measure the gain</li>
     <li><a href="/ai/">For AI agents</a> — machine-readable endpoints and conventions</li>
   </ul>
   <p>Automated clients: this response carries HTTP status 404. A release that exists always serves <code>paper.json</code> at <code>/releases/&lt;slug&gt;/paper.json</code> with a matching <code>slug</code> field.</p>
@@ -3353,18 +3353,30 @@ simplePage('research-metrics/', 'Evidence Press research metrics', 'The prospect
     { label: 'Release index', url: `${BASE}/api/papers.json`, linkText: 'papers.json', detail: 'Each prospective release embeds its linked researchMetrics receipt.' }
   ]
 });
-simplePage('productivity/', 'Productivity Protocols', 'Bounded AI-agent workflows and current exact-logistics research lineages relevant to operational productivity; human, company and field impact remains unmeasured.', 'productivity.md', 'WebPage', {
+simplePage('productivity/', 'Productivity Protocols', 'Open methods for getting more useful work done with AI: start with a recurring task, try a method, and measure the gain. Includes the Evidence Press case study and a two-week self-test.', 'productivity.md', 'WebPage', {
   og: fs.existsSync(path.join(ROOT, 'assets', 'og', 'productivity.png')) ? '/assets/og/productivity.png' : null,
   kicker: 'A programme of Evidence Press',
-  standfirst: 'Bounded agent workflows, staged evidence, and the catalogue\'s closest research links to operational productivity.',
+  standfirst: 'Open methods for getting more useful work done with AI. Start with one recurring task, try a method on it, and measure whether it helps.',
   programmeLayout: true,
-  primaryAction: { url: '/protocols/start/', label: 'Choose a first evidence stage →' },
+  primaryAction: { url: '#start-with-a-task', label: 'Find a method for a task →' },
   programmeNav: [
-    { label: 'Research', detail: 'Exact logistics decisions', url: '#research-exact-logistics-decisions' },
-    { label: 'Evidence', detail: 'What has actually been measured', url: '#evidence-what-existing-tests-show' },
-    { label: 'Practice', detail: 'Bounded protocols and trials', url: '#practice-a-protocol-is-a-work-contract' }
+    { label: 'Start', detail: 'Pick a task and a method', url: '#start-with-a-task' },
+    { label: 'Case study', detail: 'How Evidence Press works', url: '/productivity/case-study/' },
+    { label: 'Measure', detail: 'The two-week self-test', url: '/productivity/measure/' }
   ],
-  evidenceBoundary: 'Existing live evaluations compare model outputs only. They found no clear agent-output gain. Human and company productivity remain unmeasured.'
+  evidenceBoundary: 'The methods are open and inspectable. Benchmarks of earlier versions found no clear gain in model output, and their effect on people\'s working time has not yet been measured. The self-test and results ledger are how that evidence will be gathered.'
+});
+simplePage('productivity/case-study/', 'How Evidence Press Works', 'A case study in AI-assisted productivity: what one person working with AI systems produced in twelve weeks, the methods and checks behind it, its cost, and what it does not show.', 'productivity-case-study.md', 'WebPage', {
+  kicker: 'Productivity Protocols · case study',
+  standfirst: 'One person, AI systems and twelve weeks: what was produced, how it is checked, what it costs, and what the figures do not show.'
+});
+simplePage('productivity/measure/', 'Measure Your Own Gains', 'A two-week self-test for whether an AI method raises productivity on recurring tasks, with a record sheet and an open, anonymised results ledger.', 'productivity-measure.md', 'WebPage', {
+  kicker: 'Productivity Protocols · self-test',
+  standfirst: 'Compare the same recurring tasks with and without an AI method for two weeks, and share the result, whatever it shows.'
+});
+simplePage('productivity/how-we-test/', 'How the Methods Are Tested', 'The Productivity Protocols testing record, the staged evaluation design for organisations, and the exact logistics research relevant to operational planning.', 'productivity-how-we-test.md', 'WebPage', {
+  kicker: 'Productivity Protocols · testing record',
+  standfirst: 'What has been measured so far, how organisations can evaluate a method in stages, and the research that bears on operational planning.'
 });
 simplePage('observatory/', 'Policy Identification Observatory', 'A standing agent-native research programme that determines what policy evidence supports, what it does not support, and which decisions remain defensible under uncertainty.', 'observatory.md', 'WebPage', {
   releaseLayout: true,

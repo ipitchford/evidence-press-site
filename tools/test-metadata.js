@@ -1005,28 +1005,45 @@ check('finite-sample affine audio is transcript- and byte-bound',
 /* ---------------------------------------- programme visual hierarchy */
 const imageSources = rel => [...fs.readFileSync(path.join(DIST, rel), 'utf8')
   .matchAll(/<img\s+[^>]*src="([^"]+)"[^>]*>/g)].map(match => match[1]);
-const productivityImages = imageSources('productivity/index.html');
+const productivityImages = imageSources('productivity/how-we-test/index.html');
 const starterImages = imageSources('protocols/start/index.html');
 const expectedProductivityImages = [
   '/assets/video-thumbs/certified-commitment-horizons.jpg',
   '/assets/video-thumbs/certified-three-item-jrp-gap.jpg',
   '/assets/art/protocols-ladders.svg'
 ];
-check('Productivity keeps its intentional explanatory image set',
+check('Productivity testing page keeps its intentional explanatory image set',
   same(productivityImages, expectedProductivityImages),
   `images=${productivityImages.join(',') || 'none'}`);
-const productivityHtml = fs.readFileSync(path.join(DIST, 'productivity', 'index.html'), 'utf8');
+const productivityLandingHtml = fs.readFileSync(path.join(DIST, 'productivity', 'index.html'), 'utf8');
+const productivityHtml = fs.readFileSync(path.join(DIST, 'productivity', 'how-we-test', 'index.html'), 'utf8');
+const PRODUCTIVITY_METHODS = ['document-to-action-plan', 'adversarial-output-review', 'evidence-backed-brief',
+  'decision-memo-under-uncertainty', 'spreadsheet-quality-audit', 'goal-to-verified-deliverable',
+  'project-handoff', 'repetitive-workflow-capture'];
+check('Productivity landing starts from tasks and links every protocol method',
+  productivityLandingHtml.includes('id="start-with-a-task"') &&
+  PRODUCTIVITY_METHODS.every(id => productivityLandingHtml.includes(`href="/protocols/p/${id}/"`)),
+  'expected the task table to link all eight methods');
+check('Productivity landing maps start, case study and self-test',
+  productivityLandingHtml.includes('class="productivity-map"') &&
+  productivityLandingHtml.includes('href="#start-with-a-task"') &&
+  productivityLandingHtml.includes('href="/productivity/case-study/"') &&
+  productivityLandingHtml.includes('href="/productivity/measure/"'),
+  'expected an explicit programme map');
+check('Productivity landing keeps the unmeasured-impact boundary and links the testing record',
+  productivityLandingHtml.includes('has not yet been measured') &&
+  productivityLandingHtml.includes('href="/productivity/how-we-test/"'),
+  'expected the evidence boundary and a link to the testing record');
+check('Productivity self-test publishes its record sheet and an honest ledger',
+  fs.existsSync(path.join(DIST, 'assets', 'productivity', 'self-test-record.csv')) &&
+  (() => { const ledger = JSON.parse(fs.readFileSync(path.join(DIST, 'assets', 'productivity', 'results.json'), 'utf8'));
+    return Array.isArray(ledger.entries) && ledger.entries.every(e => e.selfReported === true && e.controlled === false); })(),
+  'expected the CSV template and a ledger whose entries are all labelled self-reported and uncontrolled');
 check('Productivity highlights both logistics research lineages',
   productivityHtml.includes('href="/releases/certified-commitment-horizons/"') &&
   productivityHtml.includes('href="/releases/certified-two-item-jrp/"') &&
   productivityHtml.includes('href="/releases/certified-three-item-jrp-gap/"'),
   'expected canonical links to the commitment release and both replenishment generations');
-check('Productivity maps the research, evidence and practice layers',
-  productivityHtml.includes('class="productivity-map"') &&
-  productivityHtml.includes('href="#research-exact-logistics-decisions"') &&
-  productivityHtml.includes('href="#evidence-what-existing-tests-show"') &&
-  productivityHtml.includes('href="#practice-a-protocol-is-a-work-contract"'),
-  'expected an explicit three-layer programme map');
 check('Productivity logistics highlights retain the field-impact boundary',
   productivityHtml.includes('decision-relevant operations results, not productivity impact evidence'),
   'expected explicit separation between decision relevance and measured impact');

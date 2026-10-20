@@ -1,0 +1,81 @@
+name: Productivity self-test result
+description: Share the summary of a two-week productivity self-test for the open, anonymised results ledger.
+title: "[Productivity result]: "
+labels:
+  - productivity-result
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form adds a **self-reported, uncontrolled** result to the open ledger at https://evidencepress.org/productivity/measure/. Give summary figures only. Do **not** include the work itself, names, clients, organisations or anything else that identifies a person. Every complete submission is recorded, whatever it shows: results with no gain, or a loss, are as useful as gains. Submissions are public on GitHub.
+  - type: input
+    id: role
+    attributes:
+      label: Broad role or sector
+      description: For example "local government analyst" or "small-business owner, retail". Keep it general.
+    validations:
+      required: true
+  - type: input
+    id: task
+    attributes:
+      label: Task
+      description: A short description of the recurring task.
+    validations:
+      required: true
+  - type: input
+    id: method
+    attributes:
+      label: Method
+      description: The protocol used (for example document-to-action-plan) or a short description of how AI was used.
+    validations:
+      required: true
+  - type: input
+    id: counts
+    attributes:
+      label: Items done with and without the method
+      description: For example "12 with, 11 without".
+    validations:
+      required: true
+  - type: input
+    id: minutes
+    attributes:
+      label: Median active minutes, with and without
+      description: For example "14 with, 22 without".
+    validations:
+      required: true
+  - type: input
+    id: accepted
+    attributes:
+      label: Share accepted first time, with and without
+      description: For example "10 of 12 with, 8 of 11 without".
+    validations:
+      required: true
+  - type: input
+    id: rework
+    attributes:
+      label: Total rework minutes, with and without
+    validations:
+      required: true
+  - type: dropdown
+    id: verdict
+    attributes:
+      label: Your verdict
+      options:
+        - Keep the method for this task
+        - Keep it, but change how it is used
+        - Drop it for this task
+        - Unclear
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Unusual circumstances, quality differences, or why the result might not generalise. No identifying details.
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Publication
+      options:
+        - label: I understand this submission is public and may be added, anonymised, to the CC0 results ledger, and that it contains no identifying or confidential information.
+          required: true
