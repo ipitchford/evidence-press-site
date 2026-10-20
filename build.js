@@ -2023,7 +2023,9 @@ ${posters.map(p => `<li><a href="${escAttr(p.url)}" rel="noopener"><img src="${e
 ${SHOP.book ? `<section aria-labelledby="shop-book-title"><h2 id="shop-book-title">${esc(SHOP.book.heading)}</h2>
 <div class="shop-book">${SHOP.book.cover ? `<a class="shop-book-cover" href="${escAttr(SHOP.book.url)}"><img src="${escAttr(SHOP.book.cover.image)}" alt="${escAttr(SHOP.book.cover.alt)}" width="${SHOP.book.cover.width}" height="${SHOP.book.cover.height}" loading="lazy" decoding="async"></a>` : ''}<div class="shop-book-body">
 <p><i>${esc(SHOP.book.title)}</i> ${esc(SHOP.book.text)}</p>
-<p><a class="shop-cta" href="${escAttr(SHOP.book.url)}">${esc(SHOP.book.label)} →</a></p>
+${SHOP.book.buy && SHOP.book.buy.length ? `<p><span class="shop-adtag">${esc(SHOP.book.buyTag)}</span> ${SHOP.book.buy.map(b => `<a href="${escAttr(b.url)}"${linkRel(b.url)}>${esc(b.label)}</a>`).join(' · ')}</p>
+<p class="shop-disclose">${esc(SHOP.picks.statement)}</p>
+` : ''}<p><a class="shop-cta" href="${escAttr(SHOP.book.url)}">${esc(SHOP.book.label)} →</a></p>
 </div></div>
 </section>
 ` : ''}<section class="shop-picks" aria-labelledby="shop-picks-title"><h2 id="shop-picks-title">${esc(k.heading)} <span class="shop-adtag">${esc(k.tag)}</span></h2>
@@ -2042,7 +2044,7 @@ ${s.film ? `<p class="shop-film"><a href="${escAttr(s.film.url)}" rel="noopener"
 ${body}
 ${foot}`);
   const md = `---\ntitle: "${title}"\nurl: ${url}\nlicense: CC0-1.0\n---\n\n# ${title}\n\n${SHOP.lede}\n\n## ${g.heading}\n\n${g.intro}\n\n${
-    posters.map(p => `- [${p.title}](${p.url}) (${p.topic})`).join('\n')}\n\n[${g.shopLabel}](${g.shopUrl})\n\n${SHOP.book ? `## ${SHOP.book.heading}\n\n*${SHOP.book.title}* ${SHOP.book.text} [${SHOP.book.label}](${SHOP.book.url})\n\n` : ''}## ${k.heading} (${k.tag})\n\n${k.statement} ${k.note}\n\n${
+    posters.map(p => `- [${p.title}](${p.url}) (${p.topic})`).join('\n')}\n\n[${g.shopLabel}](${g.shopUrl})\n\n${SHOP.book ? `## ${SHOP.book.heading}\n\n*${SHOP.book.title}* ${SHOP.book.text} ${SHOP.book.buy && SHOP.book.buy.length ? `(${SHOP.book.buyTag}) ${SHOP.book.buy.map(b => `[${b.label}](${b.url})`).join(' · ')}. ${SHOP.picks.statement} ` : ''}[${SHOP.book.label}](${SHOP.book.url})\n\n` : ''}## ${k.heading} (${k.tag})\n\n${k.statement} ${k.note}\n\n${
     k.shelves.map(s => `### ${s.title}\n\n${s.why}\n\n${s.items.map(i => `- ${itemMd(i)}`).join('\n')}\n${s.film ? `\nFilm: [${s.film.label}](${s.film.url})\n` : ''}`).join('\n')}\n${SHOP.closing.replace('Donate', '[Donate](/support/)')}\n`;
   write('shop/index.md', md);
 }
@@ -2063,8 +2065,12 @@ function thinkAgainPage() {
   if (puzzles.some(p => !p.rows.length))
     throw new Error('pages/think-again-sources.json: every puzzle needs at least one sourced claim');
   if (!/^97[89]\d{10}$/.test(BOOK.isbn)) throw new Error('pages/think-again.json: isbn must be ISBN-13 digits');
-  if (BOOK.amazonUrl && !/^https:\/\/www\.amazon\.(com|co\.uk)\//.test(BOOK.amazonUrl))
-    throw new Error('pages/think-again.json: amazonUrl must be an https://www.amazon.com/ or .co.uk/ URL');
+  const EDITIONS = (BOOK.editions || []).filter(e => e.url);
+  for (const e of EDITIONS)
+    if (!/^https:\/\/www\.amazon\.com\/dp\/[A-Z0-9]{10}\?tag=aphonicdrift-20$/.test(e.url))
+      throw new Error(`pages/think-again.json: ${e.format} url must be an amazon.com /dp/ link carrying the Associates tag`);
+  for (const e of BOOK.editions || [])
+    if (e.isbn && !/^97[89]\d{10}$/.test(e.isbn)) throw new Error(`pages/think-again.json: ${e.format} isbn must be ISBN-13 digits`);
   for (const f of [BOOK.cover.webp, BOOK.cover.jpg, BOOK.og])
     if (!fs.existsSync(path.join(ROOT, f.replace(/^\//, '')))) throw new Error(`pages/think-again.json: missing ${f}`);
   const fullTitle = `${BOOK.title}: ${BOOK.subtitle}`;
@@ -2079,7 +2085,10 @@ function thinkAgainPage() {
     author: { '@id': `${BASE}/#org` }, publisher: { '@id': `${BASE}/#org` },
     isbn: BOOK.isbn, bookFormat: 'https://schema.org/Paperback', numberOfPages: 212,
     inLanguage: CONFIG.language, image: BASE + BOOK.cover.jpg, url,
-    copyrightYear: 2026, copyrightHolder: { '@id': `${BASE}/#org` }
+    copyrightYear: 2026, copyrightHolder: { '@id': `${BASE}/#org` },
+    workExample: (BOOK.editions || []).map(e => Object.assign({ '@type': 'Book',
+      bookFormat: e.format === 'Kindle' ? 'https://schema.org/EBook' : e.format === 'Hardback' ? 'https://schema.org/Hardcover' : 'https://schema.org/Paperback',
+      name: BOOK.title }, e.isbn ? { isbn: e.isbn } : {}))
   }] };
   const metaExtra = [
     ['og:type', 'book'], ['og:site_name', CONFIG.siteName],
@@ -2094,9 +2103,14 @@ function thinkAgainPage() {
   const extraLinks = `<link rel="alternate" type="text/markdown" href="${url}index.md">
 <link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">
 `;
-  const buy = BOOK.amazonUrl
-    ? `<a href="${escAttr(BOOK.amazonUrl)}" rel="noopener">${esc(BOOK.amazonLabel)}</a>`
+  /* Edition links are Amazon Associates links: labelled "Ad", disclosed and rel="sponsored". */
+  const buy = EDITIONS.length
+    ? `${esc(BOOK.availability)}<br><span class="shop-adtag">${esc(BOOK.buyTag)}</span> ${esc(BOOK.buyHeading)}: ${EDITIONS.map(e => `<a href="${escAttr(e.url)}" rel="sponsored noopener">${esc(e.format)}</a>`).join(' · ')}<br><small>${esc(BOOK.buyStatement)}</small>`
     : esc(BOOK.availability);
+  const editionIsbns = (BOOK.editions || []).filter(e => e.isbnDisplay).map(e => `${e.format} ISBN ${e.isbnDisplay}`).join(' · ');
+  const buyMd = EDITIONS.length
+    ? `${BOOK.availability} ${BOOK.buyHeading} (${BOOK.buyTag}): ${EDITIONS.map(e => `[${e.format}](${e.url})`).join(' · ')}. ${BOOK.buyStatement}`
+    : BOOK.availability;
   const rowHtml = r => `<li><span class="ta-claim">${inline(r.claim)}</span> <span class="ta-source">${inline(r.source)}</span> <span class="ta-check">${inline(r.check)}</span></li>`;
   const puzzleHtml = p => `<section class="ta-puzzle" id="puzzle-${p.n}" aria-labelledby="puzzle-${p.n}-title">
 <h3 id="puzzle-${p.n}-title">${p.n}. ${esc(p.title)}</h3>
@@ -2112,7 +2126,7 @@ ${p.health.length ? `<h4>Health check</h4>
 <h1>${esc(BOOK.title)}</h1>
 <p class="standfirst">${esc(BOOK.subtitle)}</p>
 ${BOOK.summary.map(t => `<p>${inline(t)}</p>`).join('\n')}
-<p class="ta-facts">ISBN ${esc(BOOK.isbnDisplay)} · ${esc(BOOK.format)} · Evidence Press, 2026<br>${buy}</p>
+<p class="ta-facts">${esc(editionIsbns || 'ISBN ' + BOOK.isbnDisplay)} · ${esc(BOOK.format)} · Evidence Press, 2026<br>${buy}</p>
 </div>
 </div>
 <div class="body">
@@ -2133,7 +2147,7 @@ ${body}
 ${foot}`);
   const rowMd = r => `- ${r.claim}. Source: ${r.source}. (${r.check})`;
   const md = `---\ntitle: "${fullTitle}"\nurl: ${url}\nisbn: ${BOOK.isbn}\nlicense: CC0-1.0 (this source list; the book itself is all rights reserved)\n---\n\n# ${fullTitle}\n\n${
-    BOOK.summary.join('\n\n')}\n\nISBN ${BOOK.isbnDisplay} · ${BOOK.format} · Evidence Press, 2026. ${BOOK.amazonUrl ? `[${BOOK.amazonLabel}](${BOOK.amazonUrl})` : BOOK.availability}\n\n## ${BOOK.methodHeading}\n\n${
+    BOOK.summary.join('\n\n')}\n\n${editionIsbns || 'ISBN ' + BOOK.isbnDisplay} · ${BOOK.format} · Evidence Press, 2026. ${buyMd}\n\n## ${BOOK.methodHeading}\n\n${
     BOOK.method.join('\n\n')}\n\n## ${BOOK.keyHeading}\n\n${BOOK.key.join('\n\n')}\n\n## ${BOOK.sourcesHeading}\n\n${
     SOURCES.sections.map(s => `### ${s.letter}. ${s.name} (puzzles ${s.first}–${s.last})\n\n${
       s.puzzles.map(p => `#### ${p.n}. ${p.title}\n\n${p.rows.map(rowMd).join('\n')}\n${p.health.length ? `\nHealth check:\n\n${p.health.map(rowMd).join('\n')}\n` : ''}`).join('\n')}`).join('\n')}\n${BOOK.rights}\n`;
