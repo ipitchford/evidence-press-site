@@ -1,0 +1,165 @@
+{
+  "slug": "algebraic-extinction-compartments",
+  "title": "Algebraic extinction in acyclic compartment models",
+  "shortTitle": "Dying out need not mean exponential decay",
+  "oneLine": "A minimal four-state counterexample separates finite total activity from exponential extinction, then identifies the missing trajectory-level spectral condition.",
+  "abstract": "This mathematical candidate disproves a stated exponential-extinction conjecture for conservative quadratic compartment models under acyclic transitions and the specified dependency-cycle condition. A four-state model with positive integer rates and strictly positive rational initial fractions has vanishing state I(t) asymptotic to 18/t² and integrated activity log 2. Four states are necessary. A family on m+2 states has exponents m/(m−1), approaching the integrability threshold one. The paper classifies the four-state boundary and proves a trajectory-dependent spectral repair, including the aggregate vanishing mass logarithmic rate. These are existence and structural results, not an observed epidemic or a genericity claim. Finite exact checks support but do not replace the written universal proofs.",
+  "datePublished": "2026-10-20",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "compartment models",
+    "algebraic extinction",
+    "acyclic transitions",
+    "counterexample",
+    "Metzler matrices"
+  ],
+  "repoUrl": "https://github.com/ipitchford/algebraic-extinction-compartments",
+  "releaseUrl": "https://github.com/ipitchford/algebraic-extinction-compartments/releases/tag/v1.0.0-candidate",
+  "evidence": "Analytic counterexample, minimality, arbitrary-m family, phase and spectral proofs; exact internal finite checks for m=2 through 25, three regimes and semantic mutation controls.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Internal proofs and checks have the stated scope; external specialist review, independent external reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the revised self-contained manuscript and scoped internal verification records. Versioned GitHub and Zenodo research archives were checked against the frozen release assets on 20 October 2026.",
+  "keyResults": [
+    "A four-state positive-rate model meets the two graph hypotheses but has I(t)~18/t² and integral log 2.",
+    "Four states are minimal; larger explicit models have decay exponents arbitrarily close to one from above.",
+    "Under transition acyclicity, the limiting transverse Jacobian characterises exponential extinction and gives the aggregate logarithmic decay rate."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "OpenAI Codex: review, revision, bounded extensions and publication"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted assessment, not external peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "How quickly does a disappearing population actually disappear? In compartment models, that question matters because a quantity can approach zero while remaining significant for far longer than an exponential prediction suggests. This candidate research note gives a four-compartment counterexample to a proposed exponential-extinction rule. The model satisfies the stated restrictions on its transition and dependency graphs, yet the disappearing compartment decays as an inverse square in time. Its total accumulated presence remains finite. Four compartments are also shown to be the minimum needed for this phenomenon under the paper’s assumptions. A family of larger models produces still slower power-law decay, approaching the boundary beyond which accumulated presence would cease to be finite. The paper then explains what separates exponential and slower extinction. A matrix obtained by linearising the disappearing compartments at the limiting state provides the criterion. A strictly negative dominant spectral value gives exponential decay; a zero value allows slower behaviour. The revised argument also identifies the exact long-time logarithmic rate of the total disappearing mass. Exact arithmetic checks cover twenty-four finite examples and three parameter regimes, with deliberate errors tested to ensure the checker rejects them. These checks support the algebra but do not replace the general proofs. This is a candidate research release, not a claim of formal verification or external human peer review. Published on 20 October 2026, the paper and evidence are linked on the algebraic-extinction compartments release at Evidence Press. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; archival availability does not establish scientific correctness or external peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Analytic counterexample, minimality, arbitrary-m family, phase and spectral proofs; exact internal finite checks for m=2 through 25, three regimes and semantic mutation controls."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The internal verifier constructs channels separately from the proposed solution, but no separate independent reimplementation is claimed."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Code and environment are supplied; empirical checks have the recorded bounded scope."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Chan, Crommelin and Mandjes (2025), Asymptotic behavior for a general class of spreading models.",
+      "url": "https://doi.org/10.48550/arXiv.2511.02437"
+    },
+    {
+      "citation": "Luhar et al. (2022), Accounting for super-spreader events and algebraic decay in SIR models.",
+      "url": "https://doi.org/10.1016/j.cma.2022.115286"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:algebraic-extinction-compartments",
+    "attemptIds": [
+      "ep-attempt:algebraic-extinction-compartments-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "A minimal four-state counterexample separates finite total activity from exponential extinction, then identifies the missing trajectory-level spectral condition.",
+      "scope": "Conservative quadratic interaction-driven compartment models, stated transition/dependency conditions and strictly positive initial fractions; no empirical epidemic fit or generic algebraic-decay claim."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Conservative quadratic interaction-driven compartment models, stated transition/dependency conditions and strictly positive initial fractions; no empirical epidemic fit or generic algebraic-decay claim.",
+      "remainingRisks": [
+        "Written arguments require external specialist scrutiny.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independently examine the written reductions and replay the scoped checks.",
+      "claimCeiling": "Conservative quadratic interaction-driven compartment models, stated transition/dependency conditions and strictly positive initial fractions; no empirical epidemic fit or generic algebraic-decay claim. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "algebraic-extinction-compartments-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable mathematical candidate and continuation target.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pdfUrl": "https://github.com/ipitchford/algebraic-extinction-compartments/releases/download/v1.0.0-candidate/algebraic-extinction-compartments-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23501636",
+  "zenodoUrl": "https://zenodo.org/records/23501636",
+  "citeText": "Anonymous (2026). Algebraic extinction in acyclic compartment models. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23501636"
+}
