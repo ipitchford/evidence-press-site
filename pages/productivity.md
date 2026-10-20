@@ -1,69 +1,38 @@
-## How the programme fits together
+## Start with a task
 
-Evidence Press publishes research candidates with the evidence attached. This programme keeps three questions distinct: what the research establishes; what evidence exists of productivity effects; and which bounded methods a company can try safely.
+Productivity gains from AI come from particular tasks, not from AI in general. Pick one task that recurs every week, try one method on it, and measure the result. Each method below is a short, open work contract for an AI assistant: what it should produce, what it may and may not do, and how its output is checked. Each can be read online, copied into any assistant, or downloaded as an [Agent Skill](https://agentskills.io/specification).
 
-Productivity Protocols is the practice layer, not a new workflow language. It offers companies with little agent experience an open adoption-and-evidence path: one routine workflow, a governance screen, a no-install formative work contract, a stage-appropriate evaluation, and a recorded decision to continue one stage, revise, or stop.
+| Task | Method | What it produces |
+|---|---|---|
+| **Turn documents into actions** | [Document to action plan](/protocols/p/document-to-action-plan/) | Decisions already made, obligations, deadlines, open questions and next actions, each traced to its source passage. The recommended first method: low risk and easy to check. |
+| **Check a draft before it goes out** | [Adversarial output review](/protocols/p/adversarial-output-review/) | Findings ranked by severity, each tied to a specific claim, from a reviewer told to break the draft rather than confirm it. |
+| **Write a brief from sources** | [Evidence-backed brief](/protocols/p/evidence-backed-brief/) | A short brief in which every claim is labelled as fact, estimate, opinion or assumption and carries its source. |
+| **Decide under uncertainty** | [Decision memo under uncertainty](/protocols/p/decision-memo-under-uncertainty/) | A memo separating what the material establishes from what the reasoning assumes, with the options and what would change the decision. |
+| **Check a spreadsheet** | [Spreadsheet quality audit](/protocols/p/spreadsheet-quality-audit/) | Formula errors, unit mismatches, gaps and suspicious values, each located to a cell or row. |
+| **Get an unclear task done properly** | [Goal to verified deliverable](/protocols/p/goal-to-verified-deliverable/) | An explicit deliverable, permissions, a checkpointed plan and acceptance tests, then the work itself. |
+| **Hand over a project** | [Project handoff](/protocols/p/project-handoff/) | Decisions made and why, open questions, current state and next steps, so another person or agent can continue. |
+| **Automate a repeated task** | [Repetitive workflow capture](/protocols/p/repetitive-workflow-capture/) | A draft contract for a recurring manual process, ready to try and refine. |
 
-## Research: exact logistics decisions
+Keep it light. The first tests of these methods found that heavier versions cost more model time without better results, so start with the simplest use and add structure only where errors show up.
 
-These two logistics research lines are the catalogue's nearest bridge from exact mathematics to operational productivity. Both produce inspectable planning objects; neither has been tested in an operating supply chain or shown to save time, labour, or money.
+## How Evidence Press works
 
-> ### [Certified commitment horizons](/releases/certified-commitment-horizons/)
->
-> ![Video thumbnail: How far can a plan safely hold?](/assets/video-thumbs/certified-commitment-horizons.jpg "Video briefing — certified commitment horizons")
->
-> Version 3.0 separates the abstract forced-source path model from its valid classical lot-sizing interpretation, then adds an exact prefix decomposition and local single-detour witnesses for the loss of a protected setup prefix. Its UCI exercise still uses reconstructed forecast vintages and stylised costs; field savings remain unmeasured.
->
-> [**Watch the video briefing →**](https://youtu.be/ikaliZ25P8I)
+Evidence Press is a live, public benchmark of what one person can now do with AI. It is a publisher, a research group and a film studio with one person behind it. In twelve weeks it published 169 research results, including exact answers to two problems posed by Paul Erdős, seven articles, 171 films and a book, for about $500 a month, and its weekly output is still rising.
 
-> ### [Exact joint replenishment: from two items to three](/releases/certified-three-item-jrp-gap/)
->
-> ![Video thumbnail: The three-item joint-replenishment gap.](/assets/video-thumbs/certified-three-item-jrp-gap.jpg "Video briefing — exact three-item joint replenishment")
->
-> The [two-item candidate theorem](/releases/certified-two-item-jrp/) gives an exact cap-gap constant near 1.111889. Its additive three-item successor reports an exact rational bundled-instance ratio near 1.148729, 3.3132 per cent above the two-item upper endpoint. Within the successor's unrefereed proof-and-replay boundary, the two-item constant is therefore not the unrestricted multi-item answer; the exact three-item constant and every operational benefit remain open.
->
-> [**Watch the current three-item briefing →**](https://youtu.be/3KLjS1eXaps) · [Two-item briefing](https://youtu.be/n9SbpLgjOY4)
+The case study covers what the work is, how it compares with ordinary research output, what it suggests about productivity growth and the one-person company, one morning's work hour by hour, and six habits anyone can try on an ordinary job.
 
-These are **decision-relevant operations results, not productivity impact evidence**. The next evidential step is prospective comparison using genuine forecasts, costs and constraints, recording whether the certificates change accepted plans and whether avoided loss or bounded regret exceeds the full human, compute, implementation and assurance cost.
+[**Read the case study →**](/productivity/case-study/)
 
-## Evidence: what existing tests show
+## Measure your own gains
 
-Three version 0.1.0 predecessor protocols have **model-output benchmarks**. They compare an agent with and without the protocol on small registered task sets. All three record `NO_CLEAR_GAIN`; the heavier methods often cost more tokens or model time without improving judged output. The changed 0.1.1 packs do not inherit those badges and remain unmeasured until retested.
+Whether a method raises productivity depends on the task, the person and the tools, so the most useful evidence is local. The two-week self-test compares the same recurring tasks with and without a method, recording time, rework and quality. It needs a spreadsheet and about two minutes per task.
 
-No person completed a work item in those benchmarks. Human effort, time to accepted work, rework, cognitive burden, support labour, tool cost in company use, adoption, and organisational outcomes were not measured. On human or company productivity, the honest result is **no evidence in either direction**.
+Results can be shared, anonymised, with the open [productivity results ledger](/productivity/measure/#the-results-ledger). Every honest result counts, including no gain and losses: they show where AI does not help.
 
-## Evidence: choose the right stage
+[**Run the two-week self-test →**](/productivity/measure/)
 
-| Stage | Starting condition | What it may answer | It must not justify |
-|---|---|---|---|
-| **Formative usability** | 1–5 consenting participants | Can people understand, operate, review, and safely stop the method? | A productivity effect or adoption based on one |
-| **Feasibility** | At least six participants and a frozen task bank | Can allocation, measurement, support, cost capture, and retention work? | A powered benefit claim; effects remain exploratory |
-| **Controlled evaluation** | A justified sample and independently reviewed design | Is there a context-bound incremental signal versus the same agent without the protocol? | Transfer to other companies, tasks, models, or risks |
-| **Organisational follow-up** | Governed ordinary use after a separate deployment decision | Do use, burden, costs, errors, and outcomes persist here? | Causal attribution unless the identification design supports it |
+## Testing the methods
 
-Protocol exposure teaches a structure that people may not be able to unlearn. The included three-period crossover is therefore a **feasibility rehearsal only**. A future controlled evaluation should use randomized parallel agent-only and protocol-guided groups, with manual work as a secondary operational baseline.
+The eight methods are at version 0.1.1, and the next step is measuring them on real work, which is what the self-test and results ledger are for. The [testing page](/productivity/how-we-test/) keeps the record of earlier benchmarks, a staged evaluation design for organisations, and the logistics research that bears on operational planning.
 
-## Practice: a protocol is a work contract
-
-A prompt is a suggestion. A protocol states the whole contract: the task and evidence boundary, what the agent may read or change, where a person must approve, how outputs are checked, what counts as failure, and when to stop. It ships as an open [Agent Skill](https://agentskills.io/specification) that can be inspected without installation.
-
-## Practice: keep assurance and impact separate
-
-- **Protocol assurance** asks whether the pack is well formed and whether its declared checks pass. It does not establish human benefit or safe use in every setting.
-- **Work evidence** asks what was measured: agent-output benchmark, controlled-user signal, organisational field association, or an identified effect. Setting and identification are recorded separately.
-
-![The two status ladders — protocol assurance and work evidence — shown side by side and never merged](/assets/art/protocols-ladders.svg "Two independent measures, kept apart. Engineering checks cannot borrow the credibility of human-impact evidence, and an observed benefit cannot excuse a poorly bounded protocol.")
-
-## Start a company trial
-
-The starter kit provides the suitability screen, worker information, frozen plan, task bank, allocation, observation and follow-up records, quality rubric, incident card, semantic validator, and synthetic mutation controls. It keeps missing work items and negative findings instead of deleting them.
-
-[**Open the staged company starter →**](/protocols/start/)
-
-## Browse the protocol library
-
-The registry retains eight candidate methods. Each page exposes the contract, version, permissions, tests, historical evaluation record, machine-readable representation, and deterministic archive. `Document to action plan` is the recommended low-risk usability entry point; it is not a proven productivity intervention.
-
-[**Browse all eight protocols →**](/protocols/)
-
-The prose is dedicated to the public domain and reusable code is openly licensed. Build and hash checks establish inspectability and replay within their declared boundary; they do not establish independent review, field readiness, or company impact.
+The methods, their contracts and their archives are in the [protocol library](/protocols/). Text on these pages is dedicated to the public domain; code is openly licensed.
