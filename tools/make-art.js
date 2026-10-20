@@ -38,6 +38,9 @@ const appliedTrioArt = require('./applied-trio-art');
 art['williamson-order-transfer'] = appliedTrioArt.williamson;
 art['processor-sharing-freshness'] = appliedTrioArt.freshness;
 art['algebraic-extinction-compartments'] = appliedTrioArt.extinction;
+const astochasticArt = require('./astochastic-art');
+art['compartment-fragmentation-phase-classification'] = astochasticArt.compartment;
+art['davis-yin-gap-sharpness'] = astochasticArt.davisYin;
 art['prophet-over-time-limit'] = require('./prophet-over-time-art').draw;
 art['sharp-logconcave-moment-comparison'] = require('./mrtt-art').draw;
 art['iid-multiunit-prophet-limits'] = require('./prophet-art').draw;
@@ -2486,6 +2489,8 @@ palette['concentratable-entanglement-spectator-counterexample'] = ['#f5ce7b','#e
 palette['reverse-reaction-attracting-oscillations'] = reverseReactionArt.colors;
 palette['robust-gaussian-inverse-estimation'] = robustInverseArt.colors;
 palette['sharp-rank-three-chollet-order-five'] = cholletRank3Art.colors;
+palette['compartment-fragmentation-phase-classification'] = astochasticArt.colors.compartment;
+palette['davis-yin-gap-sharpness'] = astochasticArt.colors.davisYin;
 for (const [slug,moduleName] of [['gaussian-cosine-local-stability','gaussian-cosine-art'],['rfim-unbounded-fields-entropy','rfim-entropy-art'],['uniform-split-reliability','split-reliability-art'],['two-host-dormancy-oscillations','dormancy-art'],['infinite-birth-death-thinned-counts','thinned-counts-art']]) {
   const spec=require('./'+moduleName); art[slug]=spec.draw; palette[slug]=spec.colors;
 }
@@ -2498,6 +2503,8 @@ for (const [slug, fn] of Object.entries(art)) {
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
   if(slug==='assignment-aligned-effective-states')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${assignmentAlignedArt.description}</desc><defs>`);
   if(slug==='sharp-rank-three-chollet-order-five')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${cholletRank3Art.description}</desc><defs>`);
+  if(slug==='compartment-fragmentation-phase-classification')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${astochasticArt.descriptions.compartment}</desc><defs>`);
+  if(slug==='davis-yin-gap-sharpness')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${astochasticArt.descriptions.davisYin}</desc><defs>`);
   if(slug==='gaussian-cosine-local-stability')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${require('./gaussian-cosine-art').description}</desc><defs>`);
   if(slug==='rfim-unbounded-fields-entropy')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${require('./rfim-entropy-art').description}</desc><defs>`);
   if(slug==='uniform-split-reliability')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${require('./split-reliability-art').description}</desc><defs>`);
