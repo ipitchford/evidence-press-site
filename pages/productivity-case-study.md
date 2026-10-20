@@ -1,49 +1,42 @@
-Evidence Press began publishing on 28 July 2026. It is run by one person working with AI systems, mainly Anthropic's Claude and OpenAI's models, for about fifty hours a week. This page records what that arrangement produced in its first twelve weeks, how, at what cost, and what the figures do not show. The person is not named: the case is about the method, not the individual.
+Evidence Press is a publisher, a research group, a film studio and a bookshop, and it is run by one person working with AI systems, mainly Anthropic's Claude and OpenAI's models. Until recently each of those would have needed its own team. This page describes how that works, in a form anyone can borrow for their own job. The person is not named: the point is the method, not the individual.
 
-## What was produced
+## One morning
 
-Figures are as of 20 October 2026, from the site's public records.
+On 20 October 2026, a little before 4 a.m., the AI was handed a finished research report on a disputed claim about how AI models work, and asked to turn it into a public article. Three AI agents checked every substantive claim against the original sources at the same time; by 4:25 they had found four errors to fix. The article was written, and by 5:00 a full narrated reading had been recorded and checked word for word against the text. It went live once the person approved it. By 6:15 a 14-minute explanatory film had been scripted, reviewed by a second AI model looking for mistakes (it found one: a number read out ten thousand times too large), narrated, animated and rendered.
 
-| Output | Count | Public record |
-|---|---|---|
-| Research releases, each with a Zenodo DOI, public repository and evidence package | 166 | [Release index](/api/papers.json) |
-| Releases whose evidence was replayed internally before publication | 163 | Each release's assurance record |
-| Releases carrying public correction notices | 17 | Each release page |
-| Recorded research attempts in the work ledger, including unfinished and stopped work | 147 | [Work ledger](/api/work-ledger.json) |
-| Long-form articles | 7 | [Articles](/articles/) |
-| Public explanatory films, and short videos | 171 and 127 | YouTube channel |
-| Public repositories | 174 | GitHub |
-| A puzzle book, in hardback and Kindle editions, with a paperback to follow | 1 | [Think Again](/think-again/) |
+The person's part that morning was a few minutes of direction and approval. Done the usual way, by a writer, a fact-checker, a narrator and a film team, the same work would take days.
 
-The running cost is around $500 a month, almost all of it AI subscriptions and API use. There are no staff and no office.
+## What one person has produced
 
-The order of magnitude is the point. The binding constraint has moved from producing work to checking it.
+In its first twelve weeks, from 28 July to 20 October 2026, Evidence Press published:
 
-## The methods that carry the load
+- **166 research results**, each with its data and code, so that anyone can check them;
+- **seven long-form articles**, each with a full narrated version;
+- **171 explanatory films** and 127 short videos;
+- **a book of 100 puzzles**, [Think Again](/think-again/), in hardback and Kindle editions.
 
-**Evidence first.** Every research result is published with what is needed to check it: code, data, certificates and a one-command replay. Publishing evidence is cheap for AI systems and expensive for people, so it is where they add most.
+It costs about $500 a month in AI subscriptions, and about fifty hours a week of one person's time.
 
-**A second model attacks the first.** Scripts, manuscripts and claims are reviewed by a different vendor's model, instructed to find errors rather than to confirm. In one recent film script the reviewer found a median of 0.000582 that had been read aloud as "five point eight two", an error of a factor of ten thousand.
+## Six habits that make it work
 
-**Parallel fact-checking.** For a recent article, three AI agents checked every substantive claim against primary sources at the same time: the original essay and data, the cited papers, and the original posts quoted. They found four claims that needed correcting before publication, including a widely repeated statistic attached to the wrong threshold.
+None of these is specific to research. Each can be tried on an ordinary job.
 
-**Automated gates.** No page is published until the site builds identically on three software versions, passes accessibility tests, and is checked against the live site so that nothing already published is lost. Recordings are transcribed back to text to catch dropped words.
+**1. Hand over whole jobs, not single questions.** "Turn this report into a published article, with the sources checked" gets far more done than a string of small prompts. The person describes the result wanted and the limits, and the AI works through the steps.
 
-**Templates and memory.** Each kind of output has a pipeline: a film template, a release workflow and an article workflow. The AI keeps durable notes between sessions, so decisions and corrections are not relearned. Twelve films for new releases were produced in under two days this way, each with its own script review and checks.
+**2. Run several AI workers at once.** Three fact-checkers working in parallel take the time of one. Twelve films for new research results were made in under two days because each had its own AI worker.
 
-**The person decides.** Choosing what to work on, approving publication, judging quality and taking responsibility remain human work. The AI publishes, spends and contacts others only within authority the person has given.
+**3. Make one AI check another.** Errors are cheap to make and cheap to catch, if a second model is told to find mistakes rather than to agree. This is the habit most worth copying: it catches the confident slip that a tired person misses.
 
-## What the checks catch, and what they miss
+**4. Turn every repeated job into a recipe.** The first films took many attempts; the recipe they left behind makes each new one quick. Every task that recurs gets a written method, which is what the [methods on these pages](/productivity/) are.
 
-The checks catch most errors of arithmetic, transcription, citation and consistency before publication. They do not make the research right. Seventeen releases carry public correction notices for errors found after publication, and none of the 166 releases has yet been peer reviewed or independently reproduced. Speed of production is not evidence of value: audience reach is still small, and whether the work matters to others is not yet known.
+**5. Keep a notebook the AI reads.** Decisions, preferences and lessons are written down where the AI looks at the start of each session, so nothing has to be explained twice.
 
-## What this does not show
+**6. Keep the decisions human.** The person chooses what is worth doing, approves what goes out and answers for it. The AI publishes, spends and contacts others only within the authority the person has given.
 
-- **It is one case, not an experiment.** There is no comparison with the same person working without AI, so the size of the gain cannot be stated precisely.
-- **The person is unusual.** A research background and long editorial experience make the checking possible. Someone without that background might get much less from the same tools.
-- **Volume is not quality.** Unrefereed candidates at scale are a different product from a few refereed papers.
-- **Costs may change.** The figures rest on current subscription prices and promotional credits.
+## What it does not show
 
-It is evidence that, for one kind of knowledge work, one person with current AI systems can produce a volume of checked output that would usually need a team, provided most of the effort goes into checking. The methods behind it are published on these pages so that others can test whether they work for their own tasks.
+This is one case, not an experiment. The person has a research and editorial background, which makes the checking possible; someone without it might get less from the same tools. Producing more is not the same as producing something people value: the films still reach a small audience, and the research is unrefereed. The costs rest on today's prices.
 
-[Back to Productivity Protocols](/productivity/) · [Run the two-week self-test](/productivity/measure/)
+What it does show is how far the ceiling on one person's output has risen, provided the effort goes into directing and checking rather than doing every step by hand. The two-week self-test is a way to find out how much of that applies to a particular job.
+
+[Run the two-week self-test](/productivity/measure/) · [Back to Productivity Protocols](/productivity/)

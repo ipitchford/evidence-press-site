@@ -3361,14 +3361,14 @@ simplePage('productivity/', 'Productivity Protocols', 'Open methods for getting 
   primaryAction: { url: '#start-with-a-task', label: 'Find a method for a task →' },
   programmeNav: [
     { label: 'Start', detail: 'Pick a task and a method', url: '#start-with-a-task' },
-    { label: 'Case study', detail: 'How Evidence Press works', url: '/productivity/case-study/' },
+    { label: 'Case study', detail: 'One person, a whole press', url: '/productivity/case-study/' },
     { label: 'Measure', detail: 'The two-week self-test', url: '/productivity/measure/' }
   ],
   evidenceBoundary: 'The methods are open and inspectable. Benchmarks of earlier versions found no clear gain in model output, and their effect on people\'s working time has not yet been measured. The self-test and results ledger are how that evidence will be gathered.'
 });
-simplePage('productivity/case-study/', 'How Evidence Press Works', 'A case study in AI-assisted productivity: what one person working with AI systems produced in twelve weeks, the methods and checks behind it, its cost, and what it does not show.', 'productivity-case-study.md', 'WebPage', {
+simplePage('productivity/case-study/', 'How Evidence Press Works', 'A publisher, research group and film studio run by one person with AI: one morning\'s work, what twelve weeks produced, and six habits anyone can borrow.', 'productivity-case-study.md', 'WebPage', {
   kicker: 'Productivity Protocols · case study',
-  standfirst: 'One person, AI systems and twelve weeks: what was produced, how it is checked, what it costs, and what the figures do not show.'
+  standfirst: 'A publisher, a research group and a film studio, run by one person with AI. One morning\'s work, what twelve weeks produced, and six habits anyone can borrow.'
 });
 simplePage('productivity/measure/', 'Measure Your Own Gains', 'A two-week self-test for whether an AI method raises productivity on recurring tasks, with a record sheet and an open, anonymised results ledger.', 'productivity-measure.md', 'WebPage', {
   kicker: 'Productivity Protocols · self-test',

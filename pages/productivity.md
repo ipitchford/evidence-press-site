@@ -17,9 +17,9 @@ Keep it light. The first tests of these methods found that heavier versions cost
 
 ## How Evidence Press works
 
-Evidence Press is the programme's first case study. In its first twelve weeks, one person working with AI systems published 166 research releases with DOIs and replay evidence, seven long-form articles, 171 explanatory films and a book, together with the checks that keep them honest, for running costs of around $500 a month.
+Evidence Press is a publisher, a research group and a film studio run by one person working with AI. One morning in October it turned a research report into a fact-checked, narrated article, ready to publish, and a 14-minute film in a little over two hours. In twelve weeks it published 166 research results, seven articles, 171 films and a book, for about $500 a month.
 
-That is a large change in what one person can produce. It is not a controlled comparison, and the output is unrefereed. The case study sets out which methods carry the load, what the checks catch, what it costs and what it does not show.
+The case study describes that morning, and six habits behind it that anyone can try on an ordinary job: hand over whole jobs, run several AI workers at once, make one AI check another, turn repeated jobs into recipes, keep a notebook the AI reads, and keep the decisions human.
 
 [**Read the case study →**](/productivity/case-study/)
 
