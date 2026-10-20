@@ -3,7 +3,7 @@ Most claims about AI and productivity come from controlled studies of particular
 ## Set up
 
 1. **Choose two or three tasks that recur** at least five times a week, such as answering a type of enquiry, summarising meeting papers, checking a monthly spreadsheet or drafting a standard letter. Tasks that take between ten minutes and two hours work best.
-2. **Choose one method** for each task from the [Productivity Protocols](/productivity/), or keep an existing way of using AI and test that instead.
+2. **Choose one habit** for each task from the [six habits](/productivity/), such as handing the whole job over or having a second AI check the result, or test an existing way of using AI instead.
 3. **Decide what "accepted" means** for each task before starting: sent, signed off, merged or filed without further change.
 4. **Download the [record sheet](/assets/productivity/self-test-record.csv)** and open it in any spreadsheet program.
 

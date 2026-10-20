@@ -1,5 +1,22 @@
 This page keeps the programme's testing record and evaluation design, and the research that bears on operational planning. The practical starting point is the [Productivity Protocols](/productivity/) page; individuals and teams can measure their own gains with the [two-week self-test](/productivity/measure/).
 
+## The earlier protocols
+
+Before settling on the six habits, the programme published eight detailed workflow protocols. Each is an open work contract for an AI assistant, and each remains available, with its full test record, in the [protocol library](/protocols/).
+
+| Task | Method | What it produces |
+|---|---|---|
+| **Turn documents into actions** | [Document to action plan](/protocols/p/document-to-action-plan/) | Decisions already made, obligations, deadlines, open questions and next actions, each traced to its source passage. The recommended first method: low risk and easy to check. |
+| **Check a draft before it goes out** | [Adversarial output review](/protocols/p/adversarial-output-review/) | Findings ranked by severity, each tied to a specific claim, from a reviewer told to break the draft rather than confirm it. |
+| **Write a brief from sources** | [Evidence-backed brief](/protocols/p/evidence-backed-brief/) | A short brief in which every claim is labelled as fact, estimate, opinion or assumption and carries its source. |
+| **Decide under uncertainty** | [Decision memo under uncertainty](/protocols/p/decision-memo-under-uncertainty/) | A memo separating what the material establishes from what the reasoning assumes, with the options and what would change the decision. |
+| **Check a spreadsheet** | [Spreadsheet quality audit](/protocols/p/spreadsheet-quality-audit/) | Formula errors, unit mismatches, gaps and suspicious values, each located to a cell or row. |
+| **Get an unclear task done properly** | [Goal to verified deliverable](/protocols/p/goal-to-verified-deliverable/) | An explicit deliverable, permissions, a checkpointed plan and acceptance tests, then the work itself. |
+| **Hand over a project** | [Project handoff](/protocols/p/project-handoff/) | Decisions made and why, open questions, current state and next steps, so another person or agent can continue. |
+| **Automate a repeated task** | [Repetitive workflow capture](/protocols/p/repetitive-workflow-capture/) | A draft contract for a recurring manual process, ready to try and refine. |
+
+Three earlier versions of these protocols were benchmarked against the same AI working without them. All three showed no clear gain, and the heavier methods often cost more time and computing without better results. That finding shaped the current advice: simple habits, not elaborate procedures.
+
 ## Research: exact logistics decisions
 
 These two logistics research lines are the catalogue's nearest bridge from exact mathematics to operational productivity. Both produce inspectable planning objects; neither has been tested in an operating supply chain or shown to save time, labour, or money.

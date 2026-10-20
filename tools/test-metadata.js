@@ -1020,13 +1020,13 @@ const productivityHtml = fs.readFileSync(path.join(DIST, 'productivity', 'how-we
 const PRODUCTIVITY_METHODS = ['document-to-action-plan', 'adversarial-output-review', 'evidence-backed-brief',
   'decision-memo-under-uncertainty', 'spreadsheet-quality-audit', 'goal-to-verified-deliverable',
   'project-handoff', 'repetitive-workflow-capture'];
-check('Productivity landing starts from tasks and links every protocol method',
-  productivityLandingHtml.includes('id="start-with-a-task"') &&
-  PRODUCTIVITY_METHODS.every(id => productivityLandingHtml.includes(`href="/protocols/p/${id}/"`)),
-  'expected the task table to link all eight methods');
+check('Productivity landing leads with the six habits; the testing page keeps every earlier protocol',
+  productivityLandingHtml.includes('id="six-habits-that-multiply-what-one-person-can-do"') &&
+  PRODUCTIVITY_METHODS.every(id => productivityHtml.includes(`href="/protocols/p/${id}/"`)),
+  'expected the habits section on the landing page and all eight protocols on the testing page');
 check('Productivity landing maps start, case study and self-test',
   productivityLandingHtml.includes('class="productivity-map"') &&
-  productivityLandingHtml.includes('href="#start-with-a-task"') &&
+  productivityLandingHtml.includes('href="#six-habits-that-multiply-what-one-person-can-do"') &&
   productivityLandingHtml.includes('href="/productivity/case-study/"') &&
   productivityLandingHtml.includes('href="/productivity/measure/"'),
   'expected an explicit programme map');
