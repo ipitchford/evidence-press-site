@@ -34,6 +34,10 @@ ${inner}
 }
 
 const art = {};
+const appliedTrioArt = require('./applied-trio-art');
+art['williamson-order-transfer'] = appliedTrioArt.williamson;
+art['processor-sharing-freshness'] = appliedTrioArt.freshness;
+art['algebraic-extinction-compartments'] = appliedTrioArt.extinction;
 art['prophet-over-time-limit'] = require('./prophet-over-time-art').draw;
 art['sharp-logconcave-moment-comparison'] = require('./mrtt-art').draw;
 art['iid-multiunit-prophet-limits'] = require('./prophet-art').draw;
@@ -2067,6 +2071,9 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'williamson-order-transfer':['#a9ebd3','#ffc184'],
+  'processor-sharing-freshness':['#a9ebd3','#ffc184'],
+  'algebraic-extinction-compartments':['#a9ebd3','#ffc184'],
   'sharp-logconcave-moment-comparison': require('./mrtt-art').colors,
   'inclusion-link-chernoff-concentration': require('./inclusion-link-chernoff-art').colors,
   'debt-disclosure-bounds': ['#f3c16b', '#e59b9c'],

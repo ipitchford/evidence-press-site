@@ -1,0 +1,17 @@
+How old is the freshest information delivered by a busy server?
+
+Imagine a stream of updates sharing one processor. Every update receives an equal fraction of its capacity. A newly arrived update begins work immediately, but older updates continue consuming resources, even after they have become obsolete.
+
+This paper asks what happens as that server approaches saturation. Its answer depends on something that ordinary queue statistics can miss: the chance that a new update needs very little processing.
+
+Two queues can have the same average service requirement and exactly the same stationary distribution of the number of waiting and active jobs. Yet their information can become stale at different rates.
+
+The paper proves a limiting probability law for this difference, together with every positive moment. For a power-law service distribution near zero, the divergence exponent is beta divided by beta plus one. A further theorem includes slowly varying corrections, such as logarithmic factors.
+
+For exponential service, the exact leading coefficient of average age is pi divided by the product of two and the square root of two.
+
+These are mathematical results for a specified model: Poisson arrivals, equal sharing, an infinite buffer, and no cancellation of old jobs. They are not a guarantee of accuracy at any particular finite load.
+
+The release includes complete analytic arguments, finite-state checks and separately identified simulation evidence. It remains an unrefereed research candidate; internal AI checking is not external human peer review.
+
+Published on 20 October 2026, the paper and evidence are linked on the processor-sharing freshness release at Evidence Press. This briefing uses an AI-generated voice and is not additional scientific evidence.
