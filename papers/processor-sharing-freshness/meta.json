@@ -27,7 +27,7 @@
   "pageStructureWaivers": [],
   "recordMaturity": "current",
   "grandfatheredAtSchemaVersion": null,
-  "metadataProvenance": "Prepared from the revised self-contained manuscript and its scoped internal verification records; final archive identifiers are pending in this local draft.",
+  "metadataProvenance": "Prepared from the revised self-contained manuscript and scoped internal verification records. Versioned GitHub and Zenodo research archives were checked against the frozen release assets on 20 October 2026.",
   "keyResults": [
     "Lower-end service exponent β produces heavy-traffic age exponent β/(β+1).",
     "All positive moments converge; a finite service second moment is not required.",
@@ -47,8 +47,8 @@
   "narration": "How old is the freshest information delivered by a busy server?\n\nImagine a stream of updates sharing one processor. Every update receives an equal fraction of its capacity. A newly arrived update begins work immediately, but older updates continue consuming resources, even after they have become obsolete.\n\nThis paper asks what happens as that server approaches saturation. Its answer depends on something that ordinary queue statistics can miss: the chance that a new update needs very little processing.\n\nTwo queues can have the same average service requirement and exactly the same stationary distribution of the number of waiting and active jobs. Yet their information can become stale at different rates.\n\nThe paper proves a limiting probability law for this difference, together with every positive moment. For a power-law service distribution near zero, the divergence exponent is beta divided by beta plus one. A further theorem includes slowly varying corrections, such as logarithmic factors.\n\nFor exponential service, the exact leading coefficient of average age is pi divided by the product of two and the square root of two.\n\nThese are mathematical results for a specified model: Poisson arrivals, equal sharing, an infinite buffer, and no cancellation of old jobs. They are not a guarantee of accuracy at any particular finite load.\n\nThe release includes complete analytic arguments, finite-state checks and separately identified simulation evidence. It remains an unrefereed research candidate; internal AI checking is not external human peer review.\n\nPublished on 20 October 2026, the paper and evidence are linked on the processor-sharing freshness release at Evidence Press. This briefing uses an AI-generated voice and is not additional scientific evidence.",
   "assurance": {
     "availability": {
-      "state": "not-assessed",
-      "note": "Archive publication pending in this local draft."
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; archival availability does not establish scientific correctness or external peer review."
     },
     "internalReplay": {
       "state": "passed",
