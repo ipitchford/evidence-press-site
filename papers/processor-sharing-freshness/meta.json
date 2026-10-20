@@ -1,0 +1,160 @@
+{
+  "slug": "processor-sharing-freshness",
+  "title": "Small service requirements determine information freshness near saturation",
+  "shortTitle": "The shortest jobs set the freshness scale",
+  "oneLine": "In a stationary processor-sharing queue, the lower end of the service distribution determines the heavy-traffic age scale, even when queue populations look identical.",
+  "abstract": "For a stationary lossless M/G/1 queue with egalitarian processor sharing, Poisson arrivals and a fixed finite-mean service law, this candidate proves a heavy-traffic limit for the freshest-delivered information age. A service CDF behaving as c x^β near zero produces age exponent β/(β+1), with convergence of every positive moment to an explicit product-power exponential law. A regularly varying extension captures slowly varying factors through an integral-defined scale. Obsolete packets remain in service. The written proof does not require a finite service second moment. Fresh bounded checks and historical simulations have distinct provenance; no finite-load error guarantee, external reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-20",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "age of information",
+    "processor sharing",
+    "heavy traffic",
+    "regular variation",
+    "stationary queues"
+  ],
+  "repoUrl": "https://github.com/ipitchford/processor-sharing-freshness",
+  "releaseUrl": "https://github.com/ipitchford/processor-sharing-freshness/releases/tag/v1.0.0-candidate",
+  "evidence": "Written limit and uniform-integrability proofs, three exact finite rational means, bounded stationary simulation and scale checks. Larger historical simulations are labelled and were not rerun for publication.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Internal proofs and checks have the stated scope; external specialist review, independent external reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the revised self-contained manuscript and its scoped internal verification records; final archive identifiers are pending in this local draft.",
+  "keyResults": [
+    "Lower-end service exponent β produces heavy-traffic age exponent β/(β+1).",
+    "All positive moments converge; a finite service second moment is not required.",
+    "An integral-defined normalization extends the theorem to regularly varying lower-end CDFs, including slowly varying corrections."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "OpenAI Codex: review, revision, bounded extensions and publication"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted assessment, not external peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "How old is the freshest information delivered by a busy server?\n\nImagine a stream of updates sharing one processor. Every update receives an equal fraction of its capacity. A newly arrived update begins work immediately, but older updates continue consuming resources, even after they have become obsolete.\n\nThis paper asks what happens as that server approaches saturation. Its answer depends on something that ordinary queue statistics can miss: the chance that a new update needs very little processing.\n\nTwo queues can have the same average service requirement and exactly the same stationary distribution of the number of waiting and active jobs. Yet their information can become stale at different rates.\n\nThe paper proves a limiting probability law for this difference, together with every positive moment. For a power-law service distribution near zero, the divergence exponent is beta divided by beta plus one. A further theorem includes slowly varying corrections, such as logarithmic factors.\n\nFor exponential service, the exact leading coefficient of average age is pi divided by the product of two and the square root of two.\n\nThese are mathematical results for a specified model: Poisson arrivals, equal sharing, an infinite buffer, and no cancellation of old jobs. They are not a guarantee of accuracy at any particular finite load.\n\nThe release includes complete analytic arguments, finite-state checks and separately identified simulation evidence. It remains an unrefereed research candidate; internal AI checking is not external human peer review.\n\nPublished on 20 October 2026, the paper and evidence are linked on the processor-sharing freshness release at Evidence Press. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "assurance": {
+    "availability": {
+      "state": "not-assessed",
+      "note": "Archive publication pending in this local draft."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Written limit and uniform-integrability proofs, three exact finite rational means, bounded stationary simulation and scale checks. Larger historical simulations are labelled and were not rerun for publication."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "A separately implemented exact Fraction/Gauss–Jordan reconstruction checks finite-chain expectations at capacities 1–3. This coordinated producer-side check does not independently reproduce the simulation, general theorem or regular-variation extension."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Code and environment are supplied; empirical checks have the recorded bounded scope."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Zachary (2007), A note on insensitivity in stochastic networks.",
+      "url": "https://doi.org/10.1239/jap/1175267175"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:processor-sharing-freshness",
+    "attemptIds": [
+      "ep-attempt:processor-sharing-freshness-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "reusable-method",
+      "description": "In a stationary processor-sharing queue, the lower end of the service distribution determines the heavy-traffic age scale, even when queue populations look identical.",
+      "scope": "Stationary lossless M/G/1 egalitarian processor sharing with Poisson arrivals, fixed finite-mean service distribution of positive lower-end regular-variation index, and freshest-delivered timestamp."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Stationary lossless M/G/1 egalitarian processor sharing with Poisson arrivals, fixed finite-mean service distribution of positive lower-end regular-variation index, and freshest-delivered timestamp.",
+      "remainingRisks": [
+        "Written arguments require external specialist scrutiny.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independently examine the written reductions and replay the scoped checks.",
+      "claimCeiling": "Stationary lossless M/G/1 egalitarian processor sharing with Poisson arrivals, fixed finite-mean service distribution of positive lower-end regular-variation index, and freshest-delivered timestamp. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "processor-sharing-freshness-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable mathematical candidate and continuation target.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pdfUrl": "https://github.com/ipitchford/processor-sharing-freshness/releases/download/v1.0.0-candidate/processor-sharing-freshness-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23501620",
+  "zenodoUrl": "https://zenodo.org/records/23501620",
+  "citeText": "Anonymous (2026). Small service requirements determine information freshness near saturation. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23501620"
+}

@@ -1,0 +1,169 @@
+{
+  "slug": "williamson-order-transfer",
+  "title": "Order transfer through six for Williamson low-storage Runge–Kutta methods",
+  "shortTitle": "Classical accuracy survives the exponential lift",
+  "oneLine": "A division-free tensor identity transfers classical order through six; three explicit extra tests give a conditional criterion at order seven.",
+  "abstract": "This anonymous mathematical candidate proves that every finite real Williamson low-storage Runge–Kutta coefficient list of classical order at most six retains at least that order under the specified left-multiplication exponential lift. An all-degree repeated-tail identity, polarisation and finite shuffle systems reduce ordered-flow coefficients to classical moments. The result covers zero and negative coefficients and repeated stage nodes. A conditional order-seven criterion reduces the next-order question to three extra tensor identities; automatic seventh-order transfer remains open. Written proofs are accompanied by exact internal replay, separate checker implementations and corruption controls. No external specialist review, independent external reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-20",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Runge–Kutta methods",
+    "Lie-group integrators",
+    "Williamson low storage",
+    "order conditions",
+    "exact certificates"
+  ],
+  "repoUrl": "https://github.com/ipitchford/williamson-order-transfer",
+  "releaseUrl": "https://github.com/ipitchford/williamson-order-transfer/releases/tag/v1.0.0-candidate",
+  "evidence": "Written universal arguments, 197 ordered-tree coefficient polynomials, exact rational checks, independent internal prefix and rank implementations, optimisation-safe replay, corruption controls and conditional order-seven enumeration.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Internal proofs and checks have the stated scope; external specialist review, independent external reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the revised self-contained manuscript and its scoped internal verification records; final archive identifiers are pending in this local draft.",
+  "keyResults": [
+    "Automatic order transfer for every finite real Williamson list satisfying classical order conditions through any p≤6.",
+    "A division-free repeated-tail tensor identity valid at every tensor length.",
+    "Three explicit additional tensor identities suffice at order seven; automatic transfer at that order remains unproved."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "OpenAI Codex: review, revision, bounded extensions and publication"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted assessment, not external peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "Classical accuracy survives the exponential lift. An Evidence Press briefing. Many equations describe rotations or other constrained matrices. Ordinary numerical updates can leave that constraint, while exponential updates preserve it. But matrix multiplication does not commute, so preserving the shape does not automatically preserve accuracy. This paper proves that a structured family is different. Take a Williamson low-storage Runge–Kutta method, with any finite number of stages. If its classical order is at most six, the specified exponential version has at least the same order. The argument allows zero and negative coefficients and repeated stage times. The proof starts with an identity for the ordered products produced by the updates. Small exact linear systems then show that the extra conditions follow from the familiar classical conditions. A continuous integration comparison identifies their exact target values. The package contains the written argument and exact checks of 197 ordered-tree coefficients. Separate internal implementations check prefixes and ranks, while deliberate corruption tests confirm that invalid certificates are rejected. A further result gives three explicit extra tests sufficient for order seven. It does not show that those tests follow automatically, and it does not settle the all-orders question. Nor does the paper promise better error constants or computational performance for a particular method. This is an anonymous, unrefereed mathematical candidate, not externally reproduced or formally verified. Published on 20 October 2026, its paper and evidence are linked on the Williamson order-transfer release at Evidence Press. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "assurance": {
+    "availability": {
+      "state": "not-assessed",
+      "note": "Archive publication pending in this local draft."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Written universal arguments, 197 ordered-tree coefficient polynomials, exact rational checks, independent internal prefix and rank implementations, optimisation-safe replay, corruption controls and conditional order-seven enumeration."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Separate internal checks remain within the coordinated AI-assisted workflow, not external reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Code and environment are supplied; empirical checks have the recorded bounded scope."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Bazavov (2022), Commutator-free Lie group methods with minimum storage requirements and reuse of exponentials.",
+      "url": "https://doi.org/10.1007/s10543-021-00892-x"
+    },
+    {
+      "citation": "Owren (2006), Order conditions for commutator-free Lie group methods.",
+      "url": "https://doi.org/10.1088/0305-4470/39/19/S15"
+    },
+    {
+      "citation": "Lystad (2026), All-stage order-three transfer for Williamson 2N-storage Runge–Kutta methods.",
+      "url": "https://doi.org/10.5281/zenodo.21764741"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:williamson-order-transfer",
+    "attemptIds": [
+      "ep-attempt:williamson-order-transfer-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "reusable-method",
+      "description": "A division-free tensor identity transfers classical order through six; three explicit extra tests give a conditional criterion at order seven.",
+      "scope": "Finite-stage real Williamson recurrences and the stated left-multiplication exponential lift; no claim for arbitrary Runge–Kutta tableaus or all orders."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Finite-stage real Williamson recurrences and the stated left-multiplication exponential lift; no claim for arbitrary Runge–Kutta tableaus or all orders.",
+      "remainingRisks": [
+        "Written arguments require external specialist scrutiny.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independently examine the written reductions and replay the scoped checks.",
+      "claimCeiling": "Finite-stage real Williamson recurrences and the stated left-multiplication exponential lift; no claim for arbitrary Runge–Kutta tableaus or all orders. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "williamson-order-transfer-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable mathematical candidate and continuation target.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "pdfUrl": "https://github.com/ipitchford/williamson-order-transfer/releases/download/v1.0.0-candidate/williamson-order-transfer-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23501588",
+  "zenodoUrl": "https://zenodo.org/records/23501588",
+  "citeText": "Anonymous (2026). Order transfer through six for Williamson low-storage Runge–Kutta methods. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23501588"
+}
