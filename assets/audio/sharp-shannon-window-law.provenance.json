@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "The sharp shape-parameter law for windowed Shannon sampling. An Evidence Press briefing. Many instruments record a continuous signal only at regularly spaced moments, and software must rebuild the signal in between. The classical recipe adds up shifted wave-shaped copies, but in practice only nearby samples are used, each softened by a window. The same windows are used inside the fast Fourier methods behind MRI scanners and radio telescopes. Two popular windows each have one tuning knob, called the shape parameter. In 2025, Kircheis, Potts and Tasche conjectured that one simple setting of this knob gives the fastest possible gain in accuracy as more samples are used. This release proves their conjecture for the worst-case error, and finds the exact law behind it.",
+      "inputSha256": "e44bf9427611c2d4d7757764e50e544d80ed067875634ee446e36bd130dcbc33",
+      "audioSha256": "c868e72c3c4182f7d9bda5f2dd1ef4ca01a3956291d28f601b936e4326a53eef",
+      "requestId": "req_c847de11f84e45b8b8a6bfc250a1407c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "error and finds the exact law behind it",
+        "heardEnding": "release proves their conjecture for the worst case error and finds the exact law behind it",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "Setting the knob too low loses accuracy gently, in proportion to the shortfall. Setting it too high loses accuracy much faster, like a square root. With twofold oversampling, one unit too high can multiply the error by as much as several hundred, while one unit too low costs a factor of only two or three. So if in doubt, err low. The release also finds a gap in a general error estimate used in this line of work since 2022: it leaves out aliased frequencies. A corrected bound is proved, and the published explicit error bounds for the two windows turn out to be true. Finally, the best possible linear method using the same samples does better than either window. The proofs are written out, and the numerical tables are certified with rigorous arithmetic.",
+      "inputSha256": "0de6921bc28879dfbce4a20f4a2b5ac6d1cfd676eacee4c9ac009377fbe677b5",
+      "audioSha256": "778f9ad31dd02c6f3ae9fb93b4a7cf7332e1e3405fb0018d46eb08e1aded3a58",
+      "requestId": "req_1f3c183aec744a04bb8f72b1e7491552",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the numerical tables are certified with rigorous arithmetic",
+        "heardEnding": "either window the proofs are written out and the numerical tables are certified with rigorous arithmetic",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This is an anonymous, unrefereed candidate, checked only by AI-assisted review, and not peer reviewed or independently reproduced. Published on 21 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "92743fc3d5652091a87aad0e5857a1f2e3ccaaaddc018ae811202127d5f47fe6",
+      "audioSha256": "10e1e210daf6998517deff1051fcca954651c5727297dd5e51ab98b0eec68cda",
+      "requestId": "req_f863bb34d62242889b80b8c3a96b4b0c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "sharp-shannon-window-law",
+  "generatedAt": "2026-10-21T12:30:37.748Z",
+  "sourceMetadata": "papers/sharp-shannon-window-law/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "814f7bea7c5fcf9a855c54d7fbf81a2c7f72ac0b907ed13fa6310dd2d14c95dd",
+  "transcriptPath": "assets/audio/sharp-shannon-window-law.txt",
+  "transcriptSha256": "c5ffa392b83a6c66976da51a41072c8f1205c74411a7ae1f9b4be0caaacc411b",
+  "audioPath": "assets/audio/sharp-shannon-window-law.mp3",
+  "audioSha256": "07ef3ac7107d833291245758f0d7d1e2fb91ff534eb571e1c3d91ccd3b8356a5",
+  "audioBytes": 2056748,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
