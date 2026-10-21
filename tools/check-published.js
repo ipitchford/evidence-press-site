@@ -172,29 +172,39 @@ function distContents() {
 async function liveSlugs() {
   const found = new Set();
   const tried = [];
+  const unreadable = [];
   /* The JSON Feed and the sitemap are the two surfaces that enumerate releases.
-     Read both: an index can go stale, and disagreement is itself worth seeing. */
-  try {
-    const r = await fetch(`${BASE}/feed.json`, { headers: { 'cache-control': 'no-cache' } });
-    if (r.ok) {
-      const j = await r.json();
-      for (const it of j.items || []) {
-        const m = String(it.url || it.id || '').match(/\/releases\/([^/]+)\//);
-        if (m) found.add(m[1]);
-      }
-      tried.push(`feed.json: ${j.items ? j.items.length : 0} items`);
+     Read both: an index can go stale, and disagreement is itself worth seeing.
+     Fail closed: a release that is live but not yet in the committed ledger is
+     protected only by these indexes, so an index that cannot be read leaves the
+     check unable to prove nothing would be dropped. Retry briefly, then refuse. */
+  async function readIndex(name, parse) {
+    let last = '';
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const r = await fetch(cacheBusted(`${BASE}/${name}`), { headers: { 'cache-control': 'no-cache' } });
+        if (!r.ok) { last = `HTTP ${r.status}`; }
+        else { tried.push(parse(await r.text())); return; }
+      } catch (e) { last = e.message; }
+      if (attempt < 3) await new Promise(res => setTimeout(res, 1000 * attempt));
     }
-  } catch (e) { tried.push(`feed.json: unreachable (${e.message})`); }
-  try {
-    const r = await fetch(`${BASE}/sitemap.xml`, { headers: { 'cache-control': 'no-cache' } });
-    if (r.ok) {
-      const x = await r.text();
-      let n = 0;
-      for (const m of x.matchAll(/\/releases\/([^/<]+)\//g)) { found.add(m[1]); n++; }
-      tried.push(`sitemap.xml: ${n} release URLs`);
+    tried.push(`${name}: unreadable (${last})`);
+    unreadable.push(`${name} (${last})`);
+  }
+  await readIndex('feed.json', text => {
+    const j = JSON.parse(text);
+    for (const it of j.items || []) {
+      const m = String(it.url || it.id || '').match(/\/releases\/([^/]+)\//);
+      if (m) found.add(m[1]);
     }
-  } catch (e) { tried.push(`sitemap.xml: unreachable (${e.message})`); }
-  return { found: [...found], tried };
+    return `feed.json: ${j.items ? j.items.length : 0} items`;
+  });
+  await readIndex('sitemap.xml', x => {
+    let n = 0;
+    for (const m of x.matchAll(/\/releases\/([^/<]+)\//g)) { found.add(m[1]); n++; }
+    return `sitemap.xml: ${n} release URLs`;
+  });
+  return { found: [...found], tried, unreadable };
 }
 
 /* Confirm a slug really resolves on the live site rather than hitting the
@@ -263,8 +273,11 @@ async function confirmInstitutionalPage(pagePath, requireCandidateEquality = fal
 
   if (LIVE) {
     console.log('Reconciling the ledger against the deployed site…');
-    const { found, tried } = await liveSlugs();
+    const { found, tried, unreadable } = await liveSlugs();
     tried.forEach(t => console.log('  ' + t));
+    for (const index of unreadable) {
+      liveFailures.push(`live release index unreadable: ${BASE}/${index}; cannot prove no live release would be dropped`);
+    }
     /* Index surfaces can under-report. Probe every slug we know of from any
        source, so a release that is live but missing from the index is caught. */
     const candidates = new Set([...found, ...dist.releases, ...ledger.releases.map(r => r.slug)]);
