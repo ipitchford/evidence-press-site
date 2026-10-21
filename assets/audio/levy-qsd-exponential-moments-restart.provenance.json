@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "When restarting a simulation pays off, and when it stops paying. An Evidence Press briefing. Some of the most important events in a model are rare: a queue overflowing, a reserve running out, a learning agent finally reaching a distant goal. Simulating them directly is wasteful, because almost every run drifts away and fails. One simple remedy is restart. Whenever a run falls below a floor, throw it away and start again, not from the beginning, but from a point drawn from the quasi-stationary distribution. That is the pattern the process settles into when it is watched only on the occasions it has survived between the floor and the target for a long time.",
+      "inputSha256": "b7014730afcdb585bb2a4a82fb7d7686ee5b94d160c7331b6a4be4b630975af3",
+      "audioSha256": "e80f08c8e13d8d20b0510dc8d94fa66af59414484301e14b26b8616ebc5aaf55",
+      "requestId": "req_7ee53bc13ff149f299a8b4f7ccded9e9",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "floor and the target for a long time",
+        "heardEnding": "on the occasions it has survived between the floor and the target for a long time",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "In a 2026 paper in Stochastic Systems, Garcia, Bermolen, Jonckheere and Shneer showed that the waiting time for success under this scheme is exactly exponential, and that its rate depends on one number: an exponential average over the quasi-stationary distribution. They conjectured how fast that number grows as the target moves further away, noting that the guess is exact for Brownian motion. This release computes the number exactly for a broad class of random processes with jumps. The growth rate they predicted is right, but the hoped-for constant of one is not. In their own example the constant is about 0.85. It is below one whenever all the jumps point downwards and above one whenever they all point upwards.",
+      "inputSha256": "bc187a75422b59c8cc70d9c5b56409774904e27fc380640686c3cdca5349353d",
+      "audioSha256": "d4104f8429a6976f8dcd0322fdff51c612113d39a07ac9062af5b4a8d49c5e04",
+      "requestId": "req_e5c0e9d6e11946889b899bbbed3d1ed4",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "downwards and above whenever they all point upwards",
+        "heardEnding": "is below whenever all the jumps point downwards and above whenever all the jumps point upwards",
+        "matchedWords": 7,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The reason is that the quasi-stationary distribution has a smooth sine-shaped middle and two very thin layers at its edges, and those layers set the constant. The practical consequence concerns the simulation budget. Restart's chance of success grows in proportion to the budget only up to a definite scale, after which extra simulation buys almost nothing. That scale is much smaller than the range stated in the original restart theorem, and the release gives a corrected range and an explicit budget rule. The results assume perfect, free draws from the quasi-stationary distribution, which real particle methods only approximate. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced.",
+      "inputSha256": "e20d28d4941a71576c583bc16a4447d6be5b667f1821b97a4694d770db3176c6",
+      "audioSha256": "8e12c6efca77e041be02a1d3156fb5dc6d182feb066aaf9d9804c9eb1b4c134b",
+      "requestId": "req_d3a870dd241347538bb2fd93508b6b58",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "unrefereed candidate not peer reviewed or independently reproduced",
+        "heardEnding": "only approximate this is an anonymous ai assisted unrefereed candidate not peer reviewed or independently reproduced",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Published on 21 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "594fe343d0fce1d2c7354924eab886e5fe7b6c1433628467f9d55bfe814bb41d",
+      "audioSha256": "33576273e6ea7637fdfcc1c54d46793b93bd9e777848313bcccadfe28bd4037f",
+      "requestId": "req_f298ddec5fdc4c53a2c97c589ec38e34",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "levy-qsd-exponential-moments-restart",
+  "generatedAt": "2026-10-21T20:52:36.854Z",
+  "sourceMetadata": "papers/levy-qsd-exponential-moments-restart/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "e7bdac2165fd772b538bf2f9c6c10d09db6aacf4e7949c72d598c9a9836076f3",
+  "transcriptPath": "assets/audio/levy-qsd-exponential-moments-restart.txt",
+  "transcriptSha256": "2c2e56ba84a187e4626b36e83e11ce7630e8bf65ff66a872f8a730fa3dab41c3",
+  "audioPath": "assets/audio/levy-qsd-exponential-moments-restart.mp3",
+  "audioSha256": "15c17b8216083f668ea6c421f0e715adfc257469d53a8e74528dc9d9cd0bd0d1",
+  "audioBytes": 2442284,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
