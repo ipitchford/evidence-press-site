@@ -1,0 +1,197 @@
+{
+  "slug": "sharp-shannon-window-law",
+  "title": "The sharp shape-parameter law for sinh and Kaiser–Bessel regularised Shannon sampling, with a corrected alias-inclusive error bound",
+  "shortTitle": "Tuning the window: the sharp law",
+  "oneLine": "For windowed sinc reconstruction with the sinh and Kaiser–Bessel windows, the error decays fastest exactly when the shape parameter grows like dm, as Kircheis, Potts and Tasche conjectured; over-tuning costs far more than under-tuning, a gap in the general error estimate is corrected, and the published explicit bounds survive.",
+  "abstract": "Regularised (windowed) Shannon sampling rebuilds a bandlimited signal from its 2m nearest integer samples by multiplying the cardinal sine by a compactly supported window. The sinh-type and continuous Kaiser–Bessel (cKB) windows, which are also standard kernels of nonuniform fast Fourier transforms and gridding, each have a shape parameter β. For signals of angular bandwidth δ < π put d = π − δ. Kircheis, Potts and Tasche (BIT Numer. Math. 2025) conjectured that β = dm gives the maximal exponential decay of the error. This candidate proves that the worst-case error over the L² unit ball satisfies log E = −β + √((β² − d²m²)₊) + O(log m) uniformly in β > 0, for both windows, so the optimal exponential rate is d and is attained, in that rate sense, exactly when β/m → d. Under-tuning loses accuracy linearly and over-tuning like a square root. The same law holds for each signal whose spectrum has bounded variation and is bounded away from zero, while exact optimality of dm at finite m fails. Leading constants, a second-order sinh tuning law and family minima are given. The general error estimate used for these windows since 2022 omits aliased bands: an exact rational certificate violates it by a factor of about 3500. An alias-inclusive replacement is proved for a narrower window class containing both windows, and the published explicit sinh and cKB bounds are shown to remain true. Optimal pointwise linear recovery from the same samples has root-limsup rate tan²(δ/4), a larger exponent than either window attains. Certified interval-arithmetic tables give the finite-m picture for m ≤ 32. A two-term law for the slow cKB convergence is stated as a conjecture. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-21",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Shannon sampling",
+    "regularised sampling",
+    "sinh window",
+    "Kaiser–Bessel window",
+    "shape parameter",
+    "aliasing",
+    "nonuniform fast Fourier transform",
+    "optimal recovery",
+    "interval arithmetic"
+  ],
+  "repoUrl": "https://github.com/ipitchford/sharp-shannon-window-law",
+  "releaseUrl": "https://github.com/ipitchford/sharp-shannon-window-law/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/sharp-shannon-window-law/releases/download/v1.0.0-candidate/sharp-shannon-window-law-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23533711",
+  "zenodoUrl": "https://zenodo.org/records/23533711",
+  "citeText": "Anonymous (2026). The sharp shape-parameter law for sinh and Kaiser-Bessel regularised Shannon sampling, with a corrected alias-inclusive error bound. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23533711",
+  "evidence": "Written proofs (45-page manuscript, with the exact-constant proofs in an appendix); certified computations in Arb ball arithmetic for sup-over-phase error enclosures (m ≤ 32, three bandwidths, both windows) and exact rational interval arithmetic for the counterexample; a one-command replay that regenerates all 18 outputs byte for byte; semantic negative controls rejecting corrupted certificates and inputs.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Written proofs and certified computations have the stated scope; Conjecture 9.7 and the cKB onset law are conjectural or exploratory. Internal AI-assisted review, an AI-assisted adversarial review and two targeted proof audits only; external specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the approved revised manuscript, its certificates and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 21 October 2026.",
+  "keyResults": [
+    "Worst-case law, both windows: log E = −β + √((β² − d²m²)₊) + O(log m) uniformly in β > 0, so the optimal exponential rate is d and is attained exactly when β/m → d; under-tuning loses linearly, over-tuning like a square root (proof).",
+    "Per-signal law for spectra of bounded variation bounded away from zero, covering the source's test signal; exact finite-m optimality of β = dm fails for both windows (proof; certified finite-m tables).",
+    "The general error estimate used since 2022 omits aliased bands: a certified exact-rational counterexample violates it by a factor of about 3500; an alias-inclusive replacement holds for a narrower window class, and the published explicit sinh and cKB bounds remain true (proof).",
+    "Optimal pointwise linear recovery from the same 2m samples has root-limsup rate tan²(δ/4), exponent 2 log cot(δ/4) > d (proof).",
+    "At twofold oversampling and 8 ≤ m ≤ 32, raising β by one above dm multiplies the error by 10–670 (sinh) or 3–220 (cKB); lowering it by one costs 2.1–3.1 (certified)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, verification re-review, adversarial review and two targeted proof audits (including OpenAI gpt-5.6-sol)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "The sharp shape-parameter law for windowed Shannon sampling. An Evidence Press briefing. Many instruments record a continuous signal only at regularly spaced moments, and software must rebuild the signal in between. The classical recipe adds up shifted wave-shaped copies, but in practice only nearby samples are used, each softened by a window. The same windows are used inside the fast Fourier methods behind MRI scanners and radio telescopes. Two popular windows each have one tuning knob, called the shape parameter. In 2025, Kircheis, Potts and Tasche conjectured that one simple setting of this knob gives the fastest possible gain in accuracy as more samples are used. This release proves their conjecture for the worst-case error, and finds the exact law behind it. Setting the knob too low loses accuracy gently, in proportion to the shortfall. Setting it too high loses accuracy much faster, like a square root. With twofold oversampling, one unit too high can multiply the error by as much as several hundred, while one unit too low costs a factor of only two or three. So if in doubt, err low. The release also finds a gap in a general error estimate used in this line of work since 2022: it leaves out aliased frequencies. A corrected bound is proved, and the published explicit error bounds for the two windows turn out to be true. Finally, the best possible linear method using the same samples does better than either window. The proofs are written out, and the numerical tables are certified with rigorous arithmetic. This is an anonymous, unrefereed candidate, checked only by AI-assisted review, and not peer reviewed or independently reproduced. Published on 21 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All 18 outputs, including the certified tables, regenerate byte for byte with verify_all.py, in a clean replay from a separate copy and again on the release repository; the fast items and negative controls were replayed on the frozen release archive."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "An internal AI re-review recomputed 30 certified table entries, the counterexample and the optimal-recovery values with its own engine sharing no code with the package; this is implementation diversity inside the producer workflow, not external reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. Certified computations rely on Arb (python-flint) and Python's exact rationals."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review, adversarial review and proof audits are not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Pinned Python packages, deterministic outputs that record the hashes of the scripts producing them, and continuous integration of the fast replay and negative controls."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Kircheis, Potts and Tasche (2025), Some remarks on regularized Shannon sampling formulas. BIT Numerical Mathematics 65, Article 40.",
+      "url": "https://doi.org/10.1007/s10543-025-01081-w"
+    },
+    {
+      "citation": "Kircheis, Potts and Tasche (2022), On regularized Shannon sampling formulas with localized sampling. Sampling Theory, Signal Processing, and Data Analysis 20, Article 20.",
+      "url": "https://doi.org/10.1007/s43670-022-00039-1"
+    },
+    {
+      "citation": "Kircheis, Potts and Tasche (2024), On numerical realizations of Shannon's sampling theorem. Sampling Theory, Signal Processing, and Data Analysis 22, Article 13.",
+      "url": "https://doi.org/10.1007/s43670-024-00087-9"
+    },
+    {
+      "citation": "Barnett, Magland and af Klinteberg (2019), A parallel nonuniform fast Fourier transform library based on an “exponential of semicircle” kernel. SIAM Journal on Scientific Computing 41(5), C479–C504.",
+      "url": "https://doi.org/10.1137/18M120885X"
+    },
+    {
+      "citation": "Beatty, Nishimura and Pauly (2005), Rapid gridding reconstruction with a minimal oversampling ratio. IEEE Transactions on Medical Imaging 24(6), 799–808.",
+      "url": "https://doi.org/10.1109/TMI.2005.848376"
+    },
+    {
+      "citation": "Fessler and Sutton (2003), Nonuniform fast Fourier transforms using min-max interpolation. IEEE Transactions on Signal Processing 51(2), 560–574.",
+      "url": "https://doi.org/10.1109/TSP.2002.807005"
+    },
+    {
+      "citation": "Chen and Zhang (2019), Sharp exponential bounds for the Gaussian regularized Whittaker–Kotelnikov–Shannon sampling series. Journal of Approximation Theory 245, 73–82.",
+      "url": "https://doi.org/10.1016/j.jat.2019.04.003"
+    },
+    {
+      "citation": "Micchelli, Xu and Zhang (2009), Optimal learning of bandlimited functions from localized sampling. Journal of Complexity 25(2), 85–114.",
+      "url": "https://doi.org/10.1016/j.jco.2009.02.005"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:sharp-shannon-window-law",
+    "attemptIds": [
+      "ep-attempt:sharp-shannon-window-law-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "A two-sided worst-case error law for sinh and continuous Kaiser–Bessel windowed Shannon sampling, uniform in the shape parameter, settling the worst-case reading of the Kircheis–Potts–Tasche optimality conjectures; with a certified counterexample to their general estimate, an alias-inclusive replacement and confirmation of the published explicit bounds.",
+      "scope": "Exact, noiseless integer samples; fixed bandwidth δ < π; worst case over the L² unit ball of the Paley–Wiener space and the evaluation point; per-signal law for spectra of bounded variation bounded away from zero; certified tables only in their finite ranges. No noise, finite-precision, varying-bandwidth or deconvolved-NFFT result."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The conjectures and the error measure are quoted verbatim from arXiv:2407.16401v2 and three readings (worst case, per signal, finite m) are defined and settled separately; the corrected general bound states its narrower window class explicitly.",
+      "remainingRisks": [
+        "Pinpoint numbering follows arXiv v2; the publisher's typeset text was not consulted.",
+        "Certified tables rely on Arb and Python execution and on the scripts implementing the paper's definitions.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independently check the lower-bound lemmas of Section 5 and the exact-constant proofs of Appendix D, and replay the certified tables with separate code; attack Conjecture 9.7.",
+      "claimCeiling": "Sinh and continuous Kaiser–Bessel windows at fixed bandwidth with exact samples; worst-case and stated per-signal laws; certified values only in their finite ranges. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "sharp-shannon-window-law-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable sharp tuning law, corrected error estimate and certified finite-m guidance.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
