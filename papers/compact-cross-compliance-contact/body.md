@@ -6,6 +6,8 @@ The condition is structural: two smooth, anchored bodies share a closed interfac
 
 This is a written, unrefereed mathematical candidate. It does not settle general three-dimensional frictional contact or the continuous-time rate-and-state problem.
 
+**Who would use it.** Contact analysts gain a route to incremental existence without a small-friction bound, numerical analysts a convergence target and test cases, and friction modellers explicit distinctions between coupled pressure, prescribed pressure and state updates. No practical engineering model or simulation has been validated.
+
 ## Summary for specialists
 
 Let the elastic form be symmetric and coercive and the joint normal/tangential trace map be surjective onto the stated endpoint trace spaces. The compact cross-compliance map is

@@ -1,15 +1,17 @@
 ## Summary
 
-This release explores what can be learned from a manuscript that claims to put a complex structure on the smooth six-sphere, $S^6$. It does **not** independently prove that the proposed complex threefold exists, is smooth, or has $S^6$ as its underlying smooth manifold.
+This page explains, in order: what the source manuscript claims and why that claim is contested, what this release adds, which of its statements stand on their own and which depend on the source, and what has and has not been checked.
 
-The useful outcome is a map with four clearly marked kinds of statement:
+**The background.** A *complex structure* on a manifold lets it be treated locally like complex coordinate space, so that complex analysis works on it. Published work cited by the release studies the properties that a hypothetical complex structure on the six-sphere $S^6$ would have to have, such as its Hodge numbers. An unrefereed 108-page source manuscript claims to construct one: a family of complex two-tori over the projective line $\mathbf P^1$, completed at three special points. That claim is in direct tension with published work. Campana, Demailly and Peternell's 2020 corrected treatment implies $c_3(X)\le0$ in exactly the case the manuscript describes, whereas the manuscript claims $c_3(X)=2$; the manuscript locates the disagreement at one vanishing step.
+
+**What this release does.** It explores what can be learned from that manuscript. It does **not** independently prove that the proposed complex threefold exists, is smooth, or has $S^6$ as its underlying smooth manifold. Rather than deciding whether the source is right, it works out what follows from it, and labels every statement with one of four clearly marked kinds:
 
 - **A — exact arithmetic or symbolic:** finite identities replayed by the supplied programs;
 - **P — proved under stated hypotheses:** written arguments that do not assume the whole $S^6$ construction;
 - **C — conditional extension:** conclusions that depend on the source construction or its local calculations;
 - **O — open:** work that remains to be done.
 
-The headline conditional calculation is
+**What was found.** The source-independent output is mostly exact arithmetic: which twist parameters are possible, which finite spectra rank-four monodromy can have, and where the first smooth torsion specialization occurs on an associated elliptic surface. The headline conditional calculation is
 
 $$
 h^{1,1}(X)=2,\qquad h^{1,2}(X)=1,
@@ -19,19 +21,7 @@ together with proposed tangent-cohomology dimensions $h^q(X,T_X)=(1,1,1,0)$ and 
 
 > **Candidate status:** Anonymous · unrefereed · exact arithmetic and symbolic replay passed · written theorem layer broader than computation · global source construction unverified · independent reconstruction, formal verification, external specialist review and editorial peer review not assessed.
 
-## What the strongest-directions programme achieved
-
-The original research map froze two layers of the proposed construction and varied a third. It gave three directions highest priority.
-
-| Original goal | Outcome | Current gate |
-|---|---|---|
-| Complete the missing Hodge-number calculation | A logarithmic direct-image and residue argument gives $h^{1,2}=1$, hence $h^{1,1}=2$, under the source and local-model dependencies. | Conditional proof candidate |
-| Decide whether twist and period parameters give inequivalent complex structures | The period constant $c_0$ is proposed to parametrize a smooth one-dimensional Kuranishi germ locally. Global equivalence of $c_0$ values and of the $p=\pm1$ twist triples remains open. | Partial conditional result; global problem open |
-| Study adapted balanced, strongly Gauduchon, pluriclosed/SKT or canonical Hermitian metrics | Not undertaken in the completed package. | Open |
-
-The work also opened four productive side areas—twist arithmetic, rank-four triangle monodromy, cohomology at a nonnormal fibre, and exceptional algebraic fibres. These contain most of the source-independent exact computation.
-
-## Precise claims for specialists
+## Summary for specialists
 
 The source proposes a holomorphic map
 
@@ -57,7 +47,41 @@ $$
 
 and argues that varying the additive period constant $c_0$ supplies a nonzero Kodaira–Spencer class spanning $H^1(X,T_X)$. The resulting Kuranishi germ is claimed to be smooth and one-dimensional. This is local deformation theory. It does not classify when two different $c_0$ values—or two different twist triples—give globally equivalent complex manifolds.
 
-## Technical mechanism: conductor–adjoint nonvanishing
+### Claim ledger
+
+| Claim | Class |
+|---|---|
+| Attainable signed $p$ are exactly the integers coprime to $12$; fixed-$p$ triples form a rank-two affine lattice; relation-matrix Smith invariants $(1,\lvert p\rvert)$ | A |
+| Topology geography and the $p=\pm1$ sphere locus | C (source Theorems 7.17, 7.22, 8.1) |
+| A source residue remark needs an exact-$p$ correction | A / source reading |
+| $h^{1,1}=2$, $h^{1,2}=1$; $h^q(T_X)=(1,1,1,0)$ with a smooth one-dimensional Kuranishi germ parametrized locally by $c_0$ | C |
+| Conductor–adjoint nonvanishing criterion | P |
+| Family-wide $R^2f_*(T_X\otimes L)\ne0$ | C |
+| Exceptional locus: $c_0$-graphs and a torsion branch, first smooth torsion point $t=32/5$; algebraicity discriminant $24(ae-bd)-r^2$ | A/C |
+| Cusp Smith classification and rank-four finite local-order list; spectral partition $58/72/184$ | A/P |
+| Double-coset orbit presentation and recursive enumeration of integral representations | P |
+| Infinite scaled $(3,4)$ and unimodular $(12,12)$ families; open-base period solutions | A/P/C |
+| Jacobi lifts for sixteen extremal rational elliptic surfaces and a bounded-function obstruction within this construction | P/A |
+
+None of these rows asserts external review, novelty, priority or proof-assistant verification. `RESULTS_LEDGER.md` gives the replay or proof object and dependency boundary for each.
+
+### What the strongest-directions programme set out to do
+
+The original research map froze two layers of the proposed construction and varied a third. It gave three directions highest priority.
+
+| Original goal | Outcome | Current gate |
+|---|---|---|
+| Complete the missing Hodge-number calculation | A logarithmic direct-image and residue argument gives $h^{1,2}=1$, hence $h^{1,1}=2$, under the source and local-model dependencies. | Conditional proof candidate |
+| Decide whether twist and period parameters give inequivalent complex structures | The period constant $c_0$ is proposed to parametrize a smooth one-dimensional Kuranishi germ locally. Global equivalence of $c_0$ values and of the $p=\pm1$ twist triples remains open. | Partial conditional result; global problem open |
+| Study adapted balanced, strongly Gauduchon, pluriclosed/SKT or canonical Hermitian metrics | Not undertaken in the completed package. | Open |
+
+The work also opened four productive side areas—twist arithmetic, rank-four triangle monodromy, cohomology at a nonnormal fibre, and exceptional algebraic fibres. These contain most of the source-independent exact computation.
+
+## Technical account
+
+Five result groups follow. The first is the standalone theorem; the others are the arithmetic, monodromy and fibre computations. Each states its own dependency on the source construction.
+
+### Conductor–adjoint nonvanishing
 
 Let $f:X\to C$ be a proper flat map from a smooth complex threefold to a smooth curve. Let $S=f^{-1}(c)$ be a reduced normal-crossing fibre with normalization $\nu:\widetilde S\to S$, and for a line bundle $L$ put
 
@@ -91,7 +115,7 @@ Why is this the first specialist target? Campana, Demailly and Peternell’s cor
 
 The conductor criterion makes that proposed mechanism finite enough to referee directly. A successful check would challenge one proof route under the stated hypotheses. It would not by itself establish the source construction or refute every route to the corrected conclusion.
 
-## Exact twist arithmetic
+### Exact twist arithmetic
 
 Define
 
@@ -117,7 +141,7 @@ Conditional on the source topology theorems, the possible fundamental groups are
 
 The residue pair $(\ell_1\bmod3,\ell_2\bmod4)$ determines only $p\bmod12$. It does not force $|p|=1$ for a fixed full triple. This corrects an over-strong reading of a source remark.
 
-## Triangle monodromy and period families
+### Triangle monodromy and period families
 
 For integral rank-four representations of
 
@@ -137,7 +161,7 @@ For fixed rational spectra and cusp Smith form, the written classification is an
 
 The notes also construct infinite scaled $(3,4,\infty)$ and unimodular $(12,12,\infty)$ integral families, and solve the open-base period equations for the scaled $(3,4,\infty)$ family and the split $(12,12,\infty)$ case. In the split case, compactification reduces to an explicit residue obstruction; the nonsplit case is not evaluated. An integral monodromy triple is therefore not automatically a compact holomorphic family.
 
-## Exceptional algebraic fibres
+### Exceptional algebraic fibres
 
 The source period equation for an integral two-form reduces to a five-tuple $(a,b,r,d,e)$. When $(d,e)\neq(0,0)$, the type-$(1,1)$ condition defines a graph in the free parameter $c_0$. When $d=e=0$, it becomes a torsion condition for a section on an associated elliptic surface.
 
@@ -155,13 +179,19 @@ $$
 
 Its algebraic-dimension interpretation remains conditional on the source period and orientation conventions. There is no single fixed exceptional set until $c_0$ is chosen, because the graph branches move with that parameter.
 
-## Extremal elliptic Jacobi lifts
+### Extremal elliptic Jacobi lifts
 
 Using the Miranda–Persson classification data, another note constructs Jacobi-type open-base complex-two-torus families from torsion sections on all sixteen extremal rational elliptic surfaces. The verifier checks fibre Euler totals, root ranks, Mordell–Weil orders, displayed Weierstrass models and sections, integral monodromy, invariant forms and cusp ranks.
 
 The construction has rank-one semiabelic boundary behaviour at multiplicative cusps. A bounded-holomorphic-function argument obstructs twisting this particular construction globally into maximal rank-two cusp degenerations. That is a limitation of the proposed Jacobi route, not a classification of every possible compactification.
 
-## What this release does not establish
+## Evidence, assurance and limitations
+
+The release has three evidence layers, and they should not be confused. Exact arithmetic and symbolic claims (class A) are replayed by eleven deterministic programs. Written arguments (classes P and C) are broader than anything the programs check. The source construction itself is not verified by this release.
+
+The replay route reproduces the encoded arithmetic, matrix, root-system, conductor-ideal and division-polynomial predicates. An independent mathematical audit should reconstruct the conductor map, logarithmic direct images, residue sequence, deformation obstruction and source construction from definitions before consulting the implementations. Public CI and the frozen local gate passed ordinary and optimized replay, four mutation controls, manifest checks, fresh extraction, TeX preflight and PDF-layout regression. The five internal journal-like review reports are model-mediated quality control, not external specialist review.
+
+**What this release does not establish.**
 
 - It does not independently construct a compact complex threefold, prove its smoothness, or identify its underlying smooth manifold with $S^6$.
 - It does not turn the conditional Hodge and Kuranishi arguments into externally reviewed theorems.
@@ -182,13 +212,13 @@ The construction has rank-one semiabelic boundary behaviour at multiplicative cu
 | Computer-assisted mathematics researchers | Reuse the claim ledger, mutation controls, fresh-extraction gate and layout regression. | The checkers cover encoded finite and symbolic predicates, not every written proof. |
 | General readers | See how useful conditional mathematics can be separated from a disputed headline construction. | Public availability and replay are evidence states, not peer-reviewed truth. |
 
-## Why the result matters
+## Why the problem matters
 
 The package changes the next question from “do we believe the whole 108-page source?” to several smaller questions with different evidence needs. Exact twist and spectral claims can be rerun. The conductor criterion can receive a focused referee report. The Hodge and deformation arguments can be reconstructed map by map. The source construction can be audited separately.
 
 That decomposition is scientifically useful even if the global claim later fails: the standalone conductor mechanism, arithmetic monodromy framework and finite classifications can be evaluated on their own hypotheses. If the source construction survives specialist scrutiny, the conditional Hodge and local-moduli calculations become immediately consequential. Neither possibility justifies skipping the unresolved gates.
 
-## Evidence, replay and assurance boundary
+## How to inspect or reproduce the recorded checks
 
 Start with the immutable [v0.1.0 candidate release](https://github.com/ipitchford/s6-extension-results-candidate/releases/tag/v0.1.0-candidate) or [DOI archive](https://doi.org/10.5281/zenodo.22085272), then verify `SHA256SUMS`.
 
@@ -202,8 +232,6 @@ python3 verification/verify_release.py --negative-controls
 
 Singular is required for the conductor-ideal checks. The release also supplies a fresh-extraction verifier, manifest binding, TeX preflight and an executable PDF-layout check that keeps every text block inside a conservative right margin.
 
-This route reproduces the encoded arithmetic, matrix, root-system, conductor-ideal and division-polynomial predicates. An independent mathematical audit should reconstruct the conductor map, logarithmic direct images, residue sequence, deformation obstruction and source construction from definitions before consulting the implementations.
-
 ## The most valuable next projects
 
 1. Referee the standalone conductor–adjoint theorem against the exact $R^2f_*(T_X\otimes L)$ step in the corrected CDP argument.
@@ -215,7 +243,7 @@ This route reproduces the encoded arithmetic, matrix, root-system, conductor-ide
 7. Complete the nonsplit $(12,12,\infty)$ compactification problem and identify which arithmetic monodromy orbits admit compact holomorphic or polarizable families.
 8. Conduct a broad object-level prior-art and priority audit before using first-discovery language.
 
-## What is in the public package
+## What is in the evidence package
 
 The public repository contains the nine-page synthesis in PDF and accessible Markdown; seven mathematical extension notes; eleven deterministic verification programs; exact claim, result, source, citation, licence, provenance and assurance ledgers; ordinary and optimized replay; four semantic mutation controls; fresh-extraction and PDF-layout checks; five internal journal-like review reports; the Claude Fable 5 observation record and response matrix; and a publication confirmation receipt.
 

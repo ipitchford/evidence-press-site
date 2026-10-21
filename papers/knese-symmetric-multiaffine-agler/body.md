@@ -1,14 +1,22 @@
 ## Summary
 
-A formula can behave safely on ordinary numbers yet fail when those numbers are replaced by commuting operators. This candidate identifies a whole family where that gap disappears: **stable symmetric multiaffine polynomials**, in every finite number of variables.
+This page explains, in order: the question Knese asked, what this candidate proves, how the proof works, and what has and has not been checked.
 
-“Symmetric” means that exchanging variables changes nothing. “Multiaffine” means each variable has power at most one. “Stable” here means that the polynomial never vanishes when all its inputs lie inside the complex unit disk. The result says that reflecting such a polynomial and dividing by the original gives an operator norm bound of one—without an extra factor.
+**The question.** A formula can behave safely on ordinary numbers yet fail when those numbers are replaced by commuting operators (matrices or, more generally, linear maps on a Hilbert space). Analysts therefore ask which natural families of functions keep the stronger, operator-level bound. Knese asked this for one such family, built from **stable symmetric multiaffine polynomials**: he posed the strictly stable version as Question 1.4 of his 2010 paper and the open-polydisk version as Problem 3 of his survey.
+
+**The terms.** “Symmetric” means that exchanging variables changes nothing. “Multiaffine” means each variable has power at most one. “Stable” here means that the polynomial never vanishes when all its inputs lie inside the complex unit disk. From such a polynomial $p$ one forms its *reflection* $\widetilde p$ and the quotient $\widetilde p/p$.
+
+**What was found.** The candidate proves that, in every finite number of variables, this quotient is bounded by one even when the variables are replaced by commuting strict contractions. In the field's language, every such polynomial is an *Agler denominator*, using its actual multidegree—without an extra factor. Boundary zeros, repeated roots, common factors and complex coefficients are included.
+
+**Status.** An anonymous, AI-assisted, unrefereed written-proof candidate. Exact finite checks supplement, but do not replace, the written proof; no external peer review, unaffiliated reproduction, formal verification or absolute priority is established.
 
 ## Summary for specialists
 
 For every finite $n$, let $p\ne0$ be symmetric and multiaffine, with no zeros in $\mathbb D^n$. Using the **actual multidegree**, the quotient $\widetilde p/p$ belongs to the Schur–Agler class:
 
-$$\left\|(\widetilde p/p)(T_1,\ldots,T_n)\right\|\le1$$
+$$
+\left\|(\widetilde p/p)(T_1,\ldots,T_n)\right\|\le1
+$$
 
 for every commuting tuple of strict contractions. Boundary zeros, common factors, complex coefficients and degree drops in the diagonal polynomial are permitted. Constants are treated separately. Double commutativity is not assumed.
 
@@ -18,7 +26,9 @@ The diagonal polynomial determines the symmetric multiaffine polynomial by polar
 
 For $m=n-1$, the construction weights permutation-isotypic components by
 
-$$E_m=\sum_{\ell=0}^{\lfloor m/2\rfloor}\frac{P_\ell^{(m)}}{n\binom n\ell}.$$
+$$
+E_m=\sum_{\ell=0}^{\lfloor m/2\rfloor}\frac{P_\ell^{(m)}}{n\binom n\ell}.
+$$
 
 The weights are not guessed: cancellation forces the successive ratio $\ell/(n-\ell+1)$, with initial weight $1/n$. At $n=4$, the two contributions in the unwanted spin-one block are both $1/16$, with opposite signs. The symmetric component remains.
 

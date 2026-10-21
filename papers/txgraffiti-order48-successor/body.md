@@ -1,6 +1,8 @@
 ## Summary
 
-This release supplies one explicit connected cubic graph $G$ on 48 vertices for which
+**In plain terms.** A *cubic* graph is a network in which every point is joined to exactly three others. There are two natural ways to pick a small "controlling" structure in such a network. A *maximal matching* is a set of links, no two sharing a point, that cannot be extended by adding another link. An *independent dominating set* is a set of points, no two joined, such that every other point is next to one of them. A proposed bound for regular graphs says the smallest independent dominating set is never larger than the smallest maximal matching. This release gives a 48-point cubic network where it is larger — by one — so the bound fails.
+
+**The precise statement.** This release supplies one explicit connected cubic graph $G$ on 48 vertices for which
 
 $$
 \mu^*(G)=15<16=i(G).

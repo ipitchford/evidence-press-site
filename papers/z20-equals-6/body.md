@@ -22,6 +22,39 @@ The lower bound is independent of all of this: Paley(17) is self-complementary a
 
 The SAT layer is certified, including by a formally verified checker. Three computational steps are not formally verified: the program that writes the CNFs (whose correctness is proved on paper in Proposition 5.2 and spot-tested), the C/nauty generation of the Ramsey-graph catalogue, and the C enumeration behind $z(8) \leq 3$ and $z(12) \leq 4$. The rest of the argument is conventional, human-readable mathematics in the 13-page paper.
 
+## Evidence, assurance and limitations
+
+**Status.** An unrefereed, AI-generated candidate computer-assisted proof. A fresh replay was completed on one macOS/arm64 machine on 26 July 2026. No human mathematician has verified the complete argument, and no independent external reproduction, peer review or end-to-end proof-assistant formalisation is claimed.
+
+**What was recomputed rather than cited.** The finite inputs were regenerated locally from their definitions during that one-machine replay:
+
+| Input | How it was established |
+|---|---|
+| $R(4,4) = 18$ | orderly generation; level 18 is empty |
+| exactly two $(4,4)$-graphs on 16 vertices | orderly generation from scratch |
+| the two refutations | two RUP checkers and drat-trim on DRUP; cake_lpr on the corresponding LRAT |
+| $z(8) \leq 3$ | all 12,346 graphs on 8 vertices |
+| $z(12) \leq 4$ | case split plus all 1,449,166 $(4,4)$-graphs on 12 vertices |
+| $z(20) \geq 6$ | hand proof plus an explicit six-class certificate; no solver needed |
+
+The generator reproduces the published $(4,4,n)$ sequence in full; its count of 2 at $n=16$ matches McKay's `r44_16.g6` file character for character. Negative controls (cross-core proof/CNF pairings, truncated proofs, injected clauses) were correctly rejected, and drat-trim reports 0 RAT lemmas, so the certificates lie in the RUP fragment.
+
+**Where the assurance stops.** The proof checkers certify the two exact CNFs, that is, the SAT layer. The graph-to-CNF equivalence, the catalogue generator, the cocolourability program, the mathematical reduction and the software environment remain separate parts of the trusted computing base. The encoding lemmas (that the CNFs mean what they are said to mean) are validated by semantic spot-testing, not proved. Regenerating every input and passing independent checkers is strong validation of the software, not a proof that it is correct: a correlated implementation error in the generator, the translation or the cocolourability checker remains logically possible. Local replay is not external reproduction.
+
+## How to inspect or reproduce the recorded checks
+
+Start with the 13-page paper and `AI_INDEX.md`, which maps each claim to its evidence, hashes and the shortest verification routes. The lower bound needs no software: the paper's six-class certificate for Paley(17) plus three isolated vertices can be checked by hand. From the repository at tag `candidate-2026-07-26`:
+
+```sh
+(cd certificates && shasum -a 256 -c MANIFEST.sha256)   # sha256sum -c on GNU/Linux
+shasum -a 256 -c RELEASE_MANIFEST.sha256
+python3 verification/verify_certificate.py              # exits nonzero on any failed check
+drat-trim certificates/z20_core0.cnf certificates/z20_core0.drup
+cake_lpr  certificates/z20_core0.cnf certificates/core0.lrat
+```
+
+`verify_certificate.py` separately constructs both CNFs, spot-checks the encoding against direct computation on 20-vertex graphs and RUP-checks the DRUP proofs. The README gives the nauty-based commands for regenerating the Ramsey catalogue and $z(8) \leq 3$, $z(12) \leq 4$. When automating, require the exact success text `s VERIFIED UNSAT` from cake_lpr, which can print a checking failure while returning process status 0. Please report attempted reproductions, discrepancies or counterexamples through the repository issue tracker.
+
 ## Who should care, and why
 
 | Likely audience | What should interest them | What they could do with it |

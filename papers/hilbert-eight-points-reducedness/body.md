@@ -7,6 +7,8 @@ eight points in four-dimensional affine space over a characteristic-zero
 algebraically closed field, the Hilbert scheme has no hidden nilpotent
 structure. It remains singular and reducible: reduced does not mean smooth.
 
+**Why ask?** Knowing which pieces a space is made of does not determine its scheme structure: nilpotents can record infinitesimal information invisible in its underlying set. This candidate targets that distinction in a small but already reducible Hilbert scheme. It is mainly for Hilbert-scheme specialists and computational algebraists, who can scrutinise the argument and reproduce its large finite computations.
+
 ## Summary for specialists
 
 The claimed theorem is reducedness of $\operatorname{Hilb}^{8}(\mathbb A^4_k)$

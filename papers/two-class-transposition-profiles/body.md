@@ -4,6 +4,8 @@ If half the cards in a shuffle are chosen less often than the other half, what r
 
 It also describes how the answer changes as the bias disappears. The transition occurs when the bias is of order one over the logarithm of the deck size. The proof is written mathematics; finite computer checks corroborate particular identities, not the infinite-size theorem.
 
+**Who would use it.** Mixing-time researchers can inspect an exact profile and a vanishing-bias scale; representation theorists can reuse the bounded-degree restriction calculation. No practical shuffling standard or security guarantee follows from it.
+
 ## Summary for specialists
 
 Let $N=2n$, with two classes of size $n$. Independently sample two labels with probabilities $b/N$ in the slow class and $(2-b)/N$ in the fast class, then transpose them; repeated samples give the identity. Start from the identity permutation. At $t_N(s)=\lfloor N(\log N+s)/(2b)\rfloor$, the candidate proves stationary-$L^2$ approximation of the full density by the normalized tilt $(1+r_A)^{F_A}(1+r_B)^{F_B}$.

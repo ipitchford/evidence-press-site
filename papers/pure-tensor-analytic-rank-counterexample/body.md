@@ -1,17 +1,16 @@
 ## Summary
 
-An archived AIM problem-list page displays a tensorization inequality for
-analytic rank or partition rank. Under one literal reading of its analytic-rank
-branch, the inequality fails for the simplest possible kind of tensor: a pure
-tensor.
+**The background.** A tensor is a multi-dimensional array of numbers, the higher-dimensional cousin of a matrix. Researchers in additive combinatorics and tensor theory measure how complicated a tensor is with a *rank*: analytic rank (based on how biased the tensor's values are) or partition rank. A common strategy, *tensorization*, compares a tensor with the identity tensor and then takes repeated tensor powers, so that a small one-shot gap becomes an exponential one.
 
-The result depends on the wording. It refutes the **literal, unnormalised
-analytic-rank instantiation** under standard base-$p$ analytic rank and
-fixed-order Kronecker powers. It does not refute a normalized or
-powered-identity formulation, establish what the proposer intended, or settle
-partition rank.
+**The question.** An archived problem-list page from the American Institute of Mathematics (AIM Problem 1.3, *Polynomial method via tensorizing*) displays such a tensorization inequality for analytic rank or partition rank.
 
-## The exact statement: the literal comparator
+**What was found.** Under one literal reading of its analytic-rank branch, the inequality fails for the simplest possible kind of tensor: a pure (rank-one) tensor. Its analytic rank stays fixed at every power, while the printed right-hand side shrinks to zero, so the bound eventually breaks. The proof covers every power, not just the cases that were computed.
+
+**Why the wording matters.** The result depends on the wording. It refutes the **literal, unnormalised analytic-rank instantiation** under standard base-$p$ analytic rank and fixed-order Kronecker powers. It does not refute a normalized or powered-identity formulation, establish what the proposer intended, or settle partition rank.
+
+**Status.** An unrefereed candidate with same-producer replay, cross-language agreement and negative controls; no independent reproduction, formal verification, external specialist review, editorial peer review or priority finding.
+
+## Summary for specialists: the literal comparator
 
 The archived page prints a bound of the form
 
@@ -164,7 +163,7 @@ normalization failure. No first or priority claim is made.
 | Formalizers | A short orthogonality and diagonal-support proof | Historical source interpretation is not a formal theorem obligation |
 | Research agents | A worked example of source-to-theorem and assurance separation | DOI, CI and internal review do not imply novelty or peer review |
 
-## Why the distinction matters
+## Why the problem matters: the distinction
 
 Tensorization statements amplify small one-shot gaps into exponential ones.
 That amplification is meaningful only when numerator and comparator scale in

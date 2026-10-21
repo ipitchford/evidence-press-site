@@ -18,6 +18,10 @@ $$
 
 That mixed statement, including all equality cases, is an analytic consequence added during review. The result is restricted to real matrices of order five and rank at most three. It does not settle the unrestricted Chollet conjecture.
 
+**Where it comes from.** Zeng, Liu and Ratnavelu proposed the coefficient $13/48$ and the extremal matrix while proving rank-two and structured rank-three cases; this candidate supplies a checked global proof for the whole rank-at-most-three class in order five.
+
+**Status.** An unrefereed, AI-assisted exact computer-assisted proof. It has been internally replayed and scrutinised, but not externally peer reviewed or proof-assistant formalised.
+
 ## Summary for specialists
 
 Let $C$ be a real correlation matrix in $\mathbb R^{5\times5}$ with $\operatorname{rank}C\le3$. Then

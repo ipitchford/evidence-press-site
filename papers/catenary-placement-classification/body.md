@@ -3,11 +3,17 @@ Imagine a chain of compartments exchanging material with their neighbours. We kn
 
 This candidate gives a complete placement rule for **generic local structural identifiability** on a labelled bidirected chain. It applies to any chain length and any prescribed input, output and leak sets within the stated model. Local identifiability permits finitely many distant alternatives; it does not mean a unique global answer or reliable estimation from noisy data.
 
+**Why it is useful.** Compartment models of this kind are fitted to data to estimate rates. If a placement of inputs and observations makes some rates structurally indistinguishable, no amount of ideal data or clever fitting will recover them; a placement rule lets modellers detect that obstruction before estimation. Ahmed and collaborators identified this multiple-input/output catenary classification problem; the candidate proposes a complete answer for the local question.
+
+**Status.** An anonymous, unrefereed candidate with a written all-length proof and a public replay of finite checks. Internal model-mediated review is not external journal peer review or formal verification, and historical priority remains unestablished.
+
 ## Summary for specialists
 Let $n\ge2$, with independently unknown positive transfers $p_i=A_{i+1,i}$ and $q_i=A_{i,i+1}$, and independently unknown positive leaks exactly at the prescribed set $L$. The diagonal is the negative total outflow. Input and output sets $I,O$ are nonempty; their coordinate selectors and gains are known. The mathematical data are the full labelled transfer matrix $C_O(sI-A)^{-1}B_I$.
 
 Write $W=I\cup O$ and let $r(E,F)$ be the maximum number of pairwise strictly disjoint closed intervals joining vertices of $E$ to vertices of $F$. The necessary source condition is
-$$r(W,L)=|L|.$$
+$$
+r(W,L)=|L|.
+$$
 It is sufficient when the port hulls overlap. Otherwise reflect labels, preserving input/output roles, so $b=\max I<a=\min O$. The main theorem supplies ordered counts with three thresholds:
 $$
 \begin{aligned}

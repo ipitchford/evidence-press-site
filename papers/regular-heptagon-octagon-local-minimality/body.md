@@ -1,10 +1,14 @@
 ## Summary
 
-Imagine a drum with seven straight sides. Keep its area fixed and move its corners a little. Does the perfectly regular shape have the lowest fundamental vibration frequency among its nearby competitors?
+This page explains, in order: what question is being asked about vibrating polygons, what this release proves for seven and eight sides, how the computer-assisted proof works, and what has and has not been checked.
 
-This candidate answers **yes for seven and eight sides**. It checks all genuine directions in which the shape can change—not just symmetric deformations. Moving, turning or rescaling the whole polygon is excluded from those shape directions.
+**The question.** Imagine a drum with seven straight sides. Keep its area fixed and move its corners a little. Does the perfectly regular shape have the lowest fundamental vibration frequency among its nearby competitors? Mathematically, the lowest frequency is governed by the first Dirichlet eigenvalue of the Laplacian. The classical expectation, the Pólya–Szegő conjecture, is that among all polygons with a given number of sides and a given area the regular one has the lowest such eigenvalue. Symmetry makes this plausible, but symmetry alone is not a proof. This release does not prove that global conjecture; it asks the local version.
+
+**What was found.** This candidate answers the local question **yes for seven and eight sides**. It checks all genuine directions in which the shape can change—not just symmetric deformations. Moving, turning or rescaling the whole polygon is excluded from those shape directions. Earlier validated computations had settled the same local question for five and six sides; this release extends it to the next two side counts with a different way of controlling the numerical error.
 
 “Nearby” is essential. The result does not compare the regular polygon with every possible polygon, and it does not supply a numerical radius within which the conclusion holds.
+
+**Status.** An **unrefereed candidate**. The proof is computer-assisted: a separate checker with outward rounding validates the finite certificates, which replayed on two platforms. There has been no external specialist review, independent institutional reproduction or formal verification.
 
 ## Summary for specialists
 
@@ -12,7 +16,9 @@ For a polygon $P$, let $\Phi(P)=|P|\lambda_1(P)$, where $\lambda_1$ is the first
 
 At unit circumradius, on the Euclidean orthogonal complement $E$ of the four infinitesimal similarities,
 
-$$D^2\Phi(a)[v,v]\ge c_n\|v\|^2.$$
+$$
+D^2\Phi(a)[v,v]\ge c_n\|v\|^2.
+$$
 
 The constants are $c_7=3/5$ and $c_8=7/20$.
 
@@ -65,10 +71,10 @@ OPENBLAS_NUM_THREADS=1 python run_checks.py
 
 The runner verifies the package manifest, both certificates and the additional controls. `--proof-only` omits diagnostic tests. Do not use `-O` or `-OO`: rejection is intentional. Reproducing stored trials is the replay target; regenerating floating-point trial functions may yield different bytes and requires fresh certification.
 
+## The most valuable next projects
+
+The highest-value independent check is to re-derive the continuous-to-finite transfer and inspect the interval arithmetic contract before replaying the arrays. Improving the dominant ground-state loss, bounding a neighbourhood radius and treating further side counts are separate research tasks.
+
 ## What is in the evidence package
 
 The archive includes the scientific PDF and LaTeX, canonical trial arrays, exact reference data, producer and checker code, pinned dependencies, replay records, claim and assurance records, prior-art comparison, review response, licence map and a linked AI index. Original text and data are CC0; original code is MIT. Graphics and audio explain the result and add no mathematical evidence.
-
-## Next steps
-
-The highest-value independent check is to re-derive the continuous-to-finite transfer and inspect the interval arithmetic contract before replaying the arrays. Improving the dominant ground-state loss, bounding a neighbourhood radius and treating further side counts are separate research tasks.

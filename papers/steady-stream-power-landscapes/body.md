@@ -4,11 +4,15 @@ Rain follows the shape of a landscape, but the resulting water flow also changes
 
 The main paper also develops a radial theory for all positive parameters. The separate [companion note](https://github.com/ipitchford/steady-stream-power-landscapes/releases/download/v1.3.0-candidate/companion.pdf) supplies exact wet–dry benchmarks and examines a constrained channel equation. These are distinct mathematical models, with distinct conclusions.
 
+**Who would use it.** Nonlinear PDE researchers can examine the contraction argument behind existence and local uniqueness; landscape-model developers can use the exact response formulas and conservative polynomial residual bounds as benchmarks. Uniqueness is local, and numerical residuals are not error enclosures or field validation.
+
 ## Summary for specialists
 
 For the steady stream-power system
 
-$$-D\Delta z+Ka^m|\nabla z|^n=U,\qquad \operatorname{div}q=\rho,$$
+$$
+-D\Delta z+Ka^m|\nabla z|^n=U,\qquad \operatorname{div}q=\rho,
+$$
 
 write $a=b|\nabla z|$ and $q=-b\nabla z$. Positive Hölder rainfall and uplift admit small-$K$ steady states on bounded smooth domains with zero elevation on the entire boundary, for all $m,n>0$.
 

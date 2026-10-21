@@ -17,6 +17,8 @@ which is not injective. The claim is deliberately narrow: integral normalized
 cubical homology built from the directed interval $J_+$ and the inductive
 product $\boxdot$.
 
+**Why it was open.** Bubenik and Milićević defined six cubical homology theories for closure spaces, proved interior-cover excision for the three categorical-product theories and left the inductive-product cases open. This example gives a counterexample for the directed interval $J_+$ with the inductive product; it does not address the $J_1$ or ordinary-interval inductive theories.
+
 ## Summary for specialists
 
 Let $X=J_+\boxdot J_+$ and set

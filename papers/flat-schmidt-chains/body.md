@@ -1,10 +1,14 @@
 ## Summary
 
-Can two quantum chains agree in every two-site and three-site energy measurement, yet differ when the chain becomes long? This candidate gives an exact family where they do.
+This page explains, in order: what kind of quantum chain is studied, what question is asked about it, what this release found, how the proof works, and what has and has not been checked.
 
-The **spectral gap** is the energy needed to leave the ground-state space. A uniformly gapped chain retains a positive threshold as its length grows. A gapless chain can have excitations at progressively smaller energies. Here the familiar short-chain spectra, the pair's entanglement probabilities and even the number of ground states at every length all agree—but they do not determine which behaviour occurs.
+**The setting.** A *quantum spin chain* is a row of small quantum systems (here each with $d$ possible states, for example three for a "qutrit"), with an energy cost acting only on neighbouring pairs. In the chains studied here, every neighbouring pair is penalised for being in one particular forbidden two-site state, and costs nothing otherwise. Such chains can always reach zero energy (they are *frustration-free*), so the interesting question is how much energy it takes to leave the zero-energy states.
 
-The paper also proposes a complete classification within a precise class of interactions. Its dividing condition is geometric: how the two support planes of a forbidden neighbouring-pair state meet, and whether an extremal overlap can propagate along the chain.
+**The question.** That threshold is the **spectral gap**. A uniformly gapped chain retains a positive threshold as its length grows; a gapless chain can have excitations at progressively smaller energies. Whether a chain is gapped is a basic dividing line in the study of quantum many-body systems, and computing it for long chains is hard. It is tempting to read the answer off small chains, which are easy to calculate. Can two chains agree in every two-site and three-site energy measurement, yet differ when the chain becomes long?
+
+**What was found.** Yes. This candidate gives an exact one-parameter family of qutrit chains in which the familiar short-chain spectra, the pair's entanglement probabilities and even the number of ground states at every length all agree, but the long-chain behaviour does not: every member is uniformly gapped except the endpoint, which is gapless. The paper also proposes a complete classification of which chains are gapped within a precise class of interactions: those whose forbidden state has two equal nonzero entanglement (Schmidt) probabilities, in any finite local dimension. Its dividing condition is geometric: how the two support planes of a forbidden neighbouring-pair state meet, and whether an extremal overlap can propagate along the chain.
+
+**Status.** An AI-assisted, unrefereed research candidate (version 1.0.1), revised in response to a supplied review. The proofs are written, not proof-assistant formalised, and the finite checks are producer-side.
 
 The banner compares the common three-site energy levels with the family’s long-chain behaviour. The teal curve is a **proved lower bound**, not a plot of the actual gap. The gold endpoint has a different, length-dependent exact formula.
 
@@ -14,23 +18,33 @@ Let $H_N=\sum_{i=1}^{N-1}|\psi\rangle\langle\psi|_{i,i+1}$ on an open chain, wit
 
 The candidate theorem says the chain is gapless precisely when, up to phase,
 
-$$\psi=(u\otimes w-w\otimes v)/\sqrt2,$$
+$$
+\psi=(u\otimes w-w\otimes v)/\sqrt2,
+$$
 
 where $u,v,w$ are unit vectors and $w\perp u,v$. Every such balanced-marker interaction has the exact gap
 
-$$\gamma_N=1-\cos(\pi/N).$$
+$$
+\gamma_N=1-\cos(\pi/N).
+$$
 
 All other interactions in this class are uniformly gapped. If the two Schmidt supports intersect in the line $\mathbb Cw$, let $t<1$ be the nontrivial principal-angle cosine and $\tau=2|\langle w,w|\psi\rangle|^2$. For $\tau>0$,
 
-$$\gamma_N\ge\frac{3\tau(2-t)(1-t)}{1024}>0.$$
+$$
+\gamma_N\ge\frac{3\tau(2-t)(1-t)}{1024}>0.
+$$
 
 Coincident supports are gapless; disjoint supports have the positive bound $1-\|\Pi_L\Pi_R\|$.
+
+A uniform gap means $\inf_{N\ge2}\gamma_N>0$, where $\gamma_N$ is the smallest nonzero eigenvalue of $H_N$; the gapless cases satisfy $\gamma_N\to0$. This is a classification by the open-chain spectral gap, not a classification of phases by symmetry or spectral-flow equivalence.
 
 ## Technical account
 
 The complete qutrit short-spectrum fibre has the on-site-unitary normal form
 
-$$\psi_\theta=(\cos\theta\,|00\rangle+\sin\theta\,|01\rangle-|12\rangle)/\sqrt2,$$
+$$
+\psi_\theta=(\cos\theta\,|00\rangle+\sin\theta\,|01\rangle-|12\rangle)/\sqrt2,
+$$
 
 with $0\le\theta\le\pi/2$. Before the endpoint, $\gamma_N\ge\cos^2\theta/6$. At the endpoint, the balanced-marker formula applies. Throughout the family, the two-site spectrum is $0^{(8)},1$, the three-site spectrum is $0^{(21)},1/2,1^{(4)},3/2$, and the ground-space dimension is $F_{2N+2}$, using $F_0=0,F_1=1$.
 

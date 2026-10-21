@@ -1,8 +1,12 @@
 ## Summary
 
-A population can disappear without doing so exponentially fast. The distinction matters: a power-law tail can remain appreciable far longer, even when its total future activity is finite.
+**The setting.** Compartment models divide a population into states and track how the fractions in each state change as individuals interact and move between states. When a compartment empties, convergence to zero does not by itself say how long its remaining activity matters. Chan, Crommelin and Mandjes (arXiv:2511.02437v1, Conjecture 1) conjectured that, in a conservative quadratic interaction model, vanishing states decay exponentially when the transition graph is acyclic and each dependency cycle contains a vertex with a persistent dependency successor.
+
+**What was found.** A population can disappear without doing so exponentially fast. The distinction matters: a power-law tail can remain appreciable far longer, even when its total future activity is finite.
 
 This paper gives a minimal four-compartment counterexample to a proposed graph-based exponential-extinction rule. It then constructs slower families and explains the missing condition: the limiting interaction rates, not graph topology alone, determine whether every vanishing compartment has an exponential upper bound.
+
+**Status.** An AI-assisted, unrefereed candidate. The general results rest on written analytic proofs; exact finite checks and corruption controls support the explicit constructions. There has been no external human peer review, independent external reproduction or proof-assistant formalisation.
 
 ## Summary for specialists
 
@@ -49,7 +53,13 @@ Finite total activity is weaker than rapid disappearance. A graph can certify th
 
 ## How to inspect or reproduce the recorded checks
 
-Begin with the explicit four-state system and its time-change calculation. Then inspect the minimality argument, the full regime classification and the limiting matrix theorem. Follow the repository README for normal and optimised exact replay and the mutation controls; the supplied family plots illustrate the formulas, not observed data.
+Begin with the explicit four-state system and its time-change calculation. Then inspect the minimality argument, the full regime classification and the limiting matrix theorem. Follow the repository README for normal and optimised exact replay and the mutation controls; the supplied family plots illustrate the formulas, not observed data. With Python 3 (standard library only):
+
+```sh
+python3 -B test_verifier.py --output-dir /tmp/extinction-replay-new
+```
+
+Use a new output directory. The harness runs `verify.py` normally and with `-O`, checks that the child really used the requested optimization mode, and requires wrong normalization, a missing channel and a wrong removed-state flux to fail in both modes. Published example receipts are in `evidence/replay-20261020`.
 
 ## The most valuable next projects
 

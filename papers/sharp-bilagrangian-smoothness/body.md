@@ -11,18 +11,24 @@ entire orbit-classification programme. The proposed criterion and the
 single-block singularity were known ingredients. External validation and
 historical priority remain unestablished.
 
+**Why ask?** A smooth parameter space can be studied with local manifold tools throughout, so knowing exactly where smoothness fails matters. The criterion says repeated eigenvalues alone are harmless; nontrivial Jordan chains are the obstruction. Algebraic geometers and integrable-systems researchers are the main readers; the criterion is linear and does not imply nonlinear or global integrability.
+
 ## Summary for specialists
 
 Let $A,B$ be alternating forms on a finite-dimensional complex space $V$,
 and let $r$ be the maximum pencil rank. Put $d=\dim V-r/2$.
 Inside $\operatorname{Gr}(d,V)$, take the reduced variety
 
-$$X=\{L:A|_L=B|_L=0\}_{\mathrm{red}}.$$
+$$
+X=\{L:A|_L=B|_L=0\}_{\mathrm{red}}.
+$$
 
 The candidate proves that $X$ is smooth if and only if every Jordan pencil
 block has dimension two, with arbitrary Kronecker blocks. In that case
 
-$$X\simeq\prod_\lambda\operatorname{LG}(m_\lambda,2m_\lambda),$$
+$$
+X\simeq\prod_\lambda\operatorname{LG}(m_\lambda,2m_\lambda),
+$$
 
 where $m_\lambda$ counts dimension-two pencil blocks at the eigenvalue.
 Its dimension is $\sum_\lambda m_\lambda(m_\lambda+1)/2$.
@@ -41,7 +47,9 @@ self-adjoint recursion operator $P$.
 Semisimplicity gives the product of ordinary Lagrangian Grassmannians. For a
 longer block, an explicit quotient basis yields the local chart
 
-$$\mathbb A^{n-2}\times\{a^n+cz=0\},$$
+$$
+\mathbb A^{n-2}\times\{a^n+cz=0\},
+$$
 
 where $n\ge2$ and the surface lies in $\mathbb A^3$ with coordinates $a,c,z$.
 

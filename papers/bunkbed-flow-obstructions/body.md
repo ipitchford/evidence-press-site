@@ -6,11 +6,15 @@ The original bunkbed conjecture said yes. Earlier researchers disproved it. This
 
 The result singles out one exceptional value: **two**. In a specified window from about **0.7874 to 2.764**, it is the only cluster weight for which the inequality holds for every finite simple graph. Every other weight in that window has a counterexample, whatever common edge probability between zero and one is prescribed. The counterexample graph can change with both parameters.
 
+**Status.** An unrefereed candidate. The universal arguments are written proofs; exact finite reconstruction and negative controls support them, but there has been no authenticated independent reproduction, external human peer review or proof-assistant verification.
+
 ## Summary for specialists
 
 Let $\mathcal U_p$ contain those $q>0$ for which the homogeneous random-cluster bunkbed inequality holds on every finite simple base graph. The candidate establishes
 
-$$\mathcal U_p\cap[\alpha,691/250]=\{2\}\qquad(0<p<1),$$
+$$
+\mathcal U_p\cap[\alpha,691/250]=\{2\}\qquad(0<p<1),
+$$
 
 where $\alpha$ is the unique real root of $q^5-7q^4+19q^3-28q^2+26q-10$.
 
@@ -60,10 +64,10 @@ python3 -O code/verify_release.py
 
 The full verifier reconstructs the larger graph polynomials and core cubics. Its optional `--quick` mode checks stored large objects instead; the resulting assurance is narrower. Receipts identify that distinction explicitly.
 
+## The most valuable next projects
+
+An independent audit should first examine the real-parameter identity, spectral limits and exact post amplification, then replay the finite certificates. Wider parameter intervals and smaller witnesses are separate research questions: the current construction does not settle integer cluster weights at least three or globally minimise graph size.
+
 ## What is in the evidence package
 
 The archive contains the manuscript and source, claim ledger, exact polynomial data, graph specifications and edge lists, verification code, negative controls, review response, provenance and licence map. The AI index maps each main claim to its argument, executable checks and limitations. Audio and graphics explain the work; they are not additional mathematical evidence.
-
-## Next steps
-
-An independent audit should first examine the real-parameter identity, spectral limits and exact post amplification, then replay the finite certificates. Wider parameter intervals and smaller witnesses are separate research questions: the current construction does not settle integer cluster weights at least three or globally minimise graph size.

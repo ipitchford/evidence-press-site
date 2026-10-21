@@ -1,13 +1,17 @@
 ## Summary
 
-If a graph needs six colours on its vertices, must every three-colouring of its
-edges contain a one-colour path with three edges? This release does not settle
+**The question.** Colour the vertices of a network so that linked vertices get different colours; some networks need many colours. Separately, colour its links with three colours. Is there a guaranteed pattern? Concretely: if a graph needs six colours on its vertices, must every three-colouring of its
+edges contain a one-colour path with three edges? This is the open problem AIM-COMBINATORICS-0050, one of the *chromatic Ramsey* questions that ask how much vertex-colouring complexity forces patterns in edge-colourings.
+
+**What this release does.** This release does not settle
 that question. It supplies partial theorems, checked finite exclusions and
 explicit examples showing why several proposed shortcuts fail.
 
 The strongest written result handles a mixed class built from two collections
 of small cliques and one collection of stars. Its five-colouring theorem works
 at every order, under those precise hypotheses.
+
+**Status.** An anonymous, unrefereed candidate; the parent problem is unresolved. Internal replay and producer-coordinated editorial review are not external specialist review, journal peer review or formal verification.
 
 ## Summary for specialists
 

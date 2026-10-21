@@ -4,6 +4,10 @@ How many classical symbols are needed to imitate a mathematical state space exac
 
 The statement concerns all input–output probabilities allowed by the full affine measurement model, not just one successful communication task. Combined with earlier results, it makes dimensions three through six precisely the cross-polytopes with signaling dimension three.
 
+**Why it was open.** Earlier work computed the values through dimension five and left dimension six at three or four. This release supplies the missing upper bound, with exact, inspectable evidence; the value at dimension seven remains between four and five.
+
+**Status.** An anonymous, unrefereed computer-assisted candidate. The checks are producer-coordinated, not unaffiliated reproduction, proof-assistant formalization or human peer review.
+
 ## Summary for specialists
 
 For $\diamond_d=\{v\in\mathbb R^d:\sum_i|v_i|\le1\}$, the candidate establishes $\operatorname{sign.dim}(\diamond_6)=3$. The lower bound is imported from Bencze–Frenkel; the new upper bound is an exact finite, computer-assisted proof.
@@ -46,7 +50,7 @@ State-space dimension alone does not determine the classical alphabet needed to 
 
 ## How to inspect or reproduce the recorded checks
 
-Start with the package's AI index and verification instructions. Use the supplied-input rational replay together with the independent orbit audit: both parts are needed. Regenerating graph representatives is a separate optional route with additional dependencies. Check the worked distribution against its support data rather than treating its three subsets as geometry-free evidence.
+Start with the package's AI index and verification instructions. Use the supplied-input rational replay together with the independent orbit audit: both parts are needed. Regenerating graph representatives is a separate optional route with additional dependencies. Check the worked distribution against its support data rather than treating its three subsets as geometry-free evidence. `REPLAY_RECEIPT.md` gives the exact public commands, hashes and observed outputs for the final package, and `ENVIRONMENT.txt` records the tested environments.
 
 ## The most valuable next projects
 

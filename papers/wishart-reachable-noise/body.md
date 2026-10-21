@@ -3,6 +3,8 @@ Covariance models describe how many fluctuating quantities move together. In an 
 
 Even noise entering through one direction can spread through infinitely many directions. The paper proposes a complete criterion for deterministic initial covariance, while keeping a necessary Gaussian path-continuity condition explicit.
 
+**Why it matters.** A model must exist in its declared state space before approximation or calibration make mathematical sense. Stochastic analysts and covariance-model researchers can use the criterion to check drift reachability and initial covariance outside the reachable subspace before relying on a model. The general-semigroup argument still needs unaffiliated specialist review.
+
 ## Summary for specialists
 Let $S(t)$ be a strongly continuous semigroup on a real separable Hilbert space, $Q$ a bounded positive operator, and $x$ a positive trace-class initial covariance. Define $K=\overline{\operatorname{span}}\{S(t)^*\sqrt QH:t\ge0\}$.
 

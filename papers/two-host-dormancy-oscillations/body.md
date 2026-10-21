@@ -1,8 +1,12 @@
 ## Summary
 
-When two hosts compete in the presence of a virus, allowing one host to become dormant can change the long-term dynamics. This paper gives exact parameters for which the usual coexistence picture fails: each host can invade the other's resident state, but the unique coexistence equilibrium is unstable.
+**The setting.** Some hosts can become dormant following contact with a virus. Contact-mediated dormancy changes both the immediate effect of viral contact and the subsequent supply of susceptible hosts. Blath and Tóbiás (2026) proposed a deterministic model with one host that cannot go dormant and a competing host that can, and conjectured (their Conjecture 4.1(C)(iii)) that stable resident endemic states plus mutual invasion (each host can invade the other's established population) imply stable, attracting coexistence.
 
-For almost every strictly positive initial state, the solution does **not** approach any equilibrium. Separately, a certified local bifurcation produces small attracting periodic orbits. These are different conclusions: the paper does not identify the eventual behaviour of almost every trajectory.
+**What was found.** When two hosts compete in the presence of a virus, allowing one host to become dormant can change the long-term dynamics. This paper gives exact parameters for which the usual coexistence picture fails: each host can invade the other's resident state, but the unique coexistence equilibrium is unstable.
+
+For almost every strictly positive initial state, the solution does **not** approach any equilibrium. Separately, a certified local bifurcation produces small attracting periodic orbits. These are different conclusions: the paper does not identify the eventual behaviour of almost every trajectory. The result concerns deterministic long-time behaviour; it does not contradict the source's proved stochastic invasion results.
+
+**Status.** A written-proof candidate with exact symbolic and outward-rounded interval certificates; not externally peer reviewed or formally verified.
 
 ## Summary for specialists
 
@@ -43,6 +47,18 @@ Invasion and steady coexistence answer different questions. Showing that both sp
 ## How to inspect or reproduce the recorded checks
 
 Start with the package's README, AI index and replay instructions. Check the model equations and rational equilibrium first, then the family Hurwitz certificate and resident invasion calculation. Finally inspect the Hopf polynomial and integer-interval output. The manuscript explains which steps are analytic proofs and which are mechanically replayed identities.
+
+With Python 3.10+, Node.js 18+ and the versions in `requirements.txt`:
+
+```sh
+python3 -m pip install -r requirements.txt
+python3 -B run_checks.py
+python3 -B -O run_checks.py
+python3 -B negative_controls.py
+python3 -B -O negative_controls.py
+```
+
+The main runner executes seven programs and regenerates the three certificate JSON files plus `reproduction/` logs; run it in a disposable copy when preserving deposit bytes. Semantic controls mutate isolated temporary copies only. Successful execution is not a formal proof of the complete paper: the all-parameter inference, dynamical theorem application and measure-zero argument also require the written proof.
 
 ## The most valuable next projects
 

@@ -1,14 +1,28 @@
 ## Summary
 
-A generic section of the essential variety consists of ten points. Its Hurwitz form detects where that intersection degenerates. This unrefereed candidate gives a compact ten-by-ten trace formula for that large degree-30 polynomial, together with a written proof that the apparent denominator cancels globally. It also treats the related variety of symmetric four-by-four matrices of rank at most two.
+**What the object is.** The essential variety is a well-studied geometric shape made of three-by-three matrices, cut out by ten cubic equations; it is the algebraic setting behind five-point estimation in multiview geometry. Slice it by a generic projective three-plane and you get exactly ten points. Its **Hurwitz form** is a single polynomial that vanishes precisely when such a slice degenerates—when the slice stops being ten distinct reduced points, for example because two of them collide. That polynomial has degree 30 in the slice's coordinates and is far too large to write out monomial by monomial.
+
+**What was found.** This unrefereed candidate gives a compact recipe for evaluating it exactly: build a ten-by-ten trace matrix from the slice, take its determinant, and multiply by the fourth power of one correcting determinant. The heart of the paper is a written proof that the apparent denominator in that recipe cancels globally, so the recipe really defines the intended polynomial everywhere, not just on a convenient chart. The same method treats the related variety of symmetric four-by-four matrices of rank at most two.
+
+**Why it is useful.** A recently revised study of five-point estimation identifies a necessary degree-30 ill-posedness polynomial and notes that its explicit form was unavailable there. The present formula supplies an exact algebraic evaluation route after the appropriate Pluecker substitution. It does not establish practical speedups, better numerical conditioning or physical camera recovery.
+
+**Status.** An anonymous, unrefereed mathematical candidate. Exact finite checks support the implementation; the all-frame theorem rests on the written proof, which has not been refereed, formally verified or priority-cleared.
 
 ## Summary for specialists
 
-For a nine-by-four frame B, substitute the affine matrix E=B(1,x,y,z) into the ten essential cubics. Split their coefficients into the ten degree-three monomials and the ten monomials of degree at most two, writing f=Ac+Cb. Set D=det A. On D nonzero, reduction by these equations produces the rank-ten quotient algebra and its multiplication matrices. With T the trace pairing in the ordered quadratic basis, the candidate formula is
+For a nine-by-four frame $B$, substitute the affine matrix $E=B(1,x,y,z)^T$ into the ten essential cubics. Split their coefficients between the ten degree-three monomials $c$ and the ten monomials $b$ of degree at most two, writing $f=Ac+Cb$. Set $D=\det A$. On $D\neq0$, reduction by these equations produces the rank-ten quotient algebra and its multiplication matrices $M_x,M_y,M_z$. With $T_{ij}=\operatorname{tr}\bigl(b_i(M)b_j(M)\bigr)$ the trace pairing in the ordered quadratic basis, the candidate formula is
 
-$$H(B)=D(B)^4\det T(B).$$
+$$
+H(B)=D(B)^4\det T(B).
+$$
 
-The manuscript proves that H extends to a homogeneous polynomial of frame degree 120, descending to the degree-30 Hurwitz form in Pluecker coordinates, up to a nonzero scalar. It supplies an exact-division polynomial expression and a finite interpolation fallback at D=0. The output is a compact arithmetic formula, not an expanded monomial coefficient list.
+The manuscript proves that $H$ extends to a homogeneous polynomial of frame degree 120, descending to the degree-30 Hurwitz form in Pluecker coordinates, up to a nonzero scalar; consequently $H(Bg)=\det(g)^{30}H(B)$ for $g\in GL_4$. It supplies an exact-division polynomial expression,
+
+$$
+H(B)=\frac{\det Q(B)}{D(B)^{26}},\qquad D^{26}\mid\det Q \text{ in } \mathbb{Q}[B],
+$$
+
+and a finite interpolation fallback at $D=0$. The output is a compact arithmetic formula, not an expanded monomial coefficient list.
 
 ## Technical account
 

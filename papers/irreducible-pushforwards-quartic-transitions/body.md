@@ -2,6 +2,8 @@
 
 > **External development, 12 September 2026:** an [unrefereed preprint by liqsweep](https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf) proposes a general proof of polynomial-composition rigidity. The external candidate proposes a general proof of R(m,n), including the original R(3) target. It does not supply this release's uniform deck-norm irreducibility or global contour, cycle, Stokes and period estimates; the standalone geometric and quartic results retain their original scope. [Internal source review and scope audit](https://github.com/ipitchford/evidence-press-site/blob/main/docs/RIGIDITY_EXTERNAL_REVIEW_2026-09-12.md) are not unaffiliated verification. Original archives and release-time audio/video are unchanged.
 
+This page explains, in order: what the original target was, the two methods that survived, how each works, what they do and do not say about Furter's problem, how the checks were done and how to replay them, and what would most usefully come next.
+
 This paper does not solve Furter's $R(3)$ conjecture. It reports a productive failure.
 
 The original target was Furter's $R(3)$ conjecture, then an open problem about three consecutive coefficients of a generating function and the ideal they generate. The project did not solve that problem. Instead, it isolated two pieces of mathematics that no longer depend on the unfinished global argument and may be useful elsewhere.
@@ -18,7 +20,19 @@ The first result is a divisor-theoretic criterion: coefficient-one pushforward t
 
 The second result is an exact calculation in the twisted polynomial de Rham quotient for $\Psi(W)=W^4-\tfrac32KW^2+bW$. The classes $[1],[\Psi],[\Psi^2]$ have determinant $\tfrac{9b}{64}(-3K^3+K+3b^2)$. On the aligned transition curve the span has rank two away from the origin and rank one at the origin, with cancellation of the first moving-alignment correction. This local algebra does not supply the missing contour-uniform global asymptotics.
 
-## The first method: irreducibility becomes separation
+The manuscript's own claim-status table (Table 1) reads:
+
+| Status | Claims |
+|---|---|
+| Established | Theorems 3.2 and 6.2, Corollary 3.4, Lemma 4.1, and Propositions 4.2, 4.3, 5.1 and 6.3, including the family-specific pole/norm identities and the precise rank-one point |
+| Established conditional implication | Theorem 4.4: for each fixed Furter index $n$, irreducibility of the exact degree-$(n-1)$ deck norm implies the two required divisor-disjointness statements |
+| Open | Uniform irreducibility of those norms, the remaining global contour/period bounds, and Furter's $R(3)$ conjecture itself |
+
+## Technical account
+
+The two methods can be read independently. The first (Section 3 of the manuscript) is pure divisor geometry; the second (Sections 5–6) is exact algebra in a twisted de Rham quotient.
+
+### The first method: irreducibility becomes separation
 
 Suppose a map sends an effective divisor $Z$ of degree $h$ on a smooth projective curve to the zero divisor of one irreducible polynomial of degree $h$, with coefficient one. Proper pushforward counts both multiplicity and residue-field degree. Because every contribution is a positive integer, the coefficient-one hypothesis forces a rigid conclusion: $Z$ consists of one reduced closed point of degree $h$.
 
@@ -34,7 +48,7 @@ The important lesson is that irreducibility alone is not enough. The full diviso
 
 ![A prime divisor on the base lifting to one reduced closed point on a double cover, with adjacent and deck-transformed zeros kept disjoint.](/assets/figures/irreducible-pushforward-method.svg "The separation mechanism: coefficient-one prime pushforward fixes the zero divisor upstairs; the pole gap and elliptic deck test then provide two distinct disjointness conclusions.")
 
-### The elliptic deck test
+#### The elliptic deck test
 
 On an elliptic curve, a degree-two deck involution has the form
 
@@ -46,7 +60,7 @@ If the prime zero divisor $Z$ met its deck image $\sigma Z$, the two prime divis
 
 This separates two mechanisms that are easy to conflate. The pushforward argument says that the zeros form one reduced algebraic orbit. The one-degree pole gap excludes an adjacent zero divisor, while the elliptic group law excludes its deck image.
 
-## The second method: an exact quartic rank collapse
+### The second method: an exact quartic rank collapse
 
 The local phase is
 
@@ -66,6 +80,8 @@ On the limiting aligned transition curve, the factor in parentheses vanishes, so
 - for $K\ne0$, the span has rank exactly two;
 - at $(K,b)=(0,0)$, the rank drops to one; and
 - the first correction caused by the moving alignment also cancels.
+
+Proposition 6.3 proves this cancellation only through the displayed order; no term-by-term all-orders statement is proved.
 
 This gives an algebraic explanation for a degeneracy that might otherwise look like a numerical coincidence. It does not, by itself, justify moving the original integration contour or prove an asymptotic estimate that is uniform across Stokes transitions. Those analytic tasks remain separate.
 
@@ -116,13 +132,44 @@ These tools sit at an intersection of algebraic geometry, elliptic curves, polyn
 | Computer-assisted mathematics researchers | The release separates theorem replay, bounded evidence, and open global steps. | Reimplement the identities independently and formalise the algebraic arguments. |
 | Research agents | The package is a reusable map of what survived an unsuccessful open-problem attack. | Reuse only the proved modules and preserve the conditional and open-status labels. |
 
-## How it was checked
+## Evidence, assurance and limitations
 
 The paper-level identities replay exactly under normal Python and optimized Python with SymPy 1.14.0. The optional Furter audit is self-contained and verifies the deck-norm irreducibility computations for $3\le n\le40$; the auxiliary deck diagnostic stops at $n=20$.
 
 The frozen release also passed a 22-file SHA-256 manifest, fresh extraction from the tagged Git commit, complete replay from that extraction, LaTeX and PDF structural checks, citation closure, privacy scanning, and a seven-mode publication-integrity audit. The GitHub and Zenodo assets were downloaded publicly and are byte-identical to the frozen local release.
 
 These checks establish internal consistency and reproducibility of the specified algebraic and finite computations. They are not independent reproduction, proof-assistant verification, expert acceptance, editorial acceptance, or peer review. Agreement among AI-assisted audits does not change that assurance boundary.
+
+The internal review consisted of three internal adversarial mathematical audits, followed by a separate publication-integrity and privacy audit. The manuscript lists its main limitations as:
+
+1. the all-index irreducibility premise for the Furter deck norms is open;
+2. the paper does not reproduce every projective normalization and boundary reduction needed to deduce the original ideal-membership statement;
+3. the quartic computation is formal and algebraic, not a contour-uniform asymptotic theorem;
+4. the literature audit is a documented scoping search, not an exhaustive proof of novelty; and
+5. the separate audits are internal AI-assisted proof checks, not external peer review.
+
+Within the source project, separately checked reductions identify the fixed-index disjointness statements as sufficient for the remaining aligned generic incidence, but this methods paper does not reproduce that reduction chain and does not present the implication as a proof of $R(3)$ (Remark 4.6). Finite computations, deterministic replay, hashes, and agreement among AI-assisted audits certify reproducibility of specified checks. They do not convert an open all-index statement into a theorem.
+
+## How to inspect or reproduce the recorded checks
+
+From the source archive attached to the GitHub release (or the Zenodo record), the proof-level identities run under normal and optimized Python:
+
+```bash
+./repro/replay.sh
+./repro/replay.sh --with-bounded-furter   # optional finite Furter deck-norm audit
+```
+
+The replay uses `uv` with `sympy==1.14.0`. Checks raise explicit exceptions and do not rely on Python assertions, so optimized mode cannot silently remove them. Set `AUDIT_STOP` to change the finite irreducibility endpoint; the default is 40, and the accompanying deck diagnostic remains fixed through $n=20$. No finite endpoint is represented as an all-index theorem.
+
+The verifier `repro/verify_methods.py` reconstructs the elliptic cubic, its discriminant, the rational two-torsion point and the division-polynomial certificate, and the quartic blow-up, moment-transform determinant and rank identities in exact rational arithmetic; it derives the first correction from the phase rather than hard-coding it. Start reading with `AI_INDEX.md`, the claim and reuse map, and `ASSURANCE.md`; then Theorem 3.2, Corollary 3.4 and Theorem 6.2 in the manuscript.
+
+## The most valuable next projects
+
+1. **Uniform deck-norm irreducibility.** Prove, or refute, irreducibility of the Furter deck norms for every $n\ge3$ by a structural argument; a longer table of successful cases does not suffice.
+2. **The global analytic theorem.** The manuscript (Section 7) states what a genuine large-$N$ theorem would additionally need: Stokes-compatible continuation of the principal and local rapid-decay cycles along the transition curve; a quantitative lower bound for $\max(\lvert Z_0\rvert,\lvert Z_1\rvert)$, including equal-critical-value fibres and projective boundary charts; a uniform contour deformation and tail estimate whose error is smaller than that bound; and compatible estimates in the adjoining double-saddle charts.
+3. **Higher-order cancellation.** Extend the first-order cancellation of Proposition 6.3, which exact finite-$N$ observability identities motivate but do not prove.
+4. **Independent checking.** Reimplement the identities independently and formalise the algebraic arguments in a proof assistant.
+5. **Reuse elsewhere.** Test the prime-pushforward criterion on other finite maps, norm divisors and one-degree pole gaps.
 
 ## What is in the evidence package
 

@@ -1,6 +1,8 @@
 ## Plain-English summary
 
-A reconstructed family tree does not preserve a unique history of speciation
+Biologists use dated family trees of living species to ask how fast lineages
+split and died out in the past. A known difficulty is that such a reconstructed
+family tree does not preserve a unique history of speciation
 and extinction. Many different histories can produce the same observable
 signal. This creates a practical risk: one fitted curve or a large finite cloud
 can look decisive even when other histories supported by the same tree reverse
@@ -48,7 +50,52 @@ states honestly how much decision impact the registered benchmark measured.
 > formalisation, editorial peer review, empirical validation, or broad CRABS
 > utility is claimed.
 
-## The statistical object
+## Summary for specialists
+
+Under the exact fixed-stem, stem-survival, homogeneous time-varying law, the
+tip count is $N\sim\mathrm{Geometric}(p)$ with $p=F(T)^{-1}$, and conditional
+on $N=n$ the $n-1$ unordered node ages are independent with a known monotone
+transformation of $F$ as their distribution function (Theorem 4). Exact
+inversion of the two geometric tails at level $\alpha_N$ and a
+Dvoretzky–Kiefer–Wolfowitz–Massart band at level $\alpha_B$ give limits
+$F_L\le F_U$ with
+
+$$
+\Pr\{F_L(t)\le F(t)\le F_U(t)\ \text{for every}\ t\in[0,T]\}
+\ge 1-\alpha_N-\alpha_B\ge 1-\alpha
+$$
+
+(Theorem 14). Writing $\Theta(F)$ for the conditional affine identified set,
+the union of $\Theta(F)$ over valid pulled scales inside the band contains the
+identified set of the true signal whenever the band covers it. For a proposed
+turnover cap $c_0$ and the range $[c_L,c_U]$ of the minimum compatible cap over
+the band, the decision is incompatible if $c_0<c_L$, compatible throughout if
+$c_0\ge c_U$, and unresolved otherwise.
+
+The paper classifies the ingredients honestly: the count and node-age
+factorization has reconstructed-process antecedents, and DKW bands and
+partial-identification confidence sets are established. The fixed-stem band is
+described as a new coupling, not new probability theory. The band controls
+$F$, not its derivative, and must not be differentiated to claim covered bounds
+for $\lambda_p=F'/F$.
+
+## Why the problem matters
+
+Extant timetree likelihoods depend on speciation and extinction only through a
+pulled diversification signal, so the component rates are not separately
+identified without further restrictions. Existing tools construct or sample
+histories in the resulting congruence class; they answer an exploration
+question. This candidate asks a partial-identification question instead: from
+one fixed-stem tree, which signal trajectories and histories remain compatible
+with sampling variation and explicit restrictions, and which target decisions
+are resolved rather than plug-in artefacts?
+
+That distinction matters whenever a published conclusion (for example, that a
+turnover cap is or is not compatible with a tree) rests on one estimated curve
+or one sampled cloud of histories. The three-valued decision makes the
+"unresolved" case visible instead of letting it be reported as a robust answer.
+
+## Technical account: the statistical object
 
 Let $T$ be the fixed stem age. Write the pulled scale as
 
@@ -231,6 +278,15 @@ The release package contains:
   ([run on the tagged release](https://github.com/ipitchford/affine-diversification-fibres/actions/runs/32458618950),
   recorded after the manuscript was finalised).
 
+These are producer-side checks. A passing manifest establishes byte identity;
+a passing program establishes the encoded checks. Neither establishes that
+the probability model, scientific interpretation, or source-to-code bridge is
+correct.
+
+## How to inspect or reproduce the recorded checks
+
+Work from the immutable `v0.3.0-candidate-r2` tag in the recorded analysis
+environment (see `ENVIRONMENT.txt`); a bare host Python may not contain SciPy.
 The quick successor gate is:
 
 ```bash
@@ -241,10 +297,21 @@ It verifies the protected historical receipts, the sealed Stage 2 ledger, the
 successor manifest, schemas, DOI identity, fixed results, figure alt text, PDF,
 component licensing, publication boundary, and ordinary and optimized tests.
 
-These are producer-side checks. A passing manifest establishes byte identity;
-a passing program establishes the encoded checks. Neither establishes that
-the probability model, scientific interpretation, or source-to-code bridge is
-correct.
+The test suite, the frozen fixed-stem uncertainty demonstration and the H2/H4
+summaries can also be rerun individually:
+
+```bash
+PYTHONPATH=. MPLBACKEND=Agg python3 -m unittest affine_diversification.test_affine_fibre -v
+PYTHONPATH=. MPLBACKEND=Agg python3 experiments/run_fixed_stem_uncertainty.py
+PYTHONPATH=. python3 experiments/affine_crabs_confirmatory/summarize_h2_h4.py
+```
+
+The full 1,100-cell CRABS computation is not rerun by the quick verifier; it
+validates the unchanged sealed ledger and the derived H2/H4 summaries.
+Resource expectations and the independent-replay request are recorded under
+`review/route_a/`. For reading, `manuscript.pdf` is the rendered paper,
+`manuscript.tex` controls equations and numbering, and `manuscript.md` is the
+accessible text companion.
 
 ## What is not established
 

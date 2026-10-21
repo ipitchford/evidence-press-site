@@ -1,22 +1,34 @@
 ## Summary
 
-An overall count can miss a slow subgroup. In a shuffle where half the cards are selected less often, this candidate uses one event—at least two slow labels are still fixed—to rule out a proposed formula for the transition towards randomness.
+This page explains, in order: what kind of shuffle is studied, what was predicted about how it becomes random, what this release shows instead, and what has and has not been checked.
 
-At one specified point, that event forces a distance of at least $0.710647716\ldots$ from a random permutation. The conjectured formula predicts $0.681595297\ldots$. The gap is strict. The result concerns the formula in Nestoridi–Yan's arXiv version 1; the established cutoff theorem remains intact.
+**The shuffle.** Picture a deck of $N$ labelled cards. At each step, pick two labels at random and swap them; if the same label is picked twice, do nothing. Repeated often enough, this produces a nearly random ordering. In the *biased* version studied here, half the labels are "slow": they are selected less often than the others. Researchers measure how close the deck is to random by the *total-variation distance* from a uniformly random permutation, a number between 0 (perfectly random) and 1.
+
+**What was predicted.** For such shuffles the distance typically stays near 1 for a long time and then drops abruptly, a phenomenon called *cutoff*. A *limit profile* is a formula for the exact shape of that drop. Nestoridi and Yan proved cutoff for this walk and, in version 1 of their arXiv paper, conjectured an explicit formula for its profile (their Conjecture 1.6).
+
+**What was found.** An overall count can miss a slow subgroup. This candidate uses one event—at least two slow labels are still fixed—to rule out the proposed formula for the transition towards randomness. At one specified point, that event forces a distance of at least $0.710647716\ldots$ from a random permutation. The conjectured formula predicts $0.681595297\ldots$. The gap is strict. The result concerns the formula in Nestoridi–Yan's arXiv version 1; the established cutoff theorem remains intact.
+
+**Status.** An unrefereed candidate. The asymptotic claims rest on written proofs; the numerical inequalities are certified in exact arithmetic and replay from the archive. External review, independent reproduction and formal proof have not been carried out.
 
 ## Summary for specialists
 
 Let $N$ be even. Half the labels have selection probability $b/N$ and half $(2-b)/N$, for fixed $0<b<1$. Each discrete step samples two labels independently, retains identity self-samples, and transposes distinct labels. At
 
-$$t_N=\left\lfloor\frac{N(\log N-\log6)}{2b}\right\rfloor,$$
+$$
+t_N=\left\lfloor\frac{N(\log N-\log6)}{2b}\right\rfloor,
+$$
 
 the candidate proves
 
-$$\liminf_{N\to\infty,\,2\mid N}d_N(t_N)\ge B_0=\frac32e^{-1/2}-4e^{-3}.$$
+$$
+\liminf_{N\to\infty,\,2\mid N}d_N(t_N)\ge B_0=\frac32e^{-1/2}-4e^{-3}.
+$$
 
 The proposed value is $D_0=5/(2e)-13e^{-4}$, and exact arithmetic certifies
 
-$$\frac{29}{1000}<B_0-D_0<\frac{291}{10000}.$$
+$$
+\frac{29}{1000}<B_0-D_0<\frac{291}{10000}.
+$$
 
 Thus Conjecture 1.6 in arXiv:2409.16387v1 fails at $s=\log6$ for every fixed slow weight in the stated range.
 

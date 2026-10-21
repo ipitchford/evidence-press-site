@@ -1,6 +1,8 @@
 ## Summary
 
-This candidate constructs a family of Markov chains on binary strings and
+**In plain terms.** A Markov chain is a random rule for moving from one state to another. Here the state is a word of $N$ zeros and ones, and each step scrambles the word using a random permutation, its cycles and two beta-distributed random weights. A basic question about any such chain is how long it takes to forget where it started. This release builds a new family of these chains, finds every one of its "modes" (the patterns that fade at fixed rates), and proves that one specific averaged measure of how far the chain still is from equilibrium switches sharply from divergent to vanishing at a time of order $N/\log N$, with an explicit constant. The switch is proved for that averaged measure only, not for the stronger notions of mixing that start from a single fixed word.
+
+In more detail, this candidate constructs a family of Markov chains on binary strings and
 then follows the construction all the way from its stationary law to its
 full-word spectrum and a sharp asymptotic transition.
 
@@ -175,9 +177,20 @@ formalize the main proof.
 | Computational reviewer | Executable evidence section | Finite checks do not prove the endpoint asymptotic. |
 | General reader | Summary | Nothing is claimed at the critical constant. |
 
+## Why the problem matters
+
+A sharp transition says not just that a chain eventually settles down, but on what time scale and with what constant the chosen distance collapses. The counts-to-words step is where the difficulty lies. The count process has only $N+1$ states, while the word chain has $2^N$ and exponentially many modes, so the full-word theorem is not a routine corollary of the count spectrum. The candidate's contribution is to carry an asymmetric, three-parameter construction through that step and identify exactly which endpoint of the beta-difference distribution controls the transition, while recovering the classical constant when $\alpha=\beta=1$.
+
 ## How to inspect and reproduce the recorded checks
 
-Use the [v0.1.0 candidate release](https://github.com/ipitchford/hahn-ewens-mixing-theorem/releases/tag/v0.1.0-candidate) or the [DOI archive](https://doi.org/10.5281/zenodo.21864287). Check the release manifest before running the ordinary and optimised positive and control paths. Compare the three eigenvalue routes, the two bounded-kernel constructions and the recorded predicate counts; this tests the supplied finite semantics but does not independently reconstruct the asymptotic proof.
+Use the [v0.1.0 candidate release](https://github.com/ipitchford/hahn-ewens-mixing-theorem/releases/tag/v0.1.0-candidate) or the [DOI archive](https://doi.org/10.5281/zenodo.21864287). Start with the 21-page paper, then `ASSURANCE.md` and the agent index `AI_INDEX.md`. The mixing subpackage pins `mpmath==1.3.0`; from the repository root:
+
+```sh
+python3 -m pip install -r package/requirements.txt
+make verify
+```
+
+Check the release manifest before running the ordinary and optimised positive and control paths. Compare the three eigenvalue routes, the two bounded-kernel constructions and the recorded predicate counts; this tests the supplied finite semantics but does not independently reconstruct the asymptotic proof.
 
 ## What is in the public package
 

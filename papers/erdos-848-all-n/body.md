@@ -6,6 +6,8 @@ There is a natural strategy: take every number that leaves remainder 7 when divi
 
 This release claims the complete answer: for every $N$ from 1 upwards, the maximum is exactly $\lfloor (N+18)/25 \rfloor$. The gap between "small" and "sufficiently large" is bridged by five overlapping verification regimes — exact certificates up to a hundred million, structural and exact-rational arguments through $2.64 \times 10^{17}$, and an explicit analytic theorem beyond that.
 
+**Status.** An unrefereed candidate computer-assisted result. The complete source package passed a local fresh-extraction replay with semantic mutation and sanitizer controls; this is not independent external reproduction, external human peer review or end-to-end formal verification. The official Erdős Problems record remained "resolved up to a finite check" when accessed on 28 July 2026, and publishing this release does not alter that external status.
+
 ## Summary for specialists
 
 Let $f(N)$ be the largest size of $A \subseteq \{1, \ldots, N\}$ such that $ab+1$ is nonsquarefree for all $a, b \in A$, including $a = b$. Erdős problem 848 asks for $f(N)$ and whether the residue-class construction $\{n \equiv 7 \pmod{25}\}$ is optimal. van Doorn proved $|A| \leq (0.108\ldots + o(1))N$; Sawhney resolved the problem for all sufficiently large $N$, with the stronger structural statement that any near-extremal set lies in $\{n \equiv 7\}$ or $\{n \equiv 18\} \pmod{25}$.
@@ -21,6 +23,24 @@ Write $f(N)$ for the extremal size. The claimed identity $f(N) = \lfloor (N+18)/
 For $1 \leq N \leq 100{,}000{,}006$ the release ships exact finite colouring certificates: combinatorial data assigning to each interval a witness structure whose validity implies the bound, compressed as a colouring-delta binary and replayed by a standalone C++ verifier, with a compact induction closing the endpoints. For $10^8 \leq N \leq 10^9$ an exhaustive structural decomposition is checked by exact census replays and exact-rational envelopes; this range overlaps the finite certificates at its lower end. From $10^9$ to $10^{12}$, and again from $10^{12}$ to $2.64 \times 10^{17}$, the argument switches to exact-rational "short-shift" and "rank" envelopes — monotone bounding functions whose coefficients are exact rationals, so the comparisons are replayable without floating point. Beyond $2.64 \times 10^{17}$, Sothanaphan's explicit-threshold theorem (an external, pinned PDF with recorded SHA-256) takes over, resting in turn on Sawhney's structural resolution for large $N$.
 
 Every regime overlaps its neighbours, so the composite claim has no uncovered interval — *if* each regime is sound. The envelope arguments in the middle ranges are the bespoke component; the replay framework subjects them to semantic mutations (deliberate perturbations that must fail) and sanitizer controls, but they have had no external scrutiny.
+
+## Evidence, assurance and limitations
+
+The release records a different kind of assurance for each component:
+
+| Statement | Current assurance |
+|---|---|
+| Lower-bound construction and structural rank lemma | Mathematical proof |
+| Finite range | Deterministic certificate replay, separate local diagonal census, mutations, sanitizer |
+| Structural ranges | Exact census/factor artifacts and exact-rational interval replays |
+| High range | Cited analytic theorem plus source-pinned numerical replay |
+| Gapless union of ranges | Machine-checked endpoint ledger and digest |
+| Independent external reproduction | Not yet obtained |
+| End-to-end kernel formalization | Not available |
+| Peer review of the complete stitched proof | Not yet obtained |
+| Internal prepublication audit in this workflow | Completed; not external peer review |
+
+**Where it stops.** A certificate hash proves byte identity, not its mathematical interpretation. A successful local replay proves the encoded claims under the documented source, verifier, compiler, runtime and hardware trust boundaries. The high-threshold replay checks transcription, constants and monotonicity reductions; the source note's analytic arguments remain mathematical inputs. This is a value theorem: it does not claim uniqueness of extremal sets.
 
 ## Who should care, and why
 
@@ -61,6 +81,26 @@ Asymptotic resolutions of extremal problems are the norm in combinatorial number
 ## How the mathematics was produced
 
 The Zenodo record lists an AI system (OpenAI Codex) as creator, with human research direction and publication management. The release explicitly credits the prior human results it builds on — van Doorn's bound and Sawhney's resolution for large $N$, and Sothanaphan's explicit threshold, which is a pinned external dependency rather than a claim of this release.
+
+## How to inspect or reproduce the recorded checks
+
+Start with `paper.pdf`, then `proofs/ALL_N_THEOREM.md` (the human-readable theorem stitch) and `AI_INDEX.md` (the claim-to-evidence map). For a fast metadata-only check that the five ranges leave no gap:
+
+```bash
+python3 audit/verify_all_n_coverage.py
+```
+
+The expected final line is `PASS all_n_branch_coverage_is_gapless`.
+
+The full theorem-grade replay needs Python 3, a C++20 compiler, zlib and Sothanaphan's official explicit-threshold PDF, which is not bundled; the runner rejects it unless its SHA-256 is `8162113a571dc2283fc77de1cdf36e7abf424eeec952aa27cf82a4f44b3a796f`.
+
+```bash
+python3 -u audit/run_all_n_replay.py \
+  --source-pdf /path/to/official-explicit-threshold.pdf \
+  --jobs 4
+```
+
+The default profile rebuilds temporary C++ tools, replays every positive certificate and analytic envelope, checks interval adjacency, runs the available semantic mutations and performs the sanitizer controls. A `--positive-only` option exists for diagnostics, but it is a weaker replay. The public-release wrapper `audit/run_release_replay.py` (same arguments) also checks `MANIFEST.sha256` before and after the replay. Recorded results are in `REPLAY_RECEIPT.md`; component commands and expected digests are in `REPRODUCIBILITY.md`.
 
 ## What is in the evidence package
 

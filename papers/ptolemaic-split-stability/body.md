@@ -1,30 +1,50 @@
 ## Summary
 
-Knowing exactly where equality occurs is not the same as knowing how sensitive it is. This candidate asks how quickly a particular mathematical gap opens when the distances in an equality example change slightly.
+This page explains, in order: what kind of distance pattern is studied, what the earlier release found, what question this one asks, what it found, why four points are different, and what has and has not been checked.
 
-The examples are **complete split metrics**: points are divided into two parts, with distances one within the first part and across the split, and two within the second part. The paper determines the smallest and largest possible first-order rates of departure from equality. They are exact constants, supported by complete certificates—not the extremes of a random sample.
+**The setting.** A *metric* is a finite list of distances between labelled points. A *Ptolemaic* metric satisfies the triangle inequality and also Ptolemy's four-point inequality, $d_{ij}d_{kl}\le d_{ik}d_{jl}+d_{il}d_{jk}$, familiar from points in Euclidean space. For such metrics one can compute a *negative-type gap*: a number obtained from the distances raised to a power $p$ (the least eigenvalue of a certain matrix), which is exactly zero at the extreme examples.
 
-Four points provide a useful warning. At a particular three-armed star, changing the arm lengths opens the gap quadratically rather than linearly. The higher-cardinality linear conclusion cannot simply be extended downwards.
+**What came before.** The [earlier Evidence Press release](/releases/ptolemaic-negative-type/) identified a sharp negative-type threshold. At that threshold, special **complete split metrics** sit exactly on the equality boundary: the points are divided into two parts, with distances one within the first part and across the split, and two within the second part.
+
+**The question.** Knowing exactly where equality occurs is not the same as knowing how sensitive it is. This candidate asks how quickly the gap opens when the distances in an equality example change slightly.
+
+**What was found.** The paper determines the smallest and largest possible first-order rates of departure from equality, for the specified split metrics of every size from six points upwards and for the five-point split. They are exact constants, supported by complete certificates, not the extremes of a random sample. The rates depend on how many points lie on each side of the split, and on the units chosen: the mean distance across the split is fixed at one, and a perturbation is measured by its largest change in any distance.
+
+**A four-point warning.** At a particular three-armed star, changing the arm lengths opens the gap quadratically rather than linearly. The higher-cardinality linear conclusion cannot simply be extended downwards.
+
+**Who might use this.** Metric geometers and spectral analysts get sharp local constants and an explicit sensitivity calculation; researchers in certificate-based proof get a worked example of finite symbolic witnesses covering an infinite family. This is a local stability result near the specified equality metrics, not a universal robustness guarantee for all metrics.
+
+**Status.** An anonymous, unrefereed candidate, without formal proof-assistant verification or external specialist review.
 
 ## Summary for specialists
 
 Write $s=\operatorname{CS}(a,r)$ and $m=a+r$, with
 
-$$p=\log_2\frac{r(a+1)}{a(r-1)}.$$
+$$
+p=\log_2\frac{r(a+1)}{a(r-1)}.
+$$
 
 Let $\Delta_p(d)$ be the least eigenvalue of $-d^p$ restricted to $\mathbf1^\perp$. Normalise the mean cross-distance to one and put $h=\|d-s\|_\infty$.
 
 At the binding pairs $(k,k)$, $(k,k+1)$ and $(k,k+2)$ with $m\ge6$, and at $(2,3)$, the candidate proves
 
-$$A_{a,r}h-b_{a,r}h^2\le\Delta_p(d),$$
+$$
+A_{a,r}h-b_{a,r}h^2\le\Delta_p(d),
+$$
 
-$$\Delta_p(d)\le U_{a,r}h+p(m-1)h^2,$$
+$$
+\Delta_p(d)\le U_{a,r}h+p(m-1)h^2,
+$$
 
 on an explicit neighbourhood, with both first-order coefficients attained. Here
 
-$$A_{a,r}=\frac{2pc_{a,r}}{ma(r-1)},$$
+$$
+A_{a,r}=\frac{2pc_{a,r}}{ma(r-1)},
+$$
 
-$$U_{a,r}=\frac{pr(3a-1)}{2m}.$$
+$$
+U_{a,r}=\frac{pr(3a-1)}{2m}.
+$$
 
 The paper supplies all six small exceptional $c_{a,r}$ values and three stable formulas.
 
@@ -42,7 +62,9 @@ The sharp cone optimisation is certified by **18 rational-function dual families
 
 The metric's own critical exponent satisfies, at a fixed covered split,
 
-$$\wp(d)-p=\frac{m\Delta_p(d)}{r(a+1)\log 2}+O(h^2).$$
+$$
+\wp(d)-p=\frac{m\Delta_p(d)}{r(a+1)\log 2}+O(h^2).
+$$
 
 The matrix criterion for this endpoint and quantitative extension from strict negative type have earlier precedents. The proposed contribution is the exact split-specific directional calculation, not the discovery of spectral perturbation or strict descent.
 

@@ -4,6 +4,10 @@ A space-filling arrangement of convex cells can be more complicated than a propo
 
 The result rests on a geometric construction, not just a plausible set of counts. Rational coordinates, supporting planes and matching cell boundaries make the example inspectable. It also has a weighted-Delaunay realization and a corresponding power diagram, or Laguerre mosaic. These are weighted constructions; the paper does not claim an ordinary unweighted Voronoi counterexample.
 
+**Where the bound came from.** Domokos and Lángi proposed the harmonic-degree band. The construction applies older neighborly cubical and Schlegel-insertion techniques to that later band; the contribution is the explicit application, the rational periodic weighted realization and the stated refinements, not the invention of those techniques.
+
+**Status.** An unrefereed candidate with bounded producer-side replay; no proof-assistant verification or unaffiliated reproduction, and the supplied review's referee identity and independence are not authenticated.
+
 ## Summary for specialists
 
 The normal periodic convex face-to-face three-mosaic has densities $(V,C,I)=(373,432,3276)$, where $I$ counts vertex–cell incidences. Thus
