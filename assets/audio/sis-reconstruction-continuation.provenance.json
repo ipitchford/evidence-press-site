@@ -1,39 +1,91 @@
 {
   "schemaVersion": "1.0",
-  "narrationRecipe": "bounded-disclosed-v1",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
   "maxSegmentCharacters": 800,
   "segments": [
     {
-      "input": "Can an epidemic model match what we have observed and still become unreliable just beyond the observation window? An Evidence Press briefing. This paper studies that question for a deterministic susceptible infected susceptible, or S-I-S, model on a network of communities. It is important to separate two ideas. Reconstruction asks whether a complete, exact, community-by-community trajectory determines the contact matrix uniquely. Continuation asks whether two models that fit closely on an observed interval must remain close later. Unique reconstruction does not automatically make continuation well conditioned. The first result is positive. If the number of communities is fixed, and the contact and recovery parameters stay inside a bounded class, there is always a finite linear continuation",
-      "inputSha256": "1bfa31ad4d842d57ae308126b2d08a0ee899c3e3cb8635fd34aed527b87babbb",
-      "audioSha256": "62800a02d9922611dabffecf40dd78097b5668729ef536e358597ab7dc9459fb",
-      "requestId": "req_da530c2f338c4b148cd33357c93018a8",
-      "contentType": "audio/mpeg"
+      "input": "Can an epidemic model match what we have observed and still become unreliable just beyond the observation window? An Evidence Press briefing. This paper studies that question for a deterministic susceptible infected susceptible, or S-I-S, model on a network of communities. It is important to separate two ideas. Reconstruction asks whether a complete, exact, community-by-community trajectory determines the contact matrix uniquely. Continuation asks whether two models that fit closely on an observed interval must remain close later. Unique reconstruction does not automatically make continuation well conditioned. The first result is positive.",
+      "inputSha256": "f1c766646b55c558163a9ed843d689abebc4c760abf3761304aabfa0751affc2",
+      "audioSha256": "f597958b5c7b00f725358173c89554157027f2bbc89d69a4dedcfc3fd2b7bd79",
+      "requestId": "req_429fd51b512b4ba3915c2a58c6589d9a",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "make continuation well conditioned the result is positive",
+        "heardEnding": "remain close later unique reconstruction does not automatically make continuation well conditioned the result is positive",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
     },
     {
-      "input": "factor. The proof uses established polynomial ideal closure to place every observed scalar output inside a differential equation of bounded order. The second result is negative. There is no single linear factor that works uniformly as the number of communities grows. The paper constructs complete weighted networks that are exactly reconstructible, yet whose best continuation factor grows at least exponentially with dimension. The mechanism is explicit: a binomially designed direction is almost invisible during the observation interval and becomes much more visible afterwards. The result is about relative linear amplification in the paper's stated residual norm. It does not say that a large absolute forecasting error must occur, and it does not by itself prove the same lower bound for",
-      "inputSha256": "4e3a0cb043d12060268a1cd280e347ae0d1ff55b2593d81d620bb8bc0db765b3",
-      "audioSha256": "f84cce84eb283463c8714fcd6ea62ef6349d0a2c04304fb296627f8b197f072c",
-      "requestId": "req_99c1811a64a740b49df2055bddb6becb",
-      "contentType": "audio/mpeg"
+      "input": "If the number of communities is fixed, and the contact and recovery parameters stay inside a bounded class, there is always a finite linear continuation factor. The proof uses established polynomial ideal closure to place every observed scalar output inside a differential equation of bounded order. The second result is negative. There is no single linear factor that works uniformly as the number of communities grows. The paper constructs complete weighted networks that are exactly reconstructible, yet whose best continuation factor grows at least exponentially with dimension. The mechanism is explicit: a binomially designed direction is almost invisible during the observation interval and becomes much more visible afterwards.",
+      "inputSha256": "5b6a1016449928e924d18fc794f0e9888594d2d37441c11b3c21fcc93371a3c2",
+      "audioSha256": "3619e6eafa0ff0cb9920e72bc0f8ef8d0c3fe14bcb03a5a357ce4397b4a9edc2",
+      "requestId": "req_9a143683188646648862b21dffab2557",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "observation interval and becomes much more visible afterwards",
+        "heardEnding": "binomially designed direction is almost invisible during the observation interval and becomes much more visible afterwards",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
     },
     {
-      "input": "nonlinear trajectory error in another norm. The paper then supplies a replacement. Bounded S-I-S parameters give a common complex-time neighbourhood, so classical analytic continuation yields an explicit dimension-free Holder estimate. This is weaker than a linear estimate near zero, but it still says that sufficiently close histories have close continuations. The same argument applies directly to differences between two full community-resolved trajectories. A new corollary makes the observation model more concrete: finitely sampled trajectories are enough when the largest gap to a sample and the measurement-error bound are included explicitly. This is a deterministic theorem, not a stochastic data model, and it does not apply to total prevalence alone. The paper also describes the full",
-      "inputSha256": "5a817a54d2c3835c7022f0204e3b0538975ae636dccf9d872e85b8910c91ac17",
-      "audioSha256": "a323345f78c89668337d6108fec74de1c29253e1cde730c27321e3868eb41ed4",
-      "requestId": "req_27e285fbaeac44ff8f9c335293178431",
-      "contentType": "audio/mpeg"
+      "input": "The result is about relative linear amplification in the paper's stated residual norm. It does not say that a large absolute forecasting error must occur, and it does not by itself prove the same lower bound for nonlinear trajectory error in another norm. The paper then supplies a replacement. Bounded S-I-S parameters give a common complex-time neighbourhood, so classical analytic continuation yields an explicit dimension-free Holder estimate. This is weaker than a linear estimate near zero, but it still says that sufficiently close histories have close continuations. The same argument applies directly to differences between two full community-resolved trajectories.",
+      "inputSha256": "ed90e6d0684476c3b18424f78de347469daf220510a528bc86a91346abc8f00d",
+      "audioSha256": "b58f977818bc5548adb9abe5992dee38d76c7b4c827a53a0f4c2e172d336b256",
+      "requestId": "req_87b3894829ac483cac09a2cd628ad88c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "directly to differences between full community resolved trajectories",
+        "heardEnding": "histories have close continuations the same argument applies directly to differences between full community resolved trajectories",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
     },
     {
-      "input": "contact-matrix ambiguity space, gives nonstationary reconstruction counterexamples, and classifies positive invariant rays. Some proof methods are classical and are credited as such. The contribution is their model-specific use to resolve the source conjectures, give an admissible growing-dimension obstruction, and provide explicit S-I-S continuation bounds. The universal results are written analytic proofs. Exact Python checks replay selected finite constructions and hostile controls, but they do not formally verify those proofs. This is an anonymous, AI-assisted, unrefereed candidate. It has not received external peer review or independent reproduction. Paper, code and evidence are linked on this page. AI-generated voice. This briefing is not additional scientific evidence.",
-      "inputSha256": "e4f407860ba5a625de601b058b8b360ff9f490c0a973fbd4a56cf8b81641b325",
-      "audioSha256": "47e0e07c0b7580e1ed94690847a582879d0018501de5b2d942fd5637122892e4",
-      "requestId": "req_c15e9947e6bc4fd58612d5c504e09f22",
-      "contentType": "audio/mpeg"
+      "input": "A new corollary makes the observation model more concrete: finitely sampled trajectories are enough when the largest gap to a sample and the measurement-error bound are included explicitly. This is a deterministic theorem, not a stochastic data model, and it does not apply to total prevalence alone. The paper also describes the full contact-matrix ambiguity space, gives nonstationary reconstruction counterexamples, and classifies positive invariant rays. Some proof methods are classical and are credited as such. The contribution is their model-specific use to resolve the source conjectures, give an admissible growing-dimension obstruction, and provide explicit S-I-S continuation bounds. The universal results are written analytic proofs.",
+      "inputSha256": "e13a9f59157825f080e045e4c3617919ab98c965b97658a7bd564041ba891850",
+      "audioSha256": "506a3bd7e3584425ebf5d7d9389488f45df2ffc0d04580aa77b83cac80c3a58e",
+      "requestId": "req_c11b501de2c0441ab6da2a428ef54290",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "bounds the universal results are written analytic proofs",
+        "heardEnding": "growing dimension obstruction and provide explicit sis continuation bounds the universal results are written analytic proofs",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Exact Python checks replay selected finite constructions and hostile controls, but they do not formally verify those proofs. This is an anonymous, AI-assisted, unrefereed candidate. It has not received external peer review or independent reproduction. Paper, code and evidence are linked on this page. AI-generated voice. This briefing is not additional scientific evidence.",
+      "inputSha256": "618742624b9fca5b3218292335662d71b83fbd8e792d250fa2dc465bcbfd5d48",
+      "audioSha256": "88a3cfa53310c7faad1975b2fe5c0ab2a3320b7f0d383f539bf66757c9f91af8",
+      "requestId": "req_0bc8526da5a14858bbb7a08d493723fa",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "voice this briefing is not additional scientific evidence",
+        "heardEnding": "evidence are linked on this page ai generated voice this briefing is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
     }
   ],
   "slug": "sis-reconstruction-continuation",
-  "generatedAt": "2026-10-21T04:45:32.292Z",
+  "generatedAt": "2026-10-21T06:06:39.264Z",
   "sourceMetadata": "papers/sis-reconstruction-continuation/meta.json",
   "provider": "openai",
   "endpoint": "https://api.openai.com/v1/audio/speech",
@@ -45,8 +97,16 @@
   "transcriptPath": "assets/audio/sis-reconstruction-continuation.txt",
   "transcriptSha256": "c7bc4aa39de01752da0af0c926844bb2fce791d1f2aee6afc857396390e43db3",
   "audioPath": "assets/audio/sis-reconstruction-continuation.mp3",
-  "audioSha256": "57a6047ccf4571392bde116c79b57e886dc53e472fcdb5a4ee1f7caf390b87c9",
-  "audioBytes": 3274796,
+  "audioSha256": "6b1c6b75e4d3e5355db1ccb45aab284f160542e1b234b22b8de745e6cbf74149",
+  "audioBytes": 3255980,
   "responseContentType": "audio/mpeg",
-  "requestId": null
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "voice this briefing is not additional scientific evidence",
+    "heardEnding": "evidence are linked on this page ai generated voice this briefing is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
 }
