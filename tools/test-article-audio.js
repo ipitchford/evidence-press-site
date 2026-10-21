@@ -5,7 +5,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const assert = require('assert');
-const { TTS, TRANSFORM, sha256, chunkTranscript, sourceFor, chunkMeta,
+const { TTS, TRANSFORM, sha256, chunkTranscript, isHeading, sourceFor, chunkMeta, LEGACY_SCHEMA, ENDING_ATTEMPTS,
   prepareArticleAudio, verifyArticleAudio } = require('./make-article-audio');
 let passed = 0;
 function check(name, fn) {
@@ -25,17 +25,20 @@ const metaPath = path.join(root, 'articles', slug, 'meta.json');
 fs.writeFileSync(bodyPath, '# Exact body\n\nAn article, not a release.\n');
 fs.writeFileSync(transcriptPath, 'An article narration.\n\nSecond paragraph.\n');
 
-function fixtureReceipt() {
-  const source = sourceFor(slug, root, temporary);
+const passedEnding = { status: 'passed', expectedEnding: 'x', heardEnding: 'x', matchedWords: 8, requiredWords: 6, asrModelSha256: 'c'.repeat(64) };
+function fixtureReceipt(schemaVersion) {
+  const source = sourceFor(slug, root, temporary, schemaVersion);
+  const legacy = schemaVersion === LEGACY_SCHEMA;
   // These opaque test bytes test hash binding only, not MP3 decoding/playback.
   const bytes = Buffer.from('offline final audio hash fixture');
   fs.writeFileSync(audioPath, bytes);
   return { ...source.base, assembledAt: '2026-09-09T12:00:00.000Z',
     generator: 'bundled speech skill text_to_speech.py speak-batch', requestId: null,
     chunks: source.chunks.map(chunk => ({ ...chunkMeta(chunk), requestId: null,
-      audioSha256: sha256('offline segment fixture'), audioBytes: 123, durationSeconds: 2 })),
+      audioSha256: sha256('offline segment fixture'), audioBytes: 123, durationSeconds: 2,
+      ...(legacy ? {} : { endingCheck: { ...passedEnding, attempt: 1 } }) })),
     transform: { ...TRANSFORM }, audioSha256: sha256(bytes), audioBytes: bytes.length,
-    durationSeconds: source.chunks.length * 2 };
+    durationSeconds: source.chunks.length * 2, ...(legacy ? {} : { endingCheck: passedEnding }) };
 }
 function saveReceipt(receipt) { fs.writeFileSync(receiptPath, JSON.stringify(receipt)); }
 
@@ -63,6 +66,34 @@ try {
     assert.ok(chunks.length > 1);
     for (const chunk of chunks) assert.match(chunk.input, /here\.$/);
     assert.strictEqual(chunks.map(chunk => text.slice(chunk.start, chunk.end)).join(''), text);
+  });
+
+  check('a chunk never ends on a heading; the heading stays with its paragraph', () => {
+    const body = 'A full sentence of article text that runs on. '.repeat(25);
+    const text = `${body}\n\n${body}\n\nWhat it cost\n\n${body}\n\nWhere things stand\n\n${body}\n`;
+    assert.ok(isHeading('What it cost') && !isHeading('A sentence.') && !isHeading('Is this a question?'));
+    const chunks = chunkTranscript(text);
+    assert.ok(chunks.length >= 2);
+    for (const chunk of chunks.slice(0, -1)) assert.ok(!isHeading(chunk.input.split('\n\n').pop()), chunk.input.slice(-40));
+    assert.ok(chunks.some(chunk => chunk.input.startsWith('What it cost')));
+    assert.strictEqual(chunks.map(chunk => text.slice(chunk.start, chunk.end)).join(''), text);
+    const legacy = chunkTranscript(text, 3000, { headingAware: false });
+    assert.ok(legacy.some(chunk => isHeading(chunk.input.split('\n\n').pop())), 'fixture exercises the old heading-final defect');
+  });
+
+  check('legacy 1.0 receipts verify with their original chunking and need no ending check', () => {
+    const receipt = fixtureReceipt(LEGACY_SCHEMA);
+    saveReceipt(receipt);
+    assert.deepStrictEqual(verifyArticleAudio(slug, root), receipt);
+  });
+
+  check('new receipts require a passed spoken-ending check per chunk and for the final file', () => {
+    const receipt = fixtureReceipt();
+    for (const mutate of [r => { delete r.chunks[0].endingCheck; }, r => { r.chunks[0].endingCheck.status = 'failed'; },
+      r => { delete r.endingCheck; }, r => { r.endingCheck = { ...r.endingCheck, status: 'failed' }; }]) {
+      const copy = JSON.parse(JSON.stringify(receipt)); mutate(copy); saveReceipt(copy);
+      assert.throws(() => verifyArticleAudio(slug, root), /spoken-ending/);
+    }
   });
 
   check('bounded chunks do not split Unicode surrogate pairs', () => {
@@ -102,6 +133,19 @@ try {
     fs.writeFileSync(preparedInput, 'Wrong input');
     assert.throws(() => prepareArticleAudio(slug, root, temporary), /Prepared input changed/);
     fs.writeFileSync(preparedInput, input);
+  });
+
+  check('a chunk is re-queued after a rejected ending take, then refused after the bounded attempts', () => {
+    const source = sourceFor(slug, root, temporary);
+    const segments = path.join(source.cache, 'segments');
+    for (let take = 1; take < ENDING_ATTEMPTS; take++) {
+      fs.writeFileSync(path.join(segments, `0001.mp3.rejected-ending-${take}`), 'rejected');
+      const prepared = prepareArticleAudio(slug, root, temporary);
+      assert.ok(fs.readFileSync(prepared.jobsPath, 'utf8').includes('"out":"0001.mp3"'));
+    }
+    fs.writeFileSync(path.join(segments, `0001.mp3.rejected-ending-${ENDING_ATTEMPTS}`), 'rejected');
+    assert.throws(() => prepareArticleAudio(slug, root, temporary), /lost its spoken ending/);
+    for (let take = 1; take <= ENDING_ATTEMPTS; take++) fs.unlinkSync(path.join(segments, `0001.mp3.rejected-ending-${take}`));
   });
 
   check('offline receipt validation needs no API credential or media executable', () => {
