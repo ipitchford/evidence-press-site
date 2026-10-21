@@ -51,7 +51,10 @@ function chunkTranscript(text, maxChars = MAX_CHARS) {
       const sample = text.slice(start, end);
       const paragraph = sample.lastIndexOf('\n\n');
       const whitespace = Math.max(sample.lastIndexOf(' '), sample.lastIndexOf('\n'));
+      // A chunk ending mid-sentence can lose its final spoken words, so prefer a sentence end.
+      const sentence = [...sample.matchAll(/[.!?]["'”’)\]]*\s+(?=["'“‘(\[]?[A-Z0-9])/g)].pop();
       if (paragraph > 0) end = start + paragraph + 2;
+      else if (sentence) end = start + sentence.index + sentence[0].length;
       else if (whitespace > maxChars / 2) end = start + whitespace + 1;
       // A JS string uses UTF-16 offsets; do not cut between a surrogate pair.
       if (/[\uD800-\uDBFF]/.test(text[end - 1]) && /[\uDC00-\uDFFF]/.test(text[end])) end--;

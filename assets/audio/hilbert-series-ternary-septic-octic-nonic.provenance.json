@@ -1,7 +1,56 @@
 {
   "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "A curve in the plane can be described by a single polynomial in three variables. Change the coordinates, and the polynomial changes, but some combinations of its coefficients stay exactly the same. These are its invariants, and they are the natural way to tell curves apart. The number of independent invariants in each degree is recorded by a generating function called the Hilbert series. As far as we could find, these series were known only for curves of degree up to six. This release determines them exactly for curves of degree seven, eight and nine. The answers are large: for curves of degree eight, the denominator of the series has degree two thousand three hundred and thirty-one. The series also say something concrete.",
+      "inputSha256": "af5a2a434cdf3c13789f2ff3fd680d7f3a51538005fea2c91c1d79666ed25138",
+      "audioSha256": "7ff3e498efc0fe9b7eef34befc70379ab358b0d7fe332af5a3eededb9b28ac77",
+      "requestId": "req_afd5b8c9978c4cb7bb47de6625993229",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "thirty one the series also say something concrete",
+        "heardEnding": "degree eight the denominator of the series has degree 2331 the series also say something concrete",
+        "matchedWords": 6,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+      }
+    },
+    {
+      "input": "For curves of degree nine, exactly forty-five new basic invariants are needed in degree eight, and one hundred and eighteen in degree nine. The method is not new. Theorems of Harm Derksen bound the shape of the answer in advance, and a strategy used by Visu Makam for matrix invariants reduces the problem to finitely many coefficients. Those coefficients are computed exactly by one algorithm, and a second algorithm, sharing no code with the first, arrives at the same whole numbers. Every certificate can be replayed from the published data. This release also completes a candidate formula for degree seven from an earlier Evidence Press release, and corrects that release's missing credit to Derksen and Makam. The research was produced by an AI research agent.",
+      "inputSha256": "a1f5f408d932f8b80807e6b4cf30071510fca0d3f43db9aec72ad4e100602bfe",
+      "audioSha256": "3758e3da35fe116a761816fe57df02ec723c75af818bce1da1e189a7ef229fc2",
+      "requestId": "req_ca8f81740473437f9fe99cdc4e1ff948",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "research was produced by an ai research agent",
+        "heardEnding": "s missing credit to dirksen and makam the research was produced by an ai research agent",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+      }
+    },
+    {
+      "input": "The main limitation is this: the results have been checked by the producing workflow and by several AI reviewers, but not by any human specialist, and nothing has been formally verified. This is an unrefereed candidate from Evidence Press, dated September twenty-sixth, twenty twenty-six. The paper, code and data are linked from the release page. This briefing uses an AI-generated voice, and it is not additional evidence.",
+      "inputSha256": "3c250595b37bb0e0b36b69cb54dd4bf1335844abbec07272f88b009115e59a3b",
+      "audioSha256": "d2273ed3fc6383f72b152469f00f45899ee36de7d99c3d71b6a934619beb4a02",
+      "requestId": "req_8647ec612d034e938c35b8d5fe03078c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and it is not additional evidence",
+        "heardEnding": "the release page this briefing uses an ai generated voice and it is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+      }
+    }
+  ],
   "slug": "hilbert-series-ternary-septic-octic-nonic",
-  "generatedAt": "2026-09-26T19:17:27.003Z",
+  "generatedAt": "2026-10-21T05:37:37.364Z",
   "sourceMetadata": "papers/hilbert-series-ternary-septic-octic-nonic/meta.json",
   "provider": "openai",
   "endpoint": "https://api.openai.com/v1/audio/speech",
@@ -13,8 +62,16 @@
   "transcriptPath": "assets/audio/hilbert-series-ternary-septic-octic-nonic.txt",
   "transcriptSha256": "e2f0fc0f9bab791c7440e38c106d281651ce2298e0504db32878000790f737b0",
   "audioPath": "assets/audio/hilbert-series-ternary-septic-octic-nonic.mp3",
-  "audioSha256": "924d3c21c6c04e29b9a065365e7f35d2f87090bda026de018d3f8e124bd3150b",
-  "audioBytes": 1845120,
+  "audioSha256": "7e02238ba8d23dcf7e87d837e13bd383a960672a812602e0b97fe0e26de3c4c3",
+  "audioBytes": 2011436,
   "responseContentType": "audio/mpeg",
-  "requestId": "req_a90d2bffb43e41a6b16fe1dca26fbadc"
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and it is not additional evidence",
+    "heardEnding": "the release page this briefing uses an ai generated voice and it is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
 }
