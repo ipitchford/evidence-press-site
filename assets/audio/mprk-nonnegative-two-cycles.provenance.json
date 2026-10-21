@@ -1,32 +1,71 @@
 {
   "schemaVersion": "1.0",
-  "narrationRecipe": "bounded-disclosed-v1",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
   "maxSegmentCharacters": 800,
   "segments": [
     {
-      "input": "Positive coefficients are not enough. An Evidence Press briefing. Models in chemistry and ocean ecology track quantities that can never be negative, such as concentrations or biomass. Modified Patankar Runge Kutta schemes, called M-P-R-K schemes, are time-stepping methods built for these models. They keep every quantity positive and conserve total mass, however large the time step. In 2024, Izgin, Kopecz, Meister and Schilling conjectured that when the coefficients behind such a scheme are all non-negative, it always settles at the correct steady state, from any starting point and with any step size. This release shows that this natural reading of the conjecture is false. Take the scheme M-P-R-K two-two with parameter four-sevenths, whose coefficients are all positive, and a simple",
-      "inputSha256": "e51aba50b4efdb6020efb8546198bf63fd70ae1a6896219b8f6bb351e790bd79",
-      "audioSha256": "2d95ab32aa368f9b932feee5bdc29bedbb3dbc41dcf05b49cdf006a9a10bf441",
-      "requestId": "req_10339ef0e07043cdad6ad77fe0d7d85d",
-      "contentType": "audio/mpeg"
+      "input": "Positive coefficients are not enough. An Evidence Press briefing. Models in chemistry and ocean ecology track quantities that can never be negative, such as concentrations or biomass. Modified Patankar Runge Kutta schemes, called M-P-R-K schemes, are time-stepping methods built for these models. They keep every quantity positive and conserve total mass, however large the time step. In 2024, Izgin, Kopecz, Meister and Schilling conjectured that when the coefficients behind such a scheme are all non-negative, it always settles at the correct steady state, from any starting point and with any step size. This release shows that this natural reading of the conjecture is false.",
+      "inputSha256": "14d432c996c22a2367a81524e49bd4dd3b620edf28c90c51764d8ce3a1ead600",
+      "audioSha256": "4046828529046fbb5626a60df8b280bb0222b4cb137160ded06d2e761c59adf4",
+      "requestId": "req_16852821713c43df9120093f1a7c15e8",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "this natural reading of the conjecture is false",
+        "heardEnding": "with any step size this release shows that this natural reading of the conjecture is false",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+      }
     },
     {
-      "input": "reaction between two species, one fast and one slow. With a step size of one and the mass split evenly at the start, the computed solution never reaches the true steady state, where the first species holds one thousandth of the mass. Instead it jumps back and forth for ever between two wrong states. Positivity and mass are preserved exactly, so the usual sanity checks notice nothing. The true steady state is still the scheme's only steady state, and it is locally stable, but only about eleven per cent of starting splits reach it. Every failure found combines two ingredients: a lopsided equilibrium, where one species holds about one per cent or less of its partner's share, and a step far longer than the fastest time scale. The symmetric tests behind the conjecture had neither, which helps",
-      "inputSha256": "c9a1e5bd969c6b561d6d3ccd61b4140dce55bb767b2b70db50d5731c1f20777a",
-      "audioSha256": "98a650fceb5c008b7a40d660a2caab85db8f3fbc5b7010ba24f8a206eeabcdd3",
-      "requestId": "req_d867f9441c1c4b21ac99b29ed9478eca",
-      "contentType": "audio/mpeg"
+      "input": "Take the scheme M-P-R-K two-two with parameter four-sevenths, whose coefficients are all positive, and a simple reaction between two species, one fast and one slow. With a step size of one and the mass split evenly at the start, the computed solution never reaches the true steady state, where the first species holds one thousandth of the mass. Instead it jumps back and forth for ever between two wrong states. Positivity and mass are preserved exactly, so the usual sanity checks notice nothing. The true steady state is still the scheme's only steady state, and it is locally stable, but only about eleven per cent of starting splits reach it.",
+      "inputSha256": "03488631c83501943dc5d01a19ae32fee835669094971eb37d24d759295b4d4f",
+      "audioSha256": "d03ec15ea2fe6128167a16ad195848b22b0fb5b42ee66dc838458edca43ea2d3",
+      "requestId": "req_31bf36f1812744ef9a50ae759278524c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "eleven per cent of starting splits reach it",
+        "heardEnding": "state and it is locally stable but only about eleven percent of starting splits reach it",
+        "matchedWords": 6,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+      }
     },
     {
-      "input": "explain why they missed it. Both ingredients are common in stiff chemistry, so the paper recommends the member with parameter one, and advises users to watch for values that flip back and forth from one step to the next. The paper also proves that two common members of the family always converge for two species, and proposes a refined conjecture. The key results are certified in exact arithmetic, and the checks can be rerun. This is an anonymous, unrefereed candidate, not peer reviewed or independently reproduced. Published on 20 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
-      "inputSha256": "c97419cc351e03435086cbedefc4ea63787377fd6d0057465a2319bfb5bc0148",
-      "audioSha256": "4822f68b6e0e317e5c28517be29bbec63438952c1da84fdbbb13f7a72eb19fb3",
-      "requestId": "req_8bf582076e554062aec1863b67ba0e04",
-      "contentType": "audio/mpeg"
+      "input": "Every failure found combines two ingredients: a lopsided equilibrium, where one species holds about one per cent or less of its partner's share, and a step far longer than the fastest time scale. The symmetric tests behind the conjecture had neither, which helps explain why they missed it. Both ingredients are common in stiff chemistry, so the paper recommends the member with parameter one, and advises users to watch for values that flip back and forth from one step to the next. The paper also proves that two common members of the family always converge for two species, and proposes a refined conjecture. The key results are certified in exact arithmetic, and the checks can be rerun. This is an anonymous, unrefereed candidate, not peer reviewed or independently reproduced.",
+      "inputSha256": "a002ef2aa24cf59f0d91566c2804c33aceb06691af84b0c64cbc67731d482395",
+      "audioSha256": "9a9be68b84fab4b2c20e6340a4a5cc9e2c1da5adcd7bc8b7b4ab4c696d221f2d",
+      "requestId": "req_2309c3cc55f544c980d0ae8ee5f2724d",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "unrefereed candidate not peer reviewed or independently reproduced",
+        "heardEnding": "checks can be rerun this is an anonymous unrefereed candidate not peer reviewed or independently reproduced",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+      }
+    },
+    {
+      "input": "Published on 20 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "42d2ea5f6dc586df324f9887e65b7a79d297bb19d60abfbda48d9145a2371994",
+      "audioSha256": "8913bf31763f71e516f6d85ebab12511a02af2fb731bd01b66bccb796904776e",
+      "requestId": "req_e085373f469e4da7b236f0a39db86eab",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+      }
     }
   ],
   "slug": "mprk-nonnegative-two-cycles",
-  "generatedAt": "2026-10-20T20:13:09.460Z",
+  "generatedAt": "2026-10-21T04:09:11.040Z",
   "sourceMetadata": "papers/mprk-nonnegative-two-cycles/meta.json",
   "provider": "openai",
   "endpoint": "https://api.openai.com/v1/audio/speech",
@@ -38,8 +77,16 @@
   "transcriptPath": "assets/audio/mprk-nonnegative-two-cycles.txt",
   "transcriptSha256": "72c45bc3312f9e961ad100f89b8e60b82fc5e79356c3b7857c852a19a8db0599",
   "audioPath": "assets/audio/mprk-nonnegative-two-cycles.mp3",
-  "audioSha256": "f5765816da79516fcfd31e5303c18903579d19f7f8c82cfdc50d32132c56b2ee",
-  "audioBytes": 2341676,
+  "audioSha256": "e95427a6fabb1e0fc80ecabfb4a2b3d8c040a4e87cacc2df5a3a185a029d3fa2",
+  "audioBytes": 2490668,
   "responseContentType": "audio/mpeg",
-  "requestId": null
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
 }

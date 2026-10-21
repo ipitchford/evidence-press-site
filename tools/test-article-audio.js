@@ -57,6 +57,14 @@ try {
     assert.strictEqual(end, text.length);
   });
 
+  check('a long paragraph is chunked at sentence ends, not mid-sentence', () => {
+    const text = 'A sentence with e.g. an abbreviation and 3.5 units ends here. '.repeat(120) + '\n';
+    const chunks = chunkTranscript(text);
+    assert.ok(chunks.length > 1);
+    for (const chunk of chunks) assert.match(chunk.input, /here\.$/);
+    assert.strictEqual(chunks.map(chunk => text.slice(chunk.start, chunk.end)).join(''), text);
+  });
+
   check('bounded chunks do not split Unicode surrogate pairs', () => {
     const text = 'a'.repeat(2999) + '🌊' + 'b'.repeat(4000) + '\n';
     const chunks = chunkTranscript(text);

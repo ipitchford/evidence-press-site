@@ -2,6 +2,8 @@
 /* Generates narrated audio briefings via OpenAI TTS → assets/audio/<slug>.mp3
  * Run at authoring time (needs OPENAI_API_KEY):
  *   node tools/make-audio.js [--force] [slug ...]
+ * Generation also needs the offline ASR ending guard (never downloads a model):
+ *   EP_ASR_PYTHON=<faster-whisper python> EP_ASR_MODEL=<local model dir>
  * Verify committed provenance without an API key:
  *   node tools/make-audio.js --check [slug ...]
  * The site build does NOT call TTS; it publishes committed media bytes. */
@@ -9,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-const {plannedText,segments,verifySegments} = require('./audio-recipe');
+const {LEGACY_RECIPE,RECIPE,plannedText,segments,verifySegments,endingCheck} = require('./audio-recipe');
 const {spawnSync} = require('child_process');
 const os = require('os');
 const {checkText} = require('./check-public-text');
@@ -21,6 +23,7 @@ const REQUESTED = new Set(process.argv.slice(2)
 if (FORCE && CHECK) { console.error('--force and --check are mutually exclusive'); process.exit(1); }
 const KEY = process.env.OPENAI_API_KEY;
 if (!CHECK && !KEY) { console.error('Set OPENAI_API_KEY'); process.exit(1); }
+const ASR = { python: process.env.EP_ASR_PYTHON, model: process.env.EP_ASR_MODEL };
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'assets', 'audio');
 fs.mkdirSync(OUT, { recursive: true });
@@ -35,6 +38,7 @@ const TTS = Object.freeze({
 });
 const voiceLabel = `OpenAI API synthetic voice (${TTS.voice})`;
 const MAX_SEGMENT_CHARACTERS = 800;
+const ENDING_ATTEMPTS = 3;
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const pathsFor = slug => ({
   audio: path.join(OUT, `${slug}.mp3`),
@@ -73,6 +77,20 @@ async function tts(text) {
   };
 }
 
+// Fails closed: a segment whose spoken audio lacks the input's final words is not published.
+function transcribe(file) {
+  const run = spawnSync(ASR.python, ['-B', path.join(__dirname, 'transcribe-audio.py'), ASR.model, file], { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+  if (run.status !== 0) throw new Error(`ASR ending guard failed to run: ${(run.stderr || '').slice(-800)}`);
+  return JSON.parse(run.stdout);
+}
+function checkEnding(input, file, label) {
+  const asr = transcribe(file);
+  const result = { ...endingCheck(input, asr.text), asrModelSha256: asr.model.sha256 };
+  if (result.status !== 'passed')
+    throw new Error(`${label}: spoken ending missing; expected "…${result.expectedEnding}", heard "…${result.heardEnding}"`);
+  return result;
+}
+
 function verify(slug, meta, files) {
   const problems = [];
   for (const [kind, file] of Object.entries(files)) {
@@ -83,11 +101,14 @@ function verify(slug, meta, files) {
   const transcript = fs.readFileSync(files.transcript, 'utf8');
   const receipt = JSON.parse(fs.readFileSync(files.receipt, 'utf8'));
   const audio = fs.readFileSync(files.audio);
-  const text = receipt.narrationRecipe === 'bounded-disclosed-v1' ? plannedText(narrationFor(meta)) : narrationFor(meta).trim();
-  if(receipt.narrationRecipe === 'bounded-disclosed-v1') {
+  const bounded = [LEGACY_RECIPE, RECIPE].includes(receipt.narrationRecipe);
+  const text = bounded ? plannedText(narrationFor(meta)) : narrationFor(meta).trim();
+  if(bounded) {
     const max = receipt.maxSegmentCharacters || 2500;
-    try { verifySegments(text,receipt.segments,max); } catch(e) { problems.push(e.message); }
+    try { verifySegments(text,receipt.segments,max,receipt.narrationRecipe); } catch(e) { problems.push(e.message); }
   }
+  if(receipt.narrationRecipe === RECIPE && !(receipt.endingCheck && receipt.endingCheck.status === 'passed'))
+    problems.push('assembled recording lacks a passed spoken-ending check');
   if (transcript !== `${text}\n`) problems.push('transcript differs from the generated narration source');
   if (meta.audioVoiceLabel !== voiceLabel) problems.push(`audioVoiceLabel must be ${JSON.stringify(voiceLabel)}`);
   if (receipt.provider !== TTS.provider || receipt.model !== TTS.model || receipt.voice !== TTS.voice)
@@ -125,25 +146,34 @@ function verify(slug, meta, files) {
     checkText(text, `planned narration for ${d}`);
     const chunks = segments(text,MAX_SEGMENT_CHARACTERS);
     if(spawnSync('ffmpeg',['-version'],{stdio:'ignore'}).status!==0) throw new Error('Run audio environment preflight: ffmpeg missing');
+    if(!(ASR.python && ASR.model)) throw new Error('Set EP_ASR_PYTHON and EP_ASR_MODEL for the spoken-ending guard (offline ASR, no provider call made)');
     process.stdout.write(`tts: ${slug} (${text.length} chars; ${TTS.model}/${TTS.voice}) ... `);
     const temporary = fs.mkdtempSync(path.join(os.tmpdir(),'ep-tts-'));
     const parts=[];
     for(const [index,input] of chunks.entries()) {
-      const part=await tts(input);
-      const name=path.join(temporary,`part-${index}.mp3`);fs.writeFileSync(name,part.bytes);
-      parts.push({path:name,input,inputSha256:sha256(Buffer.from(input)),audioSha256:sha256(part.bytes),requestId:part.requestId,contentType:part.contentType});
+      // The provider also drops trailing words stochastically, so a failed ending is re-requested
+      // a bounded number of times; rejected takes stay private and the last failure is fatal.
+      let part,name,ending;
+      for(let attempt=1;!ending;attempt++) {
+        part=await tts(input);
+        name=path.join(temporary,`part-${index}-${attempt}.mp3`);fs.writeFileSync(name,part.bytes);
+        try { ending={...checkEnding(input,name,`${slug} segment ${index + 1}/${chunks.length} (private segments retained at ${temporary})`),attempt}; }
+        catch(e) { if(attempt>=ENDING_ATTEMPTS) throw e; console.error(`${e.message}; retrying`); }
+      }
+      parts.push({path:name,input,inputSha256:sha256(Buffer.from(input)),audioSha256:sha256(part.bytes),requestId:part.requestId,contentType:part.contentType,endingCheck:ending});
     }
     const list=path.join(temporary,'concat.txt');
     fs.writeFileSync(list,parts.map(p=>`file '${p.path}'`).join('\n'));
     const combined=path.join(temporary,'combined.mp3');
     if(spawnSync('ffmpeg',['-v','error','-xerror','-f','concat','-safe','0','-i',list,'-codec:a','libmp3lame','-b:a','128k',combined],{stdio:'inherit'}).status!==0) throw new Error('Narration assembly failed; private segments retained at '+temporary);
+    const assembledEnding=checkEnding(text,combined,`${slug} assembled recording (private segments retained at ${temporary})`);
     const response={bytes:fs.readFileSync(combined),contentType:'audio/mpeg',requestId:null};
     fs.writeFileSync(files.audio, response.bytes);
     fs.writeFileSync(files.transcript, `${text.trim()}\n`);
     const transcript = fs.readFileSync(files.transcript);
     const receipt = {
       schemaVersion: '1.0',
-      narrationRecipe: 'bounded-disclosed-v1',
+      narrationRecipe: RECIPE,
       maxSegmentCharacters: MAX_SEGMENT_CHARACTERS,
       segments: parts.map(({path,...record})=>record),
       slug,
@@ -162,7 +192,8 @@ function verify(slug, meta, files) {
       audioSha256: sha256(response.bytes),
       audioBytes: response.bytes.length,
       responseContentType: response.contentType,
-      requestId: response.requestId
+      requestId: response.requestId,
+      endingCheck: assembledEnding
     };
     fs.writeFileSync(files.receipt, `${JSON.stringify(receipt, null, 2)}\n`);
     verify(slug, m, files);
