@@ -36,6 +36,7 @@ ${inner}
 const art = {};
 art['mprk-nonnegative-two-cycles'] = require('./mprk-two-cycle-art').draw;
 art['pass-and-swap-bounded-swaps'] = require('./pass-and-swap-art').draw;
+art['sis-reconstruction-continuation'] = require('./sis-continuation-art').draw;
 const appliedTrioArt = require('./applied-trio-art');
 art['williamson-order-transfer'] = appliedTrioArt.williamson;
 art['processor-sharing-freshness'] = appliedTrioArt.freshness;
@@ -2076,6 +2077,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'sis-reconstruction-continuation':['#76dec7','#ffbf69'],
   'mprk-nonnegative-two-cycles':['#ffc184','#a9ebd3'],
   'pass-and-swap-bounded-swaps':['#ffd36e','#a9ebd3'],
   'williamson-order-transfer':['#a9ebd3','#ffc184'],
@@ -2560,6 +2562,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'primitive-su-primitivity') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${primitiveSuArt.description}</desc><defs>`);
   if (slug === 'wales-20mph-attribution-manuscript') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${walesManuscriptArt.description}</desc><defs>`);
   if (slug === 'flat-schmidt-chains') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${flatSchmidtArt.description}</desc><defs>`);
+  if (slug === 'sis-reconstruction-continuation') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./sis-continuation-art').description}</desc><defs>`);
   if (slug === 'pass-and-swap-bounded-swaps') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./pass-and-swap-art').description}</desc><defs>`);
   if (slug === 'mprk-nonnegative-two-cycles') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./mprk-two-cycle-art').description}</desc><defs>`);
   if (motifs[slug]) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"')
