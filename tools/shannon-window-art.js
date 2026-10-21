@@ -37,7 +37,7 @@ function draw() {
     s += text(X0 - 10, (py(r) + 5).toFixed(1), String(r), 14, muted, 'end');
   }
   s += text((X0 + X1) / 2, Y0 + 44, 'shape parameter per sample, β/m', 15, muted, 'middle');
-  s += text(36, (Y0 + Y1) / 2, 'decay rate −(log E)/m', 15, muted, 'middle', 'normal', ` transform="rotate(-90 36 ${(Y0 + Y1) / 2})"`);
+  s += text(X0 + 10, Y1 - 6, 'decay rate −(log E)/m', 15, muted, 'start');
   // optimal linear recovery (dashed, higher)
   s += `<path d="M${X0} ${py(rOpt).toFixed(1)} H${X1}" stroke="${rec}" stroke-width="2.4" stroke-dasharray="9 7" fill="none"/>`;
   s += text(X1 - 4, py(rOpt) - 10, 'best linear recovery from the same samples: 2 log cot(δ/4) ≈ 1.76', 14, rec, 'end', 'bold');
