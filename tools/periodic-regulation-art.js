@@ -34,7 +34,7 @@ function draw() {
     s += text(X0 - 11, f(py(u) + 6), String(u), 16, muted, 'end');
   }
   s += text(X0 - 11, Y0 + 6, '0', 16, muted, 'end');
-  s += text(30, f(py(1.25)), 'pulse size uᵢ', 17, muted, 'middle', 'normal', ` transform="rotate(-90 30 ${f(py(1.25))})"`);
+  s += text(X0, f(py(2.75) - 10), 'pulse uᵢ', 16, muted, 'middle');
   // year axis
   s += text((X0 + X1) / 2, Y0 + 52, 'one year · five permitted treatment dates (evenly drawn)', 16, dim, 'middle');
   const BW = 66, IW = 36;
