@@ -1,0 +1,174 @@
+{
+  "slug": "sis-reconstruction-continuation",
+  "title": "Reconstruction and continuation in network SIS epidemics",
+  "shortTitle": "What the past can—and cannot—predict",
+  "oneLine": "Fixed-size network SIS models admit linear continuation, growing networks do not admit one dimension-free linear factor, and an explicit Hölder bound restores uniform control.",
+  "abstract": "Keliger and Horváth asked whether an observable fitting residual for the deterministic susceptible–infected–susceptible network model admits a uniform continuation factor, first at fixed dimension and then over all network sizes. This candidate proves the fixed-dimensional assertion and disproves the dimension-free linear assertion using exactly reconstructible complete weighted networks with exponential amplification. It supplies an explicit dimension-free Hölder replacement, extends it directly to full community-resolved trajectory error, and proves a deterministic finite-sampling corollary with fill-distance and bounded measurement-error terms. It also characterises reconstruction fibres, gives nonstationary counterexamples to a proposed block-regularity characterisation, and classifies positive invariant rays. The estimates are for the stated deterministic model and norms; the exponent is not claimed optimal or practically sharp. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-21",
+  "version": "1.0.1-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "network epidemiology",
+    "SIS model",
+    "inverse problems",
+    "analytic continuation",
+    "reconstruction",
+    "Hölder stability"
+  ],
+  "repoUrl": "https://github.com/ipitchford/sis-reconstruction-continuation",
+  "releaseUrl": "https://github.com/ipitchford/sis-reconstruction-continuation/releases/tag/v1.0.1-candidate",
+  "pdfUrl": "https://github.com/ipitchford/sis-reconstruction-continuation/releases/download/v1.0.1-candidate/sis-reconstruction-continuation-v1.0.1-candidate.pdf",
+  "doi": "10.5281/zenodo.23525167",
+  "zenodoUrl": "https://zenodo.org/records/23525167",
+  "citeText": "Anonymous (2026). Reconstruction and continuation in network SIS epidemics. Version 1.0.1-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23525167",
+  "evidence": "Written analytic proofs; exact rational checks for the finite constructions; ordinary and optimized Python replay; hostile source-mutation controls; bounded primary-source novelty audit.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Universal statements rest on written proofs; exact code checks have a finite supplementary scope. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the approved final manuscript and frozen release assets. Version 1.0.1 adds the linked AI index and machine-readable research-gate record omitted from the initial archive; the mathematical content is unchanged. GitHub and Zenodo identities are version-bound; provider parity and public readback are checked separately.",
+  "keyResults": [
+    "For every fixed network dimension and bounded SIS parameter class, the least interval-continuation factor is uniformly finite (analytic proof).",
+    "An exactly reconstructible bounded SIS family has least continuation factors growing at least exponentially with the number of communities, so no dimension-free linear factor exists.",
+    "An explicit dimension-free Hölder continuation estimate controls both the residual and differences between full community-resolved trajectories.",
+    "A deterministic corollary converts finite community-resolved samples into continuation control using fill distance η and bounded sample error σ.",
+    "The symmetric contact-matrix ambiguity space has dimension (n−r)(n−r+1)/2 when the trajectory span has dimension r; positive invariant rays are classified."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "Two independent academic review rounds",
+      "Separate five-role Evidence Press release panel"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "Can an epidemic model match what we have observed and still become unreliable just beyond the observation window? An Evidence Press briefing. This paper studies that question for a deterministic susceptible infected susceptible, or S-I-S, model on a network of communities. It is important to separate two ideas. Reconstruction asks whether a complete, exact, community-by-community trajectory determines the contact matrix uniquely. Continuation asks whether two models that fit closely on an observed interval must remain close later. Unique reconstruction does not automatically make continuation well conditioned. The first result is positive. If the number of communities is fixed, and the contact and recovery parameters stay inside a bounded class, there is always a finite linear continuation factor. The proof uses established polynomial ideal closure to place every observed scalar output inside a differential equation of bounded order. The second result is negative. There is no single linear factor that works uniformly as the number of communities grows. The paper constructs complete weighted networks that are exactly reconstructible, yet whose best continuation factor grows at least exponentially with dimension. The mechanism is explicit: a binomially designed direction is almost invisible during the observation interval and becomes much more visible afterwards. The result is about relative linear amplification in the paper's stated residual norm. It does not say that a large absolute forecasting error must occur, and it does not by itself prove the same lower bound for nonlinear trajectory error in another norm. The paper then supplies a replacement. Bounded S-I-S parameters give a common complex-time neighbourhood, so classical analytic continuation yields an explicit dimension-free Holder estimate. This is weaker than a linear estimate near zero, but it still says that sufficiently close histories have close continuations. The same argument applies directly to differences between two full community-resolved trajectories. A new corollary makes the observation model more concrete: finitely sampled trajectories are enough when the largest gap to a sample and the measurement-error bound are included explicitly. This is a deterministic theorem, not a stochastic data model, and it does not apply to total prevalence alone. The paper also describes the full contact-matrix ambiguity space, gives nonstationary reconstruction counterexamples, and classifies positive invariant rays. Some proof methods are classical and are credited as such. The contribution is their model-specific use to resolve the source conjectures, give an admissible growing-dimension obstruction, and provide explicit S-I-S continuation bounds. The universal results are written analytic proofs. Exact Python checks replay selected finite constructions and hostile controls, but they do not formally verify those proofs. This is an anonymous, AI-assisted, unrefereed candidate. It has not received external peer review or independent reproduction. Paper, code and evidence are linked on this page. AI-generated voice. This briefing is not additional scientific evidence.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are archived on GitHub and Zenodo; availability does not establish correctness."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Exact finite checks passed under ordinary and optimized Python; a hostile source mutation was rejected in both modes."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "The sampled-observation corollary was independently re-derived within the producer review workflow; this is not external reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "The universal results are written analytic proofs, not proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal AI review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Exact checks use Python; illustrative figures additionally depend on the declared numerical environment."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Keliger and Horváth (2026), Reconstruction of the network in the N-intertwined mean-field approximation of the SIS epidemic model.",
+      "url": "https://doi.org/10.1007/s11538-026-01550-7"
+    },
+    {
+      "citation": "Trefethen (2020), Quantifying the ill-conditioning of analytic continuation.",
+      "url": "https://doi.org/10.1007/s10543-020-00802-7"
+    },
+    {
+      "citation": "Prasse, Devriendt and Van Mieghem (2021), Clustering for epidemics on networks: A geometric approach.",
+      "url": "https://doi.org/10.1063/5.0048779"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:sis-reconstruction-continuation",
+    "attemptIds": [
+      "ep-attempt:sis-reconstruction-continuation-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "A split continuation theorem: fixed-dimensional linear control, an exactly reconstructible growing-dimensional obstruction, and an explicit dimension-free Hölder replacement.",
+      "scope": "Deterministic network SIS systems with the stated parameter classes, full community-resolved observations and the paper's residual and trajectory norms."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The full observed object is the community-resolved trajectory; aggregate prevalence and stochastic observation models are outside the theorem.",
+      "remainingRisks": [
+        "The universal results are not formally verified.",
+        "The displayed Hölder exponent is conservative and not claimed practically sharp.",
+        "The prior-art search is bounded rather than exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independently audit the analytic continuation argument and reconstruct the exponential family in a separate implementation.",
+      "claimCeiling": "Internal written-proof review and exact finite replay support an unrefereed candidate, not external validation or forecasting utility."
+    },
+    "impactClaims": [
+      {
+        "id": "sis-reconstruction-continuation-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable resolution and continuation bound for the stated SIS questions.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
