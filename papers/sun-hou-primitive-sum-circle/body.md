@@ -4,6 +4,10 @@ Can every element of a finite field be placed around a circle so that each pair 
 
 Sun and Hou conjectured that the answer is yes whenever the field has more than seven elements. This candidate completes the remaining finite cases after earlier work settled the large-field range and most prime fields. The evidence includes actual circles, not just a report that a search succeeded.
 
+**What is new.** The large-field and prime-field ranges are inherited from earlier work; this package closes the finite remainder with an improved sufficient criterion and explicit, checkable certificates.
+
+**Status.** An unrefereed computer-assisted proof candidate. A separately implemented verifier gives implementation diversity within the producer's workflow, not independent external reproduction; there is no proof-assistant formalization or journal peer review.
+
 ## Summary for specialists
 
 Let $H_q$ have vertex set $\mathbb F_q$, with distinct $x,y$ adjacent exactly when $x+y$ has multiplicative order $q-1$. The candidate proves that $H_q$ is Hamiltonian for every prime power $q>7$.
@@ -18,7 +22,9 @@ The finite-field representation is part of each certificate. The verifier checks
 
 For arithmetic modulo eleven, one circle is
 
-$$4,9,10,8,0,2,6,7,1,5,3.$$
+$$
+4,9,10,8,0,2,6,7,1,5,3.
+$$
 
 Its cyclic neighbouring sums are $2,8,7,8,2,8,2,8,6,8,7$. All belong to the primitive set $\{2,6,7,8\}$. The banner depicts this worked example; it is not a replacement for the other certificates.
 
@@ -48,7 +54,19 @@ The problem couples additive adjacency with multiplicative generation. It asks f
 
 ## How to inspect or reproduce the recorded checks
 
-Download the research archive and install the pinned SymPy dependency in a local Python environment. A C compiler is required. Run `sh code/replay.sh` to check the exact witnesses and frozen cycles. Run `sh code/replay.sh --regenerate` only if you also want to repeat the search and compare its output. The README supplies the separate integer residual route and optimized-Python commands.
+Download the research archive and install the pinned SymPy dependency in a local Python environment. A C compiler is required. Run `sh code/replay.sh` to check the exact witnesses and frozen cycles. Run `sh code/replay.sh --regenerate` only if you also want to repeat the search and compare its output. The README supplies the separate integer residual route and optimized-Python commands:
+
+```
+python3 -m pip install -r requirements.txt
+sh code/replay.sh
+python3 -O code/build_supplement.py --check
+python3 -O code/frozen_check.py
+sh code/replay.sh --regenerate
+python3 code/criterion_route2.py 18888871 /tmp/sun-hou-residual.txt
+cmp data/residual.txt /tmp/sun-hou-residual.txt
+```
+
+Regeneration is optional and uses a temporary directory; existing certificates are never deleted.
 
 Check the manifest first. A matching hash confirms bytes, not mathematical correctness. An independent checker should reconstruct arithmetic from `data/field-manifest.json` and test each vertex and adjacent sum without trusting the original search tables.
 

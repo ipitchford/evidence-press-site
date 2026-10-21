@@ -1,8 +1,12 @@
 ## Summary
 
-Positive polynomial coefficients do not guarantee the ordering that one might expect in a formula built from them. This candidate gives an exact counterexample to one half of a conjecture about **cyclotomic generating functions**—a family that appears in combinatorial counting, algebra and probability.
+**What the question is about.** Many counting problems produce polynomials that can be written as a fraction built from simple blocks of the form $1+q+\dots+q^{n-1}$, with equally many blocks on top and bottom. When such a fraction turns out to have nonnegative whole-number coefficients, it is a **cyclotomic generating function**—a family that appears in combinatorial counting, algebra and probability. Deciding whether a proposed fraction really belongs to this family can be hard, because the polynomial may be far too large to expand.
 
-The conjecture compares two sorted lists of positive integers used to describe a polynomial. It predicts that the numerator list wins whether we add the smallest entries or the largest. Here every polynomial coefficient is strictly positive, but the largest **5,591** numerator entries lose to the corresponding denominator entries. Every smallest-entry comparison still holds for this example.
+**What was conjectured.** Billey and Swanson proposed a quick necessary test (their Conjecture 33). Sort the block sizes on top and on bottom into two lists. The test predicts that the top list wins whether we add up the smallest entries or the largest. A test like this would let researchers rule out impossible formulas just by comparing two lists of integers.
+
+**What was found.** Positive coefficients do not guarantee that ordering. This candidate gives an exact counterexample to one half of the conjecture. Every coefficient of the constructed polynomial is strictly positive, but the largest **5,591** numerator entries lose to the corresponding denominator entries. Every smallest-entry comparison still holds for this example, so the other half of the conjecture is left open. The construction links a known arithmetic fact—a smoothed Möbius sum turns negative at 18350—to the classical device of making coefficients positive by multiplying by a large power of $1+q$, which does not disturb the failed comparison.
+
+**Status.** An anonymous, unrefereed written-proof candidate. The witness is enormous but exactly specified, and the decisive arithmetic is a small integer certificate that can be rerun. The positivity proof is a written argument; there has been no external peer review, unaffiliated replication or formal verification.
 
 ## Summary for specialists
 
@@ -10,15 +14,19 @@ Set $X=18350$, let $N$ be the product of the primes at most $X$, and put $D=\var
 
 The resulting equal-length lists represent
 
-$$f(q)=(1+q)^K\Phi_N(q).$$
+$$
+f(q)=(1+q)^K\Phi_N(q).
+$$
 
-Every coefficient is a strictly positive integer, yet $U_A(5591)<U_B(5591)$, where $U_V(r)$ sums the largest $r$ entries. This refutes the suffix assertion—and hence the conjunction—in Billey–Swanson Conjecture 33. It does **not** settle the universal lower-prefix assertion.
+The sorted lists have common length $m=2^{2101}+K$ (Theorem 1 of the paper). Every coefficient is a strictly positive integer, yet $U_A(5591)<U_B(5591)$, where $U_V(r)$ sums the largest $r$ entries. This refutes the suffix assertion—and hence the conjunction—in Billey–Swanson Conjecture 33. It does **not** settle the universal lower-prefix assertion.
 
 ## Technical account
 
 For a list $V$, its hinge at threshold $t$ is $h_V(t)=\sum_{v\in V}(v-t)_+$. At $t=N/X$, Möbius inversion gives
 
-$$h_{A_0}(t)-h_{B_0}(t)=N m_1(X).$$
+$$
+h_{A_0}(t)-h_{B_0}(t)=N m_1(X).
+$$
 
 The smoothed Möbius sum $m_1(18350)$ is negative. There are 5,591 denominator entries above the threshold but only 5,570 numerator entries. Equal counts are not needed: the denominator count gives equality in the hinge-to-suffix bound, while an inequality suffices on the numerator side.
 

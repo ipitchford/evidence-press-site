@@ -1,5 +1,20 @@
 ## Summary: From inverse support to moment channels
 
+**The background.** Some exponential integrals built from a polynomial $P$ satisfy differential equations, because repeatedly differentiating their integrands eventually produces a dependence relation. Earlier releases in this programme asked how much of that differential system one chosen starting integrand — the *seed* $dx$ — actually generates. That number is the seed's *cyclic rank*, written $q(P)$.
+
+**What this release does.** Version 0.7 brings the whole programme into one 25-page paper and widens it in four directions:
+
+- **Every polynomial phase of low rank.** It keeps the complete list, for every degree, of the polynomials whose seed has cyclic rank at most three: six affine families, including powers and Dickson polynomials.
+- **Every polynomial amplitude.** It replaces the fixed seed $dx$ by any polynomial weight $A(x)\,dx$ and shows how to read off the new rank from one series expansion. In particular the rank is zero exactly when the primitive of $A$ is itself a polynomial in $P$.
+- **Moments.** For the low-rank families it lists exactly which weighted moments $\int_a^bP(x)^kA(x)\,dx$ vanish for every $k$, by combining a published theorem of Pakovich and Muzychuk with the family list.
+- **Laurent phases.** For phases with negative as well as positive powers it gives an exact coefficient test for persistent vanishing of residue moments — and explains why that test cannot be turned into a finite list of all Laurent cases.
+
+**Who it is for.** Specialists in polynomial decomposition and monodromy, the polynomial moment problem, Laurent moments, and computer-assisted or formalised algebra.
+
+**Status.** A public unrefereed theorem candidate. The fixed-seed and endpoint classifications remain relative to named imported theorems. The Laurent result is exact for each specified input, but it is not a finite classification of every Laurent pair. There has been no external specialist review, independent reproduction, complete formalisation or priority certification.
+
+## Summary for specialists
+
 Version 0.7 presents the programme as one 25-page argument. It retains the
 all-degree fixed-seed classification from version 0.6, then replaces the seed
 $dx$ by every polynomial amplitude $A(x)\,dx$, classifies vanishing on a
@@ -12,7 +27,7 @@ endpoint classifications remain relative to named imported theorems. The
 Laurent result is exact for each specified input, but it is not a finite
 classification of every Laurent pair.
 
-## What the combined release adds
+### What the combined release adds
 
 | Question | Version 0.7 answer | Boundary |
 |---|---|---|
@@ -27,7 +42,9 @@ primary PDF contains the complete fixed-seed argument and the new amplitude,
 zero-cycle, endpoint and Laurent sections under one numbering scheme, reference
 list and limitation statement.
 
-## The fixed-seed backbone
+## Technical account
+
+### The fixed-seed backbone
 
 For a monic centred polynomial $P$ of degree $d$, let
 
@@ -71,7 +88,7 @@ stratum, and handles the exceptional aligned square separately. Arbitrary
 mixed Dickson chains are treated by a direct invariant-field argument rather
 than extrapolation from a bounded grid.
 
-## The polynomial-amplitude support theorem
+### The polynomial-amplitude support theorem
 
 Now take any polynomial amplitude $A(x)\,dx$ and choose $G$ with $G'=A$.
 Expand the primitive on the same inverse branch:
@@ -111,7 +128,7 @@ Equivalently, $A(x)=P'(x)H'(P(x))$ for some polynomial $H$. This is a universal
 criterion for polynomial phases and amplitudes; it does not require
 $q(P,dx)\leq3$.
 
-## Exact vanishing on a specified zero-cycle
+### Exact vanishing on a specified zero-cycle
 
 Let $n=(n_0,\ldots,n_{d-1})$ satisfy $\sum_jn_j=0$, and define its discrete
 Fourier transform by
@@ -134,7 +151,7 @@ This answers a specified phase–amplitude–cycle problem without moment
 sampling. It does not assert that the broader balanced-cycle literature is
 composition-only.
 
-## Persistent endpoint moments for every Atlas phase
+### Persistent endpoint moments for every Atlas phase
 
 For endpoints $a,b$ and $G'=A$, consider
 
@@ -164,7 +181,7 @@ If $P(a)\neq P(b)$, only the zero amplitude survives. Lower-rank overlaps use
 the earliest applicable Atlas row. The table is exact in the combined
 framework, but its assurance cannot exceed either imported ingredient.
 
-## Laurent phases: an exact local channel
+### Laurent phases: an exact local channel
 
 Let
 
@@ -193,7 +210,7 @@ Thus persistent Laurent moment vanishing is exactly the vanishing of this
 infinite coefficient subsequence. The formula includes logarithmic amplitudes,
 exact forms and deck-symmetry cancellations.
 
-## Why there is no finite all-Laurent atlas
+### Why there is no finite all-Laurent atlas
 
 The local criterion is exact, but it is not automatically a finite structural
 classification. An indecomposable example of
@@ -212,7 +229,9 @@ The release does not:
 Instead, it supplies the exact coefficient object against which future finite
 classifications must be proved.
 
-## What the checks establish
+## Evidence, assurance and limitations
+
+### What the checks establish
 
 The immutable v0.7 package supplies two replay stacks. The fixed-seed stack
 includes sixteen scoped Lean theorems, ten exact global CAS checks, ordinary
@@ -236,7 +255,7 @@ These checks establish strong producer-side consistency, replay and
 availability. They do not establish that every proof bridge or imported
 classification is correct.
 
-## Assurance boundary
+### Assurance boundary
 
 - No unaffiliated researcher has reported rerunning or reimplementing v0.7.
 - Lean checks selected fixed-seed consequences, not the complete fixed-seed,
@@ -269,7 +288,9 @@ The combined manuscript is the primary v0.7 reading path because it contains
 the entire argument in one document. Historical releases, receipts and PDFs
 remain separately identifiable.
 
-## Where to inspect the result
+## Who should care, and why
+
+Each audience has its own entry point into the combined paper, and its own principal caution.
 
 | Reader | Start here | Principal caution |
 |---|---|---|
@@ -280,10 +301,52 @@ remain separately identifiable.
 | Formal methods researchers | `formal/lean/`, `CLAIMS_COMBINED.json` and the receipts | The current formalisation is deliberately partial |
 | Computer-algebra researchers | `global_cas/`, `src/amplitude_support.py`, `src/laurent_moments.py` and mutation tests | Same-programme implementation diversity is not independent reconstruction |
 
+## Why the problem matters
+
+The polynomial moment problem — when do all the moments $\int_a^bP(x)^kA(x)\,dx$ vanish? — has a complete published answer for polynomials in the Pakovich–Muzychuk theorem, but turning that answer into explicit solution spaces requires knowing every right factor of $P$. This release supplies that list for every phase with $q(P)\leq3$, so the endpoint table above is explicit rather than schematic. The amplitude theorem gives a universal rank-zero test, $G\in\mathbf C[P]$, that needs no rank assumption at all. For Laurent phases, where known indecomposable examples show that composition alone cannot describe every solution, the release supplies the exact coefficient object against which future finite classifications must be proved.
+
+## How to inspect or reproduce the recorded checks
+
+Start with the 25-page primary manuscript, `Inverse-Root-Support-Amplitudes-and-Laurent-Moments.pdf`, and its theorem and dependency map, which states for each result where it is proved and what it rests on. `COMBINED_STATUS.md` and `COMBINED_ASSURANCE.md` give the publication decision and assurance boundary; `CLAIMS_COMBINED.json` lists positive claims and non-claims in machine-readable form.
+
+The authoritative replay, run from the candidate directory, is:
+
+```bash
+python3 run_global_completion_checks.py
+python3 run_amplitude_laurent_checks.py
+python3 tools/check_combined_release.py
+python3 tools/build_combined_publication.py verify
+```
+
+The first two commands replay the mathematical components in ordinary and optimised Python with semantic mutation controls, and must end with `GLOBAL ALL-DEGREE COMPLETION GATE PASS` and `AMPLITUDE-LAURENT GATE PASS`; silence, a timeout, or an earlier green line without the terminal receipt is not a pass. The third checks the merged document, claims, citations, predecessor hashes, PDF structure and focused manifest. The fourth checks complete publication-manifest coverage. `REPRODUCE_COMBINED.md` adds the deterministic document rebuild, the `shasum -a 256 -c COMBINED_MANIFEST.sha256` integrity check and the page-by-page visual QA route.
+
+A complete pass reproduces the candidate artifact and its encoded evidence. It does not supply external peer review, an independent proof or a priority determination.
+
+## The most valuable next projects
+
 The most valuable next step is an unaffiliated specialist audit spanning both
 the imported fixed-seed interfaces and the new amplitude, endpoint and Laurent
 arguments, followed by an independently authored implementation and deeper
 proof-assistant formalisation.
+
+1. **Audit the imported interfaces.** Independent specialists should check the polynomial-monodromy/Ritt and finite-linear-group interfaces on which the fixed-seed atlas relies, including every stabiliser application and the exceptional even Kummer stratum.
+2. **Check the new arguments.** An unaffiliated check of the amplitude, zero-cycle, endpoint and Laurent proofs and of their replay.
+3. **Reimplement and formalise.** An independently authored implementation of the rank and moment computations, and proof-assistant formalisation beyond the sixteen scoped Lean theorems.
+4. **Finite Laurent classifications.** Any future finite classification of Laurent moment solutions must be proved against the exact local coefficient criterion rather than inferred from finite zero prefixes or inherited small tables.
+
+## What is in the evidence package
+
+| Item | Role |
+|---|---|
+| `Inverse-Root-Support-Amplitudes-and-Laurent-Moments.pdf` | 25-page primary manuscript |
+| `COMBINED_RELEASE_FRONT.md`, `COMBINED_GLOBAL_COMPLETION.md`, `COMBINED_AMPLITUDE_LAURENT.md`, `COMBINED_RELEASE_BACK.md` | Accessible manuscript sources |
+| `COMBINED_STATUS.md`, `COMBINED_ASSURANCE.md` | Publication decision and assurance boundary |
+| `CLAIMS_COMBINED.json` | Machine-readable positive claims and non-claims |
+| `REPRODUCE_COMBINED.md` | Exact replay, rendering, manifest and visual-QA route |
+| `run_global_completion_checks.py`, `run_amplitude_laurent_checks.py`, `formal/lean/`, `global_cas/`, `src/` | Replay programs, scoped Lean theorems, exact CAS layer and amplitude/Laurent implementations |
+| `COMBINED_MANIFEST.sha256`, `MANIFEST_v0.7.0.sha256` | Focused theorem/document seal and complete v0.7 public archive inventory |
+
+The v0.6 Atlas PDF and the short v0.7 amplitude/Laurent companion remain present as predecessor artifacts; they are not deleted or rewritten in place. The repository tag, DOIs and reader page establish availability, version identity and byte integrity, not mathematical correctness, unaffiliated reproduction, peer review, acceptance, novelty or priority.
 
 The scholarly creator is **Anonymous**. Operational maintenance and publication
 roles are recorded in the machine-readable provenance. Original research prose

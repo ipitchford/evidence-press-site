@@ -1,10 +1,16 @@
 ## Summary
 
-A tree’s number of leaves does not tell us how deeply its branches are nested. Horton–Strahler order measures that nesting: leaves start at one; joining equal orders raises the order by one, while joining unequal orders retains the larger value. A balanced four-leaf tree has order three; a four-leaf comb has order two.
+This page explains, in order: how branching is measured, which two random-tree models are studied, what this release proves about each, how the proofs work, and what has and has not been checked.
 
-This candidate sharpens two mathematical descriptions of random branching. For critical Tokunaga trees, it describes the order when the leaf count is fixed **exactly**, including fluctuations around logarithmic growth. For Kingman’s coalescent, it shows that limiting branch frequencies have a positive geometric prefactor—not merely a known exponential rate.
+**How branching is measured.** A tree’s number of leaves does not tell us how deeply its branches are nested. Horton–Strahler order measures that nesting: leaves start at one; joining equal orders raises the order by one, while joining unequal orders retains the larger value. A balanced four-leaf tree has order three; a four-leaf comb has order two. The same number appears in the study of river networks and, in the binary case, in the classical count of registers needed to evaluate an arithmetic expression.
 
-These are two model-specific theorems, not a claim that natural river networks obey either model.
+**The two models and the open questions.** Kovchegov and Zaliapin's survey of the mathematical theory of Horton laws lists open problems about two random-tree models. In *critical Tokunaga trees*, a family of random trees indexed by a parameter $c>1$, the question (their Problem 3) is what the order looks like when the number of leaves is fixed exactly. In *Kingman's coalescent*, a model in which branches merge in pairs at random, the number of branches of each order was known to fall off at a geometric rate; the question (part of their Problem 9) is whether a stronger, exact geometric law holds.
+
+**What was found.** For critical Tokunaga trees with exactly $n$ leaves, the expected order is the logarithm of $n$ (in a model-dependent base) plus a continuous correction that repeats with period one on the logarithmic scale (it is not asserted to be nonconstant), and the full distribution of the order around that value is described, including its fluctuations. For Kingman’s coalescent, the limiting branch frequencies have a positive geometric prefactor, not merely a known exponential rate: they behave like a constant times a power of $1/\rho$, with $\rho\approx3.04382786$ found numerically (this decimal is not interval-certified).
+
+**Scope.** These are two model-specific theorems, not a claim that natural river networks obey either model.
+
+**Status.** An anonymous, unrefereed candidate (version 1.1.0) with written proofs, revised after a supplied review. Finite exact checks and numerical diagnostics corroborate but do not establish the infinite claims; there is no external peer review, independent reproduction or proof-assistant verification.
 
 ## Summary for specialists
 
@@ -17,7 +23,7 @@ $$
 \end{aligned}
 $$
 
-where $D_c$ is continuous and period one. The centered conditional law converges in total variation along its actual logarithmic phases, with every fixed absolute moment. No nonconstancy assertion is made for $D_c$.
+where $D_c$ is continuous and period one (Theorem 1). The centered conditional law converges in total variation along its actual logarithmic phases, with every fixed absolute moment (Corollary 6). No nonconstancy assertion is made for $D_c$. The boundary $c=1$ (perfect binary trees) is excluded.
 
 For the deterministic limiting Kingman branch densities $\mathcal N_j$, it establishes
 
@@ -25,13 +31,13 @@ $$
 \mathcal N_j\rho^j\longrightarrow H\in(0,\infty),\qquad 2\le\rho\le4.
 $$
 
-The finite-tree size limit is taken first, at each fixed order; then $j$ tends to infinity. Arbitrary joint limits are not included.
+More precisely (Theorem 7), $\mathcal N_j/\mathcal N_{j+1}\to\rho$ and $\mathcal N_j\rho^j\to H$, with $H=\rho B_*/C_*$ for positive monotone limits $B_*$, $C_*$, and $\rho/3\le H\le\rho^2$. Floating-point diagnostics give $\rho\approx3.04382786$ and $H\approx3.09387432$; these decimals are not interval-certified, and the approximate value of $\rho$ is not new. The finite-tree size limit is taken first, at each fixed order; then $j$ tends to infinity. Arbitrary joint limits are not included, and no closed form for $\rho$ is claimed.
 
 ## Technical account
 
-The Tokunaga reduction matches leaf-count marginals to a Galton–Watson process with immigration. It does not identify the original tree filtration with that auxiliary Markov chain. A uniform lattice local limit theorem, supplemented by weighted point-probability bounds, makes conditioning on an exact leaf count legitimate. The logarithmic phase survives this conditioning.
+**Tokunaga trees.** With $R=2c$, the established inverse-pruning construction gives $X_{k+1}=2X_k+V_k$ for the leaf count $X_k$ of an order-$k$ tree, where $V_k$ is a sum of $2X_k-1$ independent geometric variables. The reduction matches leaf-count marginals to a Galton–Watson process with immigration. It does not identify the original tree filtration with that auxiliary Markov chain. A uniform lattice local limit theorem, supplemented by weighted point-probability bounds, makes conditioning on an exact leaf count legitimate. The logarithmic phase survives this conditioning.
 
-For Kingman, endpoint-normalized profiles produce a monotone integral limit. A separate fractional-linear comparison gives a supermultiplicative bound and controls the normalization. That second step is essential: convergent ratios alone do not rule out a vanishing geometric prefactor.
+**Kingman's coalescent.** The input is the deterministic branch-density/ODE representation established by Kovchegov and Zaliapin (2017), which already gives fixed-order convergence of normalized finite-tree counts; the new issue is the subsequent limit in branch order. Endpoint-normalized profiles produce a monotone integral limit. A separate fractional-linear comparison gives a supermultiplicative bound and controls the normalization. That second step is essential: convergent ratios alone do not rule out a vanishing geometric prefactor.
 
 ## Evidence, assurance and limitations
 

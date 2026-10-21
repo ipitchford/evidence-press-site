@@ -2,6 +2,8 @@
 
 > **External development, 12 September 2026:** an [unrefereed preprint by liqsweep](https://github.com/blueberryvertigo/polynomial-composition-rigidity/blob/b17b6b9f7440b12fd85df2c2db9c98209ecc174d/proof.pdf) proposes a general proof of polynomial-composition rigidity. Conditional on the external contact bound, the full four-coefficient window has only the origin as a common zero. O-01d0 replaces its last coefficient by a polar derivative; the external argument supplies no bridge to that different ideal, its transversality interface or the four arithmetic and chart gates. [Internal source review and scope audit](https://github.com/ipitchford/evidence-press-site/blob/main/docs/RIGIDITY_EXTERNAL_REVIEW_2026-09-12.md) are not unaffiliated verification. Original archives and release-time audio/video are unchanged.
 
+**In plain terms.** A long-running research programme on polynomial maps of the plane (maps built from polynomials that can be undone by other polynomials) breaks a hard conjecture into smaller, checkable steps. O-01d0 is one of those steps: it asks whether a particular system of four polynomial equations has no solution other than the trivial one, for every index from 6 upwards. This release does not answer that question. Instead it shrinks the main remaining arithmetic obstruction to a concrete problem about three polynomials in one variable, proves several exact lemmas about it, and records four tempting shortcuts that turned out not to work, so that the next attempt can start from a sharper map of what is left.
+
 O-01d0 asks whether four explicit weighted-homogeneous polynomials have no common weighted-projective zero for every index $n\ge 6$. It is a sharply stated internal gate in the Lewis--Perry--Straub route toward the Polydegree programme. This anonymous, unrefereed release does **not** prove or falsify O-01d0.
 
 What it does is make the surviving route unusually explicit. A fixed-index theorem explains why one empty integral polar fibre controls a complete-intersection deformation. The lower arithmetic obstruction is compressed to triple coprimality for three consecutive members of a one-variable Hermite family $J_A$. Exact lemmas then control incidence, multiplicity, two boundary fibres, and an $A\mapsto A+20$ derivative connection.
@@ -104,6 +106,10 @@ The dependency order is lower and upper arithmetic in parallel, then the two mul
 
 The release does not prove triple coprimality, produce a simultaneous structural prime for every index, construct either all-index multiplier lift, or cover every projective chart. The internal review and confirmation are same-programme editorial controls. They cannot substitute for a specialist reading the proofs, an unaffiliated rerun, a separately authored checker, or peer review. The method-oriented citation audit is not an absolute novelty or priority search.
 
+## Why the problem matters
+
+The Polydegree programme for plane polynomial automorphisms connects composition rigidity, closures of multidegree strata, factorial-type assertions and explicit commutative-algebra calculations. Furter (2015) formulated and developed polynomial-composition rigidity in this setting, Edo and van den Essen (2014) introduced the Strong Factorial Conjecture, and Lewis, Perry and Straub (2019) gave an algorithmic route to the Polydegree Conjecture. O-01d0 is an internal gate in that lineage. The release's value is practical: by turning the obstruction into four named, executable gates, it shows a specialist exactly which lemma would move the route forward and which shortcuts are already ruled out. It does not claim that resolving this gate alone resolves any of those conjectures.
+
 ## Who should care
 
 The release is aimed at researchers in polynomial automorphisms, graded commutative algebra, computational algebra, hypergeometric polynomials, and p-adic or finite-field certification. It may also be useful to computer-assisted-mathematics researchers studying how exact negative results and bounded scans can be packaged without promoting them to a uniform theorem.
@@ -113,6 +119,18 @@ The release is aimed at researchers in polynomial automorphisms, graded commutat
 The final package passed 12 portable and 6 PassageMath/Sage checks in ordinary and optimized modes; all 18 paired output hashes agree. A quick clean-extraction replay also passed in both modes. Hosted continuous integration runs the portable layer and hostile controls on Python 3.11, 3.12, and 3.13. The deterministic ZIP contains 147 manifest-bound files.
 
 These checks establish that the producer's encoded predicates replay and that the public archives match the reviewed object. They do not establish that the predicates capture every intended mathematical statement or that the written proofs are correct. No unaffiliated rerun, separately authored implementation, formal verification, external specialist review, or editorial peer review is reported.
+
+## How to inspect or reproduce the recorded checks
+
+Start with the paginated PDF (Sections 3 to 6 for the proved lemmas, Section 7 for the exact negative results, Section 9 for the open gates), then `CLAIMS.json` for the claim-to-evidence index and `EXPERIMENTS.json` for the bounded ranges, stopping rules and exclusions. `STATUS.md` and `ASSURANCE.md` state the release and evidence boundaries. From the repository at tag `v0.1.0-candidate`, the portable tier runs as:
+
+```sh
+python3 verification/run_release_checks.py --receipt replay-normal.json
+python3 -O verification/run_release_checks.py --receipt replay-optimized.json
+python3 verification/test_mutations.py
+```
+
+The optional PassageMath/Sage tier adds `--sage-python /path/to/passagemath/bin/python --require-sage`. `REPLAY.md` explains what each tier does and does not assure, and `ENVIRONMENT.md` records the pinned versions; environment reproducibility across platforms is recorded as partial.
 
 ## Workflow measurement
 

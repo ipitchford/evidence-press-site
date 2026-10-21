@@ -1,5 +1,7 @@
 ## Summary
 
+This page explains, in order: what the central identity says, how the manuscript builds on it, exactly which parts have been machine-checked and which rest on prose proofs, and how to replay the checks.
+
 Take two polynomials. You can multiply them together, and you can also compute their *resultant* — a single number that vanishes exactly when they share a root. Now regard the pair of operations as one combined map: feed in two polynomials, get out their product and their resultant.
 
 This paper proves that the Jacobian determinant of that combined map — the quantity measuring how the map stretches volume — has a strikingly simple exact form: up to sign, it is the *difference of the two degrees* multiplied by the *square of the resultant*. Nothing else survives. The paper calls this the degree-difference principle, and it has an immediate consequence: the map is volume-degenerate exactly where the two polynomials share a root, or where their degrees are equal.
@@ -26,6 +28,18 @@ From the identity, the manuscript builds the affine-slice theory used across the
 
 The verification boundary is stated with unusual precision. The shipped SymPy checker validates the determinant identity for every bidegree with $r+s \leq 4$ via explicit Sylvester-matrix computation, and base-point sign conventions through degree eight, with deliberate negative controls confirming the tests can fail. The all-degree identity, and all of the structural theory (torsor, divisor-class, orbit classification), rest on the manuscript's prose proofs alone.
 
+## Evidence, assurance and limitations
+
+**Status: unrefereed candidate mathematical manuscript.** The page separates what was checked by machine from what rests on argument alone.
+
+- **Machine-checked (exact SymPy, rational arithmetic).** The checker constructs the manuscript's Sylvester matrix and verifies the full determinant identity for all positive bidegrees with $r+s\le4$, checks the base-point sign convention for $1\le r,s\le8$, and checks the explicit affine parametrisation, inverse, Keller maps, Jacobians, three-point collision, discriminant-coordinate conversion, and triple-root formulas. Ordinary and optimized runs match the recorded transcript.
+- **Negative control.** A deliberately false determinant expectation (the expected value of $\det DF$ changed from $-2$ to $0$) is rejected in both ordinary and optimized modes; the control must fail for the replay target to pass.
+- **Not machine-checked.** The checker does not verify the manuscript's all-degree determinant argument, torsor and divisor-class proofs, cubic orbit classification, affine-bundle arguments, global nonproperness proof, higher-degree obstruction, or multifactor observation. These rest on the manuscript's prose proofs.
+- **Not established.** No independent external reproduction, external human review of the complete manuscript, literature-based novelty determination, peer review, or end-to-end formalisation is documented. Separately published sources corroborate the explicit map and several geometric ingredients. The local replay was carried out by the publication-preparation agent; repository structure, hashes, and successful execution do not themselves establish mathematical truth.
+- **Reuse is not assurance.** Publication under CC0 changes reuse permissions; it does not upgrade any mathematical assurance level.
+
+The later foundations companion described at the end of this page adds an all-degree proof of the determinant identity; it does not change the boundary above for the structural results.
+
 ## Who should care, and why
 
 | Likely audience | What should interest them | What they could do with it |
@@ -34,6 +48,20 @@ The verification boundary is stated with unusual precision. The shipped SymPy ch
 | Affine algebraic geometers | The slice classifications feed directly into the project's exotic-sphere identification and isolation theorems. | Audit the torsor and divisor-class arguments — the unchecked half of the release — before the downstream results are taken further. |
 | Jacobian conjecture researchers | Explicit coordinates for slices carrying Keller maps, inside a framework built to screen where constant-Jacobian behaviour can occur. | Test the framework against known Keller-map families; probe whether the screening logic survives scrutiny. |
 | Symbolic computation researchers | A worked example of drawing an exact machine-checked boundary inside a prose manuscript, with negative controls. | Extend the checker to higher bidegrees; automate general-degree identity verification, which is within reach of current systems. |
+
+## How to inspect or reproduce the recorded checks
+
+The recorded environment used Python 3.13.5, SymPy 1.14.0, and mpmath 1.3.0. From the release or the Zenodo archive, create an isolated environment and replay:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install --upgrade pip
+.venv/bin/python -m pip install -r requirements.txt
+make PYTHON=.venv/bin/python verify
+shasum -a 256 -c MANIFEST.sha256
+```
+
+The `verify` target runs the checker normally and with Python optimization, compares both outputs byte for byte with the checked-in `verifier_output.txt`, and runs the deliberately wrong-expected-value control in both modes. The PDF rebuild (`make pdf` or `make pdf-tectonic`, then `qpdf --check build/paper.pdf`) is documented but is not claimed to be byte-for-byte reproducible across TeX distributions. Start reading with `AI_INDEX.md`, the claim-level evidence map, then `STATUS.md` and the manuscript.
 
 ## The most valuable next projects
 

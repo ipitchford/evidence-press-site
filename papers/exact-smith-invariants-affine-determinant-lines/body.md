@@ -1,20 +1,43 @@
-## Plain-English summary
+## Summary
 
-When a polynomial is presented as a product, multiplying the factors together loses information. The most obvious loss is scale: multiply one factor by a number and compensate by dividing another factor by the same number, and the product stays fixed.
+This page explains, in order: what information is lost when a polynomial is written as a product of factors, how this candidate measures that loss exactly, what is classical and what is offered as new, and what has and has not been checked.
+
+**The problem.** When a polynomial is presented as a product, multiplying the factors together loses information. The most obvious loss is scale: multiply one factor by a number and compensate by dividing another factor by the same number, and the product stays fixed.
 
 The [parent paper](https://evidencepress.org/releases/bordered-jacobian-foundations/) treated two factors. There is then one lost scaling direction, and a single degree difference measures whether one extra normalising coordinate restores it. This child candidate studies any number of factors. The one degree difference becomes an integer matrix of scaling weights, and its Smith normal form records the exact finite ambiguity that remains.
 
 ![Visual abstract: factor multiplication loses relative scaling directions; pairwise resultants and a character matrix restore them, and the Smith invariants record the residual finite group.](/assets/figures/exact-smith-invariants-visual-abstract.png?v=501c6541)
 
-The candidate separates three layers:
+**Why anyone should care.** The wider programme studies factorisation maps as a possible source of polynomial maps with nonzero constant Jacobian determinant (Keller maps), the objects of the Jacobian conjecture. Knowing exactly where such a map loses rank, and exactly which finite ambiguity is left after normalising, is the local bookkeeping any such construction needs. It is also a self-contained calculation in elimination theory and integer lattice arithmetic.
+
+**What was found.** The candidate separates three layers:
 
 1. **Differential geometry:** the product of all pairwise resultants records where multiplication loses more rank than scaling alone explains.
 2. **Integer arithmetic:** the character matrix records how chosen resultant coordinates see the missing scaling torus.
 3. **Global geometry:** after the torus has been normalised, labelled partitions of the product's roots account for the remaining generic covering degree.
 
+The arithmetic layer carries the main new claim: the leftover finite ambiguity is always cyclic once common factors of the degrees are removed, and its size can be computed prime by prime from a one-line presentation.
+
 > **Status:** anonymous, unrefereed candidate. Producer-side exact replay and public checksum readback pass. The universal theorems rest on the written proofs. No independent reproduction, proof-assistant formalization, external specialist review, editorial peer review, or absolute priority determination has occurred.
 
-## The central determinant-line statement
+## Summary for specialists
+
+For positive degrees $\mathbf d$, put $g=\gcd_i d_i$ and $\mathbf e=\mathbf d/g$. Pairwise resultants of labelled binary-form factors have characters $\chi_{ij}=[e_j\varepsilon_i+e_i\varepsilon_j]$ in $M=\mathbb Z^k/\mathbb Z\mathbf1$; let $h(\mathbf e)$ be the positive gcd of the maximal minors of the matrix with these rows.
+
+| Result in the manuscript | Statement |
+|---|---|
+| Theorem 4.1 (affine Plücker lift) | Every maximal minor of $Dm_{\mathbf d}$ equals $\varepsilon_{\mathbf d}\Delta_{\mathbf d}\det K_I$, an identity over $\mathbb Z$ compatible with arbitrary base change |
+| Corollaries 5.1–5.2 (multi-border contraction, character determinant) | Bordering by $k-1$ normalisers contracts this tensor with the vertical torus Jacobian; for semi-invariants it becomes $\pm\Delta_{\mathbf d}\det(W)\prod_a g_a$ |
+| Theorem 7.1 (exact local Smith presentation) | For $k\ge3$ and each prime $p$, with $p\nmid e_a$, the cokernel localised at $p$ is $\mathbb Z_{(p)}$ modulo $\bigl(e_a-\sum_{i\ne a}e_i,\ 2e_ie_j:i<j,\ i,j\ne a\bigr)$ |
+| Theorems 7.3–7.4 (closed global index, spanning trees) | A symmetric formula for $h(\mathbf e)$ computable with $O(k^2)$ integer gcd operations; spanning-tree minors already generate the full maximal-minor gcd |
+| Corollary 7.5 (complete Smith form) | For $k\ge3$ the character matrix for the original degrees has Smith form $\operatorname{diag}(g,\ldots,g,gh(\mathbf e))$, with $k-2$ copies of $g$ |
+| Theorem 8.1 (finite normalised factorisation cover) | For a square full-rank semi-invariant character matrix $W$ over an algebraically closed field, the normalised map is finite locally free over a dense open, of generic degree $\lvert\det W\rvert D!/\prod_i d_i!$ |
+
+The square multiplication Jacobian, multifactor scalar resultant, signed incidence support, arithmetic-matroid multiplicity and labelled root-partition count are classical inputs. The candidate increment is the exact local/global calculation for the cross-weighted diagonal-quotient character list, its factorisation interpretation and the explicit integral affine Plücker lift.
+
+## Technical account
+
+### The central determinant-line statement
 
 Let $A_i$ be binary forms of positive degrees $d_i$, let $D=\sum_i d_i$, and consider
 
@@ -58,7 +81,7 @@ $$
 
 For two factors, $W$ is a $1\times1$ matrix. Its sole entry is the old degree difference. The parent theorem is therefore the rank-one case of the character-matrix formula.
 
-## The arithmetic heart: exact Smith data
+### The arithmetic heart: exact Smith data
 
 Each pairwise resultant is a regular unit on the pairwise-coprime open set. Its scaling character gives one column in a complete-edge integer matrix. The resulting lattice controls which combinations of resultants can fix the scaling torus and which finite diagonalizable group remains.
 
@@ -79,7 +102,7 @@ This determines the exact $p$-adic valuation of $h(e)$, not only which primes ca
 
 The same arithmetic can be computed from spanning-tree minors alone. That bridges the result to signed-incidence and arithmetic-matroid methods while keeping the cross-weighted quotient specific to this factorisation problem.
 
-## Geometry of the normalized charts
+### Geometry of the normalized charts
 
 On the squarefree locus, the projective factorisation space is a finite etale cover of coefficient space: a point amounts to partitioning the $D$ distinct roots into labelled blocks of sizes $d_1,\ldots,d_k$. Its degree is
 
@@ -111,7 +134,9 @@ The candidate does not relabel those ingredients as new. Its bounded contributio
 
 No bounded search can establish global priority. The package records the search boundary and names the closest exact and partial antecedents.
 
-## Evidence and audit trail
+## Evidence, assurance and limitations
+
+### Evidence and audit trail
 
 The deterministic package contains a 35-page manuscript, generated TeX, 28 checked references, seven registered claims, a 96-artifact manifest, three inherited verification tiers, a new local-Smith tier, review records, and exact environment receipts.
 
@@ -127,7 +152,7 @@ The full replay reports:
 
 Finite checks cannot prove the universal theorems. Multiple implementations created inside one coordinated workflow are not unaffiliated reproductions. The proof, geometry, arithmetic-priority, citation, originality, and reproducibility reviews are producer-workflow records, not external peer review.
 
-## What the result does not establish
+### What the result does not establish
 
 - It does not classify arbitrary polynomial normalisers; the canonical statement is about regular units generated by pairwise resultants on the fixed coprime open set.
 - It does not show that every character-lattice basis can be represented by polynomial monomials with nonnegative exponents.
@@ -144,6 +169,12 @@ The [original parent paper on Evidence Press](https://evidencepress.org/releases
 
 This child generalises the scaling kernel from one dimension to $k-1$, the scalar weight from one degree difference to an integer character matrix, and the rank-one residual arithmetic to a Smith-normal-form calculation. It is a separate publication with its own [GitHub prerelease](https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/releases/tag/v0.1.0-candidate) and [Zenodo DOI](https://doi.org/10.5281/zenodo.21861347). It is not a correction to the parent and does not retrospectively change the parent's assurance state.
 
+## Why the problem matters
+
+The parent release showed, for two factors, that one degree difference measures whether a single normalising coordinate restores the lost scaling direction. With more factors, the lost directions form a torus of dimension $k-1$, and the question becomes arithmetic: which combinations of resultants can fix that torus, and what finite group is left over. This candidate answers that question exactly for the complete system of pairwise resultant units, rather than only identifying which primes can occur.
+
+The answer matters mainly as a clean separation of layers. Local determinant control can make a normalised factorisation chart étale away from the collision divisor, but it does not make a slice an affine space or give the global fibre behaviour a Keller map needs. The manuscript's most credible programme-level target is a classification of factorisation-derived étale charts and the isolation, if true, of exceptional affine-space slices; a four-dimensional Hessian application remains a conditional long-range problem, not a consequence suggested by the present proof alone.
+
 ## Who should care, and why
 
 | Audience | What may be useful | Highest-value next check |
@@ -155,7 +186,9 @@ This child generalises the scaling kernel from one dimension to $k-1$, the scala
 | Formal methods researchers | Integral polynomial identities, finite graph classifications, local module elimination, and explicit base-change statements. | Formalize the determinant-line theorem and local Smith presentation with a recorded axiom footprint. |
 | Reproducibility auditors | A deterministic archive, exact receipts, negative controls, fresh extraction, and public cross-channel hashes. | Rerun or reimplement the immutable package unaffiliated with the producer workflow and publish the receipt or objection. |
 
-## How to reproduce the recorded checks
+## How to inspect or reproduce the recorded checks
+
+To inspect the argument, start with the manuscript's Theorem 4.1 and Section 7 (Theorems 7.1–7.4 and Corollary 7.5); Section 9 summarises the exact computational evidence and Section 10 states the contribution boundary and limitations.
 
 Download the release ZIP and checksum ledger from [GitHub](https://github.com/ipitchford/exact-smith-invariants-affine-determinant-lines/releases/tag/v0.1.0-candidate) or [Zenodo](https://zenodo.org/records/21861347). After verifying `SHA256SUMS`, extract into a fresh directory and follow the archive's `README.md`. The recorded full entry point is:
 

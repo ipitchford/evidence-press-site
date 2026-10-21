@@ -144,13 +144,26 @@ The highest-value assurance step is not another producer-side replay. Independen
 | AI research agents | Claim IDs, non-inference rules, exact replay, and open packages make the candidate unusually machine-routable. | Preserve qualifiers, reproduce from fresh sources, and attach critiques to the exact claim surface. |
 | Training safety and governance researchers | Data order is a control surface that can improve or manipulate learning. | Require order, seed, objective, input-hash, subgroup, and corrupted-label logging in any experimental implementation. |
 
-## How it was checked
+## How it was checked, and how to replay it
 
 The candidate's producer-side package reports exact rational verifiers, cause-specific mutation controls, and 91 tests under both ordinary and optimized Python. The tagged release workflow rebuilds the 55-page PDF, checks manifests and privacy boundaries, and replays from a fresh archive extraction. The matrix-free pilot's ordinary and optimized receipts agree byte for byte.
 
 The Lean project pins Lean 4.32.1 and a specific mathlib revision, treats warnings as errors, rejects project-local proof placeholders, audits 15 manuscript crosswalk anchors with negative controls, and reports only Lean's standard logical dependencies for the formalized declaration.
 
 These checks establish the declared byte, execution, and formal-artifact facts. They do not establish the truth of conventionally proved theorems, novelty, independent reproduction, expert acceptance, neural-network performance, or peer review.
+
+To replay the complete package from a fresh extraction, use Python 3.14 with the pinned NumPy dependency:
+
+```bash
+python3 -m pip install -r requirements.txt
+scripts/verify_manifest.sh
+python3 scripts/verify_stage3_review.py --phase final
+scripts/replay_all.sh
+(cd formal && lake exe cache get)  # optional official cache for the pinned revision
+scripts/verify_lean.sh
+```
+
+`replay_all.sh` fails on the first error; it runs every verifier under ordinary and optimized Python, the manuscript-to-evidence bridge with its mutation controls, and the full test suite in both modes. `verify_lean.sh` validates the 15 theorem anchors, builds the pinned project with warnings fatal and audits the declaration's axiom closure. The exhaustive 32-instance pilot is deliberately separate (`src/verify_matrix_free_pilot.py --pilot --json`, run under `python3` and `python3 -O` and compared with `cmp`); its runtime is a reproduction cost for exhaustive `Fraction` arithmetic, not model-training overhead. `REPRODUCIBILITY.md` records the reference environment, expected hashes and the scaled tolerance used only for the floating-point legacy policy receipt.
 
 ## What is in the evidence package
 

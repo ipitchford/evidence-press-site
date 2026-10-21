@@ -1,5 +1,9 @@
 ## Summary
 
+This page explains what mutually unbiased bases are, which route to a fourth
+basis in dimension six this release closes, how the check works, and what it
+does not settle. A dated note on a later external claim closes this summary.
+
 Quantum measurements can be complementary in a precise sense: knowing the
 outcome in one measurement basis leaves every outcome in another equally
 likely. Such bases are called mutually unbiased. In six dimensions, three
@@ -9,6 +13,17 @@ This candidate rules out one whole route to a fourth basis: the specified
 two-parameter Szöllősi family of complex Hadamard matrices. It includes the
 family's boundary and degenerate cases, not just sampled parameter values.
 It does **not** settle the full six-dimensional problem.
+
+The method separates finding possible solutions from checking them. A numerical
+program proposes small regions containing candidate vectors. A separately
+implemented checker must prove that those regions cover every relevant vector
+and that they cannot form the two additional bases required for a quartet.
+
+Dimension six is the first dimension that is not a prime power, so it is a
+central test case for quantum-information researchers; the hull-and-checker
+design is also of interest to anyone building computer-assisted proofs. This is
+an unrefereed candidate with a complete fresh local replay, not external peer
+review or end-to-end formal verification.
 
 **External development — 7 October 2026.** OpenAI's collection includes a
 [paper claiming the unrestricted maximum is three](https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026).
@@ -23,11 +38,6 @@ general problem as resolved on this evidence. A verified unrestricted result
 would subsume this release's family-specific exclusion, but would not certify
 its implementation. The original archive, briefings and assurance remain
 unchanged. See the [scope and checking record](https://github.com/ipitchford/evidence-press-site/blob/main/docs/audits/openai-math-20261007.md).
-
-The method separates finding possible solutions from checking them. A numerical
-program proposes small regions containing candidate vectors. A separately
-implemented checker must prove that those regions cover every relevant vector
-and that they cannot form the two additional bases required for a quartet.
 
 ## Summary for specialists
 
@@ -114,6 +124,28 @@ the normal and optimized regression tests, then execute `chk/full_replay.py`
 with a new output directory. Preserve both complete-cover summaries and their
 bound environment records. Graph checks alone are insufficient: phase-space
 coverage is the computationally expensive obligation.
+
+The repository README gives the sequence. Use Python 3.10 or later, NumPy,
+mpmath, SymPy and a C99 compiler (python-flint is needed only by the generator,
+not for certificate replay):
+
+```sh
+sh -e chk/build.sh
+python3 chk/tests/test_kernel.py
+python3 chk/tests/test_revision.py
+python3 -O chk/tests/test_revision.py
+python3 -O chk/tests/test_boundary_interval.py
+python3 exact/lemma5_exact.py
+python3 fourier/fundamental_domain.py
+python3 fourier/fourier_exact.py
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 chk/full_replay.py /path/to/new-output 4
+```
+
+The output directory must not already exist. Full replay imports no historical
+success receipts, checks both families, subdivides unresolved parents and
+requires both parameter covers to be complete; budget hours rather than minutes.
+Do not set `MUB6_KERNEL` for proof runs, and do not use the retained historical
+`final_eval.sh` driver to validate revision 3.
 
 ## What would improve assurance next
 

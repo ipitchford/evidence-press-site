@@ -1,6 +1,10 @@
 ## Summary
 
-AIM Problem 1.18 asks whether a pointwise abundance of differences forces a simple algebraic shape. For a finite nonempty set $A$ in an abelian group, let
+**In words first.** Take a finite set of elements in a group where addition and subtraction make sense—for example, numbers on a clock face. Subtract every element from every other and collect the differences. A recurring theme in additive combinatorics is that when every difference turns up *often*, the set of differences should be forced into a rigid algebraic shape, such as a subgroup or a few translated copies of one. Results of this kind are called *inverse theorems*, and an open question asks exactly how often "often" has to be.
+
+**What was found.** This release shows that "more than one third of the time" is not enough. A set of eight numbers on a 21-hour clock has every difference occurring at least three times, yet its differences have no such rigid shape. A three-layer construction extends this to any threshold below two fifths. It is a counterexample with a short, hand-checkable proof; it does not say what the right threshold is.
+
+**The precise question.** AIM Problem 1.18 asks whether a pointwise abundance of differences forces a simple algebraic shape. For a finite nonempty set $A$ in an abelian group, let
 
 $$
 r_A(d)=|\{(a,a')\in A^2:a-a'=d\}|,\qquad D=A-A.
@@ -94,7 +98,7 @@ Hou, Li and Yang's 2026 preprint addresses that half-threshold problem in two-to
 
 A targeted search across ordinary web search, arXiv, Crossref, OpenAlex, and the closest reference chains found no direct statement of the $C_{21}$ witness, the three-layer family, or the below-$2/5$ odd-cyclic obstruction. That is partial novelty evidence only. Formula indexing, informal circulation, and specialist knowledge can defeat such a search, so the release invites priority corrections and makes no first or priority claim.
 
-## Who should care
+## Who should care, and why
 
 | Reader | What is useful now | What remains before promotion |
 |---|---|---|
@@ -103,6 +107,10 @@ A targeted search across ordinary web search, arXiv, Crossref, OpenAlex, and the
 | Formalizers | A short proof with finite-group counting and divisibility arguments | Formalize the layer calculation and coset-cardinality exclusion |
 | Computational reviewers | Two transparent encodings, mutations, receipts, and immutable assets | Reimplement independently rather than importing either verifier |
 | Research-methods readers | A claim-level package separating replay, review, novelty, and publication | Do not treat this one release as evidence of workflow acceleration or impact |
+
+## Why the problem matters
+
+Inverse questions of this kind ask how much uniform popularity of differences is needed before structure is forced. A counterexample is useful because it marks a floor: below $2/5$, no analogous universal subgroup-or-three-coset conclusion can hold, even in odd cyclic groups, so any positive theorem must use a stronger hypothesis. It also separates the AIM one-third question from the neighbouring half-threshold question, which has its own recent literature. The sharp threshold, and the behaviour at the endpoint $2/5$ itself, remain open.
 
 ## How to inspect and reproduce it
 

@@ -12,6 +12,8 @@ smooth curve of projective eigenvectors. The curve has degree eight and genus
 three. Exact computation supports these claims, but the release remains
 unrefereed; historical priority and unaffiliated validation are not established.
 
+**Why ask?** Small symmetric examples make otherwise abstract tensor phenomena inspectable. This one is offered as an exact test case for spectral hypergraph researchers, computer algebraists and algebraic geometers, and as a concrete contrast between matrix and tensor eigenvectors for interested readers—not as a demonstrated practical application.
+
 ## Summary for specialists
 
 Let the seven lines be $124,235,346,457,156,267,137$. Use the symmetric

@@ -10,6 +10,8 @@ size grows linearly with the number of graph vertices. The result persists under
 one fixed maximum-degree bound. It concerns extremal **counting** matrices, not
 typical networks or normalized random-walk transition matrices.
 
+**Why ask?** Ordinary adjacency matrices of undirected graphs are symmetric and diagonalizable, so this kind of hidden structure never arises for them; non-backtracking matrices need not be. The candidate shows that graph structure does not impose a universal small bound on their Jordan complexity, and even bounded maximum degree does not recover the regular-graph bound of two. Spectral graph theorists and researchers working on matrices and pencils are the main readers.
+
 ## Summary for specialists
 
 Let $f(n)$ be the maximum complex Jordan-block size of $B_G$ over finite simple

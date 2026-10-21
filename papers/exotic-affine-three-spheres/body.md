@@ -6,19 +6,28 @@ This paper argues that one of these impostors arises, unforced, inside a very na
 
 Two further claims round out the picture. Every normalised quadratic–cubic slice fails to be ordinary five-dimensional affine space, blocked by an exact obstruction computed in the Grothendieck ring of varieties. And in characteristic 3 — arithmetic where $3 = 0$ — the tangent slice stays perfectly ordinary, while the polynomial map it carries develops a genuinely characteristic-p phenomenon, an Artin–Schreier collision.
 
+**Status.** An unrefereed candidate manuscript, attributed to AI models working under human direction. The exact computer checks corroborate selected formulae; the central arguments have not been externally reviewed.
+
 ## Summary for specialists
 
 Three principal claims. First, the transverse linear–quadratic slice of the binary-form factorisation space is the Dubouloz–Finston torsor — an exotic affine three-sphere — rather than $\mathrm{SL}_2$. Second, every normalised quadratic–cubic slice fails to be $\mathbb{A}^5$, proved by an exact Grothendieck-class formula together with a rank-by-rank Hodge–Deligne obstruction. Third, in characteristic 3 the tangent slice remains $\mathbb{A}^3$, with an Artin–Schreier collision in the induced Keller map.
 
 The computational support is deterministic and exact: symbolic checks of selected formulae, plus finite-field censuses over $\mathbb{F}_2$ through $\mathbb{F}_{11}$ covering 23,941 projective functionals, validated byte-for-byte against checked-in tables, with a deliberate semantic control confirming the assertions are live. The assurance boundary matters here more than usual: the censuses corroborate *consequences* of the claims; the torsor identification and the motivic obstruction arguments themselves have had no external review, and their verification is the release's own headline request.
 
-## Technical summary
+## Technical account
 
 The stage is the binary-form factorisation space of the foundational release, and the object is its transverse linear–quadratic slice — a smooth affine threefold that, on topological inspection, has the homotopy type of the complex quadric $\mathrm{SL}_2 = \{xy - zw = 1\}$. The manuscript's central argument identifies it instead with the Dubouloz–Finston torsor: an $\mathbb{A}^1$-bundle over the punctured affine plane that is diffeomorphic to $\mathrm{SL}_2$ but not algebraically isomorphic to it, the distinction detected by the Dubouloz–Finston de Rham criterion rather than by any topological quantity.
 
 The quadratic–cubic obstruction is motivic. For each normalised quadratic–cubic slice the manuscript computes an exact class in the Grothendieck ring of varieties and expands its Hodge–Deligne (E-)polynomial rank by rank; a nonvanishing coefficient where $\mathbb{A}^5$ requires zero blocks any isomorphism with affine five-space, uniformly across the family. The characteristic-3 analysis runs the tangent-slice theory over $\mathbb{F}_3$: the slice itself remains $\mathbb{A}^3$, but the induced Keller map acquires an Artin–Schreier collision — a fibre coincidence of the form $t \mapsto t^3 - t$ that has no characteristic-zero counterpart.
 
 The computational layer is corroborative, not probative: exact symbolic checks of selected formulae, plus finite-field censuses over $\mathbb{F}_2$ through $\mathbb{F}_{11}$ covering 23,941 projective functionals, validated byte-for-byte against committed tables, with a deliberate semantic control (an omitted term must break the check). The torsor identification and the motivic computations themselves are prose mathematics awaiting expert eyes.
+
+## Evidence, assurance and limitations
+
+- **What was checked.** `verify_paper.py` runs exact symbolic checks of selected formulae and finite-field censuses over $\mathbb{F}_2$ through $\mathbb{F}_{11}$ covering 23,941 projective functionals. Replay writes generated tables and compares them byte-for-byte with the checked-in CSVs. The verifier refuses to run under `python -O`, so an optimised invocation fails closed rather than silently skipping assertions, and a semantic control omits the $-q^3$ term from the point-count formula and requires the resulting mismatch.
+- **What was not checked.** The symbolic and finite-field checks cover selected formulae only; the Grothendieck-class and Hodge–Deligne arguments themselves are not machine-verified, and the torsor identification is prose mathematics.
+- **Review status.** Unrefereed candidate manuscript. No peer review, no independent external reproduction, no complete external human review, no end-to-end formalisation and no exhaustive novelty check are documented. The repository reports a separate cross-model audit; the underlying artefact is not included.
+- **Revision.** The repository's latest revision (v0.1.1) fixes citation routing after a cache incident, with manuscript content unchanged.
 
 ## Who should care, and why
 
@@ -29,6 +38,19 @@ The computational layer is corroborative, not probative: exact symbolic checks o
 | Arithmetic geometers (characteristic p) | A clean, small example of characteristic-3 divergence: the space stays standard while its Keller map degenerates via Artin–Schreier behaviour. | Map the phenomenon across small primes; determine whether it constrains or enables lifting arguments. |
 | Jacobian conjecture researchers | The obstruction results feed the project's screening programme, which the sequel release turns into an isolation theorem. | Audit the cubic classification here, on which the sequel's conditional theorem explicitly depends. |
 | Computational algebraic geometers | A finite-field census as a cheap, replayable corroboration layer for motivic claims. | Rerun the censuses independently; extend them to larger fields as a sharper consistency test. |
+
+## How to inspect or reproduce the recorded checks
+
+Start with `paper.pdf`, then `AI_INDEX.md` (claim-to-evidence map) and `STATUS.md` (assurance boundary). The recorded environment used Python 3.13.5, SymPy 1.14.0 and NumPy 2.3.5:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install --upgrade pip
+.venv/bin/python -m pip install -r requirements.txt
+make PYTHON=.venv/bin/python verify
+```
+
+The full census takes about 11–14 seconds in the recorded environments. The same target also checks the committed citation snapshot and the byte-invariance of every manuscript line before the bibliography. `REPLAY_RECEIPT.md` and `MANIFEST.sha256` record the environment, commands and release hashes.
 
 ## The most valuable next projects
 

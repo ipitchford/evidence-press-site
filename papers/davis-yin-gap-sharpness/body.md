@@ -1,8 +1,12 @@
 ## Summary
 
-An algorithmic guarantee has at least three distinct questions behind it: is the inequality valid, is its constant best possible, and can any finite instance attain equality?
+**The setting.** Many optimisation problems minimise a sum of three convex pieces, two of which may be awkward (non-smooth) and one smooth. Davis–Yin three-operator splitting handles such sums by treating each piece separately at every step: two proximal evaluations and one gradient evaluation, instead of one hard joint solve. Users rely on worst-case guarantees that say how far, after a given number of steps, the method's averaged output can be from a reference solution.
 
-For the averaged primal–dual comparison gap of Davis–Yin three-operator splitting, this paper answers all three across the open unrelaxed step range. It also determines the exact critical-endpoint supremum while preserving an unresolved endpoint-attainment question.
+**Three questions behind any guarantee.** An algorithmic guarantee has at least three distinct questions behind it: is the inequality valid, is its constant best possible, and can any finite instance attain equality?
+
+**What was found.** For the averaged primal–dual comparison gap of Davis–Yin three-operator splitting, this paper answers all three across the open unrelaxed step range. The best constant has a simple denominator, $K+1-\theta$ after $K$ steps, where $\theta$ is the normalised step size; it resolves a tightness conjecture of Nguyen et al. (arXiv:2506.23475) at $\theta=1$. Equality can happen after one step, but never after two or more: the worst case is approached only in a limit. The paper also determines the exact critical-endpoint supremum while preserving an unresolved endpoint-attainment question.
+
+**Status.** Unrefereed, AI-assisted research. The proofs have received internal model audits and exact arithmetic checks, which are not external peer review or a formal proof certificate.
 
 ## The quantity being bounded
 
@@ -14,7 +18,7 @@ against an arbitrary admissible comparison pair $(x,u)$.
 
 That qualification is important. The gap is not automatically nonnegative for each fixed pair, and it is not the same thing as objective error, a maximised duality gap or a last-iterate residual.
 
-## Exact result
+## Summary for specialists: exact result
 
 Let $\theta=\alpha L\in(0,2)$ and define
 $$
@@ -83,9 +87,19 @@ Internal AI-assisted review is not external human peer review, independent repro
 | Performance-estimation researchers | Inspect an analytic certificate and low-dimensional limiting family | The endpoint attainment problem remains open |
 | Algorithm designers | Understand how step size changes a finite-horizon guarantee | No cross-algorithm complexity lower bound is claimed |
 
-## How to inspect the result
+## Why the problem matters
 
-First verify the algorithmic ordering and the definition of $G_K$. Then check the normalisation and the exact slack identity term by term. The sharpness family should be read together with the equality conditions, because the same construction explains both optimality and non-attainment. The repository README runs the exact replay and both negative controls.
+A worst-case bound is most useful when it is known to be the best possible: then it describes exactly what the method can guarantee, rather than what one proof technique happens to deliver. This result pins down the exact finite-horizon constant across the whole unrelaxed step range, shows how the step size enters it, and shows that after two or more steps the best constant is forced by a limit, so a numerical near-extremiser alone would miss the structure.
+
+## How to inspect or reproduce the recorded checks
+
+First verify the algorithmic ordering and the definition of $G_K$. Then check the normalisation and the exact slack identity term by term. The sharpness family should be read together with the equality conditions, because the same construction explains both optimality and non-attainment. The repository README runs the exact replay and both negative controls:
+
+```sh
+python3 -B code/replay.py
+```
+
+The wrapper verifies actual optimization flags, compares semantic receipts, and requires deliberate trajectory and constant corruptions to raise `VerificationError` in ordinary and optimized modes. Start reading with `paper.pdf`; `CLAIMS.md` maps each claim to its evidence.
 
 ## The most valuable next projects
 

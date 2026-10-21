@@ -1,17 +1,17 @@
 ## Summary
 
-An exponential integral can generate a differential equation when it is
-differentiated repeatedly. This release asks a deliberately narrow question:
+**The setting.** An exponential integral can generate a differential equation when it is
+differentiated repeatedly. The integrals here are built from a polynomial (the *phase*) and a chosen starting form. Each derivative produces a new form; at some point the new forms stop being genuinely new and become combinations of earlier ones. This release asks a deliberately narrow question:
 **how many genuinely different directions are produced by one chosen starting
-form?**
+form?** That number, the *fixed-seed cyclic rank*, measures how large a system the starting form generates.
 
-The candidate's answer is simple to state. Look at the inverse branches of the
-polynomial phase, remove the average shared by all of them, and count the
+**The answer.** The candidate's answer is simple to state. Look at the inverse branches of the
+polynomial phase (the solutions $x$ of $P(x)=z$, viewed as functions of $z$), remove the average shared by all of them, and count the
 independent functions that remain. Conditional on the stationary-phase bridge
 established in the [parent Evidence Press release](https://evidencepress.org/releases/cyclicity-loci-exponential-periods/),
 that count is exactly the fixed-seed cyclic rank.
 
-For polynomial phases that cannot be decomposed into lower-degree maps, this
+**What follows.** For polynomial phases that cannot be decomposed into lower-degree maps, this
 gives a complete low-rank classification in every degree:
 
 - powers have rank one;
@@ -21,7 +21,7 @@ gives a complete low-rank classification in every degree:
 The package also includes a finite exact calculator for trusted rational
 polynomial inputs.
 
-The result does **not** complete the decomposable case. A degree-twelve example
+**What is still open.** The result does **not** complete the decomposable case. A degree-twelve example
 has rank three because symmetry makes three normally separate root blocks
 coincide. The remaining problem is to understand exactly when this kind of
 block fusion occurs under polynomial composition.
@@ -35,46 +35,73 @@ block fusion occurs under polynomial composition.
 
 For the fixed seed one-form and declared polynomial class, the candidate identifies cyclic rank with a root-coefficient span and gives a low-rank classification relative to the named stationary-phase, monodromy and finite-classification inputs. The finite calculator is a diagnostic and certificate aid for specified polynomials; it is not a substitute for those semantic bridges.
 
-## The idea without the machinery
+Let $P\in\mathbf C[x]$ have degree at least two, let $W_P^{\mathrm{red}}$ be the reduced constant span of the inverse roots of $P(X)-z$, and let $q(P,dx)$ be the cyclic rank of the fixed class $[dx]$ in
 
-Suppose a polynomial equation (P(x)=z) has inverse branches
-(x_1(z),ldots,x_d(z)). Translating the source variable removes their common
+$$
+\mathcal H_P=
+\frac{\mathbf C(s)[x]\,dx}
+     {\{(\partial_x f+sP'f)\,dx:f\in\mathbf C(s)[x]\}}.
+$$
+
+The parent note, relative to standard formal stationary phase, identifies this rank with the finite inertia conductor on $W_P^{\mathrm{red}}$. Theorem 2.1 shows that this conductor always collapses to the representation dimension:
+
+$$
+q(P,dx)=\dim_{\mathbf C}W_P^{\mathrm{red}}.
+$$
+
+| Result | Statement | Status |
+|---|---|---|
+| Theorem 2.1 | Constituentwise conductor equality, hence $q(P,dx)=\dim_{\mathbf C}W_P^{\mathrm{red}}$ | proof, conditional on the parent bridge |
+| Theorem 3.1 | Indecomposable $P$ has $q\le3$ exactly for $x^p$ ($p$ prime, $q=1$), $T_p$ ($p\ge3$ prime, $q=2$) and indecomposable quartics ($q=3$), up to affine changes; otherwise $q=d-1\ge4$ | proof, conditional |
+| Section 4 | Exact finite Krylov reducer over $\mathbf Q(s)$ for raw $P,A\in\mathbf Q[x]$ | implementation, replayed |
+| Proposition 5.1 | Right-factor heredity: $P=R\circ Q$ implies $\dim W_Q\le\dim W_P$ | proof |
+| Section 6 | $P(x)=(x^4+x)^3$ has rank three, defeating a provisional additive composition atlas | proof and exact computation |
+| Open | Decomposable affine classification for $q\le3$; equivariant block fusion under Ritt moves | open |
+
+## Technical account
+
+### The idea without the machinery
+
+Suppose a polynomial equation $P(x)=z$ has inverse branches
+$x_1(z),\ldots,x_d(z)$. Translating the source variable removes their common
 average, so that
 
 $$
-x_1(z)+cdots+x_d(z)=0.
+x_1(z)+\cdots+x_d(z)=0.
 $$
 
 Some of the remaining inverse-root functions may still satisfy constant linear
-relations. Let (W_P^{\mathrm{red}}) be their span after the common trace has
+relations. Let $W_P^{\mathrm{red}}$ be their span after the common trace has
 been removed. The central conditional identity is
 
 $$
 q(P,dx)=\dim_{\mathbf C}W_P^{\mathrm{red}}.
 $$
 
-Here (q(P,dx)) is the dimension generated by repeatedly differentiating the
-fixed class ([dx]) in the polynomial's twisted de Rham system. The new
+Here $q(P,dx)$ is the dimension generated by repeatedly differentiating the
+fixed class $[dx]$ in the polynomial's twisted de Rham system. The new
 conductor-to-dimension step uses classical representation-theoretic machinery;
 it is not presented as a new general representation theorem. The candidate's
 claimed contribution is the fixed-seed application, its low-rank consequences,
 the exact calculator, and the compositional obstruction.
 
-## What the three indecomposable cases mean
+**Proof idea.** The proof uses only the polynomial Riemann–Hurwitz identity, the fixed-free action of the full cycle at infinity on the augmentation module, rank subadditivity, and characteristic-zero semisimplicity. Rank subadditivity gives $\dim V\le c(V)$ for every irreducible constituent; Riemann–Hurwitz gives equality of the totals; so every defect is zero.
+
+### What the three indecomposable cases mean
 
 | Rank | Phase, up to affine changes | Plain-English reason |
 |---|---|---|
-| 1 | (x^d) | All inverse branches differ only by roots of unity, so they span one direction. |
-| 2 | (T_d(x)), the Chebyshev polynomial | The inverse branches collapse to a two-dimensional root span. |
+| 1 | $x^d$ | All inverse branches differ only by roots of unity, so they span one direction. |
+| 2 | $T_d(x)$, the Chebyshev polynomial | The inverse branches collapse to a two-dimensional root span. |
 | 3 | Any indecomposable quartic | The quartic's reduced inverse-root span has its full dimension of three. |
 
 Every other indecomposable polynomial phase has rank at least four, conditional
 on the imported bridge.
 
-## Why composition is harder
+### Why composition is harder
 
 Right-factor heredity gives a useful necessary condition: if
-(P=R\circ Q), then
+$P=R\circ Q$, then
 
 $$
 \dim W_Q^{\mathrm{red}}\leq \dim W_P^{\mathrm{red}}.
@@ -88,7 +115,7 @@ Q(x)=x^4+x,
 P(x)=Q(x)^3=x^3(x^3+1)^3.
 $$
 
-For every cube root of unity (zeta),
+For every cube root of unity $\zeta$,
 
 $$
 Q(\zeta x)=\zeta Q(x).
@@ -99,22 +126,22 @@ The degree-twelve phase therefore has rank three rather than the larger rank a
 naive additive atlas would predict. This exact counterexample is why the page
 does not advertise a complete arbitrary-polynomial classification.
 
-## What the calculator does
+### What the calculator does
 
-For trusted (P,A\in\mathbf Q[x]), the supplied program works in
+For trusted $P,A\in\mathbf Q[x]$, the supplied program works in
 
 $$
-\mathbf Q(s)[x],dx
+\mathbf Q(s)[x]\,dx
 \big/
-\{(f'+sP'f),dx:f\in\mathbf Q(s)[x]\}.
+\{(f'+sP'f)\,dx:f\in\mathbf Q(s)[x]\}.
 $$
 
 It reduces
 
 $$
-[A,dx],
-\nabla_s[A,dx],
-\nabla_s^2[A,dx],
+[A\,dx],\
+\nabla_s[A\,dx],\
+\nabla_s^2[A\,dx],\
 \ldots
 $$
 
@@ -123,7 +150,9 @@ are independent and the first exact relation when dependence appears. This is
 an implementation result for rational, trusted input; it is not a security
 claim or a substitute for the structural proof.
 
-## What was checked
+## Evidence, assurance and limitations
+
+### What was checked
 
 - The public package has a complete 86-entry static manifest, including nested
   audit manifests.
@@ -140,7 +169,7 @@ claim or a substitute for the structural proof.
 These checks establish availability, package integrity and producer-side
 replay. They do not establish independent correctness, novelty or priority.
 
-## What was not checked
+### What was not checked
 
 - No unaffiliated researcher has rerun or independently reimplemented the
   package.
@@ -151,7 +180,11 @@ replay. They do not establish independent correctness, novelty or priority.
 - The complete decomposable rank-at-most-three atlas remains open.
 - The PDF is searchable and visually inspected, but it is not a tagged PDF.
 
-## Contributions and disclosure
+### Prior-art boundary
+
+Formal Fourier–Laplace stationary phase, polynomial monodromy, root-relation frameworks, Riemann–Hurwitz, Maschke semisimplicity, rank subadditivity, Ritt decomposition theory and finite exact reduction in twisted de Rham modules are established antecedents. The candidate residue is narrower: the convention-complete fixed-seed bridge, the application of the classical conductor collapse to that bridge, the assembled indecomposable low-rank corollary, and the explicit block-fusion counterexample and frontier. Scoped searches did not locate these exact assembled statements; non-location does not establish novelty, priority, correctness, or significance.
+
+### Contributions and disclosure
 
 The scholarly creator is cited as **Anonymous**. AI systems contributed to
 mathematical development, exact computation, literature work, drafting,
@@ -172,9 +205,29 @@ and is not additional mathematical evidence.
 | Computational reviewer | The calculator and recorded checks | Producer-side exact agreement is not independent theorem verification. |
 | General reader | Summary and “The idea without the machinery” | The claim is about a fixed seed, not every polynomial amplitude. |
 
-## How to inspect and reproduce the recorded checks
+## Why the problem matters
+
+The parent release identified the fixed-seed cyclic rank with a finite inertia conductor, leaving an inverse-character problem. Theorem 2.1 turns that problem into a necessary-and-sufficient constant root-span criterion: $q\le3$ exactly when the constant inverse-root span has dimension at most three. That converts a question about differential systems into linear algebra on the roots of $P(X)-z$, which is what makes the arbitrary-degree indecomposable classification and the exact calculator possible. The degree-twelve example then pins down precisely what a full classification must still explain.
+
+## How to inspect or reproduce the recorded checks
 
 Use the [v0.1.0 candidate release](https://github.com/ipitchford/cyclicity-root-span-low-rank/releases/tag/v0.1.0-candidate) or its [DOI archive](https://doi.org/10.5281/zenodo.21864884). Verify the static manifest, then compare ordinary and optimised receipts and run the reducer and its composition mutations. The clean-room-labelled control track is independently written within the same producing workflow, not an unaffiliated reproduction.
+
+With Python 3.12 and SymPy 1.14.0, from the extracted package root:
+
+```bash
+python3 verify.py > VERIFY_RECEIPT.json
+python3 -O verify.py > VERIFY_RECEIPT_O.json
+cmp VERIFY_RECEIPT.json VERIFY_RECEIPT_O.json
+```
+
+The verifier checks the static manifest and replays the exact twisted-Krylov test set, the composition/block-fusion controls and the clean-room controls. To compute a rank yourself, write an input such as `{"phase":"(x**4 + x)**3","amplitude":"1","variable":"x"}` to `input.json` and run
+
+```bash
+python3 code/exact_twisted_krylov.py --input input.json --output result.json
+```
+
+The result records the ambient and cyclic ranks, a nonzero independence minor and, when the rank is deficient, the first exact dependence. Repeating the verifier in a fresh extraction catches accidental workspace dependencies; it is still not external reproduction. Start reading with Section 2 of the paper; `CLAIM_LEDGER.md` maps each claim to its evidence.
 
 ## The most valuable next work
 
@@ -186,10 +239,12 @@ Use the [v0.1.0 candidate release](https://github.com/ipitchford/cyclicity-root-
    decompositions and Ritt moves.
 4. Formalize the imported bridge, conductor-span identity and indecomposable
    classification in a proof assistant.
-5. Extend the criterion from (dx) to nonconstant amplitudes, relative or
+5. Extend the criterion from $dx$ to nonconstant amplitudes, relative or
    logarithmic families, and multivariate twisted complexes.
 
-## Paper, archive and parent release
+## What is in the evidence package
+
+The package contains the manuscript (PDF and Markdown), the claim ledger and machine-readable claims, assurance and status records, the exact calculator and verifier with tests and controls, ordinary and optimised replay receipts, scoped prior-art and internal review records, provenance, licences and the static manifest.
 
 The immutable candidate package, PDF and replay receipts are available from
 [GitHub](https://github.com/ipitchford/cyclicity-root-span-low-rank/releases/tag/v0.1.0-candidate).

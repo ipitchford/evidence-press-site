@@ -2,13 +2,19 @@
 
 How many four-symbol messages can remain distinguishable when each symbol has seven possible values and neighbouring values can be confused? A known construction gives **108** messages. This candidate proves that **113 are impossible**, narrowing the possible answer to **108–112**.
 
-The evidence is a finite, exact computation joined to a written mathematical reduction. It checks every required case and uses integer inequalities to rule out completions. The precise answer is still unknown.
+**Why this question.** The question is a standard model of zero-error communication: the symbols form a graph of confusable values, and repeated uses of the channel correspond to strong graph powers. The seven-cycle is one of the small odd cycles for which even short messages lead to difficult extremal questions. The 108 construction has been known since 2002 (Vesel and Žerovnik); the historical upper bound recorded in 2019 was 115.
+
+**How it was shown.** The evidence is a finite, exact computation joined to a written mathematical reduction. It checks every required case and uses integer inequalities to rule out completions. The precise answer is still unknown: it could be any of 108, 109, 110, 111 or 112, and the result does not determine the Shannon capacity.
+
+**Status.** An unrefereed computer-assisted, AI-assisted candidate. Producer-side exact replay and internal semantic checks are distinct from unaffiliated reproduction, formal verification and external peer review.
 
 ## Summary for specialists
 
 For the strong graph power on $\mathbb Z_7^4$, with distinct vertices adjacent when every coordinate difference is $0$ or $\pm 1$, the candidate establishes
 
-$$108\leq\alpha(C_7^{\boxtimes 4})\leq 112.$$
+$$
+108\leq\alpha(C_7^{\boxtimes 4})\leq 112.
+$$
 
 The upper bound excludes size 113 by exhaustive adjacent and nonadjacent maximum-band cases. Double counting then gives $\alpha(C_7^{\boxtimes 5})\leq 392$. These finite-power bounds do not determine Shannon capacity.
 
@@ -52,7 +58,14 @@ Strong graph powers model repeated uses of a channel whose confusable symbols fo
 
 Start with the [paper](https://github.com/ipitchford/seven-cycle-fourth-power-upper112/releases/download/v0.1.0-candidate/paper.pdf), especially the finite-proof appendix. Download the evidence bundle from the [versioned release](https://github.com/ipitchford/seven-cycle-fourth-power-upper112/releases/tag/v0.1.0-candidate). Its `REPRODUCE.md` lists copyable commands, expected terminal statuses and prerequisite source locations.
 
-The main replay requires Python 3.10 or later, a C++17 compiler, and at least 20 GiB free disk. It needs no SAT solver or numerical optimizer. Allow roughly two hours on comparable hardware. Quick manifest checks do not substitute for this full replay. A timeout or incomplete run is not a proof.
+Verify the bundle's published SHA256SUMS before extraction. From the extracted outer bundle:
+
+```sh
+python3 -B verify_bundle.py
+python3 -B verify_bundle.py --full --work-dir /absolute/path/to/NEW-replay
+```
+
+The first command checks exact bytes, the 108 witness and normalization. The second performs the full main mathematical replay. The main replay requires Python 3.10 or later, a C++17 compiler, and at least 20 GiB free disk. It needs no SAT solver or numerical optimizer. Allow roughly two hours on comparable hardware. Quick manifest checks do not substitute for this full replay. A timeout or incomplete run is not a proof.
 
 ## The most valuable next projects
 
@@ -60,4 +73,4 @@ An unaffiliated full replay and semantic audit would strengthen assurance. Mathe
 
 ## What is in the evidence package
 
-The package contains the revised paper in PDF, LaTeX and consistently numbered Markdown; a claim and dependency map; five unchanged certificate archives; full acceptance receipts; a response to every review finding; source and licence records; and a dated guide to superseded historical status notes. The 108-word witness is literal data whose 5,778 pairs can be checked directly.
+The package contains the revised paper in PDF, LaTeX and consistently numbered Markdown; a claim and dependency map; five unchanged certificate archives; full acceptance receipts; a response to every review finding; source and licence records; and a dated guide to superseded historical status notes. The 108-word witness is literal data whose 5,778 pairs can be checked directly. The large certificate ZIPs are release assets inside the evidence bundle, so a Git clone alone is not the complete evidence payload; download the bundle from the GitHub release or the Zenodo record.

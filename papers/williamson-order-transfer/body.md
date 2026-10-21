@@ -1,8 +1,12 @@
 ## Summary
 
-A numerical method for rotations should keep its answers on the space of rotations. Exponential updates can do that, but replacing an ordinary update by an exponential one can destroy accuracy: matrix products depend on their order.
+**The problem.** A numerical method for rotations should keep its answers on the space of rotations. Exponential updates can do that, but replacing an ordinary update by an exponential one can destroy accuracy: matrix products depend on their order.
 
-This paper identifies a structured exception. For Williamson low-storage Runge–Kutta methods, the specified exponential lift preserves classical order through six, regardless of the number of stages. Zero and negative coefficients and repeated stage times are allowed. A further result gives three additional tests sufficient for order seven; whether those tests follow automatically remains open.
+**What was found.** This paper identifies a structured exception. For Williamson low-storage Runge–Kutta methods, the specified exponential lift preserves classical order through six, regardless of the number of stages. Zero and negative coefficients and repeated stage times are allowed. A further result gives three additional tests sufficient for order seven; whether those tests follow automatically remains open.
+
+**Who cares.** Geometric integration researchers and numerical software developers, who can reuse classical order conditions for this lift instead of deriving extra ones. The theorem does not construct a method of prescribed order and stage count, nor establish better stability, error constants or speed.
+
+**Status.** An anonymous, unrefereed research candidate. The universal statement rests on the written proof; there is no proof-assistant formalisation or external specialist peer review.
 
 ## Summary for specialists
 
@@ -50,7 +54,14 @@ Preserving a geometric constraint and preserving approximation order are differe
 
 ## How to inspect or reproduce the recorded checks
 
-Start with the manuscript's fourth-order proof, then read the general reduction. In the repository, run `python3 -B code/replay.py` and `python3 -B -O code/replay.py`. The launcher records the actual child interpreter modes and rejects source changes during replay. The code README explains each checker and its scope.
+Start with the manuscript's fourth-order proof, then read the general reduction. In the repository, with Python 3.10 or later and NumPy, run:
+
+```sh
+python3 -B code/replay.py
+python3 -B -O code/replay.py
+```
+
+Both commands should return JSON with `status: PASS`. The launcher records the actual child interpreter modes and rejects source changes during replay. The code README explains each checker and its scope.
 
 ## The most valuable next projects
 

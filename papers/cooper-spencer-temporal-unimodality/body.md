@@ -1,28 +1,52 @@
 ## Summary
 
-Imagine watching the chance that a random walker occupies one particular location. It may seem natural that this chance rises once and then falls. Cooper and Spencer conjectured this for a simple symmetric walk on an integer lattice, after accounting for the fact that only every other time can reach a given location.
+This page explains, in order: what the question is, what Cooper and Spencer conjectured, what this release found, how the argument works, and what has and has not been checked.
 
-This candidate gives an exact counterexample. In dimension 26, the probability falls from time 65 to 67 and rises again at time 69. A written argument also gives counterexamples in every dimension at least 64. The release is an unrefereed preprint with arithmetic certificates and an inspectable proof.
+**The question.** A *simple random walk* on a grid takes one step at a time, each step chosen at random among the directions along the grid axes (forwards or backwards in each of $d$ directions). Fix a target location some distance from the start, and ask: how likely is the walker to be standing exactly there after $n$ steps? Early on the chance is zero, because the target is out of reach. It then grows as the walker has time to get there, and eventually shrinks again as the walker wanders off. A parity rule complicates the picture slightly: on a grid, a given location can only be occupied at every other time (odd times or even times, depending on the target), so the natural sequence to watch is the chance at those admissible times only.
+
+**What was conjectured.** It seems natural that this chance rises once and then falls, with a single peak. Cooper and Spencer conjectured exactly that (Conjecture 3 in *Simulating a Random Walk with Constant Error*, 2004 preprint, 2006 publication). Their discussion proves it in one and two dimensions, and the question also appears on Cooper's problem list.
+
+**What was found.** In high enough dimension the conjecture is false. In 26 dimensions, for a target 17 steps along one axis, the chance falls from time 65 to time 67 and then rises again at time 69: the sequence has a dip, so it cannot have a single peak. The changes are small (the ratios are about 0.99982 and 1.00008), but they are proved in exact integer arithmetic, not estimated. A separate written argument gives counterexamples in every dimension of at least 64, in both the step-by-step walk and its continuous-time version, and an additional continuous-time example is certified in dimension 40.
+
+**What it means.** A shape assumption that would simplify bounds and arguments about random walks cannot be used in general without further hypotheses. The result does not identify the smallest dimension where failure occurs, and no practical or algorithmic impact is claimed.
+
+**Status.** An anonymous, unrefereed candidate preprint with exact arithmetic certificates and an inspectable written proof. Its review was internal and model-mediated; there has been no external peer review or proof-assistant formalisation.
 
 ## Summary for specialists
 
 For the nonlazy simple symmetric nearest-neighbour walk on $\mathbb Z^{26}$, started at zero and with $v=(17,0,\ldots,0)$, the candidate establishes
 
-$$p_{65}(v)>p_{67}(v)<p_{69}(v).$$
+$$
+p_{65}(v)>p_{67}(v)<p_{69}(v).
+$$
 
 These times belong to the same supported parity class. For every integer $d\ge64$, the endpoint $(\lceil3d/5\rceil,0,\ldots,0)$ has nonunimodal occupation probabilities in both discrete time and continuous time with total jump rate one. Dimension 64 is a sufficient threshold, not a minimum-dimension claim.
 
+| Result | Status |
+|---|---|
+| $p_{65}(v)>p_{67}(v)<p_{69}(v)$ for $d=26$, $v=(17,0,\ldots,0)$; Conjecture 3 is false (Theorem 1) | exact integer certificate |
+| For every $d\ge64$, $m=\lceil3d/5\rceil$: neither $t\mapsto q_t(v)$ nor $n\mapsto p_n(v)$ on its parity class is unimodal (Theorem 2) | written proof; finite rational inputs certified |
+| Parity-sensitive Poissonisation: continuous-time failure transfers to discrete time when the initial occupation is zero (Lemma 4) | written proof |
+| $q_{80}(v)>q_{120}(v)<q_{160}(v)$ for $d=40$, $v=(25,0,\ldots,0)$ (Proposition 8) | rational series certificate |
+| $\Psi(s)=s(1-r(s))$, $r=I_1/I_0$, has a unique maximum in $(1,2)$ (Appendix C) | written proof (supplementary) |
+
 ## Technical account
 
-The finite witness comes from disjoint multinomial allocations of positive and negative coordinate steps. The exact count $W_n$ is normalized by $(2d)^n$, so successive supported times require comparison with $(2d)^2$, not $2d$.
+**The finite witness.** It comes from disjoint multinomial allocations of positive and negative coordinate steps (Lemma 3). The exact count $W_n$ is normalized by $(2d)^n$, so successive supported times require comparison with $(2d)^2$, not $2d$. With $(2d)^2=52^2=2704$, the certificate proves rational bounds on $W_{67}/(2704W_{65})$ just below one and on $W_{69}/(2704W_{67})$ just above one; the decimal ratios are approximately $0.9998238864$ and $1.0000772522$, but no floating-point comparison is used in the proof.
+
+**The infinite family.**
 
 For the infinite family, the continuous-time occupation probability is
 
-$$q_t=e^{-t}I_m(t/d)I_0(t/d)^{d-1}.$$
+$$
+q_t=e^{-t}I_m(t/d)I_0(t/d)^{d-1}.
+$$
 
-Two rational Bessel-ratio inequalities make its logarithmic derivative negative at $2d$ and positive at $4d$. The proof controls the rounding in $m=\lceil3d/5\rceil$ uniformly. A parity-sensitive Poissonisation lemma then transfers nonunimodality back to discrete time. This transfer requires zero initial occupation at the nonzero endpoint.
+Two rational Bessel-ratio inequalities make its logarithmic derivative negative at $2d$ and positive at $4d$. The proof controls the rounding in $m=\lceil3d/5\rceil$ uniformly. A parity-sensitive Poissonisation lemma then transfers nonunimodality back to discrete time. This transfer requires zero initial occupation at the nonzero endpoint, and it uses an exact differential identity rather than a de-Poissonisation approximation.
 
-The counting identities and Bessel representation are classical. So is the variation-diminishing component of the transfer argument; the paper compares it precisely with Karp, Vishnyakova and Zhang's functional-series theorem. The claimed contribution is the counterexample and the uniform family.
+**Why the parameters work.** Writing $r(s)=I_1(s)/I_0(s)$ and $\Psi(s)=s(1-r(s))$, the rational bounds give $\Psi(2)>151/250=0.604$ and $\Psi(4)<273/500=0.546$. The ratio $3/5=0.6$ lies between these values, so the leading term of the logarithmic derivative is negative at $s=2$ and positive at $s=4$; the proof controls both the correction and the rounding in $m$.
+
+**What is classical.** The counting identities and Bessel representation are classical. So is the variation-diminishing component of the transfer argument; the paper compares it precisely with Karp, Vishnyakova and Zhang's functional-series theorem. The claimed contribution is the counterexample and the uniform family.
 
 ## Evidence, assurance and limitations
 

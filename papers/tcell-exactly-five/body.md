@@ -4,15 +4,23 @@ The same mathematical signalling model can have several stationary responses und
 
 The count follows from a written reduction and exact arithmetic. It concerns possible equilibria of the equations. Dynamical stability and physiological relevance remain unestablished.
 
+**Why it matters.** Knowing how many equilibria a model permits distinguishes its mathematical capabilities from behaviour seen in a particular simulation. Mathematical biologists and dynamical-systems researchers gain a precise target for structural, bifurcation and stability analysis; the witness is not fitted to biological data.
+
 ## Summary for specialists
 
 For the François model in the Rendall–Sontag formulation, take $N=100$, $\phi=\alpha=\beta=1$, $\kappa=S_T=1$, $b=1/10000$, $\gamma=8/5$, $\nu_1=1/100000$ and $\nu_2=11/500$. The conserved totals are
 
-$$R=1132653/71653,$$
+$$
+R=1132653/71653,
+$$
 
-$$L_1=6100061/7165300,$$
+$$
+L_1=6100061/7165300,
+$$
 
-$$L_2=1022000/71653.$$
+$$
+L_2=1022000/71653.
+$$
 
 There are exactly five distinct physical positive equilibria in this conservation class. Their scalar roots are simple, and the count persists on an open neighborhood in the eight named shared rates and four conserved totals, with $N$ fixed. Physical positivity includes free receptor, both free ligand pools and inactive phosphatase.
 

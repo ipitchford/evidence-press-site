@@ -1,18 +1,26 @@
 ## Summary
 
-Take two networks, form a square for each pair of edges, and divide every square into two triangles. The resulting surface-like object carries a tropical version of a divisor class group: a way to classify integer configurations after identifying those related by allowed piecewise-linear changes.
+**The object.** Take two networks, form a square for each pair of edges, and divide every square into two triangles. The resulting surface-like object carries a tropical version of a divisor class group: a way to classify integer configurations after identifying those related by allowed piecewise-linear changes.
 
-This unrefereed candidate gives a uniform description of that group. The two original networks contribute their own classes; pairs of independent cycles contribute an additional free part. The answer works for every choice of square diagonals. Parallel edges require an explicit local convention, and the paper carefully distinguishes the discrete ridge group from the larger group with continuous Jacobian factors.
+**What was found.** This unrefereed candidate gives a uniform description of that group. The two original networks contribute their own classes; pairs of independent cycles contribute an additional free part. The answer works for every choice of square diagonals. For simple networks this proves the product formula Lazar conjectured in 2017. Parallel edges require an explicit local convention, and the paper carefully distinguishes the discrete ridge group from the larger group with continuous Jacobian factors.
+
+**Who cares.** Tropical geometers and chip-firing researchers, computational algebra researchers, and readers interested in why rational dimension counts do not determine an integer class group.
+
+**Status.** An AI-assisted, unrefereed candidate. Formal verification, unaffiliated reproduction, specialist acceptance and historical priority are not established.
 
 ## Summary for specialists
 
 Let $G,H$ be finite connected loopless multigraphs, each with at least one edge, with circuit ranks $g,h$. Give edges unit length and use the Cartwright–Lazar structure constants on any independently diagonally triangulated product $\Gamma$. Under the branch-local Cartier convention, the written proof gives
 
-$$\operatorname{Pic}_r(\Gamma)\cong\mathbb Z^{2+gh}\oplus K(G)\oplus K(H),$$
+$$
+\operatorname{Pic}_r(\Gamma)\cong\mathbb Z^{2+gh}\oplus K(G)\oplus K(H),
+$$
 
 and
 
-$$\operatorname{Pic}(\Gamma)\cong J(G)\times J(H)\times\mathbb Z^{2+gh}.$$
+$$
+\operatorname{Pic}(\Gamma)\cong J(G)\times J(H)\times\mathbb Z^{2+gh}.
+$$
 
 Here $K$ denotes finite graph critical groups and $J$ denotes metric-graph Jacobian tori. The splittings are noncanonical. For simple factors, this proves Lazar's product formula; the multigraph extension uses branch germs, not restriction of global vertex potentials to stars.
 
@@ -50,7 +58,15 @@ The product question asks how divisor theory changes when graph factors form a t
 
 ## How to inspect or reproduce the recorded checks
 
-Download the evidence ZIP or clone the research repository. With Python 3.10 or later, install the pinned SymPy dependency using `python3 -m pip install -r requirements.txt`, then run `python3 release_check.py` from the extracted directory. It checks file hashes, exhaustive diagnostic parity and optimization-mode rejection. Expected output ends in PASS.
+Download the evidence ZIP or clone the research repository. With Python 3.10 or later, install the pinned SymPy dependency using `python3 -m pip install -r requirements.txt`, then run `python3 release_check.py` from the extracted directory. It checks file hashes, exhaustive diagnostic parity and optimization-mode rejection. Expected output ends in PASS. The diagnostic itself can be run directly:
+
+```sh
+python3 -m pip install -r requirements.txt
+python3 verify.py --exhaustive --out replay.json
+python3 release_check.py
+```
+
+The exhaustive run took about one minute in the producing environment; without `--exhaustive`, the 512-triangulation test is skipped and all other checks still run. That runtime says nothing about proof correctness.
 
 Read Theorems 1–2 and Sections 2–6 for the universal proof. The verifier's success is not a substitute for inspecting those arguments. The environment is specified but not hermetically pinned.
 

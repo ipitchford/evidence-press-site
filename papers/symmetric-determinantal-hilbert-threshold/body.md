@@ -1,54 +1,92 @@
 ## Summary
 
-How complicated is the series that counts a chosen symmetry type inside repeated tensor products? This candidate gives a single dividing line for complex orthogonal groups: every fixed nonzero genuine representation has an algebraic counting series in dimensions one, two and three, and none does in higher dimensions. All these series nevertheless satisfy linear differential equations with polynomial coefficients.
+This page explains, in order: what is being counted, what "algebraic" and "D-finite" mean for a counting series, what this release proves, why the answer stops at dimension three, and what has and has not been checked.
 
-The consequence is stronger than an invariant-only result: changing the chosen genuine representation cannot restore algebraicity above dimension three. This is an unrefereed written classification candidate, assembled from explicitly attributed classical inputs. Historical priority is not established.
+**What is being counted.** Symmetry groups act on spaces, and the simplest way to build bigger representations of a group is to take tensor powers: combine $N$ copies of the basic representation. The result breaks up into irreducible pieces, the "symmetry types". Here the group is the complex orthogonal group $O(m)$, the symmetries of $m$-dimensional space that preserve lengths, acting on its defining representation $V=\mathbb C^m$. Fix one symmetry type $W$ and record, for each $N$, how many copies of $W$ appear inside the $N$-fold tensor power. Packaging these counts as the coefficients of a power series gives a single object, the *counting series* of $W$.
+
+**Why the type of series matters.** Counting series come in tiers of complexity. An *algebraic* series satisfies a polynomial equation, so it can be written with square roots and similar radicals; for example, in dimension two the invariant series is $\tfrac12\big(1+1/\sqrt{1-4t^2}\big)$. A *D-finite* series satisfies a linear differential equation with polynomial coefficients. Every algebraic series is D-finite, but the D-finite class is much larger. Knowing which tier a family belongs to tells researchers what kind of closed formula is worth looking for.
+
+**What was found.** For the orthogonal group there is a clean dividing line. Every fixed nonzero genuine representation $W$ has a D-finite counting series in every dimension, and an algebraic one exactly when $m$ is one, two or three. From dimension four upwards no fixed genuine type is algebraic, so choosing a different type cannot restore algebraicity. The special case $W=$ trivial answers a question about the *symmetric determinantal quotients* (algebras built from symmetric matrices of rank at most $m$) recorded in the catalogue entry AIM-REPRESENTATION_THEORY-0022: the original proposed algebraicity assertion fails starting at rank four, and never returns.
+
+**Why it stops at three.** In tensor degree $N=2n$ the counts grow like $m^{2n}$ times a power $n^{-\alpha}$ with $\alpha=m(m-1)/4$, a number fixed by the dimension of the group. When $\alpha$ is a whole number the series must contain a logarithm; when it is a half-integer, the exact leading constant involves a power of $\pi$ that no algebraic series can produce. Both cases rule out algebraicity once $m\ge4$.
+
+**Status.** An unrefereed written classification candidate, assembled from explicitly attributed classical inputs. The scalar asymptotics and the rank-three formula have exact classical antecedents, and historical priority of the full classification is not established. The finite computer checks test formulas and conventions; they do not prove the universal theorem.
 
 ## Summary for specialists
 
 Let $V=\mathbb C^m$ be the defining representation and let $W\ne0$ be a fixed finite-dimensional algebraic representation of $O(m,\mathbb C)$, with $m\ge1$. Put
 
-$$P_W(t)=\sum_{N\ge0}b_W(N)t^N,$$
+$$
+P_W(t)=\sum_{N\ge0}b_W(N)t^N,
+$$
 
-$$b_W(N)=\dim\operatorname{Hom}_{O(m)}(W,V^{\otimes N}).$$
+$$
+b_W(N)=\dim\operatorname{Hom}_{O(m)}(W,V^{\otimes N}).
+$$
 
-The candidate proves that $P_W$ is D-finite for every $m$, and algebraic over $\mathbb C(t)$ if and only if $m\le3$. The quantifier includes reducible genuine representations, but excludes virtual subtraction and a representation varying with $N$.
+The candidate proves that $P_W$ is D-finite for every $m$, and algebraic over $\mathbb C(t)$ if and only if $m\le3$ (Section 9 of the paper). The quantifier includes reducible genuine representations, but excludes virtual subtraction and a representation varying with $N$.
 
 For the symmetric determinantal quotient, put
 
-$$S=\operatorname{Sym}(\operatorname{Sym}^2\mathbb C^\infty),$$
+$$
+S=\operatorname{Sym}(\operatorname{Sym}^2\mathbb C^\infty),
+$$
 
-$$B_m=S/I_{m+1}.$$
+$$
+B_m=S/I_{m+1},
+$$
 
-The invariant specialization gives algebraicity of its **symmetric-sequence ordinary Hilbert series** exactly for $m\le3$ (including the trivial $m=0$ case). This is not a claim about the usual finite-variable commutative Hilbert series.
+where $I_{m+1}$ is generated by the $(m+1)$-minors of the generic symmetric matrix, so $m$ is the allowed rank. The invariant specialization gives algebraicity of its **symmetric-sequence ordinary Hilbert series** exactly for $m\le3$ (including the trivial $m=0$ case). This is not a claim about the usual finite-variable commutative Hilbert series, which is rational.
+
+| Result | Where | Status |
+|---|---|---|
+| Invariant-theory bridge: $(B_m)_d\cong(V^{\otimes d})^{O(V)}$ and $H_m(t)=\int_K dg/(1-t\operatorname{tr}g)$ over $K=O(m,\mathbb R)$ | Section 2 | proof (classical fundamental theorems) |
+| Explicit series $H_1=1/(1-t^2)$, $H_2=\tfrac12\big(1+1/\sqrt{1-4t^2}\big)$, $H_3=\big(\sqrt{(1+3t)/(1-t)}-\sqrt{(1-3t)/(1+t)}\big)/(4t)$ | Sections 1, 6 | proof |
+| Scalar asymptotic $a_m(n)\sim c_m m^{2n}n^{-\alpha_m}$ for fixed $m\ge2$, with $c_2=1/(2\sqrt\pi)$, $c_3=3\sqrt6/(32\sqrt\pi)$, $c_4=1/(2\pi)$ | Section 3 | proof; constant already due to Regev |
+| Transcendence of the scalar series for every $m\ge4$ | Sections 4–5 | proof |
+| D-finiteness for every $m$ (Sam–Snowden plus a Hadamard product) | Sections 7, 12 | proof |
+| Every fixed nonzero genuine $W$: algebraic iff $m\le3$; explicit formulas for all types of $O(1)$, $O(2)$, $O(3)$ | Sections 9–12 | proof |
+| Rank four: $a_4(n)=(C_n^2+C_n)/2$ with $C_n$ the Catalan numbers | Section 7 | proof; comparison only, already in Sam–Snowden Example 7.11 |
 
 ## Technical account
 
-The low-dimensional side gives explicit formulas for all types of $O(1)$, $O(2)$ and $O(3)$. For $O(3)$, the half-line tensor-product recurrence must retain the exceptional boundary at spin zero; a parity projection then distinguishes the two extensions from $SO(3)$.
+**From invariants to an integral.** The classical first and second fundamental theorems for the orthogonal group identify the degree-$d$ piece of $B_m$ with the $O(m)$-invariant tensors in $V^{\otimes d}$. Averaging over the compact group $K=O(m,\mathbb R)$ then turns each count into a moment of the trace, $a_m(n)=\int_K(\operatorname{tr}g)^{2n}\,dg$. Covariants of a fixed type $W$ are handled the same way, with the character of $W$ inserted into the integral.
 
-For the obstruction, character integration over the full compact orthogonal group isolates the two maximal trace points, $I$ and $-I$. If the central parity of $W$ is $\varepsilon$, the compatible coefficients satisfy
+**The low-dimensional side.** The paper gives explicit formulas for all types of $O(1)$, $O(2)$ and $O(3)$. In dimension two the integral reduces to a constant term and gives $\tfrac12\binom{2n}{n}$. In dimension three the counts are walks governed by the Clebsch–Gordan rule. The half-line tensor-product recurrence must retain the exceptional boundary at spin zero; a parity projection then distinguishes the two extensions from $SO(3)$. The rank-three invariant formula is a specialization of Almkvist–Dicks–Formanek, Example 5.10.
 
-$$b_W(2n+\varepsilon)\sim K_W m^{2n}n^{-\alpha},$$
+**The obstruction.** Character integration over the full compact orthogonal group isolates the two maximal trace points, $I$ and $-I$. If the central parity of $W$ is $\varepsilon$, the compatible coefficients satisfy
 
-$$K_W=\dim(W)m^\varepsilon c_m,$$
+$$
+b_W(2n+\varepsilon)\sim K_W m^{2n}n^{-\alpha},
+$$
 
-$$\alpha=\frac{m(m-1)}4,$$
+$$
+K_W=\dim(W)m^\varepsilon c_m,
+$$
+
+$$
+\alpha=\frac{m(m-1)}4,
+$$
 
 where
 
-$$c_m=2^{1-m}(m/2)^\alpha\pi^{-m/2}\prod_{j=1}^m\Gamma(j/2).$$
+$$
+c_m=2^{1-m}(m/2)^\alpha\pi^{-m/2}\prod_{j=1}^m\Gamma(j/2).
+$$
 
-The scalar constant is already supplied by Regev's work. The manuscript also derives the normalization directly and explains why the two maximal points add rather than cancel on the compatible parity. Integer exponents force logarithmic singularities after differentiation. Half-integer exponents force a leading amplitude incompatible with algebraicity above dimension three. Mixed central parity is handled by extraction. D-finiteness follows through finitely generated covariants, bounded row support and the Sam–Snowden theorem.
+The scalar constant is already supplied by Regev's work. The manuscript also derives the normalization directly, from an exact volume formula for the full, disconnected group, and explains why the two maximal points add rather than cancel on the compatible parity. A radial form of the classical asymptotic obstruction to algebraicity (often called Flajolet's criterion) then finishes the argument. When $m\equiv0,1\pmod4$ the exponent is an integer, and integer exponents force logarithmic singularities after differentiation. When $m\equiv2,3\pmod4$ the exponent is a half-integer; the leading amplitude is then a nonzero algebraic number times a positive integral power of $1/\pi$, which is incompatible with algebraicity above dimension three because $\pi$ is transcendental. Mixed central parity is handled by extraction.
 
-The genuine-representation qualification is substantive. In dimension four the trivial and determinant multiplicities are $(C_n^2+C_n)/2$ and $(C_n^2-C_n)/2$. Their virtual difference is $C_n$, so subtraction cancels the high-rank obstruction. This illustration is not advertised as a new Catalan identity.
+**D-finiteness.** Each fixed covariant module is finitely generated and has bounded row support, so the Sam–Snowden theorem makes its exponential Hilbert series D-finite; a Hadamard product with $\sum_N N!\,t^N$ converts this to the ordinary series. Finite generation is verified in the paper rather than assumed.
+
+**Why "genuine" matters.** The genuine-representation qualification is substantive. In dimension four the trivial and determinant multiplicities are $(C_n^2+C_n)/2$ and $(C_n^2-C_n)/2$. Their virtual difference is $C_n$, so subtraction cancels the high-rank obstruction. This illustration is not advertised as a new Catalan identity.
 
 ## Evidence, assurance and limitations
 
-The package contains a thirteen-page integrated manuscript, precise source comparison, response matrix, preserved substantive reviews and five confirmation reports. Internal editorial confirmation accepted the scoped candidate with attribution and priority qualifications; it does not constitute independent journal peer review or externally established significance.
-
-Producer replay compares 463 tableau shapes, checks 841 weight and 841 spin multiplicities, verifies parity and dimension identities, and rejects a deliberately corrupted hook divisor under normal and optimized Python. Fresh extraction and Linux CI validate the shipped finite diagnostics. They do not prove the universal theorem. No formal verification or independent reimplementation is claimed.
-
-The theorem does not classify arbitrary modules over twisted commutative algebras, nonreduced thickenings, growing representation types or all virtual characters. D-finiteness alone supplies neither a useful differential-equation order nor an efficient coefficient algorithm.
+- **Proof.** The universal claims rest on the written argument in the thirteen-page integrated manuscript and on named classical inputs: the orthogonal fundamental theorems and restriction identity, Schur–Weyl duality, Newton–Puiseux, the transcendence of $\pi$, and the cited D-finiteness theorem and closure properties.
+- **Finite checks.** Producer replay compares 463 tableau shapes, checks 841 weight and 841 spin multiplicities, verifies parity and dimension identities, and rejects a deliberately corrupted hook divisor under normal and optimized Python. Fresh extraction and Linux CI validate the shipped finite diagnostics. They do not prove the universal theorem. No formal verification or independent reimplementation is claimed.
+- **Review.** The package contains a precise source comparison, response matrix, preserved substantive reviews and five confirmation reports. Internal editorial confirmation accepted the scoped candidate with attribution and priority qualifications; it does not constitute independent journal peer review or externally established significance.
+- **Scope.** The theorem does not classify arbitrary modules over twisted commutative algebras, nonreduced thickenings, growing representation types or all virtual characters. It excludes $W=0$ and positive characteristic. D-finiteness alone supplies neither a useful differential-equation order nor an efficient coefficient algorithm.
+- **Source record.** The catalogue excerpt behind the original question and its provenance are included in the package; the live AIM source has not been independently recovered.
 
 ## Relationship to earlier work
 
@@ -70,7 +108,16 @@ Algebraic series form a much narrower class than D-finite series. A sharp classi
 
 ## How to inspect or reproduce the recorded checks
 
-Download the versioned ZIP, compare its SHA-256 with `SHA256SUMS`, and extract it into a fresh directory. With Python 3.10 or later, run `python3 replay.py` and `python3 -O replay.py`. Both must report `PASS`; the receipt identifies the exact checks and their finite boundary. No third-party Python library is required. The manifest is checked before the diagnostics.
+Download the versioned ZIP, compare its SHA-256 with `SHA256SUMS`, and extract it into a fresh directory. With Python 3.10 or later and no third-party library:
+
+```sh
+python3 replay.py
+python3 -O replay.py
+```
+
+Both must report `PASS`; the receipt identifies the exact checks and their finite boundary. The manifest is checked before the diagnostics. A `PASS` covers scalar hook and corner dimensions, rank-three walks, low-rank formulas, optimized-mode mutation rejection and the package manifest; it does not prove the all-rank theorem.
+
+To read the mathematics, start with Section 1 of the paper (statement and explicit formulas), then Sections 4–5 for the obstruction and Sections 9–12 for the extension to every fixed type. `AI_INDEX.md` maps each claim to its evidence, and `CITATION_AUDIT.md` gives the theorem-by-theorem prior-work comparison.
 
 ## The most valuable next projects
 
@@ -84,4 +131,4 @@ Useful scrutiny would combine orthogonal representation theory, analytic combina
 
 ## What is in the evidence package
 
-The immutable candidate release includes the PDF and Markdown manuscript, Python verifiers and semantic controls, complete manifest, replay receipt, claim index, source audit, review history, editorial decision, citation metadata and component licences. Original prose is CC0; original code is MIT. Supplied full third-party papers are not redistributed. Historical paths in preserved reports are provenance, not dependencies needed to run the package.
+The immutable candidate release includes the PDF and Markdown manuscript, Python verifiers and semantic controls, complete manifest, replay receipt, claim index, source audit, review history, editorial decision, citation metadata and component licences. Original prose is CC0; original code is MIT. Supplied full third-party papers are not redistributed. Historical paths in preserved reports are provenance, not dependencies needed to run the package. The same files are in the GitHub release and the Zenodo record.

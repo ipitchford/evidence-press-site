@@ -1,10 +1,14 @@
 ## Summary
 
-A spanning tree connects every vertex of a graph without forming a cycle. The critical group has exactly as many elements as the graph has spanning trees. Can those group elements move one tree to any other in a way that respects every graph symmetry?
+**The question.** A spanning tree connects every vertex of a graph without forming a cycle. The critical group has exactly as many elements as the graph has spanning trees. Can those group elements move one tree to any other in a way that respects every graph symmetry?
 
-This candidate gives an exact existence test and counts the compatible actions. Its strongest family result covers any number of internally separate paths between two terminals: for a simple graph with at least three paths, the answer is yes precisely when the lengths are all different and at least one is even.
+**What was found.** This candidate gives an exact existence test and counts the compatible actions. Its strongest family result covers any number of internally separate paths between two terminals: for a simple graph with at least three paths, the answer is yes precisely when the lengths are all different and at least one is even.
 
-Replacing each edge by two edges can change the answer from no to yes. The topology and abstract symmetry group can remain the same. That is a structural consequence of the proof, not a pattern extrapolated from the examples.
+**A surprise.** Replacing each edge by two edges can change the answer from no to yes. The topology and abstract symmetry group can remain the same. That is a structural consequence of the proof, not a pattern extrapolated from the examples.
+
+**Who cares.** Algebraic graph theorists, torsor and chip-firing researchers, and computational group theorists: equal cardinalities alone do not guarantee a symmetry-compatible action.
+
+**Status.** An anonymous, unrefereed candidate. The universal claims rest on written proofs; formal verification, external specialist refereeing and historical priority are not established.
 
 ## Summary for specialists
 

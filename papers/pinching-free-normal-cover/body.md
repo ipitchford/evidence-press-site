@@ -1,10 +1,12 @@
 ## Summary
 
-Take a closed hyperbolic surface and cut it along enough disjoint curves to
+**The question.** A *Fuchsian group* is a group of symmetries of the hyperbolic plane; such groups describe hyperbolic surfaces. Their *critical exponent* measures exponential orbit growth: roughly, how rapidly the number of group translates within distance $R$ grows with $R$. At a 2012 AIM workshop, Kapovich asked (AIM Problem 4.3) for an infinitely generated Fuchsian group of the first kind whose critical exponent is not constant across its quasiconformal deformation space, that is, whether the exponent can change as the surface is continuously deformed.
+
+**The construction.** Take a closed hyperbolic surface and cut it along enough disjoint curves to
 leave a connected sphere with holes. A fixed normal cover then arranges copies
 of this cut-open surface like the vertices of a nonabelian free group.
 
-This anonymous, unrefereed candidate argues that the cover is always
+**What was found.** This anonymous, unrefereed candidate argues that the cover is always
 uniformised by an infinitely generated Fuchsian group of the first kind. Its
 critical exponent is below $1$ for every marked compact-base metric. When all
 cut curves are pinched to a common small length $\ell$, the exponent approaches
@@ -17,25 +19,15 @@ $$
 It therefore assumes infinitely many values inside one all-Fuchsian
 quasiconformal deformation family.
 
-The historical boundary matters. Astala and Zinsmeister (1995) appear already
+**The historical boundary.** The historical boundary matters. Astala and Zinsmeister (1995) appear already
 to answer the existential AIM question under a broad quasi-Fuchsian
 group-deformation reading. The present claim is an all-Fuchsian strengthening
 and a direct solution candidate only under the reduced surface-based reading.
 It is not presented as the first solution.
 
-## Why the problem matters
+**Status.** Anonymous, AI-assisted and unrefereed. The written proof is the evidence; finite replay checks the explicit collar identities. No unaffiliated reconstruction, formal verification or peer review is attached.
 
-The critical exponent measures exponential orbit growth. For finitely
-generated Fuchsian groups it is closely tied to the geometry of the limit set,
-but infinitely generated first-kind groups can have the entire boundary circle
-as limit set while still having exponent below $1$.
-
-AIM Problem 4.3 asks whether the exponent can vary within one reduced
-quasiconformal Teichmuller space. An all-Fuchsian answer is especially sharp:
-the variation occurs while every group continues to preserve a hyperbolic
-plane, rather than by moving into three-dimensional quasi-Fuchsian geometry.
-
-## The exact theorem candidate
+## Summary for specialists
 
 For every integer $g\ge 2$, choose a geometric symplectic basis
 $(a_i,b_i)$ of a closed genus-$g$ surface so that the $b_i$ form a disjoint
@@ -69,7 +61,9 @@ spaces, injective parametrisation, or arbitrary quasi-Fuchsian theorem is
 claimed. The value $\ell=0$ is a boundary degeneration, not a point of the
 family.
 
-## How the construction works
+## Technical account
+
+### How the construction works
 
 The epimorphism $q$ makes the cover regular with deck group $F_g$. A nontrivial
 normal subgroup of the cocompact surface lattice has the full boundary circle
@@ -87,7 +81,7 @@ surface group is convex cocompact, the subgroup is normal, and the quotient
 $F_g$ is nonamenable. It gives the strict inequality
 $\delta(\Gamma_m)<1$ at every compact-base metric.
 
-## The fixed-width pinching calculation
+### The fixed-width pinching calculation
 
 After cutting along the $b_i$, copies of one compact cell are indexed by
 $F_g$. A collar about a cut curve of length $\ell$ has half-width tending to
@@ -112,7 +106,9 @@ quotient is $O_g(\ell)$. Sullivan's bottom-of-spectrum formula then converts
 this into $1-\delta=O_g(\ell)$. Combined with the strict inequality below one,
 convergence rules out a finite set of exponent values.
 
-## What was checked and replayed
+## Evidence, assurance and limitations
+
+### What was checked and replayed
 
 The release package performs deterministic producer-side checks. It does not
 claim that finite computation proves the universal theorem.
@@ -131,7 +127,7 @@ claim that finite computation proves the universal theorem.
 - Public GitHub Actions rebuild the reader PDF from source before repeating the
   normal and optimized replay.
 
-## Evidence and assurance boundary
+### Evidence and assurance boundary
 
 The written manuscript is the evidence for the general mathematical claims.
 The finite program checks explicit identities, implementation invariants and
@@ -142,15 +138,14 @@ The supplied review was actioned point by point. Five producer-coordinated
 editorial roles initially held the package for repair. After the deformation-
 space bridge, closest-prior-work positioning, exact theorem-hypothesis maps,
 portable build, accessibility language and release receipts were repaired, one
-exact-archive domain confirmation returned `PASS_WITH_NOTES` at reported
-confidence $0.94$.
+exact-archive domain confirmation returned `PASS_WITH_NOTES`.
 
 Those are internal editorial records, not authenticated unaffiliated
 specialist review. Public availability, deterministic replay, independent
 rerun, independent reimplementation, formal verification, specialist review,
 editorial peer review, novelty and historical priority remain distinct.
 
-## Limitations and what remains open
+### Limitations and what remains open
 
 - Under a broad group-deformation reading, the existential AIM question
   appears already affirmative through Astala and Zinsmeister's quasi-Fuchsian
@@ -169,7 +164,7 @@ editorial peer review, novelty and historical priority remain distinct.
   alternatives, but mathematical notation is linearised rather than encoded
   with full semantic accessibility.
 
-## Who should care
+## Who should care, and why
 
 The release is aimed at researchers in Fuchsian and Kleinian groups,
 hyperbolic surfaces, regular covers, spectral geometry and infinite-type
@@ -177,7 +172,21 @@ Teichmuller theory. It may also be useful to reviewers studying how a short
 bridge among classical theorems should expose its interpretation, dependency
 and priority risks before candidate publication.
 
-## Where to inspect and replay
+## Why the problem matters
+
+The critical exponent measures exponential orbit growth. For finitely
+generated Fuchsian groups it is closely tied to the geometry of the limit set,
+but infinitely generated first-kind groups can have the entire boundary circle
+as limit set while still having exponent below $1$.
+
+AIM Problem 4.3 asks whether the exponent can vary within one reduced
+quasiconformal Teichmuller space. An all-Fuchsian answer is especially sharp:
+the variation occurs while every group continues to preserve a hyperbolic
+plane, rather than by moving into three-dimensional quasi-Fuchsian geometry.
+
+The contrast with the earlier example is concrete. Astala and Zinsmeister used a normal cover of a compact genus-three surface with abelian deck group $\mathbf Z^3$ and holomorphic quasi-Fuchsian deformations, including exponent values above one. Here the deck group is the nonamenable free group $F_g$, every compact-base exponent is below one, and pinching makes the exponents approach one from below.
+
+## How to inspect or reproduce the recorded checks
 
 Start with the PDF for the complete proof. In the archive, `CLAIM_SCOPE.md`
 states the exact theorem and exclusions, `SOURCES.md` maps every imported
@@ -186,12 +195,20 @@ and `reviews/internal/` preserves the role-separated editorial trail. Run
 `bash run_all.sh` from the repository root for the finite replay and package
 gates.
 
+The collar sanity check needs only Python's standard library:
+
+```sh
+python3 verify_estimates.py
+python3 -m unittest -v tests/test_mutations.py
+bash run_all.sh        # complete read-only package gate, after the PDF is built
+```
+
 The GitHub Actions run linked in the assurance panel is the public clean-
 checkout reconstruction. `MANIFEST.sha256` inventories the 55 non-circular
 payload files, while release-level `SHA256SUMS` binds the downloadable ZIP and
 PDF.
 
-## Next work
+## The most valuable next projects
 
 The highest-value next step is an unaffiliated mathematical reconstruction of
 the reflected group-space bridge and the fixed-width Rayleigh argument. A
@@ -201,7 +218,7 @@ sharper asymptotic for the exponent, while a formalisation should keep the
 elementary collar calculation separate from the imported normal-subgroup and
 spectrum theorems.
 
-## Paper, archive, and package map
+## What is in the evidence package
 
 - **Paper:** the canonical 9-page PDF contains the complete argument,
   hypothesis maps, positioning and bibliography.

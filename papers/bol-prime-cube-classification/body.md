@@ -4,15 +4,21 @@ For groups of prime-cube order, there are five possibilities up to relabelling. 
 
 It also supplies multiplication formulas and representatives, so the answer is a usable classification rather than a numerical census. The restriction matters: the paper does not classify the general trivial-centre branch of Bol loops.
 
+**Why ask?** A count at several small orders cannot settle a classification for every prime. Here a structural reduction explains how the family grows, while separating the exceptional behaviour at two and three. Finite-loop researchers can generate examples with specified structure, and classification-software developers can use the exceptional small-prime cases as tests.
+
 ## Summary for specialists
 
 Under ordinary isomorphism, including the five groups,
 
-$$N(2)=11.$$
+$$
+N(2)=11.
+$$
 
 For every odd prime $p$:
 
-$$N(p)=p+10.$$
+$$
+N(p)=p+10.
+$$
 
 The nonassociative counts are six and $p+5$. Each nonassociative model has centre $C_p$ and quotient $C_p^2$. Its associator is $\alpha(u,v,w)=\lambda(u)\det(v,w)$. Normalising the nonzero covector to $(1,0)$ leaves parameters $(\kappa,A,B)$ and an explicitly evaluated residual action.
 
@@ -22,9 +28,13 @@ Classical collection identities produce a five-parameter central-extension model
 
 For $p>3$, the residual changes use $a,d\ne0$ and arbitrary $c$:
 
-$$\kappa'=\kappa/a,\qquad B'=B/a^2.$$
+$$
+\kappa'=\kappa/a,\qquad B'=B/a^2.
+$$
 
-$$A'=(aA+cB)/(a^2d).$$
+$$
+A'=(aA+cB)/(a^2d).
+$$
 
 When $\kappa\ne0$, the invariant $B/\kappa^2$ retains every nonzero field value. It is not reduced to square classes. The disjoint cases yield $(p-1)+2+2+2=p+5$ nonassociative classes.
 
