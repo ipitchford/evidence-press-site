@@ -1,0 +1,195 @@
+{
+  "slug": "periodic-regulation-budget-monotonicity",
+  "title": "More budget never removes effort: the measure-order form of Gavish and Katriel's budget-monotonicity conjecture for periodic regulation",
+  "shortTitle": "More budget never removes effort",
+  "oneLine": "In Gavish and Katriel's model of seasonal control, raising the yearly effort budget never makes it optimal to do less at any time of year; the paper proves this and shows exactly where it stops holding.",
+  "abstract": "Many control problems share one shape: a stock (larvae, pests, a pool of susceptible people, a harvested population or a pollutant) is refilled by a seasonal inflow, decays naturally and is reduced by effort that removes a fixed fraction of what is present, continuously or in instantaneous pulses. With a fixed yearly effort budget the planner minimises the seasonally weighted average stock. Gavish and Katriel (Applied Mathematics & Optimization, 2026) conjectured that a larger budget never makes it optimal to do less at any time. This candidate proves the measure-order (weak) form of that conjecture: in their model, under their uniqueness assumption, the optimal effort assigned to every set of times is nondecreasing in the budget. Supports are nested, every pulse grows, and an optimal plan can be built incrementally. The strict inequality displayed in the source is false in general. The order survives caps on pulses and treatment rates; it can fail under seasonal prices or seasonal efficacy, and with finitely many dates under a nonlinear state cost (exact counterexamples, a sufficient price condition and an elasticity criterion are given). Under a dose budget with finitely many dates the problem becomes linear. The related vaccination conjecture (Conjecture 8 of Gavish and Katriel, Bulletin of Mathematical Biology, 2026) follows in measure form and pointwise except at a precisely described set of points. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-21",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "periodic optimal control",
+    "impulsive control",
+    "measure-valued controls",
+    "monotone comparative statics",
+    "budget monotonicity",
+    "pulse vaccination",
+    "pest and vector control",
+    "harvesting"
+  ],
+  "repoUrl": "https://github.com/ipitchford/periodic-regulation-budget-monotonicity",
+  "releaseUrl": "https://github.com/ipitchford/periodic-regulation-budget-monotonicity/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/periodic-regulation-budget-monotonicity/releases/download/v1.0.0-candidate/periodic-regulation-budget-monotonicity-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23538781",
+  "zenodoUrl": "https://zenodo.org/records/23538781",
+  "citeText": "Anonymous (2026). More budget never removes effort: the measure-order form of Gavish and Katriel's budget-monotonicity conjecture for periodic regulation. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23538781",
+  "evidence": "Written proofs of every theorem; exact rational and symbolic certificates for the identities, worked examples and counterexamples (241 exact instances of the core sign identities, the price and quadratic-cost counterexamples, dose-budget identities), replayed byte for byte by verify_all.py; labelled floating-point explorations for caps and prices.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. The main theorem and extensions have complete written proofs with the stated scope; finite-date results are labelled as such; internal AI-assisted and adversarial review only. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the approved revised manuscript and its exact check outputs. Versioned GitHub and Zenodo research archives are checked against the frozen release assets on 21 October 2026.",
+  "keyResults": [
+    "Budget monotonicity (Theorem 1.1, proof): for every pair of budgets M1 ≤ M2 the optimal effort measures satisfy μ_M1(E) ≤ μ_M2(E) for every Borel set E of times, under Gavish and Katriel's uniqueness assumption, including pulses and nonsmooth data. Supports are nested, pulses grow and optimal levels fall at every time.",
+    "The strict inequality displayed in the source conjecture is false in general; the weak form is the one the source's prose and first formulation assert.",
+    "Limits (proofs and exact certificates): monotonicity survives caps on pulses and treatment rates; it can fail with seasonal prices or seasonal efficacy, including among all effort measures with one continuous price, and with finitely many dates under a quadratic state cost; a price-band sufficient condition holds for finitely many dates.",
+    "Dose budgets with finitely many dates make the problem linear: with a unique best date, the optimum below an eradication threshold is one campaign there (proof).",
+    "The vaccination density conjecture (Gavish and Katriel, Conjecture 8) holds in measure form and pointwise except where the density formula is undefined or uses a discontinuous derivative representative (proof)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, verification re-review and adversarial review (including OpenAI gpt-5.6-sol)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "More budget never removes effort. An Evidence Press briefing. Many planning problems share one simple shape. Think of mosquito larvae, crop pests, people waiting to be vaccinated, or a harvested fish stock. A stock is refilled by a seasonal inflow, decays naturally, and is reduced by effort that removes a share of it, either steadily or in short pulses. With a fixed amount of effort each year, the planner wants the lowest seasonally weighted average stock. Gavish and Katriel worked out what the best plans look like, and conjectured that a bigger budget never makes it optimal to do less at any time of year. That is not obvious, because effort early in the year lowers the stock later, so extra money might in principle be better spent by moving effort between seasons. This release proves the conjecture in the form the authors describe in words. In their model, when the yearly budget rises, the optimal effort in every part of the year can only stay the same or grow. Treated seasons are nested, and no pulse ever gets smaller. So plans can be built step by step: if the budget goes up, add to the existing plan, and nothing already scheduled needs to be cancelled. The paper also shows where this stops. It survives limits on how much can be done at once. It can fail when effort is cheaper, or works better, in some seasons than in others; then extra budget can make it optimal to shrink one round. With fixed treatment dates, it can also fail when the cost of the stock is not proportional to its size. And if the budget counts doses rather than the share removed, the problem changes character, and the best plan is often a single campaign. A related conjecture by the same authors, about the timing of seasonal vaccination, also follows, apart from a narrow technical exception. The practical advice is to fix the unit of the budget first, and to check whether prices or efficacy vary with the season. These are mathematical results about a simple model, not field evidence. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on 21 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_all.py regenerates every check output byte for byte. A separate clean replay reproduced all outputs byte-identically, and the frozen archive was checked against that replay and replayed before release."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "AI reviewers recomputed key values (the counterexample derivatives, the worked example and random in-band price models) with separate code inside the producer workflow; this is implementation diversity, not external reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the measure-theoretic statements rest on written proofs."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Checks need Python with NumPy, SciPy, SymPy and Matplotlib; tested versions are recorded but not locked in a container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Gavish and Katriel (2026), Optimal regulation in a time-periodic environment: insights from a simple model. Applied Mathematics & Optimization 93, Article 22 (preprint arXiv:2502.06267).",
+      "url": "https://doi.org/10.1007/s00245-025-10374-z"
+    },
+    {
+      "citation": "Gavish and Katriel (2026), Optimal vaccination for contagious diseases with seasonal transmission. Bulletin of Mathematical Biology 88, Article 170.",
+      "url": "https://doi.org/10.1007/s11538-026-01741-0"
+    },
+    {
+      "citation": "Topkis (1978), Minimizing a submodular function on a lattice. Operations Research 26, 305–321.",
+      "url": "https://doi.org/10.1287/opre.26.2.305"
+    },
+    {
+      "citation": "Milgrom and Shannon (1994), Monotone comparative statics. Econometrica 62, 157–180.",
+      "url": "https://doi.org/10.2307/2951479"
+    },
+    {
+      "citation": "Quah (2007), The comparative statics of constrained optimization problems. Econometrica 75, 401–431.",
+      "url": "https://doi.org/10.1111/j.1468-0262.2006.00752.x"
+    },
+    {
+      "citation": "Agur, Cojocaru, Mazor, Anderson and Danon (1993), Pulse mass measles vaccination across age cohorts. PNAS 90, 11698–11702.",
+      "url": "https://doi.org/10.1073/pnas.90.24.11698"
+    },
+    {
+      "citation": "Shulgin, Stone and Agur (1998), Pulse vaccination strategy in the SIR epidemic model. Bulletin of Mathematical Biology 60, 1123–1148.",
+      "url": "https://doi.org/10.1016/S0092-8240(98)90005-2"
+    },
+    {
+      "citation": "Bayen, Rapaport and Tani (2020), Optimal periodic control for scalar dynamics under integral constraint on the input. Mathematical Control and Related Fields 10, 547–571.",
+      "url": "https://doi.org/10.3934/mcrf.2020010"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:periodic-regulation-budget-monotonicity",
+    "attemptIds": [
+      "ep-attempt:periodic-regulation-budget-monotonicity-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "A proof that optimal periodic effort measures are ordered in the budget (the measure-order form of the Gavish–Katriel conjecture), with exact boundaries: prices, efficacy, nonlinear costs and dose budgets, and the vaccination Conjecture 8.",
+      "scope": "Scalar linear periodic model S' = c − (δ + η)S with exponential pulses, linear weighted state cost and a budget of log-kill units, under the source's uniqueness assumption; price-band, elasticity and dose results only for finitely many treatment dates. Not an empirical claim about any intervention."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Conjecture 1 and Conjecture 8 are quoted verbatim from arXiv:2502.06267v2 and the open-access version of record of the vaccination paper; the weak measure-order reading is justified and the strict display shown false.",
+      "remainingRisks": [
+        "The regulation conjecture was compared with arXiv v2; the version of record's wording was not compared.",
+        "Pointwise Conjecture 8 has a stated residual exception set at discontinuities of the derivative of the transmission rate.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in periodic or impulsive optimal control check the finite-date comparison (Theorem 4.7) and the grid-restriction passage to all measures (Section 5).",
+      "claimCeiling": "Measure-order budget monotonicity in the stated scalar linear model under the source's uniqueness assumption, with the stated finite-date extensions. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "periodic-regulation-budget-monotonicity-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof and boundary map for budget monotonicity in periodic regulation.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
