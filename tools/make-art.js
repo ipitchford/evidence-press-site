@@ -40,6 +40,7 @@ art['sis-reconstruction-continuation'] = require('./sis-continuation-art').draw;
 art['sharp-shannon-window-law'] = require('./shannon-window-art').draw;
 art['periodic-regulation-budget-monotonicity'] = require('./periodic-regulation-art').draw;
 art['waiting-time-entropy-bound-counterexamples'] = require('./waiting-time-art').draw;
+art['levy-qsd-exponential-moments-restart'] = require('./levy-qsd-art').draw;
 const appliedTrioArt = require('./applied-trio-art');
 art['williamson-order-transfer'] = appliedTrioArt.williamson;
 art['processor-sharing-freshness'] = appliedTrioArt.freshness;
@@ -2084,6 +2085,7 @@ const palette = {
   'sharp-shannon-window-law':['#ffd36e','#ff9f80'],
   'periodic-regulation-budget-monotonicity':['#a9ebd3','#ffc184'],
   'waiting-time-entropy-bound-counterexamples':['#9fd0ff','#ffc184'],
+  'levy-qsd-exponential-moments-restart':['#9fd0ff','#ffd36e'],
   'mprk-nonnegative-two-cycles':['#ffc184','#a9ebd3'],
   'pass-and-swap-bounded-swaps':['#ffd36e','#a9ebd3'],
   'williamson-order-transfer':['#a9ebd3','#ffc184'],
@@ -2568,6 +2570,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'primitive-su-primitivity') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${primitiveSuArt.description}</desc><defs>`);
   if (slug === 'wales-20mph-attribution-manuscript') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${walesManuscriptArt.description}</desc><defs>`);
   if (slug === 'flat-schmidt-chains') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${flatSchmidtArt.description}</desc><defs>`);
+  if (slug === 'levy-qsd-exponential-moments-restart') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./levy-qsd-art').description}</desc><defs>`);
   if (slug === 'waiting-time-entropy-bound-counterexamples') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./waiting-time-art').description}</desc><defs>`);
   if (slug === 'periodic-regulation-budget-monotonicity') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./periodic-regulation-art').description}</desc><defs>`);
   if (slug === 'sharp-shannon-window-law') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./shannon-window-art').description}</desc><defs>`);
