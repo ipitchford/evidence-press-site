@@ -1,0 +1,205 @@
+{
+  "slug": "diameter-hitting-time-robustness",
+  "title": "Small diameter does not control hitting-time robustness",
+  "shortTitle": "Why a short diameter does not protect a random walk",
+  "oneLine": "Refutes Zuckerman's Conjecture 1.16 (ITCS 2026): explicit cubic and diameter-three graph families on which relative transition errors of size ε with ε·diameter → 0 still slow random-walk hitting times by unbounded factors, because the short routes are rarely used; with a proved resistance bound of 684 on the cubic family and a two-sided robustness bracket on the diameter-three family.",
+  "abstract": "A random walk is robust if an adversary who may change every transition probability by a small relative amount cannot make it much slower to reach its targets. Zuckerman (Markov chain robustness, ITCS 2026) conjectured that the largest safe relative change is at least a constant divided by the graph's diameter (Conjecture 1.16). This paper shows that the conjecture is false, even for graphs in which every vertex has exactly three neighbours. A graph can have short routes that the walk almost never uses; a small fixed bias that steers the walk away from a target accumulates between the rare visits to those routes, the target's stationary probability collapses, and Kac's formula turns that into a long hitting time. For an explicit family of cubic graphs J_b with N vertices and diameter O(log N), every effective resistance is at most 684, so unperturbed hitting times are of order N, and a fixed perturbation of size 1/b, with ε·diameter → 0, multiplies the worst-case hitting time by a factor of order b; the robustness is at most of order N^(-1/3). For explicit 3m-regular graphs G_m of diameter exactly three, the mixing time is at most 50(m+1), so with Zuckerman's mixing-time theorem the robustness lies between constant multiples of N^(-1/2) and N^(-1/4). An exact computation on G_54, with 5,995 vertices and ε·diameter = 0.74, shows a 5.80-fold slowdown. The paper also gives a diameter-two example without regularity, explains why reversible perturbations cannot do this, and shows that Kemeny's constant does not detect the effect. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-22",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Markov chains",
+    "random walks",
+    "hitting times",
+    "robustness",
+    "relative perturbations",
+    "effective resistance",
+    "mixing time",
+    "cubic graphs",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/diameter-hitting-time-robustness",
+  "releaseUrl": "https://github.com/ipitchford/diameter-hitting-time-robustness/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/diameter-hitting-time-robustness/releases/download/v1.0.0-candidate/diameter-hitting-time-robustness-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23575572",
+  "conceptDoi": "10.5281/zenodo.23575571",
+  "zenodoUrl": "https://zenodo.org/records/23575572",
+  "citeText": "Anonymous (2026). Small diameter does not control hitting-time robustness. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23575572",
+  "evidence": "Written proofs of every theorem; exact rational checks of the constructions, stationary balances, theorem-parameter algebra and the explicit resistance flow on small members; exact and labelled double-precision finite-size computations of hitting-time amplification, average and Kemeny hitting times and maximal resistances; verify_all.py reruns every check and reproduces the reference JSON byte for byte under python -B -O.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; exact computations, double-precision numerics, heuristics and open questions are labelled. Internal AI-assisted review, AI-assisted adversarial reviews by three different models and a verification re-review only. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the approved final manuscript and its exact check outputs. Versioned GitHub and Zenodo research archives are checked against the frozen release assets on 22 October 2026.",
+  "keyResults": [
+    "Zuckerman's Conjecture 1.16 (ITCS 2026), that hitting-time robustness is Ω(1/diameter), is false: fixed relative perturbations with ε·diameter → 0 multiply the worst-case expected hitting time by unbounded factors (proof).",
+    "Cubic graphs J_b on N_b = (2b²+1)(2b⁴+1)−1 vertices with diameter at most 12 log₂ b + O(1): every effective resistance is at most 684 (Theorem 3.2), so t_hit = Θ(N_b); a fixed perturbation of size 1/b amplifies t_hit by Ω(b), and ρ_hit(J_b; C) = O_C(N_b^(-1/3)) (proof).",
+    "3m-regular graphs G_m of diameter exactly three on (2m+1)(m+1) vertices: amplification at least b²/27 − o(1) at ε ~ 1/b when m = b⁴; the mixing time is at most 50(m+1) (Proposition 2.6), so with Zuckerman's Theorem 1.10 the robustness lies between Ω(N^(-1/2)) and O_C(N^(-1/4)), for C at least Zuckerman's constant (proof; the bracket is not matching).",
+    "Fixed reversible perturbations with ε ≤ c/diameter, c < 1, change t_hit by at most a bounded factor, so the counterexamples need nonreversibility; this recovers Zuckerman's tree theorem with an explicit constant (Proposition 5.1, proof; no novelty claimed).",
+    "Finite sizes (computations, not proofs): exact 5.80-fold slowdown on G_54 (5,995 vertices, ε·diameter = 0.74); 8.56-fold on J_2 (exact) and 40.1-fold on J_3 (double precision), both with ε·diameter > 1; Kemeny's constant changes only by factors 0.957 and 0.927."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, verification re-review and adversarial reviews (OpenAI gpt-5.6-sol, Anthropic Claude Opus 5.5 and OpenAI gpt-6-astra)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Small diameter does not control hitting-time robustness. An Evidence Press briefing. Picture a random walk on a network: at every step, the walker moves to a neighbour chosen at random. Algorithms use such walks to explore networks and sample data, and a basic measure of speed is the hitting time: the expected number of steps to reach a target. In practice the transition probabilities are never exact. So suppose an adversary may nudge every probability up or down by a small fraction, called epsilon. How large can epsilon be before the walk becomes much slower? That threshold is the walk's robustness. In a 2026 paper, David Zuckerman conjectured that it is at least a constant divided by the network's diameter, the largest number of steps between any two points. The intuition: if everything is close, a small bias has little room to do damage. This paper shows that the conjecture is false. The reason is that being close is not the same as being easy to reach. A network can have short routes that the walker almost never uses. Between two uses, the walker spends a long time in the bulk of the network, and a small bias pointing away from the target keeps adding up. The target's long-run share of visits becomes tiny, and the hitting time becomes huge. The paper builds two explicit families. In the first, every point has exactly three neighbours, and the paper proves that the electrical resistance between any two points is at most 684, which pins down the normal hitting time. A fixed bias that shrinks as the network grows still slows the walk by an unbounded factor. In the second family, the diameter is exactly three. There, the safe bias is proved to lie between two explicit powers of the network size. On one such graph with about six thousand points, an exact computation already shows a five point eight fold slowdown. Sharp thresholds, and the right replacement for diameter, remain open. This is an anonymous, AI-assisted, unrefereed candidate, checked by AI-assisted adversarial review, not peer review or independent reproduction. Published on 22 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_all.py reruns every check and writes deterministic JSON. A clean replay of the final package in a separate copy under python -B -O reproduced the reference results byte for byte; the frozen archive was bound to it by hash, and the checks affected by publication changes were rerun."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "AI-assisted adversarial audits independently implemented the resistance flows, the regular-family recurrence and the leaf-clock generator and re-derived the thresholds; producer-side, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3 with python-flint (exact J_2 and G_m) and NumPy (J_3 and mixing numerics); other checks use the standard library. Versions listed, not locked in a container; the J_3 values are double precision."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Zuckerman (2026), Markov chain robustness. 17th Innovations in Theoretical Computer Science Conference (ITCS 2026), LIPIcs 362, 118:1–118:22 (source of Conjecture 1.16).",
+      "url": "https://doi.org/10.4230/LIPIcs.ITCS.2026.118"
+    },
+    {
+      "citation": "Azar, Broder, Karlin, Linial and Phillips (1996), Biased random walks. Combinatorica 16(1), 1–18.",
+      "url": "https://doi.org/10.1007/BF01300124"
+    },
+    {
+      "citation": "Chandra, Raghavan, Ruzzo, Smolensky and Tiwari (1996), The electrical resistance of a graph captures its commute and cover times. Computational Complexity 6(4), 312–340.",
+      "url": "https://doi.org/10.1007/BF01270385"
+    },
+    {
+      "citation": "Aldous and Fill (2002, recompiled 2014), Reversible Markov Chains and Random Walks on Graphs (rarely used shortcuts, Section 4.3.5).",
+      "url": "https://www.stat.berkeley.edu/~aldous/RWG/book.html"
+    },
+    {
+      "citation": "Haslegrave, Sauerwald and Sylvester (2022), Time dependent biased random walks. ACM Transactions on Algorithms 18(2), Article 12.",
+      "url": "https://doi.org/10.1145/3498848"
+    },
+    {
+      "citation": "Olesker-Taylor, Sauerwald and Sylvester (2026), Time-biased random walks and robustness of expanders. Proceedings of SODA 2026, 2928–2941.",
+      "url": "https://doi.org/10.1137/1.9781611978971.109"
+    },
+    {
+      "citation": "Ding and Peres (2013), Sensitivity of mixing times. Electronic Communications in Probability 18, paper 88.",
+      "url": "https://doi.org/10.1214/ECP.v18-2765"
+    },
+    {
+      "citation": "Hermon and Kozma (2024), Sensitivity of mixing times of Cayley graphs. Canadian Journal of Mathematics 76(4), 1400–1431.",
+      "url": "https://doi.org/10.4153/S0008414X23000421"
+    },
+    {
+      "citation": "Levin and Peres, with Wilmer (2017), Markov Chains and Mixing Times, 2nd edition. American Mathematical Society.",
+      "url": "https://doi.org/10.1090/mbk/107"
+    },
+    {
+      "citation": "Lyons and Peres (2016), Probability on Trees and Networks. Cambridge University Press (Thomson's principle).",
+      "url": "https://doi.org/10.1017/9781316672815"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:diameter-hitting-time-robustness",
+    "attemptIds": [
+      "ep-attempt:diameter-hitting-time-robustness-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Explicit cubic and diameter-three graph families with fixed relative transition perturbations of size ε, ε·diameter → 0, that amplify worst-case hitting times by unbounded factors, refuting Zuckerman's Conjecture 1.16 (ITCS 2026); with a uniform effective-resistance bound of 684 on the cubic family and a two-sided, non-matching robustness bracket for the diameter-three family.",
+      "scope": "Simple random walk on finite connected graphs under Zuckerman's standard relative-error adversary; the perturbations are fixed, nonreversible and aligned with a target. The cubic family has logarithmic diameter; the constant-diameter family has growing degree. No sharp robustness scale, positive replacement parameter or statement about typical or empirical networks."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Zuckerman's definitions of the standard adversary, hitting times, Definitions 1.8 and 1.9 and Conjecture 1.16 are quoted verbatim from the CC-BY source and formalised as a statement with fixed constants c and C; the refutation exhibits one fixed admissible matrix per instance.",
+      "remainingRisks": [
+        "Conjecture 1.16 uses an implied constant C; the robustness lower bounds hold only for C at least the absolute constant implicit in Zuckerman's Theorem 1.10 and Proposition 2.12.",
+        "The source thinks of the maximum degree as small or constant; the diameter-three family has growing degree, and the bounded-degree cubic family has logarithmic diameter and is certified only asymptotically.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a Markov-chain specialist check the resistance bound (Theorem 3.2), the cubic depletion argument (Section 3) and the mixing bound (Proposition 2.6).",
+      "claimCeiling": "Refutation of Zuckerman's Conjecture 1.16 as quoted and formalised, by explicit cubic and diameter-three families, with the stated resistance, mixing-time and robustness bounds; finite computations labelled exact or numerical. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "diameter-hitting-time-robustness-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable refutation of a published conjecture on Markov chain robustness.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

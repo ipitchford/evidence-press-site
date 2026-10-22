@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Small diameter does not control hitting-time robustness. An Evidence Press briefing. Picture a random walk on a network: at every step, the walker moves to a neighbour chosen at random. Algorithms use such walks to explore networks and sample data, and a basic measure of speed is the hitting time: the expected number of steps to reach a target. In practice the transition probabilities are never exact. So suppose an adversary may nudge every probability up or down by a small fraction, called epsilon. How large can epsilon be before the walk becomes much slower? That threshold is the walk's robustness. In a 2026 paper, David Zuckerman conjectured that it is at least a constant divided by the network's diameter, the largest number of steps between any two points.",
+      "inputSha256": "c3211648fe1216970c919341de0c14aeae2dc1942e8237cc2cecafdcf7802600",
+      "audioSha256": "52570b1ee339ce7ef9dbcfd7739e90aa9d5915012b643a72c32b6d39d33378ac",
+      "requestId": "req_44aa007b349540f9b08cbf1f2b8ecf0c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the largest number of steps between any points",
+        "heardEnding": "a constant divided by the network s diameter the largest number of steps between any points",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The intuition: if everything is close, a small bias has little room to do damage. This paper shows that the conjecture is false. The reason is that being close is not the same as being easy to reach. A network can have short routes that the walker almost never uses. Between two uses, the walker spends a long time in the bulk of the network, and a small bias pointing away from the target keeps adding up. The target's long-run share of visits becomes tiny, and the hitting time becomes huge. The paper builds two explicit families. In the first, every point has exactly three neighbours, and the paper proves that the electrical resistance between any two points is at most 684, which pins down the normal hitting time.",
+      "inputSha256": "c3c0d72629c720ca6f16e520b970a67146aaf2b8b1a9afba11320cd5cee86070",
+      "audioSha256": "deb90bbbf5364ba2e407b99fd45930a5eb8d2d65147c7859f8a4b1c8d5ad655a",
+      "requestId": "req_649a73205e7b4aebb7449e0e057d6d11",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "most which pins down the normal hitting time",
+        "heardEnding": "the electrical resistance between any points is at most which pins down the normal hitting time",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "A fixed bias that shrinks as the network grows still slows the walk by an unbounded factor. In the second family, the diameter is exactly three. There, the safe bias is proved to lie between two explicit powers of the network size. On one such graph with about six thousand points, an exact computation already shows a five point eight fold slowdown. Sharp thresholds, and the right replacement for diameter, remain open. This is an anonymous, AI-assisted, unrefereed candidate, checked by AI-assisted adversarial review, not peer review or independent reproduction. Published on 22 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "7d469b10cb65025b9a9b940c647423d4f7992a42878c717459ffcba84a25c0c1",
+      "audioSha256": "ae269d72418fd90f849d1354b05d411b2a7b4429d825c72b902160a95c099107",
+      "requestId": "req_71a7f0dd86e640c1b5d47abe60d34094",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "diameter-hitting-time-robustness",
+  "generatedAt": "2026-10-22T19:26:49.973Z",
+  "sourceMetadata": "papers/diameter-hitting-time-robustness/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "75f7557f88ab032ff4841d3c8eda5482138934c9a6078641038e572834d6fd30",
+  "transcriptPath": "assets/audio/diameter-hitting-time-robustness.txt",
+  "transcriptSha256": "78922c53c5d6cc6d0a9beb04fa894449490664e987f0c3b23f30f44cfa190e40",
+  "audioPath": "assets/audio/diameter-hitting-time-robustness.mp3",
+  "audioSha256": "3dd2335f5813e514ab12965d790b08b367f41a090b5cd283f7a633484c9d6e0d",
+  "audioBytes": 2436908,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
