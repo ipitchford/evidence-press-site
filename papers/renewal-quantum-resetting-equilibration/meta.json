@@ -1,0 +1,215 @@
+{
+  "slug": "renewal-quantum-resetting-equilibration",
+  "title": "Renewal resetting of quantum dynamics: a classification for complete resets, a reduction for jump channels, and critical time scales",
+  "shortTitle": "When randomly reset quantum systems settle down",
+  "oneLine": "A quantum system reset at independent random times settles, for every gate and reset state, exactly when resets surely recur and are not locked to a lattice, even if the mean time between resets is infinite; imperfect resets reduce to complete ones under a checkable condition, and at the critical power-law hazard settling can take more than a billion steps.",
+  "abstract": "A quantum system evolves step by step and is occasionally reset; the times between resets are independent and may have an infinite mean. When does the averaged state settle down, and to what? Wald, Yao, Platini, Hooley and Carollo (Quantum, 2025) inferred from estimates and numerics that, for reset hazards γ/(n+1)^α, a steady state is expected for α < 1 and probably for α = 1, but not for α > 1; this paper proves rigorously what they inferred and identifies the limit. For complete resets in finite dimension, every waiting-time law is classified: the state converges for every gate and reset state exactly when resets surely recur and their times are not locked to a lattice, and the limit or surviving oscillation is identified in every other case, including defective clocks and distinct initial states. This part is a short consequence of classical renewal theory (Erdős–Feller–Pollard, Feller, Orey). For proper infinite-mean clocks and unitary dynamics on a separable Hilbert space, the trace-norm distance to the surviving pure-point orbit tends exactly to 1 − m_pp, the reset state's continuous spectral mass, and no trace-norm convergent subsequence exists unless that mass is zero. For imperfect resets described by a general jump channel that need not commute with the free evolution, the dynamics is asymptotically complete resetting to an effective state under a unit-circle nonresonance condition (W); (W) is characterised, decidable exactly for finitely supported clocks, open and dense, and extended to conserved observables. This is a sufficient condition, not a classification of all jump processes. For the critical hazard γ/(n+1), coherences decay like t^(−min{γ, 1−γ}) with an explicit uniform remainder, endpoint and near-resonance crossovers are described, small consecutive changes are shown not to certify proximity to the limit, no rate holds uniformly over clocks, and dephasing can require more than 10⁹ steps. Exact and floating-point finite computations corroborate the formulas and examples; they do not prove the limit theorems. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-23",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "stochastic resetting",
+    "quantum resetting",
+    "renewal theory",
+    "infinite-mean waiting times",
+    "quantum channels",
+    "dephasing",
+    "Sibuya distribution",
+    "Wiener lemma",
+    "continuous spectrum"
+  ],
+  "repoUrl": "https://github.com/ipitchford/renewal-quantum-resetting-equilibration",
+  "releaseUrl": "https://github.com/ipitchford/renewal-quantum-resetting-equilibration/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/renewal-quantum-resetting-equilibration/releases/download/v1.0.0-candidate/renewal-quantum-resetting-equilibration-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23580221",
+  "conceptDoi": "10.5281/zenodo.23580220",
+  "zenodoUrl": "https://zenodo.org/records/23580221",
+  "citeText": "Anonymous (2026). Renewal resetting of quantum dynamics: a classification for complete resets, a reduction for jump channels, and critical time scales. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23580221",
+  "evidence": "Written proofs of every theorem, proposition and corollary; exact rational-arithmetic checks of identities and examples at finite times (age law against renewal convolution for 23 clocks, four channels and two initial states; direct, renewal and factorised-kernel jump-channel computations; the cancellation, shift, leakage, identical-tail, SWAP and mixing examples; the reset-count identity; exact decision of condition (W) for the finitely supported examples); labelled floating-point checks of the uniform Sibuya bound, the crossovers, the diagnostic values and the time-scale table; one deterministic verifier (verify_all.py) whose JSON report reproduces byte for byte. Finite computations corroborate, and do not prove, the limit theorems.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; the time-scale table and fitted rates are numerical estimates and are labelled as such. The jump-channel result is a sufficient condition, not a necessary one and not a classification. Internal AI-assisted review and AI-assisted adversarial audits only. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the revised merged manuscript (dated 23 October 2026) and its deterministic verifier report. Versioned GitHub and Zenodo research archives are to be checked against the frozen release assets before publication.",
+  "keyResults": [
+    "Complete resets in finite dimension: every renewal clock falls into one of four regimes; a clock makes every finite-dimensional unitary reset system converge if and only if it is proper and aperiodic, and every aperiodic infinite-mean clock gives the dephased state D_U(ρ). This is a short consequence of classical renewal theory (Theorems 2.1–2.2, 4.1, Propositions 4.2–4.3, proof).",
+    "Power hazard of Wald et al.: for r_n = γ/(n+1)^α with 0 < γ < 1, the state converges to a survival-weighted mixture for α < 1, to D_U(ρ) for α = 1, and for α > 1 approaches a rotating orbit that converges if and only if the reset state commutes with the gate (Corollary 2.3, proof).",
+    "Infinite dimension: for a proper infinite-mean clock and a unitary on a separable Hilbert space, the trace-norm distance to the surviving pure-point orbit tends to 1 − m_pp; a trace-norm convergent subsequence exists only if m_pp = 1 (Theorem 6.1, proof).",
+    "Jump channels: under the nonresonance condition (W), imperfect resetting with a possibly noncommuting jump channel is asymptotically complete resetting to an effective state ρ_eff in laboratory time; (W) is characterised at w = 1, for unital and unitary pairs, is open and dense, is decided exactly for finitely supported clocks, and extends to conserved observables. Sufficient but not necessary (Proposition 5.6 gives a counterexample to necessity); examples show what each hypothesis does (Theorems 5.1, 5.8, Proposition 5.3, Lemma 5.4, Propositions 5.5–5.7, proof).",
+    "Critical clock r_n = γ/(n+1): coherences decay like t^(−min{γ,1−γ}) with an explicit remainder uniform in γ; endpoint and near-resonance crossovers; consecutive increments are much smaller than the distance to the limit for γ > 1/2; no rate holds uniformly over clocks (Theorems 7.1, 7.5, 7.6, 8.1, Proposition 7.4, proof).",
+    "Time scales: from the two-term asymptotics, coherence at z = −1 stays below 1% only after about 6.4 × 10³ steps at γ = 1/2 and about 2.3 × 10⁹ steps at γ = 0.2 or 0.8 (Table 4, numerical estimates)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review in five roles and AI-assisted adversarial audits before and after revision (including OpenAI gpt-6-astra via Codex)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When reset quantum systems settle down. An Evidence Press briefing. Picture a quantum device that applies the same operation, step after step, but now and then wipes the system back to a fixed starting state, at random times. Does the average state eventually settle down, and if so, to what? Resetting is a common way to steer quantum devices, so the answer matters. In 2025, Wald, Yao, Platini, Hooley and Carollo studied rules in which the chance of a reset falls as time passes since the last one, at a rate set by a number called alpha. From estimates and simulations, they inferred the answer. This paper proves it. There are three findings. First, for complete resets, the paper covers every possible reset clock. In a finite system, the state always settles exactly when resets surely keep coming and are not locked to a regular rhythm. This holds even when the average wait between resets is infinite. For their family: with alpha below one, the state settles to a weighted mixture. With alpha equal to one, it settles to a dephased state. Above one, it keeps rotating, unless the reset state and the operation commute. Second, for imperfect resets, the paper gives a sufficient condition, not a full classification. If a checkable condition rules out locked phases, the system behaves in the long run like a perfect reset to an effective state. Finally, at alpha equal to one, settling can be extremely slow. Numerical estimates suggest over a billion steps in some cases, far beyond today's hardware. There are limits. The core mathematics is classical renewal theory, from Erdős, Feller and Pollard, Orey, and Blackwell. Finite computer checks support the formulas but do not prove the limit theorems. This is an anonymous, unrefereed candidate. So far it has had only AI-assisted checks, including an adversarial review. It has not been peer reviewed, independently reproduced or formally verified. Its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files by full download; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_all.py runs every exact and floating-point check under python -B -O and writes a deterministic JSON report. A clean replay of the revised package into a fresh output directory reproduced the shipped verification.json byte for byte, and the frozen release archive was replayed the same way before publication. A non-blocking Linux CI rerun completed all checks, but its JSON report is not byte-identical to the macOS record."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "The package contains a separately written exact age-chain verifier (13 clocks, four channels, two initial states), and the AI-assisted adversarial audits ran their own checks; both are producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.13 with numpy 2.4.4, scipy 1.17.1, matplotlib 3.10.8, sympy 1.14.0 and mpmath 1.3.0, recorded in results/environment.json. Versions are listed, not locked in a container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Wald, Yao, Platini, Hooley and Carollo (2025), Stochastic resetting in discrete-time quantum dynamics: steady states and correlations in few-qubit systems. Quantum 9, 1742 (the power-hazard question answered here).",
+      "url": "https://doi.org/10.22331/q-2025-05-13-1742"
+    },
+    {
+      "citation": "Erdős, Feller and Pollard (1949), A property of power series with positive coefficients. Bulletin of the American Mathematical Society 55, 201–204 (the discrete renewal theorem).",
+      "url": "https://doi.org/10.1090/S0002-9904-1949-09203-0"
+    },
+    {
+      "citation": "Orey (1962), An ergodic theorem for Markov chains. Zeitschrift für Wahrscheinlichkeitstheorie und verwandte Gebiete 1, 174–176 (memory loss for null-recurrent chains).",
+      "url": "https://doi.org/10.1007/BF01844420"
+    },
+    {
+      "citation": "Michelitsch, D'Onofrio, Polito and Riascos (2025), Random walks with stochastic resetting in complex networks: a discrete-time approach. Chaos 35, 013119 (renewal representation and the Sibuya kernel).",
+      "url": "https://doi.org/10.1063/5.0238517"
+    },
+    {
+      "citation": "Vacchini (2020), Quantum renewal processes. Scientific Reports 10, 5592 (ordered renewal expansions with completely positive jumps).",
+      "url": "https://doi.org/10.1038/s41598-020-62260-z"
+    },
+    {
+      "citation": "Budini and Grigolini (2009), Non-Markovian nonstationary completely positive open-quantum-system dynamics. Physical Review A 80, 022103.",
+      "url": "https://doi.org/10.1103/PhysRevA.80.022103"
+    },
+    {
+      "citation": "Bruneau, Joye and Merkli (2008), Random repeated interaction quantum systems. Communications in Mathematical Physics 284, 553–581 (event-indexed products of random channels).",
+      "url": "https://doi.org/10.1007/s00220-008-0580-8"
+    },
+    {
+      "citation": "Movassagh and Schenker (2021), Theory of ergodic quantum processes. Physical Review X 11, 041001.",
+      "url": "https://doi.org/10.1103/PhysRevX.11.041001"
+    },
+    {
+      "citation": "Sevilla and Valdés-Hernández (2023), Dynamics of closed quantum systems under stochastic resetting. Journal of Physics A 56, 034001.",
+      "url": "https://doi.org/10.1088/1751-8121/acb29d"
+    },
+    {
+      "citation": "Evans, Majumdar and Schehr (2020), Stochastic resetting and applications. Journal of Physics A 53, 193001 (review of classical resetting).",
+      "url": "https://doi.org/10.1088/1751-8121/ab7cfe"
+    },
+    {
+      "citation": "Nagar and Gupta (2016), Diffusion with stochastic resetting at power-law times. Physical Review E 93, 060102(R) (classical analogue of the infinite-mean case).",
+      "url": "https://doi.org/10.1103/PhysRevE.93.060102"
+    },
+    {
+      "citation": "Lamperti (1958), An occupation time theorem for a class of stochastic processes. Transactions of the American Mathematical Society 88, 380–387 (the generalised arcsine law behind the near-resonance profile).",
+      "url": "https://doi.org/10.1090/S0002-9947-1958-0094863-X"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:renewal-quantum-resetting-equilibration",
+    "attemptIds": [
+      "ep-attempt:renewal-quantum-resetting-equilibration-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "regime-stitching",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Long-time behaviour of the ensemble-averaged state of discrete-time quantum dynamics under renewal resetting: a classification for complete resets with every waiting-time law in finite dimension, the trace-norm defect 1 − m_pp in separable infinite dimension, a laboratory-time reduction for noncommuting jump channels under condition (W), and uniform rates, crossovers and time scales for the critical hazard γ/(n+1) studied by Wald et al. (2025).",
+      "scope": "Independent identically distributed waiting times independent of the quantum state; fixed reset state or jump channel; time-homogeneous free evolution; averaged density matrix only. The jump-channel result is sufficient, not necessary; a characterisation of the jump processes for which the reduction holds ((W) is not necessary), a rate for the jump-channel reduction under a Sibuya clock, general infinite-dimensional channels, two-time correlations and measurement-triggered or correlated clocks are open. The time-scale table is numerical."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Wald et al. pose no formal open problem; their hedged expectations for α > 1, α < 1 and α = 1 are quoted from their Section 4, their reset convention (a reset occupies its step and applies no gate) is the one used here, and their difference condition (Eqs. (34)–(36) of the published version) is evaluated in Remark 2.4.",
+      "remainingRisks": [
+        "The paper proves what Wald et al. inferred; it does not settle a problem they posed.",
+        "The scalar and finite-dimensional complete-reset classification is a short consequence of classical renewal theory; the novelty claim rests on the trace-norm defect, the jump-channel reduction and the uniform critical-clock estimates.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in quantum channels and renewal theory check the laboratory-time step of the jump-channel reduction (Theorem 5.1) and the trace-norm block argument of Theorem 6.1, and rerun verify_all.py outside the producer workflow.",
+      "claimCeiling": "The complete-reset classification (classical in substance), the separable trace-norm defect, the sufficient jump-channel reduction under (W) with its characterisation and decision procedure, and the critical-clock uniform estimates, within the stated independence and averaged-state scope; time-scale values are numerical estimates. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "renewal-quantum-resetting-equilibration-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable rigorous account of when renewal-reset quantum dynamics equilibrates, including infinite-mean clocks and imperfect resets.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
