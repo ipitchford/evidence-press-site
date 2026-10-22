@@ -1,0 +1,109 @@
+## Summary
+
+**The setting.** Quantum computers and simulators work in steps: the same operation, a *gate*, is applied again and again. A *reset* puts the system back into a fixed starting state. If resets happen at random times, one can ask what the system looks like on average over many runs. Experimenters use such random resets to steer an ensemble towards a chosen state, so the question is practical. The waiting time between resets is random. It may even follow a heavy-tailed law whose average is infinite: most waits are short, but very long ones are common enough to make the mean infinite.
+
+**The question.** Averaged over many runs, does the state settle down, and to what? In 2025 Wald, Yao, Platini, Hooley and Carollo studied resets whose probability falls with the time since the last reset, $r_n=\gamma/(n+1)^\alpha$. From estimates and simulations they expected no steady state for $\alpha>1$, a steady state for $\alpha<1$, and probably one at the borderline $\alpha=1$, where the mean waiting time is infinite. They did not pose a formal problem.
+
+**What was found.** This paper proves rigorously what Wald et al. inferred, and identifies the limit in each case. It then goes further in three directions.
+
+- **Complete resets, finite systems.** The state settles for every gate and every reset state exactly when two things hold: resets are certain to keep happening, and their timing is not locked to a regular rhythm (for example, resets only at even steps). An infinite mean does not stop settling. At $\alpha=1$ the state converges to the reset state with its coherences between different energy levels removed. For $\alpha>1$ some runs never reset again, and their contribution keeps rotating. This part follows quickly from classical renewal theory, and the paper says so.
+- **Infinite systems.** Part of the state can drift away for ever. The paper shows that the distance from the best candidate limit tends to exactly the share of the reset state that lies in the continuous part of the spectrum.
+- **Imperfect resets.** Real resets are often imperfect: they may leave some error, or reset only one subsystem. The paper models the reset as a general *jump channel*. Under a checkable condition, (W), the long-time behaviour is the same as a complete reset to an effective state. (W) is sufficient but not necessary: the paper also gives an example where (W) fails and the conclusion still holds.
+- **How long it takes.** At the borderline $\alpha=1$ settling is slow. For a qubit whose two levels differ by a phase of $\pi$, bringing the coherence below 1% takes about 6,400 steps in the most favourable case, $\gamma=1/2$, and about $2\times10^9$ steps at $\gamma=0.2$ or $0.8$. These are numerical estimates from the proved asymptotics, but the paper also proves that at $\gamma=0.2$ the coherence still exceeds 1% after $10^9$ steps.
+
+**Why it matters to users.** Whether a reset protocol produces a steady state depends on the waiting-time law only through two features: whether resets surely recur, and whether they are locked to a lattice. The mean does not matter. But with heavy tails, convergence can be far too slow to see on current hardware, which runs perhaps $10^3$–$10^4$ coherent layers. A small change from one step to the next is also a poor stopping rule. In one example, after a million steps the state changes by only about $2\times10^{-7}$ per step, yet it is still about $0.11$ away from its limit in trace distance.
+
+**Status.** An anonymous, AI-assisted, unrefereed candidate. Every theorem has a written proof. The supporting computations can be rerun; they corroborate formulas and examples but do not prove the limit theorems. There has been no external peer review or independent reproduction.
+
+## Summary for specialists
+
+At each step, with probability $r_n$ depending on the current age $n$ (steps since the last reset), the state is replaced by $\rho$ and the age set to $0$; otherwise a channel $\Phi$ is applied and the age increases. A reset occupies its step, as in Wald et al. Waiting times $L$ are independent and identically distributed. The clock is *proper* if $q=\Pr(L=\infty)=0$, *aperiodic* if the span $d=\gcd\{\ell:\Pr(L=\ell)>0\}$ equals one, and has mean $\mu=\mathbb E L\in[1,\infty]$. Everything for complete resets reduces to the coherence multipliers $f_t(z)=\mathbb E z^{A_t}$, $|z|=1$, of the age $A_t$. Write $\mathcal D_U$ for the pinching onto the eigenspaces of $U$ and $m_{\rm pp}=\operatorname{tr}(P_{\rm pp}\rho)$ for the pure-point mass of the reset state.
+
+| Result | Status |
+|---|---|
+| Four clock regimes for complete resets (Table 2). A clock makes every finite-dimensional unitary reset system converge iff it is proper and aperiodic; every aperiodic infinite-mean clock gives $\rho_t\to\mathcal D_U(\rho)$; operator and distinct-initial-state versions, including cancellation for defective clocks (Theorems 2.1, 2.2, 4.1, Propositions 4.2, 4.3) | proof; short consequence of classical renewal theory |
+| Power hazard $r_n=\gamma/(n+1)^\alpha$, $0<\gamma<1$: survival-weighted mixture for $\alpha<1$; $\mathcal D_U(\rho)$ for $\alpha=1$; for $\alpha>1$ a rotating orbit, convergent iff $[U,\rho]=0$ (Corollary 2.3). Wald et al.'s difference condition is equivalent to convergence in this model (Remark 2.4) | proof |
+| Separable $\mathcal H$, proper infinite-mean clock: $\lVert\rho_t-U^t\rho^{(d)}_{\rm pp}U^{-t}\rVert_1\to1-m_{\rm pp}$ and the Hilbert–Schmidt error tends to $0$; a trace-norm convergent subsequence exists iff $m_{\rm pp}=1$ (Theorem 6.1) | proof |
+| Jump channel $R$, proper clock, condition (W): $\det(\mathrm I-\widehat K(w))\ne0$ on $\lvert w\rvert=1$ for the centred cycle kernel $\widehat K(w)=\sum_\ell w^\ell p_\ell R\Phi^{\ell-1}\vert_{\mathcal V}$. Then $\lVert\rho^{\rm par}_t-F_t(\rho_{\rm eff})\rVert_1\to0$, where $F_t$ is complete resetting under the same clock (Theorem 5.1) | proof; sufficient, not necessary (Proposition 5.6) |
+| (W) at $w=1$ iff the mean embedded channel has a unique fixed density; unital and unitary criteria; open and dense; support invariance, so an exact decision procedure works for any positive weights on a given finite support; slice version for conserved observables (Proposition 5.3, Lemma 5.4, Proposition 5.5, Theorem 5.8) | proof |
+| (W) is not necessary: a proper aperiodic infinite-mean clock and a jump channel with unique $\rho_{\rm eff}$ for which (W) fails exactly at $w=-1$, yet $\rho^{\rm par}_t\to\mathrm I/2$ (Proposition 5.6) | proof; exact age-by-age check to $t=200$ |
+| Delimiting examples: a mixing mean embedded channel with persistent oscillation; convergence with no contracting product; two clocks with identical tails but different limits, which needs noncommutation: commuting pairs under (W) converge to $\rho_{\rm eff}$ for every proper clock (Proposition 5.7) | proof; exact checks |
+| Critical clock $r_n=\gamma/(n+1)$: $f_t(z)=A_\gamma(z)t^{\gamma-1}+B_\gamma(z)z^tt^{-\gamma}+$ explicit remainder, uniform in $\gamma\in(0,1)$ for $\lvert1-z\rvert\ge\delta$; decay exponent $\min\{\gamma,1-\gamma\}$ (Theorem 7.1, Corollary 7.3) | proof |
+| Endpoint crossover on the scale $\varepsilon\log t$; near-resonance crossover to ${}_1F_1(1-\gamma;1;i\xi)$ with an explicit $O(\xi^2/t)$ bound; Dynkin–Lamperti form for regularly varying clocks (Theorems 7.5, 7.6, Proposition 7.7) | proof (7.7 rests on the cited Dynkin–Lamperti theorem) |
+| Increments are $\sim\lvert1-z\rvert\lvert B_\gamma\rvert t^{-\gamma}$, so for $\gamma>1/2$ distance/increment grows like $t^{2\gamma-1}$; exact reset count $\mathbb E N_t=(1+\gamma)_t/t!-1$ (Proposition 7.4, Eq. (7.6)) | proof |
+| No rate holds uniformly over proper aperiodic clocks, even with hazards tending to zero (Theorem 8.1) | proof (standard diagonal construction) |
+| Steps until the coherence multiplier stays below $0.01$ (Table 4) | numerical estimates; entries below $10^6$ confirmed by exact recurrence |
+
+## Technical account
+
+**From quantum states to one scalar function.** With complete resets, the averaged state is the free evolution averaged over the age: $\rho_t=\mathbb E[\Phi^{A_t}](\rho)$. In the eigenbasis of a gate $U$, each matrix entry is multiplied by $f_t(z)$, where $z$ is the ratio of two eigenvalues. So the quantum question becomes: for which phases $z$ does $f_t(z)$ converge, and to what?
+
+**Why an infinite mean still dephases.** With infinite mean the age has no limiting distribution; its mass drifts to infinity. Even so, $f_t(z)\to0$ for every non-resonant phase, because the phases cancel. The proof needs only the classical renewal theorem $u_t\to0$ (Erdős, Feller and Pollard), a bounded twisted renewal sum (Lemma 3.3) and summation by parts. No tail regularity is used. The only obstruction is arithmetic: if all waiting times are multiples of $d$ and $z^d=1$, the phase is locked for ever. Orey's memory-loss theorem gives a second route to the same result (Remark 3.5).
+
+**Imperfect resets without reordering operators.** When the jump channel $R$ does not commute with $\Phi$, the state just after an event depends on earlier events. The paper writes the post-event averages as an operator renewal equation, centred on the traceless matrices. Condition (W) lets the matrix-valued Wiener lemma invert it with absolutely summable coefficients. The decisive step is the passage from event times to laboratory time. Conditioning on the last event gives a convolution of the complete-reset family with the summable resolvent, and no operators are reordered. The paper's dephase-and-flip example shows why this matters. There the mean embedded channel maps every state to $\mathrm I/2$, so averages indexed by events converge. Yet the laboratory-time state alternates for ever, because (W) fails at $w=-1$.
+
+**Infinite dimension.** For a unitary on a separable space, the pure-point and cross blocks of $\rho$ are handled by finite-rank approximation. The continuous block is a positive operator of trace $1-m_{\rm pp}$ that escapes every compact set. This is a renewal-weighted analogue of the RAGE theorem, with the trace-norm defect computed exactly.
+
+**The critical clock.** At $\alpha=1$ the waiting time is Sibuya distributed and the age law is beta-binomial. This gives an exact Beta-integral formula for $f_t(z)$, from which the uniform remainder is proved directly. The coherence functions are Meixner–Pollaczek polynomials. Their two leading terms are classical Darboux asymptotics; what is new is the explicit remainder that is uniform in $\gamma$. The near-resonance profile ${}_1F_1(1-\gamma;1;i\xi)$ is the characteristic function of the generalised arcsine law.
+
+**What is new, and what is classical.** The scalar and finite-dimensional complete-reset classification is a short consequence of classical renewal theory (Erdős–Feller–Pollard, Feller, Orey). The paper makes it explicit because the quantum applications need every case: arithmetic resonances, defective clocks and distinct initial states. The renewal representation of the averaged state, the Sibuya kernel, ordered quantum renewal expansions (Budini–Grigolini, Vacchini) and Wiener inversion are all known tools. The contributions claimed are three:
+
+1. the exact infinite-dimensional trace-norm defect $1-m_{\rm pp}$, with the no-convergent-subsequence criterion;
+2. the laboratory-time reduction for noncommuting jump channels under (W), its characterisation and decidability, its extension to conserved observables, and the examples that delimit it;
+3. uniform estimates near the edges of the critical family: the uniform Sibuya remainder, the endpoint crossover and the near-resonance crossover.
+
+The paper states that it is not aware of earlier statements of these results in this generality. That is a bounded literature check, not a priority determination.
+
+## Evidence, assurance and limitations
+
+The synthetic audio briefing is explanatory, not additional evidence. Its [complete transcript](/assets/audio/renewal-quantum-resetting-equilibration.txt) is available for reading.
+
+- **Proofs.** Every theorem, proposition and corollary has a written proof in the paper. Proposition 7.7 rests on the cited Dynkin–Lamperti theorem, and Theorem 8.1 is a standard diagonal construction.
+- **Exact checks.** Rational-arithmetic checks compare the defining age-chain recursion with the renewal formulas for 23 clocks, four channels and two initial states. Others compare direct, renewal and factorised-kernel computations for jump channels at finite times. They also verify the explicit examples and the reset-count identity, and decide (W) exactly for the finitely supported examples using the procedure of Proposition 5.5, and follow the example of Proposition 5.6 age by age to $t=200$. For example, 1,320 checks test the age law against the renewal convolution, mass and positivity for 10 clocks up to $t=32$; 1,355 test the jump-channel computations up to $t=24$. These checks test conventions, formulas and examples at finite times. They do not prove limits.
+- **Floating-point checks.** These are reported separately and labelled as numerical. They test the uniform Sibuya bound (the remainder never exceeded $0.18$ times the bound on the tested grid), the endpoint bound (worst ratio $0.66$), the near-resonance bound (worst ratio $0.9997$), the 50-digit diagnostic values, Table 4, and a 70-digit evaluation of the proved bound showing that at $\gamma=0.2$, $z=-1$ the coherence multiplier still exceeds 1% after $10^9$ steps.
+- **Replay.** One verifier, `code/verify_all.py`, runs every check under `python3 -B -O` and writes a deterministic JSON report. Every check is explicit, so `-O` removes nothing. A clean replay of the revised package into a fresh output directory reproduced the shipped `verification.json` byte for byte in under a minute; the release archive was replayed again in the same way before publication.
+- **Review.** The candidate merges two source manuscripts. It was checked by internal AI-assisted review in five roles (editor, methodology, domain, perspective and devil's advocate) and by an AI-assisted adversarial mathematical audit (OpenAI gpt-6-astra via Codex) before revision. The audit tested the strongest objection, that laboratory-time settling was being inferred from mixing at event times while ignoring age bias. It found the proof avoids that error and found no critical or major defect. Its three minor findings concerned a missing regime qualifier in the abstracts, an implicit fixed-phase quantifier and source equation numbering; all were corrected. The revised, merged version then received an AI-assisted verification re-review (Anthropic Claude) and a post-revision AI-assisted adversarial audit (OpenAI gpt-6-astra via Codex). That audit found no critical defect and no counterexample to the theorems. It did answer a question the draft had listed as open: it constructed an example showing that (W) is not necessary, now Proposition 5.6. It also found a gap in the justification of the (W) decision procedure (now closed by Lemma 5.4), a false side claim about commuting channels (replaced by the stronger Proposition 5.7), and several local qualifiers and source points, including the phases used in Table 4 (now $z=-1$ and $z=i$, the phase differences of the gate in Wald et al.'s Fig. 5). All were addressed and rechecked before publication. A rating-free summary of the objections and responses is in the package. This is not peer review, and the checks are not independent reproduction.
+- **Limitations.** Waiting times are independent and identically distributed and independent of the quantum state; the reset state or jump channel is fixed; the free evolution is time-homogeneous. Only the averaged density matrix is treated, not individual trajectories. The jump-channel theorem is sufficient, not necessary, and not a classification; which jump processes obey the reduction beyond (W) is open, and no rate is given for that theorem under a Sibuya clock. The first corrections to the Sibuya asymptotics are stated only pointwise. The time-scale table and fitted rates are numerical. If the free evolution is itself noisy and primitive, the dephasing phenomena matter only on time scales shorter than the decoherence time.
+
+## Relationship to earlier work
+
+**Wald et al. (2025).** Their Section 4 gives hedged expectations for the power hazard, supported by an asymptotic estimate of the no-reset probability and a numerical study of consecutive differences. They state a stationarity condition in terms of those differences and note that it is involved. The present paper uses their reset convention, proves their expected answers for every $\alpha$, identifies the limits, and shows that their difference condition is equivalent to convergence in this finite-dimensional model. It also shows quantitatively why a *small* difference is a poor stopping rule.
+
+**Random repeated interactions.** At event times the cycle channels form an independent identically distributed sequence of random channels. Products of such channels are studied in the theory of random repeated interactions (Bruneau, Joye and Merkli) and of ergodic quantum processes (Movassagh and Schenker). The question here differs in two ways. It concerns laboratory time, where the number of completed events is random and age-biased, and where an infinite mean leaves no stationary age law. And the controlling condition is (W), not primitivity of the mean embedded channel; the dephase-and-flip example has a primitive mean channel and still never settles.
+
+## Who should care, and why
+
+| Audience | Potential use | Required caution |
+|---|---|---|
+| Experimentalists using reset protocols on quantum hardware | Whether a reset protocol yields a steady state depends on recurrence and arithmetic span, not the mean. Infinite-mean clocks still dephase, but slowly; Table 4 gives practical time scales. Do not stop on small step-to-step change | Assumes waiting times independent of the state and of each other; time scales are numerical estimates from proved asymptotics |
+| Researchers in stochastic resetting and open quantum systems | Exact limits for every waiting-time law; a sufficient, checkable reduction for imperfect, noncommuting resets; examples showing where it fails | (W) is sufficient only; measurement-triggered and correlated clocks and two-time correlations are not covered |
+| Mathematical physicists and probabilists | A renewal-weighted RAGE-type trace-norm defect; uniform Sibuya asymptotics and crossovers; an operator-renewal argument that keeps operator order | The finite-dimensional classification is classical in substance; novelty rests on the three contributions listed above |
+| Research agents and reproducibility researchers | A single deterministic verifier with exact and floating-point checks counted by category | Counts measure finite identities and examples, not proofs of the limit theorems; byte identity shows integrity, not that the code encodes the mathematics |
+
+## Why the problem matters
+
+Stochastic resetting is a standard tool for preparing states and accelerating search, and resets are routine in quantum hardware. Heavy-tailed waiting times occur naturally, for instance when the reset probability falls with the time since the last reset. Before this work, the borderline case with infinite mean was handled by expectation and simulation. This paper gives exact answers for every waiting-time law, shows when imperfect resets can be treated as complete ones, and separates two things that are easy to confuse: proving that a state converges, and observing that it has stopped changing. The time-scale estimates show that convergence which holds in principle can be far beyond current experimental reach.
+
+## How to inspect or reproduce the recorded checks
+
+From the GitHub release or the Zenodo archive, with Python 3.13 and numpy, scipy, matplotlib, sympy and mpmath (tested versions in `results/environment.json`):
+
+```sh
+python3 -B -O code/verify_all.py OUTPUT_DIRECTORY
+cmp OUTPUT_DIRECTORY/verification.json results/verification.json
+```
+
+The run takes under a minute on one core. It writes `verification.json` with sorted keys, floats rounded to eight significant figures, and no timestamps or absolute paths. It also writes the environment record and the five figures. `check_counts_by_category` in the JSON states what each count measures. Start reading with the "Main results in brief" box and Section 1.3 of the paper (what is new and what is inherited), then Table 3, which lists what each jump-channel example shows.
+
+## The most valuable next projects
+
+1. Characterise the jump processes for which the reduction of Theorem 5.1 holds; (W) is sufficient, and Proposition 5.6 shows it is not necessary.
+2. Give a rate for the jump-channel reduction under a Sibuya clock.
+3. Extend the analysis to measurement-triggered or correlated waiting times, which break the scalar renewal structure.
+4. Compute two-time correlations $\langle O(t+s)O(t)\rangle$ in the renewal ensemble; this needs the joint age law at two times.
+5. Treat general channels in infinite dimension, and prove two-term asymptotics for all regularly varying clocks.
+6. Have a specialist check Theorems 5.1 and 6.1, and rerun the verifier outside the producer workflow.
+
+## What is in the evidence package
+
+The manuscript (PDF and LaTeX source with its five figures), the verifier `code/verify_all.py` and its modules (a shared check helper, complete resets, an independent age-chain check, jump channels, Wiener-symbol fingerprints, critical-clock diagnostics, and extensions including the exact (W) decision procedure), the deterministic JSON report and environment record, a rating-free review summary, a README, and licences (CC0-1.0 for the text, MIT for the code). The same files are in the GitHub release and the Zenodo record.
