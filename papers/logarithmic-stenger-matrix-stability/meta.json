@@ -1,0 +1,197 @@
+{
+  "slug": "logarithmic-stenger-matrix-stability",
+  "title": "Positive stability of logarithmic Stenger integration matrices: a sharp forward boundary, reverse instability and a certified counterexample",
+  "shortTitle": "When logarithmic Stenger integration matrices stay stable",
+  "oneLine": "Integration matrices built on Gaussian nodes for the weight xᵅ[log(1/x)]ᵐ are stable at every size exactly when α ≤ 1 when integrating forward; integrating backward fails for m > 1, and an exact certificate at α = −9/10, m = 1, n = 13 disproves the reverse clause of a 2019 Gautschi–Hairer conjecture as worded.",
+  "abstract": "Integration matrices replace indefinite integration by multiplication of point values; spectral, Sinc-type and collocation methods built on them need every eigenvalue to have positive real part. Gautschi and Hairer (Journal of Inequalities and Applications, 2019) tested Stenger's conjecture that Gaussian nodes guarantee this and stated five refined conjectures. This paper studies the restricted Stenger matrices Uₙ (integrate from 0) and Vₙ (integrate to 1) whose nodes are the zeros of the orthogonal polynomials for xᵅ[log(1/x)]ᵐ on (0,1), with unweighted integrals. Uₙ is positive stable at every degree exactly when −1 < α ≤ 1; for each fixed α > 1 the number of unstable eigenvalues tends to infinity, and the first threshold θₙ is larger than one at every degree and tends to one. For m > 1, Vₙ is unstable at every large degree with a diverging count; for 0 < m ≤ 1 and α ≥ m/2 − 1 it is stable at every degree. At m = 1, an exact rational Routh certificate shows that V₁₃ has exactly two eigenvalues with negative real part when α = −9/10, disproving the reverse clause of Gautschi–Hairer Conjecture 5.3 as worded; exact counts suggest that α = −1/2 is the true boundary, which remains a conjecture. The mechanism is a pair of locally uniform limits of the scaled characteristic polynomials to the Kummer functions ₁F₁(1; α+1; −z) and ₁F₁(1; m+1; −z), whose zeros cross into the left half-plane exactly when the exponent exceeds one. The same method answers the first-threshold questions of Conjectures 5.1, 5.2 and 5.5 for Jacobi and Laguerre weights: the stability range in 5.2 is sharp; under the table-consistent Jacobi-exponent reading of 5.1 the first thresholds are larger than one, finite for every n ≥ 5 and tend to one; in 5.5 they are larger than one and tend to one, so the uniform reading of 5.5 is false. It also shows that the associated collocation Runge–Kutta methods eventually fail A-stability for α > 1, m ≥ 1, and proves that the symmetric Jacobi threshold at degree five is exactly 9. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-22",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Stenger conjecture",
+    "spectral integration matrices",
+    "positive stability",
+    "orthogonal polynomials",
+    "logarithmic weights",
+    "Kummer functions",
+    "Gaussian quadrature",
+    "collocation Runge–Kutta methods"
+  ],
+  "repoUrl": "https://github.com/ipitchford/logarithmic-stenger-matrix-stability",
+  "releaseUrl": "https://github.com/ipitchford/logarithmic-stenger-matrix-stability/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/logarithmic-stenger-matrix-stability/releases/download/v1.0.0-candidate/logarithmic-stenger-matrix-stability-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23575681",
+  "conceptDoi": "10.5281/zenodo.23575680",
+  "zenodoUrl": "https://zenodo.org/records/23575681",
+  "citeText": "Anonymous (2026). Positive stability of logarithmic Stenger integration matrices: a sharp forward boundary, reverse instability and a certified counterexample. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23575681",
+  "evidence": "Written proofs of every theorem; exact rational Routh arrays proving every stated eigenvalue count (including the V₁₃ certificate with 300-digit coefficients), the degree-five Jacobi Hurwitz identities checked at 26 rational points, the exponential-section Hurwitz minors, and Gautschi–Hairer Table 1 checks at αₙ + 0.001; 60-digit numerical illustrations labelled as such; one deterministic verifier (verify_all.py) that replays every exact count, identity and table and reproduces its JSON report byte for byte.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; exact computations, numerical illustrations and the reverse-boundary conjecture are labelled. Internal AI-assisted review, AI-assisted adversarial review and a verification re-review only. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the approved final manuscript and its exact verifier report. Versioned GitHub and Zenodo research archives are checked against the frozen release assets on 22 October 2026.",
+  "keyResults": [
+    "Sharp forward boundary: for every m > 0, Uₙ is positive stable at every degree if and only if −1 < α ≤ 1; for each fixed α > 1 the number of unstable eigenvalues tends to infinity, and the first threshold θₙ(m) is larger than 1 at every degree and tends to 1 (Theorem 2.2, Corollary 2.3, proof).",
+    "Reverse matrices: for m > 1, Vₙ is unstable at every large degree with a diverging count; for 0 < m ≤ 1 and α ≥ m/2 − 1 it is stable at every degree (Theorem 2.4(i)–(ii), proof).",
+    "Counterexample: at m = 1, α = −9/10, n = 13, Vₙ has exactly two eigenvalues with negative real part and none on the axis, disproving the reverse clause of Gautschi–Hairer Conjecture 5.3 as worded (Theorem 2.4(iii), exact rational certificate). Exact onset degrees 13, 15, 17, 22 for α = −9/10, −4/5, −7/10, −3/5; the exact reverse boundary α = −1/2 is Conjecture 7.1 (open).",
+    "Mechanism: the scaled characteristic polynomials of Uₙ and Vₙ, at z/n², converge to ₁F₁(1; α+1; −z) and ₁F₁(1; m+1; −z) locally uniformly; the zeros of ₁F₁(1; γ+1; −z) lie in the open left half-plane for γ > 1 and on the imaginary axis for γ = 1 (Theorem 2.1, Lemma 5.1, proof).",
+    "Jacobi and Laguerre weights: all-degree boundary at exponent 1. Conjecture 5.2 holds iff β ≤ 1 (sharp). Under the Jacobi-exponent reading of Conjecture 5.1 the first thresholds exceed 1, are finite for every n ≥ 5 and tend to 1; whether the fixed-degree stable set is an interval is not decided. For Conjecture 5.5 the thresholds exceed 1, are finite for n ≥ 5 and tend to 1, so its uniform reading is false. The symmetric Jacobi threshold at n = 5 is exactly 9 (Theorem 6.1, Corollary 6.2, Lemma 6.3 on sections of the exponential series, Proposition 6.4).",
+    "Collocation Runge–Kutta methods with these nodes are not A-stable for large n when α > 1 and m ≥ 1 (Corollary 2.5, proof)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, verification re-review and adversarial reviews (including OpenAI gpt-5.6-sol, Claude Opus 5.5 and OpenAI gpt-6-astra)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When integration matrices stay stable. An Evidence Press briefing. Many numerical methods replace the operation of integrating a function by a matrix. The function is sampled at a few carefully chosen points, and multiplying those samples by the matrix gives the integral at the same points. Such matrices are used for solving differential equations and for fast convolution methods. They behave well only if every eigenvalue of the matrix has a positive real part. Frank Stenger conjectured that this always holds when the points are the nodes of Gaussian quadrature. In 2019 Walter Gautschi and Ernst Hairer tested his idea for many weights, found that it can fail, and stated five precise conjectures about when it holds. This paper studies the weight x to the power alpha, times the logarithm of one over x to the power m, on the interval from zero to one. There are two results to take away. First, the matrix that integrates from zero is stable at every size exactly when alpha is at most one. Above one, it eventually becomes unstable, and the number of bad eigenvalues grows without limit. Second, the matrix that integrates up to one behaves differently. Gautschi and Hairer conjectured that, for m equal to one, it is always stable. An exact calculation in rational arithmetic shows that this fails: at alpha equal to minus nine tenths, the thirteen by thirteen matrix has two eigenvalues with negative real part. The effect is tiny in practice, but it disproves the conjecture as worded. Why does the number one matter? After rescaling, the small eigenvalues approach the zeros of a classical special function, the Kummer function. Those zeros cross from the stable side to the unstable side exactly when the exponent passes one. The same idea answers related questions for Jacobi and Laguerre weights. One question stays open: whether minus one half is the exact boundary for the reverse matrix. The paper offers exact evidence for this but no proof. This is an anonymous, AI-assisted, unrefereed candidate. It has not been peer reviewed or independently reproduced. Published on 22 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_all.py replays every exact count, identity and table and writes a deterministic JSON report. A clean full replay of the final package in a separate copy reproduced the shipped report byte for byte; the frozen archive was bound to it by hash, and the checks affected by publication changes were rerun."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Producer-side re-review and adversarial audit recomputed the V₁₃ count, Jacobi closed forms, the degree-five identities and spot rows with separately written exact code (sympy, Fraction, mpmath); no unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Exact sections need Python 3.10+ with the standard library; the numerical section needs mpmath (tested with 1.3.0, Python 3.13). The full run takes several minutes of exact arithmetic. Versions are listed, not locked in a container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Gautschi and Hairer (2019), On conjectures of Stenger in the theory of orthogonal polynomials. Journal of Inequalities and Applications 2019, art. 159 (source of Conjectures 5.1–5.5).",
+      "url": "https://doi.org/10.1186/s13660-019-2107-6"
+    },
+    {
+      "citation": "Ait-Haddou and Alselami (2023), The Stenger conjectures and the A-stability of collocation Runge–Kutta methods. Journal of Inequalities and Applications 2023, art. 107 (forward stability for non-increasing weights, including −1 < α ≤ 0; the Jacobi stable side).",
+      "url": "https://doi.org/10.1186/s13660-023-03019-8"
+    },
+    {
+      "citation": "Charalambides (2014), A general stability theorem with applications. Proceedings of the American Mathematical Society 142, 191–197.",
+      "url": "https://doi.org/10.1090/S0002-9939-2013-11731-4"
+    },
+    {
+      "citation": "Stenger (2011), Handbook of Sinc Numerical Methods. CRC Press.",
+      "url": "https://doi.org/10.1201/b10375"
+    },
+    {
+      "citation": "Hairer and Wanner (1996), Solving Ordinary Differential Equations II: Stiff and Differential-Algebraic Problems, 2nd ed. Springer (collocation Runge–Kutta methods).",
+      "url": "https://doi.org/10.1007/978-3-642-05221-7"
+    },
+    {
+      "citation": "Gautschi (2010), Gauss quadrature routines for two classes of logarithmic weight functions. Numerical Algorithms 55, 265–277.",
+      "url": "https://doi.org/10.1007/s11075-010-9366-0"
+    },
+    {
+      "citation": "Conway and Deift (2018), Asymptotics of polynomials orthogonal with respect to a logarithmic weight. SIGMA 14, 056.",
+      "url": "https://doi.org/10.3842/SIGMA.2018.056"
+    },
+    {
+      "citation": "NIST Digital Library of Mathematical Functions, Section 13.9: zeros of Kummer functions.",
+      "url": "https://dlmf.nist.gov/13.9"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:logarithmic-stenger-matrix-stability",
+    "attemptIds": [
+      "ep-attempt:logarithmic-stenger-matrix-stability-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Status of the Gautschi–Hairer (2019) restricted Stenger conjectures for logarithmic weights xᵅ[log(1/x)]ᵐ, with Jacobi and Laguerre analogues: a sharp forward boundary α ≤ 1, Kummer-function endpoint limits, reverse instability for m > 1, an exact reverse counterexample at (m, α, n) = (1, −9/10, 13), first-threshold answers for Conjectures 5.1, 5.2 and 5.5, and failure of A-stability for the associated collocation methods.",
+      "scope": "Restricted (unweighted-integral) Stenger matrices with Gaussian nodes; fixed parameters as n → ∞; no uniform onset degree, limiting unstable fraction or complete reverse classification for 0 < m ≤ 1; nothing about the extended (weighted) matrices; interval structure of the fixed-degree stable sets not decided; the reverse boundary α = −1/2 at m = 1 is conjectural."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Conjectures 5.1–5.5 are quoted verbatim from Section 5.3 of Gautschi and Hairer (2019); a clause-by-clause table separates the uniform and degree-dependent readings, the interval convention ([−1,1] versus (0,1)) and the Gegenbauer/Jacobi exponent reading of Conjecture 5.1.",
+      "remainingRisks": [
+        "The disproof concerns the reverse clause of Conjecture 5.3 as worded ('for all α > −1'); the source's tested values lie in the proved stable range α ≥ −1/2.",
+        "Ait-Haddou and Alselami (2023) already cover forward stability for −1 < α ≤ 0 and the Jacobi stable side; the new positive range for the logarithmic weight is 0 < α ≤ 1.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in orthogonal polynomials check the endpoint-limit argument (Section 4, Lemma 4.2) and replay the V₁₃ certificate in an independent computer-algebra system.",
+      "claimCeiling": "The sharp forward boundary, Kummer endpoint limits, reverse instability and the exact V₁₃ counterexample for logarithmic weights, with Jacobi and Laguerre threshold answers, within the stated fixed-parameter scope; the reverse boundary α = −1/2 is conjectural. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "logarithmic-stenger-matrix-stability-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable resolution of most clauses of the Gautschi–Hairer restricted Stenger conjectures.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

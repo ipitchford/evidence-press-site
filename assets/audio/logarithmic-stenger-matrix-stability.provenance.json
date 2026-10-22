@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "When integration matrices stay stable. An Evidence Press briefing. Many numerical methods replace the operation of integrating a function by a matrix. The function is sampled at a few carefully chosen points, and multiplying those samples by the matrix gives the integral at the same points. Such matrices are used for solving differential equations and for fast convolution methods. They behave well only if every eigenvalue of the matrix has a positive real part. Frank Stenger conjectured that this always holds when the points are the nodes of Gaussian quadrature. In 2019 Walter Gautschi and Ernst Hairer tested his idea for many weights, found that it can fail, and stated five precise conjectures about when it holds.",
+      "inputSha256": "120a0517ab8be8cd501b693a7679293d1fc81b27d70958c05d81623f406abc34",
+      "audioSha256": "b6b310ec8bdfb4cd170785357071e37f60eaa24e185e58f8a68d5a6f95bc6845",
+      "requestId": "req_b85a8fe7a6e148d3bee00beadf55a03e",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "and stated precise conjectures about when it holds",
+        "heardEnding": "for many weights found that it can fail and stated precise conjectures about when it holds",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This paper studies the weight x to the power alpha, times the logarithm of one over x to the power m, on the interval from zero to one. There are two results to take away. First, the matrix that integrates from zero is stable at every size exactly when alpha is at most one. Above one, it eventually becomes unstable, and the number of bad eigenvalues grows without limit. Second, the matrix that integrates up to one behaves differently. Gautschi and Hairer conjectured that, for m equal to one, it is always stable. An exact calculation in rational arithmetic shows that this fails: at alpha equal to minus nine tenths, the thirteen by thirteen matrix has two eigenvalues with negative real part. The effect is tiny in practice, but it disproves the conjecture as worded.",
+      "inputSha256": "9f17487c680fbe5180f29e520b34c4f14729746051bb9bcc67d556613657a8bb",
+      "audioSha256": "5641d796b4f5992b9db489bf634328bb5607a51c9cee43fa8be1956affc31475",
+      "requestId": "req_55e33a903ca1453faaeac0b55b1ffdf7",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "practice but it disproves the conjecture as worded",
+        "heardEnding": "negative real part the effect is tiny in practice but it disproves the conjecture as worded",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Why does the number one matter? After rescaling, the small eigenvalues approach the zeros of a classical special function, the Kummer function. Those zeros cross from the stable side to the unstable side exactly when the exponent passes one. The same idea answers related questions for Jacobi and Laguerre weights. One question stays open: whether minus one half is the exact boundary for the reverse matrix. The paper offers exact evidence for this but no proof. This is an anonymous, AI-assisted, unrefereed candidate. It has not been peer reviewed or independently reproduced. Published on 22 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "3be1701b1275a4eb742e051cc71a5a50a2f10ccf3e8c69ade771024e74e7f9ae",
+      "audioSha256": "db557234a0456129fb2e3b8912497bbfce9255a89c08a1269f5e11a5a6fcee9e",
+      "requestId": "req_f00ecae07df14a3f9d270cd33e6ef95e",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "logarithmic-stenger-matrix-stability",
+  "generatedAt": "2026-10-22T19:30:20.787Z",
+  "sourceMetadata": "papers/logarithmic-stenger-matrix-stability/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "824cfdcf00ea0cd11b03c237d218bdecaf7705c0f3caf2e9dc84665609698f06",
+  "transcriptPath": "assets/audio/logarithmic-stenger-matrix-stability.txt",
+  "transcriptSha256": "225fd95720a7d344189a370e0e630ba45ac7856c2a73852c1676dfcfdc6c1c00",
+  "audioPath": "assets/audio/logarithmic-stenger-matrix-stability.mp3",
+  "audioSha256": "24ef9a1a5b40562a0eeedf257859e783dc55b408c62eed0b925105024d25847f",
+  "audioBytes": 2443820,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
