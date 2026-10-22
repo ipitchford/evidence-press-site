@@ -20,7 +20,7 @@ const SLUG = 'lotka-volterra-tree-presentations';
 const ink = '#f5f0f7', muted = '#dccfe2', dim = '#c0b0c8';
 const xc = '#9fd0ff', q1c = '#ffc184', q2c = '#a9ebd3', orbit = '#c9b8d4';
 const text = (x, y, s, size = 18, color = ink, anchor = 'start', weight = 'normal', extra = '') =>
-  `<text class="og-hide" x="${x}" y="${y}" fill="${color}" font-family="Arial,Helvetica,sans-serif" font-size="${size}" font-weight="${weight}" text-anchor="${anchor}"${extra}>${s}</text>`;
+  `<text class="og-hide" x="${x}" y="${y}" fill="${color}" font-family="${(extra.match(/font-family="([^"]*)"/) || [, 'Arial,Helvetica,sans-serif'])[1]}" font-size="${size}" font-weight="${weight}" text-anchor="${anchor}"${extra.replace(/\s*font-family="[^"]*"/, '')}>${s}</text>`;
 const f = v => (+v).toFixed(1);
 const path = pts => pts.map((p, i) => `${i ? 'L' : 'M'}${f(p[0])} ${f(p[1])}`).join(' ');
 const sub = (base, idx) => `${base}<tspan font-size="0.72em" dy="4">${idx}</tspan><tspan dy="-4"> </tspan>`;
