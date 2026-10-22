@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Why fourth-order tetrahedral Stokes elements need a sextic. An Evidence Press briefing. Engineers simulate slow, sticky flows, such as blood in small vessels or oil in porous rock, by cutting space into small tetrahedra and approximating the flow in each one by a polynomial. The recipe for one cell is called a finite element. A popular way to keep velocity and pressure stable is to describe each cell by its moments: averages of the velocity against simple polynomials on each face and inside the cell. For this to work, the moments must pick out exactly one polynomial from the chosen space, and the space should use the lowest degree possible, because higher degree costs more computing time. In 2025, Balazi, Allaire, Jolivet and Omnes built elements of second and third order in this way.",
+      "inputSha256": "58dab72b038a9de7a7440eaba105b6afed4677e50e329ec58a401d802b47afbd",
+      "audioSha256": "1c1dc8348e4a541b3bdd853abb37474ae3a8a41542da43761c3817f9fc938a53",
+      "requestId": "req_addb60388a2e403faebca5b4302db6bd",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "built elements of and order in this way",
+        "heardEnding": "computing time in bellasi allaire jolivet and omnis built elements of and order in this way",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "For fourth order they needed fifteen extra polynomials of degree five, tested millions of random choices, found none, and asked whether any choice exists. This paper shows that none does. On every polynomial of degree five, the fifty moments obey one hidden relation, revealed by a short symmetry argument, so they can never be independent. A single polynomial of degree six, the product of the six differences of the tetrahedron's barycentric coordinates, breaks the relation and gives a fourth-order element that does not depend on how the vertices are numbered. More generally, for every order the paper finds exactly seven polynomials that the moments cannot see.",
+      "inputSha256": "7ac089c6561c418c53e89011a455fd6e1993f2d891a4c240efee5e105472c39b",
+      "audioSha256": "5339642b813dc07126d6f6886bf461dee08876240cd7c10a215b8897af70adee",
+      "requestId": "req_b3279ecdb1c14bd290138e8ac6d13cfb",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "finds exactly polynomials that the moments cannot see",
+        "heardEnding": "numbered more generally for every order the paper finds exactly polynomials that the moments cannot see",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "As a result, the natural degree works only for the two lowest orders and then falls short by a growing, exactly known number of directions, while one degree higher always works. The paper proves that symmetric elements with the fewest extra functions exist for every order, and shows that on triangles no extra degree is ever needed. A numerical test of the new element shows error rates consistent with fourth-order convergence. Some statements in four or more dimensions remain conjectures. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on 22 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "6376d9f2ce9a7975244bfd3e0b4b8b0bb538b410c1f6eca407a236fae718aa8a",
+      "audioSha256": "5aaa9527658ec8bcae2a5f7ea8da6b26a62cc4e2f939a44019e096b390c9a7c6",
+      "requestId": "req_cdca36bbf4ce4e90add9ed4bc8ca169c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "tetrahedral-moment-stokes-elements",
+  "generatedAt": "2026-10-22T13:12:31.179Z",
+  "sourceMetadata": "papers/tetrahedral-moment-stokes-elements/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "95242f5156e16616f83b08987027dcc60e08f6d1dd1e3fa7ea7dbc5a5f887959",
+  "transcriptPath": "assets/audio/tetrahedral-moment-stokes-elements.txt",
+  "transcriptSha256": "945ee311f098511b84d0b910c0ec4fb6f0d026f0a8238cd1316e4604ad5ea5dd",
+  "audioPath": "assets/audio/tetrahedral-moment-stokes-elements.mp3",
+  "audioSha256": "47b91f045ad229edc83b5ede4c420749ec9bb76cc1cfbccef26290430c5604e7",
+  "audioBytes": 2324780,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
