@@ -1,0 +1,209 @@
+{
+  "slug": "pagerank-backtracking-nonmonotone",
+  "title": "Backtracking-weighted PageRank is not coordinatewise monotone: minimal counterexamples, a certified census and endpoint tests",
+  "shortTitle": "Turning up backtracking can move PageRank both ways",
+  "oneLine": "As a PageRank walker's weight for stepping straight back is turned up, a vertex score can fall and then rise again, so two cheap scores cannot tell which side the expensive non-backtracking score lies on; a five-vertex house graph refutes Conjectures 3.1 and 3.2 of Glover, Jones, Kempton and Oveson (2026).",
+  "abstract": "PageRank scores the vertices of a network by a random walk that occasionally restarts. A walk with memory can weight an immediate return along the edge just used by a parameter μ: μ = 0 forbids returns (non-backtracking PageRank), μ = 1 is ordinary PageRank and μ → ∞ makes the walk bounce on one edge, where the score has a cheap closed form. Glover, Jones, Kempton and Oveson (Applied Mathematics and Computation, 2026; arXiv:2211.13353v2) conjectured that every vertex score is monotone in μ and that the spread of scores is monotone too; if true, the ordinary and infinite-backtracking scores would show which side of ordinary PageRank the non-backtracking score lies on. This candidate shows that both clauses of their Conjecture 3.1 fail. On the five-vertex house graph with uniform restart and damping ε = 1/2, the roof vertex has π₀ = 638/3615, π₁ = 22/125 and π∞ = 8/45: both endpoints lie above the middle value, so the score dips and recovers and the shortcut points the wrong way. An exact cubic formula classifies every damping value: the roof is monotone exactly when ε ≤ ε_c ≈ 0.2407. Among graphs of minimum degree two, five vertices is the smallest order for every damping value (the house and the gem); with leaves allowed the four-vertex paw already fails for ε in (0, ε₁) ∪ (ε₂, 1), where four is then the smallest order, and even a five-vertex tree fails. A certified exact census of all 995 connected graphs on two to seven vertices, at five damping values, finds a nonmonotone vertex in 675 of the 853 seven-vertex graphs for some listed damping value. Both readings of the spread clause also fail, even when the extreme vertices are unique. A two-step criterion explains which vertices dip at small damping, and an exact slope formula at ordinary PageRank gives cheap sufficient tests. Exact invariance under backtracking holds if and only if P²v = v, and the degree-tail Conjecture 3.2 fails, in its local-weak-convergence reading, for every tail index above one. Numerical experiments find 10–41% of vertices nonmonotone on standard networks, with small excursions and stable rankings. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-23",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "PageRank",
+    "non-backtracking random walks",
+    "backtracking",
+    "node2vec",
+    "monotonicity",
+    "counterexample",
+    "exact computation",
+    "network centrality"
+  ],
+  "repoUrl": "https://github.com/ipitchford/pagerank-backtracking-nonmonotone",
+  "releaseUrl": "https://github.com/ipitchford/pagerank-backtracking-nonmonotone/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/pagerank-backtracking-nonmonotone/releases/download/v1.0.0-candidate/pagerank-backtracking-nonmonotone-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23580381",
+  "conceptDoi": "10.5281/zenodo.23580380",
+  "zenodoUrl": "https://zenodo.org/records/23580381",
+  "citeText": "Anonymous (2026). Backtracking-weighted PageRank is not coordinatewise monotone: minimal counterexamples, a certified census and endpoint tests. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23580381",
+  "evidence": "Written proofs of every theorem and proposition; exact polynomial identities over Q(μ, ε) for the house, gem, paw, diamond and all order-four responses, with sign claims certified by exact Sturm root counts; the house formula checked against 25 independent full-state rational solves and two- and three-sheet covers; a certified exact census of all 995 connected graphs on two to seven vertices at ε ∈ {1/10, 1/4, 1/3, 1/2, 17/20}, with root-counter regressions on known root sets; the slope formula checked exactly at 3985 vertices; exact tree, spread, unique-extremes spread, rank-reversal and clique-chain certificates; one deterministic verifier (verify_all.py) whose JSON output reproduces byte for byte; a separate, labelled floating-point prevalence study on standard networks.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; the census is an exhaustive exact computation at five damping values only; prevalence figures are numerical and labelled as such. Internal AI-assisted review and AI-assisted adversarial review only. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (dated 23 October 2026, 17 pages), its deterministic verifier output and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 23 October 2026.",
+  "keyResults": [
+    "Three-number certificate: on the house graph with uniform restart and ε = 1/2, the roof vertex has π₀ = 638/3615, π₁ = 22/125 and π∞ = 8/45; both endpoints exceed the middle value, so the score is not monotone in μ and the endpoint shortcut points the wrong way (exact).",
+    "House classification: the roof response is an explicit ratio of cubics in μ; it is monotone if and only if ε ≤ ε_c ≈ 0.2406813, otherwise it has exactly one strict minimum, located at μ = 1 if and only if ε = 4/9; the shortcut gives the wrong side if and only if ε > ε_0 ≈ 0.3291038 (Theorems 3.1, 4.1, Proposition 4.3, proof).",
+    "Smallest counterexamples: with minimum degree at least two, order five is minimal for every ε in (0, 1), witnessed by the house for ε > ε_c and the gem for ε ≤ 1/3; with leaves allowed the four-vertex paw fails exactly for ε in (0, ε₁) ∪ (ε₂, 1), ε₁ ≈ 0.078, ε₂ ≈ 0.436, so the smallest order is four there and five on [ε₁, ε₂]; covers lift failures to every order 5k (Theorem 5.2, Proposition 5.3, Corollary 5.4, Corollary 5.7, proof).",
+    "A five-vertex tree has a leaf that decreases and then increases for μ inside (0, 1) at ε = 1/2, so trees are not always monotone (Proposition 5.5, exact certificate).",
+    "Certified census of all 995 connected graphs on two to seven vertices at five damping values: 675 of 853 seven-vertex graphs, and 353 of 507 of minimum degree two, have a nonmonotone vertex for some listed ε; the census says nothing between the five listed values (certified exact computation).",
+    "Cheap partial substitute: a small-damping two-step criterion and an exact formula for dπ/dμ at μ = 1 give three sufficient endpoint tests; at ε = 1/2 they detect 285 of the 478 nonmonotone census vertices of minimum degree two (proof; exact check).",
+    "Both readings of the spread clause fail, and the spread can increase even when the extreme vertices are unique for every μ (Propositions 8.1–8.2, exact certificates); scores are exactly μ-independent if and only if P²v = v (Theorem 9.1, proof); the degree-tail Conjecture 3.2 fails for every tail index α > 1 in its local-weak-convergence reading (Theorem 11.2, proof).",
+    "On standard networks 10–41% of vertices are nonmonotone, excursions are small and rankings are stable (numerical)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review and AI-assisted adversarial review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Turning up backtracking can move PageRank both ways. An Evidence Press briefing. First, the background. PageRank ranks the points of a network by how often a random walker visits them, as it follows links and sometimes restarts. Backtracking means stepping straight back along the link just used. Ordinary PageRank treats it like any other step. Forbidding it gives non-backtracking PageRank, which is costly to compute. Unlimited backtracking, where the walker bounces on one link, is cheap. Next, the conjecture. In 2026, Glover, Jones, Kempton and Oveson conjectured that, as backtracking is made more likely, every score moves in one direction only. That would give a shortcut: comparing the ordinary score with the cheap extreme would show which side the costly one lies on. Now, the main finding. The conjecture is false. On the house graph, a square with a triangular roof, call the roof scores pi sub zero with no backtracking, pi sub one for ordinary PageRank, and pi sub infinity for unlimited backtracking. When the walker follows a link half the time, they are exactly 638 over 3615, 22 over 125, and 8 over 45. Both ends lie above the middle, so the score dips and recovers, and the shortcut points the wrong way. Five points is the smallest example without dead ends, and an exact census finds failures in most seven-point networks. A second conjecture, about degree tails, also fails. How sure is this? The main results are proved, and the census is certified in exact arithmetic. Tests on real networks are numerical only, and there the dips are small. Finally, the limits. The census covers five restart rates only, and no proof assistant was used. The conjecture's wording was checked against arXiv only, as the journal version was inaccessible. One question about random networks remains open. It is an anonymous, unrefereed candidate, with AI-assisted adversarial review only, not peer review. Published on 23 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files by full download; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_all.py replays every exact certificate, the root-counter regressions and the census and writes deterministic JSON. On the frozen release archive, a fresh-extraction replay under python -B -O reproduced the shipped verification.json and census_full.json byte for byte, and the semantic negative controls behaved; the release tree also reproduced prevalence.json byte for byte on the same platform. GitHub CI repeats the exact replay."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "The house formula is checked against 25 independent full-state rational solves, and the slope formula against the certified rational responses; both are producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; graph covers, the period-class argument and the asymptotic statements are proved in prose."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.11 or later with python-flint 0.9.0, sympy 1.14.0 and networkx 3.6.1 (tested versions); the prevalence study and figure also need numpy, scipy and matplotlib. Versions are listed, not locked in a container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Glover, Jones, Kempton and Oveson (2026), Effects of backtracking on PageRank. Applied Mathematics and Computation 531, 130182 (source of Conjectures 3.1 and 3.2; journal wording not checked).",
+      "url": "https://doi.org/10.1016/j.amc.2026.130182"
+    },
+    {
+      "citation": "Glover, Jones, Kempton and Oveson, Effects of backtracking on PageRank. arXiv:2211.13353v2 (revised 9 February 2026), the version whose conjecture wording is quoted.",
+      "url": "https://arxiv.org/abs/2211.13353v2"
+    },
+    {
+      "citation": "Aleja, Criado, García del Amo, Pérez and Romance (2019), Non-backtracking PageRank: from the classic model to Hashimoto matrices. Chaos, Solitons & Fractals 126, 283–291.",
+      "url": "https://doi.org/10.1016/j.chaos.2019.06.017"
+    },
+    {
+      "citation": "Arrigo, Higham and Noferini (2019), Non-backtracking PageRank. Journal of Scientific Computing 80, 1419–1437.",
+      "url": "https://doi.org/10.1007/s10915-019-00981-8"
+    },
+    {
+      "citation": "Henning, van der Hofstad and Litvak (2025), Power-law hypothesis for PageRank on undirected graphs. Electronic Journal of Probability 30, 1–27 (the mechanism adapted for Conjecture 3.2).",
+      "url": "https://doi.org/10.1214/25-EJP1415"
+    },
+    {
+      "citation": "Boldi, Lonati, Santini and Vigna (2006), Graph fibrations, graph isomorphism, and PageRank. RAIRO – Theoretical Informatics and Applications 40, 227–253 (the cover-lifting principle).",
+      "url": "https://doi.org/10.1051/ita:2006004"
+    },
+    {
+      "citation": "Meng and Masuda (2020), Analysis of node2vec random walks on networks. Proceedings of the Royal Society A 476, 20200447.",
+      "url": "https://doi.org/10.1098/rspa.2020.0447"
+    },
+    {
+      "citation": "Grover and Leskovec (2016), node2vec: scalable feature learning for networks. Proceedings of the 22nd ACM SIGKDD Conference, 855–864 (the return-weight convention).",
+      "url": "https://doi.org/10.1145/2939672.2939754"
+    },
+    {
+      "citation": "Gleich (2015), PageRank beyond the Web. SIAM Review 57, 321–363.",
+      "url": "https://doi.org/10.1137/140976649"
+    },
+    {
+      "citation": "Evidence Press release (separate work, not a parent): Linear Jordan-block growth in non-backtracking graphs, on the non-backtracking (Hashimoto) matrix behind μ = 0.",
+      "url": "https://evidencepress.org/releases/linear-nonbacktracking-jordan-growth/"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:pagerank-backtracking-nonmonotone",
+    "attemptIds": [
+      "ep-attempt:pagerank-backtracking-nonmonotone-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "An exact three-value certificate on the five-vertex house graph (π₀ = 638/3615, π₁ = 22/125, π∞ = 8/45 at ε = 1/2) refutes the coordinatewise clause of Conjecture 3.1 of Glover, Jones, Kempton and Oveson (2026); exact certificates refute both readings of its spread clause (also with unique extreme vertices), and a clique-chain construction refutes Conjecture 3.2 for every tail index α > 1.",
+      "scope": "The backtracking-weighted edge-lift PageRank of the source (tail projection, column-stochastic reading) on finite connected simple undirected graphs, with the continuous leaf extension; uniform restart unless stated. The census is certified at five damping values only; prevalence figures are numerical; Conjecture 3.2 is refuted under a local-weak-convergence reading and any reading that requires unbounded scores; the configuration-model tail transfer is open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Conjectures 3.1 and 3.2 are quoted verbatim from arXiv:2211.13353v2; the paper fixes the kernel, the leaf convention and the tail projection, shows that head and tail projections give the same monotonicity, and states the formalisation of Conjecture 3.2 that it refutes.",
+      "remainingRisks": [
+        "The journal version was not accessible, so its conjecture wording is unverified.",
+        "Conjecture 3.2 is stated informally; the refuted statement is the paper's formalisation.",
+        "Exact certificates rely on Python, python-flint and sympy execution; no proof assistant was used.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Recompute the three house-roof values and the census at one damping value in independent exact software, and check the journal wording of Conjecture 3.1 against arXiv v2.",
+      "claimCeiling": "Refutation of both clauses of Conjecture 3.1 and of Conjecture 3.2 as formalised, with proved minimal counterexamples and classifications, an exact census at five damping values, and numerical prevalence. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "pagerank-backtracking-nonmonotone-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable refutation, census and set of cheap tests for backtracking-weighted PageRank.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Turning up backtracking can move PageRank both ways. An Evidence Press briefing. First, the background. PageRank ranks the points of a network by how often a random walker visits them, as it follows links and sometimes restarts. Backtracking means stepping straight back along the link just used. Ordinary PageRank treats it like any other step. Forbidding it gives non-backtracking PageRank, which is costly to compute. Unlimited backtracking, where the walker bounces on one link, is cheap. Next, the conjecture. In 2026, Glover, Jones, Kempton and Oveson conjectured that, as backtracking is made more likely, every score moves in one direction only. That would give a shortcut: comparing the ordinary score with the cheap extreme would show which side the costly one lies on.",
+      "inputSha256": "ac7a79c4dbb7f53722d7923a23794deb1a9d38320934de15ff9eedf0d3d4459e",
+      "audioSha256": "d7aa6bc0f6b58f8cc3d7c46e5311cfdd30c82eee7cc7bcee2c2229a074046b80",
+      "requestId": "req_56133418676745daa1a76d89449f667c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "would show which side the costly lies on",
+        "heardEnding": "comparing the ordinary score with the cheap extreme would show which side the costly lies on",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Now, the main finding. The conjecture is false. On the house graph, a square with a triangular roof, call the roof scores pi sub zero with no backtracking, pi sub one for ordinary PageRank, and pi sub infinity for unlimited backtracking. When the walker follows a link half the time, they are exactly 638 over 3615, 22 over 125, and 8 over 45. Both ends lie above the middle, so the score dips and recovers, and the shortcut points the wrong way. Five points is the smallest example without dead ends, and an exact census finds failures in most seven-point networks. A second conjecture, about degree tails, also fails. How sure is this? The main results are proved, and the census is certified in exact arithmetic. Tests on real networks are numerical only, and there the dips are small.",
+      "inputSha256": "dc5f501b6651d8ab50511cc9b0a54202df288b464ce1025b63d56029db9b32ac",
+      "audioSha256": "e5bdf542a83d5dc78e2dd4dad672fb31d1898efa1a17c3a7d3718c5effececb8",
+      "requestId": "req_c407f55ce1d34229adc5b17673184f9f",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "numerical only and there the dips are small",
+        "heardEnding": "in exact arithmetic tests on real networks are numerical only and there the dips are small",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 3
+      }
+    },
+    {
+      "input": "Finally, the limits. The census covers five restart rates only, and no proof assistant was used. The conjecture's wording was checked against arXiv only, as the journal version was inaccessible. One question about random networks remains open. It is an anonymous, unrefereed candidate, with AI-assisted adversarial review only, not peer review. Published on 23 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "201d61389520de1b6537de61ac74f894ab8c7cdef8345fd7abb1e2ff2bea3a04",
+      "audioSha256": "e7d8fa2c3a7b33de6abc341f1da2bb8efbfb94d717c3c77e78ea35c1e02225e2",
+      "requestId": "req_692abc220b4f448cbe75f405c479c82a",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "pagerank-backtracking-nonmonotone",
+  "generatedAt": "2026-10-22T22:56:19.873Z",
+  "sourceMetadata": "papers/pagerank-backtracking-nonmonotone/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "a92422acac7d3bf5ba0a318e21ce30251854db67257d8087ff940f9492428aa9",
+  "transcriptPath": "assets/audio/pagerank-backtracking-nonmonotone.txt",
+  "transcriptSha256": "7efcf2038bd4cc1ffdc5ee0349bed917489ef627a11ed894efda0a1cc911df57",
+  "audioPath": "assets/audio/pagerank-backtracking-nonmonotone.mp3",
+  "audioSha256": "622c9c52817f85c005733b404265e07e3d58fe46b971e81468296eacce340a17",
+  "audioBytes": 2252588,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
