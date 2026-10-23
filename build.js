@@ -3297,12 +3297,15 @@ write('_headers', `/*
 
 /interpsych
   X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
 
 /interpsych/*
   X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
 
 /assets/interpsych/*
   X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: public, max-age=604800, no-transform
 
 /releases/*/paper.json
   Access-Control-Allow-Origin: *
