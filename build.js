@@ -2430,6 +2430,22 @@ ${articleItems}
   }, null, 2));
 }
 
+/* A direct-link reading copy, deliberately absent from catalogue/discovery
+   lists. Keep the downloadable research package byte-identical to its source;
+   only the hosted page gets absolute download links and the site's CSP. */
+function interpsychPage() {
+  const original = fs.readFileSync(path.join(ROOT, 'assets/interpsych/interpsych-history.html'), 'utf8');
+  const scripts = [...original.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+  if (scripts.length !== 1) throw new Error('InterPsych reading copy must have exactly one script');
+  write('interpsych/app.js', scripts[0][1]);
+  const hosted = original
+    .replace(scripts[0][0], '<script src="/interpsych/app.js"></script>')
+    .replace('</head>', `<meta name="robots" content="noindex, nofollow, noarchive"><link rel="canonical" href="${BASE}/interpsych/"><meta http-equiv="Content-Security-Policy" content="${PAGE_CSP}"></head>`)
+    .replace(/href="(?!https?:|#|data:|mailto:|\/)([^"]+)"/g, 'href="/assets/interpsych/$1"')
+    .replace('This reading copy works offline.', 'The <a href="/assets/interpsych/interpsych-research-package.zip" download>research package</a> includes an offline reading copy.');
+  write('interpsych/index.html', hosted);
+}
+
 function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
@@ -3279,6 +3295,18 @@ write('_headers', `/*
 /assets/*
   Cache-Control: public, max-age=604800
 
+/interpsych
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/interpsych/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/assets/interpsych/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: public, max-age=604800, no-transform
+
 /releases/*/paper.json
   Access-Control-Allow-Origin: *
 
@@ -3473,6 +3501,7 @@ simplePage('privacy/', 'Privacy policy', `How ${CONFIG.siteName} handles data: n
 simplePage('terms/', 'Terms of service', `Licences, status and limits of the material published by ${CONFIG.siteName}, including its YouTube channel.`, 'terms.md', 'WebPage');
 shopPage();
 thinkAgainPage();
+interpsychPage();
 feeds();
 sitemap();
 llms();
