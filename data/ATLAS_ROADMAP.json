@@ -1,28 +1,28 @@
 {
   "schemaVersion": "1.0",
   "recordType": "evidence-atlas-roadmap",
-  "updated": "2026-10-22",
+  "updated": "2026-10-23",
   "status": "active-reviewed-roadmap",
   "claimCeiling": "This roadmap records intended work and review decisions. It does not establish that an undiscovered relationship exists, that a proposed relationship is correct, or that the Atlas improves research outcomes.",
   "currentBaseline": {
-    "asOf": "2026-10-22",
-    "releaseCount": 185,
+    "asOf": "2026-10-23",
+    "releaseCount": 186,
     "methodCount": 13,
-    "clusterCount": 172,
+    "clusterCount": 173,
     "lineageCount": 5,
-    "acceptedRelationshipCount": 1146,
+    "acceptedRelationshipCount": 1153,
     "publishedProposalCount": 4,
     "relationshipComposition": {
-      "usesMethodCount": 892,
-      "clusterMembershipCount": 187,
+      "usesMethodCount": 897,
+      "clusterMembershipCount": 188,
       "lineageMembershipCount": 15,
-      "directInterReleaseCount": 52,
-      "defaultProgrammeViewCount": 254
+      "directInterReleaseCount": 53,
+      "defaultProgrammeViewCount": 256
     },
     "methodPrevalenceChecks": [
       {
         "methodId": "adversarial-controls",
-        "releaseAssignmentCount": 160
+        "releaseAssignmentCount": 161
       },
       {
         "methodId": "structural-compression",
@@ -1046,6 +1046,25 @@
       "observations": [
         "The renewal quantum resetting release adds one release record and one singleton cluster, with 5 method assignments. It declares no parent link.",
         "Exact graph totals are 185 releases, 172 clusters and 1146 accepted relationships; the relationship composition and method prevalences are generated from the current registry.",
+        "The 4 published proposal records remain unchanged."
+      ],
+      "decision": "complete",
+      "nextAction": "Complete separate archive and public-delivery gates; retain all existing scientific and discovery-benchmark limitations."
+    },
+    {
+      "reviewId": "atlas-review-2026-10-23-pagerank-backtracking-nonmonotone",
+      "reviewedAt": "2026-10-23",
+      "trigger": "One candidate release record integrated into the current corpus",
+      "reviewer": "Claude Code producer-side publication integration",
+      "provenanceNote": "Mechanical current-baseline refresh using computeAtlasBaseline, buildResearchGraph and loadAtlasProposals. Prior review history, roadmap priorities and scientific policy are unchanged. Counts are not a scientific assurance, delivery receipt or impact measurement.",
+      "baseline": {
+        "releaseCount": 186,
+        "acceptedRelationshipCount": 1153,
+        "publishedProposalCount": 4
+      },
+      "observations": [
+        "The backtracking-weighted PageRank non-monotonicity release adds one release record and one singleton cluster, with five method assignments and one direct related-release link. It declares no parent link.",
+        "Exact graph totals are 186 releases, 173 clusters and 1153 accepted relationships; the relationship composition and method prevalences are generated from the current registry.",
         "The 4 published proposal records remain unchanged."
       ],
       "decision": "complete",
