@@ -1,4 +1,5 @@
 'use strict';
+const { bannerSvg } = require('./svg-xml');
 // Exact optimal dispatching to two fluid queues: banner, OG card and thumbnail.
 // Sources (paper: Exact optimal dispatching to two fluid queues, 23 Oct 2026):
 //  - Running example (Section 1 and Section "The running example"): sizes 1/2 and 3/2 with probability 1/2 each,
@@ -171,20 +172,7 @@ const draw = () => text(40, 50, 'The best dispatcher pulls two queues apart', 27
 const description = 'Banner for a paper that solves optimal size-aware dispatching to two fluid queues exactly, shown on the paper’s running example: job sizes 1/2 and 3/2 equally likely, load rho = 3/4, both queues starting with 1/2 unit of work. Left: the workload plane, with the longer queue’s work across and the shorter queue’s work up. Balanced routing stays on the dotted diagonal. The optimal path leaves the diagonal: first all arriving work goes to one queue; when the relative imbalance z reaches 3/13 (at workloads 4/7 and 5/14), small jobs go to the shorter queue; that queue empties at longer-queue work 9/14 and is then kept exactly busy, taking all small jobs and 5/9 of the large ones, while the longer queue drains to zero. The dashed most-work-left path shares the first leg but keeps all work on the longer queue until the other empties. Top right: before either queue empties, large jobs always go to the longer queue; small jobs switch from the longer to the shorter queue at z = 3/13. Bottom right: waiting cost from the start, balanced 3/2, most work left 21/16 and optimal 33/28, a saving of 3/14, about 21 percent, against balanced routing. All values are exact and are for the fluid model, not the random queue.';
 
 function frame(inner, background) {
-  const [c0, c1] = background.colors, W = 1200, H = 400, accent = opt;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" data-banner-palette="${background.name}" role="img" aria-labelledby="art-description">
-<desc id="art-description">${description}</desc><defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="${c0}"/><stop offset="1" stop-color="${c1}"/>
-</linearGradient>
-<radialGradient id="glow" cx="0.25" cy="0.6" r="0.5">
-<stop offset="0" stop-color="${accent}" stop-opacity="0.07"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
-</radialGradient>
-</defs>
-<rect width="${W}" height="${H}" fill="url(#bg)"/>
-<rect width="${W}" height="${H}" fill="url(#glow)"/>
-${inner}
-</svg>`;
+  return bannerSvg({ inner, description, background, glow: { color: opt, cx: '0.25', cy: '0.6', r: '0.5', opacity: '0.07' } });
 }
 
 const thumbSpec = {

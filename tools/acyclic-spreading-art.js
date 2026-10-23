@@ -1,4 +1,5 @@
 'use strict';
+const { bannerSvg } = require('./svg-xml');
 // Acyclic spreading, algebraic extinction: banner, OG card and thumbnail.
 // Model (paper, all exact): S -> W -> X -> R with contact rates 2, 1, 1; S->W and W->X catalysed by X,
 // X->R catalysed by R.  s' = -2sx, w' = 2sx - wx, x' = (w - r)x, r' = rx, initial (25/48, 5/24, 1/240, 4/15).
@@ -97,20 +98,7 @@ const draw = () => chain() + plot();
 const description = 'Banner for algebraic extinction in acyclic spreading models. Left: a four-compartment rumour chain, unaware S, primed W, active spreader X and stifler R. Its transition graph is the path S to W to X to R with contact rates 2sx, wx and rx; its dependency graph has edges S to X, W to X and X to R. Both graphs are acyclic. Right: on log–log axes, the exact active fraction x(t) = θ³/(3(1+θ)) with θ = (16 + 2t/3)^(−1/2), for the initial state (25/48, 5/24, 1/240, 4/15). After an initial plateau the curve follows the straight line x ~ √(3/8) t^(−3/2), while an exponential fade-out with the same starting value and the same initial relative decay rate 7/120 plunges off the axes before t = 1000. The slow decay occurs because the endgame is exactly critical: the effective reproduction number w/r tends to 1 from below, with 1 − R_eff ~ 9/(2t).';
 
 function frame(inner, background) {
-  const [c0, c1] = background.colors, W = 1200, H = 400, accent = xc;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" data-banner-palette="${background.name}" role="img" aria-labelledby="art-description">
-<desc id="art-description">${description}</desc><defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="${c0}"/><stop offset="1" stop-color="${c1}"/>
-</linearGradient>
-<radialGradient id="glow" cx="0.75" cy="0.3" r="0.9">
-<stop offset="0" stop-color="${accent}" stop-opacity="0.06"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
-</radialGradient>
-</defs>
-<rect width="${W}" height="${H}" fill="url(#bg)"/>
-<rect width="${W}" height="${H}" fill="url(#glow)"/>
-${inner}
-</svg>`;
+  return bannerSvg({ inner, description, background, glow: { color: xc, cx: '0.75', cy: '0.3', r: '0.9', opacity: '0.06' } });
 }
 
 const thumbSpec = {

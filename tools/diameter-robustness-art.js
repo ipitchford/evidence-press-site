@@ -1,4 +1,5 @@
 'use strict';
+const { bannerSvg } = require('./svg-xml');
 // Small diameter does not control hitting-time robustness: banner, OG card and thumbnail.
 // Source: Theorem 2.1 and Section 2 of the paper. G_m: cliques K_0..K_{n-1} (n = 2m+1, size m) in a ring,
 // consecutive cliques completely joined; portal h_i joined to every vertex of K_i; the portals form a clique.
@@ -96,20 +97,7 @@ const draw = () => graph() + story();
 const description = 'Banner for “Small diameter does not control hitting-time robustness”. Left: the diameter-three regular graph G_m drawn collapsed for m = 3, as in the paper’s Figure 1: seven cliques K0 to K6 in a ring, consecutive cliques completely joined; each clique K_i is attached to a portal vertex h_i, and the seven portals form a clique in the centre, so any two vertices are within three steps. The target clique K0 at the top is highlighted. Chevrons on the ring edges show the fixed perturbation: each transition along the ring is multiplied by 1 + η when it moves away from K0 and by 1 − η when it moves towards it; the edge between the two antipodal cliques, at equal distance from K0, is unchanged (marked =), as are the portal edges. Right: the mechanism in three steps: bias along the ring away from K0; depletion, K0 receives tiny stationary mass; Kac’s formula, the hitting time of a vertex v in K0 is at least 1/π′(v) − 1. A callout gives the exact computed figure from the paper’s Table 3: on G54, with 5,995 vertices and ε times the diameter equal to 0.74, the worst-case expected hitting time is 5.80 times larger. The graph is a schematic; the theorem uses m at least 54.';
 
 function frame(inner, background) {
-  const [c0, c1] = background.colors, W = 1200, H = 400, accent = teal;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" data-banner-palette="${background.name}" role="img" aria-labelledby="art-description">
-<desc id="art-description">${description}</desc><defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="${c0}"/><stop offset="1" stop-color="${c1}"/>
-</linearGradient>
-<radialGradient id="glow" cx="0.22" cy="0.5" r="0.8">
-<stop offset="0" stop-color="${accent}" stop-opacity="0.07"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
-</radialGradient>
-</defs>
-<rect width="${W}" height="${H}" fill="url(#bg)"/>
-<rect width="${W}" height="${H}" fill="url(#glow)"/>
-${inner}
-</svg>`;
+  return bannerSvg({ inner, description, background, glow: { color: teal, cx: '0.22', cy: '0.5', r: '0.8', opacity: '0.07' } });
 }
 
 const thumbSpec = {

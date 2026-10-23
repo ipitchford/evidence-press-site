@@ -1,4 +1,5 @@
 'use strict';
+const { bannerSvg } = require('./svg-xml');
 // Nonreal poles of Weniger's delta transformation for Stieltjes series: banner, OG card and thumbnail.
 // Sources (paper: Nonreal poles of Weniger's delta transformation for Stieltjes series: a finite-order
 // classification, 23 Oct 2026):
@@ -101,20 +102,7 @@ const draw = () => text(40, 50, 'Weniger’s delta transformation can put poles 
 const description = 'Banner for a paper classifying when Weniger’s delta transformation of a Stieltjes series has all its poles on the branch cut. Left: the complex z-plane drawn with equal scales on both axes. The branch cut, the negative real axis from minus infinity to 0, is a thick amber line labelled as the place where Padé approximants keep every pole. For the order-3 delta transformation with n = 0, beta = 1 and the positive measure delta_1 + 50 delta_{1/50} + 10^-3 e^-t dt, two real poles sit on the cut at -0.065 and 0, and a genuine nonreal conjugate pair sits just off it at -0.8832 plus or minus 0.0824i, with residue 0.357 minus 1.360i at the lower pole and its conjugate at the upper. Positions are rounded; the paper certifies the nonreal pair in exact rational arithmetic. Right: whether every Stieltjes measure keeps the delta poles on the cut, by order k: always at k = 1 and 2; at k = 3 only when n + beta is at most (sqrt(33) - 5)/2, about 0.372; from k = 4 on never guaranteed, because some measure gives a nonreal pair. The mechanism, in the paper: tuning the moments isolates three consecutive denominator coefficients, whose quadratic has nonreal roots exactly when h_j^2 is less than 4 h_{j-1} h_{j+1}, and the delta weights fail this factor-four test from order four.';
 
 function frame(inner, background) {
-  const [c0, c1] = background.colors, W = 1200, H = 400;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" data-banner-palette="${background.name}" role="img" aria-labelledby="art-description">
-<desc id="art-description">${description}</desc><defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="${c0}"/><stop offset="1" stop-color="${c1}"/>
-</linearGradient>
-<radialGradient id="glow" cx="0.2" cy="0.62" r="0.45">
-<stop offset="0" stop-color="${pair}" stop-opacity="0.08"/><stop offset="1" stop-color="${pair}" stop-opacity="0"/>
-</radialGradient>
-</defs>
-<rect width="${W}" height="${H}" fill="url(#bg)"/>
-<rect width="${W}" height="${H}" fill="url(#glow)"/>
-${inner}
-</svg>`;
+  return bannerSvg({ inner, description, background, glow: { color: pair, cx: '0.2', cy: '0.62', r: '0.45', opacity: '0.08' } });
 }
 
 const thumbSpec = {
