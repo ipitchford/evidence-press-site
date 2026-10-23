@@ -5,8 +5,9 @@
  *   node tools/check-svg-wellformed.js --built    # every SVG in dist/
  *   node tools/check-svg-wellformed.js FILE...    # just these files
  *
- * A browser shows nothing at all for an <img> whose SVG fails to parse, so a
- * single unescaped "<" in a banner's <desc> blanks the release page's art.
+ * A browser shows nothing at all for an <img> whose SVG fails to parse (or
+ * whose root is not an SVG-namespace <svg>), so a single unescaped "<" in a
+ * banner's <desc> blanks the release page's art.
  * See tools/svg-xml.js.
  */
 'use strict';
@@ -15,6 +16,8 @@ const path = require('path');
 const { wellFormedErrors } = require('./svg-xml');
 
 const ROOT = path.join(__dirname, '..');
+// An <img> renders nothing unless the root is <svg> in the SVG namespace.
+const SVG_ROOT = 'http://www.w3.org/2000/svg|svg';
 const SKIP = new Set(['.git', 'node_modules', 'dist', 'test-results', 'playwright-report']);
 
 function walk(dir, skip, out = []) {
@@ -42,7 +45,7 @@ files.sort();
 
 let bad = 0;
 for (const file of files) {
-  const errors = wellFormedErrors(fs.readFileSync(file, 'utf8'));
+  const errors = wellFormedErrors(fs.readFileSync(file, 'utf8'), { root: SVG_ROOT });
   if (errors.length) {
     bad++;
     console.error(`${path.relative(ROOT, file)}: not well-formed XML`);

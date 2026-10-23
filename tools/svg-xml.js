@@ -9,9 +9,12 @@
  * through escapeText / escapeAttr, and tools/check-svg-wellformed.js refuses
  * any committed or built SVG that wellFormedErrors() rejects.
  *
- * wellFormedErrors() is a deliberately small, dependency-free XML 1.0
- * well-formedness checker (no DTD validation, no external entities). It is
- * stricter than an HTML parser and matches xmllint --noout on the corpus.
+ * wellFormedErrors() is a deliberately small, dependency-free checker for
+ * XML 1.0 well-formedness plus Namespaces in XML 1.0 (bound prefixes,
+ * qualified-name syntax, reserved bindings, duplicate expanded attribute
+ * names), which browsers also enforce for SVG. No DTD validation and no
+ * external entities. xmllint --noout exits 0 on namespace errors, so the
+ * namespace rules are tested against a browser's DOMParser instead.
  */
 
 const escapeText = value => String(value == null ? '' : value)
@@ -45,14 +48,20 @@ ${inner}
 </svg>`;
 }
 
-const PREDEFINED =new Set(['amp', 'lt', 'gt', 'quot', 'apos']);
-const NAME = /^[A-Za-z_:À-￿][A-Za-z0-9_:.\-·À-￿]*/;
+const PREDEFINED = new Set(['amp', 'lt', 'gt', 'quot', 'apos']);
+const NAME = /^[A-Za-z_:\u00C0-\uFFFF][A-Za-z0-9_:.\-\u00B7\u00C0-\uFFFF]*/;
+const XML_NS = 'http://www.w3.org/XML/1998/namespace';
+const XMLNS_NS = 'http://www.w3.org/2000/xmlns/';
+const decodeRefs = v => v.replace(/&(#x[0-9A-Fa-f]+|#[0-9]+|amp|lt|gt|quot|apos);/g, (_, r) =>
+  r[0] === '#' ? String.fromCodePoint(r[1] === 'x' ? parseInt(r.slice(2), 16) : parseInt(r.slice(1), 10))
+    : { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'" }[r]);
 const isXmlChar = c => c === 0x9 || c === 0xA || c === 0xD || (c >= 0x20 && c <= 0xD7FF) ||
   (c >= 0xE000 && c <= 0xFFFD) || (c >= 0x10000 && c <= 0x10FFFF);
 
-function wellFormedErrors(xml) {
+/* options.root: required expanded name of the root element, as 'namespace|local'. */
+function wellFormedErrors(xml, options = {}) {
   const errors = [];
-  const src = String(xml).replace(/^﻿/, '');
+  const src = String(xml).replace(/^\uFEFF/, '');
   const lineOf = i => src.slice(0, i).split('\n').length;
   const fail = (i, msg) => { errors.push(`line ${lineOf(i)}: ${msg}`); };
   const declared = new Set();
@@ -80,6 +89,50 @@ function wellFormedErrors(xml) {
         fail(at + m.index, `undeclared entity &${body}; in ${where}`);
       }
     }
+  };
+
+  // Namespaces in XML 1.0: returns the in-scope prefix map for this element.
+  const checkNamespaces = (name, attrs, at, parent) => {
+    const scope = new Map(parent || [['xml', XML_NS]]);
+    const qname = (q, where) => {
+      const parts = q.split(':');
+      if (parts.length > 2 || parts.some(p => !p)) { fail(at, `${where} "${q}" is not a valid qualified name`); return null; }
+      return parts.length === 2 ? parts : [null, q];
+    };
+    for (const { attr, value } of attrs) {
+      const uri = decodeRefs(value);
+      if (attr === 'xmlns') {
+        if (uri === XML_NS || uri === XMLNS_NS) fail(at, `<${name}>: the default namespace may not be ${uri}`);
+        else scope.set('', uri);
+      } else if (attr.startsWith('xmlns:')) {
+        const parts = qname(attr, `<${name}>: attribute`);
+        if (!parts) continue;
+        const prefix = parts[1];
+        if (prefix === 'xmlns') fail(at, `<${name}>: the xmlns prefix may not be declared`);
+        else if (prefix === 'xml' ? uri !== XML_NS : uri === XML_NS || uri === XMLNS_NS) fail(at, `<${name}>: xmlns:${prefix} has a reserved binding`);
+        else if (!uri) fail(at, `<${name}>: xmlns:${prefix}="" cannot undeclare a prefix in XML 1.0`);
+        else scope.set(prefix, uri);
+      }
+    }
+    const resolve = (q, where, element = false) => {
+      const parts = qname(q, where);
+      if (!parts) return null;
+      if (!parts[0]) return `${element ? scope.get('') || '' : ''}|${parts[1]}`;
+      if (!scope.has(parts[0])) { fail(at, `${where} "${q}" uses undeclared namespace prefix "${parts[0]}"`); return null; }
+      return `${scope.get(parts[0])}|${parts[1]}`;
+    };
+    const elementName = resolve(name, 'element', true);
+    if (!parent && options.root && elementName && elementName !== options.root)
+      fail(at, `root element is {${elementName.replace('|', '}')}, expected {${options.root.replace('|', '}')}`);
+    const expanded = new Map();
+    for (const { attr } of attrs) {
+      if (attr === 'xmlns' || attr.startsWith('xmlns:')) continue;
+      const key = resolve(attr, `<${name}>: attribute`);
+      if (!key) continue;
+      if (expanded.has(key)) fail(at, `<${name}>: attributes ${expanded.get(key)} and ${attr} have the same expanded name`);
+      expanded.set(key, attr);
+    }
+    return scope;
   };
 
   const stack = [];
@@ -136,14 +189,14 @@ function wellFormedErrors(xml) {
       const close = /^\s*>/.exec(src.slice(i + 2 + name.length));
       if (!name || !close) { fail(i, 'malformed end tag'); break; }
       const open = stack.pop();
-      if (open !== name) { fail(i, open ? `</${name}> closes <${open}>` : `stray </${name}>`); break; }
+      if (!open || open.name !== name) { fail(i, open ? `</${name}> closes <${open.name}>` : `stray </${name}>`); break; }
       i += 2 + name.length + close[0].length;
     } else {
       const name = (NAME.exec(src.slice(i + 1)) || [''])[0];
       if (!name) { fail(i, 'raw "<" that does not start a tag (write &lt;)'); break; }
       if (!stack.length) { roots++; if (roots > 1) fail(i, 'more than one root element'); }
       let j = i + 1 + name.length;
-      const seen = new Set();
+      const seen = new Set(), attrs = [];
       let selfClosing = false, ok = false;
       while (j < src.length) {
         const ws = /^\s*/.exec(src.slice(j))[0];
@@ -166,6 +219,7 @@ function wellFormedErrors(xml) {
         const value = src.slice(j + 1, end);
         if (value.includes('<')) fail(j, `<${name}>: raw "<" in attribute ${attr} (write &lt;)`);
         checkRefs(value, j + 1, `attribute ${attr}`);
+        attrs.push({ attr, value, at: j });
         j = end + 1;
       }
       if (!ok) {
@@ -173,11 +227,12 @@ function wellFormedErrors(xml) {
         errors[errors.length - 1] += ' (if this "<" is meant as text, write &lt;)';
         break;
       }
-      if (!selfClosing) stack.push(name);
+      const scope = checkNamespaces(name, attrs, i, stack.length ? stack[stack.length - 1].scope : null);
+      if (!selfClosing) stack.push({ name, scope });
       i = j;
     }
   }
-  if (!errors.length && stack.length) fail(src.length, `unclosed <${stack[stack.length - 1]}>`);
+  if (!errors.length && stack.length) fail(src.length, `unclosed <${stack[stack.length - 1].name}>`);
   if (!errors.length && !roots) fail(0, 'no root element');
   return errors;
 }

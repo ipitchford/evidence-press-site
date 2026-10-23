@@ -90,7 +90,43 @@ bad('text<svg/>', /outside the root/, 'text before root');
 bad('', /no root/, 'empty file');
 bad('<svg><text>a</text', /malformed end tag/, 'truncated file');
 
-// 6. The checker agrees with libxml2 where it is installed (not required in CI).
+// 5b. Namespaces in XML: browsers reject these SVGs too (an <img> then shows nothing).
+// Verdicts recorded from Chromium's DOMParser(…, 'image/svg+xml') on 23 Oct 2026.
+// xmllint --noout exits 0 on namespace errors, so it cannot be the oracle here.
+const browserVerdicts = [
+  [false, '<svg xmlns="http://www.w3.org/2000/svg"><x:use/></svg>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg"><use x:href="a"/></svg>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg" xmlns:a="u" xmlns:b="u"><use a:h="1" b:h="2"/></svg>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg" xmlns:a=""><use/></svg>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg"><a:b:c/></svg>'],
+  [true, '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#a" xml:space="preserve"/></svg>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://other"/>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg"><:a/></svg>'],
+  [true, '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace"/>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xmlns="u"/>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg" xmlns:p="http://www.w3.org/2000/xmlns/"/>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg"><g xmlns:p="u"><p:a/></g><p:b/></svg>'],
+  [true, '<svg xmlns="http://www.w3.org/2000/svg"><g xmlns:p="u"><p:a/></g></svg>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg"><use a:="1"/></svg>'],
+  [true, '<p:svg xmlns:p="http://www.w3.org/2000/svg"/>'],
+  [true, '<svg xmlns="http://www.w3.org/2000/svg" xmlns:a="u"><use a:h="1" h="2"/></svg>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg"><use xmlns:p="u" p:x="1" xmlns:q="u" q:x="2"/></svg>'],
+  [false, '<svg xmlns="http://www.w3.org/2000/svg" xmlns:p="http://www.w3.org/XML/1998/namespace"/>'],
+  [false, '<svg xmlns="http://www.w3.org/XML/1998/namespace"/>'],
+  [true, '<svg xmlns="http://www.w3.org/2000/svg"><g xmlns=""><a/></g></svg>']
+];
+for (const [accepted, svg] of browserVerdicts)
+  assert.equal(wellFormedErrors(svg).length === 0, accepted, `namespace verdict differs from the browser: ${svg}`);
+bad('<svg xmlns="http://www.w3.org/2000/svg"><x:use/></svg>', /undeclared namespace prefix "x"/, 'undeclared element prefix');
+bad('<svg xmlns="http://www.w3.org/2000/svg" xmlns:a="u" xmlns:b="u"><use a:h="1" b:h="2"/></svg>', /same expanded name/, 'duplicate expanded attribute');
+const SVG_ROOT = { root: 'http://www.w3.org/2000/svg|svg' };
+assert.deepEqual(wellFormedErrors('<svg xmlns="http://www.w3.org/2000/svg"/>', SVG_ROOT), []);
+assert.deepEqual(wellFormedErrors('<p:svg xmlns:p="http://www.w3.org/2000/svg"/>', SVG_ROOT), []);
+assert.match(wellFormedErrors('<svg/>', SVG_ROOT).join(), /root element is \{\}svg/, 'missing SVG namespace');
+assert.match(wellFormedErrors('<g xmlns="http://www.w3.org/2000/svg"/>', SVG_ROOT).join(), /expected/, 'non-svg root');
+
+// 6. The checker agrees with libxml2 where it is installed (not required in CI);
+// libxml2 only warns on namespace errors, so these cases are namespace-clean.
 const lint = cp.spawnSync('xmllint', ['--version'], { encoding: 'utf8' });
 if (lint.status === 0) {
   const cases = [wrap('a < b'), wrap('a & b'), wrap('a > b'), wrap('&nbsp;'), wrap('&amp;'), banner, described,
