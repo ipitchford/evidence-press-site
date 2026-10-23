@@ -131,6 +131,14 @@
       "url": "https://evidencepress.org/releases/sharp-quartic-hadamard-powers/"
     }
   ],
+  "corrections": [
+    {
+      "date": "2026-10-23",
+      "scope": "claim",
+      "summary": "Corrected an illustrative remark in §4.1 of the archived manuscript. The manuscript says that at $k=8$, $b\\to0$, “five of the seven” internal ratios $h_j^2/(h_{j-1}h_{j+1})$ are below $4$. Exact arithmetic gives six of the seven: with $h_j=\\binom{8}{j}(b+j)_7$, the ratios for $j=2,\\dots,7$ at $b=0$ are $28/9$, $54/25$, $125/66$, $11/6$, $126/65$ and $52/21$ (between $1.83$ and $3.12$), while the $j=1$ ratio is unbounded as $b\\to0$ (about $2\\times10^6$ at $b=10^{-6}$). The count is also six of seven at $b=10^{-6}$ and $b=0.1$.",
+      "detail": "The remark is not used in any proof, and the corrected statement is slightly stronger than the original, so the robustness point it illustrates stands. No theorem, certificate or evidence state is affected. The archived PDF, version DOI and repository tag are unchanged; the erratum is recorded here and in the repository's CORRECTIONS.md on its main branch."
+    }
+  ],
   "operatingModel": {
     "version": "1.0",
     "workId": "ep-work:weniger-delta-nonreal-poles",
