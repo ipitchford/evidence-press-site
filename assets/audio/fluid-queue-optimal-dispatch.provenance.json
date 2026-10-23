@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Small jobs to the short queue: an exact answer for two fluid queues. An Evidence Press briefing. First, the background. A dispatcher sends each arriving job to one of two identical servers. It knows each job's size and how much work is waiting at each server. Which rule keeps total waiting time lowest? Even in simple settings, the exact answer is unknown. So, in 2026, Xie, Hyytiä and Righter studied a smoother fluid version, in which a large backlog drains steadily. They conjectured that along every optimal path the two queues drift further apart, in relative terms, until one empties. Now, the main finding. The paper solves this two-server fluid problem exactly, for every job-size distribution except a single fixed size, and every load below capacity. The optimal rule is simple.",
+      "inputSha256": "028ca43ec9e9f63bdf2f77f27507c0fb72a66f92a0374fd6b817a5dcd320a181",
+      "audioSha256": "fcc41ed75d2833187cea979c94300b10d5ef5976ece2e129669882147226d6e7",
+      "requestId": "req_99bf6d723d0d420dae6d55c762d22902",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "load below capacity the optimal rule is simple",
+        "heardEnding": "distribution except a single fixed size and every load below capacity the optimal rule is simple",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "Jobs smaller than a cutoff go to the shorter queue, and larger jobs go to the longer one. The cutoff rises as the queues drift apart. Once one queue is empty, it is kept exactly busy. This proves the conjecture as posed, and extends it to all size distributions except fixed sizes, where it fails. In a worked example, the optimal cost is 33 over 28, against 3 over 2 for balanced routing: a saving of about 21 percent. The paper also finds the limit near full load. This corrects a factor in one of the source's formulas, and then matches a constant known for the CARD policy. How sure is this? The main results are written proofs, and the exact computations can be rerun. Simulations of the real, random queue are numerical evidence only.",
+      "inputSha256": "ae130b409337fddc1a8135b6fee03b79eea33515e3b0dc430d71f383bc764266",
+      "audioSha256": "9df87da8925e810501a18e35a57fcd5c4d27bdd661b398331bb4f653a4e12c2f",
+      "requestId": "req_b8079324c4b04f8e93e63ad7c0b2e6a4",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the real random queue are numerical evidence only",
+        "heardEnding": "the exact computations can be rerun simulations of the real random queue are numerical evidence only",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "There, the fluid rule used directly does very well when job sizes vary a lot, but fails badly at high load when they vary little. A stabilised version with a safety band repairs this, and is competitive with tuned CARD and Dice. No policy is best everywhere. Finally, the limits. The results cover two identical servers with known job sizes, and the link from the fluid model to the random queue is not proved. It is an anonymous, unrefereed candidate, with AI-assisted adversarial review only, not peer review. Published on 23 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "bc01e9cb32fa4e36b0aa914b3289f397d45713380536b96d015ca799950dfe82",
+      "audioSha256": "ff21df910e3ec10b59d227d50aa47cb1fac4df4d5ea354a23982ea782a890d57",
+      "requestId": "req_da2af59930274db6984857027fcf46fa",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "fluid-queue-optimal-dispatch",
+  "generatedAt": "2026-10-23T05:54:57.175Z",
+  "sourceMetadata": "papers/fluid-queue-optimal-dispatch/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "648cc8abfbc417ab4349ee143014552487fc0445e12d9be6156a37e37ffa7d70",
+  "transcriptPath": "assets/audio/fluid-queue-optimal-dispatch.txt",
+  "transcriptSha256": "ba52c7a266658c19efceee8713d90de23ba61dabb048a2544f67bf8043bed9ba",
+  "audioPath": "assets/audio/fluid-queue-optimal-dispatch.mp3",
+  "audioSha256": "a739212def521f35f922bcedeb320b10e99e7d259492e31071970748a9985b69",
+  "audioBytes": 2540588,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
