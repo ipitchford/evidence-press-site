@@ -1,4 +1,5 @@
 'use strict';
+const { bannerSvg } = require('./svg-xml');
 // Logarithmic Stenger integration matrices: banner, OG card and thumbnail.
 // Sources (paper: Positive stability of logarithmic Stenger integration matrices, 22 Oct 2026):
 //  - Theorem 2.2: U_n (integrate from 0) is positive stable at every degree iff -1 < alpha <= 1, for every m > 0;
@@ -149,20 +150,7 @@ const draw = () => maps() + caption() + plane() + `<path d="M590 30 V380" stroke
 const description = 'Banner for a paper on the positive stability of logarithmic-weight Stenger integration matrices. Left: where the matrices are safe, meaning every eigenvalue has positive real part, for Gaussian nodes of the weight x to the alpha times log(1/x) to the m on (0, 1). A horizontal strip for the forward matrix U_n, which integrates from 0, is coloured stable for alpha from −1 to 1 and unstable beyond alpha = 1, where for every m the matrix is unstable at all large degrees and the number of unstable eigenvalues tends to infinity. Below it a map in the (alpha, m) plane for the reverse matrix V_n, which integrates to 1: the band m > 1 is unstable at all large degrees; the region m ≤ 1 with alpha ≥ m/2 − 1 is stable at every degree; the remaining small triangle with alpha below m/2 − 1 is hatched as not settled. On the line m = 1 a star marks the exact counterexample V_13 at alpha = −9/10, which has two eigenvalues with negative real part, and dots mark further exact unstable instances at alpha = −4/5, −7/10 and −3/5, with first unstable degrees 13, 15, 17 and 22. A dashed circle at alpha = −1/2 marks the conjectured exact reverse boundary, which is open. Right: why the exponent one is a knife edge. After scaling by n squared, small eigenvalues approach the zeros of the Kummer function F_gamma(z) = 1F1(1; gamma + 1; −z), with gamma = alpha for U_n and gamma = m for V_n. In the complex plane, the zeros for gamma = 1 lie on the imaginary axis at 2 pi i, 4 pi i and 6 pi i, since F_1(z) = (1 − e^(−z))/z; the first three zeros for gamma = 3/2, 2 and 3 lie in the left half-plane, further left as gamma grows. For gamma > 1 every zero has negative real part, which produces the instabilities; for gamma ≤ 1 an energy identity keeps the forward spectra stable. Regions follow the paper’s theorems; the zero positions for gamma = 3/2, 2 and 3 are the paper’s numerical table values.';
 
 function frame(inner, background) {
-  const [c0, c1] = background.colors, W = 1200, H = 400, accent = bad;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" data-banner-palette="${background.name}" role="img" aria-labelledby="art-description">
-<desc id="art-description">${description}</desc><defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="${c0}"/><stop offset="1" stop-color="${c1}"/>
-</linearGradient>
-<radialGradient id="glow" cx="0.75" cy="0.55" r="0.7">
-<stop offset="0" stop-color="${accent}" stop-opacity="0.08"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
-</radialGradient>
-</defs>
-<rect width="${W}" height="${H}" fill="url(#bg)"/>
-<rect width="${W}" height="${H}" fill="url(#glow)"/>
-${inner}
-</svg>`;
+  return bannerSvg({ inner, description, background, glow: { color: bad, cx: '0.75', cy: '0.55', r: '0.7', opacity: '0.08' } });
 }
 
 const thumbSpec = {

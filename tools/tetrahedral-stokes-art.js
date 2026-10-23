@@ -1,4 +1,5 @@
 'use strict';
+const { bannerSvg } = require('./svg-xml');
 // Tetrahedral moment Stokes elements: banner, OG card and thumbnail.
 // Source: Theorem 2.1 of the paper. For fourth-order moments (face tests P_n, cell tests P_{n-1}) the kernel of the
 // moment map on P_{n+2} is 7-dimensional for every n, so its rank is C(n+5,3) - 7 and the deficit against the
@@ -129,20 +130,7 @@ const draw = () => tetra() + ladder() + deficitStrip();
 const description = 'Banner for a moment obstruction and minimal-degree polynomial nonconforming Stokes elements on tetrahedra. Left: a tetrahedron drawn in perspective with one face shaded; its degrees of freedom are face moments, averages over each face F of v times q for every test polynomial q of degree n, and cell moments against polynomials of degree n − 1 at an interior point. For fourth order, n = 3, there are N = 50 moments. Middle: a degree ladder for n = 3. Each rung shows 50 squares, one per moment. On P4 = P(n+1), of dimension 35, the moments are injective, so 35 of the 50 directions are reached and no nonzero polynomial is hidden. On P5 = P(n+2), of dimension 56, the moments have a 7-dimensional kernel, so their rank is 56 − 7 = 49 and exactly one of the 50 directions is missing, marked in a warm colour. On P6 = P(n+3) all 50 directions are reached. Below: the kernel on P(n+2) is 7-dimensional for every n, so the rank is C(n + 5, 3) − 7. Right: the number of directions missed by degree n + 2 for n = 1 to 6 is (n − 1)(n − 2)/2, namely 0, 0, 1, 3, 6 and 10, drawn as triangular arrays of dots, so degree n + 2 suffices only for n = 1 and 2 while degree n + 3 always succeeds. A callout shows the repair for n = 3: one sextic bubble, the Vandermonde product Delta4 = product of (lambda j − lambda i) over the barycentric coordinates, whose alternating face functional A(Delta4) = 1/34650 is nonzero, while A vanishes on all quintics. In two dimensions the corresponding count is never deficient. The counts are the exact values of the paper’s Theorem 2.1 and proposition; the tetrahedron is a schematic.';
 
 function frame(inner, background) {
-  const [c0, c1] = background.colors, W = 1200, H = 400, accent = face;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" data-banner-palette="${background.name}" role="img" aria-labelledby="art-description">
-<desc id="art-description">${description}</desc><defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="${c0}"/><stop offset="1" stop-color="${c1}"/>
-</linearGradient>
-<radialGradient id="glow" cx="0.2" cy="0.6" r="0.8">
-<stop offset="0" stop-color="${accent}" stop-opacity="0.07"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
-</radialGradient>
-</defs>
-<rect width="${W}" height="${H}" fill="url(#bg)"/>
-<rect width="${W}" height="${H}" fill="url(#glow)"/>
-${inner}
-</svg>`;
+  return bannerSvg({ inner, description, background, glow: { color: face, cx: '0.2', cy: '0.6', r: '0.8', opacity: '0.07' } });
 }
 
 const thumbSpec = {
