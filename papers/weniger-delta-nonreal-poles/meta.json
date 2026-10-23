@@ -1,0 +1,205 @@
+{
+  "slug": "weniger-delta-nonreal-poles",
+  "title": "Nonreal poles of Weniger's delta transformation for Stieltjes series: a finite-order classification",
+  "shortTitle": "Weniger's delta transformation can put poles off the cut",
+  "oneLine": "Standard Padé approximants to a Stieltjes series keep every pole on the branch cut, but Weniger's delta transformation does not: for every Stieltjes measure its denominator is real-rooted at orders one and two, at order three exactly when n + β ≤ (√33 − 5)/2, and from order four never, refuting Borghi's 2026 conjecture.",
+  "abstract": "A Stieltjes function is analytic off the negative real axis, its branch cut, and its asymptotic series often diverges. The standard (diagonal and near-diagonal) Padé approximants, the classical summation tool, place their poles on the cut. Weniger's delta transformation is often much faster on such series, and Borghi (Mathematics 14 (2026) 376) conjectured that its denominator, too, has only negative real zeros for every Stieltjes moment sequence. This candidate shows that the conjecture is false and says exactly when it holds. Call an order k and shift b = n + β (starting index n, shift β > 0) universally safe if the delta denominator has only negative real zeros for every admissible measure. Orders one and two are safe for every shift; order three is safe exactly when b ≤ (√33 − 5)/2 ≈ 0.3723, so the standard choice n = 0, β = 1 is unsafe; from order four no starting index or shift is safe, and for each fixed starting index a single measure gives genuine nonreal poles at order four for every shift. The mechanism is short: positive moments can be tuned so that only three consecutive coefficients of the denominator matter, and from order four the delta weights fail the classical factor-four test for those three. The nonreal zeros are genuine poles, not cancelled by the numerator. For one fixed three-part measure at n = 0, β = 1 the paper proves that nonreal denominator zeros occur at every sufficiently large order, and certifies genuine nonreal poles exactly at every order from 3 to 30; genuine poles at every order is left as a conjecture. On the positive side, real-rootedness holds at every order when Borghi's auxiliary polynomial is real-rooted, when the reciprocal moments form a multiplier sequence, or when the moment ratios μ_{r+1}/μ_r increase at least fourfold at each step; and the delta denominator is real-rooted for every shift exactly when Borghi's auxiliary polynomial is. This extends to every n, β and k the cases Borghi proved at n = 0, β = 1 (integer superfactorial, Laguerre and integer-difference Jacobi moments) and covers the Euler series, all Γ(ℓ + a) moments and log-normal moments with σ² ≥ 2 log 2. Exact rational-arithmetic certificates accompany every finite claim; pole locations, residues and accuracy examples are numerical and illustrative. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-23",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Weniger delta transformation",
+    "Stieltjes series",
+    "Padé approximants",
+    "sequence transformations",
+    "divergent series",
+    "real-rooted polynomials",
+    "multiplier sequences",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/weniger-delta-nonreal-poles",
+  "releaseUrl": "https://github.com/ipitchford/weniger-delta-nonreal-poles/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/weniger-delta-nonreal-poles/releases/download/v1.0.0-candidate/weniger-delta-nonreal-poles-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23586255",
+  "conceptDoi": "10.5281/zenodo.23586254",
+  "zenodoUrl": "https://zenodo.org/records/23586255",
+  "citeText": "Anonymous (2026). Nonreal poles of Weniger's delta transformation for Stieltjes series: a finite-order classification. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23586255",
+  "evidence": "Written proofs of the order–shift classification, the genuineness of the poles, the small-scale limit and persistence theorem, and the positive criteria; exact rational-arithmetic certificates (Python standard library integers and fractions) for the order-three and order-four examples, the tail family at orders five to eight, the all-shift polynomial identity at order four for n = 0 and n = 1, nonreal zeros and gcd = 1 at every order 3 to 30 for one fixed measure, the Jensen-polynomial certificate behind persistence, the cubic discriminant identity and 975 Sturm counts on natural moment families; one deterministic verifier (verify_all.py) whose JSON output reproduces byte for byte; separately labelled floating-point illustrations of pole locations, residues and accuracy.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. The classification, genuineness, persistence and positive theorems have written proofs; finite claims are exact certificates; pole locations, residues and accuracy figures are numerical and illustrative. Genuine nonreal poles beyond order 30 for the fixed measure are conjectural. Internal AI-assisted review, an AI-assisted re-review and AI-assisted adversarial audits only. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (dated October 2026, 15 pages), its deterministic verifier output and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 23 October 2026.",
+  "keyResults": [
+    "Order–shift classification: for every Stieltjes measure the delta denominator Q_k has only negative real zeros at orders k = 1 and 2 for every shift; at k = 3 exactly when b = n + β ≤ (√33 − 5)/2 ≈ 0.3723; for k ≥ 4 never, for any n ≥ 0 and β > 0 (Theorem 4.1, proof).",
+    "Borghi's conjecture is false already at his normalisation n = 0, β = 1 and order three, and every counterexample lies in his scenario (ii), where the auxiliary polynomial P_k has nonreal zeros (proof; exact Sturm counts).",
+    "Mechanism: positive moments can isolate any three consecutive reciprocal-moment coefficients, so Q_k behaves like a quadratic h_{j−1} + h_j z + h_{j+1} z²; the delta weights fail the factor-four test h_j² ≥ 4h_{j−1}h_{j+1} from order four (Theorem 3.2, proof).",
+    "The nonreal zeros are genuine poles; an explicit order-three measure δ₁ + 50δ_{1/50} + 10⁻³e^{−t}dt gives a nonreal pair near −0.8832 ± 0.0824i, one explicit order-four measure defeats every shift for n = 0 and n = 1 (exact certificates; locations numerical), and for each fixed n some measure gives genuine nonreal poles at order four for every shift (Corollary 5.2, proof).",
+    "Persistence for one fixed measure: Q_k(w/k²) converges to an entire function, which forces nonreal denominator zeros at every sufficiently large order; genuine nonreal poles are certified exactly at every order from 3 to 30, and genuine poles at every order k ≥ 3 is conjectured (Theorems 6.1, 6.3, Conjecture 6.4).",
+    "Positive theorem: real-rootedness holds at every order and shift if Borghi's P_k is real-rooted, if the reciprocal moments form a multiplier sequence, or if μ_{r−1}μ_{r+1} ≥ 4μ_r²; this extends Borghi's n = 0, β = 1 results and covers Euler, Γ(ℓ + a), integer superfactorial, integer-exponent Beta and log-normal (σ² ≥ 2 log 2) moments (Theorem 7.2, Corollary 7.3, proof); conversely, Q_k is real-rooted for every shift if and only if P_k is, and a non-integer Jacobi weight gives genuine nonreal poles at β = 20 (Remark 7.4, proof; exact certificate).",
+    "Natural families from Borghi's catalogue are real-rooted in 975 exact Sturm counts at orders 4 to 8 on a grid of n and β (certificate).",
+    "Practical layer: nonreal poles sit near the cut with complex residues of modulus about 1.4, so the order-three approximant is not itself a Stieltjes function; an exact Sturm-count diagnostic decides real-rootedness for given data, while the factor-four test is only sufficient (numerical illustrations; exact diagnostic)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, re-review and AI-assisted adversarial audits",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Weniger's delta transformation can put poles off the cut. An Evidence Press briefing. First, the background: many problems in physics produce series that diverge, yet still encode a well-behaved function. A large class of these, called Stieltjes series, come from functions with a single cut along the negative real axis, where all their singular behaviour lives. The classical way to sum such series, standard Padé approximation, is reliable partly because its poles fall on that cut. Weniger's delta transformation is a newer method that is often much faster. Next, the question: in 2026, Riccardo Borghi asked whether the delta transformation also keeps its poles on the cut, for every Stieltjes series, and called this a well-grounded conjecture. Now, the main finding: the conjecture is false, and the paper says exactly when it holds. The method has an order, k, and a shift. At orders one and two the poles always stay on the cut. At order three they do only when the shift is at most about 0.37, so the usual choice of one is unsafe. From order four on, no shift is safe for every series. The reason is that the series coefficients can be tuned so that only three neighbouring terms of the denominator matter, and those three fail a classical test, the factor-four test. The stray poles are genuine, and for one fixed example they keep appearing at every order checked, from three to thirty. On the positive side, the paper proves that the familiar families, including the Euler series, stay safe at every order. As for how sure this is: the main results have written proofs, and every finite example is checked in exact arithmetic. Pole positions and accuracy examples are numerical illustrations. Finally, the limits: genuine stray poles beyond order thirty are conjectured, not proved, and nothing here says the method fails to converge. It is an anonymous, unrefereed candidate, with AI-assisted adversarial review only, not peer review. Published on 23 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files by full download; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_all.py replays every exact certificate and the labelled numerical illustrations and writes deterministic JSON. On the frozen release archive, a fresh-extraction replay under python -B -O reproduced the shipped verification.json byte for byte, and the semantic negative controls behaved. GitHub CI repeats the replay."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Internal reviewers recomputed the printed integers, the threshold, the discriminant identity and the Hankel minors in sympy and mpmath; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the classification, limit and positive theorems are proved in prose."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Exact sections need only the Python 3 standard library; the numerical illustrations need mpmath 1.3.0 (tested version). Versions are listed, not locked in a container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Borghi (2026), Is Weniger's transformation capable of simulating the Stieltjes function branch cut? Mathematics 14(2), 376 (source of the conjecture, §3.1 and §3.3).",
+      "url": "https://doi.org/10.3390/math14020376"
+    },
+    {
+      "citation": "Weniger (1989), Nonlinear sequence transformations for the acceleration of convergence and the summation of divergent series. Computer Physics Reports 10, 189–371 (the delta transformation).",
+      "url": "https://doi.org/10.1016/0167-7977(89)90011-7"
+    },
+    {
+      "citation": "Baker and Graves-Morris (1996), Padé Approximants, 2nd edition. Cambridge University Press (poles of Padé approximants to Stieltjes series lie on the cut, Chapter 5).",
+      "url": "https://doi.org/10.1017/CBO9780511530074"
+    },
+    {
+      "citation": "Borghi and Weniger (2015), Convergence analysis of the summation of the factorially divergent Euler series by Padé approximants and the delta transformation. Applied Numerical Mathematics 94, 149–178.",
+      "url": "https://doi.org/10.1016/j.apnum.2015.03.007"
+    },
+    {
+      "citation": "Homeier (2000), Scalar Levin-type sequence transformations. Journal of Computational and Applied Mathematics 122, 81–147.",
+      "url": "https://doi.org/10.1016/S0377-0427(00)00359-9"
+    },
+    {
+      "citation": "Kostov and Shapiro (2013), Hardy–Petrovitch–Hutchinson's problem and partial theta function. Duke Mathematical Journal 162, 825–861 (history and sharpness of the factor-four constant).",
+      "url": "https://doi.org/10.1215/00127094-2087264"
+    },
+    {
+      "citation": "Craven and Csordas (1989), Jensen polynomials and the Turán and Laguerre inequalities. Pacific Journal of Mathematics 136, 241–260.",
+      "url": "https://doi.org/10.2140/pjm.1989.136.241"
+    },
+    {
+      "citation": "Sidi (2003), Practical Extrapolation Methods. Cambridge University Press.",
+      "url": "https://doi.org/10.1017/CBO9780511546815"
+    },
+    {
+      "citation": "Evidence Press release (separate work, not a parent): The sharp exponent for ordinary Hadamard powers of quartics with positive coefficients, another real-rootedness threshold for positive-coefficient polynomials.",
+      "url": "https://evidencepress.org/releases/sharp-quartic-hadamard-powers/"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:weniger-delta-nonreal-poles",
+    "attemptIds": [
+      "ep-attempt:weniger-delta-nonreal-poles-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Exact certificates and a written proof refute Borghi's 2026 conjecture that the denominator of Weniger's delta transformation has only negative real zeros for every Stieltjes moment sequence, already at n = 0, β = 1 and order three, and classify universal real-rootedness for every finite order and shift.",
+      "scope": "Weniger's delta transformation of Stieltjes series from positive measures on [0, ∞) with infinitely many points of increase and finite moments; pole location at fixed finite order in the worst case over measures. Persistence beyond order 30 is proved for denominator zeros only; genuine poles beyond order 30 are conjectural; pole locations, residues and accuracy are numerical; convergence of the transformation is not addressed."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Borghi's question and conjecture are quoted from §3.1 and §3.3 of the published article, the shift-symbol correspondence between the article (γ) and the author preprint (β) is stated, and the measure class is the one Borghi uses.",
+      "remainingRisks": [
+        "The published article's formulas were checked against the author preprint because the HTML omitted them.",
+        "Hutchinson and Kurtz are cited without theorem-level locators; Kostov–Shapiro is cited for the history and sharpness of the constant 4.",
+        "Exact certificates rely on Python execution; no proof assistant was used.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Recompute the order-three counterexample and the order 3 to 30 certificates in independent exact software, and obtain specialist review of the classification and persistence proofs.",
+      "claimCeiling": "Refutation of Borghi's conjecture with a proved order–shift classification, proved persistence of nonreal denominator zeros for one measure with genuine poles certified to order 30, and proved positive criteria. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "weniger-delta-nonreal-poles-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable refutation and classification of pole location for Weniger's delta transformation.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
