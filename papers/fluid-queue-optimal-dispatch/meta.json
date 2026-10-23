@@ -1,0 +1,203 @@
+{
+  "slug": "fluid-queue-optimal-dispatch",
+  "title": "Exact optimal dispatching to two fluid queues: closed form, heavy traffic and stochastic evidence",
+  "shortTitle": "Small jobs to the short queue: the exact two-queue answer",
+  "oneLine": "An exact, closed-form solution of the two-server fluid dispatching problem of Xie, Hyytiä and Righter: small jobs go to the shorter queue, the size cutoff rises as the queues drift apart, and their conjecture that the relative imbalance always grows is proved; seeded simulations of the random system are numerical evidence only.",
+  "abstract": "A dispatcher sends each arriving job to one of two identical first-come first-served servers, seeing the job's size and both workloads. Xie, Hyytiä and Righter (ACM SIGMETRICS Performance Evaluation Review 53(4), 2026; arXiv:2509.21693v1) studied a fluid version of this problem, in which a backlog drains deterministically, and conjectured that with two servers the relative workload imbalance increases along every optimal path. This candidate solves their two-server problem exactly. For every nonnegative mean-one size law that is not a point mass and every load ρ < 1, one quadrature of the mean absolute deviation D(h) = E|S − h| gives the optimal value, the optimal state-feedback policy and the optimal path from every start. In words: jobs smaller than a cutoff go to the shorter queue and larger jobs to the longer one; the cutoff depends only on the relative imbalance and rises as the queues drift apart; once one queue is empty it is kept exactly busy. The verification argument covers idling, reflection at empty queues, atoms and unbounded support. It proves the conjecture as posed (sizes with a density), extends it to every nondegenerate law, shows that it fails for deterministic sizes, and proves the optimal workload path unique. In the running example (sizes 1/2 and 3/2, ρ = 3/4) the optimal cost is 33/28 against 3/2 for balanced routing. The heavy-traffic limit is (1 − ρ)V → P̄x², where P̄ is the fraction of jobs, largest first, carrying half the work (P(S ≥ m) at the work median m for continuous laws). This corrects a factor in the source's Proposition 3 and matches exactly the heavy-traffic constant of the CARD policy of Xie, Grosof and Scully; the passage to the stochastic system remains heuristic. Further results are an exact rational controller for finite size laws, certified bounds and an implementable bin policy, Wasserstein stability, an exact enclosure for an infinite-variance Pareto law and the cost of noisy size estimates. In seeded simulations of the stochastic two-server queue — numerical evidence only — the fluid rule used directly beats join-the-shortest-workload by 40–70% for highly variable sizes but fails badly at high load for low-variability sizes; a stabilised version with a safety band repairs this and is competitive with tuned CARD and Dice, and no policy is best in every case. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-23",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "size-aware dispatching",
+    "fluid queues",
+    "optimal control",
+    "load balancing",
+    "verification theorem",
+    "heavy traffic",
+    "convex order",
+    "queueing simulation"
+  ],
+  "repoUrl": "https://github.com/ipitchford/fluid-queue-optimal-dispatch",
+  "releaseUrl": "https://github.com/ipitchford/fluid-queue-optimal-dispatch/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/fluid-queue-optimal-dispatch/releases/download/v1.0.0-candidate/fluid-queue-optimal-dispatch-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23586955",
+  "conceptDoi": "10.5281/zenodo.23586954",
+  "zenodoUrl": "https://zenodo.org/records/23586955",
+  "citeText": "Anonymous (2026). Exact optimal dispatching to two fluid queues: closed form, heavy traffic and stochastic evidence. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23586955",
+  "evidence": "Written proofs of every theorem, including a global verification argument over all admissible controls (idling, reflection, atoms, unbounded support) and an all-optimal-paths argument for the conjecture and uniqueness; one deterministic verifier (verify_all.py) whose 13 JSON outputs reproduce byte for byte under python -O: exact rational Hamiltonian certificates for finite size laws, the running example by direct integration, the uniform bracket, exact Pareto enclosures (shapes 1.5 and 1.01), deterministic cases and the comparison with the source's printed Proposition 3; floating-point quadrature checks on six law families, the heavy-traffic table, a Wasserstein comparison and an independent dynamic-programming cross-check that does not use the value formula (maximum relative error ≤ 3.1·10⁻⁵); symbolic identity checks; semantic negative controls; and a separate seeded stochastic simulation (four size laws, three loads, 20 replications of 10⁶ arrivals, common random numbers), labelled numerical evidence only.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; exact computations are rerunnable; floating-point checks are supporting evidence only; the simulation of the stochastic system is numerical evidence and proves nothing; the fluid-to-stochastic correspondence is heuristic. Internal AI-assisted review and AI-assisted adversarial review only. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (dated 23 October 2026, 21 pages), its deterministic verifier and simulation outputs and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 23 October 2026.",
+  "keyResults": [
+    "Exact value and policy: for every nondegenerate mean-one size law and every load ρ < 1, one quadrature of D(h) = E|S − h| gives the optimal value V, the state-feedback policy and the optimal path from every start; the policy sends jobs below a cutoff h = Z⁻¹(z) to the shorter queue, where z is the relative imbalance, and keeps an empty queue exactly busy (Lemma 2, Theorem 3, proof).",
+    "The Xie–Hyytiä–Righter conjecture: along every optimal path the relative imbalance is nondecreasing, and strictly increasing while both queues are positive and unequal; proved as posed (sizes with a density) and extended to every nondegenerate law; it fails for deterministic sizes, where some optimal paths decrease the imbalance (Theorem 4, Section 7, proof).",
+    "Uniqueness: the optimal labelled workload path is unique, except for the two mirror-image paths from a tied start, where the closed-loop feedback needs a selection convention; no straight-to-origin segment and no balanced dwelling is ever optimal for nondegenerate laws (Theorem 5, Section 8, proof).",
+    "Running example (sizes 1/2 and 3/2 equally likely, ρ = 3/4, start (1/2, 1/2)): optimal cost 33/28 against 3/2 for balanced routing, a saving of 3/14 ≈ 21%, and 21/16 for most-work-left; savings of 21–43% against balanced routing and 7–18% against most-work-left across the tabulated laws (exact; quadrature).",
+    "Heavy traffic: (1 − ρ)V → P̄x² uniformly, where P̄ < 1/2 is the fraction of jobs, largest first, carrying half the work (P(S ≥ m) at the work median for continuous laws); the optimal-to-balanced ratio tends to 2P̄, exactly the CARD-to-least-work-left factor of Xie, Grosof and Scully (for sizes with finite second moment). The source's printed Proposition 3 has an extra factor 2ρ in its axis term; correcting it removes a factor 2 from its heavy-traffic limit (Theorem 10, proof; the stochastic correspondence is heuristic).",
+    "Computation and approximation: piecewise-quadratic value with an exact rational recurrence for finite size laws; convex-order brackets with a certified-regret bin policy; Wasserstein-Lipschitz value; exact rational enclosure for a Pareto law of shape 1.5 (width 7.0·10⁻⁴) and 1.01; routing on noisy size estimates is equivalent to routing on a coarser law, with an explicit loss bound (Theorems 11 and 14, Propositions 12 and 15, proof and exact computation).",
+    "Stochastic two-server queue (numerical evidence only): used directly, the fluid rule has 0.31–0.60 of join-the-shortest-workload's mean wait for highly variable sizes, but is 4.3 times worse for exponential sizes at ρ = 0.9 and appears unstable for two-point sizes; the stabilised rule FLUID-S is best or tied in six of twelve cells, tuned Dice in five, CARD is close behind, and no policy dominates."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review and AI-assisted adversarial review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Small jobs to the short queue: an exact answer for two fluid queues. An Evidence Press briefing. First, the background. A dispatcher sends each arriving job to one of two identical servers. It knows each job's size and how much work is waiting at each server. Which rule keeps total waiting time lowest? Even in simple settings, the exact answer is unknown. So, in 2026, Xie, Hyytiä and Righter studied a smoother fluid version, in which a large backlog drains steadily. They conjectured that along every optimal path the two queues drift further apart, in relative terms, until one empties. Now, the main finding. The paper solves this two-server fluid problem exactly, for every job-size distribution except a single fixed size, and every load below capacity. The optimal rule is simple. Jobs smaller than a cutoff go to the shorter queue, and larger jobs go to the longer one. The cutoff rises as the queues drift apart. Once one queue is empty, it is kept exactly busy. This proves the conjecture as posed, and extends it to all size distributions except fixed sizes, where it fails. In a worked example, the optimal cost is 33 over 28, against 3 over 2 for balanced routing: a saving of about 21 percent. The paper also finds the limit near full load. This corrects a factor in one of the source's formulas, and then matches a constant known for the CARD policy. How sure is this? The main results are written proofs, and the exact computations can be rerun. Simulations of the real, random queue are numerical evidence only. There, the fluid rule used directly does very well when job sizes vary a lot, but fails badly at high load when they vary little. A stabilised version with a safety band repairs this, and is competitive with tuned CARD and Dice. No policy is best everywhere. Finally, the limits. The results cover two identical servers with known job sizes, and the link from the fluid model to the random queue is not proved. It is an anonymous, unrefereed candidate, with AI-assisted adversarial review only, not peer review. Published on 23 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_all.py regenerates all 13 result files deterministically. On the frozen release archive, a fresh-extraction replay under python -B -O reproduced the shipped results byte for byte, and the semantic negative controls rejected every injected error. The seeded simulation output was reproduced byte for byte in a separate producer-side replay. GitHub CI repeats the verifier replay."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "An independent dynamic-programming and policy-iteration check that does not use the value formula agrees to a relative error of at most 3.1·10⁻⁵; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the verification, uniqueness and heavy-traffic arguments are proved in prose."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.12 or later; exact sections and the simulation use only the standard library; quadrature, symbolic checks and figures use numpy, scipy, sympy and matplotlib at the pinned tested versions. Versions are listed, not locked in a container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Xie, Hyytiä and Righter (2026), Size-aware dispatching to fluid queues. ACM SIGMETRICS Performance Evaluation Review 53(4), 42–48 (source of the fluid model and the conjecture).",
+      "url": "https://doi.org/10.1145/3797823.3797843"
+    },
+    {
+      "citation": "Xie, Hyytiä and Righter, Size-aware dispatching to fluid queues. arXiv:2509.21693v1, the version whose conjecture wording and Proposition 3 are quoted.",
+      "url": "https://arxiv.org/abs/2509.21693v1"
+    },
+    {
+      "citation": "Xie, Grosof and Scully (2024), Heavy-traffic optimal size- and state-aware dispatching. Proceedings of the ACM on Measurement and Analysis of Computing Systems 8(1), Article 9 (the CARD policy and its heavy-traffic constant).",
+      "url": "https://doi.org/10.1145/3639035"
+    },
+    {
+      "citation": "Hyytiä and Righter (2024), Towards the optimal dynamic size-aware dispatching. Performance Evaluation 164, 102396.",
+      "url": "https://doi.org/10.1016/j.peva.2024.102396"
+    },
+    {
+      "citation": "Hyytiä and Righter (2022), On sequential dispatching policies. 32nd International Telecommunication Networks and Applications Conference (the Dice policy).",
+      "url": "https://doi.org/10.1109/ITNAC55475.2022.9998339"
+    },
+    {
+      "citation": "Harchol-Balter, Crovella and Murta (1999), On choosing a task assignment policy for a distributed server system. Journal of Parallel and Distributed Computing 59(2), 204–228 (SITA).",
+      "url": "https://doi.org/10.1006/jpdc.1999.1577"
+    },
+    {
+      "citation": "Meyn (2008), Control Techniques for Complex Networks. Cambridge University Press (fluid value functions and safety stocks).",
+      "url": "https://doi.org/10.1017/CBO9780511804410"
+    },
+    {
+      "citation": "Avram, Bertsimas and Ricard (1995), Fluid models of sequencing problems in open queueing networks; an optimal control approach. Stochastic Networks, IMA Vol. 71.",
+      "url": "https://doi.org/10.1007/978-1-4757-2418-9_11"
+    },
+    {
+      "citation": "van Eekelen, den Hertog and van Leeuwaarden (2022), MAD dispersion measure makes extremal queue analysis simple. INFORMS Journal on Computing 34(3), 1681–1692 (the mean-absolute-deviation transform).",
+      "url": "https://doi.org/10.1287/ijoc.2021.1130"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:fluid-queue-optimal-dispatch",
+    "attemptIds": [
+      "ep-attempt:fluid-queue-optimal-dispatch-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "A closed-form optimal value, state-feedback policy and unique optimal path for the two-server fluid dispatching problem of Xie, Hyytiä and Righter (2026), for every nondegenerate mean-one size law and load ρ < 1, proving their relative-imbalance conjecture as posed and extending it to all nondegenerate laws, with a heavy-traffic limit that corrects their Proposition 3.",
+      "scope": "Two identical FCFS servers of rate 1/2 in the source's fluid model, with exact sizes known at dispatch, known law and load, and the transient cost of draining a backlog. Floating-point quadrature is tested on a narrower numerical domain than the theorems; the stochastic simulation is numerical evidence only; the fluid-to-stochastic correspondence is heuristic."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The conjecture is quoted verbatim from arXiv:2509.21693v1 in both its symbolic and verbal forms; the paper explains that the printed inequality uses a prime for d/dx, reads it as a sign convention, and proves the forward-time verbal statement, under the source's density assumption and beyond it.",
+      "remainingRisks": [
+        "The literal printed inequality is false; the proved statement is the verbal, forward-time reading.",
+        "The fluid-to-stochastic correspondence used for the CARD comparison is heuristic.",
+        "Exact computations rely on Python execution; no proof assistant was used.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a queueing or control specialist check the verification argument of Section 5 and the uniqueness argument, and rerun verify_all.py on an independent machine.",
+      "claimCeiling": "Exact solution of the two-server fluid problem and proof of the relative-imbalance conjecture for nondegenerate laws, with proved heavy-traffic, approximation and noisy-estimate results; simulations are numerical evidence. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "fluid-queue-optimal-dispatch-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable exact solution of a published fluid dispatching problem, with rerunnable checks and a labelled simulation study.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
