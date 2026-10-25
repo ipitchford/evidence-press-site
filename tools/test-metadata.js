@@ -861,7 +861,8 @@ check('SFS correction binds v0.3.3, Anonymous scholarship and additive history',
   sfsAudit && sfsAudit.version === '0.3.3-candidate' &&
   sfsAudit.doi === '10.5281/zenodo.22029532' &&
   same(sfsAudit.authors, ['Anonymous']) &&
-  sfsAudit.corrections.length === 6 &&
+  sfsAudit.corrections.length === 7 &&
+  sfsAudit.corrections[6].date === '2026-10-25' && sfsAudit.corrections[6].scope === 'metadata' &&
   sfsAudit.provenance.humanRole.includes('not scholarly authorship'),
   `version=${sfsAudit && sfsAudit.version} doi=${sfsAudit && sfsAudit.doi}`);
 check('SFS corrected audio and Open Graph card are content-versioned',
