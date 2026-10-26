@@ -13,3 +13,12 @@ page of the deployed site:
 
 Third-party components keep their own licences. KaTeX, vendored in
 assets/katex/, is MIT licensed by Khan Academy and contributors.
+
+## Archived thesis
+
+Ian Pitchford's *Evolutionary Developmental Psychopathology* (University of
+Sheffield, September 2001), hosted at
+`assets/downloads/ian-pitchford-2001-evolutionary-developmental-psychopathology.pdf`,
+is an unchanged archival document published here with the author's permission.
+Copyright remains with Ian Pitchford; all rights reserved. The site's CC0
+dedication and software MIT licence do not apply to this thesis.
