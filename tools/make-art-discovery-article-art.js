@@ -3,10 +3,11 @@
 // MIT generator; original diagrams CC0-1.0. Schematics, not sequence/assay data.
 const fs = require('fs');
 const path = require('path');
+const { escapeText } = require('./svg-xml');
 const root = path.join(__dirname, '..', 'assets', 'articles');
 const C = { bg: '#142d30', white: '#fff9ed', muted: '#bbd6cf', teal: '#42d8c1', gold: '#efbe65', line: '#648c84' };
 const text = (x, y, value, size = 34, color = C.white, anchor = 'start') => `<text x="${x}" y="${y}" font-size="${size}" fill="${color}" text-anchor="${anchor}">${value}</text>`;
-const svg = (height, title, description, content) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 ${height}" role="img" aria-labelledby="title desc"><title id="title">${title}</title><desc id="desc">${description}</desc><rect width="960" height="${height}" rx="18" fill="${C.bg}"/><g font-family="Arial, Helvetica, sans-serif">${content}</g></svg>\n`;
+const svg = (height, title, description, content) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 ${height}" role="img" aria-labelledby="title desc"><title id="title">${escapeText(title)}</title><desc id="desc">${escapeText(description)}</desc><rect width="960" height="${height}" rx="18" fill="${C.bg}"/><g font-family="Arial, Helvetica, sans-serif">${content}</g></svg>\n`;
 const repeats = [74, 176, 278, 380].map(x => `<rect x="${x}" y="100" width="24" height="64" rx="4" fill="${C.teal}"/>`).join('');
 const spacers = [98, 200, 302].map(x => `<rect x="${x}" y="115" width="78" height="34" rx="4" fill="${C.gold}"/>`).join('');
 const banner = svg(320, 'The ART genomic neighbourhood', 'Schematic: repeated DNA units separated by spacers lie upstream of a reverse-transcriptase-like gene, with a recurring partner gene downstream. Four repeats illustrate the pattern, not a measured locus.',

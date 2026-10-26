@@ -1,4 +1,5 @@
 'use strict';
+const { bannerSvg } = require('./svg-xml');
 // Renewal resetting of quantum dynamics: banner, OG card and thumbnail.
 // Sources (paper: Renewal resetting of quantum dynamics, 23 Oct 2026):
 //  - Corollary "Power hazard" (cor:power): r_n = gamma/(n+1)^alpha, 0 < gamma < 1, finite dimension:
@@ -116,20 +117,7 @@ const draw = () => regimes() + tent() + `<path d="M728 30 V380" stroke="${muted}
 const description = 'Banner for a paper on renewal resetting of quantum dynamics. A qubit evolves under a gate and is reset at random renewal times. Left: the exponent alpha in the reset hazard r_n = gamma/(n+1)^alpha decides the long-time state. Three traces show the coherence 2 Re rho_01 for the gate U = diag(1, −1), reset state |+⟩ and gamma = 1/4, for steps t = 1 to 500 on a logarithmic time axis, computed exactly from the model. For alpha below 1 (here alpha = 0, a constant hazard; finite mean waiting time) the coherence converges to a survival-weighted mixture, here the value 1/7. For alpha = 1 (proper clock with infinite mean waiting time) the oscillation shrinks slowly towards zero: the state dephases to D_U(rho). For alpha above 1 (here alpha = 2; a defective clock, with probability q = 2/pi of never resetting) the oscillation persists: the state approaches a rotating orbit and converges only if the reset state commutes with the gate. A footnote states that in finite dimension every gate and reset state converge exactly when the clock is proper and aperiodic. Right: at alpha = 1, the coherence decays as t to the power −min{gamma, 1 − gamma}, drawn as a tent over gamma from 0 to 1 with peak exponent 1/2 at gamma = 1/2. Dots mark the paper’s estimates of the number of steps until a pi-phase qubit coherence stays below 1%: 6.4 thousand at gamma = 1/2 and 2.3 × 10^9 at gamma = 0.2 or 0.8. These are two-term asymptotic estimates from the paper’s time-scale table; the value at 1/2 was also checked by the exact recurrence.';
 
 function frame(inner, background) {
-  const [c0, c1] = background.colors, W = 1200, H = 400, accent = cCrit;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" data-banner-palette="${background.name}" role="img" aria-labelledby="art-description">
-<desc id="art-description">${description}</desc><defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="${c0}"/><stop offset="1" stop-color="${c1}"/>
-</linearGradient>
-<radialGradient id="glow" cx="0.8" cy="0.55" r="0.6">
-<stop offset="0" stop-color="${accent}" stop-opacity="0.07"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
-</radialGradient>
-</defs>
-<rect width="${W}" height="${H}" fill="url(#bg)"/>
-<rect width="${W}" height="${H}" fill="url(#glow)"/>
-${inner}
-</svg>`;
+  return bannerSvg({ inner, description, background, glow: { color: cCrit, cx: '0.8', cy: '0.55', r: '0.6', opacity: '0.07' } });
 }
 
 const thumbSpec = {

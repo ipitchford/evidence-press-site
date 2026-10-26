@@ -1,4 +1,5 @@
 'use strict';
+const { bannerSvg } = require('./svg-xml');
 // Wardrop route regimes: banner, OG card and thumbnail.
 // Five-link quartic example of the paper (Section 5.2): commodity A s->v and B u->v, each with demand 4t.
 // Bank F (direct, s->v): F0 = 2 + z^4, F2 = 8/3 + z^4/243.  Bank G (shared, u->v): G1 = 3/2 + z^4/162,
@@ -122,20 +123,7 @@ const draw = () => network() + delays() + cost();
 const description = 'Banner for smoothness within and across Wardrop route regimes. Left: the five-link example network. Commodity A travels from s to v and commodity B from u to v, each with demand 4t. Bank F has two parallel direct links from s to v with quartic BPR-type costs 2 + z^4 and 8/3 + z^4/243; bank G has two parallel shared links from u to v with costs 3/2 + z^4/162 and 7/4 + z^4/4; a connector h from s to u with cost 1 + z^4 gives A a new route. Middle: the delay F(T) of the direct bank and the delay G(T) + 1 of the route through the connector, plotted against bank load T from 2.8 to 5.2. The two curves agree in value, slope and curvature at T = 4, which is demand scale t = 1, so the route gap grows only like (336/625)(t − 1)^3. Right: equilibrium total travel time E(t) for t from 0.8 to 1.3 is a smooth curve with no visible kink at t = 1, where the connector route starts to be used. An inset magnifies the connector flow, which is zero before t = 1 and grows like (84/125)(t − 1)^3, reaching only a fraction of one per cent of A’s demand at t = 1.3. Total cost has four continuous derivatives at t = 1 and its fifth derivative jumps. Curves are computed from the Wardrop conditions; they are a numerical illustration of the paper’s proved statement.';
 
 function frame(inner, background) {
-  const [c0, c1] = background.colors, W = 1200, H = 400, accent = hc;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" data-banner-palette="${background.name}" role="img" aria-labelledby="art-description">
-<desc id="art-description">${description}</desc><defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="${c0}"/><stop offset="1" stop-color="${c1}"/>
-</linearGradient>
-<radialGradient id="glow" cx="0.78" cy="0.35" r="0.9">
-<stop offset="0" stop-color="${accent}" stop-opacity="0.06"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
-</radialGradient>
-</defs>
-<rect width="${W}" height="${H}" fill="url(#bg)"/>
-<rect width="${W}" height="${H}" fill="url(#glow)"/>
-${inner}
-</svg>`;
+  return bannerSvg({ inner, description, background, glow: { color: hc, cx: '0.78', cy: '0.35', r: '0.9', opacity: '0.06' } });
 }
 
 const thumbSpec = {

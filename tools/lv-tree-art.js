@@ -1,4 +1,5 @@
 'use strict';
+const { bannerSvg } = require('./svg-xml');
 // Lotka–Volterra tree presentations: banner, OG card and thumbnail.
 // Source: Example 1.1 of the paper (the path 1–2–3 with a_j = 0, b_{2->1} = 1, b_{1->2} = 2, b_{3->2} = 3,
 // b_{2->3} = 4): x1' = x1(2x2 + 4x3), x2' = x2(x1 + 4x3), x3' = x3(x1 + 3x2). Its linear Darboux
@@ -135,20 +136,7 @@ const draw = () => leftPanel() + centrePanel() + rightPanel();
 const description = 'Banner for linear coordinate presentations of Lotka–Volterra tree systems. Left: the tree system on the path 1–2–3 from Example 1.1 of the paper, x1′ = x1(2x2 + 4x3), x2′ = x2(x1 + 4x3), x3′ = x3(x1 + 3x2). Besides the three coordinate planes it has exactly two further invariant planes, one per edge of the tree: Q12 = x1 − 2x2 for edge 1–2 and Q23 = 3x2 − 4x3 for edge 2–3, giving 2n − 1 = 5 in all. Centre: the positive orthant seen projectively as a triangle (the chart x1 + x2 + x3 = 1). The three coordinate planes are its sides, and the two edge planes are the exact lines x1 = 2x2 and 3x2 = 4x3, which meet inside the triangle. Grey curves are orbits of the equation computed numerically for illustration; none crosses any of the five lines. Right: the cone over the tree, a vertex 0 joined to vertices 1, 2 and 3; its three spokes correspond to the coordinate planes and its two tree edges to Q12 and Q23. Any three planes forming a spanning tree of the cone can serve as new coordinates, and there are 8 such choices. Choosing x1, x2, x3 gives extra supports {1,2} and {2,3}, a tree. Choosing x1, Q12, Q23, as in the paper’s example, gives supports {1,2} and {1,2,3}, a hypergraph. It is the same equation in two presentations. For generic parameters the five planes determine the tree, which is why two different trees never give the same generic equation; an extension to special parameter values fails.';
 
 function frame(inner, background) {
-  const [c0, c1] = background.colors, W = 1200, H = 400, accent = q1c;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" data-banner-palette="${background.name}" role="img" aria-labelledby="art-description">
-<desc id="art-description">${description}</desc><defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="${c0}"/><stop offset="1" stop-color="${c1}"/>
-</linearGradient>
-<radialGradient id="glow" cx="0.42" cy="0.5" r="0.8">
-<stop offset="0" stop-color="${accent}" stop-opacity="0.06"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
-</radialGradient>
-</defs>
-<rect width="${W}" height="${H}" fill="url(#bg)"/>
-<rect width="${W}" height="${H}" fill="url(#glow)"/>
-${inner}
-</svg>`;
+  return bannerSvg({ inner, description, background, glow: { color: q1c, cx: '0.42', cy: '0.5', r: '0.8', opacity: '0.06' } });
 }
 
 const thumbSpec = {

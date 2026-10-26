@@ -1,4 +1,5 @@
 'use strict';
+const { escapeText } = require('./svg-xml');
 
 // Source: paper/ptolemaic.tex, Complete split witnesses / Seven-point example.
 // Vertex positions are a graph layout, not a Euclidean realisation of d.
@@ -71,7 +72,7 @@ function cover() {
   return out;
 }
 function witness() {
-  let out = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1120" role="img" aria-labelledby="witness-title witness-desc"><title id="witness-title">A seven-point sharpness witness</title><desc id="witness-desc">${description}</desc><rect width="900" height="1120" fill="${C.bg}"/><g font-family="Arial, Helvetica, sans-serif">`;
+  let out = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1120" role="img" aria-labelledby="witness-title witness-desc"><title id="witness-title">A seven-point sharpness witness</title><desc id="witness-desc">${escapeText(description)}</desc><rect width="900" height="1120" fill="${C.bg}"/><g font-family="Arial, Helvetica, sans-serif">`;
   out += text(450, 62, 44, 'A seven-point sharpness witness', C.ink, 'text-anchor="middle"');
   out += text(450, 108, 31, 'CS(3,4): every drawn edge has length 1', C.muted, 'text-anchor="middle"');
   out += `<g transform="translate(76 106) scale(1.5 1.04)">${graph({ labels: true, radius: 28 })}</g>`;

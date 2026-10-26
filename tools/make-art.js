@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const OUT = path.join(__dirname, '..', 'assets', 'art');
 const { resolve: bannerPalette } = require('./banner-palettes');
+const { escapeAttr, withDescription, wellFormedErrors } = require('./svg-xml');
 fs.mkdirSync(OUT, { recursive: true });
 
 const W = 1200, H = 400;
@@ -18,19 +19,25 @@ const hash = s => [...s].reduce((h, c) => Math.imul(h ^ c.charCodeAt(0), 2654435
 
 function frame(inner, accent, accent2, background) {
   const colors = background?.colors || ['#151a1e', '#1e2a2e'];
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"${background ? ' data-banner-palette="' + background.name + '"' : ''} role="img" aria-hidden="true">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"${background ? ' data-banner-palette="' + escapeAttr(background.name) + '"' : ''} role="img" aria-hidden="true">
 <defs>
 <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="${colors[0]}"/><stop offset="1" stop-color="${colors[1]}"/>
+<stop offset="0" stop-color="${escapeAttr(colors[0])}"/><stop offset="1" stop-color="${escapeAttr(colors[1])}"/>
 </linearGradient>
 <radialGradient id="glow" cx="0.75" cy="0.3" r="0.9">
-<stop offset="0" stop-color="${accent}" stop-opacity="${background ? '0.06' : '0.25'}"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
+<stop offset="0" stop-color="${escapeAttr(accent)}" stop-opacity="${background ? '0.06' : '0.25'}"/><stop offset="1" stop-color="${escapeAttr(accent)}" stop-opacity="0"/>
 </radialGradient>
 </defs>
 <rect width="${W}" height="${H}" fill="url(#bg)"/>
 <rect width="${W}" height="${H}" fill="url(#glow)"/>
 ${inner}
 </svg>`;
+}
+// Refuse to commit art a browser would not render (see tools/svg-xml.js).
+function writeSvg(file, svg) {
+  const errors = wellFormedErrors(svg);
+  if (errors.length) throw new Error(`${path.basename(file)} is not well-formed XML: ${errors[0]}`);
+  fs.writeFileSync(file, svg);
 }
 
 const art = {};
@@ -2386,15 +2393,15 @@ art['field-uniform-spin-chains'] = fieldUniformArt.cover;
 palette['field-uniform-spin-chains'] = ['#55d4c0', '#f5bd60'];
 art['free-parafermion-converse'] = parafermionArt.cover;
 palette['free-parafermion-converse'] = ['#61d9c0', '#f0c274'];
-if (!requested.size || requested.has('free-parafermion-converse')) fs.writeFileSync(path.join(OUT, 'free-parafermion-converse-obstructions.svg'), parafermionArt.obstructions());
+if (!requested.size || requested.has('free-parafermion-converse')) writeSvg(path.join(OUT, 'free-parafermion-converse-obstructions.svg'), parafermionArt.obstructions());
 const perronArt = require('./perron-art');
 art['perron-minima'] = perronArt.cover;
 palette['perron-minima'] = ['#61d9c0', '#f0c274'];
-if (!requested.size || requested.has('perron-minima')) fs.writeFileSync(path.join(OUT, 'perron-minima-landscape.svg'), perronArt.landscape());
+if (!requested.size || requested.has('perron-minima')) writeSvg(path.join(OUT, 'perron-minima-landscape.svg'), perronArt.landscape());
 const splitStabilityArt = require('./ptolemaic-stability-art');
 art['ptolemaic-split-stability'] = splitStabilityArt.cover;
 palette['ptolemaic-split-stability'] = ['#61d9c0', '#f0c274'];
-if (!requested.size || requested.has('ptolemaic-split-stability')) fs.writeFileSync(path.join(OUT, 'ptolemaic-split-stability-rates.svg'), splitStabilityArt.rates());
+if (!requested.size || requested.has('ptolemaic-split-stability')) writeSvg(path.join(OUT, 'ptolemaic-split-stability-rates.svg'), splitStabilityArt.rates());
 const freeFermionArt = require('./free-fermion-art');
 art['free-fermion-frustration-graphs'] = freeFermionArt.cover;
 palette['free-fermion-frustration-graphs'] = ['#6ddbc4', '#f0c274'];
@@ -2515,85 +2522,83 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
-  if(slug==='assignment-aligned-effective-states')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${assignmentAlignedArt.description}</desc><defs>`);
-  if(slug==='sharp-rank-three-chollet-order-five')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${cholletRank3Art.description}</desc><defs>`);
-  if(slug==='compartment-fragmentation-phase-classification')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${astochasticArt.descriptions.compartment}</desc><defs>`);
-  if(slug==='davis-yin-gap-sharpness')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${astochasticArt.descriptions.davisYin}</desc><defs>`);
-  if(slug==='gaussian-cosine-local-stability')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${require('./gaussian-cosine-art').description}</desc><defs>`);
-  if(slug==='rfim-unbounded-fields-entropy')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${require('./rfim-entropy-art').description}</desc><defs>`);
-  if(slug==='uniform-split-reliability')svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${require('./split-reliability-art').description}</desc><defs>`);
+  if(slug==='assignment-aligned-effective-states')svg = withDescription(svg, assignmentAlignedArt.description);
+  if(slug==='sharp-rank-three-chollet-order-five')svg = withDescription(svg, cholletRank3Art.description);
+  if(slug==='compartment-fragmentation-phase-classification')svg = withDescription(svg, astochasticArt.descriptions.compartment);
+  if(slug==='davis-yin-gap-sharpness')svg = withDescription(svg, astochasticArt.descriptions.davisYin);
+  if(slug==='gaussian-cosine-local-stability')svg = withDescription(svg, require('./gaussian-cosine-art').description);
+  if(slug==='rfim-unbounded-fields-entropy')svg = withDescription(svg, require('./rfim-entropy-art').description);
+  if(slug==='uniform-split-reliability')svg = withDescription(svg, require('./split-reliability-art').description);
   if (['two-host-dormancy-oscillations','infinite-birth-death-thinned-counts'].includes(slug)) {
     const spec=require(slug==='two-host-dormancy-oscillations'?'./dormancy-art':'./thinned-counts-art');
     svg=svg.replace(/<text /g,'<text class="og-hide" ');
-    svg=svg.replace('role="img" aria-hidden="true"','role="img" aria-labelledby="art-description"').replace('<defs>',`<desc id="art-description">${spec.description}</desc><defs>`);
+    svg = withDescription(svg, spec.description);
   }
-  if (slug === 'sharp-logconcave-moment-comparison') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./mrtt-art').description.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</desc><defs>`);
-  if (slug === 'iid-multiunit-prophet-limits') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./prophet-art').description}</desc><defs>`);
-  if (slug === 'prophet-over-time-limit') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./prophet-over-time-art').description}</desc><defs>`);
-  if (slug === 'finite-signal-quadratic-substitutes') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./finite-signals-art').description}</desc><defs>`);
-  if (slug === 'complementary-disclosures') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./complementary-disclosures-art').description}</desc><defs>`);
-  if (slug === 'state-contingent-comparability') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./state-contingent-art').description}</desc><defs>`);
-  if (slug === 'katthan-betti-poset-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./katthan-art').description}</desc><defs>`);
-  if (slug === 'unique-equilibrium-lsi-separation') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./lsi-separation-art').description}</desc><defs>`);
-  if (slug === 'ferromagnetic-full-threshold-glauber') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./ferromagnetic-trimming-art').description}</desc><defs>`);
-  if (slug === 'rbm-nonnegative-logarithmic-mixing') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./rbm-mixing-art').description}</desc><defs>`);
-  if (slug === 'kawasaki-analytic-fast-regimes') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./kawasaki-art').description}</desc><defs>`);
-  if (slug === 'inclusion-link-chernoff-concentration') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./inclusion-link-chernoff-art').description}</desc><defs>`);
-  if (slug === "fkk-majority-partitions") svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${fkkMajorityArt.description}</desc><defs>`);
-  if (slug === 'debt-disclosure-bounds') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./debt-disclosure-art').description}</desc><defs>`);
-  if (['rational-laguerre-mosaics','centroidal-equilibrium-creation'].includes(slug)) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${mosaicAbrasionArt.descriptions[slug==='rational-laguerre-mosaics'?'mosaics':'abrasion']}</desc><defs>`);
-  if (slug === 'concentratable-entanglement-spectator-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${ceSpectatorArt.description}</desc><defs>`);
-  if (slug === 'reverse-reaction-attracting-oscillations') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${reverseReactionArt.description}</desc><defs>`);
-  if (slug === 'robust-gaussian-inverse-estimation') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${robustInverseArt.description}</desc><defs>`);
-  if (slug === 'k2p-tree-network-counterexample') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${k2pArt.description}</desc><defs>`);
-  if (slug === 'seven-cycle-fourth-power-upper112') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${sevenCycleArt.description}</desc><defs>`);
-  if (slug === 'horton-tokunaga-kingman-asymptotics') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${hortonArt.description}</desc><defs>`);
-  if (slug === 'quadratic-equilibrium-sharpness') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${quadraticEquilibriumArt.description}</desc><defs>`);
-  if (slug === 'tree-network-separation') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${treeNetworkArt.description}</desc><defs>`);
-  if (slug === 'three-copy-werner-undistillability') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${wernerArt.description}</desc><defs>`);
-  if (slug === 'wilhelm-heinrich-large-gain') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${wilhelmArt.description}</desc><defs>`);
-  if (slug === 'hidden-dissipation-floor') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${hiddenDissipationArt.description}</desc><defs>`);
-  if (slug === 'ctln-six-is-minimal') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${ctlnArt.description}</desc><defs>`);
-  if (slug === 'central-configuration-kernel-rigidity') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${centralKernelArt.description}</desc><defs>`);
-  if (slug === 'multiplane-lensing-sparse-bound') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${multiplaneLensingArt.description}</desc><defs>`);
-  if (slug === 'kagome-aklt-spectral-gap') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${akltArt.description}</desc><defs>`);
-  if (slug === 'regular-heptagon-octagon-local-minimality') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${polygonsArt.description}</desc><defs>`);
-  if (slug === 'square-maximises-dirichlet-ratio-quadrilaterals') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${quadrilateralRatioArt.description}</desc><defs>`);
-  if (slug === 'planar-transport-map-sensitivity-certificates') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${transportSensitivityArt.description}</desc><defs>`);
-  if (slug === 'bunkbed-flow-obstructions') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${bunkbedArt.description}</desc><defs>`);
-  if (slug === 'szollosi-mub-exclusion') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${szollosiArt.description}</desc><defs>`);
-  if (slug === 'modular-code-obstructions') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${modularCodeArt.description}</desc><defs>`);
-  if (slug === 'pmms-three-agents-eight-goods') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${pmmsEightArt.description}</desc><defs>`);
-  if (slug === 'noninteger-sliced-wasserstein') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${slicedWassersteinArt.description}</desc><defs>`);
-  if (slug === 'cross-polytope-signaling-dimension-six') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${crossPolytopeArt.description}</desc><defs>`);
-  if (slug === 'delayed-cascade-recovery') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${delayedCascadeArt.description}</desc><defs>`);
-  if (slug === 'primitive-su-primitivity') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${primitiveSuArt.description}</desc><defs>`);
-  if (slug === 'wales-20mph-attribution-manuscript') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${walesManuscriptArt.description}</desc><defs>`);
-  if (slug === 'flat-schmidt-chains') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${flatSchmidtArt.description}</desc><defs>`);
-  if (slug === 'levy-qsd-exponential-moments-restart') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./levy-qsd-art').description}</desc><defs>`);
-  if (slug === 'waiting-time-entropy-bound-counterexamples') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./waiting-time-art').description}</desc><defs>`);
-  if (slug === 'periodic-regulation-budget-monotonicity') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./periodic-regulation-art').description}</desc><defs>`);
-  if (slug === 'sharp-shannon-window-law') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./shannon-window-art').description}</desc><defs>`);
-  if (slug === 'sis-reconstruction-continuation') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./sis-continuation-art').description}</desc><defs>`);
-  if (slug === 'pass-and-swap-bounded-swaps') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./pass-and-swap-art').description}</desc><defs>`);
-  if (slug === 'mprk-nonnegative-two-cycles') svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${require('./mprk-two-cycle-art').description}</desc><defs>`);
-  if (motifs[slug]) svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"')
-    .replace('<defs>', `<desc id="art-description">${motifs[slug].description}</desc><defs>`);
+  if (slug === 'sharp-logconcave-moment-comparison') svg = withDescription(svg, require('./mrtt-art').description);
+  if (slug === 'iid-multiunit-prophet-limits') svg = withDescription(svg, require('./prophet-art').description);
+  if (slug === 'prophet-over-time-limit') svg = withDescription(svg, require('./prophet-over-time-art').description);
+  if (slug === 'finite-signal-quadratic-substitutes') svg = withDescription(svg, require('./finite-signals-art').description);
+  if (slug === 'complementary-disclosures') svg = withDescription(svg, require('./complementary-disclosures-art').description);
+  if (slug === 'state-contingent-comparability') svg = withDescription(svg, require('./state-contingent-art').description);
+  if (slug === 'katthan-betti-poset-counterexample') svg = withDescription(svg, require('./katthan-art').description);
+  if (slug === 'unique-equilibrium-lsi-separation') svg = withDescription(svg, require('./lsi-separation-art').description);
+  if (slug === 'ferromagnetic-full-threshold-glauber') svg = withDescription(svg, require('./ferromagnetic-trimming-art').description);
+  if (slug === 'rbm-nonnegative-logarithmic-mixing') svg = withDescription(svg, require('./rbm-mixing-art').description);
+  if (slug === 'kawasaki-analytic-fast-regimes') svg = withDescription(svg, require('./kawasaki-art').description);
+  if (slug === 'inclusion-link-chernoff-concentration') svg = withDescription(svg, require('./inclusion-link-chernoff-art').description);
+  if (slug === "fkk-majority-partitions") svg = withDescription(svg, fkkMajorityArt.description);
+  if (slug === 'debt-disclosure-bounds') svg = withDescription(svg, require('./debt-disclosure-art').description);
+  if (['rational-laguerre-mosaics','centroidal-equilibrium-creation'].includes(slug)) svg = withDescription(svg, mosaicAbrasionArt.descriptions[slug==='rational-laguerre-mosaics'?'mosaics':'abrasion']);
+  if (slug === 'concentratable-entanglement-spectator-counterexample') svg = withDescription(svg, ceSpectatorArt.description);
+  if (slug === 'reverse-reaction-attracting-oscillations') svg = withDescription(svg, reverseReactionArt.description);
+  if (slug === 'robust-gaussian-inverse-estimation') svg = withDescription(svg, robustInverseArt.description);
+  if (slug === 'k2p-tree-network-counterexample') svg = withDescription(svg, k2pArt.description);
+  if (slug === 'seven-cycle-fourth-power-upper112') svg = withDescription(svg, sevenCycleArt.description);
+  if (slug === 'horton-tokunaga-kingman-asymptotics') svg = withDescription(svg, hortonArt.description);
+  if (slug === 'quadratic-equilibrium-sharpness') svg = withDescription(svg, quadraticEquilibriumArt.description);
+  if (slug === 'tree-network-separation') svg = withDescription(svg, treeNetworkArt.description);
+  if (slug === 'three-copy-werner-undistillability') svg = withDescription(svg, wernerArt.description);
+  if (slug === 'wilhelm-heinrich-large-gain') svg = withDescription(svg, wilhelmArt.description);
+  if (slug === 'hidden-dissipation-floor') svg = withDescription(svg, hiddenDissipationArt.description);
+  if (slug === 'ctln-six-is-minimal') svg = withDescription(svg, ctlnArt.description);
+  if (slug === 'central-configuration-kernel-rigidity') svg = withDescription(svg, centralKernelArt.description);
+  if (slug === 'multiplane-lensing-sparse-bound') svg = withDescription(svg, multiplaneLensingArt.description);
+  if (slug === 'kagome-aklt-spectral-gap') svg = withDescription(svg, akltArt.description);
+  if (slug === 'regular-heptagon-octagon-local-minimality') svg = withDescription(svg, polygonsArt.description);
+  if (slug === 'square-maximises-dirichlet-ratio-quadrilaterals') svg = withDescription(svg, quadrilateralRatioArt.description);
+  if (slug === 'planar-transport-map-sensitivity-certificates') svg = withDescription(svg, transportSensitivityArt.description);
+  if (slug === 'bunkbed-flow-obstructions') svg = withDescription(svg, bunkbedArt.description);
+  if (slug === 'szollosi-mub-exclusion') svg = withDescription(svg, szollosiArt.description);
+  if (slug === 'modular-code-obstructions') svg = withDescription(svg, modularCodeArt.description);
+  if (slug === 'pmms-three-agents-eight-goods') svg = withDescription(svg, pmmsEightArt.description);
+  if (slug === 'noninteger-sliced-wasserstein') svg = withDescription(svg, slicedWassersteinArt.description);
+  if (slug === 'cross-polytope-signaling-dimension-six') svg = withDescription(svg, crossPolytopeArt.description);
+  if (slug === 'delayed-cascade-recovery') svg = withDescription(svg, delayedCascadeArt.description);
+  if (slug === 'primitive-su-primitivity') svg = withDescription(svg, primitiveSuArt.description);
+  if (slug === 'wales-20mph-attribution-manuscript') svg = withDescription(svg, walesManuscriptArt.description);
+  if (slug === 'flat-schmidt-chains') svg = withDescription(svg, flatSchmidtArt.description);
+  if (slug === 'levy-qsd-exponential-moments-restart') svg = withDescription(svg, require('./levy-qsd-art').description);
+  if (slug === 'waiting-time-entropy-bound-counterexamples') svg = withDescription(svg, require('./waiting-time-art').description);
+  if (slug === 'periodic-regulation-budget-monotonicity') svg = withDescription(svg, require('./periodic-regulation-art').description);
+  if (slug === 'sharp-shannon-window-law') svg = withDescription(svg, require('./shannon-window-art').description);
+  if (slug === 'sis-reconstruction-continuation') svg = withDescription(svg, require('./sis-continuation-art').description);
+  if (slug === 'pass-and-swap-bounded-swaps') svg = withDescription(svg, require('./pass-and-swap-art').description);
+  if (slug === 'mprk-nonnegative-two-cycles') svg = withDescription(svg, require('./mprk-two-cycle-art').description);
+  if (motifs[slug]) svg = withDescription(svg, motifs[slug].description);
   if (slug === 'ptolemaic-negative-type') {
-    svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"')
-      .replace('<defs>', `<desc id="art-description">${ptolemaicArt.description}</desc><defs>`);
-    fs.writeFileSync(path.join(OUT, slug + '-witness.svg'), ptolemaicArt.witness());
+    svg = withDescription(svg, ptolemaicArt.description);
+    writeSvg(path.join(OUT, slug + '-witness.svg'), ptolemaicArt.witness());
   }
-  fs.writeFileSync(path.join(OUT, slug + '.svg'), svg);
+  writeSvg(path.join(OUT, slug + '.svg'), svg);
   if (slug === 'decision-geometry') {
-    svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${decisionGeometryArt.description}</desc><defs>`);
-    fs.writeFileSync(path.join(OUT, slug + '.svg'), svg);
-    fs.writeFileSync(path.join(OUT, slug + '-boundary.svg'), decisionGeometryArt.boundary());
+    svg = withDescription(svg, decisionGeometryArt.description);
+    writeSvg(path.join(OUT, slug + '.svg'), svg);
+    writeSvg(path.join(OUT, slug + '-boundary.svg'), decisionGeometryArt.boundary());
   }
   console.log('art:', slug);
   if (slug === 'free-fermion-frustration-graphs') {
-    svg = svg.replace('role="img" aria-hidden="true"', 'role="img" aria-labelledby="art-description"').replace('<defs>', `<desc id="art-description">${freeFermionArt.description}</desc><defs>`);
-    fs.writeFileSync(path.join(OUT, slug + '.svg'), svg);
-    fs.writeFileSync(path.join(OUT, slug + '-parity.svg'), freeFermionArt.parity());
+    svg = withDescription(svg, freeFermionArt.description);
+    writeSvg(path.join(OUT, slug + '.svg'), svg);
+    writeSvg(path.join(OUT, slug + '-parity.svg'), freeFermionArt.parity());
   }
 }
