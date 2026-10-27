@@ -1,0 +1,224 @@
+{
+  "slug": "multiple-dispersal-maxima",
+  "title": "Arbitrarily many population maxima under uniform global dispersal",
+  "shortTitle": "Rare rich patches give population curves many peaks",
+  "oneLine": "Answering Bai and Li's open question: under uniform global dispersal, total population can have any number of peaks as the dispersal rate varies — the peaks are real but tiny, so the result is qualitative.",
+  "abstract": "How does the total size of a population depend on how often its members move? In the standard model where individuals leave their location at a fixed rate and resettle anywhere in the habitat with equal probability, Bai and Li (2021) proved that total equilibrium population has a single peak as the dispersal rate varies whenever habitat quality varies by less than a factor of about 1.618, and asked whether several peaks are possible. This candidate shows that they are, in any number. For every N there are smooth, strictly increasing resource functions with any prescribed mean, converging to a constant in every finite L^p, whose population curve has at least N distinct strict local maxima; the mechanism is that a tiny patch of very rich habitat barely changes average quality but adds a population bump at a dispersal rate comparable to its richness. Two resource levels always give exactly one peak, so three is the minimum: an exact three-level example (values 1/20, 25/12, 329/10) has a certified minimum at d = 3, and a second three-level example with contrast about 14.17 is certified exactly and by two rigorous interval traps. The peaks are real but tiny: in the 14.17 example the left maximum lies within 1e-4 of the minimum and is about 1e-32 high, and it vanishes under tiny parameter changes. The result is qualitative. Two close sources (Liang and Zhang 2021; Bai, Li and Shi 2024) were read only as abstracts, so priority is stated within a bounded search. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-27",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "nonlocal dispersal",
+    "total population",
+    "logistic equation",
+    "spatial heterogeneity",
+    "metapopulation",
+    "dispersal rate",
+    "population maxima",
+    "open problem"
+  ],
+  "repoUrl": "https://github.com/ipitchford/multiple-dispersal-maxima",
+  "releaseUrl": "https://github.com/ipitchford/multiple-dispersal-maxima/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/multiple-dispersal-maxima/releases/download/v1.0.0-candidate/multiple-dispersal-maxima-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23687852",
+  "conceptDoi": "10.5281/zenodo.23687851",
+  "zenodoUrl": "https://zenodo.org/records/23687852",
+  "citeText": "Anonymous (2026). Arbitrarily many population maxima under uniform global dispersal. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23687852",
+  "evidence": "Written proofs of Theorems 1–3, Proposition 4 and Corollary 9; exact rational certificates of the three-level examples by two independently written standard-library scripts; rigorous rational square-root enclosures certifying the two traps of the 14.17 example; numerical figures and a contrast-threshold search with pinned dependencies (evidence only); twenty semantic negative controls; byte-identical clean replay and GitHub CI.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; the load-bearing identities are certified in exact arithmetic. Internal AI-assisted review (five-role first round, outside-model audits before and after revision, a verification re-review and a targeted proof audit); final editor fixes were made without a further review round. Priority is bounded: Liang–Zhang (2021) and Bai–Li–Shi (2024) were read only as abstracts. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (27 October 2026, 16 pages) with the final editor fixes, its exact certificates and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 27 October 2026.",
+  "keyResults": [
+    "Any number of peaks: for every a > 0 and N ≥ 1 there are smooth, strictly increasing resources with mean a, converging to a in every finite L^p but not uniformly, whose total population has at least N distinct strict local maxima in the dispersal rate (Theorem 1, proof).",
+    "Mechanism: rare atoms of very rich habitat add separated first-order bumps ε r⁻² g_r(d), peaking near d ≈ r/2; each bump gives a population trap that survives the nonlinear problem, smoothing and normalisation (Lemmas 10–12).",
+    "Exact example: resource 1/20, 25/12, 329/10 on fractions 2405/3504, 5/16, 1/876 has M(3) = 1, M′(3) = 0 and M″(3) = 6042635/1975192401 > 0, hence two strict maxima; smooth L¹-close increasing versions keep two maxima but not the exact identities (Theorem 2, exact certificate).",
+    "Two levels are always single-peaked, with the peak at d = (a + b)/2, so three levels are minimal (Theorem 3, proof).",
+    "Low-contrast example: contrast ≈ 14.1734 with two strict maxima, certified exactly and by two interval traps; the optimal three-level contrast lies in [1.618, 14.1734] (Proposition 4).",
+    "Effect sizes are tiny: the first peak of the exact example rises about 7.6 × 10⁻⁴ above the dip; in the 14.17 example the left peak lies within 10⁻⁴ of the dip, is about 10⁻³² high and vanishes under tiny parameter changes. The result is qualitative."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, re-review, proof audit and outside-model correctness audits",
+      "Claude Code: final editor fixes, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Rare rich patches give population curves many peaks. An Evidence Press briefing. First, the background: imagine a species spread over a patchy landscape, where individuals leave their spot at some rate and land anywhere in the landscape with equal chance. Ecologists have long asked how the total population depends on that movement rate. In 2021, Xueli Bai and Fang Li proved that, in this well-mixed model, the total has a single peak whenever habitat quality varies by less than a factor of about one point six, and they asked whether it could ever have more than one. Now, the main finding: it can, and in any number. For every number of peaks, there are smooth habitats, arbitrarily close to uniform on average, whose total population rises and falls that many times as movement changes. The trick is a tiny patch of very rich habitat. It barely changes average quality, but it adds a small population bump at a movement rate comparable to its richness. Two habitat levels always give one peak; three are enough for two, and an exact example is certified. As for how large the effect is: the peaks are real but tiny. In one example the extra peak is about ten to the minus thirty-two high, and it vanishes if the numbers are nudged. So the result is qualitative. As for how sure this is: every theorem has a written proof, and the key identities are checked in exact arithmetic. Finally, the limits: review so far is internal and AI-assisted, and two closely related papers were read only as abstracts, so priority is stated with care. This briefing describes version one point zero candidate, released on the twenty-seventh of October 2026; the paper and evidence are linked from the release page. This audio uses an AI-generated voice and is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "From a fresh extraction of the frozen archive the four exact certificates reproduced their receipts byte for byte, the numerical scripts matched with pinned versions, and twenty semantic negative controls rejected perturbed witnesses, reversed trap claims and tampered receipts. GitHub CI repeats the replay on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Two separately written exact verifiers and an internal proof audit's own 120-digit interval computation agree; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the theorems are proved in prose with exact computer-assisted identities."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "The exact certificates need only the Python standard library; numerical scripts pin NumPy 2.4.6, SciPy 1.17.1 and Matplotlib 3.11.2 (PEP 723 and requirements.txt), not a locked container. The multistart search is platform-sensitive."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Arditi, Lobry and Sari (2015), Is dispersal always beneficial to carrying capacity? New insights from the multi-patch logistic equation. Theoretical Population Biology 106, 45–59 (two-patch total population; full text read).",
+      "url": "https://doi.org/10.1016/j.tpb.2015.10.001"
+    },
+    {
+      "citation": "Arditi, Lobry and Sari (2018), Asymmetric dispersal in the multi-patch logistic equation. Theoretical Population Biology 120, 11–15 (asymmetric two-patch dispersal; full text read).",
+      "url": "https://doi.org/10.1016/j.tpb.2017.12.006"
+    },
+    {
+      "citation": "Bai and Li (2021), Effects of nonlocal dispersal strategies and heterogeneous environment on total population. arXiv:2108.01826, unrefereed preprint (the model, the golden-ratio unimodality theorem and the question answered here).",
+      "url": "https://doi.org/10.48550/arXiv.2108.01826"
+    },
+    {
+      "citation": "Bai, Li and Shi (2024), Some Progress on Single Species Models with Nonlocal Dispersal Strategies in Heterogeneous Environments. Journal of Mathematical Study 57, 294–308 (follow-up survey by the source authors; abstract only consulted — priority caveat).",
+      "url": "https://doi.org/10.4208/jms.v57n3.24.04"
+    },
+    {
+      "citation": "Bai, Li and Zhou (2023), Optimization of total population in logistic model with nonlocal dispersals and heterogeneous environments. Calculus of Variations and PDE 62, 169 (resource concentration for optimal total population).",
+      "url": "https://doi.org/10.1007/s00526-023-02509-3"
+    },
+    {
+      "citation": "Bravo de la Parra (2026), Dispersal and Total Population Size in Discrete-Time Metapopulation Models. Mathematics 14, 3624 (discrete-time metapopulations).",
+      "url": "https://doi.org/10.3390/math14193624"
+    },
+    {
+      "citation": "DeAngelis, Ni and Zhang (2016), Dispersal and spatial heterogeneity: single species. Journal of Mathematical Biology 72, 239–254 (total population can exceed total resource).",
+      "url": "https://doi.org/10.1007/s00285-015-0879-y"
+    },
+    {
+      "citation": "Elbetch, Benzekri, Massart and Sari (2022), The multi-patch logistic equation with asymmetric migration. Revista Integración 40(1) (multi-patch logistic equation with asymmetric migration).",
+      "url": "https://doi.org/10.18273/revint.v40n1-2022002"
+    },
+    {
+      "citation": "Freedman and Waltman (1977), Mathematical Models of Population Interactions with Dispersal. I: Stability of Two Habitats with and without a Predator. SIAM Journal on Applied Mathematics 32, 631–648 (two coupled habitats).",
+      "url": "https://doi.org/10.1137/0132052"
+    },
+    {
+      "citation": "Gao and Lou (2022), Total biomass of a single population in two-patch environments. Theoretical Population Biology 146, 1–14 (two-patch classification).",
+      "url": "https://doi.org/10.1016/j.tpb.2022.05.003"
+    },
+    {
+      "citation": "Liang and Lou (2012), On the dependence of population size upon random dispersal rate. DCDS-B 17, 2771–2788 (multiple maxima under local diffusion, a different operator).",
+      "url": "https://doi.org/10.3934/dcdsb.2012.17.2771"
+    },
+    {
+      "citation": "Liang and Zhang (2021), The optimal distribution of resources and rate of migration maximizing the population size in logistic model with identical migration. DCDS-B 26, 2055–2065 (equal-patch identical-migration model containing our rational examples; abstract only consulted — priority caveat).",
+      "url": "https://doi.org/10.3934/dcdsb.2020280"
+    },
+    {
+      "citation": "Lou (2006), On the effects of migration and spatial heterogeneity on single and multiple species. Journal of Differential Equations 223, 400–426 (total population versus heterogeneity).",
+      "url": "https://doi.org/10.1016/j.jde.2005.05.010"
+    },
+    {
+      "citation": "Nagylaki (2011), The influence of partial panmixia on neutral models of spatial variation. Theoretical Population Biology 79, 19–38 (partial panmixia; the averaging operator).",
+      "url": "https://doi.org/10.1016/j.tpb.2010.08.006"
+    },
+    {
+      "citation": "Segura, Marvá and Franco (2026), Dispersal in multi-patch metapopulations: The impact of patch number and network topology. Journal of Theoretical Biology 619, 112331 (numerical multi-patch scenarios).",
+      "url": "https://doi.org/10.1016/j.jtbi.2025.112331"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:multiple-dispersal-maxima",
+    "attemptIds": [
+      "ep-attempt:multiple-dispersal-maxima-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Answers the question posed by Bai and Li (arXiv:2108.01826, Section 5): under uniform global dispersal the total population can have arbitrarily many strict local maxima in the dispersal rate, with exact three-level witnesses and a proof that two levels are single-peaked.",
+      "scope": "The uniform nonlocal dispersal logistic model with common quadratic competition; positive bounded resources. Effects are tiny and qualitative; other kernels, patch graphs and the optimal contrast are not addressed."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The model is exactly equation (1.11) of Bai and Li (2021) on a unit-measure habitat; their question is quoted from Section 5, p. 20 of the full preprint.",
+      "remainingRisks": [
+        "Liang–Zhang (2021) and Bai–Li–Shi (2024) read only as abstracts.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Read the full texts of Liang–Zhang (2021) and Bai–Li–Shi (2024) to settle priority, and obtain specialist review of the first-variation transfer (Lemmas 10–12).",
+      "claimCeiling": "Proved existence of arbitrarily many strict local maxima under uniform global dispersal, exact three-level witnesses and two-level unimodality; tiny, qualitative effects. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "multiple-dispersal-maxima-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable answer to Bai and Li's question on multiple population maxima.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
