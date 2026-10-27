@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Can a popular kind of image denoiser make an image-reconstruction method diverge? An Evidence Press briefing. First, the background. Many methods that rebuild images from blurred or incomplete data alternate two steps: one that fits the measurements, and one that cleans up noise. A common clean-up step averages each pixel with similar ones, using Gaussian weights, as in non-local means. In 2025, Sinha and colleagues noted that these methods seem to converge in practice, but that nobody had a proof or a counterexample. Now, the main finding. The answer depends on size. With the standard assumptions, the iterations are always stable for problems of up to three points, at every allowed step size.",
+      "inputSha256": "52db4b7bcbee392598d140a69c646d40fa8dabdd235de602c2848975fb6e0ccc",
+      "audioSha256": "9e427bdce996bafe736a1270eda4cb9cdfb74a2f66a2b94724002e437c4f72fa",
+      "requestId": "req_4846793b54924363bee865d45f3627f2",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "up to points at every allowed step size",
+        "heardEnding": "the iterations are always stable for problems of up to points at every allowed step size",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "At four points they can fail: the paper gives explicit Gaussian weights and a fixed positive blur for which both standard iterations slowly diverge, and maps exactly where this happens. A twelve-point example shows the same thing for a convolution blur, though only for very small steps. Without equal self-weights, failure starts at three points. How big is the effect? Tiny. Errors grow by at most about seventeen parts in a million per iteration, so it would take hundreds of thousands of iterations to grow tenfold, while real runs use a few hundred. So the result shows that no blanket guarantee exists, not that real imaging pipelines are failing.",
+      "inputSha256": "4f12c55c7e552ab89873b1e8a1f106f75a62580c2ce62cc3b3a206c427f35a98",
+      "audioSha256": "3ca72fba6c0736fee2bb6902daa03aa136e32cb55368dadffc625d0bb1d7b005",
+      "requestId": "req_1fb1043e694f46f2a94cee427414a599",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "exists not that real imaging pipelines are failing",
+        "heardEnding": "so the result shows that no blanket guarantee exists not that real imaging pipelines are failing",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The practical advice: choose step sizes in proportion to how well the denoiser mixes, or use a symmetrised denoiser, which the paper proves is always safe under a mild condition. Finally, the status. This is an anonymous, unrefereed candidate, checked by AI-assisted review only, not peer review. It was published on 27 October 2026; its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "723fd3c9600b4e3d0836d8fde90185be68564dd06d6f92e29f7d8112caf07bc5",
+      "audioSha256": "34696bd00f0bca842dd52530091e303f70ac2b7ae4abae10b89cb00a0e80e44b",
+      "requestId": "req_32557c5a22814d96ab5f9128e0a0e5c6",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "gaussian-pnp-stability",
+  "generatedAt": "2026-10-27T12:56:26.309Z",
+  "sourceMetadata": "papers/gaussian-pnp-stability/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "401f364690041326e5585c16eb29fe7e50fdb6abc939df09baa36e466b1d9c61",
+  "transcriptPath": "assets/audio/gaussian-pnp-stability.txt",
+  "transcriptSha256": "aef5b56209bcfdb111470f246b1ddc106b0f14116ddd5b0f7597b3f6f3269fe3",
+  "audioPath": "assets/audio/gaussian-pnp-stability.mp3",
+  "audioSha256": "00a0cfa5b412be8c652858155691048324174f05548dbf56875ca1a6090a70ca",
+  "audioBytes": 1972268,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "slug": "gaussian-pnp-stability",
+  "title": "Gaussian-kernel plug-and-play iterations can be unstable: a sharp dimension threshold for irreducible unit-diagonal kernels, the role of the mixing gap, and why unit diagonals matter",
+  "shortTitle": "Gaussian-kernel plug-and-play can be unstable, but only barely",
+  "oneLine": "Answering an open question of Sinha et al. (2025): PnP-ISTA and PnP-ADMM with row-normalised Gaussian kernel denoisers are always stable in dimensions one to three but can diverge from dimension four, by at most about 1.7×10⁻⁵ per iteration; safe steps scale with the mixing gap, and symmetrised denoisers are stable.",
+  "abstract": "Plug-and-play (PnP) methods for linear inverse problems alternate a data step with a denoiser. When the denoiser is a row-normalised kernel smoother such as Gaussian non-local means, Sinha, Kumar, Athalye and Chaudhury (IEEE Trans. Signal Process. 73, 2025, Section II-A) observed that the iteration seems to converge but that neither a proof nor a counterexample was known. This candidate answers the question for PnP-ISTA and PnP-ADMM. With irreducible unit-diagonal kernels (entries at most one) and a positive semidefinite data Hessian that preserves constants, both iterations are Schur stable in dimensions one to three for every admissible step; the proof reduces to Banerjee and Chaudhury's Theorem 1.3 by a new positivity identity. In dimension four they need not be: explicit Gaussian kernels and a fixed positive forward operator make both iterations diverge at any prescribed step 0 < t ≤ 1/2, and an exact two-parameter classification, with certificate data printed in an appendix and re-checked by a standard-library checker, locates the boundary t* ≈ 0.5313. A twelve-dimensional positive convolution example fails exactly for 0 < t < 1.9157×10⁻⁴, and without unit diagonals failure occurs in dimension three. The cause is a denoiser whose similarity graph is almost disconnected and averages unequally: steps below g/√κ_π are always safe, where g is the mixing gap, and linear scaling in g cannot be improved. Symmetric denoisers are stable exactly when no vector fixed by the denoiser is annihilated by the Hessian, extending Athalye, Chaudhury and Kumar (2023). The divergence is extremely slow, at most about 1.7×10⁻⁵ per iteration, and the affinities involved are tiny, so the results rule out a uniform guarantee rather than demonstrate divergence in an imaging pipeline. Not the first disproof of the broader Banerjee–Chaudhury conjecture. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-27",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "plug-and-play",
+    "kernel denoiser",
+    "non-local means",
+    "Schur stability",
+    "PnP-ISTA",
+    "PnP-ADMM",
+    "mixing gap",
+    "exact certificate"
+  ],
+  "repoUrl": "https://github.com/ipitchford/gaussian-pnp-stability",
+  "releaseUrl": "https://github.com/ipitchford/gaussian-pnp-stability/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/gaussian-pnp-stability/releases/download/v1.0.0-candidate/gaussian-pnp-stability-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23690125",
+  "conceptDoi": "10.5281/zenodo.23690124",
+  "zenodoUrl": "https://zenodo.org/records/23690125",
+  "citeText": "Anonymous (2026). Gaussian-kernel plug-and-play iterations can be unstable: a sharp dimension threshold for irreducible unit-diagonal kernels, the role of the mixing gap, and why unit diagonals matter. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23690125",
+  "evidence": "Written proofs of every theorem; exact rational verifiers for the four-state counterexample, the twelve-state circulant constants and the three-state reentrant family; exact sympy certificates for the two-parameter classification (Theorem 4) and the certified circulant window (Theorem 3), whose decisive polynomials, Bernstein sign summaries, Sturm counts and isolating intervals are printed in Appendix C and stored in hashed coefficient files re-verified by a standard-library checker; a replay driver; eight semantic negative controls; CI.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; Theorems 1(b), 3 and 4 rest on exact rational certificates whose decisive data are printed; the Section 12 growth table and Figure 1 are floating-point illustrations. Internal AI-assisted review only, including correctness audits by a different model and a targeted proof audit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (dated 27 October 2026, 28 pages), its verifier outputs and the frozen release archive.",
+  "keyResults": [
+    "Dimensions one to three are stable: for irreducible unit-diagonal kernels with entries at most one and B ⪰ 0 with Be = be, PnP-ISTA and PnP-ADMM are Schur stable for every 0 < t < 2/ρ(B) (Theorem 1(a), proof, via Banerjee–Chaudhury Theorem 1.3 and a new positivity identity).",
+    "Dimension four can be unstable: a fixed positive forward operator and, for each 0 < t ≤ 1/2, an explicit Gaussian kernel give a real eigenvalue above one for both iterations (Theorem 1(b), exact certificate); the family is classified exactly, with boundary t* ≈ 0.5313 and ε_crit ≈ 1.69×10⁻⁵ (Theorem 4, exact certificate, Appendix C).",
+    "Convolution forward operators are not immune: a twelve-state positive circulant example fails exactly for 0 < t < 1.9157×10⁻⁴ along ε = t² (Theorem 3, exact certificate).",
+    "The cause is a small mixing gap g: steps with t ρ(B) < g/(√κ_π − g) are always safe (Theorem 2, proof), and linear scaling in g cannot be improved within the family, though the constant is conservative by about 8,600.",
+    "Unit diagonals matter: without them a reversible positive kernel fails already in dimension three (Theorem 5, proof).",
+    "Symmetric denoisers are stable exactly when ker(I − W) ∩ ker B = {0} (Theorem 6, Corollary 1, proof), extending Athalye, Chaudhury and Kumar (2023).",
+    "Practical size: the growth is at most about 1.7×10⁻⁵ per iteration and the affinities are 10⁻⁸ to 10⁻⁶ (Section 12, numerical illustration)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, correctness audits by a different model and a targeted proof audit",
+      "Claude Code: final editor fixes, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Can a popular kind of image denoiser make an image-reconstruction method diverge? An Evidence Press briefing. First, the background. Many methods that rebuild images from blurred or incomplete data alternate two steps: one that fits the measurements, and one that cleans up noise. A common clean-up step averages each pixel with similar ones, using Gaussian weights, as in non-local means. In 2025, Sinha and colleagues noted that these methods seem to converge in practice, but that nobody had a proof or a counterexample. Now, the main finding. The answer depends on size. With the standard assumptions, the iterations are always stable for problems of up to three points, at every allowed step size. At four points they can fail: the paper gives explicit Gaussian weights and a fixed positive blur for which both standard iterations slowly diverge, and maps exactly where this happens. A twelve-point example shows the same thing for a convolution blur, though only for very small steps. Without equal self-weights, failure starts at three points. How big is the effect? Tiny. Errors grow by at most about seventeen parts in a million per iteration, so it would take hundreds of thousands of iterations to grow tenfold, while real runs use a few hundred. So the result shows that no blanket guarantee exists, not that real imaging pipelines are failing. The practical advice: choose step sizes in proportion to how well the denoiser mixes, or use a symmetrised denoiser, which the paper proves is always safe under a mild condition. Finally, the status. This is an anonymous, unrefereed candidate, checked by AI-assisted review only, not peer review. It was published on 27 October 2026; its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "replay_all.py reruns every exact verifier from the frozen archive and compares the records (timing and version fields excluded); check_certificates.py re-verifies Appendix C; eight negative controls are rejected. GitHub CI repeats these."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "A targeted proof audit rebuilt the Theorem 3 and 4 polynomials from the matrix definitions with its own Bernstein and root-isolation code and reproduced the isolating intervals; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review and correctness audits are not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.11; standard library for the core verifiers, checker and controls; sympy 1.13.3 for the symbolic certificates; numpy and matplotlib only for the figure."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Sinha, Kumar, Athalye and Chaudhury (2025), Linear convergence of plug-and-play algorithms with kernel denoisers. IEEE Transactions on Signal Processing 73, 2646–2659 (poses the open question answered here, Section II-A; read on arXiv:2505.15318v1).",
+      "url": "https://doi.org/10.1109/TSP.2025.3573044"
+    },
+    {
+      "citation": "Banerjee and Chaudhury (2025), On the Schur stability of some image reconstruction operators. arXiv:2509.06715 (Theorem 1.3 gives the n ≤ 3 result after the positivity identity; Conjecture 1.1).",
+      "url": "https://arxiv.org/abs/2509.06715"
+    },
+    {
+      "citation": "Athalye, Chaudhury and Kumar (2023), On the contractivity of plug-and-play operators. IEEE Signal Processing Letters 30, 1447–1451 (symmetric-denoiser contractivity; Theorem 6 extends it).",
+      "url": "https://doi.org/10.1109/LSP.2023.3323248"
+    },
+    {
+      "citation": "Gavaskar, Athalye and Chaudhury (2021), On plug-and-play regularization using linear denoisers. IEEE Transactions on Image Processing 30, 4802–4813 (earlier ADMM divergence example with a signed forward model).",
+      "url": "https://doi.org/10.1109/TIP.2021.3075092"
+    },
+    {
+      "citation": "Gavaskar and Chaudhury (2020), Plug-and-play ISTA converges with kernel denoisers. IEEE Signal Processing Letters 27, 610–614.",
+      "url": "https://doi.org/10.1109/LSP.2020.2986643"
+    },
+    {
+      "citation": "Liu, Xing and Sun (2021), Study on convergence of plug-and-play ISTA with adaptive-kernel denoisers. IEEE Signal Processing Letters 28, 1918–1922 (abstract only consulted).",
+      "url": "https://doi.org/10.1109/LSP.2021.3111594"
+    },
+    {
+      "citation": "Sreehari et al. (2016), Plug-and-play priors for bright field electron tomography and sparse interpolation. IEEE Transactions on Computational Imaging 2, 408–423 (symmetric doubly stochastic smoothing).",
+      "url": "https://doi.org/10.1109/TCI.2016.2599778"
+    },
+    {
+      "citation": "Chan, Wang and Elgendy (2017), Plug-and-play ADMM for image restoration: fixed-point convergence and applications. IEEE Transactions on Computational Imaging 3, 84–98.",
+      "url": "https://doi.org/10.1109/TCI.2016.2629286"
+    },
+    {
+      "citation": "Romano, Elad and Milanfar (2017), The little engine that could: regularization by denoising (RED). SIAM Journal on Imaging Sciences 10, 1804–1844.",
+      "url": "https://doi.org/10.1137/16M1102884"
+    },
+    {
+      "citation": "Pesquet, Repetti, Terris and Wiaux (2021), Learning maximally monotone operators for image recovery. SIAM Journal on Imaging Sciences 14, 1206–1237.",
+      "url": "https://doi.org/10.1137/20M1387961"
+    },
+    {
+      "citation": "Ryu et al. (2019), Plug-and-play methods provably converge with properly trained denoisers. arXiv:1905.05406.",
+      "url": "https://arxiv.org/abs/1905.05406"
+    },
+    {
+      "citation": "Hurault, Leclaire and Papadakis (2021), Gradient step denoiser for convergent plug-and-play. arXiv:2110.03220.",
+      "url": "https://arxiv.org/abs/2110.03220"
+    },
+    {
+      "citation": "Hurault, Leclaire and Papadakis (2022), Proximal denoiser for convergent plug-and-play optimization with nonconvex regularization. arXiv:2201.13256.",
+      "url": "https://arxiv.org/abs/2201.13256"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:gaussian-pnp-stability",
+    "attemptIds": [
+      "ep-attempt:gaussian-pnp-stability-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Explicit Gaussian kernels with a fixed positive forward operator make PnP-ISTA and PnP-ADMM unstable in dimension four, answering the Sinha et al. (2025) question negatively, while dimensions one to three are proved stable for irreducible unit-diagonal kernels with constant-preserving Hessians.",
+      "scope": "Irreducible unit-diagonal kernels with entries at most one and B ⪰ 0 with Be = be; the kernel is chosen per step; certified four-state range 0 < t < t*; growth at most about 1.7e-5 per iteration; no imaging experiment."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The open-question sentence of Sinha et al. is quoted verbatim from arXiv:2505.15318v1, Section II-A; the matrices P(t) and R(t) are the standard PnP-ISTA and PnP-ADMM iteration matrices and the kernels satisfy Sinha et al.'s standing assumptions.",
+      "remainingRisks": [
+        "The published TSP version was not compared word for word with arXiv v1.",
+        "Theorem 1(a) relies on Banerjee-Chaudhury Theorem 1.3 (a self-contained argument is also given).",
+        "Certificates rely on Python and sympy execution; no proof assistant was used.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Recheck the Appendix C certificates in independent software, and ask an imaging-optimisation specialist whether the dimension-four obstruction is known or realisable with natural-image patches.",
+      "claimCeiling": "Proved stability for n ≤ 3 and certified instability in n = 4 and in a twelve-state circulant family within the stated class, with a gap-dependent bound and a symmetric-denoiser extension. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "gaussian-pnp-stability-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable answer to the Sinha et al. (2025) kernel PnP stability question with exact certificates.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
