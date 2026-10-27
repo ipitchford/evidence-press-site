@@ -139,5 +139,19 @@
   "pageStructureWaivers": [],
   "recordMaturity": "grandfathered-legacy",
   "metadataProvenance": "Authored before page-structure schema 2.0. Current display metadata may be renderer-derived; unrecorded historical evidence has not been reconstructed.",
-  "grandfatheredAtSchemaVersion": "1.3"
+  "grandfatheredAtSchemaVersion": "1.3",
+  "corrections": [
+    {
+      "date": "2026-10-27",
+      "scope": "claim",
+      "summary": "Corrected the description of the computational checks in the abstract and introduction. The archived text says each identity is verified in two separately written backends (SymPy and FLINT). As §5 states, the cross-comparison covers only the central degree-difference identity. The checks are: Corollary 4.1 in FLINT through r + s ≤ 8, with spot checks to (5, 6), and independently in SymPy, with coefficient-identical agreement, through r + s ≤ 5; the bordered/minor identity in FLINT only, through r + s ≤ 7.",
+      "detail": "This corrects how the checks are described; the identities and the checks themselves are unchanged. No theorem, certificate, computation or stated result is affected. The archived PDF, version DOI and repository tag are unchanged; the erratum is recorded here and in the repository's CORRECTIONS.md on its main branch."
+    },
+    {
+      "date": "2026-10-27",
+      "scope": "claim",
+      "summary": "Corrected an internal inconsistency in Remark 4.7. The archived text lists “the torsor structure” among the results that use identity (1), but the statement-by-statement table in the same remark records Proposition 2.4 (the torsor structure) as independent of it, proved via Kummer covers. The words “the torsor structure,” should be deleted.",
+      "detail": "The table is correct. No theorem, certificate, computation or stated result is affected. The archived PDF, version DOI and repository tag are unchanged; the erratum is recorded here and in the repository's CORRECTIONS.md on its main branch."
+    }
+  ]
 }
