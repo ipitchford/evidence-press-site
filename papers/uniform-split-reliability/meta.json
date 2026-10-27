@@ -70,6 +70,14 @@
   },
   "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
   "narration": "When one split-network design wins. An Evidence Press briefing. Imagine a network whose links survive independently. Success here does not mean keeping everyone connected. It means exactly two connected groups, with one designated terminal in each and no third group. For a fixed number of vertices and edges, can one design maximise that success probability at every link-survival rate? This candidate gives an almost complete existence classification for networks with at least seven vertices. Trees have a uniformly best design, as earlier work established. A substantial intermediate range has none. Sufficiently dense networks have an explicit best construction. Having no uniform winner does not mean there is no best design at a particular survival rate. Two boundary edge counts remain conditional in general. Exact integer certificates settle both for networks from seven through fifty-one vertices. That finite conclusion is separate from a new all-order comparison: it works when links survive with probability at least one half, and on an explicit interval near zero, but leaves the middle unresolved. The proof connects split reliability to ordinary connectivity after identifying the terminals. Endpoint comparisons then reveal when one design cannot win everywhere. The package includes the written arguments and exact checking programs. It does not classify every optimiser or establish external peer review, independent reproduction or formal verification. This is an anonymous, AI-assisted, unrefereed mathematical candidate. Released on eighteen October twenty twenty-six, its paper and reproducible evidence are linked on the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "corrections": [
+    {
+      "date": "2026-10-27",
+      "scope": "claim",
+      "summary": "Corrected a structural description in §4.3 and in the explanation of Definition 4.4. The archived text says the extremal graph is C_{n−1}(n−3−ε) “with a pendant vertex attached to a clique vertex”. For ε = 1 the pendant is attached to the cone vertex u, the unique vertex of minimum degree. The text should read: “with a pendant vertex attached to a vertex of minimum degree (the cone vertex u when ε = 1; u or its non-neighbour when ε = 0)”, and Definition 4.4 should note that the right side has the same reliability as the balloon, because a pendant edge contributes the factor p wherever it is attached.",
+      "detail": "Reliability does not depend on where the pendant edge is attached. No theorem, certificate, computation or stated result is affected. The archived PDF, version DOI and repository tag are unchanged; the erratum is recorded here and in the repository's CORRECTIONS.md on its main branch."
+    }
+  ],
   "operatingModel": {
     "version": "1.0",
     "workId": "ep-work:uniform-split-reliability",
