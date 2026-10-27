@@ -1,0 +1,219 @@
+{
+  "slug": "affinity-karpelevich-threshold",
+  "title": "How fast can a driven Markov network oscillate? A four-state counterexample to the affine Karpelevich conjecture, and the exact dimension at which it fails",
+  "shortTitle": "A four-state network breaks the affine Karpelevich conjecture",
+  "oneLine": "The rescaled eigenvalues of Markov rate matrices do not always fill the affinity-squashed Karpelevich region conjectured by Xu, Kolchinsky, Delvenne and Ito (2025): an integer four-state network escapes it, three states cannot, and on fully connected networks every size from four up fails; the single-cycle case remains open.",
+  "abstract": "The eigenvalues of a continuous-time Markov rate matrix decide how fast its probability distribution relaxes and how strongly it can oscillate. For discrete-time transition matrices the exact set of possible eigenvalues is a classical object, the Karpelevich region Ω_n. Xu, Kolchinsky, Delvenne and Ito (Phys. Rev. Lett. 135, 257102, 2025; Supplement Eq. (S3)) conjectured that the eigenvalues of rate matrices fill a squashed copy of this region: stretched by the fastest escape rate α and flattened vertically by β′ = tanh(max_c F_c/(2n_c)), set by the largest cycle affinity per step. This candidate shows the conjecture is false. An explicit four-state network with integer rates and about 8.4 k_BT of driving around its strongest cycle has the eigenvalue −4745 + 450√3 i, whose rescaled image ζ ≈ −0.7062 + 0.3161 i lies 0.0087 above the left boundary arc of Ω₄; one integer inequality proves it. For at most three states the containment holds, so four is the smallest failing size. The mechanism is weak resetting: it moves eigenvalues by O(ε) but relaxes the affinity factor by order ε^{2/3}. This gives counterexamples near a whole boundary arc in four states, an explicit interval 0 < ε ≤ 1/100, exactly certified five- and six-state instances whose data are printed in an appendix and re-checked by a stand-alone checker, and an asymptotic construction in every dimension n ≥ 4. All counterexamples use networks in which every pair of states is connected; whether the conjecture holds for single-cycle networks, the setting in which it was tested, remains open. The violations are thin, and the proved affinity ellipse and Farey-polygon bounds are unaffected. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-27",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Markov rate matrices",
+    "Karpelevich region",
+    "cycle affinity",
+    "stochastic thermodynamics",
+    "eigenvalue bounds",
+    "counterexample",
+    "resetting",
+    "exact certificate"
+  ],
+  "repoUrl": "https://github.com/ipitchford/affinity-karpelevich-threshold",
+  "releaseUrl": "https://github.com/ipitchford/affinity-karpelevich-threshold/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/affinity-karpelevich-threshold/releases/download/v1.0.0-candidate/affinity-karpelevich-threshold-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23687327",
+  "conceptDoi": "10.5281/zenodo.23687326",
+  "zenodoUrl": "https://zenodo.org/records/23687327",
+  "citeText": "Anonymous (2026). How fast can a driven Markov network oscillate? A four-state counterexample to the affine Karpelevich conjecture, and the exact dimension at which it fails. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23687327",
+  "evidence": "Written proofs of every theorem; an exact integer certificate for the four-state witness checked by two standard-library verifiers; exact checks of the all-dimension construction; exactly certified five- and six-state instances using exact rationals and outward-rounded rational interval arithmetic with a radial exterior test against every Karpelevich boundary polynomial, whose matrices, cycles, eigenvalue enclosures and per-Farey-pair data are printed in Appendix A and whose terminal boxes are re-checked by a separate exact checker; a replay driver that regenerates every receipt; eleven semantic negative controls.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; the five- and six-state instances are computer-assisted exact certificates; the ε-scale and the single-cycle search are numerical and labelled as such. Internal AI-assisted review only, including correctness audits by a different model and a targeted proof audit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (dated 27 October 2026, 20 pages), its verifier receipts and the frozen release archive.",
+  "keyResults": [
+    "Four-state counterexample: the integer rate matrix Q_w has eigenvalue −4745 + 450√3 i with α = 2781 and dominant triangle ratio 177853829/38529; its rescaled image ζ ≈ −0.7062 + 0.3161 i lies 0.0087 above the left boundary arc of Ω₄, so Supplement Eq. (S3) of Xu et al. (2025) fails (Proposition 2.1, Theorem 3.1, proof with an exact integer certificate).",
+    "Smallest size: for at most three states the rescaled spectrum lies in Ω_n, so four is the smallest failing dimension (Theorem 4.1, proof, using the sector bound of Ohga, Ito and Kolchinsky).",
+    "Mechanism: weak resetting moves eigenvalues by O(ε) but relaxes the affinity factor by order ε^{2/3}, giving counterexamples near every point of the open left arc of Ω₄, an explicit interval 0 < ε ≤ 1/100, and an open set of positive-rate counterexamples (Theorems 5.1, 6.1, Corollary 6.2, proof).",
+    "Every dimension n ≥ 4 fails on fully connected networks: fix n, then a small t, then let ε → 0; the thresholds are not explicit (Theorem 7.4, proof).",
+    "Explicit five- and six-state instances are certified exactly, with the certificate data printed in Appendix A and re-checked by a separate checker (Theorem 7.6, computer-assisted exact certificate).",
+    "Open: whether the conjecture holds for single-cycle networks (Open problem 8.1); a small numerical ring search found no violation, which is evidence, not proof."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, correctness audits by a different model and a targeted proof audit",
+      "Claude Code: final editor fixes, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "A four-state network breaks a conjecture about Markov spectra. An Evidence Press briefing. First, the background. Many systems in physics and biology hop at random between a few states, like a molecular motor or a chemical clock. The eigenvalues of the matrix of hopping rates say how fast such a system settles down and how strongly it can oscillate on the way. Oscillation needs a thermodynamic push around a cycle of states. Next, the conjecture. In 2025, Xu, Kolchinsky, Delvenne and Ito proposed an exact map of where these eigenvalues can lie: a classical shape called the Karpelevich region, stretched by the fastest escape rate and squashed vertically by the strongest push per step around any cycle. Now, the main finding. The conjecture is false. An explicit four-state network with whole-number rates has an eigenvalue that, after this rescaling, lands just outside the region, by about nine thousandths. One integer inequality proves it. For three or fewer states the conjecture holds, so four is the smallest failing size. The mechanism is simple. Adding weak resetting moves the eigenvalues only a little, but relaxes the squashing factor much more. The paper uses this to build counterexamples in every size from four upwards, and certifies five- and six-state examples in exact arithmetic, with the data printed so that readers can check it. Finally, the limits. Every counterexample links every pair of states. Whether the conjecture holds for a single ring of states, where it was tested, is still open. The violations are small, and the proved ellipse and polygon bounds are unaffected. This is an anonymous, unrefereed candidate, checked by AI-assisted review only, not peer review. Published on 27 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "code/replay_all.py regenerates every receipt from the frozen archive and compares them (timing and interpreter-version fields excluded); the stand-alone checker passes on shipped and regenerated certificates; eleven negative controls are rejected. GitHub CI repeats the replay. The verifiers use assert and refuse python -O by design."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "A targeted proof audit recertified the five- and six-state instances with python-flint ball arithmetic independently of the package code, and a separately written exact checker re-verifies the certificate; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review and correctness audits are not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.11 or later, standard library only for all verifiers; replay also passed under Python 3.13. The figure script needs numpy and matplotlib."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Xu, Kolchinsky, Delvenne and Ito (2025), Thermodynamic geometric constraint on the spectrum of Markov rate matrices. Physical Review Letters 135, 257102 (source of the refuted Supplement Eq. (S3); supplement read on arXiv:2507.08938v2).",
+      "url": "https://doi.org/10.1103/z4t2-18cx"
+    },
+    {
+      "citation": "Kolchinsky, Ohga and Ito (2026), Cycle affinity and winding localize eigenvalues of Markov generators. arXiv:2605.15884v3 (proves the affinity ellipse and the Farey-polygon bound, both unaffected).",
+      "url": "https://doi.org/10.48550/arXiv.2605.15884"
+    },
+    {
+      "citation": "Uhl and Seifert (2019), Affinity-dependent bound on the spectrum of stochastic matrices. Journal of Physics A 52, 405002 (the ellipse conjecture).",
+      "url": "https://doi.org/10.1088/1751-8121/ab3a7a"
+    },
+    {
+      "citation": "Ohga, Ito and Kolchinsky (2023), Thermodynamic bound on the asymmetry of cross-correlations. Physical Review Letters 131, 077101 (the sector bound used for three states).",
+      "url": "https://doi.org/10.1103/PhysRevLett.131.077101"
+    },
+    {
+      "citation": "Barato and Seifert (2017), Coherence of biochemical oscillations is bounded by driving force and network topology. Physical Review E 95, 062409.",
+      "url": "https://doi.org/10.1103/PhysRevE.95.062409"
+    },
+    {
+      "citation": "Karpelevich (1951; English translation 1988), On the characteristic roots of matrices with nonnegative elements. American Mathematical Society Translations, Series 2, 140, 79–100.",
+      "url": "https://doi.org/10.1090/trans2/140/05"
+    },
+    {
+      "citation": "Ito (1997), A new statement about the theorem determining the region of eigenvalues of stochastic matrices. Linear Algebra and its Applications 267, 241–246.",
+      "url": "https://doi.org/10.1016/S0024-3795(97)00018-9"
+    },
+    {
+      "citation": "Johnson and Paparella (2017), A matricial view of the Karpelevič theorem. Linear Algebra and its Applications 520, 1–15 (boundary-realising matrices).",
+      "url": "https://doi.org/10.1016/j.laa.2017.01.009"
+    },
+    {
+      "citation": "Kirkland and Šmigoc (2022), Stochastic matrices realising the boundary of the Karpelevič region. Linear Algebra and its Applications 635, 116–138.",
+      "url": "https://doi.org/10.1016/j.laa.2021.11.016"
+    },
+    {
+      "citation": "Rose, Touchette, Lesanovsky and Garrahan (2018), Spectral properties of simple classical and quantum reset processes. Physical Review E 98, 022129 (the resetting spectral shift).",
+      "url": "https://doi.org/10.1103/PhysRevE.98.022129"
+    },
+    {
+      "citation": "Chruściński, Denisov, Tarnowski and Życzkowski (2025), Spectral delineation of Markov generators: classical vs quantum. arXiv:2504.07903.",
+      "url": "https://doi.org/10.48550/arXiv.2504.07903"
+    },
+    {
+      "citation": "Verbeken and Ginis (2026), On the spectral region of n-cycle stochastic matrices. arXiv:2606.10143.",
+      "url": "https://doi.org/10.48550/arXiv.2606.10143"
+    },
+    {
+      "citation": "Xu and Meng (2026), Kinetic heterogeneity tightens thermodynamic bounds on spectra of Markov cycles. arXiv:2608.22934.",
+      "url": "https://doi.org/10.48550/arXiv.2608.22934"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:affinity-karpelevich-threshold",
+    "attemptIds": [
+      "ep-attempt:affinity-karpelevich-threshold-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "An integer four-state rate matrix whose rescaled eigenvalue lies outside the Karpelevich region Ω₄ refutes Supplement Eq. (S3) of Xu, Kolchinsky, Delvenne and Ito (2025); containment is proved for n ≤ 3 and fails for every n ≥ 4 on complete graphs, with certified n = 5, 6 instances.",
+      "scope": "Irreducible continuous-time Markov rate matrices with bidirectional edges; all counterexamples use the complete graph; the single-cycle case is open; thresholds for n ≥ 7 are not explicit."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "(S3) is quoted verbatim from the arXiv:2507.08938v2 supplement; Proposition 2.1 proves that both readings of its quantifiers imply the containment that is refuted.",
+      "remainingRisks": [
+        "The published supplement could differ from arXiv v2 in wording; the re-review checked arXiv v2 only.",
+        "Theorem 4.1 relies on the cited sector bound.",
+        "Certificates rely on Python execution; no proof assistant was used.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Recheck the four-state certificate and the n = 5 Appendix A data in independent software, and ask a specialist whether the single-cycle case is known.",
+      "claimCeiling": "Refutation of (S3) with a proved four-state counterexample, proved containment for n ≤ 3, proved failure for every n ≥ 4 on complete graphs and certified n = 5, 6 instances. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "affinity-karpelevich-threshold-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable refutation of the affine Karpelevich conjecture with exact certificates.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
