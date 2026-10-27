@@ -41,6 +41,7 @@ function writeSvg(file, svg) {
 }
 
 const art = {};
+art['initialisation-dependent-fixation'] = require('./initialisation-fixation-art').draw;
 art['mprk-nonnegative-two-cycles'] = require('./mprk-two-cycle-art').draw;
 art['pass-and-swap-bounded-swaps'] = require('./pass-and-swap-art').draw;
 art['sis-reconstruction-continuation'] = require('./sis-continuation-art').draw;
@@ -2088,6 +2089,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'initialisation-dependent-fixation':['#ffcf7a','#9fd3ff'],
   'sis-reconstruction-continuation':['#76dec7','#ffbf69'],
   'sharp-shannon-window-law':['#ffd36e','#ff9f80'],
   'periodic-regulation-budget-monotonicity':['#a9ebd3','#ffc184'],
@@ -2583,6 +2585,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'sharp-shannon-window-law') svg = withDescription(svg, require('./shannon-window-art').description);
   if (slug === 'sis-reconstruction-continuation') svg = withDescription(svg, require('./sis-continuation-art').description);
   if (slug === 'pass-and-swap-bounded-swaps') svg = withDescription(svg, require('./pass-and-swap-art').description);
+  if (slug === 'initialisation-dependent-fixation') svg = withDescription(svg, require('./initialisation-fixation-art').description);
   if (slug === 'mprk-nonnegative-two-cycles') svg = withDescription(svg, require('./mprk-two-cycle-art').description);
   if (motifs[slug]) svg = withDescription(svg, motifs[slug].description);
   if (slug === 'ptolemaic-negative-type') {
