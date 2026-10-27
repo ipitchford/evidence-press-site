@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "updated": "2026-10-21",
+  "updated": "2026-10-27",
   "status": "working-taxonomy",
   "claimCeiling": "Registry inclusion means that a release illustrates a reusable method. It does not establish the release's correctness, novelty, independent reproduction or real-world impact.",
   "aims": [
@@ -1843,6 +1843,14 @@
         "spectrally-negative-resetting-extremes"
       ],
       "sharedBoundary": "Written proofs of a uniform total-variation two-profile expansion of the endpoint given a high fixed-horizon maximum for stationary spectrally negative Lévy processes with Poisson resetting, the conditional path law, bounded-variation exactness and random reset positions, and of the Brownian constant in Remark 3 of Debicki-Hashorva-Michna (2026) with strict bounds; floating-point and Monte Carlo checks are supporting numerics only. This classification supplies no external assurance, acceleration or impact evidence."
+    },
+    {
+      "id": "affinity-karpelevich-threshold",
+      "name": "Failure of the affine Karpelevich containment for Markov rate matrices",
+      "members": [
+        "affinity-karpelevich-threshold"
+      ],
+      "sharedBoundary": "Written proofs that Supplement Eq. (S3) of Xu-Kolchinsky-Delvenne-Ito (2025) fails: an exact integer four-state counterexample, containment for at most three states, failure in every dimension n >= 4 on complete graphs via boundary-realising matrices plus weak resetting, and exactly certified five- and six-state instances with printed certificate data; the single-cycle case is open. This classification supplies no external assurance, acceleration or impact evidence."
     }
   ],
   "lineages": [
@@ -3213,6 +3221,13 @@
       "adversarial-controls",
       "assurance-vector",
       "agent-readable-research-object"
+    ],
+    "affinity-karpelevich-threshold": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
     ]
   },
   "updatePolicy": {
@@ -3921,6 +3936,10 @@
     {
       "date": "2026-10-27",
       "summary": "Registered the spectrally negative resetting-extremes release as a separate singleton cluster using existing adversarial-control, assurance and agent-readable primitives. No lineage, external assurance, exhaustive priority, acceleration or impact is inferred."
+    },
+    {
+      "date": "2026-10-27",
+      "summary": "Registered the affine Karpelevich counterexample release as a separate singleton cluster using existing counterexample, certificate, adversarial-control, assurance and agent-readable primitives. No lineage, external assurance, exhaustive priority, acceleration or impact is inferred."
     }
   ]
 }
