@@ -48256,9 +48256,9 @@
       "question": "Can the approved candidate answering the Sinha et al. (2025) open question on PnP-ISTA/ADMM stability with Gaussian kernel denoisers complete exact archive publication, explanatory media and canonical Evidence Press delivery while preserving its proof, certified-computation, per-step-kernel and tiny-growth boundaries?",
       "selectionBasis": "User-authorised full publication of the approved candidate after final editor fixes. Archive packaging, site integration, delivery and readback are prospective from registration; earlier research, review, revision and extension work are left-censored and not reconstructed.",
       "taskClass": "full-candidate-publication",
-      "status": "active",
-      "statusAt": "2026-10-27T11:48:00Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-10-27T13:44:06Z",
+      "resultClass": "positive",
       "statusHistory": [
         {
           "at": "2026-10-27T11:48:00Z",
@@ -48266,6 +48266,18 @@
           "resultClass": "pending",
           "reason": "Registered the final editor fixes (Appendix C certificates, scope corrections, Athalye et al. credit), archive publication, Evidence Press integration, guarded deployment and canonical readback. Earlier research, internal review and revisions remain left-censored.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-27T13:44:06Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Guarded zero-cost deployment from merged site commit a8354d65446b141dfc51d479577f0847975a2734 completed canonical readback (deployment receipt canonical-readback-passed). Positive denotes accurate delivery of the scoped unrefereed candidate and its frozen archives, not independent mathematical confirmation, formal verification, priority or impact.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/gaussian-pnp-stability/",
+            "https://evidencepress.org/releases/gaussian-pnp-stability/paper.json",
+            "https://zenodo.org/records/23690125",
+            "https://github.com/ipitchford/gaussian-pnp-stability/releases/tag/v1.0.0-candidate"
+          ]
         }
       ],
       "decisionObjectTarget": "Status of the Sinha et al. (2025, Section II-A) question for irreducible unit-diagonal kernels with Be = be: stability for n <= 3, certified instability in n = 4 and in a twelve-state circulant family, within the stated scope; growth at most about 1.7e-5 per iteration.",
@@ -48277,9 +48289,20 @@
         "reason": "Selected publication task, not a registered comparative experiment."
       },
       "measurement": {
-        "status": "not-recorded",
-        "missingnessReason": "Complete active effort, waiting, compute, token and rework telemetry are not instrumented; earlier scientific work is left-censored and no values are reconstructed.",
-        "milestones": [],
+        "status": "measured-partial",
+        "missingnessReason": "Registration and completed canonical readback timestamps are observed. Earlier scientific work is left-censored; active effort, waiting, compute, token and rework telemetry were not instrumented and remain unknown.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-27T11:48:00Z",
+            "basis": "Contemporaneous registration of the final-fix, archive publication and site-delivery stages; earlier scientific and review work is excluded and left-censored."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-10-27T13:44:06Z",
+            "basis": "Observed guarded canonical readback from a8354d65446b141dfc51d479577f0847975a2734; https://evidencepress.org/releases/gaussian-pnp-stability/ and paper.json. Delivery observation only."
+          }
+        ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
@@ -48302,6 +48325,10 @@
         {
           "date": "2026-10-27",
           "summary": "Registered the final editor fixes and the archive publication and public-delivery stages prospectively; all prior scientific and review work remains left-censored."
+        },
+        {
+          "date": "2026-10-27",
+          "summary": "Appended the observed canonical publication closeout after guarded deployment and canonical readback (ledger carry-forward site PR); preserved the assurance ceiling and explicit telemetry missingness."
         }
       ],
       "metrics": {
@@ -48358,7 +48385,119 @@
           ],
           "stopRule": "Do not weaken assurance, integrity or cost gates to meet the forecast."
         },
-        "outcome": null
+        "outcome": {
+          "status": "unavailable",
+          "policyVersion": "2.0",
+          "recordedAt": "2026-10-27T13:44:06Z",
+          "reason": "Active, waiting, blocked, rework, compute and token telemetry were not instrumented over the registered publication scope. Earlier scientific work remains left-censored; wall-clock timestamps are not substituted for effort measurements.",
+          "missingFields": [
+            {
+              "field": "calendarElapsedMinutes",
+              "reason": "Opening and delivery timestamps are retained as milestones; their difference is not active effort and no numeric metrics series is emitted."
+            },
+            {
+              "field": "activeAgentMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "unattendedWaitMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "blockedMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "reworkMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "agentRuns",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "maxParallelAgents",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "modelTurns",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "researchCycles",
+              "reason": "Not instrumented; earlier science is left-censored."
+            },
+            {
+              "field": "falsificationGatesRun",
+              "reason": "Not instrumented; earlier science is left-censored."
+            },
+            {
+              "field": "candidateArchitecturesTested",
+              "reason": "Not instrumented; this was a publication-only scope."
+            },
+            {
+              "field": "candidateArchitecturesRejected",
+              "reason": "Not instrumented; this was a publication-only scope."
+            },
+            {
+              "field": "substantiveReviewRounds",
+              "reason": "Not instrumented within the registered publication-only scope; earlier review is left-censored."
+            },
+            {
+              "field": "p0Findings",
+              "reason": "Not instrumented within the registered publication-only scope."
+            },
+            {
+              "field": "p1Findings",
+              "reason": "Not instrumented within the registered publication-only scope."
+            },
+            {
+              "field": "prepublicationClaimCorrections",
+              "reason": "Not instrumented within the registered publication-only scope."
+            },
+            {
+              "field": "resultState",
+              "reason": "Published delivery is observed in statusHistory; incomplete telemetry does not negate publication."
+            },
+            {
+              "field": "positiveSignalObserved",
+              "reason": "Publication evidence is retained separately; no calibrated positive-signal metric is inferred."
+            },
+            {
+              "field": "targetReached",
+              "reason": "Delivery is recorded in statusHistory; no calibrated target metric is inferred."
+            },
+            {
+              "field": "forecastErrorMinutes",
+              "reason": "Active effort was not measured; forecast error cannot be computed from wall time."
+            },
+            {
+              "field": "forecastRatio",
+              "reason": "Active effort was not measured; wall time is not a valid denominator."
+            },
+            {
+              "field": "withinForecastInterval",
+              "reason": "Active effort was not measured, so interval membership is unknown."
+            },
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Not instrumented; unknown is not zero."
+            }
+          ],
+          "calibration": null
+        }
       }
     },
     {
@@ -48372,9 +48511,9 @@
       "question": "Can the approved candidate on signed Kuramoto networks inside positive ones (exact realisation theorem, stable non-manifold equilibria and the status of Sclosa's Conjecture 1.3) complete final editor corrections, exact archive publication, explanatory media and canonical Evidence Press delivery while preserving its proof, exact-certificate and numerical boundaries?",
       "selectionBasis": "User-authorised full publication of the approved candidate. Archive packaging, site integration, delivery and readback are prospective from registration; earlier research, review, revision and extension work are left-censored and not reconstructed.",
       "taskClass": "full-candidate-publication",
-      "status": "active",
-      "statusAt": "2026-10-27T12:33:00Z",
-      "resultClass": "pending",
+      "status": "published",
+      "statusAt": "2026-10-27T13:44:06Z",
+      "resultClass": "positive",
       "statusHistory": [
         {
           "at": "2026-10-27T12:33:00Z",
@@ -48382,6 +48521,18 @@
           "resultClass": "pending",
           "reason": "Registered the final editor corrections, archive publication, Evidence Press integration, guarded deployment and canonical readback. Earlier research, internal review and revisions remain left-censored.",
           "evidenceRefs": []
+        },
+        {
+          "at": "2026-10-27T13:44:06Z",
+          "status": "published",
+          "resultClass": "positive",
+          "reason": "Guarded zero-cost deployment from merged site commit a8354d65446b141dfc51d479577f0847975a2734 completed canonical readback (deployment receipt canonical-readback-passed). Positive denotes accurate delivery of the scoped unrefereed candidate and its frozen archives, not independent mathematical confirmation, formal verification, priority or impact.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/signed-kuramoto-positive-networks/",
+            "https://evidencepress.org/releases/signed-kuramoto-positive-networks/paper.json",
+            "https://zenodo.org/records/23690073",
+            "https://github.com/ipitchford/signed-kuramoto-positive-networks/releases/tag/v1.0.0-candidate"
+          ]
         }
       ],
       "decisionObjectTarget": "Status of Sclosa's Conjecture 1.3 (SIAM J. Appl. Dyn. Syst. 22(4), 2023): refuted in its closed-manifold, countable, immersed-compact and relatively-closed readings for the equilibrium set and the stable set; true in its literal arXiv v1 reading and with boundary allowed; homogeneous Kuramoto flow with unit couplings at exact symmetric resonances.",
@@ -48393,9 +48544,20 @@
         "reason": "Selected publication task, not a registered comparative experiment."
       },
       "measurement": {
-        "status": "not-recorded",
-        "missingnessReason": "Complete active effort, waiting, compute, token and rework telemetry are not instrumented; earlier scientific work is left-censored and no values are reconstructed.",
-        "milestones": [],
+        "status": "measured-partial",
+        "missingnessReason": "Registration and completed canonical readback timestamps are observed. Earlier scientific work is left-censored; active effort, waiting, compute, token and rework telemetry were not instrumented and remain unknown.",
+        "milestones": [
+          {
+            "event": "work-opened",
+            "at": "2026-10-27T12:33:00Z",
+            "basis": "Contemporaneous registration of the final-fix, archive publication and site-delivery stages; earlier scientific and review work is excluded and left-censored."
+          },
+          {
+            "event": "public-release",
+            "at": "2026-10-27T13:44:06Z",
+            "basis": "Observed guarded canonical readback from a8354d65446b141dfc51d479577f0847975a2734; https://evidencepress.org/releases/signed-kuramoto-positive-networks/ and paper.json. Delivery observation only."
+          }
+        ],
         "activeHumanMinutes": null,
         "computeMinutes": null,
         "computeCost": null,
@@ -48418,6 +48580,10 @@
         {
           "date": "2026-10-27",
           "summary": "Registered the final-correction, archive publication and public-delivery stages prospectively at publication intake (after the editor fixes had begun); all prior scientific and review work remains left-censored."
+        },
+        {
+          "date": "2026-10-27",
+          "summary": "Appended the observed canonical publication closeout after guarded deployment and canonical readback (ledger carry-forward site PR); preserved the assurance ceiling and explicit telemetry missingness."
         }
       ],
       "metrics": {
@@ -48474,7 +48640,119 @@
           ],
           "stopRule": "Do not weaken assurance, integrity or cost gates to meet the forecast."
         },
-        "outcome": null
+        "outcome": {
+          "status": "unavailable",
+          "policyVersion": "2.0",
+          "recordedAt": "2026-10-27T13:44:06Z",
+          "reason": "Active, waiting, blocked, rework, compute and token telemetry were not instrumented over the registered publication scope. Earlier scientific work remains left-censored; wall-clock timestamps are not substituted for effort measurements.",
+          "missingFields": [
+            {
+              "field": "calendarElapsedMinutes",
+              "reason": "Opening and delivery timestamps are retained as milestones; their difference is not active effort and no numeric metrics series is emitted."
+            },
+            {
+              "field": "activeAgentMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "unattendedWaitMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "blockedMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "reworkMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "agentRuns",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "maxParallelAgents",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "modelTurns",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "researchCycles",
+              "reason": "Not instrumented; earlier science is left-censored."
+            },
+            {
+              "field": "falsificationGatesRun",
+              "reason": "Not instrumented; earlier science is left-censored."
+            },
+            {
+              "field": "candidateArchitecturesTested",
+              "reason": "Not instrumented; this was a publication-only scope."
+            },
+            {
+              "field": "candidateArchitecturesRejected",
+              "reason": "Not instrumented; this was a publication-only scope."
+            },
+            {
+              "field": "substantiveReviewRounds",
+              "reason": "Not instrumented within the registered publication-only scope; earlier review is left-censored."
+            },
+            {
+              "field": "p0Findings",
+              "reason": "Not instrumented within the registered publication-only scope."
+            },
+            {
+              "field": "p1Findings",
+              "reason": "Not instrumented within the registered publication-only scope."
+            },
+            {
+              "field": "prepublicationClaimCorrections",
+              "reason": "Not instrumented within the registered publication-only scope."
+            },
+            {
+              "field": "resultState",
+              "reason": "Published delivery is observed in statusHistory; incomplete telemetry does not negate publication."
+            },
+            {
+              "field": "positiveSignalObserved",
+              "reason": "Publication evidence is retained separately; no calibrated positive-signal metric is inferred."
+            },
+            {
+              "field": "targetReached",
+              "reason": "Delivery is recorded in statusHistory; no calibrated target metric is inferred."
+            },
+            {
+              "field": "forecastErrorMinutes",
+              "reason": "Active effort was not measured; forecast error cannot be computed from wall time."
+            },
+            {
+              "field": "forecastRatio",
+              "reason": "Active effort was not measured; wall time is not a valid denominator."
+            },
+            {
+              "field": "withinForecastInterval",
+              "reason": "Active effort was not measured, so interval membership is unknown."
+            },
+            {
+              "field": "activeHumanMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "computeMinutes",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "deduplicatedModelTokens",
+              "reason": "Not instrumented; unknown is not zero."
+            },
+            {
+              "field": "uncachedInputTokens",
+              "reason": "Not instrumented; unknown is not zero."
+            }
+          ],
+          "calibration": null
+        }
       }
     }
   ],
@@ -49872,6 +50150,10 @@
     {
       "date": "2026-10-27",
       "summary": "Appended observed canonical publication for the thermal-cumulant-sign-counterexamples attempt at 2026-10-27T13:07:55Z from merged site source ef60da28fadb3af1639a4223bde2b4ecac769434 (ledger carry-forward); the forecast and assurance ceiling are preserved, and unavailable resource telemetry remains explicit."
+    },
+    {
+      "date": "2026-10-27",
+      "summary": "Appended observed canonical publication for the gaussian-pnp-stability and signed-kuramoto-positive-networks attempts at 2026-10-27T13:44:06Z from merged site source a8354d65446b141dfc51d479577f0847975a2734 (ledger carry-forward); forecasts and assurance ceilings are preserved, and unavailable resource telemetry remains explicit."
     }
   ]
 }
