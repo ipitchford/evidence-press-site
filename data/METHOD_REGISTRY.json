@@ -1867,6 +1867,14 @@
         "gaussian-pnp-stability"
       ],
       "sharedBoundary": "Written proofs that PnP-ISTA and PnP-ADMM with irreducible unit-diagonal row-normalised kernel denoisers and constant-preserving Hessians are Schur stable for n <= 3 and can be unstable for n = 4 (explicit Gaussian family, kernel chosen per step), with exact rational certificates for the four-state classification and a twelve-state circulant window, a gap-dependent step bound, unit-diagonal necessity and a symmetric-denoiser extension of Athalye-Chaudhury-Kumar (2023); growth at most about 1.7e-5 per iteration. This classification supplies no external assurance, acceleration or impact evidence."
+    },
+    {
+      "id": "signed-kuramoto-positive-networks",
+      "name": "Signed-to-positive Kuramoto realisation and stable non-manifold equilibria",
+      "members": [
+        "signed-kuramoto-positive-networks"
+      ],
+      "sharedBoundary": "Written proofs that every +/-1 signed Kuramoto network is realised exactly on an invariant torus of a positive unweighted network with transfer of equilibrium germs, Lyapunov stability, Morse index and nullity; a 324-vertex positive graph with a stable equilibrium germ R x C(S^1 x S^1); closed and immersed cover obstructions refuting the closed, countable, immersed and relatively-closed readings of Sclosa's Conjecture 1.3 (its literal arXiv v1 reading is true); exact integer spectra at explicit points. This classification supplies no external assurance, acceleration or impact evidence."
     }
   ],
   "lineages": [
@@ -3257,6 +3265,13 @@
       "adversarial-controls",
       "assurance-vector",
       "agent-readable-research-object"
+    ],
+    "signed-kuramoto-positive-networks": [
+      "counterexample-proxy-first",
+      "certificate-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
     ]
   },
   "updatePolicy": {
@@ -3977,6 +3992,10 @@
     {
       "date": "2026-10-27",
       "summary": "Registered the Gaussian-kernel plug-and-play stability release as a separate singleton cluster using existing counterexample, certificate, adversarial-control, assurance and agent-readable primitives. No lineage, external assurance, exhaustive priority, acceleration or impact is inferred."
+    },
+    {
+      "date": "2026-10-27",
+      "summary": "Registered the signed Kuramoto realisation release as a separate singleton cluster using existing counterexample, certificate, adversarial-control, assurance and agent-readable primitives. No lineage, external assurance, exhaustive priority, acceleration or impact is inferred."
     }
   ]
 }

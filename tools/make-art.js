@@ -2518,7 +2518,7 @@ palette['robust-gaussian-inverse-estimation'] = robustInverseArt.colors;
 palette['sharp-rank-three-chollet-order-five'] = cholletRank3Art.colors;
 palette['compartment-fragmentation-phase-classification'] = astochasticArt.colors.compartment;
 palette['davis-yin-gap-sharpness'] = astochasticArt.colors.davisYin;
-for (const [slug,moduleName] of [['gaussian-cosine-local-stability','gaussian-cosine-art'],['rfim-unbounded-fields-entropy','rfim-entropy-art'],['uniform-split-reliability','split-reliability-art'],['two-host-dormancy-oscillations','dormancy-art'],['infinite-birth-death-thinned-counts','thinned-counts-art']]) {
+for (const [slug,moduleName] of [['gaussian-cosine-local-stability','gaussian-cosine-art'],['rfim-unbounded-fields-entropy','rfim-entropy-art'],['uniform-split-reliability','split-reliability-art'],['two-host-dormancy-oscillations','dormancy-art'],['infinite-birth-death-thinned-counts','thinned-counts-art'],['signed-kuramoto-positive-networks','signed-kuramoto-art']]) {
   const spec=require('./'+moduleName); art[slug]=spec.draw; palette[slug]=spec.colors;
 }
 for (const slug of requested) {
@@ -2535,6 +2535,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if(slug==='gaussian-cosine-local-stability')svg = withDescription(svg, require('./gaussian-cosine-art').description);
   if(slug==='rfim-unbounded-fields-entropy')svg = withDescription(svg, require('./rfim-entropy-art').description);
   if(slug==='uniform-split-reliability')svg = withDescription(svg, require('./split-reliability-art').description);
+  if(slug==='signed-kuramoto-positive-networks')svg = withDescription(svg, require('./signed-kuramoto-art').description);
   if (['two-host-dormancy-oscillations','infinite-birth-death-thinned-counts'].includes(slug)) {
     const spec=require(slug==='two-host-dormancy-oscillations'?'./dormancy-art':'./thinned-counts-art');
     svg=svg.replace(/<text /g,'<text class="og-hide" ');

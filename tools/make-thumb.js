@@ -888,6 +888,14 @@ const SPECS = {
   }
 };
 
+SPECS['signed-kuramoto-positive-networks'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 27 OCTOBER 2026','KURAMOTO NETWORKS · SIGNED TO POSITIVE'],
+ head:['Repulsion,','<em>built from attraction.</em>'], headSize:72,
+ sub:'Any ±1 Kuramoto network sits exactly inside an all-positive one, and stable equilibria can form a cone.',
+ tag:'WRITTEN PROOFS · EXACT SPECTRA · UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">324 oscillators · every coupling +1</div><div class="eq eq-sm">Stable equilibria near one state<br><span class="hl">a cone over a torus</span></div><div class="note">Sclosa\'s closed-manifold reading fails; the literal arXiv v1 reading is <b>true</b>.</div><div class="eq-foot">Exact resonance only · external review unestablished</div>'
+};
+
 SPECS['wishart-reachable-noise'] = {
  palette:'auto', kicker:['RESEARCH RELEASE · 22 SEPTEMBER 2026','STOCHASTIC ANALYSIS · V0.1.0'],
  head:['Where noise','<em>can reach</em>'], headSize:76,
