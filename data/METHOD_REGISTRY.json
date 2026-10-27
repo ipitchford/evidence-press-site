@@ -1859,6 +1859,14 @@
         "thermal-cumulant-sign-counterexamples"
       ],
       "sharedBoundary": "Written proofs and exact rational certificates that three-state, two-bath Markov networks with bathwise local detailed balance violate Ptaszyński's (2022) conjectures C3/C1 >= 0 and C4/C2 >= 0, with divergence like eps^-2 at fixed energies, temperatures, stationary law, mean heat current and entropy production; normalised limits, a six-state normalised unboundedness construction, a kinetic bound conditional on C1 > 0 or C2 > 0, and two-state minimality in the standard model; a seeded census labelled numerical evidence only. This classification supplies no external assurance, acceleration or impact evidence."
+    },
+    {
+      "id": "gaussian-pnp-stability",
+      "name": "Dimension threshold for Gaussian-kernel plug-and-play stability",
+      "members": [
+        "gaussian-pnp-stability"
+      ],
+      "sharedBoundary": "Written proofs that PnP-ISTA and PnP-ADMM with irreducible unit-diagonal row-normalised kernel denoisers and constant-preserving Hessians are Schur stable for n <= 3 and can be unstable for n = 4 (explicit Gaussian family, kernel chosen per step), with exact rational certificates for the four-state classification and a twelve-state circulant window, a gap-dependent step bound, unit-diagonal necessity and a symmetric-denoiser extension of Athalye-Chaudhury-Kumar (2023); growth at most about 1.7e-5 per iteration. This classification supplies no external assurance, acceleration or impact evidence."
     }
   ],
   "lineages": [
@@ -3242,6 +3250,13 @@
       "adversarial-controls",
       "assurance-vector",
       "agent-readable-research-object"
+    ],
+    "gaussian-pnp-stability": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
     ]
   },
   "updatePolicy": {
@@ -3958,6 +3973,10 @@
     {
       "date": "2026-10-27",
       "summary": "Registered the thermal heat-current cumulant sign-counterexample release as a separate singleton cluster using existing counterexample, adversarial-control, assurance and agent-readable primitives. No lineage, external assurance, exhaustive priority, acceleration or impact is inferred."
+    },
+    {
+      "date": "2026-10-27",
+      "summary": "Registered the Gaussian-kernel plug-and-play stability release as a separate singleton cluster using existing counterexample, certificate, adversarial-control, assurance and agent-readable primitives. No lineage, external assurance, exhaustive priority, acceleration or impact is inferred."
     }
   ]
 }

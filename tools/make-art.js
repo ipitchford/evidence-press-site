@@ -41,6 +41,7 @@ function writeSvg(file, svg) {
 }
 
 const art = {};
+art['gaussian-pnp-stability'] = require('./gaussian-pnp-art').draw;
 art['spectrally-negative-resetting-extremes'] = require('./levy-resetting-extremes-art').draw;
 art['initialisation-dependent-fixation'] = require('./initialisation-fixation-art').draw;
 art['mprk-nonnegative-two-cycles'] = require('./mprk-two-cycle-art').draw;
@@ -2090,6 +2091,7 @@ art['sharp-quartic-hadamard-powers'] = (a, b) => {
 };
 
 const palette = {
+  'gaussian-pnp-stability':['#f2a3b8','#9fd3ff'],
   'spectrally-negative-resetting-extremes':['#ffcf7a','#9fd3ff'],
   'initialisation-dependent-fixation':['#ffcf7a','#9fd3ff'],
   'sis-reconstruction-continuation':['#76dec7','#ffbf69'],
@@ -2587,6 +2589,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'sharp-shannon-window-law') svg = withDescription(svg, require('./shannon-window-art').description);
   if (slug === 'sis-reconstruction-continuation') svg = withDescription(svg, require('./sis-continuation-art').description);
   if (slug === 'pass-and-swap-bounded-swaps') svg = withDescription(svg, require('./pass-and-swap-art').description);
+  if (slug === 'gaussian-pnp-stability') svg = withDescription(svg, require('./gaussian-pnp-art').description);
   if (slug === 'spectrally-negative-resetting-extremes') svg = withDescription(svg, require('./levy-resetting-extremes-art').description);
   if (slug === 'initialisation-dependent-fixation') svg = withDescription(svg, require('./initialisation-fixation-art').description);
   if (slug === 'mprk-nonnegative-two-cycles') svg = withDescription(svg, require('./mprk-two-cycle-art').description);
