@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Same correlations, any dissipation. An Evidence Press briefing. First, the problem. Living and driven systems, like molecular motors or chemical clocks, constantly use energy, and scientists want to know how much. Measuring it directly is hard, so they often look at a few recorded signals instead. If one signal tends to follow another more than the reverse, the system is running irreversibly, and so it must be using energy. A popular shortcut converts these correlations into a number by pretending the signals come from the simplest random process with the same correlations, a Gaussian process. A 2021 paper in Nature Communications stated that, for nonlinear systems, this Gaussian number is a lower bound on the true energy use. The main finding is that this lower-bound statement is false.",
+      "inputSha256": "de35dc90b7e6b71bde6089edf02a4dde631302dbd3a0b4fb443581ec13246510",
+      "audioSha256": "69f7262c96c8a838779225cc098e6424a7b512b14605eff0db8fe5d52880d697",
+      "requestId": "req_96dc6510c3a742588604ecf44f7edead",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "is that this lower bound statement is false",
+        "heardEnding": "on the true energy use the main finding is that this lower bound statement is false",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The paper builds simple models that have exactly the same correlations at every time delay, yet use energy at any rate at all. For a family of four-state models the rate can be any positive value, and for a family of smooth two-dimensional random motions it can be anything between zero and the Gaussian value of one third. The reason is intuitive. Imagine a system that is idle almost all the time and only occasionally bursts into fast circulation. Rare, large bursts can carry the whole correlation signal, while energy is only spent during the bursts. Why it matters: a correlation measurement alone cannot certify a minimum energy cost. Extra information helps; a published fourth-order bound recovers up to ninety-three point five per cent of the true value in the example.",
+      "inputSha256": "9f03606dbc0459d66b24601afb6e91f2954eee29a28a56d59ad7bc2770d417d9",
+      "audioSha256": "c77b89e6115813e3c51247568207317a9ce01a43b5d0020746d7fb5b4b3e1c7f",
+      "requestId": "req_9c069ce8346f4b68a24d7e8f5e7abfc8",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "cent of the true value in the example",
+        "heardEnding": "information helps a published order bound recovers up to of the true value in the example",
+        "matchedWords": 7,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The limits: the examples need growing signal sizes or very uneven noise, short recordings may miss the bursts, and smooth motions with constant noise remain an open case. This is an anonymous, unrefereed candidate, checked by AI-assisted review only, not peer review. Published on 28 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "a2be9e210e5eb3348262ecb7f1f10d418827b7ab38406d3fcf096ac6b1ec47a8",
+      "audioSha256": "633f61cbcd5baa5ae8f93bd5c8199e6c5bc5b478d64e3ac34ebebaf0c6692b8a",
+      "requestId": "req_f71dde4059ec4f99aec7423f3ad8b37e",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "fixed-correlations-weak-dissipation",
+  "generatedAt": "2026-10-28T06:07:19.046Z",
+  "sourceMetadata": "papers/fixed-correlations-weak-dissipation/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "1fa4d69576ba14408bab065fbbc4e78d4d23007edfd1ba84b1bd8c251894e7c2",
+  "transcriptPath": "assets/audio/fixed-correlations-weak-dissipation.txt",
+  "transcriptSha256": "4694d4e4ac11f41208db06bc81540f6e945264684dd513dbc74b9b2faca21d85",
+  "audioPath": "assets/audio/fixed-correlations-weak-dissipation.mp3",
+  "audioSha256": "01dbbd4b68450d376dc977771c1dff28a1c007316e5d0ac13a8e073b378373b1",
+  "audioBytes": 2175404,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
