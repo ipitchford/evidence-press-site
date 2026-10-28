@@ -1,0 +1,247 @@
+{
+  "slug": "thermal-ordering-concave-baths",
+  "title": "Thermal ordering under Markovian relaxation: a finite-time criterion and its limits",
+  "shortTitle": "When a hotter system can never relax faster",
+  "oneLine": "A simple cone test rules out Mpemba-type crossings at every time; for bosonic baths with common coupling it holds exactly when the emission weight is concave, so Ohmic and Drude–Lorentz baths pass and super-Ohmic baths can produce a certified crossing.",
+  "abstract": "When a hotter and a cooler copy of a system relax in the same bath, the Markovian Mpemba effect is a crossing of their distances from equilibrium. This candidate gives a sufficient test that rules out such crossings at every time: if a Markov operator and its equilibrium adjoint preserve the cone of observables with nondecreasing arithmetic prefix means, cooling Gibbs preparations stay ordered for relative entropy in both orientations, squared Hellinger distance and Rényi divergences of order 0<α≤2, including for common schedules of noncommuting stages. For complete-graph bosonic population rates with common pair coupling, the test holds for every spectrum and every bath temperature exactly when the spontaneous jump weight is concave. Ohmic weights with cutoff at least half the spectral width, Drude–Lorentz weights below √3 times their cutoff and sub-Ohmic power laws qualify; super-Ohmic weights never do, and for the cube law on four levels an actual relative-entropy crossing is certified by exact interval arithmetic. The limits are mapped: an exact five-state cone-preserving example has a brief total-variation reversal, and for every N≥4 there are N-level systems with a slow-mode inversion although no proper induced subsystem shows one. The closest antecedent already excludes the slow-mode effect for Ohmic and sub-Ohmic spectra; the increment is all-time ordering at every bath temperature with an exact necessity direction. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-28",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Markovian Mpemba effect",
+    "thermal relaxation",
+    "stochastic order",
+    "invariant cone",
+    "f-divergences",
+    "bosonic bath",
+    "spectral density",
+    "Markov jump processes",
+    "interval arithmetic"
+  ],
+  "repoUrl": "https://github.com/ipitchford/thermal-ordering-concave-baths",
+  "releaseUrl": "https://github.com/ipitchford/thermal-ordering-concave-baths/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/thermal-ordering-concave-baths/releases/download/v1.0.0-candidate/thermal-ordering-concave-baths-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23721564",
+  "conceptDoi": "10.5281/zenodo.23721563",
+  "zenodoUrl": "https://zenodo.org/records/23721564",
+  "citeText": "Anonymous (2026). Thermal ordering under Markovian relaxation: a finite-time criterion and its limits. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23721564",
+  "evidence": "Written proofs of every theorem, proposition and corollary, with derivations of the matrix formulas; eight standard-library checkers in exact rational or outward-rounded interval arithmetic (cone formulas over 96 rational models, finite operator products, all 8,086 proper subsystems for N=4..12, the bath thresholds, the super-Ohmic crossing, the total-variation certificate table and the N=4 finite-bath instance); a separately implemented floating-point audit and interval TV certificate; five semantic negative controls; replay from a fresh extraction of the frozen archive.",
+  "statusDetail": "Unrefereed AI-assisted mathematical-physics candidate. The unrestricted theorems have written proofs; the finite examples are certified exactly; crossing locations from scans and slow-mode amplitudes are numerical only. Internal AI-assisted review, a verification re-review, a targeted proof audit and an outside-model audit, whose findings were fixed by the editor without a further review round. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 28 October 2026 with final fixes F1–F9, 27 pages), its exact certificates and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 28 October 2026.",
+  "keyResults": [
+    "All-time ordering test (Theorem 2, proof): if a likelihood-ratio Markov operator K and its π-adjoint preserve the prefix-mean cone, cooling Gibbs preparations stay ordered at every time in both relative entropies, squared Hellinger distance and Rényi divergences of order 0<α≤2; heating uses the convex class; common schedules of noncommuting stages are covered (Corollary 3).",
+    "Exact physical class (Theorem 4, proof): for complete-graph bosonic population rates with common coupling, cone preservation holds for every spectrum of width at most D and every bath temperature if and only if the jump weight J is concave on [0, D]; necessity needs all level counts and arbitrarily cold baths jointly.",
+    "Standard baths (Proposition 6, proof): d^s is concave iff 0≤s≤1; d^s e^(−d/ω_c) iff 0<s≤1 and D≤(s+√s)ω_c (Ohmic: D≤2ω_c); Drude–Lorentz iff D≤√3 ω_c; super-Ohmic weights never.",
+    "Certified super-Ohmic crossing (Proposition 8, exact certificate): J=d³ on levels 0,1,2,3 with e^(−β_b)=2/3 breaks the cone, and the relative entropies of two cooling preparations cross between t=1/5 and t=3/10.",
+    "Total variation is a genuine exception (Proposition 9, exact certificate): a five-state cone-preserving reversible generator has certified heating total-variation crossings in (10.46, 10.47) and (10.47, 10.48), an effect of about 10⁻⁴ relative.",
+    "No local certificate (Theorem 10, proof; Remark 11, certificate): for every N≥4 an N-level finite-bath system has a slow-mode inversion and total-variation crossing although every proper induced subsystem excludes slow-mode inversion; the finite-bath threshold is existential."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, re-review, proof audit and outside-model correctness audit",
+      "Claude Code: final editor fixes, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When can a hotter object never cool faster? An Evidence Press briefing. Put two copies of the same small system, one hotter and one cooler, in contact with the same cold surroundings. You would expect the hotter copy to stay farther from equilibrium all the way down. Sometimes it does not: the two relaxation curves cross, and the hotter copy arrives first. This is called the Markovian Mpemba effect, after the old puzzle about hot water freezing faster. This release asks when such crossings can be ruled out at every moment, without solving the dynamics. It gives a simple test. If the dynamics, and its time reverse, keep a certain family of increasing-on-average quantities increasing on average, then the two copies stay in order at all times, for several standard measures of distance from equilibrium. For a standard model of quantum levels coupled to a bath of oscillators, the test passes for every energy spectrum and every bath temperature exactly when the bath's emission strength bends downwards with frequency. Ohmic baths with a high enough cutoff, Drude-Lorentz baths and sub-Ohmic baths pass. Super-Ohmic baths, such as three-dimensional phonons, fail, and for one such bath the paper certifies a real crossing using exact interval arithmetic. The guarantee has limits: total variation distance can still reverse briefly, and checking small subsystems cannot certify a large system. An earlier paper already excluded the slow-mode version of the effect for similar baths; the new contribution is all-time ordering with an exact boundary. The results have written proofs and exact computer checks. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on 28 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "From a fresh extraction of the frozen archive, the eight exact checkers reproduced their retained outputs exactly, the floating-point audit matched within tolerance, and five semantic negative controls rejected corrupted weights, preparations, parameters and certificate times. Python -O is unsupported because the certificates use assertions; the replay confirms that the comparison detects it. GitHub CI repeats the exact checks on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "A separately implemented floating-point audit, a separate interval total-variation certificate and an internal proof audit with its own exact code; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the theorems are proved in prose and the examples checked in exact arithmetic."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "The default exact checks need only the Python standard library; the optional audit and figures use versions pinned in uv.lock, not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Lu and Raz (2017), Nonequilibrium thermodynamics of the Markovian Mpemba effect and its inverse. Proceedings of the National Academy of Sciences 114, 5083–5088. Introduced the Markovian Mpemba effect studied here.",
+      "url": "https://doi.org/10.1073/pnas.1701264114"
+    },
+    {
+      "citation": "Avitan, Factor and Gelbwaser-Klimovsky (2026), Necessary conditions for the Markovian Mpemba effect. arXiv:2603.04567v1. The closest antecedent: it already excludes the slow-mode effect for Ohmic and sub-Ohmic spectra in its own convention.",
+      "url": "https://arxiv.org/abs/2603.04567v1"
+    },
+    {
+      "citation": "Ohga, Hayakawa and Ito (2024), Microscopic theory of Mpemba effects and a no-Mpemba theorem for monotone many-body systems. arXiv:2410.06623v2. Source of the relative-entropy covariance identity used in Theorem 2.",
+      "url": "https://arxiv.org/abs/2410.06623v2"
+    },
+    {
+      "citation": "Klich and Vucelja (2026), Mpemba effect on near-complete graphs with independence Metropolis–Hastings dynamics. Journal of Physics A: Mathematical and Theoretical 59, 255002. No Mpemba effect for complete-graph Metropolis dynamics.",
+      "url": "https://doi.org/10.1088/1751-8121/ae7228"
+    },
+    {
+      "citation": "Klich, Raz, Hirschberg and Vucelja (2019), Mpemba Index and Anomalous Relaxation. Physical Review X 9, 021060. Weak and strong Mpemba effects.",
+      "url": "https://doi.org/10.1103/PhysRevX.9.021060"
+    },
+    {
+      "citation": "Kumar and Bechhoefer (2020), Exponentially faster cooling in a colloidal system. Nature 584, 64–68. Experimental Markovian Mpemba effect.",
+      "url": "https://doi.org/10.1038/s41586-020-2560-x"
+    },
+    {
+      "citation": "Walker and Vucelja (2021), Anomalous thermal relaxation of Langevin particles in a piecewise-constant potential. Journal of Statistical Mechanics: Theory and Experiment 2021, 113105.",
+      "url": "https://doi.org/10.1088/1742-5468/ac2edc"
+    },
+    {
+      "citation": "Van Vu and Hayakawa (2025), Thermomajorization Mpemba Effect. Physical Review Letters 134, 107101. A metric-independent comparison framework.",
+      "url": "https://doi.org/10.1103/PhysRevLett.134.107101"
+    },
+    {
+      "citation": "Summer, Moroder, Bettmann, Turkeshi, Marvian and Goold (2026), Resource-Theoretical Unification of Mpemba Effects: Classical and Quantum. Physical Review X 16, 011065.",
+      "url": "https://doi.org/10.1103/rbt4-psfd"
+    },
+    {
+      "citation": "Lapolla and Godec (2020), Faster Uphill Relaxation in Thermodynamically Equidistant Temperature Quenches. Physical Review Letters 125, 110602.",
+      "url": "https://doi.org/10.1103/PhysRevLett.125.110602"
+    },
+    {
+      "citation": "Van Vu and Hasegawa (2021), Toward relaxation asymmetry: Heating is faster than cooling. Physical Review Research 3, 043160.",
+      "url": "https://doi.org/10.1103/PhysRevResearch.3.043160"
+    },
+    {
+      "citation": "Ibáñez, Dieball, Lasanta, Godec and Rica (2024), Heating and cooling are fundamentally asymmetric and evolve along distinct pathways. Nature Physics 20, 135–141.",
+      "url": "https://doi.org/10.1038/s41567-023-02269-z"
+    },
+    {
+      "citation": "Daley (1968), Stochastically monotone Markov Chains. Zeitschrift für Wahrscheinlichkeitstheorie und verwandte Gebiete 10, 305–317.",
+      "url": "https://doi.org/10.1007/BF00531852"
+    },
+    {
+      "citation": "Keilson and Kester (1977), Monotone matrices and monotone Markov processes. Stochastic Processes and their Applications 5, 231–241.",
+      "url": "https://doi.org/10.1016/0304-4149(77)90033-3"
+    },
+    {
+      "citation": "Massey (1987), Stochastic Orderings for Markov Processes on Partially Ordered Spaces. Mathematics of Operations Research 12, 350–367.",
+      "url": "https://doi.org/10.1287/moor.12.2.350"
+    },
+    {
+      "citation": "Shaked and Shanthikumar (2007), Stochastic Orders. Springer Series in Statistics.",
+      "url": "https://doi.org/10.1007/978-0-387-34675-5"
+    },
+    {
+      "citation": "Lorek and Szekli (2012), Strong stationary duality for Möbius monotone Markov chains. Queueing Systems 71, 79–95.",
+      "url": "https://doi.org/10.1007/s11134-012-9284-z"
+    },
+    {
+      "citation": "Hiai, Mosonyi, Petz and Bény (2011), QUANTUM f-DIVERGENCES AND ERROR CORRECTION. Reviews in Mathematical Physics 23, 691–747. Operator-convex integral representation.",
+      "url": "https://doi.org/10.1142/S0129055X11004412"
+    },
+    {
+      "citation": "Cressie and Read (1984), Multinomial Goodness-Of-Fit Tests. Journal of the Royal Statistical Society B 46, 440–464. The power-divergence family.",
+      "url": "https://doi.org/10.1111/j.2517-6161.1984.tb01318.x"
+    },
+    {
+      "citation": "Anonymous (2026), Thermal heat-current cumulant ratios can be arbitrarily negative: three-state counterexamples to two sign conjectures. Evidence Press release. A companion release on classical Markov models of heat flow, about fluctuation statistics rather than relaxation order.",
+      "url": "https://evidencepress.org/releases/thermal-cumulant-sign-counterexamples/",
+      "pageOnly": true,
+      "pageOnlyReason": "Companion Evidence Press release for readers; not cited by the manuscript."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:thermal-ordering-concave-baths",
+    "attemptIds": [
+      "ep-attempt:thermal-ordering-concave-baths-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "obstruction",
+      "description": "A two-adjoint prefix-mean cone criterion orders cooling Gibbs preparations at all times for a divergence family; for complete-graph bosonic rates with common coupling, cone preservation for all spectra and bath temperatures is equivalent to concavity of the jump weight; certified boundary examples for super-Ohmic baths, total variation and induced subsystems.",
+      "scope": "Finite classical Markov population dynamics with one bath; complete transition graph and common pair coupling for the physical class; Gibbs preparations on one side of the bath. Sparse graphs, arbitrary couplings and quantum coherences are not addressed."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 4.5 states the rate convention J=2π|g|²𝒥 and translates Eq. (5) of Avitan et al. (arXiv v1): their exponent s equals the power-law exponent of J plus one, so their Ohmic case is not concave and the cube-law example lies outside their exclusion range.",
+      "remainingRisks": [
+        "No mapping between the two classes is claimed beyond that observation.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in open quantum systems check the necessity construction of Theorem 4 and the spectral-density convention of Section 4.5.",
+      "claimCeiling": "Proved all-time ordering criterion and concavity characterisation in the stated model class, with certified boundary examples. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "thermal-ordering-concave-baths-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable all-time ordering criterion for Markovian relaxation, with its exact physical class and certified limits.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
