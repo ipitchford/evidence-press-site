@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Does the simplest model of a hidden process tell you its least possible energy cost? An Evidence Press briefing. First, the background. Many experiments on single molecules see only a coarse signal: an ion channel is open or shut, a motor is bound or unbound. Behind that signal is a hidden network of molecular states, and keeping it running dissipates energy. A common way to put a lower bound on that cost is to fit the smallest hidden model that reproduces the signal, and ask how little that model could dissipate. Now, the main finding. That shortcut is not safe, even when the signal is known perfectly.",
+      "inputSha256": "15b1ac0fc613ae62e7bb7ee85ba1e8b1e9130bbe913b87ddbbac324e191ae328",
+      "audioSha256": "f443f4f277ad78f1c0c2b5e305a8208896f691a8bdbca679088d577b69ffe201",
+      "requestId": "req_b6c3c8e6806349a09a29cac21635a267",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "safe even when the signal is known perfectly",
+        "heardEnding": "now the main finding that shortcut is not safe even when the signal is known perfectly",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "For a family of exactly specified two-level signals, the paper proves that three hidden states are the fewest that can produce the signal, and finds the cheapest three-state mechanism: a simple driven ring. It then builds a four-state mechanism that produces exactly the same signal and dissipates strictly less. At one benchmark, exact models with four and five states lower the cost from about 2.85 to 2.77, and then to 2.75, in natural units. The paper also proves a floor that holds however many hidden states there are, using just three features of the observed signal. For the benchmark, that floor is about 108 times the one certified in an earlier Evidence Press release. Why might this matter?",
+      "inputSha256": "f413f0bedbe65e984c66710974094852fed3e4607f9fc4b942a30bfaab3875e7",
+      "audioSha256": "6a3dabcf048e5b28d3c03d58373de53972da01ef278fa43c1a686aafed0f1881",
+      "requestId": "req_be6390ace9fe471b88cfa0d0dbe30a6c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "earlier evidence press release why might this matter",
+        "heardEnding": "flaw is about times the certified in an earlier evidence press release why might this matter",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "Reported dissipation bounds can depend on an arbitrary choice of model size, so they may be too high. Readers can rerun the exact certificates, which need only standard Python. The main limitation: the true minimum with four states, or with any number, is still unknown. Finally, the status. This is an anonymous, unrefereed candidate, checked by AI-assisted review only, not peer review. It was published on 28 October 2026; its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "5ae9d3ea4abb4186826815c3d349c7817c9377991553ebcb1d5dd1de8b07d073",
+      "audioSha256": "99be38129082f7516510fb8d27f54c5812be186ed248027dda4061d5c516dd60",
+      "requestId": "req_e787eb439f2343d8b9baafa0393fba1f",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "hidden-architecture-exact-signal",
+  "generatedAt": "2026-10-28T06:42:00.384Z",
+  "sourceMetadata": "papers/hidden-architecture-exact-signal/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "e189d96e32836de681ceda30579be379656e5f4c0176bb8970e3df6a8027ca1d",
+  "transcriptPath": "assets/audio/hidden-architecture-exact-signal.txt",
+  "transcriptSha256": "c8418bcab1d93f75433d16597c51e96b978f4747e87a5ae27f7556f8be63e527",
+  "audioPath": "assets/audio/hidden-architecture-exact-signal.mp3",
+  "audioSha256": "0db95be94aea72c47c3fcaf0507a077f1080f1c13b66676ce7a270408e111976",
+  "audioBytes": 2106284,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

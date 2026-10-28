@@ -1,0 +1,238 @@
+{
+  "slug": "hidden-architecture-exact-signal",
+  "title": "Hidden architecture and the thermodynamic cost of an exact stochastic signal",
+  "shortTitle": "Same signal, less dissipation: hidden architecture matters",
+  "oneLine": "The smallest hidden Markov model that reproduces an exactly known two-level signal can overstate its least possible dissipation: a four-state mechanism produces exactly the same signal as every three-state one yet dissipates strictly less, and a sharp floor holds for any hidden size.",
+  "abstract": "Experiments often see only a coarse two-level signal produced by a hidden Markov network of unknown size, and one model-based way to bound its dissipation is to fit the smallest hidden model that reproduces the signal and minimise entropy production over it. This candidate shows by an exact example that the procedure can overstate the least possible dissipation even when the signal is known perfectly. For a binary alternating-renewal family P_q (0 < q < 1), three hidden states are the fewest that realise the signal and the exact three-state entropy minimum is (1−q)log(1/q), attained uniquely by the homogeneous driven ring; for every q an explicit finite four-state model reproduces the same complete stationary observed law with strictly less entropy production. At q = 1/20 exact rational models have certified costs 2.7730766578…, 2.7659977105… (four states) and 2.7469854029… (five states), all below the three-state minimum 2.8459456598…. Over all finite architectures matching only the entrance intensity r, mean complete dwell m and initial dwell density f₀, the exact entropy infimum is 4r√(1−mf₀) artanh√(1−mf₀) when 0 < mf₀ < 1, approached by three-state models and attained by none; for mf₀ ≥ 1 a reversible model attains zero. For the benchmark this floor is about 108 times the one certified in an earlier Evidence Press candidate. The exact four-state and unrestricted minima remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-28",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "stochastic thermodynamics",
+    "entropy production",
+    "hidden Markov models",
+    "phase-type distributions",
+    "thermodynamic inference",
+    "alternating renewal process",
+    "exact certificate"
+  ],
+  "repoUrl": "https://github.com/ipitchford/hidden-architecture-exact-signal",
+  "releaseUrl": "https://github.com/ipitchford/hidden-architecture-exact-signal/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/hidden-architecture-exact-signal/releases/download/v1.0.0-candidate/hidden-architecture-exact-signal-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23721621",
+  "conceptDoi": "10.5281/zenodo.23721620",
+  "zenodoUrl": "https://zenodo.org/records/23721621",
+  "citeText": "Anonymous (2026). Hidden architecture and the thermodynamic cost of an exact stochastic signal. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23721621",
+  "evidence": "Written proofs of every theorem; standard-library exact rational certificates for the q = 1/20 four-state, improved four-state and five-state models (generators, stationary vectors, dwell-transform identities and rational logarithm enclosures); exact and high-precision checks of the three-state parametrisation, the all-q construction and the short-dwell bound; a replay driver; six semantic negative controls; CI.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; the q = 1/20 witnesses rest on exact rational certificates; the four- and five-state optima are numerical discovery evidence only. Internal AI-assisted review only, including adversarial reviews by a different model and a targeted proof audit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (dated 28 October 2026, 20 pages), its certificate outputs and the frozen release archive.",
+  "keyResults": [
+    "Three hidden states are the fewest that produce the signal P_q, and the exact three-state minimum entropy production is (1−q)log(1/q), attained uniquely by the homogeneous driven ring (Theorem 1, proof).",
+    "For every 0 < q < 1 an explicit four-state model reproduces exactly the same complete observed law and dissipates strictly less: V₄(P_q) < V₃(P_q) (Theorem 1, proof).",
+    "At q = 1/20, exact rational models cost 2.7730766578… and 2.7659977105… with four states and 2.7469854029… with five, against 2.8459456598… for any three-state model (Theorem 1, Proposition 6, exact certificates).",
+    "For any hidden size, entropy production exceeds 4r√(1−mf₀) artanh√(1−mf₀) when 0 < mf₀ < 1, with no renewal assumption; this is the exact infimum given (r, m, f₀) and is attained by no finite model (Theorems 2 and 5, proof).",
+    "Hence (2/3)(1−q)log(1/q) ≤ V∞(P_q) ≤ V₄(P_q) < V₃(P_q); at q = 1/20 the floor 1.8973 is about 108 times the earlier certified floor (Corollary 4).",
+    "Numerically the four-state optimum at q = 1/20 is about 2.765996 and a fifth state lowers the cost further (Section 6, numerical only); the exact V₄ and V∞ remain open."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five simulated roles), adversarial reviews by a different model and a targeted proof audit",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Does the simplest model of a hidden process tell you its least possible energy cost? An Evidence Press briefing. First, the background. Many experiments on single molecules see only a coarse signal: an ion channel is open or shut, a motor is bound or unbound. Behind that signal is a hidden network of molecular states, and keeping it running dissipates energy. A common way to put a lower bound on that cost is to fit the smallest hidden model that reproduces the signal, and ask how little that model could dissipate. Now, the main finding. That shortcut is not safe, even when the signal is known perfectly. For a family of exactly specified two-level signals, the paper proves that three hidden states are the fewest that can produce the signal, and finds the cheapest three-state mechanism: a simple driven ring. It then builds a four-state mechanism that produces exactly the same signal and dissipates strictly less. At one benchmark, exact models with four and five states lower the cost from about 2.85 to 2.77, and then to 2.75, in natural units. The paper also proves a floor that holds however many hidden states there are, using just three features of the observed signal. For the benchmark, that floor is about 108 times the one certified in an earlier Evidence Press release. Why might this matter? Reported dissipation bounds can depend on an arbitrary choice of model size, so they may be too high. Readers can rerun the exact certificates, which need only standard Python. The main limitation: the true minimum with four states, or with any number, is still unknown. Finally, the status. This is an anonymous, unrefereed candidate, checked by AI-assisted review only, not peer review. It was published on 28 October 2026; its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "replay_all.py reruns all eight certificates and checks from a fresh copy of the frozen archive and compares every record and log; six semantic negative controls are rejected; GitHub CI repeats these."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Review checks were written within the same producer workflow; no unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review and correctness audits are not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.11 standard library for every certificate, check, replay and control; NumPy, SciPy and Matplotlib only for figures and numerical exploration."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Ehrich, J. (2021). Tightest bound on hidden entropy production from partially observed dynamics. Journal of Statistical Mechanics: Theory and Experiment, 2021(8), 083214.",
+      "url": "https://doi.org/10.1088/1742-5468/ac150e"
+    },
+    {
+      "citation": "Nitzan, E., Ghosal, A., and Bisker, G. (2023). Universal bounds on entropy production inferred from observed statistics. Physical Review Research, 5(4), 043251.",
+      "url": "https://doi.org/10.1103/PhysRevResearch.5.043251"
+    },
+    {
+      "citation": "Skinner, D. J., and Dunkel, J. (2021). Estimating entropy production from waiting time distributions. Physical Review Letters, 127(19), 198101.",
+      "url": "https://doi.org/10.1103/PhysRevLett.127.198101"
+    },
+    {
+      "citation": "Skinner, D. J., and Dunkel, J. (2021). Improved bounds on entropy production in living systems. Proceedings of the National Academy of Sciences, 118(18), e2024300118.",
+      "url": "https://doi.org/10.1073/pnas.2024300118"
+    },
+    {
+      "citation": "Aznagulov, M. (2026). Thermodynamic realizability of hidden Markov processes: Attainment, observable certificates, and the price of architecture [Preprint, version 1]. arXiv.",
+      "url": "https://arxiv.org/abs/2609.14623v1"
+    },
+    {
+      "citation": "Anonymous. (2026, October 3). An architecture-independent dissipation floor for alternating-renewal observations (Version 1.1) [Unrefereed research candidate]. Evidence Press.",
+      "url": "https://doi.org/10.5281/zenodo.23118474"
+    },
+    {
+      "citation": "Sason, I. (2015). Tight bounds for symmetric divergence measures and a refined bound for lossless source coding. IEEE Transactions on Information Theory, 61(2), 701–707.",
+      "url": "https://doi.org/10.1109/TIT.2014.2387065"
+    },
+    {
+      "citation": "Martínez, I. A., Bisker, G., Horowitz, J. M., and Parrondo, J. M. R. (2019). Inferring broken detailed balance in the absence of observable currents. Nature Communications, 10(1), 3542.",
+      "url": "https://doi.org/10.1038/s41467-019-11051-w"
+    },
+    {
+      "citation": "van der Meer, J., Ertel, B., and Seifert, U. (2022). Thermodynamic inference in partially accessible Markov networks: A unifying perspective from transition-based waiting time distributions. Physical Review X, 12(3), 031025.",
+      "url": "https://doi.org/10.1103/PhysRevX.12.031025"
+    },
+    {
+      "citation": "Harunari, P. E., Dutta, A., Polettini, M., and Roldán, É. (2022). What to learn from a few visible transitions' statistics? Physical Review X, 12(4), 041026.",
+      "url": "https://doi.org/10.1103/PhysRevX.12.041026"
+    },
+    {
+      "citation": "Hartich, D., and Godec, A. (2021). Emergent memory and kinetic hysteresis in strongly driven networks. Physical Review X, 11(4), 041047.",
+      "url": "https://doi.org/10.1103/PhysRevX.11.041047"
+    },
+    {
+      "citation": "van der Meer, J., Degünther, J., and Seifert, U. (2023). Time-resolved statistics of snippets as general framework for model-free entropy estimators. Physical Review Letters, 130(25), 257101.",
+      "url": "https://doi.org/10.1103/PhysRevLett.130.257101"
+    },
+    {
+      "citation": "Degünther, J., van der Meer, J., and Seifert, U. (2024). Fluctuating entropy production on the coarse-grained level: Inference and localization of irreversibility. Physical Review Research, 6(2), 023175.",
+      "url": "https://doi.org/10.1103/PhysRevResearch.6.023175"
+    },
+    {
+      "citation": "Shiraishi, N. (2021). Optimal thermodynamic uncertainty relation in Markov jump processes. Journal of Statistical Physics, 185(3), 19.",
+      "url": "https://doi.org/10.1007/s10955-021-02829-8"
+    },
+    {
+      "citation": "Benvenuti, L., and Farina, L. (2004). A tutorial on the positive realization problem. IEEE Transactions on Automatic Control, 49(5), 651–664.",
+      "url": "https://doi.org/10.1109/tac.2004.826715"
+    },
+    {
+      "citation": "O'Cinneide, C. A. (1990). Characterization of phase-type distributions. Communications in Statistics. Stochastic Models, 6(1), 1–57.",
+      "url": "https://doi.org/10.1080/15326349908807134"
+    },
+    {
+      "citation": "Hawkes, A. G., Jalali, A., and Colquhoun, D. (1990). The distributions of the apparent open times and shut times in a single channel record when brief events cannot be detected. Philosophical Transactions of the Royal Society of London. Series A, 332(1627), 511–538.",
+      "url": "https://doi.org/10.1098/rsta.1990.0129"
+    },
+    {
+      "citation": "Owen, J. A., Kolchinsky, A., and Wolpert, D. H. (2019). Number of hidden states needed to physically implement a given conditional distribution. New Journal of Physics, 21(1), 013022.",
+      "url": "https://doi.org/10.1088/1367-2630/aaf81d"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:hidden-architecture-exact-signal",
+    "attemptIds": [
+      "ep-attempt:hidden-architecture-exact-signal-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "An exact four-state realisation of the complete observed law P_q with strictly less entropy production than every three-state realisation, for every 0 < q < 1, showing that the minimal hidden model does not certify the thermodynamic minimum; plus a sharp architecture-independent floor.",
+      "scope": "Binary alternating-renewal family P_q; exact complete stationary law; V₄ and V∞ exact values open; no experimental estimation."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "V_n is the least entropy production over n-state CTMC realisations of the complete stationary binary observed law, as in Aznagulov (2026); the benchmark law matches the earlier Evidence Press release.",
+      "remainingRisks": [
+        "Certificates rely on Python execution; no proof assistant was used.",
+        "The bounded literature check is not exhaustive priority certification.",
+        "Estimating f₀ from data needs further assumptions."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Ask a stochastic-thermodynamics specialist to check Theorems 1 and 5 and whether the four-state advantage is known; certify V₄(P_1/20).",
+      "claimCeiling": "Proved strict four-state advantage over the exact three-state minimum for every q, exact rational witnesses at q = 1/20, and a sharp non-attained three-statistic floor. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "hidden-architecture-exact-signal-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable exact counterexample to minimal-model dissipation bounds with a sharp architecture-independent floor.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "altPdfUrl": "https://zenodo.org/records/23721621/files/hidden-architecture-exact-signal-1.0.0-candidate.pdf?download=1"
+}
