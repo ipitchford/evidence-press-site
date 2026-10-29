@@ -22,3 +22,11 @@ Sheffield, September 2001), hosted at
 is an unchanged archival document published here with the author's permission.
 Copyright remains with Ian Pitchford; all rights reserved. The site's CC0
 dedication and software MIT licence do not apply to this thesis.
+
+## Examiner's report on the thesis
+
+Professor Patrick Bateson's report on the thesis, dated 23 March 2002 and hosted at
+`assets/downloads/patrick-bateson-2002-examiners-report-pitchford-thesis.pdf`,
+is reproduced in full and unaltered by permission of the estate of Sir Patrick
+Bateson. Copyright remains with the estate; all rights reserved. The site's CC0
+dedication and software MIT licence do not apply to this report.

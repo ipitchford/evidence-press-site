@@ -2450,7 +2450,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-10-28' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
   ];
@@ -3499,6 +3499,7 @@ simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'W
 simplePage('ai/', 'For AI agents and automated research tools', 'Machine-readable endpoints, metadata conventions, and follow-up problem lists for research agents.', 'ai.md', 'WebPage');
 simplePage('privacy/', 'Privacy policy', `How ${CONFIG.siteName} handles data: no accounts, cookies or analytics on this site, and the private YouTube channel tool that uses YouTube API Services.`, 'privacy.md', 'WebPage');
 simplePage('terms/', 'Terms of service', `Licences, status and limits of the material published by ${CONFIG.siteName}, including its YouTube channel.`, 'terms.md', 'WebPage');
+simplePage('thesis/', 'Evolutionary Developmental Psychopathology: the 2001 thesis', 'Ian Pitchford\'s 2001 University of Sheffield doctoral thesis and Patrick Bateson\'s examiner\'s report, as archival PDFs.', 'thesis.md', 'WebPage');
 shopPage();
 thinkAgainPage();
 interpsychPage();
