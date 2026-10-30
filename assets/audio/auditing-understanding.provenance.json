@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "article-audio-1.1",
+  "slug": "auditing-understanding",
+  "sourceBodyPath": "articles/auditing-understanding/body.md",
+  "sourceBodySha256": "79967e3f645f5c0d61837d7bd79f205fd14356d9dd577744c8d32de5f4dcba7c",
+  "transcriptPath": "assets/audio/auditing-understanding.txt",
+  "transcriptSha256": "e04e7e4dc3cbf2cc8e6cad592237044f1b6de5f34b3d2cd15d447d625f5f967c",
+  "transcriptCharacters": 11364,
+  "inputSha256": "dac43daa25f2a071f238ff9e075e5b2c5a56e53df580f0a8bbaaba983c7bff29",
+  "inputNormalization": "Trim leading and trailing whitespace per chunk; inputSha256 joins those inputs with two newlines.",
+  "inputRangeUnit": "UTF-16 code units in the exact UTF-8 transcript decoded as a JavaScript string",
+  "maximumChunkCharacters": 3000,
+  "chunking": "paragraph-not-heading, then sentence, then space",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "speed": 1,
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "audioPath": "assets/audio/auditing-understanding.mp3",
+  "limitations": [
+    "bundled CLI does not expose API request IDs",
+    "The receipt binds prepared inputs, configured provider profile and observed output bytes; it is not an independent attestation of provider execution or spoken-word completeness.",
+    "Offline checking verifies the final MP3 hash and recorded segment metadata, not deleted or unavailable private segment files.",
+    "Spoken-ending checks are offline ASR of each chunk's and the final file's last seconds, not human listening."
+  ],
+  "assembledAt": "2026-10-30T17:53:00.918Z",
+  "generator": "bundled speech skill text_to_speech.py speak-batch",
+  "requestId": null,
+  "chunks": [
+    {
+      "index": 1,
+      "start": 0,
+      "end": 2931,
+      "sourceTextSha256": "e3c35efcb74d028f519d3f6922d896c851780ed6950e2e95fb52f117d0d40dcf",
+      "inputSha256": "2ee475f8dbabde5cfa90c9bcf1397f38737341d37bafe2945f7aa7a998998bb0",
+      "inputCharacters": 2929,
+      "requestId": null,
+      "audioSha256": "b3aa6daac161ad525577649872ce38726e9a18953616ca0b8f5167072f1b8613",
+      "audioBytes": 2884992,
+      "durationSeconds": 180.312,
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "proof bytes cannot settle that question by itself",
+        "heardEnding": "of every possible explanation counting lines parameters or proof bytes cannot settle that question by itself",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "index": 2,
+      "start": 2931,
+      "end": 5795,
+      "sourceTextSha256": "826812afcfc9b6598bbe7cbed0648cbb5e48e01c1648ddb68018fb2ae09df841",
+      "inputSha256": "20d15d526b7e978dfee4988aa574dff9649c0ae219a474d624f2777426af4bec",
+      "inputCharacters": 2862,
+      "requestId": null,
+      "audioSha256": "70cfc0fec662c8007e72ab6a61d3326dc5b28763f66205395f8f2665b4febbb9",
+      "audioBytes": 2931456,
+      "durationSeconds": 183.216,
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "error analyse an intervention or recognise a limit",
+        "heardEnding": "the result to a fresh case prepare an error analyze an intervention or recognize a limit",
+        "matchedWords": 6,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "index": 3,
+      "start": 5795,
+      "end": 8290,
+      "sourceTextSha256": "df25d2930b10830c64f35388c284d5dbc309732fad48333cf77596f5ee280aa3",
+      "inputSha256": "344ac909fb587bb9988a9054a03ff384b35fd849b6b9fea9d2f33d6a8ee40e52",
+      "inputCharacters": 2493,
+      "requestId": null,
+      "audioSha256": "cf881377c1d5c06d5a859a6335e76792498d688c8d1bd500b9b011f084ff888e",
+      "audioBytes": 2397696,
+      "durationSeconds": 149.856,
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "said that no human could succeed at all",
+        "heardEnding": "but it does matter if the original headline said that no human could succeed at all",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "index": 4,
+      "start": 8290,
+      "end": 11017,
+      "sourceTextSha256": "1a14b58861dfee24f3a57c0d054bdd7c52b34f28c288dfc6fbcf762d23691333",
+      "inputSha256": "0bf0d470febf4770888ef1956ed4831111dbf52aa935d72e469552f50e6297ca",
+      "inputCharacters": 2725,
+      "requestId": null,
+      "audioSha256": "b7b82b2b9a44d7f0a610277285b991bdaad9efa2e9aada8715225f9631246b94",
+      "audioBytes": 2689920,
+      "durationSeconds": 168.12,
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "too early gives us an excuse to stop",
+        "heardEnding": "leaves us with a research problem the offered too early gives us an excuse to stop",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "index": 5,
+      "start": 11017,
+      "end": 11364,
+      "sourceTextSha256": "0e28e9ee166398bd07823f428ee572dcfccdfa2e00f36f8fd24280fe5d219bdc",
+      "inputSha256": "b58aaaab8daf5b6a1e36d29c3bd5ce9fbd2c0f9ca8f238a7dab41d68011cbd9e",
+      "inputCharacters": 346,
+      "requestId": null,
+      "audioSha256": "9a88b5d8059c212c4bd503ddd64e97a472adb30f5931f3c088e3de747fbf64d8",
+      "audioBytes": 364800,
+      "durationSeconds": 22.8,
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "result or a claim of external peer review",
+        "heardEnding": "assistance it is commentary not a new research result or a claim of external peer review",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "transform": {
+    "tool": "ffmpeg",
+    "method": "concat-demuxer then re-encode",
+    "codec": "libmp3lame",
+    "bitrate": "64k",
+    "channels": 1,
+    "sampleRate": 24000,
+    "maximumBytesExclusive": 26214400
+  },
+  "audioSha256": "614705d466b47b337ca1480c99834304dfe8f2951f4ab578caef060e40d04761",
+  "audioBytes": 5635052,
+  "durationSeconds": 704.304,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "result or a claim of external peer review",
+    "heardEnding": "assistance it is commentary not a new research result or a claim of external peer review",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
