@@ -1,0 +1,87 @@
+The opacity alibi: when too complex stops the questions.
+
+An Evidence Press article, read by an OpenAI synthetic voice.
+
+Imagine receiving a proof so large that you could spend the rest of your life reading it and never reach the end. A computer has checked it. The conclusion fits into a sentence. Have we reached the limits of human understanding—or merely the limits of reading a very large file?
+
+This is not an entirely hypothetical situation. In 2016, Marijn Heule, Oliver Kullmann and Victor Marek produced a proof of the Boolean Pythagorean triples problem approaching 200 terabytes. It concerns colouring the positive integers with two colours while avoiding a same-coloured triple satisfying Pythagoras’s equation. Their paper and certificate made the computational argument available for checking. The size of the proof is striking. What that size tells us about the human mind is much less straightforward.
+
+The distinction matters increasingly when AI helps produce mathematics and science. We can accept a result for good reasons without knowing how its discoverer found it. We can also follow a persuasive explanation that does not establish the result at all. Neither situation warrants the grander announcement that a machine has discovered something beyond human comprehension.
+
+The research pack behind this article calls that leap the opacity alibi: treating difficulty of inspection as an exemption from questions about what has actually been shown. The phrase names a faulty inference, not anyone’s motives. Its opposite is equally unhelpful: dismissing a well-supported result because nobody can narrate every step of its discovery.
+
+Between those extremes lies a more productive question: what would someone have to be able to do before we said they understood this particular result?
+
+First, make sure the puzzle is fair
+
+Consider a row of switches, each either on or off. A small program reports whether an odd number are on. That is parity. With eight switches, a simple implementation can combine their values in seven exclusive-or operations: an operation that returns one when its two inputs differ and zero when they agree.
+
+Now make the program longer. Calculate an extra expression, combine it with an identical copy using exclusive-or, and add that pair to the original calculation. An expression exclusive-or itself is zero. The extra machinery changes nothing.
+
+Repeat the trick and the listing can become as forbidding as you please. Its behaviour is still just: is the number of switches on odd?
+
+The supplied pack implements this construction as a deliberately elementary control. It is not a miniature demonstration that every complicated AI system has a simple explanation. It demonstrates something narrower: the length of one representation does not establish the difficulty of every possible explanation. Counting lines, parameters or proof bytes cannot settle that question by itself.
+
+There is a second trap. Suppose an explanation says the program returns one whenever any switch is on. Show only an all-off example and examples with one switch on, and the explanation looks perfect. Turn on two switches and it fails: “any” returns one, while parity returns zero.
+
+That tiny counterexample captures a serious demand on AI explanations. A story should survive cases chosen to distinguish it from plausible alternatives, not just repeat the examples that made it sound convincing. Being able to recite the story is not the same as being able to correct it.
+
+Sometimes “you cannot tell” is the best answer
+
+Now imagine two indicator lights. In every observation, they agree: both are on half the time and both are off half the time. What happens to the second light if we force the first one on?
+
+Here are two possible mechanisms. In one, a fair random signal controls the first light, and the second copies it. In the other, the signal controls the second light, and the first copies it. Ordinary observations look identical. Intervening does not.
+
+In the first mechanism, forcing the first light on makes the second turn on too. In the second, forcing the first light does nothing to the signal controlling the second: it still has a one-half chance of being on. The intervention overrides the first light’s usual rule; it does not merely select occasions when that light happened to be on.
+
+If these are the only two permitted models and all you have is the observational record, there are two possible answers: one-half and one. Without further evidence or assumptions, choosing between them is unjustified. Allow more candidate models and the set of possible answers may change.
+
+This is a standard causal-identification problem, not a newly discovered paradox. But it exposes a bad examination question. An assessor who secretly chooses one mechanism and marks every other answer wrong is testing agreement with an undisclosed choice. A careful respondent who refuses to guess may understand the evidence better than someone who confidently supplies the preferred answer.
+
+Before testing whether people understand, then, test whether the assessment rewards understanding. Does it recognise an invalid question? Does it accept a correctly stated uncertainty? Can its own answer key survive scrutiny?
+
+Four questions hidden inside one word
+
+The pack’s proposed audit separates four questions that are easily bundled together:
+
+First: Is the result supported? A proof, certificate or empirical test with its assumptions and unchecked dependencies made explicit.
+
+Second: What can the reader access? The actual explanation, code, tools, intermediate steps and time available, not simply a claim that the work is open.
+
+Third: What can the reader do? Apply the result to a fresh case, repair an error, analyse an intervention or recognise a limit.
+
+Fourth: How far does that conclusion reach? A statement of the people, tasks, representations and resource conditions actually assessed.
+
+These are reporting distinctions, not four scores to add into a measure of intelligence. A certificate can support a theorem without teaching it. An explanation can help a reader without faithfully describing the discovery process. A team using software can demonstrate valuable competence without every individual being able to repeat the work unaided.
+
+Nor did this project invent the distinction between checking and understanding. It builds on established work in scientific understanding and interpretability. Finale Doshi-Velez and Been Kim, for example, argued for rigorous evaluation rather than assuming that an apparently interpretable system serves its intended purpose.
+
+There are empirical reasons for that caution. In experiments involving 3,800 participants, Forough Poursabzi-Sangdeh and colleagues found that showing a clear model with few features helped people simulate its predictions. But transparency did not deliver all the hoped-for benefits; participants shown clear models were less able to detect and correct substantial mistakes. Those findings concern the studied tasks and participants, not a universal verdict against transparency. They show why “easier to inspect” and “better able to judge” need separate tests.
+
+A failed lesson is not a limit of the species
+
+Suppose nobody in a study learns to use a result. That could be important. It might reveal an exceptionally difficult concept, inadequate preparation, an unsuccessful explanation or an unfair test. It does not, without much more argument, show that no human could ever understand it.
+
+Even the statistics of a much narrower claim leave room for uncertainty. Imagine 300 independently sampled participants, all tested under the same fixed conditions, with no successes. Under the usual identical-probability binomial model, the exact one-sided 95% upper confidence limit on the population success rate is about one per cent. This is a hypothetical calculation, not a study reported in the pack. It does not assign a probability to the claim that humanity is incapable. It concerns one population and one protocol.
+
+Change the explanation, training, tools or population and you are asking a different question. A success with extra assistance does not erase a failure without it. But it does matter if the original headline said that no human could succeed at all.
+
+We should therefore look for better representations and successful learners, rather than treating them as inconvenient exceptions. There is a suggestive precedent in chess. Lisa Schut and colleagues extracted concepts from AlphaZero and tested their learnability with four top grandmasters. The study reported improvements on the presented concept positions. A small specialist study cannot settle the general limits of human learning, but it makes an important possibility concrete: machine-derived knowledge can become material for human learning rather than evidence that learning has ended.
+
+The audit has to earn its keep
+
+The proposed programme, Auditing Understanding, has completed elementary software controls and constructed examples. It has not conducted a human-participant study or a frontier-model evaluation. It has not shown that its audit improves scientific review. The protocol is prospective, not an externally registered experiment.
+
+Two different experiments would be needed to move beyond that starting point.
+
+One would vary what people receive: inspectable checking evidence, explanatory material, both, or matched comparison materials. It would then measure evidence-sensitive decisions and performance on fresh tasks. Learning to use an explanation and learning when to trust a certificate are related but distinct outcomes.
+
+The other would compare the structured audit with ordinary review, giving reviewers equivalent evidence, tools and time. Test cases would include genuine defects and clean work. Detecting more problems is not an improvement if it comes from labelling everything defective. False alarms, missed errors and the time spent all count.
+
+This second comparison is crucial. A longer checklist can look rigorous while doing little except making publication slower. If ordinary review reaches the same decisions more cheaply, the proposed audit should be simplified or abandoned. The method must be exposed to the same standard it asks of AI-generated claims.
+
+For Evidence Press, the immediate lesson is practical without pretending those studies have already succeeded. Put the supported claim next to its evidence. Say what a checker does and does not establish. Give the reader an example that stretches the explanation, and a counterexample that marks its boundary. Do not turn a missing human measurement into a report of human failure.
+
+We may eventually encounter ideas that resist every explanation we can devise. Nothing here rules that out. But there is a large difference between “we have not yet found a way to teach this” and “this cannot be understood”. The first leaves us with a research problem. The second, offered too early, gives us an excuse to stop.
+
+This essay adapts the supplied research prospectus, The Opacity Alibi. Its switch and light examples are constructed illustrations, not observations of human behaviour. The proposed audit’s effectiveness remains untested. The article was prepared with AI assistance; it is commentary, not a new research result or a claim of external peer review.
