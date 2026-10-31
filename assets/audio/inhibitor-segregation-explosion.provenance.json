@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "When dividing compartments throw away the brakes. An Evidence Press briefing. Many reactions in living cells happen inside compartments that grow and divide. Mathematicians model this with random chemistry in every compartment, and a compartment that splits in two from time to time. A good model of this kind should never explode, meaning it should never pack infinitely many reactions into a finite stretch of time. A recent paper conjectured that if the chemistry is safe on its own, it stays safe inside dividing compartments, and it pointed to reactions that create molecules from nothing as the main danger. This release shows that removing those reactions is not enough. Picture a substance that makes more of itself, and an inhibitor that holds it in check.",
+      "inputSha256": "e9303e0b6a80f27297533e2dc005de5323cd8509dedbab9b134990024b608d1d",
+      "audioSha256": "6fa871a258d537692c8aaf842c4262bdf8a15402a0bf8f22d6c8ab1db5931125",
+      "requestId": "req_7a397c687a1840519dc46600f0ea9aef",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "and an inhibitor that holds it in check",
+        "heardEnding": "picture a substance that makes more of itself and an inhibitor that holds it in check",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "In one compartment the inhibitor wins and nothing goes wrong. Now let compartments divide so that all of the substance stays in one daughter, while the inhibitor may leave with the other. Each division throws away some of the brakes, and the substance can then run away. In a small example the paper proves that this happens with probability at least one half, and computes the probability as about eighty per cent. The paper finds the exact boundary between safety and runaway for two kinds of inhibitor. When the inhibitor multiplies, what matters is the average of the logarithm of the share it keeps at each division, so dividing in bulk is more dangerous than steady removal at the same average rate. When the inhibitor does not multiply, only the average share matters.",
+      "inputSha256": "e1e5213a98c657d379a8229ea42e0f50f97ee76352d99744e1c906a12b25d71b",
+      "audioSha256": "204046a209c4584c29ae9a56486acb00843154c0cf6417da6027798a99dbe6dd",
+      "requestId": "req_dee49b51f545488ca3afd3d8c2a15fa2",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "does not multiply only the average share matters",
+        "heardEnding": "at the same average rate when the inhibitor does not multiply only the average share matters",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "On both boundaries the model stays safe. The building blocks are classical results about branching processes, which the paper cites; the new part is the chemical construction and its exact classification. An earlier preprint by Yoo had already found a different counterexample using other ingredients. The results have written proofs and computer checks. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on 31 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "0e2211951a8546fd91ffbd4963ee86d0907a9097bda59e35df3f30830f95c3ad",
+      "audioSha256": "de6eb545f74611e7d8ef58d0a9b4dd58a816944a8491e26592bbd8c1467585fd",
+      "requestId": "req_c2804bdd015247f99f48fbed7f32a9a3",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "inhibitor-segregation-explosion",
+  "generatedAt": "2026-10-31T14:10:28.866Z",
+  "sourceMetadata": "papers/inhibitor-segregation-explosion/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "f65aa8abf0d785cc1650f5f2728809ca03edf2932e7db4d8af0c69dd41ddd325",
+  "transcriptPath": "assets/audio/inhibitor-segregation-explosion.txt",
+  "transcriptSha256": "9746b8a182fcacd1d1e1e84fc9c3bf1be04e5e1e92c596df8878d868c17df477",
+  "audioPath": "assets/audio/inhibitor-segregation-explosion.mp3",
+  "audioSha256": "57d3151cfbd49cd5ba2feae6f847e0b775388a7357d6947b24bc7f07c89171e8",
+  "audioBytes": 2182316,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
