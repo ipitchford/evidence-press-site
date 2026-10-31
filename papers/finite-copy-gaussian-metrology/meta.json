@@ -1,0 +1,198 @@
+{
+  "slug": "finite-copy-gaussian-metrology",
+  "title": "One bright mode is enough: exact finite-copy Gaussian Fisher information for pure single-mode models",
+  "shortTitle": "The best way to measure many copies of a light beam",
+  "oneLine": "For m copies of a pure single-mode Gaussian state, no Gaussian measurement beats combining the copies into one bright output and measuring every output by homodyne detection; the exact optimum is a one-angle formula.",
+  "abstract": "A small change in a light beam can be read off by measuring field quadratures. With only Gaussian measurements, measuring m identical copies jointly can give more Fisher information than measuring them one by one, as Navarro, Morelli, Sanz and Mehboudi showed with an interferometer that concentrates the changing mean into one bright output; they left open which Gaussian measurement is best for a finite number of copies. For every smooth one-parameter family of pure single-mode Gaussian states and every m, this candidate proves that the maximum Fisher information over all fixed Gaussian measurements, including ancilla-assisted schemes, equals (m−1)λ²/2 + max over φ of [2m(a cos φ + b sin φ)² + (λ²/2) cos² 2φ], in normalised coordinates where (a, b) is the rate of change of the mean and λ that of the squeezing. It is attained by the concentration interferometer, homodyne detection of the dark outputs along a fixed axis and one optimised homodyne angle on the bright output. The same argument gives the exact optimum when measurement-seed squeezing is capped, an exact formula for the shortfall from the quantum Fisher information (nondecreasing in m, at most λ²/2 in total, with an explicit limit), and a necessary and sufficient condition for joint measurement to help. The interferometer is due to Navarro et al.; the new part is the finite-copy upper bound and its consequences. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-31",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Gaussian quantum metrology",
+    "Fisher information",
+    "homodyne detection",
+    "superadditivity",
+    "collective measurement",
+    "quantum Fisher information",
+    "continuous-variable quantum information"
+  ],
+  "repoUrl": "https://github.com/ipitchford/finite-copy-gaussian-metrology",
+  "releaseUrl": "https://github.com/ipitchford/finite-copy-gaussian-metrology/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/finite-copy-gaussian-metrology/releases/download/v1.0.0-candidate/finite-copy-gaussian-metrology-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23837733",
+  "conceptDoi": "10.5281/zenodo.23837732",
+  "zenodoUrl": "https://zenodo.org/records/23837733",
+  "citeText": "Anonymous (2026). One bright mode is enough: exact finite-copy Gaussian Fisher information for pure single-mode models. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23837733",
+  "evidence": "Written proofs of every lemma, theorem, corollary and proposition; numerical and exact checks with semantic negative controls (4,800 random pure measurement seeds, 3,000 random ancilla-assisted homodyne measurements with Fisher information from the outcome law, local maximisation, attainment through an explicit interferometer, the squeezing-capped optimum, the quantum Fisher information by a Fock-space computation, an exact rational example table and deterministic degenerate cases); replay in normal and optimised Python modes from a fresh extraction of the frozen archive.",
+  "statusDetail": "Unrefereed AI-assisted mathematical-physics candidate. All results have written proofs; numerical checks test normalisations and implementations only. Internal AI-assisted review in five roles plus an outside-model correctness review, one revision with two extensions, then a verification re-review and a targeted proof audit whose wording findings were fixed without a further round. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (31 October 2026, 9 pages), its verification script and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 31 October 2026.",
+  "keyResults": [
+    "Exact finite-copy optimum (Theorem 1, proof): for a pure single-mode Gaussian family in normal form σ=I, σ′=λ·diag(1,−1), d′=(a,b), the best Fisher information over all fixed Gaussian measurements on m copies, including ancillas, is (m−1)λ²/2 + max_φ[2m(a cos φ + b sin φ)² + (λ²/2)cos²2φ].",
+    "Attaining measurement (Theorem 1, proof): a passive interferometer that adds the copies coherently into one bright output, a homodyne at the optimal angle φ on that output and q-homodyne on the m−1 dark outputs; no active squeezing element is needed.",
+    "Capped measurement squeezing (Theorem 2, proof): for pure general-dyne seeds with e^(−R) ≤ M ≤ e^R in normalised coordinates, the optimum is again a one-variable concave problem attained by the same interferometer.",
+    "Distance from the quantum limit (Corollary 1, proof): with Q = 2(a²+b²) + λ²/2 the one-copy quantum Fisher information, the shortfall mQ − F_m is nondecreasing in m, never exceeds λ²/2, tends to 2λ²a²b²/(a²+b²)², and vanishes exactly when λab = 0.",
+    "When joint measurement helps (Proposition 1, proof): for m ≥ 2 the optimum beats m times the single-copy optimum exactly when det[w, Aw] ≠ 0, that is, when the mean moves in a direction that is not an axis of the changing noise ellipse.",
+    "Coherent-squeezing example (Section 4.5, exact): the value 2m + 4mα² − 2 of Navarro et al. is optimal whenever mα² ≥ 2; below that the optimum is 2m + 2mα² + (mα²)²/2."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, re-review, proof audit and outside-model correctness review",
+      "Claude Code: revision, extensions, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "What is the best way to measure many copies of a light beam? An Evidence Press briefing. Many precision experiments read a tiny change in a beam of light by measuring its electric field with a technique called homodyne detection. If you can prepare the same beam several times, you can measure each copy on its own, or combine the copies first. Quantum theory says the information from separate copies simply adds up. But if you restrict yourself to the standard optical toolbox, mirrors, beam splitters, squeezed light and homodyne detectors, combining the copies can do better. A 2025 paper by Navarro, Morelli, Sanz and Mehboudi showed this, using an interferometer that gathers the changing brightness of all the copies into one output beam, while the other outputs keep only the changing noise. They left open whether that is the best possible scheme for a small number of copies. This release settles the question for every pure single-beam Gaussian state. No measurement built from the standard toolbox, even with extra auxiliary light, beats the simple scheme: gather the signal into one bright output, measure that output at one well chosen angle, and measure every other output along a fixed direction. The best achievable information is given by a short formula. The paper also gives the exact answer when the measurement may use only limited squeezing, and shows that the total shortfall from the quantum limit stays below the noise information of a single copy, however many copies are used. Joint measurement helps exactly when the beam's brightness and its noise change in misaligned directions. The results have written proofs and numerical checks. The interferometer itself is due to the earlier paper; the new part is the proof that nothing beats it. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on 31 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "From a fresh extraction of the frozen archive, the verification script passed every check in normal and optimised (-O) Python and reproduced its retained results byte for byte; a source mutation that deletes the dark-mode term from the closed form was rejected. GitHub CI repeats both modes on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "The verification script uses parameterisations independent of the proof (Bloch–Messiah seeds, symplectic dilations, explicit interferometers, Fock space), and reviewers recomputed key formulas by hand and in separate code; this is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the results are proved in prose."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "NumPy and SciPy are pinned in uv.lock; no locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Navarro, Morelli, Sanz and Mehboudi (2025), On super additivity of Fisher information in fully Gaussian metrology. arXiv:2512.20534. Source of the question, the concentration interferometer and the coherent-squeezing example; finite-copy optimality is left open there.",
+      "url": "https://arxiv.org/abs/2512.20534"
+    },
+    {
+      "citation": "Cenni, Lami, Acín and Mehboudi (2022), Thermometry of Gaussian quantum systems using Gaussian measurements. Quantum 6, 743. Fisher information of general-dyne measurements and the reduction to pure seeds.",
+      "url": "https://doi.org/10.22331/q-2022-06-23-743"
+    },
+    {
+      "citation": "Oh, Lee, Rockstuhl, Jeong, Kim, Nha and Lee (2019), Optimal Gaussian measurements for phase estimation in single-mode Gaussian metrology. npj Quantum Information 5, 10. Single-copy optimisation.",
+      "url": "https://doi.org/10.1038/s41534-019-0124-4"
+    },
+    {
+      "citation": "Liu, Wang and Ma (2026), Gaussian Fisher Information Is Superadditive. arXiv:2610.02625. A complementary covariance-only superadditivity for two different thermal modes.",
+      "url": "https://arxiv.org/abs/2610.02625"
+    },
+    {
+      "citation": "Girardi, Rizzo, Turner, Adesso and Lami (2026), A fully Gaussian quantum Stein's lemma. arXiv:2609.40307. Asymptotic moment decoupling for Gaussian-measured hypothesis testing.",
+      "url": "https://arxiv.org/abs/2609.40307"
+    },
+    {
+      "citation": "Braunstein and Caves (1994), Statistical distance and the geometry of quantum states. Physical Review Letters 72, 3439–3443. Quantum Fisher information and its additivity.",
+      "url": "https://doi.org/10.1103/PhysRevLett.72.3439"
+    },
+    {
+      "citation": "Giedke and Cirac (2002), Characterization of Gaussian operations and distillation of Gaussian states. Physical Review A 66, 032316. Characterisation of Gaussian operations and measurements.",
+      "url": "https://doi.org/10.1103/PhysRevA.66.032316"
+    },
+    {
+      "citation": "Serafini (2017), Quantum Continuous Variables: A Primer of Theoretical Methods. CRC Press. Gaussian states, purifications and general-dyne measurements.",
+      "url": "https://doi.org/10.1201/9781315118727"
+    },
+    {
+      "citation": "Monras (2013), Phase space formalism for quantum estimation of Gaussian states. arXiv:1303.3682. Quantum Fisher information of Gaussian states.",
+      "url": "https://arxiv.org/abs/1303.3682"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:finite-copy-gaussian-metrology",
+    "attemptIds": [
+      "ep-attempt:finite-copy-gaussian-metrology-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Exact finite-copy optimum of the Fisher information over fixed Gaussian measurements (including ancillas) for pure single-mode Gaussian models, attained by concentration and homodyne detection; seed-squeezing-capped optimum; exact shortfall from the quantum Fisher information; criterion for strict collective advantage.",
+      "scope": "Pure single-mode Gaussian families at a fixed operating point; local Fisher information; fixed (non-adaptive) Gaussian measurements. Mixed states, general multimode tangents and adaptive strategies are not addressed."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 4.5 reproduces the coherent-squeezing example of Navarro et al. (Example I) in the same convention ([q,p]=i, covariance twice the ordinary covariance, vacuum = identity) and recovers their achieved value as the large-displacement branch.",
+      "remainingRisks": [
+        "The measurement class is fixed Gaussian measurements; adaptive schemes are excluded.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in Gaussian quantum metrology check the measurement reduction (Lemma 2) and the disk bound with ancillas (Lemma 3).",
+      "claimCeiling": "Proved exact finite-copy optimum and consequences in the stated model and measurement class. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "finite-copy-gaussian-metrology-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable exact finite-copy optimum for Gaussian measurements on pure single-mode models, with its attaining measurement and consequences.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
