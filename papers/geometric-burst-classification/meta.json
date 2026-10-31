@@ -1,0 +1,204 @@
+{
+  "slug": "geometric-burst-classification",
+  "title": "Which burst sizes guarantee a noise trade-off? Geometric bursts are the only ones, for a common burst law and for pairs of laws",
+  "shortTitle": "Only geometric burst sizes force a noise trade-off",
+  "oneLine": "Answering Anderson's 2026 question: when molecules are made in random bursts, only geometric burst sizes stop feedback from making every species quieter than baseline; any other burst law lets a two-species loop do it, by about one part in a million.",
+  "abstract": "Many molecules in cells are made in bursts: one production event releases a random number of copies. A long-standing conjecture says feedback between species cannot make every species less noisy than constant-rate production at the same mean, with noise measured by the Fano factor (variance divided by mean). Anderson (2026) proved this when burst sizes are geometric, found burst laws for which it fails, and asked which other laws still enforce a trade-off. This candidate answers the question. For a burst law shared by all species, a universal trade-off holds if and only if the law is geometric: every nongeometric law with finite second moment, even one with the same mean and variance as a geometric law, lets a two-species loop with one activation and one repression push both Fano factors below baseline at low production intensity. For two species with different burst laws, simultaneous suppression in the same loop is possible exactly when at least one law is nongeometric. Finally, the aggregate trade-off fails by at most the regulatory rate range times the total-variation distance between each burst law and its equilibrium transform, which vanishes exactly for geometric laws; this bound uses lemmas of Anderson's preprint, stated with their hypotheses. Worked examples are certified in exact rational arithmetic. The effects are tiny, about one part in a million, and occur below 0.1 molecules on average; the results describe a standard stochastic model, not particular genes. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-31",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "transcriptional bursting",
+    "burst size distribution",
+    "Fano factor",
+    "noise suppression",
+    "kinetic uncertainty relations",
+    "stochastic reaction networks",
+    "geometric distribution",
+    "open problem"
+  ],
+  "repoUrl": "https://github.com/ipitchford/geometric-burst-classification",
+  "releaseUrl": "https://github.com/ipitchford/geometric-burst-classification/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/geometric-burst-classification/releases/download/v1.0.0-candidate/geometric-burst-classification-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23840454",
+  "conceptDoi": "10.5281/zenodo.23840453",
+  "zenodoUrl": "https://zenodo.org/records/23840454",
+  "citeText": "Anonymous (2026). Which burst sizes guarantee a noise trade-off? Geometric bursts are the only ones, for a common burst law and for pairs of laws. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23840454",
+  "evidence": "Written proofs of Theorems 1, 2 and 3, Lemmas 1 and 2 and Corollary 1; exact rational checks, by two standard-library scripts, of the closed-form response coefficients against direct generator expansions (five common-law and four pair cases), of the null direction and gradients, and of both worked examples with a rigorous tail enclosure; nine semantic negative controls; checkers that do not rely on assert, replayed from the frozen archive in normal and optimised Python, and GitHub CI.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every result has a written proof; finite-support identities and the worked examples are checked in exact arithmetic. Theorem 3, and through it the geometric direction, uses lemmas of Anderson's unrefereed preprint, stated with hypotheses. Internal AI-assisted review (a five-role first round, an outside-model adversarial review, and a re-review and proof audit of the revision). Priority is bounded to the recorded search. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (31 October 2026, 12 pages), its exact checkers and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 31 October 2026.",
+  "keyResults": [
+    "One shared burst law: a universal noise trade-off holds if and only if the law is positive geometric; every nongeometric law with finite second moment allows both species of an activation-repression loop to fall below baseline at low intensity (Theorem 1).",
+    "Two burst laws: in the same loop, simultaneous suppression is possible exactly when at least one law is nongeometric; a geometric species paired with a nongeometric one suffices (Theorem 2).",
+    "Stability: Σᵢ (Fᵢ − Bᵢ)/(τᵢκᵢ) ≥ −Σᵢ (uᵢ − lᵢ)Δᵢ, with Δᵢ the total-variation distance between the burst law and its equilibrium transform; Δᵢ = 0 exactly for geometric laws, recovering Anderson's theorem (Theorem 3, Corollary 1).",
+    "Matching two moments is not enough: bursts of 1 or 4 with probabilities 2/3 and 1/3 have the mean and variance of the geometric law with mean 2, yet give F = 2 − (19/11520)ε² + O(ε³) for both species, certified for 0 < ε < 19/25297920.",
+    "Geometric plus nongeometric: exact coefficients −233/2949120 and at most −3.8057 × 10⁻⁴ for the pair example.",
+    "Effects are tiny: about 10⁻⁶ in the Fano factor, at mean abundances below 0.1 molecules in the examples."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, outside-model adversarial review, re-review and proof audit",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Only geometric burst sizes force a noise trade-off. An Evidence Press briefing. First, the background. Many molecules in cells are made in bursts: one production event releases a random number of copies at once. So molecule numbers fluctuate, and a common measure of that noise compares the variance with the mean. Each species has a reference value: the noise it would have if it were made at a steady rate. Feedback between species is the natural way to control noise, and a long-standing conjecture says it has a limit: no network can make every species quieter than its reference value at the same time. In 2026, David Anderson proved this when burst sizes follow a geometric law, the standard model for bursts of protein made from one messenger RNA. He showed that it can fail for some other laws, and asked which burst laws still guarantee the limit. Now, the main finding. Only geometric laws do. For any other burst law with a finite variance, even one with exactly the same average and spread as a geometric law, two species, one switching the other on and being switched off in return, can both be made quieter than their reference values. With two different burst laws, this works exactly when at least one of them is not geometric. The paper also bounds how far the limit can fail when a law is close to geometric. As for how large the effect is: tiny, about one part in a million, and only when each species has well under one molecule on average. Every result has a written proof, and the worked examples are checked in exact arithmetic. The limits: review so far is internal and AI-assisted, one bound relies on lemmas from an unrefereed preprint, and the literature search was bounded. This briefing describes version one point zero candidate, released on the thirty-first of October 2026; the paper and evidence are linked from the release page. This audio uses an AI-generated voice and is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "From a fresh extraction of the frozen archive the two exact checkers passed in normal and optimised Python with identical output and byte-identical result files, the pinned pair numerics were regenerated byte for byte, the figure script's exact checks passed, and nine semantic negative controls rejected tampered checkers. GitHub CI repeats the replay on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "The closed-form coefficients are checked against separately coded exact generator expansions; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the theorems are proved in prose, with exact computer checks of finite identities and examples."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "The exact checkers need only the Python standard library; the numerical illustrations pin NumPy 2.3.5, SciPy 1.17.0 and Matplotlib 3.10.8 (requirements.txt), not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Anderson (2026), Fluctuation impossibility results for stochastic burst networks. arXiv preprint 2607.20823v1 (proves the geometric case, gives counterexamples on {1,2} and asks the question answered here; unrefereed; its information-flow lemmas are used in Theorem 3).",
+      "url": "https://arxiv.org/abs/2607.20823"
+    },
+    {
+      "citation": "Anderson (2026), Noise tradeoffs, stationary information flow, and structural balance in unit-birth networks. arXiv preprint 2605.15401 (the unit-birth trade-off).",
+      "url": "https://arxiv.org/abs/2605.15401"
+    },
+    {
+      "citation": "Ripsman, Kell and Hilfinger (2025), Using stationary information flows to prove kinetic uncertainty relations in biochemical control systems. arXiv preprint 2512.20887v1 (the unit-birth trade-off via information flows).",
+      "url": "https://arxiv.org/abs/2512.20887"
+    },
+    {
+      "citation": "Yan, Hilfinger, Vinnicombe and Paulsson (2019), Kinetic uncertainty relations for the control of stochastic reaction networks. Physical Review Letters 123, 108101 (origin of the conjecture).",
+      "url": "https://doi.org/10.1103/PhysRevLett.123.108101"
+    },
+    {
+      "citation": "Lestas, Vinnicombe and Paulsson (2010), Fundamental limits on the suppression of molecular fluctuations. Nature 467, 174–178 (limits of feedback noise control).",
+      "url": "https://doi.org/10.1038/nature09333"
+    },
+    {
+      "citation": "Hilfinger, Norman, Vinnicombe and Paulsson (2016), Constraints on fluctuations in sparsely characterized biological systems. Physical Review Letters 116, 058101.",
+      "url": "https://doi.org/10.1103/PhysRevLett.116.058101"
+    },
+    {
+      "citation": "Peköz, Röllin and Ross (2013), Total variation error bounds for geometric approximation. Bernoulli 19(2), 610–632 (the discrete equilibrium transform and its geometric fixed point).",
+      "url": "https://doi.org/10.3150/11-BEJ406"
+    },
+    {
+      "citation": "Kumar, Singh and Kulkarni (2015), Transcriptional bursting in gene expression: analytical results for general stochastic models. PLOS Computational Biology 11(10), e1004292 (queueing methods; detecting nongeometric bursts).",
+      "url": "https://doi.org/10.1371/journal.pcbi.1004292"
+    },
+    {
+      "citation": "Friedman, Cai and Xie (2006), Linking stochastic dynamics to population distribution: an analytical framework of gene expression. Physical Review Letters 97, 168302 (geometric bursts in translation).",
+      "url": "https://doi.org/10.1103/PhysRevLett.97.168302"
+    },
+    {
+      "citation": "Shahrezaei and Swain (2008), Analytical distributions for stochastic gene expression. Proceedings of the National Academy of Sciences 105(45), 17256–17261 (geometric bursts in translation).",
+      "url": "https://doi.org/10.1073/pnas.0803850105"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:geometric-burst-classification",
+    "attemptIds": [
+      "ep-attempt:geometric-burst-classification-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Answers the open question of Anderson (2026, arXiv:2607.20823, Discussion): among burst laws with finite second moment, only positive geometric laws enforce a universal Fano-factor trade-off, for a common law and for pairs of laws in the activation-repression loop; gives a stability bound in terms of the equilibrium-transform defect.",
+      "scope": "Stochastic burst networks with bounded positive regulated burst frequencies and independent first-order degradation. Effects are about 1e-6 at mean abundances below 0.1 molecules; three or more different laws, large copy numbers and sharpness are open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The model, baseline and Fano identity are exactly those of Anderson (2026); his open question is quoted verbatim from the Discussion, and the paper's formula reduces to his expression S19 on {1,2}.",
+      "remainingRisks": [
+        "Theorem 3 and the geometric direction depend on lemmas of an unrefereed preprint.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Obtain specialist review of Lemma 1 and Theorem 2, and of the preprint lemmas used in Theorem 3.",
+      "claimCeiling": "Proved classification for a common law and for pairs in the activation-repression loop, and an aggregate stability bound depending on preprint lemmas; tiny effects at very low abundances. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "geometric-burst-classification-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable answer to Anderson's burst-law question.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
