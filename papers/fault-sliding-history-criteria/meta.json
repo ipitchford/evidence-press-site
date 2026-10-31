@@ -1,0 +1,253 @@
+{
+  "slug": "fault-sliding-history-criteria",
+  "title": "Scalar history criteria for the first loss of full sliding under variable fluid injection",
+  "shortTitle": "The injection point decides when a fault stops sliding forward",
+  "oneLine": "In the standard circular model of injection-driven slow slip, the slip rate at the injection point decides when the whole fault first stops sliding forward: under stated conditions the centre stops first, almost any abrupt cut ends full sliding, and for a point source no linear taper can halve the rate.",
+  "abstract": "Fluid injected into a fault can drive slow, aseismic slip that spreads as an expanding crack. When the injection rate is reduced, part of the fault eventually stops slipping forward, and crack-based size and volume laws cease to apply. This candidate asks when this first happens, in the standard circular model with constant friction, zero fracture energy and zero Poisson ratio, and shows that one scalar quantity, the slip-rate history at the injection point, decides it. For a point source, a Gaussian source or any positive mixture of Gaussian widths and any injection rate that rises and then falls, the whole slipping disk moves forward exactly when the injection point does. For piecewise-smooth rates with any number of rises, falls and steps, the same holds over an interval exactly when the injection-point history has stayed nonnegative throughout it, under stated startup conditions; the crack radius then exists and grows automatically, and full sliding is lost first at the injection point. Explicit consequences include an abrupt-drop tolerance of roughly the square root of source width over stage duration (about 10⁻³ at wellbore scale), a two-term finite-radius criterion with a rigorous remainder, a closed-form deadline after shut-in by which full sliding must have ended, and, for a point source, the result that no linear taper can halve the rate without loss of full sliding. Annular sources can violate the centre-first property. The results concern the first loss of full sliding only, not the later slip pulse or seismic hazard. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-31",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "fluid injection",
+    "aseismic slip",
+    "fault mechanics",
+    "induced seismicity",
+    "slip front",
+    "frictional rupture",
+    "Dawson function",
+    "Volterra positivity",
+    "shut-in"
+  ],
+  "repoUrl": "https://github.com/ipitchford/fault-sliding-history-criteria",
+  "releaseUrl": "https://github.com/ipitchford/fault-sliding-history-criteria/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/fault-sliding-history-criteria/releases/download/v0.1.0-candidate/fault-sliding-history-criteria-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23838529",
+  "conceptDoi": "10.5281/zenodo.23838528",
+  "zenodoUrl": "https://zenodo.org/records/23838529",
+  "citeText": "Anonymous (2026). Scalar history criteria for the first loss of full sliding under variable fluid injection. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23838529",
+  "evidence": "Written proofs of every theorem, proposition and corollary (kernel properties, instantaneous and historical criteria, radius existence, exterior admissibility, inner limit, finite-radius bounds, shut-in deadline, taper corollary); ten verification scripts with retained outputs covering a 70-digit exact-moment kernel check, two independent kernel implementations, the moving-boundary derivative, exterior mechanics, constants and two-term expansion, taper thresholds, drop tolerances, near-threshold, stepped and multi-peak histories and three counterexamples, with built-in semantic negative controls; replay with Python -O from a fresh extraction of the frozen archive.",
+  "statusDetail": "Unrefereed AI-assisted applied-mathematics candidate. The theorems have written proofs; the constants s* and c_D are numerically verified upper bounds, not interval-certified; finite-radius taper thresholds are finite-window numerical estimates and formula (54) an approximation. Internal AI-assisted review in five roles, an adversarial correctness review, a verification re-review and two rounds of targeted proof audit; the last round found no fatal or major defect and its minor items were fixed by the editor without a further review round. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 31 October 2026 with the final editor corrections and DOI insertion, 39 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 31 October 2026.",
+  "keyResults": [
+    "Instantaneous criterion (Theorem 1, Proposition 3.3, proof): for a point source, a Gaussian source or any positive Gaussian mixture and a rate that rises then falls, the slip rate is nonnegative throughout the disk at a given time if and only if it is nonnegative at the injection point.",
+    "Historical criteria (Theorems A, B, G and Proposition 4.1, proof): for piecewise-smooth or stepped rates with any number of rises and falls, under stated startup conditions, full sliding holds over an interval exactly when the centre history has stayed nonnegative; the crack radius exists and grows automatically, full sliding is lost first at the centre, and for a point source any downward jump ends it at once.",
+    "Abrupt drops (equation 26, proof): after a constant-rate stage of duration T with a Gaussian source, the largest tolerated relative drop is below √(ε/(T+ε)), about 10⁻³ at wellbore scale for illustrative parameters.",
+    "Inner limit (Theorem 3, proof): in the critically stressed limit the slip rate at radius r is the centre slip rate delayed by a random diffusive first-passage time.",
+    "Finite radius (Propositions 7.2 and 7.3, proof with numerically verified constants): a uniform error bound and a two-term centre criterion A*Hq(t) − (2α/R)q(t−) with a rigorous remainder.",
+    "Schedules (Proposition 8.2 and Corollary 8.4, proof): after shut-in no crack survives beyond t_s + f c_p V/τ_d − ε, so full sliding ends before then; for a point source no linear taper can halve the rate, the inner-limit threshold being ½√(L/(T+L)) and the finite-radius one strictly smaller."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted applied-mathematics research",
+      "AI-assisted internal review, adversarial correctness review, re-review and targeted proof audits",
+      "Claude Code: final editor fixes, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When does a fault stop sliding forward everywhere? An Evidence Press briefing. Pumping fluid into rock along a fault can make the fault slip slowly, without an earthquake. In the simplest models the slipping patch grows as an expanding circle around the well, and every point in it slides forward. When the injection rate is turned down, the pressure near the well falls first, and at some moment part of the fault can no longer keep sliding forward. After that, rules of thumb based on an expanding crack no longer apply. This release shows that one number decides when that moment comes: the slip rate at the injection point, the centre of the patch. If the injection rate rises and then falls, the whole patch is sliding forward exactly when the centre is. For schedules with many rises, falls and steps, provided injection starts gently, the whole patch keeps sliding forward exactly as long as the centre does, so the centre is always the first place to stop. Practical consequences follow. With realistic well sizes, almost any sudden cut, of more than about a tenth of a per cent, ends full sliding at once. After shut-in there is an explicit deadline by which it must end. And for a point source, no gradual linear reduction can halve the rate without it ending. The results have written proofs and numerical checks, in an idealised model with constant friction, and they say nothing about earthquake hazard after the first stop. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on 31 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "From a fresh extraction of the frozen archive, all ten check scripts ran with Python -I -O -B, their built-in negative controls were detected, and every regenerated JSON output matched the retained one apart from recorded run times. GitHub CI repeats the replay on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Two separately written kernel implementations (adaptive quadrature and composite Gauss–Legendre) agree on the taper roots to 3.5×10⁻¹¹; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the numerical constants are not interval-certified."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.12 with NumPy, SciPy and Matplotlib versions pinned in requirements.txt; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Sáez et al. (2025). Maximum size and magnitude of injection-induced slow slip events. Science Advances. Volume laws for injection-induced slow slip, valid while the slip stays crack-like; the open question this paper addresses.",
+      "url": "https://doi.org/10.1126/sciadv.adq0662"
+    },
+    {
+      "citation": "Sáez and Lecampion (2023). Post-injection aseismic slip as a mechanism for the delayed triggering of seismicity. Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences. Post-injection slip pulse and immediate locking of the injection point at point-source shut-in.",
+      "url": "https://doi.org/10.1098/rspa.2022.0810"
+    },
+    {
+      "citation": "Sáez Uribe (2023). Three-dimensional fluid-driven frictional ruptures: theory and applications. École Polytechnique Fédérale de Lausanne.",
+      "url": "https://doi.org/10.5075/epfl-thesis-10303"
+    },
+    {
+      "citation": "Viesca (2025). Asymptotic solutions for self-similarly expanding fault slip induced by fluid injection at constant rate. Journal of Fluid Mechanics. Constant-rate asymptotic solutions; source of the inner-limit Bessel kernel.",
+      "url": "https://doi.org/10.1017/jfm.2025.10593"
+    },
+    {
+      "citation": "Viesca (2021). Self-similar fault slip in response to fluid injection. Journal of Fluid Mechanics.",
+      "url": "https://doi.org/10.1017/jfm.2021.825"
+    },
+    {
+      "citation": "Yang and Tian (2019). Monotonicity rules for the ratio of two Laplace transforms with applications. Journal of Mathematical Analysis and Applications. Monotonicity rules for ratios of Laplace transforms, the classical pattern behind Lemma 2.",
+      "url": "https://doi.org/10.1016/j.jmaa.2018.10.034"
+    },
+    {
+      "citation": "Jacquey and Viesca (2023). Nucleation and Arrest of Fluid-Induced Aseismic Slip. Geophysical Research Letters. Nucleation and arrest of fluid-induced aseismic slip.",
+      "url": "https://doi.org/10.1029/2022GL101228"
+    },
+    {
+      "citation": "Passelègue et al. (2026). Propagation of fluid-driven aseismic slip fronts under upper crustal conditions. Science Advances.",
+      "url": "https://doi.org/10.1126/sciadv.aeb0234"
+    },
+    {
+      "citation": "Ji et al. (2025). Alleviating post-injection seismic hazard in enhanced geothermal systems: Insights from a multi-scale study. Earth and Planetary Science Letters.",
+      "url": "https://doi.org/10.1016/j.epsl.2025.119579"
+    },
+    {
+      "citation": "Baricz et al. (2011). On Kaluza's sign criterion for reciprocal power series. Annales UMCS, Mathematica.",
+      "url": "https://doi.org/10.2478/v10062-011-0009-2"
+    },
+    {
+      "citation": "Feng and Li (2024). A class of monotonicity-preserving variable-step discretizations for Volterra integral equations. BIT Numerical Mathematics.",
+      "url": "https://doi.org/10.1007/s10543-024-01027-8"
+    },
+    {
+      "citation": "Sáez et al. (2022). Three-dimensional fluid-driven stable frictional ruptures. Journal of the Mechanics and Physics of Solids. Source of the circular zero-Poisson-ratio model, the radius condition and the stress-injection parameter.",
+      "url": "https://doi.org/10.1016/j.jmps.2021.104754"
+    },
+    {
+      "citation": "Garagash and Germanovich (2012). Nucleation and arrest of dynamic slip on a pressurized fault. Journal of Geophysical Research: Solid Earth.",
+      "url": "https://doi.org/10.1029/2012JB009209"
+    },
+    {
+      "citation": "Bhattacharya and Viesca (2019). Fluid-induced aseismic fault slip outpaces pore-fluid migration. Science. Slow slip outpacing pore-fluid migration; plane-strain stress-injection parameter.",
+      "url": "https://doi.org/10.1126/science.aaw7354"
+    },
+    {
+      "citation": "Sáez and Lecampion (2024). Fluid-driven slow slip and earthquake nucleation on a slip-weakening circular fault. Journal of the Mechanics and Physics of Solids.",
+      "url": "https://doi.org/10.1016/j.jmps.2023.105506"
+    },
+    {
+      "citation": "Friedman (1963). On integral equations of Volterra type. Journal d'Analyse Mathématique. Classical positivity theory for Volterra equations (background).",
+      "url": "https://doi.org/10.1007/BF02789991"
+    },
+    {
+      "citation": "Gripenberg (1978). On positive, nonincreasing resolvents of Volterra equations. Journal of Differential Equations.",
+      "url": "https://doi.org/10.1016/0022-0396(78)90007-4"
+    },
+    {
+      "citation": "Clément and Nohel (1981). Asymptotic Behavior of Solutions of Nonlinear Volterra Equations with Completely Positive Kernels. SIAM Journal on Mathematical Analysis.",
+      "url": "https://doi.org/10.1137/0512045"
+    },
+    {
+      "citation": "Gripenberg et al. (1990). Volterra Integral and Functional Equations. Cambridge University Press. Standard monograph on Volterra equations and positive resolvents (background).",
+      "url": "https://doi.org/10.1017/CBO9780511662805"
+    },
+    {
+      "citation": "Alghannam and Juanes (2020). Understanding rate effects in injection-induced earthquakes. Nature Communications.",
+      "url": "https://doi.org/10.1038/s41467-020-16860-y"
+    },
+    {
+      "citation": "Sneddon (1946). The distribution of stress in the neighbourhood of a crack in an elastic solid. Proceedings of the Royal Society of London. Series A. Mathematical and Physical Sciences. Classical circular-crack inversion.",
+      "url": "https://doi.org/10.1098/rspa.1946.0077"
+    },
+    {
+      "citation": "Gorenflo and Vessella (1991). Abel Integral Equations. Springer Berlin Heidelberg.",
+      "url": "https://doi.org/10.1007/BFb0084665"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:fault-sliding-history-criteria",
+    "attemptIds": [
+      "ep-attempt:fault-sliding-history-criteria-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "For the circular constant-friction model of injection-driven aseismic slip with a point or Gaussian source, nonnegativity of the injection-point slip-rate history is equivalent to full sliding, under stated startup conditions; full sliding is first lost at the centre; explicit drop, shut-in and taper consequences.",
+      "scope": "Zero Poisson ratio, constant friction, zero fracture energy, homogeneous permeable layer, one-way coupling; first loss of full sliding only. Annular sources, nonzero Poisson ratio and the post-locking slip pulse are not covered."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 2.2 identifies Θ with the stress-injection parameter T of Sáez et al. (2022) and Bhattacharya and Viesca (2019), with c_p q_0 = Δp*, and gives the constant-rate radius map with both asymptotes.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "Field parameters in the dimensional example are illustrative, not calibrated."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in fault mechanics check the positive-transfer argument of Appendix B and the Gaussian startup argument of Appendix C, and certify the constants of Appendix D.2 by interval arithmetic.",
+      "claimCeiling": "Proved centre-history criteria and schedule consequences in the stated circular model; numerically verified constants and finite-window thresholds. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "fault-sliding-history-criteria-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable one-number criterion for the end of crack-like slip under variable injection, with its consequences for schedules.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
