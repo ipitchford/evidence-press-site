@@ -4,7 +4,7 @@ Open **interpsych-history.html** for the complete reading copy, chronology, peop
 
 - **interpsych-history.md**: editable narrative.
 - **interpsych-history.pdf**: printable narrative with clickable citations.
-- **source-catalogue.csv / .json**: 396 records: 111 from the first investigation, 106 added on 30 October 2026, including 44 archived Sheffield forum pages, and 179 added on 31 October 2026, with dates, findings, limitations and access details.
+- **source-catalogue.csv / .json**: 411 records: 111 from the first investigation, 106 added on 30 October 2026, including 44 archived Sheffield forum pages, and 194 added on 31 October 2026, with dates, findings, limitations and access details.
 - **timeline.csv**: 64 chronological entries with source links.
 - **people.csv**: 71 selective role records.
 - **retrieval-inventory.csv**: public-page retrieval inventory, including failures and byte checksums where recorded. This is not a count of independent sources.
