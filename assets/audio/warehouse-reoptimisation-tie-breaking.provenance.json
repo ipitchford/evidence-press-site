@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Same three trips, different fate. An Evidence Press briefing on tie-breaking in warehouse order picking. Picture a warehouse worker pushing a cart with two bins. Each customer order fills one bin, and new orders keep arriving. A common rule is to reoptimise: every time the list of orders changes, work out the fastest way to finish everything on it, start that plan, and throw the rest away when new orders arrive. Now suppose five orders are waiting at the same shelf. One plan takes a single order first, then two full cartloads. Another takes two full cartloads first, and the single order last. Both need three trips and finish at exactly the same time, so a solver may return either. But orders keep arriving during the first trip, and the plan is recomputed.",
+      "inputSha256": "9a4c4b98c6a655de35a5e3339ef21f2c3e947cf4c0037f12abf27b580fed9124",
+      "audioSha256": "2314dbbea444dddb1c8ea3f9e108b9338a405a3b78916fbad398c84394302b90",
+      "requestId": "req_9afb04ff66ba4c9483f53bbb18b7bb58",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "during the trip and the plan is recomputed",
+        "heardEnding": "may return either but orders keep arriving during the trip and the plan is re computed",
+        "matchedWords": 7,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The paper shows that this harmless-looking tie decides whether the warehouse keeps up. A picker who always takes the leftover orders first falls further and further behind once demand passes about seventy-six per cent of what the cart can carry. With eight bins that happens at about forty-nine per cent, and for very large carts at about thirty-seven per cent. A picker who always fills the cart first keeps up all the way to full capacity. The gap survives picking times and two separate shelves, and a simple tie-breaking rule, finishing orders as early as possible on average, picks the safe option.",
+      "inputSha256": "0f21e1c6dd5013999d565cb965a51f9cab03d40ec91a26899c5a913eeff49b45",
+      "audioSha256": "00fd877771c7d6343d3f3b5448c9a495247e475a8a827c193b751f292dd20f06",
+      "requestId": "req_87fd9a6c9005404792c94ab54856bbf5",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "as possible on average picks the safe option",
+        "heardEnding": "simple tie breaking rule finishing orders as early as possible on average picks the safe option",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The paper also proves an open conjecture from the research that introduced these models: when orders are rare enough, reoptimisation is always stable, whatever the tie rule, although the condition it proves is cautious. The results have written proofs and computer checks, but only synthetic data, not real warehouse records. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on thirty-one October twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "540e72aa5e25b8c23b6793b63a075ecd965962d3bb3450ef6ddcc9901b617544",
+      "audioSha256": "57f45599783969372f339d6dae7157c7e2ea1b40afde315722df46fb8addcf48",
+      "requestId": "req_c0e186f58a594ef1ac80462d44f7e53a",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "warehouse-reoptimisation-tie-breaking",
+  "generatedAt": "2026-10-31T21:25:45.030Z",
+  "sourceMetadata": "papers/warehouse-reoptimisation-tie-breaking/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "5905e98cf248511ef29d2f7f80b0f11b32e8942cb67efedc5a3418b756f51063",
+  "transcriptPath": "assets/audio/warehouse-reoptimisation-tie-breaking.txt",
+  "transcriptSha256": "9ef6bd9f94a6fbf32a0f407ca904029afee18a15e096e239236db742efab2d6b",
+  "audioPath": "assets/audio/warehouse-reoptimisation-tie-breaking.mp3",
+  "audioSha256": "9d3d860e6dd91c6620152b7ace9da9d8d3eccce1a07d6f8f01a1914bc13014d9",
+  "audioBytes": 2061356,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

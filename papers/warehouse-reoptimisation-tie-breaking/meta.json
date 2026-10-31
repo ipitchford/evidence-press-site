@@ -1,0 +1,253 @@
+{
+  "slug": "warehouse-reoptimisation-tie-breaking",
+  "title": "Stability and tie-breaking in online warehouse reoptimisation",
+  "shortTitle": "Same three trips, different fate: tie-breaking decides warehouse stability",
+  "oneLine": "Five orders, two bins: plans (1,2,2) and (2,2,1) both take three trips, but a picker who reoptimises as orders arrive and always takes the remainder first is overwhelmed at about 76% of capacity, while filling the cart first is stable to full capacity; the paper also proves the Lorenz–Otto–Gendreau low-rate conjecture.",
+  "abstract": "A warehouse picker who, whenever new orders arrive, recomputes the fastest way to finish the known orders is said to reoptimise. This candidate answers two questions about that policy for the cart models of Lorenz, Otto and Gendreau (Networks, 2025). First, solving every snapshot exactly does not determine stability. With five identical orders at one shelf and a two-bin cart, the plans (1,2,2) and (2,2,1) both need three trips, so a solver may return either. In the non-interventionist manual-cart model, always taking the remainder first is stable only below the root of E⌈Pois(ρ)/c⌉ = 1, about 76% of capacity with two bins, 49% with eight and tending to 1/e for very large carts, whereas always filling the cart first is stable up to full capacity. The two rules bracket every exact tie rule; the paper gives the exact long-run makespan ratio of remainder first at every load, shows that it approaches but never reaches two, and shows that the gap survives positive picking times (sharply with two bins) and two distinct shelf locations. Breaking ties by total order completion time selects full first. Second, the paper proves the authors' low-rate conjecture for all three of their cart models: if appending each new order on its own costs time B, Poisson arrivals with λE[B] < 1 keep the backlog logarithmic almost surely, with explicit finite-horizon bounds. That condition is deliberately conservative. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-31",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "online order picking",
+    "reoptimisation",
+    "warehouse",
+    "stochastic stability",
+    "bulk-service queue",
+    "order batching",
+    "tie-breaking",
+    "makespan",
+    "online algorithms"
+  ],
+  "repoUrl": "https://github.com/ipitchford/warehouse-reoptimisation-tie-breaking",
+  "releaseUrl": "https://github.com/ipitchford/warehouse-reoptimisation-tie-breaking/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/warehouse-reoptimisation-tie-breaking/releases/download/v0.1.0-candidate/warehouse-reoptimisation-tie-breaking-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23845532",
+  "conceptDoi": "10.5281/zenodo.23845531",
+  "zenodoUrl": "https://zenodo.org/records/23845532",
+  "citeText": "Anonymous (2026). Stability and tie-breaking in online warehouse reoptimisation. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23845532",
+  "evidence": "Written proofs of every theorem, proposition, lemma and corollary; fourteen verification scripts with retained outputs: a physical-state check of the clearance certificate on a finite weighted graph (48,912 value comparisons), recurrence checks (164,000 cases), the offline benchmark against all ordered partitions and an all-subset dynamic programme, exact rational root brackets for the thresholds (capacities 2 to 128), 60- and 90-digit recomputations, exact corrector identities, a recomputation of every constant derived by both independent derivations, and seeded synthetic simulations; replay with Python -O from a fresh extraction of the frozen archive.",
+  "statusDetail": "Unrefereed AI-assisted operations-research candidate consolidating two independent derivations. The theorems have written proofs; thresholds are certified by exact rational brackets and high-precision evaluation; simulations are synthetic and no warehouse operating data were used. Internal AI-assisted review in five roles, a separate-model adversarial proof review and audit of new proofs, a clean replay of both source bundles, one revision round and a re-review whose minor items were applied without a further review round. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 31 October 2026 with DOI insertion, 35 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 31 October 2026.",
+  "keyResults": [
+    "Tie-breaking decides stability (Propositions 7–8, Theorem 9, proof): for identical orders at one shelf in Pcart-N with capacity c and ρ arrivals per tour, remainder first is positive recurrent exactly when E⌈Pois(ρ)/c⌉ < 1 (null recurrent at equality), full first is stable for ρ < c, and the two bracket every exact tie rule.",
+    "Exact cost (Theorem 9, Theorem 13, proof): the long-run makespan ratio of remainder first is max{1, G_c}/max{1, ρ/c} at every load; it is always below two and approaches two along overloaded sequences.",
+    "Where it breaks (Theorem 11, proof with rational root certificates): the remainder-first threshold is about 76% of capacity at c = 2 and 49% at c = 8, and ρ_c/c → 1/e with an explicit logarithmic correction; beyond it the drift can be exponentially small, so short simulations can miss the instability.",
+    "A principled repair (Proposition 14, proof): with zero picking time, breaking ties by total order completion time selects full first.",
+    "Robustness (Theorems 15–17, proof): the separation survives positive picking time at every c ≥ 2, has a unique sharp threshold at c = 2, and survives two distinct shelf locations, with a proved makespan loss of at least about 10.7% in an explicit instance.",
+    "The conjecture (Proposition 1, Theorems 2–5, Corollary 6, proof): for Pcart-N, Pcart and Robot, Poisson arrivals with λE[B] < 1, where B is the cost of appending one order on its own, keep the backlog O(log n) almost surely and the makespan ratio 1 + O(log n / n), for every tie rule, with explicit completion, backlog and delay bounds."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted operations-research mathematics (two independent derivations, consolidated)",
+      "AI-assisted internal review, separate-model adversarial review and audit, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Same three trips, different fate. An Evidence Press briefing on tie-breaking in warehouse order picking. Picture a warehouse worker pushing a cart with two bins. Each customer order fills one bin, and new orders keep arriving. A common rule is to reoptimise: every time the list of orders changes, work out the fastest way to finish everything on it, start that plan, and throw the rest away when new orders arrive. Now suppose five orders are waiting at the same shelf. One plan takes a single order first, then two full cartloads. Another takes two full cartloads first, and the single order last. Both need three trips and finish at exactly the same time, so a solver may return either. But orders keep arriving during the first trip, and the plan is recomputed. The paper shows that this harmless-looking tie decides whether the warehouse keeps up. A picker who always takes the leftover orders first falls further and further behind once demand passes about seventy-six per cent of what the cart can carry. With eight bins that happens at about forty-nine per cent, and for very large carts at about thirty-seven per cent. A picker who always fills the cart first keeps up all the way to full capacity. The gap survives picking times and two separate shelves, and a simple tie-breaking rule, finishing orders as early as possible on average, picks the safe option. The paper also proves an open conjecture from the research that introduced these models: when orders are rare enough, reoptimisation is always stable, whatever the tie rule, although the condition it proves is cautious. The results have written proofs and computer checks, but only synthetic data, not real warehouse records. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on thirty-one October twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "From a fresh extraction of the frozen archive, all fourteen check scripts ran with Python -I -O -B and every regenerated JSON and CSV output matched the retained one within a relative tolerance of 1e-7, apart from recorded run times. GitHub CI repeats the replay on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Two independently developed derivations were consolidated and every overlapping constant is recomputed from the definitions at 60 digits; several quantities are checked by separately written scripts. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.12 with NumPy, SciPy and Matplotlib versions pinned in requirements.txt; not a locked container. Simulations are seeded."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Lorenz et al. (2025). Picking Operations in Warehouses With Dynamically Arriving Orders: How Good is Reoptimization?. Networks. The three cart models, the reoptimisation policy and the low-rate conjecture proved here.",
+      "url": "https://doi.org/10.1002/net.22281"
+    },
+    {
+      "citation": "Lorenz et al. (2024). Picking Operations in Warehouses with Dynamically Arriving Orders: How Good is Reoptimization?. arXiv:2409.12619. Earlier preprint of the source paper; the conjecture is quoted from this version.",
+      "url": "https://arxiv.org/abs/2409.12619v1"
+    },
+    {
+      "citation": "Christou et al. (2026). Online Batching with Lookahead: Adversarial Limits and Stochastic Gains. arXiv:2610.16013. Online batching with lookahead; its work-conserving definition excludes remainder first.",
+      "url": "https://arxiv.org/abs/2610.16013v1"
+    },
+    {
+      "citation": "Powell and Humblet (1986). The Bulk Service Queue with a General Control Strategy: Theoretical Analysis and a New Computational Procedure. Operations Research. Bulk-service queues under general control; its full-capacity conclusion does not cover remainder first.",
+      "url": "https://doi.org/10.1287/opre.34.2.267"
+    },
+    {
+      "citation": "Bailey (1954). On Queueing Processes with Bulk Service. Journal of the Royal Statistical Society Series B: Statistical Methodology. The bulk-service queue that full first reduces to.",
+      "url": "https://doi.org/10.1111/j.2517-6161.1954.tb00149.x"
+    },
+    {
+      "citation": "Aldous et al. (2001). On the stability of a batch clearing system with Poisson arrivals and subadditive service times. Journal of Applied Probability. Stability of a gated batch-clearing policy.",
+      "url": "https://doi.org/10.1239/jap/1005091027"
+    },
+    {
+      "citation": "Kumar and Seidman (1990). Dynamic instabilities and stabilization methods in distributed real-time scheduling of manufacturing systems. IEEE Transactions on Automatic Control. Classic instability of reasonable scheduling rules below capacity.",
+      "url": "https://doi.org/10.1109/9.50339"
+    },
+    {
+      "citation": "Bertsimas and van Ryzin (1991). A Stochastic and Dynamic Vehicle Routing Problem in the Euclidean Plane. Operations Research. Bounding a replanning policy by a queue of insertion costs.",
+      "url": "https://doi.org/10.1287/opre.39.4.601"
+    },
+    {
+      "citation": "Scokaert et al. (1999). Suboptimal model predictive control (feasibility implies stability). IEEE Transactions on Automatic Control. Feasibility implies stability: the incumbent-plan principle behind the clearance certificate.",
+      "url": "https://doi.org/10.1109/9.751369"
+    },
+    {
+      "citation": "Smith (1956). Various optimizers for single-stage production. Naval Research Logistics Quarterly. Smith's ratio rule for total completion time.",
+      "url": "https://doi.org/10.1002/nav.3800030106"
+    },
+    {
+      "citation": "Oblakova et al. (2019). An exact root-free method for the expected queue length for a class of discrete-time queueing systems. Queueing Systems.",
+      "url": "https://doi.org/10.1007/s11134-019-09614-1"
+    },
+    {
+      "citation": "Durrett (2019). Probability. Cambridge University Press.",
+      "url": "https://doi.org/10.1017/9781108591034"
+    },
+    {
+      "citation": "Giannikas et al. (2017). An interventionist strategy for warehouse order picking: Evidence from two case studies. International Journal of Production Economics.",
+      "url": "https://doi.org/10.1016/j.ijpe.2017.04.002"
+    },
+    {
+      "citation": "Georgiadis et al. (2015). Minimal Evacuation Times and Stability. IEEE/ACM Transactions on Networking.",
+      "url": "https://doi.org/10.1109/tnet.2014.2312271"
+    },
+    {
+      "citation": "Krumke and Rambau (2012). Stability with Uniform Bounds for On-line Dial-a-Ride Problems under Reasonable Load. Lecture Notes in Control and Information Sciences.",
+      "url": "https://doi.org/10.1007/978-1-4471-2265-4_17"
+    },
+    {
+      "citation": "Henn (2012). Algorithms for on-line order batching in an order picking warehouse. Computers &amp; Operations Research.",
+      "url": "https://doi.org/10.1016/j.cor.2011.12.019"
+    },
+    {
+      "citation": "Meyn et al. (2009). Markov Chains and Stochastic Stability. Cambridge University Press.",
+      "url": "https://doi.org/10.1017/cbo9780511626630"
+    },
+    {
+      "citation": "Jaillet and Wagner (2008). Generalized Online Routing: New Competitive Ratios, Resource Augmentation, and Asymptotic Analyses. Operations Research.",
+      "url": "https://doi.org/10.1287/opre.1070.0450"
+    },
+    {
+      "citation": "de Koster et al. (2007). Design and control of warehouse order picking: A literature review. European Journal of Operational Research.",
+      "url": "https://doi.org/10.1016/j.ejor.2006.07.009"
+    },
+    {
+      "citation": "Neuts (1967). A General Class of Bulk Queues with Poisson Input. The Annals of Mathematical Statistics.",
+      "url": "https://doi.org/10.1214/aoms/1177698869"
+    },
+    {
+      "citation": "Foster (1953). On the Stochastic Matrices Associated with Certain Queuing Processes. The Annals of Mathematical Statistics.",
+      "url": "https://doi.org/10.1214/aoms/1177728976"
+    },
+    {
+      "citation": "Lindley (1952). The theory of queues with a single server. Mathematical Proceedings of the Cambridge Philosophical Society.",
+      "url": "https://doi.org/10.1017/s0305004100027638"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:warehouse-reoptimisation-tie-breaking",
+    "attemptIds": [
+      "ep-attempt:warehouse-reoptimisation-tie-breaking-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "In the one-shelf non-interventionist cart model, break ties between makespan-optimal plans by filling the cart first (equivalently, by total order completion time); remainder first is unstable above an explicit threshold. Reoptimisation of any tie rule is stable when λE[B] < 1 in all three cart models.",
+      "scope": "Identical orders at one shelf (with positive-picking and two-location extensions) for the tie result; Pcart-N, Pcart and Robot with Poisson arrivals for the conjecture. General multi-aisle layouts, interventionist tie rules, several pickers and operating data are not covered."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.1 quotes the source conjecture; Section 2 restates the three cart models and completion conventions of Lorenz, Otto and Gendreau, and the merge notes reconcile the notation of the two derivations.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "No evidence on which tie rules deployed solvers use."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in stochastic processing networks check the coupling after Proposition 8 and the random-mapping step in Theorems 15–16, and ask the source authors whether the conjecture's intended scope matches Corollary 6.",
+      "claimCeiling": "Proved tie-rule separation in the stated one-shelf and two-location models and a proof of the existence part of the low-rate conjecture under a conservative condition. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "warehouse-reoptimisation-tie-breaking-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable demonstration that exact snapshot optimisation does not determine stability, with a safe tie rule and a proof of a published conjecture.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
