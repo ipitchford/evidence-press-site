@@ -1,0 +1,246 @@
+{
+  "slug": "tullock-damped-response-no-floor",
+  "title": "Convergence of damped best responses in Tullock contests with no minimum effort",
+  "shortTitle": "Contest learning without a minimum effort",
+  "oneLine": "In Tullock contests with convex costs, players who repeatedly move part of the way towards their best reply reach the unique equilibrium even when expensive players drop out, answering the zero-floor question left open by Elkind, Ghosh and Goldberg (2024).",
+  "abstract": "In a Tullock (lottery) contest each player wins with probability equal to its share of total effort and pays a private convex cost. When every player repeatedly moves a common fraction of the way towards its best reply, Elkind, Ghosh and Goldberg (2024) proved convergence only under a positive minimum-effort floor, which prevents expensive players from withdrawing and so changes the equilibrium, and left the floorless case open. This candidate proves convergence with no floor: for sufficiently small constant steps (with geometric decay of the Nikaido–Isoda gap) and for every vanishing step sequence with divergent sum, from any finite start with at least two positive efforts, with nonsmooth costs and zero marginal cost at zero allowed. The new ingredient is that every player's combined rival effort stays above an explicit positive constant from an explicit time, even when individual efforts tend to zero. Harmonic steps give a gap of order 1/k, exactly of that order when a strictly inactive player starts with positive effort. Corollaries cover concave impact functions (with damping in impact units) and unit-elastic Cournot partial adjustment, and local thresholds 4/n and 8ab/(a+b)^2 show that any uniform step must shrink with the number of players and cost heterogeneity. The certified step is extremely conservative. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-31",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Tullock contest",
+    "lottery contest",
+    "best-response dynamics",
+    "learning in games",
+    "Nash equilibrium",
+    "Cournot oligopoly",
+    "relaxation algorithm",
+    "Nikaido–Isoda function",
+    "convergence"
+  ],
+  "repoUrl": "https://github.com/ipitchford/tullock-damped-response-no-floor",
+  "releaseUrl": "https://github.com/ipitchford/tullock-damped-response-no-floor/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/tullock-damped-response-no-floor/releases/download/v1.0.0-candidate/tullock-damped-response-no-floor-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23837648",
+  "conceptDoi": "10.5281/zenodo.23837647",
+  "zenodoUrl": "https://zenodo.org/records/23837648",
+  "citeText": "Anonymous (2026). Convergence of damped best responses in Tullock contests with no minimum effort. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23837648",
+  "evidence": "Written proofs of every theorem, lemma, proposition and corollary; a verification program with sampled exact-rational identity checks, best-response optimality, one-step-inequality and extension checks and exact eigenvalues; a replay driver that reruns it from a clean copy, compares the record and checks the headline values in normal and optimised mode; nine semantic negative controls; CI.",
+  "statusDetail": "Unrefereed AI-assisted candidate. Every result has a written proof; finite computations support the implementation and are labelled as such, and the all-active duopoly rate is numerical only. Internal AI-assisted review only: five reviewer perspectives, an adversarial review by a different model and a verification pass with proof audit by a third model. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (dated 31 October 2026, 17 pages), its verification record and the frozen release archive.",
+  "keyResults": [
+    "Damped simultaneous best responses x ← (1−α)x + α·b(x) converge to the unique equilibrium without any minimum-effort floor, for constant α ≤ α* (geometric decay of the Nikaido–Isoda gap) and for every α_k → 0 with Σα_k = ∞; costs may be nonsmooth and players may withdraw (Theorem 1, proof).",
+    "Every rival total s_i stays above δ = μ/(373248 M³) once the cumulative step reaches an explicit Λ, although individual efforts may tend to zero (Lemmas 3–4, Proposition 5, proof).",
+    "Harmonic steps give a gap of order 1/k; it is exactly of order 1/k when a strictly inactive player starts with positive effort (Theorem 1(3), Proposition 10, proof).",
+    "The theorem transfers to concave impact functions, including Tullock exponents 0 < r ≤ 1, when damping acts on impact (Corollary 11, proof).",
+    "Local stability needs α < 4/n for n identical linear players and α < 8ab/(a+b)² for two players, so no uniform step avoids shrinking with n and cost heterogeneity (Proposition 12, proof).",
+    "Open: a step guarantee of order 1/n with polynomial cost dependence; player-specific speeds; noisy responses."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research",
+      "AI-assisted internal review, two adversarial audits by a different model and a targeted proof audit",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Contest learning without a minimum effort. An Evidence Press briefing. First, the setting. In many competitions, such as research races, lobbying or online contests, each participant wins a prize with a probability equal to its share of the total effort, and effort is costly. Economists call this a Tullock contest. Its equilibrium often has expensive participants spending nothing at all. A natural question is whether simple learning reaches that equilibrium. Suppose every player repeatedly moves part of the way towards its best reply to what the others are doing. A 2024 study proved that this works, but only if every player is forced to keep spending at least some fixed minimum, which stops expensive players from dropping out and so changes the game. The authors asked whether the minimum is needed. The main finding is that it is not. The process still converges to the unique equilibrium, including when some players withdraw completely, for small enough constant steps and for any slowly shrinking steps. The key fact is simple: each player's rivals, taken together, never stop competing. If the others' total effort becomes tiny, the leading player's best reply is also small, so it eases off and the others recover. The paper makes the threshold and the time this takes explicit, shows that the error can fall like one over the number of rounds, and shows that the step size must shrink as the number of players grows. The limits: the guaranteed step size is far too small to use in practice, all players must adjust at the same speed, and best replies must be exact. This is an anonymous, unrefereed candidate, checked by AI-assisted review only, not peer review. Published on 31 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "replay_all.py reruns the verification program from a clean copy of the frozen archive, compares its record at relative tolerance 1e-9 and checks the headline values, in normal and optimised mode; nine negative controls are rejected. GitHub CI repeats both."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Reviewers and the editor recomputed every load-bearing identity and constant by hand; the program compares best responses with an independent scalar optimiser. This is producer-side checking, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review and correctness audits are not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.11 or later with pinned NumPy, SciPy and Matplotlib; replay passed locally on macOS and in CI on Ubuntu."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "M. Benaïm (1999), Dynamics of stochastic approximation algorithms.",
+      "url": "https://doi.org/10.1007/BFb0096509"
+    },
+    {
+      "citation": "Y. Ben Mazziane, C.-M. Mboulou Moutoubi, E. Altman and F. De Pellegrini (2026), Learning in Proportional Allocation Auctions Games.",
+      "url": "https://doi.org/10.48550/arXiv.2603.25303"
+    },
+    {
+      "citation": "G. I. Bischi, C. Chiarella, M. Kopel and F. Szidarovszky (2010), Nonlinear Oligopolies.",
+      "url": "https://doi.org/10.1007/978-3-642-02106-0"
+    },
+    {
+      "citation": "R. Cornes and R. Hartley (2005), Asymmetric contests with general technologies.",
+      "url": "https://doi.org/10.1007/s00199-004-0566-5"
+    },
+    {
+      "citation": "M. Dindoš and C. Mezzetti (2006), Better-reply dynamics and global convergence to Nash equilibrium in aggregative games.",
+      "url": "https://doi.org/10.1016/j.geb.2004.12.001"
+    },
+    {
+      "citation": "E. Elkind, A. Ghosh and P. W. Goldberg (2024), Continuous-Time Best-Response and Related Dynamics in Tullock Contests with Convex Costs (source of the open question).",
+      "url": "https://doi.org/10.48550/arXiv.2402.08541"
+    },
+    {
+      "citation": "E. Even-Dar, Y. Mansour and U. Nadav (2009), On the convergence of regret minimization dynamics in concave games.",
+      "url": "https://doi.org/10.1145/1536414.1536486"
+    },
+    {
+      "citation": "F. M. Fisher (1961), The Stability of the Cournot Oligopoly Solution: The Effects of Speeds of Adjustment and Increasing Marginal Costs.",
+      "url": "https://doi.org/10.2307/2295710"
+    },
+    {
+      "citation": "M. Frank and P. Wolfe (1956), An algorithm for quadratic programming.",
+      "url": "https://doi.org/10.1002/nav.3800030109"
+    },
+    {
+      "citation": "A. Ghosh (2023), Best-Response Dynamics in Tullock Contests with Convex Costs.",
+      "url": "https://doi.org/10.48550/arXiv.2310.03528"
+    },
+    {
+      "citation": "A. Ghosh and P. W. Goldberg (2023), Best-Response Dynamics in Lottery Contests.",
+      "url": "https://doi.org/10.1145/3580507.3597777"
+    },
+    {
+      "citation": "J. B. Krawczyk and S. Uryasev (2000), Relaxation algorithms to find Nash equilibria with economic applications.",
+      "url": "https://doi.org/10.1023/A:1019097208499"
+    },
+    {
+      "citation": "A. Matsumoto and F. Szidarovszky (2011), Stability, Bifurcation, and Chaos in N-Firm Nonlinear Cournot Games.",
+      "url": "https://doi.org/10.1155/2011/380530"
+    },
+    {
+      "citation": "T. Puu (2008), On the stability of Cournot equilibrium when the number of competitors increases.",
+      "url": "https://doi.org/10.1016/j.jebo.2006.06.010"
+    },
+    {
+      "citation": "J. B. Rosen (1965), Existence and Uniqueness of Equilibrium Points for Concave N-Person Games.",
+      "url": "https://doi.org/10.2307/1911749"
+    },
+    {
+      "citation": "W. E. Stein (2002), Asymmetric Rent-Seeking with More than Two Contestants.",
+      "url": "https://doi.org/10.1023/A:1020877410243"
+    },
+    {
+      "citation": "F. Szidarovszky and K. Okuguchi (1997), On the Existence and Uniqueness of Pure Nash Equilibrium in Rent-Seeking Games.",
+      "url": "https://doi.org/10.1006/game.1997.0517"
+    },
+    {
+      "citation": "R. D. Theocharis (1960), On the Stability of the Cournot Solution on the Oligopoly Problem.",
+      "url": "https://doi.org/10.2307/2296135"
+    },
+    {
+      "citation": "S. Uryas'ev and R. Y. Rubinstein (1994), On relaxation algorithms in computation of noncooperative equilibria.",
+      "url": "https://doi.org/10.1109/9.293193"
+    },
+    {
+      "citation": "A. von Heusinger and C. Kanzow (2009), Relaxation Methods for Generalized Nash Equilibrium Problems with Inexact Line Search.",
+      "url": "https://doi.org/10.1007/s10957-009-9553-0"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:tullock-damped-response-no-floor",
+    "attemptIds": [
+      "ep-attempt:tullock-damped-response-no-floor-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Global convergence of damped simultaneous best responses in Tullock contests with convex costs without a positive effort floor, via persistence of rival totals.",
+      "scope": "Common step, exact best responses, at least two positive initial efforts; certified constant step conservative."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The open question is stated with its section in Elkind, Ghosh and Goldberg (2024); the paper separates its new persistence argument from credited classical relaxation, merit-function and monotone-game machinery.",
+      "remainingRisks": [
+        "Workshop slides by an originating author state discrete convergence without displaying the floor; no priority is claimed.",
+        "Checks rely on Python execution; no proof assistant was used.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Ask a contest-dynamics specialist to check Lemma 4 and Proposition 5, and confirm with the originating authors whether the zero-floor proof is already known.",
+      "claimCeiling": "Convergence without a minimum-effort floor for the stated schedules, with explicit persistence constants; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "tullock-damped-response-no-floor-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof that learning in Tullock contests does not need a minimum-effort floor.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "slug": "pooled-pricing-small-samples",
+  "title": "Small samples do not make pooled pricing safe",
+  "shortTitle": "No safe pooled price in small samples",
+  "oneLine": "Under the regularity conditions of Xie, Zhu and Shishkin (2025), no range of small sample sizes guarantees that one pooled empirical price beats segmented empirical pricing, for any number of markets.",
+  "abstract": "A seller with a small sample of past buyers can post one price chosen from the whole sample (pooled empirical revenue maximisation) or split buyers into markets by a covariate and price each market separately. Xie, Zhu and Shishkin (Theoretical Economics, 2025) showed that segmentation learns more slowly and asked whether there is a finite range of sample sizes, with lower endpoint at least three, on which pooled pricing beats every segmented rule for every distribution in their regularity class. This candidate shows that the regularity conditions alone do not guarantee such a range. For every number of markets K and every finite upper sample size N, one atomless distribution satisfying the conditions makes K-market pricing (with empty markets priced at the pooled price) strictly more profitable at every sample size from 2 to N, with an explicit positive bound. Combined with a distribution on which segmentation wins in large samples, this gives two fixed distributions in one fixed regularity class that defeat pooled dominance at every sample size; for two markets the threshold is explicit. The mechanism is a rare high-value segment: one high observation pulls a pooled price up and loses ordinary buyers. The provable constructions use extreme constants and tiny gains; an exploratory simulation shows relative gains up to about ten per cent at moderate parameters. The question with moderate constants fixed in advance remains open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-31",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "price discrimination",
+    "empirical revenue maximisation",
+    "pricing from samples",
+    "finite-sample learning",
+    "third-degree price discrimination",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/pooled-pricing-small-samples",
+  "releaseUrl": "https://github.com/ipitchford/pooled-pricing-small-samples/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/pooled-pricing-small-samples/releases/download/v1.0.0-candidate/pooled-pricing-small-samples-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23838042",
+  "conceptDoi": "10.5281/zenodo.23838041",
+  "zenodoUrl": "https://zenodo.org/records/23838042",
+  "citeText": "Anonymous (2026). Small samples do not make pooled pricing safe. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23838042",
+  "evidence": "Written proofs of the theorem and corollary, including a clause-by-clause check of the source's regularity assumption; an exact-rational certificate program for every constant, the parameter table, the oracle-gain bound and the explicit threshold; an exploratory fixed-seed Monte Carlo study; a replay driver with claim checks in normal and optimised mode; nine semantic negative controls; CI.",
+  "statusDetail": "Unrefereed AI-assisted candidate. The theorem and corollary have written proofs with exact arithmetic certificates; the moderate-parameter evidence is a simulation of the unsmoothed model and is labelled as numerical. Internal AI-assisted review only: five reviewer perspectives, an adversarial review by a different model and a verification pass with proof audit by a third model. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (dated 31 October 2026, 12 pages), its certificate and simulation records and the frozen release archive.",
+  "keyResults": [
+    "For every number of equal-length markets K ≥ 2 and every N ≥ 2, one atomless law satisfying Assumption 2 of Xie, Zhu and Shishkin makes K-market ERM beat pooled ERM at every n = 2,…,N, by at least 7qa/512 with a = 1/(256N⁴), q = a/(128N) (Theorem 1, proof with exact certificates).",
+    "For each K, two fixed laws in one regularity class, and in every more permissive class, defeat pooled dominance at every n ≥ 2; for K = 2 the threshold N* = 916,723,536 is explicit (Corollary 4, proof).",
+    "Empty markets receive the pooled price, the convention of the source's two-sample discussion; the construction depends on it.",
+    "In a simulation of the unsmoothed model at moderate parameters, two-market ERM wins at every n = 3,…,40 in eight of nine settings, with relative gains up to about 10% (Section 4, numerical).",
+    "Open: whether a dominance window exists when moderate regularity constants are fixed in advance."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research",
+      "AI-assisted internal review, two adversarial audits by a different model and a targeted proof audit",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Small samples do not make pooled pricing safe. An Evidence Press briefing. First, the question. A seller who has seen a few past customers can either set one price for everyone, chosen to maximise revenue on the whole sample, or split customers into groups, for example by region, and choose a separate price for each group. Splitting leaves fewer observations per group, so with very little data the single pooled price seems the safer choice. A 2025 paper in Theoretical Economics showed that splitting does learn more slowly, and asked whether, under standard smoothness conditions, pooling is guaranteed to win at small sample sizes. The main finding is that it is not. Imagine many ordinary customers with low valuations and a rare group willing to pay much more. When the sample happens to contain one of those rare customers, the pooled price can be pulled up towards that one valuation, and most ordinary customers stop buying. Splitting the data keeps that observation out of the ordinary group's price. The paper tunes the frequencies so that this protection outweighs every cost of splitting, at every sample size in any chosen range and for any number of groups, and it builds a fixed pair of demand models that defeats pooling at every sample size. The limits: the proven examples use extreme parameters with tiny gains, a simulation suggests gains of a few per cent at moderate parameters but is not a proof, the result depends on how empty groups are priced, and the version with moderate assumptions fixed in advance is still open. This is an anonymous, unrefereed candidate, checked by AI-assisted review only, not peer review. Published on 31 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "replay_all.py reruns the certificate program (record identical) and the simulation (record within 1e-9) from a clean copy of the frozen archive and checks the headline values, in normal and optimised mode; nine negative controls are rejected. GitHub CI repeats both."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Reviewers and the editor recomputed the load-bearing inequalities and the parameter table by hand; this is producer-side checking, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review and correctness audits are not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.11 or later; the certificates need only the standard library and the simulation pinned NumPy; replay passed locally on macOS and in CI on Ubuntu."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "A. Allouah, A. Bahamou and O. Besbes (2022), Pricing with Samples.",
+      "url": "https://doi.org/10.1287/opre.2021.2200"
+    },
+    {
+      "citation": "M. Babaioff, Y. A. Gonczarowski, Y. Mansour and S. Moran (2018), Are Two (Samples) Really Better Than One?",
+      "url": "https://doi.org/10.1145/3219166.3219187"
+    },
+    {
+      "citation": "D. Bergemann, B. Brooks and S. Morris (2015), The Limits of Price Discrimination.",
+      "url": "https://doi.org/10.1257/aer.20130848"
+    },
+    {
+      "citation": "R. Cole and T. Roughgarden (2014), The sample complexity of revenue maximization.",
+      "url": "https://doi.org/10.1145/2591796.2591867"
+    },
+    {
+      "citation": "A. N. Elmachtoub, V. Gupta and M. L. Hamilton (2021), The Value of Personalized Pricing.",
+      "url": "https://doi.org/10.1287/mnsc.2020.3821"
+    },
+    {
+      "citation": "V. Gupta and N. Kallus (2022), Data Pooling in Stochastic Optimization.",
+      "url": "https://doi.org/10.1287/mnsc.2020.3933"
+    },
+    {
+      "citation": "P. Massart (1990), The Tight Constant in the Dvoretzky-Kiefer-Wolfowitz Inequality.",
+      "url": "https://doi.org/10.1214/aop/1176990746"
+    },
+    {
+      "citation": "H. Xie, Y. Zhu and D. Shishkin (2025), On the limitations of data-based price discrimination (source of the open problem).",
+      "url": "https://doi.org/10.3982/TE5916"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:pooled-pricing-small-samples",
+    "attemptIds": [
+      "ep-attempt:pooled-pricing-small-samples-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Regular distributions under which segmented empirical pricing beats pooled empirical pricing at every sample size in any window, for every number of markets, answering the open problem of Xie, Zhu and Shishkin (2025) in its all-constants form.",
+      "scope": "Empty markets priced at pooled ERM; existential regularity class with extreme constants; moderate fixed constants open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The open problem and Assumption 2 are restated clause by clause from the published paper; the quantifier answered (some regularity class) is distinguished from the open fixed-moderate-constants version.",
+      "remainingRisks": [
+        "The construction depends on the pooled-price completion of empty markets.",
+        "Checks rely on Python execution; no proof assistant was used.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Ask a specialist in learning-based pricing whether the fixed-moderate-constants version is tractable and whether the rare-segment construction is known.",
+      "claimCeiling": "No small-sample pooled-dominance window follows from the source's regularity conditions; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "pooled-pricing-small-samples-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable counterexample to finite-sample dominance of pooled empirical pricing.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
