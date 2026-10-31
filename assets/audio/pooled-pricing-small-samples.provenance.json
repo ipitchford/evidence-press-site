@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Small samples do not make pooled pricing safe. An Evidence Press briefing. First, the question. A seller who has seen a few past customers can either set one price for everyone, chosen to maximise revenue on the whole sample, or split customers into groups, for example by region, and choose a separate price for each group. Splitting leaves fewer observations per group, so with very little data the single pooled price seems the safer choice. A 2025 paper in Theoretical Economics showed that splitting does learn more slowly, and asked whether, under standard smoothness conditions, pooling is guaranteed to win at small sample sizes. The main finding is that it is not. Imagine many ordinary customers with low valuations and a rare group willing to pay much more.",
+      "inputSha256": "23368e03feffbcd19f16a8cc5706f0412985f157b879df66d4273c1575b34172",
+      "audioSha256": "f6f159558b90ffa21b47eb2df192990ae066bf75c25c10908da8dbf8b1050d2f",
+      "requestId": "req_a589c599052a4b758e50bc7ff2e5c117",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a rare group willing to pay much more",
+        "heardEnding": "imagine many ordinary customers with low valuations and a rare group willing to pay much more",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "When the sample happens to contain one of those rare customers, the pooled price can be pulled up towards that one valuation, and most ordinary customers stop buying. Splitting the data keeps that observation out of the ordinary group's price. The paper tunes the frequencies so that this protection outweighs every cost of splitting, at every sample size in any chosen range and for any number of groups, and it builds a fixed pair of demand models that defeats pooling at every sample size. The limits: the proven examples use extreme parameters with tiny gains, a simulation suggests gains of a few per cent at moderate parameters but is not a proof, the result depends on how empty groups are priced, and the version with moderate assumptions fixed in advance is still open.",
+      "inputSha256": "bd5650bdc6b95268480644462406a4d6e1f94f02f3439c9f8a9ab4e9d9895d07",
+      "audioSha256": "d6cff11f746a96ae9d693d95dbdf98c8ffd04ad553eae337261881dd7bad0493",
+      "requestId": "req_fb9cfa9ad2b74cb391f259c81f76989b",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "moderate assumptions fixed in advance is still open",
+        "heardEnding": "empty groups are priced and the version with moderate assumptions fixed in advance is still open",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This is an anonymous, unrefereed candidate, checked by AI-assisted review only, not peer review. Published on 31 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "e66a36fafee121699fb8096a426e506f15f724d54fef569fa81d400d3bd4b290",
+      "audioSha256": "9bae6d5d96a2deb548d19ae4891d58d4b1f196d1f5be5bdee41b6ffc7a47c6a9",
+      "requestId": "req_dc1cf56e48c04d95a3e9f339f86d90ff",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "pooled-pricing-small-samples",
+  "generatedAt": "2026-10-31T14:30:23.281Z",
+  "sourceMetadata": "papers/pooled-pricing-small-samples/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "7929b21157c8af1bd77dd3020b11ebc3ebd5a61a97a1c3a224782377bf92f44e",
+  "transcriptPath": "assets/audio/pooled-pricing-small-samples.txt",
+  "transcriptSha256": "1873b9447fffada9c0bb786fbfe5ad46201bb746032f5b84fb0a60011a65c936",
+  "audioPath": "assets/audio/pooled-pricing-small-samples.mp3",
+  "audioSha256": "630960fa573c955beae269a0e03affaf033c5ceb0896e05a9451a4af9667b659",
+  "audioBytes": 1894700,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

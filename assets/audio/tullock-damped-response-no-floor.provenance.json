@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Contest learning without a minimum effort. An Evidence Press briefing. First, the setting. In many competitions, such as research races, lobbying or online contests, each participant wins a prize with a probability equal to its share of the total effort, and effort is costly. Economists call this a Tullock contest. Its equilibrium often has expensive participants spending nothing at all. A natural question is whether simple learning reaches that equilibrium. Suppose every player repeatedly moves part of the way towards its best reply to what the others are doing. A 2024 study proved that this works, but only if every player is forced to keep spending at least some fixed minimum, which stops expensive players from dropping out and so changes the game.",
+      "inputSha256": "14caf42dd08e59720bc9b004e08734dff237468d23e55f8b5442222cb723e7b5",
+      "audioSha256": "87a60c4ebddf30a24f70b70a6a7b59009475715b7a8a7de2b0afbfa9027a99fa",
+      "requestId": "req_a4b57a19418f4585a386994ebbe07ec1",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "from dropping out and so changes the game",
+        "heardEnding": "least some fixed minimum which stops expensive players from dropping out and so changes the game",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The authors asked whether the minimum is needed. The main finding is that it is not. The process still converges to the unique equilibrium, including when some players withdraw completely, for small enough constant steps and for any slowly shrinking steps. The key fact is simple: each player's rivals, taken together, never stop competing. If the others' total effort becomes tiny, the leading player's best reply is also small, so it eases off and the others recover. The paper makes the threshold and the time this takes explicit, shows that the error can fall like one over the number of rounds, and shows that the step size must shrink as the number of players grows.",
+      "inputSha256": "16a09a40adfb00284f391a24142fc7c31e4afc3d6abe4f05310c0d6104ff7b35",
+      "audioSha256": "fd8dff7d66ae7e2b9f1cf1fe0d14bd2fe9f166c97ba3523a4f8a2fe4eb875868",
+      "requestId": "req_7500831cfd694d7c8cf88ce525293dae",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "must shrink as the number of players grows",
+        "heardEnding": "of rounds and shows that the step size must shrink as the number of players grows",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The limits: the guaranteed step size is far too small to use in practice, all players must adjust at the same speed, and best replies must be exact. This is an anonymous, unrefereed candidate, checked by AI-assisted review only, not peer review. Published on 31 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "41d89e854b1bfd2cf5ac74ed582f0fec51d3aede9a4f36a7dbc1a2f459f56fc7",
+      "audioSha256": "2ff0ded8b70c0e5315f7b03ba462d4faf3213ee6ed235fe808120dc8f5820938",
+      "requestId": "req_96d634513f7b42df9d5f1d0b7958acbc",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "tullock-damped-response-no-floor",
+  "generatedAt": "2026-10-31T14:34:14.169Z",
+  "sourceMetadata": "papers/tullock-damped-response-no-floor/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "14b0250ecda273ed76ef2cf8777a2cb27f08dbe23f6faa8847eb63892a5e118f",
+  "transcriptPath": "assets/audio/tullock-damped-response-no-floor.txt",
+  "transcriptSha256": "c72f1691894fa830ccb2f31740c634d2cf3b848b07e2273d6f6579c45fc52d96",
+  "audioPath": "assets/audio/tullock-damped-response-no-floor.mp3",
+  "audioSha256": "30eeff608671f693982f554c69afd02259c4075e47a1e78dc4cd62fe55503afd",
+  "audioBytes": 1960748,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
