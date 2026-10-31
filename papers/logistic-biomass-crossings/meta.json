@@ -1,0 +1,216 @@
+{
+  "slug": "logistic-biomass-crossings",
+  "title": "How often can migration switch a population above or below its total carrying capacity? Five crossings in three logistic patches, and bounds for any number of patches",
+  "shortTitle": "Migration can switch a population above and below capacity five times",
+  "oneLine": "Answering a 2022 question: in the logistic patch model, three patches allow exactly five switches between migration helping and harming total biomass, not three; n patches allow between n + 2 and 2ⁿ − 3. The effects are a few parts per million.",
+  "abstract": "When habitat patches are linked by migration, the total equilibrium population B can end up above or below the sum S of the patches' carrying capacities: migration can help or harm the population as a whole. As the overall migration intensity β grows, B can switch between these two states several times. In the standard logistic patch model with an arbitrary irreducible, conservative (possibly asymmetric) migration network, Elbetch, Benzekri, Massart and Sari (2022) found three switches with three patches and asked for a proof that three is the maximum, and for bounds with more patches. This candidate answers both. Three is not the maximum: for three patches the exact maximum is five, shown by an explicit rational example with five transverse crossings certified in exact arithmetic and a direct algebraic proof that six are impossible. For n patches there are at most 2ⁿ − 3 crossings unless B is identically S, with no genericity assumption, and for every n ≥ 3 there are networks with at least n + 2; an exact four-patch certificate gives six. So the maximum is 1 for two patches, 5 for three and between 6 and 13 for four. The five-crossing example also has at least three separate peaks of total biomass. The effects are tiny, at most a few parts per million between crossings, and the example needs finely tuned migration rates; the results describe what the model allows, not observations. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-31",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "logistic equation",
+    "metapopulation",
+    "migration",
+    "total biomass",
+    "carrying capacity",
+    "patch model",
+    "dispersal",
+    "open problem"
+  ],
+  "repoUrl": "https://github.com/ipitchford/logistic-biomass-crossings",
+  "releaseUrl": "https://github.com/ipitchford/logistic-biomass-crossings/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/logistic-biomass-crossings/releases/download/v1.0.0-candidate/logistic-biomass-crossings-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23838088",
+  "conceptDoi": "10.5281/zenodo.23838087",
+  "zenodoUrl": "https://zenodo.org/records/23838088",
+  "citeText": "Anonymous (2026). How often can migration switch a population above or below its total carrying capacity? Five crossings in three logistic patches, and bounds for any number of patches. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23838088",
+  "evidence": "Written proofs of Theorems 6, 9 and 12, Propositions 4, 5 and 10, Corollary 7 and Lemma 11; exact rational certificates of the five-crossing example by two separately written standard-library checkers; an exact rational box certificate of seven alternating signs for the four-patch example; twelve semantic negative controls; checkers that do not rely on assert, replayed byte-identically from the frozen archive in normal and optimised Python, and GitHub CI.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; the examples are certified in exact arithmetic. Internal AI-assisted review (a five-role first round, an outside-model adversarial review, a re-review and proof audit of the revision, and a targeted audit of the multiplicity proposition). Priority is bounded to the recorded search; several comparison papers were read through abstracts and indexed sections only. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (31 October 2026, 13 pages), its exact checkers and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 31 October 2026.",
+  "keyResults": [
+    "Three patches allow exactly five crossings, N(3) = 5: the network r = (7/3, 1, 2), K = (1, 3, 1), Γ = M/138159 crosses S = 5 at β = 46053/252320, 5117/6400, 6579/2912, 6579/1640 and 168861/27680, all transversally, and no three-patch network has six (Theorem 6, proof and exact certificate).",
+    "Universal upper bound: with n patches there are at most 2ⁿ − 3 crossings unless B ≡ S, with no genericity assumption; counted with multiplicity, including the zero-migration point, the total is at most 2ⁿ − 2 (Theorem 9, Proposition 10).",
+    "Lower bound: adding weakly coupled patches gives at least n + 2 crossings and ⌈(n + 2)/2⌉ strict maxima for every n ≥ 3; an exact four-patch certificate gives six crossings, so 6 ≤ N(4) ≤ 13 (Lemma 11, Theorem 12).",
+    "Crossings force peaks: the five-crossing example has at least three strict local maxima of total biomass (Corollary 7).",
+    "Why five: the threshold equilibria solve n quadrics with 2ⁿ = 8 projective solutions for three patches; one sits at zero migration and two at a point at infinity, leaving 8 − 1 − 2 = 5.",
+    "Effects are tiny: between crossings B differs from S by at most about 3.3 ppm (numerical), with a −249 ppm perfect-mixing limit; one migration rate is about 1/430 of the largest and the example is finely tuned."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, outside-model adversarial review, re-review and proof audits",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Migration can switch a population above and below its carrying capacity five times. An Evidence Press briefing. First, the background: picture a species living in a few habitat patches. Without movement, each patch settles at its carrying capacity, and the total is the sum of those capacities. Now let individuals move between the patches, with every migration rate scaled by one overall intensity. Depending on the patches, migration can leave the total population a little above that sum, meaning migration helps, or a little below it, meaning migration harms. In 2015, Roger Arditi, Claude Lobry and Tewfik Sari showed that with two patches the total can switch from one side to the other only once. In 2022, Bilel Elbetch and colleagues found three switches with three patches, and asked for a proof that three is the most. Now, the main finding: three is not the most. With three patches the exact maximum is five. An explicit example with five switches is checked in exact arithmetic, and six are proved impossible. For any number of patches, n, the number of switches is at most two to the power n, minus three, and at least n plus two can happen. With four patches, an exact example has six. As for how large the effect is: tiny. Between switches the total moves by at most a few parts per million, and the example needs finely tuned migration rates. So this is about what the model allows, not about real populations. As for how sure this is: every theorem has a written proof, and the examples are certified in exact arithmetic. Finally, the limits: review so far is internal and AI-assisted, and the literature search was bounded. This briefing describes version one point zero candidate, released on the thirty-first of October 2026; the paper and evidence are linked from the release page. This audio uses an AI-generated voice and is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "From a fresh extraction of the frozen archive the three exact checkers passed in normal and optimised Python with identical output, the independent audit receipt and the four-patch certificate data were regenerated byte for byte, the figure data matched, and twelve semantic negative controls rejected tampered parameters and certificate data. GitHub CI repeats the replay on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Two separately written exact checkers agree on the five-crossing example; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the theorems are proved in prose with exact computer-assisted certificates for the examples."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "The exact checkers need only the Python standard library; numerical figure tools pin NumPy 2.3.5, SciPy 1.17.0, Matplotlib 3.10.8 and mpmath 1.3.0 (requirements.txt), not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Arditi, Lobry and Sari (2015), Is dispersal always beneficial to carrying capacity? New insights from the multi-patch logistic equation. Theoretical Population Biology 106, 45–59 (two patches: at most one threshold; more patches called a challenge; full text read).",
+      "url": "https://doi.org/10.1016/j.tpb.2015.10.001"
+    },
+    {
+      "citation": "Arditi, Lobry and Sari (2018), Asymmetric dispersal in the multi-patch logistic equation. Theoretical Population Biology 120, 11–15 (asymmetric two-patch case; full text read).",
+      "url": "https://doi.org/10.1016/j.tpb.2017.12.006"
+    },
+    {
+      "citation": "DeAngelis, Ni and Zhang (2016), Dispersal and spatial heterogeneity: single species. Journal of Mathematical Biology 72, 239–254 (total population versus total carrying capacity).",
+      "url": "https://doi.org/10.1007/s00285-015-0879-y"
+    },
+    {
+      "citation": "Elbetch, Benzekri, Massart and Sari (2021), The multi-patch logistic equation. Discrete and Continuous Dynamical Systems–B 26(12), 6405–6424 (symmetric migration; two three-patch crossings).",
+      "url": "https://doi.org/10.3934/dcdsb.2021025"
+    },
+    {
+      "citation": "Elbetch, Benzekri, Massart and Sari (2022), The multi-patch logistic equation with asymmetric migration. Revista Integración 40(1), 25–57 (three numerical crossings and the question answered here, p. 51).",
+      "url": "https://doi.org/10.18273/revint.v40n1-2022002"
+    },
+    {
+      "citation": "Elbetch (2023), Generalized logistic equation on Networks. Comptes Rendus. Mathématique 361, 911–934 (other growth laws on networks).",
+      "url": "https://doi.org/10.5802/crmath.460"
+    },
+    {
+      "citation": "Anonymous (2026), Arbitrarily many population maxima under uniform global dispersal. Evidence Press research release, version 1.0.0-candidate (related release: peaks of total population under uniform dispersal, where there are no crossings).",
+      "url": "https://doi.org/10.5281/zenodo.23687852"
+    },
+    {
+      "citation": "Freedman and Waltman (1977), Mathematical models of population interactions with dispersal. I: Stability of two habitats with and without a predator. SIAM Journal on Applied Mathematics 32, 631–648 (origin of the two-habitat comparison).",
+      "url": "https://doi.org/10.1137/0132052"
+    },
+    {
+      "citation": "Fulton (1998), Intersection Theory, 2nd edition. Springer (Bézout count used in the general bound).",
+      "url": "https://doi.org/10.1007/978-1-4612-1700-8"
+    },
+    {
+      "citation": "Gao and Lou (2022), Total biomass of a single population in two-patch environments. Theoretical Population Biology 146, 1–14 (complete two-patch classification).",
+      "url": "https://doi.org/10.1016/j.tpb.2022.05.003"
+    },
+    {
+      "citation": "Lou (2006), On the effects of migration and spatial heterogeneity on single and multiple species. Journal of Differential Equations 223, 400–426 (total population versus heterogeneity).",
+      "url": "https://doi.org/10.1016/j.jde.2005.05.010"
+    },
+    {
+      "citation": "Segura, Marvá and Franco (2026), Dispersal in multi-patch metapopulations: The impact of patch number and network topology. Journal of Theoretical Biology 619, 112331 (numerical response shapes for symmetric networks; no crossing bound).",
+      "url": "https://doi.org/10.1016/j.jtbi.2025.112331"
+    },
+    {
+      "citation": "The Stacks Project Authors, The Stacks Project, Lemma 37.30.5 (tag 0D4I) (fibre dimension for proper morphisms).",
+      "url": "https://stacks.math.columbia.edu/tag/0D4I"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:logistic-biomass-crossings",
+    "attemptIds": [
+      "ep-attempt:logistic-biomass-crossings-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Answers the question of Elbetch, Benzekri, Massart and Sari (2022, p. 51) negatively: three patches allow five, not three, crossings of total carrying capacity; gives the bound 2ⁿ − 3 and the lower bound n + 2 for n patches.",
+      "scope": "The logistic patch model with an irreducible conservative migration matrix scaled by one intensity. Effects are a few ppm and the example is finely tuned; N(4) and the growth of N(n) are open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The model and the threshold equation are exactly those of Elbetch et al. (2022), Equation (59); their question is quoted verbatim from journal page 51.",
+      "remainingRisks": [
+        "Several comparison papers read only through abstracts and indexed sections.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Obtain specialist review of the intersection-theory bound (Theorem 9 and Proposition 10) and determine N(4).",
+      "claimCeiling": "Proved bounds n + 2 ≤ N(n) ≤ 2ⁿ − 3 and N(3) = 5 with exact certificates; tiny, finely tuned effects. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "logistic-biomass-crossings-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable answer to the crossing-count question of Elbetch et al. (2022).",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
