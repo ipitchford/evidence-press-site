@@ -1478,11 +1478,6 @@ ${Array.from({ length: 9 }, (_, k) => {
       <h3>Articles</h3>
       <p>Long-form arguments, syntheses and research notes, with sources, scope and corrections made explicit. Articles are not certificate-backed research releases.</p>
     </a>
-    <a class="programme-card" href="/applications/">
-      <p class="card-date">Plain-English guide · ${papers.length} releases</p>
-      <h3>Applications</h3>
-      <p>What each release could be used for in practice, and what it cannot yet support, in a sentence or three per release.</p>
-    </a>
     <a class="programme-card" href="/productivity/">
       <p class="card-date">Practice programme · 8 August 2026</p>
       <h3>Productivity Protocols</h3>
@@ -1494,6 +1489,7 @@ ${Array.from({ length: 9 }, (_, k) => {
   <div class="listhead">
     <h2 class="sr-only">All releases</h2>
     <input id="filter" class="catalogue-filter" data-card-selector=".card" data-noun="release" type="search" placeholder="Filter by topic — e.g. Ramsey, SAT, affine, reshuffling" aria-label="Filter releases">
+    <p class="listhead-note">What could each release be used for in practice? See <a href="/applications/">Applications</a>, a plain-English note per release.</p>
   </div>
   <div class="cards">${cards}</div>
 </section>
