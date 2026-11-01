@@ -1,0 +1,237 @@
+{
+  "slug": "split-likelihood-persistence",
+  "title": "The recomputed split likelihood-ratio interval is not a confidence sequence",
+  "shortTitle": "Valid if you look once, wrong if you keep looking: split likelihood-ratio intervals",
+  "oneLine": "A statistics method that is valid if you look once silently fails if you keep checking it as data arrive: recomputed after every new observation, the universal-inference split likelihood-ratio interval has long-run guarantee zero, not 1 − ε, although at 95% the error first exceeds nominal only after about 10⁴ times the first look.",
+  "abstract": "Universal inference (Wasserman, Ramdas and Balakrishnan, 2020) turns a split likelihood ratio into a confidence interval that is valid at one fixed sample size in almost any statistical model. Pace, Salvan and Sartori (2023, Section 3) conjectured that the same interval, recomputed after every new pair of observations with the same threshold, keeps a long-run guarantee: asymptotic persistence at least 1 − ε. This candidate shows the conjecture is false. A zero–one law argument gives asymptotic persistence 0 in every model with a permutation-symmetric training estimator. In the Gaussian two-stream scheme the log split likelihood ratio at the truth is an exact quadratic form in two independent random walks, with lim sup over log log n equal to (√5 − 1)/2 almost surely, and the same constant holds in every regular model satisfying the information identity. Unequal splits give (√(r² + 4r) − r)/2, and fixed-K cross-fitting gives c(1/(K − 1)) or 1/K depending on how the folds are combined. Replacing the fixed threshold by λ₁g(n)²/n, with λ₁ = (√5 − 1)/4 and any valid boundary g for a Gaussian random walk, gives a genuine confidence sequence, and this repair is sharp on the iterated-logarithm scale; a checkpoint repair works in every model. An exact Ornstein–Uhlenbeck representation measures the practical damage: persistence decays like a small power of the monitoring horizon, and the error first exceeds nominal at about 100 times the first look at 80%, about 10⁴ times at 95% and about 10⁹ times at 99% (extrapolated). Pace et al.'s Gaussian tables are reproduced. The law of the iterated logarithm, the zero–one law, Ville's inequality and stitching are classical; the constants, aggregation classification, sharp repair and severity calculation are the proposed contribution. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-01",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "universal inference",
+    "split likelihood ratio",
+    "confidence sequences",
+    "anytime-valid inference",
+    "law of the iterated logarithm",
+    "e-values",
+    "sequential analysis",
+    "optional stopping"
+  ],
+  "repoUrl": "https://github.com/ipitchford/split-likelihood-persistence",
+  "releaseUrl": "https://github.com/ipitchford/split-likelihood-persistence/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/split-likelihood-persistence/releases/download/v0.1.0-candidate/split-likelihood-persistence-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23856728",
+  "conceptDoi": "10.5281/zenodo.23856727",
+  "zenodoUrl": "https://zenodo.org/records/23856728",
+  "citeText": "Anonymous (2026). The recomputed split likelihood-ratio interval is not a confidence sequence. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23856728",
+  "evidence": "Written proofs of every proposition, lemma and theorem; six certificate scripts with retained outputs: exact symbolic identities and eigenvalues (Theorems 1, 3 and 4 and the sandwich constant), the quadratic expansion of Theorem 2 on Poisson and Bernoulli streams up to n = 10^8, seeded exact Monte Carlo reproducing Pace et al.'s Gaussian tables and simulating their Poisson example, an Ornstein–Uhlenbeck spectral and survival-curve solver with Richardson extrapolation and direct checks, exact simulation of finitely many looks and of the mixture-row controls, and validity and widths of seven interval constructions; built-in negative controls (a wrong constant, an oracle statistic, a non-dominating direction, the split-naive excess, a wrong Fisher information, the single-look Markov bound) that every run must detect; every tabulated number in the manuscript regenerated from the result files; full replay under Python -O from a fresh copy of the release package with every output identical.",
+  "statusDetail": "Unrefereed AI-assisted statistics candidate. The theorems have written proofs; constants and expansions are checked symbolically and numerically, and the finite-horizon severity numbers are numerical with stated error estimates. Internal AI-assisted review in five roles, a separate-model adversarial review and audit of the new proofs, a separate proof audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 1 November 2026 with DOI insertion, 15 pages), its certificate scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 1 November 2026.",
+  "keyResults": [
+    "Refutation (Proposition 0, proof): in any model, with any permutation-symmetric training estimator, the recomputed split likelihood-ratio set with fixed threshold has asymptotic persistence 0 whenever its single-time non-coverage does not vanish, so the conjecture of Pace, Salvan and Sartori (2023, Section 3) is false.",
+    "Exact rate (Theorems 1–2, proof): in the Gaussian two-stream scheme log E_n = (S_nT_n − T_n²/2)/n exactly and lim sup log E_n / log log n = (√5 − 1)/2 ≈ 0.618 almost surely; the same constant holds in every regular model satisfying the information identity, and ((√5 − 1)/2)·μ_max(H⁻¹J) for a working likelihood.",
+    "Splits and aggregation (Theorems 3–4, proof): split ratio r gives c(r) = (√(r² + 4r) − r)/2; fixed-K cross-fitting gives c(1/(K − 1)) for arithmetic averaging and 1/K for equal-weight geometric, harmonic or minimum aggregation; no fixed split restores the guarantee.",
+    "Repairs (Theorems 5–6, Proposition 5A, proof): the threshold λ₁g(n)²/n with λ₁ = (√5 − 1)/4 and any valid scalar Gaussian boundary g gives a confidence sequence; thresholds λ₁{2 log log n + κ log log log n + O(1)} are achievable iff κ > 3; a checkpoint repair is valid in every model.",
+    "Severity (Proposition 7, proof; Section 7, numerical): failure exponents 0.042 at 80%, 0.0054 at 95% and 0.0005 at 99%; the error first exceeds nominal at about 105 times the first look at 80%, 10^3.9 at 95% and 10^8.8 at 99% (extrapolated); Pace et al.'s Gaussian tables reproduced to Monte Carlo accuracy."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted statistical theory and computation",
+      "AI-assisted internal review, separate-model adversarial review and proof audit, proof audit, clean replay, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Look once, or keep looking? An Evidence Press briefing on a statistics method that is valid if you look once, but silently fails if you keep checking it as data arrive. Universal inference is a popular recipe for confidence intervals that works in almost any statistical model: split the data in two, fit the model on one half, and test candidate values on the other. Checked once, at a sample size fixed in advance, a ninety-five per cent interval built this way keeps its promise. In 2023, Pace, Salvan and Sartori conjectured that if the interval is simply recomputed every time new data arrive, it keeps a long-run guarantee too. This paper shows that it does not. If you keep checking forever, the interval is certain to exclude the true value again and again. The long-run guarantee is not ninety-five per cent, but zero, in any model. The paper finds the exact rate at which the statistic keeps climbing, and shows that changing how the data are split does not help. A threshold that rises slowly with the sample size does fix it, and that repair cannot be improved in its growth rate. How bad is it in practice? The damage is real, but slow. For an eighty per cent interval, the error first exceeds its stated level once the last look is about a hundred times later than the first. For ninety-five per cent, that takes about ten thousand times; for ninety-nine per cent, about a billion. The proofs are written out in full and checked by scripts, including deliberately planted errors that the checks must catch. The underlying tools are classical; the constants, repairs and severity calculations are new, within a bounded literature search. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the first of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All six certificate scripts were rerun with Python -I -B -O from a fresh copy of the release package; every regenerated JSON output was identical to the shipped one apart from the run-environment block, and the manuscript regenerated byte-identically from the replayed results. The frozen archive was checked byte-for-byte against that replay and its quick checks rerun. GitHub CI repeats the quick checks on Linux as a blocking job and the full suite as a non-blocking job."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "During internal review a reviewer's separately written solver agreed with the corrected calibrated thresholds. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.12 with NumPy, SciPy, SymPy and mpmath versions pinned in requirements.txt; all Monte Carlo seeded; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Pace, Salvan and Sartori (2023). Confidence sequences with composite likelihoods. Canadian Journal of Statistics. Source of the asymptotic-persistence conjecture (Section 3) refuted here, and of the Gaussian and Poisson tables reproduced in Section 7.",
+      "url": "https://doi.org/10.1002/cjs.11749"
+    },
+    {
+      "citation": "Wasserman, Ramdas and Balakrishnan (2020). Universal inference. Proceedings of the National Academy of Sciences. The split likelihood-ratio construction, valid at a fixed sample size, and the running-MLE sequential version.",
+      "url": "https://doi.org/10.1073/pnas.1922664117"
+    },
+    {
+      "citation": "Ramdas and Wang (2025). Hypothesis testing with e-values. Foundations and Trends in Statistics (cited as arXiv:2410.23614 v6). Remarks that split likelihood-ratio e-variables are not e-processes (Section 7.7) and gives the time-mixture repair (Section 7.9).",
+      "url": "https://doi.org/10.1561/3600000002"
+    },
+    {
+      "citation": "Pace and Salvan (2020). Likelihood, replicability and Robbins' confidence sequences. International Statistical Review. Earlier work on persistence of likelihood-based confidence sequences.",
+      "url": "https://doi.org/10.1111/insr.12355"
+    },
+    {
+      "citation": "Howard, Ramdas, McAuliffe and Sekhon (2021). Time-uniform, nonparametric, nonasymptotic confidence sequences. The Annals of Statistics. The stitching boundary used in the repair.",
+      "url": "https://doi.org/10.1214/20-aos1991"
+    },
+    {
+      "citation": "Robbins (1970). Statistical methods related to the law of the iterated logarithm. The Annals of Mathematical Statistics. Normal-mixture boundaries.",
+      "url": "https://doi.org/10.1214/aoms/1177696786"
+    },
+    {
+      "citation": "Robbins and Siegmund (1970). Boundary crossing probabilities for the Wiener process and sample sums. The Annals of Mathematical Statistics. Boundary-crossing theory for confidence sequences.",
+      "url": "https://doi.org/10.1214/aoms/1177696787"
+    },
+    {
+      "citation": "Lai (1976). On confidence sequences. The Annals of Statistics. Classical confidence-sequence theory.",
+      "url": "https://doi.org/10.1214/aos/1176343406"
+    },
+    {
+      "citation": "Hartman and Wintner (1941). On the law of the iterated logarithm. American Journal of Mathematics. The classical law behind the exact rate.",
+      "url": "https://doi.org/10.2307/2371287"
+    },
+    {
+      "citation": "Hewitt and Savage (1955). Symmetric measures on Cartesian products. Transactions of the American Mathematical Society. The zero-one law behind Proposition 0.",
+      "url": "https://doi.org/10.1090/s0002-9947-1955-0076206-8"
+    },
+    {
+      "citation": "Vovk and Wang (2021). E-values: calibration, combination and applications. The Annals of Statistics. Symmetric e-merging functions used in the aggregation results.",
+      "url": "https://doi.org/10.1214/20-aos2020"
+    },
+    {
+      "citation": "Armitage, McPherson and Rowe (1969). Repeated significance tests on accumulating data. Journal of the Royal Statistical Society, Series A. Error inflation under repeated testing.",
+      "url": "https://doi.org/10.2307/2343787"
+    },
+    {
+      "citation": "Pocock (1977). Group sequential methods in the design and analysis of clinical trials. Biometrika. The group-sequential counterpart of the finite-looks analysis.",
+      "url": "https://doi.org/10.1093/biomet/64.2.191"
+    },
+    {
+      "citation": "Waudby-Smith, Arbour, Sinha, Kennedy and Ramdas (2024). Time-uniform central limit theory and asymptotic confidence sequences. The Annals of Statistics.",
+      "url": "https://doi.org/10.1214/24-aos2408"
+    },
+    {
+      "citation": "Dunn, Ramdas, Balakrishnan and Wasserman (2023). Gaussian universal likelihood ratio testing. Biometrika. Fixed-sample analysis of the split likelihood-ratio test.",
+      "url": "https://doi.org/10.1093/biomet/asac064"
+    },
+    {
+      "citation": "Strieder and Drton (2022). On the choice of the splitting ratio for the split likelihood ratio test. Electronic Journal of Statistics. Fixed-sample split ratios.",
+      "url": "https://doi.org/10.1214/22-ejs2099"
+    },
+    {
+      "citation": "Tse and Davison (2022). A note on universal inference. Stat. Fixed-sample power of universal inference.",
+      "url": "https://doi.org/10.1002/sta4.501"
+    },
+    {
+      "citation": "Ville (1939). Étude critique de la notion de collectif. Thèse, Paris (Thèses de l'entre-deux-guerres, 218). The maximal inequality used for validity of the repairs.",
+      "url": "https://www.numdam.org/item/THESE_1939__218__1_0/",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography but has no DOI; linked to its Numdam record, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:split-likelihood-persistence",
+    "attemptIds": [
+      "ep-attempt:split-likelihood-persistence-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "Do not treat a fixed-threshold split likelihood-ratio interval, recomputed as data arrive, as a confidence sequence; use the repaired threshold λ₁g(n)²/n (Gaussian or jointly sub-Gaussian data), the checkpoint or time-mixture repair (any model), or a pooled anytime-valid method, and consult the severity tables when a fixed horizon is planned.",
+      "scope": "Universal-inference split likelihood ratios recomputed under continuous or repeated monitoring. Fixed-n universal inference, the running-MLE construction and mixture confidence sequences are not affected."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.1 restates Pace et al.'s equation (6), definition of asymptotic persistence and sampling scheme, checked against the publisher's open-access full text, and Section 1.2 separates classical tools from new results.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "The continuum severity numbers are numerical with empirical error estimates."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in sequential inference check Proposition 0 and the reduction behind Theorem 6, and ask the authors of the conjecture whether Proposition 0 matches its intended scope and whether their Poisson table can be reconciled.",
+      "claimCeiling": "Proved refutation of the asymptotic-persistence conjecture with exact rate constants, sharp repairs and an exact continuum representation; numerical severity estimates. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "split-likelihood-persistence-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable refutation, with exact constants, repairs and finite-horizon severity, for recomputed split likelihood-ratio intervals.",
+        "setting": "AI-assisted statistical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
