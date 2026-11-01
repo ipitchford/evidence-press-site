@@ -2095,15 +2095,45 @@ function applicationsPage() {
   const extraLinks = `<link rel="alternate" type="text/markdown" href="${url}index.md">
 <link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">
 `;
+  /* Number releases in publication order: the oldest is 1, the newest is N. */
+  const num = i => papers.length - i;
+  /* Banner: one square per release, grouped by label, drawn from the same entries
+     so it updates with every release. */
+  const BW = 1500, CELL = 16, GAP = 5, X0 = 600, PER_ROW = Math.floor((BW - X0 - 60) / (CELL + GAP));
+  const shades = { 'Practical method': '#fbbf24', 'Potential application': '#2dd4bf', 'Research use': '#e7e0d8', 'No clear application': '#8a837c' };
+  let y = 175;
+  const groups = APPS.categories.map(c => {
+    const n = papers.filter(p => APPS.entries[p.slug].classification === c.name).length;
+    const rows = Math.max(1, Math.ceil(n / PER_ROW));
+    const top = y; y += rows * (CELL + GAP) + 34;
+    const cells = Array.from({ length: n }, (_, k) => `<rect x="${X0 + (k % PER_ROW) * (CELL + GAP)}" y="${top + Math.floor(k / PER_ROW) * (CELL + GAP)}" width="${CELL}" height="${CELL}" rx="2.5" fill="${shades[c.name]}"/>`).join('');
+    return `<text x="${X0 - 30}" y="${top + 17}" text-anchor="end" font-size="36" fill="${shades[c.name]}" font-weight="700">${n}</text><text x="${X0 - 105}" y="${top + 16}" text-anchor="end" font-size="31" fill="#f0fdfa">${esc(c.name)}</text>${cells}`;
+  }).join('\n');
+  const BH = Math.max(500, y + 16);
+  const bannerSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${BW} ${BH}" width="${BW}" height="${BH}" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102b30"/><stop offset="1" stop-color="#245057"/></linearGradient></defs>
+<rect width="${BW}" height="${BH}" fill="url(#bg)"/>
+<text x="60" y="92" font-family="'Iowan Old Style', Palatino, Georgia, serif" font-size="52" fill="#f0fdfa" font-weight="700">${papers.length} releases, by what they could be used for</text>
+<text x="60" y="134" font-size="28" fill="#b9d6d2">One square per release</text>
+${groups}
+</svg>
+`;
+  write('assets/applications-banner.svg', bannerSvg);
+  const bannerSrc = `/assets/applications-banner.svg?v=${crypto.createHash('sha256').update(bannerSvg).digest('hex').slice(0, 10)}`;
+  const bannerAlt = `${papers.length} squares, one per release, grouped by label: ${APPS.categories.map(c => `${c.name} ${papers.filter(p => APPS.entries[p.slug].classification === c.name).length}`).join(', ')}.`;
   const cards = papers.map((p, i) => {
     const e = APPS.entries[p.slug];
     return `<article class="app-card" data-keywords="${escAttr(p.keywords.join(' ').toLowerCase())}">
-<h2><span class="app-num">${i + 1}.</span> <a href="/releases/${p.slug}/">${esc(p.shortTitle)}</a></h2>
+<h2><span class="app-num">${num(i)}.</span> <a href="/releases/${p.slug}/">${esc(p.shortTitle)}</a></h2>
 <p class="app-tag">${esc(e.classification)}</p>
 <p>${esc(e.application)}</p>
 </article>`;
   }).join('\n');
   const body = `<article class="applications-page"><div class="wrap">
+<figure class="article-banner applications-banner">
+<img src="${escAttr(bannerSrc)}" alt="${escAttr(bannerAlt)}" width="${BW}" height="${BH}" loading="eager" decoding="async" fetchpriority="high">
+<figcaption>Each square is one release, grouped by the label below. The picture is drawn from the same entries as the list, so it changes as releases are added.</figcaption>
+</figure>
 <h1>${esc(APPS.heading)}</h1>
 <p class="lede">${esc(APPS.lede)}</p>
 <p>${esc(APPS.boundary)}</p>
@@ -2122,7 +2152,7 @@ ${body}
 ${foot}`);
   const md = `---\ntitle: "${APPS.heading}"\nurl: ${url}\nlicense: CC0-1.0\n---\n\n# ${APPS.heading}\n\n${APPS.lede}\n\n${APPS.boundary}\n\n${
     APPS.categories.map(c => `- **${c.name}**: ${c.definition}`).join('\n')}\n\n${APPS.categoryNote}\n\n${counts}\n\n${
-    papers.map((p, i) => `### ${i + 1}. [${p.shortTitle}](${BASE}/releases/${p.slug}/)\n\n**${APPS.entries[p.slug].classification}.** ${APPS.entries[p.slug].application}\n`).join('\n')}`;
+    papers.map((p, i) => `### ${num(i)}. [${p.shortTitle}](${BASE}/releases/${p.slug}/)\n\n**${APPS.entries[p.slug].classification}.** ${APPS.entries[p.slug].application}\n`).join('\n')}`;
   write('applications/index.md', md);
 }
 
