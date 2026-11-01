@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "How fast does an epidemic die out on a network, and does the network's shape matter? An Evidence Press briefing. Picture an infection spreading through a network of contacts, people, farms or computers, but not quite strong enough to persist. Each infected node recovers, and can be infected again. The standard deterministic model of this, called the N-intertwined mean-field approximation, tracks the average infection level over time, measured in average recovery times. In 2024, Persoons, Sensi, Prasse and Van Mieghem ran extensive simulations and conjectured a universal speed limit: at or below the tipping point, where the reproduction number is one, the average never fades more slowly than one over one plus t, whatever the network and wherever the epidemic starts.",
+      "inputSha256": "cf376a44219e89c0b7b14284bbc05f93e592e3b871f9fbc062da4b1d7ad54dbb",
+      "audioSha256": "c5eead0610fe281cbff3ecf98d5b19bb8d8d0dbd32fcb259af4f738a6a60a33f",
+      "requestId": "req_eaa6eccfdc504931a140574923c8505f",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "whatever the network and wherever the epidemic starts",
+        "heardEnding": "never fades more slowly than over plus t whatever the network and wherever the epidemic starts",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "They also conjectured a matching limit above the tipping point. This paper proves both. The proof follows one entropy-like average that can only fall at a controlled rate, and the same argument covers networks that change over time, nodes that recover at different speeds, one-way contacts, and, as an upper bound, the expected prevalence of the exact random model. Exactly at the tipping point, though, shape matters a great deal. The average eventually decays like a constant called kappa, divided by time, and kappa is computed from the network's leading eigenvector. On synthetic networks of a thousand nodes, kappa is about point nine for small-world networks and about point zero four for spatial ones.",
+      "inputSha256": "10bef1802be254fbf2da61c720c3b51c17bd9692cc0968e042efabcd839a2069",
+      "audioSha256": "4e012789c13a83c9bd571cbacb60e5d2e310d57cfa0a61496526cea889f1ff79",
+      "requestId": "req_dff71445a63d48a78a77a97b4c8c4605",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "world networks and about point for spatial ones",
+        "heardEnding": "synthetic networks of nodes kappa is about for small world networks and about for spatial ones",
+        "matchedWords": 7,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "So the same epidemic falls below one in a thousand after about nine hundred and twenty recovery times on a small-world network, but after only about forty on a spatial one. That is not good news: a small kappa means infection has retreated into a persistent core, where hubs stay infected longer. The results have written proofs and computer checks, but they concern the deterministic model and synthetic networks. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the first of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "818d7911e742b92154e5962a3ff19a6b7fdab62bc2640732868373e24dacbd83",
+      "audioSha256": "34f25a532f34551d41833ba48ed732b5383aa49e132e6f2a5eea462989970bf0",
+      "requestId": "req_a45bcb8e91784a82b9fdbdbfb65aa0f2",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "nimfa-sis-decay-envelopes",
+  "generatedAt": "2026-11-01T10:17:36.860Z",
+  "sourceMetadata": "papers/nimfa-sis-decay-envelopes/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "d842ca9bb30ea86bc1a92fd99e7d784b42f8c93ada7800fc2e8914eccce0797b",
+  "transcriptPath": "assets/audio/nimfa-sis-decay-envelopes.txt",
+  "transcriptSha256": "6abd62ff3cfc2f9d07fce56bb83ae9d9a8e045d657b36e125c7ee1f10f4ce42f",
+  "audioPath": "assets/audio/nimfa-sis-decay-envelopes.mp3",
+  "audioSha256": "9dc99589b562cbe088a285a56e3e75c6b904f530a4b3487097f55fb76721c6c8",
+  "audioBytes": 2330540,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
