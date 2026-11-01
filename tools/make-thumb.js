@@ -81,6 +81,10 @@ const savedPalettes = require('./thumbnail-palettes');
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'hidden-architecture-exact-signal': {palette:'auto',kicker:['RESEARCH RELEASE · 28 OCTOBER 2026','STOCHASTIC THERMODYNAMICS'],head:['Same signal,','<em>less dissipation.</em>'],headSize:72,sub:'The smallest hidden model that explains a signal can overstate its least possible thermodynamic cost.',tag:'UNREFEREED CANDIDATE',hero:require('./hidden-architecture-art').thumbnailHero()},
+  'gaussian-pnp-stability': {palette:'auto',kicker:['RESEARCH RELEASE · 27 OCTOBER 2026','PLUG-AND-PLAY STABILITY'],head:['Gaussian denoisers:','<em>stable to 3, can fail at 4.</em>'],headSize:72,sub:'An open question about kernel plug-and-play answered, with how tiny the failure really is.',tag:'UNREFEREED CANDIDATE',hero:require('./gaussian-pnp-art').thumbnailHero()},
+  'spectrally-negative-resetting-extremes': {palette:'auto',kicker:['RESEARCH RELEASE · 27 OCTOBER 2026','STOCHASTIC RESETTING · EXTREMES'],head:['After a high peak,','<em>near the top or back home.</em>'],headSize:72,sub:'Where a reset random process ends after an extreme peak, with the constant a 2026 paper left open.',tag:'UNREFEREED CANDIDATE',hero:require('./levy-resetting-extremes-art').thumbnailHero()},
+  'initialisation-dependent-fixation': {palette:'auto',kicker:['RESEARCH RELEASE · 27 OCTOBER 2026','SWARM DECISIONS · NOISY WEIGHTED VOTER MODEL'],head:['Fresh starts','<em>help the better option.</em>'],headSize:72,sub:'A published conjecture on swarm consensus fails as stated, and is exact only for a start nobody used.',tag:'UNREFEREED CANDIDATE',hero:require('./initialisation-fixation-art').thumbnailHero()},
   'levy-qsd-exponential-moments-restart': {palette:'auto',kicker:['RESEARCH RELEASE · 21 OCTOBER 2026','RARE-EVENT SIMULATION · QUASI-STATIONARY RESTART'],head:['Restart pays,','<em>then it saturates.</em>'],headSize:72,sub:'A conjecture on restart from quasi-stationary laws holds up to a constant, and the constant is not one.',tag:'UNREFEREED CANDIDATE',hero:'<div class="eq-label">conjectured ratio 1 · exact constant</div><div class="hero-title">C* = 0.8501…</div><div class="note">two thin edge layers set the constant<br>restart saturates at budget ~ e<sup>ηL</sup><br>not up to e<sup>λ*L</sup> as stated</div><div class="eq-foot">written proofs · interval-arithmetic enclosure</div>'},
   'waiting-time-entropy-bound-counterexamples': {palette:'auto',kicker:['RESEARCH RELEASE · 21 OCTOBER 2026','STOCHASTIC THERMODYNAMICS · COUNTEREXAMPLE'],head:['Waiting times','<em>can fake dissipation.</em>'],headSize:72,sub:'A conjectured forward-only lower bound on entropy production fails, even in the model class where it was tested.',tag:'UNREFEREED CANDIDATE',hero:'<div class="eq-label">conjecture: statistic S ≤ true dissipation σ</div><div class="hero-title">σ = 0 &lt; S</div><div class="note">hidden barriers driven out of step<br>fixed prefactors: S ≥ 1.3179 σ (certified)<br>weak driving stays safe</div><div class="eq-foot">written proofs · interval-arithmetic certificate</div>'},
   'periodic-regulation-budget-monotonicity': {palette:'auto',kicker:['RESEARCH RELEASE · 21 OCTOBER 2026','PERIODIC OPTIMAL CONTROL · BUDGET MONOTONICITY'],head:['More budget','<em>never removes effort.</em>'],headSize:72,sub:'Gavish and Katriel’s periodic regulation model: a larger yearly budget is optimally spent by only adding effort.',tag:'UNREFEREED CANDIDATE',hero:'<div class="eq-label">optimal effort measures, budgets M₁ ≤ M₂</div><div class="hero-title">μ<sub>M₁</sub>(E) ≤ μ<sub>M₂</sub>(E)</div><div class="note">no pulse shrinks · supports nested<br>seasonal prices can make a pulse shrink</div><div class="eq-foot">written proofs · exact certificates</div>'},
@@ -883,6 +887,14 @@ const SPECS = {
       <div class="note">Connected cubic-DIM families have a <b>linear gap</b>. The order-50 minimum is DIM-qualified — not a claim about all cubic graphs.</div>
       <div class="eq-foot">exact code · finite certificates · partial Lean verification</div>`
   }
+};
+
+SPECS['signed-kuramoto-positive-networks'] = {
+ palette:'auto', kicker:['RESEARCH RELEASE · 27 OCTOBER 2026','KURAMOTO NETWORKS · SIGNED TO POSITIVE'],
+ head:['Repulsion,','<em>built from attraction.</em>'], headSize:72,
+ sub:'Any ±1 Kuramoto network sits exactly inside an all-positive one, and stable equilibria can form a cone.',
+ tag:'WRITTEN PROOFS · EXACT SPECTRA · UNREFEREED CANDIDATE',
+ hero:'<div class="eq-label">324 oscillators · every coupling +1</div><div class="eq eq-sm">Stable equilibria near one state<br><span class="hl">a cone over a torus</span></div><div class="note">Sclosa\'s closed-manifold reading fails; the literal arXiv v1 reading is <b>true</b>.</div><div class="eq-foot">Exact resonance only · external review unestablished</div>'
 };
 
 SPECS['wishart-reachable-noise'] = {

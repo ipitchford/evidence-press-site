@@ -1,4 +1,5 @@
 'use strict';
+const { bannerSvg } = require('./svg-xml');
 // Backtracking-weighted PageRank is not coordinatewise monotone: banner, OG card and thumbnail.
 // Sources (paper: Backtracking-weighted PageRank is not coordinatewise monotone, 23 Oct 2026):
 //  - House graph, edges E = {01, 03, 04, 12, 14, 23}; vertices 0, 1 degree three; 2, 3 and the roof 4 degree two
@@ -107,20 +108,7 @@ const draw = () => text(40, 50, 'More backtracking can lower a score, then raise
 const description = 'Banner for a paper showing that backtracking-weighted PageRank is not coordinatewise monotone in the return weight mu. Left: the five-vertex house graph, a square on vertices 0, 1, 2, 3 with a triangular roof; the roof vertex 4, joined to vertices 0 and 1, is highlighted. Right: the exact roof score pi_mu(4) at damping 1/2 with uniform restart, from the paper’s closed-form cubic response, plotted against mu on a compressed axis mu/(1+mu) so that mu = 0 (non-backtracking), mu = 1 (ordinary PageRank) and mu tending to infinity (always backtrack) all fit. The score starts at pi_0(4) = 638/3615, falls to the ordinary PageRank value pi_1(4) = 22/125, reaches its single lowest point just past mu = 1, and rises towards pi_infinity(4) = 8/45. Both endpoints lie above the middle value, so the score is not monotone. A dashed schematic curve, labelled as such, shows that a monotone response through pi_1 rising to pi_infinity would have put pi_0 below pi_1, in a shaded band; the true value lies above. The vertical scale is magnified: the three values differ by less than 0.002.';
 
 function frame(inner, background) {
-  const [c0, c1] = background.colors, W = 1200, H = 400, accent = roof;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" data-banner-palette="${background.name}" role="img" aria-labelledby="art-description">
-<desc id="art-description">${description}</desc><defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="${c0}"/><stop offset="1" stop-color="${c1}"/>
-</linearGradient>
-<radialGradient id="glow" cx="0.2" cy="0.55" r="0.5">
-<stop offset="0" stop-color="${accent}" stop-opacity="0.07"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/>
-</radialGradient>
-</defs>
-<rect width="${W}" height="${H}" fill="url(#bg)"/>
-<rect width="${W}" height="${H}" fill="url(#glow)"/>
-${inner}
-</svg>`;
+  return bannerSvg({ inner, description, background, glow: { color: roof, cx: '0.2', cy: '0.55', r: '0.5', opacity: '0.07' } });
 }
 
 const thumbSpec = {

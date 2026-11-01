@@ -59,6 +59,13 @@ jobs:
           node --check protocols/build-protocols.js
           for f in protocols/tools/*.js protocols/tools/lib/*.js protocols/tests/release-integrity/run.js; do node --check "$f"; done
 
+      - name: SVG escaping and well-formedness (release art, banners, figures)
+        # Browsers render nothing for an SVG that is not well-formed XML; a raw
+        # "<" in a banner <desc> blanked two release pages in October 2026.
+        run: |
+          node tools/test-svg-xml.js
+          node tools/check-svg-wellformed.js
+
       - name: Renderer regression tests
         run: |
           node tools/test-render.js
@@ -130,6 +137,9 @@ jobs:
 
       - name: Complete public payload text boundary
         run: node tools/check-public-text.js --built > /tmp/public-text-built.json
+
+      - name: Built SVG well-formedness
+        run: node tools/check-svg-wellformed.js --built
 
       - name: Atlas agent downloadable-byte and standalone parity
         run: node tools/test-atlas-delivery.js

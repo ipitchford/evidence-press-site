@@ -1,0 +1,876 @@
+{
+ "title": "Applications",
+ "heading": "Real-world applications of Evidence Press releases",
+ "description": "A plain-English note, for every Evidence Press release, of what it could be used for in practice, with its limits.",
+ "lede": "For every release, newest first and numbered in order of publication, a short plain-English note of what it could be used for in practice, and what it cannot yet support. Each entry links to its release page. The list was first compiled on 1 November 2026 and gains an entry with each new release.",
+ "boundary": "This is an assessment of applications described or reasonably supported by the release texts; it is not an independent verification of the papers, proofs, software or novelty. Candidate and unrefereed results remain provisional. A plausible use is not evidence of deployment or measured benefit.",
+ "categories": [
+  {
+   "name": "Practical method",
+   "definition": "a specific procedure or evidence audit usable within stated assumptions."
+  },
+  {
+   "name": "Potential application",
+   "definition": "a credible practical use requiring further development or validation."
+  },
+  {
+   "name": "Research use",
+   "definition": "a concrete use in scientific modelling, measurement or research tools, without an established operational application."
+  },
+  {
+   "name": "No clear application",
+   "definition": "no non-trivial real-world use is established by the release."
+  }
+ ],
+ "categoryNote": "These labels describe usefulness, not scientific quality or assurance. Mathematical importance alone is not treated as a real-world application. The two Wales releases are kept separate because each is a catalogue entry; the later manuscript adds no new analysis.",
+ "entries": {
+  "gaussian-gromov-wasserstein-exactness": {
+   "classification": "Potential application",
+   "application": "People matching shapes or aligning datasets without shared coordinates could use this result to check whether a fast Gaussian approximation is exact and bound its error. It also supplies test cases for alignment software. The guarantees assume genuinely Gaussian data; summarising arbitrary data by covariance does not make them apply. This remains an unrefereed candidate."
+  },
+  "fault-sliding-history-criteria": {
+   "classification": "Research use",
+   "application": "Geothermal, carbon-storage and wastewater-injection modellers could use the injection-point slip rate to identify when their expanding-crack model ceases to apply, avoiding a full spatial calculation. It can also benchmark simulations of tapered injection. The candidate treats an idealised fault and stops at first loss of full sliding; it does not predict earthquake risk or establish safe operating schedules."
+  },
+  "finite-copy-gaussian-metrology": {
+   "classification": "Potential application",
+   "application": "Quantum-optics researchers could use the formula to choose how to combine repeated light probes and set detector angles for precise phase or squeezing measurements. It tells them when a more complicated fixed Gaussian measurement cannot help. The candidate assumes pure single-mode states and ideal optics; detector loss, imperfect mode matching and adaptive measurements remain outside its guarantee."
+  },
+  "geometric-burst-classification": {
+   "classification": "Research use",
+   "application": "For models of gene-expression noise, this identifies when assuming a particular burst-size distribution imposes an artificial limit on feedback control. It motivates checking the whole distribution rather than just its mean and variance. No useful biological noise-reduction method is demonstrated: the constructed gains are roughly one part per million at exceptionally low molecule counts, and the result is unrefereed."
+  },
+  "inhibitor-segregation-explosion": {
+   "classification": "Research use",
+   "application": "Researchers simulating chemistry in dividing cells could use these thresholds to detect models that become mathematically invalid because division selectively removes an inhibitor. Checking the chemistry and division rule separately is insufficient. This unrefereed result concerns infinitely many model events in finite time, not a chemical explosion; its unusual rule keeps the substrate together and is not validated in cells."
+  },
+  "integer-calendar-replenishment": {
+   "classification": "Practical method",
+   "application": "Provides an implementable way to schedule recurring cash, fuel, vending-machine or maintenance visits without missing fixed deadlines, while coordinating customers on shared routes. On tree-shaped networks its modelled average cost is at most about 44% above optimum. The unrefereed guarantee excludes vehicle capacity, uncertain demand and peak-day workload; synthetic tests do not establish actual operating savings."
+  },
+  "logistic-biomass-crossings": {
+   "classification": "Research use",
+   "application": "Habitat-connectivity modellers could use the examples to test whether their analysis wrongly assumes that increasing movement changes from helping to harming a population only once. Three patches can switch signs repeatedly. This unrefereed, idealised logistic-model result offers a sensitivity warning rather than a conservation prescription: the demonstrated changes are only a few parts per million."
+  },
+  "pooled-pricing-small-samples": {
+   "classification": "Potential application",
+   "application": "Revenue-management teams could use the rare high-value customer example to stress-test whether pooling sparse sales data makes their pricing rule vulnerable to outliers. Small sample size alone does not justify one common price. The candidate supplies no market calibration or recommendation to discriminate; proven gains use extreme parameters, and larger simulated gains remain unvalidated numerical evidence."
+  },
+  "tullock-damped-response-no-floor": {
+   "classification": "Research use",
+   "application": "Economic modellers can compute or study equilibria of prize contests and a particular oligopoly model while allowing expensive participants to withdraw entirely. Gradual adjustment can still converge without an artificial minimum effort. This is an unrefereed theoretical guarantee under exact, synchronised responses; the certified constant adjustment steps are impractically small and no real behaviour is tested."
+  },
+  "warehouse-reoptimisation-tie-breaking": {
+   "classification": "Potential application",
+   "application": "Warehouse-software developers could audit how their optimiser chooses between equally quick plans, then test filling the cart first or prioritising earlier order completion. The example shows that tie-breaking alone can create a growing backlog far below capacity. The unrefereed thresholds come from simplified picking models, with limited extensions; no operating warehouse data or general multi-aisle guarantee is supplied."
+  },
+  "wide-binary-angle-inversion": {
+   "classification": "Practical method",
+   "application": "Astronomers could estimate the distribution of wide-binary orbit shapes directly from measured angles between stellar separation and relative motion, replacing simulation grids with an exact likelihood and simple averages. This could aid studies of binary formation and disturbance. The candidate analyses no real catalogue; measurement errors, contaminants and selection biases must be modelled, and fine detail is inherently unstable to recover."
+  },
+  "fixed-correlations-weak-dissipation": {
+   "classification": "Research use",
+   "application": "Researchers estimating energy use in molecular motors or other driven systems can use these examples to check an inference method: time correlations alone do not guarantee the minimum dissipation predicted by a Gaussian approximation. Additional statistics or physical constraints are needed. This unrefereed correction is demonstrated mathematically; it does not invalidate Gaussian-system estimates or supply a calibrated experimental replacement."
+  },
+  "hidden-architecture-exact-signal": {
+   "classification": "Research use",
+   "application": "For ion-channel or molecular-motor recordings, this warns against treating the cheapest smallest hidden-state model as a guaranteed minimum energy cost. It supplies a bound independent of hidden-state count using observable dwell-time features. Applying the candidate to recordings still needs reliable detection of very brief events and statistical uncertainty estimates; neither experimental calibration nor the unrestricted exact optimum is provided."
+  },
+  "thermal-ordering-concave-baths": {
+   "classification": "Research use",
+   "application": "Researchers seeking unusually fast cooling could screen idealised quantum-bath models before running expensive simulations: the test rules out hotter-starting systems overtaking cooler ones for specified measures of relaxation. It also identifies model classes worth investigating. The unrefereed result assumes common couplings and a complete transition network; it neither covers all notions of cooling nor demonstrates an experimental protocol."
+  },
+  "affinity-karpelevich-threshold": {
+   "classification": "Research use",
+   "application": "When inferring molecular-machine driving strength from damped oscillations, researchers should avoid the overly restrictive spectral region refuted here, which can exaggerate the required driving. The candidate supplies exact test networks for proposed inference bounds. Its counterexamples use fully connected networks and small violations; the single-ring case remains open, and no device measurements or improved experimental estimator are supplied."
+  },
+  "gaussian-pnp-stability": {
+   "classification": "Potential application",
+   "application": "Developers of image-reconstruction methods that alternate data fitting and kernel denoising could check convergence using the denoiser’s mixing rate, or use a suitably symmetrised denoiser. These are concrete ways to strengthen software guarantees. The candidate’s instability is extraordinarily slow and uses artificial weak connections; no natural-image failure or practical reconstruction improvement is demonstrated."
+  },
+  "geometric-graph-entropy": {
+   "classification": "Research use",
+   "application": "Provides a theoretical storage target for lossless compression of spatial networks, such as idealised sensor-network graphs: points connected to everyone carry less positional information than a naive count assumes. Developers could use the bound to judge future compressors. The unrefereed analysis covers labelled random graphs at fixed connection radius; it supplies no efficient encoder or measured storage saving."
+  },
+  "initialisation-dependent-fixation": {
+   "classification": "Potential application",
+   "application": "Swarm-robotics simulations could use the corrected success probabilities and warm-up bounds to distinguish a newly started collective decision from one already running in equilibrium. This can prevent misleading tests of decision rules. The candidate assumes every robot can interact with every other, strictly separated advertising-rate ranges and a large-swarm limit; real robot performance is not demonstrated."
+  },
+  "multiple-dispersal-maxima": {
+   "classification": "Research use",
+   "application": "Conservation and fisheries modellers could use the examples to challenge the assumption that population size has one best movement rate. Rare productive patches can create several peaks, making extrapolation from a few connectivity settings unreliable. The unrefereed result assumes uniform mixing, and its constructed peaks are tiny or fragile; it does not establish detectable field effects or management advice."
+  },
+  "signed-kuramoto-positive-networks": {
+   "classification": "Research use",
+   "application": "No direct non-trivial real-world application is established. The construction is useful for testing mathematical software that finds stable oscillator configurations, and for translating theoretical networks with repulsive links into attractive ones. Its unusual stable shapes require exact symmetry and disappear under generic changes, so the unrefereed result does not currently support conclusions about real power grids or synchronisation hardware."
+  },
+  "spectrally-negative-resetting-extremes": {
+   "classification": "Potential application",
+   "application": "Supplies a way to simulate and calculate rare high excursions followed by a reset, including the chance that the system ends near its peak or back near its starting level. A possible use is testing reserve models with random recapitalisation. The candidate assumes Poisson resets and no upward jumps; applications beyond those assumptions and real financial calibration are unestablished."
+  },
+  "thermal-cumulant-sign-counterexamples": {
+   "classification": "Research use",
+   "application": "Experimenters analysing heat-flow fluctuations in nanoscale devices can use this counterexample to avoid mistaking a negative higher-order fluctuation statistic for proof of quantum behaviour or non-thermal driving. Slow classical switching can produce the same sign. The unrefereed result suggests checking long pauses and relaxation times, but contains no physical-device demonstration and concerns long-time statistics."
+  },
+  "fluid-queue-optimal-dispatch": {
+   "classification": "Potential application",
+   "application": "Cloud-scheduler developers could test routing small jobs to the shorter queue using a cutoff that changes with workload imbalance. The exact fluid solution supplies a benchmark, while simulations suggest adding a safety margin for random arrivals. The candidate covers two identical servers; the unmodified rule can perform badly or become unstable, and no operational deployment or universal stochastic guarantee is shown."
+  },
+  "pagerank-backtracking-nonmonotone": {
+   "classification": "Practical method",
+   "application": "Network analysts adjusting return-step preferences in PageRank can use the supplied slope and endpoint tests to detect some misleading shortcuts in score estimation. Ordinary PageRank and a cheap limiting score do not reliably bound the more expensive non-backtracking score. This candidate is supported by exact small-graph checks; the tests miss some failures, and numerical studies found mostly small ranking changes."
+  },
+  "renewal-quantum-resetting-equilibration": {
+   "classification": "Potential application",
+   "application": "Quantum-hardware researchers could use the reset-clock criteria and time estimates to judge whether a random reset protocol will prepare a steady ensemble state within an experiment’s duration. It also warns against stopping merely because successive states barely change. The unrefereed model assumes independent reset times and fixed operations; convergence may require billions of steps, and hardware validation is absent."
+  },
+  "weniger-delta-nonreal-poles": {
+   "classification": "Research use",
+   "application": "Scientists summing divergent series can use the exact checks to detect artificial complex poles introduced by Weniger’s delta method, preventing unsupported assumptions about the approximation’s singularities. Familiar series families remain protected under the stated conditions. This unrefereed result is a reliability check for numerical calculations; it does not show that the method fails to converge or establish an application-specific accuracy gain."
+  },
+  "diameter-hitting-time-robustness": {
+   "classification": "Research use",
+   "application": "Designers of random-walk sampling and network-search software could stress-test systematic directional errors rather than assume that short paths make the algorithm robust. The examples also show that an average performance measure can hide badly delayed targets. This unrefereed work studies specially constructed worst cases, not typical networks or random implementation errors; some asymptotic effects require enormous graphs."
+  },
+  "logarithmic-stenger-matrix-stability": {
+   "classification": "Practical method",
+   "application": "Developers of numerical integration and differential-equation solvers can use the parameter ranges to choose logarithmic quadrature nodes whose integration matrices avoid a specific spectral instability. Exact counterexamples also provide regression tests. The unrefereed result concerns a particular matrix construction; positive matrix stability does not by itself guarantee a stable full solver, and the reverse-direction classification remains incomplete."
+  },
+  "lotka-volterra-tree-presentations": {
+   "classification": "Research use",
+   "application": "No direct non-trivial real-world application is established. Researchers comparing specialised population or reaction equations can recognise when differently written equations represent the same tree model, and preserve invariant structures in numerical simulations. The unrefereed classification concerns generic parameters and linear coordinate changes; most alternative presentations mix variables negatively and cannot be interpreted as positive populations or chemical concentrations."
+  },
+  "tetrahedral-moment-stokes-elements": {
+   "classification": "Practical method",
+   "application": "Provides a concrete fourth-order building block for simulating slow viscous flow on tetrahedral meshes, potentially useful in lubrication or porous-medium calculations. One degree-six term repairs an obstruction that makes the proposed degree-five construction impossible. The unrefereed element has a manufactured-solution test, but no engineering validation, speed comparison, curved-mesh study or proof of robustness to large pressure forces."
+  },
+  "wardrop-smooth-route-regimes": {
+   "classification": "Potential application",
+   "application": "Traffic planners could monitor individual road flows when testing demand growth or toll changes, because a new route can start being used without an obvious bend in total travel time. The release gives a reason to improve diagnostic checks in traffic-assignment software. The hidden switches require finely tuned models; their frequency in actual road networks is unknown."
+  },
+  "acyclic-spreading-algebraic-extinction": {
+   "classification": "Potential application",
+   "application": "Epidemic and rumour modellers could use the proposed checks to decide whether a declining outbreak really supports an exponential elimination forecast. Near an exact tipping point, the model's tail can last much longer. These are finely tuned deterministic examples, with no fitted outbreak data; finite-population extinction can happen much earlier."
+  },
+  "levy-qsd-exponential-moments-restart": {
+   "classification": "Potential application",
+   "application": "Researchers simulating rare queue overflows or reserve exhaustion could use the corrected budget formula to judge when restarting simulations has stopped buying much additional chance of success. It also helps compare restart with multilevel methods. The guarantee assumes exact, cost-free sampling of the restart distribution and continuous monitoring, so implementation costs and sampling errors still need analysis."
+  },
+  "periodic-regulation-budget-monotonicity": {
+   "classification": "Potential application",
+   "application": "Seasonal pest-control or proportional-removal programmes could plan additional rounds without cancelling existing ones when their effort budget increases, if this model applies. The result also identifies when that rule fails. It assumes a simple linear stock model, constant treatment cost and effectiveness, and a budget measured in proportional removal; vaccine-dose budgets and seasonal efficacy need different treatment."
+  },
+  "sharp-shannon-window-law": {
+   "classification": "Practical method",
+   "application": "Signal-processing developers can use the tuning rule to choose window shapes for reconstructing a band-limited signal from nearby samples, and avoid the particularly costly mistake of setting the shape too high. This may inform imaging and interpolation software. The guarantees assume exact, noiseless, regularly spaced samples; they do not establish accuracy for a complete MRI or nonuniform Fourier pipeline."
+  },
+  "sis-reconstruction-continuation": {
+   "classification": "Potential application",
+   "application": "Developers of network epidemic forecasts could use these bounds and counterexamples to test how much confidence a close historical fit deserves, especially as the number of communities increases. The sampled-data extension accounts for bounded measurement errors. It requires infection histories for every community, and supplies conservative theoretical bounds rather than a validated forecasting method for real outbreaks."
+  },
+  "waiting-time-entropy-bound-counterexamples": {
+   "classification": "Practical method",
+   "application": "Scientists estimating energy dissipation from single-molecule or colloid recordings can use the examples to detect an invalid analysis: forward-only waiting times under periodic driving can imply dissipation that is absent. The release points to estimators using a reversed driving experiment and supplies software test cases. These are mathematical model results, with experimental detectability depending on record length."
+  },
+  "algebraic-extinction-compartments": {
+   "classification": "Potential application",
+   "application": "Population and epidemic modellers could use the spectral condition to check whether extrapolating a disappearing group with exponential decay is justified. A model can have finite remaining activity yet retain a much longer tail. This is a diagnostic for a specified model class, not a fitted epidemic forecast or evidence that slow extinction is common."
+  },
+  "compartment-fragmentation-phase-classification": {
+   "classification": "Research use",
+   "application": "For models of reactions inside dividing compartments, the phase diagram can check whether the assumed dynamics remain mathematically well defined over time. It warns that average material retention after division is insufficient: the full splitting distribution matters. This supports model construction and simulation; mathematical 'explosion' means infinitely many events in finite time, not a prediction of chemical detonation."
+  },
+  "davis-yin-gap-sharpness": {
+   "classification": "Research use",
+   "application": "Optimisation researchers can use the exact bound to compare step-size choices and assess guarantees for a solver that splits a convex objective into three pieces. Its practical contribution is a sharper theoretical benchmark. The bounded quantity is a specific averaged comparison gap, not ordinary solution error, and the release does not demonstrate faster or more accurate application software."
+  },
+  "mprk-nonnegative-two-cycles": {
+   "classification": "Practical method",
+   "application": "Developers of chemistry, ocean-ecology and other concentration simulations can use these test cases to catch a solver that preserves positivity and total mass while repeatedly cycling between wrong answers. Monitoring alternating steps and using suitable error control could expose the failure. The proved safer parameter choices cover two-species systems; broader nonlinear and many-species guarantees remain incomplete."
+  },
+  "pass-and-swap-bounded-swaps": {
+   "classification": "Potential application",
+   "application": "Researchers modelling server queues or compatible job matching can use the counterexamples to check whether limiting swaps invalidates their long-run performance formula. A capped system may remain trapped in a regime determined by its starting arrangement. The results concern stylised closed queues; practical frequencies and the random caps relevant to redundancy scheduling are not established."
+  },
+  "processor-sharing-freshness": {
+   "classification": "Potential application",
+   "application": "Designers of status-update systems could examine the frequency of very small jobs when estimating how stale delivered information becomes near capacity. Queue length alone can hide large freshness differences. The theorem offers an asymptotic modelling guide for equal processor sharing with Poisson arrivals and no cancellation, not a finite-load latency guarantee for an operational network."
+  },
+  "williamson-order-transfer": {
+   "classification": "Research use",
+   "application": "Numerical-software developers could adapt certain memory-efficient integration methods to simulations involving rotations while retaining their known accuracy order through six. This reduces the extra mathematical checks needed for that specific adaptation. The release does not supply a ready-made higher-order method or establish improved runtime, stability or application accuracy; those require separate testing."
+  },
+  "sharp-rank-three-chollet-order-five": {
+   "classification": "No clear application",
+   "application": "No clear non-trivial real-world application is established. The release gives an exact bound for permanents of a narrowly specified class of five-by-five matrices and identifies when equality holds. Its immediate value is to matrix-analysis research and as a benchmark for exact proof-checking software; a useful physical, statistical or engineering task is not demonstrated."
+  },
+  "wmy5-graded-obstructions": {
+   "classification": "No clear application",
+   "application": "No clear non-trivial real-world application is evident. The work rules out specific ways of constructing a five-variable counterexample in polynomial dynamics, helping researchers avoid repeating unsuccessful searches. It neither resolves the unrestricted mathematical problem nor supplies a stability test for a calibrated engineering system; its useful output is guidance for further theoretical research."
+  },
+  "assignment-aligned-effective-states": {
+   "classification": "Practical method",
+   "application": "AI auditors can reuse the distinction between a neuron label that ranks examples well, one that supports reliable yes/no decisions, and one that predicts the effects of edits. Separate tests can prevent an appealing explanation from being trusted for an unsupported task. The evidence is one small satisfiability transformer checkpoint, so effectiveness on deployed language models remains untested."
+  },
+  "gaussian-cosine-local-stability": {
+   "classification": "No clear application",
+   "application": "No clear non-trivial real-world application is established. The result describes a local optimum for the smallest magnitude among correlated Gaussian variables, including perturbations that leave the original plane. It can guide mathematical searches and warn that numerical optimisation may stop at a worse local minimum, but no concrete measurement, design or decision problem is supplied."
+  },
+  "infinite-birth-death-thinned-counts": {
+   "classification": "Potential application",
+   "application": "Analysts of partially observed queue or population events could use the variance formula to judge whether a normal approximation gives meaningful uncertainty estimates, and to account for correlated detectors. The criterion also exposes cases where average counts look ordinary but variability diverges. It requires a specified birth–death model; arbitrary networks and all starting-distribution variance guarantees are outside its scope."
+  },
+  "reverse-reaction-attracting-oscillations": {
+   "classification": "Potential application",
+   "application": "Chemical and biological modellers can use the small example as a test when simplifying reaction networks: deleting a reverse reaction may erase sustained oscillations and falsely predict settling to equilibrium. It motivates checking the conditions behind a reduction rule. The construction is mathematical and has no laboratory validation or demonstrated application to the motivating phosphorylation system."
+  },
+  "rfim-unbounded-fields-entropy": {
+   "classification": "Research use",
+   "application": "Researchers simulating disordered magnetic models can use the theorem to justify eventual convergence without artificially limiting local field strengths. It supplies a theoretical route for models with very strong local biases. The constants can be extremely loose, so it does not provide a competitive sampler or practical runtime estimate; independence, strong disorder and bounded graph degree remain essential."
+  },
+  "robust-gaussian-inverse-estimation": {
+   "classification": "Potential application",
+   "application": "Developers of linear image or sensor reconstruction could shape training noise to the measurement system's different directions instead of adding the same noise everywhere, aiming for resistance to bounded measurement perturbations. The release supplies a theoretical recipe and counterexample to uniform noise. Its guarantee is for Gaussian models and infinite-data training, with no real-data or nonlinear-network validation."
+  },
+  "two-host-dormancy-oscillations": {
+   "classification": "Potential application",
+   "application": "Researchers modelling microbes and viruses could use this example to check an inference that both host populations being able to invade implies steady coexistence. Dormancy can instead permit oscillation. This may improve model diagnosis, but the parameters are constructed and the result is not biological validation; it also does not determine the eventual behaviour of almost every trajectory."
+  },
+  "uniform-split-reliability": {
+   "classification": "Research use",
+   "application": "The result could guide a specialised network-design study where success means exactly two surviving connected groups, one around each terminal. It shows when one design can remain best across uncertain link reliability. No concrete engineering deployment is established; this unusual objective differs from ordinary connectivity, assumes identical independent link failures, and retains two unresolved general boundary cases."
+  },
+  "prophet-over-time-limit": {
+   "classification": "Research use",
+   "application": "This provides a benchmark for studying when to rent a resource briefly and when to commit it for the remaining season. Threshold policies can approach the theoretical long-run guarantee relative to perfect hindsight. The assumptions require independent offers from a known distribution, and the horizon bounds are not practically useful; it is not a tested rental or pricing policy."
+  },
+  "finite-signal-quadratic-substitutes": {
+   "classification": "Potential application",
+   "application": "Forecast designers could use the finite tests to check whether a second report adds diminishing value after any partial disclosure of a first report. This could inform which data sources deserve joint evaluation, since pairwise checks can miss the problem. It assumes known finite probability tables, one numerical target and squared-error scoring; no empirical forecasting or market benefit is shown."
+  },
+  "iid-multiunit-prophet-limits": {
+   "classification": "Research use",
+   "application": "Researchers designing rules for a fixed number of irrevocable selections can use the limiting benchmark and threshold policies to quantify the cost of lacking hindsight. Hiring or purchasing are possible modelling analogies, not validated applications. The offers must be independent draws from a known distribution, and the two-choice percentage is a long-horizon expectation rather than a guarantee for each sequence."
+  },
+  "sharp-logconcave-moment-comparison": {
+   "classification": "Research use",
+   "application": "A possible use is bounding otherwise unknown measures of fluctuation from a known variance when a centred log-concave distribution is justified. The result identifies the distributions giving the sharp limits for different powers. This is a mathematical tool rather than a demonstrated application: it does not establish that real errors meet those assumptions or provide a new general risk-estimation procedure."
+  },
+  "state-contingent-comparability": {
+   "classification": "Potential application",
+   "application": "Debt-contract analysts could use the exact examples and payment bounds to test a proposed comparison rule across economic states, including states not yet observable when payments are fixed. They expose how a timing veto can reject a contract with lower payments everywhere. The rule and cash flows are constructed; they do not establish Paris Club treatment, legal acceptability or debt sustainability."
+  },
+  "complementary-disclosures": {
+   "classification": "Potential application",
+   "application": "Financial-network researchers could use the uncertainty calculations to assess whether proposed exposure reports actually narrow the possible creditor loss after a specified shock, including when reports only help in combination. This could inform reporting-system design. The evidence uses synthetic static networks and stipulated report menus; it does not show benefits for real banks or justify a regulatory intervention."
+  },
+  "ferromagnetic-full-threshold-glauber": {
+   "classification": "Research use",
+   "application": "Could help researchers justify how long to run simulations of interacting binary variables, including the specified ferromagnetic models. The candidate bounds the number of local updates needed to forget the starting state. Its constants are not calibrated, and costly updates on highly connected graphs mean it supplies no measured speed-up or ready-to-use runtime limit."
+  },
+  "katthan-betti-poset-counterexample": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The result shows that one compact algebraic description loses information needed to compute a different mathematical quantity. Its explicit examples could test specialist algebra software, but that research use does not establish a benefit for engineering, data analysis or another practical task."
+  },
+  "kawasaki-analytic-fast-regimes": {
+   "classification": "Research use",
+   "application": "Could support reliable simulations of particle systems when the total particle count must stay fixed: it bounds how many global swaps are sufficient to lose dependence on the starting configuration. The unrefereed guarantee applies only in two specified parameter regimes. It does not cover local physical particle exchanges or provide measured computing-time savings."
+  },
+  "rbm-nonnegative-logarithmic-mixing": {
+   "classification": "Potential application",
+   "application": "Provides an explicit stopping guideline for sampling from a restricted class of two-layer probabilistic models: all interaction strengths and biases must be nonnegative. For example, the candidate bound gives 30 complete sweeps for a million variables at a 1% distribution-error tolerance. This could help simulation software, but it does not demonstrate faster training, better predictions or lower computing costs."
+  },
+  "unique-equilibrium-lsi-separation": {
+   "classification": "Research use",
+   "application": "A useful caution when replacing a many-particle simulation with an averaged model: both may have the same equilibrium while their worst-case rates of losing information differ. The example could prevent unjustified convergence guarantees in simulation analysis. It remains a theoretical counterexample for a particular circle model, with no demonstrated practical slowdown or failure of a deployed model."
+  },
+  "concentratable-entanglement-spectator-counterexample": {
+   "classification": "Potential application",
+   "application": "Could help quantum experiments and analysis software avoid understating entanglement in noisy states. It supplies corrected bounds, exact test cases and a measurement criterion for detecting failure of the original bound. Experimental use still needs reliable confidence intervals, calibration and matching copies of the quantum state; no hardware implementation or improved laboratory performance is demonstrated."
+  },
+  "debt-disclosure-bounds": {
+   "classification": "Practical method",
+   "application": "Debt analysts can calculate the range of interest costs compatible with published maturity summaries, then identify which extra repayment details would narrow that range. This can improve scrutiny of debt-risk reporting. The bounds are exact for the declared refinancing model, but incomplete central-bank funding accounts and omitted future borrowing prevent treating them as a national fiscal forecast."
+  },
+  "fkk-majority-partitions": {
+   "classification": "Research use",
+   "application": "Provides short, checkable tests for a particular measure of network connectivity, potentially useful in graph-analysis software before computing a full spectrum. This is a research tool with strict structural conditions; failure of its test does not mean a network is poorly connected. No communications, transport or other real-network improvement is demonstrated, and the general conjecture remains open."
+  },
+  "inclusion-link-chernoff-concentration": {
+   "classification": "Research use",
+   "application": "Could eventually help bound the risk that a total calculated from dependent random selections is unusually large, instead of incorrectly assuming independent choices. The candidate requires a demanding dependence condition after every permitted partial selection. No substantive applied dataset or sampling family is established here, so its current use is developing and checking probability guarantees."
+  },
+  "cayley-weighted-fixed-points": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The note explains an equality between counts of rankings that allow ties. Although rankings occur in practical decisions, this particular weighted counting identity is not shown to improve ranking, voting or recommendation methods; its demonstrated role is a focused clarification in pure combinatorics."
+  },
+  "overpartition-congruences-and-towers": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. These papers prove divisibility rules for special counting sequences and make their mathematical verification much smaller. The certificates may help specialists develop or test number-theory software, but the release supplies no connection to an engineering, policy, cryptographic or economic task."
+  },
+  "sun-circular-primitive-permutation": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The release classifies when finite-field elements can be arranged in a circle under a special multiplication rule, and gives a theoretical condition for preserving such tours after deletions. It does not turn that condition into a real routing, communications or cryptographic system."
+  },
+  "sun-hou-primitive-sum-circle": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The result constructs circular arrangements satisfying a special finite-field addition rule. Its explicit certificates are useful mathematical examples and software tests, but the release does not demonstrate encryption, coding, routing or another practical benefit from these arrangements."
+  },
+  "theta-graphs-c3-e-positive": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The theorem establishes a positivity property of an algebraic expression for colourings of a restricted graph family. It offers a proof technique for algebraic combinatorics, but no faster scheduling, frequency assignment or other practical graph-colouring procedure follows from the release."
+  },
+  "two-colour-overpartition-congruences": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The collection proves exact divisibility patterns in two-colour counting sequences and identifies where those patterns fail. Its certificates can support mathematical research and software checking; it supplies no demonstrated use in data processing, physical modelling or an operational decision."
+  },
+  "wales-20mph-attribution-manuscript": {
+   "classification": "Practical method",
+   "application": "Helps policymakers and journalists distinguish a recorded fall in Welsh road casualties from an estimated effect of the 20 mph policy. It identifies the road-segment history and comparison assumptions needed for stronger evaluation. This companion manuscript adds no new analysis: the audit neither estimates the policy effect nor shows that it was zero, beneficial or harmful."
+  },
+  "cross-polytope-signaling-dimension-six": {
+   "classification": "Research use",
+   "application": "Supplies an exact benchmark for studying how much classical communication is needed to imitate a specified abstract physical model: three symbols, with free shared randomness, suffice. It could test simulation constructions in foundations research. The state space is mathematical, and the release establishes neither a hardware implementation nor a measured saving in real communication."
+  },
+  "delayed-cascade-recovery": {
+   "classification": "Potential application",
+   "application": "The eventual aim is to infer a tightly connected hidden group from the timing of one spreading event, without observing the network itself. That could inform future outbreak or information-spread analysis. However, the rule failed all twelve planted-group pilot cases and assumes complete timestamps and known background parameters; it is not presently a demonstrated detection tool."
+  },
+  "noninteger-sliced-wasserstein": {
+   "classification": "Research use",
+   "application": "Could help researchers assess when comparing many one-dimensional projections really controls the difference between full multidimensional distributions, as used in some data-comparison methods. The candidate separates directional coverage error from projection error. Its constants are uncalibrated, it requires a noninteger distance exponent, and a finite set of matching projections alone gives no guarantee of matching distributions."
+  },
+  "primitive-su-primitivity": {
+   "classification": "Research use",
+   "application": "Helps theoretical physicists determine whether a proposed family of topological-superconductor models can be split into simpler components. That classification can guide further model building and prevent an incorrect simplification. The release supplies no microscopic material model, manufactured superconductor or experimentally validated device consequence, so a practical engineering application remains unestablished."
+  },
+  "small-exponent-percolation": {
+   "classification": "Research use",
+   "application": "Could improve theoretical checks of when an idealised long-range network develops a giant connected structure, by accounting for steps that immediately return to an already visited point. It also shows that local links can change the correction despite an unchanged long-distance pattern. No numerical error range or fit to a real network is supplied, limiting practical threshold prediction."
+  },
+  "stable-random-radial-profile": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The result describes persistent randomness in the root locations of a specific heavy-tailed random-polynomial model. It warns specialists that an average root profile can hide large variation, but the release does not connect this model to measured signals, control systems or another practical task."
+  },
+  "knese-symmetric-multiaffine-agler": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is established. The theorem turns scalar stability into a stronger operator bound for a tightly specified polynomial family. That is useful within mathematical analysis, but the release supplies no control-system, circuit or numerical algorithm whose performance or reliability improves by applying this particular result."
+  },
+  "pmms-three-agents-eight-goods": {
+   "classification": "Potential application",
+   "application": "Could underpin a small allocation tool for three people sharing up to eight indivisible possessions: an allocation exists satisfying the stated pairwise fairness test when each person values a bundle by adding item values. Nine items can defeat that guarantee. The candidate establishes existence, not truthful preference reporting, efficient large-scale allocation or satisfaction in actual household or estate divisions."
+  },
+  "three-gaussian-projection-counterexample": {
+   "classification": "Potential application",
+   "application": "Provides a stress test for software that compares multivariate uncertainty by checking one-dimensional projections. Inferred practical use includes risk models: every projected comparison can pass while a cost depending jointly on two variables reverses the conclusion. The release supplies an exact Gaussian-mixture example, not evidence of financial losses or measured forecast improvements."
+  },
+  "bol-prime-cube-classification": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The classification supplies multiplication rules and recognition tests for a restricted family of nonassociative algebraic structures. Specialists can generate examples and test classification software, but no secure cryptographic construction, coding scheme or other practical system is established by the release."
+  },
+  "cgf-majorisation-counterexample": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The counterexample prevents mathematicians from rejecting valid counting formulas using a proposed but false ordering test. Its exact arithmetic certificate is useful for specialist research software, but the enormous symbolic construction is not connected to an operational counting or data-analysis problem."
+  },
+  "hartree-small-charge-rigidity": {
+   "classification": "Potential application",
+   "application": "Could provide a theoretical shape benchmark for charge-confinement models: a spherical container minimises the stated energy when repulsion is sufficiently weak. This may inform future charge-qubit design research. The candidate gives no numerical charge threshold, microscopic device specification or experimental prediction, so it does not yet determine how to manufacture a better device."
+  },
+  "binary-quadratic-informational-substitutes": {
+   "classification": "Practical method",
+   "application": "Forecasting researchers can use four exact tests to determine whether two binary information sources have the specified diminishing-returns relationship under quadratic scoring. When the property fails, the software supplies a concrete partial-disclosure example. It works on supplied probability tables; uncertain estimates need additional analysis, and the result does not demonstrate improved forecasting accuracy or monetary returns."
+  },
+  "efx-nine-chores": {
+   "classification": "Practical method",
+   "application": "A small allocation tool can divide nine indivisible chores among three people and return explicit checks of the stated fairness condition, using each person’s additive cost ratings. The package includes such a finder. It does not guarantee equal workloads, honest ratings or minimum total effort, and the universal existence claim remains an unrefereed candidate."
+  },
+  "planar-transport-map-sensitivity-certificates": {
+   "classification": "Practical method",
+   "application": "Provides a way to put certified error bars on changes in two-dimensional transport maps, which compare or rearrange distributions. A developer could use it to check whether uncertain inputs materially change an assignment. The current candidate tool handles uniform polygonal sources and small finite models; its refinement can become expensive, and broader application pipelines have not been validated."
+  },
+  "steady-stream-power-landscapes": {
+   "classification": "Research use",
+   "application": "Offers benchmark formulas and consistency checks for software that models erosion and water drainage together. These could help developers detect numerical mistakes or understand when a simulated steady landscape is locally unique. The candidate results cover restricted idealised settings and provide no validated predictions for real terrain or flood management."
+  },
+  "centroidal-equilibrium-creation": {
+   "classification": "Research use",
+   "application": "Gives abrasion modellers a concrete reason to reject the assumption that smoothing always reduces the number of ways an object can balance. It can serve as a stress test for models of shape evolution. The example is mathematical, with no calibrated rock population or numerical operating range, so no direct industrial abrasion application is established."
+  },
+  "compact-cross-compliance-contact": {
+   "classification": "Potential application",
+   "application": "Could guide the development of contact simulations for two elastic bodies whose material properties satisfy a specific matching condition, allowing large friction coefficients without losing the stated existence guarantee. The candidate theorem assumes smooth closed interfaces and fixed geometry. It supplies a target for numerical methods, not a validated engineering solver or a general model of moving frictional contact."
+  },
+  "horton-tokunaga-kingman-asymptotics": {
+   "classification": "Research use",
+   "application": "Refines predictions of branch nesting and its variability in two specified random-tree models, potentially improving benchmarks for branching simulations. No non-trivial direct real-world application is established: the release does not show that measured river networks or other natural trees follow these models, and the familiar connection to register use in binary expression trees is prior work."
+  },
+  "internally-heated-convection-flux-bounds": {
+   "classification": "Research use",
+   "application": "Provides a lower-limit benchmark for heat escaping through the bottom of an idealised internally heated fluid. Convection researchers could use it to rule out impossible model outputs and check simulations relevant to planetary-interior research. The candidate assumes an infinite-Prandtl fluid, fixed horizontal periods and simplified boundaries; it is not a quantitative prediction for an actual mantle."
+  },
+  "k2p-tree-network-counterexample": {
+   "classification": "Research use",
+   "application": "Supplies an exact test case showing that DNA-pattern data can fit both a branching evolutionary tree and a history with two parental-path junctions. Inference developers can use it to test whether software wrongly reports a unique history. The ambiguity depends on specified mutation assumptions; the release neither measures its frequency in nature nor tests real sequence data."
+  },
+  "rational-laguerre-mosaics": {
+   "classification": "Research use",
+   "application": "Provides exact geometric test data for weighted cell-diagram software and a counterexample to an assumed universal limit on cell complexity. Fragmentation researchers could use it to check whether their models rely on that false general restriction. No direct materials or geological application is demonstrated: these specially constructed weighted mosaics are not shown to represent naturally occurring fragments."
+  },
+  "seven-cycle-fourth-power-upper112": {
+   "classification": "Research use",
+   "application": "Narrows the maximum number of distinguishable four-symbol messages in a particular seven-symbol confusion model, helping coding researchers reject impossible short-code targets. This is a theoretical limit for that channel model, not a new communication code or demonstrated reliability improvement. The exact maximum remains unknown, as does the model’s unrestricted communication capacity."
+  },
+  "quadratic-equilibrium-sharpness": {
+   "classification": "Research use",
+   "application": "Offers exact benchmark reaction networks for testing software that finds multiple steady states and distinguishes stable states from unstable ones. Such checks matter when modelling chemical switches. The constructions allow large reaction products and lack experimental chemical realisation; four equilibria do not mean four usable stable states, so no direct biochemical design application is established."
+  },
+  "three-copy-werner-undistillability": {
+   "classification": "Research use",
+   "application": "Sets a proposed limit on what three copies of a particular noisy pair of three-level quantum systems can achieve through entanglement distillation. Quantum-information researchers could use the threshold to reject impossible protocol targets within that model. It offers no new device or measured communication improvement, and says nothing decisive about using four or arbitrarily many copies."
+  },
+  "tree-network-separation": {
+   "classification": "Potential application",
+   "application": "Provides a statistical route for testing whether genetic pattern data require a specified evolutionary network instead of up to two tree models sharing one topology. Its error bound permits a conservative test under independent sampling. Useful performance at realistic sequence lengths remains untested, and the candidate’s structural and mutation assumptions are essential."
+  },
+  "hidden-dissipation-floor": {
+   "classification": "Potential application",
+   "application": "Could help infer a minimum thermodynamic cost from a signal that switches between two visible states, even when the hidden mechanism is unknown. The candidate identifies waiting-time patterns that force positive dissipation and supplies bounded-observation tests. Applying these to experiments still requires justified uncertainty estimates, stationary data and the specified renewal-process assumptions; no experimental estimator is validated."
+  },
+  "square-maximises-dirichlet-ratio-quadrilaterals": {
+   "classification": "Potential application",
+   "application": "Could serve as a design limit or benchmark when seeking the largest separation between the lowest two vibration frequencies of an ideal quadrilateral membrane: the square is the proposed optimum. This inference applies to the stated fixed-boundary mathematical model. The candidate does not demonstrate improved instruments or resonators, or account for material, tension and damping effects."
+  },
+  "wilhelm-heinrich-large-gain": {
+   "classification": "Research use",
+   "application": "Identifies a parameter region in a small chemical-feedback model where different starting conditions cannot select different sustained rhythms, apart from the stated equilibrium exception. This could help researchers choose and check simulations of that oscillator. The guarantee requires a large-gain regime, leaves intermediate parameters unresolved, and has no experimental validation or demonstrated chemical-control application."
+  },
+  "central-configuration-kernel-rigidity": {
+   "classification": "Research use",
+   "application": "Provides certified ways to discard false candidates when searching for special gravitational arrangements, and to quantify reconstruction errors. Researchers can use the examples to test whether optimisation software mistakenly accepts a fitted shape that fails the force equations. No direct astronomical prediction or mission-planning application is established; the method has not shown a complete search or measured speedup."
+  },
+  "ctln-six-is-minimal": {
+   "classification": "Research use",
+   "application": "Gives neural-model researchers a precise boundary for using connectivity rules to predict stable activity patterns: exceptional nonclique patterns first require six active units in this model. Its certificates can test analysis software and guide searches. The model is highly idealised, larger examples become less robust, and no biological finding or practical neural-network performance gain is demonstrated."
+  },
+  "multiplane-lensing-sparse-bound": {
+   "classification": "Research use",
+   "application": "Tightens limits on how many images an ideal collection of gravitational point lenses can produce, helping researchers constrain searches and test lens-equation solvers. The supplied 25-image example is a useful calibration case. The candidate does not predict observed image counts, brightness or detectability, and excludes continuous matter, external shear and critical images from its stated bound."
+  },
+  "bunkbed-flow-obstructions": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The release constructs counterexamples to a connectivity intuition in an abstract random-network model and identifies an exceptional parameter. It may help mathematical probability research and test proof software, but it supplies neither a validated reliability model for physical networks nor a concrete improvement to network design."
+  },
+  "kagome-aklt-spectral-gap": {
+   "classification": "Research use",
+   "application": "Provides a candidate lower bound on the energy needed to excite a specific ideal quantum-spin lattice, independent of its size. This gives researchers a benchmark for calculations and reusable finite verification methods. It does not establish the gap of a real kagome material, resistance to general perturbations, or a practical quantum-computing application."
+  },
+  "regular-heptagon-octagon-local-minimality": {
+   "classification": "Potential application",
+   "application": "Could provide a local design check for ideal vibrating membranes: at fixed area, small shape changes away from regular seven- and eight-sided polygons raise the lowest frequency. This is a possible engineering interpretation of the candidate theorem, not a tested design benefit. It supplies no explicit tolerance radius, global optimum or validation with real materials."
+  },
+  "szollosi-mub-exclusion": {
+   "classification": "Research use",
+   "application": "Rules out one continuous family of proposed four-basis measurement designs for six-level quantum systems, potentially saving researchers from searching that family for an impossible construction. The result is a candidate family-specific exclusion, with no new measurement protocol or demonstrated device advantage. It does not resolve the unrestricted six-dimensional measurement-basis problem."
+  },
+  "modular-code-obstructions": {
+   "classification": "Potential application",
+   "application": "Helps designers reject certain highly symmetric error-correcting-code families that cannot maintain strong error protection as they grow. It also gives an alphabet-size requirement for a specified class of cryptographic diffusion matrices. These are conditional design limits, not a new code, decoder benchmark or cryptographic attack; the algebraic assumptions must be checked before applying them."
+  },
+  "field-uniform-spin-chains": {
+   "classification": "Research use",
+   "application": "Could prevent fruitless attempts to restore specified conservation laws in quantum-chain models merely by adjusting local fields. The finite test rules out that strategy for covered interactions, including most of the stated spin-1 family. It does not predict thermalisation, chaos or laboratory behaviour, and it excludes only conservation laws within its precise locality range."
+  },
+  "flat-schmidt-chains": {
+   "classification": "Research use",
+   "application": "Gives researchers a test case against inferring long-chain behaviour from small-system spectra: short chains can look identical while their large-system excitation thresholds differ. The candidate’s geometric criterion also classifies a restricted family of open chains. It supports model checking, but supplies no experimental identification protocol or validated material or device application."
+  },
+  "free-parafermion-converse": {
+   "classification": "Research use",
+   "application": "Helps researchers decide when a large quantum-model spectrum can be represented by a small set of basic modes, and when searching for that simplification is generically futile. This could guide theoretical computation under the exact algebraic assumptions. The models can be non-Hermitian; no general physical simulation speedup or hardware improvement is demonstrated."
+  },
+  "perron-minima": {
+   "classification": "Potential application",
+   "application": "Provides an exact rule for choosing directional interactions to minimise growth in a structured positive-matrix model, plus a worst-case stability test under bounded parameter uncertainty. This could support robust network or control design if the required pair-strength factorisation is justified. Small departures can introduce optimisation traps; the candidate supplies no applied validation and does not cover arbitrary switching between systems."
+  },
+  "free-fermion-frustration-graphs": {
+   "classification": "Research use",
+   "application": "Helps quantum-model researchers identify when an apparently interacting spectrum can be reduced to combinations of a few basic energies, or decomposed into simpler blocks. That offers a concrete route for selecting tractable models and checking spectral calculations. The candidate requires specified representations and coupling assumptions; it demonstrates neither general simulation speedups nor a complete solution of the dynamics."
+  },
+  "ptolemaic-split-stability": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The release quantifies sensitivity near special equality cases in finite metric geometry, supplying exact constants and reusable mathematical certificates. These may aid geometry and numerical-analysis research, but the local result does not provide a validated distance-data method or a general robustness guarantee for practical applications."
+  },
+  "decision-geometry": {
+   "classification": "Potential application",
+   "application": "Offers a way to keep checking accumulating genetic data and stop once a specified set of compatible evolutionary histories, or a useful partial conclusion, is supported with controlled error. The candidate assumes a small, tightly specified mutation model and independent sites. Real-data validity is untested, and archived synthetic trajectories have unresolved reproduction discrepancies despite passing acceptance checks."
+  },
+  "hilbert-series-matrix-septic-invariants": {
+   "classification": "Research use",
+   "application": "The counts can help theoretical physicists avoid counting the same mathematical state twice in specified finite-size matrix models, and provide benchmarks for algebra software. No non-trivial application to an experiment, product or operational decision is evident. These are unrefereed computational results; the original plane-curve result was conditional and has a separate successor release."
+  },
+  "hilbert-series-ternary-septic-octic-nonic": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The results count independent algebraic descriptions of certain plane curves, helping mathematicians construct and check those descriptions. They also provide exact test cases for computer algebra. The release is an unrefereed computational candidate and does not supply a practical curve-recognition or engineering method."
+  },
+  "ptolemaic-negative-type": {
+   "classification": "Potential application",
+   "application": "A possible use is converting a table of distances into ordinary Euclidean coordinates after a specified transformation of the distances. That could support geometric analysis of data known to satisfy the required four-point inequality. This is an inferred use: the unrefereed theorem supplies an existence guarantee, with no promise of low-dimensional coordinates or improved performance on real data."
+  },
+  "davies-levitin-lens-conjecture": {
+   "classification": "Research use",
+   "application": "Researchers solving the specified chain model can use the tighter region to check whether computed complex eigenvalues are plausible and restrict where to search for them. This is a mathematical modelling aid; no benefit for a physical device is demonstrated. The unrefereed result depends on the precise balanced chain and can fail when its couplings or balance change."
+  },
+  "casas-alvero-eight-term": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The result narrows a search for exceptional degree-twenty polynomials by ruling out candidates with very few terms. That can guide further algebra research and test exact-computation tools. It remains an unrefereed partial result and does not settle the unrestricted polynomial conjecture."
+  },
+  "seymour-second-neighbourhood-2delta3": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The finite graph certificates and counterexamples help audit mathematical search methods and rule out proposed proof shortcuts. The page now notes a separate claimed general proof that could supersede its counterexample search; neither that development nor the network analogy establishes a practical social-network or routing application."
+  },
+  "catenary-placement-classification": {
+   "classification": "Practical method",
+   "application": "Modellers can use the proposed rule to choose where to inject material and place sensors along a chain of exchanging compartments, checking whether the transfer and leak rates could be distinguished before collecting data. The unrefereed rule assumes ideal observations and known model structure. Passing it does not guarantee accurate estimates with noise or a globally unique answer."
+  },
+  "wishart-reachable-noise": {
+   "classification": "Research use",
+   "application": "The criterion can screen proposed models of changing correlations before researchers spend effort fitting or simulating them: it checks whether the equations can actually produce a covariance process. Financial volatility modelling is one possible downstream setting. The result remains unrefereed, has specific initial-state and continuity conditions, and demonstrates no improvement in pricing or forecasting."
+  },
+  "median-radius-obstructions": {
+   "classification": "Research use",
+   "application": "The examples can test software that searches for a network centre by moving only to nearby, strictly better locations: such a search can stop far from the best location even on this special graph family. Applying that warning to facility placement is plausible but untested. The unrefereed result does not show that global centre-finding algorithms are slow."
+  },
+  "gk-shared-phosphatase-connectedness": {
+   "classification": "Research use",
+   "application": "Biochemical modellers can use the result when exploring a particular signalling cascade: parameter choices allowing multiple steady states can be connected while retaining that property if both rates and total concentrations may vary. This may guide model exploration, not treatment or laboratory control. The unrefereed result establishes neither stable switching nor biologically realistic parameter values."
+  },
+  "tcell-exactly-five": {
+   "classification": "Research use",
+   "application": "The exact five-state example gives researchers a demanding test case for software analysing T-cell signalling models and a starting point for studying changes between possible responses. It does not establish five behaviours in actual T cells: the example uses 100 phosphorylation steps, is not fitted to biological data, and leaves stability and physiological relevance untested."
+  },
+  "unlinked-gamma-regression": {
+   "classification": "Potential application",
+   "application": "When predictor records and outcome records cannot be paired, the criterion could warn analysts that several different explanations fit exactly the same information, preventing unjustified claims about individual effects. It also identifies when the ambiguity disappears for independent Gamma predictors with known shapes. The unrefereed result provides no validated estimator for finite, noisy samples."
+  },
+  "cooper-spencer-temporal-unimodality": {
+   "classification": "Research use",
+   "application": "The exact examples can catch an invalid assumption in random-walk analysis software: the probability of reaching a particular location need not have just one peak over time. Their use is presently methodological. The counterexample involves a high-dimensional mathematical grid, and the release shows no practical simulation improvement or real-world consequence of the very small fluctuations."
+  },
+  "fano-plane-spectrum": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The seven-point example is an exact benchmark for checking software that computes tensor eigenvalues, including unusual cases where ordinary matrix intuitions fail. The release offers specialist mathematical test data; it does not demonstrate better data analysis, signal processing or another operational use, and remains unrefereed."
+  },
+  "quartic-inverse-coefficients": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The root-ordering result helps algebraists understand a particular family of inverse-polynomial coefficients and identify suitable points for further proofs. Its broader geometric conclusion depends on a separate unrefereed manuscript. No numerical inversion method, physical model or measurable practical improvement is supplied."
+  },
+  "sharp-bilagrangian-smoothness": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The criterion tells mathematicians when a particular space of constrained subspaces is smooth enough for local geometric tools to apply everywhere. Although relevant to the mathematics of integrable systems, this unrefereed result does not establish that a physical system can be solved, controlled or integrated."
+  },
+  "two-class-transposition-profiles": {
+   "classification": "Research use",
+   "application": "For a specified biased shuffle, researchers can track fixed cards separately in the frequently and infrequently selected groups to describe the remaining departure from randomness. This offers a model-specific diagnostic idea for sampling research. The unrefereed result concerns large-deck limits; it is not a reliable stopping rule for a finite shuffle or a security guarantee."
+  },
+  "biased-transposition-profile-counterexample": {
+   "classification": "Research use",
+   "application": "The counterexample warns sampling researchers that an overall statistic can conceal a slowly changing subgroup. Counting unchanged members of that subgroup exposes an incorrect prediction of randomness in the specified shuffle. Using similar checks elsewhere is an inferred research direction, not a validated general diagnostic; the candidate does not automatically transfer to other sampling algorithms."
+  },
+  "moment-ideals-unbounded-generator-degrees": {
+   "classification": "Research use",
+   "application": "Developers of algebraic statistical methods can use the result to avoid assuming that one fixed maximum equation degree will describe every independent-variable moment model. That informs method design and supplies difficult test cases. The unrefereed construction uses rapidly growing parameters and does not prove practical fitting difficulty, sample requirements or failure of other statistical algorithms."
+  },
+  "biased-small-world-mixing": {
+   "classification": "Potential application",
+   "application": "A possible use is designing random sampling on ring-like networks with shortcuts: a persistent directional preference can accelerate forgetting the starting location in the precise model studied. This is an inferred design idea, supported here by an unrefereed mathematical claim. The weights and shortcut regimes are restricted, and no speed benefit has been measured in a deployed network."
+  },
+  "bounded-product-transposition-cutoff": {
+   "classification": "Research use",
+   "application": "Sampling researchers can use the result to assess whether a swap-based randomisation scheme still approaches randomness abruptly when objects have unequal selection probabilities. It offers qualitative reassurance only when those probabilities stay within specified bounds. The unrefereed asymptotic theorem does not tell an operator exactly how many swaps a particular finite dataset needs."
+  },
+  "six-dimensional-zonoid-counterexample": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The explicit shape provides a counterexample and a benchmark for algorithms that enclose convex bodies using sums of line segments. The result corrects a mathematical worst-case assumption; it does not demonstrate better uncertainty modelling, control or optimisation in practice, and the claimed proof remains unrefereed."
+  },
+  "stable-power-concavity-gaussian-boundary": {
+   "classification": "Potential application",
+   "application": "Analysts fitting heavy-tailed data could use this warning when choosing shape constraints: a distribution that looks almost Gaussian centrally may still violate a proposed global constraint because of distant tails. This is a plausible modelling safeguard, not a tested statistical procedure. The unrefereed result treats symmetric stable distributions and supplies neither a new estimator nor validated risk predictions."
+  },
+  "symmetric-determinantal-hilbert-threshold": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The classification helps symbolic-computation researchers choose which kind of formula to seek when counting symmetry components, avoiding an impossible algebraic formula above dimension three. It is a specialist mathematical guide, not an efficient counting algorithm; runtime gains and practical downstream benefits are not established."
+  },
+  "symmetry-respecting-tree-torsors": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The result tests whether an algebraic action on spanning trees can respect every graph symmetry, and counts the possibilities for particular graphs. Despite the use of network language, it provides no network-design or routing improvement, no preferred action and no efficient general decision procedure. The proof is unrefereed."
+  },
+  "three-coloured-paths-partial-results": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The partial graph-colouring results and failed-proof examples can help researchers avoid repeating unsuccessful approaches to a mathematical conjecture. The parent question remains unresolved, and the release does not provide a demonstrated scheduling, communications or resource-allocation method despite graph colouring having applications in those broader areas."
+  },
+  "triangulated-graph-product-picard": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The formula helps specialists classify integer configurations on a geometric product of two graphs and check how the classification changes with its triangulation. The code supplies mathematical diagnostics, not a general-purpose practical solver; the unrefereed result establishes no operational network or computing benefit."
+  },
+  "affine-elementary-symmetric-total-nonnegativity": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The result gives symbolic-computation and combinatorics researchers a way to certify that certain determinant coefficients are nonnegative without enumerating every case. It covers one specified algebraic transformation, not the broader conjecture. Practical software gains or uses in a physical or commercial system have not been demonstrated."
+  },
+  "essential-hurwitz-trace-formula": {
+   "classification": "Potential application",
+   "application": "Computer-vision researchers could use the compact formula to detect algebraic degeneracies in five-point camera estimation, where image correspondences can lead to colliding candidate solutions. It makes an otherwise unwieldy mathematical test evaluable exactly. The unrefereed release does not show faster camera estimation, better numerical robustness or that its test alone determines physically valid cameras."
+  },
+  "hilbert-eight-points-reducedness": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The result concerns hidden algebraic structure when eight mathematical points collide in four dimensions. Its large exact computations may serve as benchmarks for computer algebra and proof checking, but the unrefereed candidate supplies no physical collision model, engineering method or demonstrated improvement in a practical task."
+  },
+  "sharp-local-minor-ratios": {
+   "classification": "Research use",
+   "application": "Could help developers of mathematical software certify that every minor of a matrix is positive using smaller minors and explicit error margins. This is a possible certification use, not a demonstrated faster algorithm. The unrefereed candidate supplies neither a stable method for computing those minors nor evidence of a practical speed advantage."
+  },
+  "symmetric-unimodality-free-convolution": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The proposed result could constrain the shape of limiting eigenvalue distributions when adding suitable large random matrices. It supplies no finite-matrix error bounds, data-analysis procedure or tested application, so that research connection does not yet establish practical use."
+  },
+  "dyck-transpositions-n-log-n": {
+   "classification": "Research use",
+   "application": "Could inform the analysis of software that samples constrained paths or equivalent combinatorial structures by random swaps, by identifying how the required number of proposals grows with size. The unrefereed result leaves the upper constant unspecified, so it does not give a usable stopping time or demonstrate a faster sampler."
+  },
+  "potts-censoring-counterexample": {
+   "classification": "Research use",
+   "application": "Provides a small test case for researchers evaluating update schedules in Potts-model simulations: adding an update need not improve the final distribution relative to another schedule. The exact effect is tiny and specific to the chosen schedule. It offers no practical speed-up or general recommendation to skip simulation updates."
+  },
+  "rbm43-eight-point-obstruction": {
+   "classification": "Research use",
+   "application": "Can help distinguish a neural model’s structural limitations from failed training: the supplied target distribution cannot be fitted arbitrarily well by this particular four-input, three-hidden-unit model. It could serve as a fitting-software test case. The certified error is tiny, and the release shows no important loss on typical data or larger networks."
+  },
+  "linear-nonbacktracking-jordan-growth": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The construction warns researchers that eigenvalues alone can miss complicated behaviour in matrices counting walks that do not immediately retrace an edge. Its enormous artificial graphs are extremal examples; the result neither describes typical networks nor improves a network-analysis algorithm."
+  },
+  "rbm31-exact-kl-radius": {
+   "classification": "Research use",
+   "application": "Offers an exact benchmark for software fitting two hidden groups to three yes-or-no variables, and a program that constructs a feasible approximation to a supplied rational distribution. It quantifies the model’s worst possible information loss. The tool is not a general best-fit solver, and practical performance on real data has not been shown."
+  },
+  "sharp-quartic-hadamard-powers": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The proposed threshold tells mathematicians when raising the coefficients of a degree-four polynomial to a common power preserves real roots. It does not provide a demonstrated engineering, control or statistical use, and it does not cover arbitrary polynomial degrees."
+  },
+  "fixed-d-toeplitz-obstruction": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. This is an abstract counterexample showing that a family of algebraic objects can lose a desired closure property despite each finite block being manageable. Its use is to correct hypotheses in representation-theory research; it supplies no applied computation or operational method."
+  },
+  "sharp-four-factor-cohen-macaulay-obstruction": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The result identifies exactly when a particular union of algebraic surfaces can deform into an indivisible surface, using a graph test. That is useful within algebraic geometry, but the release establishes no link to a practical design, measurement or computational task outside that research."
+  },
+  "ap4-ramsey-diameter-36": {
+   "classification": "Research use",
+   "application": "Supplies a compact benchmark for testing software that produces and checks logical proofs of exhaustive combinatorial searches. Developers can test the translation into Boolean constraints separately from proof checking. The mathematical result itself has no clear real-world application, and covers only sets inside the specified 37-number interval."
+  },
+  "fisk-toeplitz-deletion-interlacing-through-five": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The release supplies exact polynomial certificates that can help researchers study when a particular transformation preserves real roots and how those roots move after an input is removed. The proof stops at five positive inputs and yields no tested application or general-purpose algorithm."
+  },
+  "hc4-five-support-structural-reductions": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The release reduces a difficult polynomial-geometry research problem to smaller exact algebraic questions and supplies reusable calculations. It does not solve the underlying Hessian or Jacobian conjectures, and no practical application of these partial reductions is demonstrated."
+  },
+  "pinching-free-normal-cover": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The candidate describes how a mathematical growth rate changes as an abstract hyperbolic surface is deformed. Its quantitative estimate is useful for specialist geometry research, but it is not connected here to measured physical systems, data processing or an engineering method."
+  },
+  "degree-independent-rhombus-criterion": {
+   "classification": "Research use",
+   "application": "Could give symbolic-mathematics software a sufficient test for a particular stability property of three-variable polynomials using small groups of coefficients, regardless of degree. This is a possible research-software use. The release derives no probability-sampling or engineering consequence, and similar tests can fail when more variables are introduced."
+  },
+  "factorial-spikes-fi-noetherianity": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The construction shows why checking that each finite part of an algebraic system behaves well cannot guarantee that the whole growing system does. It clarifies assumptions for abstract algebra research, but supplies no practical scalability test or algorithm for real systems."
+  },
+  "unbounded-bns-component-orbits": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. This family helps geometric group theorists distinguish increasingly many mathematical configurations even after accounting for symmetries. The proposed counting method is a research tool; the release provides no physical, computational or decision-making application outside that theoretical setting."
+  },
+  "four-element-rowmotion-periodicity": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. A four-element example shows that two abstract label-updating rules need not repeat periodically and supplies small exact tests for research implementations. The result concerns these specific mathematical rules, not practical scheduling, network control or general dynamical systems."
+  },
+  "four-point-inductive-cubical-excision": {
+   "classification": "Research use",
+   "application": "Provides a tiny test case for developers implementing the specified directed cubical homology theory: a standard rule for removing parts of a space fails, so software must not rely on it generally. This is a research-software safeguard. The release does not demonstrate an effect on practical image analysis or other homology theories."
+  },
+  "negative-square-energy-five-vertex-valley": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The example shows that one mathematical network statistic can fall and then rise as links are added, correcting a proposed universal pattern. Despite the term “energy,” this is not measured physical energy, and no network-design or operational benefit is established."
+  },
+  "pure-tensor-analytic-rank-counterexample": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The simple tensor example helps researchers reject an incorrectly scaled mathematical inequality before attempting a long proof. It concerns one literal interpretation of the source question; it does not establish an improved tensor-computation, data-compression or machine-learning method."
+  },
+  "extremes-do-not-always-maximise": {
+   "classification": "Research use",
+   "application": "Gives simulation-software developers an exact test for a misleading convergence shortcut: starting a monotone random process at its lowest and highest states need not reveal its worst remaining dependence on the starting state. The example can catch this assumption in diagnostics. It does not supply a replacement diagnostic or settle the zero-field Ising case."
+  },
+  "odd-order-one-third-popular-differences": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The small example prevents mathematicians from inferring a rigid algebraic pattern merely because every observed difference occurs frequently. It sharpens an abstract counting problem, but provides no validated method for recognising patterns in noisy data or making practical predictions."
+  },
+  "amplitude-modules-fused-support-bautin-bound": {
+   "classification": "Research use",
+   "application": "Could help symbolic-integration researchers predict how many differential equations are needed for specified polynomial exponential integrals, and stop one particular coefficient calculation after finitely many orders. These are concrete mathematical-computation uses. The unrefereed results require their stated polynomial families and conventions and do not supply a bound on real physical oscillations."
+  },
+  "o01d0-polar-fibre-structural-reductions": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The release makes an unresolved polynomial-map problem easier for specialists to pursue by reducing it to explicit arithmetic checks and preserving failed approaches. These are research-planning benefits; the central all-index assertion remains open and no applied method follows from the partial reductions."
+  },
+  "lps-structural-reductions": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The release compresses a growing algebraic research problem into a fixed number of variables and supplies exact calculations for selected cases. That may reduce future proof work, but it neither completes the conjectural route nor demonstrates a useful algorithm for an applied problem."
+  },
+  "s6-extension-results-candidate": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The arithmetic and geometric calculations help specialists assess a disputed claim about the six-dimensional sphere and isolate smaller questions for review. Several conclusions depend on the unverified source construction; the release establishes neither that construction nor an application to physical models or technology."
+  },
+  "txgraffiti-order48-successor": {
+   "classification": "Research use",
+   "application": "Offers a concrete benchmark for graph-optimisation software: two different ways of selecting a small controlling structure in the same regular network require different sizes. It can expose an invalid bound or pruning rule based on the proposed inequality. No real network deployment or general optimisation improvement is demonstrated, and the example is not proved smallest possible."
+  },
+  "full-e4-polydegree-column": {
+   "classification": "Research use",
+   "application": "Provides reusable material for proof-software and validated-numerics research: a formally checked determinant identity and a worked method combining finite interval calculations with a bound covering infinitely many cases. The underlying polynomial-geometry theorem has no clear real-world application. Formal checking covers the companion identity, not the whole research claim."
+  },
+  "certified-three-item-jrp-gap": {
+   "classification": "Potential application",
+   "application": "Could help inventory planners test whether a simple shared-ordering-cost estimate is too optimistic for three products, and identify coordinated replenishment calendars for further simulation. It also supplies exact regression cases for planning software. The reported 14.87% gap is a synthetic model discrepancy, not savings; real demand, service levels and operating constraints require additional modelling and validation."
+  },
+  "finite-sample-affine-diversification": {
+   "classification": "Potential application",
+   "application": "Could help evolutionary biologists decide which claims about past speciation and extinction survive uncertainty in a small family tree, and flag conclusions that should remain unresolved. The method assumes a specific homogeneous fixed-stem model and does not cover dating or topology errors. Its synthetic demonstration and failed broad-utility benchmark do not establish general practical superiority over existing tools."
+  },
+  "cyclicity-support-fusion-atlas": {
+   "classification": "Research use",
+   "application": "Offers symbolic-computation researchers a way to determine the size of differential systems for polynomial exponential integrals and identify weighted integrals that vanish. These are concrete mathematical calculation tools, but the release establishes no non-trivial real-world application. Its classifications remain unrefereed and depend partly on imported theorems."
+  },
+  "frankl-concavity-obstruction": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The release helps mathematicians avoid an invalid concavity step in one entropy-based approach to Frankl’s conjecture and retains some usable reductions. It neither solves that conjecture nor proves a new universal bound, and its source-specific objection should not be generalized to unrelated entropy methods."
+  },
+  "furter-r3-through-299": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The finite certificates extend knowledge about when polynomial compositions can have long runs of cancelling coefficients, and provide test material for exact algebra software. The archived result covers a finite range; a later external candidate proof does not independently validate these computations."
+  },
+  "aggregation-without-sufficiency": {
+   "classification": "Practical method",
+   "application": "Provides an audit procedure for deciding whether an aggregate statistic contains enough information for a particular decision. Fishery managers can ask whether catch rates distinguish abundance from catchability; health analysts can test whether a reproduction number supports targeted vaccination decisions. The proposed documentation framework has illustrative examples, but demonstrated improvements in real decision-making are not established."
+  },
+  "full-e3-column-polydegree-conjecture": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The candidate describes which families of invertible polynomial transformations can approach others as limits, using exact certificates and an all-degree argument. Its value is in algebraic research and checking computer-assisted proofs; no engineering or scientific prediction is demonstrated."
+  },
+  "sfs-identifiability-audit": {
+   "classification": "Research use",
+   "application": "Could prevent geneticists from reading a specific ancient population decline or expansion into a fitted curve when the genetic summary cannot distinguish those histories. It also motivates collecting additional information or testing stronger assumptions. The result concerns expected frequency summaries in a neutral single-population model, not every demographic method or the information in complete linked genomes."
+  },
+  "unique-answer-not-identified": {
+   "classification": "Practical method",
+   "application": "Offers analysts a ledger for recording how priors, constraints and calibration choices influence conclusions in health, economics and climate modelling. This can expose when a seemingly unique estimate is chosen by assumptions rather than distinguished by observations, guiding sensitivity analysis and reporting. The framework is an unrefereed synthesis, with no demonstrated organizational or policy outcomes."
+  },
+  "wales-20mph-casualty-attribution": {
+   "classification": "Practical method",
+   "application": "Helps road-safety evaluators and journalists distinguish a reported casualty decline from the causal effect of Wales’s speed-limit change. It identifies the need for historical road-treatment maps, linked collision locations and a defensible comparison outcome. The audit concerns a frozen aggregate evidence set; it establishes neither that the policy succeeded nor that it failed."
+  },
+  "bilateral-deficiency-regular-dim": {
+   "classification": "Research use",
+   "application": "Supplies exact relationships and difficult examples for researchers testing graph optimization or Boolean optimization software. No non-trivial operational application is demonstrated: translating the result into network placement or scheduling would require a separate model. Its minimum-size claim applies only to a restricted graph class, and the general theory remains an unrefereed candidate."
+  },
+  "cyclicity-root-span-low-rank": {
+   "classification": "Research use",
+   "application": "Provides a calculator and structural rule for finding how many independent equations are needed to represent a specified polynomial exponential integral. This could aid symbolic mathematics software, but no non-trivial real-world application is established. The main theorem is conditional on an earlier bridge, and this version leaves the general compositional classification open."
+  },
+  "exact-smith-invariants-affine-determinant-lines": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The work quantifies the scaling ambiguity left when several polynomial factors are reconstructed from their product and additional constraints. That is useful bookkeeping for algebraic geometry and exact algebra software, but the release supplies no demonstrated physical inverse problem, engineering use or empirical validation."
+  },
+  "hahn-ewens-mixing-theorem": {
+   "classification": "Research use",
+   "application": "Provides an exactly solvable random-process family that researchers could use to test calculations of convergence to equilibrium. No non-trivial real-world application is demonstrated. Its sharp convergence threshold concerns one stationary-weighted average, so it cannot be used directly as a safe stopping time for a simulation begun from an arbitrary fixed state."
+  },
+  "smooth-point-certificates-polydegree-containments": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The candidate simplifies certificates used to prove relationships between families of polynomial transformations, making a specialized algebraic search easier to check. The finite examples and smaller certificates support mathematical research; they do not establish a general practical algorithm for an applied problem."
+  },
+  "affine-diversification-fibres": {
+   "classification": "Potential application",
+   "application": "Could help evolutionary biologists calculate the full range of speciation and extinction histories consistent with a fixed tree-derived signal and explicit restrictions, instead of trusting a finite sample of possible histories. It can detect incompatible assumptions. The mammal example is a sensitivity exercise; uncertainty in the estimated signal and biological model is not covered by this version."
+  },
+  "bordered-jacobian-foundations": {
+   "classification": "Research use",
+   "application": "Replaces large determinant calculations for polynomial multiplication with a simpler formula, potentially assisting symbolic algebra implementations and checks of local invertibility. No non-trivial real-world application is established. The release’s all-degree result rests on an unrefereed written proof; exact computer checks cover selected cases rather than every input."
+  },
+  "certified-commitment-horizons": {
+   "classification": "Potential application",
+   "application": "Could help manufacturers and retailers decide which near-term production or ordering dates can remain committed when demand forecasts change, reducing unnecessary replanning. It calculates a certified amount of forecast movement a schedule can tolerate. Quantities must remain adjustable; capacity and service constraints are excluded. Some cases require expensive search or remain unresolved, and operational benefits are untested."
+  },
+  "certified-two-item-jrp": {
+   "classification": "Potential application",
+   "application": "Could help a warehouse coordinate replenishment of two products so they share ordering, dispatch or receiving costs while respecting average resource limits. It supplies an exact stopping certificate and quantifies how optimistic a simpler cost estimate can be. The model assumes deterministic repeating schedules for two items, and finite termination does not guarantee a fast calculation."
+  },
+  "cyclicity-loci-exponential-periods": {
+   "classification": "Research use",
+   "application": "Offers symbolic-computation developers exact tests for where an integral’s differential equation loses order, helping avoid misleading reductions at special parameter values. No non-trivial real-world application is demonstrated. The distinction between a temporary rank loss and a persistent simpler system matters, and the analytic contour conditions needed for actual integrals remain separately unvalidated."
+  },
+  "txgraffiti-c3-resolution": {
+   "classification": "Research use",
+   "application": "Supplies a small, explicit test case for graph optimization programs and automated conjecture systems: two familiar graph measures violate a proposed ordering. That can expose incorrect bounds or assumptions in research software. No non-trivial operational use is demonstrated, and the release does not establish global minimum size or independent validation of the full argument."
+  },
+  "random-reshuffling-baseline-policy": {
+   "classification": "Potential application",
+   "application": "Suggests improving training-data order by resolving selected random choices only when their effect on loss can be certified, retaining random fallback otherwise. This is a possible machine-learning optimization technique in a restricted quadratic model. Its practical pilot failed its feasibility target, so no training-speed, neural-network or generalization benefit has been established."
+  },
+  "irreducible-pushforwards-quartic-transitions": {
+   "classification": "Research use",
+   "application": "Provides tools for checking whether algebraic zeros can overlap and for detecting when equations become dependent near a quartic transition. Those may support symbolic and asymptotic calculations, but no non-trivial real-world application is established. The local results do not provide the global integration and error bounds needed to turn them into a physical prediction."
+  },
+  "stocks-are-not-flows": {
+   "classification": "Practical method",
+   "application": "Helps housing-policy researchers test whether aggregate tenure, price and rent data support claims that wealthy investors displaced owner-occupiers. It identifies linked buyer resources, financing and property-use changes as useful missing evidence. Its synthetic model audit does not estimate the historical investor effect or show it is absent; the public-data reconstruction establishes accounting changes, not their cause."
+  },
+  "exact-low-length-recht-re-inequalities": {
+   "classification": "Research use",
+   "application": "Could improve evaluation of machine-learning data-ordering methods by requiring the comparison to specify actual loss, averaging, step size and whether data are reshuffled each epoch. The release shows that different metrics can reverse the ranking. These are exact results in restricted mathematical examples, not evidence that a particular sampler improves practical model training."
+  },
+  "degree-difference-affine-slices": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The formula simplifies determining where a polynomial multiplication-and-resultant map loses local invertibility, and supports research on algebraic factorization spaces. A possible symbolic-software use is indirect; the release does not demonstrate an applied inverse problem, and the general structural arguments have not been independently verified."
+  },
+  "erdos-848-all-n": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The candidate gives an exact extremal count for sets of integers with a special divisibility property. Its certificates may serve as examples for testing exact arithmetic and computer-assisted proof methods, but neither a cryptographic application nor another operational benefit is established by the release."
+  },
+  "exotic-affine-three-spheres": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The work distinguishes algebraic spaces that look the same under smooth geometric measurements and rules out particular polynomial constructions. Its significance is within algebraic geometry; finite computational checks corroborate selected consequences but do not independently validate the central geometric identification."
+  },
+  "reducible-incidence-divisors": {
+   "classification": "No clear application",
+   "application": "No non-trivial real-world application is evident. The candidate classifies when certain polynomial-defined geometric objects split into components and screens possible constructions within a narrow algebraic framework. This can focus further mathematical research, but it does not classify every related construction or provide a demonstrated engineering, scientific or commercial use."
+  },
+  "vr2-k4-equals-20": {
+   "classification": "Research use",
+   "application": "Provides explicit small graphs and reusable certificates for testing combinatorial search and proof-checking software. No non-trivial real-world application of the exact threshold is evident. The upper-bound argument shares certificates with the companion graph-partition result, so the two releases are dependent results rather than independent confirmations."
+  },
+  "z20-equals-6": {
+   "classification": "Research use",
+   "application": "Supplies benchmark formulas and proof certificates that automated-reasoning researchers can use to test solvers, proof compression and verification tools. No non-trivial real-world application of the exact graph-partition value is evident. Checked logic certificates do not by themselves validate the graph-to-formula translation or complete mathematical argument, which remains an unrefereed candidate."
+  },
+  "nimfa-sis-decay-envelopes": {
+   "classification": "Research use",
+   "application": "Epidemic modellers can use the guaranteed 1/(1+t) decay, and the network factor that governs decay at the tipping point, to bound how long an infection lingers on a given contact network and to test simulation code against an exact worst case. It shows that near the threshold the network's structure, not just R0, sets how long fade-out takes. The results concern the standard mean-field SIS model and related models; they do not forecast a real outbreak or recommend interventions. This remains an unrefereed candidate."
+  },
+  "split-likelihood-persistence": {
+   "classification": "Practical method",
+   "application": "Analysts who monitor results as data arrive, for example in online experiments or interim analyses, should not keep recomputing a split likelihood-ratio (universal inference) interval and treat it as valid at every look. The release gives a corrected boundary that stays valid however often you check, about 10–14% wider than existing anytime-valid intervals, which remain the better default where they apply. The failure builds slowly, so short monitoring runs are only mildly affected. This remains an unrefereed candidate."
+  }
+ }
+}

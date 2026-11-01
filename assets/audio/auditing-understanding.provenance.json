@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "article-audio-1.1",
+  "slug": "auditing-understanding",
+  "sourceBodyPath": "articles/auditing-understanding/body.md",
+  "sourceBodySha256": "d7806ca263fce740a10f4594e7a5691695b9a50f5af3ceab980076106def1034",
+  "transcriptPath": "assets/audio/auditing-understanding.txt",
+  "transcriptSha256": "541213b820594f6a973236f2815c181d75802a9c50e95a2c770ee7cfb4db28d8",
+  "transcriptCharacters": 13637,
+  "inputSha256": "3ef475d458d8eec08af2a33443adf048d9760570e8164572d594c673100d69fa",
+  "inputNormalization": "Trim leading and trailing whitespace per chunk; inputSha256 joins those inputs with two newlines.",
+  "inputRangeUnit": "UTF-16 code units in the exact UTF-8 transcript decoded as a JavaScript string",
+  "maximumChunkCharacters": 3000,
+  "chunking": "paragraph-not-heading, then sentence, then space",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "speed": 1,
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "audioPath": "assets/audio/auditing-understanding.mp3",
+  "limitations": [
+    "bundled CLI does not expose API request IDs",
+    "The receipt binds prepared inputs, configured provider profile and observed output bytes; it is not an independent attestation of provider execution or spoken-word completeness.",
+    "Offline checking verifies the final MP3 hash and recorded segment metadata, not deleted or unavailable private segment files.",
+    "Spoken-ending checks are offline ASR of each chunk's and the final file's last seconds, not human listening."
+  ],
+  "assembledAt": "2026-10-31T10:20:40.828Z",
+  "generator": "bundled speech skill text_to_speech.py speak-batch",
+  "requestId": null,
+  "chunks": [
+    {
+      "index": 1,
+      "start": 0,
+      "end": 2746,
+      "sourceTextSha256": "33602d84b5c624daad3e533f240c2029a99b5a85c1a9e8c9b9efc494eef16bb6",
+      "inputSha256": "d4250d69590e286bfced122415166f5eee48195e8128a88a5046c8441dba4629",
+      "inputCharacters": 2744,
+      "requestId": null,
+      "audioSha256": "067019ba7ef6b26fb8c374cbab8265f2d177239d04518143fdd50e23d30d8698",
+      "audioBytes": 2741760,
+      "durationSeconds": 171.36,
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "yet it still answers the same simple question",
+        "heardEnding": "many such pairs and the program grows enormous yet it still answers the same simple question",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "index": 2,
+      "start": 2746,
+      "end": 5720,
+      "sourceTextSha256": "9d63f22fb008cfd8745814e90547a67d14ae857267e974c793f4d1d572137fd9",
+      "inputSha256": "1669ff0e00ad2162c07e89731e1aafd1d03d1448a0eea67055bbb282a9d884b6",
+      "inputCharacters": 2972,
+      "requestId": null,
+      "audioSha256": "1684a3ae56327aa97c2314b962a754408dc39cbddf2beab69adf2a7dbd1db38d",
+      "audioBytes": 2983296,
+      "durationSeconds": 186.456,
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "are mechanisms that would produce exactly those observations",
+        "heardEnding": "force x on what happens to y here are mechanisms that would produce exactly those observations",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "index": 3,
+      "start": 5720,
+      "end": 8374,
+      "sourceTextSha256": "56302494e21b49e7bd0180c13ffc377e90e29aa859f1f114bda14fd9416c8e72",
+      "inputSha256": "786ba92d5d36fb878c9e580e5125ef95bece2dc3ee21cd4511b3ed9038d487a9",
+      "inputCharacters": 2652,
+      "requestId": null,
+      "audioSha256": "d4c2a427d21d1eb3dbfa8d48af86fb498a4fe6caf4fd4f8734a67d088a596236",
+      "audioBytes": 2659968,
+      "durationSeconds": 166.248,
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the point is to describe that reliance accurately",
+        "heardEnding": "instruments and colleagues all the time and rightly the point is to describe that reliance accurately",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "index": 4,
+      "start": 8374,
+      "end": 11203,
+      "sourceTextSha256": "61a9ef90861b7b7cdebacf2df957f424fd672ca5bb7f2249e7be4385380037b4",
+      "inputSha256": "83587c2bb565d683e0db64748e8bfba0b2160415af6d4c25341c6bac2e0e8ee2",
+      "inputCharacters": 2827,
+      "requestId": null,
+      "audioSha256": "e0aa051668bc75717333f3efdd800960967d6d939f63cc039956d5c9fdbaca14",
+      "audioBytes": 2899200,
+      "durationSeconds": 181.2,
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "be needed and neither has been run yet",
+        "heardEnding": "standard it asks of ai claims experiments would be needed and neither has been run yet",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "index": 5,
+      "start": 11203,
+      "end": 13637,
+      "sourceTextSha256": "0c276707404ae0c80b77b9938cceed85b713ca49b11983576e9de2227c029fb8",
+      "inputSha256": "b0f6a062411b3822c21f50580ece5a0a57ff84dd2f856ad1ebd447588f2d3671",
+      "inputCharacters": 2433,
+      "requestId": null,
+      "audioSha256": "2a49ba0b7e8274a79abc51ff581433e2dce9e310a38b5b9617d384c497471c84",
+      "audioBytes": 2252160,
+      "durationSeconds": 140.76,
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a reading of the article not additional evidence",
+        "heardEnding": "this reading uses a synthetic voice it is a reading of the article not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 3
+      }
+    }
+  ],
+  "transform": {
+    "tool": "ffmpeg",
+    "method": "concat-demuxer then re-encode",
+    "codec": "libmp3lame",
+    "bitrate": "64k",
+    "channels": 1,
+    "sampleRate": 24000,
+    "maximumBytesExclusive": 26214400
+  },
+  "audioSha256": "6d59e5cab4a1bbabc0cb4643ccba07e988238314377ed9af58eeb84f20982842",
+  "audioBytes": 6768812,
+  "durationSeconds": 846.024,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a reading of the article not additional evidence",
+    "heardEnding": "this reading uses a synthetic voice it is a reading of the article not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

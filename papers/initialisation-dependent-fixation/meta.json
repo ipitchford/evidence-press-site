@@ -1,0 +1,231 @@
+{
+  "slug": "initialisation-dependent-fixation",
+  "title": "Initialisation-dependent fixation in noisy weighted voter models: a resolution of Conjecture 2 of Ganesh, Hauert and Valla",
+  "shortTitle": "Fresh starts help the better option: Conjecture 2 resolved",
+  "oneLine": "In the noisy weighted voter model, a freshly initialised swarm reaches the better decision strictly more often than Conjecture 2 of Ganesh, Hauert and Valla predicts, so the conjecture fails as stated; under the equilibrium start the source simulated, it is exact for a constant favourable rate and is replaced by a mean-quality formula otherwise.",
+  "abstract": "Ganesh, Hauert and Valla (Swarm Intelligence 19(3), 2025) studied a noisy weighted voter model for best-of-n decisions in robot swarms. Their Conjecture 2 says that, on a complete graph, the probability that k agents holding the better option eventually win converges to the survival probability of a branching process built from the equilibrium distribution of the agents' signalling rates, while specifying freshly sampled initial rates. For bounded rates with every favourable rate strictly below every resident rate, this candidate proves the population limit for arbitrary initial rate laws: it is governed by the transient mean resident rate. Freshly sampled residents update faster at first, because equilibrium over-represents slow residents (the inspection paradox), so whenever resident rates vary the better option wins strictly more often and the conjecture fails as stated. With favourable rates 1/2 or 1 and resident rates 2 or 6, each with probability one half, the limit is 0.7842… rather than (3+√37)/12 = 0.7569…; with constant favourable rate 1 it is 0.70203… rather than 2/3. Under the equilibrium start that the source simulated, the conjectured formula is exact for a constant favourable rate; for varied favourable rates the limit is 1 − (E T_B/E T_A)^k, again above the conjectured value. Under these two starts the stationary formula never overestimates; its underestimate has supremum 27.3355 percentage points, not attained, and is below 8.27 points when resident rates differ by at most a factor of three. An explicit burn-in time removes the effect.",
+  "datePublished": "2026-10-27",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "weighted voter model",
+    "fixation probability",
+    "inspection paradox",
+    "renewal process",
+    "branching process",
+    "swarm robotics",
+    "best-of-n decisions",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/initialisation-dependent-fixation",
+  "releaseUrl": "https://github.com/ipitchford/initialisation-dependent-fixation/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/initialisation-dependent-fixation/releases/download/v1.0.0-candidate/initialisation-dependent-fixation-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23687032",
+  "conceptDoi": "10.5281/zenodo.23687031",
+  "zenodoUrl": "https://zenodo.org/records/23687032",
+  "citeText": "Anonymous (2026). Initialisation-dependent fixation in noisy weighted voter models: a resolution of Conjecture 2 of Ganesh, Hauert and Valla. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23687032",
+  "evidence": "Written proofs of every theorem in a 28-page manuscript: a configuration-uniform fixation bound, an exact common-thinning coupling with a time-inhomogeneous branching process, the strict fresh-start bias, the sharp envelope and global supremum, rate-cap and burn-in bounds, random favourable rates and the equilibrium-start identity. Exact rational certificates (standard library) for the constant-rate witness to 30 digits, the global supremum bracket and the Theorem 6 identity for four laws; exact finite-population chains for N ≤ 5; floating-point multitype, large-N and rate-cap values labelled numerical; nine semantic negative controls; replay from a clean copy and in GitHub CI.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; key values are certified in exact rational arithmetic; multitype, large-N and rate-cap values are uncertified floating point. Internal AI-assisted review and two outside-model audits only. External specialist review, independent reproduction and formal verification have not been established. Scope: complete graph, exponential signalling, separated rate supports.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (27 October 2026, 28 pages), its verification scripts and stored outputs, and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 27 October 2026.",
+  "keyResults": [
+    "Corrected limit (Theorems 1 and 4): for arbitrary initial rate laws, fixation converges to survival of a time-inhomogeneous branching process whose birth rate is the transient mean resident rate b_ν(t), not its equilibrium value.",
+    "Conjecture 2 fails as stated (Theorem 2, Corollary 5): if resident rates vary, the fresh-start limit strictly exceeds the conjectured value; e.g. 0.70203… instead of 2/3 (certified), and 0.7842… instead of (3+√37)/12 = 0.7569… with varied favourable rates.",
+    "Equilibrium start (equation (7), Theorem 6, Corollary 7): the conjectured formula is exact for a constant favourable rate; for varied favourable rates the limit is 1 − (E T_B/E T_A)^k, strictly larger.",
+    "Size of the error (Theorem 3, Proposition 5.1, Section 5.4): the single-founder underestimate has supremum 27.3355… percentage points, not attained; with resident rates within a factor of three the proved ceiling is below 8.27 points.",
+    "Burn-in (Section 6): pre-ageing the residents for time τ shrinks the error like e^{−b₀τ}, with explicit single- and k-founder bounds."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review and outside-model adversarial audits",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When the starting line matters: fixation in noisy swarm decisions. An Evidence Press briefing. First, the background. Robot swarms often choose between options, such as two nest sites, without a leader. In the weighted voter model, each robot advertises its favourite for a while, then copies a random neighbour. Better options are advertised for longer, so they spread. In 2025, Ganesh, Hauert and Valla conjectured a formula for the chance that a small group backing the better option eventually wins in a large swarm. Their formula describes the other robots as they look after a long run, in equilibrium. Yet the conjecture says every robot starts with a freshly measured quality. Now, the main finding. That difference matters, and the conjecture fails as stated. A snapshot of a long-running swarm over-represents slow robots, because slow robots keep their state for longer. This is the inspection paradox. A fresh swarm has no such bias, so its robots switch faster at first, just when a small group is won or lost. So whenever advertising rates vary, the better option wins more often than predicted. In one example, the true chance is about seventy-eight per cent, not seventy-six. The source's own simulations started in equilibrium. There, the formula is exactly right when the better option has one fixed rate, but it underestimates again when that rate varies. The worst-case gap approaches twenty-seven percentage points, and a short burn-in removes it. The limitations: the proofs cover complete networks, and only when every better-option rate is below every other rate. This is an unrefereed, AI-assisted candidate, released on twenty-seven October twenty twenty-six. The paper, proofs and checks are linked on this page. This briefing uses a synthetic AI voice, and is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All four verification scripts and the replay driver were rerun from a clean copy; exact rational outputs reproduce byte for byte, and floating outputs pass their consistency checks. The frozen archive was replayed from a fresh extraction, and nine semantic negative controls rejected every injected error. GitHub CI repeats the replay."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "During internal review an independently written exact finite-population solver reproduced Tables 4 and 5, and a Monte Carlo check on a different law agreed with Theorem 6; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the coupling, spectral and branching arguments are proved in prose."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Exact certificates and negative controls need only the Python standard library; the remaining scripts use NumPy 2.4.6 and SciPy 1.17.1 (pinned in requirements.txt). Versions are listed, not locked in a container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Ganesh et al. (2025), Consensus in the weighted voter model with noise-free and noisy observations. Swarm Intelligence (source of the model, Conjecture 2 and Theorem 5).",
+      "url": "https://doi.org/10.1007/s11721-025-00248-z"
+    },
+    {
+      "citation": "Alexandre et al. (2025), Bridging Wright–Fisher and Moran models. Journal of Theoretical Biology.",
+      "url": "https://doi.org/10.1016/j.jtbi.2024.112030"
+    },
+    {
+      "citation": "Athreya and Ney (1972), Branching Processes. Springer.",
+      "url": "https://doi.org/10.1007/978-3-642-65371-1"
+    },
+    {
+      "citation": "Brown (1980), Bounds, Inequalities, and Monotonicity Properties for Some Specialized Renewal Processes. The Annals of Probability (renewal monotonicity for decreasing-failure-rate laws).",
+      "url": "https://doi.org/10.1214/aop/1176994773"
+    },
+    {
+      "citation": "Ethier and Kurtz (1986), Markov Processes. Wiley Series in Probability and Statistics.",
+      "url": "https://doi.org/10.1002/9780470316658"
+    },
+    {
+      "citation": "Fernández-Gracia et al. (2011), Update rules and interevent time distributions: Slow ordering versus no ordering in the voter model. Physical Review E.",
+      "url": "https://doi.org/10.1103/PhysRevE.84.015103"
+    },
+    {
+      "citation": "Hubbarde et al. (2007), Fixation Probabilities When Generation Times Are Variable: The Burst–Death Model. Genetics.",
+      "url": "https://doi.org/10.1534/genetics.107.072009"
+    },
+    {
+      "citation": "Jafarpour et al. (2023), Evolutionary dynamics in non-Markovian models of microbial populations. Physical Review E (non-Markovian transients and fixation).",
+      "url": "https://doi.org/10.1103/PhysRevE.108.034402"
+    },
+    {
+      "citation": "Karsai et al. (2011), Small but slow world: How network topology and burstiness slow down spreading. Physical Review E.",
+      "url": "https://doi.org/10.1103/PhysRevE.83.025102"
+    },
+    {
+      "citation": "Kendall (1948), On the Generalized \"Birth-and-Death\" Process. The Annals of Mathematical Statistics (time-inhomogeneous birth–death survival formula).",
+      "url": "https://doi.org/10.1214/aoms/1177730285"
+    },
+    {
+      "citation": "Pal et al. (2022), The inspection paradox in stochastic resetting. Journal of Physics A: Mathematical and Theoretical (inspection paradox).",
+      "url": "https://doi.org/10.1088/1751-8121/ac3cdf"
+    },
+    {
+      "citation": "Shpak (2007), Selection Against Demographic Stochasticity in Age-Structured Populations. Genetics.",
+      "url": "https://doi.org/10.1534/genetics.107.080747"
+    },
+    {
+      "citation": "Stark et al. (2008), Decelerating Microdynamics Can Accelerate Macrodynamics in the Voter Model. Physical Review Letters.",
+      "url": "https://doi.org/10.1103/PhysRevLett.101.018701"
+    },
+    {
+      "citation": "Uecker and Hermisson (2011), On the Fixation Process of a Beneficial Mutation in a Variable Environment. Genetics (fixation in a time-varying environment).",
+      "url": "https://doi.org/10.1534/genetics.110.124297"
+    },
+    {
+      "citation": "Valentini et al. (2017), The Best-of-n Problem in Robot Swarms: Formalization, State of the Art, and Novel Perspectives. Frontiers in Robotics and AI.",
+      "url": "https://doi.org/10.3389/frobt.2017.00009"
+    },
+    {
+      "citation": "White (1997), An Effective Truncation Heuristic for Bias Reduction in Simulation Output. SIMULATION.",
+      "url": "https://doi.org/10.1177/003754979706900601"
+    }
+  ],
+  "corrections": [],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:initialisation-dependent-fixation",
+    "attemptIds": [
+      "ep-attempt:initialisation-dependent-fixation-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "certificate-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Status of Conjecture 2 of Ganesh, Hauert and Valla (2025) for the noisy weighted voter model: refuted as stated (fresh start) whenever resident rates vary; exact under the equilibrium start for a constant favourable rate; replaced by 1 − (E T_B/E T_A)^k under the equilibrium start for varied favourable rates.",
+      "scope": "Complete graph, N → ∞ with k fixed, exponential signalling periods, bounded rates with every favourable rate strictly below every resident rate. Overlapping supports, including the source's Gamma-noise examples, are outside scope."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Conjecture 2 is quoted clause by clause with page numbers (pp. 186–187), including 'with initial values of T_A and T_B sampled as above'; the paper separates the stated fresh start from the equilibrium start used in the source's Section 4.7 simulations and treats both.",
+      "remainingRisks": [
+        "One may read 'sampled as above' as a drafting slip meaning the equilibrium start; the paper resolves the conjecture under both readings.",
+        "Multitype numerical values are uncertified floating point; the strict inequalities are proved separately.",
+        "No proof assistant was used.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a probabilist check the common-thinning construction and Proposition 3.4, and rerun the scripts on an independent machine.",
+      "claimCeiling": "Resolution of Conjecture 2 within separated supports on the complete graph, with proved fresh-start and equilibrium-start limits, sharp error envelope and burn-in bounds; certified example values; numerical multitype values. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "initialisation-dependent-fixation-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable resolution of a published conjecture, with rerunnable certificates and negative controls.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

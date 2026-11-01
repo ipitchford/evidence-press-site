@@ -1,0 +1,241 @@
+{
+  "slug": "wide-binary-angle-inversion",
+  "title": "An exact projected-angle likelihood and population inversion for wide-binary eccentricities",
+  "shortTitle": "One angle, an exact likelihood: reading wide-binary eccentricities",
+  "oneLine": "For wide binary stars seen at a random moment from a random direction, the angle between separation and motion has a closed-form likelihood; its distribution determines the population's eccentricity distribution exactly, and simple averages of the angle estimate eccentricity summaries directly.",
+  "abstract": "A wide binary star takes thousands of years to complete one orbit, so its eccentricity usually cannot be found by following the orbit. Astronomers instead use the angle Γ between the pair's projected separation and projected relative velocity, whose distribution over many binaries depends on the population's eccentricity law. In the ideal model, orbital phase is a random time in the orbit and orientation is uniformly random in three dimensions. For this model the candidate derives the likelihood in closed form, p(γ|e)=[acosh(1/e)−1{|cos γ|>e} acosh(|cos γ|/e)]/(π sin²γ), and shows that its mixtures are classical Abel transforms. This gives an explicit inverse for the population law, including atoms, and answers the uniqueness question raised in Appendix B of Hwang, Ting and Zakamska (2022): different eccentricity laws never give the same angle law. The inverse is continuous in the weak topology but discontinuous in total variation, so fine structure can be nearly invisible. Moments need no inversion: for example E√(1−e²)=(π/2)E sin³Γ and E e²=1/2+E cos 2Γ−(1/2)E cos 4Γ. These are the only symmetric unbiased single-angle observables for their targets, and they give near-efficient estimators of power-law indices. Two exact selection results bear on Gaia samples: thermal populations keep a uniform angle law under selections that ignore sky position angles, and binning by projected separation preserves the model under a scale-free log-uniform semimajor-axis law. Simulations of Kepler orbits check representative formulas. No observational catalogue is analysed. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-31",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "wide binaries",
+    "orbital eccentricity",
+    "Gaia",
+    "projected angle",
+    "Abel transform",
+    "identifiability",
+    "inverse problems",
+    "Kepler orbits",
+    "selection effects",
+    "method of moments"
+  ],
+  "repoUrl": "https://github.com/ipitchford/wide-binary-angle-inversion",
+  "releaseUrl": "https://github.com/ipitchford/wide-binary-angle-inversion/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/wide-binary-angle-inversion/releases/download/v1.0.0-candidate/wide-binary-angle-inversion-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23838665",
+  "conceptDoi": "10.5281/zenodo.23838664",
+  "zenodoUrl": "https://zenodo.org/records/23838665",
+  "citeText": "Anonymous (2026). An exact projected-angle likelihood and population inversion for wide-binary eccentricities. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23838665",
+  "evidence": "Written proofs of every theorem, proposition and corollary in the 21-page manuscript; a Python library and validation script with quadrature checks (normalisation error 3.5×10⁻¹⁴, moment identities 2.7×10⁻¹⁴), end-to-end Abel inversion, 5×400,000 independent Kepler simulations with chi-square and Kolmogorov–Smirnov tests at a family-wise level of 0.001, phase controls, selection simulations and a grid-fit demonstration; six semantic negative controls; clean producer replay in normal and optimised Python with byte-identical outputs.",
+  "statusDetail": "Unrefereed AI-assisted mathematical-astronomy candidate. The theorems have written proofs under the ideal model; numerical checks use floating-point tolerances, not interval certificates; the grid maximum-likelihood fit and the 1/n decay are numerical only. Internal AI-assisted review in five roles, an adversarial correctness review by a different model, a proof audit of new proofs and a re-review led to one revision. No real catalogue is analysed. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 31 October 2026, 21 pages), its validation code and recorded results and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 31 October 2026.",
+  "keyResults": [
+    "Exact likelihood (Theorem 3.1, proof): for eccentricity 0<e<1, p(γ|e)=[acosh(1/e)−1{|cos γ|>e} acosh(|cos γ|/e)]/(π sin²γ); circular orbits give −log|cos γ|/(π sin²γ).",
+    "Population inversion (Theorem 4.1, proof): mixtures over any eccentricity law are classical Abel transforms, so the angle law determines the eccentricity law, atoms included, by an explicit inverse. This answers the uniqueness question in Appendix B of Hwang, Ting and Zakamska (2022).",
+    "Power laws (Section 5, proof): f(e)=(α+1)e^α gives p_α(γ)=B((α+1)/2,1/2)(1−|cos γ|^(α+1))/(2π sin²γ); a flat angle law forces the thermal law f(e)=2e.",
+    "Moments without inversion (Theorems 6.1–6.2, Corollary 7.1, proof): E√(1−e²)=(π/2)E sin³Γ and E e²=1/2+E cos 2Γ−(1/2)E cos 4Γ; each target has at most one symmetric unbiased single-angle observable. Power-law index estimators reach at least 96% efficiency on the computed grid (Section 7.2).",
+    "Selection (Propositions 8.1–8.2, proof): thermal populations keep flat angles under selections that ignore sky position angles; binning by projected separation is exact under a log-uniform semimajor-axis law and otherwise reweights by an explicit factor.",
+    "Stability limit (Propositions 9.1–9.2, proof): the inverse is continuous in the weak topology but discontinuous in total variation, so fine structure in the eccentricity law can be nearly invisible in the angles."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, adversarial correctness review, proof audit and re-review",
+      "Claude Code: revision, extensions, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Reading the shapes of star orbits from a single angle. An Evidence Press briefing. Many stars live in wide pairs, so far apart that one orbit takes thousands of years. Astronomers would like to know how stretched, or eccentric, these orbits are, because that records how the pairs formed. But nobody can watch a whole orbit. What the Gaia satellite can measure is a snapshot: the line joining the two stars, and the direction in which they are moving relative to each other. The angle between those two directions carries information about the orbit's shape. This release works out that information exactly, for pairs caught at a random moment and seen from a random direction. It gives a short closed formula for how likely each angle is, for an orbit of any eccentricity. It then proves that the full spread of angles across many pairs pins down the spread of eccentricities completely, answering a question raised by Hwang, Ting and Zakamska in 2022. The catch is that fine detail is almost invisible, so in practice only broad features can be recovered. The paper also gives simple averages of the angle that estimate useful summaries directly, such as the average squared eccentricity, and it identifies which common ways of selecting stars keep these results exact. The proofs are written out, and computer simulations of Kepler orbits check the formulas. No real star catalogue is analysed, and real data would need a model of measurement errors. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on 31 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The full suite (5×400,000 Kepler simulations, quadrature and inversion checks) was replayed from a clean copy in normal and optimised Python with byte-identical results and figures, and six semantic negative controls were caught. The fast checks and controls were rerun from a fresh extraction of the frozen archive; GitHub CI repeats them on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Internal reviewers recomputed the kernel, inverse, moment identities and instability numbers with their own code, including independent Kepler simulators; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the theorems are proved in prose and checked numerically."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review, including an astronomy-domain role, is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Pinned NumPy, SciPy and Matplotlib versions with a fixed seed; floating-point results may differ in the last digits on other platforms, and the checks use tolerances. No locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Hwang, Ting and Zakamska (2022), The eccentricity distribution of wide binaries and their individual measurements. Monthly Notices of the Royal Astronomical Society 512, 3383–3399. Source of the uniqueness question (Appendix B) and of the numerical likelihood that the closed form replaces.",
+      "url": "https://doi.org/10.1093/mnras/stac675"
+    },
+    {
+      "citation": "Tokovinin (1998), On the distribution of orbital eccentricities for wide visual binary stars. Astronomy Letters 24, 178–179. Proposed inferring eccentricities from projected position–velocity angles.",
+      "url": "https://articles.adsabs.harvard.edu/pdf/1998AstL...24..178T"
+    },
+    {
+      "citation": "Tokovinin and Kiyaeva (2016), Eccentricity distribution of wide binaries. Monthly Notices of the Royal Astronomical Society 456, 2070–2079. Joint angle-and-speed inference.",
+      "url": "https://doi.org/10.1093/mnras/stv2825"
+    },
+    {
+      "citation": "Tokovinin (2020), Eccentricity distribution of wide low-mass binaries. Monthly Notices of the Royal Astronomical Society 496, 987–993.",
+      "url": "https://doi.org/10.1093/mnras/staa1639"
+    },
+    {
+      "citation": "Benisty, Evans and Davis (2022), The eccentricity distribution of wide binaries. Monthly Notices of the Royal Astronomical Society: Letters 518, L51–L56. Analytic speed and acceleration transforms of the eccentricity law: a complementary route through a different observable.",
+      "url": "https://doi.org/10.1093/mnrasl/slac134"
+    },
+    {
+      "citation": "Makarov (2025a), Distributions of wide binary stars in theory and in Gaia data. I. Generalized Ambartsumian (1937) approach and the family of power-law distributions of eccentricity. The Astronomical Journal 169, 113. Forward-simulation motion-angle inference with astrometric errors.",
+      "url": "https://doi.org/10.3847/1538-3881/ada5fa"
+    },
+    {
+      "citation": "Makarov (2025b), Distributions of wide binary stars in theory and in Gaia data. II. Reconstruction of sample probability density of true orbit sizes. The Astronomical Journal 170, 138. A different inverse problem (orbit sizes).",
+      "url": "https://doi.org/10.3847/1538-3881/adec79"
+    },
+    {
+      "citation": "Makarov (2026), Distributions of wide binary stars in theory and in Gaia data. III. Orbital momenta, masses, and manifestations of MOND. The Astronomical Journal 171, 79.",
+      "url": "https://doi.org/10.3847/1538-3881/ae2757"
+    },
+    {
+      "citation": "Brandt (2026), Closed-form statistical relations between projected separation, semimajor axis, companion mass, and host acceleration. arXiv:2601.14688v2. Analytic orbital statistics for other observables.",
+      "url": "https://arxiv.org/abs/2601.14688"
+    },
+    {
+      "citation": "Hamilton (2022), On the phase-mixed eccentricity and inclination distributions of wide binaries in the Galaxy. The Astrophysical Journal Letters 929, L29. Galactic tides and anisotropic orientations.",
+      "url": "https://doi.org/10.3847/2041-8213/ac6600"
+    },
+    {
+      "citation": "Hwang, El-Badry, Rix, Hamilton, Ting and Zakamska (2022b), Wide twin binaries are extremely eccentric: evidence of twin binary formation in circumbinary disks. The Astrophysical Journal Letters 933, L32.",
+      "url": "https://doi.org/10.3847/2041-8213/ac7c70"
+    },
+    {
+      "citation": "El-Badry, Rix and Heintz (2021), A million binaries from Gaia eDR3: sample selection and validation of Gaia parallax uncertainties. Monthly Notices of the Royal Astronomical Society 506, 2269–2295.",
+      "url": "https://doi.org/10.1093/mnras/stab323"
+    },
+    {
+      "citation": "Jeans (1919), The origin of binary systems. Monthly Notices of the Royal Astronomical Society 79, 408–416. The thermal eccentricity law.",
+      "url": "https://doi.org/10.1093/mnras/79.6.408"
+    },
+    {
+      "citation": "Shatsky (2001), The long-period companions of multiple stars tend to have moderate eccentricities. Astronomy & Astrophysics 380, 238–244.",
+      "url": "https://doi.org/10.1051/0004-6361:20011401"
+    },
+    {
+      "citation": "Kloza and Elliott (2023), Inverse projection of axisymmetric orientation distributions. EPL 143, 22002. A fixed-axis orientation inverse with different sampling geometry.",
+      "url": "https://doi.org/10.1209/0295-5075/ace4ee"
+    },
+    {
+      "citation": "Wicksell (1925), The corpuscle problem. A mathematical study of a biometric problem. Biometrika 17, 84–99. The classical Abel-type inverse from random sections.",
+      "url": "https://doi.org/10.1093/biomet/17.1-2.84"
+    },
+    {
+      "citation": "Gorenflo and Vessella (1991), Abel Integral Equations: Analysis and Applications. Lecture Notes in Mathematics, Springer. Abel inversion and its ill-posedness.",
+      "url": "https://doi.org/10.1007/BFb0084665"
+    },
+    {
+      "citation": "Groeneboom and Jongbloed (1995), Isotonic estimation and rates of convergence in Wicksell's problem. The Annals of Statistics 23, 1518–1542. Estimation theory for the stereological analogue.",
+      "url": "https://doi.org/10.1214/aos/1176324310"
+    },
+    {
+      "citation": "Hwang (n.d.), Eccentricity-of-wide-binaries: public code and simulation grids. GitHub repository. The originating public code, whose ideal likelihood grids the closed form replaces.",
+      "url": "https://github.com/HC-Hwang/Eccentricity-of-wide-binaries"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:wide-binary-angle-inversion",
+    "attemptIds": [
+      "ep-attempt:wide-binary-angle-inversion-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "identified-set",
+      "description": "The identified set is a single law: closed-form likelihood of the projected separation–velocity angle of a Kepler orbit, and a measure-level Abel inverse showing that the angle law of a population determines its eccentricity law; explicit moment observables, power-law estimators, exact selection results and the stability limit of the inverse.",
+      "scope": "Ideal model: uniform mean anomaly (or any phase law with the pairing property), Haar-random orientation, error-free projections, i.i.d. observations. Measurement error, general selection and real catalogues are not addressed."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 quotes Appendix B of Hwang, Ting and Zakamska (2022) and states which part of the question is answered: exact uniqueness for every law; approximate uniqueness weakly but not in total variation. Section 2 fixes the model in the same conventions (uniform mean anomaly, random orientation) as their Section 2.",
+      "remainingRisks": [
+        "The ideal phase and orientation assumptions must hold in the analysed sample; Section 8 identifies the selections that preserve them.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a wide-binary astronomer check the selection results (Section 8) and test the exact likelihood on a Gaia sample with an explicit error model.",
+      "claimCeiling": "Proved exact likelihood, population inverse, moment observables and selection results under the ideal model, with numerical checks. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "wide-binary-angle-inversion-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable exact likelihood and population inverse for wide-binary projected angles, with direct moment estimators and exact selection results.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

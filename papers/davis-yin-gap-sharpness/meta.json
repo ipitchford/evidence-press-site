@@ -6,7 +6,9 @@
   "abstract": "This research candidate determines the exact worst-case coefficient of an averaged primal-dual comparison gap for Davis–Yin three-operator splitting over the full unrelaxed range 0<alpha L<2. After K iterations the sharp denominator is alpha(K+1-alpha L) for the sum of squared primal and scaled dual distances, and the exact coefficient is half as large in the natural splitting metric. A signed identity decomposes the shortfall into convexity slacks, smooth-interpolation deficits, variances and squares. An explicit two-dimensional family approaches both constants. Equality is attainable for one iteration but, for K>=2, no finite-dimensional positive-denominator instance attains either open-range supremum. At the endpoint alpha L=2 and K>=2 the exact denominator becomes alpha(K-1); strict convexity of f rules out attainment, while the general endpoint attainment question remains open. The sharpness quantifier permits arbitrary admissible comparison pairs and does not establish saddle-pair sharpness, last-iterate rates, objective-error rates or lower bounds for other algorithms.",
   "datePublished": "2026-10-20",
   "version": "1.0.0-candidate",
-  "authors": ["Anonymous"],
+  "authors": [
+    "Anonymous"
+  ],
   "status": "unrefereed-candidate",
   "math": true,
   "keywords": [
@@ -53,40 +55,140 @@
       "name": "Plain-English audio briefing",
       "description": "Communication aid; not additional research evidence.",
       "transcriptUrl": "https://evidencepress.org/assets/audio/davis-yin-gap-sharpness.txt"
+    },
+    {
+      "type": "video",
+      "url": "https://youtu.be/gxXYmQgrvck",
+      "name": "Approached, Never Reached: The Exact Worst-Case Constant for Davis–Yin Splitting",
+      "description": "Evidence Press video overview of this release. This is a communication aid; it does not extend the release's claims or assurance status and is not additional research evidence."
     }
   ],
   "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
   "audioContentVersioned": true,
   "narration": "How sharp is a finite-time guarantee for a splitting algorithm? An upper bound can be correct without revealing the best constant, whether equality is possible, or what kind of example comes closest. This candidate answers those questions for an averaged primal-dual comparison gap in Davis–Yin three-operator splitting. Across the full unrelaxed step-size range, the exact denominator after K iterations is K plus one minus alpha L. In the natural splitting metric the coefficient is one half of the corresponding coefficient for the sum of primal and scaled dual squared distances. The proof is an exact identity: the difference between the bound and the gap decomposes into convexity slacks, smooth interpolation deficits, variances and explicit squares. Every term has the sign needed for the upper bound. A two-dimensional family approaches equality and proves that neither coefficient can be improved. The geometry also explains non-attainment. One iteration can attain the bound, but after two or more iterations no finite-dimensional instance with positive denominator attains either supremum in the open step range. The revision also treats the critical endpoint alpha L equal to two. For K at least two, the exact denominator becomes K minus one. Strict convexity of f rules out endpoint attainment, but attainment in the unrestricted endpoint class is not claimed to be resolved. The sharpness construction uses arbitrary admissible comparison pairs. It does not establish the same constant when comparisons are restricted to saddle points, and it is not a last-iterate rate, an objective-error rate or a lower bound for other algorithms. Exact arithmetic replay checks representative identities in ordinary and optimized Python and rejects deliberately corrupted trajectories and constants. Those checks support the formulas but do not replace the universal proof. This is an unrefereed AI-assisted research candidate. The paper, evidence and code are linked on the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
   "assurance": {
-    "availability": {"state": "passed", "note": "The frozen paper and research package are public on GitHub and Zenodo, with matching asset hashes."},
-    "internalReplay": {"state": "passed", "note": "Ordinary and optimized exact replay agree; trajectory and constant corruptions are rejected in both modes."},
-    "independentRerun": {"state": "not-assessed", "note": "No unaffiliated rerun has been established."},
-    "independentReimplementation": {"state": "not-assessed", "note": "No separate external implementation is claimed."},
-    "formalVerification": {"state": "not-assessed", "note": "No proof-assistant formalisation."},
-    "specialistReview": {"state": "not-assessed", "note": "AI-assisted review is not external specialist review."},
-    "editorialPeerReview": {"state": "not-assessed", "note": "No external editorial peer review."},
-    "dataEnvironmentReproducibility": {"state": "partial", "note": "Code and environment are supplied; finite replay does not establish the analytic theorem."}
+    "availability": {
+      "state": "passed",
+      "note": "The frozen paper and research package are public on GitHub and Zenodo, with matching asset hashes."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Ordinary and optimized exact replay agree; trajectory and constant corruptions are rejected in both modes."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No separate external implementation is claimed."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Code and environment are supplied; finite replay does not establish the analytic theorem."
+    }
   },
   "relatedWorks": [
-    {"citation": "Davis and Yin (2017), A three-operator splitting scheme and its optimization applications.", "url": "https://doi.org/10.1007/s10957-016-0917-z"},
-    {"citation": "Nguyen et al. (2025), source averaged-gap bound and tightness conjecture.", "url": "https://arxiv.org/abs/2506.23475"},
-    {"citation": "Taylor, Hendrickx and Glineur (2017), exact worst-case performance of first-order methods.", "url": "https://doi.org/10.1137/16M1081143"}
+    {
+      "citation": "Davis and Yin (2017), A three-operator splitting scheme and its optimization applications. Set-Valued and Variational Analysis 25, 829–858.",
+      "url": "https://doi.org/10.1007/s11228-017-0421-z"
+    },
+    {
+      "citation": "Nguyen et al. (2025), source averaged-gap bound and tightness conjecture.",
+      "url": "https://arxiv.org/abs/2506.23475"
+    },
+    {
+      "citation": "Taylor, Hendrickx and Glineur (2017), Smooth strongly convex interpolation and exact worst-case performance of first-order methods. Mathematical Programming 161, 307–345.",
+      "url": "https://doi.org/10.1007/s10107-016-1009-3"
+    }
+  ],
+  "corrections": [
+    {
+      "date": "2026-10-25",
+      "scope": "metadata",
+      "summary": "Corrected two related-work DOIs. Until 25 October 2026 this page and its machine record (paper.json) linked Davis and Yin (2017), ‘A three-operator splitting scheme and its optimization applications’, to doi:10.1007/s10957-016-0917-z, and Taylor, Hendrickx and Glineur (2017), ‘Smooth strongly convex interpolation and exact worst-case performance of first-order methods’, to doi:10.1137/16M1081143; neither DOI resolves. The correct references are *Set-Valued and Variational Analysis* 25, 829–858, [doi:10.1007/s11228-017-0421-z](https://doi.org/10.1007/s11228-017-0421-z), and *Mathematical Programming* 161, 307–345, [doi:10.1007/s10107-016-1009-3](https://doi.org/10.1007/s10107-016-1009-3).",
+      "detail": "The error was confined to this page's related-work metadata and machine record: the archived manuscript and repository cite the correct reference, and the Zenodo deposit is unaffected. No research claim, evidence state, versioned manuscript or immutable archive is affected."
+    }
   ],
   "operatingModel": {
     "version": "1.0",
     "workId": "ep-work:davis-yin-gap-sharpness",
-    "attemptIds": ["ep-attempt:davis-yin-gap-sharpness-publication"],
-    "aims": ["science"],
-    "artifactRoles": ["research-output", "communication"],
+    "attemptIds": [
+      "ep-attempt:davis-yin-gap-sharpness-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
     "lineageId": null,
-    "accelerationPrimitives": ["certificate-first", "structural-compression", "adversarial-controls", "assurance-vector", "agent-readable-research-object"],
-    "decisionObject": {"type": "bound", "description": "Exact finite-horizon averaged comparison-gap constants and attainment classification for the specified Davis–Yin ordering.", "scope": "Arbitrary admissible comparison pairs in finite-dimensional convex instances; not saddle-only sharpness or a lower bound for other algorithms."},
-    "bottleneckTargeted": ["assurance", "publication"],
-    "semanticBridge": {"state": "explicit", "description": "The quantity is an averaged comparison gap, not automatically an objective error or maximised duality gap.", "remainingRisks": ["General endpoint attainment is unresolved.", "The bounded literature search is not exhaustive priority certification."]},
-    "humanJudgmentGates": ["Publication is authorised; scientific endorsement is not inferred.", "External specialist review and independent reproduction remain open."],
+    "accelerationPrimitives": [
+      "certificate-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Exact finite-horizon averaged comparison-gap constants and attainment classification for the specified Davis–Yin ordering.",
+      "scope": "Arbitrary admissible comparison pairs in finite-dimensional convex instances; not saddle-only sharpness or a lower bound for other algorithms."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The quantity is an averaged comparison gap, not automatically an objective error or maximised duality gap.",
+      "remainingRisks": [
+        "General endpoint attainment is unresolved.",
+        "The bounded literature search is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
     "parentLinks": [],
-    "assuranceTarget": {"dimensions": ["independentRerun", "specialistReview", "formalVerification", "priorityAssessment"], "nextAction": "Independently check the slack identity and the non-attainment implications.", "claimCeiling": "Only the stated comparison-gap quantifiers and algorithm; internal replay is not external assurance."},
-    "impactClaims": [{"id": "davis-yin-gap-no-impact", "aim": "science", "outcome": "An openly inspectable mathematical candidate and continuation target.", "setting": "AI-assisted mathematical research", "status": "NO_IMPACT_EVIDENCE", "designClass": "none", "comparator": "None registered.", "estimand": "No research-speed or scientific-impact effect is estimated.", "evidenceRefs": [], "registeredDesignRef": null, "independentAssessment": null}]
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Independently check the slack identity and the non-attainment implications.",
+      "claimCeiling": "Only the stated comparison-gap quantifiers and algorithm; internal replay is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "davis-yin-gap-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable mathematical candidate and continuation target.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
   }
 }

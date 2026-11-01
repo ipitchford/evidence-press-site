@@ -1,0 +1,239 @@
+{
+  "slug": "fixed-correlations-weak-dissipation",
+  "title": "Fixed time-asymmetric correlations with arbitrarily weak dissipation",
+  "shortTitle": "Same correlations, any dissipation",
+  "oneLine": "One fixed time-asymmetric covariance is shared by Markov models with every positive entropy-production rate, so its Gaussian value, 1/3, is not the lower bound on dissipation that Seara, Machta and Murrell (2021) stated for nonlinear systems.",
+  "abstract": "Experiments often estimate how much energy a living or driven system dissipates from the time asymmetry of its measured correlations. A popular shortcut assigns the observed covariance the entropy-production rate of a Gaussian process with the same covariance, and Seara, Machta and Murrell (Nature Communications 12, 392, 2021) stated that this gives a lower bound for nonlinear systems as well. This candidate shows that it does not. A family of fully observed four-state Markov chains shares one fixed, nonzero, time-asymmetric covariance at every lag, with bounded transition rates and uniform mixing, while their entropy-production rates take every positive value. Fully observed planar Markov diffusions with linear drift and state-dependent noise have exactly the same covariance, with entropy-production rates filling (0, 1/3], where 1/3 is the Gaussian value; a Student-type member has rate α/(3(α+1)). In both cases rare, large excursions carry the covariance. A reversible-gating construction gives the general mechanism, the paper locates the missing step in the published justification, and an established fourth-order bound recovers up to 93.5% of the exact rate on the example. Weak dissipation at fixed covariance needs growing amplitudes or heavy-tailed noise, and diffusions with constant noise remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-28",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "entropy production",
+    "stochastic thermodynamics",
+    "thermodynamic inference",
+    "time irreversibility",
+    "covariance",
+    "Gaussian approximation",
+    "Markov chain",
+    "diffusion",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/fixed-correlations-weak-dissipation",
+  "releaseUrl": "https://github.com/ipitchford/fixed-correlations-weak-dissipation/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/fixed-correlations-weak-dissipation/releases/download/v1.0.0-candidate/fixed-correlations-weak-dissipation-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23721112",
+  "conceptDoi": "10.5281/zenodo.23721111",
+  "zenodoUrl": "https://zenodo.org/records/23721112",
+  "citeText": "Anonymous (2026). Fixed time-asymmetric correlations with arbitrarily weak dissipation. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23721112",
+  "evidence": "Written proofs of every theorem and proposition; exact rational checks of the four-state family in two implementations plus standard-library fingerprints; symbolic Fokker–Planck checks and two-dimensional quadratures for the diffusions; a random-chain kurtosis probe; a replay driver that reruns every script, compares every record and checks the headline values in normal and optimised mode; fourteen semantic negative controls; CI.",
+  "statusDetail": "Unrefereed AI-assisted candidate. Every theorem has a written proof supported by exact, symbolic and numerical checks; the kurtosis probe and Table 1 are numerical and labelled as such. Internal AI-assisted review only, including two adversarial audits by a different model and a targeted proof audit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (dated 28 October 2026, 16 pages), its verification records and the frozen release archive.",
+  "keyResults": [
+    "Four-state chains with one fixed covariance C(t) = e^{Ft}Σ at every lag, bounded rates, uniform mixing and an injective readout have entropy-production rates ε log((6−κ)/(3−κ)) covering (0, ∞) (Theorem 1, proof with exact checks).",
+    "The Gaussian spectral value of that covariance is exactly 1/3, so it is not a lower bound; at (ε, κ) = (1/4, 1) the true rate is log(5/2)/4 ≈ 0.229 and the overestimate is unbounded in general; the failure persists for bounded readouts, sampled and smoothed records (Section 3 and Section 8, proof).",
+    "Planar diffusions with the Gaussian comparator’s linear drift and state-dependent noise reproduce the same covariance with entropy-production rates filling (0, 1/3]; a Student-type member has rate α/(3(α+1)) (Theorem 2, Proposition 3, proof).",
+    "Reversible gating preserves any centred covariance while multiplying entropy production by ε (Theorem 4, Corollary 5, proof).",
+    "The Raux–Maier–Seifert fourth-order bound recovers 6/(7 log(5/2)) ≈ 93.5% of the exact rate at short lags; a naive kurtosis-discounted bound fails in a random search (Section 6, proof and numerics).",
+    "Open: whether a diffusion with constant noise and nonlinear drift can reproduce the covariance with dissipation below 1/3."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted research",
+      "AI-assisted internal review, two adversarial audits by a different model and a targeted proof audit",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Same correlations, any dissipation. An Evidence Press briefing. First, the problem. Living and driven systems, like molecular motors or chemical clocks, constantly use energy, and scientists want to know how much. Measuring it directly is hard, so they often look at a few recorded signals instead. If one signal tends to follow another more than the reverse, the system is running irreversibly, and so it must be using energy. A popular shortcut converts these correlations into a number by pretending the signals come from the simplest random process with the same correlations, a Gaussian process. A 2021 paper in Nature Communications stated that, for nonlinear systems, this Gaussian number is a lower bound on the true energy use. The main finding is that this lower-bound statement is false. The paper builds simple models that have exactly the same correlations at every time delay, yet use energy at any rate at all. For a family of four-state models the rate can be any positive value, and for a family of smooth two-dimensional random motions it can be anything between zero and the Gaussian value of one third. The reason is intuitive. Imagine a system that is idle almost all the time and only occasionally bursts into fast circulation. Rare, large bursts can carry the whole correlation signal, while energy is only spent during the bursts. Why it matters: a correlation measurement alone cannot certify a minimum energy cost. Extra information helps; a published fourth-order bound recovers up to ninety-three point five per cent of the true value in the example. The limits: the examples need growing signal sizes or very uneven noise, short recordings may miss the bursts, and smooth motions with constant noise remain an open case. This is an anonymous, unrefereed candidate, checked by AI-assisted review only, not peer review. Published on 28 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "replay_all.py reruns all eight scripts from a clean copy of the frozen archive, compares every record at relative tolerance 1e-9 and checks the headline values, in normal and optimised mode; fourteen negative controls are rejected. GitHub CI repeats both."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Two separate implementations of the four-state checks and standard-library exact fingerprints, and reviewers recomputed load-bearing identities with their own scripts; this is producer-side implementation diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review and correctness audits are not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.11 or later with pinned NumPy, SciPy and SymPy; replay passed locally on macOS and in CI on Ubuntu."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "M. Aguilera, S. Ito, and A. Kolchinsky (2026), Inferring Entropy Production in Many-Body Systems Using Nonequilibrium Maximum Entropy.",
+      "url": "https://doi.org/10.1103/xgkj-dxzh"
+    },
+    {
+      "citation": "M. R. Evans and S. N. Majumdar (2019), Effects of refractory period on stochastic resetting.",
+      "url": "https://doi.org/10.1088/1751-8121/aaf080"
+    },
+    {
+      "citation": "J. L. Forman and M. Sørensen (2008), The Pearson Diffusions: A Class of Statistically Tractable Diffusion Processes.",
+      "url": "https://doi.org/10.1111/j.1467-9469.2007.00592.x"
+    },
+    {
+      "citation": "J. Gu (2024), Thermodynamic bounds on the asymmetry of cross-correlations with dynamical activity and entropy production.",
+      "url": "https://doi.org/10.1103/PhysRevE.109.L042101"
+    },
+    {
+      "citation": "R. Khasminskii (2012), Stochastic Stability of Differential Equations.",
+      "url": "https://doi.org/10.1007/978-3-642-23280-0"
+    },
+    {
+      "citation": "S. Liang and S. Pigolotti (2023), Thermodynamic bounds on time-reversal asymmetry.",
+      "url": "https://doi.org/10.1103/PhysRevE.108.L062101"
+    },
+    {
+      "citation": "D. Lucente, A. Puglisi, M. Viale, and A. Vulpiani (2023), Statistical features of systems driven by non-Gaussian processes: theory & practice (closest earlier non-Gaussian models).",
+      "url": "https://doi.org/10.1088/1742-5468/ad063b"
+    },
+    {
+      "citation": "T. Nishiyama and I. Sason (2020), On Relations Between the Relative Entropy and χ2-Divergence, Generalizations and Applications (moments do not fix relative entropy).",
+      "url": "https://doi.org/10.3390/e22050563"
+    },
+    {
+      "citation": "L. Oberreiter, U. Seifert, and A. C. Barato (2022), Universal minimal cost of coherent biochemical oscillations.",
+      "url": "https://doi.org/10.1103/PhysRevE.106.014106"
+    },
+    {
+      "citation": "N. Ohga, S. Ito, and A. Kolchinsky (2023), Thermodynamic Bound on the Asymmetry of Cross-Correlations.",
+      "url": "https://doi.org/10.1103/PhysRevLett.131.077101"
+    },
+    {
+      "citation": "P. Raux, A. M. Maier, and U. Seifert (2026), Lower bounds on entropy production from dynamical correlation functions (fourth-order bound evaluated in Section 6.1).",
+      "url": "https://doi.org/10.1103/h28h-g7g7"
+    },
+    {
+      "citation": "P. M. Riechers and J. P. Crutchfield (2021), Fraudulent white noise: Flat power spectra belie arbitrarily complex processes.",
+      "url": "https://doi.org/10.1103/PhysRevResearch.3.013170"
+    },
+    {
+      "citation": "D. C. Rose, H. Touchette, I. Lesanovsky, and J. P. Garrahan (2018), Spectral properties of simple classical and quantum reset processes.",
+      "url": "https://doi.org/10.1103/PhysRevE.98.022129"
+    },
+    {
+      "citation": "D. S. Seara, B. B. Machta, and M. P. Murrell (2021), Irreversibility in dynamical phases and transitions (source of the refuted lower-bound statement).",
+      "url": "https://doi.org/10.1038/s41467-020-20281-2"
+    },
+    {
+      "citation": "U. Seifert (2012), Stochastic thermodynamics, fluctuation theorems and molecular machines.",
+      "url": "https://doi.org/10.1088/0034-4885/75/12/126001"
+    },
+    {
+      "citation": "N. Shiraishi (2023), Entropy production limits all fluctuation oscillations.",
+      "url": "https://doi.org/10.1103/PhysRevE.108.L042103"
+    },
+    {
+      "citation": "J. Theiler, S. Eubank, A. Longtin, B. Galdrikian, and J. D. Farmer (1992), Testing for nonlinearity in time series: the method of surrogate data.",
+      "url": "https://doi.org/10.1016/0167-2789(92)90102-S"
+    },
+    {
+      "citation": "T. Van Vu, V. T. Vo, and K. Saito (2024), Dissipation, quantum coherence, and asymmetry of finite-time cross-correlations.",
+      "url": "https://doi.org/10.1103/PhysRevResearch.6.013273"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:fixed-correlations-weak-dissipation",
+    "attemptIds": [
+      "ep-attempt:fixed-correlations-weak-dissipation-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "certificate-first",
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Fully observed four-state Markov chains and planar diffusions sharing one fixed time-asymmetric covariance with arbitrarily small entropy production refute the unrestricted Gaussian lower-bound statement of Seara, Machta and Murrell (2021).",
+      "scope": "Exact stationary statistics; fixed covariance with vanishing dissipation needs growing amplitudes or heavy-tailed noise; constant-noise diffusions open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The refuted sentence is quoted from the published article; the paper separates the published statement from the phase-randomisation argument in the preprint appendix.",
+      "remainingRisks": [
+        "The published supplement of Seara et al. was not retrieved.",
+        "Checks rely on Python execution; no proof assistant was used.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Recheck the four-state identities and the diffusion Fokker–Planck computation in independent software, and ask a specialist whether constant-noise diffusions are known.",
+      "claimCeiling": "Refutation of the unrestricted Gaussian lower-bound statement with proved four-state and diffusion counterexamples; constant-noise diffusions open. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "fixed-correlations-weak-dissipation-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable counterexample to a covariance-only lower bound on dissipation.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

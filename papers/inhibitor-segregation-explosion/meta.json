@@ -1,0 +1,221 @@
+{
+  "slug": "inhibitor-segregation-explosion",
+  "title": "Inhibitor segregation can make a nonexplosive reaction network explode",
+  "shortTitle": "When dividing compartments throw away the brakes",
+  "oneLine": "Two simple chemistries that are safe on their own explode once dividing compartments keep the substrate together and export the inhibitor, with no inflow reactions or fusion; the exact thresholds are d + λE[log Q] < b and bλ(1 − EQ) > dc.",
+  "abstract": "A stochastic chemical system explodes when infinitely many reaction events occur in finite time. Anderson, Howells and Rojas La Luz (2026) conjectured that a nonexplosive chemistry stays nonexplosive inside dividing compartments and pointed to inflow reactions as the main danger. This candidate gives two two-species chemistries with no inflow reaction, no compartment fusion and no exit that are nonexplosive alone but explode with positive probability once compartments divide at a rate proportional to their substrate, keep all substrate in one daughter and retain each inhibitor with a possibly random probability Q. For conversion inhibition (2S→3S, S→S+I, S+I→2I) explosion is possible exactly when d+λE[log Q]<b; for catalytic inhibition (I+2S→I+S) exactly when bλ(1−EQ)>dc; both boundaries are nonexplosive. The candidate proves exact conditional explosion laws, blow-up asymptotics, monotonicity and continuity at threshold, and robustness to bounded substrate leakage. Comparison with a well-mixed degradation reaction removing the same mean amount of inhibitor isolates the compartmental effect: a strictly larger explosive region for the self-reproducing inhibitor, the same threshold for the catalytic one. For a three-molecule example the explosion probability is at least 1/2 and lies in [0.79744, 0.79751]. The probabilistic components are classical and cited; Yoo (2026) reported an earlier counterexample to the unrestricted conjecture using inflow and fusion. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-31",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "stochastic reaction networks",
+    "compartment models",
+    "explosion",
+    "cell division",
+    "branching processes with catastrophes",
+    "random time change",
+    "Yule process",
+    "birth–death processes in random environments"
+  ],
+  "repoUrl": "https://github.com/ipitchford/inhibitor-segregation-explosion",
+  "releaseUrl": "https://github.com/ipitchford/inhibitor-segregation-explosion/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/inhibitor-segregation-explosion/releases/download/v1.0.0-candidate/inhibitor-segregation-explosion-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23837953",
+  "conceptDoi": "10.5281/zenodo.23837952",
+  "zenodoUrl": "https://zenodo.org/records/23837953",
+  "citeText": "Anonymous (2026). Inhibitor segregation can make a nonexplosive reaction network explode. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23837953",
+  "evidence": "Written proofs of every theorem, proposition and lemma; a standard-library program with 4,311 exact rational comparisons (generators, allocation kernel, moments, the branching generating-function equation, 100 scheduled-removal distributions by two methods, the constants of the 1/2 bound) and four built-in rejected corruptions; a deterministic two-sided enclosure of the example probability with written truncation and rounding control; a Monte Carlo estimator with proved truncation bound; four semantic negative controls; replay from a fresh extraction of the frozen archive.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. The infinite-time theorems have written proofs; finite checks confirm algebra, constants and one numerical value; the enclosure rounding argument is written out but not machine-checked. Internal AI-assisted review in five roles plus an outside-model adversarial review, one revision with six extensions, and a re-review and proof audit whose seven repairable findings were fixed, followed by four targeted audits until no open correctness issue remained. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 31 October 2026, 24 pages), its exact checks and enclosure, and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 31 October 2026.",
+  "keyResults": [
+    "Conversion inhibition (Theorem 3.1, proof): with 2S→3S at bs(s−1), S→S+I at cs and S+I→2I at dsi, d>b, the chemistry is nonexplosive alone; with division at rate λs keeping all S together and each inhibitor kept with probability p, explosion has positive probability iff d+λ log p<b, and is impossible at equality.",
+    "Exact law (Theorem 3.1(f), proof): conditional on the inhibitor history, the explosion probability is the chance that fewer than s₀−1 independent coins with success probabilities e^(−bτⱼ) succeed, τⱼ being the conversion times; on explosion (T−t)S(t)→1/b (Theorem 3.3).",
+    "Catalytic inhibition (Theorem 4.1, proof): with I+2S→I+S at dis(s−1), explosion has positive probability iff bλ(1−p)>dc, and the conditional probability is 1−(1−1/(bD∞))^(s₀−1).",
+    "Random retention (Theorems 5.1–5.2, proof): thresholds d+λE[log Q]<b and bλ(1−EQ)>dc; two division rules with the same mean retention can put the conversion chemistry on opposite sides.",
+    "What compartments add (Theorem 6.1, Corollary 6.2, Proposition 6.3, proof): removing the same mean amount of inhibitor by a well-mixed reaction S+I→S gives the strictly smaller explosive region λ(1−EQ)>d−b for conversion and the same threshold for catalysis.",
+    "Monotonicity, continuity, leakage (Propositions 6.4–6.5, proof): the explosion probability falls as more inhibitor is kept, tends to zero at both thresholds, and stays positive if each division leaks a bounded number of substrate molecules.",
+    "Worked example (Theorem 3.2 and Section 7.1): for b=c=1, d=2, λ=3, all inhibitor exported, from (S,I)=(3,0), P(explosion)≥1/2, and a deterministic computation with rounding control gives P(explosion)∈[0.79744, 0.79751]."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, adversarial review, re-review and proof audit",
+      "Claude Code: revision, extensions, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When dividing compartments throw away the brakes. An Evidence Press briefing. Many reactions in living cells happen inside compartments that grow and divide. Mathematicians model this with random chemistry in every compartment, and a compartment that splits in two from time to time. A good model of this kind should never explode, meaning it should never pack infinitely many reactions into a finite stretch of time. A recent paper conjectured that if the chemistry is safe on its own, it stays safe inside dividing compartments, and it pointed to reactions that create molecules from nothing as the main danger. This release shows that removing those reactions is not enough. Picture a substance that makes more of itself, and an inhibitor that holds it in check. In one compartment the inhibitor wins and nothing goes wrong. Now let compartments divide so that all of the substance stays in one daughter, while the inhibitor may leave with the other. Each division throws away some of the brakes, and the substance can then run away. In a small example the paper proves that this happens with probability at least one half, and computes the probability as about eighty per cent. The paper finds the exact boundary between safety and runaway for two kinds of inhibitor. When the inhibitor multiplies, what matters is the average of the logarithm of the share it keeps at each division, so dividing in bulk is more dangerous than steady removal at the same average rate. When the inhibitor does not multiply, only the average share matters. On both boundaries the model stays safe. The building blocks are classical results about branching processes, which the paper cites; the new part is the chemical construction and its exact classification. An earlier preprint by Yoo had already found a different counterexample using other ingredients. The results have written proofs and computer checks. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on 31 October 2026, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "From a fresh extraction of the frozen archive, the exact checks reproduced their retained output exactly in normal and optimized Python, the estimator and the enclosure matched within tolerance, and four semantic negative controls rejected a wrong check count, a wrong headline bound, a shifted enclosure claim and a wrong division coefficient. GitHub CI repeats the standard-library and NumPy checks on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "During review a separate direct simulation of the full chain, a separate scheduled-removal computation and a master-equation check of Kendall's formula were written by internal reviewers; this is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the theorems are proved in prose and the enclosure rounding argument is written out but not machine-checked."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "The exact checks need only the Python standard library; the estimator, enclosure and figure use NumPy and Matplotlib versions pinned in uv.lock, not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Anderson, Howells and Rojas La Luz (2026), Stochastic Reaction Networks Within Interacting Compartments with Content-Dependent Fragmentation. Bulletin of Mathematical Biology 88, 106. The source framework, Conjecture 3.6 and Observation 3.7.",
+      "url": "https://doi.org/10.1007/s11538-026-01659-7"
+    },
+    {
+      "citation": "Yoo (2026), Fragmentation perturbations and explosion in interacting compartments. Zenodo preprint, version 1.1.0. An earlier counterexample to the unrestricted conjecture using inflow and fusion.",
+      "url": "https://doi.org/10.5281/zenodo.22728357"
+    },
+    {
+      "citation": "Anonymous (2026), Critical nonexplosion and phase transitions in finite-catalyst compartment systems. Evidence Press release. The companion result: when division prevents explosion.",
+      "url": "https://doi.org/10.5281/zenodo.23505123"
+    },
+    {
+      "citation": "Leskelä, Robert and Simatos (2010), Interacting branching processes and linear file-sharing networks. Advances in Applied Probability 42, 834–854. Yule populations with scheduled removals.",
+      "url": "https://doi.org/10.1239/aap/1282924065"
+    },
+    {
+      "citation": "Hermann and Pfaffelhuber (2020), Markov branching processes with disasters: Extinction, survival and duality to p-jump processes. Stochastic Processes and their Applications 130, 2488–2518. The logarithmic disaster threshold.",
+      "url": "https://doi.org/10.1016/j.spa.2019.07.011"
+    },
+    {
+      "citation": "Kaplan, Sudbury and Nilsen (1975), A branching process with disasters. Journal of Applied Probability 12, 47–59.",
+      "url": "https://doi.org/10.2307/3212406"
+    },
+    {
+      "citation": "Bansaye, Pardo Millan and Smadi (2013), On the extinction of continuous state branching processes with catastrophes. Electronic Journal of Probability 18.",
+      "url": "https://doi.org/10.1214/EJP.v18-2774"
+    },
+    {
+      "citation": "Gallo and Roldán-Correa (2026), Immigration Processes with Binomial Catastrophes and Random Survival Parameters. arXiv:2605.24671. Random retention at catastrophes.",
+      "url": "https://arxiv.org/abs/2605.24671"
+    },
+    {
+      "citation": "Brockwell, Gani and Resnick (1982), Birth, immigration and catastrophe processes. Advances in Applied Probability 14, 709–731.",
+      "url": "https://doi.org/10.2307/1427020"
+    },
+    {
+      "citation": "Kapodistria, Phung-Duc and Resing (2016), Linear birth/immigration-death process with binomial catastrophes. Probability in the Engineering and Informational Sciences 30, 79–111.",
+      "url": "https://doi.org/10.1017/S0269964815000297"
+    },
+    {
+      "citation": "Kendall (1948), On the Generalized \"Birth-and-Death\" Process. The Annals of Mathematical Statistics 19, 1–15. The conditional branching formula.",
+      "url": "https://doi.org/10.1214/aoms/1177730285"
+    },
+    {
+      "citation": "Cogburn and Torrez (1981), Birth and death processes with random environments in continuous time. Journal of Applied Probability 18, 19–30.",
+      "url": "https://doi.org/10.2307/3213163"
+    },
+    {
+      "citation": "Huh and Paulsson (2011), Non-genetic heterogeneity from stochastic partitioning at cell division. Nature Genetics 43, 95–100. Partitioning at division as a source of variability.",
+      "url": "https://doi.org/10.1038/ng.729"
+    },
+    {
+      "citation": "Ethier and Kurtz (1986), Markov Processes: Characterization and Convergence. Wiley. Random time changes.",
+      "url": "https://doi.org/10.1002/9780470316658"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:inhibitor-segregation-explosion",
+    "attemptIds": [
+      "ep-attempt:inhibitor-segregation-explosion-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Two two-species chemistries with no inflow, fusion or exit that are nonexplosive alone but explode with positive probability under substrate-keeping, inhibitor-segregating division; sharp thresholds, exact conditional laws, comparison with well-mixed removal, continuity at threshold and an enclosed example probability.",
+      "scope": "The compartment framework of Anderson, Howells and Rojas La Luz (2026) with no inflow, exit or coagulation, and kernels keeping all substrate in one daughter (bounded leakage allowed for the explosive direction). Molecule-blind kernels are not addressed."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 2.1 maps the model onto the source framework (state space including empty compartments; mass-conserving kernels) and gives the binomial-convention rate constants; Section 1.1 quotes Observation 3.7 and states which inference it challenges.",
+      "remainingRisks": [
+        "Yoo (2026) full preprint not inspected.",
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in stochastic reaction networks check Lemma 2.4, Lemma 3.7 and the critical cases, and compare with Yoo (2026).",
+      "claimCeiling": "Proved restricted counterexamples to Conjecture 3.6 with sharp thresholds within two parametric families. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "inhibitor-segregation-explosion-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable inflow-free, fusion-free counterexample to a compartment nonexplosion conjecture, with exact thresholds and the compartmental mechanism isolated.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

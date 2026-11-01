@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Twelve, or less than eleven? An Evidence Press briefing on comparing Gaussian data that live in different spaces. Suppose one dataset is a cloud of points spread over a plane, and another is a cloud along a line. Gromov–Wasserstein transport compares them by pairing the points up so that distances within one cloud match distances within the other as closely as possible. It is widely used, but expensive to compute. For bell-shaped, Gaussian data there is a tempting shortcut: a formula found in 2022 by Delon, Desolneux and Salmona, who searched only over Gaussian pairings and conjectured that nothing is lost by doing so. In October 2026, Gabriel Peyré showed that the shortcut can fail when a line is compared with a space of many dimensions.",
+      "inputSha256": "d7061d5f21f0dd25ab806d26aa6193d9ac55a1f751a6e1692f94300efebf97d2",
+      "audioSha256": "5ee8619e90007fdf46cd65ce210868fd33586b702ddf81c0014092ba878d4a5c",
+      "requestId": "req_723b8403124644c088c6e15cc638b8ee",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "is compared with a space of many dimensions",
+        "heardEnding": "that the shortcut can fail when a line is compared with a space of many dimensions",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This paper settles exactly when the shortcut is right. It is right if, and only if, the two datasets vary in the same number of directions, and their spreads along those directions are in the same proportions. In every other case, even for two datasets of the same dimension, a curved rearrangement that keeps both clouds exactly Gaussian does strictly better. Take a standard Gaussian plane and a standard Gaussian line. The shortcut scores twelve, where lower is better. The paper builds a curved pairing that provably scores below seventy-six sevenths, about ten point eight six, and it proves that the true best score lies between eight point six eight and ten point eight five. In general, the error is bracketed from both sides and is never more than a factor of two.",
+      "inputSha256": "0e085bd7ddbeadb7a0356e5584e2c7becb4732dc176c06f7605dbf9266cd8fa0",
+      "audioSha256": "332dfcf737db25ab25cc064af463216bf24a61e49c288bb1be6a44f4bb27acfc",
+      "requestId": "req_4086ef6f107a4dc29e43abb07daf4ab1",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "and is never more than a factor of",
+        "heardEnding": "general the error is bracketed from both sides and is never more than a factor of",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "And when the proportions differ, plugging sample covariances into the formula gives an estimate that converges to the wrong value. The theorems have written proofs and computer checks, including deliberately planted errors that the checks catch. The true optimum, when the proportions differ, is still unknown. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the first of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "bfa7bbd50b66643de02e0a780fb874dfa727392b1e33f2faea9a2aaeb2f44580",
+      "audioSha256": "ef1666236ac27adf6e780be8f82394557a334c26d4fa359947b4385eba196953",
+      "requestId": "req_77c055e31e5a4651b9bb8de87d971564",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "gaussian-gromov-wasserstein-exactness",
+  "generatedAt": "2026-11-01T01:45:17.216Z",
+  "sourceMetadata": "papers/gaussian-gromov-wasserstein-exactness/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "4cc9fa17bff734ae8cd6515cdc7c8715d2bd06116644513b38594edf22025d31",
+  "transcriptPath": "assets/audio/gaussian-gromov-wasserstein-exactness.txt",
+  "transcriptSha256": "3fed26cd786bb213503d5185e3765af9dbb8f1da80b70eccc2c341b2e8728176",
+  "audioPath": "assets/audio/gaussian-gromov-wasserstein-exactness.mp3",
+  "audioSha256": "5a79c785ecba25d72a603f9eb5cd85a17beba16341d5af98721d2c3d16162c15",
+  "audioBytes": 2289452,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

@@ -844,7 +844,7 @@ const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
     <p>${esc(CONFIG.siteName)} publishes evidence-attached research releases and a clearly separate collection of essays, commentary and research notes. Each page states its own evidence boundary.</p>
-    <p><a href="/support/">Support open knowledge at Evidence Press</a> · <a href="/shop/">Shop</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a>.</p>
+    <p><a href="/support/">Support open knowledge at Evidence Press</a> · <a href="/applications/">Applications</a> · <a href="/shop/">Shop</a> ·<a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a>.</p>
     <p>Original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/math-objects.json">mathematical objects</a> · <a href="/api/claims.json">claims</a> · <a href="/api/assurance-tasks.json">assurance tasks</a> · <a href="/api/citations.json">citation graph</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/research-metrics-policy.json">research metrics</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
@@ -1489,6 +1489,7 @@ ${Array.from({ length: 9 }, (_, k) => {
   <div class="listhead">
     <h2 class="sr-only">All releases</h2>
     <input id="filter" class="catalogue-filter" data-card-selector=".card" data-noun="release" type="search" placeholder="Filter by topic — e.g. Ramsey, SAT, affine, reshuffling" aria-label="Filter releases">
+    <p class="listhead-note">What could each release be used for in practice? See <a href="/applications/">Applications</a>, a plain-English note per release.</p>
   </div>
   <div class="cards">${cards}</div>
 </section>
@@ -2063,6 +2064,98 @@ ${foot}`);
   write('shop/index.md', md);
 }
 
+/* /applications/: one plain-English application note per release, from
+   pages/applications.json. Order, numbering and titles come from the release
+   catalogue, so the build fails until every release has exactly one entry. */
+function applicationsPage() {
+  const APPS = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'applications.json'), 'utf8'));
+  const url = `${BASE}/applications/`;
+  const names = APPS.categories.map(c => c.name);
+  const slugs = new Set(papers.map(p => p.slug));
+  const missing = papers.filter(p => !APPS.entries[p.slug]).map(p => p.slug);
+  if (missing.length) throw new Error(`pages/applications.json: add an application entry for ${missing.join(', ')}`);
+  for (const [slug, e] of Object.entries(APPS.entries)) {
+    if (!slugs.has(slug)) throw new Error(`pages/applications.json: ${slug} is not a release`);
+    if (!names.includes(e.classification)) throw new Error(`pages/applications.json: ${slug} has unknown classification ${e.classification}`);
+    if (!e.application || !e.application.trim()) throw new Error(`pages/applications.json: ${slug} needs an application note`);
+  }
+  const counts = names.map(n => `${n}: ${papers.filter(p => APPS.entries[p.slug].classification === n).length}`).join(' · ');
+  const jsonld = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
+    '@type': 'WebPage', '@id': `${url}#page`, url, name: APPS.heading, description: APPS.description,
+    inLanguage: CONFIG.language, isPartOf: { '@id': `${BASE}/#website` },
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  }] };
+  const metaExtra = [
+    ['og:type', 'website'], ['og:site_name', CONFIG.siteName],
+    ['og:title', APPS.heading], ['og:description', APPS.description], ['og:url', url],
+    ['twitter:card', 'summary'], ['twitter:title', APPS.heading], ['twitter:description', APPS.description]
+  ].map(([k, v]) => k.startsWith('og:')
+    ? `<meta property="${k}" content="${escAttr(v)}">`
+    : `<meta name="${k}" content="${escAttr(v)}">`).join('\n') + '\n';
+  const extraLinks = `<link rel="alternate" type="text/markdown" href="${url}index.md">
+<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">
+`;
+  /* Number releases in publication order: the oldest is 1, the newest is N. */
+  const num = i => papers.length - i;
+  /* Banner: one square per release, grouped by label, drawn from the same entries
+     so it updates with every release. */
+  const BW = 1500, CELL = 16, GAP = 5, X0 = 600, PER_ROW = Math.floor((BW - X0 - 60) / (CELL + GAP));
+  const shades = { 'Practical method': '#fbbf24', 'Potential application': '#2dd4bf', 'Research use': '#e7e0d8', 'No clear application': '#8a837c' };
+  let y = 175;
+  const groups = APPS.categories.map(c => {
+    const n = papers.filter(p => APPS.entries[p.slug].classification === c.name).length;
+    const rows = Math.max(1, Math.ceil(n / PER_ROW));
+    const top = y; y += rows * (CELL + GAP) + 34;
+    const cells = Array.from({ length: n }, (_, k) => `<rect x="${X0 + (k % PER_ROW) * (CELL + GAP)}" y="${top + Math.floor(k / PER_ROW) * (CELL + GAP)}" width="${CELL}" height="${CELL}" rx="2.5" fill="${shades[c.name]}"/>`).join('');
+    return `<text x="${X0 - 30}" y="${top + 17}" text-anchor="end" font-size="36" fill="${shades[c.name]}" font-weight="700">${n}</text><text x="${X0 - 105}" y="${top + 16}" text-anchor="end" font-size="31" fill="#f0fdfa">${esc(c.name)}</text>${cells}`;
+  }).join('\n');
+  const BH = Math.max(500, y + 16);
+  const bannerSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${BW} ${BH}" width="${BW}" height="${BH}" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102b30"/><stop offset="1" stop-color="#245057"/></linearGradient></defs>
+<rect width="${BW}" height="${BH}" fill="url(#bg)"/>
+<text x="60" y="92" font-family="'Iowan Old Style', Palatino, Georgia, serif" font-size="52" fill="#f0fdfa" font-weight="700">${papers.length} releases, by what they could be used for</text>
+<text x="60" y="134" font-size="28" fill="#b9d6d2">One square per release</text>
+${groups}
+</svg>
+`;
+  write('assets/applications-banner.svg', bannerSvg);
+  const bannerSrc = `/assets/applications-banner.svg?v=${crypto.createHash('sha256').update(bannerSvg).digest('hex').slice(0, 10)}`;
+  const bannerAlt = `${papers.length} squares, one per release, grouped by label: ${APPS.categories.map(c => `${c.name} ${papers.filter(p => APPS.entries[p.slug].classification === c.name).length}`).join(', ')}.`;
+  const cards = papers.map((p, i) => {
+    const e = APPS.entries[p.slug];
+    return `<article class="app-card" data-keywords="${escAttr(p.keywords.join(' ').toLowerCase())}">
+<h2><span class="app-num">${num(i)}.</span> <a href="/releases/${p.slug}/">${esc(p.shortTitle)}</a></h2>
+<p class="app-tag">${esc(e.classification)}</p>
+<p>${esc(e.application)}</p>
+</article>`;
+  }).join('\n');
+  const body = `<article class="applications-page"><div class="wrap">
+<figure class="article-banner applications-banner">
+<img src="${escAttr(bannerSrc)}" alt="${escAttr(bannerAlt)}" width="${BW}" height="${BH}" loading="eager" decoding="async" fetchpriority="high">
+<figcaption>Each square is one release, grouped by the label below. The picture is drawn from the same entries as the list, so it changes as releases are added.</figcaption>
+</figure>
+<h1>${esc(APPS.heading)}</h1>
+<p class="lede">${esc(APPS.lede)}</p>
+<p>${esc(APPS.boundary)}</p>
+<details class="app-key"><summary>How to read the labels</summary>
+<ul>${APPS.categories.map(c => `<li><strong>${esc(c.name)}</strong>: ${esc(c.definition)}</li>`).join('')}</ul>
+<p>${esc(APPS.categoryNote)}</p>
+<p>${esc(counts)}</p>
+</details>
+<div class="listhead">
+<input id="app-filter" class="catalogue-filter" data-card-selector=".app-card" data-noun="release" type="search" placeholder="Filter by topic or label — e.g. epidemic, Practical method" aria-label="Filter applications">
+</div>
+${cards}
+</div></article>`;
+  write('applications/index.html', `${head({ title: `${APPS.title} · ${CONFIG.siteName}`, description: APPS.description, canonical: url, jsonld, metaExtra, extraLinks })}
+${body}
+${foot}`);
+  const md = `---\ntitle: "${APPS.heading}"\nurl: ${url}\nlicense: CC0-1.0\n---\n\n# ${APPS.heading}\n\n${APPS.lede}\n\n${APPS.boundary}\n\n${
+    APPS.categories.map(c => `- **${c.name}**: ${c.definition}`).join('\n')}\n\n${APPS.categoryNote}\n\n${counts}\n\n${
+    papers.map((p, i) => `### ${num(i)}. [${p.shortTitle}](${BASE}/releases/${p.slug}/)\n\n**${APPS.entries[p.slug].classification}.** ${APPS.entries[p.slug].application}\n`).join('\n')}`;
+  write('applications/index.md', md);
+}
+
 /* /think-again/: the book page and its puzzle-by-puzzle source list. The
    book's copyright page sends readers here ("The sources for the facts are
    listed at evidencepress.org"), so the URL is permanent. Metadata lives in
@@ -2450,7 +2543,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-10-28' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
   ];
@@ -3499,7 +3592,9 @@ simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'W
 simplePage('ai/', 'For AI agents and automated research tools', 'Machine-readable endpoints, metadata conventions, and follow-up problem lists for research agents.', 'ai.md', 'WebPage');
 simplePage('privacy/', 'Privacy policy', `How ${CONFIG.siteName} handles data: no accounts, cookies or analytics on this site, and the private YouTube channel tool that uses YouTube API Services.`, 'privacy.md', 'WebPage');
 simplePage('terms/', 'Terms of service', `Licences, status and limits of the material published by ${CONFIG.siteName}, including its YouTube channel.`, 'terms.md', 'WebPage');
+simplePage('thesis/', 'Evolutionary Developmental Psychopathology: the 2001 thesis', 'Ian Pitchford\'s 2001 University of Sheffield doctoral thesis and Patrick Bateson\'s examiner\'s report, as archival PDFs.', 'thesis.md', 'WebPage');
 shopPage();
+applicationsPage();
 thinkAgainPage();
 interpsychPage();
 feeds();

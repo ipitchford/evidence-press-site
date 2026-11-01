@@ -1,0 +1,213 @@
+{
+  "slug": "spectrally-negative-resetting-extremes",
+  "title": "Fixed-horizon extremes of spectrally negative Lévy processes with Poisson resetting",
+  "shortTitle": "After a high peak: near the top, or back home",
+  "oneLine": "For a stationary spectrally negative Lévy process with Poisson resetting, a high maximum in a fixed window leaves the endpoint either just below the peak (no reset yet) or at an ordinary level (reset since), with explicit odds, an explicit total-variation error and the constant left open in Remark 3 of Dębicki, Hashorva and Michna (2026).",
+  "abstract": "A process that wanders randomly but is sent back to a home position at random times is a basic model in search, foraging, queues with catastrophes and risk theory. This candidate takes the process to be spectrally negative Lévy (no upward jumps), resets it at the times of a Poisson clock and starts it in its long-run state, then asks where it is at the end of a fixed window given that its maximum over the window was very high. Up to an error smaller than any exponential order, there are only two answers: either no reset has happened and the process ends close to its peak, or a reset has happened and it ends at an ordinary level. The paper gives the odds of the two answers, the full endpoint law in each case, an explicit total-variation error bound uniform over all endpoint sets (including sets that move with the threshold), and a construction of the whole conditional path, in which the overshoot of the peak is exponential and independent of everything else. The leading constants come from a standard first-cycle computation; the uniform error bound, the conditional path law and its quantitative corollaries are the new content. For Brownian motion the result supplies the constant left unspecified in Remark 3 of Dębicki, Hashorva and Michna (2026) and proves that their two bounds are strict. The theorem is exact for bounded-variation inputs above an explicit threshold and extends to random reset positions. Analytic values and an exact-sampling Monte Carlo of the original process agree with the formulas. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-10-27",
+  "version": "1.0.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "stochastic resetting",
+    "spectrally negative Lévy processes",
+    "extremes",
+    "running maximum",
+    "total variation",
+    "Wiener–Hopf factorisation",
+    "Esscher transform",
+    "Brownian motion"
+  ],
+  "repoUrl": "https://github.com/ipitchford/spectrally-negative-resetting-extremes",
+  "releaseUrl": "https://github.com/ipitchford/spectrally-negative-resetting-extremes/releases/tag/v1.0.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/spectrally-negative-resetting-extremes/releases/download/v1.0.0-candidate/spectrally-negative-resetting-extremes-1.0.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23689354",
+  "conceptDoi": "10.5281/zenodo.23689353",
+  "zenodoUrl": "https://zenodo.org/records/23689354",
+  "citeText": "Anonymous (2026). Fixed-horizon extremes of spectrally negative Lévy processes with Poisson resetting. Version 1.0.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23689354",
+  "evidence": "Written proofs of every theorem in a 19-page manuscript, line-checked by two AI-assisted proof audits whose gaps were repaired; closed form against independent quadrature for the Brownian constant; floating-point reflection-principle brackets; an exact-sampling Monte Carlo of the original reset process (4×10⁷ Brownian paths per experiment, no time discretisation, plus a bounded-variation replicate); semantic negative controls; a clean replay of every script.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Every theorem has a written proof; numerical checks are floating-point or Monte Carlo, not enclosures. Internal AI-assisted review, two AI-assisted proof audits and a verification re-review only. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (27 October 2026, 19 pages), its check scripts and stored outputs, and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 27 October 2026.",
+  "keyResults": [
+    "Two-profile endpoint theorem (Theorem 3.1, proof): ‖P(H_T>u, Y_T∈·) − e^{−β(u−r)}{Q_T(·−u)+K_T}‖_var ≤ (aβ/(γ−β)+λT)e^{Tψ(γ)−γ(u−r)} for every γ>β, uniformly over all Borel endpoint sets, including sets that move with u; the error is smaller than any exponential order.",
+    "Conditional path (Theorem 5.1, Propositions 5.2–5.3, proof): given a high maximum, the first reset is absent with probability A(T)/D_T (0.531 in the standard Brownian case); the overshoot is Exp(β), independent of the marks, and its mean tends to 1/β for every input.",
+    "The constant in Remark 3 of Dębicki–Hashorva–Michna (Corollary 6.1, proof): C_T = e^{βr}[Φ(√(2λT)) + λ∫₀ᵀΦ(√(2λs))p_{T−s}(0)ds]; both of their bounds are strict; C_1 = 1.32858 for λ = T = 1, r = 0.",
+    "Exactness and extensions (Corollary 7.2, Theorem 7.3, proof): the decomposition is exact for bounded-variation inputs once u − r ≥ dT; for random reset positions the leading term gains the factor E e^{βR}, the initial reset position is exponentially tilted, and the first-reset odds are unchanged."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, proof audits (including one by a different model family) and verification re-review",
+      "Claude Code: final editorial fixes, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review and proof audits, not external peer review."
+  },
+  "narration": "Where does a randomly reset process end up after a very high peak? An Evidence Press briefing. Many random processes are reset from time to time: a searcher returns to base, a queue is emptied, an insurer's reserve is topped up. Suppose such a process is watched for a fixed window and, during it, climbs unusually high. Where is it at the end of the window? This release answers that question for a broad family of processes that can jump down but never up, reset at random times. Once the peak is high, there are essentially only two stories. Either no reset has happened yet, and the process ends just below its peak; or it has been reset, and it ends at an ordinary level, as if nothing had happened. The paper gives the odds of the two stories, about fifty-three to forty-seven in the standard Brownian example, the full endpoint law in each case, and the law of the whole path. The height of the peak above the threshold turns out to be memoryless. The leading constants come from a standard calculation. What is new is an explicit error bound that holds for every question one could ask about the endpoint at once. For Brownian motion this also supplies a constant that a 2026 paper by Dębicki, Hashorva and Michna left open, and shows that their two bounds on it are strict. The evidence is written proofs, checked against exact simulation of the process. This is an anonymous, AI-assisted, unrefereed candidate. It has not been peer reviewed or independently reproduced, and processes with upward jumps are not covered. Published on 27 October 2026, the paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files by full download; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "code/reproduce.py reran every check from a clean copy of the final package (reduced Monte Carlo size); deterministic outputs agree with the committed copies to 1e-9 and the frozen archive's scripts and outputs are byte-identical to that copy."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "The Brownian constant is checked by a closed form and independent quadrature, and the probability statements by an exact-sampling simulation of the original process adapted from a reviewer-written sampler; this is implementation diversity inside the producer workflow, not external reproduction."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review and proof audits are not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Checks need Python 3.12 with pinned NumPy, SciPy and Matplotlib (requirements.txt); not containerised. negative_controls.py needs only the standard library."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Dębicki, Hashorva and Michna (2026), Distributional and extremal behaviour of Brownian motion with exponential resetting. Methodology and Computing in Applied Probability 28(3), article 79 (source of the question: Remark 3).",
+      "url": "https://doi.org/10.1007/s11009-026-10316-4"
+    },
+    {
+      "citation": "Evans and Majumdar (2011), Diffusion with stochastic resetting. Physical Review Letters 106, 160601.",
+      "url": "https://doi.org/10.1103/PhysRevLett.106.160601"
+    },
+    {
+      "citation": "Evans, Majumdar and Schehr (2020), Stochastic resetting and applications. Journal of Physics A 53, 193001 (review).",
+      "url": "https://doi.org/10.1088/1751-8121/ab7cfe"
+    },
+    {
+      "citation": "Singh and Pal (2021), Extremal statistics for stochastic resetting systems. Physical Review E 103, 052119.",
+      "url": "https://doi.org/10.1103/PhysRevE.103.052119"
+    },
+    {
+      "citation": "Majumdar, Mounaix, Sabhapandit and Schehr (2022), Record statistics for random walks and Lévy flights with resetting. Journal of Physics A 55, 034002.",
+      "url": "https://doi.org/10.1088/1751-8121/ac3fc1"
+    },
+    {
+      "citation": "Mori, Majumdar and Schehr (2021), Distribution of the time of the maximum for stationary processes. Europhysics Letters 135, 30003.",
+      "url": "https://doi.org/10.1209/0295-5075/ac19ee"
+    },
+    {
+      "citation": "Majumdar, Pal and Schehr (2020), Extreme value statistics of correlated random variables: a pedagogical review. Physics Reports 840, 1–32.",
+      "url": "https://doi.org/10.1016/j.physrep.2019.10.005"
+    },
+    {
+      "citation": "Kyprianou (2014), Fluctuations of Lévy Processes with Applications. Universitext, Springer.",
+      "url": "https://doi.org/10.1007/978-3-642-37632-0"
+    },
+    {
+      "citation": "Kuznetsov, Kyprianou and Rivero (2012), The theory of scale functions for spectrally negative Lévy processes. Lévy Matters II, Lecture Notes in Mathematics, 97–186.",
+      "url": "https://doi.org/10.1007/978-3-642-31407-0_2"
+    },
+    {
+      "citation": "Pal, Kundu and Evans (2016), Diffusion under time-dependent resetting. Journal of Physics A 49, 225001.",
+      "url": "https://doi.org/10.1088/1751-8113/49/22/225001"
+    },
+    {
+      "citation": "Asmussen and Albrecher (2010), Ruin Probabilities. World Scientific.",
+      "url": "https://doi.org/10.1142/7431"
+    },
+    {
+      "citation": "Anonymous (2026), Exact exponential moments of interval quasi-stationary laws for Lévy processes, and the saturation of idealised QSD restart. Evidence Press release (companion: restart of a simulation from a quasi-stationary law, sharing the Esscher and Wiener–Hopf toolkit).",
+      "url": "https://evidencepress.org/releases/levy-qsd-exponential-moments-restart/",
+      "pageOnly": true,
+      "pageOnlyReason": "Companion Evidence Press release named in the manuscript's Related releases section; linked for readers."
+    }
+  ],
+  "corrections": [],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:spectrally-negative-resetting-extremes",
+    "attemptIds": [
+      "ep-attempt:spectrally-negative-resetting-extremes-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "An explicit two-profile description, with uniform total-variation error, of where a stationary spectrally negative Lévy process with Poisson resetting ends given a high fixed-horizon maximum; the constant left open in Remark 3 of Dębicki, Hashorva and Michna (2026), with strict bounds.",
+      "scope": "Spectrally negative Lévy inputs, Poisson reset clock, fixed or i.i.d. random reset positions with an exponential moment, stationary start, fixed horizon, threshold tending to infinity. No claim for upward jumps, renewal clocks or growing horizons."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The source's setting and Remark 3 (display of the conjectured asymptotic and its bounds) are checked against arXiv:2603.03050v3 and the journal DOI; the dictionary α = β at σ = 1, x_R = r, c = −μ is stated in the manuscript.",
+      "remainingRisks": [
+        "The leading constant is a standard first-cycle computation; novelty rests on the uniform bound and path law.",
+        "The bounded literature check is not exhaustive priority certification.",
+        "The final-round repairs follow the proof audits and were not re-audited by a further independent pass."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "independentRerun",
+        "specialistReview",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in Lévy fluctuation theory or resetting processes check the uniform endpoint bound (Section 3) and the random-reset path and mark bounds (Theorem 7.3).",
+      "claimCeiling": "Written proofs of a uniform two-profile endpoint expansion and conditional path law for stationary spectrally negative Lévy processes with Poisson resetting, and of the Brownian constant in Remark 3 of Dębicki–Hashorva–Michna with strict bounds. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "spectrally-negative-resetting-extremes-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable description of conditional extremes under resetting, with the constant of a published remark.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

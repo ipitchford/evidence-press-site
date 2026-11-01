@@ -22,6 +22,8 @@ node tools/test-operating-model.js # operating contract + hostile controls
 node tools/test-render.js      # renderer regression and property tests
 node tools/test-metadata.js    # schema conformance + cross-surface consistency
 node tools/check-links.js      # every internal link and asset resolves
+node tools/test-svg-xml.js && node tools/check-svg-wellformed.js
+                               # SVG escaping + every SVG parses as XML
 node tools/check-published.js  # publication-preservation gate
 python3 -m http.server -d dist 8000
 ```

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Only geometric burst sizes force a noise trade-off. An Evidence Press briefing. First, the background. Many molecules in cells are made in bursts: one production event releases a random number of copies at once. So molecule numbers fluctuate, and a common measure of that noise compares the variance with the mean. Each species has a reference value: the noise it would have if it were made at a steady rate. Feedback between species is the natural way to control noise, and a long-standing conjecture says it has a limit: no network can make every species quieter than its reference value at the same time. In 2026, David Anderson proved this when burst sizes follow a geometric law, the standard model for bursts of protein made from one messenger RNA.",
+      "inputSha256": "eea4fe8e05c9bc8f1647be7a29b8c0129ad8441274c20c717917902f68b7b52b",
+      "audioSha256": "430345436d6cda751a9472660203a3c8ec4daa603e8f9400af6030fdf3460cd4",
+      "requestId": "req_e316200439bf47bf8adb8fd401da1683",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "for bursts of protein made from messenger rna",
+        "heardEnding": "sizes follow a geometric law the standard model for bursts of protein made from messenger rna",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "He showed that it can fail for some other laws, and asked which burst laws still guarantee the limit. Now, the main finding. Only geometric laws do. For any other burst law with a finite variance, even one with exactly the same average and spread as a geometric law, two species, one switching the other on and being switched off in return, can both be made quieter than their reference values. With two different burst laws, this works exactly when at least one of them is not geometric. The paper also bounds how far the limit can fail when a law is close to geometric. As for how large the effect is: tiny, about one part in a million, and only when each species has well under one molecule on average. Every result has a written proof, and the worked examples are checked in exact arithmetic.",
+      "inputSha256": "2b70f2e36bbabd79a63ee50b7b7f6939cfb7fb550a39f35a1846d70b2d0b1d13",
+      "audioSha256": "a31f8c7b4c020643750860f1942734e7cb0ddd582eae24f040bc766fa4fccdfb",
+      "requestId": "req_fef3f107906241b9a4a4c6155aceba0e",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the worked examples are checked in exact arithmetic",
+        "heardEnding": "average every result has a written proof and the worked examples are checked in exact arithmetic",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The limits: review so far is internal and AI-assisted, one bound relies on lemmas from an unrefereed preprint, and the literature search was bounded. This briefing describes version one point zero candidate, released on the thirty-first of October 2026; the paper and evidence are linked from the release page. This audio uses an AI-generated voice and is not additional evidence.",
+      "inputSha256": "25396d197e666a2e0730cce79c93cdd9c1728322694aa3e44d28b66985a8db46",
+      "audioSha256": "7ed9b34e590faefa0336c75049b14b7b4db7b54d2c50d295e5fa597462a1a3a5",
+      "requestId": "req_0dc0373982f041cfbd7d4ebeece88b95",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "ai generated voice and is not additional evidence",
+        "heardEnding": "from the release page this audio uses an ai generated voice and is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "geometric-burst-classification",
+  "generatedAt": "2026-10-31T16:42:38.553Z",
+  "sourceMetadata": "papers/geometric-burst-classification/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "4651ac3510b54c225e40aab1f8961f98bb503bf9a94fa9546dcbce97d629ca0a",
+  "transcriptPath": "assets/audio/geometric-burst-classification.txt",
+  "transcriptSha256": "a92655095ee70168af7a5f3b1fccdeef8e1071fa76d392b35ce114f99caa47a6",
+  "audioPath": "assets/audio/geometric-burst-classification.mp3",
+  "audioSha256": "13d69ccd3b58f5994b056b5e2435f5c5505697a7623b39ab0b933b7d40b24fa8",
+  "audioBytes": 2033708,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "ai generated voice and is not additional evidence",
+    "heardEnding": "from the release page this audio uses an ai generated voice and is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
