@@ -57,7 +57,7 @@ Mémoli (2011) set out GW distances for comparing metric-measure spaces. Delon, 
 
 ## Why the problem matters
 
-GW is one of the few principled ways to compare datasets with no common coordinates, and closed-form answers are valuable precisely because the general problem is hard. A practitioner who summarises data by covariances and uses the Gaussian formula is assuming that Gaussian pairings are good enough. This paper tells that practitioner exactly when the assumption holds, how wrong the formula can be when it does not, and that the error never exceeds a factor of two. It also shows that projecting onto principal components is never GW-optimal unless all retained directions are scaled equally.
+GW is one of the few principled ways to compare datasets with no common coordinates, and closed-form answers are valuable precisely because the general problem is hard. A practitioner who summarises data by covariances and uses the Gaussian formula is assuming that Gaussian pairings are good enough. This paper tells that practitioner exactly when the assumption holds, how wrong the formula can be when it does not, and that the error never exceeds a factor of two. It also shows that a projection which discards some, but not all, principal directions is never GW-optimal: an affine map is optimal onto its image only if it multiplies every distance by the same constant.
 
 ## Where to inspect the package and reproduce the checks
 
