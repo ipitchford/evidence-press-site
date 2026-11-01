@@ -1,0 +1,236 @@
+{
+  "slug": "nimfa-sis-decay-envelopes",
+  "title": "How fast does an epidemic die out on a network? Sharp decay envelopes for mean-field SIS epidemics and a proof of the Persoons–Sensi–Prasse–Van Mieghem conjectures",
+  "shortTitle": "How fast does an epidemic die out on a network?",
+  "oneLine": "At or below the tipping point R0 = 1, the average infection level in the standard network SIS model never fades more slowly than 1/(1+t), whatever the network — proving two 2024 conjectures — but exactly at the tipping point network shape matters: the same epidemic takes about 920 recovery times to fall below 0.1% on a small-world network and about 40 on a spatial one.",
+  "abstract": "When an infection spreads through a network of contacts but is not quite strong enough to persist, how fast does it die out, and does the network's shape matter? For the N-intertwined mean-field (NIMFA) model of susceptible–infectious–susceptible (SIS) epidemics, the most widely used deterministic network model of a recurring infection, Persoons, Sensi, Prasse and Van Mieghem (2024) conjectured from simulations a universal speed limit: at or below the epidemic threshold, the average infection level y(t) is at most 1/(1+t), with time in mean recovery times, whatever the network and starting state; and the excess over the endemic level above the threshold, starting from above, obeys the same bound. This candidate proves both conjectures, the second with a sharper prefactor, by applying Jensen's inequality to the classical Volterra-type function h(s) = −s − log(1 − s). The same argument covers time-varying networks, node-dependent recovery and, with Perron weights, directed networks, and via a known correlation inequality it bounds the expected prevalence of the exact stochastic SIS process with a common recovery rate. Regular networks attain the limit. Exactly at the threshold the average decays like κ(G)/t, where κ(G) ≤ 1 is an explicit constant of the leading eigenvector, equal to 1 only for regular graphs. On standard synthetic networks of 1,000 nodes κ ranges from about 0.9 (small-world, random) to about 0.04 (spatial, scale-free), so the same R0 = 1 epidemic falls below 0.1% after about 920 recovery times on a small-world network but about 40 on a spatial one; a small κ signals a persistent infected core rather than easy elimination, and individual nodes can exceed the population limit by a factor of order n^(1/3). For the timescale-separation question that motivated the conjectures, the candidate gives unconditional transition-time bounds and shows numerically that one growth estimate of the 2024 paper is not a general bound away from R0 → 1. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-01",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "SIS epidemic",
+    "NIMFA",
+    "N-intertwined mean-field approximation",
+    "epidemic threshold",
+    "decay rate",
+    "Lyapunov function",
+    "network epidemics",
+    "timescale separation",
+    "eigenvector localisation"
+  ],
+  "repoUrl": "https://github.com/ipitchford/nimfa-sis-decay-envelopes",
+  "releaseUrl": "https://github.com/ipitchford/nimfa-sis-decay-envelopes/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/nimfa-sis-decay-envelopes/releases/download/v0.1.0-candidate/nimfa-sis-decay-envelopes-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23856194",
+  "conceptDoi": "10.5281/zenodo.23856193",
+  "zenodoUrl": "https://zenodo.org/records/23856194",
+  "citeText": "Anonymous (2026). How fast does an epidemic die out on a network? Sharp decay envelopes for mean-field SIS epidemics and a proof of the Persoons–Sensi–Prasse–Van Mieghem conjectures. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23856194",
+  "evidence": "Written proofs of every theorem, proposition and corollary; four checking scripts with retained outputs: 37 exact SymPy identities with 4 negative controls, numerical tests of every theorem on random weighted graphs below, at and above threshold (including temporal, heterogeneous-recovery, directed and disconnected cases) with 9 negative controls, synthetic-network illustrations that fail if any rigorous bound is violated, and a two-solver check of the growth formula of Persoons et al.; fault injection confirms that a flipped check fails the run; replay with Python -O from a fresh extraction of the frozen archive.",
+  "statusDetail": "Unrefereed AI-assisted network-epidemic mathematics candidate. Every result has a written proof; identities are re-derived symbolically and theorems tested numerically on selected instances; the eq. (20) failures are numerical, not interval-certified. Internal AI-assisted review in five roles, a separate-model adversarial review and audit of new proofs, a separate proof audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 1 November 2026 with DOI insertion, 19 pages), its checking scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 1 November 2026.",
+  "keyResults": [
+    "Conjecture 1 (Theorem 3, proof): for a symmetric contact matrix with R0 ≤ 1, the NIMFA average satisfies y(t) ≤ (1 − R0)/(e^{(1−R0)t} − R0) ≤ 1/(1+t) for every network and initial state, with time in mean recovery times.",
+    "Conjecture 2, sharpened (Theorem 4, proof): above threshold on a connected graph, starting at or above the endemic equilibrium p, 0 ≤ y(t) − p̄ ≤ (1 − p̄)/(1+t), with an exponential form.",
+    "Envelope theorem (Theorem 1, Corollary 2, proof): a Jensen step on the Volterra-type function h(s) = −s − log(1 − s) gives a Riccati comparison that also covers time-varying networks, node-dependent recovery, Perron-weighted directed networks and, via Simon and Kiss (2018), the expected prevalence of the exact stochastic SIS process with a common recovery rate (Proposition 12).",
+    "Critical constant (Theorem 7, Corollary 8, proof): at the threshold t·y(t) → κ(G) ≤ 1, an explicit eigenvector constant equal to 1 only for regular graphs; numerically κ ≈ 0.92 for a Watts–Strogatz and ≈ 0.035 for a random geometric graph of 1,000 nodes, so the time to fall below 0.1% is about 922 versus 39 recovery times.",
+    "Nodes and timescale separation (Proposition 9, Theorem 14, proof; Table 3, numerical): individual nodes can exceed the population envelope by a factor of order n^(1/3); unconditional transition-time bounds hold for all R0; the growth formula (eq. 20) of Persoons et al. under-estimates growth times within its hypotheses away from R0 → 1."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted network-epidemic mathematics",
+      "AI-assisted internal review, separate-model adversarial review and audit, proof audit, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "How fast does an epidemic die out on a network, and does the network's shape matter? An Evidence Press briefing. Picture an infection spreading through a network of contacts, people, farms or computers, but not quite strong enough to persist. Each infected node recovers, and can be infected again. The standard deterministic model of this, called the N-intertwined mean-field approximation, tracks the average infection level over time, measured in average recovery times. In 2024, Persoons, Sensi, Prasse and Van Mieghem ran extensive simulations and conjectured a universal speed limit: at or below the tipping point, where the reproduction number is one, the average never fades more slowly than one over one plus t, whatever the network and wherever the epidemic starts. They also conjectured a matching limit above the tipping point. This paper proves both. The proof follows one entropy-like average that can only fall at a controlled rate, and the same argument covers networks that change over time, nodes that recover at different speeds, one-way contacts, and, as an upper bound, the expected prevalence of the exact random model. Exactly at the tipping point, though, shape matters a great deal. The average eventually decays like a constant called kappa, divided by time, and kappa is computed from the network's leading eigenvector. On synthetic networks of a thousand nodes, kappa is about point nine for small-world networks and about point zero four for spatial ones. So the same epidemic falls below one in a thousand after about nine hundred and twenty recovery times on a small-world network, but after only about forty on a spatial one. That is not good news: a small kappa means infection has retreated into a persistent core, where hubs stay infected longer. The results have written proofs and computer checks, but they concern the deterministic model and synthetic networks. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the first of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "From a fresh extraction of the frozen archive, all four checking scripts ran with Python -I -O -B in a temporary copy and every regenerated JSON output matched the retained one within a relative tolerance of 1e-7 (package-version fields ignored); fault injection made both fast checkers fail as required. GitHub CI repeats the exact and numerical checkers on Linux as a blocking job (passing) and the full suite as a non-blocking job: on Linux every check passes, but four values of the rigorous growth bound for the random geometric graph in Table 2, which depend on the logarithm of an endemic level of about 1.8e-9, differ from the macOS values by up to 3e-6 relative, beyond the comparer's 1e-7 tolerance, so that job reports a difference; the printed table values are unchanged."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The symbolic and numerical checks were written by the same producer workflow; no unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.11 with NumPy, SciPy, SymPy, NetworkX, Matplotlib and mpmath versions pinned in requirements.txt; not a locked container. Synthetic networks with fixed seeds."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Persoons, Sensi, Prasse and Van Mieghem (2024). Transition from time-variant to static networks: Timescale separation in N-intertwined mean-field approximation of susceptible-infectious-susceptible epidemics. Physical Review E. Source of the two conjectures proved here and of the timescale-separation question.",
+      "url": "https://doi.org/10.1103/physreve.109.034308"
+    },
+    {
+      "citation": "Persoons and Van Mieghem (2026). Susceptible-infectious-susceptible epidemics on temporal contact graphs with clique structure. Physical Review E. The authors' follow-up; its abstract does not mention the conjectures.",
+      "url": "https://doi.org/10.1103/6jqp-bz2r"
+    },
+    {
+      "citation": "Prasse and Van Mieghem (2020). Time-dependent solution of the NIMFA equations around the epidemic threshold. Journal of Mathematical Biology. Near-threshold approximations.",
+      "url": "https://doi.org/10.1007/s00285-020-01542-6"
+    },
+    {
+      "citation": "Van Mieghem, Omic and Kooij (2009). Virus Spread in Networks. IEEE/ACM Transactions on Networking. The N-intertwined mean-field model.",
+      "url": "https://doi.org/10.1109/tnet.2008.925623"
+    },
+    {
+      "citation": "Lajmanovich and Yorke (1976). A deterministic model for gonorrhea in a nonhomogeneous population. Mathematical Biosciences. The deterministic network SIS model and its global convergence.",
+      "url": "https://doi.org/10.1016/0025-5564(76)90125-5"
+    },
+    {
+      "citation": "Khanafer, Başar and Gharesifard (2016). Stability of epidemic models over directed graphs: A positive systems approach. Automatica. Diagonal Lyapunov weights on directed graphs.",
+      "url": "https://doi.org/10.1016/j.automatica.2016.07.037"
+    },
+    {
+      "citation": "Mei, Mohagheghi, Zampieri and Bullo (2017). On the dynamics of deterministic epidemic propagation over networks. Annual Reviews in Control. Exponential decay below threshold.",
+      "url": "https://doi.org/10.1016/j.arcontrol.2017.09.002"
+    },
+    {
+      "citation": "Fall, Iggidr, Sallet and Tewa (2007). Epidemiological Models and Lyapunov Functions. Mathematical Modelling of Natural Phenomena.",
+      "url": "https://doi.org/10.1051/mmnp:2008011"
+    },
+    {
+      "citation": "Shuai and van den Driessche (2013). Global Stability of Infectious Disease Models Using Lyapunov Functions. SIAM Journal on Applied Mathematics. Volterra-type Lyapunov functions.",
+      "url": "https://doi.org/10.1137/120876642"
+    },
+    {
+      "citation": "Dirr, Ito, Rantzer and Rüffer (2015). Separable Lyapunov functions for monotone systems: Constructions and limitations. Discrete and Continuous Dynamical Systems - B.",
+      "url": "https://doi.org/10.3934/dcdsb.2015.20.2497"
+    },
+    {
+      "citation": "Rantzer (2015). Scalable control of positive systems. European Journal of Control. Diagonal stability of Metzler matrices.",
+      "url": "https://doi.org/10.1016/j.ejcon.2015.04.004"
+    },
+    {
+      "citation": "Smith (2008). Monotone Dynamical Systems: An Introduction to the Theory of Competitive and Cooperative Systems. American Mathematical Society (first published 1995). Comparison for cooperative systems.",
+      "url": "https://doi.org/10.1090/surv/041"
+    },
+    {
+      "citation": "Carr (1981). Applications of Centre Manifold Theory. Springer. The centre-manifold mechanism behind the 1/t decay at the threshold.",
+      "url": "https://doi.org/10.1007/978-1-4612-5929-9"
+    },
+    {
+      "citation": "Van Mieghem (2012). Epidemic phase transition of the SIS type in networks. EPL (Europhysics Letters).",
+      "url": "https://doi.org/10.1209/0295-5075/97/48004"
+    },
+    {
+      "citation": "Goltsev, Dorogovtsev, Oliveira and Mendes (2012). Localization and Spreading of Diseases in Complex Networks. Physical Review Letters. Eigenvector localisation.",
+      "url": "https://doi.org/10.1103/physrevlett.109.128702"
+    },
+    {
+      "citation": "Pastor-Satorras and Castellano (2016). Distinct types of eigenvector localization in networks. Scientific Reports.",
+      "url": "https://doi.org/10.1038/srep18847"
+    },
+    {
+      "citation": "Cator and Van Mieghem (2014). Nodal infection in Markovian susceptible-infected-susceptible and susceptible-infected-removed epidemics on networks are non-negatively correlated. Physical Review E.",
+      "url": "https://doi.org/10.1103/physreve.89.052802"
+    },
+    {
+      "citation": "Simon and Kiss (2018). On bounding exact models of epidemic spread on networks. Discrete and Continuous Dynamical Systems - B. NIMFA upper-bounds the exact stochastic SIS process, used for the stochastic corollary.",
+      "url": "https://doi.org/10.3934/dcdsb.2018192"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:nimfa-sis-decay-envelopes",
+    "attemptIds": [
+      "ep-attempt:nimfa-sis-decay-envelopes-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "For die-out at or below R0 = 1 in the NIMFA SIS model, use 1/(1+t) (time in mean recovery times) as a guaranteed upper bound on the average infection level for any network; at the threshold, use kappa(G)/t computed from the leading eigenvector for the long-run decay of the average, and treat small kappa as a sign of a persistent infected core.",
+      "scope": "Deterministic NIMFA model; for the stochastic SIS process an upper bound on the expected prevalence with a common recovery rate. Real contact networks are not analysed."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.1 quotes Conjectures 1 and 2 of Persoons et al. (their eqs. 9-10) and Section 9 their transition-time definitions, Lemma 5, eq. (20) and Assumption 1, so the statements proved can be compared with the source.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "The eq. (20) failures are numerical, not interval-certified."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in network epidemics check the Jensen step of Theorem 1 at and above the threshold and the global argument of Theorem 7, and ask the authors of the 2024 paper whether Theorems 3 and 4 match the intended scope of their conjectures.",
+      "claimCeiling": "Proved decay envelopes for NIMFA SIS dynamics resolving two conjectures, with an explicit critical constant and transition-time bounds. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "nimfa-sis-decay-envelopes-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of universal decay envelopes for network SIS dynamics, with a critical constant describing when network shape matters.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
