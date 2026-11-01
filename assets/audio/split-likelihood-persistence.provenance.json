@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Look once, or keep looking? An Evidence Press briefing on a statistics method that is valid if you look once, but silently fails if you keep checking it as data arrive. Universal inference is a popular recipe for confidence intervals that works in almost any statistical model: split the data in two, fit the model on one half, and test candidate values on the other. Checked once, at a sample size fixed in advance, a ninety-five per cent interval built this way keeps its promise. In 2023, Pace, Salvan and Sartori conjectured that if the interval is simply recomputed every time new data arrive, it keeps a long-run guarantee too. This paper shows that it does not. If you keep checking forever, the interval is certain to exclude the true value again and again.",
+      "inputSha256": "19f965c4693a49b43e7cf0576224eff4b2ed7ade4864d23206d5381d8a3949a8",
+      "audioSha256": "20ba828ca19eae6f2867698fd898288734286cc61ae5baff2f736cbd7e62e565",
+      "requestId": "req_896043b2d34347b1b8380dea06a2fdd7",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "to exclude the true value again and again",
+        "heardEnding": "you keep checking forever the interval is certain to exclude the true value again and again",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The long-run guarantee is not ninety-five per cent, but zero, in any model. The paper finds the exact rate at which the statistic keeps climbing, and shows that changing how the data are split does not help. A threshold that rises slowly with the sample size does fix it, and that repair cannot be improved in its growth rate. How bad is it in practice? The damage is real, but slow. For an eighty per cent interval, the error first exceeds its stated level once the last look is about a hundred times later than the first. For ninety-five per cent, that takes about ten thousand times; for ninety-nine per cent, about a billion. The proofs are written out in full and checked by scripts, including deliberately planted errors that the checks must catch.",
+      "inputSha256": "e8033c83b85dc9050401638cc918f3faa687b510cdccd39781cdcdbe6196b1a9",
+      "audioSha256": "e18ade231b9a937829a7b6fb313aa3966673171dc7672d11a243e2f4484ff26c",
+      "requestId": "req_6fa484885d3b467b8a734d991f4d4c95",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "deliberately planted errors that the checks must catch",
+        "heardEnding": "out in full and checked by scripts including deliberately planted errors that the checks must catch",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The underlying tools are classical; the constants, repairs and severity calculations are new, within a bounded literature search. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the first of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "08dabefa9729456d2257fee1af1c1bf8bd9fd1546ea5734b74ba71e6725367d2",
+      "audioSha256": "87cd287ab00db9892cd0115a6b30240a5cacba1187430aceed41303670b8f2c2",
+      "requestId": "req_3ad58d1520a040ddae269e2a7af58cd6",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "split-likelihood-persistence",
+  "generatedAt": "2026-11-01T10:56:34.181Z",
+  "sourceMetadata": "papers/split-likelihood-persistence/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "461ffdf3efb5f97fa7dadd880e279a8260a931b17ae98617c5635f5d92333b22",
+  "transcriptPath": "assets/audio/split-likelihood-persistence.txt",
+  "transcriptSha256": "fb73e72a8ff76c6a46ece3b4a24c417cda1f6157645d8a5a71f9cc9cd8c0f468",
+  "audioPath": "assets/audio/split-likelihood-persistence.mp3",
+  "audioSha256": "71fd7055cad3d896359930cf78d1cccc987bb3b17fa52f8086827364093eff6a",
+  "audioBytes": 2074412,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
