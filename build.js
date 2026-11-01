@@ -844,7 +844,7 @@ const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
     <p>${esc(CONFIG.siteName)} publishes evidence-attached research releases and a clearly separate collection of essays, commentary and research notes. Each page states its own evidence boundary.</p>
-    <p><a href="/support/">Support open knowledge at Evidence Press</a> · <a href="/shop/">Shop</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a>.</p>
+    <p><a href="/support/">Support open knowledge at Evidence Press</a> · <a href="/applications/">Applications</a> · <a href="/shop/">Shop</a> ·<a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a>.</p>
     <p>Original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/math-objects.json">mathematical objects</a> · <a href="/api/claims.json">claims</a> · <a href="/api/assurance-tasks.json">assurance tasks</a> · <a href="/api/citations.json">citation graph</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/research-metrics-policy.json">research metrics</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
@@ -1489,6 +1489,7 @@ ${Array.from({ length: 9 }, (_, k) => {
   <div class="listhead">
     <h2 class="sr-only">All releases</h2>
     <input id="filter" class="catalogue-filter" data-card-selector=".card" data-noun="release" type="search" placeholder="Filter by topic — e.g. Ramsey, SAT, affine, reshuffling" aria-label="Filter releases">
+    <p class="listhead-note">What could each release be used for in practice? See <a href="/applications/">Applications</a>, a plain-English note per release.</p>
   </div>
   <div class="cards">${cards}</div>
 </section>
@@ -2063,6 +2064,68 @@ ${foot}`);
   write('shop/index.md', md);
 }
 
+/* /applications/: one plain-English application note per release, from
+   pages/applications.json. Order, numbering and titles come from the release
+   catalogue, so the build fails until every release has exactly one entry. */
+function applicationsPage() {
+  const APPS = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'applications.json'), 'utf8'));
+  const url = `${BASE}/applications/`;
+  const names = APPS.categories.map(c => c.name);
+  const slugs = new Set(papers.map(p => p.slug));
+  const missing = papers.filter(p => !APPS.entries[p.slug]).map(p => p.slug);
+  if (missing.length) throw new Error(`pages/applications.json: add an application entry for ${missing.join(', ')}`);
+  for (const [slug, e] of Object.entries(APPS.entries)) {
+    if (!slugs.has(slug)) throw new Error(`pages/applications.json: ${slug} is not a release`);
+    if (!names.includes(e.classification)) throw new Error(`pages/applications.json: ${slug} has unknown classification ${e.classification}`);
+    if (!e.application || !e.application.trim()) throw new Error(`pages/applications.json: ${slug} needs an application note`);
+  }
+  const counts = names.map(n => `${n}: ${papers.filter(p => APPS.entries[p.slug].classification === n).length}`).join(' · ');
+  const jsonld = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
+    '@type': 'WebPage', '@id': `${url}#page`, url, name: APPS.heading, description: APPS.description,
+    inLanguage: CONFIG.language, isPartOf: { '@id': `${BASE}/#website` },
+    license: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  }] };
+  const metaExtra = [
+    ['og:type', 'website'], ['og:site_name', CONFIG.siteName],
+    ['og:title', APPS.heading], ['og:description', APPS.description], ['og:url', url],
+    ['twitter:card', 'summary'], ['twitter:title', APPS.heading], ['twitter:description', APPS.description]
+  ].map(([k, v]) => k.startsWith('og:')
+    ? `<meta property="${k}" content="${escAttr(v)}">`
+    : `<meta name="${k}" content="${escAttr(v)}">`).join('\n') + '\n';
+  const extraLinks = `<link rel="alternate" type="text/markdown" href="${url}index.md">
+<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">
+`;
+  const cards = papers.map((p, i) => {
+    const e = APPS.entries[p.slug];
+    return `<article class="app-card" data-keywords="${escAttr(p.keywords.join(' ').toLowerCase())}">
+<h2><span class="app-num">${i + 1}.</span> <a href="/releases/${p.slug}/">${esc(p.shortTitle)}</a></h2>
+<p class="app-tag">${esc(e.classification)}</p>
+<p>${esc(e.application)}</p>
+</article>`;
+  }).join('\n');
+  const body = `<article class="applications-page"><div class="wrap">
+<h1>${esc(APPS.heading)}</h1>
+<p class="lede">${esc(APPS.lede)}</p>
+<p>${esc(APPS.boundary)}</p>
+<details class="app-key"><summary>How to read the labels</summary>
+<ul>${APPS.categories.map(c => `<li><strong>${esc(c.name)}</strong>: ${esc(c.definition)}</li>`).join('')}</ul>
+<p>${esc(APPS.categoryNote)}</p>
+<p>${esc(counts)}</p>
+</details>
+<div class="listhead">
+<input id="app-filter" class="catalogue-filter" data-card-selector=".app-card" data-noun="release" type="search" placeholder="Filter by topic or label — e.g. epidemic, Practical method" aria-label="Filter applications">
+</div>
+${cards}
+</div></article>`;
+  write('applications/index.html', `${head({ title: `${APPS.title} · ${CONFIG.siteName}`, description: APPS.description, canonical: url, jsonld, metaExtra, extraLinks })}
+${body}
+${foot}`);
+  const md = `---\ntitle: "${APPS.heading}"\nurl: ${url}\nlicense: CC0-1.0\n---\n\n# ${APPS.heading}\n\n${APPS.lede}\n\n${APPS.boundary}\n\n${
+    APPS.categories.map(c => `- **${c.name}**: ${c.definition}`).join('\n')}\n\n${APPS.categoryNote}\n\n${counts}\n\n${
+    papers.map((p, i) => `### ${i + 1}. [${p.shortTitle}](${BASE}/releases/${p.slug}/)\n\n**${APPS.entries[p.slug].classification}.** ${APPS.entries[p.slug].application}\n`).join('\n')}`;
+  write('applications/index.md', md);
+}
+
 /* /think-again/: the book page and its puzzle-by-puzzle source list. The
    book's copyright page sends readers here ("The sources for the facts are
    listed at evidencepress.org"), so the URL is permanent. Metadata lives in
@@ -2450,7 +2513,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-10-28' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-10-28' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
   ];
@@ -3501,6 +3564,7 @@ simplePage('privacy/', 'Privacy policy', `How ${CONFIG.siteName} handles data: n
 simplePage('terms/', 'Terms of service', `Licences, status and limits of the material published by ${CONFIG.siteName}, including its YouTube channel.`, 'terms.md', 'WebPage');
 simplePage('thesis/', 'Evolutionary Developmental Psychopathology: the 2001 thesis', 'Ian Pitchford\'s 2001 University of Sheffield doctoral thesis and Patrick Bateson\'s examiner\'s report, as archival PDFs.', 'thesis.md', 'WebPage');
 shopPage();
+applicationsPage();
 thinkAgainPage();
 interpsychPage();
 feeds();
