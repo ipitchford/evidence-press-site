@@ -124,6 +124,19 @@ class Gate(Scratch):
         self.assertIn('first author', reasons)
         self.assertIn('cited year', reasons)
 
+    def test_evidence_press_deposit_credits_anonymous_not_creator_field(self):
+        records = dict(RECORDS, **{'10.5281/zenodo.999': crossref('Candidate evidence bundle for affine slices',
+                                                                  ['OpenAI Codex / Anthropic models'], 2026)})
+        with open(self.bib, 'a') as f:
+            f.write('[4] Anonymous. Candidate evidence bundle for affine slices. doi:10.5281/zenodo.999 (2026).\n')
+        ok = self.run_check([{'citation': 'Evidence Press (2026), Candidate evidence bundle for affine slices.',
+                              'url': 'https://doi.org/10.5281/zenodo.999'}], FakeNet(records))
+        self.assertEqual(ok['status'], 'passed', ok['problems'])
+        records['10.1000/other'] = records['10.5281/zenodo.999']
+        other = self.run_check([{'citation': 'Anonymous (2026), Candidate evidence bundle for affine slices.',
+                                 'url': 'https://doi.org/10.1000/other'}], FakeNet(records))
+        self.assertTrue(any('first author' in r for r in other['items'][0]['reasons']))
+
     def test_preprint_later_version_year_is_accepted(self):
         rep = self.run_check([{'citation': 'Ghosh (v2, 2027), Proof of the Casas-Alvero conjecture.',
                                'url': 'https://arxiv.org/abs/2501.09272'}])

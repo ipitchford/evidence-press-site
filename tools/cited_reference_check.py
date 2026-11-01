@@ -259,7 +259,7 @@ def surname_in(surname, text):
     return (' ' + n + ' ') in hay or (' ' + n.split()[-1] + ' ') in hay
 
 
-def match_citation(meta, citation, work=None):
+def match_citation(meta, citation, work=None, doi=''):
     """Compare registry metadata with the page's citation. Returns (ok, reasons, scores)."""
     work = work or {}
     reasons = []
@@ -280,7 +280,10 @@ def match_citation(meta, citation, work=None):
     authors = meta.get('authors') or []
     first = authors[0] if authors else None
     author_text = ' '.join(work.get('authors') or []) or citation
-    if first and not surname_in(first, author_text):
+    # Evidence Press deposits are credited to Anonymous under the standing protocol; the page
+    # names that credit, never a tool or model that a deposit's creator field may carry.
+    institutional = doi.startswith('10.5281/zenodo.') and re.search(r'\b(anonymous|evidence press)\b', norm(author_text))
+    if first and not institutional and not surname_in(first, author_text):
         reasons.append(f'registry first author "{first}" is not named in the page citation')
     cited_years = {int(work['year'])} if work.get('year') else years_in(citation)
     reg_years = set(meta.get('years') or [])
@@ -503,7 +506,7 @@ def check_release(meta, body='', citations=None, manuscripts=(), net=None, mode=
             item['status'] = 'NO-METADATA'
             item['reasons'].append(rec.get('error'))
         else:
-            ok, reasons, scores = match_citation(rec, w.get('citation') or '', w)
+            ok, reasons, scores = match_citation(rec, w.get('citation') or '', w, doi)
             item.update(scores=scores, registryTitle=rec.get('title'), registryAuthors=(rec.get('authors') or [])[:3])
             item['status'] = 'OK' if ok else 'MISMATCH'
             item['reasons'] += reasons
