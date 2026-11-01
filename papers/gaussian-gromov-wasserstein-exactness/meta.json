@@ -156,6 +156,14 @@
       "url": "https://doi.org/10.1007/978-3-540-71050-9"
     }
   ],
+  "corrections": [
+    {
+      "date": "2026-11-01",
+      "scope": "claim",
+      "summary": "Corrected the last sentence of “Why the problem matters”. Until 1 November 2026 this page said that projecting onto principal components “is never GW-optimal unless all retained directions are scaled equally”. That is wrong: an orthogonal projection that keeps some but not all directions scales every retained direction equally, yet it is not GW-optimal. The sentence now reads: “It also shows that a projection which discards some, but not all, principal directions is never GW-optimal: an affine map is optimal onto its image only if it multiplies every distance by the same constant.”",
+      "detail": "The error was confined to this page’s explanatory text. The archived manuscript states Theorem 3 correctly (§1, item 3: an affine map, such as a principal-component projection, is GW-optimal onto its image only if it multiplies all distances by one constant), as do this page’s key results and technical summary. The narration, audio transcript, abstract and machine record do not contain the incorrect sentence. No theorem, certificate, computation or stated result is affected; the archived PDF, version DOI and repository tag are unchanged."
+    }
+  ],
   "operatingModel": {
     "version": "1.0",
     "workId": "ep-work:gaussian-gromov-wasserstein-exactness",
