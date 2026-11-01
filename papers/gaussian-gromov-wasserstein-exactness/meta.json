@@ -1,0 +1,227 @@
+{
+  "slug": "gaussian-gromov-wasserstein-exactness",
+  "title": "Affine rigidity and Gaussian exactness in squared-distance Gromov–Wasserstein transport",
+  "shortTitle": "Twelve, or under 76/7: when the Gaussian shortcut for Gromov–Wasserstein is exact",
+  "oneLine": "Matching a standard Gaussian plane to a standard Gaussian line, the closed-form Gaussian Gromov–Wasserstein answer is 12, but a curved rearrangement that keeps the line exactly Gaussian provably scores below 76/7 ≈ 10.86; the paper shows the Gaussian shortcut is exact if and only if the two spectra are proportional, and is never off by more than a factor of two.",
+  "abstract": "Gromov–Wasserstein (GW) transport compares two datasets or shapes that may live in different spaces by matching their internal pairwise distances. It is expensive to compute, so a closed-form answer for Gaussian data, found by Delon, Desolneux and Salmona (2022) after restricting attention to Gaussian couplings, is an attractive shortcut; those authors conjectured that the restriction loses nothing, and Peyré (October 2026) gave a first counterexample in sufficiently high dimension. For the standard squared-distance objective this candidate shows exactly when the shortcut is right: two Gaussians of positive rank admit an optimal coupling that is itself Gaussian if and only if their covariances have the same rank and proportional ordered eigenvalues. In every other case, including equal dimensions, an explicit nonlinear coupling that keeps both marginals exactly Gaussian does strictly better. The Gaussian excess is bracketed on both sides by quantities computable from the two spectra, and the Gaussian formula never overstates the optimum by more than a factor of two, a constant approached by nearly isotropic spectra in high dimension. For a standard Gaussian plane matched to a standard Gaussian line, the Gaussian answer is 12, an explicit coupling is certified below 76/7 ≈ 10.86 (about 10.47 numerically), and the true optimum lies between 8.68 and 10.85. Necessity comes from a general affine rigidity theorem: for a source whose support has interior points, an affine map is GW-optimal onto its image only if it is a similarity. The plug-in Gaussian formula on sample covariances is an inconsistent estimator for nonproportional spectra. The unrestricted optimum for nonproportional spectra is not computed. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-01",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Gromov–Wasserstein",
+    "optimal transport",
+    "Gaussian measures",
+    "Gaussian coupling",
+    "affine rigidity",
+    "linear Gromov–Monge",
+    "measure-preserving flow",
+    "approximation error"
+  ],
+  "repoUrl": "https://github.com/ipitchford/gaussian-gromov-wasserstein-exactness",
+  "releaseUrl": "https://github.com/ipitchford/gaussian-gromov-wasserstein-exactness/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/gaussian-gromov-wasserstein-exactness/releases/download/v0.1.0-candidate/gaussian-gromov-wasserstein-exactness-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23850758",
+  "conceptDoi": "10.5281/zenodo.23850757",
+  "zenodoUrl": "https://zenodo.org/records/23850758",
+  "citeText": "Anonymous (2026). Affine rigidity and Gaussian exactness in squared-distance Gromov–Wasserstein transport. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23850758",
+  "evidence": "Written proofs of every theorem, proposition, lemma and corollary; seven checking scripts with retained outputs: 24 exact rational identities including the certificate Q < 76/7 and all 441 sorted two-coordinate integer spectrum pairs with entries 0 to 5, 28 identities in a separately written rational-polynomial implementation, simultaneous-field identities on 120 integer spectra, the four-point example and flow reductions, the factor-two corollary on 1,156 integer and 20,000 random pairs, whole-path curvature checks, Tables 1 and 2 and quadrature of the plane-to-line flow; a negative-control script detecting 12 of 12 planted errors with and without Python -O; replay with Python -O from a fresh extraction of the frozen archive.",
+  "statusDetail": "Unrefereed AI-assisted optimal-transport candidate. The theorems have written proofs; identities and finite cases are checked exactly and examples numerically; values marked numerical are not interval enclosures. Internal AI-assisted review in five roles, a separate-model adversarial review and audit of new proofs, a separate proof audit, a clean replay of the handoff bundle, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 1 November 2026 with DOI insertion, 16 pages), its checking scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 1 November 2026.",
+  "keyResults": [
+    "Exactness (Theorem 5, proof): two positive-rank Gaussians admit a jointly Gaussian unrestricted optimiser of squared-distance GW if and only if their positive ranks agree and their ordered positive covariance eigenvalues are proportional; the conjecture of Delon, Desolneux and Salmona fails on every other pair, including equal dimensions. Sufficiency is due to Delon et al.",
+    "Affine rigidity (Theorem 3, proof): for a source with finite fourth moment and support with interior points in its affine hull, an affine map is GW-optimal onto its image if and only if it is a similarity or a constant.",
+    "Size of the error (Theorem 8, Corollary 9, proof): with S = ‖a‖²‖b‖² − (a·b)², S/(‖a‖‖b‖) ≤ Q_G − Q_* ≤ 8(‖a‖‖b‖ − a·b), so Q_G/2 ≤ Q_* ≤ Q_G, with the factor two approached by nearly isotropic spectra in high dimension. The upper bound is due to Delon et al.; the lower bound is new.",
+    "Plane to line (Section 7, proof with numerical refinements): the Gaussian value is 12; an explicit Gaussian-preserving coupling scores below 76/7 ≈ 10.86 (about 10.47 numerically); 8.68 ≤ Q_* ≤ 10.85, refined numerically to about 8.82 ≤ Q_* ≤ 10.03.",
+    "Plug-in inconsistency (Lemma 11, Proposition 12, proof): for nonproportional spectra the empirical GW value converges to Q_* while the plug-in Gaussian formula on sample covariances converges to Q_G ≠ Q_*."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted optimal-transport mathematics",
+      "AI-assisted internal review, separate-model adversarial review and audit, proof audit, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Twelve, or less than eleven? An Evidence Press briefing on comparing Gaussian data that live in different spaces. Suppose one dataset is a cloud of points spread over a plane, and another is a cloud along a line. Gromov–Wasserstein transport compares them by pairing the points up so that distances within one cloud match distances within the other as closely as possible. It is widely used, but expensive to compute. For bell-shaped, Gaussian data there is a tempting shortcut: a formula found in 2022 by Delon, Desolneux and Salmona, who searched only over Gaussian pairings and conjectured that nothing is lost by doing so. In October 2026, Gabriel Peyré showed that the shortcut can fail when a line is compared with a space of many dimensions. This paper settles exactly when the shortcut is right. It is right if, and only if, the two datasets vary in the same number of directions, and their spreads along those directions are in the same proportions. In every other case, even for two datasets of the same dimension, a curved rearrangement that keeps both clouds exactly Gaussian does strictly better. Take a standard Gaussian plane and a standard Gaussian line. The shortcut scores twelve, where lower is better. The paper builds a curved pairing that provably scores below seventy-six sevenths, about ten point eight six, and it proves that the true best score lies between eight point six eight and ten point eight five. In general, the error is bracketed from both sides and is never more than a factor of two. And when the proportions differ, plugging sample covariances into the formula gives an estimate that converges to the wrong value. The theorems have written proofs and computer checks, including deliberately planted errors that the checks catch. The true optimum, when the proportions differ, is still unknown. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the first of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "From a fresh extraction of the frozen archive, all seven checking scripts ran with Python -I -O -B in a temporary copy and every regenerated output matched the retained one within a relative tolerance of 1e-7, apart from run-time and interpreter fields; negative controls detected 12 of 12 planted errors. GitHub CI repeats the quick checks on Linux as a blocking job (passing) and the full suite as a non-blocking job: on Linux every check in the full suite passes, but seven numerical-error diagnostic fields (finite-difference residuals and quadrature-error estimates) differ from the macOS values by more than the comparer's 1e-7 relative tolerance, so that job reports a difference."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "A separately written rational-polynomial audit re-derives 28 identities, and independent high-precision methods agree on the comonotone integral. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.12 with NumPy, SciPy, Matplotlib and mpmath versions pinned in requirements.txt; not a locked container. The exact checkers need only the standard library."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Delon, Desolneux and Salmona (2022). Gromov–Wasserstein distances between Gaussian distributions. Journal of Applied Probability. The Gaussian-restricted value, sufficiency of proportional spectra, the upper bound on the excess and the conjecture resolved here.",
+      "url": "https://doi.org/10.1017/jpr.2022.16"
+    },
+    {
+      "citation": "Peyré (2026). Gaussians are not closed for Gromov–Wasserstein. Blog post, 23 October 2026. The first counterexample, for a line against a sufficiently high-dimensional space.",
+      "url": "https://www.gpeyre.com/blog/2026/10/23/gaussian-gromov-wasserstein-counterexample/"
+    },
+    {
+      "citation": "Peyré (2026). Optimal Transport for Machine Learners. Online book, Propositions 13.33–13.34.",
+      "url": "https://www.gpeyre.com/ot4ml/OT4ML/OT4ML.pdf"
+    },
+    {
+      "citation": "Salmona (2023; Crossref DOI record created 2026). Transport of probability distributions across different Euclidean spaces. Doctoral thesis, Université Paris-Saclay. Describes the construction of counterexamples as open.",
+      "url": "https://doi.org/10.70675/a8e13508z4193z4651za1f4z4f4199ba110c"
+    },
+    {
+      "citation": "Mémoli (2011). Gromov–Wasserstein Distances and the Metric Approach to Object Matching. Foundations of Computational Mathematics. GW distances for metric-measure spaces.",
+      "url": "https://doi.org/10.1007/s10208-011-9093-5"
+    },
+    {
+      "citation": "Dumont, Lacombe and Vialard (2025; online 2024). On the Existence of Monge Maps for the Gromov–Wasserstein Problem. Foundations of Computational Mathematics. The linearisation used in the affine rigidity theorem.",
+      "url": "https://doi.org/10.1007/s10208-024-09643-0"
+    },
+    {
+      "citation": "Zhang, Goldfeld, Mroueh and Sriperumbudur (2024). Gromov–Wasserstein distances: Entropic regularization, duality and sample complexity. The Annals of Statistics. Variational form of squared-distance GW.",
+      "url": "https://doi.org/10.1214/24-AOS2406"
+    },
+    {
+      "citation": "Vayer (2020). A contribution to Optimal Transport on incomparable spaces. Doctoral thesis, arXiv:2011.04447. A sufficient radial condition for optimal maps.",
+      "url": "https://arxiv.org/abs/2011.04447v1"
+    },
+    {
+      "citation": "Morel, Drumetz, Benaïchouche, Courty and Rousseau (2023). Turning Normalizing Flows into Monge Maps with Geodesic Gaussian Preserving Flows. Transactions on Machine Learning Research; arXiv:2209.10873. Gaussian-preserving rearrangements in ordinary optimal transport.",
+      "url": "https://arxiv.org/abs/2209.10873v4"
+    },
+    {
+      "citation": "Arya, Auddy, Clark, Lim, Mémoli and Packer (2026; online 2024). The Gromov–Wasserstein Distance Between Spheres. Foundations of Computational Mathematics. A sphere result with a Gaussian subproblem.",
+      "url": "https://doi.org/10.1007/s10208-024-09678-3"
+    },
+    {
+      "citation": "Le, Le, Nguyen, Do, Pham and Ho (2022). Entropic Gromov-Wasserstein between Gaussian Distributions. Proceedings of the 39th International Conference on Machine Learning (PMLR 162). Entropic and inner-product variants, a different objective.",
+      "url": "https://proceedings.mlr.press/v162/le22a.html"
+    },
+    {
+      "citation": "Dandapanthula, Podkopaev, Kasiviswanathan, Ramdas and Goldfeld (2026). Optimal Transportation and Alignment Between Gaussian Measures. arXiv:2512.03579, version 2.",
+      "url": "https://arxiv.org/abs/2512.03579v2"
+    },
+    {
+      "citation": "Tran and Soh (2026). Quadratic Optimization over Probability Measures with Coupling Constraints. arXiv:2608.24184. Moment–sum-of-squares relaxations; states that the general Gaussian value is not known.",
+      "url": "https://arxiv.org/abs/2608.24184v1"
+    },
+    {
+      "citation": "Van Assel, Vincent-Cuaz, Courty, Flamary, Frossard and Vayer (2025). Distributional Reduction: Unifying Dimensionality Reduction and Clustering with Gromov-Wasserstein. arXiv:2402.02239, version 3.",
+      "url": "https://arxiv.org/abs/2402.02239v3"
+    },
+    {
+      "citation": "Flamary, Courty, Gramfort et al. (2021). POT: Python Optimal Transport. Journal of Machine Learning Research 22(78). Its default square-loss GW objective is the one studied here.",
+      "url": "https://jmlr.org/papers/v22/20-451.html"
+    },
+    {
+      "citation": "Villani (2009). Optimal Transport: Old and New. Springer, Grundlehren der mathematischen Wissenschaften 338.",
+      "url": "https://doi.org/10.1007/978-3-540-71050-9"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:gaussian-gromov-wasserstein-exactness",
+    "attemptIds": [
+      "ep-attempt:gaussian-gromov-wasserstein-exactness-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "Use the closed-form Gaussian GW value as the true squared-distance GW value only when the two covariance spectra have equal positive rank and are proportional; otherwise report the certified bracket Q_G − 8(‖a‖‖b‖ − a·b) ≤ Q_* ≤ Q_G − S/(‖a‖‖b‖), which always lies within a factor of two.",
+      "scope": "Squared-distance GW with squared loss between Gaussian marginals. Non-Gaussian data, entropic, inner-product and ordinary-distance GW are not covered."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 2 restates the moment reduction and Gaussian-restricted value of Delon et al. in the paper's normalisation, and Section 1.3 separates known from new results, using the numbering of arXiv:2104.07970v1.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "Numerical values are not interval enclosures."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in optimal transport check the cyclical-monotonicity step of Theorem 3 and the whole-path curvature bound behind Theorem 8, and ask the authors of the Gaussian GW paper whether Theorem 5 matches the intended scope of their conjecture.",
+      "claimCeiling": "Proved classification of Gaussian exactness for squared-distance GW, an affine rigidity theorem and two-sided error bounds. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "gaussian-gromov-wasserstein-exactness-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable classification of when the closed-form Gaussian GW value is exact, with certified error brackets.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
