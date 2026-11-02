@@ -200,6 +200,33 @@ jobs:
       - name: Check image-led cover regeneration
         run: node tools/test-art-direction.js
 
+  cited-references:
+    name: Cited references (changed releases)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Cited-reference checker unit tests
+        run: |
+          python3 -B -m unittest discover -s tools -p test_cited_reference_check.py
+          python3 -O -B -m unittest discover -s tools -p test_cited_reference_check.py
+
+      - name: Verify reference DOIs of releases changed by this PR
+        # Every external DOI must resolve, match its cited title, first author and
+        # year in Crossref/DataCite, and appear in the manuscript bibliography
+        # (read from pdfUrl) unless marked pageOnly with a reason. If doi.org is
+        # unreachable, the committed ledger is used; DOIs absent from it fail.
+        if: github.event_name == 'pull_request'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils
+          python3 -B tools/cited_reference_check.py changed --site-root . \
+            --base "origin/${{ github.base_ref }}" \
+            --ledger data/CITED_REFERENCE_LEDGER.json \
+            --json /tmp/cited-reference-check.json
+
   accessibility:
     name: Accessibility (axe via pa11y-ci)
     runs-on: ubuntu-latest
