@@ -2346,8 +2346,13 @@ ${contents}
     inLanguage: CONFIG.language, isPartOf: { '@id': `${BASE}/#website` }, about: { '@id': `${root}#book` },
     datePublished: BOOK.datePublished, dateModified: BOOK.dateModified, image: BASE + BOOK.og
   }, bookNode] };
+  /* Cloudflare's Email Obfuscation rewrites any literal address in served HTML,
+     so the live page would never equal the build and the post-deploy readback
+     would refuse it. The @ is written as a character reference instead: browsers
+     show and follow it unchanged, and Cloudflare leaves the page byte-identical. */
+  const noObfuscate = html => html.replace(/([A-Za-z0-9._%+-]+)@(evidencepress\.org)/g, '$1&#64;$2');
   write('why-minds-break/index.html', `${head({ title: `${fullTitle} · ${CONFIG.siteName}`, description: BOOK.description, canonical: root, jsonld: bookLd, metaExtra: meta(fullTitle, BOOK.description, root), extraLinks: links(root) })}
-${bookBody}
+${noObfuscate(bookBody)}
 ${foot}`);
   write('why-minds-break/index.md', `---\ntitle: "${fullTitle}"\nauthor: ${BOOK.author}\nurl: ${root}\n---\n\n# ${fullTitle}\n\n${BOOK.author}\n\n${
     BOOK.summary.join('\n\n')}\n\n${facts}. ${buyMd}\n\n## ${BOOK.chaptersHeading}\n\n${BOOK.chaptersIntro}\n\n${
