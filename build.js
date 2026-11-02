@@ -2261,6 +2261,132 @@ ${foot}`);
   write('think-again/index.md', md);
 }
 
+/* /why-minds-break/: the book page for Ian Pitchford's Why Minds Break, with
+   one summary page per chapter at /why-minds-break/chapter-N/. The summaries
+   are written for the site, not extracted from the book: the Kindle edition is
+   in KDP Select, which forbids the book's text being online. Metadata lives in
+   pages/why-minds-break.json (edition URLs and ISBNs are the release-day
+   edit); the summaries in pages/why-minds-break-chapters.json. */
+function whyMindsBreakPages() {
+  const BOOK = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'why-minds-break.json'), 'utf8'));
+  const { chapters } = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'why-minds-break-chapters.json'), 'utf8'));
+  const root = `${BASE}/why-minds-break/`;
+  if (chapters.length !== 10 || chapters.some((c, i) => c.n !== i + 1))
+    throw new Error('pages/why-minds-break-chapters.json: expected chapters 1-10 in order');
+  for (const c of chapters)
+    if (!c.dek || c.summary.length < 3 || c.questions.length !== 3)
+      throw new Error(`pages/why-minds-break-chapters.json: chapter ${c.n} needs a dek, a summary and three questions`);
+  const EDITIONS = BOOK.editions.filter(e => e.url);
+  for (const e of EDITIONS)
+    if (!/^https:\/\/www\.amazon\.com\/dp\/[A-Z0-9]{10}\?tag=aphonicdrift-20$/.test(e.url))
+      throw new Error(`pages/why-minds-break.json: ${e.format} url must be an amazon.com /dp/ link carrying the Associates tag`);
+  for (const e of BOOK.editions)
+    if (e.isbn && !/^97[89]\d{10}$/.test(e.isbn)) throw new Error(`pages/why-minds-break.json: ${e.format} isbn must be ISBN-13 digits`);
+  for (const f of [BOOK.cover.webp, BOOK.cover.jpg, BOOK.og])
+    if (!fs.existsSync(path.join(ROOT, f.replace(/^\//, '')))) throw new Error(`pages/why-minds-break.json: missing ${f}`);
+  const fullTitle = `${BOOK.title}: ${BOOK.subtitle}`;
+  const chapterUrl = c => `${root}chapter-${c.n}/`;
+  const person = { '@type': 'Person', '@id': `${root}#author`, name: BOOK.author };
+  const bookNode = {
+    '@type': 'Book', '@id': `${root}#book`, name: BOOK.title, alternativeHeadline: BOOK.subtitle,
+    author: person, inLanguage: CONFIG.language, image: BASE + BOOK.cover.jpg, url: root,
+    numberOfPages: 303, copyrightYear: 2026, copyrightHolder: { '@id': `${root}#author` },
+    hasPart: chapters.map(c => ({ '@type': 'Chapter', position: c.n, name: c.title, url: chapterUrl(c) })),
+    workExample: BOOK.editions.map(e => Object.assign({ '@type': 'Book', name: BOOK.title,
+      bookFormat: e.format === 'Kindle' ? 'https://schema.org/EBook' : e.format === 'Hardback' ? 'https://schema.org/Hardcover' : 'https://schema.org/Paperback' },
+      e.isbn ? { isbn: e.isbn } : {}, e.url ? { url: e.url } : {}))
+  };
+  const meta = (title, description, url) => [
+    ['og:type', 'book'], ['og:site_name', CONFIG.siteName], ['og:title', title], ['og:description', description],
+    ['og:url', url], ['og:image', BASE + BOOK.og], ['og:image:width', '1200'], ['og:image:height', '630'],
+    ['og:image:alt', BOOK.cover.alt], ['twitter:card', 'summary_large_image'], ['twitter:title', title],
+    ['twitter:description', description], ['twitter:image', BASE + BOOK.og]
+  ].map(([k, v]) => /^og:/.test(k) ? `<meta property="${k}" content="${escAttr(v)}">` : `<meta name="${k}" content="${escAttr(v)}">`).join('\n') + '\n';
+  const links = url => `<link rel="alternate" type="text/markdown" href="${url}index.md">\n`;
+  /* Edition links are Amazon Associates links: labelled "Ad", disclosed and rel="sponsored". */
+  const buy = EDITIONS.length
+    ? `${esc(BOOK.availability)}<br><span class="shop-adtag">${esc(BOOK.buyTag)}</span> ${esc(BOOK.buyHeading)}: ${EDITIONS.map(e => `<a href="${escAttr(e.url)}" rel="sponsored noopener">${esc(e.format)}</a>`).join(' · ')}<br><small>${esc(BOOK.buyStatement)}</small>`
+    : esc(BOOK.availability);
+  const buyMd = EDITIONS.length
+    ? `${BOOK.availability} ${BOOK.buyHeading} (${BOOK.buyTag}): ${EDITIONS.map(e => `[${e.format}](${e.url})`).join(' · ')}. ${BOOK.buyStatement}`
+    : BOOK.availability;
+  const isbns = BOOK.editions.filter(e => e.isbnDisplay).map(e => `${e.format} ISBN ${e.isbnDisplay}`).join(' · ');
+  const facts = [isbns, BOOK.format, '2026'].filter(Boolean).join(' · ');
+  const cover = (eager) => `<picture class="ta-cover"><source srcset="${escAttr(BOOK.cover.webp)}" type="image/webp"><img src="${escAttr(BOOK.cover.jpg)}" alt="${escAttr(BOOK.cover.alt)}" width="${BOOK.cover.width}" height="${BOOK.cover.height}" loading="${eager ? 'eager' : 'lazy'}" decoding="async"></picture>`;
+
+  /* The book page. */
+  const contents = chapters.map(c => `<li><a href="${chapterUrl(c)}"><strong>${c.n}. ${esc(c.title)}</strong></a><br>${inline(c.dek)}</li>`).join('\n');
+  const bookBody = `<article class="release think-again why-minds-break"><div class="wrap"><div class="prose">
+<p class="kicker">${esc(BOOK.kicker)}</p>
+<div class="ta-head">
+${cover(true)}
+<div>
+<h1>${esc(BOOK.title)}</h1>
+<p class="standfirst">${esc(BOOK.subtitle)}</p>
+<p><strong>${esc(BOOK.author)}</strong></p>
+${BOOK.summary.map(t => `<p>${inline(t)}</p>`).join('\n')}
+<p class="ta-facts">${esc(facts)}<br>${buy}</p>
+</div>
+</div>
+<div class="body">
+<h2 id="the-chapters">${esc(BOOK.chaptersHeading)}</h2>
+<p>${inline(BOOK.chaptersIntro)}</p>
+<ol class="wmb-contents">
+${contents}
+</ol>
+<h2 id="the-author">About the author</h2>
+<p>${inline(BOOK.bio)}</p>
+<h2 id="challenging-the-book">${esc(BOOK.challengeHeading)}</h2>
+<p>${inline(BOOK.challenge)}</p>
+<p class="note">${inline(BOOK.rights)}</p>
+</div>
+</div></div></article>`;
+  const bookLd = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
+    '@type': 'WebPage', '@id': `${root}#page`, url: root, name: fullTitle, description: BOOK.description,
+    inLanguage: CONFIG.language, isPartOf: { '@id': `${BASE}/#website` }, about: { '@id': `${root}#book` },
+    datePublished: BOOK.datePublished, dateModified: BOOK.dateModified, image: BASE + BOOK.og
+  }, bookNode] };
+  write('why-minds-break/index.html', `${head({ title: `${fullTitle} · ${CONFIG.siteName}`, description: BOOK.description, canonical: root, jsonld: bookLd, metaExtra: meta(fullTitle, BOOK.description, root), extraLinks: links(root) })}
+${bookBody}
+${foot}`);
+  write('why-minds-break/index.md', `---\ntitle: "${fullTitle}"\nauthor: ${BOOK.author}\nurl: ${root}\n---\n\n# ${fullTitle}\n\n${BOOK.author}\n\n${
+    BOOK.summary.join('\n\n')}\n\n${facts}. ${buyMd}\n\n## ${BOOK.chaptersHeading}\n\n${BOOK.chaptersIntro}\n\n${
+    chapters.map(c => `${c.n}. [${c.title}](${chapterUrl(c)}): ${c.dek}`).join('\n')}\n\n## About the author\n\n${BOOK.bio}\n\n## ${BOOK.challengeHeading}\n\n${BOOK.challenge}\n\n${BOOK.rights}\n`);
+
+  /* One page per chapter. */
+  for (const c of chapters) {
+    const url = chapterUrl(c);
+    const prev = chapters[c.n - 2], next = chapters[c.n];
+    const title = `Chapter ${c.n}. ${c.title}`;
+    const description = `${BOOK.title}, chapter ${c.n}: ${c.dek}`;
+    const nav = `<nav class="wmb-nav" aria-label="Chapters">${prev ? `<a href="${chapterUrl(prev)}" rel="prev">← ${prev.n}. ${esc(prev.title)}</a>` : '<span></span>'}<a href="${root}">All chapters</a>${next ? `<a href="${chapterUrl(next)}" rel="next">${next.n}. ${esc(next.title)} →</a>` : '<span></span>'}</nav>`;
+    const body = `<article class="release think-again why-minds-break"><div class="wrap"><div class="prose">
+<p class="kicker"><a href="${root}">${esc(BOOK.title)}</a> · ${esc(BOOK.author)} · Chapter ${c.n} of ${chapters.length}</p>
+<h1>${esc(c.title)}</h1>
+<p class="standfirst">${inline(c.dek)}</p>
+<div class="body">
+${c.summary.map(t => `<p>${inline(t)}</p>`).join('\n')}
+<h2 id="questions">Questions the chapter asks</h2>
+<ul>${c.questions.map(q => `<li>${inline(q)}</li>`).join('')}</ul>
+<p class="note">This is a summary of the chapter, written for this site; it is not an extract from the book. ${esc(BOOK.availability)}</p>
+${nav}
+<p class="note">${inline(BOOK.rights)}</p>
+</div>
+</div></div></article>`;
+    const ld = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
+      '@type': 'WebPage', '@id': `${url}#page`, url, name: `${title} · ${BOOK.title}`, description,
+      inLanguage: CONFIG.language, isPartOf: { '@id': `${BASE}/#website` },
+      about: { '@type': 'Chapter', position: c.n, name: c.title, isPartOf: { '@id': `${root}#book` } },
+      datePublished: BOOK.datePublished, dateModified: BOOK.dateModified, image: BASE + BOOK.og
+    }, bookNode] };
+    write(`why-minds-break/chapter-${c.n}/index.html`, `${head({ title: `${title} · ${BOOK.title} · ${CONFIG.siteName}`, description, canonical: url, jsonld: ld, metaExtra: meta(`${title} · ${BOOK.title}`, description, url), extraLinks: links(url) })}
+${body}
+${foot}`);
+    write(`why-minds-break/chapter-${c.n}/index.md`, `---\ntitle: "${title}"\nbook: "${fullTitle}"\nauthor: ${BOOK.author}\nurl: ${url}\n---\n\n# ${title}\n\n${c.dek}\n\n${
+      c.summary.join('\n\n')}\n\n## Questions the chapter asks\n\n${c.questions.map(q => `- ${q}`).join('\n')}\n\nThis is a summary of the chapter, written for this site; it is not an extract from the book. ${BOOK.availability}\n\n${BOOK.rights}\n`);
+  }
+}
+
 /* ------------------------------------------ plain-English companion essay */
 function companionParts(companion) {
   const raw = fs.readFileSync(path.join(ROOT, 'pages', companion.mdFile), 'utf8');
@@ -2543,7 +2669,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-10-28' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/why-minds-break/`, lastmod: '2026-11-02' }, ...Array.from({ length: 10 }, (_, i) => ({ loc: `${BASE}/why-minds-break/chapter-${i + 1}/`, lastmod: '2026-11-02' })), { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-10-28' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-08-05' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
   ];
@@ -3596,6 +3722,7 @@ simplePage('thesis/', 'Evolutionary Developmental Psychopathology: the 2001 thes
 shopPage();
 applicationsPage();
 thinkAgainPage();
+whyMindsBreakPages();
 interpsychPage();
 feeds();
 sitemap();
