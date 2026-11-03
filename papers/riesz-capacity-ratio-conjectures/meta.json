@@ -1,0 +1,232 @@
+{
+  "slug": "riesz-capacity-ratio-conjectures",
+  "title": "Sharp ratios of negative-exponent Riesz capacities",
+  "shortTitle": "When is the regular simplex the best shape? Sharp ratios of Riesz capacities",
+  "oneLine": "Two points maximise one ratio of negative-exponent Riesz capacities on every compact metric space, the regular simplex maximises the reverse ratio in Euclidean space when the smaller exponent is at least 2, and that threshold is exact: below 2, splitting one simplex vertex wins.",
+  "abstract": "Choose two random points of a compact set independently from the same distribution, and choose the distribution to make the average of the r-th power of their distance as large as possible; call that maximum M_r and put C_r = M_r^(1/r). For r = 2 this is twice the largest variance, for r = 1 the largest mean distance, and for Euclidean sets C_r is the Riesz capacity with exponent −r. Ratios of two such capacities measure shape, not size, and Clark and Laugesen (2024/2025) conjectured which shapes make them extreme. With 0 < s < t and γ = 1/s − 1/t, this candidate proves C_t/C_s ≤ 2^γ on every compact metric space, with two points extremal (the same short argument was posted publicly in a GitHub issue on 27 October 2026), and C_s/C_t ≤ (n/(n+1))^γ for compact sets in R^n when 2 ≤ s < t, with the regular simplex extremal (much of this range follows from Davies, Lim and McCann 2022; the paper makes the overlap exact and identifies a wedge of exponents near s = 2, for n ≥ 3, where only this argument applies). It then shows that exponent two is an exact threshold: for n ≥ 2 and s < 2, splitting one simplex vertex into two nearby points beats the simplex, so the regular simplex is optimal if and only if s ≥ 2. It also gives the sharp three-point lower bound for 0 < s < 1 and stability results with optimal exponents 1/s, 1/4 and 1/2; at s = 2 the simplex bound is a finite-exponent form of Jung's theorem. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Riesz capacity",
+    "Riesz energy",
+    "capacity ratio",
+    "regular simplex",
+    "Jung theorem",
+    "metric spaces",
+    "equilibrium measures",
+    "stability"
+  ],
+  "repoUrl": "https://github.com/ipitchford/riesz-capacity-ratio-conjectures",
+  "releaseUrl": "https://github.com/ipitchford/riesz-capacity-ratio-conjectures/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/riesz-capacity-ratio-conjectures/releases/download/v0.1.0-candidate/riesz-capacity-ratio-conjectures-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23917366",
+  "conceptDoi": "10.5281/zenodo.23917365",
+  "zenodoUrl": "https://zenodo.org/records/23917366",
+  "citeText": "Anonymous (2026). Sharp ratios of negative-exponent Riesz capacities: the two-point and simplex conjectures, the exact threshold at exponent two, and sharp stability. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23917366",
+  "evidence": "Written analytic proofs of every theorem, corollary, lemma and proposition in a 24-page manuscript; verify_exact.py, exact rational arithmetic on 40 deterministic configurations (120 exact maximisations, 240 ratio inequalities, 35 structural checks); verify_stability.py, 114 checks of the closed forms and asymptotic constants in 60- to 400-digit decimal arithmetic; check_stability.py, 1,950 seeded randomised spot checks of Theorems 1, 2, 7, 11, 13 and 14 and Example 6. Every check is explicit, so they stay active under Python -O, and any failure exits non-zero. All three scripts and the figure script were replayed under -I -B and -I -B -O from a fresh copy with byte-identical outputs; scripts with their check helper inverted fail.",
+  "statusDetail": "Unrefereed AI-assisted geometry and potential-theory candidate. Every result has a written analytic proof; the computations are finite sanity checks, not proofs. The proof of Theorem 1 was already on public record, and much of Theorem 2 follows from Davies, Lim and McCann (2022). Internal AI-assisted review in five roles, a separate-model adversarial review and audit of the new proofs, a proof audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 3 November 2026 with DOI insertion, 24 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 3 November 2026.",
+  "keyResults": [
+    "Two-point bound (Theorem 1, proof): C_t/C_s ≤ 2^γ, γ = 1/s − 1/t, on every compact metric space, with equality iff M_s = D^s/2; the same two-step argument was posted publicly on 27 October 2026 (GitHub issue #22668) and is not claimed new.",
+    "Simplex bound (Theorem 2 and Corollary 4, proof): C_s/C_t ≤ (n/(n+1))^γ for compact K ⊂ R^n and 2 ≤ s < t; at s = 2 this is M_t ≥ c_n^{1−t/2} 2^{t/2} R^t in terms of the circumradius, a finite-exponent form of Jung's theorem.",
+    "Overlap with Davies–Lim–McCann (Proposition 5 and Example 6, proof): Theorem 2 at (s, t) follows from simplex minimality of their attractive–repulsive energy, which fails on a wedge W_n of exponents (n ≥ 3) where Theorem 2 still holds; the uniform measure on the sphere of R^3 is an explicit witness.",
+    "Exact threshold (Theorem 7 and Corollary 8, proof): for n ≥ 2, 0 < s < 2 and t > s, splitting one vertex of a regular simplex increases C_s/C_t, so the regular simplex maximises C_s/C_t if and only if s ≥ 2.",
+    "Sharp stability (Theorems 11, 13 and 14 and Corollary 12, proof): for 0 < s < 1, M_s/D^s ≥ Φ_s(ρ/D) in terms of the Hausdorff distance ρ to a diametral pair, attained by three-point spaces; near-extremal sets are close to two points or a simplex with optimal deficit exponents 1/s, 1/4 (at s = 1) and 1/2; constants explicit but not optimised."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted geometric analysis and computation",
+      "AI-assisted internal review, separate-model adversarial review and proof audit, clean replay, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When is the regular simplex the best shape? An Evidence Press briefing. Pick two random points from a set. If you may choose how they are distributed, how large can their average distance be? More generally, you can average a power of the distance, such as its square, and take the root at the end. Mathematicians call these quantities Riesz capacities with negative exponents. Comparing two such capacities, with two different powers, measures the shape of a set rather than its size. In 2024, Clark and Laugesen asked which shapes make that comparison as lopsided as possible, and they made two conjectures. This paper proves both. One way round, two points are always the extreme case, on any space with a distance. A short proof of this was already posted publicly a week earlier, and the paper says so. The other way round, for powers of two or more, the extreme shape in any dimension is the regular simplex: an equilateral triangle in the plane, a regular tetrahedron in space. Much of this second result also follows from earlier work by Davies, Lim and McCann, and the paper pins down exactly where. The genuinely new finding is that two is an exact threshold. For any power below two, you can beat the simplex by splitting one of its corners into two nearby points. So the simplex is the best shape if and only if the smaller power is at least two. The paper also measures how close a nearly extreme set must be to two points or to a simplex, with the best possible rates. The proofs are written out in full, and scripts check them on many examples, but the checks are not proofs. Three older sources could not be read. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_exact.py, verify_stability.py, check_stability.py and make_figure.py were rerun with Python -I -B and -I -B -O from a fresh copy of the approved package; all receipts and figures were byte-identical to the shipped ones, and copies with the check helper inverted exited non-zero. The frozen archive was checked byte-for-byte against that replay and the three verification scripts rerun from it. GitHub CI reruns them on Linux, where all three receipts also matched."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "During internal review a reviewer ran about 190,000 randomised exact checks with its own code and a separate model rechecked the new proofs. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.11 with NumPy 2.3.5 and Matplotlib 3.10.8 pinned in requirements.txt; the exact verifier needs only the standard library; randomised checks seeded; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Clark and Laugesen (2025). Maximizing Riesz Capacity Ratios: Conjectures and Theorems. SIAM Journal on Mathematical Analysis. Poses the two-point and regular-simplex conjectures settled here and proves the planar cases.",
+      "url": "https://doi.org/10.1137/24M171992X"
+    },
+    {
+      "citation": "Clark and Laugesen (2025). Riesz capacity: monotonicity, continuity, diameter and volume. Analysis and Mathematical Physics. Monotonicity and diameter facts refined in Section 5.",
+      "url": "https://doi.org/10.1007/s13324-024-01000-2"
+    },
+    {
+      "citation": "Davies, Lim and McCann (2022). Classifying Minimum Energy States for Interacting Particles: Regular Simplices. Communications in Mathematical Physics. Implies much of Theorem 2; Proposition 5 makes the overlap exact.",
+      "url": "https://doi.org/10.1007/s00220-022-04564-x"
+    },
+    {
+      "citation": "Lim and McCann (2021). Isodiametry, Variance, and Regular Simplices from Particle Interactions. Archive for Rational Mechanics and Analysis. The t = ∞ edge case and the Jung-theorem connection.",
+      "url": "https://doi.org/10.1007/s00205-021-01632-9"
+    },
+    {
+      "citation": "Björck (1956). Distributions of positive mass, which maximize a certain generalized energy integral. Arkiv för Matematik. Support theorems used in the proof of Theorem 2.",
+      "url": "https://doi.org/10.1007/BF02589412"
+    },
+    {
+      "citation": "Hille (1966). Some geometric extremal problems. Journal of the Australian Mathematical Society. The same Hölder step for configurations in a ball.",
+      "url": "https://doi.org/10.1017/S1446788700004067"
+    },
+    {
+      "citation": "Hille (1965). A note on transfinite diameters. Journal d'Analyse Mathématique. Possibly relevant; not read for the paper.",
+      "url": "https://doi.org/10.1007/BF02806389"
+    },
+    {
+      "citation": "Alexander and Stolarsky (1974). Extremal problems of distance geometry related to energy integrals. Transactions of the American Mathematical Society. Possibly relevant; not read for the paper.",
+      "url": "https://doi.org/10.1090/S0002-9947-1974-0350629-3"
+    },
+    {
+      "citation": "Jung (1901). Ueber die kleinste Kugel, die eine räumliche Figur einschliesst. Journal für die reine und angewandte Mathematik. Jung's theorem, recovered from Corollary 4 as t → ∞.",
+      "url": "https://doi.org/10.1515/crll.1901.123.241"
+    },
+    {
+      "citation": "Grove and Markvorsen (1995). New extremal problems for the Riemannian recognition program via Alexandrov geometry. Journal of the American Mathematical Society. Extent–excess argument sharpened by Theorems 11 and 13.",
+      "url": "https://doi.org/10.1090/S0894-0347-1995-1276824-4"
+    },
+    {
+      "citation": "Meyer (1981). Inequalities for the generalized transfinite diameter. Rocky Mountain Journal of Mathematics. Earlier inequalities for the same energies.",
+      "url": "https://doi.org/10.1216/RMJ-1981-11-2-267"
+    },
+    {
+      "citation": "Motzkin and Straus (1965). Maxima for Graphs and a New Proof of a Theorem of Turán. Canadian Journal of Mathematics. The quadratic-form maximum behind Lemma 3 and Remark 10.",
+      "url": "https://doi.org/10.4153/CJM-1965-053-6"
+    },
+    {
+      "citation": "Leinster and Meckes (2016). Maximizing Diversity in Biology and Beyond. Entropy. A related maximum-diversity framework, mentioned as a pointer.",
+      "url": "https://doi.org/10.3390/e18030088"
+    },
+    {
+      "citation": "Clark and Laugesen (2024). Maximizing Riesz capacity ratios: conjectures and theorems. arXiv:2410.14809 version 1, whose theorem and conjecture numbering the paper cites.",
+      "url": "https://arxiv.org/abs/2410.14809v1",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Fan (2026). Riesz capacity ratios with negative exponents. arXiv:2609.11186. Restates the two-point conjecture and compares a split tetrahedron with the ball.",
+      "url": "https://arxiv.org/abs/2609.11186v1",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "ElonSG (2026). GitHub issue #22668, the-omega-institute/trureturing, opened 27 October 2026. Contains the same short proof of the two-point bound (Theorem 1).",
+      "url": "https://github.com/the-omega-institute/trureturing/issues/22668",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as a public web record without a DOI; linked directly, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:riesz-capacity-ratio-conjectures",
+    "attemptIds": [
+      "ep-attempt:riesz-capacity-ratio-conjectures-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Sharp bounds for ratios of negative-exponent Riesz capacities: 2^γ on compact metric spaces (two points extremal), (n/(n+1))^γ in R^n for 2 ≤ s < t (regular simplex extremal), and the exact threshold s = 2 below which the simplex is not optimal; with sharp stability exponents.",
+      "scope": "Compact metric spaces and compact subsets of R^n, exponents 0 < s < t. For s < 2 below the diagonal the maximiser is unknown except on the line where the denominator exponent is 2; the explicit wedge boundary and optimal stability constants are open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 2.3 gives a dictionary between the paper's exponents and Clark and Laugesen's parameters p = −r, with both numberings of their conjectures (arXiv version 1 and journal); AI_INDEX.md repeats the normalisation; Section 1.3 and Table 1 separate what is new from what was already known, including the prior public proof of Theorem 1 and the Davies–Lim–McCann overlap.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification; Hille (1965) and Alexander–Stolarsky (1974) were not read.",
+        "The computations are finite sanity checks, not proofs."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in potential theory or distance geometry check Theorem 7's perturbation estimates and the stability proofs, and read Hille (1965) and Alexander–Stolarsky (1974) for prior statements.",
+      "claimCeiling": "Proved sharp ratio bounds, the exact threshold at exponent two and sharp-exponent stability results; finite computational sanity checks. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "riesz-capacity-ratio-conjectures-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof that the regular simplex maximises negative-exponent Riesz capacity ratios exactly when the smaller exponent is at least two, with sharp stability.",
+        "setting": "AI-assisted geometric analysis research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
