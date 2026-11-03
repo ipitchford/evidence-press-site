@@ -2099,6 +2099,14 @@
         "diffusion-nondecision-identification"
       ],
       "sharedBoundary": "Written proofs classifying when the fixed-parameter diffusion model with an arbitrary shared nondecision-time distribution is identified, with the identified set, estimation lower bounds and design consequences; explicit numerical checks that raise on failure, replayed under python -O, and a seeded synthetic recovery study as illustration. This classification supplies no external assurance, acceleration or impact evidence."
+    },
+    {
+      "id": "canonical-covariance-localisation-failure",
+      "name": "When canonical covariance localisation fails",
+      "members": [
+        "canonical-covariance-localisation-failure"
+      ],
+      "sharedBoundary": "Written proofs that canonical coordinates are not the optimal localisation basis under physical loss (finite-N counterexamples with exact rational certificates, a vector-observation obstruction, a uniform expansion and sharp leading-order criterion) and are leading-order optimal under prior-normalised loss; explicit exact and floating-point checks that fail closed under python -O, and a numerical reconstruction of the Snyder-Hakim testbed as illustration. This classification supplies no external assurance, acceleration or impact evidence."
     }
   ],
   "lineages": [
@@ -3654,6 +3662,11 @@
       "adversarial-controls",
       "assurance-vector",
       "agent-readable-research-object"
+    ],
+    "canonical-covariance-localisation-failure": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
     ]
   },
   "updatePolicy": {
@@ -4490,6 +4503,10 @@
     {
       "date": "2026-11-03",
       "summary": "Registered the diffusion-model nondecision identification release as a separate singleton cluster using existing adversarial-control, assurance and agent-readable primitives. No lineage, external assurance, exhaustive priority, acceleration or impact is inferred."
+    },
+    {
+      "date": "2026-11-03",
+      "summary": "Registered the canonical covariance localisation release as a separate singleton cluster using existing adversarial-control, assurance and agent-readable primitives. No lineage, external assurance, exhaustive priority, acceleration or impact is inferred."
     }
   ]
 }

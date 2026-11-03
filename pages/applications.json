@@ -919,6 +919,10 @@
   "diffusion-nondecision-identification": {
    "classification": "Research use",
    "application": "Cognitive psychologists and neuroscientists who fit diffusion models to response times (for example with DstarM, HDDM/HSSM or fast-dm) can use this release to check whether their experimental design can separate decision time from nondecision time at all, and to choose designs that can: a condition with a biased starting point, or two conditions differing in caution or evidence strength, rather than the common unbiased design with equal and opposite evidence, which never can. The main limit is that the result covers only the fixed-parameter diffusion model without trial-to-trial variability, and that near the failing designs identification needs very many trials. This remains an unrefereed candidate."
+  },
+  "canonical-covariance-localisation-failure": {
+   "classification": "Research use",
+   "application": "Developers of ensemble data-assimilation systems who must choose the coordinates in which to localise covariances can use the leading-order objective F(U), or simply symmetric (ZCA) whitening, instead of Snyder and Hakim's canonical coordinates when analysis error is scored in physical units; in a reconstruction of their 200-variable test case this removed about half the excess error, worth roughly doubling the ensemble. When error is scored relative to the forecast uncertainty, canonical coordinates remain the right choice. The main limit is that the results assume a known prior covariance and a single Gaussian analysis step, and bases estimated from small samples keep much less of the gain. This remains an unrefereed candidate."
   }
  }
 }
