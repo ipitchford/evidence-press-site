@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "How slow can alternating projections be? An Evidence Press briefing. Many practical problems ask for a point that satisfies two constraints at once: for example, an image that matches measured data and also has no negative brightness. A classic way to find one is to jump back and forth. Move to the nearest point that satisfies the first constraint, then to the nearest point that satisfies the second, and repeat. This is von Neumann's method of alternating projections, known in signal processing as POCS. It works when the constraints are convex, but it can be slow. Suppose both constraint sets contain a common ball of some radius, and the starting point is within a known distance of its centre.",
+      "inputSha256": "c246813edd410d8843981bf7cd95c613c84e833912bb43e3d14e3d1e52a80a18",
+      "audioSha256": "fea81fb93998c5d0d88560127abc612c12daa46e13464dfcc459731ca8e47e1f",
+      "requestId": "req_d8c775fee61348129411d5f5df356d54",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "is within a known distance of its centre",
+        "heardEnding": "ball of some radius and the starting point is within a known distance of its centre",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "In 2024, Alan Luner and Benjamin Grimmer found a simple pair of straight-edged sets, a thin wedge, that makes the method very slow, and conjectured that nothing is ever worse. This paper proves their conjecture, in every number of dimensions, with a short argument that can be checked by hand. The worst case is exactly that wedge: the iterates zig-zag towards its corner, getting closer by the same factor at every step. The same argument also gives exact answers for balls of different sizes about the same centre, and for other measures of progress. In practice the difference is large.",
+      "inputSha256": "3b28a8fb78b15ea08c41eef6123706a9a6d3797f63367c1519b4220668ce0d9b",
+      "audioSha256": "0ef75dd08e7a591dfb0ed098cb9cadab08265d1b3fbafae6cceca4df7b54744e",
+      "requestId": "req_9b463ca914a54ccd9ef49b240ad1e0a2",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "of progress in practice the difference is large",
+        "heardEnding": "about the same centre and for other measures of progress in practice the difference is large",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 3
+      }
+    },
+    {
+      "input": "With a starting distance ten times the ball's radius, getting within one thousandth of that distance of a solution takes at most ninety-three cycles in the worst case, whereas the classical guarantee asks for eight hundred and thirty-three. The formula and the wedge are Luner and Grimmer's; what is new is the proof that nothing is worse. The proofs are written out in full, and nearly ninety thousand computer checks in exact or high-precision arithmetic back them up. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or formally verified. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "87bfd6a1e6cecc5fdb37d11f45e643a8cad1a0dd4858c7686f5a01e2a3611052",
+      "audioSha256": "6c43ac5b377fa97ad2c43cda329a7e063b7e261ca270b304651dd18a71b420db",
+      "requestId": "req_70a832e4e04046ce85d5df1649f4b43d",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "alternating-projections-exact-worst-case",
+  "generatedAt": "2026-11-03T15:43:47.343Z",
+  "sourceMetadata": "papers/alternating-projections-exact-worst-case/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "3d42a9a12eb8e87020f7394d24cf0d08231192f6e21e1df32e1d872532eaca3e",
+  "transcriptPath": "assets/audio/alternating-projections-exact-worst-case.txt",
+  "transcriptSha256": "bf2e8d013eab07e96f5e684e5f9b2770d1c9bec1bc9550f91daabe8c9ca60f9c",
+  "audioPath": "assets/audio/alternating-projections-exact-worst-case.mp3",
+  "audioSha256": "8290ec0d5e41f4f34d7e1fbab28a5acabba4911dd18c8aa154a98fd980318df7",
+  "audioBytes": 2148140,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
