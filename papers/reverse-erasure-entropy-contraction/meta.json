@@ -1,0 +1,240 @@
+{
+  "slug": "reverse-erasure-entropy-contraction",
+  "title": "Entropy contraction on complete bipartite graphs via reverse erasure: only the rarest symbol matters",
+  "shortTitle": "Only the rarest symbol matters: entropy contraction for reverse erasure and complete bipartite graphs",
+  "oneLine": "The worst-case entropy loss of reverse erasure depends only on the rarest symbol, which settles a complete-bipartite conjecture.",
+  "abstract": "Caputo, Chen, Gu and Polyanskiy (2025) conjectured that one step of the half-lazy random walk on the complete bipartite graph K_{n,n} keeps at most the fraction log n / (2 log 2n) of relative entropy, with single vertices as the only worst starts, and proved the case n = 3 with computer assistance. This candidate proves the conjecture for every n, and for K_{m,n} with M = max(m, n). One step of the walk splits into two copies of the reverse-erasure channel: keep the current symbol with probability α, otherwise redraw it from a prior ρ. For this channel the relative-entropy contraction coefficient depends on the prior only through its smallest atom q, at every α. Up to the sharp threshold α = q^{q/(1−q)} it equals log(1/q)/log(1/(αq)), attained only at a rarest point input; the upper bound is a translation of a weighted mean inequality of Gao, and the uniform binary case is known (Nair and Wang; Zhao). Above the threshold the worst inputs are full-support exponential tilts and no closed form is given. Further results: a rank-one weighted extension that settles the lazy-star observation of Jadhav (2026); a reduction of any block-reset chain (any laziness, all powers, stars, multipartite graphs) to a chain with at most two states per block, whose values are then computed numerically; and the exact one-way agreement-distillation rate below the threshold. There is no mixing-time improvement: the spectral gap is 1/2. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "entropy contraction",
+    "strong data processing inequality",
+    "relative entropy",
+    "contraction coefficient",
+    "reverse erasure channel",
+    "Markov chains",
+    "complete bipartite graph",
+    "weighted means",
+    "agreement distillation"
+  ],
+  "repoUrl": "https://github.com/ipitchford/reverse-erasure-entropy-contraction",
+  "releaseUrl": "https://github.com/ipitchford/reverse-erasure-entropy-contraction/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/reverse-erasure-entropy-contraction/releases/download/v0.1.0-candidate/reverse-erasure-entropy-contraction-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23921825",
+  "conceptDoi": "10.5281/zenodo.23921824",
+  "zenodoUrl": "https://zenodo.org/records/23921825",
+  "citeText": "Anonymous (2026). Entropy contraction on complete bipartite graphs via reverse erasure: only the rarest symbol matters. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23921825",
+  "evidence": "Written informal proofs of every theorem, proposition and corollary in a 27-page manuscript. Four verification scripts with recorded outputs in normal and optimised Python: a random-sample suite (101 gates, including 88,736 full-matrix bipartite inputs), minimum-mass reduction diagnostics, ten must-fail negative controls (all detected) with structured near-extremiser families, and 122 numerical checks of the block-reset extension with five must-fail controls; exact rational fingerprints of small kernels. All were rerun from a fresh copy with and without Python -O and matched the recorded results exactly, apart from timing and version fields.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written informal proofs. The upper bound of the closed formula is Gao's inequality (credited) and the uniform binary coefficient is known; values for laziness other than 1/2, powers and multipartite graphs, and the point-optimality windows there, are numerical. Internal AI-assisted review in five roles, a separate-model adversarial review and audit, a proof audit of new material, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 3 November 2026 with DOI insertion, 27 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked byte for byte against the frozen release assets on 3 November 2026.",
+  "keyResults": [
+    "Only the rarest symbol matters (Theorem 2.3, proof): the relative-entropy contraction coefficient of the reverse-erasure channel depends on the prior only through its smallest atom q, at every retention probability α, with an exact one-variable test (Proposition 2.4).",
+    "Closed form and sharp threshold (Theorem 2.5, proof): for α ≤ q^{q/(1−q)} the coefficient is log(1/q)/log(1/(αq)), attained only at a rarest point input; the threshold is sharp. The upper bound translates Gao's weighted mean inequality.",
+    "Above the threshold (Proposition 2.6, Theorem 2.7, proof): the local coefficient is α and the worst inputs are full-support exponential tilts; no closed form is given.",
+    "The conjecture (Theorem 6.1, Corollary 6.2, proof): the half-lazy walk on K_{m,n} keeps at most log M/(2 log 2M) of relative entropy, M = max(m, n), with only point extremisers for M ≥ 3; also rank-one weights and the lazy star K_{1,N}.",
+    "Block-reset chains (Section 7, proof of the reduction): any laziness, all powers, stars and multipartite graphs reduce to a chain with at most two states per block; the values there are computed numerically.",
+    "Agreement distillation (Corollary 8.1, proof): below the threshold the exact one-way rate is log(1/α)/log(1/(αq)) when the party holding the erased copy speaks."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematics and numerical verification",
+      "AI-assisted internal review, separate-model adversarial review and audit, proof audit, clean replay, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Only the rarest symbol matters. An Evidence Press briefing. Imagine a noisy channel that sometimes erases what you send. Now run it backwards: you keep each symbol with some probability, and otherwise replace it with a fresh random draw from a fixed prior. A natural question is how much of the surprise of an input, measured by relative entropy, can survive one such step in the worst case. You might expect the answer to depend on the whole prior. It does not. This paper proves that it depends only on the probability of the rarest symbol. Two priors that share the same smallest probability, such as one tenth, two tenths and seven tenths, or one tenth and nine tenths, give exactly the same answer. Up to a sharp threshold there is an exact formula; above it, the worst inputs change shape and no closed formula is given. The key inequality is a known result of Gao, which the paper credits. The application is a lazy random walk on a complete bipartite graph: stay put half the time, otherwise jump to a random vertex on the other side. In 2025, Caputo, Chen, Gu and Polyanskiy conjectured the exact worst-case entropy loss of this walk and checked it by computer for three vertices per side. The paper proves it for every size, and extends the method to any laziness, matrix powers, stars and multipartite graphs, where the problem shrinks to a chain with a few states that is then solved numerically. It does not speed up mixing times. The proofs are written out, with numerical checks and negative controls. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Asset parity was checked by full download against the frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All four verification scripts and the fingerprint script were rerun with Python -I -B and with -O from a fresh copy of the approved package; every result matched the recorded outputs exactly, ignoring timing and version fields, and all negative controls were detected. The frozen archive was checked byte for byte against that replay and the quick scripts rerun under -O from it. GitHub CI reruns the quick checks as a blocking job and the slow suites as a non-blocking job."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Internal reviewers reproduced the main formulas by direct optimisation and 50- to 400-digit arithmetic. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Scripts pin NumPy 2.4.6, SciPy 1.17.1 and mpmath 1.4.1 in requirements.txt with fixed seeds; prepare_fingerprints.py needs only the standard library; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Caputo, Chen, Gu and Polyanskiy (2025). Entropy contractions in Markov chains: Half-step, full-step and continuous-time. Electronic Journal of Probability. Source of the complete-bipartite conjecture (Example 4.4 and Proposition 4.5, n = 3 by computer), proved here for all n.",
+      "url": "https://doi.org/10.1214/25-EJP1372"
+    },
+    {
+      "citation": "Gao (2003). On an inequality of Diananda. International Journal of Mathematics and Mathematical Sciences. Weighted mean inequality behind the closed formula (exponents at least 2); credited, not claimed.",
+      "url": "https://doi.org/10.1155/S0161171203210279"
+    },
+    {
+      "citation": "Gao (2009). On an inequality of Diananda—Part IV. International Journal of Mathematics and Mathematical Sciences. The same inequality for exponents up to 2.",
+      "url": "https://doi.org/10.1155/2009/468290"
+    },
+    {
+      "citation": "Diananda (1963). On some inequalities of H. Kober. Mathematical Proceedings of the Cambridge Philosophical Society. Origin of the mean inequalities Gao extended.",
+      "url": "https://doi.org/10.1017/S0305004100036963"
+    },
+    {
+      "citation": "Nair and Wang (2016). Evaluating hypercontractivity parameters using information measures. IEEE International Symposium on Information Theory. Part of the known uniform binary coefficient.",
+      "url": "https://doi.org/10.1109/ISIT.2016.7541363"
+    },
+    {
+      "citation": "Weinberger and Shayevitz (2020). Guessing with a bit of help. Entropy. The reverse binary erasure channel as a strong data-processing example.",
+      "url": "https://doi.org/10.3390/e22010039"
+    },
+    {
+      "citation": "Gu and Polyanskiy (2023). Non-linear log-Sobolev inequalities for the Potts semigroup and applications to reconstruction problems. Communications in Mathematical Physics. One-large-coordinate idea in primal form (Proposition 17).",
+      "url": "https://doi.org/10.1007/s00220-023-04851-1"
+    },
+    {
+      "citation": "Ordentlich and Polyanskiy (2022). Strong data processing constant is achieved by binary inputs. IEEE Transactions on Information Theory. Reference-optimised coefficient, a different quantity.",
+      "url": "https://doi.org/10.1109/TIT.2021.3130189"
+    },
+    {
+      "citation": "Guruswami and Radhakrishnan (2016). Tight bounds for communication-assisted agreement distillation. Conference on Computational Complexity (LIPIcs 50). Agreement distillation in a different noise model.",
+      "url": "https://doi.org/10.4230/LIPIcs.CCC.2016.6"
+    },
+    {
+      "citation": "Bogdanov and Mossel (2011). On extracting common random bits from correlated sources. IEEE Transactions on Information Theory. Extracting common random bits; context for Section 8.",
+      "url": "https://doi.org/10.1109/TIT.2011.2134067"
+    },
+    {
+      "citation": "Ahlswede and Gács (1976). Spreading of sets in product spaces and hypercontraction of the Markov operator. The Annals of Probability. Classical origin of strong data-processing constants.",
+      "url": "https://doi.org/10.1214/aop/1176995937"
+    },
+    {
+      "citation": "Polyanskiy and Wu (2017). Strong data-processing inequalities for channels and Bayesian networks. Convexity and Concentration (IMA Volumes). Survey of strong data-processing inequalities.",
+      "url": "https://doi.org/10.1007/978-1-4939-7005-6_7"
+    },
+    {
+      "citation": "Makur and Zheng (2020). Comparison of contraction coefficients for f-divergences. Problems of Information Transmission. Comparison of contraction coefficients for f-divergences.",
+      "url": "https://doi.org/10.1134/S0032946020020015"
+    },
+    {
+      "citation": "Jadhav (2026). Retention profiles and KL contraction bounds in finite Markov chains. arXiv:2606.27073 (preprint). Left the lazy star as a numerical observation; settled by Corollary 6.2.",
+      "url": "https://arxiv.org/abs/2606.27073",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record."
+    },
+    {
+      "citation": "Zhao (2021). Generalizations and Applications of Hypercontractivity and Small-Set Expansion. PhD thesis, Carnegie Mellon University (CMU-CS-21-137). Uniform binary coefficient and the link to agreement distillation.",
+      "url": "https://www.csd.cs.cmu.edu/sites/default/files/phd-thesis/CMU-CS-21-137.pdf",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as a thesis without a DOI; linked to its stable URL."
+    },
+    {
+      "citation": "Anonymous (2026). Modified log-Sobolev inequalities for the random field Ising model with unbounded fields. Evidence Press; Zenodo. Related reading: entropy decay for a different chain, also citing Caputo, Chen, Gu and Polyanskiy.",
+      "url": "https://doi.org/10.5281/zenodo.23452100",
+      "pageOnly": true,
+      "pageOnlyReason": "Companion Evidence Press release for readers; not cited by the manuscript."
+    },
+    {
+      "citation": "Anonymous (2026). Entropy contraction for global Kawasaki dynamics in the analytic fast regimes. Evidence Press; Zenodo. Related reading: entropy contraction for a different Markov chain.",
+      "url": "https://doi.org/10.5281/zenodo.23353348",
+      "pageOnly": true,
+      "pageOnlyReason": "Companion Evidence Press release for readers; not cited by the manuscript."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:reverse-erasure-entropy-contraction",
+    "attemptIds": [
+      "ep-attempt:reverse-erasure-entropy-contraction-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "Whether a worst-case entropy retention bound for a reverse-erasure step or a rank-one block-reset chain can be computed from the smallest prior probability alone (yes, by an exact formula below the threshold and a one-variable test above it) instead of an optimisation over all inputs.",
+      "scope": "One-step fixed-reference KL contraction of the reverse-erasure channel and of rank-one block-reset chains. No closed form above the threshold; values for other laziness, powers and multipartite graphs are numerical; no mixing-time claim."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The novelty gate gives a translation table (erasure versus retention probability, fixed reference, Gao's exponent p = 1/c, balanced versus unequal K_{m,n}) checked against Caputo et al. (2025), Gao (2003, 2009) and Weinberger and Shayevitz (2020).",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "Numerical values in Section 7 are not certified."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in strong data-processing inequalities check the reduction to the smallest atom (Section 3) and the bipartite decomposition (Section 6), and ask the conjecture authors whether Theorem 6.1 matches their statement.",
+      "claimCeiling": "Written proofs of the reduction, closed form and threshold, bipartite theorem, block-reset reduction and agreement rate; upper bound credited to Gao; numerical values for Section 7. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "reverse-erasure-entropy-contraction-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of the complete-bipartite entropy-contraction conjecture and a rarest-symbol formula for reverse erasure.",
+        "setting": "AI-assisted mathematics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

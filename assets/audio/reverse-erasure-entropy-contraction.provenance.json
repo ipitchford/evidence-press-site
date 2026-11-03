@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Only the rarest symbol matters. An Evidence Press briefing. Imagine a noisy channel that sometimes erases what you send. Now run it backwards: you keep each symbol with some probability, and otherwise replace it with a fresh random draw from a fixed prior. A natural question is how much of the surprise of an input, measured by relative entropy, can survive one such step in the worst case. You might expect the answer to depend on the whole prior. It does not. This paper proves that it depends only on the probability of the rarest symbol. Two priors that share the same smallest probability, such as one tenth, two tenths and seven tenths, or one tenth and nine tenths, give exactly the same answer.",
+      "inputSha256": "d69dfd49e40beeda0e4d9f6d809ce6f9f997d34d6410ee9fbf18e082f40e48dd",
+      "audioSha256": "154bb96c9cedaa6f453925052c5963912b29881d19948416f9fb57d9cc571b27",
+      "requestId": "req_95eb6a9e1f85457b9baac0bb7713a724",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "or and tenths give exactly the same answer",
+        "heardEnding": "same smallest probability such as tenths and tenths or and tenths give exactly the same answer",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "Up to a sharp threshold there is an exact formula; above it, the worst inputs change shape and no closed formula is given. The key inequality is a known result of Gao, which the paper credits. The application is a lazy random walk on a complete bipartite graph: stay put half the time, otherwise jump to a random vertex on the other side. In 2025, Caputo, Chen, Gu and Polyanskiy conjectured the exact worst-case entropy loss of this walk and checked it by computer for three vertices per side. The paper proves it for every size, and extends the method to any laziness, matrix powers, stars and multipartite graphs, where the problem shrinks to a chain with a few states that is then solved numerically. It does not speed up mixing times.",
+      "inputSha256": "d80f83df35ba4949e198f26c6935ccbc60b3f380f82303dc142bbc86e02edee5",
+      "audioSha256": "a40753d7eefed24c0050c1e0b741367e3b0020b1b3ad3312bc779097a38509f5",
+      "requestId": "req_21f9dfad4e0343bdb304ba0e55cbe09c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "numerically it does not speed up mixing times",
+        "heardEnding": "with a few states that is then solved numerically it does not speed up mixing times",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "The proofs are written out, with numerical checks and negative controls. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "46311c1b9819e72e996c6670bcea995cd35fdc7fbc8ec677ff343f1ede4db738",
+      "audioSha256": "fdb168460f8351ce527a23c4bcd0cd559e5a4d3c0dd0e4172934eb5e025e8fb0",
+      "requestId": "req_1a124e3049a8409495d82889d9323e39",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "reverse-erasure-entropy-contraction",
+  "generatedAt": "2026-11-03T15:31:12.128Z",
+  "sourceMetadata": "papers/reverse-erasure-entropy-contraction/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "c12ce55a63179b0e6157828a2f649f441687363f231b0d1fa50e7d9f39b4c949",
+  "transcriptPath": "assets/audio/reverse-erasure-entropy-contraction.txt",
+  "transcriptSha256": "3caa79dd16fb2d8ffbe88ad0e73900776973809d1a167cdcc8ec88afe25c4e7c",
+  "audioPath": "assets/audio/reverse-erasure-entropy-contraction.mp3",
+  "audioSha256": "2e0fc801de09d7237f98579d38d1a34359fdf08565ef2ab904385b12cfd06f46",
+  "audioBytes": 1976876,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
