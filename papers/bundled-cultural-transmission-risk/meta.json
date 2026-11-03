@@ -1,0 +1,261 @@
+{
+  "slug": "bundled-cultural-transmission-risk",
+  "title": "Equal mean diversity, unequal risk: an exact comparison of partial and bundled cultural transmission",
+  "shortTitle": "Same average, more risk: bundled versus piece-by-piece cultural learning",
+  "oneLine": "Hold fixed the rate at which each cultural trait is passed on and change only how bundled learning is: expected trait counts do not change, but every count becomes more variable (convex order), so shortfalls and total loss grow more likely; at the source simulations’ setting, copying 93% of traits per encounter leaves a third of the whole-repertoire variance.",
+  "abstract": "When people learn from one another, a single encounter can pass on many pieces of knowledge at once, or each piece can travel separately. In the continuous-time model of cultural trait accumulation studied by Wakano, Ohtsuki, Kobayashi and Baake (2026), every trait is copied at an encounter independently with probability b and encounters occur 1/b times as often, so the per-trait transmission rate is fixed. The paper proves that the expected number of traits, and the expected number held by exactly k individuals, do not depend on b, while every such count increases in convex order with b: variance, the expected shortfall below any target and the probability of holding no traits all rise with bundling, and the covariance matrix of the popularity spectrum increases in the positive-semidefinite order. The increase is strict exactly when some inventing site has a directed chain of learning links into the group counted. The same ordering holds for bundled forgetting and, with Poisson innovation, for the discrete-generation Versions 2, 1 and 3 of Wakano and Aoki (2024), who posed the distributional question. Exact moment equations show the effect is modest below the critical learning rate and large above it: at the source simulations’ population of 100, copying 93% of a donor’s traits per encounter leaves a third of the whole-repertoire variance. Threshold probabilities are not ordered in general. Neutral model; no empirical data. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "cultural evolution",
+    "cultural transmission",
+    "convex order",
+    "Poisson marking",
+    "Cox process",
+    "cultural trait accumulation",
+    "popularity spectrum",
+    "cultural loss"
+  ],
+  "repoUrl": "https://github.com/ipitchford/bundled-cultural-transmission-risk",
+  "releaseUrl": "https://github.com/ipitchford/bundled-cultural-transmission-risk/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/bundled-cultural-transmission-risk/releases/download/v0.1.0-candidate/bundled-cultural-transmission-risk-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23933211",
+  "conceptDoi": "10.5281/zenodo.23933210",
+  "zenodoUrl": "https://zenodo.org/records/23933211",
+  "citeText": "Anonymous (2026). Equal mean diversity, unequal risk: an exact comparison of partial and bundled cultural transmission. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23933211",
+  "evidence": "Written proofs, not machine-verified. Independent representations are made to agree: a forward moment closure on carrier-set counts matches the backward pair system in exact rational arithmetic; an independently written backward implementation; an exact bundled-forgetting grid; exact rational chains for the discrete versions; and a forward simulation tracking trait identities through 100,000 regenerative cycles at each of four values of b. The exact checks were rerun from a clean copy of the frozen archive with Python -I -B and with -O; every check passed and every recorded value matched the shipped results. GitHub CI on Linux reruns them in both modes. Section 7 effect sizes are floating-point solutions of exact linear systems.",
+  "statusDetail": "Unrefereed AI-assisted mathematical modelling candidate. Theorems 1-4, Proposition 1 and Corollaries 1-4 have written proofs; the effect sizes of Section 7 are numerical. Internal AI-assisted review in five roles, a second-model adversarial review, one revision round with extensions, re-review, and a proof audit and second-model audit of the new proofs. No human peer review, independent reproduction or formal verification has been established. Neutral model; no empirical data.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript of 3 November 2026 (20 pages), its README, agent index, prior-art note and recorded outputs, and the clean replay of the exact checks from the frozen archive.",
+  "keyResults": [
+    "Equal means (Theorem 1, proof): at matched per-trait rates the expected repertoire of any group and the expected number of traits known to exactly k individuals do not depend on how bundled learning is.",
+    "Ordered spread (Theorem 2 and Corollaries 1-2, proof): every such count increases in convex order with the copying probability b, so its variance, the expected shortfall below any target and the probability of holding no traits are nondecreasing; strictly so exactly when an inventing site has a directed chain of learning links into the group (Proposition 1). Threshold probabilities P(C ≤ q) are not ordered.",
+    "Extensions (Theorems 3-4, proof): the same ordering for bundled forgetting, and, with Poisson innovation, Versions 2 ≤ 1 ≤ 3 in convex order for the discrete model of Wakano and Aoki (2024).",
+    "Size (Section 7, numerical): below the critical learning rate the variance ratio stays above about 0.75; above it the effect is large, e.g. at N = 100, β = 1.3, V(13/14)/V(1) = 0.336. Two learners (u = 1, β = 2, μ = 1/2): mean 3/2 at every b, variance 53/20 → 13/4."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematics and computer verification",
+      "AI-assisted internal review, second-model adversarial review, proof audit and audit of new proofs, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Same average, more risk. An Evidence Press briefing. People learn from one another in two broad ways. Sometimes one long encounter, such as an apprenticeship, passes on many things at once. Sometimes knowledge travels piece by piece, through many brief contacts. Does it matter which, if every single piece of knowledge is passed on at the same average rate either way? This paper answers exactly, in a standard mathematical model of how a population builds up cultural traits: people invent things, learn from one another and die. It holds fixed the rate at which each trait is passed on, and changes only how bundled the learning is. The averages do not change. The expected number of traits, and the expected number known to any given number of people, are exactly the same. But the risks do change. Traits that travel through the same encounters share their fortunes: they spread together, and they are lost together when their few carriers die. So across the possible histories of a population, the number of traits becomes more spread out around the same average. Bundled learning makes big shortfalls more likely, and makes losing everything more likely. The same is true when forgetting comes in bundles, and, with one extra assumption, in the discrete-generation model where Wakano and Aoki asked this question in twenty twenty-four. How big is the effect? Where learning only just keeps pace with loss, it is modest. Where learning outpaces loss, it is dramatic. In a population of one hundred, at the setting of the original simulations, copying ninety-three per cent of a teacher's traits at each encounter, instead of all of them, leaves only a third of the variability. There are limits. This is a neutral, idealised model with no data. The chance of falling below one particular threshold is not always higher, and total loss is very rare in large populations. Telling how bundled real learning is would need many comparable populations. This is an anonymous, AI-assisted candidate. It has not been peer reviewed. Its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The exact checks (run_checks.py re-verifying the saved simulations, pair_ancestry.py, forward_closure_check.py, partial_forgetting_check.py, compute_illustrations.py and the three discrete scripts) were rerun from a clean copy of the frozen archive with Python -I -B and with -O (CPython 3.11.14, NumPy 2.3.5, SciPy 1.17.0, SymPy 1.14.0, Matplotlib 3.10.8); all passed and every recorded value matched. The 26-minute scaling study was not rerun at release. GitHub CI on Linux reruns the exact checks in both modes."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The package contains independently written internal implementations (forward closure, second backward implementation), but this is internal AI-assisted checking, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Package versions are pinned (code/requirements.txt plus SymPy) and simulations use fixed seeds; not a locked container. No external data are used."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Wakano, J. Y., Ohtsuki, H., Kobayashi, Y., & Baake, E. (2026). Evolving genealogies in cultural evolution, the descendant process, and the number of cultural traits. Theoretical Population Biology, 168, 1–18. The continuous-time model studied here, its b = 1 mixed-Poisson formula and the matched-rate comparison explored by simulation (Section 4, Figure 16).",
+      "url": "https://doi.org/10.1016/j.tpb.2025.12.003"
+    },
+    {
+      "citation": "Wakano, J. Y., & Aoki, K. (2024). Forward and backward modeling of cultural evolutionary processes. Proceedings of the National Academy of Sciences, 121(48), e2322880121. The discrete Versions 1-3 and the open distributional question (Sections 1.6.1-1.6.2) answered here under Poisson innovation.",
+      "url": "https://doi.org/10.1073/pnas.2322880121"
+    },
+    {
+      "citation": "Baumdicker, F., & Pfaffelhuber, P. (2014). The infinitely many genes model with horizontal gene transfer. Electronic Journal of Probability, 19, 1–27. Remark 2.4: transferring or losing several genes in one event preserves first moments but changes second moments.",
+      "url": "https://doi.org/10.1214/EJP.v19-2642"
+    },
+    {
+      "citation": "Błaszczyszyn, B., & Yogeshwaran, D. (2009). Directionally convex ordering of random measures, shot noise fields, and some applications to wireless communications. Advances in Applied Probability, 41(3), 623–646. Proposition 3.6: convex ordering of Cox processes, used in the Poisson step.",
+      "url": "https://doi.org/10.1239/aap/1253281057"
+    },
+    {
+      "citation": "Kobayashi, Y., Wakano, J. Y., & Ohtsuki, H. (2018). Genealogies and ages of cultural traits: An application of the theory of duality to the research on cultural evolution. Theoretical Population Biology, 123, 18–27. The discrete-generation model of Theorem 4 (full text not obtained; taken from Wakano and Aoki 2024).",
+      "url": "https://doi.org/10.1016/j.tpb.2018.04.007"
+    },
+    {
+      "citation": "Aguilar, E., & Ghirlanda, S. (2015). Modeling the genealogy of a cultural trait. Theoretical Population Biology, 101, 1–8.",
+      "url": "https://doi.org/10.1016/j.tpb.2014.12.007"
+    },
+    {
+      "citation": "Christofides, T. C., & Vaggelatou, E. (2004). A connection between supermodular ordering and positive/negative association. Journal of Multivariate Analysis, 88(1), 138–151.",
+      "url": "https://doi.org/10.1016/S0047-259X(03)00064-2"
+    },
+    {
+      "citation": "Daley, D. J., Nazarathy, Y., & Wang, J. (2026). Second order properties of thinned counts in finite birth–death processes. Queueing Systems, 110(1), Article 17.",
+      "url": "https://doi.org/10.1007/s11134-026-09974-5"
+    },
+    {
+      "citation": "Esary, J. D., Proschan, F., & Walkup, D. W. (1967). Association of random variables, with applications. The Annals of Mathematical Statistics, 38(5), 1466–1474.",
+      "url": "https://doi.org/10.1214/aoms/1177698701"
+    },
+    {
+      "citation": "Henrich, J. (2004). Demography and cultural evolution: How adaptive cultural processes can produce maladaptive losses—the Tasmanian case. American Antiquity, 69(2), 197–214.",
+      "url": "https://doi.org/10.2307/4128416"
+    },
+    {
+      "citation": "Hudson, R. R. (1983). Properties of a neutral allele model with intragenic recombination. Theoretical Population Biology, 23(2), 183–201.",
+      "url": "https://doi.org/10.1016/0040-5809(83)90013-8"
+    },
+    {
+      "citation": "Kobayashi, Y., Kurokawa, S., Ishii, T., & Wakano, J. Y. (2021). Time to extinction of a cultural trait in an overlapping generation model. Theoretical Population Biology, 137, 32–45.",
+      "url": "https://doi.org/10.1016/j.tpb.2021.01.002"
+    },
+    {
+      "citation": "Kolodny, O., Creanza, N., & Feldman, M. W. (2015). Evolution in leaps: The punctuated accumulation and loss of cultural innovations. Proceedings of the National Academy of Sciences, 112(49).",
+      "url": "https://doi.org/10.1073/pnas.1520492112"
+    },
+    {
+      "citation": "Last, G., & Penrose, M. D. (2011). Poisson process Fock space representation, chaos expansion and covariance inequalities. Probability Theory and Related Fields, 150(3–4), 663–690.",
+      "url": "https://doi.org/10.1007/s00440-010-0288-5"
+    },
+    {
+      "citation": "Last, G., Peccati, G., & Schulte, M. (2016). Normal approximation on Poisson spaces: Mehler's formula, second order Poincaré inequalities and stabilization. Probability Theory and Related Fields, 165(3–4), 667–723.",
+      "url": "https://doi.org/10.1007/s00440-015-0643-7"
+    },
+    {
+      "citation": "Lehmann, L., Aoki, K., & Feldman, M. W. (2011). On the number of independent cultural traits carried by individuals and populations. Philosophical Transactions of the Royal Society B: Biological Sciences, 366(1563), 424–435.",
+      "url": "https://doi.org/10.1098/rstb.2010.0313"
+    },
+    {
+      "citation": "Lloyd-Smith, J. O., Schreiber, S. J., Kopp, P. E., & Getz, W. M. (2005). Superspreading and the effect of individual variation on disease emergence. Nature, 438(7066), 355–359.",
+      "url": "https://doi.org/10.1038/nature04153"
+    },
+    {
+      "citation": "Nakamura, M., Wakano, J. Y., Aoki, K., & Kobayashi, Y. (2020). The popularity spectrum applied to a cross-cultural question. Theoretical Population Biology, 133, 104–116.",
+      "url": "https://doi.org/10.1016/j.tpb.2019.10.003"
+    },
+    {
+      "citation": "Norris, J. R. (1997). Markov chains. Cambridge University Press.",
+      "url": "https://doi.org/10.1017/CBO9780511810633"
+    },
+    {
+      "citation": "Pluzhnikov, A., & Donnelly, P. (1996). Optimal sequencing strategies for surveying molecular genetic diversity. Genetics, 144(3), 1247–1262.",
+      "url": "https://doi.org/10.1093/genetics/144.3.1247"
+    },
+    {
+      "citation": "Scheie, F., Jansson, F., & Sjöstrand, J. (2026). Sequential accumulation of independent cultural traits: A Gaussian limit for the popularity spectrum. Theoretical Population Biology, 172, 107–121.",
+      "url": "https://doi.org/10.1016/j.tpb.2026.10.003"
+    },
+    {
+      "citation": "Shaked, M., & Shanthikumar, J. G. (2007). Stochastic orders. Springer.",
+      "url": "https://doi.org/10.1007/978-0-387-34675-5"
+    },
+    {
+      "citation": "Strimling, P., Sjöstrand, J., Enquist, M., & Eriksson, K. (2009). Accumulation of independent cultural traits. Theoretical Population Biology, 76(2), 77–83.",
+      "url": "https://doi.org/10.1016/j.tpb.2009.04.006"
+    },
+    {
+      "citation": "Watterson, G. A. (1975). On the number of segregating sites in genetical models without recombination. Theoretical Population Biology, 7(2), 256–276.",
+      "url": "https://doi.org/10.1016/0040-5809(75)90020-9"
+    },
+    {
+      "citation": "Yeh, D. J., Fogarty, L., & Kandler, A. (2019). Cultural linkage: The influence of package transmission on cultural dynamics. Proceedings of the Royal Society B: Biological Sciences, 286(1916), 20191951.",
+      "url": "https://doi.org/10.1098/rspb.2019.1951"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:bundled-cultural-transmission-risk",
+    "attemptIds": [
+      "ep-attempt:bundled-cultural-transmission-risk-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "Whether, at matched per-trait transmission rates, bundled cultural transmission changes expected trait counts (it does not) or their spread and loss risk (it raises both, in convex order), and when the increase is strict.",
+      "scope": "Neutral continuous-time cultural accumulation model of Wakano et al. (2026) and, with Poisson innovation, the discrete model of Wakano and Aoki (2024). No data; traits independent given the shared history."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.3 gives a notation dictionary to Wakano et al. (our beta is their s; our encounter rate beta/b is their s/b) and Section 6 maps b to Versions 1-3 of Wakano and Aoki.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "The 2018 discrete model is taken from its 2024 description."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in cultural-evolution models check Theorem 2, Proposition 1 and Theorem 4, and ask Wakano and coauthors whether the distributional question has been settled elsewhere.",
+      "claimCeiling": "Written proofs of Theorems 1-4, Proposition 1 and Corollaries 1-4 for the stated neutral models; Section 7 values numerical; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "bundled-cultural-transmission-risk-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable exact ordering of cultural diversity risk under bundled versus partial transmission.",
+        "setting": "AI-assisted mathematical modelling research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
