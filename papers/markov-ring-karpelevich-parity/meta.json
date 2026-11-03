@@ -1,0 +1,220 @@
+{
+  "slug": "markov-ring-karpelevich-parity",
+  "title": "Parity of affine Karpelevich containment on Markov rings",
+  "shortTitle": "Odd rings fail, even rings hold: the affine Karpelevich conjecture on Markov rings",
+  "oneLine": "A conjectured bound on how strongly a driven Markov ring can oscillate holds for all rates exactly when the ring has three or an even number of states, and fails for every odd ring with five or more states, at every driving strength.",
+  "abstract": "The complex eigenvalues of a Markov rate matrix set how fast a driven chain relaxes and how strongly it oscillates, and oscillation requires a thermodynamic driving force, the cycle affinity F. Xu, Kolchinsky, Delvenne and Ito (2025) conjectured that, once time is rescaled by the fastest escape rate and the imaginary part by a factor set by the affinity, these eigenvalues always lie in the Karpelevich region Ω_n of stochastic-matrix eigenvalues. An earlier Evidence Press release refuted this for general networks and left open the single-ring case, the setting in which the conjecture had been tested. This candidate settles it: for bidirectional rings on n ≥ 3 states at any fixed F > 0, containment holds for all rates exactly when n = 3 or n is even, and fails for every odd n ≥ 5. The positive half follows from known results; the even case uses the affinity–winding theorem of Kolchinsky, Ohga and Ito, an unrefereed 2026 preprint. The new content is the failure for odd rings: weakly coupled pairs of states (dimers) create eigenvalues near −1 whose rescaled imaginary parts grow too steeply. This is proved at every prescribed affinity and, with explicit constants, along a rational family whose affinity tends to zero. Rings with integer rates 1, 2, 3, equal escape rates and affinity log 3 violate the conjecture in five, seven and nine states, each with an exact rational certificate. Near −1 the slope the conjecture allows is too small by a factor approaching n/m ≈ 2 at weak driving (n = 2m + 1), while the proved affinity–winding bound becomes sharp there as n grows. Numerically, violations concentrate on rings with nearly equal escape rates, which suggests why random searches missed them; for the five-state witness the conjectured region would overstate the driving force by about 43%. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Markov chains",
+    "rate matrix spectrum",
+    "Karpelevich region",
+    "stochastic matrices",
+    "cycle affinity",
+    "stochastic thermodynamics",
+    "biochemical oscillations",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/markov-ring-karpelevich-parity",
+  "releaseUrl": "https://github.com/ipitchford/markov-ring-karpelevich-parity/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/markov-ring-karpelevich-parity/releases/download/v0.1.0-candidate/markov-ring-karpelevich-parity-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23919139",
+  "conceptDoi": "10.5281/zenodo.23919138",
+  "zenodoUrl": "https://zenodo.org/records/23919139",
+  "citeText": "Anonymous (2026). Parity of affine Karpelevich containment on Markov rings. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23919139",
+  "evidence": "Written proofs of every theorem, lemma, corollary and proposition. Exact rational certificates in standard-library Python: the five-state witness through equations (6)-(14) with a Sturm sequence; the five-, seven- and nine-state integer witnesses by Rouché enclosures; an exact audit of the effective matrix and affinity identity on 44 rational cases; stage-checked negative controls (mis-stated affinity, n = 3, 4, 6, a permuted ring). A replay driver writes fresh outputs to a new directory and compares them byte for byte with the shipped certificates; it was rerun from a fresh copy with and without Python -O, and the seeded NumPy illustrations were reproduced exactly.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Every result has a written proof; the even-ring half and the upper slope bound rely on an unrefereed preprint of Kolchinsky, Ohga and Ito whose statement was checked but whose proof was not audited; the finite witnesses have exact certificates; Sections 7.3-7.4 are floating-point illustrations. Internal AI-assisted review in five roles, a separate-model adversarial review and audit, a proof audit of the new material, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 3 November 2026 with DOI insertion, 22 pages), its certificate scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked byte for byte against the frozen release assets on 3 November 2026.",
+  "keyResults": [
+    "Parity classification (Theorem 1, proof): for bidirectional rings on n ≥ 3 states at any fixed F > 0, the affine-rescaled eigenvalues lie in Ω_n for all rates exactly when n = 3 or n is even; every odd n ≥ 5 fails at every prescribed affinity, with open neighbourhoods of counterexamples. The even case uses the affinity–winding theorem of Kolchinsky, Ohga and Ito (2026, preprint); the odd-ring failure uses only classical facts about Ω_n.",
+    "Explicit family (Theorem 3, proof): a dimer construction with rational parameters 0 < h ≤ 1/(16m), 0 < ε ≤ h²/4096 fails the squared-sector test in every odd dimension n = 2m + 1 ≥ 5, with affinity below 9/(64k) → 0 along a rational sequence; rational-rate counterexamples at affinity F exist exactly when e^F is rational (Corollary 5).",
+    "Integer witnesses (Proposition 6, exact certificates): rings with rates in {1, 2, 3}, every escape rate 4 and affinity log 3 violate containment in 5, 7 and 9 states; for n = 5 the image z ≈ −0.842 + 0.389 i lies about 0.023 outside Ω_5 along its ray.",
+    "Size near −1 (Proposition 7, proof): for n = 2m + 1, tanh(F/2m)/tanh(F/2n)·cot(π/2m) ≤ S_n(F) ≤ cot(π/2n); the conjectured slope is exceeded by a factor approaching n/m at weak driving, and the winding bound becomes sharp as n → ∞.",
+    "Why searches missed it (numerical illustration): violations concentrate on rings with nearly equal escape rates (about one ring in seven or eight with equal escape rates violates; none in 20,000 with independent rates); used for inference on the five-state witness, the conjectured region would overstate the driving force by about 43%."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematics and exact computation",
+      "AI-assisted internal review, separate-model adversarial review and audit, proof audit, clean replay, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Odd rings fail, even rings hold. An Evidence Press briefing. Many small systems in biology hop at random around a loop of states, like an enzyme cycling through its shapes. Its characteristic modes say how fast it settles down, and whether it oscillates on the way. Oscillation needs a steady push around the loop, a thermodynamic driving force. In 2025, Xu, Kolchinsky, Delvenne and Ito proposed a neat rule: after a suitable rescaling, these modes always lie inside a classical shape called the Karpelevich region. If true, experimenters could read off the smallest driving force consistent with a measured spectrum. An earlier Evidence Press release showed that the rule fails for general networks, but left open the case of a single ring of states, where the rule had been tested. This paper settles that case. The rule holds for every ring with three states or an even number of states. It fails for every ring with an odd number of states, from five upwards, at every strength of driving. The culprits are pairs of states that are tightly linked to each other but only weakly linked to their neighbours. They create fast modes that oscillate slightly too much. A five-state ring with rates of one, two and three already breaks the rule, and if the rule were used to infer its driving force, it would overstate it by about forty-three per cent. The bounds that have actually been proved remain safe. The proofs are written out in full, and the examples have exact computer certificates. The even-ring half relies on a recent preprint by other authors. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Asset parity was checked by full download against the frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "run_checks.py was rerun with Python -I -B and with -O from a fresh copy of the approved package; every certificate was byte-identical, and the seeded NumPy illustrations reproduced exactly. The frozen archive was checked byte-for-byte against that replay and run_checks.py -O rerun from it. GitHub CI reruns the exact checks on Linux as a blocking job; the non-blocking numerical job differs from the macOS file only in the last floating-point digits."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "The five-state witness is certified by two different exact methods (Sturm sequence and Rouché enclosure), and internal reviewers confirmed it numerically. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Exact checks need only the Python standard library; the illustrations pin NumPy 2.3.5 in requirements.txt with a fixed seed; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Anonymous (2026). How fast can a driven Markov network oscillate? A four-state counterexample to the affine Karpelevich conjecture, and the exact dimension at which it fails. Evidence Press; Zenodo. The earlier release this paper follows up: it refuted the conjecture for general networks and left the single-ring case open (Open problem 8.1).",
+      "url": "https://doi.org/10.5281/zenodo.23687327"
+    },
+    {
+      "citation": "Xu, Kolchinsky, Delvenne and Ito (2025). Thermodynamic Geometric Constraint on the Spectrum of Markov Rate Matrices. Physical Review Letters. Source of the affine Karpelevich conjecture (Supplement equation S3), settled here for rings.",
+      "url": "https://doi.org/10.1103/z4t2-18cx"
+    },
+    {
+      "citation": "Kolchinsky, Ohga and Ito (2026). Cycle affinity and winding localize eigenvalues of Markov generators. arXiv:2605.15884 (preprint). The affinity–winding theorem behind the even-ring case and the upper slope bound.",
+      "url": "https://arxiv.org/abs/2605.15884v3",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record."
+    },
+    {
+      "citation": "Uhl and Seifert (2019). Affinity-dependent bound on the spectrum of stochastic matrices. Journal of Physics A: Mathematical and Theoretical. The affinity ellipse conjecture, now proved and unaffected.",
+      "url": "https://doi.org/10.1088/1751-8121/ab3a7a"
+    },
+    {
+      "citation": "Dmitriev and Dynkin (1988). Characteristic roots of stochastic matrices. American Mathematical Society Translations, Series 2, Vol. 140 (Russian original 1946). The sector bound behind the squared-sector test.",
+      "url": "https://doi.org/10.1090/trans2/140/04"
+    },
+    {
+      "citation": "Karpelevich (1988). On the characteristic roots of matrices with nonnegative elements. American Mathematical Society Translations, Series 2, Vol. 140 (Russian original 1951). The Karpelevich region.",
+      "url": "https://doi.org/10.1090/trans2/140/05"
+    },
+    {
+      "citation": "Ito (1997). A New Statement About the Theorem Determining the Region of Eigenvalues of Stochastic Matrices. Linear Algebra and its Applications. The boundary-arc equation used near −1.",
+      "url": "https://doi.org/10.1016/s0024-3795(97)00018-9"
+    },
+    {
+      "citation": "Munger, Nickerson and Paparella (2024). Demystifying the Karpelevič theorem. Linear Algebra and its Applications. Modern statement of the boundary used in Lemma 4.",
+      "url": "https://doi.org/10.1016/j.laa.2024.08.006"
+    },
+    {
+      "citation": "Kellogg and Stephens (1978). Complex eigenvalues of a non-negative matrix with a specified graph. Linear Algebra and its Applications. Graph-specific sector bound; gives nothing more on a ring.",
+      "url": "https://doi.org/10.1016/0024-3795(78)90049-6"
+    },
+    {
+      "citation": "Barato and Seifert (2017). Coherence of biochemical oscillations is bounded by driving force and network topology. Physical Review E. Coherence bounds for slow oscillations, untouched by this result.",
+      "url": "https://doi.org/10.1103/physreve.95.062409"
+    },
+    {
+      "citation": "Ohga, Ito and Kolchinsky (2023). Thermodynamic Bound on the Asymmetry of Cross-Correlations. Physical Review Letters. Proof of the Barato–Seifert bound; unaffected.",
+      "url": "https://doi.org/10.1103/physrevlett.131.077101"
+    },
+    {
+      "citation": "Verbeken and Ginis (2026). On the Spectral Region of n-Cycle Stochastic Matrices. arXiv:2606.10143 (preprint). A different object with a similar name: directed cycles with self-loops, the irreversible limit.",
+      "url": "https://arxiv.org/abs/2606.10143v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record."
+    },
+    {
+      "citation": "Xu and Meng (2026). Kinetic heterogeneity tightens thermodynamic bounds on spectra of Markov cycles. arXiv:2608.22934 (preprint). A related kinetic refinement addressing a different localisation question.",
+      "url": "https://arxiv.org/abs/2608.22934v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:markov-ring-karpelevich-parity",
+    "attemptIds": [
+      "ep-attempt:markov-ring-karpelevich-parity-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "Whether the affine Karpelevich region may be used to bound the spectrum of, or infer the driving force on, a single driven Markov ring: yes for three states or an even number of states, no for every odd ring with five or more states.",
+      "scope": "Positive bidirectional nearest-neighbour rings at fixed positive cycle affinity. The exact attainable region, the largest violation and the exact local slope near −1 are not determined."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.5 states the row-generator convention, r, F, β and the affine map z_Q, checked against Xu et al. (2025, Supplement equation S3) and the earlier release; the novelty report gives the column-convention translation.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "The even case inherits the status of an unrefereed preprint."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in stochastic matrices or stochastic thermodynamics check the dimer perturbation argument of Sections 5-6, and ask the conjecture and winding-theorem authors whether Theorem 1 matches their normalisation.",
+      "claimCeiling": "Proved parity classification for rings (even case conditional on the winding preprint), explicit and integer counterexamples with exact certificates, and local slope bounds; numerical illustrations. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "markov-ring-karpelevich-parity-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable classification of when the affine Karpelevich region bounds ring spectra, answering the earlier release's open problem.",
+        "setting": "AI-assisted mathematics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
