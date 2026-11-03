@@ -1,0 +1,222 @@
+{
+  "slug": "canonical-covariance-localisation-failure",
+  "title": "When canonical covariance localisation fails",
+  "shortTitle": "Where you localise matters: canonical coordinates are not always the best basis",
+  "oneLine": "Snyder and Hakim's conjecture that canonical coordinates are the best basis for ensemble covariance localisation fails when error is measured in physical variables, at every ensemble size for a single observation, but holds at leading order when error is measured relative to the forecast uncertainty; in their own test case symmetric whitening removes about half the canonical basis's excess error.",
+  "abstract": "Exact finite-ensemble counterexamples, a sharp leading-order criterion, and the Snyder–Hakim test case. Ensemble Kalman filters estimate forecast uncertainty from a small ensemble and localise the noisy sample covariance, discarding correlations that are probably noise. Snyder and Hakim (2022) conjectured that canonical coordinates (whiten the prior and observation errors, then rotate to the singular vectors of the whitened observation operator) are the best basis in which to localise. For one analysis step with an independent Gaussian ensemble, a known (oracle) prior covariance used to build every basis and deterministic tapers, the answer depends on the loss. Under physical squared error, as in Snyder and Hakim's experiments, a single observation that is not an eigenvector direction of the prior covariance makes the conjecture fail at every ensemble size N ≥ 2: a small rotation followed by complete localisation beats every canonical taper with unit observed diagonal, and with the same deterministic variance rescaling it beats every canonical taper with any observed-variance factor. Two two-dimensional examples are certified in exact rational arithmetic; in one the canonical basis is a strict local maximum of the risk. With several observations, coupling between an observed and an unobserved canonical direction makes canonical complete localisation non-stationary at every N. A uniform large-ensemble expansion gives a leading objective F(U) that ranks bases, and a sharp criterion says exactly when canonical coordinates minimise it; under prior-normalised (Mahalanobis) loss they always do, and for a scalar observation they are a strict local minimum at finite N provided a scalar inequality holds that is supported numerically but unproved. In a reconstruction of Snyder and Hakim's 200-variable test case, canonical coordinates leave about 42–54% of the avoidable excess error, and symmetric (ZCA) whitening does almost as well as the best basis found, equivalent to roughly 1.7–2 times more ensemble members; bases estimated from small pilot samples keep much less of the gain. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "ensemble Kalman filter",
+    "covariance localisation",
+    "canonical coordinates",
+    "data assimilation",
+    "whitening",
+    "Snyder–Hakim conjecture",
+    "sampling error",
+    "Schur product taper"
+  ],
+  "repoUrl": "https://github.com/ipitchford/canonical-covariance-localisation-failure",
+  "releaseUrl": "https://github.com/ipitchford/canonical-covariance-localisation-failure/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/canonical-covariance-localisation-failure/releases/download/v0.1.0-candidate/canonical-covariance-localisation-failure-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23926884",
+  "conceptDoi": "10.5281/zenodo.23926883",
+  "zenodoUrl": "https://zenodo.org/records/23926884",
+  "citeText": "Anonymous (2026). When canonical covariance localisation fails: Exact finite-ensemble counterexamples, a sharp leading-order criterion, and the Snyder–Hakim test case. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23926884",
+  "evidence": "Written proofs, not machine-verified. exact_certificates.py checks the finite constants of the proofs in exact rational arithmetic (37 checks, including 4 negative controls); numerical_checks.py (82 checks, deterministic quadrature), theory_checks.py (296 checks, including a seeded Monte Carlo of the actual ensemble procedure with 4 × 10^6 ensembles and negative controls) and sh_testbed.py (39 checks, the reconstructed Snyder–Hakim test case, 4,000 replicates per ensemble size) supply floating-point consistency checks and illustrations. All four scripts were rerun from a fresh copy with Python -I -B and with -O; all passed, every recorded value matched the shipped results apart from timings and version strings, and the figures were byte-identical. GitHub CI on Linux reruns all four in both modes.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. The main results have written proofs; Conjecture 5.4 (two observed directions) and Open problem 8.2 (the prior-normalised finite-N inequality) are supported numerically only; the testbed is a numerical reconstruction, not a replication. Internal AI-assisted review in five roles, a separate-model adversarial review, one revision round with extensions, a proof audit and separate-model audit of the new proofs, and a re-review. No human peer review, independent reproduction or formal verification has been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript of 3 November 2026 (31 pages), its README, verification ledger, agent index, internal review summary and recorded outputs, and the replay of all four scripts from a fresh copy of the package.",
+  "keyResults": [
+    "Physical squared error, scalar observation (Theorem 3.3, Corollary 3.4, Theorem 3.7, proof): at every ensemble size N ≥ 2, if the observation direction is not an eigenvector of the prior covariance, a small rotation followed by complete localisation beats every canonical taper with unit observed diagonal; with the same deterministic rescaling it also beats every canonical taper with any observed-variance factor.",
+    "Exact certificates (Section 4, Appendix A): an explicit rational rotation lowers the risk by at least 1/20416536 at N = 3, and in an aligned example the canonical basis is a strict local maximum of the risk (bounds −56/773 and −508/773).",
+    "Several observations (Proposition 5.1, Corollaries 5.2–5.3, proof): compared with rotated complete localisations, canonical complete localisation is not stationary at any N when the loss couples an observed and an unobserved canonical direction, and is stationary when [W, C] = 0; the converse is Conjecture 5.4.",
+    "Large ensembles (Theorems 6.1 and 7.1, Corollary 7.6, proof): the leading basis-dependent risk term is 2F(U)/(N−1) with F(U) = Σ(u_iᵀBu_i)(u_iᵀAu_i); canonical coordinates minimise F if and only if A and B commute with oppositely ordered eigenvalues; otherwise they are beaten for all large N. Under prior-normalised loss the criterion always holds.",
+    "Snyder–Hakim test case (Section 10, numerical reconstruction): for N = 8 to 64 the best basis found removes 42–54% and symmetric (ZCA) whitening 41–54% of the canonical basis’s excess error over the Kalman filter (N = 8: 1.137 versus 1.063 times the Kalman-filter error), roughly equivalent to 1.7–2 times more ensemble members; canonical is the best found under prior-normalised loss; pilot-estimated bases keep much less of the gain."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematics and numerical verification",
+      "AI-assisted internal review, separate-model adversarial review and audit of new proofs, proof audit, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Canonical is not always best. An Evidence Press briefing. Weather forecasts are corrected many times a day by combining a model forecast with new observations. To know how much to trust the forecast, forecasters run a small ensemble of forecasts and measure how they differ. With only a few dozen members, the ensemble suggests links between distant places that are just chance. So forecasters use localisation: they throw away the relationships most likely to be noise. How well that works depends on the variables you do it in. In twenty twenty-two, Snyder and Hakim proposed a special set of variables, called canonical coordinates, in which the exact update splits into independent pieces. They conjectured that localising there gives the smallest possible error. This paper finds that the answer depends on how error is measured. Measured in the ordinary physical variables, as in their own experiments, the conjecture fails. With one observation it fails for every ensemble size, unless the observation happens to line up with a principal direction of the forecast uncertainty: a slightly rotated set of variables always does better. With several observations, it fails whenever the scoring links an observed direction with an unobserved one. Measured relative to the forecast's own uncertainty, canonical coordinates are the best choice for large ensembles. The paper also gives a formula that ranks any choice of variables, and a test of exactly when canonical coordinates win. In a reconstruction of Snyder and Hakim's two-hundred-variable test case, with eight members, canonical coordinates give about fourteen per cent more error than an ideal filter. Plain symmetric whitening cuts that to about six per cent, which is like doubling the ensemble. These results assume the true forecast uncertainty is known and look at a single update; when it has to be estimated from a small sample, much of the gain disappears. The proofs, exact certificates and code are openly archived. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All four scripts were rerun from a fresh copy of the package with Python -I -B and with -O (CPython 3.11.14, NumPy 2.3.5, SciPy 1.17.0, Matplotlib 3.10.8, mpmath 1.4.1); all checks passed, recorded values matched the shipped results apart from timings and version strings, and figures were byte-identical. GitHub CI on Linux reruns all four in both modes."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Reviewers recomputed several constants and the testbed independently, but this is internal AI-assisted checking, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; exact rational arithmetic checks only the finite constants used in the proofs."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review; no data-assimilation specialist has reviewed the paper."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Package versions are pinned in requirements.txt and every random step has a fixed seed; not a locked container. No real observations or operational data are used."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Snyder and Hakim (2022). An Optimal Linear Transformation for Data Assimilation. Journal of Advances in Modeling Earth Systems. Source of the canonical-coordinates conjecture tested here and of the reconstructed 200-variable test case.",
+      "url": "https://doi.org/10.1029/2021MS002937"
+    },
+    {
+      "citation": "Flowerdew (2015). Towards a theory of optimal localisation. Tellus A. Optimal localisation in fixed coordinates; Lemma 3.1 is its zero-correlation case.",
+      "url": "https://doi.org/10.3402/tellusa.v67.25257"
+    },
+    {
+      "citation": "Atkinson, Flowerdew, Hughes and Roulstone (2024). Comparison of Traditional and Hybrid Forms of Optimal Localisation for Mitigation of Sampling Error in Ensemble Kalman Filters. Tellus A. Optimal-localisation comparisons in fixed coordinates.",
+      "url": "https://doi.org/10.16993/tellusa.35"
+    },
+    {
+      "citation": "Ménétrier, Montmerle, Michel and Berre (2015). Linear Filtering of Sample Covariances for Ensemble-Based Data Assimilation. Part I: Optimality Criteria and Application to Variance Filtering and Covariance Localization. Monthly Weather Review. Localisation chosen by an explicit error criterion in given variables.",
+      "url": "https://doi.org/10.1175/MWR-D-14-00157.1"
+    },
+    {
+      "citation": "Morzfeld and Hodyss (2023). A Theory for Why Even Simple Covariance Localization Is So Useful in Ensemble Data Assimilation. Monthly Weather Review. Theory of localisation in a fixed basis.",
+      "url": "https://doi.org/10.1175/MWR-D-22-0255.1"
+    },
+    {
+      "citation": "Hodyss and Morzfeld (2023). How Sampling Errors in Covariance Estimates Cause Bias in the Kalman Gain and Impact Ensemble Data Assimilation. Monthly Weather Review. Gain bias from sampling error, the mechanism behind the risk expansion.",
+      "url": "https://doi.org/10.1175/MWR-D-23-0029.1"
+    },
+    {
+      "citation": "Sacher and Bartello (2008). Sampling Errors in Ensemble Kalman Filtering. Part I: Theory. Monthly Weather Review. Sampling-error expansions related to Theorem 6.1.",
+      "url": "https://doi.org/10.1175/2007MWR2323.1"
+    },
+    {
+      "citation": "Furrer and Bengtsson (2007). Estimation of high-dimensional prior and posterior covariance matrices in Kalman filter variants. Journal of Multivariate Analysis. Earlier expansions and taper rules; not compared term by term with Theorem 6.1.",
+      "url": "https://doi.org/10.1016/j.jmva.2006.08.003"
+    },
+    {
+      "citation": "Anderson (2012). Localization and Sampling Error Correction in Ensemble Kalman Filter Data Assimilation. Monthly Weather Review. Sample-adaptive correction, outside the deterministic-taper class studied.",
+      "url": "https://doi.org/10.1175/MWR-D-11-00013.1"
+    },
+    {
+      "citation": "Buehner and Charron (2007). Spectral and spatial localization of background-error correlations for data assimilation. Quarterly Journal of the Royal Meteorological Society. Localisation in transformed (spectral) variables.",
+      "url": "https://doi.org/10.1002/qj.50"
+    },
+    {
+      "citation": "Kessy, Lewin and Strimmer (2018). Optimal Whitening and Decorrelation. The American Statistician. Symmetric (ZCA) and other whitening transforms compared in the testbed.",
+      "url": "https://doi.org/10.1080/00031305.2016.1277159"
+    },
+    {
+      "citation": "Bourin (1999). Some inequalities for norms on matrices and operators. Linear Algebra and its Applications. Classical trace inequality used in Theorem 7.1, not claimed.",
+      "url": "https://doi.org/10.1016/S0024-3795(99)00024-5"
+    },
+    {
+      "citation": "Fujii (2005). A trace inequality arising from quantum information theory. Linear Algebra and its Applications. Classical trace inequality used in Theorem 7.1, not claimed.",
+      "url": "https://doi.org/10.1016/j.laa.2004.11.009"
+    },
+    {
+      "citation": "Houtekamer and Zhang (2016). Review of the Ensemble Kalman Filter for Atmospheric Data Assimilation. Monthly Weather Review. Background on ensemble Kalman filters and localisation.",
+      "url": "https://doi.org/10.1175/MWR-D-15-0440.1"
+    },
+    {
+      "citation": "Al-Ghattas and Sanz-Alonso (2024). Non-asymptotic analysis of ensemble Kalman updates: effective dimension and localization. Information and Inference. Non-asymptotic theory of localised ensemble updates.",
+      "url": "https://doi.org/10.1093/imaiai/iaad043"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:canonical-covariance-localisation-failure",
+    "attemptIds": [
+      "ep-attempt:canonical-covariance-localisation-failure-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "Whether canonical coordinates are the best basis in which to apply complete covariance localisation in an ensemble Kalman analysis: yes at leading order under prior-normalised loss; under physical loss only when A and B commute with oppositely ordered eigenvalues (Theorem 7.1), and never at finite N for a scalar observation that is not a prior eigenvector direction.",
+      "scope": "One analysis step, independent Gaussian ensemble, oracle prior covariance used to build every basis, deterministic tapers, quadratic loss. Cycling, estimated covariances, adaptive localisation and operational data are not covered."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.2 restates Snyder and Hakim's definition, localisation convention and loss with section references; Table 2 of the paper lists the notation (P = LLᵀ, W, G, C, B, A, F(U)).",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "The testbed reconstruction may differ from the original configuration."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a data-assimilation theorist check Theorems 3.3, 3.7, 6.1 and 7.1, and compare the testbed reconstruction with the original Snyder–Hakim configuration.",
+      "claimCeiling": "Written proofs of the finite-N counterexamples, the expansion and the sharp criterion under the stated one-step oracle setting; exact certificates for the stated constants; Conjecture 5.4 and Open problem 8.2 numerical only; the testbed is a numerical reconstruction. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "canonical-covariance-localisation-failure-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable analysis of when canonical coordinates are the best basis for ensemble covariance localisation.",
+        "setting": "AI-assisted mathematics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
