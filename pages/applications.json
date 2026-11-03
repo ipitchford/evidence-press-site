@@ -879,6 +879,10 @@
   "small-hurst-fbm-maximum": {
    "classification": "Research use",
    "application": "People who simulate very rough random processes, for example rough-volatility models with a Hurst parameter around 0.1, can use the release to see how fast a simulation grid must grow as roughness increases before the simulated running maximum means anything: to first order a grid of n points sees half of it once H log n reaches one half. It also gives an explicit upper bound and numerically evaluated two-sided bounds for the expected maximum itself. The first-order statements converge slowly, and the numerical tables are not certified. This remains an unrefereed candidate."
+  },
+  "reversibility-frequency-reduction": {
+   "classification": "Research use",
+   "application": "Ecologists and modellers studying populations spread over patches with fixed migration can test whether faster environmental fluctuations could ever raise long-run growth: compute whether the migration rates satisfy detailed balance, or the certificate d_ij, and if not the release names which two patches to force and in which phase order to find an intermediate best speed. It also settles when random switching between environments can help under balanced migration. The guaranteed effects can be very small, migration is held fixed, and the result says such an environment exists rather than describing a given one. This remains an unrefereed candidate."
   }
  }
 }

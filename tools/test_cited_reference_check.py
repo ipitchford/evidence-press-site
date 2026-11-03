@@ -99,6 +99,18 @@ class DoiExtraction(unittest.TestCase):
         self.assertIsNone(crc.doi_of_related_work({'url': 'https://example.org/paper'}))
 
 
+    def test_pdf_doi_tail_on_its_own_line_stays_in_entry(self):
+        text = ('References\n[1] I. Mazari-Fouquer. Another look. Comptes Rendus, 2025. doi: 10.5802/crmath.\n'
+                '     747.\n[2] V. Y. Chernyak and N. A. Sinitsyn. Pumping restriction. Phys. Rev. Lett., 2008. doi: 10.1103/PhysRevLett.101.\n'
+                '     160601.\n')
+        bib = crc.Bibliography([('paper.pdf', text)])
+        self.assertEqual(len(bib.entries), 2)
+        self.assertEqual(bib.membership('10.5802/crmath.747', None), ('doi', None))
+        self.assertEqual(bib.membership('10.1103/physrevlett.101.160601', None), ('doi', None))
+        numbered = crc.bibliography_entries('References\n1. Alpha. Title one.\n2. Beta. Title two.\n', 'text')
+        self.assertEqual(len(numbered), 2)
+
+
 class Gate(Scratch):
     def test_correct_reference_passes(self):
         rep = self.run_check([{'citation': 'Davis and Yin (2017), A three-operator splitting scheme and its '

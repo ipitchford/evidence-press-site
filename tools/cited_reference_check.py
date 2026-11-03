@@ -324,7 +324,9 @@ def bibliography_entries(text, kind):
     for m in re.finditer(r'(?im)^\s*(?:#+\s*)?(references|bibliography|works cited|literature cited)\s*$', text):
         pass
     body = text[m.end():] if m else text
-    parts = re.split(r'(?m)^\s*(?:\[\d+\]|\d+\.\s|\[[A-Z][A-Za-z+]*\d*\])', body)
+    # A numbered entry ('12. Author') starts with text on the same line; a bare 'N.' line is the tail of a
+    # DOI or page range broken by pdftotext (for example 'doi: 10.5802/crmath.' then '747.').
+    parts = re.split(r'(?m)^\s*(?:\[\d+\]|\d+\.[ \t]+(?=\S)|\[[A-Z][A-Za-z+]*\d*\])', body)
     if len(parts) < 3:
         parts = re.split(r'\n\s*\n', body)
     return [p for p in parts if p.strip()]
