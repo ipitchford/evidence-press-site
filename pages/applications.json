@@ -927,6 +927,10 @@
   "poincare-sinkhorn-global-rates": {
    "classification": "Potential application",
    "application": "People who run entropic optimal transport, for example with POT or OTT-JAX, in semi-discrete transport or in Schrödinger-bridge solvers, can read off an iteration budget and a stopping certificate from a Poincaré constant of the source and the radius of the target: the gap shrinks by a known factor every iteration, and the observed improvement in one step bounds the remaining error. The main limits are that the guarantees are proved for exact continuous (population) distributions rather than samples, and that the 1/λ² iteration count can be pessimistic by a constant factor. This remains an unrefereed candidate."
+  },
+  "gamma-sum-sharp-moments": {
+   "classification": "Research use",
+   "application": "Statisticians, and signal-processing or randomised-linear-algebra users, who need to bound moments of weighted chi-square sums or positive Gaussian quadratic forms at a fixed variance (Frobenius norm) get the exact best and worst constants and the weightings that attain them. Queueing and reliability modellers get the same for weighted sums of exponential or Erlang stages. The main limit is that all variables must share one gamma shape and the weights must be nonnegative. This remains an unrefereed candidate."
   }
  }
 }
