@@ -1,0 +1,226 @@
+{
+  "slug": "diffusion-nondecision-identification",
+  "title": "When response times identify decision and nondecision processes",
+  "shortTitle": "Same data, two stories: when response times can separate deciding from everything else",
+  "oneLine": "In the fixed-parameter diffusion model with a free, shared nondecision-time distribution, response times determine the split between deciding and everything else exactly when the response-time distributions for the different responses are not all identical; the common unbiased design with opposite, equally strong stimuli never does.",
+  "abstract": "Identification, its limits and design consequences in the fixed-parameter diffusion model. When someone responds slowly, is the extra time spent deciding, or on something else, such as seeing the stimulus or making the movement? Diffusion models split each response time into a decision time and a nondecision time. This paper asks when the data determine that split if the nondecision-time distribution is left completely unspecified, as in the D*M method of Verdonck and Tuerlinckx (2016), whose Appendix A assumes the needed uniqueness. For the diffusion model with fixed boundaries, drift and starting point in each condition, and a nondecision time independent of the decision and shared by all conditions and responses, the answer is exact. Everything, including the whole nondecision distribution, is identified if and only if the response-time distributions given each response are not all identical. One condition with a biased starting point suffices, and so do two unbiased conditions differing in boundary separation or drift magnitude. The common design with an unbiased start and stimuli of opposite but equally strong evidence never suffices: a decision process with half the boundary distance and a quarter of the mean decision time, plus a suitable extra delay, fits the data exactly. The paper gives an explicit inversion and the complete set of equivalent boundary separations, and proves three limits on estimation. No estimator is uniformly consistent when the delay spread is unbounded; two unbiased conditions whose response log-odds differ by 2ε need more than 1/(4ε²) trials per condition before any estimator can reliably separate a large boundary from a small one; and if delays may differ between responses, no single condition suffices. Across-trial variability and collapsing boundaries remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "drift-diffusion model",
+    "nondecision time",
+    "response times",
+    "identifiability",
+    "D*M method",
+    "deconvolution",
+    "experimental design",
+    "mathematical psychology"
+  ],
+  "repoUrl": "https://github.com/ipitchford/diffusion-nondecision-identification",
+  "releaseUrl": "https://github.com/ipitchford/diffusion-nondecision-identification/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/diffusion-nondecision-identification/releases/download/v0.1.0-candidate/diffusion-nondecision-identification-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23923433",
+  "conceptDoi": "10.5281/zenodo.23923432",
+  "zenodoUrl": "https://zenodo.org/records/23923433",
+  "citeText": "Anonymous (2026). When response times identify decision and nondecision processes. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23923433",
+  "evidence": "Written proofs of every lemma, theorem, corollary and proposition; Remark 3 is a conjecture. One script, verify_and_simulate.py, runs 25 explicit checks (23 deterministic and Monte Carlo checks of the formulae, including inversion of 150 random noncentral triples, a 50,000-factor product with a proved truncation bound, a 200,000-draw Monte Carlo check of the equivalent decomposition, and numerical checks of Theorems 2 and 4 and Propositions 1 and 2, plus two reproducibility checks of the recovery study); each failure exits with an error, also under Python -O. A bounded synthetic recovery study (five scenarios, 1,500 and 6,000 trials per condition, 40 replicates) illustrates the estimation limits with one estimator. The script was rerun from a fresh copy with Python -I -B and with -O; all 25 checks passed in both modes and the raw results matched the shipped CSV, and GitHub CI on Linux passed against the stored reference within 1e-4.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Every result except Remark 3 (a conjecture) has a written proof; the numerical checks corroborate the formulae, and the recovery study is an illustration with one estimator on synthetic data. Internal AI-assisted review in five roles, a separate-model adversarial review and audit of the new proofs, a proof audit, one revision round and a re-review. No human peer review, real-data application, comparison with the DstarM software, independent reproduction or formal verification has been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript of 3 November 2026 (25 pages), its README, agent index, internal review summary and recorded verification outputs, and the replay of verify_and_simulate.py and summarise_simulation.py from a fresh copy of the package.",
+  "keyResults": [
+    "Classification (Theorem 1, proof): in the fixed-parameter diffusion model with an arbitrary nondecision distribution independent of the decision and shared by all conditions and responses, all parameters and the delay law are globally identified if and only if some start is biased, or all starts are centred and two pairs (A_j, |v_j|) differ; equivalently, if and only if the conditional response-time laws given each response are not all identical. This resolves, for this model, the injectivity premise in Appendix A of Verdonck and Tuerlinckx (2016).",
+    "Design consequences (Section 8): one biased-start condition suffices; two unbiased conditions differing in boundary separation or drift magnitude suffice; the standard unbiased ±v design under one boundary setting is exactly non-identified. In the worked example, h = 0.6 with a fixed 0.25 s delay and h = 0.3 with mean delay 0.500 s give the same full data (mean response time 0.583 s in both) with mean decision times 0.333 s and 0.083 s.",
+    "Identified set (Theorem 2, Corollary 1, proof): when identification fails the feasible half-widths are exactly (0, b_max], with h ≤ b_max ≤ β(s) for every s > 0; under a lower-tail condition on the delay, h = b_max and a single centred condition is identified. Corollary 2 settles the constant-boundary case of the Fudenberg et al. (2020) conjecture.",
+    "Estimation limits (Theorems 3 and 4, Proposition 1, proof): no uniformly consistent estimator over the identifiable class; unbounded delay spread prevents uniform recovery even far from the degenerate designs; with two unbiased conditions whose log-odds differ by 2ε, at most 1/(4ε²) trials per condition leave every estimator an error probability of at least 1/4. Remark 3, the biased-start analogue, is a conjecture.",
+    "Response-specific delays (Proposition 2, proof): if the nondecision distribution may differ between responses, no single condition is ever identified; the multi-condition case is open."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematics and numerical verification",
+      "AI-assisted internal review, separate-model adversarial review and audit of new proofs, proof audit, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Same data, two stories. An Evidence Press briefing. When someone takes longer to respond, is the extra time spent deciding, or on something else, such as seeing the stimulus or pressing the button? Diffusion models answer this by splitting every response time in two. The decision time is how long noisy evidence takes to drift to one of two boundaries, one for each response. The nondecision time covers everything else. Researchers want to separate the two, because they mean different things about the mind. A popular method, called D star M, does this without assuming any shape for the nondecision time. This paper asks when that is actually possible. For the standard diffusion model with fixed settings in each condition, and a nondecision time shared by every condition and response, the answer is exact. The split is determined if and only if the response-time distributions for the different responses are not all the same. In practice, one condition with a biased starting point is enough, and so are two unbiased conditions that differ in caution or in evidence strength. But the most common design, an unbiased start with two stimuli of equal and opposite evidence, never works. There, a decision process with half the boundary distance and a quarter of the decision time, plus a longer random delay, fits the data exactly. In the paper's example, a third of a second of deciding plus a quarter of a second of delay, and less than a tenth of a second of deciding plus half a second of delay, give identical data. The paper also proves limits. Close to the failing designs, telling the stories apart can take very many trials, and if the motor delay differs between the two responses, one condition never suffices. The proofs, code and simulation results are openly archived. The model leaves out trial-to-trial variability. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_and_simulate.py --reps 40 was rerun from a fresh copy of the package with Python -I -B and with -O (Python 3.12.11, NumPy 2.3.5, SciPy 1.17.0, Matplotlib 3.10.8); all 25 checks passed in both modes and the raw results were identical to the shipped CSV on this machine. summarise_simulation.py reproduced the Monte Carlo summaries. GitHub CI on Linux passed the blocking checks job and the full study against the stored reference within 1e-4. Results reproduce to a tolerance, not bit for bit across linear-algebra libraries; the script enforces 1e-4."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "The script cross-checks some formulae by two numerical routes, but this is producer-side checking, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review; no mathematical psychologist or probabilist has reviewed the paper."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Package versions are pinned in requirements.txt and every random step has a fixed seed; not a locked container. Synthetic data only; no real data are used."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Verdonck and Tuerlinckx (2016). Factoring out nondecision time in choice reaction time data: Theory and implications. Psychological Review. The D*M method; its Appendix A uniqueness premise is resolved here for the fixed-parameter model.",
+      "url": "https://doi.org/10.1037/rev0000019"
+    },
+    {
+      "citation": "van den Bergh, Tuerlinckx and Verdonck (2019). DstarM: an R package for analyzing two-choice reaction time data with the D∗M method. Behavior Research Methods. The D*M software; regarded the equal-distribution case as mainly theoretical, which Section 8.2 disputes.",
+      "url": "https://doi.org/10.3758/s13428-019-01249-7"
+    },
+    {
+      "citation": "Fudenberg, Newey, Strack and Strzalecki (2020). Testing the drift-diffusion model. Proceedings of the National Academy of Sciences. Source of the conjecture on stochastic nondecision time; its constant-boundary case is Corollary 2.",
+      "url": "https://doi.org/10.1073/pnas.2011446117"
+    },
+    {
+      "citation": "Voss, Voss and Klauer (2010). Separating response‐execution bias from decision bias: Arguments for an additional parameter in Ratcliff's diffusion model. British Journal of Mathematical and Statistical Psychology. The response-specific execution model behind Proposition 2.",
+      "url": "https://doi.org/10.1348/000711009x477581"
+    },
+    {
+      "citation": "Wagenmakers, Van Der Maas and Grasman (2007). An EZ-diffusion model for response time and accuracy. Psychonomic Bulletin & Review. Deterministic-delay method covered by Corollary 1.",
+      "url": "https://doi.org/10.3758/bf03194023"
+    },
+    {
+      "citation": "Ratcliff and Rouder (1998). Modeling Response Times for Two-Choice Decisions. Psychological Science. Across-trial variability and fast or slow errors, the main misspecification risk (Section 8.5).",
+      "url": "https://doi.org/10.1111/1467-9280.00067"
+    },
+    {
+      "citation": "Ratcliff (2013). Parameter variability and distributional assumptions in the diffusion model. Psychological Review. Variability assumptions outside the fixed-parameter model treated here.",
+      "url": "https://doi.org/10.1037/a0030775"
+    },
+    {
+      "citation": "Ratcliff and Tuerlinckx (2002). Estimating parameters of the diffusion model: Approaches to dealing with contaminant reaction times and parameter variability. Psychonomic Bulletin & Review. Contaminant responses, not covered by the theorems.",
+      "url": "https://doi.org/10.3758/bf03196302"
+    },
+    {
+      "citation": "Jones and Dzhafarov (2014). Unfalsifiability and mutual translatability of major modeling schemes for choice reaction time. Psychological Review. Unrestricted variability makes decompositions unconstrained; contrasted with this paper's fixed-parameter scope.",
+      "url": "https://doi.org/10.1037/a0034190"
+    },
+    {
+      "citation": "Smith, Ratcliff and McKoon (2014). The diffusion model is not a deterministic growth model: Comment on Jones and Dzhafarov (2014). Psychological Review. Reply stressing within-trial noise as a substantive constraint.",
+      "url": "https://doi.org/10.1037/a0037667"
+    },
+    {
+      "citation": "Dzhafarov and Schweickert (1995). Decompositions of Response Times: an Almost General Theory. Journal of Mathematical Psychology. General theory of response-time decompositions under selective influence.",
+      "url": "https://doi.org/10.1006/jmps.1995.1029"
+    },
+    {
+      "citation": "Bompas, Sumner and Hedge (2025). Non-decision time: The Higgs Boson of decision. Psychological Review. Questions the validity of model-based nondecision estimates; Theorem 1 gives a formal reason in symmetric designs.",
+      "url": "https://doi.org/10.1037/rev0000487"
+    },
+    {
+      "citation": "Lüken, Heathcote, Haaf and Matzke (2025). Parameter identifiability in evidence-accumulation models: The effect of error rates on the diffusion decision model and the linear ballistic accumulator. Psychonomic Bulletin & Review. Practical estimation difficulties at low error rates.",
+      "url": "https://doi.org/10.3758/s13423-024-02621-1"
+    },
+    {
+      "citation": "Butucea and Matias (2005). Minimax estimation of the noise level and of the deconvolution density in a semiparametric convolution model. Bernoulli. Semiparametric deconvolution analogue of Corollary 1.",
+      "url": "https://doi.org/10.3150/bj/1116340297"
+    },
+    {
+      "citation": "Chiong, Shum, Webb and Chen (2024). Combining Choice and Response Time Data: A Drift-Diffusion Model of Mobile Advertisements. Management Science. Econometric identification from choices and mean decision times, extended in Section 8.4 to an unknown shared delay.",
+      "url": "https://doi.org/10.1287/mnsc.2023.4738"
+    },
+    {
+      "citation": "Kent (1980). Eigenvalue expansions for diffusion hitting times. Zeitschrift für Wahrscheinlichkeitstheorie und Verwandte Gebiete. Sum-of-exponentials representation behind Lemma 3.",
+      "url": "https://doi.org/10.1007/bf00538895"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:diffusion-nondecision-identification",
+    "attemptIds": [
+      "ep-attempt:diffusion-nondecision-identification-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "Whether a two-choice response-time design can separate decision time from an unspecified shared nondecision-time distribution in the fixed-parameter diffusion model: yes with one biased-start condition or two unbiased conditions differing in boundary separation or drift magnitude; never with the unbiased ±v design under one boundary setting.",
+      "scope": "Fixed boundaries, drift and start per condition, unit diffusion coefficient, a nondecision time independent of the decision and shared by all conditions and responses. Across-trial variability, collapsing boundaries and multi-condition response-specific delays are not covered."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Table 2 of the manuscript translates the paper's notation (A, z, h, v, c, G, unit diffusion coefficient) into common software symbols and the Ratcliff 0.1 convention; Section 2 restates Appendix A of Verdonck and Tuerlinckx (2016) and Section 8.4 restates the Fudenberg et al. (2020) setting in the paper's notation.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "Software packages differ in their start-point and scale conventions."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a mathematical psychologist or probabilist check Lemmas 1-3 and Theorems 2 and 4, and ask the D*M authors whether Theorem 1 matches their Appendix A premises.",
+      "claimCeiling": "Proved identification classification, identified set and estimation lower bounds for the fixed-parameter diffusion model with a shared delay; Remark 3 is a conjecture; numerical checks and a synthetic illustration. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "diffusion-nondecision-identification-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable classification of when response times identify decision and nondecision processes in the fixed-parameter diffusion model.",
+        "setting": "AI-assisted mathematics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

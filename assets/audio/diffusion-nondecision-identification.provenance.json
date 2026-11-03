@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Same data, two stories. An Evidence Press briefing. When someone takes longer to respond, is the extra time spent deciding, or on something else, such as seeing the stimulus or pressing the button? Diffusion models answer this by splitting every response time in two. The decision time is how long noisy evidence takes to drift to one of two boundaries, one for each response. The nondecision time covers everything else. Researchers want to separate the two, because they mean different things about the mind. A popular method, called D star M, does this without assuming any shape for the nondecision time. This paper asks when that is actually possible.",
+      "inputSha256": "f4753e55c162551891728bef6389a01e0a6f2f60e68ed51e35256529a77a5dab",
+      "audioSha256": "467fb286b98be372f4ffdb3df92a274ed57753d2402ef8617aa80f490bdff03f",
+      "requestId": "req_070b0e15d85042aaad5823f21bd27b15",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "this paper asks when that is actually possible",
+        "heardEnding": "assuming any shape for the non decision time this paper asks when that is actually possible",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "For the standard diffusion model with fixed settings in each condition, and a nondecision time shared by every condition and response, the answer is exact. The split is determined if and only if the response-time distributions for the different responses are not all the same. In practice, one condition with a biased starting point is enough, and so are two unbiased conditions that differ in caution or in evidence strength. But the most common design, an unbiased start with two stimuli of equal and opposite evidence, never works. There, a decision process with half the boundary distance and a quarter of the decision time, plus a longer random delay, fits the data exactly.",
+      "inputSha256": "40a761ae631d9a08ba84f30e038b62245d70785a582afda019c19d2dfe1a9372",
+      "audioSha256": "cc89ffbfa36a87db47e103d920b14509e4102194c33005d821363c861e0a095b",
+      "requestId": "req_a935058b7bd5450a863897147f1e1b49",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a longer random delay fits the data exactly",
+        "heardEnding": "and a quarter of the decision time plus a longer random delay fits the data exactly",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "In the paper's example, a third of a second of deciding plus a quarter of a second of delay, and less than a tenth of a second of deciding plus half a second of delay, give identical data. The paper also proves limits. Close to the failing designs, telling the stories apart can take very many trials, and if the motor delay differs between the two responses, one condition never suffices. The proofs, code and simulation results are openly archived. The model leaves out trial-to-trial variability. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page.",
+      "inputSha256": "e243144bbba18ef82574d0934f4af86d620e3e0fc3d03eac79b32b059d920808",
+      "audioSha256": "6e96255c25d5aa90e8107e9f5d32fa7c1f172be6c2ebcfe86ce1ba9722529b58",
+      "requestId": "req_257dba0b14054f7784b2138420c1f7e3",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "are linked from the evidence press release page",
+        "heardEnding": "on the of november its paper and evidence are linked from the evidence print release page",
+        "matchedWords": 7,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "5cfea21b2bc05c6f63299e1a4d42c06235495d006df3c15882ab2713b043055e",
+      "audioSha256": "72fd5ee0faf958b57a78ed40f7ce0db318b3cdfa41f53feab1f4d94abd2bb9fc",
+      "requestId": "req_6515b03dc2a84ccaafd3a5a87304c397",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "diffusion-nondecision-identification",
+  "generatedAt": "2026-11-03T16:16:10.463Z",
+  "sourceMetadata": "papers/diffusion-nondecision-identification/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "b4817b06e9796cd6b3401a0ea3271573eb9f3f42a303467ed97b221cb40d240f",
+  "transcriptPath": "assets/audio/diffusion-nondecision-identification.txt",
+  "transcriptSha256": "effa6f557692ffd4372db5327a9c8500ed5be84e777d4db62024e5f8d22cc36b",
+  "audioPath": "assets/audio/diffusion-nondecision-identification.mp3",
+  "audioSha256": "0b09d8156c29dcae3038b31008b6763176ff1a05a7d618aa6e02c85aa5ad11db",
+  "audioBytes": 2273708,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "print release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
