@@ -915,6 +915,10 @@
   "alternating-projections-exact-worst-case": {
    "classification": "Practical method",
    "application": "People who use projection or POCS-type feasibility methods, in imaging, signal processing or as subroutines inside larger optimisation algorithms, can use this release to get an exact worst-case cycle count and a computable error bound for stopping, whenever both constraint sets are known to contain a common ball of given radius. For example, with a starting distance ten times that radius, 93 cycles guarantee accuracy one thousandth of that distance, where the classical bound asks for 833. The main limit is that this is a worst case over all sets sharing a ball, so typical runs are faster, and it covers only two sets with exact projections. This remains an unrefereed candidate."
+  },
+  "diffusion-nondecision-identification": {
+   "classification": "Research use",
+   "application": "Cognitive psychologists and neuroscientists who fit diffusion models to response times (for example with DstarM, HDDM/HSSM or fast-dm) can use this release to check whether their experimental design can separate decision time from nondecision time at all, and to choose designs that can: a condition with a biased starting point, or two conditions differing in caution or evidence strength, rather than the common unbiased design with equal and opposite evidence, which never can. The main limit is that the result covers only the fixed-parameter diffusion model without trial-to-trial variability, and that near the failing designs identification needs very many trials. This remains an unrefereed candidate."
   }
  }
 }
