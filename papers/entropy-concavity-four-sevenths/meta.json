@@ -1,0 +1,243 @@
+{
+  "slug": "entropy-concavity-four-sevenths",
+  "title": "The critical signal fraction for local entropy concavity",
+  "shortTitle": "How much noise restores entropy concavity? Exactly enough to push the signal below 4/7",
+  "oneLine": "Mix two noisy copies of a near-Gaussian symmetric signal: the entropy of the blend is guaranteed concave in the mixing weight exactly when the noise variance exceeds three quarters of the signal variance (signal fraction below 4/7, signal-to-noise ratio 4/3); whether 4/7 itself qualifies is open.",
+  "abstract": "Take two independent copies of a random signal, add Gaussian noise to each, and mix the noisy copies with weights √t and √(1−t). Ball, Nayar and Tkocz conjectured that, for log-concave signals, the entropy of the mixture is concave in t. Luo (2026) disproved this and showed that symmetric near-Gaussian counterexamples survive added noise whenever the signal accounts for more than 4/7 of the total variance; Schubr (2026) proved local concavity below 1/2. This candidate shows that 4/7 is the true local threshold for symmetric signals. For every signal fraction q < 4/7 there is an explicit neighbourhood of the Gaussian, defined by a uniform bound on the relative density f/φ − 1, in which every symmetric variance-one input gives a strictly concave entropy curve (Theorem A); with Luo's counterexamples, 4/7 is the supremum of such signal fractions, a signal-to-noise ratio of 4/3. Whether q = 4/7 itself qualifies is open. For every q in (4/7, 1], one sequence of smooth strongly log-concave inputs makes equal weighting a strict local entropy minimum, with exact curvature constant γ(q) = 21√5 q/(49q − 4) and a Gaussian-shaped local profile (Theorem B); the sign on (4/7, 2 − √2], Luo's Problem 10.3, was also proposed in an earlier public, unrefereed GitHub argument. The threshold is the fixed point q = b(q/2) of an Ornstein–Uhlenbeck smoothing inequality whose range is proved sharp, with Luo's family extremal within the Hermite test functions (Proposition S); at q = 4/7 Luo's family is strictly concave near equal weighting (Proposition E); the proof's radius shrinks like (4/7 − Q)^(9/4) (Remark R). The effects are minute (dips of order 10⁻¹³ nats); the results are structural. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "differential entropy",
+    "entropy concavity",
+    "Ball-Nayar-Tkocz conjecture",
+    "Gaussian smoothing",
+    "Ornstein-Uhlenbeck semigroup",
+    "Hermite polynomials",
+    "signal-to-noise ratio",
+    "blind source separation"
+  ],
+  "repoUrl": "https://github.com/ipitchford/entropy-concavity-four-sevenths",
+  "releaseUrl": "https://github.com/ipitchford/entropy-concavity-four-sevenths/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/entropy-concavity-four-sevenths/releases/download/v0.1.0-candidate/entropy-concavity-four-sevenths-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23910629",
+  "conceptDoi": "10.5281/zenodo.23910628",
+  "zenodoUrl": "https://zenodo.org/records/23910629",
+  "citeText": "Anonymous (2026). The critical signal fraction for local entropy concavity. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23910629",
+  "evidence": "Written analytic proofs of Theorems A and B, the Corollary, Propositions S and E and Remark R (32-page manuscript); five standard-library Python checkers with retained outputs in normal and optimized mode: Part II coefficient asymptotics against −8γ(q) and the exact recurrence (233 checks), the Part I radius recipe and table in 100-digit arithmetic (165), the Part II Hermite identities and two-weight inner products to about 10⁻⁷⁸ (178), the Proposition S envelope, Proposition E diagnostics and Remark R constant (315, with 6 internal negative controls), and a negative-control harness requiring 16 deliberately broken checker copies to fail under both normal and -O runs; clean replay from a fresh copy of the package with every output identical apart from timing fields.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. The theorems have written analytic proofs; the shipped checks test exact identities, closed-form constants, the radius table and finite-n asymptotics in finite precision, not interval certificates. Internal AI-assisted review in five roles, a separate-model adversarial review and audit of the new proofs, a separate proof audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 3 November 2026 with DOI insertion, 32 pages), its checkers and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 3 November 2026.",
+  "keyResults": [
+    "Theorem A (proof): for every Q < 4/7 there is an explicit δ_Q > 0 such that every admissible even g with ‖g‖∞ ≤ δ_Q gives F'' ≤ −(1/16)‖N(T_√(qt) g + T_√(q(1−t)) g)‖² < 0 for all q ≤ Q and t in [0, 1]; δ_0.5 ≈ 1.7 × 10⁻⁵.",
+    "Corollary (proof, with Luo 2026): (0, 4/7) ⊆ C ⊆ (0, 4/7], so sup C = 4/7, a noise variance of 3/4 of the signal variance (signal-to-noise ratio 4/3); whether 4/7 ∈ C is open.",
+    "Theorem B (proof): for every q in (4/7, 1], one sequence of smooth strongly log-concave inputs gives F''(1/2) > 0 eventually, with γ(q) = 21√5 q/(49q − 4) and local profile 1 − exp(−4γ(q)s²); the sign on (4/7, 2 − √2] was also proposed in an earlier public GitHub argument.",
+    "Proposition S (proof): the bounded-input smoothing inequality ‖T_√s g‖² ≤ J‖g‖∞‖T_√r g‖ holds for s < b(r) = √(2r(1+r)) − r and fails beyond; 4/7 is the fixed point q = b(q/2), and Luo's parameter a = 7/(3√5) is extremal within the Hermite test functions.",
+    "Proposition E and Remark R (proof): at q = 4/7 Luo's family is strictly concave near t = 1/2, so it gives no boundary counterexample; the proof's radius decays like C_δ(4/7 − Q)^(9/4), C_δ ≈ 5.93 × 10⁻³."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review, separate-model adversarial review and proof audit, proof audit, clean replay, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "How much noise does it take to make entropy behave? An Evidence Press briefing. Take two independent copies of a random signal, add Gaussian noise to each, and blend the two noisy copies, with a mixing weight that runs from all of one copy to an even blend. Mixing tends to make things more Gaussian, and Gaussians have the most entropy, so a natural guess is that entropy rises smoothly as you blend, with no dips: in mathematical terms, that it is a concave function of the mixing weight. Ball, Nayar and Tkocz conjectured exactly this. This year Luo disproved it, and showed that tiny symmetric bumps on a Gaussian signal can still create a dip at an even blend whenever the signal makes up more than four sevenths of the total variance. Below one half, a positive result was already known. The question was what happens in between. This paper answers it. For any signal fraction below four sevenths, every symmetric signal close enough to a Gaussian gives a concave entropy curve. In noise terms: concavity is guaranteed once the noise variance exceeds three quarters of the signal variance, a signal-to-noise ratio of four thirds. Above that level the paper sharpens the counterexamples, with an exact formula for the dip's curvature. Part of that sign was proposed shortly before, in a public online argument, which the paper cites. It also explains where four sevenths comes from: the fixed point of a sharp Gaussian smoothing inequality. Two cautions. These are local results, and the effects are minute, dips of around ten to the minus thirteen in entropy. And whether exactly four sevenths itself qualifies is still open. The proofs are written out, and checked by standard-library scripts that must catch sixteen deliberately broken copies. This is an anonymous, AI-assisted, unrefereed candidate, published on the third of November twenty twenty-six; its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All four checkers were rerun with Python -I -B and -I -B -O, and the negative-control harness rerun, from a fresh copy of the package before freezing and again from the frozen archive; every JSON output was identical to the shipped one apart from timing and interpreter fields. GitHub CI repeats every checker and the negative controls on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "During internal review, reviewers recomputed the load-bearing constants (the 4/7 condition, γ(q), the radius table, the Lemma II.5 matrix, Proposition S and E constants) with separately written high-precision scripts. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python standard library only (CPython 3.12 tested on macOS and Linux CI); exact and fixed-precision Decimal arithmetic, no random seeds; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Ball, Nayar and Tkocz (2016), A reverse entropy power inequality for log-concave random vectors. Studia Mathematica. States the conjecture (Conjecture 2) that the entropy of √t X + √(1−t) Y is concave in t for log-concave inputs.",
+      "url": "https://doi.org/10.4064/sm8418-6-2016"
+    },
+    {
+      "citation": "Luo (2026), Near-Gaussian counterexamples to the Ball-Nayar-Tkocz entropy concavity conjecture. arXiv:2609.11418 v2, unrefereed. Disproves the conjecture, gives the symmetric counterexamples for every q > 4/7, the Gaussian-kernel interpolation used in Lemma I.2, and Problems 10.1–10.3.",
+      "url": "https://arxiv.org/abs/2609.11418v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography but has no DOI; linked to its stable URL as given there, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Schubr (2026), Mixing-weight entropy concavity near the Gaussian below one-half signal. Luminary Research Archive, public edition 3, not peer reviewed. Proves local concavity for q < 1/2; its entropy-energy argument is used in Part I.",
+      "url": "https://research.luminaryoddities.org/local-and-eventual-entropy-concavity-under-gaussian-smoothing/v/3",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography but has no DOI; linked to its stable URL as given there, so the DOI gate does not apply."
+    },
+    {
+      "citation": "the-omega-institute/trureturing (2026), Open problem (preregistration): prove Congyi Luo Problem 10.3 (arXiv:2609.11418v2): positive midpoint entropy curvature for every 4/7 < q <= 2-sqrt2. GitHub issue 25275, 1 November 2026; proposed argument, not refereed. Earlier public proposal of the sign in Theorem B on (4/7, 2−√2].",
+      "url": "https://github.com/the-omega-institute/trureturing/issues/25275",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography but has no DOI; linked to its stable URL as given there, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Abu-Ajamieh (2026), Noise-Induced Restoration of Entropy Concavity Near Gaussian Equilibrium. arXiv:2610.22386 v1, unrefereed. Concavity up to q = 5/8 for a single fixed He₄ direction, reconciled with the 4/7 threshold in Section 1.3.",
+      "url": "https://arxiv.org/abs/2610.22386v1",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography but has no DOI; linked to its stable URL as given there, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Artstein, Ball, Barthe and Naor (2004), Solution of Shannon’s problem on the monotonicity of entropy. Journal of the American Mathematical Society. Mixing makes sums more Gaussian.",
+      "url": "https://doi.org/10.1090/S0894-0347-04-00459-X"
+    },
+    {
+      "citation": "Lieb (1978), Proof of an entropy conjecture of Wehrl. Communications in Mathematical Physics. The form of the entropy power inequality giving the chord inequality that concavity would strengthen.",
+      "url": "https://doi.org/10.1007/BF01940328"
+    },
+    {
+      "citation": "Eskenazis, Nayar and Tkocz (2018), Gaussian mixtures: Entropy and geometric inequalities. The Annals of Probability. Entropy comparisons for Gaussian mixtures.",
+      "url": "https://doi.org/10.1214/17-AOP1242"
+    },
+    {
+      "citation": "Eskenazis and Gavalakis (2024), On the entropy and information of Gaussian mixtures. Mathematika. Proves the concavity conjecture for Gaussian mixtures.",
+      "url": "https://doi.org/10.1112/mtk.12246"
+    },
+    {
+      "citation": "Le (2014), Normal and isometric weighted composition operators on the Fock space. Bulletin of the London Mathematical Society. Fock-space operator theory behind the Gaussian-kernel comparison.",
+      "url": "https://doi.org/10.1112/blms/bdu046"
+    },
+    {
+      "citation": "Carroll and Gilmore (2021), Weighted composition operators on Fock spaces and their dynamics. Journal of Mathematical Analysis and Applications. Fock-space operator theory behind the Gaussian-kernel comparison.",
+      "url": "https://doi.org/10.1016/j.jmaa.2021.125234"
+    },
+    {
+      "citation": "Abbe and Zheng (2012), A Coordinate System for Gaussian Networks. IEEE Transactions on Information Theory. Hermite expansions of entropy near the Gaussian.",
+      "url": "https://doi.org/10.1109/TIT.2011.2169536"
+    },
+    {
+      "citation": "Costa (1985), A new entropy power inequality. IEEE Transactions on Information Theory. Concavity of entropy power along the noise direction, contrasted in Discussion D.4.",
+      "url": "https://doi.org/10.1109/TIT.1985.1057105"
+    },
+    {
+      "citation": "Villani (2000), A short proof of the \"concavity of entropy power\". IEEE Transactions on Information Theory. Concavity along the noise direction.",
+      "url": "https://doi.org/10.1109/18.850718"
+    },
+    {
+      "citation": "Guo, Shamai and Verdu (2005), Mutual Information and Minimum Mean-Square Error in Gaussian Channels. IEEE Transactions on Information Theory. The I-MMSE relation, contrasted in Discussion D.4.",
+      "url": "https://doi.org/10.1109/TIT.2005.844072"
+    },
+    {
+      "citation": "Comon (1994), Independent component analysis, A new concept? Signal Processing. The entropy contrast behind the blind-source-separation reading (Discussion D.3).",
+      "url": "https://doi.org/10.1016/0165-1684(94)90029-9"
+    },
+    {
+      "citation": "Vrins, Pham and Verleysen (2007), Mixing and Non-Mixing Local Minima of the Entropy Contrast for Blind Source Separation. IEEE Transactions on Information Theory. Spurious mixing minima for strongly multimodal sources.",
+      "url": "https://doi.org/10.1109/TIT.2006.890716"
+    },
+    {
+      "citation": "Courtade, Fathi and Pananjady (2018), Quantitative Stability of the Entropy Power Inequality. IEEE Transactions on Information Theory. Stability near the Gaussian, in whose spirit Theorem A is stated.",
+      "url": "https://doi.org/10.1109/TIT.2018.2808161"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:entropy-concavity-four-sevenths",
+    "attemptIds": [
+      "ep-attempt:entropy-concavity-four-sevenths-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Treat 4/7 as the exact supremum of signal fractions at which Gaussian noise restores local mixing-weight entropy concavity for symmetric near-Gaussian inputs in uniform relative-density neighbourhoods; treat q = 4/7 itself as open.",
+      "scope": "Two independent identical even variance-one inputs, mixing weights √t and √(1−t), Gaussian noise, inputs within a uniform relative-density neighbourhood of the Gaussian. Global (non-local) concavity, asymmetric inputs and the boundary are not settled."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.2 separates new results from what is inherited from Luo (2026) and Schubr (2026); Section 2.4 tabulates the regimes with sources, including the earlier public proposal for Luo's Problem 10.3.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "Three of the closest sources are unrefereed 2026 preprints or a public issue thread."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in entropy inequalities check Lemma I.2 and the absorption argument of Sections I.4–I.6, and Part II's coefficient lemma, and ask whether Lemma I.2's endpoint can decide q = 4/7.",
+      "claimCeiling": "Proved local threshold sup C = 4/7 with explicit constants, sharpened counterexamples with exact curvature, and a sharpness explanation; the boundary is open. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "entropy-concavity-four-sevenths-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable identification of the local noise threshold for mixing-weight entropy concavity near the Gaussian.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
