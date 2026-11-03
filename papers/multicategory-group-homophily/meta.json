@@ -1,0 +1,221 @@
+{
+  "slug": "multicategory-group-homophily",
+  "title": "Multicategory group homophily: constructive feasibility and sharp limits",
+  "shortTitle": "With three or more categories every category can look homophilous in groups at once; an exact ceiling says how far, and which budget blocks it",
+  "oneLine": "With three or more categories the two-category impossibility for simultaneous group homophily disappears; an exact test and a closed-form ceiling with a named binding budget say what is possible, and a school example shows the same 4,600 groups passing for 10/10 classrooms but 0/5 school years.",
+  "abstract": "Group homophily measures compare how often a category's members find themselves in groups with one, two or more others of their own category against a baseline. Veldt, Benson and Kleinberg (2023) proved that with two categories natural forms of simultaneous group homophily are combinatorially impossible, and asked how these limits change with more categories. This candidate answers the question for a single group size. First, with three or more categories and any full-support baseline whose category participation matches the observed participation, arbitrarily small changes that keep every category's (and every individual's) participation fixed make every category's affinity ratios strictly increase with its number of members; connected, simple, regular finite hypergraphs realise this at every rational composition (Theorem 1, Propositions 2–3). This proves an earlier informal remark of Sarker, Northrup and Jadbabaie. Second, an exact finite list of inequalities describes which strict-majority probabilities can coexist at fixed participation (Theorem 2). Third, a closed-form, attained ceiling bounds how far all majority affinity ratios can rise together, as the minimum of a group-count budget and each category's own and complementary participation budgets (Theorem 3, Corollary 1). Consequences: a short certificate for the two-category odd-size impossibility (Corollary 2) and the fact that at matched participation the baseline must allow groups without a strict majority (Corollary 3). In an exploratory reanalysis of 4,600 distinct primary-school proximity triples, between 8 and 10 of 10 pupil classrooms meet strict-majority homophily across four specifications, against 0 or 1 of 5 merged school years; the years fail only at the two-of-three count because merging roughly doubles its chance rate, and a binary pupil/teacher coding gives a ceiling of 0.641. These results concern measurement feasibility; they do not identify preferences or causal mechanisms. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "group homophily",
+    "higher-order homophily",
+    "hypergraphs",
+    "affinity ratio",
+    "impossibility theorem",
+    "network flows",
+    "social networks",
+    "school contact data"
+  ],
+  "repoUrl": "https://github.com/ipitchford/multicategory-group-homophily",
+  "releaseUrl": "https://github.com/ipitchford/multicategory-group-homophily/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/multicategory-group-homophily/releases/download/v0.1.0-candidate/multicategory-group-homophily-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23916043",
+  "conceptDoi": "10.5281/zenodo.23916042",
+  "zenodoUrl": "https://zenodo.org/records/23916043",
+  "citeText": "Anonymous (2026). Multicategory group homophily: constructive feasibility and sharp limits. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23916043",
+  "evidence": "Written proofs of Theorems 1–3, Propositions 2–3 and Corollaries 1–3 (22-page paper); exact-rational checks of Theorem 1 (42 cases), an explicit simple regular cyclic-lift construction, exact checks of Corollaries 2–3 and the free-participation remark (999, 466 and 360 random cases), linear-programming cross-checks of Theorems 2–3 (560 and 864 problems), an independent second parser of the school data, and aggregate-only recomputation of the school ratios, deletion counterfactual, fragility counts and pupil/teacher ceiling; all checks fail closed under optimised Python, a corrupted copy is detected, and a clean replay from fresh copies reproduced every receipt.",
+  "statusDetail": "Unrefereed AI-assisted candidate in mathematical sociology and network science. The theorems have written proofs; the scripts are finite exact and linear-programming consistency checks; the school example is exploratory and descriptive. Internal AI-assisted review in five roles, a separate-model adversarial review and proof audit, a proof audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 3 November 2026 with DOI insertion, 22 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 3 November 2026.",
+  "keyResults": [
+    "Theorem 1 (proof): for q ≥ 3 categories and any full-support baseline with matched participation, arbitrarily small participation-preserving (even individual-participation-preserving) perturbations make every category's affinity ratios strictly increase in its count; Proposition 3 realises this in connected, simple, regular finite hypergraphs at every rational composition.",
+    "Theorem 2 (proof): an exact finite list of inequalities decides which strict-majority probabilities can coexist at fixed participation, without enumerating all compositions.",
+    "Theorem 3 and Corollary 1 (proof): the largest common multiplier of all majority affinity ratios is λ_max = min{1/A₀, min_c d_c/T_c⁰, min_c (k − d_c)/(T⁰ − T_c⁰ + S_c⁰)}, attained; simultaneous strict-majority homophily is possible iff λ_max > 1. For q equal categories in a three-person multinomial baseline, λ_max = q²/(3q − 2).",
+    "Corollaries 2 and 3 (proof): with two categories and odd group size, λ_max ≤ 1 for every activity profile (a short certificate for Veldt et al.'s Theorem 5); at matched participation λ_max ≤ 1/A₀, so the baseline must allow groups without a strict majority.",
+    "Section 7 (exploratory, descriptive): in 4,600 school proximity triples, 10/10 classrooms but 0/5 merged school years meet strict-majority homophily under the primary specification (8–10/10 vs 0–1/5 across four); ceilings 3.92 (classrooms), 2.07 (years), 0.641 for pupils versus teachers."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical and social-science research (original research bundle)",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and proof audit by a separate model (OpenAI Codex); proof audit and re-review",
+      "Claude Code: revision, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Can every group look homophilous at once? An Evidence Press briefing. Researchers often ask whether people end up in groups, such as teams, meetings or clusters of children in a playground, with others of their own category more often than chance would predict. For each category they compare how often its members are in groups with one, two or more others like them against a baseline. That comparison is called an affinity ratio. In twenty twenty-three, Veldt, Benson and Kleinberg proved a surprising limit. With only two categories, the bookkeeping makes it impossible for both to look homophilous at once in certain natural senses. They asked what happens with more categories. This paper answers that question for groups of one size. With three or more categories, the obstruction disappears: small adjustments can make every category's ratios rise together. The paper also gives an exact test of which combinations are possible, and a simple formula for the highest level all categories could reach together, naming the budget that blocks them. That formula gives a three-line proof of the two-category impossibility. A school example shows why this matters. In the same four thousand six hundred three-person contact groups, all ten classrooms pass a strict majority homophily test, but none of the five school years formed by merging them does. The years are not less segregated. Merging roughly doubles how often two members of three share a year by chance, while most same-year contact happens in groups that are entirely from one year. So a failed test is not proof of weak homophily. The results describe measurement, not preferences or causes, and the school example is exploratory: one school, over two days. This is an anonymous, AI-assisted, unrefereed candidate, published on the third of November twenty twenty-six; its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files by full download; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "reproduce.py (five check scripts) was rerun with Python -I -B and -I -B -O from fresh copies before freezing and again from the frozen archive; every regenerated receipt and figure matched the package (the figure PDF differs only in its creation timestamp). GitHub CI repeats the run on Linux. The data-download route was not rerun."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "Theorems 2–3 are cross-checked by an independent full-composition linear programme, and the school tables by a second parser written without importing the analysis code. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with numpy 2.3.5, scipy 1.17.0 and matplotlib 3.10.8 (tested on macOS and Linux CI); exact rational arithmetic for the constructions; not a locked container. Raw third-party archives are not redistributed; the download route checks their hashes."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Veldt, Benson and Kleinberg (2023). Combinatorial characterizations and impossibilities for higher-order homophily. Science Advances. Proved the two-category impossibilities and asked how they change with more categories; Proposition 1 and the odd-size result recovered in Corollary 2 are theirs.",
+      "url": "https://doi.org/10.1126/sciadv.abq3200"
+    },
+    {
+      "citation": "Sarker, Northrup and Jadbabaie (2024). Higher-order homophily on simplicial complexes. Proceedings of the National Academy of Sciences. Studies the same school data and shows group-level class affinities can largely be inherited from pairwise contacts; their earlier preprint remarked informally that three or more labels help.",
+      "url": "https://doi.org/10.1073/pnas.2315931121"
+    },
+    {
+      "citation": "Rizi, Michielan, Stegehuis and Kivelä (2025). Homophily within and across groups. Nature Communications. Multicategory and category-coarsening extensions of a maximum-entropy model; does not characterise all count-specific ratios jointly.",
+      "url": "https://doi.org/10.1038/s41467-025-66415-2"
+    },
+    {
+      "citation": "Kumano, Nishimura and Kimura (2026). Higher-order homophily analysis for hypergraphs with time-varying node categories. Applied Network Science. Temporal category and category-pair measures.",
+      "url": "https://doi.org/10.1007/s41109-026-00801-7"
+    },
+    {
+      "citation": "Wang, Zhou, Li, Zhao and Qi (2026). Measuring the higher-order homophily in a general social hypergraph. Chaos. Extends measurement to groups of different sizes.",
+      "url": "https://doi.org/10.1063/5.0345566"
+    },
+    {
+      "citation": "Chun, Yoon, Choe, Lee and Shin (2026). From binary to general attributes: attributed hypergraph generation with realistic interplay between structure and attributes. Knowledge and Information Systems. Generative models with categorical affinity profiles.",
+      "url": "https://doi.org/10.1007/s10115-026-02850-x"
+    },
+    {
+      "citation": "McPherson, Smith-Lovin and Cook (2001). Birds of a Feather: Homophily in Social Networks. Annual Review of Sociology. The standard account of homophily.",
+      "url": "https://doi.org/10.1146/annurev.soc.27.1.415"
+    },
+    {
+      "citation": "Feld (1981). The Focused Organization of Social Ties. American Journal of Sociology. Shared settings create opportunities for contact, so homophily reflects opportunity as well as preference.",
+      "url": "https://doi.org/10.1086/227352"
+    },
+    {
+      "citation": "Gale (1957). A theorem on flows in networks. Pacific Journal of Mathematics. The supply-demand feasibility theorem behind Theorems 2 and 3.",
+      "url": "https://doi.org/10.2140/pjm.1957.7.1073"
+    },
+    {
+      "citation": "Ford and Fulkerson (1956). Maximal Flow Through a Network. Canadian Journal of Mathematics. Maximum-flow/minimum-cut duality used in the proofs.",
+      "url": "https://doi.org/10.4153/CJM-1956-045-5"
+    },
+    {
+      "citation": "Wang and Wang (2016). Joint Mixability. Mathematics of Operations Research. Constant-sum couplings related to the composition geometry.",
+      "url": "https://doi.org/10.1287/moor.2015.0755"
+    },
+    {
+      "citation": "Stehlé et al. (2011). High-Resolution Measurements of Face-to-Face Contact Patterns in a Primary School. PLoS ONE. The original sensor study of the school data used in Section 7.",
+      "url": "https://doi.org/10.1371/journal.pone.0023176"
+    },
+    {
+      "citation": "Gemmetto, Barrat and Cattuto (2014). Mitigation of infectious disease at school: targeted class closure vs school closure. BMC Infectious Diseases. Documents the classroom and school-year structure of the same data.",
+      "url": "https://doi.org/10.1186/s12879-014-0695-9"
+    },
+    {
+      "citation": "Benson, Abebe, Schaub, Jadbabaie and Kleinberg (2018). Simplicial closure and higher-order link prediction. Proceedings of the National Academy of Sciences. Source of the temporal group (clique) release.",
+      "url": "https://doi.org/10.1073/pnas.1800683115"
+    },
+    {
+      "citation": "Chodrow, Veldt and Benson (2021). Generative hypergraph clustering: From blockmodels to modularity. Science Advances. Source of the labelled hypergraph release analysed in Section 7.",
+      "url": "https://doi.org/10.1126/sciadv.abh1303"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:multicategory-group-homophily",
+    "attemptIds": [
+      "ep-attempt:multicategory-group-homophily-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Before interpreting a failed group-homophily test, compute from category participation and the chosen baseline whether all categories could have passed a strict-majority test at all (λ_max > 1), and which budget blocks it.",
+      "scope": "One group size; categories forming a partition; relaxed composition model in which all integer compositions are available. Not fixed finite hypergraphs with prescribed degrees, not forbidden compositions; descriptive, not preferences or causes."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Sections 1 and 1.1 separate the new results from Veldt et al.'s two-category theorems (Proposition 1 is theirs; Corollary 2 recovers their odd-size result with a new certificate) and from adjacent multicategory measures; Section 9 states the limits.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a network scientist check the flow argument of Theorem 3 and the construction of Theorem 1, and judge whether the ceiling and reporting checklist are useful in practice.",
+      "claimCeiling": "Proved multicategory feasibility, exact majority region and sharp ceiling for one group size in the relaxed composition model; exploratory descriptive school example. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "multicategory-group-homophily-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable answer to the multicategory question of Veldt, Benson and Kleinberg, with a computable ceiling for reporting.",
+        "setting": "AI-assisted mathematical social-science research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
