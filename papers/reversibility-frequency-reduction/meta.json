@@ -1,0 +1,303 @@
+{
+  "slug": "reversibility-frequency-reduction",
+  "title": "Reversibility and frequency reduction in periodic and random positive systems",
+  "shortTitle": "When can faster environmental change help a spread-out population? Exactly when migration circulates",
+  "oneLine": "For a population spread over patches with fixed migration, making periodic environmental change faster can never raise the long-run growth rate exactly when migration satisfies detailed balance; any circulating migration admits a weak environment where an intermediate speed is best, and for reversible migration random switching strictly lowers growth, proving a 2025 conjecture.",
+  "abstract": "In the linear patch model x′ = [Q + diag r(ωt)]x a fixed irreducible migration generator Q couples patches whose growth rates r_i vary in time. Does faster environmental change always lower the long-run growth rate? For periodic environments the boundary is exactly detailed balance (no net circulation around any loop of patches; every two-patch system qualifies): reversible migration gives a growth rate that never increases with frequency, strictly decreasing unless r_i(t) = a_i + b(t), while every irreversible Q admits weak rotating environments on two patches with an interior frequency optimum. An explicit certificate d_ij = π_i(C²)_ij − π_j(C²)_ji, computed from Q alone through the group inverse C of −Q, says which two patches to force and in which phase order, with an explicit frequency and a gain bound of order ε² at amplitude ε. This settles the monotonicity conjecture of Benaïm, Lobry, Sari and Strickler for a fixed migration matrix. For reversible migration the quenched Lyapunov exponent under an irreducible finite-state Markov environment strictly decreases with switching speed unless the frozen matrices share a Perron vector, proving Conjecture 1 of Monmarché, Schreiber and Strickler (2025); with a reversible environmental chain the annealed exponent is convex and strictly decreasing. Time-symmetric two-state environments give witnesses according to the sign of an explicit quadratic form, and the classification extends to elliptic diffusions on closed manifolds. The symmetric sufficiency direction and the slow and fast expansions are known; the converse, the certificate, the random strictness and the diffusion converse are the proposed contribution. The guaranteed effects are small at weak amplitude and the classification is existential. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "detailed balance",
+    "reversible Markov generator",
+    "principal Floquet exponent",
+    "Lyapunov exponent",
+    "dispersal-induced growth",
+    "periodic environments",
+    "Markov switching",
+    "reduction principle",
+    "patch models"
+  ],
+  "repoUrl": "https://github.com/ipitchford/reversibility-frequency-reduction",
+  "releaseUrl": "https://github.com/ipitchford/reversibility-frequency-reduction/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/reversibility-frequency-reduction/releases/download/v0.1.0-candidate/reversibility-frequency-reduction-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23911074",
+  "conceptDoi": "10.5281/zenodo.23911073",
+  "zenodoUrl": "https://zenodo.org/records/23911074",
+  "citeText": "Anonymous (2026). Reversibility and frequency reduction in periodic and random positive systems. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23911074",
+  "evidence": "Written proofs of Theorems A–E and every supporting result (35-page manuscript with two appendices); verify.py with 81 exact rational checks (certificate data for six generators with reversibility decided two independent ways, the three-cycle response function, the Appendix A certificate margin, the quantitative witness constants and the two-state constants) and 193 floating-point illustrations (Floquet growth curves, reversible controls, switching, two-state witnesses, energy identity, annealed exponents), every check routed to a non-zero exit status so it stays active under Python -O; five planted-error negative controls detected with and without -O (10/10); replay of verify.py under -I -O -B from a fresh extraction of the frozen archive with verification.json matching the retained output and the figure byte-identical.",
+  "statusDetail": "Unrefereed AI-assisted candidate in mathematical biology and dynamical systems. Every theorem has a written proof; exact rational checks cover specific generators and constants, and floating-point curves are illustrations. Internal AI-assisted review in five roles, an adversarial review, a proof audit and a final confirmation by a separate model, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 3 November 2026 with DOI insertion, 35 pages), verify.py and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 3 November 2026.",
+  "keyResults": [
+    "Periodic classification (Theorem A / Theorem 4.1, proof): for an irreducible generator Q, detailed balance ⇔ the principal Floquet growth rate is nonincreasing in frequency for every bounded periodic environment ⇔ the certificate d_ij = π_i(C²)_ij − π_j(C²)_ji vanishes; reversible Q give strict decrease unless r_i(θ) = a_i + b(θ). Hence the Benaïm–Lobry–Sari–Strickler conjecture holds for a fixed migration matrix exactly when it is diagonally symmetrisable (Corollary 4.4).",
+    "Weak witnesses (Theorem B / Theorem 5.2, Proposition 5.3, Corollary 5.4, proof): if d_ij ≠ 0, the rotating environment ε(e_i cos θ + ς e_j sin θ) with ς = −sign d_ij has an interior global frequency maximum for all small ε, with gain at least ε²|d_ij|²γ³/(16ζ_ij) at ω* = |d_ij|γ³/(2ζ_ij); periodic switching among finitely many constant environments also works. For the directed three-cycle, ω* = 27/64, g* = 3/256 and ε* = 2187/6487040 (exact).",
+    "Random environments (Theorem C / Theorems 7.2–7.4, Proposition 7.6, proof): with reversible migration the quenched Lyapunov exponent is nonincreasing in switching speed for every stationary ergodic environment, and strictly decreasing for finite-state Markov switching unless the frozen matrices share a positive eigenvector — Conjecture 1 of Monmarché, Schreiber and Strickler; irreversible Q has a cyclic Markov counterexample; with a reversible environmental chain the annealed exponent is convex and strictly decreasing.",
+    "Two-state environments (Theorem D / Theorem 6.1, proof): time-symmetric two-state witnesses exist when Φ_Q(x) = xᵀΠC²x is negative for some centred x, and not in the slow small-amplitude regime when it is positive definite; for the three-cycle with one fast edge Φ is indefinite and forcing a single patch is a witness.",
+    "Elliptic diffusions (Theorem E / Theorem 8.1, Theorem B.1, proof): on a closed manifold, detailed balance of a smooth uniformly elliptic operator is equivalent to frequency monotonicity for every smooth periodic potential, and to time-reversal invariance of growth at one frequency; reversible diffusions with Markov-switching potentials have strictly decreasing quenched exponents."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematics and computation (original research bundle)",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review, proof audit and confirmation by a separate model (OpenAI Codex)",
+      "Claude Code: revision, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When can faster environmental change help a spread-out population? An Evidence Press briefing. Picture a population living in several patches of habitat. Individuals move between patches at fixed rates, while the growth rate in each patch rises and falls with the seasons. Ecologists have long asked whether speeding up those environmental swings always lowers the population's long-run growth. For symmetric movement the answer was known to be yes. But a 2025 example with three patches in a one-way loop showed that an intermediate speed can sometimes be best. This paper finds the exact dividing line. Faster periodic change can never raise long-run growth exactly when migration satisfies a condition called detailed balance, meaning there is no net circulation of movement around any loop of patches. Every two-patch system qualifies. If movement does circulate, then some gentle environment, varying just two patches a quarter of a cycle apart, makes an intermediate speed best. A simple certificate computed from the migration rates alone says which two patches to choose and in which order. For balanced migration the same holds when the environment switches at random: faster switching strictly lowers growth, unless switching cannot matter at all. This proves a 2025 conjecture by Monmarché, Schreiber and Strickler. The paper also treats environments that simply alternate between two states, and continuous habitats. The proofs are written out in full, and a script checks every exact constant. The gains from circulation are small for gentle environments, and the result says that a helpful environment exists, not how a particular one behaves. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify.py was rerun with Python -I -O -B from a fresh extraction of the frozen archive; the regenerated verification.json matched the retained output (run-time fields aside) and the figure was byte-identical; five planted errors were each detected with and without -O. GitHub CI reruns verify.py on Linux as a blocking job."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Reversibility is decided two ways inside verify.py, but no separate reimplementation by another party exists."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.12 with NumPy 2.3.5, SciPy 1.17.0 and Matplotlib 3.10.8 pinned in requirements.txt; exact checks use rational arithmetic; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Benaim, Lobry, Sari and Strickler (2024). When can a population spreading across sink habitats persist? Journal of Mathematical Biology. Conjectured frequency monotonicity for every time-independent migration matrix; settled here for a fixed matrix (Corollary 4.4).",
+      "url": "https://doi.org/10.1007/s00285-023-02039-8"
+    },
+    {
+      "citation": "Monmarché, Schreiber and Strickler (2025). Impacts of Tempo and Mode of Environmental Fluctuations on Population Growth: Slow- and Fast-Limit Approximations of Lyapunov Exponents for Periodic and Random Environments. Bulletin of Mathematical Biology. Slow and fast expansions used throughout; the directed three-cycle counterexample; Conjecture 1, proved here (Theorem 7.3).",
+      "url": "https://doi.org/10.1007/s11538-025-01443-z"
+    },
+    {
+      "citation": "Liu, Lou and Song (2022). A New Monotonicity for Principal Eigenvalues with Applications to Time-Periodic Patch Models. SIAM Journal on Applied Mathematics. Frequency monotonicity for symmetric migration in patch models (the known sufficiency direction).",
+      "url": "https://doi.org/10.1137/20M1320973"
+    },
+    {
+      "citation": "Katriel (2022). Dispersal-induced growth in a time-periodic environment. Journal of Mathematical Biology. Symmetric-case monotonicity and dispersal-induced growth.",
+      "url": "https://doi.org/10.1007/s00285-022-01791-7"
+    },
+    {
+      "citation": "Liu, Lou, Peng and Zhou (2019). Monotonicity of the principal eigenvalue for a linear time-periodic parabolic operator. Proceedings of the American Mathematical Society. Frequency monotonicity for symmetric diffusions and gradient drift; examples of failure with time-dependent coefficients.",
+      "url": "https://doi.org/10.1090/proc/14653"
+    },
+    {
+      "citation": "Mazari-Fouquer (2025). Another look at qualitative properties of eigenvalues using effective Hamiltonians. Comptes Rendus. Mathématique. Alternative effective-Hamiltonian proof in the self-adjoint case.",
+      "url": "https://doi.org/10.5802/crmath.747"
+    },
+    {
+      "citation": "Tănase-Nicola and Nemenman (2012). Fitness in time-dependent environments includes a geometric phase contribution. Journal of The Royal Society Interface. Geometric-phase contribution to fitness in slowly changing environments; precedent for the first-order slow term.",
+      "url": "https://doi.org/10.1098/rsif.2011.0695"
+    },
+    {
+      "citation": "Franco, Kepka and Velázquez (2026). Characterizing the Detailed Balance Property by Means of Measurements. Archive for Rational Mechanics and Analysis. Characterising detailed balance by measurements; related reversibility tests.",
+      "url": "https://doi.org/10.1007/s00205-026-02183-7"
+    },
+    {
+      "citation": "Cohen (1981). Convexity of the dominant eigenvalue of an essentially nonnegative matrix. Proceedings of the American Mathematical Society.",
+      "url": "https://doi.org/10.1090/S0002-9939-1981-0601750-2"
+    },
+    {
+      "citation": "Lawley, Mattingly and Reed (2014). Sensitivity to switching rates in stochastically switched ODEs. Communications in Mathematical Sciences.",
+      "url": "https://doi.org/10.4310/CMS.2014.v12.n7.a9"
+    },
+    {
+      "citation": "Mierczyński and Shen (2003). Exponential separation and principal Lyapunov exponent/spectrum for random/nonautonomous parabolic equations. Journal of Differential Equations.",
+      "url": "https://doi.org/10.1016/S0022-0396(03)00016-0"
+    },
+    {
+      "citation": "Mierczyński and Shen (2008). Time averaging for nonautonomous/random linear parabolic equations. Discrete and Continuous Dynamical Systems - B.",
+      "url": "https://doi.org/10.3934/dcdsb.2008.9.661"
+    },
+    {
+      "citation": "Liu (2025). Asymptotic and global analysis of principal eigenvalues for linear time-periodic parabolic systems. Journal de Mathématiques Pures et Appliquées.",
+      "url": "https://doi.org/10.1016/j.matpur.2025.103781"
+    },
+    {
+      "citation": "Liu and Wang (2026). Dispersal-induced growth in time-periodic two-patch environments with asymmetric migration. Journal of Mathematical Biology. Asymmetric two-patch models, covered by the reversible case since every two-patch generator is reversible.",
+      "url": "https://doi.org/10.1007/s00285-025-02325-7"
+    },
+    {
+      "citation": "Hutson, Mischaikow and Poláčik (2001). The evolution of dispersal rates in a heterogeneous time-periodic environment. Journal of Mathematical Biology.",
+      "url": "https://doi.org/10.1007/s002850100106"
+    },
+    {
+      "citation": "Nadin (2009). The principal eigenvalue of a space–time periodic parabolic operator. Annali di Matematica Pura ed Applicata.",
+      "url": "https://doi.org/10.1007/s10231-008-0075-4"
+    },
+    {
+      "citation": "Liu and Lou (2027). Principal eigenvalues for non-self-adjoint operators: Theory and applications. Discrete and Continuous Dynamical Systems. Survey treating frequency monotonicity in the self-adjoint case only.",
+      "url": "https://doi.org/10.3934/dcds.2026.105528"
+    },
+    {
+      "citation": "Benaim, Lobry, Sari and Strickler (2025). Dispersal-induced growth or decay in a time-periodic environment. The case of reducible migration matrices. Journal of Mathematical Biology.",
+      "url": "https://doi.org/10.1007/s00285-025-02258-1"
+    },
+    {
+      "citation": "Roy, Holt and Barfield (2005). Temporal Autocorrelation Can Enhance the Persistence and Abundance of Metapopulations Comprised of Coupled Sinks. The American Naturalist.",
+      "url": "https://doi.org/10.1086/431286"
+    },
+    {
+      "citation": "Schreiber (2010). Interactive effects of temporal correlations, spatial heterogeneity and dispersal on population persistence. Proceedings of the Royal Society B: Biological Sciences.",
+      "url": "https://doi.org/10.1098/rspb.2009.2006"
+    },
+    {
+      "citation": "Jansen and Yoshimura (1998). Populations can persist in an environment consisting of sink habitats only. Proceedings of the National Academy of Sciences.",
+      "url": "https://doi.org/10.1073/pnas.95.7.3696"
+    },
+    {
+      "citation": "Benaïm, Le Borgne, Malrieu and Zitt (2014). On the stability of planar randomly switched systems. The Annals of Applied Probability.",
+      "url": "https://doi.org/10.1214/13-AAP924"
+    },
+    {
+      "citation": "Sinitsyn and Nemenman (2007). Universal Geometric Theory of Mesoscopic Stochastic Pumps and Reversible Ratchets. Physical Review Letters. Geometric theory of stochastic pumps.",
+      "url": "https://doi.org/10.1103/PhysRevLett.99.220408"
+    },
+    {
+      "citation": "Rahav, Horowitz and Jarzynski (2008). Directed Flow in Nonadiabatic Stochastic Pumps. Physical Review Letters.",
+      "url": "https://doi.org/10.1103/PhysRevLett.101.140602"
+    },
+    {
+      "citation": "Chernyak and Sinitsyn (2008). Pumping Restriction Theorem for Stochastic Networks. Physical Review Letters.",
+      "url": "https://doi.org/10.1103/PhysRevLett.101.160601"
+    },
+    {
+      "citation": "Higham (2008). Functions of Matrices: Theory and Computation. Society for Industrial and Applied Mathematics.",
+      "url": "https://doi.org/10.1137/1.9780898717778"
+    },
+    {
+      "citation": "Gurvits, Shorten and Mason (2007). On the Stability of Switched Positive Linear Systems. IEEE Transactions on Automatic Control.",
+      "url": "https://doi.org/10.1109/TAC.2007.899057"
+    },
+    {
+      "citation": "Fainshil, Margaliot and Chigansky (2009). On the Stability of Positive Linear Switched Systems Under Arbitrary Switching Laws. IEEE Transactions on Automatic Control.",
+      "url": "https://doi.org/10.1109/TAC.2008.2010974"
+    },
+    {
+      "citation": "Kingman (1968). The Ergodic Theory of Subadditive Stochastic Processes. Journal of the Royal Statistical Society Series B: Statistical Methodology.",
+      "url": "https://doi.org/10.1111/j.2517-6161.1968.tb00749.x"
+    },
+    {
+      "citation": "Kato (1995). Perturbation Theory for Linear Operators. Springer.",
+      "url": "https://doi.org/10.1007/978-3-642-66282-9"
+    },
+    {
+      "citation": "Altenberg (2012). Resolvent positive linear operators exhibit the reduction phenomenon. Proceedings of the National Academy of Sciences.",
+      "url": "https://doi.org/10.1073/pnas.1113833109"
+    },
+    {
+      "citation": "Amster, Cid and Franco (2026). Interactive effects of fluctuating environments and dispersal on total population size. Mathematical Biosciences.",
+      "url": "https://doi.org/10.1016/j.mbs.2026.109771"
+    },
+    {
+      "citation": "Benaim, Lobry, Sari and Strickler (2023). When can a population spreading across sink habitats persist? arXiv:2311.04706. arXiv version cited for Section 3.7 and Conjecture 1.",
+      "url": "https://arxiv.org/abs/2311.04706",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Benaïm, Lobry, Sari and Strickler (2024). Sufficient condition for dispersal-induced growth on dynamic networks. arXiv:2411.07821.",
+      "url": "https://arxiv.org/abs/2411.07821",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:reversibility-frequency-reduction",
+    "attemptIds": [
+      "ep-attempt:reversibility-frequency-reduction-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "certificate",
+      "description": "Whether faster environmental change can raise the long-run growth rate of a patch population with fixed migration: never, exactly under detailed balance, with an explicit certificate d_ij from the migration matrix that names a two-patch forcing with an interior frequency optimum otherwise; strict decrease for random Markov switching under reversible migration.",
+      "scope": "Linear patch models with fixed irreducible migration and periodic or stationary random growth rates, and elliptic diffusions on closed manifolds. Converse witnesses are perturbative; finite-amplitude behaviour, the shape of a given curve, bounded domains and time-varying migration are not settled."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.1 states the row-sum generator convention of Monmarché, Schreiber and Strickler and Proposition 5.7 covers the column-sum (conservative) convention of Benaïm, Lobry, Sari and Strickler; Section 2.3 and Table 1 separate known from new results; the exceptional set a_i + b(t) corrects the conjecture's exception \"all r_i equal\".",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "Floating-point curves are illustrations, not certificates."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in principal eigenvalues and random dynamical systems check the necessity argument of Section 4.2, the strictness proof of Theorem 7.3 and the diffusion converse of Section 8, and ask Monmarché, Schreiber and Strickler whether Theorem 7.3 matches their intended Conjecture 1.",
+      "claimCeiling": "Proved classification (periodic, two-state, diffusion), weak witnesses with explicit constants, quenched random monotonicity and strictness under reversible migration, annealed statement for reversible chains. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "reversibility-frequency-reduction-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable classification of when faster environmental change can raise growth in patch models, with a proof of the Monmarché–Schreiber–Strickler conjecture.",
+        "setting": "AI-assisted mathematical biology research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
