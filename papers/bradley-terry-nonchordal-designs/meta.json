@@ -1,0 +1,197 @@
+{
+ "slug": "bradley-terry-nonchordal-designs",
+ "title": "Nonchordal and irrational D-optimal designs for the Bradley–Terry model",
+ "shortTitle": "Optimal comparisons with no shortcut: a counterexample for Bradley–Terry designs",
+ "oneLine": "A 14-alternative counterexample shows that the best Bradley–Terry paired-comparison design can use a set of pairs with a chordless four-cycle and irrational weights, disproving a 2025 conjecture; the paper also proves which structure does survive.",
+ "abstract": "In a paired-comparison experiment each trial compares two alternatives, and an approximate design says what share of a fixed budget of trials goes to each pair. For the Bradley–Terry model, Röttger, Kahle and Schwabe (2025, Conjecture 12) conjectured that the pairs used by a locally D-optimal design always form a chordal graph, the property behind their closed rational formulae. This candidate disproves the conjecture. With fourteen alternatives and strengths (71 ×6, 73, 4260, 4380 ×6) the unique optimal design uses 54 of the 91 pairs, its comparison graph contains an induced four-cycle, and every positive weight is a quadratic irrational; all 91 optimality conditions are checked in exact arithmetic. The phenomenon persists on an open set of strength vectors, for every number of alternatives from fourteen upwards and for the explicit pairwise-distinct integers a⁰ᵢ(10¹⁷+i); along a one-parameter branch the weights are not rational functions of the strengths. Fourteen is the minimum within the symmetric four-level family that produces the example (p > 3+2√2 per outer group) and seventeen within a three-level family; the global minimum is open between five and fourteen. In the other direction, no biconnected block of an optimal support is a cycle of length at least four, every cut vertex joins exactly two blocks on opposite sides in strength, and the house and K₂,₃ are not optimal on five alternatives. This answers Problem 15 of Kahle, Röttger and Schwabe (2021) positively for Bradley–Terry intensities and negatively for unrestricted intensities. The obstruction concerns exact supports and formulae, not efficiency. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+ "datePublished": "2026-11-03",
+ "version": "0.1.0-candidate",
+ "authors": [
+  "Anonymous"
+ ],
+ "status": "unrefereed-candidate",
+ "math": true,
+ "keywords": [
+  "Bradley–Terry model",
+  "paired comparisons",
+  "optimal design",
+  "D-optimality",
+  "chordal graph",
+  "graph Laplacian",
+  "effective resistance",
+  "algebraic statistics"
+ ],
+ "repoUrl": "https://github.com/ipitchford/bradley-terry-nonchordal-designs",
+ "releaseUrl": "https://github.com/ipitchford/bradley-terry-nonchordal-designs/releases/tag/v0.1.0-candidate",
+ "pdfUrl": "https://github.com/ipitchford/bradley-terry-nonchordal-designs/releases/download/v0.1.0-candidate/bradley-terry-nonchordal-designs-0.1.0-candidate.pdf",
+ "doi": "10.5281/zenodo.23932523",
+ "conceptDoi": "10.5281/zenodo.23932522",
+ "zenodoUrl": "https://zenodo.org/records/23932523",
+ "citeText": "Anonymous (2026). Nonchordal and irrational D-optimal designs for the Bradley–Terry model. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23932523",
+ "evidence": "Written proofs of every general theorem in a 24-page manuscript. Seven standard-library programs check the explicit examples and identities in exact rational or quadratic-field arithmetic: the full grounded Laplacians, exact inverses and all pairwise optimality conditions for the 14-, 17- and 18-alternative witnesses (91, 136 and 153 pairs) and four further constructions; separate implementations for the 14- and 17-alternative witnesses; the spectral bounds and constants of the quantitative persistence lemma and the exact cost change for the distinct-strength 14-alternative example; the K₂,₃ resistance identities; and finite checks of the cycle identities. Mutation tests make the checkers fail. Every program was rerun normally and under Python -O from a fresh copy, after DOI insertion and from the frozen archive.",
+ "statusDetail": "Unrefereed AI-assisted mathematics candidate. The explicit examples carry exact certificates; the general results (non-rationality, family thresholds, persistence, all larger dimensions, cycle-block exclusion, cut vertices, five-vertex exclusions) rest on written proofs. Internal AI-assisted review in five roles, an adversarial review by a second model, a proof audit, a second-model proof audit and a re-review found no correctness issue. External specialist review, independent reproduction and formal verification have not been established. The prior-art search was bounded.",
+ "pageStructureVersion": "2.0",
+ "pageStructureVariant": "canonical-theorem",
+ "pageStructureWaivers": [],
+ "recordMaturity": "current",
+ "grandfatheredAtSchemaVersion": null,
+ "metadataProvenance": "Prepared from the final manuscript (approved text of 3 November 2026 with DOI insertion, 24 pages), its certificate programs and the frozen release archive. The versioned GitHub and Zenodo research archives were checked byte for byte against the frozen release assets on 3 November 2026.",
+ "keyResults": [
+  "Counterexample (Proposition 3.2, exact certificate): for strengths (71 ×6, 73, 4260, 4380 ×6) the unique locally D-optimal Bradley–Terry design uses 54 of 91 pairs, contains an induced four-cycle and has quadratic irrational weights. This disproves Conjecture 12 of Röttger, Kahle and Schwabe (2025).",
+  "Not a tie artefact (Lemmas 7.1, 7.2, 8.1; Propositions 6.1, 8.3, proof and exact checks): nonchordal optima occur on open sets of strengths, for every n ≥ 14, and for explicit pairwise-distinct integers a⁰ᵢ(10¹⁷+i) with 14 alternatives; along a branch the weights are not rational functions of the strengths (Proposition 3.3).",
+  "Family minima (Theorems 3.4 and 9.1, proof): 14 is minimal within the symmetric four-level family (p > 3+2√2 per outer group) and 17 within a three-level family; the global minimum is open between 5 and 14.",
+  "Structure that survives (Theorem 10.1, Propositions 10.3–10.4, proof): no cycle block of length ≥ 4, so optimal supports on at most four alternatives are chordal; each cut vertex joins exactly two blocks, weaker on one side, stronger on the other; the house and K₂,₃ are not optimal on five alternatives. Problem 15 of Kahle, Röttger and Schwabe (2021): yes for Bradley–Terry intensities, no for arbitrary intensities (Remark 10.5)."
+ ],
+ "provenance": {
+  "aiGenerated": true,
+  "aiAssisted": true,
+  "generatedBy": [
+   "AI-assisted mathematics and exact computation",
+   "AI-assisted internal review, second-model adversarial review and proof audit, proof audit, clean replay, re-review",
+   "Claude Code: publication packaging and release"
+  ],
+  "humanRole": "Publication authority only; no human research contribution inferred.",
+  "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+ },
+ "narration": "Which pairs should you compare? An Evidence Press briefing. Many rankings are built from head-to-head comparisons: chess ratings, taste tests, and votes between two answers from language models. The Bradley–Terry model gives each item a strength, and one item beats another with a probability given by its share of their combined strength. If you have a fixed budget of comparisons, you must decide how much of it goes to each pair. The best choice, in a precise statistical sense, is called a D-optimal design: it makes the joint estimate of all the strengths as sharp as possible. The pairs that such a design actually uses form a network. In 2025, Frank Röttger, Thomas Kahle and Rainer Schwabe conjectured that this network is always chordal: every loop of four or more items has a shortcut across it. That property gives their exact formulas for optimal designs. This paper shows the conjecture is false. With fourteen items, six weak, six strong and two in between, the unique best design uses fifty-four of the ninety-one possible pairs, and those pairs contain a loop of four with no shortcut. Its weights are not even rational numbers. Every one of the ninety-one optimality conditions was checked in exact arithmetic. The effect is not an accident of tied strengths: it survives small changes, appears for every number of items from fourteen upwards, and has an example with all strengths different. Some structure does survive: a loop of four or more can never stand alone as a separate block of the network. In practice the loss is small: a chordal design comes within about a sixth of one per cent of the best. The lesson is for people who compute exact optimal designs. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or formally verified. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+ "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+ "relatedWorks": [
+  {
+   "citation": "Röttger, F., Kahle, T., & Schwabe, R. (2025). Optimal designs for discrete choice models via graph Laplacians. Journal of Statistical Theory and Practice, 19, Article 57. States Conjecture 12, disproved here, and the rational formulae for chordal supports.",
+   "url": "https://doi.org/10.1007/s42519-025-00468-w"
+  },
+  {
+   "citation": "Kahle, T., Röttger, F., & Schwabe, R. (2021). The semialgebraic geometry of saturated optimal designs for the Bradley–Terry model. Algebraic Statistics, 12(1), 97–114. Poses Problem 15, answered here in both readings.",
+   "url": "https://doi.org/10.2140/astat.2021.12.97"
+  },
+  {
+   "citation": "Bradley, R. A., & Terry, M. E. (1952). Rank analysis of incomplete block designs. Biometrika, 39(3–4), 324–345. The paired-comparison model.",
+   "url": "https://doi.org/10.1093/biomet/39.3-4.324"
+  },
+  {
+   "citation": "Graßhoff, U., & Schwabe, R. (2008). Optimal design for the Bradley–Terry paired comparison model. Statistical Methods and Applications, 17(3), 275–289. Locally D-optimal designs for the model.",
+   "url": "https://doi.org/10.1007/s10260-007-0058-4"
+  },
+  {
+   "citation": "Röttger, F., Engelke, S., & Zwiernik, P. (2023). Total positivity in multivariate extremes. The Annals of Statistics, 51(3), 962–1004. The same log-determinant problem for general data, where nondecomposable solutions were already known.",
+   "url": "https://doi.org/10.1214/23-AOS2272"
+  },
+  {
+   "citation": "Ghosh, A., Boyd, S., & Saberi, A. (2008). Minimizing effective resistance of a graph. SIAM Review, 50(1), 37–66. Effective-resistance optimisation.",
+   "url": "https://doi.org/10.1137/050645452"
+  },
+  {
+   "citation": "Lauritzen, S., Uhler, C., & Zwiernik, P. (2019). Maximum likelihood estimation in Gaussian models under total positivity. The Annals of Statistics, 47(4), 1835–1863. Closed rational solutions on chordal graphs.",
+   "url": "https://doi.org/10.1214/17-AOS1668"
+  },
+  {
+   "citation": "Forcey, S., & Scalzo, D. (2020). Phylogenetic networks as circuits with resistance distance. Frontiers in Genetics, 11, Article 586664. The cycle resistance identity used for the cycle-block theorem.",
+   "url": "https://doi.org/10.3389/fgene.2020.586664"
+  },
+  {
+   "citation": "Devriendt, K. (2022). Effective resistance is more than distance: Laplacians, simplices and the Schur complement. Linear Algebra and its Applications, 639, 24–49. Laplacian and resistance background.",
+   "url": "https://doi.org/10.1016/j.laa.2022.01.002"
+  }
+ ],
+ "assurance": {
+  "availability": {
+   "state": "passed",
+   "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Asset parity was checked against the frozen local files; availability does not establish correctness or peer review."
+  },
+  "internalReplay": {
+   "state": "passed",
+   "note": "run_checks.py (seven programs, each run normally and under Python -O) was rerun from a fresh copy of the approved package, after DOI insertion and again from the frozen archive; logs matched apart from timings and the recorded manuscript hash. GitHub CI reruns it on Linux."
+  },
+  "independentRerun": {
+   "state": "not-assessed",
+   "note": "No unaffiliated rerun has been established."
+  },
+  "independentReimplementation": {
+   "state": "partial",
+   "note": "Separate matrix implementations recheck the 14- and 17-alternative witnesses. This is producer-side diversity, not unaffiliated reimplementation."
+  },
+  "formalVerification": {
+   "state": "not-assessed",
+   "note": "No proof-assistant formalisation."
+  },
+  "specialistReview": {
+   "state": "not-assessed",
+   "note": "AI-assisted internal and adversarial review is not external specialist review."
+  },
+  "editorialPeerReview": {
+   "state": "not-assessed",
+   "note": "No external editorial peer review."
+  },
+  "dataEnvironmentReproducibility": {
+   "state": "partial",
+   "note": "The certificates need only the Python standard library (3.10 or later); the figure script needs Matplotlib; not a locked container."
+  }
+ },
+ "operatingModel": {
+  "version": "1.0",
+  "workId": "ep-work:bradley-terry-nonchordal-designs",
+  "attemptIds": [
+   "ep-attempt:bradley-terry-nonchordal-designs-publication"
+  ],
+  "aims": [
+   "science"
+  ],
+  "artifactRoles": [
+   "research-output",
+   "communication"
+  ],
+  "lineageId": null,
+  "accelerationPrimitives": [
+   "adversarial-controls",
+   "assurance-vector",
+   "agent-readable-research-object"
+  ],
+  "decisionObject": {
+   "type": "decision-rule",
+   "description": "Whether exact D-optimal Bradley–Terry paired-comparison designs can be assumed to have chordal supports and rational weights: they cannot, as an exact 14-alternative counterexample shows, while cycle blocks and some five-vertex graphs are excluded.",
+   "scope": "Locally D-optimal approximate designs for the Bradley–Terry paired-comparison model; pairs only, not choice sets of three or more."
+  },
+  "bottleneckTargeted": [
+   "assurance",
+   "publication"
+  ],
+  "semanticBridge": {
+   "state": "explicit",
+   "description": "Section 1 quotes Conjecture 12 verbatim (journal numbering; Conjecture 14 in earlier arXiv versions) and separates the two readings of Problem 15; Section 2 fixes the scaling of the resistance certificate.",
+   "remainingRisks": [
+    "The bounded literature check is not exhaustive priority certification.",
+    "No external specialist has checked the general proofs."
+   ]
+  },
+  "humanJudgmentGates": [
+   "Publication is authorised; scientific endorsement is not inferred.",
+   "External specialist review and independent reproduction remain open."
+  ],
+  "parentLinks": [],
+  "assuranceTarget": {
+   "dimensions": [
+    "specialistReview",
+    "independentRerun",
+    "formalVerification",
+    "priorityAssessment"
+   ],
+   "nextAction": "Ask a specialist in optimal design or algebraic statistics (for example the conjecture authors) to check the certificates and the cycle-block and cut-vertex proofs.",
+   "claimCeiling": "Exactly certified counterexamples and written proofs of the stated structural results; internal verification is not external assurance."
+  },
+  "impactClaims": [
+   {
+    "id": "bradley-terry-nonchordal-designs-no-impact",
+    "aim": "science",
+    "outcome": "An openly inspectable, exactly certified counterexample to a published conjecture on optimal paired-comparison designs.",
+    "setting": "AI-assisted mathematics research",
+    "status": "NO_IMPACT_EVIDENCE",
+    "designClass": "none",
+    "comparator": "None registered.",
+    "estimand": "No research-speed or scientific-impact effect is estimated.",
+    "evidenceRefs": [],
+    "registeredDesignRef": null,
+    "independentAssessment": null
+   }
+  ]
+ }
+}
