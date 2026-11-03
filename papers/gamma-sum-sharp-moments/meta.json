@@ -1,0 +1,224 @@
+{
+  "slug": "gamma-sum-sharp-moments",
+  "title": "Sharp moments of nonnegative gamma sums on the Euclidean sphere",
+  "shortTitle": "Spread or concentrate? The sharp moments of weighted gamma sums",
+  "oneLine": "For a weighted sum of independent exponential or gamma waiting times with its variance fixed, the weights that make the q-th moment smallest climb a staircase (one weight up to q = 5.32, then two, three, … equal weights), proving the Brazitikos–Pandis conjecture for every real q; the largest moment is found too, and for three or more variables the best weights jump.",
+  "abstract": "Let X₁, …, Xₙ be independent gamma variables with common shape α > 0 and unit rate, and let S = Σaᵢ Xᵢ with aᵢ ≥ 0 and Σaᵢ² = 1, so that the variance of S is fixed. For every real q > 0 the paper determines both the minimum and the maximum of E Sᵠ. The minimum equals min over 1 ≤ m ≤ n of Γ(mα+q)/(Γ(mα) m^{q/2}) and is attained only at vectors with m equal nonzero coefficients; for exponential variables one coordinate is optimal up to q = 5.3197…, then two, then three, the optimal number growing one at a time and roughly like 0.40 q. For α = 1 this is Conjecture 4.8 of Brazitikos and Pandis, previously known for integer q, for q ≤ 4 (Brazitikos, Tang and Tkocz) and, in an unrefereed AI-generated dossier, for q ≤ 5. The maximum is attained at the flat vector or at a vector with one larger coefficient and n−1 equal smaller ones, located by the unique interior local maximum of an explicit hypergeometric function; the flat vector is the unique maximiser below a switch exponent q*, with q* = 2α+2 and a continuous switch for n = 2, and 2+2α√(n−1) < q* < nα+2 with a jump for n ≥ 3. The proofs combine gamma size bias, a second-order exclusion argument and an exact sign formula for the Gauss hypergeometric equation. The paper also proves the large-exponent asymptotics of the minimum, settles negative exponents, and records consequences for positive Gaussian quadratic forms and symmetric Dirichlet averages. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "gamma distribution",
+    "sums of independent random variables",
+    "sharp moment inequalities",
+    "exponential random variables",
+    "Brazitikos–Pandis conjecture",
+    "Gaussian quadratic forms",
+    "hypergeometric function",
+    "Khinchin-type inequalities"
+  ],
+  "repoUrl": "https://github.com/ipitchford/gamma-sum-sharp-moments",
+  "releaseUrl": "https://github.com/ipitchford/gamma-sum-sharp-moments/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/gamma-sum-sharp-moments/releases/download/v0.1.0-candidate/gamma-sum-sharp-moments-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23930102",
+  "conceptDoi": "10.5281/zenodo.23930101",
+  "zenodoUrl": "https://zenodo.org/records/23930102",
+  "citeText": "Anonymous (2026). Sharp moments of nonnegative gamma sums on the Euclidean sphere. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23930102",
+  "evidence": "Written proofs, not machine-verified. run_checks.py runs four scripts with 26,147 explicit checks: computer algebra for every identity used in the proofs (residuals recorded), exact rational comparisons near every flat vector for integer q, 30-digit sign checks of Lemmas 2 and 6, optimisation searches for real q and global maximisation for n ≤ 6. The whole suite was rerun from a fresh extraction of the published archive with Python -I -B and with -O; both runs passed every check and matched the shipped results apart from timings. A deliberately broken copy fails under -O. GitHub CI on Linux reruns the suite in both modes.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Theorems 1 and 3 and the other results have written proofs; the numerical switch values q* are numerics. Internal AI-assisted review in five roles, a second-model adversarial review, one revision round with extensions (the sharp maximum among them), a proof audit and second-model audit of the new proofs, and a re-review. No human peer review, independent reproduction or formal verification has been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript of 3 November 2026 (18 pages), its README, verification ledger, prior-art record, agent index and recorded outputs, and the replay of the full check suite from a fresh extraction of the published archive.",
+  "keyResults": [
+    "Sharp minimum (Theorem 1, proof): for every n, every gamma shape α > 0 and every real q > 0, min E(Σaᵢ Xᵢ)ᵠ over nonnegative unit vectors equals min over m of Γ(mα+q)/(Γ(mα) m^{q/2}), attained exactly at m equal nonzero weights. For α = 1 this proves Brazitikos–Pandis Conjecture 4.8.",
+    "Staircase (Section 6 and Proposition 4, proof): the optimal number of equal weights rises by one at a time; for exponentials it is 1 up to q = 5.3197…, 2 up to 7.88, 3 up to 10.41, and grows like q/2.5129 ≈ 0.40 q.",
+    "Sharp maximum (Theorem 3, proof): the maximiser is the flat vector or has one larger weight and the rest equal, located by the unique interior local maximum of an explicit hypergeometric function; flat wins below a switch q*. For n = 2, q* = 2α + 2 and the switch is continuous; for n ≥ 3, 2 + 2α√(n−1) < q* < nα + 2 and the maximiser jumps (three exponentials: q* ≈ 4.8535, numerical).",
+    "Consequences (Sections 7 and 9, proof): sharp constants for positive Gaussian quadratic forms (at q = 4 the minimum 96 is at rank two, against 105 at rank one), symmetric Dirichlet averages, and negative exponents."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematics and computer verification",
+      "AI-assisted internal review, second-model adversarial review and audit of new proofs, proof audit, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Spread or concentrate? An Evidence Press briefing. Imagine adding up several random waiting times, such as the time until each of several machines next fails, each multiplied by a weight. Fix how variable the total is allowed to be. How small, and how large, can its higher averages, its moments, become? There is a tug of war. Putting all the weight on one waiting time keeps the average total small, but keeps that variable's long tail. Spreading the weight thins the tail, but raises the average. The answer for the smallest moment is a staircase. For exponential waiting times, one variable is best up to a moment order of about five point three two. Then two equal weights are best, then three, then four, one more at each step, growing in the long run like four tenths of the order. Brazitikos and Pandis conjectured this rule. It was already known for whole-number orders, for orders up to four by Brazitikos, Tang and Tkocz, and up to five in an AI-generated dossier. This paper proves it for every order, and for gamma waiting times of any shape. It also finds the largest moment. Equal weights on everything win up to a switch point. Beyond it, the best choice has one larger weight and the rest equal. With two variables the change is gradual; with three or more the best weights jump. Just above the switch, the equal-weight choice passes every local test for a maximum, yet is not the maximum. The results also cover sums of squared Gaussian variables, which appear in statistics and signal processing. The proofs are written out in full and backed by more than twenty-six thousand computer checks, openly archived with the paper. This is an anonymous, AI-assisted candidate. It has not been peer reviewed, independently reproduced or formally verified. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "run_checks.py was rerun from a fresh extraction of the published archive with Python -I -B and with -O (CPython 3.11.14, NumPy 2.3.5, SciPy 1.17.0, SymPy 1.14.0, mpmath 1.3.0); 26,147 checks passed in each mode and recorded values matched the shipped results apart from timings. GitHub CI on Linux reruns both modes."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Reviewers recomputed constants independently, but this is internal AI-assisted checking, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; computer algebra checks only the identities used in the proofs."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Package versions are pinned in requirements.txt and random searches use fixed seeds; not a locked container. No external data are used."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Brazitikos and Pandis (2025). Sharp inequalities for symmetric polynomials, Hunter's conjecture, and moments of exponential random variables. arXiv. Source of the real-exponent conjecture (Conjecture 4.8) proved here; integer exponents, the integer maximiser shape and two variables.",
+      "url": "https://arxiv.org/abs/2512.12254"
+    },
+    {
+      "citation": "Brazitikos, Tang and Tkocz (2026). Moments of sums of exponentials, beyond CHS. arXiv. The case q ≤ 4 and the size-bias and critical-point identities used throughout.",
+      "url": "https://arxiv.org/abs/2602.03058"
+    },
+    {
+      "citation": "Korea Superintelligence Labs, generated by Machina Mathematica (2026). The h4 inequality behind Hunter's conjecture: an exact real relaxation, two errata, and the real-exponent conjecture of Brazitikos and Pandis. AI-generated research dossier, version 1. The case q ≤ 5, the real-q two-value reduction, a conjectured curvature claim and the residual window closed here.",
+      "url": "https://ideosphere.ai/papers/brazitikos-realq"
+    },
+    {
+      "citation": "Chasapis, Singh and Tkocz (2023). Entropies of Sums of Independent Gamma Random Variables. Journal of Theoretical Probability. Schur-convexity result giving the location of both extremes for negative exponents.",
+      "url": "https://doi.org/10.1007/s10959-022-01192-y"
+    },
+    {
+      "citation": "Borell (1973). Complements of Lyapunov's inequality. Mathematische Annalen. Log-concavity of moments, behind the low-exponent results.",
+      "url": "https://doi.org/10.1007/BF01362702"
+    },
+    {
+      "citation": "Hunter (1977). The positive-definiteness of the complete symmetric functions of even order. Mathematical Proceedings of the Cambridge Philosophical Society. Origin of the line of work on moments of exponential sums.",
+      "url": "https://doi.org/10.1017/S030500410005386X"
+    },
+    {
+      "citation": "Haagerup (1981). The best constants in the Khintchine inequality. Studia Mathematica. The classical sharp-constant problem for Rademacher sums.",
+      "url": "https://doi.org/10.4064/sm-70-3-231-283"
+    },
+    {
+      "citation": "Latała and Oleszkiewicz (1995). A note on sums of independent uniformly distributed random variables. Colloquium Mathematicum. Sharp moment comparison for uniform summands.",
+      "url": "https://doi.org/10.4064/cm-68-2-197-206"
+    },
+    {
+      "citation": "Nayar and Oleszkiewicz (2012). Khinchine type inequalities with optimal constants via ultra log-concavity. Positivity. Sharp constants for symmetric discrete summands.",
+      "url": "https://doi.org/10.1007/s11117-011-0130-z"
+    },
+    {
+      "citation": "Havrilla and Tkocz (2021). Sharp Khinchin-type inequalities for symmetric discrete uniform random variables. Israel Journal of Mathematics. Further sharp Khinchin-type constants.",
+      "url": "https://doi.org/10.1007/s11856-021-2244-8"
+    },
+    {
+      "citation": "Eskenazis, Nayar and Tkocz (2018). Sharp comparison of moments and the log-concave moment problem. Advances in Mathematics. Sharp moment comparison for log-concave summands.",
+      "url": "https://doi.org/10.1016/j.aim.2018.06.014"
+    },
+    {
+      "citation": "Gluskin and Kwapień (1995). Tail and moment estimates for sums of independent random variables with logarithmically concave tails. Studia Mathematica. Moment estimates for sums with log-concave tails.",
+      "url": "https://doi.org/10.4064/sm-114-3-303-309"
+    },
+    {
+      "citation": "Latała (1997). Estimation of moments of sums of independent real random variables. The Annals of Probability. Two-sided moment estimates for general summands.",
+      "url": "https://doi.org/10.1214/aop/1024404522"
+    },
+    {
+      "citation": "Bartczak, Nayar and Zwara (2021). Sharp Variance-Entropy Comparison for Nonnegative Gaussian Quadratic Forms. IEEE Transactions on Information Theory. Extremal problems for positive Gaussian quadratic forms (the case α = 1/2).",
+      "url": "https://doi.org/10.1109/TIT.2021.3113281"
+    },
+    {
+      "citation": "Székely and Bakirov (2003). Extremal probabilities for Gaussian quadratic forms. Probability Theory and Related Fields. Extremal tail probabilities for the same forms.",
+      "url": "https://doi.org/10.1007/s00440-003-0262-6"
+    },
+    {
+      "citation": "Pang (2026). A Gamma envelope and sharp moment inequalities for Gaussian quadratic forms. arXiv. Related sharp moment bounds for Gaussian quadratic forms.",
+      "url": "https://arxiv.org/abs/2609.05914"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:gamma-sum-sharp-moments",
+    "attemptIds": [
+      "ep-attempt:gamma-sum-sharp-moments-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "Which nonnegative weighting with fixed sum of squares minimises or maximises the q-th moment of a sum of independent gamma variables of common shape: m equal weights with m given by Theorem 1 for the minimum; flat below q* and one-larger-coordinate above it for the maximum (Theorem 3).",
+      "scope": "Independent gamma variables with a common shape, nonnegative weights, raw moments of real order. Unequal shapes, signed weights and stability are not covered."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.2 states the problem in the conventions of Brazitikos and Pandis (shape-rate gamma, unit sum of squares) and Section 1.3 maps each prior unit to its source.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in sharp moment inequalities check Lemma 2, the second-order argument (10) and Theorem 3, and ask Brazitikos and Pandis whether the conjecture has been settled elsewhere.",
+      "claimCeiling": "Written proofs of Theorems 1 and 3 and the stated propositions; switch values q* numerical; finite computer checks. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "gamma-sum-sharp-moments-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of the real-exponent Brazitikos–Pandis conjecture for all gamma shapes, with the sharp maximum.",
+        "setting": "AI-assisted mathematics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
