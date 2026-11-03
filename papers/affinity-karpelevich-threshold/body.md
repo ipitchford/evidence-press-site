@@ -10,6 +10,8 @@
 
 **What this does and does not cover.** Every counterexample here uses a network in which **every pair of states is connected**. Whether the conjecture holds for a **single ring** of states, which is the setting in which its authors tested it, is **still open**. A small computer search over four- and five-state rings found no violation; that is evidence, not proof. The violations are small. The thermodynamic bounds that *have* been proved, an ellipse and a polygon, are unaffected.
 
+**Follow-up (3 November 2026).** The single-ring question (Open problem 8.1) has been answered: containment holds for rings with three or an even number of states and fails for every odd ring with five or more states. See [*Parity of affine Karpelevich containment on Markov rings*](/releases/markov-ring-karpelevich-parity/).
+
 **Status.** An anonymous, AI-assisted, unrefereed candidate. It was checked by internal AI-assisted review, including correctness audits by a different model, not by peer review or independent reproduction.
 
 ## Summary for specialists
@@ -75,7 +77,7 @@ Spectral bounds are used in reverse: from a measured relaxation spectrum, experi
 
 ## The most valuable next projects
 
-1. Settle the single-cycle case (Open problem 8.1). The resetting mechanism cannot apply to a ring, which has only one cycle.
+1. Settle the single-cycle case (Open problem 8.1). The resetting mechanism cannot apply to a ring, which has only one cycle. (Answered on 3 November 2026 by the [follow-up release](/releases/markov-ring-karpelevich-parity/).)
 2. Find the true eigenvalue region for given $n$, $\alpha$ and $\beta$, or at least the largest excess over $\Omega_n$ (Open problem 8.2).
 3. Make $\eta_n$ and $\varepsilon_0(n,t)$ explicit, and test the other arcs of $\Omega_n$ (Open problem 8.3).
 
