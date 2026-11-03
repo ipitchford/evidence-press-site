@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "How high does a rough random path climb? An Evidence Press briefing. Fractional Brownian motion is the standard model of a random path with a tunable roughness, set by a number called the Hurst parameter. When that number is small, the path is extremely jagged. Such paths are used, for example, to model the volatility of financial markets, where the Hurst parameter is often around one tenth. A basic question is how high such a path climbs, on average, over a unit of time. Mathematicians knew that the answer grows like one over the square root of the Hurst parameter, and they had bounds on the constant in front, but not its value. In 2022, Bisewski, Dębicki and Rolski conjectured that a limiting constant exists. This paper proves that it does, and that it is the square root of two.",
+      "inputSha256": "ddc20eeff10f9e7324057e96294a88b824463b122497d6db59fe82330d9aef1d",
+      "audioSha256": "baac01b74bdf8b7a14ebef81a8adce75fb046b1f23c4858d20b4dedfdbb938fd",
+      "requestId": "req_e53bbf512ef849f6a122191d0a7414f0",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "and that it is the square root of",
+        "heardEnding": "constant exists this paper proves that it does and that it is the square root of",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The idea is that a very rough path behaves like a branching tree of independent random choices, and the maximum of such a tree can be computed exactly. The paper also shows how the answer changes in higher dimensions, and it answers a practical question: how finely must you sample a path to see its maximum? A grid sees half of it once the Hurst parameter times the logarithm of the number of points reaches one half, and all of it only as that product grows without limit. So for very rough paths the number of points needed grows exponentially. These are limiting results, and they converge slowly; the paper also gives explicit bounds and numerical tables for realistic values. The proofs are written out in full and checked by scripts.",
+      "inputSha256": "4267052ac57f794454cb4964202daa223b41f4a2e479249a01daea21684878bb",
+      "audioSha256": "09cc45c3449c6f63062ea02d9455d9ed775cae7d0f61f320bd2e7f8f5abc6560",
+      "requestId": "req_faf8a2c8d13a40a698bbcd7f9287b431",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "written out in full and checked by scripts",
+        "heardEnding": "numerical tables for realistic values the proofs are written out in full and checked by scripts",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "4afbd9c59ac669eae900aea7a3a81c55fab1898c4c774fba703607f7d64edc48",
+      "audioSha256": "7e4b72d6ef4bee72bd685e70fca2bab9f9aa6649d63484aacd1579239a2986cb",
+      "requestId": "req_b09933ecf0444ad7bad7d179046d532a",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "small-hurst-fbm-maximum",
+  "generatedAt": "2026-11-03T07:28:11.700Z",
+  "sourceMetadata": "papers/small-hurst-fbm-maximum/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "75fe02f069a09d4fc515063b1fb96819d1e5a290d2193b8c086145ce461318c4",
+  "transcriptPath": "assets/audio/small-hurst-fbm-maximum.txt",
+  "transcriptSha256": "cdfc6cb3b880d7b90e571f1ccd30890f3bc323739ef1c40e22944f8d27e2955c",
+  "audioPath": "assets/audio/small-hurst-fbm-maximum.mp3",
+  "audioSha256": "d9fcd748460fb488326a2afe098da5af94edc4969363034032a8efd72ce5e3e5",
+  "audioBytes": 1889708,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice that is not additional scientific evidence",
+    "matchedWords": 7,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
