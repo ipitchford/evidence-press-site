@@ -146,6 +146,14 @@
       "url": "https://arxiv.org/abs/2201.13256"
     }
   ],
+  "corrections": [
+    {
+      "date": "2026-11-03",
+      "scope": "claim",
+      "summary": "Corrected the threshold ε₃ in §10.2 (“The classification”, after Theorem 5). The archived text states that the discriminant τ²(3136ε² − 584ε + 1)/57600 of F_ε is positive exactly when ε < ε₃ := (73 − √3193)/784 ≈ 1.76×10⁻³, and that the larger root is ≈ 0.17. The roots of 3136ε² − 584ε + 1 are (73 ± √5133)/784, since 584² − 4·3136 = 328512 = 64·5133. The correct values are ε₃ = (73 − √5133)/784 ≈ 1.728×10⁻³ and larger root (73 + √5133)/784 ≈ 0.1845. The printed expression (73 − √3193)/784 ≈ 0.021 matches neither printed approximation.",
+      "detail": "Only the stated threshold and its approximations are affected; the discriminant itself, Theorem 5 and the formula for t±(ε) are correct as printed. Conclusions unaffected (the worked cases use ε ≤ 1/1000, below ε₃ under either value), and no certificate or certified computation depends on ε₃. Rechecked with exact integer arithmetic and sympy. Archived paper, DOI and tag unchanged."
+    }
+  ],
   "operatingModel": {
     "version": "1.0",
     "workId": "ep-work:gaussian-pnp-stability",
