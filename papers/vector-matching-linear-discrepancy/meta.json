@@ -1,0 +1,219 @@
+{
+  "slug": "vector-matching-linear-discrepancy",
+  "title": "Linear discrepancy for vector-labelled perfect matchings",
+  "shortTitle": "Fairer pairings: matching error 17k instead of O(k²)",
+  "oneLine": "For edges of a complete bipartite graph labelled by vectors (for example k colours), some perfect matching lands within 17k of any fractional target in any k-dimensional norm, improving the previous O(k²); order k is necessary for arbitrary targets, and the key step cuts all leftover fractional paths at once.",
+  "abstract": "Colour the edges of the complete bipartite graph K_{n,n} with k colours. How close can a perfect matching come to using every colour in its expected proportion? Hogan, Scott and Tsarev (2026) proved that the total imbalance can be kept to O(k²), independently of n; earlier, Hollom gave a bound of order 4^{k²}. This candidate proves a linear bound in a more general setting: if every edge carries a label in the unit ball of a k-dimensional real normed space and x is any fractional perfect matching, some perfect matching M has ‖h(M) − Σ x_e h(e)‖ ≤ 17k. For arbitrary fractional targets the order k is best possible in the worst case over norms (an ℓ₁ example forces k/2); for the uniform target of the colour-balancing problem the known lower bound is √(k/2), so the square-root conjecture stays open. The key tool is a splitting lemma in the Hobby–Rice and necklace-splitting tradition: d signed measures on an interval cut into q pieces, with a different fraction on each piece, are matched by one set with at most q − 1 + 2d switches, instead of about 2qd when the pieces are split separately. Consequences include linear-in-k bounds for colour-balanced perfect matchings of complete graphs, spanning forests, Hamilton cycles and complete multipartite hypergraph matchings, and an existence version of a school-assignment rounding (FORC 2025) with total capacity violation at most 8g − 1 instead of O(g²) for g groups. The proofs are existential; no efficient algorithm is claimed. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "perfect matchings",
+    "discrepancy",
+    "colour-balanced matchings",
+    "fractional perfect matching",
+    "rounding",
+    "necklace splitting",
+    "Hobby–Rice theorem",
+    "group fairness",
+    "school assignment"
+  ],
+  "repoUrl": "https://github.com/ipitchford/vector-matching-linear-discrepancy",
+  "releaseUrl": "https://github.com/ipitchford/vector-matching-linear-discrepancy/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/vector-matching-linear-discrepancy/releases/download/v0.1.0-candidate/vector-matching-linear-discrepancy-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23932844",
+  "conceptDoi": "10.5281/zenodo.23932843",
+  "zenodoUrl": "https://zenodo.org/records/23932844",
+  "citeText": "Anonymous (2026). Linear discrepancy for vector-labelled perfect matchings. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23932844",
+  "evidence": "Written proofs of every lemma, theorem, proposition and corollary; check_lemmas.py (Python standard library only) with 2,374,625 exact integer and rational checks of the finite bookkeeping: the 64 local configurations of Lemma 4, 87,380 cut patterns of Lemma 6, 510 cases of the binary recursion of Lemma 5 and its switch budget, the lower-bound example in ℓ₁, ℓ₂ and ℓ∞ for k ≤ 8, the constant arithmetic for k ≤ 40 and 335,922 overload patterns of Corollary 12, each raising on failure so they stay active under Python -O, plus a mutation self-test; clean replay from a fresh copy with and without -O reproducing the retained output, and the figure script reproducing the PNG figure byte for byte.",
+  "statusDetail": "Unrefereed AI-assisted combinatorics candidate. Every result has a written proof; the checker verifies finite bookkeeping, not the Hobby–Rice step, the compactness argument or statements for all n and k. Existence proofs only; no algorithm is claimed. Internal AI-assisted review in five roles, a separate-model adversarial review and audit, a line-by-line proof audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 3 November 2026 with DOI insertion, 16 pages), its verification script and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 3 November 2026.",
+  "keyResults": [
+    "Linear bound (Theorem 1, proof): for labels in the unit ball of any k-dimensional real normed space on the edges of K_{n,n} and any fractional perfect matching x, some perfect matching M has ‖h(M) − Σ x_e h(e)‖ ≤ 17k; for the uniform target in ℓ₁^k this improves O(k²) (Hogan, Scott and Tsarev) to 17k.",
+    "Sharpness for arbitrary targets (Proposition 2, Remark 13, proof and exact checks): an ℓ₁^k example forces discrepancy exactly k/2; the same example gives √k/2 in ℓ₂^k and 1/2 in ℓ∞^k, and a Hadamard example gives √k/2 in ℓ∞^k for k a power of two. For the uniform target the order lies between √(k/2) and 17k.",
+    "Splitting lemma (Lemma 5, proof): d finite atomless signed measures on an interval cut into q pieces, with fraction α_j wanted on piece j, are matched by one finite union of intervals with at most q − 1 + 2d switches, instead of about 2qd when the pieces are split separately.",
+    "Consequences (Corollaries 7, 10, 11, Propositions 8–9, proof): colour-balanced perfect matchings of K_{2kt} within 17k + 2√k; spanning forests O(Δk); Hamilton cycles O(k); complete s-partite s-uniform hypergraph matchings 17(s − 1)k.",
+    "School assignment (Corollary 12, proof): in the setting of Santhini, Munagala, Nasre and Sankar (FORC 2025) there is an integral assignment meeting every group's optimal utility with total capacity violation at most 8g − 1, instead of O(g²); existence only."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted combinatorics and computation (ChatGPT for the original draft; Claude-based agents for the revision)",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and audit of the new proofs by a separate model (OpenAI Codex); line-by-line proof audit; clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "How fair can a pairing be? An Evidence Press briefing. Suppose n workers must be paired with n tasks, one each, and every possible pairing has one of k colours, standing for categories. A fair assignment would use each colour in proportion to how common it is. A random assignment gets this right on average, but its colour counts wobble by amounts that grow with n. Can some assignment be off by an amount that depends only on the number of colours? Lawrence Hollom showed that it can, with an error of four to the power k squared, and in 2026 Hogan, Scott and Tsarev reduced this to order k squared. This paper reduces it to seventeen k: linear in the number of colours. It also allows any vector labels, measured in any k-dimensional norm, and any fractional target, not just the uniform one. For arbitrary targets, order k cannot be improved: a simple example forces an error of k over two. For the uniform target, the truth lies between about the square root of k and seventeen k, and a square-root conjecture remains open. The key idea is to stop rounding pieces one at a time. The leftover fractional parts of the solution form paths. The paper lays all the paths end to end on one line and cuts them all at once, with a necklace-splitting style lemma that allows a different fraction on each piece while using few cuts in total. Consequences include linear bounds for colour-balanced matchings, spanning forests, Hamilton cycles and hypergraph matchings, and a school-assignment result where total capacity overflow for g groups is at most eight g minus one, instead of order g squared. These are existence results: no efficient algorithm is claimed. Every result has a written proof, and a script makes over two million exact checks of the finite bookkeeping. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "check_lemmas.py was rerun with Python -I -B, with and without -O, from a fresh copy of the approved package; both outputs matched the retained verification_results.json apart from timing and platform fields, and the mutation self-test caught both corrupted cases. make_figure.py reproduced the PNG figure byte for byte. The frozen archive was bound to that replay and the checker rerun from it; GitHub CI reruns the exact checks on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "The checker needs only the Python standard library; the figure pins Matplotlib 3.10.8 in requirements.txt; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Hogan, Scott and Tsarev (2026). Colour-balanced subgraphs. arXiv:2604.09449v2. The O(k²) matching bound (Theorem 1.9) improved here to 17k, the uniform-target lower bound √(k/2) and the conjectures left open.",
+      "url": "https://arxiv.org/abs/2604.09449v2"
+    },
+    {
+      "citation": "Hollom (2025). A Uniform Bound on Almost Colour-Balanced Perfect Matchings in Colour-Balanced Complete Graphs. The Electronic Journal of Combinatorics. The first bound independent of t, 4^{k²}.",
+      "url": "https://doi.org/10.37236/13491"
+    },
+    {
+      "citation": "Pardey and Rautenbach (2022). Almost color-balanced perfect matchings in color-balanced complete graphs. Discrete Mathematics. Showed exact balance can fail and conjectured O(k²).",
+      "url": "https://doi.org/10.1016/j.disc.2021.112701"
+    },
+    {
+      "citation": "Kittipassorn and Sinsap (2023). On the existence of zero-sum perfect matchings of complete graphs. Ars Mathematica Contemporanea. Origin of the colour-balanced matching question.",
+      "url": "https://doi.org/10.26493/1855-3974.2573.90d"
+    },
+    {
+      "citation": "Santhini K. A., Munagala, Nasre and Sankar (2025). Group Fairness and Multi-Criteria Optimization in School Assignment. FORC 2025, LIPIcs 329. The school-assignment rounding whose O(g²) capacity violation Corollary 12 lowers to 8g−1 (existence only).",
+      "url": "https://doi.org/10.4230/lipics.forc.2025.20"
+    },
+    {
+      "citation": "Hobby and Rice (1965). A Moment Problem in L1 Approximation. Proceedings of the American Mathematical Society. The splitting theorem behind Lemma 3.",
+      "url": "https://doi.org/10.2307/2033900"
+    },
+    {
+      "citation": "Pinkus (1976). A simple proof of the Hobby-Rice theorem. Proceedings of the American Mathematical Society. The form of Lemma 3 used.",
+      "url": "https://doi.org/10.1090/s0002-9939-1976-0425470-0"
+    },
+    {
+      "citation": "Stromquist and Woodall (1985). Sets on which several measures agree. Journal of Mathematical Analysis and Applications. The halving-and-closure template followed by Lemma 5.",
+      "url": "https://doi.org/10.1016/0022-247x(85)90021-6"
+    },
+    {
+      "citation": "Alon (1987). Splitting necklaces. Advances in Mathematics. Necklace splitting with few cuts.",
+      "url": "https://doi.org/10.1016/0001-8708(87)90055-7"
+    },
+    {
+      "citation": "Simmons and Su (2003). Consensus-halving via theorems of Borsuk-Ulam and Tucker. Mathematical Social Sciences. The fair-division form of Lemma 3.",
+      "url": "https://doi.org/10.1016/s0165-4896(02)00087-2"
+    },
+    {
+      "citation": "Akopyan and Karasev (2013). Cutting the Same Fraction of Several Measures. Discrete & Computational Geometry. Ham-sandwich theorem for charges used in the common-fraction case.",
+      "url": "https://doi.org/10.1007/s00454-012-9450-4"
+    },
+    {
+      "citation": "Grandoni, Ravi, Singh and Zenklusen (2014). New approaches to multi-objective optimization. Mathematical Programming. Common-proportion splitting of signed measures; quadratic loss in the budget count.",
+      "url": "https://doi.org/10.1007/s10107-013-0703-7"
+    },
+    {
+      "citation": "Chekuri, Vondrák and Zenklusen (2011). Multi-budgeted Matchings and Matroid Intersection via Dependent Rounding. SODA 2011. Dependent rounding of fractional matchings, a different guarantee.",
+      "url": "https://doi.org/10.1137/1.9781611973082.82"
+    },
+    {
+      "citation": "Lenstra, Shmoys and Tardos (1990). Approximation algorithms for scheduling unrelated parallel machines. Mathematical Programming. The extreme-point counting standard in iterative rounding.",
+      "url": "https://doi.org/10.1007/bf01585745"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:vector-matching-linear-discrepancy",
+    "attemptIds": [
+      "ep-attempt:vector-matching-linear-discrepancy-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "How far the best perfect matching must be from a fractional target when edges carry vector labels: at most 17k in any k-dimensional norm, order k necessary for arbitrary targets, and a joint path-splitting lemma that turns per-path quadratic rounding loss into linear loss.",
+      "scope": "Complete bipartite graphs and the reductions of Hogan, Scott and Tsarev; the FORC 2025 school-assignment setting; existence only."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.3 and its comparison table separate the per-path splitting of Hogan, Scott and Tsarev and of the FORC 2025 paper from the joint unequal-fraction splitting of Lemma 5; Section 5.5 quotes the FORC model and theorem it adapts; Section 7 records exactly what the checker covers.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification; Lemma 5 may be known in necklace-splitting or moment-theory language.",
+        "The constant 17 is not optimised and no algorithm is given."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review of Lemma 5 and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in necklace splitting check whether Lemma 5 (unequal fractions on q pieces with q − 1 + 2d switches) is known, and a combinatorialist check the deletion and completion counts behind the constant 17.",
+      "claimCeiling": "Proved 17k bound for every fractional target and every k-dimensional norm, order-k sharpness for arbitrary targets, the splitting lemma and its consequences; exact finite checks. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "vector-matching-linear-discrepancy-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable linear bound for vector-labelled perfect matchings and a joint splitting lemma with applications to fair assignment.",
+        "setting": "AI-assisted combinatorics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
