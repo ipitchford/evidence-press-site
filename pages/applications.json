@@ -923,6 +923,10 @@
   "canonical-covariance-localisation-failure": {
    "classification": "Research use",
    "application": "Developers of ensemble data-assimilation systems who must choose the coordinates in which to localise covariances can use the leading-order objective F(U), or simply symmetric (ZCA) whitening, instead of Snyder and Hakim's canonical coordinates when analysis error is scored in physical units; in a reconstruction of their 200-variable test case this removed about half the excess error, worth roughly doubling the ensemble. When error is scored relative to the forecast uncertainty, canonical coordinates remain the right choice. The main limit is that the results assume a known prior covariance and a single Gaussian analysis step, and bases estimated from small samples keep much less of the gain. This remains an unrefereed candidate."
+  },
+  "poincare-sinkhorn-global-rates": {
+   "classification": "Potential application",
+   "application": "People who run entropic optimal transport, for example with POT or OTT-JAX, in semi-discrete transport or in Schrödinger-bridge solvers, can read off an iteration budget and a stopping certificate from a Poincaré constant of the source and the radius of the target: the gap shrinks by a known factor every iteration, and the observed improvement in one step bounds the remaining error. The main limits are that the guarantees are proved for exact continuous (population) distributions rather than samples, and that the 1/λ² iteration count can be pessimistic by a constant factor. This remains an unrefereed candidate."
   }
  }
 }
