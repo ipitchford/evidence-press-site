@@ -1,0 +1,217 @@
+{
+  "slug": "ddvv-sum-of-squares-thresholds",
+  "title": "Exact sum-of-squares thresholds for the DDVV inequality on real symmetric and Hermitian matrices",
+  "shortTitle": "The DDVV commutator inequality holds with constant 1, but its simplest sum-of-squares proof needs 9/8 for 3 × 3 matrices and up to 3 in general",
+  "oneLine": "For every matrix size n and number of matrices m, the exact least constant for which the DDVV commutator inequality has a quadratic sum-of-squares proof: the true constant 1 only when n or m is 2, 9/8 for 3 × 3 real symmetric matrices, approaching but never reaching 3; for Hermitian matrices 4/3 only in a few small cases, up to 4 in general.",
+  "abstract": "The DDVV inequality, which began as a conjecture in submanifold geometry and is now a theorem, says that for real symmetric n × n matrices B_1, …, B_m the sum of the squared Frobenius norms of all commutators [B_p, B_q] is at most (Σ_p ‖B_p‖_F²)². Ge, Li and Zhou asked whether inequalities of this type have sum-of-squares proofs. This candidate answers the question for quadratic sum-of-squares certificates, that is, sums of squares of quadratic forms in the matrix entries. For all n, m ≥ 2 it computes the least coefficient c for which c(Σ_p ‖B_p‖_F²)² − Σ_{p,q} ‖[B_p, B_q]‖_F² is such a sum of squares. For real symmetric matrices this least coefficient σ(n, m) equals the true constant 1 exactly when min(n, m) = 2. Otherwise it is an explicit three-branch rational function of n and m (Theorem 1.1): it equals 9/8 for 3 × 3 matrices whenever m ≥ 3, it is nondecreasing in both parameters, and its supremum is 3, not attained. For Hermitian matrices, whose sharp constant is 1 for m = 2 and 4/3 for m ≥ 3, an analogous four-branch formula σ_H(n, m) is proved (Theorem 1.2). The sharp Hermitian inequality has a quadratic sum-of-squares proof exactly when n = 2, m = 2, or m = 3 and n ≤ 7, and the supremum of σ_H is 4. Both proofs average Gram matrices over the symmetry group, which reduces every certificate to a cone with ten explicit generators, and then match explicit sum-of-squares identities with explicit dual functionals; the thresholds are also the exact values of the degree-four moment relaxation. Scripts in exact arithmetic replay the identities and several independent finite certificates. AI-assisted, unrefereed candidate; no human peer review, independent reproduction or proof-assistant formalisation is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "DDVV inequality",
+    "commutator",
+    "sum of squares",
+    "semidefinite programming",
+    "moment relaxation",
+    "symmetry reduction",
+    "Hermitian matrices",
+    "normal scalar curvature"
+  ],
+  "repoUrl": "https://github.com/ipitchford/ddvv-sum-of-squares-thresholds",
+  "releaseUrl": "https://github.com/ipitchford/ddvv-sum-of-squares-thresholds/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/ddvv-sum-of-squares-thresholds/releases/download/v0.1.0-candidate/ddvv-sum-of-squares-thresholds-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23915749",
+  "conceptDoi": "10.5281/zenodo.23915747",
+  "zenodoUrl": "https://zenodo.org/records/23915749",
+  "citeText": "Anonymous (2026). Exact sum-of-squares thresholds for the DDVV inequality on real symmetric and Hermitian matrices. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23915749",
+  "evidence": "Written proofs of Theorems 1.1 and 1.2, Corollary 1.3 and the consequences in Sections 7–8 (27-page paper); a one-command exact-arithmetic replay suite (SymPy 1.14.0): eight checkers verifying the primal identities, all dual values, the coefficient lemmas against independently built Casimir projections at n ≤ 5, the Hermitian identities and an exact linear programme over the cone for 3 ≤ n, m ≤ 40, a zero-set certificate at (3, 3), exact PSD moment matrices at (3, 3) and (4, 3) and full-coordinate 9/8 identities at (3, 3) and (3, 4), then regeneration of the three certificate files, which must be byte-identical; clean replay from a fresh copy under normal and optimized Python.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate in real algebraic geometry and matrix analysis. The theorems have written proofs; exact-arithmetic certificate scripts complement them. Internal AI-assisted review in five roles, a separate-model adversarial review, one revision round adding the Hermitian theorem, a re-review, an independent Hermitian proof audit and a second separate-model audit, and a clean replay. External specialist review, independent reproduction and proof-assistant formalisation have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 3 November 2026 with DOI insertion, 27 pages), its replay suite and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 3 November 2026.",
+  "keyResults": [
+    "Theorem 1.1 (proof): for real symmetric tuples, σ(n, m) = 1 iff min(n, m) = 2; for n, m ≥ 3, σ = 3n²(m−1)/(mn²+7mn−6m−12n+12) if m(n+12) ≥ 6(n+4), 4n(n+8)/((n+2)(3n+14)) if m = 3 and n ∈ {5, 6}, and 4(m−1)(n+2)/(mn+7m+2n−2) otherwise.",
+    "Corollary 1.3 (proof): the sharp defect is a sum of squares iff min(n, m) = 2 (for n, m ≥ 3 it is nonnegative but not a sum of squares of polynomials of any degree); σ(3, m) = 9/8 for every m ≥ 3; σ is nondecreasing in n and m; sup σ = 3, not attained.",
+    "Theorem 1.2 (proof): for Hermitian tuples, σ_H(n, 2) = 1, σ_H = 4/3 iff n = 2 (m ≥ 3) or m = 3 and n ≤ 7, and an explicit four-branch formula otherwise; sup σ_H = 4, not attained; σ_H ≥ σ.",
+    "Sections 7–8 (proof): the skew-Hermitian threshold equals σ_H; restriction bounds for complex symmetric, general real and general complex tuples; σ and σ_H are the exact values of the degree-four moment relaxation, with optimal pseudo-moments given explicitly.",
+    "Section 9 (exact certificates): an independent zero-set obstruction at (3, 3) and exact PSD moment matrices at (3, 3) and (4, 3), regenerated byte-identically."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research (original research bundle)",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and audit by a separate model (OpenAI Codex); re-review and independent Hermitian proof audit",
+      "Claude Code: revision, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "How much slack does the simplest proof need? An Evidence Press briefing. Take a few symmetric matrices of the same size. Their commutators measure how far they are from commuting. The DDVV inequality says that the total size of all the commutators can never exceed the square of the total size of the matrices themselves, with constant one. It began as a conjecture about the curvature of submanifolds, curved shapes sitting inside spaces such as spheres, and it was proved in two thousand and eight. A theorem like this can sometimes be given a very checkable kind of proof: a sum of squares. If the gap between the two sides can be written as a sum of squared expressions, the gap is obviously never negative, and a computer can confirm the identity line by line. But since Hilbert we have known that a quantity can be nonnegative without being a sum of squares. So Ge, Li and Zhou asked whether the DDVV inequality has such a proof. This paper answers the question for the simplest kind of certificate, built from squares of quadratic expressions. It finds, for every matrix size and every number of matrices, the smallest constant for which such a proof exists. With exactly two matrices, or two by two matrices, the true constant one already works. Otherwise it does not: three by three matrices need nine eighths, and the required constant grows with the size and the number of matrices, approaching three but never reaching it. For Hermitian matrices, where the true constant is four thirds, the simplest proof works at four thirds only for two by two matrices, or for three matrices of size at most seven, and in general needs up to four. The proofs use symmetry to reduce every possible certificate to ten explicit squares, and exact computer arithmetic replays the identities and several independent certificates. Higher-degree certificates are not covered. This is an anonymous, AI-assisted, unrefereed candidate, published on the third of November twenty twenty-six; its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files by full download; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The full exact suite (run_checks.py) was rerun with Python -I -B and -I -B -O from a fresh copy before freezing; all checks passed and the three regenerated certificate files were byte-identical to the shipped ones. The frozen archive's code, certificates and logs are byte-identical to the replayed copy. GitHub CI repeats the suite on Linux in both modes."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "The coefficient lemmas are checked against projections built independently from the Casimir operator, the zero-set certificate has a separately written checker, and an internal audit re-derived the algebra. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3 with SymPy 1.14.0 (pinned in requirements.txt); exact integer, rational and symbolic arithmetic; tested with CPython 3.11 on macOS and Linux CI; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Ge, Li and Zhou (2021). Some generalizations of the DDVV and BW inequalities. Transactions of the American Mathematical Society. Asked whether DDVV-type inequalities have sum-of-squares proofs; the source question answered here for real symmetric and Hermitian matrices, and the Hermitian constant 4/3.",
+      "url": "https://doi.org/10.1090/tran/8360"
+    },
+    {
+      "citation": "Ge and Tang (2008). A proof of the DDVV conjecture and its equality case. Pacific Journal of Mathematics. The DDVV inequality with constant 1, proved; nonnegativity at the sharp constant is prior work.",
+      "url": "https://doi.org/10.2140/pjm.2008.237.87"
+    },
+    {
+      "citation": "Lu (2011). Normal Scalar Curvature Conjecture and its applications. Journal of Functional Analysis. The independent proof of the DDVV conjecture.",
+      "url": "https://doi.org/10.1016/j.jfa.2011.05.002"
+    },
+    {
+      "citation": "Ge, Xu, You and Zhou (2017). DDVV-type inequality for Hermitian matrices. Linear Algebra and its Applications. The sharp Hermitian constant 4/3 used in Theorem 1.2.",
+      "url": "https://doi.org/10.1016/j.laa.2017.04.028"
+    },
+    {
+      "citation": "Dillen, Fastenakels and Van der Veken (2007). A pinching theorem for the normal scalar curvature of invariant submanifolds. Journal of Geometry and Physics. Geometric background of the conjecture.",
+      "url": "https://doi.org/10.1016/j.geomphys.2006.06.006"
+    },
+    {
+      "citation": "Chern, do Carmo and Kobayashi (1970). Minimal Submanifolds of a Sphere with Second Fundamental Form of Constant Length. Functional Analysis and Related Fields. The two-matrix commutator estimate behind the m = 2 case.",
+      "url": "https://doi.org/10.1007/978-3-642-48272-4_2"
+    },
+    {
+      "citation": "Böttcher and Wenzel (2008). The Frobenius norm and the commutator. Linear Algebra and its Applications. The Böttcher–Wenzel commutator inequality, a related matrix inequality.",
+      "url": "https://doi.org/10.1016/j.laa.2008.05.020"
+    },
+    {
+      "citation": "Hilbert (1888). Ueber die Darstellung definiter Formen als Summe von Formenquadraten. Mathematische Annalen. Nonnegative forms need not be sums of squares, the distinction this paper quantifies.",
+      "url": "https://doi.org/10.1007/bf01443605"
+    },
+    {
+      "citation": "Choi and Lam (1977). Extremal positive semidefinite forms. Mathematische Annalen. The zero-set obstruction used for the independent certificate at (3, 3).",
+      "url": "https://doi.org/10.1007/bf01360024"
+    },
+    {
+      "citation": "Gatermann and Parrilo (2004). Symmetry groups, semidefinite programs, and sums of squares. Journal of Pure and Applied Algebra. The general symmetry-reduction method the proofs specialise.",
+      "url": "https://doi.org/10.1016/j.jpaa.2003.12.011"
+    },
+    {
+      "citation": "Riener, Theobald, Andrén and Lasserre (2013). Exploiting symmetries in SDP-relaxations for polynomial optimization. Mathematics of Operations Research. Symmetry reduction of moment relaxations (Section 8).",
+      "url": "https://doi.org/10.1287/moor.1120.0558"
+    },
+    {
+      "citation": "Ge and Tang (2022). Isoparametric Polynomials and Sums of Squares. International Mathematics Research Notices. Related non-SOS results for isoparametric quartics.",
+      "url": "https://doi.org/10.1093/imrn/rnac297"
+    },
+    {
+      "citation": "Ge (2014). DDVV-type inequality for skew-symmetric matrices and Simons-type inequality for Riemannian submersions. Advances in Mathematics. Skew-symmetric DDVV, a matrix type not classified here.",
+      "url": "https://doi.org/10.1016/j.aim.2013.10.010"
+    },
+    {
+      "citation": "Klep, Magron and Volčič (2021). Optimization Over Trace Polynomials. Annales Henri Poincaré. The dimension-free trace-polynomial setting discussed in Section 8.",
+      "url": "https://doi.org/10.1007/s00023-021-01095-4"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:ddvv-sum-of-squares-thresholds",
+    "attemptIds": [
+      "ep-attempt:ddvv-sum-of-squares-thresholds-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Use σ(n, m) and σ_H(n, m) as the exact least constants for which the DDVV commutator inequality has a degree-four sum-of-squares certificate, and the shipped moment matrices as exact benchmark instances.",
+      "scope": "Real symmetric and Hermitian (hence skew-Hermitian) tuples, all n, m ≥ 2; quadratic (level-zero) certificates only. Not multiplier or higher-degree certificates, not other matrix types."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.6 separates the new thresholds from the prior nonnegativity theorems (DDVV, Hermitian 4/3), the m = 2 SOS assertion of Zhu and Nie and the general symmetry-reduction method, and Section 1.7 compares the closest precedent (Laszlo's exact scale factor for the Böttcher–Wenzel form, a different regulariser).",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in real algebraic geometry or matrix inequalities check the cone lemmas (Lemmas 3.2 and 6.1), the coefficient formulas of Lemmas 4.2 and 6.2 and the regime exhaustion, and attempt the multiplier-level threshold σ_1(3, 3).",
+      "claimCeiling": "Proved exact quadratic sum-of-squares thresholds for real symmetric and Hermitian DDVV quartics with exact certificates; higher-degree certificates and other matrix types are open. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "ddvv-sum-of-squares-thresholds-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable exact classification of degree-four sum-of-squares certificates for the DDVV inequality.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
