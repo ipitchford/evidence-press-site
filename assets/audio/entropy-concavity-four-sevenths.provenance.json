@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "How much noise does it take to make entropy behave? An Evidence Press briefing. Take two independent copies of a random signal, add Gaussian noise to each, and blend the two noisy copies, with a mixing weight that runs from all of one copy to an even blend. Mixing tends to make things more Gaussian, and Gaussians have the most entropy, so a natural guess is that entropy rises smoothly as you blend, with no dips: in mathematical terms, that it is a concave function of the mixing weight. Ball, Nayar and Tkocz conjectured exactly this. This year Luo disproved it, and showed that tiny symmetric bumps on a Gaussian signal can still create a dip at an even blend whenever the signal makes up more than four sevenths of the total variance. Below one half, a positive result was already known.",
+      "inputSha256": "c288a7452ef64792d5d1d2ade4a13a2df4e85509a0d63b4f36a3ca452738cfdb",
+      "audioSha256": "d5c13f50512ee6283913ea4df9f8169d6bb6cb4d4767784f92c40275b78ba885",
+      "requestId": "req_2edb144569924af3857803c0fc6301ae",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "below half a positive result was already known",
+        "heardEnding": "up more than sevenths of the total variance below half a positive result was already known",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The question was what happens in between. This paper answers it. For any signal fraction below four sevenths, every symmetric signal close enough to a Gaussian gives a concave entropy curve. In noise terms: concavity is guaranteed once the noise variance exceeds three quarters of the signal variance, a signal-to-noise ratio of four thirds. Above that level the paper sharpens the counterexamples, with an exact formula for the dip's curvature. Part of that sign was proposed shortly before, in a public online argument, which the paper cites. It also explains where four sevenths comes from: the fixed point of a sharp Gaussian smoothing inequality. Two cautions. These are local results, and the effects are minute, dips of around ten to the minus thirteen in entropy.",
+      "inputSha256": "18efb35f2edb16341a0fa390f77b26ce2785c71df778df432d55404cb6bd26ca",
+      "audioSha256": "60a909ee812fbc0b2a3e4238ee0a8668576287b9b399af9750893a4d36aed7fb",
+      "requestId": "req_38181c57fced42b0a39587328988ca11",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "dips of around to the minus in entropy",
+        "heardEnding": "are local results and the effects are minute dips of around to the minus in entropy",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "And whether exactly four sevenths itself qualifies is still open. The proofs are written out, and checked by standard-library scripts that must catch sixteen deliberately broken copies. This is an anonymous, AI-assisted, unrefereed candidate, published on the third of November twenty twenty-six; its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "579b9ec31bf9432d7269951e3fe25328ac8440fe97f052cba61daedf562ad854",
+      "audioSha256": "8af8e69e1d226ee80f19008dadf3f58663b502555f44b638e1ad4c0b54715001",
+      "requestId": "req_9c6955e81c9d4843ab94207d963ab074",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "entropy-concavity-four-sevenths",
+  "generatedAt": "2026-11-03T07:37:57.709Z",
+  "sourceMetadata": "papers/entropy-concavity-four-sevenths/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "5ebae3869c383b9c564a8c6c7f0ed815abfcc4fd5d47cdf5dfdbcecc2abe5fe6",
+  "transcriptPath": "assets/audio/entropy-concavity-four-sevenths.txt",
+  "transcriptSha256": "a9ee0431f54b5ec75750a4754d504c6cb52cf8260c2bdd7a4ecb6d04215ad7c4",
+  "audioPath": "assets/audio/entropy-concavity-four-sevenths.mp3",
+  "audioSha256": "20cbc39cd80d9e6d09e096d73b6d5c5d8e820c11a2ae8a3ed6e87e849be88990",
+  "audioBytes": 2139308,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
