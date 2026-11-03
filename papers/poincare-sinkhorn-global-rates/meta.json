@@ -1,0 +1,229 @@
+{
+  "slug": "poincare-sinkhorn-global-rates",
+  "title": "Curvature, relative entropy, and global Sinkhorn convergence",
+  "shortTitle": "One Poincaré inequality is enough: global Sinkhorn rates and why 1/λ² is the limit",
+  "oneLine": "If the source distribution satisfies one Poincaré inequality and the cost's source gradients lie in balls of radius L, every full Sinkhorn iteration shrinks the entropic dual gap by at least the factor C_P L²/(C_P L² + λ²), from the first step and for any target, so about (C_P L²/λ²) log(1/ε) iterations suffice; explicit one-dimensional examples show that the exponent 2 cannot be lowered in general.",
+  "abstract": "Global, explicit convergence rates for the exact Sinkhorn algorithm in entropy-regularised optimal transport. Sinkhorn's algorithm (matrix scaling, iterative proportional fitting) alternately rescales a coupling to match two prescribed marginals; the regularisation λ blurs the transport plan, and the practical question is how the number of iterations grows as λ shrinks. Classical guarantees grow exponentially in 1/λ. This paper shows that one Poincaré inequality on the source suffices for a polynomial rate. If the source has Poincaré constant C_P and, at each source point, the source gradients of the cost lie in a ball of radius L, then, under integrability assumptions that hold automatically for bounded costs, every full iteration multiplies the dual gap by at most C_P L²/(C_P L² + λ²), for every λ, every bounded initial potential and every target. For quadratic cost this covers every Poincaré source on R^d, including exponential-tailed laws that satisfy no Talagrand inequality, and every compactly supported target, including point clouds, with L the target's Chebyshev radius. The same curvature-to-entropy argument turns the curvature estimate of Chizat, Delalande and Vaškevičius into a global rate C/(C + λ), linear in λ, in their bounded-density and log-concave settings. A fixed cusp-shaped source shows that the exponent two cannot be lowered within the Poincaré class; order λ² is attained uniformly over a Poincaré class but by no single fixed absolutely continuous source, and the exponent is also sharp for Talagrand sources. The closest prior result, by Chiarini, Conforti, Greco and Tamanini, gives the same rational rate under a Talagrand inequality and Hessian bounds; an earlier announced two-marginal result by Di Marino could not be inspected. Population measures only; unbounded targets are not covered. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Sinkhorn algorithm",
+    "entropic optimal transport",
+    "iterative proportional fitting",
+    "matrix scaling",
+    "Poincaré inequality",
+    "convergence rate",
+    "relative entropy",
+    "Talagrand inequality",
+    "semi-discrete optimal transport"
+  ],
+  "repoUrl": "https://github.com/ipitchford/poincare-sinkhorn-global-rates",
+  "releaseUrl": "https://github.com/ipitchford/poincare-sinkhorn-global-rates/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/poincare-sinkhorn-global-rates/releases/download/v0.1.0-candidate/poincare-sinkhorn-global-rates-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23929617",
+  "conceptDoi": "10.5281/zenodo.23929616",
+  "zenodoUrl": "https://zenodo.org/records/23929617",
+  "citeText": "Anonymous (2026). Curvature, relative entropy, and global Sinkhorn convergence. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23929617",
+  "evidence": "Written proofs of every theorem, lemma, corollary and proposition; the eventual factor (B/(B + λ²))² in Remark 5.2 is a conjecture, and the Poincaré constants in Remark 7.2 are numerical estimates. Three Python programmes check displayed formulas by floating-point computation: sharpness_check.py (uniform and cusp sources, 180 combinations of λ and potential, ten trajectories whose gap ratios match (1 − D_λ)² to within 3.5 × 10⁻¹⁰), multitarget_gaussian_check.py (Gaussian source, bounded cost, five target atoms) and revision_checks.py (refined cusp expansion with closed-form constants to 25 digits, power-family constants, numerical Poincaré constants, a two-sided exponential source with quadratic cost illustrating Corollary 4, and the local limit of Remark 5.2). Each exits with an error on any failure, also under Python -O. All three were rerun from a fresh copy with Python -I -B and with -I -B -O: zero failures in all six runs, and every numeric output matched the shipped checks to roundoff (maximum scaled difference 2.3 × 10⁻¹²); GitHub CI on Linux passed all three normally and under -O. The scripts are checks of selected formulas, not proofs.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Every stated result has a written proof except the conjectured eventual factor of Remark 5.2; Remark 7.2 uses numerical Poincaré constants. Internal AI-assisted review in five roles, a separate-model adversarial review, one revision round with extensions, a proof audit of the new and rewritten proofs, a re-review and a separate-model audit of the new proofs. No human peer review, proof-assistant formalisation, interval arithmetic, independent reproduction or inspection of Di Marino's announced proofs has been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript of 3 November 2026 (25 pages), its README, agent index, verification record and internal review summary, and the replay of sharpness_check.py, multitarget_gaussian_check.py and revision_checks.py from a fresh copy of the package.",
+  "keyResults": [
+    "Curvature transfer (Theorem 1, proof): if the semidual objective has curvature at least A⁻¹ times the variance in the current target marginal, uniformly over bounded potentials, then the dual gap is at most A times the marginal relative entropy, and every full Sinkhorn iteration multiplies the gap by at most 1 − λ/A, from iteration zero.",
+    "Poincaré rate (Theorems 2 and 3, Corollary 4, proof): with source Poincaré constant C_P and source cost gradients in balls of radius L, every iteration contracts the dual gap by C_P L²/(C_P L² + λ²), for every λ and every bounded initial potential; ⌈(1 + B/λ²) log(1/τ)⌉ iterations reduce the gap by τ, with B = C_P L². For quadratic or bilinear cost this holds for any Poincaré source on R^d and any compactly supported target with Chebyshev radius R in place of L, including the two-sided exponential source, which satisfies no Talagrand inequality.",
+    "Bounded densities (Corollary 5, proof using CDV's Proposition 5.1): in the bounded-density and log-concave settings of Chizat, Delalande and Vaškevičius, the global factor is C/(C + λ), about 1/λ iterations from the start; the uniform source shows the order λ cannot be improved there.",
+    "Sharpness (Theorem 6, Propositions 7 and 8, Corollary 9, proof): the fixed cusp source (2/5)|x| log²(e/|x|), with C_P ≤ 3/4, has local deficit asymptotic to (8/5) log 2 λ² log²(1/λ), so no exponent below 2 holds even eventually; deficit order λ² is attained uniformly over a class with C_P ≤ 1 + π/2 but by no single fixed absolutely continuous source; the λ² exponent of the Talagrand-inequality rates is sharp too.",
+    "Practical consequences (Remark 5.1, Section 5.3, proof): the stopping certificate Δ(ψ_t) ≤ (1 + B/λ²)[E(ψ_{t+1}) − E(ψ_t)], which needs a valid C_P and accurate population integrals, and an error floor 2η(1 + B/λ²) for iterations computed with supremum-norm error η. The eventual factor (B/(B + λ²))² of Remark 5.2 is a conjecture."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematics and numerical verification",
+      "AI-assisted internal review, separate-model adversarial review and audit of new proofs, proof audit, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "How fast does Sinkhorn's algorithm really converge? An Evidence Press briefing. Sinkhorn's algorithm, also called matrix scaling or iterative proportional fitting, finds a way to move one distribution of mass onto another. It alternately rescales a table so that its rows add up correctly, then its columns, and repeats. It is the workhorse of entropy-regularised optimal transport. A regularisation parameter, called lambda, blurs the transport plan. A small lambda gives a sharper, more faithful answer, but the algorithm slows down, so the key question is how many iterations you need as lambda shrinks. Classical guarantees grow exponentially. This paper shows that one fairly mild property of the source distribution is enough for a polynomial guarantee. That property is a Poincaré inequality, which says that a function with a small gradient has a small variance. Under it, every full iteration shrinks the error by a fixed factor, from the very first step and for any target. The number of iterations then grows like one over lambda squared. This covers the common case of squared-distance cost with a Gaussian or exponential-tailed source and a bounded target, such as a point cloud. With a bounded source density, the count improves to about one over lambda. The paper also gives a practical stopping rule: the remaining error is at most a known multiple of the improvement seen in the last step. Explicit one-dimensional examples show that one over lambda squared cannot be improved in general, although no single fixed source attains it exactly. The paper is careful about prior work. Chiarini, Conforti, Greco and Tamanini already had the same rate under a stronger inequality, and an earlier announced result by Di Marino could not be inspected. The guarantees apply to exact, continuous distributions, not to samples, and the constants are not sharp. The proofs and checking code are openly archived. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "sharpness_check.py, multitarget_gaussian_check.py and revision_checks.py were rerun from a fresh copy of the package with Python -I -B and with -I -B -O (Python 3.12.11, NumPy 2.3.5, SciPy 1.17.0, Matplotlib 3.10.8, mpmath 1.4.1): zero failures in all six runs, and every numeric output matched the shipped checks to roundoff (maximum scaled difference 2.3e-12). Results are not bit-identical across Python and BLAS versions. GitHub CI on Linux (Python 3.12) passed all three programmes normally and under -O. The scripts are floating-point checks of selected formulas, not proofs."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Reviewers recomputed key constants and an unshipped finite-element computation cross-checked one Poincaré constant, but this is producer-side checking, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation and no interval arithmetic."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review; no optimal-transport or functional-inequality specialist has reviewed the paper."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Package versions are pinned in requirements.txt and recorded in environment.json; not a locked container. No data are used; all computations are deterministic quadrature."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Chizat, Delalande and Vaškevičius (2026). Sharper exponential convergence rates for Sinkhorn’s algorithm in continuous settings. Mathematical Programming. CDV: the curvature estimate (Proposition 5.1) behind Corollary 5, the improvement anticipated in their Remark 5.2, and the Poincaré conjecture of their Remark 3.1.",
+      "url": "https://doi.org/10.1007/s10107-025-02242-z"
+    },
+    {
+      "citation": "Chiarini, Conforti, Greco and Tamanini (2025). A semiconcavity approach to stability of entropic plans and exponential convergence of Sinkhorn's algorithm. arXiv:2412.09235. CCGT: the closest prior result, with the same rational rate under a Talagrand inequality and Hessian bounds on the cost.",
+      "url": "https://arxiv.org/abs/2412.09235v2"
+    },
+    {
+      "citation": "Aubin-Frankowski, Korba and Léger (2022). Mirror Descent with Relative Smoothness in Measure Spaces, with Application to Sinkhorn and EM. Advances in Neural Information Processing Systems 35. AFKL: the mirror-descent route from a reverse entropy inequality to a linear rate (Remark 4.2).",
+      "url": "https://doi.org/10.52202/068431-1255"
+    },
+    {
+      "citation": "Di Marino and Gerolin (2020). An Optimal Transport Approach for the Schrödinger Bridge Problem and Convergence of Sinkhorn Algorithm. Journal of Scientific Computing. Sinkhorn potential gradients as conditional means of the cost gradient, the mechanism of identity (25).",
+      "url": "https://doi.org/10.1007/s10915-020-01325-7"
+    },
+    {
+      "citation": "Simons Institute for the Theory of Computing (2021). GMOS Weekly Seminar: The Speed of Sinkhorn Algorithm Meets Poincaré Inequality (S. Di Marino). Seminar abstract. Public trace of Di Marino's announced Poincaré rates and counterexamples, whose proofs could not be inspected.",
+      "url": "https://simons.berkeley.edu/events/gmos-weekly-seminar-speed-sinkhorn-algorithm-meets-poincare-inequality",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript's priority note as a web page without a DOI; the reference checker emits DOI entries only, so it is linked here as page context."
+    },
+    {
+      "citation": "Gozlan (2010). Poincaré inequalities and dimension free concentration of measure. Annales de l'Institut Henri Poincaré, Probabilités et Statistiques. Talagrand implies Poincaré with C_P ≤ τ (Proposition 4.9), and the converse on bounded intervals used in Corollary 9.",
+      "url": "https://doi.org/10.1214/09-aihp209"
+    },
+    {
+      "citation": "Conforti, Durmus and Greco (2023). Quantitative contraction rates for Sinkhorn's algorithm: beyond bounded costs and compact marginals. arXiv:2304.04451. Semiconcavity control for unbounded marginals, the kind of mechanism needed for Gaussian-to-Gaussian transport.",
+      "url": "https://arxiv.org/abs/2304.04451"
+    },
+    {
+      "citation": "Franklin and Lorenz (1989). On the scaling of multidimensional matrices. Linear Algebra and its Applications. Hilbert-metric contraction, whose guarantee deteriorates exponentially as λ decreases.",
+      "url": "https://doi.org/10.1016/0024-3795(89)90490-4"
+    },
+    {
+      "citation": "Sinkhorn (1964). A Relationship Between Arbitrary Positive Matrices and Doubly Stochastic Matrices. The Annals of Mathematical Statistics. Origin of the matrix-scaling iteration.",
+      "url": "https://doi.org/10.1214/aoms/1177703591"
+    },
+    {
+      "citation": "Peyré and Cuturi (2019). Computational Optimal Transport with Applications to Data Sciences. Foundations and Trends in Machine Learning. Survey of entropic transport and its applications.",
+      "url": "https://doi.org/10.1561/2200000073"
+    },
+    {
+      "citation": "Ghosal and Nutz (2026). On the Convergence Rate of Sinkhorn’s Algorithm. Mathematics of Operations Research. Non-asymptotic sublinear rates for a large class of costs and marginals.",
+      "url": "https://doi.org/10.1287/moor.2024.0427"
+    },
+    {
+      "citation": "Eckstein (2025). Hilbert’s projective metric for functions of bounded growth and exponential convergence of Sinkhorn’s algorithm. Probability Theory and Related Fields. Hilbert-metric contraction extended to unbounded settings with light-tailed marginals.",
+      "url": "https://doi.org/10.1007/s00440-025-01366-9"
+    },
+    {
+      "citation": "Léger (2021). A Gradient Descent Perspective on Sinkhorn. Applied Mathematics & Optimization. Relative-geometry view of Sinkhorn with sublinear rates.",
+      "url": "https://doi.org/10.1007/s00245-020-09697-w"
+    },
+    {
+      "citation": "Bobkov and Ledoux (1997). Poincaré’s inequalities and Talagrand’s concentration phenomenon for the exponential distribution. Probability Theory and Related Fields. Exponential concentration under a Poincaré inequality, behind Lemma 1.",
+      "url": "https://doi.org/10.1007/s004400050090"
+    },
+    {
+      "citation": "Chafaï and Malrieu (2010). On fine properties of mixtures with respect to concentration of measure and Sobolev type inequalities. Annales de l'Institut Henri Poincaré, Probabilités et Statistiques. The variance decomposition used in inequality (27).",
+      "url": "https://doi.org/10.1214/08-aihp309"
+    },
+    {
+      "citation": "Carlier (2022). On the Linear Convergence of the Multimarginal Sinkhorn Algorithm. SIAM Journal on Optimization. Linear convergence for multimarginal problems, relevant to open question 5.",
+      "url": "https://doi.org/10.1137/21m1410634"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:poincare-sinkhorn-global-rates",
+    "attemptIds": [
+      "ep-attempt:poincare-sinkhorn-global-rates-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "How many exact Sinkhorn iterations suffice for a given dual-gap reduction τ: ⌈(1 + C_P L²/λ²) log(1/τ)⌉ under one Poincaré inequality on the source with source cost gradients in balls of radius L (radius R of the target for quadratic cost and compact targets), about 1/λ iterations in CDV's bounded-density settings, with the stopping certificate (33) as a computable check.",
+      "scope": "Exact continuous Sinkhorn transforms on population measures, bounded initial potentials, integrability conditions (S1)-(S3) or a compactly supported target. Empirical sources, unbounded targets such as Gaussian to Gaussian, sampling complexity and the bias relative to unregularised transport are not covered."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 2.1 maps the paper's λ to CDV's λ and CCGT's ε and fixes one iteration as a source then a target normalisation; Section 9.1 restates CCGT's hypotheses and factors in the paper's orientation with a side-by-side table; equation (34) identifies the dual gap with λ times CCGT's relative-entropy error along the same couplings.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification; Di Marino's announced proofs could not be inspected.",
+        "Library implementations work with empirical or discretised measures, which do not satisfy the Euclidean Poincaré inequality."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have an optimal-transport specialist check Theorem 1, Theorem 3 with Lemmas 1-2, and Theorem 6, and ask Di Marino and the CCGT authors how the results relate to their announced and published rates.",
+      "claimCeiling": "Proved global contraction factors under one Poincaré inequality and in CDV's settings, and proved exponent-sharpness examples in a two-atom model; the eventual factor of Remark 5.2 is a conjecture; floating-point checks only. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "poincare-sinkhorn-global-rates-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable set of global Sinkhorn convergence rates under one Poincaré inequality, with sharpness examples.",
+        "setting": "AI-assisted mathematics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

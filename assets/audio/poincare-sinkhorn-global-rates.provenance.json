@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "How fast does Sinkhorn's algorithm really converge? An Evidence Press briefing. Sinkhorn's algorithm, also called matrix scaling or iterative proportional fitting, finds a way to move one distribution of mass onto another. It alternately rescales a table so that its rows add up correctly, then its columns, and repeats. It is the workhorse of entropy-regularised optimal transport. A regularisation parameter, called lambda, blurs the transport plan. A small lambda gives a sharper, more faithful answer, but the algorithm slows down, so the key question is how many iterations you need as lambda shrinks. Classical guarantees grow exponentially. This paper shows that one fairly mild property of the source distribution is enough for a polynomial guarantee.",
+      "inputSha256": "c97c6ca1ec1ba8bf4decda2c4c9adf18d4795b26ad3b3626a0c392142324727e",
+      "audioSha256": "88dd01ad0c29b295a5cb7b967ec4925e8e7f547fd0460ff2dc107a02ee334761",
+      "requestId": "req_8f41be687fb241d2a3b4ebb90ccbfe53",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "source distribution is enough for a polynomial guarantee",
+        "heardEnding": "paper shows that fairly mild property of the source distribution is enough for a polynomial guarantee",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "That property is a Poincaré inequality, which says that a function with a small gradient has a small variance. Under it, every full iteration shrinks the error by a fixed factor, from the very first step and for any target. The number of iterations then grows like one over lambda squared. This covers the common case of squared-distance cost with a Gaussian or exponential-tailed source and a bounded target, such as a point cloud. With a bounded source density, the count improves to about one over lambda. The paper also gives a practical stopping rule: the remaining error is at most a known multiple of the improvement seen in the last step. Explicit one-dimensional examples show that one over lambda squared cannot be improved in general, although no single fixed source attains it exactly.",
+      "inputSha256": "6c0005bdedfee0a674b162d18c3478f3d81999cbf0849a2b611d5d8c9b8c8709",
+      "audioSha256": "a0763e7cd6fa40c242fc258c4d0df874bffbf9376aca34d5148a502957fe4b74",
+      "requestId": "req_3fe951f3b03d44eda5e4d2c647918dd8",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "although no single fixed source attains it exactly",
+        "heardEnding": "over lambda squared cannot be improved in general although no single fixed source attains it exactly",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The paper is careful about prior work. Chiarini, Conforti, Greco and Tamanini already had the same rate under a stronger inequality, and an earlier announced result by Di Marino could not be inspected. The guarantees apply to exact, continuous distributions, not to samples, and the constants are not sharp. The proofs and checking code are openly archived. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "f3e5605ebc3ce671d45c8afe232d04770c93a7e210eebf3fef3235f64bb5b3fc",
+      "audioSha256": "1dc03cdbca64984748541d822b128df6e35ac451d7a38ae4065225d80922681a",
+      "requestId": "req_3255a2f3fdb04feeaecdf81a27e70739",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "poincare-sinkhorn-global-rates",
+  "generatedAt": "2026-11-03T19:52:00.125Z",
+  "sourceMetadata": "papers/poincare-sinkhorn-global-rates/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "204dbe213b04ed403d1c1752769eca0fa89ebb47154f5bf2204f753bb5451687",
+  "transcriptPath": "assets/audio/poincare-sinkhorn-global-rates.txt",
+  "transcriptSha256": "25ce01bb1f9f12590dbd1633df4f7c0c7b4c733f1a4d083bf9e53aff8072e88d",
+  "audioPath": "assets/audio/poincare-sinkhorn-global-rates.mp3",
+  "audioSha256": "f56f3f62f91bab0a8cd76c62fcc9d10cc1c684c022cbd2b02a5c375ae31dea91",
+  "audioBytes": 2298284,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
