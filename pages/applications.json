@@ -871,6 +871,10 @@
   "split-likelihood-persistence": {
    "classification": "Practical method",
    "application": "Analysts who monitor results as data arrive, for example in online experiments or interim analyses, should not keep recomputing a split likelihood-ratio (universal inference) interval and treat it as valid at every look. The release gives a corrected boundary that stays valid however often you check, about 10–14% wider than existing anytime-valid intervals, which remain the better default where they apply. The failure builds slowly, so short monitoring runs are only mildly affected. This remains an unrefereed candidate."
+  },
+  "small-hurst-fbm-maximum": {
+   "classification": "Research use",
+   "application": "People who simulate very rough random processes, for example rough-volatility models with a Hurst parameter around 0.1, can use the release to see how fast a simulation grid must grow as roughness increases before the simulated running maximum means anything: to first order a grid of n points sees half of it once H log n reaches one half. It also gives an explicit upper bound and numerically evaluated two-sided bounds for the expected maximum itself. The first-order statements converge slowly, and the numerical tables are not certified. This remains an unrefereed candidate."
   }
  }
 }

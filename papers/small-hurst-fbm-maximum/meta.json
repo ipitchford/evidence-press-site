@@ -1,0 +1,240 @@
+{
+  "slug": "small-hurst-fbm-maximum",
+  "title": "The small-Hurst limit of the expected maximum of fractional Brownian motion",
+  "shortTitle": "How high does a rough random path climb? The small-Hurst limit of the fBm maximum",
+  "oneLine": "As fractional Brownian motion becomes very rough (Hurst parameter H → 0), √H times its expected maximum on [0, 1] tends to √2, settling a 2022 conjecture; a uniform grid of n points sees half of that maximum once H log n reaches ½.",
+  "abstract": "Fractional Brownian motion B_H is the standard model of a rough random path, and its Hurst parameter H sets the roughness: small H means a very rough path, as in rough-volatility models where H is around 0.1. Its expected maximum M_H = E sup over [0, 1] of B_H grows like H^(−1/2) as H → 0, and Bisewski, Dębicki and Rolski (2022) conjectured that √H·M_H has a finite positive limit; the known bounds placed it between 1.128 and 1.695. This candidate proves that the limit is √2, with convergence of the rescaled maximum in every L^p and error orders on both sides. More generally, a Gaussian field whose canonical metric is asymptotically d^H on a compact Ahlfors s-regular space has limit √(2s), and every such space carries such fields; for compact Euclidean sets the upper box dimension gives an upper bound. The all-time maximum with linear drift has the same constant. For a uniform grid with n intervals and H log n → c, the sampled maximum times √H tends to an explicit F(c), equal to √c up to c = ½ and then rising to √2, so a grid captures half the continuum mean at c = ½ and all of it only when H log n → ∞; quasi-uniform nets in regular spaces obey √s·F(c/s). The paper also proves M_H ≤ √(3 log 2 / H) for every 0 < H ≤ 1, with a consequent bound for Pickands' constant, and gives numerically evaluated two-sided bounds at fixed H and a Monte Carlo check of the grid law; these show that the first-order formulas converge slowly. Hierarchical Gaussian maxima (GREM/CREM), Gaussian comparison and concentration are classical; the vanishing-exponent limits, the dimension law and the grid crossover are the proposed contribution. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "fractional Brownian motion",
+    "expected supremum",
+    "Hurst parameter",
+    "Gaussian processes",
+    "Ahlfors regular spaces",
+    "generalised random energy model",
+    "rough volatility",
+    "discretisation error"
+  ],
+  "repoUrl": "https://github.com/ipitchford/small-hurst-fbm-maximum",
+  "releaseUrl": "https://github.com/ipitchford/small-hurst-fbm-maximum/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/small-hurst-fbm-maximum/releases/download/v0.1.0-candidate/small-hurst-fbm-maximum-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23910434",
+  "conceptDoi": "10.5281/zenodo.23910433",
+  "zenodoUrl": "https://zenodo.org/records/23910434",
+  "citeText": "Anonymous (2026). The small-Hurst limit of the expected maximum of fractional Brownian motion. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23910434",
+  "evidence": "Written proofs of every theorem, corollary, lemma and proposition, with an appendix on Gaussian comparison; verify.py with 79,850 exact rational checks of the original finite constructions and 65,526 for the revision (tree covariances, separated-digit gaps, grid rounding, binary grouping, Lemma 4 codings, harmonic-set spacing) plus nine floating-point checks, each raising on failure so they stay active under Python -O; brackets.py, a floating-point evaluation of the rigorous fixed-H comparison bounds (Table 1) validated at H = 1/2 and H = 1; simulate_grid.py, a seeded circulant-embedding Monte Carlo of grid maxima (Table 2); full replay of all three scripts under -I -B -O from a fresh copy of the package with every JSON and CSV output byte-identical.",
+  "statusDetail": "Unrefereed AI-assisted probability candidate. Every limit and bound has a written proof; the fixed-H tables are floating-point evaluations and Monte Carlo illustrations, not certificates, and the Section 10 statements are conjectures. Internal AI-assisted review in five roles, a separate-model adversarial review and audit of the new proofs, a line-by-line proof audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 3 November 2026 with DOI insertion, 28 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 3 November 2026.",
+  "keyResults": [
+    "Small-Hurst limit (Theorem 1, proof): lim_{H→0} √H·E sup_{0≤t≤1} B_H(t) = √2, with L^p convergence of √H·sup B_H for every p, and √(2/H) − O(√log(1/H)) ≤ M_H ≤ √(2/H) + O(H^{3/2}); this settles the conjecture of Bisewski, Dębicki and Rolski (2022).",
+    "Explicit bounds (Corollary 3 and Lemma 4, proof; Table 1, numerical): M_H ≤ √(3 log 2 / H) for every 0 < H ≤ 1, Pickands' constant H_H ≤ (29.86 H)^{1/(2H)} for 0 < H ≤ ½, and two-sided tree comparisons evaluated numerically (at H = 0.1, M_H lies in about [2.43, 3.50], against √(2/H) = 4.47).",
+    "Dimension law (Theorem 5, Corollary 6, Proposition 7, proof): fields with canonical metric asymptotically d^H on a compact Ahlfors s-regular space have limit √(2s) (√(2d) for a cube in R^d); every such space carries such fields; for compact K ⊂ R^d the lim sup is at most √(2·upper box dimension), and Hausdorff dimension does not govern the limit.",
+    "Drift (Theorem 8, proof): M_H − 1 ≤ E sup_{t≥0}(B_H(t) − t) ≤ M_H + 4.083 for H ≤ ½, so the all-time maximum with any linear drift has the same constant √2.",
+    "Grid law (Theorems 11 and 13, proof; Table 2, Monte Carlo): with H log n → c, √H·E max over the grid {i/n} tends to F(c) = √c for c ≤ ½ and √2(1 − e^{1/2−c}/2) for c ≥ ½, so a grid captures half the continuum mean at c = ½ and 90% at c ≈ 2.11; quasi-uniform nets in Ahlfors s-regular spaces give √s·F(c/s). At H = 0.05–0.2 simulated grid means lie 17–42% below the first-order values."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted probability theory and computation (ChatGPT for the original draft; Claude-based agents for the revision)",
+      "AI-assisted internal review, separate-model adversarial review and proof audit, line-by-line proof audit, clean replay, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "How high does a rough random path climb? An Evidence Press briefing. Fractional Brownian motion is the standard model of a random path with a tunable roughness, set by a number called the Hurst parameter. When that number is small, the path is extremely jagged. Such paths are used, for example, to model the volatility of financial markets, where the Hurst parameter is often around one tenth. A basic question is how high such a path climbs, on average, over a unit of time. Mathematicians knew that the answer grows like one over the square root of the Hurst parameter, and they had bounds on the constant in front, but not its value. In 2022, Bisewski, Dębicki and Rolski conjectured that a limiting constant exists. This paper proves that it does, and that it is the square root of two. The idea is that a very rough path behaves like a branching tree of independent random choices, and the maximum of such a tree can be computed exactly. The paper also shows how the answer changes in higher dimensions, and it answers a practical question: how finely must you sample a path to see its maximum? A grid sees half of it once the Hurst parameter times the logarithm of the number of points reaches one half, and all of it only as that product grows without limit. So for very rough paths the number of points needed grows exponentially. These are limiting results, and they converge slowly; the paper also gives explicit bounds and numerical tables for realistic values. The proofs are written out in full and checked by scripts. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify.py, brackets.py and simulate_grid.py were rerun with Python -I -B -O from a fresh copy of the approved package; all five JSON and CSV outputs were byte-identical to the shipped ones. The frozen archive was checked byte-for-byte against that replay and verify.py rerun from it. GitHub CI reruns verify.py on Linux as a blocking job and the table scripts as a non-blocking job; on Linux the table outputs differ from the macOS files in floating-point digits."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "During internal review an auditor independently re-derived Table 1 entries and a separate model reran the exact checks. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python 3.11 with NumPy 2.3.5, SciPy 1.17.0 and Matplotlib 3.10.8 pinned in requirements.txt; Monte Carlo seeded; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Bisewski, Dębicki and Rolski (2022). Derivative of the expected supremum of fractional Brownian motion at H=1. Queueing Systems. Records the bounds window [1.128, 1.695] and conjectures that the small-Hurst limit exists; Theorem 1 resolves it.",
+      "url": "https://doi.org/10.1007/s11134-022-09859-3"
+    },
+    {
+      "citation": "Borovkov, Mishura, Novikov and Zhitlukhin (2018). New and refined bounds for expected maxima of fractional Brownian motion. Statistics & Probability Letters. Source of the upper constant 1.695 and of the Shao-inequality route to Pickands' constant.",
+      "url": "https://doi.org/10.1016/j.spl.2018.01.025"
+    },
+    {
+      "citation": "Borovkov, Mishura, Novikov and Zhitlukhin (2017). Bounds for expected maxima of Gaussian processes and their discrete approximations. Stochastics. Earlier bounds of the right order and discretisation errors.",
+      "url": "https://doi.org/10.1080/17442508.2015.1126282"
+    },
+    {
+      "citation": "Bisewski (2023). Lower bound for the expected supremum of fractional Brownian motion using coupling. Journal of Applied Probability. Source of the lower constant 2/√π ≈ 1.128.",
+      "url": "https://doi.org/10.1017/jpr.2022.129"
+    },
+    {
+      "citation": "Bisewski, Dębicki and Mandjes (2021). Bounds for expected supremum of fractional Brownian motion with drift. Journal of Applied Probability. The ratio form of the drift limit, sharpened here to an additive bound.",
+      "url": "https://doi.org/10.1017/jpr.2020.98"
+    },
+    {
+      "citation": "Borovkov and Zhitlukhin (2018). On the maximum of the discretely sampled fractional Brownian motion with small Hurst parameter. Electronic Communications in Probability. Normal limit for grid maxima when H(log n)² → 0, the regime extended by Theorem 11.",
+      "url": "https://doi.org/10.1214/18-ECP167"
+    },
+    {
+      "citation": "Makogin (2016). Simulation paradoxes related to a fractional Brownian motion with small Hurst index. Modern Stochastics: Theory and Applications. Fixed grids miss the maximum at small H.",
+      "url": "https://doi.org/10.15559/16-VMSTA59"
+    },
+    {
+      "citation": "Bovier and Kurkova (2004). Derrida's generalized random energy models 2: models with continuous hierarchies. Annales de l'Institut Henri Poincaré, Probabilités et Statistiques. The CREM ground-state formula used for the grid law.",
+      "url": "https://doi.org/10.1016/j.anihpb.2003.09.003"
+    },
+    {
+      "citation": "Bovier and Kurkova (2004). Derrida's generalised random energy models 1: models with finitely many hierarchies. Annales de l'Institut Henri Poincaré, Probabilités et Statistiques. Finite-level hierarchical maxima.",
+      "url": "https://doi.org/10.1016/j.anihpb.2003.09.002"
+    },
+    {
+      "citation": "Addario-Berry and Maillard (2020). The algorithmic hardness threshold for continuous random energy models. Mathematical Statistics and Learning. Same concave-majorant convention; motivates the adaptive-sampling conjecture.",
+      "url": "https://doi.org/10.4171/MSL/12"
+    },
+    {
+      "citation": "Assouad (1983). Plongements lipschitziens dans R^n. Bulletin de la Société Mathématique de France. The snowflake embedding behind Corollary 6.",
+      "url": "https://doi.org/10.24033/bsmf.1997"
+    },
+    {
+      "citation": "Gatheral, Jaisson and Rosenbaum (2018). Volatility is rough. Quantitative Finance. Rough-volatility models with H around 0.1.",
+      "url": "https://doi.org/10.1080/14697688.2017.1393551"
+    },
+    {
+      "citation": "Neuman and Rosenbaum (2018). Fractional Brownian motion with zero Hurst parameter: a rough volatility viewpoint. Electronic Communications in Probability. The H → 0 limit in a different normalisation.",
+      "url": "https://doi.org/10.1214/18-ECP158"
+    },
+    {
+      "citation": "Fyodorov, Khoruzhenko and Simm (2016). Fractional Brownian motion with Hurst index H=0 and the Gaussian Unitary Ensemble. The Annals of Probability. Log-correlated limit of fBm.",
+      "url": "https://doi.org/10.1214/15-AOP1039"
+    },
+    {
+      "citation": "Ding, Roy and Zeitouni (2017). Convergence of the centered maximum of log-correlated Gaussian fields. The Annals of Probability. Maxima of log-correlated fields, also governed by dimension at first order.",
+      "url": "https://doi.org/10.1214/16-AOP1152"
+    },
+    {
+      "citation": "Fang and Zeitouni (2012). Slowdown for time inhomogeneous branching Brownian motion. Journal of Statistical Physics. Basis of the conjectured H^(1/6) second-order term.",
+      "url": "https://doi.org/10.1007/s10955-012-0581-z"
+    },
+    {
+      "citation": "Davies and Harte (1987). Tests for Hurst effect. Biometrika. Exact circulant-embedding simulation used for Table 2.",
+      "url": "https://doi.org/10.1093/biomet/74.1.95"
+    },
+    {
+      "citation": "Mukeru and Mulaudzi (2026). Mean maximum of fractional Brownian motion. Physical Review E. Conjectured a formula whose 1/H order is incompatible with the known bounds.",
+      "url": "https://doi.org/10.1103/wdr5-gczg"
+    },
+    {
+      "citation": "Zhang (2026). Boundedness of discounted branching random walks via generic chaining. arXiv:2602.18919. A class containing the comparison trees.",
+      "url": "https://arxiv.org/abs/2602.18919",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:small-hurst-fbm-maximum",
+    "attemptIds": [
+      "ep-attempt:small-hurst-fbm-maximum-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "The first-order law for the expected maximum of very rough fractional Brownian motion, √(2/H), with the explicit bound √(3 log 2 / H) at every H, numerically evaluated fixed-H brackets, and the grid rule that a uniform grid of n points captures the fraction F(H log n)/√2 of it (half at H log n = ½).",
+      "scope": "Standard fBm on [0, 1] and Gaussian fields with snowflake metrics on Ahlfors-regular spaces, in the limit H → 0. Fixed-H levels are given only by the bounds and numerical tables; second-order terms, fluctuations and adaptive sampling are not settled."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.1 states the normalisation (variogram |t − s|^{2H}, Var B_H(1) = 1) used by Bisewski, Dębicki and Rolski and the earlier bounds, checked against the source; AI_INDEX.md gives the alternative α = 2H normalisation; Section 1.5 separates the classical tree, comparison and concentration tools from the new limits.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "The fixed-H tables are floating-point evaluations and Monte Carlo illustrations, not certificates."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in Gaussian extremes check the comparison arguments of Sections 2-4 and the CREM input to Theorem 11, and ask the authors of the 2022 conjecture whether Theorem 1 matches its intended normalisation.",
+      "claimCeiling": "Proved first-order limits (fBm, Ahlfors-regular fields, drift, grids and nets) and explicit bounds; numerically evaluated fixed-H brackets and Monte Carlo illustrations. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "small-hurst-fbm-maximum-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of the small-Hurst limit of the fBm expected maximum, with a dimension law, a sampling law and explicit bounds.",
+        "setting": "AI-assisted probability research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
