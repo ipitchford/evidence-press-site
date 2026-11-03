@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "How fair can a pairing be? An Evidence Press briefing. Suppose n workers must be paired with n tasks, one each, and every possible pairing has one of k colours, standing for categories. A fair assignment would use each colour in proportion to how common it is. A random assignment gets this right on average, but its colour counts wobble by amounts that grow with n. Can some assignment be off by an amount that depends only on the number of colours? Lawrence Hollom showed that it can, with an error of four to the power k squared, and in 2026 Hogan, Scott and Tsarev reduced this to order k squared. This paper reduces it to seventeen k: linear in the number of colours. It also allows any vector labels, measured in any k-dimensional norm, and any fractional target, not just the uniform one.",
+      "inputSha256": "c6d484a3bc490014fe5faa429965a0cc683468fcaf05cf11afdc03586ea59d17",
+      "audioSha256": "a996d6e18b5ab53556f6586a6b33d74a3fc8b2d01d4999b12fc047ba5d9e8db6",
+      "requestId": "req_dca104c733d3407d88ea207fe9e311e0",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "and any fractional target not just the uniform",
+        "heardEnding": "vector labels measured in any k dimensional norm and any fractional target not just the uniform",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 3
+      }
+    },
+    {
+      "input": "For arbitrary targets, order k cannot be improved: a simple example forces an error of k over two. For the uniform target, the truth lies between about the square root of k and seventeen k, and a square-root conjecture remains open. The key idea is to stop rounding pieces one at a time. The leftover fractional parts of the solution form paths. The paper lays all the paths end to end on one line and cuts them all at once, with a necklace-splitting style lemma that allows a different fraction on each piece while using few cuts in total. Consequences include linear bounds for colour-balanced matchings, spanning forests, Hamilton cycles and hypergraph matchings, and a school-assignment result where total capacity overflow for g groups is at most eight g minus one, instead of order g squared.",
+      "inputSha256": "4a5dfd78b30e5ffbe33a0054e81a0e90c469239eff04255643111c2c764cd0be",
+      "audioSha256": "e2dd55f9d36381b4de61436413db76e906aada8450124c8d5e3a87e554e27fcc",
+      "requestId": "req_0ef23792a89a40c29912b72ec3317403",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "most g minus instead of order g squared",
+        "heardEnding": "capacity overflow for g groups is at most times g minus instead of order g squared",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "These are existence results: no efficient algorithm is claimed. Every result has a written proof, and a script makes over two million exact checks of the finite bookkeeping. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "0a1a64516824ef5d5c933f57b950a974f9ccb74a581727b07093841ab02afa94",
+      "audioSha256": "ff173c802b94e8a600db5b153df4de326d1d2dcfa2150b871ac555be5932bf50",
+      "requestId": "req_3400f040edbc497ab360d8577944796a",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "vector-matching-linear-discrepancy",
+  "generatedAt": "2026-11-03T22:48:27.703Z",
+  "sourceMetadata": "papers/vector-matching-linear-discrepancy/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "59b59d005faf232442ed6e38d8319c3036fcacc1e5effc49f687bf01b4f7c207",
+  "transcriptPath": "assets/audio/vector-matching-linear-discrepancy.txt",
+  "transcriptSha256": "d50d84692477d04137bddb0c746645cc66eb8ded36ccfaf4349430e878d38881",
+  "audioPath": "assets/audio/vector-matching-linear-discrepancy.mp3",
+  "audioSha256": "b167801ea76ae9dab38297b092519214c644172ede8c5c8bff2ea75b291658f3",
+  "audioBytes": 2145068,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
