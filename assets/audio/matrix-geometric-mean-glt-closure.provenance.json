@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "When does averaging two matrices go wrong? An Evidence Press briefing. For two positive numbers, the geometric mean is the square root of their product, a kind of multiplicative midpoint. Positive definite matrices have a matching midpoint, the matrix geometric mean. It is used to average covariance matrices, to average large structured matrices, and in quantum information, where it defines a measure of how similar two quantum states are. For invertible matrices it behaves well: small changes in the inputs give small changes in the mean. But when the matrices approach singular ones, the mean can jump.",
+      "inputSha256": "4fcc92ee166341ba8228aa7d2660ab6dde17c8d89ea8f96efb41f6ff1bf4a696",
+      "audioSha256": "e99d857d82e2e51360b9eef95d1b43a8cab5816a60139578b758ed9f74f9d52d",
+      "requestId": "req_32b8da60fcd145e59b83febcefa75529",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "matrices approach singular ones the mean can jump",
+        "heardEnding": "small changes in the mean but when the matrices approach singular ones the mean can jump",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This paper describes every value it can jump to, with one exact test: a block matrix built from the two inputs and the candidate value must be positive semidefinite, and its rank must be no larger than the size of the matrices. The same jump has a striking consequence. Engineers analyse huge matrices from discretised equations through a summary function called a symbol, which describes their eigenvalues. A theorem published in 2025 said that the symbol of the geometric mean is always the geometric mean of the symbols. It is not. The paper builds two sequences of matrices with identical symbols whose means have a symbol four fifths as large as predicted on half the interval, or no eigenvalue distribution at all.",
+      "inputSha256": "6c813a1f6749bdb05fe924893d86cd4ff1902f5cd2216be6c1eb7a1b738d6635",
+      "audioSha256": "0e08cc452658c8b4fe3911eedce43e4aab3775822d2ba414df26368311f2eba0",
+      "requestId": "req_a66d29eff05345ebacff1d9d0e5a8582",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the interval or no eigenvalue distribution at all",
+        "heardEnding": "symbol fifths as large as predicted on half the interval or no eigenvalue distribution at all",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "It also gives the repair: the shortcut is safe when the two symbols never vanish together on a region, or never overlap, and in every case the predicted symbol is an upper bound. For simple symbols that depend only on position, that is exactly the dividing line. Every result has a written proof, and a script makes over a thousand exact checks of the formulas and constructions. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "b1229df5cfac2c795be593f4f1bd5da7c26d8231e9951d103b62fce8048ac0ef",
+      "audioSha256": "e4820c05e0fa660e6873488a97d445d47c7b502f37632642b772a4c38bfd6100",
+      "requestId": "req_c81b763eb13b40e49540e5efe257769b",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "matrix-geometric-mean-glt-closure",
+  "generatedAt": "2026-11-03T09:42:31.486Z",
+  "sourceMetadata": "papers/matrix-geometric-mean-glt-closure/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "d457c61c4ee14d61e899ef725352d1988de83249d240ebe8e860ac09b497bcd0",
+  "transcriptPath": "assets/audio/matrix-geometric-mean-glt-closure.txt",
+  "transcriptSha256": "d7f5acb6236c2dc5fc70d1d7ab40eaef3c1e7b18a8ea47276a3718888f2f84b4",
+  "audioPath": "assets/audio/matrix-geometric-mean-glt-closure.mp3",
+  "audioSha256": "b8dfa5f2e6f29e84231ca80df8640ac8455462f1d36af5b1e787e8172acbbd00",
+  "audioBytes": 2445740,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

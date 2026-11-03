@@ -1,0 +1,224 @@
+{
+  "slug": "matrix-geometric-mean-glt-closure",
+  "title": "Boundary limits of the matrix geometric mean and the failure of unrestricted GLT closure",
+  "shortTitle": "Same symbols in, symbol 4/5 out: when the geometric mean of GLT matrix-sequences breaks",
+  "oneLine": "Every value the matrix geometric mean can approach near a singular pair is described by one rank condition, and the same mechanism gives bounded positive definite GLT sequences with identical symbols whose geometric means have symbol 4/5 instead of 1 on half the interval, refuting a published theorem; the formula is safe exactly when the symbols share no zero region or never overlap.",
+  "abstract": "The geometric mean A#B of two positive definite matrices is the matrix analogue of √(ab), used to average covariance and structured matrices and to define the Matsumoto fidelity of quantum states. It is continuous on positive definite pairs but not at singular ones. This candidate proves that X is a limit of A_j#B_j with positive definite A_j → A and B_j → B exactly when X ⪰ 0, the block matrix [[A, X], [X, B]] is positive semidefinite and its rank is at most the dimension N; a dilation description with an auxiliary contraction already follows from recent work of Jones, and the explicit elimination is the contribution. At equal inputs this gives the full set of limits and the exact interval of limiting Matsumoto fidelities. For generalized locally Toeplitz (GLT) matrix-sequences it constructs uniformly bounded positive definite inputs with identical scalar symbols whose geometric means have symbol 4/5 times the predicted one, or no eigenvalue distribution at all. These refute Theorem 4 and Conjecture 1 of the arXiv version of Ilyas, Khan, Loi and Serra-Capizzano and, according to an AI-assisted reading of the published text, Theorem 3 and Conjecture 1 of their 2025 article in Linear Algebra and its Applications; the failing proof step is located. On the positive side, closure holds for every Kubo–Ando mean when the sum of the symbols is positive definite almost everywhere; the regularised symbol is always an upper envelope for the eigenvalues of the means; and for bounded Riemann-integrable scalar symbols of the space variable only, the formula holds for every realisation if and only if the symbols have no common zero set of positive measure or essentially disjoint supports. The classical discontinuity, Ando's maximal characterisation and the envelope X ⪯ A#B are earlier work. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "matrix geometric mean",
+    "Kubo–Ando means",
+    "positive semidefinite matrices",
+    "generalized locally Toeplitz sequences",
+    "spectral symbol",
+    "eigenvalue distribution",
+    "Matsumoto fidelity",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/matrix-geometric-mean-glt-closure",
+  "releaseUrl": "https://github.com/ipitchford/matrix-geometric-mean-glt-closure/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/matrix-geometric-mean-glt-closure/releases/download/v0.1.0-candidate/matrix-geometric-mean-glt-closure-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23912963",
+  "conceptDoi": "10.5281/zenodo.23912962",
+  "zenodoUrl": "https://zenodo.org/records/23912963",
+  "citeText": "Anonymous (2026). Boundary limits of the matrix geometric mean and the failure of unrestricted GLT closure. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23912963",
+  "evidence": "Written proofs of every theorem, corollary and proposition, with appendices on the spectral envelope at projections and the dilation view; verify_exact.py (Python standard library only) with 1,030 exact rational and Gaussian-rational checks of formula (5.2), the Theorem 1 construction on complex non-commuting data, the role of each condition, Corollaries 2-3, formula (7.4), the GLT assemblies for sizes 2-14, finite instances of the Theorem 9 construction and the block example, each raising on failure so they stay active under Python -O, plus a mutation self-test; clean replay from a fresh copy with and without -O reproducing the retained output, and the figure script reproducing both PNG figures byte for byte.",
+  "statusDetail": "Unrefereed AI-assisted matrix-analysis candidate. Every result has a written proof; the verifier checks finite exact identities and assemblies, not limits or quantifiers. The refutation of the published (Linear Algebra Appl.) statements rests on quoted arXiv statements and an AI-assisted reading of the published text. Internal AI-assisted review in five roles, a separate-model adversarial review and audit of the new proofs, a line-by-line proof audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 3 November 2026 with DOI insertion, 21 pages), its verification script and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 3 November 2026.",
+  "keyResults": [
+    "Rank criterion (Theorem 1, proof): X is a limit of A_j#B_j with positive definite A_j → A, B_j → B exactly when X ⪰ 0, [[A, X], [X, B]] ⪰ 0 and rank [[A, X], [X, B]] ≤ N; every limit lies below the regularised mean A#B.",
+    "Equal inputs and fidelity (Corollaries 2-3, proof): the limits at (A, A) are {0 ⪯ X ⪯ A, rank(A − X) ≤ dim ker A}, and the limiting Matsumoto fidelities at a state of rank r in dimension d form exactly [λ_{min(q,r)+1} + … + λ_r, 1] with q = d − r.",
+    "GLT counterexample (Section 6, proof and exact checks): two bounded positive definite sequences with the same symbol 1_(0,1/2] whose geometric means have symbol (4/5)·1_(0,1/2]; alternating the coupling gives means with normalised traces tending to 1/2 and 2/5 along even and odd sizes, so no eigenvalue distribution. This refutes the unrestricted symbol formula and conjecture of Ilyas, Khan, Loi and Serra-Capizzano.",
+    "Safe cases (Theorems 5 and 7, Corollaries 6 and 8, proof): closure for every Kubo–Ando mean when κ + ξ ≻ 0 a.e.; closure when κ#ξ = 0 a.e.; and always, the spectral law of the means is stochastically dominated by that of the regularised symbol κ#ξ.",
+    "Dichotomy (Theorem 9, Corollary 10, proof): for bounded Riemann-integrable scalar symbols of x only, the formula holds for every positive definite realisation if and only if |{κ + ξ = 0}| = 0 or |{κξ > 0}| = 0."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted matrix analysis and computation (ChatGPT for the original draft; Claude-based agents for the revision)",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and audit of the new proofs by a separate model (OpenAI Codex); line-by-line proof audit; clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When does averaging two matrices go wrong? An Evidence Press briefing. For two positive numbers, the geometric mean is the square root of their product, a kind of multiplicative midpoint. Positive definite matrices have a matching midpoint, the matrix geometric mean. It is used to average covariance matrices, to average large structured matrices, and in quantum information, where it defines a measure of how similar two quantum states are. For invertible matrices it behaves well: small changes in the inputs give small changes in the mean. But when the matrices approach singular ones, the mean can jump. This paper describes every value it can jump to, with one exact test: a block matrix built from the two inputs and the candidate value must be positive semidefinite, and its rank must be no larger than the size of the matrices. The same jump has a striking consequence. Engineers analyse huge matrices from discretised equations through a summary function called a symbol, which describes their eigenvalues. A theorem published in 2025 said that the symbol of the geometric mean is always the geometric mean of the symbols. It is not. The paper builds two sequences of matrices with identical symbols whose means have a symbol four fifths as large as predicted on half the interval, or no eigenvalue distribution at all. It also gives the repair: the shortcut is safe when the two symbols never vanish together on a region, or never overlap, and in every case the predicted symbol is an upper bound. For simple symbols that depend only on position, that is exactly the dividing line. Every result has a written proof, and a script makes over a thousand exact checks of the formulas and constructions. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the third of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_exact.py was rerun with Python -I -B, with and without -O, from a fresh copy of the approved package; both outputs matched the retained verification_results.json apart from timing and platform fields, and the mutation self-test detected the corrupted formula. make_figures.py reproduced both PNG figures byte for byte. The frozen archive was bound to that replay and the verifier rerun from it; GitHub CI reruns the exact checks on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "During internal review a separate model reran the 1,030 exact checks and an auditor recomputed constants by hand. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "The verifier needs only the Python standard library (3.11 or later); figures pin Matplotlib 3.10.8 and NumPy 2.4.6 in requirements.txt; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Ilyas, Khan, Loi and Serra-Capizzano (2025). A maximal distribution result and numerical tests for geometric means of HPD GLT matrix-sequences with degenerate commuting/non-commuting GLT symbols. Linear Algebra and its Applications. The theorem and conjecture refuted in Section 6 (published Theorem 3 and Conjecture 1; arXiv:2505.03256 Theorem 4 and Conjecture 1).",
+      "url": "https://doi.org/10.1016/j.laa.2025.08.004"
+    },
+    {
+      "citation": "Ahmad, Khan and Serra-Capizzano (2025). Matrix-Sequences of Geometric Means in the Case of Hidden (Asymptotic) Structures. Mathematics. The earlier restricted symbol formula, which is correct and not contradicted.",
+      "url": "https://doi.org/10.3390/math13030393"
+    },
+    {
+      "citation": "Ando (1979). Concavity of certain maps on positive definite matrices and applications to Hadamard products. Linear Algebra and its Applications. The maximal characterisation of A#B behind Theorem 1.",
+      "url": "https://doi.org/10.1016/0024-3795(79)90179-4"
+    },
+    {
+      "citation": "Pusz and Woronowicz (1975). Functional calculus for sesquilinear forms and the purification map. Reports on Mathematical Physics. Introduced the geometric mean and its maximal characterisation.",
+      "url": "https://doi.org/10.1016/0034-4877(75)90061-0"
+    },
+    {
+      "citation": "Kubo and Ando (1980). Means of positive linear operators. Mathematische Annalen. The axiomatic class of operator means used in Corollary 6.",
+      "url": "https://doi.org/10.1007/BF01371042"
+    },
+    {
+      "citation": "Bhatia (2009). Positive Definite Matrices. Princeton University Press (e-book edition). Standard reference for the geometric mean and its geometry.",
+      "url": "https://doi.org/10.1515/9781400827787"
+    },
+    {
+      "citation": "Garoni and Serra-Capizzano (2017). Generalized Locally Toeplitz Sequences: Theory and Applications, Vol. I. Springer. The GLT theory and Conjecture 10.1, whose status is stated conditionally.",
+      "url": "https://doi.org/10.1007/978-3-319-53679-8"
+    },
+    {
+      "citation": "Barbarino, Garoni and Serra-Capizzano (2020). Block generalized locally Toeplitz sequences: theory and applications in the unidimensional case. Electronic Transactions on Numerical Analysis. Source of the GLT facts used, with theorem numbers.",
+      "url": "https://doi.org/10.1553/etna_vol53s28"
+    },
+    {
+      "citation": "Barbarino, Garoni and Serra-Capizzano (2020). Block generalized locally Toeplitz sequences: theory and applications in the multidimensional case. Electronic Transactions on Numerical Analysis. Multilevel versions of the GLT facts.",
+      "url": "https://doi.org/10.1553/etna_vol53s113"
+    },
+    {
+      "citation": "Matsumoto (2018). A New Quantum Version of f-Divergence. Reality and Measurement in Algebraic Quantum Theory. The geometric (Matsumoto) fidelity studied in Corollary 3.",
+      "url": "https://doi.org/10.1007/978-981-13-2487-1_10"
+    },
+    {
+      "citation": "Moakher (2005). A Differential Geometric Approach to the Geometric Mean of Symmetric Positive-Definite Matrices. SIAM Journal on Matrix Analysis and Applications. The mean as a Riemannian midpoint.",
+      "url": "https://doi.org/10.1137/S0895479803436937"
+    },
+    {
+      "citation": "Barachant, Bonnet, Congedo and Jutten (2012). Multiclass Brain-Computer Interface Classification by Riemannian Geometry. IEEE Transactions on Biomedical Engineering. Averaging covariance matrices in practice.",
+      "url": "https://doi.org/10.1109/TBME.2011.2172210"
+    },
+    {
+      "citation": "Bini, Iannazzo, Jeuris and Vandebril (2014). Geometric means of structured matrices. BIT Numerical Mathematics. Averaging structured (for example Toeplitz) matrices.",
+      "url": "https://doi.org/10.1007/s10543-013-0450-4"
+    },
+    {
+      "citation": "Bonnabel and Sepulchre (2009). Riemannian Metric and Geometric Mean for Positive Semidefinite Matrices of Fixed Rank. SIAM Journal on Matrix Analysis and Applications. Fixed-rank geometries built separately because the mean is not determined at the boundary.",
+      "url": "https://doi.org/10.1137/080731347"
+    },
+    {
+      "citation": "Jones (2026). Continuity, Testing Regions and Fragility of Quantum Channel Divergences. Self-hosted preprint, section 4.12. Closest prior work: the envelope, attainability by dilation and the fidelity endpoint; credited throughout.",
+      "url": "https://hexagonmath.org/pdf/2610.00611v1",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as a self-hosted preprint without a DOI or registry record; linked to its own URL, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:matrix-geometric-mean-glt-closure",
+    "attemptIds": [
+      "ep-attempt:matrix-geometric-mean-glt-closure-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "When the \"mean of the symbols\" formula for geometric means of GLT matrix-sequences can be trusted: always as an upper envelope; exactly when the symbols share no zero region or never overlap (for bounded scalar symbols of position); and an exact rank test for every boundary limit of the matrix geometric mean.",
+      "scope": "Finite-dimensional boundary limits of A#B; scalar and block GLT sequences for the sufficient conditions and the envelope; necessity only for bounded Riemann-integrable scalar symbols depending on x."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 6.3 quotes the arXiv statements refuted, records which published passages were verified and which were read by an AI-assisted reading, and pins the failing identification; Section 1.5 and Appendix B separate the classical discontinuity, the Ando and Pusz-Woronowicz characterisation and Jones's dilation description from the explicit rank elimination.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "The published-version hypothesis check is AI-assisted; the 2017 monograph was not accessible."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review, correspondence with the authors of the refuted article and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a GLT specialist check the counterexample of Section 6 against the published hypotheses of Theorem 3 and Conjecture 1, and a matrix analyst check the sufficiency construction of Section 3.3.",
+      "claimCeiling": "Proved rank criterion, equal-input and fidelity consequences, GLT counterexamples, closure and envelope theorems and the scalar dichotomy; exact finite checks. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "matrix-geometric-mean-glt-closure-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable counterexample to a published GLT theorem, with a rank description of boundary limits of the geometric mean and a corrected safe-use rule.",
+        "setting": "AI-assisted matrix-analysis research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
