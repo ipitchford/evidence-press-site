@@ -1,0 +1,201 @@
+{
+  "slug": "poisson-binomial-density-ratio",
+  "title": "A variance bound for Poisson-binomial density ratios",
+  "shortTitle": "No outcome of a sum of independent yes/no trials is more likely than under the matching Poisson law by more than the factor mean/variance",
+  "oneLine": "For every count of independent yes/no events with unequal chances, no outcome or event is more likely than under the Poisson law with the same mean by more than the factor mean ÷ variance, proving the 2020 Dümbgen–Wellner conjecture; the factor is not sharp for large means.",
+  "abstract": "Counts of independent events with unequal chances have a Poisson-binomial law and are routinely approximated by the Poisson law with the same mean λ. Dümbgen and Wellner (2020) bounded the largest ratio ρ = sup_k P(X = k)/π_λ(k) by 1/(1 − max p_i) and conjectured ρ ≤ λ/v, where v is the variance of the count; they proved it for λ ≤ 1. This candidate proves the conjecture in general (Theorem 1.1): for every sum X of independent Bernoulli variables, finite or countable, optionally plus an independent Poisson part, with mean λ and variance v > 0, and every k, v·P(X = k) ≤ λ·e^(−λ)λ^k/k!. Consequently every event has probability at most λ/v times its Poisson probability, and the Rényi divergence of order infinity is at most log(λ/v). Along two mean-preserving interpolations to the Poisson law, a logistic decay of the odds with Poisson immigration (Theorem 5.1) and the classical thinning semigroup (Theorem 5.2), every variance-weighted atom v(t)P(X_t = k) is nondecreasing. The engine is a family of explicit nonnegative 3 × 3 Toeplitz-minor certificates for convexity of three ratio sequences (Proposition 2.4) with a discrete reverse moment inequality. The same certificates give concavity of ordered conditional inclusion means in rejective sampling (Corollary 7.1). The best constant at fixed Δ = 1 − v/λ lies between max{e^Δ, (1 − Δ)^(−1/2)} and (1 − Δ)^(−1), the bound e^Δ known for small means fails in general (Proposition 8.1), and the inequality does not extend to ultra-log-concave laws (Proposition 8.2). AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-03",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Poisson-binomial distribution",
+    "Poisson approximation",
+    "density ratio",
+    "Dümbgen-Wellner conjecture",
+    "Rényi divergence",
+    "Toeplitz minors",
+    "thinning semigroup",
+    "conditional Poisson sampling"
+  ],
+  "repoUrl": "https://github.com/ipitchford/poisson-binomial-density-ratio",
+  "releaseUrl": "https://github.com/ipitchford/poisson-binomial-density-ratio/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/poisson-binomial-density-ratio/releases/download/v0.1.0-candidate/poisson-binomial-density-ratio-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23913938",
+  "conceptDoi": "10.5281/zenodo.23913937",
+  "zenodoUrl": "https://zenodo.org/records/23913938",
+  "citeText": "Anonymous (2026). A variance bound for Poisson-binomial density ratios. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23913938",
+  "evidence": "Written analytic proofs of Theorem 1.1, Theorems 5.1–5.2, Proposition 2.4, Corollary 7.1 and Propositions 8.1–8.2 (12-page paper); two independently written standard-library Python checkers in exact rational and 60-digit decimal arithmetic (104,534 and 4,405 checks: deletion identities, the three certificates on 108 distribution instances, the adjacent and two-ratio inequalities, both flow equations, the Poisson minor formula, the main inequality and monotonicity along both flows on a time grid, Propositions 8.1–8.2 and the worked example), with internal negative controls that must be detected; a double-precision sharpness scan; clean replay from a fresh copy under normal and optimized Python with byte-identical outputs.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate in probability. The theorems have written analytic proofs; the shipped checks are finite exact and fixed-precision consistency tests, not interval certificates. Internal AI-assisted review in five roles, a separate-model adversarial review and proof audit, a separate proof audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 3 November 2026 with DOI insertion, 12 pages), its checkers and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 3 November 2026.",
+  "keyResults": [
+    "Theorem 1.1 (proof): for every Poisson–Bernoulli sum X = N + Σ B_i with mean λ and variance v > 0, v·P(X = k) ≤ λ·π_λ(k) for all k; hence ρ ≤ λ/v = (1 − Δ)^(−1), P(X ∈ A) ≤ (λ/v)·P(Poi(λ) ∈ A) and D_∞(L(X) ‖ Poi(λ)) ≤ log(λ/v); strict unless X is Poisson. This is the Dümbgen–Wellner (2020) conjecture, new for λ > 1.",
+    "Theorems 5.1 and 5.2 (proof): v(t)·P(X_t = k) is nondecreasing in t along the logistic flow p_i(t) = p_i e^(−t)/(1 − p_i + p_i e^(−t)) with Poisson immigration, and along the thinning semigroup p_i(t) = p_i e^(−t); strictly increasing for finite non-Poisson families.",
+    "Proposition 2.4 (proof): explicit sums of nonnegative 3 × 3 Toeplitz minors certify convexity of the reverse ratio b_(k−1)/b_k, the Stein kernel and the forward ratio (k+1)b_(k+1)/b_k.",
+    "Corollary 7.1 (proof): in rejective (conditional Poisson) sampling, E[Σ c_i B_i | Σ B_i = k] is concave in k when the weights are ordered like the inclusion probabilities.",
+    "Propositions 8.1 and 8.2 (proof): max{e^Δ, (1 − Δ)^(−1/2)} ≤ C(Δ) ≤ (1 − Δ)^(−1), and e^Δ fails for Bin(2, p) with p > log 2; Poisson(1) conditioned on {0, 1, 2, 3} is ultra-log-concave yet violates the bound (ratio ≈ 1.00237)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research (original research bundle)",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and proof audit by a separate model (OpenAI Codex); separate proof audit and re-review",
+      "Claude Code: revision, publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "How far off can the Poisson shortcut be? An Evidence Press briefing. Many everyday counts add up independent yes-or-no events with unequal chances: side effects among patients, defaults in a loan book, faults in a network. The exact law of such a count is awkward, so it is routinely replaced by the Poisson law with the same mean. The useful question for rare outcomes is multiplicative: how many times more likely can any single outcome be than the Poisson calculation says? In twenty twenty, Dümbgen and Wellner showed that the factor is at most one over one minus the largest chance, and conjectured something much better: the mean divided by the variance. They proved this when the mean is at most one. This paper proves the conjecture in general. For every such count, no outcome, and therefore no event, is more likely than under the Poisson law by more than mean over variance. An example shows the difference. Take one event with chance ninety-nine percent and nine thousand nine hundred and ninety-nine events with chance one percent. The old bound allows a factor of one hundred. The new bound gives one point zero two, and the actual worst factor is about one point zero one. The proof moves the count smoothly towards the Poisson law and shows that each probability, weighted by the variance, can only grow on the way. Two limits matter. For many comparable events the true factor seems closer to the square root of mean over variance, which is left open. And the bound is about single outcomes and events; for one-sided tails or total variation distance, classical results are better. The proofs are written out and checked by exact and high-precision computer arithmetic. This is an anonymous, AI-assisted, unrefereed candidate, published on the third of November twenty twenty-six; its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files by full download; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All three checkers were rerun with Python -I -B and -I -B -O from a fresh copy of the package before freezing and again from the frozen archive; every output was byte-identical to the shipped one, and normal and optimized outputs agree. GitHub CI repeats every checker on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "check_stein_certificates.py is an independently written second checker of the certificate identities, and internal reviewers re-derived the certificates symbolically. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python standard library only (CPython 3.11 tested on macOS and Linux CI); exact rational and fixed-precision decimal arithmetic, fixed-seed scan; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Dümbgen and Wellner (2020). The density ratio of Poisson binomial versus Poisson distributions. Statistics & Probability Letters. Proved the bound 1/(1 − max p_i), proved λ/v (indeed log ρ ≤ Δ) for λ ≤ 1, and conjectured the general bound proved here.",
+      "url": "https://doi.org/10.1016/j.spl.2020.108862"
+    },
+    {
+      "citation": "Dümbgen, Samworth and Wellner (2021). Bounding distributional errors via density ratios. Bernoulli. The binomial case of the conjecture and the asymptotics used for the lower bracket in Proposition 8.1.",
+      "url": "https://doi.org/10.3150/20-bej1256"
+    },
+    {
+      "citation": "Hillion and Johnson (2016). Discrete versions of the transport equation and the Shepp–Olkin conjecture. The Annals of Probability. Reverse-ratio convexity and 2 × 2 identities that the 3 × 3 certificates extend; conditional-mean monotonicity.",
+      "url": "https://doi.org/10.1214/14-aop973"
+    },
+    {
+      "citation": "Hillion and Johnson (2017). A proof of the Shepp–Olkin entropy concavity conjecture. Bernoulli. Coefficientwise interpolations in the Bernoulli parameters.",
+      "url": "https://doi.org/10.3150/16-bej860"
+    },
+    {
+      "citation": "Bonnefont, Hillion and Saumard (2024). Covariance inequalities for convex and log-concave functions. Latin American Journal of Probability and Mathematical Statistics. Lemma 3.1 is a special case of their Theorem 1.2(1), credited.",
+      "url": "https://doi.org/10.30757/alea.v21-25"
+    },
+    {
+      "citation": "Johnson (2007). Log-concavity and the maximum entropy property of the Poisson distribution. Stochastic Processes and their Applications. The thinning semigroup along which Theorem 5.2 proves monotonicity.",
+      "url": "https://doi.org/10.1016/j.spa.2006.10.006"
+    },
+    {
+      "citation": "Barbour and Hall (1984). On the rate of Poisson convergence. Mathematical Proceedings of the Cambridge Philosophical Society. The classical total-variation bound, which remains the better tool for total variation.",
+      "url": "https://doi.org/10.1017/s0305004100061806"
+    },
+    {
+      "citation": "Hoeffding (1956). On the Distribution of the Number of Successes in Independent Trials. The Annals of Mathematical Statistics. One-sided tail comparisons for Poisson-binomial counts.",
+      "url": "https://doi.org/10.1214/aoms/1177728178"
+    },
+    {
+      "citation": "Hough, Krishnapur, Peres and Virág (2006). Determinantal Processes and Independence. Probability Surveys. Counts of determinantal point processes are Bernoulli sums, so the bound applies to them.",
+      "url": "https://doi.org/10.1214/154957806000000078"
+    },
+    {
+      "citation": "Pitman (1997). Probabilistic Bounds on the Coefficients of Polynomials with Only Real Zeros. Journal of Combinatorial Theory, Series A. Real-rooted generating polynomials are exactly Bernoulli-sum laws.",
+      "url": "https://doi.org/10.1006/jcta.1997.2747"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:poisson-binomial-density-ratio",
+    "attemptIds": [
+      "ep-attempt:poisson-binomial-density-ratio-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Use mean ÷ variance as a guaranteed multiplicative bound on how much more likely any outcome or event of a Poisson-binomial count can be than under the Poisson law with the same mean.",
+      "scope": "Sums of independent Bernoulli variables, finite or countable, optionally plus an independent Poisson part, with positive variance. Single outcomes and events; not a lower bound, not one-sided tail or total-variation comparisons; not sharp for large means."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.2 separates the new result (λ > 1) from Dümbgen–Wellner's own Theorem 2 (λ ≤ 1, stronger log ρ ≤ Δ) and the binomial case of Dümbgen–Samworth–Wellner; Section 1.2 also states what the bound does not say.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in Poisson approximation check the certificate identities (2.6)–(2.8), the reverse moment inequality (Lemma 3.2) and the flow argument of Section 5, and ask whether the square-root order of the best constant can be proved.",
+      "claimCeiling": "Proved general Dümbgen–Wellner bound ρ ≤ λ/v with two monotone flows, certificates and a sharpness bracket; the true order of the best constant is open. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "poisson-binomial-density-ratio-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of a multiplicative Poisson-approximation bound for Poisson-binomial counts.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
