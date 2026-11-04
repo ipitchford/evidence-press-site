@@ -1,0 +1,219 @@
+{
+  "slug": "isolated-kalman-covariance-divergence",
+  "title": "Observable systems with divergent isolated Kalman covariances",
+  "shortTitle": "Kalman filter shortcut: reported uncertainty can explode",
+  "oneLine": "A three-unit example, observable and controllable, makes the isolated Kalman filter's reported variances grow at least like (5/4)(9/5)^k while the ordinary Kalman filter stays at or below 3/4, refuting its authors' conjecture that the reported covariance always settles to a unique steady state.",
+  "abstract": "Teams of robots or sensors often share the work of tracking a common state. The isolated Kalman filter of Jung, Luft and Weiss (Autonomous Robots, 2025) saves communication by updating only the units involved in each measurement and approximating their links to everyone else with a correction factor. Its authors conjectured that, whenever the system is observable and controllable, the covariance the filter reports settles to a finite, unique, stable steady state. This candidate shows that the conjecture is false. In a three-unit system where each measurement sees the sum of two states, observable from one round of measurements and controllable, with every local update well defined, the reported variances are proved to satisfy m_k ≥ (5/4)(9/5)^k − 1/4 for dynamics A = 3I, while the centralised Kalman filter keeps every variance at most 3/4. A Perron-root criterion extends the divergence to every connected non-bipartite graph of pair-sum measurements, and extra attenuation or deletion of cross-covariances does not help. Divergence needs unstable dynamics (stable dynamics are proved bounded), but only mildly: computer-assisted interval-arithmetic proofs show that large priors escape for growth factors a² in (1, 1.38], with certified entry from 10¹²I at eight values down to 1 + 10⁻⁸, and that at a² = 21/20 the prior I settles while 10¹²I diverges, so no steady covariance attracts every start. In high-precision numerical tests the actual estimation error stays bounded: the failure is gross pessimism of the reported covariance, not divergence of the estimate. The paper also classifies when every local update is well defined (participant groups overlapping in at most one unit) and proves boundedness for anchored relative measurements. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "isolated Kalman filter",
+    "decentralized estimation",
+    "covariance divergence",
+    "Riccati recursion",
+    "collaborative state estimation",
+    "multi-robot localization",
+    "interval arithmetic",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/isolated-kalman-covariance-divergence",
+  "releaseUrl": "https://github.com/ipitchford/isolated-kalman-covariance-divergence/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/isolated-kalman-covariance-divergence/releases/download/v0.1.0-candidate/isolated-kalman-covariance-divergence-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23935675",
+  "conceptDoi": "10.5281/zenodo.23935674",
+  "zenodoUrl": "https://zenodo.org/records/23935675",
+  "citeText": "Anonymous (2026). Observable systems with divergent isolated Kalman covariances: a counterexample to the isolated Kalman filtering convergence conjecture. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23935675",
+  "evidence": "Theorem 4.1, Theorem 5.1, Corollary 5.3, Proposition 3.1, Theorem 8.1 and Proposition 9.1 have written analytic proofs; Theorems 6.2 and 6.4 and Corollaries 6.3 and 6.5 are computer-assisted, resting on outward-rounded interval-arithmetic certificates C1-C3 (mpmath 1.3.0). Exact rational checks cover four epochs of Theorem 4.1, the schedule matrix, the participant-family and singularity witnesses and the anchored identity. Findings 7.1 (bounded actual error) and 7.2 (thresholds) are numerical only. All eleven scripts were replayed with and without Python -O from fresh copies with byte-identical outputs; a corrupted determinant is rejected under -O; GitHub CI reruns the exact checks and certificates on Linux.",
+  "statusDetail": "Unrefereed AI-assisted estimation-theory candidate with written analytic proofs and computer-assisted interval certificates; numerical findings are evidence only. Internal AI-assisted review in five roles, a separate-model adversarial review, independent replay, one revision round with extensions, a re-review, a proof audit and a separate-model audit of the new proofs. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 4 November 2026 with DOI insertion, 18 pages), its verification scripts and certificates, and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Counterexample (Theorem 4.1): three scalar nodes observed through x₁+x₂, x₂+x₃, x₃+x₁ with A = 3I, Q = R = P₀ = I are observable from one epoch and controllable, every local block stays positive definite, yet the smallest reported IsoKF variance satisfies m_k ≥ (5/4)(9/5)^k − 1/4 → ∞, while the centralised Kalman filter keeps every variance at most 3/4.",
+    "Graph criterion (Theorem 5.1, Corollary 5.3): every connected non-bipartite pair-sum graph diverges once a² reaches the Perron root of a schedule matrix (2+√5 ≈ 4.236 for the triangle); further attenuation, including deleting cross-covariances, does not restore boundedness.",
+    "Mild instability and non-uniqueness (Theorems 6.2, 6.4, Corollaries 6.3, 6.5; computer-assisted): for a² in (1, 1.38] large priors diverge at rate a^(2k) once in a certified region, entered from 10¹²I at eight values down to a² = 1 + 10⁻⁸; at a² = 21/20 the prior I converges while 10¹²I diverges, so there is no globally attracting steady covariance.",
+    "Meaning (Findings 7.1-7.2; numerical): in the tested divergent cases the actual error of the IsoKF estimate stays bounded, so the failure is gross pessimism of the reported covariance; the divergence threshold from P₀ = I is near a² ≈ 1.1225, far below the deletion variant's threshold close to 2+√5.",
+    "Safe regimes (Proposition 3.1, Theorem 8.1, Proposition 9.1): Schur-stable dynamics give bounded marginals; local blocks always stay positive definite exactly when participant groups share at most one node; anchored full-coordinate relative measurements stay bounded."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted estimation-theory research, proof writing and interval certificates",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and audit of new proofs by a separate model (OpenAI Codex); independent replay; re-review and proof audit",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Can a team of robots trust the uncertainty it reports? An Evidence Press briefing. When several robots or sensors track a shared state, an ordinary Kalman filter would keep one large table of how uncertain every quantity is and how the errors are linked. Sending that table around is expensive. The isolated Kalman filter, published by Jung, Luft and Weiss in Autonomous Robots in 2025, saves communication. When a measurement involves a few units, only those units update properly, and their links to everyone else are approximated by a simple correction. Its authors conjectured that, whenever the system can be observed and controlled, the uncertainty this filter reports always settles to one finite, stable value. This paper shows that it does not. Take three units, and let each measurement see the sum of two of their states. The system is observable and controllable, and every local step of the filter stays valid. Yet with states that triple at every step, the reported variances grow without limit: they are proved to be at least five quarters times nine fifths to the power k, minus one quarter, after k rounds. The ordinary, centralised Kalman filter on the same system keeps every variance at or below three quarters. The failure also appears with much milder growth. Computer-assisted proofs show that large starting uncertainty escapes when the growth per step is only slightly above one, and that at one growth rate a small start settles while a large start explodes, so no single steady value attracts every start. There are honest limits. In the tests, the filter's actual error stayed bounded; what fails is the reported uncertainty, which becomes wildly pessimistic and stops meaning anything. Stable systems are proved never to diverge, and anchored relative measurements stay safe. This is an unrefereed candidate, checked by internal AI-assisted review only. This narration uses a synthetic voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All eleven scripts (exact verifiers, interval certificates C1-C3, numerical findings and figures) were rerun with Python -I -B, with and without -O, from fresh copies of the approved package (about 25 seconds in total); every JSON and CSV output and both PNG figures reproduced byte for byte. The frozen archive was bound to that replay, the exact verifiers rerun from it under -O, and a corrupted determinant was rejected; GitHub CI reruns the exact checks and certificates on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the computer-assisted results rest on interval-arithmetic certificates assuming correctly rounded mpmath."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Scripts pin mpmath 1.3.0 and Matplotlib 3.10.8 (requirements.txt); exact checks use the standard library; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Jung, Luft and Weiss (2025). Isolated Kalman filtering: theory and decoupled estimator design. Autonomous Robots. Introduces the isolated Kalman filter, its update equations (47)-(50) and the convergence conjecture refuted here.",
+      "url": "https://doi.org/10.1007/s10514-025-10191-x"
+    },
+    {
+      "citation": "Luft, Schubert, Roumeliotis and Burgard (2016). Recursive Decentralized Collaborative Localization for Sparsely Communicating Robots. Robotics: Science and Systems XII. Origin of the marginal-ratio cross-covariance correction.",
+      "url": "https://doi.org/10.15607/rss.2016.xii.016"
+    },
+    {
+      "citation": "Luft, Schubert, Roumeliotis and Burgard (2018). Recursive decentralized localization for multi-robot systems with asynchronous pairwise communication. The International Journal of Robotics Research. Journal version of the correction; inspected at abstract level only.",
+      "url": "https://doi.org/10.1177/0278364918760698"
+    },
+    {
+      "citation": "Roumeliotis and Bekey (2002). Distributed multirobot localization. IEEE Transactions on Robotics and Automation. Decomposed centralised filtering for collaborative localization.",
+      "url": "https://doi.org/10.1109/tra.2002.803461"
+    },
+    {
+      "citation": "Schmidt (1966). Application of State-Space Methods to Navigation Problems. Advances in Control Systems. The consider (Schmidt) filter, which also updates only some states.",
+      "url": "https://doi.org/10.1016/b978-1-4831-6716-9.50011-4"
+    },
+    {
+      "citation": "Julier and Uhlmann (1997). A non-divergent estimation algorithm in the presence of unknown correlations. Proceedings of the 1997 American Control Conference. Covariance intersection, a conservative alternative for unknown correlations.",
+      "url": "https://doi.org/10.1109/acc.1997.609105"
+    },
+    {
+      "citation": "Li and Nashashibi (2012). Cooperative multi-vehicle localization using split covariance intersection filter. 2012 IEEE Intelligent Vehicles Symposium. Split covariance intersection for cooperative localization.",
+      "url": "https://doi.org/10.1109/ivs.2012.6232155"
+    },
+    {
+      "citation": "Chan, Goodwin and Sin (1984). Convergence properties of the Riccati difference equation in optimal filtering of nonstabilizable systems. IEEE Transactions on Automatic Control. Classical Riccati convergence theory used for the centralised comparison.",
+      "url": "https://doi.org/10.1109/tac.1984.1103465"
+    },
+    {
+      "citation": "Weiss and Freeman (2001). Correctness of Belief Propagation in Gaussian Graphical Models of Arbitrary Topology. Neural Computation. Odd-cycle phenomena in another local covariance recursion.",
+      "url": "https://doi.org/10.1162/089976601750541769"
+    },
+    {
+      "citation": "Georgescu, Higham and Peters (2018). Explicit solutions to correlation matrix completion problems, with an application to risk management and insurance. Royal Society Open Science. Matrix completion background for globally consistent covariance arrays.",
+      "url": "https://doi.org/10.1098/rsos.172348"
+    },
+    {
+      "citation": "De Carli and Dimarogonas (2025). A Distributed Kalman-Like Observer With Dynamic Inversion-Based Correction for Multi-Agent Estimation. IEEE Control Systems Letters. A citing work checked in the forward-citation sweep.",
+      "url": "https://doi.org/10.1109/lcsys.2025.3576671"
+    },
+    {
+      "citation": "Jung (2024). Recursive Distributed Collaborative Aided Inertial Navigation. PhD thesis, arXiv:2408.12360. Dissertation formulation of the conjecture.",
+      "url": "https://arxiv.org/abs/2408.12360",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Anonymous (2026). When canonical covariance localisation fails. Evidence Press candidate. Thematic related reading on a different Kalman-filtering approximation (ensemble covariance localisation); not a confirmation of this result.",
+      "url": "https://evidencepress.org/releases/canonical-covariance-localisation-failure/",
+      "pageOnly": true,
+      "pageOnlyReason": "Evidence Press cross-link added on the page as thematic related reading; not cited in the manuscript."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:isolated-kalman-covariance-divergence",
+    "attemptIds": [
+      "ep-attempt:isolated-kalman-covariance-divergence-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Whether the isolated Kalman filter's reported covariance converges to a finite, unique, stable steady state for every completely observable and controllable system (the Jung-Luft-Weiss conjecture): no.",
+      "scope": "Linear time-invariant systems with the published IsoKF update; the counterexamples use pair-sum observation channels and unstable (possibly very mildly unstable) dynamics; stable dynamics are proved bounded."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 quotes the conjecture verbatim and Table 2 sets the published update equations beside the recurrence analysed; Sections 9-11 separate what is proved, computer-assisted and numerical, explain the robotics relevance of pair-sum versus difference channels, and state the software scope.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification; the 2018 journal article was read at abstract level only.",
+        "Interval certificates assume correctly rounded mpmath arithmetic and are not formal proofs; the compiled software was not run."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a decentralised-estimation specialist check the transcription of the published update (Table 2) and the cone argument of Section 4, and test the counterexample in the compiled ikf_lib software.",
+      "claimCeiling": "Analytic refutation of the IsoKF convergence conjecture with computer-assisted mild-instability and non-uniqueness results; numerical evidence that the actual error stays bounded. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "isolated-kalman-covariance-divergence-no-impact",
+        "aim": "science",
+        "outcome": "An openly checkable counterexample to the isolated Kalman filtering convergence conjecture.",
+        "setting": "AI-assisted estimation-theory research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
