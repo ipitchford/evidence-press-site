@@ -1,0 +1,196 @@
+{
+  "slug": "separated-rates-exact-polya-order",
+  "title": "Exact total positivity from separated exponential rates: a matrix dimension theorem and the q-Gindikin conjecture",
+  "shortTitle": "Slow stages fix the exact Pólya frequency order",
+  "oneLine": "A waiting time of m slow exponential stages and one fast stage of random speed has Pólya frequency order exactly m+1, never more, and m+1 is also its largest matrix-lift dimension; this proves the parameter region of Sra's q-Gindikin Conjecture 6.1.",
+  "abstract": "A Pólya frequency (PF) density of order r is one whose shift matrices [f(x_i − y_j)] of size up to r all have nonnegative determinants: order two is log-concavity, and higher orders are stronger forms of variation-diminishing smoothing. A separate question asks whether a scalar Laplace transform φ lifts to a random d×d positive semidefinite complex Hermitian matrix with transform ∏φ(λ_i(S)), a matrix analogue of gamma and Wishart laws; Sra (2026, version 1 of 29 October, Conjecture 6.1) needed exactly this for a q-product. This candidate studies a waiting time made of m exponential stages with distinct slow rates a_1 < … < a_m followed by one fast stage whose rate is drawn from an arbitrary probability measure on [b_0, ∞), with b_0 > a_m. Theorem 1: the density is PF of order m+1; if the fast rate is genuinely random, the exact order is m+1, the next derivative Wronskian W_{m+2} is strictly negative at every x > 0, and a matrix lift exists if and only if d ≤ m+1. A deterministic fast rate gives the classical PF∞ case with lifts in every dimension. No moments of the mixing measure are needed. As an application the paper proves the complete parameter region of Sra's Conjecture 6.1: for 0 < q < 1 and 0 ≤ t < 1, a dimension-d law exists if and only if t ∈ ([0, q^{d−1}] ∪ {q, …, q^{d−2}}) ∩ [0, 1); Sra had proved necessity, the geometric points and d = 2. Section 6A extends the exact conclusions to the weak gap μ((a_m, ∞)) = 1 and, separately, to repeated slow rates, and gives real symmetric lifts in every dimension d ≤ m+1; an interleaved example shows that some rate ordering is necessary. The distribution class (Sumita and Masuda, 1987) and the scalar tools are classical; the sharp theorem was not located in the sources we could read. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "total positivity",
+    "Pólya frequency functions",
+    "exponential mixtures",
+    "phase-type distributions",
+    "Coxian distributions",
+    "Wishart laws",
+    "matrix lifts",
+    "q-Gindikin",
+    "Macdonald (q,t)-permanent",
+    "Hankel forms"
+  ],
+  "repoUrl": "https://github.com/ipitchford/separated-rates-exact-polya-order",
+  "releaseUrl": "https://github.com/ipitchford/separated-rates-exact-polya-order/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/separated-rates-exact-polya-order/releases/download/v0.1.0-candidate/separated-rates-exact-polya-order-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23940010",
+  "conceptDoi": "10.5281/zenodo.23940009",
+  "zenodoUrl": "https://zenodo.org/records/23940010",
+  "citeText": "Anonymous (2026). Exact total positivity from separated exponential rates: a matrix dimension theorem and the q-Gindikin conjecture. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23940010",
+  "evidence": "Theorem 1, Theorem 4 and the Section 6A results have written proofs. Supplementary exact checks in rational arithmetic, standard library only: verify_exact.py recomputes the determinant moments 65/224 (d = 3) and −13/168 (d = 4) at q = 1/2, t = 3/16, certifies a negative order-four Toeplitz determinant with a rigorous tail bound, checks finite-mixture Wronskian tables and the rate-ordering counterexample −13/16384; verify_extensions.py checks the Section 6A identities, certified signs and a parity count. Both were replayed with --check, with and without Python -O, from fresh copies; GitHub CI reruns them.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs; finite exact checks corroborate and do not establish the universal theorem. Internal AI-assisted review in five roles, a separate-model adversarial review, one revision round with extensions, a re-review, a proof audit and a separate-model audit of the new proofs. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (version 2 of 4 November 2026 with DOI insertion, 26 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Exact order (Theorem 1): with distinct slow rates a_1 < … < a_m below every possible fast rate (b_0 > a_m), the density is PF of order m+1; if the fast rate is genuinely random, W_{m+2} < 0 at every x > 0, so the exact order is m+1, never more.",
+    "Matrix dimension (Theorem 1): a complex Hermitian matrix lift with transform ∏φ(λ_i(S)) exists if and only if d ≤ m+1, with a continuous, strictly positive density on the positive definite cone; a deterministic fast rate gives the classical PF∞ case with lifts in every dimension.",
+    "q-Gindikin (Theorem 4): for 0 < q < 1 and 0 ≤ t < 1, a dimension-d matrix law exists if and only if t ∈ ([0, q^{d−1}] ∪ {q, …, q^{d−2}}) ∩ [0, 1), proving Sra's Conjecture 6.1; the new part is sufficiency in the continuous range for d ≥ 3.",
+    "Extensions (Section 6A): the same exact conclusions under the weak gap μ((a_m, ∞)) = 1 and, separately, for repeated slow rates; closure under limits; real symmetric lifts in every dimension d ≤ m+1.",
+    "Ordering matters (Section 6): E_2 ∗ (½E_1 + ½E_3) has W_2(log 8) = −13/16384 < 0, so it is not even log-concave."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research and proof writing",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and audit of the new proofs by a separate model (OpenAI Codex); proof audit; clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "How much smoothing does a staged waiting time have? An Evidence Press briefing. Imagine a job that passes through several slow stages, one after another, and then one last fast stage whose speed is itself random. The total time has a probability density, and mathematicians measure how well behaved such a density is by its Pólya frequency order. Order two is the familiar property called log-concavity; each higher order is a stronger guarantee that smoothing with this density can never add extra wiggles to a signal. This paper shows that with m slow stages, each slower than every possible speed of the last stage, the order is exactly m plus one, never more, as long as the last speed is genuinely random. If the last speed is fixed, the classical answer applies and there is no limit. The same number, m plus one, turns out to be the largest size of random matrix that can carry the same law, in a sense that generalises the gamma and Wishart distributions. As an application, the paper proves a conjecture posed by Suvrit Sra in a preprint dated the twenty-ninth of October twenty twenty-six, describing exactly which parameters of a certain q-product give matrix laws. Sra had already proved some parts; the remaining part is proved here. The paper also relaxes both hypotheses separately, and shows by an exact example that some ordering of the rates is needed. The distribution family itself is classical, studied by Sumita and Masuda in nineteen eighty-seven, and the scalar tools are classical too. We could not read the full text of that paper, and the sharp theorem was not located in the sources we could read, so references to any earlier statement are welcome. Exact computer checks support the proofs but are not the proofs. This is an anonymous, AI-assisted, unrefereed candidate, with internal AI-assisted review only, not peer reviewed, independently reproduced or formally verified. Published on the fourth of November twenty twenty-six, its paper and code are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_exact.py and verify_extensions.py were rerun with --check and Python -I -B, with and without -O, from fresh copies of the approved package with the working directory outside it; both reported PASS and left the stored JSON unchanged. The frozen archive was bound to that replay and rerun from it; GitHub CI reruns the checks on Linux. The checks corroborate the written proofs."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Standard-library Python with exact rational arithmetic (fractions.Fraction); no third-party packages."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Sumita and Masuda (1987). Classes of probability density functions having Laplace transforms with negative zeros and poles. Advances in Applied Probability 19(3). Introduces the classical distribution class (CMPF) studied here; only its abstract and citing papers could be read for this release.",
+      "url": "https://doi.org/10.2307/1427410"
+    },
+    {
+      "citation": "Schoenberg (1951). On Pólya frequency functions I: the totally positive functions and their Laplace transforms. Journal d'Analyse Mathématique. Characterises PF∞ densities; Remark 6A.8 rests on this representation.",
+      "url": "https://doi.org/10.1007/BF02790092"
+    },
+    {
+      "citation": "Assaf, Shaked and Shanthikumar (1985). First-passage times with PFr densities. Journal of Applied Probability. Sufficient conditions for finite PF order with interlacing poles and zeros; no exact order or Wronskian sign is given there.",
+      "url": "https://doi.org/10.2307/3213758"
+    },
+    {
+      "citation": "Förster, Kieburg and Kösters (2021). Polynomial ensembles and Pólya frequency functions. Journal of Theoretical Probability. Establishes the correspondence between finite-order PF functions and derivative-type matrix ensembles used here.",
+      "url": "https://doi.org/10.1007/s10959-020-01030-z"
+    },
+    {
+      "citation": "Kieburg and Zhang (2023). Derivative principles for invariant ensembles. Advances in Mathematics. The standard route from such ensembles to scalar derivative determinants.",
+      "url": "https://doi.org/10.1016/j.aim.2022.108833"
+    },
+    {
+      "citation": "Belton, Guillot, Khare and Putinar (2022). Hirschman–Widder densities. Applied and Computational Harmonic Analysis. Total-positivity properties of finite exponential convolutions.",
+      "url": "https://doi.org/10.1016/j.acha.2022.04.002"
+    },
+    {
+      "citation": "Bertoin, Biane and Yor (2004). Poissonian exponential functionals, q-series, q-integrals, and the moment problem for log-normal distributions. Source of the scalar q-product law; no novelty is claimed for that law.",
+      "url": "https://doi.org/10.1007/978-3-0348-7943-9_3"
+    },
+    {
+      "citation": "Faraut and Korányi (1994). Analysis on symmetric cones. Oxford University Press. Background on Laplace transforms on the positive semidefinite cone.",
+      "url": "https://doi.org/10.1093/oso/9780198534778.001.0001"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:separated-rates-exact-polya-order",
+    "attemptIds": [
+      "ep-attempt:separated-rates-exact-polya-order-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "The exact Pólya frequency order and the exact complex Hermitian matrix-lift dimension of m slow exponential stages followed by a randomly fast stage: both equal m+1 when the fast rate is genuinely random; consequently the parameter region of Sra's Conjecture 6.1.",
+      "scope": "Strict rate gap and distinct slow rates (each relaxation proved separately, not both together); complex Hermitian matrices; real symmetric and quaternionic cutoffs open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 defines PF order and matrix lifts, states Theorem 1, separates classical background from what is claimed, and gives a reader's guide; Section 7 restates Sra's Conjecture 6.1 from version 1 of 29 October 2026; Section 9 states limits and the extent of the literature check.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification, and the full text of Sumita and Masuda (1987) was not read.",
+        "Proofs are written, not formalised; finite checks cannot test the universal statement."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in total positivity check the inertia induction (Section 4) and the sharpness argument (Section 5), compare with the full text of Sumita and Masuda (1987), and attempt the combined weak-gap and repeated-rate case.",
+      "claimCeiling": "Written proof of the exact PF order and matrix dimension m+1 for separated exponential rates, and of the parameter region of Sra's Conjecture 6.1. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "separated-rates-exact-polya-order-no-impact",
+        "aim": "science",
+        "outcome": "An openly checkable proof of a sharp total-positivity and matrix-dimension theorem and of a recently posed conjecture.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
