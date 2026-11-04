@@ -2661,7 +2661,7 @@ ${articleItems}
 function interpsychShareMeta() {
   const title = 'InterPsych: a recovered history';
   const description = 'The history of InterPsych, founded in 1994 as one of the first international online networks for mental health professionals.';
-  const image = `${BASE}/assets/og/interpsych.png`;
+  const image = `${BASE}/assets/og/interpsych.png?v=2`;
   return `<meta name="description" content="${escAttr(description)}">` + [
     ['og:type', 'article'], ['og:site_name', CONFIG.siteName], ['og:title', title], ['og:description', description],
     ['og:url', `${BASE}/interpsych/`], ['og:image', image], ['og:image:width', '1200'], ['og:image:height', '630']
