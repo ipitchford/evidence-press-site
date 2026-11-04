@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Do the edge-containing sets of a graph spread out like coin tosses? An Evidence Press briefing. Take any network of points joined by links, what mathematicians call a graph. Pick some of its points, and call your choice dependent if it includes both ends of at least one link. For each size k, count the dependent choices of k points. In 2002 David Horrocks proved that these counts are log-concave: they rise and then fall smoothly, with no second hump. In 2026 Yan-Ting Xie and Shou-Jun Xu conjectured something stronger. Divide each count by the total number of ways to choose k points, so that you get the fraction of k-point choices that are dependent. They conjectured that this sequence of fractions is still log-concave.",
+      "inputSha256": "101ae959f7684da53ae1479ec47c054d099abb81d61bfbd7857cf9545e97bdd7",
+      "audioSha256": "062e59c15a11d161c0cbaf90ede7bb9f412c218be930e6a3adaf3e1305980514",
+      "requestId": "req_0dd605a7e1714dcba9cc6b58810329b4",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "this sequence of fractions is still log concave",
+        "heardEnding": "point choices that are dependent they conjectured that this sequence of fractions is still log concave",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This is called ultra log-concavity, and it means that the size of a random dependent choice is at least as tightly concentrated as the number of heads in a run of coin tosses. They had proved it only for two special families of graphs. This paper proves it for every graph, and more: each point may carry a weight, and single points may also count as dependent on their own. The key step is a new fact about splitting the points into two groups so that each group contains a link: after the same division, the number of such splits rises and falls symmetrically. A classical counting theorem of Katona and a criterion of Kahn and Neiman then finish the argument.",
+      "inputSha256": "ca2c26348efcc811335fbc87e1d74d7cd7da19d5567cfa6911943d06103af3f3",
+      "audioSha256": "9a21be4d59b455fe87cc060a190258cf97502592458622d5f78d460a79b31460",
+      "requestId": "req_a5012931d61b49d38af89ced2374bc93",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "of kahn and neiman then finish the argument",
+        "heardEnding": "classical counting theorem of katona and a criterion of kahn and neiman then finish the argument",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The paper shows the condition is sharp: if a dependent choice must contain three linked points instead of two, the property can fail, with ninety-six falling short of one hundred and twenty in a five-point example. It also settles a broader conjecture of Xie and Xu for small cases, while the general case remains open. A practical consequence is a variance bound for random sets conditioned to contain a link. Computer checks of all small cases support the proofs but are not the proofs. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the fourth of November twenty twenty-six, its paper and code are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "ff7742f8505340abdcbab0608be9e71bcedf46e358ad885fe330662539541276",
+      "audioSha256": "5f001bcddfd38fc73e188b1d9a9fd0e9a63becac0f39db410684b26b50597040",
+      "requestId": "req_ad1292dee19d4326be9e31000259e6a6",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "dependence-ultra-log-concavity",
+  "generatedAt": "2026-11-04T03:20:50.786Z",
+  "sourceMetadata": "papers/dependence-ultra-log-concavity/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "7d9213f63ad404e292c92c1455ea701e0815bae27a9ecc5a9f3c58282bb53627",
+  "transcriptPath": "assets/audio/dependence-ultra-log-concavity.txt",
+  "transcriptSha256": "f9ecfb2240d26209becc9ddad1f8cd5c0a02eb754cd629c04bc17d1d061732c7",
+  "audioPath": "assets/audio/dependence-ultra-log-concavity.mp3",
+  "audioSha256": "5275db9c3b64ee30528c0d3dfb96c66b1e92724323089dcb3d37c05ec036b191",
+  "audioBytes": 2292908,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
