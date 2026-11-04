@@ -5,7 +5,7 @@
   "oneLine": "Rotation helps every observable exactly when friction is at least √2 — and what happens below it: for kinetic Langevin samplers of a Gaussian target, a target-preserving rotation never increases the long-run variance of any square-integrable position average if and only if the friction is at least √2.",
   "abstract": "A Markov chain sampler estimates an average from one long trajectory, and its accuracy is the long-run (asymptotic) variance of that time average. Adding a deterministic rotation that preserves the target (a nonreversible perturbation) is known to help every observable for overdamped Langevin samplers. For kinetic, or underdamped, Langevin samplers, which carry a momentum and a friction γ, Duncan, Nüsken and Pavliotis (2017) proved a local improvement for linear and quadratic observables of a Gaussian target when γ > √2 and conjectured it for every square-integrable observable. This candidate proves a global form of that conjecture: with matched position and momentum rotations, every square-integrable position observable has a long-run variance that never increases with rotation strength if and only if γ ≥ √2, the endpoint included. The mechanism is that the oscillator power spectrum is single-peaked exactly when there is no resonance, rotation shifts the spectrum, and convolution keeps single peaks single. The literal second-derivative form holds exactly on an explicit class containing all polynomials, while rough observables have sharper cusps. Below the threshold, even observables still improve at every rotation, only finitely many odd Hermite degrees can be hurt, and one finite rotation strength improves every observable. The paper also gives sharp large-rotation rates, a matrix criterion Γ³ − ΓK − KΓ ⪰ 0 for noncommuting stiffness and friction with least safe friction (2K)^{1/2}, a two-replica construction for arbitrary Gaussian targets, and shows that fixed horizons and regular sampling can reverse the ordering while Poisson sampling preserves it. Everything concerns exact stationary Gaussian dynamics; nothing is claimed about discretised integrators, cost or an optimal friction. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
   "datePublished": "2026-11-04",
-  "version": "0.2.0-candidate",
+  "version": "0.3.0-candidate",
   "authors": [
     "Anonymous"
   ],
@@ -22,12 +22,12 @@
     "friction threshold"
   ],
   "repoUrl": "https://github.com/ipitchford/rotating-gaussian-variance-ordering",
-  "releaseUrl": "https://github.com/ipitchford/rotating-gaussian-variance-ordering/releases/tag/v0.2.0-candidate",
-  "pdfUrl": "https://github.com/ipitchford/rotating-gaussian-variance-ordering/releases/download/v0.2.0-candidate/rotating-gaussian-variance-ordering-0.2.0-candidate.pdf",
-  "doi": "10.5281/zenodo.23946160",
+  "releaseUrl": "https://github.com/ipitchford/rotating-gaussian-variance-ordering/releases/tag/v0.3.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/rotating-gaussian-variance-ordering/releases/download/v0.3.0-candidate/rotating-gaussian-variance-ordering-0.3.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23953250",
   "conceptDoi": "10.5281/zenodo.23941496",
-  "zenodoUrl": "https://zenodo.org/records/23946160",
-  "citeText": "Anonymous (2026). Sharp variance ordering for rotating Gaussian samplers. Version 0.2.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23946160",
+  "zenodoUrl": "https://zenodo.org/records/23953250",
+  "citeText": "Anonymous (2026). Sharp variance ordering for rotating Gaussian samplers. Version 0.3.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23953250",
   "evidence": "The theorems have written proofs. Three deterministic scripts check them against independent calculations: exact rational spectral fingerprints, covariance and variance formulas against matrix exponentials, Poisson-equation and Lyapunov solves, the finite-horizon rational certificate, observation-rule identities, high-degree limits, a noncommuting matrix example, the insufficiency of Γ² ⪰ 2K and the least-friction identity; a third computes the Table 1 crossing points from an exact formula cross-checked by quadrature (computed, not proved). All three were replayed with and without Python -O from fresh copies; a corrupted least-friction formula is rejected under -O; GitHub CI reruns them on Linux.",
   "statusDetail": "Unrefereed AI-assisted probability and sampling candidate with written proofs. Internal AI-assisted review in five roles, a separate-model adversarial review, one revision round adding the below-threshold theorem, a re-review and a separate-model audit of the revision. External specialist review, independent reproduction and formal verification have not been established.",
   "pageStructureVersion": "2.0",
@@ -35,7 +35,7 @@
   "pageStructureWaivers": [],
   "recordMaturity": "current",
   "grandfatheredAtSchemaVersion": null,
-  "metadataProvenance": "Prepared from the final manuscript (version 1.3 of 4 November 2026 with DOI insertion, 29 pages), its three verification scripts and reports, the rating-free review record and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "metadataProvenance": "Prepared from the final manuscript (version 1.4 of 4 November 2026 with DOI insertion, 30 pages), its three verification scripts and reports, the rating-free review record and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
   "keyResults": [
     "Sharp ordering (Theorem 1): for J ≠ 0, V_f(μ) is nonincreasing in |μ| for every real f ∈ L²(π) if and only if γ ≥ √2, the endpoint included; the decrease is strict unless f is rotation-invariant. This is a global form of the Duncan–Nüsken–Pavliotis conjecture.",
     "Spectral criterion (Theorem 2): for any rotated stationary Gaussian process with integrable covariance, universal ordering holds iff the spectral density is nonincreasing on [0, ∞); for the kinetic oscillator S_γ(ξ) = 2γ/(ξ⁴ + (γ² − 2)ξ² + 1), single-peaked exactly when γ ≥ √2.",
@@ -64,7 +64,7 @@
     },
     "internalReplay": {
       "state": "passed",
-      "note": "verify.py (with --symbolic), verify_matrix_extension.py and verify_below_threshold.py were rerun with Python -I -B, with and without -O, from fresh copies of the approved package (about three minutes each pass); reports reproduced with identical exact fields and floats equal to round-off, and the figure PNG byte for byte. The frozen archive was bound to that replay, two scripts reran from it under -O, and a corrupted least-friction formula was rejected; GitHub CI reruns all three. These checks are supplementary to the written proofs. Version 0.2.0-candidate changes no script, report or figure (byte-identical to 0.1.0-candidate), so that replay is reused; two scripts were rerun under -O from the frozen 0.2.0 archive."
+      "note": "verify.py (with --symbolic), verify_matrix_extension.py and verify_below_threshold.py were rerun with Python -I -B, with and without -O, from fresh copies of the approved package (about three minutes each pass); reports reproduced with identical exact fields and floats equal to round-off, and the figure PNG byte for byte. The frozen archive was bound to that replay, two scripts reran from it under -O, and a corrupted least-friction formula was rejected; GitHub CI reruns all three. These checks are supplementary to the written proofs. Version 0.2.0-candidate changes no script, report or figure (byte-identical to 0.1.0-candidate), so that replay is reused; two scripts were rerun under -O from the frozen 0.2.0 archive. Version 0.3.0-candidate also changes no script, report or figure; the same two scripts were rerun under -O from the frozen 0.3.0 archive."
     },
     "independentRerun": {
       "state": "not-assessed",
@@ -129,7 +129,7 @@
       "url": "https://doi.org/10.48550/arXiv.2610.37113"
     },
     {
-      "citation": "Franke, Hwang, Ouled Said and Pai (2021), A note on the asymptotic variance of drift accelerated diffusions. Statistics & Probability Letters. For overdamped diffusions: variance tends to zero uniformly exactly when the drift has no H¹ kernel, and is nonincreasing in the amplitude. Read in the authors' version; compared in Section 1.4.",
+      "citation": "Franke, Hwang, Ouled Said and Pai (2021), A note on the asymptotic variance of drift accelerated diffusions. Statistics & Probability Letters. For overdamped diffusions: variance tends to zero uniformly exactly when the drift has no H¹ kernel, and is nonincreasing in the amplitude. Theorem 2.4 and Corollaries 3.1 and 4.3. Published text read in full; compared in Section 1.4.",
       "url": "https://doi.org/10.1016/j.spl.2021.109128"
     },
     {
@@ -219,6 +219,13 @@
       "fixedIn": "0.2.0-candidate",
       "summary": "Corrected how the paper relates its results to Maini (2026) and Franke et al. (2021), and what it says about the literature search. Both sources were read in full, Franke et al. in the authors' version (HAL hal-02266338), and compared with the results.",
       "detail": "Section 1.4 now cites Maini's Lemma 3.1 and Corollary 3.4 and says what that paper does not contain: it compares no frequencies and has no rotated family, Markov dynamics or sampler. It also states Franke et al.'s uniform-convergence theorems, credits the monotonicity in the drift amplitude that their decomposition gives for overdamped diffusions, and explains why that argument does not reach kinetic dynamics. Section 10 and the archive's records now say what was searched and that no earlier statement of the main results was found. Neither source contains the main results. No theorem, proof, computation or recorded output changed. Version 0.1.0-candidate remains archived at doi:10.5281/zenodo.23941497."
+    },
+    {
+      "date": "2026-11-04",
+      "scope": "claim",
+      "fixedIn": "0.3.0-candidate",
+      "summary": "Version 0.2.0-candidate removed the statement that Franke et al. (2021) discuss an irrational rotation. That removal was mistaken, and version 0.1.0-candidate was correct. The statement is restored, and the citations now follow the published text, which was read in full.",
+      "detail": "The irrational-rotation discussion is in the published Introduction (p. 2). It is missing only from the authors' version of 14 August 2019, on which version 0.2.0-candidate relied. Citations now use the journal's numbering: Theorem 2.4 and Corollaries 3.1 and 4.3 (the published paper has no Theorem 2.9). The published text confirms that the paper does not contain the main results. No theorem, proof, computation or recorded output changed. Versions 0.1.0-candidate (doi:10.5281/zenodo.23941497) and 0.2.0-candidate (doi:10.5281/zenodo.23946160) remain archived."
     }
   ]
 }
