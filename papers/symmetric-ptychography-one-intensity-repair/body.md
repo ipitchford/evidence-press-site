@@ -13,7 +13,7 @@
 
 The paper also treats a related family of probes with a single line of zeros, where it gives exact stability constants after one added measurement and an optimal choice of that measurement, and short three-site probes, where a two-pixel reading repairs every signal without zero entries.
 
-**Prior work, credited.** A public AI-assisted manuscript, *VESPER–QUORUM* (version 6.0.0, 3 October 2026), already contains the single-line block and fibre classification, the obstruction mechanism and the positive-semidefinite reconstruction algorithm; those are credited, not claimed. It does not add measurements and does not cover the cross pattern of real-even probes. It cites a predecessor, *NACRE–CHOIR*, which could not be located publicly, so that comparison remains unresolved.
+**Prior work, credited.** A public AI-assisted manuscript, *VESPER–QUORUM* (version 6.0.0, 3 October 2026), already contains the single-line block and fibre classification, the obstruction mechanism and the positive-semidefinite reconstruction algorithm; those are credited, not claimed. It does not add measurements and does not cover the cross pattern of real-even probes. The cone-angle method and positive-semidefinite iteration used here are also credited to it; it states that the identity was already used in an earlier manuscript of the same credited author.
 
 **What it does not do.** The extra measurement changes the experiment: this is a repair, not recovery from the original data alone. The model is one-dimensional and cyclic with an exactly known probe; it is not blind ptychography and does not model detector noise. The Gaussian result is an exact-arithmetic statement: at small widths the relevant probe numbers are tiny (about $4\times10^{-14}$ at $n=10$, $t=1/n$), so recovery can be numerically fragile. For real-even probes the stability constant is only qualitative; the explicit values at $n=6$ are uncertified numerical evidence. All numerical tests use synthetic data.
 
@@ -27,7 +27,7 @@ Indices in $\mathbb Z_n$, $n=2N\ge6$; known probe $w$; complete cyclic data $Y_w
 - **Fibres (Theorem 9.3).** Under the exact cross mask, $\ker\mathcal A_w\cap\operatorname{Herm}(n)=\mathcal K_T+\mathcal K_F$ (time- and Fourier-antipodal blocks $D_t$, $B_t$); every rank-two kernel difference is a multiple of one $D_t$ or one $B_t$, so fibres have at most two global-phase classes, the nontrivial ones being $x=ae_t+be_{t+N}$ or $Fx=ae_t+be_{t+N}$ with $\operatorname{Im}(a\bar b)\ne0$. A zero row of $xx^*-yy^*$ excludes mixed low-rank terms.
 - **Repair (Theorem 9.5).** $(Y_w,J_g)$ is injective modulo phase iff $g^*D_tg\ne0$ and $g^*B_tg\ne0$ for all $t$; then strict rank-one PSD completeness holds, because an anticommuting involution ($M$ or $MT$) makes every kernel spectrum symmetric and the inertia criterion (Carmeli et al. 2014; Baldwin et al. 2016) applies. Proposition 9.6: $g_j\propto\rho^je^{\pi ij/n}$ satisfies this for every even $n$, with block gains $\ge1/(\sqrt2n^2)$ at $\rho=1-1/n$. Proposition 9.7: the Chu chirp gives all block gains $\sqrt2/n$ for $N$ odd and all zero for $N$ even.
 - **Certified widths (Theorem 9.2).** $|E_n|=3,6,11,15,23,31$ exceptional widths for $n=6,\dots,16$; $t^*(6)=2^{-1/2}$, $t^*(8)\approx0.7374$, $t^*(16)\approx0.8447$.
-- **Single line (Section 8).** For conjugate-symmetric probes with one forced line: exact squared gaps $c$ (paired) and $\tfrac14\bigl(1+b+c-\sqrt{(1+b+c)^2-8c}\bigr)$ (PSD) in the orthogonalised metric $\Phi_g$ (Theorem 8.18), one vector simultaneously optimal at fixed energy $0<E\le\sqrt2$ (Theorem 8.19), and a direct reconstruction with one real unknown and sharp scalar conditioning (Theorem 8.11). Block structure credited to VESPER–QUORUM; the cone-angle method to NACRE–CHOIR through VESPER–QUORUM.
+- **Single line (Section 8).** For conjugate-symmetric probes with one forced line: exact squared gaps $c$ (paired) and $\tfrac14\bigl(1+b+c-\sqrt{(1+b+c)^2-8c}\bigr)$ (PSD) in the orthogonalised metric $\Phi_g$ (Theorem 8.18), one vector simultaneously optimal at fixed energy $0<E\le\sqrt2$ (Theorem 8.19), and a direct reconstruction with one real unknown and sharp scalar conditioning (Theorem 8.11). Block structure credited to VESPER–QUORUM; so is the cone-angle method.
 - **Three-site probes (Sections 3–7).** Exact nonvanishing fibres, the two-pixel repair $|x_0+e^{i\pi/n}x_1|^2$ with maximin phase, and $\sigma_{\min}\ge4\mu/\sqrt{5n^2-4n}$ for the parity system, of optimal order.
 
 ## Technical account
@@ -48,7 +48,7 @@ Indices in $\mathbb Z_n$, $n=2N\ge6$; known probe $w$; complete cyclic data $Y_w
 - **Supplementary checks.** `reproduce.py`: 162 short-probe and exact-doublet configurations, 17 completion and 12 perturbation-bound cases, 480 synthetic noisy reconstructions, and the figures. `global_recovery.py`: 280 lifted signal pairs, 350 parity references, 210 direct reconstructions, 210 PSD competitor checks and six convex reconstructions. `real_probe_checks.py`: 18 Gaussian probes, 228 cross-mask doublets, the kernel of the actual $n^2\times n^2$ lifted map for $n=6,8,10,12$, and chirp gains for $n=6$ to $24$.
 - **Uncertified evidence.** `cross_gap_bound.py` computes the $n=6$ cross-mask stability values in floating point; only its interval check that the probe multiplier exceeds $0.0223$ at $t=3/5$ is rigorous.
 - **Replay.** All five programs were rerun from fresh copies with and without Python `-O`; checks are explicit tests, not `assert`, and a deliberately corrupted formula is rejected under `-O`. GitHub CI reruns them.
-- **Limits.** Idealised one-dimensional cyclic model, exactly known probe, complete data; the added measurement changes the data model; circular-distance Gaussian convention only; qualitative stability for the cross mask; synthetic data; bounded prior-art searches (1 and 4 November 2026); the comparison with NACRE–CHOIR is unresolved. Review was internal and AI-assisted only.
+- **Limits.** Idealised one-dimensional cyclic model, exactly known probe, complete data; the added measurement changes the data model; circular-distance Gaussian convention only; qualitative stability for the cross mask; synthetic data; bounded prior-art searches (1 and 4 November 2026). Review was internal and AI-assisted only.
 
 ## Who should care, and why
 
@@ -80,7 +80,7 @@ The five programs take about 30 seconds in total. Add `-O` to confirm the checks
 1. A certified, quantitative stability constant for the real-even cross mask, first for $n=6$ and $8$, then for general $n$.
 2. Sharp gap formulas and an optimal added vector for the cross mask, extending Section 8.8.
 3. Exceptional widths for larger $n$ and for periodised sampled Gaussians.
-4. Two-dimensional and non-cyclic versions, and a comparison with NACRE–CHOIR if it becomes available.
+4. Two-dimensional and non-cyclic versions.
 
 ## What is in the evidence package
 
