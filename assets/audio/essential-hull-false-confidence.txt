@@ -1,0 +1,13 @@
+This is a short audio briefing on a new Evidence Press research candidate: an essential convex hull criterion for false confidence in location models.
+
+Satellite operators compute the probability that two objects will collide. There is a catch. When uncertainty is large, that probability is small even if a collision is certain. In 2019, Balch, Martin and Ferson named this false confidence, and proved that some false hypotheses tend to look well supported. In 2024, Martin asked which ones.
+
+This paper gives an exact answer for a standard class of models. Take the hypothesis, and draw the smallest convex shape around it, ignoring pieces of zero volume. With light-tailed errors, the hypothesis is calibrated at every threshold, at a given parameter value, exactly when that value is not strictly inside the shape. The paper also finds the exact tail condition for this to hold. It shows that only halfspaces are calibrated from both sides. That corrects Martin's conjecture that every non-linear hypothesis is affected, because a ball is not.
+
+There is a practical result too. With log-concave errors, suppose everything outside a hypothesis fits in a convex set with small posterior mass, when the data land on the truth. Then the hypothesis gets high probability at least half the time. If the uncertainty is ten times the object size, a certain collision gives a computed probability of at most one percent, every time.
+
+Some limits. The easy direction is elementary, and part of it appears in Martin's earlier work. Failure at every threshold may happen only at low thresholds, so the shape alone says nothing about ninety-five percent confidence. The model assumes a known shape and an exact match. The search for earlier work is not proof of priority.
+
+The proofs are written out, and scripts check the worked numbers. Review was internal and AI-assisted, with no proof assistant. This remains an unrefereed candidate, released on 4 November 2026. The paper and evidence are linked from the Evidence Press page.
+
+This briefing uses a synthetic voice, and it is not additional scientific evidence.

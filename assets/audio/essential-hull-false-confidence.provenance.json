@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is a short audio briefing on a new Evidence Press research candidate: an essential convex hull criterion for false confidence in location models. Satellite operators compute the probability that two objects will collide. There is a catch. When uncertainty is large, that probability is small even if a collision is certain. In 2019, Balch, Martin and Ferson named this false confidence, and proved that some false hypotheses tend to look well supported. In 2024, Martin asked which ones. This paper gives an exact answer for a standard class of models. Take the hypothesis, and draw the smallest convex shape around it, ignoring pieces of zero volume.",
+      "inputSha256": "7de3d8ce33eac9f8cc23dab8f7813292f6b61f710d1a5d1b1edad39ffdc131d9",
+      "audioSha256": "fc6af7e2893b75d058a873a6d7119fde6e44e8598c91adee0d8014e987701257",
+      "requestId": "req_528ebf834ce84001a7980e493e04029d",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "convex shape around it ignoring pieces of volume",
+        "heardEnding": "models take the hypothesis and draw the smallest convex shape around it ignoring pieces of volume",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "With light-tailed errors, the hypothesis is calibrated at every threshold, at a given parameter value, exactly when that value is not strictly inside the shape. The paper also finds the exact tail condition for this to hold. It shows that only halfspaces are calibrated from both sides. That corrects Martin's conjecture that every non-linear hypothesis is affected, because a ball is not. There is a practical result too. With log-concave errors, suppose everything outside a hypothesis fits in a convex set with small posterior mass, when the data land on the truth. Then the hypothesis gets high probability at least half the time. If the uncertainty is ten times the object size, a certain collision gives a computed probability of at most one percent, every time. Some limits.",
+      "inputSha256": "fe2398f8a14cdf325918e2f57245814c3775646fefdbbc1e8d4a643b5369b0c3",
+      "audioSha256": "d3b43865fae6c1ffd7e280213b033593f2263a4bc4339ade8d8b25fd815c235c",
+      "requestId": "req_cb33460645cd4692a19cb83b34cfd973",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "of at most percent every time some limits",
+        "heardEnding": "the object size a certain collision gives a computed probability of at most percent every time",
+        "matchedWords": 6,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The easy direction is elementary, and part of it appears in Martin's earlier work. Failure at every threshold may happen only at low thresholds, so the shape alone says nothing about ninety-five percent confidence. The model assumes a known shape and an exact match. The search for earlier work is not proof of priority. The proofs are written out, and scripts check the worked numbers. Review was internal and AI-assisted, with no proof assistant. This remains an unrefereed candidate, released on 4 November 2026. The paper and evidence are linked from the Evidence Press page. This briefing uses a synthetic voice, and it is not additional scientific evidence.",
+      "inputSha256": "1edf2c7437b2189c1965e8ef4d6a0a22974fda6b953f6c083e6d2c30931171d3",
+      "audioSha256": "a655ce31186ba02dce8817886d178c9742a3f083b95556124ab94dad5d6ae525",
+      "requestId": "req_18b7f8b14fd64d61b17eab95577d7584",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "voice and it is not additional scientific evidence",
+        "heardEnding": "evidence press page this briefing uses a synthetic voice and it is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "essential-hull-false-confidence",
+  "generatedAt": "2026-11-04T13:03:12.170Z",
+  "sourceMetadata": "papers/essential-hull-false-confidence/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "250a153be3a7f91503f56819e2c4983b6426a6d0eb29d2a731b7a69360ca3d3b",
+  "transcriptPath": "assets/audio/essential-hull-false-confidence.txt",
+  "transcriptSha256": "9ba09de61fbfa6992f82477a1f225e67fbcde9336a4d1449f4b1c2a01d0a45e2",
+  "audioPath": "assets/audio/essential-hull-false-confidence.mp3",
+  "audioSha256": "1dafb0ada6d3db8988c6760087a339ad544c22614b1d39551d73ee9f51257545",
+  "audioBytes": 2210348,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "voice and it is not additional scientific evidence",
+    "heardEnding": "evidence press page this briefing uses a synthetic voice and it is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

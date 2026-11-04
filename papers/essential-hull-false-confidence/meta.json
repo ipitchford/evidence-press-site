@@ -1,0 +1,218 @@
+{
+  "slug": "essential-hull-false-confidence",
+  "title": "An essential convex hull criterion for false confidence in location models",
+  "shortTitle": "Which false hypotheses can a probability favour? A convex hull answer",
+  "oneLine": "In location models with light-tailed errors, a hypothesis is calibrated at every threshold at a parameter exactly when that parameter is not strictly inside its essential convex hull, and a finite test warns of high confidence in a false hypothesis.",
+  "abstract": "Operators compute a probability of collision, and with large uncertainty it is small even if a collision is certain. Balch, Martin and Ferson (2019) named this false confidence and proved that affected hypotheses exist; Martin (2024) asked which. This candidate answers exactly for flat-prior posteriors in location models with radially decreasing errors. For exponential-power errors with p > 1, a hypothesis is valid at every threshold at a parameter exactly when that parameter lies outside the interior of the closed convex hull of the essential support of the hypothesis. The equivalence holds for a radial density g with tail probability S if and only if liminf S(R)/g(R − b) = 0 for every b > 0; tails like exp(−r log r) satisfy this in dimension one and fail in every higher dimension. Only almost-halfspaces are calibrated from both sides, which corrects a conjecture of Martin (2024) in these models, since a ball is not affected, and only strictly monotone functions of one linear form have exact marginal posteriors. With log-concave errors, if a closed convex set contains the complement of the hypothesis and has posterior mass at most s < 1/2 when the observation equals the truth, the hypothesis receives posterior probability at least 1 − s with sampling probability at least one half. The sufficient direction is elementary and halfspace validity is in Martin (2023). All-threshold failure may occur only at low thresholds. The model assumes known shape and exact matching. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "false confidence",
+    "location model",
+    "convex hull",
+    "essential support",
+    "confidence distribution",
+    "fiducial inference",
+    "satellite conjunction analysis",
+    "log-concavity"
+  ],
+  "repoUrl": "https://github.com/ipitchford/essential-hull-false-confidence",
+  "releaseUrl": "https://github.com/ipitchford/essential-hull-false-confidence/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/essential-hull-false-confidence/releases/download/v0.1.0-candidate/essential-hull-false-confidence-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23948952",
+  "conceptDoi": "10.5281/zenodo.23948951",
+  "zenodoUrl": "https://zenodo.org/records/23948952",
+  "citeText": "Anonymous (2026). An essential convex hull criterion for false confidence in location models. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23948952",
+  "evidence": "Written proofs of all results in a 13-page paper; three deterministic scripts check worked numbers in floating point (numpy 2.3.5, scipy 1.17.0), with failures that stay active under Python -O; replay from fresh copies reproduced the retained JSON exactly, and three corruption controls are detected.",
+  "statusDetail": "Unrefereed AI-assisted statistics candidate. All results have written proofs; no proof assistant was used. The sufficient direction is elementary, halfspace validity is in Martin (2023), and the Gaussian converse combines classical Laplace-transform growth with a tail comparison. Internal AI-assisted review only, including a separate-model adversarial review, a re-review and a proof audit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (November 2026, with DOI line, 13 pages), its check scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Hull criterion (Theorem 1, proof): under the tail condition (T), a hypothesis is valid at every threshold at a parameter exactly when that parameter is outside the interior of its essential convex hull; (T) is also necessary.",
+    "Exact tail condition (Lemma 0, proof): exponential-power errors satisfy (T) exactly for p > 1; tails like exp(−r log r) satisfy it in dimension one and fail it in every higher dimension.",
+    "Two-sided classification (Theorem 4, Corollary 5, proof): four calibration regimes; only almost-halfspaces are calibrated from both sides, correcting a conjecture of Martin (2024) in these models.",
+    "Exact marginalisation (Theorem 6, proof): only strictly monotone functions of one linear form have exact marginal posteriors at every parameter.",
+    "High confidence (Theorem 8, proof and Table 2): with log-concave errors, Q_θ(C) ≤ s < 1/2 for a closed convex C containing the complement gives posterior probability at least 1 − s at least half the time; at σ/R = 10 a certain collision gives Pc ≤ 0.01 with probability one."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted analysis and computation",
+      "AI-assisted internal review in several roles (Claude Code subagents); adversarial review and audit of new proofs by a separate model (OpenAI Codex); clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "This is a short audio briefing on a new Evidence Press research candidate: an essential convex hull criterion for false confidence in location models.\n\nSatellite operators compute the probability that two objects will collide. There is a catch. When uncertainty is large, that probability is small even if a collision is certain. In 2019, Balch, Martin and Ferson named this false confidence, and proved that some false hypotheses tend to look well supported. In 2024, Martin asked which ones.\n\nThis paper gives an exact answer for a standard class of models. Take the hypothesis, and draw the smallest convex shape around it, ignoring pieces of zero volume. With light-tailed errors, the hypothesis is calibrated at every threshold, at a given parameter value, exactly when that value is not strictly inside the shape. The paper also finds the exact tail condition for this to hold. It shows that only halfspaces are calibrated from both sides. That corrects Martin's conjecture that every non-linear hypothesis is affected, because a ball is not.\n\nThere is a practical result too. With log-concave errors, suppose everything outside a hypothesis fits in a convex set with small posterior mass, when the data land on the truth. Then the hypothesis gets high probability at least half the time. If the uncertainty is ten times the object size, a certain collision gives a computed probability of at most one percent, every time.\n\nSome limits. The easy direction is elementary, and part of it appears in Martin's earlier work. Failure at every threshold may happen only at low thresholds, so the shape alone says nothing about ninety-five percent confidence. The model assumes a known shape and an exact match. The search for earlier work is not proof of priority.\n\nThe proofs are written out, and scripts check the worked numbers. Review was internal and AI-assisted, with no proof assistant. This remains an unrefereed candidate, released on 4 November 2026. The paper and evidence are linked from the Evidence Press page.\n\nThis briefing uses a synthetic voice, and it is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All four scripts were rerun with Python -I -B, with and without -O, from fresh copies (numpy 2.3.5, scipy 1.17.0, matplotlib 3.10.8). The JSON and the PNG figure matched the retained files exactly; the figure PDF differs only in its embedded date. Three corruption controls are detected. GitHub CI reruns the scripts on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "requirements.txt pins numpy 2.3.5, scipy 1.17.0 and matplotlib 3.10.8; not a locked container; last-digit float differences across platforms are expected."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Balch, Martin and Ferson (2019). Satellite conjunction analysis and the false confidence theorem. Proceedings of the Royal Society A. Names false confidence and proves that affected hypotheses exist.",
+      "url": "https://doi.org/10.1098/rspa.2018.0565"
+    },
+    {
+      "citation": "Carmichael and Williams (2018). An exposition of the false confidence theorem. Stat. An exposition of the false confidence theorem.",
+      "url": "https://doi.org/10.1002/sta4.201"
+    },
+    {
+      "citation": "Casella and Berger (1987). Reconciling Bayesian and Frequentist Evidence in the One-Sided Testing Problem. JASA. One-sided p-values and posterior probabilities.",
+      "url": "https://doi.org/10.1080/01621459.1987.10478396"
+    },
+    {
+      "citation": "Cunen, Hjort and Schweder (2020). Confidence in confidence distributions!. Proceedings of the Royal Society A. Confidence distributions for interval statements.",
+      "url": "https://doi.org/10.1098/rspa.2019.0781"
+    },
+    {
+      "citation": "Efron and Tibshirani (1998). The problem of regions. The Annals of Statistics. First-order confidence value and curvature effects.",
+      "url": "https://doi.org/10.1214/aos/1024691353"
+    },
+    {
+      "citation": "Elkantassi and Davison (2022). Space Oddity? A Statistical Formulation of Conjunction Assessment. Journal of Guidance, Control, and Dynamics. Likelihood inference on the miss distance.",
+      "url": "https://doi.org/10.2514/1.G006282"
+    },
+    {
+      "citation": "Fraser (2011). Is Bayes Posterior just Quick and Dirty Confidence?. Statistical Science. Curvature effects for non-linear functionals.",
+      "url": "https://doi.org/10.1214/11-STS352"
+    },
+    {
+      "citation": "Martin (2019). False confidence, non-additive beliefs, and valid statistical inference. International Journal of Approximate Reasoning. Non-additive beliefs and validity.",
+      "url": "https://doi.org/10.1016/j.ijar.2019.06.005"
+    },
+    {
+      "citation": "Martin (2024). Which Statistical Hypotheses are Afflicted with False Confidence?. Lecture Notes in Computer Science. Asks which hypotheses are affected, with the conjecture corrected here.",
+      "url": "https://doi.org/10.1007/978-3-031-67977-3_15"
+    },
+    {
+      "citation": "Martin (2026). Possibilistic Inferential Models: A Review. JASA. A review that still treats the characterisation as open.",
+      "url": "https://doi.org/10.1080/01621459.2025.2606127"
+    },
+    {
+      "citation": "Saumard and Wellner (2014). Log-concavity and strong log-concavity: A review. Statistics Surveys. Log-concavity, used for Theorem 8.",
+      "url": "https://doi.org/10.1214/14-SS107"
+    },
+    {
+      "citation": "Shimodaira (2004). Approximately unbiased tests of regions using multistep-multiscale bootstrap resampling. The Annals of Statistics. Multiscale bootstrap for regions.",
+      "url": "https://doi.org/10.1214/009053604000000823"
+    },
+    {
+      "citation": "Shimodaira (2008). Testing regions with nonsmooth boundaries via multiscale bootstrap. Journal of Statistical Planning and Inference. Nonsmooth boundaries.",
+      "url": "https://doi.org/10.1016/j.jspi.2007.04.001"
+    },
+    {
+      "citation": "Martin (2023). Fiducial inference viewed through a possibility-theoretic inferential model lens. PMLR 215. Contains halfspace validity as a special case of Theorem 5.",
+      "url": "https://proceedings.mlr.press/v215/martin23a.html"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:essential-hull-false-confidence",
+    "attemptIds": [
+      "ep-attempt:essential-hull-false-confidence-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Which hypotheses about a location parameter can be favoured by a flat-prior posterior when false: exactly those with the parameter strictly inside the essential convex hull, under the tail condition (T), with a finite-level warning for log-concave errors.",
+      "scope": "Location models with radially decreasing errors, known shape and exact matching of sampling and posterior laws."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The paper separates the elementary sufficient direction, halfspace validity in Martin (2023) and the classical Laplace-transform ingredient from the classification and its consequences, and distinguishes all-threshold validity from high-confidence failure.",
+      "remainingRisks": [
+        "Dated searches are not exhaustive priority certification.",
+        "Unknown scale, informative priors and approximate posteriors are not covered."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in inferential models or confidence distributions check Theorem 1(b),(c) and Theorem 8.",
+      "claimCeiling": "Proved results in the stated location models. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "essential-hull-false-confidence-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable answer to a published question on false confidence.",
+        "setting": "AI-assisted statistics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
