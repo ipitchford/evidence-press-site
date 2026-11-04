@@ -971,6 +971,10 @@
   "isolated-kalman-covariance-divergence": {
    "classification": "Research use",
    "application": "Developers of decentralised multi-robot or sensor-network estimators that use isolated or partial-update Kalman filtering should not rely on observability and controllability alone to keep the reported covariances bounded. The paper gives a small test case that exposes the problem and a safe regime, anchored full-coordinate relative measurements. The main limits are that the counterexample uses pair-sum measurements and that the actual estimation error stayed bounded in the tests. This remains an unrefereed candidate."
+  },
+  "gaussian-rkhs-stochastic-invariance": {
+   "classification": "Research use",
+   "application": "People using kernel EDMD or other kernel Koopman methods on linear-Gaussian or Lévy-driven models can pick Gaussian kernel widths that keep the invariance assumption of their error bounds true, using an exact rule that allows twice the range of the earlier one. They also learn that nonlinear Euler-type steps never satisfy that assumption. The limit is that the statements concern the global kernel-space norm and linear or affine dynamics, not prediction accuracy from finite data. This remains an unrefereed candidate."
   }
  }
 }

@@ -1,0 +1,210 @@
+{
+  "slug": "gaussian-rkhs-stochastic-invariance",
+  "title": "When Gaussian kernel spaces are invariant under stochastic dynamics: transition rigidity, a Gaussian-component noise boundary and a discontinuous diffusion limit",
+  "shortTitle": "The factor is 4, not 2: when Gaussian kernel spaces survive random dynamics",
+  "oneLine": "A Gaussian kernel space is invariant under an Ornstein–Uhlenbeck process exactly when AP + PAᵀ ⪯ 4BBᵀ, twice the range of the earlier sufficient condition, and among Gaussian or fixed-noise transitions only affine maps can preserve it at all.",
+  "abstract": "Kernel methods such as kernel EDMD learn how a random system evolves by working inside the reproducing kernel Hilbert space (RKHS) of a Gaussian kernel, and their error analysis often assumes the dynamics keep that space invariant. Philipp et al. (2025, PAMM) proved invariance for linear stochastic differential equations (Ornstein–Uhlenbeck processes) when AP + PAᵀ ⪯ 2BBᵀ and left open whether this is necessary. This candidate shows that the exact condition is AP + PAᵀ ⪯ 4BBᵀ; a stable controllable shear separates the two. More generally, a Markov transition with Gaussian conditional laws N(F(x), Q(x)) that maps one global Gaussian RKHS boundedly into another must have constant Q, affine F and MRMᵀ ⪯ P + 4Q; a transition of the form map plus fixed noise, for noise whose characteristic function has a Gaussian lower bound (every infinitely divisible law, pure jumps included), must have an affine map, so Euler steps of nonlinear SDEs never preserve the space. For affine maps with infinitely divisible noise only the Gaussian covariance component counts, and a compound-Poisson approximation of a stable linear diffusion converges at sharp order ε² in prediction while every approximant sends one fixed Gaussian observable out of the space. Consequences include an exact bandwidth rule (twice the earlier range) and the invariance hypothesis of an existing kEDMD error bound for multivariate OU processes. The fixed affine criterion specialises classical Gaussian-Fock theory, and the separating witness with a proposed derivation was posted first, explicitly unproven, in a GitHub issue. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Koopman operator",
+    "reproducing kernel Hilbert space",
+    "Gaussian kernel",
+    "Ornstein–Uhlenbeck process",
+    "Lévy noise",
+    "kernel EDMD",
+    "bandwidth selection",
+    "Gaussian Fock space"
+  ],
+  "repoUrl": "https://github.com/ipitchford/gaussian-rkhs-stochastic-invariance",
+  "releaseUrl": "https://github.com/ipitchford/gaussian-rkhs-stochastic-invariance/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/gaussian-rkhs-stochastic-invariance/releases/download/v0.1.0-candidate/gaussian-rkhs-stochastic-invariance-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23937400",
+  "conceptDoi": "10.5281/zenodo.23937399",
+  "zenodoUrl": "https://zenodo.org/records/23937400",
+  "citeText": "Anonymous (2026). When Gaussian kernel spaces are invariant under stochastic dynamics: transition rigidity, a Gaussian-component noise boundary and a discontinuous diffusion limit. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23937400",
+  "evidence": "Written proofs of all theorems in a 26-page manuscript; code/verify.py checks the separating example, thresholds and witness norms in exact rational arithmetic and the closed-form constants by numerical quadrature (numpy 2.3.5, scipy 1.17.0); every check raises explicitly, so it stays active under Python -O; replay from a fresh copy reproduced the retained output byte for byte, and two corruption controls (factor 4 changed to 2, shear entry 5 changed to 7) make it fail.",
+  "statusDetail": "Unrefereed AI-assisted analysis candidate. All theorems have written proofs. The fixed affine criterion and the Ornstein–Uhlenbeck answer are a specialisation of classical Gaussian-Fock operator theory; the separating witness and a proposed derivation appeared first, explicitly unproven, in GitHub issue the-omega-institute/trureturing #23376 (28 October 2026). Internal AI-assisted review in five roles, a separate-model adversarial review and audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (November 2026 revision with DOI insertion, 26 pages), its verification script and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Gaussian transition rigidity (Theorem 5, proof): a transition with Gaussian conditional laws N(F(x), Q(x)), arbitrary Borel fields, maps one global Gaussian RKHS boundedly into another only if Q is constant, F is affine with full-column-rank matrix M, and MRMᵀ ⪯ P + 4Q.",
+    "Additive-noise rigidity (Theorem 9, proof): with fixed noise whose characteristic function has a Gaussian lower bound (every infinitely divisible law, pure jumps included) the drift must be affine; for affine maps only the Gaussian covariance component enters the boundary (Theorems 8, 11).",
+    "Ornstein–Uhlenbeck answer (Theorem 6, proof): all-time invariance holds exactly when AP + PAᵀ ⪯ 4BBᵀ; the shear A = [[−1, 5], [0, −1]], B = P = I satisfies it but not the factor-2 condition of Philipp et al. (2025). This specialises classical Gaussian-Fock theory; the witness was proposed first in a GitHub issue.",
+    "Discontinuous diffusion limit (Theorem 12, Proposition 13, proof and quadrature): compound-Poisson approximants converge at sharp order ε² from the RKHS to bounded continuous functions, yet at t = 1/10 each sends exp(−8|x|²/5) outside the space.",
+    "Bandwidth rule (Proposition 17, Corollary 18): isotropic widths σ² ≤ 4/λmax are admissible, twice the earlier range (shear: 4/3, not 2/3), so a published kEDMD error bound applies to multivariate OU processes."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted analysis and computation",
+      "AI-assisted internal review in several roles (Claude Code subagents); adversarial review and audit of new proofs by a separate model (OpenAI Codex); clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "This is a short audio briefing on a new Evidence Press research candidate: when Gaussian kernel spaces are invariant under stochastic dynamics.\n\nSome machine-learning methods learn how a random system evolves by working inside a space of smooth test functions, built from a Gaussian kernel. Their error guarantees often assume that the dynamics keep this space invariant: average any function in the space over one step of the random motion, and you should land back inside the space.\n\nIn 2025, Philipp and colleagues proved that this holds for linear stochastic systems, the Ornstein–Uhlenbeck processes, under a matrix condition with a factor of two, and they asked whether that condition is also necessary. This paper answers no. The exact condition has a factor of four instead. The reason is simple: the norm of the space compares two independent copies of the noise, and their difference has twice the variance. A stable shear system shows the gap. For it, the largest admissible kernel width doubles, from two thirds to four thirds.\n\nThe paper then goes further. Among transitions whose random steps are Gaussian, and among transitions made of a fixed map plus independent noise of a broad kind, including jump noise, only affine maps can keep a Gaussian kernel space invariant. So Euler steps of nonlinear equations never do. For linear systems driven by jump noise, only the Gaussian part of the noise matters. And a jump approximation of a Brownian system can converge very fast in prediction while every approximation still pushes one fixed function out of the space.\n\nSome limits. The factor-four criterion itself is a translation of classical results on Gaussian operators in Fock space, by Neretin and others, and the shear example and a proposed derivation were posted first, explicitly unproven, in a public GitHub issue on 28 October 2026. The statements concern the global norm of the space, not pointwise prediction or learning from finite data, and state-dependent non-Gaussian transitions remain open.\n\nThe proofs are written out in full, and the scripts check the constants exactly where possible. Review was internal and AI-assisted. This remains an unrefereed candidate.\n\nThis briefing uses a synthetic voice, and it is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "code/verify.py was rerun with Python -I -B, with and without -O, from a fresh copy (numpy 2.3.5, scipy 1.17.0, matplotlib 3.10.8); the normal output was byte-identical to the retained audit/verification_results.json and the -O output differed only in its optimisation flag. Two corruption controls make it fail. GitHub CI reruns it on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "requirements.txt pins numpy 2.3.5, scipy 1.17.0 and matplotlib 3.10.8; not a locked container; last-digit float differences across platforms are expected."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Alekseev, Afonin and Bogachev (2021). On Gaussian Transition Operators. Doklady Mathematics. Gaussian transition operators.",
+      "url": "https://doi.org/10.1134/s1064562421050021"
+    },
+    {
+      "citation": "Aronszajn (1950). Theory of reproducing kernels. Transactions of the AMS. Reproducing kernel theory.",
+      "url": "https://doi.org/10.1090/s0002-9947-1950-0051437-7"
+    },
+    {
+      "citation": "De Palma, Mari, Giovannetti and Holevo (2015). Normal form decomposition for Gaussian-to-Gaussian superoperators. Journal of Mathematical Physics. Gaussian-to-Gaussian superoperators.",
+      "url": "https://doi.org/10.1063/1.4921265"
+    },
+    {
+      "citation": "Fornaro, Metafune, Pallara and Schnaubelt (2021). $L^p$-spectrum of degenerate hypoelliptic Ornstein--Uhlenbeck operators. Journal of Functional Analysis. Spectrum of hypoelliptic OU operators, used in Section 9.",
+      "url": "https://doi.org/10.1016/j.jfa.2020.108807"
+    },
+    {
+      "citation": "Holevo (2017). On a Characterization of Gaussian Transition Operators. Theory of Probability and Its Applications. Characterisation of Gaussian transition operators.",
+      "url": "https://doi.org/10.1137/s0040585x97t988435"
+    },
+    {
+      "citation": "Ikeda, Ishikawa and Sawano (2022). Boundedness of composition operators on reproducing kernel Hilbert spaces with analytic positive definite functions. Journal of Mathematical Analysis and Applications. Fourier description and deterministic composition rigidity for Gaussian RKHSs.",
+      "url": "https://doi.org/10.1016/j.jmaa.2022.126048"
+    },
+    {
+      "citation": "John and Parthasarathy (2021). A common parametrization for finite mode Gaussian states, their symmetries, and associated contractions with some applications. Journal of Mathematical Physics. Gaussian states and associated contractions.",
+      "url": "https://doi.org/10.1063/5.0019413"
+    },
+    {
+      "citation": "Klus, Schuster and Muandet (2020). Eigendecompositions of Transfer Operators in Reproducing Kernel Hilbert Spaces. Journal of Nonlinear Science. Transfer operators in RKHSs without invariance.",
+      "url": "https://doi.org/10.1007/s00332-019-09574-z"
+    },
+    {
+      "citation": "Neretin (1990). A semigroup of operators in the boson fock space. Functional Analysis and Its Applications. Gaussian operators in boson Fock space; contains the fixed affine criterion.",
+      "url": "https://doi.org/10.1007/bf01077706"
+    },
+    {
+      "citation": "Paulsen and Raghupathi (2016). An Introduction to the Theory of Reproducing Kernel Hilbert Spaces. Cambridge University Press. RKHS textbook.",
+      "url": "https://doi.org/10.1017/cbo9781316219232"
+    },
+    {
+      "citation": "Philipp, Schaller, Worthmann, Peitz and Nüske (2025a). Invariance of Gaussian RKHSs Under Koopman Operators of Stochastic Differential Equations With Constant Matrix Coefficients. PAMM. The factor-2 sufficient condition and the open necessity question answered here.",
+      "url": "https://doi.org/10.1002/pamm.202400127"
+    },
+    {
+      "citation": "Philipp, Schaller, Worthmann, Peitz and Nüske (2025b). Error Analysis of Kernel EDMD for Prediction and Control in the Koopman Framework. Journal of Nonlinear Science. kEDMD error bounds whose invariance hypothesis is verified here for multivariate OU.",
+      "url": "https://doi.org/10.1007/s00332-025-10182-3"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:gaussian-rkhs-stochastic-invariance",
+    "attemptIds": [
+      "ep-attempt:gaussian-rkhs-stochastic-invariance-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Which stochastic transitions keep a global Gaussian RKHS invariant: exactly affine Gaussian or affine infinitely divisible transitions with MRMᵀ ⪯ P + 4Q (Gaussian part only); for OU processes AP + PAᵀ ⪯ 4BBᵀ.",
+      "scope": "Gaussian conditional laws or fixed additive noise with a Gaussian characteristic-function lower bound; global RKHS norm."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The manuscript separates the classical Gaussian-Fock criterion, the prior public witness in GitHub issue #23376 and the deterministic rigidity of Ikeda et al. from the covariance rigidity, additive-noise rigidity, Lévy boundary and diffusion-limit results proposed as new, and states which norms the statements concern.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "State-dependent non-Gaussian transitions are not covered."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in kernel methods or Gaussian operators check the covariance-rigidity argument of Theorem 5 and the additive-noise rigidity of Theorem 9.",
+      "claimCeiling": "Proved theorems in the stated scope (global Gaussian RKHS norm); classical Fock criterion and prior public witness disclosed. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "gaussian-rkhs-stochastic-invariance-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable answer to a published open question on Gaussian RKHS invariance, with rigidity theorems beyond it.",
+        "setting": "AI-assisted analysis research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

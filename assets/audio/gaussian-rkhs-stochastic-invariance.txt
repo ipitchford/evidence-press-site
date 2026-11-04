@@ -1,0 +1,13 @@
+This is a short audio briefing on a new Evidence Press research candidate: when Gaussian kernel spaces are invariant under stochastic dynamics.
+
+Some machine-learning methods learn how a random system evolves by working inside a space of smooth test functions, built from a Gaussian kernel. Their error guarantees often assume that the dynamics keep this space invariant: average any function in the space over one step of the random motion, and you should land back inside the space.
+
+In 2025, Philipp and colleagues proved that this holds for linear stochastic systems, the Ornstein–Uhlenbeck processes, under a matrix condition with a factor of two, and they asked whether that condition is also necessary. This paper answers no. The exact condition has a factor of four instead. The reason is simple: the norm of the space compares two independent copies of the noise, and their difference has twice the variance. A stable shear system shows the gap. For it, the largest admissible kernel width doubles, from two thirds to four thirds.
+
+The paper then goes further. Among transitions whose random steps are Gaussian, and among transitions made of a fixed map plus independent noise of a broad kind, including jump noise, only affine maps can keep a Gaussian kernel space invariant. So Euler steps of nonlinear equations never do. For linear systems driven by jump noise, only the Gaussian part of the noise matters. And a jump approximation of a Brownian system can converge very fast in prediction while every approximation still pushes one fixed function out of the space.
+
+Some limits. The factor-four criterion itself is a translation of classical results on Gaussian operators in Fock space, by Neretin and others, and the shear example and a proposed derivation were posted first, explicitly unproven, in a public GitHub issue on 28 October 2026. The statements concern the global norm of the space, not pointwise prediction or learning from finite data, and state-dependent non-Gaussian transitions remain open.
+
+The proofs are written out in full, and the scripts check the constants exactly where possible. Review was internal and AI-assisted. This remains an unrefereed candidate.
+
+This briefing uses a synthetic voice, and it is not additional scientific evidence.

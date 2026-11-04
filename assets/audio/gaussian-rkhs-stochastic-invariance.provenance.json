@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is a short audio briefing on a new Evidence Press research candidate: when Gaussian kernel spaces are invariant under stochastic dynamics. Some machine-learning methods learn how a random system evolves by working inside a space of smooth test functions, built from a Gaussian kernel. Their error guarantees often assume that the dynamics keep this space invariant: average any function in the space over one step of the random motion, and you should land back inside the space. In 2025, Philipp and colleagues proved that this holds for linear stochastic systems, the Ornstein–Uhlenbeck processes, under a matrix condition with a factor of two, and they asked whether that condition is also necessary. This paper answers no. The exact condition has a factor of four instead.",
+      "inputSha256": "62f14e7e7bc25afe2f3e6f36e2037d3a70a39dfbc1587b1d99b6f80ab5fbceec",
+      "audioSha256": "4b42279e2da75097d3358ef06f60ce2316929f14985a33613542db0de4d0e3b5",
+      "requestId": "req_942d51eeba894543b02542a48049cc5b",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the exact condition has a factor of instead",
+        "heardEnding": "condition is also necessary this paper answers no the exact condition has a factor of instead",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The reason is simple: the norm of the space compares two independent copies of the noise, and their difference has twice the variance. A stable shear system shows the gap. For it, the largest admissible kernel width doubles, from two thirds to four thirds. The paper then goes further. Among transitions whose random steps are Gaussian, and among transitions made of a fixed map plus independent noise of a broad kind, including jump noise, only affine maps can keep a Gaussian kernel space invariant. So Euler steps of nonlinear equations never do. For linear systems driven by jump noise, only the Gaussian part of the noise matters. And a jump approximation of a Brownian system can converge very fast in prediction while every approximation still pushes one fixed function out of the space.",
+      "inputSha256": "39b1f21ba314f486f67e25e035685e1f76c120ba8d53036ed68a3a932bb37c3e",
+      "audioSha256": "c1bc5c4b39994cd0132efa01a079311196a98e2c8dc767d15341967f50d36dc6",
+      "requestId": "req_be50d52c2ef14d4d8f26513ab28620a7",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "still pushes fixed function out of the space",
+        "heardEnding": "converge very fast in prediction while every approximation still pushes fixed function out of the space",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Some limits. The factor-four criterion itself is a translation of classical results on Gaussian operators in Fock space, by Neretin and others, and the shear example and a proposed derivation were posted first, explicitly unproven, in a public GitHub issue on 28 October 2026. The statements concern the global norm of the space, not pointwise prediction or learning from finite data, and state-dependent non-Gaussian transitions remain open. The proofs are written out in full, and the scripts check the constants exactly where possible. Review was internal and AI-assisted. This remains an unrefereed candidate. This briefing uses a synthetic voice, and it is not additional scientific evidence.",
+      "inputSha256": "e69240ee229ef811000c2eeffe3120c392bf6145e830a059ea53e84e5cb84304",
+      "audioSha256": "d632f619da3af5f8fe5a38662ce06977a4db9b9c0033458b0b60b3328b6d453e",
+      "requestId": "req_a43040c4a4e84d0d9c5581844b82523e",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "voice and it is not additional scientific evidence",
+        "heardEnding": "an unrevered candidate this briefing uses a synthetic voice and it is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "gaussian-rkhs-stochastic-invariance",
+  "generatedAt": "2026-11-04T04:57:00.921Z",
+  "sourceMetadata": "papers/gaussian-rkhs-stochastic-invariance/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "3be767d9ef9c863eec9d3a9366ad6bd8e97e6b092992d6bcb935dcfc1a94c30f",
+  "transcriptPath": "assets/audio/gaussian-rkhs-stochastic-invariance.txt",
+  "transcriptSha256": "aae4fcfdc4f47de20d2280d6388c0b2ee8a0278055578f6b685afbf26014d74c",
+  "audioPath": "assets/audio/gaussian-rkhs-stochastic-invariance.mp3",
+  "audioSha256": "cda7632c482dd2862e450702c46aa121aa614274edf8d679df65bee992d8f4d0",
+  "audioBytes": 2409644,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "voice and it is not additional scientific evidence",
+    "heardEnding": "an unrefereed candidate this briefing uses a synthetic voice and it is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
