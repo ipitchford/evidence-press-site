@@ -1,0 +1,227 @@
+{
+  "slug": "stable-twisted-kuramoto-equilibria",
+  "title": "Stable twisted equilibria on random geometric tori in every fixed dimension",
+  "shortTitle": "Random points, stable twist: twisted Kuramoto equilibria on random geometric tori",
+  "oneLine": "Identical Kuramoto oscillators scattered at random on a flat torus of any dimension have stable twisted equilibria near every integer winding up to a growing limit, proving the Cirelli–Groisman–Huang–Vivas conjecture for every kernel in their class with |z|K(z) bounded.",
+  "abstract": "Place n identical Kuramoto oscillators at independent uniform points of the flat torus T^d, d ≥ 1, and couple points closer than ε_n with weight K(z/ε_n). If ε_n → 0 and nε_n^(d+2)/log n → ∞, then with high probability, for every integer twist k ∈ Z^d with |k| ≤ c(ε_n+δ_n)^(−1), where δ_n = (log n/(nε_n^(d+2)))^(1/2), there is an asymptotically stable equilibrium whose phase differs from k·x by at most C|k|δ_n at every vertex. The kernel need only be even, supported in the unit ball, positive almost everywhere near the origin and satisfy sup|z|K(z) < ∞; this covers the hard-radius graph, every bounded kernel and |z|^(−α), 0 < α ≤ 1. The result proves the twisted-equilibrium conjecture of Cirelli, Groisman, Huang and Vivas (SIAM J. Appl. Math. 2025) for every kernel in their class with |z|K bounded, and extends it from coordinate twists to all k ∈ Z^d. Further results: at least c(ε_n+δ_n)^(−d) distinct stable constructed states; a basin of fixed size; for bounded radial kernels, a heat-equation limit uniform over all times; and stable weighted harmonic lifts under smooth nonuniform sampling. The key tool is a sup-norm bound for the inverse graph Laplacian, uniform over all conductances above a fixed bounded backbone. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Kuramoto model",
+    "random geometric graphs",
+    "twisted states",
+    "synchronisation",
+    "graph Laplacian",
+    "graph Poisson equation",
+    "Nash inequality",
+    "singular kernels"
+  ],
+  "repoUrl": "https://github.com/ipitchford/stable-twisted-kuramoto-equilibria",
+  "releaseUrl": "https://github.com/ipitchford/stable-twisted-kuramoto-equilibria/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/stable-twisted-kuramoto-equilibria/releases/download/v0.1.0-candidate/stable-twisted-kuramoto-equilibria-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23934300",
+  "conceptDoi": "10.5281/zenodo.23934299",
+  "zenodoUrl": "https://zenodo.org/records/23934300",
+  "citeText": "Anonymous (2026). Stable twisted equilibria on random geometric tori in every fixed dimension. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23934300",
+  "evidence": "Written informal proofs of every theorem, proposition, lemma and corollary in a 20-page manuscript; verify_fingerprints.py, an exact standard-library check in quadratic number fields of the classical twisted-state Hessian spectra of the cycles C5, C8 and C12; computations.py, six seeded numerical examples in dimensions 1 to 3 with full solver records (residuals 2e-16 to 2e-13), illustrations outside the theorem regime. Every check is explicit, so it stays active under Python -O, and any failure exits non-zero. The scripts were replayed under -I -B and -I -B -O from fresh copies: the exact receipt was byte-identical, and the numerical record agreed within 3e-13 outside timing and version fields; copies with the check helper inverted fail.",
+  "statusDetail": "Unrefereed AI-assisted probability and analysis candidate. Every result has a written informal proof; the computations are an exact classical sanity check and small numerical illustrations, not proofs. Internal AI-assisted review in five roles, a separate-model adversarial review, a clean replay, one revision round that extended the kernel class, a proof audit and a separate-model audit of the new proofs, and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 4 November 2026 with DOI insertion, 20 pages), its scripts and records, and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Stable twisted equilibria (Theorem 2.1, proof): if ε_n → 0 and nε_n^(d+2)/log n → ∞, then with high probability and almost surely eventually, every k ∈ Z^d with |k| ≤ c/(ε_n+δ_n) has an asymptotically stable equilibrium θ = k·X + u with mean-zero correction ‖u‖_∞ ≤ C|k|δ_n, δ_n = (log n/(nε_n^(d+2)))^(1/2).",
+    "Kernel class and the conjecture (Theorem 2.1 and Remark 2.2): even kernels supported in the unit ball, positive almost everywhere near 0, with sup|z|K(z) < ∞ (hard radius, bounded kernels, |z|^(−α) for 0 < α ≤ 1); this proves the Cirelli–Groisman–Huang–Vivas conjecture for that part of their class and for all twists k ∈ Z^d, not only coordinate twists.",
+    "Many coexisting states (Corollary 2.3, proof): at least c(ε_n+δ_n)^(−d) distinct stable constructed rotation orbits, a lower bound rather than a count of all equilibria; balancing ε and δ gives order (n/log n)^(d/(d+4)).",
+    "Basin and long times (Proposition 5.1 and Theorem 5.2, proofs): a basin of fixed size with uniform weighted L² decay; for bounded radial kernels the heat-equation approximation of Cirelli et al. holds uniformly over all times for each fixed smooth winding lift.",
+    "Nonuniform sampling (Theorem 6.1, proof): for smooth positive sampling densities ρ and bounded kernels, stable equilibria near weighted harmonic lifts solving div(ρ²M_K∇φ_k) = 0.",
+    "Key estimate (Proposition 3.2, proof): a sup-norm bound for the mean-zero inverse graph Laplacian that holds uniformly over all conductance fields dominating a bounded backbone, with no upper bound on the conductances."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted probabilistic and analytic research and computation",
+      "AI-assisted internal review, separate-model adversarial review and proof audits, clean replay, re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Random points, stable twist. An Evidence Press briefing. Fireflies flashing together, pendulum clocks falling into step, generators on a power grid, neurons firing in rhythm: all are examples of synchronisation. The Kuramoto model is the standard mathematical picture of it. Each oscillator has a phase, a position around a circle, and it keeps nudging that phase towards the phases of its neighbours. Now scatter many identical oscillators at random over a flat torus, which you can picture as a square whose opposite edges are glued together, in any number of dimensions. Connect any two that are closer than a small distance. One stable outcome is that everyone agrees. Another is a twisted state: as you walk across the torus, the phase turns steadily round the circle a whole number of times, like a spiral wave frozen in place. On a perfectly regular grid, symmetry makes such patterns exact. With random positions, every oscillator feels a small unbalanced pull, and it was not clear that a stable twisted pattern survives. In 2025 Cirelli, Groisman, Huang and Vivas conjectured that it does. This paper proves their conjecture for every coupling in their class whose strength grows no faster than one over the distance. Once the number of points is large enough compared with the connection distance, then with high probability every twist up to a growing limit has a stable equilibrium close to the perfect pattern, with an explicit bound on how far the random positions bend it. So many different stable patterns coexist at once. The key tool is a new uniform estimate for the graph Laplacian. Couplings that blow up faster remain open, the constants are not explicit, and the numerical examples are only small illustrations. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the fourth of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_fingerprints.py, notes/verify_mmpp.py and computations.py were rerun with Python -I -B and -I -B -O from fresh copies of the approved package; the exact receipt was byte-identical, the supplementary exact certificate differed only in its interpreter-version line, and the numerical record agreed within 3e-13 outside timing and version fields. Copies with the check helper inverted exited non-zero. The frozen archive was checked byte-for-byte against that replay and the exact checkers rerun from it; GitHub CI reruns them on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "partial",
+      "note": "During internal review, agents rederived the key inequalities and reran the numerical cases, and a separate model audited the new proofs. This is producer-side diversity, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "NumPy 2.3.5, SciPy 1.17.0 and Matplotlib 3.10.8 pinned in requirements.txt; the exact checker needs only the standard library; numerical cases seeded; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Cirelli, Groisman, Huang and Vivas (2025). Scaling Limit of the Kuramoto Model on Random Geometric Graphs. SIAM Journal on Applied Mathematics. States the twisted-equilibrium conjecture proved here and the compact-time heat limit used in Theorem 5.2.",
+      "url": "https://doi.org/10.1137/24M1641518"
+    },
+    {
+      "citation": "De Vita, Fernández Bonder and Groisman (2025). The Energy Landscape of the Kuramoto Model in Random Geometric Graphs in a Circle. SIAM Journal on Applied Dynamical Systems. Twisted states on the circle in a different scaling regime.",
+      "url": "https://doi.org/10.1137/24M1642111"
+    },
+    {
+      "citation": "Diaconis and Saloff-Coste (1996). Nash inequalities for finite Markov chains. Journal of Theoretical Probability. The classical Nash-inequality route to mixing used in the inverse estimate.",
+      "url": "https://doi.org/10.1007/BF02214660"
+    },
+    {
+      "citation": "Calder, García Trillos and Lewicka (2022). Lipschitz Regularity of Graph Laplacians on Random Data Clouds. SIAM Journal on Mathematical Analysis. Graph Poisson regularity on random point clouds.",
+      "url": "https://doi.org/10.1137/20M1356610"
+    },
+    {
+      "citation": "Bramburger, Holzer and Williams (2025). Persistence of Steady States for Dynamical Systems on Large Networks. Journal of Nonlinear Science. Persistence near a fixed graphon limit.",
+      "url": "https://doi.org/10.1007/s00332-025-10210-2"
+    },
+    {
+      "citation": "Medvedev and Mizuhara (2026). The Kuramoto Model on the Sierpinski Gasket II: Twisted States. Journal of Nonlinear Science. Twisted states on graph approximations of a fractal.",
+      "url": "https://doi.org/10.1007/s00332-026-10285-5"
+    },
+    {
+      "citation": "Cho, Ha, Kang and Min (2025). Uniform-in-time asymptotic limits of generalized Kuramoto models. Journal of Differential Equations. Uniform-in-time limits in a different setting.",
+      "url": "https://doi.org/10.1016/j.jde.2025.113386"
+    },
+    {
+      "citation": "Wiley, Strogatz and Girvan (2006). The size of the sync basin. Chaos. Twisted states on rings.",
+      "url": "https://doi.org/10.1063/1.2165594"
+    },
+    {
+      "citation": "Medvedev and Tang (2015). Stability of Twisted States in the Kuramoto Model on Cayley and Random Graphs. Journal of Nonlinear Science. Twisted states on Cayley and random graphs.",
+      "url": "https://doi.org/10.1007/s00332-015-9252-y"
+    },
+    {
+      "citation": "Zhai, Xiao and Zheng (2026). Twisted States in Coupled Phase Oscillator Systems with Different Coupling Weight Schemes. Chinese Journal of Physics. Recent study cited from its bibliographic record only.",
+      "url": "https://doi.org/10.1016/j.cjph.2026.09.022"
+    },
+    {
+      "citation": "De Vita, Groisman and Huang (2025). Phase synchronization in random geometric graphs on the 2D sphere. arXiv:2504.01151. Synchronisation on the sphere; the torus is the basic case where it fails.",
+      "url": "https://arxiv.org/abs/2504.01151",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Disertori and Mihailescu (2026). Asymptotic long-range order for the XY-model on random geometric graphs. arXiv:2609.02618. Convex modifications of the cosine energy.",
+      "url": "https://arxiv.org/abs/2609.02618",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Lee and Maggs (2026). The geometry of cochains on sampled Vietoris–Rips complexes. arXiv:2608.11137 version 2. Harmonic representatives on samples.",
+      "url": "https://arxiv.org/abs/2608.11137v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Grande and Meila (2026). Selecting interpretable circular coordinates from data. arXiv:2607.08230. Density-corrected inner products for one-forms.",
+      "url": "https://arxiv.org/abs/2607.08230",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to its arXiv record, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:stable-twisted-kuramoto-equilibria",
+    "attemptIds": [
+      "ep-attempt:stable-twisted-kuramoto-equilibria-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Existence, stability and multiplicity of twisted Kuramoto equilibria on random geometric tori under n ε^(d+2)/log n → ∞ for kernels with sup|z|K finite.",
+      "scope": "Identical oscillators, uniform (or smooth nonuniform, bounded kernels) iid sampling on the flat torus of fixed dimension; kernels with |z|K unbounded, the connectivity regime and explicit constants are open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 paraphrases the Cirelli–Groisman–Huang–Vivas conjecture and Remark 2.2 compares it side by side with Theorem 2.1 (kernel class, twists, closeness); the relation to the one-dimensional result of De Vita, Fernández Bonder and Groisman is stated as a different regime.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "The numerical examples lie outside the theorem regime and are illustrations only."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in random geometric graphs or interacting particle systems check Proposition 3.2 (the backbone Green bound) and the residual concentration of Section 4.3.",
+      "claimCeiling": "Proved existence, stability and multiplicity of twisted equilibria for kernels with sup|z|K finite; finite numerical illustrations. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "stable-twisted-kuramoto-equilibria-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof that stable twisted Kuramoto equilibria survive random geometric sampling on tori in every fixed dimension.",
+        "setting": "AI-assisted probability and analysis research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
