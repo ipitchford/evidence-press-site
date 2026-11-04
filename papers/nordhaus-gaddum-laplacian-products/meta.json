@@ -1,0 +1,183 @@
+{
+  "slug": "nordhaus-gaddum-laplacian-products",
+  "title": "Nordhaus–Gaddum products of Laplacian eigenvalues: a counterexample and the sharp limiting profile",
+  "shortTitle": "A graph and its complement: the Laplacian product bound fails",
+  "oneLine": "A 2025 conjecture bounded the product of the k-th Laplacian eigenvalue of a graph and of its complement by n(n−k); a 14-vertex graph built from the Fano plane gives 115.85 > 112, and the true largest product is found to leading order, with a sudden drop at the middle rank.",
+  "abstract": "Chen, Guo, Li and Wang (2025) conjectured that every graph G on n vertices satisfies μₖ(G)μₖ(Ḡ) ≤ n(n−k) for 1 ≤ k ≤ 3n/4, where μₖ is the k-th largest Laplacian eigenvalue. This paper disproves the inequality. An explicit 14-vertex graph built from the Fano plane gives μ₆(G)μ₆(Ḡ) = 63 + 7√57 > 112. Symmetric designs give an exact product formula and infinite families, and a design-free construction gives counterexamples whenever 2(k+1) ≤ n < ⌊(k+1)²/4⌋. Writing M(n,k) for the largest possible product, the limit of M(n,k)/n² is determined for every rank proportion θ = k/n ≠ 1/2: it is (1−θ/2)² below one half and 1/4 above. At θ = 1/2 the limit jumps from 9/16 to 1/4, and along the odd central sequence n = 2k+1 every limit point lies in [1/2, 9/16]. Necessary structure for asymptotic extremisers is also given. A floating-point enumeration of all graphs through order 10 found no violation exceeding 10⁻⁹. The inequality stays undecided at some pairs (n,k) with k < n/2. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "spectral graph theory",
+    "Laplacian eigenvalues",
+    "Nordhaus–Gaddum inequalities",
+    "graph complement",
+    "counterexample",
+    "symmetric designs",
+    "Fano plane",
+    "extremal graph theory"
+  ],
+  "repoUrl": "https://github.com/ipitchford/nordhaus-gaddum-laplacian-products",
+  "releaseUrl": "https://github.com/ipitchford/nordhaus-gaddum-laplacian-products/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/nordhaus-gaddum-laplacian-products/releases/download/v0.1.0-candidate/nordhaus-gaddum-laplacian-products-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23942304",
+  "conceptDoi": "10.5281/zenodo.23942303",
+  "zenodoUrl": "https://zenodo.org/records/23942304",
+  "citeText": "Anonymous (2026). Nordhaus–Gaddum products of Laplacian eigenvalues: a counterexample and the sharp limiting profile. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23942304",
+  "evidence": "Written proofs, not machine-verified. code/run_checks.py checks the 14-vertex graph with exact integer characteristic polynomials against shipped certificates, makes exact sign checks of the failure range for three binary designs and exact spectrum checks of odd-central joins for k ≤ 8, runs 460 finite numerical checks of the bounds, validates the shipped enumeration of all 12,293,433 graphs with n ≤ 10, and repeats that enumeration through n = 8 when geng is present. The suite was rerun from a fresh extraction of the published archive with Python -I -B and with -O; both passed and matched the shipped results. Corrupted copies fail under -O. GitHub CI on Linux reruns both modes.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. The counterexample and limiting profile have written proofs; the n ≤ 10 enumeration is numerical and Conjecture 7.2 is open. Internal AI-assisted review with a second-model adversarial review, one revision round with extensions, proof audits and a re-review. No human peer review, independent reproduction or formal verification has been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript of 4 November 2026 (13 pages), its README, prior-art note, agent index and recorded outputs, and the replay of the check suite from a fresh extraction of the published archive.",
+  "keyResults": [
+    "Counterexample (Section 2, proof): a 14-vertex graph built from the Fano plane has μ₆(G)μ₆(Ḡ) = 63 + 7√57 ≈ 115.85 > 112, disproving Conjecture 20 of Chen, Guo, Li and Wang.",
+    "Families (Sections 3–5, proof): an exact product formula for symmetric designs, infinite design families, and design-free failures whenever 2(k+1) ≤ n < ⌊(k+1)²/4⌋.",
+    "Limiting profile (Sections 6–7, proof): M(n,k)/n² tends to (1−θ/2)² below θ = 1/2 and 1/4 above, jumping from 9/16 to 1/4 at the centre.",
+    "Odd central rank (Theorem 7.1, proof): at n = 2k+1 every limit point lies in [1/2, 9/16]; the limit 1/2 is conjectured.",
+    "Structure (Section 8, proof): necessary conditions on asymptotic extremisers."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematics and computer verification",
+      "AI-assisted internal review, second-model adversarial review, proof audits and re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Too small a bound: an Evidence Press briefing. Every graph, a set of points joined by lines, has a complement: the same points, joined by exactly the missing lines. Each graph also has a list of numbers, its Laplacian eigenvalues, which measure how well connected it is at different scales. How large can the same-ranked eigenvalue of a graph and of its complement be together? In twenty twenty-five, Chen, Guo, Li and Wang conjectured a limit on their product: for n points, at rank k, no more than n times n minus k. They proved it for the top rank and for ranks from a half to three quarters of n. The lower ranks were open. This paper shows the limit is false. The trick is balance. Make half the points a clique, all joined to one another, which lifts the graph's eigenvalue. Leave the other half unjoined. In the complement they become a clique, which lifts the complement's eigenvalue. Then add a carefully balanced set of lines between the halves, so that both numbers stay high at the same rank. The example has fourteen points, arranged using the Fano plane, the smallest finite geometry. At rank six the product is about one hundred and fifteen point eight five. The conjecture allows only one hundred and twelve. The paper then finds the true largest product, to leading order, for almost every rank, with a sudden drop at the middle rank. Gibson had already shown that the conjecture's description of equality fails, and left the lower ranks open. A numerical search of every graph up to ten points found no violation, but only the bound of fourteen points is proved, and some ranks remain undecided. This is an anonymous, AI-assisted candidate. It has not been peer reviewed, independently reproduced or formally verified. Published on the fourth of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "code/run_checks.py was rerun from a fresh extraction of the published archive with Python -I -B and with -O (CPython 3.11.14, NumPy 2.4.6, SciPy 1.17.1, SymPy 1.14.0); both passed and outputs matched the shipped results. GitHub CI on Linux reruns both modes."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Internal reviewers recomputed values, but this is AI-assisted checking, not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Package versions are pinned in requirements.txt; not a locked container. The shipped enumeration needs nauty geng 2.9.3 to repeat. No external data are used."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Chen, Guo, Li and Wang (2025), A Conjecture on the Nordhaus-Gaddum Product Type Inequality for Laplacian Eigenvalue of a Graph. The Electronic Journal of Combinatorics. Source of Conjecture 20, disproved here; proves k = 1 and n/2 ≤ k ≤ 3n/4.",
+      "url": "https://doi.org/10.37236/14060"
+    },
+    {
+      "citation": "Li and Guo (2024), Nordhaus-Gaddum Type Inequalities for the $k$th Largest Laplacian Eigenvalues. The Electronic Journal of Combinatorics. The earlier sum version, not resolved here.",
+      "url": "https://doi.org/10.37236/12008"
+    },
+    {
+      "citation": "Gibson (2026), An endpoint exception to a conjectured equality characterization for Laplacian eigenvalue products. arXiv. Refutes the equality clause and leaves k < n/2 open.",
+      "url": "https://arxiv.org/abs/2609.16049"
+    },
+    {
+      "citation": "van Lint and Seidel (1966), Equilateral point sets in elliptic geometry. Indagationes Mathematicae (Proceedings). Classical source of the Seidel matrix used in the upper bound.",
+      "url": "https://doi.org/10.1016/s1385-7258(66)50038-5"
+    },
+    {
+      "citation": "Anonymous (2026), The homogeneous adjacency spectrum of the Fano plane. Evidence Press. See also: same plane, different object (hypergraph adjacency tensor).",
+      "url": "https://doi.org/10.5281/zenodo.22850084",
+      "pageOnly": true,
+      "pageOnlyReason": "Evidence Press see-also link for readers; not cited by the manuscript."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:nordhaus-gaddum-laplacian-products",
+    "attemptIds": [
+      "ep-attempt:nordhaus-gaddum-laplacian-products-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "Whether the bound n(n−k) holds for the product of k-th Laplacian eigenvalues of a graph and its complement, and what replaces it: failure at the pairs of (2), (3) and (6)–(7), and the limiting profile (4).",
+      "scope": "Simple graphs, combinatorial Laplacian. Some pairs (n,k) with k < n/2 stay undecided; finite-n bounds are not sharp."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the conjecture in the conventions of Chen, Guo, Li and Wang; Section 10 maps each prior unit to its source.",
+      "remainingRisks": [
+        "The literature check is not exhaustive priority certification."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a spectral graph theorist check Sections 6–8 and ask the conjecture’s authors whether the inequality has been refuted elsewhere.",
+      "claimCeiling": "Written proofs and an exact 14-vertex certificate; floating-point enumeration through n = 10; finite computer checks. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "nordhaus-gaddum-laplacian-products-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable refutation of the Nordhaus–Gaddum Laplacian product conjecture with the limiting profile.",
+        "setting": "AI-assisted mathematics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
