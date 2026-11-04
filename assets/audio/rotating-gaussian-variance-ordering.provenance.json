@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "When does spinning a sampler make it more accurate? An Evidence Press briefing. Many simulations estimate an average by following one long random trajectory. Its accuracy depends on how strongly successive steps are correlated. A known trick is to add a gentle rotation that leaves the target distribution unchanged. For the simplest samplers, this is known to help every quantity being averaged. For kinetic samplers, which give the particle momentum and friction, the picture is different: in 2017 Duncan, Nüsken and Pavliotis showed that rotation can help, or hurt, depending on the friction, and conjectured that above a friction of root two it helps everything. This paper proves a global form of that conjecture for Gaussian targets.",
+      "inputSha256": "eed7a7232d4a25dfc5dbe6d628b8b2254037e581f4193de21ffaff90ead744ff",
+      "audioSha256": "853563f526afc23fb3790489177d0c7883c8f2e2e9c9b8f80f191dfdf23a538f",
+      "requestId": "req_903d012b572a463dbb2343b994dbe0c2",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "global form of that conjecture for gaussian targets",
+        "heardEnding": "root it helps everything this paper proves a global form of that conjecture for gaussian targets",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Rotation never increases the long-run variance of any square-integrable quantity, at any rotation strength, exactly when the friction is at least root two. The reason is simple to picture. The sampler behaves like a damped spring, and rotation shifts its frequency spectrum. If that spectrum has a single peak at zero, any shift lowers it, and combining spectra keeps a single peak single. Below root two the spring resonates, the spectrum has a hump, and a small rotation can land on it. Even then, the paper shows that symmetric quantities always improve, and that a large enough rotation improves everything. It also gives an exact matrix version, and shows that sampling at regular intervals can reverse the benefit.",
+      "inputSha256": "ed3e3115d58ce27d1f3aee84255e43395e13398c6729a6480445f1f6390ee526",
+      "audioSha256": "eca3e81327672f5f1ef01fbc39826f94160edd31d9403b41e388f8c89da5fb0f",
+      "requestId": "req_d8ff5b37acf94ac98654daa402d242cf",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "sampling at regular intervals can reverse the benefit",
+        "heardEnding": "gives an exact matrix version and shows that sampling at regular intervals can reverse the benefit",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The limits matter: the results are exact for Gaussian targets in continuous time, and they say nothing about computational cost or step-size errors, and the threshold is a safety boundary, not a recommended friction. This is an anonymous, AI-assisted, unrefereed candidate. Published on the fourth of November twenty twenty-six, its paper and code are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "77ed0974801dc057578caf4e932a6ec124312a0cb124916098769eea15bf7aa1",
+      "audioSha256": "f3533be218c340a7906f04aae7e1642e0e499d2873550890c10eeaba803c019a",
+      "requestId": "req_d268cf63d4634327915b6ad1b2ce9c76",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "rotating-gaussian-variance-ordering",
+  "generatedAt": "2026-11-04T09:06:11.721Z",
+  "sourceMetadata": "papers/rotating-gaussian-variance-ordering/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "64baf18d185c903a2aad464a6c4befeaa172fa4bb26ceb47e34851738584fbaa",
+  "transcriptPath": "assets/audio/rotating-gaussian-variance-ordering.txt",
+  "transcriptSha256": "b9cd4f2860b1e15c6afee30f72f586ea818cd8ba83e27f1ddbc48c1a1f7e3524",
+  "audioPath": "assets/audio/rotating-gaussian-variance-ordering.mp3",
+  "audioSha256": "7f8908dae734188f415b6d454c14bf80e6253930c29b6f4c1e6629d8f8cfaf7c",
+  "audioBytes": 1984940,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
