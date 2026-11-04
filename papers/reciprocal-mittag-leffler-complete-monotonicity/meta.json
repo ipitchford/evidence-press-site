@@ -1,0 +1,190 @@
+{
+  "slug": "reciprocal-mittag-leffler-complete-monotonicity",
+  "title": "Reciprocal Mittag–Leffler functions: complete monotonicity below the parameter band, and the exact boundary near order two",
+  "shortTitle": "The band is too narrow: when the reciprocal Mittag–Leffler function is completely monotone",
+  "oneLine": "The reciprocal of the Mittag–Leffler function E is completely monotone for every 0 < β ≤ α when 1 < α < 2, and, for α near 2, exactly for 0 < β ≤ b(α) with b(2) = 3, so the conjectured band α − 1 ≤ β ≤ α is too narrow on both sides.",
+  "abstract": "For which parameters is the reciprocal 1/E of the two-parameter Mittag–Leffler function completely monotone, and so (after normalising) the Laplace transform of a probability law? Garrappa, Gerhold, Popolizio and Simon (2025, Conjecture 25) proposed that, for 1 < α < 2, this happens exactly when α − 1 ≤ β ≤ α. This candidate proves two results showing the band is too narrow. Theorem A: for every 1 < α < 2 and 0 < β ≤ α, log[Γ(β)E] is a Bernstein function, so every positive power of the normalised reciprocal is the Laplace transform of an infinitely divisible law; this covers the whole triangle below the band. The proof combines a dilation-ratio identity contained in the proof of the authors' Proposition 3 with a classical recurrence that lowers β by one. Theorem B: for α in some neighbourhood of 2, the admissible set is exactly the interval (0, b(α)], where b is real analytic, b(2) = 3 and b′(2) = 1 + 2π Si(2π)/(2I(2π)) ≈ 2.8277, with I(a) the integral of (1 − cos u)/u over (0, a); the boundary is where two negative zeros near −4π² collide, and the associated laws are self-decomposable. Since b(α) > α just below 2, the band fails above as well. A numerical continuation of the boundary curve supports a replacement conjecture, and an exact rational certificate exhibits a failure of the global modulus inequality where Theorem A holds. The neighbourhood in Theorem B is not quantified. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Mittag-Leffler function",
+    "complete monotonicity",
+    "Bernstein function",
+    "infinite divisibility",
+    "self-decomposability",
+    "entire functions",
+    "zeros of special functions",
+    "special functions"
+  ],
+  "repoUrl": "https://github.com/ipitchford/reciprocal-mittag-leffler-complete-monotonicity",
+  "releaseUrl": "https://github.com/ipitchford/reciprocal-mittag-leffler-complete-monotonicity/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/reciprocal-mittag-leffler-complete-monotonicity/releases/download/v0.1.0-candidate/reciprocal-mittag-leffler-complete-monotonicity-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23934934",
+  "conceptDoi": "10.5281/zenodo.23934933",
+  "zenodoUrl": "https://zenodo.org/records/23934934",
+  "citeText": "Anonymous (2026). Reciprocal Mittag–Leffler functions: complete monotonicity below the parameter band, and the exact boundary near order two. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23934934",
+  "evidence": "Written proofs of Theorems A and B and the boundary slope; verify.py runs exact reciprocal-coefficient checks and a 90-digit check of b′(2) (standard library), an exact rational certificate that the global modulus inequality fails at (α, β, z) = (3/2, 1/4, −60 + i) (standard library), a 40-digit continuation of the boundary curve (mpmath 1.4.1) and a negative control; every check raises explicitly, so it stays active under Python -O; replay from a copy of the frozen archive with and without -O reproduced the retained output byte for byte.",
+  "statusDetail": "Unrefereed AI-assisted analysis candidate merging two independently written drafts. Both theorems have written proofs; two inputs are cited (the hitting-time construction of Garrappa et al. and the order-two zero theorem). The neighbourhood of α = 2 in Theorem B is not quantified and the classification away from 2 is a conjecture supported by numerics. Internal AI-assisted review in five roles, a separate-model adversarial review and audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (November 2026 merged revision with DOI insertion, 18 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Theorem A (proof): for every 1 < α < 2 and 0 < β ≤ α, log[Γ(β)E] is a Bernstein function, so 1/E is completely monotone and every positive power of the normalised reciprocal is an infinitely divisible probability Laplace transform; this covers the triangle 0 < β < α − 1 below the conjectured band.",
+    "Theorem B (proof): for α in a neighbourhood of 2 the admissible set is exactly (0, b(α)], with b real analytic, b(2) = 3, and self-decomposable laws throughout; the band fails above as well as below.",
+    "Boundary slope (proof and 90-digit check): b′(2) = 1 + 2π Si(2π)/(2I(2π)) = 2.82768173110428…, where the two negative zeros near −4π² collide.",
+    "Separation of properties (proof and exact certificate): below the band, complete monotonicity holds while the global inequality |E(z)| ≥ E(Re z) fails, certified at (α, β, z) = (3/2, 1/4, −60 + i).",
+    "Numerics and conjecture (evidence only): the double-zero curve continues smoothly over 1.5 ≤ α ≤ 2.5 with b(α) > α below 2, suggesting C_α = (0, b(α)] for all 1 < α < 2."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted analysis and computation (two independently written drafts, merged)",
+      "AI-assisted internal review in several roles (Claude Code subagents); adversarial review and audit of new proofs by a separate model (OpenAI Codex); clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "The band is too narrow. An Evidence Press briefing. The Mittag-Leffler function is a generalisation of the exponential function, with two parameters, called alpha and beta. It turns up wherever processes relax or wait in unusual ways: in fractional differential equations, in models of materials with memory, and in random processes that look the same at every scale. A useful question is when one over this function is completely monotone, meaning its derivatives alternate in sign. When that happens, the function is the Laplace transform of a probability distribution, which makes it far easier to use and to interpret. In 2025 Garrappa, Gerhold, Popolizio and Simon proved this holds when beta lies in a band from alpha minus one up to alpha, for alpha between one and two, and they conjectured that the band is exactly the right answer. This paper shows the band is too narrow, on both sides. The first result covers every alpha between one and two. Below the band, all the way down to zero, the reciprocal is still completely monotone; in fact its logarithm is a Bernstein function, so every power of it is a probability transform. The proof is short: it combines an identity hidden inside the earlier paper's own argument with a classical recurrence. The second result looks closely at alpha near two. There the exact set of good values of beta is an interval from zero up to a boundary b of alpha. At alpha equal to two the boundary is three, and its slope there is about two point eight three, given by an exact formula. The boundary is where two zeros of the function on the negative axis collide and leave the real line. Because the boundary sits above alpha, the band fails from above as well. What is not proved: how close to two alpha must be, and the full answer for other alpha, which is left as a conjecture supported by computation. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the fourth of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify.py was rerun with Python -I -B, with and without -O, from a copy of the frozen archive with mpmath 1.4.1; both outputs were byte-identical to the retained verification_results.json, including the negative control. Fast checks were rerun from the frozen extraction; GitHub CI reruns the full script on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "verify.py pins mpmath 1.4.1 in requirements.txt; the other two checks use only the Python standard library; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Bartholmé and Patie (2021). Turán Inequalities and Complete Monotonicity for a Class of Entire Functions. Analysis Mathematica. Bernstein correspondence and the normalised diagonal identity.",
+      "url": "https://doi.org/10.1007/s10476-021-0088-4"
+    },
+    {
+      "citation": "Flajolet and Sedgewick (2009). Analytic Combinatorics. Cambridge University Press. Pringsheim's theorem (Theorem IV.6), used for necessity.",
+      "url": "https://doi.org/10.1017/cbo9780511801655"
+    },
+    {
+      "citation": "Garrappa, Gerhold, Popolizio and Simon (2025). On some inequalities for the two-parameter Mittag-Leffler function in the complex plane. Journal of Mathematical Analysis and Applications. The band result, the hitting-time construction and Conjecture 25 addressed here.",
+      "url": "https://doi.org/10.1016/j.jmaa.2025.129588"
+    },
+    {
+      "citation": "Konstantopoulos, Patie and Sarkar (2024). A new class of solutions to the van Dantzig problem, the Lee–Yang property, and the Riemann hypothesis. Annales de l'Institut Fourier. Earlier Mittag–Leffler constructions and their probabilistic interpretations.",
+      "url": "https://doi.org/10.5802/aif.3600"
+    },
+    {
+      "citation": "Pierre Patie (2009). Infinite divisibility of solutions to some self-similar integro-differential equations and exponential functionals of Lévy processes. Annales de l'Institut Henri Poincaré. The diagonal case β = α.",
+      "url": "https://doi.org/10.1214/08-aihp182"
+    },
+    {
+      "citation": "Polson (2026). Thorin Quantisation. SSRN preprint on related hitting-time laws; read at abstract level only, a recorded priority uncertainty.",
+      "url": "https://doi.org/10.2139/ssrn.7277540"
+    },
+    {
+      "citation": "Schilling, Song and Vondraček (2012). Bernstein Functions. De Gruyter monograph. Closure properties of Bernstein functions.",
+      "url": "https://doi.org/10.1515/9783110269338"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:reciprocal-mittag-leffler-complete-monotonicity",
+    "attemptIds": [
+      "ep-attempt:reciprocal-mittag-leffler-complete-monotonicity-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "For which (α, β) is 1/E completely monotone: for all 0 < β ≤ α when 1 < α < 2, and exactly for 0 < β ≤ b(α) when α is near 2; the conjectured band is not necessary.",
+      "scope": "Real 1 < α < 2 for Theorem A; a non-quantified neighbourhood of α = 2 for Theorem B; numerical curve on 1.5 ≤ α ≤ 2.5."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The reader's guide and Section 11 separate the band result and hitting-time construction of Garrappa et al. and Patie's diagonal case from what is proved here, state which leg of Conjecture 25 is settled and which remains open, and what the scripts cover.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification (Polson 2026 read at abstract level).",
+        "The neighbourhood of α = 2 is not quantified."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in Mittag–Leffler functions check Lemma 2.2 against the hitting-time construction and the uniform asymptotics of Section 3, and interval-certify one pair above the band.",
+      "claimCeiling": "Proved Theorems A and B and the slope b′(2) under two cited inputs; a non-quantified neighbourhood; numerical curve and conjecture only. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "reciprocal-mittag-leffler-complete-monotonicity-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable correction of the complete-monotonicity direction of a published conjecture, with an exact boundary near order two.",
+        "setting": "AI-assisted analysis research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
