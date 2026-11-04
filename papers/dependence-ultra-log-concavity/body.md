@@ -44,7 +44,7 @@ Let $\mathcal U\subseteq2^V$, $|V|=n$, be increasing with minimal members of siz
 - **Exact finite checks.** `verify.py` uses integer arithmetic only. It checks every singleton-and-pair family on at most six labelled elements, each with three weight vectors (41,657 families, 124,971 weighted checks), the marked-downset lemma on every downset of at most five elements (258,132 comparisons), and the counterexamples.
 - **Enumeration.** `supplement/check_six.cpp` checks the six-element 2-matroid lemma exhaustively: 2,653,437 combinations, 1,723,681 valid completions, minimum margin 0. It corroborates an analytic proof and is not a proof dependency.
 - **Replay.** Both were rerun from fresh copies with and without Python `-O`; checks are explicit conditionals, not `assert`, and a deliberately wrong value fails under `-O`. GitHub CI reruns them.
-- **Limits.** Finite checks cannot establish the universal theorem. The full text of Horrocks (2002) could not be obtained, so his proof technique was not compared; Xie and Xu cite it and still pose the ultra form as open. The prior-art search (2 and 4 November 2026; literature, GitHub and the Evidence Press corpus) was bounded and found no overlap. Review was internal and AI-assisted only; this is an unrefereed candidate.
+- **Limits.** Finite checks cannot establish the universal theorem. Horrocks (2002), read in full for version 0.2.0, proves ordinary log-concavity with an extra +p_k term, not the ultra form. His proof sorts pairs of sets by intersection and union and reduces to doubly dependent counts; this paper's route has the same shape and credits him for it. The binomial factor in the two-colouring theorem is the new ingredient. The prior-art search (2 and 4 November 2026; literature, GitHub and the Evidence Press corpus) was bounded and found no overlap. Review was internal and AI-assisted only; this is an unrefereed candidate.
 
 ## Who should care, and why
 
@@ -61,7 +61,7 @@ Log-concavity results for combinatorial counts often hide structural information
 From the unpacked archive (Python 3.10 or later, standard library only; a C++17 compiler), on a copy because `verify.py` rewrites its JSON output:
 
 ```sh
-cp -R dependence-ultra-log-concavity-0.1.0-candidate /tmp/ulc && cd /tmp
+cp -R dependence-ultra-log-concavity-0.2.0-candidate /tmp/ulc && cd /tmp
 python3 -I -B ulc/verify.py       # status PASS; 41657 families, 124971 weighted checks, 258132 marked comparisons
 python3 -O -I -B ulc/verify.py    # same under -O
 c++ -O2 -std=c++17 -Wall -Wextra -pedantic ulc/supplement/check_six.cpp -o check_six && ./check_six
@@ -72,9 +72,8 @@ The C++ program prints `checked=2653437 valid=1723681 minmargin=0`. Each step ta
 ## The most valuable next projects
 
 1. Prove the eight-element antipodal inequality needed for 2-matroids of rank five, or find a 2-matroid that violates Conjecture 4.4.
-2. Compare the argument with Horrocks's 2002 proof of ordinary log-concavity.
-3. Decide whether the dependence polynomial has stronger properties, such as real roots, for natural graph classes.
-4. Identify which increasing families with triple witnesses remain ultra log-concave.
+2. Decide whether the dependence polynomial has stronger properties, such as real roots, for natural graph classes.
+3. Identify which increasing families with triple witnesses remain ultra log-concave.
 
 ## What is in the evidence package
 
