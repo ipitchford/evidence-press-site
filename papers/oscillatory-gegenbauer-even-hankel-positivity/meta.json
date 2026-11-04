@@ -1,0 +1,219 @@
+{
+  "slug": "oscillatory-gegenbauer-even-hankel-positivity",
+  "title": "Positivity and recurrence formulas for oscillatory Gegenbauer Hankel determinants",
+  "shortTitle": "Even sizes never vanish: oscillatory Gegenbauer Hankel determinants",
+  "oneLine": "For the complex weight (1 − t²)ᵅ e^(ixt) on [−1, 1], every even-size Hankel determinant is strictly positive for every α > −1 and every real frequency x, so the even-degree orthogonal polynomials behind complex Gaussian quadrature always exist; odd sizes vanish infinitely often.",
+  "abstract": "Gaussian-type rules for highly oscillatory integrals can be built from polynomials orthogonal with respect to a complex weight, here (1 − t²)ᵅ e^(ixt) on [−1, 1]. Because the weight is complex, the monic polynomial of degree N exists only when the N × N Hankel determinant D_N(x) of the moments is nonzero. Celsus, Deaño, Huybrechs and Iserles (2022) proved that the even-size determinants never vanish for the flat weight α = 0. This candidate proves that every even-size determinant is strictly positive for every α > −1 and every real x, by continuation in α: a Pearson identity shows that adjacent determinants never vanish together (and that every complex zero is simple), and a large-frequency expansion with constants uniform on compact exponent intervals keeps zeros from arriving from infinity. Odd-size determinants have infinitely many real zeros. The same expansion proves the formal degree and leading-coefficient conjectures of Milovanović, Cvetković and Marjanović (2008) and gives complete proofs of the recurrence-coefficient formulas in Conjectures 2.5 and 2.7 of Lyu and Zhou (2026). A ResearchGate preprint by J. M. Ashfaque (24 July 2026) claimed those recurrence formulas earlier; its Proposition 3.1 fails as printed, and this release claims the first complete proofs known to it, not the first claim. An exact Bessel–Jacobi determinant identity, with an unrefereed preprint of Kounchev and Render, gives the critical length (the first positive zero of the Bessel function of order 7/2) for the span of x^j cos x, x^j sin x, 0 ≤ j ≤ 3. Existence only: no claim about distinct quadrature nodes, nonzero weights or conditioning. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Hankel determinants",
+    "oscillatory integrals",
+    "complex Gaussian quadrature",
+    "Gegenbauer weight",
+    "orthogonal polynomials",
+    "Bessel functions",
+    "recurrence coefficients",
+    "critical length"
+  ],
+  "repoUrl": "https://github.com/ipitchford/oscillatory-gegenbauer-even-hankel-positivity",
+  "releaseUrl": "https://github.com/ipitchford/oscillatory-gegenbauer-even-hankel-positivity/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/oscillatory-gegenbauer-even-hankel-positivity/releases/download/v0.1.0-candidate/oscillatory-gegenbauer-even-hankel-positivity-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23933929",
+  "conceptDoi": "10.5281/zenodo.23933928",
+  "zenodoUrl": "https://zenodo.org/records/23933929",
+  "citeText": "Anonymous (2026). Positivity and recurrence formulas for oscillatory Gegenbauer Hankel determinants. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23933929",
+  "evidence": "Written proofs of every theorem, proposition, lemma and corollary; verify.py (mpmath 1.3.0 and SymPy 1.14.0) with arbitrary-precision checks of an independent moment formula, even determinants, the Selberg values at the origin, the α = 0 closed form, tail constants and the Toda identity, exact symbolic checks of the formal degrees, leading coefficients, shifted numerators, Conjecture 2.5 residuals, Conjecture 2.7 reduced cases and exceptional specialisations, a symmetric-measure counterexample, a check that the earlier preprint's formula fails, and a negative control; every check raises explicitly, so it stays active under Python -O; clean replay from a fresh copy with and without -O reproducing the retained output.",
+  "statusDetail": "Unrefereed AI-assisted analysis candidate. Every result has a written proof; verify.py tests formulas and conventions at finite sizes, not the statements for all sizes. Existence only. The n = 3 critical-length corollary depends on an unrefereed preprint. An earlier public claim on the Lyu–Zhou formulas is disclosed. Internal AI-assisted review in several roles, a separate-model adversarial review and audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (November 2026 revision with DOI insertion, 22 pages), its verification script and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Even-size positivity (Theorem 1.1, proof): D_2r(x) > 0 for every r ≥ 1, every α > −1 and every real x, extending the α = 0 theorem of Celsus, Deaño, Huybrechs and Iserles (2022); the even-degree monic orthogonal polynomials of the oscillatory Gegenbauer weight exist at every real frequency.",
+    "Simple zeros (Lemma 2.1, Corollary 2.3, proof): adjacent determinants never vanish together, and every complex zero of every determinant is simple.",
+    "Odd sizes (Proposition 3.5, Corollary 4.1, proof): every odd-size determinant has infinitely many real zeros, with an explicit first endpoint correction locating the large ones.",
+    "Hankel polynomial degrees (Theorems 5.1 and 6.1, proof and exact checks): deg H_n = ⌊n²/4⌋ and generic deg V_n = n(n+1)/2 with explicit leading coefficients, proving the formal conjectures of Milovanović, Cvetković and Marjanović (2008); two exceptional parameter values lower the shifted degree.",
+    "Recurrence coefficients (Theorems 7.2 and 7.4, proof): complete proofs of Lyu–Zhou Conjectures 2.5 and 2.7 in their stated ranges, agreeing exactly with all 18 polynomials they list; an earlier ResearchGate claim (Ashfaque, July 2026) is disclosed and its Proposition 3.1 fails as printed.",
+    "Critical length (Corollary 8.3, conditional): with an unrefereed rank-three result of Kounchev and Render, the critical length of span{x^j cos x, x^j sin x : 0 ≤ j ≤ 3} is the first positive zero of the Bessel function of order 7/2."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted analysis and computation",
+      "AI-assisted internal review in several roles (Claude Code subagents); adversarial review and audit of rewritten proofs by a separate model (OpenAI Codex); clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Even sizes never vanish. An Evidence Press briefing. Some integrals oscillate so fast that ordinary numerical rules need thousands of points. One remedy moves the calculation into the complex plane and builds a Gaussian-type rule from polynomials that are orthogonal with respect to a complex weight. Here the weight is one minus t squared, raised to a power alpha, times a wave of frequency x, on the interval from minus one to one. With a complex weight there is a catch: the polynomial of a given degree may simply not exist. It exists exactly when a certain determinant of moments, called a Hankel determinant, is not zero. In 2022 Celsus, Deaño, Huybrechs and Iserles proved that for the flat weight, where alpha is zero, the even-size determinants never vanish. This paper proves the same for every alpha greater than minus one and every real frequency: every even-size determinant is strictly positive, so the even-degree polynomials always exist. Odd sizes behave differently: each odd-size determinant has infinitely many real zeros. The proof follows the determinants as alpha changes, using an identity showing that neighbouring determinants never vanish together, and a large-frequency expansion that holds uniformly in alpha. The same tools prove degree formulas conjectured in 2008, and give complete proofs of two recurrence-coefficient conjectures stated by Lyu and Zhou in 2026. An earlier preprint, posted on ResearchGate by J. M. Ashfaque in July 2026, claimed those recurrence formulas; its key determinant formula fails as printed, and this release claims the first complete proofs known to it, not the first claim. The limits are clear. The result is about existence only, not about distinct quadrature nodes or numerical stability, and one corollary depends on an unrefereed preprint. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the fourth of November twenty twenty-six, its paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify.py was rerun with Python -I -B, with and without -O, from a fresh copy of the approved package with mpmath 1.3.0 and SymPy 1.14.0; both outputs matched the retained verification_results.json apart from elapsed time, including the negative control. The frozen archive was bound to that replay and the script rerun from it; GitHub CI reruns it on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "verify.py pins mpmath 1.3.0 and SymPy 1.14.0 in requirements.txt; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Celsus, Deaño, Huybrechs and Iserles (2022). The kissing polynomials and their Hankel determinants. Transactions of Mathematics and Its Applications. The α = 0 case of the main theorem (Theorem 4.3), used as the base of the continuation.",
+      "url": "https://doi.org/10.1093/imatrm/tnab005"
+    },
+    {
+      "citation": "Milovanović, Cvetković and Marjanović (2008). Orthogonal polynomials for the oscillatory-Gegenbauer weight. Publications de l'Institut Mathématique. Existence at special Bessel-zero frequencies and the degree conjectures proved here.",
+      "url": "https://doi.org/10.2298/PIM0898049M"
+    },
+    {
+      "citation": "Dimitrov and Xu (2019). Wronskians of Fourier and Laplace transforms. Transactions of the AMS. Wronskian positivity for Fourier transforms; a near collision on the derivative-determinant form.",
+      "url": "https://doi.org/10.1090/tran/7809"
+    },
+    {
+      "citation": "Lyu and Zhou (2026). Recurrence Coefficients of the Orthogonal Polynomials for Oscillatory Jacobi-type Weight Functions. arXiv:2607.19797v1. Conjectures 2.5 and 2.7, proved here.",
+      "url": "https://arxiv.org/abs/2607.19797v1"
+    },
+    {
+      "citation": "Ashfaque (2026). On the discrete Painlevé IV structure of oscillatory Gegenbauer recurrence coefficients. ResearchGate preprint dated 24 July 2026 (no DOI). The earlier claim on the Lyu–Zhou formulas; its Proposition 3.1 fails as printed.",
+      "url": "https://www.researchgate.net/publication/410769119"
+    },
+    {
+      "citation": "Asheim, Deaño, Huybrechs and Wang (2014). A Gaussian quadrature rule for oscillatory integrals on a bounded interval. Discrete and Continuous Dynamical Systems. Gaussian quadrature with an oscillatory weight on a bounded interval.",
+      "url": "https://doi.org/10.3934/dcds.2014.34.883"
+    },
+    {
+      "citation": "Deaño and Huybrechs (2009). Complex Gaussian quadrature of oscillatory integrals. Numerische Mathematik. Complex Gaussian quadrature of oscillatory integrals.",
+      "url": "https://doi.org/10.1007/s00211-008-0209-z"
+    },
+    {
+      "citation": "Deaño, Huybrechs and Iserles (2017). Computing Highly Oscillatory Integrals. SIAM monograph. Background on computing highly oscillatory integrals.",
+      "url": "https://doi.org/10.1137/1.9781611975123"
+    },
+    {
+      "citation": "Barhoumi (2021). Strong asymptotics of Jacobi-type kissing polynomials. Integral Transforms and Special Functions. Large-degree asymptotics of Jacobi-type kissing polynomials.",
+      "url": "https://doi.org/10.1080/10652469.2021.1923707"
+    },
+    {
+      "citation": "Baricz and Pogány (2014). Turán determinants of Bessel functions. Forum Mathematicum. Turán determinants of Bessel functions.",
+      "url": "https://doi.org/10.1515/form.2011.160"
+    },
+    {
+      "citation": "Carnicer, Mainar and Peña (2023). Spherical Bessel functions and critical lengths. RACSAM. The critical-length conjecture for spherical Bessel functions.",
+      "url": "https://doi.org/10.1007/s13398-022-01365-8"
+    },
+    {
+      "citation": "McSwiggen (2019). A New Proof of Harish-Chandra’s Integral Formula. Communications in Mathematical Physics. The Harish-Chandra integral behind the Bessel–Jacobi identity.",
+      "url": "https://doi.org/10.1007/s00220-018-3259-9"
+    },
+    {
+      "citation": "Collins (2005). Product of random projections, Jacobi ensembles and universality problems arising from free probability. Probability Theory and Related Fields. Jacobi ensembles, linking the determinants to trace characteristic functions.",
+      "url": "https://doi.org/10.1007/s00440-005-0428-5"
+    },
+    {
+      "citation": "Kounchev and Render (2025). On the critical length conjecture for spherical Bessel functions in CAGD. arXiv:2505.09964v1 (unrefereed). The rank-three input of Corollary 8.3.",
+      "url": "https://arxiv.org/abs/2505.09964v1"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:oscillatory-gegenbauer-even-hankel-positivity",
+    "attemptIds": [
+      "ep-attempt:oscillatory-gegenbauer-even-hankel-positivity-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Whether the even-degree orthogonal polynomials of the oscillatory Gegenbauer weight exist at every frequency: yes, for every α > −1 and real x, with simple zeros and explicit degree and recurrence formulas.",
+      "scope": "Real exponent α > −1 and real frequency; existence only; the n = 3 critical length is conditional on an unrefereed preprint."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 separates the α = 0 base case of Celsus et al., the 2008 special-frequency existence theorem and the Lyu–Zhou conjectures from what is proved here; Section 9 records the earlier Ashfaque claim and why its Proposition 3.1 fails, and what verify.py covers.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "Existence does not give distinct quadrature nodes or good conditioning."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in orthogonal polynomials check the uniform endpoint expansion (Section 3) and the continuation argument, and certify the rank-three critical-length input independently of the Kounchev–Render preprint.",
+      "claimCeiling": "Proved even-size positivity for all α > −1 and real x, simple zeros, odd-size zeros, the 2008 degree formulas and the Lyu–Zhou recurrence formulas; conditional n = 3 critical length; finite checks. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "oscillatory-gegenbauer-even-hankel-positivity-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable existence theorem for even-degree oscillatory Gegenbauer orthogonal polynomials, with proofs of recent conjectures.",
+        "setting": "AI-assisted analysis research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
