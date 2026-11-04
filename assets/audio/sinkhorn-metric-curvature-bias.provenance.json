@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "How curved surfaces bias a popular way of measuring distance between distributions. An Evidence Press briefing. Optimal transport compares two probability distributions by the cheapest way of moving one onto the other. Adding a small amount of entropy, a smoothing of strength epsilon, makes this much faster to compute; the result is called Sinkhorn's method. It also gives a local ruler: a way of saying how far apart two nearby distributions are. As epsilon shrinks to zero, that ruler should turn into the classical Wasserstein geometry. This candidate paper proves that it does, for smooth data spread over a closed curved surface sitting in ordinary space, with cost measured along straight lines. It also finds the first error.",
+      "inputSha256": "d96ac6f89af918d7fc9e269b205dc652303cdc03df8292651557c5efef3cc276",
+      "audioSha256": "fc9fcd93784e9f02e5a647f4bbd5f8d76d53cd9fbac2f39a6802a0f0e1d1d4bf",
+      "requestId": "req_3ee305a88a7f4dbfbf2416a4bc418ae8",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "along straight lines it also finds the error",
+        "heardEnding": "surface sitting in ordinary space with cost measured along straight lines it also finds the error",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "At small epsilon the ruler reads slightly too short, by epsilon over four times a term that measures how sharply the surface bends in space. The reason is simple: the straight chord between two points is shorter than the arc along the surface. On a circle of radius one, every reading shrinks by the factor one minus epsilon over four. The bias depends on how the surface sits in space, not only on its shape: a round circle and an ellipse of the same length give different biases. A cheap positive correction removes the error. The paper also proves rates of convergence, solves round spheres exactly to second order, and shows that no uniform rate better than epsilon is possible. Related expansions of the underlying operators are credited to earlier work.",
+      "inputSha256": "b56392cc4e773739acb2b6bd44227a49c27e734f7c258c06e9cd7b592fb64ba2",
+      "audioSha256": "af5fd32ca0a1a50d4b7a0e9f7eabd0937cdd39a4593128657dfc7368f6e74264",
+      "requestId": "req_815282b5ea28464199f5523e1a5ce351",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the underlying operators are credited to earlier work",
+        "heardEnding": "better than epsilon is possible related expansions of the underlying operators are credited to earlier work",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The results cover continuous densities on closed surfaces with known curvature; there is no sampling theory, and the sharpest rate remains open. This is an unrefereed candidate with internal AI-assisted review only. Released on the fourth of November 2026; the paper, code and data are linked from the release page. This briefing uses an AI-generated voice and is not additional evidence.",
+      "inputSha256": "16e5337f76c5b3293cff77352bf05c4bde4f6dae3d12272a80f16f11aab2eaef",
+      "audioSha256": "a0c50dbbf1bd7ab1171961315dcf5ad80dc2ee83aa8e2a22d0af9f79634cd337",
+      "requestId": "req_ef02670597f2470d9922f0a9f49bdbc0",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "ai generated voice and is not additional evidence",
+        "heardEnding": "from the release page this briefing uses an ai generated voice and is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "sinkhorn-metric-curvature-bias",
+  "generatedAt": "2026-11-04T07:42:07.632Z",
+  "sourceMetadata": "papers/sinkhorn-metric-curvature-bias/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "288b411634840d11e3bf7421708fb6be21119932c04785b099cc0e79e6f89c14",
+  "transcriptPath": "assets/audio/sinkhorn-metric-curvature-bias.txt",
+  "transcriptSha256": "989fa62fa20ee16e4cb53d37335fe2abcb0eb84795e8a3537d4dafd8da3dc279",
+  "audioPath": "assets/audio/sinkhorn-metric-curvature-bias.mp3",
+  "audioSha256": "00f87ade4b0490da3de4351102473573f00cca488083428b746cc95bd5420714",
+  "audioBytes": 2013740,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "ai generated voice and is not additional evidence",
+    "heardEnding": "from the release page this briefing uses an ai generated voice and is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
