@@ -975,6 +975,10 @@
   "gaussian-rkhs-stochastic-invariance": {
    "classification": "Research use",
    "application": "People using kernel EDMD or other kernel Koopman methods on linear-Gaussian or Lévy-driven models can pick Gaussian kernel widths that keep the invariance assumption of their error bounds true, using an exact rule that allows twice the range of the earlier one. They also learn that nonlinear Euler-type steps never satisfy that assumption. The limit is that the statements concern the global kernel-space norm and linear or affine dynamics, not prediction accuracy from finite data. This remains an unrefereed candidate."
+  },
+  "hyperbolic-sliced-wasserstein-completion": {
+   "classification": "Research use",
+   "application": "People training or evaluating models on hyperbolic embeddings with geodesic sliced Wasserstein losses can know that this distance measures weak convergence only, gives almost no signal about depth far from the centre, and can be estimated from samples with error bars that need no assumptions on the data. When depth matters, the paper shows that adding one comparison of distances from the centre repairs it. The main limit is that the results cover the exact average over all directions with a fixed centre. This remains an unrefereed candidate."
   }
  }
 }

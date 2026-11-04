@@ -1,0 +1,225 @@
+{
+  "slug": "hyperbolic-sliced-wasserstein-completion",
+  "title": "Compact completion and uniform statistical bounds for hyperbolic geodesic sliced Wasserstein distance",
+  "shortTitle": "Hyperbolic sliced Wasserstein: what it really measures",
+  "oneLine": "Geodesic sliced Wasserstein distance on hyperbolic space is exactly a weak-convergence metric on the compact closed Klein ball: it has an exact diameter, barely sees depth far from the centre, gives squared distance π·α between boundary points at angle α in two dimensions, and can be estimated at optimal rates with no assumptions on the data.",
+  "abstract": "Data such as trees, hierarchies and networks are often embedded in hyperbolic space, and geodesic hyperbolic sliced Wasserstein distance (Bonet et al., 2023) compares two such data clouds cheaply by projecting them onto geodesics through a fixed centre and averaging one-dimensional transport costs. This candidate determines exactly what that distance measures. In the Klein ball each projection is atanh(v·z), and its angular moments stay uniformly bounded even at the ideal boundary. Hence, for every dimension d ≥ 2 and 1 ≤ p < ∞, the distance extends with no moment assumption to all probability measures; its completion is the space of probability measures on the compact closed Klein ball, it metrises weak convergence there, and its diameter is exactly 2C_{d,p}^{1/p}. Mass escaping to infinity converges to the boundary sphere instead of disappearing, so the distance cannot control hyperbolic transport moments and is exponentially insensitive to depth far from the centre, with exact radial rates. The induced metric on the boundary sphere is found in every dimension: squared distance π·α in two dimensions, (1/2)α² log(1/α) behaviour in three, and comparable to α² from four on. An explicit function shows that the vanishing-at-infinity assertion of Proposition 19 in Bonet, Drumetz and Courty (JMLR 2025) fails. Sampling error obeys distribution-free n^(-1/2) bounds for the powered loss, in expectation and with high probability, at minimax-optimal rates; adding one radial Wasserstein term gives a complete metric with the usual hyperbolic Wasserstein topology. The separation mechanism is credited to Lyons (2014). AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "sliced Wasserstein distance",
+    "hyperbolic space",
+    "optimal transport",
+    "Klein model",
+    "weak convergence",
+    "metric completion",
+    "minimax estimation",
+    "hyperbolic embeddings"
+  ],
+  "repoUrl": "https://github.com/ipitchford/hyperbolic-sliced-wasserstein-completion",
+  "releaseUrl": "https://github.com/ipitchford/hyperbolic-sliced-wasserstein-completion/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/hyperbolic-sliced-wasserstein-completion/releases/download/v0.1.0-candidate/hyperbolic-sliced-wasserstein-completion-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23938270",
+  "conceptDoi": "10.5281/zenodo.23938269",
+  "zenodoUrl": "https://zenodo.org/records/23938270",
+  "citeText": "Anonymous (2026). Compact completion and uniform statistical bounds for hyperbolic geodesic sliced Wasserstein distance. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23938270",
+  "evidence": "Every theorem has a written proof: Lemmas 2.1-2.2, Theorem 2.3, Proposition 3.1, Theorem 4.1, Corollary 4.2, Proposition 4.3, Theorem 4.4, Theorems 5.1-5.2, Corollary 5.3, Proposition 5.4, Theorem 6.1 and Proposition 6.2. Two scripts give floating-point sanity checks: 36 projection instances against direct minimisation, six quadratic angular constants against trigamma values, 12 backprojection evaluations, seven dilogarithm/boundary comparisons, 24 radial cases over eight (d,p) pairs, ten exact binomial sums, Legendre coefficients, the d = 3 series against quadrature, the d ≥ 4 small-angle constant and a near-critical radial constant. Both scripts were replayed with and without Python -O from fresh copies with byte-identical outputs; a corrupted boundary identity is rejected under -O; GitHub CI reruns both on Linux. The checks are not certificates or proofs.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate in optimal transport and hyperbolic geometry with written proofs; numerical checks are floating-point sanity checks only. Internal AI-assisted review in five roles, a separate-model adversarial review, independent replay, one revision round with extensions, a re-review, a proof audit and a separate-model audit of the new proofs. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 4 November 2026 with DOI insertion, 18 pages), its verification scripts, and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Compact completion (Theorem 2.3): for d ≥ 2 and 1 ≤ p < ∞, geodesic hyperbolic sliced Wasserstein distance extends with no moment assumption; its completion is the space of probability measures on the compact closed Klein ball, it metrises weak convergence there, and its diameter is exactly 2C_{d,p}^{1/p} (π in the plane for p = 2).",
+    "Correction (Proposition 3.1): for g(t,v) = sech²t the geodesic backprojection equals 1 − tanh²r/d, which tends to 1 − 1/d at infinity, so the C₀ claim of Proposition 19 in Bonet, Drumetz and Courty (JMLR 2025) fails.",
+    "Depth insensitivity (Theorem 4.1, Corollary 4.2): the squared distance between a point at depth r and its boundary point decays like e^{−(d−1)r}, r e^{−2pr} or e^{−2pr} according as d − 1 is below, equal to or above 2p; far-out points on one ray are exponentially close however far apart they are.",
+    "Boundary geometry (Proposition 4.3, Theorem 4.4): for p = 2 the squared distance between boundary points at angle α is exactly πα when d = 2, behaves like (1/2)α² log(1/α) when d = 3, and is comparable to α² with limit constant (d−2)/((d−1)(d−3)) when d ≥ 4.",
+    "Estimation and repair (Theorems 5.1, 5.2, Corollary 5.3, Theorem 6.1): distribution-free sampling error n^{−1/2} for the powered loss in expectation and with high probability, minimax-optimal rates n^{−1/2} and n^{−1/(2p)}; adding one radial Wasserstein term gives a complete metric with the usual hyperbolic Wasserstein topology."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research, proof writing and numerical sanity checks",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and audit of new proofs by a separate model (OpenAI Codex); independent replay; re-review and proof audit",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "What does a popular distance for hyperbolic data really measure? An Evidence Press briefing. Data such as family trees, word hierarchies and social networks are often placed in hyperbolic space, a geometry in which room grows very quickly as you move away from the centre. To compare two clouds of such points, machine-learning methods use a sliced Wasserstein distance: project both clouds onto many lines through a fixed centre, compare them along each line and average the results. This candidate paper works out exactly what that average detects. The projections stay bounded on average, even at infinity. So the distance extends to the closed ball, boundary sphere included, and mass that drifts off to infinity simply lands on that boundary. The distance has an exact maximum, detects ordinary weak convergence, and barely sees depth: two points far out in the same direction look almost the same, however far apart they really are. In two dimensions, the squared distance between two points at infinity is exactly pi times the angle between them, and the paper gives the boundary geometry in every dimension. It also corrects a published claim, Proposition nineteen of Bonet, Drumetz and Courty, proves that the distance can be estimated from samples at the best possible rate with no assumptions on the data, and shows that adding one comparison of distances from the centre restores the usual hyperbolic notion of convergence. The proofs are written out; the numerical checks are only sanity checks. The results cover the exact average over all directions from a fixed centre. This is an unrefereed candidate with internal AI-assisted review only. Released on the fourth of November 2026; the paper, code and data are linked from the release page. This briefing uses an AI-generated voice and is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Both scripts were rerun with Python -I -B, with and without -O, from fresh copies of the approved package; every data JSON and CSV output and both PNG figures reproduced byte for byte. The frozen archive was bound to that replay, verify_and_plot.py was rerun from it under -O, and a corrupted boundary identity was rejected; GitHub CI reruns both scripts on Linux. These are floating-point sanity checks, not proofs."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the theorems rest on written proofs."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Scripts pin Matplotlib 3.10.8 and otherwise use current NumPy, SciPy and mpmath (requirements.txt); not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Bonet, Chapel, Drumetz and Courty (2022). Hyperbolic Sliced-Wasserstein via Geodesic and Horospherical Projections. arXiv:2211.10066 (PMLR 221, 2023). Introduces the geodesic hyperbolic sliced Wasserstein distance studied here.",
+      "url": "https://arxiv.org/abs/2211.10066",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Bonet, Drumetz and Courty (2024). Sliced-Wasserstein Distances and Flows on Cartan-Hadamard Manifolds. arXiv:2403.06560 (JMLR 26, 2025). Its Proposition 19 is the backprojection claim corrected in Section 3.",
+      "url": "https://arxiv.org/abs/2403.06560",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Lyons (2014). Hyperbolic space has strong negative type. Illinois Journal of Mathematics. Source of the Klein-model Cramér-Wold separation mechanism credited in the paper.",
+      "url": "https://doi.org/10.1215/ijm/1446819297"
+    },
+    {
+      "citation": "Chami, Gu, Nguyen and Ré (2021). HoroPCA: Hyperbolic Dimensionality Reduction via Horospherical Projections. arXiv:2106.03306. Contraction under geodesic projection (Proposition 3.5).",
+      "url": "https://arxiv.org/abs/2106.03306",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Li, Meng, Xu and Zhu (2025). Efficient Variants of Wasserstein Distance in Hyperbolic Space via Space-Filling Curve Projection. IEEE Transactions on Neural Networks and Learning Systems. Another hyperbolic sliced construction illustrating contraction.",
+      "url": "https://doi.org/10.1109/tnnls.2025.3551275"
+    },
+    {
+      "citation": "Helgason (2010). Integral Geometry and Radon Transforms. Springer New York. Classical link between geodesic Radon transforms in the Klein model and Euclidean ones.",
+      "url": "https://doi.org/10.1007/978-1-4419-6055-9"
+    },
+    {
+      "citation": "Boman and Lindskog (2009). Support Theorems for the Radon Transform and Cramér-Wold Theorems. Journal of Theoretical Probability. The Euclidean argument whose hyperbolic transfer fails in Proposition 19.",
+      "url": "https://doi.org/10.1007/s10959-008-0151-0"
+    },
+    {
+      "citation": "Nadjahi, Durmus, Chizat, Kolouri, Shahrampour and Şimşekli (2020). Statistical and Topological Properties of Sliced Probability Divergences. arXiv:2003.05783. The slicing method for sample complexity that Section 5 follows.",
+      "url": "https://arxiv.org/abs/2003.05783",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Kitagawa and Takatsu (2023). Sliced optimal transport: is it a suitable replacement? arXiv:2311.15874 (Indiana Univ. Math. J. 75, 2026). Euclidean completeness and topology results, for contrast.",
+      "url": "https://arxiv.org/abs/2311.15874",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Park and Slepčev (2025). Geometry and analytic properties of the sliced Wasserstein space. Journal of Functional Analysis. Euclidean completeness in the quadratic case, for contrast.",
+      "url": "https://doi.org/10.1016/j.jfa.2025.110975"
+    },
+    {
+      "citation": "McDiarmid (1989). On the method of bounded differences. Surveys in Combinatorics, 1989. Concentration inequality behind the high-probability bound of Theorem 5.1(ii).",
+      "url": "https://doi.org/10.1017/cbo9781107359949.008"
+    },
+    {
+      "citation": "Tsybakov (2009). Introduction to Nonparametric Estimation. Springer New York. Two-point method for the minimax lower bounds.",
+      "url": "https://doi.org/10.1007/b13794"
+    },
+    {
+      "citation": "Anonymous (2026). Sliced Wasserstein distance at the critical moment: the noninteger case. Evidence Press candidate (Zenodo). A different, Euclidean question about when sliced distance controls full Wasserstein distance.",
+      "url": "https://doi.org/10.5281/zenodo.23295188"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:hyperbolic-sliced-wasserstein-completion",
+    "attemptIds": [
+      "ep-attempt:hyperbolic-sliced-wasserstein-completion-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "What geodesic hyperbolic sliced Wasserstein distance metrises, its completion, boundary geometry and statistical estimation rates, with a correction to Proposition 19 of Bonet, Drumetz and Courty (2025).",
+      "scope": "Real hyperbolic space of dimension d ≥ 2, finite p, a fixed origin and the exact uniform average over directions; horospherical and general Cartan-Hadamard constructions are not covered."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the question, the answer and an attribution boundary (Lyons 2014 for separation, Chami et al. 2021 for contraction); Section 3 quotes the corrected proposition; Section 7 separates proofs from numerical sanity checks and states limits.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "Numerical checks are floating-point sanity checks; no proof is machine-verified."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have an optimal-transport specialist check the completion argument (Lemma 2.2, Theorem 2.3) and the d = 3 boundary series, and ask the authors of Bonet, Drumetz and Courty (2025) to confirm the reading of Proposition 19.",
+      "claimCeiling": "Written proofs of the completion, boundary geometry, correction, estimation rates and augmentation; numerical sanity checks only. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "hyperbolic-sliced-wasserstein-completion-no-impact",
+        "aim": "science",
+        "outcome": "An openly checkable account of what hyperbolic geodesic sliced Wasserstein distance measures.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
