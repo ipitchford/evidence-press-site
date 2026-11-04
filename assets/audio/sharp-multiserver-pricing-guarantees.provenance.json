@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is a short audio briefing on a new Evidence Press research candidate: sharp multiserver pricing guarantees and the worst congestion load. Imagine a service with several servers. It could change its price with every change in demand. Or it could keep one simple fixed price, and cap how many customers it holds. How much does the simple rule lose? In a recent paper, Bergquist and Elmachtoub published worst-case guarantees for a particular fixed-price rule, and they conjectured that those guarantees could not be improved. This paper proves it, for every number of servers and every capacity. Here is an example. With five servers and room for seven customers, the rule keeps at least 81.85 percent of the best possible revenue, and raises average occupancy by a factor of at most 1.01003.",
+      "inputSha256": "c6c27f73ab6e1bf825faf8bb9bd1fc58b3955203a65ca2d82bc3ba8fc80bad5d",
+      "audioSha256": "cf67d6346c654946cd290dc8885bf7bad88d7f1b3ca0961f7a871c3d5a13ac7f",
+      "requestId": "req_46e298e2f1a248f0ad5569806b7ddfb5",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "average occupancy by a factor of at most",
+        "heardEnding": "least of the best possible revenue and raises average occupancy by a factor of at most",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Neither number can be improved. The paper then goes further. It finds the load at which congestion is worst: here about 2.59, while the revenue figure arises as the load approaches five. An exact formula says when those two worst cases can occur together. The paper also gives the exact trade-off curve between revenue and congestion, and shows that the companion guarantees for time spent in the system cannot be improved either. Some limits. These results concern one specified construction, not the best fixed price, and that question stays open. The rule uses a quantity called the optimal throughput, which is a proof device: anyone who could compute it could simply set the best price. The occupancy ratio can hide a queue.",
+      "inputSha256": "56aa13eab2dd57d3eb8dca7c3fc3bc2cca1f6b3ba26fd2b2acd54abd5dbb0c29",
+      "audioSha256": "aa539b4dc4d053988a4dadede530b4ca05e62eb5f6f47c17739e57b0a3e8c4b3",
+      "requestId": "req_42f4730415d24957beac65a4acadf143",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "price the occupancy ratio can hide a queue",
+        "heardEnding": "could compute it could simply set the best price the occupancy ratio can hide a queue",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "With one hundred servers and capacity one hundred and twenty, the worst ratio is only 1.033, yet the average queue at full load is about six. The frontier and sojourn proofs are elementary, with close antecedents. Pacheco, in 1994, has the same threshold for one server, but the two differ at two servers. This is not a priority claim. The proofs are written out, and scripts check the numbers. Review was internal and AI-assisted, with no proof assistant. This remains an unrefereed candidate, released on 4 November 2026. The paper and evidence are linked from the Evidence Press page. This briefing uses a synthetic voice, and it is not additional scientific evidence.",
+      "inputSha256": "93f046691013b47a113a94374da2074b1b3bcc72b26949426507ae9fe9f2e692",
+      "audioSha256": "b185786d58f457fb8d634a0c912a3312a1fb82170f8a88b3735a0dc92a1d1dd2",
+      "requestId": "req_4af503b7bd544fc78956e0204fc1fce2",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "voice and it is not additional scientific evidence",
+        "heardEnding": "evidence press page this briefing uses a synthetic voice and it is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "sharp-multiserver-pricing-guarantees",
+  "generatedAt": "2026-11-04T15:14:06.610Z",
+  "sourceMetadata": "papers/sharp-multiserver-pricing-guarantees/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "c2cc2c3c9058efd2e348897f6de47e449c11080353357acd1f693559e24d29dc",
+  "transcriptPath": "assets/audio/sharp-multiserver-pricing-guarantees.txt",
+  "transcriptSha256": "546f3c6905f56cb6e9027becf8389360e8b17e7947a6e91716e5dd06257b76a9",
+  "audioPath": "assets/audio/sharp-multiserver-pricing-guarantees.mp3",
+  "audioSha256": "5d13b9bd0053cf06db631c210cbc9a6502836def3d22d16d405408a0e129f97a",
+  "audioBytes": 2385452,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "voice and it is not additional scientific evidence",
+    "heardEnding": "evidence press page this briefing uses a synthetic voice and it is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  },
+  "apiRequestCount": 4,
+  "apiRequestNote": "One generation run made four TTS API requests: three kept segments, plus one rejected take of segment 2, which the tool re-requested automatically after its spoken-ending check failed."
+}

@@ -1,0 +1,13 @@
+This is a short audio briefing on a new Evidence Press research candidate: sharp multiserver pricing guarantees and the worst congestion load.
+
+Imagine a service with several servers. It could change its price with every change in demand. Or it could keep one simple fixed price, and cap how many customers it holds. How much does the simple rule lose? In a recent paper, Bergquist and Elmachtoub published worst-case guarantees for a particular fixed-price rule, and they conjectured that those guarantees could not be improved.
+
+This paper proves it, for every number of servers and every capacity. Here is an example. With five servers and room for seven customers, the rule keeps at least 81.85 percent of the best possible revenue, and raises average occupancy by a factor of at most 1.01003. Neither number can be improved.
+
+The paper then goes further. It finds the load at which congestion is worst: here about 2.59, while the revenue figure arises as the load approaches five. An exact formula says when those two worst cases can occur together. The paper also gives the exact trade-off curve between revenue and congestion, and shows that the companion guarantees for time spent in the system cannot be improved either.
+
+Some limits. These results concern one specified construction, not the best fixed price, and that question stays open. The rule uses a quantity called the optimal throughput, which is a proof device: anyone who could compute it could simply set the best price. The occupancy ratio can hide a queue. With one hundred servers and capacity one hundred and twenty, the worst ratio is only 1.033, yet the average queue at full load is about six. The frontier and sojourn proofs are elementary, with close antecedents. Pacheco, in 1994, has the same threshold for one server, but the two differ at two servers. This is not a priority claim.
+
+The proofs are written out, and scripts check the numbers. Review was internal and AI-assisted, with no proof assistant. This remains an unrefereed candidate, released on 4 November 2026. The paper and evidence are linked from the Evidence Press page.
+
+This briefing uses a synthetic voice, and it is not additional scientific evidence.

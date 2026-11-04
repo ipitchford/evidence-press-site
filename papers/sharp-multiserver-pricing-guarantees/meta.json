@@ -1,0 +1,199 @@
+{
+  "slug": "sharp-multiserver-pricing-guarantees",
+  "title": "Sharp multiserver pricing guarantees and the worst congestion load",
+  "shortTitle": "A fixed price with a cap: the published guarantees cannot be improved",
+  "oneLine": "The published worst-case guarantees for a throughput-matched static price with a capacity cap are exact for every number of servers, with an explicit worst congestion load and an exact revenue-congestion curve.",
+  "abstract": "A simple static price with a capacity cap has published worst-case guarantees for profit, revenue and congestion, and Bergquist and Elmachtoub conjectured that their multiserver bounds cannot be improved. This candidate proves all three sharpness claims for every number of servers and every capacity, with uniform valuations. It finds the offered load that maximises the congestion ratio: an explicit quartic decides between an interior maximiser and critical load, and also decides whether the worst revenue and congestion ratios can be approached together. Its waiting-capacity threshold is asymptotic to 1.7882539728 times the square root of the number of servers. The paper also proves the many-server limit of the maximal ratio, the exact worst-case revenue-congestion frontier, and sharpness of the companion sojourn-time guarantees. With five servers and capacity seven the construction keeps at least 81.85% of optimal revenue and raises occupancy by at most a factor 1.01003, and the congestion figure occurs at a load of about 2.59 rather than 5. These results concern the specified throughput-matched construction, not the best static policy, which stays open. The optimal throughput is a proof device, and the occupancy ratio can hide queues. The frontier and sojourn proofs are elementary with close antecedents. Pacheco (1994) has the same threshold for one server, and the two differ at two servers. This is not a priority claim.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "dynamic pricing",
+    "static pricing",
+    "queueing",
+    "Erlang loss",
+    "finite buffer",
+    "sharp approximation guarantees",
+    "congestion",
+    "many-server asymptotics"
+  ],
+  "repoUrl": "https://github.com/ipitchford/sharp-multiserver-pricing-guarantees",
+  "releaseUrl": "https://github.com/ipitchford/sharp-multiserver-pricing-guarantees/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/sharp-multiserver-pricing-guarantees/releases/download/v0.1.0-candidate/sharp-multiserver-pricing-guarantees-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23953351",
+  "conceptDoi": "10.5281/zenodo.23953350",
+  "zenodoUrl": "https://zenodo.org/records/23953351",
+  "citeText": "Anonymous (2026). Sharp multiserver pricing guarantees and the worst congestion load. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23953351",
+  "evidence": "Written proofs of all results in a 25-page paper; four scripts run exact rational identities and floating-point checks (numpy 2.3.5, scipy 1.17.0), with failures that stay active under Python -O; replay from fresh copies reproduced the retained JSON, CSV and PNG exactly, and three corruption controls are detected.",
+  "statusDetail": "Unrefereed AI-assisted operations research candidate. All results have written proofs; no proof assistant was used. They concern the specified throughput-matched construction, not the best static policy. The frontier and sojourn proofs are elementary with close antecedents. Internal AI-assisted review only, including separate-model adversarial passes, re-reviews and a proof audit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (November 2026, with DOI line, 25 pages), its check scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Sharpness (Theorem 2.1, Proposition 3.4, proof): the profit, revenue and congestion constants are sharp for every C and N, even for uniform valuations; optimal throughput runs through all of (0,C) in the linear-demand family.",
+    "Worst load (Theorem 2.2, proof): an explicit quartic Q_C decides whether the congestion ratio peaks below critical load; the threshold is asymptotic to 1.7882539728√C.",
+    "Joint attainability (Corollary 4.1, proof): the worst revenue and congestion ratios can be approached together exactly when d ≥ d_crit(C).",
+    "Exact frontier (Theorem 4.3, Proposition 4.2, proof): the load-dependent bounds are tight at every load, giving the whole worst-case revenue-congestion curve.",
+    "Many servers and rates (Theorems 6.1, 7.1, Corollary 6.2, proof): limits of the maximal ratio and its maximiser with c√C waiting places, and finite-parameter bounds on the profit deficit.",
+    "Sojourn time (Theorem 8.1, proof): the companion sojourn-time constants are sharp and always approached together."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted analysis and computation",
+      "AI-assisted internal review in several roles (Claude Code subagents); adversarial review and audit of new proofs by a separate model (OpenAI Codex); clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "This is a short audio briefing on a new Evidence Press research candidate: sharp multiserver pricing guarantees and the worst congestion load.\n\nImagine a service with several servers. It could change its price with every change in demand. Or it could keep one simple fixed price, and cap how many customers it holds. How much does the simple rule lose? In a recent paper, Bergquist and Elmachtoub published worst-case guarantees for a particular fixed-price rule, and they conjectured that those guarantees could not be improved.\n\nThis paper proves it, for every number of servers and every capacity. Here is an example. With five servers and room for seven customers, the rule keeps at least 81.85 percent of the best possible revenue, and raises average occupancy by a factor of at most 1.01003. Neither number can be improved.\n\nThe paper then goes further. It finds the load at which congestion is worst: here about 2.59, while the revenue figure arises as the load approaches five. An exact formula says when those two worst cases can occur together. The paper also gives the exact trade-off curve between revenue and congestion, and shows that the companion guarantees for time spent in the system cannot be improved either.\n\nSome limits. These results concern one specified construction, not the best fixed price, and that question stays open. The rule uses a quantity called the optimal throughput, which is a proof device: anyone who could compute it could simply set the best price. The occupancy ratio can hide a queue. With one hundred servers and capacity one hundred and twenty, the worst ratio is only 1.033, yet the average queue at full load is about six. The frontier and sojourn proofs are elementary, with close antecedents. Pacheco, in 1994, has the same threshold for one server, but the two differ at two servers. This is not a priority claim.\n\nThe proofs are written out, and scripts check the numbers. Review was internal and AI-assisted, with no proof assistant. This remains an unrefereed candidate, released on 4 November 2026. The paper and evidence are linked from the Evidence Press page.\n\nThis briefing uses a synthetic voice, and it is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All four scripts were rerun with Python -I -B, with and without -O, from fresh copies (numpy 2.3.5, scipy 1.17.0, matplotlib 3.10.8). The JSON, CSV and PNG outputs matched the retained files exactly; the figure PDFs differ only in embedded dates. Three corruption controls are detected. GitHub CI reruns the scripts on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "requirements.txt pins numpy 2.3.5, scipy 1.17.0 and matplotlib 3.10.8; not a locked container; small floating-point differences across platforms are expected."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Balseiro, Ma and Zhang (2026). Dynamic Pricing for Reusable Resources: The Power of Two Prices. Operations Research. The occupation programme that Section 3 specialises.",
+      "url": "https://doi.org/10.1287/opre.2023.0475"
+    },
+    {
+      "citation": "Bergquist and Elmachtoub (2026). Static Pricing Guarantees for Queueing Systems. Stochastic Systems. The guarantees and the conjecture proved here.",
+      "url": "https://doi.org/10.1287/stsy.2023.0057"
+    },
+    {
+      "citation": "Besbes, Elmachtoub and Sun (2022). Technical Note—Static Pricing: Universal Guarantees for Reusable Resources. Operations Research. Averaged arrival rate and Jensen for static pricing of loss systems.",
+      "url": "https://doi.org/10.1287/opre.2020.2054"
+    },
+    {
+      "citation": "Dupont et al. (2026). Dynamic Parking Pricing for Electric Vehicles in a Loss Queue. IEEE Transactions on Intelligent Transportation Systems. Computational study of electric-vehicle parking prices.",
+      "url": "https://doi.org/10.1109/TITS.2026.3702272"
+    },
+    {
+      "citation": "Daley, van Leeuwaarden and Nazarathy (2015). BRAVO for Many-Server QED Systems with Finite Buffers. Advances in Applied Probability. Equation (2.17) gives the first limit of Corollary 6.2.",
+      "url": "https://doi.org/10.1239/aap/1427814589"
+    },
+    {
+      "citation": "Karp, Vishnyakova and Zhang (2025). Unimodality Preservation by Ratios of Functional Series and Integral Transforms. Results in Mathematics. Coefficient-ratio monotonicity, which gives the peak shape.",
+      "url": "https://doi.org/10.1007/s00025-025-02431-4"
+    },
+    {
+      "citation": "Pacheco (1994). Second-order properties of the loss probability inM/M/s/s +c systems. Queueing Systems. The same threshold for one server; the transitions differ for two.",
+      "url": "https://doi.org/10.1007/BF01189242"
+    },
+    {
+      "citation": "Whitt (2004). A Diffusion Approximation for the G/GI/n/m Queue. Operations Research. The stationary density of Section 6.",
+      "url": "https://doi.org/10.1287/opre.1040.0136"
+    },
+    {
+      "citation": "Elmachtoub and Shi (2025). The Power of Static Pricing for Reusable Resources. EC 2025. Extended abstract on static pricing for reusable resources.",
+      "url": "https://doi.org/10.1145/3736252.3742552"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:sharp-multiserver-pricing-guarantees",
+    "attemptIds": [
+      "ep-attempt:sharp-multiserver-pricing-guarantees-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Whether the published worst-case guarantees for a throughput-matched static price with a capacity cap can be improved, at which load congestion is worst, and what the exact revenue-congestion curve is.",
+      "scope": "The specified construction in the Markovian multiserver pricing model; not the best static policy."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The paper separates the published bounds, the known occupation-programme method and known limits from the sharpness, transition and frontier results, and distinguishes this construction from the best static policy.",
+      "remainingRisks": [
+        "Sources checked are not exhaustive priority certification.",
+        "The best jointly chosen static price and capacity is not covered."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a queueing or revenue-management specialist check Theorems 2.1, 2.2 and 6.1.",
+      "claimCeiling": "Proved results for the specified construction. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "sharp-multiserver-pricing-guarantees-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of a published conjecture on static pricing guarantees.",
+        "setting": "AI-assisted operations research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
