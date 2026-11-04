@@ -51,6 +51,8 @@ The counterexample is inside the conjecture's stated scope: the journal explicit
 
 **Well-posedness and a safe regime (Sections 8–9).** If two participant groups share two nodes, an explicit prior makes the second update's block indefinite; with overlaps of at most one node, a Schur-complement argument keeps every block positive definite. With an anchor observed directly, relative measurements propagate a bound outwards from the anchor in a finite number of steps.
 
+**Relation to Luft et al. (2018).** The correction factor comes from the decentralised collaborative localisation of Luft, Schubert, Roumeliotis and Burgard (*IJRR*, 2018; their eq. 26), which for scalar nodes is exactly the rule analysed here. Their Proposition 1 proves that every two-robot block stays positive definite, including for the scaled variant of their eq. 28 with $|\lambda|\le1$. That gives the local well-posedness used here for pairwise schedules, and their scaled family with $0\le\lambda\le1$ is a constant-factor case of Corollary 5.3. Their one-step error bounds and experiments (the filter is more conservative than the centralised EKF on real data) do not address long-run behaviour: they state that the estimator is not provably consistent in general, make no claim about boundedness or convergence of the covariance, and give no divergence example. Nothing here contradicts a claim they make.
+
 ## Evidence, assurance and limitations
 
 - **Proofs.** Proposition 3.1, Theorems 4.1, 5.1 and 8.1 and Proposition 9.1 have written analytic proofs.
@@ -58,7 +60,7 @@ The counterexample is inside the conjecture's stated scope: the journal explicit
 - **Exact checks.** Rational arithmetic checks four complete epochs of Theorem 4.1 (240 checks), the schedule matrix and its characteristic polynomial $\lambda(\lambda^2-4\lambda-1)$, the participant-family and singularity witnesses, and the anchored identity.
 - **Numerical findings.** The bounded actual error and the divergence thresholds are numerical evidence only.
 - **Replay.** All eleven scripts were rerun from fresh copies with and without Python `-O`; every JSON and CSV output reproduced byte for byte. Checks are explicit tests, not `assert`, and a deliberately corrupted determinant is rejected under `-O`. GitHub CI reruns the exact checks and certificates on Linux.
-- **Limits.** Entry is certified only at eight values of $a^2$; nothing is proved for $a^2\in(1.38,2+\sqrt5)$. Uniqueness for stable dynamics and the case $a=1$ remain open. The counterexample uses pair-sum measurements, not differences. No failure of the `ikf_lib` software is claimed. The literature search was bounded (1–4 November 2026) and the full text of Luft et al. (2018) was not available. Review was internal and AI-assisted only.
+- **Limits.** Entry is certified only at eight values of $a^2$; nothing is proved for $a^2\in(1.38,2+\sqrt5)$. Uniqueness for stable dynamics and the case $a=1$ remain open. The counterexample uses pair-sum measurements, not differences. No failure of the `ikf_lib` software is claimed. The literature search was bounded (1–4 November 2026). Review was internal and AI-assisted only.
 
 ## Who should care, and why
 
