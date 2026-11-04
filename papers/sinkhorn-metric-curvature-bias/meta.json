@@ -1,0 +1,265 @@
+{
+  "slug": "sinkhorn-metric-curvature-bias",
+  "title": "Extrinsic curvature bias in the small-regularisation limit of Sinkhorn metrics",
+  "shortTitle": "Sinkhorn metrics on curved data: the extrinsic curvature bias",
+  "oneLine": "On a curved surface sitting in space, with straight-line transport cost, the Sinkhorn metric converges to the Wasserstein metric as the regularisation ε shrinks, but at small ε it reads short by (ε/4) times a term measuring how the surface bends in space: on a circle of radius R every mode is multiplied by 1 − ε/(4R²), and a cheap positive correction removes the error.",
+  "abstract": "Entropic (Sinkhorn) optimal transport defines a local Riemannian metric on probability distributions, and as the regularisation ε tends to 0 it should recover Wasserstein geometry. For a smooth positive density on a compact connected submanifold of Euclidean space without boundary, with the fixed ambient cost |x−y|², this candidate proves that the Sinkhorn metric operator converges in operator norm on centred L² to the inverse weighted Laplacian, at rate O(ε^{1/2}) in L² operator norm and O(ε) from H² to L². For a smooth tangent hμ with Aφ = h and A = −ρ⁻¹div(ρ∇), the metric satisfies g_ε(hμ,hμ) = ∫|∇φ|²dμ − (ε/4)∫Σ_α|S_α∇φ|²dμ + O(ε²), where S_α are the shape operators of the embedding. The first bias is therefore nonpositive and depends on the embedding, not only on the intrinsic geometry: the transport cost uses the chord, which is shorter than the arc. On a circle of radius R each eigenvalue is multiplied by 1 − ε/(4R²) to first order, and this order is sharp. A positive correction built from the entropic inverse removes the term; the expansions hold along smooth finite-dimensional density families; round spheres are computed exactly with an explicit ε² coefficient; a high-frequency family on the circle shows that no operator-norm rate better than O(ε) is possible; and isometric embeddings, such as a round circle and an ellipse of equal length, give different biases. The formal limit is due to Lavenant, Luckhardt, Mordant, Schmitzer and Tamanini; operator-level curvature expansions of Gaussian kernels are credited to Smolyanov, von Weizsäcker and Wittich, Liou and Lu, and Guo, whose full text could not be read. Population densities on closed manifolds only. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Sinkhorn divergence",
+    "entropic optimal transport",
+    "Riemannian metric",
+    "Wasserstein geometry",
+    "shape operator",
+    "extrinsic curvature",
+    "embedded manifolds",
+    "small-regularisation limit"
+  ],
+  "repoUrl": "https://github.com/ipitchford/sinkhorn-metric-curvature-bias",
+  "releaseUrl": "https://github.com/ipitchford/sinkhorn-metric-curvature-bias/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/sinkhorn-metric-curvature-bias/releases/download/v0.1.0-candidate/sinkhorn-metric-curvature-bias-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23940148",
+  "conceptDoi": "10.5281/zenodo.23940147",
+  "zenodoUrl": "https://zenodo.org/records/23940148",
+  "citeText": "Anonymous (2026). Extrinsic curvature bias in the small-regularisation limit of Sinkhorn metrics. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23940148",
+  "evidence": "Every theorem has a written proof: Theorems 2.1, 2.3 and 2.4, Corollary 2.2, Lemmas 3.1, 4.1, 5.1, 6.1, 7.1 and 8.1, and Propositions 5.2, 6.2, 9.1, 9.2 and 10.1. Seven scripts give checks: a symbolic check of the sphere coefficients, 60-digit sphere eigenvalues for S¹ to S⁴, a Funk–Hecke check, the flat torus in R⁴, a torus of revolution at nonconstant density, an equal-length ellipse against the circle, circle operator-norm evidence, a nonuniform ellipse at 768 and 1536 nodes, and independent circle and ellipse implementations. All seven were replayed with and without Python -O from fresh copies; outputs matched the shipped results to floating-point roundoff; a corrupted circle coefficient is rejected under -O; GitHub CI reruns all seven on Linux. The numerical checks are not certificates or proofs.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate in optimal transport and geometric analysis with written proofs; numerical checks are floating-point checks only. Internal AI-assisted review in five roles, a separate-model adversarial review, a clean replay, one revision round with extensions, a re-review, a proof audit and a separate-model audit of the new proofs. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 4 November 2026 with DOI insertion, 23 pages), its check scripts, and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Limit and bias (Theorem 2.1): the Sinkhorn metric operator converges in operator norm to the inverse weighted Laplacian, and g_ε(hμ,hμ) = ∫|∇φ|²dμ − (ε/4)∫⟨Q∇φ,∇φ⟩dμ + O(ε²) with Q = Σ_α S_α², the squared shape operators: a nonpositive first bias that depends on the embedding.",
+    "Rates (Theorem 2.4): ‖B_ε − A⁻¹‖ = O(ε^{1/2}) in L² operator norm and O(ε) from H² to L²; on the circle no L² operator-norm rate better than O(ε) is possible (Proposition 9.2); whether O(ε) holds in general is open.",
+    "Correction and families (Corollary 2.2, Theorem 2.3): a positive corrected metric built from the entropic inverse is accurate to O(ε²) on fixed smooth directions, and all expansions hold along smooth finite-dimensional density families.",
+    "Exact cases (Section 9.1, Proposition 9.1): on a circle of radius R each eigenvalue R²/k² becomes (R²/k²)(1 − ε/(4R²)) to first order, so on the unit circle 1/k² becomes (1/k²)(1 − ε/4), and this order is sharp; on round spheres S^m the metric is computed exactly with an explicit ε² coefficient.",
+    "Embedding dependence (Proposition 10.1): isometric embeddings give different first-order biases; a round circle and an ellipse of the same length 2π give coefficients −0.125 and −0.043 for φ = cos s, and no closed embedded manifold has Q ≡ 0."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research, proof writing and numerical checks",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and audit of new proofs by a separate model (OpenAI Codex); clean replay; re-review and proof audit",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "How curved surfaces bias a popular way of measuring distance between distributions. An Evidence Press briefing. Optimal transport compares two probability distributions by the cheapest way of moving one onto the other. Adding a small amount of entropy, a smoothing of strength epsilon, makes this much faster to compute; the result is called Sinkhorn's method. It also gives a local ruler: a way of saying how far apart two nearby distributions are. As epsilon shrinks to zero, that ruler should turn into the classical Wasserstein geometry. This candidate paper proves that it does, for smooth data spread over a closed curved surface sitting in ordinary space, with cost measured along straight lines. It also finds the first error. At small epsilon the ruler reads slightly too short, by epsilon over four times a term that measures how sharply the surface bends in space. The reason is simple: the straight chord between two points is shorter than the arc along the surface. On a circle of radius one, every reading shrinks by the factor one minus epsilon over four. The bias depends on how the surface sits in space, not only on its shape: a round circle and an ellipse of the same length give different biases. A cheap positive correction removes the error. The paper also proves rates of convergence, solves round spheres exactly to second order, and shows that no uniform rate better than epsilon is possible. Related expansions of the underlying operators are credited to earlier work. The results cover continuous densities on closed surfaces with known curvature; there is no sampling theory, and the sharpest rate remains open. This is an unrefereed candidate with internal AI-assisted review only. Released on the fourth of November 2026; the paper, code and data are linked from the release page. This briefing uses an AI-generated voice and is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All seven scripts were rerun with Python -I -B, with and without -O, from fresh copies of the approved package; the symbolic, sphere/torus and torus-of-revolution outputs reproduced byte for byte and every other number agreed to roundoff (relative 1.4e-8 or better; residual-level fields near 1e-14 differ at roundoff). The frozen archive was bound to that replay, the symbolic and sphere checks were rerun from it under -O, and a corrupted circle coefficient was rejected; GitHub CI reruns all seven on Linux. These are floating-point checks, not proofs."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established; the package's independent circle and ellipse scripts are internal."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the theorems rest on written proofs."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Scripts pin NumPy 2.3.5, SciPy 1.17.0, Matplotlib 3.10.8, mpmath 1.3.0 and SymPy 1.14.0 (requirements.txt); not a locked container; outputs reproduce to roundoff across Python and BLAS builds."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Lavenant, Luckhardt, Mordant, Schmitzer and Tamanini (2025). The Riemannian geometry of Sinkhorn divergences. Annales de l'Institut Henri Poincaré C, Analyse non linéaire. Introduces the Sinkhorn metric and its formal small-regularisation limit, made rigorous here for embedded manifolds.",
+      "url": "https://doi.org/10.4171/aihpc/165"
+    },
+    {
+      "citation": "Mordant and Xu (2026). Convergence of the Sinkhorn Riemannian metric for finitely supported measures. arXiv:2609.14651. The limit for finite supports; this paper treats continuous densities.",
+      "url": "https://arxiv.org/abs/2609.14651",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Navas (2026). The information geometry of the Sinkhorn divergence on a Hilbert manifold. arXiv:2610.39850. Poses the continuous-density limit as an open direction.",
+      "url": "https://arxiv.org/abs/2610.39850",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Lavenant, Luckhardt and Schmitzer (2026). Approximation and computation of the geodesic Sinkhorn distance. arXiv:2610.02007. Computation of Sinkhorn geodesics.",
+      "url": "https://arxiv.org/abs/2610.02007",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Schubr (2026). Leading bias and positive correction of heat-kernel Sinkhorn metrics (Edition 2). Luminary Research Archive. The closest analogue, for an intrinsic heat-kernel cost.",
+      "url": "https://research.luminaryoddities.com/leading-bias-positive-correction-heat-kernel-sinkhorn-metrics/v/2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an author-posted web preprint without a DOI; linked to its page."
+    },
+    {
+      "citation": "Schubr (2026). Sharp convergence of heat-kernel Sinkhorn metrics (Edition 2). Luminary Research Archive. An operator-norm rate for the heat-kernel cost.",
+      "url": "https://research.luminaryoddities.com/sharp-convergence-of-heat-kernel-sinkhorn-metrics/v/2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an author-posted web preprint without a DOI; linked to its page."
+    },
+    {
+      "citation": "Guo (2026). Intrinsic and Extrinsic Bias of Diffusion Operators: Asymptotic Expansion and Kernel-Dependent Comparison. SSRN. Operator-level intrinsic and extrinsic bias expansions; only the abstract could be read.",
+      "url": "https://doi.org/10.2139/ssrn.7411565"
+    },
+    {
+      "citation": "Jia-Ming Liou and Chih-Chung Lu (2025). Asymptotic expansion of the Gaussian integral operators on Riemannian submanifolds of R^n. arXiv:2506.13238. General Gaussian expansions on submanifolds, credited.",
+      "url": "https://arxiv.org/abs/2506.13238",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Smolyanov, von Weizsäcker and Wittich (2004). Chernoff's Theorem and Discrete Time Approximations of Brownian Motion on Manifolds. arXiv:math/0409155. Early second-fundamental-form terms in Gaussian kernel expansions, credited.",
+      "url": "https://arxiv.org/abs/math/0409155",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Coifman and Lafon (2006). Diffusion maps. Applied and Computational Harmonic Analysis. The classical kernel-to-Laplacian limit on manifolds.",
+      "url": "https://doi.org/10.1016/j.acha.2006.04.006"
+    },
+    {
+      "citation": "Singer (2006). From graph to manifold Laplacian: The convergence rate. Applied and Computational Harmonic Analysis. Convergence rates for graph Laplacians.",
+      "url": "https://doi.org/10.1016/j.acha.2006.03.004"
+    },
+    {
+      "citation": "Hein, Audibert and von Luxburg (2005). From Graphs to Manifolds – Weak and Strong Pointwise Consistency of Graph Laplacians. Learning Theory (COLT 2005). Pointwise consistency of graph Laplacians on submanifolds.",
+      "url": "https://doi.org/10.1007/11503415_32"
+    },
+    {
+      "citation": "Hein, Audibert and von Luxburg (2006). Graph Laplacians and their convergence on random neighborhood graphs. arXiv:math/0608522. Extrinsic effects in graph-Laplacian limits.",
+      "url": "https://arxiv.org/abs/math/0608522",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Marshall and Coifman (2019). Manifold learning with bi-stochastic kernels. IMA Journal of Applied Mathematics. Bistochastic (Sinkhorn-normalised) kernels on manifolds.",
+      "url": "https://doi.org/10.1093/imamat/hxy065"
+    },
+    {
+      "citation": "Wormell and Reich (2021). Spectral Convergence of Diffusion Maps: Improved Error Bounds and an Alternative Normalization. SIAM Journal on Numerical Analysis. Bistochastic normalisation and spectral rates.",
+      "url": "https://doi.org/10.1137/20m1344093"
+    },
+    {
+      "citation": "Cheng and Landa (2024). Bi-stochastically normalized graph Laplacian: convergence to manifold Laplacian and robustness to outlier noise. Information and Inference. Bistochastic graph Laplacians.",
+      "url": "https://doi.org/10.1093/imaiai/iaae026"
+    },
+    {
+      "citation": "Kessler, Magnet and Feydy (2025). Sinkhorn normalization of diffusion kernels. arXiv:2507.06161. Sinkhorn-normalised diffusion kernels in practice.",
+      "url": "https://arxiv.org/abs/2507.06161",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv record without a DOI; linked to its arXiv page."
+    },
+    {
+      "citation": "Sule, Evans and Cameron (2025). Sharp error estimates for target measure diffusion maps with applications to the committor problem. Applied and Computational Harmonic Analysis. Second-order error estimates for target-measure diffusion maps.",
+      "url": "https://doi.org/10.1016/j.acha.2025.101803"
+    },
+    {
+      "citation": "Li and Yau (1986). On the parabolic kernel of the Schrödinger operator. Acta Mathematica. Heat-kernel bounds used in the proofs.",
+      "url": "https://doi.org/10.1007/bf02399203"
+    },
+    {
+      "citation": "Atkinson and Han (2012). Spherical Harmonics and Approximations on the Unit Sphere: An Introduction. Springer. Funk–Hecke formula used for the exact sphere computation.",
+      "url": "https://doi.org/10.1007/978-3-642-25983-8"
+    },
+    {
+      "citation": "Anonymous (2026). Curvature, relative entropy, and global Sinkhorn convergence. Evidence Press candidate (Zenodo). A different question: how fast the Sinkhorn algorithm converges.",
+      "url": "https://doi.org/10.5281/zenodo.23929617"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:sinkhorn-metric-curvature-bias",
+    "attemptIds": [
+      "ep-attempt:sinkhorn-metric-curvature-bias-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "The small-regularisation limit of the Sinkhorn metric on embedded manifolds with fixed ambient cost: convergence, rates, the extrinsic first-order bias and its correction.",
+      "scope": "Compact connected embedded manifolds without boundary, smooth strictly positive densities, fixed cost |x-y|^2; population densities only."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The paper opens with a plain-English account, states what is credited to prior operator expansions and what is claimed (inverse-metric consequences), separates proofs from numerical checks and lists limits in Section 10.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification; Guo's full text could not be read.",
+        "Numerical checks are floating-point checks; no proof is machine-verified."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have an optimal-transport or geometric-analysis specialist check the singular-inverse argument (Lemma 4.1, Lemma 6.1, Proposition 6.2) and Lemma 7.1, and obtain Guo's full text to settle whether the operator-level coefficient appears there.",
+      "claimCeiling": "Written proofs of the limit, the extrinsic first-order bias, the rates, the correction, the family expansions, the sphere computation, the high-frequency obstruction and embedding dependence; numerical checks only. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "sinkhorn-metric-curvature-bias-no-impact",
+        "aim": "science",
+        "outcome": "An openly checkable account of the extrinsic curvature bias of Sinkhorn metrics at small regularisation.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
