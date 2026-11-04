@@ -11,6 +11,10 @@ The thesis was examined early in 2002 by Professor Patrick Bateson FRS of the Un
 
 Each record gives the document's SHA-256 checksum, so a downloaded copy can be checked against the archived file.
 
+## Related paper
+
+[The Origins of Violence: Is Psychopathy an Adaptation?](/origins-of-violence/), published in *The Human Nature Review* in 2001, sets out the thesis's argument about psychopathy.
+
 ## Rights
 
 The thesis is copyright Ian Pitchford, all rights reserved, and is hosted with his permission. The examiner's report is copyright the estate of Sir Patrick Bateson, all rights reserved, and is reproduced by its permission. The site's CC0 dedication and MIT software licence do not apply to either document; see [LICENSING.md](https://github.com/ipitchford/evidence-press-site/blob/main/LICENSING.md).

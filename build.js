@@ -2420,7 +2420,7 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     ...(opts.identifier ? { identifier: opts.identifier } : {}),
     ...(associatedMedia.length ? { associatedMedia } : {}),
     inLanguage: CONFIG.language,
-    license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+    ...(opts.allRightsReserved ? {} : { license: 'https://creativecommons.org/publicdomain/zero/1.0/' }),
     isPartOf: opts.article ? { '@id': `${BASE}/articles/#collection` } : { '@id': `${BASE}/#website` },
     ...(opts.article ? {
       headline: opts.article.title,
@@ -2484,7 +2484,7 @@ function simplePage(rel, title, description, mdFile, type, opts = {}) {
     ...(opts.video ? [`<link rel="item" type="text/html" href="${escAttr(opts.video.url)}" title="Video overview">`] : []),
     ...(opts.citeAs ? [`<link rel="cite-as" href="${escAttr(opts.citeAs)}">`] : []),
     ...(opts.article ? [`<link rel="describedby" type="application/json" href="${url}article.json">`] : []),
-    `<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">`
+    ...(opts.allRightsReserved ? [] : [`<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">`])
   ].join('\n') + '\n';
   const audioHtml = opts.audio ? `<section class="standalone-audio" aria-labelledby="standalone-audio-title">
     <div class="standalone-audio-copy">
@@ -2582,7 +2582,7 @@ ${foot}`;
   const videoMarkdown = opts.video
     ? `## Video overview\n\n- YouTube: ${opts.video.url}\n- Embedded player: ${url}#media\n\n`
     : '';
-  write(rel + 'index.md', `---\ntitle: "${title.replace(/"/g, '\\"')}"\nurl: ${url}\nrepository: ${opts.repository || ''}\nrelease: ${opts.release || ''}\ndoi: ${opts.doi || ''}\nlicense: CC0-1.0\nstatus: ${opts.status || ''}\n---\n\n# ${title}\n\n${
+  write(rel + 'index.md', `---\ntitle: "${title.replace(/"/g, '\\"')}"\nurl: ${url}\nrepository: ${opts.repository || ''}\nrelease: ${opts.release || ''}\ndoi: ${opts.doi || ''}\nlicense: ${opts.allRightsReserved ? 'all rights reserved' : 'CC0-1.0'}\nstatus: ${opts.status || ''}\n---\n\n# ${title}\n\n${
     opts.standfirst ? opts.standfirst + '\n\n' : ''}${audioMarkdown}${videoMarkdown}${resourceMarkdown}${companion.md}${bodySource}`);
   if (opts.machineRecord) write(rel + 'index.json', JSON.stringify(opts.machineRecord, null, 2) + '\n');
 }
@@ -2658,6 +2658,17 @@ ${articleItems}
 /* A direct-link reading copy, deliberately absent from catalogue/discovery
    lists. Keep the downloadable research package byte-identical to its source;
    only the hosted page gets absolute download links and the site's CSP. */
+function interpsychShareMeta() {
+  const title = 'InterPsych: a recovered history';
+  const description = 'The history of InterPsych, founded in 1994 as one of the first international online networks for mental health professionals.';
+  const image = `${BASE}/assets/og/interpsych.png`;
+  return `<meta name="description" content="${escAttr(description)}">` + [
+    ['og:type', 'article'], ['og:site_name', CONFIG.siteName], ['og:title', title], ['og:description', description],
+    ['og:url', `${BASE}/interpsych/`], ['og:image', image], ['og:image:width', '1200'], ['og:image:height', '630']
+  ].map(([name, value]) => `<meta property="${name}" content="${escAttr(value)}">`).join('') +
+    `<meta name="twitter:card" content="summary_large_image">`;
+}
+
 function interpsychPage() {
   const original = fs.readFileSync(path.join(ROOT, 'assets/interpsych/interpsych-history.html'), 'utf8');
   const scripts = [...original.matchAll(/<script>([\s\S]*?)<\/script>/g)];
@@ -2665,7 +2676,7 @@ function interpsychPage() {
   write('interpsych/app.js', scripts[0][1]);
   const hosted = original
     .replace(scripts[0][0], '<script src="/interpsych/app.js"></script>')
-    .replace('</head>', `<meta name="robots" content="noindex, nofollow, noarchive"><link rel="canonical" href="${BASE}/interpsych/"><meta http-equiv="Content-Security-Policy" content="${PAGE_CSP}"></head>`)
+    .replace('</head>', `<meta name="robots" content="noindex, nofollow, noarchive"><link rel="canonical" href="${BASE}/interpsych/"><meta http-equiv="Content-Security-Policy" content="${PAGE_CSP}">${interpsychShareMeta()}</head>`)
     .replace(/href="(?!https?:|#|data:|mailto:|\/)([^"]+)"/g, 'href="/assets/interpsych/$1"')
     .replace('This reading copy works offline.', 'The <a href="/assets/interpsych/interpsych-research-package.zip" download>research package</a> includes an offline reading copy.');
   write('interpsych/index.html', hosted);
@@ -2675,7 +2686,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/why-minds-break/`, lastmod: '2026-11-02' }, ...Array.from({ length: 10 }, (_, i) => ({ loc: `${BASE}/why-minds-break/chapter-${i + 1}/`, lastmod: '2026-11-02' })), { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-10-28' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-11-04' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/why-minds-break/`, lastmod: '2026-11-02' }, ...Array.from({ length: 10 }, (_, i) => ({ loc: `${BASE}/why-minds-break/chapter-${i + 1}/`, lastmod: '2026-11-02' })), { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-11-04' }, { loc: `${BASE}/origins-of-violence/`, lastmod: '2026-11-04' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-11-04' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
   ];
@@ -3724,7 +3735,8 @@ simplePage('observatory/assurance/', 'The Case for Assurance Infrastructure', 'W
 simplePage('ai/', 'For AI agents and automated research tools', 'Machine-readable endpoints, metadata conventions, and follow-up problem lists for research agents.', 'ai.md', 'WebPage');
 simplePage('privacy/', 'Privacy policy', `How ${CONFIG.siteName} handles data: no accounts, cookies or analytics on this site, and the private YouTube channel tool that uses YouTube API Services.`, 'privacy.md', 'WebPage');
 simplePage('terms/', 'Terms of service', `Licences, status and limits of the material published by ${CONFIG.siteName}, including its YouTube channel.`, 'terms.md', 'WebPage');
-simplePage('thesis/', 'Evolutionary Developmental Psychopathology: the 2001 thesis', 'Ian Pitchford\'s 2001 University of Sheffield doctoral thesis and Patrick Bateson\'s examiner\'s report, as archival PDFs.', 'thesis.md', 'WebPage');
+simplePage('thesis/', 'Evolutionary Developmental Psychopathology: the 2001 thesis', 'Ian Pitchford\'s 2001 University of Sheffield doctoral thesis and Patrick Bateson\'s examiner\'s report, as archival PDFs.', 'thesis.md', 'WebPage', { allRightsReserved: true });
+simplePage('origins-of-violence/', 'The Origins of Violence: Is Psychopathy an Adaptation?', 'Ian Pitchford\'s 2001 paper on psychopathy and frequency-dependent selection, first published in The Human Nature Review, in a corrected edition with the original PDF.', 'origins-of-violence.md', 'ScholarlyArticle', { allRightsReserved: true, og: '/assets/og/origins-of-violence.png' });
 shopPage();
 applicationsPage();
 thinkAgainPage();
