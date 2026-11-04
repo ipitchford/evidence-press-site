@@ -991,6 +991,10 @@
   "sinkhorn-metric-curvature-bias": {
    "classification": "Potential application",
    "application": "People who compute Sinkhorn distances or metrics on data lying on curved surfaces, for example in manifold learning, shape analysis or geodesic Sinkhorn on meshes, get the size of the curvature bias at small regularisation: about epsilon/(4R^2) relative, for the smallest curvature radius R, so it matters unless epsilon is much smaller than 4R^2. The paper also gives a cheap correction that removes it. The main limits are that the results cover continuous densities on closed surfaces with known curvature and give no sampling theory. This remains an unrefereed candidate."
+  },
+  "rotating-gaussian-variance-ordering": {
+   "classification": "Research use",
+   "application": "People designing kinetic Langevin and molecular-dynamics samplers learn the exact friction above which adding a target-preserving rotation can never make any position average less accurate, and that below it a large enough rotation still helps every average. The matrix form gives the same safety test for unequal stiffness and friction. The main limits are exact Gaussian targets in continuous time with matched rotations, with no statement about step-size discretisation, computational cost or the best friction to use. This remains an unrefereed candidate."
   }
  }
 }

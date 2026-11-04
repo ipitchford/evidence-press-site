@@ -1,0 +1,211 @@
+{
+  "slug": "rotating-gaussian-variance-ordering",
+  "title": "Sharp variance ordering for rotating Gaussian samplers",
+  "shortTitle": "Rotation helps every observable exactly when friction is at least √2",
+  "oneLine": "Rotation helps every observable exactly when friction is at least √2 — and what happens below it: for kinetic Langevin samplers of a Gaussian target, a target-preserving rotation never increases the long-run variance of any square-integrable position average if and only if the friction is at least √2.",
+  "abstract": "A Markov chain sampler estimates an average from one long trajectory, and its accuracy is the long-run (asymptotic) variance of that time average. Adding a deterministic rotation that preserves the target (a nonreversible perturbation) is known to help every observable for overdamped Langevin samplers. For kinetic, or underdamped, Langevin samplers, which carry a momentum and a friction γ, Duncan, Nüsken and Pavliotis (2017) proved a local improvement for linear and quadratic observables of a Gaussian target when γ > √2 and conjectured it for every square-integrable observable. This candidate proves a global form of that conjecture: with matched position and momentum rotations, every square-integrable position observable has a long-run variance that never increases with rotation strength if and only if γ ≥ √2, the endpoint included. The mechanism is that the oscillator power spectrum is single-peaked exactly when there is no resonance, rotation shifts the spectrum, and convolution keeps single peaks single. The literal second-derivative form holds exactly on an explicit class containing all polynomials, while rough observables have sharper cusps. Below the threshold, even observables still improve at every rotation, only finitely many odd Hermite degrees can be hurt, and one finite rotation strength improves every observable. The paper also gives sharp large-rotation rates, a matrix criterion Γ³ − ΓK − KΓ ⪰ 0 for noncommuting stiffness and friction with least safe friction (2K)^{1/2}, a two-replica construction for arbitrary Gaussian targets, and shows that fixed horizons and regular sampling can reverse the ordering while Poisson sampling preserves it. Everything concerns exact stationary Gaussian dynamics; nothing is claimed about discretised integrators, cost or an optimal friction. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "kinetic Langevin dynamics",
+    "underdamped Langevin",
+    "nonreversible sampling",
+    "asymptotic variance",
+    "Markov chain Monte Carlo",
+    "Gaussian chaos",
+    "symmetric unimodality",
+    "friction threshold"
+  ],
+  "repoUrl": "https://github.com/ipitchford/rotating-gaussian-variance-ordering",
+  "releaseUrl": "https://github.com/ipitchford/rotating-gaussian-variance-ordering/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/rotating-gaussian-variance-ordering/releases/download/v0.1.0-candidate/rotating-gaussian-variance-ordering-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23941497",
+  "conceptDoi": "10.5281/zenodo.23941496",
+  "zenodoUrl": "https://zenodo.org/records/23941497",
+  "citeText": "Anonymous (2026). Sharp variance ordering for rotating Gaussian samplers. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23941497",
+  "evidence": "The theorems have written proofs. Three deterministic scripts check them against independent calculations: exact rational spectral fingerprints, covariance and variance formulas against matrix exponentials, Poisson-equation and Lyapunov solves, the finite-horizon rational certificate, observation-rule identities, high-degree limits, a noncommuting matrix example, the insufficiency of Γ² ⪰ 2K and the least-friction identity; a third computes the Table 1 crossing points from an exact formula cross-checked by quadrature (computed, not proved). All three were replayed with and without Python -O from fresh copies; a corrupted least-friction formula is rejected under -O; GitHub CI reruns them on Linux.",
+  "statusDetail": "Unrefereed AI-assisted probability and sampling candidate with written proofs. Internal AI-assisted review in five roles, a separate-model adversarial review, one revision round adding the below-threshold theorem, a re-review and a separate-model audit of the revision. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (version 1.2 of 4 November 2026 with DOI insertion, 29 pages), its three verification scripts and reports, the rating-free review record and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Sharp ordering (Theorem 1): for J ≠ 0, V_f(μ) is nonincreasing in |μ| for every real f ∈ L²(π) if and only if γ ≥ √2, the endpoint included; the decrease is strict unless f is rotation-invariant. This is a global form of the Duncan–Nüsken–Pavliotis conjecture.",
+    "Spectral criterion (Theorem 2): for any rotated stationary Gaussian process with integrable covariance, universal ordering holds iff the spectral density is nonincreasing on [0, ∞); for the kinetic oscillator S_γ(ξ) = 2γ/(ξ⁴ + (γ² − 2)ξ² + 1), single-peaked exactly when γ ≥ √2.",
+    "Below the threshold (Theorem 4A): for every γ > 0, even observables improve at every μ ≠ 0, only finitely many odd Hermite degrees can be hurt, and one finite amplitude improves every non-invariant observable; computed crossing points (Table 1) show only linear parts can be hurt for γ ≥ 1, and odd degrees up to 41 at γ = 0.1.",
+    "Regularity and rates (Theorem 5, Proposition 6, Theorem 8, Section 7): every variance curve is C¹, and C² iff Σ a_{n,ω} ω² n^{−3/2} < ∞ (a class containing all polynomials); polynomials converge at rate μ^{−4}, the worst case uniformly like √(2π/e)/(|μ|ω*), and more slowly or without any algebraic rate for incommensurate rotation speeds.",
+    "Matrix criterion (Theorem 10, Corollaries 11–12): for noncommuting stiffness K and friction Γ the ordering holds iff Γ³ − ΓK − KΓ ⪰ 0 (necessary for invertible J); the least admissible friction is (2K)^{1/2}, a safety boundary rather than an optimal friction; Γ² ⪰ 2K alone is not enough; two coupled replicas make the criterion apply to any Gaussian target.",
+    "Scope boundaries (Section 9): momentum observables, fixed finite horizons and regular sampling (aliasing) can reverse the ordering, while independent Poisson sampling preserves it. Results concern exact stationary Gaussian dynamics, not discretised integrators or computational cost."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted probability research and proof writing",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and audit of the revision by a separate model (OpenAI Codex); clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When does spinning a sampler make it more accurate? An Evidence Press briefing. Many simulations estimate an average by following one long random trajectory. Its accuracy depends on how strongly successive steps are correlated. A known trick is to add a gentle rotation that leaves the target distribution unchanged. For the simplest samplers, this is known to help every quantity being averaged. For kinetic samplers, which give the particle momentum and friction, the picture is different: in 2017 Duncan, Nüsken and Pavliotis showed that rotation can help, or hurt, depending on the friction, and conjectured that above a friction of root two it helps everything. This paper proves a global form of that conjecture for Gaussian targets. Rotation never increases the long-run variance of any square-integrable quantity, at any rotation strength, exactly when the friction is at least root two. The reason is simple to picture. The sampler behaves like a damped spring, and rotation shifts its frequency spectrum. If that spectrum has a single peak at zero, any shift lowers it, and combining spectra keeps a single peak single. Below root two the spring resonates, the spectrum has a hump, and a small rotation can land on it. Even then, the paper shows that symmetric quantities always improve, and that a large enough rotation improves everything. It also gives an exact matrix version, and shows that sampling at regular intervals can reverse the benefit. The limits matter: the results are exact for Gaussian targets in continuous time, and they say nothing about computational cost or step-size errors, and the threshold is a safety boundary, not a recommended friction. This is an anonymous, AI-assisted, unrefereed candidate. Published on the fourth of November twenty twenty-six, its paper and code are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify.py (with --symbolic), verify_matrix_extension.py and verify_below_threshold.py were rerun with Python -I -B, with and without -O, from fresh copies of the approved package (about three minutes each pass); reports reproduced with identical exact fields and floats equal to round-off, and the figure PNG byte for byte. The frozen archive was bound to that replay, two scripts reran from it under -O, and a corrupted least-friction formula was rejected; GitHub CI reruns all three. These checks are supplementary to the written proofs."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Deterministic formulas and quadrature with NumPy, SciPy, Matplotlib and optional SymPy; the reports record their environment; versions are not pinned and there is no locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Duncan, Nüsken and Pavliotis (2017), Using Perturbed Underdamped Langevin Dynamics to Efficiently Sample from Probability Distributions. Journal of Statistical Physics 169. The originating paper: local improvement for linear and quadratic observables of a Gaussian target when γ > √2, the all-observable conjecture proved here in a global form, and small-friction numerics.",
+      "url": "https://doi.org/10.1007/s10955-017-1906-8"
+    },
+    {
+      "citation": "Nüsken (2018), Topics in sampling schemes based on Markov processes. Doctoral thesis, Imperial College London. Restates the conjecture (p. 62).",
+      "url": "https://doi.org/10.25560/63868"
+    },
+    {
+      "citation": "Hwang, Normand and Wu (2015), Variance reduction for diffusions. Stochastic Processes and their Applications 125. For overdamped samplers, nonreversible perturbations never increase the asymptotic variance.",
+      "url": "https://doi.org/10.1016/j.spa.2015.03.006"
+    },
+    {
+      "citation": "Rey-Bellet and Spiliopoulos (2015), Irreversible Langevin samplers and variance reduction: a large deviations approach. Nonlinearity 28. Overdamped variance reduction, monotone in the perturbation strength.",
+      "url": "https://doi.org/10.1088/0951-7715/28/7/2081"
+    },
+    {
+      "citation": "Duncan, Lelièvre and Pavliotis (2016), Variance Reduction Using Nonreversible Langevin Samplers. Journal of Statistical Physics 163. Nonreversible overdamped samplers and their asymptotic variance.",
+      "url": "https://doi.org/10.1007/s10955-016-1491-2"
+    },
+    {
+      "citation": "Chak, Kantas, Lelièvre and Pavliotis (2023), Optimal friction matrix for underdamped Langevin sampling. ESAIM: Mathematical Modelling and Numerical Analysis 57. Optimises friction for a given observable, a different question from the safety threshold here.",
+      "url": "https://doi.org/10.1051/m2an/2023083"
+    },
+    {
+      "citation": "Lelièvre, Nier and Pavliotis (2013), Optimal Non-reversible Linear Drift for the Convergence to Equilibrium of a Diffusion. Journal of Statistical Physics 152. Optimises the rate of convergence rather than variance ordering.",
+      "url": "https://doi.org/10.1007/s10955-013-0769-x"
+    },
+    {
+      "citation": "Breuer and Major (1983), Central limit theorems for non-linear functionals of Gaussian fields. Journal of Multivariate Analysis 13. Hermite covariance and spectral-convolution identities used here, credited.",
+      "url": "https://doi.org/10.1016/0047-259x(83)90019-2"
+    },
+    {
+      "citation": "Maini (2026), Spectral delocalization and central limit theorems for Fourier functionals of stationary Gaussian fields. arXiv:2610.37113. States the same convolution-power variance formula at a fixed frequency; credited, it does not treat monotonicity or samplers.",
+      "url": "https://doi.org/10.48550/arXiv.2610.37113"
+    },
+    {
+      "citation": "Lefèvre and Utev (2013), Convolution property and exponential bounds for symmetric monotone densities. ESAIM: Probability and Statistics 17. Closure of symmetric unimodality under convolution, credited.",
+      "url": "https://doi.org/10.1051/ps/2012012"
+    },
+    {
+      "citation": "Ohzeki and Ichiki (2015), Langevin dynamics neglecting detailed balance condition. Physical Review E 92. Replica duplication with nonreversible coupling, an established device used in Section 8.4.",
+      "url": "https://doi.org/10.1103/physreve.92.012105"
+    },
+    {
+      "citation": "Shapiro and Silverman (1960), Alias-Free Sampling of Random Noise. Journal of the Society for Industrial and Applied Mathematics 8. Classical alias-free Poisson sampling behind Section 9.4.",
+      "url": "https://doi.org/10.1137/0108013"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:rotating-gaussian-variance-ordering",
+    "attemptIds": [
+      "ep-attempt:rotating-gaussian-variance-ordering-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "decision-rule",
+      "description": "The friction above which adding a matched target-preserving rotation to a Gaussian kinetic Langevin sampler can never increase the long-run variance of any position average (γ ≥ √2; matrix form Γ³ − ΓK − KΓ ⪰ 0, least safe friction (2K)^{1/2}), and how far to rotate below it.",
+      "scope": "Exact stationary continuous-time Gaussian dynamics, matched rotations, position observables; discretised integrators, cost, non-Gaussian targets and an optimal friction are excluded."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the DNP question, a plain-language mechanism box, a results table and a roadmap; Section 1.4 separates credited classical ingredients from the claimed contributions; Section 4.1 states that the threshold is a safety boundary, not an optimum; Section 10 states scope and open problems.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "Proofs are written, not formalised; Table 1 values are computed, not proved."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a sampling or Gaussian-process specialist check the tensor-convolution step (Lemma 10A), the necessity argument of Theorem 10 and the finiteness argument in Theorem 4A part 2, and certify the Table 1 crossing points.",
+      "claimCeiling": "Universal variance ordering iff γ ≥ √2, the spectral criterion, the below-threshold comparison, exact regularity and rates, and the matrix criterion with least friction, by written proofs for exact stationary Gaussian dynamics with matched rotations. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "rotating-gaussian-variance-ordering-no-impact",
+        "aim": "science",
+        "outcome": "An openly checkable sharp friction threshold for rotation-based variance reduction in Gaussian kinetic Langevin sampling.",
+        "setting": "AI-assisted probability and sampling research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
