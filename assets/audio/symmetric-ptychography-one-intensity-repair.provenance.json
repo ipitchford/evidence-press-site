@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "When does a symmetric beam make an image ambiguous, and how can one extra measurement fix it? An Evidence Press briefing. Ptychography is a way of imaging tiny objects. A known beam of light or X-rays, called the probe, is scanned across the object, and at each position a detector records how strongly the light scatters in each direction. Only brightness is recorded, not the phase of the waves, so the image has to be worked out mathematically. A recent survey of open problems in the field asked what happens when the probe is symmetric, as a Gaussian beam is. Symmetry forces some parts of the data to vanish, so certain different objects give exactly the same measurements.",
+      "inputSha256": "7cb24441a72dc9d0f23f9a45fadac57b59176f5092445fa9660e5341dc87f317",
+      "audioSha256": "335ea0aa4d9a27ca639d683a5feadb3032f9a6b84a15bd402c920beb5b61a006",
+      "requestId": "req_d46c0d9795bf4072bb5a65b739ee7145",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "certain different objects give exactly the same measurements",
+        "heardEnding": "some parts of the data to vanish so certain different objects give exactly the same measurements",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This paper works in an idealised setting: a finite, wrap-around grid, every scan position recorded, and the probe known exactly. For real, mirror-symmetric probes, the lost data form a cross-shaped pattern. The paper proves that the only objects this confuses are twin pairs: an object concentrated on two opposite points, either in the image or in its frequency spectrum, and a mirror copy with the phases flipped. Nothing worse can happen. Then comes the repair. One extra coherent reading, in practice a single additional exposure with a structured beam, measured at one detector pixel, tells every twin pair apart, and does so even against blurred, mixed-state alternatives. A gently graded, tilted beam works for every even grid size.",
+      "inputSha256": "8c8cecbebd0af01cf43dadc04cc649e4ef6147d13913f6990e6a17aba6f91476",
+      "audioSha256": "5c5b44aeb06a76c9549ab148cd9d7f6ef6ab029cd04f54a4606ddac5da5c32bc",
+      "requestId": "req_5190fdfa2803400fa133ee7aa440c2b8",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "tilted beam works for every even grid size",
+        "heardEnding": "against blurred mixed state alternatives a gently graded tilted beam works for every even grid size",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "A simple defocus works for some sizes but fails whenever the grid size is divisible by four, which includes the common powers of two. For Gaussian beams, the paper pins down exactly, by certified computation, the first widths at which the pattern breaks, for grid sizes six to sixteen. There are important limits. An earlier public AI-assisted manuscript, VESPER QUORUM, already contains the classification for a related single-line pattern, and that is credited, not claimed. An earlier work it cites could not be found. The extra reading changes the experiment. The stability constants for Gaussian beams are only qualitative, and all tests use synthetic data. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced.",
+      "inputSha256": "007838211f3e5fd7313c3ed44a47f9ff1ad996e843f8da57baa1e85586cc1df3",
+      "audioSha256": "608b150836a15afe8d006cb38c85dc0fa2c1da54d11158338daa17c2b032c9e3",
+      "requestId": "req_125223c9f8b0498ab13f1929fa48e782",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "unrefereed candidate not peer reviewed or independently reproduced",
+        "heardEnding": "synthetic data this is an anonymous ai assisted unrefereed candidate not peer reviewed or independently reproduced",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Published on the fourth of November twenty twenty-six, its paper and code are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "7fe94e9d99eed354545e158811bffdb5668e7aafe4786f110efdf4e4e67d6cb0",
+      "audioSha256": "5ed4a9b8c37553314d931354b8cf60b62d5081db2a336076d4445539c7737fc7",
+      "requestId": "req_b6c3edf755754a218b52d029ebe9ec50",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "symmetric-ptychography-one-intensity-repair",
+  "generatedAt": "2026-11-04T06:21:08.755Z",
+  "sourceMetadata": "papers/symmetric-ptychography-one-intensity-repair/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "fb9d1c646ba3e0f603739cf659f17ebbf4b308c4d067c34b84fa496bd08c53c3",
+  "transcriptPath": "assets/audio/symmetric-ptychography-one-intensity-repair.txt",
+  "transcriptSha256": "ad5c357121d775d44e5ff5030d35b5834d32c6f180089424ed8601f1ef5d0592",
+  "audioPath": "assets/audio/symmetric-ptychography-one-intensity-repair.mp3",
+  "audioSha256": "d07e084869e0278577fdd4ee2972bccf4bb73b14d57dab165b7d3fc21da62573",
+  "audioBytes": 2496812,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
