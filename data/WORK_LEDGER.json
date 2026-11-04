@@ -55696,11 +55696,27 @@
       },
       "releaseSlug": "rotating-gaussian-variance-ordering",
       "stopReason": null,
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-11-04T12:30:00Z",
+          "field": "active release version, Maini and Franke citations and search statement",
+          "reason": "Version 0.1.0-candidate cited Maini (2026) and Franke et al. (2021) without a full comparison and described the prior-art search only as bounded.",
+          "replacement": "Version 0.2.0-candidate compares both sources after reading them in full (Franke et al. in the authors' version), credits Franke et al.'s overdamped monotonicity, and says what was searched and that no earlier statement of the main results was found. No theorem, proof, computation or recorded output changed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/rotating-gaussian-variance-ordering/",
+            "https://doi.org/10.5281/zenodo.23946160",
+            "https://github.com/ipitchford/rotating-gaussian-variance-ordering/releases/tag/v0.2.0-candidate"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-11-04",
           "summary": "Registered the archive publication and public-delivery stages prospectively; all prior scientific and review work remains left-censored."
+        },
+        {
+          "date": "2026-11-04",
+          "summary": "Prepared the v0.2.0-candidate citation correction for the active release page after full readings of Maini (2026) and Franke et al. (2021); preserved the v0.1.0-candidate record and the unrefereed, external-assurance and no-impact boundaries."
         }
       ],
       "metrics": {
@@ -57465,6 +57481,10 @@
     {
       "date": "2026-11-04",
       "summary": "Registered the archive publication and canonical-delivery stages for the Nordhaus-Gaddum Laplacian products candidate prospectively; prior scientific, review and revision work remains left-censored."
+    },
+    {
+      "date": "2026-11-04",
+      "summary": "Recorded the rotating-gaussian-variance-ordering v0.2.0-candidate citation correction, which compares Maini (2026) and Franke et al. (2021) in full without changing any result or assurance limit."
     }
   ]
 }
