@@ -1,0 +1,199 @@
+{
+  "slug": "cover-time-robustness-separation",
+  "title": "Cover-time robustness can stay positive while hitting-time robustness vanishes",
+  "shortTitle": "Random walks: robust to cover, fragile to hit",
+  "oneLine": "On a huge clique with a private leaf on every vertex and one extra path of length L, an adversary nudging transition probabilities can be tolerated up to a fixed ε ≈ 0.293 before cover time doubles, but only ε ≈ 0.628/L before hitting time doubles, refuting Zuckerman's conjecture that the two tolerances always agree up to a constant.",
+  "abstract": "A random walk explores a network by moving to a uniformly chosen neighbour at each step. The hitting time is the expected time to reach one given vertex in the worst case; the cover time is the expected time to visit every vertex. Zuckerman (Markov Chain Robustness, ITCS 2026) asked how much an adversary who may change each transition probability by a relative factor between 1−ε and 1+ε, with history-dependent choices, can slow these quantities down, and conjectured (Conjecture 1.17) that the largest tolerable ε for hitting time and for cover time always agree up to a constant factor. This candidate refutes that conjecture with sharp limiting tolerances. Take a complete graph on N = 2^(2^L) vertices, attach a private leaf to each vertex and attach one extra path of length L. For every fixed amplification budget C > 1, the hitting-time tolerance satisfies Lρ_hit → a_C, where (e^(2a_C)−1)/(2a_C) = C, because a small bias compounds along the path; the cover-time tolerance tends to min{1−C^(−1/2), 1/3} > 0, because collecting the leaves dominates and an adversary can inflate it only by (1−ε)^(−2). For C = 2 these are about 0.628/L and 0.293, and the ratio grows like log log |V|. The paper also proves a uniform cover-response formula, the exact critical multiplier 9/4 + 9/(8 log 2) ≈ 3.873 and tolerance expansions through order 1/L. The graphs have unbounded degree and are astronomically large: the theorem is asymptotic, and bounded-degree versions remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "random walks",
+    "Markov chain robustness",
+    "cover time",
+    "hitting time",
+    "adversarial perturbation",
+    "robust Markov decision processes",
+    "counterexample",
+    "Zuckerman conjecture"
+  ],
+  "repoUrl": "https://github.com/ipitchford/cover-time-robustness-separation",
+  "releaseUrl": "https://github.com/ipitchford/cover-time-robustness-separation/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/cover-time-robustness-separation/releases/download/v0.1.0-candidate/cover-time-robustness-separation-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23934558",
+  "conceptDoi": "10.5281/zenodo.23934557",
+  "zenodoUrl": "https://zenodo.org/records/23934558",
+  "citeText": "Anonymous (2026). Cover-time robustness can stay positive while hitting-time robustness vanishes: an explicit separation of two robustness notions for adversarial random walks. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23934558",
+  "evidence": "Theorems 1.1 and 1.2 have written analytic proofs: exact Bellman solutions for the hard endpoint and for leaf collection, a device deleting path excursions, and a martingale stopped at the successful endpoint trial; every upper bound allows arbitrary history-dependent adversaries. Supplementary checks: 63 exact rational Bellman and hitting-time checks and three small adaptive-cover solves (verify_markov.py), 60 endpoint-survival values at 80-128 digits in the critical window (verify_critical.py). All scripts were replayed with and without Python -O from fresh copies; a corrupted formula is rejected under -O; GitHub CI reruns them on Linux.",
+  "statusDetail": "Unrefereed AI-assisted probability candidate with written analytic proofs; finite checks are supplementary and do not establish the asymptotic claims. Internal AI-assisted review in five roles, a separate-model adversarial review, one revision round, a re-review and a separate-model verification audit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 4 November 2026 with DOI insertion, 22 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Hitting-time robustness vanishes (Theorem 1.1): on G_L, a clique on N = 2^(2^L) vertices with a private leaf on each vertex and one path of length L, L·ρ_hit(G_L;C) → a_C for every fixed budget C > 1, where (e^(2a_C)−1)/(2a_C) = C; for C = 2, a_2 ≈ 0.628.",
+    "Cover-time robustness stays positive (Theorem 1.1): ρ_cov(G_L;C) → min{1−C^(−1/2), 1/3} > 0; for C = 2 this is 1 − 1/√2 ≈ 0.293. Below ε = 1/3 the worst cover-time multiplier tends to (1−ε)^(−2); above it, to infinity.",
+    "Conjecture 1.17 fails (Theorem 1.1): ρ_cov/ρ_hit grows like a constant times L, that is Θ(log log |V|), for every fixed pair of hitting and cover budgets; this is consistent with Zuckerman's Theorem 1.15 because t_cov/(t_hit log|V|) → 0 here.",
+    "Uniform response and critical window (Theorem 1.2, Section 9): t⁺_cov/(N² log N) = a_ε + b e^(−a_ε/b) + O(1/log N) uniformly in ε, with exact critical multiplier 9/4 + 9/(8 log 2) ≈ 3.873 at ε = 1/3, and cover-tolerance expansions through order 1/L for every budget.",
+    "Scope: unbounded degree and astronomically large graphs; bounded-degree and regular versions, the converse comparison, the largest possible separation and the strong-adversary cover tolerance remain open."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted probability research and proof writing",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and verification audit by a separate model (OpenAI Codex); clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Can a random walk be robust for one job and fragile for another? An Evidence Press briefing. Picture a walker exploring a network, at each step moving to a randomly chosen neighbour. Two classic measures say how long exploration takes. The hitting time is how long it takes to reach one particular place. The cover time is how long it takes to visit everywhere. In a paper presented in 2026, David Zuckerman asked what happens when an adversary may nudge every step's probabilities up or down by a small relative amount, called epsilon, choosing with full knowledge of the past. How large can epsilon be before the walk slows down by more than a fixed factor? He conjectured that the answer is always about the same for hitting and for covering. This paper shows that it is not. The example is a huge cluster in which every point is joined to every other, each point also has its own private dead end, and one long thin path hangs off the side. Reaching the far end of that path is fragile: a tiny consistent push away from it compounds along every step, so the tolerable epsilon shrinks like one over the path's length. Covering the whole network is different. Most of the work is collecting all the private dead ends, and the adversary can only inflate that cost by a bounded factor. So the tolerable epsilon for covering stays fixed. For a slowdown budget of two, covering tolerates about zero point two nine, while hitting tolerates about zero point six three divided by the path length. The paper also finds the exact slowdown at the tipping point, about three point eight seven. There are limits. The networks are astronomically large, so this is a statement about limits, not practical sizes. Their points have huge numbers of neighbours, so the question for networks with few neighbours per point stays open, as do several related questions. The computer checks are small supporting tests, not the proof. A companion release answers a different question from the same paper, about distance and hitting time. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the fourth of November twenty twenty-six, its paper and code are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_markov.py, verify_critical.py and plot_profiles.py were rerun with Python -I -B, with and without -O, from fresh copies of the approved package (about a second each); exact and Decimal outputs reproduced identically and double-precision cover values to the last few ulps. The frozen archive was bound to that replay, the verifiers rerun from it under -O, and a corrupted formula was rejected; GitHub CI reruns the checks on Linux. These checks are supplementary to the analytic proofs."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Scripts pin NumPy 2.3.5 and Matplotlib 3.10.8 (requirements.txt); exact checks use Fraction and Decimal; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Zuckerman (2026). Markov Chain Robustness. ITCS 2026, LIPIcs 362. Defines relative-error robustness of hitting and cover times and states Conjecture 1.17, refuted here, and Theorem 1.15, the opposite comparison when Matthews' bound is tight.",
+      "url": "https://doi.org/10.4230/LIPIcs.ITCS.2026.118"
+    },
+    {
+      "citation": "Anonymous (2026). Small diameter does not control hitting-time robustness. Evidence Press candidate, version 1.0.0-candidate. Sibling release answering Zuckerman's different Conjecture 1.16 (diameter versus hitting-time robustness) by a different mechanism; not independent confirmation.",
+      "url": "https://doi.org/10.5281/zenodo.23575572"
+    },
+    {
+      "citation": "Matthews (1988). Covering Problems for Markov Chains. The Annals of Probability. The cover-time bound t_cov ≤ t_hit H_n behind Zuckerman's Theorem 1.15.",
+      "url": "https://doi.org/10.1214/aop/1176991686"
+    },
+    {
+      "citation": "Levin and Peres (2017). Markov Chains and Mixing Times, second edition. American Mathematical Society. Background on hitting times, commute times and cover times (Proposition 10.7, Chapter 11).",
+      "url": "https://pages.uoregon.edu/dlevin/MARKOV/mcmt2e.pdf"
+    },
+    {
+      "citation": "Azar, Broder, Karlin, Linial and Phillips (1996). Biased random walks. Combinatorica. Introduced the biased-walk model underlying Zuckerman's strong adversary.",
+      "url": "https://doi.org/10.1007/BF01300124"
+    },
+    {
+      "citation": "Iyengar (2005). Robust Dynamic Programming. Mathematics of Operations Research. The verification principle specialised in Lemma 2.1.",
+      "url": "https://doi.org/10.1287/moor.1040.0129"
+    },
+    {
+      "citation": "Nilim and El Ghaoui (2005). Robust Control of Markov Decision Processes with Uncertain Transition Matrices. Operations Research. Robust dynamic programming with rectangular transition uncertainty.",
+      "url": "https://doi.org/10.1287/opre.1050.0216"
+    },
+    {
+      "citation": "Haslegrave, Sauerwald and Sylvester (2022). Time Dependent Biased Random Walks. ACM Transactions on Algorithms. A controller model of biased walks; different constraints and objectives.",
+      "url": "https://doi.org/10.1145/3498848"
+    },
+    {
+      "citation": "Olesker-Taylor, Sauerwald and Sylvester (2026). Time-Biased Random Walks and Robustness of Expanders. SODA 2026. Perturbations of expanders in the biased-walk model; does not give this separation.",
+      "url": "https://doi.org/10.1137/1.9781611978971.109"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:cover-time-robustness-separation",
+    "attemptIds": [
+      "ep-attempt:cover-time-robustness-separation-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Whether the perturbation tolerances that keep hitting time and cover time within a constant factor always agree up to constants (Zuckerman's Conjecture 1.17): no, they can differ by a factor of order log log |V|.",
+      "scope": "Connected simple graphs with the standard relative-error adversary; the explicit family has unbounded degree and N = 2^(2^L) core vertices; bounded-degree graphs and the strong adversary are excluded."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 quotes the source definitions and Conjecture 1.17, fixes the budget convention and explains why Theorem 1.15 does not conflict; Section 10 separates what is classical (Bellman verification, geometric sums, Matthews' bound) from the new separation and states what stays open.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "Proofs are written, not formalised; finite checks cannot test the asymptotic statements."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in random walks check the excursion-deletion argument (Lemma 4.2) and the stopped-martingale step in Section 9, and settle whether a bounded-degree family can separate the two tolerances.",
+      "claimCeiling": "Analytic refutation of Conjecture 1.17 with sharp limiting tolerances and a uniform cover-response formula on an explicit unbounded-degree family. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "cover-time-robustness-separation-no-impact",
+        "aim": "science",
+        "outcome": "An openly checkable counterexample separating cover-time and hitting-time robustness of random walks.",
+        "setting": "AI-assisted probability research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Can a random walk be robust for one job and fragile for another? An Evidence Press briefing. Picture a walker exploring a network, at each step moving to a randomly chosen neighbour. Two classic measures say how long exploration takes. The hitting time is how long it takes to reach one particular place. The cover time is how long it takes to visit everywhere. In a paper presented in 2026, David Zuckerman asked what happens when an adversary may nudge every step's probabilities up or down by a small relative amount, called epsilon, choosing with full knowledge of the past. How large can epsilon be before the walk slows down by more than a fixed factor? He conjectured that the answer is always about the same for hitting and for covering. This paper shows that it is not.",
+      "inputSha256": "64ece69b13208b588ffa0fa054442e4b8b23fb8ad8ecb9f38262d678135ad8b1",
+      "audioSha256": "9814759c02b08e52ce4f9af44f3ad38b4af6d3938f2286e645141363ae2c6f52",
+      "requestId": "req_0466636d459b4115969b234820694e9c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "covering this paper shows that it is not",
+        "heardEnding": "always about the same for hitting and for covering this paper shows that it is not",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "The example is a huge cluster in which every point is joined to every other, each point also has its own private dead end, and one long thin path hangs off the side. Reaching the far end of that path is fragile: a tiny consistent push away from it compounds along every step, so the tolerable epsilon shrinks like one over the path's length. Covering the whole network is different. Most of the work is collecting all the private dead ends, and the adversary can only inflate that cost by a bounded factor. So the tolerable epsilon for covering stays fixed. For a slowdown budget of two, covering tolerates about zero point two nine, while hitting tolerates about zero point six three divided by the path length.",
+      "inputSha256": "10cbac16d276e3337e7beaa13dad34719a32c2912391df6fd822af224681ab54",
+      "audioSha256": "d5dcef7f6bba9539f09c3a0178a0dfd33ebee1f1ce56ad55edc885dbe51732f2",
+      "requestId": "req_0408bf8daa0c478a957dee8cce4d3e9e",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "tolerates about point divided by the path length",
+        "heardEnding": "a slowdown budget of covering tolerates about while hitting tolerates about divided by the path length",
+        "matchedWords": 7,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The paper also finds the exact slowdown at the tipping point, about three point eight seven. There are limits. The networks are astronomically large, so this is a statement about limits, not practical sizes. Their points have huge numbers of neighbours, so the question for networks with few neighbours per point stays open, as do several related questions. The computer checks are small supporting tests, not the proof. A companion release answers a different question from the same paper, about distance and hitting time. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the fourth of November twenty twenty-six, its paper and code are linked from the Evidence Press release page.",
+      "inputSha256": "04a8145439f9296cf5b4e760d3df92a69b2fa05d0410a6146e9d920b006cdc63",
+      "audioSha256": "4a6dea880adcebe5eb968e7c7b143efa41bd95e196e0052a2c77e9a8f02ac63f",
+      "requestId": "req_3ff22ef34ad544eab175266944dc0c77",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "are linked from the evidence press release page",
+        "heardEnding": "reproduced published on november its paper and code are linked from the evidence press release page",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "5cfea21b2bc05c6f63299e1a4d42c06235495d006df3c15882ab2713b043055e",
+      "audioSha256": "042ad01f125430d714a98f6adaf02e32c767473989f7ccb26c480fe7bd00445e",
+      "requestId": "req_6e29dc1d8f7241c9b2cb52b0788d7715",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "cover-time-robustness-separation",
+  "generatedAt": "2026-11-04T02:03:13.894Z",
+  "sourceMetadata": "papers/cover-time-robustness-separation/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "8742937bdad6a09824717e48bb72e55df6e7c1d6801b501d16d55cb9ad81795c",
+  "transcriptPath": "assets/audio/cover-time-robustness-separation.txt",
+  "transcriptSha256": "01c2a10362a37388a5be39e54d9d1b92022522d34df207a88e34a6985a2300c8",
+  "audioPath": "assets/audio/cover-time-robustness-separation.mp3",
+  "audioSha256": "49aa3fa5132a44da8f6a0be3c9907e763b82e9c605ee761ed5659b85c0ab7cef",
+  "audioBytes": 2325164,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
