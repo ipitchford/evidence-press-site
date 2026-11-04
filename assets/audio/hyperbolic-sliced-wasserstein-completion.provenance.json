@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "What does a popular distance for hyperbolic data really measure? An Evidence Press briefing. Data such as family trees, word hierarchies and social networks are often placed in hyperbolic space, a geometry in which room grows very quickly as you move away from the centre. To compare two clouds of such points, machine-learning methods use a sliced Wasserstein distance: project both clouds onto many lines through a fixed centre, compare them along each line and average the results. This candidate paper works out exactly what that average detects. The projections stay bounded on average, even at infinity. So the distance extends to the closed ball, boundary sphere included, and mass that drifts off to infinity simply lands on that boundary.",
+      "inputSha256": "97f5bcb5de912f0559c2dd1340546882d602bf27f8d88b3d4fb2dcda186a5fb3",
+      "audioSha256": "5fcfcf62349a88b93fbee14c50e0048e80f388fe69120e3333716893d3168178",
+      "requestId": "req_024d2e9927724f99a83bf314ed4421d6",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "off to infinity simply lands on that boundary",
+        "heardEnding": "ball boundary sphere included and mass that drifts off to infinity simply lands on that boundary",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The distance has an exact maximum, detects ordinary weak convergence, and barely sees depth: two points far out in the same direction look almost the same, however far apart they really are. In two dimensions, the squared distance between two points at infinity is exactly pi times the angle between them, and the paper gives the boundary geometry in every dimension. It also corrects a published claim, Proposition nineteen of Bonet, Drumetz and Courty, proves that the distance can be estimated from samples at the best possible rate with no assumptions on the data, and shows that adding one comparison of distances from the centre restores the usual hyperbolic notion of convergence. The proofs are written out; the numerical checks are only sanity checks.",
+      "inputSha256": "23aa2697ae219a63a3ac41fe6b0104fbe3852ca6d300461ed28ac59529550418",
+      "audioSha256": "c2523653137cfaafd2ce66cb3158fa5b31e63992c9144059d92ddad3b5a386a6",
+      "requestId": "req_ff46b9f36e3a44849e6ed12bd9bd039b",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "out the numerical checks are only sanity checks",
+        "heardEnding": "hyperbolic notion of convergence the proofs are written out the numerical checks are only sanity checks",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The results cover the exact average over all directions from a fixed centre. This is an unrefereed candidate with internal AI-assisted review only. Released on the fourth of November 2026; the paper, code and data are linked from the release page. This briefing uses an AI-generated voice and is not additional evidence.",
+      "inputSha256": "0a9e910ff6f7dd18a3a03a59b50029af2dddde470565dd4cd88b5495bd56dfd2",
+      "audioSha256": "c298a96f767aa45cf5921d365ede67a328cb853f5c0a369335c6b4b5bed71ece",
+      "requestId": "req_230e2ca95fdc42359e8a920ee74392b3",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "ai generated voice and is not additional evidence",
+        "heardEnding": "from the release page this briefing uses an ai generated voice and is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "hyperbolic-sliced-wasserstein-completion",
+  "generatedAt": "2026-11-04T05:49:00.920Z",
+  "sourceMetadata": "papers/hyperbolic-sliced-wasserstein-completion/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "e528aac56650e8998b1472dfee9383d050581418bc0f4505f5730b041e98cce4",
+  "transcriptPath": "assets/audio/hyperbolic-sliced-wasserstein-completion.txt",
+  "transcriptSha256": "f1d5fd8157a4d3f543cb3ae99e2d0b9864b83ffa73fe2a074a803fd528037032",
+  "audioPath": "assets/audio/hyperbolic-sliced-wasserstein-completion.mp3",
+  "audioSha256": "b7c4a1840924d2ec4d70b85b1201d6a99eb4db5a7d8d90077bc3fdcfdce144af",
+  "audioBytes": 1856684,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "ai generated voice and is not additional evidence",
+    "heardEnding": "from the release page this briefing uses an ai generated voice and is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
