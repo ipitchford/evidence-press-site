@@ -23,6 +23,13 @@ is an unchanged archival document published here with the author's permission.
 Copyright remains with Ian Pitchford; all rights reserved. The site's CC0
 dedication and software MIT licence do not apply to this thesis.
 
+## The Origins of Violence (2001)
+
+Ian Pitchford's paper *The Origins of Violence: Is Psychopathy an Adaptation?*, hosted in its
+original and corrected forms at `assets/downloads/ian-pitchford-2001-origins-of-violence-*` and
+reproduced at `pages/origins-of-violence.md`, is copyright Ian Pitchford, all rights reserved.
+The site's CC0 dedication and software MIT licence do not apply to it.
+
 ## Examiner's report on the thesis
 
 Professor Patrick Bateson's report on the thesis, dated 23 March 2002 and hosted at
