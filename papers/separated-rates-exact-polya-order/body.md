@@ -49,7 +49,7 @@ Let $E_a(x)=ae^{-ax}\mathbf 1_{x>0}$, $0<a_1<\dots<a_m<b_0$, $\mu$ a probability
 - **Proofs.** All main claims have written proofs. Remark 6A.8 rests on a cited representation (Schoenberg 1951; Karlin 1968) and is not independently proved.
 - **Exact checks.** `verification/verify_exact.py` uses rational arithmetic only. At $q=1/2$, $t=3/16$ (so $2<\alpha<3$) it recomputes Sra's determinant moments $65/224>0$ for $d=3$ and $-13/168<0$ for $d=4$, the latter impossible for a positive semidefinite matrix. It certifies that an order-four translation determinant of the scalar density is negative (about $-5.1\times10^{-15}$ after normalisation, with a rigorous error bound below $1.33\times10^{-74}$), checks the finite-mixture Wronskian tables below and the counterexample $-13/16384$. `verification/verify_extensions.py` checks the Section 6A identities, certified signs and a parity count.
 - **Replay.** Both scripts were rerun with `--check`, with and without Python `-O`, from fresh copies with the working directory outside them; all checks are explicit and stay active under `-O`. GitHub CI reruns them.
-- **Limits.** Finite checks cannot establish the universal theorem. The distribution class is classical (Sumita and Masuda, 1987). We could not read the full text of Sumita and Masuda (1987); its abstract and its 30 citing papers (Semantic Scholar, November 2026) show no sign of an exact PF-order or matrix-dimension result. The sharp theorem was not located in the sources we could read, and references to any earlier statement are welcome. Open questions: the weak gap and repeated rates together, and the sharp real symmetric and quaternionic cutoffs.
+- **Limits.** Finite checks cannot establish the universal theorem. The distribution class is classical: the finite-mixture case lies in the class SCM of Sumita and Masuda (1987), and in their CMPF$_n$ exactly when $m=r+1$ for $r$ mixture atoms. That paper, read in full, studies densities whose Laplace transforms are rational with only negative zeros and poles. Its only Pólya-frequency-type property is the classical log-concavity of exponential convolutions; it does not consider orders $r\ge3$, Wronskian signs, exactness, infinite mixing measures or matrix lifts, so Theorem 1 is not contained in it. In the other sources checked (Schoenberg 1951; Assaf, Shaked and Shanthikumar 1985; Förster, Kieburg and Kösters 2021; Belton, Guillot, Khare and Putinar 2022; Kieburg and Zhang 2023; Karlin 1968 through secondary sources) we did not find the exact order, the everywhere-negative $W_{m+2}$ or the matrix-dimension cutoff. References to any earlier statement are welcome. Open questions: the weak gap and repeated rates together, and the sharp real symmetric and quaternionic cutoffs.
 
 **Exact sign tables** (slow rates $1,\dots,m$, fast mixture $\tfrac12E_{m+1}+\tfrac12E_{m+2}$, at $x=\log2$):
 
@@ -75,9 +75,9 @@ From the unpacked archive (Python 3.10 or later, standard library only), run the
 
 ```sh
 cd /tmp
-python3 -I -B separated-rates-exact-polya-order-0.1.0-candidate/verification/verify_exact.py --check
-python3 -O -I -B separated-rates-exact-polya-order-0.1.0-candidate/verification/verify_exact.py --check
-python3 -I -B separated-rates-exact-polya-order-0.1.0-candidate/verification/verify_extensions.py --check
+python3 -I -B separated-rates-exact-polya-order-0.2.0-candidate/verification/verify_exact.py --check
+python3 -O -I -B separated-rates-exact-polya-order-0.2.0-candidate/verification/verify_exact.py --check
+python3 -I -B separated-rates-exact-polya-order-0.2.0-candidate/verification/verify_extensions.py --check
 ```
 
 The first prints `PASS: every exact check and the stored JSON comparison.`; the extension check prints `CHECK PASSED: all Section 6A checks reproduce stored results` after about ten seconds. With `--check` the stored JSON is compared, not rewritten.
@@ -87,7 +87,6 @@ The first prints `PASS: every exact check and the stored JSON comparison.`; the 
 1. Prove or refute the exact cutoff when repeated slow rates and a fast measure accumulating at the last slow rate occur together.
 2. Find the sharp real symmetric ($\beta=1$) and quaternionic ($\beta=4$) dimensions; only the real lower bound $m+1$ is proved.
 3. Classify which rational pole–zero configurations beyond separated rates admit finite-dimensional lifts.
-4. Compare the result with the full text of Sumita and Masuda (1987).
 
 ## What is in the evidence package
 
