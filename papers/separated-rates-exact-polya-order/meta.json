@@ -3,9 +3,9 @@
   "title": "Exact total positivity from separated exponential rates: a matrix dimension theorem and the q-Gindikin conjecture",
   "shortTitle": "Slow stages fix the exact Pólya frequency order",
   "oneLine": "A waiting time of m slow exponential stages and one fast stage of random speed has Pólya frequency order exactly m+1, never more, and m+1 is also its largest matrix-lift dimension; this proves the parameter region of Sra's q-Gindikin Conjecture 6.1.",
-  "abstract": "A Pólya frequency (PF) density of order r is one whose shift matrices [f(x_i − y_j)] of size up to r all have nonnegative determinants: order two is log-concavity, and higher orders are stronger forms of variation-diminishing smoothing. A separate question asks whether a scalar Laplace transform φ lifts to a random d×d positive semidefinite complex Hermitian matrix with transform ∏φ(λ_i(S)), a matrix analogue of gamma and Wishart laws; Sra (2026, version 1 of 29 October, Conjecture 6.1) needed exactly this for a q-product. This candidate studies a waiting time made of m exponential stages with distinct slow rates a_1 < … < a_m followed by one fast stage whose rate is drawn from an arbitrary probability measure on [b_0, ∞), with b_0 > a_m. Theorem 1: the density is PF of order m+1; if the fast rate is genuinely random, the exact order is m+1, the next derivative Wronskian W_{m+2} is strictly negative at every x > 0, and a matrix lift exists if and only if d ≤ m+1. A deterministic fast rate gives the classical PF∞ case with lifts in every dimension. No moments of the mixing measure are needed. As an application the paper proves the complete parameter region of Sra's Conjecture 6.1: for 0 < q < 1 and 0 ≤ t < 1, a dimension-d law exists if and only if t ∈ ([0, q^{d−1}] ∪ {q, …, q^{d−2}}) ∩ [0, 1); Sra had proved necessity, the geometric points and d = 2. Section 6A extends the exact conclusions to the weak gap μ((a_m, ∞)) = 1 and, separately, to repeated slow rates, and gives real symmetric lifts in every dimension d ≤ m+1; an interleaved example shows that some rate ordering is necessary. The distribution class (Sumita and Masuda, 1987) and the scalar tools are classical; the sharp theorem was not located in the sources we could read. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "abstract": "A Pólya frequency (PF) density of order r is one whose shift matrices [f(x_i − y_j)] of size up to r all have nonnegative determinants: order two is log-concavity, and higher orders are stronger forms of variation-diminishing smoothing. A separate question asks whether a scalar Laplace transform φ lifts to a random d×d positive semidefinite complex Hermitian matrix with transform ∏φ(λ_i(S)), a matrix analogue of gamma and Wishart laws; Sra (2026, version 1 of 29 October, Conjecture 6.1) needed exactly this for a q-product. This candidate studies a waiting time made of m exponential stages with distinct slow rates a_1 < … < a_m followed by one fast stage whose rate is drawn from an arbitrary probability measure on [b_0, ∞), with b_0 > a_m. Theorem 1: the density is PF of order m+1; if the fast rate is genuinely random, the exact order is m+1, the next derivative Wronskian W_{m+2} is strictly negative at every x > 0, and a matrix lift exists if and only if d ≤ m+1. A deterministic fast rate gives the classical PF∞ case with lifts in every dimension. No moments of the mixing measure are needed. As an application the paper proves the complete parameter region of Sra's Conjecture 6.1: for 0 < q < 1 and 0 ≤ t < 1, a dimension-d law exists if and only if t ∈ ([0, q^{d−1}] ∪ {q, …, q^{d−2}}) ∩ [0, 1); Sra had proved necessity, the geometric points and d = 2. Section 6A extends the exact conclusions to the weak gap μ((a_m, ∞)) = 1 and, separately, to repeated slow rates, and gives real symmetric lifts in every dimension d ≤ m+1; an interleaved example shows that some rate ordering is necessary. The distribution class and the scalar tools are classical: the finite-mixture case lies in the class SCM of Sumita and Masuda (1987), and in their CMPF_n exactly when m = r + 1 for r mixture atoms. That paper's only Pólya-frequency-type property is classical log-concavity, with no higher orders, exactness or matrix lifts, so it does not contain Theorem 1; the sharp theorem was not found in the other sources checked either. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
   "datePublished": "2026-11-04",
-  "version": "0.1.0-candidate",
+  "version": "0.2.0-candidate",
   "authors": [
     "Anonymous"
   ],
@@ -24,12 +24,12 @@
     "Hankel forms"
   ],
   "repoUrl": "https://github.com/ipitchford/separated-rates-exact-polya-order",
-  "releaseUrl": "https://github.com/ipitchford/separated-rates-exact-polya-order/releases/tag/v0.1.0-candidate",
-  "pdfUrl": "https://github.com/ipitchford/separated-rates-exact-polya-order/releases/download/v0.1.0-candidate/separated-rates-exact-polya-order-0.1.0-candidate.pdf",
-  "doi": "10.5281/zenodo.23940010",
+  "releaseUrl": "https://github.com/ipitchford/separated-rates-exact-polya-order/releases/tag/v0.2.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/separated-rates-exact-polya-order/releases/download/v0.2.0-candidate/separated-rates-exact-polya-order-0.2.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23941702",
   "conceptDoi": "10.5281/zenodo.23940009",
-  "zenodoUrl": "https://zenodo.org/records/23940010",
-  "citeText": "Anonymous (2026). Exact total positivity from separated exponential rates: a matrix dimension theorem and the q-Gindikin conjecture. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23940010",
+  "zenodoUrl": "https://zenodo.org/records/23941702",
+  "citeText": "Anonymous (2026). Exact total positivity from separated exponential rates: a matrix dimension theorem and the q-Gindikin conjecture. Version 0.2.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23941702",
   "evidence": "Theorem 1, Theorem 4 and the Section 6A results have written proofs. Supplementary exact checks in rational arithmetic, standard library only: verify_exact.py recomputes the determinant moments 65/224 (d = 3) and −13/168 (d = 4) at q = 1/2, t = 3/16, certifies a negative order-four Toeplitz determinant with a rigorous tail bound, checks finite-mixture Wronskian tables and the rate-ordering counterexample −13/16384; verify_extensions.py checks the Section 6A identities, certified signs and a parity count. Both were replayed with --check, with and without Python -O, from fresh copies; GitHub CI reruns them.",
   "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs; finite exact checks corroborate and do not establish the universal theorem. Internal AI-assisted review in five roles, a separate-model adversarial review, one revision round with extensions, a re-review, a proof audit and a separate-model audit of the new proofs. External specialist review, independent reproduction and formal verification have not been established.",
   "pageStructureVersion": "2.0",
@@ -37,7 +37,7 @@
   "pageStructureWaivers": [],
   "recordMaturity": "current",
   "grandfatheredAtSchemaVersion": null,
-  "metadataProvenance": "Prepared from the final manuscript (version 2 of 4 November 2026 with DOI insertion, 26 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "metadataProvenance": "Prepared from the final manuscript (version 3 of 4 November 2026, release 0.2.0-candidate, 26 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
   "keyResults": [
     "Exact order (Theorem 1): with distinct slow rates a_1 < … < a_m below every possible fast rate (b_0 > a_m), the density is PF of order m+1; if the fast rate is genuinely random, W_{m+2} < 0 at every x > 0, so the exact order is m+1, never more.",
     "Matrix dimension (Theorem 1): a complex Hermitian matrix lift with transform ∏φ(λ_i(S)) exists if and only if d ≤ m+1, with a continuous, strictly positive density on the positive definite cone; a deterministic fast rate gives the classical PF∞ case with lifts in every dimension.",
@@ -56,7 +56,7 @@
     "humanRole": "Publication authority only; no human research contribution inferred.",
     "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
   },
-  "narration": "How much smoothing does a staged waiting time have? An Evidence Press briefing. Imagine a job that passes through several slow stages, one after another, and then one last fast stage whose speed is itself random. The total time has a probability density, and mathematicians measure how well behaved such a density is by its Pólya frequency order. Order two is the familiar property called log-concavity; each higher order is a stronger guarantee that smoothing with this density can never add extra wiggles to a signal. This paper shows that with m slow stages, each slower than every possible speed of the last stage, the order is exactly m plus one, never more, as long as the last speed is genuinely random. If the last speed is fixed, the classical answer applies and there is no limit. The same number, m plus one, turns out to be the largest size of random matrix that can carry the same law, in a sense that generalises the gamma and Wishart distributions. As an application, the paper proves a conjecture posed by Suvrit Sra in a preprint dated the twenty-ninth of October twenty twenty-six, describing exactly which parameters of a certain q-product give matrix laws. Sra had already proved some parts; the remaining part is proved here. The paper also relaxes both hypotheses separately, and shows by an exact example that some ordering of the rates is needed. The distribution family itself is classical, studied by Sumita and Masuda in nineteen eighty-seven, and the scalar tools are classical too. We could not read the full text of that paper, and the sharp theorem was not located in the sources we could read, so references to any earlier statement are welcome. Exact computer checks support the proofs but are not the proofs. This is an anonymous, AI-assisted, unrefereed candidate, with internal AI-assisted review only, not peer reviewed, independently reproduced or formally verified. Published on the fourth of November twenty twenty-six, its paper and code are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "narration": "How much smoothing does a staged waiting time have? An Evidence Press briefing. Imagine a job that passes through several slow stages, one after another, and then one last fast stage whose speed is itself random. The total time has a probability density, and mathematicians measure how well behaved such a density is by its Pólya frequency order. Order two is the familiar property called log-concavity; each higher order is a stronger guarantee that smoothing with this density can never add extra wiggles to a signal. This paper shows that with m slow stages, each slower than every possible speed of the last stage, the order is exactly m plus one, never more, as long as the last speed is genuinely random. If the last speed is fixed, the classical answer applies and there is no limit. The same number, m plus one, turns out to be the largest size of random matrix that can carry the same law, in a sense that generalises the gamma and Wishart distributions. As an application, the paper proves a conjecture posed by Suvrit Sra in a preprint dated the twenty-ninth of October twenty twenty-six, describing exactly which parameters of a certain q-product give matrix laws. Sra had already proved some parts; the remaining part is proved here. The paper also relaxes both hypotheses separately, and shows by an exact example that some ordering of the rates is needed. The distribution family itself is classical, studied by Sumita and Masuda in nineteen eighty-seven, and the scalar tools are classical too. That paper describes these distributions through the zeros and poles of their Laplace transforms, but its only property of this kind is log-concavity, order two. It has no higher orders, no exact order and no matrices, so it does not contain this theorem. References to any earlier statement are welcome. Exact computer checks support the proofs but are not the proofs. This is an anonymous, AI-assisted, unrefereed candidate, with internal AI-assisted review only, not peer reviewed, independently reproduced or formally verified. This corrected version, zero point two, was published on the fourth of November twenty twenty-six; its paper and code are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
   "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
   "assurance": {
     "availability": {
@@ -94,7 +94,7 @@
   },
   "relatedWorks": [
     {
-      "citation": "Sumita and Masuda (1987). Classes of probability density functions having Laplace transforms with negative zeros and poles. Advances in Applied Probability 19(3). Introduces the classical distribution class (CMPF) studied here; only its abstract and citing papers could be read for this release.",
+      "citation": "Sumita and Masuda (1987). Classes of probability density functions having Laplace transforms with negative zeros and poles. Advances in Applied Probability 19(3). Introduces the classes CMPF_n and SCM; the finite-mixture case studied here lies in SCM (in CMPF_n only when m = r + 1). Read in full: not prior work for Theorem 1.",
       "url": "https://doi.org/10.2307/1427410"
     },
     {
@@ -158,7 +158,7 @@
       "state": "explicit",
       "description": "Section 1 defines PF order and matrix lifts, states Theorem 1, separates classical background from what is claimed, and gives a reader's guide; Section 7 restates Sra's Conjecture 6.1 from version 1 of 29 October 2026; Section 9 states limits and the extent of the literature check.",
       "remainingRisks": [
-        "The bounded literature check is not exhaustive priority certification, and the full text of Sumita and Masuda (1987) was not read.",
+        "The bounded literature check is not exhaustive priority certification; Karlin (1968) was consulted through secondary sources only.",
         "Proofs are written, not formalised; finite checks cannot test the universal statement."
       ]
     },
@@ -174,7 +174,7 @@
         "formalVerification",
         "priorityAssessment"
       ],
-      "nextAction": "Have a specialist in total positivity check the inertia induction (Section 4) and the sharpness argument (Section 5), compare with the full text of Sumita and Masuda (1987), and attempt the combined weak-gap and repeated-rate case.",
+      "nextAction": "Have a specialist in total positivity check the inertia induction (Section 4) and the sharpness argument (Section 5), and attempt the combined weak-gap and repeated-rate case.",
       "claimCeiling": "Written proof of the exact PF order and matrix dimension m+1 for separated exponential rates, and of the parameter region of Sra's Conjecture 6.1. Internal verification is not external assurance."
     },
     "impactClaims": [
@@ -192,5 +192,25 @@
         "independentAssessment": null
       }
     ]
-  }
+  },
+  "corrections": [
+    {
+      "date": "2026-11-04",
+      "scope": "claim",
+      "summary": "Version 0.2.0-candidate corrects the account of prior work. Version 0.1.0-candidate said the full text of Sumita and Masuda (1987) could not be read and that its abstract and 30 citing papers showed no sign of an exact result; it also placed the finite-mixture object in their class CMPF. The paper has now been read in full. Its only Pólya-frequency-type property is classical log-concavity, with no higher orders, no exactness and no matrix lifts, so it is not prior work. The finite-mixture case lies in their class SCM, and in CMPF_n only when the number of slow stages is one more than the number of mixture atoms (m = r + 1).",
+      "detail": "The mathematics, proofs, verifiers and recorded outputs are unchanged. Version 0.1.0-candidate, its DOI 10.5281/zenodo.23940010 and its tag remain archived unchanged; this version has its own DOI (10.5281/zenodo.23941702) and tag (v0.2.0-candidate). The audio briefing and transcript were re-recorded so that they no longer say the source could not be read.",
+      "fixedIn": "0.2.0-candidate"
+    },
+    {
+      "date": "2026-11-04",
+      "scope": "presentation",
+      "summary": "Re-recorded the audio briefing and transcript for the 0.2.0-candidate correction.",
+      "detail": "Communication aid only; not additional mathematical evidence.",
+      "fixedIn": "0.2.0-candidate"
+    }
+  ],
+  "audioContentVersioned": true,
+  "publicCorrectionIndexes": [
+    0
+  ]
 }
