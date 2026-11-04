@@ -1,0 +1,212 @@
+{
+  "slug": "qutrit-complementary-discrimination",
+  "title": "Sharp qutrit discrimination and unavoidable correlation overcounting for complementary measurements",
+  "shortTitle": "Complementary measurements: a sharp 8/3 for qutrits, and no safe choice from n = 4",
+  "oneLine": "Two complementary measurements on a qutrit can score at most 8/3 (out of a trivial 4) when telling two orthogonal states apart, proved by an exact certificate with every best case identified; and for a qubit paired with a system of dimension n ≥ 4, every choice of complementary measurements is fooled by some unentangled state (previously known only from n = 164).",
+  "abstract": "Two parties share a quantum system and each can measure in one of two complementary bases, as with position and momentum. In 2014 Schneeloch, Broadbent and Howell proposed that the classical correlations seen in the two resulting outcome tables never add up to more than the total quantum correlation of the shared state, the complementary quantum correlation (CQC) inequality. In 2026 it was refuted in most dimensions by public code repositories (O'Connor; AlperTheKing), by Wang, Wang and Chen and by Qian; it holds for two qubits, and the qubit–qutrit case is open. This candidate settles two follow-up questions. First, for a qutrit and any pair of complementary bases, the summed triangular discrimination of two orthogonal states is at most 8/3 (the trivial ceiling is 4), answering a question of Qian; every equality case is classified, and for the computational and Fourier bases they are tied to the nine Hesse SIC rays. Consequences: choosing one of the two measurements at random recovers at most two thirds of the quantum Fisher information in a two-state estimation task, and Qian's two-ray qubit–qutrit family obeys CQC with margin at least 0.1005 nats. The proof is computer-assisted: an exact rational sum-of-squares certificate checked by a standalone verifier. Second, for a qubit paired with a qudit of dimension n ≥ 4, every prescribed pair of complementary measurements admits a separable state violating CQC, with a uniform certified margin below −9/20,000,000 nats; previously this every-pair statement was known only for n ≥ 164. A related construction covers every pair when both dimensions are at least three. The full qubit–qutrit question and the sharp constant in dimension 5 remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "mutually unbiased bases",
+    "complementary quantum correlations",
+    "CQC conjecture",
+    "triangular discrimination",
+    "qutrit",
+    "sum-of-squares certificate",
+    "separable states",
+    "quantum mutual information",
+    "Fisher information",
+    "SIC-POVM"
+  ],
+  "repoUrl": "https://github.com/ipitchford/qutrit-complementary-discrimination",
+  "releaseUrl": "https://github.com/ipitchford/qutrit-complementary-discrimination/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/qutrit-complementary-discrimination/releases/download/v0.1.0-candidate/qutrit-complementary-discrimination-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23933731",
+  "conceptDoi": "10.5281/zenodo.23933730",
+  "zenodoUrl": "https://zenodo.org/records/23933731",
+  "citeText": "Anonymous (2026). Sharp qutrit discrimination and unavoidable correlation overcounting for complementary measurements. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23933731",
+  "evidence": "Theorem 2.1: a human-readable frame reduction plus an exact rational sum-of-squares certificate (660,609-byte JSON, four Gram blocks of sizes 43, 41, 40, 41) checked by a standalone verifier that rebuilds the degree-12 target polynomial from the six measurement vectors, checks all 1,820 coefficients, proves strict Gram positivity by exact LDL^T elimination and a rational norm bound, and checks every equality identity; five kinds of corrupted certificate are rejected with and without Python -O. Theorems 4.1 and 4.7: analytic proofs with exact rational margin bounds checked by a standard-library Fraction script; NumPy cross-checks are supplementary. Clean replay from a fresh copy, with and without -O, before freezing; GitHub CI reruns the exact checks on Linux.",
+  "statusDetail": "Unrefereed AI-assisted quantum-information candidate. The qutrit theorem is a computer-assisted exact-arithmetic proof, not a proof-assistant formalisation; the correlation theorems have written proofs with exactly certified margins, which are tiny and structural rather than experimental. Internal AI-assisted review in five roles, a separate-model adversarial review, one revision round, a re-review and a separate-model verification audit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (revision of 3 November 2026 with DOI insertion, 19 pages), its verification scripts and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Sharp qutrit discrimination (Theorem 2.1, computer-assisted proof): for every complementary (mutually unbiased) pair of qutrit bases and orthogonal states u, v, the summed triangular discrimination is at most 8/3, against a trivial ceiling of 4; this answers Qian's question (arXiv:2608.14806v2, Section 11(4)).",
+    "Every best case (Theorem 2.1): equality holds exactly when the two states span a plane through one vector of each basis and their difference is ±√(3/2) times the difference of those projectors; for the computational and Fourier bases these planes are tied to the nine Hesse SIC rays.",
+    "Measurement efficiency (Corollary 2.2): choosing one of two complementary qutrit settings at random recovers at most 2/3 of the quantum Fisher information when estimating the weight of a two-state mixture; the two-ray qubit–qutrit CQC gap rises from 0.0120 to at least 0.1005 nats (Corollary 3.3).",
+    "No safe choice from n = 4 (Theorem 4.1, proof with exact margins): for a qubit with a qudit of dimension n ≥ 4 and every prescribed pair of complementary measurements, some separable state violates CQC, with a uniform margin below −9/20,000,000 nats (−1.058 × 10⁻⁴ at n = 4); previously every-pair failure was known only for n ≥ 164.",
+    "Both dimensions at least three (Theorem 4.7): every prescribed pair admits a separable violation with a dimension-free margin, extending an earlier, unchecked every-pair statement for equal dimensions by O'Connor. The full qubit–qutrit question remains open."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted quantum-information research and computation (exact certificate search and verification)",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and verification audit by a separate model (OpenAI Codex); clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Can two quantum measurements be trusted to count correlation? An Evidence Press briefing. Some quantum measurements are complementary, like position and momentum: if one gives a predictable answer, the other cannot. In 2014, Schneeloch, Broadbent and Howell proposed that if two parties each make two complementary measurements on a shared system, the correlations in their two tables of results can never add up to more than the total correlation in the system. That would make two tables a cheap, guaranteed lower bound. In 2026 the idea was shown to fail in most dimensions, first in public code repositories by Ethan O'Connor and by AlperTheKing, then by Wang, Wang and Chen, and by Qian. This paper answers two follow-up questions. The first concerns a three-level system, a qutrit. How well can two complementary measurements tell two perfectly distinguishable qutrit states apart? On a natural score where four is a trivial ceiling, the paper proves that the best possible score is exactly eight thirds, and it finds every case where that best score is reached, linked to a famous symmetric arrangement called the Hesse configuration. One consequence: measuring this way recovers at most two thirds of the available information in a simple estimation task. The proof is computer-assisted: an exact certificate in whole-number fractions, checked by a short program that anyone can rerun. The second result concerns a qubit paired with a system of dimension four or more. There, every choice of complementary measurements is fooled by some unentangled state. Before, this was known only from dimension one hundred and sixty-four. The violations are tiny, so this is a structural limit, not an experimental one. The question for a qubit paired with a qutrit stays open, as does the exact best score in dimension five. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the fourth of November twenty twenty-six, its paper, certificate and code are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package, manuscript and exact certificate are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The exact SOS verifier, negative controls, certified-margin script and numerical cross-checks were rerun with Python -I -B, with and without -O, from a fresh copy of the approved package; all passed (verifier about 22 s per mode; ten corrupted runs rejected). The frozen archive was bound to that replay and the verifier and margins rerun from it under -O; GitHub CI reruns the exact checks on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the certificate is checked by exact rational arithmetic."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "The verifier pins SymPy 1.14.0 and python-flint 0.9.0 (requirements-exact.txt); the margin script needs only the standard library; cross-checks pin NumPy 2.5.4; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Schneeloch, Broadbent and Howell (2014). Uncertainty relation for mutual information. Physical Review A. Proposed the complementary quantum correlation (CQC) inequality studied here.",
+      "url": "https://doi.org/10.1103/physreva.90.062119"
+    },
+    {
+      "citation": "Berta, Christandl, Colbeck, Renes and Renner (2010). The uncertainty principle in the presence of quantum memory. Nature Physics. Proved, state-independent entropic bounds that remain valid tools.",
+      "url": "https://doi.org/10.1038/nphys1734"
+    },
+    {
+      "citation": "Coles, Berta, Tomamichel and Wehner (2017). Entropic uncertainty relations and their applications. Reviews of Modern Physics. Background on complementary measurements.",
+      "url": "https://doi.org/10.1103/revmodphys.89.015002"
+    },
+    {
+      "citation": "Wootters and Fields (1989). Optimal state-determination by mutually unbiased measurements. Annals of Physics. Mutually unbiased measurements are optimal for full state determination; Corollary 2.2 quantifies their cost for one known pair of states.",
+      "url": "https://doi.org/10.1016/0003-4916(89)90322-9"
+    },
+    {
+      "citation": "OpenAI GPT-5.6 Pro (Zenodo creator; repository owner E. O'Connor) (2026). Exact qutrit counterexample to the CQC conjecture. Zenodo, version v1.1.1. Early exact qutrit counterexample and an earlier, unchecked every-pair statement for equal dimensions, credited in the paper.",
+      "url": "https://doi.org/10.5281/zenodo.21499722"
+    },
+    {
+      "citation": "AlperTheKing (2026). cqc-counterexample: exact qutrit counterexample to the complementary-quantum-correlation conjecture. GitHub repository. Early exact qutrit counterexample.",
+      "url": "https://github.com/AlperTheKing/cqc-counterexample"
+    },
+    {
+      "citation": "Wang, Wang and Chen (2026). When complementary measurements count the same classical bit twice: counterexamples to CQC, ECQC, and complementarity-based certification. arXiv:2608.03828v3. Counterexamples in every dimension at least three.",
+      "url": "https://arxiv.org/abs/2608.03828v3"
+    },
+    {
+      "citation": "Wang, Wang and Chen (2026). Complementary quantum correlations are universal for qubits. arXiv:2608.04916v1. CQC holds for two qubits.",
+      "url": "https://arxiv.org/abs/2608.04916v1"
+    },
+    {
+      "citation": "Qian (2026). Separable counterexamples to complementary quantum correlations, and why random search missed them. arXiv:2608.14806v2. Posed the sharp qutrit question (Section 11(4)), gave the frame reduction and the every-pair result for n ≥ 164.",
+      "url": "https://arxiv.org/abs/2608.14806v2"
+    },
+    {
+      "citation": "Iqbal (2026). On the CQC conjecture: a sufficient condition and an extension. Quantum Information Processing. Earlier sufficient conditions for CQC.",
+      "url": "https://doi.org/10.1007/s11128-026-05258-2"
+    },
+    {
+      "citation": "Tadej and Życzkowski (2006). A Concise Guide to Complex Hadamard Matrices. Open Systems & Information Dynamics. Classification used to reduce every qutrit complementary pair to the Fourier pair.",
+      "url": "https://doi.org/10.1007/s11080-006-8220-2"
+    },
+    {
+      "citation": "Stacey (2016). SIC-POVMs and Compatibility among Quantum States. Mathematics. The Hesse SIC geometry of the equality cases.",
+      "url": "https://doi.org/10.3390/math4020036"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:qutrit-complementary-discrimination",
+    "attemptIds": [
+      "ep-attempt:qutrit-complementary-discrimination-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "The best possible two-setting discrimination score for qutrits (8/3, with every best case) and whether any choice of complementary measurements can make two outcome tables a safe lower bound on total correlation for a qubit with a qudit (no, from n = 4).",
+      "scope": "Two orthogonal equal-weight qutrit states and prescribed complementary pairs; qubit–qudit with n ≥ 4 and both dimensions at least three; the full 2 × 3 problem is excluded."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 and Table 2 separate what is Qian's (frame reduction, determinant condition, attaining configuration, second-variation method), O'Connor's and Wang, Wang and Chen's from the new certificate, equality classification and every-pair results; Section 5 states what is verified how and what stays open.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification.",
+        "The qutrit proof depends on a computer-checked certificate, not a formalised or short analytic proof."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a quantum-information specialist rerun the exact verifier on an independent machine and check the frame reduction and the second-variation argument behind Theorem 4.1; a symmetry-reduced analytic proof of the qutrit inequality would remove the dependence on the certificate.",
+      "claimCeiling": "Proved 8/3 bound with complete equality classification by an exact computer-checked certificate; every-pair separable CQC violations for qubit–qudit n ≥ 4 and for both dimensions at least three with exactly certified margins. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "qutrit-complementary-discrimination-no-impact",
+        "aim": "science",
+        "outcome": "An openly checkable sharp qutrit discrimination bound and every-pair CQC counterexamples for qubit–qudit dimensions n ≥ 4.",
+        "setting": "AI-assisted quantum-information research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
