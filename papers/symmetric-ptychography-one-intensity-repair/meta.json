@@ -1,0 +1,207 @@
+{
+  "slug": "symmetric-ptychography-one-intensity-repair",
+  "title": "Symmetric cyclic ptychography: exact ambiguities and one-intensity repair",
+  "shortTitle": "Symmetric probes: only twins, one extra reading fixes them",
+  "oneLine": "With a real, mirror-symmetric probe such as a Gaussian beam, finite cyclic ptychography can only confuse an object with its twin, a conjugate pair on two opposite pixels in the object or its Fourier transform, and one extra coherent intensity measurement tells every twin pair apart.",
+  "abstract": "Ptychography images an object by scanning a known illumination, the probe, across it and recording only diffraction intensities, so the lost phases must be recovered mathematically. Symmetric probes, including every real mirror-symmetric probe such as a Gaussian beam, force some coefficients of the data to vanish, and then some different objects give identical data; the Phasebook survey (Allain et al. 2025, Section 8.1) asks for recovery guarantees in that situation. This candidate answers precise finite cyclic subclasses of the question, with every scan position and frequency recorded and the probe known exactly. For real-even probes whose zero pattern is exactly the forced cross, including circular-distance Gaussian probes at all but finitely many widths, every ambiguity is a twin pair: a conjugate pair living on two antipodal pixels, in the object or in its Fourier transform, and nothing worse. One extra coherent intensity |g*x|², in practice one extra exposure under a structured illumination read at the zero-frequency pixel, removes every twin, even against mixed-state (positive-semidefinite) competitors. The first exceptional Gaussian widths are certified exactly for n = 6 to 16. For a related single-line probe family the paper gives exact stability constants, an optimal added measurement in a stated normalised metric and a one-unknown direct reconstruction; for short three-site probes, a local two-pixel repair. The single-line classification, obstruction mechanism and PSD algorithm already appear in the public AI-assisted manuscript VESPER–QUORUM and are credited, not claimed; its predecessor NACRE–CHOIR could not be located. The extra measurement changes the data model, a defocus chirp fails when 4 divides n, Gaussian genericity is exact-arithmetic only, the real-even stability constant is qualitative, and all numerics are synthetic. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-04",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "phase retrieval",
+    "ptychography",
+    "short-time Fourier transform",
+    "ambiguity function",
+    "symmetric probe",
+    "twin image",
+    "Gaussian probe",
+    "measurement design",
+    "strict completeness"
+  ],
+  "repoUrl": "https://github.com/ipitchford/symmetric-ptychography-one-intensity-repair",
+  "releaseUrl": "https://github.com/ipitchford/symmetric-ptychography-one-intensity-repair/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/symmetric-ptychography-one-intensity-repair/releases/download/v0.1.0-candidate/symmetric-ptychography-one-intensity-repair-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23938688",
+  "conceptDoi": "10.5281/zenodo.23938687",
+  "zenodoUrl": "https://zenodo.org/records/23938688",
+  "citeText": "Anonymous (2026). Symmetric cyclic ptychography: exact ambiguities and one-intensity repair. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23938688",
+  "evidence": "The theorems have written proofs; Theorem 9.2 (exceptional Gaussian widths) is computer-assisted, using exact cyclotomic arithmetic and 320-bit outward-rounded interval isolation. Supplementary checks: 162 short-probe and doublet configurations, 280 lifted signal pairs, 210 direct and PSD checks, 228 cross-mask doublets, the kernel of the actual lifted map for n = 6 to 12, chirp gains for n = 6 to 24 and 480 synthetic noisy reconstructions. All five programs were replayed with and without Python -O from fresh copies; a corrupted conditioning formula is rejected under -O; GitHub CI reruns them on Linux. The n = 6 cross-mask stability values are floating-point evidence only, not certified.",
+  "statusDetail": "Unrefereed AI-assisted phase-retrieval candidate with written proofs and one computer-assisted certificate. Internal AI-assisted review in five roles, a separate-model adversarial review, one revision round with extensions, a proof audit, a re-review and a separate-model verification audit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (version 2.0 of 4 November 2026 with DOI insertion, 43 pages), its five verification and certificate programs, the priority resolution of 4 November 2026 and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "keyResults": [
+    "Only twin ambiguities (Theorem 9.3): for a real-even probe whose multipliers p_r(q) vanish exactly on the forced cross (q = N, r odd) ∪ (r = N, q odd), n = 2N ≥ 6, every data fibre has at most two global-phase classes; the nontrivial ones are conjugate pairs a e_t + b e_{t+N} on one antipodal pair, in the object or in its Fourier transform, with no mixed cases.",
+    "One extra intensity repairs them (Theorem 9.5, Proposition 9.6): adding |g*x|² gives injectivity exactly when g*D_t g ≠ 0 and g*B_t g ≠ 0 for all t, and then every rank-one target is unique even among positive-semidefinite competitors; the twisted geometric vector g_j ∝ ρ^j e^{iπj/n} works in every even dimension, with block gains at least 1/(√2 n²) at ρ = 1 − 1/n.",
+    "Gaussian probes (Proposition 9.1, Theorem 9.2): circular-distance Gaussians t^{dist(j,0)²} have exactly the cross mask for all but finitely many widths, including every t ≤ 1/n; certified computation locates every exceptional width for n = 6 to 16, with first width t*(6) = 2^{-1/2} and t*(n) ≈ 0.74–0.84 for 8 ≤ n ≤ 16.",
+    "Single-line probes (Theorems 8.18–8.19, 8.11): exact paired and PSD stability gaps after one added intensity and one vector maximising both at fixed energy, in a stated deconvolved, orthogonalised metric; a direct reconstruction with one real unknown. The underlying block classification is credited to VESPER–QUORUM.",
+    "Warnings and limits: a quadratic (defocus) chirp repairs the cross mask optimally when n ≡ 2 (mod 4) but repairs nothing when 4 divides n; Gaussian multipliers are numerically tiny (about 4 × 10⁻¹⁴ at n = 10, t = 1/n); the cross-mask stability constant is qualitative; idealised cyclic model, known probe, synthetic numerics."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted phase-retrieval research and proof writing",
+      "AI-assisted internal review in five roles (Claude Code subagents); adversarial review and verification audit by a separate model (OpenAI Codex); proof audit; clean replay; re-review",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When does a symmetric beam make an image ambiguous, and how can one extra measurement fix it? An Evidence Press briefing. Ptychography is a way of imaging tiny objects. A known beam of light or X-rays, called the probe, is scanned across the object, and at each position a detector records how strongly the light scatters in each direction. Only brightness is recorded, not the phase of the waves, so the image has to be worked out mathematically. A recent survey of open problems in the field asked what happens when the probe is symmetric, as a Gaussian beam is. Symmetry forces some parts of the data to vanish, so certain different objects give exactly the same measurements. This paper works in an idealised setting: a finite, wrap-around grid, every scan position recorded, and the probe known exactly. For real, mirror-symmetric probes, the lost data form a cross-shaped pattern. The paper proves that the only objects this confuses are twin pairs: an object concentrated on two opposite points, either in the image or in its frequency spectrum, and a mirror copy with the phases flipped. Nothing worse can happen. Then comes the repair. One extra coherent reading, in practice a single additional exposure with a structured beam, measured at one detector pixel, tells every twin pair apart, and does so even against blurred, mixed-state alternatives. A gently graded, tilted beam works for every even grid size. A simple defocus works for some sizes but fails whenever the grid size is divisible by four, which includes the common powers of two. For Gaussian beams, the paper pins down exactly, by certified computation, the first widths at which the pattern breaks, for grid sizes six to sixteen. There are important limits. An earlier public AI-assisted manuscript, VESPER QUORUM, already contains the classification for a related single-line pattern, and that is credited, not claimed. An earlier work it cites could not be found. The extra reading changes the experiment. The stability constants for Gaussian beams are only qualitative, and all tests use synthetic data. This is an anonymous, AI-assisted, unrefereed candidate, not peer reviewed or independently reproduced. Published on the fourth of November twenty twenty-six, its paper and code are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and manuscript are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "reproduce.py, global_recovery.py, real_probe_checks.py, gauss_exceptional_widths.py and cross_gap_bound.py were rerun with Python -I -B, with and without -O, from fresh copies of the approved package (about 30 seconds in total); JSON outputs reproduced exactly apart from timing fields and PNG figures byte for byte. The frozen archive was bound to that replay, all five reran from it under -O, and a corrupted formula was rejected; GitHub CI reruns them on Linux. Apart from the Theorem 9.2 certificate, these checks are supplementary to the written proofs."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; Theorem 9.2 is a computer-assisted proof with exact and interval arithmetic."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Programs pin NumPy 2.3.5, Matplotlib 3.10.8, SymPy 1.14.0 and mpmath 1.3.0 (requirements.txt); the certificate uses exact and interval arithmetic; not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Allain, Aslan, Coene and others (2025). Phasebook: a survey of selected open problems in phase retrieval. Sampling Theory, Signal Processing, and Data Analysis 23. Section 8.1 asks for recovery guarantees when probe ambiguity coefficients vanish; this release answers finite cyclic subclasses of that question.",
+      "url": "https://doi.org/10.1007/s43670-025-00117-0"
+    },
+    {
+      "citation": "Eve (2026). VESPER–QUORUM: Three arithmetic tests and the convex boundary of WDD recovery, version 6.0.0. Public AI-assisted research manuscript (Hugging Face dataset). Already contains the single-line block and fibre classification, the obstruction mechanism and the PSD algorithm, credited rather than claimed here; it does not add measurements and does not cover the real-even cross mask.",
+      "url": "https://huggingface.co/datasets/PureOne/VESPER-QUORUM-WDD"
+    },
+    {
+      "citation": "Forstner, Krahmer, Melnyk and Sissouno (2020). Well-conditioned ptychographic imaging via lost subspace completion. Inverse Problems 36, 105009. The lost-subspace-completion framework for ptychography.",
+      "url": "https://doi.org/10.1088/1361-6420/abaf3a"
+    },
+    {
+      "citation": "Bojarovska and Flinth (2016). Phase retrieval from Gabor measurements. Journal of Fourier Analysis and Applications 22. A window whose ambiguity function has no zeros gives injective Gabor phase retrieval.",
+      "url": "https://doi.org/10.1007/s00041-015-9431-0"
+    },
+    {
+      "citation": "Bartusel (2023). Injectivity conditions for STFT phase retrieval on Z, Z_d and R^d. Journal of Fourier Analysis and Applications 29, 53. Earlier real-window obstructions and results for signals with zeros.",
+      "url": "https://doi.org/10.1007/s00041-023-10026-2"
+    },
+    {
+      "citation": "Bartusel (2026). Uncertainty principles as a tool for STFT phase retrieval. arXiv:2605.31507. Its sufficient condition concerns where ambiguity zeros lie, not how many; the cross mask has a zero at lag one outside the allowed block.",
+      "url": "https://arxiv.org/abs/2605.31507v1"
+    },
+    {
+      "citation": "Alaifari and Wellershoff (2021). Stability estimates for phase retrieval from discrete Gabor measurements. Journal of Fourier Analysis and Applications 27, 6. Bandlimited recovery and stability via ambiguity-function support.",
+      "url": "https://doi.org/10.1007/s00041-020-09802-1"
+    },
+    {
+      "citation": "Carmeli, Heinosaari, Schultz and Toigo (2014). Tasks and premises in quantum state determination. Journal of Physics A 47, 075302. The inertia criterion behind strict rank-one completeness among PSD competitors.",
+      "url": "https://doi.org/10.1088/1751-8113/47/7/075302"
+    },
+    {
+      "citation": "Baldwin, Deutsch and Kalev (2016). Strictly-complete measurements for bounded-rank quantum-state tomography. Physical Review A 93, 052105. Strict completeness for low-rank states.",
+      "url": "https://doi.org/10.1103/PhysRevA.93.052105"
+    },
+    {
+      "citation": "Li (2026). Explicit full-spark and quantitatively phase-retrievable Gabor windows via algebraic perturbations. arXiv:2609.09614. Geometric cyclic windows and polynomial ambiguity margins, credited for the geometric summation method.",
+      "url": "https://arxiv.org/abs/2609.09614v1"
+    },
+    {
+      "citation": "Chu (1972). Polyphase codes with good periodic correlation properties. IEEE Transactions on Information Theory 18. The classical quadratic chirp, which repairs the cross mask optimally when n ≡ 2 (mod 4) and fails when 4 divides n.",
+      "url": "https://doi.org/10.1109/tit.1972.1054840"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:symmetric-ptychography-one-intensity-repair",
+    "attemptIds": [
+      "ep-attempt:symmetric-ptychography-one-intensity-repair-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "measurement-requirement",
+      "description": "Which objects a real-even (for example Gaussian) probe cannot distinguish in finite cyclic ptychography, and whether one added coherent intensity removes every such ambiguity: only twin pairs, and yes, with an explicit added vector in every even dimension.",
+      "scope": "One-dimensional finite cyclic model, known probe, every scan position and frequency recorded, exact cross mask; noise statistics, blind ptychography and quantitative general-n stability are excluded."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the Phasebook question, the three contributions and a disclosure paragraph on VESPER–QUORUM and NACRE–CHOIR; a results-at-a-glance table and a reading guide separate the real-even headline from the credited single-line structure; Section 10 and the claim ledger state what is credited, new and open.",
+      "remainingRisks": [
+        "The bounded literature check is not exhaustive priority certification, and NACRE–CHOIR could not be compared.",
+        "Proofs are written, not formalised; the cross-mask stability constant is qualitative."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a phase-retrieval specialist check the zero-row argument excluding mixed cases in Theorem 9.3 and the anticommuting-involution step in Theorem 9.5, and obtain a certified cross-mask stability constant for n = 6 and 8.",
+      "claimCeiling": "Exhaustive cross-mask fibres and one-intensity repair with strict PSD completeness for real-even probes, certified Gaussian exceptional widths for n = 6 to 16, and exact single-line gaps and design in a stated metric, by written proofs in an idealised finite cyclic model. Internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "symmetric-ptychography-one-intensity-repair-no-impact",
+        "aim": "science",
+        "outcome": "An openly checkable classification of symmetric-probe ambiguities in finite cyclic ptychography with a one-measurement repair.",
+        "setting": "AI-assisted phase-retrieval research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
