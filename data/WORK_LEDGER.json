@@ -55574,11 +55574,27 @@
       },
       "releaseSlug": "sinkhorn-metric-curvature-bias",
       "stopReason": null,
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-11-04T16:00:00Z",
+          "field": "active release version and comparison with Guo (2026)",
+          "reason": "Version 0.1.0-candidate compared the paper with Guo (2026) from its abstract alone.",
+          "replacement": "Version 0.2.0-candidate read Guo's paper completely: his Theorem 1 with the Gauss equation gives the tensor Q/16 and his Example 3 the first sphere and circle bias. The contribution is the rigorous inverse-metric theorem, not the coefficient. No theorem, proof or numerical result changed.",
+          "evidenceRefs": [
+            "https://evidencepress.org/releases/sinkhorn-metric-curvature-bias/",
+            "https://doi.org/10.5281/zenodo.23955055",
+            "https://github.com/ipitchford/sinkhorn-metric-curvature-bias/releases/tag/v0.2.0-candidate"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-11-04",
           "summary": "Registered the archive publication and public-delivery stages prospectively; all prior scientific and review work remains left-censored."
+        },
+        {
+          "date": "2026-11-04",
+          "summary": "Prepared the v0.2.0-candidate correction for the active release page after a complete reading of Guo (2026); preserved the v0.1.0-candidate record and the unrefereed, external-assurance and no-impact boundaries."
         }
       ],
       "metrics": {
@@ -57756,6 +57772,10 @@
     {
       "date": "2026-11-04",
       "summary": "Registered the archive publication and canonical-delivery stages for the sharp multiserver pricing candidate prospectively; prior scientific, review and revision work remains left-censored."
+    },
+    {
+      "date": "2026-11-04",
+      "summary": "Recorded the sinkhorn-metric-curvature-bias v0.2.0-candidate correction, which compares Guo (2026) in full and credits him for the coefficient, without changing any result or assurance limit."
     }
   ]
 }

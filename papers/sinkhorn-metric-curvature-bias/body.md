@@ -4,13 +4,15 @@
 
 **The question.** Data often lie on curved surfaces inside a larger space: a circle, a sphere, a curved sheet. If transport cost is measured by straight-line distance in that space, does the Sinkhorn metric converge to the right limit, and how large is the error at small $\varepsilon$?
 
-**The answer.**
+**The answer.** The coefficient below traces to Guo (2026); the proofs at the level of the metric are this paper's.
 
 - **The limit is right (proved).** For a smooth positive density on a closed surface of any dimension embedded in Euclidean space, the Sinkhorn metric converges to the Wasserstein metric of the surface, with rates.
 - **But it reads slightly short (proved).** At small $\varepsilon$ the metric is too small by $\tfrac{\varepsilon}{4}\int\langle Q\nabla\phi,\nabla\phi\rangle\,d\mu$, where $Q$ measures how sharply the surface bends in space. The reason is simple: the cost uses the straight chord between two points, which is shorter than the arc along the surface.
 - **A circle example.** On a circle of radius $R$ every mode of the metric is multiplied by $1-\varepsilon/(4R^2)$ to first order; on the unit circle the eigenvalue $1/k^2$ becomes $(1/k^2)(1-\varepsilon/4)$.
 - **Same shape, different bias (proved).** The bias depends on how the surface sits in space, not only on its intrinsic shape. A round circle and an ellipse of the same length have the same limit but different first-order biases.
 - **A cheap fix (proved).** A positive correction built from the Sinkhorn quantities themselves removes the first-order error.
+
+**What is not new here.** Guo (2026) already gives the tensor $Q/16$, via his Theorem 1 and the Gauss equation, and the first bias on spheres and circles. Once the exact scaling has an expansion, the coefficient of the metric follows formally from his expansion. This paper did not discover that coefficient. Its contribution is the rigorous inverse-metric theorem: control of the exact Sinkhorn scaling and of the singular inverse at any smooth positive density, operator-norm convergence with rates, and the results built on them. Guo's paper has no Sinkhorn scaling, inverse, metric, operator-norm statement or nonuniform-density bias.
 
 **Rule of thumb.** The relative bias is about $\varepsilon/(4R^2)$ for the smallest radius of curvature $R$, so it matters only when $\varepsilon$ is not small compared with $4R^2$.
 
@@ -32,11 +34,11 @@ Let $M\subset\mathbb R^D$ be compact, connected, smooth and without boundary, $\
 | Obstruction | on the circle no operator-norm rate better than $O(\varepsilon)$ | Prop 9.2 |
 | Embedding dependence | isometric embeddings differ at first order; $Q\not\equiv0$ | Prop 10.1 |
 
-**Attribution.** The formal limit is due to Lavenant, Luckhardt, Mordant, Schmitzer and Tamanini. Operator-level Gaussian expansions with extrinsic terms are credited to Smolyanov–von Weizsäcker–Wittich, Liou–Lu and Guo; Guo's SSRN preprint could be read only at abstract level, so the inverse-metric coefficient is described as not located in the sources we could read. Schubr's author-posted preprints treat the analogous intrinsic heat-kernel cost.
+**Attribution.** The formal limit is due to Lavenant, Luckhardt, Mordant, Schmitzer and Tamanini. Operator-level Gaussian expansions with extrinsic terms are credited to Smolyanov–von Weizsäcker–Wittich, Liou–Lu and Guo. Guo's Theorem 1 and Corollary 1 give a pointwise expansion of the row-normalised operator at uniform density, for fixed smooth $f$. With the contracted Gauss equation this gives the tensor $Q/16$, which is density-free because row normalisation changes only first-order terms; he does not state the tensor. His Example 3 with Corollary 1 gives the first sphere and circle coefficient. The coefficient of the inverse formula then follows formally. New here is the rigorous control of the exact scaling and singular resolvent at arbitrary positive density, and the results of the table. Saidi, Gunsilius and Mena work at fixed $\varepsilon$ on a closed ball with finite-smoothness costs, squared Euclidean cost excluded; they have no $\varepsilon\to0$ limit, manifold or curvature term. Schubr's author-posted preprints treat the analogous intrinsic heat-kernel cost.
 
 ## Technical account
 
-**Structure.** After exact Sinkhorn scaling, the normalised transition operator satisfies $P_\varepsilon=I-\tfrac\varepsilon4A+\varepsilon^2(\tfrac{A^2}{32}-\tfrac{A_Q}{16})+O(\varepsilon^3)$ on smooth functions (Proposition 5.2), where the second-order tensor is $Q/16$ (Lemma 5.1): the scalar curvature and density terms cancel. An elementary residual estimate for positive kernels (Lemma 3.1) controls the exact scaling without pointwise ratio bounds.
+**Structure.** After exact Sinkhorn scaling, the normalised transition operator satisfies $P_\varepsilon=I-\tfrac\varepsilon4A+\varepsilon^2(\tfrac{A^2}{32}-\tfrac{A_Q}{16})+O(\varepsilon^3)$ on smooth functions (Proposition 5.2), where the second-order tensor is $Q/16$ (Lemma 5.1): the scalar curvature and density terms cancel. The tensor is already implied by Guo's Theorem 1 (Remark 5.3). An elementary residual estimate for positive kernels (Lemma 3.1) controls the exact scaling without pointwise ratio bounds.
 
 **The singular inverse.** The metric involves $(I-P_\varepsilon^2)^{-1}$, which blows up like $\varepsilon^{-1}$. A uniform spectral gap (Lemma 4.1) and a uniform gradient bound (Lemma 6.1) pass the expansion through this inverse, giving $B_\varepsilon h=A^{-1}h-\tfrac\varepsilon4A^{-1}A_QA^{-1}h+O(\varepsilon^2)$ and operator-norm convergence. A uniform Sobolev remainder (Lemma 7.1) yields the rates of Theorem 2.4; intermediate frequencies block $O(\varepsilon)$ in general (Remark 7.2).
 
@@ -45,20 +47,20 @@ Let $M\subset\mathbb R^D$ be compact, connected, smooth and without boundary, $\
 ## Evidence, assurance and limitations
 
 - **Proofs.** Every theorem, proposition, corollary and lemma has a written proof. No proof is machine-verified.
-- **Checks.** Seven scripts: a symbolic check of the sphere coefficients; 60-digit sphere eigenvalues for $S^1$–$S^4$; a Funk–Hecke check; the flat torus in $\mathbb R^4$; a torus of revolution at nonconstant density; an equal-length ellipse against the circle; circle operator-norm evidence; a nonuniform ellipse at 768 and 1536 nodes; independent circle and ellipse implementations. These are floating-point checks, not certificates.
-- **Replay.** All seven were rerun from fresh copies with and without Python `-O`; outputs matched the shipped results to roundoff (residual-level fields near $10^{-14}$ differ at roundoff). A deliberately corrupted circle coefficient is rejected under `-O`. GitHub CI reruns all seven on Linux.
-- **Limits.** Population densities only, with no sampling theory; closed manifolds without boundary; smooth strictly positive density; the correction needs the curvature to be known; no convergence of global geodesic distances; the sharp $O(\varepsilon)$ operator-norm rate is open. The literature search was bounded (1 and 4 November 2026). Review was internal and AI-assisted only.
+- **Checks.** Eight scripts: a symbolic check of the sphere coefficients; 60-digit sphere eigenvalues for $S^1$–$S^4$; a Funk–Hecke check; the flat torus in $\mathbb R^4$; a torus of revolution at nonconstant density; an equal-length ellipse against the circle; circle operator-norm evidence; a nonuniform ellipse at 768 and 1536 nodes; independent circle and ellipse implementations; a comparison with the coefficients of Guo's Theorem 1. These are floating-point checks, not certificates.
+- **Replay.** All eight were rerun from fresh copies with and without Python `-O`; outputs matched the shipped results to roundoff (residual-level fields near $10^{-14}$ differ at roundoff). A deliberately corrupted circle coefficient is rejected under `-O`. GitHub CI reruns all eight on Linux.
+- **Limits.** Population densities only, with no sampling theory; closed manifolds without boundary; smooth strictly positive density; the correction needs the curvature to be known; no convergence of global geodesic distances; the sharp $O(\varepsilon)$ operator-norm rate is open. The prior-art searches of 1 and 4 November 2026 covered public sources, with no author enquiry; Guo (2026) was read completely. Review was internal and AI-assisted only.
 
 ## Who should care, and why
 
 | Audience | Potential use | Required caution |
 |:--|:--|:--|
 | People computing Sinkhorn distances or metrics on data lying on curved surfaces (manifold learning, shape analysis, meshes) | Size of the curvature bias, the rule of thumb $\varepsilon\ll4R^2$, and a correction | Continuous densities with known curvature; no sampling theory |
-| Optimal-transport and geometric-analysis researchers | A rigorous small-$\varepsilon$ limit with rates and an exact extrinsic coefficient | Unrefereed; Guo's full text unread |
+| Optimal-transport and geometric-analysis researchers | A rigorous small-$\varepsilon$ limit with rates, for a coefficient that follows formally from Guo (2026) | Unrefereed |
 
 ## Why the problem matters
 
-Entropic regularisation is used because it is fast, and users rely on small $\varepsilon$ to approximate true transport geometry. This paper shows the approximation is right in the limit but systematically biased on curved data when distances are measured through the surrounding space, and says exactly how large the bias is and how to remove it.
+Entropic regularisation is used because it is fast, and users rely on small $\varepsilon$ to approximate true transport geometry. Building on Guo's operator expansion, this paper proves that the approximation is right in the limit but systematically biased on curved data when distances are measured through the surrounding space, and proves how large the bias is and how to remove it.
 
 ## Related reading on Evidence Press
 
@@ -71,7 +73,7 @@ From the unpacked archive (Python 3.11 or later, [uv](https://docs.astral.sh/uv/
 ```sh
 export OPENBLAS_NUM_THREADS=1
 U="uv run --with numpy==2.3.5 --with scipy==1.17.0 --with matplotlib==3.10.8 --with mpmath --with sympy python3 -I -B"
-for s in sympy_sphere_coefficients check_spheres_tori check_torus_revolution check_ellipse_bias independent_circle_check independent_ellipse_check make_figures; do $U code/$s.py; done
+for s in sympy_sphere_coefficients check_spheres_tori check_torus_revolution check_guo_comparison check_ellipse_bias independent_circle_check independent_ellipse_check make_figures; do $U code/$s.py; done
 ```
 
 Each script takes a few seconds, rewrites its JSON in `results/` and exits with an error if any check fails, also under `python -O`.
@@ -81,8 +83,7 @@ Each script takes a few seconds, rewrites its JSON in `results/` and exits with 
 1. Prove or refute the sharp $O(\varepsilon)$ operator-norm rate on general manifolds.
 2. Joint limits with empirical samples: how the curvature bias interacts with sampling error.
 3. Boundaries, vanishing densities and estimated (noisy) curvature in the correction.
-4. Read Guo's full text to settle the operator-level priority question.
 
 ## What is in the evidence package
 
-The archive contains the LaTeX source and PDF, the bibliography built from saved Crossref, DataCite and arXiv records, the seven check scripts with their outputs, the validation figure, working proof notes, the dated prior-art ledger, a rating-free summary of the internal review, an AI index, research-gate records, CI configuration and SHA-256 sums. Text and data are CC0-1.0 and code is MIT. This is an unrefereed candidate.
+The archive contains the LaTeX source and PDF, the bibliography built from saved Crossref, DataCite and arXiv records, the eight check scripts with their outputs, the validation figure, working proof notes, the dated prior-art ledger, a rating-free summary of the internal review, an AI index, research-gate records, CI configuration and SHA-256 sums. Text and data are CC0-1.0 and code is MIT. This is an unrefereed candidate.

@@ -1,11 +1,11 @@
 {
   "slug": "sinkhorn-metric-curvature-bias",
   "title": "Extrinsic curvature bias in the small-regularisation limit of Sinkhorn metrics",
-  "shortTitle": "Sinkhorn metrics on curved data: the extrinsic curvature bias",
-  "oneLine": "On a curved surface sitting in space, with straight-line transport cost, the Sinkhorn metric converges to the Wasserstein metric as the regularisation ε shrinks, but at small ε it reads short by (ε/4) times a term measuring how the surface bends in space: on a circle of radius R every mode is multiplied by 1 − ε/(4R²), and a cheap positive correction removes the error.",
-  "abstract": "Entropic (Sinkhorn) optimal transport defines a local Riemannian metric on probability distributions, and as the regularisation ε tends to 0 it should recover Wasserstein geometry. For a smooth positive density on a compact connected submanifold of Euclidean space without boundary, with the fixed ambient cost |x−y|², this candidate proves that the Sinkhorn metric operator converges in operator norm on centred L² to the inverse weighted Laplacian, at rate O(ε^{1/2}) in L² operator norm and O(ε) from H² to L². For a smooth tangent hμ with Aφ = h and A = −ρ⁻¹div(ρ∇), the metric satisfies g_ε(hμ,hμ) = ∫|∇φ|²dμ − (ε/4)∫Σ_α|S_α∇φ|²dμ + O(ε²), where S_α are the shape operators of the embedding. The first bias is therefore nonpositive and depends on the embedding, not only on the intrinsic geometry: the transport cost uses the chord, which is shorter than the arc. On a circle of radius R each eigenvalue is multiplied by 1 − ε/(4R²) to first order, and this order is sharp. A positive correction built from the entropic inverse removes the term; the expansions hold along smooth finite-dimensional density families; round spheres are computed exactly with an explicit ε² coefficient; a high-frequency family on the circle shows that no operator-norm rate better than O(ε) is possible; and isometric embeddings, such as a round circle and an ellipse of equal length, give different biases. The formal limit is due to Lavenant, Luckhardt, Mordant, Schmitzer and Tamanini; operator-level curvature expansions of Gaussian kernels are credited to Smolyanov, von Weizsäcker and Wittich, Liou and Lu, and Guo, whose full text could not be read. Population densities on closed manifolds only. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "shortTitle": "Sinkhorn metrics on curved data: a rigorous inverse-metric theorem",
+  "oneLine": "Guo (2026) already gives the curvature tensor Q/16 and the first sphere and circle bias for diffusion operators; this candidate proves the rigorous inverse-metric theorem: on a closed curved surface with straight-line cost the Sinkhorn metric converges to the Wasserstein metric, reads short at small ε by (ε/4) times a bending term, and a cheap positive correction removes the error.",
+  "abstract": "Entropic (Sinkhorn) optimal transport defines a local Riemannian metric on probability distributions, and as the regularisation ε tends to 0 it should recover Wasserstein geometry. For a smooth positive density on a compact connected submanifold of Euclidean space without boundary, with the fixed ambient cost |x−y|², this candidate proves that the Sinkhorn metric operator converges in operator norm on centred L² to the inverse weighted Laplacian, at rate O(ε^{1/2}) in L² operator norm and O(ε) from H² to L². For a smooth tangent hμ with Aφ = h and A = −ρ⁻¹div(ρ∇), the metric satisfies g_ε(hμ,hμ) = ∫|∇φ|²dμ − (ε/4)∫Σ_α|S_α∇φ|²dμ + O(ε²), where S_α are the shape operators of the embedding. The first bias is therefore nonpositive and depends on the embedding, not only on the intrinsic geometry: the transport cost uses the chord, which is shorter than the arc. On a circle of radius R each eigenvalue is multiplied by 1 − ε/(4R²) to first order, and this order is sharp. A positive correction built from the entropic inverse removes the term; the expansions hold along smooth finite-dimensional density families; round spheres are computed exactly with an explicit ε² coefficient; a high-frequency family on the circle shows that no operator-norm rate better than O(ε) is possible; and isometric embeddings, such as a round circle and an ellipse of equal length, give different biases. The formal limit is due to Lavenant, Luckhardt, Mordant, Schmitzer and Tamanini. Guo (2026) already gives the tensor Q/16, via his Theorem 1 and the Gauss equation, and the first sphere and circle bias, and the coefficient of the inverse formula then follows formally; the contribution here is the rigorous inverse-metric theorem, not discovery of the coefficient. Guo's paper has no Sinkhorn scaling, inverse, metric, operator-norm statement or nonuniform-density bias. Other operator-level expansions (Smolyanov, von Weizsäcker and Wittich; Liou and Lu) are credited too. Population densities on closed manifolds only. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
   "datePublished": "2026-11-04",
-  "version": "0.1.0-candidate",
+  "version": "0.2.0-candidate",
   "authors": [
     "Anonymous"
   ],
@@ -22,22 +22,22 @@
     "small-regularisation limit"
   ],
   "repoUrl": "https://github.com/ipitchford/sinkhorn-metric-curvature-bias",
-  "releaseUrl": "https://github.com/ipitchford/sinkhorn-metric-curvature-bias/releases/tag/v0.1.0-candidate",
-  "pdfUrl": "https://github.com/ipitchford/sinkhorn-metric-curvature-bias/releases/download/v0.1.0-candidate/sinkhorn-metric-curvature-bias-0.1.0-candidate.pdf",
-  "doi": "10.5281/zenodo.23940148",
+  "releaseUrl": "https://github.com/ipitchford/sinkhorn-metric-curvature-bias/releases/tag/v0.2.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/sinkhorn-metric-curvature-bias/releases/download/v0.2.0-candidate/sinkhorn-metric-curvature-bias-0.2.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23955055",
   "conceptDoi": "10.5281/zenodo.23940147",
-  "zenodoUrl": "https://zenodo.org/records/23940148",
-  "citeText": "Anonymous (2026). Extrinsic curvature bias in the small-regularisation limit of Sinkhorn metrics. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23940148",
-  "evidence": "Every theorem has a written proof: Theorems 2.1, 2.3 and 2.4, Corollary 2.2, Lemmas 3.1, 4.1, 5.1, 6.1, 7.1 and 8.1, and Propositions 5.2, 6.2, 9.1, 9.2 and 10.1. Seven scripts give checks: a symbolic check of the sphere coefficients, 60-digit sphere eigenvalues for S¹ to S⁴, a Funk–Hecke check, the flat torus in R⁴, a torus of revolution at nonconstant density, an equal-length ellipse against the circle, circle operator-norm evidence, a nonuniform ellipse at 768 and 1536 nodes, and independent circle and ellipse implementations. All seven were replayed with and without Python -O from fresh copies; outputs matched the shipped results to floating-point roundoff; a corrupted circle coefficient is rejected under -O; GitHub CI reruns all seven on Linux. The numerical checks are not certificates or proofs.",
+  "zenodoUrl": "https://zenodo.org/records/23955055",
+  "citeText": "Anonymous (2026). Extrinsic curvature bias in the small-regularisation limit of Sinkhorn metrics. Version 0.2.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23955055",
+  "evidence": "Every theorem has a written proof: Theorems 2.1, 2.3 and 2.4, Corollary 2.2, Lemmas 3.1, 4.1, 5.1, 6.1, 7.1 and 8.1, and Propositions 5.2, 6.2, 9.1, 9.2 and 10.1. Eight scripts give checks: a symbolic check of the sphere coefficients, 60-digit sphere eigenvalues for S¹ to S⁴, a Funk–Hecke check, the flat torus in R⁴, a torus of revolution at nonconstant density, an equal-length ellipse against the circle, circle operator-norm evidence, a nonuniform ellipse at 768 and 1536 nodes, independent circle and ellipse implementations, and a comparison with the coefficients of Guo's Theorem 1. All eight were replayed with and without Python -O from fresh copies; outputs matched the shipped results to floating-point roundoff; a corrupted circle coefficient is rejected under -O; GitHub CI reruns all eight on Linux. The numerical checks are not certificates or proofs.",
   "statusDetail": "Unrefereed AI-assisted mathematical candidate in optimal transport and geometric analysis with written proofs; numerical checks are floating-point checks only. Internal AI-assisted review in five roles, a separate-model adversarial review, a clean replay, one revision round with extensions, a re-review, a proof audit and a separate-model audit of the new proofs. External specialist review, independent reproduction and formal verification have not been established.",
   "pageStructureVersion": "2.0",
   "pageStructureVariant": "canonical-theorem",
   "pageStructureWaivers": [],
   "recordMaturity": "current",
   "grandfatheredAtSchemaVersion": null,
-  "metadataProvenance": "Prepared from the final manuscript (revision of 4 November 2026 with DOI insertion, 23 pages), its check scripts, and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
+  "metadataProvenance": "Prepared from the final manuscript (corrected version of 4 November 2026 with DOI insertion, 24 pages), its check scripts, and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 4 November 2026.",
   "keyResults": [
-    "Limit and bias (Theorem 2.1): the Sinkhorn metric operator converges in operator norm to the inverse weighted Laplacian, and g_ε(hμ,hμ) = ∫|∇φ|²dμ − (ε/4)∫⟨Q∇φ,∇φ⟩dμ + O(ε²) with Q = Σ_α S_α², the squared shape operators: a nonpositive first bias that depends on the embedding.",
+    "Limit and bias (Theorem 2.1): the Sinkhorn metric operator converges in operator norm to the inverse weighted Laplacian, and g_ε(hμ,hμ) = ∫|∇φ|²dμ − (ε/4)∫⟨Q∇φ,∇φ⟩dμ + O(ε²) with Q = Σ_α S_α², the squared shape operators: a nonpositive first bias that depends on the embedding. The coefficient follows formally from Guo (2026); the proof is the contribution.",
     "Rates (Theorem 2.4): ‖B_ε − A⁻¹‖ = O(ε^{1/2}) in L² operator norm and O(ε) from H² to L²; on the circle no L² operator-norm rate better than O(ε) is possible (Proposition 9.2); whether O(ε) holds in general is open.",
     "Correction and families (Corollary 2.2, Theorem 2.3): a positive corrected metric built from the entropic inverse is accurate to O(ε²) on fixed smooth directions, and all expansions hold along smooth finite-dimensional density families.",
     "Exact cases (Section 9.1, Proposition 9.1): on a circle of radius R each eigenvalue R²/k² becomes (R²/k²)(1 − ε/(4R²)) to first order, so on the unit circle 1/k² becomes (1/k²)(1 − ε/4), and this order is sharp; on round spheres S^m the metric is computed exactly with an explicit ε² coefficient.",
@@ -63,7 +63,7 @@
     },
     "internalReplay": {
       "state": "passed",
-      "note": "All seven scripts were rerun with Python -I -B, with and without -O, from fresh copies of the approved package; the symbolic, sphere/torus and torus-of-revolution outputs reproduced byte for byte and every other number agreed to roundoff (relative 1.4e-8 or better; residual-level fields near 1e-14 differ at roundoff). The frozen archive was bound to that replay, the symbolic and sphere checks were rerun from it under -O, and a corrupted circle coefficient was rejected; GitHub CI reruns all seven on Linux. These are floating-point checks, not proofs."
+      "note": "All eight scripts were rerun with Python -I -B, with and without -O, from fresh copies of the approved package; the symbolic, sphere/torus and torus-of-revolution outputs reproduced byte for byte and every other number agreed to roundoff (relative 1.4e-8 or better; residual-level fields near 1e-14 differ at roundoff). The frozen archive was bound to that replay, the symbolic and sphere checks were rerun from it under -O, and a corrupted circle coefficient was rejected; GitHub CI reruns all eight on Linux. These are floating-point checks, not proofs."
     },
     "independentRerun": {
       "state": "not-assessed",
@@ -126,8 +126,12 @@
       "pageOnlyReason": "Cited in the manuscript bibliography as an author-posted web preprint without a DOI; linked to its page."
     },
     {
-      "citation": "Guo (2026). Intrinsic and Extrinsic Bias of Diffusion Operators: Asymptotic Expansion and Kernel-Dependent Comparison. SSRN. Operator-level intrinsic and extrinsic bias expansions; only the abstract could be read.",
+      "citation": "Guo (2026). Intrinsic and Extrinsic Bias of Diffusion Operators: Asymptotic Expansion and Kernel-Dependent Comparison. SSRN. Closest operator-level result, read completely: a pointwise expansion of the row-normalised operator at uniform density. Its Theorem 1 with the Gauss equation gives the tensor Q/16, and Example 3 with Corollary 1 gives the first sphere and circle bias. No Sinkhorn scaling, inverse, metric, operator-norm statement or nonuniform-density bias.",
       "url": "https://doi.org/10.2139/ssrn.7411565"
+    },
+    {
+      "citation": "Saidi, Gunsilius and Mena (2026). Second-order Sinkhorn Geometry and √n-Inference. arXiv:2610.36488. Fixed ε on a closed ball with finite-smoothness costs, squared Euclidean cost excluded; no ε→0 limit, manifold or curvature term.",
+      "url": "https://arxiv.org/abs/2610.36488"
     },
     {
       "citation": "Jia-Ming Liou and Chih-Chung Lu (2025). Asymptotic expansion of the Gaussian integral operators on Riemannian submanifolds of R^n. arXiv:2506.13238. General Gaussian expansions on submanifolds, credited.",
@@ -225,9 +229,9 @@
     ],
     "semanticBridge": {
       "state": "explicit",
-      "description": "The paper opens with a plain-English account, states what is credited to prior operator expansions and what is claimed (inverse-metric consequences), separates proofs from numerical checks and lists limits in Section 10.",
+      "description": "The paper opens with a plain-English account, states what is credited to prior operator expansions and what is claimed (the rigorous inverse-metric theorem, not the coefficient, which follows formally from Guo's expansion), separates proofs from numerical checks and lists limits in Section 10.",
       "remainingRisks": [
-        "The bounded literature check is not exhaustive priority certification; Guo's full text could not be read.",
+        "The prior-art search covered public sources, with no author enquiry; Guo (2026) was read completely and is credited.",
         "Numerical checks are floating-point checks; no proof is machine-verified."
       ]
     },
@@ -243,7 +247,7 @@
         "formalVerification",
         "priorityAssessment"
       ],
-      "nextAction": "Have an optimal-transport or geometric-analysis specialist check the singular-inverse argument (Lemma 4.1, Lemma 6.1, Proposition 6.2) and Lemma 7.1, and obtain Guo's full text to settle whether the operator-level coefficient appears there.",
+      "nextAction": "Have an optimal-transport or geometric-analysis specialist check the singular-inverse argument (Lemma 4.1, Lemma 6.1, Proposition 6.2) and Lemma 7.1.",
       "claimCeiling": "Written proofs of the limit, the extrinsic first-order bias, the rates, the correction, the family expansions, the sphere computation, the high-frequency obstruction and embedding dependence; numerical checks only. Internal verification is not external assurance."
     },
     "impactClaims": [
@@ -261,5 +265,14 @@
         "independentAssessment": null
       }
     ]
-  }
+  },
+  "corrections": [
+    {
+      "date": "2026-11-04",
+      "scope": "claim",
+      "fixedIn": "0.2.0-candidate",
+      "summary": "Version 0.1.0-candidate said Guo's (2026) full text could not be read and compared the paper only with its abstract. Version 0.2.0-candidate read Guo's paper completely and corrected the comparison: Guo already gives the tensor Q/16 and the first sphere and circle bias, and this paper's contribution is the rigorous inverse-metric theorem, not discovery of the coefficient.",
+      "detail": "Section 1 now states what Guo proves, with theorem numbers, and Remark 5.3 shows that his Theorem 1 gives the tensor for every closed manifold and that his first-order terms agree in every dimension. A new script, check_guo_comparison.py, compares the coefficients. The comparison with Saidi et al. (2026) was also corrected: fixed ε on a closed ball, squared Euclidean cost excluded, not pre-empted. No theorem, proof or numerical result changed. The audio briefing was recorded for 0.1.0-candidate and is unchanged; it says the paper finds the first error, and this note takes precedence: the coefficient is Guo's and the rigorous theorem is this paper's. Version 0.1.0-candidate: doi:10.5281/zenodo.23940148. Version 0.2.0-candidate: doi:10.5281/zenodo.23955055."
+    }
+  ]
 }
