@@ -2,6 +2,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const {resolve} = require('./banner-palettes');
+const {escapeText} = require('./svg-xml');
 const slug = 'finite-normal-observation-windows';
 const description = 'Schematic comparison: nested observation intervals starting at zero retain a positive frame bound under the theorem assumptions. A positively delayed interval has a frame bound if and only if the normal operator is invertible. Shorter does not mean less noise-sensitive.';
 // Brief: This image helps the reader understand why shortening an initial
@@ -29,6 +30,6 @@ function draw(){
 <text x="62" y="373" font-size="20" fill="#e2dce0">Schematic · given an initial frame · shorter windows can amplify noise</text>
 </g>`.replace(/<text /g, '<text class="og-hide" ');
 }
-function svg(){const p=resolve(slug);return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" data-banner-palette="${p.name}"><title>Shortening is not delaying</title><desc>${description}</desc><defs><linearGradient id="bg"><stop offset="0" stop-color="${p.colors[0]}"/><stop offset="1" stop-color="${p.colors[1]}"/></linearGradient></defs><rect width="1200" height="400" fill="url(#bg)"/>${draw()}</svg>`;}
+function svg(){const p=resolve(slug);return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" data-banner-palette="${p.name}"><title>Shortening is not delaying</title><desc>${escapeText(description)}</desc><defs><linearGradient id="bg"><stop offset="0" stop-color="${p.colors[0]}"/><stop offset="1" stop-color="${p.colors[1]}"/></linearGradient></defs><rect width="1200" height="400" fill="url(#bg)"/>${draw()}</svg>`;}
 module.exports={draw,description,svg,colors:['#8fe0ca','#e6b875']};
 if(require.main===module)fs.writeFileSync(path.join(__dirname,'../assets/art',slug+'.svg'),svg());
