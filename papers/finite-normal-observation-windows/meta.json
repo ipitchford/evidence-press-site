@@ -1,0 +1,183 @@
+{
+  "slug": "finite-normal-observation-windows",
+  "title": "Finite observation windows for continuous powers of normal operators",
+  "shortTitle": "Shorter observation windows still recover the initial state",
+  "oneLine": "For the specified normal-operator model, if observations recover every initial state stably over one finite interval starting at zero, they do so over every such interval—but shorter windows may amplify noise much more.",
+  "abstract": "How long must an evolving system be observed to recover its initial state? This candidate proves that continuous powers of a bounded normal operator generate a semi-continuous frame over every positive finite interval beginning at zero whenever they do so over one. The operator need not be invertible or reductive, and the sensors need not form a Bessel family. The proof converts an integrated observation bound into local holomorphic control away from zero and then propagates the lower frame bound. Elementary consequences distinguish delayed observations, which require a bounded inverse under the theorem's hypotheses, from shortening an initial window. Worked examples show why existence is not a uniform conditioning guarantee and why finite and infinite windows differ. The theorem concerns ideal continuous observations with a fixed bounded spectral argument; it supplies neither a finite-sampling algorithm nor practical noise tolerance. The bounded literature search found no matching prior resolution but does not establish historical priority.",
+  "datePublished": "2026-11-05",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "normal operators",
+    "dynamical sampling",
+    "semi-continuous frames",
+    "exact observability",
+    "observation windows",
+    "spectral calculus"
+  ],
+  "repoUrl": "https://github.com/ipitchford/finite-normal-observation-windows",
+  "releaseUrl": "https://github.com/ipitchford/finite-normal-observation-windows/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/finite-normal-observation-windows/releases/download/v0.1.0-candidate/finite-normal-observation-windows-v0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23990540",
+  "conceptDoi": "10.5281/zenodo.23990539",
+  "zenodoUrl": "https://zenodo.org/records/23990540",
+  "citeText": "Anonymous (2026). Finite observation windows for continuous powers of normal operators. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23990540",
+  "evidence": "Written analytic proofs, explicit diagonal and two-dimensional examples, exact rational series checks and floating-point integration illustrations. Ten recorded normal/optimized checker tests cover positive execution and corruption failures; these checks do not verify the general theorem.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Internal AI-assisted proof, domain and editorial checks are not external specialist review, independent reproduction or formal verification. Historical originality is supported only by a bounded source comparison, not an exhaustive priority determination.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the revised manuscript and recorded checker repair on 5 November 2026. Public GitHub and Zenodo record identities and all three release assets were verified by provider checksums and full public-download hashes on the same date.",
+  "keyResults": [
+    "Initial-window theorem: one positive finite frame interval starting at zero implies every positive finite frame interval starting at zero for continuous powers of a bounded normal operator with a fixed bounded Borel argument.",
+    "No invertibility, reductivity or Bessel-sensor hypothesis is imposed in the main theorem.",
+    "Elementary delayed-window boundary: under the main hypotheses, an interval starting after zero is a frame interval exactly when the operator has a bounded inverse.",
+    "Elementary sensor boundaries: Bessel sensors force invertibility under the frame premise; finitely many sensors cannot give this frame inequality in infinite dimension.",
+    "Worked examples separate recoverability from uniform conditioning and finite-window bounds from infinite-time bounds."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical development",
+      "Internal AI-assisted proof, source and editorial review",
+      "Codex publication preparation"
+    ],
+    "humanRole": "Publication authority only; no human mathematical contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review; no external peer review established."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The public GitHub release and Zenodo record were read back on 5 November 2026. PDF, source archive and checksum manifest matched local bytes by provider checksums and full public-download hashes. Availability does not establish correctness or priority."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Recorded producer tests of the repaired example checker pass in normal and optimized Python modes; eight corruption cases fail as expected. This is scoped example/checker replay, not verification of the analytic theorem."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No independent reimplementation established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant verification."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal AI-assisted domain and proof review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Python standard-library checker and test harness supplied with recorded outcomes; floating-point illustrations may vary across environments."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Aldroubi, Huang and Petrosyan (2019). Frames induced by the action of continuous powers of an operator. Journal of Mathematical Analysis and Applications 478(2), 1059–1084.",
+      "url": "https://doi.org/10.1016/j.jmaa.2019.05.066"
+    },
+    {
+      "citation": "Aldroubi, Cabrelli, Krishtal and Molter (2026). Dynamical sampling: A survey. La Matematica 5, Article 37.",
+      "url": "https://doi.org/10.1007/s44007-026-00215-y"
+    },
+    {
+      "citation": "Díaz Martín, Medri and Molter (2021). Dynamical sampling: A view from control theory. Excursions in harmonic analysis, volume 6, 269–295.",
+      "url": "https://doi.org/10.1007/978-3-030-69637-5_15"
+    },
+    {
+      "citation": "Engel and Nagel (2000). One-parameter semigroups for linear evolution equations. Springer.",
+      "url": "https://doi.org/10.1007/b97696"
+    },
+    {
+      "citation": "Partington and Pott (2005). Admissibility and exact observability of observation operators for semigroups. Irish Mathematical Society Bulletin 55, 19–39.",
+      "url": "https://www.maths.tcd.ie/pub/ims/bull55/R5502.pdf"
+    },
+    {
+      "citation": "Haak and Ouhabaz (2012). Exact observability, square functions and spectral theory. Journal of Functional Analysis 262, 2903–2927.",
+      "url": "https://doi.org/10.1016/j.jfa.2012.01.007"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:finite-normal-observation-windows",
+    "attemptIds": [
+      "ep-attempt:finite-normal-observation-windows-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "A proof of finite initial-window frame invariance with explicit delayed-window and sensor boundaries.",
+      "scope": "Continuous spectral powers of bounded normal operators with a fixed bounded Borel argument; ideal continuous-time measurements, not arbitrary evolution or practical sampling."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The paper specifies the observation operator, initial-state lower bound, spectral branch, reconstruction map and limits of numerical examples.",
+      "remainingRisks": [
+        "Older or unindexed prior art may remain outside the bounded search.",
+        "Existence of a lower frame bound does not establish useful conditioning or a finite-sampling scheme."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authority does not imply scientific endorsement.",
+      "External specialist assessment and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "priorityAssessment"
+      ],
+      "nextAction": "Ask an operator-theory or observability specialist to assess the proof and compare older exact-observability results under matching observation assumptions.",
+      "claimCeiling": "Written analytic proof with scoped producer example checks; no external validation or exhaustive priority claim."
+    },
+    "impactClaims": [
+      {
+        "id": "finite-normal-observation-windows-no-impact",
+        "aim": "science",
+        "outcome": "An inspectable normal-operator observation-window theorem and its scope boundaries.",
+        "setting": "AI-assisted functional analysis",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched comparator registered.",
+        "estimand": "No research acceleration or downstream scientific impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "narration": "How long must you watch an evolving system before you can work out how it started?\n\nThis mathematical paper studies that question using normal operators and continuous sensor observations. Its candidate result is striking: if stable reconstruction is possible over one finite interval beginning at time zero, then every shorter positive interval beginning there works too. Longer finite intervals also work.\n\nThere is an important catch. Stable does not mean equally reliable. As the observation window shrinks, the reconstruction can become much more sensitive to noise. One two-dimensional example in the paper shows exactly how quickly that sensitivity can grow.\n\nStarting later is also different from stopping earlier. Under the theorem's assumptions, a delayed observation interval works precisely when the operator has a bounded inverse. If some modes fade arbitrarily quickly, losing the earliest observations can destroy the uniform recovery guarantee.\n\nThe proof turns an integrated bound on observation energy into analytic control at positive times. It then shows that states cannot become almost invisible on a short initial interval while remaining uniformly visible on a longer one.\n\nReaders can inspect the complete proof, worked examples, and small verification scripts. Those scripts check examples and series coefficients, not the general theorem. This remains an unrefereed, AI-assisted candidate, and it does not supply a practical finite-sampling method or a universal noise tolerance.\n\nThis briefing accompanies Finite observation windows for continuous powers of normal operators, dated 5 November 2026. The paper and evidence are linked on its Evidence Press release page. This is an AI-generated synthetic voice. The briefing is explanatory media, not additional evidence."
+}
