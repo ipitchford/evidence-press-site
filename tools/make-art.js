@@ -2523,6 +2523,9 @@ palette['davis-yin-gap-sharpness'] = astochasticArt.colors.davisYin;
 for (const [slug,moduleName] of [['gaussian-cosine-local-stability','gaussian-cosine-art'],['rfim-unbounded-fields-entropy','rfim-entropy-art'],['uniform-split-reliability','split-reliability-art'],['two-host-dormancy-oscillations','dormancy-art'],['infinite-birth-death-thinned-counts','thinned-counts-art'],['signed-kuramoto-positive-networks','signed-kuramoto-art']]) {
   const spec=require('./'+moduleName); art[slug]=spec.draw; palette[slug]=spec.colors;
 }
+const normalObservationArt = require('./finite-normal-observation-art');
+art['finite-normal-observation-windows'] = normalObservationArt.draw;
+palette['finite-normal-observation-windows'] = normalObservationArt.colors;
 for (const slug of requested) {
   if (!art[slug]) throw new Error(`Unknown art slug: ${slug}`);
 }
@@ -2530,6 +2533,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'finite-normal-observation-windows') svg = withDescription(svg, normalObservationArt.description);
   if(slug==='assignment-aligned-effective-states')svg = withDescription(svg, assignmentAlignedArt.description);
   if(slug==='sharp-rank-three-chollet-order-five')svg = withDescription(svg, cholletRank3Art.description);
   if(slug==='compartment-fragmentation-phase-classification')svg = withDescription(svg, astochasticArt.descriptions.compartment);
