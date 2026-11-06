@@ -371,6 +371,9 @@ function preserveMedia(label, slug, liveItems, candidateItems, liveEvents, candi
   for (const item of liveItems || []) {
     const url = String(item.url || item.contentUrl || '');
     if (!url || candidate.includes(url)) continue;
+    if (item.type === 'audio' && (candidateItems || []).some(next =>
+        next.type === 'audio' && isRecordedAudioSuccessor(url,
+          String(next.url || next.contentUrl || ''), slug, liveEvents, candidateEvents))) continue;
     if (item.type === 'video' &&
         isRecordedVideoReplacement(url, candidateItems, slug, liveEvents, candidateEvents)) continue;
     failures.push(`${label}: dropped published media ${url}`);
@@ -774,6 +777,7 @@ module.exports = {
   preserveChangeLogPrefix,
   preserveExactItems,
   preserveLineages,
+  preserveMedia,
   preserveReleaseOperatingModels,
   preserveSchemaNode,
   preserveWorkLedger,
