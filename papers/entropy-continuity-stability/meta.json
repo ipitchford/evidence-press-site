@@ -1,0 +1,175 @@
+{
+  "slug": "entropy-continuity-stability",
+  "title": "Sharp entropy continuity and stability under trace and operator constraints",
+  "shortTitle": "Exact distances are not error budgets",
+  "oneLine": "Two-distance entropy bounds gain equality criteria, a finite error-budget calculation and quantitative stability around one common optimal pair.",
+  "abstract": "For finite-dimensional quantum states, exact trace and operator distances pose a different optimization problem from upper bounds on those distances. Building on published entropy inequalities and capped-spectrum optimization, this candidate characterizes equality, evaluates the upper-cap modulus by endpoints and quadratic roots, and proves that near-extremizers at fixed positive trace distance are close to one common extremal pair. The square-root deficit exponent is sharp, but the coefficient is not claimed optimal and deteriorates as trace distance tends to zero.",
+  "datePublished": "2026-11-06",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.23997749",
+  "zenodoUrl": "https://zenodo.org/records/23997749",
+  "repoUrl": "https://github.com/ipitchford/entropy-continuity-stability",
+  "releaseUrl": "https://github.com/ipitchford/entropy-continuity-stability/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/entropy-continuity-stability/releases/download/v0.1.0-candidate/entropy-continuity-stability-v0.1.0-candidate.pdf",
+  "citeText": "Anonymous (2026). Sharp entropy continuity and stability under trace and operator constraints. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23997749",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "quantum entropy",
+    "continuity bound",
+    "trace distance",
+    "operator norm",
+    "stability",
+    "equality cases"
+  ],
+  "evidence": "Written proofs, finite arithmetic examples, floating-point diagnostics and targeted semantic guard tests. Computations do not establish the universal theorems.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Internal checking is not external peer review, unaffiliated reproduction or formal verification; bounded source comparison does not guarantee priority.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the revised manuscript and refs.bib on 6 November 2026. Published GitHub and Zenodo assets verified against the frozen local payload by full public downloads of all three files.",
+  "keyResults": [
+    "All equality cases for the prescribed trace/operator-distance entropy optimum, whose formula and attaining family have published predecessors.",
+    "A continuous upper-cap modulus obtained from finitely many endpoints and quadratic-root candidates; direct substitution of caps into the exact-distance formula can underestimate the entropy change.",
+    "At fixed positive trace distance, both states lie within a square-root deficit bound of one common extremal pair, without a rank-gap assumption.",
+    "The square-root exponent is sharp; no optimal coefficient or uniform stability as trace distance vanishes is claimed.",
+    "Restricted common-marginal conditional-entropy attainment and fixed-difference consequences retain their stated dimensional assumptions."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical development and revision",
+      "Internal AI-assisted source and proof checking",
+      "Codex publication preparation"
+    ],
+    "humanRole": "Publication authority only; no human mathematical contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review is not unaffiliated peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "Suppose two quantum states are close. How different can their entropies be?\n\nThere is a subtle trap. Knowing the exact distance between states is not the same as knowing an upper bound on that distance. An error budget allows smaller distances too—and one of those can produce the larger entropy change.\n\nThis AI-assisted, unrefereed research candidate makes that distinction explicit. In a four-dimensional example, with the operator distance capped at one fifth, a trace-distance budget of three tenths is most demanding at an actual distance of one fifth. Substituting the budget directly into the exact-distance formula would underestimate the possible change.\n\nThe paper gives a finite calculation for the correct bound. Instead of searching over all quantum states, it compares specified endpoints and quadratic roots.\n\nIts other main question is structural. If a pair almost achieves the largest possible entropy difference, must it resemble an exactly optimal pair? At a fixed positive trace distance, the paper proves that both states are close to one common optimal pair. The error scales with the square root of the entropy shortfall. That exponent cannot generally be improved.\n\nThere are important limits. The coefficient deteriorates as the trace distance approaches zero. The work is finite-dimensional, and its calculations are checks, not substitutes for the proofs. Published entropy inequalities supply the foundation; the additional work concerns equality, upper-bound evaluation and stability.\n\nThis is Sharp entropy continuity and stability under trace and operator constraints, dated 6 November 2026. Find the paper and evidence package on Evidence Press. This narration uses a synthetic voice and is explanatory material, not additional scientific evidence.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "All three frozen assets are publicly available from GitHub and Zenodo with matching full-download hashes; archive-parity receipt retained."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Six frozen-package gates passed in the retained research receipt, including clean normal and optimized producer-side replay with guard tests. Finite examples and floating diagnostics do not prove the universal theorems."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated independent reimplementation established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant verification claimed."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal AI-assisted checking is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "The frozen source package, pinned environment and checkers passed clean producer-side normal and optimized replay. No unaffiliated reproduction or formal verification is claimed."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Sason (2013). Entropy Bounds for Discrete Random Variables via Maximal Coupling. IEEE Transactions on Information Theory 59, 7118–7131.",
+      "url": "https://doi.org/10.1109/TIT.2013.2274515"
+    },
+    {
+      "citation": "Jabbour and Datta (2024). Tightening continuity bounds for entropies and bounds on quantum capacities. IEEE Journal on Selected Areas in Information Theory 5, 645–658.",
+      "url": "https://doi.org/10.1109/JSAIT.2024.3469929"
+    },
+    {
+      "citation": "Audenaert, Bergh, Datta, Jabbour, Capel and Gondolf (2025). Continuity bounds for quantum entropies arising from a fundamental entropic inequality. IEEE Transactions on Information Theory 71, 7029–7038.",
+      "url": "https://doi.org/10.1109/TIT.2025.3586478"
+    },
+    {
+      "citation": "Audenaert (2007). A sharp continuity estimate for the von Neumann entropy. Journal of Physics A: Mathematical and Theoretical 40, 8127–8136.",
+      "url": "https://doi.org/10.1088/1751-8113/40/28/S18"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:entropy-continuity-stability",
+    "attemptIds": [
+      "ep-attempt:entropy-continuity-stability-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "stability-margin",
+      "description": "Finite-dimensional entropy cap evaluation and common-pair near-equality stability.",
+      "scope": "Exact trace/operator constraints or upper caps as separately defined; stability conditioned on positive trace distance."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Density-matrix distances determine Jordan spectra; retained entropy deficits control one common extremal pair. Upper caps require optimization over actual distances.",
+      "remainingRisks": [
+        "Bounded prior-art search does not establish exhaustive priority.",
+        "Floating diagnostics are not rigorous numerical enclosures.",
+        "Stability is not uniform as trace distance tends to zero; conditional-marginal scope is restricted."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authority is not scientific endorsement.",
+      "External specialist validation remains open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "priorityAssessment"
+      ],
+      "nextAction": "External source-led checking of equality necessity, finite cap optimization and paired stability, distinct from producer checker replay.",
+      "claimCeiling": "Written proof and scoped producer checks; no external validation, formal verification or absolute originality guarantee."
+    },
+    "impactClaims": [
+      {
+        "id": "entropy-continuity-stability-no-impact",
+        "aim": "science",
+        "outcome": "Potential research reuse of entropy error-budget and stability formulas.",
+        "setting": "Finite-dimensional quantum information theory",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched research-workflow comparison.",
+        "estimand": "No acceleration or downstream impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "slug": "gaussian-radon-one-point-extension",
+  "title": "A one-point extension of Gaussian Radon log-concavity",
+  "shortTitle": "One more point, two useful deletions",
+  "oneLine": "A two-deletion identity extends a known Gaussian convex-hull intersection theorem from d+2 to d+3 points, with an explicit log-concavity margin.",
+  "abstract": "Split independent points from one nonsingular Gaussian law into two fixed labelled groups. For d+3 points in dimension d, the probability that their convex hulls intersect is log-concave in group size. A deterministic identity counts exactly two deletions preserving a feasible split and reduces the result to the known d+2-point Gaussian theorem. The paper gives an explicit margin, exact slack and local equality criteria, and a conditional transfer to exchangeable laws. General arrangement identities and qualitative ultra-log-concavity convolution are inherited; cases with at least d+4 points remain unresolved here.",
+  "datePublished": "2026-11-06",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.23997793",
+  "zenodoUrl": "https://zenodo.org/records/23997793",
+  "repoUrl": "https://github.com/ipitchford/gaussian-radon-one-point-extension",
+  "releaseUrl": "https://github.com/ipitchford/gaussian-radon-one-point-extension/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/gaussian-radon-one-point-extension/releases/download/v0.1.0-candidate/gaussian-radon-one-point-extension-v0.1.0-candidate.pdf",
+  "citeText": "Anonymous (2026). A one-point extension of Gaussian Radon log-concavity. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23997793",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Radon partition",
+    "Gaussian random polytope",
+    "log-concavity",
+    "deletion identity",
+    "ultra-log-concavity"
+  ],
+  "evidence": "Conventional written proof and an exact four-point line example derived by order counting. Five packaging gates passed; no numerical scientific replay or formal verification is claimed.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Internal checking is not external peer review, unaffiliated reproduction or formal verification; bounded source comparison does not guarantee priority.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the revised manuscript and bibliography on 6 November 2026. All three frozen archive assets verified by full public downloads from GitHub and Zenodo against local SHA-256; availability is not mathematical validation.",
+  "keyResults": [
+    "For d+3 independent points from one nonsingular Gaussian law, fixed labelled convex-hull intersection probabilities are log-concave in group size.",
+    "Exactly two deletions preserve any feasible split in affine general position, yielding 2q_k=k a_(k−1)+(n−k)a_k.",
+    "An explicit margin and exact local slack refine the inherited qualitative convolution principle.",
+    "Transfer to exchangeable laws requires a positive-interior log-concave common deletion marginal.",
+    "The higher-nullity cases n≥d+4 and strictness at every Gaussian interior index remain unresolved here."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical development and revision",
+      "Internal AI-assisted source and proof checking",
+      "Codex publication preparation"
+    ],
+    "humanRole": "Publication authority only; no human mathematical contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review is not unaffiliated peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "Take a collection of random points and divide their labels into two groups. Imagine stretching a rubber sheet around each group. How likely are the two enclosed shapes to intersect?\n\nThis AI-assisted, unrefereed mathematical candidate studies points sampled independently from the same Gaussian distribution. It asks how the intersection probability changes as the groups become more balanced.\n\nA published theorem answers the question for dimension plus two points. This paper adds one point: dimension plus three. The probabilities are log-concave, a precise inequality that implies they rise towards the centre and then fall symmetrically.\n\nThe reason is geometric. Whenever a labelled split has intersecting convex hulls, exactly two points can be deleted while preserving that intersection. Averaging this identity connects the larger sample to the already understood smaller one.\n\nFour points on a line give a concrete example. For a fixed one-versus-three split, the intersection probability is one half. For a fixed two-versus-two split, it is two thirds. These are probabilities for fixed labels, not the distribution of a randomly chosen partition size.\n\nThe paper also identifies an explicit margin in the log-concavity inequality and precise local equality conditions. The general arrangement identities and qualitative convolution theorem are established background, not new claims.\n\nThe scope remains narrow. The argument does not settle the cases with dimension plus four or more points, and does not rule out every wider central plateau. Its evidence is a written proof using an established Gaussian theorem, not a numerical simulation or external peer review.\n\nThis is A one-point extension of Gaussian Radon log-concavity, dated 6 November 2026. The paper and evidence package are linked on Evidence Press. This synthetic-voice briefing is explanatory material, not additional scientific evidence.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "Published GitHub and Zenodo archives; all three assets match the frozen local SHA-256 manifest by full public download. This establishes availability and byte parity, not proof correctness."
+    },
+    "internalReplay": {
+      "state": "not-assessed",
+      "note": "Pure written mathematical proof with an analytic order-counting example. No numerical scientific replay is applicable; passed packaging gates are not proof verification."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated independent reimplementation established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant verification claimed."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal AI-assisted checking is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "not-assessed",
+      "note": "Manuscript source and source-audit records are supplied. No experimental dataset or numerical replay environment is required by this proof."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Chan, Kalai, Narayanan, Ter-Saakov and White (2026). Unimodality for Radon Partitions of Random Vectors. Discrete & Computational Geometry. The inherited d+2 Gaussian base.",
+      "url": "https://doi.org/10.1007/s00454-026-00870-6"
+    },
+    {
+      "citation": "White (2025). Radon Partitions of Random Gaussian Polytopes. arXiv:2507.05449v1.",
+      "url": "https://arxiv.org/abs/2507.05449v1"
+    },
+    {
+      "citation": "Streltsova and Wagner (2025). Levels in Arrangements: Linear Relations, the g-Matrix, and Applications to Crossing Numbers. SoCG 2025, 75:1–75:18.",
+      "url": "https://doi.org/10.4230/LIPIcs.SoCG.2025.75"
+    },
+    {
+      "citation": "Liggett (1997). Ultra Logconcave Sequences and Negative Dependence. Journal of Combinatorial Theory, Series A 79, 315–325.",
+      "url": "https://doi.org/10.1006/jcta.1997.2790"
+    },
+    {
+      "citation": "Gurvits (2008). A short, based on the mixed volume, proof of Liggett's theorem on the convolution of ultra-logconcave sequences. arXiv:0804.1181, Theorem 1.1.",
+      "url": "https://arxiv.org/abs/0804.1181"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:gaussian-radon-one-point-extension",
+    "attemptIds": [
+      "ep-attempt:gaussian-radon-one-point-extension-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "A one-point Gaussian Radon log-concavity extension with a quantitative local margin.",
+      "scope": "n=d+3 independent identically distributed nonsingular Gaussian points; conditional exchangeable transfer retains its deletion-marginal premise."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "A two-dimensional affine-dependence sign cone yields a two-deletion count, whose expectation transfers the known smaller-sample inequality.",
+      "remainingRisks": [
+        "The known Gaussian base theorem remains load-bearing.",
+        "The normalized random-side law differs from fixed labelled split probabilities.",
+        "Bounded novelty assessment is not exhaustive priority; larger nullity remains open."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authority is not scientific endorsement.",
+      "External specialist validation remains open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "priorityAssessment"
+      ],
+      "nextAction": "External source-led review of the deletion identity, normalization, quantitative slack and inherited Gaussian base.",
+      "claimCeiling": "Written source-dependent proof; no numerical scientific replay, external validation, formal verification or absolute originality guarantee."
+    },
+    "impactClaims": [
+      {
+        "id": "gaussian-radon-one-point-extension-no-impact",
+        "aim": "science",
+        "outcome": "Potential reuse of a deletion identity in random convex geometry.",
+        "setting": "Random polytopes and probabilistic combinatorics",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched research-workflow comparison.",
+        "estimand": "No acceleration or downstream impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
