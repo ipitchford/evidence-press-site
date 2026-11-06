@@ -2571,6 +2571,9 @@ art['entropy-continuity-stability'] = entropyStabilityArt.draw;
 palette['entropy-continuity-stability'] = entropyStabilityArt.colors;
 const inverseZArt = require('./equivariant-inverse-z-art');
 const reversibleMomentsArt = require('./reversible-moments-art');
+const gaussianSupportArt = require('./gaussian-support-art');
+art['gaussian-entropic-support-geometry'] = gaussianSupportArt.draw;
+palette['gaussian-entropic-support-geometry'] = gaussianSupportArt.colors;
 art['reversible-negative-eigenfunction-moments'] = reversibleMomentsArt.draw;
 palette['reversible-negative-eigenfunction-moments'] = reversibleMomentsArt.colors;
 art['equivariant-inverse-z-unimodality'] = inverseZArt.draw;
@@ -2592,6 +2595,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'gaussian-radon-one-point-extension') svg = withDescription(svg, gaussianRadonArt.description);
   if (slug === 'equivariant-inverse-z-unimodality') svg = withDescription(svg, inverseZArt.description);
   if (slug === 'reversible-negative-eigenfunction-moments') svg = withDescription(svg, reversibleMomentsArt.description);
+  if (slug === 'gaussian-entropic-support-geometry') svg = withDescription(svg, gaussianSupportArt.description);
   if (slug === 'douglas-rachford-residual-counterexamples') svg = withDescription(svg, drsResidualArt.description);
   if (slug === 'finite-normal-observation-windows') svg = withDescription(svg, normalObservationArt.description);
   if(slug==='assignment-aligned-effective-states')svg = withDescription(svg, assignmentAlignedArt.description);
