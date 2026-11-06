@@ -1,0 +1,17 @@
+A gradient method can make progress according to one yardstick while moving slowly according to another.
+
+This Evidence Press release examines that mismatch in an established family of optimization methods. It is an AI-assisted, unrefereed mathematical candidate.
+
+The setting is a positive-definite quadratic: a smooth bowl-shaped objective with a unique minimum. The methods choose each step using a weighted gradient. But the paper measures the ordinary objective gap, meaning how far the function value remains above its minimum.
+
+A small three-variable example exposes the distinction. After two steps of standard minimal-gradient descent, roughly ninety-three point six one per cent of the initial objective gap remains. Applying the familiar steepest-descent rate twice would allow only about ninety-two point three one per cent. Exact rational arithmetic proves the difference.
+
+This does not overturn the originating authors' proved convergence results. Their two-step question admits two readings. One rate factor over two steps is valid; two factors can fail.
+
+The mechanism is that small high-curvature components control the step, while a low-curvature component holds most of the objective error. Three active eigenvalues are needed for this unrelaxed two-step failure.
+
+The paper goes further, identifying a sharp worst-case transient coefficient and controlling growing horizons for power weights. The problems vary as their condition number grows. This is not the same as following one fixed problem forever, and it does not imply twice as many iterations for a fixed accuracy.
+
+The evidence includes written proofs, exact examples and bounded numerical checks—not external reproduction or formal verification.
+
+This is the sixth of November twenty twenty-six release, Transient objective convergence of spectrally weighted gradient descent. The paper and evidence are linked on Evidence Press. This briefing uses an AI-generated voice and is not additional scientific evidence.

@@ -1,0 +1,168 @@
+{
+  "slug": "weighted-gradient-transient-objective",
+  "title": "Transient objective convergence of spectrally weighted gradient descent",
+  "shortTitle": "Two steps, two different yardsticks",
+  "oneLine": "Three spectral modes defeat a proposed two-factor objective bound, while a sharp transient theorem separates growing condition numbers from fixed-problem long-time rates.",
+  "abstract": "This unrefereed AI-assisted candidate studies ordinary objective gaps for established weighted-gradient methods on positive-definite quadratics. Exact examples distinguish one-factor and two-factor readings of a two-step question. Fixed-horizon asymptotics and controlled growing horizons quantify transient behavior without refuting proved convergence results or claiming fixed-accuracy iteration lower bounds.",
+  "datePublished": "2026-11-06",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.24001734",
+  "conceptDoi": "10.5281/zenodo.24001733",
+  "zenodoUrl": "https://zenodo.org/records/24001734",
+  "repoUrl": "https://github.com/ipitchford/weighted-gradient-transient-objective",
+  "releaseUrl": "https://github.com/ipitchford/weighted-gradient-transient-objective/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/weighted-gradient-transient-objective/releases/download/v0.1.0-candidate/weighted-gradient-transient-objective-v0.1.0-candidate.pdf",
+  "citeText": "Anonymous (2026). Transient objective convergence of spectrally weighted gradient descent. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24001734",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "quadratic optimization",
+    "weighted gradient descent",
+    "transient convergence",
+    "objective gap",
+    "spectral methods"
+  ],
+  "evidence": "Written mathematical proofs with scoped producer-side arithmetic and intended-failure controls; computational checks do not prove universal claims.",
+  "statusDetail": "AI-assisted unrefereed candidate. Internal checking is not unaffiliated reproduction, external peer review or formal verification.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from final manuscript and bibliography on 6 November 2026. Coordinating agent confirmed public GitHub release and Zenodo record 24001734 with all three assets and full-download parity; website publication is separate.",
+  "keyResults": [
+    "One Kantorovich factor over two unrelaxed steps is valid; two factors can fail.",
+    "A three-mode rational example leaves objective ratio 0.93613669, above the proposed 0.92311388 bound.",
+    "Fixed-horizon worst-case objective decrease has leading coefficient 2 omega K as condition number grows.",
+    "Positive power weights without relaxation admit sublogarithmic-horizon control and a simultaneous logarithmic interval of bound violations."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical development and revision",
+      "Internal AI-assisted proof and source checking",
+      "Codex publication preparation"
+    ],
+    "humanRole": "Publication authorization only; no human scholarly contribution inferred.",
+    "reviewStatus": "Internal checking is not external specialist or editorial review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "A gradient method can make progress according to one yardstick while moving slowly according to another.\n\nThis Evidence Press release examines that mismatch in an established family of optimization methods. It is an AI-assisted, unrefereed mathematical candidate.\n\nThe setting is a positive-definite quadratic: a smooth bowl-shaped objective with a unique minimum. The methods choose each step using a weighted gradient. But the paper measures the ordinary objective gap, meaning how far the function value remains above its minimum.\n\nA small three-variable example exposes the distinction. After two steps of standard minimal-gradient descent, roughly ninety-three point six one per cent of the initial objective gap remains. Applying the familiar steepest-descent rate twice would allow only about ninety-two point three one per cent. Exact rational arithmetic proves the difference.\n\nThis does not overturn the originating authors' proved convergence results. Their two-step question admits two readings. One rate factor over two steps is valid; two factors can fail.\n\nThe mechanism is that small high-curvature components control the step, while a low-curvature component holds most of the objective error. Three active eigenvalues are needed for this unrelaxed two-step failure.\n\nThe paper goes further, identifying a sharp worst-case transient coefficient and controlling growing horizons for power weights. The problems vary as their condition number grows. This is not the same as following one fixed problem forever, and it does not imply twice as many iterations for a fixed accuracy.\n\nThe evidence includes written proofs, exact examples and bounded numerical checks—not external reproduction or formal verification.\n\nThis is the sixth of November twenty twenty-six release, Transient objective convergence of spectrally weighted gradient descent. The paper and evidence are linked on Evidence Press. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:weighted-gradient-transient-objective",
+    "attemptIds": [
+      "ep-attempt:weighted-gradient-transient-objective-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Three spectral modes defeat a proposed two-factor objective bound, while a sharp transient theorem separates growing condition numbers from fixed-problem long-time rates.",
+      "scope": "Ordinary objective gap; normalized spectrum; growing-horizon results use positive power weights without relaxation."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Ordinary objective gap; normalized spectrum; growing-horizon results use positive power weights without relaxation.",
+      "remainingRisks": [
+        "Written arguments are internally checked, not formally verified.",
+        "Finite and numerical tests have bounded scope.",
+        "Prior-art search does not guarantee priority."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authority is not scientific endorsement.",
+      "External specialist validation remains open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "priorityAssessment"
+      ],
+      "nextAction": "Unaffiliated source-led review and independent reproduction of the bounded checker.",
+      "claimCeiling": "Written proof and scoped producer checks; no external validation, formal verification or absolute originality guarantee."
+    },
+    "impactClaims": [
+      {
+        "id": "weighted-gradient-transient-objective-no-impact",
+        "aim": "science",
+        "outcome": "Potential theoretical reuse of scoped counterexamples and quantitative analysis.",
+        "setting": "quadratic optimization",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched research-workflow comparison.",
+        "estimand": "No acceleration or downstream impact effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "Public GitHub release and Zenodo record 24001734 confirmed with all three assets and full-download parity. Availability is not correctness or priority."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Repaired-source exact examples, two-mode cases and recurrence checks passed; 195 admissible Decimal cases and 16 intended failures checked. Decimal diagnostics are not certified intervals."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Separate implementation within this workflow is not unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant verification claimed."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal AI-assisted review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No journal or venue peer-review decision established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Standard-library Python producer replay in the recorded environment; not unaffiliated reproduction or universal portability."
+    }
+  },
+  "relatedWorks": [
+    {"citation":"Pronzato, Wynn and Zhigljavsky (2006). Asymptotic behaviour of a family of gradient algorithms in R^d and Hilbert spaces. Mathematical Programming.","url":"https://doi.org/10.1007/s10107-005-0602-7"},
+    {"citation":"Huang, Dai, Liu and Zhang (2022). On the asymptotic convergence and acceleration of gradient methods. Journal of Scientific Computing.","url":"https://doi.org/10.1007/s10915-021-01685-8"},
+    {"citation":"He (2025). The worst-case root-convergence factor of GMRES(1). arXiv v1.","url":"https://arxiv.org/abs/2501.10248v1"},
+    {"citation":"MacDonald, Murray and Tappenden (2025). A Flexible Algorithmic Framework for Strictly Convex Quadratic Minimization. arXiv v1.","url":"https://arxiv.org/abs/2505.04047v1"},
+    {
+      "citation": "MacDonald, Murray and Tappenden (2025). On a family of relaxed gradient descent methods for strictly convex quadratic minimization.",
+      "url": "https://doi.org/10.1007/s10589-025-00670-3"
+    }
+  ],
+  "audioContentVersioned": true
+}
