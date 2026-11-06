@@ -2524,6 +2524,11 @@ for (const [slug,moduleName] of [['gaussian-cosine-local-stability','gaussian-co
   const spec=require('./'+moduleName); art[slug]=spec.draw; palette[slug]=spec.colors;
 }
 const normalObservationArt = require('./finite-normal-observation-art');
+const tsallisGradientArt = require('./tsallis-gradient-art');
+art['tsallis-heat-order-classification'] = tsallisGradientArt.entropy;
+art['weighted-gradient-transient-objective'] = tsallisGradientArt.gradient;
+palette['tsallis-heat-order-classification'] = tsallisGradientArt.colors;
+palette['weighted-gradient-transient-objective'] = ['#acbedb','#ffdb8a'];
 // Proposition 6: fixed-amplitude endpoint coefficient, not the unrestricted constant.
 art['schatten-hlawka-endpoint'] = (a, b) => {
   const x = z => 110 + 125*z, y = q => 319 - 320*q;
