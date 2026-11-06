@@ -6,27 +6,27 @@
   "claimCeiling": "This roadmap records intended work and review decisions. It does not establish that an undiscovered relationship exists, that a proposed relationship is correct, or that the Atlas improves research outcomes.",
   "currentBaseline": {
     "asOf": "2026-11-06",
-    "releaseCount": 249,
+    "releaseCount": 250,
     "methodCount": 13,
-    "clusterCount": 236,
+    "clusterCount": 237,
     "lineageCount": 5,
-    "acceptedRelationshipCount": 1459,
+    "acceptedRelationshipCount": 1464,
     "publishedProposalCount": 4,
     "relationshipComposition": {
-      "usesMethodCount": 1125,
-      "clusterMembershipCount": 251,
+      "usesMethodCount": 1129,
+      "clusterMembershipCount": 252,
       "lineageMembershipCount": 15,
       "directInterReleaseCount": 68,
-      "defaultProgrammeViewCount": 334
+      "defaultProgrammeViewCount": 335
     },
     "methodPrevalenceChecks": [
       {
         "methodId": "adversarial-controls",
-        "releaseAssignmentCount": 224
+        "releaseAssignmentCount": 225
       },
       {
         "methodId": "structural-compression",
-        "releaseAssignmentCount": 143
+        "releaseAssignmentCount": 144
       }
     ],
     "sourceRefs": [
@@ -2207,6 +2207,17 @@
       ],
       "decision": "complete",
       "nextAction": "Complete separate archive, media and canonical delivery gates."
+    },
+    {
+      "reviewId": "atlas-review-2026-11-06-reversible-negative-eigenfunction-moments",
+      "reviewedAt": "2026-11-06",
+      "trigger": "Current candidate release integrated into the source corpus",
+      "reviewer": "Codex producer-side publication integration",
+      "provenanceNote": "Mechanical current-baseline refresh using computeAtlasBaseline, buildResearchGraph and loadAtlasProposals. Historical reviews and roadmap priorities are preserved; counts do not establish scientific assurance, delivery or impact.",
+      "baseline": {"releaseCount":250,"acceptedRelationshipCount":1464,"publishedProposalCount":4},
+      "observations": ["Computed current source graph contains 250 releases, 236 clusters, 1129 method edges and 252 cluster memberships; four proposal records remain unchanged."],
+      "decision": "complete",
+      "nextAction": "Complete the separate publication and canonical-readback gates without promoting assurance from graph counts."
     }
   ]
 }
