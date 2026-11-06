@@ -1,0 +1,163 @@
+{
+  "slug": "gaussian-entropic-support-geometry",
+  "title": "Support geometry and nonuniform small-entropy limits in Gaussian transport",
+  "shortTitle": "When small entropy is not small enough",
+  "oneLine": "Support angles govern Gaussian joint-plan sensitivity: exact singular-support coefficients and a uniform remainder with explicit gap conditions.",
+  "abstract": "How much does adding entropy change a Gaussian transport plan? This unrefereed candidate derives the small-entropy coefficient on arbitrary supports, its sharp support-dependent bound, and explicit angle-conditioned remainder control. A moving positive-definite family shows that bounded total variance alone does not yield uniform convergence. The known full-rank coefficient is credited to public MathDB proofs.",
+  "datePublished": "2026-11-06",
+  "version": "0.1.0-candidate",
+  "doi": "10.5281/zenodo.24003341",
+  "conceptDoi": "10.5281/zenodo.24003340",
+  "zenodoUrl": "https://zenodo.org/records/24003341",
+  "repoUrl": "https://github.com/ipitchford/gaussian-entropic-support-geometry",
+  "releaseUrl": "https://github.com/ipitchford/gaussian-entropic-support-geometry/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/gaussian-entropic-support-geometry/releases/download/v0.1.0-candidate/gaussian-entropic-support-geometry-v0.1.0-candidate.pdf",
+  "citeText": "Anonymous (2026). Support geometry and nonuniform small-entropy limits in Gaussian transport. Evidence Press, version 0.1.0-candidate. https://doi.org/10.5281/zenodo.24003341.",
+  "authors": [
+    "Anonymous"
+  ],
+  "licenseScope": "Original prose, data and diagrams: CC0 1.0. Original executable code: MIT, as specified in LICENSE-CODE. Third-party material retains its own terms; see LICENSES.md in the evidence package.",
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Gaussian optimal transport",
+    "entropic regularization",
+    "singular covariance",
+    "principal angles",
+    "nonuniform convergence"
+  ],
+  "evidence": "Written proofs; numerical diagnostics and explicit negative controls. Internal AI-assisted review; no external peer review or formal verification.",
+  "statusDetail": "Unrefereed AI-assisted candidate. GitHub and Zenodo archive bytes match the final package; producer-side checks passed. The full-rank coefficient, bound and equality case are credited prior work. External peer review and independent reproduction have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the revised manuscript and refs.bib on 6 November 2026. Final producer replay and archive preflight passed; all three public GitHub and Zenodo assets were fully downloaded and matched on 6 November 2026. Research assurance is separate from provider availability and site delivery.",
+  "keyResults": [
+    "All-rank small-entropy coefficient for the squared Wasserstein distance between Gaussian joint plans.",
+    "Sharp fixed-support bound governed by positive principal cosines, with an explicit equality condition.",
+    "Bounded-trace moving positive-definite pairs can prevent uniform convergence.",
+    "Uniform quadratic remainder under positive spectral and support-angle gaps; inverse-square angle dependence is necessary in order."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "OpenAI Codex"
+    ],
+    "humanRole": "Publication authorization only; no human scholarly contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review; not external peer review."
+  },
+  "relatedWorks": [
+    {"citation":"Akyildiz, Del Moral and Miguez (2025), Gaussian entropic optimal transport: Schrödinger bridges and the Sinkhorn algorithm. Version 5.","url":"https://arxiv.org/html/2412.18432v5","bibliographySource":"refs.bib"},
+    {"citation":"Patel, The sharp universal constant is d/2. Public MathDB submission; platform unverified, exact posting timestamp not independently authenticated.","url":"https://mathdb.com/p/372212/universal-bound-conjecture-for-gaussian-entropic-optimal-tra","bibliographySource":"refs.bib"},
+    {"citation":"principia math, The sharp universal Gaussian EOT coupling bound. Public MathDB submission; platform status is not external verification.","url":"https://mathdb.com/p/372212/universal-bound-conjecture-for-gaussian-entropic-optimal-tra","bibliographySource":"refs.bib"},
+    {"citation":"Freulon, Georgakis and Panaretos (2026), Entropic optimal transport beyond product reference couplings: the Gaussian case on Euclidean space. Version 2.","url":"https://arxiv.org/html/2507.01709v2","bibliographySource":"refs.bib"},
+    {"citation":"Janati, Muzellec, Peyré and Cuturi (2020), Entropic Optimal Transport between Unbalanced Gaussian Measures has a Closed Form. NeurIPS 2020.","url":"https://doi.org/10.48550/arXiv.2006.02572","bibliographySource":"refs.bib"},
+    {"citation":"Minh (2022), Entropic regularization of Wasserstein distance between infinite-dimensional Gaussian measures and Gaussian processes. Version 3.","url":"https://arxiv.org/html/2011.07489v3","bibliographySource":"refs.bib"},
+    {"citation":"Mallasto, Gerolin and Minh (2022), Entropy-regularized 2-Wasserstein distance between Gaussian measures. Information Geometry.","url":"https://doi.org/10.1007/s41884-021-00052-8","bibliographySource":"refs.bib"},
+    {"citation":"Yun (2026), Spectral Shrinkage of Gaussian Entropic Optimal Transport. Version 2.","url":"https://arxiv.org/html/2512.19457v2","bibliographySource":"refs.bib"},
+    {"citation":"Bhatia and Kittaneh (1990), On the singular values of a product of operators. SIAM Journal on Matrix Analysis and Applications.","url":"https://doi.org/10.1137/0611018","bibliographySource":"refs.bib"}
+  ],
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "An optimal transport plan describes how two distributions are paired. Adding entropy makes that pairing more diffuse. But how close is the resulting plan to the one selected when the entropy penalty disappears?\n\nThis unrefereed, AI-assisted mathematical candidate studies Gaussian distributions. Its focus is geometry: especially what happens when the distributions live on different lower-dimensional supports.\n\nThe familiar full-rank coefficient and its sharp bound were already given in public MathDB proofs. This paper credits that work. Its candidate contribution concerns singular supports, sharp angle-dependent bounds, and the difference between pointwise and uniform convergence.\n\nHere is the key example. Imagine two lines that are almost perpendicular. Their small positive cosine measures how weakly the transport cost connects them. The error is governed by entropy divided by that cosine, not by entropy alone. A small entropy parameter can therefore leave a substantial difference between the joint plans.\n\nThe paper proves this can also happen along a family of strictly positive covariance matrices with bounded total variance. It then gives an explicit uniform error bound when the nonzero covariance eigenvalues and positive support cosines stay bounded away from zero. A simple rank-one calculation shows why the angle dependence cannot disappear.\n\nExactly perpendicular directions are treated separately: entropy selects independence there. The results concern Gaussian joint-plan distance, not every transport method, data-estimation error, or a practical optimal tuning rule.\n\nThe written proofs and numerical checks are available with the Evidence Press release dated the sixth of November, twenty twenty-six. The numerical tests are floating-point diagnostics, not formal proofs. Review was internal and AI-assisted; external peer review has not been established. This synthetic voice provides explanation, not additional evidence.",
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:gaussian-entropic-support-geometry",
+    "attemptIds": [
+      "ep-attempt:gaussian-entropic-support-geometry-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "structural-compression",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Support-angle-dependent Gaussian joint-plan sensitivity and a uniform error envelope.",
+      "scope": "Finite-dimensional Gaussian marginals; product-reference entropy; explicit positive spectral and angle gaps for uniform control."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The covariance formulas measure squared Wasserstein distance between joint plans, not objective cost or iterative solver convergence.",
+      "remainingRisks": [
+        "Numerical checks are not proofs.",
+        "Prior-art comparison is bounded.",
+        "No non-Gaussian or statistical-estimation guarantee."
+      ]
+    },
+    "humanJudgmentGates": ["Publication authority is not scientific endorsement.", "External specialist assessment remains open."],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "priorityAssessment"
+      ],
+      "nextAction": "External specialist assessment and independent reproduction.",
+      "claimCeiling": "Unrefereed candidate with written proofs and producer diagnostics only."
+    },
+    "impactClaims": [
+      {
+        "id": "gaussian-entropic-support-geometry-potential-use",
+        "aim": "science",
+        "outcome": "More transparent support-geometry error analysis.",
+        "setting": "Gaussian transport theory.",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None measured.",
+        "estimand": "No practical-impact or acceleration effect estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "GitHub prerelease and published Zenodo record 24003341 provide the exact three-asset package, confirmed by full public downloads. This does not establish scientific correctness."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Final package-specific producer replay and negative controls passed, with retained byte bindings. Floating-point diagnostics are not interval certificates or formal proofs."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No external independent rerun established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No external independent reimplementation established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No machine-checked formal proof."
+    },
+    "specialistReview": {
+      "state": "partial",
+      "note": "Internal AI-assisted specialist-role review, not independent human review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external journal peer review established."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Environment and replay instructions are packaged; producer clean-replay evidence is retained. No external independent reproduction is claimed."
+    }
+  }
+}
