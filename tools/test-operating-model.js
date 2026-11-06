@@ -842,8 +842,13 @@ check('canonical doctrine, registries, ledgers and frozen baseline validate', va
   const stable = `https://evidencepress.org/assets/audio/${slug}.mp3`;
   const hash = require('crypto').createHash('sha256').update(fs.readFileSync(path.join(root, 'assets/audio', `${slug}.mp3`))).digest('hex');
   const next = [{ type: 'audio', url: `${stable}?v=${hash.slice(0, 10)}` }];
-  const all = JSON.parse(fs.readFileSync(path.join(root, 'data/PRESENTATION_EVENTS.json'), 'utf8'));
-  const event = all.events.find(e => e.eventId === 'presentation:sinkhorn-metric-curvature-bias:2026-11-06:guo-audio-attribution');
+  const transcriptPath = `assets/audio/${slug}.txt`;
+  const transcriptHash = require('crypto').createHash('sha256').update(fs.readFileSync(path.join(root, transcriptPath))).digest('hex');
+  // Test-only event follows current bytes, so a later legitimate re-recording
+  // does not invalidate this regression. Never mutate the public ledger.
+  const event = {eventId:'test:audio-successor-fixture',slug,eventType:'audio',
+    researchClaimChanged:false,researchArchiveChanged:false,
+    artifact:{audioPath:`assets/audio/${slug}.mp3`,audioSha256:hash,transcriptPath,transcriptSha256:transcriptHash}};
   const test = (candidate = next, events = {events:[event]}, old = {events:[]}, liveType = 'audio') => {
     publicationIntegrity.resetFailures();
     publicationIntegrity.preserveMedia('audio regression', slug, [{type:liveType,url:stable}], candidate, old, events);
