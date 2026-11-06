@@ -838,6 +838,39 @@ check('canonical doctrine, registries, ledgers and frozen baseline validate', va
 }
 
 {
+  const slug = 'sinkhorn-metric-curvature-bias';
+  const stable = `https://evidencepress.org/assets/audio/${slug}.mp3`;
+  const hash = require('crypto').createHash('sha256').update(fs.readFileSync(path.join(root, 'assets/audio', `${slug}.mp3`))).digest('hex');
+  const next = [{ type: 'audio', url: `${stable}?v=${hash.slice(0, 10)}` }];
+  const transcriptPath = `assets/audio/${slug}.txt`;
+  const transcriptHash = require('crypto').createHash('sha256').update(fs.readFileSync(path.join(root, transcriptPath))).digest('hex');
+  // Test-only event follows current bytes, so a later legitimate re-recording
+  // does not invalidate this regression. Never mutate the public ledger.
+  const event = {eventId:'test:audio-successor-fixture',slug,eventType:'audio',
+    researchClaimChanged:false,researchArchiveChanged:false,
+    artifact:{audioPath:`assets/audio/${slug}.mp3`,audioSha256:hash,transcriptPath,transcriptSha256:transcriptHash}};
+  const test = (candidate = next, events = {events:[event]}, old = {events:[]}, liveType = 'audio') => {
+    publicationIntegrity.resetFailures();
+    publicationIntegrity.preserveMedia('audio regression', slug, [{type:liveType,url:stable}], candidate, old, events);
+    const ok = publicationIntegrity.listedFailures().length === 0;
+    publicationIntegrity.resetFailures(); return ok;
+  };
+  check('media array accepts only a new byte-bound audio presentation successor', test());
+  const mutate = change => {const e = clone(event); change(e); return {events:[e]};};
+  for (const [label, accepted] of [
+    ['absent event', test(next,{events:[]})],
+    ['reused event', test(next,{events:[event]},{events:[event]})],
+    ['wrong slug', test(next,mutate(e=>e.slug='other'))],
+    ['wrong audio hash', test(next,mutate(e=>e.artifact.audioSha256='0'.repeat(64)))],
+    ['wrong transcript hash', test(next,mutate(e=>e.artifact.transcriptSha256='0'.repeat(64)))],
+    ['wrong path', test([{type:'audio',url:stable.replace(slug,'other')+'?v='+hash.slice(0,10)}])],
+    ['wrong candidate type', test([{type:'video',url:next[0].url}])],
+    ['wrong live type', test(next,{events:[event]},{events:[]},'video')],
+    ['dropped media', test([])]
+  ]) check(`media array rejects audio successor with ${label}`, !accepted);
+}
+
+{
   const slug = 'certified-commitment-horizons';
   const retiredUrl = 'https://youtu.be/G4ehJ81pl6g';
   const replacementUrl = 'https://youtu.be/ikaliZ25P8I';
