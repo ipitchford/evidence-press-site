@@ -2524,6 +2524,40 @@ for (const [slug,moduleName] of [['gaussian-cosine-local-stability','gaussian-co
   const spec=require('./'+moduleName); art[slug]=spec.draw; palette[slug]=spec.colors;
 }
 const normalObservationArt = require('./finite-normal-observation-art');
+// Proposition 6: fixed-amplitude endpoint coefficient, not the unrestricted constant.
+art['schatten-hlawka-endpoint'] = (a, b) => {
+  const x = z => 110 + 125*z, y = q => 319 - 320*q;
+  const points = [];
+  for (let i=0;i<=240;i++) { const z=i/40; points.push(`${x(z).toFixed(2)},${y(Math.min(z,2)/(1+z)).toFixed(2)}`); }
+  const curve = 'M'+points.join(' L');
+  return `<g font-family="Georgia,serif">
+    <path d="M110 319 H900 M110 319 V72" fill="none" stroke="#e8dce0" stroke-opacity=".45" stroke-width="2"/>
+    <path d="${curve} L860 319 H110 Z" fill="${a}" fill-opacity=".08"/>
+    <path d="${curve}" fill="none" stroke="${a}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M360 319 V105.67 H110" fill="none" stroke="${b}" stroke-opacity=".65" stroke-width="2" stroke-dasharray="7 8"/>
+    <circle cx="360" cy="105.67" r="10" fill="${b}" stroke="#fff7ed" stroke-width="3"/>
+    <g fill="#fff4eb" font-size="27" class="og-hide">
+      <text x="72" y="329" text-anchor="end">0</text>
+      <text x="92" y="115" text-anchor="end">⅔</text>
+      <text x="360" y="354" text-anchor="middle">2</text>
+      <text x="610" y="354" text-anchor="middle">4</text>
+      <text x="860" y="354" text-anchor="middle">6</text>
+      <text x="890" y="354">z</text>
+    </g>
+    <g fill="${b}" class="og-hide">
+      <text x="395" y="89" font-size="32">fixed-amplitude peak</text>
+      <text x="180" y="255" font-size="28">z / (1 + z)</text>
+      <text x="565" y="157" font-size="28">2 / (1 + z)</text>
+    </g>
+    <g fill="#fff4eb" class="og-hide">
+      <text x="945" y="170" font-size="62">⅔</text>
+      <text x="945" y="218" font-size="27">at z = 2</text>
+      <text x="945" y="269" font-size="21">z held fixed</text>
+      <text x="945" y="299" font-size="21">as p → 1</text>
+    </g>
+  </g>`;
+};
+palette['schatten-hlawka-endpoint'] = ['#f4c78f', '#ffe3b4'];
 const entropyStabilityArt = require('./entropy-stability-art');
 const gaussianRadonArt = require('./gaussian-radon-extension-art');
 art['gaussian-radon-one-point-extension'] = gaussianRadonArt.draw;
@@ -2548,6 +2582,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'schatten-hlawka-endpoint') svg = withDescription(svg, 'Proposition 6: for fixed positive amplitude z and fixed positive linear scale, the endpoint coefficient is min(z,2)/(1+z). The plotted exact function peaks uniquely at z=2 with value 2/3. The displayed range is 0 to 6; z=0 is only its limiting value. This is not an upper bound or sharpness claim for unrestricted Schatten–Hlawka constants.');
   if (slug === 'entropy-continuity-stability') svg = withDescription(svg, entropyStabilityArt.description);
   if (slug === 'gaussian-radon-one-point-extension') svg = withDescription(svg, gaussianRadonArt.description);
   if (slug === 'equivariant-inverse-z-unimodality') svg = withDescription(svg, inverseZArt.description);
