@@ -2524,6 +2524,9 @@ for (const [slug,moduleName] of [['gaussian-cosine-local-stability','gaussian-co
   const spec=require('./'+moduleName); art[slug]=spec.draw; palette[slug]=spec.colors;
 }
 const normalObservationArt = require('./finite-normal-observation-art');
+const drsResidualArt = require('./douglas-rachford-residual-art');
+art['douglas-rachford-residual-counterexamples'] = drsResidualArt.draw;
+palette['douglas-rachford-residual-counterexamples'] = drsResidualArt.colors;
 art['finite-normal-observation-windows'] = normalObservationArt.draw;
 palette['finite-normal-observation-windows'] = normalObservationArt.colors;
 for (const slug of requested) {
@@ -2533,6 +2536,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'douglas-rachford-residual-counterexamples') svg = withDescription(svg, drsResidualArt.description);
   if (slug === 'finite-normal-observation-windows') svg = withDescription(svg, normalObservationArt.description);
   if(slug==='assignment-aligned-effective-states')svg = withDescription(svg, assignmentAlignedArt.description);
   if(slug==='sharp-rank-three-chollet-order-five')svg = withDescription(svg, cholletRank3Art.description);

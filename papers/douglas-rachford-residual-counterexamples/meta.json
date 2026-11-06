@@ -1,0 +1,195 @@
+{
+  "slug": "douglas-rachford-residual-counterexamples",
+  "title": "Cocoercivity does not give a quadratic residual rate for Douglas–Rachford splitting",
+  "shortTitle": "An exact limit to a proposed splitting guarantee",
+  "oneLine": "Small exact counterexamples refute a proposed squared-residual guarantee; the correct uniform worst-case order is inverse-linear, with carefully restricted scalar-step consequences.",
+  "abstract": "Douglas–Rachford splitting tackles a coupled problem through simpler resolvent calculations. A conjecture proposed that cocoercivity of one operator, together with a convex subdifferential for the other, would give a uniform inverse-square bound on the squared update residual. This candidate refutes that statement using exact scalar and planar examples and proves that the correct uniform worst-case squared-residual order is inverse-linear for every fixed admissible parameter triple. Hinge-and-rotation witnesses also exclude an elementary finite-horizon repair considered in the paper. Additional results describe prescribed linear schedules and adaptive scalar-policy limits using credited classical and recent ingredients. An elementary corollary gives the exact linear-subclass infimum for scalars in the conventional open interval, without a nonlinear upper claim. These are fixed-point residual results, not objective-gap bounds or evidence of practical solver failure. The source paper's separate objective acceleration conjectures remain open. A bounded search located no earlier direct refutation; inaccessible full text leaves overlap of the scheduling synthesis unresolved.",
+  "datePublished": "2026-11-05",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Douglas–Rachford splitting",
+    "cocoercivity",
+    "fixed-point residual",
+    "exact counterexamples",
+    "worst-case convergence",
+    "scalar relaxation"
+  ],
+  "repoUrl": "https://github.com/ipitchford/douglas-rachford-residual-counterexamples",
+  "releaseUrl": "https://github.com/ipitchford/douglas-rachford-residual-counterexamples/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/douglas-rachford-residual-counterexamples/releases/download/v0.1.0-candidate/douglas-rachford-residual-counterexamples-v0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.23990902",
+  "conceptDoi": "10.5281/zenodo.23990901",
+  "zenodoUrl": "https://zenodo.org/records/23990902",
+  "citeText": "Anonymous (2026). Cocoercivity does not give a quadratic residual rate for Douglas–Rachford splitting. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23990902",
+  "evidence": "Written universal arguments and exact rational counterexamples; producer-side normal/optimized Python replay and 24 recorded guard-test outcomes, including targeted terminal-branch and actual-vector coefficient corruptions. Finite checks do not prove the general theorems or historical originality.",
+  "statusDetail": "Unrefereed AI-assisted mathematical candidate. Internal proof and adversarial review are not external specialist review or unaffiliated reproduction. No formal proof assistant was used. Scheduling results retain credited antecedents and an explicit inaccessible-source overlap limitation.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final revised manuscript and retained internal review/checker records on 5 November 2026. GitHub and Zenodo public assets verified by full-download hashes on 6 November 2026; availability is not scientific validation.",
+  "keyResults": [
+    "Exact scalar and planar witnesses refute Conjecture 3.5 of Abbaszadehpeivasti and Zamani (2025), version 2, within its stated assumptions.",
+    "For every fixed admissible parameter triple, the full stated class has sharp uniform worst-case squared-residual order N⁻¹; the exact full-class constant remains unresolved.",
+    "Prescribed linear schedules admit an exact polynomial envelope; adaptive scalar policies in the A=0 subclass have an exact minimax synthesis with credited antecedents.",
+    "For linear operators and c>2, scalars restricted to (0,2) have an exact infimum approached but not attained at the boundary; no matching nonlinear upper bound is claimed.",
+    "Exact mixed hinge witnesses exceed an elementary repair combining two candidate envelopes; no minimal failure horizon is asserted."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical development and exact checking",
+      "Internal AI-assisted multi-perspective and targeted adversarial review",
+      "Codex publication preparation"
+    ],
+    "humanRole": "Publication authority only; no human mathematical contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external journal peer review."
+  },
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "narration": "When does a mathematical guarantee promise too much? This Evidence Press briefing concerns an unrefereed, AI-assisted research candidate about Douglas–Rachford splitting, a method that tackles a difficult problem through two simpler calculations.\n\nA recent conjecture proposed a fast guarantee for the squared size of the method's updates. Roughly, doubling the iteration count should improve its worst-case bound by a factor of four, under the stated assumptions.\n\nThe paper gives two exact counterexamples. One works in a single real dimension. The other uses a two-dimensional rotation and does not require overrelaxation. Both obey the conjecture's actual conditions. Across the full stated class, the worst-case squared residual instead decreases at the order of one divided by the iteration count.\n\nWhy can this happen? The condition called cocoercivity controls a rotational component, but does not eliminate it. It is not the same as requiring a convex gradient.\n\nThere are important limits. The quantity studied is a fixed-point residual, not an objective gap or the distance to the solution. Each fixed rotational example can still converge geometrically. The worst-case construction changes with the number of iterations being tested. This is not a claim that practical solvers fail to converge.\n\nThe package also examines carefully restricted scalar-step choices and supplies exact hinge examples. Those scheduling results build on credited earlier mathematics; no historical-priority claim is made for that synthesis. One related full-text comparison remains unavailable.\n\nThe complete paper provides the assumptions, proofs, rational checks and remaining questions. Internal AI review and producer-side replay are not external peer review, independent reproduction or formal verification. The original paper's separate objective-value conjectures remain open.",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "GitHub release and published Zenodo record 23990902 checked on 6 November 2026; all three assets matched by full public-download hashes."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Producer-side exact examples and checker controls replayed in normal and optimized modes; 24 retained expected outcomes include specifically targeted semantic failures. Written universal proofs remain separate."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated full-package rerun established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "Separately authored in-project checkers are implementation diversity, not independent reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "Internal AI-assisted reviews do not establish external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external journal editorial review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "partial",
+      "note": "Standard-library exact certificates and recorded execution environment supplied; optional symbolic and exploratory numerical routes have separate dependencies and scope."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Abbaszadehpeivasti and Zamani (2025). On the convergence rate of the Douglas–Rachford splitting algorithm. arXiv, version 2. Source of Conjecture 3.5.",
+      "url": "https://arxiv.org/abs/2509.06676v2"
+    },
+    {
+      "citation": "Giselsson (2017). Tight global linear convergence rate bounds for Douglas–Rachford splitting. Journal of Fixed Point Theory and Applications 19, 2241–2270.",
+      "url": "https://doi.org/10.1007/s11784-017-0417-1"
+    },
+    {
+      "citation": "Gu and Yang (2019). Optimal nonergodic sublinear convergence rate of proximal point algorithm for maximal monotone inclusion problems. arXiv, version 2. Inherited sharp upper bound.",
+      "url": "https://arxiv.org/abs/1904.05495v2"
+    },
+    {
+      "citation": "Lieder (2021). On the convergence rate of the Halpern-iteration. Optimization Letters 15, 405–418.",
+      "url": "https://doi.org/10.1007/s11590-020-01617-9"
+    },
+    {
+      "citation": "Contreras and Cominetti (2022). Optimal error bounds for nonexpansive fixed-point iterations in normed spaces. Author manuscript, version 3.",
+      "url": "https://arxiv.org/abs/2108.10969v3"
+    },
+    {
+      "citation": "He, Dong, Tian and Li (2021). On the optimal relaxation parameters of Krasnosel'ski–Mann iteration. Optimization 70(9), 1959–1986. Abstract inspected; full-text overlap remains unresolved.",
+      "url": "https://doi.org/10.1080/02331934.2020.1767101"
+    },
+    {
+      "citation": "Sarkar and Aggarwal (2026). Non-expansive two-time-scale stochastic approximation: A fixed-schedule one-quarter barrier and bias-corrected acceleration. arXiv. Published rotation-product antecedent.",
+      "url": "https://arxiv.org/abs/2607.13414"
+    },
+    {
+      "citation": "Hartz (2025). On von Neumann's inequality on the polydisc. Mathematische Annalen 391, 5235–5264.",
+      "url": "https://doi.org/10.1007/s00208-024-03040-2"
+    },
+    {
+      "citation": "von Neumann (1950). Eine Spektraltheorie für allgemeine Operatoren eines unitären Raumes. Erhard Schmidt zum 75. Geburtstag in Verehrung gewidmet. Mathematische Nachrichten 4(1–6), 258–281. Registry title includes the dedication; the manuscript uses the shorter title. Classical inequality inspected through Hartz.",
+      "url": "https://doi.org/10.1002/mana.3210040124"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:douglas-rachford-residual-counterexamples",
+    "attemptIds": [
+      "ep-attempt:douglas-rachford-residual-counterexamples-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "counterexample",
+      "description": "Exact admissible witnesses correcting a proposed uniform squared-residual bound, with scoped exponent and scalar-policy consequences.",
+      "scope": "The specified mixed Douglas–Rachford assumptions and separately stated A=0 scalar-policy classes; not general accelerated algorithms or objective-gap bounds."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The manuscript states the target conjecture, operator assumptions, update count, squared residual, normalized initial distance and separate scheduling classes; exact checkers reconstruct the finite witnesses.",
+      "remainingRisks": [
+        "The bounded search is not exhaustive priority clearance; He et al. full-text overlap remains unresolved.",
+        "Finite certificates do not prove universal quantifiers or measure practical solver performance."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication authority does not imply scientific endorsement.",
+      "External specialist validation and unaffiliated reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "priorityAssessment"
+      ],
+      "nextAction": "Seek a splitting-theory specialist's assessment of the conjecture correction and full-text comparison of the named scheduling antecedents.",
+      "claimCeiling": "Exact finite counterexamples and written analytic bounds with internal checks; no external validation or universal originality guarantee."
+    },
+    "impactClaims": [
+      {
+        "id": "douglas-rachford-residual-counterexamples-no-impact",
+        "aim": "science",
+        "outcome": "A transparent correction to a residual-rate conjecture and inspectable algorithm-class boundaries.",
+        "setting": "AI-assisted mathematical optimisation",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "No matched workflow or solver comparator.",
+        "estimand": "No acceleration or practical impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
