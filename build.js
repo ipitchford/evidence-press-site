@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const releaseLicense = require('./tools/license-scope');
+const { releaseStatusText } = require('./tools/release-status');
 const {
   loadArtifacts: loadOperatingArtifacts,
   validateAll: validateOperatingModel
@@ -786,7 +787,7 @@ function bibtex(p) {
   url          = {https://doi.org/${p.doi}},
   version      = {${p.version}},
   howpublished = {Zenodo},
-  note         = {Unrefereed; internally replayed evidence package. Press page: ${urlOf(p)}}
+  note         = {${releaseStatusText(assuranceState(assuranceOf(p), 'internalReplay'), 'bibtex')} Press page: ${urlOf(p)}}
 }
 `;
 }
@@ -889,7 +890,7 @@ function articleJsonld(p) {
       license: releaseLicense.jsonld(p),
       keywords: p.keywords.join(', '),
       inLanguage: CONFIG.language,
-      creativeWorkStatus: 'Unrefereed — internally replayed evidence; not peer reviewed, not independently reproduced, not formally verified',
+      creativeWorkStatus: releaseStatusText(assuranceState(assuranceOf(p), 'internalReplay'), 'jsonld'),
       ...(p.operatingModel ? {
         additionalProperty: [
           { '@type': 'PropertyValue', propertyID: 'Evidence Press work ID', value: p.operatingModel.workId },
@@ -1240,7 +1241,7 @@ ${media ? `<section class="media-section"><h2 id="media">Media</h2>${media}</sec
           ${p.problem ? `<dt>Problem</dt><dd>${p.problem.url ? `<a href="${escAttr(p.problem.url)}" rel="noopener">${esc(p.problem.name)}</a>` : esc(p.problem.name)}</dd>` : ''}
           <dt>Version</dt><dd>${esc(p.version)}</dd>
           <dt>Licence</dt><dd>${releaseLicense.html(p, esc)}</dd>
-          <dt>Status</dt><dd>Unrefereed · internally replayed; awaiting independent verification</dd>
+          <dt>Status</dt><dd>${releaseStatusText(assuranceState(assuranceOf(p), 'internalReplay'), 'html')}</dd>
           <dt>Machine-readable</dt><dd><a href="${url}paper.json">JSON</a> · <a href="${url}index.md">Markdown</a> · <a href="${url}cite.bib">BibTeX</a></dd>
         </dl>
       </aside>
@@ -1266,7 +1267,7 @@ pdf: ${p.pdfUrl || ''}
 repository: ${p.repoUrl}
 archive: ${p.zenodoUrl}
 ${releaseLicense.yaml(p)}
-status: unrefereed (internally replayed; not peer reviewed, not independently reproduced, not formally verified)
+status: ${releaseStatusText(assuranceState(assuranceOf(p), 'internalReplay'))}
 ---
 
 # ${p.title}
@@ -2771,7 +2772,7 @@ function llms() {
       `---`, '', `# ${p.title}`, '',
       `- URL: ${urlOf(p)}`, `- PDF: ${p.pdfUrl || 'n/a'}`, `- DOI: https://doi.org/${p.doi}`, `- Code: ${p.repoUrl}`,
       `- Published: ${p.datePublished} · Version: ${p.version} · Licence: ${p.licenseScope ? `component-specific — ${p.licenseScope}` : 'CC0-1.0'}`,
-      `- Status: unrefereed (internally replayed; not peer reviewed, not independently reproduced, not formally verified)`, '',
+      `- Status: ${releaseStatusText(assuranceState(assuranceOf(p), 'internalReplay'))}`, '',
       p.body, '',
       ...(p.mathObjects && p.mathObjects.length ? [mathObjectsMarkdown(p).trim(), ''] : []),
       ...(hasAuthoredNextWork(p)

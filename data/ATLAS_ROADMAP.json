@@ -6,27 +6,27 @@
   "claimCeiling": "This roadmap records intended work and review decisions. It does not establish that an undiscovered relationship exists, that a proposed relationship is correct, or that the Atlas improves research outcomes.",
   "currentBaseline": {
     "asOf": "2026-11-06",
-    "releaseCount": 250,
+    "releaseCount": 252,
     "methodCount": 13,
-    "clusterCount": 237,
+    "clusterCount": 239,
     "lineageCount": 5,
-    "acceptedRelationshipCount": 1464,
+    "acceptedRelationshipCount": 1473,
     "publishedProposalCount": 4,
     "relationshipComposition": {
-      "usesMethodCount": 1129,
-      "clusterMembershipCount": 252,
+      "usesMethodCount": 1136,
+      "clusterMembershipCount": 254,
       "lineageMembershipCount": 15,
       "directInterReleaseCount": 68,
-      "defaultProgrammeViewCount": 335
+      "defaultProgrammeViewCount": 337
     },
     "methodPrevalenceChecks": [
       {
         "methodId": "adversarial-controls",
-        "releaseAssignmentCount": 225
+        "releaseAssignmentCount": 226
       },
       {
         "methodId": "structural-compression",
-        "releaseAssignmentCount": 144
+        "releaseAssignmentCount": 146
       }
     ],
     "sourceRefs": [
@@ -2214,10 +2214,50 @@
       "trigger": "Current candidate release integrated into the source corpus",
       "reviewer": "Codex producer-side publication integration",
       "provenanceNote": "Mechanical current-baseline refresh using computeAtlasBaseline, buildResearchGraph and loadAtlasProposals. Historical reviews and roadmap priorities are preserved; counts do not establish scientific assurance, delivery or impact.",
-      "baseline": {"releaseCount":250,"acceptedRelationshipCount":1464,"publishedProposalCount":4},
-      "observations": ["Computed current source graph contains 250 releases, 236 clusters, 1129 method edges and 252 cluster memberships; four proposal records remain unchanged."],
+      "baseline": {
+        "releaseCount": 250,
+        "acceptedRelationshipCount": 1464,
+        "publishedProposalCount": 4
+      },
+      "observations": [
+        "Computed current source graph contains 250 releases, 236 clusters, 1129 method edges and 252 cluster memberships; four proposal records remain unchanged."
+      ],
       "decision": "complete",
       "nextAction": "Complete the separate publication and canonical-readback gates without promoting assurance from graph counts."
+    },
+    {
+      "reviewId": "atlas-review-2026-11-06-entropy-continuity-stability",
+      "reviewedAt": "2026-11-06",
+      "trigger": "Current candidate integrated into source corpus",
+      "reviewer": "Codex producer-side publication integration",
+      "provenanceNote": "Mechanical current-baseline refresh using computeAtlasBaseline, buildResearchGraph and loadAtlasProposals; historical reviews preserved.",
+      "baseline": {
+        "releaseCount": 251,
+        "acceptedRelationshipCount": 1469,
+        "publishedProposalCount": 4
+      },
+      "observations": [
+        "Source graph counts reflect candidate inclusion, not verified public delivery or scientific assurance."
+      ],
+      "decision": "complete",
+      "nextAction": "Complete separate archive, presentation and canonical publication gates."
+    },
+    {
+      "reviewId": "atlas-review-2026-11-06-gaussian-radon-one-point-extension",
+      "reviewedAt": "2026-11-06",
+      "trigger": "Gaussian candidate integrated into source corpus",
+      "reviewer": "Codex producer-side publication integration",
+      "provenanceNote": "Mechanical baseline refresh from source graph; historical reviews preserved.",
+      "baseline": {
+        "releaseCount": 252,
+        "acceptedRelationshipCount": 1473,
+        "publishedProposalCount": 4
+      },
+      "observations": [
+        "Candidate inclusion changes source counts only; it is not public delivery, independent validation or impact evidence."
+      ],
+      "decision": "complete",
+      "nextAction": "Complete separate archive, media and canonical publication gates."
     }
   ]
 }

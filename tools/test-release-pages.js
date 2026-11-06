@@ -3,6 +3,7 @@
 
 const fs = require('fs');
 const path = require('path');
+require('./test-release-status');
 
 const ROOT = path.resolve(__dirname, '..');
 const PAPERS = path.join(ROOT, 'papers');

@@ -2524,6 +2524,12 @@ for (const [slug,moduleName] of [['gaussian-cosine-local-stability','gaussian-co
   const spec=require('./'+moduleName); art[slug]=spec.draw; palette[slug]=spec.colors;
 }
 const normalObservationArt = require('./finite-normal-observation-art');
+const entropyStabilityArt = require('./entropy-stability-art');
+const gaussianRadonArt = require('./gaussian-radon-extension-art');
+art['gaussian-radon-one-point-extension'] = gaussianRadonArt.draw;
+palette['gaussian-radon-one-point-extension'] = gaussianRadonArt.colors;
+art['entropy-continuity-stability'] = entropyStabilityArt.draw;
+palette['entropy-continuity-stability'] = entropyStabilityArt.colors;
 const inverseZArt = require('./equivariant-inverse-z-art');
 const reversibleMomentsArt = require('./reversible-moments-art');
 art['reversible-negative-eigenfunction-moments'] = reversibleMomentsArt.draw;
@@ -2542,6 +2548,8 @@ for (const [slug, fn] of Object.entries(art)) {
   if (requested.size && !requested.has(slug)) continue;
   const [a, b] = palette[slug];
   let svg = frame(fn(a, b), a, b, bannerPalette(slug));
+  if (slug === 'entropy-continuity-stability') svg = withDescription(svg, entropyStabilityArt.description);
+  if (slug === 'gaussian-radon-one-point-extension') svg = withDescription(svg, gaussianRadonArt.description);
   if (slug === 'equivariant-inverse-z-unimodality') svg = withDescription(svg, inverseZArt.description);
   if (slug === 'reversible-negative-eigenfunction-moments') svg = withDescription(svg, reversibleMomentsArt.description);
   if (slug === 'douglas-rachford-residual-counterexamples') svg = withDescription(svg, drsResidualArt.description);
