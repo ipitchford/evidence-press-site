@@ -166,6 +166,9 @@ jobs:
       - name: Component-specific licence scope
         run: node tools/test-license-scope.js --built
 
+      - name: Public mental-health companion coverage and links
+        run: node tools/test-why-minds-break-films.js
+
       - name: Internal link and asset check
         run: node tools/check-links.js
 

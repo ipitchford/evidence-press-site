@@ -2689,7 +2689,8 @@ function sitemap() {
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
     { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/why-minds-break/`, lastmod: '2026-11-02' }, ...Array.from({ length: 10 }, (_, i) => ({ loc: `${BASE}/why-minds-break/chapter-${i + 1}/`, lastmod: '2026-11-02' })), { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-11-04' }, { loc: `${BASE}/origins-of-violence/`, lastmod: '2026-11-04' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-11-04' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
-    ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified }))
+    ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified })),
+    ...require('./tools/why-minds-break-films').routes(ROOT, BASE)
   ];
   const urls = [...new Map(candidates.map(item => [item.loc, item])).values()];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
@@ -3742,6 +3743,7 @@ shopPage();
 applicationsPage();
 thinkAgainPage();
 whyMindsBreakPages();
+require('./tools/why-minds-break-films').build({ root: ROOT, base: BASE, head, write, markdown, esc, escAttr });
 interpsychPage();
 feeds();
 sitemap();
