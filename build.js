@@ -2330,6 +2330,9 @@ ${BOOK.summary.map(t => `<p>${inline(t)}</p>`).join('\n')}
 </div>
 </div>
 <div class="body">
+<h2 id="films-and-essays">${esc(BOOK.companion.heading)}</h2>
+<p>${esc(BOOK.companion.description)}</p>
+<p><a href="${escAttr(BOOK.companion.url)}"><strong>${esc(BOOK.companion.linkLabel)}</strong></a></p>
 <h2 id="the-chapters">${esc(BOOK.chaptersHeading)}</h2>
 <p>${inline(BOOK.chaptersIntro)}</p>
 <ol class="wmb-contents">
@@ -2357,7 +2360,7 @@ ${contents}
 ${noObfuscate(bookBody)}
 ${foot}`);
   write('why-minds-break/index.md', `---\ntitle: "${fullTitle}"\nauthor: ${BOOK.author}\nurl: ${root}\n---\n\n# ${fullTitle}\n\n${BOOK.author}\n\n${
-    BOOK.summary.join('\n\n')}\n\n${facts}. ${buyMd}\n\n## ${BOOK.chaptersHeading}\n\n${BOOK.chaptersIntro}\n\n${
+    BOOK.summary.join('\n\n')}\n\n${facts}. ${buyMd}\n\n## ${BOOK.companion.heading}\n\n${BOOK.companion.description}\n\n[${BOOK.companion.linkLabel}](${BASE}${BOOK.companion.url})\n\n## ${BOOK.chaptersHeading}\n\n${BOOK.chaptersIntro}\n\n${
     chapters.map(c => `${c.n}. [${c.title}](${chapterUrl(c)}): ${c.dek}`).join('\n')}\n\n## About the author\n\n${BOOK.bio}\n\n## ${BOOK.challengeHeading}\n\n${BOOK.challenge}\n\n${BOOK.rights}\n`);
 
   /* One page per chapter. */
@@ -2687,7 +2690,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/why-minds-break/`, lastmod: '2026-11-02' }, ...Array.from({ length: 10 }, (_, i) => ({ loc: `${BASE}/why-minds-break/chapter-${i + 1}/`, lastmod: '2026-11-02' })), { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-11-04' }, { loc: `${BASE}/origins-of-violence/`, lastmod: '2026-11-04' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-11-04' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/why-minds-break/`, lastmod: '2026-11-07' }, ...Array.from({ length: 10 }, (_, i) => ({ loc: `${BASE}/why-minds-break/chapter-${i + 1}/`, lastmod: '2026-11-02' })), { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-11-04' }, { loc: `${BASE}/origins-of-violence/`, lastmod: '2026-11-04' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-11-04' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified })),
     ...require('./tools/why-minds-break-films').routes(ROOT, BASE)
