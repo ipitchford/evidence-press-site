@@ -5,7 +5,7 @@
   "oneLine": "The reciprocal of the Mittag–Leffler function E is completely monotone for every 0 < β ≤ α when 1 < α < 2, and, for α near 2, exactly for 0 < β ≤ b(α) with b(2) = 3, so the conjectured band α − 1 ≤ β ≤ α is too narrow on both sides.",
   "abstract": "For which parameters is the reciprocal 1/E of the two-parameter Mittag–Leffler function completely monotone, and so (after normalising) the Laplace transform of a probability law? Garrappa, Gerhold, Popolizio and Simon (2025, Conjecture 25) proposed that, for 1 < α < 2, this happens exactly when α − 1 ≤ β ≤ α. This candidate proves two results showing the band is too narrow. Theorem A: for every 1 < α < 2 and 0 < β ≤ α, log[Γ(β)E] is a Bernstein function, so every positive power of the normalised reciprocal is the Laplace transform of an infinitely divisible law; this covers the whole triangle below the band. The proof combines a dilation-ratio identity contained in the proof of the authors' Proposition 3 with a classical recurrence that lowers β by one. Theorem B: for α in some neighbourhood of 2, the admissible set is exactly the interval (0, b(α)], where b is real analytic, b(2) = 3 and b′(2) = 1 + 2π Si(2π)/(2I(2π)) ≈ 2.8277, with I(a) the integral of (1 − cos u)/u over (0, a); the boundary is where two negative zeros near −4π² collide, and the associated laws are self-decomposable. Since b(α) > α just below 2, the band fails above as well. A numerical continuation of the boundary curve supports a replacement conjecture, and an exact rational certificate exhibits a failure of the global modulus inequality where Theorem A holds. The neighbourhood in Theorem B is not quantified. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
   "datePublished": "2026-11-04",
-  "version": "0.1.0-candidate",
+  "version": "0.1.1-candidate",
   "authors": [
     "Anonymous"
   ],
@@ -22,14 +22,14 @@
     "special functions"
   ],
   "repoUrl": "https://github.com/ipitchford/reciprocal-mittag-leffler-complete-monotonicity",
-  "releaseUrl": "https://github.com/ipitchford/reciprocal-mittag-leffler-complete-monotonicity/releases/tag/v0.1.0-candidate",
-  "pdfUrl": "https://github.com/ipitchford/reciprocal-mittag-leffler-complete-monotonicity/releases/download/v0.1.0-candidate/reciprocal-mittag-leffler-complete-monotonicity-0.1.0-candidate.pdf",
-  "doi": "10.5281/zenodo.23934934",
+  "releaseUrl": "https://github.com/ipitchford/reciprocal-mittag-leffler-complete-monotonicity/releases/tag/v0.1.1-candidate",
+  "pdfUrl": "https://github.com/ipitchford/reciprocal-mittag-leffler-complete-monotonicity/releases/download/v0.1.1-candidate/reciprocal-mittag-leffler-complete-monotonicity-0.1.1-candidate.pdf",
+  "doi": "10.5281/zenodo.24089542",
   "conceptDoi": "10.5281/zenodo.23934933",
-  "zenodoUrl": "https://zenodo.org/records/23934934",
-  "citeText": "Anonymous (2026). Reciprocal Mittag–Leffler functions: complete monotonicity below the parameter band, and the exact boundary near order two. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23934934",
+  "zenodoUrl": "https://zenodo.org/records/24089542",
+  "citeText": "Anonymous (2026). Reciprocal Mittag–Leffler functions: complete monotonicity below the parameter band, and the exact boundary near order two. Version 0.1.1-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24089542",
   "evidence": "Written proofs of Theorems A and B and the boundary slope; verify.py runs exact reciprocal-coefficient checks and a 90-digit check of b′(2) (standard library), an exact rational certificate that the global modulus inequality fails at (α, β, z) = (3/2, 1/4, −60 + i) (standard library), a 40-digit continuation of the boundary curve (mpmath 1.4.1) and a negative control; every check raises explicitly, so it stays active under Python -O; replay from a copy of the frozen archive with and without -O reproduced the retained output byte for byte.",
-  "statusDetail": "Unrefereed AI-assisted analysis candidate merging two independently written drafts. Both theorems have written proofs; two inputs are cited (the hitting-time construction of Garrappa et al. and the order-two zero theorem). The neighbourhood of α = 2 in Theorem B is not quantified and the classification away from 2 is a conjecture supported by numerics. Internal AI-assisted review in five roles, a separate-model adversarial review and audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
+  "statusDetail": "Unrefereed AI-assisted analysis candidate merging two independently written drafts. Both theorems have written proofs; two inputs are cited (the hitting-time construction of Garrappa et al. and the order-two zero theorem of Ostrovskii and Peresyolkova, 1997). The neighbourhood of α = 2 in Theorem B is not quantified and the classification away from 2 is a conjecture supported by numerics. Internal AI-assisted review in five roles, a separate-model adversarial review and audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
   "pageStructureVersion": "2.0",
   "pageStructureVariant": "canonical-theorem",
   "pageStructureWaivers": [],
@@ -112,12 +112,12 @@
       "url": "https://doi.org/10.1214/08-aihp182"
     },
     {
-      "citation": "Polson (2026). Thorin Quantisation. SSRN preprint on related hitting-time laws; read at abstract level only, a recorded priority uncertainty.",
-      "url": "https://doi.org/10.2139/ssrn.7277540"
-    },
-    {
       "citation": "Schilling, Song and Vondraček (2012). Bernstein Functions. De Gruyter monograph. Closure properties of Bernstein functions.",
       "url": "https://doi.org/10.1515/9783110269338"
+    },
+    {
+      "citation": "Ostrovskii and Peresyolkova (1997). Nonasymptotic results on distribution of zeros of the function E_ρ(z, μ). Analysis Mathematica. Theorem 2 (n = 1) and Corollary 2: all zeros of E_{2,β} are simple and negative for 0 < β < 3, the zero theorem used in Section 5.",
+      "url": "https://doi.org/10.1007/BF02789843"
     }
   ],
   "operatingModel": {
@@ -152,7 +152,7 @@
       "state": "explicit",
       "description": "The reader's guide and Section 11 separate the band result and hitting-time construction of Garrappa et al. and Patie's diagonal case from what is proved here, state which leg of Conjecture 25 is settled and which remains open, and what the scripts cover.",
       "remainingRisks": [
-        "The bounded literature check is not exhaustive priority certification (Polson 2026 read at abstract level).",
+        "The bounded literature check is not exhaustive priority certification.",
         "The neighbourhood of α = 2 is not quantified."
       ]
     },
