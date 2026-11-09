@@ -5,7 +5,7 @@
   "oneLine": "A Gaussian kernel space is invariant under an Ornstein–Uhlenbeck process exactly when AP + PAᵀ ⪯ 4BBᵀ, twice the range of the earlier sufficient condition, and among Gaussian or fixed-noise transitions only affine maps can preserve it at all.",
   "abstract": "Kernel methods such as kernel EDMD learn how a random system evolves by working inside the reproducing kernel Hilbert space (RKHS) of a Gaussian kernel, and their error analysis often assumes the dynamics keep that space invariant. Philipp et al. (2025, PAMM) proved invariance for linear stochastic differential equations (Ornstein–Uhlenbeck processes) when AP + PAᵀ ⪯ 2BBᵀ and left open whether this is necessary. This candidate shows that the exact condition is AP + PAᵀ ⪯ 4BBᵀ; a stable controllable shear separates the two. More generally, a Markov transition with Gaussian conditional laws N(F(x), Q(x)) that maps one global Gaussian RKHS boundedly into another must have constant Q, affine F and MRMᵀ ⪯ P + 4Q; a transition of the form map plus fixed noise, for noise whose characteristic function has a Gaussian lower bound (every infinitely divisible law, pure jumps included), must have an affine map, so Euler steps of nonlinear SDEs never preserve the space. For affine maps with infinitely divisible noise only the Gaussian covariance component counts, and a compound-Poisson approximation of a stable linear diffusion converges at sharp order ε² in prediction while every approximant sends one fixed Gaussian observable out of the space. Consequences include an exact bandwidth rule (twice the earlier range) and the invariance hypothesis of an existing kEDMD error bound for multivariate OU processes. The fixed affine criterion specialises classical Gaussian-Fock theory, and the separating witness with a proposed derivation was posted first, explicitly unproven, in a GitHub issue. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
   "datePublished": "2026-11-04",
-  "version": "0.1.0-candidate",
+  "version": "0.1.1-candidate",
   "authors": [
     "Anonymous"
   ],
@@ -22,13 +22,13 @@
     "Gaussian Fock space"
   ],
   "repoUrl": "https://github.com/ipitchford/gaussian-rkhs-stochastic-invariance",
-  "releaseUrl": "https://github.com/ipitchford/gaussian-rkhs-stochastic-invariance/releases/tag/v0.1.0-candidate",
-  "pdfUrl": "https://github.com/ipitchford/gaussian-rkhs-stochastic-invariance/releases/download/v0.1.0-candidate/gaussian-rkhs-stochastic-invariance-0.1.0-candidate.pdf",
-  "doi": "10.5281/zenodo.23937400",
+  "releaseUrl": "https://github.com/ipitchford/gaussian-rkhs-stochastic-invariance/releases/tag/v0.1.1-candidate",
+  "pdfUrl": "https://github.com/ipitchford/gaussian-rkhs-stochastic-invariance/releases/download/v0.1.1-candidate/gaussian-rkhs-stochastic-invariance-0.1.1-candidate.pdf",
+  "doi": "10.5281/zenodo.24089772",
   "conceptDoi": "10.5281/zenodo.23937399",
-  "zenodoUrl": "https://zenodo.org/records/23937400",
-  "citeText": "Anonymous (2026). When Gaussian kernel spaces are invariant under stochastic dynamics: transition rigidity, a Gaussian-component noise boundary and a discontinuous diffusion limit. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23937400",
-  "evidence": "Written proofs of all theorems in a 26-page manuscript; code/verify.py checks the separating example, thresholds and witness norms in exact rational arithmetic and the closed-form constants by numerical quadrature (numpy 2.3.5, scipy 1.17.0); every check raises explicitly, so it stays active under Python -O; replay from a fresh copy reproduced the retained output byte for byte, and two corruption controls (factor 4 changed to 2, shear entry 5 changed to 7) make it fail.",
+  "zenodoUrl": "https://zenodo.org/records/24089772",
+  "citeText": "Anonymous (2026). When Gaussian kernel spaces are invariant under stochastic dynamics: transition rigidity, a Gaussian-component noise boundary and a discontinuous diffusion limit. Version 0.1.1-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24089772",
+  "evidence": "Written proofs of all theorems in a 27-page manuscript; code/verify.py checks the separating example, thresholds and witness norms in exact rational arithmetic and the closed-form constants by numerical quadrature (numpy 2.3.5, scipy 1.17.0); every check raises explicitly, so it stays active under Python -O; replay from a fresh copy reproduced the retained output byte for byte, and two corruption controls (factor 4 changed to 2, shear entry 5 changed to 7) make it fail.",
   "statusDetail": "Unrefereed AI-assisted analysis candidate. All theorems have written proofs. The fixed affine criterion and the Ornstein–Uhlenbeck answer are a specialisation of classical Gaussian-Fock operator theory; the separating witness and a proposed derivation appeared first, explicitly unproven, in GitHub issue the-omega-institute/trureturing #23376 (28 October 2026). Internal AI-assisted review in five roles, a separate-model adversarial review and audit, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
   "pageStructureVersion": "2.0",
   "pageStructureVariant": "canonical-theorem",
@@ -92,7 +92,7 @@
   },
   "relatedWorks": [
     {
-      "citation": "Alekseev, Afonin and Bogachev (2021). On Gaussian Transition Operators. Doklady Mathematics. Gaussian transition operators.",
+      "citation": "Alekseev, Afonin and Bogachev (2021). On Gaussian Transition Operators. Doklady Mathematics. Gaussian images are needed only for Gaussians on affine lines; the Feller condition cannot be dropped.",
       "url": "https://doi.org/10.1134/s1064562421050021"
     },
     {
@@ -108,7 +108,7 @@
       "url": "https://doi.org/10.1016/j.jfa.2020.108807"
     },
     {
-      "citation": "Holevo (2017). On a Characterization of Gaussian Transition Operators. Theory of Probability and Its Applications. Characterisation of Gaussian transition operators.",
+      "citation": "Holevo (2017). On a Characterization of Gaussian Transition Operators. Theory of Probability and Its Applications. Theorem 1 reaches the same affine-Gaussian conclusion as Theorem 5 from an incomparable premise (Gaussian-preserving Feller maps).",
       "url": "https://doi.org/10.1137/s0040585x97t988435"
     },
     {
@@ -138,6 +138,10 @@
     {
       "citation": "Philipp, Schaller, Worthmann, Peitz and Nüske (2025b). Error Analysis of Kernel EDMD for Prediction and Control in the Koopman Framework. Journal of Nonlinear Science. kEDMD error bounds whose invariance hypothesis is verified here for multivariate OU.",
       "url": "https://doi.org/10.1007/s00332-025-10182-3"
+    },
+    {
+      "citation": "Sang and Zhao (2026). Gaussian integral operator between Fock spaces. arXiv. One-variable Fock-space criterion; at p = q = 2 it reproduces criterion (26).",
+      "url": "https://arxiv.org/abs/2610.28279"
     }
   ],
   "operatingModel": {
@@ -206,5 +210,14 @@
         "independentAssessment": null
       }
     ]
-  }
+  },
+  "corrections": [
+    {
+      "date": "2026-11-09",
+      "scope": "claim",
+      "summary": "Version 0.1.1-candidate makes the comparison with prior work precise. Holevo (2017), Alekseev, Afonin and Bogachev (2021), the journal version of Philipp et al. (2025) and Sang and Zhao (2026) were read in full. Holevo's Theorem 1 reaches the same affine-Gaussian conclusion as Theorem 5 from an incomparable premise (Feller maps preserving Gaussian measures), so the originality claim is now covariance rigidity from RKHS boundedness; Alekseev et al. need Gaussian images only on affine lines; the journal numbering of Philipp et al. is confirmed; Sang and Zhao reproduce criterion (26) in one variable.",
+      "detail": "The mathematics, proofs, verifiers and recorded outputs are unchanged. Version 0.1.0-candidate, its DOI 10.5281/zenodo.23937400 and its tag remain archived unchanged; this version has its own DOI (10.5281/zenodo.24089772) and tag (v0.1.1-candidate). The audio briefing is unchanged: it does not discuss these sources.",
+      "fixedIn": "0.1.1-candidate"
+    }
+  ]
 }
