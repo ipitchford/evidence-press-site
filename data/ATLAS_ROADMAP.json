@@ -10,14 +10,14 @@
     "methodCount": 13,
     "clusterCount": 243,
     "lineageCount": 5,
-    "acceptedRelationshipCount": 1494,
+    "acceptedRelationshipCount": 1495,
     "publishedProposalCount": 4,
     "relationshipComposition": {
       "usesMethodCount": 1154,
       "clusterMembershipCount": 258,
       "lineageMembershipCount": 15,
-      "directInterReleaseCount": 67,
-      "defaultProgrammeViewCount": 340
+      "directInterReleaseCount": 68,
+      "defaultProgrammeViewCount": 341
     },
     "methodPrevalenceChecks": [
       {
@@ -2292,6 +2292,23 @@
       ],
       "decision": "complete",
       "nextAction": "Teach the release identity index to resolve superseded version DOIs, then restore the link in a later refresh."
+    },
+    {
+      "reviewId": "atlas-review-2026-11-09-poincare-sinkhorn-link-restored",
+      "reviewedAt": "2026-11-09",
+      "trigger": "sinkhorn-metric-curvature-bias related-work link repointed to the current poincare-sinkhorn-global-rates version DOI",
+      "reviewer": "Claude producer-side publication integration",
+      "provenanceNote": "Mechanical source-graph refresh, not scholarly validation or impact evidence.",
+      "baseline": {
+        "releaseCount": 256,
+        "acceptedRelationshipCount": 1495,
+        "publishedProposalCount": 4
+      },
+      "observations": [
+        "The sinkhorn-metric-curvature-bias page now links poincare-sinkhorn-global-rates by its current version DOI (10.5281/zenodo.24091432), marked page-only because the manuscript cites version 0.1.0-candidate; the direct inter-release link is restored."
+      ],
+      "decision": "complete",
+      "nextAction": "None for this link; resolving superseded version DOIs generally remains a separate improvement."
     }
   ]
 }
