@@ -827,6 +827,7 @@ ${JSON.stringify(jsonld, null, 1)}
       <a href="/">Releases</a>
       <a href="/articles/">Articles</a>
       <a href="/atlas/">Atlas</a>
+      <a href="/minds-explored/">Minds Explored</a>
       <a href="/about/">About</a>
       <a class="support-nav" href="/support/">Donate</a>
       <a href="/shop/">Shop</a>
@@ -846,7 +847,7 @@ const foot = `</main>
   <div class="wrap">
     <p>${esc(CONFIG.siteName)} publishes evidence-attached research releases and a clearly separate collection of essays, commentary and research notes. Each page states its own evidence boundary.</p>
     <p><a href="/support/">Support open knowledge at Evidence Press</a> · <a href="/applications/">Applications</a> · <a href="/shop/">Shop</a> ·<a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a>.</p>
-    <p>Original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/math-objects.json">mathematical objects</a> · <a href="/api/claims.json">claims</a> · <a href="/api/assurance-tasks.json">assurance tasks</a> · <a href="/api/citations.json">citation graph</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/research-metrics-policy.json">research metrics</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
+    <p>Except where a page states otherwise, original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/math-objects.json">mathematical objects</a> · <a href="/api/claims.json">claims</a> · <a href="/api/assurance-tasks.json">assurance tasks</a> · <a href="/api/citations.json">citation graph</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/research-metrics-policy.json">research metrics</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
 </footer>
@@ -1485,6 +1486,13 @@ ${Array.from({ length: 9 }, (_, k) => {
       <p>Six working habits that multiply what one person can do with AI, the case study of how Evidence Press runs on them, and a way to measure the gain.</p>
     </a>
   </div>
+</section>
+<section class="wrap programme-band" aria-label="Minds Explored">
+    <a class="programme-card minds-explored-promo" href="/minds-explored/">
+      <p class="card-date">Open learning · mind, brain and behaviour</p>
+      <h3>Minds Explored</h3>
+      <p>Start with a question. Find university lectures, follow 51 topic guides and 20 learning paths, and build a library that stays in your browser.</p>
+    </a>
 </section>
 <section class="wrap" aria-label="Releases">
   <div class="listhead">
@@ -2333,6 +2341,8 @@ ${BOOK.summary.map(t => `<p>${inline(t)}</p>`).join('\n')}
 <h2 id="films-and-essays">${esc(BOOK.companion.heading)}</h2>
 <p>${esc(BOOK.companion.description)}</p>
 <p><a href="${escAttr(BOOK.companion.url)}"><strong>${esc(BOOK.companion.linkLabel)}</strong></a></p>
+<h2 id="minds-explored">Explore the wider science</h2>
+<p><a href="/minds-explored/"><strong>Minds Explored</strong></a> connects university lectures with original guides and learning paths across psychology, neuroscience and human behaviour. Follow a question from the book, explore related fields and save a reading or viewing list.</p>
 <h2 id="the-chapters">${esc(BOOK.chaptersHeading)}</h2>
 <p>${inline(BOOK.chaptersIntro)}</p>
 <ol class="wmb-contents">
@@ -2360,7 +2370,7 @@ ${contents}
 ${noObfuscate(bookBody)}
 ${foot}`);
   write('why-minds-break/index.md', `---\ntitle: "${fullTitle}"\nauthor: ${BOOK.author}\nurl: ${root}\n---\n\n# ${fullTitle}\n\n${BOOK.author}\n\n${
-    BOOK.summary.join('\n\n')}\n\n${facts}. ${buyMd}\n\n## ${BOOK.companion.heading}\n\n${BOOK.companion.description}\n\n[${BOOK.companion.linkLabel}](${BASE}${BOOK.companion.url})\n\n## ${BOOK.chaptersHeading}\n\n${BOOK.chaptersIntro}\n\n${
+    BOOK.summary.join('\n\n')}\n\n${facts}. ${buyMd}\n\n## ${BOOK.companion.heading}\n\n${BOOK.companion.description}\n\n[${BOOK.companion.linkLabel}](${BASE}${BOOK.companion.url})\n\n## Explore the wider science\n\n[Minds Explored](${BASE}/minds-explored/) connects university lectures, original guides and learning paths across psychology, neuroscience and human behaviour.\n\n## ${BOOK.chaptersHeading}\n\n${BOOK.chaptersIntro}\n\n${
     chapters.map(c => `${c.n}. [${c.title}](${chapterUrl(c)}): ${c.dek}`).join('\n')}\n\n## About the author\n\n${BOOK.bio}\n\n## ${BOOK.challengeHeading}\n\n${BOOK.challenge}\n\n${BOOK.rights}\n`);
 
   /* One page per chapter. */
@@ -2693,7 +2703,8 @@ function sitemap() {
     { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/why-minds-break/`, lastmod: '2026-11-07' }, ...Array.from({ length: 10 }, (_, i) => ({ loc: `${BASE}/why-minds-break/chapter-${i + 1}/`, lastmod: '2026-11-02' })), { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-11-04' }, { loc: `${BASE}/origins-of-violence/`, lastmod: '2026-11-04' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-11-04' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified })),
-    ...require('./tools/why-minds-break-films').routes(ROOT, BASE)
+    ...require('./tools/why-minds-break-films').routes(ROOT, BASE),
+    ...require('./tools/minds-explored').routes(ROOT)
   ];
   const urls = [...new Map(candidates.map(item => [item.loc, item])).values()];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
@@ -3536,6 +3547,9 @@ write('_headers', `/*
 /assets/*
   Cache-Control: public, max-age=604800
 
+/minds-explored/*
+  Cache-Control: public, max-age=0, must-revalidate
+
 /interpsych
   X-Robots-Tag: noindex, nofollow, noarchive
   Cache-Control: public, max-age=0, must-revalidate, no-transform
@@ -3745,6 +3759,7 @@ simplePage('origins-of-violence/', 'The Origins of Violence: Is Psychopathy an A
 shopPage();
 applicationsPage();
 thinkAgainPage();
+require('./tools/minds-explored').build(ROOT, DIST);
 whyMindsBreakPages();
 require('./tools/why-minds-break-films').build({ root: ROOT, base: BASE, head, write, markdown, esc, escAttr });
 interpsychPage();
