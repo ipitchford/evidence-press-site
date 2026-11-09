@@ -1,23 +1,23 @@
 {
   "schemaVersion": "1.0",
   "recordType": "evidence-atlas-roadmap",
-  "updated": "2026-11-06",
+  "updated": "2026-11-09",
   "status": "active-reviewed-roadmap",
   "claimCeiling": "This roadmap records intended work and review decisions. It does not establish that an undiscovered relationship exists, that a proposed relationship is correct, or that the Atlas improves research outcomes.",
   "currentBaseline": {
-    "asOf": "2026-11-06",
+    "asOf": "2026-11-09",
     "releaseCount": 256,
     "methodCount": 13,
     "clusterCount": 243,
     "lineageCount": 5,
-    "acceptedRelationshipCount": 1495,
+    "acceptedRelationshipCount": 1494,
     "publishedProposalCount": 4,
     "relationshipComposition": {
       "usesMethodCount": 1154,
       "clusterMembershipCount": 258,
       "lineageMembershipCount": 15,
-      "directInterReleaseCount": 68,
-      "defaultProgrammeViewCount": 341
+      "directInterReleaseCount": 67,
+      "defaultProgrammeViewCount": 340
     },
     "methodPrevalenceChecks": [
       {
@@ -2275,6 +2275,23 @@
       ],
       "decision": "complete",
       "nextAction": "Complete separate archive, media and canonical public delivery gates."
+    },
+    {
+      "reviewId": "atlas-review-2026-11-09-poincare-sinkhorn-correction",
+      "reviewedAt": "2026-11-09",
+      "trigger": "poincare-sinkhorn-global-rates 0.1.1-candidate versioned correction integrated into the source corpus",
+      "reviewer": "Claude producer-side publication integration",
+      "provenanceNote": "Mechanical source-graph refresh, not scholarly validation or impact evidence.",
+      "baseline": {
+        "releaseCount": 256,
+        "acceptedRelationshipCount": 1494,
+        "publishedProposalCount": 4
+      },
+      "observations": [
+        "The release identity index maps only each release's current version DOI. sinkhorn-metric-curvature-bias cites poincare-sinkhorn-global-rates by its 0.1.0-candidate version DOI (10.5281/zenodo.23929617), which no longer resolves to a release after the 0.1.1-candidate correction, so one direct inter-release link drops from the derived graph. The citation itself is unchanged and still valid."
+      ],
+      "decision": "complete",
+      "nextAction": "Teach the release identity index to resolve superseded version DOIs, then restore the link in a later refresh."
     }
   ]
 }
