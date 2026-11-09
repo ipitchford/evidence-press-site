@@ -28,7 +28,7 @@ The permanent public edition includes 4,209 discoverable catalogued video record
 Only 1,608 videos have retained independent accessibility evidence. The private
 API-enriched preview's 4,202 accessible-video count and 201 qualified-core count
 do not describe this edition. All guide/path content and source links are retained;
-YouTube-only playback opens at YouTube. Institution-hosted players remain available.
+Standard privacy-enhanced YouTube embeds are derived from the independently sourced video URLs, and load only after a viewer chooses them. An embed option does not claim verified access; permanent source links and institution-hosted players remain available.
 Unknown access means no retained confirmation, not a finding of unavailability.
 
 No API response fields, private caches, OAuth credentials, analytics, accounts,
@@ -39,3 +39,5 @@ and imported on Evidence Press. The existing storage schema/key is preserved.
 Original guides and navigation annotations retain CC BY 4.0, application code MIT,
 and linked third-party teaching retains its own rights. The host's CC0 statement
 explicitly defers to page-specific licences.
+
+Embedding reference checked 9 November 2026: https://developers.google.com/youtube/player_parameters and https://support.google.com/youtube/answer/171780. Standard iframe embedding does not require publishing a Data API response. The general-audience university teaching catalogue retains its privacy prompt, no autoplay, origin referrer, and source fallback.
