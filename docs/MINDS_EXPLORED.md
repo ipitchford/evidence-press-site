@@ -16,7 +16,7 @@ The host's normal commit/seal/CI/deployment/readback gates apply without exempti
 
 The credential-free authoring project is preserved in `tools/minds-explored-source.zip`.
 Unzip it into a new local authoring directory. The original working copy is in
-the publication run's `app/` directory beside the host checkout. Its pinned npm lockfile and 56 application tests are retained there.
+the publication run's `app/` directory beside the host checkout. Its pinned npm lockfile and application tests (59 from 10 November 2026) are retained there.
 Build with `ATLAS_BASE_URL=https://evidencepress.org/minds-explored npm run build`.
 Run `node tools/update-minds-explored.js /absolute/path/to/authoring-copy` to
 import the output and regenerate the manifest. The importer preserves a
@@ -41,3 +41,17 @@ and linked third-party teaching retains its own rights. The host's CC0 statement
 explicitly defers to page-specific licences.
 
 Embedding reference checked 9 November 2026: https://developers.google.com/youtube/player_parameters and https://support.google.com/youtube/answer/171780. Standard iframe embedding does not require publishing a Data API response. The general-audience university teaching catalogue retains its privacy prompt, no autoplay, origin referrer, and source fallback.
+
+## Shop and advertising links (10 November 2026)
+
+The owner asked for a shop on 10 November 2026. `/minds-explored/shop/` and the
+"Books on this topic" lists on the home, topic, guide, path, course and resource
+pages are generated from `content/shop.json` in the authoring copy. Every Amazon link
+carries the Associates tag `aphonicdrift-20`, sits under an "Ad" label, has
+`rel="sponsored"` and is accompanied by the Associates statement; the app build and
+`tests/shop.test.mjs` refuse an untagged link. No prices, Amazon images, click
+recording or advertising cookies are used. Book ASINs were resolved by title and
+author against Amazon search on 10 November 2026; one title uses a tagged search link.
+Selections are editorial: no supplements, devices that claim cognitive benefit, or
+self-diagnosis products. The earlier statement that the atlas has no paid
+recommendation service was replaced on the privacy page by a disclosure of these links.
