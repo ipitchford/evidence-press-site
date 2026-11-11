@@ -103,7 +103,8 @@ if (process.argv.includes('--built')) {
     for (const f of files) {
       assert.ok(d.test(f), `scoped output outside dependency set: ${f}`);
       if (f === 'sitemap.xml') continue; // integrate.sh appends /protocols/ entries
-      assert.ok(fs.readFileSync(path.join(out, f)).equals(fs.readFileSync(path.join(dist, f))), `scoped bytes differ: ${f}`);
+      // Build stamps aside (dist may predate a ledger-only reseal commit), bytes must match.
+      assert.ok(pf.normalize(f, fs.readFileSync(path.join(out, f))).equals(pf.normalize(f, fs.readFileSync(path.join(dist, f)))), `scoped bytes differ: ${f}`);
     }
     fs.rmSync(out, { recursive: true });
   });
