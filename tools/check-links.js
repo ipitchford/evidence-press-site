@@ -15,7 +15,12 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const DIST = path.join(ROOT, 'dist');
+/* Optional scoping for tools/page-fix.js: --dist DIR checks another built
+   tree; --only LIST checks only the HTML files named (one dist-relative path
+   per line) while still resolving their links against the whole tree. */
+const argValue = name => { const i = process.argv.indexOf(name); return i > 0 ? process.argv[i + 1] : null; };
+const DIST = argValue('--dist') ? path.resolve(argValue('--dist')) : path.join(ROOT, 'dist');
+const ONLY = argValue('--only') ? fs.readFileSync(argValue('--only'), 'utf8').split('\n').map(s => s.trim().replace(/^\.\//, '')).filter(s => s.endsWith('.html')) : null;
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const BASE = CONFIG.baseUrl.replace(/\/$/, '');
 
@@ -54,7 +59,7 @@ function resolves(target) {
   return fs.existsSync(path.join(DIST, clean.replace(/\/$/, '') + '.html'));
 }
 
-const pages = htmlFiles(DIST);
+const pages = ONLY ? ONLY.map(rel => path.join(DIST, rel)) : htmlFiles(DIST);
 const broken = [];
 const fragmentsMissing = [];
 let internal = 0;
