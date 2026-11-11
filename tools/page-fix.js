@@ -239,7 +239,8 @@ function buildBaselineAt(cache, commit) {
   const out = path.join(cache, `baseline-${commit.slice(0, 12)}-full`);
   if (fs.existsSync(path.join(out, 'index.html'))) return out;
   log(`building full baseline at live commit ${commit.slice(0, 12)} (one-off per full deploy)`);
-  if (!fs.existsSync(wt)) execFileSync('git', ['worktree', 'add', '--detach', wt, commit], { cwd: ROOT, stdio: 'inherit' });
+  try { git('cat-file', '-e', `${commit}^{commit}`); } catch (_) { git('fetch', '-q', 'origin'); }
+  if (!fs.existsSync(wt)) execFileSync('git', ['worktree', 'add', '-q', '--detach', wt, commit], { cwd: ROOT, stdio: ['ignore', 'ignore', 'inherit'] });
   const env = { ...process.env, PATH: SAFE_PATH, REQUIRE_COMMITTED_MANIFESTS: '1' };
   try {
     const ledger = JSON.parse(fs.readFileSync(path.join(wt, 'protocols/PUBLISHED.json'), 'utf8'));
@@ -428,7 +429,9 @@ async function deploy(a) {
   if (git('status', '--porcelain', '--untracked-files=no')) throw new Error('REFUSED: working tree is not clean; commit the correction first');
   for (const [f, d] of Object.entries(r.sourceSha256)) if (sha(fs.readFileSync(path.join(ROOT, f))) !== d) throw new Error(`REFUSED: ${f} changed since prepare`);
   const committed = git('diff', '--name-only', r.sourceBase, head).split('\n').filter(Boolean);
-  if (committed.some(f => !ALLOWED_SOURCE(r.slug).test(f))) throw new Error('REFUSED: commit contains changes outside the page text');
+  // A page-text commit plus, optionally, its protocol-ledger reseal (CI needs it;
+  // protocol bytes stay as live, so the reseal never reaches this artifact).
+  if (committed.some(f => !ALLOWED_SOURCE(r.slug).test(f) && f !== 'protocols/PUBLISHED.json')) throw new Error('REFUSED: commit contains changes outside the page text');
   git('fetch', '-q', 'origin');
   if (!git('branch', '-r', '--contains', head)) throw new Error('REFUSED: push the commit first so CI runs on it');
   const tree = treeDigest(r.artifact);

@@ -138,6 +138,9 @@ jobs:
       - name: Research graph source/public parity
         run: node tools/test-research-graph.js --built
 
+      - name: Page-text correction mode reproduces full-build bytes
+        run: node tools/test-page-fix.js --built
+
       - name: Complete public payload text boundary
         run: node tools/check-public-text.js --built > /tmp/public-text-built.json
 
