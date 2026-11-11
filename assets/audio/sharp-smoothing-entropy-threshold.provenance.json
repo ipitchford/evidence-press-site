@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Where exactly does entropy stop behaving? An Evidence Press briefing. Take two independent copies of a random quantity with a symmetric distribution, blend them with a slider that runs from all of one copy to an even mix, and add ordinary Gaussian noise. Entropy measures how unpredictable the result is. The question is whether, as the slider moves, entropy follows a curve that only bends downwards, with no dip in the middle. Mathematicians call that concavity. Ball, Nayar and Tkocz conjectured it in 2016, for the case without noise. This year Luo showed that it can fail, even for inputs very close to a Gaussian, whenever the signal carries more than four sevenths of the total variance.",
+      "inputSha256": "64e5a567265de6b27e993466dee8a593d150e4208a1c17a27f4faa521e69ef29",
+      "audioSha256": "ede3ca03b44cb7918e8167781dce9b0eada2af23d02a33b1dc6bb48ab8c7c3c1",
+      "requestId": "req_8291b54d857946b3b71f2d489c432113",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "carries more than sevenths of the total variance",
+        "heardEnding": "very close to a gaussian whenever the signal carries more than sevenths of the total variance",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Earlier work, including an Evidence Press release on the third of November, proved concavity below four sevenths, but left four sevenths itself open. This release settles it. At four sevenths, and at every smaller signal fraction, concavity holds for every symmetric input close enough to a Gaussian, with one neighbourhood that serves the whole range. So the threshold is exactly four sevenths, a total signal-to-noise ratio of four thirds. The key tool is a sharp inequality about how Gaussian smoothing acts on bounded functions. The paper also shows that with three or more copies, concavity over every possible weighting fails at every signal fraction. Those failures sit where one copy carries almost all the weight, and whether concavity survives away from such weightings is open.",
+      "inputSha256": "1500a8cec2d5497a41ecebcc5e08a0befec522d779a27661788d04a05dd5b159",
+      "audioSha256": "25144d7080ae220edd35ace9d276704f89a18fe21d066e2fd853e1fbbd763924",
+      "requestId": "req_e70d9272cdc247f7aa6beb27d5af012b",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "concavity survives away from such weightings is open",
+        "heardEnding": "copy carries almost all the weight and whether concavity survives away from such weightings is open",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Two cautions. The effects are minute: the proved neighbourhood lets the input density differ from the Gaussian by about one part in a hundred million, so the interest is structural. And the result concerns symmetric inputs only. Scripts that test every ingredient are included, and one command reruns them all. This is an anonymous, AI-assisted, unrefereed candidate, published on the eleventh of November twenty twenty-six. Its review was internal and AI-assisted, not peer review, and no formal proof check has been made. The paper and evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "24f73c93579b94332159179ef45e57f1d5cc8b8626f3097538bb8094fe91ee43",
+      "audioSha256": "7245dcd665fc04233e5a506c03d498d08afc6410f044c8feece1b1a6e16f9c60",
+      "requestId": "req_88b06a19fe9341dca2809c7c64d1636c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "sharp-smoothing-entropy-threshold",
+  "generatedAt": "2026-11-11T19:35:03.678Z",
+  "sourceMetadata": "papers/sharp-smoothing-entropy-threshold/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "b3e807f4c34602fce251378ffbfe677b73136d70d6cc7e227873bb7bc5de1c04",
+  "transcriptPath": "assets/audio/sharp-smoothing-entropy-threshold.txt",
+  "transcriptSha256": "83f01e60ca784c9ecfec8178f67f87f9f5006932d27f76365fb979785751ba8d",
+  "audioPath": "assets/audio/sharp-smoothing-entropy-threshold.mp3",
+  "audioSha256": "87a3e7bea7f8fe1bb57c71749c13ed227368617296c434009e82ea98f18155ef",
+  "audioBytes": 2308268,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

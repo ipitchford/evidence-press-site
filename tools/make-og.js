@@ -21,7 +21,7 @@ body { width:1200px; height:630px; background:#151a1e; font-family: Georgia, 'Ti
 h1 { color:#faf7f2; font-size:${m.title.length > 80 ? 46 : 54}px; line-height:1.16; max-width:940px; font-weight:700; }
 .foot { font-family:system-ui, sans-serif; font-size:20px; color:#a8a29e; display:flex; gap:24px; flex-wrap:wrap; }
 .foot b { color:#e7e5e4; font-weight:600; }
-${['reversible-negative-eigenfunction-moments','gaussian-entropic-support-geometry'].includes(m.slug) ? `
+${['reversible-negative-eigenfunction-moments','gaussian-entropic-support-geometry','sharp-smoothing-entropy-threshold'].includes(m.slug) ? `
 /* Keep the exact two-state diagram intact rather than cropping its labels. */
 .art { inset:76px 60px auto; width:1080px; height:360px; opacity:1; }
 .art svg { width:1080px; height:360px; }
