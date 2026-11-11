@@ -2,7 +2,7 @@
 
 **In one sentence.** How much "surprise" can survive one step of a noisy reset depends, in the worst case, only on the probability of the rarest symbol, and this settles a 2025 conjecture about random walks on complete bipartite graphs.
 
-**The setting.** Think of a noisy channel that sometimes erases the symbol you send. Run it backwards, in the Bayesian sense: with probability $\alpha$ you keep the current symbol, and otherwise you replace it with a fresh random draw from a fixed prior $\rho$. This *reverse-erasure* step appears whenever part of a system is reset at random: a lazy random walk, a sampler that resamples a block of variables, or one half of an erasure channel.
+**The setting.** Think of a noisy channel that sometimes erases the symbol you send. Suppose it keeps each symbol with probability $\alpha$ and otherwise outputs a blank. Run it backwards, in the Bayesian sense: a visible symbol passes through unchanged, and each blank is replaced with a fresh random draw from a fixed prior $\rho$. So $\alpha$ sets how often the input is visible; it does not appear in the rule itself. This *reverse-erasure* step appears whenever part of a system is reset at random: a lazy random walk, a sampler that resamples a block of variables, or one half of an erasure channel.
 
 **The question.** Relative entropy measures how far a distribution is from equilibrium: how much "surprise" or information it still carries. Any noisy step shrinks it. The *contraction coefficient* $\eta$ is the largest fraction that can survive one step, over all starting distributions. Computing it normally means optimising over every possible input.
 

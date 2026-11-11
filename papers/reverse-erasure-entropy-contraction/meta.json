@@ -3,9 +3,9 @@
   "title": "Entropy contraction on complete bipartite graphs via reverse erasure: only the rarest symbol matters",
   "shortTitle": "Only the rarest symbol matters: entropy contraction for reverse erasure and complete bipartite graphs",
   "oneLine": "The worst-case entropy loss of reverse erasure depends only on the rarest symbol, which settles a complete-bipartite conjecture.",
-  "abstract": "Caputo, Chen, Gu and Polyanskiy (2025) conjectured that one step of the half-lazy random walk on the complete bipartite graph K_{n,n} keeps at most the fraction log n / (2 log 2n) of relative entropy, with single vertices as the only worst starts, and proved the case n = 3 with computer assistance. This candidate proves the conjecture for every n, and for K_{m,n} with M = max(m, n). One step of the walk splits into two copies of the reverse-erasure channel: keep the current symbol with probability α, otherwise redraw it from a prior ρ. For this channel the relative-entropy contraction coefficient depends on the prior only through its smallest atom q, at every α. Up to the sharp threshold α = q^{q/(1−q)} it equals log(1/q)/log(1/(αq)), attained only at a rarest point input; the upper bound is a translation of a weighted mean inequality of Gao, and the uniform binary case is known (Nair and Wang; Zhao). Above the threshold the worst inputs are full-support exponential tilts and no closed form is given. Further results: a rank-one weighted extension that settles the lazy-star observation of Jadhav (2026); a reduction of any block-reset chain (any laziness, all powers, stars, multipartite graphs) to a chain with at most two states per block, whose values are then computed numerically; and the exact one-way agreement-distillation rate below the threshold. There is no mixing-time improvement: the spectral gap is 1/2. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "abstract": "Caputo, Chen, Gu and Polyanskiy (2025) conjectured that one step of the half-lazy random walk on the complete bipartite graph K_{n,n} keeps at most the fraction log n / (2 log 2n) of relative entropy, with single vertices as the only worst starts, and proved the case n = 3 with computer assistance. This candidate proves the conjecture for every n, and for K_{m,n} with M = max(m, n). One step of the walk splits into two copies of the reverse-erasure channel, the Bayesian reverse of an erasure channel that keeps each symbol with probability α: a visible symbol passes through unchanged and a blank is replaced by a fresh draw from a prior ρ. For this channel the relative-entropy contraction coefficient depends on the prior only through its smallest atom q, at every α. Up to the sharp threshold α = q^{q/(1−q)} it equals log(1/q)/log(1/(αq)), attained only at a rarest point input; the upper bound is a translation of a weighted mean inequality of Gao, and the uniform binary case is known (Nair and Wang; Zhao). Above the threshold the worst inputs are full-support exponential tilts and no closed form is given. Further results: a rank-one weighted extension that settles the lazy-star observation of Jadhav (2026); a reduction of any block-reset chain (any laziness, all powers, stars, multipartite graphs) to a chain with at most two states per block, whose values are then computed numerically; and the exact one-way agreement-distillation rate below the threshold. There is no mixing-time improvement: the spectral gap is 1/2. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
   "datePublished": "2026-11-03",
-  "version": "0.1.0-candidate",
+  "version": "0.1.1-candidate",
   "authors": [
     "Anonymous"
   ],
@@ -23,12 +23,12 @@
     "agreement distillation"
   ],
   "repoUrl": "https://github.com/ipitchford/reverse-erasure-entropy-contraction",
-  "releaseUrl": "https://github.com/ipitchford/reverse-erasure-entropy-contraction/releases/tag/v0.1.0-candidate",
-  "pdfUrl": "https://github.com/ipitchford/reverse-erasure-entropy-contraction/releases/download/v0.1.0-candidate/reverse-erasure-entropy-contraction-0.1.0-candidate.pdf",
-  "doi": "10.5281/zenodo.23921825",
+  "releaseUrl": "https://github.com/ipitchford/reverse-erasure-entropy-contraction/releases/tag/v0.1.1-candidate",
+  "pdfUrl": "https://github.com/ipitchford/reverse-erasure-entropy-contraction/releases/download/v0.1.1-candidate/reverse-erasure-entropy-contraction-0.1.1-candidate.pdf",
+  "doi": "10.5281/zenodo.24142198",
   "conceptDoi": "10.5281/zenodo.23921824",
-  "zenodoUrl": "https://zenodo.org/records/23921825",
-  "citeText": "Anonymous (2026). Entropy contraction on complete bipartite graphs via reverse erasure: only the rarest symbol matters. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23921825",
+  "zenodoUrl": "https://zenodo.org/records/24142198",
+  "citeText": "Anonymous (2026). Entropy contraction on complete bipartite graphs via reverse erasure: only the rarest symbol matters. Version 0.1.1-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24142198",
   "evidence": "Written informal proofs of every theorem, proposition and corollary in a 27-page manuscript. Four verification scripts with recorded outputs in normal and optimised Python: a random-sample suite (101 gates, including 88,736 full-matrix bipartite inputs), minimum-mass reduction diagnostics, ten must-fail negative controls (all detected) with structured near-extremiser families, and 122 numerical checks of the block-reset extension with five must-fail controls; exact rational fingerprints of small kernels. All were rerun from a fresh copy with and without Python -O and matched the recorded results exactly, apart from timing and version fields.",
   "statusDetail": "Unrefereed AI-assisted mathematics candidate with written informal proofs. The upper bound of the closed formula is Gao's inequality (credited) and the uniform binary coefficient is known; values for laziness other than 1/2, powers and multipartite graphs, and the point-optimality windows there, are numerical. Internal AI-assisted review in five roles, a separate-model adversarial review and audit, a proof audit of new material, a clean replay, one revision round and a re-review. External specialist review, independent reproduction and formal verification have not been established.",
   "pageStructureVersion": "2.0",
@@ -236,5 +236,14 @@
         "independentAssessment": null
       }
     ]
-  }
+  },
+  "corrections": [
+    {
+      "date": "2026-11-11",
+      "scope": "claim",
+      "summary": "Version 0.1.1-candidate corrects how the paper and this page describe the reverse-erasure channel. Version 0.1.0-candidate said “keep the current symbol with probability $\\alpha$, otherwise replace it by a fresh draw from $\\rho$”. That describes the lazy reset kernel, an erasure followed by its reverse, not the channel analysed. The correct rule: a visible symbol passes through unchanged, and a blank is refilled with a fresh draw from $\\rho$; $\\alpha$ is the probability that the forward erasure channel keeps a symbol, and it enters only through the reference input.",
+      "detail": "No definition, theorem, proof, number, figure or code changed. The audio briefing was not re-recorded; its one-sentence lay description of the channel is the looser version. Version 0.1.0-candidate remains archived unchanged at doi:10.5281/zenodo.23921825 and tag v0.1.0-candidate; this version has DOI 10.5281/zenodo.24142198 and tag v0.1.1-candidate.",
+      "fixedIn": "0.1.1-candidate"
+    }
+  ]
 }

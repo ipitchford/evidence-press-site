@@ -5,7 +5,7 @@
   "oneLine": "A three-unit example, observable and controllable, makes the isolated Kalman filter's reported variances grow at least like (5/4)(9/5)^k while the ordinary Kalman filter stays at or below 3/4, refuting its authors' conjecture that the reported covariance always settles to a unique steady state.",
   "abstract": "Teams of robots or sensors often share the work of tracking a common state. The isolated Kalman filter of Jung, Luft and Weiss (Autonomous Robots, 2025) saves communication by updating only the units involved in each measurement and approximating their links to everyone else with a correction factor. Its authors conjectured that, whenever the system is observable and controllable, the covariance the filter reports settles to a finite, unique, stable steady state. This candidate shows that the conjecture is false. In a three-unit system where each measurement sees the sum of two states, observable from one round of measurements and controllable, with every local update well defined, the reported variances are proved to satisfy m_k ≥ (5/4)(9/5)^k − 1/4 for dynamics A = 3I, while the centralised Kalman filter keeps every variance at most 3/4. A Perron-root criterion extends the divergence to every connected non-bipartite graph of pair-sum measurements, and extra attenuation or deletion of cross-covariances does not help. Divergence needs unstable dynamics (stable dynamics are proved bounded), but only mildly: computer-assisted interval-arithmetic proofs show that large priors escape for growth factors a² in (1, 1.38], with certified entry from 10¹²I at eight values down to 1 + 10⁻⁸, and that at a² = 21/20 the prior I settles while 10¹²I diverges, so no steady covariance attracts every start. In high-precision numerical tests the actual estimation error stays bounded: the failure is gross pessimism of the reported covariance, not divergence of the estimate. The paper also classifies when every local update is well defined (participant groups overlapping in at most one unit) and proves boundedness for anchored relative measurements. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
   "datePublished": "2026-11-04",
-  "version": "0.2.0-candidate",
+  "version": "0.3.0-candidate",
   "authors": [
     "Anonymous"
   ],
@@ -22,12 +22,12 @@
     "counterexample"
   ],
   "repoUrl": "https://github.com/ipitchford/isolated-kalman-covariance-divergence",
-  "releaseUrl": "https://github.com/ipitchford/isolated-kalman-covariance-divergence/releases/tag/v0.2.0-candidate",
-  "pdfUrl": "https://github.com/ipitchford/isolated-kalman-covariance-divergence/releases/download/v0.2.0-candidate/isolated-kalman-covariance-divergence-0.2.0-candidate.pdf",
-  "doi": "10.5281/zenodo.23941896",
+  "releaseUrl": "https://github.com/ipitchford/isolated-kalman-covariance-divergence/releases/tag/v0.3.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/isolated-kalman-covariance-divergence/releases/download/v0.3.0-candidate/isolated-kalman-covariance-divergence-0.3.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24142193",
   "conceptDoi": "10.5281/zenodo.23935674",
-  "zenodoUrl": "https://zenodo.org/records/23941896",
-  "citeText": "Anonymous (2026). Observable systems with divergent isolated Kalman covariances: a counterexample to the isolated Kalman filtering convergence conjecture. Version 0.2.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.23941896",
+  "zenodoUrl": "https://zenodo.org/records/24142193",
+  "citeText": "Anonymous (2026). Observable systems with divergent isolated Kalman covariances: a counterexample to the isolated Kalman filtering convergence conjecture. Version 0.3.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24142193",
   "evidence": "Theorem 4.1, Theorem 5.1, Corollary 5.3, Proposition 3.1, Theorem 8.1 and Proposition 9.1 have written analytic proofs; Theorems 6.2 and 6.4 and Corollaries 6.3 and 6.5 are computer-assisted, resting on outward-rounded interval-arithmetic certificates C1-C3 (mpmath 1.3.0). Exact rational checks cover four epochs of Theorem 4.1, the schedule matrix, the participant-family and singularity witnesses and the anchored identity. Findings 7.1 (bounded actual error) and 7.2 (thresholds) are numerical only. All eleven scripts were replayed with and without Python -O from fresh copies with byte-identical outputs; a corrupted determinant is rejected under -O; GitHub CI reruns the exact checks and certificates on Linux.",
   "statusDetail": "Unrefereed AI-assisted estimation-theory candidate with written analytic proofs and computer-assisted interval certificates; numerical findings are evidence only. Internal AI-assisted review in five roles, a separate-model adversarial review, independent replay, one revision round with extensions, a re-review, a proof audit and a separate-model audit of the new proofs. External specialist review, independent reproduction and formal verification have not been established.",
   "pageStructureVersion": "2.0",
@@ -223,6 +223,13 @@
       "summary": "Corrected the comparison with Luft, Schubert, Roumeliotis and Burgard (2018, IJRR). Version 0.1.0 compared the work with that article at abstract level only. Version 0.2.0 compares it with the full text: it introduces the correction factor (eq. 26) and a scaled variant (eq. 28), proves that two-robot blocks stay positive definite (Proposition 1), and makes no claim about boundedness or convergence of the covariance and gives no divergence example. Its Proposition 1 and scaled variant are now credited where our results overlap, and the two citing works are compared in full text.",
       "detail": "No theorem, proof, certificate, computation or numerical finding changed; scripts and results are byte-identical to 0.1.0. The counterexample is not pre-empted. Version 0.1.0 remains archived unchanged at doi:10.5281/zenodo.23935675 and tag v0.1.0-candidate.",
       "fixedIn": "0.2.0-candidate"
+    },
+    {
+      "date": "2026-11-11",
+      "scope": "claim",
+      "summary": "Version 0.3.0-candidate corrects Numerical finding 7.1. Earlier versions said that, at $a^2=9$, the actual error variances settle to $(4.25, 3.25, 3.25)$. In fact they repeat with period two: $(4.25, 3.25, 3.25)$ after even epochs and $(0.75, 5.25, 0.75)$ after odd epochs, so the largest actual error variance alternates between 4.25 and 5.25. Per node the estimate is about five to eight times worse than the centralised filter's, not five to six. The actual error still stays bounded in these tests.",
+      "detail": "No theorem, proof, certificate, script or recorded output changed. Versions 0.2.0 (doi:10.5281/zenodo.23941896) and 0.1.0 (doi:10.5281/zenodo.23935675) remain archived unchanged under their tags; this version has DOI 10.5281/zenodo.24142193 and tag v0.3.0-candidate.",
+      "fixedIn": "0.3.0-candidate"
     }
   ]
 }
