@@ -53038,11 +53038,27 @@
       },
       "releaseSlug": "reverse-erasure-entropy-contraction",
       "stopReason": null,
-      "corrections": [],
+      "corrections": [
+        {
+          "at": "2026-11-11T12:00:00Z",
+          "field": "release.version",
+          "reason": "The abstract described the reverse-erasure channel as 'keep the current symbol with probability α, otherwise redraw from ρ', which is the lazy reset kernel. Corrected: a visible symbol passes unchanged and a blank is refilled from ρ; α enters only through the reference input. Mathematics and code unchanged.",
+          "replacement": "0.1.1-candidate",
+          "evidenceRefs": [
+            "https://doi.org/10.5281/zenodo.24142198",
+            "https://github.com/ipitchford/reverse-erasure-entropy-contraction/releases/tag/v0.1.1-candidate",
+            "https://evidencepress.org/releases/reverse-erasure-entropy-contraction/"
+          ]
+        }
+      ],
       "revisions": [
         {
           "date": "2026-11-03",
           "summary": "Registered the archive publication and public-delivery stages prospectively; all prior scientific and review work remains left-censored."
+        },
+        {
+          "date": "2026-11-11",
+          "summary": "Recorded the 0.1.1-candidate correction of the reverse-erasure channel description; definitions, theorems, proofs and code unchanged."
         }
       ],
       "metrics": {
@@ -54959,6 +54975,17 @@
             "https://github.com/ipitchford/isolated-kalman-covariance-divergence/releases/tag/v0.2.0-candidate",
             "https://evidencepress.org/releases/isolated-kalman-covariance-divergence/"
           ]
+        },
+        {
+          "at": "2026-11-11T12:00:00Z",
+          "field": "release.version",
+          "reason": "At a²=9 the actual error variances repeat with period two, (4.25, 3.25, 3.25) after even epochs and (0.75, 5.25, 0.75) after odd epochs; earlier versions said they settle to (4.25, 3.25, 3.25). Proofs, certificates, scripts and recorded outputs unchanged.",
+          "replacement": "0.3.0-candidate",
+          "evidenceRefs": [
+            "https://doi.org/10.5281/zenodo.24142193",
+            "https://github.com/ipitchford/isolated-kalman-covariance-divergence/releases/tag/v0.3.0-candidate",
+            "https://evidencepress.org/releases/isolated-kalman-covariance-divergence/"
+          ]
         }
       ],
       "revisions": [
@@ -54969,6 +54996,10 @@
         {
           "date": "2026-11-04",
           "summary": "Versioned correction 0.2.0-candidate: full-text comparison with Luft et al. (2018, IJRR); earlier version preserved unchanged."
+        },
+        {
+          "date": "2026-11-11",
+          "summary": "Recorded the 0.3.0-candidate correction of Numerical finding 7.1 (period-two actual error at a²=9); proofs, certificates, scripts and recorded outputs unchanged."
         }
       ],
       "metrics": {
@@ -59046,6 +59077,10 @@
     {
       "date": "2026-11-09",
       "summary": "Recorded the poincare-sinkhorn-global-rates 0.1.1-candidate unread-source correction."
+    },
+    {
+      "date": "2026-11-11",
+      "summary": "Recorded the isolated-kalman-covariance-divergence 0.3.0-candidate and reverse-erasure-entropy-contraction 0.1.1-candidate corrections."
     }
   ]
 }
