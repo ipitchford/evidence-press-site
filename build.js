@@ -33,10 +33,22 @@ const atlasResearchView = require('./tools/atlas-research-view');
 const atlasMemory = require('./tools/atlas-memory');
 
 const ROOT = __dirname;
-require('./tools/check-public-text').check(ROOT, 'source');
+/* Page-text correction mode (tools/page-fix.js). Regenerates only the named
+   release and the shared generators that read release data, into a separate
+   output directory. It never writes dist/; the source/built public-text scans
+   are replaced by page-fix's scoped scans of the changed files. A normal build
+   (no EP_PAGE_FIX_SLUG) is unaffected. */
+const PAGE_FIX = process.env.EP_PAGE_FIX_SLUG ? (() => {
+  const slug = process.env.EP_PAGE_FIX_SLUG, out = process.env.EP_PAGE_FIX_OUT || '';
+  if (!/^[a-z0-9-]+$/.test(slug)) throw new Error('EP_PAGE_FIX_SLUG must be a release slug');
+  if (!path.isAbsolute(out) || path.resolve(out) === path.join(ROOT, 'dist')) throw new Error('EP_PAGE_FIX_OUT must be an absolute directory other than dist/');
+  if (fs.existsSync(out) && fs.readdirSync(out).length) throw new Error('EP_PAGE_FIX_OUT must be empty');
+  return { slug, out: path.resolve(out) };
+})() : null;
+if (!PAGE_FIX) require('./tools/check-public-text').check(ROOT, 'source');
 const ATLAS_MEMORY = atlasMemory.buildIndex(ROOT);
 require('./tools/banner-palettes').check(ROOT);
-const DIST = path.join(ROOT, 'dist');
+const DIST = PAGE_FIX ? PAGE_FIX.out : path.join(ROOT, 'dist');
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const OPERATING_ARTIFACTS = loadOperatingArtifacts(ROOT);
 const RELATIONSHIP_ARTIFACTS = loadRelationshipArtifacts(ROOT);
@@ -3462,21 +3474,21 @@ const OBSERVATORY_RECORD = {
 };
 
 /* ---------------------------------------------------------------- main */
-fs.rmSync(DIST, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+if (!PAGE_FIX) fs.rmSync(DIST, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
 fs.mkdirSync(DIST, { recursive: true });
 /* Copy assets, but never operating-system metadata: .DS_Store and friends are
    invisible locally and end up publicly served, and they differ between
    machines, which breaks byte-identical rebuilds of a tagged release. */
 const JUNK = /^(\.DS_Store|\._.*|Thumbs\.db|desktop\.ini|\.localized)$/i;
-fs.cpSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), {
+if (!PAGE_FIX) fs.cpSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'), {
   recursive: true,
   filter: src => !JUNK.test(path.basename(src))
 });
 /* Cloudflare's custom-domain cache may ignore query strings for static assets.
    Emit fingerprinted CSS filenames so each stylesheet revision has a distinct
    cache key while preserving the stable source-named copies above. */
-fs.copyFileSync(path.join(ROOT, 'assets', 'style.css'), path.join(DIST, 'assets', CSS_ASSET));
-fs.copyFileSync(path.join(ROOT, 'assets', 'atlas.css'), path.join(DIST, 'assets', ATLAS_CSS_ASSET));
+if (!PAGE_FIX) fs.copyFileSync(path.join(ROOT, 'assets', 'style.css'), path.join(DIST, 'assets', CSS_ASSET));
+if (!PAGE_FIX) fs.copyFileSync(path.join(ROOT, 'assets', 'atlas.css'), path.join(DIST, 'assets', ATLAS_CSS_ASSET));
 /* YouTube authoring thumbnails normally stay outside deployed assets. These
    current Productivity illustrations and the superseded two-item illustration
    use stable public URLs, so publish a narrow allowlist instead of exposing the
@@ -3487,8 +3499,8 @@ const PRODUCTIVITY_VIDEO_THUMBNAILS = [
   'certified-three-item-jrp-gap.jpg'
 ];
 const productivityThumbDir = path.join(DIST, 'assets', 'video-thumbs');
-fs.mkdirSync(productivityThumbDir, { recursive: true });
-for (const filename of PRODUCTIVITY_VIDEO_THUMBNAILS) {
+if (!PAGE_FIX) fs.mkdirSync(productivityThumbDir, { recursive: true });
+for (const filename of PAGE_FIX ? [] : PRODUCTIVITY_VIDEO_THUMBNAILS) {
   const source = path.join(ROOT, 'thumbs', filename);
   if (!fs.existsSync(source)) throw new Error(`missing Productivity video thumbnail: thumbs/${filename}`);
   fs.copyFileSync(source, path.join(productivityThumbDir, filename));
@@ -3536,7 +3548,7 @@ const PERMISSIONS_POLICY = [
   'usb=()', 'serial=()', 'bluetooth=()', 'browsing-topics=()'
 ].join(', ');
 
-write('_headers', `/*
+if (!PAGE_FIX) write('_headers', `/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
@@ -3589,6 +3601,26 @@ write('_headers', `/*
 /api/*
   Access-Control-Allow-Origin: *
 `);
+if (PAGE_FIX) {
+  /* The release-data dependency set: every generator that reads `papers`,
+     the research graph or other release-derived registers (paperPage for this
+     slug, indexPage, atlasPage, applicationsPage, feeds, sitemap, llms, api).
+     Everything else is copied unchanged from the verified live baseline by
+     tools/page-fix.js, which also proves the result against live bytes. */
+  const target = papers.find(p => p.slug === PAGE_FIX.slug);
+  if (!target) throw new Error(`page-fix: unknown release slug ${PAGE_FIX.slug}`);
+  fs.mkdirSync(DIST, { recursive: true });
+  paperPage(target);
+  indexPage();
+  atlasPage();
+  applicationsPage();
+  feeds();
+  sitemap();
+  llms();
+  api();
+  console.log(`page-fix: regenerated ${PAGE_FIX.slug} and shared release outputs -> ${DIST}`);
+  return;
+}
 papers.forEach(paperPage);
 articles.forEach(writeArticleRecord);
 indexPage();
