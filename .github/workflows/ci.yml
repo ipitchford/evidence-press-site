@@ -69,6 +69,7 @@ jobs:
       - name: Renderer regression tests
         run: |
           node tools/test-render.js
+          node tools/test-site-nav.js
           node tools/test-deploy-ci.js
 
       - name: Build-artifact reuse and deployment boundary hostile controls
@@ -176,7 +177,9 @@ jobs:
         run: node tools/test-why-minds-break-films.js
 
       - name: Internal link and asset check
-        run: node tools/check-links.js
+        run: |
+          node tools/check-links.js
+          node tools/test-site-nav.js --built
 
       - name: Publication-preservation gate
         # Refuses any build that would drop a previously published URL.

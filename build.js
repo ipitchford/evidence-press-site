@@ -27,6 +27,7 @@ const { loadBaselineReceipt, validateBaselineReceipt } = require('./tools/baseli
 const { loadArticles, articleAttribution } = require('./tools/articles');
 const { withBriefingAudio } = require('./tools/audio-media');
 const { checkManuscriptPdf } = require('./tools/manuscript-pdf-gate');
+const SITE_NAV = require('./tools/site-nav');
 const ATLAS_ROUTE_LIBRARY = require('./data/ATLAS_RESEARCH_ROUTES.json');
 require('./assets/js/atlas-route-core').validateLibrary(ATLAS_ROUTE_LIBRARY);
 const atlasResearchView = require('./tools/atlas-research-view');
@@ -806,6 +807,9 @@ function bibtex(p) {
 
 /* ------------------------------------------------------------- chrome */
 function head({ title, description, canonical, jsonld, metaExtra = '', math = false, extraLinks = '', robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' }) {
+  // Header, current-position marks and breadcrumbs come from tools/site-nav.js,
+  // keyed by the page's own path.
+  const pagePath = canonical.startsWith(BASE) ? canonical.slice(BASE.length) || '/' : '/';
   return `<!DOCTYPE html>
 <html lang="${CONFIG.language}">
 <head>
@@ -832,33 +836,16 @@ ${JSON.stringify(jsonld, null, 1)}
 </script>
 </head>
 <body>
-<header class="site-head">
-  <div class="wrap">
-    <a class="brand" href="/"><span class="brand-mark">E</span> ${esc(CONFIG.siteName)}</a>
-    <nav>
-      <a href="/">Releases</a>
-      <a href="/articles/">Articles</a>
-      <a href="/atlas/">Atlas</a>
-      <a href="/minds-explored/">Minds Explored</a>
-      <a href="/about/">About</a>
-      <a class="support-nav" href="/support/">Donate</a>
-      <a href="/shop/">Shop</a>
-      <a href="/operating-model/">Operating model</a>
-      <a href="/observatory/">Observatory</a>
-      <a href="/productivity/">Productivity</a>
-      <a href="/ai/">For AI agents</a>
-      <a href="/feed.xml">RSS</a>
-    </nav>
-  </div>
-</header>
-<main>`;
+${SITE_NAV.header(pagePath, { siteName: CONFIG.siteName })}
+<main>${SITE_NAV.breadcrumbs(pagePath, title, { siteName: CONFIG.siteName })}`;
 }
 
 const foot = `</main>
 <footer class="site-foot">
   <div class="wrap">
+    ${SITE_NAV.footerMap()}
     <p>${esc(CONFIG.siteName)} publishes evidence-attached research releases and a clearly separate collection of essays, commentary and research notes. Each page states its own evidence boundary.</p>
-    <p><a href="/support/">Support open knowledge at Evidence Press</a> · <a href="/applications/">Applications</a> · <a href="/shop/">Shop</a> ·<a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a>.</p>
+    <p><a href="/support/">Support open knowledge at Evidence Press</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/feed.xml">RSS</a>.</p>
     <p>Except where a page states otherwise, original site content is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. Machine-readable: <a href="/api/papers.json">papers.json</a> · <a href="/api/math-objects.json">mathematical objects</a> · <a href="/api/claims.json">claims</a> · <a href="/api/assurance-tasks.json">assurance tasks</a> · <a href="/api/citations.json">citation graph</a> · <a href="/api/articles.json">articles.json</a> · <a href="/api/research-graph.json">research graph</a> · <a href="/api/atlas-roadmap.json">Atlas roadmap</a> · <a href="/api/method-registry.json">method registry</a> · <a href="/api/ibe-ledger.json">IBE ledger</a> · <a href="/api/work-ledger.json">work ledger</a> · <a href="/api/research-metrics-policy.json">research metrics</a> · <a href="/api/schema.json">release schema</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/feed.xml">release RSS</a> · <a href="/articles/feed.xml">article RSS</a> · <a href="/sitemap.xml">sitemap</a></p>
     <p class="build-identity">Built by Evidence Press ${esc(BUILD.softwareVersion || 'unversioned')}${BUILD.sourceCommit ? ` · source ${esc(BUILD.sourceCommit)}` : ''}${BUILD.sourceDate ? ` · ${esc(BUILD.sourceDate.slice(0, 10))}` : ''} · metadata schema ${esc(SCHEMA_VERSION)} · <a href="/api/build.json">build.json</a></p>
   </div>
@@ -1499,12 +1486,25 @@ ${Array.from({ length: 9 }, (_, k) => {
     </a>
   </div>
 </section>
-<section class="wrap programme-band" aria-label="Minds Explored">
+<section class="wrap programme-band" aria-labelledby="learn-title">
+  <h2 id="learn-title" class="sr-only">Learn</h2>
+  <div class="programme-cards learn-cards">
     <a class="programme-card minds-explored-promo" href="/minds-explored/">
       <p class="card-date">Open learning · mind, brain and behaviour</p>
       <h3>Minds Explored</h3>
       <p>Start with a question. Find university lectures, follow 51 topic guides and 20 learning paths, and build a library that stays in your browser.</p>
     </a>
+    <a class="programme-card book-card" href="/why-minds-break/">
+      <p class="card-date">Book · free films and essays</p>
+      <h3>Why Minds Break</h3>
+      <p>An evolutionary and developmental programme for psychopathology, with a free film and essay on each of eleven common conditions.</p>
+    </a>
+    <a class="programme-card book-card" href="/think-again/">
+      <p class="card-date">Book · 100 puzzles</p>
+      <h3>Think Again</h3>
+      <p>Puzzles for the maths and science everyone should understand, with the sources for its facts listed puzzle by puzzle.</p>
+    </a>
+  </div>
 </section>
 <section class="wrap" aria-label="Releases">
   <div class="listhead">
@@ -1516,6 +1516,54 @@ ${Array.from({ length: 9 }, (_, k) => {
 </section>
 ${foot}`;
   write('index.html', html);
+}
+
+/* --------------------------------------------------------- group hubs */
+/* /research/, /learn/ and /practice/ list their sections from tools/site-nav.js,
+   so a section added to the navigation appears on its hub automatically. */
+function hubPages() {
+  const me = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'minds-explored', 'manifest.json'), 'utf8'));
+  const thousands = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const plural = (n, noun) => `${thousands(n)} ${noun}${n === 1 ? '' : 's'}`;
+  const counts = {
+    '/': plural(papers.length, 'release'),
+    '/articles/': plural(articles.length, 'article'),
+    '/minds-explored/': `${thousands(me.cataloguedVideos)} catalogued videos · ${me.counts.completedGuides} topic guides · ${me.counts.completedPaths} learning paths`
+  };
+  for (const group of SITE_NAV.GROUPS.filter(g => g.hub)) {
+    const url = `${BASE}${group.href}`;
+    const name = group.label;
+    const description = group.standfirst;
+    const jsonld = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
+      '@type': 'CollectionPage', '@id': `${url}#page`, url, name, description,
+      inLanguage: CONFIG.language, isPartOf: { '@id': `${BASE}/#website` },
+      license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+      hasPart: group.sections.map(s => ({ '@type': 'WebPage', url: `${BASE}${s.href}`, name: s.title || s.label }))
+    }] };
+    const cardsHtml = group.sections.map(s => `
+    <a class="programme-card hub-card" href="${s.href}">
+      ${counts[s.href] ? `<p class="card-date">${esc(counts[s.href])}</p>` : ''}
+      <h2>${esc(s.title || s.label)}</h2>
+      <p>${esc(s.detail)}</p>
+    </a>`).join('');
+    const html = `${head({
+      title: `${name} · ${CONFIG.siteName}`, description, canonical: url, jsonld,
+      metaExtra: [['og:type', 'website'], ['og:site_name', CONFIG.siteName], ['og:title', name], ['og:description', description], ['og:url', url]]
+        .map(([k, v]) => `<meta property="${k}" content="${escAttr(v)}">`).join('\n') + '\n',
+      extraLinks: `<link rel="alternate" type="text/markdown" href="${url}index.md">\n<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">\n`
+    })}
+<article class="hub"><div class="wrap">
+  <p class="kicker">${esc(CONFIG.siteName)}</p>
+  <h1>${esc(name)}</h1>
+  <p class="standfirst">${esc(description)}</p>
+  <div class="hub-cards">${cardsHtml}
+  </div>
+</div></article>
+${foot}`;
+    write(`${group.href.slice(1)}index.html`, html);
+    write(`${group.href.slice(1)}index.md`, `---\ntitle: "${name}"\nurl: ${url}\nlicense: CC0-1.0\n---\n\n# ${name}\n\n${description}\n\n${
+      group.sections.map(s => `- [${s.title || s.label}](${BASE}${s.href}): ${s.detail}`).join('\n')}\n`);
+  }
 }
 
 /* ------------------------------------------------------------ articles */
@@ -2700,9 +2748,13 @@ function interpsychPage() {
   const scripts = [...original.matchAll(/<script>([\s\S]*?)<\/script>/g)];
   if (scripts.length !== 1) throw new Error('InterPsych reading copy must have exactly one script');
   write('interpsych/app.js', scripts[0][1]);
+  if (original.split('<body>').length !== 2) throw new Error('InterPsych reading copy must have exactly one <body> tag');
+  // The reading copy keeps its own design; the slim Evidence Press bar above it
+  // is the way back into the rest of the site.
   const hosted = original
     .replace(scripts[0][0], '<script src="/interpsych/app.js"></script>')
-    .replace('</head>', `<meta name="robots" content="noindex, nofollow, noarchive"><link rel="canonical" href="${BASE}/interpsych/"><meta http-equiv="Content-Security-Policy" content="${PAGE_CSP}">${interpsychShareMeta()}</head>`)
+    .replace('</head>', `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><link rel="canonical" href="${BASE}/interpsych/"><meta http-equiv="Content-Security-Policy" content="${PAGE_CSP}">${interpsychShareMeta()}<link rel="stylesheet" href="/assets/ep-bar.css?v=${assetV('ep-bar.css')}"></head>`)
+    .replace('<body>', `<body>${SITE_NAV.bar('/interpsych/', { siteName: CONFIG.siteName })}`)
     .replace(/href="(?!https?:|#|data:|mailto:|\/)([^"]+)"/g, 'href="/assets/interpsych/$1"')
     .replace('This reading copy works offline.', 'The <a href="/assets/interpsych/interpsych-research-package.zip" download>research package</a> includes an offline reading copy.');
   write('interpsych/index.html', hosted);
@@ -2713,6 +2765,8 @@ function sitemap() {
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
     { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/why-minds-break/`, lastmod: '2026-11-07' }, ...Array.from({ length: 10 }, (_, i) => ({ loc: `${BASE}/why-minds-break/chapter-${i + 1}/`, lastmod: '2026-11-02' })), { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-11-04' }, { loc: `${BASE}/origins-of-violence/`, lastmod: '2026-11-04' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-11-04' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
+    ...SITE_NAV.GROUPS.filter(g => g.hub).map(g => ({ loc: `${BASE}${g.href}` })),
+    { loc: `${BASE}/interpsych/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified })),
     ...require('./tools/why-minds-break-films').routes(ROOT, BASE),
@@ -3612,6 +3666,8 @@ if (PAGE_FIX) {
   fs.mkdirSync(DIST, { recursive: true });
   paperPage(target);
   indexPage();
+  // hubPages() is deliberately absent: hubs read only the release count, which
+  // a text correction to one existing release cannot change.
   atlasPage();
   applicationsPage();
   feeds();
@@ -3624,6 +3680,7 @@ if (PAGE_FIX) {
 papers.forEach(paperPage);
 articles.forEach(writeArticleRecord);
 indexPage();
+hubPages();
 articlesIndexPage();
 atlasPage();
 simplePage('about/', 'About this site', `What ${CONFIG.siteName} is, what these releases are, and how to verify or refute one.`, 'about.md', 'AboutPage');
@@ -3679,7 +3736,8 @@ simplePage('productivity/', 'Productivity Protocols', 'Six working habits that m
   programmeNav: [
     { label: 'Six habits', detail: 'What works, with starters to copy', url: '#six-habits-that-multiply-what-one-person-can-do' },
     { label: 'Case study', detail: 'One person, a whole press', url: '/productivity/case-study/' },
-    { label: 'Measure', detail: 'The two-week self-test', url: '/productivity/measure/' }
+    { label: 'Measure', detail: 'The two-week self-test', url: '/productivity/measure/' },
+    { label: 'Protocol library', detail: 'Bounded methods for company trials', url: '/protocols/' }
   ],
   evidenceBoundary: 'The habits are free to use with any capable AI assistant. How much they help depends on the job, so each can be tested on real work with the two-week self-test, and results go into an open ledger.'
 });

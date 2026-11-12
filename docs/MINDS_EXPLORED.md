@@ -23,6 +23,12 @@ import the output and regenerate the manifest. The importer preserves a
 per-document CSP and omits nested hosting control files. Review, then use the
 guarded host publication workflow. A hash match establishes file identity, not content truth.
 
+Every atlas page opens with the slim Evidence Press bar (Research, Learn,
+Practice, About). Its markup is the `EP_BAR` constant in the authoring copy's
+`scripts/build.mjs` and must match `bar()` in the host's `tools/site-nav.js`;
+`node tools/test-site-nav.js --built` fails if the host navigation changes and the
+atlas is not rebuilt to match.
+
 The permanent public edition includes 4,209 discoverable catalogued video records,
 51 guides, 20 paths, 118 course/series records and a 4,398-item discovery index.
 Only 1,608 videos have retained independent accessibility evidence. The private
