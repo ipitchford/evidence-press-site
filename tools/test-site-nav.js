@@ -36,7 +36,7 @@ for (const g of NAV.GROUPS) {
 }
 for (const s of sections) ok(/^\/([a-z0-9-]+\/)*$/.test(s.href), `section href ${s.href} is a directory path`);
 eq(new Set(sections.map(s => s.href)).size, sections.length, 'no section appears twice');
-eq(NAV.GROUPS.length, 4, 'four top-level groups');
+eq(NAV.GROUPS.map(g => g.id).join(' '), 'research learn practice about shop', 'five top-level groups, Shop last beside Donate');
 
 /* ----------------------------------------------------------- placement */
 const at = p => { const h = NAV.locate(p); return [h.group && h.group.id, h.section && h.section.href]; };
@@ -52,6 +52,9 @@ assert.deepEqual(at('/protocols/p/project-handoff/'), ['practice', '/protocols/'
 assert.deepEqual(at('/productivity/case-study/'), ['practice', '/productivity/case-study/']); checks++;
 assert.deepEqual(at('/research-metrics/'), ['about', '/research-metrics/']); checks++;
 assert.deepEqual(at('/research/'), ['research', null], 'a hub belongs to its group'); checks++;
+assert.deepEqual(at('/shop/'), ['shop', '/shop/']); checks++;
+assert.deepEqual(at('/minds-explored/shop/'), ['shop', '/minds-explored/shop/'], 'the bookshop belongs to Shop, not Learn'); checks++;
+assert.deepEqual(at('/minds-explored/topics/'), ['learn', '/minds-explored/']); checks++;
 for (const p of ['/support/', '/privacy/', '/terms/', '/404.html'])
   assert.deepEqual(at(p), [null, null], `${p} sits outside the groups`), checks++;
 assert.deepEqual(at('/index.html'), at('/')); checks++;
@@ -66,6 +69,9 @@ eq(count(atlas.match(/<nav class="site-sections"[\s\S]*?<\/nav>/)[0], 'aria-curr
 ok(atlas.includes('<details class="site-menu"><summary>Menu</summary>'), 'phone menu present without scripting');
 ok(!NAV.header('/privacy/').includes('site-sections'), 'no second row outside the groups');
 ok(NAV.header('/support/').includes('class="support-nav" href="/support/" aria-current="page"'), 'Donate marks its own page');
+ok(atlas.includes('<a class="shop-nav" href="/shop/">Shop</a>'), 'Shop is a top-level link on every page');
+ok(atlas.includes('<a class="shop-nav shop-nav-phone" href="/shop/">Shop</a>'), 'Shop stays in the phone bar, outside the Menu');
+ok(NAV.header('/shop/').includes('aria-label="Shop sections"') && NAV.header('/shop/').includes('href="/minds-explored/shop/"'), 'the shop page links the bookshop');
 for (const g of NAV.GROUPS) ok(atlas.includes(`href="${g.href}"`), `header links ${g.href}`);
 for (const s of sections) ok(atlas.includes(`href="${s.href}"`), `menu links ${s.href}`);
 ok(!/<script|\son[a-z]+=/i.test(atlas), 'no inline script or handler (CSP)');
@@ -125,12 +131,12 @@ if (BUILT) {
   ok(!/noindex/.test(interpsych), 'InterPsych is indexable');
   ok(interpsych.includes(NAV.bar('/interpsych/')), 'InterPsych carries the Evidence Press bar');
 
-  const me = fs.readFileSync(fileFor('/minds-explored/'), 'utf8');
-  const meBar = (me.match(/<nav class="ep-bar"[\s\S]*?<\/nav>/) || [''])[0];
-  const meHrefs = [...meBar.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
-  assert.deepEqual(meHrefs, ['https://evidencepress.org/', ...NAV.GROUPS.map(g => `https://evidencepress.org${g.href}`)],
-    'Minds Explored bar mirrors tools/site-nav.js'); checks++;
-  ok(meBar.includes('href="https://evidencepress.org/learn/" aria-current="true"'), 'Minds Explored sits in Learn');
+  // The atlas is built by its own application; its bar must be byte-identical
+  // to bar() here, page by page (Learn everywhere, Shop on its bookshop).
+  for (const href of ['/minds-explored/', '/minds-explored/topics/', '/minds-explored/shop/']) {
+    const html = fs.readFileSync(fileFor(href), 'utf8');
+    ok(html.includes(NAV.bar(href, { origin: 'https://evidencepress.org' })), `Minds Explored ${href} bar mirrors tools/site-nav.js`);
+  }
 }
 
 console.log(`site navigation: ${checks} checks passed${BUILT ? ' (including dist/)' : ''}`);

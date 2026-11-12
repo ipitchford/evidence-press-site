@@ -69,11 +69,22 @@ const GROUPS = [
       { label: 'About this site', href: '/about/' },
       { label: 'Operating model', href: '/operating-model/' },
       { label: 'Research metrics', href: '/research-metrics/' },
-      { label: 'For AI agents', href: '/ai/' },
-      { label: 'Shop', href: '/shop/' }
+      { label: 'For AI agents', href: '/ai/' }
+    ]
+  },
+  /* Shop sits beside Donate on every page: sales fund the research. The phone
+     bar also carries a Shop link, so it is never hidden behind the Menu. */
+  {
+    id: 'shop', label: 'Shop', href: '/shop/', hub: false,
+    sections: [
+      { label: 'Prints and gifts', title: 'Evidence Press shop', href: '/shop/',
+        detail: 'Posters, mugs and T-shirts made from the films’ pictures, the Think Again book, and partner books, puzzles and kits.' },
+      { label: 'Bookshop', title: 'Minds Explored bookshop', href: '/minds-explored/shop/',
+        detail: 'Annotated shelves of books on mind, brain and behaviour, led by Why Minds Break.' }
     ]
   }
 ];
+const SHOP = GROUPS.find(g => g.id === 'shop');
 
 const SUPPORT = { label: 'Donate', href: '/support/' };
 
@@ -111,7 +122,7 @@ function current(href, here, inside) {
 function header(pagePath, { siteName = 'Evidence Press' } = {}) {
   const here = locate(pagePath);
   const groups = GROUPS.map(g =>
-    `<a href="${g.href}"${current(g.href, here, here.group === g)}>${esc(g.label)}</a>`).join('');
+    `<a${g === SHOP ? ' class="shop-nav"' : ''} href="${g.href}"${current(g.href, here, here.group === g)}>${esc(g.label)}</a>`).join('');
   const menu = GROUPS.map(g => `<div class="site-menu-group"><a class="site-menu-head" href="${g.href}"${current(g.href, here, here.group === g)}>${esc(g.label)}</a><ul>${
     g.sections.map(s => `<li><a href="${s.href}"${current(s.href, here, here.section === s)}>${esc(s.label)}</a></li>`).join('')}</ul></div>`).join('');
   const sections = here.group ? `
@@ -121,6 +132,7 @@ function header(pagePath, { siteName = 'Evidence Press' } = {}) {
   <div class="wrap site-bar">
     <a class="brand" href="/"><span class="brand-mark">E</span> ${esc(siteName)}</a>
     <nav class="site-groups" aria-label="Main">${groups}</nav>
+    <a class="shop-nav shop-nav-phone" href="${SHOP.href}"${current(SHOP.href, here, here.group === SHOP)}>${esc(SHOP.label)}</a>
     <a class="support-nav" href="${SUPPORT.href}"${current(SUPPORT.href, here, false)}>${esc(SUPPORT.label)}</a>
     <details class="site-menu"><summary>Menu</summary><nav class="site-menu-panel" aria-label="All sections">${menu}</nav></details>
   </div>${sections}
@@ -156,4 +168,4 @@ function bar(pagePath, { origin = '', siteName = 'Evidence Press' } = {}) {
     GROUPS.map(g => `<a href="${origin}${g.href}"${here.group === g ? ' aria-current="true"' : ''}>${esc(g.label)}</a>`).join('')}</span></nav>`;
 }
 
-module.exports = { GROUPS, SUPPORT, locate, header, breadcrumbs, footerMap, bar };
+module.exports = { GROUPS, SUPPORT, SHOP, locate, header, breadcrumbs, footerMap, bar };
