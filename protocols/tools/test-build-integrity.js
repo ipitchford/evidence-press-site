@@ -91,9 +91,12 @@ function testLedgerOnlyCommitReproducesBuildA() {
       }
     });
     // The subsystem intentionally consumes a very small, read-only slice of the
-    // host house style. Copy that slice so this exercises the same rendering
-    // branches as the composite site rather than a reduced standalone build.
+    // host house style (config, stylesheet, art and the shared site navigation).
+    // Copy that slice so this exercises the same rendering branches as the
+    // composite site rather than a reduced standalone build.
     fs.copyFileSync(path.join(U.ROOT, '..', 'site.config.json'), path.join(temporary, 'site.config.json'));
+    fs.mkdirSync(path.join(temporary, 'tools'), { recursive: true });
+    fs.copyFileSync(path.join(U.ROOT, '..', 'tools', 'site-nav.js'), path.join(temporary, 'tools', 'site-nav.js'));
     fs.mkdirSync(path.join(temporary, 'assets', 'art'), { recursive: true });
     fs.mkdirSync(path.join(temporary, 'assets', 'og'), { recursive: true });
     fs.copyFileSync(path.join(U.ROOT, '..', 'assets', 'style.css'), path.join(temporary, 'assets', 'style.css'));
@@ -109,7 +112,7 @@ function testLedgerOnlyCommitReproducesBuildA() {
     git(['init', '-q']);
     git(['config', 'user.name', 'Productivity Protocols test']);
     git(['config', 'user.email', 'test@invalid.example']);
-    git(['add', 'protocols', 'site.config.json', 'assets']);
+    git(['add', 'protocols', 'site.config.json', 'assets', 'tools']);
     git(['commit', '-q', '-m', 'build source A']);
     const sourceA = git(['rev-parse', 'HEAD']);
     // Deliberately conflict with the protocol's canonical eight-character

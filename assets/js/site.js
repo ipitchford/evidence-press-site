@@ -225,4 +225,20 @@
       apply(initial, false);
     }
   });
+
+  /* The phone Menu is a plain <details>, usable without scripting. These
+     handlers only add the expected closing behaviour: Escape returns focus to
+     the Menu button, and a tap outside the open panel closes it. */
+  var siteMenu = document.querySelector('.site-menu');
+  if (siteMenu) {
+    var menuButton = siteMenu.querySelector('summary');
+    document.addEventListener('keydown', function (event) {
+      if (event.key !== 'Escape' || !siteMenu.open) return;
+      siteMenu.open = false;
+      if (menuButton) menuButton.focus();
+    });
+    document.addEventListener('click', function (event) {
+      if (siteMenu.open && !siteMenu.contains(event.target)) siteMenu.open = false;
+    });
+  }
 })();

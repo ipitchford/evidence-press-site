@@ -87,14 +87,10 @@ const PAGE_CSP = [
 // The Evidence Press favicon (teal tile, gold E-rho) — identical to the main site.
 const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23134e4a'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%23fbbf24' font-family='Georgia'%3EE%CF%81%3C/text%3E%3C/svg%3E";
 
-// The main-site navigation, reproduced so /protocols/ carries the same header.
-// KEEP IN SYNC with build.js head(). These pages live under 'Productivity'.
-const NAV = [
-  ['/', 'Releases'], ['/about/', 'About'], ['/observatory/', 'Observatory'],
-  ['/productivity/', 'Productivity'], ['/ai/', 'For AI agents'], ['/feed.xml', 'RSS']
-];
-const navHtml = () => NAV.map(([href, label]) =>
-  `<a href="${href}"${href === '/productivity/' ? ' aria-current="page"' : ''}>${esc(label)}</a>`).join('\n      ');
+// The main-site navigation: the host's single definition, so /protocols/
+// carries exactly the header, breadcrumbs and footer map of every other page.
+// These pages sit in the Practice group.
+const SITE_NAV = require('../tools/site-nav');
 
 // Registry behaviour served as an external script so the strict script-src holds
 // (no inline JS). Guards on element presence so one file serves index + detail.
@@ -261,6 +257,7 @@ function jsonldGraph(pageNode) {
 function page(title, body, desc, opts = {}) {
   desc = desc || CONFIG.description;
   const canonical = opts.canonical || `${BASE}${BP}/`;
+  const pagePath = canonical.startsWith(BASE) ? canonical.slice(BASE.length) || '/' : `${BP}/`;
   const ogImg = opts.og ? `${BASE}${opts.og}` : null;
   const social = [
     ['og:type', 'website'], ['og:site_name', SITE_NAME],
@@ -302,15 +299,8 @@ ${jsonldGraph(pageNode)}
 </script>
 </head>
 <body>
-<header class="site-head">
-  <div class="wrap">
-    <a class="brand" href="/"><span class="brand-mark">E</span> ${esc(SITE_NAME)}</a>
-    <nav>
-      ${navHtml()}
-    </nav>
-  </div>
-</header>
-<main>
+${SITE_NAV.header(pagePath, { siteName: SITE_NAME })}
+<main>${SITE_NAV.breadcrumbs(pagePath, title, { siteName: SITE_NAME })}
 <article class="release"><div class="wrap"><div class="protocols-page">
 ${cover}${backlink}${kicker}
 <h1>${esc(title)}</h1>
@@ -320,6 +310,7 @@ ${standfirst}
 </main>
 <footer class="site-foot">
   <div class="wrap">
+    ${SITE_NAV.footerMap()}
     <p>${esc(CONFIG.sectionName)} publishes bounded methods and the records needed to test them. Existing model benchmarks are not evidence of human or company productivity. Part of <a href="${BASE}/">${esc(SITE_NAME)}</a>.</p>
     <p>Machine-readable: <a href="${BP}/api/protocols.json">registry JSON</a> · <a href="${BP}/api/registry.schema.json">schema</a> · <a href="${BP}/feed.json">JSON Feed</a> · <a href="${BP}/llms.txt">llms.txt</a> · <a href="${BP}/sitemap.xml">sitemap</a>. Content CC0-1.0, code Apache-2.0.</p>
     <p class="build-identity">${esc(CONFIG.sectionName)} v${esc(CONFIG.softwareVersion)} · kernel v${esc(CONFIG.kernelVersion)} · build ${esc(GIT.sourceCommit || 'local')}${GIT.sourceDate ? ' · ' + esc(GIT.sourceDate.slice(0, 10)) : ''}</p>
