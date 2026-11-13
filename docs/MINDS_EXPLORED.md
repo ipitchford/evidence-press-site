@@ -61,3 +61,14 @@ author against Amazon search on 10 November 2026; one title uses a tagged search
 Selections are editorial: no supplements, devices that claim cognitive benefit, or
 self-diagnosis products. The earlier statement that the atlas has no paid
 recommendation service was replaced on the privacy page by a disclosure of these links.
+
+## Introductory film (13 November 2026)
+
+The owner asked for the Minds Explored explainer film (YouTube `ZL7JfsU3fIk`, uploaded
+13 November 2026 to the Evidence Press channel) to appear on the atlas. The home page's
+"New here?" section, below the collection figures, uses the atlas's consent-first player:
+nothing contacts YouTube until the reader chooses to load it, and the watch link, privacy
+note and synthetic-voice note sit beside it. The section also carries a `VideoObject`.
+Its details are the `FILM` constant in the authoring copy's `scripts/build.mjs`; the
+updated source is in `tools/minds-explored-source.zip`, and a clean `npm ci` build of that
+archive reproduced the imported atlas apart from its build timestamp.
