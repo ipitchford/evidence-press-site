@@ -2353,6 +2353,10 @@ function whyMindsBreakPages() {
     if (e.isbn && !/^97[89]\d{10}$/.test(e.isbn)) throw new Error(`pages/why-minds-break.json: ${e.format} isbn must be ISBN-13 digits`);
   for (const f of [BOOK.cover.webp, BOOK.cover.jpg, BOOK.og])
     if (!fs.existsSync(path.join(ROOT, f.replace(/^\//, '')))) throw new Error(`pages/why-minds-break.json: missing ${f}`);
+  /* Optional film about the book: a YouTube watch URL, embedded privacy-enhanced like article films. */
+  const FILM = BOOK.film || null, filmId = FILM && youtubeId(FILM.url);
+  if (FILM && (!filmId || !FILM.heading || !FILM.title || !FILM.description || !/^\d{4}-\d{2}-\d{2}$/.test(FILM.uploadDate) || !/^PT(\d+M)?\d+S$/.test(FILM.duration)))
+    throw new Error('pages/why-minds-break.json: film needs a YouTube url, heading, title, description, uploadDate (YYYY-MM-DD) and duration (PT…S)');
   const fullTitle = `${BOOK.title}: ${BOOK.subtitle}`;
   const chapterUrl = c => `${root}chapter-${c.n}/`;
   const person = { '@type': 'Person', '@id': `${root}#author`, name: BOOK.author };
@@ -2398,7 +2402,10 @@ ${BOOK.summary.map(t => `<p>${inline(t)}</p>`).join('\n')}
 </div>
 </div>
 <div class="body">
-<h2 id="films-and-essays">${esc(BOOK.companion.heading)}</h2>
+${FILM ? `<h2 id="the-film">${esc(FILM.heading)}</h2>
+<figure class="media"><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/${filmId}?rel=0" title="${escAttr(FILM.title)}" loading="lazy" allow="encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><figcaption>${esc(FILM.title)} · <a href="${escAttr(FILM.url)}" rel="noopener">Watch on YouTube</a>${FILM.note ? `<br>${esc(FILM.note)}` : ''}</figcaption></figure>
+<p>${inline(FILM.description)}</p>
+` : ''}<h2 id="films-and-essays">${esc(BOOK.companion.heading)}</h2>
 <p>${esc(BOOK.companion.description)}</p>
 <p><a href="${escAttr(BOOK.companion.url)}"><strong>${esc(BOOK.companion.linkLabel)}</strong></a></p>
 <h2 id="minds-explored">Explore the wider science</h2>
@@ -2419,7 +2426,11 @@ ${contents}
     '@type': 'WebPage', '@id': `${root}#page`, url: root, name: fullTitle, description: BOOK.description,
     inLanguage: CONFIG.language, isPartOf: { '@id': `${BASE}/#website` }, about: { '@id': `${root}#book` },
     datePublished: BOOK.datePublished, dateModified: BOOK.dateModified, image: BASE + BOOK.og
-  }, bookNode] };
+  }, bookNode, ...(FILM ? [{
+    '@type': 'VideoObject', '@id': `${root}#film`, name: FILM.title, description: FILM.description,
+    url: FILM.url, embedUrl: `https://www.youtube-nocookie.com/embed/${filmId}`, thumbnailUrl: `https://i.ytimg.com/vi/${filmId}/hqdefault.jpg`,
+    uploadDate: FILM.uploadDate, duration: FILM.duration, inLanguage: CONFIG.language, about: { '@id': `${root}#book` }
+  }] : [])] };
   /* Cloudflare's Email Obfuscation rewrites literal addresses and every mailto:
      link in served HTML, so the live page would never equal the build and the
      post-deploy readback would refuse it. The address is therefore plain text
@@ -2430,7 +2441,7 @@ ${contents}
 ${noObfuscate(bookBody)}
 ${foot}`);
   write('why-minds-break/index.md', `---\ntitle: "${fullTitle}"\nauthor: ${BOOK.author}\nurl: ${root}\n---\n\n# ${fullTitle}\n\n${BOOK.author}\n\n${
-    BOOK.summary.join('\n\n')}\n\n${facts}. ${buyMd}\n\n## ${BOOK.companion.heading}\n\n${BOOK.companion.description}\n\n[${BOOK.companion.linkLabel}](${BASE}${BOOK.companion.url})\n\n## Explore the wider science\n\n[Minds Explored](${BASE}/minds-explored/) connects university lectures, original guides and learning paths across psychology, neuroscience and human behaviour.\n\n## ${BOOK.chaptersHeading}\n\n${BOOK.chaptersIntro}\n\n${
+    BOOK.summary.join('\n\n')}\n\n${facts}. ${buyMd}\n\n${FILM ? `## ${FILM.heading}\n\n[${FILM.title}](${FILM.url}): ${FILM.description}${FILM.note ? ` ${FILM.note}` : ''}\n\n` : ''}## ${BOOK.companion.heading}\n\n${BOOK.companion.description}\n\n[${BOOK.companion.linkLabel}](${BASE}${BOOK.companion.url})\n\n## Explore the wider science\n\n[Minds Explored](${BASE}/minds-explored/) connects university lectures, original guides and learning paths across psychology, neuroscience and human behaviour.\n\n## ${BOOK.chaptersHeading}\n\n${BOOK.chaptersIntro}\n\n${
     chapters.map(c => `${c.n}. [${c.title}](${chapterUrl(c)}): ${c.dek}`).join('\n')}\n\n## About the author\n\n${BOOK.bio}\n\n## ${BOOK.challengeHeading}\n\n${BOOK.challenge}\n\n${BOOK.rights}\n`);
 
   /* One page per chapter. */
@@ -2764,7 +2775,7 @@ function sitemap() {
   const candidates = [
     { loc: `${BASE}/`, lastmod: papers[0].dateModified || papers[0].datePublished },
     { loc: `${BASE}/articles/`, lastmod: articles[0].dateModified },
-    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/why-minds-break/`, lastmod: '2026-11-07' }, ...Array.from({ length: 10 }, (_, i) => ({ loc: `${BASE}/why-minds-break/chapter-${i + 1}/`, lastmod: '2026-11-02' })), { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-11-04' }, { loc: `${BASE}/origins-of-violence/`, lastmod: '2026-11-04' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-11-04' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
+    { loc: `${BASE}/about/` }, { loc: `${BASE}/support/` }, { loc: `${BASE}/shop/` }, { loc: `${BASE}/applications/` },{ loc: `${BASE}/think-again/`, lastmod: '2026-10-17' }, { loc: `${BASE}/why-minds-break/`, lastmod: '2026-11-13' }, ...Array.from({ length: 10 }, (_, i) => ({ loc: `${BASE}/why-minds-break/chapter-${i + 1}/`, lastmod: '2026-11-02' })), { loc: `${BASE}/privacy/` }, { loc: `${BASE}/terms/` }, { loc: `${BASE}/thesis/`, lastmod: '2026-11-04' }, { loc: `${BASE}/origins-of-violence/`, lastmod: '2026-11-04' }, { loc: `${BASE}/atlas/`, lastmod: RELATIONSHIP_ARTIFACTS.registry.updated }, { loc: `${BASE}/operating-model/`, lastmod: OPERATING_ARTIFACTS.contract.effectiveDate }, { loc: `${BASE}/research-metrics/`, lastmod: OPERATING_ARTIFACTS.metricsPolicy.effectiveAt.slice(0, 10) }, { loc: `${BASE}/observatory/`, lastmod: '2026-08-02' }, { loc: `${BASE}/observatory/assurance/`, lastmod: '2026-11-04' }, { loc: `${BASE}/productivity/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/case-study/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/measure/`, lastmod: '2026-10-20' }, { loc: `${BASE}/productivity/how-we-test/`, lastmod: '2026-10-20' }, { loc: `${BASE}/ai/` },
     ...SITE_NAV.GROUPS.filter(g => g.hub).map(g => ({ loc: `${BASE}${g.href}` })),
     { loc: `${BASE}/interpsych/` },
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
