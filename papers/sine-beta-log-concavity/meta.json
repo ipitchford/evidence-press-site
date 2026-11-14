@@ -1,0 +1,233 @@
+{
+  "slug": "sine-beta-log-concavity",
+  "title": "Log-concavity and positive dependence in Sine-β and Hua–Pickrell processes",
+  "shortTitle": "Cut the circle at the origin: the Johnston–Prochno conjecture for every β",
+  "oneLine": "Eigenvalue patterns of large random matrices (the Sine-β process): for every β, points counted from a fixed origin have log-concave, positively dependent joint laws, proving a 2024 conjecture; the typical spacing obeys Gamma bounds of optimal shape β+1, so its variance is at most 1/(β+1).",
+  "abstract": "Eigenvalues of a large random matrix, seen on the scale of one spacing, form the same random pattern for a very wide range of models: the Sine-β point process, where β measures how strongly neighbouring points repel. Johnston and Prochno (2024) conjectured that, for the sine process (β = 2), points numbered outward from a fixed origin have log-concave joint densities. Edge results did not reach the middle of the spectrum, because there the number of points to the left of the origin is random and mixtures of log-concave laws need not be log-concave. This candidate cuts the circular β-ensemble at the origin, so that every origin label becomes a fixed coordinate, and passes to the limit. For every β > 0 it proves that every finite vector of origin-labelled points has a log-concave density and is multivariate totally positive (MTP₂), and that this survives division by the β-th power of the Vandermonde product of the selected points, also for the process seen from a typical point. Consequently the mean-one typical spacing G is dominated in convex order by Gamma(β+1, β+1), so Var(G) ≤ 1/(β+1); the shape β+1 is optimal, small gaps have probability of exact order t^(β+1), and the variance bound becomes exact as β → 0. The same comparison holds for any normalised eigenvalue difference in a finite β-ensemble with convex potential, at every size. For the Hua–Pickrell process with charge δ, labelled laws are MTP₂ for Re δ > −1/2 and log-concave exactly when Re δ ≥ 0; at the hard edge, the positive labelled points are log-concave for a ≥ 1/β − 1. At β = 2 the variance bound is 1/3 against the true 0.180, and large-gap bounds are far from the truth. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-14",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Sine-beta process",
+    "random matrix theory",
+    "log-concavity",
+    "total positivity",
+    "circular beta ensemble",
+    "Hua-Pickrell process",
+    "eigenvalue spacing",
+    "convex order"
+  ],
+  "repoUrl": "https://github.com/ipitchford/sine-beta-log-concavity",
+  "releaseUrl": "https://github.com/ipitchford/sine-beta-log-concavity/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/sine-beta-log-concavity/releases/download/v0.1.0-candidate/sine-beta-log-concavity-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24233404",
+  "conceptDoi": "10.5281/zenodo.24233403",
+  "zenodoUrl": "https://zenodo.org/records/24233404",
+  "citeText": "Anonymous (2026). Log-concavity and positive dependence in Sine-β and Hua–Pickrell processes. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24233404",
+  "evidence": "Written analytic proofs of every result (18-page paper with a plain introduction, all results stated in Section 2, and open problems); verify.py runs 9,694 finite falsification checks of the formulas used in the proofs (symbolic identities, exact small-n fingerprints, random lattice and concavity tests for the cut, cross-cut, pinned, circular Jacobi and real orthogonal densities, negative controls below the thresholds); sine2_calibration.py computes the exact β = 2 values by Bornemann's Fredholm-determinant method; clean replay from fresh copies in normal and python -O mode reproduced the JSON outputs and figure byte for byte, and a mutated hard-edge threshold makes the checks fail.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Every result has a written analytic proof; the shipped computations are finite checks and a numerical calibration, not part of any proof. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, a clean replay, one revision round with extensions, then a re-review, a proof audit and a second-model audit of the new proofs, which found no failing result. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 14 November 2026 with DOI insertion, 18 pages), its scripts and outputs and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 14 November 2026.",
+  "keyResults": [
+    "Theorem 2.1 (proof): for every β > 0, every finite vector of origin-labelled Sine-β points has a log-concave density, positive on its ordered sign chamber, and is MTP₂. At β = 2 this proves Johnston–Prochno, arXiv:2410.10754v2, Conjecture 2.2.",
+    "Theorem 2.2 and Corollary 2.3 (proof): the density divided by Δ^β, and for Palm labels by Δ^β ∏|x_r|^β, is log-concave and MTP₂; the typical-spacing density p satisfies: p(s)/s^β is log-concave.",
+    "Theorem 2.4 and Proposition 2.5 (proof): G ⪯cx Gamma(β+1, β+1), so Var(G) ≤ 1/(β+1), E 1/G ≤ (β+1)/β and both tails are at most (t e^(1−t))^(β+1); the shape β+1 is optimal, P(G ≤ t) is of exact order t^(β+1), and (β+1)Var(G) → 1 as β → 0.",
+    "Theorem 2.6 and Corollary 2.7 (proof): for finite β-ensembles with convex potential, every normalised eigenvalue difference is dominated by Gamma(β+1, β+1) at every size; for GUE gaps this improves the moment bounds of Johnston (2026) for every p > 1 and the tail bounds for h > 2.15 and h < 0.31.",
+    "Theorem 2.8 (proof): Hua–Pickrell labelled laws are MTP₂ for Re δ > −1/2 and log-concave exactly when Re δ ≥ 0 (as laws; densities at β = 2); Proposition 2.9: the positive hard-edge labelled points are log-concave for a ≥ 1/β − 1 and MTP₂ for every a."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replay",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Cut the circle at the origin. An Evidence Press briefing. Look at the eigenvalues of a large random matrix, on the scale of one gap between neighbours, and the same random pattern appears for a very wide range of models. It is called the sine-beta process. The number beta measures how strongly neighbouring points repel. Exact formulas for this pattern are rare, so shape properties that hold for every beta are valuable. In twenty twenty-four, Johnston and Prochno conjectured that if you number the points outward from a fixed origin, any selection of them has a log-concave joint law: a single-peaked, well-concentrated shape. Near the edge of the spectrum this was known, because the k-th point from the edge is a fixed coordinate. In the middle it was not, because how many points lie to the left of the origin is random, and mixing log-concave laws can spoil log-concavity. The idea of this release is to put the particles on a circle and cut the circle at the origin. Then the first point to the right of the origin is simply the first coordinate, with nothing random about the labelling. On the cut circle, log-concavity and a strong form of positive dependence hold, and both survive the limit. So the conjecture is proved, for every beta. A stronger version keeps the repulsion between points. As a consequence, the typical spacing is less spread out than a Gamma variable of shape beta plus one, so its variance is at most one over beta plus one. That shape cannot be improved. The same bounds hold at every size for finite matrix ensembles with a convex potential. There is also an exact threshold when a charge sits at the origin, and a new range at the hard edge. Now the limits. At beta equal to two, the variance bound is one third, against a true value of about nought point one eight. For very large gaps the bounds are weak: the bound on a gap three times the mean is about seven in a hundred, while the truth is about five in a hundred thousand. Nothing here concerns zeros of the Riemann zeta function, and the exact hard-edge threshold remains open. The proofs rely on strong known limit theorems. This is an anonymous, AI-assisted, unrefereed candidate, published on the fourteenth of November twenty twenty-six. Its review was internal and AI-assisted, not peer review. The paper, the checking scripts and the evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Both verification scripts were rerun from two fresh copies of the package, in normal mode and under python -O; both reported PASS and the JSON outputs and PNG figure were byte-identical to the shipped files. A mutated hard-edge threshold makes verify.py fail. GitHub CI reruns both scripts on Linux in both modes."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Pinned Python 3.12 with numpy 2.3.5, scipy 1.17.0, sympy 1.14.0 and matplotlib 3.10.8 through uv; fixed random seed; byte-identical outputs on the recorded macOS machine; other platforms may change last digits. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Johnston and Prochno (2024), The macroscopic shape of Gelfand–Tsetlin patterns and free probability. arXiv:2410.10754 v2, Conjecture 2.2: the conjecture proved here (for the sine process); v3 (July 2026), Section 3.2, describes it as strongly supported but unproved.",
+      "url": "https://arxiv.org/abs/2410.10754v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Baslingker, Krishnapur and Madiman (2026), Log-concavity in one-dimensional Coulomb gases and related ensembles. arXiv:2412.15116 v2. Log-concavity and MTP₂ for finite ensembles and at the spectral edges; Theorems 7–8 are the finite starting point.",
+      "url": "https://arxiv.org/abs/2412.15116v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Johnston (2026), Log-concavity and concentration bounds for a single gap between GUE eigenvalues. arXiv:2601.04869 v2. Single-gap log-concavity and the bounds compared in Corollary 2.7.",
+      "url": "https://arxiv.org/abs/2601.04869v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Allez and Dumaz (2014), From sine kernel to Poisson statistics. Electronic Journal of Probability. Sine-β tends to a Poisson process as β → 0; used for the small-β limit (Proposition 2.5).",
+      "url": "https://doi.org/10.1214/EJP.v19-3742"
+    },
+    {
+      "citation": "Bobkov and Madiman (2011), Concentration of the information in data with log-concave distributions. The Annals of Probability. Log-concavity of order a and its variance bound.",
+      "url": "https://doi.org/10.1214/10-AOP592"
+    },
+    {
+      "citation": "Bornemann (2010), On the numerical evaluation of Fredholm determinants. Mathematics of Computation. The method behind the exact β = 2 values in Table 1.",
+      "url": "https://doi.org/10.1090/S0025-5718-09-02280-7"
+    },
+    {
+      "citation": "Colangelo, Müller and Scarsini (2006), Positive Dependence and Weak Convergence. Journal of Applied Probability. MTP₂ for measures and its closure under weak limits.",
+      "url": "https://doi.org/10.1239/jap/1143936242"
+    },
+    {
+      "citation": "Dereudre, Hardy, Leblé and Maïda (2021), DLR Equations and Rigidity for the Sine-Beta Process. Communications on Pure and Applied Mathematics. Tolerance of Sine-β, used to show the labelled laws have densities.",
+      "url": "https://doi.org/10.1002/cpa.21963"
+    },
+    {
+      "citation": "Fallat, Lauritzen, Sadeghi, Uhler, Wermuth and Zwiernik (2017), Total positivity in Markov structures. The Annals of Statistics. Marginal closure of MTP₂ and positive association.",
+      "url": "https://doi.org/10.1214/16-AOS1478"
+    },
+    {
+      "citation": "Gorbunov (2025), Unitary transform diagonalizing the confluent hypergeometric kernel. Sbornik: Mathematics. The β = 2 Hua–Pickrell kernel, used for densities at β = 2.",
+      "url": "https://doi.org/10.4213/sm10319e"
+    },
+    {
+      "citation": "Killip and Stoiciu (2009), Eigenvalue statistics for CMV matrices: from Poisson to clock via random matrix ensembles. Duke Mathematical Journal. One of the two original constructions of Sine-β.",
+      "url": "https://doi.org/10.1215/00127094-2009-001"
+    },
+    {
+      "citation": "Li and Valkó (2022), Operator level limit of the circular Jacobi β-ensemble. Random Matrices: Theory and Applications. Hua–Pickrell and hard-edge limits and the phase representation behind the small-ball bound.",
+      "url": "https://doi.org/10.1142/S2010326322500435"
+    },
+    {
+      "citation": "Marsiglietti and Melbourne (2026), Concentration Inequalities for Log-concave Sequences. International Mathematics Research Notices. The convex-order comparison with a Gamma law and its tail bounds.",
+      "url": "https://doi.org/10.1093/imrn/rnag023"
+    },
+    {
+      "citation": "Valkó and Virág (2009), Continuum limits of random matrices and the Brownian carousel. Inventiones Mathematicae. One of the two original constructions of Sine-β.",
+      "url": "https://doi.org/10.1007/s00222-009-0180-z"
+    },
+    {
+      "citation": "Valkó and Virág (2020), Operator limit of the circular beta ensemble. The Annals of Probability. The coupling under which origin-labelled circular points converge to Sine-β.",
+      "url": "https://doi.org/10.1214/19-AOP1391"
+    },
+    {
+      "citation": "Valkó and Virág (2023), Palm measures for Dirac operators and the Sine-β process. Stochastic Processes and their Applications. The pinned circular ensemble is a circular Jacobi ensemble, identifying the Palm process.",
+      "url": "https://doi.org/10.1016/j.spa.2023.05.011"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:sine-beta-log-concavity",
+    "attemptIds": [
+      "ep-attempt:sine-beta-log-concavity-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "bound",
+      "description": "Treat origin-labelled Sine-β marginals as log-concave and MTP₂ for every β, and the typical spacing as dominated in convex order by Gamma(β+1, β+1) with optimal shape; treat Re δ ≥ 0 as the exact log-concavity threshold for Hua–Pickrell limits.",
+      "scope": "Sine-β at intensity one and its Palm version; finite β-ensembles with convex potential; Hua–Pickrell limits as laws (densities at β = 2); hard-edge points for a ≥ 1/β − 1. Gap-vector dependence, sums of spacings, large-gap asymptotics and hard-edge necessity are not settled."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Sections 1.2–1.3 and the statements in Section 2 separate what is classical (finite convexity, Gamma comparison principle, limit theorems) from what is new; hard-edge MTP₂ is credited to Baslingker–Krishnapur–Madiman.",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "The conjecture source and two closely related works are arXiv preprints."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a random matrix specialist check the passage to the limit (Section 4 and Lemmas 5.2–5.3) and the small-ball lower bound through the Li–Valkó phase representation (Lemma 7.1).",
+      "claimCeiling": "Written proofs of labelled log-concavity and MTP₂ of Sine-β for every β, the retained-repulsion quotient, the optimal Gamma comparison for spacings, the Hua–Pickrell threshold and the hard-edge range; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "sine-beta-log-concavity-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of the Johnston–Prochno conjecture for every β with optimal Gamma spacing bounds.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
