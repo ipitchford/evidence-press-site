@@ -1,0 +1,236 @@
+{
+  "slug": "schatten-sum-of-moduli-constants",
+  "title": "Sharp constants for sums of matrix moduli when 1<p<2",
+  "shortTitle": "Matrix moduli: sharp Schatten constants for 1<p<2",
+  "oneLine": "A sum of matrices can be bigger than the sum of their absolute values; for Schatten norms with 1 < p < 2 this candidate finds the exact worst case when there are at least as many matrices as their size, cuts the general bound (for two matrices at p = 3/2, from 12.25% to 6.48% extra), and certifies that rank-one examples do not settle Lee's problem.",
+  "abstract": "For numbers, the size of a sum is at most the sum of the sizes, but for matrices the sum A₁+…+A_m can be larger than the sum of the absolute values |A₁|+…+|A_m|, where |A| = (A*A)^{1/2}. In the Schatten p-norms (p = 1 trace norm, p = 2 Frobenius norm) one asks for the smallest constant c with ‖ΣA_k‖_p ≤ c‖Σ|A_k|‖_p. Lee asked this for two matrices (2010–2012); Lin and Zhang solved p = 2; Tang and Zhang posed the m-matrix version with a conjectured formula, which Qiu proved for p ≥ 2; below p = 2 the formula fails, and the October 2026 survey of Bourin and Zhang lists 1 < p < 2 as open. For 1 < p < 2 and n-by-n matrices this candidate proves three things. When m ≥ n the best constant is an explicit one-variable maximum D_{p,n}, depending only on the rank of Σ|A_k|, with every equality case classified and a strictly smaller constant when m < n; so the rank-one problem is solved in every dimension. The best constant is log-convex in 1/p, giving the bound ((1+√m)/2)^{1−1/p}, better than the previous m^{(p−1)/(2p)} for every m ≥ 2 (for two matrices at p = 3/2: 1.0648 instead of 1.1225; the truth is at least 1.0364). A computer-assisted proof in exact rational and interval arithmetic shows that two 3-by-3 matrices beat the rank-one value at nine exponents between 11/10 and 17/10. Limits: Lee's exact two-matrix constant and the case m < n remain open; the new bound is not sharp; the certified gap is tiny and covers nine exponents only. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-15",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Schatten norm",
+    "matrix modulus",
+    "triangle inequality",
+    "Lee's problem",
+    "Tang–Zhang conjecture",
+    "Rényi entropy",
+    "complex interpolation",
+    "computer-assisted proof"
+  ],
+  "repoUrl": "https://github.com/ipitchford/schatten-sum-of-moduli-constants",
+  "releaseUrl": "https://github.com/ipitchford/schatten-sum-of-moduli-constants/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/schatten-sum-of-moduli-constants/releases/download/v0.1.0-candidate/schatten-sum-of-moduli-constants-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24237738",
+  "conceptDoi": "10.5281/zenodo.24237737",
+  "zenodoUrl": "https://zenodo.org/records/24237738",
+  "citeText": "Anonymous (2026). Sharp constants for sums of matrix moduli when 1<p<2. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24237738",
+  "evidence": "Written proofs of every result except one (16-page paper with a plain introduction, a table of what was known, all results stated in Section 2 and open problems); a computer-assisted proof of Proposition 2.5 in exact rational and interval arithmetic (certify_rank_gap.py, nine exponents, with exact rational witnesses); 128 numerical checks of the scalar constant, equality families, random and adversarially optimised families, the p = 3/2 radical, Qiu's example, the bounds table and the asymptotics, with negative controls; clean replay from fresh copies in normal and python -O mode reproduced the certificate and check outputs byte for byte, and a relabelled witness makes the certificate fail.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Every result has a written proof except Proposition 2.5, which is a computer-assisted proof in exact rational and interval arithmetic (it trusts sympy's exact root isolation and mpmath's interval arithmetic); the other computations supplement the proofs. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, a clean replay, one revision round with two extensions (Theorem 2.3 with Corollary 2.4, and Proposition 2.5), then a re-review, a proof audit and a second-model audit of the new proofs, which found no failing result. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 15 November 2026 with the version and DOI line inserted on the title page, 16 pages), its scripts and recorded outputs and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 15 November 2026.",
+  "keyResults": [
+    "Theorem 2.1 (proof): for 1 < p < 2 and A_1, …, A_m in M_n(C) with B = Σ|A_k| of rank r, ‖ΣA_k‖_p ≤ D_{p,r}‖B‖_p ≤ D_{p,n}‖B‖_p; c_p(m,n) = D_{p,n} for m ≥ n and c_p(m,n) < D_{p,n} for m < n; equality cases classified (Theorem 5.2). For example D_{3/2,2} = 1.0364143573….",
+    "Corollary 2.2 (proof): for rank-one summands the best constant is D_{p,min(m,n)} in every dimension, so the dimension-free rank-one constant is D_{p,m}.",
+    "Theorem 2.3 and Corollary 2.4 (proof): c_p(m,n) and c_p(m) are log-convex in 1/p, so D_{p,m} ≤ c_p(m) ≤ ((1+√m)/2)^{1−1/p}, strictly below the previous m^{(p−1)/(2p)} for every m ≥ 2; for Lee's problem at p = 3/2, 1.036425 ≤ c_{3/2}(2) ≤ 1.0647523 (previously ≤ 1.12247).",
+    "Proposition 2.5 (computer-assisted proof): for p ∈ {11/10, 6/5, 5/4, 13/10, 4/3, 7/5, 3/2, 8/5, 17/10} two real 3×3 matrices with rational entries beat D_{p,2}, so c_p(2) > D_{p,2}: rank-one families do not solve Lee's problem at these exponents."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replay",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Sums of matrix absolute values. An Evidence Press briefing. For ordinary numbers, the size of a sum is never more than the sum of the sizes. Matrices also have a natural absolute value, but for matrices this rule can fail: a sum of matrices can be bigger than the sum of their absolute values, even when size is measured by a standard norm. The question is how much bigger, at worst. The answer is a constant, and the task is to find the smallest one that always works. In 2010 Eun-Young Lee asked for this constant for two matrices, using the Schatten p-norms, the standard family of matrix sizes. The case p equals two was solved in 2022. More recently the question was extended to many matrices, and in 2026 a conjectured formula was proved for every p of at least two. Between one and two, several groups showed that the formula is wrong, and a recent survey lists that range as open. This release works in that range. First, when there are at least as many matrices as their size, it finds the exact constant, a maximum of one explicit function, and describes every extreme case. For rank-one matrices, the building blocks of all the known counterexamples, the problem is now solved in every dimension. Second, it gives a new upper bound for any number of matrices. For two matrices at p equals three halves, a sum can exceed the sum of absolute values by at most about six and a half per cent, instead of about twelve per cent before, while some pairs are known to exceed it by three point six per cent or more, so the true answer lies in between. Third, a computer-assisted proof in exact arithmetic shows that two three-by-three matrices beat every rank-one example, at nine exponents between one point one and one point seven. The limits matter. The exact constant for two matrices of any size is still open, the new upper bound is not sharp, and the certified gap is tiny and covers nine exponents only. This is an anonymous, AI-assisted, unrefereed candidate, published on the fifteenth of November twenty twenty-six. Its review was internal and AI-assisted, not peer review. The paper and its evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The certificate, the 128-check script and the figure script were rerun from fresh copies of the package in normal mode and under python -O; the certificate and check outputs and the figure PNG matched the shipped files byte for byte. A relabelled witness makes the certificate fail under -O. GitHub CI reruns the certificate, the checks and the negative control on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; an internal proof audit recomputed the witnesses independently at 50 digits."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with pinned numpy, scipy, sympy and mpmath (matplotlib for the figure); the certificate decides every comparison in exact rational and interval arithmetic and its output is identical on macOS and in Linux CI; the floating-point check output is byte-identical on the recorded macOS machine and may differ in last digits elsewhere. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Lee (2010), Rotfel’d type inequalities for norms. Linear Algebra and its Applications. The bound √m for every unitarily invariant norm and the question now called Lee's problem.",
+      "url": "https://doi.org/10.1016/j.laa.2010.03.029"
+    },
+    {
+      "citation": "Lee (2012), How to compare the absolute values of operator sums and the sums of absolute values? Operators and Matrices. The two-matrix question and the conjectured Frobenius value.",
+      "url": "https://doi.org/10.7153/oam-06-42"
+    },
+    {
+      "citation": "Lin and Zhang (2022), A proof of Lee's conjecture on the sum of absolute values of matrices. Journal of Mathematical Analysis and Applications. The case p = 2 for two matrices.",
+      "url": "https://doi.org/10.1016/j.jmaa.2022.126542"
+    },
+    {
+      "citation": "Tang and Zhang (2026), Generalizing Lee's conjecture on the sum of absolute values of matrices. Linear Algebra and its Applications. The m-matrix version, the previous bound m^((p−1)/(2p)) and the conjectured formula.",
+      "url": "https://doi.org/10.1016/j.laa.2025.11.015"
+    },
+    {
+      "citation": "Zhang (2026), Operator symmetric moduli and sharp triangle inequalities. Journal of the London Mathematical Society. The fixed-dimension constant and the p = 2 proof (Theorem 6.2) that this release extends to 1 < p < 2.",
+      "url": "https://doi.org/10.1112/jlms.70672"
+    },
+    {
+      "citation": "Bourin and Zhang (2026), Matrix triangle inequalities: past, present, and future. Reviews in Mathematical Physics. Survey listing the range 1 < p < 2 as open (Problem 5.9).",
+      "url": "https://doi.org/10.1142/s0129055x26500236"
+    },
+    {
+      "citation": "Qiu (2026), Sharp quasi-reverse Minkowski inequality for Schatten norms. arXiv:2608.17565 v2. Proof of the Tang–Zhang formula for p ≥ 2, counterexamples below 2, and the first numerical higher-rank example at p = 6/5.",
+      "url": "https://arxiv.org/abs/2608.17565v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Pang (2026), Counterexamples to a conjectured Schatten norm inequality. arXiv:2608.18112 v1. The two-Gram family whose re-tuned parameter gives the matching examples here.",
+      "url": "https://arxiv.org/abs/2608.18112v1",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Zeng, Liu and Ratnavelu (2026), A counterexample to the Tang–Zhang Schatten norm conjecture and sharp positive results. arXiv:2608.15558. Counterexamples below p = 2.",
+      "url": "https://arxiv.org/abs/2608.15558",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Zeng, Liu and Ratnavelu (2026), The exact Schatten 3/2 constant for two rank-one matrices. Manuscript SM1-P02, AI-Has-Taste archive. The p = 3/2 two-matrix value and the factorisation for rank-one summands.",
+      "url": "https://github.com/ArtificialZeng/AI-Has-Taste/blob/main/pdfs/smallmac_1/SM1-P02_Exact_Schatten_Three_Halves_Constant.pdf",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography by URL only (no DOI or arXiv record); linked to the cited URL, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Li (2026), Sharp concave-function transfer for Lee-type Schatten norm inequalities. arXiv:2608.25989 v1. The transfer theorem behind Section 9.",
+      "url": "https://arxiv.org/abs/2608.25989v1",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Harremoës (2009), Joint range of Rényi entropies. Kybernetika. The eigenvalue shape (one large, the rest equal) in the scalar problem.",
+      "url": "https://www.kybernetika.cz/content/2009/6/901/paper.pdf",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography by URL only (no DOI or arXiv record); linked to the cited URL, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Sakai and Iwata (2016), Sharp bounds between two Rényi entropies of distinct positive orders. arXiv:1605.00019. The same eigenvalue shape.",
+      "url": "https://arxiv.org/abs/1605.00019",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Stein (1956), Interpolation of linear operators. Transactions of the American Mathematical Society. Complex interpolation behind the log-convexity theorem.",
+      "url": "https://doi.org/10.1090/S0002-9947-1956-0082586-0"
+    },
+    {
+      "citation": "Thompson (1976), Convex and concave functions of singular values of matrix sums. Pacific Journal of Mathematics. Subadditivity of the modulus up to unitary conjugations.",
+      "url": "https://doi.org/10.2140/pjm.1976.66.285"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:schatten-sum-of-moduli-constants",
+    "attemptIds": [
+      "ep-attempt:schatten-sum-of-moduli-constants-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Treat c_p(m,n) = D_{p,n} for m ≥ n and 1 < p < 2 as proved, the bound c_p(m) ≤ ((1+√m)/2)^{1−1/p} as the best known general upper bound, and rank-one families as insufficient for Lee's problem at the nine certified exponents.",
+      "scope": "Complex n-by-n matrices, Schatten p-norms with 1 < p < 2; the exact dimension-free constants and the case m < n are not determined."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 and Table 1 separate what was known (p = 2, p ≥ 2, the bounds of Tang–Zhang and T. Zhang, the counterexamples below 2) from what is new (the exact square-case constant, the equality classification, the interpolation bound and the certified rank gap), and credit Zhang's p = 2 method and Pang's examples.",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "Several load-bearing sources are recent preprints (Pang, Qiu, Zeng–Liu–Ratnavelu, Li)."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in matrix analysis check the Hölder factorisation with exponents (2, 2q) and the equality classification (Sections 4–5), the three-lines argument (Section 7), and rerun the certificate independently.",
+      "claimCeiling": "Written proofs of the square-case constant, the equality classification and the interpolation bound for 1 < p < 2, and a computer-assisted proof of the rank gap at nine exponents; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "schatten-sum-of-moduli-constants-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of exact Schatten-norm constants for sums of matrix moduli in the square case, an improved general bound and a certified rank gap.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
