@@ -1,0 +1,227 @@
+{
+  "slug": "direct-sum-positive-bases",
+  "title": "Optimal cosine measure, quantitative rigidity and local optimality for direct-sum positive bases",
+  "shortTitle": "Best directions for derivative-free search: perpendicular simplices",
+  "oneLine": "Among positive bases built from simplices in complementary subspaces, the cosine measure is at most 1/√(r₁² + … + rₖ²), reached only by perpendicular regular simplices; these configurations are also strict local optima among all configurations, a local form of a 2003 sphere-covering conjecture.",
+  "abstract": "Direct-search methods minimise a function without derivatives by trying a fixed set of directions, and they work only if one direction always points roughly downhill. The cosine measure scores a set of unit directions by its worst case: the cosine of the largest angle between any direction and the nearest trial direction. Maximising it is the same as covering the sphere by equal caps of smallest radius. Hare, Jarry-Bolduc and Planiden (2023) asked whether, among positive bases that split into minimal positive bases of complementary subspaces, the best ones must have mutually orthogonal subspaces. This candidate proves that if the subspaces have dimensions r₁, …, rₖ the cosine measure is at most (r₁² + … + rₖ²)^(−1/2), with equality exactly for regular simplices in mutually orthogonal subspaces, answering the question in every dimension and size. Exact identities for the loss give quantitative rigidity, with a sharp stability exponent that changes from 1/2 to 1 at size ⌈3n/2⌉. Going beyond the class, every orthogonal union of regular simplices is a strict local maximiser of the cosine measure among all configurations of the same number of unit vectors, up to rotation: a local form of the Böröczky–Wintsche conjecture on optimal coverings by few caps, in every dimension. The argument extends to shifted blocks under a convex-hull condition, which an explicit example in four dimensions shows can fail. Limits: the global question remains open for sizes n + 3 to 2n − 2, the size of the neighbourhood is not quantified, and constants are not optimal. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-15",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "cosine measure",
+    "positive bases",
+    "direct search",
+    "derivative-free optimization",
+    "sphere covering",
+    "regular simplex",
+    "polar polytope",
+    "local optimality"
+  ],
+  "repoUrl": "https://github.com/ipitchford/direct-sum-positive-bases",
+  "releaseUrl": "https://github.com/ipitchford/direct-sum-positive-bases/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/direct-sum-positive-bases/releases/download/v0.1.0-candidate/direct-sum-positive-bases-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24242263",
+  "conceptDoi": "10.5281/zenodo.24242262",
+  "zenodoUrl": "https://zenodo.org/records/24242263",
+  "citeText": "Anonymous (2026). Optimal cosine measure, quantitative rigidity and local optimality for direct-sum positive bases. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24242263",
+  "evidence": "A 22-page paper with a plain introduction (the problem, positive bases, a table of what was known, what is new, a roadmap) and complete written proofs; the proofs are analytic and no step is computational. One Python script (NumPy and mpmath, fixed seed) makes 6301 explicit floating-point checks: the polar-vertex formula and the exact identities on 312 configurations in twelve block types, independent vertex enumeration for 72 small configurations, the sharpness examples, the four-dimensional shifted example (squared radius 27), the Section 7 variation formulas against 40-digit finite differences, and positive definiteness on the critical subspace for twelve types. A clean replay from fresh copies in normal and python -O mode reproduced the recorded output byte for byte, and a wrong coefficient makes the script fail.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Theorems 3.1, 5.2, 6.1, 7.1 and 8.2 and their lemmas and corollaries have complete written proofs. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, a clean replay, one revision round (new introduction and setting, credit and positioning, a false side remark corrected, a rewritten verification script, and the local optimality theorem added), then a re-review, a proof audit and a second-model audit of the new proofs, which found minor items only. Every use of Böröczky and Wintsche (2003) was checked against the chapter at publication, and one citation was made more precise. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 14 November 2026 with the Table 1 citation for size n + 2 made precise and the version and DOI added to the title-page date line, 22 pages), its verification script and recorded output and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 15 November 2026.",
+  "keyResults": [
+    "Theorem 3.1 (proof): for every direct sum of minimal positive bases of complementary subspaces of dimensions r₁, …, rₖ, cm(D) ≤ (r₁² + … + rₖ²)^(−1/2), with equality if and only if the subspaces are mutually orthogonal and every block is a regular simplex.",
+    "Corollary 3.2 (proof): the maximum over Ω_{n,s} is S_*^(−1/2) with S_* = (k − b)a² + b(a + 1)², attained exactly by balanced orthogonal regular simplices; Corollary 3.3 reduces both questions of Hare, Jarry-Bolduc and Planiden to whether optimal positive bases have zero critical vectors.",
+    "Theorem 5.2, Proposition 5.3 and Theorem 6.1 (proofs): exact loss identities control cross-block angles linearly and simplex shapes with a square-root rate; the optimal stability exponent is 1 when s ≥ ⌈3n/2⌉ and 1/2 otherwise.",
+    "Theorem 7.1 and Corollary 7.2 (proofs): every orthogonal union of regular unit simplices is a strict local maximiser of the cosine measure among all configurations of s unit vectors, up to rotation, with quadratic growth of the loss; so the configurations of the Böröczky–Wintsche conjecture are strict local optima for every dimension, and in R⁴ with six vectors the unbalanced type (3,1) (cm = 1/√10) is a local but not global maximum (optimum 1/√8).",
+    "Theorem 8.2 and Corollary 8.3 (proofs): the bound extends to shifted blocks whose shifts lie in the convex hull of the preceding vectors; Section 8.1 gives a positive basis of R⁴ with cm⁻² = 27 for which this condition fails for every decomposition."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Optimal directions for searching without derivatives: an Evidence Press briefing. Some optimisation methods cannot use derivatives. Instead they try a small, fixed set of directions from the current point, and move if one of them helps. That only works if, whatever the downhill direction is, one of the trial directions points roughly the same way. The cosine measure scores a set of directions by its worst case: the cosine of the largest angle between any direction in space and the nearest trial direction. Bigger is better. The same number answers a question in geometry: how small can equal caps be, centred on those directions, and still cover the whole sphere? Two geometers, Böröczky and Wintsche, conjectured which few caps cover the sphere best. Split the dimensions into nearly equal groups, put a regular simplex, such as a triangle or a tetrahedron, in each group, and set the groups at right angles to each other. Hare, Jarry-Bolduc and Planiden asked a related question about positive bases built from simplices in complementary subspaces: must the best ones sit at right angles? This candidate proves that, within that class, they must, in every dimension and for every size. The cosine measure is at most one over the square root of the sum of the squared group dimensions, and only perpendicular regular simplices reach that bound. Arrangements that come close to the best are nearly perpendicular and nearly regular, at an exact rate. Going further, the perpendicular arrangement cannot be improved by any small change of the directions, even a change that leaves the structured class. So the conjectured best coverings are at least locally best, in every dimension. There is a twist. In four dimensions with six directions, a tetrahedron beside a perpendicular pair is also a local optimum, although two perpendicular triangles do better, so a local search can get stuck there. The proof picks a random corner of a related polytope and compares the farthest corner with the average. The paper credits this device to public figures by Jarry-Bolduc and Krishan Lal, who drew it for triangles and pairs. The global question for most sizes stays open, and the local result does not say how large the safe neighbourhood is. Evidence Press published this anonymous, AI-assisted, unrefereed candidate, and its review was internal, not peer review. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_geometry.py was rerun from fresh copies in normal mode and under python -O with the pinned packages; the output matched the shipped file byte for byte. A wrong coefficient in the Lemma 7.9 check makes the script fail under -O. GitHub CI reruns the script, the figure script and the negative control on Linux, where low-order floating-point digits differ but every check passes."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; internal reviewers recomputed the load-bearing numbers and searched for better perturbations with their own code."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with pinned numpy 2.3.5, mpmath 1.3.0 and matplotlib 3.10.8 (requirements.txt); fixed seed and deterministic simplex construction. Not a locked container; floating-point output can differ in low-order digits across platforms."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Hare, Jarry-Bolduc and Planiden (2023), Nicely structured positive bases with maximal cosine measure. Optimization Letters. The question answered here for every dimension and size (Theorem 3.1); the optimum over orthogonal structures (their Theorem 33, Corollary 34) and the case of five vectors in three dimensions (Proposition 30, Theorem 31).",
+      "url": "https://doi.org/10.1007/s11590-023-01973-2"
+    },
+    {
+      "citation": "Nævdal (2019), Positive bases with maximal cosine measure. Optimization Letters. The optimal minimal and maximal positive bases, recovered here in one argument.",
+      "url": "https://doi.org/10.1007/s11590-018-1334-y"
+    },
+    {
+      "citation": "Hare, Jarry-Bolduc, Kerleau and Royer (2024), Using orthogonally structured positive bases for constructing positive k-spanning sets with cosine measure guarantees. Linear Algebra and its Applications. Orthogonally structured positive bases.",
+      "url": "https://doi.org/10.1016/j.laa.2023.10.006"
+    },
+    {
+      "citation": "Hare and Sun (2026), On the computation of cosine measures in high dimensions. EURO Journal on Computational Optimization. The cosine measure computed through the polar polytope (their Theorem 3.2).",
+      "url": "https://doi.org/10.1016/j.ejco.2026.100143"
+    },
+    {
+      "citation": "Böröczky and Wintsche (2003), Covering the sphere by equal spherical balls. Discrete and Computational Geometry (Algorithms and Combinatorics). Conjecture 1.3 on optimal coverings by few equal caps, proved here in local form (Corollary 7.2), and Theorem 1.4 on coverings by d + 3 caps.",
+      "url": "https://doi.org/10.1007/978-3-642-55566-4_10"
+    },
+    {
+      "citation": "Litvak, Sonnleitner and Szczepanski (2026), Minimal dispersion on the sphere. Discrete & Computational Geometry. Restates the balanced-simplex covering conjecture.",
+      "url": "https://doi.org/10.1007/s00454-025-00812-8"
+    },
+    {
+      "citation": "Borodachov (2022), Optimal antipodal configuration of 2d points on a sphere in R^d for covering. arXiv:2210.12472. The best antipodal coverings by 2d points.",
+      "url": "https://arxiv.org/abs/2210.12472",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Jarry-Bolduc and Krishan Lal (2026), Interactive figures for “Positive bases of size 2n − 1 with maximal cosine measure”. Web page accompanying a manuscript in preparation. The random-vertex device for triangles and pairs, credited in the paper.",
+      "url": "https://gabjarry.com/interactive-figures",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as a web page without a DOI; linked to the cited page, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Davis (1954), Theory of positive linear dependence. American Journal of Mathematics. Positive spanning sets and the sizes of positive bases.",
+      "url": "https://doi.org/10.2307/2372648"
+    },
+    {
+      "citation": "Regis (2016), On the properties of positive spanning sets and positive bases. Optimization and Engineering. Background on positive bases.",
+      "url": "https://doi.org/10.1007/s11081-015-9286-x"
+    },
+    {
+      "citation": "Vicente (2013), Worst case complexity of direct search. EURO Journal on Computational Optimization. Why the cosine measure governs the cost of direct search.",
+      "url": "https://doi.org/10.1007/s13675-012-0003-7"
+    },
+    {
+      "citation": "Dodangeh, Vicente and Zhang (2016), On the optimal order of worst case complexity of direct search. Optimization Letters. Optimality of the order of that cost, via sphere covering.",
+      "url": "https://doi.org/10.1007/s11590-015-0908-1"
+    },
+    {
+      "citation": "Kolda, Lewis and Torczon (2003), Optimization by direct search: new perspectives on some classical and modern methods. SIAM Review. Background on direct search.",
+      "url": "https://doi.org/10.1137/s003614450242889"
+    },
+    {
+      "citation": "Conn, Scheinberg and Vicente (2009), Introduction to derivative-free optimization. SIAM. Background on derivative-free optimisation.",
+      "url": "https://doi.org/10.1137/1.9780898718768"
+    },
+    {
+      "citation": "Audet and Hare (2017), Derivative-free and blackbox optimization. Springer. Background on derivative-free optimisation.",
+      "url": "https://doi.org/10.1007/978-3-319-68913-5"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:direct-sum-positive-bases",
+    "attemptIds": [
+      "ep-attempt:direct-sum-positive-bases-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Treat perpendicular regular simplices as the optimal direct-sum positive bases (cm = (r₁² + … + rₖ²)^(−1/2)), and as strict local optima among all configurations of the same size, when choosing poll directions for direct search or candidate sphere coverings by few caps.",
+      "scope": "Direct sums of minimal positive bases for the global statement; a neighbourhood of unspecified size for the local statement; the global question over all positive bases and coverings remains open for n + 3 ≤ s ≤ 2n − 2."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 and Table 1 separate what Nævdal, Hare–Jarry-Bolduc–Planiden, Hare–Sun, Böröczky–Wintsche, Borodachov and the public figures of Jarry-Bolduc and Krishan Lal established from what is new; PRIOR_ART.md and RESEARCH_GATES.json give the boundary claim by claim.",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "An announced manuscript on positive bases of size 2n − 1 is known only from its public figures."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in derivative-free optimisation or discrete geometry check Section 7 (Lemmas 7.7–7.11) and Theorem 6.1, and rerun the script independently.",
+      "claimCeiling": "Written proofs of the sharp bound on Ω_{n,s}, the rigidity and threshold results, local optimality among all configurations and the shifted extension; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "direct-sum-positive-bases-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable answer to the orthogonality question of Hare, Jarry-Bolduc and Planiden and a local form of the Böröczky–Wintsche covering conjecture.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
