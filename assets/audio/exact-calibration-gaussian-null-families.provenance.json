@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "The cost of exact calibration: an Evidence Press briefing. An e-value is the payoff of a fair bet against the hypothesis: if the hypothesis is true, the payoff averages at most one, so a big payoff is evidence that it is false. The quality of an e-value is how fast that evidence grows when the hypothesis really is false. Sometimes statisticians ask for more: an exact e-value, whose average is exactly one under every hypothesis in the null family. Earlier work showed two extremes. For a fixed, finite list of hypotheses, exactness costs nothing in the long run. For a whole continuum of normal distributions, it costs everything. This candidate studies the case in between: a grid of normal distributions whose number grows with the data. The answer is a sharp phase diagram.",
+      "inputSha256": "0fbdf16bd977fc8f1c860a9249985c06443ec1a3b8b4263600f149efd58fb10a",
+      "audioSha256": "a6cb0f719b4e5881f10973dc5abd62b72f08c87894a5a39a7ce6a14cc96153e0",
+      "requestId": "req_1a1e4cabeb044746b62bf40b8d03225b",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "data the answer is a sharp phase diagram",
+        "heardEnding": "of normal distributions whose number grows with the data the answer is a sharp phase diagram",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "When the means are packed extremely closely, the paper finds an explicit formula for the rate, which falls to zero once the number of null hypotheses is about as large as the information available, measured in nats. Here is a concrete case. Suppose the true mean is zero, and the null means are spread around one, spaced at one over the sample size. If those null means fill an interval reaching a little under a quarter either side of one, exact e-values stop gathering evidence altogether, while ordinary e-values still grow at a healthy rate. In a worked example with six thousand four hundred observations, ordinary e-values gather about two thousand six hundred nats of evidence, and exact ones only about eleven hundred nats, less than half as much. Why does exactness hurt so much?",
+      "inputSha256": "3ef72ab4b17b057e3b077b9d2b749462fb62ca35857e0145c4d213d7cb2681e0",
+      "audioSha256": "bf054d0dd70d2f277f05fb650d4fd4b4cc0205bae909a6c5476dadc02c574161",
+      "requestId": "req_6eedf0d37df24543b130b140fc5c7ade",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "as much why does exactness hurt so much",
+        "heardEnding": "exact ones only about nats less than half as much why does exactness hurt so much",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Ordinary e-values only have to beat mixtures of the null distributions. Exact ones must cope with every combination, including ones with negative weights, and differences of nearby bell curves can build polynomial shapes that mimic the alternative. The cost comes from demanding exact equality: allow each average to fall a little short of one, and the ordinary rate returns. The limits matter. The results cover normal distributions with known variance, and some of the conditions are sufficient rather than necessary. Evidence Press published this anonymous, AI-assisted, unrefereed candidate, and its review was internal, not peer review. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "7cc8b947da07b6c61fa942131b78a0298e2f12be0f93ef6d5aa435b25b1a63f0",
+      "audioSha256": "3eb416fc79a92cb3bd81b6730e2a67d085e98750343e1e97c9b146a4ffeb3451",
+      "requestId": "req_8a492e16601942699018be32ab441239",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "not peer review this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "exact-calibration-gaussian-null-families",
+  "generatedAt": "2026-11-15T18:00:28.152Z",
+  "sourceMetadata": "papers/exact-calibration-gaussian-null-families/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "9a0ff6298982b6da8b87d7ea9ff5f8ee5a4b6f4f715653fef7d9eaa4c0110bca",
+  "transcriptPath": "assets/audio/exact-calibration-gaussian-null-families.txt",
+  "transcriptSha256": "28eda261d649379f95a2fa97ce84b6221775f2f3225a74403b9f90654a23899b",
+  "audioPath": "assets/audio/exact-calibration-gaussian-null-families.mp3",
+  "audioSha256": "6ddf4e206810d4174af66e66ca2cc2fb67ec992027a3a514a34ec7022f838de5",
+  "audioBytes": 2399276,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "not peer review this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
