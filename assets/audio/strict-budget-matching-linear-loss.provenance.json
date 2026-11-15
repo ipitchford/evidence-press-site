@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Strict budgets in matching. An Evidence Press briefing. Imagine a platform that pairs workers with tasks, one task each. Every pairing has a value, and every pairing also uses up shared resources: a subsidy, travel, overtime, or pairings of a protected type. Each of m resources has a hard budget that must never be exceeded. Finding the best assignment within the budgets is hard, so the standard method first solves an easier version that allows fractional pairings, and then rounds that plan to a real assignment. Rounding without breaking any budget costs some value. The question is how much, measured in units of W, the value of the single most valuable pairing. Some loss is unavoidable.",
+      "inputSha256": "c099dd0440a5874f65af3c1daf71a9ff5d27b6c87518de9771c5cc6722c99a90",
+      "audioSha256": "ad18669a0fa202ffc5ffc21551d24a7900344e6ee0fadb992bd0e4cb3ee974ff",
+      "requestId": "req_6a0c262e859a4379b970d0f52dab3734",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "single most valuable pairing some loss is unavoidable",
+        "heardEnding": "in units of w the value of the single most valuable pairing some loss is unavoidable",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "One pairing slightly over its budget already forces a loss of about W, and m such pairings force a loss of about m times W. Until now, the best general guarantee, from 2014, was of order m squared times W. An earlier Evidence Press release, published on the third of November, introduced a splitting method that, applied here, already gives roughly nine m times W. This release is its follow-up. It proves that the loss is at most seven thirds of m times W, and exactly W when there is a single budget, where two W was known before. The rounding is deterministic and runs in polynomial time when the number of budgets is fixed. How does it work? The fractional plan has only a few branch points.",
+      "inputSha256": "31f38779ffb3b265a6728fad44374aeca8e73276373d9e0040ad68442be4cf5d",
+      "audioSha256": "d1018edfe36fdc9e7d2a50e1d1f7852f2eb9c9d89b03105ad64d6a2fba41ad9d",
+      "requestId": "req_894c41ce3e664cd98ca2259eaf1b3e04",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "fractional plan has only a few branch points",
+        "heardEnding": "budgets is fixed how does it work the fractional plan has only a few branch points",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Its alternating paths are laid end to end and cut by one pattern with at most two m plus one cuts, which keeps every budget and an adjusted value exactly. Each cut costs at most half a pairing, and the branch points are paid for in advance through that adjusted value. Removing pairings never raises a cost, so the budgets stay strict. The same accounting improves the earlier release's main bound from seventeen k to fourteen k over three. For a fair-representation problem with whole-number quotas, explicit examples show that a suggested loss of one half per quota is not enough. The limits matter. The results cover two-sided assignments only, with upper budgets only. Seven thirds is not known to be the best constant. And the algorithm is a theoretical guarantee, not a practical solver.",
+      "inputSha256": "77f05b5d81090c94a0ad443762c8fcdd3c802b5e8107c7f0630d9f6607c9b9a4",
+      "audioSha256": "37d45c6b91886171cbb6df9e80536db36dd952f95ee0fee844228319e56f570a",
+      "requestId": "req_c621c819f90346d98bd57588ec0a1f20",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "is a theoretical guarantee not a practical solver",
+        "heardEnding": "to be the best constant and the algorithm is a theoretical guarantee not a practical solver",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "This is an anonymous, AI-assisted, unrefereed candidate, published on the fifteenth of November twenty twenty-six. Its review was internal and AI-assisted, not peer review. The paper and its evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "942bb840351666d7aed8f4dd3fe9de16c8a62f47b6bfb84a337bfaabb66b84e7",
+      "audioSha256": "ff40ffe3620f42e4cfe2334ee359ba65aac9873ae8fc458728aec4f22624467d",
+      "requestId": "req_7c2d0438e70c4b4581b705de75f7053d",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "strict-budget-matching-linear-loss",
+  "generatedAt": "2026-11-15T01:37:51.035Z",
+  "sourceMetadata": "papers/strict-budget-matching-linear-loss/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "1d430c49d8c02925da961ae3a8e4c89ff6e64b253400be92cf20ff64f33a1fcb",
+  "transcriptPath": "assets/audio/strict-budget-matching-linear-loss.txt",
+  "transcriptSha256": "e13c8a2abedf7864503175aabffd4bd7d7e23a5a5e5c97cf0f6d6742c4d851de",
+  "audioPath": "assets/audio/strict-budget-matching-linear-loss.mp3",
+  "audioSha256": "ca031ac98502d7514bbc206d9f6fd4768a08b359736c16fc009d72ef014b5d3b",
+  "audioBytes": 2756012,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "press release page this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

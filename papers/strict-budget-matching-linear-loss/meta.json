@@ -1,0 +1,247 @@
+{
+  "slug": "strict-budget-matching-linear-loss",
+  "title": "Linear additive loss in bipartite matching with strict budgets",
+  "shortTitle": "Strict budgets: matching loss 7m/3, not order m²",
+  "oneLine": "Rounding with m budgets loses at most (7m/3) times the largest edge profit — a follow-up to the vector-matching release: turning a fractional worker–task plan into a real assignment that never breaks any of m budgets costs at most about 7m/3 times the most valuable single pairing (exactly one pairing for one budget), down from order m².",
+  "abstract": "A platform pairs workers with tasks; each pairing has a value and uses up m shared resources, each with a hard budget. The standard method solves a fractional relaxation and rounds it, and rounding without breaking any budget loses some value, measured in units of W, the largest value of a single pairing. Knapsack examples show that a loss of about mW is unavoidable. Grandoni, Ravi, Singh and Zenklusen (2014) showed that order m²W suffices, and the splitting lemma of the earlier Evidence Press release on vector-labelled matchings (DOI 10.5281/zenodo.23932844), of which this candidate is a follow-up, already gives about 9mW for bipartite graphs. This candidate proves that a loss of (14m−5)/6 · W ≤ (7m/3) · W suffices for m ≥ 2 and exactly W for one budget (previously 2W), with a deterministic rounding that runs in polynomial time for fixed m and gives an approximation scheme with running time N^{O(m/ε)}. The same accounting improves the earlier release's bound for vector-labelled perfect matchings from 17k to 14k/3 and makes it computable for fixed k. For the integer-quota fair-representation problem of Aharoni et al., connected examples have exact gap m(1−1/Δ): the suggested loss m/2 fails already for one quota at Δ = 3, and the one-quota constant is exactly 1−1/Δ. Limits: bipartite graphs and nonnegative upper budgets only; 7/3 is not known to be optimal; the algorithm is a theoretical guarantee. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-15",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "budgeted matching",
+    "bipartite matching",
+    "LP rounding",
+    "integrality gap",
+    "approximation scheme",
+    "necklace splitting",
+    "fair representation",
+    "vector discrepancy"
+  ],
+  "repoUrl": "https://github.com/ipitchford/strict-budget-matching-linear-loss",
+  "releaseUrl": "https://github.com/ipitchford/strict-budget-matching-linear-loss/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/strict-budget-matching-linear-loss/releases/download/v0.1.0-candidate/strict-budget-matching-linear-loss-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24237175",
+  "conceptDoi": "10.5281/zenodo.24237174",
+  "zenodoUrl": "https://zenodo.org/records/24237175",
+  "citeText": "Anonymous (2026). Linear additive loss in bipartite matching with strict budgets. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24237175",
+  "evidence": "Written proofs of every result (17-page paper with a plain introduction, a table of known bounds, a proof outline and open questions); exact rational primal–dual certificates for the lower-bound examples (Δ = 2 to 5, with all 29,992 matchings of the Δ = 3 example enumerated, 64 of them perfect, and connected examples for five (m, Δ) pairs); exhaustive finite checks of the chain and branch bookkeeping; an end-to-end exact test of the whole rounding on 300 random instances for each of m = 1, 2, 3 budgets and k = 1, 2, 3 label dimensions; clean replay from fresh copies in normal and python -O mode reproduced every certificate byte for byte, and a mutated check fails.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate and follow-up to the Evidence Press release vector-matching-linear-discrepancy. Every result has a written proof; the shipped computations are finite checks of conventions and bookkeeping, not part of any proof. The one-budget case relies on a published circular splitting theorem of Grandoni, Ravi, Singh and Zenklusen. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, a clean replay, one revision round with an extension (Theorem 8), then a re-review and a second-model audit of the new proofs, which found no failing result. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 14 November 2026 with the DOI paragraph inserted, 17 pages), its checkers and certificates and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 15 November 2026.",
+  "keyResults": [
+    "Theorem 1 (proof): in a bipartite matching problem with m nonnegative budgets, some matching that keeps every budget has profit at least LP − C_m·W, where W is the largest edge profit, C_1 = 1 and C_m = (14m−5)/6 ≤ 7m/3 for m ≥ 2 (previously order m², and about 9m from the earlier release's method). Found deterministically in time N^{O(m)}.",
+    "Corollary 7 (proof): a deterministic approximation scheme for budgeted bipartite matching with running time N^{O(m/ε)}.",
+    "Theorem 8 (proof): for vector labels in the unit ball of a k-dimensional normed space on the edges of K_{n,n}, some perfect matching is within max{3k+1, (14k−5)/3} ≤ 14k/3 of any fractional target, improving 17k of the earlier release and computable in polynomial time for fixed k.",
+    "Theorems 9–10 (proof): for the integer-quota fair-representation problem of Aharoni et al., connected examples have exact gap m(1−1/Δ); the suggested loss m/2 fails already for one quota at Δ = 3 (gap 2/3), and the one-quota constant is exactly 1−1/Δ."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, clean replay",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Strict budgets in matching. An Evidence Press briefing. Imagine a platform that pairs workers with tasks, one task each. Every pairing has a value, and every pairing also uses up shared resources: a subsidy, travel, overtime, or pairings of a protected type. Each of m resources has a hard budget that must never be exceeded. Finding the best assignment within the budgets is hard, so the standard method first solves an easier version that allows fractional pairings, and then rounds that plan to a real assignment. Rounding without breaking any budget costs some value. The question is how much, measured in units of W, the value of the single most valuable pairing. Some loss is unavoidable. One pairing slightly over its budget already forces a loss of about W, and m such pairings force a loss of about m times W. Until now, the best general guarantee, from 2014, was of order m squared times W. An earlier Evidence Press release, published on the third of November, introduced a splitting method that, applied here, already gives roughly nine m times W. This release is its follow-up. It proves that the loss is at most seven thirds of m times W, and exactly W when there is a single budget, where two W was known before. The rounding is deterministic and runs in polynomial time when the number of budgets is fixed. How does it work? The fractional plan has only a few branch points. Its alternating paths are laid end to end and cut by one pattern with at most two m plus one cuts, which keeps every budget and an adjusted value exactly. Each cut costs at most half a pairing, and the branch points are paid for in advance through that adjusted value. Removing pairings never raises a cost, so the budgets stay strict. The same accounting improves the earlier release's main bound from seventeen k to fourteen k over three. For a fair-representation problem with whole-number quotas, explicit examples show that a suggested loss of one half per quota is not enough. The limits matter. The results cover two-sided assignments only, with upper budgets only. Seven thirds is not known to be the best constant. And the algorithm is a theoretical guarantee, not a practical solver. This is an anonymous, AI-assisted, unrefereed candidate, published on the fifteenth of November twenty twenty-six. Its review was internal and AI-assisted, not peer review. The paper and its evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All three shipped checkers were rerun from fresh copies of the package in normal mode and under python -O; all six certificate files matched the shipped files byte for byte. A mutated check fails under -O. GitHub CI reruns all three checkers on Linux in both modes."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Exact integer and rational arithmetic in Python (standard library; numpy and scipy only to propose switch patterns that are then verified exactly); deterministic outputs byte-identical on the recorded macOS machine; in CI on Linux the lower-bound and chain certificates are byte-identical and the end-to-end certificate agrees in every exact field (floating-point diagnostic maxima may differ in the last digits). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Anonymous (2026), Linear discrepancy for vector-labelled perfect matchings. Evidence Press, version 0.1.0-candidate. The earlier release that this paper follows up: its splitting lemma already gives a loss of about 9m·W here, and its 17k bound is improved to 14k/3 (Theorem 8).",
+      "url": "https://doi.org/10.5281/zenodo.23932844"
+    },
+    {
+      "citation": "Grandoni, Ravi, Singh and Zenklusen (2014), New approaches to multi-objective optimization. Mathematical Programming. The previous general bound of order m²·W, and the circular splitting theorem used for one budget.",
+      "url": "https://doi.org/10.1007/s10107-013-0703-7"
+    },
+    {
+      "citation": "Berger, Bonifaci, Grandoni and Schäfer (2011), Budgeted matching and budgeted matroid intersection via the gasoline puzzle. Mathematical Programming. Loss 2W for one budget; improved to W here for bipartite graphs.",
+      "url": "https://doi.org/10.1007/s10107-009-0307-4"
+    },
+    {
+      "citation": "Grandoni and Zenklusen (2010), Approximation Schemes for Multi-Budgeted Independence Systems. Algorithms – ESA 2010. Loss kW for one matroid with k budgets.",
+      "url": "https://doi.org/10.1007/978-3-642-15775-2_46"
+    },
+    {
+      "citation": "Chekuri, Vondrák and Zenklusen (2011), Multi-budgeted Matchings and Matroid Intersection via Dependent Rounding. SODA 2011. An earlier deterministic approximation scheme for matching with a fixed number of budgets.",
+      "url": "https://doi.org/10.1137/1.9781611973082.82"
+    },
+    {
+      "citation": "Aharoni, Alon, Berger, Chudnovsky, Kotlar, Loebl and Ziv (2017), Fair Representation by Independent Sets. A Journey Through Discrete Mathematics. Conjecture 1.15 and the suggested loss m/2 refuted here for arbitrary edge sets.",
+      "url": "https://doi.org/10.1007/978-3-319-44479-6_2"
+    },
+    {
+      "citation": "Aharoni, Berger, Kotlar and Ziv (2017), Fair Representation in the Intersection of Two Matroids. The Electronic Journal of Combinatorics. The lower-quota companion problem.",
+      "url": "https://doi.org/10.37236/6946"
+    },
+    {
+      "citation": "Doron-Arad, Kulik and Manurangsi (2026), On the PTAS Complexity of Multidimensional Knapsack. ITCS 2026. Why the exponent m/ε cannot be improved much.",
+      "url": "https://doi.org/10.4230/LIPIcs.ITCS.2026.50"
+    },
+    {
+      "citation": "Doron-Arad, Kulik and Shachnai (2023), An EPTAS for Budgeted Matching and Budgeted Matroid Intersection via Representative Sets. ICALP 2023. Efficient scheme for one budget.",
+      "url": "https://doi.org/10.4230/LIPIcs.ICALP.2023.49"
+    },
+    {
+      "citation": "Doron-Arad, Kulik and Shachnai (2026), An EPTAS for budgeted matching, budgeted matroid independent set, and budgeted matroid intersection via representative sets. Mathematical Programming. Journal version.",
+      "url": "https://doi.org/10.1007/s10107-026-02397-3"
+    },
+    {
+      "citation": "Hobby and Rice (1965), A Moment Problem in L1 Approximation. Proceedings of the American Mathematical Society. The bisection theorem behind the splitting lemma.",
+      "url": "https://doi.org/10.2307/2033900"
+    },
+    {
+      "citation": "Pinkus (1976), A simple proof of the Hobby-Rice theorem. Proceedings of the American Mathematical Society.",
+      "url": "https://doi.org/10.1090/S0002-9939-1976-0425470-0"
+    },
+    {
+      "citation": "Stromquist and Woodall (1985), Sets on which several measures agree. Journal of Mathematical Analysis and Applications. Origin of the circular splitting theorem.",
+      "url": "https://doi.org/10.1016/0022-247X(85)90021-6"
+    },
+    {
+      "citation": "Alon (1987), Splitting necklaces. Advances in Mathematics. The necklace-splitting tradition.",
+      "url": "https://doi.org/10.1016/0001-8708(87)90055-7"
+    },
+    {
+      "citation": "Filos-Ratsikas and Goldberg (2018), Consensus halving is PPA-complete. STOC 2018. Why fixed dimension matters for finding the cuts.",
+      "url": "https://doi.org/10.1145/3188745.3188880"
+    },
+    {
+      "citation": "Mastrolilli and Stamoulis (2014), Bi-criteria and approximation algorithms for restricted matchings. Theoretical Computer Science. Bounded colour matching.",
+      "url": "https://doi.org/10.1016/j.tcs.2013.11.027"
+    },
+    {
+      "citation": "Kelk and Stamoulis (2019), Integrality gaps for colorful matchings. Discrete Optimization.",
+      "url": "https://doi.org/10.1016/j.disopt.2018.12.003"
+    },
+    {
+      "citation": "Yuster (2012), Almost Exact Matchings. Algorithmica. Exact-colour matchings, not covered here.",
+      "url": "https://doi.org/10.1007/s00453-011-9519-0"
+    },
+    {
+      "citation": "Aprile and Di Summa (2026), The red–blue–yellow matching problem. Discrete Optimization. Exact-colour matchings, not covered here.",
+      "url": "https://doi.org/10.1016/j.disopt.2026.100956"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:strict-budget-matching-linear-loss",
+    "attemptIds": [
+      "ep-attempt:strict-budget-matching-linear-loss-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Treat strict-budget rounding of bipartite matchings as losing at most (14m−5)/6 times the largest edge profit (W for one budget), the vector-labelled perfect-matching bound as 14k/3, and the suggested fair-representation loss m/2 as refuted for arbitrary edge sets.",
+      "scope": "Finite bipartite graphs, nonnegative upper budgets and nonnegative profits; the constant 7/3 is not claimed optimal; general graphs, lower quotas and signed costs are not covered."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.2, Table 1 and Remark 6 separate what was known (order m² in general graphs, about 9m from the earlier release, 2W for one budget) from what is new (the constant, C_1 = 1 for bipartite graphs, the algorithm, Theorem 8 and the integer-quota examples).",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "The parent release is itself an unrefereed candidate; a shared defect in the splitting argument would affect both."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [
+      {
+        "relation": "extends-result",
+        "workId": "ep-work:vector-matching-linear-discrepancy",
+        "legacyReleaseSlug": null,
+        "externalUrl": null,
+        "inheritedClaim": "The parent supplies the unequal-fraction splitting lemma (its Lemma 5) and the joint rounding of alternating paths; this child refines that argument (junction switches uncharged, branch costs prepaid in a shifted profit), applies it to strict budgets, and improves the parent's 17k bound to 14k/3 without amending the parent.",
+        "inheritedAssuranceCeiling": "The parent is an unrefereed producer-side candidate. Reuse of its splitting argument is dependency evidence, not independent confirmation, and a common defect could propagate to this release."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in combinatorial optimisation check the splitting lemma with uncharged junction switches (Lemma 2), the shifted-profit branch accounting (Section 4.2) and the cut-pattern algorithm (Section 5).",
+      "claimCeiling": "Written proofs of linear strict-budget rounding with coefficient (14m−5)/6 for bipartite graphs, the 14k/3 vector-labelled bound and the integer-quota lower-bound examples; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "strict-budget-matching-linear-loss-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of a linear additive loss bound with an explicit constant for strict-budget bipartite matching, with exact lower-bound examples.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
