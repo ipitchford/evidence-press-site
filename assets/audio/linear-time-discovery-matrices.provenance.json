@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Linear-time discovery matrices: an Evidence Press briefing. Scientists often test thousands of hypotheses at once, such as genes, advertising variants or the arms of a drug trial. An e-value measures the evidence against one hypothesis that nothing is going on. When nothing is going on, its average is at most one, so a value like a hundred counts as strong evidence. The practical question is how many of the hypotheses with the strongest evidence are real discoveries, with an answer that holds for every cut-off at once. Vladimir Vovk and Ruodu Wang answered it with a discovery matrix. Each entry says how strongly the data back the claim that more than a given number of the top hypotheses are real.",
+      "inputSha256": "81f169657e0132956300b122950773cc7bb137763aae1369f8a1555ff3dafeb8",
+      "audioSha256": "f7eeab219f7c1101b614c44683284eeb4c76bbb1e21d94b2a4035d9a4b9ca4a9",
+      "requestId": "req_397c9880b5d848d48569be8c8da7271b",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "given number of the top hypotheses are real",
+        "heardEnding": "data back the claim that more than a given number of the top hypotheses are real",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "In a small example from the paper, three e-values give strong evidence that at least one of the top two hypotheses is real, but only weak evidence that both are. The difficulty is that each entry is a minimum over an enormous number of subsets. Combining e-values by the average of their pairwise products gives much sharper matrices when the e-values are independent, but the best known method needed time growing with the square of the number of hypotheses for every row. In their gene study, Vovk and Wang computed only a small corner of the matrix, and they asked in print whether linear time per row is possible. This candidate shows that it is. One row now takes time proportional to the number of hypotheses, and the whole matrix takes time proportional to its size.",
+      "inputSha256": "b8e5586080fc91d75f54d82a9a72458aeabf6addd8bc1dabf3495d75cad3c059",
+      "audioSha256": "5a1a4f743b8821c6a273b7d6c98b0e425d42d8ae0261b5b3f22ef41e6845e589",
+      "requestId": "req_cf196f67301e4c92a0563ac3a0b0455c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "whole matrix takes time proportional to its size",
+        "heardEnding": "proportional to the number of hypotheses and the whole matrix takes time proportional to its size",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This holds for the pairwise-product average and for any fixed mix of a constant, the plain average and that product average. As a concrete test, a complete matrix for ten thousand hypotheses takes about two minutes in plain Python, with roughly four hundred and forty times fewer evaluations than before. The key idea is an inequality about inserting values into a gap of a sorted sample: such an insertion cannot raise the plain average unless it also raises the pairwise-product average. That makes a hidden table totally monotone, so a classic matrix-searching algorithm called SMAWK, due to Aggarwal, Klawe, Moran, Shor and Wilber, finds every row minimum while looking at only a linear number of entries. There are limits.",
+      "inputSha256": "9daa058cba673e7c94cf87dc9627205d7262d842fec00969527448bedcaf4f8d",
+      "audioSha256": "903f509b6dc57f2f1c655dbc613b7c8c9079733f314e1d0a57e5fa8a61c50f20",
+      "requestId": "req_58f01530f03d4ea9b7b0770060cce73f",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a linear number of entries there are limits",
+        "heardEnding": "finds every row minimum while looking at only a linear number of entries there are limits",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "Products of three or more e-values remain open: the paper reduces that case to a simple inequality, proves a special case and gives exact evidence, but no proof. Floating-point results are not certified, and the statistical reading needs independent or sequential e-values. Evidence Press published this anonymous, AI-assisted, unrefereed candidate, and its review was internal, not peer review. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "d321aecf08981df58a1b7442cb9c42c594da968e6e2d2c319ef73555884b9736",
+      "audioSha256": "74212784cb18b0ef0f6d40b4da8da4d36a804af35c193679b4aee221d24c1fc6",
+      "requestId": "req_18b6dd5b228e41e796f56c69ea6d6158",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "not peer review this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "linear-time-discovery-matrices",
+  "generatedAt": "2026-11-15T22:55:53.225Z",
+  "sourceMetadata": "papers/linear-time-discovery-matrices/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "946db355b4a4725dcc036f78df6f82e90caad18235ff099033b9b14f607848aa",
+  "transcriptPath": "assets/audio/linear-time-discovery-matrices.txt",
+  "transcriptSha256": "e7e3db7c8ee0df307a0364cef8fa4f16a1b069c596902b00f9f91d1ba2bcb4e1",
+  "audioPath": "assets/audio/linear-time-discovery-matrices.mp3",
+  "audioSha256": "9a7c40c0ef89bdb2541a55a6d7ccb459af0fbf3dd86aed37f2fd5c2b350930e2",
+  "audioBytes": 2794028,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "not peer review this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
