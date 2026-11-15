@@ -1,0 +1,239 @@
+{
+  "slug": "subset-sum-support-entropy-tails",
+  "title": "Fixed-size subset sums: sharp support, Rényi entropy and tail bounds",
+  "shortTitle": "Random subset sums: how concentrated can they be?",
+  "oneLine": "If n numbers add to zero, at least 2·C(n−2, k−1) of the k-subsets have a nonzero sum, and only (1, −1, 0, …, 0) attains it, proving a 2018 conjecture on Johnson graphs; the paper also finds the exact minimum Rényi entropy of a random subset sum and proves the hypergeometric tail bound from n = 4k.",
+  "abstract": "Choose k of n given real numbers uniformly at random, without replacement, and add them. How concentrated can such a fixed-size subset sum be? This candidate answers three classical forms of the question exactly. Zero sums: if the numbers add up to zero and are not all zero, at least 2·C(n−2, k−1) of the k-subsets have a nonzero sum whenever k ≥ 5 and n ≥ 2k + 1, with equality only for (1, −1, 0, …, 0) up to scaling and reordering. This is the smallest support of an eigenfunction in the first nontrivial eigenspace of the Johnson graph, and proves the 2018 conjecture of Mogilnykh, Vorob’ev and Valyuzhenich, who had checked it by computer for n ≤ 600; a formula with all equality cases is given for every n and k, including one small case, (1, 1, −1, −1, 0) at n = 5, k = 2, that earlier classifications missed. Entropy: the minimum Rényi entropy of the sum is found for every order, answering a question of Ai, Kuželka and Pelekis (2026). One outlier is optimal except at half-sampling (n = 2k), where two outliers win above an explicit order α_k (α_2 = 2, about 1.386k for large k), so the universal Bernoulli lower bound holds exactly for orders up to 2. Tails: for two-valued populations the probability that the sum is at least its mean is at least k/n whenever n ≥ 4k, extending the range n ≥ 8k of Ai and Pelekis (2026) with a 2026 lemma of Ai, Karagiannis, Kuželka and Pelekis; so the Aydinian–Blinovsky conjecture would imply the Manickam–Miklós–Singhi conjecture for all n ≥ 4k. This does not prove that conjecture. Exact analogues over Abelian groups and a small-ball inequality are included. Limits: real numbers only for the zero-sum theorem, first Johnson eigenspace only, tail problem below 4k open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-15",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "subset sums",
+    "sampling without replacement",
+    "Johnson graph",
+    "minimum support",
+    "eigenfunctions",
+    "Rényi entropy",
+    "majorization",
+    "hypergeometric distribution",
+    "Manickam–Miklós–Singhi conjecture",
+    "Boolean slice"
+  ],
+  "repoUrl": "https://github.com/ipitchford/subset-sum-support-entropy-tails",
+  "releaseUrl": "https://github.com/ipitchford/subset-sum-support-entropy-tails/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/subset-sum-support-entropy-tails/releases/download/v0.1.0-candidate/subset-sum-support-entropy-tails-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24241302",
+  "conceptDoi": "10.5281/zenodo.24241301",
+  "zenodoUrl": "https://zenodo.org/records/24241302",
+  "citeText": "Anonymous (2026). Fixed-size subset sums: sharp support, Rényi entropy and tail bounds. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24241302",
+  "evidence": "A 19-page paper with a plain introduction (the question, what was known, notation, main results, what is new and what is not, roadmap) and complete written proofs of every result; no step of a proof is computational. Five standard-library Python scripts check the statements exactly on finite ranges, each in seconds: the support formula and minimisers on all zero-sum vectors with entries in {−2, …, 2} for n ≤ 10 and a complete certificate for n ≤ 7; hypergeometric atoms, the parity majorization chain and the entropy equality statements; the integer-mean lemma for n ≤ 300; the tail theorem for k ≤ 40 and 4k ≤ n ≤ 10k (930,660 cases); and the counterexamples over Z_2, Z_3 and Z_5. Clean replay from fresh copies in normal and python -O mode reproduced every output, and a weakened check makes the scripts fail.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Theorems 1.1–1.6 and their lemmas and corollaries have complete written proofs. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, clean replays, one revision round (new introduction, filled proof steps, the tail theorem from n = 4k and a small-ball inequality added), then a re-review, a proof audit and a second-model audit of the new proofs; two wrong sentences, an attribution gap, an over-stated introductory sentence and a misreported source were corrected, and no numbered result changed. Two attributions were checked against the cited sources at publication. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 14 November 2026 with the version and DOI added to the title-page date line, 19 pages), its five scripts and recorded outputs and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 15 November 2026.",
+  "keyResults": [
+    "Theorem 1.1 (proof): for a nonzero zero-sum vector, at least 2·C(n−2, k−1) of the k-subsets have a nonzero sum when k ≥ 5 and n ≥ 2k + 1, with equality only for (1, −1, 0, …, 0) up to scaling and reordering (Conjecture 1 of Mogilnykh, Vorob’ev and Valyuzhenich, 2018); the complete formula and all minimisers for every n and k, including (1, 1, −1, −1, 0) at (n, k) = (5, 2).",
+    "Theorems 1.2 and 1.3 (proofs): the law of a random k-subset sum is majorized by Ber(k/n) away from half-sampling and by U or Q_k at n = 2k; hence the exact minimum Rényi entropy for every order, with the crossover order α_k at half-sampling (α_2 = 2, α_k ≈ (2k − ½) ln 2).",
+    "Corollary 1.4 (proof): the universal Bernoulli bound H_α(X) ≥ H_α(Ber(k/n)) holds for all populations if and only if 0 < α ≤ 2.",
+    "Theorem 1.5 (proof): P(Hyp(n, i, k) ≥ ik/n) ≥ k/n for n ≥ 4k, with a single outlier the unique minimiser for n > 4k; Corollary 7.2: the Aydinian–Blinovsky conjecture would imply the Manickam–Miklós–Singhi conjecture for n ≥ 4k.",
+    "Theorem 1.6 (proof): the exact minimum support of degree-one functions on Boolean slices over every nontrivial Abelian group, and an entropy dichotomy decided by elements of order two."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Fixed-size subset sums: an Evidence Press briefing. Pick some numbers from a list at random and add them up. How predictable can that sum be? This candidate answers exactly, in three senses. First, how often can the sum be zero? If the numbers add up to zero and are not all zero, and you pick k of the n numbers, the paper proves that at least two times n minus two choose k minus one of the picks give a nonzero sum, whenever k is at least five and n is larger than twice k. Only one pattern achieves this: a single plus one, a single minus one, and zeros everywhere else. In graph theory, this is the smallest footprint of a vibration mode of the Johnson graph. Mogilnykh, Vorob'ev and Valyuzhenich conjectured it in twenty eighteen, after checking every n up to six hundred by computer. Second, how predictable can the whole distribution be, measured by Rényi entropy? A single outlier gives the most predictable sum, except when exactly half the numbers are drawn: then two outliers win, once the order of the entropy passes an explicit threshold. So a natural Bernoulli lower bound holds for every population exactly when the order is at most two, and fails beyond it. Third, how rarely can the sum be nonnegative? Aydinian and Blinovsky conjectured that lists with just two distinct values are the worst case for the Manickam, Miklós and Singhi conjecture, which asks how many picks from a zero-sum list must have a nonnegative sum. For those lists the paper proves the expected bound whenever n is at least four times k, where earlier work needed eight times k, using a recent lemma of Ai, Karagiannis, Kuželka and Pelekis. So their conjecture would imply the full Manickam, Miklós and Singhi conjecture; this does not prove it. The limits matter: the zero-sum theorem is for real numbers, only the first eigenspace is treated, and the computer checks supplement the written proofs. Evidence Press published this anonymous, AI-assisted, unrefereed candidate in November twenty twenty-six, and its review was internal, not peer review. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All five scripts were rerun from fresh copies in normal mode and under python -O; their outputs matched the shipped files (verification.json apart from the recorded Python version and run time). A weakened support check makes verify.py fail under -O. GitHub CI reruns all five scripts and the negative control on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; internal reviewers recomputed the Z_2, Z_3 and Z_5 counterexamples and the tail cases with their own code."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Standard-library Python (3.10 or later); every decision uses exact integers or fractions and the random sanity runs use fixed seeds, so the outputs are platform-independent. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Mogilnykh, Vorob’ev and Valyuzhenich (2018), MMS-type problems for Johnson scheme. Siberian Electronic Mathematical Reports. Conjecture 1, proved here (Theorem 1.1); their Theorem 1 reduces the problem to two classes of vectors and their Section 5 compares the candidates by computer for n ≤ 600.",
+      "url": "https://doi.org/10.33048/semi.2018.15.137"
+    },
+    {
+      "citation": "Vorob’ev, Mogilnykh and Valyuzhenich (2018), Minimum supports of eigenfunctions of Johnson graphs. Discrete Mathematics. Minimum supports in every eigenspace for n large in terms of k.",
+      "url": "https://doi.org/10.1016/j.disc.2018.04.018"
+    },
+    {
+      "citation": "Sotnikova and Valyuzhenich (2021), Minimum supports of eigenfunctions of graphs: a survey. The Art of Discrete and Applied Mathematics. Survey restating the two-class description (Theorem 5) that misses the (5, 2) case.",
+      "url": "https://doi.org/10.26493/2590-9770.1404.61e"
+    },
+    {
+      "citation": "Ai, Kuželka and Pelekis (2026), An entropic analogue of the MMS conjecture. arXiv:2606.30486v1. The entropy problem answered here (Theorem 1.3) and the chain reduction to hypergeometric laws (their Lemma 3).",
+      "url": "https://arxiv.org/abs/2606.30486v1",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Ai and Pelekis (2026), On lower bounds for hypergeometric tails. Statistics & Probability Letters. The tail bound for n ≥ 8k, extended here to n ≥ 4k (Theorem 1.5).",
+      "url": "https://doi.org/10.1016/j.spl.2026.110798"
+    },
+    {
+      "citation": "Ai, Karagiannis, Kuželka and Pelekis (2026), On the probability that a discrete IFR random variable exceeds its mean. arXiv:2610.24726v1. The lemma (Theorem 2) and Theorem 3(1) used in the proof of Theorem 1.5.",
+      "url": "https://arxiv.org/abs/2610.24726v1",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Aydinian and Blinovsky (2012), A remark on the problem of nonnegative k-subset sums. Problems of Information Transmission. The conjecture that two-valued populations are extremal for the MMS problem.",
+      "url": "https://doi.org/10.1134/s0032946012040059"
+    },
+    {
+      "citation": "Manickam and Singhi (1988), First distribution invariants and EKR theorems. Journal of Combinatorial Theory, Series A. The Manickam–Miklós–Singhi (MMS) conjecture.",
+      "url": "https://doi.org/10.1016/0097-3165(88)90077-5"
+    },
+    {
+      "citation": "Pokrovskiy (2015), A linear bound on the Manickam–Miklós–Singhi conjecture. Journal of Combinatorial Theory, Series A. MMS for n ≥ 10^46·k.",
+      "url": "https://doi.org/10.1016/j.jcta.2015.01.007"
+    },
+    {
+      "citation": "Dumer and Kapralova (2013), Spherically Punctured Biorthogonal Codes. IEEE Transactions on Information Theory. Corollary 10, the binary Krawtchouk extremum behind Lemma 8.2 and the binary case of Theorem 1.6.",
+      "url": "https://doi.org/10.1109/tit.2013.2250579"
+    },
+    {
+      "citation": "Brouwer, Cioabă, Ihringer and McGinnis (2018), The smallest eigenvalues of Hamming graphs, Johnson graphs and other distance-regular graphs with classical parameters. Journal of Combinatorial Theory, Series B. Theorem 1.2 restates and reproves the Krawtchouk extremum.",
+      "url": "https://doi.org/10.1016/j.jctb.2018.04.005"
+    },
+    {
+      "citation": "Amireddy, Behera, Srinivasan and Sudan (2025), A Near-Optimal Polynomial Distance Lemma over Boolean Slices. ICALP 2025, LIPIcs 334. The bound (r − 1)/n for degree-one functions on slices, sharpened to the exact value in Theorem 1.6.",
+      "url": "https://doi.org/10.4230/LIPIcs.ICALP.2025.11"
+    },
+    {
+      "citation": "Madiman, Wang and Woo (2019), Majorization and Rényi entropy inequalities via Sperner theory. Discrete Mathematics. Majorization and Rényi entropy.",
+      "url": "https://doi.org/10.1016/j.disc.2019.03.002"
+    },
+    {
+      "citation": "Mattner and Schulz (2018), On normal approximations to symmetric hypergeometric laws. Transactions of the American Mathematical Society. A different ordering of symmetric hypergeometric laws.",
+      "url": "https://doi.org/10.1090/tran/6986"
+    },
+    {
+      "citation": "Levin (2024), A stochastic ordering of multiple hypergeometric laws: Peakedness of category counts about half the population category sizes is symmetric unimodal in the sample size. Sequential Analysis. Peakedness about a fixed centre as the sample size varies; Theorem 4.3 instead compares laws centred at their own moving means.",
+      "url": "https://doi.org/10.1080/07474946.2024.2379901"
+    },
+    {
+      "citation": "Grosu, Person and Szabó (2014), On the rank of higher inclusion matrices. Journal of the London Mathematical Society. Reports the known incidence-rank results that Corollary 6.3 re-derives.",
+      "url": "https://doi.org/10.1112/jlms/jdu029"
+    },
+    {
+      "citation": "Ai, Kuželka and Pelekis (2025), Concentration inequalities for the sum in sampling without replacement: an approach via majorization. arXiv:2503.20473. Adjacent work on majorization in sampling without replacement.",
+      "url": "https://arxiv.org/abs/2503.20473",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:subset-sum-support-entropy-tails",
+    "attemptIds": [
+      "ep-attempt:subset-sum-support-entropy-tails-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Treat the minimum support of the first Johnson eigenspace as 2·C(n−2, k−1) for k ≥ 5, n ≥ 2k + 1 (MVV Conjecture 1), the minimum Rényi entropy of fixed-size subset sums as given by one or two outliers with crossover α_k, and the two-valued hypergeometric tail bound k/n as valid from n = 4k.",
+      "scope": "Real populations and the first Johnson eigenspace; the MMS consequence is conditional on the Aydinian–Blinovsky conjecture; the tail problem below 4k remains open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 separates what Mogilnykh, Vorob’ev and Valyuzhenich, Ai–Kuželka–Pelekis, Ai–Pelekis, Ai–Karagiannis–Kuželka–Pelekis, Dumer–Kapralova and Amireddy–Behera–Srinivasan–Sudan proved from what is new, in a dedicated list of what is new and what is not; claim_ledger.md gives the prior-work boundary claim by claim.",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "Several load-bearing sources are recent arXiv preprints."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in algebraic combinatorics check Lemma 2.2 and Theorem 4.3, and a probabilist check Section 7, and rerun the scripts independently.",
+      "claimCeiling": "Written proofs of the support formula, the Rényi optimisation, the tail bound from n = 4k and the group analogues; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "subset-sum-support-entropy-tails-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of the Mogilnykh–Vorob’ev–Valyuzhenich conjecture, with exact entropy and tail results for fixed-size subset sums.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
