@@ -1,0 +1,235 @@
+{
+  "slug": "linear-time-discovery-matrices",
+  "title": "Linear-time rows for quadratic e-value discovery matrices",
+  "shortTitle": "Discovery matrices for e-values in linear time per row",
+  "oneLine": "Vovk and Wang asked whether rows of a pairwise-product e-value discovery matrix can be computed in linear time; a total-monotonicity argument and the SMAWK algorithm show that they can, so a full 10,000 × 10,000 matrix takes about two minutes in plain Python.",
+  "abstract": "An e-value is a nonnegative statistic whose expectation is at most one when a null hypothesis is true, so a large value is evidence against that hypothesis. Vovk and Wang summarise the evidence from many e-values in a discovery matrix: the entry in row r and column j says how strongly the data support \"more than j of the r hypotheses with the largest e-values are false\", simultaneously for every r and j. With independent or sequential e-values, the mean of pairwise products, U₂, gives much tighter matrices than the arithmetic mean, but the best published algorithm needed O(K²) operations per row for K hypotheses, and Vovk and Wang asked whether O(K) is possible. This candidate shows that it is. For every fixed nonnegative combination F = c + aU₁ + bU₂ of a constant, the arithmetic mean and the pairwise-product mean, one row takes O(K) arithmetic operations and the whole matrix O(K²), the size of its output; for pure U₂ the values are exactly the source's discovery matrix. The key step is a central-insertion inequality: if inserting observations into a gap of an ordered sample does not increase the pairwise-product mean, it does not increase the arithmetic mean either. This makes an implicit array of candidate subsets totally monotone, so the classical SMAWK algorithm of Aggarwal, Klawe, Moran, Shor and Wilber finds all its row minima in linear time. An exact implementation agrees with complete subset enumeration, and a complete 10,000 × 10,000 matrix takes about two minutes in plain Python with about 440 times fewer evaluations than before. For higher-degree means U_d, d ≥ 3, the question remains open: one chord inequality would settle every fixed degree for positive e-values, and the paper reduces it to a two-value case, proves the single-insertion case and gives exact evidence, but no proof. Floating-point results are not certified, and the statistical reading needs independent or sequential e-values. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-15",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "e-values",
+    "multiple testing",
+    "closed testing",
+    "true discovery guarantee",
+    "discovery matrices",
+    "elementary symmetric means",
+    "total monotonicity",
+    "SMAWK"
+  ],
+  "repoUrl": "https://github.com/ipitchford/linear-time-discovery-matrices",
+  "releaseUrl": "https://github.com/ipitchford/linear-time-discovery-matrices/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/linear-time-discovery-matrices/releases/download/v0.1.0-candidate/linear-time-discovery-matrices-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24264048",
+  "conceptDoi": "10.5281/zenodo.24264047",
+  "zenodoUrl": "https://zenodo.org/records/24264048",
+  "citeText": "Anonymous (2026). Linear-time rows for quadratic e-value discovery matrices. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24264048",
+  "evidence": "A 12-page paper with a plain introduction, written proofs, a worked example and a list of open questions; a dated prior-art record; a standard-library Python implementation with exact rational and floating-point modes; scripts with recorded outputs that compare it with complete subset enumeration (65,080 matrix entries with witnesses, 9,760 tie decisions, 33,337 tie-heavy rows, 146,452 checks of the total-monotonicity condition, and a deliberately wrong tie rule that must be caught), check every worked example and the higher-degree identities and evidence, count operations (Table 1) and compute the complete 10,000 × 10,000 matrix. A clean replay under Python 3.12 reproduced every exact result and count.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computational checks. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, a clean replay, one revision round with a bounded higher-degree extension, then a re-review, a proof audit and a second-model audit of the new proofs; no error was found in the main theorem or its lemmas. The checks test the code and its conventions and are not part of the proofs. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 15 November 2026 with the DOI added to the title-page version line, 12 pages), its scripts and recorded outputs, the prior-art record and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 15 November 2026.",
+  "keyResults": [
+    "Theorem 2.3 (proof): for fixed a, b, c ≥ 0 and F = c + aU₁ + bU₂, every row of the Vovk–Wang discovery matrix, with a witness subset for each entry, takes O(K) arithmetic operations and O(K) memory; the complete matrix takes O(K²). For pure U₂ the values are exactly the source's; this answers the Vovk–Wang question for pairwise products and covers the mixture (U₁ + U₂)/2.",
+    "Lemma 4.1 (proof): if inserting a block of values into a gap of an ordered sample does not increase U₂, it does not increase U₁. With Lemma 5.1 (adding a common maximum) this makes the candidate array totally monotone (Corollary 5.2), so SMAWK applies; the array is neither Monge nor row-unimodal (explicit examples).",
+    "Section 7 (computation): exact agreement with complete subset enumeration on 65,080 entries; one row with r = K/2 needs 4.3K to 4.6K evaluations against r(K − r + 1) for the previous algorithm; a complete 10,000 × 10,000 U₂ matrix uses 3.77 × 10⁸ evaluations against 1.67 × 10¹¹ (about 440 times fewer) and supports at least 2,303 true discoveries at evidence level 100 among the top 5,000.",
+    "Section 8 (partial): for U_d with d ≥ 3, a chord inequality (Conjecture 8.1) would give linear-time rows for each fixed degree on positive inputs (Theorem 8.3); it holds for a single inserted value and reduces to insertions of the two values next to the gap (Proposition 8.4); exact evidence, no proof."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Linear-time discovery matrices: an Evidence Press briefing. Scientists often test thousands of hypotheses at once, such as genes, advertising variants or the arms of a drug trial. An e-value measures the evidence against one hypothesis that nothing is going on. When nothing is going on, its average is at most one, so a value like a hundred counts as strong evidence. The practical question is how many of the hypotheses with the strongest evidence are real discoveries, with an answer that holds for every cut-off at once. Vladimir Vovk and Ruodu Wang answered it with a discovery matrix. Each entry says how strongly the data back the claim that more than a given number of the top hypotheses are real. In a small example from the paper, three e-values give strong evidence that at least one of the top two hypotheses is real, but only weak evidence that both are. The difficulty is that each entry is a minimum over an enormous number of subsets. Combining e-values by the average of their pairwise products gives much sharper matrices when the e-values are independent, but the best known method needed time growing with the square of the number of hypotheses for every row. In their gene study, Vovk and Wang computed only a small corner of the matrix, and they asked in print whether linear time per row is possible. This candidate shows that it is. One row now takes time proportional to the number of hypotheses, and the whole matrix takes time proportional to its size. This holds for the pairwise-product average and for any fixed mix of a constant, the plain average and that product average. As a concrete test, a complete matrix for ten thousand hypotheses takes about two minutes in plain Python, with roughly four hundred and forty times fewer evaluations than before. The key idea is an inequality about inserting values into a gap of a sorted sample: such an insertion cannot raise the plain average unless it also raises the pairwise-product average. That makes a hidden table totally monotone, so a classic matrix-searching algorithm called SMAWK, due to Aggarwal, Klawe, Moran, Shor and Wilber, finds every row minimum while looking at only a linear number of entries. There are limits. Products of three or more e-values remain open: the paper reduces that case to a simple inequality, proves a special case and gives exact evidence, but no proof. Floating-point results are not certified, and the statistical reading needs independent or sequential e-values. Evidence Press published this anonymous, AI-assisted, unrefereed candidate, and its review was internal, not peer review. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All five scripts were rerun from fresh copies under CPython 3.12 (three also under python -O); every exact result and count matched the recorded outputs, and the deliberately wrong tie rule was caught. GitHub CI reruns the exact checks under -O with counts compared (blocking) and the full matrix in normal mode (non-blocking), on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; the brute-force checker evaluates the original subset definition directly, and the release banner generator recomputes the worked example and the evaluation counts and compares them with the recorded outputs."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Standard-library Python with fixed seeds; exact results and counts reproduced on the release platform under CPython 3.12 (the outputs were recorded with CPython 3.14); timings vary. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Vovk and Wang (2024), True and false discoveries with independent and sequential e-values. Canadian Journal of Statistics. Defines discovery matrices for independent and sequential e-values with the pairwise-product merger, gives the O(K²) row algorithm and asks whether linear-time rows are possible (Sections 7 and 9).",
+      "url": "https://doi.org/10.1002/cjs.11833"
+    },
+    {
+      "citation": "Vovk and Wang (2023), Confidence and Discoveries with E-values. Statistical Science. Discovery matrices under arbitrary dependence, with an O(K²) arithmetic-mean matrix (Algorithm 4).",
+      "url": "https://doi.org/10.1214/22-STS874"
+    },
+    {
+      "citation": "Vovk and Wang (2021), E-values: Calibration, combination and applications. The Annals of Statistics. E-values and their merging functions, including the symmetric means used here.",
+      "url": "https://doi.org/10.1214/20-AOS2020"
+    },
+    {
+      "citation": "Aggarwal, Klawe, Moran, Shor and Wilber (1987), Geometric applications of a matrix-searching algorithm. Algorithmica. The SMAWK algorithm, which finds all row minima of a totally monotone matrix in linear time.",
+      "url": "https://doi.org/10.1007/BF01840359"
+    },
+    {
+      "citation": "Bhatia and Davis (2000), A Better Bound on the Variance. The American Mathematical Monthly. The variance bound for values in an interval, one ingredient of the central-insertion inequality.",
+      "url": "https://doi.org/10.1080/00029890.2000.12005203"
+    },
+    {
+      "citation": "Dobriban (2020), Fast closed testing for exchangeable local tests. Biometrika. A fast closed-testing algorithm for exchangeable local tests, with a different output (individual rejections).",
+      "url": "https://doi.org/10.1093/biomet/asz082"
+    },
+    {
+      "citation": "Goeman, Meijer, Krebs and Solari (2019), Simultaneous control of all false discovery proportions in large-scale multiple hypothesis testing. Biometrika. Fast simultaneous bounds for p-values.",
+      "url": "https://doi.org/10.1093/biomet/asz041"
+    },
+    {
+      "citation": "Tian, Chen, Katsevich, Goeman and Ramdas (2023), Large-scale simultaneous inference under dependence. Scandinavian Journal of Statistics. Fast post-hoc bounds for sum-type local tests.",
+      "url": "https://doi.org/10.1111/sjos.12614"
+    },
+    {
+      "citation": "Vovk (2024), Multiple testing in game-theoretic probability: pictures and questions. arXiv:2403.11767. Discovery matrices for the mixture (U₁ + U₂)/2 with a generic algorithm; covered by the main theorem.",
+      "url": "https://arxiv.org/abs/2403.11767",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Hartog and Lei (2025), Family-wise Error Rate Control with E-values. arXiv:2501.09015. Linear-time e-Holm; its Lemma G.1 is the closest antecedent of the total-monotonicity step, for the arithmetic mean.",
+      "url": "https://arxiv.org/abs/2501.09015",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Dubey and Huo (2026), Pooling Sequential Evidence Across Hypotheses: Rate-Optimal Multiple Testing at a Fixed Horizon. arXiv:2609.27465. Elementary-symmetric-polynomial mixtures in sequential closed testing with a conservative shortcut.",
+      "url": "https://arxiv.org/abs/2609.27465",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Dubey and Huo (2026), Optimal multiple testing under family-wise error control: elementary symmetric polynomials and a scalable algorithm. arXiv:2604.10986. Elementary symmetric polynomials in model-based family-wise error control with p-values.",
+      "url": "https://arxiv.org/abs/2604.10986",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Fischer and Ramdas (2024), Admissible online closed testing must employ e-values. arXiv:2407.15733. Online closed testing with simultaneous lower bounds on true discoveries.",
+      "url": "https://arxiv.org/abs/2407.15733",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Xu, Solari, Fischer, de Heide, Ramdas and Goeman (2025), Bringing Closure to False Discovery Rate Control: A General Principle for Multiple Testing. arXiv:2509.02517. Expected-loss procedures as closed testing based on e-values.",
+      "url": "https://arxiv.org/abs/2509.02517",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Ming, Ramdas, Shen, Wang and Waudby-Smith (2026), Combining e-values using demi-supermartingales. arXiv:2603.10329. Elementary symmetric polynomials of e-variables as demi-supermartingales.",
+      "url": "https://arxiv.org/abs/2603.10329",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:linear-time-discovery-matrices",
+    "attemptIds": [
+      "ep-attempt:linear-time-discovery-matrices-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Compute complete Vovk–Wang discovery matrices for pairwise-product e-value mergers at scale, instead of a small corner.",
+      "scope": "Fixed mixtures of a constant, the arithmetic mean and the pairwise-product mean; exact in rational arithmetic; floating point not certified; statistical validity needs independent or sequential e-values and pre-fixed weights; higher degrees open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Sections 1 and 9 separate what was known (e-values and mergers, discovery matrices and their O(K²) U₂ rows, the required-block reduction, SMAWK, related closed-testing shortcuts) from what is new (the central-insertion inequality, total monotonicity, the linear-time rows and the higher-degree reduction); PRIOR_ART.md records attribution.",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "Seven cited works are preprints."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in e-values and closed testing check the reduction and the central-insertion inequality (Sections 3 to 5), and an algorithms specialist check the SMAWK application with rightmost ties (Section 6).",
+      "claimCeiling": "Written proofs of linear-time rows for fixed mixtures of a constant, the arithmetic mean and the pairwise-product mean; higher degrees conjectural; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "linear-time-discovery-matrices-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable linear-time algorithm, with proof and exact checks, for pairwise-product e-value discovery matrices.",
+        "setting": "AI-assisted statistical methods research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
