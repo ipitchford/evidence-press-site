@@ -1,0 +1,237 @@
+{
+  "slug": "preorder-polytope-flag-spheres",
+  "title": "Preorder polytopes: matching endpoint pairs, flag spheres and the Athanasiadis–Chapoton conjectures",
+  "shortTitle": "Flag spheres for crown-free preorders",
+  "oneLine": "Preorders (rankings with ties) and their polytopes: for every preorder without a \"crown\", the polytope's counting polynomial comes from a flag sphere, settling that case of a 2026 Athanasiadis–Chapoton conjecture; the gamma-coefficients count matchable pairs (found concurrently by Zhong), and two Ehrhart conjectures are proved.",
+  "abstract": "A preorder is a way of ranking things in which ties are allowed. Athanasiadis and Chapoton (2026) attached a lattice polytope to every preorder and conjectured that the polynomial H_τ counting its integer points by the number of nonzero coordinates always behaves like the face-counting polynomial of a sphere: symmetric, unimodal, gamma-positive and realised by a simplicial, even a flag simplicial, polytope; they also conjectured several Ehrhart identities. For the chain 1 < 2 < 3, H_τ = 1 + 6t + 6t² + t³ = (1+t)³ + 3t(1+t). This candidate proves that the gamma-coefficients count ordered pairs of disjoint sets that can be matched upwards, which gives gamma-positivity; Y. Zhong (arXiv:2611.16858, 12 November 2026) obtained the same formula independently and concurrently by the same route. The new main result: for every preorder containing no crown (2k ≥ 6 elements joined in a closed zig-zag), H_τ is the h-polynomial of the boundary of an n-dimensional flag simplicial polytope. The class includes all arbors, compositions, width-two, series–parallel and interval orders, and every preorder with at most five blocks. The proof gives a quadratic Gröbner basis for a root polytope, adapting Ohsugi–Hibi and Ohsugi–Tsuchiya, with a special simplex pulled first. For preorders with a crown, the two polytopes used here have no flag regular unimodular triangulation; the six-element crown is the smallest open case. The candidate also proves matrix Ehrhart–zeta duality and double Ehrhart reciprocity for every preorder, deduces the descent formula and the zeta value at −1, gives a simplicial realisation for every preorder, and tabulates the status of every conjecture in the originating paper. Several Ehrhart proofs are short applications of standard tools. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-15",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "preorder polytope",
+    "gamma-positivity",
+    "flag simplicial sphere",
+    "Ehrhart theory",
+    "Gröbner basis",
+    "chordal bipartite graph",
+    "Athanasiadis-Chapoton conjectures",
+    "Gal conjecture"
+  ],
+  "repoUrl": "https://github.com/ipitchford/preorder-polytope-flag-spheres",
+  "releaseUrl": "https://github.com/ipitchford/preorder-polytope-flag-spheres/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/preorder-polytope-flag-spheres/releases/download/v0.1.0-candidate/preorder-polytope-flag-spheres-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24235777",
+  "conceptDoi": "10.5281/zenodo.24235776",
+  "zenodoUrl": "https://zenodo.org/records/24235777",
+  "citeText": "Anonymous (2026). Preorder polytopes: matching endpoint pairs, flag spheres and the Athanasiadis–Chapoton conjectures. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24235777",
+  "evidence": "Written proofs of every result (18-page paper with a plain introduction, a status table of every conjecture in the originating paper, and open problems); exact Python checks with integer and rational arithmetic (all 355 labelled four-element preorders and smaller ones, 24 seeded preorders at each size 5–8, 689 small bipartite graphs, 5054 fixed-support cases, 560 matrix-duality cases, 162 interior-point counts, 380 Ehrhart values, 390 preorders for the corollaries); flag-sphere checks on 571 preorders (570 crown-free) and on all 512 height-two 3+3 preorders; Macaulay2 Gröbner-basis certificates for 461 crown-free preorders and a degree-three generator for the six-element crown; clean replay from fresh copies in normal and python -O mode reproduced every saved output exactly, and a mutated check fails.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Every result has a written proof; the shipped computations are finite regression checks, not part of any proof. The gamma-coefficient formula was obtained concurrently and independently by Y. Zhong. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, a clean replay, one revision round with an extension (the flag theorem and crown obstruction), then a re-review, a proof audit and a second-model audit, which found no failing result. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 14 November 2026 with DOI insertion, 18 pages), its programs and outputs and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 15 November 2026.",
+  "keyResults": [
+    "Theorem 5.6 (proof): if the preorder τ contains no crown, H_τ is the h-polynomial of the boundary of an n-dimensional flag simplicial polytope (Athanasiadis–Chapoton Conjecture 5.1(d) for this class: all arbors, compositions, width-two, series–parallel and interval orders, and every preorder with at most five blocks).",
+    "Proposition 5.7 (proof): if τ contains a crown, neither of the two polytopes with Ehrhart numerator H_τ used here has a flag regular unimodular triangulation; the six-element crown is the smallest open case.",
+    "Theorem 3.4 (proof, concurrent with Zhong arXiv:2611.16858): H_τ(t) = Σ_j m_j(τ) t^j (1+t)^(n−2j), where m_j counts ordered pairs of disjoint j-element sets matchable upwards; hence gamma-positivity (Conjecture 5.2).",
+    "Corollary 6.2 and Theorem 7.1 (proof): matrix Ehrhart–zeta duality (Conjecture 4.2) and double Ehrhart reciprocity (Conjecture 7.2) for every preorder; Corollaries 7.3–7.4 give the descent formula (Conjecture 4.4) and Z(P_τ, −1) = (−1)^n #max(P_τ).",
+    "Propositions 4.2–4.3 (proof): a simplicial-polytope realisation for every preorder (Conjecture 5.1(c)) and an explicit reflexive polytope with Ehrhart numerator H_τ."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replay",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Crowns and flag spheres. An Evidence Press briefing. A preorder is a way of ranking things in which ties are allowed. In twenty twenty-six, Christos Athanasiadis and Frédéric Chapoton attached a geometric shape, a polytope, to every preorder. Its whole-number points are the ways of putting loads on the items, so that no group of items that is closed downwards carries more in total than the number of items in it. Count those points by how many loads are not zero, and you get a polynomial. For a chain of three items, the counts are one, six, six and one. They conjectured that this polynomial always behaves like the polynomial that counts the faces of a sphere. It should be symmetric, rise and then fall, and come from a special kind of sphere called a flag sphere, in which any set of corners that is not a face already contains two corners with no edge between them. A well-known conjecture of Gal makes such examples valuable. Here is what this release does. First, it shows that the so-called gamma coefficients of the polynomial count pairs of separate sets that can be matched upwards. For the chain of three items, the key coefficient is three: the three ways to pick one item and one item above it. Yueming Zhong independently posted the same result on the twelfth of November, by the same route, and the paper credits that work. The new part is this. For every preorder that contains no crown, which is a closed zig-zag of six or more items, the polynomial really does come from a flag sphere. That covers the tree-shaped rankings Chapoton first studied, and every preorder with at most five tied groups. The method adapts known work of Ohsugi, Hibi and Tsuchiya. For preorders with a crown the method provably fails, and the six-item crown is the smallest open case. The release also proves two counting identities from the same paper, and gives a status table for every conjecture in it. Some of these proofs are short applications of standard tools, and the computer checks test small cases only. This is an anonymous, AI-assisted, unrefereed candidate, published on the fifteenth of November twenty twenty-six. Its review was internal and AI-assisted, not peer review. The paper and its evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All shipped checks were rerun from fresh copies of the package: the five exact Python programs in normal mode and under python -O, the flag checks and both Macaulay2 certificates; every output matched the shipped results exactly. A mutated check fails under -O. GitHub CI reruns the five Python programs on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Exact integer and rational arithmetic in standard-library Python (numpy for one program) and Macaulay2 1.26 with 4ti2; outputs identical on the recorded macOS machine and, for the Python programs, in CI on Linux. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Athanasiadis and Chapoton (2026), Polytopes and posets associated to preorders. arXiv:2605.26916 v1. The source of the preorder polytope and of every conjecture discussed here; numbering follows v1.",
+      "url": "https://arxiv.org/abs/2605.26916v1",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Zhong (2026), Gamma-positivity of support enumerators of preorders. arXiv:2611.16858. Posted 12 November 2026: an independent, concurrent proof of the same gamma-coefficient formula by the same route.",
+      "url": "https://arxiv.org/abs/2611.16858",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Dai, Hou, Liu, Thawinrak and Wang (2026), Counting lattice points in Minkowski sums of cross polytopes. arXiv:2608.16037 v2. Identifies H_τ with the Ehrhart numerator of a root polytope and proves Conjecture 5.4.",
+      "url": "https://arxiv.org/abs/2608.16037v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Luo (2026), A proof of the Athanasiadis–Chapoton ordinal-sum conjecture. arXiv:2609.28507. Proves Conjecture 6.3.",
+      "url": "https://arxiv.org/abs/2609.28507",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Patel, An eight-element counterexample. MathDB problem 374962, online note. The eight-element poset showing that real-rootedness (Conjecture 5.3) fails.",
+      "url": "https://mathdb.com/p/374962/real-rootedness-conjecture-for-preorder-polytope-h-polynomia",
+      "pageOnly": true,
+      "pageOnlyReason": "Web note without a DOI, cited in the manuscript bibliography; the DOI gate does not apply."
+    },
+    {
+      "citation": "Chapoton (2025), On posets and polytopes attached to arbors. Mathematica Scandinavica. Arbor polytopes and the original conjectures for arbors.",
+      "url": "https://doi.org/10.7146/math.scand.a-159563"
+    },
+    {
+      "citation": "Athanasiadis (2026), Lattice point enumeration of polytopes associated to integer compositions. Annals of Combinatorics. The chain (composition) case, including a flag realisation.",
+      "url": "https://doi.org/10.1007/s00026-026-00812-2"
+    },
+    {
+      "citation": "Athanasiadis (2005), Ehrhart polynomials, simplicial polytopes, magic squares and a conjecture of Stanley. Journal für die reine und angewandte Mathematik. The special-simplex theorem used for the simplicial and flag realisations.",
+      "url": "https://doi.org/10.1515/crll.2005.2005.583.163"
+    },
+    {
+      "citation": "Ohsugi and Hibi (1999), Koszul bipartite graphs. Advances in Applied Mathematics. Quadratic Gröbner bases for chordal bipartite graphs, adapted in Section 5.",
+      "url": "https://doi.org/10.1006/aama.1998.0615"
+    },
+    {
+      "citation": "Ohsugi and Tsuchiya (2020), Reflexive polytopes arising from bipartite graphs with γ-positivity associated to interior polynomials. Selecta Mathematica. The fixed-support count and the Γ-free Gröbner method (Theorem 2.6).",
+      "url": "https://doi.org/10.1007/s00029-020-00588-0"
+    },
+    {
+      "citation": "Hoffman, Kolen and Sakarovitch (1985), Totally-balanced and greedy matrices. SIAM Journal on Algebraic Discrete Methods. Γ-free orderings of totally balanced matrices.",
+      "url": "https://doi.org/10.1137/0606070"
+    },
+    {
+      "citation": "Sturmfels (1991), Gröbner bases of toric varieties. Tohoku Mathematical Journal. From Gröbner bases to regular unimodular triangulations.",
+      "url": "https://doi.org/10.2748/tmj/1178227496"
+    },
+    {
+      "citation": "Postnikov (2009), Permutohedra, associahedra, and beyond. International Mathematics Research Notices. The lattice-point formula behind matrix duality.",
+      "url": "https://doi.org/10.1093/imrn/rnn153"
+    },
+    {
+      "citation": "Oh (2013), Generalized permutohedra, h-vectors of cotransversal matroids and pure O-sequences. The Electronic Journal of Combinatorics. The correspondence between integer points and matchable sets.",
+      "url": "https://doi.org/10.37236/2769"
+    },
+    {
+      "citation": "Gal (2005), Real root conjecture fails for five- and higher-dimensional spheres. Discrete & Computational Geometry. Gal's conjecture on gamma-positivity of flag spheres.",
+      "url": "https://doi.org/10.1007/s00454-005-1171-5"
+    },
+    {
+      "citation": "Nevo and Petersen (2011), On γ-vectors satisfying the Kruskal–Katona inequalities. Discrete & Computational Geometry. A sharper form of Gal's conjecture.",
+      "url": "https://doi.org/10.1007/s00454-010-9243-6"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:preorder-polytope-flag-spheres",
+    "attemptIds": [
+      "ep-attempt:preorder-polytope-flag-spheres-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Treat every crown-free preorder as satisfying the flag form of Athanasiadis–Chapoton Conjecture 5.1(d), the gamma-coefficients as counts of disjoint matchable pairs, and Conjectures 4.2, 4.4 and 7.2 and equation (22) of Conjecture 4.9 as proved.",
+      "scope": "Finite preorders; the flag statement only for crown-free preorders. Crowns, magic positivity, Conjectures 6.2, 8.1, 8.2 and the q-form of Conjecture 4.9 are not settled."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1.3 and Table 1 separate what was known, what was proved concurrently by Zhong, and what is new; Section 5 credits Ohsugi–Hibi and Ohsugi–Tsuchiya for the Gröbner method.",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "The originating paper and several closely related works are arXiv preprints."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in toric algebra check the Gröbner-basis argument (Propositions 5.3–5.4 and Lemma 5.5) and the crown obstruction (Proposition 5.7).",
+      "claimCeiling": "Written proofs of the matchable-pair gamma formula (concurrent with Zhong), flag spheres for crown-free preorders, the crown obstruction for the two polytopes used, matrix Ehrhart–zeta duality, double Ehrhart reciprocity and their corollaries; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "preorder-polytope-flag-spheres-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of the flag form of the Athanasiadis–Chapoton conjecture for crown-free preorders, with a status map of the programme.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
