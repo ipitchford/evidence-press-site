@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Flip and shuffle: an Evidence Press briefing on balancing running totals. Imagine lists of numbers arriving one after another, every entry between minus one and plus one in size. You keep a running total, entry by entry. Before adding each list you may flip all of its signs and shuffle its entries into any order, but you cannot change the order in which the lists arrive. The goal is to keep every entry of every running total close to zero. Think of a team of workers sharing a stream of jobs, where you can rotate who takes which part of each job, and nobody should ever fall far out of balance. With sign flips alone, the best guarantee keeps growing as the lists get longer. The shuffles change everything.",
+      "inputSha256": "51e254867f5a1244bca1f19d3f6323f132553fa6dfd5b00e32a2aa209fa2aab9",
+      "audioSha256": "271d8494ec6a8a444030c23e5a6406a642a6b01bf541fe8c2d05790bbdf7ccc0",
+      "requestId": "req_50e868dd866b42acaf2f31766e5b1046",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the lists get longer the shuffles change everything",
+        "heardEnding": "flicks alone the best guarantee keeps growing as the lists get longer the shuffles change everything",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "In October twenty twenty-six, Jonathan Niles-Weed, Shay Sadovsky and Jacob Shkrob proved that the totals can always be kept within three minus two over n, where n is the length of each list, even when every choice is made on the fly. They showed that a bound of two cannot be beaten, and asked for the exact best constant. Five particular lists force some running total to reach two and a half in every even dimension from four upwards. In dimension four that matches their upper bound, so there the best constant is exactly two and a half, settled for that dimension. Choosing on the fly, nobody can stay below two and a half in any dimension from four upwards, and from dimension eight nobody can even stay at that level.",
+      "inputSha256": "b7160e17c6bdcdb7d931e420b29fd7e39ec8198b76714726977f3abd0acf56c0",
+      "audioSha256": "8eeb3f5d3389d7fa9dcee5475d1c1a89cbd8dfbbe0a31e79a177743e62b1971f",
+      "requestId": "req_01272434e59a45d9b61fce11a29b6cd2",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "dimension nobody can even stay at that level",
+        "heardEnding": "below in any dimension from upwards and from dimension nobody can even stay at that level",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "For lists of length fifty-two or more, the forced level is at least one hundred and sixty-one sixty-fourths, slightly more than two and a half. The key idea is counting: a list with only a few entries equal to minus one can rescue only that many entries already in danger. And once two entries of the total are tied at the maximum, a short run of carefully scaled lists pushes the maximum a little higher, which the paper calls plateau amplification. The limits matter. Whether two and a half can be beaten when the whole stream is known in advance is still open, and so is whether three minus two over n is exactly right in every dimension. The result concerns running totals, not just the final total, and most of the margins above two and a half are tiny.",
+      "inputSha256": "a1f31d886f0427baaf991bf8857b6a603ba48db6c920f63a64386a8143ba9cd3",
+      "audioSha256": "d41be7c7db918394210d645255bcdabf96317e658bb8f2e17a96701ccc9ffd4b",
+      "requestId": "req_825ca8288e524cefb4db7d17a7501be5",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the margins above and a half are tiny",
+        "heardEnding": "not just the final total and most of the margins above and a half are tiny",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This anonymous, AI-assisted, unrefereed candidate was published by Evidence Press on the fifteenth of November twenty twenty-six. Its review was internal and AI-assisted, not peer review. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "14b50bbdf39293825347d31d63b9cc95fa845e43b045e4c388415ff8e77fec52",
+      "audioSha256": "73c223f0c7245537e37151c10cab3c33a82e3cd8a2145ab5e7d1f43a7177bd61",
+      "requestId": "req_610106a6f3a14818a3ef4773b452d918",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "not peer review this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "signed-permutation-prefix-balancing",
+  "generatedAt": "2026-11-15T05:37:33.854Z",
+  "sourceMetadata": "papers/signed-permutation-prefix-balancing/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "a70e453a357fdfa4c329f8ef51e74d37d2d740e412fd76e7812f585782d3407d",
+  "transcriptPath": "assets/audio/signed-permutation-prefix-balancing.txt",
+  "transcriptSha256": "3a5c3e428eff63cab0aade0b401d4fae8eb050cf61e341e24a1668ea19db6a08",
+  "audioPath": "assets/audio/signed-permutation-prefix-balancing.mp3",
+  "audioSha256": "b6267f1057e494d3595d3af16304cee083b2b6e9f406f77543d54ecb57f5c48e",
+  "audioBytes": 2550572,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "not peer review this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

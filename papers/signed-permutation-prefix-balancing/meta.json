@@ -1,0 +1,213 @@
+{
+  "slug": "signed-permutation-prefix-balancing",
+  "title": "Prefix balancing with signs and coordinate permutations: the exact constant 5/2 in dimension four and online bounds above 5/2",
+  "shortTitle": "Flip and shuffle: the balancing constant is 5/2 in four dimensions",
+  "oneLine": "Five fixed vectors force a running total to reach 5/2 in every even dimension from four, so when each vector may be sign-flipped and shuffled the best balancing constant in dimension four is exactly 5/2; online, 5/2 cannot be beaten from dimension four and is exceeded from dimension eight.",
+  "abstract": "Lists (vectors) of n numbers in [−1, 1] arrive one at a time and are added to a running total. Before adding each one you may flip all its signs and permute its coordinates, but not reorder the stream; the aim is to keep the largest absolute coordinate of every running total small. With signs alone the best guarantee grows like √n. Niles-Weed, Sadovsky and Shkrob (arXiv:2610.02127, 2026) showed that with permutations 3 − 2/n always suffices, even choosing on the fly, recorded that 2 cannot be beaten, and asked for the sharp constant. This candidate shows that five fixed vectors force a running total of size at least 5/2 in every even dimension n ≥ 4; in dimension four this meets the upper bound, so the sharp constant there is exactly 5/2, offline and online. For deterministic online strategies the constant is at least 5/2 in every dimension n ≥ 4, strictly above 5/2 in every dimension n ≥ 8 (for example at least 5/2 + 1/4096 when n = 8) and at least 161/64 = 2.515625 for every n ≥ 52, via a plateau amplification lemma: two coordinates tied at the maximum can be pushed higher by a short geometric sequence of vectors. A computer-checked certificate gives 13/6 online in dimension three. Limits: whether 5/2 can be beaten offline, and whether 3 − 2/n is sharp in every dimension, remain open; the 5/2 obstruction concerns running (prefix) totals, not only the final total; margins above 5/2 are tiny except the 161/64 bound. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-15",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "vector balancing",
+    "discrepancy",
+    "prefix discrepancy",
+    "online algorithms",
+    "signed permutations",
+    "Steinitz problem",
+    "sharp constant",
+    "computer-assisted proof"
+  ],
+  "repoUrl": "https://github.com/ipitchford/signed-permutation-prefix-balancing",
+  "releaseUrl": "https://github.com/ipitchford/signed-permutation-prefix-balancing/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/signed-permutation-prefix-balancing/releases/download/v0.1.0-candidate/signed-permutation-prefix-balancing-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24239377",
+  "conceptDoi": "10.5281/zenodo.24239376",
+  "zenodoUrl": "https://zenodo.org/records/24239377",
+  "citeText": "Anonymous (2026). Prefix balancing with signs and coordinate permutations: the exact constant 5/2 in dimension four and online bounds above 5/2. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24239377",
+  "evidence": "A 9-page paper with a plain introduction, a table of known and new bounds, written proofs of every result except the dimension-three bound, and a section on what remains open; verify.py, a standard-library script of exact checks (about one minute): move-generator cross-checks against brute force, exhaustive enumeration of the five-vector input for even n ≤ 10, every player response to the opening for 8 ≤ n ≤ 16, the full dimension-eight online game end to end, the parameter table and the 782-state dimension-three certificate; and explore.py, bounded exploratory searches reported as negative results. Clean replay from fresh copies in normal and python -O mode reproduced verification.json byte for byte, and a changed expected optimum makes the checks fail.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Theorem 3.1, Corollary 4.3, Proposition 5.2, Lemma 5.3, Theorem 5.4 and Corollary 5.5 have written proofs; Proposition 6.1 (13/6 online in dimension three) is a computer-assisted proof by an exact certificate. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, clean replays, one revision round with three extensions (the online bound for every n ≥ 4, the plateau lemma for every n ≥ 8 and the 161/64 bound, the dimension-three certificate), then a re-review, a proof audit and a second-model audit of the new proofs; two text-level corrections followed, and no numbered result changed. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 15 November 2026 with the DOI added to the title-page date line, 9 pages), its script and recorded output and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 15 November 2026.",
+  "keyResults": [
+    "Theorem 3.1 (proof): for every even n ≥ 4, five fixed vectors force a running total with a coordinate of absolute value at least 5/2 under every choice of signs and coordinate permutations; in dimension four they are (−1,−1,−1,1), ½(1,1,1,1), (−1,−1,1,1), (1,1,1,1), (−1,−1,1,1).",
+    "Corollary 4.3: the sharp constant in dimension four is exactly 5/2, offline and online, matching the upper bound 3 − 2/n of Niles-Weed, Sadovsky and Shkrob.",
+    "Proposition 5.2 and Theorem 5.4 (proofs): for deterministic online strategies the constant is at least 5/2 for every n ≥ 4 and at least 5/2 + 2^{1−N(n)} > 5/2 for every n ≥ 8 (for example 5/2 + 1/4096 at n = 8).",
+    "Corollary 5.5 (proof): the online constant is at least 161/64 = 2.515625 for every n ≥ 52.",
+    "Proposition 6.1 (computer-assisted proof): the online constant in dimension three is at least 13/6 (782-state certificate)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Flip and shuffle: an Evidence Press briefing on balancing running totals. Imagine lists of numbers arriving one after another, every entry between minus one and plus one in size. You keep a running total, entry by entry. Before adding each list you may flip all of its signs and shuffle its entries into any order, but you cannot change the order in which the lists arrive. The goal is to keep every entry of every running total close to zero. Think of a team of workers sharing a stream of jobs, where you can rotate who takes which part of each job, and nobody should ever fall far out of balance. With sign flips alone, the best guarantee keeps growing as the lists get longer. The shuffles change everything. In October twenty twenty-six, Jonathan Niles-Weed, Shay Sadovsky and Jacob Shkrob proved that the totals can always be kept within three minus two over n, where n is the length of each list, even when every choice is made on the fly. They showed that a bound of two cannot be beaten, and asked for the exact best constant. Five particular lists force some running total to reach two and a half in every even dimension from four upwards. In dimension four that matches their upper bound, so there the best constant is exactly two and a half, settled for that dimension. Choosing on the fly, nobody can stay below two and a half in any dimension from four upwards, and from dimension eight nobody can even stay at that level. For lists of length fifty-two or more, the forced level is at least one hundred and sixty-one sixty-fourths, slightly more than two and a half. The key idea is counting: a list with only a few entries equal to minus one can rescue only that many entries already in danger. And once two entries of the total are tied at the maximum, a short run of carefully scaled lists pushes the maximum a little higher, which the paper calls plateau amplification. The limits matter. Whether two and a half can be beaten when the whole stream is known in advance is still open, and so is whether three minus two over n is exactly right in every dimension. The result concerns running totals, not just the final total, and most of the margins above two and a half are tiny. This anonymous, AI-assisted, unrefereed candidate was published by Evidence Press on the fifteenth of November twenty twenty-six. Its review was internal and AI-assisted, not peer review. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify.py was rerun from fresh copies in normal mode and under python -O; verification.json matched the shipped file byte for byte. A changed expected dimension-four optimum makes the checks fail under -O. GitHub CI reruns verify.py and the negative control (blocking) and explore.py (non-blocking) on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; an internal second-model audit reproduced the dimension-three certificate (782 states, zero-state rank 11) and the final-sum optimum 3/2 with its own enumeration."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Standard-library Python (3.10 or later); every decision uses exact integers or fractions and the randomised sanity runs use fixed seeds, so the output is platform-independent. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Niles-Weed, Sadovsky and Shkrob (2026), An optimal constant for vector balancing with permutations. arXiv:2610.02127v1. The source of the problem: the bound 3 − 2/n (Theorem 9), the lower bound 2 (Remark 3) and the question of the sharp constant.",
+      "url": "https://doi.org/10.48550/arXiv.2610.02127"
+    },
+    {
+      "citation": "Spencer (1985), Six standard deviations suffice. Transactions of the American Mathematical Society. Signing n vectors with error O(√n): the classical balancing scale that permutations remove.",
+      "url": "https://doi.org/10.1090/s0002-9947-1985-0784009-0"
+    },
+    {
+      "citation": "Spencer (1977), Balancing games. Journal of Combinatorial Theory, Series B. The origin of online balancing against an adversary.",
+      "url": "https://doi.org/10.1016/0095-8956(77)90057-0"
+    },
+    {
+      "citation": "Bárány and Grinberg (1981), On some combinatorial questions in finite-dimensional spaces. Linear Algebra and its Applications. Steinitz-type control of running totals.",
+      "url": "https://doi.org/10.1016/0024-3795(81)90085-9"
+    },
+    {
+      "citation": "Banaszczyk (2012), On series of signed vectors and their rearrangements. Random Structures & Algorithms. Prefix control of signed series.",
+      "url": "https://doi.org/10.1002/rsa.20373"
+    },
+    {
+      "citation": "Banaszczyk (1998), Balancing vectors and Gaussian measures of n-dimensional convex bodies. Random Structures and Algorithms. The Gaussian-measure method for the final-sum problem.",
+      "url": "https://doi.org/10.1002/(sici)1098-2418(199807)12:4<351::aid-rsa3>3.0.co;2-s"
+    },
+    {
+      "citation": "Bansal, Jiang, Meka, Singla and Sinha (2022), Prefix Discrepancy, Smoothed Analysis, and Combinatorial Vector Balancing. ITCS 2022, LIPIcs 215. Prefix discrepancy.",
+      "url": "https://doi.org/10.4230/LIPIcs.ITCS.2022.13"
+    },
+    {
+      "citation": "Ambrus and Bozzai (2024), Colorful vector balancing. Mathematika. The framework in which one vector is chosen from each orbit.",
+      "url": "https://doi.org/10.1112/mtk.12274"
+    },
+    {
+      "citation": "Bansal, Jiang, Singla and Sinha (2019), Online Vector Balancing and Geometric Discrepancy. arXiv:1912.03350. Online discrepancy without permutations.",
+      "url": "https://arxiv.org/abs/1912.03350",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Alweiss, Liu and Sawhney (2020), Discrepancy Minimization via a Self-Balancing Walk. arXiv:2006.14009. Online discrepancy without permutations.",
+      "url": "https://arxiv.org/abs/2006.14009",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Anonymous (2026), Linear discrepancy for vector-labelled perfect matchings. Evidence Press. See also only: another discrepancy release, on a different problem (rounding fractional matchings).",
+      "url": "https://doi.org/10.5281/zenodo.23932844",
+      "pageOnly": true,
+      "pageOnlyReason": "Earlier Evidence Press release linked for readers as a see-also; not cited by the manuscript and not a parent of this result."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:signed-permutation-prefix-balancing",
+    "attemptIds": [
+      "ep-attempt:signed-permutation-prefix-balancing-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Treat the sharp prefix-balancing constant with signs and coordinate permutations as exactly 5/2 in dimension four, at least 5/2 for even n ≥ 4 offline, and above 5/2 online for every n ≥ 8.",
+      "scope": "Running (prefix) totals of vectors in [−1, 1]^n under the largest-coordinate norm; the offline constant above 5/2 and the sharpness of 3 − 2/n remain open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 and Table 1 separate what Niles-Weed, Sadovsky and Shkrob proved (the problem, the upper bound 3 − 2/n and the lower bound 2) from what is new (the five-vector obstruction, the exact constant in dimension four, the online bounds above 5/2 via the plateau lemma, and the dimension-three certificate), and place the problem in the classical balancing literature.",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "The source of the problem is a recent arXiv preprint."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in discrepancy theory check Theorem 3.1, Lemma 5.1 and the plateau amplification lemma (Lemma 5.3), and rerun verify.py independently.",
+      "claimCeiling": "Written proofs of the five-vector obstruction, the exact constant in dimension four and the online lower bounds; computer-assisted proof of the dimension-three bound; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "signed-permutation-prefix-balancing-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof that the sharp prefix-balancing constant with signs and coordinate permutations is 5/2 in dimension four.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
