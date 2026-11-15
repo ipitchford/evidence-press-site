@@ -1,0 +1,231 @@
+{
+  "slug": "tree-log-concavity-diameter-four",
+  "title": "Log-concavity transitions in sums of polynomial powers",
+  "shortTitle": "Non-log-concave trees of diameter four",
+  "oneLine": "A hub joined to m three-vertex paths has log-concave independent-set counts exactly when m ≤ 16,391, so four is the least diameter at which a tree can fail log-concavity, and at that diameter runs of failures can be arbitrarily long.",
+  "abstract": "Count the independent sets of each size in a graph (sets of vertices with no two adjacent). For trees this sequence was long expected to be log-concave (each term squared at least the product of its neighbours), which would settle the open question of Alavi, Malde, Schwenk and Erdős whether it is unimodal. Non-log-concave trees have been known since 2023 (Kadrawi and Levit, 26 vertices), and later work gave many failures and arbitrarily long runs of consecutive failures (Galvin; Bautista-Ramos and coauthors; Yu, in an unrefereed archive), but every structured example has diameter six or more, while trees of diameter at most three are always log-concave (Galvin and Hilyard). This candidate studies the tree T_m obtained by joining a hub to the middle vertex of each of m disjoint three-vertex paths: 3m+1 vertices, diameter four. Its sequence is log-concave if and only if m ≤ 16,391; T_16,392, with 49,177 vertices, fails at exactly one place. For every m from 16,392 to 10^6, and for all sufficiently large m, the failures form one nonempty block, of length (2/log(3/2)) log log m + O(1) ≈ 4.93 log log m, with both ends located to within o(1) by explicit equations. Hence four is the least diameter of a non-log-concave tree and of a family with arbitrarily long runs. An exhaustive search finds no failing diameter-four tree with at most 62 vertices. A general theorem gives the same picture for (1+x)^{dm} + xP(x)^m whenever P has only negative real roots, P(0) = 1, leading coefficient at least 1 and P′(0) > d; the mechanism is the crossing of two Poisson-like coefficient tails. Limits: the runs are short and near the top of the sequence, so nothing follows about unimodality; the threshold is computer-assisted (exact integer arithmetic); general thresholds are not effective. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-15",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "independence polynomial",
+    "log-concavity",
+    "unimodality",
+    "trees",
+    "diameter",
+    "hard-core model",
+    "coefficient asymptotics",
+    "computer-assisted proof"
+  ],
+  "repoUrl": "https://github.com/ipitchford/tree-log-concavity-diameter-four",
+  "releaseUrl": "https://github.com/ipitchford/tree-log-concavity-diameter-four/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/tree-log-concavity-diameter-four/releases/download/v0.1.0-candidate/tree-log-concavity-diameter-four-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24238469",
+  "conceptDoi": "10.5281/zenodo.24238468",
+  "zenodoUrl": "https://zenodo.org/records/24238469",
+  "citeText": "Anonymous (2026). Log-concavity transitions in sums of polynomial powers. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24238469",
+  "evidence": "A 16-page paper with a plain introduction, a comparison table of earlier constructions, all results stated in Section 2, written proofs of the general theorem and the tree theorem, and open questions; two computer-assisted proofs in exact integer arithmetic (threshold_certificate.py for the exact threshold and the one-block statement up to 10^6, about 12 minutes; diameter4_search.py for the search to 62 vertices, about 2 minutes); 2,456 exact checks of the tree polynomial and failure sets and 2,268 exact checks of the general theorem, with negative controls. Clean replay from fresh copies in normal and python -O mode reproduced every output byte for byte, and a changed expected failure set makes the checks fail.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate. Theorems 2.1 and 2.3 and Corollary 2.5 have written proofs; Theorem 2.4 (the exact threshold) and Proposition 2.6 (the search) are computer-assisted proofs in exact integer and rational arithmetic. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, clean replays, one revision round with three extensions (the exact threshold, a weaker hypothesis for the general theorem, the search to 62 vertices), then a re-review, a proof audit and a second-model audit of the new proofs; the audit found one false displayed inequality, repaired without changing any conclusion. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 15 November 2026 with the DOI added to the title-page version line, 16 pages), its scripts and recorded outputs and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 15 November 2026.",
+  "keyResults": [
+    "Theorem 2.4 (computer-assisted proof): the independent set sequence of T_m (a hub joined to the middle vertices of m disjoint three-vertex paths) is log-concave if and only if m ≤ 16,391; the only failure of T_16,392 (49,177 vertices) is at reflected index 20; for 16,392 ≤ m ≤ 10^6 the failures form one nonempty block.",
+    "Theorem 2.3 (proof): for all sufficiently large m the failures of T_m form one nonempty block between explicit endpoints ℓ_m and u_m, with ℓ_m²(3/2)^{ℓ_m} = 18m and u_m = log_{3/2}(m/2), of length (2 log log m − log(36λ²))/λ + θ_m, λ = log(3/2), limsup|θ_m| ≤ 1; so about 4.93 log log m.",
+    "Corollary 2.5 (proof): four is the least diameter of a non-log-concave tree, and of a family of trees with unbounded runs of failures; one fixed three-vertex module repeated at one vertex suffices.",
+    "Proposition 2.6 (computer-assisted proof): every tree of diameter at most four with at most 62 vertices is log-concave, so the least order of a non-log-concave diameter-four tree lies between 63 and 49,177.",
+    "Theorem 2.1 (proof): if P has only negative real roots, P(0) = 1, leading coefficient at least 1 and P′(0) > d, the failures of (1+x)^{dm} + xP(x)^m eventually form one block of length (2/log r) log log m + O(1), r = P′(0)/d; the binomial case never fails."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "When do trees stop being smooth? An Evidence Press briefing. Take any network, and call a set of its nodes independent when no two of them are joined. Now count the independent sets of each size. For trees, which are networks without loops, these counts were long expected to rise and then fall smoothly. The precise form of that smoothness is called log-concavity: each count, squared, is at least the product of its two neighbours. Physicists meet the same numbers in a model of particles that cannot sit side by side. Since twenty twenty-three we have known that some trees break this rule. Later work found many breaks, and long runs of breaks in a row, but every structured example was a fairly deep tree, with diameter six or more. Shallower trees, of diameter three or less, never break the rule at all. This release asks how shallow a failing tree can be. The answer comes from a very simple shape. Take a central hub, and attach it to the middle of many short paths of three nodes, which the paper calls cherries. With up to sixteen thousand three hundred and ninety-one cherries, the counts stay smooth. Add one more cherry, and the tree breaks the rule in exactly one place. From then on the tree keeps failing, and wherever this has been settled, up to a million cherries and for all very large trees, the failures form a single unbroken block that grows extremely slowly. So the smallest diameter at which a tree can fail is four, and at that diameter runs of failures can be as long as you like. The reason is a tug of war. The counts split into two parts, depending on whether the hub is used, and each part on its own is smooth. Where the two parts are equally large, their sum is a mixture, and such mixtures are not smooth. The limits matter. The runs are short and sit near the very top of the sequence, so they say nothing about whether every tree rises and then falls. The exact threshold rests on a computer-assisted proof in exact arithmetic, with the scripts included. This is an anonymous, AI-assisted, unrefereed candidate, published on the fifteenth of November twenty twenty-six. Its review was internal and AI-assisted, not peer review. The paper and its evidence are linked from the Evidence Press release page. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The two quick exact-check scripts and the figure script were rerun from fresh copies in normal mode and under python -O, and the threshold certificate and the search were rerun under python -O from a fresh copy by the lead with the same script bytes; every output matched the shipped files byte for byte. A changed expected failure set makes the checks fail under -O. GitHub CI reruns the quick checks and the negative control (blocking) and the certificate and search (non-blocking) on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; an internal proof audit recomputed the threshold failure set with its own exact code, and the release banner generator independently recomputes, in exact arithmetic, the low-index failures at m = 16,391 and 16,392 and the run at m = 10^12."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Standard-library Python (3.11 or later); every sign decision uses exact integers or fractions, so outputs are platform-independent apart from one wall-clock field; matplotlib 3.10.8 only for the figure. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Kadrawi and Levit (2023), The independence polynomial of trees is not always log-concave starting from order 26. arXiv:2305.01784. The first infinite families of non-log-concave trees (diameter six).",
+      "url": "https://arxiv.org/abs/2305.01784",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Galvin (2025), Trees with non log-concave independent set sequences. arXiv:2502.10654 v2 (2026). History of the question, the log-concave-plus-shifted-boost heuristic quantified here, and failures far from the end (diameter six).",
+      "url": "https://arxiv.org/abs/2502.10654v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Bautista-Ramos, Guillén-Galván and Gómez-Salgado (2026), Linear Recurrences for Non-Log-Concave Independence Polynomials of Trees. Graphs and Combinatorics. Scale graphs (T_m is the scale graph of m cherries) and runs of up to five consecutive failures (diameter eight).",
+      "url": "https://doi.org/10.1007/s00373-026-03054-4"
+    },
+    {
+      "citation": "Yu (2026), Unbounded runs of non-log-concavity in independence polynomials of trees: reproducibility archive. Zenodo, version 1.1.0 (unrefereed). Unbounded runs of order N^(1/3) in trees of diameter eight, and the suggestion of testing one fixed repeated module.",
+      "url": "https://doi.org/10.5281/zenodo.22263331"
+    },
+    {
+      "citation": "Bautista-Ramos (2025), Multiple breaks of log-concavity in the independence polynomials of trees. arXiv:2511.00334. Trees with arbitrarily many failures.",
+      "url": "https://arxiv.org/abs/2511.00334",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Ramos and Sun (2025), An AI enhanced approach to the tree unimodality conjecture. arXiv:2510.18826. Machine-found non-log-concave trees on 27 to 101 vertices.",
+      "url": "https://arxiv.org/abs/2510.18826",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Li, Li, Yang and Zhang (2026), A symmetric function approach to log-concavity of independence polynomials. Selecta Mathematica. Spiders are log-concave.",
+      "url": "https://doi.org/10.1007/s00029-026-01195-1"
+    },
+    {
+      "citation": "Levit (2026), Barrier Log-Concavity of Large Forests. arXiv:2610.22098. Concurrent: large forests can fail only where the sequence decreases, consistent with the failures here.",
+      "url": "https://arxiv.org/abs/2610.22098",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Liggett (1997), Ultra Logconcave Sequences and Negative Dependence. Journal of Combinatorial Theory, Series A. Ultra-log-concavity, behind the Poisson-mixture mechanism.",
+      "url": "https://doi.org/10.1006/jcta.1997.2790"
+    },
+    {
+      "citation": "Johnson (2007), Log-concavity and the maximum entropy property of the Poisson distribution. Stochastic Processes and their Applications. The Poisson boundary case of the mechanism.",
+      "url": "https://doi.org/10.1016/j.spa.2006.10.006"
+    },
+    {
+      "citation": "Holgate (1970), The modality of some compound Poisson distributions. Biometrika. Mixed Poisson laws and their shape.",
+      "url": "https://doi.org/10.1093/biomet/57.3.666"
+    },
+    {
+      "citation": "Odlyzko and Richmond (1985), On the Unimodality of High Convolutions of Discrete Distributions. The Annals of Probability. Eventual log-concavity of a single large power.",
+      "url": "https://doi.org/10.1214/aop/1176993082"
+    },
+    {
+      "citation": "De Angelis (2003), Asymptotic expansions and positivity of coefficients for largepowers of analytic functions. International Journal of Mathematics and Mathematical Sciences. Coefficient asymptotics of large powers (open question 3).",
+      "url": "https://doi.org/10.1155/s0161171203205056"
+    },
+    {
+      "citation": "Evidence Press (2026), Ultra log-concavity for increasing families generated by singletons and pairs. A contrast only: there, counts of dependent vertex sets in every graph are ultra-log-concave; here, counts of independent sets in trees can fail log-concavity.",
+      "url": "https://doi.org/10.5281/zenodo.23941815",
+      "pageOnly": true,
+      "pageOnlyReason": "Earlier Evidence Press release linked for readers as a contrast; not cited by the manuscript and not a parent of this result."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:tree-log-concavity-diameter-four",
+    "attemptIds": [
+      "ep-attempt:tree-log-concavity-diameter-four-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "counterexample-proxy-first",
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Treat four as the least diameter of a non-log-concave tree and of a tree family with unbounded runs, and T_m as log-concave exactly for m ≤ 16,391.",
+      "scope": "Independent set sequences of trees; strict log-concavity failures; the least order of a failing diameter-four tree is open in [63, 49,177]."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 and Table 1 separate what was known (failures since 2023, runs up to Yu's order N^(1/3), all in diameter six or more; diameter at most three log-concave) from what is new (the diameter-four family, its exact threshold, the one-block structure and sharp length, the search, and the general sums-of-powers theorem), and credit the scale-graph framework and the mixed-Poisson antecedents.",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "Several load-bearing sources are recent preprints or an unrefereed archive (Galvin, Yu, Levit)."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in combinatorics check the comparison and curvature argument (Sections 3-5) and the certificate lemmas (Lemmas 7.1-7.3), and rerun threshold_certificate.py independently.",
+      "claimCeiling": "Written proofs of the general and tree theorems and the least-diameter corollary; computer-assisted proofs of the exact threshold and of the search to 62 vertices; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "tree-log-concavity-diameter-four-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof that four is the least diameter of a non-log-concave tree, with an exact threshold for the cherry family.",
+        "setting": "AI-assisted mathematical research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
