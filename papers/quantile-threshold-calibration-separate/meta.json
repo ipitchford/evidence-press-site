@@ -1,0 +1,228 @@
+{
+  "slug": "quantile-threshold-calibration-separate",
+  "title": "Quantile and threshold calibration separate even for Gaussian forecasts",
+  "shortTitle": "Quantile and threshold calibration checks can disagree",
+  "oneLine": "Passing every quantile calibration check does not mean passing every threshold check, even for smooth Gaussian forecasts: the two checks weight the same probability-zero set of forecasts differently, and errors reach about one percentage point.",
+  "abstract": "A probabilistic forecast is calibrated when its stated probabilities match what happens. Two widely used checks condition on different summaries of the forecast: on a predicted quantile, or on the predicted probability of staying below a fixed threshold. Gneiting and Resin (2023) proved the two checks equivalent for continuous, strictly increasing forecast distributions that take only countably many values, and conjectured that countability could be dropped; Resin, Yang and Gneiting (2026) still list these implications as conjectures. This candidate shows that countability cannot be dropped. Gaussian forecasts with uniformly distributed location and scale, paired with explicit smooth outcome laws whose densities stay within a factor of two of the forecast densities, separate the checks in both directions: one law passes every conditional quantile check and has an exactly uniform PIT, yet fails threshold and marginal calibration at every threshold; the other passes every threshold check but fails quantile calibration, with a PIT distribution function strictly below the uniform one at every interior level. The errors reach about one percentage point. For outcomes with finitely many ordered values and positive forecast probabilities, conditional exceedance calibration implies threshold calibration when the forecast has countable support or there are at most three values, but not with four or more. For nominal outcomes, full probabilistic calibration implies marginal calibration with a sharp bound, and class-wise calibration does not imply average probabilistic calibration; two further nominal implications are settled for at most three classes or countable support and remain open beyond. The mechanism is the Borel–Kolmogorov phenomenon. Limits: population constructions, not a study of deployed forecasts; the amplitude rests on a computer-assisted interval bound; no finite-sample test theory. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-15",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "probabilistic forecasting",
+    "calibration",
+    "quantile calibration",
+    "threshold calibration",
+    "probability integral transform",
+    "reliability diagram",
+    "Borel-Kolmogorov paradox",
+    "forecast verification"
+  ],
+  "repoUrl": "https://github.com/ipitchford/quantile-threshold-calibration-separate",
+  "releaseUrl": "https://github.com/ipitchford/quantile-threshold-calibration-separate/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/quantile-threshold-calibration-separate/releases/download/v0.1.0-candidate/quantile-threshold-calibration-separate-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24259222",
+  "conceptDoi": "10.5281/zenodo.24259221",
+  "zenodoUrl": "https://zenodo.org/records/24259222",
+  "citeText": "Anonymous (2026). Quantile and threshold calibration separate even for Gaussian forecasts. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24259222",
+  "evidence": "A 20-page paper with a plain introduction, written proofs, a status table of every conjectured implication and a limits paragraph; three Python scripts with recorded outputs: symbolic and numerical checks of the Gaussian examples and their effect sizes; exact rational checks of the discrete and nominal results; and an interval-arithmetic certificate of the amplitude bound, the one computer-assisted step of a proof. Clean replay from fresh copies in normal and python -O mode reproduced every recorded output byte for byte, and a lowered certificate bound or two swapped table entries make the checks fail.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and one computer-assisted interval certificate. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, clean replays, one revision round with extensions (the certified amplitude and effect sizes, the boundary for finitely many ordered outcome values, the nominal results merged from a companion note, the status table), then a re-review, a proof audit and a second-model audit of the new proofs; no mathematical error was found, and summary wording was corrected. Except for the amplitude certificate the scripts are checks, not proofs. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 15 November 2026 with the DOI added to the title-page version line, 20 pages), its scripts and recorded outputs and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 15 November 2026.",
+  "keyResults": [
+    "Theorem 3.1 (proof): Gaussian forecasts N(M, S²) with M uniform on [−1, 1] and S uniform on [1, 2], with explicit smooth outcome laws (densities between half and one and a half times the forecast density, perturbation size ε ≤ 1/10): under one law the forecast passes every conditional quantile check with an exactly uniform PIT but fails threshold and marginal calibration at every threshold, P(Y ≤ x) − E F(x) = ε c₀ e^{−x²} with c₀ = 1 − (4/3) log 2; under the other it is threshold calibrated but fails quantile calibration, with PIT CDF strictly below the identity.",
+    "Section 3.5 (computation): at ε = 1/10 outcomes fall below 0 with probability 0.50758 while forecasts average 1/2; on a common segment the threshold error is ε/9 ≈ 0.011; a two-sided binomial test at the 5% level with 80% power needs about 34,000 cases to detect the marginal error.",
+    "Theorems 4.1–4.3 (proof): for k ordered outcome values with positive forecast probabilities, conditional exceedance calibration implies threshold calibration if the forecast has countable support or k ≤ 3; an explicit four-value forecast with one continuous parameter satisfies conditional exceedance, probabilistic and marginal calibration but not threshold calibration.",
+    "Theorems 5.3 and 5.5, Proposition 5.6 (proof): for nominal outcomes, full probabilistic calibration implies marginal calibration, with the sharp bound TV ≤ 2d − d²; class-wise calibration does not imply average probabilistic calibration, with all probabilities positive; fCC ⇒ fTC and pCC ⇒ pTC hold for k ≤ 3 or countable support and remain open for four or more classes.",
+    "Theorems 6.1 and 7.1 (proof): in location–scale families every compactly supported perturbation preserving either property is described by one differential operator; in any smooth family the two conditional laws on a common fibre differ by the forecast-density factor, so they agree for every outcome law only if that density is constant on the fibre."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "Two calibration checks that are not the same: an Evidence Press briefing. Many forecasts are probability distributions, like a weather service's spread of possible temperatures or a machine-learning model's prediction. A forecast is calibrated if its probabilities can be taken at face value. Forecasters check this in two standard ways. A threshold check fixes a value, say thirty degrees, and asks whether the stated chances of staying below it come true. A quantile check fixes a probability, say one half, and asks whether outcomes fall below the forecast median half of the time. For a smooth forecast, the two questions pick out exactly the same forecasts, so passing one kind of check should mean passing the other. Gneiting and Resin proved this when forecasts take only countably many shapes, and conjectured that the restriction could be dropped; a later overview by Resin, Yang and Gneiting still lists it as open. This candidate shows that it cannot. With ordinary bell-curve forecasts whose centre and spread vary smoothly, it builds outcomes that pass every quantile check exactly, with a perfectly flat histogram of probability integral transforms, yet fail every threshold check; and other outcomes that do the reverse. The errors reach about one percentage point. In one example, outcomes fall below zero fifty point seven six percent of the time, while the forecasts say fifty percent on average. Spotting that needs about thirty-four thousand forecast cases, an ordinary verification sample. Why does this happen? Both checks look at the same set of forecasts, but that set has probability zero, and the two checks weight its members differently. One weights them evenly, the other by their spread. The same error then averages to nothing under one weighting and to one ninth of the perturbation under the other. This is the classical Borel–Kolmogorov paradox. The paper also settles the case of outcomes with a few ordered categories: the quantile-type check implies the threshold check when there are at most three categories, but can fail once there are four or more of them. For unordered categories, it proves one further conjecture from that overview, gives a cleaner counterexample to another, and partly settles two more, which stay open for larger numbers of categories. The practical message: run both kinds of check. These are constructed examples, not a study of real forecasting systems. Evidence Press published this anonymous, AI-assisted, unrefereed candidate, and its review was internal, not peer review. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All three scripts were rerun from fresh copies in normal mode and under python -O with pinned packages; every recorded output matched byte for byte. Lowering the certified bound to 4.7 and swapping two table entries of the four-value construction each make the checks fail under -O. GitHub CI reruns the exact discrete checks, the certificate and both negative controls (blocking) and the Gaussian checks (non-blocking) on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; the internal proof audit recomputed the numerical claims, and the release banner generator recomputes the two averages 0 and 1/9, c₀ and the sample size from the paper's formulas."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation; the amplitude certificate uses outward-rounded interval arithmetic."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with pinned numpy 2.3.5, scipy 1.17.0, sympy 1.14.0 and mpmath 1.3.0; outputs reproduced byte for byte on the release platform and on Linux CI (the Gaussian checks within a relative tolerance of 1e-9). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Gneiting and Resin (2023), Regression diagnostics meets forecast evaluation: conditional calibration, reliability diagrams, and coefficient of determination. Electronic Journal of Statistics. Equivalence of quantile and threshold calibration for forecasts with countably many values (Theorem 2.16) and the conjecture, refuted here, that countability can be dropped; Appendix B.4 on testing.",
+      "url": "https://doi.org/10.1214/23-ejs2180"
+    },
+    {
+      "citation": "Resin, Yang and Gneiting (2026), Hierarchies of calibration: Classification meets regression. arXiv:2606.03245, version 1. The calibration hierarchies whose conjectured implications (Figures 2(a) and 4) this paper settles or partly settles.",
+      "url": "https://arxiv.org/abs/2606.03245v1",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Gneiting, Balabdaoui and Raftery (2007), Probabilistic Forecasts, Calibration and Sharpness. Journal of the Royal Statistical Society Series B: Statistical Methodology. Probabilistic and marginal calibration.",
+      "url": "https://doi.org/10.1111/j.1467-9868.2007.00587.x"
+    },
+    {
+      "citation": "Henzi, Ziegel and Gneiting (2021), Isotonic Distributional Regression. Journal of the Royal Statistical Society Series B: Statistical Methodology. Threshold calibration.",
+      "url": "https://doi.org/10.1111/rssb.12450"
+    },
+    {
+      "citation": "Mason, Galpin, Goddard, Graham and Rajartnam (2007), Conditional Exceedance Probabilities. Monthly Weather Review. Conditional exceedance probability checks in forecast verification.",
+      "url": "https://doi.org/10.1175/mwr3284.1"
+    },
+    {
+      "citation": "Held, Rufibach and Balabdaoui (2010), A Score Regression Approach to Assess Calibration of Continuous Probabilistic Predictions. Biometrics. A test of exceedance-type calibration.",
+      "url": "https://doi.org/10.1111/j.1541-0420.2010.01406.x"
+    },
+    {
+      "citation": "Strähl and Ziegel (2017), Cross-calibration of probabilistic forecasts. Electronic Journal of Statistics. Conditional exceedance calibration tests.",
+      "url": "https://doi.org/10.1214/17-ejs1244"
+    },
+    {
+      "citation": "Dawid (1984), Present Position and Potential Developments: Some Personal Views: Statistical Theory: The Prequential Approach. Journal of the Royal Statistical Society. Series A (General). The probability integral transform as a calibration diagnostic.",
+      "url": "https://doi.org/10.2307/2981683"
+    },
+    {
+      "citation": "Diebold, Gunther and Tay (1998), Evaluating Density Forecasts with Applications to Financial Risk Management. International Economic Review. PIT histograms in practice.",
+      "url": "https://doi.org/10.2307/2527342"
+    },
+    {
+      "citation": "Arnold and Ziegel (2025), Isotonic conditional laws. Bernoulli. Isotonic calibration, one way to guarantee both properties.",
+      "url": "https://doi.org/10.3150/24-bej1764"
+    },
+    {
+      "citation": "Allen, Gavrilopoulos, Henzi, Kleger and Ziegel (2025), In-sample calibration yields conformal calibration guarantees. arXiv:2503.03841, version 2. Statements on equivalence under continuity discussed in Section 8.",
+      "url": "https://arxiv.org/abs/2503.03841v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Silva Filho, Song, Perello-Nieto, Santos-Rodriguez, Kull and Flach (2023), Classifier calibration: a survey on how to assess and improve predicted class probabilities. Machine Learning. Source of the example (footnote 2) that Resin, Yang and Gneiting list for class-wise versus average probabilistic calibration.",
+      "url": "https://doi.org/10.1007/s10994-023-06336-7"
+    },
+    {
+      "citation": "Kolmogoroff (1933), Grundbegriffe der Wahrscheinlichkeitsrechnung. Springer. The Borel–Kolmogorov phenomenon of conditioning on events of probability zero (Chapter V), the mechanism behind the separation.",
+      "url": "https://doi.org/10.1007/978-3-642-49888-6"
+    },
+    {
+      "citation": "Diaconis, Holmes and Shahshahani (2013), Sampling from a Manifold. Institute of Mathematical Statistics Collections. The coarea formula used for the change-of-conditioning identity.",
+      "url": "https://doi.org/10.1214/12-imscoll1006"
+    },
+    {
+      "citation": "Cohen and Fausti (2024), Hyperbolic contractivity and the Hilbert metric on probability measures. arXiv:2309.02413, version 2. The Hilbert-metric inequality behind the transfer bound (Proposition 7.2).",
+      "url": "https://arxiv.org/abs/2309.02413v2",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv version, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:quantile-threshold-calibration-separate",
+    "attemptIds": [
+      "ep-attempt:quantile-threshold-calibration-separate-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Treat quantile-type (conditional exceedance) and threshold calibration checks as testing different hypotheses for continuously parameterised forecasts, and run both.",
+      "scope": "Population properties; continuous forecast families; finitely many ordered values with the exact boundary; nominal implications fCC => fTC and pCC => pTC open for four or more classes."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 separates what was known (equivalence for countably many forecast values, Gneiting and Resin; the conjectured arrows of Gneiting and Resin and of Resin, Yang and Gneiting; the classical Borel–Kolmogorov phenomenon) from what is new (smooth Gaussian counterexamples in both directions, the discrete boundary, the nominal results and the structure theorems); Table 2 gives the status of every conjectured implication.",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "Resin, Yang and Gneiting, whose conjectures are addressed, is a recent preprint."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in forecast evaluation check Theorem 3.1 and the testing consequences in Section 8, and a probabilist check the discrete boundary (Section 4) and the interval certificate (Appendix B).",
+      "claimCeiling": "Written proofs of the separation, the discrete boundary, the nominal results and the structure theorems; amplitude 1/10 via an interval certificate; population constructions only; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "quantile-threshold-calibration-separate-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable resolution of the Gneiting–Resin conjecture on quantile and threshold calibration, with the discrete boundary and the status of the nominal conjectures.",
+        "setting": "AI-assisted mathematical statistics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

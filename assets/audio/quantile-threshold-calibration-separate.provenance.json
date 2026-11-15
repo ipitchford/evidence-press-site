@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Two calibration checks that are not the same: an Evidence Press briefing. Many forecasts are probability distributions, like a weather service's spread of possible temperatures or a machine-learning model's prediction. A forecast is calibrated if its probabilities can be taken at face value. Forecasters check this in two standard ways. A threshold check fixes a value, say thirty degrees, and asks whether the stated chances of staying below it come true. A quantile check fixes a probability, say one half, and asks whether outcomes fall below the forecast median half of the time. For a smooth forecast, the two questions pick out exactly the same forecasts, so passing one kind of check should mean passing the other.",
+      "inputSha256": "4782f3b3eed604498061be9cff8f61e9a03ff7e0972a60952d8dfcd8bf7585bf",
+      "audioSha256": "2ee04aed0bcd883ab3132ed7680a97f514748bb5e235f4b8b14c3dbd37f65602",
+      "requestId": "req_2060eadde8e34bf48478345633525d66",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "kind of check should mean passing the other",
+        "heardEnding": "pick out exactly the same forecasts so passing kind of check should mean passing the other",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Gneiting and Resin proved this when forecasts take only countably many shapes, and conjectured that the restriction could be dropped; a later overview by Resin, Yang and Gneiting still lists it as open. This candidate shows that it cannot. With ordinary bell-curve forecasts whose centre and spread vary smoothly, it builds outcomes that pass every quantile check exactly, with a perfectly flat histogram of probability integral transforms, yet fail every threshold check; and other outcomes that do the reverse. The errors reach about one percentage point. In one example, outcomes fall below zero fifty point seven six percent of the time, while the forecasts say fifty percent on average. Spotting that needs about thirty-four thousand forecast cases, an ordinary verification sample.",
+      "inputSha256": "9e3b7a435007ce546328963f8c1382ed89acf50e61c3abbf70a0647df9dcadd2",
+      "audioSha256": "162b5d9399f86ddeba897aef7ac6926807c4a33212a98822986dc401ddd88a4b",
+      "requestId": "req_fa7b5b0ca315474fb0226e85c7e40009",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "needs about forecast cases an ordinary verification sample",
+        "heardEnding": "while the forecasts say on average spotting that needs about forecast cases and ordinary verification sample",
+        "matchedWords": 7,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Why does this happen? Both checks look at the same set of forecasts, but that set has probability zero, and the two checks weight its members differently. One weights them evenly, the other by their spread. The same error then averages to nothing under one weighting and to one ninth of the perturbation under the other. This is the classical Borel–Kolmogorov paradox. The paper also settles the case of outcomes with a few ordered categories: the quantile-type check implies the threshold check when there are at most three categories, but can fail once there are four or more of them. For unordered categories, it proves one further conjecture from that overview, gives a cleaner counterexample to another, and partly settles two more, which stay open for larger numbers of categories.",
+      "inputSha256": "30536917957584d4bff667e11431f620d7e6429d661b0b9082cbe3b39d1fa9c3",
+      "audioSha256": "c1a81d22ccd65f612c5c2f33c65475a31c887a5cc04ee56328e7c97d416f2f5b",
+      "requestId": "req_b99a2156a1b04f9285d15c0cc66832d7",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "which stay open for larger numbers of categories",
+        "heardEnding": "cleaner counterexample to another and partly settles more which stay open for larger numbers of categories",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The practical message: run both kinds of check. These are constructed examples, not a study of real forecasting systems. Evidence Press published this anonymous, AI-assisted, unrefereed candidate, and its review was internal, not peer review. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "28352421ff23c3eb059d6e93795a2086d297b9fc3b72d9bbf7827c6a6eb6a5b6",
+      "audioSha256": "aec0a746f2a4efcf20b9623099f2fadf2bb4e5afc646a8f1f73ebec1da9bfe26",
+      "requestId": "req_2313b7a878794aadbc4ed525277711b1",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "not peer review this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "quantile-threshold-calibration-separate",
+  "generatedAt": "2026-11-15T20:14:39.446Z",
+  "sourceMetadata": "papers/quantile-threshold-calibration-separate/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "d6c98658acc1f42239807177dd5b08de3ec7038c82c5d21b704d86465d719021",
+  "transcriptPath": "assets/audio/quantile-threshold-calibration-separate.txt",
+  "transcriptSha256": "20e7d15030457b84b0ec00ecec4178e254258eced1c3739df453bcf04e160e79",
+  "audioPath": "assets/audio/quantile-threshold-calibration-separate.mp3",
+  "audioSha256": "cdf8ac2db61a8a50df8deed4664e2ea9fde4d2db618445809833ef4cfb04a6b1",
+  "audioBytes": 2676140,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "not peer review this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
