@@ -1,0 +1,210 @@
+{
+  "slug": "exact-calibration-gaussian-null-families",
+  "title": "The cost of exact calibration for growing Gaussian null families",
+  "shortTitle": "The cost of exact e-values on growing null grids",
+  "oneLine": "When the null grid is fine enough, exact e-values lose their growth rate while valid ones keep it: for a Gaussian nuisance interval [b−w, b+w] at spacing s/n, exact e-values have zero rate exactly when w ≥ (2/s) log cosh(bs/2).",
+  "abstract": "An e-value measures evidence against a hypothesis like the payoff of a fair bet: its average is at most one if the hypothesis is true, and its quality is the growth rate (expected logarithm) of evidence when the hypothesis is false. An e-value is exact if its average is exactly one under every null. Exactness costs nothing in the long run for a fixed finite null family (He and Cheng) and everything for the continuum of Gaussian means (Zhang, Ramdas and Wang). This candidate measures what happens in between, for 2m+1 unit-variance Gaussian nulls with equally spaced means jε and the alternative N(−t,1), where t plays the role of b√n. With confluent nulls (εt → 0, m/t² → c) the optimal exact e-power G satisfies G/t² → F(c), an explicit Hermite exterior action that falls from 1/2 to 0 at c = 1/4, while the valid rate stays 1/2; in the critical window G grows like √t with an explicit limit. With spacing comparable to 1/t (εt → κ) G/t² → F(c,κ), an explicit Stieltjes–Wigert exterior action that vanishes exactly when cosh(κ/2) ≤ e^{cκ²/2}. In sample terms, a nuisance interval [b−w, b+w] discretised at spacing s/n leaves exact e-variables with zero growth rate if and only if w ≥ (2/s) log cosh(bs/2), while valid e-variables keep (b−w)²/2. A kernel certificate determines G to within log(2m+1) for every spacing; exact pivotal e-variables are bounded by the same rate; a small shortfall from exactness restores the valid rate. Limits: Gaussian location families with known variance; spacing conditions sufficient, not necessary; the exact-and-pivotal rate below the threshold is not determined. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-15",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "e-values",
+    "exact calibration",
+    "composite hypotheses",
+    "nuisance parameter",
+    "growth rate optimality",
+    "Christoffel functions",
+    "Hermite polynomials",
+    "Stieltjes-Wigert polynomials"
+  ],
+  "repoUrl": "https://github.com/ipitchford/exact-calibration-gaussian-null-families",
+  "releaseUrl": "https://github.com/ipitchford/exact-calibration-gaussian-null-families/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/exact-calibration-gaussian-null-families/releases/download/v0.1.0-candidate/exact-calibration-gaussian-null-families-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24252837",
+  "conceptDoi": "10.5281/zenodo.24252836",
+  "zenodoUrl": "https://zenodo.org/records/24252837",
+  "citeText": "Anonymous (2026). The cost of exact calibration for growing Gaussian null families. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24252837",
+  "evidence": "A 31-page paper with a plain introduction, a results table, written proofs and a section on what is not proved; four Python scripts with recorded outputs: numerical checks of the phase function, critical constant and kernel brackets; a reproduction of the n = 1000 finite-grid example; Stieltjes–Wigert recurrence, kernel-formula, phase-diagram and certificate checks (about 6 minutes); and the phase-diagram figure. Clean replay from fresh copies in normal and python -O mode reproduced every recorded output byte for byte, and two changed formulas make the checks fail.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, clean replays, one revision round with an extension (the phase diagram for spacing of order 1/n, the fixed-interval corollary, a kernel certificate for every spacing, the pivotal corollary and the approximate-exactness proposition), then a re-review, a proof audit with independent recomputation and a second-model audit of the new proofs; no mathematical error was found. The scripts are numerical checks, not proof certificates. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 15 November 2026 with the DOI added to the title-page version line, 31 pages), its scripts and recorded outputs and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 15 November 2026.",
+  "keyResults": [
+    "Corollary 4 (proof): for Gaussian nulls N(b + js/n, 1) with means filling [b−w, b+w] at spacing s/n and alternative N(0,1), the exact rate per observation is b²F(w/(sb²), bs), which is zero if and only if w ≥ (2/s) log cosh(bs/2), while the valid rate is (b−w)²/2; for b = s = 1 the threshold is about 0.240, where the valid rate is still about 0.289.",
+    "Theorem 2 (proof): for confluent nulls (εt → 0, m/t² → c), G/t² → F(c), the Hermite exterior action, which decreases from 1/2 at c = 0 to 0 at c = 1/4; in the critical window m = t²/4 + at + o(t) with εt^{5/2} → 0, G/√t → Ψ(a), Ψ(0) = 2^{5/4}Γ(5/4)/(3√π) ≈ 0.405.",
+    "Theorem 3 (proof): for spacing comparable to 1/t (εt → κ > 0), G/t² → F(c,κ), an explicit Stieltjes–Wigert exterior action, positive iff c < 2 log cosh(κ/2)/κ²; it reduces to F(c) as κ → 0.",
+    "Theorem 14 (proof): for every m, ε and t, the exact optimum lies within log(2m+1) of t²/2 − E log K*(Z−t), a sum of two Christoffel functions of exponential spans; for n = 6400 and 1281 null means from 0.9 to 1.1 it gives 1121.40 to 1127.99 nats against 2592 for valid e-values.",
+    "Corollary 5 and Proposition 6 (proof): exact pivotal e-variables are bounded by the exact rate along these growing families, although each fixed finite subfamily gives the full rate; a shortfall of 1 − exp(−2mε(t − mε)) from exactness restores the valid optimum."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "The cost of exact calibration: an Evidence Press briefing. An e-value is the payoff of a fair bet against the hypothesis: if the hypothesis is true, the payoff averages at most one, so a big payoff is evidence that it is false. The quality of an e-value is how fast that evidence grows when the hypothesis really is false. Sometimes statisticians ask for more: an exact e-value, whose average is exactly one under every hypothesis in the null family. Earlier work showed two extremes. For a fixed, finite list of hypotheses, exactness costs nothing in the long run. For a whole continuum of normal distributions, it costs everything. This candidate studies the case in between: a grid of normal distributions whose number grows with the data. The answer is a sharp phase diagram. When the means are packed extremely closely, the paper finds an explicit formula for the rate, which falls to zero once the number of null hypotheses is about as large as the information available, measured in nats. Here is a concrete case. Suppose the true mean is zero, and the null means are spread around one, spaced at one over the sample size. If those null means fill an interval reaching a little under a quarter either side of one, exact e-values stop gathering evidence altogether, while ordinary e-values still grow at a healthy rate. In a worked example with six thousand four hundred observations, ordinary e-values gather about two thousand six hundred nats of evidence, and exact ones only about eleven hundred nats, less than half as much. Why does exactness hurt so much? Ordinary e-values only have to beat mixtures of the null distributions. Exact ones must cope with every combination, including ones with negative weights, and differences of nearby bell curves can build polynomial shapes that mimic the alternative. The cost comes from demanding exact equality: allow each average to fall a little short of one, and the ordinary rate returns. The limits matter. The results cover normal distributions with known variance, and some of the conditions are sufficient rather than necessary. Evidence Press published this anonymous, AI-assisted, unrefereed candidate, and its review was internal, not peer review. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All four scripts were rerun from fresh copies in normal mode and under python -O with pinned packages; every recorded output matched byte for byte. A changed critical-constant formula and a changed Stieltjes–Wigert coefficient each make the checks fail under -O. GitHub CI reruns the quick checks and both negative controls (blocking) and the 6-minute suite (non-blocking) on Linux."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; an internal proof audit recomputed the Stieltjes–Wigert formulas and the certificate brackets with its own high-precision code, and the release banner generator recomputes F(0.1, 1) and the threshold from the paper's formulas."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.11 with pinned numpy 2.3.5, scipy 1.17.0, matplotlib 3.10.8 and mpmath 1.3.0; outputs reproduced byte for byte on the release platform and within a relative tolerance of 1e-9 on Linux CI. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Zhang, Ramdas and Wang (2024), On the existence of powerful p-values and e-values for composite hypotheses. The Annals of Statistics. Why exactness is natural; a span criterion for bounded exact e-variables (Theorem 6.7); no exact e-variable has power against the whole continuum of Gaussian translates (Proposition 6.9).",
+      "url": "https://doi.org/10.1214/24-aos2434"
+    },
+    {
+      "citation": "He and Cheng (2026), Asymptotically Lossless Exact and Pivotal E-Values. arXiv:2609.27923. For a fixed finite null family, exact and pivotal e-values lose nothing in the long run (Theorem 2.2); the contrast for the order of limits in Corollary 5.",
+      "url": "https://arxiv.org/abs/2609.27923",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Saha and Ramdas (2026), Optimal e-variables under constraints. arXiv:2604.21680. Other constraints on log-optimal e-variables (privacy, quantisation, boundedness, moments), different in kind from exactness.",
+      "url": "https://arxiv.org/abs/2604.21680",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Grünwald, de Heide and Koolen (2024), Safe testing. Journal of the Royal Statistical Society Series B: Statistical Methodology. E-values, growth-rate optimality and the reverse information projection.",
+      "url": "https://doi.org/10.1093/jrsssb/qkae011"
+    },
+    {
+      "citation": "Lardy, Grünwald and Harremoës (2024), Reverse Information Projections and Optimal E-Statistics. IEEE Transactions on Information Theory. The convex-hull projection behind the valid optimum.",
+      "url": "https://doi.org/10.1109/tit.2024.3444458"
+    },
+    {
+      "citation": "Larsson, Ramdas and Ruf (2025), The numeraire e-variable and reverse information projection. The Annals of Statistics. Log-optimal e-variables in general.",
+      "url": "https://doi.org/10.1214/24-aos2487"
+    },
+    {
+      "citation": "Borwein and Lewis (1991), Duality Relationships for Entropy-Like Minimization Problems. SIAM Journal on Control and Optimization. The entropy-moment duality behind the exact optimum.",
+      "url": "https://doi.org/10.1137/0329017"
+    },
+    {
+      "citation": "Szegő (1939), Orthogonal Polynomials. American Mathematical Society Colloquium Publications. Hermite and Stieltjes–Wigert polynomials, Christoffel functions and Plancherel–Rotach asymptotics.",
+      "url": "https://doi.org/10.1090/coll/023"
+    },
+    {
+      "citation": "Saff and Totik (1997), Logarithmic Potentials with External Fields. Grundlehren der mathematischen Wissenschaften. The Mhaskar–Rakhmanov–Saff number and exterior actions.",
+      "url": "https://doi.org/10.1007/978-3-662-03329-6"
+    },
+    {
+      "citation": "Levin and Lubinsky (2001), Orthogonal Polynomials for Exponential Weights. CMS Books in Mathematics. Christoffel-function asymptotics for exponential weights.",
+      "url": "https://doi.org/10.1007/978-1-4613-0201-8"
+    },
+    {
+      "citation": "Mariño (2004), Chern-Simons Theory, Matrix Integrals, and Perturbative Three-Manifold Invariants. Communications in Mathematical Physics. Context only: the log-normal weight of the Stieltjes–Wigert analysis appears in the Chern–Simons matrix model.",
+      "url": "https://doi.org/10.1007/s00220-004-1194-4"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:exact-calibration-gaussian-null-families",
+    "attemptIds": [
+      "ep-attempt:exact-calibration-gaussian-null-families-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Treat exact calibration of e-values over a Gaussian nuisance interval discretised at spacing s/n as costing the whole growth rate exactly when the half-width is at least (2/s) log cosh(bs/2).",
+      "scope": "Unit-variance Gaussian location families; exactness without pivotality; the exact-pivotal rate below the threshold is open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 separates what was known (no long-run cost for a fixed finite null family, He and Cheng; total loss for the continuum of Gaussian means, Zhang, Ramdas and Wang; classical orthogonal-polynomial asymptotics) from what is new (the phase functions for growing grids, the fixed-interval threshold, the kernel certificate, the order of limits for pivotal e-values and approximate exactness).",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "He and Cheng, on which the order-of-limits corollary relies, is a recent preprint."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in orthogonal polynomials check the Stieltjes–Wigert analysis (Section 10) and the comparison theorem (Section 9), and a statistician check the sample-size reduction and Corollaries 4 and 5.",
+      "claimCeiling": "Written proofs of the phase functions, the fixed-interval threshold, the kernel certificate and the pivotal and tolerance results; numerical checks are not proof certificates; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "exact-calibration-gaussian-null-families-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable phase diagram for the cost of exact calibration of e-values on growing Gaussian null grids.",
+        "setting": "AI-assisted mathematical statistics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
