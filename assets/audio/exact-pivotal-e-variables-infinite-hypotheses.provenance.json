@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about exact and pivotal e-values. Start with what an e-value is. It is a number that measures evidence against a hypothesis, like the payoff of a fair bet against it. If the hypothesis is true, its average is at most one, so large values are unlikely by chance. Its quality is how fast the evidence grows when the hypothesis is false. Often the hypothesis is not one distribution but a whole family, because of unknown nuisance parameters. Two stronger demands then make sense. An exact e-value averages exactly one under every member of the family. A pivotal e-value has the same distribution under every member, so its behaviour is known even though the true member is not.",
+      "inputSha256": "d4ccd3c80ea5f981f9a9f7566196e494e4f86f827f99393f5c1492fbe135c28c",
+      "audioSha256": "694084a0184ed296419a5f29e4456d5230d569569868be9a1fb40bf0a76c9053",
+      "requestId": "req_5d947a6c0287411fae97ad910bbc846d",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "known even though the true member is not",
+        "heardEnding": "distribution under every member so its behavior is known even though the true member is not",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Zhang, Ramdas and Wang showed that for finitely many distributions such e-values exist exactly when the alternatives stay away from the span of the nulls, using optimal transport. For infinite families they conjectured a pivotal version. The new idea fits in one picture. Take any bounded score that averages zero under every null and at least a margin, delta, under every alternative. Flip a coin whose chance of heads rises with the score. It is fair under every null and biased under every alternative. Bet a fraction delta of your stake on heads. The result is exact and pivotal, and its growth is the best that delta alone can guarantee. This proves the sufficient half of the conjecture by a short route. The ingredients are classical; what is new is that they suffice for infinite families.",
+      "inputSha256": "8dd1d7caf6a59f2f943e490bfe5c50cedfc8640c22bf753e191d7355160cae46",
+      "audioSha256": "5920f963b35b9004158657db51246b59ab08e4d789cdd1291c0a60e4c0b9b926",
+      "requestId": "req_39f8d03fa4b24c24a6c0d7ddc9a1b2bd",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "new is that they suffice for infinite families",
+        "heardEnding": "short route the ingredients are classical what is mu is that they suffice for infinite families",
+        "matchedWords": 7,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "There are two further findings. When e-values may be unbounded, pivotality can cost everything: there is an example where an exact e-value gains evidence but every pivotal one is powerless. And one sentence of the earlier paper, about tightness, is false; weak compactness is the right condition, and under it the conjecture holds both ways. Some limits matter. The results concern one observation, there is no general formula for the best pivotal e-value, and the separating score must still be found for each problem. This is an unrefereed candidate. Its checking is internal AI-assisted review and computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.",
+      "inputSha256": "66b3086c6258557f11d775b84ef02939c5d0f17ed43c466897cb14c40ae62315",
+      "audioSha256": "ef844a196767a373099c5566aa1562c1d13ad3b7c6083ea5d3a7801fd18e76d5",
+      "requestId": "req_7d2ef723d5354d9bb2a7d0c55af6dc4f",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice and is not additional evidence",
+        "heardEnding": "and computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "exact-pivotal-e-variables-infinite-hypotheses",
+  "generatedAt": "2026-11-16T03:15:31.347Z",
+  "sourceMetadata": "papers/exact-pivotal-e-variables-infinite-hypotheses/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "8b2320b457440b8d86704822c4425e276e3995777aa24c66ef478c5cb708afd0",
+  "transcriptPath": "assets/audio/exact-pivotal-e-variables-infinite-hypotheses.txt",
+  "transcriptSha256": "f50c70a689e2e3b944ef5109783c7e71ead71d2e88c86ead30667ed07043278c",
+  "audioPath": "assets/audio/exact-pivotal-e-variables-infinite-hypotheses.mp3",
+  "audioSha256": "9d3ce367502f7f9bfc4ecac72202be039a48f76c893fba2d2a205056b4bf95c4",
+  "audioBytes": 2479148,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice and is not additional evidence",
+    "heardEnding": "and computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
