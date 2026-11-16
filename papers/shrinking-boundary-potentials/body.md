@@ -41,7 +41,7 @@ The resonant Robin limit itself is Lotoreichik and Post's Theorem A; it is recov
 
 Let $\Omega\subset\mathbb R^d$, $d\ge2$, be a bounded $C^\infty$ domain with boundary $\Sigma$, inward distance $r$, and $K$ the sum of the principal curvatures. Let $V\in L^\infty(0,\infty)$ be real with support in $[0,\ell]$, and put
 
-$$A_\varepsilon=-\Delta+\varepsilon^{-2}V\bigl(r(x)/\varepsilon\bigr)$$
+$$A_\varepsilon=-\Delta+\varepsilon^{-2}V(r/\varepsilon)$$
 
 with Dirichlet condition on $\Sigma$. The transverse operator is
 
@@ -66,9 +66,9 @@ $$=\varepsilon c_V\,B_{\bar z}^{*}B_z+o(\varepsilon).$$
 $$\lambda-\varepsilon c_V\!\int_\Sigma|\partial_\nu e|^2+o(\varepsilon),$$
 
   and a multiple eigenvalue splits according to the Gram matrix of the normal derivatives.
-- **Theorem 2.2(iii)** *(proof)*: if $h_V$ has a negative eigenvalue, every fixed ordered eigenvalue of $A_\varepsilon$ tends to $-\infty$, every real $E$ is an eigenvalue along a sequence $\varepsilon_j\to0$, and
+- **Theorem 2.2(iii)** *(proof)*: if $h_V$ has a negative eigenvalue, every fixed ordered eigenvalue of $A_\varepsilon$ tends to $-\infty$, every real $E$ is an eigenvalue along a sequence $\varepsilon_j\to0$, and, writing $R_\varepsilon=(A_\varepsilon-z)^{-1}$ and $R_*=(A_*-z)^{-1}$,
 
-$$\limsup_{\varepsilon\to0}\bigl\|(A_\varepsilon-z)^{-1}-(A_*-z)^{-1}\bigr\|=\frac1{|\operatorname{Im}z|}.$$
+$$\limsup_{\varepsilon\to0}\|R_\varepsilon-R_*\|=\frac1{|\operatorname{Im}z|}.$$
 
 - **Corollary 2.3** *(proof)*: every profile with $\operatorname{ess\,sup}(-t^2V)<\tfrac14$, which includes every profile allowed in Lotoreichik–Post's Theorem B, has $h_V\ge0$ and is non-resonant, so their strong limit upgrades to norm convergence with a sharp rate.
 - **Theorems 10.1 and 10.3** *(proof)*: for smooth profiles $V(s,t)$ that are non-resonant at every boundary point, the strong limit is Dirichlet, and norm convergence holds if and only if every $h_{V(s,\cdot)}\ge0$, with first-order term weighted by $c_{V(s,\cdot)}$.
