@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about the fractional Hardy constant on convex domains. Start with an everyday idea. A Hardy inequality says that a function which is zero outside a region cannot stay large near the region's edge without paying for it in roughness. The best constant in that inequality measures how strongly the edge forces the function down. In the classical version, where roughness is measured by the derivative, every convex region has the same constant as a flat half-space. The fractional version measures roughness differently, by comparing the function's values at every pair of points, near and far. Now the shape of the region matters.",
+      "inputSha256": "2fe4ac763c2c0f8bc6bdb2dfbe1d871421c5b033eacc82b04fab39a5c11d0359",
+      "audioSha256": "26c92101a0e0813d8c3d3a52377017c3ac82929aed1a06850ce0c5b682d16290",
+      "requestId": "req_aa80bd12659044a58bdcf2e8b4049ae3",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "far now the shape of the region matters",
+        "heardEnding": "values at every pair of points near and far now the shape of the region matters",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "Earlier work by Bianchi, Brasco, Stefani and Zagati showed that an interval does strictly better than a half-line, proved that every convex region keeps at least half of the half-space constant in the simplest case, and asked two questions. This paper makes three contributions. First, the worst convex shape is a thin slab. In the simplest case, with the exponent p equal to one, every convex region keeps at least two to the power minus s of the half-space constant, where s is the order of the fractional energy, and that factor cannot be improved. For small orders this almost doubles the old guarantee, which was half of the half-space constant. Second, as the order shrinks towards zero, all convex shapes behave alike, which answers the first question.",
+      "inputSha256": "a9d96347f844b9ee073218a2d87bc0cf5b3663c74bd6288da0b4a46d8ff96585",
+      "audioSha256": "1c358b20e11b64d912564215c2ae60e7d70052e0f290cea064203637f15ce740",
+      "requestId": "req_df1a43d925dc43a1893e00c4a73860a8",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "convex shapes behave alike which answers the question",
+        "heardEnding": "space constant as the order shrinks towards all convex shapes behave alike which answers the question",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "Third, whenever a smooth bounded region has a constant strictly below the half-space value, some function actually achieves it. So balls, and smooth convex regions in the plane, attain their constants, which answers the second question for them. For exponents slightly above one, the paper gives explicit ranges where balls, the interval and rounded long boxes attain too. The idea of the proof is to slice the double integral into lines in every direction and use the exact interval constant on each line. Some limits matter. The constant of a particular region is not computed. Whether every convex body in three or more dimensions attains its constant is still open, and regions with corners, such as polygons, are not covered. The ranges in p are sufficient conditions, not exact thresholds.",
+      "inputSha256": "c869f73f05d1d4cf4238ab3feb793f0b5a79b8efc8f329620f31fc61d74c5d11",
+      "audioSha256": "e64b3f2fadc41b11845a625a6a2c26390a763eed2ec87a51aa4f5337424b8843",
+      "requestId": "req_4f3ff81e0fdd4448849a2848603d9afc",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "in p are sufficient conditions not exact thresholds",
+        "heardEnding": "such as polygons are not covered the ranges in p are sufficient conditions not exact thresholds",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This is an unrefereed candidate. Its checking is internal AI-assisted review and numerical computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.",
+      "inputSha256": "c4d47c54a40a5f2bfbe10905af35d64c0d14a2d3631d04ef8111873ff7daa453",
+      "audioSha256": "907a6745cae444c2ef4e196c480da5491d708de4a7883d94365ad917862f2389",
+      "requestId": "req_6fff84d1c4644c26ba27d3d741d6886a",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice and is not additional evidence",
+        "heardEnding": "numerical computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "convex-fractional-hardy-constants",
+  "generatedAt": "2026-11-16T00:14:58.302Z",
+  "sourceMetadata": "papers/convex-fractional-hardy-constants/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "3841611b440fdf04265b32afaaf880e0321d5ef8ae5628f62d9e76b4401553a0",
+  "transcriptPath": "assets/audio/convex-fractional-hardy-constants.txt",
+  "transcriptSha256": "a0f8fe8fe4652444ab8e07e78a56c8f984ff611ea8f93c831a956607fc1e8045",
+  "audioPath": "assets/audio/convex-fractional-hardy-constants.mp3",
+  "audioSha256": "2c7b6ad2b9b0c8f4cf30a0b241bba49502690495eccbfdf2fe1ceb3fa216da69",
+  "audioBytes": 2569388,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice and is not additional evidence",
+    "heardEnding": "numerical computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

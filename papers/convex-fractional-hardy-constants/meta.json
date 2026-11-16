@@ -1,0 +1,255 @@
+{
+  "slug": "convex-fractional-hardy-constants",
+  "title": "The fractional Hardy constant on convex domains: slabs are extremal, small-order limits, and attained constants",
+  "shortTitle": "Fractional Hardy constants on convex domains",
+  "oneLine": "Among convex domains the thin slab has the smallest fractional Hardy constant, so at p = 1 every convex domain keeps at least 2^(−s) of the half-space constant; the constants share a small-order limit, and constants below the half-space value are attained, for example on balls.",
+  "abstract": "A Hardy inequality says that a function which vanishes outside a region cannot stay large near the region's edge without paying for it in roughness; the best constant measures how strongly the edge forces this. In the classical derivative version every convex region has the same constant as a half-space. In the fractional version, for 0 < s < 1 and p ≥ 1, roughness is the double integral of |u(x) − u(y)|ᵖ|x − y|^(−N−sp) over all pairs of points, and the shape matters. Bianchi, Brasco and Zagati proved half-space universality on convex domains when sp ≥ 1 or p = 2 and left the rest open; Bianchi, Stefani and Zagati treated p = 1, showed that every convex domain keeps at least half of the half-space constant, and asked about small-order limits and attainment. This candidate proves that, among convex domains, the slab ℝ^(N−1) × (0,1) has the smallest constant for every p ≥ 1, equal to the interval constant times an explicit angular factor. At p = 1 every convex domain therefore keeps at least 2^(−s) of the half-space constant, and this factor is sharp. As s → 0, s times the constant tends to 2Nω_N/p uniformly over convex domains, answering the small-order question. For every p ≥ 1, a constant of a bounded C¹ domain strictly below the half-space value is attained. This gives attained constants on every ball and every bounded planar convex C¹ domain at p = 1, and, for p in explicit ranges above 1 with sp < 1, on balls, bounded planar convex C¹ domains, the interval and rounded long boxes. The constant of a particular domain is not computed; the interval constant for 1 < p ≠ 2, sp < 1 is unknown; strict gaps for convex bodies in three or more dimensions, and domains with corners, remain open; the p-ranges are sufficient, not exact. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-15",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "fractional Hardy inequality",
+    "Sobolev–Slobodeckiĭ spaces",
+    "convex domains",
+    "fractional perimeter",
+    "best constant",
+    "method of rotations",
+    "concentration-compactness",
+    "nonlocal operators"
+  ],
+  "repoUrl": "https://github.com/ipitchford/convex-fractional-hardy-constants",
+  "releaseUrl": "https://github.com/ipitchford/convex-fractional-hardy-constants/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/convex-fractional-hardy-constants/releases/download/v0.1.0-candidate/convex-fractional-hardy-constants-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24266178",
+  "conceptDoi": "10.5281/zenodo.24266177",
+  "zenodoUrl": "https://zenodo.org/records/24266178",
+  "citeText": "Anonymous (2026). The fractional Hardy constant on convex domains: slabs are extremal, small-order limits, and attained constants. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24266178",
+  "evidence": "A 13-page paper with a plain introduction, written proofs, a figure, a table of explicit thresholds and a list of open questions; a dated prior-art record; a Python script (mpmath, 30 digits) with 67 recorded numerical checks of the constants, normalisations, inequalities on parameter grids, small-order limits and the thresholds of Table 1, and its recorded output; the figure script. A clean replay under Python 3.12, also under python -O, reproduced the recorded output byte for byte, and a deliberately wrong half-space constant was caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and high-precision numerical checks. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, a clean replay, one revision round with two extensions (attainment for every p ≥ 1 and explicit strict gaps for p > 1), then a re-review, a proof audit and a second-model audit of the new proofs; no error was found in any theorem. The numerical checks confirm normalisations and quoted numbers and are not part of the proofs. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 15 November 2026 with the DOI added to the title-page version line, 13 pages), its scripts and recorded output, the prior-art record and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 16 November 2026.",
+  "keyResults": [
+    "Theorem 3.1 (proof): for every p ≥ 1 and every proper open convex Ω ⊂ ℝᴺ, the fractional Hardy constant is at least C_{N,sp} times the interval constant, with equality for the slab ℝ^(N−1) × (0,1); long boxes approach it.",
+    "Theorem 4.1 (proof): at p = 1, every convex domain has constant at least 2^(−s) times, and at most, the half-space constant, and 2^(−s) is optimal. The earlier factor was 1/2; the gain 2^(1−s) is about 1.99 at s = 0.01, 1.41 at s = 1/2 and 1.007 at s = 0.99.",
+    "Corollary 4.3 and Theorem 5.1 (proof): s times the constant tends to 2Nω_N/p as s → 0, uniformly over convex domains, for each fixed p ≥ 1; this answers the small-order question of Bianchi, Stefani and Zagati.",
+    "Theorem 7.3 and Corollary 7.5 (proof): for p ≥ 1 and a bounded C¹ domain, a constant strictly below the half-space value is attained. With the strict gaps of Section 6 this gives attainment at p = 1 on every ball and every bounded planar convex C¹ domain, and for sp < 1 on balls (p < p_B), bounded planar convex C¹ domains (p < p_P), the interval and rounded long boxes (p < p_0); for example at sp = 0.5 these thresholds are 1.199, 1.073 and 1.487 (Table 1)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about the fractional Hardy constant on convex domains.\n\nStart with an everyday idea. A Hardy inequality says that a function which is zero outside a region cannot stay large near the region's edge without paying for it in roughness. The best constant in that inequality measures how strongly the edge forces the function down. In the classical version, where roughness is measured by the derivative, every convex region has the same constant as a flat half-space.\n\nThe fractional version measures roughness differently, by comparing the function's values at every pair of points, near and far. Now the shape of the region matters. Earlier work by Bianchi, Brasco, Stefani and Zagati showed that an interval does strictly better than a half-line, proved that every convex region keeps at least half of the half-space constant in the simplest case, and asked two questions.\n\nThis paper makes three contributions. First, the worst convex shape is a thin slab. In the simplest case, with the exponent p equal to one, every convex region keeps at least two to the power minus s of the half-space constant, where s is the order of the fractional energy, and that factor cannot be improved. For small orders this almost doubles the old guarantee, which was half of the half-space constant. Second, as the order shrinks towards zero, all convex shapes behave alike, which answers the first question. Third, whenever a smooth bounded region has a constant strictly below the half-space value, some function actually achieves it. So balls, and smooth convex regions in the plane, attain their constants, which answers the second question for them. For exponents slightly above one, the paper gives explicit ranges where balls, the interval and rounded long boxes attain too.\n\nThe idea of the proof is to slice the double integral into lines in every direction and use the exact interval constant on each line.\n\nSome limits matter. The constant of a particular region is not computed. Whether every convex body in three or more dimensions attains its constant is still open, and regions with corners, such as polygons, are not covered. The ranges in p are sufficient conditions, not exact thresholds.\n\nThis is an unrefereed candidate. Its checking is internal AI-assisted review and numerical computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify_hardy.py was rerun from fresh copies under CPython 3.12 with mpmath 1.3.0, in normal mode and under python -O; both outputs were byte-identical to the recorded output, the figure regenerated byte for byte, and a deliberately wrong half-space constant produced 7 failures. GitHub CI reruns the checks under -O against the recorded output with the negative control (blocking)."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; several internal reviewers recomputed the constants and thresholds independently, and the release banner generator recomputes the floor 2^(−s) and the disc trial ratio and compares them with the recorded output."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Pinned mpmath 1.3.0 at 30 digits; output reproduced byte for byte on the release platform under CPython 3.12.11. Quadrature is high-precision but not interval-certified. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Bianchi, Brasco and Zagati (2024), On the sharp Hardy inequality in Sobolev–Slobodeckiĭ spaces. Mathematische Annalen. Computes the half-space constant for p > 1, proves half-space universality on convex domains when sp ≥ 1 or p = 2, and leaves the regime sp < 1, p ≠ 2 open.",
+      "url": "https://doi.org/10.1007/s00208-023-02770-z"
+    },
+    {
+      "citation": "Bianchi, Stefani and Zagati (2026), A geometrical approach to the sharp Hardy inequality in Sobolev–Slobodeckiĭ spaces. Nonlinear Analysis. Treats p = 1: the half-space and interval constants, the factor 1/2 for convex domains, and the small-order and attainment questions answered here.",
+      "url": "https://doi.org/10.1016/j.na.2025.113948"
+    },
+    {
+      "citation": "Loss and Sloane (2010), Hardy inequalities for fractional integrals on general domains. Journal of Functional Analysis. The slicing identity behind the method of rotations used for Theorem A.",
+      "url": "https://doi.org/10.1016/j.jfa.2010.05.001"
+    },
+    {
+      "citation": "Frank and Seiringer (2008), Non-linear ground state representations and sharp Hardy inequalities. Journal of Functional Analysis. The sharp fractional Hardy inequality on the punctured line, used as a lower bound for the interval constant.",
+      "url": "https://doi.org/10.1016/j.jfa.2008.05.015"
+    },
+    {
+      "citation": "Bogdan and Dyda (2011), The best constant in a fractional Hardy inequality. Mathematische Nachrichten. The half-space constant for p = 2.",
+      "url": "https://doi.org/10.1002/mana.200810109"
+    },
+    {
+      "citation": "Frank and Seiringer (2010), Sharp Fractional Hardy Inequalities in Half-Spaces. International Mathematical Series (Around the Research of Vladimir Maz'ya I). Sharp half-space inequalities.",
+      "url": "https://doi.org/10.1007/978-1-4419-1341-8_6"
+    },
+    {
+      "citation": "Filippas, Moschini and Tertikas (2013), Sharp Trace Hardy–Sobolev–Maz'ya Inequalities and the Fractional Laplacian. Archive for Rational Mechanics and Analysis. The case p = 2, s ≥ 1/2 on convex domains.",
+      "url": "https://doi.org/10.1007/s00205-012-0594-4"
+    },
+    {
+      "citation": "Filippas, Moschini and Tertikas (2018), Correction to: Sharp Trace Hardy–Sobolev–Maz'ya Inequalities and the Fractional Laplacian. Archive for Rational Mechanics and Analysis. Correction to the preceding paper.",
+      "url": "https://doi.org/10.1007/s00205-018-1264-y"
+    },
+    {
+      "citation": "Davies (1995), The Hardy constant. The Quarterly Journal of Mathematics. The classical Hardy constant of convex domains (p = 2) and the method of rotations.",
+      "url": "https://doi.org/10.1093/qmath/46.4.417"
+    },
+    {
+      "citation": "Marcus, Mizel and Pinchover (1998), On the best constant for Hardy's inequality in Rⁿ. Transactions of the American Mathematical Society. The classical constant on convex domains for p = 2.",
+      "url": "https://doi.org/10.1090/S0002-9947-98-02122-9"
+    },
+    {
+      "citation": "Maz'ya and Shaposhnikova (2002), On the Bourgain, Brezis, and Mironescu Theorem Concerning Limiting Embeddings of Fractional Sobolev Spaces. Journal of Functional Analysis. Small-order behaviour of fractional energies; gives the upper half of the small-order limit.",
+      "url": "https://doi.org/10.1006/jfan.2002.3955"
+    },
+    {
+      "citation": "Dipierro, Figalli, Palatucci and Valdinoci (2013), Asymptotics of the s-perimeter as s ↘ 0. Discrete and Continuous Dynamical Systems. Small-order limits of fractional perimeters.",
+      "url": "https://doi.org/10.3934/dcds.2013.33.2777"
+    },
+    {
+      "citation": "Di Nezza, Palatucci and Valdinoci (2012), Hitchhiker's guide to the fractional Sobolev spaces. Bulletin des Sciences Mathématiques. Extension domains and compactness, used in the attainment proof.",
+      "url": "https://doi.org/10.1016/j.bulsci.2011.12.004"
+    },
+    {
+      "citation": "Fiscella, Servadei and Valdinoci (2015), Density properties for fractional Sobolev spaces. Annales Academiae Scientiarum Fennicae Mathematica. Density of smooth functions in the energy space.",
+      "url": "https://doi.org/10.5186/aasfm.2015.4009"
+    },
+    {
+      "citation": "Brezis and Lieb (1983), A Relation Between Pointwise Convergence of Functions and Convergence of Functionals. Proceedings of the American Mathematical Society. The splitting lemma used in the attainment proof.",
+      "url": "https://doi.org/10.2307/2044999"
+    },
+    {
+      "citation": "Brasco and Cinti (2018), On fractional Hardy inequalities in convex sets. Discrete and Continuous Dynamical Systems. Non-sharp convex-set inequalities for the full-space energy.",
+      "url": "https://doi.org/10.3934/dcds.2018175"
+    },
+    {
+      "citation": "Brasco, Lindgren and Parini (2014), The fractional Cheeger problem. Interfaces and Free Boundaries. The fractional Cheeger problem, compared with the weighted Cheeger sets that appear at p = 1.",
+      "url": "https://doi.org/10.4171/IFB/325"
+    },
+    {
+      "citation": "Franceschi, Pinamonti, Saracco and Stefani (2024), The Cheeger problem in abstract measure spaces. Journal of the London Mathematical Society. An abstract existence theorem, shown not to apply here (Remark 7.4).",
+      "url": "https://doi.org/10.1112/jlms.12840"
+    },
+    {
+      "citation": "Dyda (2004), A fractional order Hardy inequality. Illinois Journal of Mathematics. Fractional Hardy inequalities on general domains.",
+      "url": "https://doi.org/10.1215/ijm/1258138400"
+    },
+    {
+      "citation": "Dyda (2011), Fractional Hardy inequality with a remainder term. Colloquium Mathematicum. With Bianchi, Brasco and Zagati, the interval constant for p = 2.",
+      "url": "https://doi.org/10.4064/cm122-1-6"
+    },
+    {
+      "citation": "Edmunds, Hurri-Syrjänen and Vähäkangas (2014), Fractional Hardy-type inequalities in domains with uniformly fat complement. Proceedings of the American Mathematical Society. Fractional Hardy inequalities on general domains.",
+      "url": "https://doi.org/10.1090/S0002-9939-2013-11818-6"
+    },
+    {
+      "citation": "Visintin (1991), Generalized coarea formula and fractal sets. Japan Journal of Industrial and Applied Mathematics. The fractional coarea formula behind the p = 1 reformulation in terms of sets.",
+      "url": "https://doi.org/10.1007/BF03167679"
+    },
+    {
+      "citation": "Dieb and Temgoua (2026), Fractional Hardy inequalities on C^{1,1} open sets. arXiv:2602.10463. Attainment below the half-space value for the regional quadratic energy on C^{1,1} sets; the closest attainment analogue.",
+      "url": "https://arxiv.org/abs/2602.10463",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:convex-fractional-hardy-constants",
+    "attemptIds": [
+      "ep-attempt:convex-fractional-hardy-constants-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know how small the fractional Hardy constant of a convex domain can be, how it behaves at small order, and when it is attained.",
+      "scope": "Full-space fractional energy, 0 < s < 1, p ≥ 1; universal lower bound sharp at p = 1; attainment on bounded C¹ domains below the half-space value; explicit gaps only for balls, bounded planar convex domains, the interval and rounded long boxes; no specific constant computed."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 separates what was known (half-space and interval constants, the factor 1/2, the slicing method, the open questions) from what is new (the sharp universal statements, the uniform small-order limit, the attainment criterion for every p and the explicit gaps); PRIOR_ART.md records attribution.",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "One cited work is a preprint."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in fractional Sobolev spaces check the slicing reduction (Section 3), the small-order limit (Section 5) and the boundary localisation and attainment argument (Section 7).",
+      "claimCeiling": "Written proofs of the slab extremality, the sharp p = 1 factor, the uniform small-order limit and attainment below the half-space value; explicit gaps for listed domains only; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "convex-fractional-hardy-constants-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable set of sharp bounds, limits and attainment results for fractional Hardy constants on convex domains, with recorded numerical checks.",
+        "setting": "AI-assisted mathematical analysis research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
