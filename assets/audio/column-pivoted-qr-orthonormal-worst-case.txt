@@ -1,0 +1,13 @@
+This is an audio briefing from Evidence Press on a research candidate about how a standard computer routine chooses measurement points.
+
+Many simulations keep only a few measurement points out of thousands. You have a handful of important patterns, say the main modes of a fluid flow, and you want to read just a few values and still reconstruct the rest. The usual way to pick the points is a greedy rule built into every linear algebra library, called column-pivoted QR: again and again, take the point that the points already chosen explain least.
+
+One number measures the choice: the factor by which reconstruction from the chosen points can be worse than the best possible. Good choices always exist. The textbook guarantee for the greedy rule, from Drmač and Gugercin, only said that this factor grows exponentially. A workshop list of open problems asked whether the greedy rule does nearly as well as the best choices. Chen, Liu, He and Dong answered first: no, and their examples already grow like the exponential of a small multiple of the square root of the number of patterns.
+
+This paper finds the exact worst case. The greedy rule is never worse than the exponential of a constant times that square root, and the constant is exact. It is two when every point carries the same share of energy, and it grows slowly as the energy becomes less even. For a hundred patterns, the old guarantee is a number with thirty digits; the new one has only nine or ten digits. Examples come as close to the bound as you like, so the constant cannot be lowered, and the bound needs no assumption at all.
+
+The idea is that the greedy rule controls every chosen column on every block of trailing coordinates at once. A carefully shaped rescaling turns this into a bound on a triangular matrix, and a determinant argument finishes the job. The matching examples hide a classical triangular matrix, due to Kahan, inside a much larger one.
+
+The limits matter. The results are about exact arithmetic and worst cases; typical inputs behave far better. Sharp means the leading term of the exponent, and the worst examples need very many points compared with patterns. The practical advice: measure the factor after choosing the points, which is cheap, and switch to a safer rule if it is large.
+
+This is an unrefereed candidate. Its checking is internal AI-assisted review and computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.

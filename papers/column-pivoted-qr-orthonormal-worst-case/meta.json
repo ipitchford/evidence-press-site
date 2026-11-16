@@ -1,0 +1,207 @@
+{
+  "slug": "column-pivoted-qr-orthonormal-worst-case",
+  "title": "How badly can column-pivoted QR choose rows of an orthonormal basis? The sharp stretched-exponential worst case",
+  "shortTitle": "The sharp worst case of column-pivoted QR on orthonormal rows",
+  "oneLine": "Greedy row selection loses at most exp(C(H)√k) against the best possible, with an exact constant, not 2^k.",
+  "abstract": "Many numerical methods keep k of the N coordinates of an N×k matrix Q with orthonormal columns, for example the interpolation points of the discrete empirical interpolation method (DEIM). The quality of a choice I is γ = ‖Q(I,:)⁻¹‖₂, the factor by which interpolation from the chosen coordinates can be worse than the best approximation; some choice always has γ ≤ √(k(N−k+1)). The rule used in practice is column-pivoted QR (QRCP) on Q*, whose classical guarantee (Drmač and Gugercin) grows like 2ᵏ. Chen, Liu, He and Dong gave the first answer to Problem 4.3 of Amsel et al.: QRCP can be worse than every polynomial multiple of the existence scale, and their construction already gives growth of order exp(c√k). This candidate determines the worst case on the logarithmic scale. If the coherence μ(Q), the largest row energy divided by the average, is at most H, every legal QRCP selection satisfies γ ≤ √(e(N−k+1)) exp(C(H)√k) with an explicit constant C(H): C(1) = 2 and C(2) ≈ 2.25. Matching examples show that C(H) cannot be lowered (at H = 1 under the smallest-label tie rule). Since μ(Q) ≤ N/k, the bound needs no assumption; without one, the worst case is exp(Θ(√(k log(N/k)))) once N ≥ k^(2+ε). An a posteriori bound from the observed pivots has an optimal coefficient. Limits: exact arithmetic and worst cases only; sharpness is on the logarithmic scale, with a factor polynomial in k remaining; the worst examples need N of order k³, and the regime N = O(k) is open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-16",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "column-pivoted QR",
+    "discrete empirical interpolation",
+    "DEIM",
+    "coherence",
+    "Kahan matrix",
+    "triangular inverse",
+    "subset selection",
+    "worst-case analysis"
+  ],
+  "repoUrl": "https://github.com/ipitchford/column-pivoted-qr-orthonormal-worst-case",
+  "releaseUrl": "https://github.com/ipitchford/column-pivoted-qr-orthonormal-worst-case/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/column-pivoted-qr-orthonormal-worst-case/releases/download/v0.1.0-candidate/column-pivoted-qr-orthonormal-worst-case-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24278831",
+  "conceptDoi": "10.5281/zenodo.24278830",
+  "zenodoUrl": "https://zenodo.org/records/24278831",
+  "citeText": "Anonymous (2026). How badly can column-pivoted QR choose rows of an orthonormal basis? The sharp stretched-exponential worst case. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24278831",
+  "evidence": "An 18-page paper with a plain introduction, written proofs, two tables, one figure, practical guidance and a section on checks and open problems; check scripts with recorded outputs (verify.py: exact rational identities, 25 orthonormal inputs, eleven completed examples at k = 16 to 128 factorised by two QRCP implementations, a rebuilt failed candidate that must be rejected, large-rank sums against 80-digit values; check_extensions.py: 50-digit checks of C(H), the comparison table, the Kahan family and an inequality on 779 grid points). A clean replay under Python 3.12, also under python -O, reproduced every output, Linux CI agreed under a declared comparison policy, and a deliberately wrong constant was caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and finite computational checks. Internal AI-assisted review in five reviewer roles, an adversarial review by a second AI model, a clean replay, one revision round with extensions (the coherence-free bound and the law in N and k), then a re-review and a proof audit of the new proofs by Claude verification passes; a second-model audit of the new proofs was not run because of a usage limit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 16 November 2026 with the release DOI on the title page, 18 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 16 November 2026.",
+  "keyResults": [
+    "Theorem 2.3 (proof): if the coherence is at most H, every legal QRCP selection, with any tie-breaking, satisfies γ ≤ √(e(N−k+1)) exp(C(H)√k), where C(H) = √ρ + 1/√ρ and ρ − log ρ = 1 + log H; C(1) = 2, C(2) ≈ 2.25 and C(H)²/log H → 1.",
+    "Theorem 2.3 (proof): the constant is sharp on the logarithmic scale, log G_k(H) = (C(H) + o(1))√k, with real examples of fewer than 3k³ rows and unique pivots for H > 1, and with the smallest-label tie rule at H = 1.",
+    "Corollary 2.6 (proof): every orthonormal input satisfies γ ≤ √(e(N−k+1)) exp(C(N/k)√k), so no coherence assumption is needed.",
+    "Theorem 2.7 and Corollary 2.8 (proof): without any assumption the worst case is exp(Θ(√(k log(N/k)))) once N ≥ k^(2+ε) and log N = o(k), and exp((1+o(1))√(k log N)) when log N/log k → ∞.",
+    "Theorem 7.1 and Proposition 7.2 (proof): γ ≤ (√e/d_k) exp(√((k−1)L)) from the observed pivot range L = log(d₁²/d_k²), with an optimal coefficient.",
+    "Table 2 (computation): the new bound is smaller than the classical one from k = 13 at H = 1; at k = 100 it allows about 10⁹ to 10¹⁰ where the classical bound allowed about 10³⁰."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review by a second AI model, re-review, proof audit of the new proofs by Claude verification passes, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about how a standard computer routine chooses measurement points.\n\nMany simulations keep only a few measurement points out of thousands. You have a handful of important patterns, say the main modes of a fluid flow, and you want to read just a few values and still reconstruct the rest. The usual way to pick the points is a greedy rule built into every linear algebra library, called column-pivoted QR: again and again, take the point that the points already chosen explain least.\n\nOne number measures the choice: the factor by which reconstruction from the chosen points can be worse than the best possible. Good choices always exist. The textbook guarantee for the greedy rule, from Drmač and Gugercin, only said that this factor grows exponentially. A workshop list of open problems asked whether the greedy rule does nearly as well as the best choices. Chen, Liu, He and Dong answered first: no, and their examples already grow like the exponential of a small multiple of the square root of the number of patterns.\n\nThis paper finds the exact worst case. The greedy rule is never worse than the exponential of a constant times that square root, and the constant is exact. It is two when every point carries the same share of energy, and it grows slowly as the energy becomes less even. For a hundred patterns, the old guarantee is a number with thirty digits; the new one has only nine or ten digits. Examples come as close to the bound as you like, so the constant cannot be lowered, and the bound needs no assumption at all.\n\nThe idea is that the greedy rule controls every chosen column on every block of trailing coordinates at once. A carefully shaped rescaling turns this into a bound on a triangular matrix, and a determinant argument finishes the job. The matching examples hide a classical triangular matrix, due to Kahan, inside a much larger one.\n\nThe limits matter. The results are about exact arithmetic and worst cases; typical inputs behave far better. Sharp means the leading term of the exponent, and the worst examples need very many points compared with patterns. The practical advice: measure the factor after choosing the points, which is cheap, and switch to a safer rule if it is large.\n\nThis is an unrefereed candidate. Its checking is internal AI-assisted review and computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "verify.py, check_extensions.py and fingerprints.py (also under python -O) and the figure script were rerun from fresh copies under CPython 3.12 with pinned versions; every output matched the recorded file apart from timestamps and timings, and a deliberately wrong constant (3 changed to 1 in inequality (7.5)) made check_extensions.py exit with failure. GitHub CI on Linux reruns the scripts under -O and compares the outputs under a declared policy, with the negative control (blocking)."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; verify.py factorises the completed examples with two independent QRCP implementations."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Pinned NumPy, SciPy, SymPy, mpmath and Matplotlib; outputs reproduced on the release platform under CPython 3.12.11 and on Linux CI under the declared policy (exact files byte-identical apart from an interpreter-version field; floating-point fields within relative 1e-9; rounding diagnostics below the scripts' own thresholds). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Chen, Liu, He and Dong (2026), Iteris: Agentic Research Loops for Computational Mathematics. arXiv preprint. Gives the first, negative answer to Problem 4.3 of Amsel et al.; the construction in its Appendix B (Lemma 24) already gives growth of order exp(c√k) for every c below ½√(log H).",
+      "url": "https://arxiv.org/abs/2606.02484"
+    },
+    {
+      "citation": "Amsel et al. (2026), Linear Systems and Eigenvalue Problems: Open Questions from a Simons Workshop. arXiv preprint (versions 1 and 3). Problem 4.3, posed by Damle and Kressner, asks whether column-pivoted QR meets the existence scale on orthonormal rows; version 3 records the answers.",
+      "url": "https://arxiv.org/abs/2602.05394"
+    },
+    {
+      "citation": "Drmač and Gugercin (2016), A New Selection Operator for the Discrete Empirical Interpolation Method — Improved A Priori Error Bound and Extensions. SIAM Journal on Scientific Computing. Theorem 2.1 is the classical bound that grows like 2^k.",
+      "url": "https://doi.org/10.1137/15m1019271"
+    },
+    {
+      "citation": "Damle (2026), Computing Strong Rank-Revealing Factorizations for Matrices with Orthonormal Rows. arXiv preprint. Shows that Bischof–Stewart pivoting meets the existence scale on orthonormal rows.",
+      "url": "https://arxiv.org/abs/2607.13532"
+    },
+    {
+      "citation": "Engler (1997), The behavior of the QR-factorization algorithm with column pivoting. Applied Mathematics Letters. The pivot floor used in Lemma 3.1, the average-determinant property and Hadamard completions.",
+      "url": "https://doi.org/10.1016/s0893-9659(97)00098-0"
+    },
+    {
+      "citation": "Kahan (1966), Numerical Linear Algebra. Canadian Mathematical Bulletin. The classical triangular matrix behind the matching examples.",
+      "url": "https://doi.org/10.4153/cmb-1966-083-2"
+    },
+    {
+      "citation": "Sra (2026, as \"Count ex Machina\"), GPT, the Counterexample Machine. arXiv preprint. Records a small exact example with k = 3 and N = 8 (Appendix A.5).",
+      "url": "https://arxiv.org/abs/2608.29595"
+    },
+    {
+      "citation": "Gu and Eisenstat (1996), Efficient Algorithms for Computing a Strong Rank-Revealing QR Factorization. SIAM Journal on Scientific Computing. Strong rank-revealing QR, a selection rule with a polynomial guarantee.",
+      "url": "https://doi.org/10.1137/0917055"
+    },
+    {
+      "citation": "Drmač and Veselić (2008), New Fast and Accurate Jacobi SVD Algorithm. I. SIAM Journal on Matrix Analysis and Applications. Related work on scaled triangular inverses (a different quantity).",
+      "url": "https://doi.org/10.1137/050639193"
+    },
+    {
+      "citation": "Gilles (2026), Convergence rates for pivoted QR and LU. arXiv preprint. Approximation error of pivoted QR under singular-value decay (a different quantity).",
+      "url": "https://arxiv.org/abs/2607.26863"
+    },
+    {
+      "citation": "Rusu and Dobra (2007), Pseudo-random number generation for sketch-based estimations. ACM Transactions on Database Systems. The finite-field sign construction used in Appendix A.",
+      "url": "https://doi.org/10.1145/1242524.1242528"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:column-pivoted-qr-orthonormal-worst-case",
+    "attemptIds": [
+      "ep-attempt:column-pivoted-qr-orthonormal-worst-case-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know how much worse than the best possible choice the column-pivoted QR selection of rows of an orthonormal basis can be, with the exact constant in the exponent.",
+      "scope": "Exact arithmetic, worst cases; the bound exp(C(H)√k) with exact C(H) on the logarithmic scale; the coherence-free law in N and k; the a posteriori bound; H = 1 examples under a tie rule; N = O(k) open."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 separates what was known (the existence scale and Problem 4.3, the 2^k bound, Engler's pivot floor, Kahan's matrix, Chen et al.'s negative answer with exp(c√k) growth, Damle's modified rule) from what is new (the matching upper bound, the exact constant C(H), the endpoint H = 1, the coherence-free law and the a posteriori bound).",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "Exact arithmetic only; floating-point behaviour is not analysed."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a numerical linear algebra specialist check the weighted trailing-energy estimate (Lemma 3.2), the upper-bound optimisation of Section 4 and the completion argument of Section 5.",
+      "claimCeiling": "Written proofs of Theorem 2.3, Corollary 2.6, Theorem 2.7, Corollary 2.8, Theorem 7.1 and Proposition 7.2 in exact arithmetic; sharpness on the logarithmic scale; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "column-pivoted-qr-orthonormal-worst-case-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable determination of the worst-case growth of column-pivoted QR on orthonormal rows, with replayable checks.",
+        "setting": "AI-assisted numerical linear algebra research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

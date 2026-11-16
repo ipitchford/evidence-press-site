@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about how a standard computer routine chooses measurement points. Many simulations keep only a few measurement points out of thousands. You have a handful of important patterns, say the main modes of a fluid flow, and you want to read just a few values and still reconstruct the rest. The usual way to pick the points is a greedy rule built into every linear algebra library, called column-pivoted QR: again and again, take the point that the points already chosen explain least. One number measures the choice: the factor by which reconstruction from the chosen points can be worse than the best possible. Good choices always exist.",
+      "inputSha256": "17592fc6665c796d7ee4276b33cea487592d952c7371311877e0af90fd4da2e9",
+      "audioSha256": "5dc9c4b18e7bf8177a60bfe14af21a091c8b80f52ef70674bce29a28548efd31",
+      "requestId": "req_e6605d5039d5403d9c908b31cca23ebb",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "than the best possible good choices always exist",
+        "heardEnding": "reconstructions from the chosen points can be worse than the best possible good choices always exist",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The textbook guarantee for the greedy rule, from Drmač and Gugercin, only said that this factor grows exponentially. A workshop list of open problems asked whether the greedy rule does nearly as well as the best choices. Chen, Liu, He and Dong answered first: no, and their examples already grow like the exponential of a small multiple of the square root of the number of patterns. This paper finds the exact worst case. The greedy rule is never worse than the exponential of a constant times that square root, and the constant is exact. It is two when every point carries the same share of energy, and it grows slowly as the energy becomes less even. For a hundred patterns, the old guarantee is a number with thirty digits; the new one has only nine or ten digits.",
+      "inputSha256": "fd3175ba058a05960f812b9984d356714ef52a870d5896761e12109daacded81",
+      "audioSha256": "37bf007be5700da9ed533033de6ce7522c4630d67a765009dcccf58d622ed749",
+      "requestId": "req_1bc9e4490a3e40958931240289e6b28d",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "with digits the new has only or digits",
+        "heardEnding": "a patterns the old guarantee is a number with digits the new has only or digits",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Examples come as close to the bound as you like, so the constant cannot be lowered, and the bound needs no assumption at all. The idea is that the greedy rule controls every chosen column on every block of trailing coordinates at once. A carefully shaped rescaling turns this into a bound on a triangular matrix, and a determinant argument finishes the job. The matching examples hide a classical triangular matrix, due to Kahan, inside a much larger one. The limits matter. The results are about exact arithmetic and worst cases; typical inputs behave far better. Sharp means the leading term of the exponent, and the worst examples need very many points compared with patterns.",
+      "inputSha256": "1073191a406dc17bf604c72e683e230c849ad1ab5f3a541fb3b1e6d6c170eb78",
+      "audioSha256": "a371f5cf27fb208b9f7e5021fe4b1fe7d2900b1c509a0dfcbff0762de74f8bad",
+      "requestId": "req_e70eef2b93604975a536b8933f5ecd97",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "examples need very many points compared with patterns",
+        "heardEnding": "leading term of the exponent and the worst examples need very many points compared with patterns",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The practical advice: measure the factor after choosing the points, which is cheap, and switch to a safer rule if it is large. This is an unrefereed candidate. Its checking is internal AI-assisted review and computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.",
+      "inputSha256": "ac39803f601853927baadc14ad3d6c0516c2f5553e01bbe40a31b86f4222049d",
+      "audioSha256": "8b73da78d157fe1ed3b7a0c2d7ec75d35a2f6a625b178f63b1a2a7dbe2de1260",
+      "requestId": "req_1d1467f886bd453c924b2a2f4302761f",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice and is not additional evidence",
+        "heardEnding": "and computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "column-pivoted-qr-orthonormal-worst-case",
+  "generatedAt": "2026-11-16T11:23:37.810Z",
+  "sourceMetadata": "papers/column-pivoted-qr-orthonormal-worst-case/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "5e95e032af1e044b5c3e4bb0b8ad76b5b4ff1e29b688e49675343a93070b46a4",
+  "transcriptPath": "assets/audio/column-pivoted-qr-orthonormal-worst-case.txt",
+  "transcriptSha256": "1e865190a9ce3674b5c5331f47a5cc0f53ac953135789c06001a379b4a208b85",
+  "audioPath": "assets/audio/column-pivoted-qr-orthonormal-worst-case.mp3",
+  "audioSha256": "dc8830635c7267f22dcaf8ceac0a0e75643f5a0f7bd678a11c85478cb8b180c9",
+  "audioBytes": 2552492,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice and is not additional evidence",
+    "heardEnding": "and computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
