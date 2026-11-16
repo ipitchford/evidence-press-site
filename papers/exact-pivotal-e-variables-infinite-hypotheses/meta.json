@@ -1,0 +1,240 @@
+{
+  "slug": "exact-pivotal-e-variables-infinite-hypotheses",
+  "title": "Exact pivotal e-variables for infinite hypotheses: a binary construction and what pivotality costs",
+  "shortTitle": "Exact pivotal e-variables",
+  "oneLine": "Any score separating the alternatives from the span of the nulls becomes a coin that is fair under every null; betting on it gives exact, pivotal evidence with the best guarantee from the margin alone, while for unbounded evidence pivotality can cost all the power.",
+  "abstract": "An e-value measures evidence against a hypothesis like the payoff of a fair bet against it; its quality is the expected logarithm under the alternative (e-power). When the null is a whole family of distributions, an e-variable is exact if its expectation is one under every null and pivotal if its whole distribution is the same under every null. Zhang, Ramdas and Wang characterised bounded exact e-variables with uniformly positive e-power for infinite families by a closure condition and conjectured a pivotal version (Conjecture 6.9). This candidate turns any bounded score separating the alternatives from the null span by a margin δ into a coin that is fair under every null and biased under every alternative; betting the fraction δ gives a bounded exact pivotal e-variable with e-power at least I(δ) = [(1+δ)log(1+δ) + (1−δ)log(1−δ)]/2, and no guarantee depending only on δ is larger. This proves the sufficiency direction of the conjecture and gives a transport-free proof of the step of the finite existence theorem that produces exact pivotal p- and e-variables. For unbounded e-variables pivotality can cost all the power: in an example with one alternative an exact e-variable has e-power at least (1/4)log(27/16) ≈ 0.13 while every pivotal one has none. The sentence of Theorem 6.8 about tightness is false; weak compactness in L¹ repairs it, and under it the conjecture holds in both directions. Limits: one observation; no general formula for the best pivotal e-variable; no full characterisation for unbounded pivotal e-variables; the separating score is computable by linear programming only for finite tables. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-16",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "e-values",
+    "e-variables",
+    "composite hypotheses",
+    "exact calibration",
+    "pivotal statistics",
+    "nuisance parameters",
+    "Kelly betting",
+    "hypothesis testing"
+  ],
+  "repoUrl": "https://github.com/ipitchford/exact-pivotal-e-variables-infinite-hypotheses",
+  "releaseUrl": "https://github.com/ipitchford/exact-pivotal-e-variables-infinite-hypotheses/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/exact-pivotal-e-variables-infinite-hypotheses/releases/download/v0.1.0-candidate/exact-pivotal-e-variables-infinite-hypotheses-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24268845",
+  "conceptDoi": "10.5281/zenodo.24268844",
+  "zenodoUrl": "https://zenodo.org/records/24268845",
+  "citeText": "Anonymous (2026). Exact pivotal e-variables for infinite hypotheses: a binary construction and what pivotality costs. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24268845",
+  "evidence": "A 16-page paper with a plain introduction, written proofs, a worked four-state example and a list of open questions; three Python scripts with an exact rational certificate for the example, exact laws for a pivotal kernel, numerical optima, and exact and high-precision checks of the constants in Sections 4 to 6, with their recorded outputs. A clean replay under Python 3.12, also under python -O, reproduced every output, and two deliberately wrong checks were caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and computational checks. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, a clean replay, one revision round with an extension (what pivotality costs, the compact case and the four-state comparison), then a re-review, a proof audit and a second-model audit of the new proofs; no mathematical error was found. The computations check the stated constants and the worked example and are not part of the proofs. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 15 November 2026 with the release DOI on the title page and the companion DOI in its bibliography entry, 16 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 16 November 2026.",
+  "keyResults": [
+    "Theorem 3.1 (proof): under domination and common randomisation, margin δ > 0 is equivalent to the existence of a bounded exact pivotal e-variable with uniformly positive e-power; the coin B = 1{U ≤ (1+h)/2} is fair under every null, and E = 1 + δ(2B − 1) has uniform e-power I(δ).",
+    "Theorem 3.2 (proof): I(δ) is the best guarantee that depends on δ alone; in a given experiment richer pivotal e-variables can do better (Remark 3.3).",
+    "Corollary 3.4 (proof): the \"if\" direction of Zhang, Ramdas and Wang's Conjecture 6.9 in bounded form, and a transport-free proof of (e) ⇒ (a),(b) in their finite Theorem 6.1.",
+    "Proposition 4.3 and Theorem 4.5 (proof): a pivotal statistic has the null law under any alternative in the closed span of the nulls; an experiment with one alternative has an exact e-variable with e-power at least (1/4)log(27/16) ≈ 0.13 while every pivotal e-variable has none.",
+    "Theorem 5.1 and Corollary 5.4 (proof): the tightness sentence of Theorem 6.8 is false even on a compact space; under weak compactness of conv Q in L¹ the conjecture holds in both directions. Section 7: margin 6/31 with binary guarantee 0.0188, best pivotal e-power 0.0392 and exact optimum about 0.0556."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about exact and pivotal e-values.\n\nStart with what an e-value is. It is a number that measures evidence against a hypothesis, like the payoff of a fair bet against it. If the hypothesis is true, its average is at most one, so large values are unlikely by chance. Its quality is how fast the evidence grows when the hypothesis is false.\n\nOften the hypothesis is not one distribution but a whole family, because of unknown nuisance parameters. Two stronger demands then make sense. An exact e-value averages exactly one under every member of the family. A pivotal e-value has the same distribution under every member, so its behaviour is known even though the true member is not.\n\nZhang, Ramdas and Wang showed that for finitely many distributions such e-values exist exactly when the alternatives stay away from the span of the nulls, using optimal transport. For infinite families they conjectured a pivotal version.\n\nThe new idea fits in one picture. Take any bounded score that averages zero under every null and at least a margin, delta, under every alternative. Flip a coin whose chance of heads rises with the score. It is fair under every null and biased under every alternative. Bet a fraction delta of your stake on heads. The result is exact and pivotal, and its growth is the best that delta alone can guarantee. This proves the sufficient half of the conjecture by a short route. The ingredients are classical; what is new is that they suffice for infinite families.\n\nThere are two further findings. When e-values may be unbounded, pivotality can cost everything: there is an example where an exact e-value gains evidence but every pivotal one is powerless. And one sentence of the earlier paper, about tightness, is false; weak compactness is the right condition, and under it the conjecture holds both ways.\n\nSome limits matter. The results concern one observation, there is no general formula for the best pivotal e-value, and the separating score must still be found for each problem.\n\nThis is an unrefereed candidate. Its checking is internal AI-assisted review and computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All three scripts were rerun from fresh copies under CPython 3.12 with the pinned requirements, in normal mode and under python -O; every output matched the recorded file apart from interpreter version fields, and two deliberately wrong checks (a wrong margin and a wrong lower bound) exited with failure. GitHub CI reruns the checks under -O against the recorded outputs with both negative controls (blocking)."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; the second AI model independently bounded the exact optimum of the worked example."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Pinned numpy, scipy and mpmath; outputs reproduced on the release platform under CPython 3.12.11, with exact fields compared exactly and floats within a declared tolerance across platforms in CI. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Zhang, Ramdas and Wang (2024), On the existence of powerful p-values and e-values for composite hypotheses. The Annals of Statistics. The finite existence theorem (Theorem 6.1), the closure criterion for bounded exact e-variables (Theorem 6.8), Conjecture 6.9 and the sign-test example (Example 6.11), in print numbering (6.7, 6.8 and 6.10 in arXiv v4).",
+      "url": "https://doi.org/10.1214/24-AOS2434"
+    },
+    {
+      "citation": "Anonymous (2026), The cost of exact calibration for growing Gaussian null families. Evidence Press, version 0.1.0-candidate (companion release from the same research bundle).",
+      "url": "https://doi.org/10.5281/zenodo.24252837"
+    },
+    {
+      "citation": "Ramdas and Wang (2024), Hypothesis testing with e-values. arXiv:2410.23614. Test randomisation (Section 3.1, Theorem 3.9), bounded versus unbounded e-variables (Example 3.15) and the transport remark of Section 14.3.",
+      "url": "https://arxiv.org/abs/2410.23614",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Ram, Larsson, Ruf and Ramdas (2026), Strong duality for the GROW criterion. arXiv:2606.24768. An exact unbounded e-variable with uniformly positive e-power for a null in the closed hull of the alternatives (Example 5.1).",
+      "url": "https://arxiv.org/abs/2606.24768",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Larsson, Ruf and Ramdas (2026), A complete characterization of testable hypotheses. arXiv:2601.05217. Ordinary testability without equality constraints.",
+      "url": "https://arxiv.org/abs/2601.05217",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "He and Cheng (2026), Asymptotically Lossless Exact and Pivotal E-Values. arXiv:2609.27923. For finitely many nulls, pivotality is asymptotically free.",
+      "url": "https://arxiv.org/abs/2609.27923",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Forré (2026), The Type-II Error of Test Supermartingales: e-Power versus the Chernoff-Stein Exponent. arXiv:2609.27765. Why e-power alone does not guarantee detection in finite time.",
+      "url": "https://arxiv.org/abs/2609.27765",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Forré (2026), Type-II Error Bounds for Test Supermartingales from Lower-Tail Hypotheses. arXiv:2609.27766.",
+      "url": "https://arxiv.org/abs/2609.27766",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Ramdas (2026), A complete characterization of sequential testability and change detectability in i.i.d. models. arXiv:2609.05752.",
+      "url": "https://arxiv.org/abs/2609.05752",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Lehmann and Romano (2022), Testing Statistical Hypotheses. Springer Texts in Statistics. Similar tests: the coin is a randomised similar test of size one half.",
+      "url": "https://doi.org/10.1007/978-3-030-70578-7"
+    },
+    {
+      "citation": "Le Cam (1986), Asymptotic Methods in Statistical Decision Theory. Springer Series in Statistics. The Kraft-Le Cam separation theorem.",
+      "url": "https://doi.org/10.1007/978-1-4612-4946-7"
+    },
+    {
+      "citation": "Blackwell (1953), Equivalent Comparisons of Experiments. The Annals of Mathematical Statistics. Garbling an experiment into a binary one.",
+      "url": "https://doi.org/10.1214/aoms/1177729032"
+    },
+    {
+      "citation": "Kelly (1956), A New Interpretation of Information Rate. Bell System Technical Journal. The Kelly bet.",
+      "url": "https://doi.org/10.1002/j.1538-7305.1956.tb03809.x"
+    },
+    {
+      "citation": "Vovk and Wang (2021), E-values: Calibration, combination and applications. The Annals of Statistics.",
+      "url": "https://doi.org/10.1214/20-AOS2020"
+    },
+    {
+      "citation": "Grünwald, de Heide and Koolen (2024), Safe testing. Journal of the Royal Statistical Society Series B: Statistical Methodology. E-power as growth rate.",
+      "url": "https://doi.org/10.1093/jrsssb/qkae011"
+    },
+    {
+      "citation": "Albiac and Kalton (2016), Topics in Banach Space Theory. Graduate Texts in Mathematics. Dunford-Pettis and Krein-Smulian theorems used in Section 5.",
+      "url": "https://doi.org/10.1007/978-3-319-31557-7"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:exact-pivotal-e-variables-infinite-hypotheses",
+    "attemptIds": [
+      "ep-attempt:exact-pivotal-e-variables-infinite-hypotheses-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know when exactly calibrated, pivotal e-values exist for infinite composite nulls, what growth they can guarantee, and what pivotality costs.",
+      "scope": "Sufficiency direction of Conjecture 6.9 with the best guarantee in δ; bounded form in both directions; compact case; cost of pivotality for unbounded e-variables; one observation; no general optimal pivotal e-variable."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 separates what was known (Zhang, Ramdas and Wang's finite theorem, closure criterion, conjecture and sign-test example; the prior failure of the \"only if\" direction for unbounded e-variables; classical similar tests and Kelly betting) from what is new (the infinite-family binary pivot with its optimal guarantee, the cost of pivotality, the tightness correction and the compact case).",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "Seven of the sixteen cited works are preprints."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in e-values and composite testing check the binary pivot and its optimality (Section 3), the cost-of-pivotality example (Theorem 4.5) and the tightness counterexample (Theorem 5.1).",
+      "claimCeiling": "Written proofs of the binary pivot, its optimality in δ, the bounded and compact forms of Conjecture 6.9, the closed-span obstruction and the cost-of-pivotality example; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "exact-pivotal-e-variables-infinite-hypotheses-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable construction of exact pivotal e-variables for infinite composite nulls, with recorded checks.",
+        "setting": "AI-assisted mathematical statistics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
