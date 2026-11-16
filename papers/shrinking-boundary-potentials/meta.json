@@ -1,0 +1,179 @@
+{
+  "slug": "shrinking-boundary-potentials",
+  "title": "Shrinking boundary potentials and resonance: strong limits, a norm-convergence criterion and sharp rates",
+  "shortTitle": "Thin films at a hard wall: which boundary condition survives, and when the limit is uniform",
+  "oneLine": "A thin film at a wall: the limit is uniform exactly when the film cannot bind a particle, with sharp rates and a wall-shift formula.",
+  "abstract": "A potential concentrated in a thin layer next to a hard (Dirichlet) wall can change the boundary condition that a quantum particle or a wave sees. For A_ε = −Δ_D + ε⁻²V(dist(x,∂Ω)/ε) on a bounded smooth domain Ω ⊂ ℝᵈ, d ≥ 2, with a real bounded profile V supported in [0,ℓ], two properties of the half-line operator h_V = −d²/dt² + V (Dirichlet at 0) decide the limit as ε → 0. Lotoreichik and Post proved that resonant profiles give a Robin Laplacian with coefficient half the sum of the principal curvatures, proved the Dirichlet limit for non-resonant profiles with small negative part, and conjectured that this condition can be dropped. This candidate proves the conjecture: every non-resonant profile gives the Dirichlet limit in the strong resolvent sense; the resonant Robin limit is recovered for bounded measurable profiles and disconnected boundaries. Norm resolvent convergence holds if and only if h_V ≥ 0, with sharp error orders √ε at resonance, ε off resonance and ε^{3/2} when the affine offset c_V vanishes. Off resonance the leading term ε c_V B*B moves the wall outward by ε c_V, and each simple Dirichlet eigenvalue moves by −ε c_V ∫|∂_ν e|² + o(ε). If h_V has a negative eigenvalue, the resolvent error has limit superior 1/|Im z|. Profiles varying along the wall, never resonant, obey the same classification. Limits: constants are not uniform near resonance; the exact resonant constant is open; only the limit superior is determined in the bound-state case. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-16",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Schrödinger operators",
+    "resolvent convergence",
+    "Robin boundary condition",
+    "scaled potentials",
+    "boundary layers",
+    "resonance",
+    "thin films",
+    "spectral asymptotics"
+  ],
+  "repoUrl": "https://github.com/ipitchford/shrinking-boundary-potentials",
+  "releaseUrl": "https://github.com/ipitchford/shrinking-boundary-potentials/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/shrinking-boundary-potentials/releases/download/v0.1.0-candidate/shrinking-boundary-potentials-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24280867",
+  "conceptDoi": "10.5281/zenodo.24280866",
+  "zenodoUrl": "https://zenodo.org/records/24280867",
+  "citeText": "Anonymous (2026). Shrinking boundary potentials and resonance: strong limits, a norm-convergence criterion and sharp rates. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24280867",
+  "evidence": "A 21-page paper with a plain introduction, written proofs, a classification table, worked square-well examples and a section of open problems; four check scripts with recorded outputs (exact symbolic residual and commutator identities, an explicit zero-offset profile with coefficient 1/2310, sign checks, finite-matrix Cayley checks, a disk graph-corrector example, and an exact 40-digit Bessel computation of a disk eigenvalue whose slope approaches the predicted wall shift). A clean replay under Python 3.12, also under python -O, reproduced every output, Linux CI agreed under a declared comparison policy, and a deliberately wrong exact value was caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and finite symbolic and numerical checks. Internal AI-assisted review in five reviewer roles run as Claude subagents, a clean replay, one revision round with extensions (the eigenvalue formula and the norm classification for profiles varying along the wall), then a re-review and a proof audit of the new proofs run as Claude subagents; the planned adversarial review by a second AI model did not run because of a usage limit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 16 November 2026 with the release DOI on the title page, 21 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 16 November 2026.",
+  "keyResults": [
+    "Proposition 4.1 (proof): every real bounded non-resonant profile gives the Dirichlet limit in the strong resolvent sense, answering the conjecture of Lotoreichik and Post.",
+    "Proposition 5.1 (proof): resonant profiles give the Robin limit with coefficient K/2; this is Lotoreichik–Post Theorem A, recovered for bounded measurable profiles and disconnected boundaries.",
+    "Theorem 2.2 (proof): norm resolvent convergence holds if and only if h_V ≥ 0, with sharp error orders √ε (resonant), ε (c_V ≠ 0) and ε^{3/2} (c_V = 0 ≠ V).",
+    "Theorem 7.1 and Corollary 7.2 (proof): off resonance the error is ε c_V B*B + o(ε), a wall shifted outward by ε c_V, and each simple Dirichlet eigenvalue moves by −ε c_V ∫|∂_ν e|² + o(ε).",
+    "Theorem 2.2(iii) (proof): if h_V has a negative eigenvalue, eigenvalues tend to −∞, every real energy is crossed along a sequence of scales, and the resolvent error has limit superior 1/|Im z|.",
+    "Remark 7.3 (computation): on the unit disk with a square well (kℓ = 1) the exact eigenvalue slope approaches the predicted −6.44719, reaching −6.4445 at ε = 2⁻¹¹, with an O(ε) remainder."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles as Claude subagents), re-review and proof audit of the new proofs as Claude subagents, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about thin films at a hard wall.\n\nPicture a particle, or a wave, held inside a region by a hard wall. Now coat the inside of the wall with a very thin film that pulls or pushes on the particle strongly. Make the film thinner and thinner, while keeping its strength at the critical size. What wall does the particle see in the end? Questions like this are how physicists justify idealised boundary conditions for coatings and thin layers.\n\nThe answer depends on a simple one-dimensional problem across the film. Usually the film simply vanishes in the limit, and the wall stays hard. But if the film is exactly tuned, or resonant, the wall turns into a softer kind of wall, called a Robin wall, whose strength is set by how the wall curves.\n\nLotoreichik and Post proved the resonant case. For the other films they needed the attractive part to be small, and they conjectured that this condition could be dropped. This paper proves their conjecture: every film that is not resonant leaves a hard wall.\n\nIt also answers a second question: is the limit uniform, so that energy levels converge too? The answer is yes exactly when the film cannot trap a particle on its own. In that case the paper finds the exact speed of convergence. Away from resonance it shows something intuitive: to first order, the film acts like moving the hard wall outward by a small, computable distance, and every energy level shifts accordingly. An exact calculation on a disk matches this prediction closely.\n\nWhen the film can trap a particle, trapped surface states sweep through every energy, and uniform convergence fails as badly as it possibly can, even though each fixed state still converges. The same picture holds for films that vary along the wall, as long as they are never resonant.\n\nThere are limits. The constants blow up near resonance, the exact constant at resonance is still open, and only bounded smooth regions are covered.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review together with symbolic and numerical calculations rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The four check scripts were rerun from fresh copies under CPython 3.12 with pinned versions, also under python -O; every output matched the recorded logs apart from version lines, and a deliberately wrong exact value (1/2310 changed to 1/2311) made check_identities.py exit with failure. GitHub CI on Linux reruns the scripts under -O and compares the outputs under a declared policy, with the negative control (blocking)."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Pinned NumPy, SciPy, SymPy and mpmath; outputs reproduced on the release platform under CPython 3.12.11 and on Linux CI under the declared policy (text and exact values identical; decimal numbers within relative 1e-9; the 40-digit eigenvalue record within relative 1e-12). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Lotoreichik and Post (2026), Convergence of Schrödinger operators on domains with scaled resonant potentials. Revista Matemática Iberoamericana. Theorem A (the resonant Robin limit), Theorem B (the Dirichlet limit under a smallness condition) and the conjecture that the condition can be dropped; also the disk counterexample to norm convergence and the half-line background recalled in its Sections 1.1-1.2.",
+      "url": "https://doi.org/10.4171/rmi/1613"
+    },
+    {
+      "citation": "Golovaty (2022), 2D Schrödinger operators with singular potentials concentrated near curves. Applicable Analysis. A two-sided planar analogue treated spectrally, with eigenvalues tending to minus infinity and accumulating at every real number.",
+      "url": "https://doi.org/10.1080/00036811.2020.1859496"
+    },
+    {
+      "citation": "Golovaty and Hryniv (2013), Norm resolvent convergence of singularly scaled Schrödinger operators and δ′-potentials. Proceedings of the Royal Society of Edinburgh Section A. Norm resolvent convergence for scaled potentials on the line.",
+      "url": "https://doi.org/10.1017/s0308210512000194"
+    },
+    {
+      "citation": "Belgacem, BelHadjAli, BenAmor and Thabet (2018), Robin Laplacian in the Large coupling limit: Convergence and spectral asymptotic. Annali della Scuola Normale Superiore di Pisa. The large-coupling Robin response operator and the Robin counterpart of the eigenvalue formula.",
+      "url": "https://doi.org/10.2422/2036-2145.201601_008"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:shrinking-boundary-potentials",
+    "attemptIds": [
+      "ep-attempt:shrinking-boundary-potentials-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know which boundary condition a thin critical film at a hard wall leaves in the limit, when the limit is uniform, how fast, and how far the film moves the wall.",
+      "scope": "Bounded smooth domains, d ≥ 2, fixed profiles and profiles varying along the wall that are never resonant; constants not uniform near resonance; limit superior only in the bound-state case."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 separates what was known (Lotoreichik–Post Theorems A and B and their conjecture, their disk counterexample, Golovaty's two-sided planar spectral results, norm convergence on the line) from what is new (the unrestricted non-resonant limit, the norm criterion with sharp rates, the first-order wall-shift term, the bound-state limit superior on every domain and the varying-profile classification).",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "Constants are not uniform near resonance."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a spectral theorist check the coercivity estimate of Lemma 6.1, the compactness argument of Theorem 7.1 and the crossing argument of Section 9.",
+      "claimCeiling": "Written proofs of Theorem 2.2, Corollary 2.3, Theorem 7.1, Corollary 7.2, Theorem 8.1 and Theorems 10.1 and 10.3; the resonant limit is Lotoreichik–Post Theorem A recovered under weaker hypotheses; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "shrinking-boundary-potentials-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable classification of thin critical films at a hard wall, with replayable checks.",
+        "setting": "AI-assisted spectral theory research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

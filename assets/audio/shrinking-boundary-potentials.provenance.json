@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about thin films at a hard wall. Picture a particle, or a wave, held inside a region by a hard wall. Now coat the inside of the wall with a very thin film that pulls or pushes on the particle strongly. Make the film thinner and thinner, while keeping its strength at the critical size. What wall does the particle see in the end? Questions like this are how physicists justify idealised boundary conditions for coatings and thin layers. The answer depends on a simple one-dimensional problem across the film. Usually the film simply vanishes in the limit, and the wall stays hard.",
+      "inputSha256": "c6340f845c5a3ba27c9aa5f3dcb4d20ab54753f2eace66a73d96e307dcf2315b",
+      "audioSha256": "f1d253ab2e7d34cfe0be7f9ce1fa4c5a5988b683cce3436f3d1ff2ec8e052bd6",
+      "requestId": "req_5a570d9c0397458b83809d752350ac2c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "in the limit and the wall stays hard",
+        "heardEnding": "across the film usually the film simply vanishes in the limit and the wall stays hard",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "But if the film is exactly tuned, or resonant, the wall turns into a softer kind of wall, called a Robin wall, whose strength is set by how the wall curves. Lotoreichik and Post proved the resonant case. For the other films they needed the attractive part to be small, and they conjectured that this condition could be dropped. This paper proves their conjecture: every film that is not resonant leaves a hard wall. It also answers a second question: is the limit uniform, so that energy levels converge too? The answer is yes exactly when the film cannot trap a particle on its own. In that case the paper finds the exact speed of convergence.",
+      "inputSha256": "f03e9b0176ffacdd9df7ed5b954a2e337bdc25ed8cd533680daad17b62e0a219",
+      "audioSha256": "846ac1285cb0a8b7efb7c6bd3cf15917f80c4ce02169494c54f87a7a38d01fcc",
+      "requestId": "req_40e1bcad2ce14426b2ad97d25e8e5640",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the paper finds the exact speed of convergence",
+        "heardEnding": "a particle on its own in that case the paper finds the exact speed of convergence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Away from resonance it shows something intuitive: to first order, the film acts like moving the hard wall outward by a small, computable distance, and every energy level shifts accordingly. An exact calculation on a disk matches this prediction closely. When the film can trap a particle, trapped surface states sweep through every energy, and uniform convergence fails as badly as it possibly can, even though each fixed state still converges. The same picture holds for films that vary along the wall, as long as they are never resonant. There are limits. The constants blow up near resonance, the exact constant at resonance is still open, and only bounded smooth regions are covered.",
+      "inputSha256": "73faf2740fdceb9907d646ae8a4d88f0ff13a1e3fd14cb0e29ef6d9ec6ca8eb3",
+      "audioSha256": "a9a09cc7d04a10630f369507ac217f4bd824112e386ce1fbc9e0099e024e46a1",
+      "requestId": "req_d2f142c47194495daf4b7c0e1dbd1c15",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "open and only bounded smooth regions are covered",
+        "heardEnding": "resonance the exact constant at resonance is still open and only bounded smooth regions are covered",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "This is an unrefereed candidate, checked by internal AI-assisted review together with symbolic and numerical calculations rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+      "inputSha256": "c27bc6ee0c814d0904205cafa4cc59fee3bd44002222721977dc0a72f51408d5",
+      "audioSha256": "3f8e7ba7e90eea2716185f0c63dfa255007d077279715b2f9dfa66fb5ad1b688",
+      "requestId": "req_f5ce52bc20aa4c7e91c7b0c6d334f036",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice that is not additional evidence",
+        "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "shrinking-boundary-potentials",
+  "generatedAt": "2026-11-16T12:55:42.367Z",
+  "sourceMetadata": "papers/shrinking-boundary-potentials/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "26f8d73ad39ce797da71c9efa1880fbf880f12d66752f52d6960cc2f5cd29118",
+  "transcriptPath": "assets/audio/shrinking-boundary-potentials.txt",
+  "transcriptSha256": "e424a2c373368f4841a86a59b482f4218bc47456a5235296120b6a8f66ddbbef",
+  "audioPath": "assets/audio/shrinking-boundary-potentials.mp3",
+  "audioSha256": "6edac10c0475d827c3c1d1c9b6ad80f7548fbefb77eb50193174f78f8ac76130",
+  "audioBytes": 2217260,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice that is not additional evidence",
+    "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
