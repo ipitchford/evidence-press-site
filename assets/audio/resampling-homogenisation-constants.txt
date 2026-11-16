@@ -1,0 +1,13 @@
+This is an audio briefing from Evidence Press on a research candidate about resampling different sources of evidence.
+
+Start with an everyday problem. You want to decide between two explanations, using several different sources of evidence, such as different sensors or different sites. One design looks at every source once. Another makes the same number of random draws with replacement, as a bootstrap does, so some sources are seen twice and others not at all. You would expect the random design to be worse. Surprisingly, it can be slightly better, and the question is by how much.
+
+Aryeh Kontorovich proved that resampling can never help by more than a fixed factor, measured in total variation, the quantity that sets the best possible error rate of a test. The best known limit on that factor was eight ninths, and eight ninths had been conjectured to be the true answer for yes-or-no data.
+
+This paper makes four contributions. First, for general data the constant is at most nine fourteenths, so eight ninths is not the general answer, although the yes-or-no conjecture is untouched. Second, for a natural class called erasure experiments, where each observation either rules one explanation out or lands in a shared zone where both explanations behave alike, the exact worst case is found for every random sampling rule. With three sources, resampling can raise a test's advantage over guessing by up to fourteen ninths, and that is the largest factor for any number of sources. Third, with two sources the problem is solved completely for all data. Fourth, when the evidence is already strong, resampling can cut the error rate only by the chance that every source is drawn exactly once, and this is attained.
+
+The idea of the proof is that, in the erasure class, the worst case puts all the evidence for each explanation on a single source, so only pairs of sources matter.
+
+Some limits matter. Whether nine fourteenths is the exact general constant is open; it is conjectured, and a computer search found nothing larger. The erasure results are not known to bound general data, and the strong-evidence limit can be approached slowly.
+
+This is an unrefereed candidate. Its checking is internal AI-assisted review and exact computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.

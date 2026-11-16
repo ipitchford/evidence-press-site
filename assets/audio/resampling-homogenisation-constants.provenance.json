@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about resampling different sources of evidence. Start with an everyday problem. You want to decide between two explanations, using several different sources of evidence, such as different sensors or different sites. One design looks at every source once. Another makes the same number of random draws with replacement, as a bootstrap does, so some sources are seen twice and others not at all. You would expect the random design to be worse. Surprisingly, it can be slightly better, and the question is by how much. Aryeh Kontorovich proved that resampling can never help by more than a fixed factor, measured in total variation, the quantity that sets the best possible error rate of a test.",
+      "inputSha256": "3d86876f70f0f7412ca362e5d01c06371628094143743226322a157401947553",
+      "audioSha256": "2cd109a4378dbcd1e6f611bb9d8bf41e0825c46ea9d15e2907682e098b02758f",
+      "requestId": "req_da66776c1b47467f8b57a294de46aa50",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the best possible error rate of a test",
+        "heardEnding": "measured in total variation the quantity that sets the best possible error rate of a test",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The best known limit on that factor was eight ninths, and eight ninths had been conjectured to be the true answer for yes-or-no data. This paper makes four contributions. First, for general data the constant is at most nine fourteenths, so eight ninths is not the general answer, although the yes-or-no conjecture is untouched. Second, for a natural class called erasure experiments, where each observation either rules one explanation out or lands in a shared zone where both explanations behave alike, the exact worst case is found for every random sampling rule. With three sources, resampling can raise a test's advantage over guessing by up to fourteen ninths, and that is the largest factor for any number of sources. Third, with two sources the problem is solved completely for all data.",
+      "inputSha256": "32e2b9c0051a6c84a1ab1f40d37f6cc9fb25234773638a3477ecb6b074936dbe",
+      "audioSha256": "aa28719507b4680fd2ec5cb5c53b591d715d5daafa9592e6bc00150599262911",
+      "requestId": "req_53ee60bdc14945e88790119b875d4ab1",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the problem is solved completely for all data",
+        "heardEnding": "factor for any number of sources with sources the problem is solved completely for all data",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Fourth, when the evidence is already strong, resampling can cut the error rate only by the chance that every source is drawn exactly once, and this is attained. The idea of the proof is that, in the erasure class, the worst case puts all the evidence for each explanation on a single source, so only pairs of sources matter. Some limits matter. Whether nine fourteenths is the exact general constant is open; it is conjectured, and a computer search found nothing larger. The erasure results are not known to bound general data, and the strong-evidence limit can be approached slowly. This is an unrefereed candidate. Its checking is internal AI-assisted review and exact computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.",
+      "inputSha256": "e68e4f1fcbf7b3535dc4178e8602dc95fa04fc17bdd6d9ce855da3f952a09b96",
+      "audioSha256": "4441039c7ccdc090f95074a98ebaf7a8ae3db22cc0dfc2befc3d8ed08d6ce79e",
+      "requestId": "req_4c6facef3211489bb38b5eec520c9f26",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice and is not additional evidence",
+        "heardEnding": "exact computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "resampling-homogenisation-constants",
+  "generatedAt": "2026-11-16T01:54:39.792Z",
+  "sourceMetadata": "papers/resampling-homogenisation-constants/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "3353b34e10d65486822c36e46435d52bb8514f8839cc10d6e6a6aa9fcc609010",
+  "transcriptPath": "assets/audio/resampling-homogenisation-constants.txt",
+  "transcriptSha256": "355d74f13e538c9b5b58f994e9ee523eb6ae3e2761e704f3ca8dd61b65db5c20",
+  "audioPath": "assets/audio/resampling-homogenisation-constants.mp3",
+  "audioSha256": "006036cd2ae7c89344364e1c475b46d726caf15b51f52550dde77e918609d26e",
+  "audioBytes": 2380076,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice and is not additional evidence",
+    "heardEnding": "exact computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

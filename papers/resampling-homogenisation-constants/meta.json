@@ -1,0 +1,194 @@
+{
+  "slug": "resampling-homogenisation-constants",
+  "title": "Resampling heterogeneous experiments: sharp amplification constants and high-signal error asymptotics",
+  "shortTitle": "Resampling amplification constants",
+  "oneLine": "Resampling n different sources with replacement can raise a test's advantage over guessing, but in a natural class by at most 14/9 (at three sources); in general the homogenisation constant is at most 9/14, below the earlier bound 8/9.",
+  "abstract": "A test between two explanations can use n different independent sources of evidence once each, or n draws chosen uniformly at random with replacement, as a bootstrap or random-design study does; the second design is called resampling or homogenisation. Kontorovich proved that resampling is never more than a constant factor more informative: D ≥ cH with c > 0.1489, where D and H are the total-variation distances between the hypotheses under the two designs, and the best upper bound was c ≤ 8/9, conjectured optimal for Bernoulli data. This candidate proves c ≤ 9/14 for experiments on general outcome spaces (two sources already give 2/3), so 8/9 is not the general optimum; the Bernoulli conjecture is not addressed. For erasure experiments, in which each observation either rules one hypothesis out or lands in a shared region where both behave alike, it finds the exact worst-case amplification for every data-independent sampling schedule; it depends only on the laws of pairs of counts. For uniform resampling the factor is largest at three sources, 14/9, and decreases to about 1.524. With two sources the problem is solved exactly for all experiments, the exact bound is given whenever only two experiments differ, and the exact optimum for three erasure experiments is found. For strong evidence, resampling with n draws leaves at least n!/n^n of the fixed design's error probability, and this is attained in the limit. Whether 9/14 is the exact general constant is open (conjectured; a numerical search found nothing larger); the erasure results are not known to bound general data; the high-signal limit can converge slowly. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-16",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "total variation",
+    "homogenisation",
+    "resampling",
+    "bootstrap",
+    "hypothesis testing",
+    "comparison of experiments",
+    "privacy amplification by subsampling",
+    "Bayes error"
+  ],
+  "repoUrl": "https://github.com/ipitchford/resampling-homogenisation-constants",
+  "releaseUrl": "https://github.com/ipitchford/resampling-homogenisation-constants/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/resampling-homogenisation-constants/releases/download/v0.1.0-candidate/resampling-homogenisation-constants-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24267748",
+  "conceptDoi": "10.5281/zenodo.24267747",
+  "zenodoUrl": "https://zenodo.org/records/24267748",
+  "citeText": "Anonymous (2026). Resampling heterogeneous experiments: sharp amplification constants and high-signal error asymptotics. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24267748",
+  "evidence": "A 16-page paper with a plain introduction, written proofs, a figure, a conjecture with documented numerical evidence and a list of open problems; nine Python scripts with exact rational and symbolic checks of the extremal families, the occupancy constants, the two-coordinate bound, the three-component reduction (4916 rational cases) and the high-signal construction, a fixed-seed search, and their recorded logs. A clean replay under Python 3.12, also under python -O, reproduced every log apart from wall-clock timings, and two deliberately wrong checks were caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computational checks. Internal AI-assisted review in five reviewer roles and an adversarial review by a second AI model, a clean replay, one revision round with extensions (the exact two-source problem, the large-n limit, a sharper high-signal construction and a documented conjecture), then a re-review, a proof audit and a second-model audit of the new proofs; no error was found in any theorem. The computations check formulas and constructions and are not part of the proofs. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 15 November 2026 with the DOI added to the title-page version line, 16 pages), its scripts and recorded logs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 16 November 2026.",
+  "keyResults": [
+    "Theorem 4.1 (proof): for experiments on general outcome spaces the best homogenisation constant satisfies c* ≤ 9/14 ≈ 0.643; two experiments already give c* ≤ 2/3. With Kontorovich's lower bound, 0.1489 < c* ≤ 9/14. The examples need at least three outcome symbols and do not bear on the Bernoulli conjecture 8/9.",
+    "Theorem 3.1 (proof): for erasure experiments and any revealed sampling schedule independent of the data, sup H/D = max{P(N ≠ 0), max over pairs i, j of E max(N_i, N_j)}, where N_i counts the uses of experiment i.",
+    "Theorem 4.1 and Proposition 4.2 (proof): for uniform resampling of erasure experiments, H ≤ C_n D with C_n = E max(K, L) sharp; C_2 = 3/2, C_3 = 14/9 (the maximum), C_4 = 99/64, and C_n decreases for n ≥ 3 to 1 + e^(−2)(I_0(2) + I_1(2)) ≈ 1.5238.",
+    "Theorem 5.1 and Corollary 5.2 (proof): for arbitrary experiments differing in two coordinates the exact bound is H ≤ F_n(D), attained at every D; for n = 2 the problem is solved: sup H = 3D/2 − D²/2. Theorem 6.1 gives the exact optimum for three erasure experiments, with transitions at D_0 ≈ 0.3249 and D_1 ≈ 0.6972.",
+    "Theorem 7.1 and Corollary 7.3 (proof): for arbitrary experiments and any data-independent schedule with kn draws, 1 − H ≥ q(1 − D)^k, where q is the probability that every experiment is used exactly k times, and this is attained to leading order as D → 1; for uniform resampling with k = 1 the optimal ratio of Bayes errors tends to n!/n^n (2/9 for three sources)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), adversarial review and audit by a second AI model, re-review, proof audit, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted and adversarial review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about resampling different sources of evidence.\n\nStart with an everyday problem. You want to decide between two explanations, using several different sources of evidence, such as different sensors or different sites. One design looks at every source once. Another makes the same number of random draws with replacement, as a bootstrap does, so some sources are seen twice and others not at all. You would expect the random design to be worse. Surprisingly, it can be slightly better, and the question is by how much.\n\nAryeh Kontorovich proved that resampling can never help by more than a fixed factor, measured in total variation, the quantity that sets the best possible error rate of a test. The best known limit on that factor was eight ninths, and eight ninths had been conjectured to be the true answer for yes-or-no data.\n\nThis paper makes four contributions. First, for general data the constant is at most nine fourteenths, so eight ninths is not the general answer, although the yes-or-no conjecture is untouched. Second, for a natural class called erasure experiments, where each observation either rules one explanation out or lands in a shared zone where both explanations behave alike, the exact worst case is found for every random sampling rule. With three sources, resampling can raise a test's advantage over guessing by up to fourteen ninths, and that is the largest factor for any number of sources. Third, with two sources the problem is solved completely for all data. Fourth, when the evidence is already strong, resampling can cut the error rate only by the chance that every source is drawn exactly once, and this is attained.\n\nThe idea of the proof is that, in the erasure class, the worst case puts all the evidence for each explanation on a single source, so only pairs of sources matter.\n\nSome limits matter. Whether nine fourteenths is the exact general constant is open; it is conjectured, and a computer search found nothing larger. The erasure results are not known to bound general data, and the strong-evidence limit can be approached slowly.\n\nThis is an unrefereed candidate. Its checking is internal AI-assisted review and exact computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All nine scripts were rerun from fresh copies under CPython 3.12 with the pinned requirements, and the seven exact-check scripts also under python -O; every log matched the recorded log apart from wall-clock timings, the search reproduced its recorded values, and two deliberately wrong checks (a wrong rational constant and a wrong sandwich bound) exited with failure. GitHub CI reruns the exact checks under -O against the recorded logs with both negative controls (blocking)."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; several internal reviewers recomputed the constants independently, and the release banner generator recomputes C_n exactly and compares it with the recorded log."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal and adversarial review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Pinned numpy, scipy, sympy, mpmath and matplotlib; exact rational logs reproduced byte for byte on the release platform under CPython 3.12.11, with floating-point quadrature errors compared within tolerance across platforms in CI. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Kontorovich (2026), TV homogenization inequalities. arXiv:2601.04079. Homogenisation for Bernoulli experiments, the example giving c ≤ 8/9 and the conjecture that 8/9 is optimal for Bernoulli products.",
+      "url": "https://arxiv.org/abs/2601.04079",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Kontorovich (2026), A homogenization principle for total variation. arXiv:2604.03882. The universal constant c > 0.1489 for arbitrary measures and the labelled-lift argument used here.",
+      "url": "https://arxiv.org/abs/2604.03882",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Kontorovich (2026), A local-to-global principle for f-divergence homogenization. arXiv:2610.31164. General f-divergences; its Section 7.3 gives the linear bound H ≤ 3D/2 for two experiments.",
+      "url": "https://arxiv.org/abs/2610.31164",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    },
+    {
+      "citation": "Kontorovich (2025), On the tensorization of the variational distance. Electronic Communications in Probability. Standard tensorisation facts for total variation.",
+      "url": "https://doi.org/10.1214/25-ECP680"
+    },
+    {
+      "citation": "Darroch, Jirina and Speed (1988), Sampling Without Replacement: Approximation to the Probability Distribution. Journal of the Australian Mathematical Society, Series A. The classical coefficient n!/n^n, the chance that n draws with replacement are all distinct.",
+      "url": "https://doi.org/10.1017/S1446788700029785"
+    },
+    {
+      "citation": "Balle, Barthe and Gaboardi (2018), Privacy Amplification by Subsampling: Tight Analyses via Couplings and Divergences. arXiv:1807.01647. Theorem 10, for one differing record, is the one-coordinate counterpart of the schedule constant.",
+      "url": "https://arxiv.org/abs/1807.01647",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as an arXiv preprint without a DOI; linked to the cited arXiv record, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:resampling-homogenisation-constants",
+    "attemptIds": [
+      "ep-attempt:resampling-homogenisation-constants-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know how much resampling n heterogeneous experiments can increase the total-variation distance between two hypotheses, and how much it can reduce the error when evidence is strong.",
+      "scope": "Upper bound c* ≤ 9/14 for arbitrary experiments; exact constants only for erasure experiments; exact results for two sources and for two differing coordinates; leading-order high-signal attainment; c* = 9/14 conjectural; Bernoulli conjecture not addressed."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 separates what was known (Kontorovich's c > 0.1489, the 8/9 example and conjecture, the labelled lift, the n = 2 linear bound, the classical n!/n^n) from what is new (9/14, the schedule constant, the exact two-coordinate and three-component optima and the high-signal attainment), with the class and regime of each result.",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "Four of the six cited works are preprints."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in comparison of experiments or information theory check the schedule constant (Section 3), the five-outcome family and the bound c* ≤ 9/14 (Section 4), and the radix construction (Section 7).",
+      "claimCeiling": "Written proofs of c* ≤ 9/14, the exact erasure constants, the two-coordinate and three-component optima and the leading-order high-signal theorem; c* = 9/14 conjectural; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "resampling-homogenisation-constants-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable set of sharp constants for resampling heterogeneous experiments, with exact recorded checks.",
+        "setting": "AI-assisted mathematical statistics research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
