@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about negative mutual information in time. Start with a familiar idea. For two quantum systems at the same moment, mutual information measures how much they share, and it can never be negative. Physicists have proposed a version for one system at two times: before and after a process. There is no ordinary joint quantum state for two times, so the proposal uses a pseudo-density matrix, an object that, unlike a quantum state, can have negative eigenvalues. Its proposers, Fullwood and Parzygnat, conjectured that this mutual information in time is never negative either. A mutual information that can go negative would be hard to read as shared information.",
+      "inputSha256": "a5e5a37d9b5b1ee0396d5e663765ec13e0fed44c59d040026c344f0e5586aaba",
+      "audioSha256": "94f97ce62e70300e54dfaa26e3699106d96efed9789722edfbe26984f580aceb",
+      "requestId": "req_c3af0f5a4da24fe290d05199ec04f9cf",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "would be hard to read as shared information",
+        "heardEnding": "either a mutual information that can go negative would be hard to read as shared information",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Fullwood and Yang proved the conjecture whenever the input is a qubit, in a preprint. The Omega Institute then published a counterexample in five dimensions, so this release is not the first counterexample. They left open the smallest size at which the conjecture fails. This paper settles that question. A failure needs at least three input levels, at least two output levels, and a starting state that is not pure. One explicit process, with three levels in and two out, reaches all three limits at once, and its negative value is certified exactly with interval arithmetic. A simple family of channels shows why. It is a coherent version of the textbook erasure channel, and the key is coherence between the occupied levels and an empty one.",
+      "inputSha256": "ed306a61f498bf05f8b8c4b40c5534f07c8c7f0920f6225ca612544c5b09b0d1",
+      "audioSha256": "3ddbc038114b2b2ae5bdca8c6c6cfb2bb55b532a8b1ad4bc7bee831f0dbe5866",
+      "requestId": "req_14a6a64c8f2141108999b389c8e52b9b",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "coherence between the occupied levels and an empty",
+        "heardEnding": "the textbook eurasia channel and the key is coherence between the occupied levels and an empty",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Without that coherence, for these starting states, the quantity can never be negative. At one parameter value, the sign comes down to comparing two whole numbers. Two processes that act identically on everything the system occupies can even give opposite signs. Two questions stay open: whether the quantity can fall without limit, and how negative it can get for three-level systems. For both there is only numerical evidence. This is an unrefereed candidate. Its checking is internal AI-assisted review and computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.",
+      "inputSha256": "77b7590c5089067dd2928f4f63bd8e7607cef5002c6408512426441ec003a9f2",
+      "audioSha256": "e5b4f78bb8038971aa6ef16052c7f1b267bad41eda26cd08ac2d0b1d1fb429c9",
+      "requestId": "req_6aaec88c16f0426886dfbb6f1a6706cb",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice and is not additional evidence",
+        "heardEnding": "and computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "negative-mutual-information-in-time",
+  "generatedAt": "2026-11-16T04:22:46.625Z",
+  "sourceMetadata": "papers/negative-mutual-information-in-time/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "5031a9a9a41fc2197fcc1510b6425bac3b4a839f83d98ea08e97046fbb1ddfd2",
+  "transcriptPath": "assets/audio/negative-mutual-information-in-time.txt",
+  "transcriptSha256": "309e8d58ad217f4e8cecc7e0bd195baea23cbb4c8f166fc1eae536fe9f011797",
+  "audioPath": "assets/audio/negative-mutual-information-in-time.mp3",
+  "audioSha256": "2eb73ee100d7430917beaaa4e62812307f60443e1367a6c303350fadb5a172eb",
+  "audioBytes": 2128940,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice and is not additional evidence",
+    "heardEnding": "and computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
