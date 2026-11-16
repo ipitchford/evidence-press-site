@@ -1,0 +1,198 @@
+{
+  "slug": "levy-bridge-maximal-correlation",
+  "title": "Maximal correlation of Lévy bridges",
+  "shortTitle": "Pinning a random path’s endpoint can create dependence",
+  "oneLine": "For a two-dimensional Lévy process pinned at its endpoint, the maximal correlation of the coordinate paths is the largest of three numbers, and jump times matter only through shared jumps; an operator-form answer to a question of Chang and Chen.",
+  "abstract": "The maximal correlation of two random objects is the largest correlation between any function of the first and any function of the second. Chang and Chen (The Annals of Applied Probability, 2026) computed it for the two coordinate paths of a two-dimensional Lévy process and asked, in their Section 6, Problem 1, for the answer when the process is pinned at a terminal point, that is, for a Lévy bridge. This candidate shows that the bridge coefficient is the largest of three numbers: the absolute correlation of the Gaussian part; the maximal correlation of the two unordered lists of jump sizes; and the norm of an operator that counts common jumps. Jump times therefore matter only through which jumps are shared. A one-cut principle follows: once the jump sizes are retained, knowing which jumps occur before one fixed time preserves the coefficient, and two different cut times shrink the common-jump and Gaussian terms by an explicit factor. The formula holds for almost every endpoint, for every endpoint when the Gaussian covariance is positive definite (standard bridge) and at every atom of the endpoint law; infinite jump activity is allowed. The two jump terms are operator norms with no general elementary formula; they are made concrete without common jumps (a two-dimensional problem for the jump totals; pure-jump coordinates become independent), for finitely many lattice jump vectors (finite matrices) and for Chang and Chen's pinned compound-Poisson Examples 2-4 (coefficient one wherever the second coordinate jumps). Without pinning the same machinery reproves Chang and Chen's formula on every finite horizon. The engine is a correlation identity for marks attached to the classes of a hidden random matching, of which Chang and Chen's Theorem 1.5 is essentially the visible-matching case. Pinning can raise the coefficient from 0.2 to above 0.997 without common jumps, and can also lower it. Limits: a reduction, not a closed formula; no claim at exceptional endpoints; every-endpoint statements for gamma or stable bridges remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-16",
+  "version": "0.2.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "maximal correlation",
+    "Lévy bridge",
+    "Lévy process",
+    "Hirschfeld-Gebelein-Rényi correlation",
+    "jump processes",
+    "random matching",
+    "Poisson process",
+    "conditioning"
+  ],
+  "repoUrl": "https://github.com/ipitchford/levy-bridge-maximal-correlation",
+  "releaseUrl": "https://github.com/ipitchford/levy-bridge-maximal-correlation/releases/tag/v0.2.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/levy-bridge-maximal-correlation/releases/download/v0.2.0-candidate/levy-bridge-maximal-correlation-0.2.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24285127",
+  "conceptDoi": "10.5281/zenodo.24285126",
+  "zenodoUrl": "https://zenodo.org/records/24285127",
+  "citeText": "Anonymous (2026). Maximal correlation of Lévy bridges: A reduction to jump configurations and a one-cut principle. Version 0.2.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24285127",
+  "evidence": "A 19-page paper with a plain introduction, written proofs of the bridge formula, the one-cut principle, the hidden-matching identity and the computable cases, worked examples, an interval-arithmetic certificate and open questions; exact-rational finite checks (324 Poisson one-cut spectra, 81 and 100 hidden-matching laws, residuals below 1e-15), checks of the extensions and examples, and the certificate script, all with recorded outputs. A clean replay under Python 3.12, also under python -O, reproduced every output byte for byte, Linux CI agreed under a declared comparison policy, and two deliberately wrong values were caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact and interval computational checks. Internal AI-assisted review in five reviewer roles run as Claude subagents and an adversarial review by a second AI model (Astra), a clean replay, one revision round with extensions (an independent proof of the unconditioned formula, the no-common-jump reduction, the pinned Chang-Chen examples, the standard-bridge identification and a lower bound), then a re-review and a Claude proof audit of the new proofs; the planned Astra audit of the new proofs did not run because of a usage limit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 16 November 2026 with the release DOI on the title page, 19 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 16 November 2026.",
+  "keyResults": [
+    "Theorem 2.1 (proof, main): for terminal-law almost every z, R_z(X, Y) = max{ρ_G, c_0(z), c_1(z)}: the Gaussian correlation, the maximal correlation of the jump-size lists, and the norm of the common-jump operator; also at every z for positive-definite Gaussian covariance (standard bridge) and at every atom. This answers Chang and Chen’s Section 6, Problem 1 in operator form.",
+    "Corollary 2.2 (proof, main): one-cut principle; the jump sizes, their before/after split at one fixed time s and the Gaussian bridge values at s give the full coefficient for every s; two different cut times multiply the common-jump and Gaussian terms by the Brownian-bridge correlation θ(s, t).",
+    "Theorem 3.1 (proof, main): for marks attached to the classes of a hidden random partial matching, R = max{R(static data), ‖K‖}; Chang and Chen’s Theorem 1.5 is essentially the visible-matching special case; a hidden swap has R = 1/√2 against 1 when revealed.",
+    "Propositions 5.1-5.3 and Corollary 5.4 (proof): finite matrices for finitely many lattice jump vectors; without common jumps c_0 is the maximal correlation of the jump totals and pure-jump coordinates are independent; unconditioned c_1 = Op(ν), c_0 ≤ Op(ν), reproving Chang and Chen’s formula; their pinned Examples 2-4 have coefficient 1 wherever Y jumps.",
+    "Examples (Section 6): a four-type bridge where the dominant jump term switches at c = 1/4; a shared-shock Poisson bridge where pinning lowers the coefficient; a Gaussian-Poisson bridge where pinning raises it from 0.2 to a value certified in (0.997457967473837283247, 0.997457967473837283251)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles as Claude subagents and an Astra adversarial review), re-review and Claude proof audit of the new proofs, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about how much two random paths can tell us about each other when they are forced to finish at a chosen point.\n\nMaximal correlation measures how much one random quantity can reveal about another, using any functions of them, not just straight-line relationships. A value of zero means the two are independent, and a value of one means they share something exactly.\n\nChang and Chen worked out this coefficient for the two coordinates of a Lévy process, which is random motion made of continuous wiggles plus sudden jumps. They then asked what happens for a Lévy bridge, where the same motion is pinned to end at a given point. Pinning changes the picture: it destroys independence over time and can create dependence where there was none. In one example, the two sides jump independently and their wiggles are only weakly correlated, so the coefficient is point two; once both ends are pinned, it rises above point nine nine seven, close to perfect dependence.\n\nThe answer in this paper is that the bridge coefficient is the largest of three numbers: the correlation of the wiggles, how dependent the two lists of jump sizes are, and a measure of how often the two coordinates jump at the same moment. Exact timing matters only through those shared jumps. A one-cut principle follows: keep the jump sizes, note which jumps happen before one fixed time, and nothing is lost.\n\nThe key idea is that, once the jump sizes are known, the jump times behave like independent uniform clocks, except that a shared jump shares its clock; and statistics that use several shared clocks never beat those that use a single clock.\n\nThere are clear limits. The size term and the shared-jump term are operator norms, with no general formula. They become concrete when the coordinates never jump together, or when there are finitely many whole-number jump types. Statements at every endpoint for gamma or stable bridges remain open, and pinning can raise the coefficient or lower it.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and computer calculations rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Every script was rerun from fresh copies under CPython 3.12 with pinned versions, normally and under python -O; every recorded output was reproduced byte for byte, and two deliberately wrong values (the certified upper end and the hidden-swap value) made the scripts exit with failure. GitHub CI on Linux reruns the scripts and compares the outputs under a declared policy, with both negative controls (blocking)."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Pinned NumPy, Matplotlib and mpmath; outputs reproduced on the release platform under CPython 3.12.11 and on Linux CI under the declared policy (certificate identical; exact laws identical; floating-point singular values within 1e-9). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Chang and Chen (2026), On the maximal correlation of some stochastic processes. The Annals of Applied Probability. The formula for unconditioned Lévy processes (Theorem 1.2), reproved here on every finite horizon; the labelled random-subset theorem (Theorem 1.5), essentially the visible-matching case of the identity here; and the question for Lévy bridges (Section 6, Problem 1), answered here in operator form.",
+      "url": "https://doi.org/10.1214/25-AAP2293"
+    },
+    {
+      "citation": "Diaconis and Griffiths (2012), Exchangeable pairs of Bernoulli random variables, Krawtchouck polynomials, and Ehrenfest urns. Australian & New Zealand Journal of Statistics. The fixed-overlap Krawtchouk spectrum and the random-elements-in-common construction behind the shared-shock example.",
+      "url": "https://doi.org/10.1111/j.1467-842X.2012.00654.x"
+    },
+    {
+      "citation": "Griffiths and Milne (1978), A class of bivariate Poisson processes. Journal of Multivariate Analysis. The class of bivariate Poisson processes to which the unpinned shared-shock pair belongs.",
+      "url": "https://doi.org/10.1016/0047-259X(78)90061-1"
+    },
+    {
+      "citation": "Griffiths, Milne and Wood (1979), Aspects of correlation in bivariate Poisson distributions and processes. Australian Journal of Statistics. Ranges of ordinary correlation for bivariate Poisson laws and processes.",
+      "url": "https://doi.org/10.1111/j.1467-842X.1979.tb01142.x"
+    },
+    {
+      "citation": "Madiman and Barron (2007), Generalized Entropy Power Inequalities and Monotonicity Properties of Information. IEEE Transactions on Information Theory. The analysis-of-variance decomposition for random subsets used in Section 3.",
+      "url": "https://doi.org/10.1109/TIT.2007.899484"
+    },
+    {
+      "citation": "Guo and Zhang (2022), Extreme eigenvalues of nonlinear correlation matrices with applications to additive models. Stochastic Processes and their Applications. Binomial overlap coefficients for symmetric functions of overlapping samples (Theorem 3).",
+      "url": "https://doi.org/10.1016/j.spa.2021.04.006"
+    },
+    {
+      "citation": "Kallenberg (1973), Canonical representations and convergence criteria for processes with interchangeable increments. Zeitschrift für Wahrscheinlichkeitstheorie und Verwandte Gebiete. The canonical representation behind the uniform-clock description of jumps.",
+      "url": "https://doi.org/10.1007/BF00736005"
+    },
+    {
+      "citation": "Chaumont and Uribe Bravo (2015), Shifting Processes with Cyclically Exchangeable Increments at Random. Progress in Probability. The restatement of Kallenberg’s representation used in Section 4.",
+      "url": "https://doi.org/10.1007/978-3-319-13984-5_5"
+    },
+    {
+      "citation": "Last and Penrose (2017), Lectures on the Poisson Process. Cambridge University Press. Poisson marking, the Mecke equation and the Fock-space representation.",
+      "url": "https://doi.org/10.1017/9781316104477"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:levy-bridge-maximal-correlation",
+    "attemptIds": [
+      "ep-attempt:levy-bridge-maximal-correlation-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know which features of two coordinate paths of a pinned Lévy process carry their dependence, and compute the maximal correlation where the jump terms become finite or scalar.",
+      "scope": "Two-dimensional Lévy bridges on a fixed horizon; almost every endpoint, every endpoint for positive-definite Gaussian covariance and at atoms; the jump terms are operator norms, explicit only in the computable cases."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states Chang and Chen’s unconditioned formula and their Problem 1, explains why pinning changes the problem, separates what is theirs (Theorems 1.2 and 1.5) and what is classical (Hoeffding decompositions, Kallenberg clocks, bivariate Poisson and Krawtchouk structure) from what is new, and says plainly that the answer is a reduction, not a closed form.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The jump terms are explicit only in the computable cases."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a probabilist check the incidence inequality of Section 3, the clock representation and bridge identification of Section 4 and the Fock-space step of Proposition 5.3.",
+      "claimCeiling": "Written proofs of Theorem 2.1, Corollary 2.2, Theorem 3.1, Proposition 4.2, Propositions 5.1-5.3 and Corollary 5.4; operator-form answer, not a closed formula; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "levy-bridge-maximal-correlation-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable operator-form answer for the maximal correlation of Lévy bridges, with replayable checks.",
+        "setting": "AI-assisted probability research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

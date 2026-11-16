@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about how much two random paths can tell us about each other when they are forced to finish at a chosen point. Maximal correlation measures how much one random quantity can reveal about another, using any functions of them, not just straight-line relationships. A value of zero means the two are independent, and a value of one means they share something exactly. Chang and Chen worked out this coefficient for the two coordinates of a Lévy process, which is random motion made of continuous wiggles plus sudden jumps. They then asked what happens for a Lévy bridge, where the same motion is pinned to end at a given point.",
+      "inputSha256": "26310bbed377770f00d16d12820fb0b15c2a0644472595462a792bef547a0ec4",
+      "audioSha256": "0e5d705b9a766ecc1b338392e04d4c339384a2f2432e71c8c8f0f0876211dd2a",
+      "requestId": "req_730a31a3cab3470da2c99f0ae3c4ccde",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "is pinned to end at a given point",
+        "heardEnding": "for a lazy bridge where the same motion is pinned to end at a given point",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "Pinning changes the picture: it destroys independence over time and can create dependence where there was none. In one example, the two sides jump independently and their wiggles are only weakly correlated, so the coefficient is point two; once both ends are pinned, it rises above point nine nine seven, close to perfect dependence. The answer in this paper is that the bridge coefficient is the largest of three numbers: the correlation of the wiggles, how dependent the two lists of jump sizes are, and a measure of how often the two coordinates jump at the same moment. Exact timing matters only through those shared jumps. A one-cut principle follows: keep the jump sizes, note which jumps happen before one fixed time, and nothing is lost.",
+      "inputSha256": "f010e28eb5890b509171e190aecb2b9d7d14af8478743c0468cf644ec5446815",
+      "audioSha256": "7af8f2a5c0732204d498b739b30c8f791fc2f6c367cea988e0f361651d734532",
+      "requestId": "req_17e743bda3aa4a95b2896b215ffa8d5a",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "happen before fixed time and nothing is lost",
+        "heardEnding": "follows keep the jump sizes note which jumps happen before fixed time and nothing is lost",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The key idea is that, once the jump sizes are known, the jump times behave like independent uniform clocks, except that a shared jump shares its clock; and statistics that use several shared clocks never beat those that use a single clock. There are clear limits. The size term and the shared-jump term are operator norms, with no general formula. They become concrete when the coordinates never jump together, or when there are finitely many whole-number jump types. Statements at every endpoint for gamma or stable bridges remain open, and pinning can raise the coefficient or lower it. This is an unrefereed candidate, checked by internal AI-assisted review and computer calculations rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+      "inputSha256": "818930fb6ad8bf492c051c2e647571a699b40fb4d1be290717a4833986ae7e38",
+      "audioSha256": "25d3ee15c20e9819040420dbf7f1296b97d040b9336f7a2a111bfbc88158bf29",
+      "requestId": "req_8e61f4addb7a4c7fad8d23a036b77457",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice that is not additional evidence",
+        "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "levy-bridge-maximal-correlation",
+  "generatedAt": "2026-11-16T16:11:26.203Z",
+  "sourceMetadata": "papers/levy-bridge-maximal-correlation/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "a8ff21ddf2dfe55b077c002c68be9aba3c4f0968db688bb95ee89395c82ddc1c",
+  "transcriptPath": "assets/audio/levy-bridge-maximal-correlation.txt",
+  "transcriptSha256": "e9989e3b4cd579a3bea478dfde08416c3811c09b1d1e7c2dc58546ad92855b5e",
+  "audioPath": "assets/audio/levy-bridge-maximal-correlation.mp3",
+  "audioSha256": "9381550810e88f736dd1878439d741eeb747aeb42ea9330a5f267667ada231d5",
+  "audioBytes": 2233772,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice that is not additional evidence",
+    "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
