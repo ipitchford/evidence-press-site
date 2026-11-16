@@ -1,0 +1,15 @@
+This is an audio briefing from Evidence Press on a research candidate about how random walks escape from regions of a network.
+
+A random walk on a network mixes quickly unless some region is hard to leave. Cheeger's inequality turns this into a guarantee: one number computed from the network, the spectral gap, certifies how easy the hardest region is to leave. But the guarantee loses a square.
+
+Houdré and Tetali proposed a sharper way to measure a boundary: instead of adding up the chances of escaping from each point, add up their square roots. They asked whether the spectral gap controls this square-root boundary with no loss at all.
+
+Morris and Peres showed that it does, up to a logarithm. Lau and Tjowasi then built weighted examples showing that the logarithm is needed, and asked whether a plain graph, where every edge counts the same, can also break the conjecture.
+
+This paper answers yes. The graphs are rings of tightly knit neighbourhoods, with more wires between nearby neighbourhoods than distant ones. Cutting through a neighbourhood never helps much, because its internal wires charge for the cut. The loss grows like the logarithm of the degree. Why a logarithm? Deep inside half of the ring, the chance of escaping falls like one over the depth squared, its square root like one over the depth, and adding those up gives a logarithm.
+
+That growth is also the worst possible. For every network, the loss is at most four plus the logarithm of one over the smallest step probability, which answers a question Houdré and Tetali asked about their own bound. One formula pins down the worst loss for every exponent between vertex expansion and conductance, up to fixed constants.
+
+The limits matter. The constants are explicit but far from sharp, and the effect is mild: even with about a trillion vertices, a computed upper estimate of the ratio is only about one and a half. The lower bounds also rely on an estimate from Lau and Tjowasi rather than a self-contained proof.
+
+This is an unrefereed candidate. Its checking is internal AI-assisted review and computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.

@@ -1,0 +1,204 @@
+{
+  "slug": "houdre-tetali-degree-law",
+  "title": "The degree dependence of Houdré–Tetali isoperimetry: simple circulant counterexamples and a uniform law",
+  "shortTitle": "Houdré–Tetali isoperimetry and the degree",
+  "oneLine": "Simple graphs break the square-root Cheeger conjecture by a logarithm of the degree, and that is the worst case.",
+  "abstract": "Cheeger's inequality lets the spectral gap λ₂ of a random walk certify how easy the hardest region of a network is to leave, at the cost of a square. Houdré and Tetali introduced boundary functionals φ_p that add up the p-th powers of escape probabilities, and asked whether φ_{1/2}² ≤ C λ₂ holds with an absolute constant. Morris and Peres proved it up to a logarithm; Lau and Tjowasi (APPROX/RANDOM 2024) showed with a weighted cycle that the logarithm is needed for weighted chains and asked whether the simple random walk on a graph can also violate it. This candidate answers that question: explicit connected simple circulant graphs on n⁴ + n vertices have φ_{1/2}²/λ₂ ≥ 9·10⁻⁶ log n, and the ratio is of order log n, via a comparison theorem showing that cuts through clique fibres cannot do much better than cuts along them. Every reversible chain satisfies φ_p² ≤ 4(1 + (1 − p)² Ψ_p(1/κ)) λ₂, where Ψ_p(x) = ∫₁ˣ t^(−2p) dt and κ is the smallest off-diagonal transition probability; at p = 1/2 this is (4 + log(1/κ)) λ₂, answering Houdré and Tetali's question about the factor 1/κ. For every 0 ≤ p ≤ 1 and maximum degree Δ ≥ 2 the largest ratio over simple graphs lies between 10⁻⁸ Ψ_p(Δ) and 12 Ψ_p(Δ). Limits: the constants are explicit but not sharp; the effect is numerically mild (an upper estimate of the ratio is about 1.55 at about 1.1·10¹² vertices); the lower bounds rely on a weighted estimate of Lau and Tjowasi. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-16",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "spectral graph theory",
+    "Cheeger inequality",
+    "Houdré–Tetali conjecture",
+    "isoperimetric constants",
+    "Markov chains",
+    "circulant graphs",
+    "vertex expansion",
+    "conductance"
+  ],
+  "repoUrl": "https://github.com/ipitchford/houdre-tetali-degree-law",
+  "releaseUrl": "https://github.com/ipitchford/houdre-tetali-degree-law/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/houdre-tetali-degree-law/releases/download/v0.1.0-candidate/houdre-tetali-degree-law-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24276540",
+  "conceptDoi": "10.5281/zenodo.24276539",
+  "zenodoUrl": "https://zenodo.org/records/24276540",
+  "citeText": "Anonymous (2026). The degree dependence of Houdré–Tetali isoperimetry: simple circulant counterexamples and a uniform law. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24276540",
+  "evidence": "A 15-page paper with a plain introduction, a known-versus-new table, written proofs, one figure and a section on consequences and limits; three check scripts with recorded outputs (construction and spectra of the circulants for small n; every cut of small clique-fibre graphs against the comparison theorem; the explicit constants, the Lau–Tjowasi inequality for small cycles and a brute-force test of the chain bound). A clean replay under Python 3.12, also under python -O, reproduced every output, Linux CI agreed within a declared floating-point tolerance, and two deliberately wrong checks were caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and finite computational checks. Internal AI-assisted review in five reviewer roles, a clean replay, one revision round with extensions (the chain-level upper bound and explicit constants), then a re-review and a proof audit of the new proofs by two further AI verification passes; an adversarial review by a second AI model was cut short by a usage limit and found no defect before it stopped. The lower bounds rely on a weighted estimate of Lau and Tjowasi. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 16 November 2026 with the release DOI on the title page, 15 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 16 November 2026.",
+  "keyResults": [
+    "Theorem 1.1 (proof): for every even n ≥ 4 an explicit connected simple circulant graph G_n on n⁴ + n vertices, of degree below 4n³, has φ_{1/2}²/λ₂ ≥ 9·10⁻⁶ log n, and the ratio is of order log n; this answers the question of Lau and Tjowasi.",
+    "Theorem 4.1 (proof): for cliques joined by regular bipartite graphs, no cut that splits cliques is much cheaper than the best cut made of whole cliques, with an explicit loss.",
+    "Theorem 1.2 (proof): every irreducible reversible chain satisfies φ_p² ≤ 4(1 + (1 − p)² Ψ_p(1/κ)) λ₂; at p = 1/2, φ_{1/2}² ≤ (4 + log(1/κ)) λ₂, and a level set of a second eigenfunction attains the bound.",
+    "Theorem 1.3 (proof): for every 0 ≤ p ≤ 1 and Δ ≥ 2, the largest φ_p²/λ₂ over simple graphs, over circulants and over reversible chains with κ ≥ 1/Δ lies between 10⁻⁸ Ψ_p(Δ) and 12 Ψ_p(Δ).",
+    "Section 7 (computation): for G_n an upper estimate of the ratio is 0.50 at 260 vertices, 1.00 at about 1.7·10⁷ vertices and 1.55 at about 1.1·10¹² vertices, so the effect is real but numerically mild."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles), partial adversarial review by a second AI model, re-review, proof audit by two AI verification passes, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about how random walks escape from regions of a network.\n\nA random walk on a network mixes quickly unless some region is hard to leave. Cheeger's inequality turns this into a guarantee: one number computed from the network, the spectral gap, certifies how easy the hardest region is to leave. But the guarantee loses a square.\n\nHoudré and Tetali proposed a sharper way to measure a boundary: instead of adding up the chances of escaping from each point, add up their square roots. They asked whether the spectral gap controls this square-root boundary with no loss at all.\n\nMorris and Peres showed that it does, up to a logarithm. Lau and Tjowasi then built weighted examples showing that the logarithm is needed, and asked whether a plain graph, where every edge counts the same, can also break the conjecture.\n\nThis paper answers yes. The graphs are rings of tightly knit neighbourhoods, with more wires between nearby neighbourhoods than distant ones. Cutting through a neighbourhood never helps much, because its internal wires charge for the cut. The loss grows like the logarithm of the degree. Why a logarithm? Deep inside half of the ring, the chance of escaping falls like one over the depth squared, its square root like one over the depth, and adding those up gives a logarithm.\n\nThat growth is also the worst possible. For every network, the loss is at most four plus the logarithm of one over the smallest step probability, which answers a question Houdré and Tetali asked about their own bound. One formula pins down the worst loss for every exponent between vertex expansion and conductance, up to fixed constants.\n\nThe limits matter. The constants are explicit but far from sharp, and the effect is mild: even with about a trillion vertices, a computed upper estimate of the ratio is only about one and a half. The lower bounds also rely on an estimate from Lau and Tjowasi rather than a self-contained proof.\n\nThis is an unrefereed candidate. Its checking is internal AI-assisted review and computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The three check scripts (also under python -O) and the figure script were rerun from fresh copies under CPython 3.12 with pinned versions; every output matched the recorded file apart from timestamps and timings, and two deliberately wrong checks (a transfer bound multiplied by 50; the Lau–Tjowasi check tightened above its margin) exited with failure. GitHub CI on Linux reruns the scripts under -O and compares the outputs under a declared floating-point tolerance, with both negative controls (blocking)."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; the transfer audit computes cut costs directly from adjacency masks, independently of the rounding proof."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Pinned NumPy, SymPy and Matplotlib; outputs reproduced on the release platform under CPython 3.12.11 and on Linux CI within the declared tolerance (integers, strings and structure exact; floats within relative 1e-9). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Houdré and Tetali (2004), Isoperimetric Invariants For Product Markov Chains and Graph Products. Combinatorica. Introduces the boundary functionals, proves the square-root bound with the factor 2/κ and asks whether it can be replaced by an absolute constant (Remark 3.5); Example 4 is a cycle of cliques.",
+      "url": "https://doi.org/10.1007/s00493-004-0023-x"
+    },
+    {
+      "citation": "Lau and Tjowasi (2024), On the Houdré-Tetali Conjecture About an Isoperimetric Constant of Graphs. APPROX/RANDOM 2024, LIPIcs 317. The weighted counterexample, the spectral sweep, the bound for exponents above one half, and the question answered here; its Section 4.1 supplies the weighted estimate behind Lemma 2.1.",
+      "url": "https://doi.org/10.4230/LIPIcs.APPROX/RANDOM.2024.36"
+    },
+    {
+      "citation": "Morris and Peres (2005), Evolving sets, mixing and heat kernel bounds. Probability Theory and Related Fields. Proves the square-root inequality up to a logarithmic factor for lazy reversible chains.",
+      "url": "https://doi.org/10.1007/s00440-005-0434-7"
+    },
+    {
+      "citation": "Montenegro (2007), Sharp edge, vertex, and mixed Cheeger type inequalities for finite Markov kernels. Electronic Communications in Probability. Gives the vertex-expansion bound used for exponent zero.",
+      "url": "https://doi.org/10.1214/ECP.v12-1269"
+    },
+    {
+      "citation": "Alon (1986), Eigenvalues and expanders. Combinatorica. Cheeger-type inequality for graphs and vertex expansion.",
+      "url": "https://doi.org/10.1007/BF02579166"
+    },
+    {
+      "citation": "Sinclair and Jerrum (1989), Approximate counting, uniform generation and rapidly mixing Markov chains. Information and Computation. Cheeger inequality for Markov chains.",
+      "url": "https://doi.org/10.1016/0890-5401(89)90067-9"
+    },
+    {
+      "citation": "Kwok, Lau, Lee, Oveis Gharan and Trevisan (2013), Improved Cheeger's inequality. STOC 2013. Improved Cheeger inequalities in the same spirit.",
+      "url": "https://doi.org/10.1145/2488608.2488611"
+    },
+    {
+      "citation": "Kwok, Lau and Lee (2017), Improved Cheeger's Inequality and Analysis of Local Graph Partitioning using Vertex Expansion and Expansion Profile. SIAM Journal on Computing.",
+      "url": "https://doi.org/10.1137/16M1079816"
+    },
+    {
+      "citation": "Talagrand (1993), Isoperimetry, logarithmic Sobolev inequalities on the discrete cube, and Margulis' graph connectivity theorem. Geometric and Functional Analysis. The cube boundary quantity of which the square-root functional is the Markov-chain version.",
+      "url": "https://doi.org/10.1007/BF01895691"
+    },
+    {
+      "citation": "Lau (2026), Algorithmic spectral graph theory. Book manuscript dated 16 September 2026, Problem 2.16, where the logarithmic upper bound for regular graphs is an exercise.",
+      "url": "https://cs.uwaterloo.ca/~lapchi/papers/ASGT.pdf",
+      "pageOnly": true,
+      "pageOnlyReason": "Cited in the manuscript bibliography as a book manuscript without a DOI; linked to the cited web record, so the DOI gate does not apply."
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:houdre-tetali-degree-law",
+    "attemptIds": [
+      "ep-attempt:houdre-tetali-degree-law-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know how much the spectral gap can lose when it certifies the Houdré–Tetali boundary functionals, as a function of the degree and the exponent, and whether simple graphs attain the loss.",
+      "scope": "Simple circulant counterexamples at the square-root exponent; the chain-level upper bound 4 + log(1/κ); the uniform law Ψ_p(Δ) with explicit, non-sharp constants; lower bounds rely on the Lau–Tjowasi weighted estimate."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 and Table 1 separate what was known (Houdré–Tetali's bound and question, the Morris–Peres logarithmic bound, Lau–Tjowasi's weighted counterexample, sweep method and question, the regular-graph log d bound) from what is new (simple circulant counterexamples, the comparison theorem, uniform lower bounds and the chain-level upper bound).",
+      "remainingRisks": [
+        "The bounded literature search is not exhaustive priority certification.",
+        "The lower bounds rely on the Lau–Tjowasi weighted estimate."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in Markov-chain isoperimetry check the clique-fibre comparison theorem (Theorem 4.1), the explicit form of the Lau–Tjowasi estimate (Lemma 2.1) and the constants of Section 6.",
+      "claimCeiling": "Written proofs of Theorems 1.1–1.3 and 4.1 with explicit, non-sharp constants; lower bounds rely on the Lau–Tjowasi weighted estimate; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "houdre-tetali-degree-law-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable determination, up to constants, of the degree dependence of the Houdré–Tetali inequalities, with replayable checks.",
+        "setting": "AI-assisted spectral graph theory research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
