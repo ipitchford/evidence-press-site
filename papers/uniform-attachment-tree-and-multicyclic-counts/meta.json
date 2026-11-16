@@ -1,0 +1,219 @@
+{
+  "slug": "uniform-attachment-tree-and-multicyclic-counts",
+  "title": "Linear variance for tree counts and core-driven limits for multicyclic counts in uniform attachment graphs",
+  "shortTitle": "Tree counts average out; multicyclic counts remember the first nodes",
+  "oneLine": "In random attachment networks, tree-pattern counts vary like averages, while counts of patterns with two or more cycles are fixed by the earliest nodes; two conjectures proved.",
+  "abstract": "In the uniform attachment graph each new vertex sends m edges to older vertices chosen independently and uniformly at random; for m = 1 it is the random recursive tree. Björklund, Holmgren, Janson and Lo (Combinatorics, Probability and Computing, 2025) determined the orders of magnitude of the number W_H(n) of copies of a fixed small pattern H and left two conjectures: the count of every tree with at least two edges has variance of exact order n (their Conjecture 3.8), and for a pattern with two or more independent cycles, 2-core C and t pendant vertices, W_H(n)/(log n)^t converges almost surely to a constant times the eventual number of copies of C (their Conjecture 3.14). This candidate proves both. Main results: every nonzero linear combination of distinct tree counts has variance of order n, with an explicit lower bound; the leading means and covariances are explicit polynomials in m and the tree counts are jointly asymptotically normal with a nonsingular covariance matrix, with mixing convergence (at m = 2 the variance constants of the two-edge path, three-edge path and three-leaf star are 12, 1688 and 888); for multicyclic patterns the constant is a hook-length product, the convergence also holds in every L^p, and every simple cyclic core is absent with positive probability; and the error at scale (log n)^(t-1/2) is normal with a random variance fixed by where the core copies sit. The univariate n^(-1/2) normal-approximation rate is inherited from their Theorem 3.7. Limits: fixed patterns and fixed m; no multivariate rate; unicyclic patterns, preferential attachment and sampling without replacement are not treated; convergence is slow at realistic sizes. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-16",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "uniform attachment",
+    "random recursive dag",
+    "random recursive tree",
+    "subgraph counts",
+    "central limit theorem",
+    "variance",
+    "stable convergence",
+    "random graphs"
+  ],
+  "repoUrl": "https://github.com/ipitchford/uniform-attachment-tree-and-multicyclic-counts",
+  "releaseUrl": "https://github.com/ipitchford/uniform-attachment-tree-and-multicyclic-counts/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/uniform-attachment-tree-and-multicyclic-counts/releases/download/v0.1.0-candidate/uniform-attachment-tree-and-multicyclic-counts-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24282890",
+  "conceptDoi": "10.5281/zenodo.24282889",
+  "zenodoUrl": "https://zenodo.org/records/24282890",
+  "citeText": "Anonymous (2026). Linear variance for tree counts and core-driven limits for multicyclic counts in uniform attachment graphs. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24282890",
+  "evidence": "A 32-page paper with a plain introduction, written proofs of four main theorems and their supporting results, a table of what was known and what is new, worked examples and open problems; an exact check suite (29 checks: symbolic constants, a second implementation, complete small-network enumeration and the covariance determinant 215808 at m = 2); exact rational computation of the tree constants; scripts for the mean core count, finite-size centring error and two fixed-seed Monte Carlo illustrations, all with recorded outputs. A clean replay under Python 3.12, also under python -O, reproduced every output byte for byte, Linux CI agreed under a declared comparison policy, and two deliberately wrong values were caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact and Monte Carlo computational checks. Internal AI-assisted review in five reviewer roles run as Claude subagents, a clean replay, one revision round with extensions (the boundary-scale fluctuation theorem, a chi-square corollary and a worked core example), then a re-review and a proof audit of the new Section 6 run as Claude subagents; the planned adversarial review by a second AI model did not run because of a usage limit. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 16 November 2026 with the release DOI on the title page, 32 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 16 November 2026.",
+  "keyResults": [
+    "Theorem 1.3 (proof, main): every nonzero linear combination of distinct tree counts with at least two edges has variance of exact order n, with lower bound c_H² n/(96·4^e e!); this proves Conjecture 3.8 of Björklund, Holmgren, Janson and Lo.",
+    "Theorem 1.4 (proof, main): the leading means μ_T(m) and covariances ν_{T,S}(m) are explicit rational polynomials in m; the tree counts are jointly normal in the limit with a positive definite covariance, and the convergence is mixing.",
+    "Theorem 1.5 (proof, main): for a multicyclic pattern with core C and t pendant vertices, W_H(n)/(log n)^t → c_{H,m}W_C(∞) almost surely and in every L^p, with a hook-length constant; this proves their Conjecture 3.14, and every simple core is absent with positive probability.",
+    "Theorem 1.6 (proof, main): the error in Theorem 1.5 is of order (log n)^{t−1/2} and converges stably to a normal variable with a random variance set by the positions of the core copies.",
+    "Corollary 4.2 (inherited): the univariate Wasserstein rate O(n^{−1/2}) for a single tree count is the rate of their Theorem 3.7, which applies once Theorem 1.3 holds.",
+    "Supporting (exact computation): at m = 2 the variance constants of the two-edge path, three-edge path and three-leaf star are 12, 1688 and 888, and the covariance determinant is 215808; a chi-square corollary, exact finite-size means, a fixed-root forest law and the merged simple graph are also treated."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles as Claude subagents), re-review and proof audit of the new section as Claude subagents, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about counting small patterns in growing random networks.\n\nPicture a network that grows one node at a time. Each newcomer links to a fixed number of earlier nodes, chosen completely at random. This is the uniform attachment model, and with a single link per node it is the classical random recursive tree. People who study growing networks often count small patterns in them, such as paths, stars, or pairs of linked cycles.\n\nBjörklund, Holmgren, Janson and Lo worked out how large these counts are, and they left two conjectures. The first says that the count of any tree-shaped pattern with at least two edges fluctuates by about the square root of the size of the network. The second says that patterns with two or more cycles are governed by their cyclic core: the count grows like a constant, times the number of copies of the core, times a power of the logarithm of the size.\n\nThis paper proves both conjectures. For trees it goes further: even mixtures of different tree counts keep these fluctuations, so the counts are jointly bell-shaped in the limit, and the paper gives the variance and covariance constants exactly. For patterns with cycles, the constant turns out to be a hook-length product, every simple core has a real chance never to appear, and the next layer of error is bell-shaped with a random spread that depends on where the core copies sit.\n\nThe contrast is striking. Tree counts behave like averages and forget the early network. Counts of patterns with several cycles are fixed by the earliest nodes and keep that memory for ever.\n\nThere are limits. The patterns and the number of links per node are fixed, the multicyclic limit is approached slowly, and other growth rules are not covered.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and computer calculations rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Every script was rerun from fresh copies under CPython 3.12 with pinned versions and python -O; every recorded output was reproduced byte for byte, and two deliberately wrong values (the covariance determinant and the zeta(2) control) made the scripts exit with failure. GitHub CI on Linux reruns all scripts under -O and compares the outputs under a declared policy, with both negative controls (blocking)."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation; the package includes a second internal implementation of the tree constants."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Pinned SymPy, NetworkX, NumPy and SciPy; outputs reproduced on the release platform under CPython 3.12.11 and on Linux CI under the declared policy (exact outputs identical; floating-point summaries within relative 1e-6). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Björklund, Holmgren, Janson and Lo (2025), Approximation of subgraph counts in the uniform attachment model. Combinatorics, Probability and Computing. The orders of magnitude of subgraph counts, Conjectures 3.8 and 3.14 (both proved here), the normal approximation of Theorem 3.7 (whose n^-1/2 rate is inherited here), Theorem 3.15 (the case t = 1) and the further directions of Section 3.1.",
+      "url": "https://doi.org/10.1017/S0963548324000294"
+    },
+    {
+      "citation": "Devroye and Janson (2011), Long and short paths in uniform random recursive dags. Arkiv för Matematik. Background on the uniform random recursive dag.",
+      "url": "https://doi.org/10.1007/s11512-009-0118-0"
+    },
+    {
+      "citation": "Devroye and Lu (1995), The strong convergence of maximal degrees in uniform random recursive trees and dags. Random Structures & Algorithms. The growth m log n of the degree of a fixed vertex, the one-leaf case of the forest law.",
+      "url": "https://doi.org/10.1002/rsa.3240070102"
+    },
+    {
+      "citation": "Janson (2024), The number of descendants in a random directed acyclic graph. Random Structures & Algorithms. Background on random recursive dags.",
+      "url": "https://doi.org/10.1002/rsa.21195"
+    },
+    {
+      "citation": "Hoeffding (1948), A Class of Statistics with Asymptotically Normal Distribution. The Annals of Mathematical Statistics. The orthogonal decomposition used for the variance lower bound.",
+      "url": "https://doi.org/10.1214/aoms/1177730196"
+    },
+    {
+      "citation": "Efron and Stein (1981), The Jackknife Estimate of Variance. The Annals of Statistics. The orthogonal (Efron–Stein) decomposition of a function of independent variables.",
+      "url": "https://doi.org/10.1214/aos/1176345462"
+    },
+    {
+      "citation": "Ruciński (1988), When are small subgraphs of a random graph normally distributed? Probability Theory and Related Fields. Normality of subgraph counts in Erdős–Rényi graphs via orthogonal decompositions.",
+      "url": "https://doi.org/10.1007/BF00718031"
+    },
+    {
+      "citation": "Janson and Nowicki (1991), The asymptotic distributions of generalized U-statistics with applications to random graphs. Probability Theory and Related Fields. Orthogonal decompositions of random graph statistics, where the lowest nonvanishing projection dominates.",
+      "url": "https://doi.org/10.1007/BF01193750"
+    },
+    {
+      "citation": "Janson (1994), Orthogonal decompositions and functional limit theorems for random graph statistics. Memoirs of the American Mathematical Society. The classical orthogonal-decomposition route for subgraph counts.",
+      "url": "https://doi.org/10.1090/memo/0534"
+    },
+    {
+      "citation": "Janson (1988), Normal Convergence by Higher Semiinvariants with Applications to Sums of Dependent Random Variables and Random Graphs. The Annals of Probability. The method of cumulants used for the joint normal limit.",
+      "url": "https://doi.org/10.1214/aop/1176991903"
+    },
+    {
+      "citation": "Holmgren and Janson (2015), Limit laws for functions of fringe trees for binary search trees and random recursive trees. Electronic Journal of Probability. Fringe-tree theory, through which normality for m = 1 may be accessible.",
+      "url": "https://doi.org/10.1214/EJP.v20-3627"
+    },
+    {
+      "citation": "Fuchs, Hwang and Neininger (2006), Profiles of Random Trees: Limit Theorems for Random Recursive Trees and Binary Search Trees. Algorithmica. Profiles of random recursive trees, related to the path case of the forest law for m = 1.",
+      "url": "https://doi.org/10.1007/s00453-006-0109-5"
+    },
+    {
+      "citation": "Häusler and Luschgy (2015), Stable Convergence and Stable Limit Theorems. Springer. Stable and mixing convergence.",
+      "url": "https://doi.org/10.1007/978-3-319-18329-9"
+    },
+    {
+      "citation": "Hirsch, Lachièze-Rey and Owada (2026), Normal approximation for subgraph counts in age-dependent random connection models. Advances in Applied Probability. A related spatial model; it does not address the questions settled here.",
+      "url": "https://doi.org/10.1017/apr.2026.10073"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:uniform-attachment-tree-and-multicyclic-counts",
+    "attemptIds": [
+      "ep-attempt:uniform-attachment-tree-and-multicyclic-counts-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know how counts of small patterns fluctuate in uniform attachment graphs: which counts give nondegenerate normal statistics with explicit constants, and which are fixed by the early network.",
+      "scope": "Fixed patterns and fixed m; trees and multicyclic patterns; unicyclic patterns, preferential attachment and sampling without replacement excluded; slow convergence at realistic sizes."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 restates the two conjectures of Björklund, Holmgren, Janson and Lo, separates what they proved (orders of magnitude, stars, t = 1, the univariate rate) from what is new (linear variance for every tree combination, explicit constants and nonsingular joint limit, the hook-length law for all t with L^p convergence and the zero atom, and the boundary-scale fluctuations), and marks the main and supporting results.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "Convergence is slow at realistic network sizes."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a probabilist check the top-order projection bound of Section 3, the leaf-deletion martingale of Section 5 and the linear representation of Section 6.",
+      "claimCeiling": "Written proofs of Theorems 1.3-1.6 and the supporting results; the univariate rate is inherited from BHJL Theorem 3.7; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "uniform-attachment-tree-and-multicyclic-counts-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable account of subgraph-count fluctuations in uniform attachment graphs, with replayable checks.",
+        "setting": "AI-assisted probability research",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about counting small patterns in growing random networks. Picture a network that grows one node at a time. Each newcomer links to a fixed number of earlier nodes, chosen completely at random. This is the uniform attachment model, and with a single link per node it is the classical random recursive tree. People who study growing networks often count small patterns in them, such as paths, stars, or pairs of linked cycles. Björklund, Holmgren, Janson and Lo worked out how large these counts are, and they left two conjectures. The first says that the count of any tree-shaped pattern with at least two edges fluctuates by about the square root of the size of the network.",
+      "inputSha256": "7cb1badc4b49f2b4cb71189874d2c8d12333a1fd626a2977c87759df5e016230",
+      "audioSha256": "0fd3f408dec98fe23e0a5755a79b57838088d4682ba4a3de9b8dda54ca22a8f4",
+      "requestId": "req_adf69eca92044b308518c24cb291cfd8",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "square root of the size of the network",
+        "heardEnding": "with at least edges fluctuates by about the square root of the size of the network",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The second says that patterns with two or more cycles are governed by their cyclic core: the count grows like a constant, times the number of copies of the core, times a power of the logarithm of the size. This paper proves both conjectures. For trees it goes further: even mixtures of different tree counts keep these fluctuations, so the counts are jointly bell-shaped in the limit, and the paper gives the variance and covariance constants exactly. For patterns with cycles, the constant turns out to be a hook-length product, every simple core has a real chance never to appear, and the next layer of error is bell-shaped with a random spread that depends on where the core copies sit. The contrast is striking. Tree counts behave like averages and forget the early network.",
+      "inputSha256": "af4d9002d128768d9904dcd587f05a71011b6b2f3747b44d81c257788a3bb274",
+      "audioSha256": "0fd740145e84dbc09c33c9499d0fd8c783f6e574869b069791e3ad2667a2f220",
+      "requestId": "req_8fc12770f5214211aac028cdea5b849a",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "behave like averages and forget the early network",
+        "heardEnding": "copies sit the contrast is striking tree counts behave like averages and forget the early network",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Counts of patterns with several cycles are fixed by the earliest nodes and keep that memory for ever. There are limits. The patterns and the number of links per node are fixed, the multicyclic limit is approached slowly, and other growth rules are not covered. This is an unrefereed candidate, checked by internal AI-assisted review and computer calculations rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+      "inputSha256": "34742069710aec64b8660c3275dda18d5b73be36844866c28d5f634d5c2ef4b6",
+      "audioSha256": "e0a46248dcbe9350d7529b246d7f667606d6f294a3af7aa276472d7748df23aa",
+      "requestId": "req_5153a9a659254f9e93904b64ff52817a",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice that is not additional evidence",
+        "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "uniform-attachment-tree-and-multicyclic-counts",
+  "generatedAt": "2026-11-16T14:38:19.661Z",
+  "sourceMetadata": "papers/uniform-attachment-tree-and-multicyclic-counts/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "0ce5b0ee91f688411fc5c023756d170af251c163a416b85c6f53df7f449e60d7",
+  "transcriptPath": "assets/audio/uniform-attachment-tree-and-multicyclic-counts.txt",
+  "transcriptSha256": "00a85bac6849894ebbaf99f9c04d6ac2b8b3261bd89225d67753daeb83e79288",
+  "audioPath": "assets/audio/uniform-attachment-tree-and-multicyclic-counts.mp3",
+  "audioSha256": "5ccc71b5b5bcf50fd2ac3d39a019fed147711ee8088dfedae259920c93d8d6e3",
+  "audioBytes": 2045612,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice that is not additional evidence",
+    "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
