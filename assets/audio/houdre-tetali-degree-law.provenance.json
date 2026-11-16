@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about how random walks escape from regions of a network. A random walk on a network mixes quickly unless some region is hard to leave. Cheeger's inequality turns this into a guarantee: one number computed from the network, the spectral gap, certifies how easy the hardest region is to leave. But the guarantee loses a square. Houdré and Tetali proposed a sharper way to measure a boundary: instead of adding up the chances of escaping from each point, add up their square roots. They asked whether the spectral gap controls this square-root boundary with no loss at all. Morris and Peres showed that it does, up to a logarithm.",
+      "inputSha256": "3718b130532288af1ac4a3fd540d740db35337870f8eab3e83154daa07101a27",
+      "audioSha256": "5804a75f56ae732c880a3c34a0707e64547d17606cf5d690f3955dedf8b5f124",
+      "requestId": "req_60649f0dad5644bbafcf3f7c382ad984",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "showed that it does up to a logarithm",
+        "heardEnding": "with no loss at all morris and perez showed that it does up to a logarithm",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Lau and Tjowasi then built weighted examples showing that the logarithm is needed, and asked whether a plain graph, where every edge counts the same, can also break the conjecture. This paper answers yes. The graphs are rings of tightly knit neighbourhoods, with more wires between nearby neighbourhoods than distant ones. Cutting through a neighbourhood never helps much, because its internal wires charge for the cut. The loss grows like the logarithm of the degree. Why a logarithm? Deep inside half of the ring, the chance of escaping falls like one over the depth squared, its square root like one over the depth, and adding those up gives a logarithm. That growth is also the worst possible.",
+      "inputSha256": "e35ab0952d3ee266f2025adba4663176af1b273b454ac3ff29b7a0d5687e45e1",
+      "audioSha256": "1c1148c83ea31dd86cb3af1ddd0442baa0a28263f095ca74b641d7d596489136",
+      "requestId": "req_707c4f9f94924965a7846844570521cf",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "logarithm that growth is also the worst possible",
+        "heardEnding": "the depth and adding those up gives a logarithm that growth is also the worst possible",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "For every network, the loss is at most four plus the logarithm of one over the smallest step probability, which answers a question Houdré and Tetali asked about their own bound. One formula pins down the worst loss for every exponent between vertex expansion and conductance, up to fixed constants. The limits matter. The constants are explicit but far from sharp, and the effect is mild: even with about a trillion vertices, a computed upper estimate of the ratio is only about one and a half. The lower bounds also rely on an estimate from Lau and Tjowasi rather than a self-contained proof. This is an unrefereed candidate. Its checking is internal AI-assisted review and computation, not peer review. This briefing uses a synthetic voice and is not additional evidence.",
+      "inputSha256": "2b046379e1f0346c34525054555b7509cdbaab3ea9b6a3a96aa476d8f6cacf68",
+      "audioSha256": "f44e874790809da74f722c540a201937fa6546d62a150b8db64a993638719989",
+      "requestId": "req_0f548a9a26914c3694baa970003f58cc",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice and is not additional evidence",
+        "heardEnding": "and computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "houdre-tetali-degree-law",
+  "generatedAt": "2026-11-16T10:09:37.171Z",
+  "sourceMetadata": "papers/houdre-tetali-degree-law/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "7974d28c88abe1eb54e632d14f2a9cc4ad628bcc94105cb338773f25c46f1f53",
+  "transcriptPath": "assets/audio/houdre-tetali-degree-law.txt",
+  "transcriptSha256": "29478defd13adbde237d40cf8a9a19e4db89b4fa5e01070abacac29d13de99ea",
+  "audioPath": "assets/audio/houdre-tetali-degree-law.mp3",
+  "audioSha256": "5edb267a2f9188f9bc0f31601db47d22dd98e7d17217efa52562afaae85560d6",
+  "audioBytes": 2160044,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice and is not additional evidence",
+    "heardEnding": "and computation not peer review this briefing uses a synthetic voice and is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
