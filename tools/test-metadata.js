@@ -69,9 +69,15 @@ check('homepage uses a content-addressed shared stylesheet filename',
 check('Atlas uses a content-addressed page stylesheet filename',
   fs.existsSync(path.join(DIST, 'assets', `atlas-${atlasCssVersion}.css`)) &&
   atlasHtml.includes(`/assets/atlas-${atlasCssVersion}.css`));
+function homeCardRoutes(sectionId) {
+  const section = homeHtml.match(new RegExp('<section[^>]*aria-labelledby="' + sectionId + '"[^>]*>([\\s\\S]*?)</section>'));
+  return [...(section?.[1] || '').matchAll(/<a class="programme-card(?: [^"]+)?" href="([^"]+)"/g)].map(match => match[1]);
+}
 check('homepage keeps four compact programme signposts',
-  (homeHtml.match(/class="programme-card"/g) || []).length === 4 &&
+  homeCardRoutes('programme-title').join(' ') === '/atlas/ /observatory/ /articles/ /productivity/' &&
   /@media\s*\(min-width:\s*1040px\)\s*\{\s*\.programme-cards\s*\{\s*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/.test(siteCss));
+check('homepage Learn section links both teaching atlases and the two companion programmes',
+  homeCardRoutes('learn-title').join(' ') === '/minds-explored/ /science-explored/ /why-minds-break/ /think-again/');
 check('Atlas explanatory prose aligns with the page wrapper',
   /\.atlas-prose\s*\{[^}]*max-width:\s*none;[^}]*margin:\s*2\.6rem\s+0\s+0;/.test(atlasCss));
 check('every release hero art URL is bound to the exact committed SVG bytes',
