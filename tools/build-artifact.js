@@ -76,7 +76,9 @@ function buildEnvironment(root) {
 function snapshot(root) {
   root = fs.realpathSync(root);
   const env = buildEnvironment(root);
-  const git = args => execFileSync(resolveCommand('git', env), args, { cwd: root, env, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
+  const git = args => execFileSync(resolveCommand('git', env), args, {
+    cwd: root, env, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 32 << 20
+  }).trim();
   if (fs.realpathSync(git(['rev-parse', '--show-toplevel'])) !== root) throw new Error('build root must be the Git worktree root');
   if (git(['status', '--porcelain=v1', '--untracked-files=all'])) throw new Error('build receipt requires a clean tracked and untracked worktree');
   // Git status can be fooled by assume-unchanged/skip-worktree. Refuse those
