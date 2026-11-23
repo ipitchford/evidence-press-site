@@ -1494,6 +1494,11 @@ ${Array.from({ length: 9 }, (_, k) => {
       <h3>Minds Explored</h3>
       <p>Start with a question. Find university lectures, follow 51 topic guides and 20 learning paths, and build a library that stays in your browser.</p>
     </a>
+    <a class="programme-card" href="/science-explored/">
+      <p class="card-date">Open learning · science and technology</p>
+      <h3>Science Explored</h3>
+      <p>Explore university lectures and courses, from the motion of planets to the movement of ocean plates. Follow the evidence through twelve periods of scientific history.</p>
+    </a>
     <a class="programme-card book-card" href="/why-minds-break/">
       <p class="card-date">Book · free films and essays</p>
       <h3>Why Minds Break</h3>
@@ -1523,11 +1528,13 @@ ${foot}`;
    so a section added to the navigation appears on its hub automatically. */
 function hubPages() {
   const me = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'minds-explored', 'manifest.json'), 'utf8'));
+  const science = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'science-explored', 'manifest.json'), 'utf8'));
   const thousands = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   const plural = (n, noun) => `${thousands(n)} ${noun}${n === 1 ? '' : 's'}`;
   const counts = {
     '/': plural(papers.length, 'release'),
     '/articles/': plural(articles.length, 'article'),
+    '/science-explored/': `${thousands(science.cataloguedVideos)} catalogued videos · ${science.counts.completedGuides} topic guides · ${science.counts.completedPaths} learning paths`,
     '/minds-explored/': `${thousands(me.cataloguedVideos)} catalogued videos · ${me.counts.completedGuides} topic guides · ${me.counts.completedPaths} learning paths`
   };
   for (const group of SITE_NAV.GROUPS.filter(g => g.hub)) {
@@ -2781,7 +2788,8 @@ function sitemap() {
     ...papers.map(p => ({ loc: urlOf(p), lastmod: p.dateModified || p.datePublished })),
     ...articles.map(article => ({ loc: articleUrl(article), lastmod: article.dateModified })),
     ...require('./tools/why-minds-break-films').routes(ROOT, BASE),
-    ...require('./tools/minds-explored').routes(ROOT)
+    ...require('./tools/minds-explored').routes(ROOT),
+    ...require('./tools/minds-explored').routes(ROOT, 'science-explored')
   ];
   const urls = [...new Map(candidates.map(item => [item.loc, item])).values()];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
@@ -3627,6 +3635,9 @@ if (!PAGE_FIX) write('_headers', `/*
 /minds-explored/*
   Cache-Control: public, max-age=0, must-revalidate
 
+/science-explored/*
+  Cache-Control: public, max-age=0, must-revalidate
+
 /interpsych
   X-Robots-Tag: noindex, nofollow, noarchive
   Cache-Control: public, max-age=0, must-revalidate, no-transform
@@ -3861,6 +3872,7 @@ shopPage();
 applicationsPage();
 thinkAgainPage();
 require('./tools/minds-explored').build(ROOT, DIST);
+require('./tools/minds-explored').build(ROOT, DIST, 'science-explored');
 whyMindsBreakPages();
 require('./tools/why-minds-break-films').build({ root: ROOT, base: BASE, head, write, markdown, esc, escAttr });
 interpsychPage();

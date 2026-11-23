@@ -392,8 +392,8 @@ td .inline-img { height: 1.9em; vertical-align: middle; }
 .programme-card .card-links { margin-top: .32rem; gap: .65rem; }
 @media (min-width: 660px) { .programme-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1040px) { .programme-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-@media (min-width: 660px) and (max-width: 1039px) { .learn-cards .minds-explored-promo { grid-column: 1 / -1; } }
-@media (min-width: 1040px) { .programme-cards.learn-cards { grid-template-columns: 2fr 1fr 1fr; } }
+@media (min-width: 660px) { .programme-cards.learn-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1040px) { .programme-cards.learn-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 /* Articles are a lighter communication layer than research releases. They use
    the same type and palette, but a distinct index and an explicit scope box so
