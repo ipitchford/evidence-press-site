@@ -50,32 +50,25 @@ if (!urlList.length) {
 }
 
 const host = new URL(BASE).host;
-const body = {
-  host,
-  key: KEY,
-  keyLocation: `${BASE}/${KEY}.txt`,
-  urlList
-};
+// IndexNow accepts up to 10,000 URLs in each request.
+const batchSize = 10000;
 
-(async () => {
-  let res;
-  try {
-    res = await fetch(ENDPOINT, {
+async function submit() {
+  for (let offset = 0; offset < urlList.length; offset += batchSize) {
+    const batch = urlList.slice(offset, offset + batchSize);
+    const response = await fetch(ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
-      body: JSON.stringify(body)
+      body: JSON.stringify({ host, key: KEY, keyLocation: `${BASE}/${KEY}.txt`, urlList: batch })
     });
-  } catch (e) {
-    console.error(`IndexNow: request failed to reach ${ENDPOINT} — ${e.message}`);
-    process.exit(1);
+    const message = (await response.text()).slice(0, 500);
+    if (response.status !== 200 && response.status !== 202)
+      throw new Error(`HTTP ${response.status} ${response.statusText}: ${message}`);
+    console.log(`IndexNow: submitted ${batch.length} URLs for ${host} → HTTP ${response.status} (accepted).`);
   }
-  const text = (await res.text()).slice(0, 500);
-  // IndexNow returns 200 (OK) or 202 (Accepted, pending validation) on success.
-  if (res.status === 200 || res.status === 202) {
-    console.log(`IndexNow: submitted ${urlList.length} URLs for ${host} → HTTP ${res.status} (accepted).`);
-    process.exit(0);
-  }
-  console.error(`IndexNow: submission REJECTED → HTTP ${res.status} ${res.statusText}\n${text}`);
-  console.error('  422 = key/host mismatch or a URL outside the host; 403 = key file not reachable at keyLocation.');
-  process.exit(1);
-})();
+}
+
+submit().catch(error => {
+  console.error('IndexNow: submission failed: ' + error.message);
+  process.exitCode = 1;
+});

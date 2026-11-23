@@ -104,7 +104,7 @@ if (BUILT) {
     for (const name of fs.readdirSync(dir)) {
       const file = path.join(dir, name);
       const rel = path.relative(DIST, file);
-      if (fs.statSync(file).isDirectory()) { if (!/^(assets|minds-explored)$/.test(rel)) walk(file); }
+      if (fs.statSync(file).isDirectory()) { if (!/^(assets|minds-explored|science-explored)$/.test(rel)) walk(file); }
       else if (name.endsWith('.html')) pages.push(rel);
     }
   })(DIST);
@@ -133,9 +133,9 @@ if (BUILT) {
 
   // The atlas is built by its own application; its bar must be byte-identical
   // to bar() here, page by page (Learn everywhere, Shop on its bookshop).
-  for (const href of ['/minds-explored/', '/minds-explored/topics/', '/minds-explored/shop/']) {
+  for (const href of ['/minds-explored/', '/minds-explored/topics/', '/minds-explored/shop/', '/science-explored/', '/science-explored/topics/', '/science-explored/shop/']) {
     const html = fs.readFileSync(fileFor(href), 'utf8');
-    ok(html.includes(NAV.bar(href, { origin: 'https://evidencepress.org' })), `Minds Explored ${href} bar mirrors tools/site-nav.js`);
+    ok(html.includes(NAV.bar(href, { origin: 'https://evidencepress.org' })), `Learning atlas ${href} bar mirrors tools/site-nav.js`);
   }
 }
 

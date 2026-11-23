@@ -31,10 +31,12 @@ const GROUPS = [
   },
   {
     id: 'learn', label: 'Learn', href: '/learn/', hub: true,
-    standfirst: 'Open learning on mind, brain and behaviour, books of ideas and puzzles, and the archive behind the work.',
+    standfirst: 'University teaching across science, technology, mind and behaviour, with books, puzzles and a historical archive to explore.',
     sections: [
       { label: 'Minds Explored', href: '/minds-explored/',
         detail: 'University lectures on mind, brain and behaviour, organised into topic guides and learning paths.' },
+      { label: 'Science Explored', href: '/science-explored/',
+        detail: 'University lectures and courses across the sciences, with guides, learning paths and a historical atlas.' },
       { label: 'Why Minds Break', href: '/why-minds-break/',
         detail: 'A book on the evolutionary and developmental roots of mental disorder, with free films and essays on common conditions.' },
       { label: 'Think Again', href: '/think-again/',
@@ -79,6 +81,8 @@ const GROUPS = [
     sections: [
       { label: 'Prints and gifts', title: 'Evidence Press shop', href: '/shop/',
         detail: 'Posters, mugs and T-shirts made from the films’ pictures, the Think Again book, and partner books, puzzles and kits.' },
+      { label: 'Science bookshop', title: 'Science Explored bookshop', href: '/science-explored/shop/',
+        detail: 'A Connected History of Science and Technology and open textbooks to read alongside the lectures.' },
       { label: 'Bookshop', title: 'Minds Explored bookshop', href: '/minds-explored/shop/',
         detail: 'Annotated shelves of books on mind, brain and behaviour, led by Why Minds Break.' }
     ]

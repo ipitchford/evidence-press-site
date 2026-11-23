@@ -1,0 +1,10 @@
+# From membranes to interacting circuits
+
+1. [Lecture 3: Brain I](https://ocw.mit.edu/courses/9-00sc-introduction-to-psychology-fall-2011/resources/lecture-3-brain-i/) — Draw a neuron with input regions, cell body and output. Label this as a simplified diagram, not a complete biological inventory.
+2. [1. Overview and Ionic Currents](https://ocw.mit.edu/courses/9-40-introduction-to-neural-computation-spring-2018/resources/overview-and-ionic-currents/) — Explain in separate sentences how a concentration difference and an electrical difference can influence movement of charge.
+3. [2. RC Circuit and Nernst Potential](https://ocw.mit.edu/courses/9-40-introduction-to-neural-computation-spring-2018/resources/2/) — Sketch a response to a sustained current and mark which features a resistance–capacitance model is intended to represent.
+4. [Video 1: Reduced Neuron Models](https://compneuro.neuromatch.io/tutorials/W2D4_BiologicalNeuronModels/student/W2D4_Tutorial1.html) — List the threshold/reset rule and two biological details it leaves out. Distinguish a convenient rule from a measured mechanism.
+5. [7. Synapses](https://ocw.mit.edu/courses/9-40-introduction-to-neural-computation-spring-2018/resources/7/) — Explain why an arrow labelled with a fixed weight may omit saturation, time and input location.
+6. [Video 1: Static and dynamic synapses](https://compneuro.neuromatch.io/tutorials/W2D4_BiologicalNeuronModels/student/W2D4_Tutorial3.html) — Compare a fixed connection with a temporarily changing one under the same hypothetical input train.
+7. [Video 1: STDP](https://compneuro.neuromatch.io/tutorials/W2D4_BiologicalNeuronModels/student/W2D4_Tutorial4.html) — Write the observation that would be needed to decide whether a change persists beyond the input sequence.
+8. [Video 1: Phase analysis of the Wilson-Cowan E-I model](https://compneuro.neuromatch.io/tutorials/W2D5_DynamicalSystems/student/W2D5_Tutorial2.html) — Name what the population variables stand for and one single-cell feature that the model does not resolve. Attempt equations/notebooks only with the stated mathematical/Python preparation.
