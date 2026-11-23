@@ -19,3 +19,8 @@
 .connected-history-book { display: grid; grid-template-columns: minmax(6rem, 10rem) minmax(0, 1fr); align-items: start; gap: 1.5rem; }
 .connected-history-cover { display: block; width: 100%; height: auto; }
 @media (max-width: 540px) { .connected-history-book { grid-template-columns: 1fr; } .connected-history-cover { width: 7rem; } }
+
+/* Keep these controls out of the tab order until their event handlers are ready. */
+html:not([data-theme]) :is(.resource-actions, .progress-check, .player-shell button, #theme-button, #export-library, #import-library, #reset-library) {
+  visibility: hidden;
+}
