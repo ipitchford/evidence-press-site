@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about counting the ways to cover a network. A dominating set in a network is a set of nodes such that every node is either in the set or directly linked to one that is, like placing guards so that every site is watched. Count the dominating sets of each size and you get a sequence of numbers. In every network anyone had checked, this sequence climbs to a single peak and then falls. Alikhani and Peng conjectured that this always happens, and the question was still listed as open. This candidate shows that the conjecture is false. It builds two explicit connected networks, each with 317,440 nodes.",
+      "inputSha256": "84f5771929d37562613eec7e715fd4b9c7f7611bb63c68206c0aa739b6c3895a",
+      "audioSha256": "5ef5849ef406ae7f5a833a2c70e8248bf69355aa1ee268e8a4a2b0fe5c2921cf",
+      "requestId": "req_b44e5968a9c54a9a8cdb1f074c59dc60",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "it builds explicit connected networks each with nodes",
+        "heardEnding": "this candidate shows that the conjecture is false it builds explicit connected networks each with nodes",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "In both, there are more dominating sets of size 160,080 than of size 160,320, and more again of size 160,560 than of the middle size. So the count dips and then rises again, and an exact integer calculation proves all three comparisons. The idea is to build two large families of dominating sets that have exactly the same number of members but different typical sizes, while every other dominating set is comparatively rare. The sizes then form two humps, and the count dips in between. The same idea gives networks with many separate peaks, and networks in which the most common size sits far from the average size, which answers a question of Beaton and Brown.",
+      "inputSha256": "e91d5ead2326fdcb9585e95ea3a024dde88ae9b7426f49291b285b2d4bf993ed",
+      "audioSha256": "7d315bcd61773c02dfb6036a001b1bacdd380966487ce72d1fb78dc4bf47f2f1",
+      "requestId": "req_db15095fb19f49d0a5ef0049f21b8e96",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "which answers a question of beaton and brown",
+        "heardEnding": "common size sits far from the average size which answers a question of beaten and brown",
+        "matchedWords": 7,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "In the other direction, if every node has a little more than the base-two logarithm of the number of nodes as its number of neighbours, the sequence does have a single peak, exactly at the middle. The limits are clear: the example is large and has not been minimised, the exact degree threshold for a single peak is still open, and the question for trees remains open. This is an unrefereed candidate, checked by internal AI-assisted review and exact computer arithmetic rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+      "inputSha256": "b47a96170259a3a7d463c52570aaf379b0324475cb00b3e8f18421e6482a6f64",
+      "audioSha256": "59564a37b2efb0ed3b4bc3c763ee28b571d437076ea0de4498914fcd86d7d0b1",
+      "requestId": "req_e2c09df5b5d345bea9cb488515fe42e9",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice that is not additional evidence",
+        "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "domination-polynomial-unimodality-counterexamples",
+  "generatedAt": "2026-11-24T19:08:37.451Z",
+  "sourceMetadata": "papers/domination-polynomial-unimodality-counterexamples/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "9e714a9e6cbfe69805aec3735bc21a7010fecaf006c67b2ec76b9f7f603a70d0",
+  "transcriptPath": "assets/audio/domination-polynomial-unimodality-counterexamples.txt",
+  "transcriptSha256": "9af929293abdad9d71d35587a108b02e28eda6a5e415be47366fd5a32d02bd16",
+  "audioPath": "assets/audio/domination-polynomial-unimodality-counterexamples.mp3",
+  "audioSha256": "9f58939c1047b0ea77031755ffffcdaab9cea39b8e1ff4fe06b3981df9d6c198",
+  "audioBytes": 2060204,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice that is not additional evidence",
+    "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
