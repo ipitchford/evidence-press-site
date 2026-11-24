@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about what one fixed price can guarantee when buyers arrive one at a time. Picture a seller with a few identical items and a line of buyers who turn up in random order. Each buyer's value comes from a known distribution, and buyers can differ. The seller posts one price, never changes it, and sells to the first buyers who will pay it. The same rule describes one hiring bar for a few posts. The yardstick is a prophet who sees every value in advance and keeps the best ones. One price is simple and fair, and it can be tuned from data, for example by adjusting it until the stock sells out a chosen share of the time.",
+      "inputSha256": "38be30c5e6a5c01f8cd7d4390349c8f6227f4dfbffff8eff41a5a4befeb36b70",
+      "audioSha256": "5b0b2b67e90acfa7bee4ef594d582fe5884706bc44fdd632ed5c741472128a6b",
+      "requestId": "req_911b325a44104b189b19d7458e59bd39",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "sells out a chosen share of the time",
+        "heardEnding": "for example by adjusting it until the stock sells out a chosen share of the time",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "For very large markets, Arnosti and Ma found the best guarantee: about sixty-three percent with one item and seventy-three percent with two items. They conjectured that tuning the price to a particular sell-out probability also achieves it. This paper gives the exact worst-case guarantee at every market size, for buyers who may differ, and proves that conjecture for any number of items. With three buyers and two items, the best fixed price guarantees seventy-nine point one percent, the best sell-out target guarantees seventy-eight point seven percent, and if every buyer's value has the same distribution, the guarantee rises to eighty-five point two percent.",
+      "inputSha256": "94aee5c7511af574075c955b4c54f0ee95d093cc838825b8d1586fcdbb0c12b4",
+      "audioSha256": "36090c12dcdf2e8337d70c8c439b96225f86d16c319a825303c956625cfc9a11",
+      "requestId": "req_323f9680b2c740ee85a2bb98d08b2015",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "same distribution the guarantee rises to point percent",
+        "heardEnding": "target guarantees and if every buyer s value has the same distribution the guarantee rises to",
+        "matchedWords": 6,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "In general, tuning the average share of stock sold loses nothing, the sell-out target loses only a tiny amount, and differences between buyers cost a little more. The key idea compares the number of buyers who clear the price with a simple count that sells out equally often: their distribution curves cross exactly once. A market of ordinary buyers plus one rare, very valuable buyer defeats every possible price at once, so the guarantees cannot be improved. As the paper says, Arnosti and Ma's own lemma combined with this crossing argument already settles their conjecture. The limits are clear: one anonymous fixed price, independent values and random arrival order, and these are worst cases, so typical markets do better.",
+      "inputSha256": "9227743271994296bbcf2126c0364ab29f3768d43ffcf02f4903caf4bf6ce02d",
+      "audioSha256": "8838ea450e9b6a55c473e38d369c19afbf9507e6114733d35582c2681ca62650",
+      "requestId": "req_3e161098b6bd452d881b59651b318fc5",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "are worst cases so typical markets do better",
+        "heardEnding": "independent values and random arrival order and these are worst cases so typical markets do better",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This is an unrefereed candidate, checked by internal AI-assisted review and computer calculations rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+      "inputSha256": "aec6355b8cdf32f860f1b430716215140b998e70411f3ecf1fe674c365934673",
+      "audioSha256": "36530b2d8dd3fe237d524896c7f0d033f4e343fc6d16ff7db2183760ceb91b5e",
+      "requestId": "req_a4377d773cc343029c63eac00b42bc80",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice that is not additional evidence",
+        "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "finite-market-single-threshold-prophet",
+  "generatedAt": "2026-11-24T16:21:18.656Z",
+  "sourceMetadata": "papers/finite-market-single-threshold-prophet/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "aa014577f58096816be516d6f1d4cd1a7bb8c3f9d3f35997cddf75df384074f3",
+  "transcriptPath": "assets/audio/finite-market-single-threshold-prophet.txt",
+  "transcriptSha256": "9c8434cc59344fbfacdddb231283de52d82d3a5ef005a576fa0886befe5957c3",
+  "audioPath": "assets/audio/finite-market-single-threshold-prophet.mp3",
+  "audioSha256": "2b4d05bebc8ae2ccae0513523756597d426a3a39fc742bb94c71b8e17044067c",
+  "audioBytes": 2402348,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice that is not additional evidence",
+    "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
