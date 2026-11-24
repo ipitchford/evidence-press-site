@@ -1,0 +1,191 @@
+{
+  "slug": "similarity-entropy-concavity",
+  "title": "When mixing lowers similarity-sensitive entropy: exact concavity criteria and sharp bounds on entropy gain",
+  "shortTitle": "When pooling lowers similarity-sensitive diversity",
+  "oneLine": "A finite test decides when the order-one similarity-sensitive entropy is concave; with a positive definite similarity obeying the multiplicative triangle inequality four outcomes are always safe and five can fail, and under either condition an observation can raise expected entropy by at most half the log of the number of outcomes.",
+  "abstract": "Similarity-sensitive entropy measures the diversity or uncertainty of a distribution when some outcomes count as partly alike, as with closely related species. The order-one measure of Leinster and Cobbold, H_K(p) = −Σ p_i log (Kp)_i, is used to partition ecological diversity, to score experiments by expected information gain and to build divergences in machine learning, and each use needs it to be concave: pooling should never lower it and an observation should never raise it on average. GAIT conjectured concavity for positive definite similarities satisfying the multiplicative triangle inequality, Bavaud asked for exact conditions, and Miller refuted the conjecture with an 18-state example and asked for the least number of states at which it can fail. This candidate gives a finite test that decides concavity for any finite similarity matrix: after identical rows are merged, the matrix must be positive definite and one explicit vertex matrix per state positive semidefinite. For positive definite similarities satisfying the multiplicative triangle inequality, four states never permit failure (an exact polynomial certificate) and a five-state example on the complete bipartite graph K₂,₃ fails, answering Miller's question. If the similarity is positive semidefinite or satisfies the triangle inequality, an observation can raise expected entropy by at most half the expected posterior entropy, hence by at most ½ log n; over positive semidefinite similarities the sharp worst case is ½ log n − log log n + log 2 − 1 + o(1). Ultrametric similarities and Laplace kernels on a line are always safe, weighted trees have a linear-time test, joint entropy under product similarities is subadditive only in degenerate cases, and among average-rarity indices only Rao's quadratic entropy is concave for every positive definite metric similarity. Limits: failures found are rare and tiny (a window of width about 0.033 and a gain of about 0.0003 nats; 0 of 2000 random five-state examples failed, an uncertified numerical observation), but the worst case grows with n; the four-state step is a computer certificate, not a conceptual proof. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-24",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "similarity-sensitive entropy",
+    "concavity",
+    "diversity",
+    "Leinster-Cobbold",
+    "information gain",
+    "GAIT",
+    "positive definite matrices",
+    "multiplicative triangle inequality",
+    "Rao's quadratic entropy"
+  ],
+  "repoUrl": "https://github.com/ipitchford/similarity-entropy-concavity",
+  "releaseUrl": "https://github.com/ipitchford/similarity-entropy-concavity/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/similarity-entropy-concavity/releases/download/v0.1.0-candidate/similarity-entropy-concavity-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24514480",
+  "conceptDoi": "10.5281/zenodo.24514479",
+  "zenodoUrl": "https://zenodo.org/records/24514480",
+  "citeText": "Anonymous (2026). When mixing lowers similarity-sensitive entropy: exact concavity criteria and sharp bounds on entropy gain. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24514480",
+  "evidence": "A 19-page paper with a plain introduction, written proofs of every theorem, practical guidance and open problems; an exact rational classifier implementing the test for any similarity matrix; standard-library and SymPy scripts that certify the four-state polynomial positivity in two normalisations, the five-state failure, the star threshold and the order-three check exactly, with an extension script for the failure interval, ultrametric sign checks, a seeded random experiment and the asymptotic table; recorded outputs. A clean replay under Python 3.12, also under python -O, reproduced every output, Linux CI reruns the exact checks byte for byte, and three deliberately wrong expected values were caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computational certificates. Internal AI-assisted review: five Claude reviewer roles run as two subagents; the lead's proof audit and clean replay with negative controls; one revision round with extensions; then a re-review and proof audit of the changed material. No second-model (Astra/Codex) review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 19 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 24 November 2026.",
+  "keyResults": [
+    "Theorem 1 (proof, main): H_K is concave on the simplex if and only if, after identical rows are merged, the reduced matrix L is positive definite and every vertex matrix T_j = L⁻¹D(Le_j) + D(Le_j)L⁻¹ − e_j e_jᵀ is positive semidefinite; then H_L is strictly concave.",
+    "Theorem 4 (proof with exact certificate, main): every similarity of order at most four satisfying the multiplicative triangle inequality has concave entropy, and a positive definite one of order five on K₂,₃ does not; five is the least order at which positive definiteness and the triangle inequality fail to guarantee concavity, answering Miller's question.",
+    "Theorem 10 (proof, main): if K is positive semidefinite or satisfies the triangle inequality, H_K(p) ≥ ½ E H_K(P), so an observation raises expected entropy by at most ½ log n; over positive semidefinite similarities the sharp worst case is ½ log n − log log n + log 2 − 1 + o(1).",
+    "Corollary 2, Proposition 8 and Corollary 9 (proof): ultrametric similarities and Laplace kernels on a line are always safe; weighted trees have a linear-time test, and the least failing equal-edge star has 13 states.",
+    "Theorems 13, 14 and 16 (proof): subadditivity under product similarities holds only in degenerate cases; among average-rarity indices only affine profiles, and in the Ricotta–Szeidl family only Rao's quadratic entropy, are concave for every positive definite metric similarity; on standard Borel spaces finite restrictions decide concavity."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five Claude reviewer roles run as two subagents), the lead's proof audit and clean replay with negative controls, re-review and proof audit of the changed material",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about measuring diversity when some things are alike.\n\nEcologists, forecasters and machine-learning researchers often measure diversity or uncertainty in a way that knows some outcomes are similar, so that two closely related species count as less diverse than two unrelated ones. The standard measure, from Leinster and Cobbold, averages minus the logarithm of each outcome's typicality, its average similarity to the rest. People expect it to behave like ordinary entropy: pooling two communities should not lower diversity, and learning something should not, on average, raise uncertainty. Mathematically, both say that the measure is concave.\n\nThat expectation can fail. Earlier work conjectured that two natural conditions on the similarity matrix would guarantee concavity, and Miller then found a counterexample with eighteen outcomes and asked for the smallest number of outcomes at which it can fail.\n\nThis candidate answers the question and gives a complete test. For any similarity matrix, one positive definiteness check and one matrix check per outcome decide exactly whether pooling can ever lower the entropy. Under the two natural conditions, four outcomes are always safe, while a five-outcome example built on a small bipartite graph fails. When concavity does fail under either condition, an observation can raise expected entropy by at most half the logarithm of the number of outcomes. Ultrametric similarities, the kind read from a dendrogram, are always safe. Among related diversity indices, only Rao's quadratic entropy stays safe for every matrix meeting both natural conditions.\n\nThe key idea is to track relative changes in typicality, which makes the curvature depend linearly on the distribution, so that only the corners need checking.\n\nThere are limits. Failures are rare and usually tiny: the five-outcome example fails only in a narrow window of similarities, by about three ten-thousandths of a nat, and none of two thousand random five-outcome examples failed. The four-outcome step rests on an exact computer certificate rather than a conceptual proof.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and exact computation rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Every script was rerun from fresh copies under CPython 3.12, normally and under python -O; every exact output was reproduced byte for byte and the extensions record was byte-identical. Three deliberately wrong expected values (a certificate count, the Jensen ratio and the order-three gap) made the scripts exit with failure. GitHub CI on Linux reruns the exact checks byte for byte with all three negative controls (blocking) and the extension check with the figure as a non-blocking job, comparing floating-point values to a relative tolerance of 1e-9."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. The four-state certificate is computed twice in different normalisations within the package, which is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Exact rational and symbolic arithmetic (standard library, SymPy 1.14.0; mpmath 1.3.0 for the asymptotic table); outputs reproduced on the release platform under CPython 3.12.11 and on Linux CI under CPython 3.12. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Leinster and Cobbold (2012), Measuring diversity: the importance of species similarity. Ecology. Introduces the similarity-sensitive diversity whose order-one logarithm is the entropy studied here.",
+      "url": "https://doi.org/10.1890/10-2402.1"
+    },
+    {
+      "citation": "Bavaud (2022), Similarity-Reduced Diversities: the Effective Entropy and the Reduced Entropy. Journal of Classification. Shows failures of concavity and subadditivity without the triangle inequality, introduces the always-concave effective entropy and asks for exact conditions.",
+      "url": "https://doi.org/10.1007/s00357-021-09395-4"
+    },
+    {
+      "citation": "Ricotta and Szeidl (2006), Towards a unifying approach to diversity measures: Bridging the gap between the Shannon entropy and Rao's quadratic index. Theoretical Population Biology. The family of average-rarity indices and the concavity claim for orders at least two.",
+      "url": "https://doi.org/10.1016/j.tpb.2006.06.003"
+    },
+    {
+      "citation": "Ricotta, Szeidl and Pavoine (2021), Towards a unifying framework for diversity and dissimilarity coefficients. Ecological Indicators. Acknowledges the error in the 2006 concavity proof, with numerical evidence that only order two is concave in general.",
+      "url": "https://doi.org/10.1016/j.ecolind.2021.107971"
+    },
+    {
+      "citation": "Meckes (2013), Positive definite metric spaces. Positivity. Every metric space with at most four points is positive definite; the five-point K₃,₂ example.",
+      "url": "https://doi.org/10.1007/s11117-012-0202-8"
+    },
+    {
+      "citation": "Leinster (2013), The magnitude of metric spaces. Documenta Mathematica. The K₃,₂ similarity matrix becomes singular exactly at the positive definiteness threshold used here.",
+      "url": "https://doi.org/10.4171/dm/415"
+    },
+    {
+      "citation": "Botta-Dukát (2018), The generalized replication principle and the partitioning of functional diversity into independent alpha and beta components. Ecography. A recommendation of orders at least two that this candidate narrows to order two.",
+      "url": "https://doi.org/10.1111/ecog.02009"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:similarity-entropy-concavity",
+    "attemptIds": [
+      "ep-attempt:similarity-entropy-concavity-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know exactly when the order-one similarity-sensitive entropy is concave for a given similarity matrix, the least number of outcomes at which positive definiteness and the triangle inequality fail to guarantee it, and how large a failure can be.",
+      "scope": "Finite similarity matrices (and standard Borel spaces through finite restrictions); positive definite, positive semidefinite, MTI, ultrametric and tree similarities; average-rarity indices and product similarities."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 explains the entropy, why concavity matters in ecology, experimental design and machine learning, what was known (GAIT, Bavaud, Miller, Ricotta–Szeidl and its correction), the numbered contributions with credit and a roadmap; Section 11 gives practical guidance.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The four-state step is a computer certificate; the random experiment is not a proof."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in matrix analysis or diversity measurement check the vertex reduction of Theorem 1, the four-state reduction of Section 5.2 and the bounds of Theorem 10, and rerun the polynomial certificate independently.",
+      "claimCeiling": "Written proofs of Theorems 1, 4, 10, 13, 14 and 16 with exact certificates for the four-state step and the five-state failure; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "similarity-entropy-concavity-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable decision procedure for concavity of similarity-sensitive entropy, with the exact minimum number of outcomes, sharp bounds on entropy gain and a replayable rational classifier.",
+        "setting": "AI-assisted research on diversity and information measures",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

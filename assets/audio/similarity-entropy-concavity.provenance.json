@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about measuring diversity when some things are alike. Ecologists, forecasters and machine-learning researchers often measure diversity or uncertainty in a way that knows some outcomes are similar, so that two closely related species count as less diverse than two unrelated ones. The standard measure, from Leinster and Cobbold, averages minus the logarithm of each outcome's typicality, its average similarity to the rest. People expect it to behave like ordinary entropy: pooling two communities should not lower diversity, and learning something should not, on average, raise uncertainty. Mathematically, both say that the measure is concave. That expectation can fail.",
+      "inputSha256": "e77d39360805fd5548064f5b70960f9b4384ae76017eadcf1065ef9de79f3eb8",
+      "audioSha256": "4de66e6113a2a8efde155c226a927e0bbc61ea34350513302c18ece652e65a9e",
+      "requestId": "req_294c24f9363e44d7a016896f6d1d9634",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the measure is concave that expectation can fail",
+        "heardEnding": "on average raise uncertainty mathematically both say that the measure is concave that expectation can fail",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Earlier work conjectured that two natural conditions on the similarity matrix would guarantee concavity, and Miller then found a counterexample with eighteen outcomes and asked for the smallest number of outcomes at which it can fail. This candidate answers the question and gives a complete test. For any similarity matrix, one positive definiteness check and one matrix check per outcome decide exactly whether pooling can ever lower the entropy. Under the two natural conditions, four outcomes are always safe, while a five-outcome example built on a small bipartite graph fails. When concavity does fail under either condition, an observation can raise expected entropy by at most half the logarithm of the number of outcomes.",
+      "inputSha256": "215f1d405f4532a7c5593226f38cd0edbca24a640fe99eb1c373351c3d92a511",
+      "audioSha256": "acc4be55d070b7a75ed6bfedbc99d42318f3b19912de18fd3f8564f9c3d8dd38",
+      "requestId": "req_be05196d6ebf497ca4ed1679306f19b7",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "half the logarithm of the number of outcomes",
+        "heardEnding": "observation can raise expected entropy by at most half the logarithm of the number of outcomes",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Ultrametric similarities, the kind read from a dendrogram, are always safe. Among related diversity indices, only Rao's quadratic entropy stays safe for every matrix meeting both natural conditions. The key idea is to track relative changes in typicality, which makes the curvature depend linearly on the distribution, so that only the corners need checking. There are limits. Failures are rare and usually tiny: the five-outcome example fails only in a narrow window of similarities, by about three ten-thousandths of a nat, and none of two thousand random five-outcome examples failed. The four-outcome step rests on an exact computer certificate rather than a conceptual proof.",
+      "inputSha256": "0be9f71f3b4963455d3d2c43629c830fa1c418680c5605f3e173d370fce63ef3",
+      "audioSha256": "40e5f2674136a7a7352a4a46c2e2766788ebec9c8acc4c38375276480e5efa02",
+      "requestId": "req_0d069336bc6a4c0f8bfbeccaab0cd1e5",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "exact computer certificate rather than a conceptual proof",
+        "heardEnding": "examples failed the outcome step rests on an exact computer certificate rather than a conceptual proof",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This is an unrefereed candidate, checked by internal AI-assisted review and exact computation rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+      "inputSha256": "69e46e2ff949fd3cdc664d986d40ed3533c05c87277ab593a294df93eda89133",
+      "audioSha256": "f926fc6f18796245aa3f63ace17b6ba700b9e8c23518a24ea2620d9fab39543c",
+      "requestId": "req_9662e4abe02c4841902ec6dd2a13b867",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice that is not additional evidence",
+        "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "similarity-entropy-concavity",
+  "generatedAt": "2026-11-24T21:02:24.585Z",
+  "sourceMetadata": "papers/similarity-entropy-concavity/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "a66ef89f0edbff28116eddc797cf3fdd517905e052fe3286e4785f0c7b2fd2f3",
+  "transcriptPath": "assets/audio/similarity-entropy-concavity.txt",
+  "transcriptSha256": "d27e2c89ddc0653e2f2e7ea380617059cbb9987a2c7e5d6c5341fd7fca093bcd",
+  "audioPath": "assets/audio/similarity-entropy-concavity.mp3",
+  "audioSha256": "2efe09bb336fbc7ab2703f5588b32d2d2d851f9cd4ee34a1e12fdad664241324",
+  "audioBytes": 2415404,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice that is not additional evidence",
+    "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
