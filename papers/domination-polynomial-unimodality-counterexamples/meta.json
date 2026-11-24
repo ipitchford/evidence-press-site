@@ -1,0 +1,178 @@
+{
+  "slug": "domination-polynomial-unimodality-counterexamples",
+  "title": "Domination polynomials with many peaks: counterexamples to the Alikhani–Peng conjecture and the minimum-degree scale for a central mode",
+  "shortTitle": "Domination polynomials need not be unimodal",
+  "oneLine": "Two explicit 317,440-vertex graphs have more dominating sets of sizes 160,080 and 160,560 than of size 160,320, disproving the Alikhani–Peng unimodality conjecture with an exact integer certificate; minimum degree log₂ n + log₂ log₂ n + 1 restores a single central peak.",
+  "abstract": "A set of vertices of a graph dominates it when every vertex is in the set or next to it. Counting dominating sets by size gives the sequence d_0, d_1, …, d_n of coefficients of the domination polynomial, and in 2009 Alikhani and Peng conjectured that this sequence is always unimodal. The conjecture had been proved for many graph classes and for minimum degree at least 2 log₂ n, and was listed as open in 2026. This candidate shows that it is false: an explicit connected split graph and an explicit connected bipartite graph, each on 317,440 vertices, satisfy d_160080 > d_160320 < d_160560, and an integer-arithmetic certificate proves the three inequalities. The mechanism is phase coexistence: two large families of dominating sets have exactly the same number of members but different typical sizes, and every other dominating set is negligible. The same idea gives connected graphs with order √n / log n separated peaks, and graphs in which every most frequent size is at distance of order n from the average size, answering a question of Beaton and Brown; for the explicit split graph no size within distance 88 of the average 160323.03… is a most frequent size. Counterexamples persist at minimum degree (1/2 + o(1)) log₂ n. In the positive direction, Σ_v (deg v + 2) 2^(−deg v − 1) ≤ 1 forces unimodality with the maximum at ⌈n/2⌉, so minimum degree log₂ n + log₂ log₂ n + 1 suffices, and for a maximum exactly at the middle this is best possible up to an additive constant. A side consequence is that single-site Glauber dynamics on dominating sets can mix exponentially slowly. Limits: the explicit example is large and not minimised; the linear mode–average gap needs astronomically large graphs and has a constant of order 10⁻²⁵; the least minimum degree forcing unimodality lies between (1/2 + o(1)) log₂ n and log₂ n + log₂ log₂ n + 1; trees remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-24",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "domination polynomial",
+    "unimodality",
+    "Alikhani-Peng conjecture",
+    "dominating sets",
+    "graph polynomials",
+    "phase coexistence",
+    "minimum degree",
+    "Glauber dynamics"
+  ],
+  "repoUrl": "https://github.com/ipitchford/domination-polynomial-unimodality-counterexamples",
+  "releaseUrl": "https://github.com/ipitchford/domination-polynomial-unimodality-counterexamples/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/domination-polynomial-unimodality-counterexamples/releases/download/v0.1.0-candidate/domination-polynomial-unimodality-counterexamples-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24511988",
+  "conceptDoi": "10.5281/zenodo.24511987",
+  "zenodoUrl": "https://zenodo.org/records/24511988",
+  "citeText": "Anonymous (2026). Domination polynomials with many peaks: counterexamples to the Alikhani–Peng conjecture and the minimum-degree scale for a central mode. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24511988",
+  "evidence": "An 18-page paper with a plain introduction, written proofs of every theorem and open problems; the bipartite example as a plain-text edge list (921,600 edges) with its generator; standard-library scripts in exact integer, rational and outward-rounded dyadic arithmetic that certify the three coefficients, check the supplied graph, test the transfer identity and the degree criterion on small cases, certify the average size and the excluded mode interval, and check the explicit many-peak and sharp-threshold instances, with recorded outputs. A clean replay under Python 3.12, also under python -O, reproduced every output, Linux CI reruns the quick checks byte for byte, and three deliberately wrong inputs were caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact-arithmetic certificates. Internal AI-assisted review: five Claude reviewer roles run as two combined passes, two of which recomputed the main certificate independently in exact arithmetic; a clean byte-for-byte replay by the lead; one revision round with extensions; then a verification re-review and proof audit of the new and rewritten proofs. No second-model (Astra/Codex) review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 18 pages), its scripts, data and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 24 November 2026.",
+  "keyResults": [
+    "Theorem 1.1 (exact certificate, main): there is a connected split graph and a connected bipartite graph, each on 317,440 vertices, with d_160080 > d_160320 < d_160560; in units of 10⁻⁶ · 2^314880 the three coefficients lie in [1556, 1615], [1482, 1541] and [1565, 1624]. The Alikhani–Peng conjecture is false.",
+    "Theorem 1.2 (proof): along infinite sequences of orders n, connected split and bipartite graphs have at least c√n / log n peak regions; explicitly, four peak regions on 4,857,004,032 vertices.",
+    "Theorem 1.3 (proof and certificate): every global mode can be at distance of order n from the average size avd(G); for the explicit split graph 160323.034984 ≤ avd(G) ≤ 160323.034985 and no index in [160217, 160412] is a global mode. This answers a question of Beaton and Brown.",
+    "Theorem 1.4 (proof, main): nonunimodal graphs exist with δ(G)/log₂ n → 1/2; Σ_v (deg v + 2) 2^(−deg v − 1) ≤ 1 forces unimodality with a global mode at ⌈n/2⌉, so δ ≥ log₂ n + log₂ log₂ n + 1 suffices (n ≥ 4); for a mode exactly at ⌈n/2⌉ this is best possible up to an additive constant.",
+    "Proposition 6.3 (proof): single-site Glauber dynamics on dominating sets mixes in time e^{Ω(n)} on the graphs of Section 6."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five Claude reviewer roles in two combined passes, with two independent exact recomputations of the certificate), clean replay by the lead, verification re-review and proof audit of the new and rewritten proofs",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about counting the ways to cover a network.\n\nA dominating set in a network is a set of nodes such that every node is either in the set or directly linked to one that is, like placing guards so that every site is watched. Count the dominating sets of each size and you get a sequence of numbers. In every network anyone had checked, this sequence climbs to a single peak and then falls. Alikhani and Peng conjectured that this always happens, and the question was still listed as open.\n\nThis candidate shows that the conjecture is false. It builds two explicit connected networks, each with 317,440 nodes. In both, there are more dominating sets of size 160,080 than of size 160,320, and more again of size 160,560 than of the middle size. So the count dips and then rises again, and an exact integer calculation proves all three comparisons.\n\nThe idea is to build two large families of dominating sets that have exactly the same number of members but different typical sizes, while every other dominating set is comparatively rare. The sizes then form two humps, and the count dips in between. The same idea gives networks with many separate peaks, and networks in which the most common size sits far from the average size, which answers a question of Beaton and Brown. In the other direction, if every node has a little more than the base-two logarithm of the number of nodes as its number of neighbours, the sequence does have a single peak, exactly at the middle.\n\nThe limits are clear: the example is large and has not been minimised, the exact degree threshold for a single peak is still open, and the question for trees remains open.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and exact computer arithmetic rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Every check was rerun from fresh copies under CPython 3.12, normally and under python -O (the slow extension check under -O only); every recorded text output was reproduced byte for byte, the JSON summary matched under the declared policy, and the generator reproduced the edge list byte for byte. Three deliberately wrong inputs (a changed certified index, a deleted edge and a changed expected count) made the scripts exit with failure. GitHub CI on Linux reruns the quick checks byte for byte with all three negative controls (blocking) and the slow check as a non-blocking job."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. Two internal reviewers recomputed the main certificate in exact arithmetic, which is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python standard library only, exact integer, rational and dyadic arithmetic; outputs reproduced on the release platform under CPython 3.12.11 and on Linux CI under CPython 3.12. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Beaton and Brown (2022), On the unimodality of domination polynomials. Graphs and Combinatorics. The rising half of the sequence, unimodality for minimum degree 2 log₂ n and several classes, and the question of how far the mode can be from the average size.",
+      "url": "https://doi.org/10.1007/s00373-022-02487-x"
+    },
+    {
+      "citation": "Bhattacharyya and Kahn (2013), A bipartite graph with non-unimodal independent set sequence. Electronic Journal of Combinatorics. The two-family principle for independent sets that this construction adapts to domination.",
+      "url": "https://doi.org/10.37236/3034"
+    },
+    {
+      "citation": "Burcroff and O'Brien (2023), Unimodality and monotonic portions of certain domination polynomials. Discrete Mathematics. Nonincreasing portions of every domination sequence and unimodality for several families.",
+      "url": "https://doi.org/10.1016/j.disc.2023.113508"
+    },
+    {
+      "citation": "Galvin and Zhang (2027), The domination polynomial of powers of paths and cycles. Discrete Mathematics. Unimodality for powers of paths and cycles.",
+      "url": "https://doi.org/10.1016/j.disc.2026.115520"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:domination-polynomial-unimodality-counterexamples",
+    "attemptIds": [
+      "ep-attempt:domination-polynomial-unimodality-counterexamples-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know whether the domination polynomial of every graph is unimodal, how far its mode can sit from the average size, and which minimum degree forces a single central peak.",
+      "scope": "Finite simple graphs; explicit split and bipartite counterexamples on 317,440 vertices; asymptotic many-peak and mode-average constructions; minimum-degree thresholds for unimodality and for a central mode."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 explains dominating sets, the domination polynomial and the Alikhani–Peng conjecture, what was known (classes, minimum-degree thresholds, log-concavity failures in trees), what is new, and credits Bhattacharyya and Kahn with the two-family principle.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The asymptotic constants are tiny; the explicit finite results carry the concrete claims."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in graph polynomials check the coefficient bound of Section 3.2, the many-peak estimate of Section 5 and the repair bound of Section 8, and rerun the certificate independently.",
+      "claimCeiling": "Written proofs of Theorems 1.1-1.4 and Proposition 6.3, with exact certificates for the finite example and its average size; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "domination-polynomial-unimodality-counterexamples-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable disproof of the Alikhani–Peng conjecture with a replayable exact certificate, explicit graphs and a sharp central-mode degree threshold.",
+        "setting": "AI-assisted research on graph polynomials",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
