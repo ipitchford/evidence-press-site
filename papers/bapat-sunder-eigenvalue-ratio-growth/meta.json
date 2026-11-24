@@ -1,0 +1,186 @@
+{
+  "slug": "bapat-sunder-eigenvalue-ratio-growth",
+  "title": "Sharp logarithmic growth of the Bapat–Sunder eigenvalue ratio",
+  "shortTitle": "How far the Bapat–Sunder eigenvalue can exceed the permanent",
+  "oneLine": "The largest eigenvalue of the Bapat–Sunder matrix F_A can exceed the permanent by a factor of about (1/2) log n for real and log n for complex n × n matrices, already at real rank three and complex rank two, with an exactly checked 27 × 27 integer example.",
+  "abstract": "For a positive semidefinite matrix A of order n, the matrix F_A with entries a_ij per A(i,j) has every row sum equal to the permanent per A, so per A is one of its eigenvalues; in 1986 Bapat and Sunder conjectured that it is the largest. Counterexamples are known over the complex numbers (Drury) and the reals (Chalmers, rank four, order 32), but how large the ratio B(A) = λ_max(F_A)/per A can be was open. This candidate shows that its largest value over correlation matrices of order n is (1/2) log n over the reals and log n over the complex numbers, each up to an error of order log log n, with explicit upper bounds (1/2) log n + 5/2 and log n + 5. Real matrices of rank three and complex matrices of rank two attain these values; with the real rank-two theorem of a recent preprint, reproved in full in an appendix, three is the smallest real rank at which the inequality fails, answering a question of Chalmers. Exact-arithmetic certificates give a real counterexample of rank three and order 27 with integer vectors and B > 1.0036, and finite examples with B > 1.32 (real) and B > 2.64 (complex) at order 378 and B > 2.17 and B > 4.34 at order 10710. For every higher permanental compound C_k with k ≥ 2, the inequality for 0/1 test vectors stated by Pate (2008, Theorem 7) fails without bound; it is true for k = 1 (Pate's Corollary 3), and an explicit 0/1 vector for k = 2 gives the ratio 1.1508. Lev's inequality already gives the order O(log n) once the 0/1 bound is known; new are the sharp constants, the matching construction, the minimal ranks, the order-27 witness and the higher-compound result. The upper bound combines a layer-cake inequality with Lieb's theorem on block permanents; the lower bound realises polynomials whose roots lie on concentric circles as products of linear forms in low-rank Gram matrices. Limits: first-order constants only; the minimal real order is open (at most 27); the optical reading assumes an idealised Gaussian-delay model. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-24",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "permanent",
+    "Bapat-Sunder conjecture",
+    "positive semidefinite matrix",
+    "permanental compound",
+    "eigenvalue inequality",
+    "Gram matrix",
+    "boson bunching",
+    "Lieb permanental dominance"
+  ],
+  "repoUrl": "https://github.com/ipitchford/bapat-sunder-eigenvalue-ratio-growth",
+  "releaseUrl": "https://github.com/ipitchford/bapat-sunder-eigenvalue-ratio-growth/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/bapat-sunder-eigenvalue-ratio-growth/releases/download/v0.1.0-candidate/bapat-sunder-eigenvalue-ratio-growth-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24509057",
+  "conceptDoi": "10.5281/zenodo.24509056",
+  "zenodoUrl": "https://zenodo.org/records/24509057",
+  "citeText": "Anonymous (2026). Sharp logarithmic growth of the Bapat–Sunder eigenvalue ratio: The worst ratio is (1/2) log n over the reals and log n over the complex numbers, already at ranks three and two. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24509057",
+  "evidence": "A 14-page paper with a plain introduction, written proofs of the upper and lower bounds, the minimal-rank corollary, the higher-compound result and the real rank-two theorem (appendix), and open problems; four standard-library scripts in exact integer and rational arithmetic that certify the order-27 rank-three witness by two independent methods (including B > 1.0036 from a stored integer eigenvector), the circle examples at orders 378 and 10710, and the second-compound 0/1 test at order 21420, with recorded outputs. A clean replay under Python 3.12, also under python -O, reproduced every output byte for byte, Linux CI agreed byte for byte, and three deliberately wrong inputs were caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact-arithmetic certificates. Internal AI-assisted review: five reviewer roles run as one combined Claude pass, the lead's own proof audit, exact-arithmetic certificates with a clean replay and negative controls, one revision round with extensions, then a verification re-review and proof audit of the new and rewritten proofs. No second-model (Astra/Codex) review took place. The Bapat–Sunder and Pate papers were read in full; Lieb's theorem is used as stated and proved by Djoković. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 14 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 24 November 2026.",
+  "keyResults": [
+    "Theorem 1.1 (proof, main): for large n, (1/2) log n − C₀ log log n ≤ b_R(n) ≤ (1/2) log n + 5/2 and log n − C₀ log log n ≤ b_C(n) ≤ log n + 5, where b_K(n) is the largest ratio λ_max(F_A)/per A over n × n correlation matrices over K; the lower bounds are attained at real rank three and complex rank two.",
+    "Corollary 1.2 (proof, main): the smallest rank with λ_max(F_A) > per A is three over the reals and two over the complex numbers; the real rank-two exclusion (liqsweep) is reproved in full in Appendix A. This answers Chalmers's minimal-rank question.",
+    "Proposition 2.4 and Lemma 2.1 (proof): B(A) ≤ 4d_n (complex) and 2d_n (real), with d_n < 5/4 + (1/4) log n, from Lieb's theorem on 0/1 vectors and a layer-cake inequality whose constants are asymptotically optimal (Remark 6.1).",
+    "Corollary 7.1 (proof, main): for each k ≥ 2, the 0/1 inequality for the permanental compound C_k stated in Pate's Theorem 7 fails, with R(C_k(D)) ≥ c_k (log n)^{k−1} per D; it holds for k = 1 (Pate's Corollary 3).",
+    "Section 8 (exact certificates): a real rank-three witness of order 27 with integer Gram vectors and B > 1.0036; real rank-three B > 1.32 and 2.17 and complex rank-two B > 2.64 and 4.34 at orders 378 and 10710; a 0/1 test for C_2 at order 21420 with ratio > 1.1508."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles in one combined Claude pass), lead proof audit, exact-arithmetic certificates with clean replays and negative controls, verification re-review and proof audit of the new and rewritten proofs",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about how far a matrix eigenvalue can rise above a quantity called the permanent.\n\nThe permanent is the determinant's sign-free cousin: add up the products of a matrix's entries along every permutation, with no minus signs. Take a table of inner products of vectors, a positive semidefinite matrix. From the permanents of its smaller pieces one builds a companion matrix whose rows all add up to the permanent, so the permanent is one of its eigenvalues. Bapat and Sunder asked whether it is always the largest eigenvalue.\n\nThe question also has a physical meaning. For photons passing through an interferometer, the chance that they all bunch into a few output channels is a permanent, and an eigenvalue above the permanent means that small time delays between the photons can raise that chance.\n\nCounterexamples were already known, but nobody knew how large the violation could get. For matrices of size n, the worst ratio of the top eigenvalue to the permanent grows like one half of the natural logarithm of n for real matrices, and like the full logarithm for complex matrices, with explicit bounds that match up to a smaller correction. Real matrices of rank three and complex matrices of rank two already reach these values, so three is the smallest real rank at which the conjecture fails. The paper also gives a checkable integer example of size twenty-seven, smaller than the previous record, and shows that a related inequality of Pate fails without bound for higher compounds.\n\nFor the upper bound, the proof tests the matrix on simple zero-one vectors and rebuilds every other vector from layers of those. For the lower bound, it places the roots of a polynomial on circles of growing size, and each circle adds the same amount to the eigenvalue.\n\nThe limits are clear: only the leading constants are sharp, the smallest real size of a counterexample is open, and the optics concerns an idealised model, not an experiment.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and exact computer arithmetic rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Every script was rerun from fresh copies under CPython 3.12, normally and under python -O; every recorded output was reproduced byte for byte, and three deliberately wrong inputs (a changed entry of the order-27 test vector, checked by both order-27 scripts, and a raised circle-example enclosure) made the scripts exit with failure. GitHub CI on Linux reruns the scripts and compares the outputs byte for byte, with all three negative controls (blocking)."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. The order-27 witness is checked by two different methods inside the package, which is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python standard library only, exact integer and rational arithmetic; outputs reproduced byte for byte on the release platform under CPython 3.12.11 and on Linux CI under CPython 3.12. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Bapat and Sunder (1986), An extremal property of the permanent and the determinant. Linear Algebra and its Applications. The conjecture that per A is the largest eigenvalue of F_A (their Conjecture 3), its place in the Schur power problem, and the case n ≤ 3.",
+      "url": "https://doi.org/10.1016/0024-3795(86)90220-X"
+    },
+    {
+      "citation": "Djoković (1969), Simple proof of a theorem on permanents. Glasgow Mathematical Journal. Lieb's theorem on block permanents, used here exactly as stated and proved there.",
+      "url": "https://doi.org/10.1017/S0017089500000525"
+    },
+    {
+      "citation": "Drury (2018), A counterexample to a question of Bapat & Sunder. Mathematical Inequalities & Applications. The first counterexample, complex, of order eight and rank two.",
+      "url": "https://doi.org/10.7153/mia-2018-21-37"
+    },
+    {
+      "citation": "Lev (2015), Discrete norms of a matrix and the converse to the expander mixing lemma. Linear Algebra and its Applications. A general inequality that, with the 0/1 bound, already gives B(A) = O(log n).",
+      "url": "https://doi.org/10.1016/j.laa.2015.05.031"
+    },
+    {
+      "citation": "Pate (2008), On permanental compounds. Linear Algebra and its Applications. The 0/1 inequality for k = 1 (Corollary 3), true, and for every k (Theorem 7), shown here to fail for every k ≥ 2.",
+      "url": "https://doi.org/10.1016/j.laa.2007.05.019"
+    },
+    {
+      "citation": "Seron, Novo and Cerf (2023), Boson bunching is not maximized by indistinguishable particles. Nature Photonics. Bunching probabilities as permanents, the setting of the optical interpretation.",
+      "url": "https://doi.org/10.1038/s41566-023-01213-0"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:bapat-sunder-eigenvalue-ratio-growth",
+    "attemptIds": [
+      "ep-attempt:bapat-sunder-eigenvalue-ratio-growth-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know how far the largest eigenvalue of the Bapat–Sunder matrix F_A can exceed the permanent, at which ranks this can happen, and how large time-delay enhancement of photon bunching can be in principle.",
+      "scope": "Positive semidefinite (correlation) matrices of order n over the reals and the complex numbers; leading growth constants with an O(log log n) gap; exact finite examples; higher permanental compounds; optics under an idealised Gaussian-delay model."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 explains the permanent, the matrix F_A and the Bapat–Sunder question, why it matters (permanent conjectures and photon bunching), what Drury, Chalmers, liqsweep and Lev had shown, and what is new; it credits Lev's inequality with the O(log n) order.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The real rank-two exclusion rests on an unrefereed preprint, reproved in the appendix."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in permanent inequalities check Lemma 4.1, the circle estimate of Lemma 5.1 and the rank-two appendix.",
+      "claimCeiling": "Written proofs of Theorem 1.1, Corollary 1.2, Proposition 2.4, Corollary 7.1 and Appendix A, with exact certificates for the finite examples; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "bapat-sunder-eigenvalue-ratio-growth-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable determination of the growth rate of the Bapat–Sunder ratio, the minimal real rank and an exactly checkable order-27 counterexample, with replayable certificates.",
+        "setting": "AI-assisted research on permanent inequalities",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
