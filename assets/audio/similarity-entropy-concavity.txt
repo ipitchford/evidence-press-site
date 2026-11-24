@@ -1,0 +1,13 @@
+This is an audio briefing from Evidence Press on a research candidate about measuring diversity when some things are alike.
+
+Ecologists, forecasters and machine-learning researchers often measure diversity or uncertainty in a way that knows some outcomes are similar, so that two closely related species count as less diverse than two unrelated ones. The standard measure, from Leinster and Cobbold, averages minus the logarithm of each outcome's typicality, its average similarity to the rest. People expect it to behave like ordinary entropy: pooling two communities should not lower diversity, and learning something should not, on average, raise uncertainty. Mathematically, both say that the measure is concave.
+
+That expectation can fail. Earlier work conjectured that two natural conditions on the similarity matrix would guarantee concavity, and Miller then found a counterexample with eighteen outcomes and asked for the smallest number of outcomes at which it can fail.
+
+This candidate answers the question and gives a complete test. For any similarity matrix, one positive definiteness check and one matrix check per outcome decide exactly whether pooling can ever lower the entropy. Under the two natural conditions, four outcomes are always safe, while a five-outcome example built on a small bipartite graph fails. When concavity does fail under either condition, an observation can raise expected entropy by at most half the logarithm of the number of outcomes. Ultrametric similarities, the kind read from a dendrogram, are always safe. Among related diversity indices, only Rao's quadratic entropy stays safe for every matrix meeting both natural conditions.
+
+The key idea is to track relative changes in typicality, which makes the curvature depend linearly on the distribution, so that only the corners need checking.
+
+There are limits. Failures are rare and usually tiny: the five-outcome example fails only in a narrow window of similarities, by about three ten-thousandths of a nat, and none of two thousand random five-outcome examples failed. The four-outcome step rests on an exact computer certificate rather than a conceptual proof.
+
+This is an unrefereed candidate, checked by internal AI-assisted review and exact computation rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.
