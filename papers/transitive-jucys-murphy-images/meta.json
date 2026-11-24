@@ -1,0 +1,190 @@
+{
+  "slug": "transitive-jucys-murphy-images",
+  "title": "Which central elements are transitive? An answer to a question of Campion Loth and Rattan on Jucys–Murphy evaluations",
+  "shortTitle": "Every central element is transitive",
+  "oneLine": "Transitive Jucys–Murphy images fill the symmetric-group centre exactly when (n−1)! is invertible, with optimal degree 2n−2; over the complex numbers every central element is the transitive image of one symmetric function.",
+  "abstract": "The Jucys–Murphy elements of the symmetric group are sums of transpositions, and by theorems of Jucys and of Murphy the symmetric polynomials in them give exactly the centre of the group algebra, even over the integers. Expanding such a polynomial produces products of transpositions whose counts are Hurwitz-type numbers. Keeping only the transitive products, those whose transpositions connect all n letters, defines the transitive image T_n(f); Goulden and Jackson, and Campion Loth and Rattan, showed that it is central, and Campion Loth and Rattan asked which subalgebra of the centre these images generate (their Question 12). This candidate shows that over the complex numbers no generation is needed: every central element is the transitive image of a single symmetric function. Over an arbitrary commutative ring, the transitive images span the centre, and also generate it as a unital algebra, exactly when (n−1)! is invertible; when they span it, every central element has a preimage of degree at most 2n−2, and this degree cannot be lowered. The pairs consisting of an ordinary and a transitive evaluation of the same function are exactly the pairs of central elements with equal coefficients at the n-cycles. Over the integers a conjugation-orbit argument bounds the image classwise; an exact, degree-free computation shows that this bound describes the integral image exactly for n ≤ 5 and n = 7 but not for n = 6, where the image has index 2, and that adding the scalars closes the image under multiplication for n ≤ 7. Limits: the integral description is complete only for n ≤ 7, the n = 6 parity condition is unexplained, and closed forms for classical bases are not addressed. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-24",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Jucys–Murphy elements",
+    "symmetric group",
+    "centre of the group algebra",
+    "transitive factorisations",
+    "Hurwitz numbers",
+    "symmetric functions",
+    "Möbius inversion",
+    "set partitions"
+  ],
+  "repoUrl": "https://github.com/ipitchford/transitive-jucys-murphy-images",
+  "releaseUrl": "https://github.com/ipitchford/transitive-jucys-murphy-images/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/transitive-jucys-murphy-images/releases/download/v0.1.0-candidate/transitive-jucys-murphy-images-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24516957",
+  "conceptDoi": "10.5281/zenodo.24516956",
+  "zenodoUrl": "https://zenodo.org/records/24516957",
+  "citeText": "Anonymous (2026). Which central elements are transitive? An answer to a question of Campion Loth and Rattan on Jucys–Murphy evaluations. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24516957",
+  "evidence": "A 10-page paper with a plain introduction and written proofs of every theorem except the integral image, which is an exact computation; one standard-library verifier that checks the Möbius formula and the marker construction word by word, the type selectors, the class-level engine, the n = 3 matrix, the optimal degree, the pair rank and the integral image for n ≤ 7 in exact arithmetic, comparing the computed indices with the values stated in the paper; its recorded output. A clean replay under Python 3.12, also under python -O, reproduced the output, Linux CI reruns it under the same policy, and a deliberately wrong stated index was caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computational checks. Internal AI-assisted review: a five-role Claude review panel run as one combined pass; the lead's proof audit and exact verifier with negative controls; one revision round with an extension; then a re-review and proof audit of the revised text. Jucys (1974) and Murphy (1983) were read in full. No second-model (Astra/Codex) review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 10 pages), its verifier and recorded output, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 24 November 2026.",
+  "keyResults": [
+    "Theorem 3.2 (proof, main): T_n maps the symmetric functions over R onto the centre Z(R𝔖_n) if and only if (n−1)! is a unit in R; over every R the identity coefficients of transitive images form exactly (n−1)!R; over ℂ every central element is a single transitive image, answering Question 12 of Campion Loth and Rattan.",
+    "Theorem 4.1 (proof, main): when (n−1)! is a unit, every central element is T_n(f) with deg f ≤ 2n−2, and no symmetric function of smaller degree has a transitive image with nonzero identity coefficient.",
+    "Theorem 5.1 (proof): when (n−1)! is a unit, the pairs (E_n(f), T_n(f)) are exactly the pairs of central elements with equal coefficients at the n-cycles.",
+    "Proposition 6.1 and Theorem 6.2 (proof): products of transitive images have K_λ-coefficients divisible by z_λ/h_λ; the unital algebra they generate is the whole centre only when (n−1)! is a unit, and for each prime p ≤ n−1 the p-cycle class stays out of reach modulo p.",
+    "Theorem 6.3 (exact computation): the integral image equals the classwise lattice L_n for n ≤ 5 and n = 7, has index 2 in L_6 with one explicit parity condition, and together with the scalars is closed under multiplication for every n ≤ 7."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a five-role Claude review panel in one combined pass), the lead's proof audit and exact verifier with negative controls, re-review and proof audit of the revised text",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about shuffles, swaps and connected factorisations.\n\nThe symmetric group is the group of all shuffles of a set of objects. Its centre consists of the combinations of shuffles that do not depend on how the objects are labelled. Jucys–Murphy elements are particular sums of swaps, and plugging them into symmetric polynomials produces exactly this centre, a classical theorem of Jucys and of Murphy. Expanding gives products of swaps, whose counts are Hurwitz-type numbers that also count branched covers of the sphere.\n\nOften only connected products matter: those whose swaps link all the objects together. Keeping only these gives the transitive image. Goulden and Jackson, and then Campion Loth and Rattan, showed that it is still central, and Campion Loth and Rattan asked which part of the centre these connected versions produce.\n\nThis candidate answers the question. Over the complex numbers, every central element is the connected version of a single symmetric function. Over a general number system, this works exactly when n minus one factorial can be divided by; otherwise even products of connected versions fall short. When it works, degree two n minus two is enough, and no smaller degree reaches the identity. Over the integers, an orbit-counting bound describes the image exactly for up to five objects and for seven, but not for six, where one extra parity condition appears.\n\nThe key idea is an inclusion–exclusion formula over ways of splitting the objects into groups, which turns each Jucys–Murphy element into a plain number, so the group sizes can be read off.\n\nThere are limits. The integer description is complete only up to seven objects, by exact computation, and the parity condition at six is not yet understood.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and exact computation rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The verifier was rerun from fresh copies under CPython 3.12, normally and under python -O; its output matched the recorded file exactly apart from the interpreter version field. A deliberately wrong stated index (n = 6, 2 changed to 1) made it exit with failure. GitHub CI on Linux reruns it under the same exact comparison policy with the failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. Within the package the class-level engine is checked against direct word expansion for n ≤ 4, which is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Exact integer and rational arithmetic in the Python standard library; output reproduced on the release platform under CPython 3.12.11 and on Linux CI under CPython 3.12. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Campion Loth and Rattan (2025), Centrality of star and monotone factorisations. Bulletin of the London Mathematical Society. Proves that transitive images of all symmetric functions are central and asks (Question 12) which subalgebra they generate.",
+      "url": "https://doi.org/10.1112/blms.70170"
+    },
+    {
+      "citation": "Goulden and Jackson (2009), Transitive powers of Young–Jucys–Murphy elements are central. Journal of Algebra. Centrality of transitive powers, with an inclusion–exclusion argument for star factorisations.",
+      "url": "https://doi.org/10.1016/j.jalgebra.2009.01.004"
+    },
+    {
+      "citation": "Féray (2012), Partial Jucys–Murphy elements and star factorizations. European Journal of Combinatorics. A conceptual proof of the Goulden–Jackson centrality through partial permutations.",
+      "url": "https://doi.org/10.1016/j.ejc.2011.09.035"
+    },
+    {
+      "citation": "Jucys (1974), Symmetric polynomials and the center of the symmetric group ring. Reports on Mathematical Physics. Symmetric polynomials in the Jucys–Murphy elements give the centre, over the integers.",
+      "url": "https://doi.org/10.1016/0034-4877(74)90019-6"
+    },
+    {
+      "citation": "Murphy (1983), The idempotents of the symmetric group and Nakayama's conjecture. Journal of Algebra. Theorem 1.9: the centre over any integral domain is the ring of symmetric polynomials in the Jucys–Murphy elements.",
+      "url": "https://doi.org/10.1016/0021-8693(83)90219-3"
+    },
+    {
+      "citation": "Murray (2004), Generators for the centre of the group algebra of a symmetric group. Journal of Algebra. A secondary account of the integral Jucys–Murphy theorem and its generators.",
+      "url": "https://doi.org/10.1016/j.jalgebra.2003.02.007"
+    },
+    {
+      "citation": "Coulter, Do and Moskovsky (2025), Integration on complex Grassmannians, deformed monotone Hurwitz numbers, and interlacing phenomena. Canadian Journal of Mathematics. Cited in a closing remark as a family to which the Möbius formula applies; no claims are made about it.",
+      "url": "https://doi.org/10.4153/S0008414X25101168"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:transitive-jucys-murphy-images",
+    "attemptIds": [
+      "ep-attempt:transitive-jucys-murphy-images-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know which central elements of the symmetric group algebra are transitive images of symmetric functions of Jucys–Murphy elements, over which coefficient rings, and at what minimal degree.",
+      "scope": "Group algebras of finite symmetric groups over commutative rings; the integral image for n ≤ 7."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 explains Jucys–Murphy elements, transitive factorisations and their link to connected branched covers, the question of Campion Loth and Rattan, why it is natural, the results with credit, the method, what is not done and a roadmap.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The integral description is a computation for n ≤ 7, not a general theorem."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in symmetric-group combinatorics check the Möbius formula, the marker and type-selector constructions and the orbit-counting arguments, and recompute the integral image independently.",
+      "claimCeiling": "Written proofs of Theorems 3.2, 4.1, 5.1 and 6.2 and Proposition 6.1, with an exact computation for Theorem 6.3 (n ≤ 7); internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "transitive-jucys-murphy-images-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable answer to Question 12 of Campion Loth and Rattan, with an arithmetic criterion, the optimal degree and a replayable exact verifier.",
+        "setting": "AI-assisted research in algebraic combinatorics",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
