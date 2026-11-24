@@ -1,0 +1,190 @@
+{
+  "slug": "finite-market-single-threshold-prophet",
+  "title": "Sharp finite-market prophet inequalities for a single threshold",
+  "shortTitle": "One price, n buyers: exact guarantees",
+  "oneLine": "Exact worst-case guarantees of one fixed price or threshold at every market size, for buyers with different value distributions arriving in random order, and a proof of the Arnosti-Ma stockout conjecture.",
+  "abstract": "A seller with k identical items faces n buyers who arrive in random order with independent, possibly different value distributions, posts one fixed price and sells to the first k buyers who will pay it; the benchmark is a prophet who keeps the best l values. This candidate gives the exact worst-case fraction of the prophet's value, at every finite market size n > max(k, l), for the best distribution-aware threshold, for a threshold calibrated to a stockout probability and for one calibrated to an expected utilisation, together with the identical-law values and the boundary cases. Two binomial expectations determine every answer. The utilisation rule at its best finite target loses nothing against full knowledge of the distributions; the stockout rule is strictly worse for k ≥ 2, but only by an amount of exact order 1/n², about 0.030/n² for two items; identical laws are easier by an amount of order 1/n, about 0.18/n for two items. With three buyers and two items the guarantees are 79.1%, 78.7% at the best stockout target, and 85.2% for identical laws. Over all market sizes the stockout target proposed by Arnosti and Ma attains their constant 1 − e^{−k}k^k/k! for every k, which proves their conjecture; as the paper records, their own Lemma 1 combined with the crossing lemma already yields it. For unequal capacities the same corollary answers a question of Molina, Gast, Loiseau and Perchet for static thresholds. The method compares counts at a common stockout probability: the distribution functions cross exactly once. A single instance with one rare, very valuable buyer defeats every threshold at once. Limits: one anonymous fixed threshold, independent values, random order (or stated mixtures), worst-case values. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-24",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "prophet inequality",
+    "prophet secretary",
+    "static threshold",
+    "posted pricing",
+    "stockout probability",
+    "random order",
+    "online selection",
+    "multi-unit"
+  ],
+  "repoUrl": "https://github.com/ipitchford/finite-market-single-threshold-prophet",
+  "releaseUrl": "https://github.com/ipitchford/finite-market-single-threshold-prophet/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/finite-market-single-threshold-prophet/releases/download/v0.1.0-candidate/finite-market-single-threshold-prophet-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24506643",
+  "conceptDoi": "10.5281/zenodo.24506642",
+  "zenodoUrl": "https://zenodo.org/records/24506643",
+  "citeText": "Anonymous (2026). Sharp finite-market prophet inequalities for a single threshold: Exact worst-case values of a fixed threshold in random-order markets, and a proof of the Arnosti-Ma stockout conjecture. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24506643",
+  "evidence": "A 14-page paper with a plain introduction, written proofs of the finite-market values, the crossing lemma, the single hard instance, the utilisation and identical-law results, the boundary cases, the all-market-size corollary and the two expansions, a values table and open questions; exact rational checks (585 crossing profiles, 12 direct enumerations, 643 boundary thresholds), 50-digit checks of the new results and order-mixture checks, all with recorded outputs. A clean replay under Python 3.12, also under python -O, reproduced every output byte for byte, Linux CI agreed under a declared comparison policy, and two deliberately wrong values were caught.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact and 50-digit computational checks. Internal AI-assisted review: five reviewer roles run as one combined Claude pass, the lead's own proof audit by hand, a 50-digit numerical check and a clean replay, one revision round with extensions (the utilisation rule, the heterogeneity expansion, the identical-law stockout curve and a table of optimal targets), then a re-review and proof audit of the new material. No second-model (Astra/Codex) review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 14 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 24 November 2026.",
+  "keyResults": [
+    "Theorem 2.1 (proof, main): for n > max(k, l) and independent heterogeneous values in random order, the fixed-stockout value is S(q) = min{U_n(p_n(q)), (l/k)A_{n-1}(p_{n-1}(q))}; the all-static value C solves U_{n-1}(p) = (l/k)A_{n-1}(p); the identical-law value is U_n(l/n). One instance defeats every threshold and every randomisation over thresholds.",
+    "Lemma 2.2 (proof): a Bernoulli sum and a binomial or Poisson count with the same stockout probability have distribution functions that cross exactly once, at k − 1.",
+    "Proposition 2.4 (proof): a threshold calibrated to the utilisation target C attains the distribution-aware value C at every n; Propositions 2.5 and 2.6 settle the boundary cases and the identical-law stockout curve.",
+    "Corollary 3.1 (proof, main): over all market sizes the stockout target P(Pois(k) ≥ k) attains 1 − e^{−k}k^k/k! for every k, proving the Arnosti-Ma conjecture; for unequal capacities the value (1/k)Σ_j P(Pois(l) ≥ j) holds for heterogeneous values, answering the question of Molina et al. for static thresholds.",
+    "Corollaries 3.2 and 3.3 (proof): the stockout rule loses an amount of exact order 1/n² (about 0.030/n² for k = l = 2); heterogeneity costs an amount of order 1/n, strictly positive at every n (about 0.18/n for k = l = 2). Example: n = 3, k = l = 2 gives 79.1%, 78.7% and 85.2%."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five reviewer roles in one combined Claude pass), lead proof audit by hand, 50-digit numerical check, re-review and proof audit of the new material, clean replays",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about what one fixed price can guarantee when buyers arrive one at a time.\n\nPicture a seller with a few identical items and a line of buyers who turn up in random order. Each buyer's value comes from a known distribution, and buyers can differ. The seller posts one price, never changes it, and sells to the first buyers who will pay it. The same rule describes one hiring bar for a few posts. The yardstick is a prophet who sees every value in advance and keeps the best ones.\n\nOne price is simple and fair, and it can be tuned from data, for example by adjusting it until the stock sells out a chosen share of the time. For very large markets, Arnosti and Ma found the best guarantee: about sixty-three percent with one item and seventy-three percent with two items. They conjectured that tuning the price to a particular sell-out probability also achieves it.\n\nThis paper gives the exact worst-case guarantee at every market size, for buyers who may differ, and proves that conjecture for any number of items. With three buyers and two items, the best fixed price guarantees seventy-nine point one percent, the best sell-out target guarantees seventy-eight point seven percent, and if every buyer's value has the same distribution, the guarantee rises to eighty-five point two percent. In general, tuning the average share of stock sold loses nothing, the sell-out target loses only a tiny amount, and differences between buyers cost a little more.\n\nThe key idea compares the number of buyers who clear the price with a simple count that sells out equally often: their distribution curves cross exactly once. A market of ordinary buyers plus one rare, very valuable buyer defeats every possible price at once, so the guarantees cannot be improved. As the paper says, Arnosti and Ma's own lemma combined with this crossing argument already settles their conjecture.\n\nThe limits are clear: one anonymous fixed price, independent values and random arrival order, and these are worst cases, so typical markets do better.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and computer calculations rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Every script was rerun from fresh copies under CPython 3.12 with pinned versions, normally and under python -O; every recorded output was reproduced byte for byte, and two deliberately wrong values (the heterogeneity coefficient and the exact welfare identity) made the scripts exit with failure. GitHub CI on Linux reruns the scripts and compares the outputs under a declared policy, with both negative controls (blocking)."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Pinned mpmath and Matplotlib; outputs reproduced on the release platform under CPython 3.12.11 and on Linux CI under the declared policy (exact checks identical; 8-decimal floats within 1e-7; 50-digit values within relative 1e-9). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Anonymous (2026), Asymptotic i.i.d. prophet inequalities: fixed-capacity limits and certified two-unit bounds. Evidence Press (Zenodo). Adaptive policies for identically distributed values in the large-market limit; cited for the gap between static and adaptive rules.",
+      "url": "https://doi.org/10.5281/zenodo.23404235"
+    },
+    {
+      "citation": "Arnosti and Ma (2023), Tight Guarantees for Static Threshold Policies in the Prophet Secretary Problem. Operations Research. The large-market constant, the utilisation rule, the two-coefficient bound (Lemma 1) and the stockout conjecture (Section 5.2), proved here for every market size.",
+      "url": "https://doi.org/10.1287/opre.2022.2419"
+    },
+    {
+      "citation": "Chawla, Devanur and Lykouris (2024), Static Pricing for Multi-unit Prophet Inequalities. Operations Research. The static-pricing constant under adversarial arrival order.",
+      "url": "https://doi.org/10.1287/opre.2023.0031"
+    },
+    {
+      "citation": "Ehsani, Hajiaghayi, Kesselheim and Singla (2018), Prophet Secretary for Combinatorial Auctions and Matroids. Proceedings of SODA 2018. The single-item rule, the case k = 1 of the stockout conjecture.",
+      "url": "https://doi.org/10.1137/1.9781611975031.46"
+    },
+    {
+      "citation": "Jiang, Ma and Zhang (2026), Tightness Without Counterexamples: A New Approach and New Results for Prophet Inequalities. Mathematics of Operations Research. Exact finite values for identical laws and for adversarial order.",
+      "url": "https://doi.org/10.1287/moor.2023.0221"
+    },
+    {
+      "citation": "Molina, Gast, Loiseau and Perchet (2025), Prophet Inequalities: Competing with the Top ℓ Items is Easy. Proceedings of SODA 2025. The unequal-capacity constant for identical laws and the question, answered here for static thresholds.",
+      "url": "https://doi.org/10.1137/1.9781611978322.38"
+    },
+    {
+      "citation": "Yu (2010), Relative log-concavity and a pair of triangle inequalities. Bernoulli. Relative log-concavity of Bernoulli sums, used in the crossing lemma.",
+      "url": "https://doi.org/10.3150/09-BEJ216"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:finite-market-single-threshold-prophet",
+    "attemptIds": [
+      "ep-attempt:finite-market-single-threshold-prophet-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know exactly what one fixed price or threshold can guarantee at a given market size, and which market statistic (stockout probability or utilisation) to tune it to.",
+      "scope": "One anonymous static threshold; independent, possibly heterogeneous values; uniformly random arrival order or stated mixtures; worst-case values for n > max(k, l), boundary cases and the all-market-size limit."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 explains the selling problem, why a single threshold matters, what Arnosti and Ma, Jiang, Ma and Zhang, and Molina et al. had shown, and what is new; it states plainly that Arnosti and Ma's Lemma 1 with the crossing lemma already yields their conjecture.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "Worst-case values rely on a rare, very valuable value."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in prophet inequalities check the crossing lemma, the supporting-line hard instance and the second-order expansions of Section 3.1.",
+      "claimCeiling": "Written proofs of Theorem 2.1, Lemma 2.2, Propositions 2.4-2.6, Corollaries 3.1-3.3 and the Section 4 extensions; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "finite-market-single-threshold-prophet-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of the Arnosti-Ma stockout conjecture and exact finite single-threshold values, with replayable checks.",
+        "setting": "AI-assisted research on online selection",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
