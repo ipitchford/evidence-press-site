@@ -1,0 +1,191 @@
+{
+  "slug": "coupon-collection-extremal-laws",
+  "title": "Extremal laws for coupon collection with group drawings",
+  "shortTitle": "How slow, and how fast, can group coupon collection be?",
+  "oneLine": "Steiner designs are the slowest fair laws, a fair law with large packages is less than one draw slower than uniform sampling on average, and partitions are the fastest.",
+  "abstract": "A collector wants a full set of n different coupons, but each box holds a group of s of them, and whoever fills the boxes decides how the groups overlap. How quickly can a full set be completed, and how slowly can completion be made while staying fair, with every coupon equally common? Grunbaum and Yaakobi conjectured that drawing uniformly from all groups (the full model) is the slowest fair rule; Barak-Pelleg and Berend disproved this with the Fano plane and asked how slow a fair rule can be and how large the excess over the full model can become. Fang and Chang conjectured that equal disjoint groups are fastest whenever s divides n. This candidate shows that when the omitted coupons can form a Steiner 2-design, sampling it is the slowest fair rule after every number of draws, and only the design does this; seven coupons in boxes of four take 47/12 boxes on average against 257/68 for the full model. In every critical window, where λ is the expected number of coupons still missing after k boxes, the slowest fair mean is k + min(1, λ) + o(1), against k + 1 − e^(−λ) for the full model, for every population size. No fair rule is more than 1/e + (1 − γ)/ln(n/r) boxes slower on average than the full model, where r = n − s: less than one box whenever boxes hold at least half the coupons, with limit 1/e attained. An exhaustive exact search of all small cases shows that the Fano plane is the slowest fair rule at Barak-Pelleg and Berend's own example and that six coupons in boxes of three is the smallest case where the full model is not slowest. On the fast side, every rule needs at least max{xH(x), 1 + x} boxes on average with x = n/s; equal disjoint groups are uniquely fastest when s divides n, proving the Fang–Chang conjecture, and complementary partitions when n − s divides n. Barak-Pelleg and Berend's star mechanism already reaches k + 1 in its own windows; the h = 1 product bound is Pelekis, Ramon and Wang's Theorem 2.6 after Poissonisation; Berend and Sher introduced the complementary law and computed its mean. Limits: the critical-window result is asymptotic, converges slowly and uses an existential construction; several finite cases remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "coupon collector",
+    "group drawings",
+    "Steiner designs",
+    "Fano plane",
+    "extremal probability",
+    "covering time",
+    "Poissonization",
+    "quorum systems"
+  ],
+  "repoUrl": "https://github.com/ipitchford/coupon-collection-extremal-laws",
+  "releaseUrl": "https://github.com/ipitchford/coupon-collection-extremal-laws/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/coupon-collection-extremal-laws/releases/download/v0.1.0-candidate/coupon-collection-extremal-laws-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24534721",
+  "conceptDoi": "10.5281/zenodo.24534720",
+  "zenodoUrl": "https://zenodo.org/records/24534721",
+  "citeText": "Anonymous (2026). Extremal laws for coupon collection with group drawings. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24534721",
+  "evidence": "A 14-page paper with a plain introduction (the problem, what was known, what is new with a summary table, the main idea, related settings and a roadmap) and written proofs of every general result. verify_coverage.py checks the finite statements in exact rational arithmetic (the seven-coupon example, 73,750 pointwise majorant tests, the minimum bounds against random competitor laws, the negative-dependence lemmas, the excess-bound series for n up to 100 and the finite full-model values); fair_maxima.c with certify_fair_maxima.py enumerates every fair mechanism for the small cases of Proposition 6.1 (up to 2,505,121 per case), checks the separation of the maximum and recomputes every maximiser exactly. A clean replay under Python's optimised mode reproduced every recorded output and the figure byte for byte, Linux CI reruns both checks under a declared comparison policy, and deliberately wrong values were rejected.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs; the computations test the stated finite cases. Internal AI-assisted review: a combined five-role Claude review panel, one revision round, a re-review, a proof audit of the new proofs and a clean replay with negative controls. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 14 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 3.1 (proof): for every balanced law, Pr(T > j) ≤ npʲ − (n(n−1)/r)uʲ with u = r(r−1)/(n(n−1)); equality at any j ≥ 2 holds exactly for the uniform law on the blocks of a Steiner system S(2,r,n) as omitted sets, which is the slowest fair law in mean (seven coupons, boxes of four: 47/12 against 257/68).",
+    "Theorem 4.1 (proof): if npᵏ → λ ∈ (0,∞) for fixed k ≥ 2, the largest mean over fair laws is k + min{1, λ} + o(1), against k + 1 − e^(−λ) + o(1) for the full model; the asymptotic excess peaks at 1/e when λ = 1. Barak-Pelleg and Berend's star mechanism already attains k + 1 in its windows (λ > 1).",
+    "Theorem 5.4 (proof): every fair law has mean at most 1/e + (1 − γ)/ln(n/r) above the full model, for all n and r; this is at most 0.978 when r ≤ n/2, and the limit 1/e is attained.",
+    "Proposition 6.1 (computer-assisted, exact): for n ≤ 7 and for n = 8 with s ∈ {2, 6}, the full model is the unique slowest fair mechanism except at (6,3), (7,3) and (7,4); at (7,3) the Fano plane attains the maximum 163/30 among 2,505,121 fair mechanisms, and (6,3) is the smallest counterexample to Grunbaum and Yaakobi's Conjecture 2.",
+    "Theorems 7.2 and 7.3 (proof): every law on packages of size at most s has E T ≥ xHₓ with x = n/s, with equality exactly for a uniform partition when s divides n; this proves the Fang–Chang conjecture with uniqueness. The h = 1 product bound is Pelekis, Ramon and Wang's Theorem 2.6 after Poissonisation.",
+    "Theorem 7.5 (proof): every such law has E T ≥ 1 + n/s, with equality among laws on packages of exactly s coupons only for the uniform law on a partition of the omitted sets when (n − s) divides n; the law and its mean are due to Berend and Sher."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-role Claude review panel, a re-review and a proof audit of the new proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Imagine collecting a full set of stickers when every packet holds a group of them, and whoever fills the packets decides how the groups overlap. How quickly can a full set be finished, and how slowly can it be made while staying fair, with every sticker equally common? The same question arises when DNA reads arrive in batches, when computers contact random groups of servers, and when copies of data are spread across machines.\n\nEarlier work conjectured that drawing uniformly from all possible groups is the slowest fair rule. That conjecture was disproved with a small geometry called the Fano plane, which left open how slow a fair rule can really be. On the fast side, it was conjectured that splitting the stickers into equal separate groups is always quickest.\n\nThis release answers several of these questions. When the stickers left out of each packet can form a special pattern called a Steiner design, sampling that pattern is the slowest fair rule after any number of packets, and only the design does this. For collections of every size, the slowest fair rule is also found in a family of critical cases, up to an error that fades as collections grow. And no fair rule is ever much slower than uniform sampling. When each packet holds at least half the stickers, the extra wait is less than one packet on average, and as packets come to hold almost everything it approaches a little over a third of a packet, a limit that is actually reached.\n\nAn exact computer search of every small case shows that the Fano plane is the slowest fair rule in its own example, and that six stickers in packets of three is the smallest case where uniform sampling is not the slowest. On the fast side, the release proves that equal separate groups are the unique fastest rule whenever the packet size divides the number of stickers, which settles that conjecture.\n\nThe idea is simple. Every fair rule leaves the same expected number of stickers missing; slow rules make them turn up one at a time, and fast rules make them vanish in clumps.\n\nThere are limits. The critical-case results describe large collections and settle in slowly, the exact slowest rule without a design is known only for small collections, and the fastest rule remains open in the remaining cases. Earlier work already reached the slowest value in some critical cases and supplied one key inequality, and the paper credits both. This is an unrefereed candidate, checked by internal AI-assisted review and exact computer checks rather than by external experts.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The checking scripts and the figure script were rerun from a fresh copy before release, the checks under Python's optimised mode; every output and both figure files matched the recorded ones byte for byte, and two deliberately wrong values were rejected. GitHub CI on Linux reruns both checks, compares exact values exactly and floating-point values within declared tolerances, and repeats a failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. Internal reviewers recomputed key values; that is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The finite statements are checked in exact rational arithmetic and the small-case maxima by a certified exhaustive enumeration; the general theorems rest on written proofs."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python standard library (3.12 or later) and a C compiler for the checks; numpy and matplotlib for the figure. Outputs reproduced on the release platform and on Linux CI under the declared policy. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Berend and Sher (2026), Asymptotic results for uniform group drawing in the coupon collector’s problem. Stochastic Models. The full-model asymptotics in the critical windows.",
+      "url": "https://doi.org/10.1080/15326349.2026.2669925"
+    },
+    {
+      "citation": "Berend and Sher (2026), On a conjecture on uniform group drawings in the coupon collector problem. Stochastic Models. Records the Fang–Chang conjecture and introduces the complementary decomposition law.",
+      "url": "https://doi.org/10.1080/15326349.2026.2671340"
+    },
+    {
+      "citation": "Fang and Chang (2014), Optimal strategy of coupon subset collection when each package contains half of the coupons. Information Processing Letters. The half-size case and the conjecture proved here.",
+      "url": "https://doi.org/10.1016/j.ipl.2014.06.012"
+    },
+    {
+      "citation": "Finner (1992), A generalization of Hölder’s inequality and some probability inequalities. The Annals of Probability. The product inequality behind the fast-side bound.",
+      "url": "https://doi.org/10.1214/aop/1176989534"
+    },
+    {
+      "citation": "Grunbaum and Yaakobi (2026), General coverage models: structure, monotonicity and shotgun sequencing. IEEE International Symposium on Information Theory. Fair mechanisms and the conjectures addressed here.",
+      "url": "https://doi.org/10.1109/ISIT62367.2026.11653923"
+    },
+    {
+      "citation": "Malkhi, Reiter, Wool and Wright (2001), Probabilistic quorum systems. Information and Computation. The intersection probability that links the question to quorum systems.",
+      "url": "https://doi.org/10.1006/inco.2001.3054"
+    },
+    {
+      "citation": "Pelekis, Ramon and Wang (2017), Hölder-type inequalities and their applications to concentration and correlation bounds. Indagationes Mathematicae. Theorem 2.6 is the h = 1 product bound after Poissonisation.",
+      "url": "https://doi.org/10.1016/j.indag.2016.11.017"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:coupon-collection-extremal-laws",
+    "attemptIds": [
+      "ep-attempt:coupon-collection-extremal-laws-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide how slow or fast group sampling of a population can make complete coverage while every item stays equally likely, and which designs to use or benchmark against when building sampling, coverage or quorum schemes.",
+      "scope": "Independent draws of packages of s out of n items; fair laws (equal item frequencies) on the slow side and arbitrary laws on packages of size at most s on the fast side; exact finite results, asymptotic critical windows and exhaustive small cases."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the problem, what was known (Grunbaum and Yaakobi, Barak-Pelleg and Berend, Fang and Chang, Berend and Sher), what is new with a summary table, the main idea, related settings and a roadmap; every section opens with a purpose sentence; Section 8 lists open questions.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only; the critical-window construction is existential."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in probabilistic combinatorics check the regularisation lemma (Lemma 4.3), the excess bound (Theorem 5.4) and the uniqueness argument of Theorem 7.2, and attempt the open finite cases.",
+      "claimCeiling": "Written proofs of Theorems 3.1, 3.4, 4.1, 5.4, 7.2, 7.3 and 7.5 with their lemmas; certified exhaustive enumeration for Proposition 6.1; exact-arithmetic checks of the stated finite cases; asymptotic statements with unquantified o(1) terms; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "coupon-collection-extremal-laws-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable account of the slowest and fastest group-sampling laws for complete coverage, with a universal bound on how much slower than uniform sampling a fair law can be.",
+        "setting": "AI-assisted research in extremal probability and coupon collection",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
