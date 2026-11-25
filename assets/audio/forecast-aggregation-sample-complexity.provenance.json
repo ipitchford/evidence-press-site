@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Suppose several forecasters each give a probability for the same yes or no question: will it rain tomorrow, will a patient relapse, who will win an election. Each has seen different evidence, and each reports honestly. The best way to combine them is the probability of the event given all their reports together. But that depends on how their evidence overlaps, and nobody knows that in advance. So an aggregator has to learn it from a track record of past cases whose outcomes are known. The question is how long that track record must be. Earlier work set up this problem, found upper and lower answers that were far apart, and conjectured where the truth lay. This release settles the question, up to constant factors, for every level of overlap between the forecasters.",
+      "inputSha256": "1117493ab51dc5426f2d37a28140d842c2d0c19af58c9e1f3c538e0e87677d4e",
+      "audioSha256": "8ee789e8b37bfdd9f81b91aa316625340fca577be7a33252cd9803b092b467cb",
+      "requestId": "req_cb363974c4ec409e8fa689c87d8fb10a",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "for every level of overlap between the forecasters",
+        "heardEnding": "release settles the question up to constant factors for every level of overlap between the forecasters",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "If their evidence is independent once the outcome is known, the record needed grows only with the accuracy you want and the confidence you demand, not with the number of forecasters. If anything goes, it grows with the number of possible patterns of reports, which explodes as forecasters are added. In between, the answer moves smoothly with a measure of how much the forecasters share. The practical message is simple. With a short record, use the classical pooling formula that multiplies the forecasters' odds, and accept a small bias from their shared evidence. Once the record is long enough, a lookup table over the patterns of reports can learn the shared structure.",
+      "inputSha256": "db827576a66eeefe4aefcf6dfea5f761e77b98b8f745bce38f42307ecd637653",
+      "audioSha256": "a5784eb12fd94a17c1aa04d3f74954a8bd000f861b0638234a25266883f4b8db",
+      "requestId": "req_4bea51e98e8e41d9a61a94d81abfcd46",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "patterns of reports can learn the shared structure",
+        "heardEnding": "is long enough a lookup table over the patterns of reports can learn the shared structure",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "One method does both without knowing the overlap in advance: fit both, and keep whichever predicts better on cases held back for testing. The hardest examples are striking. Every forecaster's own track record, the base rate, and even the full pattern of reports look identical, yet the right way to combine them differs. No single forecaster's history can reveal the difference. Two honest caveats. For independent forecasters, standard tools from learning theory already gave almost the same answer; the new part there is removing an extra logarithmic factor and proving matching lower bounds. And the results assume exact, honest, calibrated forecasts, describe the worst case, and leave a gap when there are many possible outcomes.",
+      "inputSha256": "3b2cf21e150e0298fb90a77211a09bd4a85620d65f6bf54b5e3c4612fc0556e4",
+      "audioSha256": "26864b60160bb0f6218c3a0ae7cd7a7fba17785d922fc6d6784b799cad10664c",
+      "requestId": "req_c2b22a78b71e475db83471dd09a1b4f5",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a gap when there are many possible outcomes",
+        "heardEnding": "calibrated forecasts describe the worst case and leave a gap when there are many possible outcomes",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This is an unrefereed candidate, checked by internal AI-assisted review. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "c8fb4882ad8a479426416cd402f5511e43c71cd10241cccc27146b13cbd5362e",
+      "audioSha256": "b77eab89fca32fd0df6df0a577ced83f0786e49bdf6da212899095a340cb8f67",
+      "requestId": "req_e5c94428c1254d04bbd1009e1d173324",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "ai assisted review this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "forecast-aggregation-sample-complexity",
+  "generatedAt": "2026-11-25T13:20:08.270Z",
+  "sourceMetadata": "papers/forecast-aggregation-sample-complexity/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "b4a8581e0db1866b3683110a7da7afd836f68bebbd8dd0529609e03e328fa917",
+  "transcriptPath": "assets/audio/forecast-aggregation-sample-complexity.txt",
+  "transcriptSha256": "da6be9c216c733986649a15a059f77a80d8d23faafbb09c388ba5772982ecb19",
+  "audioPath": "assets/audio/forecast-aggregation-sample-complexity.mp3",
+  "audioSha256": "581127ea84af41942dea515e17d870ddd9216e2951a5303149593e1eaa500fff",
+  "audioBytes": 2359724,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "ai assisted review this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}

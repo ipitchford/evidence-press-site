@@ -2635,6 +2635,14 @@
         "lp-spherical-copula-gini-conjecture"
       ],
       "sharedBoundary": "Written proofs that no Lp-spherical copula maximises the generalised Gini mean difference except the disc copula at beta = 1 (so the Bernard-Muller-Oesting conjecture fails for every beta other than 1) and that the best-member shortfall has exact order beta(2-beta)(beta-1)^2 with uncomputed constants; one exact certificate at beta = p = 3/2; the gap sizes are floating-point estimates; this supplies no external assurance, acceleration or impact evidence."
+    },
+    {
+      "id": "forecast-aggregation-sample-complexity",
+      "name": "Minimax sample complexity of learning to aggregate calibrated forecasts: log-free least squares over a pointwise-ordered pooling family, a histogram bound via multinomial concentration, held-out validation between the two, and calibrated two-point lower-bound families that fix every marginal law; exact-arithmetic checks of the finite algebra under python -O with a negative control",
+      "members": [
+        "forecast-aggregation-sample-complexity"
+      ],
+      "sharedBoundary": "Written proofs that, in the binary Lin-Chen model with exact calibrated reports and delta <= 1/32, the minimax excess Brier risk is of order min{1, log(1/delta)/T + min(eta, m^n/T)} up to universal constants for every dependence bound eta, attained by one adaptive estimator; scripts check finite algebra only; the simulation is illustrative; this supplies no external assurance, acceleration or impact evidence."
     }
   ],
   "lineages": [
@@ -4549,6 +4557,11 @@
       "adversarial-controls",
       "assurance-vector",
       "agent-readable-research-object"
+    ],
+    "forecast-aggregation-sample-complexity": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
     ]
   },
   "updatePolicy": {
@@ -5653,6 +5666,10 @@
     {
       "date": "2026-11-25",
       "summary": "Registered the Lp-spherical copula Gini conjecture release as a singleton method cluster."
+    },
+    {
+      "date": "2026-11-25",
+      "summary": "Registered the forecast-aggregation sample-complexity release as a singleton method cluster."
     }
   ]
 }
