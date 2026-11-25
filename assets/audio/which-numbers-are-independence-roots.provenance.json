@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "This is an audio briefing from Evidence Press on a research candidate about networks and the numbers hidden in their quiet groups. Take any network. An independent set is a group of nodes with no links between them, like guests at a party none of whom know each other. Count these groups by size and use the counts as the coefficients of a polynomial, the independence polynomial. Physicists know it as the partition function of the hard-core gas, where its complex zeros mark possible phase transitions. Which complex numbers can be zeros of such a polynomial, for some network? Two restrictions are obvious. The reciprocal of a zero must be an algebraic integer, and no zero, nor any of its algebraic twins, can be a positive real number, because the polynomial is positive there.",
+      "inputSha256": "859bdf991341f8baeefae8bcaf802545a7a3620e00b8724e94a47687f516f22f",
+      "audioSha256": "aae73ac0be668918debe1253ee40fdd4fb6c4724b57cadde0f164956f829999a",
+      "requestId": "req_a9dd2fe81dea43f2bf5c59d7a6bdfe67",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "real number because the polynomial is positive there",
+        "heardEnding": "of its algebraic twins can be a positive real number because the polynomial is positive there",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "Earlier work showed that zeros come arbitrarily close to every point, but not which points are hit exactly. This candidate shows that the obvious restrictions are the only ones. Every number that passes them is a zero, and the network can be chosen to be a tree, a cograph or a well-covered graph. It also settles a question about zeros on the imaginary axis. Such zeros can be larger than one in size: the imaginary unit times the golden ratio is a zero of an explicit network with four thousand two hundred and ninety-three nodes. These large imaginary zeros need groups of at least six nodes, and once six is allowed they come as close as you like to every point of the axis.",
+      "inputSha256": "17d9d06c9b0b041f2d978d978452806d5ae77d866158747e7893fd972b6ff0ed",
+      "audioSha256": "8a4b0113dbd639b12fd01cb3b9dd67534bdbef1dfbb95d9b1f9789e380226acc",
+      "requestId": "req_a4955c4d52034a999b2eaa2a5302657d",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "you like to every point of the axis",
+        "heardEnding": "once is allowed they come as close as you like to every point of the axis",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The constructions join together clusters of fully linked nodes, whose group counts can be tuned exactly, and a classical counting inequality bounds how large the zeros can get. There are limits. The networks are huge, the smallest one with the golden-ratio zero is unknown, and the sharp size law is proved only when the largest group has six nodes. This is an unrefereed candidate, checked by internal AI-assisted review and exact computation rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+      "inputSha256": "357344e5469f2eb9521ad325904ffec17f10dfeb3def3cff4ec9c787a00c7a23",
+      "audioSha256": "a40b45d69a8c6f0ea2608e04f23d866f618bdb5ab8212bb1fe33b6d4d7f3a2dd",
+      "requestId": "req_743520e733844188933de9cd11fb31a4",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "a synthetic voice that is not additional evidence",
+        "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "which-numbers-are-independence-roots",
+  "generatedAt": "2026-11-25T00:23:57.550Z",
+  "sourceMetadata": "papers/which-numbers-are-independence-roots/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "3a531bf25266a7e5948724de204bd9bd64cf95b445e58c7379f78f266a64d724",
+  "transcriptPath": "assets/audio/which-numbers-are-independence-roots.txt",
+  "transcriptSha256": "bf4ce6e2118c4922aea075558a9494ee0f8310da88df507b7bebebc56b1a0505",
+  "audioPath": "assets/audio/which-numbers-are-independence-roots.mp3",
+  "audioSha256": "e3cc7bde49754f04f624d0547c6a41796865d76e6f02de70b0d586c9f6b91301",
+  "audioBytes": 2111276,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "a synthetic voice that is not additional evidence",
+    "heardEnding": "than by peer review and this briefing uses a synthetic voice that is not additional evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
