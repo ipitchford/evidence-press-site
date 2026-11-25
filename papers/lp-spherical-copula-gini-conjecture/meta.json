@@ -1,0 +1,182 @@
+{
+  "slug": "lp-spherical-copula-gini-conjecture",
+  "title": "Which Lₚ-spherical copulas maximise a generalised Gini mean difference?",
+  "shortTitle": "The Lₚ-spherical copula conjecture fails off unit power",
+  "oneLine": "The Bernard–Müller–Oesting conjecture fails at every power except one: the conjectured optimal copulas come within parts per million of the optimum, but are never exactly optimal.",
+  "abstract": "When two quantities are forecast together, fixing each one's distribution still leaves open how they move together. The energy score for multivariate forecasts and the energy distance between distributions rest on the expected distance between two independent draws, raised to a power β between 0 and 2; with both marginals uniform and only the dependence free, its maximum is a dependence uncertainty bound. At β = 1 Bernard and Müller proved that the maximiser is the disc copula, the shadow on a plane of the uniform distribution on a sphere. For other powers Bernard, Müller and Oesting introduced the Lₚ-spherical copulas and conjectured from computations that the member with p = 3 − β is optimal. This candidate proves that the conjecture fails for every β ≠ 1, and that no member of the family, for any p from 1 to ∞, is optimal except the disc copula at β = 1. Even with the best member chosen for each β, the shortfall from the optimum is bounded above and below by constant multiples of β(2 − β)(β − 1)²; the constants are not computed. The main tool is a local regularity principle: wherever an optimal law has density bounded below, its mixed derivative is smooth, and the conjectured densities have a kink on the coordinate axes. An exact rational certificate gives a concrete better copula at β = 3/2. A floating-point profile on discretised copulas suggests the shortfall is tiny: an explicit copula beats the conjectured member by between about 2 × 10⁻⁷ and 3 × 10⁻⁵ of the optimal value, so the family remains an excellent approximation. Limits: the true optimal copula for β ≠ 1 is unknown; the numerical sizes are not certified bounds; only two dimensions are treated. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "copula",
+    "dependence uncertainty",
+    "energy score",
+    "energy distance",
+    "Gini mean difference",
+    "Lp-spherical copula",
+    "fixed-marginal optimisation",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/lp-spherical-copula-gini-conjecture",
+  "releaseUrl": "https://github.com/ipitchford/lp-spherical-copula-gini-conjecture/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/lp-spherical-copula-gini-conjecture/releases/download/v0.1.0-candidate/lp-spherical-copula-gini-conjecture-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24530818",
+  "conceptDoi": "10.5281/zenodo.24530817",
+  "zenodoUrl": "https://zenodo.org/records/24530818",
+  "citeText": "Anonymous (2026). Which Lₚ-spherical copulas maximise a generalised Gini mean difference? The Bernard–Müller–Oesting conjecture fails at every power except one. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24530818",
+  "evidence": "A 17-page paper with a plain introduction (the problem, why it matters, what was known, what is new and a roadmap), written proofs of every theorem, a numerical section and three appendices (an explicit oscillating improvement, an exact certificate at β = p = 3/2, and the programs with an AI-use statement). certificate.py proves the Appendix B enclosure in exact integer and rational arithmetic; diagnostics.py gives independent floating-point cross-checks; gap_profile.py and gapcore.py compute the Section 7 profile on checkerboard copulas by the Frank–Wolfe algorithm with duality gaps, check_discretisation.py checks its accuracy and make_table.py builds Table 2 from the stored results. A clean replay under Python's optimised mode reproduced every recorded output, Linux CI reruns the certificate with exact comparison and the diagnostics with a declared tolerance, and two deliberately broken checks were rejected.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and one exact rational certificate; the Section 7 gap profile (checkerboard copulas, Frank–Wolfe) is floating-point and not certified. Internal AI-assisted review: a combined Claude review panel and a separate methodology and proof audit, the lead's exact rational certificate replay, one revision round, then a re-review and a proof audit of the new proofs (Lemma 3, elliptic inversion). No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 17 pages), its scripts and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 1 (proof): for 1 ≤ p ≤ ∞ and 0 < β < 2, the centred Lₚ-spherical copula μₚ maximises the generalised Gini mean difference over copulas only when p = 2 and β = 1. In particular Conjecture 9 of Bernard, Müller and Oesting (p = 3 − β) fails for every β ≠ 1: a smooth marginal-preserving perturbation near the axis point (0, 1/2) increases the objective.",
+    "Theorem 2 (proof): the shortfall of the best family member satisfies c β(2 − β)(β − 1)² ≤ M_β − S_β ≤ C β(2 − β)(β − 1)², with positive finite limits at both ends; the constants c and C are not computed.",
+    "Lemma 3 and Theorem 4 (proof): on any open set where an optimal law has density bounded below, its mixed derivative ∂x∂y is smooth; the conjectured densities have a kink on the coordinate axes and fail this test.",
+    "Appendix B (exact certificate): integer and rational arithmetic proves 15382/10⁹ ≤ 𝒟/4^(3/4) ≤ 305131/10⁹ for a four-corner contrast at β = p = 3/2, so an explicit four-rectangle perturbation gives a better copula. It certifies one perturbation, not the size of the gap.",
+    "Section 7 (floating point, not certified): at six powers β ≠ 1, an explicit checkerboard copula beats the conjectured member by between about 2 × 10⁻⁷ and 3 × 10⁻⁵ of the optimal value and the best member by about 10⁻⁷ to 5 × 10⁻⁶; the best p is about 3.03 at β = 0.25, against 2.75 conjectured."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined Claude review panel, a methodology and proof audit, a re-review and a proof audit of the new proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "When we forecast two things at once, such as the wind at two nearby sites, getting each forecast's range right still leaves open how the two move together. A standard way to score such forecasts, the energy score, rests on one number: how far apart two independent draws are on average, with each distance raised to a chosen power. So a natural question is how large that number can be when both individual distributions are fixed and only the way they depend on each other is free. The answer bounds how much the choice of dependence alone can move the score.\n\nIn the classical case the answer is a beautiful object. Scatter points evenly over a sphere and look at their shadow on a flat plane. That shadow, called the disc copula, is known to be the best possible. For other powers, three statisticians proposed a family of shapes that bend the disc towards a diamond or a square, and conjectured from computer experiments that one particular member of the family is always the best.\n\nThis release proves that the conjecture holds only in the classical case and fails at every other power. In fact no member of the whole family is ever optimal, apart from the disc itself. The idea of the proof is easy to state. If a dependence pattern were optimal, shifting a little probability in a plus, minus, minus, plus pattern on a tiny rectangle could not help. That forces the density to be smooth in a particular sense, and the conjectured densities have a tiny kink where they cross the axes. An exact calculation in whole-number arithmetic also builds a concrete better pattern for one particular power.\n\nYet the family comes very close. Computations suggest that it falls short by only a few parts per million, so it remains an excellent practical approximation.\n\nThe limits matter. The true best pattern is still unknown, the size estimates are numerical rather than certified, and only two dimensions are treated. This is an unrefereed candidate, checked by internal AI-assisted review.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The certificate, diagnostics, discretisation check and table regeneration were rerun from a fresh copy before release under Python's optimised mode; all outputs matched the recorded ones, and two deliberately broken checks were rejected. The long Frank–Wolfe profile was replayed by the lead at two powers with identical results. GitHub CI on Linux reruns the certificate with exact comparison and the diagnostics with a declared tolerance."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. The diagnostics script checks the certified contrast by an independent quadrature; that is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The Appendix B enclosure is certified in exact rational arithmetic; the theorems rest on written proofs, and the Section 7 profile is floating point."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with pinned NumPy 2.3.5, SciPy 1.17.0 and mpmath 1.3.0 (the certificate uses the standard library only); outputs reproduced on the release platform and on Linux CI under the declared policy. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Bernard and Müller (2020), Dependence uncertainty bounds for the energy score and the multivariate Gini mean difference. Dependence Modeling. Proves that the disc copula is optimal at β = 1 (Theorem 12 of the journal version; Theorem 11 of arXiv:2004.11770).",
+      "url": "https://doi.org/10.1515/demo-2020-0014"
+    },
+    {
+      "citation": "Bernard, Müller and Oesting (2024), Lp-norm spherical copulas. Journal of Multivariate Analysis. Introduces the family; the conjecture tested here is cited from the arXiv preprint 2206.10180v1 (Section 3.2, Conjecture 9).",
+      "url": "https://doi.org/10.1016/j.jmva.2023.105262"
+    },
+    {
+      "citation": "Buja, Logan, Reeds and Shepp (1994), Inequalities and positive-definite functions arising from a problem in multidimensional scaling. The Annals of Statistics. Related extremal problems for expected distances.",
+      "url": "https://doi.org/10.1214/aos/1176325376"
+    },
+    {
+      "citation": "Kwaśnicki (2017), Ten equivalent definitions of the fractional Laplace operator. Fractional Calculus and Applied Analysis. Riesz potentials and the constant used in the regularity argument.",
+      "url": "https://doi.org/10.1515/fca-2017-0002"
+    },
+    {
+      "citation": "Perlman and Wellner (2011), Squaring the circle and cubing the sphere: circular and spherical copulas. Symmetry. The disc (circular) copula and uniform projections of the sphere.",
+      "url": "https://doi.org/10.3390/sym3030574"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:lp-spherical-copula-gini-conjecture",
+    "attemptIds": [
+      "ep-attempt:lp-spherical-copula-gini-conjecture-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide whether the Lₚ-spherical copulas proposed by Bernard, Müller and Oesting give the exact dependence uncertainty bound for the generalised Gini mean difference, and how much is lost by using them.",
+      "scope": "Two-dimensional copulas with uniform marginals; powers 0 < β < 2; the whole Lₚ-spherical family, 1 ≤ p ≤ ∞."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the problem, why it matters (energy score and energy distance), what was known (Bernard–Müller at β = 1; the Bernard–Müller–Oesting family and conjecture), what is new and a roadmap; every section opens with a purpose sentence; Section 7 reports the size of the gap with its limits.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only; the gap sizes are floating-point estimates."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in fixed-marginal optimisation or potential theory check Lemma 3 (elliptic inversion), Theorem 4 and the classification of the family in Section 4, and compute certified two-sided bounds for the optimal value.",
+      "claimCeiling": "Written proofs of Theorems 1, 2, 4 and 19, Lemmas 3, 12 and 14, Propositions 5–7, 9–11, 13, 15, 17 and 18 and Corollary 16; an exact rational certificate of one improving perturbation at β = p = 3/2; a floating-point profile of the gap; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "lp-spherical-copula-gini-conjecture-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable disproof of the Lₚ-spherical copula conjecture for the generalised Gini mean difference, with the order of the shortfall and a numerical size estimate.",
+        "setting": "AI-assisted research in probability and dependence modelling",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
