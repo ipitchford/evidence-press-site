@@ -1,0 +1,208 @@
+{
+  "slug": "majority-tournament-cyclic-reversal",
+  "title": "When a more cyclic majority tournament is more probable",
+  "shortTitle": "A more cyclic election outcome can be more likely",
+  "oneLine": "A counterexample to Harrison-Trainor's linearity conjecture, the transitive maximum, and what win totals reveal.",
+  "abstract": "When many voters rank a fixed set of candidates independently and uniformly at random (impartial culture, the standard yardstick of voting theory), the head-to-head majorities form a random tournament, and a cyclic triple (A beats B, B beats C, C beats A) is an instance of Condorcet's paradox. Harrison-Trainor conjectured that, in the limit of many voters, a labelled tournament with fewer cyclic triples is always the more probable one; he checked this for up to five candidates. This candidate shows that the conjecture is false. For every odd t there are tournaments on 14t candidates in which the tournament with 3t³ more cyclic triples is 2^(3t²+o(t²)) times as probable: the probability cost is governed by pairs of candidates whose strengths must be almost equal, while cyclic triples are governed by triples, and ordered block structures make the two disagree. An exact rational certificate gives an explicit pair on 78 candidates: the tournament with three more cyclic triples is more than 10⁵ times as probable, and the reversal persists for isomorphism classes. Monte Carlo computation, which is not a proof, finds no reversal on seven or fewer candidates and finds reversals on 13 and 14 candidates. The extremal half of the conjecture is true: the transitive tournaments are exactly the most probable ones, for every number of candidates and a wide class of paired-comparison models. A second part shows that, outside the Bradley–Terry case, the win totals of a round robin leave exponential differences in probability, which an exactly calibrated triangle test detects from one round robin, and that one observation per pair cannot support the minimax Bradley–Terry–Luce test of Makur and Singh at constant separation; whether a constant number of observations suffices remains open. Limits: impartial culture is a null model, not real elections; the election results are many-voter limits with no finite electorate size; the smallest counterexample lies between 8 and 13 candidates on numerical evidence and is certified at 78. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "majority tournament",
+    "impartial culture",
+    "Condorcet paradox",
+    "random elections",
+    "cyclic triples",
+    "Bradley-Terry model",
+    "paired comparisons",
+    "round robin",
+    "goodness-of-fit test"
+  ],
+  "repoUrl": "https://github.com/ipitchford/majority-tournament-cyclic-reversal",
+  "releaseUrl": "https://github.com/ipitchford/majority-tournament-cyclic-reversal/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/majority-tournament-cyclic-reversal/releases/download/v0.1.0-candidate/majority-tournament-cyclic-reversal-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24526810",
+  "conceptDoi": "10.5281/zenodo.24526809",
+  "zenodoUrl": "https://zenodo.org/records/24526810",
+  "citeText": "Anonymous (2026). When a more cyclic majority tournament is more probable. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24526810",
+  "evidence": "A 19-page paper in two parts with a plain introduction (the question, why it matters, what was known, what is new, what is not claimed and a roadmap), written proofs of every theorem and a discussion of scope and open problems. certificate.py checks the 78-candidate and 319-candidate counterexamples in exact rational arithmetic and counts the automorphisms of the 78-candidate pair; example78.py lists both tournaments pair by pair and recounts all 76,076 triples; check_compression.py and check_cycles.py enumerate every tournament on five and on up to six candidates exactly; further scripts check the Part II tests and rerun the seeded power study; small_reversals.py is the Monte Carlo small-case study. A clean replay under Python's optimised mode reproduced the certificate output, the 78-candidate table and the power table byte for byte, Linux CI reruns the checks with the same comparison, and a deliberately raised certificate threshold was rejected.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs, an exact rational certificate and exhaustive small-case checks; the small-case reversal results are Monte Carlo estimates. Internal AI-assisted review: five Claude reviewer roles in two calls, the lead's replay of the rational certificate and every check script with explicit failure checks and a negative control, one revision round with extensions, then a re-review and proof audit of the changed proofs. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 19 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 4.3 (proof, main): Harrison-Trainor's linearity conjecture is false. For every odd t, the ordered block tournaments with blocks (7t, 7t) and (t, 9t, 3t, t) on 14t candidates differ by 3t³ cyclic triples, and the more cyclic one is 2^(3t²+O(t log t)) times as probable.",
+    "Proposition 5.1 and Corollary 5.2 (exact certificate): on 78 candidates, the tournament with blocks (7, 7, 49, 5, 5, 5) has three more cyclic triples (4,943 against 4,940) than the one with two blocks of 39, yet is more than 10⁵ times as probable; for isomorphism classes the ratio exceeds 3.3.",
+    "Section 5.2 (Monte Carlo, not a proof): no reversal among all tournaments on up to seven candidates or block tournaments on 8 to 12; reversals on 13 candidates (by about 1%) and 14 candidates (by a factor of about 2.7).",
+    "Theorem 6.1 (proof): the transitive tournaments are exactly the most probable labelled tournaments, for every number of candidates and every exchangeable latent-strength model whose win probabilities increase strictly with strength.",
+    "Theorem 7.1 and Section 8 (proof): for a fixed comparison model, either the win totals determine every outcome's probability (Bradley–Terry) or a typical outcome shares its win totals with outcomes e^(±cn²) times as probable; triangle tests are exactly calibrated given the win totals and detect every such departure from one round robin.",
+    "Proposition 9.1 (proof): with one observation per pair, the minimax Bradley–Terry–Luce test of Makur and Singh is impossible at constant separation; whether a constant number of observations per pair suffices remains open."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five Claude reviewer roles, a replay with a negative control, a re-review and a proof audit of the changed proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Imagine many voters, each ranking the same candidates in a random order. For every pair of candidates, look at who wins the head-to-head majority vote. Sometimes three candidates form a loop, like rock, paper, scissors: A beats B, B beats C, and yet C beats A, closing the loop. This is Condorcet's paradox, and this random-voter model is the standard yardstick of voting theory.\n\nA natural guess, made as a formal conjecture by Harrison-Trainor, is that an outcome with fewer of these loops is always more likely than one with more. He checked it for small elections, with up to five candidates, and found that it held.\n\nThis release shows that the guess is false. Split the candidates into ranked groups, where everyone in a stronger group beats everyone in a weaker group. Each pair of candidates that must end up almost tied costs roughly a factor of two in probability. Loops live inside groups, and so do the costly pairs. But pairs grow with the square of a group's size, while loops grow with its cube, so some arrangements have more loops yet need fewer almost-tied pairs.\n\nAn exact certificate gives a concrete case with seventy-eight candidates: an outcome with three extra loops is more than a hundred thousand times as likely. Computer estimates, which are not proofs, find no such reversal with seven or fewer candidates, and they do find reversals with thirteen candidates, and with fourteen, among the cases examined.\n\nPart of the conjecture survives. The fully ordered outcomes, with no loops at all, really are the most likely ones, whatever the number of candidates.\n\nA second part speaks to anyone who analyses round robins, such as a sports season. Unless the Bradley-Terry model holds, the win totals hide a great deal, and a simple test built from triangles of games can detect this from a single season. But with only one game per pair, no test can meet the worst-case standard proposed by Makur and Singh.\n\nThe election results are about a mathematical null model with very many voters, not real elections, and the size of the smallest counterexample is still unknown.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and exact computer checks rather than outside peer review, and its proofs, programs and limits are open for anyone to inspect.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The certificate and every check script were rerun from a fresh copy before release, the certificates also under Python's optimised mode; the certificate output, the 78-candidate table and the power table matched the recorded ones byte for byte, and a raised certificate threshold was rejected. GitHub CI on Linux reruns the checks with the same comparison and the failure test; the Monte Carlo study reruns there as a non-blocking job."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. An internal re-reviewer recomputed the certificate constants and automorphism counts with separate code; that is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The certificate is exact rational arithmetic; the asymptotic theorems and Part II rest on written proofs, and the small-case results are Monte Carlo estimates."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with pinned NumPy 2.3.5 and SciPy 1.17.0 (the certificates use the standard library only); outputs reproduced exactly on the release platform and on Linux CI. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Harrison-Trainor (2022), An analysis of random elections with large numbers of voters. Mathematical Social Sciences (arXiv:2009.02979). The linearity conjecture (Conjecture 6.3 of the arXiv version), refuted here, and the small-case values.",
+      "url": "https://doi.org/10.1016/j.mathsocsci.2022.01.002"
+    },
+    {
+      "citation": "Hązła, Mossel, Ross and Zheng (2020), The probability of intransitivity in dice and close elections. Probability Theory and Related Fields. The Gaussian many-voter limit, and close elections, where every tournament is asymptotically equally likely.",
+      "url": "https://doi.org/10.1007/s00440-020-00994-7"
+    },
+    {
+      "citation": "Mossel (2010), Gaussian bounds for noise correlation of functions. Geometric and Functional Analysis. The probability that the majority tournament is transitive.",
+      "url": "https://doi.org/10.1007/s00039-010-0047-x"
+    },
+    {
+      "citation": "Varin and Firth (2024), Tractable ridge regression for paired comparisons. Stat. The Thurstone–Mosteller model with random strengths, whose marginal likelihood matches the limiting probabilities.",
+      "url": "https://doi.org/10.1002/sta4.70028"
+    },
+    {
+      "citation": "Saile and Suksompong (2020), Robust bounds on choosing from large tournaments. Social Choice and Welfare. Lemma 6 on transitive score vectors, cited and distinguished from the compression theorem.",
+      "url": "https://doi.org/10.1007/s00355-019-01213-6"
+    },
+    {
+      "citation": "Chatterjee (2015), Matrix estimation by universal singular value thresholding. Annals of Statistics. Matrix estimation used by the spectral test.",
+      "url": "https://doi.org/10.1214/14-AOS1272"
+    },
+    {
+      "citation": "Makur and Singh (2025), Minimax hypothesis testing for the Bradley–Terry–Luce model. IEEE Transactions on Information Theory. The replication question answered for one observation per pair.",
+      "url": "https://doi.org/10.1109/TIT.2025.3605846"
+    },
+    {
+      "citation": "Rastogi, Balakrishnan, Shah and Singh (2022), Two-sample testing on ranked preference data and the role of modeling assumptions. Journal of Machine Learning Research 23(225). The masking construction (Proposition 4) adapted for the replication result.",
+      "url": "https://jmlr.org/papers/v23/20-1304.html"
+    },
+    {
+      "citation": "Lauritzen (2008), Exchangeable Rasch matrices. Rendiconti di Matematica e delle sue Applicazioni. The characterisation of models whose win totals determine probabilities (Section 2.4).",
+      "url": "https://www.stats.ox.ac.uk/~steffen/papers/rendiconti.pdf"
+    },
+    {
+      "citation": "Iyer (2016), Random tournaments. Honours thesis, Australian National University. Theorem 4.2.9, the same characterisation for tournaments.",
+      "url": "https://tqft.net/web/research/students/TejasIyer/thesis.pdf"
+    },
+    {
+      "citation": "Singh and Davidov (2026), Testing for lack of fit in paired comparison data (arXiv:2604.00426). The closest current lack-of-fit tests, for cardinal or replicated data.",
+      "url": "https://arxiv.org/abs/2604.00426"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:majority-tournament-cyclic-reversal",
+    "attemptIds": [
+      "ep-attempt:majority-tournament-cyclic-reversal-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide whether fewer voting cycles reliably signals a more probable majority tournament under impartial culture, and whether a single round robin can test the Bradley–Terry model.",
+      "scope": "Impartial culture in the many-voter limit; labelled tournaments and isomorphism classes; fixed latent-type paired-comparison models; one observation per pair."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the question, why it matters, what was known (Harrison-Trainor, the Gaussian limit, Mossel), what is new, what is not claimed and a roadmap; Part II opens with a bridging paragraph; Section 10 discusses scope, uses and open problems.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only; the small-case results are Monte Carlo estimates."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a social-choice or random-tournament specialist check the two-sided mode bound (Theorem 3.1), the block estimate (Proposition 4.2) and the rational certificate (Proposition 5.1, Appendix A), and certify a reversal on 13 or 14 candidates by validated integration.",
+      "claimCeiling": "Written proofs of Theorems 3.1, 4.3, 6.1, 7.1, Propositions 3.2, 4.2, 8.1, 9.1 and Corollaries 7.2, 7.3, 8.2; exact rational certificate on 78 and 319 candidates; Monte Carlo estimates for small cases; many-voter limit; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "majority-tournament-cyclic-reversal-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable refutation of Harrison-Trainor's linearity conjecture with an exact certificate, the transitive maximum and calibrated round-robin tests.",
+        "setting": "AI-assisted research in social choice and paired-comparison statistics",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
