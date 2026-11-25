@@ -1,0 +1,195 @@
+{
+  "slug": "forecast-aggregation-sample-complexity",
+  "title": "Learning to aggregate Bayesian forecasts: optimal sample complexity under bounded dependence",
+  "shortTitle": "How many resolved cases does forecast aggregation need?",
+  "oneLine": "The exact rate, up to constants, for every level of dependence between experts: log(1/δ)/ε resolved cases when they are conditionally independent, (mⁿ + log(1/δ))/ε when anything goes.",
+  "abstract": "Several forecasters each report a probability for the same yes/no event, each from different evidence. The best combination is the probability of the event given all the reports together, but it depends on how the forecasters' evidence overlaps, so an aggregator must learn it from a track record of past cases with known outcomes. In the binary model of Lin and Chen (NeurIPS 2023), with n experts whose evidence takes at most m values and exact, calibrated reports, earlier bounds differed by a factor 1/ε, and Lin and Chen conjectured that 1/ε is the right dependence on the accuracy. This candidate determines the answer up to universal constants for every level of dependence. With η a bound on the conditional total correlation of the reports given the outcome, T past cases and failure probability δ ≤ 1/32, the minimax excess Brier risk is of order min{1, log(1/δ)/T + min(η, mⁿ/T)}, and one estimator attains it without knowing η: it fits the multiplicative pooling formula and a lookup table and keeps whichever does better on held-out cases. So log(1/δ)/ε cases suffice and are needed under conditional independence, and (mⁿ + log(1/δ))/ε under arbitrary dependence, which raises Lin and Chen's mⁿ⁻² lower bound to mⁿ. For the independent case, standard localisation arguments already gave the upper bound up to a log T factor; the new parts there are removing that factor and the matching lower bounds. The hard examples keep every expert's calibration curve, the prior and the whole distribution of report vectors fixed. Further results cover a known prior, unbounded report alphabets and finitely many outcomes. Limits: exact, honest, calibrated reports; worst-case bounds with unoptimised constants; a factor of about k open for k outcomes. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "forecast aggregation",
+    "sample complexity",
+    "Bayesian aggregator",
+    "minimax rate",
+    "conditional total correlation",
+    "Brier score",
+    "learning theory",
+    "wisdom of crowds"
+  ],
+  "repoUrl": "https://github.com/ipitchford/forecast-aggregation-sample-complexity",
+  "releaseUrl": "https://github.com/ipitchford/forecast-aggregation-sample-complexity/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/forecast-aggregation-sample-complexity/releases/download/v0.1.0-candidate/forecast-aggregation-sample-complexity-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24532624",
+  "conceptDoi": "10.5281/zenodo.24532623",
+  "zenodoUrl": "https://zenodo.org/records/24532624",
+  "citeText": "Anonymous (2026). Learning to aggregate Bayesian forecasts: optimal sample complexity under bounded dependence. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24532624",
+  "evidence": "A 16-page paper with a plain introduction (the problem, why it matters, what was known with a table of rates, what is new, the relation to learning theory and a roadmap) and written proofs of every result. verify.py checks the finite algebra of the constructions in exact rational arithmetic (9075 checks: report grids, calibration, unchanged prior and report law, divergence and separation constants, the worked example, the Section 4.1 constants, the continuous construction, the coupling inequalities and the explicit lower constant); simulate.py runs the estimator on two small laws as an illustration. A clean replay under Python's optimised mode reproduced both recorded outputs byte for byte, Linux CI reruns them under a declared comparison policy, and a deliberately broken constant was rejected.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs; the scripts check finite algebra only and the simulation is an illustration. Internal AI-assisted review: a combined five-role Claude review, the lead's exact checks (9075 pass) with a negative control and a small simulation, one revision round, then a re-review and a proof audit of the new and rewritten proofs. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 16 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 1 (proof): for n, m ≥ 2, T ≥ 1, 0 < δ ≤ 1/32 and every dependence bound η, the minimax excess Brier risk lies between 2⁻¹⁷ and C times min{1, log(1/δ)/T + min(η, mⁿ/T)}, C universal; a single learning rule attains the upper bound for every η, m and δ.",
+    "Corollary 2 (proof): about log(1/δ)/ε cases are needed and suffice under conditional independence, and about (mⁿ + log(1/δ))/ε under arbitrary dependence; this confirms Lin and Chen's 1/ε conjecture for the binary model and raises their mⁿ⁻² lower bound to mⁿ.",
+    "Lemmas 4–6 and Section 3.4 (proof): assuming conditional independence costs at most half the conditional total correlation; least squares over the pointwise-ordered pooling family has no log T factor; validation chooses between the pooling and lookup-table candidates without knowing η.",
+    "Section 4 (proof, finite algebra checked exactly): the lower-bound alternatives share the prior, every expert's calibration curve and the whole law of the report vector, so no single expert's record and no unlabelled data can tell them apart; in the smallest case (m = n = 2) the reports are 31/64 and 33/64.",
+    "Propositions 7 and 8 (proof): with the prior known, no cases are needed when η ≤ 2ε; with unbounded report alphabets the rate is min{1, η + log(1/δ)/T}, so any fixed dependence allowance rules out uniform consistency.",
+    "Section 6 (proof): for k outcomes the dependence interpolation extends with constants depending on k; under conditional independence a factor of about k remains between the upper and lower bounds."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-role Claude review, a re-review and a proof audit of the new and rewritten proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Suppose several forecasters each give a probability for the same yes or no question: will it rain tomorrow, will a patient relapse, who will win an election. Each has seen different evidence, and each reports honestly. The best way to combine them is the probability of the event given all their reports together. But that depends on how their evidence overlaps, and nobody knows that in advance. So an aggregator has to learn it from a track record of past cases whose outcomes are known. The question is how long that track record must be.\n\nEarlier work set up this problem, found upper and lower answers that were far apart, and conjectured where the truth lay. This release settles the question, up to constant factors, for every level of overlap between the forecasters. If their evidence is independent once the outcome is known, the record needed grows only with the accuracy you want and the confidence you demand, not with the number of forecasters. If anything goes, it grows with the number of possible patterns of reports, which explodes as forecasters are added. In between, the answer moves smoothly with a measure of how much the forecasters share.\n\nThe practical message is simple. With a short record, use the classical pooling formula that multiplies the forecasters' odds, and accept a small bias from their shared evidence. Once the record is long enough, a lookup table over the patterns of reports can learn the shared structure. One method does both without knowing the overlap in advance: fit both, and keep whichever predicts better on cases held back for testing.\n\nThe hardest examples are striking. Every forecaster's own track record, the base rate, and even the full pattern of reports look identical, yet the right way to combine them differs. No single forecaster's history can reveal the difference.\n\nTwo honest caveats. For independent forecasters, standard tools from learning theory already gave almost the same answer; the new part there is removing an extra logarithmic factor and proving matching lower bounds. And the results assume exact, honest, calibrated forecasts, describe the worst case, and leave a gap when there are many possible outcomes. This is an unrefereed candidate, checked by internal AI-assisted review.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Both scripts were rerun from a fresh copy before release under Python's optimised mode; both outputs matched the recorded ones byte for byte, and a deliberately broken constant was rejected. GitHub CI on Linux reruns them, compares the exact-arithmetic output exactly and the simulation within a declared tolerance, and repeats the failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. Internal reviewers recomputed the load-bearing constants; that is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The finite algebra of the constructions is checked in exact rational arithmetic; the theorems rest on written proofs, and the simulation is an illustration."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python standard library only (3.10 or later); outputs reproduced on the release platform and on Linux CI under the declared policy. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Agrawal (2020), Finite-sample concentration of the multinomial in relative entropy. IEEE Transactions on Information Theory. The concentration inequality behind the lookup-table bound.",
+      "url": "https://doi.org/10.1109/TIT.2020.2996134"
+    },
+    {
+      "citation": "Babichenko and Garber (2021), Learning optimal forecast aggregation in partial evidence environments. Mathematics of Operations Research. A related model of overlapping evidence; its sample complexity is posed as open.",
+      "url": "https://doi.org/10.1287/moor.2020.1080"
+    },
+    {
+      "citation": "Baraud and Chen (2024), Robust estimation of a regression function in exponential families. Journal of Statistical Planning and Inference. General robust bounds that give nearly inverse-linear rates with a logarithmic factor.",
+      "url": "https://doi.org/10.1016/j.jspi.2024.106167"
+    },
+    {
+      "citation": "Bartlett, Bousquet and Mendelson (2005), Local Rademacher complexities. The Annals of Statistics. Localisation, which already gives the independent-case upper bound up to a log T factor.",
+      "url": "https://doi.org/10.1214/009053605000000282"
+    },
+    {
+      "citation": "Bordley (1982), A multiplicative formula for aggregating probability assessments. Management Science. The pooling formula, credited as in Lin and Chen (their Lemma 5.1).",
+      "url": "https://doi.org/10.1287/mnsc.28.10.1137"
+    },
+    {
+      "citation": "Bousquet (2002), A Bennett concentration inequality and its application to suprema of empirical processes. Comptes Rendus Mathématique. The inequality used in the log-free least-squares lemma.",
+      "url": "https://doi.org/10.1016/S1631-073X(02)02292-6"
+    },
+    {
+      "citation": "Koltchinskii (2006), Local Rademacher complexities and oracle inequalities in risk minimization. The Annals of Statistics. Localisation theory compared in Section 1.",
+      "url": "https://doi.org/10.1214/009053606000001019"
+    },
+    {
+      "citation": "Lin and Chen (2023), Sample complexity of forecast aggregation. Advances in Neural Information Processing Systems 36. The model, the earlier bounds, the confidence lower bound and the 1/ε conjecture answered here.",
+      "url": "https://doi.org/10.52202/075280-1564"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:forecast-aggregation-sample-complexity",
+    "attemptIds": [
+      "ep-attempt:forecast-aggregation-sample-complexity-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide how many resolved past cases an aggregator needs to learn to combine calibrated probability forecasts, at each level of dependence between the forecasters, and when a simple pooling formula should be preferred to learning the joint structure.",
+      "scope": "Binary outcomes; n experts with at most m signal values each; exact calibrated reports; independent training cases; worst case over all laws with a given dependence bound; extensions to unbounded alphabets and finitely many outcomes."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the problem, why it matters, what was known (Lin and Chen, with a table of rates), what is new, how it relates to localisation theory and a roadmap; every section opens with a purpose sentence; Section 7 gives a practical reading, the scope and open problems.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only; the constants are not optimised."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a learning-theory specialist check the log-free ordered least-squares lemma (Lemma 5), the calibrated lower-bound family of Section 4.2 and the validation step, and attempt the k versus k² gap for many outcomes.",
+      "claimCeiling": "Written proofs of Theorems 1 and 9, Corollary 2, Lemmas 4–6, Propositions 7, 8, 10 and 11 and the validation step; exact-arithmetic checks of the finite algebra; an illustrative simulation; constants not optimised; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "forecast-aggregation-sample-complexity-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable determination of the sample complexity of learning to aggregate calibrated forecasts at every level of dependence, with a method that adapts to the unknown dependence.",
+        "setting": "AI-assisted research in learning theory and forecast aggregation",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
