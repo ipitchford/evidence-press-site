@@ -1,0 +1,228 @@
+{
+  "slug": "reversible-transition-apparent-entropy-production",
+  "title": "How a reversible transition amplifies apparent entropy production",
+  "shortTitle": "Waiting-time entropy estimates can overshoot without bound",
+  "oneLine": "A counterexample to the uncorrected waiting-time inequality of Harunari, Fiore and Barato, and the sharp correction for blocks of waits.",
+  "abstract": "Experiments on small driven systems, such as molecular motors and colloids in moving traps, usually see only a few transitions and the waiting times between them, so dissipation is estimated from waiting-time statistics. For periodically driven systems, Harunari, Fiore and Barato proposed comparing waiting-time histograms recorded with the driving protocol and with the protocol reversed, without recording the phase of the drive. They proved that this estimate minus a correction X is a lower bound on entropy production and left open whether the uncorrected estimate is one as well. This candidate shows that it is not, and that its excess is unbounded. In a smooth three-state model with zero period-averaged current on every edge, equal event rates in both experiments and fixed entropy production 4π/5, the estimate grows linearly with the rate of one reversible transition: an exact rational certificate proves more than 31 times the entropy production at one rate, and a certified lag-bin bound more than 145 times. The failure persists when every microscopic jump is recorded, and under a small constant cycle affinity, under which the model numerically pumps a net current. For every finite driven network, the estimate from blocks of m consecutive waits exceeds the phase-resolved bound by at most X/m, where X needs only the phase histogram of each kind of visible event, and the coefficient cannot be lowered; if events sample the phase reversal-symmetrically, the uncorrected estimate is safe. Harunari, Fiore and Barato's corrected inequality remains valid. Limits: a model calculation; the overshoot per event is small and needs a reporter several hundred times faster than the drive; the scaling table and sharpness are proved for the example only. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "entropy production",
+    "waiting times",
+    "periodically driven systems",
+    "stochastic thermodynamics",
+    "Markov jump process",
+    "thermodynamic inference",
+    "time reversal",
+    "relative entropy"
+  ],
+  "repoUrl": "https://github.com/ipitchford/reversible-transition-apparent-entropy-production",
+  "releaseUrl": "https://github.com/ipitchford/reversible-transition-apparent-entropy-production/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/reversible-transition-apparent-entropy-production/releases/download/v0.1.0-candidate/reversible-transition-apparent-entropy-production-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24529102",
+  "conceptDoi": "10.5281/zenodo.24529101",
+  "zenodoUrl": "https://zenodo.org/records/24529102",
+  "citeText": "Anonymous (2026). How a reversible transition amplifies apparent entropy production. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24529102",
+  "evidence": "A 20-page paper with a plain introduction (the problem, why it matters, what was known, what is new and a roadmap), written proofs of every theorem and three appendices with the asymptotic proofs and the finite-rate certificates. verify_certificate.py checks Theorem 1 at R = 100,000 in exact rational arithmetic; verify_lag_bins_exact.py and verify_moderate_speed.py certify the lag-bin bounds of Proposition 2 with exact rational and integer-interval arithmetic; four floating-point scripts illustrate the race probabilities, the high-activity slope, a binned histogram bound, the critical channel and the pumped-current table. A clean replay under Python's optimised mode reproduced every recorded output, Linux CI reruns the checks with exact comparison for the certificates and a declared tolerance for the floating-point scripts, and three deliberately weakened certificates were rejected.",
+  "statusDetail": "Unrefereed AI-assisted mathematical-physics candidate with written proofs and exact rational certificates; the floating-point computations, including the net current under a cycle affinity, are illustrations. Internal AI-assisted review: a five-role Claude review panel, the lead's exact rational certificates with negative controls and a clean replay, one revision round with extensions, then a re-review and proof audit of the new proofs, which corrected the threshold in Corollary 3 to R ≥ 5400 (checked exactly). No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 20 pages), its scripts and recorded output, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 1 (proof and exact certificate): in a three-state model with zero period-averaged current on every edge, equal event rates in both experiments and entropy production 4π/5, the uncorrected phase-blind estimate satisfies S₁ ≥ R[17/600 − 2C/R]₊², so it exceeds 31 times the entropy production at R = 100,000 and is unbounded relative to it.",
+    "Proposition 2 (exact certificates): certified lag-bin bounds give S₁ > 366.44 at R = 100,000, more than 145 times the entropy production; the smallest certified violation is at R = 750, about 375 reporter events per period.",
+    "Section 4 and Corollary 3 (proof): the violation persists when all six directed jumps are recorded, and under a small constant cycle affinity for any R ≥ 5400; numerically the model then pumps a net current, and at R = 1000 the binned ratio stays between 1.10 and 1.53 for affinities up to 1.",
+    "Theorem 5 (proof, every finite driven network): the block estimate of m consecutive waits satisfies 0 ≤ S_m ≤ σ_L + X/m ≤ σ + X/m; the case m = 1 is Harunari, Fiore and Barato's corrected inequality, which remains valid.",
+    "Corollary 6 (proof): S₁ − σ ≤ X, and if visible events sample the drive phase reversal-symmetrically then X = 0 and the uncorrected estimate is a lower bound for every block length.",
+    "Theorem 7 and Section 6 (proof, for the example): the coefficient of X/m cannot be lowered; the block estimate is determined in every scaling regime, with a phase-recovery transition at blocks of order R^(2/3) waits."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a five-role Claude review panel, a replay with negative controls, a re-review and a proof audit of the new proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Tiny machines such as molecular motors and beads in moving laser traps turn some of the energy they receive into heat. The rate of that heat production, the entropy production, tells us how hard the system is working. Experiments usually see only a few of its jumps and the waiting times between them, so physicists estimate dissipation from those waiting times.\n\nFor systems driven by a repeating rhythm, three physicists proposed a practical recipe. Run the experiment once with the rhythm and once with the rhythm reversed, compare the two histograms of waiting times, and never record where in the cycle each jump happened. They proved that this estimate, minus a correction, can never exceed the true dissipation, and they asked whether the estimate on its own is also safe.\n\nThis release shows that it is not. The example is a system with three states, in which every current averages to zero and the true dissipation is fixed. One transition is very fast and runs at the same rate in both directions, so it produces no heat at all. But its speed rises and falls with the drive, so it quietly reports where the system is in the cycle. Reversing the drive changes which speeds a typical wait samples, and the estimate counts that difference as dissipation. Exact arithmetic proves that the estimate can exceed the true value more than thirty-one times over, and a sharper certified bound gives more than a hundred and forty-five times, with no upper limit as the transition speeds up.\n\nThe release also proves a general repair. Using blocks of consecutive waits, the overshoot is never more than the correction divided by the block length, and that correction cannot be made smaller. The original corrected inequality remains valid.\n\nThe limits matter. This is a model calculation, the effect per jump is small, and it needs a transition hundreds of times faster than the drive. The practical lesson is simple: do not report the uncorrected estimate as a bound unless the visible jumps sample the cycle evenly.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Every script was rerun from a fresh copy before release under Python's optimised mode; all outputs matched the recorded ones, and three deliberately weakened certificates were rejected. GitHub CI on Linux reruns the certificates with exact comparison, the floating-point scripts with a declared tolerance, and the failure tests."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. Internal reviewers recomputed the Corollary 3 threshold and checked the scripts against the proofs; that is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The finite inequalities are certified in exact rational and integer-interval arithmetic; the asymptotic theorems rest on written proofs, and the floating-point computations are illustrations."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with pinned NumPy 2.3.5 and SciPy 1.17.0 (the certificates use the standard library only); outputs reproduced on the release platform and on Linux CI within the declared tolerance. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Harunari, Fiore and Barato (2024), Inference of entropy production for periodically driven systems. Physical Review E. The estimator studied here, its corrected inequality (which remains valid) and the open question it answers.",
+      "url": "https://doi.org/10.1103/PhysRevE.110.064126"
+    },
+    {
+      "citation": "Maier, Degünther, van der Meer and Seifert (2024), Inferring kinetics and entropy production from observable transitions in partially accessible, periodically driven Markov networks. Journal of Statistical Physics. Phase-resolved bounds and the forward-only statistic.",
+      "url": "https://doi.org/10.1007/s10955-024-03315-7"
+    },
+    {
+      "citation": "Anonymous (2026), Counterexamples to a conjectured waiting-time bound on entropy production in periodically driven Markov networks. Evidence Press. The earlier release that this work follows up; its unaffected list holds for the phase-resolved estimator and the corrected inequality.",
+      "url": "https://doi.org/10.5281/zenodo.23541298"
+    },
+    {
+      "citation": "van der Meer, Ertel and Seifert (2022), Thermodynamic inference in partially accessible Markov networks: a unifying perspective from transition-based waiting time distributions. Physical Review X. Waiting-time inference in steady states.",
+      "url": "https://doi.org/10.1103/PhysRevX.12.031025"
+    },
+    {
+      "citation": "Harunari, Dutta, Polettini and Roldán (2022), What to learn from a few visible transitions' statistics? Physical Review X. Visible-transition statistics in steady states.",
+      "url": "https://doi.org/10.1103/PhysRevX.12.041026"
+    },
+    {
+      "citation": "Skinner and Dunkel (2021), Estimating entropy production from waiting time distributions. Physical Review Letters. Waiting-time estimators of dissipation.",
+      "url": "https://doi.org/10.1103/PhysRevLett.127.198101"
+    },
+    {
+      "citation": "Martínez, Bisker, Horowitz and Parrondo (2019), Inferring broken detailed balance in the absence of observable currents. Nature Communications. Waiting-time asymmetry without observable currents.",
+      "url": "https://doi.org/10.1038/s41467-019-11051-w"
+    },
+    {
+      "citation": "van der Meer, Degünther and Seifert (2023), Time-resolved statistics of snippets as general framework for model-free entropy estimators. Physical Review Letters. Snippet-based entropy estimators.",
+      "url": "https://doi.org/10.1103/PhysRevLett.130.257101"
+    },
+    {
+      "citation": "Roldán and Parrondo (2012), Entropy production and Kullback-Leibler divergence between stationary trajectories of discrete systems. Physical Review E. Block relative entropy as a route to dissipation.",
+      "url": "https://doi.org/10.1103/PhysRevE.85.031129"
+    },
+    {
+      "citation": "Hartich and Godec (2021), Emergent memory and kinetic hysteresis in strongly driven networks. Physical Review X. Memory effects in lumped time series.",
+      "url": "https://doi.org/10.1103/PhysRevX.11.041047"
+    },
+    {
+      "citation": "Schwarz, Kolomeisky and Godec (2026), Consistent time reversal and reliable and accurate inference in the presence of memory. Physical Review Letters. Time reversal and inference with memory.",
+      "url": "https://doi.org/10.1103/gwf7-6kvr"
+    },
+    {
+      "citation": "Rahav, Horowitz and Jarzynski (2008), Directed flow in nonadiabatic stochastic pumps. Physical Review Letters. Stochastic pumps and zero integrated current.",
+      "url": "https://doi.org/10.1103/PhysRevLett.101.140602"
+    },
+    {
+      "citation": "Chernyak and Sinitsyn (2008), Pumping restriction theorem for stochastic networks. Physical Review Letters. Restrictions on pumped currents.",
+      "url": "https://doi.org/10.1103/PhysRevLett.101.160601"
+    },
+    {
+      "citation": "Mora and Wingreen (2010), Limits of sensing temporal concentration changes by single cells. Physical Review Letters. The ramp-detection scale behind the exponent 2/3.",
+      "url": "https://doi.org/10.1103/PhysRevLett.104.248101"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:reversible-transition-apparent-entropy-production",
+    "attemptIds": [
+      "ep-attempt:reversible-transition-apparent-entropy-production-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide whether the phase-blind forward-versus-reversed waiting-time estimate of Harunari, Fiore and Barato can be reported as a lower bound on entropy production, and what correction makes block estimates safe.",
+      "scope": "Finite continuous-time Markov jump processes with continuous periodic rates bounded away from zero; a three-state example; population distributions, not finite samples."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the problem, why it matters, what was known (Harunari-Fiore-Barato, Maier et al. and the earlier Evidence Press release), what is new and a roadmap; every section opens with a purpose sentence; Section 7 states consequences for practice and limits.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only; the net current under a cycle affinity is numerical."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [
+      {
+        "relation": "extends-result",
+        "workId": null,
+        "legacyReleaseSlug": null,
+        "externalUrl": "https://doi.org/10.5281/zenodo.23541298",
+        "inheritedClaim": "The parent refuted the forward-only waiting-time conjecture of Maier et al. and gave uncertified numerical evidence (Section 6) that the phase-blind estimate can exceed the entropy production in a time-symmetric protocol. The child gives an analytic, certified and unbounded counterexample for the bidirectional estimator of Harunari, Fiore and Barato, and the sharp block correction.",
+        "inheritedAssuranceCeiling": "The parent is an unrefereed producer-side candidate and is unchanged. Shared problem framing is dependency evidence, not independent confirmation; the parent's list of unaffected estimators remains true of the phase-resolved estimator and the corrected inequality."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a stochastic-thermodynamics specialist check the reduction and frozen-race coupling of Theorem 1, the block identity of Theorem 5 and the lag-bin certificates of Appendix C, and decide whether the uncorrected estimate can overshoot in Harunari, Fiore and Barato's own pump model.",
+      "claimCeiling": "Written proofs of Theorems 1, 4, 5, 7, 10, 11, Proposition 2, Corollaries 3, 6, 9, 12 and Lemma 8; exact rational certificates of the finite inequalities; floating-point illustrations, including the net current; scaling and sharpness for the example only; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "reversible-transition-apparent-entropy-production-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable certified counterexample to the uncorrected waiting-time inequality, with a sharp block correction and a safety criterion.",
+        "setting": "AI-assisted research in stochastic thermodynamics",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
