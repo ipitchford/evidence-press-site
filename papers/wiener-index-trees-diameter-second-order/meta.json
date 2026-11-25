@@ -1,0 +1,214 @@
+{
+  "slug": "wiener-index-trees-diameter-second-order",
+  "title": "The maximum Wiener index of trees with prescribed diameter: the sharp second-order constant",
+  "shortTitle": "The sharp second-order constant for the most spread-out trees of given diameter",
+  "oneLine": "How far below the obvious ceiling the largest total distance must fall, settled exactly: κ ≈ 0.4775.",
+  "abstract": "The Wiener index of a tree is the sum of the distances between all pairs of its vertices; divided by the number of pairs it is the average distance. Among trees with n vertices and diameter d, the largest Wiener index M_d(n) lies just below (d/2 − ε/4)n², where ε is 0 or 1 by the parity of d. Plesník, who found the least sum of distances for given order and diameter, remarked that upper bounds seem much more difficult; the maximum has since been called Plesník's problem. Cambie (2020) showed that the shortfall below the leading term has order (dn)^{3/2} and placed its coefficient between √2/3 ≈ 0.4714 and 29/60 ≈ 0.4833, taking limits in a fixed order. This candidate determines the coefficient: whenever d → ∞ and d/n → 0, with no order of limits imposed, the shortfall is (κ + o(1))(dn)^{3/2} with κ = √((175 − √7)/756) ≈ 0.47747. The lower bound comes from an explicit calibration valid at every way of splitting a branch; it matches, to leading order, branches that divide into two equal halves at remaining heights decreasing by the factor 1/4. For each fixed d ≥ 4 the coefficients of n^{3/2} and n are rational constants computed from the effective resistance of small rooted trees, with error O_d(√n); for example M_8(n) = 4n² − √70 n^{3/2} − n + O(√n). For large n every maximiser is built from a finite catalogue of branch shapes, so for each fixed d an exact algorithm polynomial in log n exists (proved, not implemented). Diameter five is solved completely for every n ≥ 6, and exact computations for diameters 6 to 11 up to 3000 vertices show where the catalogue takes over in that range. Limits: trees only; κ is the leading coefficient, with lower-order terms in the joint regime and the regime of linear diameter open; thresholds are effective but not computed. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Wiener index",
+    "trees",
+    "diameter",
+    "extremal graph theory",
+    "Plesník's problem",
+    "effective resistance",
+    "calibration",
+    "chemical graph theory"
+  ],
+  "repoUrl": "https://github.com/ipitchford/wiener-index-trees-diameter-second-order",
+  "releaseUrl": "https://github.com/ipitchford/wiener-index-trees-diameter-second-order/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/wiener-index-trees-diameter-second-order/releases/download/v0.1.0-candidate/wiener-index-trees-diameter-second-order-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24520149",
+  "conceptDoi": "10.5281/zenodo.24520148",
+  "zenodoUrl": "https://zenodo.org/records/24520149",
+  "citeText": "Anonymous (2026). The maximum Wiener index of trees with prescribed diameter: the sharp second-order constant. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24520149",
+  "evidence": "A 14-page paper with a plain introduction and written proofs of every theorem; nine fast Python scripts and one slow exact computation with recorded outputs: the coefficient table for h ≤ 8 with an independent recursion, the diameter-five formula against exhaustive enumeration of all trees with up to 19 vertices, the order-249 example M_8(249) = 215016, the large-height constructions up to h = 10^18, an exact symbolic (sympy) certificate of every Section 5 constant and inequality, a check of every other quoted number, and exact maxima for diameters 6 to 11 up to 3000 vertices. A clean replay in optimised mode reproduced every output byte for byte, Linux CI reruns the fast scripts under a declared comparison policy, and a changed expected value was rejected.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computational checks. Internal AI-assisted review: a combined five-role Claude review panel, an independent proof audit of Sections 5 and 6, an exact symbolic certificate of every Section 5 constant, the lead's brute-force checks, one revision round with two extensions, then a re-review and a second proof audit of the rewritten proofs. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 14 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 1.1 (proof, main): there are absolute C₁, C₂ such that for h ≥ 1 and n ≥ C₁h, |Δ_d(n) − 2√c_h n^{3/2}| ≤ C₂nh² and |2√c_h − K(h + ½)^{3/2}| ≤ 0.49, K = √8 κ; hence Δ_d(n)/(dn)^{3/2} → κ = √((175 − √7)/756) ≈ 0.47747 whenever d → ∞ and d/n → 0, with no order of limits. κ lies strictly inside Cambie's bracket [0.4714, 0.4833].",
+    "Theorem 1.2 (proof): for fixed d = 2r + ε ≥ 4, M_d(n) = (r + ε/4)n² − 2√c_h n^{3/2} − (zr + β_h)n + O_d(√n) with rational c_h, β_h (Table 2, h ≤ 8); M_6(n) = 3n² − 2√6 n^{3/2} − 2n + O(√n) and M_8(n) = 4n² − √70 n^{3/2} − n + O(√n).",
+    "Theorem 4.1 and Corollary 4.2 (proof): for large n every branch of every maximiser has one of finitely many optimal shapes, so M_d(n) is computable exactly in time polynomial in log n for each fixed d (not implemented). Exact computations: for d = 6, 7 every maximiser uses optimal stems at every n ≥ 10 tested; for d = 8, 9, 10, 11 the last orders with a non-optimal stem are 597, 1034, 288 and 289, up to n = 3000.",
+    "Theorem 8.1 (proof, exhaustive check): an explicit formula for M_5(n) and every maximiser, for every n ≥ 6; at n = 54 the maximiser is unique, with W = 5530.",
+    "Section 5 (proof, exact certificate): the calibration V = τ²/2 + τx² − x⁴/7 has splitting excess ½(τ − 2yz)² + (4/7)yz(y − z)², so equal splits at τ = x²/2 are the only free ones; this forces the factor 1/4."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-role Claude review panel, an independent proof audit of Sections 5 and 6, an exact symbolic certificate of the Section 5 constants, the lead's brute-force checks, a re-review and a second proof audit of the rewritten proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Picture a network shaped like a tree, with branches but no loops, and add up the distances between every pair of its points. A chemist introduced this total to predict the boiling points of fuel molecules, and today it is a standard measure of how spread out a network is.\n\nSuppose you are told the diameter, the longest distance anywhere in the tree. No distance can be longer, so the average falls below the diameter. The question is how far below it must fall for the most spread-out tree.\n\nEarlier work by Stijn Cambie showed how this shortfall grows and pinned its key constant between about zero point four seven one and zero point four eight three, a gap of roughly two and a half percent. The exact value was left open.\n\nThis release settles it. The constant is about zero point four seven seven five, an exact expression involving the square root of seven, and it holds whenever the diameter grows but stays small compared with the size of the tree. The best trees have a striking shape: each branch splits into two equal halves, again and again, and each new split comes when only a quarter as much height remains as at the split before.\n\nFor every fixed diameter, the paper also finds the next two terms, computed from the electrical resistance of small trees. Large best trees are built from a finite catalogue of branch shapes, diameter five is solved completely, and exact computer searches on trees of up to three thousand points show where the catalogue takes over.\n\nThe proof treats the leaves as an electric current flowing out from the centre, so the cost of a branch becomes the energy of that current.\n\nThe results are about trees, not general networks, and finer corrections remain open.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review, an exact symbolic certificate and computer checks rather than by outside peer review, and its proofs, programs and limits are open for anyone to inspect.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All ten scripts were rerun from a fresh copy in Python's optimised mode before release, including the 35-minute rigidity scan; every output matched the recorded file byte for byte. A changed expected value in the diameter-five check was rejected. GitHub CI on Linux reruns the nine fast scripts under a declared comparison policy with the failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. An internal auditor re-implemented the rigidity computation up to 1000 vertices and brute-forced it up to 20, which is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The Section 5 constants and inequalities have an exact symbolic certificate; the asymptotic proofs do not."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python with pinned numpy 2.3.5, sympy 1.14.0 and mpmath 1.3.0; outputs reproduced exactly on the release platform; Linux CI reruns the fast scripts under CPython 3.12. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Cambie (2020), An asymptotic resolution of a problem of Plesník. Journal of Combinatorial Theory, Series B. The (dn)^{3/2} scale, the bracket 0.4714 to 0.4833, geometric binary forks and the peripheral-leaf lemma used here.",
+      "url": "https://doi.org/10.1016/j.jctb.2020.06.003"
+    },
+    {
+      "citation": "Cambie (2022), Extremal aspects of distances and colourings in graphs. Doctoral dissertation, Radboud University Nijmegen (author's edition). Figure counts for the order-235 example.",
+      "url": "https://www.math.ru.nl/personal/stijncambie/PhDthesis_StijnCambie_B5_short_volledig.pdf"
+    },
+    {
+      "citation": "Borovićanin, Božović, Glogić, Mesarič Štesl, Špacapan and Zogić (2026), New results on Wiener index of trees with a given diameter. Quaestiones Mathematicae. Maximisers when the diameter is close to the order.",
+      "url": "https://doi.org/10.2989/16073606.2026.2718457"
+    },
+    {
+      "citation": "Doyle and Snell (1984), Random walks and electric networks. Mathematical Association of America (authors' text). The minimum-energy principle behind the resistance formulation.",
+      "url": "https://math.dartmouth.edu/~doyle/docs/walks/walks.pdf"
+    },
+    {
+      "citation": "Knor, Škrekovski and Tepeh (2024), Selected topics on Wiener index. Ars Mathematica Contemporanea. Survey; Problem 28 (Plesník's problem) and Question 35 (Cambie's question on graph maximisers).",
+      "url": "https://doi.org/10.26493/1855-3974.3077.63a"
+    },
+    {
+      "citation": "Lenstra (1983), Integer programming with a fixed number of variables. Mathematics of Operations Research. Used for the exact algorithm of Corollary 4.2.",
+      "url": "https://doi.org/10.1287/moor.8.4.538"
+    },
+    {
+      "citation": "Mukwembi and Vetrík (2014), Wiener index of trees of given order and diameter at most 6. Bulletin of the Australian Mathematical Society. Sharp bounds for diameters up to six.",
+      "url": "https://doi.org/10.1017/S0004972713000816"
+    },
+    {
+      "citation": "Plesník (1984), On the sum of all distances in a graph or digraph. Journal of Graph Theory. The least sum of distances for given order and diameter, and the remark that upper bounds seem much more difficult.",
+      "url": "https://doi.org/10.1002/jgt.3190080102"
+    },
+    {
+      "citation": "Pandey and Ravi (2026), On a conjecture of DeLaViña and Waller. Preprint (arXiv:2605.24855). Maximisers when the diameter is close to the order.",
+      "url": "https://arxiv.org/abs/2605.24855"
+    },
+    {
+      "citation": "Stevanović, Milosavljević and Vukičević (2020), A few examples and counterexamples in spectral graph theory. Discussiones Mathematicae Graph Theory. Computations for trees of fixed radius.",
+      "url": "https://doi.org/10.7151/dmgt.2275"
+    },
+    {
+      "citation": "Wagner (2006), A class of trees and its Wiener index. Acta Applicandae Mathematicae. Diameter four.",
+      "url": "https://doi.org/10.1007/s10440-006-9026-5"
+    },
+    {
+      "citation": "Wang and Guo (2008), Trees with extremal Wiener indices. MATCH Communications in Mathematical and in Computer Chemistry 60(2), 609–622 (journal text). Exact maximisers for small diameters and for diameters close to the order.",
+      "url": "https://match.pmf.kg.ac.rs/electronic_versions/Match60/n2/match60n2_609-622.pdf"
+    },
+    {
+      "citation": "Wiener (1947), Structural determination of paraffin boiling points. Journal of the American Chemical Society. The index and its edge-count formula.",
+      "url": "https://doi.org/10.1021/ja01193a005"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:wiener-index-trees-diameter-second-order",
+    "attemptIds": [
+      "ep-attempt:wiener-index-trees-diameter-second-order-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know how far the largest total distance of a tree with given order and diameter falls below the trivial ceiling, to second order, and which tree shapes attain it.",
+      "scope": "Trees with n vertices and diameter d; d fixed, or d → ∞ with d/n → 0."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the problem and why it matters, what was known (Plesník, Wang–Guo, Wagner, Mukwembi–Vetrík, Cambie's Theorem 4.8 displayed), the main results, the idea of the proof and a roadmap; Section 9 states the limits.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The asymptotic proofs have been checked by AI-assisted reading only; thresholds are not computed."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in extremal graph theory check the calibration lemma, the large-height constant (Theorem 5.1) and the joint limit (Section 6), and the exclusion argument behind Theorem 1.2.",
+      "claimCeiling": "Written proofs of Theorems 1.1, 1.2, 4.1 and 8.1 with Corollary 4.2 as an existence statement, an exact symbolic certificate of the Section 5 constants and exact computations for d = 6..11 up to 3000 vertices; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "wiener-index-trees-diameter-second-order-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable determination of the second-order constant in Plesník's problem for trees, with fixed-diameter expansions, a rigidity theorem and replayable exact checks.",
+        "setting": "AI-assisted research in extremal graph theory",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
