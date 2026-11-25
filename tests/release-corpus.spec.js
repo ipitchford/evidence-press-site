@@ -52,7 +52,9 @@ for (const viewport of [
       if (result.h1Count !== 1) problems.push(`${result.h1Count} H1 elements`);
       if (result.duplicateIds.length) problems.push(`duplicate IDs: ${result.duplicateIds.join(', ')}`);
       if (result.overflow > 1) problems.push(`${result.overflow}px horizontal overflow`);
-      if (result.audioCount !== 1 || result.briefingCount !== 1)
+      // Audio is optional for new research releases (PR #828): exactly one player when the MP3 ships, none otherwise.
+      const hasAudio = fs.existsSync(path.join(root, 'assets', 'audio', `${slug}.mp3`));
+      if (hasAudio ? (result.audioCount !== 1 || result.briefingCount !== 1) : (result.audioCount !== 0 || result.briefingCount > 1))
         problems.push(`audio=${result.audioCount}, briefing=${result.briefingCount}`);
       if (result.katexErrors) problems.push(`${result.katexErrors} KaTeX errors`);
       if (result.failedImages.length) problems.push(`failed images: ${result.failedImages.join(', ')}`);

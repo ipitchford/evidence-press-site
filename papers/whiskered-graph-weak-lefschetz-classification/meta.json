@@ -1,0 +1,206 @@
+{
+  "slug": "whiskered-graph-weak-lefschetz-classification",
+  "title": "Boolean blocks and the weak Lefschetz property of whiskered and chordal graph algebras",
+  "shortTitle": "A proof of the whiskered-graph Lefschetz conjecture",
+  "oneLine": "One change of variables splits the algebra into Boolean blocks, settling the Holleben-Nicklasson conjecture over every field and giving a Lefschetz criterion for all chordal graphs.",
+  "abstract": "Take a graph, make one variable per vertex, and set every square and the product of any two adjacent vertices to zero; the resulting algebra records the graph's independent sets. The weak Lefschetz property asks whether multiplication by the sum of the variables has maximal rank in every degree. Holleben and Nicklasson (Journal of Pure and Applied Algebra, 2026) conjectured that the whiskered graph of G never has this property once G has three pairwise non-adjacent vertices; computer checks covered up to seven vertices, and an eight-vertex check was posted. This candidate proves the conjecture over every field and classifies exactly when the weak and strong properties hold: for G with n vertices, the weak property needs G complete, or n odd with independence number two, and characteristic zero or larger than about n/2; the strong property holds only for complete graphs. The same classification is given for Holleben and Nicklasson's Gorenstein algebras, and a criterion for both properties is given for every chordal graph in every characteristic, recovering the path and lollipop classifications with short proofs. The key step is one change of variables that splits the algebra into Boolean blocks, one per independent set; Wilson's diagonal form of inclusion matrices gives every rank. Limits: the method needs a private leaf at every vertex or removable simplicial vertices, so cycles and tadpole graphs are not covered, and prime thresholds for unequal higher exponents are open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "weak Lefschetz property",
+    "strong Lefschetz property",
+    "whiskered graphs",
+    "chordal graphs",
+    "Artinian algebras",
+    "independence complex",
+    "Boolean algebra",
+    "inclusion matrices",
+    "Gorenstein algebras"
+  ],
+  "repoUrl": "https://github.com/ipitchford/whiskered-graph-weak-lefschetz-classification",
+  "releaseUrl": "https://github.com/ipitchford/whiskered-graph-weak-lefschetz-classification/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/whiskered-graph-weak-lefschetz-classification/releases/download/v0.1.0-candidate/whiskered-graph-weak-lefschetz-classification-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24540630",
+  "conceptDoi": "10.5281/zenodo.24540629",
+  "zenodoUrl": "https://zenodo.org/records/24540630",
+  "citeText": "Anonymous (2026). Boolean blocks and the weak Lefschetz property of whiskered and chordal graph algebras. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24540630",
+  "evidence": "A 13-page paper with a plain introduction (the problem, what was known, Theorems A to C, the key idea and a roadmap) and written proofs of every theorem. Two Python programs accompany it: verify.py builds the multiplication matrices in the original variables and compares exact ranks over prime fields with the theorems (75 whiskered graphs with 8,440 rank comparisons, a non-flag complex, 894 chordal graphs with 18,680 comparisons, higher exponents and the eight-vertex example with rank 386 between dimensions 400 and 406); chordal_lefschetz.py uses exact integer arithmetic for 1,128 direct eliminations against the block profiles and reproduces the path and lollipop lists and prime thresholds. A clean replay reproduced both recorded outputs byte for byte in Python's optimised mode; changing the published path list or the weak-property threshold makes the scripts fail; Linux CI reruns both and compares outputs exactly. The computations accompany the written proofs; they do not replace them.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computer checks. Internal AI-assisted review: a combined five-role Claude review panel, one revision round with extensions, a verification re-review with a proof audit of the new and rewritten proofs, and a clean replay with negative controls. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 13 pages), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem A (proof): the whiskered-graph algebra of G has the weak Lefschetz property if and only if the independence number is at most 1 for even n or at most 2 for odd n, and the characteristic is zero or exceeds ceil(n/2); it has the strong property if and only if G is complete and the characteristic is zero or exceeds n. This proves the Holleben–Nicklasson conjecture over every field.",
+    "Section 3 (proof): after the change of variables y_i -> x_i + y_i, multiplication by the sum of the variables is a direct sum of shifted Boolean operators, one per independent set; Wilson's diagonal form gives every rank in every characteristic. Example: for K8 minus a triangle, A4 -> A5 has rank 386 between dimensions 400 and 406.",
+    "Theorem B (proof): the same classification, with thresholds ceil((n+1)/2) and n+1, for the Nagata idealisation, which is Holleben and Nicklasson's G-quadratic Perazzo algebra for non-complete G in characteristic zero.",
+    "Theorem C (proof): for chordal graphs, eliminating simplicial vertices splits the algebra into Boolean blocks; the weak and strong properties depend only on the block types, with explicit prime thresholds.",
+    "Corollaries 7.5 and 7.6 (proof with a finite exact check): paths have the weak property exactly for 1-7, 9, 10 and 13 vertices and the strong property for 1-7 and 9, with prime thresholds; the lollipop lists likewise, in every characteristic.",
+    "Credit and limits: Holleben–Nicklasson Lemma 3.1 contains the complete-graph case of the splitting and their Theorem 4.6 the projection argument used for Theorem B. Cycles, tadpole graphs and very well-covered graphs in general are not covered; prime thresholds for unequal higher exponents are open."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-role Claude review panel, a verification re-review and a proof audit of the new and rewritten proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Both programs were rerun from fresh copies before release in Python's optimised mode; both outputs matched the recorded files byte for byte, and changing the published path list or the weak-property threshold makes the scripts fail. GitHub CI on Linux reruns them, compares outputs exactly and repeats both failure tests."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. The internal review panel recomputed the whiskered classification with its own script; that is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The theorems rest on written proofs; finite ranges are checked by exact rank computations."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with NumPy 2.3.5 (verify.py) and the standard library only (chordal_lefschetz.py). Outputs reproduced byte for byte on the release platform and on Linux CI. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Cooper, S. M., Faridi, S., Holleben, T., Nicklasson, L. and Van Tuyl, A. (2024). The weak Lefschetz property of whiskered graphs. In Lefschetz Properties, Springer INdAM Series, 97-110.",
+      "url": "https://doi.org/10.1007/978-981-97-3886-1_5"
+    },
+    {
+      "citation": "Fulkerson, D. R. and Gross, O. A. (1965). Incidence matrices and interval graphs. Pacific Journal of Mathematics 15(3), 835-855.",
+      "url": "https://doi.org/10.2140/pjm.1965.15.835"
+    },
+    {
+      "citation": "Ghorbani, E., Khosrovshahi, G. B., Maysoori, Ch. and Mohammad-Noori, M. (2008). Inclusion matrices and chains. Journal of Combinatorial Theory, Series A 115(5), 878-887.",
+      "url": "https://doi.org/10.1016/j.jcta.2007.09.002"
+    },
+    {
+      "citation": "Gasanova, O., Lundqvist, S. and Nicklasson, L. (2022). On decomposing monomial algebras with the Lefschetz properties. Journal of Pure and Applied Algebra 226(6), 106968.",
+      "url": "https://doi.org/10.1016/j.jpaa.2021.106968"
+    },
+    {
+      "citation": "Holleben, T. and Nicklasson, L. (2026). Roller Coaster Gorenstein algebras and Koszul algebras failing the weak Lefschetz property. Journal of Pure and Applied Algebra 230(4), 108238.",
+      "url": "https://doi.org/10.1016/j.jpaa.2026.108238"
+    },
+    {
+      "citation": "Nguyen, H. D. and Tran, Q. H. (2024). The weak Lefschetz property of Artinian algebras associated to paths and cycles. Acta Mathematica Vietnamica 49(3), 523-544.",
+      "url": "https://doi.org/10.1007/s40306-024-00549-1"
+    },
+    {
+      "citation": "Stanley, R. P. (1980). Weyl groups, the hard Lefschetz theorem, and the Sperner property. SIAM Journal on Algebraic Discrete Methods 1(2), 168-184.",
+      "url": "https://doi.org/10.1137/0601021"
+    },
+    {
+      "citation": "Wilson, R. M. (1990). A diagonal form for the incidence matrices of t-subsets vs. k-subsets. European Journal of Combinatorics 11(6), 609-615.",
+      "url": "https://doi.org/10.1016/S0195-6698(13)80046-7"
+    },
+    {
+      "citation": "Zeng, Z. (2026). The whiskered-graph weak Lefschetz conjecture for graphs on eight vertices. SSRN preprint.",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7385138"
+    },
+    {
+      "citation": "Tran Quang Hoa, Nguyen Duy Phuoc and Tran Nguyen Thanh Son (2025). The weak Lefschetz property for tensor products of Artinian monomial algebras and its applications to lollipop graphs. arXiv:2510.21569.",
+      "url": "https://arxiv.org/abs/2510.21569"
+    },
+    {
+      "citation": "Tran Quang Hoa, Nguyen Duy Phuoc and Tran Nguyen Thanh Son (2026). Independence polynomials and the weak Lefschetz property for tadpole graphs. arXiv:2609.13888.",
+      "url": "https://arxiv.org/abs/2609.13888"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:whiskered-graph-weak-lefschetz-classification",
+    "attemptIds": [
+      "ep-attempt:whiskered-graph-weak-lefschetz-classification-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide which whiskered and chordal graph algebras have the weak and strong Lefschetz properties, in every characteristic (Holleben–Nicklasson conjecture).",
+      "scope": "Artinian algebras of independence complexes of whiskered graphs, their Nagata idealisations, and chordal graphs; equal exponents fully, unequal exponents in characteristic zero."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the problem, what was known, Theorems A to C, the key idea and a roadmap; each section opens by saying what it does; Section 8 gives scope, limitations and open problems.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in Lefschetz properties check the splitting of Section 3, Theorem A and Theorem C, and independently rerun verify.py.",
+      "claimCeiling": "Written proofs of Theorems A, B and C and the path and lollipop corollaries (with a finite exact check); prime thresholds for unequal exponents open; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "whiskered-graph-weak-lefschetz-classification-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of the Holleben–Nicklasson whiskered-graph conjecture with a full classification in every characteristic and a chordal criterion.",
+        "setting": "AI-assisted research on Lefschetz properties of graph algebras",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
