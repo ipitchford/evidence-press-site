@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Tiny machines such as molecular motors and beads in moving laser traps turn some of the energy they receive into heat. The rate of that heat production, the entropy production, tells us how hard the system is working. Experiments usually see only a few of its jumps and the waiting times between them, so physicists estimate dissipation from those waiting times. For systems driven by a repeating rhythm, three physicists proposed a practical recipe. Run the experiment once with the rhythm and once with the rhythm reversed, compare the two histograms of waiting times, and never record where in the cycle each jump happened. They proved that this estimate, minus a correction, can never exceed the true dissipation, and they asked whether the estimate on its own is also safe.",
+      "inputSha256": "f4f49d170432759c5447d246d9b6720294aca0675c841b01203e7e8e70cc29d6",
+      "audioSha256": "c6772eb5884f500657b1349c2e67f1e8454dca3a813986a96ecbc5bbc1cbe708",
+      "requestId": "req_a40ea95fbdf54c4ab8168bef259d45e2",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the estimate on its own is also safe",
+        "heardEnding": "exceed the true dissipation and they asked whether the estimate on its own is also safe",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This release shows that it is not. The example is a system with three states, in which every current averages to zero and the true dissipation is fixed. One transition is very fast and runs at the same rate in both directions, so it produces no heat at all. But its speed rises and falls with the drive, so it quietly reports where the system is in the cycle. Reversing the drive changes which speeds a typical wait samples, and the estimate counts that difference as dissipation. Exact arithmetic proves that the estimate can exceed the true value more than thirty-one times over, and a sharper certified bound gives more than a hundred and forty-five times, with no upper limit as the transition speeds up. The release also proves a general repair.",
+      "inputSha256": "c3f923a7b4fd44e80d2cd53ae9d32ea158e6baa4e3ae70097ce312aa8ffeaaf3",
+      "audioSha256": "a15bc06814b5c93835564d651bf3a725d29ab2d35f2dc3f991289302bdea446b",
+      "requestId": "req_22e38d5f9aec487594b789528ca6a7ea",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "up the release also proves a general repair",
+        "heardEnding": "with no upper limit as the transition speeds up the release also proves a general repair",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 2
+      }
+    },
+    {
+      "input": "Using blocks of consecutive waits, the overshoot is never more than the correction divided by the block length, and that correction cannot be made smaller. The original corrected inequality remains valid. The limits matter. This is a model calculation, the effect per jump is small, and it needs a transition hundreds of times faster than the drive. The practical lesson is simple: do not report the uncorrected estimate as a bound unless the visible jumps sample the cycle evenly. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "53bb725057c6958264324f2d50c479ccae589d3278408b43c355057b4300d297",
+      "audioSha256": "c73abf63cb0bbfa07ec1fe4f3df0b296f9f86bb464ce60eefaf066f5644d29b5",
+      "requestId": "req_e6f8994a004f43a087726b71ba72bb76",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "the cycle evenly this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "reversible-transition-apparent-entropy-production",
+  "generatedAt": "2026-11-25T10:51:29.255Z",
+  "sourceMetadata": "papers/reversible-transition-apparent-entropy-production/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "d2ace26cd3d770d8998521435cf79e328b63521f3276778a096af71af59e6a74",
+  "transcriptPath": "assets/audio/reversible-transition-apparent-entropy-production.txt",
+  "transcriptSha256": "1130641344bb4fdf7b09dce3a11886521eeb14e48e8772b3d32ecf891a91afbd",
+  "audioPath": "assets/audio/reversible-transition-apparent-entropy-production.mp3",
+  "audioSha256": "6b5b1289eb4c888f3c05ac47c119536970ddcbd6d2abfbcaeca36ec74921ae2e",
+  "audioBytes": 2126636,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "the cycle evenly this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
