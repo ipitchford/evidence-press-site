@@ -1,0 +1,198 @@
+{
+  "slug": "relativistic-homogeneous-potentials-classification",
+  "title": "Relativity leaves only the symmetric potentials integrable: a classification of homogeneous polynomial potentials for the additive relativistic Hamiltonian",
+  "shortTitle": "Relativity leaves only the symmetric potentials integrable",
+  "oneLine": "For H = √(1+p²) + V with V a homogeneous polynomial of degree at least three, only one-coordinate and radial potentials keep a second first integral.",
+  "abstract": "A particle in the plane under a potential V, with relativistic kinetic energy, has the Hamiltonian H = √(1 + p₁² + p₂²) + V(q₁, q₂). Przybylska, Szumiński and Maciejewski (2023) found that relativity destroys almost all of the integrable cases known for the classical Hamiltonian ½|p|² + V, and suggested that for homogeneous polynomial potentials only the one-coordinate and radial potentials survive; they settled degrees three to five by another route and conjectured that generic potentials are non-integrable. This candidate proves the suggestion for every degree k ≥ 3: a nonzero real homogeneous polynomial potential admits a second first integral, meromorphic on the natural complex phase space of H and independent of H, if and only if, after a rotation, V = c q₁^k or (k even) V = c (q₁² + q₂²)^{k/2}, that is, if and only if V is invariant under a translation or under all rotations. The result is new for k ≥ 6, and a local version needs integrability only near two explicit complex phase curves. Complex-coefficient potentials that have a nonisotropic linear factor and whose isotropic factors q₁ ± iq₂ do not have multiplicity exactly k/2 are integrable only when they are a power of one nonisotropic linear form; in particular every generic homogeneous polynomial potential is non-integrable, which proves the stated consequence of the 2023 conjecture (its arithmetic part remains open). The new ingredient is a rigidity theorem at a vanishing transverse eigenvalue: a first nonconstant transverse term produces two independent periods on a hyperelliptic phase curve, which make a finite jet of the normal holonomy non-commutative, and the Morales–Ramis–Simó theory forbids this. Limits: integrability is complex-meromorphic, so smooth integrals on a restricted real region or one energy level are not excluded; degrees one and two, non-homogeneous potentials and three or more degrees of freedom are outside the statements; isotropic monomials and the exact-half multiplicity case remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "integrability",
+    "relativistic Hamiltonian",
+    "homogeneous potentials",
+    "Morales–Ramis theory",
+    "differential Galois theory",
+    "higher variational equations",
+    "Darboux points",
+    "Hamiltonian dynamics"
+  ],
+  "repoUrl": "https://github.com/ipitchford/relativistic-homogeneous-potentials-classification",
+  "releaseUrl": "https://github.com/ipitchford/relativistic-homogeneous-potentials-classification/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/relativistic-homogeneous-potentials-classification/releases/download/v0.1.0-candidate/relativistic-homogeneous-potentials-classification-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24523290",
+  "conceptDoi": "10.5281/zenodo.24523289",
+  "zenodoUrl": "https://zenodo.org/records/24523290",
+  "citeText": "Anonymous (2026). Relativity leaves only the symmetric potentials integrable: a classification of homogeneous polynomial potentials for the additive relativistic Hamiltonian. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24523290",
+  "evidence": "A 16-page paper with a plain introduction (the problem, why it matters, what was known, what is new, the idea of the proof and a roadmap) and written proofs of every theorem; two SymPy scripts with recorded outputs: verify_physics.py checks the variational equations, the exponent differences, the spectral lists for degrees three to five, the flat specialisation of the 2025 reductions, the jet coefficient for symbolic order, the first transverse terms for 3 ≤ m ≤ k ≤ 8 and the polar identities; check_complex.py checks the residue lemma and identity of Section 7 and ten example potentials against eigenvalues computed from the Hessian. A clean replay with and without Python's optimised mode reproduced both outputs byte for byte, Linux CI reruns them with an exact comparison, and a flipped expected value was rejected.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and symbolic checks. Internal AI-assisted review: a combined five-role Claude review panel, two proof audits, SymPy checks with negative controls and a clean replay, one revision round with extensions, then a re-review. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 16 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem A (proof, main): for V real, nonzero, homogeneous of degree k ≥ 3, H = √(1+|p|²) + V is meromorphically integrable on its complex phase space if and only if it is rationally integrable, if and only if after a real rotation V = c q₁^k or (k even) V = c (q₁² + q₂²)^{k/2}; the second integrals are p₂ and the angular momentum. New for k ≥ 6; for k = 3, 4, 5 the 2023 paper reached the real conclusion by another route.",
+    "Theorem 6.1 (proof): a real potential not of these forms is already non-integrable near one of two explicit complex phase curves attached to a direction where |V| is maximal on the unit circle.",
+    "Proposition 3.1 and Theorems 4.1, 5.1 (proof): at a nonisotropic proper Darboux direction the transverse eigenvalue satisfies λ = (n+1)(kn+1) for an integer n, so λ ∈ {0, 1} ∪ [2k−1, ∞); λ = 0 forces V = a x^k (zero-eigenvalue rigidity, no classical counterpart in positive degree) and λ = 1 forces an even-degree radial power.",
+    "Theorem B and Corollary C (proof): a complex potential with a nonisotropic linear factor and isotropic multiplicities different from k/2 is integrable only if it is a power of one nonisotropic linear form; with no isotropic factor, generic potentials are non-integrable, the stated consequence of the 2023 conjecture.",
+    "Open: isotropic monomials (q₁ + iq₂)^α (q₁ − iq₂)^β with α ≠ β, α, β ≥ 1, and potentials with an isotropic factor of multiplicity exactly k/2."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-role Claude review panel, two proof audits, SymPy checks with negative controls and a clean replay, and a re-review)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Imagine a particle gliding across a flat table, pushed around by a force field. Its motion is called integrable when something besides the energy is also conserved. Integrable motion is regular and predictable; without that second conserved quantity, the motion can turn chaotic.\n\nFor force fields given by simple polynomials, classical mechanics knows many integrable cases. But what happens when the kinetic energy follows Einstein's relativity instead of Newton's formula?\n\nPrzybylska, Szumiński and Maciejewski showed that relativity is destructive for almost every classical integrable case. They suggested that only two kinds of potential survive: those that depend on a single coordinate, and those that are perfectly round. They settled the smallest degrees, three to five, by comparing with the classical lists, and left the general question open.\n\nThis release proves their suggestion for every polynomial degree from three upwards, so the result is new beyond those smallest degrees. A real potential of this kind is integrable exactly when, after turning the axes, it is a power of one coordinate, or a power of the distance from the centre. Only potentials with a continuous symmetry survive, and the extra conserved quantity is the matching momentum.\n\nThe proof looks along the direction in which the potential is strongest. There, straight-line motions exist, and the small wobbles across them are governed by a single number, which can only take its two simplest values at that direction. In either case, following nearby orbits once around a loop produces two independent periods, and an integrable system cannot allow that unless the potential has the symmetry.\n\nThe same reasoning settles most potentials with complex coefficients, and shows that a generic polynomial potential is never integrable in the relativistic model.\n\nSome limits matter. The conserved quantities considered are those that extend to the complex version of the motion, so smooth quantities on a restricted region are not ruled out, and two complex families remain open.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review, proof audits and symbolic computation rather than by outside peer review, and its proofs, programs and limits are open for anyone to inspect.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Both scripts were rerun from fresh copies before release, with and without Python's optimised mode; every output matched the recorded file byte for byte. A flipped expected residue sum was rejected. GitHub CI on Linux reruns both scripts with an exact comparison and the failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. The internal review panel recomputed parts of the algebra in its own SymPy scripts, which is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The SymPy scripts check algebra and examples; the analytic theorems rest on written proofs."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python with pinned SymPy 1.14.0; outputs reproduced exactly on the release platform; Linux CI reruns both scripts under CPython 3.12. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Combot (2013), Meromorphically integrable homogeneous potentials with multiple Darboux points. Preprint, arXiv:1301.6621. Period determinant from commuting monodromy (Section 4.3) and Theorem 1, an alternative route to the eigenvalue-one case.",
+      "url": "https://arxiv.org/abs/1301.6621"
+    },
+    {
+      "citation": "Combot (2016), Integrable planar homogeneous potentials of degree −1 with small eigenvalues. Annales de l'Institut Fourier. The closest classical precedent: extremal direction (Lemma 3.1) and rigidity at small eigenvalues (Theorem B, Lemma 4.5).",
+      "url": "https://doi.org/10.5802/aif.3063"
+    },
+    {
+      "citation": "Duval and Maciejewski (2015), Integrability of potentials of degree k ≠ ±2. Second order variational equations between Kolchin solvability and Abelianity. Discrete and Continuous Dynamical Systems. Higher variational equations at special eigenvalues.",
+      "url": "https://doi.org/10.3934/dcds.2015.35.1969"
+    },
+    {
+      "citation": "Kimura (1969; issue dated 1970), On Riemann's equations which are solvable by quadratures. Funkcialaj Ekvacioj 12(3), 269–281 (JaLC DOI 10.24546/0100498821; Kobe University Repository record). The classification used in the spectral restriction (Appendix A).",
+      "url": "https://hdl.handle.net/20.500.14094/0100498821"
+    },
+    {
+      "citation": "Maciejewski and Przybylska (2005), Darboux points and integrability of Hamiltonian systems with homogeneous polynomial potential. Journal of Mathematical Physics. The Darboux-point relation for generic potentials, its version with isotropic factors (Theorem 2.3) and the multiplicity counts used for Theorem B.",
+      "url": "https://doi.org/10.1063/1.1917311"
+    },
+    {
+      "citation": "Morales-Ruiz (registered as MoralesRuiz), Ramis and Simó (2007), Integrability of Hamiltonian systems and differential Galois groups of higher variational equations. Annales Scientifiques de l'École Normale Supérieure. Corollary 2(ii), which turns the holonomy computation into an obstruction.",
+      "url": "https://doi.org/10.1016/j.ansens.2007.09.002"
+    },
+    {
+      "citation": "Przybylska, Szumiński and Maciejewski (2023), Destructive relativity. Chaos. The question, the strong necessary condition (Theorem 3), the classification for degrees three to five (Section V) and the conjecture on generic potentials (Section VI).",
+      "url": "https://doi.org/10.1063/5.0140633"
+    },
+    {
+      "citation": "Szumiński, Przybylska and Maciejewski (2024), Chaos and integrability of relativistic homogeneous potentials in curved space. Nonlinear Dynamics. A different relativistic Hamiltonian, cited for context and not used.",
+      "url": "https://doi.org/10.1007/s11071-023-09224-w"
+    },
+    {
+      "citation": "Szumiński and Przybylska (2025), Integrability and chaos of relativistic Hamiltonian systems in 2D Riemannian manifolds. Nonlinear Dynamics. The special-energy hypergeometric reductions (Section 3.1, eqs. (31)–(34), Theorem 3) used in flat form.",
+      "url": "https://doi.org/10.1007/s11071-025-11554-w"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:relativistic-homogeneous-potentials-classification",
+    "attemptIds": [
+      "ep-attempt:relativistic-homogeneous-potentials-classification-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide, for a planar homogeneous polynomial potential with relativistic kinetic energy, whether a second first integral can exist.",
+      "scope": "Two degrees of freedom; H = √(1+|p|²) + V with V homogeneous of degree k ≥ 3; integrals meromorphic on the complex phase space."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the problem, why it matters, what was known (the 2023 paper's Theorem 3, Section V and conjecture; Maciejewski–Przybylska; Combot), what is new, the idea of the proof and a roadmap; Section 8 states the scope and open problems.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only; the SymPy scripts cover algebra and examples."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in Morales–Ramis theory check Lemma 2.4 (normal holonomy), the period argument of Theorem 4.1 and Lemma 4.2, and the residue counting behind Theorem B.",
+      "claimCeiling": "Written proofs of Theorem A, Theorem 6.1, Proposition 3.1, Theorems 4.1 and 5.1, Theorem B and Corollary C, with SymPy checks of the algebra and examples; complex-meromorphic integrability only; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "relativistic-homogeneous-potentials-classification-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable classification of integrable homogeneous polynomial potentials for the additive relativistic Hamiltonian, with replayable symbolic checks.",
+        "setting": "AI-assisted research in Hamiltonian dynamics",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
