@@ -1,0 +1,199 @@
+{
+  "slug": "dca-gradient-mapping-conjecture",
+  "title": "Exact gradient-mapping rates for the difference-of-convex algorithm and proximal gradient: a proof of the Rotaru–Patrinos–Glineur conjecture",
+  "shortTitle": "Exact step-size guarantees for DCA and proximal gradient",
+  "oneLine": "The conjectured worst-case bounds hold for every number of iterations, and they are attained.",
+  "abstract": "The difference-of-convex algorithm (DCA) and the proximal gradient method are usually stopped when the step between successive iterates, the gradient mapping, is small. Rotaru, Patrinos and Glineur determined the exact worst-case size of this step for one and two iterations, proved upper bounds for any number of iterations in part of the parameter range, and conjectured the exact bounds in all regimes, including long stepsizes; the conjecture reappears in Rotaru's thesis, which lists the missing proofs and matching lower bounds as open. This candidate proves the conjecture: all three of its inequalities hold for every horizon N ≥ 1, with a strongly convex, possibly nonsmooth first function, and each is attained by an explicit example, including globally lower-bounded nonconvex examples, so the bounds are exact also where only upper bounds were proved before. It also gives exact bounds in terms of the initial optimality gap (a nonsmooth proximal term makes the worst case strictly worse for short stepsizes but not for long ones), proves a correctly normalised form of the proximal-gradient conjecture of the thesis, including weakly convex proximal terms, and shows that for convex proximal terms the optimal constant stepsizes known for gradient descent (convex, strongly convex and sufficiently nonconvex smooth parts) remain optimal for proximal gradient: for convex problems about 1.6/L at N = 2 and 1.9/L at N = 20, improving the bound over γ = 1/L by a factor approaching 2. The smooth certificates and worst-case data are those of Rotaru, Glineur and Patrinos; the proximal transfer, the cancellations, the crossover repair and the terminal modification are new. Limits: constant stepsizes and worst-case bounds only; the residual-gradient conjectures of the thesis and time-varying schedules remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "difference-of-convex algorithm",
+    "proximal gradient",
+    "gradient mapping",
+    "performance estimation",
+    "smooth interpolation",
+    "exact worst-case rates",
+    "constant stepsize",
+    "nonconvex optimisation"
+  ],
+  "repoUrl": "https://github.com/ipitchford/dca-gradient-mapping-conjecture",
+  "releaseUrl": "https://github.com/ipitchford/dca-gradient-mapping-conjecture/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/dca-gradient-mapping-conjecture/releases/download/v0.1.0-candidate/dca-gradient-mapping-conjecture-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24525074",
+  "conceptDoi": "10.5281/zenodo.24525073",
+  "zenodoUrl": "https://zenodo.org/records/24525074",
+  "citeText": "Anonymous (2026). Exact gradient-mapping rates for the difference-of-convex algorithm and proximal gradient: a proof of the Rotaru–Patrinos–Glineur conjecture. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24525074",
+  "evidence": "A 25-page paper with a plain introduction (the problem, what was known, what is new, the idea of the proof and a roadmap), a table of which parameter regions were proved before, a proof-strategy section and written proofs of every result, with sign verifications and boundary cases in appendices. Thirteen verification scripts: eleven check the identities and complete certificates for selected rational parameters up to N = 12 in exact SymPy arithmetic; nonconvex_data.py rebuilds the modified worst-case data for ten parameter triples and checks every interpolation inequality at 50 digits; extensions.py recomputes the stepsize table, the sensitivity figures and the equality with the gradient-descent bounds. A clean replay under Python's optimised mode reproduced every recorded output byte for byte, Linux CI reruns everything with the same comparison, and two deliberately corrupted checks were rejected.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and symbolic and 50-digit checks. Internal AI-assisted review: five Claude reviewer roles (two of which wrote independent numerical worst-case checks that matched the constants), a fresh replay of all fourteen scripts with negative controls, one revision round with extensions, then a verification re-review and a proof audit. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 25 pages), its scripts and recorded outputs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorems 3.1–3.2 and Corollary 3.3 (proof, main): all three inequalities of the Rotaru–Patrinos–Glineur conjecture hold for every horizon N ≥ 1; in the convex case (η ≤ 1) the last step is the smallest, and in the concave case the first. New for the region η + ρ > 0, T₁ > 0 and the concave case; the other regions were proved before by Rotaru, Patrinos and Glineur (Theorems 1–3).",
+    "Exactness (proof, Section 9): every bound is attained, by one-dimensional examples in the convex case and, in the nonconvex case, by the three-dimensional gradient-descent worst cases of Rotaru, Glineur and Patrinos with the last point modified; the objective is bounded below.",
+    "Theorem 3.4 and Corollary 3.5 (proof): exact bounds in terms of F(x₀) − inf F; for ρ ≥ 0 a nonsmooth proximal term makes the worst case strictly worse than for gradient descent, and a curvature bound on the proximal term interpolates between the two.",
+    "Theorem 3.6 (proof): the proximal-gradient conjecture of Rotaru's thesis (Conjecture 4.6.3) in a dimensionally consistent form, including weakly convex proximal terms.",
+    "Theorem 3.7 (proof): for a convex proximal term and t = γL ∈ (1, 2) the exact proximal-gradient worst case equals the gradient-descent one, so the optimal constant stepsizes of Rotaru, Glineur and Patrinos stay optimal; for convex problems γ*L ≈ 1.5, 1.61, 1.75, 1.90 at N = 1, 2, 5, 20, improving the bound over γ = 1/L by 1.33, 1.48, 1.68, 1.88 (tending to 2).",
+    "Open: residual-gradient conjectures of the thesis, short steps for weakly convex proximal gradient, and time-varying stepsize schedules."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five Claude reviewer roles, a fresh replay with negative controls, a verification re-review and a proof audit)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Many optimisation problems split into a smooth part and a simple but awkward part, such as a sparsity penalty or a constraint. Two workhorse methods handle them: the difference-of-convex algorithm, known as D C A, and the proximal gradient method.\n\nNeither method can tell you how far you are from the answer, so each is usually stopped when its last step is small. The practical question is: after a given number of iterations, how small is that step guaranteed to be, and which constant step size is best?\n\nFor plain gradient descent, Rotaru, Glineur and Patrinos worked out the exact answer. For D C A, Rotaru, Patrinos and Glineur proved bounds in part of the parameter range and conjectured the exact answer everywhere: in effect, that the awkward part costs nothing extra.\n\nThis release proves the conjecture for every number of iterations, and shows that the bounds are exact: explicit worst-case problems, including nonconvex ones, reach them. For proximal gradient with a convex awkward part, the best constant step sizes known for gradient descent stay the best. For a convex problem run for twenty iterations, the best step is about one point nine divided by the curvature bound, rather than the textbook choice, and the guarantee nearly doubles.\n\nThe proof starts from the gradient-descent proof. The proximal step adds extra terms; the few with the wrong sign are cancelled by matching terms from the neighbouring block, and where the proof changes form, a square that the old proof threw away is kept and completed.\n\nThe results cover constant step sizes and worst cases only, and related conjectures about other stopping measures remain open. Overshooting the best step is costly, so when the curvature is uncertain, err on the short side.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review, a proof audit and exact computer checks rather than by outside peer review, and its proofs, programs and limits are open for anyone to inspect.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All fourteen scripts were rerun from a fresh copy before release under Python's optimised mode; the result files and logs matched the recorded ones byte for byte. A perturbed attained value and a flipped sign were both rejected. GitHub CI on Linux reruns everything with the same comparison and both failure tests."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. Two internal reviewer roles wrote their own numerical worst-case computations, which matched the constants; that is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The scripts check identities and finite certificate instances; the general signs rest on written proofs."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python with pinned SymPy 1.14.0 and mpmath 1.3.0; outputs reproduced exactly on the release platform and on Linux CI under CPython 3.12. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Rotaru, Patrinos and Glineur (2026), Tight convergence rates in gradient mapping for the difference-of-convex algorithm. Modelling, Computation and Optimization in Information Systems and Management Sciences, Springer (arXiv:2506.01791v2). The six one-step regimes, the upper bounds of Theorems 1–3 and Conjecture 1, proved here.",
+      "url": "https://doi.org/10.1007/978-3-032-08381-4_5"
+    },
+    {
+      "citation": "Rotaru, Glineur and Patrinos (2026), Exact worst-case convergence rates of gradient descent: a complete analysis for all constant stepsizes over nonconvex and convex functions. Mathematical Programming (arXiv:2406.17506v2). The gradient-descent certificates and worst-case data this proof starts from, and the optimal constant stepsizes (Propositions 2.13–2.15).",
+      "url": "https://doi.org/10.1007/s10107-025-02313-1"
+    },
+    {
+      "citation": "Bok and Altschuler (2026), Optimized methods for composite optimization: a reduction perspective. Mathematical Programming (arXiv:2506.23756v1). General algebraic reductions from gradient methods to composite ones; the closest method precedent.",
+      "url": "https://doi.org/10.1007/s10107-026-02377-7"
+    },
+    {
+      "citation": "Taylor, Hendrickx and Glineur (2018), Exact worst-case convergence rates of the proximal gradient method for composite convex minimization. Journal of Optimization Theory and Applications. Exact proximal-gradient rates in same-metric settings.",
+      "url": "https://doi.org/10.1007/s10957-018-1298-1"
+    },
+    {
+      "citation": "Abbaszadehpeivasti, de Klerk and Zamani (2024), On the rate of convergence of the difference-of-convex algorithm (DCA). Journal of Optimization Theory and Applications. Earlier convergence rates for DCA.",
+      "url": "https://doi.org/10.1007/s10957-023-02199-z"
+    },
+    {
+      "citation": "Taylor, Hendrickx and Glineur (2017), Smooth strongly convex interpolation and exact worst-case performance of first-order methods. Mathematical Programming. The interpolation conditions behind every certificate.",
+      "url": "https://doi.org/10.1007/s10107-016-1009-3"
+    },
+    {
+      "citation": "Drori and Teboulle (2014), Performance of first-order methods for smooth convex minimization: a novel approach. Mathematical Programming. The performance-estimation approach.",
+      "url": "https://doi.org/10.1007/s10107-013-0653-0"
+    },
+    {
+      "citation": "Kim and Fessler (2021), Optimizing the efficiency of first-order methods for decreasing the gradient of smooth convex functions. Journal of Optimization Theory and Applications. Cited for methods that do better than constant steps.",
+      "url": "https://doi.org/10.1007/s10957-020-01770-2"
+    },
+    {
+      "citation": "Rotaru (2026), Exact Performance Analysis of Fundamental First-Order Optimization Methods. Doctoral thesis, UCLouvain and KU Leuven. Conjectures 4.3.1 and 4.6.3 and the table of open problems.",
+      "url": "https://hdl.handle.net/2078.5/273820"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:dca-gradient-mapping-conjecture",
+    "attemptIds": [
+      "ep-attempt:dca-gradient-mapping-conjecture-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide how small the DCA or proximal-gradient step is guaranteed to be after N iterations with a constant stepsize, and which constant stepsize is best.",
+      "scope": "DCA with a strongly convex first function and a smooth subtracted function; proximal gradient with smooth part of bounded curvature; constant stepsizes; worst-case bounds."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the problem, what was known (Rotaru–Glineur–Patrinos for gradient descent; Rotaru–Patrinos–Glineur's bounds and conjecture; the thesis's open problems), what is new, the idea of the proof and a roadmap; Table 1 marks which parameter regions were proved before; Section 13 lists open problems.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only; the scripts cover identities and finite instances."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a performance-estimation specialist check the transfer identity (6.4), the cancellation of negative multipliers across blocks (Lemma 6.1, Table 4), the crossover repair (7.7)–(7.9) and the terminal modification of the nonconvex worst-case data (Lemmas 9.1–9.2).",
+      "claimCeiling": "Written proofs of Theorems 3.1, 3.2, 3.4, 3.6, 3.7 and Corollaries 3.3, 3.5, with exact symbolic and 50-digit checks of identities and finite instances; constant stepsizes; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "dca-gradient-mapping-conjecture-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof of the Rotaru–Patrinos–Glineur conjecture with exact worst-case examples and replayable checks.",
+        "setting": "AI-assisted research in first-order optimisation",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
