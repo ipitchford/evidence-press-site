@@ -1,0 +1,188 @@
+{
+  "slug": "steiner-hyperdeterminant-even-order-vanishing",
+  "title": "When even-order Steiner distance hyperdeterminants vanish",
+  "shortTitle": "A 351-vertex counterexample to an even-order Graham–Pollak theorem",
+  "oneLine": "The published nonvanishing theorem fails at order six for every tree with a multiple of 350 edges; we classify every even order.",
+  "abstract": "Graham and Pollak showed in 1971 that the distance matrix of a tree is never singular. Its higher-order analogue is the order-k Steiner distance hypermatrix, whose entries count the edges needed to connect k vertices at once. A published theorem of Cooper and Tauscheck (Special Matrices, 2024) states that its symmetric hyperdeterminant is nonzero for every tree whenever k is even. This candidate shows that the theorem is false. At order six the hyperdeterminant of a tree vanishes exactly when its number of edges is a positive multiple of 350, so the smallest counterexample is any tree on 351 vertices; an explicit nullvector on the star with 350 leaves is checked by an exact tensor contraction. Writing d = k − 1, every tree has a nonzero hyperdeterminant at order k precisely when d = 1 or d is a prime congruent to 3 modulo 4; at every other even order (k = 6, 10, 14, 16, 18, …) infinitely many tree sizes give zero. The vanishing sizes are determined exactly when d is a prime congruent to 1 modulo 4, at order ten (least 6804 edges) and, up to 11,513,748 edges, at order sixteen (least 683 edges); no singular tree at any even order has fewer than 351 vertices; and positive real edge lengths can make the hyperdeterminant vanish at every even order except 2, 4 and 8. The published proof takes odd roots of complex numbers as if they were real; the real-number version of the theorem is true. Credit: the edge coordinates and cut identity are Cooper and Du's; an unrefereed MathDB post by S. Patel gives a product formula with the same zero set, assumed nonzero there. Limits: Qi's symmetric (resultant) hyperdeterminant only, not the Cayley hyperdeterminant; exact vanishing sets for composite d beyond order ten remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Steiner distance",
+    "hyperdeterminant",
+    "Graham–Pollak theorem",
+    "distance hypermatrix",
+    "trees",
+    "resultant",
+    "cyclotomic units",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/steiner-hyperdeterminant-even-order-vanishing",
+  "releaseUrl": "https://github.com/ipitchford/steiner-hyperdeterminant-even-order-vanishing/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/steiner-hyperdeterminant-even-order-vanishing/releases/download/v0.1.0-candidate/steiner-hyperdeterminant-even-order-vanishing-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24540637",
+  "conceptDoi": "10.5281/zenodo.24540636",
+  "zenodoUrl": "https://zenodo.org/records/24540637",
+  "citeText": "Anonymous (2026). When even-order Steiner distance hyperdeterminants vanish. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24540637",
+  "evidence": "An 11-page paper with a plain introduction (the question, what was known, the main theorem, what fails in the published proof and what survives, and a roadmap) and written proofs of every result. Three Python scripts accompany it: verify.py (standard library) contracts the order-six tensor of the 351-vertex star exactly against the explicit nullvector for every vertex type, repeats the check with a wrong witness that must fail, and computes the prime-exponent sizes exactly up to 47; audit_periods.py (SymPy) computes the lattice indices; extensions.py (mpmath) checks the cut identity on small trees, the orbit sums, the order-ten and order-sixteen data and the inequalities behind the smallest-tree theorem. A clean replay reproduced every recorded output byte for byte, also under Python's optimised mode; Linux CI reruns everything under a declared comparison policy. The computations accompany the written proofs; they do not replace them.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computer checks. Internal AI-assisted review: a combined five-role Claude review panel, one revision round with extensions, a verification re-review with a proof audit of every new or rewritten proof, and a clean replay with a negative control. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 11 pages), its scripts and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 1.1(2) and Theorem 3.1 (proof): at order six the Steiner distance hyperdeterminant of a tree with m edges vanishes if and only if 350 divides m; the smallest counterexample to the published even-order theorem is any tree on 351 vertices, with an explicit nullvector on the star K_{1,350} using the classes 288, 31 and 31.",
+    "Theorem 1.1(1) (proof): writing d = k − 1, every tree is nonsingular at even order k if and only if d = 1 or d is a prime congruent to 3 modulo 4; the theorem holds at k = 2, 4, 8, 12, 20, 24, … and fails at k = 6, 10, 14, 16, 18, …, where infinitely many sizes are singular.",
+    "Theorem 5.1 (proof): for a prime d congruent to 1 modulo 4 the singular sizes are exactly the multiples of an explicit integer L_d, for example L_5 = 350 and L_13 = 881,961,664,506.",
+    "Theorems 6.1–6.3 (proof): for composite d the gcd of the singular sizes is a ratio of lattice indices; at order ten the singular sizes are found exactly (least 6804 edges, 6805 vertices); at order sixteen the least is 683 edges (684 vertices) and the exact set is found up to 11,513,748 edges.",
+    "Theorem 7.1 (proof): no even order has a singular tree with fewer than 351 vertices.",
+    "Theorem 8.1 and Proposition 8.2 (proof): with positive real edge lengths and at least three vertices, singular lengths exist if and only if k is not 2, 4 or 8; a subfield criterion is given.",
+    "Remark 2.2 and credit: the real-number version of the even-order theorem is true; the published proof fails where it takes odd roots of complex numbers. The edge coordinates and cut identity are Cooper and Du's; Patel's unrefereed MathDB product formula has the same zero set and assumed it nonzero. Tree independence, the odd-order results and Zheng's three-vertex path formula are unaffected."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-role Claude review panel, a verification re-review and a proof audit of the new proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "A tree, in mathematics, is a network of points joined by links, with no loops. A classic theorem of Graham and Pollak says that the table of distances between the points of a tree has a determinant that depends only on how many points there are, and that it never vanishes.\n\nThere is a natural way to go further. Instead of the distance between two points, measure how many links it takes to connect several points at once. This is called Steiner distance, and it fills a table with many dimensions rather than just rows and columns. That table has its own kind of determinant, a hyperdeterminant, which vanishes exactly when a certain system of equations has a solution in complex numbers.\n\nEarlier work proved that this hyperdeterminant always vanishes when the number of points measured at once is odd. A published theorem claimed the opposite for even numbers: it never vanishes, for any tree. Later papers relied on it, and computer checks on small trees agreed.\n\nThis release shows that the even case is false. When six points are measured at once, the hyperdeterminant vanishes for every tree whose number of links is a multiple of three hundred and fifty, and only then. So the smallest counterexample is a tree with three hundred and fifty-one points, far beyond the small trees that earlier checks could reach. The paper also works out exactly which even orders fail, and finds the smallest failing trees at several of them.\n\nThe slip in the published proof is small but important. It assumes that if two quantities raised to the same odd power are equal, then the quantities themselves are equal. That holds for real numbers, but not for complex numbers, and complex numbers are exactly what this determinant detects. The real-number version of the theorem does hold.\n\nThe work builds on coordinates introduced by Cooper and Du, and on a product formula posted online by Patel. It concerns one particular kind of hyperdeterminant, and some harder orders remain open.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and exact computer calculations, so treat it as a careful correction that still awaits outside experts.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All three scripts were rerun from fresh copies before release, normally and in Python's optimised mode; every output matched the recorded files byte for byte, and a deliberately wrong witness (287, 32 and 31 edges) was rejected. GitHub CI on Linux reruns them, compares outputs under a declared policy and repeats the failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. Internal reviewers rechecked the key computations; that is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The theorems rest on written proofs; the order-six certificate is an exact computation in the cyclotomic integers, and floating point is used only to confirm signs and dominance with wide margins."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with the standard library, SymPy 1.14.0 and mpmath 1.3.0. Outputs reproduced byte for byte on the release platform (CPython 3.12.11) and under the declared comparison policy on Linux CI (CPython 3.12). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Graham and Pollak (1971), On the addressing problem for loop switching. Bell System Technical Journal. The classic theorem that a tree's distance determinant depends only on the number of vertices and is never zero.",
+      "url": "https://doi.org/10.1002/j.1538-7305.1971.tb02618.x"
+    },
+    {
+      "citation": "Qi (2005), Eigenvalues of a real supersymmetric tensor. Journal of Symbolic Computation. The symmetric hyperdeterminant used in this literature and in this release.",
+      "url": "https://doi.org/10.1016/j.jsc.2005.05.007"
+    },
+    {
+      "citation": "Cooper and Tauscheck (2024), A generalization of the Graham–Pollak tree theorem to Steiner distance. Discrete Mathematics. The odd-order vanishing theorem, which is unaffected.",
+      "url": "https://doi.org/10.1016/j.disc.2023.113849"
+    },
+    {
+      "citation": "Cooper and Tauscheck (2024), A generalization of the Graham–Pollak tree theorem to even-order Steiner distance. Special Matrices. The even-order nonvanishing theorem that this release shows to be false.",
+      "url": "https://doi.org/10.1515/spma-2024-0018"
+    },
+    {
+      "citation": "Cooper and Du (2024), Note on the spectra of Steiner distance hypermatrices. Electronic Journal of Combinatorics. The classification that repeats the even-order theorem; it fails from 351 vertices at order six.",
+      "url": "https://doi.org/10.37236/12850"
+    },
+    {
+      "citation": "Zheng (2025), On the hyperdeterminants of Steiner distance hypermatrices. Electronic Journal of Combinatorics. Tree independence of the hyperdeterminant, which is unaffected.",
+      "url": "https://doi.org/10.37236/13741"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:steiner-hyperdeterminant-even-order-vanishing",
+    "attemptIds": [
+      "ep-attempt:steiner-hyperdeterminant-even-order-vanishing-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide at which even orders the Steiner distance hyperdeterminant of a tree can vanish, and for which tree sizes.",
+      "scope": "Qi's symmetric (resultant) hyperdeterminant of the order-k Steiner distance hypermatrix of a tree, unit and positive real edge lengths; not the Cayley hyperdeterminant."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the question, what was known, the main theorem, what fails in the published proof and what survives, and a roadmap; every section opens with a purpose sentence; the final section lists open questions.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only; exact vanishing sets for composite d beyond order ten remain open."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in hypermatrices of graphs check the nullvector criterion (Lemma 2.1), the orbit-sum sign rule and basis lemma (Lemmas 4.1–4.3) and the smallest-tree argument (Theorem 7.1), and independently rerun the order-six contraction.",
+      "claimCeiling": "Written proofs of Theorems 1.1, 3.1, 5.1, 6.1–6.3, 7.1 and 8.1, Lemma 2.1, Lemmas 4.1–4.3 and Proposition 8.2; exact computation of the order-six certificate; symmetric (resultant) hyperdeterminant only; composite d beyond order ten open; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "steiner-hyperdeterminant-even-order-vanishing-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable correction of the even-order Steiner distance Graham–Pollak theorem, with the exact failing orders, an explicit 351-vertex counterexample and exact vanishing sizes at several orders.",
+        "setting": "AI-assisted research on distance hypermatrices of trees",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

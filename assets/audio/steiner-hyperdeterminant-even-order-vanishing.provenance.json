@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "A tree, in mathematics, is a network of points joined by links, with no loops. A classic theorem of Graham and Pollak says that the table of distances between the points of a tree has a determinant that depends only on how many points there are, and that it never vanishes. There is a natural way to go further. Instead of the distance between two points, measure how many links it takes to connect several points at once. This is called Steiner distance, and it fills a table with many dimensions rather than just rows and columns. That table has its own kind of determinant, a hyperdeterminant, which vanishes exactly when a certain system of equations has a solution in complex numbers.",
+      "inputSha256": "88fd8762ad71dcdc8524ab49db7bc7a5ec335dcd1f4c822903aa208467b243e9",
+      "audioSha256": "f70cc3f2786893d4c174c8ec1ea772f11949440d694f0ede3efe77e066ce9bc7",
+      "requestId": "req_4cb6db93106d47708eea53fae150b513",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "of equations has a solution in complex numbers",
+        "heardEnding": "hyperdeterminant which vanishes exactly when a certain system of equations has a solution in complex numbers",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Earlier work proved that this hyperdeterminant always vanishes when the number of points measured at once is odd. A published theorem claimed the opposite for even numbers: it never vanishes, for any tree. Later papers relied on it, and computer checks on small trees agreed. This release shows that the even case is false. When six points are measured at once, the hyperdeterminant vanishes for every tree whose number of links is a multiple of three hundred and fifty, and only then. So the smallest counterexample is a tree with three hundred and fifty-one points, far beyond the small trees that earlier checks could reach. The paper also works out exactly which even orders fail, and finds the smallest failing trees at several of them. The slip in the published proof is small but important.",
+      "inputSha256": "2081b7459f6f72edb7de9109f205b0068f6d0fb0fd344bdc121ac03a8f8650a7",
+      "audioSha256": "91f8044550812182b5769cd5512a8fa8d9b2c02aae79d70bea38887d7a892757",
+      "requestId": "req_574effd2028848f4ac198855cc99c908",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "in the published proof is small but important",
+        "heardEnding": "failing trees at several of them the slick in the published proof is small but important",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "It assumes that if two quantities raised to the same odd power are equal, then the quantities themselves are equal. That holds for real numbers, but not for complex numbers, and complex numbers are exactly what this determinant detects. The real-number version of the theorem does hold. The work builds on coordinates introduced by Cooper and Du, and on a product formula posted online by Patel. It concerns one particular kind of hyperdeterminant, and some harder orders remain open. This is an unrefereed candidate, checked by internal AI-assisted review and exact computer calculations, so treat it as a careful correction that still awaits outside experts. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "a2284901e996316238025b1700ed6675c6dc601835039e7a6372024d27ffb005",
+      "audioSha256": "dab2f30e69d84dbf75969d576264d0a5b1eb9cb4503d4d6dd0d50635e91d8116",
+      "requestId": "req_86b701f6cc3c4c0fa5e4842de7025b26",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "awaits outside experts this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "steiner-hyperdeterminant-even-order-vanishing",
+  "generatedAt": "2026-11-25T18:49:42.460Z",
+  "sourceMetadata": "papers/steiner-hyperdeterminant-even-order-vanishing/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "462b8630a5822a9fc330d93a00d31d588b1add2fc3e8822ef75ee7d66823add0",
+  "transcriptPath": "assets/audio/steiner-hyperdeterminant-even-order-vanishing.txt",
+  "transcriptSha256": "03d90208a69515f28539e86305ce6444f0321d22da6d11ddf8944687f7286ac3",
+  "audioPath": "assets/audio/steiner-hyperdeterminant-even-order-vanishing.mp3",
+  "audioSha256": "64c3413df7ecc1534fc7f057ab7a2293997bb417328de7d79460134bcea6038a",
+  "audioBytes": 2231468,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "awaits outside experts this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
