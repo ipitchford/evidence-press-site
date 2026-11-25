@@ -89,7 +89,7 @@ function chart(x0, y0, w, h, c) {
   for (const [v, lab] of [[0, '0'], [0.5, '½'], [1, '1']]) s += text(sx(v), y0 + h + 17, lab, 12, dim, 'middle');
   for (const [p, lab] of [[1, '1'], [0, '0'], [-0.5, '−½']]) s += text(x0 - 8, sy(p) + 4, lab, 12, dim, 'end');
   s += text(x0 + w / 2, y0 + h + 34, 'Chatterjee’s ξ (how far Y is a function of X)', 13, muted, 'middle');
-  s += `<text class="og-hide" transform="translate(${x0 - 30} ${y0 + h / 2}) rotate(-90)" fill="${muted}" font-family="${SANS}" font-size="13" text-anchor="middle">Spearman’s footrule ψ</text>`;
+  s += `<text class="og-hide" x="${x0 - 30}" y="${y0 + h / 2}" transform="rotate(-90 ${x0 - 30} ${y0 + h / 2})" fill="${muted}" font-family="${SANS}" font-size="13" text-anchor="middle">Spearman’s footrule ψ</text>`;
   return s;
 }
 const draw = () => {
