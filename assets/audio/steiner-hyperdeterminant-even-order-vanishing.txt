@@ -1,0 +1,13 @@
+A tree, in mathematics, is a network of points joined by links, with no loops. A classic theorem of Graham and Pollak says that the table of distances between the points of a tree has a determinant that depends only on how many points there are, and that it never vanishes.
+
+There is a natural way to go further. Instead of the distance between two points, measure how many links it takes to connect several points at once. This is called Steiner distance, and it fills a table with many dimensions rather than just rows and columns. That table has its own kind of determinant, a hyperdeterminant, which vanishes exactly when a certain system of equations has a solution in complex numbers.
+
+Earlier work proved that this hyperdeterminant always vanishes when the number of points measured at once is odd. A published theorem claimed the opposite for even numbers: it never vanishes, for any tree. Later papers relied on it, and computer checks on small trees agreed.
+
+This release shows that the even case is false. When six points are measured at once, the hyperdeterminant vanishes for every tree whose number of links is a multiple of three hundred and fifty, and only then. So the smallest counterexample is a tree with three hundred and fifty-one points, far beyond the small trees that earlier checks could reach. The paper also works out exactly which even orders fail, and finds the smallest failing trees at several of them.
+
+The slip in the published proof is small but important. It assumes that if two quantities raised to the same odd power are equal, then the quantities themselves are equal. That holds for real numbers, but not for complex numbers, and complex numbers are exactly what this determinant detects. The real-number version of the theorem does hold.
+
+The work builds on coordinates introduced by Cooper and Du, and on a product formula posted online by Patel. It concerns one particular kind of hyperdeterminant, and some harder orders remain open.
+
+This is an unrefereed candidate, checked by internal AI-assisted review and exact computer calculations, so treat it as a careful correction that still awaits outside experts. This briefing uses an AI-generated voice and is not additional scientific evidence.
