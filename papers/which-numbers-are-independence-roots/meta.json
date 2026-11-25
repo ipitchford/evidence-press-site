@@ -1,0 +1,218 @@
+{
+  "slug": "which-numbers-are-independence-roots",
+  "title": "Which numbers are independence roots? Polynomial divisors, well-covered graphs and imaginary roots of large modulus",
+  "shortTitle": "Exactly which numbers are independence roots",
+  "oneLine": "A number is a zero of some graph's independence polynomial exactly when its reciprocal is an algebraic integer and no conjugate is positive real; i times the golden ratio is one, on a 4,293-vertex graph.",
+  "abstract": "The independence polynomial of a graph counts its independent vertex sets (sets with no edges between them) by size; in statistical physics it is the partition function of the hard-core lattice gas, and its complex zeros are called independence roots. Two restrictions on independence roots are immediate: the reciprocal of a root is an algebraic integer, and no root or algebraic conjugate of a root is a positive real number. Roots are known to be dense in the plane, but density does not say which numbers are hit exactly. This candidate proves that the two restrictions are the only ones: a nonzero complex number is an independence root if and only if its reciprocal is an algebraic integer and none of its conjugates is positive real. Equivalently, an integer polynomial with constant term one divides some independence polynomial exactly when it is positive on the nonnegative real axis, and connected cographs, trees and connected well-covered graphs each realise every such divisor. The criterion describes every purely imaginary independence root and answers Cameron's question on purely imaginary roots of modulus greater than one: they exist, for example i times the golden ratio on an explicit graph with 4,293 vertices. Such roots first appear at independence number six, where they are dense on the imaginary axis; a number whose conjugates are all purely imaginary needs independence number exactly its degree plus two. At independence number six the largest purely imaginary root of an N-vertex graph has modulus asymptotic to 6^(−9/10)·3^(−3/4)·N^(2/5), with a power-saving error term. Limits: the witnesses are large and the minimal one is unknown; the sharp size law covers only independence number six; the tree construction can add roots. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "independence polynomial",
+    "independence roots",
+    "hard-core model",
+    "algebraic integers",
+    "cographs",
+    "well-covered graphs",
+    "purely imaginary roots",
+    "clique counts"
+  ],
+  "repoUrl": "https://github.com/ipitchford/which-numbers-are-independence-roots",
+  "releaseUrl": "https://github.com/ipitchford/which-numbers-are-independence-roots/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/which-numbers-are-independence-roots/releases/download/v0.1.0-candidate/which-numbers-are-independence-roots-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24517978",
+  "conceptDoi": "10.5281/zenodo.24517977",
+  "zenodoUrl": "https://zenodo.org/records/24517978",
+  "citeText": "Anonymous (2026). Which numbers are independence roots? Polynomial divisors, well-covered graphs and imaginary roots of large modulus. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24517978",
+  "evidence": "A 15-page paper with a plain introduction and written proofs of every theorem; exact standard-library Python programs: a constructor that follows the proof, an alternative constructor, a witness verifier for the 4,293-, 7,440- and 59-vertex graphs (clique-factor arithmetic and vertex deletion on explicitly built labelled graphs), a certificate generator and checker for the independence-number-six construction with a stored certificate for a = 10^36, and an exact check that a witness for i times the golden ratio with independence number six needs at least 833 vertices; unit tests with negative controls; recorded output. A clean replay in optimised mode reproduced every result line exactly, Linux CI reruns it under the same policy, and a corrupted stored certificate was rejected.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computational certificates. Internal AI-assisted review: five Claude reviewer roles run as one combined pass and a separate prior-art agent; the lead's proof audit and exact constructors and witness certificates with negative controls; one revision round; then a re-review and proof audit of every rewritten proof. Fisher and Ryan (1992) and Dubickas (2007) were read in full. No second-model (Astra/Codex) review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 15 pages), its programs and recorded output, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 2.1 and Corollary 2.2 (proof, main): an integer polynomial f with f(0) = 1 divides some independence polynomial iff f > 0 on [0, ∞); a nonzero z is an independence root iff 1/z is an algebraic integer and no conjugate of z is positive real. Connected cographs, trees and connected well-covered graphs each realise every such divisor, with multiplicities kept for cographs and well-covered graphs.",
+    "Section 4 (explicit construction, exactly verified): i·(1+√5)/2 is an independence root of a 4,293-vertex graph with independence number six, I_G = (1+3x²+x⁴)(1+4293x+2430x²); this answers Cameron's question on purely imaginary roots of modulus greater than one.",
+    "Theorem 4.2 and Corollary 4.3 (proof): a number of degree d whose conjugates are all purely imaginary needs independence number exactly d+2; six is the least independence number with a purely imaginary root of modulus above one, and at six such roots are dense on the imaginary axis.",
+    "Theorem 5.1 and Theorem A.2 (proof): at independence number six the largest purely imaginary root of an N-vertex graph has modulus 6^(−9/10)·3^(−3/4)·N^(2/5)·(1 + O(N^(−1/15))); in arbitrary directions the growth is N^5.",
+    "Theorem 6.1 and Corollary 7.1 (proof): every integral ray in the interior of the Cutler–Pebody cone is realised exactly by well-covered graphs; z is a root of a well-covered tree iff 1/z is an algebraic integer and every real conjugate lies in [−1, 0)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (five Claude reviewer roles in one combined pass and a separate prior-art agent), the lead's proof audit and exact certificates with negative controls, re-review and proof audit of every rewritten proof",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This is an audio briefing from Evidence Press on a research candidate about networks and the numbers hidden in their quiet groups.\n\nTake any network. An independent set is a group of nodes with no links between them, like guests at a party none of whom know each other. Count these groups by size and use the counts as the coefficients of a polynomial, the independence polynomial. Physicists know it as the partition function of the hard-core gas, where its complex zeros mark possible phase transitions.\n\nWhich complex numbers can be zeros of such a polynomial, for some network? Two restrictions are obvious. The reciprocal of a zero must be an algebraic integer, and no zero, nor any of its algebraic twins, can be a positive real number, because the polynomial is positive there. Earlier work showed that zeros come arbitrarily close to every point, but not which points are hit exactly.\n\nThis candidate shows that the obvious restrictions are the only ones. Every number that passes them is a zero, and the network can be chosen to be a tree, a cograph or a well-covered graph.\n\nIt also settles a question about zeros on the imaginary axis. Such zeros can be larger than one in size: the imaginary unit times the golden ratio is a zero of an explicit network with four thousand two hundred and ninety-three nodes. These large imaginary zeros need groups of at least six nodes, and once six is allowed they come as close as you like to every point of the axis.\n\nThe constructions join together clusters of fully linked nodes, whose group counts can be tuned exactly, and a classical counting inequality bounds how large the zeros can get.\n\nThere are limits. The networks are huge, the smallest one with the golden-ratio zero is unknown, and the sharp size law is proved only when the largest group has six nodes.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and exact computation rather than by peer review, and this briefing uses a synthetic voice that is not additional evidence.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All documented commands were rerun from a fresh copy in Python's optimised mode; every result line matched the recorded output exactly. A stored certificate with one block count changed was rejected. GitHub CI on Linux reruns the commands under the same exact comparison with the failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. Within the package the witnesses are checked both by clique-factor arithmetic and by vertex deletion on labelled graphs, which is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Exact integer and rational arithmetic in the Python standard library; output reproduced on the release platform and on Linux CI under CPython 3.12. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Ball, Galvin, Hyry and Weingartner (2022), Independent set and matching permutations. Journal of Graph Theory. Exact top-down correction of independent-set counts in joins of disjoint cliques, a source of the gadgets used here.",
+      "url": "https://doi.org/10.1002/jgt.22724"
+    },
+    {
+      "citation": "Bencs (2018), On trees with real-rooted independence polynomial. Discrete Mathematics. Proposition 2.7: the stable-path tree of a connected graph, used to transfer roots to trees.",
+      "url": "https://doi.org/10.1016/j.disc.2018.06.033"
+    },
+    {
+      "citation": "Brown and Cameron (2020), A note on purely imaginary independence roots. Discrete Mathematics. Roots ±i/k, no imaginary roots at independence number at most three, and the questions on smallest order and irrational multiples of i.",
+      "url": "https://doi.org/10.1016/j.disc.2020.112113"
+    },
+    {
+      "citation": "Brown and Cameron (2020), Maximum modulus of independence roots of graphs and trees. Graphs and Combinatorics. The maximum modulus when the independence number is free.",
+      "url": "https://doi.org/10.1007/s00373-020-02160-1"
+    },
+    {
+      "citation": "Brown, Dilcher and Nowakowski (2000), Roots of independence polynomials of well covered graphs. Journal of Algebraic Combinatorics. Roots of a well-covered graph have modulus at most its independence number.",
+      "url": "https://doi.org/10.1023/A:1008705614290"
+    },
+    {
+      "citation": "Brown, Hickman and Nowakowski (2004), On the location of roots of independence polynomials. Journal of Algebraic Combinatorics. Independence roots are dense in the complex plane, also for well-covered graphs.",
+      "url": "https://doi.org/10.1023/B:JACO.0000030703.39946.70"
+    },
+    {
+      "citation": "Cutler and Pebody (2017), Maximal-clique partitions and the Roller Coaster Conjecture. Journal of Combinatorial Theory, Series A. Approximate realisation of well-covered counting vectors, made exact in Section 6.",
+      "url": "https://doi.org/10.1016/j.jcta.2016.06.019"
+    },
+    {
+      "citation": "Dubickas (2007), On roots of polynomials with positive coefficients. Manuscripta Mathematica. The analogue for positive rational coefficients, settling a conjecture of Kuba.",
+      "url": "https://doi.org/10.1007/s00229-007-0101-7"
+    },
+    {
+      "citation": "Fisher and Ryan (1992), Bounds on the number of complete subgraphs. Discrete Mathematics. The clique-count inequality behind the sharp size law.",
+      "url": "https://doi.org/10.1016/0012-365X(92)90323-8"
+    },
+    {
+      "citation": "Fox (2011), A new proof of the graph removal lemma. Annals of Mathematics. The removal lemma used in Section 5.",
+      "url": "https://doi.org/10.4007/annals.2011.174.1.17"
+    },
+    {
+      "citation": "Jerrum and Patel (2026), Zero-free regions for the independence polynomial on restricted graph classes. Journal of the London Mathematical Society. Zero-free regions for bounded-degree classes, in contrast with the unbounded-degree witnesses here.",
+      "url": "https://doi.org/10.1112/jlms.70458"
+    },
+    {
+      "citation": "Levit and Mandrescu (2008), On the roots of independence polynomials of almost all very well-covered graphs. Discrete Applied Mathematics. Background on well-covered trees used in Section 7.",
+      "url": "https://doi.org/10.1016/j.dam.2006.06.016"
+    },
+    {
+      "citation": "Ma and Zhang (2026), Extending Brown and Cameron's classification of purely imaginary independence roots. Zenodo. Concurrent work: i times b is a root for rational b squared exactly when b squared is 1/k.",
+      "url": "https://doi.org/10.5281/zenodo.24445668"
+    },
+    {
+      "citation": "Motzkin and Straus (1969), Divisors of polynomials and power series with positive coefficients. Pacific Journal of Mathematics. The classical positivity multiplier used in Lemma 3.2.",
+      "url": "https://doi.org/10.2140/pjm.1969.29.641"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:which-numbers-are-independence-roots",
+    "attemptIds": [
+      "ep-attempt:which-numbers-are-independence-roots-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know exactly which complex numbers are zeros of independence polynomials of finite graphs, in which graph classes, and how large purely imaginary zeros can be.",
+      "scope": "Finite simple graphs; connected cographs, trees and connected well-covered graphs; the sharp size law at independence number six."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 explains independent sets and the independence polynomial, its physics meaning, the two obvious obstructions, what was known about density and imaginary roots, what is new and what is not, other languages for the same polynomial, and a roadmap.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The witnesses are large and the sharp size law covers only independence number six."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in graph polynomials check the affine fill, the factor-preserving construction, the d+2 threshold and the Fisher–Ryan optimisation, and recheck the witnesses independently.",
+      "claimCeiling": "Written proofs of Theorems 2.1, 4.2, 5.1, 6.1 and A.2 with their corollaries, and exact verification of the explicit witnesses and certificates; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "which-numbers-are-independence-roots-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable characterisation of independence roots, with explicit witnesses for imaginary roots of large modulus and replayable exact certificates.",
+        "setting": "AI-assisted research in graph polynomials",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
