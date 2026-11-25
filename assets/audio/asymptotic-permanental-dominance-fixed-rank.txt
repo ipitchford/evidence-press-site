@@ -1,0 +1,11 @@
+The permanent of a matrix is like the determinant, but with every minus sign turned into a plus. For a table of inner products between many vectors, the ways of shuffling those vectors split into symmetry types, one for each shape of a little grid of boxes called a Young diagram. Each type has its own matrix block, and the fully symmetric type gives exactly the permanent.
+
+Long ago, Lieb asked whether every other block is, on average, no bigger than the permanent. A recent preprint by Lavi asked the same question for the average of the squares. A stronger guess, that the permanent beats every single eigenvalue, is already known to be false, so these averaged versions are what may survive. In optics, such tables describe photons with a few internal modes, and the blocks measure their symmetry sectors.
+
+Until now, the averaged inequalities were known for small matrices, for some infinite families of shapes, and, in Lieb's case, whenever the vectors live in at most three dimensions. Both were also known for real vectors lying in a plane.
+
+This release fixes the dimension of the vectors and lets their number grow. It proves that once the matrix is large enough, both inequalities hold for every symmetry type at once, and in fact every average shrinks towards zero. The worst type is the standard one, where a single box sits in the second row, and for complex vectors the size of its averages is pinned down exactly in the limit. The same holds when the dimension grows slowly with the number of vectors, and for the standard type there are explicit bounds at every size.
+
+The proof compares the size of each block with the size of its symmetry type, using random Gaussian directions and a new inequality for sums of random waiting times.
+
+There are limits. How large is large enough is not computed, so no single new size is settled. For Lieb's version, the new cases start in four dimensions, because earlier results of Pate already settle every case in three dimensions and most cases in four dimensions. This is an unrefereed candidate, checked by internal AI-assisted review and finite computer checks rather than by outside experts. This briefing uses an AI-generated voice and is not additional scientific evidence.

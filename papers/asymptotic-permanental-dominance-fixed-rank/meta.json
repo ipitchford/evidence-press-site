@@ -1,0 +1,204 @@
+{
+  "slug": "asymptotic-permanental-dominance-fixed-rank",
+  "title": "Asymptotic permanental dominance at fixed Gram rank",
+  "shortTitle": "Lieb's and Lavi's permanent inequalities hold eventually at every fixed rank",
+  "oneLine": "Every non-trivial symmetry block averages below the permanent once the matrix is large; the standard block is the worst, at (d−1) log n / n.",
+  "abstract": "The permanent of a matrix is the determinant without minus signs. For a positive semidefinite Gram matrix of n vectors, the permutations of the vectors split into symmetry types, one for each Young diagram with n boxes, and each type has a positive semidefinite block whose trace is an immanant; the all-symmetric type gives the permanent. Lieb's permanental dominance conjecture, restricted to ordinary immanants, says that the average eigenvalue of every block is at most the permanent; Lavi's quadratic conjecture says the same for the mean square of the eigenvalues. The stronger permanent-on-top conjecture is false, so these averaged inequalities are what may survive. This candidate fixes the Gram rank d, the dimension of the vectors, and proves that both normalised moments tend to zero as n grows, uniformly over all non-trivial irreducible representations of the symmetric group and all inputs of rank at most d. So both inequalities hold at each fixed rank for all sufficiently large n; the threshold is not computed and no new case of finite order is claimed. The standard representation is eventually the worst case, and at complex rank d its largest first and second moments are asymptotic to (d−1) log n / n and (d−1)(log n)² / n. Both moments still tend to zero when d log n = o(√n), and the first moment does whenever d log n = o(n); for the standard representation alone, explicit bounds hold for every n and d. For the quadratic inequality the result is new at every complex rank d ≥ 2 and real rank d ≥ 3. For ordinary immanants it is new from rank four, and there only for four-row shapes with λ₄ ≥ 3 and λ₂ > λ₃: everything else at rank at most four is due to Pate (1999, Theorem 2). The proofs combine a strict inequality for expected logarithms of sums of exponential variables, a Gaussian bound on traces of ordered-partition matrices, and the sharp Bapat–Sunder growth from an earlier Evidence Press release. Limits: only the symmetric-group (immanant) form of Lieb's conjecture is treated, and real-rank constants are known only up to a factor. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "permanent",
+    "immanant",
+    "Lieb permanental dominance conjecture",
+    "Lavi quadratic conjecture",
+    "positive semidefinite matrix",
+    "Gram matrix",
+    "symmetric group representations",
+    "boson sampling"
+  ],
+  "repoUrl": "https://github.com/ipitchford/asymptotic-permanental-dominance-fixed-rank",
+  "releaseUrl": "https://github.com/ipitchford/asymptotic-permanental-dominance-fixed-rank/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/asymptotic-permanental-dominance-fixed-rank/releases/download/v0.1.0-candidate/asymptotic-permanental-dominance-fixed-rank-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24536861",
+  "conceptDoi": "10.5281/zenodo.24536860",
+  "zenodoUrl": "https://zenodo.org/records/24536861",
+  "citeText": "Anonymous (2026). Asymptotic permanental dominance at fixed Gram rank. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24536861",
+  "evidence": "A 17-page paper with a plain introduction (the two inequalities, why they matter, what was known with a status table, the results, the method and a roadmap) and written proofs of every result. check_dominance.py (Python standard library) checks the ingredients of the proofs on explicit finite examples: in exact arithmetic, positivity, vanishing and trace identities of all blocks for n ≤ 6, the Young and Lieb trace bounds, the real rank-two trace bound and the block examples; in floating point with a declared tolerance, the scalar inequality of Lemma 3.1, the trace bounds of Section 4, the chain of inequalities of Section 8 and the test-vector bound of Section 6. A clean replay, normally and under Python's optimised mode, reproduced the recorded output byte for byte; Linux CI reruns it under a declared comparison policy, and a deliberately wrong value was rejected. The script checks ingredients; it is not part of any proof.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs; the script checks ingredients on finite examples. Internal AI-assisted review: a combined five-role Claude review panel, a lead proof audit of every proof, one revision round, a verification re-review with a proof audit of the new and rewritten proofs, and a clean replay with a negative control. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026, re-frozen after Pate (1999) was read, with the release DOI on the title page, 17 pages), its check script and recorded output, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 1.1(1) (proof): at every fixed Gram rank d ≥ 2, over the reals and the complex numbers, the worst normalised first and second moments over all non-trivial shapes tend to zero as n → ∞; shapes with n − λ₁ ≥ 2 contribute o(1/n) uniformly. Both inequalities therefore hold for all n ≥ n₀(d); n₀(d) is not computed.",
+    "Theorem 1.1(2)–(3) (proof): for large n the standard shape (n−1, 1) attains the worst case; over ℂ the worst moments are asymptotic to (d−1) log n / n and (d−1)(log n)² / n; over ℝ with d ≥ 3 they have the same orders with constants between 1/2 (respectively 1/4) and d−1; over ℝ with d = 2 the supremum of each standard moment lies between 1/(n−1) and 3/(n−1) for every n.",
+    "Theorem 1.2 (proof): if d log n = o(√n), both worst moments tend to zero; if d log n = o(n), the first moment does.",
+    "Theorem 1.3 (proof): for every n ≥ 2 and 1 ≤ d ≤ n, the standard first moment is at most (6√(end) − 1)/(n − 1) and the second at most (6√(end)(log n + 5) − 1)/(n − 1); a real example of rank d gives (d−1)/(n−1). Lavi's inequality for the standard shape holds whenever 6√(end)(log n + 5) ≤ n (for d = 2, from n = 48,836).",
+    "Lemma 3.1 and Proposition 4.3 (proof): a strict merge inequality for expected logarithms of positive combinations of exponential variables, and the sharp first-trace constant d − 1 for ordered-partition matrices.",
+    "Credit: rank at most three, and every rank-four shape except four rows with λ₄ ≥ 3 and λ₂ > λ₃, are Pate's (1999, Theorem 2); eventual dominance for the shapes (n+s, nᵏ) is Pate's Theorem 4; orders up to 15 are Pate's and Li's; Lavi proved the quadratic version for n ≤ 5; real rank two follows from the rank-two permanent-on-top theorem."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-role Claude review panel, a lead proof audit, a verification re-review and a proof audit of the new proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "The permanent of a matrix is like the determinant, but with every minus sign turned into a plus. For a table of inner products between many vectors, the ways of shuffling those vectors split into symmetry types, one for each shape of a little grid of boxes called a Young diagram. Each type has its own matrix block, and the fully symmetric type gives exactly the permanent.\n\nLong ago, Lieb asked whether every other block is, on average, no bigger than the permanent. A recent preprint by Lavi asked the same question for the average of the squares. A stronger guess, that the permanent beats every single eigenvalue, is already known to be false, so these averaged versions are what may survive. In optics, such tables describe photons with a few internal modes, and the blocks measure their symmetry sectors.\n\nUntil now, the averaged inequalities were known for small matrices, for some infinite families of shapes, and, in Lieb's case, whenever the vectors live in at most three dimensions. Both were also known for real vectors lying in a plane.\n\nThis release fixes the dimension of the vectors and lets their number grow. It proves that once the matrix is large enough, both inequalities hold for every symmetry type at once, and in fact every average shrinks towards zero. The worst type is the standard one, where a single box sits in the second row, and for complex vectors the size of its averages is pinned down exactly in the limit. The same holds when the dimension grows slowly with the number of vectors, and for the standard type there are explicit bounds at every size.\n\nThe proof compares the size of each block with the size of its symmetry type, using random Gaussian directions and a new inequality for sums of random waiting times.\n\nThere are limits. How large is large enough is not computed, so no single new size is settled. For Lieb's version, the new cases start in four dimensions, because earlier results of Pate already settle every case in three dimensions and most cases in four dimensions. This is an unrefereed candidate, checked by internal AI-assisted review and finite computer checks rather than by outside experts.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The check script was rerun from fresh copies before release, normally and under Python's optimised mode and under two interpreter versions; the output matched the recorded one byte for byte, and a deliberately wrong expected value was rejected. GitHub CI on Linux reruns it, compares the exact part line by line and the floating-point values within a declared tolerance, and repeats the failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. Internal reviewers recomputed key quantities; that is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The theorems rest on written proofs; the script checks their ingredients on finite examples."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python standard library only (3.12 or later). Output reproduced byte for byte on the release platform under CPython 3.14.7 and 3.12.11 and on Linux CI under CPython 3.12. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Anari, Gurvits, Oveis Gharan and Saberi (2017), Simply exponential approximation of the permanent of positive semidefinite matrices. FOCS 2017. Theorem 1 and eq. (2) give the eigenvalue bound of Lemma 2.4.",
+      "url": "https://doi.org/10.1109/FOCS.2017.89"
+    },
+    {
+      "citation": "Anonymous (2026), Sharp logarithmic growth of the Bapat–Sunder eigenvalue ratio. Evidence Press. The earlier release this paper builds on: the sharp growth, the circle construction and the real rank-two theorem.",
+      "url": "https://doi.org/10.5281/zenodo.24509057"
+    },
+    {
+      "citation": "Bapat and Sunder (1986), An extremal property of the permanent and the determinant. Linear Algebra and its Applications. The origin of the eigenvalue-ratio question.",
+      "url": "https://doi.org/10.1016/0024-3795(86)90220-X"
+    },
+    {
+      "citation": "Djoković (1969), Simple proof of a theorem on permanents. Glasgow Mathematical Journal. Lieb's block inequality as stated and proved.",
+      "url": "https://doi.org/10.1017/S0017089500000525"
+    },
+    {
+      "citation": "Lieb (1966), Proofs of some conjectures on permanents. Journal of Mathematics and Mechanics. The permanental dominance conjecture and the block inequality.",
+      "url": "https://doi.org/10.1512/iumj.1967.16.16008"
+    },
+    {
+      "citation": "Pate (1999), Tensor inequalities, ξ-functions and inequalities involving immanants. Linear Algebra and its Applications. Theorem 2 covers every shape at rank at most three; Theorem 4 gives eventual dominance for the shapes (n+s, nᵏ).",
+      "url": "https://doi.org/10.1016/S0024-3795(99)00035-X"
+    },
+    {
+      "citation": "Shchesnovich (2016), The permanent-on-top conjecture is false. Linear Algebra and its Applications. Why the averaged inequalities are the ones that may survive.",
+      "url": "https://doi.org/10.1016/j.laa.2015.10.034"
+    },
+    {
+      "citation": "Wanless (2022), Lieb's permanental dominance conjecture. The Physics and Mathematics of Elliott Lieb. A survey of the conjecture.",
+      "url": "https://doi.org/10.4171/90-2/48"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:asymptotic-permanental-dominance-fixed-rank",
+    "attemptIds": [
+      "ep-attempt:asymptotic-permanental-dominance-fixed-rank-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide where counterexamples to Lieb's permanental dominance and Lavi's quadratic permanent inequalities can still occur, and how large non-bosonic symmetry sectors can be for photons with few internal modes.",
+      "scope": "Gram matrices of n vectors in a space of fixed or slowly growing dimension d; irreducible characters of the symmetric group (ordinary immanants), not the subgroup form; asymptotic statements with a non-computed threshold, and explicit bounds for the standard shape."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the two inequalities, why they matter, what was known with a status table by rank, the results, the method and a roadmap; every section opens with a purpose sentence; Section 9 relates the results to Chollet's inequality and lists open problems.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only; the threshold n₀(d) is not computed."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [
+      {
+        "relation": "depends-on-claim",
+        "workId": "ep-work:bapat-sunder-eigenvalue-ratio-growth",
+        "legacyReleaseSlug": null,
+        "externalUrl": null,
+        "inheritedClaim": "The sharp growth of the Bapat–Sunder eigenvalue ratio (upper bound log n + 5 over the complex numbers), its concentric-circle construction and its proof of the real rank-two permanent-on-top theorem (Appendix A), used for the standard shape.",
+        "inheritedAssuranceCeiling": "Unrefereed AI-assisted candidate with internal checks only; this successor is not independent confirmation of the parent."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in permanent and immanant inequalities check the merge inequality (Lemma 3.1), the macroscopic case of Section 5 and the sharp first-trace constant (Proposition 4.3), and attempt an explicit threshold at rank four.",
+      "claimCeiling": "Written proofs of Theorems 1.1, 1.2 and 1.3 with their lemmas; asymptotic statements with a non-computed threshold; immanant form only; finite checks of the ingredients; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "asymptotic-permanental-dominance-fixed-rank-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof that Lieb's ordinary-immanant inequality and Lavi's quadratic inequality hold eventually at every fixed Gram rank, with the sharp size of the worst moments.",
+        "setting": "AI-assisted research on permanent and immanant inequalities",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
