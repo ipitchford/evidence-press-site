@@ -209,6 +209,17 @@ async function liveSlugs() {
 
 /* Confirm a slug really resolves on the live site rather than hitting the
    404 fallback — a release page always ships a paper.json beside it. */
+/* Run fn over items with at most EP_READBACK_CONCURRENCY requests in flight,
+   returning results in input order (so ledger writes stay deterministic). */
+async function pool(items, fn, limit = Math.max(1, Number(process.env.EP_READBACK_CONCURRENCY) || 16)) {
+  const results = new Array(items.length);
+  let next = 0;
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (next < items.length) { const i = next++; results[i] = await fn(items[i], i); }
+  }));
+  return results;
+}
+
 async function isLive(slug) {
   try {
     const r = await fetch(cacheBusted(`${BASE}/releases/${slug}/paper.json`), {
@@ -282,7 +293,10 @@ async function confirmInstitutionalPage(pagePath, requireCandidateEquality = fal
        source, so a release that is live but missing from the index is caught. */
     const candidates = new Set([...found, ...dist.releases, ...ledger.releases.map(r => r.slug)]);
     const confirmed = [];
-    for (const slug of candidates) if (await isLive(slug)) confirmed.push(slug);
+    /* Same probes, bounded concurrency: the readback guarantee is unchanged but
+       ~300 sequential round trips no longer dominate the deploy. */
+    const liveFlags = await pool([...candidates], isLive);
+    [...candidates].forEach((slug, i) => { if (liveFlags[i]) confirmed.push(slug); });
     console.log(`  probed ${candidates.size} candidate slugs — ${confirmed.length} confirmed live`);
     const unindexed = confirmed.filter(s => !found.includes(s));
     if (unindexed.length) {
@@ -300,10 +314,10 @@ async function confirmInstitutionalPage(pagePath, requireCandidateEquality = fal
     }
     if (POST_DEPLOY) {
       let exactReleases = 0;
-      for (const slug of dist.releases) {
-        const result = await confirmCandidateBytes(
-          `/releases/${slug}/paper.json`, `releases/${slug}/paper.json`, 'json'
-        );
+      const releaseResults = await pool(dist.releases, slug => confirmCandidateBytes(
+        `/releases/${slug}/paper.json`, `releases/${slug}/paper.json`, 'json'));
+      for (const [index, slug] of dist.releases.entries()) {
+        const result = releaseResults[index];
         if (!result.ok) {
           liveFailures.push(`post-deploy release does not equal candidate: ${BASE}/releases/${slug}/paper.json (${result.reason})`);
           continue;

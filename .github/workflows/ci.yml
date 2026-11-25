@@ -10,8 +10,40 @@ permissions:
   contents: read
 
 jobs:
+  # A push to main whose tree is byte-identical to a merged PR head that already
+  # passed every required check would only re-test the same bytes. Skip it; the
+  # deploy gate (tools/check-deploy-ci.js) admits such a commit only after
+  # re-verifying the tree identity and the PR head's required checks itself.
+  equivalence:
+    name: Tree-equivalence with a tested PR head
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      redundant: ${{ steps.tree.outputs.redundant }}
+    steps:
+      - id: tree
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          redundant=false
+          if [ "${{ github.event_name }}" = "push" ]; then
+            tree="$(gh api "repos/${{ github.repository }}/git/commits/${{ github.sha }}" --jq .tree.sha)"
+            for head in $(gh api "repos/${{ github.repository }}/commits/${{ github.sha }}/pulls" --jq '.[] | select(.merged_at != null and .base.ref == "main") | .head.sha'); do
+              [ "$head" = "${{ github.sha }}" ] && continue
+              if [ "$(gh api "repos/${{ github.repository }}/git/commits/$head" --jq .tree.sha)" = "$tree" ]; then
+                redundant=true
+                echo "Tree $tree equals tested PR head $head; main CI is redundant."
+              fi
+            done
+          fi
+          echo "redundant=$redundant" >> "$GITHUB_OUTPUT"
+
   build:
     name: Build and verify (Node ${{ matrix.node }})
+    needs: equivalence
+    if: needs.equivalence.outputs.redundant != 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -188,6 +220,9 @@ jobs:
           node tools/check-published.js
 
       - name: Build is reproducible from the same source
+        # One clean rebuild per commit establishes determinism; repeating it on
+        # every Node version only lengthened the slowest matrix leg.
+        if: matrix.node == '22'
         # The build must not depend on the wall clock or on any other state that
         # varies between runs: rebuild and require byte-identical output.
         run: |
@@ -210,7 +245,9 @@ jobs:
           echo "No inline scripts."
 
       - name: Check image-led cover regeneration
-        run: node tools/test-art-direction.js
+        run: |
+          node tools/test-art-direction.js
+          node tools/test-release-art.js
 
   cited-references:
     name: Cited references (changed releases)
@@ -241,6 +278,8 @@ jobs:
 
   accessibility:
     name: Accessibility (axe via pa11y-ci)
+    needs: equivalence
+    if: needs.equivalence.outputs.redundant != 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4

@@ -33,14 +33,39 @@ function waitFor(commit, fetch, {waitSeconds = 1800, pollSeconds = 30, sleep = s
     }
   }
 }
+/* Tree-equivalent admission. CI tests source bytes, not commit metadata: when
+   the deployed commit's tree is byte-identical to the head of a merged PR whose
+   required checks all passed, those checks already tested exactly what is being
+   deployed, so main CI on the merge commit is redundant (CI skips it). Any tree
+   difference, missing PR or failed check falls back to exact-commit admission. */
+function treeEquivalent(commit, {tree, treeOf, prHeads, checksFor}) {
+  if (!/^[a-f0-9]{40}$/.test(tree || '')) throw Error('Invalid deployed tree');
+  for (const head of prHeads(commit)) {
+    if (!/^[a-f0-9]{40}$/.test(head) || head === commit || treeOf(head) !== tree) continue;
+    try { return {head, ids: validate(checksFor(head), head)}; } catch { /* try the next PR head */ }
+  }
+  return null;
+}
 if (require.main === module) {
   try {
     const commit = cp.execFileSync('git', ['rev-parse', 'HEAD'], {encoding:'utf8'}).trim();
-    const fetch = () => JSON.parse(cp.execFileSync('gh', ['api', `repos/ipitchford/evidence-press-site/commits/${commit}/check-runs?per_page=100`, '--paginate', '--slurp'], {encoding:'utf8',maxBuffer:32<<20}));
+    const api = route => JSON.parse(cp.execFileSync('gh', ['api', `repos/ipitchford/evidence-press-site/${route}`, '--paginate', '--slurp'], {encoding:'utf8',maxBuffer:32<<20}));
+    const checksFor = sha => api(`commits/${sha}/check-runs?per_page=100`);
+    const fetch = () => checksFor(commit);
+    const equivalent = treeEquivalent(commit, {
+      tree: cp.execFileSync('git', ['rev-parse', 'HEAD^{tree}'], {encoding:'utf8'}).trim(),
+      treeOf: sha => api(`git/commits/${sha}`)[0].tree.sha,
+      prHeads: sha => api(`commits/${sha}/pulls`).flat().filter(pr => pr.merged_at && pr.base?.ref === 'main').map(pr => pr.head.sha),
+      checksFor
+    });
+    if (equivalent) {
+      console.log(`Canonical required CI passed for PR head ${equivalent.head}, whose tree is identical to ${commit}`);
+      return;
+    }
     const waitSeconds = Number(process.env.DEPLOY_CI_WAIT_SECONDS ?? 1800);
     if (!Number.isFinite(waitSeconds) || waitSeconds < 0) throw Error('DEPLOY_CI_WAIT_SECONDS must be a non-negative number');
     waitFor(commit, fetch, {waitSeconds});
     console.log(`Canonical required CI passed for ${commit}`);
   } catch (e) { console.error(`REFUSING DEPLOY: ${e.message}`); process.exitCode=1; }
 }
-module.exports = {validate, waitFor, required};
+module.exports = {validate, waitFor, treeEquivalent, required};

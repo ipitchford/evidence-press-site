@@ -19,7 +19,7 @@ const {
   buildResearchGraph,
   validateResearchGraph
 } = require('./tools/research-graph');
-const { loadAtlasRoadmap, validateAtlasRoadmap } = require('./tools/atlas-roadmap');
+const { loadAtlasRoadmap, computeAtlasBaseline, validateAtlasRoadmap } = require('./tools/atlas-roadmap');
 const { loadAtlasProposals, validateRegister: validateAtlasProposalRegister } = require('./tools/atlas-proposals');
 const { loadClaimAssurance, buildClaimAssuranceRegister } = require('./tools/claim-assurance');
 const { loadImplementationStatus, validateImplementationStatus } = require('./tools/implementation-status');
@@ -779,10 +779,30 @@ const ATLAS_PROPOSAL_REGISTER_ERRORS = validateAtlasProposalRegister(ATLAS_PROPO
 if (ATLAS_PROPOSAL_REGISTER_ERRORS.length) {
   throw new Error(`Evidence Atlas assembled proposal register failed validation:\n- ${ATLAS_PROPOSAL_REGISTER_ERRORS.join('\n- ')}`);
 }
-const ATLAS_CURRENT_BASELINE_ERRORS = validateAtlasRoadmap(ATLAS_ROADMAP, {
+let ATLAS_CURRENT_BASELINE_ERRORS = validateAtlasRoadmap(ATLAS_ROADMAP, {
   graph: RESEARCH_GRAPH,
   proposalRegister: ATLAS_PROPOSALS
 });
+/* Authoring-time refresh (EP_REFRESH_ATLAS_BASELINE=1): a new release always
+   moves the derived corpus counts, so rewrite only the derived currentBaseline
+   fields in source and continue. The refreshed file is committed with content
+   commit A; CI and sealed builds never set the flag, so a stale committed
+   baseline still fails closed there. */
+if (ATLAS_CURRENT_BASELINE_ERRORS.length && process.env.EP_REFRESH_ATLAS_BASELINE === '1' &&
+    ATLAS_CURRENT_BASELINE_ERRORS.every(error => /^currentBaseline\..* is stale/.test(error))) {
+  const recorded = ATLAS_ROADMAP.currentBaseline;
+  const derived = computeAtlasBaseline(RESEARCH_GRAPH, ATLAS_PROPOSALS,
+    (recorded.methodPrevalenceChecks || []).map(item => item.methodId));
+  for (const field of ['releaseCount', 'methodCount', 'clusterCount', 'lineageCount', 'acceptedRelationshipCount', 'publishedProposalCount']) recorded[field] = derived[field];
+  Object.assign(recorded.relationshipComposition, derived.relationshipComposition);
+  derived.methodPrevalenceChecks.forEach((item, index) => { recorded.methodPrevalenceChecks[index].releaseAssignmentCount = item.releaseAssignmentCount; });
+  const roadmapFile = path.join(ROOT, 'data', 'ATLAS_ROADMAP.json');
+  const onDisk = JSON.parse(fs.readFileSync(roadmapFile, 'utf8'));
+  onDisk.currentBaseline = recorded;
+  fs.writeFileSync(roadmapFile, JSON.stringify(onDisk, null, 2) + '\n');
+  console.log('Atlas roadmap baseline refreshed from the current corpus (commit data/ATLAS_ROADMAP.json with content commit A).');
+  ATLAS_CURRENT_BASELINE_ERRORS = validateAtlasRoadmap(ATLAS_ROADMAP, { graph: RESEARCH_GRAPH, proposalRegister: ATLAS_PROPOSALS });
+}
 if (ATLAS_CURRENT_BASELINE_ERRORS.length) {
   throw new Error(`Evidence Atlas roadmap baseline failed current-corpus validation:\n- ${ATLAS_CURRENT_BASELINE_ERRORS.join('\n- ')}`);
 }
