@@ -1,0 +1,13 @@
+Many optimisation problems split into a smooth part and a simple but awkward part, such as a sparsity penalty or a constraint. Two workhorse methods handle them: the difference-of-convex algorithm, known as D C A, and the proximal gradient method.
+
+Neither method can tell you how far you are from the answer, so each is usually stopped when its last step is small. The practical question is: after a given number of iterations, how small is that step guaranteed to be, and which constant step size is best?
+
+For plain gradient descent, Rotaru, Glineur and Patrinos worked out the exact answer. For D C A, Rotaru, Patrinos and Glineur proved bounds in part of the parameter range and conjectured the exact answer everywhere: in effect, that the awkward part costs nothing extra.
+
+This release proves the conjecture for every number of iterations, and shows that the bounds are exact: explicit worst-case problems, including nonconvex ones, reach them. For proximal gradient with a convex awkward part, the best constant step sizes known for gradient descent stay the best. For a convex problem run for twenty iterations, the best step is about one point nine divided by the curvature bound, rather than the textbook choice, and the guarantee nearly doubles.
+
+The proof starts from the gradient-descent proof. The proximal step adds extra terms; the few with the wrong sign are cancelled by matching terms from the neighbouring block, and where the proof changes form, a square that the old proof threw away is kept and completed.
+
+The results cover constant step sizes and worst cases only, and related conjectures about other stopping measures remain open. Overshooting the best step is costly, so when the curvature is uncertain, err on the short side.
+
+This is an unrefereed candidate, checked by internal AI-assisted review, a proof audit and exact computer checks rather than by outside peer review, and its proofs, programs and limits are open for anyone to inspect. This briefing uses an AI-generated voice and is not additional scientific evidence.

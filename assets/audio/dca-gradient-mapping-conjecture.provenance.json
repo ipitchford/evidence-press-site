@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Many optimisation problems split into a smooth part and a simple but awkward part, such as a sparsity penalty or a constraint. Two workhorse methods handle them: the difference-of-convex algorithm, known as D C A, and the proximal gradient method. Neither method can tell you how far you are from the answer, so each is usually stopped when its last step is small. The practical question is: after a given number of iterations, how small is that step guaranteed to be, and which constant step size is best? For plain gradient descent, Rotaru, Glineur and Patrinos worked out the exact answer. For D C A, Rotaru, Patrinos and Glineur proved bounds in part of the parameter range and conjectured the exact answer everywhere: in effect, that the awkward part costs nothing extra.",
+      "inputSha256": "38104f99bdfa915087359e76e36241dd082f990b8f4e72337161a4390cd4889d",
+      "audioSha256": "3d6036f14b8c169641fbf3b4fe069c5b9554bc1cf0336d57793977e7d4975a18",
+      "requestId": "req_5b21352a80584245bb7f50e142ebeb08",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "effect that the awkward part costs nothing extra",
+        "heardEnding": "range and conjectured the exact answer everywhere in effect that the awkward part costs nothing extra",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This release proves the conjecture for every number of iterations, and shows that the bounds are exact: explicit worst-case problems, including nonconvex ones, reach them. For proximal gradient with a convex awkward part, the best constant step sizes known for gradient descent stay the best. For a convex problem run for twenty iterations, the best step is about one point nine divided by the curvature bound, rather than the textbook choice, and the guarantee nearly doubles. The proof starts from the gradient-descent proof. The proximal step adds extra terms; the few with the wrong sign are cancelled by matching terms from the neighbouring block, and where the proof changes form, a square that the old proof threw away is kept and completed.",
+      "inputSha256": "326cff02b01c86365669d82179d11e6536550358ace87145d6b04fb82752fae7",
+      "audioSha256": "1957f9631aecb289ed4bb974400f9e559d656cab3597d9c128ac73d5d0433339",
+      "requestId": "req_5042d6f3df6345fcbf01418f36a38f74",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "old proof threw away is kept and completed",
+        "heardEnding": "the proof changes form a square that the old proof threw away is kept and completed",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The results cover constant step sizes and worst cases only, and related conjectures about other stopping measures remain open. Overshooting the best step is costly, so when the curvature is uncertain, err on the short side. This is an unrefereed candidate, checked by internal AI-assisted review, a proof audit and exact computer checks rather than by outside peer review, and its proofs, programs and limits are open for anyone to inspect. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "2b03b18417f486dcd49b86dd7968f305dc9f6e5a332bf86b7e2b2f80788d9a8c",
+      "audioSha256": "18e23c9ddb4958a93e125d0a9b1ad19f28b73091edbb7b3471f91cc590a05945",
+      "requestId": "req_7f104328d7704b819fdae65fa406caf0",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "anyone to inspect this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "dca-gradient-mapping-conjecture",
+  "generatedAt": "2026-11-25T08:01:25.180Z",
+  "sourceMetadata": "papers/dca-gradient-mapping-conjecture/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "f4b8a2044d3523d412f4c1f109e3e9543571812fc8f2beb6727dc050b46c0069",
+  "transcriptPath": "assets/audio/dca-gradient-mapping-conjecture.txt",
+  "transcriptSha256": "50e777a85fdc7b9f24f9c7f747539913bb653a3886918f7179cf2d007607e758",
+  "audioPath": "assets/audio/dca-gradient-mapping-conjecture.mp3",
+  "audioSha256": "5cf537ec0551d1c1aa30771e28bc018f537a525b1dd4b5baf7b90c6e3235834f",
+  "audioBytes": 2066348,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "anyone to inspect this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
