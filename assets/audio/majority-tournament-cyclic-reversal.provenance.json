@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Imagine many voters, each ranking the same candidates in a random order. For every pair of candidates, look at who wins the head-to-head majority vote. Sometimes three candidates form a loop, like rock, paper, scissors: A beats B, B beats C, and yet C beats A, closing the loop. This is Condorcet's paradox, and this random-voter model is the standard yardstick of voting theory. A natural guess, made as a formal conjecture by Harrison-Trainor, is that an outcome with fewer of these loops is always more likely than one with more. He checked it for small elections, with up to five candidates, and found that it held. This release shows that the guess is false. Split the candidates into ranked groups, where everyone in a stronger group beats everyone in a weaker group.",
+      "inputSha256": "7056e4cb6507358f0cc9e6333fc360ea65bc7eaa8afbf1a1f8d060d4b6b21f35",
+      "audioSha256": "b4ea414bff5e7483e078f21471d4459f8fdc901f80d1c4c036278efb9a836926",
+      "requestId": "req_20a2b655d9e443bea99f923cde206252",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "stronger group beats everyone in a weaker group",
+        "heardEnding": "candidates into ranked groups where everyone in a stronger group beats everyone in a weaker group",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Each pair of candidates that must end up almost tied costs roughly a factor of two in probability. Loops live inside groups, and so do the costly pairs. But pairs grow with the square of a group's size, while loops grow with its cube, so some arrangements have more loops yet need fewer almost-tied pairs. An exact certificate gives a concrete case with seventy-eight candidates: an outcome with three extra loops is more than a hundred thousand times as likely. Computer estimates, which are not proofs, find no such reversal with seven or fewer candidates, and they do find reversals with thirteen candidates, and with fourteen, among the cases examined. Part of the conjecture survives.",
+      "inputSha256": "5ddef78973c1bba5c15d3d8d697d68429801ac1a7e1373611efbc6be33ee4fac",
+      "audioSha256": "33a264271d473730ea6963a976842a8492c048e5bd16d640123210f2545a6110",
+      "requestId": "req_794ec7442ab346519231854cbae0648c",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "the cases examined part of the conjecture survives",
+        "heardEnding": "do find reversals with candidates and with among the cases examined part of the conjecture survives",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 3
+      }
+    },
+    {
+      "input": "The fully ordered outcomes, with no loops at all, really are the most likely ones, whatever the number of candidates. A second part speaks to anyone who analyses round robins, such as a sports season. Unless the Bradley-Terry model holds, the win totals hide a great deal, and a simple test built from triangles of games can detect this from a single season. But with only one game per pair, no test can meet the worst-case standard proposed by Makur and Singh. The election results are about a mathematical null model with very many voters, not real elections, and the size of the smallest counterexample is still unknown.",
+      "inputSha256": "fb930a84f6d0f8a8576a81319d0a3e2b2dc5833949ca667c7847b18cc89da633",
+      "audioSha256": "2795d035fde14040bd17aaad13c489faf3f680c739e5d9cc4fc07a1cfc67de3f",
+      "requestId": "req_4d095119e9584c179312ecf9183d50f0",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "size of the smallest counterexample is still unknown",
+        "heardEnding": "very many voters not real elections and the size of the smallest counterexample is still unknown",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "This is an unrefereed candidate, checked by internal AI-assisted review and exact computer checks rather than outside peer review, and its proofs, programs and limits are open for anyone to inspect. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "7721adc26fdddadc5ef0c35ab264aa41158c75b4aac33a3f0dca0c7efdf6b359",
+      "audioSha256": "1412d602789a24fbe075f3cab2b3a6380bc527017512a78b42f4995affb2d0d7",
+      "requestId": "req_40958562c1a94069ad576dea7c9c5d35",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "anyone to inspect this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "majority-tournament-cyclic-reversal",
+  "generatedAt": "2026-11-25T09:28:51.611Z",
+  "sourceMetadata": "papers/majority-tournament-cyclic-reversal/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "b2a629df022260f3f735e8ce06289c9dc1b986dcde7fabe30b7d8c0404fe12c5",
+  "transcriptPath": "assets/audio/majority-tournament-cyclic-reversal.txt",
+  "transcriptSha256": "026beb0e0a80adb3351d5bf2bf6cb44ab6e381e92fb777813e185940c5c4a802",
+  "audioPath": "assets/audio/majority-tournament-cyclic-reversal.mp3",
+  "audioSha256": "aa99e135513d108996d658563aaa591d2c775f5bfad7511a169b5e7c8206714d",
+  "audioBytes": 2510252,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "anyone to inspect this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
