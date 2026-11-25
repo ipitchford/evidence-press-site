@@ -1,0 +1,218 @@
+{
+  "slug": "dice-colouring-entropy-hub-designs",
+  "title": "Which dice colourings make the number of colours seen most uncertain? Fair coins, hub designs and a local limit theorem for doubly stochastic occupancy",
+  "shortTitle": "Most uncertain dice colourings: share one colour",
+  "oneLine": "To make the number of colours seen on rolled coins most uncertain, put one colour on every coin; for dice of any size, unbalanced hub designs beat every evenly spread design.",
+  "abstract": "Paint the faces of m dice with n colours, never repeating a colour on one die, roll them all and count the distinct colours that appear. Pelekis asked which painting makes this count most uncertain, in the sense of largest Shannon entropy. He proved an upper bound of order half the logarithm of n and conjectured that the colours should be spread as evenly as possible, that the cycle and circular designs are optimal, and (his Conjecture 4.1) that the circular design has entropy at least ½log₂(n/r) − O(1). Research records of the trureturing project refuted the even-spread and circular conjectures at one small size each. This candidate settles the coin case: for every sufficiently large palette and every number of coins m ≥ n, the unique optimum is a star, with one colour on every coin paired once with each other colour; up to three extra coins duplicate distinct pairs, and four or more all duplicate one pair. The palette threshold is not explicit; it is at least ten, by an exactly certified nine-colour exception. Three colours are solved for every number of coins. For every number of faces r ≥ 2, with as many dice as colours, explicit unbalanced hub designs beat every evenly spread design by at least ½log 1.5 nats once n is large, so the even-spread conjecture and circular maximality fail for every r; for 2- to 8-sided dice this is certified exactly up to 120 colours. Conjecture 4.1 is proved with an absolute constant. The tool is a local limit theorem for the number of distinct values when each row of a doubly stochastic matrix is sampled once, with all errors controlled by twice the expected number of colliding pairs: the optimal local rate, every fixed order of the lattice Edgeworth expansion, the squared-skewness entropy correction and a saddlepoint formula. The central limit theorem in this setting is due to D'yakonova and Mikhailov. Limits: the coin threshold is ineffective, and the optimum for dice with three or more faces is not identified. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Shannon entropy",
+    "occupancy",
+    "local limit theorem",
+    "doubly stochastic matrix",
+    "random orientations of hypergraphs",
+    "maximum entropy",
+    "Edgeworth expansion",
+    "fair coins"
+  ],
+  "repoUrl": "https://github.com/ipitchford/dice-colouring-entropy-hub-designs",
+  "releaseUrl": "https://github.com/ipitchford/dice-colouring-entropy-hub-designs/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/dice-colouring-entropy-hub-designs/releases/download/v0.1.0-candidate/dice-colouring-entropy-hub-designs-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24519025",
+  "conceptDoi": "10.5281/zenodo.24519024",
+  "zenodoUrl": "https://zenodo.org/records/24519025",
+  "citeText": "Anonymous (2026). Which dice colourings make the number of colours seen most uncertain? Fair coins, hub designs and a local limit theorem for doubly stochastic occupancy. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24519025",
+  "evidence": "A 19-page paper with a plain introduction and written proofs of every theorem; eight standard-library Python scripts that check identities, constants and small cases: the switch construction and variance identities on 9,635 rational matrices, the polymer identity, the entropy correction, all 3-regular designs up to eight vertices, every coin design for n ≤ 5 and m ≤ n + 2 with star rankings up to n = 500, the two-hub comparison, the nine-colour exception, and exact hub-design certificates for 2- to 8-sided dice up to 120 colours; recorded logs. A clean replay in optimised mode reproduced every log byte for byte, Linux CI reruns it under a declared comparison policy, and an inverted polymer identity was rejected.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computational checks of identities, constants and small cases. Internal AI-assisted review: a five-role Claude review (methodology and devil's advocate as separate reviewers; editor, domain and perspective in one combined pass), the lead's proof audit, exact certificates with a clean replay, one revision round that added the hub designs, then a re-review and proof audit of every new or rewritten proof. No second-model (Astra/Codex) review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 19 pages), its scripts and recorded logs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem A, Theorems 9.1 and 9.3 (proof, main): there is an absolute n₀ such that for n ≥ n₀ and m ≥ n coins the unique entropy maximiser is the star: one colour on every coin, paired once with each other colour; t = m − n + 1 extra coins go on t distinct spokes if t ≤ 3 and all on one spoke if t ≥ 4. n₀ is not explicit; n₀ ≥ 10 by an exact nine-colour certificate. Three colours are solved for every m.",
+    "Theorem B and Corollary 7.4 (proof, exact certificates): for every r ≥ 2 and m = n, hub designs beat every evenly spread design by at least ½log 1.5 − o(1) nats, so Pelekis's even-spread conjecture and cycle and circular maximality fail for every r and all large n; certified for 2 ≤ r ≤ 8 from n = 6, 10, 16, 20, 26, 31, 38 up to 120.",
+    "Corollary 1.1 (proof): every r-regular design has entropy ½log₂ n + O(1) bits with an absolute constant, which proves Pelekis's Conjecture 4.1.",
+    "Theorem C (proof): for every doubly stochastic matrix, cS ≤ σ² ≤ S/2, a local limit theorem with optimal error C/√S, every fixed order of the lattice Edgeworth expansion, H = ½log(2πeσ²) − κ₃²/(12σ⁶) + O(S⁻²) and a saddlepoint formula; the central limit theorem is D'yakonova and Mikhailov's.",
+    "Theorem 6.2 (proof): the eventual entropy maximisers among regular designs of ranks two and three."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a five-role Claude review with methodology and devil's advocate as separate reviewers), the lead's proof audit and exact certificates with a clean replay, re-review and proof audit of every new or rewritten proof",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "Imagine painting a handful of coins, or dice, with colours. Each die carries different colours on its faces, but a colour can appear on many dice. Now roll everything and count how many different colours show up. How should you paint the dice so that this count is as unpredictable as possible?\n\nThe mathematician Christos Pelekis asked this question. He proved an upper limit on the uncertainty, and he guessed that the colours should be spread as evenly as possible, with a simple ring-shaped design as the winner. An online research project later found small cases where those guesses fail.\n\nThis release shows that the opposite strategy wins. For coins, once there are enough colours, the single best painting puts one shared colour on every coin and pairs it once with each of the other colours. Any leftover coins repeat a few different pairs when there are at most three of them, and otherwise they should all repeat the same pair. The shared colour is almost certain to appear, so the uncertainty is carried by the other colours, which behave like independent fair coin tosses. The number of colours needed for this is not known exactly. It is at least ten, because a case with nine colours breaks the rule. With three colours, the answer is found for every number of coins.\n\nFor dice with more faces, designs in which a few shared colours sit on every die beat every evenly spread design by a fixed margin, so the even-spread and ring guesses fail for every size of die. Exact computer checks confirm this for dice with up to eight faces, across a wide range of palette sizes. The best design for those dice is still unknown.\n\nBehind these results is a precise bell-curve law for counts of distinct values, built from hidden fair switches inside the random rolls.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and computer checks rather than by outside peer review, and its full proofs, programs and limits are open for anyone to examine and reuse.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All eight check scripts were rerun from a fresh copy in Python's optimised mode; every output matched the recorded log byte for byte. An inverted polymer identity was rejected. GitHub CI on Linux reruns the scripts under a declared comparison policy with the failure test, and its logs also matched exactly."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. Internal reviewers ran their own enumerations of small coin designs, the rank-3 table and the three-colour family, which is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python standard library only; logs reproduced exactly on the release platform and on Linux CI under CPython 3.12. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Barbour, Braunsteins and Ross (2021), Local limit theorems for occupancy models. Random Structures & Algorithms. Stein-method local limit theorems for other occupancy statistics.",
+      "url": "https://doi.org/10.1002/rsa.20967"
+    },
+    {
+      "citation": "Bobkov, Chistyakov and Götze (2013), Rate of convergence and Edgeworth-type expansion in the entropic central limit theorem. The Annals of Probability. The squared-skewness entropy correction for independent sums.",
+      "url": "https://doi.org/10.1214/12-AOP780"
+    },
+    {
+      "citation": "D'yakonova (Dyakonova in the Crossref record) and Mikhailov (1992), On sufficient conditions for asymptotic normality of decomposable statistics in a non-homogeneous allocation scheme. Discrete Mathematics and Applications. The central limit theorem for this count.",
+      "url": "https://doi.org/10.1515/dma.1992.2.3.325"
+    },
+    {
+      "citation": "Gavalakis and Kontoyiannis (2024), Entropy and the discrete central limit theorem. Stochastic Processes and their Applications. The entropy limit theorem used for the hub designs.",
+      "url": "https://doi.org/10.1016/j.spa.2023.104294"
+    },
+    {
+      "citation": "Hwang and Janson (2008), Local limit theorems for finite and infinite urn models. The Annals of Probability. The optimal local rate when all particles share one law.",
+      "url": "https://doi.org/10.1214/07-AOP350"
+    },
+    {
+      "citation": "Khakimullin and Enatskaya (1997), Limit theorems for the number of empty cells. Discrete Mathematics and Applications. Equiprobable allocation of groups of particles.",
+      "url": "https://doi.org/10.1515/dma.1997.7.2.209"
+    },
+    {
+      "citation": "Mikhailov (1998), On a Poisson approximation for the distribution of the number of empty cells in a nonhomogeneous allocation scheme. Theory of Probability & Its Applications. Compared with the near-permutation regime of Section 8.",
+      "url": "https://doi.org/10.1137/S0040585X97976015"
+    },
+    {
+      "citation": "Mirakhmedov, Jammalamadaka and Mohamed (2014), On Edgeworth expansions in generalized urn models. Journal of Theoretical Probability. Edgeworth expansions for conditionally independent loads.",
+      "url": "https://doi.org/10.1007/s10959-012-0454-z"
+    },
+    {
+      "citation": "Mirakhmedov and Mirakhmedov (2010), On asymptotic expansion in the random allocation of particles by sets. Journal of Theoretical Probability. Expansions for equiprobable allocation by sets.",
+      "url": "https://doi.org/10.1007/s10959-009-0225-7"
+    },
+    {
+      "citation": "Pelekis (2016), Bernoulli trials of fixed parity, random and randomly oriented graphs. Graphs and Combinatorics. The median of the same count for coins.",
+      "url": "https://doi.org/10.1007/s00373-015-1650-2"
+    },
+    {
+      "citation": "Pelekis (2019), On the Shannon entropy of the number of vertices with zero in-degree in randomly oriented hypergraphs. Le Matematiche 74(1), 119–130 (arXiv:1808.04166). The question, the upper bound and the four conjectures.",
+      "url": "https://arxiv.org/abs/1808.04166"
+    },
+    {
+      "citation": "Sokal (2001), Bounds on the complex zeros of (di)chromatic polynomials and Potts-model partition functions. Combinatorics, Probability and Computing. The polymer deletion argument behind the cumulant bounds.",
+      "url": "https://doi.org/10.1017/S0963548300004612"
+    },
+    {
+      "citation": "trureturing project, Entropy maximisers need not have balanced degrees, and Circular hypergraphs do not maximise orientation-count entropy. Research records (release 7e88bc61b4ae). The first small counterexamples and the three-colour proposal.",
+      "url": "https://www.trureturing.org/research/pelekis-2018-orientation-entropy-balance/"
+    },
+    {
+      "citation": "Vilenkin and D'yachkov (1998), Asymptotics of the Shannon and Rényi entropies for sums of independent random variables (in Russian). Problemy Peredachi Informatsii 34(3), 17–31. The classical entropy expansion for independent sums.",
+      "url": "https://www.mathnet.ru/eng/ppi413"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:dice-colouring-entropy-hub-designs",
+    "attemptIds": [
+      "ep-attempt:dice-colouring-entropy-hub-designs-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Know which colourings of dice and coins maximise the entropy of the number of colours seen, and how precisely the count of distinct values behaves under doubly stochastic sampling.",
+      "scope": "Fair coins with large palettes and m ≥ n; dice with r faces and m = n; doubly stochastic occupancy."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the question, why it matters, what was known (Pelekis's bound and four conjectures, the trureturing records), the main results and the relation to the occupancy literature, then a roadmap.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The palette threshold is not explicit and the optimum for dice with three or more faces is open."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in occupancy limit theorems check the switch construction, the polymer cumulant bound and the entropy correction, and recheck the coin deficit argument and the two-hub comparison.",
+      "claimCeiling": "Written proofs of Theorems A, B and C with Corollary 1.1 and Theorem 6.2, and exact certificates for the nine-colour exception and the hub-design ranges; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "dice-colouring-entropy-hub-designs-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable answer to Pelekis's coin problem and refutations of the even-spread and circular conjectures for every die size, with a uniform local limit theorem and replayable checks.",
+        "setting": "AI-assisted research in probabilistic combinatorics",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

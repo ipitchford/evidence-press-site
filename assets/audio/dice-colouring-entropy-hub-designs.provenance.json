@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "narrationRecipe": "sentence-bounded-disclosed-v2",
+  "maxSegmentCharacters": 800,
+  "segments": [
+    {
+      "input": "Imagine painting a handful of coins, or dice, with colours. Each die carries different colours on its faces, but a colour can appear on many dice. Now roll everything and count how many different colours show up. How should you paint the dice so that this count is as unpredictable as possible? The mathematician Christos Pelekis asked this question. He proved an upper limit on the uncertainty, and he guessed that the colours should be spread as evenly as possible, with a simple ring-shaped design as the winner. An online research project later found small cases where those guesses fail. This release shows that the opposite strategy wins. For coins, once there are enough colours, the single best painting puts one shared colour on every coin and pairs it once with each of the other colours.",
+      "inputSha256": "22e93d562c9396467bea60b8ac8c2331bf3950ee40e464e8de2e9fe5e202ecdd",
+      "audioSha256": "7b89c9ab6834af6a0970db71540fc33297933d704490dd35b8c6fcc5bbb1abfe",
+      "requestId": "req_35ebf186a525454a9d23ff903f4b8694",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "it once with each of the other colours",
+        "heardEnding": "puts shared colour on every coin and pairs it once with each of the other colours",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "Any leftover coins repeat a few different pairs when there are at most three of them, and otherwise they should all repeat the same pair. The shared colour is almost certain to appear, so the uncertainty is carried by the other colours, which behave like independent fair coin tosses. The number of colours needed for this is not known exactly. It is at least ten, because a case with nine colours breaks the rule. With three colours, the answer is found for every number of coins. For dice with more faces, designs in which a few shared colours sit on every die beat every evenly spread design by a fixed margin, so the even-spread and ring guesses fail for every size of die. Exact computer checks confirm this for dice with up to eight faces, across a wide range of palette sizes.",
+      "inputSha256": "fe10c4736e463bddad0e5b3f45a7d8394ee2cbff758d4896a5c77f9496a6aa15",
+      "audioSha256": "60162396ffadea6efa8e614469a410c3a09652675f29722bb472a80ffac64575",
+      "requestId": "req_fe5af1a89e254c91b5b50c80727a18b9",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "faces across a wide range of palette sizes",
+        "heardEnding": "checks confirm this for dice with up to faces across a wide range of palette sizes",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    },
+    {
+      "input": "The best design for those dice is still unknown. Behind these results is a precise bell-curve law for counts of distinct values, built from hidden fair switches inside the random rolls. This is an unrefereed candidate, checked by internal AI-assisted review and computer checks rather than by outside peer review, and its full proofs, programs and limits are open for anyone to examine and reuse. This briefing uses an AI-generated voice and is not additional scientific evidence.",
+      "inputSha256": "40be19d7ce0f644eecbab30198adedf4bd9bc666296132450a8191bb9ccced36",
+      "audioSha256": "da420c3b9283964e1b2b2d61a1cc14a7ad4e48064e0c37d310256ac2768b893d",
+      "requestId": "req_081f97fd35e843a5b86ef9573dc10669",
+      "contentType": "audio/mpeg",
+      "endingCheck": {
+        "status": "passed",
+        "expectedEnding": "generated voice and is not additional scientific evidence",
+        "heardEnding": "examine and reuse this briefing uses an ai generated voice and is not additional scientific evidence",
+        "matchedWords": 8,
+        "requiredWords": 6,
+        "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a",
+        "attempt": 1
+      }
+    }
+  ],
+  "slug": "dice-colouring-entropy-hub-designs",
+  "generatedAt": "2026-11-25T01:47:49.546Z",
+  "sourceMetadata": "papers/dice-colouring-entropy-hub-designs/meta.json",
+  "provider": "openai",
+  "endpoint": "https://api.openai.com/v1/audio/speech",
+  "model": "gpt-4o-mini-tts",
+  "voice": "fable",
+  "responseFormat": "mp3",
+  "instructions": "Calm, clear, unhurried British science-briefing narration, in the style of a public-radio science presenter. Measured pace, warm but neutral tone. Pronounce mathematical names carefully.",
+  "inputSha256": "3f6f994c6bf930f2bf8a19f6ef8ed28385ebcad14f551c9022fcda7a8b363721",
+  "transcriptPath": "assets/audio/dice-colouring-entropy-hub-designs.txt",
+  "transcriptSha256": "5a6120dcebab3887c78e171a33ce4a6c4e0a8b9e509a25cc175c4441a431be89",
+  "audioPath": "assets/audio/dice-colouring-entropy-hub-designs.mp3",
+  "audioSha256": "a3d0227e79cff3a749387751b4ef7d8bd4336f18a63e7eb753cd2d3193dfc90b",
+  "audioBytes": 2066348,
+  "responseContentType": "audio/mpeg",
+  "requestId": null,
+  "endingCheck": {
+    "status": "passed",
+    "expectedEnding": "generated voice and is not additional scientific evidence",
+    "heardEnding": "examine and reuse this briefing uses an ai generated voice and is not additional scientific evidence",
+    "matchedWords": 8,
+    "requiredWords": 6,
+    "asrModelSha256": "62b2a45b05ee59acb4a5341b33ee35e041395d378d418a18acfe4c9e768ee37a"
+  }
+}
