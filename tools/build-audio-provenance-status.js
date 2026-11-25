@@ -19,6 +19,8 @@ const records = fs.readdirSync(path.join(ROOT, 'papers')).sort().flatMap(directo
   const audio = path.join(AUDIO, `${slug}.mp3`);
   const transcript = path.join(AUDIO, `${slug}.txt`);
   const receiptPath = path.join(AUDIO, `${slug}.provenance.json`);
+  // Audio is optional for new releases: skip only when nothing is declared or present.
+  if (!meta.audioVoiceLabel && ![audio, transcript, receiptPath].some(file => fs.existsSync(file))) return [];
   if (!fs.existsSync(audio)) throw new Error(`${slug}: missing MP3`);
   const receipt = fs.existsSync(receiptPath) ? JSON.parse(fs.readFileSync(receiptPath, 'utf8')) : null;
   if (receipt && receipt.audioSha256 !== sha256(audio)) throw new Error(`${slug}: provenance audio hash mismatch`);
