@@ -1,0 +1,11 @@
+Imagine painting a handful of coins, or dice, with colours. Each die carries different colours on its faces, but a colour can appear on many dice. Now roll everything and count how many different colours show up. How should you paint the dice so that this count is as unpredictable as possible?
+
+The mathematician Christos Pelekis asked this question. He proved an upper limit on the uncertainty, and he guessed that the colours should be spread as evenly as possible, with a simple ring-shaped design as the winner. An online research project later found small cases where those guesses fail.
+
+This release shows that the opposite strategy wins. For coins, once there are enough colours, the single best painting puts one shared colour on every coin and pairs it once with each of the other colours. Any leftover coins repeat a few different pairs when there are at most three of them, and otherwise they should all repeat the same pair. The shared colour is almost certain to appear, so the uncertainty is carried by the other colours, which behave like independent fair coin tosses. The number of colours needed for this is not known exactly. It is at least ten, because a case with nine colours breaks the rule. With three colours, the answer is found for every number of coins.
+
+For dice with more faces, designs in which a few shared colours sit on every die beat every evenly spread design by a fixed margin, so the even-spread and ring guesses fail for every size of die. Exact computer checks confirm this for dice with up to eight faces, across a wide range of palette sizes. The best design for those dice is still unknown.
+
+Behind these results is a precise bell-curve law for counts of distinct values, built from hidden fair switches inside the random rolls.
+
+This is an unrefereed candidate, checked by internal AI-assisted review and computer checks rather than by outside peer review, and its full proofs, programs and limits are open for anyone to examine and reuse. This briefing uses an AI-generated voice and is not additional scientific evidence.
