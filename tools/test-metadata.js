@@ -393,10 +393,19 @@ const assignedSlugs = Object.keys(operatingArtifacts.registry.releaseAssignments
 const same = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
 check('declared count matches the number of records', papersDoc.count === papersDoc.papers.length,
   `count=${papersDoc.count} records=${papersDoc.papers.length}`);
+// Briefings are optional for new releases (owner decision 2026-11-25). A release that
+// declares an audio voice or ships any audio file must still carry a current briefing.
+const declaresAudio = slug => {
+  const metaFile = path.join(ROOT, 'papers', slug, 'meta.json');
+  const meta = fs.existsSync(metaFile) ? JSON.parse(fs.readFileSync(metaFile, 'utf8')) : {};
+  return !!meta.audioVoiceLabel || ['mp3', 'txt', 'provenance.json']
+    .some(ext => fs.existsSync(path.join(ROOT, 'assets', 'audio', `${meta.slug || slug}.${ext}`)));
+};
 const releasesWithoutCurrentBriefing = papersDoc.papers
+  .filter(paper => declaresAudio(paper.slug))
   .filter(paper => !paper.media.some(item => ['audio', 'video'].includes(item.type) && !item.superseded))
   .map(paper => paper.slug);
-check('every release has a current audio or video briefing',
+check('every release that declares or ships audio has a current audio or video briefing',
   same(releasesWithoutCurrentBriefing, []),
   `missing: ${releasesWithoutCurrentBriefing.join(', ')}`);
 const missingIndexedAudio = papersDoc.papers.filter(paper => paper.audioUrl &&

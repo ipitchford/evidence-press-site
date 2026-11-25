@@ -140,6 +140,11 @@ function verify(slug, meta, files) {
     checkText(JSON.stringify(m), `public metadata for ${d}`);
     const slug = m.slug || d;
     const files = pathsFor(slug);
+    // Audio is optional for new releases (owner decision 2026-11-25): a release that
+    // declares no audioVoiceLabel and ships no audio files has nothing to verify.
+    if (CHECK && !m.audioVoiceLabel && !Object.values(files).some(f => fs.existsSync(f))) {
+      console.log(`no audio (optional): ${slug}`); continue;
+    }
     if (CHECK) { verify(slug, m, files); continue; }
     if (fs.existsSync(files.audio) && !FORCE) { console.log('skip (exists):', slug); continue; }
     const text = plannedText(narrationFor(m));
