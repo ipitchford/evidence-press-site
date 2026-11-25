@@ -1,0 +1,192 @@
+{
+  "slug": "chatterjee-footrule-lower-boundary",
+  "title": "The least functional dependence at negative footrule: the lower boundary of the region of Chatterjee's rank correlation and Spearman's footrule",
+  "shortTitle": "The lower boundary of the Chatterjee–footrule region",
+  "oneLine": "For every negative footrule, the least possible Chatterjee coefficient, its unique extremal copula and a certificate, completing Rockel's region.",
+  "abstract": "Chatterjee's rank correlation ξ measures how far one continuous variable is a function of another: 0 under independence, 1 for an exact functional relationship of any shape. Spearman's footrule ψ measures how close the two rankings are: 1 for identical rankings, 0 under independence, down to −1/2. Which pairs (ξ, ψ) can occur together? Rockel determined this exact region except its curved lower edge: for a footrule strictly between −1/2 and 0, the least possible ξ was open. This candidate determines that edge. For every such footrule the least value of ξ is attained by exactly one copula, constructed explicitly: the response takes one of two levels according to whether the predictor's rank lies below a threshold, and the threshold solves a linear integral equation with a triangular kernel. A dual inequality proves optimality over all copulas, and a stability estimate shows that nearly optimal copulas are close to the extremiser. The boundary has an elementary closed form for ψ ≤ −0.4565…, a finite piecewise-elementary evaluation elsewhere and explicit expansions at both ends; for example ξ + 2ψ ≥ −0.6042071… for every copula. Every attainable pair has a radially symmetric representative. Under positive or negative quadrant dependence the full regions are determined; at zero footrule ξ can approach but never reach 1/2 and 3/4 respectively. For stochastically decreasing copulas the lower edge is the same curve and every pair with ξ ≤ −2ψ above it is attained; that ξ ≤ −2ψ is the exact upper edge is stated as a conjecture, not proved. Limits: population coefficients only; closed form only for ψ ≤ −0.4565…, with double-precision values elsewhere; Rockel's earlier family was already numerically close, so the advance is exactness, uniqueness and proof. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Chatterjee's rank correlation",
+    "Spearman's footrule",
+    "exact region",
+    "copula",
+    "functional dependence",
+    "optimal transport",
+    "stochastically decreasing",
+    "quadrant dependence"
+  ],
+  "repoUrl": "https://github.com/ipitchford/chatterjee-footrule-lower-boundary",
+  "releaseUrl": "https://github.com/ipitchford/chatterjee-footrule-lower-boundary/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/chatterjee-footrule-lower-boundary/releases/download/v0.1.0-candidate/chatterjee-footrule-lower-boundary-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24538662",
+  "conceptDoi": "10.5281/zenodo.24538661",
+  "zenodoUrl": "https://zenodo.org/records/24538662",
+  "citeText": "Anonymous (2026). The least functional dependence at negative footrule: the lower boundary of the region of Chatterjee's rank correlation and Spearman's footrule. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24538662",
+  "evidence": "A 17-page paper with a plain introduction (the question, what was known, what is new, the method and a roadmap), Table 1 and Figure 1, and written proofs of every theorem. Python scripts (NumPy, SciPy; Matplotlib for the figure) evaluate the boundary three independent ways (closed form, finite modes and a midpoint solver, agreeing to better than one millionth), minimise the original objective separately over checkerboard copulas, check the two-predictor extension, compute Table 1 and the quoted constants, and search stochastically decreasing checkerboard copulas for counterexamples to the conjecture. A clean replay with the pinned packages reproduced every recorded result file byte for byte; Linux CI reruns everything under a declared tolerance, and a deliberately wrong value was rejected. The computations test formulae and implementation; they are not part of any proof.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs; the computations are cross-checks, not certificates. Internal AI-assisted review: a combined five-role Claude review panel, one revision round with a bounded extension, a verification re-review, a proof audit of the new and rewritten proofs, and clean replays with a negative control. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 17 pages), its scripts and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 1 (proof): for each k > 0 the copula C_k is the unique minimiser of ξ + 2kψ over all copulas; as k runs from 0 to ∞ these copulas trace the whole open lower edge from independence to the checkerboard, so for every ψ in (−1/2, 0) the least ξ is attained by exactly one copula, which is stochastically decreasing. A stability estimate bounds the distance of any copula from C_k by its excess objective.",
+    "Proposition 3 (proof): closed form in hyperbolic functions for ψ ≤ −0.4565437…, a finite piecewise-exponential evaluation otherwise, and the expansions ψ = −√ξ + ξ/4 + O(ξ^{3/2}) near independence and ψ = −1/2 + (1/2 − ξ)² + O((1/2 − ξ)³) near the checkerboard.",
+    "Sharp constants (computed from the exact evaluations): ξ + 2ψ ≥ −0.6042071213… for every copula; at ψ = −0.4565437066… the least ξ is 0.3088802920…; the minimum of ξ + ψ is −0.1932281…, against −0.193 for Rockel's best family member. Table 1 lists the least ξ at seven footrule values, e.g. 0.109988 at ψ = −0.3 against Rockel's Jensen bound 0.096731.",
+    "Corollary 4, Lemma 5, Theorem 6 and Proposition 7 (proof): every attainable pair has a radially symmetric representative; the full regions under positive and negative quadrant dependence, with zero-footrule sections [0, 1/2) and [0, 3/4), neither endpoint attained.",
+    "Proposition 8 (proof) and Conjecture 9 (not proved): for stochastically decreasing copulas ψ ≤ 0 with equality only under independence, the lower edge is the same curve, and every pair between the curve and ξ = −2ψ is attained; ξ ≤ −2ψ as the exact upper edge is a conjecture supported by numerical search.",
+    "Theorems 10 and 11 (proof): the construction extends to transport problems with nonuniform margins and to objectives with several absolute-displacement terms.",
+    "Credit: the upper edge ψ = √ξ, the corner at ψ = −1/2, the stochastically increasing region, convexity and closedness of the region, attainment of the lower edge by a stochastically decreasing copula, |ψ| ≤ √ξ, the Jensen lower bound and the near-optimal two-parameter family are Rockel's; the radial and quadrant results parallel Orenday Lares and Rockel's for (ξ, β)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-role Claude review panel, a verification re-review and a proof audit of the new proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "This briefing is about two ways of measuring how two quantities depend on each other.\n\nChatterjee's coefficient, called xi, asks how far one quantity is determined by the other. It is zero when they are independent, and one when the second is an exact function of the first, whatever the shape of that function. Spearman's footrule asks how close the two rankings are. It is one when the rankings agree, zero under independence, and it can fall to minus one half when the rankings are pushed as far apart as possible.\n\nWhich pairs of values can occur together? Marcus Rockel answered most of this question. One curved edge stayed open: when the rankings are pushed apart by a given amount, how small can the functional dependence be?\n\nThis paper closes that edge. For every negative footrule above the lowest value, it finds the least possible xi, shows that exactly one joint law of the ranks attains it, and gives a certificate that nothing does better. The extremal law has a simple recipe. The response takes one of two levels, depending on whether the predictor's rank lies below a threshold, and that threshold solves a linear integral equation with a triangular kernel.\n\nOne consequence is a sharp inequality. For any pair of continuous quantities, xi plus twice the footrule never falls below about minus zero point six zero four, and that limit cannot be improved. The paper also settles the regions under positive and negative quadrant dependence, and gives a partial answer for stochastically decreasing data, where the last edge is stated as a conjecture rather than a theorem.\n\nThere are limits. The results concern population coefficients, not estimates from samples. The closed form covers only the more strongly negative footrules; elsewhere the boundary is a finite numerical calculation, cross-checked but not certified. Rockel's earlier examples were already close, so the advance is exactness, uniqueness and proof.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and computation rather than external peer review, and its paper, code and evidence are linked from the release page.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All scripts and the figure script were rerun from a fresh copy before release with the pinned packages, every check under Python's optimised mode; all five result files matched the recorded ones byte for byte, and a deliberately wrong expected value was rejected. GitHub CI on Linux reruns everything, compares numbers within a declared tolerance, and repeats the failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. Internal reviewers recomputed the curve with an independent solver; that is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The theorems rest on written proofs; the table values are double-precision computations cross-checked by independent methods, not interval-certified."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with pinned NumPy 2.3.5, SciPy 1.17.0 and Matplotlib 3.10.8. Outputs reproduced byte for byte on the release platform (CPython 3.12.11) and within the declared tolerance on Linux CI (CPython 3.12). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Ansari and Rockel (2026), The exact region and an inequality between Chatterjee's and Spearman's rank correlations. Journal of Multivariate Analysis. The analogous exact region for ξ and Spearman's rho.",
+      "url": "https://doi.org/10.1016/j.jmva.2026.105630"
+    },
+    {
+      "citation": "Chatterjee (2021), A new coefficient of correlation. Journal of the American Statistical Association. The coefficient ξ.",
+      "url": "https://doi.org/10.1080/01621459.2020.1758115"
+    },
+    {
+      "citation": "Chiappori, McCann and Pass (2017), Multi-to one-dimensional optimal transport. Communications on Pure and Applied Mathematics. Transport from several dimensions to one, for smooth costs.",
+      "url": "https://doi.org/10.1002/cpa.21707"
+    },
+    {
+      "citation": "Dette, Siburg and Stoimenov (2013), A copula-based non-parametric measure of regression dependence. Scandinavian Journal of Statistics. The population version of ξ.",
+      "url": "https://doi.org/10.1111/j.1467-9469.2011.00767.x"
+    },
+    {
+      "citation": "Fredricks and Nelsen (2002), The Bertino family of copulas. Distributions with Given Marginals and Statistical Modelling. The Bertino copula used at zero footrule.",
+      "url": "https://doi.org/10.1007/978-94-017-0061-0_10"
+    },
+    {
+      "citation": "Gozlan, Roberto, Samson and Tetali (2017), Kantorovich duality for general transport costs and applications. Journal of Functional Analysis. Duality for costs that depend on conditional laws.",
+      "url": "https://doi.org/10.1016/j.jfa.2017.08.015"
+    },
+    {
+      "citation": "Rockel (2026), On the exact region between Chatterjee's rank correlation and Spearman's footrule. Journal of Computational and Applied Mathematics. The paper that found most of the region and left the lower edge open; this release completes it.",
+      "url": "https://doi.org/10.1016/j.cam.2026.117466"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:chatterjee-footrule-lower-boundary",
+    "attemptIds": [
+      "ep-attempt:chatterjee-footrule-lower-boundary-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide which combinations of Chatterjee's coefficient and Spearman's footrule are possible, and how small functional dependence can be when the rankings are pushed apart by a given amount.",
+      "scope": "Population coefficients of continuous bivariate distributions (copulas); the full region and its restrictions to radially symmetric, quadrant-dependent and stochastically decreasing copulas; transport extensions; not sample estimates."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the question, what was known (Rockel), what is new with a table and figure, the method and a roadmap; every section opens with a purpose sentence; Section 10 lists limits and open problems.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only; table values are double precision, not interval-certified; the stochastically decreasing upper edge is a conjecture."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in copulas and dependence measures check the dual inequality (Lemma 2), the tracing argument of Section 5 and the zero-footrule constructions (Theorem 6 and Proposition 7), and certify Table 1 with interval arithmetic.",
+      "claimCeiling": "Written proofs of Theorems 1, 6, 10 and 11, Propositions 3, 7 and 8, Corollary 4 and Lemmas 2 and 5; Conjecture 9 not proved; double-precision values cross-checked, not certified; population coefficients only; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "chatterjee-footrule-lower-boundary-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable exact lower edge of the region of Chatterjee's coefficient and Spearman's footrule, with unique extremisers, a dual certificate and sharp constants.",
+        "setting": "AI-assisted research on dependence measures and copulas",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
