@@ -1,0 +1,216 @@
+{
+  "slug": "qutrit-real-witness-local-filters",
+  "title": "Two-qutrit entanglement invisible to real witnesses under every local filter",
+  "shortTitle": "Real witnesses miss some two-qutrit entanglement, whatever the local filter",
+  "oneLine": "An explicit two-qutrit state is detected by a complex entanglement witness but by no real witness after any local filters, disproving both parts of a 2025 conjecture.",
+  "abstract": "An entanglement witness is an observable whose expectation is never negative on separable states, so a negative value certifies entanglement. Shen, Chen and Bian (Physical Review A, 2025, Conjecture 9) conjectured that real witnesses lose nothing once each party may first apply a local unitary (part i) or, more weakly, an invertible local filter (part ii). This candidate shows that both parts are false. For two qutrits, an explicit full-rank PPT entangled state, built from a separable state and an exposed witness due to Ha and Kye with epsilon = 1/160000, has expectation −8/19199997 on that complex witness, while every filtered real block-positive operator, and every limit of such operators, has expectation above 8.5×10⁻¹⁰ on it; the same holds on a Frobenius ball of radius 8×10⁻¹⁰. Part (i) already fails for a qubit paired with a four-level system (2×4, total dimension eight), the smallest possible size; whether part (ii) fails there is open. In every dimension the conjecture holds exactly when every exposed point of the set of trace-one block-positive operators is a limit of filtered real ones, and when it fails it fails for an open set of states. A degree-nine polynomial invariant decides which members of the exposed Ha–Kye family have filtered real versions, and one extra local qubit restores detection. The witness and the separable state are Ha and Kye's. Limits: the explicit state is far too close to separable for an experiment (noise threshold about 1.6×10⁻⁷), and the result concerns a single witness matrix, not measurement schemes with classical post-processing. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "entanglement witness",
+    "real quantum theory",
+    "local filters",
+    "SLOCC",
+    "block-positive operators",
+    "positive maps",
+    "exposed points",
+    "PPT entanglement",
+    "counterexample"
+  ],
+  "repoUrl": "https://github.com/ipitchford/qutrit-real-witness-local-filters",
+  "releaseUrl": "https://github.com/ipitchford/qutrit-real-witness-local-filters/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/qutrit-real-witness-local-filters/releases/download/v0.1.0-candidate/qutrit-real-witness-local-filters-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24540619",
+  "conceptDoi": "10.5281/zenodo.24540618",
+  "zenodoUrl": "https://zenodo.org/records/24540619",
+  "citeText": "Anonymous (2026). Two-qutrit entanglement invisible to real witnesses under every local filter. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24540619",
+  "evidence": "A 12-page paper with a plain introduction (the problem, why it matters, the conjecture, what was known, what is new and a roadmap) and written proofs of every result. Five Python programs accompany it: verify_witness.py (SymPy) rebuilds the witness and separable state from Ha and Kye's data and checks the positivity conditions, spectra, Gram certificate, invariants, every constant of the bounds section and the exact state file (120 exact checks); verify_chirality.py expands the degree-nine identity and independent_tensor_check.py confirms it by modular arithmetic; verify_qubit_ququart.py rebuilds the 2×4 map and checks tr([X,Y]³) = −840i with a real control; check_block_positivity.py is a floating-point cross-check of the cited block-positivity theorems, not a proof. A clean replay reproduced every recorded output byte for byte, also under Python's optimised mode; a changed epsilon makes the main check fail; Linux CI reruns everything under a declared comparison policy. The computations accompany the written proofs; they do not replace them.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computer checks. Internal AI-assisted review: a combined five-role Claude review panel, one revision round with extensions, a verification re-review with a proof audit of the new and rewritten proofs, and a clean replay with a negative control. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (revision of 24 November 2026 with the release DOI on the title page, 12 pages), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 8 (proof, exact constants): with epsilon = 1/160000 the two-qutrit state rho_epsilon = (D − epsilon I)/(360 − 9 epsilon) is full-rank, PPT and entangled with tr(W rho_epsilon) = −8/19199997, while every filtered real block-positive operator and every limit of such operators has expectation above 8.5×10⁻¹⁰ on it, also on the Frobenius ball of radius 8×10⁻¹⁰; both parts of Shen–Chen–Bian Conjecture 9 fail for two qutrits.",
+    "Theorem 10 (proof): on C²⊗C⁴ a filtered real exposed witness lies outside the closure of the locally unitary real witnesses, since tr([X,Y]³) = −840i for its partial traces; part (i) fails in total dimension eight, the minimum. Part (ii) for 2×4 remains open.",
+    "Theorem 6 (proof): in every dimension the conjecture (either part) holds exactly when every exposed point of the trace-one block-positive operators lies in the corresponding closed real class; when it fails, the missed states include an open set of full-rank PPT states.",
+    "Lemma 7 and Theorem 9 (proof): the invariant chi(X) = Im tr M(X)³ scales by |det K|⁶ under local filters and vanishes on filtered real matrices; a degree-nine invariant decides exactly which members of the exposed Ha–Kye family have filtered real or locally unitary real versions.",
+    "Proposition 11 (proof): one extra local qubit restores detection by a real witness; a second copy of the state can act as that qubit when filters are allowed.",
+    "Credit and limits: the witness W and separable state D are Ha and Kye's, with block positivity and exposedness from their 2012 and 2013 theorems. The explicit state is far too close to separable for an experiment (noise threshold about 1.6×10⁻⁷)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-role Claude review panel, a verification re-review and a proof audit of the new and rewritten proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "narration": "To show that two quantum particles are entangled, experimenters measure an entanglement witness. Its average can only go negative when the particles really are entangled, so a negative reading is proof. A witness is written as a table of numbers, and in general those numbers are complex. Real numbers are simpler, and a natural hope is that nothing is lost by using only real tables, as long as each laboratory may first choose a good local basis, or apply a local filter that reshapes its own particle's state.\n\nShen, Chen and Bian conjectured exactly this, in two forms: one allowing only changes of basis, and one also allowing local filters. They proved it for many states, and it holds automatically for the smallest systems.\n\nThis release shows that both forms are false. It writes down an explicit state of two three-level systems that a complex witness detects, while every real witness misses it, whatever local filter is applied first. The same holds for every state close enough to it. The basis-change form already fails for a qubit paired with a four-level system, the smallest size where it could fail. The paper also gives a rule for every size: the conjecture holds exactly when every corner of the set of witnesses can be approached by filtered real ones. And one extra local qubit is enough to restore detection.\n\nThe idea is to take a witness that touches the unentangled states at a single point. Nudge that point slightly towards entanglement, and the witness detects the result while every filtered real witness misses it. To show that this witness is not secretly real, the paper uses a polynomial that local filters can only rescale by a positive factor, and that stays real for real tables. For this witness, the polynomial is not real, so the witness lies outside the real class.\n\nThere are limits. The explicit state sits extremely close to the unentangled ones, so this is a mathematical statement about which measurements suffice, not a proposal for an experiment. The witness and the unentangled state come from earlier work by Ha and Kye. Whether the filter form also fails for a qubit with a four-level system is still open. Experiments can still detect such states by combining several real measurements with classical processing.\n\nThis is an unrefereed candidate, checked by internal AI-assisted review and exact computer checks rather than by outside experts, so treat its conclusions as promising but provisional.",
+  "audioVoiceLabel": "OpenAI API synthetic voice (fable)",
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All five programs were rerun from fresh copies before release, normally and in Python's optimised mode; every output matched the recorded files byte for byte, and changing epsilon from 1/160000 to 1/100000 makes the main check fail. GitHub CI on Linux reruns them, compares outputs under a declared policy and repeats the failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation. independent_tensor_check.py rechecks the degree-nine identity by a separate modular method within the package; that is internal evidence only."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The theorems rest on written proofs; the constants of Theorem 8 are certified by exact rational and Gaussian-integer arithmetic, and block positivity rests on Ha and Kye's theorem with a floating-point cross-check only."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with SymPy 1.14.0 and NumPy 2.3.5. Outputs reproduced byte for byte on the release platform (CPython 3.12.11) and under the declared comparison policy on Linux CI (CPython 3.12). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Shen, Chen and Bian (2025). Detection power of real entanglement witnesses under local unitary equivalence. Physical Review A 112, 022415.",
+      "url": "https://doi.org/10.1103/py8r-jklj"
+    },
+    {
+      "citation": "Ha and Kye (2013). Exposedness of Choi-Type Entanglement Witnesses and Applications to Lengths of Separable States. Open Systems & Information Dynamics 20, 1350012.",
+      "url": "https://doi.org/10.1142/S1230161213500121"
+    },
+    {
+      "citation": "Ha and Kye (2012). Entanglement witnesses arising from Choi type positive linear maps. Journal of Physics A: Mathematical and Theoretical 45, 415305.",
+      "url": "https://doi.org/10.1088/1751-8113/45/41/415305"
+    },
+    {
+      "citation": "Ha and Kye (2016). Construction of exposed indecomposable positive linear maps between matrix algebras. Linear and Multilinear Algebra 64, 2188–2198.",
+      "url": "https://doi.org/10.1080/03081087.2016.1145183"
+    },
+    {
+      "citation": "Gurvits and Barnum (2002). Largest separable balls around the maximally mixed bipartite quantum state. Physical Review A 66, 062311.",
+      "url": "https://doi.org/10.1103/PhysRevA.66.062311"
+    },
+    {
+      "citation": "Horodecki, Horodecki and Horodecki (1996). Separability of mixed states: necessary and sufficient conditions. Physics Letters A 223, 1–8.",
+      "url": "https://doi.org/10.1016/S0375-9601(96)00706-2"
+    },
+    {
+      "citation": "Gühne and Tóth (2009). Entanglement detection. Physics Reports 474, 1–75.",
+      "url": "https://doi.org/10.1016/j.physrep.2009.02.004"
+    },
+    {
+      "citation": "Jarvis (2014). The mixed two qutrit system: local unitary invariants, entanglement monotones, and the SLOCC group SL(3,C). Journal of Physics A: Mathematical and Theoretical 47, 215302.",
+      "url": "https://doi.org/10.1088/1751-8113/47/21/215302"
+    },
+    {
+      "citation": "Skowronek (2016). There is no direct generalization of positive partial transpose criterion to the three-by-three case. Journal of Mathematical Physics 57, 112201.",
+      "url": "https://doi.org/10.1063/1.4966984"
+    },
+    {
+      "citation": "Renou et al. (2021). Quantum theory based on real numbers can be experimentally falsified. Nature 600, 625–629.",
+      "url": "https://doi.org/10.1038/s41586-021-04160-4"
+    },
+    {
+      "citation": "McKague, Mosca and Gisin (2009). Simulating Quantum Systems Using Real Hilbert Spaces. Physical Review Letters 102, 020505.",
+      "url": "https://doi.org/10.1103/PhysRevLett.102.020505"
+    },
+    {
+      "citation": "Hickey and Gour (2018). Quantifying the imaginarity of quantum mechanics. Journal of Physics A: Mathematical and Theoretical 51, 414009.",
+      "url": "https://doi.org/10.1088/1751-8121/aabe9c"
+    },
+    {
+      "citation": "Wang et al. (2025). Witness-based nonlinear detection of quantum entanglement. iScience 28, 112174.",
+      "url": "https://doi.org/10.1016/j.isci.2025.112174"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:qutrit-real-witness-local-filters",
+    "attemptIds": [
+      "ep-attempt:qutrit-real-witness-local-filters-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide whether real entanglement witnesses, after local unitaries or invertible local filters, detect every entangled state (Shen–Chen–Bian Conjecture 9).",
+      "scope": "Bipartite finite-dimensional systems; single witness operators; explicit counterexample for two qutrits, local-unitary failure for 2×4."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the problem, why it matters, the conjecture with Shen–Chen–Bian's sets, what was known, what is new and a roadmap; a figure shows the witness set, the filtered real subset and the exposed witness; the final sections give scope, limitations and open problems.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only; part (ii) for 2×4 remains open."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in positive maps and entanglement witnesses check Theorem 6, Lemma 7 and the constants of Section 6, and independently rerun verify_witness.py.",
+      "claimCeiling": "Written proofs of Theorems 6, 8, 9 and 10, Lemmas 4, 5 and 7 and Proposition 11, with exact computer checks of the constants; block positivity cited from Ha and Kye; part (ii) for 2×4 open; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "qutrit-real-witness-local-filters-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable disproof of both parts of the Shen–Chen–Bian conjecture on real entanglement witnesses, with a criterion for every dimension and the smallest local-unitary failure.",
+        "setting": "AI-assisted research on entanglement witnesses and real quantum theory",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
