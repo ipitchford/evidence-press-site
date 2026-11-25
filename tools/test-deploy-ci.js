@@ -1,7 +1,7 @@
 'use strict';
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
-const {validate,waitFor,required} = require('./check-deploy-ci');
+const {validate,waitFor,treeEquivalent,required} = require('./check-deploy-ci');
 const commit='a'.repeat(40);
 const good=()=>[{check_runs:required.map((name,i)=>({id:i+1,name,head_sha:commit,app:{slug:'github-actions'},status:'completed',conclusion:'success',html_url:'https://github.com/ipitchford/evidence-press-site/actions/runs/1'}))}];
 assert.equal(validate(good(),commit).length,4);
@@ -16,4 +16,14 @@ n=0; assert.throws(()=>waitFor(commit,()=>{n++;const r=good();r[0].check_runs[0]
 assert.throws(()=>waitFor(commit,()=>pend(good()),{waitSeconds:0,pollSeconds:1,sleep:()=>{},log:()=>{}}),/incomplete/);
 const script=fs.readFileSync(require('node:path').join(__dirname,'deploy.sh'),'utf8');
 assert(script.indexOf('node tools/check-deploy-ci.js') < script.indexOf('node tools/build-artifact.js prepare'));
-console.log('Deployment CI gate: 16 positive/hostile, wait and ordering checks passed');
+const merge='c'.repeat(40), tree='d'.repeat(40);
+const goodFor=sha=>{const r=good();r[0].check_runs.forEach(c=>c.head_sha=sha);return r;};
+const eq=(o={})=>treeEquivalent(merge,{tree,treeOf:()=>tree,prHeads:()=>[commit],checksFor:goodFor,...o});
+assert.equal(eq().head,commit);
+assert.equal(eq({treeOf:()=>'e'.repeat(40)}),null); // tree differs: no admission
+assert.equal(eq({prHeads:()=>[]}),null); // no merged PR
+assert.equal(eq({prHeads:()=>[merge]}),null); // self-reference
+assert.equal(eq({checksFor:sha=>{const r=goodFor(sha);r[0].check_runs[0].conclusion='failure';return r;}}),null);
+assert.equal(eq({checksFor:sha=>{const r=goodFor(sha);r[0].check_runs[1].status='queued';return r;}}),null);
+assert.throws(()=>eq({tree:'bad'}));
+console.log('Deployment CI gate: 23 positive/hostile, wait and ordering checks passed');
