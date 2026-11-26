@@ -81,6 +81,15 @@ const savedPalettes = require('./thumbnail-palettes');
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'higher-permanental-compounds-fixed-rank': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 26 NOVEMBER 2026', 'PERMANENTS · MATRIX INEQUALITIES'],
+    head: ['Permanental compounds', '<em>outgrow the permanent.</em>'],
+    headSize: 64,
+    sub: 'The k-th compound can exceed it by order (log n)ᵏ at fixed rank, and by no more.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: require('./higher-compounds-art').thumbnailHero()
+  },
   'gaussian-entropic-support-geometry': {palette:'auto',kicker:['GAUSSIAN TRANSPORT','SUPPORT GEOMETRY'],head:['SMALL ENTROPY.','<em>LARGE ERROR?</em>'],headSize:78,sub:'The angle between supports changes what “small” means.',tag:'UNREFEREED CANDIDATE',hero:require('./gaussian-support-art').thumbnailHero()},
   'tsallis-heat-order-classification': {palette:'auto',kicker:['HEAT FLOW','TSALLIS ENTROPY'],head:['ONLY ONE','ORDER <em>SURVIVES.</em>'],headSize:78,sub:'The universal derivative hierarchy holds only at order two.',tag:'UNREFEREED CANDIDATE',hero:'<div class="eq-label">POSITIVE ENTROPY ORDERS</div><svg viewBox="0 0 400 240" width="100%"><path d="M25 140 H375" stroke="#f3a897" stroke-width="7"/><circle cx="245" cy="140" r="22" fill="#ffe1a4"/><text x="245" y="85" fill="#fff5e7" font-size="60" text-anchor="middle">2</text><text x="245" y="205" fill="#fff5e7" font-size="25" text-anchor="middle">all derivatives</text><text x="25" y="180" fill="#fff5e7" font-size="25">0</text></svg><div class="note">Counterexamples elsewhere<br>Different densities may be used</div>'},
   'weighted-gradient-transient-objective': {palette:'auto',kicker:['OPTIMIZATION','THREE-MODE COUNTEREXAMPLE'],head:['TWO STEPS.','TWO <em>YARDSTICKS.</em>'],headSize:78,sub:'A weighted gradient can hide slow objective progress.',tag:'UNREFEREED CANDIDATE',hero:'<div class="eq-label">OBJECTIVE GAP REMAINING</div><div style="font-size:68px;color:#ffdb8a">93.61%</div><div class="note">actual, after two steps</div><div style="font-size:45px;margin:25px 0;color:#acbedb">&gt; 92.31%</div><div class="note">proposed two-factor bound<br>Exact rational counterexample</div>'},

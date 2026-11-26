@@ -1,0 +1,250 @@
+{
+  "slug": "higher-permanental-compounds-fixed-rank",
+  "title": "Growth of higher permanental compounds at fixed rank",
+  "shortTitle": "How far permanental compounds can exceed the permanent",
+  "oneLine": "Order (log n)^k for eigenvalues and (log n)^(k−1) for 0/1 tests at every fixed k, exact exponential rates in the bulk, and a flat real rank-three plateau at e²/6",
+  "abstract": "Split the n indices of a positive semidefinite Gram matrix A into a group of k and the rest. The k-th permanental compound C_k(A) multiplies the permanent of each k-by-k block by the permanent of the complementary block; every row sums to per A, so the permanent is always an eigenvalue. Bapat and Sunder (1986) conjectured for k = 1, and Pate (2008) for every k, that it is the largest, and Pate also stated that 0/1 tests never beat it. Counterexamples are known (Drury, Tran, Chalmers), and an earlier Evidence Press release found the sharp growth for k = 1 and asked, as its Open Problem 3, for the growth when k ≥ 2 at fixed rank. This candidate answers it. For vectors of fixed dimension (at least three real or two complex), at each fixed k the largest eigenvalue of C_k(A) can exceed the permanent by a factor of order (log n)^k and the best 0/1 test by order (log n)^(k−1), and by no more; at complex rank two the eigenvalue factor is (log n)^k exactly at leading order. For slowly growing k the k-th root of the factor is about log(n/k). For k a fixed fraction p of n the factor grows exponentially with an exact base for every dimension: e/2 ≈ 1.359 at p = ½ in general, but flat at e²/6 ≈ 1.2315 for real three-dimensional vectors for every p between ⅓ and ⅔. Real rank three and complex rank two are the smallest ranks with any violation; an exactly checked real example of order 152 breaks Pate's 0/1 statement for k = 2. Limits: fixed-k constants are exact only at complex rank two; results are asymptotic in n; the refutation of Pate's 0/1 statement for k ≥ 2 was first given in the earlier release. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-26",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "permanent",
+    "permanental compounds",
+    "Bapat–Sunder conjecture",
+    "Pate conjecture",
+    "positive semidefinite matrices",
+    "Gram matrices",
+    "fixed rank",
+    "boson sampling"
+  ],
+  "repoUrl": "https://github.com/ipitchford/higher-permanental-compounds-fixed-rank",
+  "releaseUrl": "https://github.com/ipitchford/higher-permanental-compounds-fixed-rank/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/higher-permanental-compounds-fixed-rank/releases/download/v0.1.0-candidate/higher-permanental-compounds-fixed-rank-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24551928",
+  "conceptDoi": "10.5281/zenodo.24551927",
+  "zenodoUrl": "https://zenodo.org/records/24551928",
+  "citeText": "Anonymous (2026). Growth of higher permanental compounds at fixed rank. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24551928",
+  "evidence": "A 23-page paper with a context-first introduction, written proofs of all theorems, limits, open problems and an AI-use statement. Nine Python scripts with recorded outputs. Six use only exact rational or integer arithmetic: the 0/1 witnesses of orders 152, 378 and 10 710, the order-27 spectral certificate for k = 2, exact checks of the trace bound and the 0/1-to-trace inequality on small frames, and the Schur-power multiplicities. Three are numerical (numpy 2.3.5, scipy 1.16.3, mpmath 1.3.0, matplotlib 3.10.7): the real rank-three dual measure to about 40 digits, geometric lemmas with a fixed seed, and the bases behind Figure 1. Every script exits with status 1 on failure, also under python -O. These finite calculations test witnesses, constants and identities; they do not certify the asymptotic theorems. A clean replay in optimised mode reproduced every recorded output byte for byte; raising the order-152 threshold makes its certificate fail. Linux CI reruns all nine, comparing the six exact outputs byte for byte and the three floating-point outputs under a declared tolerance (relative 1e-6 or absolute 1e-12).",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and computational checks. Internal AI-assisted review: a two-part, five-role Claude review panel with a line-by-line proof audit, a clean replay, one revision round with extensions, and a verification re-review with a proof audit of all new and rewritten proofs. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (23 pages, with the release DOI), its scripts and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 26 November 2026.",
+  "keyResults": [
+    "Theorem 1.1(i) (proof): for unit vectors in R^d (d ≥ 3) or C^d (d ≥ 2) and each fixed k ≥ 2, S_{n,k} = sup λ_max(C_k(A))/per A = Θ((log n)^k) and the 0/1 ratio I_{n,k} = Θ((log n)^(k−1)); at complex rank two S_{n,k} ~ (log n)^k and I_{n,2} ~ log n.",
+    "Theorem 1.1(ii) (proof): if k → ∞ with k = o(n), S_{n,k}^(1/k) and I_{n,k}^(1/(k−1)) are asymptotic to log(n/k).",
+    "Theorem 1.1(iii) (proof): if k/n → p ∈ (0, 1), both ratios grow exponentially with an exact base for every rank; the base at p = ½ is e/2 ≈ 1.359 for complex d ≥ 2 and real d ≥ 4, while at real rank three it is flat at e²/6 ≈ 1.2315 for every p in [⅓, ⅔].",
+    "Corollary 1.2 (proof and exact certificate): at complex rank one and real rank at most two no violation occurs; at real rank three and complex rank two both ratios are unbounded for every fixed k ≥ 2; a real rank-three matrix of order 152 has 0/1 ratio above 1.0049 for k = 2. Theorems 9.1 and 10.1 give exact rates for ordered partitions into any fixed number of parts and lower bounds for individual Schur-power blocks.",
+    "Credit and limits: the refutation of Pate's 0/1 statement for every k ≥ 2 was first given in the earlier Evidence Press release; new here are the growth rates, the minimal ranks and smaller witnesses. Fixed-k constants are exact only at complex rank two (at real rank three the k = 2 eigenvalue constant lies between ½ and 2; best 0/1 constants are open); all results are asymptotic in n."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a five-perspective Claude review panel, a re-review and a proof audit)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All nine scripts were rerun from a fresh copy in Python's optimised mode before release and reproduced every recorded output byte for byte; raising the order-152 certificate threshold makes it fail. GitHub CI on Linux reruns them, comparing exact outputs byte for byte and floating-point outputs within a declared tolerance."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "The certificates use the Python standard library; the numerical scripts use numpy 2.3.5, scipy 1.16.3, mpmath 1.3.0 and matplotlib 3.10.7; replayed with CPython 3.12.11. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Anonymous (2026). Sharp logarithmic growth of the Bapat–Sunder eigenvalue ratio. Evidence Press (Zenodo), version 0.1.0-candidate. The earlier release whose Open Problem 3 is answered here.",
+      "url": "https://doi.org/10.5281/zenodo.24509057"
+    },
+    {
+      "citation": "Bapat, R. B. and Sunder, V. S. (1986). An extremal property of the permanent and the determinant. Linear Algebra and its Applications 76, 153–163. The original conjecture for k = 1.",
+      "url": "https://doi.org/10.1016/0024-3795(86)90220-X"
+    },
+    {
+      "citation": "Pate, T. H. (2008). On permanental compounds. Linear Algebra and its Applications 429, 1093–1101. The conjecture for every k and the 0/1 statement.",
+      "url": "https://doi.org/10.1016/j.laa.2007.05.019"
+    },
+    {
+      "citation": "Aouichaoui, M. A. and Zhang, F. (2026). A Solution to a Permanent Conjecture of Pate. Preprints.org.",
+      "url": "https://doi.org/10.20944/preprints202609.2464.v1"
+    },
+    {
+      "citation": "Lieb, E. H. (1966). Proofs of some conjectures on permanents. Journal of Mathematics and Mechanics 16, 127–134.",
+      "url": "https://doi.org/10.1512/iumj.1967.16.16008"
+    },
+    {
+      "citation": "Djoković, D. Ž. (1969). Simple proof of a theorem on permanents. Glasgow Mathematical Journal 10, 52–54.",
+      "url": "https://doi.org/10.1017/S0017089500000525"
+    },
+    {
+      "citation": "Drury, S. (2018). A counterexample to a question of Bapat & Sunder. Mathematical Inequalities & Applications 21, 517–520.",
+      "url": "https://doi.org/10.7153/mia-2018-21-37"
+    },
+    {
+      "citation": "Shchesnovich, V. S. (2016). The permanent-on-top conjecture is false. Linear Algebra and its Applications 490, 196–201.",
+      "url": "https://doi.org/10.1016/j.laa.2015.10.034"
+    },
+    {
+      "citation": "Anari, N., Gurvits, L., Oveis Gharan, S. and Saberi, A. (2017). Simply Exponential Approximation of the Permanent of Positive Semidefinite Matrices. FOCS 2017, 914–925.",
+      "url": "https://doi.org/10.1109/FOCS.2017.89"
+    },
+    {
+      "citation": "Yuan, C. and Parrilo, P. A. (2022). Maximizing products of linear forms, and the permanent of positive semidefinite matrices. Mathematical Programming 193, 499–510.",
+      "url": "https://doi.org/10.1007/s10107-021-01616-3"
+    },
+    {
+      "citation": "Gurvits, L. (2008). Van der Waerden/Schrijver-Valiant like Conjectures and Stable (aka Hyperbolic) Homogeneous Polynomials: One Theorem for all. The Electronic Journal of Combinatorics 15, R66.",
+      "url": "https://doi.org/10.37236/790"
+    },
+    {
+      "citation": "Fulton, W. (1996). Young Tableaux. Cambridge University Press.",
+      "url": "https://doi.org/10.1017/CBO9780511626241"
+    },
+    {
+      "citation": "Lev, V. F. (2015). Discrete norms of a matrix and the converse to the expander mixing lemma. Linear Algebra and its Applications 483, 158–181.",
+      "url": "https://doi.org/10.1016/j.laa.2015.05.031"
+    },
+    {
+      "citation": "Anonymous (2026). Asymptotic permanental dominance at fixed Gram rank. Evidence Press (Zenodo), version 0.1.0-candidate. A related release in the same fixed-rank setting.",
+      "url": "https://doi.org/10.5281/zenodo.24536861",
+      "pageOnly": true,
+      "pageOnlyReason": "Related Evidence Press release in the same family; linked as page context, not cited in the manuscript."
+    },
+    {
+      "citation": "Anonymous (2026). Sharp exponential rates for permanent-on-top and anomalous boson bunching at fixed rank. Evidence Press (Zenodo), version 0.1.0-candidate. A companion release whose balanced-compound bases coincide with Theorem 1.1(iii) at p = ½.",
+      "url": "https://doi.org/10.5281/zenodo.24550760",
+      "pageOnly": true,
+      "pageOnlyReason": "Companion Evidence Press release published in the same batch; linked as page context, not cited in the manuscript."
+    },
+    {
+      "citation": "Chalmers, L. R. (2026). The Bapat–Sunder eigenvalue conjecture fails over the reals. arXiv:2611.23269.",
+      "url": "https://arxiv.org/abs/2611.23269"
+    },
+    {
+      "citation": "Hoang Anh Tran (2021). A simple counterexample for the permanent-on-top conjecture. arXiv:2101.03428.",
+      "url": "https://arxiv.org/abs/2101.03428"
+    },
+    {
+      "citation": "Wanless, I. M. (2022). Lieb's permanental dominance conjecture. arXiv:2202.01867.",
+      "url": "https://arxiv.org/abs/2202.01867"
+    },
+    {
+      "citation": "Massey, P., Ruiz, M. A. and Stojanoff, D. (2013). Optimal frame completions with prescribed norms for majorization. arXiv:1302.3859.",
+      "url": "https://arxiv.org/abs/1302.3859"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:higher-permanental-compounds-fixed-rank",
+    "attemptIds": [
+      "ep-attempt:higher-permanental-compounds-fixed-rank-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide how far the largest eigenvalue and the 0/1 tests of the k-th permanental compound can exceed the permanent at fixed rank, for fixed k, slowly growing k and k proportional to n, and the smallest ranks at which any violation occurs.",
+      "scope": "Positive semidefinite Gram matrices of unit vectors in R^d (d ≥ 3) or C^d (d ≥ 2) with d fixed and n growing; permanental compounds C_k for every k; ordered partitions into a fixed number of parts; individual Schur-power blocks."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The introduction states the question, what was known, the main results and their credit; AI_INDEX.md maps each claim to its proof and check.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only.",
+        "The scripts test witnesses, constants and identities, not the asymptotic theorems."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [
+      {
+        "relation": "extends-result",
+        "workId": "ep-work:bapat-sunder-eigenvalue-ratio-growth",
+        "legacyReleaseSlug": null,
+        "externalUrl": null,
+        "inheritedClaim": "The earlier release's layer-cake lemma, concentric-circle construction and rank-two results, reused here for every permanental compound; this release answers its Open Problem 3.",
+        "inheritedAssuranceCeiling": "Unrefereed AI-assisted candidate with internal checks only; this successor is not independent confirmation of the parent."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in permanents check Theorem 1.1 and the real rank-three dual measure, and independently rerun the certificates.",
+      "claimCeiling": "Written proofs: at fixed rank, for each fixed k the k-th compound eigenvalue and 0/1 ratios grow like (log n)^k and (log n)^(k−1); log(n/k) for slowly growing k; exact exponential bases for proportional k (e/2 at p = ½ in general; plateau e²/6 at real rank three for ⅓ ≤ p ≤ ⅔); minimal violating ranks real 3 and complex 2. Asymptotic rates; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "higher-permanental-compounds-fixed-rank-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable determination of how far permanental compounds can exceed the permanent at fixed rank, with replayable exact certificates.",
+        "setting": "AI-assisted research on permanent inequalities",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

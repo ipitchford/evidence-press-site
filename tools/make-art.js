@@ -2584,6 +2584,9 @@ palette['gaussian-rkhs-arbitrary-noise-mixtures'] = gaussianMixtureGatesArt.colo
 const permOnTopRatesArt = require('./permanent-on-top-rates-art');
 art['permanent-on-top-fixed-rank-rates'] = permOnTopRatesArt.draw;
 palette['permanent-on-top-fixed-rank-rates'] = permOnTopRatesArt.colors;
+const higherCompoundsArt = require('./higher-compounds-art');
+art['higher-permanental-compounds-fixed-rank'] = higherCompoundsArt.draw;
+palette['higher-permanental-compounds-fixed-rank'] = higherCompoundsArt.colors;
 const drsResidualArt = require('./douglas-rachford-residual-art');
 art['douglas-rachford-residual-counterexamples'] = drsResidualArt.draw;
 palette['douglas-rachford-residual-counterexamples'] = drsResidualArt.colors;
@@ -2605,6 +2608,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'douglas-rachford-residual-counterexamples') svg = withDescription(svg, drsResidualArt.description);
   if (slug === 'gaussian-rkhs-arbitrary-noise-mixtures') svg = withDescription(svg, gaussianMixtureGatesArt.description);
   if (slug === 'permanent-on-top-fixed-rank-rates') svg = withDescription(svg, permOnTopRatesArt.description);
+  if (slug === 'higher-permanental-compounds-fixed-rank') svg = withDescription(svg, higherCompoundsArt.description);
   if (slug === 'finite-normal-observation-windows') svg = withDescription(svg, normalObservationArt.description);
   if(slug==='assignment-aligned-effective-states')svg = withDescription(svg, assignmentAlignedArt.description);
   if(slug==='sharp-rank-three-chollet-order-five')svg = withDescription(svg, cholletRank3Art.description);
