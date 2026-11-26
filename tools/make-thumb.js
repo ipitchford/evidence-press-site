@@ -205,6 +205,15 @@ const SPECS = {
     tag: 'UNREFEREED CANDIDATE',
     hero: require('./multiplane-lensing-art').thumbnailHero()
   },
+  'gaussian-rkhs-arbitrary-noise-mixtures': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 26 NOVEMBER 2026', 'GAUSSIAN KERNEL SPACES · RANDOM DYNAMICS'],
+    head: ['Probit can pass.', '<em>Logistic never can.</em>'],
+    headSize: 72,
+    sub: 'No noise rescues nonlinear drift, but gated Gaussian mixtures can keep the space, exactly.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: require('./gaussian-mixture-gates-art').thumbnailHero()
+  },
   'central-configuration-kernel-rigidity': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 1 OCTOBER 2026', 'SEVEN BODIES · LOCAL EXCLUSION'],

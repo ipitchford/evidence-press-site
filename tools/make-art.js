@@ -2578,6 +2578,9 @@ art['reversible-negative-eigenfunction-moments'] = reversibleMomentsArt.draw;
 palette['reversible-negative-eigenfunction-moments'] = reversibleMomentsArt.colors;
 art['equivariant-inverse-z-unimodality'] = inverseZArt.draw;
 palette['equivariant-inverse-z-unimodality'] = inverseZArt.colors;
+const gaussianMixtureGatesArt = require('./gaussian-mixture-gates-art');
+art['gaussian-rkhs-arbitrary-noise-mixtures'] = gaussianMixtureGatesArt.draw;
+palette['gaussian-rkhs-arbitrary-noise-mixtures'] = gaussianMixtureGatesArt.colors;
 const drsResidualArt = require('./douglas-rachford-residual-art');
 art['douglas-rachford-residual-counterexamples'] = drsResidualArt.draw;
 palette['douglas-rachford-residual-counterexamples'] = drsResidualArt.colors;
@@ -2597,6 +2600,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'reversible-negative-eigenfunction-moments') svg = withDescription(svg, reversibleMomentsArt.description);
   if (slug === 'gaussian-entropic-support-geometry') svg = withDescription(svg, gaussianSupportArt.description);
   if (slug === 'douglas-rachford-residual-counterexamples') svg = withDescription(svg, drsResidualArt.description);
+  if (slug === 'gaussian-rkhs-arbitrary-noise-mixtures') svg = withDescription(svg, gaussianMixtureGatesArt.description);
   if (slug === 'finite-normal-observation-windows') svg = withDescription(svg, normalObservationArt.description);
   if(slug==='assignment-aligned-effective-states')svg = withDescription(svg, assignmentAlignedArt.description);
   if(slug==='sharp-rank-three-chollet-order-five')svg = withDescription(svg, cholletRank3Art.description);
