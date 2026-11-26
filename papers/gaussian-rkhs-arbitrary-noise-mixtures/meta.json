@@ -1,0 +1,227 @@
+{
+  "slug": "gaussian-rkhs-arbitrary-noise-mixtures",
+  "title": "Additive-noise rigidity, a sharp growth threshold and an exact nonlinear-mixture boundary for Gaussian kernel spaces",
+  "shortTitle": "No noise rescues nonlinear drift in a Gaussian kernel space, but mixtures of Gaussian branches can",
+  "oneLine": "Any additive noise forces affine drift; mixtures of Gaussian branches pass exactly when their gates grow slowly enough in the complex plane: probit gates up to a threshold, logistic gates never",
+  "abstract": "Kernel methods such as kernel EDMD learn how a random system evolves by averaging smooth test functions over one random step, and their analysis often assumes that this averaging keeps a Gaussian kernel space (RKHS) invariant. An earlier Evidence Press release showed that a step X' = F(x) + Z keeps the space only if F is affine, but only for noise whose characteristic function has a Gaussian lower bound, and asked whether that hypothesis can be dropped and whether any state-dependent non-Gaussian transition can be admissible. This candidate proves three results. (A) For every noise law, boundedness between global Gaussian RKHSs forces F to be injective and affine, with an exact operator-norm formula; the noise enters only through a deterministic composition. (B) More generally, composition from a stationary source whose spectral measure dominates Lebesgue measure near zero into a Hilbert space of entire functions forces an affine map whenever the target's evaluation norms have zero exponential type in the imaginary direction; for every positive type a nonlinear map such as x + c·sin x can be bounded, so this growth condition is sharp. (C) A finite state-dependent mixture of Gaussian branches with a common linear part and fixed covariances is bounded exactly when each mixing probability extends to an entire function within an explicit quadratic growth budget, so nonlinear conditional means are admissible. With branch variance q, a Gaussian-bump gate e^(−αx²) is admissible exactly when α ≤ 8q/(1+4q), a probit gate Φ(βx) exactly when β² ≤ 16q/(1+4q), and a logistic gate never. The same Gram-matrix argument gives a several-variable no-cancellation theorem for sums of weighted composition operators on Fock spaces with a common invertible linear part; the one-variable case was obtained concurrently and more generally by Cho, Choe, Koo and Tien and by Lin, Lu, Yang and Zu. Limits: global RKHS norms only, not finite-data accuracy or other norms; the noise is formal at the operator level. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-26",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Koopman operator",
+    "reproducing kernel Hilbert space",
+    "Gaussian kernel",
+    "kernel EDMD",
+    "additive noise",
+    "mixture of experts",
+    "weighted composition operators",
+    "Fock space"
+  ],
+  "repoUrl": "https://github.com/ipitchford/gaussian-rkhs-arbitrary-noise-mixtures",
+  "releaseUrl": "https://github.com/ipitchford/gaussian-rkhs-arbitrary-noise-mixtures/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/gaussian-rkhs-arbitrary-noise-mixtures/releases/download/v0.1.0-candidate/gaussian-rkhs-arbitrary-noise-mixtures-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24550034",
+  "conceptDoi": "10.5281/zenodo.24550033",
+  "zenodoUrl": "https://zenodo.org/records/24550034",
+  "citeText": "Anonymous (2026). Additive-noise rigidity, a sharp growth threshold and an exact nonlinear-mixture boundary for Gaussian kernel spaces. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24550034",
+  "evidence": "A 21-page paper with a context-first introduction, written proofs of all theorems, limits, open problems and an AI-use statement. Three Python programs accompany it: code/verify.py runs 97 checks (spectral constants, tube norm, exact scalar thresholds, Gram identities against direct quadrature, triangular-noise norms, the warping identity and smoothing formulas; numpy 2.3.5, scipy 1.17.0, sympy 1.14.0) and code/check_extensions.py runs 63 checks, almost all in 50-digit mpmath arithmetic (the threshold a_*, growth bounds, the probit bound and threshold, the logistic pole, a two-variable Fock Gram matrix, the threshold identities); every check raises an error on failure, even under python -O. code/make_figures.py draws the phase diagram. These finite calculations test constants and implementations; they do not certify the analytic theorems. A clean replay in optimised mode reproduced the recorded results; changing the probit threshold from 4D to 2D makes six checks fail. Linux CI reruns all three programs and compares outputs exactly except scipy's own quadrature error estimate, compared within a declared relative tolerance of 1e-4.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and computational checks. Internal AI-assisted review: a five-perspective Claude review panel with a methodology audit of every original proof, clean replays, one revision round with extensions, a re-review and a proof audit of all new and rewritten proofs. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (21 pages, with the release DOI), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 26 November 2026.",
+  "keyResults": [
+    "Theorem 2.1 (proof): for every probability law of the noise Z, the transition X' = F(x) + Z maps one global Gaussian RKHS boundedly into another only if F is injective and affine; the operator norm has an exact formula. This removes the characteristic-function hypothesis of the predecessor release.",
+    "Theorem 3.1, Proposition 3.2 and Corollary 3.3 (proof): composition from a stationary source whose spectral measure dominates Lebesgue measure near zero into a Hilbert space of entire functions forces an affine map when the target's evaluation norms have zero exponential type in the imaginary direction; for every positive type a bounded nonlinear example exists, so the condition is sharp.",
+    "Theorems 5.1 and 5.5 (proof): a finite mixture of Gaussian branches with a common linear part and fixed, possibly different, covariances is bounded exactly when each mixing probability extends to an entire function within an explicit quadratic growth budget.",
+    "Corollaries 6.1 and 6.2 (proof): with branch variance q, a Gaussian-bump gate e^(−αx²) is admissible exactly when α ≤ 8q/(1+4q) (q = 1/12, 1/4, 3/4 at α = 1/2, 1, 3/2); a probit gate Φ(βx) exactly when β² ≤ 16q/(1+4q); a logistic gate never.",
+    "Corollary 5.3 (proof): on Fock spaces in several variables, a finite sum of weighted composition operators with a common invertible linear part and distinct shifts is bounded exactly when every summand is bounded.",
+    "Credit and limits: the norm formula, multiplier criterion and smoothing spectrum are classical; the one-variable Fock no-cancellation statement is due concurrently, and more generally, to Cho, Choe, Koo and Tien and to Lin, Lu, Yang and Zu. Global RKHS norms only; branches with different linear parts, state-dependent covariances and general Markov transitions remain open."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a five-perspective Claude review panel, a re-review and a proof audit)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All three programs were rerun from fresh copies (checks in Python's optimised mode) before release and reproduced the recorded results; changing the probit threshold from 4D to 2D makes check_extensions.py fail six checks. GitHub CI on Linux reruns all three and compares outputs exactly, except scipy's quadrature error estimate, within a declared relative tolerance of 1e-4."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "verify.py uses numpy 2.3.5, scipy 1.17.0 and sympy 1.14.0; check_extensions.py uses numpy 2.3.5, sympy 1.14.0 and mpmath 1.3.0; make_figures.py uses matplotlib 3.10.8; replayed with CPython 3.12.11. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Anonymous (2026). When Gaussian kernel spaces are invariant under stochastic dynamics: transition rigidity, a Gaussian-component noise boundary and a discontinuous diffusion limit. Evidence Press (Zenodo), version 0.1.1-candidate. The direct predecessor of this release.",
+      "url": "https://doi.org/10.5281/zenodo.24089772"
+    },
+    {
+      "citation": "Cho, H. R., Choe, B. R., Koo, H. and Tien, P. T. (2026). The rigidity phenomenon for weighted composition operators on the Fock spaces. arXiv:2611.26206. Concurrent one-variable no-cancellation result.",
+      "url": "https://arxiv.org/abs/2611.26206"
+    },
+    {
+      "citation": "Lin, Z., Lu, Y., Yang, R. and Zu, C. (2026). Finite sums of weighted composition operators on the Fock space. arXiv:2611.19948. Concurrent one-variable no-cancellation result.",
+      "url": "https://arxiv.org/abs/2611.19948"
+    },
+    {
+      "citation": "Hertel, M., Philipp, F. M., Schaller, M. and Worthmann, K. (2026). Koopman for Stochastic Dynamics: Error Bounds for Kernel Extended Dynamic Mode Decomposition (kernel EDMD). SIAM Journal on Applied Dynamical Systems 25, 2044–2083.",
+      "url": "https://doi.org/10.1137/26M1839689"
+    },
+    {
+      "citation": "Ikeda, M., Ishikawa, I. and Sawano, Y. (2022). Boundedness of composition operators on reproducing kernel Hilbert spaces with analytic positive definite functions. Journal of Mathematical Analysis and Applications 511, 126048.",
+      "url": "https://doi.org/10.1016/j.jmaa.2022.126048"
+    },
+    {
+      "citation": "Lebedev, V. V. (2012). On L²-functions with bounded spectrum. Sbornik: Mathematics 203, 1647–1653.",
+      "url": "https://doi.org/10.1070/SM2012v203n11ABEH004280"
+    },
+    {
+      "citation": "Philipp, F. M., Schaller, M., Worthmann, K., Peitz, S. and Nüske, F. (2024). Error bounds for kernel-based approximations of the Koopman operator. Applied and Computational Harmonic Analysis 71, 101657.",
+      "url": "https://doi.org/10.1016/j.acha.2024.101657"
+    },
+    {
+      "citation": "Philipp, F. M., Schaller, M., Worthmann, K., Peitz, S. and Nüske, F. (2025). Invariance of Gaussian RKHSs under Koopman operators of stochastic differential equations with constant matrix coefficients. PAMM 25, e202400127.",
+      "url": "https://doi.org/10.1002/pamm.202400127"
+    },
+    {
+      "citation": "Tien, P. T. and Khoi, L. H. (2019). Differences of weighted composition operators between the Fock spaces. Monatshefte für Mathematik 188, 183–193.",
+      "url": "https://doi.org/10.1007/s00605-018-1179-6"
+    },
+    {
+      "citation": "Tien, P. T. and Khoi, L. H. (2019). Weighted composition operators between different Fock spaces. Potential Analysis 50, 171–195.",
+      "url": "https://doi.org/10.1007/s11118-017-9678-y"
+    },
+    {
+      "citation": "Tien, P. T. and Khoi, L. H. (2020). Weighted composition operators between Fock spaces in several variables. Mathematische Nachrichten 293, 1200–1220.",
+      "url": "https://doi.org/10.1002/mana.201800197"
+    },
+    {
+      "citation": "Hai, P. V., Huy, V. N. and Tien, P. T. (2026). Analytic tools and weighted composition operators on Paley–Wiener spaces. arXiv:2611.21261.",
+      "url": "https://arxiv.org/abs/2611.21261"
+    },
+    {
+      "citation": "Ishikawa, I. (2026). Dynamical rigidity for weighted composition operators on holomorphic function spaces. arXiv:2604.03965.",
+      "url": "https://arxiv.org/abs/2604.03965"
+    },
+    {
+      "citation": "Sang, Y. and Zhao, L. (2026). Gaussian Integral Operator between Fock Spaces. arXiv:2610.28279.",
+      "url": "https://arxiv.org/abs/2610.28279"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:gaussian-rkhs-arbitrary-noise-mixtures",
+    "attemptIds": [
+      "ep-attempt:gaussian-rkhs-arbitrary-noise-mixtures-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide which random transition models can keep a Gaussian kernel space (RKHS) invariant: whether any additive noise rescues nonlinear drift, how sharp that rigidity is, and which state-dependent Gaussian mixtures are admissible.",
+      "scope": "Global Gaussian RKHS norms; additive noise of any law; stationary sources into Hilbert spaces of entire functions; finite Gaussian mixtures with a common linear part and fixed covariances; Fock-space sums with a common invertible linear part."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The introduction states the question, what the predecessor release proved, the three main results and a plan; AI_INDEX.md maps each claim to its proof and check.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only.",
+        "The programs test constants and implementations, not the analytic theorems."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [
+      {
+        "relation": "extends-result",
+        "workId": "ep-work:gaussian-rkhs-stochastic-invariance",
+        "legacyReleaseSlug": null,
+        "externalUrl": null,
+        "inheritedClaim": "Map-plus-noise transitions keep a Gaussian RKHS only with affine maps when the noise characteristic function has a Gaussian lower bound; this release removes that hypothesis and answers the predecessor's question on state-dependent non-Gaussian transitions.",
+        "inheritedAssuranceCeiling": "Unrefereed AI-assisted candidate with internal checks only; this successor is not independent confirmation of the parent."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in reproducing kernel and Fock-space operator theory check Theorems 2.1, 3.1 and 5.1, and independently rerun the checks.",
+      "claimCeiling": "Written proofs: any additive noise forces affine drift between global Gaussian RKHSs, with exact norm; zero-type growth is sharp for composition rigidity; finite Gaussian mixtures with a common linear part and fixed covariances are bounded exactly within an explicit gate growth budget (bump α ≤ 8q/(1+4q), probit β² ≤ 16q/(1+4q), logistic never); several-variable Fock no-cancellation with common invertible linear part. Global RKHS norms only; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "gaussian-rkhs-arbitrary-noise-mixtures-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable classification of which random transitions keep a Gaussian kernel space invariant, with replayable checks.",
+        "setting": "AI-assisted research in kernel methods and operator theory",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
