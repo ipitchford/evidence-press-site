@@ -1,0 +1,197 @@
+{
+  "slug": "normalised-distance-laplacian-upper-edge",
+  "title": "The sharp upper edge of the normalised distance Laplacian",
+  "shortTitle": "How close the distance Laplacian can get to two",
+  "oneLine": "The largest eigenvalue over n-vertex graphs is 2 − 4/√(3n) + o(1/√n), with the shape of every near-maximiser",
+  "abstract": "Reinhart's normalised distance Laplacian turns the distance matrix of a connected graph into a random walk that prefers distant vertices; its largest eigenvalue lies below 2, and the deficit measures how far the walk is from swinging perfectly back and forth. Johnston and Tait proved that the maximum over graphs with n vertices tends to 2, placed the smallest deficit between about 1/n and 2√2/√n, proved the order 1/√n under extra eigenvector conditions and asked for the true order. This candidate proves that the smallest deficit is 4/√(3n) to first order, with no extra conditions, and that every near-extremal graph looks at large scale like a path of length about √(3n) with half of the vertices in a nearly complete cluster at each end; the extremal eigenvector falls linearly along the path. The same method gives sharp constants for distance powers d^α, for trees (4√(2/3) at α = 1) and for graphs excluding a fixed subgraph with a cycle. Exhaustive computations reproduce Reinhart's extremal graphs up to 9 vertices and find that two stars joined by a path are optimal among all trees with 6 to 20 vertices, stated as a conjecture. Limits: first order only, so Reinhart's exact conjecture stays open; the second-order term is observed numerically only. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "normalised distance Laplacian",
+    "distance matrix",
+    "spectral radius",
+    "extremal graph theory",
+    "spectral graph theory",
+    "random walk",
+    "Dobrushin coefficient",
+    "barbell graph"
+  ],
+  "repoUrl": "https://github.com/ipitchford/normalised-distance-laplacian-upper-edge",
+  "releaseUrl": "https://github.com/ipitchford/normalised-distance-laplacian-upper-edge/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/normalised-distance-laplacian-upper-edge/releases/download/v0.1.0-candidate/normalised-distance-laplacian-upper-edge-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24540994",
+  "conceptDoi": "10.5281/zenodo.24540993",
+  "zenodoUrl": "https://zenodo.org/records/24540994",
+  "citeText": "Anonymous (2026). The sharp upper edge of the normalised distance Laplacian. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24540994",
+  "evidence": "A 16-page paper with a plain introduction (the question, what was known, what is new, what is not settled, the idea of the proof and a roadmap) and written proofs of every theorem and corollary. Five Python programs accompany it: verify.py checks exact characteristic polynomials, exact trial quotients of both constructions up to n = 10^8, full spectra for several distance powers and weights, and the bounded-weight inequality; finite_search.py runs exhaustive searches over all connected graphs with up to 9 vertices and all trees with up to 20 vertices (nauty) and the large-order family optima; two further scripts recompute the trial quotients and the bounded-weight inequality by separate code; figure.py draws Figure 1. A clean replay in Python's optimised mode reproduced the three quick outputs byte for byte and the exhaustive search under the declared comparison policy; changing one exact check makes verify.py fail; Linux CI reruns the quick scripts. The computations accompany the written proofs; they do not replace them.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and computational checks. Internal AI-assisted review: a combined five-role Claude review panel, one revision round with extensions, a verification re-review with a line-by-line proof audit of the rewritten text, and a clean replay with a negative control. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (16 pages, with the release DOI under the author line), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 1 (proof): lim √n (2 − M_n) = 4/√3 ≈ 2.31, where M_n is the largest spectral radius of the normalised distance Laplacian over connected graphs with n vertices; this answers Johnston and Tait's question on the order of the gap.",
+    "Theorem 1(a)–(c) (proof): every near-extremal sequence has diameter (√3 + o(1))√n, two disjoint sets of (1/2 + o(1))n vertices with edge density tending to one, and measured Gromov–Hausdorff limit [0,1] with half of the mass at each end.",
+    "Theorem 2 (proof): for distance weights d^α with fixed α > 0, sharp constants K_{α,b} for all graphs, K_{κ+1}-free graphs and trees; at α = 1 the tree constant is 4√(2/3) ≈ 3.27.",
+    "Corollaries 8, 9, 11 and Theorem 10 (proof): graphs excluding a fixed subgraph with a cycle, the limiting extremal eigenvector and the rest of the spectrum, regularly varying weights and bounded weights.",
+    "Computation (Section 11): clique–path–clique graphs attain the minimum deficit among all connected graphs with 4 to 9 vertices; two stars joined by a path attain it among all trees with 6 to 20 vertices (Conjecture 12 for every n).",
+    "Limits and credit: first order only, so Reinhart's exact conjecture stays open; the second-order coefficient (about 4.26 at a million vertices) is numerical. The question, barbell construction and conditional order are due to Johnston and Tait; the matrix, conjecture and small table to Reinhart; the row-overlap inequality is the classical Doeblin–Dobrushin bound."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-role Claude review panel, a verification re-review and a line-by-line proof audit of the rewritten text)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All five programs were rerun from fresh copies before release in Python's optimised mode; the three quick outputs matched byte for byte and the exhaustive search reproduced its recorded results under the declared comparison policy. Changing one exact check in verify.py makes it fail. GitHub CI on Linux reruns the quick scripts and repeats the failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The theorems rest on written proofs; the computations are finite checks and illustrations."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "CPython 3.12 with NumPy 2.3.5, SciPy 1.17.0 and SymPy 1.14.0; nauty for the exhaustive search. Quick outputs reproduced byte for byte on the release platform and Linux CI; the search JSON is compared numerically (relative tolerance 1e-9) with tied family representatives allowed to differ in parametrisation. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Reinhart, C. (2021). The normalized distance Laplacian. Special Matrices 9(1), 1-18.",
+      "url": "https://doi.org/10.1515/spma-2020-0114"
+    },
+    {
+      "citation": "Johnston, J. and Tait, M. (2024). Extremal values for the spectral radius of the normalized distance Laplacian. Linear Algebra and its Applications 691, 37-49.",
+      "url": "https://doi.org/10.1016/j.laa.2024.03.021"
+    },
+    {
+      "citation": "Aksoy, S. G., Chung, F., Tait, M. and Tobin, J. (2018). The maximum relaxation time of a random walk. Advances in Applied Mathematics 101, 1-14.",
+      "url": "https://doi.org/10.1016/j.aam.2018.07.002"
+    },
+    {
+      "citation": "Byrne, J., Johnston, J., Schildkraut, C. and Tait, M. (2027). Expansion in distance matrices. Linear Algebra and its Applications 754, 271-288.",
+      "url": "https://doi.org/10.1016/j.laa.2026.10.028"
+    },
+    {
+      "citation": "Erdős, P. and Stone, A. H. (1946). On the structure of linear graphs. Bulletin of the American Mathematical Society 52(12), 1087-1091.",
+      "url": "https://doi.org/10.1090/S0002-9904-1946-08715-7"
+    },
+    {
+      "citation": "Füredi, Z. (2015). A proof of the stability of extremal graphs, Simonovits' stability from Szemerédi's regularity. Journal of Combinatorial Theory, Series B 115, 66-71.",
+      "url": "https://doi.org/10.1016/j.jctb.2015.05.001"
+    },
+    {
+      "citation": "Gaubert, S. and Qu, Z. (2015). Dobrushin's Ergodicity Coefficient for Markov Operators on Cones. Integral Equations and Operator Theory 81(1), 127-150.",
+      "url": "https://doi.org/10.1007/s00020-014-2193-2"
+    },
+    {
+      "citation": "Hogben, L. and Reinhart, C. (2022). Spectra of Variants of Distance Matrices of Graphs and Digraphs: A Survey. La Matematica 1(1), 186-224.",
+      "url": "https://doi.org/10.1007/s44007-021-00012-9"
+    },
+    {
+      "citation": "Kumar, H. and Patra, K. L. (2026). Spectral gap of the normalized distance Laplacian. arXiv:2608.10629.",
+      "url": "https://arxiv.org/abs/2608.10629"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:normalised-distance-laplacian-upper-edge",
+    "attemptIds": [
+      "ep-attempt:normalised-distance-laplacian-upper-edge-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide the true order and constant of the smallest deficit 2 − ρ of the normalised distance Laplacian over connected n-vertex graphs (Johnston and Tait's question) and the shape of near-extremal graphs.",
+      "scope": "All connected graphs, trees, graphs excluding a fixed subgraph with a cycle; distance powers d^α with fixed α > 0, regularly varying and bounded weights; first order only."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the question, what was known, what is new, what is not settled, the idea of the proof and a roadmap; Section 11 gives the exhaustive computations and the tree conjecture; the final sections list open problems.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in spectral graph theory check Lemma 3 and Proposition 5 (the lower bound) and Proposition 7 (stability), and independently rerun the exhaustive search.",
+      "claimCeiling": "Written proofs of Theorems 1, 2 and 10 and Corollaries 8, 9 and 11; first order only; Reinhart's exact conjecture, the second-order term and the tree conjecture (Conjecture 12) are open; computations are finite checks; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "normalised-distance-laplacian-upper-edge-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable sharp first-order answer to Johnston and Tait's question on the normalised distance Laplacian, with the structure of near-extremal graphs.",
+        "setting": "AI-assisted research in spectral extremal graph theory",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
