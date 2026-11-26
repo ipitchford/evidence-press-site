@@ -2590,6 +2590,9 @@ palette['higher-permanental-compounds-fixed-rank'] = higherCompoundsArt.colors;
 const criticalChainArt = require('./critical-chain-art');
 art['critical-chain-bound-energy'] = criticalChainArt.draw;
 palette['critical-chain-bound-energy'] = criticalChainArt.colors;
+const nullConeClockArt = require('./null-cone-clock-art');
+art['null-cone-clock-uv-obstructions'] = nullConeClockArt.draw;
+palette['null-cone-clock-uv-obstructions'] = nullConeClockArt.colors;
 art['renyi-heat-first-failing-derivative'] = require('./renyi-first-fail-art').draw;
 palette['renyi-heat-first-failing-derivative'] = require('./renyi-first-fail-art').colors;
 art['rademacher-stop-loss-concave-comparison'] = require('./rademacher-overshoot-art').draw;
@@ -2633,6 +2636,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'permanent-on-top-fixed-rank-rates') svg = withDescription(svg, permOnTopRatesArt.description);
   if (slug === 'higher-permanental-compounds-fixed-rank') svg = withDescription(svg, higherCompoundsArt.description);
   if (slug === 'critical-chain-bound-energy') svg = withDescription(svg, criticalChainArt.description);
+  if (slug === 'null-cone-clock-uv-obstructions') svg = withDescription(svg, nullConeClockArt.description);
   if (slug === 'renyi-heat-first-failing-derivative') svg = withDescription(svg, require('./renyi-first-fail-art').description);
   if (slug === 'rademacher-stop-loss-concave-comparison') svg = withDescription(svg, require('./rademacher-overshoot-art').description);
   if (slug === 'best-worst-voting-approval-winners') svg = withDescription(svg, require('./best-worst-art').description);

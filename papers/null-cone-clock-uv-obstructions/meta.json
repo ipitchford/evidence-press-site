@@ -1,0 +1,259 @@
+{
+  "slug": "null-cone-clock-uv-obstructions",
+  "title": "Ultraviolet obstructions to gravitational clocks in null-cone quantum gravity",
+  "subtitle": "In the linearised sector, Weyl, normal and Wick ordering each fail to give the clock that a recent quantum-gravity proposal needs",
+  "shortTitle": "Why the null-cone gravitational clock is not an operator",
+  "oneLine": "In the linearised sector of a new null-cone quantisation of gravity, the three natural ways of defining its gravitational clock each fail to give an operator; the Wick-ordered clock has the right vacuum reading but its form is not closable",
+  "abstract": "A proposal posted on 25 November 2026 by Chandrasekaran quantises gravity on intersecting null cones and uses a gravitational clock, the time light needs to reach a given corner area, to carve out a finite-dimensional space of states for a causal diamond, from which it obtains the diamond's entropy. That step needs the clock to be a self-adjoint operator, but the clock is the exponential of a squared quantum field over an interval with sharp ends. This candidate tests it in the linearised radiative sector about a round cone, quantised in a stated natural Fock realisation compatible with the proposal's short-distance behaviour. Every Gaussian state gives probability one to configurations of infinite focusing, and without a regulator the Weyl-ordered focusing form is infinite on every state with second moments. In the Fock realisation the Weyl-ordered zero-point value grows like K² in the number K of radial modes; the normal-ordered ground value is of order −K and the normal-ordered form is not an operator on finite-particle vectors; and the Wick-ordered clock, positive and with the classical vacuum reading 1 − ε, is a quadratic form that is not closable, every closable form below it being zero. So the three natural prescriptions fail to provide the required clock with the specified domain and properties; this is not a claim that no clock can exist. For the cap cost used to count states the paper gives the exact Weyl law N(E) = (1 − ε³)E³/(1152π⁷) and the configuration-count constant, and shows that summed over tensor harmonics the normal-ordered cost is unbounded below and, at every sufficiently large fixed radial cutoff, not diagonalisable by an implementable Bogoliubov transformation; the continuum case is open. Limits: linearised sector and one natural realisation that the proposal does not force; the results do not show that the full non-linear construction fails. The mechanisms behind two results are Helfer's (1996, 1999). AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-26",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "quantum gravity",
+    "null cones",
+    "gravitational clock",
+    "Raychaudhuri equation",
+    "quadratic forms",
+    "Bogoliubov transformations",
+    "Wick ordering",
+    "ultraviolet divergences"
+  ],
+  "repoUrl": "https://github.com/ipitchford/null-cone-clock-uv-obstructions",
+  "releaseUrl": "https://github.com/ipitchford/null-cone-clock-uv-obstructions/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/null-cone-clock-uv-obstructions/releases/download/v0.1.0-candidate/null-cone-clock-uv-obstructions-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24563185",
+  "conceptDoi": "10.5281/zenodo.24563184",
+  "zenodoUrl": "https://zenodo.org/records/24563185",
+  "citeText": "Anonymous (2026). Ultraviolet obstructions to gravitational clocks in null-cone quantum gravity. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24563185",
+  "evidence": "A 51-page paper with a context-first introduction, written proofs of all theorems and propositions, a status table of what is and is not shown, open problems and an AI-use statement. Python scripts (numpy 2.5.3, scipy 1.18.1, matplotlib 3.11.2): mode functions and kernels, the cap cost and its frequency solver, a truncated Fock space for the Wick-ordered clock, one check script per group of results, a script for the revision results and convergence diagnostics, and 16 automated tests, with recorded logs. Every check exits with status 1 on failure, also under python -O. The computations test constants and finite truncations; they do not certify the theorems. A clean release replay of every script in optimised mode reproduced every console log byte for byte and the JSON logs within a declared relative tolerance; shifting the expected Wick vacuum reading makes the tests fail. Linux CI reruns the fast suites with a negative control.",
+  "statusDetail": "Unrefereed AI-assisted mathematical physics candidate with written proofs and computational checks. Internal AI-assisted review: a Claude review panel and proof audit, one revision round and a Claude re-review, plus one AI-assisted cross-model review with Astra (gpt-6.2-astra) whose points were checked and applied. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (51 pages, with the release DOI), its scripts and recorded logs, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 26 November 2026.",
+  "keyResults": [
+    "Theorem A and Proposition 5.1 (proof, any representation): every Gaussian state gives probability one to shear configurations with infinite focusing on every subinterval; without a regulator the Weyl-ordered focusing form is +∞ on every state with second moments.",
+    "Theorem B (proof): with K radial modes the Weyl-ordered ground value on [a, b] is π² ln(b/a) K²/(2 s_p (1 − ε)²) (1 + O(K^(−1/4))), coefficient 14.03 on the whole generator at ε = 0.1.",
+    "Theorem C (proof): the normal-ordered ground value lies between −C₁K − C₂ ln K and −cK; the form is not an operator on finite-particle vectors.",
+    "Theorem D (proof, central result): the Wick-ordered clock form is positive with vacuum reading 1 − ε, is not closable, and every closable form below it is zero.",
+    "Theorems E–G (proof): cap-cost Weyl law N(E) = (1 − ε³)E³/(1152π⁷) + O(E^(5/2)) and log D coefficient 0.0648; the normal-ordered cost summed over harmonics is unbounded below and, at every sufficiently large fixed radial cutoff, not implementably diagonalisable; the continuum case is open.",
+    "Scope and credit: linearised sector in a stated natural Fock realisation compatible with the source; the three natural prescriptions fail, which is not a claim that no clock can exist; mechanisms behind Theorems C and G are Helfer's (1996, 1999)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a Claude review panel and proof audit, a re-review, and one AI-assisted cross-model review with Astra, gpt-6.2-astra)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Every script was rerun from a fresh copy in Python's optimised mode before release and reproduced the recorded logs (console logs byte for byte, JSON within a declared tolerance); shifting an expected value makes the tests fail. GitHub CI on Linux reruns the fast suites with a negative control."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "The scripts use numpy 2.5.3, scipy 1.18.1 and matplotlib 3.11.2; replayed with CPython 3.13.5. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Bak, S.-E. et al. (2024). Quantum-gravitational null Raychaudhuri equation. Journal of High Energy Physics, 2024(7), 214.",
+      "url": "https://doi.org/10.1007/JHEP07(2024)214"
+    },
+    {
+      "citation": "Ciambelli, L., Freidel, L. and Leigh, R. G. (2024). Quantum null geometry and gravity. Journal of High Energy Physics, 2024(12), 028.",
+      "url": "https://doi.org/10.1007/JHEP12(2024)028"
+    },
+    {
+      "citation": "Freidel, L. and Kirklin, J. (2026). Gravitational null rays: Covariant quantization and the dressing time. Journal of High Energy Physics, 2026(8), 130.",
+      "url": "https://doi.org/10.1007/JHEP08(2026)130"
+    },
+    {
+      "citation": "Sen, A. (2013). Logarithmic corrections to Schwarzschild and other non-extremal black hole entropy in different dimensions. Journal of High Energy Physics, 2013(4), 156.",
+      "url": "https://doi.org/10.1007/JHEP04(2013)156"
+    },
+    {
+      "citation": "Wieland, W. (2025). Quantum geometry of the light cone: Fock representation and spectrum of radiated power. Classical and Quantum Gravity, 42(19), 195006.",
+      "url": "https://doi.org/10.1088/1361-6382/ae0235"
+    },
+    {
+      "citation": "Fewster, C. J. and Hollands, S. (2005). Quantum energy inequalities in two-dimensional conformal field theory. Reviews in Mathematical Physics, 17(5), 577--612.",
+      "url": "https://doi.org/10.1142/S0129055X05002406"
+    },
+    {
+      "citation": "Fewster, C. J. and Roman, T. A. (2003). Null energy conditions in quantum field theory. Physical Review D, 67(4), 044003.",
+      "url": "https://doi.org/10.1103/PhysRevD.67.044003"
+    },
+    {
+      "citation": "Helfer, A. D. (1996). The stress–energy operator. Classical and Quantum Gravity, 13(11), L129--L134.",
+      "url": "https://doi.org/10.1088/0264-9381/13/11/002"
+    },
+    {
+      "citation": "Hollands, S. and Wald, R. M. (2001). Local Wick polynomials and time ordered products of quantum fields in curved spacetime. Communications in Mathematical Physics, 223(2), 289--326.",
+      "url": "https://doi.org/10.1007/s002200100540"
+    },
+    {
+      "citation": "Hollands, S. and Wald, R. M. (2002). Existence of local covariant time ordered products of quantum fields in curved spacetime. Communications in Mathematical Physics, 231(2), 309--345.",
+      "url": "https://doi.org/10.1007/s00220-002-0719-y"
+    },
+    {
+      "citation": "Torre, C. G. and Varadarajan, M. (1999). Functional evolution of free quantum fields. Classical and Quantum Gravity, 16(8), 2651--2668.",
+      "url": "https://doi.org/10.1088/0264-9381/16/8/306"
+    },
+    {
+      "citation": "Bruneau, L. and Dereziński, J. (2007). Bogoliubov Hamiltonians and one-parameter groups of Bogoliubov transformations. Journal of Mathematical Physics, 48(2), 022101.",
+      "url": "https://doi.org/10.1063/1.2435597"
+    },
+    {
+      "citation": "Dereziński, J. (2017). Bosonic quadratic Hamiltonians. Journal of Mathematical Physics, 58(12), 121101.",
+      "url": "https://doi.org/10.1063/1.5017931"
+    },
+    {
+      "citation": "Folland, G. B. (1989). Harmonic analysis in phase space. (Annals of Mathematics Studies, 122). Princeton University Press.",
+      "url": "https://doi.org/10.1515/9781400882427"
+    },
+    {
+      "citation": "Lill, S. (2025). Implementing Bogoliubov transformations beyond the Shale–Stinespring condition. Journal of Statistical Physics, 192(4), 44.",
+      "url": "https://doi.org/10.1007/s10955-025-03415-y"
+    },
+    {
+      "citation": "Nam, P. T., Napiórkowski, M. and Solovej, J. P. (2016). Diagonalization of bosonic quadratic Hamiltonians by Bogoliubov transformations. Journal of Functional Analysis, 270(11), 4340--4368.",
+      "url": "https://doi.org/10.1016/j.jfa.2015.12.007"
+    },
+    {
+      "citation": "Nielsen, E. B. and Rask, O. (2000). On the existence of exponentials of quadratic polynomials of field operators on Fock space. In R. Rebolledo (Ed.), Stochastic analysis and mathematical physics (pp.~101--107). Birkhäuser Boston.",
+      "url": "https://doi.org/10.1007/978-1-4612-1372-7_8"
+    },
+    {
+      "citation": "Williamson, J. (1936). On the algebraic problem concerning the normal forms of linear dynamical systems. American Journal of Mathematics, 58(1), 141.",
+      "url": "https://doi.org/10.2307/2371062"
+    },
+    {
+      "citation": "Bogachev, V. I. (1998). Gaussian measures. American Mathematical Society.",
+      "url": "https://doi.org/10.1090/surv/062"
+    },
+    {
+      "citation": "Kato, T. (1995). Perturbation theory for linear operators. (Reprint of the 2nd ed.). Springer.",
+      "url": "https://doi.org/10.1007/978-3-642-66282-9"
+    },
+    {
+      "citation": "Khavkine, I. and Moretti, V. (2015). Algebraic QFT in curved spacetime and quasifree Hadamard states: An introduction. In R. Brunetti, C. Dappiaggi, K. Fredenhagen & J. Yngvason (Eds.), Advances in algebraic quantum field theory (Mathematical Physics Studies, pp.~191--251). Springer.",
+      "url": "https://doi.org/10.1007/978-3-319-21353-8_5"
+    },
+    {
+      "citation": "Robertson, H. P. (1929). The uncertainty principle. Physical Review, 34(1), 163--164.",
+      "url": "https://doi.org/10.1103/PhysRev.34.163"
+    },
+    {
+      "citation": "Chandrasekaran, V. (2026). An algebraic quantization of gravity from the null cone. arXiv:2611.34924v1 (posted 25 November 2026). The construction studied.",
+      "url": "https://arxiv.org/abs/2611.34924v1"
+    },
+    {
+      "citation": "Helfer, A. D. (1999). The Hamiltonians of linear quantum fields: II. Classically positive Hamiltonians. arXiv:hep-th/9908012v3.",
+      "url": "https://arxiv.org/abs/hep-th/9908012v3"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:null-cone-clock-uv-obstructions",
+    "attemptIds": [
+      "ep-attempt:null-cone-clock-uv-obstructions-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide whether the gravitational clock and the cap cost of the null-cone quantisation of gravity can be self-adjoint operators under the natural orderings, and if not, which mechanisms obstruct them.",
+      "scope": "Linearised radiative sector about a round past light cone, quantised in a natural Fock realisation compatible with the source; Weyl, normal and Wick ordering of the focusing integral and the clock; the cap cost summed over tensor harmonics."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The introduction states the construction under study, the question, what was known, what is new with the status of each result; AI_INDEX.md maps each claim to its proof and check.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification; the source was posted the day before.",
+        "The proofs have been checked by AI-assisted reading only.",
+        "The scripts test constants and finite truncations, not the theorems."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in quadratic forms and quantum fields on null surfaces check Theorems C, D and G, and settle whether the source's representation is the realisation used here.",
+      "claimCeiling": "Written proofs in the linearised sector: Gaussian roughness in every representation; in the stated natural Fock realisation, Weyl, normal and Wick ordering each fail to give the clock the construction uses (Wick-ordered form not closable); exact cap-cost counting constants; normal-ordered cap cost unbounded below and non-implementable at large fixed radial cutoff, continuum open. Not a claim that no clock exists; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "null-cone-clock-uv-obstructions-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable analysis of the ultraviolet obstructions to the null-cone gravitational clock, with replayable checks.",
+        "setting": "AI-assisted research on quantum gravity on null surfaces",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
