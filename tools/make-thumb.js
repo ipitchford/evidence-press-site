@@ -81,6 +81,15 @@ const savedPalettes = require('./thumbnail-palettes');
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'critical-chain-bound-energy': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 26 NOVEMBER 2026', 'CRITICAL CHAINS · QUANTUM THERMODYNAMICS'],
+    head: ['Same state,', '<em>different locked energy.</em>'],
+    headSize: 64,
+    sub: 'The isolated half’s own energy band sets how much energy entanglement locks away.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: require('./critical-chain-art').thumbnailHero()
+  },
   'higher-permanental-compounds-fixed-rank': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 26 NOVEMBER 2026', 'PERMANENTS · MATRIX INEQUALITIES'],

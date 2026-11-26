@@ -1,0 +1,227 @@
+{
+  "slug": "critical-chain-bound-energy",
+  "title": "The energy an isolated half of a critical chain cannot give up",
+  "subtitle": "Conformal amplitudes, dispersion, and the cost of conserving particle number",
+  "shortTitle": "What entanglement locks away in a critical chain",
+  "oneLine": "The bound energy of half a critical chain is (3v/2πc)·S²/L for conformal models and the hopping and Ising chains, but chains with the same ground state can follow different powers of L, and conserving particle number changes the power again",
+  "abstract": "Cut a critical quantum chain in its ground state in two and isolate one half. Because the half is entangled with the rest, it holds energy above its own ground state; unitary operations on the half can extract most of it as work, but a remainder, the bound energy, always stays. Mula and colleagues (2023) found for the free-fermion hopping chain that the bound energy scales as the square of the entanglement entropy divided by the length, and conjectured this for critical chains in general. This candidate proves the law, with coefficient 3v/(2πc) (v the velocity, c the central charge), for a regulated boundary conformal field theory and directly for the open hopping and critical Ising lattice chains; at equal velocity the Ising slope is twice the hopping slope, so the conjectured number is not universal. For a family of free-fermion chains that all share the hopping chain's ground state, the bound energy is fixed by the flattest zero of the block's one-particle dispersion, and the S²/L form holds if and only if the dispersion crosses the Fermi level with nonzero velocity and has no other zero: criticality of the ground state does not determine the bound energy. In one range-three chain, unrestricted, particle-number-conserving and one-body operations leave residuals of orders (log L)³/L², (log L)/L and (log L)²/L. Limits: free-fermion chains and an idealised conformal model only (interacting chains such as the Heisenberg chain remain open); the lattice proofs use the known boundary Rényi asymptotics of the open hopping chain; operations are idealised; coefficients are limits in L and some converge only logarithmically. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-26",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "bound energy",
+    "ergotropy",
+    "passive states",
+    "entanglement entropy",
+    "critical spin chains",
+    "boundary conformal field theory",
+    "free fermions",
+    "quantum thermodynamics"
+  ],
+  "repoUrl": "https://github.com/ipitchford/critical-chain-bound-energy",
+  "releaseUrl": "https://github.com/ipitchford/critical-chain-bound-energy/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/critical-chain-bound-energy/releases/download/v0.1.0-candidate/critical-chain-bound-energy-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24553557",
+  "conceptDoi": "10.5281/zenodo.24553556",
+  "zenodoUrl": "https://zenodo.org/records/24553557",
+  "citeText": "Anonymous (2026). The energy an isolated half of a critical chain cannot give up. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24553557",
+  "evidence": "A 20-page paper with a context-first introduction, written proofs of all theorems, limits, open problems and an AI-use statement. Ten Python scripts (numpy 2.3.5, scipy 1.17.0, mpmath 1.3.0, matplotlib 3.10.8) with recorded outputs: complete Fock-space orderings and direct many-body checks for small chains, an interval-arithmetic certificate of an ordering inversion at five sites, Ising spin and Majorana calculations, exact Ising boundary-character counts, the crossover quadrature, the pressure constants and quoted coefficients, and a finite-size table up to L = 4096. Every script exits with status 1 on failure, also under python -O. These finite calculations test values, constants and identities; they do not certify the asymptotic theorems. A clean replay in optimised mode reproduced the recorded outputs (identical except final digits of one floating-point file); changing the expected D_3 makes the dispersion check fail. Linux CI reruns all ten, comparing the exact certificate and integer counts byte for byte and floating-point outputs within declared relative tolerances (1e-6; 1e-3 for the finite-size table, whose last printed digit of the cubic chain's one-body ratio is platform-sensitive).",
+  "statusDetail": "Unrefereed AI-assisted mathematical physics candidate with written proofs and computational checks. Internal AI-assisted review: a four-role Claude review panel, a methodology review with a line-by-line proof audit and independent code, a clean replay, one revision round with extensions, and a re-review with a proof audit of the new proofs. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (20 pages, with the release DOI), its scripts and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 26 November 2026.",
+  "keyResults": [
+    "Lemma 1 (proof): under stated hypotheses the bound energy Q_L equals, to leading order, the energy of the block's thermal state whose entropy equals the entanglement entropy S_L.",
+    "Theorems 3–4 and Corollary 5 (proof): for a regulated boundary conformal field theory Q_L ~ 3v S_L²/(2πc L), whatever boundary condition the cut carries; in rational CFTs the next term is fixed by the boundary entropy.",
+    "Theorem 6 and Corollaries 7–8 (proof): every sign-preserving polynomial f gives a chain with the hopping ground state and Q_L ~ D(m, A) S_L^(m+1)/L^m, m the largest order of a zero of the dispersion; L Q_L/S_L² has a positive finite limit if and only if f′(0) ≠ 0 and f has no other zero on [−2, 2].",
+    "Corollary 9 (proof): for the critical Ising chain N Q/S² → 12/π, against 6/π for unit hopping (slopes 6/π and 3/π in units of L).",
+    "Theorems 10–14 (proof): a linear term restores the S²/L law through an explicit crossover; in the range-three chain f(x) = x(x − 3/2)² unrestricted, number-conserving and one-body controls leave residuals of orders (log L)³/L², (log L)/L and (log L)²/L.",
+    "Credit and limits: the conjecture and free-fermion formula are due to Mula et al.; free-fermion chains and an idealised conformal model only; one external input (boundary Rényi asymptotics); coefficients are limits in L, some approached logarithmically slowly (cubic chain at L = 4096: 36.3 against 11.2, one-body penalty 1.096 against 2.148)."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a four-role Claude review panel, a methodology review with proof audit, and a re-review)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All ten scripts were rerun from a fresh copy in Python's optimised mode before release and reproduced the recorded outputs; changing an expected constant makes the check fail. GitHub CI on Linux reruns them, comparing exact outputs byte for byte and floating-point outputs within declared tolerances."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "The scripts use numpy 2.3.5, scipy 1.17.0, mpmath 1.3.0 and matplotlib 3.10.8; replayed with CPython 3.12.11. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Mula, B. et al. (2023). Ergotropy and entanglement in critical spin chains. Physical Review B 107, 075116. The conjecture and the free-fermion formula.",
+      "url": "https://doi.org/10.1103/PhysRevB.107.075116"
+    },
+    {
+      "citation": "Allahverdyan, A. E., Balian, R. and Nieuwenhuizen, Th. M. (2004). Maximal work extraction from finite quantum systems. Europhysics Letters 67, 565–571.",
+      "url": "https://doi.org/10.1209/epl/i2004-10101-2"
+    },
+    {
+      "citation": "Alba, V., Calabrese, P. and Tonni, E. (2018). Entanglement spectrum degeneracy and the Cardy formula in 1+1 dimensional conformal field theories. Journal of Physics A 51, 024001.",
+      "url": "https://doi.org/10.1088/1751-8121/aa9365"
+    },
+    {
+      "citation": "Alicki, R. and Fannes, M. (2013). Entanglement boost for extractable work from ensembles of quantum batteries. Physical Review E 87, 042123.",
+      "url": "https://doi.org/10.1103/PhysRevE.87.042123"
+    },
+    {
+      "citation": "Bringmann, K., Jennings-Shaffer, C. and Mahlburg, K. (2023). On a Tauberian theorem of Ingham and Euler–Maclaurin summation. The Ramanujan Journal 61, 55–86.",
+      "url": "https://doi.org/10.1007/s11139-020-00377-5"
+    },
+    {
+      "citation": "Calabrese, P. and Lefevre, A. (2008). Entanglement spectrum in one-dimensional systems. Physical Review A 78, 032329.",
+      "url": "https://doi.org/10.1103/PhysRevA.78.032329"
+    },
+    {
+      "citation": "Cardy, J. and Tonni, E. (2016). Entanglement Hamiltonians in two-dimensional conformal field theory. Journal of Statistical Mechanics 2016, 123103.",
+      "url": "https://doi.org/10.1088/1742-5468/2016/12/123103"
+    },
+    {
+      "citation": "Deift, P., Its, A. and Krasovsky, I. (2011). Asymptotics of Toeplitz, Hankel, and Toeplitz+Hankel determinants with Fisher–Hartwig singularities. Annals of Mathematics 174, 1243–1299.",
+      "url": "https://doi.org/10.4007/annals.2011.174.2.12"
+    },
+    {
+      "citation": "Fagotti, M. and Calabrese, P. (2011). Universal parity effects in the entanglement entropy of XX chains with open boundary conditions. Journal of Statistical Mechanics 2011, P01017.",
+      "url": "https://doi.org/10.1088/1742-5468/2011/01/P01017"
+    },
+    {
+      "citation": "Goldstein, M. and Sela, E. (2018). Symmetry-resolved entanglement in many-body systems. Physical Review Letters 120, 200602.",
+      "url": "https://doi.org/10.1103/PhysRevLett.120.200602"
+    },
+    {
+      "citation": "Hartmann, D., Kavanagh, K. and Vandoren, S. (2021). Entanglement entropy with Lifshitz fermions. SciPost Physics 11, 031.",
+      "url": "https://doi.org/10.21468/SciPostPhys.11.2.031"
+    },
+    {
+      "citation": "Iglói, F. and Juhász, R. (2008). Exact relationship between the entanglement entropies of XY and quantum Ising chains. EPL 81, 57003.",
+      "url": "https://doi.org/10.1209/0295-5075/81/57003"
+    },
+    {
+      "citation": "Mitra, A. and Srivastava, S. C. L. (2025). Bound energy, entanglement and identifying critical points in 1D long-range Kitaev model. New Journal of Physics 27, 084601.",
+      "url": "https://doi.org/10.1088/1367-2630/adf2d2"
+    },
+    {
+      "citation": "Mitsuhashi, Y., Kaneko, K. and Sagawa, T. (2022). Characterizing symmetry-protected thermal equilibrium by work extraction. Physical Review X 12, 021013.",
+      "url": "https://doi.org/10.1103/PhysRevX.12.021013"
+    },
+    {
+      "citation": "Onuma-Kalu, M. and Mann, R. B. (2018). Work extraction using Gaussian operations in noninteracting fermionic systems. Physical Review E 98, 042121.",
+      "url": "https://doi.org/10.1103/PhysRevE.98.042121"
+    },
+    {
+      "citation": "Cardy, J. (2004). Boundary conformal field theory. arXiv:hep-th/0411189.",
+      "url": "https://arxiv.org/abs/hep-th/0411189"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:critical-chain-bound-energy",
+    "attemptIds": [
+      "ep-attempt:critical-chain-bound-energy-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide whether the bound energy of half a critical chain follows the conjectured S²/L law, with which coefficient, which data of the chain fix it, and how restricting the allowed operations changes it.",
+      "scope": "Regulated boundary conformal field theory spectra; open free-fermion chains with one-particle Hamiltonian f(T) for sign-preserving polynomials f; the critical Ising chain; unrestricted, particle-number-conserving and one-body number-conserving unitaries on the block."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The introduction states the question, what was known, the main results and their credit; AI_INDEX.md maps each claim to its proof and check.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only.",
+        "The scripts test finite-size values, constants and identities, not the asymptotic theorems."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in critical chains and quantum thermodynamics check Lemma 1, Theorem 6 and the Ising corollary, and independently rerun the finite-size checks.",
+      "claimCeiling": "Written proofs: Q_L ~ 3v S_L²/(2πc L) for regulated boundary CFT and the open hopping and critical Ising chains; for free-fermion chains sharing the hopping ground state Q_L ~ D(m, A) S_L^(m+1)/L^m with the if-and-only-if condition for the S²/L form; separated orders under three control classes in one range-three chain. Asymptotic in L; free fermions only; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "critical-chain-bound-energy-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable determination of when the bound energy of a critical chain follows the S²/L law, with replayable checks.",
+        "setting": "AI-assisted research on quantum thermodynamics of critical chains",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
