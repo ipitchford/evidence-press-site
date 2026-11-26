@@ -1,0 +1,191 @@
+{
+  "slug": "deformed-monotone-hurwitz-root-motion",
+  "title": "How the zeros of deformed monotone Hurwitz polynomials approach their limits",
+  "shortTitle": "Which way the zeros of Hurwitz polynomials move",
+  "oneLine": "The second large-genus term settles the direction in the Coulter–Do–Moskovsky conjecture, and exact certificates cover every genus up to degree ten",
+  "abstract": "Count the monotone transitive factorisations of a permutation of cycle type μ into transpositions, with a weight t for each distinct larger letter used. Coulter, Do and Moskovsky called the resulting polynomials deformed monotone Hurwitz numbers and conjectured that their zeros are real, interlace and, as the genus grows, converge to explicit limits from a definite side (their Conjecture 3.15). The limits follow from the leading large-genus term of Accadia, Lewański and Ruzza. This candidate computes the next term for every profile and for any finite list of profiles: it depends on the profile only through its number of fixed points. Its sign fixes the side and rate of approach of every zero, so the eventual form of Conjecture 3.15 holds, with an explicit genus threshold that is far from optimal. Monotone approach cannot start at genus zero in general: for two and for three 2-cycles some zeros first move away. For all 132 profiles of degrees 4 to 10, exact certificates prove real zeros at every genus and list exactly when a zero moves away from its limit: only 8 profiles, all made of even cycles, and never after genus 2. Further results give the third term (fixed points and 2-cycles), show that early terms depend only on short cycles, identify the limiting law of the larger letters used (letter b with probability (b−1)/(d−1), independently) and explain exact coincidences in the published tables. Limits: fixed degree and growing genus only; interlacing at small genus is not certified; the joint regime and the real-Grassmannian deformation remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-26",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "monotone Hurwitz numbers",
+    "deformed monotone Hurwitz numbers",
+    "real-rooted polynomials",
+    "interlacing",
+    "large genus asymptotics",
+    "Jucys–Murphy elements",
+    "Weingarten calculus",
+    "complex Grassmannians",
+    "symmetric group characters",
+    "exponential polynomials"
+  ],
+  "repoUrl": "https://github.com/ipitchford/deformed-monotone-hurwitz-root-motion",
+  "releaseUrl": "https://github.com/ipitchford/deformed-monotone-hurwitz-root-motion/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/deformed-monotone-hurwitz-root-motion/releases/download/v0.1.0-candidate/deformed-monotone-hurwitz-root-motion-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24546686",
+  "conceptDoi": "10.5281/zenodo.24546685",
+  "zenodoUrl": "https://zenodo.org/records/24546686",
+  "citeText": "Anonymous (2026). How the zeros of deformed monotone Hurwitz polynomials approach their limits. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24546686",
+  "evidence": "A 17-page paper with a plain introduction (the problem, why it matters, what was known, what is new, an example and a map), written proofs of every theorem, checks, scope, open problems and an AI-use statement. Eight Python programs accompany it, all exact (Fractions and SymPy, with NumPy integer arithmetic) except 60-digit mpmath comparisons with published decimals: they check the second term for every profile of degrees 2 to 5, multi-profile cases, the third term, the fixed-point identity, the occupancy law, the census of all 132 profiles of degrees 4 to 10, and the comparison with the published tables. A clean replay in Python's optimised mode reproduced all eight recorded outputs byte for byte; altering the second-term coefficient makes the check fail; Linux CI reproduces the outputs exactly. Theorem 5.2 rests on the exact certificates of the census program.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computer checks. Internal AI-assisted review: a five-reviewer Claude review panel, one revision round that added the census, a re-review, a proof audit of every new or rewritten proof, and clean replays with a negative control. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (17 pages, with the release DOI under the author line), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 26 November 2026.",
+  "keyResults": [
+    "Theorem 3.1 and Corollary 3.2 (proof): for fixed d, the second term of the large-genus expansion is explicit for every profile and every finite list of profiles, and depends on a profile only through its number of fixed points.",
+    "Theorems 4.1 and 4.4 (proof): its sign gives the direction predicted by Coulter, Do and Moskovsky, so their Conjecture 3.15 holds in its eventual form; r ≥ 200 d² log(20d) suffices, far from optimal.",
+    "Theorem 5.1 (proof): monotone approach cannot start at genus 0 in general; for two and for three 2-cycles some zeros first move away from their limits.",
+    "Theorem 5.2 (exact certificates): for all 132 profiles of degrees 4 to 10 the zeros are real at every genus; exactly 8 profiles, all made of even cycles, have a zero moving away, and never after genus 2. Interlacing at small genus is not certified.",
+    "Theorems 6.1–6.2 and Proposition 7.2 (proof): the third term depends only on fixed points and 2-cycles, early terms see only short cycles, and in a long random factorisation letter b is used with probability (b−1)/(d−1), independently.",
+    "Credit and limits: limits and leading term are due to Accadia, Lewański and Ruzza; the t = 1 structure and the simple-Hurwitz fixed-point formula to Yang; the conjectures, tables and cut-and-join recursion (used for Proposition 4.5) to Coulter, Do and Moskovsky. Fixed degree, growing genus only."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a five-reviewer Claude review panel, a re-review and a proof audit of every new or rewritten proof)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All eight programs were rerun from fresh copies before release in Python's optimised mode and matched the recorded outputs byte for byte. Altering the second-term coefficient makes the main check fail. GitHub CI on Linux reruns all eight programs, compares outputs exactly and runs the failure test."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The theorems rest on written proofs; Theorem 5.2 rests on exact computer certificates."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with SymPy 1.14.0, mpmath 1.3.0 and NumPy 2.5.5; reference replay CPython 3.12.11 on macOS arm64, rerun on Linux CI. All outputs compare exactly (no tolerance). Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Coulter, X., Do, N. and Moskovsky, E. (2025). Integration on complex Grassmannians, deformed monotone Hurwitz numbers, and interlacing phenomena. Canadian Journal of Mathematics, 1–40.",
+      "url": "https://doi.org/10.4153/S0008414X25101168"
+    },
+    {
+      "citation": "Campion Loth, J. and Rattan, A. (2025). Centrality of star and monotone factorisations. Bulletin of the London Mathematical Society 57(11), 3567–3585.",
+      "url": "https://doi.org/10.1112/blms.70170"
+    },
+    {
+      "citation": "Accadia, D., Lewański, D. and Ruzza, G. (2026). On the large genus of Hurwitz numbers. arXiv:2604.12880.",
+      "url": "https://arxiv.org/abs/2604.12880"
+    },
+    {
+      "citation": "Yang, C. (2025). The structures of simple Hurwitz numbers and monotone Hurwitz numbers with varying genus. arXiv:2503.01920.",
+      "url": "https://arxiv.org/abs/2503.01920"
+    },
+    {
+      "citation": "Do, N., He, J. and Robertson, H. (2024). The structure of Hurwitz numbers with fixed ramification profile and varying genus. arXiv:2409.06655.",
+      "url": "https://arxiv.org/abs/2409.06655"
+    },
+    {
+      "citation": "Coulter, X. and Do, N. (2025). From Weingarten calculus for real Grassmannians to deformations of monotone Hurwitz numbers and Jucys–Murphy elements. arXiv:2506.04002.",
+      "url": "https://arxiv.org/abs/2506.04002"
+    },
+    {
+      "citation": "Barazer, S. and Louf, B. (2026). High genus one part monotone Hurwitz numbers. arXiv:2604.01190.",
+      "url": "https://arxiv.org/abs/2604.01190"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:deformed-monotone-hurwitz-root-motion",
+    "attemptIds": [
+      "ep-attempt:deformed-monotone-hurwitz-root-motion-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide from which side, and from which genus on, the zeros of deformed monotone Hurwitz polynomials approach their limits, and certify the exact behaviour at every genus for small degree.",
+      "scope": "Fixed degree d and growing genus, every profile; every genus for all 132 profiles of degrees 4 to 10."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the problem, why it matters, what was known, what is new, an example and a map; later sections give checks, scope and open problems.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in Hurwitz theory check the second-term computation (Theorem 3.1) and the threshold argument (Theorem 4.4), and independently rerun the census certificates.",
+      "claimCeiling": "Written proofs for fixed degree and growing genus; Theorem 5.2 by exact certificates up to degree ten; interlacing at small genus, the joint regime and the real-Grassmannian deformation open; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "deformed-monotone-hurwitz-root-motion-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable account of the side and rate at which zeros of deformed monotone Hurwitz polynomials approach their limits, with exact all-genus certificates up to degree ten.",
+        "setting": "AI-assisted research in enumerative combinatorics",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
