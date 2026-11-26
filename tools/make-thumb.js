@@ -81,6 +81,15 @@ const savedPalettes = require('./thumbnail-palettes');
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'null-cone-clock-uv-obstructions': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 26 NOVEMBER 2026', 'QUANTUM GRAVITY · NULL CONES'],
+    head: ['Three clocks,', '<em>no operator.</em>'],
+    headSize: 64,
+    sub: 'Weyl, normal and Wick ordering each fail to give the null-cone gravitational clock in the linearised sector.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: require('./null-cone-clock-art').thumbnailHero()
+  },
   'renyi-heat-first-failing-derivative': {
     palette: "auto",
     kicker: ["RESEARCH RELEASE · 26 NOVEMBER 2026","INFORMATION THEORY · HEAT FLOW"],
