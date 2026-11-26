@@ -81,6 +81,69 @@ const savedPalettes = require('./thumbnail-palettes');
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'renyi-heat-first-failing-derivative': {
+    palette: "auto",
+    kicker: ["RESEARCH RELEASE · 26 NOVEMBER 2026","INFORMATION THEORY · HEAT FLOW"],
+    head: ["No Rényi order","<em>survives the heat flow.</em>"],
+    headSize: 64,
+    sub: "Every order fails by the sixth derivative; collision entropy at the fourth.",
+    tag: "UNREFEREED CANDIDATE",
+    hero: require('./renyi-first-fail-art').thumbnailHero()
+  },
+  'rademacher-stop-loss-concave-comparison': {
+    palette: "auto",
+    kicker: ["RESEARCH RELEASE · 26 NOVEMBER 2026","PROBABILITY · RADEMACHER SUMS"],
+    head: ["Two equal coins","<em>are the worst case.</em>"],
+    headSize: 66,
+    sub: "Average overshoot beyond one standard deviation is at most (√2 − 1)/2.",
+    tag: "UNREFEREED CANDIDATE",
+    hero: require('./rademacher-overshoot-art').thumbnailHero()
+  },
+  'best-worst-voting-approval-winners': {
+    palette: "auto",
+    kicker: ["RESEARCH RELEASE · 26 NOVEMBER 2026","SOCIAL CHOICE · SCORING RULES"],
+    head: ["Best–worst voting","<em>recovers approval.</em>"],
+    headSize: 64,
+    sub: "+1 for first, −1 for last: sincere rankings give back the approval winners.",
+    tag: "UNREFEREED CANDIDATE",
+    hero: require('./best-worst-art').thumbnailHero()
+  },
+  'median-skewness-additive-noise': {
+    palette: "auto",
+    kicker: ["RESEARCH RELEASE · 26 NOVEMBER 2026","PROBABILITY · SKEWNESS"],
+    head: ["The heavier tail","<em>switches sides.</em>"],
+    headSize: 66,
+    sub: "Median-based skewness does not survive adding noise.",
+    tag: "UNREFEREED CANDIDATE",
+    hero: require('./median-skew-art').thumbnailHero()
+  },
+  'archimedean-quadrant-dependence-exchangeable-ranks': {
+    palette: "auto",
+    kicker: ["RESEARCH RELEASE · 26 NOVEMBER 2026","COPULAS · RANK CORRELATION"],
+    head: ["Three exchangeable units:","<em>never below −4/9.</em>"],
+    headSize: 60,
+    sub: "And all four Archimedean implications fail.",
+    tag: "UNREFEREED CANDIDATE",
+    hero: require('./quadrant-ranks-art').thumbnailHero()
+  },
+  'complete-graph-reliability-zeros': {
+    palette: "auto",
+    kicker: ["RESEARCH RELEASE · 26 NOVEMBER 2026","NETWORK RELIABILITY · COMPLEX ZEROS"],
+    head: ["Reliability zeros:","<em>closest at ±137°.</em>"],
+    headSize: 64,
+    sub: "Waldvogel’s 1983 constant sets how close they come to zero.",
+    tag: "UNREFEREED CANDIDATE",
+    hero: require('./reliability-zeros-art').thumbnailHero()
+  },
+  'deformed-monotone-hurwitz-root-motion': {
+    palette: "auto",
+    kicker: ["RESEARCH RELEASE · 26 NOVEMBER 2026","ENUMERATIVE GEOMETRY · HURWITZ NUMBERS"],
+    head: ["Which way","<em>the zeros move.</em>"],
+    headSize: 66,
+    sub: "Every zero eventually approaches its limit from the predicted side.",
+    tag: "UNREFEREED CANDIDATE",
+    hero: require('./hurwitz-roots-art').thumbnailHero()
+  },
   'commuting-permutations-few-orbits': {
     palette: "auto",
     kicker: ["RESEARCH RELEASE · 25 NOVEMBER 2026","COMBINATORICS · NUMBER THEORY"],
