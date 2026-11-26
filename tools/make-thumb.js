@@ -81,6 +81,15 @@ const savedPalettes = require('./thumbnail-palettes');
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'rational-fibonacci-catalan-positivity': {
+    palette: "auto",
+    kicker: ["RESEARCH RELEASE · 25 NOVEMBER 2026","ALGEBRAIC COMBINATORICS"],
+    head: ["Fibonacci–Catalan:","<em>never negative.</em>"],
+    headSize: 64,
+    sub: "Every coefficient is nonnegative whenever gcd(m, n) ≤ 2.",
+    tag: "UNREFEREED CANDIDATE",
+    hero: require('./fibonacci-catalan-art').thumbnailHero()
+  },
   'normalised-distance-laplacian-upper-edge': {
     palette: "auto",
     kicker: ["RESEARCH RELEASE · 25 NOVEMBER 2026","SPECTRAL GRAPH THEORY"],
