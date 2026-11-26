@@ -1,0 +1,194 @@
+{
+  "slug": "archimedean-quadrant-dependence-exchangeable-ranks",
+  "title": "Quadrant dependence, reflected copula measures and exchangeable ranks",
+  "shortTitle": "Quadrant dependence and PMI part ways near independence",
+  "oneLine": "All four Fuchs–Tschimpke implications fail, and exact limits for exchangeable ranks",
+  "abstract": "Fuchs and Tschimpke introduced the positive measure inducing (PMI) property of a bivariate copula, which orders a family of concordance measures and yields the population inequality 3γ ≥ 2ρ between Gini's gamma and Spearman's rho. They conjectured that for Archimedean copulas PMI is equivalent to positive quadrant dependence (PQD), and NMI to NQD; Graham refuted PQD ⇒ PMI. This candidate shows that all four implications fail arbitrarily close to independence, with real-analytic Archimedean generators, positive densities and explicit parameters, in every finite dimension. Ordered comparisons of concordance measures detect exactly the symmetrised reflected measure, and no finite family of comparisons characterises PMI. Shared-frailty copulas with two frailty values are always PMI, while three values (rates 1, 2 and 200) can fail it, even with a density totally positive of every order. For a pair of ranks that extends to n exchangeable ranks, the exact range of 3γ − 2sρ is determined for every slope −n/2 ≤ s ≤ 1; for n = 3, 3γ − 2ρ ≥ −23/54 and γ ≥ −4/9. The same construction gives the exact smallest common pairwise generalised Gini's gamma in every dimension, a question of Koike and Hofert. Limits: the counterexamples are tiny effects with no claim about test power; all statements are about populations; the full attainable sets remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-26",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "copulas",
+    "Archimedean copulas",
+    "positive quadrant dependence",
+    "positive measure inducing",
+    "Gini's gamma",
+    "Spearman's rho",
+    "concordance measures",
+    "exchangeability",
+    "shared frailty"
+  ],
+  "repoUrl": "https://github.com/ipitchford/archimedean-quadrant-dependence-exchangeable-ranks",
+  "releaseUrl": "https://github.com/ipitchford/archimedean-quadrant-dependence-exchangeable-ranks/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/archimedean-quadrant-dependence-exchangeable-ranks/releases/download/v0.1.0-candidate/archimedean-quadrant-dependence-exchangeable-ranks-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24547093",
+  "conceptDoi": "10.5281/zenodo.24547092",
+  "zenodoUrl": "https://zenodo.org/records/24547093",
+  "citeText": "Anonymous (2026). Quadrant dependence, reflected copula measures and exchangeable ranks. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24547093",
+  "evidence": "A 14-page paper with a context-first introduction, written proofs of every result, limits, open problems and an AI-use statement. Two Python programs accompany it: verify.py checks every exact constant in exact rational arithmetic (effect-size slopes, the three-rate frailty certificate, the closed forms of d_n(s), −23/54, −4/9, attainment in 56 cases), and check_grid.py solves 18 finite-grid linear programs that agree with the exchangeability theorem. A clean replay in Python's optimised mode reproduced both recorded outputs; a changed constant makes verify.py fail; Linux CI reruns both.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computational checks. Internal AI-assisted review: a combined five-perspective Claude review panel, one merged revision round with an extension, and a verification re-review with a proof audit of the new and rewritten proofs, plus clean replays with a negative control. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (14 pages, with the release DOI), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 26 November 2026.",
+  "keyResults": [
+    "Theorem 3.1 (proof): PMI ⇒ PQD, NMI ⇒ NQD, NQD ⇒ NMI and PQD ⇒ PMI all fail for real-analytic Archimedean copulas arbitrarily close to independence, with explicit ranges 0 < |ε| ≤ 10⁻³ and 0 < |ε| ≤ 10⁻⁸, in every finite dimension; in the PQD example 3γ − 2ρ < 0.",
+    "Theorem 4.1 and Corollary 4.2 (proof): concordance comparisons detect exactly the symmetrised reflected measure; no finite family of comparisons characterises PMI.",
+    "Proposition 5.1 and Corollary 5.2 (proof): two frailty values always give PMI; three (rates 1, 2 and 200) can fail it, even with a density totally positive of every order.",
+    "Theorem 6.1 and Corollary 6.2 (proof): for n exchangeable ranks and −n/2 ≤ s ≤ 1, 3γ − 2sρ ranges exactly over [d_n(s), 3 − 2s]; d_n(s) = −(3 − 2s)/(n − 1) for even n; for n = 3, 3γ − 2ρ ≥ −23/54 and γ ≥ −4/9.",
+    "Theorem 7.1 (proof): the exact smallest common pairwise generalised Gini's gamma in every dimension; for n = 3 ordinary Gini's gamma it is −4/9 (Koike–Hofert Gaussian example about −0.379; correlation bound −1/2).",
+    "Credit and limits: Fuchs–Tschimpke (definition, theorem, conjecture), Graham (first counterexample), Ansari–Rockel–Steinmaßl, Koike–Hofert, Fuchs (2024) and Müller–Scarsini supply tools. The counterexamples are tiny effects; all statements are about populations; the full attainable sets remain open."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-perspective Claude review panel, a verification re-review and a proof audit of the new and rewritten proofs)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Both programs were rerun from fresh copies before release in Python's optimised mode and matched the recorded outputs; a changed exact constant makes verify.py fail. GitHub CI on Linux reruns them and compares the outputs under a declared policy."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "verify.py needs only the Python standard library; check_grid.py uses NumPy and SciPy (replayed with CPython 3.12.11, NumPy 2.3.5, SciPy 1.16.3) and runs on Linux CI. verify.txt compares exactly; check_grid.txt text and integers exactly, floats within absolute 1e-9. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Fuchs, S. and Tschimpke, M. (2024). A novel positive dependence property and its impact on a popular class of concordance measures. Journal of Multivariate Analysis 200, 105259.",
+      "url": "https://doi.org/10.1016/j.jmva.2023.105259"
+    },
+    {
+      "citation": "Graham, P. (2026). A counterexample on two kinds of positive dependence. Zenodo preprint.",
+      "url": "https://doi.org/10.5281/zenodo.23862336"
+    },
+    {
+      "citation": "Fuchs, S. (2024). Quantifying directed dependence via dimension reduction. Journal of Multivariate Analysis 201, 105266.",
+      "url": "https://doi.org/10.1016/j.jmva.2023.105266"
+    },
+    {
+      "citation": "Koike, T. and Hofert, M. (2023). Matrix compatibility and correlation mixture representation of generalized Gini's gamma. Canadian Journal of Statistics 51, 1111–1125.",
+      "url": "https://doi.org/10.1002/cjs.11748"
+    },
+    {
+      "citation": "Konstantopoulos, T. and Yuan, L. (2018). On the extendibility of finitely exchangeable probability measures. Transactions of the American Mathematical Society 371, 7067–7092.",
+      "url": "https://doi.org/10.1090/tran/7701"
+    },
+    {
+      "citation": "McNeil, A. J. and Nešlehová, J. (2009). Multivariate Archimedean copulas, d-monotone functions and ℓ1-norm symmetric distributions. The Annals of Statistics 37, 3059–3097.",
+      "url": "https://doi.org/10.1214/07-AOS556"
+    },
+    {
+      "citation": "Müller, A. and Scarsini, M. (2005). Archimedean copulae and positive dependence. Journal of Multivariate Analysis 93, 434–445.",
+      "url": "https://doi.org/10.1016/j.jmva.2004.04.003"
+    },
+    {
+      "citation": "Ansari, J., Rockel, M. and Steinmaßl, S. (2026). The exact region determined by Spearman's rho and Gini's gamma. arXiv:2609.19890.",
+      "url": "https://arxiv.org/abs/2609.19890"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:archimedean-quadrant-dependence-exchangeable-ranks",
+    "attemptIds": [
+      "ep-attempt:archimedean-quadrant-dependence-exchangeable-ranks-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide whether PMI and quadrant dependence coincide for Archimedean copulas, what concordance comparisons detect, and the exact limits on rank correlations for exchangeable ranks.",
+      "scope": "Bivariate Archimedean and shared-frailty copulas; pairs of ranks extending to n exchangeable ranks with slopes −n/2 ≤ s ≤ 1; generalised Gini equicorrelation."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The introduction states the problem, why it matters, what was known, what is new, the scope and a roadmap; the appendix maps each exact constant to its check.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in copulas check Theorem 3.1 and the exchangeability bounds of Theorem 6.1, and independently rerun the exact checks.",
+      "claimCeiling": "Written proofs of all four separations with explicit ranges, the comparison duality, the frailty threshold, the exchangeability range for −n/2 ≤ s ≤ 1 and the generalised Gini equicorrelation slice; population statements; tiny effects with no test-power claim; full attainable sets open; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "archimedean-quadrant-dependence-exchangeable-ranks-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable account of how PMI and quadrant dependence differ for Archimedean copulas, with exact limits for exchangeable ranks.",
+        "setting": "AI-assisted research in dependence modelling and copula theory",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
