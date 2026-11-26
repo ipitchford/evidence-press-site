@@ -1,0 +1,227 @@
+{
+  "slug": "rademacher-stop-loss-concave-comparison",
+  "title": "A sharp stop-loss bound for Rademacher sums, the constant two in a concave comparison, and local extremal sets on the discrete cube",
+  "shortTitle": "Two equal coins: a sharp Rademacher stop-loss bound",
+  "oneLine": "Kontorovich's concave comparison holds with constant 2, and what this says about sets of large first-level weight on the cube",
+  "abstract": "Flip fair coins, attach weights whose squares sum to one, and add the signed weights. How much of this Rademacher sum lies, on average, more than one standard deviation from zero? Answering a question Kontorovich asked on MathOverflow, Lowther reduced it to whether the mean excess E(|S| − 1)₊ is at most (√2 − 1)/2, the value for two equal coins, and proved a weaker constant. This candidate proves the sharp bound, E(|S| − t)₊ ≤ (√2 − t)/2 for every threshold t in [1/√2, 1.005], with equality only for two equal weights and a quadratic stability estimate. Hence for independent symmetric random variables and increasing concave f with f(0) = 0, the expectation of f at the square function is at most twice its expectation at the absolute sum; the constant 2 is sharp and extends to sign-invariant vectors in Hilbert space with linear stability, and Kontorovich's constant for tensorizing total variation improves from 0.1798 to (1 − e^(−1/2))/2 ≈ 0.1967. An inequality of Fang and Huang for three coefficients is extended to all weights. On the discrete cube, sets of density 1/4 ± h with maximal first-level weight are shown, unconditionally, to gain (2 + o(1))h² log(1/h). Assuming a theorem from Lei Yu's unrefereed 2026 preprint, the paper gives an exact formula near 1/4, the next-order terms and a 0.979 : 0.021 split of added mass between two faces governed by a Curie–Weiss–Potts equation, and the analogue near density 1/8. Limits: the thresholds are proved only on [1/√2, 1.005]; the cube results are local with non-explicit neighbourhoods; the finer cube results rely on Yu's preprint; density 1/16 is open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-26",
+  "version": "0.1.0",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Rademacher sums",
+    "Khintchine inequality",
+    "stop-loss transform",
+    "concave comparison",
+    "total variation tensorization",
+    "discrete cube",
+    "first-level Fourier weight",
+    "minimum average distance codes"
+  ],
+  "repoUrl": "https://github.com/ipitchford/rademacher-stop-loss-concave-comparison",
+  "releaseUrl": "https://github.com/ipitchford/rademacher-stop-loss-concave-comparison/releases/tag/v0.1.0",
+  "pdfUrl": "https://github.com/ipitchford/rademacher-stop-loss-concave-comparison/releases/download/v0.1.0/rademacher-stop-loss-concave-comparison-0.1.0.pdf",
+  "doi": "10.5281/zenodo.24548728",
+  "conceptDoi": "10.5281/zenodo.24548727",
+  "zenodoUrl": "https://zenodo.org/records/24548728",
+  "citeText": "Anonymous (2026). A sharp stop-loss bound for Rademacher sums, the constant two in a concave comparison, and local extremal sets on the discrete cube. Version 0.1.0. Evidence Press. https://doi.org/10.5281/zenodo.24548728",
+  "evidence": "An 18-page paper with a context-first introduction, written proofs, limits, open problems and an AI-use statement. Four Python programs accompany it, each failing on error under python -O: verify.py checks the stop-loss bound exactly at four thresholds, the three-coin bound for 1,000 integer weight tuples and an enclosure for 923 planar vector tuples; cube_census.py checks all 65,536 subsets of the four-dimensional cube and computes the constants to 80 digits; verify_asymptotic.py is a floating-point illustration of the asymptotic constants; check_extensions.py evaluates proof margins, interval endpoints, constants and the evidence for the conjecture. A clean replay in optimised mode reproduced the recorded outputs byte for byte; changing one census mass makes cube_census.py fail; Linux CI reruns the three quick scripts and compares floating-point lines with a declared tolerance.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and computational checks. Internal AI-assisted review: a five-role Claude review panel, one revision round with extensions, a verification re-review and a proof audit of the new and rewritten proofs, plus clean replays with a negative control. The finer cube results depend on Lei Yu's unrefereed 2026 preprint. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (18 pages, with the release DOI), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 26 November 2026.",
+  "keyResults": [
+    "Theorem 3.1 (proof): for unit weights and every t in [1/√2, 201/200], E(|S| − t)₊ ≤ (√2 − t)/2, with equality only for two equal weights, and a quadratic stability estimate at t = 1; this is Lowther's proposed bound. Proposition 3.3: two equal coins are not optimal outside [2 − √2, 2√2 − √3]; Conjecture 10.1 asks for that whole interval.",
+    "Corollary 4.1 and Theorems 4.4 and 5.1 (proof): Kontorovich's concave comparison holds with the sharp constant 2, also for sign-invariant vectors in Hilbert space, with linear stability.",
+    "Corollary 4.5 (proof): Kontorovich's total-variation tensorization constant improves from 0.1798 to (1 − e^(−1/2))/2 ≈ 0.1967.",
+    "Theorem 6.1 (proof): Fang and Huang's capped three-coefficient inequality holds for all coefficients, with stability.",
+    "Proposition 7.1 and Theorem 7.2 (proof, unconditional): W(1/4 ± h) = 2 min(1/4, 1/4 ± h)² + (2 + o(1)) h² log(1/h) for the dimension-free maximal first-level weight.",
+    "Corollaries 7.3 and 8.2 and Theorems 7.4 and 8.1 (proof conditional on Theorem 5 of Lei Yu's unrefereed September 2026 preprint): exact formula near density 1/4, next-order terms, a 0.979 : 0.021 split of added mass between two faces, and the analogue near density 1/8.",
+    "Credit and limits: Kontorovich (question and TV application), Lowther (reduction and proposed bound), Yu (Theorem 5, used for the finer results), Fang and Huang (capped lemma, majorant, density-1/8 value). Thresholds proved only on [1/√2, 1.005]; cube results local; density 1/16 open."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-perspective Claude review panel, a verification re-review and a proof audit)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All four programs were rerun from fresh copies in Python's optimised mode before release and reproduced the recorded outputs byte for byte; changing one census mass makes cube_census.py fail. GitHub CI on Linux reruns the three quick programs, comparing exact outputs exactly and floating-point lines within a declared tolerance; check_extensions.py (about 4.5 minutes) is replayed on the host only."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "verify.py needs only the standard library; cube_census.py and check_extensions.py use mpmath 1.3.0 and verify_asymptotic.py SciPy 1.17.0 and NumPy 2.3.5 (replayed with CPython 3.12.11). Floating-point outputs are compared with a declared tolerance; exact outputs compare exactly. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Lowther, G. (2024). Answer to “Expectation comparison inequality for concave function of symmetric random variables”. MathOverflow.",
+      "url": "https://mathoverflow.net/a/478525",
+      "pageOnly": true,
+      "pageOnlyReason": "MathOverflow answer cited in the bibliography as a web page; it has no DOI."
+    },
+    {
+      "citation": "Kontorovich, A. (2024). Expectation comparison inequality for concave function of symmetric random variables. MathOverflow question 478477.",
+      "url": "https://mathoverflow.net/q/478477",
+      "pageOnly": true,
+      "pageOnlyReason": "MathOverflow question cited in the bibliography as a web page; it has no DOI."
+    },
+    {
+      "citation": "Kontorovich, A. (2024). On the tensorization of the variational distance. arXiv:2409.10368.",
+      "url": "https://arxiv.org/abs/2409.10368"
+    },
+    {
+      "citation": "Yu, L. (2026). On average distance, level-1 Fourier weight, and Chang's lemma. arXiv:2504.02593 (version 2, unrefereed).",
+      "url": "https://arxiv.org/abs/2504.02593v2"
+    },
+    {
+      "citation": "Fang, Y. and Huang, H. (2026). Average pairwise Hamming distance of a subset in a hypercube. arXiv:2610.40486.",
+      "url": "https://arxiv.org/abs/2610.40486"
+    },
+    {
+      "citation": "Szarek, S. J. (1976). On the best constants in the Khinchin inequality. Studia Mathematica 58, 197–208.",
+      "url": "https://doi.org/10.4064/sm-58-2-197-208"
+    },
+    {
+      "citation": "Haagerup, U. (1981). The best constants in the Khintchine inequality. Studia Mathematica 70, 231–283.",
+      "url": "https://doi.org/10.4064/sm-70-3-231-283"
+    },
+    {
+      "citation": "De, A., Diakonikolas, I. and Servedio, R. A. (2016). A robust Khintchine inequality, and algorithms for computing optimal constants in Fourier analysis and high-dimensional geometry. SIAM Journal on Discrete Mathematics 30, 1058–1094.",
+      "url": "https://doi.org/10.1137/130919143"
+    },
+    {
+      "citation": "Eskenazis, A., Nayar, P. and Tkocz, T. (2024). Resilience of cube slicing in ℓp. Duke Mathematical Journal 173, 3377–3412.",
+      "url": "https://doi.org/10.1215/00127094-2024-0004"
+    },
+    {
+      "citation": "Melbourne, J. and Roberto, C. (2022). Quantitative form of Ball's cube slicing in ℝⁿ and equality cases in the min-entropy power inequality. Proceedings of the AMS 150, 3595–3611.",
+      "url": "https://doi.org/10.1090/proc/15944"
+    },
+    {
+      "citation": "Hollom, L. and Portier, J. (2025). Tight anti-concentration of Rademacher sums. Random Structures & Algorithms 67.",
+      "url": "https://doi.org/10.1002/rsa.70024"
+    },
+    {
+      "citation": "Ahlswede, R. and Katona, G. O. H. (1977). Contributions to the geometry of Hamming spaces. Discrete Mathematics 17, 1–22.",
+      "url": "https://doi.org/10.1016/0012-365X(77)90017-6"
+    },
+    {
+      "citation": "Althöfer, I. and Sillke, T. (1992). An “average distance” inequality for large subsets of the cube. Journal of Combinatorial Theory, Series B 56, 296–301.",
+      "url": "https://doi.org/10.1016/0095-8956(92)90024-R"
+    },
+    {
+      "citation": "Fu, F.-W., Wei, V. K. and Yeung, R. W. (2001). On the minimum average distance of binary codes: linear programming approach. Discrete Applied Mathematics 111, 263–281.",
+      "url": "https://doi.org/10.1016/S0166-218X(00)00284-5"
+    },
+    {
+      "citation": "Gandolfo, D., Ruiz, J. and Wouts, M. (2010). Limit theorems and coexistence probabilities for the Curie–Weiss Potts model with an external field. Stochastic Processes and their Applications 120, 84–104.",
+      "url": "https://doi.org/10.1016/j.spa.2009.10.011"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:rademacher-stop-loss-concave-comparison",
+    "attemptIds": [
+      "ep-attempt:rademacher-stop-loss-concave-comparison-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide whether two equal coins maximise the Rademacher stop-loss near one standard deviation, whether Kontorovich's concave comparison holds with constant 2, and what the bound implies for subsets of the cube with large first-level weight.",
+      "scope": "Rademacher sums with unit weight vectors; thresholds in [1/√2, 1.005]; sign-invariant Hilbert-space vectors; cube densities near 1/4 and 1/8, partly conditional on Yu's preprint."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The introduction states the question, what was known, the main results with conditional items marked, and a plan; AI_INDEX.md maps each claim to its proof and check.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only.",
+        "The finer cube results depend on an unrefereed preprint."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in Khintchine-type inequalities check Theorems 3.1 and 7.2, and independently rerun the computational checks.",
+      "claimCeiling": "Written proofs: sharp stop-loss bound on [1/√2, 1.005] with stability; constant 2 in Kontorovich's comparison (Hilbert space, linear stability); tensorization constant 0.1967; uncapped Fang–Huang inequality; unconditional local h² log(1/h) law near density 1/4. Finer cube results conditional on Yu's unrefereed preprint; local only; density 1/16 open; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "rademacher-stop-loss-concave-comparison-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable sharp Rademacher stop-loss bound and its consequences, with replayable checks.",
+        "setting": "AI-assisted research in probability and discrete analysis",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
