@@ -1,0 +1,177 @@
+{
+  "slug": "best-worst-voting-approval-winners",
+  "title": "Recovering approval winners from ranked ballots: best–worst voting and the approval-compatibility questions of Terzopoulou, Lang and Zwicker",
+  "shortTitle": "Best–worst voting recovers approval winners",
+  "oneLine": "One point for first, minus one for last: an exact answer to an open question on approval-compatible voting rules",
+  "abstract": "Suppose voters who cast approval ballots each submit a ranking that puts their approved candidates above the others. Can a positional scoring rule applied to such sincere rankings reproduce the approval result? Terzopoulou, Lang and Zwicker (Social Choice and Welfare, 2025) showed that Borda voting can make all approval co-winners win together once every ballot is replicated, that no other scoring rule can with three candidates, and asked whether Borda is unique for more candidates. This candidate shows that it is not. Best–worst voting, one point for first place and minus one for last, recovers the approval winner set exactly for every number m ≥ 3 of candidates with at most m − 1 copies of each ballot, and one voter can force that many. A polynomial-time test decides the property for any rational scoring vector; with it the rules that have the property are classified for four and five candidates and, among rational rules, for six. For the weaker requirement that each approval winner can be elected separately, the scalar inequalities those authors proved necessary are shown sufficient for every real scoring vector when a ballot may be split between rankings, and for every rational vector under replication; with whole copies and irrational scores an eight-candidate, five-ballot example shows the conjecture can fail. Limits: results concern the existence of sincere rankings in the worst case, not voter behaviour; irrational six-candidate rules and general m remain open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-26",
+  "version": "0.1.0",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "approval voting",
+    "positional scoring rules",
+    "best–worst voting",
+    "Borda count",
+    "approval compatibility",
+    "possible winner problem",
+    "social choice",
+    "submodular optimisation"
+  ],
+  "repoUrl": "https://github.com/ipitchford/best-worst-voting-approval-winners",
+  "releaseUrl": "https://github.com/ipitchford/best-worst-voting-approval-winners/releases/tag/v0.1.0",
+  "pdfUrl": "https://github.com/ipitchford/best-worst-voting-approval-winners/releases/download/v0.1.0/best-worst-voting-approval-winners-0.1.0.pdf",
+  "doi": "10.5281/zenodo.24547593",
+  "conceptDoi": "10.5281/zenodo.24547592",
+  "zenodoUrl": "https://zenodo.org/records/24547593",
+  "citeText": "Anonymous (2026). Recovering approval winners from ranked ballots: best–worst voting and the approval-compatibility questions of Terzopoulou, Lang and Zwicker. Version 0.1.0. Evidence Press. https://doi.org/10.5281/zenodo.24547593",
+  "evidence": "A 14-page paper with a context-first introduction, written proofs of every result, limits, open problems and an AI-use statement. Three Python programs in exact integer or rational arithmetic accompany it: verify_endpoints.py checks the rational certificates (3,600 inequalities for four candidates, 30,752 for five and 254,016 for each of three six-candidate corner rules), the two six-candidate witness elections and the eight-candidate counterexample; verify_rational_fpac.py checks the 18 + 18 signed vertex cases of the one-winner criterion; check_best_worst.py checks all one- and two-voter elections with three to five candidates. A clean replay in Python's optimised mode reproduced the recorded outputs; changing one certificate entry makes verify_endpoints.py fail; Linux CI reruns all three.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computational checks. Internal AI-assisted review: a combined five-perspective Claude review panel, one revision round, a verification re-review and a proof audit, plus clean replays with a negative control. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (14 pages, with the release DOI), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 26 November 2026.",
+  "keyResults": [
+    "Theorem 5 (proof): best–worst voting (1, 0, …, 0, −1) makes exactly the approval winners win after at most m − 1 copies of each ballot, for every m ≥ 3; one voter can force m − 1. Since (2, 1, 1, 0) is best–worst voting for four candidates, Borda is not the only such rule for any m ≥ 4.",
+    "Theorem 8 and Lemma 9 (proof): a polynomial-time test of the property for rational scoring vectors; every rule with the property is reflection symmetric.",
+    "Theorems 10 and 12 (proof with exact certificates): the rules with the property for four and five candidates, and the rational rules for six, whose gaps (g2, g3) form the quadrilateral with corners (0, 0), (0, 3), (5/4, 11/2) and (4, 0). The four-candidate necessity is due to Terzopoulou, Lang and Zwicker.",
+    "Theorem 13 and Corollary 14 (proof): the scalar inequalities of Terzopoulou, Lang and Zwicker suffice for each approval winner to be elected separately, for real scores when ballots may be split and for rational scores under replication.",
+    "Theorem 15 and Corollary 16 (proof): in an eight-candidate, five-ballot election, a finite replication elects the designated candidate exactly when a parameter of the rule is rational, and the copies needed can be arbitrarily large.",
+    "Credit and limits: Terzopoulou, Lang and Zwicker (question, Borda result, four-candidate necessary condition, scalar inequalities and conjecture), Edmonds (greedy method), Baumeister–Rothe and Kenig (possible winner problem). Existence of sincere rankings only; worst-case; irrational six-candidate rules and general m open."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-perspective Claude review panel, a verification re-review and a proof audit)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All three programs were rerun from fresh copies in Python's optimised mode before release and printed the expected results; changing one certificate entry makes verify_endpoints.py fail. GitHub CI on Linux reruns them and compares every printed line exactly."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "verify_endpoints.py and check_best_worst.py need only the standard library; verify_rational_fpac.py uses SymPy 1.14.0 (replayed with CPython 3.12.11). All arithmetic is exact, so outputs compare exactly with no tolerance. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Terzopoulou, Z., Lang, J. and Zwicker, W. S. (2025). Approval compatible voting rules. Social Choice and Welfare 66, 1–26.",
+      "url": "https://doi.org/10.1007/s00355-025-01588-9"
+    },
+    {
+      "citation": "Baumeister, D. and Rothe, J. (2012). Taking the final step to a full dichotomy of the possible winner problem in pure scoring rules. Information Processing Letters 112, 186–190.",
+      "url": "https://doi.org/10.1016/j.ipl.2011.11.016"
+    },
+    {
+      "citation": "Edmonds, J. (2003). Submodular functions, matroids, and certain polyhedra. In Combinatorial Optimization — Eureka, You Shrink!, Lecture Notes in Computer Science 2570, 11–26 (first published 1970).",
+      "url": "https://doi.org/10.1007/3-540-36478-1_2"
+    },
+    {
+      "citation": "Kenig, B. (2018). The complexity of the possible winner problem over partitioned preferences. arXiv:1802.09001.",
+      "url": "https://arxiv.org/abs/1802.09001"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:best-worst-voting-approval-winners",
+    "attemptIds": [
+      "ep-attempt:best-worst-voting-approval-winners-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide which positional scoring rules let sincere rankings reproduce approval winners, whether Borda is unique, and whether the scalar inequalities of Terzopoulou, Lang and Zwicker suffice for each approval winner.",
+      "scope": "Approval profiles with sincere (compatible) rankings; positional scoring rules; replication and split ballots; worst case over electorates."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The introduction states the question, what was known, the new results and a plan; Section 10 and AI_INDEX.md map each certificate and count to its check.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a social-choice specialist check Theorems 5, 12 and 15, and independently rerun the exact certificate checks.",
+      "claimCeiling": "Written proofs: best–worst voting recovers the approval winners with at most m − 1 copies, sharp; polynomial-time test for rational rules; classifications for four, five and (rational) six candidates; scalar criterion for split and rational FPAC; eight-candidate example separating replication from splitting. Existence of sincere rankings only; worst case; irrational six-candidate rules and general m open; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "best-worst-voting-approval-winners-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable answer to which scoring rules let sincere rankings reproduce approval winners, with exact certificates.",
+        "setting": "AI-assisted research in computational social choice",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
