@@ -1,0 +1,248 @@
+{
+  "slug": "permanent-on-top-fixed-rank-rates",
+  "title": "Sharp exponential rates for permanent-on-top and anomalous boson bunching at fixed rank",
+  "shortTitle": "How fast permanent-on-top fails at fixed rank",
+  "oneLine": "The sharp base is e/2 at complex rank two and e²/6 at real rank three; e^γ is a lower bound in general",
+  "abstract": "The permanent-on-top conjecture of 1966 said that the permanent of a positive semidefinite matrix A is the largest eigenvalue of its Schur power Π(A), an n!-by-n! companion matrix that always has per A as one eigenvalue. Shchesnovich showed in 2016 that it is false; the question became by how much it can fail. The size of the failure bounds how badly a family of permanent inequalities can fail, enters the constants of permanent approximation (Anari, Gurvits, Oveis Gharan and Saberi), and limits anomalous bunching of partially distinguishable photons. This candidate proves that at every fixed rank d the worst ratio ‖Π(A)‖/per A grows exponentially in n with an exact base: e/2 ≈ 1.36 for complex rank two, e²/6 ≈ 1.23 for real rank three, with exact formulas for every d and both sequences rising to e^γ ≈ 1.78. The best general constant c* satisfies e^γ ≤ c* ≤ e^(1+γ) (previously only c* > 1 was known), and e^γ is the exact rate when the rank grows more slowly than √n. Balanced permanental compounds have the same bases, so an inequality of Pate fails exponentially. In the standard lossless optical model, two output ports with polarisation give exponential bunching enhancement with sharp base e/2, and the six standard polarisations give 62731/28800 ≈ 2.18 at twelve photons and more than 24,000 at sixty. Credit: the complex mixed–pure constant is Yuan and Parrilo's and the link uses the Christandl–König–Renner postselection technique. Limits: rates are asymptotic; whether c* = e^γ at full rank is open; optical numbers are model predictions with small absolute probabilities (about 3×10⁻⁵ at twelve photons). AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-26",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "permanent",
+    "permanent-on-top conjecture",
+    "Schur power",
+    "permanental compounds",
+    "positive semidefinite matrices",
+    "boson bunching",
+    "partial distinguishability",
+    "postselection technique"
+  ],
+  "repoUrl": "https://github.com/ipitchford/permanent-on-top-fixed-rank-rates",
+  "releaseUrl": "https://github.com/ipitchford/permanent-on-top-fixed-rank-rates/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/permanent-on-top-fixed-rank-rates/releases/download/v0.1.0-candidate/permanent-on-top-fixed-rank-rates-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24550760",
+  "conceptDoi": "10.5281/zenodo.24550759",
+  "zenodoUrl": "https://zenodo.org/records/24550760",
+  "citeText": "Anonymous (2026). Sharp exponential rates for permanent-on-top and anomalous boson bunching at fixed rank. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24550760",
+  "evidence": "A 14-page paper with a context-first introduction, written proofs of all theorems, limits, open problems and an AI-use statement. One Python program, code/verify_exp_rates.py, runs 28 checks: the constants g_C and g_R to 30 digits and their monotonicity, the bound of Theorem 1.2(a) on 36 random configurations, Shchesnovich's order-five example, the tetrahedral and octahedral closed forms against Ryser's formula, every quoted ratio and probability in exact rational arithmetic, and the incidence identity behind Theorem 5.1 (numpy 2.3.5, mpmath 1.3.0); every check raises an error on failure, even under python -O. These finite calculations test constants, closed forms and identities; they do not certify the asymptotic theorems. A clean replay in optimised mode reproduced the recorded results; changing the exact tetrahedral ratio 102469/74115 makes the program fail. Linux CI reruns the program and compares outputs exactly for exact fields and within declared tolerances (absolute 1e-12 or relative 1e-9) for floating-point fields.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and computational checks. Internal AI-assisted review: a combined five-perspective Claude review with a line-by-line check of every proof, clean replays, one revision round with extensions, a re-review and a proof audit of all new and rewritten proofs. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final manuscript (14 pages, with the release DOI), its program and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 26 November 2026.",
+  "keyResults": [
+    "Theorem 1.1 (proof): for unit vectors in K^d (K = R or C) with d fixed, the worst ratio ‖Π(A)‖/per A grows like g_K(d)^n, with g_C(d) = e^{H_{d−1}}/d and g_R(d) = (2/d) exp{ψ(d/2) − ψ(1)}; thus g_C(2) = e/2 ≈ 1.36, g_R(3) = e²/6 ≈ 1.23, g_R(2) = 1, and both sequences increase strictly to e^γ ≈ 1.78.",
+    "Theorem 1.2 (proof): ‖Π(A)‖ ≤ C(n+d²−1, n) g_K(d)^n per A at rank at most d; the best general constant satisfies e^γ ≤ c* ≤ e^(1+γ) (lower bound new, upper bound Anari, Gurvits, Oveis Gharan and Saberi's); e^γ is the exact rate when the rank grows like o(√n).",
+    "Theorem 5.1 (proof): balanced permanental compounds have the same sharp bases, so Pate's 0/1 inequality fails with base e/2 at every complex rank d ≥ 2.",
+    "Corollary 6.1 (proof): the multimode bunching ratio of partially distinguishable photons has the same sharp bases; two output ports with polarisation give base e/2. Section 7: the six standard polarisations give exact model enhancements 62731/28800 ≈ 2.18 at twelve photons and more than 24,000 at sixty, with limit √(3/2) ≈ 1.22 per photon.",
+    "Credit and limits: the complex mixed–pure constant and its sharpness are Yuan and Parrilo's; the link uses the Christandl–König–Renner postselection technique. Rates are asymptotic; whether c* = e^γ at full rank is open; the optical values are predictions of the standard lossless model with small absolute probabilities (about 3×10⁻⁵ at twelve photons), not experiments."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a five-perspective Claude review panel, a re-review and a proof audit)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "The program was rerun from a fresh copy in Python's optimised mode before release and reproduced the recorded results byte for byte; changing the exact tetrahedral ratio 102469/74115 makes it fail. GitHub CI on Linux reruns it and compares outputs exactly for exact fields and within declared tolerances for floating-point fields."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "verify_exp_rates.py uses numpy 2.3.5 and mpmath 1.3.0; replayed with CPython 3.12.11. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Shchesnovich, V. S. (2016). The permanent-on-top conjecture is false. Linear Algebra and its Applications 490, 196–201. The first counterexample; its order-five example is rechecked here.",
+      "url": "https://doi.org/10.1016/j.laa.2015.10.034"
+    },
+    {
+      "citation": "Anari, N., Gurvits, L., Oveis Gharan, S. and Saberi, A. (2017). Simply Exponential Approximation of the Permanent of Positive Semidefinite Matrices. FOCS 2017. The upper bound e^(1+γ) and the question of the best constant.",
+      "url": "https://doi.org/10.1109/FOCS.2017.89"
+    },
+    {
+      "citation": "Yuan, C. and Parrilo, P. A. (2022). Maximizing products of linear forms, and the permanent of positive semidefinite matrices. Mathematical Programming 193, 499–510. The complex mixed–pure constant used here.",
+      "url": "https://doi.org/10.1007/s10107-021-01616-3"
+    },
+    {
+      "citation": "Christandl, M., König, R. and Renner, R. (2009). Postselection Technique for Quantum Channels with Applications to Quantum Cryptography. Physical Review Letters 102, 020504. The technique linking the Schur power to the mixed–pure gap.",
+      "url": "https://doi.org/10.1103/PhysRevLett.102.020504"
+    },
+    {
+      "citation": "Pappas, A. and Révész, S. Gy. (2004). Linear polarization constants of Hilbert spaces. Journal of Mathematical Analysis and Applications 300, 129–146.",
+      "url": "https://doi.org/10.1016/j.jmaa.2004.06.031"
+    },
+    {
+      "citation": "Seron, B., Novo, L. and Cerf, N. J. (2023). Boson bunching is not maximized by indistinguishable particles. Nature Photonics 17, 702–709. Linear anomalous bunching and the question answered here.",
+      "url": "https://doi.org/10.1038/s41566-023-01213-0"
+    },
+    {
+      "citation": "Pate, T. H. (2008). On permanental compounds. Linear Algebra and its Applications 429, 1093–1101. The 0/1 inequality shown to fail exponentially.",
+      "url": "https://doi.org/10.1016/j.laa.2007.05.019"
+    },
+    {
+      "citation": "Drury, S. (2016). A counterexample to a question of Bapat and Sunder. The Electronic Journal of Linear Algebra 31, 69–70.",
+      "url": "https://doi.org/10.13001/1081-3810.3178"
+    },
+    {
+      "citation": "Drury, S. (2017). A real counterexample to two inequalities involving permanents. Mathematical Inequalities & Applications 20, 349–352.",
+      "url": "https://doi.org/10.7153/mia-20-23"
+    },
+    {
+      "citation": "Drury, S. (2018). A counterexample to a question of Bapat & Sunder. Mathematical Inequalities & Applications 21, 517–520.",
+      "url": "https://doi.org/10.7153/mia-2018-21-37"
+    },
+    {
+      "citation": "Tran, H. A. (2022). A simple counterexample for the permanent-on-top conjecture. Mathematical Inequalities & Applications 25, 1–16.",
+      "url": "https://doi.org/10.7153/mia-2022-25-01"
+    },
+    {
+      "citation": "Zhang, F. (2016). An update on a few permanent conjectures. Special Matrices 4.",
+      "url": "https://doi.org/10.1515/spma-2016-0030"
+    },
+    {
+      "citation": "Aulbach, M., Markham, D. and Murao, M. (2010). The maximally entangled symmetric state in terms of the geometric measure. New Journal of Physics 12, 073025.",
+      "url": "https://doi.org/10.1088/1367-2630/12/7/073025"
+    },
+    {
+      "citation": "Lev, V. F. (2015). Discrete norms of a matrix and the converse to the expander mixing lemma. Linear Algebra and its Applications 483, 158–181.",
+      "url": "https://doi.org/10.1016/j.laa.2015.05.031"
+    },
+    {
+      "citation": "Anonymous (2026). Sharp logarithmic growth of the Bapat–Sunder eigenvalue ratio. Evidence Press (Zenodo), version 0.1.0-candidate. The companion release on the first permanental compound.",
+      "url": "https://doi.org/10.5281/zenodo.24509057"
+    },
+    {
+      "citation": "Anonymous (2026). Asymptotic permanental dominance at fixed Gram rank. Evidence Press (Zenodo), version 0.1.0-candidate. A related release in the same fixed-rank setting.",
+      "url": "https://doi.org/10.5281/zenodo.24536861",
+      "pageOnly": true,
+      "pageOnlyReason": "Related Evidence Press release published after the manuscript was frozen; linked as page context, not cited in the manuscript."
+    },
+    {
+      "citation": "Anari, N. and Ebrahimnejad, F. (2026). Optimal e^{(γ+o(1))n}-Approximation of the Permanent of Positive Semidefinite Matrices. arXiv:2605.21946.",
+      "url": "https://arxiv.org/abs/2605.21946"
+    },
+    {
+      "citation": "Yuan, C. and Parrilo, P. A. (2021). Semidefinite Relaxations of Products of Nonnegative Forms on the Sphere. arXiv:2102.13220.",
+      "url": "https://arxiv.org/abs/2102.13220"
+    },
+    {
+      "citation": "Pioge, L., Novo, L. and Cerf, N. J. (2026). A unified framework for anomalous boson bunching. arXiv:2607.19499.",
+      "url": "https://arxiv.org/abs/2607.19499"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:permanent-on-top-fixed-rank-rates",
+    "attemptIds": [
+      "ep-attempt:permanent-on-top-fixed-rank-rates-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide how far the permanent-on-top conjecture fails: the exact exponential rate of the worst ratio between the top Schur-power eigenvalue and the permanent at each fixed rank, the best general constant, and the consequences for permanental compounds and anomalous boson bunching.",
+      "scope": "Positive semidefinite Gram matrices of unit vectors in R^d or C^d with d fixed and n growing; rank o(√n); balanced permanental compounds; the standard lossless model of partial distinguishability."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The introduction states the question, what was known, the main results and their credit; AI_INDEX.md maps each claim to its proof and check.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only.",
+        "The program tests constants, closed forms and identities, not the asymptotic theorems."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [
+      {
+        "relation": "extends-result",
+        "workId": "ep-work:bapat-sunder-eigenvalue-ratio-growth",
+        "legacyReleaseSlug": null,
+        "externalUrl": null,
+        "inheritedClaim": "The companion release's layer-cake lemma and its proof that real rank-two matrices never violate the permanent-on-top conjecture, reused here for the whole Schur power.",
+        "inheritedAssuranceCeiling": "Unrefereed AI-assisted candidate with internal checks only; this successor is not independent confirmation of the parent."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in permanents and quantum information check Theorems 1.1, 1.2 and 5.1, and independently rerun the checks.",
+      "claimCeiling": "Written proofs: at fixed rank d the worst permanent-on-top ratio grows with exact base g_C(d) or g_R(d) (e/2 at complex rank two, e²/6 at real rank three, rising to e^γ); e^γ ≤ c* ≤ e^(1+γ); exact rate e^γ for rank o(√n); the same bases for balanced compounds and multimode bunching. Asymptotic rates; optical values are model predictions; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "permanent-on-top-fixed-rank-rates-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable determination of how fast the permanent-on-top conjecture fails at fixed rank, with replayable checks.",
+        "setting": "AI-assisted research on permanents and boson bunching",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}

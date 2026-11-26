@@ -205,6 +205,15 @@ const SPECS = {
     tag: 'UNREFEREED CANDIDATE',
     hero: require('./multiplane-lensing-art').thumbnailHero()
   },
+  'permanent-on-top-fixed-rank-rates': {
+    palette: 'auto',
+    kicker: ['RESEARCH RELEASE · 26 NOVEMBER 2026', 'PERMANENTS · BOSON BUNCHING'],
+    head: ['Permanent-on-top', '<em>fails exponentially.</em>'],
+    headSize: 68,
+    sub: 'At fixed rank the failure has an exact base: e/2 at complex rank two, rising to e^γ.',
+    tag: 'UNREFEREED CANDIDATE',
+    hero: require('./permanent-on-top-rates-art').thumbnailHero()
+  },
   'gaussian-rkhs-arbitrary-noise-mixtures': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 26 NOVEMBER 2026', 'GAUSSIAN KERNEL SPACES · RANDOM DYNAMICS'],
