@@ -1529,6 +1529,11 @@ ${Array.from({ length: 9 }, (_, k) => {
       <h3>Think Again</h3>
       <p>Puzzles for the maths and science everyone should understand, with the sources for its facts listed puzzle by puzzle.</p>
     </a>
+    <a class="programme-card book-card" href="/connected-history/">
+      <p class="card-date">Book · 951 discoveries</p>
+      <h3>A Connected History of Science and Technology</h3>
+      <p>3.3 million years of invention, linked wherever one discovery truly passed something to another, with every claim tied to its source.</p>
+    </a>
   </div>
 </section>
 <section class="wrap" aria-label="Releases">
@@ -2357,6 +2362,92 @@ ${foot}`);
   write('think-again/index.md', md);
 }
 
+/* /connected-history/: the book page for A Connected History of Science and
+   Technology (edited by Ian Pitchford). The book is all rights reserved and in
+   KDP Select, so this page carries no free text of the book and no CC0 licence.
+   Metadata lives in pages/connected-history.json (edition URLs and ISBNs are the
+   release-day edits). */
+function connectedHistoryPage() {
+  const BOOK = JSON.parse(fs.readFileSync(path.join(ROOT, 'pages', 'connected-history.json'), 'utf8'));
+  const url = `${BASE}/connected-history/`;
+  const EDITIONS = (BOOK.editions || []).filter(e => e.url);
+  for (const e of EDITIONS)
+    if (!/^https:\/\/www\.amazon\.com\/dp\/[A-Z0-9]{10}\?tag=aphonicdrift-20$/.test(e.url))
+      throw new Error(`pages/connected-history.json: ${e.format} url must be an amazon.com /dp/ link carrying the Associates tag`);
+  for (const e of BOOK.editions || [])
+    if (e.isbn && !/^97[89]\d{10}$/.test(e.isbn)) throw new Error(`pages/connected-history.json: ${e.format} isbn must be ISBN-13 digits`);
+  for (const f of [BOOK.cover.webp, BOOK.cover.jpg, BOOK.og])
+    if (!fs.existsSync(path.join(ROOT, f.replace(/^\//, '')))) throw new Error(`pages/connected-history.json: missing ${f}`);
+  if (!Array.isArray(BOOK.parts) || BOOK.parts.length !== 12) throw new Error('pages/connected-history.json: expected twelve parts');
+  const fullTitle = `${BOOK.title}: ${BOOK.subtitle}`;
+  const description = BOOK.description;
+  const editor = { '@type': 'Person', name: BOOK.editor };
+  const jsonld = { '@context': 'https://schema.org', '@graph': [websiteNode(), {
+    '@type': 'WebPage', '@id': `${url}#page`, url, name: fullTitle, description,
+    inLanguage: CONFIG.language, isPartOf: { '@id': `${BASE}/#website` }, about: { '@id': `${url}#book` },
+    datePublished: BOOK.datePublished, dateModified: BOOK.dateModified, image: BASE + BOOK.og
+  }, {
+    '@type': 'Book', '@id': `${url}#book`, name: BOOK.title, alternativeHeadline: BOOK.subtitle,
+    editor, publisher: { '@id': `${BASE}/#org` }, inLanguage: CONFIG.language, image: BASE + BOOK.cover.jpg, url,
+    copyrightYear: 2026, copyrightHolder: editor,
+    workExample: (BOOK.editions || []).map(e => Object.assign({ '@type': 'Book',
+      bookFormat: e.format === 'Kindle' ? 'https://schema.org/EBook' : e.format === 'Hardback' ? 'https://schema.org/Hardcover' : 'https://schema.org/Paperback',
+      name: BOOK.title }, e.isbn ? { isbn: e.isbn } : {}))
+  }] };
+  const metaExtra = [
+    ['og:type', 'book'], ['og:site_name', CONFIG.siteName],
+    ['og:title', fullTitle], ['og:description', description], ['og:url', url],
+    ['og:image', BASE + BOOK.og], ['og:image:width', '1200'], ['og:image:height', '630'],
+    ['og:image:alt', BOOK.cover.alt],
+    ['twitter:card', 'summary_large_image'], ['twitter:title', fullTitle], ['twitter:description', description],
+    ['twitter:image', BASE + BOOK.og]
+  ].map(([k, v]) => /^(og|book):/.test(k)
+    ? `<meta property="${k}" content="${escAttr(v)}">`
+    : `<meta name="${k}" content="${escAttr(v)}">`).join('\n') + '\n';
+  const extraLinks = `<link rel="alternate" type="text/markdown" href="${url}index.md">
+`;
+  /* Edition links are Amazon Associates links: labelled "Ad", disclosed and rel="sponsored". */
+  const buy = EDITIONS.length
+    ? `${esc(BOOK.availability)}<br><span class="shop-adtag">${esc(BOOK.buyTag)}</span> ${esc(BOOK.buyHeading)}: ${EDITIONS.map(e => `<a href="${escAttr(e.url)}" rel="sponsored noopener">${esc(e.format)}</a>`).join(' · ')}<br><small>${esc(BOOK.buyStatement)}</small>`
+    : esc(BOOK.availability);
+  const audio = BOOK.audiobook ? `<br><a href="${escAttr(BOOK.audiobook.url)}" rel="noopener">${esc(BOOK.audiobook.label)}</a><br><small>${esc(BOOK.audiobook.note)}</small>` : '';
+  const editionIsbns = (BOOK.editions || []).filter(e => e.isbnDisplay).map(e => `${e.format} ISBN ${e.isbnDisplay}`).join(' · ');
+  const facts = [editionIsbns, BOOK.format, 'Evidence Press, 2026'].filter(Boolean).join(' · ');
+  const body = `<article class="release think-again connected-history"><div class="wrap"><div class="prose">
+<p class="kicker">${esc(BOOK.kicker)}</p>
+<div class="ta-head">
+<picture class="ta-cover"><source srcset="${escAttr(BOOK.cover.webp)}" type="image/webp"><img src="${escAttr(BOOK.cover.jpg)}" alt="${escAttr(BOOK.cover.alt)}" width="${BOOK.cover.width}" height="${BOOK.cover.height}" loading="eager" decoding="async"></picture>
+<div>
+<h1>${esc(BOOK.title)}</h1>
+<p class="standfirst">${esc(BOOK.subtitle)}</p>
+<p>Edited by ${esc(BOOK.editor)}</p>
+${BOOK.summary.map(t => `<p>${inline(t)}</p>`).join('\n')}
+<p class="ta-facts">${esc(facts)}<br>${buy}${audio}</p>
+</div>
+</div>
+<div class="body">
+<h2 id="periods">${esc(BOOK.partsHeading)}</h2>
+<p>${inline(BOOK.partsIntro)}</p>
+<ol class="ch-parts">${BOOK.parts.map(p => `<li><span class="ch-dates">${esc(p.dates)}</span> · ${esc(p.title)}</li>`).join('')}</ol>
+<h2 id="evidence">${esc(BOOK.methodHeading)}</h2>
+${BOOK.method.map(t => `<p>${inline(t)}</p>`).join('\n')}
+<h2 id="lectures">${esc(BOOK.exploreHeading)}</h2>
+<p>${inline(BOOK.explore)}</p>
+<p class="note">${inline(BOOK.rights)}</p>
+</div>
+</div></div></article>`;
+  write('connected-history/index.html', `${head({ title: `${fullTitle} · ${CONFIG.siteName}`, description, canonical: url, jsonld, metaExtra, extraLinks })}
+${body}
+${foot}`);
+  const buyMd = EDITIONS.length
+    ? `${BOOK.availability} ${BOOK.buyHeading} (${BOOK.buyTag}): ${EDITIONS.map(e => `[${e.format}](${e.url})`).join(' · ')}. ${BOOK.buyStatement}`
+    : BOOK.availability;
+  const audioMd = BOOK.audiobook ? ` [${BOOK.audiobook.label}](${BOOK.audiobook.url}). ${BOOK.audiobook.note}` : '';
+  write('connected-history/index.md', `---\ntitle: "${fullTitle}"\neditor: ${BOOK.editor}\nurl: ${url}\n---\n\n# ${fullTitle}\n\nEdited by ${BOOK.editor}\n\n${
+    BOOK.summary.join('\n\n')}\n\n${facts}. ${buyMd}${audioMd}\n\n## ${BOOK.partsHeading}\n\n${BOOK.partsIntro}\n\n${
+    BOOK.parts.map((p, i) => `${i + 1}. ${p.dates} · ${p.title}`).join('\n')}\n\n## ${BOOK.methodHeading}\n\n${
+    BOOK.method.join('\n\n')}\n\n## ${BOOK.exploreHeading}\n\n${BOOK.explore}\n\n${BOOK.rights}\n`);
+}
 /* /why-minds-break/: the book page for Ian Pitchford's Why Minds Break, with
    one summary page per chapter at /why-minds-break/chapter-N/. The summaries
    are written for the site, not extracted from the book: the Kindle edition is
@@ -3891,6 +3982,7 @@ simplePage('origins-of-violence/', 'The Origins of Violence: Is Psychopathy an A
 shopPage();
 applicationsPage();
 thinkAgainPage();
+connectedHistoryPage();
 require('./tools/minds-explored').build(ROOT, DIST);
 require('./tools/minds-explored').build(ROOT, DIST, 'science-explored');
 whyMindsBreakPages();

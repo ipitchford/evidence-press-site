@@ -77,7 +77,7 @@ check('homepage keeps four compact programme signposts',
   homeCardRoutes('programme-title').join(' ') === '/atlas/ /observatory/ /articles/ /productivity/' &&
   /@media\s*\(min-width:\s*1040px\)\s*\{\s*\.programme-cards\s*\{\s*grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/.test(siteCss));
 check('homepage Learn section links both teaching atlases and the two companion programmes',
-  homeCardRoutes('learn-title').join(' ') === '/minds-explored/ /science-explored/ /why-minds-break/ /think-again/');
+  homeCardRoutes('learn-title').join(' ') === '/minds-explored/ /science-explored/ /why-minds-break/ /think-again/ /connected-history/');
 check('Atlas explanatory prose aligns with the page wrapper',
   /\.atlas-prose\s*\{[^}]*max-width:\s*none;[^}]*margin:\s*2\.6rem\s+0\s+0;/.test(atlasCss));
 check('every release hero art URL is bound to the exact committed SVG bytes',

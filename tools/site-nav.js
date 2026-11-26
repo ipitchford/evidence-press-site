@@ -35,7 +35,7 @@ const GROUPS = [
     sections: [
       { label: 'Minds Explored', href: '/minds-explored/',
         detail: 'University lectures on mind, brain and behaviour, organised into topic guides and learning paths.' },
-      { label: 'Science Explored', href: '/science-explored/',
+      { label: 'Science Explored', href: '/science-explored/', also: ['/connected-history/'],
         detail: 'University lectures and courses across the sciences, with guides, learning paths and a historical atlas.' },
       { label: 'Why Minds Break', href: '/why-minds-break/',
         detail: 'A book on the evolutionary and developmental roots of mental disorder, with free films and essays on common conditions.' },
