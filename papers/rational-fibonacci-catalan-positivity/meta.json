@@ -1,0 +1,197 @@
+{
+  "slug": "rational-fibonacci-catalan-positivity",
+  "title": "Rational Fibonacci–Catalan polynomials: positivity, a Coxeter classification and q-Fibonomial unimodality up to width seven",
+  "shortTitle": "Fibonacci–Catalan polynomials have nonnegative coefficients",
+  "oneLine": "A six-year-old positivity observation proved for every pair, an exact Coxeter table, and unimodality up to width seven",
+  "abstract": "Replacing each whole number j in a binomial coefficient or Catalan number by the q-integer of the Fibonacci number F_j gives the q-Fibonomial coefficients and the rational Fibonacci–Catalan functions C_{m,n}(q) of Bergeron, Ceballos and Küstner. Following S. X. Li, C_{m,n} is a polynomial when gcd(m,n) ≤ 2; Bergeron, Ceballos and Küstner observed nonnegative coefficients in every computed case and asked what they count. This candidate proves the nonnegativity for every such pair: for every pair the reduced denominator is exactly the q-integer of F_gcd(m,n), and the reduced numerator is the Hilbert series of an Artinian weighted complete intersection. The known complete-intersection criterion is verified by a new uniform semigroup count using Fibonacci divisibility, which covers the pairs with comparable indices that existing sufficient conditions leave open. The same holds for Lucas sequences with positive coprime parameters. For the analogous product attached to any irreducible finite reflection group, the shifts that give a polynomial are determined exactly and every such polynomial is positive, including every Fuss–Catalan case. The q-Fibonomial unimodality conjecture is proved whenever the smaller index is at most seven (widths five to seven by exact computer certificates), on a set of pairs of density about 0.408, and for each fixed width once the larger index is large. Limits: no combinatorial model on the original tilings, and the full unimodality conjecture remains open. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "q-Fibonomial coefficients",
+    "Fibonacci numbers",
+    "rational Catalan numbers",
+    "q-analogues",
+    "weighted complete intersections",
+    "cyclotomic generating functions",
+    "Coxeter groups",
+    "unimodality"
+  ],
+  "repoUrl": "https://github.com/ipitchford/rational-fibonacci-catalan-positivity",
+  "releaseUrl": "https://github.com/ipitchford/rational-fibonacci-catalan-positivity/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/rational-fibonacci-catalan-positivity/releases/download/v0.1.0-candidate/rational-fibonacci-catalan-positivity-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24541015",
+  "conceptDoi": "10.5281/zenodo.24541014",
+  "zenodoUrl": "https://zenodo.org/records/24541015",
+  "citeText": "Anonymous (2026). Rational Fibonacci–Catalan polynomials: positivity, a Coxeter classification and q-Fibonomial unimodality up to width seven. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24541015",
+  "evidence": "A 14-page paper with a plain introduction (the objects, why they matter, what was known, what is new and a roadmap), written proofs of Theorems 3.1, 6.1, 7.1 and 8.1, Corollary 4.1 and the infinite families of Theorem 5.1, open problems and an AI-use statement. Seven standard-library Python programs in exact integer and rational arithmetic accompany it: verify_type_a.py (Theorem 3.1 on 104 pairs, the support test on 8695 subsets, Example 3.3, Corollary 4.1), two independent certificates for the exceptional reflection groups (verify_exceptional.py, verify_pairs.py), verify_classical.py (187 classical and dihedral cases), claims.py, width_cert.py (widths four to seven) and replay.py. A clean replay in Python's optimised mode reproduced all nine certificate runs; corrupting the H3 residues or the positivity check makes the programs fail; Linux CI reruns them. The exceptional rows of Theorem 5.1 and Theorem 9.1 (widths five to seven) depend on the programs; elsewhere they are cross-checks.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computer certificates. Internal AI-assisted review: a combined five-role Claude review panel, one revision round with extensions, a verification re-review with a proof audit of every new or rewritten proof, and a clean replay with negative controls. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (14 pages, with the release DOI under the author line), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 3.1 (proof): for every pair (m,n) the reduced denominator of C_{m,n} is [F_gcd(m,n)]_q and the rest is the Hilbert series of an Artinian weighted complete intersection; hence C_{m,n} has nonnegative coefficients exactly when gcd(m,n) ≤ 2. Example: C_{10,4} = [89]_q([72]_{q²}[77]_{q³} + q²³¹[48]_{q³}).",
+    "Corollary 4.1 (proof): the same denominator and complete-intersection structure for Lucas sequences with coprime positive parameters, such as the Pell numbers.",
+    "Theorem 5.1 and Corollary 5.2: for every irreducible finite reflection group the shifts giving a polynomial are listed exactly and all such polynomials are positive (proofs for types A, B, D and I₂(k); exceptional types by two independent exact certificates); every Fuss–Catalan case is positive; for B₃ with shift 3 the product is [21]_q, correcting a stated condition for types B and D.",
+    "Theorems 6.1 and 7.1 (proof): P_{m,n} is unimodal on a set of pairs of density about 0.408, and for each fixed n ≥ 4 increases strictly to the centre once m is large.",
+    "Theorems 8.1 and 9.1: P_{m,n} is unimodal whenever min(m,n) ≤ 7 (previously three); width four by proof, widths five to seven by exact certificates.",
+    "Limits and credit: no combinatorial model on the original tilings, so the 2020 open problem stays open in its intended sense; the full unimodality conjecture is open; twisted and reducible cases are not treated. Polynomiality is due to S. X. Li; unimodality implies positivity to Aliniaeifard and Connelly et al.; the complete-intersection criterion and the widely separated case to Gatzweiler, Levicán-Santibáñez and Yoshida."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-role Claude review panel, a verification re-review and a proof audit of every new or rewritten proof)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All nine certificate runs were rerun from a fresh copy before release in Python's optimised mode and matched the recorded outputs (exact arithmetic; only timing fields ignored). Corrupting the H3 residues or the positivity check makes the programs fail. GitHub CI on Linux reruns the certificates and both failure tests."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The theorems rest on written proofs, except the exceptional rows of Theorem 5.1 and widths five to seven, which rest on exact, rerunnable computer certificates."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.9 or later, standard library only; reference run CPython 3.14.7 on macOS arm64, rerun on Linux CI. All arithmetic is exact, so outputs are platform independent apart from timing fields. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Armstrong, D. (2009). Generalized noncrossing partitions and combinatorics of Coxeter groups. Memoirs of the American Mathematical Society 202, no. 949.",
+      "url": "https://doi.org/10.1090/S0065-9266-09-00565-1"
+    },
+    {
+      "citation": "Bender, M. and Spaenlehauer, P.-J. (2024). Dimension results for extremal-generic polynomial systems over complete toric varieties. Journal of Algebra 646, 156–182.",
+      "url": "https://doi.org/10.1016/j.jalgebra.2024.01.029"
+    },
+    {
+      "citation": "Bennett, C., Carrillo, J., Machacek, J. and Sagan, B. E. (2020). Combinatorial interpretations of Lucas analogues of binomial coefficients and Catalan numbers. Annals of Combinatorics 24, 503–530.",
+      "url": "https://doi.org/10.1007/s00026-020-00500-9"
+    },
+    {
+      "citation": "Bergeron, N. (York University, Canada), Ceballos, C. (TU Graz, Austria) and Küstner, J. (University of Vienna, Austria) (2020). Elliptic and q-analogs of the Fibonomial numbers. SIGMA 16, 076.",
+      "url": "https://doi.org/10.3842/SIGMA.2020.076"
+    },
+    {
+      "citation": "Billey, S. C. and Swanson, J. P. (2024). Cyclotomic generating functions. Electronic Journal of Combinatorics 31(4), P4.4.",
+      "url": "https://doi.org/10.37236/12687"
+    },
+    {
+      "citation": "Sagan, B. E. and Tirrell, J. (2020). Lucas atoms. Advances in Mathematics 374, 107387.",
+      "url": "https://doi.org/10.1016/j.aim.2020.107387"
+    },
+    {
+      "citation": "Stanley, R. P. and Zanello, F. (2016). Some asymptotic results on q-binomial coefficients. Annals of Combinatorics 20, 623–634.",
+      "url": "https://doi.org/10.1007/s00026-016-0319-8"
+    },
+    {
+      "citation": "Connelly, B. B., Ito, E., Martinez, T. C., Shevchenko, O. and Yang, K. (2026). Unimodality of q-Fibonomial coefficients for small cases. arXiv:2605.12822.",
+      "url": "https://arxiv.org/abs/2605.12822"
+    },
+    {
+      "citation": "Gatzweiler, M., Levicán-Santibáñez, F. and Yoshida, A. (2026). Cyclotomic generating functions, empty weighted complete intersections and positivity. arXiv:2603.22226.",
+      "url": "https://arxiv.org/abs/2603.22226"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:rational-fibonacci-catalan-positivity",
+    "attemptIds": [
+      "ep-attempt:rational-fibonacci-catalan-positivity-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide whether the rational Fibonacci–Catalan functions of Bergeron, Ceballos and Küstner have nonnegative coefficients, their exact denominators, the reflection-group analogue, and the q-Fibonomial unimodality conjecture for small widths.",
+      "scope": "All pairs (m,n); Lucas sequences with coprime positive parameters; untwisted products for irreducible finite reflection groups; unimodality for min(m,n) ≤ 7, a density-0.408 family and each fixed width eventually."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the objects, why they matter, what was known, what is new and a roadmap; Section 10 lists open problems; Section 11 describes the computations.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in algebraic combinatorics check Lemma 2.2 and the count in Theorem 3.1, and independently rerun the width five to seven certificates.",
+      "claimCeiling": "Written proofs of Theorems 3.1, 6.1, 7.1 and 8.1, Corollary 4.1 and the infinite families of Theorem 5.1; exceptional rows of Theorem 5.1 and Theorem 9.1 by exact certificates; no combinatorial model on the tilings; full unimodality conjecture open; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "rational-fibonacci-catalan-positivity-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable proof that rational Fibonacci–Catalan polynomials have nonnegative coefficients, with exact denominators, a Coxeter classification and unimodality up to width seven.",
+        "setting": "AI-assisted research in algebraic combinatorics",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
