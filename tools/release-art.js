@@ -5,7 +5,23 @@
  * bespoke tools/<slug>-art.js per release; bespoke generators remain available
  * for releases whose figure needs a drawn mathematical object.
  *
- * papers/<slug>/art.json:
+ * Figure mode (recommended default): art.json names ONE informative figure drawn
+ * from the paper's own certified data or formulas (an SVG, or a PNG of at least
+ * 2x the drawn size) stored beside it in papers/<slug>/. The banner frames that
+ * figure as its main visual, with the title and a short caption on the left.
+ *   {
+ *     "description": "This image helps the reader understand ...",
+ *     "kicker": "MATHEMATICS · GRAPH POLYNOMIALS",   // optional
+ *     "head": "Reliability zeros of K_n",
+ *     "caption": "One or two sentences saying what the figure shows.",
+ *     "figure": "figure.svg",                        // file in papers/<slug>/
+ *     "tag": "UNREFEREED CANDIDATE"                  // optional
+ *   }
+ * The figure is scaled to fit its panel exactly by its intrinsic aspect ratio;
+ * a missing, unsafe (scripts, external references), low-resolution, oversized
+ * or extreme-aspect figure is refused rather than drawn distorted or clipped.
+ *
+ * Number-box mode (fallback only, when no figure can be drawn):
  *   {
  *     "description": "This image helps the reader understand ... (banner <desc>)",
  *     "kicker": "MATHEMATICS · GRAPHS",          // small caps line, optional
@@ -20,7 +36,7 @@
  * 1200x400 banner or the 390px card; an input that cannot fit at the minimum
  * size is refused rather than drawn clipped. All text is XML-escaped.
  *
- * Usage: node tools/release-art.js <slug> [--render INSPECT_DIR] [--no-mirror]
+ * Usage: node tools/release-art.js <slug> [--render INSPECT_DIR] [--no-mirror] [--dir PAPER_DIR] [--out OUTPUT_ROOT]
  */
 const fs = require('fs');
 const path = require('path');
@@ -68,10 +84,16 @@ const t = (x, y, s, size, color, family = SANS, anchor = 'start', weight = 'norm
 function validateSpec(spec, slug) {
   if (!spec || typeof spec !== 'object') throw new Error(`papers/${slug}/art.json must be an object`);
   for (const key of Object.keys(spec)) {
-    if (!['description', 'kicker', 'head', 'sub', 'numbers', 'tag'].includes(key)) throw new Error(`art.json: unknown field ${key}`);
+    if (!['description', 'kicker', 'head', 'sub', 'numbers', 'tag', 'figure', 'caption'].includes(key)) throw new Error(`art.json: unknown field ${key}`);
   }
+  if (spec.figure !== undefined) {
+    if (typeof spec.figure !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9._-]*\.(svg|png)$/.test(spec.figure)) throw new Error('art.json figure must be a plain .svg or .png file name in papers/<slug>/');
+    if (spec.numbers !== undefined || spec.sub !== undefined) throw new Error('art.json figure mode takes caption, not numbers/sub');
+    if (typeof spec.caption !== 'string' || !spec.caption.trim()) throw new Error('art.json caption is required with a figure');
+  } else if (spec.caption !== undefined) throw new Error('art.json caption needs a figure');
   if (typeof spec.description !== 'string' || spec.description.length < 20) throw new Error('art.json description is required (what the image helps the reader understand)');
   if (typeof spec.head !== 'string' || !spec.head.trim()) throw new Error('art.json head is required');
+  if (spec.figure !== undefined) return;
   if (!Array.isArray(spec.numbers) || spec.numbers.length < 1 || spec.numbers.length > 3) throw new Error('art.json numbers must hold 1-3 entries');
   for (const n of spec.numbers) {
     if (!n || typeof n.value !== 'string' || !n.value.trim() || typeof n.label !== 'string' || !n.label.trim()) {
@@ -126,38 +148,113 @@ function layout(spec) {
   return { inner: parts.join('\n'), boxes };
 }
 
-function banner(slug, spec, background) {
+const FIG = { x: 468, y: 34, w: W - 34 - 468, h: H - 68, pad: 14 };
+const MAX_FIGURE_BYTES = 1500000;
+
+/* Reads a figure file and returns { mime, data, aspect, pxWidth }; refuses what
+   it cannot place safely. */
+function readFigure(file) {
+  if (!fs.existsSync(file)) throw new Error(`art.json figure not found: ${file}`);
+  const data = fs.readFileSync(file);
+  if (data.length > MAX_FIGURE_BYTES) throw new Error(`figure is ${data.length} bytes; keep it under ${MAX_FIGURE_BYTES} (simplify the plot or rasterise dense layers)`);
+  if (file.endsWith('.png')) {
+    if (data.length < 24 || data.readUInt32BE(0) !== 0x89504e47 || data.toString('ascii', 12, 16) !== 'IHDR') throw new Error('figure is not a valid PNG');
+    const w = data.readUInt32BE(16), h = data.readUInt32BE(20);
+    return { mime: 'image/png', data, aspect: w / h, pxWidth: w };
+  }
+  const text = data.toString('utf8');
+  if (/<script|<foreignObject|\son[a-z]+\s*=|(?:href|src)\s*=\s*["'](?!#|data:image\/(?:png|jpeg);base64,)/i.test(text)) throw new Error('figure SVG contains scripts, event handlers or external references');
+  const errors = wellFormedErrors(text);
+  if (errors.length) throw new Error(`figure SVG is not well-formed: ${errors[0]}`);
+  const root = (text.match(/<svg\b[^>]*>/) || [''])[0];
+  const vb = root.match(/viewBox\s*=\s*["']\s*[-\d.eE]+[\s,]+[-\d.eE]+[\s,]+([\d.eE]+)[\s,]+([\d.eE]+)/);
+  const num = name => { const m = root.match(new RegExp(`\\s${name}\\s*=\\s*["']([\\d.]+)(?:pt|px)?["']`)); return m ? Number(m[1]) : NaN; };
+  const [w, h] = vb ? [Number(vb[1]), Number(vb[2])] : [num('width'), num('height')];
+  if (!(w > 0 && h > 0)) throw new Error('figure SVG needs a viewBox or numeric width/height');
+  return { mime: 'image/svg+xml', data, aspect: w / h, pxWidth: Infinity };
+}
+
+/* Fits the figure inside the panel by its aspect ratio. Returns the placed box. */
+function placeFigure(fig) {
+  const iw = FIG.w - 2 * FIG.pad, ih = FIG.h - 2 * FIG.pad;
+  let w = iw, h = iw / fig.aspect;
+  if (h > ih) { h = ih; w = ih * fig.aspect; }
+  if ((w * h) / (iw * ih) < 0.45) throw new Error(`figure aspect ratio ${fig.aspect.toFixed(2)} leaves most of the ${iw}x${ih} panel empty; redraw it nearer ${(iw / ih).toFixed(2)}:1`);
+  if (fig.pxWidth < 2 * w) throw new Error(`PNG figure is ${fig.pxWidth}px wide; it needs at least ${Math.ceil(2 * w)}px (2x) for a sharp banner, or use SVG`);
+  const x = FIG.x + FIG.pad + (iw - w) / 2, y = FIG.y + FIG.pad + (ih - h) / 2;
+  if (x < FIG.x || y < FIG.y || x + w > FIG.x + FIG.w + 0.01 || y + h > FIG.y + FIG.h + 0.01) throw new Error('figure escaped its panel');
+  return { x, y, w, h };
+}
+
+function figureUri(fig) { return `data:${fig.mime};base64,${fig.data.toString('base64')}`; }
+
+function figureLayout(spec, fig) {
+  const boxes = [], parts = [];
+  const leftW = FIG.x - PAD - 30;
+  const add = (x, y, s, size, color, family, weight, width) => {
+    const w = [...s].length * size * ADVANCE[family];
+    boxes.push({ x0: x, x1: x + w, y0: y - size, y1: y + size * 0.25, width });
+    parts.push(t(x, y, s, size, color, family, 'start', weight));
+  };
+  let y = PAD + 10;
+  if (spec.kicker) { const k = fitSize(spec.kicker, SANS, leftW, 15, 10, 'kicker'); add(PAD, y, spec.kicker, k, MUTED, SANS, 'bold', leftW); y += 16; }
+  const { size: headSize, lines: headLines } = fitWrap(spec.head, SERIF, leftW, 38, 24, 3, 'head');
+  for (const line of headLines) { y += headSize + 6; add(PAD, y, line, headSize, INK, SERIF, 'normal', leftW); }
+  const room = H - PAD - (spec.tag ? 32 : 0) - (y + 16);
+  let fitted = null;
+  for (let size = 19; size >= 13 && !fitted; size -= 1) {
+    const lines = Math.floor(room / (size + 7));
+    if (lines >= 1) try { fitted = { size, lines: wrap(spec.caption, SANS, leftW, size, lines, 'caption') }; } catch { /* smaller */ }
+  }
+  if (!fitted) throw new Error('art.json caption does not fit beside the figure; shorten it');
+  y += 16;
+  for (const line of fitted.lines) { y += fitted.size + 7; add(PAD, y, line, fitted.size, MUTED, SANS, 'normal', leftW); }
+  if (spec.tag) { const g = fitSize(spec.tag, SANS, leftW, 14, 10, 'tag'); add(PAD, H - PAD, spec.tag, g, ACCENTS[0], SANS, 'bold', leftW); }
+  for (const b of boxes) if (b.x0 < PAD - 0.5 || b.x1 > FIG.x - 20 || b.y0 < 0 || b.y1 > H - PAD + 20) throw new Error('layout escaped the banner safe area');
+  const p = placeFigure(fig);
+  parts.push(`<rect x="${FIG.x}" y="${FIG.y}" width="${FIG.w}" height="${FIG.h}" rx="16" fill="#fbf8f2"/>`);
+  parts.push(`<image x="${p.x.toFixed(2)}" y="${p.y.toFixed(2)}" width="${p.w.toFixed(2)}" height="${p.h.toFixed(2)}" preserveAspectRatio="xMidYMid meet" href="${figureUri(fig)}"/>`);
+  return { inner: parts.join('\n'), boxes, figureBox: p };
+}
+
+function banner(slug, spec, background, figureDir) {
   validateSpec(spec, slug);
-  const svg = bannerSvg({ inner: layout(spec).inner, description: spec.description, background,
+  const inner = spec.figure ? figureLayout(spec, readFigure(path.join(figureDir || path.join(__dirname, '..', 'papers', slug), spec.figure))).inner : layout(spec).inner;
+  const svg = bannerSvg({ inner, description: spec.description, background,
     glow: { color: '#9fd3ff', cx: '0.8', cy: '0.4', r: '0.45', opacity: '0.07' } });
   const errors = wellFormedErrors(svg);
   if (errors.length) throw new Error(`generated banner is not well-formed: ${errors.join('; ')}`);
   return svg;
 }
 
-function thumbSpec(spec) {
+function thumbSpec(spec, fig) {
   const esc = s => escapeText(s);
+  const base = { kicker: ['RESEARCH RELEASE', spec.kicker || ''].filter(Boolean), head: [esc(spec.head)], headSize: 50,
+    sub: spec.sub || '', tag: spec.tag || 'UNREFEREED CANDIDATE' };
+  if (spec.figure) {
+    return { ...base, hero: `<img src="${figureUri(fig)}" alt="" style="display:block;width:100%;max-height:520px;object-fit:contain;background:#fbf8f2;border-radius:14px;padding:14px;box-sizing:border-box">` };
+  }
   const lead = spec.numbers[0];
-  return {
-    kicker: ['RESEARCH RELEASE', spec.kicker || ''].filter(Boolean),
-    head: [esc(spec.head)], headSize: 50,
-    sub: spec.sub || '', tag: spec.tag || 'UNREFEREED CANDIDATE',
-    hero: `<div class="hero-title">${esc(lead.value)}</div><div class="note">${esc(lead.label)}</div>`
-  };
+  return { ...base, hero: `<div class="hero-title">${esc(lead.value)}</div><div class="note">${esc(lead.label)}</div>` };
 }
 
-module.exports = { banner, layout, validateSpec, thumbSpec, W, H, PAD };
+module.exports = { banner, layout, figureLayout, readFigure, placeFigure, validateSpec, thumbSpec, W, H, PAD, FIG };
 
 if (require.main === module) (async () => {
   const vm = require('vm'), os = require('os');
   const ROOT = path.join(__dirname, '..');
   const slug = process.argv[2];
   if (!slug || !/^[a-z0-9][a-z0-9-]*$/.test(slug)) throw new Error('usage: node tools/release-art.js <slug> [--render DIR] [--no-mirror]');
-  const spec = JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', slug, 'art.json'), 'utf8'));
+  const d = process.argv.indexOf('--dir');
+  const paperDir = d > 0 ? path.resolve(process.argv[d + 1]) : path.join(ROOT, 'papers', slug);
+  const spec = JSON.parse(fs.readFileSync(path.join(paperDir, 'art.json'), 'utf8'));
   const bp = require('./banner-palettes').resolve(slug);
   if (!bp) throw new Error(`no saved banner palette for ${slug}; assign one in data/BANNER_PALETTES.json`);
-  const svg = banner(slug, spec, bp);
-  fs.writeFileSync(path.join(ROOT, 'assets/art', slug + '.svg'), svg);
+  const svg = banner(slug, spec, bp, paperDir);
+  const o = process.argv.indexOf('--out');   // write outputs elsewhere (trial runs); implies --no-mirror
+  const out = o > 0 ? path.resolve(process.argv[o + 1]) : ROOT;
+  for (const dir of ['assets/art', 'assets/og', 'thumbs']) fs.mkdirSync(path.join(out, dir), { recursive: true });
+  fs.writeFileSync(path.join(out, 'assets/art', slug + '.svg'), svg);
   console.log('art:', slug, 'banner palette', bp.name);
   const i = process.argv.indexOf('--render');
   if (i < 0) return;
@@ -176,16 +273,16 @@ if (require.main === module) (async () => {
   await shot(358, 119, body(358, 119, svg), path.join(inspect, 'banner-card-358-mobile.png'), { dpr: 2 });
   const og = fs.readFileSync(path.join(__dirname, 'make-og.js'), 'utf8');
   const ogHtml = vm.runInNewContext(og.slice(og.indexOf('const html = '), og.indexOf('\n(async () =>')) + '; html', {});
-  const meta = JSON.parse(fs.readFileSync(path.join(ROOT, 'papers', slug, 'meta.json'), 'utf8'));
-  const ogFile = path.join(ROOT, 'assets/og', slug + '.png');
+  const meta = JSON.parse(fs.readFileSync(path.join(paperDir, 'meta.json'), 'utf8'));
+  const ogFile = path.join(out, 'assets/og', slug + '.png');
   await shot(1200, 630, ogHtml(meta, svg.replace(/<svg /, '<svg preserveAspectRatio="xMidYMid slice" ')), ogFile);
   const th = fs.readFileSync(path.join(__dirname, 'make-thumb.js'), 'utf8');
   const palSrc = th.slice(th.indexOf('const PALETTES = '), th.indexOf('const savedPalettes'));
   const pageSrc = th.slice(th.indexOf('const page = (spec) =>'), th.indexOf('\n(async () =>'));
   const thumbPage = vm.runInNewContext(`const W = 1280, H = 720; ${palSrc}; ${pageSrc}; page`, {});
-  const thumbFile = path.join(ROOT, 'thumbs', slug + '.jpg');
-  await shot(1280, 720, thumbPage({ ...thumbSpec(spec), palette: require('./thumbnail-palettes').resolve(slug, true) }), thumbFile, { dpr: 2, jpeg: true });
-  if (!process.argv.includes('--no-mirror')) {
+  const thumbFile = path.join(out, 'thumbs', slug + '.jpg');
+  await shot(1280, 720, thumbPage({ ...thumbSpec(spec, spec.figure && readFigure(path.join(paperDir, spec.figure))), palette: require('./thumbnail-palettes').resolve(slug, true) }), thumbFile, { dpr: 2, jpeg: true });
+  if (!process.argv.includes('--no-mirror') && out === ROOT) {
     const central = path.join(process.env.EVIDENCE_PRESS_THUMBNAIL_DIR || path.join(os.homedir(), 'thumbs'), slug + '.jpg');
     if (fs.existsSync(central) && !fs.readFileSync(thumbFile).equals(fs.readFileSync(central))) throw new Error('central thumbnail exists; refusing to overwrite: ' + central);
     fs.copyFileSync(thumbFile, central);

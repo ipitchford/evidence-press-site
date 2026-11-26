@@ -57,6 +57,24 @@ Run `node tools/make-art.js <slug>` for only the changed covers, then regenerate
 their Open Graph cards. Preserve existing thumbnail headlines/status unless
 separately redesigning those assets. Never edit generated files alone.
 
+
+## Standard release art: figure mode first
+
+`tools/release-art.js <slug>` builds the banner, OG card and thumbnail from
+`papers/<slug>/art.json`. **Figure mode is the default:** `art.json` names one
+informative figure (`"figure": "figure.svg"`, or a PNG of at least twice its
+drawn size) stored in `papers/<slug>/`, plus `head`, a short `caption` and the
+"This image helps…" `description`. The figure is drawn by a small plotting
+script from the paper's own certified data or formulas (a curve, graph or tree
+drawing, zero plot, phase diagram), and that script checks every printed number
+against the release outputs. Use house-legible sizes: about 13 pt text on a
+figure roughly 7 × 3.2 in, near 2.2:1. The template frames the figure on a
+light panel and refuses missing, unsafe (scripts, external references),
+low-resolution, oversized or badly proportioned figures and captions that do
+not fit. The number-box mode (`numbers`, `sub`) is a fallback only, for the rare
+release where no honest figure can be drawn; repeated number boxes make every
+banner look alike.
+
 ## Acceptance, within existing media QA
 
 ### Fit and colour are shared contracts
