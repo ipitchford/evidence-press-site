@@ -1,0 +1,211 @@
+{
+  "slug": "renyi-heat-first-failing-derivative",
+  "title": "Which Rényi entropies have alternating heat derivatives? No order survives, and the first failing derivative order by order",
+  "shortTitle": "No Rényi order survives the heat-flow hierarchy",
+  "oneLine": "One density defeats every order; collision entropy first fails at the fourth derivative",
+  "abstract": "Add Gaussian noise to a random quantity and its entropy rises, ever more slowly. It was conjectured that every higher time derivative of Shannon entropy along this heat flow alternates in sign; Gu and Sellke disproved this at the fifth derivative. Wu, Yu and Guo asked the same for Rényi entropy of every order α: which orders keep every sign, and, for each derivative, which orders keep that sign? Following the earlier Evidence Press classification for Tsallis entropy, where order two is the one survivor, this candidate proves that no Rényi order in (0, ∞] keeps every sign: the logarithm removes the exception. A single smooth density on the line breaks the hierarchy for all orders at one time, and for orders bounded away from zero it can be strongly log-concave. For collision entropy (order 2) the first three signs hold for every input and the fourth fails; in dimension 4 and above the third already fails. Every derivative from the sixth on fails at every order; the third fails for orders up to 0.377 and above 2; the fourth for orders up to 0.849; the fifth outside (1.19, 1.75). With Wu, Yu and Guo's positive results this fixes the first failing derivative on most of the order axis: 2 above order 3, 3 up to 0.377 and on (2, 3], 4 from about 0.389 to 0.849 and at order 2, and 5 near Shannon entropy. Order 2 is the largest order whose third derivative has a universal sign. Among entropies of the form ∫Φ(p), only quadratic ones keep every sign. Limits: four gaps remain in the map; the common density is shown to exist, not written down; Shannon failures are inherited from Gu–Sellke and Zou et al. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-26",
+  "version": "0.1.0",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "Rényi entropy",
+    "heat flow",
+    "Gaussian completely monotone conjecture",
+    "collision entropy",
+    "entropy power inequality",
+    "complete monotonicity",
+    "exact certificates",
+    "interval arithmetic"
+  ],
+  "repoUrl": "https://github.com/ipitchford/renyi-heat-first-failing-derivative",
+  "releaseUrl": "https://github.com/ipitchford/renyi-heat-first-failing-derivative/releases/tag/v0.1.0",
+  "pdfUrl": "https://github.com/ipitchford/renyi-heat-first-failing-derivative/releases/download/v0.1.0/renyi-heat-first-failing-derivative-0.1.0.pdf",
+  "doi": "10.5281/zenodo.24549406",
+  "conceptDoi": "10.5281/zenodo.24549405",
+  "zenodoUrl": "https://zenodo.org/records/24549406",
+  "citeText": "Anonymous (2026). Which Rényi entropies have alternating heat derivatives? No order survives, and the first failing derivative order by order. Version 0.1.0. Evidence Press. https://doi.org/10.5281/zenodo.24549406",
+  "evidence": "A 19-page paper with a context-first introduction, written proofs, limits, open problems and an AI-use statement. Nine Python programs accompany it, and every check raises an error on failure, even under python -O: six exact rational or interval certificates on the standard library (two circle coefficients, the fourth derivative at order 2, the third sign in dimension 4, the valley rows for derivatives 3 to 6 with controls that must not certify, and interval certificates for the sixth derivative on orders up to 3 and the fifth above 1.75), a shared Fourier-jet module, and two optional sympy/mpmath programs (exploratory valley thresholds and a direct sign cross-check). A clean replay in optimised mode reproduced every recorded output byte for byte in about half a minute; a perturbed enclosure makes check_alpha2.py fail; Linux CI reruns all eight programs, comparing the six certificates exactly and the two mpmath outputs within a declared relative tolerance of 1e-6.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact computational certificates. Internal AI-assisted review: a five-perspective Claude review panel, a source audit, one revision round with an extension, a re-review and a proof audit of the new and rewritten proofs, plus clean replays with a negative control. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (19 pages, with the release DOI), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 26 November 2026.",
+  "keyResults": [
+    "Theorems 4.1 and 4.4 (proof): no Rényi order α in (0, ∞] keeps every alternating sign along the heat flow; one smooth density violates a sign for every order at one time, strongly log-concave for orders bounded away from zero, in every dimension.",
+    "Theorem 5.1 (proof and exact certificate): at order 2 the first three signs hold for every input and the fourth fails; at variance time 1/32 the fourth derivative of the witness lies between 0.0249 and 0.025. In dimension 4 and above the third sign fails.",
+    "Theorem 6.1 (proof and certificates): every derivative from the sixth on fails at every order; the third fails for orders up to 0.377 and above 2; the fourth for orders up to 0.849; the fifth outside (1.19, 1.75).",
+    "Corollary 6.2: the first failing derivative is 2 above order 3; 3 on (0, 0.377] and (2, 3]; 4 from about 0.389 to 0.849 and at order 2; 5 on [0.93, 1.19] and [1.75, 1.76]. Order 2 is the largest order whose third derivative has a universal sign.",
+    "Theorem 7.1 (proof): among entropies of the form ∫Φ(p), only quadratic Φ keep every sign, recovering the universal part of the Evidence Press Tsallis classification.",
+    "Credit and limits: questions, Theorem 1 and Proposition 1 of Wu, Yu and Guo; Shannon failures from Gu and Sellke and from Zou, Fan, Gao and Wang; Sun's second-derivative threshold; Cheng and Geng's third and fourth Shannon signs. Gaps remain on (0.377, 0.389), (0.849, 0.93), (1.19, 1.75) and (1.76, 2); the common density is not explicit."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-perspective Claude review panel, a verification re-review and a proof audit)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All eight programs were rerun from fresh copies (certificates in Python's optimised mode) before release and reproduced the recorded outputs byte for byte; perturbing one enclosure makes check_alpha2.py fail. GitHub CI on Linux reruns all eight, comparing the six certificates exactly and the two mpmath outputs within a declared relative tolerance of 1e-6."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "The six certificates and fourier_jet.py need only the Python standard library (replayed with CPython 3.14.7); valley_thresholds.py and crosscheck_valley_direct.py use sympy 1.14.0 and mpmath 1.3.0 (CPython 3.12.11). Exact outputs compare exactly; the two mpmath outputs within a declared tolerance. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Anonymous (2026). Complete monotonicity of Tsallis entropy under heat flow: a sharp order classification. Evidence Press (Zenodo), version 0.1.0-candidate. The direct predecessor of this release.",
+      "url": "https://doi.org/10.5281/zenodo.24001602"
+    },
+    {
+      "citation": "Wu, H., Yu, L. and Guo, L. (2025). On the Complete Monotonicity of Rényi Entropy. IEEE Transactions on Information Theory 71, 4895–4914.",
+      "url": "https://doi.org/10.1109/TIT.2025.3561384"
+    },
+    {
+      "citation": "Wu, H. and Yu, L. (2026). Entropic Isoperimetric and Cramér–Rao Inequalities for Rényi–Fisher Information. IEEE Transactions on Information Theory 72, 901–920.",
+      "url": "https://doi.org/10.1109/TIT.2025.3646882"
+    },
+    {
+      "citation": "Cheng, F. and Geng, Y. (2015). Higher Order Derivatives in Costa's Entropy Power Inequality. IEEE Transactions on Information Theory 61, 5892–5905.",
+      "url": "https://doi.org/10.1109/TIT.2015.2480401"
+    },
+    {
+      "citation": "Widder, D. V. (1942). Laplace Transform (PMS-6). Princeton University Press.",
+      "url": "https://doi.org/10.1515/9781400876457"
+    },
+    {
+      "citation": "Gu, Y. and Sellke, M. (2026). A counterexample to the Gaussian completely monotone conjecture. arXiv:2605.11656.",
+      "url": "https://arxiv.org/abs/2605.11656"
+    },
+    {
+      "citation": "Sun, L. (2026). Concavity of Tsallis entropy and Tsallis entropy power along heat flow. arXiv:2601.12944.",
+      "url": "https://arxiv.org/abs/2601.12944"
+    },
+    {
+      "citation": "Wu, H. and Yu, L. (2026). On the concavity of Rényi entropy and Rényi entropy power along heat flows on manifolds. arXiv:2611.13040.",
+      "url": "https://arxiv.org/abs/2611.13040"
+    },
+    {
+      "citation": "Zou, J., Fan, L., Gao, J. and Wang, J. (2026). An explicit family of log-concave counterexamples to the Gaussian completely monotone conjecture. arXiv:2608.30275.",
+      "url": "https://arxiv.org/abs/2608.30275"
+    },
+    {
+      "citation": "Zou, J., Fan, L., Gao, J. and Wang, J. (2026). A hexagonal counterexample to log-convexity of Fisher information along the heat flow. arXiv:2605.18081.",
+      "url": "https://arxiv.org/abs/2605.18081"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:renyi-heat-first-failing-derivative",
+    "attemptIds": [
+      "ep-attempt:renyi-heat-first-failing-derivative-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide which orders of Rényi entropy keep every alternating sign of their heat-flow time derivatives, and for each derivative which orders keep that sign.",
+      "scope": "Rényi orders α in (0, ∞]; densities on the line and in ℝ^d; first failing derivative determined except on four gaps; integral entropies ∫Φ(p)."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The introduction states the question, what was known (Wu–Yu–Guo, Gu–Sellke, the Evidence Press Tsallis release), the main results and a plan; AI_INDEX.md maps each claim to its proof and certificate.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only.",
+        "The transfers from the circle to the line rest on written proofs, not certificates."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [
+      {
+        "relation": "extends-result",
+        "workId": "ep-work:tsallis-heat-order-classification",
+        "legacyReleaseSlug": null,
+        "externalUrl": null,
+        "inheritedClaim": "For Tsallis entropy exactly order two keeps every alternating heat-flow sign; this release recovers the universal part as a corollary of its integral-entropy theorem and shows that for Rényi entropy no order survives.",
+        "inheritedAssuranceCeiling": "Unrefereed AI-assisted candidate with internal checks only; this successor is not independent confirmation of the parent."
+      }
+    ],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in entropy inequalities check the circle-to-line transfer (Theorems 4.1 and 4.4) and Theorem 5.1, and independently rerun the certificates.",
+      "claimCeiling": "Written proofs with exact certificates: no Rényi order keeps every heat-flow sign; collision entropy keeps exactly the first three; per-degree failure ranges and the first-failing-derivative map except on (0.377, 0.389), (0.849, 0.93), (1.19, 1.75) and (1.76, 2); only quadratic integral entropies keep every sign. The common density is not explicit; Shannon failures inherited; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "renyi-heat-first-failing-derivative-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable classification of heat-flow derivative signs for Rényi entropy, with replayable exact certificates.",
+        "setting": "AI-assisted research in information theory and analysis",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
