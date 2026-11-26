@@ -81,6 +81,15 @@ const savedPalettes = require('./thumbnail-palettes');
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'commuting-permutations-few-orbits': {
+    palette: "auto",
+    kicker: ["RESEARCH RELEASE · 25 NOVEMBER 2026","COMBINATORICS · NUMBER THEORY"],
+    head: ["Log-concavity breaks","<em>only at two groups.</em>"],
+    headSize: 62,
+    sub: "Commuting shuffles: a 54-digit failure with three, 845 digits with four.",
+    tag: "UNREFEREED CANDIDATE",
+    hero: require('./commuting-orbits-art').thumbnailHero()
+  },
   'rational-fibonacci-catalan-positivity': {
     palette: "auto",
     kicker: ["RESEARCH RELEASE · 25 NOVEMBER 2026","ALGEBRAIC COMBINATORICS"],
