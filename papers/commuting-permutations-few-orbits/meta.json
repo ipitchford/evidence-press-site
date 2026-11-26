@@ -1,0 +1,219 @@
+{
+  "slug": "commuting-permutations-few-orbits",
+  "title": "Commuting permutations with few joint orbits: asymptotics, log-concavity and the density of failures in every rank",
+  "shortTitle": "Commuting permutations: where log-concavity fails, in every rank",
+  "oneLine": "Abdesselam's conjecture fails at two orbits in every rank, holds at every fixed larger orbit count, and the failures have a density",
+  "abstract": "Count the ordered ℓ-tuples of pairwise commuting permutations of n objects that have exactly k joint orbits. For a single permutation these are the Stirling numbers, which are log-concave in k; Abdesselam conjectured log-concavity for every ℓ and n. Starr (2026) showed at rank two that it fails at k = 2 for infinitely many n but holds at every fixed k ≥ 3 for large n, and Charlton, Heim and Stumpenhusen found the first rank-two failure, n = 65 214 507 758 400. This candidate treats every fixed rank ℓ ≥ 2 and fixed k: an asymptotic formula with an Euler-product arithmetic factor and an explicit error uniform in the factorisation of n; failure at k = 2 in every rank (the ratio tends to 0 along n = m! and is below any ε on a set of positive density); log-concavity for large n at every fixed k ≥ 3, with the exact limit inferior and superior as Euler products (about 2.52 at ℓ = 3, k = 3, against the elementary bound 1.10); a continuous limiting distribution, so the density of two-orbit failures exists and lies strictly between 0 and 1 in every rank, new also at rank two; and certified explicit failures with 54 digits in rank three and 845 digits in rank four. Limits: fixed orbit counts only; the leading term follows the classical Ingham–Halberstam route and the density applies the Erdős–Wintner theorem; the explicit failures are not claimed minimal. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-25",
+  "version": "0.1.0-candidate",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "commuting permutations",
+    "joint orbits",
+    "d'Arcais polynomials",
+    "log-concavity",
+    "additive convolution",
+    "divisor sums",
+    "singular series",
+    "Erdős–Wintner theorem",
+    "torus coverings",
+    "Stirling numbers"
+  ],
+  "repoUrl": "https://github.com/ipitchford/commuting-permutations-few-orbits",
+  "releaseUrl": "https://github.com/ipitchford/commuting-permutations-few-orbits/releases/tag/v0.1.0-candidate",
+  "pdfUrl": "https://github.com/ipitchford/commuting-permutations-few-orbits/releases/download/v0.1.0-candidate/commuting-permutations-few-orbits-0.1.0-candidate.pdf",
+  "doi": "10.5281/zenodo.24541319",
+  "conceptDoi": "10.5281/zenodo.24541318",
+  "zenodoUrl": "https://zenodo.org/records/24541319",
+  "citeText": "Anonymous (2026). Commuting permutations with few joint orbits: asymptotics, log-concavity and the density of failures in every rank. Version 0.1.0-candidate. Evidence Press. https://doi.org/10.5281/zenodo.24541319",
+  "evidence": "A 20-page paper with a plain introduction (the question, what was known, what is new, why two orbits are exceptional, methods and a roadmap), written proofs of every theorem, checks, scope, open problems and an AI-use statement. Two Python programs (mpmath 1.3.0) accompany it: verify.py (brute-force enumeration of commuting tuples against the coefficient formula, exact convolution identities through n = 40, every rational constant, the asymptotic formula against exact counts up to n = 1000, and the finite-criterion thresholds) and extensions.py (the table of limit values and the interval certificates of the explicit failures in ranks two, three and four). A clean replay in Python's optimised mode reproduced both recorded outputs; altering the constant 2401/1800 or tightening the certificate threshold makes the programs fail; Linux CI reruns them. Proposition 2.9 rests on the interval certificates; elsewhere the programs are cross-checks.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and computer checks. Internal AI-assisted review: a five-reviewer Claude review panel, one revision round with two extensions, a re-review, a proof audit of every new or rewritten proof with an independent exact recheck of the rank-three certificate, and clean replays with negative controls. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (20 pages, with the release DOI under the author line), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 25 November 2026.",
+  "keyResults": [
+    "Theorem 2.2 (proof): for fixed ℓ ≥ 2 and k ≥ 2, A(ℓ,n,k) = (n!/k!) β n^{k(ℓ−1)−1}[S(n) + O((1+log n)^k/n)] with a bounded Euler-product singular series S and a constant uniform in the factorisation of n; Theorem 2.6 makes the error explicit.",
+    "Theorem 2.3 (proof): Abdesselam's conjecture fails at two orbits in every rank: R_{ℓ,2}(m!) → 0, and R_{ℓ,2} < ε on all large multiples of some Q.",
+    "Theorems 2.4 and 2.5 (proof): at every fixed k ≥ 3 log-concavity holds for large n; the exact lim inf and lim sup are Euler products, about 2.52 at ℓ = 3, k = 3 against the elementary bound 1.10, reproducing Starr's formula at rank two.",
+    "Theorem 2.8 (proof): the ratio has a continuous limiting distribution, so the density of two-orbit failures exists and lies strictly between 0 and 1 in every rank, new also at rank two.",
+    "Proposition 2.9 (interval certificate): explicit failures with a 54-digit n (about 1.45 × 10^53) for three commuting permutations and an 845-digit n for four; neither is claimed minimal.",
+    "Limits and credit: fixed orbit counts only; the leading term follows the Ingham–Halberstam route and the density applies the Erdős–Wintner theorem; the rank-two cases are due to Starr and to Charlton, Heim and Stumpenhusen."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a five-reviewer Claude review panel, a re-review and a proof audit of every new or rewritten proof)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "Both programs were rerun from fresh copies before release, in Python's optimised mode and normally, and matched the recorded outputs apart from run time. Altering the constant 2401/1800 or tightening the certificate threshold makes them fail. GitHub CI on Linux reruns both programs and both failure tests."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation. The theorems rest on written proofs; Proposition 2.9 rests on rigorous interval-arithmetic certificates."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "Python 3.12 with mpmath 1.3.0; reference run CPython 3.12.11 on macOS arm64, rerun on Linux CI. Exact values compare exactly; high-precision decimals to ten significant digits; timing fields ignored. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Abdesselam, A. (2025). Log-Concavity with Respect to the Number of Orbits for Infinite Tuples of Commuting Permutations. Annals of Combinatorics 29, 563–573.",
+      "url": "https://doi.org/10.1007/s00026-024-00724-z"
+    },
+    {
+      "citation": "Abdesselam, A., Brunialti, P., Doan, T. and Velie, P. (2024). A bijection for tuples of commuting permutations and a log-concavity conjecture. Research in Number Theory 10.",
+      "url": "https://doi.org/10.1007/s40993-024-00531-8"
+    },
+    {
+      "citation": "Abdesselam, A. and Starr, S. (2026). A Central Limit Theorem for a Generalization of the Ewens Measure to Random Tuples of Commuting Permutations. Journal of Theoretical Probability 39.",
+      "url": "https://doi.org/10.1007/s10959-026-01489-2"
+    },
+    {
+      "citation": "Bringmann, K., Franke, J. and Heim, B. (2024). Asymptotics of commuting ℓ-tuples in symmetric groups and log-concavity. Research in Number Theory 10.",
+      "url": "https://doi.org/10.1007/s40993-024-00562-1"
+    },
+    {
+      "citation": "Bryan, J. and Fulman, J. (1998). Orbifold Euler characteristics and the number of commuting m-tuples in the symmetric groups. Annals of Combinatorics 2, 1–6.",
+      "url": "https://doi.org/10.1007/BF01626025"
+    },
+    {
+      "citation": "Erdős, P. and Wintner, A. (1939). Additive Arithmetical Functions and Statistical Independence. American Journal of Mathematics 61, 713–721.",
+      "url": "https://doi.org/10.2307/2371326"
+    },
+    {
+      "citation": "Gadiyar, H. G., Murty, M. R. and Padma, R. (2014). Ramanujan–Fourier series and a theorem of Ingham. Indian Journal of Pure and Applied Mathematics 45, 691–706.",
+      "url": "https://doi.org/10.1007/s13226-014-0084-5"
+    },
+    {
+      "citation": "Heim, B. and Neuhauser, M. (2021). Horizontal and vertical log-concavity. Research in Number Theory 7.",
+      "url": "https://doi.org/10.1007/s40993-021-00245-1"
+    },
+    {
+      "citation": "Lemke Oliver, R. J., Shrestha, S. T. and Thorne, F. (2023). Asymptotic identities for additive convolutions of sums of divisors. Mathematical Proceedings of the Cambridge Philosophical Society 174, 59–78.",
+      "url": "https://doi.org/10.1017/S0305004122000135"
+    },
+    {
+      "citation": "Tenenbaum, G. and Verwee, J. (2021). Effective Erdős–Wintner theorems. Proceedings of the Steklov Institute of Mathematics 314, 264–278.",
+      "url": "https://doi.org/10.1134/S008154382104012X"
+    },
+    {
+      "citation": "Tripathi, R. (2024). On log-concavity of the number of orbits in commuting tuples of permutations. Research in Number Theory 10.",
+      "url": "https://doi.org/10.1007/s40993-024-00571-0"
+    },
+    {
+      "citation": "Starr, S. (2026). Asymptotics of the d'Arcais Numbers at Small k. arXiv:2601.18599.",
+      "url": "https://arxiv.org/abs/2601.18599"
+    },
+    {
+      "citation": "Starr, S. (2026). Large Deviations for the d'Arcais Numbers. arXiv:2601.07103.",
+      "url": "https://arxiv.org/abs/2601.07103"
+    },
+    {
+      "citation": "Charlton, S., Heim, B. and Stumpenhusen, J. (2026). On the Smallest Counterexample to the Log-Concavity of the D'Arcais Polynomials. arXiv:2606.09545.",
+      "url": "https://arxiv.org/abs/2606.09545"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:commuting-permutations-few-orbits",
+    "attemptIds": [
+      "ep-attempt:commuting-permutations-few-orbits-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide where log-concavity of commuting-permutation counts by number of joint orbits fails at fixed orbit counts in every rank, the exact limiting constants, and whether the density of failures exists.",
+      "scope": "Every fixed rank ℓ ≥ 2 and fixed k; a growing window k ≤ c log n/log log n with c < 1/ℓ; certified failures in ranks three and four."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "Section 1 states the question, what was known, what is new, why two orbits are exceptional, methods and a roadmap; later sections give checks, scope and open problems.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have an analytic number theorist check the uniform error term of Theorem 2.6 and the local-factor inequalities, and independently rerun the interval certificates.",
+      "claimCeiling": "Written proofs for fixed rank and fixed orbit count; Proposition 2.9 by interval certificates; the intermediate orbit-count range is open; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "commuting-permutations-few-orbits-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable account of where log-concavity of commuting-permutation counts fails at fixed orbit counts in every rank, with exact limiting constants, the density of failures and certified counterexamples.",
+        "setting": "AI-assisted research in combinatorics and analytic number theory",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
