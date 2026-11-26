@@ -2590,6 +2590,8 @@ palette['higher-permanental-compounds-fixed-rank'] = higherCompoundsArt.colors;
 const criticalChainArt = require('./critical-chain-art');
 art['critical-chain-bound-energy'] = criticalChainArt.draw;
 palette['critical-chain-bound-energy'] = criticalChainArt.colors;
+art['normalised-distance-laplacian-upper-edge'] = require('./distance-laplacian-edge-art').draw;
+palette['normalised-distance-laplacian-upper-edge'] = require('./distance-laplacian-edge-art').colors;
 const drsResidualArt = require('./douglas-rachford-residual-art');
 art['douglas-rachford-residual-counterexamples'] = drsResidualArt.draw;
 palette['douglas-rachford-residual-counterexamples'] = drsResidualArt.colors;
@@ -2613,6 +2615,7 @@ for (const [slug, fn] of Object.entries(art)) {
   if (slug === 'permanent-on-top-fixed-rank-rates') svg = withDescription(svg, permOnTopRatesArt.description);
   if (slug === 'higher-permanental-compounds-fixed-rank') svg = withDescription(svg, higherCompoundsArt.description);
   if (slug === 'critical-chain-bound-energy') svg = withDescription(svg, criticalChainArt.description);
+  if (slug === 'normalised-distance-laplacian-upper-edge') svg = withDescription(svg, require('./distance-laplacian-edge-art').description);
   if (slug === 'finite-normal-observation-windows') svg = withDescription(svg, normalObservationArt.description);
   if(slug==='assignment-aligned-effective-states')svg = withDescription(svg, assignmentAlignedArt.description);
   if(slug==='sharp-rank-three-chollet-order-five')svg = withDescription(svg, cholletRank3Art.description);
