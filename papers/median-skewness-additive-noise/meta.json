@@ -1,0 +1,207 @@
+{
+  "slug": "median-skewness-additive-noise",
+  "title": "Which additive noises preserve median-based skewness?",
+  "shortTitle": "Adding noise can flip which tail is heavier",
+  "oneLine": "A counterexample to Hunter's conjecture, a classification of noise laws, and the gamma, beta and Lévy cases",
+  "abstract": "Hunter (2026) called a distribution right van Zwet skewed when, at every distance from its median, the right tail carries at least as much probability as the left, and conjectured that independent log-concave laws with this property keep it under addition. This candidate shows that the conjecture fails, and determines how completely. A triangular variable plus independent uniform noise is an exact counterexample; for that input, right skewness survives uniform noise exactly up to half-width (3 − √3)/4 ≈ 0.317. Only a point mass preserves skewness in general: for every nonconstant noise law, with no moment assumption, some right-skewed input with a positive, real-analytic, strongly log-concave density has a sum with the noise that is skewed in neither direction. A single such input fails for every positive weighted sum of two or more independent copies of itself and after adding Gaussian noise of any variance. The proofs rest on a characterisation of symmetry through uniform smoothings, which also gives an identity along the population Huber location path and a distribution-free procedure that certifies opposite tail imbalances from a sample. Complete proofs are given for three cases Hunter supported by simulation: every gamma law, beta laws with b ≥ a ≥ 1 (essentially contained in Sato's analysis of Pearson laws) and the Lévy law; an appendix settles weak limits and same-median mixtures. Limits: the counterexamples concern the exact definition, and the Gaussian-noise tail reversals are far out and tiny; no positive preservation result is proved; the certificate has no power comparison. AI-assisted, unrefereed candidate; no external peer review, independent reproduction or formal verification is claimed.",
+  "datePublished": "2026-11-26",
+  "version": "0.2.0",
+  "authors": [
+    "Anonymous"
+  ],
+  "status": "unrefereed-candidate",
+  "math": true,
+  "keywords": [
+    "skewness",
+    "van Zwet skewness",
+    "median",
+    "log-concave distributions",
+    "convolution",
+    "additive noise",
+    "Huber location",
+    "tests of symmetry",
+    "gamma distribution",
+    "beta distribution"
+  ],
+  "repoUrl": "https://github.com/ipitchford/median-skewness-additive-noise",
+  "releaseUrl": "https://github.com/ipitchford/median-skewness-additive-noise/releases/tag/v0.2.0",
+  "pdfUrl": "https://github.com/ipitchford/median-skewness-additive-noise/releases/download/v0.2.0/median-skewness-additive-noise-0.2.0.pdf",
+  "doi": "10.5281/zenodo.24547383",
+  "conceptDoi": "10.5281/zenodo.24547382",
+  "zenodoUrl": "https://zenodo.org/records/24547383",
+  "citeText": "Anonymous (2026). Which additive noises preserve median-based skewness? Version 0.2.0. Evidence Press. https://doi.org/10.5281/zenodo.24547383",
+  "evidence": "A 15-page paper with a context-first introduction, written proofs of every result, limits, open problems and an AI-use statement. Three Python programs accompany it: check_hunter.py checks the counterexample, the 0.317 threshold and the atomic example in exact rational arithmetic; check_families.py gives 40-digit numerical diagnostics for the gamma, beta and Lévy section (checks, not proofs); huber_certificate.py runs the sample certificate on deterministic controls. A clean replay in Python's optimised mode reproduced the recorded outputs; changing 1/162 to 1/161 makes check_hunter.py fail; Linux CI reruns all three.",
+  "statusDetail": "Unrefereed AI-assisted mathematics candidate with written proofs and exact and diagnostic computational checks. Internal AI-assisted review: a combined five-perspective Claude review panel, one revision round, and a verification re-review with a proof audit, plus the lead's proof audit and clean replays with a negative control. No Astra/Codex review took place. External specialist review, independent reproduction and formal verification have not been established.",
+  "pageStructureVersion": "2.0",
+  "pageStructureVariant": "canonical-theorem",
+  "pageStructureWaivers": [],
+  "recordMaturity": "current",
+  "grandfatheredAtSchemaVersion": null,
+  "metadataProvenance": "Prepared from the final paper (15 pages, with the release DOI), its programs and recorded results, the claim-to-output binding and the frozen release archive. The versioned GitHub and Zenodo research archives were checked against the frozen release assets on 26 November 2026.",
+  "keyResults": [
+    "Propositions 2.1 and 2.2 (proof): Beta(1,2) plus independent uniform noise on [−1, 1] has median 1/3 and tail imbalance +1/162 at distance 2/3 and −1/1296 at distance 3/2, so it is neither right nor left van Zwet; with uniform noise on [−r, r] right skewness survives exactly for r ≤ (3 − √3)/4 ≈ 0.317.",
+    "Theorem 3.1 (proof): a law with a positive continuous density is symmetric if and only if all its uniform smoothings are skewed in one direction, equivalently if the slopes of the smoothed densities at their medians share one sign.",
+    "Theorem 4.1 (proof): for every nonconstant noise law, with no moment assumption, some right van Zwet input with a positive, real-analytic, strongly log-concave density gives a sum that is neither right nor left van Zwet.",
+    "Theorem 5.1 and Corollary 5.2 (proof): one such input fails for every positive weighted sum of two or more independent copies of itself and after adding Gaussian noise of any variance; the tail reversals lie far from the median.",
+    "Proposition 6.2 (proof): every gamma law, every Beta(a, b) with b ≥ a ≥ 1, and the Lévy law are right van Zwet; the beta case is essentially contained in Sato (1995). Corollary 7.1: a distribution-free certificate of opposite tail imbalances with error at most α.",
+    "Credit and limits: Hunter (definition in this form, median inequality, conjecture, closure questions), van Zwet, Sato, Tan–Wang–Zhou, Thompson–Forbes–MacEachern–Peruggia, Reeve after Massart. The counterexamples concern the exact definition; no positive preservation result; no power comparison for the certificate."
+  ],
+  "provenance": {
+    "aiGenerated": true,
+    "aiAssisted": true,
+    "generatedBy": [
+      "AI-assisted mathematical research",
+      "AI-assisted internal review (a combined five-perspective Claude review panel, a verification re-review with a proof audit, and the lead's proof audit)",
+      "Claude Code: publication packaging and release"
+    ],
+    "humanRole": "Publication authority only; no human research contribution inferred.",
+    "reviewStatus": "Internal AI-assisted review, not external peer review."
+  },
+  "assurance": {
+    "availability": {
+      "state": "passed",
+      "note": "The versioned research package and paper are publicly archived on GitHub and Zenodo. Provider asset parity was checked against frozen local files; availability does not establish correctness or peer review."
+    },
+    "internalReplay": {
+      "state": "passed",
+      "note": "All three programs were rerun from fresh copies before release (check_hunter.py and check_families.py also in Python's optimised mode) and matched the recorded outputs; changing 1/162 to 1/161 makes check_hunter.py fail. GitHub CI on Linux reruns them and compares the outputs under a declared policy."
+    },
+    "independentRerun": {
+      "state": "not-assessed",
+      "note": "No unaffiliated rerun has been established."
+    },
+    "independentReimplementation": {
+      "state": "not-assessed",
+      "note": "No unaffiliated reimplementation has been established."
+    },
+    "formalVerification": {
+      "state": "not-assessed",
+      "note": "No proof-assistant formalisation."
+    },
+    "specialistReview": {
+      "state": "not-assessed",
+      "note": "AI-assisted internal review is not external specialist review."
+    },
+    "editorialPeerReview": {
+      "state": "not-assessed",
+      "note": "No external editorial peer review."
+    },
+    "dataEnvironmentReproducibility": {
+      "state": "passed",
+      "note": "check_hunter.py needs only the standard library; check_families.py uses mpmath 1.3.0 and huber_certificate.py NumPy 2.3.5 and SciPy 1.16.3 (replayed with CPython 3.12.11). check_hunter.txt compares exactly; the other outputs compare text and integers exactly and decimals within absolute 1e-6. Not a locked container."
+    }
+  },
+  "relatedWorks": [
+    {
+      "citation": "Hunter, T. (2026). A note on the median of skewed distributions. Statistical Papers 67, article 64.",
+      "url": "https://doi.org/10.1007/s00362-026-01831-0"
+    },
+    {
+      "citation": "van Zwet, W. R. (1979). Mean, median, mode II. Statistica Neerlandica 33, 1–5.",
+      "url": "https://doi.org/10.1111/j.1467-9574.1979.tb00657.x"
+    },
+    {
+      "citation": "Huber, P. J. (1964). Robust estimation of a location parameter. The Annals of Mathematical Statistics 35, 73–101.",
+      "url": "https://doi.org/10.1214/aoms/1177703732"
+    },
+    {
+      "citation": "Thompson, R., Forbes, C. S., MacEachern, S. N. and Peruggia, M. (2023). Familial inference: tests for hypotheses on a family of centres. Biometrika 111, 1029–1045.",
+      "url": "https://doi.org/10.1093/biomet/asad074"
+    },
+    {
+      "citation": "Tan, K. M., Wang, L. and Zhou, W.-X. (2021). High-dimensional quantile regression: convolution smoothing and concave regularization. Journal of the Royal Statistical Society Series B 84, 205–233.",
+      "url": "https://doi.org/10.1111/rssb.12485"
+    },
+    {
+      "citation": "Gushchin, A. A. and Borzykh, D. A. (2017). Integrated quantile functions: properties and applications. Modern Stochastics: Theory and Applications 4, 285–314.",
+      "url": "https://doi.org/10.15559/17-VMSTA88"
+    },
+    {
+      "citation": "Massart, P. (1990). The tight constant in the Dvoretzky–Kiefer–Wolfowitz inequality. The Annals of Probability 18, 1269–1283.",
+      "url": "https://doi.org/10.1214/aop/1176990746"
+    },
+    {
+      "citation": "Reeve, H. W. J. (2024). A short proof of the Dvoretzky–Kiefer–Wolfowitz–Massart inequality. arXiv:2403.16651.",
+      "url": "https://arxiv.org/abs/2403.16651"
+    },
+    {
+      "citation": "Staudte, R. G. (2014). Inference for quantile measures of skewness. TEST 23, 751–768.",
+      "url": "https://doi.org/10.1007/s11749-014-0391-5"
+    },
+    {
+      "citation": "Zheng, T. and Gastwirth, J. L. (2021). On bootstrap tests of symmetry about an unknown median. Journal of Data Science 8, 397–412.",
+      "url": "https://doi.org/10.6339/JDS.2010.08(3).614"
+    },
+    {
+      "citation": "Sato, M. (1995). Inequalities on the mean, median, mode and skewness. RIMS Kôkyûroku 916, 75–89.",
+      "url": "http://hdl.handle.net/2433/59636"
+    }
+  ],
+  "operatingModel": {
+    "version": "1.0",
+    "workId": "ep-work:median-skewness-additive-noise",
+    "attemptIds": [
+      "ep-attempt:median-skewness-additive-noise-publication"
+    ],
+    "aims": [
+      "science"
+    ],
+    "artifactRoles": [
+      "research-output",
+      "communication"
+    ],
+    "lineageId": null,
+    "accelerationPrimitives": [
+      "adversarial-controls",
+      "assurance-vector",
+      "agent-readable-research-object"
+    ],
+    "decisionObject": {
+      "type": "other",
+      "description": "Decide whether van Zwet (tail-based, median-centred) right skewness is preserved under independent addition, which noise laws preserve it, and whether Hunter's simulated gamma, beta and Lévy cases hold.",
+      "scope": "Real-valued laws; independent additive noise; log-concave and strongly log-concave inputs; population statements and a distribution-free sample certificate."
+    },
+    "bottleneckTargeted": [
+      "assurance",
+      "publication"
+    ],
+    "semanticBridge": {
+      "state": "explicit",
+      "description": "The introduction states the question, what was known, the new results and a plan; the appendix and AI_INDEX.md map each exact constant to its check.",
+      "remainingRisks": [
+        "The literature search of limited scope is not exhaustive priority certification.",
+        "The proofs have been checked by AI-assisted reading only."
+      ]
+    },
+    "humanJudgmentGates": [
+      "Publication is authorised; scientific endorsement is not inferred.",
+      "External specialist review and independent reproduction remain open."
+    ],
+    "parentLinks": [],
+    "assuranceTarget": {
+      "dimensions": [
+        "specialistReview",
+        "independentRerun",
+        "formalVerification",
+        "priorityAssessment"
+      ],
+      "nextAction": "Have a specialist in distribution theory check Theorems 3.1, 4.1 and 5.1, and independently rerun the exact checks.",
+      "claimCeiling": "Written proofs of the exact counterexample and threshold, the symmetry characterisation, the noise classification, the single input failing under all self-sums and Gaussian noise, the gamma, beta (b ≥ a ≥ 1) and Lévy cases, the certificate's error bound and the weak-limit and mixture results; statements concern the exact definition; no positive preservation result; no power comparison; internal verification is not external assurance."
+    },
+    "impactClaims": [
+      {
+        "id": "median-skewness-additive-noise-no-impact",
+        "aim": "science",
+        "outcome": "An openly inspectable account of when tail-based skewness survives additive noise, with an exact counterexample and a symmetry certificate.",
+        "setting": "AI-assisted research in distribution theory and robust statistics",
+        "status": "NO_IMPACT_EVIDENCE",
+        "designClass": "none",
+        "comparator": "None registered.",
+        "estimand": "No research-speed or scientific-impact effect is estimated.",
+        "evidenceRefs": [],
+        "registeredDesignRef": null,
+        "independentAssessment": null
+      }
+    ]
+  }
+}
