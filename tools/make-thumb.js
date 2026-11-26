@@ -81,6 +81,15 @@ const savedPalettes = require('./thumbnail-palettes');
 /* One spec per video. `hero` is raw HTML so each release can state its own
    result in its own notation. */
 const SPECS = {
+  'normalised-distance-laplacian-upper-edge': {
+    palette: "auto",
+    kicker: ["RESEARCH RELEASE · 25 NOVEMBER 2026","SPECTRAL GRAPH THEORY"],
+    head: ["Two dense ends,","<em>one path of √(3n).</em>"],
+    headSize: 64,
+    sub: "The sharp gap below two for the normalised distance Laplacian.",
+    tag: "UNREFEREED CANDIDATE",
+    hero: require('./distance-laplacian-edge-art').thumbnailHero()
+  },
   'critical-chain-bound-energy': {
     palette: 'auto',
     kicker: ['RESEARCH RELEASE · 26 NOVEMBER 2026', 'CRITICAL CHAINS · QUANTUM THERMODYNAMICS'],
